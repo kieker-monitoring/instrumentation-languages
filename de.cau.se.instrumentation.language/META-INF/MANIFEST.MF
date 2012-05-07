@@ -1,0 +1,36 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: de.cau.se.instrumentation.language
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0
+Bundle-SymbolicName: de.cau.se.instrumentation.language; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext;bundle-version="2.1.0";visibility:=reexport,
+ org.eclipse.xtext.xbase;bundle-version="2.1.0";resolution:=optional;visibility:=reexport,
+ org.apache.log4j;bundle-version="1.2.15";visibility:=reexport,
+ org.apache.commons.logging;bundle-version="1.0.4";resolution:=optional;visibility:=reexport,
+ org.eclipse.xtext.generator;resolution:=optional,
+ org.eclipse.emf.codegen.ecore;resolution:=optional,
+ org.eclipse.emf.mwe.utils;resolution:=optional,
+ org.eclipse.emf.mwe2.launch;resolution:=optional,
+ org.eclipse.xtext.util,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.common,
+ org.antlr.runtime,
+ org.eclipse.xtext.common.types,
+ org.eclipse.xtend2.lib
+Import-Package: org.apache.log4j,
+ org.apache.commons.logging
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: de.cau.se.instrumentation.language,
+ de.cau.se.instrumentation.language.services,
+ de.cau.se.instrumentation.language.probeLang,
+ de.cau.se.instrumentation.language.probeLang.impl,
+ de.cau.se.instrumentation.language.probeLang.util,
+ de.cau.se.instrumentation.language.serializer,
+ de.cau.se.instrumentation.language.parser.antlr,
+ de.cau.se.instrumentation.language.parser.antlr.internal,
+ de.cau.se.instrumentation.language.validation,
+ de.cau.se.instrumentation.language.formatting,
+ de.cau.se.instrumentation.language.jvmmodel
+
