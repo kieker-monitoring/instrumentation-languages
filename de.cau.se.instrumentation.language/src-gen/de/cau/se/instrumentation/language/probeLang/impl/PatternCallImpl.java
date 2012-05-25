@@ -25,6 +25,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.eclipse.xtext.xbase.impl.XExpressionImpl;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Pattern Call</b></em>'.
@@ -39,7 +41,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class PatternCallImpl extends ValueElementImpl implements PatternCall
+public class PatternCallImpl extends XExpressionImpl implements PatternCall
 {
   /**
    * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.

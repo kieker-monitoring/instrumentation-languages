@@ -5,8 +5,8 @@
  */
 package de.cau.se.instrumentation.language.probeLang.impl;
 
-import de.cau.se.instrumentation.language.probeLang.CodeElement;
 import de.cau.se.instrumentation.language.probeLang.ProbeLangPackage;
+import de.cau.se.instrumentation.language.probeLang.StringElement;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -21,19 +21,19 @@ import org.eclipse.xtext.xbase.XExpression;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Code Element</b></em>'.
+ * An implementation of the model object '<em><b>String Element</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.cau.se.instrumentation.language.probeLang.impl.CodeElementImpl#isToUpper <em>To Upper</em>}</li>
- *   <li>{@link de.cau.se.instrumentation.language.probeLang.impl.CodeElementImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link de.cau.se.instrumentation.language.probeLang.impl.StringElementImpl#isToUpper <em>To Upper</em>}</li>
+ *   <li>{@link de.cau.se.instrumentation.language.probeLang.impl.StringElementImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class CodeElementImpl extends MinimalEObjectImpl.Container implements CodeElement
+public class StringElementImpl extends MinimalEObjectImpl.Container implements StringElement
 {
   /**
    * The default value of the '{@link #isToUpper() <em>To Upper</em>}' attribute.
@@ -70,7 +70,7 @@ public class CodeElementImpl extends MinimalEObjectImpl.Container implements Cod
    * <!-- end-user-doc -->
    * @generated
    */
-  protected CodeElementImpl()
+  protected StringElementImpl()
   {
     super();
   }
@@ -83,7 +83,7 @@ public class CodeElementImpl extends MinimalEObjectImpl.Container implements Cod
   @Override
   protected EClass eStaticClass()
   {
-    return ProbeLangPackage.Literals.CODE_ELEMENT;
+    return ProbeLangPackage.Literals.STRING_ELEMENT;
   }
 
   /**
@@ -106,7 +106,7 @@ public class CodeElementImpl extends MinimalEObjectImpl.Container implements Cod
     boolean oldToUpper = toUpper;
     toUpper = newToUpper;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProbeLangPackage.CODE_ELEMENT__TO_UPPER, oldToUpper, toUpper));
+      eNotify(new ENotificationImpl(this, Notification.SET, ProbeLangPackage.STRING_ELEMENT__TO_UPPER, oldToUpper, toUpper));
   }
 
   /**
@@ -130,7 +130,7 @@ public class CodeElementImpl extends MinimalEObjectImpl.Container implements Cod
     value = newValue;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ProbeLangPackage.CODE_ELEMENT__VALUE, oldValue, newValue);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ProbeLangPackage.STRING_ELEMENT__VALUE, oldValue, newValue);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -147,14 +147,14 @@ public class CodeElementImpl extends MinimalEObjectImpl.Container implements Cod
     {
       NotificationChain msgs = null;
       if (value != null)
-        msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ProbeLangPackage.CODE_ELEMENT__VALUE, null, msgs);
+        msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ProbeLangPackage.STRING_ELEMENT__VALUE, null, msgs);
       if (newValue != null)
-        msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ProbeLangPackage.CODE_ELEMENT__VALUE, null, msgs);
+        msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ProbeLangPackage.STRING_ELEMENT__VALUE, null, msgs);
       msgs = basicSetValue(newValue, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProbeLangPackage.CODE_ELEMENT__VALUE, newValue, newValue));
+      eNotify(new ENotificationImpl(this, Notification.SET, ProbeLangPackage.STRING_ELEMENT__VALUE, newValue, newValue));
   }
 
   /**
@@ -167,7 +167,7 @@ public class CodeElementImpl extends MinimalEObjectImpl.Container implements Cod
   {
     switch (featureID)
     {
-      case ProbeLangPackage.CODE_ELEMENT__VALUE:
+      case ProbeLangPackage.STRING_ELEMENT__VALUE:
         return basicSetValue(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -183,9 +183,9 @@ public class CodeElementImpl extends MinimalEObjectImpl.Container implements Cod
   {
     switch (featureID)
     {
-      case ProbeLangPackage.CODE_ELEMENT__TO_UPPER:
+      case ProbeLangPackage.STRING_ELEMENT__TO_UPPER:
         return isToUpper();
-      case ProbeLangPackage.CODE_ELEMENT__VALUE:
+      case ProbeLangPackage.STRING_ELEMENT__VALUE:
         return getValue();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -201,10 +201,10 @@ public class CodeElementImpl extends MinimalEObjectImpl.Container implements Cod
   {
     switch (featureID)
     {
-      case ProbeLangPackage.CODE_ELEMENT__TO_UPPER:
+      case ProbeLangPackage.STRING_ELEMENT__TO_UPPER:
         setToUpper((Boolean)newValue);
         return;
-      case ProbeLangPackage.CODE_ELEMENT__VALUE:
+      case ProbeLangPackage.STRING_ELEMENT__VALUE:
         setValue((XExpression)newValue);
         return;
     }
@@ -221,10 +221,10 @@ public class CodeElementImpl extends MinimalEObjectImpl.Container implements Cod
   {
     switch (featureID)
     {
-      case ProbeLangPackage.CODE_ELEMENT__TO_UPPER:
+      case ProbeLangPackage.STRING_ELEMENT__TO_UPPER:
         setToUpper(TO_UPPER_EDEFAULT);
         return;
-      case ProbeLangPackage.CODE_ELEMENT__VALUE:
+      case ProbeLangPackage.STRING_ELEMENT__VALUE:
         setValue((XExpression)null);
         return;
     }
@@ -241,9 +241,9 @@ public class CodeElementImpl extends MinimalEObjectImpl.Container implements Cod
   {
     switch (featureID)
     {
-      case ProbeLangPackage.CODE_ELEMENT__TO_UPPER:
+      case ProbeLangPackage.STRING_ELEMENT__TO_UPPER:
         return toUpper != TO_UPPER_EDEFAULT;
-      case ProbeLangPackage.CODE_ELEMENT__VALUE:
+      case ProbeLangPackage.STRING_ELEMENT__VALUE:
         return value != null;
     }
     return super.eIsSet(featureID);
@@ -266,4 +266,4 @@ public class CodeElementImpl extends MinimalEObjectImpl.Container implements Cod
     return result.toString();
   }
 
-} //CodeElementImpl
+} //StringElementImpl

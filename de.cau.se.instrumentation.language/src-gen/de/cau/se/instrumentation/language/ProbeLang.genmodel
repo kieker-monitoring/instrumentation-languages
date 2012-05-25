@@ -6,7 +6,8 @@
     modelPluginID="de.cau.se.instrumentation.language" forceOverwrite="true" modelName="ProbeLang"
     updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="de.cau.se.instrumentation.language.edit"
-    editorPluginID="de.cau.se.instrumentation.language.editor">
+    editorPluginID="de.cau.se.instrumentation.language.editor" runtimeVersion="2.7"
+    usedGenPackages="../../../../../../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase">
   <genPackages prefix="ProbeLang" basePackage="de.cau.se.instrumentation.language"
       disposableProviderFactory="true" ecorePackage="ProbeLang.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="ProbeLang.ecore#//QuantifierType">
@@ -24,8 +25,18 @@
       <genEnumLiterals ecoreEnumLiteral="ProbeLang.ecore#//OperatorType/NON_DIGIT"/>
     </genEnums>
     <genClasses ecoreClass="ProbeLang.ecore#//Model">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProbeLang.ecore#//Model/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProbeLang.ecore#//Model/imports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProbeLang.ecore#//Model/types"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProbeLang.ecore#//Model/patterns"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProbeLang.ecore#//Model/probes"/>
+    </genClasses>
+    <genClasses ecoreClass="ProbeLang.ecore#//DataTypeDeclaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProbeLang.ecore#//DataTypeDeclaration/name"/>
+    </genClasses>
+    <genClasses ecoreClass="ProbeLang.ecore#//Import">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ProbeLang.ecore#//Import/ePackage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProbeLang.ecore#//Import/name"/>
     </genClasses>
     <genClasses ecoreClass="ProbeLang.ecore#//Pattern">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProbeLang.ecore#//Pattern/name"/>
@@ -35,16 +46,24 @@
     <genClasses ecoreClass="ProbeLang.ecore#//Parameter">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProbeLang.ecore#//Parameter/name"/>
     </genClasses>
-    <genClasses ecoreClass="ProbeLang.ecore#//CodeElement"/>
+    <genClasses ecoreClass="ProbeLang.ecore#//CodeElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProbeLang.ecore#//CodeElement/toUpper"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProbeLang.ecore#//CodeElement/value"/>
+    </genClasses>
     <genClasses ecoreClass="ProbeLang.ecore#//ParameterRef">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ProbeLang.ecore#//ParameterRef/ref"/>
     </genClasses>
-    <genClasses ecoreClass="ProbeLang.ecore#//QuotedElement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProbeLang.ecore#//QuotedElement/value"/>
-    </genClasses>
     <genClasses ecoreClass="ProbeLang.ecore#//Probe">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProbeLang.ecore#//Probe/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProbeLang.ecore#//Probe/record"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProbeLang.ecore#//Probe/replacements"/>
+    </genClasses>
+    <genClasses ecoreClass="ProbeLang.ecore#//RecordDeclaration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProbeLang.ecore#//RecordDeclaration/properties"/>
+    </genClasses>
+    <genClasses ecoreClass="ProbeLang.ecore#//Property">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ProbeLang.ecore#//Property/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProbeLang.ecore#//Property/name"/>
     </genClasses>
     <genClasses ecoreClass="ProbeLang.ecore#//Replacement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProbeLang.ecore#//Replacement/name"/>
@@ -67,7 +86,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProbeLang.ecore#//Quantifier/item"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProbeLang.ecore#//Quantifier/type"/>
     </genClasses>
-    <genClasses ecoreClass="ProbeLang.ecore#//Item"/>
     <genClasses ecoreClass="ProbeLang.ecore#//Operator">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProbeLang.ecore#//Operator/type"/>
     </genClasses>
@@ -81,9 +99,12 @@
     <genClasses ecoreClass="ProbeLang.ecore#//Value">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProbeLang.ecore#//Value/elements"/>
     </genClasses>
-    <genClasses ecoreClass="ProbeLang.ecore#//ValueElement"/>
-    <genClasses ecoreClass="ProbeLang.ecore#//ToUpper">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProbeLang.ecore#//ToUpper/value"/>
+    <genClasses ecoreClass="ProbeLang.ecore#//StringElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProbeLang.ecore#//StringElement/toUpper"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProbeLang.ecore#//StringElement/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ProbeLang.ecore#//PropertyReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ProbeLang.ecore#//PropertyReference/ref"/>
     </genClasses>
     <genClasses ecoreClass="ProbeLang.ecore#//ScopeRefElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProbeLang.ecore#//ScopeRefElement/ref"/>

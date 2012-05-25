@@ -7,8 +7,24 @@ import "http://www.eclipse.org/xtext/common/JavaVMTypes" as jvmTypes
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 Model:
+	'package' name = QualifiedName
+	(imports += Import)*
+	(types+=DataTypeDeclaration)*
 	(patterns+=Pattern)*
 	(probes+=Probe)*
+;
+
+DataTypeDeclaration:
+	'type' name=ID
+;
+
+
+Import :
+	'import' ePackage=[ecore::EPackage|STRING] 'as' name=ID
+;
+
+QualifiedNameWithWildcard:
+	QualifiedName ('.' '*')?
 ;
 
 Pattern:
@@ -21,21 +37,30 @@ Parameter:
 ;
 
 CodeElement:
-	QuotedElement | ParameterRef | ToUpper
+	(toUpper?='#')? value=SimpleCodeElement	
+;
+
+SimpleCodeElement returns xbase::XExpression:
+	XStringLiteral | ParameterRef 
 ;
 
 ParameterRef:
 	ref=[Parameter|ID]
 ;
 
-QuotedElement:
-	value=STRING
-;
-
 Probe:
 	'probe' name=ID '{'
+		(record=RecordDeclaration)?
 		(replacements+=Replacement)*
 	'}'
+;
+
+RecordDeclaration:
+	'record' '{' (properties+=Property)+ '}'
+;
+
+Property:
+	type=[DataTypeDeclaration|ID] name=ID
 ;
 
 Replacement:
@@ -60,8 +85,8 @@ Quantifier:
 	item=Item (type=QuantifierType)?	
 ;
 
-Item:
-	Operator | QuotedElement | Group
+Item returns xbase::XExpression:
+	Operator | XStringLiteral | Group
 ;
 
 Operator:
@@ -77,24 +102,26 @@ PatternCall:
 ;
 
 Value:
-	(elements+=ValueElement)+
+	(elements+=StringElement)+
 ;
 
-ValueElement:
-	QuotedElement | PatternCall | ScopeRefElement 
+StringElement:
+	(toUpper?='#')? value=ValueElement
 ;
 
-ToUpper:
-	'#' value=Value
+ValueElement returns xbase::XExpression:
+	XStringLiteral | PatternCall | ScopeRefElement | PropertyReference
+;
+
+PropertyReference:
+	ref=[Property|ID]
 ;
 
 
 ScopeRefElement:
 	//ref=[ecore::ENamedElement|QualifiedName]
-	ref=QualifiedName
+	'@' ref=QualifiedName
 ;
-
-
 
 /* */
 

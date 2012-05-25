@@ -14,6 +14,8 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.xtext.xbase.impl.XExpressionImpl;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Scope Ref Element</b></em>'.
@@ -27,7 +29,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class ScopeRefElementImpl extends ValueElementImpl implements ScopeRefElement
+public class ScopeRefElementImpl extends XExpressionImpl implements ScopeRefElement
 {
   /**
    * The default value of the '{@link #getRef() <em>Ref</em>}' attribute.

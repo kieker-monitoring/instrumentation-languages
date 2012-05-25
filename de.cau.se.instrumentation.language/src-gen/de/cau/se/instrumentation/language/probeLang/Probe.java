@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link de.cau.se.instrumentation.language.probeLang.Probe#getName <em>Name</em>}</li>
+ *   <li>{@link de.cau.se.instrumentation.language.probeLang.Probe#getRecord <em>Record</em>}</li>
  *   <li>{@link de.cau.se.instrumentation.language.probeLang.Probe#getReplacements <em>Replacements</em>}</li>
  * </ul>
  * </p>
@@ -53,6 +54,32 @@ public interface Probe extends EObject
    * @generated
    */
   void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Record</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Record</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Record</em>' containment reference.
+   * @see #setRecord(RecordDeclaration)
+   * @see de.cau.se.instrumentation.language.probeLang.ProbeLangPackage#getProbe_Record()
+   * @model containment="true"
+   * @generated
+   */
+  RecordDeclaration getRecord();
+
+  /**
+   * Sets the value of the '{@link de.cau.se.instrumentation.language.probeLang.Probe#getRecord <em>Record</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Record</em>' containment reference.
+   * @see #getRecord()
+   * @generated
+   */
+  void setRecord(RecordDeclaration value);
 
   /**
    * Returns the value of the '<em><b>Replacements</b></em>' containment reference list.

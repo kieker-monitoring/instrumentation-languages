@@ -5,6 +5,7 @@
  */
 package de.cau.se.instrumentation.language.probeLang;
 
+import org.eclipse.xtext.xbase.XExpression;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,7 +23,7 @@ package de.cau.se.instrumentation.language.probeLang;
  * @model
  * @generated
  */
-public interface Operator extends Item
+public interface Operator extends XExpression
 {
   /**
    * Returns the value of the '<em><b>Type</b></em>' attribute.

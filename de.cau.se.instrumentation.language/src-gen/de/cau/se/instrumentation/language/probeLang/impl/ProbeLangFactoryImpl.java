@@ -69,24 +69,26 @@ public class ProbeLangFactoryImpl extends EFactoryImpl implements ProbeLangFacto
     switch (eClass.getClassifierID())
     {
       case ProbeLangPackage.MODEL: return createModel();
+      case ProbeLangPackage.DATA_TYPE_DECLARATION: return createDataTypeDeclaration();
+      case ProbeLangPackage.IMPORT: return createImport();
       case ProbeLangPackage.PATTERN: return createPattern();
       case ProbeLangPackage.PARAMETER: return createParameter();
       case ProbeLangPackage.CODE_ELEMENT: return createCodeElement();
       case ProbeLangPackage.PARAMETER_REF: return createParameterRef();
-      case ProbeLangPackage.QUOTED_ELEMENT: return createQuotedElement();
       case ProbeLangPackage.PROBE: return createProbe();
+      case ProbeLangPackage.RECORD_DECLARATION: return createRecordDeclaration();
+      case ProbeLangPackage.PROPERTY: return createProperty();
       case ProbeLangPackage.REPLACEMENT: return createReplacement();
       case ProbeLangPackage.SCOPE: return createScope();
       case ProbeLangPackage.ALTERNATIVE: return createAlternative();
       case ProbeLangPackage.SEQUENCE: return createSequence();
       case ProbeLangPackage.QUANTIFIER: return createQuantifier();
-      case ProbeLangPackage.ITEM: return createItem();
       case ProbeLangPackage.OPERATOR: return createOperator();
       case ProbeLangPackage.GROUP: return createGroup();
       case ProbeLangPackage.PATTERN_CALL: return createPatternCall();
       case ProbeLangPackage.VALUE: return createValue();
-      case ProbeLangPackage.VALUE_ELEMENT: return createValueElement();
-      case ProbeLangPackage.TO_UPPER: return createToUpper();
+      case ProbeLangPackage.STRING_ELEMENT: return createStringElement();
+      case ProbeLangPackage.PROPERTY_REFERENCE: return createPropertyReference();
       case ProbeLangPackage.SCOPE_REF_ELEMENT: return createScopeRefElement();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -147,6 +149,28 @@ public class ProbeLangFactoryImpl extends EFactoryImpl implements ProbeLangFacto
    * <!-- end-user-doc -->
    * @generated
    */
+  public DataTypeDeclaration createDataTypeDeclaration()
+  {
+    DataTypeDeclarationImpl dataTypeDeclaration = new DataTypeDeclarationImpl();
+    return dataTypeDeclaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Import createImport()
+  {
+    ImportImpl import_ = new ImportImpl();
+    return import_;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Pattern createPattern()
   {
     PatternImpl pattern = new PatternImpl();
@@ -191,10 +215,10 @@ public class ProbeLangFactoryImpl extends EFactoryImpl implements ProbeLangFacto
    * <!-- end-user-doc -->
    * @generated
    */
-  public QuotedElement createQuotedElement()
+  public Probe createProbe()
   {
-    QuotedElementImpl quotedElement = new QuotedElementImpl();
-    return quotedElement;
+    ProbeImpl probe = new ProbeImpl();
+    return probe;
   }
 
   /**
@@ -202,10 +226,21 @@ public class ProbeLangFactoryImpl extends EFactoryImpl implements ProbeLangFacto
    * <!-- end-user-doc -->
    * @generated
    */
-  public Probe createProbe()
+  public RecordDeclaration createRecordDeclaration()
   {
-    ProbeImpl probe = new ProbeImpl();
-    return probe;
+    RecordDeclarationImpl recordDeclaration = new RecordDeclarationImpl();
+    return recordDeclaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Property createProperty()
+  {
+    PropertyImpl property = new PropertyImpl();
+    return property;
   }
 
   /**
@@ -268,17 +303,6 @@ public class ProbeLangFactoryImpl extends EFactoryImpl implements ProbeLangFacto
    * <!-- end-user-doc -->
    * @generated
    */
-  public Item createItem()
-  {
-    ItemImpl item = new ItemImpl();
-    return item;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public Operator createOperator()
   {
     OperatorImpl operator = new OperatorImpl();
@@ -323,10 +347,10 @@ public class ProbeLangFactoryImpl extends EFactoryImpl implements ProbeLangFacto
    * <!-- end-user-doc -->
    * @generated
    */
-  public ValueElement createValueElement()
+  public StringElement createStringElement()
   {
-    ValueElementImpl valueElement = new ValueElementImpl();
-    return valueElement;
+    StringElementImpl stringElement = new StringElementImpl();
+    return stringElement;
   }
 
   /**
@@ -334,10 +358,10 @@ public class ProbeLangFactoryImpl extends EFactoryImpl implements ProbeLangFacto
    * <!-- end-user-doc -->
    * @generated
    */
-  public ToUpper createToUpper()
+  public PropertyReference createPropertyReference()
   {
-    ToUpperImpl toUpper = new ToUpperImpl();
-    return toUpper;
+    PropertyReferenceImpl propertyReference = new PropertyReferenceImpl();
+    return propertyReference;
   }
 
   /**

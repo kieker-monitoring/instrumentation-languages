@@ -5,9 +5,9 @@
  */
 package de.cau.se.instrumentation.language.probeLang.impl;
 
-import de.cau.se.instrumentation.language.probeLang.Parameter;
-import de.cau.se.instrumentation.language.probeLang.ParameterRef;
 import de.cau.se.instrumentation.language.probeLang.ProbeLangPackage;
+import de.cau.se.instrumentation.language.probeLang.Property;
+import de.cau.se.instrumentation.language.probeLang.PropertyReference;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -20,18 +20,18 @@ import org.eclipse.xtext.xbase.impl.XExpressionImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Parameter Ref</b></em>'.
+ * An implementation of the model object '<em><b>Property Reference</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.cau.se.instrumentation.language.probeLang.impl.ParameterRefImpl#getRef <em>Ref</em>}</li>
+ *   <li>{@link de.cau.se.instrumentation.language.probeLang.impl.PropertyReferenceImpl#getRef <em>Ref</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ParameterRefImpl extends XExpressionImpl implements ParameterRef
+public class PropertyReferenceImpl extends XExpressionImpl implements PropertyReference
 {
   /**
    * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.
@@ -41,14 +41,14 @@ public class ParameterRefImpl extends XExpressionImpl implements ParameterRef
    * @generated
    * @ordered
    */
-  protected Parameter ref;
+  protected Property ref;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ParameterRefImpl()
+  protected PropertyReferenceImpl()
   {
     super();
   }
@@ -61,7 +61,7 @@ public class ParameterRefImpl extends XExpressionImpl implements ParameterRef
   @Override
   protected EClass eStaticClass()
   {
-    return ProbeLangPackage.Literals.PARAMETER_REF;
+    return ProbeLangPackage.Literals.PROPERTY_REFERENCE;
   }
 
   /**
@@ -69,16 +69,16 @@ public class ParameterRefImpl extends XExpressionImpl implements ParameterRef
    * <!-- end-user-doc -->
    * @generated
    */
-  public Parameter getRef()
+  public Property getRef()
   {
     if (ref != null && ref.eIsProxy())
     {
       InternalEObject oldRef = (InternalEObject)ref;
-      ref = (Parameter)eResolveProxy(oldRef);
+      ref = (Property)eResolveProxy(oldRef);
       if (ref != oldRef)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProbeLangPackage.PARAMETER_REF__REF, oldRef, ref));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProbeLangPackage.PROPERTY_REFERENCE__REF, oldRef, ref));
       }
     }
     return ref;
@@ -89,7 +89,7 @@ public class ParameterRefImpl extends XExpressionImpl implements ParameterRef
    * <!-- end-user-doc -->
    * @generated
    */
-  public Parameter basicGetRef()
+  public Property basicGetRef()
   {
     return ref;
   }
@@ -99,12 +99,12 @@ public class ParameterRefImpl extends XExpressionImpl implements ParameterRef
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRef(Parameter newRef)
+  public void setRef(Property newRef)
   {
-    Parameter oldRef = ref;
+    Property oldRef = ref;
     ref = newRef;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProbeLangPackage.PARAMETER_REF__REF, oldRef, ref));
+      eNotify(new ENotificationImpl(this, Notification.SET, ProbeLangPackage.PROPERTY_REFERENCE__REF, oldRef, ref));
   }
 
   /**
@@ -117,7 +117,7 @@ public class ParameterRefImpl extends XExpressionImpl implements ParameterRef
   {
     switch (featureID)
     {
-      case ProbeLangPackage.PARAMETER_REF__REF:
+      case ProbeLangPackage.PROPERTY_REFERENCE__REF:
         if (resolve) return getRef();
         return basicGetRef();
     }
@@ -134,8 +134,8 @@ public class ParameterRefImpl extends XExpressionImpl implements ParameterRef
   {
     switch (featureID)
     {
-      case ProbeLangPackage.PARAMETER_REF__REF:
-        setRef((Parameter)newValue);
+      case ProbeLangPackage.PROPERTY_REFERENCE__REF:
+        setRef((Property)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -151,8 +151,8 @@ public class ParameterRefImpl extends XExpressionImpl implements ParameterRef
   {
     switch (featureID)
     {
-      case ProbeLangPackage.PARAMETER_REF__REF:
-        setRef((Parameter)null);
+      case ProbeLangPackage.PROPERTY_REFERENCE__REF:
+        setRef((Property)null);
         return;
     }
     super.eUnset(featureID);
@@ -168,10 +168,10 @@ public class ParameterRefImpl extends XExpressionImpl implements ParameterRef
   {
     switch (featureID)
     {
-      case ProbeLangPackage.PARAMETER_REF__REF:
+      case ProbeLangPackage.PROPERTY_REFERENCE__REF:
         return ref != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //ParameterRefImpl
+} //PropertyReferenceImpl

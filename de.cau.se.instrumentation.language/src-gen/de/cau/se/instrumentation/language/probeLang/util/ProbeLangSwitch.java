@@ -12,6 +12,8 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
+import org.eclipse.xtext.xbase.XExpression;
+
 /**
  * <!-- begin-user-doc -->
  * The <b>Switch</b> for the model's inheritance hierarchy.
@@ -82,6 +84,20 @@ public class ProbeLangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ProbeLangPackage.DATA_TYPE_DECLARATION:
+      {
+        DataTypeDeclaration dataTypeDeclaration = (DataTypeDeclaration)theEObject;
+        T result = caseDataTypeDeclaration(dataTypeDeclaration);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ProbeLangPackage.IMPORT:
+      {
+        Import import_ = (Import)theEObject;
+        T result = caseImport(import_);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ProbeLangPackage.PATTERN:
       {
         Pattern pattern = (Pattern)theEObject;
@@ -107,17 +123,7 @@ public class ProbeLangSwitch<T> extends Switch<T>
       {
         ParameterRef parameterRef = (ParameterRef)theEObject;
         T result = caseParameterRef(parameterRef);
-        if (result == null) result = caseCodeElement(parameterRef);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ProbeLangPackage.QUOTED_ELEMENT:
-      {
-        QuotedElement quotedElement = (QuotedElement)theEObject;
-        T result = caseQuotedElement(quotedElement);
-        if (result == null) result = caseCodeElement(quotedElement);
-        if (result == null) result = caseItem(quotedElement);
-        if (result == null) result = caseValueElement(quotedElement);
+        if (result == null) result = caseXExpression(parameterRef);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -125,6 +131,20 @@ public class ProbeLangSwitch<T> extends Switch<T>
       {
         Probe probe = (Probe)theEObject;
         T result = caseProbe(probe);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ProbeLangPackage.RECORD_DECLARATION:
+      {
+        RecordDeclaration recordDeclaration = (RecordDeclaration)theEObject;
+        T result = caseRecordDeclaration(recordDeclaration);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ProbeLangPackage.PROPERTY:
+      {
+        Property property = (Property)theEObject;
+        T result = caseProperty(property);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -163,18 +183,11 @@ public class ProbeLangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ProbeLangPackage.ITEM:
-      {
-        Item item = (Item)theEObject;
-        T result = caseItem(item);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case ProbeLangPackage.OPERATOR:
       {
         Operator operator = (Operator)theEObject;
         T result = caseOperator(operator);
-        if (result == null) result = caseItem(operator);
+        if (result == null) result = caseXExpression(operator);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -182,7 +195,7 @@ public class ProbeLangSwitch<T> extends Switch<T>
       {
         Group group = (Group)theEObject;
         T result = caseGroup(group);
-        if (result == null) result = caseItem(group);
+        if (result == null) result = caseXExpression(group);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -190,7 +203,7 @@ public class ProbeLangSwitch<T> extends Switch<T>
       {
         PatternCall patternCall = (PatternCall)theEObject;
         T result = casePatternCall(patternCall);
-        if (result == null) result = caseValueElement(patternCall);
+        if (result == null) result = caseXExpression(patternCall);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -201,18 +214,18 @@ public class ProbeLangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ProbeLangPackage.VALUE_ELEMENT:
+      case ProbeLangPackage.STRING_ELEMENT:
       {
-        ValueElement valueElement = (ValueElement)theEObject;
-        T result = caseValueElement(valueElement);
+        StringElement stringElement = (StringElement)theEObject;
+        T result = caseStringElement(stringElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ProbeLangPackage.TO_UPPER:
+      case ProbeLangPackage.PROPERTY_REFERENCE:
       {
-        ToUpper toUpper = (ToUpper)theEObject;
-        T result = caseToUpper(toUpper);
-        if (result == null) result = caseCodeElement(toUpper);
+        PropertyReference propertyReference = (PropertyReference)theEObject;
+        T result = casePropertyReference(propertyReference);
+        if (result == null) result = caseXExpression(propertyReference);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -220,7 +233,7 @@ public class ProbeLangSwitch<T> extends Switch<T>
       {
         ScopeRefElement scopeRefElement = (ScopeRefElement)theEObject;
         T result = caseScopeRefElement(scopeRefElement);
-        if (result == null) result = caseValueElement(scopeRefElement);
+        if (result == null) result = caseXExpression(scopeRefElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -240,6 +253,38 @@ public class ProbeLangSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseModel(Model object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Data Type Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Data Type Declaration</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDataTypeDeclaration(DataTypeDeclaration object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Import</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Import</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseImport(Import object)
   {
     return null;
   }
@@ -309,22 +354,6 @@ public class ProbeLangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Quoted Element</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Quoted Element</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseQuotedElement(QuotedElement object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Probe</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -336,6 +365,38 @@ public class ProbeLangSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseProbe(Probe object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Record Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Record Declaration</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRecordDeclaration(RecordDeclaration object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Property</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Property</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseProperty(Property object)
   {
     return null;
   }
@@ -421,22 +482,6 @@ public class ProbeLangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Item</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Item</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseItem(Item object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Operator</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -501,33 +546,33 @@ public class ProbeLangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Value Element</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>String Element</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Value Element</em>'.
+   * @return the result of interpreting the object as an instance of '<em>String Element</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseValueElement(ValueElement object)
+  public T caseStringElement(StringElement object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>To Upper</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Property Reference</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>To Upper</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Property Reference</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseToUpper(ToUpper object)
+  public T casePropertyReference(PropertyReference object)
   {
     return null;
   }
@@ -544,6 +589,22 @@ public class ProbeLangSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseScopeRefElement(ScopeRefElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>XExpression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>XExpression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseXExpression(XExpression object)
   {
     return null;
   }

@@ -5,56 +5,57 @@
  */
 package de.cau.se.instrumentation.language.probeLang.impl;
 
+import de.cau.se.instrumentation.language.probeLang.DataTypeDeclaration;
 import de.cau.se.instrumentation.language.probeLang.ProbeLangPackage;
-import de.cau.se.instrumentation.language.probeLang.QuotedElement;
 
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Quoted Element</b></em>'.
+ * An implementation of the model object '<em><b>Data Type Declaration</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.cau.se.instrumentation.language.probeLang.impl.QuotedElementImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link de.cau.se.instrumentation.language.probeLang.impl.DataTypeDeclarationImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class QuotedElementImpl extends CodeElementImpl implements QuotedElement
+public class DataTypeDeclarationImpl extends MinimalEObjectImpl.Container implements DataTypeDeclaration
 {
   /**
-   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValue()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected static final String VALUE_EDEFAULT = null;
+  protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValue()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected String value = VALUE_EDEFAULT;
+  protected String name = NAME_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected QuotedElementImpl()
+  protected DataTypeDeclarationImpl()
   {
     super();
   }
@@ -67,7 +68,7 @@ public class QuotedElementImpl extends CodeElementImpl implements QuotedElement
   @Override
   protected EClass eStaticClass()
   {
-    return ProbeLangPackage.Literals.QUOTED_ELEMENT;
+    return ProbeLangPackage.Literals.DATA_TYPE_DECLARATION;
   }
 
   /**
@@ -75,9 +76,9 @@ public class QuotedElementImpl extends CodeElementImpl implements QuotedElement
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getValue()
+  public String getName()
   {
-    return value;
+    return name;
   }
 
   /**
@@ -85,12 +86,12 @@ public class QuotedElementImpl extends CodeElementImpl implements QuotedElement
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setValue(String newValue)
+  public void setName(String newName)
   {
-    String oldValue = value;
-    value = newValue;
+    String oldName = name;
+    name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProbeLangPackage.QUOTED_ELEMENT__VALUE, oldValue, value));
+      eNotify(new ENotificationImpl(this, Notification.SET, ProbeLangPackage.DATA_TYPE_DECLARATION__NAME, oldName, name));
   }
 
   /**
@@ -103,8 +104,8 @@ public class QuotedElementImpl extends CodeElementImpl implements QuotedElement
   {
     switch (featureID)
     {
-      case ProbeLangPackage.QUOTED_ELEMENT__VALUE:
-        return getValue();
+      case ProbeLangPackage.DATA_TYPE_DECLARATION__NAME:
+        return getName();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -119,8 +120,8 @@ public class QuotedElementImpl extends CodeElementImpl implements QuotedElement
   {
     switch (featureID)
     {
-      case ProbeLangPackage.QUOTED_ELEMENT__VALUE:
-        setValue((String)newValue);
+      case ProbeLangPackage.DATA_TYPE_DECLARATION__NAME:
+        setName((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -136,8 +137,8 @@ public class QuotedElementImpl extends CodeElementImpl implements QuotedElement
   {
     switch (featureID)
     {
-      case ProbeLangPackage.QUOTED_ELEMENT__VALUE:
-        setValue(VALUE_EDEFAULT);
+      case ProbeLangPackage.DATA_TYPE_DECLARATION__NAME:
+        setName(NAME_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -153,8 +154,8 @@ public class QuotedElementImpl extends CodeElementImpl implements QuotedElement
   {
     switch (featureID)
     {
-      case ProbeLangPackage.QUOTED_ELEMENT__VALUE:
-        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+      case ProbeLangPackage.DATA_TYPE_DECLARATION__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
     return super.eIsSet(featureID);
   }
@@ -170,10 +171,10 @@ public class QuotedElementImpl extends CodeElementImpl implements QuotedElement
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (value: ");
-    result.append(value);
+    result.append(" (name: ");
+    result.append(name);
     result.append(')');
     return result.toString();
   }
 
-} //QuotedElementImpl
+} //DataTypeDeclarationImpl

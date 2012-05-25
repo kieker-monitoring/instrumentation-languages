@@ -6,8 +6,8 @@
 package de.cau.se.instrumentation.language.probeLang.impl;
 
 import de.cau.se.instrumentation.language.probeLang.ProbeLangPackage;
-import de.cau.se.instrumentation.language.probeLang.StringElement;
-import de.cau.se.instrumentation.language.probeLang.Value;
+import de.cau.se.instrumentation.language.probeLang.Property;
+import de.cau.se.instrumentation.language.probeLang.RecordDeclaration;
 
 import java.util.Collection;
 
@@ -25,35 +25,35 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Value</b></em>'.
+ * An implementation of the model object '<em><b>Record Declaration</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.cau.se.instrumentation.language.probeLang.impl.ValueImpl#getElements <em>Elements</em>}</li>
+ *   <li>{@link de.cau.se.instrumentation.language.probeLang.impl.RecordDeclarationImpl#getProperties <em>Properties</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ValueImpl extends MinimalEObjectImpl.Container implements Value
+public class RecordDeclarationImpl extends MinimalEObjectImpl.Container implements RecordDeclaration
 {
   /**
-   * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
+   * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getElements()
+   * @see #getProperties()
    * @generated
    * @ordered
    */
-  protected EList<StringElement> elements;
+  protected EList<Property> properties;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ValueImpl()
+  protected RecordDeclarationImpl()
   {
     super();
   }
@@ -66,7 +66,7 @@ public class ValueImpl extends MinimalEObjectImpl.Container implements Value
   @Override
   protected EClass eStaticClass()
   {
-    return ProbeLangPackage.Literals.VALUE;
+    return ProbeLangPackage.Literals.RECORD_DECLARATION;
   }
 
   /**
@@ -74,13 +74,13 @@ public class ValueImpl extends MinimalEObjectImpl.Container implements Value
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<StringElement> getElements()
+  public EList<Property> getProperties()
   {
-    if (elements == null)
+    if (properties == null)
     {
-      elements = new EObjectContainmentEList<StringElement>(StringElement.class, this, ProbeLangPackage.VALUE__ELEMENTS);
+      properties = new EObjectContainmentEList<Property>(Property.class, this, ProbeLangPackage.RECORD_DECLARATION__PROPERTIES);
     }
-    return elements;
+    return properties;
   }
 
   /**
@@ -93,8 +93,8 @@ public class ValueImpl extends MinimalEObjectImpl.Container implements Value
   {
     switch (featureID)
     {
-      case ProbeLangPackage.VALUE__ELEMENTS:
-        return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
+      case ProbeLangPackage.RECORD_DECLARATION__PROPERTIES:
+        return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -109,8 +109,8 @@ public class ValueImpl extends MinimalEObjectImpl.Container implements Value
   {
     switch (featureID)
     {
-      case ProbeLangPackage.VALUE__ELEMENTS:
-        return getElements();
+      case ProbeLangPackage.RECORD_DECLARATION__PROPERTIES:
+        return getProperties();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -126,9 +126,9 @@ public class ValueImpl extends MinimalEObjectImpl.Container implements Value
   {
     switch (featureID)
     {
-      case ProbeLangPackage.VALUE__ELEMENTS:
-        getElements().clear();
-        getElements().addAll((Collection<? extends StringElement>)newValue);
+      case ProbeLangPackage.RECORD_DECLARATION__PROPERTIES:
+        getProperties().clear();
+        getProperties().addAll((Collection<? extends Property>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -144,8 +144,8 @@ public class ValueImpl extends MinimalEObjectImpl.Container implements Value
   {
     switch (featureID)
     {
-      case ProbeLangPackage.VALUE__ELEMENTS:
-        getElements().clear();
+      case ProbeLangPackage.RECORD_DECLARATION__PROPERTIES:
+        getProperties().clear();
         return;
     }
     super.eUnset(featureID);
@@ -161,10 +161,10 @@ public class ValueImpl extends MinimalEObjectImpl.Container implements Value
   {
     switch (featureID)
     {
-      case ProbeLangPackage.VALUE__ELEMENTS:
-        return elements != null && !elements.isEmpty();
+      case ProbeLangPackage.RECORD_DECLARATION__PROPERTIES:
+        return properties != null && !properties.isEmpty();
     }
     return super.eIsSet(featureID);
   }
 
-} //ValueImpl
+} //RecordDeclarationImpl

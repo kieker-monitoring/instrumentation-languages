@@ -7,6 +7,8 @@ package de.cau.se.instrumentation.language.probeLang;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.xtext.xbase.XExpression;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Pattern Call</b></em>'.
@@ -24,7 +26,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface PatternCall extends ValueElement
+public interface PatternCall extends XExpression
 {
   /**
    * Returns the value of the '<em><b>Ref</b></em>' reference.

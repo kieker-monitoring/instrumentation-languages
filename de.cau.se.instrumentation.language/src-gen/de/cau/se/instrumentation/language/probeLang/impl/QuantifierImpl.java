@@ -5,7 +5,6 @@
  */
 package de.cau.se.instrumentation.language.probeLang.impl;
 
-import de.cau.se.instrumentation.language.probeLang.Item;
 import de.cau.se.instrumentation.language.probeLang.ProbeLangPackage;
 import de.cau.se.instrumentation.language.probeLang.Quantifier;
 import de.cau.se.instrumentation.language.probeLang.QuantifierType;
@@ -18,6 +17,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.xtext.xbase.XExpression;
 
 /**
  * <!-- begin-user-doc -->
@@ -43,7 +44,7 @@ public class QuantifierImpl extends MinimalEObjectImpl.Container implements Quan
    * @generated
    * @ordered
    */
-  protected Item item;
+  protected XExpression item;
 
   /**
    * The default value of the '{@link #getType() <em>Type</em>}' attribute.
@@ -91,7 +92,7 @@ public class QuantifierImpl extends MinimalEObjectImpl.Container implements Quan
    * <!-- end-user-doc -->
    * @generated
    */
-  public Item getItem()
+  public XExpression getItem()
   {
     return item;
   }
@@ -101,9 +102,9 @@ public class QuantifierImpl extends MinimalEObjectImpl.Container implements Quan
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetItem(Item newItem, NotificationChain msgs)
+  public NotificationChain basicSetItem(XExpression newItem, NotificationChain msgs)
   {
-    Item oldItem = item;
+    XExpression oldItem = item;
     item = newItem;
     if (eNotificationRequired())
     {
@@ -118,7 +119,7 @@ public class QuantifierImpl extends MinimalEObjectImpl.Container implements Quan
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setItem(Item newItem)
+  public void setItem(XExpression newItem)
   {
     if (newItem != item)
     {
@@ -202,7 +203,7 @@ public class QuantifierImpl extends MinimalEObjectImpl.Container implements Quan
     switch (featureID)
     {
       case ProbeLangPackage.QUANTIFIER__ITEM:
-        setItem((Item)newValue);
+        setItem((XExpression)newValue);
         return;
       case ProbeLangPackage.QUANTIFIER__TYPE:
         setType((QuantifierType)newValue);
@@ -222,7 +223,7 @@ public class QuantifierImpl extends MinimalEObjectImpl.Container implements Quan
     switch (featureID)
     {
       case ProbeLangPackage.QUANTIFIER__ITEM:
-        setItem((Item)null);
+        setItem((XExpression)null);
         return;
       case ProbeLangPackage.QUANTIFIER__TYPE:
         setType(TYPE_EDEFAULT);

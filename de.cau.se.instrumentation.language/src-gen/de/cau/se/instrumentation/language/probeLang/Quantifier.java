@@ -7,6 +7,8 @@ package de.cau.se.instrumentation.language.probeLang;
 
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.xtext.xbase.XExpression;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Quantifier</b></em>'.
@@ -35,12 +37,12 @@ public interface Quantifier extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Item</em>' containment reference.
-   * @see #setItem(Item)
+   * @see #setItem(XExpression)
    * @see de.cau.se.instrumentation.language.probeLang.ProbeLangPackage#getQuantifier_Item()
    * @model containment="true"
    * @generated
    */
-  Item getItem();
+  XExpression getItem();
 
   /**
    * Sets the value of the '{@link de.cau.se.instrumentation.language.probeLang.Quantifier#getItem <em>Item</em>}' containment reference.
@@ -50,7 +52,7 @@ public interface Quantifier extends EObject
    * @see #getItem()
    * @generated
    */
-  void setItem(Item value);
+  void setItem(XExpression value);
 
   /**
    * Returns the value of the '<em><b>Type</b></em>' attribute.

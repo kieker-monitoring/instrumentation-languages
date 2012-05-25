@@ -15,6 +15,8 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.xtext.xbase.impl.XExpressionImpl;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Operator</b></em>'.
@@ -28,7 +30,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class OperatorImpl extends ItemImpl implements Operator
+public class OperatorImpl extends XExpressionImpl implements Operator
 {
   /**
    * The default value of the '{@link #getType() <em>Type</em>}' attribute.

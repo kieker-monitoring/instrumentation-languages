@@ -17,6 +17,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.xtext.xbase.impl.XExpressionImpl;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Group</b></em>'.
@@ -30,7 +32,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class GroupImpl extends ItemImpl implements Group
+public class GroupImpl extends XExpressionImpl implements Group
 {
   /**
    * The cached value of the '{@link #getSubTarget() <em>Sub Target</em>}' containment reference.

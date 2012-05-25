@@ -35,6 +35,24 @@ public interface ProbeLangFactory extends EFactory
   Model createModel();
 
   /**
+   * Returns a new object of class '<em>Data Type Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Data Type Declaration</em>'.
+   * @generated
+   */
+  DataTypeDeclaration createDataTypeDeclaration();
+
+  /**
+   * Returns a new object of class '<em>Import</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Import</em>'.
+   * @generated
+   */
+  Import createImport();
+
+  /**
    * Returns a new object of class '<em>Pattern</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -71,15 +89,6 @@ public interface ProbeLangFactory extends EFactory
   ParameterRef createParameterRef();
 
   /**
-   * Returns a new object of class '<em>Quoted Element</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Quoted Element</em>'.
-   * @generated
-   */
-  QuotedElement createQuotedElement();
-
-  /**
    * Returns a new object of class '<em>Probe</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -87,6 +96,24 @@ public interface ProbeLangFactory extends EFactory
    * @generated
    */
   Probe createProbe();
+
+  /**
+   * Returns a new object of class '<em>Record Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Record Declaration</em>'.
+   * @generated
+   */
+  RecordDeclaration createRecordDeclaration();
+
+  /**
+   * Returns a new object of class '<em>Property</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Property</em>'.
+   * @generated
+   */
+  Property createProperty();
 
   /**
    * Returns a new object of class '<em>Replacement</em>'.
@@ -134,15 +161,6 @@ public interface ProbeLangFactory extends EFactory
   Quantifier createQuantifier();
 
   /**
-   * Returns a new object of class '<em>Item</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Item</em>'.
-   * @generated
-   */
-  Item createItem();
-
-  /**
    * Returns a new object of class '<em>Operator</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -179,22 +197,22 @@ public interface ProbeLangFactory extends EFactory
   Value createValue();
 
   /**
-   * Returns a new object of class '<em>Value Element</em>'.
+   * Returns a new object of class '<em>String Element</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Value Element</em>'.
+   * @return a new object of class '<em>String Element</em>'.
    * @generated
    */
-  ValueElement createValueElement();
+  StringElement createStringElement();
 
   /**
-   * Returns a new object of class '<em>To Upper</em>'.
+   * Returns a new object of class '<em>Property Reference</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>To Upper</em>'.
+   * @return a new object of class '<em>Property Reference</em>'.
    * @generated
    */
-  ToUpper createToUpper();
+  PropertyReference createPropertyReference();
 
   /**
    * Returns a new object of class '<em>Scope Ref Element</em>'.

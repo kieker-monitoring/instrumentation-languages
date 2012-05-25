@@ -5,8 +5,15 @@ package de.cau.se.instrumentation.language.ui.labeling;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
+import org.eclipse.xtext.xbase.XStringLiteral;
 
 import com.google.inject.Inject;
+
+import de.cau.se.instrumentation.language.probeLang.CodeElement;
+import de.cau.se.instrumentation.language.probeLang.Parameter;
+import de.cau.se.instrumentation.language.probeLang.ParameterRef;
+import de.cau.se.instrumentation.language.probeLang.Property;
+import de.cau.se.instrumentation.language.probeLang.RecordDeclaration;
 
 /**
  * Provides labels for a EObjects.
@@ -19,7 +26,34 @@ public class ProbeLangLabelProvider extends DefaultEObjectLabelProvider {
 	public ProbeLangLabelProvider(AdapterFactoryLabelProvider delegate) {
 		super(delegate);
 	}
+	
+	String text(Parameter element) {
+		return "param " + element.getName();
+	}
+	
+	String text(CodeElement element) {
+		// FIXME: You should not use types which have an access restriction
+		if (element.getValue() instanceof XStringLiteral) {
+			XStringLiteral literal = (XStringLiteral)element.getValue();
+			if (element.isToUpper())
+				return literal.getValue().substring(0, 0).toUpperCase() + 
+						literal.getValue().substring(1);
+			else
+				return literal.getValue().toString();
+		} else
+			if (element.isToUpper())
+				return "# " + ((ParameterRef)element.getValue()).getRef().getName();
+			else
+				return ((ParameterRef)element.getValue()).getRef().getName();
+	}
 
+	String text(RecordDeclaration element) {
+		return "record";
+	}
+	
+	String text(Property element) {
+		return element.getName()  + " : " + element.getType().getName() ;
+	}
 /*
 	//Labels and icons can be computed like this:
 	

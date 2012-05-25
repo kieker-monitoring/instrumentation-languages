@@ -7,8 +7,9 @@ package de.cau.se.instrumentation.language.probeLang.impl;
 
 import de.cau.se.instrumentation.language.probeLang.Alternative;
 import de.cau.se.instrumentation.language.probeLang.CodeElement;
+import de.cau.se.instrumentation.language.probeLang.DataTypeDeclaration;
 import de.cau.se.instrumentation.language.probeLang.Group;
-import de.cau.se.instrumentation.language.probeLang.Item;
+import de.cau.se.instrumentation.language.probeLang.Import;
 import de.cau.se.instrumentation.language.probeLang.Model;
 import de.cau.se.instrumentation.language.probeLang.Operator;
 import de.cau.se.instrumentation.language.probeLang.OperatorType;
@@ -19,16 +20,17 @@ import de.cau.se.instrumentation.language.probeLang.PatternCall;
 import de.cau.se.instrumentation.language.probeLang.Probe;
 import de.cau.se.instrumentation.language.probeLang.ProbeLangFactory;
 import de.cau.se.instrumentation.language.probeLang.ProbeLangPackage;
+import de.cau.se.instrumentation.language.probeLang.Property;
+import de.cau.se.instrumentation.language.probeLang.PropertyReference;
 import de.cau.se.instrumentation.language.probeLang.Quantifier;
 import de.cau.se.instrumentation.language.probeLang.QuantifierType;
-import de.cau.se.instrumentation.language.probeLang.QuotedElement;
+import de.cau.se.instrumentation.language.probeLang.RecordDeclaration;
 import de.cau.se.instrumentation.language.probeLang.Replacement;
 import de.cau.se.instrumentation.language.probeLang.Scope;
 import de.cau.se.instrumentation.language.probeLang.ScopeRefElement;
 import de.cau.se.instrumentation.language.probeLang.Sequence;
-import de.cau.se.instrumentation.language.probeLang.ToUpper;
+import de.cau.se.instrumentation.language.probeLang.StringElement;
 import de.cau.se.instrumentation.language.probeLang.Value;
-import de.cau.se.instrumentation.language.probeLang.ValueElement;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -37,6 +39,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
+import org.eclipse.xtext.xbase.XbasePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -52,6 +56,20 @@ public class ProbeLangPackageImpl extends EPackageImpl implements ProbeLangPacka
    * @generated
    */
   private EClass modelEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass dataTypeDeclarationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass importEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -86,14 +104,21 @@ public class ProbeLangPackageImpl extends EPackageImpl implements ProbeLangPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass quotedElementEClass = null;
+  private EClass probeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass probeEClass = null;
+  private EClass recordDeclarationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass propertyEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -135,13 +160,6 @@ public class ProbeLangPackageImpl extends EPackageImpl implements ProbeLangPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass itemEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass operatorEClass = null;
 
   /**
@@ -170,14 +188,14 @@ public class ProbeLangPackageImpl extends EPackageImpl implements ProbeLangPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass valueElementEClass = null;
+  private EClass stringElementEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass toUpperEClass = null;
+  private EClass propertyReferenceEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -248,6 +266,9 @@ public class ProbeLangPackageImpl extends EPackageImpl implements ProbeLangPacka
 
     isInited = true;
 
+    // Initialize simple dependencies
+    XbasePackage.eINSTANCE.eClass();
+
     // Create package meta-data objects
     theProbeLangPackage.createPackageContents();
 
@@ -278,9 +299,39 @@ public class ProbeLangPackageImpl extends EPackageImpl implements ProbeLangPacka
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getModel_Name()
+  {
+    return (EAttribute)modelEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getModel_Imports()
+  {
+    return (EReference)modelEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getModel_Types()
+  {
+    return (EReference)modelEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getModel_Patterns()
   {
-    return (EReference)modelEClass.getEStructuralFeatures().get(0);
+    return (EReference)modelEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -290,7 +341,57 @@ public class ProbeLangPackageImpl extends EPackageImpl implements ProbeLangPacka
    */
   public EReference getModel_Probes()
   {
-    return (EReference)modelEClass.getEStructuralFeatures().get(1);
+    return (EReference)modelEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getDataTypeDeclaration()
+  {
+    return dataTypeDeclarationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getDataTypeDeclaration_Name()
+  {
+    return (EAttribute)dataTypeDeclarationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getImport()
+  {
+    return importEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getImport_EPackage()
+  {
+    return (EReference)importEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getImport_Name()
+  {
+    return (EAttribute)importEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -368,6 +469,26 @@ public class ProbeLangPackageImpl extends EPackageImpl implements ProbeLangPacka
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getCodeElement_ToUpper()
+  {
+    return (EAttribute)codeElementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCodeElement_Value()
+  {
+    return (EReference)codeElementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getParameterRef()
   {
     return parameterRefEClass;
@@ -381,26 +502,6 @@ public class ProbeLangPackageImpl extends EPackageImpl implements ProbeLangPacka
   public EReference getParameterRef_Ref()
   {
     return (EReference)parameterRefEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getQuotedElement()
-  {
-    return quotedElementEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getQuotedElement_Value()
-  {
-    return (EAttribute)quotedElementEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -428,9 +529,69 @@ public class ProbeLangPackageImpl extends EPackageImpl implements ProbeLangPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getProbe_Replacements()
+  public EReference getProbe_Record()
   {
     return (EReference)probeEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getProbe_Replacements()
+  {
+    return (EReference)probeEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getRecordDeclaration()
+  {
+    return recordDeclarationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getRecordDeclaration_Properties()
+  {
+    return (EReference)recordDeclarationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getProperty()
+  {
+    return propertyEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getProperty_Type()
+  {
+    return (EReference)propertyEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getProperty_Name()
+  {
+    return (EAttribute)propertyEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -598,16 +759,6 @@ public class ProbeLangPackageImpl extends EPackageImpl implements ProbeLangPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getItem()
-  {
-    return itemEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getOperator()
   {
     return operatorEClass;
@@ -698,9 +849,9 @@ public class ProbeLangPackageImpl extends EPackageImpl implements ProbeLangPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getValueElement()
+  public EClass getStringElement()
   {
-    return valueElementEClass;
+    return stringElementEClass;
   }
 
   /**
@@ -708,9 +859,9 @@ public class ProbeLangPackageImpl extends EPackageImpl implements ProbeLangPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getToUpper()
+  public EAttribute getStringElement_ToUpper()
   {
-    return toUpperEClass;
+    return (EAttribute)stringElementEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -718,9 +869,29 @@ public class ProbeLangPackageImpl extends EPackageImpl implements ProbeLangPacka
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getToUpper_Value()
+  public EReference getStringElement_Value()
   {
-    return (EReference)toUpperEClass.getEStructuralFeatures().get(0);
+    return (EReference)stringElementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getPropertyReference()
+  {
+    return propertyReferenceEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getPropertyReference_Ref()
+  {
+    return (EReference)propertyReferenceEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -794,8 +965,18 @@ public class ProbeLangPackageImpl extends EPackageImpl implements ProbeLangPacka
 
     // Create classes and their features
     modelEClass = createEClass(MODEL);
+    createEAttribute(modelEClass, MODEL__NAME);
+    createEReference(modelEClass, MODEL__IMPORTS);
+    createEReference(modelEClass, MODEL__TYPES);
     createEReference(modelEClass, MODEL__PATTERNS);
     createEReference(modelEClass, MODEL__PROBES);
+
+    dataTypeDeclarationEClass = createEClass(DATA_TYPE_DECLARATION);
+    createEAttribute(dataTypeDeclarationEClass, DATA_TYPE_DECLARATION__NAME);
+
+    importEClass = createEClass(IMPORT);
+    createEReference(importEClass, IMPORT__EPACKAGE);
+    createEAttribute(importEClass, IMPORT__NAME);
 
     patternEClass = createEClass(PATTERN);
     createEAttribute(patternEClass, PATTERN__NAME);
@@ -806,16 +987,23 @@ public class ProbeLangPackageImpl extends EPackageImpl implements ProbeLangPacka
     createEAttribute(parameterEClass, PARAMETER__NAME);
 
     codeElementEClass = createEClass(CODE_ELEMENT);
+    createEAttribute(codeElementEClass, CODE_ELEMENT__TO_UPPER);
+    createEReference(codeElementEClass, CODE_ELEMENT__VALUE);
 
     parameterRefEClass = createEClass(PARAMETER_REF);
     createEReference(parameterRefEClass, PARAMETER_REF__REF);
 
-    quotedElementEClass = createEClass(QUOTED_ELEMENT);
-    createEAttribute(quotedElementEClass, QUOTED_ELEMENT__VALUE);
-
     probeEClass = createEClass(PROBE);
     createEAttribute(probeEClass, PROBE__NAME);
+    createEReference(probeEClass, PROBE__RECORD);
     createEReference(probeEClass, PROBE__REPLACEMENTS);
+
+    recordDeclarationEClass = createEClass(RECORD_DECLARATION);
+    createEReference(recordDeclarationEClass, RECORD_DECLARATION__PROPERTIES);
+
+    propertyEClass = createEClass(PROPERTY);
+    createEReference(propertyEClass, PROPERTY__TYPE);
+    createEAttribute(propertyEClass, PROPERTY__NAME);
 
     replacementEClass = createEClass(REPLACEMENT);
     createEAttribute(replacementEClass, REPLACEMENT__NAME);
@@ -838,8 +1026,6 @@ public class ProbeLangPackageImpl extends EPackageImpl implements ProbeLangPacka
     createEReference(quantifierEClass, QUANTIFIER__ITEM);
     createEAttribute(quantifierEClass, QUANTIFIER__TYPE);
 
-    itemEClass = createEClass(ITEM);
-
     operatorEClass = createEClass(OPERATOR);
     createEAttribute(operatorEClass, OPERATOR__TYPE);
 
@@ -853,10 +1039,12 @@ public class ProbeLangPackageImpl extends EPackageImpl implements ProbeLangPacka
     valueEClass = createEClass(VALUE);
     createEReference(valueEClass, VALUE__ELEMENTS);
 
-    valueElementEClass = createEClass(VALUE_ELEMENT);
+    stringElementEClass = createEClass(STRING_ELEMENT);
+    createEAttribute(stringElementEClass, STRING_ELEMENT__TO_UPPER);
+    createEReference(stringElementEClass, STRING_ELEMENT__VALUE);
 
-    toUpperEClass = createEClass(TO_UPPER);
-    createEReference(toUpperEClass, TO_UPPER__VALUE);
+    propertyReferenceEClass = createEClass(PROPERTY_REFERENCE);
+    createEReference(propertyReferenceEClass, PROPERTY_REFERENCE__REF);
 
     scopeRefElementEClass = createEClass(SCOPE_REF_ELEMENT);
     createEAttribute(scopeRefElementEClass, SCOPE_REF_ELEMENT__REF);
@@ -890,25 +1078,35 @@ public class ProbeLangPackageImpl extends EPackageImpl implements ProbeLangPacka
     setNsPrefix(eNS_PREFIX);
     setNsURI(eNS_URI);
 
+    // Obtain other dependent packages
+    XbasePackage theXbasePackage = (XbasePackage)EPackage.Registry.INSTANCE.getEPackage(XbasePackage.eNS_URI);
+
     // Create type parameters
 
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    parameterRefEClass.getESuperTypes().add(this.getCodeElement());
-    quotedElementEClass.getESuperTypes().add(this.getCodeElement());
-    quotedElementEClass.getESuperTypes().add(this.getItem());
-    quotedElementEClass.getESuperTypes().add(this.getValueElement());
-    operatorEClass.getESuperTypes().add(this.getItem());
-    groupEClass.getESuperTypes().add(this.getItem());
-    patternCallEClass.getESuperTypes().add(this.getValueElement());
-    toUpperEClass.getESuperTypes().add(this.getCodeElement());
-    scopeRefElementEClass.getESuperTypes().add(this.getValueElement());
+    parameterRefEClass.getESuperTypes().add(theXbasePackage.getXExpression());
+    operatorEClass.getESuperTypes().add(theXbasePackage.getXExpression());
+    groupEClass.getESuperTypes().add(theXbasePackage.getXExpression());
+    patternCallEClass.getESuperTypes().add(theXbasePackage.getXExpression());
+    propertyReferenceEClass.getESuperTypes().add(theXbasePackage.getXExpression());
+    scopeRefElementEClass.getESuperTypes().add(theXbasePackage.getXExpression());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getModel_Name(), ecorePackage.getEString(), "name", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModel_Imports(), this.getImport(), null, "imports", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModel_Types(), this.getDataTypeDeclaration(), null, "types", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Patterns(), this.getPattern(), null, "patterns", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Probes(), this.getProbe(), null, "probes", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(dataTypeDeclarationEClass, DataTypeDeclaration.class, "DataTypeDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getDataTypeDeclaration_Name(), ecorePackage.getEString(), "name", null, 0, 1, DataTypeDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getImport_EPackage(), ecorePackage.getEPackage(), null, "ePackage", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getImport_Name(), ecorePackage.getEString(), "name", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(patternEClass, Pattern.class, "Pattern", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getPattern_Name(), ecorePackage.getEString(), "name", null, 0, 1, Pattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -919,16 +1117,23 @@ public class ProbeLangPackageImpl extends EPackageImpl implements ProbeLangPacka
     initEAttribute(getParameter_Name(), ecorePackage.getEString(), "name", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(codeElementEClass, CodeElement.class, "CodeElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCodeElement_ToUpper(), ecorePackage.getEBoolean(), "toUpper", null, 0, 1, CodeElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCodeElement_Value(), theXbasePackage.getXExpression(), null, "value", null, 0, 1, CodeElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(parameterRefEClass, ParameterRef.class, "ParameterRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getParameterRef_Ref(), this.getParameter(), null, "ref", null, 0, 1, ParameterRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(quotedElementEClass, QuotedElement.class, "QuotedElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getQuotedElement_Value(), ecorePackage.getEString(), "value", null, 0, 1, QuotedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(probeEClass, Probe.class, "Probe", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getProbe_Name(), ecorePackage.getEString(), "name", null, 0, 1, Probe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProbe_Record(), this.getRecordDeclaration(), null, "record", null, 0, 1, Probe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProbe_Replacements(), this.getReplacement(), null, "replacements", null, 0, -1, Probe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(recordDeclarationEClass, RecordDeclaration.class, "RecordDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getRecordDeclaration_Properties(), this.getProperty(), null, "properties", null, 0, -1, RecordDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(propertyEClass, Property.class, "Property", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getProperty_Type(), this.getDataTypeDeclaration(), null, "type", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getProperty_Name(), ecorePackage.getEString(), "name", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(replacementEClass, Replacement.class, "Replacement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getReplacement_Name(), ecorePackage.getEString(), "name", null, 0, 1, Replacement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -948,10 +1153,8 @@ public class ProbeLangPackageImpl extends EPackageImpl implements ProbeLangPacka
     initEReference(getSequence_AndExpr(), this.getQuantifier(), null, "andExpr", null, 0, -1, Sequence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(quantifierEClass, Quantifier.class, "Quantifier", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getQuantifier_Item(), this.getItem(), null, "item", null, 0, 1, Quantifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getQuantifier_Item(), theXbasePackage.getXExpression(), null, "item", null, 0, 1, Quantifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getQuantifier_Type(), this.getQuantifierType(), "type", null, 0, 1, Quantifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(itemEClass, Item.class, "Item", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(operatorEClass, Operator.class, "Operator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getOperator_Type(), this.getOperatorType(), "type", null, 0, 1, Operator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -964,12 +1167,14 @@ public class ProbeLangPackageImpl extends EPackageImpl implements ProbeLangPacka
     initEReference(getPatternCall_Values(), this.getValue(), null, "values", null, 0, -1, PatternCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(valueEClass, Value.class, "Value", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getValue_Elements(), this.getValueElement(), null, "elements", null, 0, -1, Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getValue_Elements(), this.getStringElement(), null, "elements", null, 0, -1, Value.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(valueElementEClass, ValueElement.class, "ValueElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(stringElementEClass, StringElement.class, "StringElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getStringElement_ToUpper(), ecorePackage.getEBoolean(), "toUpper", null, 0, 1, StringElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getStringElement_Value(), theXbasePackage.getXExpression(), null, "value", null, 0, 1, StringElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(toUpperEClass, ToUpper.class, "ToUpper", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getToUpper_Value(), this.getValue(), null, "value", null, 0, 1, ToUpper.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(propertyReferenceEClass, PropertyReference.class, "PropertyReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getPropertyReference_Ref(), this.getProperty(), null, "ref", null, 0, 1, PropertyReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(scopeRefElementEClass, ScopeRefElement.class, "ScopeRefElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getScopeRefElement_Ref(), ecorePackage.getEString(), "ref", null, 0, 1, ScopeRefElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

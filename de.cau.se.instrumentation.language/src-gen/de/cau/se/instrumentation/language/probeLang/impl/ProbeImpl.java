@@ -7,6 +7,7 @@ package de.cau.se.instrumentation.language.probeLang.impl;
 
 import de.cau.se.instrumentation.language.probeLang.Probe;
 import de.cau.se.instrumentation.language.probeLang.ProbeLangPackage;
+import de.cau.se.instrumentation.language.probeLang.RecordDeclaration;
 import de.cau.se.instrumentation.language.probeLang.Replacement;
 
 import java.util.Collection;
@@ -33,6 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.cau.se.instrumentation.language.probeLang.impl.ProbeImpl#getName <em>Name</em>}</li>
+ *   <li>{@link de.cau.se.instrumentation.language.probeLang.impl.ProbeImpl#getRecord <em>Record</em>}</li>
  *   <li>{@link de.cau.se.instrumentation.language.probeLang.impl.ProbeImpl#getReplacements <em>Replacements</em>}</li>
  * </ul>
  * </p>
@@ -60,6 +62,16 @@ public class ProbeImpl extends MinimalEObjectImpl.Container implements Probe
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getRecord() <em>Record</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRecord()
+   * @generated
+   * @ordered
+   */
+  protected RecordDeclaration record;
 
   /**
    * The cached value of the '{@link #getReplacements() <em>Replacements</em>}' containment reference list.
@@ -120,6 +132,54 @@ public class ProbeImpl extends MinimalEObjectImpl.Container implements Probe
    * <!-- end-user-doc -->
    * @generated
    */
+  public RecordDeclaration getRecord()
+  {
+    return record;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetRecord(RecordDeclaration newRecord, NotificationChain msgs)
+  {
+    RecordDeclaration oldRecord = record;
+    record = newRecord;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ProbeLangPackage.PROBE__RECORD, oldRecord, newRecord);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setRecord(RecordDeclaration newRecord)
+  {
+    if (newRecord != record)
+    {
+      NotificationChain msgs = null;
+      if (record != null)
+        msgs = ((InternalEObject)record).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ProbeLangPackage.PROBE__RECORD, null, msgs);
+      if (newRecord != null)
+        msgs = ((InternalEObject)newRecord).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ProbeLangPackage.PROBE__RECORD, null, msgs);
+      msgs = basicSetRecord(newRecord, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ProbeLangPackage.PROBE__RECORD, newRecord, newRecord));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<Replacement> getReplacements()
   {
     if (replacements == null)
@@ -139,6 +199,8 @@ public class ProbeImpl extends MinimalEObjectImpl.Container implements Probe
   {
     switch (featureID)
     {
+      case ProbeLangPackage.PROBE__RECORD:
+        return basicSetRecord(null, msgs);
       case ProbeLangPackage.PROBE__REPLACEMENTS:
         return ((InternalEList<?>)getReplacements()).basicRemove(otherEnd, msgs);
     }
@@ -157,6 +219,8 @@ public class ProbeImpl extends MinimalEObjectImpl.Container implements Probe
     {
       case ProbeLangPackage.PROBE__NAME:
         return getName();
+      case ProbeLangPackage.PROBE__RECORD:
+        return getRecord();
       case ProbeLangPackage.PROBE__REPLACEMENTS:
         return getReplacements();
     }
@@ -176,6 +240,9 @@ public class ProbeImpl extends MinimalEObjectImpl.Container implements Probe
     {
       case ProbeLangPackage.PROBE__NAME:
         setName((String)newValue);
+        return;
+      case ProbeLangPackage.PROBE__RECORD:
+        setRecord((RecordDeclaration)newValue);
         return;
       case ProbeLangPackage.PROBE__REPLACEMENTS:
         getReplacements().clear();
@@ -198,6 +265,9 @@ public class ProbeImpl extends MinimalEObjectImpl.Container implements Probe
       case ProbeLangPackage.PROBE__NAME:
         setName(NAME_EDEFAULT);
         return;
+      case ProbeLangPackage.PROBE__RECORD:
+        setRecord((RecordDeclaration)null);
+        return;
       case ProbeLangPackage.PROBE__REPLACEMENTS:
         getReplacements().clear();
         return;
@@ -217,6 +287,8 @@ public class ProbeImpl extends MinimalEObjectImpl.Container implements Probe
     {
       case ProbeLangPackage.PROBE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case ProbeLangPackage.PROBE__RECORD:
+        return record != null;
       case ProbeLangPackage.PROBE__REPLACEMENTS:
         return replacements != null && !replacements.isEmpty();
     }

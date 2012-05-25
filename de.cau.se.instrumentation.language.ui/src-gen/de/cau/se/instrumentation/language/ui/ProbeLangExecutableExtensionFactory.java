@@ -8,6 +8,8 @@ import org.osgi.framework.Bundle;
 
 import com.google.inject.Injector;
 
+import de.cau.se.instrumentation.language.ui.internal.ProbeLangActivator;
+
 /**
  * This class was generated. Customizations should only happen in a newly
  * introduced subclass. 
@@ -16,12 +18,12 @@ public class ProbeLangExecutableExtensionFactory extends AbstractGuiceAwareExecu
 
 	@Override
 	protected Bundle getBundle() {
-		return de.cau.se.instrumentation.language.ui.internal.ProbeLangActivator.getInstance().getBundle();
+		return ProbeLangActivator.getInstance().getBundle();
 	}
 	
 	@Override
 	protected Injector getInjector() {
-		return de.cau.se.instrumentation.language.ui.internal.ProbeLangActivator.getInstance().getInjector("de.cau.se.instrumentation.language.ProbeLang");
+		return ProbeLangActivator.getInstance().getInjector(ProbeLangActivator.DE_CAU_SE_INSTRUMENTATION_LANGUAGE_PROBELANG);
 	}
 	
 }

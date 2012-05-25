@@ -9,21 +9,21 @@ import org.eclipse.xtext.xbase.XExpression;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Parameter Ref</b></em>'.
+ * A representation of the model object '<em><b>Property Reference</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.cau.se.instrumentation.language.probeLang.ParameterRef#getRef <em>Ref</em>}</li>
+ *   <li>{@link de.cau.se.instrumentation.language.probeLang.PropertyReference#getRef <em>Ref</em>}</li>
  * </ul>
  * </p>
  *
- * @see de.cau.se.instrumentation.language.probeLang.ProbeLangPackage#getParameterRef()
+ * @see de.cau.se.instrumentation.language.probeLang.ProbeLangPackage#getPropertyReference()
  * @model
  * @generated
  */
-public interface ParameterRef extends XExpression
+public interface PropertyReference extends XExpression
 {
   /**
    * Returns the value of the '<em><b>Ref</b></em>' reference.
@@ -34,21 +34,21 @@ public interface ParameterRef extends XExpression
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Ref</em>' reference.
-   * @see #setRef(Parameter)
-   * @see de.cau.se.instrumentation.language.probeLang.ProbeLangPackage#getParameterRef_Ref()
+   * @see #setRef(Property)
+   * @see de.cau.se.instrumentation.language.probeLang.ProbeLangPackage#getPropertyReference_Ref()
    * @model
    * @generated
    */
-  Parameter getRef();
+  Property getRef();
 
   /**
-   * Sets the value of the '{@link de.cau.se.instrumentation.language.probeLang.ParameterRef#getRef <em>Ref</em>}' reference.
+   * Sets the value of the '{@link de.cau.se.instrumentation.language.probeLang.PropertyReference#getRef <em>Ref</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Ref</em>' reference.
    * @see #getRef()
    * @generated
    */
-  void setRef(Parameter value);
+  void setRef(Property value);
 
-} // ParameterRef
+} // PropertyReference
