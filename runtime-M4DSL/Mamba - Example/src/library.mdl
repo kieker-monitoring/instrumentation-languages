@@ -1,0 +1,17 @@
+library example
+
+model kdm "http://schema.omg.org/spec/KDM/1.2"
+
+collect NumberOfClasses sum ClassRecognizer
+   scope kdm.code.CodeModel
+
+count ClassRecognizer
+   select isOCLTypeof(kdm.code.ClassUnit)
+   scope kdm.code.Package
+
+collect AverageMethodResponseTime ( String methodName )
+   average KDMMethodResponseTime
+   scope ( kdm.code.ClassUnit.codeElement method | 
+   	        method.name == methodName && method instanceof kdm.code.MethodUnit) 
+
+measure KDMMethodResponseTime

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.6"?>
+
+<target name="Running Platform" sequenceNumber="4">
+<locations>
+<location configuration="/home/rju/workspace-branch/.metadata/.plugins/org.eclipse.pde.core/M4DSL/" path="${eclipse_home}" type="Profile"/>
+</locations>
+<environment>
+<os>linux</os>
+<ws>gtk</ws>
+<arch>x86</arch>
+<nl>en_ZA</nl>
+</environment>
+</target>

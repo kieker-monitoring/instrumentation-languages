@@ -1,0 +1,6 @@
+library example
+
+model myApp "myApplicationKdmModel.kdm"
+
+select AverageMethodResponseTime("exampleMethod") as avgrt
+	from myApp where avgrt > 500 group by kdm.code.MethodUnit
