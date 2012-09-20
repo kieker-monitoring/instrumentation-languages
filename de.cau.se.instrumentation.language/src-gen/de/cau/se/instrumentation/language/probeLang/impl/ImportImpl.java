@@ -1,7 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
  */
 package de.cau.se.instrumentation.language.probeLang.impl;
 
@@ -11,8 +8,6 @@ import de.cau.se.instrumentation.language.probeLang.ProbeLangPackage;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -24,8 +19,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.cau.se.instrumentation.language.probeLang.impl.ImportImpl#getEPackage <em>EPackage</em>}</li>
- *   <li>{@link de.cau.se.instrumentation.language.probeLang.impl.ImportImpl#getName <em>Name</em>}</li>
+ *   <li>{@link de.cau.se.instrumentation.language.probeLang.impl.ImportImpl#getImportedNamespace <em>Imported Namespace</em>}</li>
  * </ul>
  * </p>
  *
@@ -34,34 +28,24 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class ImportImpl extends MinimalEObjectImpl.Container implements Import
 {
   /**
-   * The cached value of the '{@link #getEPackage() <em>EPackage</em>}' reference.
+   * The default value of the '{@link #getImportedNamespace() <em>Imported Namespace</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getEPackage()
+   * @see #getImportedNamespace()
    * @generated
    * @ordered
    */
-  protected EPackage ePackage;
+  protected static final String IMPORTED_NAMESPACE_EDEFAULT = null;
 
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getImportedNamespace() <em>Imported Namespace</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getImportedNamespace()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
+  protected String importedNamespace = IMPORTED_NAMESPACE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -89,19 +73,9 @@ public class ImportImpl extends MinimalEObjectImpl.Container implements Import
    * <!-- end-user-doc -->
    * @generated
    */
-  public EPackage getEPackage()
+  public String getImportedNamespace()
   {
-    if (ePackage != null && ePackage.eIsProxy())
-    {
-      InternalEObject oldEPackage = (InternalEObject)ePackage;
-      ePackage = (EPackage)eResolveProxy(oldEPackage);
-      if (ePackage != oldEPackage)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProbeLangPackage.IMPORT__EPACKAGE, oldEPackage, ePackage));
-      }
-    }
-    return ePackage;
+    return importedNamespace;
   }
 
   /**
@@ -109,45 +83,12 @@ public class ImportImpl extends MinimalEObjectImpl.Container implements Import
    * <!-- end-user-doc -->
    * @generated
    */
-  public EPackage basicGetEPackage()
+  public void setImportedNamespace(String newImportedNamespace)
   {
-    return ePackage;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setEPackage(EPackage newEPackage)
-  {
-    EPackage oldEPackage = ePackage;
-    ePackage = newEPackage;
+    String oldImportedNamespace = importedNamespace;
+    importedNamespace = newImportedNamespace;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProbeLangPackage.IMPORT__EPACKAGE, oldEPackage, ePackage));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProbeLangPackage.IMPORT__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, ProbeLangPackage.IMPORT__IMPORTED_NAMESPACE, oldImportedNamespace, importedNamespace));
   }
 
   /**
@@ -160,11 +101,8 @@ public class ImportImpl extends MinimalEObjectImpl.Container implements Import
   {
     switch (featureID)
     {
-      case ProbeLangPackage.IMPORT__EPACKAGE:
-        if (resolve) return getEPackage();
-        return basicGetEPackage();
-      case ProbeLangPackage.IMPORT__NAME:
-        return getName();
+      case ProbeLangPackage.IMPORT__IMPORTED_NAMESPACE:
+        return getImportedNamespace();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -179,11 +117,8 @@ public class ImportImpl extends MinimalEObjectImpl.Container implements Import
   {
     switch (featureID)
     {
-      case ProbeLangPackage.IMPORT__EPACKAGE:
-        setEPackage((EPackage)newValue);
-        return;
-      case ProbeLangPackage.IMPORT__NAME:
-        setName((String)newValue);
+      case ProbeLangPackage.IMPORT__IMPORTED_NAMESPACE:
+        setImportedNamespace((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -199,11 +134,8 @@ public class ImportImpl extends MinimalEObjectImpl.Container implements Import
   {
     switch (featureID)
     {
-      case ProbeLangPackage.IMPORT__EPACKAGE:
-        setEPackage((EPackage)null);
-        return;
-      case ProbeLangPackage.IMPORT__NAME:
-        setName(NAME_EDEFAULT);
+      case ProbeLangPackage.IMPORT__IMPORTED_NAMESPACE:
+        setImportedNamespace(IMPORTED_NAMESPACE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -219,10 +151,8 @@ public class ImportImpl extends MinimalEObjectImpl.Container implements Import
   {
     switch (featureID)
     {
-      case ProbeLangPackage.IMPORT__EPACKAGE:
-        return ePackage != null;
-      case ProbeLangPackage.IMPORT__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case ProbeLangPackage.IMPORT__IMPORTED_NAMESPACE:
+        return IMPORTED_NAMESPACE_EDEFAULT == null ? importedNamespace != null : !IMPORTED_NAMESPACE_EDEFAULT.equals(importedNamespace);
     }
     return super.eIsSet(featureID);
   }
@@ -238,8 +168,8 @@ public class ImportImpl extends MinimalEObjectImpl.Container implements Import
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
+    result.append(" (importedNamespace: ");
+    result.append(importedNamespace);
     result.append(')');
     return result.toString();
   }

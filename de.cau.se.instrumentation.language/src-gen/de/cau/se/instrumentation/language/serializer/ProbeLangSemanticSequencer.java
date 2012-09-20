@@ -2,29 +2,17 @@ package de.cau.se.instrumentation.language.serializer;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
-import de.cau.se.instrumentation.language.probeLang.Alternative;
 import de.cau.se.instrumentation.language.probeLang.CodeElement;
-import de.cau.se.instrumentation.language.probeLang.DataTypeDeclaration;
-import de.cau.se.instrumentation.language.probeLang.Group;
 import de.cau.se.instrumentation.language.probeLang.Import;
+import de.cau.se.instrumentation.language.probeLang.LoadMetaModel;
 import de.cau.se.instrumentation.language.probeLang.Model;
-import de.cau.se.instrumentation.language.probeLang.Operator;
 import de.cau.se.instrumentation.language.probeLang.Parameter;
 import de.cau.se.instrumentation.language.probeLang.ParameterRef;
 import de.cau.se.instrumentation.language.probeLang.Pattern;
-import de.cau.se.instrumentation.language.probeLang.PatternCall;
 import de.cau.se.instrumentation.language.probeLang.Probe;
 import de.cau.se.instrumentation.language.probeLang.ProbeLangPackage;
 import de.cau.se.instrumentation.language.probeLang.Property;
-import de.cau.se.instrumentation.language.probeLang.PropertyReference;
-import de.cau.se.instrumentation.language.probeLang.Quantifier;
-import de.cau.se.instrumentation.language.probeLang.RecordDeclaration;
-import de.cau.se.instrumentation.language.probeLang.Replacement;
-import de.cau.se.instrumentation.language.probeLang.Scope;
-import de.cau.se.instrumentation.language.probeLang.ScopeRefElement;
-import de.cau.se.instrumentation.language.probeLang.Sequence;
-import de.cau.se.instrumentation.language.probeLang.StringElement;
-import de.cau.se.instrumentation.language.probeLang.Value;
+import de.cau.se.instrumentation.language.probeLang.ReferenceProperty;
 import de.cau.se.instrumentation.language.services.ProbeLangGrammarAccess;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmFormalParameter;
@@ -83,28 +71,9 @@ public class ProbeLangSemanticSequencer extends XbaseSemanticSequencer {
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == ProbeLangPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
-			case ProbeLangPackage.ALTERNATIVE:
-				if(context == grammarAccess.getAlternativeRule()) {
-					sequence_Alternative(context, (Alternative) semanticObject); 
-					return; 
-				}
-				else break;
 			case ProbeLangPackage.CODE_ELEMENT:
 				if(context == grammarAccess.getCodeElementRule()) {
 					sequence_CodeElement(context, (CodeElement) semanticObject); 
-					return; 
-				}
-				else break;
-			case ProbeLangPackage.DATA_TYPE_DECLARATION:
-				if(context == grammarAccess.getDataTypeDeclarationRule()) {
-					sequence_DataTypeDeclaration(context, (DataTypeDeclaration) semanticObject); 
-					return; 
-				}
-				else break;
-			case ProbeLangPackage.GROUP:
-				if(context == grammarAccess.getGroupRule() ||
-				   context == grammarAccess.getItemRule()) {
-					sequence_Group(context, (Group) semanticObject); 
 					return; 
 				}
 				else break;
@@ -114,16 +83,15 @@ public class ProbeLangSemanticSequencer extends XbaseSemanticSequencer {
 					return; 
 				}
 				else break;
-			case ProbeLangPackage.MODEL:
-				if(context == grammarAccess.getModelRule()) {
-					sequence_Model(context, (Model) semanticObject); 
+			case ProbeLangPackage.LOAD_META_MODEL:
+				if(context == grammarAccess.getLoadMetaModelRule()) {
+					sequence_LoadMetaModel(context, (LoadMetaModel) semanticObject); 
 					return; 
 				}
 				else break;
-			case ProbeLangPackage.OPERATOR:
-				if(context == grammarAccess.getItemRule() ||
-				   context == grammarAccess.getOperatorRule()) {
-					sequence_Operator(context, (Operator) semanticObject); 
+			case ProbeLangPackage.MODEL:
+				if(context == grammarAccess.getModelRule()) {
+					sequence_Model(context, (Model) semanticObject); 
 					return; 
 				}
 				else break;
@@ -146,13 +114,6 @@ public class ProbeLangSemanticSequencer extends XbaseSemanticSequencer {
 					return; 
 				}
 				else break;
-			case ProbeLangPackage.PATTERN_CALL:
-				if(context == grammarAccess.getPatternCallRule() ||
-				   context == grammarAccess.getValueElementRule()) {
-					sequence_PatternCall(context, (PatternCall) semanticObject); 
-					return; 
-				}
-				else break;
 			case ProbeLangPackage.PROBE:
 				if(context == grammarAccess.getProbeRule()) {
 					sequence_Probe(context, (Probe) semanticObject); 
@@ -165,59 +126,9 @@ public class ProbeLangSemanticSequencer extends XbaseSemanticSequencer {
 					return; 
 				}
 				else break;
-			case ProbeLangPackage.PROPERTY_REFERENCE:
-				if(context == grammarAccess.getPropertyReferenceRule() ||
-				   context == grammarAccess.getValueElementRule()) {
-					sequence_PropertyReference(context, (PropertyReference) semanticObject); 
-					return; 
-				}
-				else break;
-			case ProbeLangPackage.QUANTIFIER:
-				if(context == grammarAccess.getQuantifierRule()) {
-					sequence_Quantifier(context, (Quantifier) semanticObject); 
-					return; 
-				}
-				else break;
-			case ProbeLangPackage.RECORD_DECLARATION:
-				if(context == grammarAccess.getRecordDeclarationRule()) {
-					sequence_RecordDeclaration(context, (RecordDeclaration) semanticObject); 
-					return; 
-				}
-				else break;
-			case ProbeLangPackage.REPLACEMENT:
-				if(context == grammarAccess.getReplacementRule()) {
-					sequence_Replacement(context, (Replacement) semanticObject); 
-					return; 
-				}
-				else break;
-			case ProbeLangPackage.SCOPE:
-				if(context == grammarAccess.getScopeRule()) {
-					sequence_Scope(context, (Scope) semanticObject); 
-					return; 
-				}
-				else break;
-			case ProbeLangPackage.SCOPE_REF_ELEMENT:
-				if(context == grammarAccess.getScopeRefElementRule() ||
-				   context == grammarAccess.getValueElementRule()) {
-					sequence_ScopeRefElement(context, (ScopeRefElement) semanticObject); 
-					return; 
-				}
-				else break;
-			case ProbeLangPackage.SEQUENCE:
-				if(context == grammarAccess.getSequenceRule()) {
-					sequence_Sequence(context, (Sequence) semanticObject); 
-					return; 
-				}
-				else break;
-			case ProbeLangPackage.STRING_ELEMENT:
-				if(context == grammarAccess.getStringElementRule()) {
-					sequence_StringElement(context, (StringElement) semanticObject); 
-					return; 
-				}
-				else break;
-			case ProbeLangPackage.VALUE:
-				if(context == grammarAccess.getValueRule()) {
-					sequence_Value(context, (Value) semanticObject); 
+			case ProbeLangPackage.REFERENCE_PROPERTY:
+				if(context == grammarAccess.getReferencePropertyRule()) {
+					sequence_ReferenceProperty(context, (ReferenceProperty) semanticObject); 
 					return; 
 				}
 				else break;
@@ -309,7 +220,7 @@ public class ProbeLangSemanticSequencer extends XbaseSemanticSequencer {
 				   context == grammarAccess.getXRelationalExpressionAccess().getXBinaryOperationLeftOperandAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXRelationalExpressionAccess().getXInstanceOfExpressionExpressionAction_1_0_0_0_0() ||
 				   context == grammarAccess.getXUnaryOperationRule()) {
-					sequence_XAssignment(context, (XAssignment) semanticObject); 
+					sequence_XAssignment_XMemberFeatureCall(context, (XAssignment) semanticObject); 
 					return; 
 				}
 				else break;
@@ -341,7 +252,7 @@ public class ProbeLangSemanticSequencer extends XbaseSemanticSequencer {
 				   context == grammarAccess.getXRelationalExpressionAccess().getXBinaryOperationLeftOperandAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXRelationalExpressionAccess().getXInstanceOfExpressionExpressionAction_1_0_0_0_0() ||
 				   context == grammarAccess.getXUnaryOperationRule()) {
-					sequence_XAdditiveExpression(context, (XBinaryOperation) semanticObject); 
+					sequence_XAdditiveExpression_XAndExpression_XAssignment_XEqualityExpression_XMultiplicativeExpression_XOrExpression_XOtherOperatorExpression_XRelationalExpression(context, (XBinaryOperation) semanticObject); 
 					return; 
 				}
 				else break;
@@ -757,7 +668,7 @@ public class ProbeLangSemanticSequencer extends XbaseSemanticSequencer {
 				   context == grammarAccess.getXRelationalExpressionAccess().getXBinaryOperationLeftOperandAction_1_1_0_0_0() ||
 				   context == grammarAccess.getXRelationalExpressionAccess().getXInstanceOfExpressionExpressionAction_1_0_0_0_0() ||
 				   context == grammarAccess.getXUnaryOperationRule()) {
-					sequence_XExpression(context, (XNullLiteral) semanticObject); 
+					sequence_XNullLiteral(context, (XNullLiteral) semanticObject); 
 					return; 
 				}
 				else break;
@@ -829,9 +740,7 @@ public class ProbeLangSemanticSequencer extends XbaseSemanticSequencer {
 				}
 				else break;
 			case XbasePackage.XSTRING_LITERAL:
-				if(context == grammarAccess.getItemRule() ||
-				   context == grammarAccess.getSimpleCodeElementRule() ||
-				   context == grammarAccess.getValueElementRule() ||
+				if(context == grammarAccess.getSimpleCodeElementRule() ||
 				   context == grammarAccess.getXAdditiveExpressionRule() ||
 				   context == grammarAccess.getXAdditiveExpressionAccess().getXBinaryOperationLeftOperandAction_1_0_0_0() ||
 				   context == grammarAccess.getXAndExpressionRule() ||
@@ -1086,15 +995,6 @@ public class ProbeLangSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (orExpr+=Sequence orExpr+=Sequence*)
-	 */
-	protected void sequence_Alternative(EObject context, Alternative semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
 	 *     (toUpper?='#'? value=SimpleCodeElement)
 	 */
 	protected void sequence_CodeElement(EObject context, CodeElement semanticObject) {
@@ -1104,77 +1004,45 @@ public class ProbeLangSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     name=ID
-	 */
-	protected void sequence_DataTypeDeclaration(EObject context, DataTypeDeclaration semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ProbeLangPackage.Literals.DATA_TYPE_DECLARATION__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ProbeLangPackage.Literals.DATA_TYPE_DECLARATION__NAME));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getDataTypeDeclarationAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     subTarget=Alternative
-	 */
-	protected void sequence_Group(EObject context, Group semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ProbeLangPackage.Literals.GROUP__SUB_TARGET) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ProbeLangPackage.Literals.GROUP__SUB_TARGET));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getGroupAccess().getSubTargetAlternativeParserRuleCall_1_0(), semanticObject.getSubTarget());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (ePackage=[EPackage|STRING] name=ID)
+	 *     importedNamespace=QualifiedNameWithWildcard
 	 */
 	protected void sequence_Import(EObject context, Import semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ProbeLangPackage.Literals.IMPORT__EPACKAGE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ProbeLangPackage.Literals.IMPORT__EPACKAGE));
-			if(transientValues.isValueTransient(semanticObject, ProbeLangPackage.Literals.IMPORT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ProbeLangPackage.Literals.IMPORT__NAME));
+			if(transientValues.isValueTransient(semanticObject, ProbeLangPackage.Literals.IMPORT__IMPORTED_NAMESPACE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ProbeLangPackage.Literals.IMPORT__IMPORTED_NAMESPACE));
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getImportAccess().getEPackageEPackageSTRINGTerminalRuleCall_1_0_1(), semanticObject.getEPackage());
-		feeder.accept(grammarAccess.getImportAccess().getNameIDTerminalRuleCall_3_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getImportAccess().getImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_0(), semanticObject.getImportedNamespace());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (name=QualifiedName imports+=Import* types+=DataTypeDeclaration* patterns+=Pattern* probes+=Probe*)
+	 *     (name=ID ePackage=[EPackage|STRING])
+	 */
+	protected void sequence_LoadMetaModel(EObject context, LoadMetaModel semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, ProbeLangPackage.Literals.LOAD_META_MODEL__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ProbeLangPackage.Literals.LOAD_META_MODEL__NAME));
+			if(transientValues.isValueTransient(semanticObject, ProbeLangPackage.Literals.LOAD_META_MODEL__EPACKAGE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ProbeLangPackage.Literals.LOAD_META_MODEL__EPACKAGE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getLoadMetaModelAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getLoadMetaModelAccess().getEPackageEPackageSTRINGTerminalRuleCall_2_0_1(), semanticObject.getEPackage());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=QualifiedName metaModels+=LoadMetaModel* imports+=Import* patterns+=Pattern* probes+=Probe*)
 	 */
 	protected void sequence_Model(EObject context, Model semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     type=OperatorType
-	 */
-	protected void sequence_Operator(EObject context, Operator semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ProbeLangPackage.Literals.OPERATOR__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ProbeLangPackage.Literals.OPERATOR__TYPE));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getOperatorAccess().getTypeOperatorTypeEnumRuleCall_0(), semanticObject.getType());
-		feeder.finish();
 	}
 	
 	
@@ -1212,16 +1080,7 @@ public class ProbeLangSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (ref=[Pattern|ID] values+=Value values+=Value*)
-	 */
-	protected void sequence_PatternCall(EObject context, PatternCall semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (name=ID parameters+=Parameter parameters+=Parameter* codeSequcene+=CodeElement*)
+	 *     (name=ID (parameters+=Parameter parameters+=Parameter*)? codeSequcene+=CodeElement*)
 	 */
 	protected void sequence_Pattern(EObject context, Pattern semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1230,7 +1089,7 @@ public class ProbeLangSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=ID record=RecordDeclaration? replacements+=Replacement*)
+	 *     (name=ID type=[EClassifier|ID] properties+=Property*)
 	 */
 	protected void sequence_Probe(EObject context, Probe semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1239,114 +1098,18 @@ public class ProbeLangSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     ref=[Property|ID]
-	 */
-	protected void sequence_PropertyReference(EObject context, PropertyReference semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ProbeLangPackage.Literals.PROPERTY_REFERENCE__REF) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ProbeLangPackage.Literals.PROPERTY_REFERENCE__REF));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getPropertyReferenceAccess().getRefPropertyIDTerminalRuleCall_0_1(), semanticObject.getRef());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (type=[DataTypeDeclaration|ID] name=ID)
+	 *     (type=[EClassifier|ID] name=ID properties+=ReferenceProperty*)
 	 */
 	protected void sequence_Property(EObject context, Property semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ProbeLangPackage.Literals.PROPERTY__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ProbeLangPackage.Literals.PROPERTY__TYPE));
-			if(transientValues.isValueTransient(semanticObject, ProbeLangPackage.Literals.PROPERTY__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ProbeLangPackage.Literals.PROPERTY__NAME));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getPropertyAccess().getTypeDataTypeDeclarationIDTerminalRuleCall_0_0_1(), semanticObject.getType());
-		feeder.accept(grammarAccess.getPropertyAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (item=Item type=QuantifierType?)
-	 */
-	protected void sequence_Quantifier(EObject context, Quantifier semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     properties+=Property+
+	 *     (ref=[EReference|ID] properties+=ReferenceProperty*)
 	 */
-	protected void sequence_RecordDeclaration(EObject context, RecordDeclaration semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (name=ID scope=Scope patterns+=PatternCall*)
-	 */
-	protected void sequence_Replacement(EObject context, Replacement semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     ref=QualifiedName
-	 */
-	protected void sequence_ScopeRefElement(EObject context, ScopeRefElement semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ProbeLangPackage.Literals.SCOPE_REF_ELEMENT__REF) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ProbeLangPackage.Literals.SCOPE_REF_ELEMENT__REF));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getScopeRefElementAccess().getRefQualifiedNameParserRuleCall_1_0(), semanticObject.getRef());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (modelRef=QualifiedName insertBefore?='<'? target=Alternative insertAfter?='>'?)
-	 */
-	protected void sequence_Scope(EObject context, Scope semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     andExpr+=Quantifier+
-	 */
-	protected void sequence_Sequence(EObject context, Sequence semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (toUpper?='#'? value=ValueElement)
-	 */
-	protected void sequence_StringElement(EObject context, StringElement semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     elements+=StringElement+
-	 */
-	protected void sequence_Value(EObject context, Value semanticObject) {
+	protected void sequence_ReferenceProperty(EObject context, ReferenceProperty semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 }

@@ -1,12 +1,8 @@
 /**
- * <copyright>
- * </copyright>
- *
  */
 package de.cau.se.instrumentation.language.probeLang;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -16,8 +12,7 @@ import org.eclipse.emf.ecore.EPackage;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.cau.se.instrumentation.language.probeLang.Import#getEPackage <em>EPackage</em>}</li>
- *   <li>{@link de.cau.se.instrumentation.language.probeLang.Import#getName <em>Name</em>}</li>
+ *   <li>{@link de.cau.se.instrumentation.language.probeLang.Import#getImportedNamespace <em>Imported Namespace</em>}</li>
  * </ul>
  * </p>
  *
@@ -28,55 +23,29 @@ import org.eclipse.emf.ecore.EPackage;
 public interface Import extends EObject
 {
   /**
-   * Returns the value of the '<em><b>EPackage</b></em>' reference.
+   * Returns the value of the '<em><b>Imported Namespace</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>EPackage</em>' reference isn't clear,
+   * If the meaning of the '<em>Imported Namespace</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>EPackage</em>' reference.
-   * @see #setEPackage(EPackage)
-   * @see de.cau.se.instrumentation.language.probeLang.ProbeLangPackage#getImport_EPackage()
+   * @return the value of the '<em>Imported Namespace</em>' attribute.
+   * @see #setImportedNamespace(String)
+   * @see de.cau.se.instrumentation.language.probeLang.ProbeLangPackage#getImport_ImportedNamespace()
    * @model
    * @generated
    */
-  EPackage getEPackage();
+  String getImportedNamespace();
 
   /**
-   * Sets the value of the '{@link de.cau.se.instrumentation.language.probeLang.Import#getEPackage <em>EPackage</em>}' reference.
+   * Sets the value of the '{@link de.cau.se.instrumentation.language.probeLang.Import#getImportedNamespace <em>Imported Namespace</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>EPackage</em>' reference.
-   * @see #getEPackage()
+   * @param value the new value of the '<em>Imported Namespace</em>' attribute.
+   * @see #getImportedNamespace()
    * @generated
    */
-  void setEPackage(EPackage value);
-
-  /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see de.cau.se.instrumentation.language.probeLang.ProbeLangPackage#getImport_Name()
-   * @model
-   * @generated
-   */
-  String getName();
-
-  /**
-   * Sets the value of the '{@link de.cau.se.instrumentation.language.probeLang.Import#getName <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
-   * @generated
-   */
-  void setName(String value);
+  void setImportedNamespace(String value);
 
 } // Import

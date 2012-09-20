@@ -1,7 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
  */
 package de.cau.se.instrumentation.language.probeLang.util;
 
@@ -84,17 +81,17 @@ public class ProbeLangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ProbeLangPackage.DATA_TYPE_DECLARATION:
-      {
-        DataTypeDeclaration dataTypeDeclaration = (DataTypeDeclaration)theEObject;
-        T result = caseDataTypeDeclaration(dataTypeDeclaration);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case ProbeLangPackage.IMPORT:
       {
         Import import_ = (Import)theEObject;
         T result = caseImport(import_);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ProbeLangPackage.LOAD_META_MODEL:
+      {
+        LoadMetaModel loadMetaModel = (LoadMetaModel)theEObject;
+        T result = caseLoadMetaModel(loadMetaModel);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -134,13 +131,6 @@ public class ProbeLangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ProbeLangPackage.RECORD_DECLARATION:
-      {
-        RecordDeclaration recordDeclaration = (RecordDeclaration)theEObject;
-        T result = caseRecordDeclaration(recordDeclaration);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case ProbeLangPackage.PROPERTY:
       {
         Property property = (Property)theEObject;
@@ -148,92 +138,10 @@ public class ProbeLangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ProbeLangPackage.REPLACEMENT:
+      case ProbeLangPackage.REFERENCE_PROPERTY:
       {
-        Replacement replacement = (Replacement)theEObject;
-        T result = caseReplacement(replacement);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ProbeLangPackage.SCOPE:
-      {
-        Scope scope = (Scope)theEObject;
-        T result = caseScope(scope);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ProbeLangPackage.ALTERNATIVE:
-      {
-        Alternative alternative = (Alternative)theEObject;
-        T result = caseAlternative(alternative);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ProbeLangPackage.SEQUENCE:
-      {
-        Sequence sequence = (Sequence)theEObject;
-        T result = caseSequence(sequence);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ProbeLangPackage.QUANTIFIER:
-      {
-        Quantifier quantifier = (Quantifier)theEObject;
-        T result = caseQuantifier(quantifier);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ProbeLangPackage.OPERATOR:
-      {
-        Operator operator = (Operator)theEObject;
-        T result = caseOperator(operator);
-        if (result == null) result = caseXExpression(operator);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ProbeLangPackage.GROUP:
-      {
-        Group group = (Group)theEObject;
-        T result = caseGroup(group);
-        if (result == null) result = caseXExpression(group);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ProbeLangPackage.PATTERN_CALL:
-      {
-        PatternCall patternCall = (PatternCall)theEObject;
-        T result = casePatternCall(patternCall);
-        if (result == null) result = caseXExpression(patternCall);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ProbeLangPackage.VALUE:
-      {
-        Value value = (Value)theEObject;
-        T result = caseValue(value);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ProbeLangPackage.STRING_ELEMENT:
-      {
-        StringElement stringElement = (StringElement)theEObject;
-        T result = caseStringElement(stringElement);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ProbeLangPackage.PROPERTY_REFERENCE:
-      {
-        PropertyReference propertyReference = (PropertyReference)theEObject;
-        T result = casePropertyReference(propertyReference);
-        if (result == null) result = caseXExpression(propertyReference);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ProbeLangPackage.SCOPE_REF_ELEMENT:
-      {
-        ScopeRefElement scopeRefElement = (ScopeRefElement)theEObject;
-        T result = caseScopeRefElement(scopeRefElement);
-        if (result == null) result = caseXExpression(scopeRefElement);
+        ReferenceProperty referenceProperty = (ReferenceProperty)theEObject;
+        T result = caseReferenceProperty(referenceProperty);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -258,22 +166,6 @@ public class ProbeLangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Data Type Declaration</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Data Type Declaration</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseDataTypeDeclaration(DataTypeDeclaration object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Import</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -285,6 +177,22 @@ public class ProbeLangSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseImport(Import object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Load Meta Model</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Load Meta Model</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLoadMetaModel(LoadMetaModel object)
   {
     return null;
   }
@@ -370,22 +278,6 @@ public class ProbeLangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Record Declaration</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Record Declaration</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseRecordDeclaration(RecordDeclaration object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Property</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -402,193 +294,17 @@ public class ProbeLangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Replacement</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Reference Property</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Replacement</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Reference Property</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseReplacement(Replacement object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Scope</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Scope</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseScope(Scope object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Alternative</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Alternative</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseAlternative(Alternative object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Sequence</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Sequence</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseSequence(Sequence object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Quantifier</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Quantifier</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseQuantifier(Quantifier object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Operator</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Operator</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseOperator(Operator object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Group</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Group</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseGroup(Group object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Pattern Call</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Pattern Call</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T casePatternCall(PatternCall object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Value</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Value</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseValue(Value object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>String Element</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>String Element</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseStringElement(StringElement object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Property Reference</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Property Reference</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T casePropertyReference(PropertyReference object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Scope Ref Element</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Scope Ref Element</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseScopeRefElement(ScopeRefElement object)
+  public T caseReferenceProperty(ReferenceProperty object)
   {
     return null;
   }

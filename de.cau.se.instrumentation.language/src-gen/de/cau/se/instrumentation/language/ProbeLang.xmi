@@ -22,10 +22,10 @@
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.52"/>
         </elements>
-        <elements xsi:type="xtext:Assignment" cardinality="*" feature="imports" operator="+=">
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="metaModels" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
         </elements>
-        <elements xsi:type="xtext:Assignment" cardinality="*" feature="types" operator="+=">
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="imports" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.1"/>
         </elements>
         <elements xsi:type="xtext:Assignment" cardinality="*" feature="patterns" operator="+=">
@@ -36,23 +36,26 @@
         </elements>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="DataTypeDeclaration">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.cau.de/se/instrumentation/language/ProbeLang#//DataTypeDeclaration"/>
-      </type>
-      <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="type"/>
-        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
-        </elements>
-      </alternatives>
-    </rules>
     <rules xsi:type="xtext:ParserRule" name="Import">
       <type metamodel="/0/@metamodelDeclarations.0">
         <classifier xsi:type="ecore:EClass" href="http://www.cau.de/se/instrumentation/language/ProbeLang#//Import"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="import"/>
+        <elements xsi:type="xtext:Assignment" feature="importedNamespace" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.3"/>
+        </elements>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="LoadMetaModel">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.cau.de/se/instrumentation/language/ProbeLang#//LoadMetaModel"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="load"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+        </elements>
         <elements xsi:type="xtext:Assignment" feature="ePackage" operator="=">
           <terminal xsi:type="xtext:CrossReference">
             <type metamodel="/0/@metamodelDeclarations.3">
@@ -60,10 +63,6 @@
             </type>
             <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.12"/>
           </terminal>
-        </elements>
-        <elements xsi:type="xtext:Keyword" value="as"/>
-        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
         </elements>
       </alternatives>
     </rules>
@@ -88,17 +87,19 @@
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="("/>
-        <elements xsi:type="xtext:Assignment" feature="parameters" operator="+=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.5"/>
-        </elements>
-        <elements xsi:type="xtext:Group" cardinality="*">
-          <elements xsi:type="xtext:Keyword" value=","/>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:Keyword" value="("/>
           <elements xsi:type="xtext:Assignment" feature="parameters" operator="+=">
             <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.5"/>
           </elements>
+          <elements xsi:type="xtext:Group" cardinality="*">
+            <elements xsi:type="xtext:Keyword" value=","/>
+            <elements xsi:type="xtext:Assignment" feature="parameters" operator="+=">
+              <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.5"/>
+            </elements>
+          </elements>
+          <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
-        <elements xsi:type="xtext:Keyword" value=")"/>
         <elements xsi:type="xtext:Assignment" cardinality="*" feature="codeSequcene" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.6"/>
         </elements>
@@ -156,25 +157,18 @@
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
         </elements>
+        <elements xsi:type="xtext:Keyword" value=":"/>
+        <elements xsi:type="xtext:Assignment" feature="type" operator="=">
+          <terminal xsi:type="xtext:CrossReference">
+            <type metamodel="/0/@metamodelDeclarations.3">
+              <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
+            </type>
+            <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+          </terminal>
+        </elements>
         <elements xsi:type="xtext:Keyword" value="{"/>
-        <elements xsi:type="xtext:Assignment" cardinality="?" feature="record" operator="=">
+        <elements xsi:type="xtext:Assignment" cardinality="*" feature="properties" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.10"/>
-        </elements>
-        <elements xsi:type="xtext:Assignment" cardinality="*" feature="replacements" operator="+=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.12"/>
-        </elements>
-        <elements xsi:type="xtext:Keyword" value="}"/>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="RecordDeclaration">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.cau.de/se/instrumentation/language/ProbeLang#//RecordDeclaration"/>
-      </type>
-      <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="record"/>
-        <elements xsi:type="xtext:Keyword" value="{"/>
-        <elements xsi:type="xtext:Assignment" cardinality="+" feature="properties" operator="+=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.11"/>
         </elements>
         <elements xsi:type="xtext:Keyword" value="}"/>
       </alternatives>
@@ -186,8 +180,8 @@
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Assignment" feature="type" operator="=">
           <terminal xsi:type="xtext:CrossReference">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.cau.de/se/instrumentation/language/ProbeLang#//DataTypeDeclaration"/>
+            <type metamodel="/0/@metamodelDeclarations.3">
+              <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier"/>
             </type>
             <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
           </terminal>
@@ -195,246 +189,34 @@
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
         </elements>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="Replacement">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.cau.de/se/instrumentation/language/ProbeLang#//Replacement"/>
-      </type>
-      <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
-        </elements>
-        <elements xsi:type="xtext:Assignment" feature="scope" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.13"/>
-        </elements>
-        <elements xsi:type="xtext:Keyword" value="{"/>
-        <elements xsi:type="xtext:Assignment" cardinality="*" feature="patterns" operator="+=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
-        </elements>
-        <elements xsi:type="xtext:Keyword" value="}"/>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="Scope">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.cau.de/se/instrumentation/language/ProbeLang#//Scope"/>
-      </type>
-      <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="scope"/>
-        <elements xsi:type="xtext:Assignment" feature="modelRef" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.52"/>
-        </elements>
-        <elements xsi:type="xtext:Assignment" cardinality="?" feature="insertBefore" operator="?=">
-          <terminal xsi:type="xtext:Keyword" value="&lt;"/>
-        </elements>
-        <elements xsi:type="xtext:Assignment" feature="target" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.14"/>
-        </elements>
-        <elements xsi:type="xtext:Assignment" cardinality="?" feature="insertAfter" operator="?=">
-          <terminal xsi:type="xtext:Keyword" value=">"/>
-        </elements>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="Alternative">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.cau.de/se/instrumentation/language/ProbeLang#//Alternative"/>
-      </type>
-      <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Assignment" feature="orExpr" operator="+=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.15"/>
-        </elements>
-        <elements xsi:type="xtext:Group" cardinality="*">
-          <elements xsi:type="xtext:Keyword" value="|"/>
-          <elements xsi:type="xtext:Assignment" feature="orExpr" operator="+=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.15"/>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:Keyword" value="{"/>
+          <elements xsi:type="xtext:Assignment" cardinality="*" feature="properties" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.11"/>
           </elements>
+          <elements xsi:type="xtext:Keyword" value="}"/>
         </elements>
       </alternatives>
     </rules>
-    <rules xsi:type="xtext:ParserRule" name="Sequence">
+    <rules xsi:type="xtext:ParserRule" name="ReferenceProperty">
       <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.cau.de/se/instrumentation/language/ProbeLang#//Sequence"/>
-      </type>
-      <alternatives xsi:type="xtext:Assignment" cardinality="+" feature="andExpr" operator="+=">
-        <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.16"/>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="Quantifier">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.cau.de/se/instrumentation/language/ProbeLang#//Quantifier"/>
-      </type>
-      <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Assignment" feature="item" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.17"/>
-        </elements>
-        <elements xsi:type="xtext:Assignment" cardinality="?" feature="type" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.26"/>
-        </elements>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="Item">
-      <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/xbase/Xbase#//XExpression"/>
-      </type>
-      <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.18"/>
-        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.46"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="Operator">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.cau.de/se/instrumentation/language/ProbeLang#//Operator"/>
-      </type>
-      <alternatives xsi:type="xtext:Assignment" feature="type" operator="=">
-        <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.27"/>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="Group">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.cau.de/se/instrumentation/language/ProbeLang#//Group"/>
-      </type>
-      <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="("/>
-        <elements xsi:type="xtext:Assignment" feature="subTarget" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.14"/>
-        </elements>
-        <elements xsi:type="xtext:Keyword" value=")"/>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="PatternCall">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.cau.de/se/instrumentation/language/ProbeLang#//PatternCall"/>
+        <classifier xsi:type="ecore:EClass" href="http://www.cau.de/se/instrumentation/language/ProbeLang#//ReferenceProperty"/>
       </type>
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Assignment" feature="ref" operator="=">
           <terminal xsi:type="xtext:CrossReference">
-            <type metamodel="/0/@metamodelDeclarations.0">
-              <classifier xsi:type="ecore:EClass" href="http://www.cau.de/se/instrumentation/language/ProbeLang#//Pattern"/>
+            <type metamodel="/0/@metamodelDeclarations.3">
+              <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
             </type>
             <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
           </terminal>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="("/>
-        <elements xsi:type="xtext:Assignment" feature="values" operator="+=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.21"/>
-        </elements>
-        <elements xsi:type="xtext:Group" cardinality="*">
-          <elements xsi:type="xtext:Keyword" value=","/>
-          <elements xsi:type="xtext:Assignment" feature="values" operator="+=">
-            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.21"/>
+        <elements xsi:type="xtext:Group" cardinality="?">
+          <elements xsi:type="xtext:Keyword" value="{"/>
+          <elements xsi:type="xtext:Assignment" cardinality="*" feature="properties" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.11"/>
           </elements>
-        </elements>
-        <elements xsi:type="xtext:Keyword" value=")"/>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="Value">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.cau.de/se/instrumentation/language/ProbeLang#//Value"/>
-      </type>
-      <alternatives xsi:type="xtext:Assignment" cardinality="+" feature="elements" operator="+=">
-        <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.22"/>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="StringElement">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.cau.de/se/instrumentation/language/ProbeLang#//StringElement"/>
-      </type>
-      <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Assignment" cardinality="?" feature="toUpper" operator="?=">
-          <terminal xsi:type="xtext:Keyword" value="#"/>
-        </elements>
-        <elements xsi:type="xtext:Assignment" feature="value" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.23"/>
-        </elements>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="ValueElement">
-      <type metamodel="/0/@metamodelDeclarations.1">
-        <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/xbase/Xbase#//XExpression"/>
-      </type>
-      <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/1/@rules.46"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.25"/>
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.24"/>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="PropertyReference">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.cau.de/se/instrumentation/language/ProbeLang#//PropertyReference"/>
-      </type>
-      <alternatives xsi:type="xtext:Assignment" feature="ref" operator="=">
-        <terminal xsi:type="xtext:CrossReference">
-          <type metamodel="/0/@metamodelDeclarations.0">
-            <classifier xsi:type="ecore:EClass" href="http://www.cau.de/se/instrumentation/language/ProbeLang#//Property"/>
-          </type>
-          <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
-        </terminal>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:ParserRule" name="ScopeRefElement">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EClass" href="http://www.cau.de/se/instrumentation/language/ProbeLang#//ScopeRefElement"/>
-      </type>
-      <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Keyword" value="@"/>
-        <elements xsi:type="xtext:Assignment" feature="ref" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.52"/>
-        </elements>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:EnumRule" name="QuantifierType">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EEnum" href="http://www.cau.de/se/instrumentation/language/ProbeLang#//QuantifierType"/>
-      </type>
-      <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.cau.de/se/instrumentation/language/ProbeLang#//QuantifierType/NONE_OR_MANY"/>
-          <literal value="*"/>
-        </elements>
-        <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.cau.de/se/instrumentation/language/ProbeLang#//QuantifierType/OPTIONAL"/>
-          <literal value="?"/>
-        </elements>
-        <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.cau.de/se/instrumentation/language/ProbeLang#//QuantifierType/ONE_OR_MANY"/>
-          <literal value="+"/>
-        </elements>
-      </alternatives>
-    </rules>
-    <rules xsi:type="xtext:EnumRule" name="OperatorType">
-      <type metamodel="/0/@metamodelDeclarations.0">
-        <classifier xsi:type="ecore:EEnum" href="http://www.cau.de/se/instrumentation/language/ProbeLang#//OperatorType"/>
-      </type>
-      <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.cau.de/se/instrumentation/language/ProbeLang#//OperatorType/ANY_CHAR"/>
-          <literal value="."/>
-        </elements>
-        <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.cau.de/se/instrumentation/language/ProbeLang#//OperatorType/WHITE_SPACE"/>
-          <literal value="\s"/>
-        </elements>
-        <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.cau.de/se/instrumentation/language/ProbeLang#//OperatorType/NON_WHITE_SPACE"/>
-          <literal value="\S"/>
-        </elements>
-        <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.cau.de/se/instrumentation/language/ProbeLang#//OperatorType/WORD_CHAR"/>
-          <literal value="\w"/>
-        </elements>
-        <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.cau.de/se/instrumentation/language/ProbeLang#//OperatorType/NON_WORD_CHAR"/>
-          <literal value="\W"/>
-        </elements>
-        <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.cau.de/se/instrumentation/language/ProbeLang#//OperatorType/DIGIT"/>
-          <literal value="\d"/>
-        </elements>
-        <elements xsi:type="xtext:EnumLiteralDeclaration">
-          <enumLiteral href="http://www.cau.de/se/instrumentation/language/ProbeLang#//OperatorType/NON_DIGIT"/>
-          <literal value="\D"/>
+          <elements xsi:type="xtext:Keyword" value="}"/>
         </elements>
       </alternatives>
     </rules>
@@ -727,18 +509,29 @@
         <elements xsi:type="xtext:Keyword" value="=>"/>
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Keyword" value=">"/>
-          <elements xsi:type="xtext:Keyword" value=">"/>
-          <elements xsi:type="xtext:Keyword" cardinality="?" predicated="true" value=">"/>
+          <elements xsi:type="xtext:Alternatives">
+            <elements xsi:type="xtext:Group" predicated="true">
+              <elements xsi:type="xtext:Group">
+                <elements xsi:type="xtext:Keyword" value=">"/>
+                <elements xsi:type="xtext:Keyword" value=">"/>
+              </elements>
+            </elements>
+            <elements xsi:type="xtext:Keyword" value=">"/>
+          </elements>
         </elements>
         <elements xsi:type="xtext:Group">
           <elements xsi:type="xtext:Keyword" value="&lt;"/>
-          <elements xsi:type="xtext:Keyword" value="&lt;"/>
-          <elements xsi:type="xtext:Keyword" cardinality="?" predicated="true" value="&lt;"/>
+          <elements xsi:type="xtext:Alternatives">
+            <elements xsi:type="xtext:Group" predicated="true">
+              <elements xsi:type="xtext:Group">
+                <elements xsi:type="xtext:Keyword" value="&lt;"/>
+                <elements xsi:type="xtext:Keyword" value="&lt;"/>
+              </elements>
+            </elements>
+            <elements xsi:type="xtext:Keyword" value="&lt;"/>
+          </elements>
         </elements>
-        <elements xsi:type="xtext:Group">
-          <elements xsi:type="xtext:Keyword" value="&lt;"/>
-          <elements xsi:type="xtext:Keyword" value=">"/>
-        </elements>
+        <elements xsi:type="xtext:Keyword" value="&lt;>"/>
         <elements xsi:type="xtext:Keyword" value="?:"/>
         <elements xsi:type="xtext:Keyword" value="&lt;=>"/>
       </alternatives>
@@ -975,7 +768,7 @@
               </elements>
               <elements xsi:type="xtext:Keyword" value=")"/>
             </elements>
-            <elements xsi:type="xtext:Assignment" cardinality="?" predicated="true" feature="memberCallArguments" operator="+=">
+            <elements xsi:type="xtext:Assignment" cardinality="?" feature="memberCallArguments" operator="+=">
               <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.24"/>
             </elements>
           </elements>
@@ -1020,12 +813,16 @@
         <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/xbase/Xbase#//XExpression"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Action">
-          <type metamodel="/1/@metamodelDeclarations.0">
-            <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/xbase/Xbase#//XClosure"/>
-          </type>
+        <elements xsi:type="xtext:Group" predicated="true">
+          <elements xsi:type="xtext:Group">
+            <elements xsi:type="xtext:Action">
+              <type metamodel="/1/@metamodelDeclarations.0">
+                <classifier xsi:type="ecore:EClass" href="http://www.eclipse.org/xtext/xbase/Xbase#//XClosure"/>
+              </type>
+            </elements>
+            <elements xsi:type="xtext:Keyword" value="["/>
+          </elements>
         </elements>
-        <elements xsi:type="xtext:Keyword" value="["/>
         <elements xsi:type="xtext:Group" cardinality="?" predicated="true">
           <elements xsi:type="xtext:Group">
             <elements xsi:type="xtext:Group" cardinality="?">
@@ -1436,7 +1233,7 @@
           </elements>
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
-        <elements xsi:type="xtext:Assignment" cardinality="?" predicated="true" feature="featureCallArguments" operator="+=">
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="featureCallArguments" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.24"/>
         </elements>
       </alternatives>
@@ -1511,7 +1308,7 @@
           </elements>
           <elements xsi:type="xtext:Keyword" value=")"/>
         </elements>
-        <elements xsi:type="xtext:Assignment" cardinality="?" predicated="true" feature="arguments" operator="+=">
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="arguments" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="/1/@rules.24"/>
         </elements>
       </alternatives>

@@ -64,18 +64,10 @@ public class InternalProbeLangLexer extends Lexer {
     public static final int T__47=47;
     public static final int T__81=81;
     public static final int T__44=44;
-    public static final int T__82=82;
     public static final int T__45=45;
-    public static final int T__83=83;
     public static final int T__48=48;
     public static final int T__49=49;
-    public static final int T__85=85;
-    public static final int T__84=84;
     public static final int RULE_SL_COMMENT=10;
-    public static final int T__87=87;
-    public static final int T__86=86;
-    public static final int T__89=89;
-    public static final int T__88=88;
     public static final int RULE_ML_COMMENT=9;
     public static final int T__30=30;
     public static final int T__31=31;
@@ -388,10 +380,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__26;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:24:7: ( '?:' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:24:9: '?:'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:24:7: ( '<>' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:24:9: '<>'
             {
-            match("?:"); 
+            match("<>"); 
 
 
             }
@@ -409,10 +401,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__27;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:25:7: ( '<=>' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:25:9: '<=>'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:25:7: ( '?:' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:25:9: '?:'
             {
-            match("<=>"); 
+            match("?:"); 
 
 
             }
@@ -430,10 +422,11 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__28;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:26:7: ( '+' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:26:9: '+'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:26:7: ( '<=>' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:26:9: '<=>'
             {
-            match('+'); 
+            match("<=>"); 
+
 
             }
 
@@ -450,10 +443,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__29;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:27:7: ( '-' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:27:9: '-'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:27:7: ( '+' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:27:9: '+'
             {
-            match('-'); 
+            match('+'); 
 
             }
 
@@ -470,10 +463,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__30;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:28:7: ( '*' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:28:9: '*'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:28:7: ( '-' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:28:9: '-'
             {
-            match('*'); 
+            match('-'); 
 
             }
 
@@ -490,11 +483,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__31;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:29:7: ( '**' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:29:9: '**'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:29:7: ( '*' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:29:9: '*'
             {
-            match("**"); 
-
+            match('*'); 
 
             }
 
@@ -511,10 +503,11 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__32;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:30:7: ( '/' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:30:9: '/'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:30:7: ( '**' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:30:9: '**'
             {
-            match('/'); 
+            match("**"); 
+
 
             }
 
@@ -531,10 +524,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__33;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:31:7: ( '%' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:31:9: '%'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:31:7: ( '/' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:31:9: '/'
             {
-            match('%'); 
+            match('/'); 
 
             }
 
@@ -551,10 +544,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__34;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:32:7: ( '!' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:32:9: '!'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:32:7: ( '%' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:32:9: '%'
             {
-            match('!'); 
+            match('%'); 
 
             }
 
@@ -571,10 +564,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__35;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:33:7: ( '.' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:33:9: '.'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:33:7: ( '!' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:33:9: '!'
             {
-            match('.'); 
+            match('!'); 
 
             }
 
@@ -591,11 +584,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__36;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:34:7: ( 'val' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:34:9: 'val'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:34:7: ( '.' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:34:9: '.'
             {
-            match("val"); 
-
+            match('.'); 
 
             }
 
@@ -612,10 +604,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__37;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:35:7: ( 'super' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:35:9: 'super'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:35:7: ( 'val' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:35:9: 'val'
             {
-            match("super"); 
+            match("val"); 
 
 
             }
@@ -633,10 +625,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__38;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:36:7: ( 'false' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:36:9: 'false'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:36:7: ( 'super' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:36:9: 'super'
             {
-            match("false"); 
+            match("super"); 
 
 
             }
@@ -654,10 +646,11 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__39;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:37:7: ( '?' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:37:9: '?'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:37:7: ( 'false' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:37:9: 'false'
             {
-            match('?'); 
+            match("false"); 
+
 
             }
 
@@ -674,10 +667,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__40;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:38:7: ( '\\\\s' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:38:9: '\\\\s'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:38:7: ( 'package' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:38:9: 'package'
             {
-            match("\\s"); 
+            match("package"); 
 
 
             }
@@ -695,10 +688,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__41;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:39:7: ( '\\\\S' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:39:9: '\\\\S'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:39:7: ( 'import' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:39:9: 'import'
             {
-            match("\\S"); 
+            match("import"); 
 
 
             }
@@ -716,10 +709,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__42;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:40:7: ( '\\\\w' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:40:9: '\\\\w'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:40:7: ( 'load' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:40:9: 'load'
             {
-            match("\\w"); 
+            match("load"); 
 
 
             }
@@ -737,10 +730,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__43;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:41:7: ( '\\\\W' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:41:9: '\\\\W'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:41:7: ( 'pattern' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:41:9: 'pattern'
             {
-            match("\\W"); 
+            match("pattern"); 
 
 
             }
@@ -758,11 +751,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__44;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:42:7: ( '\\\\d' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:42:9: '\\\\d'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:42:7: ( '(' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:42:9: '('
             {
-            match("\\d"); 
-
+            match('('); 
 
             }
 
@@ -779,11 +771,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__45;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:43:7: ( '\\\\D' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:43:9: '\\\\D'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:43:7: ( ')' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:43:9: ')'
             {
-            match("\\D"); 
-
+            match(')'); 
 
             }
 
@@ -800,11 +791,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__46;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:44:7: ( 'package' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:44:9: 'package'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:44:7: ( ',' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:44:9: ','
             {
-            match("package"); 
-
+            match(','); 
 
             }
 
@@ -821,10 +811,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__47;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:45:7: ( 'type' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:45:9: 'type'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:45:7: ( 'probe' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:45:9: 'probe'
             {
-            match("type"); 
+            match("probe"); 
 
 
             }
@@ -842,11 +832,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__48;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:46:7: ( 'import' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:46:9: 'import'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:46:7: ( ':' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:46:9: ':'
             {
-            match("import"); 
-
+            match(':'); 
 
             }
 
@@ -863,11 +852,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__49;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:47:7: ( 'as' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:47:9: 'as'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:47:7: ( '{' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:47:9: '{'
             {
-            match("as"); 
-
+            match('{'); 
 
             }
 
@@ -884,11 +872,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__50;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:48:7: ( 'pattern' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:48:9: 'pattern'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:48:7: ( '}' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:48:9: '}'
             {
-            match("pattern"); 
-
+            match('}'); 
 
             }
 
@@ -905,10 +892,11 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__51;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:49:7: ( '(' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:49:9: '('
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:49:7: ( 'instanceof' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:49:9: 'instanceof'
             {
-            match('('); 
+            match("instanceof"); 
+
 
             }
 
@@ -925,10 +913,11 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__52;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:50:7: ( ')' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:50:9: ')'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:50:7: ( 'as' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:50:9: 'as'
             {
-            match(')'); 
+            match("as"); 
+
 
             }
 
@@ -945,10 +934,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__53;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:51:7: ( ',' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:51:9: ','
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:51:7: ( ']' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:51:9: ']'
             {
-            match(','); 
+            match(']'); 
 
             }
 
@@ -965,11 +954,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__54;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:52:7: ( 'probe' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:52:9: 'probe'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:52:7: ( '[' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:52:9: '['
             {
-            match("probe"); 
-
+            match('['); 
 
             }
 
@@ -986,10 +974,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__55;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:53:7: ( '{' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:53:9: '{'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:53:7: ( ';' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:53:9: ';'
             {
-            match('{'); 
+            match(';'); 
 
             }
 
@@ -1006,10 +994,11 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__56;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:54:7: ( '}' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:54:9: '}'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:54:7: ( 'if' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:54:9: 'if'
             {
-            match('}'); 
+            match("if"); 
+
 
             }
 
@@ -1026,10 +1015,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__57;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:55:7: ( 'record' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:55:9: 'record'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:55:7: ( 'else' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:55:9: 'else'
             {
-            match("record"); 
+            match("else"); 
 
 
             }
@@ -1047,10 +1036,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__58;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:56:7: ( 'scope' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:56:9: 'scope'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:56:7: ( 'switch' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:56:9: 'switch'
             {
-            match("scope"); 
+            match("switch"); 
 
 
             }
@@ -1068,10 +1057,11 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__59;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:57:7: ( '|' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:57:9: '|'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:57:7: ( 'default' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:57:9: 'default'
             {
-            match('|'); 
+            match("default"); 
+
 
             }
 
@@ -1088,10 +1078,11 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__60;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:58:7: ( '@' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:58:9: '@'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:58:7: ( 'case' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:58:9: 'case'
             {
-            match('@'); 
+            match("case"); 
+
 
             }
 
@@ -1108,10 +1099,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__61;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:59:7: ( 'instanceof' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:59:9: 'instanceof'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:59:7: ( 'for' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:59:9: 'for'
             {
-            match("instanceof"); 
+            match("for"); 
 
 
             }
@@ -1129,10 +1120,11 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__62;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:60:7: ( '[' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:60:9: '['
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:60:7: ( 'while' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:60:9: 'while'
             {
-            match('['); 
+            match("while"); 
+
 
             }
 
@@ -1149,10 +1141,11 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__63;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:61:7: ( ']' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:61:9: ']'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:61:7: ( 'do' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:61:9: 'do'
             {
-            match(']'); 
+            match("do"); 
+
 
             }
 
@@ -1169,10 +1162,11 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__64;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:62:7: ( ';' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:62:9: ';'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:62:7: ( '::' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:62:9: '::'
             {
-            match(';'); 
+            match("::"); 
+
 
             }
 
@@ -1189,10 +1183,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__65;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:63:7: ( 'if' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:63:9: 'if'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:63:7: ( 'new' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:63:9: 'new'
             {
-            match("if"); 
+            match("new"); 
 
 
             }
@@ -1210,10 +1204,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__66;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:64:7: ( 'else' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:64:9: 'else'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:64:7: ( 'null' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:64:9: 'null'
             {
-            match("else"); 
+            match("null"); 
 
 
             }
@@ -1231,10 +1225,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__67;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:65:7: ( 'switch' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:65:9: 'switch'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:65:7: ( 'typeof' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:65:9: 'typeof'
             {
-            match("switch"); 
+            match("typeof"); 
 
 
             }
@@ -1252,10 +1246,11 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__68;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:66:7: ( ':' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:66:9: ':'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:66:7: ( 'throw' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:66:9: 'throw'
             {
-            match(':'); 
+            match("throw"); 
+
 
             }
 
@@ -1272,10 +1267,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__69;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:67:7: ( 'default' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:67:9: 'default'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:67:7: ( 'return' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:67:9: 'return'
             {
-            match("default"); 
+            match("return"); 
 
 
             }
@@ -1293,10 +1288,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__70;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:68:7: ( 'case' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:68:9: 'case'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:68:7: ( 'try' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:68:9: 'try'
             {
-            match("case"); 
+            match("try"); 
 
 
             }
@@ -1314,10 +1309,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__71;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:69:7: ( 'for' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:69:9: 'for'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:69:7: ( 'finally' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:69:9: 'finally'
             {
-            match("for"); 
+            match("finally"); 
 
 
             }
@@ -1335,10 +1330,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__72;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:70:7: ( 'while' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:70:9: 'while'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:70:7: ( 'catch' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:70:9: 'catch'
             {
-            match("while"); 
+            match("catch"); 
 
 
             }
@@ -1356,11 +1351,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__73;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:71:7: ( 'do' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:71:9: 'do'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:71:7: ( '?' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:71:9: '?'
             {
-            match("do"); 
-
+            match('?'); 
 
             }
 
@@ -1377,10 +1371,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__74;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:72:7: ( '::' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:72:9: '::'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:72:7: ( 'extends' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:72:9: 'extends'
             {
-            match("::"); 
+            match("extends"); 
 
 
             }
@@ -1398,11 +1392,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__75;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:73:7: ( 'new' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:73:9: 'new'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:73:7: ( '&' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:73:9: '&'
             {
-            match("new"); 
-
+            match('&'); 
 
             }
 
@@ -1419,11 +1412,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__76;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:74:7: ( 'null' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:74:9: 'null'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:74:7: ( '#' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:74:9: '#'
             {
-            match("null"); 
-
+            match('#'); 
 
             }
 
@@ -1440,10 +1432,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__77;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:75:7: ( 'typeof' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:75:9: 'typeof'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:75:7: ( '?.' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:75:9: '?.'
             {
-            match("typeof"); 
+            match("?."); 
 
 
             }
@@ -1461,10 +1453,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__78;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:76:7: ( 'throw' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:76:9: 'throw'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:76:7: ( '*.' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:76:9: '*.'
             {
-            match("throw"); 
+            match("*."); 
 
 
             }
@@ -1482,11 +1474,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__79;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:77:7: ( 'return' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:77:9: 'return'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:77:7: ( '|' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:77:9: '|'
             {
-            match("return"); 
-
+            match('|'); 
 
             }
 
@@ -1503,10 +1494,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__80;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:78:7: ( 'try' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:78:9: 'try'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:78:7: ( 'var' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:78:9: 'var'
             {
-            match("try"); 
+            match("var"); 
 
 
             }
@@ -1524,174 +1515,8 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = T__81;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:79:7: ( 'finally' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:79:9: 'finally'
-            {
-            match("finally"); 
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__81"
-
-    // $ANTLR start "T__82"
-    public final void mT__82() throws RecognitionException {
-        try {
-            int _type = T__82;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:80:7: ( 'catch' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:80:9: 'catch'
-            {
-            match("catch"); 
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__82"
-
-    // $ANTLR start "T__83"
-    public final void mT__83() throws RecognitionException {
-        try {
-            int _type = T__83;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:81:7: ( 'extends' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:81:9: 'extends'
-            {
-            match("extends"); 
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__83"
-
-    // $ANTLR start "T__84"
-    public final void mT__84() throws RecognitionException {
-        try {
-            int _type = T__84;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:82:7: ( '&' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:82:9: '&'
-            {
-            match('&'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__84"
-
-    // $ANTLR start "T__85"
-    public final void mT__85() throws RecognitionException {
-        try {
-            int _type = T__85;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:83:7: ( '#' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:83:9: '#'
-            {
-            match('#'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__85"
-
-    // $ANTLR start "T__86"
-    public final void mT__86() throws RecognitionException {
-        try {
-            int _type = T__86;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:84:7: ( '?.' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:84:9: '?.'
-            {
-            match("?."); 
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__86"
-
-    // $ANTLR start "T__87"
-    public final void mT__87() throws RecognitionException {
-        try {
-            int _type = T__87;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:85:7: ( '*.' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:85:9: '*.'
-            {
-            match("*."); 
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__87"
-
-    // $ANTLR start "T__88"
-    public final void mT__88() throws RecognitionException {
-        try {
-            int _type = T__88;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:86:7: ( 'var' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:86:9: 'var'
-            {
-            match("var"); 
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__88"
-
-    // $ANTLR start "T__89"
-    public final void mT__89() throws RecognitionException {
-        try {
-            int _type = T__89;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:87:7: ( 'true' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:87:9: 'true'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:79:7: ( 'true' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:79:9: 'true'
             {
             match("true"); 
 
@@ -1704,17 +1529,17 @@ public class InternalProbeLangLexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "T__89"
+    // $ANTLR end "T__81"
 
     // $ANTLR start "RULE_HEX"
     public final void mRULE_HEX() throws RecognitionException {
         try {
             int _type = RULE_HEX;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18690:10: ( ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )? )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18690:12: ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17323:10: ( ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )? )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17323:12: ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
             {
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18690:12: ( '0x' | '0X' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17323:12: ( '0x' | '0X' )
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -1742,7 +1567,7 @@ public class InternalProbeLangLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18690:13: '0x'
+                    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17323:13: '0x'
                     {
                     match("0x"); 
 
@@ -1750,7 +1575,7 @@ public class InternalProbeLangLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18690:18: '0X'
+                    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17323:18: '0X'
                     {
                     match("0X"); 
 
@@ -1760,7 +1585,7 @@ public class InternalProbeLangLexer extends Lexer {
 
             }
 
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18690:24: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17323:24: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+
             int cnt2=0;
             loop2:
             do {
@@ -1798,7 +1623,7 @@ public class InternalProbeLangLexer extends Lexer {
                 cnt2++;
             } while (true);
 
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18690:58: ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17323:58: ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -1807,10 +1632,10 @@ public class InternalProbeLangLexer extends Lexer {
             }
             switch (alt4) {
                 case 1 :
-                    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18690:59: '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
+                    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17323:59: '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
                     {
                     match('#'); 
-                    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18690:63: ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
+                    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17323:63: ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
                     int alt3=2;
                     int LA3_0 = input.LA(1);
 
@@ -1828,7 +1653,7 @@ public class InternalProbeLangLexer extends Lexer {
                     }
                     switch (alt3) {
                         case 1 :
-                            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18690:64: ( 'b' | 'B' ) ( 'i' | 'I' )
+                            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17323:64: ( 'b' | 'B' ) ( 'i' | 'I' )
                             {
                             if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                                 input.consume();
@@ -1852,7 +1677,7 @@ public class InternalProbeLangLexer extends Lexer {
                             }
                             break;
                         case 2 :
-                            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18690:84: ( 'l' | 'L' )
+                            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17323:84: ( 'l' | 'L' )
                             {
                             if ( input.LA(1)=='L'||input.LA(1)=='l' ) {
                                 input.consume();
@@ -1891,11 +1716,11 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18692:10: ( '0' .. '9' ( '0' .. '9' | '_' )* )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18692:12: '0' .. '9' ( '0' .. '9' | '_' )*
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17325:10: ( '0' .. '9' ( '0' .. '9' | '_' )* )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17325:12: '0' .. '9' ( '0' .. '9' | '_' )*
             {
             matchRange('0','9'); 
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18692:21: ( '0' .. '9' | '_' )*
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17325:21: ( '0' .. '9' | '_' )*
             loop5:
             do {
                 int alt5=2;
@@ -1944,11 +1769,11 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = RULE_DECIMAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18694:14: ( RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )? )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18694:16: RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17327:14: ( RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )? )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17327:16: RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
             {
             mRULE_INT(); 
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18694:25: ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )?
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17327:25: ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )?
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -1957,7 +1782,7 @@ public class InternalProbeLangLexer extends Lexer {
             }
             switch (alt7) {
                 case 1 :
-                    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18694:26: ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT
+                    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17327:26: ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT
                     {
                     if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                         input.consume();
@@ -1968,7 +1793,7 @@ public class InternalProbeLangLexer extends Lexer {
                         recover(mse);
                         throw mse;}
 
-                    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18694:36: ( '+' | '-' )?
+                    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17327:36: ( '+' | '-' )?
                     int alt6=2;
                     int LA6_0 = input.LA(1);
 
@@ -2001,7 +1826,7 @@ public class InternalProbeLangLexer extends Lexer {
 
             }
 
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18694:58: ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17327:58: ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
             int alt8=3;
             int LA8_0 = input.LA(1);
 
@@ -2013,7 +1838,7 @@ public class InternalProbeLangLexer extends Lexer {
             }
             switch (alt8) {
                 case 1 :
-                    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18694:59: ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' )
+                    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17327:59: ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' )
                     {
                     if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                         input.consume();
@@ -2037,7 +1862,7 @@ public class InternalProbeLangLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18694:87: ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' )
+                    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17327:87: ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' )
                     {
                     if ( input.LA(1)=='D'||input.LA(1)=='F'||input.LA(1)=='L'||input.LA(1)=='d'||input.LA(1)=='f'||input.LA(1)=='l' ) {
                         input.consume();
@@ -2070,10 +1895,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18696:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )* )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18696:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17329:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )* )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17329:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
             {
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18696:11: ( '^' )?
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17329:11: ( '^' )?
             int alt9=2;
             int LA9_0 = input.LA(1);
 
@@ -2082,7 +1907,7 @@ public class InternalProbeLangLexer extends Lexer {
             }
             switch (alt9) {
                 case 1 :
-                    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18696:11: '^'
+                    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17329:11: '^'
                     {
                     match('^'); 
 
@@ -2100,7 +1925,7 @@ public class InternalProbeLangLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18696:44: ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17329:44: ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
             loop10:
             do {
                 int alt10=2;
@@ -2149,10 +1974,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18698:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18698:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17331:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17331:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18698:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17331:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt13=2;
             int LA13_0 = input.LA(1);
 
@@ -2170,10 +1995,10 @@ public class InternalProbeLangLexer extends Lexer {
             }
             switch (alt13) {
                 case 1 :
-                    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18698:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17331:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18698:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17331:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop11:
                     do {
                         int alt11=3;
@@ -2189,7 +2014,7 @@ public class InternalProbeLangLexer extends Lexer {
 
                         switch (alt11) {
                     	case 1 :
-                    	    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18698:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17331:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -2205,7 +2030,7 @@ public class InternalProbeLangLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18698:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17331:66: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -2230,10 +2055,10 @@ public class InternalProbeLangLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18698:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17331:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18698:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17331:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop12:
                     do {
                         int alt12=3;
@@ -2249,7 +2074,7 @@ public class InternalProbeLangLexer extends Lexer {
 
                         switch (alt12) {
                     	case 1 :
-                    	    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18698:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17331:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -2265,7 +2090,7 @@ public class InternalProbeLangLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18698:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17331:137: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -2308,12 +2133,12 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18700:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18700:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17333:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17333:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18700:24: ( options {greedy=false; } : . )*
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17333:24: ( options {greedy=false; } : . )*
             loop14:
             do {
                 int alt14=2;
@@ -2338,7 +2163,7 @@ public class InternalProbeLangLexer extends Lexer {
 
                 switch (alt14) {
             	case 1 :
-            	    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18700:52: .
+            	    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17333:52: .
             	    {
             	    matchAny(); 
 
@@ -2368,12 +2193,12 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18702:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18702:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17335:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17335:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18702:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17335:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop15:
             do {
                 int alt15=2;
@@ -2386,7 +2211,7 @@ public class InternalProbeLangLexer extends Lexer {
 
                 switch (alt15) {
             	case 1 :
-            	    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18702:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17335:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -2406,7 +2231,7 @@ public class InternalProbeLangLexer extends Lexer {
                 }
             } while (true);
 
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18702:40: ( ( '\\r' )? '\\n' )?
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17335:40: ( ( '\\r' )? '\\n' )?
             int alt17=2;
             int LA17_0 = input.LA(1);
 
@@ -2415,9 +2240,9 @@ public class InternalProbeLangLexer extends Lexer {
             }
             switch (alt17) {
                 case 1 :
-                    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18702:41: ( '\\r' )? '\\n'
+                    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17335:41: ( '\\r' )? '\\n'
                     {
-                    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18702:41: ( '\\r' )?
+                    // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17335:41: ( '\\r' )?
                     int alt16=2;
                     int LA16_0 = input.LA(1);
 
@@ -2426,7 +2251,7 @@ public class InternalProbeLangLexer extends Lexer {
                     }
                     switch (alt16) {
                         case 1 :
-                            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18702:41: '\\r'
+                            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17335:41: '\\r'
                             {
                             match('\r'); 
 
@@ -2458,10 +2283,10 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18704:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18704:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17337:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17337:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18704:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17337:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt18=0;
             loop18:
             do {
@@ -2515,8 +2340,8 @@ public class InternalProbeLangLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18706:16: ( . )
-            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:18706:18: .
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17339:16: ( . )
+            // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:17339:18: .
             {
             matchAny(); 
 
@@ -2531,8 +2356,8 @@ public class InternalProbeLangLexer extends Lexer {
     // $ANTLR end "RULE_ANY_OTHER"
 
     public void mTokens() throws RecognitionException {
-        // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:1:8: ( T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | T__86 | T__87 | T__88 | T__89 | RULE_HEX | RULE_INT | RULE_DECIMAL | RULE_ID | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
-        int alt19=86;
+        // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:1:8: ( T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | RULE_HEX | RULE_INT | RULE_DECIMAL | RULE_ID | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
+        int alt19=78;
         alt19 = dfa19.predict(input);
         switch (alt19) {
             case 1 :
@@ -3019,119 +2844,63 @@ public class InternalProbeLangLexer extends Lexer {
                 }
                 break;
             case 70 :
-                // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:1:424: T__82
-                {
-                mT__82(); 
-
-                }
-                break;
-            case 71 :
-                // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:1:430: T__83
-                {
-                mT__83(); 
-
-                }
-                break;
-            case 72 :
-                // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:1:436: T__84
-                {
-                mT__84(); 
-
-                }
-                break;
-            case 73 :
-                // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:1:442: T__85
-                {
-                mT__85(); 
-
-                }
-                break;
-            case 74 :
-                // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:1:448: T__86
-                {
-                mT__86(); 
-
-                }
-                break;
-            case 75 :
-                // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:1:454: T__87
-                {
-                mT__87(); 
-
-                }
-                break;
-            case 76 :
-                // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:1:460: T__88
-                {
-                mT__88(); 
-
-                }
-                break;
-            case 77 :
-                // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:1:466: T__89
-                {
-                mT__89(); 
-
-                }
-                break;
-            case 78 :
-                // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:1:472: RULE_HEX
+                // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:1:424: RULE_HEX
                 {
                 mRULE_HEX(); 
 
                 }
                 break;
-            case 79 :
-                // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:1:481: RULE_INT
+            case 71 :
+                // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:1:433: RULE_INT
                 {
                 mRULE_INT(); 
 
                 }
                 break;
-            case 80 :
-                // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:1:490: RULE_DECIMAL
+            case 72 :
+                // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:1:442: RULE_DECIMAL
                 {
                 mRULE_DECIMAL(); 
 
                 }
                 break;
-            case 81 :
-                // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:1:503: RULE_ID
+            case 73 :
+                // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:1:455: RULE_ID
                 {
                 mRULE_ID(); 
 
                 }
                 break;
-            case 82 :
-                // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:1:511: RULE_STRING
+            case 74 :
+                // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:1:463: RULE_STRING
                 {
                 mRULE_STRING(); 
 
                 }
                 break;
-            case 83 :
-                // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:1:523: RULE_ML_COMMENT
+            case 75 :
+                // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:1:475: RULE_ML_COMMENT
                 {
                 mRULE_ML_COMMENT(); 
 
                 }
                 break;
-            case 84 :
-                // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:1:539: RULE_SL_COMMENT
+            case 76 :
+                // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:1:491: RULE_SL_COMMENT
                 {
                 mRULE_SL_COMMENT(); 
 
                 }
                 break;
-            case 85 :
-                // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:1:555: RULE_WS
+            case 77 :
+                // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:1:507: RULE_WS
                 {
                 mRULE_WS(); 
 
                 }
                 break;
-            case 86 :
-                // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:1:563: RULE_ANY_OTHER
+            case 78 :
+                // ../de.cau.se.instrumentation.language.ui/src-gen/de/cau/se/instrumentation/language/ui/contentassist/antlr/internal/InternalProbeLang.g:1:515: RULE_ANY_OTHER
                 {
                 mRULE_ANY_OTHER(); 
 
@@ -3145,86 +2914,85 @@ public class InternalProbeLangLexer extends Lexer {
 
     protected DFA19 dfa19 = new DFA19(this);
     static final String DFA19_eotS =
-        "\1\uffff\1\61\1\63\1\65\1\67\1\71\1\73\1\75\1\77\1\101\1\104\1\107"+
-        "\1\112\1\uffff\3\115\1\56\4\115\5\uffff\1\115\4\uffff\1\115\1\160"+
-        "\4\115\1\uffff\2\171\1\56\1\uffff\2\56\17\uffff\1\177\17\uffff\1"+
-        "\115\1\uffff\6\115\6\uffff\7\115\1\u0091\1\u0092\5\uffff\1\115\4"+
-        "\uffff\2\115\2\uffff\1\115\1\u0098\4\115\3\uffff\1\171\5\uffff\1"+
-        "\u009e\1\u009f\4\115\1\u00a4\6\115\1\u00ab\3\115\2\uffff\5\115\1"+
-        "\uffff\3\115\1\u00b7\1\115\2\uffff\4\115\1\uffff\4\115\1\u00c2\1"+
-        "\115\1\uffff\1\u00c4\4\115\1\u00c9\2\115\1\u00cc\2\115\1\uffff\1"+
-        "\u00cf\1\u00d0\1\u00d1\1\115\1\u00d3\3\115\1\u00d7\1\115\1\uffff"+
-        "\1\u00d9\1\uffff\4\115\1\uffff\2\115\1\uffff\1\u00e0\1\u00e1\3\uffff"+
-        "\1\u00e2\1\uffff\3\115\1\uffff\1\u00e6\1\uffff\1\u00e7\1\115\1\u00e9"+
-        "\1\u00ea\2\115\3\uffff\1\u00ed\1\u00ee\1\u00ef\2\uffff\1\115\2\uffff"+
-        "\1\u00f1\1\u00f2\3\uffff\1\115\2\uffff\1\115\1\u00f5\1\uffff";
+        "\1\uffff\1\60\1\62\1\64\1\66\1\70\1\72\1\75\1\77\1\101\1\104\1\107"+
+        "\1\112\1\uffff\6\115\3\uffff\1\135\2\uffff\1\115\3\uffff\7\115\1"+
+        "\uffff\2\163\1\55\1\uffff\2\55\17\uffff\1\170\20\uffff\1\115\1\uffff"+
+        "\11\115\1\u0085\1\115\7\uffff\1\u0087\3\uffff\3\115\1\u008b\10\115"+
+        "\2\uffff\1\163\6\uffff\1\u0096\1\u0097\3\115\1\u009b\6\115\1\uffff"+
+        "\1\115\1\uffff\3\115\1\uffff\3\115\1\u00a9\3\115\1\u00ad\2\115\2"+
+        "\uffff\3\115\1\uffff\6\115\1\u00b9\1\u00ba\2\115\1\u00bd\2\115\1"+
+        "\uffff\1\u00c0\2\115\1\uffff\1\u00c3\1\115\1\u00c5\1\115\1\u00c7"+
+        "\3\115\1\u00cb\2\115\2\uffff\2\115\1\uffff\1\u00d0\1\u00d1\1\uffff"+
+        "\1\115\1\u00d3\1\uffff\1\115\1\uffff\1\u00d5\1\uffff\3\115\1\uffff"+
+        "\1\u00d9\3\115\2\uffff\1\u00dd\1\uffff\1\u00de\1\uffff\1\u00df\1"+
+        "\u00e0\1\u00e1\1\uffff\1\115\1\u00e3\1\u00e4\5\uffff\1\115\2\uffff"+
+        "\1\115\1\u00e7\1\uffff";
     static final String DFA19_eofS =
-        "\u00f6\uffff";
+        "\u00e8\uffff";
     static final String DFA19_minS =
-        "\1\0\2\75\1\174\1\46\3\75\1\76\2\56\2\52\1\uffff\1\141\1\143\1\141"+
-        "\1\104\1\141\1\150\1\146\1\163\5\uffff\1\145\4\uffff\1\154\1\72"+
-        "\1\145\1\141\1\150\1\145\1\uffff\2\60\1\44\1\uffff\2\0\17\uffff"+
-        "\1\76\17\uffff\1\154\1\uffff\1\160\1\157\1\151\1\154\1\162\1\156"+
-        "\6\uffff\1\143\1\157\1\160\1\162\1\165\1\160\1\163\2\44\5\uffff"+
-        "\1\143\4\uffff\1\163\1\164\2\uffff\1\146\1\44\1\163\1\151\1\167"+
-        "\1\154\3\uffff\1\60\5\uffff\2\44\1\145\1\160\1\164\1\163\1\44\1"+
-        "\141\1\153\1\164\1\142\1\145\1\157\1\44\1\145\1\157\1\164\2\uffff"+
-        "\1\157\1\165\2\145\1\141\1\uffff\1\145\1\143\1\154\1\44\1\154\2"+
-        "\uffff\1\162\1\145\1\143\1\145\1\uffff\1\154\1\141\2\145\1\44\1"+
-        "\167\1\uffff\1\44\1\162\1\141\2\162\1\44\1\156\1\165\1\44\1\150"+
-        "\1\145\1\uffff\3\44\1\150\1\44\1\154\1\147\1\162\1\44\1\146\1\uffff"+
-        "\1\44\1\uffff\1\164\1\156\1\144\1\156\1\uffff\1\144\1\154\1\uffff"+
-        "\2\44\3\uffff\1\44\1\uffff\1\171\1\145\1\156\1\uffff\1\44\1\uffff"+
-        "\1\44\1\143\2\44\1\163\1\164\3\uffff\3\44\2\uffff\1\145\2\uffff"+
-        "\2\44\3\uffff\1\157\2\uffff\1\146\1\44\1\uffff";
+        "\1\0\2\75\1\174\1\46\3\75\1\76\2\56\2\52\1\uffff\1\141\1\165\2\141"+
+        "\1\146\1\157\3\uffff\1\72\2\uffff\1\163\3\uffff\1\154\1\145\1\141"+
+        "\1\150\1\145\1\150\1\145\1\uffff\2\60\1\44\1\uffff\2\0\17\uffff"+
+        "\1\76\20\uffff\1\154\1\uffff\1\160\1\151\1\154\1\162\1\156\1\143"+
+        "\1\157\1\160\1\163\1\44\1\141\7\uffff\1\44\3\uffff\1\163\1\164\1"+
+        "\146\1\44\1\163\1\151\1\167\1\154\1\160\1\162\1\165\1\164\2\uffff"+
+        "\1\60\6\uffff\2\44\1\145\1\164\1\163\1\44\1\141\1\153\1\164\1\142"+
+        "\1\157\1\164\1\uffff\1\144\1\uffff\2\145\1\141\1\uffff\1\145\1\143"+
+        "\1\154\1\44\1\154\1\145\1\157\1\44\1\145\1\165\2\uffff\1\162\1\143"+
+        "\1\145\1\uffff\1\154\1\141\2\145\1\162\1\141\2\44\1\156\1\165\1"+
+        "\44\1\150\1\145\1\uffff\1\44\1\157\1\167\1\uffff\1\44\1\162\1\44"+
+        "\1\150\1\44\1\154\1\147\1\162\1\44\1\164\1\156\2\uffff\1\144\1\154"+
+        "\1\uffff\2\44\1\uffff\1\146\1\44\1\uffff\1\156\1\uffff\1\44\1\uffff"+
+        "\1\171\1\145\1\156\1\uffff\1\44\1\143\1\163\1\164\2\uffff\1\44\1"+
+        "\uffff\1\44\1\uffff\3\44\1\uffff\1\145\2\44\5\uffff\1\157\2\uffff"+
+        "\1\146\1\44\1\uffff";
     static final String DFA19_maxS =
-        "\1\uffff\1\76\1\75\1\174\1\46\3\75\1\76\1\56\1\72\1\56\1\57\1\uffff"+
-        "\1\141\1\167\1\157\1\167\1\162\1\171\1\156\1\163\5\uffff\1\145\4"+
-        "\uffff\1\170\1\72\1\157\1\141\1\150\1\165\1\uffff\1\170\1\154\1"+
-        "\172\1\uffff\2\uffff\17\uffff\1\76\17\uffff\1\162\1\uffff\1\160"+
-        "\1\157\1\151\1\154\1\162\1\156\6\uffff\1\164\1\157\1\160\1\162\1"+
-        "\171\1\160\1\163\2\172\5\uffff\1\164\4\uffff\1\163\1\164\2\uffff"+
-        "\1\146\1\172\1\164\1\151\1\167\1\154\3\uffff\1\154\5\uffff\2\172"+
-        "\1\145\1\160\1\164\1\163\1\172\1\141\1\153\1\164\1\142\1\145\1\157"+
-        "\1\172\1\145\1\157\1\164\2\uffff\1\157\1\165\2\145\1\141\1\uffff"+
-        "\1\145\1\143\1\154\1\172\1\154\2\uffff\1\162\1\145\1\143\1\145\1"+
-        "\uffff\1\154\1\141\2\145\1\172\1\167\1\uffff\1\172\1\162\1\141\2"+
-        "\162\1\172\1\156\1\165\1\172\1\150\1\145\1\uffff\3\172\1\150\1\172"+
-        "\1\154\1\147\1\162\1\172\1\146\1\uffff\1\172\1\uffff\1\164\1\156"+
-        "\1\144\1\156\1\uffff\1\144\1\154\1\uffff\2\172\3\uffff\1\172\1\uffff"+
-        "\1\171\1\145\1\156\1\uffff\1\172\1\uffff\1\172\1\143\2\172\1\163"+
-        "\1\164\3\uffff\3\172\2\uffff\1\145\2\uffff\2\172\3\uffff\1\157\2"+
-        "\uffff\1\146\1\172\1\uffff";
+        "\1\uffff\1\76\1\75\1\174\1\46\2\75\2\76\1\56\1\72\1\56\1\57\1\uffff"+
+        "\1\141\1\167\1\157\1\162\1\156\1\157\3\uffff\1\72\2\uffff\1\163"+
+        "\3\uffff\1\170\1\157\1\141\1\150\1\165\1\171\1\145\1\uffff\1\170"+
+        "\1\154\1\172\1\uffff\2\uffff\17\uffff\1\76\20\uffff\1\162\1\uffff"+
+        "\1\160\1\151\1\154\1\162\1\156\1\164\1\157\1\160\1\163\1\172\1\141"+
+        "\7\uffff\1\172\3\uffff\1\163\1\164\1\146\1\172\1\164\1\151\1\167"+
+        "\1\154\1\160\1\162\1\171\1\164\2\uffff\1\154\6\uffff\2\172\1\145"+
+        "\1\164\1\163\1\172\1\141\1\153\1\164\1\142\1\157\1\164\1\uffff\1"+
+        "\144\1\uffff\2\145\1\141\1\uffff\1\145\1\143\1\154\1\172\1\154\1"+
+        "\145\1\157\1\172\1\145\1\165\2\uffff\1\162\1\143\1\145\1\uffff\1"+
+        "\154\1\141\2\145\1\162\1\141\2\172\1\156\1\165\1\172\1\150\1\145"+
+        "\1\uffff\1\172\1\157\1\167\1\uffff\1\172\1\162\1\172\1\150\1\172"+
+        "\1\154\1\147\1\162\1\172\1\164\1\156\2\uffff\1\144\1\154\1\uffff"+
+        "\2\172\1\uffff\1\146\1\172\1\uffff\1\156\1\uffff\1\172\1\uffff\1"+
+        "\171\1\145\1\156\1\uffff\1\172\1\143\1\163\1\164\2\uffff\1\172\1"+
+        "\uffff\1\172\1\uffff\3\172\1\uffff\1\145\2\172\5\uffff\1\157\2\uffff"+
+        "\1\146\1\172\1\uffff";
     static final String DFA19_acceptS =
-        "\15\uffff\1\25\10\uffff\1\47\1\50\1\51\1\53\1\54\1\uffff\1\60\1"+
-        "\62\1\63\1\64\6\uffff\1\111\3\uffff\1\121\2\uffff\1\125\1\126\1"+
-        "\5\1\15\1\1\1\2\1\20\1\3\1\57\1\4\1\110\1\6\1\26\1\7\1\11\1\uffff"+
-        "\1\12\1\13\1\21\1\14\1\27\1\16\1\112\1\33\1\23\1\113\1\22\1\123"+
-        "\1\124\1\24\1\25\1\uffff\1\121\6\uffff\1\34\1\35\1\36\1\37\1\40"+
-        "\1\41\11\uffff\1\47\1\50\1\51\1\53\1\54\1\uffff\1\60\1\62\1\63\1"+
-        "\64\2\uffff\1\76\1\70\6\uffff\1\111\1\116\1\117\1\uffff\1\120\1"+
-        "\122\1\125\1\17\1\10\21\uffff\1\65\1\45\5\uffff\1\75\5\uffff\1\30"+
-        "\1\114\4\uffff\1\73\6\uffff\1\104\13\uffff\1\77\12\uffff\1\43\1"+
-        "\uffff\1\115\4\uffff\1\66\2\uffff\1\72\2\uffff\1\100\1\31\1\56\1"+
-        "\uffff\1\32\3\uffff\1\52\1\uffff\1\102\6\uffff\1\106\1\74\1\67\3"+
-        "\uffff\1\101\1\44\1\uffff\1\55\1\103\2\uffff\1\105\1\42\1\46\1\uffff"+
-        "\1\107\1\71\2\uffff\1\61";
+        "\15\uffff\1\26\6\uffff\1\40\1\41\1\42\1\uffff\1\45\1\46\1\uffff"+
+        "\1\51\1\52\1\53\7\uffff\1\100\3\uffff\1\111\2\uffff\1\115\1\116"+
+        "\1\5\1\15\1\1\1\2\1\21\1\3\1\103\1\4\1\77\1\6\1\27\1\7\1\11\1\uffff"+
+        "\1\16\1\12\1\13\1\22\1\14\1\30\1\17\1\101\1\75\1\24\1\102\1\23\1"+
+        "\113\1\114\1\25\1\26\1\uffff\1\111\13\uffff\1\40\1\41\1\42\1\64"+
+        "\1\44\1\45\1\46\1\uffff\1\51\1\52\1\53\14\uffff\1\100\1\106\1\uffff"+
+        "\1\107\1\110\1\112\1\115\1\20\1\10\14\uffff\1\54\1\uffff\1\50\3"+
+        "\uffff\1\63\12\uffff\1\31\1\104\3\uffff\1\61\15\uffff\1\65\3\uffff"+
+        "\1\72\13\uffff\1\36\1\55\2\uffff\1\60\2\uffff\1\66\2\uffff\1\105"+
+        "\1\uffff\1\32\1\uffff\1\33\3\uffff\1\43\4\uffff\1\74\1\62\1\uffff"+
+        "\1\70\1\uffff\1\56\3\uffff\1\35\3\uffff\1\67\1\71\1\73\1\34\1\37"+
+        "\1\uffff\1\76\1\57\2\uffff\1\47";
     static final String DFA19_specialS =
-        "\1\0\52\uffff\1\1\1\2\u00c9\uffff}>";
+        "\1\0\51\uffff\1\1\1\2\u00bc\uffff}>";
     static final String[] DFA19_transitionS = {
-            "\11\56\2\55\2\56\1\55\22\56\1\55\1\5\1\53\1\46\1\52\1\15\1\4"+
-            "\1\54\1\26\1\27\1\13\1\2\1\30\1\10\1\11\1\14\1\47\11\50\1\41"+
-            "\1\37\1\7\1\1\1\6\1\12\1\34\32\52\1\35\1\21\1\36\1\51\1\52\1"+
-            "\56\1\25\1\52\1\43\1\42\1\40\1\20\2\52\1\24\4\52\1\45\1\52\1"+
-            "\22\1\52\1\33\1\17\1\23\1\52\1\16\1\44\3\52\1\31\1\3\1\32\uff82"+
-            "\56",
-            "\1\57\1\60",
-            "\1\62",
-            "\1\64",
-            "\1\66",
-            "\1\70",
-            "\1\72",
-            "\1\74",
+            "\11\55\2\54\2\55\1\54\22\55\1\54\1\5\1\52\1\45\1\51\1\15\1\4"+
+            "\1\53\1\24\1\25\1\13\1\2\1\26\1\10\1\11\1\14\1\46\11\47\1\27"+
+            "\1\35\1\7\1\1\1\6\1\12\1\55\32\51\1\34\1\55\1\33\1\50\1\51\1"+
+            "\55\1\32\1\51\1\40\1\37\1\36\1\20\2\51\1\22\2\51\1\23\1\51\1"+
+            "\42\1\51\1\21\1\51\1\44\1\17\1\43\1\51\1\16\1\41\3\51\1\30\1"+
+            "\3\1\31\uff82\55",
+            "\1\56\1\57",
+            "\1\61",
+            "\1\63",
+            "\1\65",
+            "\1\67",
+            "\1\71",
+            "\1\73\1\74",
             "\1\76",
             "\1\100",
             "\1\103\13\uffff\1\102",
@@ -3232,40 +3000,38 @@ public class InternalProbeLangLexer extends Lexer {
             "\1\110\4\uffff\1\111",
             "",
             "\1\114",
-            "\1\117\21\uffff\1\116\1\uffff\1\120",
-            "\1\121\7\uffff\1\123\5\uffff\1\122",
-            "\1\131\16\uffff\1\125\3\uffff\1\127\14\uffff\1\130\16\uffff"+
-            "\1\124\3\uffff\1\126",
-            "\1\132\20\uffff\1\133",
-            "\1\135\11\uffff\1\136\6\uffff\1\134",
-            "\1\141\6\uffff\1\137\1\140",
-            "\1\142",
+            "\1\116\1\uffff\1\117",
+            "\1\120\7\uffff\1\122\5\uffff\1\121",
+            "\1\123\20\uffff\1\124",
+            "\1\127\6\uffff\1\125\1\126",
+            "\1\130",
             "",
             "",
             "",
+            "\1\134",
             "",
             "",
+            "\1\140",
+            "",
+            "",
+            "",
+            "\1\144\13\uffff\1\145",
+            "\1\146\11\uffff\1\147",
             "\1\150",
-            "",
-            "",
-            "",
-            "",
-            "\1\155\13\uffff\1\156",
+            "\1\151",
+            "\1\152\17\uffff\1\153",
+            "\1\155\11\uffff\1\156\6\uffff\1\154",
             "\1\157",
-            "\1\161\11\uffff\1\162",
-            "\1\163",
-            "\1\164",
-            "\1\165\17\uffff\1\166",
             "",
-            "\12\172\10\uffff\1\173\1\uffff\3\173\5\uffff\1\173\13\uffff"+
-            "\1\170\6\uffff\1\172\2\uffff\1\173\1\uffff\3\173\5\uffff\1\173"+
-            "\13\uffff\1\170",
-            "\12\172\10\uffff\1\173\1\uffff\3\173\5\uffff\1\173\22\uffff"+
-            "\1\172\2\uffff\1\173\1\uffff\3\173\5\uffff\1\173",
+            "\12\162\10\uffff\1\164\1\uffff\3\164\5\uffff\1\164\13\uffff"+
+            "\1\161\6\uffff\1\162\2\uffff\1\164\1\uffff\3\164\5\uffff\1\164"+
+            "\13\uffff\1\161",
+            "\12\162\10\uffff\1\164\1\uffff\3\164\5\uffff\1\164\22\uffff"+
+            "\1\162\2\uffff\1\164\1\uffff\3\164\5\uffff\1\164",
             "\1\115\34\uffff\32\115\4\uffff\1\115\1\uffff\32\115",
             "",
-            "\0\174",
-            "\0\174",
+            "\0\165",
+            "\0\165",
             "",
             "",
             "",
@@ -3281,170 +3047,193 @@ public class InternalProbeLangLexer extends Lexer {
             "",
             "",
             "",
+            "\1\167",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "\1\171\5\uffff\1\172",
+            "",
+            "\1\173",
+            "\1\174",
+            "\1\175",
             "\1\176",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "\1\u0080\5\uffff\1\u0081",
-            "",
+            "\1\177",
+            "\1\u0080\20\uffff\1\u0081",
             "\1\u0082",
             "\1\u0083",
             "\1\u0084",
-            "\1\u0085",
+            "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
+            "\32\115",
             "\1\u0086",
-            "\1\u0087",
             "",
             "",
             "",
             "",
             "",
             "",
-            "\1\u0088\20\uffff\1\u0089",
+            "",
+            "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
+            "\32\115",
+            "",
+            "",
+            "",
+            "\1\u0088",
+            "\1\u0089",
             "\1\u008a",
-            "\1\u008b",
-            "\1\u008c",
-            "\1\u008e\3\uffff\1\u008d",
+            "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
+            "\32\115",
+            "\1\u008c\1\u008d",
+            "\1\u008e",
             "\1\u008f",
             "\1\u0090",
-            "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
-            "\32\115",
-            "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
-            "\32\115",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "\1\u0093\20\uffff\1\u0094",
-            "",
-            "",
-            "",
-            "",
+            "\1\u0091",
+            "\1\u0092",
+            "\1\u0094\3\uffff\1\u0093",
             "\1\u0095",
-            "\1\u0096",
             "",
             "",
-            "\1\u0097",
+            "\12\162\10\uffff\1\164\1\uffff\3\164\5\uffff\1\164\22\uffff"+
+            "\1\162\2\uffff\1\164\1\uffff\3\164\5\uffff\1\164",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
             "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
             "\32\115",
-            "\1\u0099\1\u009a",
-            "\1\u009b",
+            "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
+            "\32\115",
+            "\1\u0098",
+            "\1\u0099",
+            "\1\u009a",
+            "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
+            "\32\115",
             "\1\u009c",
             "\1\u009d",
-            "",
-            "",
-            "",
-            "\12\172\10\uffff\1\173\1\uffff\3\173\5\uffff\1\173\22\uffff"+
-            "\1\172\2\uffff\1\173\1\uffff\3\173\5\uffff\1\173",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
-            "\32\115",
-            "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
-            "\32\115",
+            "\1\u009e",
+            "\1\u009f",
             "\1\u00a0",
             "\1\u00a1",
+            "",
             "\1\u00a2",
+            "",
             "\1\u00a3",
-            "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
-            "\32\115",
+            "\1\u00a4",
             "\1\u00a5",
+            "",
             "\1\u00a6",
             "\1\u00a7",
             "\1\u00a8",
-            "\1\u00a9",
-            "\1\u00aa",
             "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
             "\32\115",
+            "\1\u00aa",
+            "\1\u00ab",
             "\1\u00ac",
-            "\1\u00ad",
+            "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
+            "\32\115",
             "\1\u00ae",
-            "",
-            "",
             "\1\u00af",
+            "",
+            "",
             "\1\u00b0",
             "\1\u00b1",
             "\1\u00b2",
-            "\1\u00b3",
             "",
+            "\1\u00b3",
             "\1\u00b4",
             "\1\u00b5",
             "\1\u00b6",
+            "\1\u00b7",
+            "\1\u00b8",
             "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
             "\32\115",
-            "\1\u00b8",
-            "",
-            "",
-            "\1\u00b9",
-            "\1\u00ba",
+            "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
+            "\32\115",
             "\1\u00bb",
             "\1\u00bc",
-            "",
-            "\1\u00bd",
+            "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
+            "\32\115",
             "\1\u00be",
             "\1\u00bf",
-            "\1\u00c0",
-            "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
-            "\16\115\1\u00c1\13\115",
-            "\1\u00c3",
             "",
             "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
             "\32\115",
-            "\1\u00c5",
+            "\1\u00c1",
+            "\1\u00c2",
+            "",
+            "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
+            "\32\115",
+            "\1\u00c4",
+            "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
+            "\32\115",
             "\1\u00c6",
-            "\1\u00c7",
+            "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
+            "\32\115",
             "\1\u00c8",
-            "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
-            "\32\115",
+            "\1\u00c9",
             "\1\u00ca",
-            "\1\u00cb",
             "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
             "\32\115",
+            "\1\u00cc",
             "\1\u00cd",
+            "",
+            "",
             "\1\u00ce",
+            "\1\u00cf",
             "",
             "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
             "\32\115",
             "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
             "\32\115",
-            "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
-            "\32\115",
+            "",
             "\1\u00d2",
             "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
             "\32\115",
+            "",
             "\1\u00d4",
-            "\1\u00d5",
-            "\1\u00d6",
+            "",
             "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
             "\32\115",
+            "",
+            "\1\u00d6",
+            "\1\u00d7",
             "\1\u00d8",
             "",
             "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
             "\32\115",
-            "",
             "\1\u00da",
             "\1\u00db",
             "\1\u00dc",
-            "\1\u00dd",
             "",
-            "\1\u00de",
-            "\1\u00df",
             "",
+            "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
+            "\32\115",
+            "",
+            "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
+            "\32\115",
+            "",
+            "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
+            "\32\115",
+            "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
+            "\32\115",
+            "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
+            "\32\115",
+            "",
+            "\1\u00e2",
             "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
             "\32\115",
             "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
@@ -3452,50 +3241,12 @@ public class InternalProbeLangLexer extends Lexer {
             "",
             "",
             "",
-            "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
-            "\32\115",
             "",
-            "\1\u00e3",
-            "\1\u00e4",
+            "",
             "\1\u00e5",
             "",
-            "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
-            "\32\115",
             "",
-            "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
-            "\32\115",
-            "\1\u00e8",
-            "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
-            "\32\115",
-            "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
-            "\32\115",
-            "\1\u00eb",
-            "\1\u00ec",
-            "",
-            "",
-            "",
-            "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
-            "\32\115",
-            "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
-            "\32\115",
-            "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
-            "\32\115",
-            "",
-            "",
-            "\1\u00f0",
-            "",
-            "",
-            "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
-            "\32\115",
-            "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
-            "\32\115",
-            "",
-            "",
-            "",
-            "\1\u00f3",
-            "",
-            "",
-            "\1\u00f4",
+            "\1\u00e6",
             "\1\115\13\uffff\12\115\7\uffff\32\115\4\uffff\1\115\1\uffff"+
             "\32\115",
             ""
@@ -3531,7 +3282,7 @@ public class InternalProbeLangLexer extends Lexer {
             this.transition = DFA19_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | T__86 | T__87 | T__88 | T__89 | RULE_HEX | RULE_INT | RULE_DECIMAL | RULE_ID | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
+            return "1:1: Tokens : ( T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | RULE_HEX | RULE_INT | RULE_DECIMAL | RULE_ID | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;
@@ -3573,85 +3324,83 @@ public class InternalProbeLangLexer extends Lexer {
 
                         else if ( (LA19_0=='f') ) {s = 16;}
 
-                        else if ( (LA19_0=='\\') ) {s = 17;}
+                        else if ( (LA19_0=='p') ) {s = 17;}
 
-                        else if ( (LA19_0=='p') ) {s = 18;}
+                        else if ( (LA19_0=='i') ) {s = 18;}
 
-                        else if ( (LA19_0=='t') ) {s = 19;}
+                        else if ( (LA19_0=='l') ) {s = 19;}
 
-                        else if ( (LA19_0=='i') ) {s = 20;}
+                        else if ( (LA19_0=='(') ) {s = 20;}
 
-                        else if ( (LA19_0=='a') ) {s = 21;}
+                        else if ( (LA19_0==')') ) {s = 21;}
 
-                        else if ( (LA19_0=='(') ) {s = 22;}
+                        else if ( (LA19_0==',') ) {s = 22;}
 
-                        else if ( (LA19_0==')') ) {s = 23;}
+                        else if ( (LA19_0==':') ) {s = 23;}
 
-                        else if ( (LA19_0==',') ) {s = 24;}
+                        else if ( (LA19_0=='{') ) {s = 24;}
 
-                        else if ( (LA19_0=='{') ) {s = 25;}
+                        else if ( (LA19_0=='}') ) {s = 25;}
 
-                        else if ( (LA19_0=='}') ) {s = 26;}
+                        else if ( (LA19_0=='a') ) {s = 26;}
 
-                        else if ( (LA19_0=='r') ) {s = 27;}
+                        else if ( (LA19_0==']') ) {s = 27;}
 
-                        else if ( (LA19_0=='@') ) {s = 28;}
+                        else if ( (LA19_0=='[') ) {s = 28;}
 
-                        else if ( (LA19_0=='[') ) {s = 29;}
+                        else if ( (LA19_0==';') ) {s = 29;}
 
-                        else if ( (LA19_0==']') ) {s = 30;}
+                        else if ( (LA19_0=='e') ) {s = 30;}
 
-                        else if ( (LA19_0==';') ) {s = 31;}
+                        else if ( (LA19_0=='d') ) {s = 31;}
 
-                        else if ( (LA19_0=='e') ) {s = 32;}
+                        else if ( (LA19_0=='c') ) {s = 32;}
 
-                        else if ( (LA19_0==':') ) {s = 33;}
+                        else if ( (LA19_0=='w') ) {s = 33;}
 
-                        else if ( (LA19_0=='d') ) {s = 34;}
+                        else if ( (LA19_0=='n') ) {s = 34;}
 
-                        else if ( (LA19_0=='c') ) {s = 35;}
+                        else if ( (LA19_0=='t') ) {s = 35;}
 
-                        else if ( (LA19_0=='w') ) {s = 36;}
+                        else if ( (LA19_0=='r') ) {s = 36;}
 
-                        else if ( (LA19_0=='n') ) {s = 37;}
+                        else if ( (LA19_0=='#') ) {s = 37;}
 
-                        else if ( (LA19_0=='#') ) {s = 38;}
+                        else if ( (LA19_0=='0') ) {s = 38;}
 
-                        else if ( (LA19_0=='0') ) {s = 39;}
+                        else if ( ((LA19_0>='1' && LA19_0<='9')) ) {s = 39;}
 
-                        else if ( ((LA19_0>='1' && LA19_0<='9')) ) {s = 40;}
+                        else if ( (LA19_0=='^') ) {s = 40;}
 
-                        else if ( (LA19_0=='^') ) {s = 41;}
+                        else if ( (LA19_0=='$'||(LA19_0>='A' && LA19_0<='Z')||LA19_0=='_'||LA19_0=='b'||(LA19_0>='g' && LA19_0<='h')||(LA19_0>='j' && LA19_0<='k')||LA19_0=='m'||LA19_0=='o'||LA19_0=='q'||LA19_0=='u'||(LA19_0>='x' && LA19_0<='z')) ) {s = 41;}
 
-                        else if ( (LA19_0=='$'||(LA19_0>='A' && LA19_0<='Z')||LA19_0=='_'||LA19_0=='b'||(LA19_0>='g' && LA19_0<='h')||(LA19_0>='j' && LA19_0<='m')||LA19_0=='o'||LA19_0=='q'||LA19_0=='u'||(LA19_0>='x' && LA19_0<='z')) ) {s = 42;}
+                        else if ( (LA19_0=='\"') ) {s = 42;}
 
-                        else if ( (LA19_0=='\"') ) {s = 43;}
+                        else if ( (LA19_0=='\'') ) {s = 43;}
 
-                        else if ( (LA19_0=='\'') ) {s = 44;}
+                        else if ( ((LA19_0>='\t' && LA19_0<='\n')||LA19_0=='\r'||LA19_0==' ') ) {s = 44;}
 
-                        else if ( ((LA19_0>='\t' && LA19_0<='\n')||LA19_0=='\r'||LA19_0==' ') ) {s = 45;}
-
-                        else if ( ((LA19_0>='\u0000' && LA19_0<='\b')||(LA19_0>='\u000B' && LA19_0<='\f')||(LA19_0>='\u000E' && LA19_0<='\u001F')||LA19_0=='`'||(LA19_0>='~' && LA19_0<='\uFFFF')) ) {s = 46;}
+                        else if ( ((LA19_0>='\u0000' && LA19_0<='\b')||(LA19_0>='\u000B' && LA19_0<='\f')||(LA19_0>='\u000E' && LA19_0<='\u001F')||LA19_0=='@'||LA19_0=='\\'||LA19_0=='`'||(LA19_0>='~' && LA19_0<='\uFFFF')) ) {s = 45;}
 
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
-                        int LA19_43 = input.LA(1);
+                        int LA19_42 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA19_43>='\u0000' && LA19_43<='\uFFFF')) ) {s = 124;}
+                        if ( ((LA19_42>='\u0000' && LA19_42<='\uFFFF')) ) {s = 117;}
 
-                        else s = 46;
+                        else s = 45;
 
                         if ( s>=0 ) return s;
                         break;
                     case 2 : 
-                        int LA19_44 = input.LA(1);
+                        int LA19_43 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA19_44>='\u0000' && LA19_44<='\uFFFF')) ) {s = 124;}
+                        if ( ((LA19_43>='\u0000' && LA19_43<='\uFFFF')) ) {s = 117;}
 
-                        else s = 46;
+                        else s = 45;
 
                         if ( s>=0 ) return s;
                         break;

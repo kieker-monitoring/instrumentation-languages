@@ -8,19 +8,18 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 Model:
 	'package' name = QualifiedName
+	(metaModels += LoadMetaModel)*
 	(imports += Import)*
-	(types+=DataTypeDeclaration)*
 	(patterns+=Pattern)*
 	(probes+=Probe)*
 ;
 
-DataTypeDeclaration:
-	'type' name=ID
+Import:
+	'import' importedNamespace = QualifiedNameWithWildcard
 ;
 
-
-Import :
-	'import' ePackage=[ecore::EPackage|STRING] 'as' name=ID
+LoadMetaModel :
+	'load' name=ID ePackage=[ecore::EPackage|STRING] 
 ;
 
 QualifiedNameWithWildcard:
@@ -28,7 +27,7 @@ QualifiedNameWithWildcard:
 ;
 
 Pattern:
-	'pattern' name=ID '(' parameters+=Parameter (',' parameters+=Parameter)* ')' 
+	'pattern' name=ID ( '(' parameters+=Parameter (',' parameters+=Parameter)* ')' )? 
 	(codeSequcene+=CodeElement)*
 ;
 
@@ -49,94 +48,16 @@ ParameterRef:
 ;
 
 Probe:
-	'probe' name=ID '{'
-		(record=RecordDeclaration)?
-		(replacements+=Replacement)*
+	'probe' name=ID ':' type=[ecore::EClassifier|ID] '{'
+		(properties+=Property)*
 	'}'
-;
-
-RecordDeclaration:
-	'record' '{' (properties+=Property)+ '}'
 ;
 
 Property:
-	type=[DataTypeDeclaration|ID] name=ID
+	type=[ecore::EClassifier|ID] name=ID ('{' (properties+=ReferenceProperty)* '}')?
 ;
 
-Replacement:
-	name=ID scope=Scope '{'
-		(patterns+=PatternCall)*
-	'}'
+ReferenceProperty:
+	ref=[ecore::EReference|ID] ('{' (properties+=ReferenceProperty)* '}')? 
 ;
 
-Scope:
-	'scope' modelRef=QualifiedName (insertBefore?='<')? target=Alternative (insertAfter?='>')?
-;
-
-Alternative:
-	orExpr+=Sequence ('|' orExpr+=Sequence)*	
-;
-
-Sequence:
-	(andExpr+=Quantifier)+
-;
-
-Quantifier:
-	item=Item (type=QuantifierType)?	
-;
-
-Item returns xbase::XExpression:
-	Operator | XStringLiteral | Group
-;
-
-Operator:
-	type=OperatorType
-;
-
-Group:
-	'(' subTarget=Alternative ')'	
-;
-
-PatternCall:
-	ref=[Pattern|ID] '(' values+=Value (',' values+=Value)* ')'
-;
-
-Value:
-	(elements+=StringElement)+
-;
-
-StringElement:
-	(toUpper?='#')? value=ValueElement
-;
-
-ValueElement returns xbase::XExpression:
-	XStringLiteral | PatternCall | ScopeRefElement | PropertyReference
-;
-
-PropertyReference:
-	ref=[Property|ID]
-;
-
-
-ScopeRefElement:
-	//ref=[ecore::ENamedElement|QualifiedName]
-	'@' ref=QualifiedName
-;
-
-/* */
-
-enum QuantifierType:
-	NONE_OR_MANY = '*' |
-	OPTIONAL = '?' |
-	ONE_OR_MANY = '+'	
-;
-
-enum OperatorType:
-	ANY_CHAR = '.' |
-	WHITE_SPACE = '\\s' |
-	NON_WHITE_SPACE = '\\S' |
-	WORD_CHAR = '\\w' |
-	NON_WORD_CHAR = '\\W' |
-	DIGIT = '\\d' |
-	NON_DIGIT = '\\D' 
-;

@@ -1,7 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
  */
 package de.cau.se.instrumentation.language.probeLang;
 
@@ -35,15 +32,6 @@ public interface ProbeLangFactory extends EFactory
   Model createModel();
 
   /**
-   * Returns a new object of class '<em>Data Type Declaration</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Data Type Declaration</em>'.
-   * @generated
-   */
-  DataTypeDeclaration createDataTypeDeclaration();
-
-  /**
    * Returns a new object of class '<em>Import</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -51,6 +39,15 @@ public interface ProbeLangFactory extends EFactory
    * @generated
    */
   Import createImport();
+
+  /**
+   * Returns a new object of class '<em>Load Meta Model</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Load Meta Model</em>'.
+   * @generated
+   */
+  LoadMetaModel createLoadMetaModel();
 
   /**
    * Returns a new object of class '<em>Pattern</em>'.
@@ -98,15 +95,6 @@ public interface ProbeLangFactory extends EFactory
   Probe createProbe();
 
   /**
-   * Returns a new object of class '<em>Record Declaration</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Record Declaration</em>'.
-   * @generated
-   */
-  RecordDeclaration createRecordDeclaration();
-
-  /**
    * Returns a new object of class '<em>Property</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -116,112 +104,13 @@ public interface ProbeLangFactory extends EFactory
   Property createProperty();
 
   /**
-   * Returns a new object of class '<em>Replacement</em>'.
+   * Returns a new object of class '<em>Reference Property</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Replacement</em>'.
+   * @return a new object of class '<em>Reference Property</em>'.
    * @generated
    */
-  Replacement createReplacement();
-
-  /**
-   * Returns a new object of class '<em>Scope</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Scope</em>'.
-   * @generated
-   */
-  Scope createScope();
-
-  /**
-   * Returns a new object of class '<em>Alternative</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Alternative</em>'.
-   * @generated
-   */
-  Alternative createAlternative();
-
-  /**
-   * Returns a new object of class '<em>Sequence</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Sequence</em>'.
-   * @generated
-   */
-  Sequence createSequence();
-
-  /**
-   * Returns a new object of class '<em>Quantifier</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Quantifier</em>'.
-   * @generated
-   */
-  Quantifier createQuantifier();
-
-  /**
-   * Returns a new object of class '<em>Operator</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Operator</em>'.
-   * @generated
-   */
-  Operator createOperator();
-
-  /**
-   * Returns a new object of class '<em>Group</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Group</em>'.
-   * @generated
-   */
-  Group createGroup();
-
-  /**
-   * Returns a new object of class '<em>Pattern Call</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Pattern Call</em>'.
-   * @generated
-   */
-  PatternCall createPatternCall();
-
-  /**
-   * Returns a new object of class '<em>Value</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Value</em>'.
-   * @generated
-   */
-  Value createValue();
-
-  /**
-   * Returns a new object of class '<em>String Element</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>String Element</em>'.
-   * @generated
-   */
-  StringElement createStringElement();
-
-  /**
-   * Returns a new object of class '<em>Property Reference</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Property Reference</em>'.
-   * @generated
-   */
-  PropertyReference createPropertyReference();
-
-  /**
-   * Returns a new object of class '<em>Scope Ref Element</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Scope Ref Element</em>'.
-   * @generated
-   */
-  ScopeRefElement createScopeRefElement();
+  ReferenceProperty createReferenceProperty();
 
   /**
    * Returns the package supported by this factory.

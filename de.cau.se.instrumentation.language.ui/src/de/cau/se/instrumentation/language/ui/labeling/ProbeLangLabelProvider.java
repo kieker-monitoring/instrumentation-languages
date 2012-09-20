@@ -13,7 +13,6 @@ import de.cau.se.instrumentation.language.probeLang.CodeElement;
 import de.cau.se.instrumentation.language.probeLang.Parameter;
 import de.cau.se.instrumentation.language.probeLang.ParameterRef;
 import de.cau.se.instrumentation.language.probeLang.Property;
-import de.cau.se.instrumentation.language.probeLang.RecordDeclaration;
 
 /**
  * Provides labels for a EObjects.
@@ -45,10 +44,6 @@ public class ProbeLangLabelProvider extends DefaultEObjectLabelProvider {
 				return "# " + ((ParameterRef)element.getValue()).getRef().getName();
 			else
 				return ((ParameterRef)element.getValue()).getRef().getName();
-	}
-
-	String text(RecordDeclaration element) {
-		return "record";
 	}
 	
 	String text(Property element) {

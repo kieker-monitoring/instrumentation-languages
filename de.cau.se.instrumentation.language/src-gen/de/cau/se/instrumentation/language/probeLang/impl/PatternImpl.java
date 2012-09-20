@@ -1,7 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
  */
 package de.cau.se.instrumentation.language.probeLang.impl;
 

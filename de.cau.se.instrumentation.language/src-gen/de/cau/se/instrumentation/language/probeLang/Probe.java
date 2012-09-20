@@ -1,12 +1,10 @@
 /**
- * <copyright>
- * </copyright>
- *
  */
 package de.cau.se.instrumentation.language.probeLang;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -18,8 +16,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link de.cau.se.instrumentation.language.probeLang.Probe#getName <em>Name</em>}</li>
- *   <li>{@link de.cau.se.instrumentation.language.probeLang.Probe#getRecord <em>Record</em>}</li>
- *   <li>{@link de.cau.se.instrumentation.language.probeLang.Probe#getReplacements <em>Replacements</em>}</li>
+ *   <li>{@link de.cau.se.instrumentation.language.probeLang.Probe#getType <em>Type</em>}</li>
+ *   <li>{@link de.cau.se.instrumentation.language.probeLang.Probe#getProperties <em>Properties</em>}</li>
  * </ul>
  * </p>
  *
@@ -56,45 +54,45 @@ public interface Probe extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Record</b></em>' containment reference.
+   * Returns the value of the '<em><b>Type</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Record</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Type</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Record</em>' containment reference.
-   * @see #setRecord(RecordDeclaration)
-   * @see de.cau.se.instrumentation.language.probeLang.ProbeLangPackage#getProbe_Record()
-   * @model containment="true"
+   * @return the value of the '<em>Type</em>' reference.
+   * @see #setType(EClassifier)
+   * @see de.cau.se.instrumentation.language.probeLang.ProbeLangPackage#getProbe_Type()
+   * @model
    * @generated
    */
-  RecordDeclaration getRecord();
+  EClassifier getType();
 
   /**
-   * Sets the value of the '{@link de.cau.se.instrumentation.language.probeLang.Probe#getRecord <em>Record</em>}' containment reference.
+   * Sets the value of the '{@link de.cau.se.instrumentation.language.probeLang.Probe#getType <em>Type</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Record</em>' containment reference.
-   * @see #getRecord()
+   * @param value the new value of the '<em>Type</em>' reference.
+   * @see #getType()
    * @generated
    */
-  void setRecord(RecordDeclaration value);
+  void setType(EClassifier value);
 
   /**
-   * Returns the value of the '<em><b>Replacements</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.se.instrumentation.language.probeLang.Replacement}.
+   * Returns the value of the '<em><b>Properties</b></em>' containment reference list.
+   * The list contents are of type {@link de.cau.se.instrumentation.language.probeLang.Property}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Replacements</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Properties</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Replacements</em>' containment reference list.
-   * @see de.cau.se.instrumentation.language.probeLang.ProbeLangPackage#getProbe_Replacements()
+   * @return the value of the '<em>Properties</em>' containment reference list.
+   * @see de.cau.se.instrumentation.language.probeLang.ProbeLangPackage#getProbe_Properties()
    * @model containment="true"
    * @generated
    */
-  EList<Replacement> getReplacements();
+  EList<Property> getProperties();
 
 } // Probe

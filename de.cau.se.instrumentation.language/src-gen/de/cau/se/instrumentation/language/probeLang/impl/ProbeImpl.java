@@ -1,14 +1,10 @@
 /**
- * <copyright>
- * </copyright>
- *
  */
 package de.cau.se.instrumentation.language.probeLang.impl;
 
 import de.cau.se.instrumentation.language.probeLang.Probe;
 import de.cau.se.instrumentation.language.probeLang.ProbeLangPackage;
-import de.cau.se.instrumentation.language.probeLang.RecordDeclaration;
-import de.cau.se.instrumentation.language.probeLang.Replacement;
+import de.cau.se.instrumentation.language.probeLang.Property;
 
 import java.util.Collection;
 
@@ -18,6 +14,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -34,8 +31,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.cau.se.instrumentation.language.probeLang.impl.ProbeImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.cau.se.instrumentation.language.probeLang.impl.ProbeImpl#getRecord <em>Record</em>}</li>
- *   <li>{@link de.cau.se.instrumentation.language.probeLang.impl.ProbeImpl#getReplacements <em>Replacements</em>}</li>
+ *   <li>{@link de.cau.se.instrumentation.language.probeLang.impl.ProbeImpl#getType <em>Type</em>}</li>
+ *   <li>{@link de.cau.se.instrumentation.language.probeLang.impl.ProbeImpl#getProperties <em>Properties</em>}</li>
  * </ul>
  * </p>
  *
@@ -64,24 +61,24 @@ public class ProbeImpl extends MinimalEObjectImpl.Container implements Probe
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getRecord() <em>Record</em>}' containment reference.
+   * The cached value of the '{@link #getType() <em>Type</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRecord()
+   * @see #getType()
    * @generated
    * @ordered
    */
-  protected RecordDeclaration record;
+  protected EClassifier type;
 
   /**
-   * The cached value of the '{@link #getReplacements() <em>Replacements</em>}' containment reference list.
+   * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getReplacements()
+   * @see #getProperties()
    * @generated
    * @ordered
    */
-  protected EList<Replacement> replacements;
+  protected EList<Property> properties;
 
   /**
    * <!-- begin-user-doc -->
@@ -132,9 +129,19 @@ public class ProbeImpl extends MinimalEObjectImpl.Container implements Probe
    * <!-- end-user-doc -->
    * @generated
    */
-  public RecordDeclaration getRecord()
+  public EClassifier getType()
   {
-    return record;
+    if (type != null && type.eIsProxy())
+    {
+      InternalEObject oldType = (InternalEObject)type;
+      type = (EClassifier)eResolveProxy(oldType);
+      if (type != oldType)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProbeLangPackage.PROBE__TYPE, oldType, type));
+      }
+    }
+    return type;
   }
 
   /**
@@ -142,16 +149,22 @@ public class ProbeImpl extends MinimalEObjectImpl.Container implements Probe
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetRecord(RecordDeclaration newRecord, NotificationChain msgs)
+  public EClassifier basicGetType()
   {
-    RecordDeclaration oldRecord = record;
-    record = newRecord;
+    return type;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setType(EClassifier newType)
+  {
+    EClassifier oldType = type;
+    type = newType;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ProbeLangPackage.PROBE__RECORD, oldRecord, newRecord);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
+      eNotify(new ENotificationImpl(this, Notification.SET, ProbeLangPackage.PROBE__TYPE, oldType, type));
   }
 
   /**
@@ -159,34 +172,13 @@ public class ProbeImpl extends MinimalEObjectImpl.Container implements Probe
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRecord(RecordDeclaration newRecord)
+  public EList<Property> getProperties()
   {
-    if (newRecord != record)
+    if (properties == null)
     {
-      NotificationChain msgs = null;
-      if (record != null)
-        msgs = ((InternalEObject)record).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ProbeLangPackage.PROBE__RECORD, null, msgs);
-      if (newRecord != null)
-        msgs = ((InternalEObject)newRecord).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ProbeLangPackage.PROBE__RECORD, null, msgs);
-      msgs = basicSetRecord(newRecord, msgs);
-      if (msgs != null) msgs.dispatch();
+      properties = new EObjectContainmentEList<Property>(Property.class, this, ProbeLangPackage.PROBE__PROPERTIES);
     }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProbeLangPackage.PROBE__RECORD, newRecord, newRecord));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<Replacement> getReplacements()
-  {
-    if (replacements == null)
-    {
-      replacements = new EObjectContainmentEList<Replacement>(Replacement.class, this, ProbeLangPackage.PROBE__REPLACEMENTS);
-    }
-    return replacements;
+    return properties;
   }
 
   /**
@@ -199,10 +191,8 @@ public class ProbeImpl extends MinimalEObjectImpl.Container implements Probe
   {
     switch (featureID)
     {
-      case ProbeLangPackage.PROBE__RECORD:
-        return basicSetRecord(null, msgs);
-      case ProbeLangPackage.PROBE__REPLACEMENTS:
-        return ((InternalEList<?>)getReplacements()).basicRemove(otherEnd, msgs);
+      case ProbeLangPackage.PROBE__PROPERTIES:
+        return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -219,10 +209,11 @@ public class ProbeImpl extends MinimalEObjectImpl.Container implements Probe
     {
       case ProbeLangPackage.PROBE__NAME:
         return getName();
-      case ProbeLangPackage.PROBE__RECORD:
-        return getRecord();
-      case ProbeLangPackage.PROBE__REPLACEMENTS:
-        return getReplacements();
+      case ProbeLangPackage.PROBE__TYPE:
+        if (resolve) return getType();
+        return basicGetType();
+      case ProbeLangPackage.PROBE__PROPERTIES:
+        return getProperties();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -241,12 +232,12 @@ public class ProbeImpl extends MinimalEObjectImpl.Container implements Probe
       case ProbeLangPackage.PROBE__NAME:
         setName((String)newValue);
         return;
-      case ProbeLangPackage.PROBE__RECORD:
-        setRecord((RecordDeclaration)newValue);
+      case ProbeLangPackage.PROBE__TYPE:
+        setType((EClassifier)newValue);
         return;
-      case ProbeLangPackage.PROBE__REPLACEMENTS:
-        getReplacements().clear();
-        getReplacements().addAll((Collection<? extends Replacement>)newValue);
+      case ProbeLangPackage.PROBE__PROPERTIES:
+        getProperties().clear();
+        getProperties().addAll((Collection<? extends Property>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -265,11 +256,11 @@ public class ProbeImpl extends MinimalEObjectImpl.Container implements Probe
       case ProbeLangPackage.PROBE__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case ProbeLangPackage.PROBE__RECORD:
-        setRecord((RecordDeclaration)null);
+      case ProbeLangPackage.PROBE__TYPE:
+        setType((EClassifier)null);
         return;
-      case ProbeLangPackage.PROBE__REPLACEMENTS:
-        getReplacements().clear();
+      case ProbeLangPackage.PROBE__PROPERTIES:
+        getProperties().clear();
         return;
     }
     super.eUnset(featureID);
@@ -287,10 +278,10 @@ public class ProbeImpl extends MinimalEObjectImpl.Container implements Probe
     {
       case ProbeLangPackage.PROBE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case ProbeLangPackage.PROBE__RECORD:
-        return record != null;
-      case ProbeLangPackage.PROBE__REPLACEMENTS:
-        return replacements != null && !replacements.isEmpty();
+      case ProbeLangPackage.PROBE__TYPE:
+        return type != null;
+      case ProbeLangPackage.PROBE__PROPERTIES:
+        return properties != null && !properties.isEmpty();
     }
     return super.eIsSet(featureID);
   }

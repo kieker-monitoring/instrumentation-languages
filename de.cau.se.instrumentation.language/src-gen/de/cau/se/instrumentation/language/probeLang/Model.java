@@ -1,7 +1,4 @@
 /**
- * <copyright>
- * </copyright>
- *
  */
 package de.cau.se.instrumentation.language.probeLang;
 
@@ -18,8 +15,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link de.cau.se.instrumentation.language.probeLang.Model#getName <em>Name</em>}</li>
+ *   <li>{@link de.cau.se.instrumentation.language.probeLang.Model#getMetaModels <em>Meta Models</em>}</li>
  *   <li>{@link de.cau.se.instrumentation.language.probeLang.Model#getImports <em>Imports</em>}</li>
- *   <li>{@link de.cau.se.instrumentation.language.probeLang.Model#getTypes <em>Types</em>}</li>
  *   <li>{@link de.cau.se.instrumentation.language.probeLang.Model#getPatterns <em>Patterns</em>}</li>
  *   <li>{@link de.cau.se.instrumentation.language.probeLang.Model#getProbes <em>Probes</em>}</li>
  * </ul>
@@ -58,6 +55,22 @@ public interface Model extends EObject
   void setName(String value);
 
   /**
+   * Returns the value of the '<em><b>Meta Models</b></em>' containment reference list.
+   * The list contents are of type {@link de.cau.se.instrumentation.language.probeLang.LoadMetaModel}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Meta Models</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Meta Models</em>' containment reference list.
+   * @see de.cau.se.instrumentation.language.probeLang.ProbeLangPackage#getModel_MetaModels()
+   * @model containment="true"
+   * @generated
+   */
+  EList<LoadMetaModel> getMetaModels();
+
+  /**
    * Returns the value of the '<em><b>Imports</b></em>' containment reference list.
    * The list contents are of type {@link de.cau.se.instrumentation.language.probeLang.Import}.
    * <!-- begin-user-doc -->
@@ -72,22 +85,6 @@ public interface Model extends EObject
    * @generated
    */
   EList<Import> getImports();
-
-  /**
-   * Returns the value of the '<em><b>Types</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.se.instrumentation.language.probeLang.DataTypeDeclaration}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Types</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Types</em>' containment reference list.
-   * @see de.cau.se.instrumentation.language.probeLang.ProbeLangPackage#getModel_Types()
-   * @model containment="true"
-   * @generated
-   */
-  EList<DataTypeDeclaration> getTypes();
 
   /**
    * Returns the value of the '<em><b>Patterns</b></em>' containment reference list.

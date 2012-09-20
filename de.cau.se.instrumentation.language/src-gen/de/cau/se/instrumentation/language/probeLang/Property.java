@@ -1,10 +1,10 @@
 /**
- * <copyright>
- * </copyright>
- *
  */
 package de.cau.se.instrumentation.language.probeLang;
 
+import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link de.cau.se.instrumentation.language.probeLang.Property#getType <em>Type</em>}</li>
  *   <li>{@link de.cau.se.instrumentation.language.probeLang.Property#getName <em>Name</em>}</li>
+ *   <li>{@link de.cau.se.instrumentation.language.probeLang.Property#getProperties <em>Properties</em>}</li>
  * </ul>
  * </p>
  *
@@ -35,12 +36,12 @@ public interface Property extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Type</em>' reference.
-   * @see #setType(DataTypeDeclaration)
+   * @see #setType(EClassifier)
    * @see de.cau.se.instrumentation.language.probeLang.ProbeLangPackage#getProperty_Type()
    * @model
    * @generated
    */
-  DataTypeDeclaration getType();
+  EClassifier getType();
 
   /**
    * Sets the value of the '{@link de.cau.se.instrumentation.language.probeLang.Property#getType <em>Type</em>}' reference.
@@ -50,7 +51,7 @@ public interface Property extends EObject
    * @see #getType()
    * @generated
    */
-  void setType(DataTypeDeclaration value);
+  void setType(EClassifier value);
 
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -77,5 +78,21 @@ public interface Property extends EObject
    * @generated
    */
   void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Properties</b></em>' containment reference list.
+   * The list contents are of type {@link de.cau.se.instrumentation.language.probeLang.ReferenceProperty}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Properties</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Properties</em>' containment reference list.
+   * @see de.cau.se.instrumentation.language.probeLang.ProbeLangPackage#getProperty_Properties()
+   * @model containment="true"
+   * @generated
+   */
+  EList<ReferenceProperty> getProperties();
 
 } // Property

@@ -52,9 +52,6 @@ Workflow {
             	generateStub = false
             }
             
-            // the serialization component (1.0)
-            // fragment = parseTreeConstructor.ParseTreeConstructorFragment {}
-
             // a custom ResourceFactory for use with EMF
             fragment = resourceFactory.ResourceFactoryFragment {
                 fileExtensions = file.extensions
