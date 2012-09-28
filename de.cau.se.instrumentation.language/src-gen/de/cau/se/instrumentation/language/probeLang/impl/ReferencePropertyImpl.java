@@ -13,7 +13,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -46,7 +46,7 @@ public class ReferencePropertyImpl extends MinimalEObjectImpl.Container implemen
    * @generated
    * @ordered
    */
-  protected EReference ref;
+  protected EStructuralFeature ref;
 
   /**
    * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
@@ -84,12 +84,12 @@ public class ReferencePropertyImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getRef()
+  public EStructuralFeature getRef()
   {
     if (ref != null && ref.eIsProxy())
     {
       InternalEObject oldRef = (InternalEObject)ref;
-      ref = (EReference)eResolveProxy(oldRef);
+      ref = (EStructuralFeature)eResolveProxy(oldRef);
       if (ref != oldRef)
       {
         if (eNotificationRequired())
@@ -104,7 +104,7 @@ public class ReferencePropertyImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference basicGetRef()
+  public EStructuralFeature basicGetRef()
   {
     return ref;
   }
@@ -114,9 +114,9 @@ public class ReferencePropertyImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRef(EReference newRef)
+  public void setRef(EStructuralFeature newRef)
   {
-    EReference oldRef = ref;
+    EStructuralFeature oldRef = ref;
     ref = newRef;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ProbeLangPackage.REFERENCE_PROPERTY__REF, oldRef, ref));
@@ -183,7 +183,7 @@ public class ReferencePropertyImpl extends MinimalEObjectImpl.Container implemen
     switch (featureID)
     {
       case ProbeLangPackage.REFERENCE_PROPERTY__REF:
-        setRef((EReference)newValue);
+        setRef((EStructuralFeature)newValue);
         return;
       case ProbeLangPackage.REFERENCE_PROPERTY__PROPERTIES:
         getProperties().clear();
@@ -204,7 +204,7 @@ public class ReferencePropertyImpl extends MinimalEObjectImpl.Container implemen
     switch (featureID)
     {
       case ProbeLangPackage.REFERENCE_PROPERTY__REF:
-        setRef((EReference)null);
+        setRef((EStructuralFeature)null);
         return;
       case ProbeLangPackage.REFERENCE_PROPERTY__PROPERTIES:
         getProperties().clear();

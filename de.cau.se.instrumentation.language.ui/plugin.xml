@@ -322,4 +322,10 @@
     </provider>
   </extension>
 
+  <!-- extension point="org.eclipse.xtext.extension_resourceServiceProvider">
+  	<resourceServiceProvider
+	    class="org.eclipse.xtext.ui.ecore.ExecutableExtensionFactory:org.eclipse.xtext.ui.resource.generic.EmfResourceUIServiceProvider"
+	    uriExtension="ecore">
+	</resourceServiceProvider>
+  </extension -->
 </plugin>

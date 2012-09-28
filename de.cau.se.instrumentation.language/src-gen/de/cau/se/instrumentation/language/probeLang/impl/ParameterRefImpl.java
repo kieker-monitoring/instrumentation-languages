@@ -13,8 +13,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.xtext.xbase.impl.XExpressionImpl;
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Parameter Ref</b></em>'.
@@ -28,7 +26,7 @@ import org.eclipse.xtext.xbase.impl.XExpressionImpl;
  *
  * @generated
  */
-public class ParameterRefImpl extends XExpressionImpl implements ParameterRef
+public class ParameterRefImpl extends SimpleCodeElementImpl implements ParameterRef
 {
   /**
    * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.

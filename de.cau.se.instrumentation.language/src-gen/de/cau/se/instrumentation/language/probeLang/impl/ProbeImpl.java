@@ -2,6 +2,7 @@
  */
 package de.cau.se.instrumentation.language.probeLang.impl;
 
+import de.cau.se.instrumentation.language.probeLang.Classifier;
 import de.cau.se.instrumentation.language.probeLang.Probe;
 import de.cau.se.instrumentation.language.probeLang.ProbeLangPackage;
 import de.cau.se.instrumentation.language.probeLang.Property;
@@ -14,7 +15,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -61,14 +61,14 @@ public class ProbeImpl extends MinimalEObjectImpl.Container implements Probe
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' reference.
+   * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getType()
    * @generated
    * @ordered
    */
-  protected EClassifier type;
+  protected Classifier type;
 
   /**
    * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
@@ -129,27 +129,7 @@ public class ProbeImpl extends MinimalEObjectImpl.Container implements Probe
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClassifier getType()
-  {
-    if (type != null && type.eIsProxy())
-    {
-      InternalEObject oldType = (InternalEObject)type;
-      type = (EClassifier)eResolveProxy(oldType);
-      if (type != oldType)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProbeLangPackage.PROBE__TYPE, oldType, type));
-      }
-    }
-    return type;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClassifier basicGetType()
+  public Classifier getType()
   {
     return type;
   }
@@ -159,12 +139,37 @@ public class ProbeImpl extends MinimalEObjectImpl.Container implements Probe
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setType(EClassifier newType)
+  public NotificationChain basicSetType(Classifier newType, NotificationChain msgs)
   {
-    EClassifier oldType = type;
+    Classifier oldType = type;
     type = newType;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProbeLangPackage.PROBE__TYPE, oldType, type));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ProbeLangPackage.PROBE__TYPE, oldType, newType);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setType(Classifier newType)
+  {
+    if (newType != type)
+    {
+      NotificationChain msgs = null;
+      if (type != null)
+        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ProbeLangPackage.PROBE__TYPE, null, msgs);
+      if (newType != null)
+        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ProbeLangPackage.PROBE__TYPE, null, msgs);
+      msgs = basicSetType(newType, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ProbeLangPackage.PROBE__TYPE, newType, newType));
   }
 
   /**
@@ -191,6 +196,8 @@ public class ProbeImpl extends MinimalEObjectImpl.Container implements Probe
   {
     switch (featureID)
     {
+      case ProbeLangPackage.PROBE__TYPE:
+        return basicSetType(null, msgs);
       case ProbeLangPackage.PROBE__PROPERTIES:
         return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
     }
@@ -210,8 +217,7 @@ public class ProbeImpl extends MinimalEObjectImpl.Container implements Probe
       case ProbeLangPackage.PROBE__NAME:
         return getName();
       case ProbeLangPackage.PROBE__TYPE:
-        if (resolve) return getType();
-        return basicGetType();
+        return getType();
       case ProbeLangPackage.PROBE__PROPERTIES:
         return getProperties();
     }
@@ -233,7 +239,7 @@ public class ProbeImpl extends MinimalEObjectImpl.Container implements Probe
         setName((String)newValue);
         return;
       case ProbeLangPackage.PROBE__TYPE:
-        setType((EClassifier)newValue);
+        setType((Classifier)newValue);
         return;
       case ProbeLangPackage.PROBE__PROPERTIES:
         getProperties().clear();
@@ -257,7 +263,7 @@ public class ProbeImpl extends MinimalEObjectImpl.Container implements Probe
         setName(NAME_EDEFAULT);
         return;
       case ProbeLangPackage.PROBE__TYPE:
-        setType((EClassifier)null);
+        setType((Classifier)null);
         return;
       case ProbeLangPackage.PROBE__PROPERTIES:
         getProperties().clear();

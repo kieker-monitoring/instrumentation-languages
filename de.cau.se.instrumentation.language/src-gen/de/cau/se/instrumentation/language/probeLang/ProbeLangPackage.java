@@ -7,8 +7,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
-import org.eclipse.xtext.xbase.XbasePackage;
-
 /**
  * <!-- begin-user-doc -->
  * The <b>Package</b> for the model.
@@ -78,13 +76,13 @@ public interface ProbeLangPackage extends EPackage
   int MODEL__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Meta Models</b></em>' containment reference list.
+   * The feature id for the '<em><b>Packages</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL__META_MODELS = 1;
+  int MODEL__PACKAGES = 1;
 
   /**
    * The feature id for the '<em><b>Imports</b></em>' containment reference list.
@@ -151,14 +149,14 @@ public interface ProbeLangPackage extends EPackage
   int IMPORT_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link de.cau.se.instrumentation.language.probeLang.impl.LoadMetaModelImpl <em>Load Meta Model</em>}' class.
+   * The meta object id for the '{@link de.cau.se.instrumentation.language.probeLang.impl.PackageImpl <em>Package</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.se.instrumentation.language.probeLang.impl.LoadMetaModelImpl
-   * @see de.cau.se.instrumentation.language.probeLang.impl.ProbeLangPackageImpl#getLoadMetaModel()
+   * @see de.cau.se.instrumentation.language.probeLang.impl.PackageImpl
+   * @see de.cau.se.instrumentation.language.probeLang.impl.ProbeLangPackageImpl#getPackage()
    * @generated
    */
-  int LOAD_META_MODEL = 2;
+  int PACKAGE = 2;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -167,25 +165,25 @@ public interface ProbeLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LOAD_META_MODEL__NAME = 0;
+  int PACKAGE__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>EPackage</b></em>' reference.
+   * The feature id for the '<em><b>Package</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LOAD_META_MODEL__EPACKAGE = 1;
+  int PACKAGE__PACKAGE = 1;
 
   /**
-   * The number of structural features of the '<em>Load Meta Model</em>' class.
+   * The number of structural features of the '<em>Package</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LOAD_META_MODEL_FEATURE_COUNT = 2;
+  int PACKAGE_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link de.cau.se.instrumentation.language.probeLang.impl.PatternImpl <em>Pattern</em>}' class.
@@ -299,6 +297,25 @@ public interface ProbeLangPackage extends EPackage
   int CODE_ELEMENT_FEATURE_COUNT = 2;
 
   /**
+   * The meta object id for the '{@link de.cau.se.instrumentation.language.probeLang.impl.SimpleCodeElementImpl <em>Simple Code Element</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.se.instrumentation.language.probeLang.impl.SimpleCodeElementImpl
+   * @see de.cau.se.instrumentation.language.probeLang.impl.ProbeLangPackageImpl#getSimpleCodeElement()
+   * @generated
+   */
+  int SIMPLE_CODE_ELEMENT = 6;
+
+  /**
+   * The number of structural features of the '<em>Simple Code Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_CODE_ELEMENT_FEATURE_COUNT = 0;
+
+  /**
    * The meta object id for the '{@link de.cau.se.instrumentation.language.probeLang.impl.ParameterRefImpl <em>Parameter Ref</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -306,7 +323,7 @@ public interface ProbeLangPackage extends EPackage
    * @see de.cau.se.instrumentation.language.probeLang.impl.ProbeLangPackageImpl#getParameterRef()
    * @generated
    */
-  int PARAMETER_REF = 6;
+  int PARAMETER_REF = 7;
 
   /**
    * The feature id for the '<em><b>Ref</b></em>' reference.
@@ -315,7 +332,7 @@ public interface ProbeLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PARAMETER_REF__REF = XbasePackage.XEXPRESSION_FEATURE_COUNT + 0;
+  int PARAMETER_REF__REF = SIMPLE_CODE_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Parameter Ref</em>' class.
@@ -324,7 +341,35 @@ public interface ProbeLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PARAMETER_REF_FEATURE_COUNT = XbasePackage.XEXPRESSION_FEATURE_COUNT + 1;
+  int PARAMETER_REF_FEATURE_COUNT = SIMPLE_CODE_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link de.cau.se.instrumentation.language.probeLang.impl.XStringLiteralImpl <em>XString Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.se.instrumentation.language.probeLang.impl.XStringLiteralImpl
+   * @see de.cau.se.instrumentation.language.probeLang.impl.ProbeLangPackageImpl#getXStringLiteral()
+   * @generated
+   */
+  int XSTRING_LITERAL = 8;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int XSTRING_LITERAL__VALUE = SIMPLE_CODE_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>XString Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int XSTRING_LITERAL_FEATURE_COUNT = SIMPLE_CODE_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link de.cau.se.instrumentation.language.probeLang.impl.ProbeImpl <em>Probe</em>}' class.
@@ -334,7 +379,7 @@ public interface ProbeLangPackage extends EPackage
    * @see de.cau.se.instrumentation.language.probeLang.impl.ProbeLangPackageImpl#getProbe()
    * @generated
    */
-  int PROBE = 7;
+  int PROBE = 9;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -346,7 +391,7 @@ public interface ProbeLangPackage extends EPackage
   int PROBE__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Type</b></em>' reference.
+   * The feature id for the '<em><b>Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -373,6 +418,43 @@ public interface ProbeLangPackage extends EPackage
   int PROBE_FEATURE_COUNT = 3;
 
   /**
+   * The meta object id for the '{@link de.cau.se.instrumentation.language.probeLang.impl.ClassifierImpl <em>Classifier</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.se.instrumentation.language.probeLang.impl.ClassifierImpl
+   * @see de.cau.se.instrumentation.language.probeLang.impl.ProbeLangPackageImpl#getClassifier()
+   * @generated
+   */
+  int CLASSIFIER = 10;
+
+  /**
+   * The feature id for the '<em><b>Package</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLASSIFIER__PACKAGE = 0;
+
+  /**
+   * The feature id for the '<em><b>Class</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLASSIFIER__CLASS = 1;
+
+  /**
+   * The number of structural features of the '<em>Classifier</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLASSIFIER_FEATURE_COUNT = 2;
+
+  /**
    * The meta object id for the '{@link de.cau.se.instrumentation.language.probeLang.impl.PropertyImpl <em>Property</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -380,10 +462,10 @@ public interface ProbeLangPackage extends EPackage
    * @see de.cau.se.instrumentation.language.probeLang.impl.ProbeLangPackageImpl#getProperty()
    * @generated
    */
-  int PROPERTY = 8;
+  int PROPERTY = 11;
 
   /**
-   * The feature id for the '<em><b>Type</b></em>' reference.
+   * The feature id for the '<em><b>Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -426,7 +508,7 @@ public interface ProbeLangPackage extends EPackage
    * @see de.cau.se.instrumentation.language.probeLang.impl.ProbeLangPackageImpl#getReferenceProperty()
    * @generated
    */
-  int REFERENCE_PROPERTY = 9;
+  int REFERENCE_PROPERTY = 12;
 
   /**
    * The feature id for the '<em><b>Ref</b></em>' reference.
@@ -478,15 +560,15 @@ public interface ProbeLangPackage extends EPackage
   EAttribute getModel_Name();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.se.instrumentation.language.probeLang.Model#getMetaModels <em>Meta Models</em>}'.
+   * Returns the meta object for the containment reference list '{@link de.cau.se.instrumentation.language.probeLang.Model#getPackages <em>Packages</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Meta Models</em>'.
-   * @see de.cau.se.instrumentation.language.probeLang.Model#getMetaModels()
+   * @return the meta object for the containment reference list '<em>Packages</em>'.
+   * @see de.cau.se.instrumentation.language.probeLang.Model#getPackages()
    * @see #getModel()
    * @generated
    */
-  EReference getModel_MetaModels();
+  EReference getModel_Packages();
 
   /**
    * Returns the meta object for the containment reference list '{@link de.cau.se.instrumentation.language.probeLang.Model#getImports <em>Imports</em>}'.
@@ -543,36 +625,36 @@ public interface ProbeLangPackage extends EPackage
   EAttribute getImport_ImportedNamespace();
 
   /**
-   * Returns the meta object for class '{@link de.cau.se.instrumentation.language.probeLang.LoadMetaModel <em>Load Meta Model</em>}'.
+   * Returns the meta object for class '{@link de.cau.se.instrumentation.language.probeLang.Package <em>Package</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Load Meta Model</em>'.
-   * @see de.cau.se.instrumentation.language.probeLang.LoadMetaModel
+   * @return the meta object for class '<em>Package</em>'.
+   * @see de.cau.se.instrumentation.language.probeLang.Package
    * @generated
    */
-  EClass getLoadMetaModel();
+  EClass getPackage();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.se.instrumentation.language.probeLang.LoadMetaModel#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link de.cau.se.instrumentation.language.probeLang.Package#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.cau.se.instrumentation.language.probeLang.LoadMetaModel#getName()
-   * @see #getLoadMetaModel()
+   * @see de.cau.se.instrumentation.language.probeLang.Package#getName()
+   * @see #getPackage()
    * @generated
    */
-  EAttribute getLoadMetaModel_Name();
+  EAttribute getPackage_Name();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.se.instrumentation.language.probeLang.LoadMetaModel#getEPackage <em>EPackage</em>}'.
+   * Returns the meta object for the reference '{@link de.cau.se.instrumentation.language.probeLang.Package#getPackage <em>Package</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>EPackage</em>'.
-   * @see de.cau.se.instrumentation.language.probeLang.LoadMetaModel#getEPackage()
-   * @see #getLoadMetaModel()
+   * @return the meta object for the reference '<em>Package</em>'.
+   * @see de.cau.se.instrumentation.language.probeLang.Package#getPackage()
+   * @see #getPackage()
    * @generated
    */
-  EReference getLoadMetaModel_EPackage();
+  EReference getPackage_Package();
 
   /**
    * Returns the meta object for class '{@link de.cau.se.instrumentation.language.probeLang.Pattern <em>Pattern</em>}'.
@@ -671,6 +753,16 @@ public interface ProbeLangPackage extends EPackage
   EReference getCodeElement_Value();
 
   /**
+   * Returns the meta object for class '{@link de.cau.se.instrumentation.language.probeLang.SimpleCodeElement <em>Simple Code Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Simple Code Element</em>'.
+   * @see de.cau.se.instrumentation.language.probeLang.SimpleCodeElement
+   * @generated
+   */
+  EClass getSimpleCodeElement();
+
+  /**
    * Returns the meta object for class '{@link de.cau.se.instrumentation.language.probeLang.ParameterRef <em>Parameter Ref</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -690,6 +782,27 @@ public interface ProbeLangPackage extends EPackage
    * @generated
    */
   EReference getParameterRef_Ref();
+
+  /**
+   * Returns the meta object for class '{@link de.cau.se.instrumentation.language.probeLang.XStringLiteral <em>XString Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>XString Literal</em>'.
+   * @see de.cau.se.instrumentation.language.probeLang.XStringLiteral
+   * @generated
+   */
+  EClass getXStringLiteral();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.cau.se.instrumentation.language.probeLang.XStringLiteral#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see de.cau.se.instrumentation.language.probeLang.XStringLiteral#getValue()
+   * @see #getXStringLiteral()
+   * @generated
+   */
+  EAttribute getXStringLiteral_Value();
 
   /**
    * Returns the meta object for class '{@link de.cau.se.instrumentation.language.probeLang.Probe <em>Probe</em>}'.
@@ -713,10 +826,10 @@ public interface ProbeLangPackage extends EPackage
   EAttribute getProbe_Name();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.se.instrumentation.language.probeLang.Probe#getType <em>Type</em>}'.
+   * Returns the meta object for the containment reference '{@link de.cau.se.instrumentation.language.probeLang.Probe#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Type</em>'.
+   * @return the meta object for the containment reference '<em>Type</em>'.
    * @see de.cau.se.instrumentation.language.probeLang.Probe#getType()
    * @see #getProbe()
    * @generated
@@ -735,6 +848,38 @@ public interface ProbeLangPackage extends EPackage
   EReference getProbe_Properties();
 
   /**
+   * Returns the meta object for class '{@link de.cau.se.instrumentation.language.probeLang.Classifier <em>Classifier</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Classifier</em>'.
+   * @see de.cau.se.instrumentation.language.probeLang.Classifier
+   * @generated
+   */
+  EClass getClassifier();
+
+  /**
+   * Returns the meta object for the reference '{@link de.cau.se.instrumentation.language.probeLang.Classifier#getPackage <em>Package</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Package</em>'.
+   * @see de.cau.se.instrumentation.language.probeLang.Classifier#getPackage()
+   * @see #getClassifier()
+   * @generated
+   */
+  EReference getClassifier_Package();
+
+  /**
+   * Returns the meta object for the reference '{@link de.cau.se.instrumentation.language.probeLang.Classifier#getClass_ <em>Class</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Class</em>'.
+   * @see de.cau.se.instrumentation.language.probeLang.Classifier#getClass_()
+   * @see #getClassifier()
+   * @generated
+   */
+  EReference getClassifier_Class();
+
+  /**
    * Returns the meta object for class '{@link de.cau.se.instrumentation.language.probeLang.Property <em>Property</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -745,10 +890,10 @@ public interface ProbeLangPackage extends EPackage
   EClass getProperty();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.se.instrumentation.language.probeLang.Property#getType <em>Type</em>}'.
+   * Returns the meta object for the containment reference '{@link de.cau.se.instrumentation.language.probeLang.Property#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Type</em>'.
+   * @return the meta object for the containment reference '<em>Type</em>'.
    * @see de.cau.se.instrumentation.language.probeLang.Property#getType()
    * @see #getProperty()
    * @generated
@@ -851,12 +996,12 @@ public interface ProbeLangPackage extends EPackage
     EAttribute MODEL__NAME = eINSTANCE.getModel_Name();
 
     /**
-     * The meta object literal for the '<em><b>Meta Models</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Packages</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MODEL__META_MODELS = eINSTANCE.getModel_MetaModels();
+    EReference MODEL__PACKAGES = eINSTANCE.getModel_Packages();
 
     /**
      * The meta object literal for the '<em><b>Imports</b></em>' containment reference list feature.
@@ -901,14 +1046,14 @@ public interface ProbeLangPackage extends EPackage
     EAttribute IMPORT__IMPORTED_NAMESPACE = eINSTANCE.getImport_ImportedNamespace();
 
     /**
-     * The meta object literal for the '{@link de.cau.se.instrumentation.language.probeLang.impl.LoadMetaModelImpl <em>Load Meta Model</em>}' class.
+     * The meta object literal for the '{@link de.cau.se.instrumentation.language.probeLang.impl.PackageImpl <em>Package</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.se.instrumentation.language.probeLang.impl.LoadMetaModelImpl
-     * @see de.cau.se.instrumentation.language.probeLang.impl.ProbeLangPackageImpl#getLoadMetaModel()
+     * @see de.cau.se.instrumentation.language.probeLang.impl.PackageImpl
+     * @see de.cau.se.instrumentation.language.probeLang.impl.ProbeLangPackageImpl#getPackage()
      * @generated
      */
-    EClass LOAD_META_MODEL = eINSTANCE.getLoadMetaModel();
+    EClass PACKAGE = eINSTANCE.getPackage();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -916,15 +1061,15 @@ public interface ProbeLangPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute LOAD_META_MODEL__NAME = eINSTANCE.getLoadMetaModel_Name();
+    EAttribute PACKAGE__NAME = eINSTANCE.getPackage_Name();
 
     /**
-     * The meta object literal for the '<em><b>EPackage</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Package</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference LOAD_META_MODEL__EPACKAGE = eINSTANCE.getLoadMetaModel_EPackage();
+    EReference PACKAGE__PACKAGE = eINSTANCE.getPackage_Package();
 
     /**
      * The meta object literal for the '{@link de.cau.se.instrumentation.language.probeLang.impl.PatternImpl <em>Pattern</em>}' class.
@@ -1005,6 +1150,16 @@ public interface ProbeLangPackage extends EPackage
     EReference CODE_ELEMENT__VALUE = eINSTANCE.getCodeElement_Value();
 
     /**
+     * The meta object literal for the '{@link de.cau.se.instrumentation.language.probeLang.impl.SimpleCodeElementImpl <em>Simple Code Element</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.se.instrumentation.language.probeLang.impl.SimpleCodeElementImpl
+     * @see de.cau.se.instrumentation.language.probeLang.impl.ProbeLangPackageImpl#getSimpleCodeElement()
+     * @generated
+     */
+    EClass SIMPLE_CODE_ELEMENT = eINSTANCE.getSimpleCodeElement();
+
+    /**
      * The meta object literal for the '{@link de.cau.se.instrumentation.language.probeLang.impl.ParameterRefImpl <em>Parameter Ref</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1021,6 +1176,24 @@ public interface ProbeLangPackage extends EPackage
      * @generated
      */
     EReference PARAMETER_REF__REF = eINSTANCE.getParameterRef_Ref();
+
+    /**
+     * The meta object literal for the '{@link de.cau.se.instrumentation.language.probeLang.impl.XStringLiteralImpl <em>XString Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.se.instrumentation.language.probeLang.impl.XStringLiteralImpl
+     * @see de.cau.se.instrumentation.language.probeLang.impl.ProbeLangPackageImpl#getXStringLiteral()
+     * @generated
+     */
+    EClass XSTRING_LITERAL = eINSTANCE.getXStringLiteral();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute XSTRING_LITERAL__VALUE = eINSTANCE.getXStringLiteral_Value();
 
     /**
      * The meta object literal for the '{@link de.cau.se.instrumentation.language.probeLang.impl.ProbeImpl <em>Probe</em>}' class.
@@ -1041,7 +1214,7 @@ public interface ProbeLangPackage extends EPackage
     EAttribute PROBE__NAME = eINSTANCE.getProbe_Name();
 
     /**
-     * The meta object literal for the '<em><b>Type</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -1057,6 +1230,32 @@ public interface ProbeLangPackage extends EPackage
     EReference PROBE__PROPERTIES = eINSTANCE.getProbe_Properties();
 
     /**
+     * The meta object literal for the '{@link de.cau.se.instrumentation.language.probeLang.impl.ClassifierImpl <em>Classifier</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.se.instrumentation.language.probeLang.impl.ClassifierImpl
+     * @see de.cau.se.instrumentation.language.probeLang.impl.ProbeLangPackageImpl#getClassifier()
+     * @generated
+     */
+    EClass CLASSIFIER = eINSTANCE.getClassifier();
+
+    /**
+     * The meta object literal for the '<em><b>Package</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CLASSIFIER__PACKAGE = eINSTANCE.getClassifier_Package();
+
+    /**
+     * The meta object literal for the '<em><b>Class</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CLASSIFIER__CLASS = eINSTANCE.getClassifier_Class();
+
+    /**
      * The meta object literal for the '{@link de.cau.se.instrumentation.language.probeLang.impl.PropertyImpl <em>Property</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1067,7 +1266,7 @@ public interface ProbeLangPackage extends EPackage
     EClass PROPERTY = eINSTANCE.getProperty();
 
     /**
-     * The meta object literal for the '<em><b>Type</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated

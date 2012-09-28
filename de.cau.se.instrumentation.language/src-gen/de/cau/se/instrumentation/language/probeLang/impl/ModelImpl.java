@@ -3,7 +3,6 @@
 package de.cau.se.instrumentation.language.probeLang.impl;
 
 import de.cau.se.instrumentation.language.probeLang.Import;
-import de.cau.se.instrumentation.language.probeLang.LoadMetaModel;
 import de.cau.se.instrumentation.language.probeLang.Model;
 import de.cau.se.instrumentation.language.probeLang.Pattern;
 import de.cau.se.instrumentation.language.probeLang.Probe;
@@ -33,7 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.cau.se.instrumentation.language.probeLang.impl.ModelImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.cau.se.instrumentation.language.probeLang.impl.ModelImpl#getMetaModels <em>Meta Models</em>}</li>
+ *   <li>{@link de.cau.se.instrumentation.language.probeLang.impl.ModelImpl#getPackages <em>Packages</em>}</li>
  *   <li>{@link de.cau.se.instrumentation.language.probeLang.impl.ModelImpl#getImports <em>Imports</em>}</li>
  *   <li>{@link de.cau.se.instrumentation.language.probeLang.impl.ModelImpl#getPatterns <em>Patterns</em>}</li>
  *   <li>{@link de.cau.se.instrumentation.language.probeLang.impl.ModelImpl#getProbes <em>Probes</em>}</li>
@@ -65,14 +64,14 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getMetaModels() <em>Meta Models</em>}' containment reference list.
+   * The cached value of the '{@link #getPackages() <em>Packages</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getMetaModels()
+   * @see #getPackages()
    * @generated
    * @ordered
    */
-  protected EList<LoadMetaModel> metaModels;
+  protected EList<de.cau.se.instrumentation.language.probeLang.Package> packages;
 
   /**
    * The cached value of the '{@link #getImports() <em>Imports</em>}' containment reference list.
@@ -153,13 +152,13 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<LoadMetaModel> getMetaModels()
+  public EList<de.cau.se.instrumentation.language.probeLang.Package> getPackages()
   {
-    if (metaModels == null)
+    if (packages == null)
     {
-      metaModels = new EObjectContainmentEList<LoadMetaModel>(LoadMetaModel.class, this, ProbeLangPackage.MODEL__META_MODELS);
+      packages = new EObjectContainmentEList<de.cau.se.instrumentation.language.probeLang.Package>(de.cau.se.instrumentation.language.probeLang.Package.class, this, ProbeLangPackage.MODEL__PACKAGES);
     }
-    return metaModels;
+    return packages;
   }
 
   /**
@@ -214,8 +213,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case ProbeLangPackage.MODEL__META_MODELS:
-        return ((InternalEList<?>)getMetaModels()).basicRemove(otherEnd, msgs);
+      case ProbeLangPackage.MODEL__PACKAGES:
+        return ((InternalEList<?>)getPackages()).basicRemove(otherEnd, msgs);
       case ProbeLangPackage.MODEL__IMPORTS:
         return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
       case ProbeLangPackage.MODEL__PATTERNS:
@@ -238,8 +237,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
     {
       case ProbeLangPackage.MODEL__NAME:
         return getName();
-      case ProbeLangPackage.MODEL__META_MODELS:
-        return getMetaModels();
+      case ProbeLangPackage.MODEL__PACKAGES:
+        return getPackages();
       case ProbeLangPackage.MODEL__IMPORTS:
         return getImports();
       case ProbeLangPackage.MODEL__PATTERNS:
@@ -264,9 +263,9 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
       case ProbeLangPackage.MODEL__NAME:
         setName((String)newValue);
         return;
-      case ProbeLangPackage.MODEL__META_MODELS:
-        getMetaModels().clear();
-        getMetaModels().addAll((Collection<? extends LoadMetaModel>)newValue);
+      case ProbeLangPackage.MODEL__PACKAGES:
+        getPackages().clear();
+        getPackages().addAll((Collection<? extends de.cau.se.instrumentation.language.probeLang.Package>)newValue);
         return;
       case ProbeLangPackage.MODEL__IMPORTS:
         getImports().clear();
@@ -297,8 +296,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
       case ProbeLangPackage.MODEL__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case ProbeLangPackage.MODEL__META_MODELS:
-        getMetaModels().clear();
+      case ProbeLangPackage.MODEL__PACKAGES:
+        getPackages().clear();
         return;
       case ProbeLangPackage.MODEL__IMPORTS:
         getImports().clear();
@@ -325,8 +324,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
     {
       case ProbeLangPackage.MODEL__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case ProbeLangPackage.MODEL__META_MODELS:
-        return metaModels != null && !metaModels.isEmpty();
+      case ProbeLangPackage.MODEL__PACKAGES:
+        return packages != null && !packages.isEmpty();
       case ProbeLangPackage.MODEL__IMPORTS:
         return imports != null && !imports.isEmpty();
       case ProbeLangPackage.MODEL__PATTERNS:

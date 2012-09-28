@@ -2,7 +2,20 @@
  */
 package de.cau.se.instrumentation.language.probeLang.impl;
 
-import de.cau.se.instrumentation.language.probeLang.*;
+import de.cau.se.instrumentation.language.probeLang.Classifier;
+import de.cau.se.instrumentation.language.probeLang.CodeElement;
+import de.cau.se.instrumentation.language.probeLang.Import;
+import de.cau.se.instrumentation.language.probeLang.Model;
+import de.cau.se.instrumentation.language.probeLang.Parameter;
+import de.cau.se.instrumentation.language.probeLang.ParameterRef;
+import de.cau.se.instrumentation.language.probeLang.Pattern;
+import de.cau.se.instrumentation.language.probeLang.Probe;
+import de.cau.se.instrumentation.language.probeLang.ProbeLangFactory;
+import de.cau.se.instrumentation.language.probeLang.ProbeLangPackage;
+import de.cau.se.instrumentation.language.probeLang.Property;
+import de.cau.se.instrumentation.language.probeLang.ReferenceProperty;
+import de.cau.se.instrumentation.language.probeLang.SimpleCodeElement;
+import de.cau.se.instrumentation.language.probeLang.XStringLiteral;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -66,12 +79,15 @@ public class ProbeLangFactoryImpl extends EFactoryImpl implements ProbeLangFacto
     {
       case ProbeLangPackage.MODEL: return createModel();
       case ProbeLangPackage.IMPORT: return createImport();
-      case ProbeLangPackage.LOAD_META_MODEL: return createLoadMetaModel();
+      case ProbeLangPackage.PACKAGE: return createPackage();
       case ProbeLangPackage.PATTERN: return createPattern();
       case ProbeLangPackage.PARAMETER: return createParameter();
       case ProbeLangPackage.CODE_ELEMENT: return createCodeElement();
+      case ProbeLangPackage.SIMPLE_CODE_ELEMENT: return createSimpleCodeElement();
       case ProbeLangPackage.PARAMETER_REF: return createParameterRef();
+      case ProbeLangPackage.XSTRING_LITERAL: return createXStringLiteral();
       case ProbeLangPackage.PROBE: return createProbe();
+      case ProbeLangPackage.CLASSIFIER: return createClassifier();
       case ProbeLangPackage.PROPERTY: return createProperty();
       case ProbeLangPackage.REFERENCE_PROPERTY: return createReferenceProperty();
       default:
@@ -106,10 +122,10 @@ public class ProbeLangFactoryImpl extends EFactoryImpl implements ProbeLangFacto
    * <!-- end-user-doc -->
    * @generated
    */
-  public LoadMetaModel createLoadMetaModel()
+  public de.cau.se.instrumentation.language.probeLang.Package createPackage()
   {
-    LoadMetaModelImpl loadMetaModel = new LoadMetaModelImpl();
-    return loadMetaModel;
+    PackageImpl package_ = new PackageImpl();
+    return package_;
   }
 
   /**
@@ -150,6 +166,17 @@ public class ProbeLangFactoryImpl extends EFactoryImpl implements ProbeLangFacto
    * <!-- end-user-doc -->
    * @generated
    */
+  public SimpleCodeElement createSimpleCodeElement()
+  {
+    SimpleCodeElementImpl simpleCodeElement = new SimpleCodeElementImpl();
+    return simpleCodeElement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public ParameterRef createParameterRef()
   {
     ParameterRefImpl parameterRef = new ParameterRefImpl();
@@ -161,10 +188,32 @@ public class ProbeLangFactoryImpl extends EFactoryImpl implements ProbeLangFacto
    * <!-- end-user-doc -->
    * @generated
    */
+  public XStringLiteral createXStringLiteral()
+  {
+    XStringLiteralImpl xStringLiteral = new XStringLiteralImpl();
+    return xStringLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Probe createProbe()
   {
     ProbeImpl probe = new ProbeImpl();
     return probe;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Classifier createClassifier()
+  {
+    ClassifierImpl classifier = new ClassifierImpl();
+    return classifier;
   }
 
   /**

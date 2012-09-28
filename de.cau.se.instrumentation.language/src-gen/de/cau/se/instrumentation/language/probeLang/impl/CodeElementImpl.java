@@ -4,6 +4,7 @@ package de.cau.se.instrumentation.language.probeLang.impl;
 
 import de.cau.se.instrumentation.language.probeLang.CodeElement;
 import de.cau.se.instrumentation.language.probeLang.ProbeLangPackage;
+import de.cau.se.instrumentation.language.probeLang.SimpleCodeElement;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -13,8 +14,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.xtext.xbase.XExpression;
 
 /**
  * <!-- begin-user-doc -->
@@ -60,7 +59,7 @@ public class CodeElementImpl extends MinimalEObjectImpl.Container implements Cod
    * @generated
    * @ordered
    */
-  protected XExpression value;
+  protected SimpleCodeElement value;
 
   /**
    * <!-- begin-user-doc -->
@@ -111,7 +110,7 @@ public class CodeElementImpl extends MinimalEObjectImpl.Container implements Cod
    * <!-- end-user-doc -->
    * @generated
    */
-  public XExpression getValue()
+  public SimpleCodeElement getValue()
   {
     return value;
   }
@@ -121,9 +120,9 @@ public class CodeElementImpl extends MinimalEObjectImpl.Container implements Cod
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetValue(XExpression newValue, NotificationChain msgs)
+  public NotificationChain basicSetValue(SimpleCodeElement newValue, NotificationChain msgs)
   {
-    XExpression oldValue = value;
+    SimpleCodeElement oldValue = value;
     value = newValue;
     if (eNotificationRequired())
     {
@@ -138,7 +137,7 @@ public class CodeElementImpl extends MinimalEObjectImpl.Container implements Cod
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setValue(XExpression newValue)
+  public void setValue(SimpleCodeElement newValue)
   {
     if (newValue != value)
     {
@@ -202,7 +201,7 @@ public class CodeElementImpl extends MinimalEObjectImpl.Container implements Cod
         setToUpper((Boolean)newValue);
         return;
       case ProbeLangPackage.CODE_ELEMENT__VALUE:
-        setValue((XExpression)newValue);
+        setValue((SimpleCodeElement)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -222,7 +221,7 @@ public class CodeElementImpl extends MinimalEObjectImpl.Container implements Cod
         setToUpper(TO_UPPER_EDEFAULT);
         return;
       case ProbeLangPackage.CODE_ELEMENT__VALUE:
-        setValue((XExpression)null);
+        setValue((SimpleCodeElement)null);
         return;
     }
     super.eUnset(featureID);

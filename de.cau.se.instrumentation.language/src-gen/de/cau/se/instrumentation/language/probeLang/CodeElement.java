@@ -4,8 +4,6 @@ package de.cau.se.instrumentation.language.probeLang;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.eclipse.xtext.xbase.XExpression;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Code Element</b></em>'.
@@ -60,12 +58,12 @@ public interface CodeElement extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Value</em>' containment reference.
-   * @see #setValue(XExpression)
+   * @see #setValue(SimpleCodeElement)
    * @see de.cau.se.instrumentation.language.probeLang.ProbeLangPackage#getCodeElement_Value()
    * @model containment="true"
    * @generated
    */
-  XExpression getValue();
+  SimpleCodeElement getValue();
 
   /**
    * Sets the value of the '{@link de.cau.se.instrumentation.language.probeLang.CodeElement#getValue <em>Value</em>}' containment reference.
@@ -75,6 +73,6 @@ public interface CodeElement extends EObject
    * @see #getValue()
    * @generated
    */
-  void setValue(XExpression value);
+  void setValue(SimpleCodeElement value);
 
 } // CodeElement

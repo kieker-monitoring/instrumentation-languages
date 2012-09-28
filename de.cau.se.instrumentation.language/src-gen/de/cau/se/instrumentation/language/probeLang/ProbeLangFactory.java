@@ -41,13 +41,13 @@ public interface ProbeLangFactory extends EFactory
   Import createImport();
 
   /**
-   * Returns a new object of class '<em>Load Meta Model</em>'.
+   * Returns a new object of class '<em>Package</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Load Meta Model</em>'.
+   * @return a new object of class '<em>Package</em>'.
    * @generated
    */
-  LoadMetaModel createLoadMetaModel();
+  Package createPackage();
 
   /**
    * Returns a new object of class '<em>Pattern</em>'.
@@ -77,6 +77,15 @@ public interface ProbeLangFactory extends EFactory
   CodeElement createCodeElement();
 
   /**
+   * Returns a new object of class '<em>Simple Code Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Simple Code Element</em>'.
+   * @generated
+   */
+  SimpleCodeElement createSimpleCodeElement();
+
+  /**
    * Returns a new object of class '<em>Parameter Ref</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -86,6 +95,15 @@ public interface ProbeLangFactory extends EFactory
   ParameterRef createParameterRef();
 
   /**
+   * Returns a new object of class '<em>XString Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>XString Literal</em>'.
+   * @generated
+   */
+  XStringLiteral createXStringLiteral();
+
+  /**
    * Returns a new object of class '<em>Probe</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -93,6 +111,15 @@ public interface ProbeLangFactory extends EFactory
    * @generated
    */
   Probe createProbe();
+
+  /**
+   * Returns a new object of class '<em>Classifier</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Classifier</em>'.
+   * @generated
+   */
+  Classifier createClassifier();
 
   /**
    * Returns a new object of class '<em>Property</em>'.

@@ -2,7 +2,19 @@
  */
 package de.cau.se.instrumentation.language.probeLang.util;
 
-import de.cau.se.instrumentation.language.probeLang.*;
+import de.cau.se.instrumentation.language.probeLang.Classifier;
+import de.cau.se.instrumentation.language.probeLang.CodeElement;
+import de.cau.se.instrumentation.language.probeLang.Import;
+import de.cau.se.instrumentation.language.probeLang.Model;
+import de.cau.se.instrumentation.language.probeLang.Parameter;
+import de.cau.se.instrumentation.language.probeLang.ParameterRef;
+import de.cau.se.instrumentation.language.probeLang.Pattern;
+import de.cau.se.instrumentation.language.probeLang.Probe;
+import de.cau.se.instrumentation.language.probeLang.ProbeLangPackage;
+import de.cau.se.instrumentation.language.probeLang.Property;
+import de.cau.se.instrumentation.language.probeLang.ReferenceProperty;
+import de.cau.se.instrumentation.language.probeLang.SimpleCodeElement;
+import de.cau.se.instrumentation.language.probeLang.XStringLiteral;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -10,8 +22,6 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.xtext.xbase.XExpression;
 
 /**
  * <!-- begin-user-doc -->
@@ -87,9 +97,9 @@ public class ProbeLangAdapterFactory extends AdapterFactoryImpl
         return createImportAdapter();
       }
       @Override
-      public Adapter caseLoadMetaModel(LoadMetaModel object)
+      public Adapter casePackage(de.cau.se.instrumentation.language.probeLang.Package object)
       {
-        return createLoadMetaModelAdapter();
+        return createPackageAdapter();
       }
       @Override
       public Adapter casePattern(Pattern object)
@@ -107,14 +117,29 @@ public class ProbeLangAdapterFactory extends AdapterFactoryImpl
         return createCodeElementAdapter();
       }
       @Override
+      public Adapter caseSimpleCodeElement(SimpleCodeElement object)
+      {
+        return createSimpleCodeElementAdapter();
+      }
+      @Override
       public Adapter caseParameterRef(ParameterRef object)
       {
         return createParameterRefAdapter();
       }
       @Override
+      public Adapter caseXStringLiteral(XStringLiteral object)
+      {
+        return createXStringLiteralAdapter();
+      }
+      @Override
       public Adapter caseProbe(Probe object)
       {
         return createProbeAdapter();
+      }
+      @Override
+      public Adapter caseClassifier(Classifier object)
+      {
+        return createClassifierAdapter();
       }
       @Override
       public Adapter caseProperty(Property object)
@@ -125,11 +150,6 @@ public class ProbeLangAdapterFactory extends AdapterFactoryImpl
       public Adapter caseReferenceProperty(ReferenceProperty object)
       {
         return createReferencePropertyAdapter();
-      }
-      @Override
-      public Adapter caseXExpression(XExpression object)
-      {
-        return createXExpressionAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -184,16 +204,16 @@ public class ProbeLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.se.instrumentation.language.probeLang.LoadMetaModel <em>Load Meta Model</em>}'.
+   * Creates a new adapter for an object of class '{@link de.cau.se.instrumentation.language.probeLang.Package <em>Package</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.se.instrumentation.language.probeLang.LoadMetaModel
+   * @see de.cau.se.instrumentation.language.probeLang.Package
    * @generated
    */
-  public Adapter createLoadMetaModelAdapter()
+  public Adapter createPackageAdapter()
   {
     return null;
   }
@@ -244,6 +264,21 @@ public class ProbeLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link de.cau.se.instrumentation.language.probeLang.SimpleCodeElement <em>Simple Code Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.se.instrumentation.language.probeLang.SimpleCodeElement
+   * @generated
+   */
+  public Adapter createSimpleCodeElementAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link de.cau.se.instrumentation.language.probeLang.ParameterRef <em>Parameter Ref</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -259,6 +294,21 @@ public class ProbeLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link de.cau.se.instrumentation.language.probeLang.XStringLiteral <em>XString Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.se.instrumentation.language.probeLang.XStringLiteral
+   * @generated
+   */
+  public Adapter createXStringLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link de.cau.se.instrumentation.language.probeLang.Probe <em>Probe</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -269,6 +319,21 @@ public class ProbeLangAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createProbeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.se.instrumentation.language.probeLang.Classifier <em>Classifier</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.se.instrumentation.language.probeLang.Classifier
+   * @generated
+   */
+  public Adapter createClassifierAdapter()
   {
     return null;
   }
@@ -299,21 +364,6 @@ public class ProbeLangAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createReferencePropertyAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.xtext.xbase.XExpression <em>XExpression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.xtext.xbase.XExpression
-   * @generated
-   */
-  public Adapter createXExpressionAdapter()
   {
     return null;
   }

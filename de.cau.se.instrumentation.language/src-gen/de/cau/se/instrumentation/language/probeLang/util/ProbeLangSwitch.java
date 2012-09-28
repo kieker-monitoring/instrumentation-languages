@@ -2,14 +2,24 @@
  */
 package de.cau.se.instrumentation.language.probeLang.util;
 
-import de.cau.se.instrumentation.language.probeLang.*;
+import de.cau.se.instrumentation.language.probeLang.Classifier;
+import de.cau.se.instrumentation.language.probeLang.CodeElement;
+import de.cau.se.instrumentation.language.probeLang.Import;
+import de.cau.se.instrumentation.language.probeLang.Model;
+import de.cau.se.instrumentation.language.probeLang.Parameter;
+import de.cau.se.instrumentation.language.probeLang.ParameterRef;
+import de.cau.se.instrumentation.language.probeLang.Pattern;
+import de.cau.se.instrumentation.language.probeLang.Probe;
+import de.cau.se.instrumentation.language.probeLang.ProbeLangPackage;
+import de.cau.se.instrumentation.language.probeLang.Property;
+import de.cau.se.instrumentation.language.probeLang.ReferenceProperty;
+import de.cau.se.instrumentation.language.probeLang.SimpleCodeElement;
+import de.cau.se.instrumentation.language.probeLang.XStringLiteral;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
-
-import org.eclipse.xtext.xbase.XExpression;
 
 /**
  * <!-- begin-user-doc -->
@@ -88,10 +98,10 @@ public class ProbeLangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ProbeLangPackage.LOAD_META_MODEL:
+      case ProbeLangPackage.PACKAGE:
       {
-        LoadMetaModel loadMetaModel = (LoadMetaModel)theEObject;
-        T result = caseLoadMetaModel(loadMetaModel);
+        de.cau.se.instrumentation.language.probeLang.Package package_ = (de.cau.se.instrumentation.language.probeLang.Package)theEObject;
+        T result = casePackage(package_);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -116,11 +126,26 @@ public class ProbeLangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ProbeLangPackage.SIMPLE_CODE_ELEMENT:
+      {
+        SimpleCodeElement simpleCodeElement = (SimpleCodeElement)theEObject;
+        T result = caseSimpleCodeElement(simpleCodeElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ProbeLangPackage.PARAMETER_REF:
       {
         ParameterRef parameterRef = (ParameterRef)theEObject;
         T result = caseParameterRef(parameterRef);
-        if (result == null) result = caseXExpression(parameterRef);
+        if (result == null) result = caseSimpleCodeElement(parameterRef);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ProbeLangPackage.XSTRING_LITERAL:
+      {
+        XStringLiteral xStringLiteral = (XStringLiteral)theEObject;
+        T result = caseXStringLiteral(xStringLiteral);
+        if (result == null) result = caseSimpleCodeElement(xStringLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -128,6 +153,13 @@ public class ProbeLangSwitch<T> extends Switch<T>
       {
         Probe probe = (Probe)theEObject;
         T result = caseProbe(probe);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ProbeLangPackage.CLASSIFIER:
+      {
+        Classifier classifier = (Classifier)theEObject;
+        T result = caseClassifier(classifier);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -182,17 +214,17 @@ public class ProbeLangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Load Meta Model</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Package</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Load Meta Model</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Package</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseLoadMetaModel(LoadMetaModel object)
+  public T casePackage(de.cau.se.instrumentation.language.probeLang.Package object)
   {
     return null;
   }
@@ -246,6 +278,22 @@ public class ProbeLangSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Simple Code Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Simple Code Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSimpleCodeElement(SimpleCodeElement object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Parameter Ref</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -262,6 +310,22 @@ public class ProbeLangSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>XString Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>XString Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseXStringLiteral(XStringLiteral object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Probe</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -273,6 +337,22 @@ public class ProbeLangSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseProbe(Probe object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Classifier</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Classifier</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseClassifier(Classifier object)
   {
     return null;
   }
@@ -305,22 +385,6 @@ public class ProbeLangSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseReferenceProperty(ReferenceProperty object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>XExpression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>XExpression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseXExpression(XExpression object)
   {
     return null;
   }

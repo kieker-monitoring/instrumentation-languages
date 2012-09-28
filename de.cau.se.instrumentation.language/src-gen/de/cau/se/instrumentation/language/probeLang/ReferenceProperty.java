@@ -5,7 +5,7 @@ package de.cau.se.instrumentation.language.probeLang;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,12 +35,12 @@ public interface ReferenceProperty extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Ref</em>' reference.
-   * @see #setRef(EReference)
+   * @see #setRef(EStructuralFeature)
    * @see de.cau.se.instrumentation.language.probeLang.ProbeLangPackage#getReferenceProperty_Ref()
    * @model
    * @generated
    */
-  EReference getRef();
+  EStructuralFeature getRef();
 
   /**
    * Sets the value of the '{@link de.cau.se.instrumentation.language.probeLang.ReferenceProperty#getRef <em>Ref</em>}' reference.
@@ -50,7 +50,7 @@ public interface ReferenceProperty extends EObject
    * @see #getRef()
    * @generated
    */
-  void setRef(EReference value);
+  void setRef(EStructuralFeature value);
 
   /**
    * Returns the value of the '<em><b>Properties</b></em>' containment reference list.

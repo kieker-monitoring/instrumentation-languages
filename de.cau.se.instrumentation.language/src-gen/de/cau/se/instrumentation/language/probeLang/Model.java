@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link de.cau.se.instrumentation.language.probeLang.Model#getName <em>Name</em>}</li>
- *   <li>{@link de.cau.se.instrumentation.language.probeLang.Model#getMetaModels <em>Meta Models</em>}</li>
+ *   <li>{@link de.cau.se.instrumentation.language.probeLang.Model#getPackages <em>Packages</em>}</li>
  *   <li>{@link de.cau.se.instrumentation.language.probeLang.Model#getImports <em>Imports</em>}</li>
  *   <li>{@link de.cau.se.instrumentation.language.probeLang.Model#getPatterns <em>Patterns</em>}</li>
  *   <li>{@link de.cau.se.instrumentation.language.probeLang.Model#getProbes <em>Probes</em>}</li>
@@ -55,20 +55,20 @@ public interface Model extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Meta Models</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.se.instrumentation.language.probeLang.LoadMetaModel}.
+   * Returns the value of the '<em><b>Packages</b></em>' containment reference list.
+   * The list contents are of type {@link de.cau.se.instrumentation.language.probeLang.Package}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Meta Models</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Packages</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Meta Models</em>' containment reference list.
-   * @see de.cau.se.instrumentation.language.probeLang.ProbeLangPackage#getModel_MetaModels()
+   * @return the value of the '<em>Packages</em>' containment reference list.
+   * @see de.cau.se.instrumentation.language.probeLang.ProbeLangPackage#getModel_Packages()
    * @model containment="true"
    * @generated
    */
-  EList<LoadMetaModel> getMetaModels();
+  EList<de.cau.se.instrumentation.language.probeLang.Package> getPackages();
 
   /**
    * Returns the value of the '<em><b>Imports</b></em>' containment reference list.
