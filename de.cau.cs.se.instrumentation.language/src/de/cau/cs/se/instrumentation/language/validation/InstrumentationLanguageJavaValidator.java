@@ -1,7 +1,5 @@
 package de.cau.cs.se.instrumentation.language.validation;
 
-import de.cau.cs.se.instrumentation.language.validation.AbstractInstrumentationLanguageJavaValidator;
- 
 
 public class InstrumentationLanguageJavaValidator extends AbstractInstrumentationLanguageJavaValidator {
 

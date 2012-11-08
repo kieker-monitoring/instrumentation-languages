@@ -67,9 +67,15 @@ public class InstrumentationLanguageScopeProvider extends AbstractDeclarativeSco
 		return result;
 	}
 
-	IScope scope_Classifier_class(final Classifier classifier, final EReference reference) {
+	/**
+	 * 
+	 * @param classifier
+	 * @param reference
+	 * @return
+	 */
+	public IScope scope_Classifier_class(final Classifier context, final EReference reference) {
 		return Scopes.scopeFor(EcoreUtil2.getAllContentsOfType(
-		        classifier.getPackage().getPackage(), EClassifier.class));
+				context.getPackage().getPackage(), EClassifier.class));
 	}
 
 	IScope scope_ReferenceProperty_ref(final ReferenceProperty property, final EReference reference) {

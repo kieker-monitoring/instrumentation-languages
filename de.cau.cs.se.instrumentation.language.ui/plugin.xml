@@ -6,42 +6,42 @@
     <extension
             point="org.eclipse.ui.editors">
         <editor
-            class="de.cau.cs.se.instrumentation.language.ui.ProbeLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+            class="de.cau.cs.se.instrumentation.language.ui.InstrumentationLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
             contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
             default="true"
             extensions="pdl"
-            id="de.cau.cs.se.instrumentation.language.ProbeLang"
-            name="ProbeLang Editor">
+            id="de.cau.cs.se.instrumentation.language.InstrumentationLanguage"
+            name="InstrumentationLanguage Editor">
         </editor>
     </extension>
     <extension
         point="org.eclipse.ui.handlers">
         <handler
-            class="de.cau.cs.se.instrumentation.language.ui.ProbeLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
+            class="de.cau.cs.se.instrumentation.language.ui.InstrumentationLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
             commandId="org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclaration">
             <activeWhen>
                 <reference
-                    definitionId="de.cau.cs.se.instrumentation.language.ProbeLang.Editor.opened">
+                    definitionId="de.cau.cs.se.instrumentation.language.InstrumentationLanguage.Editor.opened">
                 </reference>
             </activeWhen>
         </handler>
         <handler
-            class="de.cau.cs.se.instrumentation.language.ui.ProbeLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
-            commandId="de.cau.cs.se.instrumentation.language.ProbeLang.validate">
+            class="de.cau.cs.se.instrumentation.language.ui.InstrumentationLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
+            commandId="de.cau.cs.se.instrumentation.language.InstrumentationLanguage.validate">
          <activeWhen>
             <reference
-                    definitionId="de.cau.cs.se.instrumentation.language.ProbeLang.Editor.opened">
+                    definitionId="de.cau.cs.se.instrumentation.language.InstrumentationLanguage.Editor.opened">
             </reference>
          </activeWhen>
       </handler>
     </extension>
     <extension point="org.eclipse.core.expressions.definitions">
-        <definition id="de.cau.cs.se.instrumentation.language.ProbeLang.Editor.opened">
+        <definition id="de.cau.cs.se.instrumentation.language.InstrumentationLanguage.Editor.opened">
             <and>
                 <reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
                 <with variable="activeEditor">
                     <test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName" 
-                        value="de.cau.cs.se.instrumentation.language.ProbeLang" 
+                        value="de.cau.cs.se.instrumentation.language.InstrumentationLanguage" 
                         forcePluginActivation="true"/>
                 </with>        
             </and>
@@ -50,33 +50,33 @@
     <extension
             point="org.eclipse.ui.preferencePages">
         <page
-            class="de.cau.cs.se.instrumentation.language.ui.ProbeLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-            id="de.cau.cs.se.instrumentation.language.ProbeLang"
-            name="ProbeLang">
-            <keywordReference id="de.cau.cs.se.instrumentation.language.ui.keyword_ProbeLang"/>
+            class="de.cau.cs.se.instrumentation.language.ui.InstrumentationLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+            id="de.cau.cs.se.instrumentation.language.InstrumentationLanguage"
+            name="InstrumentationLanguage">
+            <keywordReference id="de.cau.cs.se.instrumentation.language.ui.keyword_InstrumentationLanguage"/>
         </page>
         <page
-            category="de.cau.cs.se.instrumentation.language.ProbeLang"
-            class="de.cau.cs.se.instrumentation.language.ui.ProbeLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
-            id="de.cau.cs.se.instrumentation.language.ProbeLang.coloring"
+            category="de.cau.cs.se.instrumentation.language.InstrumentationLanguage"
+            class="de.cau.cs.se.instrumentation.language.ui.InstrumentationLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
+            id="de.cau.cs.se.instrumentation.language.InstrumentationLanguage.coloring"
             name="Syntax Coloring">
-            <keywordReference id="de.cau.cs.se.instrumentation.language.ui.keyword_ProbeLang"/>
+            <keywordReference id="de.cau.cs.se.instrumentation.language.ui.keyword_InstrumentationLanguage"/>
         </page>
         <page
-            category="de.cau.cs.se.instrumentation.language.ProbeLang"
-            class="de.cau.cs.se.instrumentation.language.ui.ProbeLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
-            id="de.cau.cs.se.instrumentation.language.ProbeLang.templates"
+            category="de.cau.cs.se.instrumentation.language.InstrumentationLanguage"
+            class="de.cau.cs.se.instrumentation.language.ui.InstrumentationLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
+            id="de.cau.cs.se.instrumentation.language.InstrumentationLanguage.templates"
             name="Templates">
-            <keywordReference id="de.cau.cs.se.instrumentation.language.ui.keyword_ProbeLang"/>
+            <keywordReference id="de.cau.cs.se.instrumentation.language.ui.keyword_InstrumentationLanguage"/>
         </page>
     </extension>
     <extension
             point="org.eclipse.ui.propertyPages">
         <page
-            class="de.cau.cs.se.instrumentation.language.ui.ProbeLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-            id="de.cau.cs.se.instrumentation.language.ProbeLang"
-            name="ProbeLang">
-            <keywordReference id="de.cau.cs.se.instrumentation.language.ui.keyword_ProbeLang"/>
+            class="de.cau.cs.se.instrumentation.language.ui.InstrumentationLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+            id="de.cau.cs.se.instrumentation.language.InstrumentationLanguage"
+            name="InstrumentationLanguage">
+            <keywordReference id="de.cau.cs.se.instrumentation.language.ui.keyword_InstrumentationLanguage"/>
             <enabledWhen>
 	            <adapt type="org.eclipse.core.resources.IProject"/>
 			</enabledWhen>
@@ -86,14 +86,14 @@
     <extension
         point="org.eclipse.ui.keywords">
         <keyword
-            id="de.cau.cs.se.instrumentation.language.ui.keyword_ProbeLang"
-            label="ProbeLang"/>
+            id="de.cau.cs.se.instrumentation.language.ui.keyword_InstrumentationLanguage"
+            label="InstrumentationLanguage"/>
     </extension>
     <extension
          point="org.eclipse.ui.commands">
       <command
             description="Trigger expensive validation"
-            id="de.cau.cs.se.instrumentation.language.ProbeLang.validate"
+            id="de.cau.cs.se.instrumentation.language.InstrumentationLanguage.validate"
             name="Validate">
       </command>
     </extension>
@@ -101,12 +101,12 @@
         <menuContribution
             locationURI="popup:#TextEditorContext?after=group.edit">
              <command
-                 commandId="de.cau.cs.se.instrumentation.language.ProbeLang.validate"
+                 commandId="de.cau.cs.se.instrumentation.language.InstrumentationLanguage.validate"
                  style="push"
                  tooltip="Trigger expensive validation">
             <visibleWhen checkEnabled="false">
                 <reference
-                    definitionId="de.cau.cs.se.instrumentation.language.ProbeLang.Editor.opened">
+                    definitionId="de.cau.cs.se.instrumentation.language.InstrumentationLanguage.Editor.opened">
                 </reference>
             </visibleWhen>
          </command>  
@@ -116,7 +116,7 @@
 		<menuContribution locationURI="popup:#TextEditorContext?endof=group.find">
 			<command commandId="org.eclipse.xtext.ui.editor.FindReferences">
 				<visibleWhen checkEnabled="false">
-                	<reference definitionId="de.cau.cs.se.instrumentation.language.ProbeLang.Editor.opened">
+                	<reference definitionId="de.cau.cs.se.instrumentation.language.InstrumentationLanguage.Editor.opened">
                 	</reference>
             	</visibleWhen>
 			</command>
@@ -124,11 +124,11 @@
 	</extension>
 	<extension point="org.eclipse.ui.handlers">
 	    <handler
-            class="de.cau.cs.se.instrumentation.language.ui.ProbeLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
+            class="de.cau.cs.se.instrumentation.language.ui.InstrumentationLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
             commandId="org.eclipse.xtext.ui.editor.FindReferences">
             <activeWhen>
                 <reference
-                    definitionId="de.cau.cs.se.instrumentation.language.ProbeLang.Editor.opened">
+                    definitionId="de.cau.cs.se.instrumentation.language.InstrumentationLanguage.Editor.opened">
                 </reference>
             </activeWhen>
         </handler>
@@ -139,13 +139,13 @@
 	<extension
 		point="org.eclipse.emf.ecore.extension_parser">
 		<parser
-			class="de.cau.cs.se.instrumentation.language.ui.ProbeLangExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
+			class="de.cau.cs.se.instrumentation.language.ui.InstrumentationLanguageExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
 			type="pdl">
 		</parser>
 	</extension>
 	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
         <resourceServiceProvider
-            class="de.cau.cs.se.instrumentation.language.ui.ProbeLangExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
+            class="de.cau.cs.se.instrumentation.language.ui.InstrumentationLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
             uriExtension="pdl">
         </resourceServiceProvider>
     </extension>
@@ -155,27 +155,27 @@
    <extension
          point="org.eclipse.xtext.builder.participant">
       <participant
-            class="de.cau.cs.se.instrumentation.language.ui.ProbeLangExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant">
+            class="de.cau.cs.se.instrumentation.language.ui.InstrumentationLanguageExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant">
       </participant>
    </extension>
    <extension
             point="org.eclipse.ui.preferencePages">
         <page
-            category="de.cau.cs.se.instrumentation.language.ProbeLang"
-            class="de.cau.cs.se.instrumentation.language.ui.ProbeLangExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-            id="de.cau.cs.se.instrumentation.language.ProbeLang.compiler.preferencePage"
+            category="de.cau.cs.se.instrumentation.language.InstrumentationLanguage"
+            class="de.cau.cs.se.instrumentation.language.ui.InstrumentationLanguageExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+            id="de.cau.cs.se.instrumentation.language.InstrumentationLanguage.compiler.preferencePage"
             name="Compiler">
-            <keywordReference id="de.cau.cs.se.instrumentation.language.ui.keyword_ProbeLang"/>
+            <keywordReference id="de.cau.cs.se.instrumentation.language.ui.keyword_InstrumentationLanguage"/>
         </page>
     </extension>
     <extension
             point="org.eclipse.ui.propertyPages">
         <page
-            category="de.cau.cs.se.instrumentation.language.ProbeLang"
-            class="de.cau.cs.se.instrumentation.language.ui.ProbeLangExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-            id="de.cau.cs.se.instrumentation.language.ProbeLang.compiler.propertyPage"
+            category="de.cau.cs.se.instrumentation.language.InstrumentationLanguage"
+            class="de.cau.cs.se.instrumentation.language.ui.InstrumentationLanguageExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+            id="de.cau.cs.se.instrumentation.language.InstrumentationLanguage.compiler.propertyPage"
             name="Compiler">
-            <keywordReference id="de.cau.cs.se.instrumentation.language.ui.keyword_ProbeLang"/>
+            <keywordReference id="de.cau.cs.se.instrumentation.language.ui.keyword_InstrumentationLanguage"/>
             <enabledWhen>
 	            <adapt type="org.eclipse.core.resources.IProject"/>
 			</enabledWhen>
@@ -187,11 +187,11 @@
 	<extension
 		point="org.eclipse.ui.handlers">
 		<handler 
-			class="de.cau.cs.se.instrumentation.language.ui.ProbeLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
+			class="de.cau.cs.se.instrumentation.language.ui.InstrumentationLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
 			commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline">
 			<activeWhen>
 				<reference
-					definitionId="de.cau.cs.se.instrumentation.language.ProbeLang.Editor.opened">
+					definitionId="de.cau.cs.se.instrumentation.language.InstrumentationLanguage.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -211,7 +211,7 @@
 				style="push"
 				tooltip="Open Quick Outline">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="de.cau.cs.se.instrumentation.language.ProbeLang.Editor.opened"/>
+					<reference definitionId="de.cau.cs.se.instrumentation.language.InstrumentationLanguage.Editor.opened"/>
 				</visibleWhen>
 			</command>
 		</menuContribution>
@@ -220,17 +220,17 @@
    <extension
          point="org.eclipse.ui.ide.markerResolution">
       <markerResolutionGenerator
-            class="de.cau.cs.se.instrumentation.language.ui.ProbeLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator">
+            class="de.cau.cs.se.instrumentation.language.ui.InstrumentationLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator">
       </markerResolutionGenerator>
    </extension>
    	<!-- Rename Refactoring -->
 	<extension point="org.eclipse.ui.handlers">
 		<handler 
-			class="de.cau.cs.se.instrumentation.language.ui.ProbeLangExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.IRenameElementHandler"
+			class="de.cau.cs.se.instrumentation.language.ui.InstrumentationLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.IRenameElementHandler"
 			commandId="org.eclipse.xtext.ui.refactoring.RenameElement">
 			<activeWhen>
 				<reference
-					definitionId="de.cau.cs.se.instrumentation.language.ProbeLang.Editor.opened">
+					definitionId="de.cau.cs.se.instrumentation.language.InstrumentationLanguage.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -242,7 +242,7 @@
                style="push">
             <visibleWhen checkEnabled="false">
                <reference
-                     definitionId="de.cau.cs.se.instrumentation.language.ProbeLang.Editor.opened">
+                     definitionId="de.cau.cs.se.instrumentation.language.InstrumentationLanguage.Editor.opened">
                </reference>
             </visibleWhen>
          </command>
@@ -250,11 +250,11 @@
    </extension>
    <extension point="org.eclipse.ui.preferencePages">
 	    <page
-	        category="de.cau.cs.se.instrumentation.language.ProbeLang"
-	        class="de.cau.cs.se.instrumentation.language.ui.ProbeLangExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
-	        id="de.cau.cs.se.instrumentation.language.ProbeLang.refactoring"
+	        category="de.cau.cs.se.instrumentation.language.InstrumentationLanguage"
+	        class="de.cau.cs.se.instrumentation.language.ui.InstrumentationLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
+	        id="de.cau.cs.se.instrumentation.language.InstrumentationLanguage.refactoring"
 	        name="Refactoring">
-	        <keywordReference id="de.cau.cs.se.instrumentation.language.ui.keyword_ProbeLang"/>
+	        <keywordReference id="de.cau.cs.se.instrumentation.language.ui.keyword_InstrumentationLanguage"/>
 	    </page>
 	</extension>
 
@@ -262,20 +262,20 @@
 	<extension
 		point="org.eclipse.ui.handlers">
 		<handler 
-			class="de.cau.cs.se.instrumentation.language.ui.ProbeLangExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.hierarchy.OpenTypeHierarchyHandler"
+			class="de.cau.cs.se.instrumentation.language.ui.InstrumentationLanguageExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.hierarchy.OpenTypeHierarchyHandler"
 			commandId="org.eclipse.xtext.xbase.ui.hierarchy.OpenTypeHierarchy">
 			<activeWhen>
 				<reference
-					definitionId="de.cau.cs.se.instrumentation.language.ProbeLang.Editor.opened">
+					definitionId="de.cau.cs.se.instrumentation.language.InstrumentationLanguage.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
 		<handler 
-			class="de.cau.cs.se.instrumentation.language.ui.ProbeLangExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.hierarchy.QuickTypeHierarchyHandler"
+			class="de.cau.cs.se.instrumentation.language.ui.InstrumentationLanguageExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.hierarchy.QuickTypeHierarchyHandler"
 			commandId="org.eclipse.xtext.xbase.ui.hierarchy.QuickTypeHierarchy">
 			<activeWhen>
 				<reference
-					definitionId="de.cau.cs.se.instrumentation.language.ProbeLang.Editor.opened">
+					definitionId="de.cau.cs.se.instrumentation.language.InstrumentationLanguage.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -287,7 +287,7 @@
 				style="push"
 				tooltip="Open Type Hierarchy">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="de.cau.cs.se.instrumentation.language.ProbeLang.Editor.opened"/>
+					<reference definitionId="de.cau.cs.se.instrumentation.language.InstrumentationLanguage.Editor.opened"/>
 				</visibleWhen>
 			</command>
 		</menuContribution>
@@ -297,27 +297,27 @@
 				style="push"
 				tooltip="Quick Type Hierarchy">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="de.cau.cs.se.instrumentation.language.ProbeLang.Editor.opened"/>
+					<reference definitionId="de.cau.cs.se.instrumentation.language.InstrumentationLanguage.Editor.opened"/>
 				</visibleWhen>
 			</command>
 		</menuContribution>
 	</extension>
 
   <extension point="org.eclipse.compare.contentViewers">
-    <viewer id="de.cau.cs.se.instrumentation.language.ProbeLang.compare.contentViewers"
-            class="de.cau.cs.se.instrumentation.language.ui.ProbeLangExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+    <viewer id="de.cau.cs.se.instrumentation.language.InstrumentationLanguage.compare.contentViewers"
+            class="de.cau.cs.se.instrumentation.language.ui.InstrumentationLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
             extensions="pdl">
     </viewer>
   </extension>
   <extension point="org.eclipse.compare.contentMergeViewers">
-    <viewer id="de.cau.cs.se.instrumentation.language.ProbeLang.compare.contentMergeViewers"
-            class="de.cau.cs.se.instrumentation.language.ui.ProbeLangExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-            extensions="pdl" label="ProbeLang Compare">
+    <viewer id="de.cau.cs.se.instrumentation.language.InstrumentationLanguage.compare.contentMergeViewers"
+            class="de.cau.cs.se.instrumentation.language.ui.InstrumentationLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+            extensions="pdl" label="InstrumentationLanguage Compare">
      </viewer>
   </extension>
   <extension point="org.eclipse.ui.editors.documentProviders">
-    <provider id="de.cau.cs.se.instrumentation.language.ProbeLang.editors.documentProviders"
-            class="de.cau.cs.se.instrumentation.language.ui.ProbeLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
+    <provider id="de.cau.cs.se.instrumentation.language.InstrumentationLanguage.editors.documentProviders"
+            class="de.cau.cs.se.instrumentation.language.ui.InstrumentationLanguageExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
             extensions="pdl">
     </provider>
   </extension>
