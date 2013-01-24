@@ -1,12 +1,11 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Kieker Service Job
-Bundle-SymbolicName: de.cau.cs.se.kieker.service
+Bundle-SymbolicName: de.cau.cs.se.kieker.service;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: de.cau.cs.se.kieker.service.Activator
 Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime,
- de.cau.cs.se.instrumentation.language;bundle-version="1.0.0"
+ org.eclipse.core.runtime
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ClassPath: lib/kieker-1.6.jar,
@@ -15,4 +14,8 @@ Import-Package: org.eclipse.core.resources,
  org.eclipse.debug.core,
  org.eclipse.debug.core.model,
  org.eclipse.debug.ui,
+ org.eclipse.emf.common.util,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.ecore.resource,
+ org.eclipse.emf.ecore.resource.impl,
  org.eclipse.ui.dialogs

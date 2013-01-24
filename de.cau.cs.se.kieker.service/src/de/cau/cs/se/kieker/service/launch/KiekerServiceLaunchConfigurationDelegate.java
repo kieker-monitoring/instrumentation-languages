@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import kieker.common.configuration.Configuration;
+import kieker.common.record.IMonitoringRecord;
 import kieker.monitoring.core.configuration.ConfigurationFactory;
 
 import org.eclipse.core.resources.IFile;
@@ -20,9 +21,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-
-import de.cau.cs.se.instrumentation.language.instrumentation.Model;
-import de.cau.cs.se.instrumentation.language.instrumentation.Probe;
 
 import de.cau.cs.se.kieker.service.job.ClientKiekerServiceJob;
 import de.cau.cs.se.kieker.service.job.KiekerServiceJob;
@@ -62,39 +60,16 @@ public class KiekerServiceLaunchConfigurationDelegate extends LaunchConfiguratio
 		final ResourceSet set = new ResourceSetImpl();
 		final Resource setupResource = set.getResource(inputURI, true);
 
-		final EObject inputModel = setupResource.getContents().get(0);
-		if (inputModel instanceof Model) {
-			final Map<Long,Probe> probes = new HashMap<Long,Probe>();
-			for (Probe probe : ((Model) inputModel).getProbes()) {
-                try {
-	                Object object = Class.forName(((Model)probe.eContainer()).getName() + "." + probe.getName()	+ "Record");
-	                probes.put(object.getClass().getDeclaredField("serialVersionUID").getLong(object), probe);
-                } catch (ClassNotFoundException e) {
-	                // TODO just warn the user about a missing class
-                } catch (IllegalArgumentException e) {
-	                // TODO fix generator
-	                e.printStackTrace();
-                } catch (SecurityException e) {
-	                // TODO warn the user
-	                e.printStackTrace();
-                } catch (IllegalAccessException e) {
-	                // TODO if this is called we need another source for the ID
-	                e.printStackTrace();
-                } catch (NoSuchFieldException e) {
-	                // TODO fix generator
-	                e.printStackTrace();
-                }
-			}
-			KiekerServiceJob job;
-			if (configuration.getAttribute(ATTR_PROJECT, "").equals("SERVER")) {
-				job = new ServerKiekerServiceJob("Server",port,probes,kiekerConfiguration);
-			} else {
-				job = new ClientKiekerServiceJob("Client",ip,port,probes,kiekerConfiguration);
-			}
-			job.schedule();
+		Map<Long, Class<IMonitoringRecord>> records = null; 
+		// http://www.slideshare.net/pieceoflena/eclipse-launching-framework
+		
+		KiekerServiceJob job;
+		if (configuration.getAttribute(ATTR_PROJECT, "").equals("SERVER")) {
+			job = new ServerKiekerServiceJob("Server",port,records,kiekerConfiguration);
 		} else {
-			// TODO say something about missing probe definitions
+			job = new ClientKiekerServiceJob("Client",ip,port,records,kiekerConfiguration);
 		}
+		job.schedule();
 			
     }
 

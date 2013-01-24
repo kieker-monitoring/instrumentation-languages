@@ -65,9 +65,6 @@ public class ServiceSetupTab extends AbstractLaunchConfigurationTab {
 		tab.setLayout(layout);
 
 		createProject();
-		createSimulationSetup();
-		createLogging();
-		createSamplingRate();
 	}
 
 	private void createLogging() {

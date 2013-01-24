@@ -11,12 +11,11 @@ import java.net.UnknownHostException;
 import java.util.Map;
 
 import kieker.common.configuration.Configuration;
+import kieker.common.record.IMonitoringRecord;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-
-import de.cau.cs.se.instrumentation.language.instrumentation.Probe;
 
 /**
  * @author rju
@@ -26,8 +25,8 @@ public class ServerKiekerServiceJob extends KiekerServiceJob {
 	
 	private int port;
 
-	public ServerKiekerServiceJob(String name, int port, Map<Long,Probe> probeStructures, Configuration configuration) {
-		super(name,probeStructures,configuration);
+	public ServerKiekerServiceJob(String name, int port, Map<Long, Class<IMonitoringRecord>> recordList, Configuration configuration) {
+		super(name, recordList, configuration);
 		this.port = port;
 	}
 	
@@ -64,6 +63,9 @@ public class ServerKiekerServiceJob extends KiekerServiceJob {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
