@@ -228,7 +228,7 @@ public class InstrumentationLanguageSemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     (name=ID type=Classifier properties+=Property*)
+	 *     (name=ID type=Classifier? properties+=Property*)
 	 */
 	protected void sequence_Probe(EObject context, Probe semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

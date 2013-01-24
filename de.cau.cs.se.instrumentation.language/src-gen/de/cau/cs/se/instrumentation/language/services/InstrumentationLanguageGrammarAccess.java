@@ -365,19 +365,21 @@ public class InstrumentationLanguageGrammarAccess extends AbstractGrammarElement
 		private final Keyword cProbeKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cTypeAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cTypeClassifierParserRuleCall_3_0 = (RuleCall)cTypeAssignment_3.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cPropertiesAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cPropertiesPropertyParserRuleCall_5_0 = (RuleCall)cPropertiesAssignment_5.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cColonKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cTypeAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cTypeClassifierParserRuleCall_2_1_0 = (RuleCall)cTypeAssignment_2_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cPropertiesAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cPropertiesPropertyParserRuleCall_4_0 = (RuleCall)cPropertiesAssignment_4.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
+		//// the classifier can be omitted to support languages and meta models which do not provide Ecore models.
 		//Probe:
-		//	"probe" name=ID ":" type=Classifier "{" properties+=Property* "}";
+		//	"probe" name=ID (":" type=Classifier)? "{" properties+=Property* "}";
 		public ParserRule getRule() { return rule; }
 
-		//"probe" name=ID ":" type=Classifier "{" properties+=Property* "}"
+		//"probe" name=ID (":" type=Classifier)? "{" properties+=Property* "}"
 		public Group getGroup() { return cGroup; }
 
 		//"probe"
@@ -389,26 +391,29 @@ public class InstrumentationLanguageGrammarAccess extends AbstractGrammarElement
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
+		//(":" type=Classifier)?
+		public Group getGroup_2() { return cGroup_2; }
+
 		//":"
-		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
+		public Keyword getColonKeyword_2_0() { return cColonKeyword_2_0; }
 
 		//type=Classifier
-		public Assignment getTypeAssignment_3() { return cTypeAssignment_3; }
+		public Assignment getTypeAssignment_2_1() { return cTypeAssignment_2_1; }
 
 		//Classifier
-		public RuleCall getTypeClassifierParserRuleCall_3_0() { return cTypeClassifierParserRuleCall_3_0; }
+		public RuleCall getTypeClassifierParserRuleCall_2_1_0() { return cTypeClassifierParserRuleCall_2_1_0; }
 
 		//"{"
-		public Keyword getLeftCurlyBracketKeyword_4() { return cLeftCurlyBracketKeyword_4; }
+		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 
 		//properties+=Property*
-		public Assignment getPropertiesAssignment_5() { return cPropertiesAssignment_5; }
+		public Assignment getPropertiesAssignment_4() { return cPropertiesAssignment_4; }
 
 		//Property
-		public RuleCall getPropertiesPropertyParserRuleCall_5_0() { return cPropertiesPropertyParserRuleCall_5_0; }
+		public RuleCall getPropertiesPropertyParserRuleCall_4_0() { return cPropertiesPropertyParserRuleCall_4_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
+		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 	}
 
 	public class ClassifierElements extends AbstractParserRuleElementFinder {
@@ -708,8 +713,9 @@ public class InstrumentationLanguageGrammarAccess extends AbstractGrammarElement
 		return getXStringLiteralAccess().getRule();
 	}
 
+	//// the classifier can be omitted to support languages and meta models which do not provide Ecore models.
 	//Probe:
-	//	"probe" name=ID ":" type=Classifier "{" properties+=Property* "}";
+	//	"probe" name=ID (":" type=Classifier)? "{" properties+=Property* "}";
 	public ProbeElements getProbeAccess() {
 		return (pProbe != null) ? pProbe : (pProbe = new ProbeElements());
 	}

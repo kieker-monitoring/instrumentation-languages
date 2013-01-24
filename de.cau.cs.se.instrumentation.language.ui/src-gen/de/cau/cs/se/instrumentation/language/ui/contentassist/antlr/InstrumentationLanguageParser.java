@@ -50,6 +50,7 @@ public class InstrumentationLanguageParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPatternAccess().getGroup_2_2(), "rule__Pattern__Group_2_2__0");
 					put(grammarAccess.getCodeElementAccess().getGroup(), "rule__CodeElement__Group__0");
 					put(grammarAccess.getProbeAccess().getGroup(), "rule__Probe__Group__0");
+					put(grammarAccess.getProbeAccess().getGroup_2(), "rule__Probe__Group_2__0");
 					put(grammarAccess.getClassifierAccess().getGroup(), "rule__Classifier__Group__0");
 					put(grammarAccess.getPropertyAccess().getGroup(), "rule__Property__Group__0");
 					put(grammarAccess.getPropertyAccess().getGroup_2(), "rule__Property__Group_2__0");
@@ -73,8 +74,8 @@ public class InstrumentationLanguageParser extends AbstractContentAssistParser {
 					put(grammarAccess.getParameterRefAccess().getRefAssignment(), "rule__ParameterRef__RefAssignment");
 					put(grammarAccess.getXStringLiteralAccess().getValueAssignment(), "rule__XStringLiteral__ValueAssignment");
 					put(grammarAccess.getProbeAccess().getNameAssignment_1(), "rule__Probe__NameAssignment_1");
-					put(grammarAccess.getProbeAccess().getTypeAssignment_3(), "rule__Probe__TypeAssignment_3");
-					put(grammarAccess.getProbeAccess().getPropertiesAssignment_5(), "rule__Probe__PropertiesAssignment_5");
+					put(grammarAccess.getProbeAccess().getTypeAssignment_2_1(), "rule__Probe__TypeAssignment_2_1");
+					put(grammarAccess.getProbeAccess().getPropertiesAssignment_4(), "rule__Probe__PropertiesAssignment_4");
 					put(grammarAccess.getClassifierAccess().getPackageAssignment_0(), "rule__Classifier__PackageAssignment_0");
 					put(grammarAccess.getClassifierAccess().getClassAssignment_2(), "rule__Classifier__ClassAssignment_2");
 					put(grammarAccess.getPropertyAccess().getTypeAssignment_0(), "rule__Property__TypeAssignment_0");

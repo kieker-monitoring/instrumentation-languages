@@ -715,14 +715,14 @@ ruleProbe returns [EObject current=null]
 	    }
 
 )
-)	otherlv_2=':' 
+)(	otherlv_2=':' 
     {
-    	newLeafNode(otherlv_2, grammarAccess.getProbeAccess().getColonKeyword_2());
+    	newLeafNode(otherlv_2, grammarAccess.getProbeAccess().getColonKeyword_2_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getProbeAccess().getTypeClassifierParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getProbeAccess().getTypeClassifierParserRuleCall_2_1_0()); 
 	    }
 		lv_type_3_0=ruleClassifier		{
 	        if ($current==null) {
@@ -737,14 +737,14 @@ ruleProbe returns [EObject current=null]
 	    }
 
 )
-)	otherlv_4='{' 
+))?	otherlv_4='{' 
     {
-    	newLeafNode(otherlv_4, grammarAccess.getProbeAccess().getLeftCurlyBracketKeyword_4());
+    	newLeafNode(otherlv_4, grammarAccess.getProbeAccess().getLeftCurlyBracketKeyword_3());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getProbeAccess().getPropertiesPropertyParserRuleCall_5_0()); 
+	        newCompositeNode(grammarAccess.getProbeAccess().getPropertiesPropertyParserRuleCall_4_0()); 
 	    }
 		lv_properties_5_0=ruleProperty		{
 	        if ($current==null) {
@@ -761,7 +761,7 @@ ruleProbe returns [EObject current=null]
 )
 )*	otherlv_6='}' 
     {
-    	newLeafNode(otherlv_6, grammarAccess.getProbeAccess().getRightCurlyBracketKeyword_6());
+    	newLeafNode(otherlv_6, grammarAccess.getProbeAccess().getRightCurlyBracketKeyword_5());
     }
 )
 ;

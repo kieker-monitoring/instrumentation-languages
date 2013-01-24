@@ -258,10 +258,10 @@ public class InternalInstrumentationLanguageLexer extends Lexer {
         try {
             int _type = T__21;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:21:7: ( ':' )
-            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:21:9: ':'
+            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:21:7: ( '{' )
+            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:21:9: '{'
             {
-            match(':'); 
+            match('{'); 
 
             }
 
@@ -278,10 +278,10 @@ public class InternalInstrumentationLanguageLexer extends Lexer {
         try {
             int _type = T__22;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:22:7: ( '{' )
-            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:22:9: '{'
+            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:22:7: ( '}' )
+            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:22:9: '}'
             {
-            match('{'); 
+            match('}'); 
 
             }
 
@@ -298,10 +298,10 @@ public class InternalInstrumentationLanguageLexer extends Lexer {
         try {
             int _type = T__23;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:23:7: ( '}' )
-            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:23:9: '}'
+            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:23:7: ( ':' )
+            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:23:9: ':'
             {
-            match('}'); 
+            match(':'); 
 
             }
 
@@ -338,10 +338,10 @@ public class InternalInstrumentationLanguageLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2573:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2573:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2603:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2603:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2573:11: ( '^' )?
+            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2603:11: ( '^' )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -350,7 +350,7 @@ public class InternalInstrumentationLanguageLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2573:11: '^'
+                    // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2603:11: '^'
                     {
                     match('^'); 
 
@@ -368,7 +368,7 @@ public class InternalInstrumentationLanguageLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2573:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2603:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -417,10 +417,10 @@ public class InternalInstrumentationLanguageLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2575:10: ( ( '0' .. '9' )+ )
-            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2575:12: ( '0' .. '9' )+
+            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2605:10: ( ( '0' .. '9' )+ )
+            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2605:12: ( '0' .. '9' )+
             {
-            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2575:12: ( '0' .. '9' )+
+            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2605:12: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -434,7 +434,7 @@ public class InternalInstrumentationLanguageLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2575:13: '0' .. '9'
+            	    // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2605:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -466,10 +466,10 @@ public class InternalInstrumentationLanguageLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2577:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2577:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2607:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2607:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2577:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2607:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -487,10 +487,10 @@ public class InternalInstrumentationLanguageLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2577:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2607:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2577:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2607:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop4:
                     do {
                         int alt4=3;
@@ -506,7 +506,7 @@ public class InternalInstrumentationLanguageLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2577:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2607:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -522,7 +522,7 @@ public class InternalInstrumentationLanguageLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2577:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2607:66: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -547,10 +547,10 @@ public class InternalInstrumentationLanguageLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2577:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2607:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2577:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2607:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -566,7 +566,7 @@ public class InternalInstrumentationLanguageLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2577:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2607:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -582,7 +582,7 @@ public class InternalInstrumentationLanguageLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2577:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2607:137: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -625,12 +625,12 @@ public class InternalInstrumentationLanguageLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2579:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2579:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2609:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2609:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2579:24: ( options {greedy=false; } : . )*
+            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2609:24: ( options {greedy=false; } : . )*
             loop7:
             do {
                 int alt7=2;
@@ -655,7 +655,7 @@ public class InternalInstrumentationLanguageLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2579:52: .
+            	    // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2609:52: .
             	    {
             	    matchAny(); 
 
@@ -685,12 +685,12 @@ public class InternalInstrumentationLanguageLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2581:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2581:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2611:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2611:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2581:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2611:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop8:
             do {
                 int alt8=2;
@@ -703,7 +703,7 @@ public class InternalInstrumentationLanguageLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2581:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2611:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -723,7 +723,7 @@ public class InternalInstrumentationLanguageLexer extends Lexer {
                 }
             } while (true);
 
-            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2581:40: ( ( '\\r' )? '\\n' )?
+            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2611:40: ( ( '\\r' )? '\\n' )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -732,9 +732,9 @@ public class InternalInstrumentationLanguageLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2581:41: ( '\\r' )? '\\n'
+                    // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2611:41: ( '\\r' )? '\\n'
                     {
-                    // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2581:41: ( '\\r' )?
+                    // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2611:41: ( '\\r' )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -743,7 +743,7 @@ public class InternalInstrumentationLanguageLexer extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2581:41: '\\r'
+                            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2611:41: '\\r'
                             {
                             match('\r'); 
 
@@ -775,10 +775,10 @@ public class InternalInstrumentationLanguageLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2583:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2583:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2613:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2613:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2583:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2613:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt11=0;
             loop11:
             do {
@@ -832,8 +832,8 @@ public class InternalInstrumentationLanguageLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2585:16: ( . )
-            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2585:18: .
+            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2615:16: ( . )
+            // ../de.cau.cs.se.instrumentation.language.ui/src-gen/de/cau/cs/se/instrumentation/language/ui/contentassist/antlr/internal/InternalInstrumentationLanguage.g:2615:18: .
             {
             matchAny(); 
 
@@ -1031,9 +1031,9 @@ public class InternalInstrumentationLanguageLexer extends Lexer {
         "\1\2\17\uffff\1\0\1\1\55\uffff}>";
     static final String[] DFA12_transitionS = {
             "\11\24\2\23\2\24\1\23\22\24\1\23\1\24\1\20\1\14\3\24\1\21\1"+
-            "\6\1\7\1\5\1\24\1\10\1\24\1\4\1\22\12\17\1\11\6\24\32\16\3\24"+
-            "\1\15\1\16\1\24\10\16\1\2\6\16\1\1\4\16\1\3\5\16\1\12\1\24\1"+
-            "\13\uff82\24",
+            "\6\1\7\1\5\1\24\1\10\1\24\1\4\1\22\12\17\1\13\6\24\32\16\3\24"+
+            "\1\15\1\16\1\24\10\16\1\2\6\16\1\1\4\16\1\3\5\16\1\11\1\24\1"+
+            "\12\uff82\24",
             "\1\25\20\uffff\1\26",
             "\1\30",
             "\1\31",
@@ -1174,11 +1174,11 @@ public class InternalInstrumentationLanguageLexer extends Lexer {
 
                         else if ( (LA12_0==',') ) {s = 8;}
 
-                        else if ( (LA12_0==':') ) {s = 9;}
+                        else if ( (LA12_0=='{') ) {s = 9;}
 
-                        else if ( (LA12_0=='{') ) {s = 10;}
+                        else if ( (LA12_0=='}') ) {s = 10;}
 
-                        else if ( (LA12_0=='}') ) {s = 11;}
+                        else if ( (LA12_0==':') ) {s = 11;}
 
                         else if ( (LA12_0=='#') ) {s = 12;}
 

@@ -1550,11 +1550,9 @@ rule__Probe__Group__2__Impl
     }
 :
 (
-{ before(grammarAccess.getProbeAccess().getColonKeyword_2()); }
-
-	':' 
-
-{ after(grammarAccess.getProbeAccess().getColonKeyword_2()); }
+{ before(grammarAccess.getProbeAccess().getGroup_2()); }
+(rule__Probe__Group_2__0)?
+{ after(grammarAccess.getProbeAccess().getGroup_2()); }
 )
 
 ;
@@ -1581,9 +1579,11 @@ rule__Probe__Group__3__Impl
     }
 :
 (
-{ before(grammarAccess.getProbeAccess().getTypeAssignment_3()); }
-(rule__Probe__TypeAssignment_3)
-{ after(grammarAccess.getProbeAccess().getTypeAssignment_3()); }
+{ before(grammarAccess.getProbeAccess().getLeftCurlyBracketKeyword_3()); }
+
+	'{' 
+
+{ after(grammarAccess.getProbeAccess().getLeftCurlyBracketKeyword_3()); }
 )
 
 ;
@@ -1610,11 +1610,9 @@ rule__Probe__Group__4__Impl
     }
 :
 (
-{ before(grammarAccess.getProbeAccess().getLeftCurlyBracketKeyword_4()); }
-
-	'{' 
-
-{ after(grammarAccess.getProbeAccess().getLeftCurlyBracketKeyword_4()); }
+{ before(grammarAccess.getProbeAccess().getPropertiesAssignment_4()); }
+(rule__Probe__PropertiesAssignment_4)*
+{ after(grammarAccess.getProbeAccess().getPropertiesAssignment_4()); }
 )
 
 ;
@@ -1629,7 +1627,6 @@ rule__Probe__Group__5
     }
 :
 	rule__Probe__Group__5__Impl
-	rule__Probe__Group__6
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -1641,9 +1638,11 @@ rule__Probe__Group__5__Impl
     }
 :
 (
-{ before(grammarAccess.getProbeAccess().getPropertiesAssignment_5()); }
-(rule__Probe__PropertiesAssignment_5)*
-{ after(grammarAccess.getProbeAccess().getPropertiesAssignment_5()); }
+{ before(grammarAccess.getProbeAccess().getRightCurlyBracketKeyword_5()); }
+
+	'}' 
+
+{ after(grammarAccess.getProbeAccess().getRightCurlyBracketKeyword_5()); }
 )
 
 ;
@@ -1652,28 +1651,41 @@ finally {
 }
 
 
-rule__Probe__Group__6
+
+
+
+
+
+
+
+
+
+
+
+
+rule__Probe__Group_2__0
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__Probe__Group__6__Impl
+	rule__Probe__Group_2__0__Impl
+	rule__Probe__Group_2__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Probe__Group__6__Impl
+rule__Probe__Group_2__0__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getProbeAccess().getRightCurlyBracketKeyword_6()); }
+{ before(grammarAccess.getProbeAccess().getColonKeyword_2_0()); }
 
-	'}' 
+	':' 
 
-{ after(grammarAccess.getProbeAccess().getRightCurlyBracketKeyword_6()); }
+{ after(grammarAccess.getProbeAccess().getColonKeyword_2_0()); }
 )
 
 ;
@@ -1682,14 +1694,32 @@ finally {
 }
 
 
+rule__Probe__Group_2__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Probe__Group_2__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
 
+rule__Probe__Group_2__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getProbeAccess().getTypeAssignment_2_1()); }
+(rule__Probe__TypeAssignment_2_1)
+{ after(grammarAccess.getProbeAccess().getTypeAssignment_2_1()); }
+)
 
-
-
-
-
-
-
+;
+finally {
+	restoreStackSize(stackSize);
+}
 
 
 
@@ -2422,14 +2452,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Probe__TypeAssignment_3
+rule__Probe__TypeAssignment_2_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getProbeAccess().getTypeClassifierParserRuleCall_3_0()); }
-	ruleClassifier{ after(grammarAccess.getProbeAccess().getTypeClassifierParserRuleCall_3_0()); }
+{ before(grammarAccess.getProbeAccess().getTypeClassifierParserRuleCall_2_1_0()); }
+	ruleClassifier{ after(grammarAccess.getProbeAccess().getTypeClassifierParserRuleCall_2_1_0()); }
 )
 
 ;
@@ -2437,14 +2467,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Probe__PropertiesAssignment_5
+rule__Probe__PropertiesAssignment_4
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getProbeAccess().getPropertiesPropertyParserRuleCall_5_0()); }
-	ruleProperty{ after(grammarAccess.getProbeAccess().getPropertiesPropertyParserRuleCall_5_0()); }
+{ before(grammarAccess.getProbeAccess().getPropertiesPropertyParserRuleCall_4_0()); }
+	ruleProperty{ after(grammarAccess.getProbeAccess().getPropertiesPropertyParserRuleCall_4_0()); }
 )
 
 ;

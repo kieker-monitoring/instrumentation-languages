@@ -52,8 +52,9 @@ XStringLiteral:
 	value=STRING
 ;
 
+// the classifier can be omitted to support languages and meta models which do not provide Ecore models.
 Probe:
-	'probe' name=ID ':' type=Classifier '{'
+	'probe' name=ID (':' type=Classifier)? '{'
 		(properties+=Property)*
 	'}'
 ;
