@@ -9,6 +9,8 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Map;
 
+import kieker.common.configuration.Configuration;
+
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -24,8 +26,8 @@ public class ClientKiekerServiceJob extends KiekerServiceJob {
 	private String fqn;
 	private int port;
 
-	public ClientKiekerServiceJob(String name, String fqn, int port, Map<Long,Probe> probeStructures) {
-		super(name,probeStructures);
+	public ClientKiekerServiceJob(String name, String fqn, int port, Map<Long,Probe> probeStructures, Configuration configuration) {
+		super(name,probeStructures, configuration);
 		this.fqn = fqn;
 		this.port = port;
 	}

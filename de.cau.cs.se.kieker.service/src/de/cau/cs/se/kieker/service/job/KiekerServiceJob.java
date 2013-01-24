@@ -8,7 +8,9 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.Map;
 
+import kieker.common.configuration.Configuration;
 import kieker.common.record.IMonitoringRecord;
+import kieker.monitoring.core.configuration.ConfigurationFactory;
 import kieker.monitoring.core.controller.IMonitoringController;
 import kieker.monitoring.core.controller.MonitoringController;
 
@@ -16,6 +18,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.util.EList;
 
+import de.cau.cs.se.instrumentation.language.instrumentation.Model;
 import de.cau.cs.se.instrumentation.language.instrumentation.Probe;
 import de.cau.cs.se.instrumentation.language.instrumentation.Property;
 import de.cau.cs.se.instrumentation.language.instrumentation.ReferenceProperty;
@@ -29,21 +32,20 @@ public abstract class KiekerServiceJob extends Job {
 	protected String ip;
 	protected int port;
 	private Map<Long, Probe> probeStructures;
-	// couldn't that be injectecd?
 	private final IMonitoringController kieker;
 
-	public KiekerServiceJob(String name, Map<Long, Probe> probeStructures) {
+	public KiekerServiceJob(String name, Map<Long, Probe> probeStructures, Configuration configuration) {
 		super(name);
 		this.probeStructures = probeStructures;
-		this.kieker  = MonitoringController.getInstance();
+		this.kieker  = MonitoringController.createInstance(configuration);
 	}
 
 	/**
 	 * main loop for data retrieval
 	 * 
 	 * @param in
-	 * @param out
 	 * @param monitor
+	 * 
 	 * @throws IOException
 	 * @throws InterruptedException
 	 * @throws IllegalAccessException 
@@ -59,7 +61,7 @@ public abstract class KiekerServiceJob extends Job {
 			long id = in.readLong();
 			Probe probe = probeStructures.get(id);
 
-			Object object = Class.forName("de.cau.se.kieker." + probe.getName()	+ "Record");
+			Object object = Class.forName(((Model)probe.eContainer()).getName() + "." + probe.getName()	+ "Record");
 			// process data
 			for (Property property : probe.getProperties()) {
 				Field field = object.getClass().getField(property.getName());
@@ -70,8 +72,7 @@ public abstract class KiekerServiceJob extends Job {
 					field.setByte(object, in.readByte());
 				} else if (property.getType().getClass_().getInstanceTypeName().equals("Short")) {
 					field.setShort(object, in.readShort());
-				} else if (property.getType().getClass_().getInstanceTypeName()
-						.equals("Integer")) {
+				} else if (property.getType().getClass_().getInstanceTypeName().equals("Integer")) {
 					field.setInt(object, in.readInt());
 				} else if (property.getType().getClass_().getInstanceTypeName().equals("Long")) {
 					field.setLong(object, in.readLong());
@@ -91,12 +92,14 @@ public abstract class KiekerServiceJob extends Job {
 	}
 
 	/**
-	 * Deserialize an object reading from the input stream
+	 * De-serialize an object reading from the input stream
 	 * 
 	 * @param in the input stream
 	 * @param object
 	 * @param properties
-	 * @return the deserialized IMonitoringRecord object
+	 * 
+	 * @return the de-serialized IMonitoringRecord object
+	 * 
 	 * @throws IOException
 	 * @throws ClassNotFoundException
 	 * @throws SecurityException
