@@ -5,12 +5,26 @@
          point="org.eclipse.debug.core.launchConfigurationTypes">
       <launchConfigurationType
             delegate="de.cau.cs.se.kieker.service.launch.KiekerServiceLaunchConfigurationDelegate"
-            delegateName="de.cau.cs.se.kieker.service.launch.KiekerServiceLaunchConfigurationDelegate"
-            id="de.cau.cs.se.kieker.service.launchConfigurationType"
-            modes="debug,run"
-            name="Kieker Service"
-            public="true">
+            id="de.cau.cs.se.kieker.service.launch.KiekerServiceLaunchConfigurationDelegate"
+            modes="run, debug"
+            name="Kieker Service">
       </launchConfigurationType>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchConfigurationTypeImages">
+      <launchConfigurationTypeImage
+            configTypeID="de.cau.cs.se.kieker.service.launch.KiekerServiceLaunchConfigurationDelegate"
+            icon="icons/server.gif"
+            id="de.cau.cs.se.kieker.service.launchConfigurationTypeImage">
+      </launchConfigurationTypeImage>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+      <launchConfigurationTabGroup
+            class="de.cau.cs.se.kieker.service.launch.ServiceLaunchTabGroup"
+            id="de.cau.cs.se.kieker.service.launch.ServiceLaunchTabGroup"
+            type="de.cau.cs.se.kieker.service.launch.KiekerServiceLaunchConfigurationDelegate">
+      </launchConfigurationTabGroup>
    </extension>
 
 </plugin>

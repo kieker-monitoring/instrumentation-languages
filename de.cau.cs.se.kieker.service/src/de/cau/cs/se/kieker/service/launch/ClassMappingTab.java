@@ -68,7 +68,7 @@ public class ClassMappingTab extends AbstractLaunchConfigurationTab {
 		}
 		
 		for (int i=0; i<titles.length; i++) {
-			sourceTable.getColumn (i).pack ();
+			mappingTable.getColumn (i).pack ();
 		}	
 		group.pack ();
 	}
@@ -82,7 +82,7 @@ public class ClassMappingTab extends AbstractLaunchConfigurationTab {
 		sourceTable.setLayoutData(data);
 		String[] titles = {"Libraries", "Modify"};
 		for (int i=0; i<titles.length; i++) {
-			TableColumn column = new TableColumn (mappingTable, SWT.NONE);
+			TableColumn column = new TableColumn (sourceTable, SWT.NONE);
 			column.setText (titles [i]);
 		}
 		TableItem item = new TableItem (sourceTable, SWT.NONE);
