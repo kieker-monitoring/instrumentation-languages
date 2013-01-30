@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="lib/asm-commons-3.3.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/asm-3.3.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/kieker-1.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/javautil-3.1.1.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="lib/guava-11.0.2.jar"/>
-	<classpathentry kind="lib" path="lib/javassist-3.12.1.GA.jar"/>
-	<classpathentry kind="lib" path="lib/reflections-0.9.8.jar"/>
-	<classpathentry kind="lib" path="lib/slf4j-api-1.6.1.jar"/>
-	<classpathentry kind="lib" path="lib/slf4j-simple-1.6.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

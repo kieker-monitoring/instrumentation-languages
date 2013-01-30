@@ -9,12 +9,10 @@ Require-Bundle: org.eclipse.ui,
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ClassPath: lib/kieker-1.6.jar,
- lib/guava-11.0.2.jar,
- lib/javassist-3.12.1.GA.jar,
- lib/reflections-0.9.8.jar,
- lib/slf4j-api-1.6.1.jar,
- lib/slf4j-simple-1.6.1.jar,
- .
+ .,
+ lib/javautil-3.1.1.jar,
+ lib/asm-3.3.1.jar,
+ lib/asm-commons-3.3.1.jar
 Import-Package: org.eclipse.core.resources,
  org.eclipse.debug.core,
  org.eclipse.debug.core.model,
