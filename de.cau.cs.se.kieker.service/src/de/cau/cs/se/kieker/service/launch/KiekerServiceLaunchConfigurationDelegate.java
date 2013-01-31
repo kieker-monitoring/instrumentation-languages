@@ -47,10 +47,12 @@ public class KiekerServiceLaunchConfigurationDelegate extends LaunchConfiguratio
 		@SuppressWarnings("unchecked")
         List<String> recordLibrarys = (List<String>)configuration.getAttribute(ATTR_RECORD_LIBS, new ArrayList<String>());
 		@SuppressWarnings("unchecked")
-        Map<String,String> recordIds = (Map<String,String>)configuration.getAttribute(ATTR_RECORD_IDS, new HashMap<String,String>());
+        Map<Integer,String> recordIds = (Map<Integer,String>)configuration.getAttribute(ATTR_RECORD_IDS, new HashMap<String,String>());
+
+		// How to get a Kieker configuration from an arbitrary configuration file
 		Configuration kiekerConfiguration = ConfigurationFactory.createConfigurationFromFile(configurationFile.getLocation().toOSString());
 
-		final int port = Integer.parseInt(configuration.getAttribute(ATTR_PORT, "9000"));
+		final int port = configuration.getAttribute(ATTR_PORT, 9000);
 		final String ip = configuration.getAttribute(ATTR_IP, "localhost");
 				
 		// FIXME this is a dirty hack java.net.URI -> String ->

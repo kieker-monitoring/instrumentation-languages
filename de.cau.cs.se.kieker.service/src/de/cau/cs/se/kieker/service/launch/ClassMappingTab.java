@@ -29,8 +29,6 @@ import org.eclipse.debug.ui.AbstractLaunchConfigurationTab;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.TreeEditor;
-import org.eclipse.swt.events.KeyEvent;
-import org.eclipse.swt.events.KeyListener;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -87,6 +85,12 @@ public class ClassMappingTab extends AbstractLaunchConfigurationTab {
 
 	}
 
+	/**
+	 * Create the mapping tree part of the class mapping view.
+	 * 
+	 * @param group
+	 *            the parent container
+	 */
 	private void createMappingTree(Group group) {
 		mappingTree = new Tree(group, SWT.MULTI | SWT.BORDER | SWT.FULL_SELECTION);
 		mappingTree.setLinesVisible(true);
@@ -94,50 +98,51 @@ public class ClassMappingTab extends AbstractLaunchConfigurationTab {
 		GridData data = new GridData(SWT.FILL, SWT.FILL, true, true);
 		data.heightHint = 200;
 		mappingTree.setLayoutData(data);
-		
+
 		TreeColumn column = new TreeColumn(mappingTree, SWT.LEFT);
 		column.setText("Path");
 		column.setWidth(250);
-		
+
 		column = new TreeColumn(mappingTree, SWT.RIGHT);
 		column.setText("Id");
 		column.setWidth(50);
-		
+
 		final TreeEditor editor = new TreeEditor(mappingTree);
-        //The editor must have the same size as the cell and must
-        //not be any smaller than 50 pixels.
-        editor.horizontalAlignment = SWT.LEFT;
-        editor.grabHorizontal = true;
-        editor.minimumWidth = 50;
-        
-        mappingTree.addSelectionListener(new SelectionAdapter() {
-            public void widgetSelected(SelectionEvent e) {
-            	// Clean up any previous editor control
-                Control oldEditor = editor.getEditor();
-                if (oldEditor != null)
-                	oldEditor.dispose();
-            	if (e.item == null)
-            		return;
-        		if (e.item instanceof TreeItem) {
-        			TreeItem item = (TreeItem)e.item;
-        			if (item.getData("type").equals("class")) {
-	                    // The control that will be the editor must be a child of the Tree
-	                    Text newEditor = new Text(mappingTree, SWT.NONE);
-	                    newEditor.setText(item.getText(1));
-	                    newEditor.addModifyListener(new ModifyListener() {
-	                            public void modifyText(ModifyEvent e) {
-	                                    Text text = (Text)editor.getEditor();
-	                                    editor.getItem().setText(1,text.getText());
-	                            }
-	                    });
-	                    newEditor.selectAll();
-	                    newEditor.setFocus();
-	                    editor.setEditor(newEditor, item, 1);
-        			}
-        		}
-            }
-        });
-        		
+		// The editor must have the same size as the cell and must
+		// not be any smaller than 50 pixels.
+		editor.horizontalAlignment = SWT.LEFT;
+		editor.grabHorizontal = true;
+		editor.minimumWidth = 50;
+
+		mappingTree.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent e) {
+				// Clean up any previous editor control
+				Control oldEditor = editor.getEditor();
+				if (oldEditor != null)
+					oldEditor.dispose();
+				if (e.item == null)
+					return;
+				if (e.item instanceof TreeItem) {
+					TreeItem item = (TreeItem) e.item;
+					if (item.getData("type").equals("class")) {
+						// The control that will be the editor must be a child of the Tree
+						Text newEditor = new Text(mappingTree, SWT.NONE);
+						newEditor.setText(item.getText(1));
+						newEditor.addModifyListener(new ModifyListener() {
+							public void modifyText(ModifyEvent e) {
+								Text text = (Text) editor.getEditor();
+								editor.getItem().setText(1, text.getText());
+								updateLaunchConfigurationDialog();
+							}
+						});
+						newEditor.selectAll();
+						newEditor.setFocus();
+						editor.setEditor(newEditor, item, 1);
+					}
+				}
+			}
+		});
+
 		group.pack();
 	}
 
@@ -187,29 +192,7 @@ public class ClassMappingTab extends AbstractLaunchConfigurationTab {
 				IFile library = chooseLibraryFile();
 				if (library != null) {
 					item.setText(0, library.getProjectRelativePath().toString());
-					ClassFinder finder = new ClassFinder();
-					Collection<URL> urls = new ArrayList<URL>();
-					for (TableItem tempItem : sourceTable.getItems()) {
-						try {
-							IFile file = selectedProject.getFile(tempItem.getText(0));
-							urls.add(file.getLocationURI().toURL());
-							finder.add(new File(file.getLocation().toOSString()));
-						} catch (MalformedURLException e1) {
-							// TODO This should not happen, as the URI is synthesised by Eclipse
-							e1.printStackTrace();
-						}
-					}
-
-					ClassFilter filter = new SubclassClassFilter(
-					        kieker.common.record.IMonitoringRecord.class);
-
-					Collection<ClassInfo> classes = new ArrayList<ClassInfo>();
-					finder.findClasses(classes, filter);
-
-					for (ClassInfo clazz : classes) {
-						addtoTree(mappingTree,Arrays.asList(clazz.getClassName().split("\\.")).iterator());
-					}
-
+					updateLibraryClassMap();
 					updateLaunchConfigurationDialog();
 				}
 			}
@@ -230,49 +213,126 @@ public class ClassMappingTab extends AbstractLaunchConfigurationTab {
 			}
 		});
 	}
+	
+	/**
+	 * Check all libraries in the source list and add their IMonitoringRecord classes to the
+	 * mappingTree.
+	 */
+	private void updateLibraryClassMap() {
+		ClassFinder finder = new ClassFinder();
+		Collection<URL> urls = new ArrayList<URL>();
+		for (TableItem tempItem : sourceTable.getItems()) {
+			try {
+				IFile file = selectedProject.getFile(tempItem.getText(0));
+				urls.add(file.getLocationURI().toURL());
+				finder.add(new File(file.getLocation().toOSString()));
+			} catch (MalformedURLException e1) {
+				// TODO This should not happen, as the URI is synthesised by Eclipse
+				e1.printStackTrace();
+			}
+		}
 
-	protected void addtoTree(Tree tree, Iterator<String> path) {
+		ClassFilter filter = new SubclassClassFilter(
+		        kieker.common.record.IMonitoringRecord.class);
+
+		Collection<ClassInfo> classes = new ArrayList<ClassInfo>();
+		finder.findClasses(classes, filter);
+
+		for (ClassInfo clazz : classes) {
+			addtoTree(null, clazz.getClassName(),
+			        Arrays.asList(clazz.getClassName().split("\\.")).iterator());
+		}
+    }
+
+	/**
+	 * Add a class to the first level of a tree. This normally results on putting there just the
+	 * package name and subsequently call addtoTree for sub items.
+	 * 
+	 * @param id
+	 *            the id of the class
+	 * @param className
+	 *            name of the class
+	 * @param path
+	 *            an iterator returning the next level of the class name
+	 */
+	protected void addtoTree(Integer id, String className, Iterator<String> path) {
 		if (path.hasNext()) {
 			String node = path.next();
 			boolean found = false;
-			for (TreeItem item : tree.getItems()) {
+			for (TreeItem item : mappingTree.getItems()) {
 				if (item.getText().equals(node)) {
 					found = true;
-					addtoTree (item,path);
+					addtoTree(item, id, className, path);
 					break;
 				}
 			}
 			if (!found) {
-				TreeItem newItem = new TreeItem (tree,SWT.NONE);
-				newItem.setText(0,node);
-				newItem.setText(1,path.hasNext()?"- package -":"");
-				newItem.setData("type",path.hasNext()?"package":"class");
-				addtoTree (newItem,path);
+				TreeItem newItem = new TreeItem(mappingTree, SWT.NONE);
+				newItem.setText(0, node);
+				if (path.hasNext()) {
+					newItem.setText(1, "- package -");
+					newItem.setData("type", "package");
+				} else {
+					newItem.setText(1, id==null?"":id.toString());
+					newItem.setData("type", "class");
+					newItem.setData("class", className);
+				}
+
+				addtoTree(newItem, id, className, path);
 			}
 		}
-    }
-	
-	protected void addtoTree(TreeItem parent, Iterator<String> path) {
+	}
+
+	/**
+	 * Add a class to an arbitrary level of a tree,by adding it to a parent tree item. This results
+	 * either on putting there a package node and call subsequently addToTree again or place a node
+	 * with the simple class name in the tree.
+	 * 
+	 * @param parent
+	 *            the parent TreeItem
+	 * @param id
+	 *            the id of the class
+	 * @param className
+	 *            name of the class
+	 * @param path
+	 *            an iterator returning the next level of the class name
+	 */
+	protected void addtoTree(TreeItem parent, Integer id, String className, Iterator<String> path) {
 		if (path.hasNext()) {
 			String node = path.next();
 			boolean found = false;
 			for (TreeItem item : parent.getItems()) {
 				if (item.getText().equals(node)) {
 					found = true;
-					addtoTree (item,path);
+					addtoTree(item, id, className, path);
 					break;
 				}
 			}
 			if (!found) {
-				TreeItem newItem = new TreeItem (parent,SWT.NONE);
-				newItem.setText(0,node);
-				newItem.setText(1,path.hasNext()?"- package -":"");
-				newItem.setData("type",path.hasNext()?"package":"class");
-				addtoTree (newItem,path);
-			}
-		}
-    }
+				TreeItem newItem = new TreeItem(parent, SWT.NONE);
+				newItem.setText(0, node);
+				if (path.hasNext()) {
+					newItem.setText(1, "- package -");
+					newItem.setData("type", "package");
+				} else {
+					newItem.setText(1, id==null?"":id.toString());
+					newItem.setData("type", "class");
+					newItem.setData("class", className);
+				}
 
+				addtoTree(newItem, id, className, path);
+			}
+		} else {
+			if (!id.equals(""))
+				parent.setText(1,id==null?"":id.toString());
+		}
+	}
+
+	/**
+	 * Choose a library file and return an IFile reference.
+	 * 
+	 * @return returns either one selected IFile reference or null
+	 */
 	private IFile chooseLibraryFile() {
 		if (selectedProject != null) {
 			FilteredResourcesSelectionDialog dialog = new FilteredResourcesSelectionDialog(
@@ -293,7 +353,7 @@ public class ClassMappingTab extends AbstractLaunchConfigurationTab {
 		configuration.setAttribute(KiekerServiceLaunchConfigurationDelegate.ATTR_RECORD_LIBS,
 		        new ArrayList<String>());
 		configuration.setAttribute(KiekerServiceLaunchConfigurationDelegate.ATTR_RECORD_IDS,
-		        new HashMap<String, String>());
+		        new HashMap<Integer, String>());
 	}
 
 	@Override
@@ -313,6 +373,15 @@ public class ClassMappingTab extends AbstractLaunchConfigurationTab {
 				TableItem item = new TableItem(sourceTable, SWT.NONE);
 				item.setText(0, (String) library);
 			}
+			updateLibraryClassMap();
+			@SuppressWarnings("unchecked")
+			Map<Integer, String> map = configuration.getAttribute(
+			        KiekerServiceLaunchConfigurationDelegate.ATTR_RECORD_IDS,
+			        new HashMap<Integer, String>());
+			for (Integer key : map.keySet()) {
+				String entry = map.get(key);
+				addtoTree(key, entry, Arrays.asList(entry.split("\\.")).iterator());
+			}
 		} catch (CoreException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -329,13 +398,42 @@ public class ClassMappingTab extends AbstractLaunchConfigurationTab {
 		configuration.setAttribute(KiekerServiceLaunchConfigurationDelegate.ATTR_RECORD_LIBS,
 		        recordLibs);
 
-		Map<String, String> recordIds = new HashMap<String, String>();
-		for (int row = 0; row < mappingTree.getItemCount(); row++) {
-			recordIds.put(mappingTree.getItem(row).getText(0), mappingTree.getItem(row)
-			        .getText(1));
-		}
+		Map<Integer, String> recordIds = new HashMap<Integer, String>();
+		getMappings(recordIds);
 		configuration.setAttribute(KiekerServiceLaunchConfigurationDelegate.ATTR_RECORD_IDS,
 		        recordIds);
+	}
+
+	/**
+	 * Retrieve class and class mapping ids for the configuration. Handle first level of the tree.
+	 * 
+	 * @param recordIds
+	 */
+	private void getMappings(Map<Integer, String> recordIds) {
+		for (TreeItem item : mappingTree.getItems()) {
+			if (item.getData("class") != null) { // class node
+				recordIds.put(Integer.parseInt(item.getText(1)), (String) item.getData("class"));
+			} else {
+				getMappings(item, recordIds);
+			}
+		}
+	}
+
+	/**
+	 * Retrieve class and class mapping ids for the configuration. Handle any other level of the
+	 * tree.
+	 * 
+	 * @param parent parent tree node
+	 * @param recordIds map of class and ids
+	 */
+	private void getMappings(TreeItem parent, Map<Integer, String> recordIds) {
+		for (TreeItem item : parent.getItems()) {
+			if (item.getData("class") != null) { // class node
+				recordIds.put(Integer.parseInt(item.getText(1)), (String) item.getData("class"));
+			} else {
+				getMappings(item, recordIds);
+			}
+		}
 	}
 
 	@Override

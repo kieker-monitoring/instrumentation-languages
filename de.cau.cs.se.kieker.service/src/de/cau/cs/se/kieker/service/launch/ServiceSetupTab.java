@@ -279,7 +279,7 @@ public class ServiceSetupTab extends AbstractLaunchConfigurationTab {
 		configuration.setAttribute(
 				KiekerServiceLaunchConfigurationDelegate.ATTR_IP, "localhost");
 		configuration.setAttribute(
-				KiekerServiceLaunchConfigurationDelegate.ATTR_PORT, "9000");
+				KiekerServiceLaunchConfigurationDelegate.ATTR_PORT, 9000);
 		configuration.setAttribute(
 				KiekerServiceLaunchConfigurationDelegate.ATTR_TYPE, "SERVER");
 		configuration.setAttribute(
@@ -301,8 +301,8 @@ public class ServiceSetupTab extends AbstractLaunchConfigurationTab {
 					KiekerServiceLaunchConfigurationDelegate.ATTR_PROJECT, ""));
 			ipText.setText(configuration.getAttribute(
 					KiekerServiceLaunchConfigurationDelegate.ATTR_IP, ""));
-			portText.setText(configuration.getAttribute(
-					KiekerServiceLaunchConfigurationDelegate.ATTR_PORT, ""));
+			portText.setText(Integer.toString(configuration.getAttribute(
+					KiekerServiceLaunchConfigurationDelegate.ATTR_PORT, 0)));
 			if (configuration.getAttribute(
 					KiekerServiceLaunchConfigurationDelegate.ATTR_TYPE, "").equals("CLIENT")) {
 				typeClientButton.setSelection(true);
@@ -334,6 +334,12 @@ public class ServiceSetupTab extends AbstractLaunchConfigurationTab {
 		configuration.setAttribute(
 				KiekerServiceLaunchConfigurationDelegate.ATTR_KIEKER_CONFIG,
 				kiekerConfigurationText.getText());
+		configuration.setAttribute(
+				KiekerServiceLaunchConfigurationDelegate.ATTR_IP,
+				ipText.getText());
+		configuration.setAttribute(
+				KiekerServiceLaunchConfigurationDelegate.ATTR_PORT,
+				Integer.parseInt(portText.getText()));
 	}
 
 	/*

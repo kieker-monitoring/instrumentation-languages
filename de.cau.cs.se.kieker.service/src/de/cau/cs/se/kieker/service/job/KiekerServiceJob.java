@@ -18,7 +18,6 @@ import kieker.monitoring.core.controller.MonitoringController;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.jobs.Job;
-import org.eclipse.emf.common.util.EList;
 
 
 /**
@@ -35,7 +34,7 @@ public abstract class KiekerServiceJob extends Job {
 	public KiekerServiceJob(String name, Map<Long, Class<IMonitoringRecord>> recordList, Configuration configuration) {
 		super(name);
 		this.recordList = recordList;
-		this.kieker  = MonitoringController.createInstance(configuration);
+		this.kieker  = MonitoringController.createInstance(configuration); // Create a Kieker monitoring instance
 	}
 
 	/**
