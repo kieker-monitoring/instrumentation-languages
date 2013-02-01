@@ -41,8 +41,4 @@ public class TCPServerService extends TCPService {
 	    in.close();	    
     }
 
-	@Override
-    protected void updateState() {
-	    	    
-    }
 }

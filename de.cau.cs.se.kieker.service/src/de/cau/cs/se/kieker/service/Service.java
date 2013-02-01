@@ -1,5 +1,8 @@
 package de.cau.cs.se.kieker.service;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import kieker.common.configuration.Configuration;
 import kieker.common.record.IMonitoringRecord;
 import kieker.monitoring.core.controller.IMonitoringController;
@@ -18,12 +21,14 @@ public abstract class Service {
 	protected boolean active;
 	protected long count;
 	private Exception exception;
+	private Collection<ServiceListener> listeners;
 	
 	/**
 	 * 
 	 */
 	public Service(Configuration configuration) {
 		this.configuration = configuration;
+		this.listeners = new ArrayList<ServiceListener>();
 	}
 	
 	public void run() throws Exception {
@@ -48,19 +53,26 @@ public abstract class Service {
 		sourceClose();
 	}
 
+	private void updateState() {
+	    // TODO Auto-generated method stub
+	    
+    }
+
 	protected abstract IMonitoringRecord deserialize() throws Exception;
 
 	protected abstract void sourceSetup() throws Exception;
 	
 	protected abstract void sourceClose() throws Exception;
 	
-	protected abstract void updateState();
-
 	/**
 	 * @return the exception
 	 */
     public Exception getException() {
 	    return exception;
+    }
+
+	public void addListener(ServiceListener listener) {
+		this.listeners.add(listener);
     }
 
 }

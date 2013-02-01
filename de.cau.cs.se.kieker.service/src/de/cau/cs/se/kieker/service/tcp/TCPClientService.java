@@ -4,7 +4,6 @@
 package de.cau.cs.se.kieker.service.tcp;
 
 import java.io.DataInputStream;
-import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Map;
 
@@ -42,8 +41,4 @@ public class TCPClientService extends TCPService {
 	    in.close();	    
     }
 
-	@Override
-    protected void updateState() {
-	    	    
-    }
 }

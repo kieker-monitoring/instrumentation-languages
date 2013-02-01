@@ -22,9 +22,10 @@ import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.model.LaunchConfigurationDelegate;
 
-import de.cau.cs.se.kieker.service.eclipse.job.ClientKiekerServiceJob;
+import de.cau.cs.se.kieker.service.Service;
 import de.cau.cs.se.kieker.service.eclipse.job.KiekerServiceJob;
-import de.cau.cs.se.kieker.service.eclipse.job.ServerKiekerServiceJob;
+import de.cau.cs.se.kieker.service.tcp.TCPClientService;
+import de.cau.cs.se.kieker.service.tcp.TCPServerService;
 
 public class KiekerServiceLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 
@@ -48,16 +49,14 @@ public class KiekerServiceLaunchConfigurationDelegate extends LaunchConfiguratio
 		final IProject project = ResourcesPlugin.getWorkspace().getRoot()
 				.getProject(configuration.getAttribute(ATTR_PROJECT, ""));
 		final IFile configurationFile = project.getFile(configuration.getAttribute(ATTR_KIEKER_CONFIG, ""));
-		@SuppressWarnings("unchecked")
-        List<String> recordLibraries = (List<String>)configuration.getAttribute(ATTR_RECORD_LIBS, new ArrayList<String>());
-		@SuppressWarnings("unchecked")
-        Map<String,String> recordIds = (Map<String,String>)configuration.getAttribute(ATTR_RECORD_IDS, new HashMap<String,String>());
+		List<String> recordLibraries = (List<String>)configuration.getAttribute(ATTR_RECORD_LIBS, new ArrayList<String>());
+		Map<String,String> recordIds = (Map<String,String>)configuration.getAttribute(ATTR_RECORD_IDS, new HashMap<String,String>());
 
 		// How to get a Kieker configuration from an arbitrary configuration file
 		Configuration kiekerConfiguration = ConfigurationFactory.createConfigurationFromFile(configurationFile.getLocation().toOSString());
 
 		final int port = configuration.getAttribute(ATTR_PORT, 9000);
-		final String ip = configuration.getAttribute(ATTR_IP, "localhost");
+		final String hostname = configuration.getAttribute(ATTR_IP, "localhost");
 				
 		// FIXME this is a dirty hack java.net.URI -> String ->
 		// org.eclipse.emf.common.util.URI
@@ -90,12 +89,15 @@ public class KiekerServiceLaunchConfigurationDelegate extends LaunchConfiguratio
 	            e.printStackTrace();
             }
 		}
-		KiekerServiceJob job;
+		
+		Service service;
 		if (configuration.getAttribute(ATTR_TYPE, "").equals("SERVER")) {
-			job = new ServerKiekerServiceJob("Server",port,records,kiekerConfiguration);
+			service = new TCPServerService (kiekerConfiguration, records, port);
 		} else {
-			job = new ClientKiekerServiceJob("Client",ip,port,records,kiekerConfiguration);
+			service = new TCPClientService (kiekerConfiguration, records, hostname, port);
 		}
+		KiekerServiceJob job = new KiekerServiceJob("Kieker Data Bridge",service);
+		service.addListener(job);
 		job.schedule();
 			
     }
