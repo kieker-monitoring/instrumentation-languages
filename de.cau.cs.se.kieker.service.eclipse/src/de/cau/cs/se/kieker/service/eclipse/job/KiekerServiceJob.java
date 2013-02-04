@@ -30,6 +30,7 @@ public class KiekerServiceJob extends Job implements ServiceListener {
 		this.monitor = monitor;
 	    try {
 	    	monitor.beginTask("Receiving ...", IProgressMonitor.UNKNOWN);
+// TODO need idea to implement respan feature
 	        service.run();
 	        monitor.done();
 	        return Status.OK_STATUS;
