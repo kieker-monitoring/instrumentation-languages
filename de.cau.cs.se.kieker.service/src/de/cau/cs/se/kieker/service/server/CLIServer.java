@@ -60,12 +60,14 @@ public class CLIServer {
 						Map<Integer, Class<IMonitoringRecord>> recordList = null;
 						TCPServerService service = new TCPServerService(configuration,recordList,port);
 						// TODO define cmd line output handler (optional)
-						try {
-	                        service.run();
-                        } catch (Exception e) {
-	                        // TODO Auto-generated catch block
-	                        e.printStackTrace();
-                        }
+						boolean respan = false;
+						do {
+							try {
+	        	                			service.run();
+				                        } catch (Exception e) {
+								respan = (e instanceof IOException);
+                        				}
+						} while (respan);
 					}
 				} else if (line.getOptionValue("type").equals("jms-client")) {
 					
