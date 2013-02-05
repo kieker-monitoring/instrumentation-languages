@@ -37,7 +37,7 @@ typedef struct sOperationExecutionRecord {
 
 /* function header */
 void error(const char *message);
-void send_data(int sockfd);
+void send_data(int sockfd, int iterations);
 int serialize_string (char *buffer, int offset, const char *string);
 int serialize_int32 (char *buffer, int offset, long int value);
 int serialize_int64 (char *buffer, int offset, long long value);
@@ -47,10 +47,13 @@ int serialize_int64 (char *buffer, int offset, long long value);
  */
 int main(int argc, char *argv[]) {
     int sockfd;
+    int iterations;
 
     fprintf(stdout,"testclient v0.1\n");
     if ((sockfd = socket_open_write (hostname, port))>0) {
-    	send_data(sockfd);
+        if (argc>1)
+		iterations=atoi(argv[1]);
+    	send_data(sockfd,iterations);
     	socket_close (sockfd);
     	exit(0);
     } else {
@@ -64,7 +67,7 @@ void error(const char *message) {
 	exit(1);
 }
 
-void send_data(int sockfd) {
+void send_data(int sockfd, int iterations) {
 	OperationExecutionRecord dummy;
     char buffer[BUFSIZE];
     int n;
@@ -82,7 +85,7 @@ void send_data(int sockfd) {
 	dummy.tout = tv.tv_sec * 1000000ULL + tv.tv_usec;
 
 	/* connect to client */
-	for (int i=0; i<1000000;i++) {
+	for (int i=0; i<iterations;i++) {
 		/* measure */
 /*		struct timeval tv;
 		gettimeofday(&tv, NULL);

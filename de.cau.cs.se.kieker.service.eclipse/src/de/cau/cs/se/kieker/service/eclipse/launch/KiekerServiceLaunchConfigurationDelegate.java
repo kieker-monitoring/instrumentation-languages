@@ -78,7 +78,7 @@ public class KiekerServiceLaunchConfigurationDelegate extends LaunchConfiguratio
 		}
 		
 		URLClassLoader classLoader = new URLClassLoader(urls,this.getClass().getClassLoader());
-		
+				
 		Map<Integer, Class<IMonitoringRecord>> records = new HashMap<Integer, Class<IMonitoringRecord>>();
 		for (String key : recordIds.keySet()) {
 			try {
@@ -89,7 +89,7 @@ public class KiekerServiceLaunchConfigurationDelegate extends LaunchConfiguratio
 	            e.printStackTrace();
             }
 		}
-		
+				
 		Service service;
 		if (configuration.getAttribute(ATTR_TYPE, "").equals("SERVER")) {
 			service = new TCPServerService (kiekerConfiguration, records, port);
