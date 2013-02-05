@@ -32,6 +32,7 @@ public class TCPClientService extends TCPService {
 
 	@Override
     protected void sourceSetup() throws Exception {
+		super.sourceSetup();
 		final Socket socket = new Socket(hostname, port);
 		in = new DataInputStream(socket.getInputStream());
     }

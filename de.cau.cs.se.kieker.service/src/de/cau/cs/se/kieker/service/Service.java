@@ -19,7 +19,7 @@ public abstract class Service {
 
 	private Configuration configuration;
 	protected boolean active;
-	protected long count;
+	protected long recordCount;
 	private Exception exception;
 	private Collection<ServiceListener> listeners;
 	private long listenerUpdateInterval;
@@ -37,29 +37,35 @@ public abstract class Service {
 		sourceSetup();
 		IMonitoringController kieker  = MonitoringController.createInstance(configuration);
 		active = true;
-		count = 0;
+		recordCount = 0;
 		while (active) {
             try {
             	IMonitoringRecord record = deserialize();
 	            if (record != null) {
 					kieker.newMonitoringRecord(record);
-					count++;
-					if (count%listenerUpdateInterval == 0)
+					recordCount++;
+					if (recordCount%listenerUpdateInterval == 0)
 						updateState(null);
-				}
+				} else
+					active = false;
             } catch (Exception e) {
 	            active = false;
 	            this.exception = e;
 	            updateState(e.getMessage());
             }	
 		}
+		updateState(null);
 		kieker.terminateMonitoring();
 		sourceClose();
 	}
 
 	private void updateState(String message) {
 		for (ServiceListener listener : listeners)
-			listener.handleEvent(count, message);
+			listener.handleEvent(recordCount, message);
+    }
+	
+	public long getRecordCount() {
+	    return recordCount;
     }
 
 	protected abstract IMonitoringRecord deserialize() throws Exception;

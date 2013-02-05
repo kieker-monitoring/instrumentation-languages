@@ -31,6 +31,7 @@ public class TCPServerService extends TCPService {
 
 	@Override
     protected void sourceSetup() throws Exception {
+		super.sourceSetup();
 		final ServerSocket serverSocket = new ServerSocket(port);
 		final Socket socket = serverSocket.accept();
 		in = new DataInputStream(socket.getInputStream());
