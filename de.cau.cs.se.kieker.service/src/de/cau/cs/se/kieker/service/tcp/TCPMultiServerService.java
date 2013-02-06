@@ -1,14 +1,28 @@
-/**
- * 
- */
+/***************************************************************************
+ * Copyright 2013 by
+ *  + Christian-Albrechts-University of Kiel
+ *    + Department of Computer Science
+ *      + Software Engineering Group 
+ *  and others.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ***************************************************************************/
 package de.cau.cs.se.kieker.service.tcp;
 
 import java.io.DataInputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
@@ -20,66 +34,81 @@ import kieker.common.record.IMonitoringRecord;
  * @author rju
  *
  */
-public class TCPMultiServerService extends TCPService {
+public class TCPMultiServerService extends AbstractTCPService {
 
-	private int QUEUE_CAPACITY = 10;
+	private static final int QUEUE_CAPACITY = 10;
 	
 	private int port;
-	private List<Runnable> serviceThreads = new ArrayList<Runnable>();
 	private BlockingQueue<IMonitoringRecord> recordQueue;
 	
 	private ServerSocket serverSocket;
 
 	/**
-	 * @param configuration
-	 * @param recordList
+	 * Construct new TCPMultiServerService.
+	 * 
+	 * @param configuration Kieker configuration object
+	 * @param recordMap IMonitoringRecord to id map
+	 * @param port TCP port the service listens to
 	 */
-	public TCPMultiServerService(Configuration configuration,
-	        Map<Integer, Class<IMonitoringRecord>> recordList, int port) {
-		super(configuration, recordList);
+	public TCPMultiServerService(final Configuration configuration,
+	        final Map<Integer, Class<IMonitoringRecord>> recordMap, final int port) {
+		super(configuration, recordMap);
 		this.port = port;
 	}
 
 	@Override
     protected void sourceSetup() throws Exception {
 		super.sourceSetup();
-		recordQueue = new ArrayBlockingQueue<IMonitoringRecord>(QUEUE_CAPACITY);
-		serverSocket = new ServerSocket(port);
-		new ListenerThread();
+		this.recordQueue = new ArrayBlockingQueue<IMonitoringRecord>(QUEUE_CAPACITY);
+		this.serverSocket = new ServerSocket(this.port);
+		new Runnable() {
+			
+			@Override
+	        public void run() {
+	            // accept client connections
+				try {
+					while (active) {
+						// CHECKSTYLE:OFF checkstyle does not understand that serverSocket is from the outer class
+						new ServiceThread(serverSocket.accept());
+						// CHECKSTYLE:ON
+					}
+	            } catch (IOException e) {
+	                active = false;
+	            }
+				
+	        }	
+		};
     }
 
 	@Override
     protected void sourceClose() throws Exception {
-		serverSocket.close();
+		this.serverSocket.close();
     }
 
 	@Override
     protected IMonitoringRecord deserialize() throws Exception {
-	    return recordQueue.take();
+	    return this.recordQueue.take();
     }
+
 	
-	class ListenerThread implements Runnable {
-		
-		@Override
-        public void run() {
-            // accept client connections
-			try {
-				while (active) 
-					serviceThreads.add(new ServiceThread(serverSocket.accept()));
-            } catch (IOException e) {
-                active = false;
-            }
-			
-        }	
-	}
-	
+	/**
+	 * 
+	 * @author rju
+	 *
+	 */
 	class ServiceThread implements Runnable {
+		private static final int BUF_LEN = 65536;
+
 		private DataInputStream in;
 		private final Socket socket;
-		private int BUF_LEN = 65536;
-		private byte buffer[] = new byte[BUF_LEN];
+		private byte[] buffer = new byte[BUF_LEN];
 		
-		public ServiceThread(Socket socket) {
+		/**
+		 * Create a service thread.
+		 * 
+		 * @param socket service socket
+		 */
+		public ServiceThread(final Socket socket) {
 			this.socket = socket;
 		}
 		
@@ -87,66 +116,82 @@ public class TCPMultiServerService extends TCPService {
         public void run() {
             while (active) {
             	try {
-                    in = new DataInputStream(socket.getInputStream());
+                    this.in = new DataInputStream(this.socket.getInputStream());
+                    // CHECKSTYLE:OFF checkstyle does not understand that recordQueue is from the outer class
                     recordQueue.put(deserialize());
+                    // CHECKSTYLE:ON
                 } catch (IOException e) {
                     active = false;
                     System.out.println("Listener " + Thread.currentThread().getId() + " died. Cause " + e.getMessage());
-                } catch (Exception e) {
+                } catch (InterruptedException e) {
+                	active = false;
+                    System.out.println("Listener " + Thread.currentThread().getId() + " died. Cause " + e.getMessage());
+                 // CHECKSTYLE:OFF deserialize does return Exception, therefore at the moment checkstyle has to accept this.
+				} catch (Exception e) {
+					// CHECKSTYLE:ON
                 	active = false;
                     System.out.println("Listener " + Thread.currentThread().getId() + " died. Cause " + e.getMessage());
                 }
             }
             try {
-	            socket.close();
+            	this.socket.close();
             } catch (IOException e) {
 	            // ignore, as server is shutting down anyway.
             }
         }
 			
+		/**
+		 * Deserialize a received record.
+		 * 
+		 * @return a new IMonitoringRecord
+		 * @throws Exception throws IOException when unknown record ID is read.
+		 */
 		private IMonitoringRecord deserialize() throws Exception {
 			try {
-				final Integer id = in.readInt();
-				final LookupEntity recordProperty = recordMap.get(id);
+				final Integer id = this.in.readInt();
+				final LookupEntity recordProperty = lookupEntityMap.get(id);
 				if (recordProperty != null) {
-					final Object values[] = new Object[recordProperty.parameterTypes.length];
+					final Object[] values = new Object[recordProperty.parameterTypes.length];
 
 					int i = 0;
 					for (Class<?> parameterType : recordProperty.parameterTypes) {
-						if (parameterType.equals(boolean.class)) {
-							values[i] = in.readBoolean();
-						} else if (parameterType.equals(Boolean.class)) {
-							values[i] = new Boolean(in.readBoolean());
-						} else if (parameterType.equals(byte.class)) {
-							values[i] = in.readByte();
-						} else if (parameterType.equals(Byte.class)) {
-							values[i] = new Byte(in.readByte());
-						} else if (parameterType.equals(short.class)) {
-							values[i] = in.readShort();
-						} else if (parameterType.equals(Short.class)) {
-							values[i] = new Short(in.readShort());
-						} else if (parameterType.equals(int.class)) {
-							values[i] = in.readInt();
-						} else if (parameterType.equals(Integer.class)) {
-							values[i] = new Integer(in.readInt());
-						} else if (parameterType.equals(long.class)) {
-							values[i] = in.readLong();
-						} else if (parameterType.equals(Long.class)) {
-							values[i] = new Long(in.readLong());
-						} else if (parameterType.equals(float.class)) {
-							values[i] = in.readFloat();
-						} else if (parameterType.equals(Float.class)) {
-							values[i] = new Float(in.readFloat());
-						} else if (parameterType.equals(double.class)) {
-							values[i] = in.readDouble();
-						} else if (parameterType.equals(Double.class)) {
-							values[i] = new Double(in.readDouble());
-						} else if (parameterType.equals(String.class)) {
-							final int bufLen = in.readInt();
-							in.read(buffer, 0, bufLen);
-							values[i] = new String(buffer, 0, bufLen, "UTF-8");
+						if (boolean.class.equals(parameterType)) {
+							values[i] = this.in.readBoolean();
+						} else if (Boolean.class.equals(parameterType)) {
+							// CHECKSTYLE:OFF would be a great idea, however could be present in a IMonitoringRecord
+							values[i] = new Boolean(this.in.readBoolean());
+							// CHECKSTYLE:ON
+						} else if (byte.class.equals(parameterType)) {
+							values[i] = this.in.readByte();
+						} else if (Byte.class.equals(parameterType)) {
+							values[i] = new Byte(this.in.readByte());
+						} else if (short.class.equals(parameterType)) {
+							values[i] = this.in.readShort();
+						} else if (Short.class.equals(parameterType)) {
+							values[i] = new Short(this.in.readShort());
+						} else if (int.class.equals(parameterType)) {
+							values[i] = this.in.readInt();
+						} else if (Integer.class.equals(parameterType)) {
+							values[i] = new Integer(this.in.readInt());
+						} else if (long.class.equals(parameterType)) {
+							values[i] = this.in.readLong();
+						} else if (Long.class.equals(parameterType)) {
+							values[i] = new Long(this.in.readLong());
+						} else if (float.class.equals(parameterType)) {
+							values[i] = this.in.readFloat();
+						} else if (Float.class.equals(parameterType)) {
+							values[i] = new Float(this.in.readFloat());
+						} else if (double.class.equals(parameterType)) {
+							values[i] = this.in.readDouble();
+						} else if (Double.class.equals(parameterType)) {
+							values[i] = new Double(this.in.readDouble());
+						} else if (String.class.equals(parameterType)) {
+							final int bufLen = this.in.readInt();
+							this.in.read(this.buffer, 0, bufLen);
+							values[i] = new String(this.buffer, 0, bufLen, "UTF-8");
 						} else { // reference types
-							values[i] = deserialize();
+							// TODO the following code is non standard and will not work
+							values[i] = this.deserialize();
 						}
 						i++;
 					}

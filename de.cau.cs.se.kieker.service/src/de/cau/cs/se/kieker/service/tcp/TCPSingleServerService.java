@@ -31,7 +31,7 @@ import kieker.common.record.IMonitoringRecord;
  * @author rju
  * 
  */
-public class TCPSingleServerService extends TCPService {
+public class TCPSingleServerService extends AbstractTCPService {
 	private static final int BUF_LEN = 65536;
 
 	private int port;
@@ -83,7 +83,7 @@ public class TCPSingleServerService extends TCPService {
 		// read structure ID
 		try {
 			final Integer id = this.in.readInt();
-			final LookupEntity recordProperty = recordMap.get(id);
+			final LookupEntity recordProperty = lookupEntityMap.get(id);
 			if (recordProperty != null) {
 				final Object[] values = new Object[recordProperty.parameterTypes.length];
 

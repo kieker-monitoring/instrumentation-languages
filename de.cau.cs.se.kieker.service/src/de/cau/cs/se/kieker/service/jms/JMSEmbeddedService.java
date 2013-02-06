@@ -41,7 +41,7 @@ public class JMSEmbeddedService extends JMSService {
 	 * 
 	 * @param configuration
 	 *            Kieker configuration object
-	 * @param recordMap
+	 * @param lookupEntityMap
 	 *            IMonitoringRecord id map
 	 * @param port
 	 * 			  Port the JMS service is listening to

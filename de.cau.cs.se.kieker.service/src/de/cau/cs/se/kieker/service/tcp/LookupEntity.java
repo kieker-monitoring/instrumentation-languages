@@ -28,10 +28,24 @@ import kieker.common.record.IMonitoringRecord;
  *
  */
 public final class LookupEntity {
+	// CHECKSTYLE:OFF for speedup reasons these properties are public
+	/**
+	 * List of parameter types for a given IMonitoringRecord.
+	 */
 	public final Class<?>[] parameterTypes;
+	/**
+	 * Constructor for an IMonitoringRecord class.
+	 */
 	public final Constructor<? extends IMonitoringRecord> constructor;
+	// CHECKSTYLE:ON
 	
-	public LookupEntity(Constructor<? extends IMonitoringRecord> constructor, Class<?>[] parameterTypes) {
+	/**
+	 * Construct one new LookupEntry.
+	 * 
+	 * @param constructor constructor for a IMonitoringRecord class
+	 * @param parameterTypes monitoring record property type list
+	 */
+	public LookupEntity(final Constructor<? extends IMonitoringRecord> constructor, final Class<?>[] parameterTypes) {
 		this.parameterTypes = parameterTypes;
 		this.constructor = constructor;
 	}

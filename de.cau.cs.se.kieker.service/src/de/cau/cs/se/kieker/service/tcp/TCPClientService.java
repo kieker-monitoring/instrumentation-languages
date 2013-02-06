@@ -31,25 +31,30 @@ import kieker.common.record.IMonitoringRecord;
  * @author rju
  *
  */
-public class TCPClientService extends TCPService {
+public class TCPClientService extends AbstractTCPService {
+	
+	private static final int BUF_LEN = 65536;
 
 	private int port;
 	private String hostname;
 
-	private int BUF_LEN = 65536;
-	private byte buffer[] = new byte[BUF_LEN];
+	private byte[] buffer = new byte[BUF_LEN];
 	
 	private DataInputStream in;
 
 
 
 	/**
-	 * @param configuration
-	 * @param recordList
+	 * Construct a new TCPClientService.
+	 * 
+	 * @param configuration Kieker configuration object
+	 * @param lookupEntityMap IMonitoring to id map
+	 * @param hostname host this service connects to
+	 * @param port port number where this service connects to
 	 */
-	public TCPClientService(Configuration configuration,
-	        Map<Integer, Class<IMonitoringRecord>> recordList, String hostname, int port) {
-		super(configuration, recordList);
+	public TCPClientService(final Configuration configuration,
+	        final Map<Integer, Class<IMonitoringRecord>> recordMap, final String hostname, final int port) {
+		super(configuration, recordMap);
 		this.port = port;
 		this.hostname = hostname;
 	}
@@ -57,80 +62,71 @@ public class TCPClientService extends TCPService {
 	@Override
     protected void sourceSetup() throws Exception {
 		super.sourceSetup();
-		final Socket socket = new Socket(hostname, port);
-		in = new DataInputStream(socket.getInputStream());
+		final Socket socket = new Socket(this.hostname, this.port);
+		this.in = new DataInputStream(socket.getInputStream());
     }
 
 	@Override
     protected void sourceClose() throws Exception {
-	    in.close();	    
+	    this.in.close();	    
     }
 	
-	@Override
 	/**
 	 * De-serialize an object reading from the input stream.
-	 * 
-	 * @param in
-	 *            the input stream
-	 * @param monitor
 	 * 
 	 * @return the de-serialized IMonitoringRecord object or null if the stream was terminated by
 	 *         the client.
 	 * 
-	 * @throws IOException
-	 * @throws ClassNotFoundException
-	 * @throws SecurityException
-	 * @throws NoSuchFieldException
-	 * @throws IllegalArgumentException
-	 * @throws IllegalAccessException
-	 * @throws InstantiationException
-	 * @throws InvocationTargetException
-	 * @throws NoSuchMethodException
+	 * @throws Exception when a record is received that ID is unknown (IOException).
 	 */
+	@Override
 	protected IMonitoringRecord deserialize() throws Exception {
 		// read structure ID
 		try {
-			final Integer id = in.readInt();
-			final LookupEntity recordProperty = recordMap.get(id);
+			final Integer id = this.in.readInt();
+			final LookupEntity recordProperty = this.lookupEntityMap.get(id);
 			if (recordProperty != null) {
-				final Object values[] = new Object[recordProperty.parameterTypes.length];
+				final Object[] values = new Object[recordProperty.parameterTypes.length];
 
 				int i = 0;
 				for (Class<?> parameterType : recordProperty.parameterTypes) {
-					if (parameterType.equals(boolean.class)) {
-						values[i] = in.readBoolean();
-					} else if (parameterType.equals(Boolean.class)) {
-						values[i] = new Boolean(in.readBoolean());
-					} else if (parameterType.equals(byte.class)) {
-						values[i] = in.readByte();
-					} else if (parameterType.equals(Byte.class)) {
-						values[i] = new Byte(in.readByte());
-					} else if (parameterType.equals(short.class)) {
-						values[i] = in.readShort();
-					} else if (parameterType.equals(Short.class)) {
-						values[i] = new Short(in.readShort());
-					} else if (parameterType.equals(int.class)) {
-						values[i] = in.readInt();
-					} else if (parameterType.equals(Integer.class)) {
-						values[i] = new Integer(in.readInt());
-					} else if (parameterType.equals(long.class)) {
-						values[i] = in.readLong();
-					} else if (parameterType.equals(Long.class)) {
-						values[i] = new Long(in.readLong());
-					} else if (parameterType.equals(float.class)) {
-						values[i] = in.readFloat();
-					} else if (parameterType.equals(Float.class)) {
-						values[i] = new Float(in.readFloat());
-					} else if (parameterType.equals(double.class)) {
-						values[i] = in.readDouble();
-					} else if (parameterType.equals(Double.class)) {
-						values[i] = new Double(in.readDouble());
-					} else if (parameterType.equals(String.class)) {
-						final int bufLen = in.readInt();
-						in.read(buffer, 0, bufLen);
-						values[i] = new String(buffer, 0, bufLen, "UTF-8");
+					if (boolean.class.equals(parameterType)) {
+						values[i] = this.in.readBoolean();
+					} else if (Boolean.class.equals(parameterType)) {
+						// CHECKSTYLE:OFF would be a great idea, however could be present in a IMonitoringRecord
+						values[i] = new Boolean(this.in.readBoolean());
+						// CHECKSTYLE:ON
+					} else if (byte.class.equals(parameterType)) {
+						values[i] = this.in.readByte();
+					} else if (Byte.class.equals(parameterType)) {
+						values[i] = new Byte(this.in.readByte());
+					} else if (short.class.equals(parameterType)) {
+						values[i] = this.in.readShort();
+					} else if (Short.class.equals(parameterType)) {
+						values[i] = new Short(this.in.readShort());
+					} else if (int.class.equals(parameterType)) {
+						values[i] = this.in.readInt();
+					} else if (Integer.class.equals(parameterType)) {
+						values[i] = new Integer(this.in.readInt());
+					} else if (long.class.equals(parameterType)) {
+						values[i] = this.in.readLong();
+					} else if (Long.class.equals(parameterType)) {
+						values[i] = new Long(this.in.readLong());
+					} else if (float.class.equals(parameterType)) {
+						values[i] = this.in.readFloat();
+					} else if (Float.class.equals(parameterType)) {
+						values[i] = new Float(this.in.readFloat());
+					} else if (double.class.equals(parameterType)) {
+						values[i] = this.in.readDouble();
+					} else if (Double.class.equals(parameterType)) {
+						values[i] = new Double(this.in.readDouble());
+					} else if (String.class.equals(parameterType)) {
+						final int bufLen = this.in.readInt();
+						this.in.read(this.buffer, 0, bufLen);
+						values[i] = new String(this.buffer, 0, bufLen, "UTF-8");
 					} else { // reference types
-						values[i] = deserialize();
+						// TODO the following code is non standard and will not work
+						values[i] = this.deserialize();
 					}
 					i++;
 				}

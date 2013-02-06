@@ -27,6 +27,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.jms.BytesMessage;
+import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
 import javax.jms.Message;
@@ -35,10 +36,10 @@ import javax.jms.Session;
 import javax.jms.TextMessage;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
-import javax.jms.Connection;
 
 import kieker.common.configuration.Configuration;
 import kieker.common.record.IMonitoringRecord;
+
 import de.cau.cs.se.kieker.service.AbstractService;
 import de.cau.cs.se.kieker.service.tcp.LookupEntity;
 
@@ -48,26 +49,30 @@ import de.cau.cs.se.kieker.service.tcp.LookupEntity;
  */
 public class JMSService extends AbstractService {
 
-	private int BUF_LEN = 65536;
+	private static final int BUF_LEN = 65536;
 
-	private Map<Integer, Class<IMonitoringRecord>> recordList;
+	private Map<Integer, Class<IMonitoringRecord>> recordMap;
 	private String username;
 	private String password;
 	private URI uri;
 
 	private MessageConsumer consumer;
-	private Map<Integer, LookupEntity> recordMap;
-	private byte buffer[] = new byte[BUF_LEN];
+	private Map<Integer, LookupEntity> lookupEntityMap;
+	private byte[] buffer = new byte[BUF_LEN];
 	private Connection connection;
 
 	/**
-	 * @param configuration
+	 * @param configuration Kieker configuration object
+	 * @param lookupEntityMap IMonitoringRecord to id map
+	 * @param username JMSService login username
+	 * @param password JMSService login password
+	 * @param uri JMSService URI
 	 */
-	public JMSService(Configuration configuration,
-	        Map<Integer, Class<IMonitoringRecord>> recordList, String username, String password,
-	        URI uri) {
+	public JMSService(final Configuration configuration,
+	        final Map<Integer, Class<IMonitoringRecord>> recordMap, final String username, final String password,
+	        final URI uri) {
 		super(configuration);
-		this.recordList = recordList;
+		this.recordMap = recordMap;
 		this.username = username;
 		this.password = password;
 		this.uri = uri;
@@ -75,66 +80,69 @@ public class JMSService extends AbstractService {
 
 	@Override
 	protected IMonitoringRecord deserialize() throws Exception {
-		Message message = consumer.receive();
+		final Message message = this.consumer.receive();
 		if (message != null) {
 			if (message instanceof BytesMessage) {
-				return deserialize((BytesMessage) message);
+				return this.deserialize((BytesMessage) message);
 			} else if (message instanceof TextMessage) {
-				return deserialize(((TextMessage) message).getText().split(";"));
+				return this.deserialize(((TextMessage) message).getText().split(";"));
 			} else {
 				throw new Exception("Unsupported message type " + message.getClass().getCanonicalName());
 			}
-		} else
+		} else {
 			return null;
+		}
 	}
 
 	/**
 	 * deserialize BinaryMessages and store them in a IMonitoringRecord.
 	 * 
-	 * @param message
+	 * @param message a ByteMessage
 	 * @return A monitoring record for the given ByteMessage
 	 * @throws Exception when the record id is unknown or the composition fails
 	 */
-	private IMonitoringRecord deserialize(BytesMessage message) throws Exception {
+	private IMonitoringRecord deserialize(final BytesMessage message) throws Exception {
 		final Integer id = message.readInt();
-		final LookupEntity recordProperty = recordMap.get(id);
+		final LookupEntity recordProperty = this.lookupEntityMap.get(id);
 		if (recordProperty != null) {
-			final Object values[] = new Object[recordProperty.parameterTypes.length];
+			final Object[] values = new Object[recordProperty.parameterTypes.length];
 
 			int i = 0;
 			for (Class<?> parameterType : recordProperty.parameterTypes) {
-				if (parameterType.equals(boolean.class)) {
+				if (boolean.class.equals(parameterType)) {
 					values[i] = message.readBoolean();
-				} else if (parameterType.equals(Boolean.class)) {
+				} else if (Boolean.class.equals(parameterType)) {
+					// CHECKSTYLE:OFF would be a great idea, however could be present in a IMonitoringRecord
 					values[i] = new Boolean(message.readBoolean());
-				} else if (parameterType.equals(byte.class)) {
+					// CHECKSTYLE:ON
+				} else if (byte.class.equals(parameterType)) {
 					values[i] = message.readByte();
-				} else if (parameterType.equals(Byte.class)) {
+				} else if (Byte.class.equals(parameterType)) {
 					values[i] = new Byte(message.readByte());
-				} else if (parameterType.equals(short.class)) {
+				} else if (short.class.equals(parameterType)) {
 					values[i] = message.readShort();
-				} else if (parameterType.equals(Short.class)) {
+				} else if (Short.class.equals(parameterType)) {
 					values[i] = new Short(message.readShort());
-				} else if (parameterType.equals(int.class)) {
+				} else if (int.class.equals(parameterType)) {
 					values[i] = message.readInt();
-				} else if (parameterType.equals(Integer.class)) {
+				} else if (Integer.class.equals(parameterType)) {
 					values[i] = new Integer(message.readInt());
-				} else if (parameterType.equals(long.class)) {
+				} else if (long.class.equals(parameterType)) {
 					values[i] = message.readLong();
-				} else if (parameterType.equals(Long.class)) {
+				} else if (Long.class.equals(parameterType)) {
 					values[i] = new Long(message.readLong());
-				} else if (parameterType.equals(float.class)) {
+				} else if (float.class.equals(parameterType)) {
 					values[i] = message.readFloat();
-				} else if (parameterType.equals(Float.class)) {
+				} else if (Float.class.equals(parameterType)) {
 					values[i] = new Float(message.readFloat());
-				} else if (parameterType.equals(double.class)) {
+				} else if (double.class.equals(parameterType)) {
 					values[i] = message.readDouble();
-				} else if (parameterType.equals(Double.class)) {
+				} else if (Double.class.equals(parameterType)) {
 					values[i] = new Double(message.readDouble());
-				} else if (parameterType.equals(String.class)) {
+				} else if (String.class.equals(parameterType)) {
 					final int bufLen = message.readInt();
-					message.readBytes(buffer, bufLen);
-					values[i] = new String(buffer, 0, bufLen, "UTF-8");
+					message.readBytes(this.buffer, bufLen);
+					values[i] = new String(this.buffer, 0, bufLen, "UTF-8");
 				} else { // reference types
 					throw new Exception("References are not yet supported.");
 				}
@@ -151,48 +159,50 @@ public class JMSService extends AbstractService {
 	/**
 	 * deserialize String array and store it in a IMonitoringRecord.
 	 * 
-	 * @param attributes
+	 * @param attributes attributes of a text message
 	 * @return A monitoring record for the given String array
 	 * @throws Exception when the record id is unknown or the composition fails
 	 */
-	private IMonitoringRecord deserialize(String[] attributes) throws Exception {
+	private IMonitoringRecord deserialize(final String[] attributes) throws Exception {
 		if (attributes.length > 0) {
 			final Integer id = Integer.parseInt(attributes[0]);
-			final LookupEntity recordProperty = recordMap.get(id);
+			final LookupEntity recordProperty = this.lookupEntityMap.get(id);
 			if (recordProperty != null) {
-				final Object values[] = new Object[recordProperty.parameterTypes.length];
+				final Object[] values = new Object[recordProperty.parameterTypes.length];
 
 				int i = 0;
 				for (Class<?> parameterType : recordProperty.parameterTypes) {
-					if (parameterType.equals(boolean.class)) {
-						values[i] = attributes[i + 1].equals("t");
+					if (boolean.class.equals(parameterType)) {
+						values[i] = "t".equals(attributes[i + 1]);
 					} else if (parameterType.equals(Boolean.class)) {
+						// CHECKSTYLE:OFF would be a great idea, however could be present in a IMonitoringRecord
 						values[i] = new Boolean(attributes[i + 1].equals("t"));
-					} else if (parameterType.equals(byte.class)) {
+						// CHECKSTYLE:ON
+					} else if (byte.class.equals(parameterType)) {
 						values[i] = Byte.parseByte(attributes[i + 1]);
-					} else if (parameterType.equals(Byte.class)) {
+					} else if (Byte.class.equals(parameterType)) {
 						values[i] = new Byte(Byte.parseByte(attributes[i + 1]));
-					} else if (parameterType.equals(short.class)) {
+					} else if (short.class.equals(parameterType)) {
 						values[i] = Short.parseShort(attributes[i + 1]);
-					} else if (parameterType.equals(Short.class)) {
+					} else if (Short.class.equals(parameterType)) {
 						values[i] = new Short(Short.parseShort(attributes[i + 1]));
-					} else if (parameterType.equals(int.class)) {
+					} else if (int.class.equals(parameterType)) {
 						values[i] = Integer.parseInt(attributes[i + 1]);
-					} else if (parameterType.equals(Integer.class)) {
+					} else if (Integer.class.equals(parameterType)) {
 						values[i] = new Integer(Integer.parseInt(attributes[i + 1]));
-					} else if (parameterType.equals(long.class)) {
+					} else if (long.class.equals(parameterType)) {
 						values[i] = Long.parseLong(attributes[i + 1]);
-					} else if (parameterType.equals(Long.class)) {
+					} else if (Long.class.equals(parameterType)) {
 						values[i] = new Long(Long.parseLong(attributes[i + 1]));
-					} else if (parameterType.equals(float.class)) {
+					} else if (float.class.equals(parameterType)) {
 						values[i] = Float.parseFloat(attributes[i + 1]);
-					} else if (parameterType.equals(Float.class)) {
+					} else if (Float.class.equals(parameterType)) {
 						values[i] = new Float(Float.parseFloat(attributes[i + 1]));
-					} else if (parameterType.equals(double.class)) {
+					} else if (double.class.equals(parameterType)) {
 						values[i] = Double.parseDouble(attributes[i + 1]);
-					} else if (parameterType.equals(Double.class)) {
+					} else if (Double.class.equals(parameterType)) {
 						values[i] = new Double(Double.parseDouble(attributes[i + 1]));
-					} else if (parameterType.equals(String.class)) {
+					} else if (String.class.equals(parameterType)) {
 						values[i] = attributes[i + 1];
 					} else { // reference types
 						throw new Exception("References are not yet supported.");
@@ -213,9 +223,9 @@ public class JMSService extends AbstractService {
 	@Override
 	protected void sourceSetup() throws Exception {
 		// setup value lookup
-		recordMap = new HashMap<Integer, LookupEntity>();
-		for (int key : recordList.keySet()) {
-			Class<IMonitoringRecord> type = recordList.get(key);
+		this.lookupEntityMap = new HashMap<Integer, LookupEntity>();
+		for (int key : this.recordMap.keySet()) {
+			final Class<IMonitoringRecord> type = this.recordMap.get(key);
 
 			final Field parameterTypesField = type.getDeclaredField("TYPES");
 			java.security.AccessController.doPrivileged(new PrivilegedAction<Object>() {
@@ -224,28 +234,29 @@ public class JMSService extends AbstractService {
 					return null;
 				}
 			});
-			LookupEntity entity = new LookupEntity(type.getConstructor(Object[].class),
+			final LookupEntity entity = new LookupEntity(type.getConstructor(Object[].class),
 			        (Class<?>[]) parameterTypesField.get(null));
-			recordMap.put(key, entity);
+			this.lookupEntityMap.put(key, entity);
 		}
 		// setup connection
 		ConnectionFactory factory;
-		if (username != null && password != null)
-			factory = new ActiveMQConnectionFactory(username, password, uri);
-		else
-			factory = new ActiveMQConnectionFactory(uri);
-		connection = factory.createConnection();
+		if (this.username != null && this.password != null) {
+			factory = new ActiveMQConnectionFactory(this.username, this.password, this.uri);
+		} else {
+			factory = new ActiveMQConnectionFactory(this.uri);
+		}
+		this.connection = factory.createConnection();
 
-		Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-		Destination destination = session.createQueue("de.cau.cs.se.kieker.service");
-		consumer = session.createConsumer(destination);
+		final Session session = this.connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+		final Destination destination = session.createQueue("de.cau.cs.se.kieker.service");
+		this.consumer = session.createConsumer(destination);
 
-		connection.start();
+		this.connection.start();
 	}
 
 	@Override
 	protected void sourceClose() throws Exception {
-		connection.stop();
+		this.connection.stop();
 	}
 
 }

@@ -26,30 +26,35 @@ import java.util.Map;
 
 import kieker.common.configuration.Configuration;
 import kieker.common.record.IMonitoringRecord;
+
 import de.cau.cs.se.kieker.service.AbstractService;
 
 /**
  * @author rju
  * 
  */
-public abstract class TCPService extends AbstractService {
+public abstract class AbstractTCPService extends AbstractService {
 
-	private Map<Integer, Class<IMonitoringRecord>> recordList;
-	protected Map<Integer, LookupEntity> recordMap;
+	protected Map<Integer, LookupEntity> lookupEntityMap;
+	
+	private Map<Integer, Class<IMonitoringRecord>> recordMap;
 	
 	/**
-	 * @param configuration
+	 * AbstractTCPService constructor.
+	 * 
+	 * @param configuration Kieker configuration
+	 * @param recordMap IMonitoringRecord to id map
 	 */
-	public TCPService(Configuration configuration, Map<Integer, Class<IMonitoringRecord>> recordList) {
+	public AbstractTCPService(final Configuration configuration, final Map<Integer, Class<IMonitoringRecord>> recordMap) {
 		super(configuration);
-		this.recordList = recordList;
+		this.recordMap = recordMap;
 	}
 
 	@Override
 	protected void sourceSetup() throws Exception {
-		recordMap = new HashMap<Integer,LookupEntity>();
-		for (int key : recordList.keySet()) {
-			Class<IMonitoringRecord> type = recordList.get(key);
+		this.lookupEntityMap = new HashMap<Integer, LookupEntity>();
+		for (final int key : this.recordMap.keySet()) {
+			final Class<IMonitoringRecord> type = this.recordMap.get(key);
 			
 			final Field parameterTypesField = type.getDeclaredField("TYPES");
 			java.security.AccessController.doPrivileged(new PrivilegedAction<Object>() {
@@ -58,9 +63,9 @@ public abstract class TCPService extends AbstractService {
 					return null;
 				}
 			});
-			LookupEntity entity = new LookupEntity(type
+			final LookupEntity entity = new LookupEntity(type
 			        .getConstructor(Object[].class), (Class<?>[]) parameterTypesField.get(null));
-			recordMap.put(key, entity);
+			this.lookupEntityMap.put(key, entity);
 		}
 	}
 
