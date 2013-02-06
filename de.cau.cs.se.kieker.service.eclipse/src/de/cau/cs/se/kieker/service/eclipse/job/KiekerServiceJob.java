@@ -8,19 +8,19 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 
-import de.cau.cs.se.kieker.service.Service;
-import de.cau.cs.se.kieker.service.ServiceListener;
+import de.cau.cs.se.kieker.service.AbstractService;
+import de.cau.cs.se.kieker.service.IServiceListener;
 
 /**
  * @author rju
  * 
  */
-public class KiekerServiceJob extends Job implements ServiceListener {
+public class KiekerServiceJob extends Job implements IServiceListener {
 
-	private Service service;
+	private AbstractService service;
 	private IProgressMonitor monitor;
 
-	public KiekerServiceJob(String name, Service service) {
+	public KiekerServiceJob(String name, AbstractService service) {
 		super(name);
 		this.service = service;
 	}

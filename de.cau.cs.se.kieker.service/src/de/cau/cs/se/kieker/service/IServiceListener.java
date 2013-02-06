@@ -17,22 +17,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.kieker.service.tcp;
-
-import java.lang.reflect.Constructor;
-
-import kieker.common.record.IMonitoringRecord;
+package de.cau.cs.se.kieker.service;
 
 /**
  * @author rju
  *
  */
-public final class LookupEntity {
-	public final Class<?>[] parameterTypes;
-	public final Constructor<? extends IMonitoringRecord> constructor;
+public interface IServiceListener {
 	
-	public LookupEntity(Constructor<? extends IMonitoringRecord> constructor, Class<?>[] parameterTypes) {
-		this.parameterTypes = parameterTypes;
-		this.constructor = constructor;
-	}
+	/**
+	 * Called by the main service loop to inform the listener about processed records and
+	 * an optional message.
+	 * 
+	 * @param recordCount number of processed records
+	 * @param message optional message (could be null)
+	 */
+	void handleEvent(long recordCount, String message);
 }

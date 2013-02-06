@@ -22,10 +22,10 @@ import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.model.LaunchConfigurationDelegate;
 
-import de.cau.cs.se.kieker.service.Service;
+import de.cau.cs.se.kieker.service.AbstractService;
 import de.cau.cs.se.kieker.service.eclipse.job.KiekerServiceJob;
 import de.cau.cs.se.kieker.service.tcp.TCPClientService;
-import de.cau.cs.se.kieker.service.tcp.TCPServerService;
+import de.cau.cs.se.kieker.service.tcp.TCPMultiServerService;
 
 public class KiekerServiceLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 
@@ -90,9 +90,9 @@ public class KiekerServiceLaunchConfigurationDelegate extends LaunchConfiguratio
             }
 		}
 				
-		Service service;
+		AbstractService service;
 		if (configuration.getAttribute(ATTR_TYPE, "").equals("SERVER")) {
-			service = new TCPServerService (kiekerConfiguration, records, port);
+			service = new TCPMultiServerService (kiekerConfiguration, records, port);
 		} else {
 			service = new TCPClientService (kiekerConfiguration, records, hostname, port);
 		}

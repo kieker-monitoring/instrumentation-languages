@@ -1,6 +1,22 @@
-/**
- * 
- */
+/***************************************************************************
+ * Copyright 2013 by
+ *  + Christian-Albrechts-University of Kiel
+ *    + Department of Computer Science
+ *      + Software Engineering Group 
+ *  and others.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ***************************************************************************/
 package de.cau.cs.se.kieker.service.server;
 
 import java.io.BufferedReader;
@@ -16,56 +32,59 @@ import java.net.URLClassLoader;
 import java.util.HashMap;
 import java.util.Map;
 
-import kieker.common.configuration.Configuration;
-import kieker.common.record.IMonitoringRecord;
-import kieker.monitoring.core.configuration.ConfigurationFactory;
-
 import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.GnuParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
-import de.cau.cs.se.kieker.service.Service;
-import de.cau.cs.se.kieker.service.ServiceListener;
-import de.cau.cs.se.kieker.service.tcp.TCPClientService;
-import de.cau.cs.se.kieker.service.tcp.TCPServerService;
+import kieker.common.configuration.Configuration;
+import kieker.common.record.IMonitoringRecord;
+import kieker.monitoring.core.configuration.ConfigurationFactory;
+
+import de.cau.cs.se.kieker.service.AbstractService;
+import de.cau.cs.se.kieker.service.IServiceListener;
 import de.cau.cs.se.kieker.service.jms.JMSEmbeddedService;
 import de.cau.cs.se.kieker.service.jms.JMSService;
+import de.cau.cs.se.kieker.service.tcp.TCPClientService;
+import de.cau.cs.se.kieker.service.tcp.TCPMultiServerService;
+import de.cau.cs.se.kieker.service.tcp.TCPSingleServerService;
 
 /**
  * @author rju
  * 
  */
-public class CLIServer {
+public final class CLIServer {
 
-	static boolean verbose;
-	static boolean stats;
-	static long startTime;
-	static long deltaTime;
-
+	private static boolean verbose;
+	private static boolean stats;
+	private static long startTime;
+	private static long deltaTime;
+	
+	private static Options options;
+	private static CommandLine commandLine;
+	
 	/**
 	 * 
 	 */
-	public CLIServer() {
+	private CLIServer() {
 
 	}
 
 	/**
-	 * @param args
+	 * CLS server main.
+	 * 
+	 * @param args command line arguments
 	 */
-	public static void main(String[] args) {
-		// create the parser
-		CommandLineParser parser = new GnuParser();
-		Options options = declareOptions();
+	public static void main(final String[] args) {
+		declareOptions();
 		try {
 			// parse the command line arguments
-			CommandLine commandLine = parser.parse(options, args);
+			commandLine = new GnuParser().parse(options, args);
 
-			Map<Integer, Class<IMonitoringRecord>> recordList = null;
-			Service service = null;
+			Map<Integer, Class<IMonitoringRecord>> recordMap = null;
+			AbstractService service = null;
 
 			// Verbosity setup
 			verbose = commandLine.hasOption("v");
@@ -75,105 +94,62 @@ public class CLIServer {
 
 			// Find libraries and setup mapping
 			if (commandLine.hasOption("L")) {
-				String libraries[] = commandLine.getOptionValues("L");
+				final String[] libraries = commandLine.getOptionValues("L");
 
 				if (commandLine.hasOption("m")) {
-					recordList = readMapping(libraries, commandLine.getOptionValue("m"));
-					if (recordList.size() == 0)
-						usage("At least one mapping must be specified in the mapping file.", 5,
-						        options);
+					recordMap = readMapping(libraries, commandLine.getOptionValue("m"));
+					if (recordMap.size() == 0) {
+						usage("At least one mapping must be specified in the mapping file.", 5);
+					}
 				} else {
-					usage("Mapping file is required.", 5, options);
+					usage("Mapping file is required.", 5);
 				}
 			} else {
-				usage("At least one library reference is required.", 5, options);
+				usage("At least one library reference is required.", 5);
 			}
 
 			// kieker setup
 			Configuration configuration = null;
-			if (commandLine.hasOption("k"))
+			if (commandLine.hasOption("k")) {
 				configuration = ConfigurationFactory.createConfigurationFromFile(commandLine
 				        .getOptionValue("k"));
-			else
+			} else {
 				configuration = ConfigurationFactory.createDefaultConfiguration();
-
+			}
+			
 			// start service depending on type
 			if (commandLine.hasOption("type")) {
-				if (commandLine.getOptionValue("type").equals("tcp-client")) {
-					if (commandLine.hasOption("port")) {
-						if (commandLine.hasOption("host")) {
-							int port = Integer.parseInt(commandLine.getOptionValue("port"));
-							String hostname = commandLine.getOptionValue("host");
-							service = new TCPClientService(configuration, recordList, hostname,
-							        port);
-							if (verbose)
-								System.out.println("TCP client connected to " + hostname + ":"
-								        + port);
-						} else
-							usage("Missing hostname for tcp client", 10, options);
-					} else
-						usage("Missing port for tcp client", 10, options);
-				} else if (commandLine.getOptionValue("type").equals("tcp-server")) {
-					if (commandLine.hasOption("port")) {
-						int port = Integer.parseInt(commandLine.getOptionValue("port"));
-						service = new TCPServerService(configuration, recordList, port);
-						if (verbose)
-							System.out.println("TCP server listening at " + port);
-					} else
-						usage("Missing port for tcp server", 10, options);
-				} else if (commandLine.getOptionValue("type").equals("jms-client")) {
-					String username = null;
-					String password = null;
-					if (commandLine.hasOption("u"))
-						username = commandLine.getOptionValue("u");
-					if (commandLine.hasOption("w"))
-						password = commandLine.getOptionValue("w");
-					if (commandLine.hasOption("url")) {
-                        try {
-                        	URI url = new URI(commandLine.getOptionValue("url"));
-	                        service = new JMSService(configuration, recordList, username, password, url);
-                        } catch (URISyntaxException e) {
-                        	usage(commandLine.getOptionValue("url") + " is not a valid URI. JMS service cannot be started.", 10, options);
-                        }
-					} else
-						usage("Missing URL for JMS service", 10, options);
-				} else if (commandLine.getOptionValue("type").equals("jms-embedded")) {
-					if (commandLine.hasOption("port")) {
-						int port = Integer.parseInt(commandLine.getOptionValue("port"));
-						try {
-							service = new JMSEmbeddedService(configuration, recordList, port);
-						} catch (URISyntaxException e) {
-                        	usage(commandLine.getOptionValue("url") + " is not a valid URI. JMS service cannot be started.", 10, options);
-                        }
-					}
-				} else {
-					usage("Unknown service type: '" + commandLine.getOptionValue("type") + "'", 10,
-					        options);
-				}
+				service = createService(configuration, recordMap);
 
 				if (service != null) {
 					if (verbose) {
-						service.setListenerUpdateInterval(100);
-						service.addListener(new ServiceListener() {
+						final String updateInterval = commandLine.getOptionValue("v");
+						service.setListenerUpdateInterval((updateInterval != null) ? Integer.parseInt(updateInterval) : 100);
+						service.addListener(new IServiceListener() {
 
 							@Override
-							public void handleEvent(long count, String message) {
+							public void handleEvent(final long count, final String message) {
 								System.out.print("Received " + count + " records\r");
-								if (message != null)
+								if (message != null) {
 									System.out.println("\n" + message);
+								}
 							}
 
 						});
 					}
 
 					try {
-						if (stats)
+						if (stats) {
 							startTime = System.nanoTime();
+						}
+						// run the service
 						service.run();
-						if (stats)
+						if (stats) {
 							deltaTime = System.nanoTime() - startTime;
-						if (verbose)
+						}
+						if (verbose) {
 							System.out.println("TCP server stopped.");
+						}
 						if (stats) {
 							System.out.println("Execution time: " + deltaTime + " ns  " + deltaTime
 							        / 1000000000 + " s");
@@ -183,29 +159,192 @@ public class CLIServer {
 							        + ((double) service.getRecordCount())
 							        / ((double) deltaTime / 1000000000));
 						}
+						//CHECKSTYLE:OFF
 					} catch (Exception e) {
+						//CHECKSTYLE:ON
 						System.err.println("CLIServer cannot start. Cause: " + e.getMessage());
 					}
 				}
 			}
 		} catch (ParseException exp) {
 			// oops, something went wrong
-			usage("Parsing failed.  Reason: " + exp.getMessage(), 20, options);
+			usage("Parsing failed.  Reason: " + exp.getMessage(), 20);
 		}
 	}
 
-	private static void usage(String message, int code, Options options) {
+	/**
+	 * Interpret command line type option.
+	 * 
+	 * @param configuration the Kieker configuration object
+	 * @param recordList the map for ids to Kieker records
+	 * 
+	 * @return a reference to an AbstractService
+	 */
+	private static AbstractService createService(final Configuration configuration, final Map<Integer, Class<IMonitoringRecord>> recordList) {
+		if ("tcp-client".equals(commandLine.getOptionValue("type"))) {
+			return createTCPClientService(configuration, recordList);
+		} else if ("tcp-single-server".equals(commandLine.getOptionValue("type"))) {
+			return createTCPSingleServerService(configuration, recordList);
+		} else if ("tcp-server".equals(commandLine.getOptionValue("type"))) {
+			return createTCPMultiServerService(configuration, recordList);
+		} else if ("jms-client".equals(commandLine.getOptionValue("type"))) {
+			return createJMSService(configuration, recordList);
+		} else if ("jms-embedded".equals(commandLine.getOptionValue("type"))) {
+			return createJMSEmbeddedService(configuration, recordList);
+		} else {
+			usage("Unknown service type: '" + commandLine.getOptionValue("type") + "'", 10);
+			return null;
+		}
+	}
+
+	/**
+	 * Create a JMSEmbeddedService.
+	 * 
+	 * @param configuration the Kieker configuration object
+	 * @param recordList the map for ids to Kieker records
+	 * 
+	 * @return a reference to an AbstractService
+	 */
+	private static AbstractService createJMSEmbeddedService(final Configuration configuration, final Map<Integer, Class<IMonitoringRecord>> recordList) {
+		if (commandLine.hasOption("port")) {
+			final int port = Integer.parseInt(commandLine.getOptionValue("port"));
+			try {
+				return new JMSEmbeddedService(configuration, recordList, port);
+			} catch (URISyntaxException e) {
+            	usage("JMS service cannot be started. URI problem.", 10);
+            	return null;
+            }
+		} else {
+			usage("Missing port for embedded server.", 10);
+			return null;
+		}
+	}
+
+	/**
+	 * Create a JMSService.
+	 * 
+	 * @param configuration the Kieker configuration object
+	 * @param recordList the map for ids to Kieker records
+	 * 
+	 * @return a reference to an AbstractService
+	 */
+	private static AbstractService createJMSService(final Configuration configuration, final Map<Integer, Class<IMonitoringRecord>> recordList) {
+		final String username = commandLine.hasOption("u") ? commandLine.getOptionValue("u") : null;
+		final String password = commandLine.hasOption("w") ? commandLine.getOptionValue("w") : null;
+		
+		if (commandLine.hasOption("url")) {
+            try {
+            	final URI url = new URI(commandLine.getOptionValue("url"));
+                return new JMSService(configuration, recordList, username, password, url);
+            } catch (URISyntaxException e) {
+            	usage(commandLine.getOptionValue("url") + " is not a valid URI. JMS service cannot be started.", 10);
+            	return null;
+            }
+		} else {
+			usage("Missing URL for JMS service", 10);
+			return null;
+		}
+	}
+
+	/**
+	 * Create a TCPSingleServerService.
+	 * 
+	 * @param configuration the Kieker configuration object
+	 * @param recordList the map for ids to Kieker records
+	 * 
+	 * @return a reference to an AbstractService
+	 */
+	private static AbstractService createTCPSingleServerService(final Configuration configuration, final Map<Integer, Class<IMonitoringRecord>> recordList) {
+		if (commandLine.hasOption("port")) {
+			final int port = Integer.parseInt(commandLine.getOptionValue("port"));
+			final AbstractService service = new TCPSingleServerService(configuration, recordList, port);
+			if (verbose) {
+				System.out.println("TCP server listening at " + port);
+			}
+			return service;
+		} else {
+			usage("Missing port for tcp server", 10);
+			return null;
+		}
+	}
+	
+	/**
+	 * Create a TCPMultiServerService.
+	 * 
+	 * @param configuration the Kieker configuration object
+	 * @param recordList the map for ids to Kieker records
+	 * 
+	 * @return a reference to an AbstractService
+	 */
+	private static AbstractService createTCPMultiServerService(final Configuration configuration, final Map<Integer, Class<IMonitoringRecord>> recordList) {
+		if (commandLine.hasOption("port")) {
+			final int port = Integer.parseInt(commandLine.getOptionValue("port"));
+			final AbstractService service = new TCPMultiServerService(configuration, recordList, port);
+			if (verbose) {
+				System.out.println("TCP server listening at " + port);
+			}
+			return service;
+		} else {
+			usage("Missing port for tcp server", 10);
+			return null;
+		}
+	}
+
+	/**
+	 * Create a TCPCLientService.
+	 * 
+	 * @param configuration the Kieker configuration object
+	 * @param recordList the map for ids to Kieker records
+	 * 
+	 * @return a reference to an AbstractService
+	 */
+	private static AbstractService createTCPClientService(final Configuration configuration, final Map<Integer, Class<IMonitoringRecord>> recordList) {
+		if (commandLine.hasOption("port")) {
+			if (commandLine.hasOption("host")) {
+				final int port = Integer.parseInt(commandLine.getOptionValue("port"));
+				final String hostname = commandLine.getOptionValue("host");
+				final AbstractService service = new TCPClientService(configuration, recordList, hostname,
+				        port);
+				if (verbose) {
+					System.out.println("TCP client connected to " + hostname + ":"
+					        + port);
+				}
+				return service;
+			} else {
+				usage("Missing hostname for tcp client", 10);
+			}
+		} else {
+			usage("Missing port for tcp client", 10);
+		}
+		return null;
+	}
+
+	/**
+	 * Print out the server usage and an additional message describing the cause of the failure. Finally terminate the server.
+	 * 
+	 * @param message the message to be printed
+	 * @param code the exit code
+	 */
+	private static void usage(final String message, final int code) {
 		System.err.println(message);
-		HelpFormatter formatter = new HelpFormatter();
+		final HelpFormatter formatter = new HelpFormatter();
 		formatter.printHelp("cli-kieker-service", options, true);
 		System.exit(code);
 	}
 
+	/**
+	 * Read the CLI server Kieker classes to id mapping file.
+	 * 
+	 * @param libraries array representing a list of library files (*.jar)
+	 * @param filename the path of the mapping file.
+	 * 
+	 * @return a complete IMonitoringRecord to id mapping
+	 */
 	@SuppressWarnings("unchecked")
-	private static Map<Integer, Class<IMonitoringRecord>> readMapping(String[] libraries,
-	        String filename) {
-		Map<Integer, Class<IMonitoringRecord>> map = new HashMap<Integer, Class<IMonitoringRecord>>();
-		URL urls[] = new URL[libraries.length];
+	private static Map<Integer, Class<IMonitoringRecord>> readMapping(final String[] libraries,
+	        final String filename) {
+		final Map<Integer, Class<IMonitoringRecord>> map = new HashMap<Integer, Class<IMonitoringRecord>>();
+		final URL[] urls = new URL[libraries.length];
 		for (int i = 0; i < libraries.length; i++) {
 			try {
 				urls[i] = new File(libraries[i]).toURI().toURL();
@@ -215,18 +354,18 @@ public class CLIServer {
 			}
 		}
 
-		URLClassLoader classLoader = new URLClassLoader(urls, CLIServer.class.getClassLoader());
+		final URLClassLoader classLoader = new URLClassLoader(urls, CLIServer.class.getClassLoader());
 
 		try {
-			BufferedReader in = new BufferedReader(new FileReader(filename));
+			final BufferedReader in = new BufferedReader(new FileReader(filename));
 			String line = null;
 			do {
 				try {
 					line = in.readLine();
 					if (line != null) {
-						String pair[] = line.split("=");
+						final String[] pair = line.split("=");
 						if (pair.length == 2) {
-							Class<?> clazz = classLoader.loadClass(pair[1]);
+							final Class<?> clazz = classLoader.loadClass(pair[1]);
 							map.put(Integer.parseInt(pair[0]), (Class<IMonitoringRecord>) clazz);
 						}
 					}
@@ -250,8 +389,13 @@ public class CLIServer {
 		return map;
 	}
 
+	/**
+	 * Compile the options for the CLI server.
+	 * 
+	 * @return The composed options for the CLI server
+	 */
 	private static Options declareOptions() {
-		Options options = new Options();
+		options = new Options();
 		Option option;
 
 		// Type selection
@@ -306,12 +450,18 @@ public class CLIServer {
 		options.addOption(option);
 
 		// verbose
-		option = new Option("v", "verbose", false, "output processing information");
+		option = new Option("v", "verbose", true, "output processing information");
 		option.setRequired(false);
+		option.setOptionalArg(true);
 		options.addOption(option);
 
 		// statistics
 		option = new Option("s", "stats", false, "output performance statistics");
+		option.setRequired(false);
+		options.addOption(option);
+		
+		// daemon mode
+		option = new Option("d", "daemon", false, "detach from console; TCP server allows multiple connections");
 		option.setRequired(false);
 		options.addOption(option);
 
