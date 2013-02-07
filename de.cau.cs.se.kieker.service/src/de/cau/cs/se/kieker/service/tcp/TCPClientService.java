@@ -48,7 +48,7 @@ public class TCPClientService extends AbstractTCPService {
 	 * Construct a new TCPClientService.
 	 * 
 	 * @param configuration Kieker configuration object
-	 * @param lookupEntityMap IMonitoring to id map
+	 * @param recordMap IMonitoring to id map
 	 * @param hostname host this service connects to
 	 * @param port port number where this service connects to
 	 */
