@@ -57,7 +57,7 @@ public class KiekerServiceJob extends Job implements IServiceListener {
     protected IStatus run(final IProgressMonitor monitor) {
 		this.progressMonitor = monitor;
 	    try {
-	    	this.progressMonitor.beginTask("Receiving ...", IProgressMonitor.UNKNOWN);
+	    	this.progressMonitor.beginTask("Processing: ", IProgressMonitor.UNKNOWN);
 	        this.service.run();
 	        this.progressMonitor.done();
 	        return Status.OK_STATUS;
