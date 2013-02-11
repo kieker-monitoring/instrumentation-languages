@@ -85,6 +85,7 @@ public class JMSService extends AbstractService {
 			if (message instanceof BytesMessage) {
 				return this.deserialize((BytesMessage) message);
 			} else if (message instanceof TextMessage) {
+				// TODO support ; escaping
 				return this.deserialize(((TextMessage) message).getText().split(";"));
 			} else {
 				throw new Exception("Unsupported message type " + message.getClass().getCanonicalName());
