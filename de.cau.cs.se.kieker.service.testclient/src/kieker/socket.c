@@ -5,6 +5,13 @@
 #include <string.h>
 #include <netdb.h>
 
+/*
+ * Open a server socket and return the socket handle.
+ *
+ * port = the port number for the service.
+ *
+ * return socket handle id or -1 on error.
+ */
 unsigned short socket_open_read (unsigned short port)
 {
   struct sockaddr_in name;      /* an internet endpoint address */
@@ -32,6 +39,15 @@ unsigned short socket_open_read (unsigned short port)
   return s;
 }
 
+/*
+ * Open a client socket, by connecting to a remote service and return the socket handle.
+ *
+ * port = the port number of the service.
+ * host = FQN of the host
+ *
+ * returns the socket for the connection or
+ *         -1 or h_errno negative numbers on error
+ */
 int socket_open_write (const char* host, unsigned short port)
 {
   struct hostent *hostinfo;     /* pointer to name resolution table entry */
@@ -65,6 +81,13 @@ int socket_open_write (const char* host, unsigned short port)
   return s;
 }
 
+/*
+ * Close a previously opened socket connection.
+ *
+ * socket = the socket to be closed
+ *
+ * returns the result of close (man 2 close)
+ */
 int socket_close (unsigned short socket)
 {
   struct linger ling;
@@ -76,40 +99,6 @@ int socket_close (unsigned short socket)
   return close(socket);
 }
 
-int socket_send (unsigned short socket, char *string)
-{
-  if (socket!=0) {
-    if (send (socket,string,strlen(string),0)==-1) {
-      return -1;
-    } else {
-      return 0;
-    }
-  } else {
-    return -2;
-  }
-}
-
-char* socket_recv (unsigned short socket)
-{
-  static char line[102];
-  char *pos;
-  int size,lsize;
-
-  size=0;
-  pos=line;
-  do {
-    lsize=recv (socket,pos,1,0);
-    if (lsize==0) { /* no data */
-      return NULL;
-    }
-    pos+=lsize;
-    size+=lsize;
-  } while ((size<100) &&
-	   (line[size-1]!='\n'));
-  line[size]=0;
-
-  return line;
-}
 
 
 

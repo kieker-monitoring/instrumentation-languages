@@ -1,3 +1,5 @@
 /socket.o
 /testclient
 /testclient.o
+/Makefile.in
+/Makefile
