@@ -435,7 +435,7 @@ public final class CLIServerMain {
 
 		// Type selection
 		option = new Option("t", "type", true,
-				"select the service type: tcp-client, tcp-server, jms-client, jms-embedded");
+				"select the service type: tcp-client, tcp-server, tcp-single-server, jms-client, jms-embedded");
 		option.setArgName("type");
 		option.setRequired(true);
 		options.addOption(option);
@@ -477,7 +477,7 @@ public final class CLIServerMain {
 		options.addOption(option);
 
 		// libraries
-		option = new Option("L", "libraries", true, "Class name to id (integer or string) mapping");
+		option = new Option("L", "libraries", true, "List of library paths separated by " + File.pathSeparatorChar);
 		option.setArgName("paths");
 		option.setType(File.class);
 		option.setRequired(true);
