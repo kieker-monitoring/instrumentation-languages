@@ -17,7 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.kieker.service.jms;
+package de.cau.cs.se.kieker.service.connector.jms;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -37,17 +37,16 @@ import javax.jms.TextMessage;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 
-import kieker.common.configuration.Configuration;
 import kieker.common.record.IMonitoringRecord;
 
-import de.cau.cs.se.kieker.service.AbstractService;
-import de.cau.cs.se.kieker.service.tcp.LookupEntity;
+import de.cau.cs.se.kieker.service.LookupEntity;
+import de.cau.cs.se.kieker.service.connector.IServiceConnector;
 
 /**
- * @author rju
+ * @author Reiner Jung -- initial contribution
  * 
  */
-public class JMSService extends AbstractService {
+public class JMSService implements IServiceConnector {
 
 	private static final int BUF_LEN = 65536;
 
@@ -62,16 +61,14 @@ public class JMSService extends AbstractService {
 	private Connection connection;
 
 	/**
-	 * @param configuration Kieker configuration object
+	 * @param recordMap map from type ids to class types
 	 * @param lookupEntityMap IMonitoringRecord to id map
-	 * @param username JMSService login username
+	 * @param username JMSService login user name
 	 * @param password JMSService login password
 	 * @param uri JMSService URI
 	 */
-	public JMSService(final Configuration configuration,
-	        final Map<Integer, Class<IMonitoringRecord>> recordMap, final String username, final String password,
+	public JMSService(final Map<Integer, Class<IMonitoringRecord>> recordMap, final String username, final String password,
 	        final URI uri) {
-		super(configuration);
 		this.recordMap = recordMap;
 		this.username = username;
 		this.password = password;
@@ -79,7 +76,7 @@ public class JMSService extends AbstractService {
 	}
 
 	@Override
-	protected IMonitoringRecord deserialize() throws Exception {
+	public IMonitoringRecord deserialize() throws Exception {
 		final Message message = this.consumer.receive();
 		if (message != null) {
 			if (message instanceof BytesMessage) {
@@ -222,7 +219,7 @@ public class JMSService extends AbstractService {
 	}
 
 	@Override
-	protected void sourceSetup() throws Exception {
+	public void sourceSetup() throws Exception {
 		// setup value lookup
 		this.lookupEntityMap = new HashMap<Integer, LookupEntity>();
 		for (int key : this.recordMap.keySet()) {
@@ -256,7 +253,7 @@ public class JMSService extends AbstractService {
 	}
 
 	@Override
-	protected void sourceClose() throws Exception {
+	public void sourceClose() throws Exception {
 		this.connection.stop();
 	}
 

@@ -17,73 +17,73 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.kieker.service.tcp;
+package de.cau.cs.se.kieker.service.connector.tcp;
 
 import java.io.DataInputStream;
 import java.io.IOException;
-import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.Map;
 
-import kieker.common.configuration.Configuration;
 import kieker.common.record.IMonitoringRecord;
+
+import de.cau.cs.se.kieker.service.LookupEntity;
 
 /**
  * @author rju
- * 
+ *
  */
-public class TCPSingleServerService extends AbstractTCPService {
+public class TCPClientService extends AbstractTCPService {
+	
 	private static final int BUF_LEN = 65536;
 
 	private int port;
-	private ServerSocket serverSocket;
-	private DataInputStream in;
+	private String hostname;
 
 	private byte[] buffer = new byte[BUF_LEN];
+	
+	private DataInputStream in;
+
+
 
 	/**
-	 * Construct TCPSingleService.
+	 * Construct a new TCPClientService.
 	 * 
-	 * @param configuration
-	 *            Kieker configuration object
-	 * @param recordList
-	 *            map of IMonitoringRecords to ids
-	 * @param port
-	 *            Port the server listens to
+	 * @param recordMap IMonitoring to id map
+	 * @param hostname host this service connects to
+	 * @param port port number where this service connects to
 	 */
-	public TCPSingleServerService(final Configuration configuration,
-			final Map<Integer, Class<IMonitoringRecord>> recordList, final int port) {
-		super(configuration, recordList);
+	public TCPClientService(final Map<Integer, Class<IMonitoringRecord>> recordMap, final String hostname, final int port) {
+		super(recordMap);
 		this.port = port;
+		this.hostname = hostname;
 	}
 
 	@Override
-	protected void sourceSetup() throws Exception {
+    public void sourceSetup() throws Exception {
 		super.sourceSetup();
-		this.serverSocket = new ServerSocket(this.port);
-		this.in = new DataInputStream(this.serverSocket.accept().getInputStream());
-	}
+		final Socket socket = new Socket(this.hostname, this.port);
+		this.in = new DataInputStream(socket.getInputStream());
+    }
 
 	@Override
-	protected void sourceClose() throws Exception {
-		this.in.close();
-		this.serverSocket.close();
-	}
-
+    public void sourceClose() throws Exception {
+	    this.in.close();	    
+    }
+	
 	/**
 	 * De-serialize an object reading from the input stream.
 	 * 
 	 * @return the de-serialized IMonitoringRecord object or null if the stream was terminated by
 	 *         the client.
 	 * 
-	 * @throws Exception
-	 *             IOException when an unknown id is received which cannot be mapped to an IMonitoringRecord
+	 * @throws Exception when a record is received that ID is unknown (IOException).
 	 */
 	@Override
-	protected IMonitoringRecord deserialize() throws Exception {
+	public IMonitoringRecord deserialize() throws Exception {
 		// read structure ID
 		try {
 			final Integer id = this.in.readInt();
-			final LookupEntity recordProperty = lookupEntityMap.get(id);
+			final LookupEntity recordProperty = this.lookupEntityMap.get(id);
 			if (recordProperty != null) {
 				final Object[] values = new Object[recordProperty.parameterTypes.length];
 

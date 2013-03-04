@@ -17,7 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.kieker.service.server;
+package de.cau.cs.se.kieker.service.cli;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -43,13 +43,10 @@ import kieker.common.configuration.Configuration;
 import kieker.common.record.IMonitoringRecord;
 import kieker.monitoring.core.configuration.ConfigurationFactory;
 
-import de.cau.cs.se.kieker.service.AbstractService;
 import de.cau.cs.se.kieker.service.IServiceListener;
-import de.cau.cs.se.kieker.service.jms.JMSEmbeddedService;
-import de.cau.cs.se.kieker.service.jms.JMSService;
-import de.cau.cs.se.kieker.service.tcp.TCPClientService;
-import de.cau.cs.se.kieker.service.tcp.TCPMultiServerService;
-import de.cau.cs.se.kieker.service.tcp.TCPSingleServerService;
+import de.cau.cs.se.kieker.service.ServiceConnectorFactory;
+import de.cau.cs.se.kieker.service.ServiceContainer;
+import de.cau.cs.se.kieker.service.connector.IServiceConnector;
 
 /**
  * @author rju
@@ -106,7 +103,7 @@ public final class CLIServerMain {
 
 			// start service depending on type
 			if (commandLine.hasOption("type")) {
-				runService(createService(configuration, recordMap));
+				runService(new ServiceContainer (configuration, createService(recordMap)));
 			}
 		} catch (ParseException exp) {
 			// oops, something went wrong
@@ -119,7 +116,7 @@ public final class CLIServerMain {
 	 * 
 	 * @param service The service to be executed
 	 */
-	private static void runService(final AbstractService service) {
+	private static void runService(final ServiceContainer service) {
 		if (verbose) {
 			final String updateInterval = commandLine.getOptionValue("v");
 			service.setListenerUpdateInterval((updateInterval != null) ? Integer.parseInt(updateInterval) : 100);
@@ -194,24 +191,22 @@ public final class CLIServerMain {
 	/**
 	 * Interpret command line type option.
 	 * 
-	 * @param configuration
-	 *            the Kieker configuration object
 	 * @param recordList
 	 *            the map for ids to Kieker records
 	 * 
-	 * @return a reference to an AbstractService
+	 * @return a reference to an ServiceContainer
 	 */
-	private static AbstractService createService(final Configuration configuration, final Map<Integer, Class<IMonitoringRecord>> recordList) {
+	private static IServiceConnector createService(final Map<Integer, Class<IMonitoringRecord>> recordList) {
 		if ("tcp-client".equals(commandLine.getOptionValue("type"))) {
-			return createTCPClientService(configuration, recordList);
+			return createTCPClientService(recordList);
 		} else if ("tcp-single-server".equals(commandLine.getOptionValue("type"))) {
-			return createTCPSingleServerService(configuration, recordList);
+			return createTCPSingleServerService(recordList);
 		} else if ("tcp-server".equals(commandLine.getOptionValue("type"))) {
-			return createTCPMultiServerService(configuration, recordList);
+			return createTCPMultiServerService(recordList);
 		} else if ("jms-client".equals(commandLine.getOptionValue("type"))) {
-			return createJMSService(configuration, recordList);
+			return createJMSService(recordList);
 		} else if ("jms-embedded".equals(commandLine.getOptionValue("type"))) {
-			return createJMSEmbeddedService(configuration, recordList);
+			return createJMSEmbeddedService(recordList);
 		} else {
 			usage("Unknown service type: '" + commandLine.getOptionValue("type") + "'", 10);
 			return null;
@@ -221,18 +216,16 @@ public final class CLIServerMain {
 	/**
 	 * Create a JMSEmbeddedService.
 	 * 
-	 * @param configuration
-	 *            the Kieker configuration object
 	 * @param recordList
 	 *            the map for ids to Kieker records
 	 * 
-	 * @return a reference to an AbstractService
+	 * @return a reference to an ServiceContainer
 	 */
-	private static AbstractService createJMSEmbeddedService(final Configuration configuration, final Map<Integer, Class<IMonitoringRecord>> recordList) {
+	private static IServiceConnector createJMSEmbeddedService(final Map<Integer, Class<IMonitoringRecord>> recordList) {
 		if (commandLine.hasOption("port")) {
 			final int port = Integer.parseInt(commandLine.getOptionValue("port"));
 			try {
-				return new JMSEmbeddedService(configuration, recordList, port);
+				return ServiceConnectorFactory.createJMSEmbeddedServiceConnector(recordList, port);
 			} catch (URISyntaxException e) {
 				usage("JMS service cannot be started. URI problem.", 10);
 				return null;
@@ -246,21 +239,18 @@ public final class CLIServerMain {
 	/**
 	 * Create a JMSService.
 	 * 
-	 * @param configuration
-	 *            the Kieker configuration object
 	 * @param recordList
 	 *            the map for ids to Kieker records
 	 * 
-	 * @return a reference to an AbstractService
+	 * @return a reference to an ServiceContainer
 	 */
-	private static AbstractService createJMSService(final Configuration configuration, final Map<Integer, Class<IMonitoringRecord>> recordList) {
+	private static IServiceConnector createJMSService(final Map<Integer, Class<IMonitoringRecord>> recordList) {
 		final String username = commandLine.hasOption("u") ? commandLine.getOptionValue("u") : null;
 		final String password = commandLine.hasOption("w") ? commandLine.getOptionValue("w") : null;
 
 		if (commandLine.hasOption("url")) {
 			try {
-				final URI url = new URI(commandLine.getOptionValue("url"));
-				return new JMSService(configuration, recordList, username, password, url);
+				return ServiceConnectorFactory.createJMSServiceConnector(recordList, username, password, new URI(commandLine.getOptionValue("url")));
 			} catch (URISyntaxException e) {
 				usage(commandLine.getOptionValue("url") + " is not a valid URI. JMS service cannot be started.", 10);
 				return null;
@@ -274,17 +264,15 @@ public final class CLIServerMain {
 	/**
 	 * Create a TCPSingleServerService.
 	 * 
-	 * @param configuration
-	 *            the Kieker configuration object
 	 * @param recordList
 	 *            the map for ids to Kieker records
 	 * 
-	 * @return a reference to an AbstractService
+	 * @return a reference to an ServiceContainer
 	 */
-	private static AbstractService createTCPSingleServerService(final Configuration configuration, final Map<Integer, Class<IMonitoringRecord>> recordList) {
+	private static IServiceConnector createTCPSingleServerService(final Map<Integer, Class<IMonitoringRecord>> recordList) {
 		if (commandLine.hasOption("port")) {
 			final int port = Integer.parseInt(commandLine.getOptionValue("port"));
-			final AbstractService service = new TCPSingleServerService(configuration, recordList, port);
+			final IServiceConnector service = ServiceConnectorFactory.createTCPSingleServerServiceConnector(recordList, port);
 			if (verbose) {
 				System.out.println("TCP server listening at " + port);
 			}
@@ -298,17 +286,15 @@ public final class CLIServerMain {
 	/**
 	 * Create a TCPMultiServerService.
 	 * 
-	 * @param configuration
-	 *            the Kieker configuration object
 	 * @param recordList
 	 *            the map for ids to Kieker records
 	 * 
-	 * @return a reference to an AbstractService
+	 * @return a reference to an ServiceContainer
 	 */
-	private static AbstractService createTCPMultiServerService(final Configuration configuration, final Map<Integer, Class<IMonitoringRecord>> recordList) {
+	private static IServiceConnector createTCPMultiServerService(final Map<Integer, Class<IMonitoringRecord>> recordList) {
 		if (commandLine.hasOption("port")) {
 			final int port = Integer.parseInt(commandLine.getOptionValue("port"));
-			final AbstractService service = new TCPMultiServerService(configuration, recordList, port);
+			final IServiceConnector service = ServiceConnectorFactory.createTCPMultiServerService(recordList, port);
 			if (verbose) {
 				System.out.println("TCP server listening at " + port);
 			}
@@ -322,20 +308,17 @@ public final class CLIServerMain {
 	/**
 	 * Create a TCPCLientService.
 	 * 
-	 * @param configuration
-	 *            the Kieker configuration object
 	 * @param recordList
 	 *            the map for ids to Kieker records
 	 * 
-	 * @return a reference to an AbstractService
+	 * @return a reference to an ServiceContainer
 	 */
-	private static AbstractService createTCPClientService(final Configuration configuration, final Map<Integer, Class<IMonitoringRecord>> recordList) {
+	private static IServiceConnector createTCPClientService(final Map<Integer, Class<IMonitoringRecord>> recordList) {
 		if (commandLine.hasOption("port")) {
 			if (commandLine.hasOption("host")) {
 				final int port = Integer.parseInt(commandLine.getOptionValue("port"));
 				final String hostname = commandLine.getOptionValue("host");
-				final AbstractService service = new TCPClientService(configuration, recordList, hostname,
-						port);
+				final IServiceConnector service = ServiceConnectorFactory.createTCPClientServiceConnector(recordList, hostname, port);
 				if (verbose) {
 					System.out.println("TCP client connected to " + hostname + ":"
 							+ port);

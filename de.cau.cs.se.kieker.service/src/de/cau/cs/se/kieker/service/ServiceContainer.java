@@ -23,6 +23,8 @@ package de.cau.cs.se.kieker.service;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import de.cau.cs.se.kieker.service.connector.IServiceConnector;
+
 import kieker.common.configuration.Configuration;
 import kieker.common.record.IMonitoringRecord;
 import kieker.monitoring.core.controller.IMonitoringController;
@@ -32,13 +34,15 @@ import kieker.monitoring.core.controller.IMonitoringController;
 import kieker.monitoring.core.controller.MonitoringController;
 
 /**
- * @author rju
+ * @author Reiner Jung
  * 
  */
-public abstract class AbstractService {
+public class ServiceContainer {
 
 	protected boolean active;    // is true when the service is running
 	protected long recordCount;  // counter for received records
+
+	private final IServiceConnector service;
 	
 	private Configuration configuration;
 	private Collection<IServiceListener> listeners;
@@ -48,12 +52,14 @@ public abstract class AbstractService {
 	
 	/**
 	 * @param configuration A configuration object for Kieker monitoring
+	 * @param service A service component to handle incoming data
 	 */
-	public AbstractService(final Configuration configuration) {
+	public ServiceContainer(final Configuration configuration, final IServiceConnector service) {
 		this.setRespawn(false);
 		this.configuration = configuration;
 		this.listeners = new ArrayList<IServiceListener>();
 		this.listenerUpdateInterval = 100;
+		this.service = service;
 	}
 
 	/**
@@ -64,11 +70,11 @@ public abstract class AbstractService {
 	public void run() throws Exception {
 		this.kieker = MonitoringController.createInstance(this.configuration);
 		do {
-			sourceSetup();
+			this.service.sourceSetup();
 			this.active = true;
 			this.recordCount = 0;
 			while (this.active) {
-				final IMonitoringRecord record = deserialize();
+				final IMonitoringRecord record = this.service.deserialize();
 				if (record != null) {
 					this.kieker.newMonitoringRecord(record);
 					this.recordCount++;
@@ -80,7 +86,7 @@ public abstract class AbstractService {
 				}
 			}
 			updateState(null);
-			sourceClose();
+			this.service.sourceClose();
 		} while (this.respawn);
 		this.kieker.terminateMonitoring();
 	}
@@ -94,7 +100,7 @@ public abstract class AbstractService {
 	public void shutdown() throws Exception {
 		this.respawn = false;
 		this.active = false;
-		sourceClose();
+		this.service.sourceClose();
 		this.kieker.terminateMonitoring();
 	}
 
@@ -116,28 +122,6 @@ public abstract class AbstractService {
 	public long getRecordCount() {
 		return this.recordCount;
 	}
-
-	/**
-	 * The deserialize method must be implemented by subclasses. They read source data and return an IMonitoringRecord.
-	 * 
-	 * @return A IMonitoringRecord or null on read error or end of line.
-	 * @throws Exception may be caused by a read error or an unknown record id.
-	 */
-	protected abstract IMonitoringRecord deserialize() throws Exception;
-
-	/**
-	 * Called to setup the channel to read record information. 
-	 *  
-	 * @throws Exception when an error occured setting up the record source.
-	 */
-	protected abstract void sourceSetup() throws Exception;
-
-	/**
-	 * Called to close the previously setup record source. 
-	 *  
-	 * @throws Exception when an error occured during connection close.
-	 */
-	protected abstract void sourceClose() throws Exception;
 
 	/**
 	 * @return the respawn

@@ -17,16 +17,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.kieker.service.jms;
+package de.cau.cs.se.kieker.service.connector.jms;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Map;
 
-import org.apache.activemq.broker.BrokerService;
-
-import kieker.common.configuration.Configuration;
 import kieker.common.record.IMonitoringRecord;
+
+import org.apache.activemq.broker.BrokerService;
 
 /**
  * @author rju
@@ -48,13 +47,13 @@ public class JMSEmbeddedService extends JMSService {
 	 * @throws URISyntaxException
 	 *             if the URI is malformed. Most likely will not happen.
 	 */
-	public JMSEmbeddedService(final Configuration configuration, final Map<Integer, Class<IMonitoringRecord>> recordMap, final int port) throws URISyntaxException {
-		super(configuration, recordMap, null, null, new URI("tcp://localhost:" + port));
+	public JMSEmbeddedService(final Map<Integer, Class<IMonitoringRecord>> recordMap, final int port) throws URISyntaxException {
+		super(recordMap, null, null, new URI("tcp://localhost:" + port));
 		this.port = port;
 	}
 
 	@Override
-	protected void sourceSetup() throws Exception {
+	public void sourceSetup() throws Exception {
 		this.broker = new BrokerService();
 		this.broker.setUseJmx(true);
 		this.broker.addConnector("tcp://localhost:" + this.port);
@@ -63,7 +62,7 @@ public class JMSEmbeddedService extends JMSService {
 	}
 
 	@Override
-	protected void sourceClose() throws Exception {
+	public void sourceClose() throws Exception {
 		super.sourceClose();
 		this.broker.stop();
 	}

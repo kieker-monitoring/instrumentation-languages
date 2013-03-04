@@ -17,7 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.kieker.service.tcp;
+package de.cau.cs.se.kieker.service.connector.tcp;
 
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -27,8 +27,9 @@ import java.util.Map;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
-import kieker.common.configuration.Configuration;
 import kieker.common.record.IMonitoringRecord;
+
+import de.cau.cs.se.kieker.service.LookupEntity;
 
 /**
  * @author rju
@@ -42,22 +43,23 @@ public class TCPMultiServerService extends AbstractTCPService {
 	private BlockingQueue<IMonitoringRecord> recordQueue;
 	
 	private ServerSocket serverSocket;
+	
+	private boolean active;
 
 	/**
 	 * Construct new TCPMultiServerService.
 	 * 
-	 * @param configuration Kieker configuration object
 	 * @param recordMap IMonitoringRecord to id map
 	 * @param port TCP port the service listens to
 	 */
-	public TCPMultiServerService(final Configuration configuration,
-	        final Map<Integer, Class<IMonitoringRecord>> recordMap, final int port) {
-		super(configuration, recordMap);
+	public TCPMultiServerService(final Map<Integer, Class<IMonitoringRecord>> recordMap, final int port) {
+		super(recordMap);
 		this.port = port;
+		this.active = true;
 	}
 
 	@Override
-    protected void sourceSetup() throws Exception {
+    public void sourceSetup() throws Exception {
 		super.sourceSetup();
 		this.recordQueue = new ArrayBlockingQueue<IMonitoringRecord>(QUEUE_CAPACITY);
 		this.serverSocket = new ServerSocket(this.port);
@@ -66,27 +68,27 @@ public class TCPMultiServerService extends AbstractTCPService {
 			@Override
 	        public void run() {
 	            // accept client connections
+				// CHECKSTYLE:OFF checkstyle does not understand that serverSocket and active are from the outer class
 				try {
 					while (active) {
-						// CHECKSTYLE:OFF checkstyle does not understand that serverSocket is from the outer class
 						new ServiceThread(serverSocket.accept());
-						// CHECKSTYLE:ON
 					}
 	            } catch (IOException e) {
 	                active = false;
 	            }
-				
+				// CHECKSTYLE:ON
 	        }	
 		};
     }
 
 	@Override
-    protected void sourceClose() throws Exception {
+    public void sourceClose() throws Exception {
+		this.active = false;
 		this.serverSocket.close();
     }
 
 	@Override
-    protected IMonitoringRecord deserialize() throws Exception {
+    public IMonitoringRecord deserialize() throws Exception {
 	    return this.recordQueue.take();
     }
 
@@ -114,25 +116,24 @@ public class TCPMultiServerService extends AbstractTCPService {
 		
 		@Override
         public void run() {
+			// CHECKSTYLE:OFF checkstyle does not understand that recordQueue is from the outer class
             while (active) {
             	try {
                     this.in = new DataInputStream(this.socket.getInputStream());
-                    // CHECKSTYLE:OFF checkstyle does not understand that recordQueue is from the outer class
                     recordQueue.put(deserialize());
-                    // CHECKSTYLE:ON
                 } catch (IOException e) {
                     active = false;
                     System.out.println("Listener " + Thread.currentThread().getId() + " died. Cause " + e.getMessage());
                 } catch (InterruptedException e) {
                 	active = false;
                     System.out.println("Listener " + Thread.currentThread().getId() + " died. Cause " + e.getMessage());
-                 // CHECKSTYLE:OFF deserialize does return Exception, therefore at the moment checkstyle has to accept this.
+                    // deserialize does return Exception, therefore at the moment checkstyle has to accept this.
 				} catch (Exception e) {
-					// CHECKSTYLE:ON
-                	active = false;
+					active = false;
                     System.out.println("Listener " + Thread.currentThread().getId() + " died. Cause " + e.getMessage());
                 }
             }
+            // CHECKSTYLE:ON
             try {
             	this.socket.close();
             } catch (IOException e) {

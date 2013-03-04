@@ -17,23 +17,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.kieker.service.tcp;
+package de.cau.cs.se.kieker.service.connector.tcp;
 
 import java.lang.reflect.Field;
 import java.security.PrivilegedAction;
 import java.util.HashMap;
 import java.util.Map;
 
-import kieker.common.configuration.Configuration;
 import kieker.common.record.IMonitoringRecord;
 
-import de.cau.cs.se.kieker.service.AbstractService;
+import de.cau.cs.se.kieker.service.LookupEntity;
+import de.cau.cs.se.kieker.service.connector.IServiceConnector;
 
 /**
  * @author rju
  * 
  */
-public abstract class AbstractTCPService extends AbstractService {
+public abstract class AbstractTCPService implements IServiceConnector {
 
 	protected Map<Integer, LookupEntity> lookupEntityMap;
 	
@@ -45,13 +45,12 @@ public abstract class AbstractTCPService extends AbstractService {
 	 * @param configuration Kieker configuration
 	 * @param recordMap IMonitoringRecord to id map
 	 */
-	public AbstractTCPService(final Configuration configuration, final Map<Integer, Class<IMonitoringRecord>> recordMap) {
-		super(configuration);
+	public AbstractTCPService(final Map<Integer, Class<IMonitoringRecord>> recordMap) {
 		this.recordMap = recordMap;
 	}
 
 	@Override
-	protected void sourceSetup() throws Exception {
+	public void sourceSetup() throws Exception {
 		this.lookupEntityMap = new HashMap<Integer, LookupEntity>();
 		for (final int key : this.recordMap.keySet()) {
 			final Class<IMonitoringRecord> type = this.recordMap.get(key);

@@ -17,7 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.kieker.service.tcp;
+package de.cau.cs.se.kieker.service;
 
 import java.lang.reflect.Constructor;
 
