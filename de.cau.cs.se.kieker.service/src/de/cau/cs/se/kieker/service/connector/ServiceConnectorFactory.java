@@ -17,7 +17,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.kieker.service;
+package de.cau.cs.se.kieker.service.connector;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -25,7 +25,6 @@ import java.util.Map;
 
 import kieker.common.record.IMonitoringRecord;
 
-import de.cau.cs.se.kieker.service.connector.IServiceConnector;
 import de.cau.cs.se.kieker.service.connector.jms.JMSEmbeddedService;
 import de.cau.cs.se.kieker.service.connector.jms.JMSService;
 import de.cau.cs.se.kieker.service.connector.tcp.TCPClientService;
@@ -78,7 +77,7 @@ public final class ServiceConnectorFactory {
 	 * @param port
 	 * @return
 	 */
-	public static IServiceConnector createTCPMultiServerService(Map<Integer, Class<IMonitoringRecord>> recordMap, int port) {
+	public static IServiceConnector createTCPMultiServerServiceConnector(Map<Integer, Class<IMonitoringRecord>> recordMap, int port) {
 		return new TCPMultiServerService(recordMap,port);
 	}
 

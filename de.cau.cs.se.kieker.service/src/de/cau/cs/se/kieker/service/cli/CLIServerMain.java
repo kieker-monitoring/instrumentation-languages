@@ -44,9 +44,9 @@ import kieker.common.record.IMonitoringRecord;
 import kieker.monitoring.core.configuration.ConfigurationFactory;
 
 import de.cau.cs.se.kieker.service.IServiceListener;
-import de.cau.cs.se.kieker.service.ServiceConnectorFactory;
 import de.cau.cs.se.kieker.service.ServiceContainer;
 import de.cau.cs.se.kieker.service.connector.IServiceConnector;
+import de.cau.cs.se.kieker.service.connector.ServiceConnectorFactory;
 
 /**
  * @author rju
@@ -294,7 +294,7 @@ public final class CLIServerMain {
 	private static IServiceConnector createTCPMultiServerService(final Map<Integer, Class<IMonitoringRecord>> recordList) {
 		if (commandLine.hasOption("port")) {
 			final int port = Integer.parseInt(commandLine.getOptionValue("port"));
-			final IServiceConnector service = ServiceConnectorFactory.createTCPMultiServerService(recordList, port);
+			final IServiceConnector service = ServiceConnectorFactory.createTCPMultiServerServiceConnector(recordList, port);
 			if (verbose) {
 				System.out.println("TCP server listening at " + port);
 			}
