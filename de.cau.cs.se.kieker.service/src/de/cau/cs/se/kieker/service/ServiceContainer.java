@@ -70,7 +70,7 @@ public class ServiceContainer {
 	public void run() throws Exception {
 		this.kieker = MonitoringController.createInstance(this.configuration);
 		do {
-			this.service.sourceSetup();
+			this.service.setup();
 			this.active = true;
 			this.recordCount = 0;
 			while (this.active) {
@@ -86,7 +86,7 @@ public class ServiceContainer {
 				}
 			}
 			updateState(null);
-			this.service.sourceClose();
+			this.service.close();
 		} while (this.respawn);
 		this.kieker.terminateMonitoring();
 	}
@@ -100,7 +100,7 @@ public class ServiceContainer {
 	public void shutdown() throws Exception {
 		this.respawn = false;
 		this.active = false;
-		this.service.sourceClose();
+		this.service.close();
 		this.kieker.terminateMonitoring();
 	}
 

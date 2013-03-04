@@ -59,8 +59,8 @@ public class TCPMultiServerService extends AbstractTCPService {
 	}
 
 	@Override
-    public void sourceSetup() throws Exception {
-		super.sourceSetup();
+    public void setup() throws Exception {
+		super.setup();
 		this.recordQueue = new ArrayBlockingQueue<IMonitoringRecord>(QUEUE_CAPACITY);
 		this.serverSocket = new ServerSocket(this.port);
 		new Runnable() {
@@ -82,7 +82,7 @@ public class TCPMultiServerService extends AbstractTCPService {
     }
 
 	@Override
-    public void sourceClose() throws Exception {
+    public void close() throws Exception {
 		this.active = false;
 		this.serverSocket.close();
     }

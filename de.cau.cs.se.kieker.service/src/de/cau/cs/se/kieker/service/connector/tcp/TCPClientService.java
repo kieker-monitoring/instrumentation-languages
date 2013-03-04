@@ -59,14 +59,14 @@ public class TCPClientService extends AbstractTCPService {
 	}
 
 	@Override
-    public void sourceSetup() throws Exception {
-		super.sourceSetup();
+    public void setup() throws Exception {
+		super.setup();
 		final Socket socket = new Socket(this.hostname, this.port);
 		this.in = new DataInputStream(socket.getInputStream());
     }
 
 	@Override
-    public void sourceClose() throws Exception {
+    public void close() throws Exception {
 	    this.in.close();	    
     }
 	

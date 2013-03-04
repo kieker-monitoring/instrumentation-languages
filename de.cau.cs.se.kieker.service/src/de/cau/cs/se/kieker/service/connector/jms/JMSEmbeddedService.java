@@ -53,17 +53,17 @@ public class JMSEmbeddedService extends JMSService {
 	}
 
 	@Override
-	public void sourceSetup() throws Exception {
+	public void setup() throws Exception {
 		this.broker = new BrokerService();
 		this.broker.setUseJmx(true);
 		this.broker.addConnector("tcp://localhost:" + this.port);
 		this.broker.start();
-		super.sourceSetup();
+		super.setup();
 	}
 
 	@Override
-	public void sourceClose() throws Exception {
-		super.sourceClose();
+	public void close() throws Exception {
+		super.close();
 		this.broker.stop();
 	}
 

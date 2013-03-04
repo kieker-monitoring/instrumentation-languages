@@ -50,7 +50,7 @@ public abstract class AbstractTCPService implements IServiceConnector {
 	}
 
 	@Override
-	public void sourceSetup() throws Exception {
+	public void setup() throws Exception {
 		this.lookupEntityMap = new HashMap<Integer, LookupEntity>();
 		for (final int key : this.recordMap.keySet()) {
 			final Class<IMonitoringRecord> type = this.recordMap.get(key);

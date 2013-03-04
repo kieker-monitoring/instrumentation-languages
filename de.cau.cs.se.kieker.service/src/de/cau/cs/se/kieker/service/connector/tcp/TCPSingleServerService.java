@@ -57,14 +57,14 @@ public class TCPSingleServerService extends AbstractTCPService {
 	}
 
 	@Override
-	public void sourceSetup() throws Exception {
-		super.sourceSetup();
+	public void setup() throws Exception {
+		super.setup();
 		this.serverSocket = new ServerSocket(this.port);
 		this.in = new DataInputStream(this.serverSocket.accept().getInputStream());
 	}
 
 	@Override
-	public void sourceClose() throws Exception {
+	public void close() throws Exception {
 		this.in.close();
 		this.serverSocket.close();
 	}

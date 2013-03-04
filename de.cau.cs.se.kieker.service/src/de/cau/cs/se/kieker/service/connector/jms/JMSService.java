@@ -219,7 +219,7 @@ public class JMSService implements IServiceConnector {
 	}
 
 	@Override
-	public void sourceSetup() throws Exception {
+	public void setup() throws Exception {
 		// setup value lookup
 		this.lookupEntityMap = new HashMap<Integer, LookupEntity>();
 		for (int key : this.recordMap.keySet()) {
@@ -253,7 +253,7 @@ public class JMSService implements IServiceConnector {
 	}
 
 	@Override
-	public void sourceClose() throws Exception {
+	public void close() throws Exception {
 		this.connection.stop();
 	}
 

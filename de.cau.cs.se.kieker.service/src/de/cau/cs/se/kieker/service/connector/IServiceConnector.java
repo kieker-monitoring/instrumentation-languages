@@ -38,15 +38,15 @@ public interface IServiceConnector {
 	/**
 	 * Called to setup the channel to read record information. 
 	 *  
-	 * @throws Exception when an error occured setting up the record source.
+	 * @throws Exception when an error occurred setting up the record source.
 	 */
-	void sourceSetup() throws Exception;
+	void setup() throws Exception;
 
 	/**
 	 * Called to close the previously setup record source. 
 	 *  
-	 * @throws Exception when an error occured during connection close.
+	 * @throws Exception when an error occurred during connection close.
 	 */
-	void sourceClose() throws Exception;
+	void close() throws Exception;
 
 }
