@@ -1,2 +1,19 @@
 # ignore those files
 */bin/*
+/de.cau.cs.se.kieker.service.testclient/autoscan.log
+/de.cau.cs.se.kieker.service.testclient/config.log
+/doc/kieker-workshop/idl-slides.tex
+/doc/kieker-workshop/kdb-slides.tex
+**~
+**.toc
+**.aux
+**.bbl
+**.blg
+**.log
+**.nav
+**.out
+**.snm
+**.vrb
+
+
+doc/kieker-workshop/images/kieker-data-bridge.pdf
