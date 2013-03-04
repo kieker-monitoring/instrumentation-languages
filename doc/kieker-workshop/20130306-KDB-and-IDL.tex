@@ -1,0 +1,130 @@
+\PassOptionsToPackage{pdftex}{graphicx} % pdftex hack fuer graphicx
+\documentclass[pdftex,hyperref=pdftex,10pt]{beamer}
+\usetheme{cau}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[american,ngerman]{babel}
+\usepackage{mathabx}
+
+
+
+\usepackage{multicol}
+\usepackage{natbib}
+%% Beamer Bibliography Fix
+\def\newblock{\hskip .11em plus .33em minus .07em}
+\renewcommand{\bibsection}{}
+% \bibliographystyle{natdin}
+% \bibliographystyle{abbrvnat}
+\bibliographystyle{alpha}
+% \bibliographystyle{plainnat}
+
+% listings
+\usepackage{listings}
+\usepackage{lstlinebgrd}
+\usepackage{pgf, pgffor}
+\input{languages}
+\usepackage{lstide}
+
+\usepackage{ifthen}
+\newcommand{\highlight}[1]{\textcolor{cauTF}{#1}}
+\newcommand{\scite}[2][]{%
+  \ifthenelse{\equal{#1}{}}{{\scriptsize{\cite{#2}}}}{{\scriptsize{\cite[#1]{#2}}}}%
+}
+\newcommand{\tcite}[2][]{%
+  \ifthenelse{\equal{#1}{}}{{\tiny{\cite{#2}}}}{{\tiny{\cite[#1]{#2}}}}%
+}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%
+%% HOTE: I don't know why this has to be between \makeatletter and \makeatother (rju)
+%% Highlight lines in listings
+\newcount\bt@rangea
+\newcount\bt@rangeb
+
+\newcommand\btIfInRange[2]{%
+    \global\let\bt@inrange\@secondoftwo%
+    \edef\bt@rangelist{#2}%
+    \foreach \range in \bt@rangelist {%
+        \afterassignment\bt@getrangeb%
+        \bt@rangea=0\range\relax%
+        \pgfmathtruncatemacro\result{ ( #1 >= \bt@rangea) && (#1 <= \bt@rangeb) }%
+        \ifnum\result=1\relax%
+            \breakforeach%
+            \global\let\bt@inrange\@firstoftwo%
+        \fi%
+    }%
+    \bt@inrange%
+}
+\newcommand\bt@getrangeb{%
+    \@ifnextchar\relax%
+        {\bt@rangeb=\bt@rangea}%
+        {\@getrangeb}%
+}
+\def\@getrangeb-#1\relax{%
+    \ifx\relax#1\relax%
+        \bt@rangeb=100000%   \maxdimen is too large for pgfmath
+    \else%
+        \bt@rangeb=#1\relax%
+    \fi%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% \btLstHL<overlay spec>{range list}
+%
+% TODO BUG: \btLstHL commands can not yet be accumulated if more than one overlay spec match.
+% 
+\newcommand<>{\btLstHL}[1]{%
+  \only#2{\btIfInRange{\value{lstnumber}}{#1}{\color{yellow!40}\def\lst@linebgrdcmd{\color@block}}{\def\lst@linebgrdcmd####1####2####3{}}}%
+}%
+
+\AtBeginPart{\beamer@tocsectionnumber 0\relax\frame{\partpage}}
+\makeatother
+
+%% title setup
+
+\title{Kieker Data Bridge and Instrumentation Language}
+\subtitle{Kieker Workshop}
+\author{Reiner Jung}
+\institute{Christian-Albrechts-Universit\"{a}t zu Kiel\newline{}Institut f\"{u}r Informatik}
+\date{06.03.2013}
+
+%% language settings
+\selectlanguage{american}
+%\selectlanguage{german}
+
+
+\begin{document}
+
+%% make titleslide
+{\causiegeldr
+\begin{frame}[plain]{}{}%
+  \titlepage
+\end{frame}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%\begin{frame}
+%\frametitle{Contents}
+%\tableofcontents
+%\end{frame}
+
+\include{kdb-slides}
+\include{idl-slides}
+
+%%
+\section{References}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[t,allowframebreaks]{References}
+  \setbeamertemplate{bibliography item}[text]
+  \footnotesize
+  \bibliography{../paper/lniguide,../paper/emftext}
+\end{frame}
+
+
+\end{document}

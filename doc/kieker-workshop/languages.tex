@@ -1,0 +1,103 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% language specification
+% for lstlistings
+%
+% requires setup from lstide.sty
+% keywords 1 = primary keywords
+% keywords 2 = secondary words and symbols to highlight
+%              use alsoletter to specify additional letters for "keywords"
+% keywords 3 = data types
+
+\lstdefinelanguage{logic}{
+alsoletter={},
+keywords=[1]{process,condition,conditional,action,case,cases,references,start,default,send,continue,receive,subprocess,state,machine,from,to, stepwise,transition,if,then,change,with},
+keywords=[2]{-, ->,this,null,true,false},
+keywords=[3]{Integer,List,Collection},
+string=[b]{\"},
+morecomment=[l]{//},
+morecomment=[s]{/*}{*/}
+}
+
+\lstdefinelanguage{types}{
+alsoletter={},
+keywords=[1]{communication,description,:,properties,messages,rules,interlocking,element,enumeration,state,set,
+roles,statevars},
+keywords=[2]{->,this,null,true,false},
+keywords=[3]{Integer,List,Collection},
+string=[b]{\"},
+morecomment=[l]{//},
+morecomment=[s]{/*}{*/}
+}
+
+\lstdefinelanguage{device}{
+keywords=[1]{device, slaves, inputs, named, fetched, from, outputs, forwarded, to, deployment, bit, inverse},
+keywords=[2]{ -, ->, \{, \}, \[, \], \<, \>},
+string=[b]{\"},
+morecomment=[l]{//},
+morecomment=[s]{/*}{*/}
+}
+
+\lstdefinelanguage{deployment}{
+keywords=[1]{interlocking, unit, devices, deployment, connections, tasks},
+keywords=[2]{ -, ->, \{, \}, \[, \], \<, \>},
+string=[b]{\"},
+morecomment=[l]{//},
+morecomment=[s]{/*}{*/}
+}
+
+\lstdefinelanguage{mdl}{
+alsoletter={[,],:,+,-,/,*},
+keywords=[1]{library,meta,model,enum,interval,measure,with},
+keywords=[2]{named,-,+,:,*,/,[,],in},
+keywords=[3]{ID,String,String[]},
+string=[b]{\"},
+}
+
+\lstdefinelanguage{mql}{
+alsoletter={},
+keywords=[1]{SELECT,FROM,WHERE,AS,MEMBER,OF,GROUP,BY,ORDER,OUTPUT,EVERY,AGGREGATE,OVER,MODEL,METRIC},
+keywords=[2]{max,min,average},
+string=[b]{\"},
+morecomment=[l]{//},
+morecomment=[s]{/*}{*/}
+}
+
+\lstdefinelanguage{antlr}{
+    alsoletter={:,|,;},%
+    keywords=[2]{:,|,;},%                                 define the special characters
+    moredelim=[s][\color{literal!50!black}\ttfamily]{'}{'},% single quotes in green
+    moredelim=*[s][\color{normal}\ttfamily]{options}{\}},%  options in black (until trailing })
+    morecomment=[l]{//},%                                  define // comment
+    emph={STRING}
+}
+
+\lstdefinelanguage{xtext}{
+    alsoletter={:,|,;},%
+    keywords=[1]{import,returns,generate,as,terminal},
+    keywords=[2]{:,|,;},%                                 define the special characters
+    keywords=[3]{name},
+    moredelim=[s][\color{literal!50!black}\ttfamily]{'}{'},% single quotes in green
+    moredelim=*[s][\color{normal}\ttfamily]{options}{\}},%  options in black (until trailing })
+    morecomment=[l]{//},%                                  define // comment
+    emph={STRING,INT,ID}
+}
+
+%% Xtend augmented with extra colors for special example properties
+\definecolor{semCommentColor}{RGB}{66, 96, 184}
+\definecolor{actualTypeC}{RGB}{171,48,0}
+
+\lstdefinelanguage{xtend}{
+    language=Java,
+    morekeywords={def,dispatch},
+    keywordstyle=[2]\color{actualTypeC},
+    morekeywords=[2]{actualType},
+    morecomment=[s][\color{semCommentColor}]{/**}{*/}
+}
+
+\lstdefinelanguage{idl}{
+alsoletter={=,[,],:,+,-,/,*},
+keywords=[1]{package,record,default},
+keywords=[2]{=},
+keywords=[3]{string,long,int},
+string=[b]{\"},
+}

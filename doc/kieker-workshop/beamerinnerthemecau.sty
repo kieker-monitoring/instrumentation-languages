@@ -1,0 +1,14 @@
+%
+\defbeamertemplate*{block begin}{cau}
+{
+  \par\vskip\medskipamount%
+  %\begin{beamercolorbox}[colsep*=.75ex]{block title}
+    \usebeamerfont*{structure title}\usebeamercolor[fg]{structure}\insertblocktitle%
+  %\end{beamercolorbox}%
+  {\parskip0pt\par}%
+  \usebeamerfont{block body}%
+  \begin{beamercolorbox}[sep=0mm]{body}%
+    \usebeamercolor[fg]{normal text}
+}
+\defbeamertemplate*{block end}{cau}  
+{\end{beamercolorbox}\vskip\smallskipamount}

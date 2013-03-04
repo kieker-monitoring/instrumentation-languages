@@ -1,0 +1,25 @@
+% Copyright 2010 by Jan Waller <jwa@informatik.uni-kiel.de>
+\ProvidesPackage{beamerthemecau}[2010/05/05]
+
+\mode<presentation>
+
+\newcommand{\causiegeldr}{%
+  \usebackgroundtemplate{%
+    \parbox[c][\paperheight]{\paperwidth}{%
+      \vspace{7.5cm}\hspace{9cm}\includegraphics[width=0.5\paperwidth]{cautheme/siegel-cau.pdf}%
+    }%
+  }%
+}
+\newcommand{\tfsiegeldr}{%
+  \usebackgroundtemplate{%
+    \parbox[c][\paperheight]{\paperwidth}{%
+      \vspace{7.5cm}\hspace{9cm}\includegraphics[width=0.4\paperwidth]{cautheme/siegel-tf.pdf}%
+    }%
+  }%
+}
+
+\usecolortheme{cau}
+\useoutertheme{cau}
+\useinnertheme{cau}
+
+\mode<all>

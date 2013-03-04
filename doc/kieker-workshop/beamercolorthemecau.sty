@@ -1,0 +1,38 @@
+% Copyright 2010 by Jan Waller <jwa@informatik.uni-kiel.de>
+\ProvidesPackage{beamercolorthemecau}[2010/05/05]
+
+\mode<presentation>
+
+\definecolor{cau}{RGB}{205,45,180}
+\definecolor{cauMix}{RGB}{131,25,118}
+\definecolor{cauGray}{RGB}{193,193,184}
+\definecolor{cauTF}{RGB}{0,33,147}
+\definecolor{cauTFmix}{RGB}{85,12,120}
+
+\definecolor{red}{RGB}{255,0,0}
+\definecolor{green}{RGB}{0,255,0}
+\definecolor{blue}{RGB}{0,0,255}
+
+\setbeamercolor*{palette primary}{fg=white,bg=cauTF}
+\setbeamercolor*{palette secondary}{fg=white,bg=cauTF}
+\setbeamercolor*{palette tertiary}{fg=cauTF,bg=cauGray}
+\setbeamercolor*{palette quaternary}{fg=cauTF,bg=cauGray}
+
+\setbeamercolor*{author in head/foot}{fg=cauTF,bg=cauGray}
+\setbeamercolor*{title in head/foot}{fg=cauTF,bg=cauGray}
+\setbeamercolor*{date in head/foot}{fg=cauTF,bg=cauGray}
+
+\setbeamercolor*{section in head/foot}{fg=white,bg=cauTFmix}
+\setbeamercolor*{subsection in head/foot}{parent=section in head/foot}
+\setbeamercolor*{subsubsection in head/foot}{parent=section in head/foot}
+
+\setbeamercolor*{frametitle}{fg=white,bg=cauTF}
+\setbeamercolor*{framesubtitle}{fg=white,bg=cauTF}
+
+%m\"{o}chte man den Text blau oder schwarz?
+%\setbeamercolor{normal text}{fg=cauTF}
+
+\setbeamercolor{block title}{parent=palette tertiary}
+\setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!15!bg}
+
+\mode<all>

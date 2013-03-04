@@ -1,0 +1,47 @@
+\ProvidesPackage{beamerthemeKiel}[2006/08/23]
+
+% Copyright 2003 by Till Tantau  <tantau@users.sourceforge.net>
+%       and 2005 by Jorg Cassens <jmt@cassens.org>
+%
+% This program can be redistributed and/or modified under the terms
+% of the GNU Public License, version 2.
+
+\mode<presentation>
+
+\newif\ifbeamer@minimal
+\newif\ifbeamer@blue
+\newif\ifbeamer@sand
+\newif\ifbeamer@numbers
+\newif\ifbeamer@nynorsk
+\newif\ifbeamer@bokmaal
+\newif\ifbeamer@mylogo
+\newif\ifbeamer@nologo
+\newif\ifbeamer@prog
+
+\beamer@minimalfalse
+\beamer@bluefalse
+\beamer@sandfalse
+\beamer@numbersfalse
+\beamer@nynorskfalse
+\beamer@bokmaalfalse
+\beamer@mylogofalse
+\beamer@nologotrue
+\beamer@progfalse
+
+%\DeclareOptionBeamer{compress}{\beamer@compresstrue}
+%\DeclareOptionBeamer{minimal}{\beamer@minimaltrue}
+%\DeclareOptionBeamer{numbers}{\beamer@numberstrue}
+\DeclareOptionBeamer{mylogo}{\beamer@mylogotrue}
+\DeclareOptionBeamer{nologo}{\beamer@nologofalse}
+\DeclareOptionBeamer{prog}[false]{\beamer@progtrue}
+
+\ProcessOptionsBeamer
+
+\usecolortheme{cau}
+\useinnertheme[shadow=true]{rounded}
+\useoutertheme[hideothersubsections]{cau}
+
+%\setbeamerfont{block title}{size={}}
+
+\mode
+<all>

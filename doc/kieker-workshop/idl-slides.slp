@@ -1,0 +1,34 @@
+sec: Instrumentation Language
+
+> Instrumentation Description Language
+
+'Goal: Language independent record notation
+
+-- idl
+record OperationExecution {
+   default string NO_SESSION_ID = "<no-session-id>"
+   default long NO_TRACEID = -1
+   default long NO_HOSTNAME = "<default-host>"
+   default long NO_TIMESTAMP = -1
+   default int NO_EOI_ESS = -1
+
+   string operationSignature
+   string sessionId = NO_SESSION_ID
+   long traceId = NO_TRACEID
+   long tin
+   long tout
+   string hostname = NO_HOSTNAME
+   int eoi = NO_EOI_ESS
+   int ess = NO_EOI_ESS
+}
+--
+
+> Instrumentation Annotation Language
+
+'Goal: Annotate nodes of arbitrary models
+
+'Requirements
+- Meta model independence
+- Declare nodes as annotatable
+- Define annotations
+

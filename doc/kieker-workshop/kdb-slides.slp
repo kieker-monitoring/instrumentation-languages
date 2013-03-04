@@ -1,0 +1,94 @@
+sec:Introduction
+
+> Motivation
+
+> Goal
+
+> Overview
+
+- Kieker Data Bridge
+- Instrumentation Description Language
+- Instrumentation Annotation Language
+
+sec: Kieker Data Bridge
+
+> Kieker Data Bridge
+
+img:[width=\textwidth]images/kieker-data-bridge
+
+> Serialization Format
+
+'General Structure
+- First value \textbf{type id} (int32) 
+- Other values in order of declaration
+  * Kieker = fields expressed in TYPES
+  * Other = reflection API (non static fields)
+
+'References
+- Id only
+  - First byte = 0
+  - Second value \textbf{type id} (int32)
+  - Unique runtime id
+- Containment
+  - First byte = 1
+  - Second value \textbf{type id} (int32)
+  - Other values in order of declaration (Java only)
+
+> Serialization Format
+
+'Binary Format
+- Based on \textbf{Java types}
+- Byte order \textbf{big endien} (network byte order)
+- String composed of
+  * length = 32bit signed integer (int) 
+  * data = variable length byte vector
+
+'Text Format
+- Semicolon separated value list
+
+> Service Connector API
+
+-- Java - [2(3,4) 3(6,7) 4(9,10)]
+public interface IServiceConnector {
+
+	/** setup connector */
+	void setup() throws Exception;
+
+	/** close connector */
+	void close() throws Exception;
+
+	/** get next record */
+	IMonitoringRecord deserialize() throws Exception;
+}
+--
+
+> Service Container
+
+'Input
+- Kieker Configuration
+- Service Connector
+
+'Main Loop
+# Setup Kieker
+# Setup service connector
+# Get record
+# goto 3 if not terminated
+# Close service connector
+# Shutdown Kieker
+
+'Other Features
+- Respawn connector
+- Update/log listener
+- Embeddable container
+- Read record types at run-time
+
+> Service Implementations
+
+'CLI Server
+- Command line service
+- Read class id mapping from ASCII file
+
+'Eclipse Plugin
+- Eclipse job \& run configuration
+- Mapping setup in run configuration
+

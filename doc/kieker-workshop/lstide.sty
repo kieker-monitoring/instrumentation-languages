@@ -1,0 +1,114 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{lstide}[2013/02/20 v0.5 Reiner Jung]
+\RequirePackage{color}
+\RequirePackage{listings}
+%
+\lstloadlanguages{Java,C++,[Visual]C++,XML}%
+%
+\definecolor{eclipseannotation}{RGB}{100,100,100}%
+\definecolor{eclipsecomment}{RGB}{63,127,95}%
+\definecolor{eclipsejavadoc}{RGB}{63,95,191}%
+\definecolor{eclipselinenumber}{RGB}{120,120,120}%
+\definecolor{eclipsefield}{RGB}{0,0,192}%
+\definecolor{eclipsexml}{RGB}{63,127,127}%
+
+\definecolor{keyword}{rgb}{0.5,0.0,0.33}
+\definecolor{reserved}{rgb}{1,0.30,0.20}
+\definecolor{datatypes}{rgb}{0,0,0}
+\definecolor{normal}{rgb}{0,0,0}
+\definecolor{background}{rgb}{1,1,1}
+\definecolor{comment}{rgb}{0.6,0.6,0.6}
+\definecolor{string}{rgb}{0.164,0,0.749}
+\definecolor{literal}{rgb}{0.3,0.3,1.0}
+\definecolor{token}{rgb}{0.3,0.3,1.0}
+
+\lstset{tabsize=4,
+basicstyle=\sffamily\scriptsize,
+inputencoding=utf8,
+numbers=none,
+numberstyle=\tiny,
+stringstyle=\color{string}\sl,
+keywordstyle=\bfseries,
+keywordstyle=[1]\color{keyword}\bfseries,
+keywordstyle=[2]\color{reserved},
+keywordstyle=[3]\color{datatypes}\bfseries,
+emphstyle=\color{token}\ttfamily,
+commentstyle=\color{comment},
+columns=[r]fullflexible,
+backgroundcolor=\color{background},
+breaklines=true,
+showtabs=false,
+showspaces=false,
+showstringspaces=false,
+frame=tb,
+captionpos=b}
+
+%
+\lstdefinestyle{eclipse-java}{%
+  language={},%
+  morekeywords=[1]{},%
+  keywordsprefix=@,%
+  classoffset=1,%
+  alsolanguage=Java,%
+  classoffset=0,%
+  numbers=left,%
+  showstringspaces=false,%
+  basicstyle=\small\ttfamily,%
+  keywordstyle=\color{eclipseannotation},%
+  keywordstyle=[2]\color{keyword}\bfseries,%
+  commentstyle=\color{eclipsecomment},%
+  stringstyle=\color{string},%
+  numberstyle=\color{eclipselinenumber}\ttfamily,%
+  morecomment=[s][\color{eclipsejavadoc}]{/**}{*/},%
+  moredelim=**[is][\itshape]{°}{°},%static
+  moredelim=**[is][\color{eclipsefield}]{\#}{\#},%field
+}%
+%
+\lstdefinestyle{eclipse-cpp}{%
+  language=C++,%
+  keywordsprefix={},%
+  numbers=left,%
+  showstringspaces=false,%
+  basicstyle=\small\ttfamily,%
+  keywordstyle=\color{keyword}\bfseries,%
+  commentstyle=\color{eclipsecomment},%
+  stringstyle=\color{string},%
+  numberstyle=\color{eclipselinenumber}\ttfamily,%
+}%
+\lstdefinestyle{eclipse-xml}{%
+  language={},%
+  keywordsprefix={},%
+  numbers=left,%
+  showstringspaces=false,%
+  morestring=[b][\color{string}]",
+  morecomment=[s][\color{eclipsexml}]{<!}{>},%
+  morekeywords={},% list your attributes here
+  basicstyle=\color{eclipsexml}\small\ttfamily,%
+  keywordstyle=\color{keyword},%
+  numberstyle=\color{eclipselinenumber}\ttfamily,%
+}%
+%
+\definecolor{visualkeyword}{RGB}{0,0,255}%
+\definecolor{visualstring}{RGB}{163,21,21}%
+\definecolor{visualcomment}{RGB}{0,128,0}%
+\definecolor{visuallinenumber}{RGB}{43,145,175}%
+%
+\lstdefinestyle{visual-cpp}{%
+  language=[Visual]C++,%
+  keywordsprefix={},%
+  numbers=left,%
+  showstringspaces=false,%
+  basicstyle=\small\ttfamily,%
+  keywordstyle=\color{visualkeyword},%
+  commentstyle=\color{visualcomment},%
+  stringstyle=\color{visualstring},%
+  numberstyle=\color{visuallinenumber}\ttfamily,%
+}%
+%
+\lstdefinestyle{default}{%
+    basicstyle=\small\ttfamily,%
+    keywordstyle=\bfseries,%
+    commentstyle=\itshape,%
+}%
+%
+\endinput

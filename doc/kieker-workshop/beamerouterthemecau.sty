@@ -1,0 +1,102 @@
+% Copyright 2010 by Jan Waller <jwa@informatik.uni-kiel.de>
+% Copyright 2010 by Robert von Massow <rvm@informatik.uni-kiel.de>
+\ProvidesPackage{beamerouterthemecau}[2010/05/05]
+
+\mode<presentation>
+\RequirePackage{pgf}
+\RequirePackage{helvet}
+\setbeamerfont{section in head/foot}{size=\fontsize{6}{8}}
+\setbeamerfont{subsection in head/foot}{parent=section in head/foot}
+\setbeamerfont{subsubsection in head/foot}{parent=subsection in head/foot}
+\setbeamersize{text margin left=1em,text margin right=1em}
+
+\newdimen\beamer@headheight
+\usebeamerfont{frametitle}
+\beamer@headheight=2\baselineskip
+\reset@font
+
+\newcommand{\SectionSymbol}{$\triangleright$}
+
+\DeclareOptionBeamer{height}{\beamer@headheight=#1}
+\DeclareOptionBeamer{symbol}{\renewcommand{\SectionSymbol}{#1}}
+\ProcessOptionsBeamer
+
+\pgfdeclareimage[height=\beamer@headheight]{cau}{cautheme/caulogo.pdf}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{separation line}{}
+%\defbeamertemplate*{title page}{cau}{XXX}
+
+% Footline
+\defbeamertemplate*{footline}{cau}{%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,left]{author in head/foot}%
+      \usebeamerfont{author in head/foot}\hspace*{2ex}\insertshortauthor%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+      \usebeamerfont{title in head/foot}\insertshorttitle%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+      \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}%
+      \insertframenumber{} / \inserttotalframenumber\hspace*{2ex}%
+    \end{beamercolorbox}}%
+  \vskip0pt%
+}
+
+\defbeamertemplate*{frametitle}{cau}{%
+  \nointerlineskip%
+  \vskip-\beamer@headheight%
+  \vbox to \beamer@headheight{%
+    \vskip 0.40ex% plus1fil
+    \leftskip=-\beamer@leftmargin%
+    \advance\leftskip by0.3cm%
+    \rightskip=-\beamer@rightmargin%
+    \advance\rightskip by0.3cm plus1fil%
+    {\hskip+ 0.5em\usebeamercolor[fg]{frametitle}\usebeamerfont{frametitle}\insertframetitle\par}%
+    \vskip .2ex% plus1fil
+    {\hskip+ 0.5em\usebeamercolor[fg]{framesubtitle}\usebeamerfont{framesubtitle}\insertframesubtitle\par}%
+    \vskip .1ex% plus1fil
+    {\hskip+ 0.5em%
+      \ifx\insertpart\@empty\else%
+        \usebeamerfont{section in head/foot}\usebeamercolor[fg]{section in head/foot}\insertshortpart\hskip.5em%
+        \ifx\insertsectionhead\@empty%
+          \ifx\insertsubsectionhead\@empty%
+          \else%
+            \SectionSymbol\hskip.5em%
+          \fi%
+        \else%
+          \SectionSymbol\hskip.5em%
+        \fi%
+      \fi%
+      \ifx\insertsectionhead\@empty\else%
+        \usebeamerfont{subsection in head/foot}\usebeamercolor[fg]{subsection in head/foot}\insertsectionhead\hskip.5em%
+        \ifx\insertsubsectionhead\@empty%
+        \else%
+          \SectionSymbol\hskip.5em%
+        \fi%
+      \fi%
+      \ifx\insertsubsectionhead\@empty\else%
+        \usebeamerfont{subsubsection in head/foot}\usebeamercolor[fg]{subsubsection in head/foot}\insertsubsectionhead%
+      \fi%
+      \par}%
+    \vskip-4ex%
+    \vfil%
+  }%
+}
+
+% Headline
+\defbeamertemplate*{headline}{cau}{%
+  \begin{beamercolorbox}[wd=\paperwidth]{section in head/foot}%
+    \begin{pgfpicture}{0pt}{0pt}{\paperwidth}{\beamer@headheight}%
+      \color{cauTF}% frametitle
+      \pgfrect[fillstroke]{\pgfpoint{0cm}{0.5\beamer@headheight}}{\pgfpoint{\paperwidth}{0.5\beamer@headheight}}%
+      \color{cauTF}% framesubtitle
+    	\pgfrect[fillstroke]{\pgfpoint{0cm}{.25\beamer@headheight}}{\pgfpoint{\paperwidth}{.25\beamer@headheight}}%
+	    \color{black}
+      \pgfputat{\pgfpoint{\paperwidth}{0cm}}{\pgfbox[right,base]{\pgfuseimage{cau}}}%
+    \end{pgfpicture}%
+  \end{beamercolorbox}%
+}
+
+\mode<all>

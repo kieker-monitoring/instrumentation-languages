@@ -1,0 +1,28 @@
+% Copyright 2012 by Jan Waller <jwa@informatik.uni-kiel.de>
+\ProvidesPackage{beamercolorthemekieker}[2012/11/19]
+
+\mode<presentation>
+
+\definecolor{kiekerBlue}{RGB}{36,86,161}
+\definecolor{kiekerGray}{RGB}{226,226,226}
+
+\setbeamercolor*{palette primary}{fg=white,bg=kiekerBlue}
+\setbeamercolor*{palette secondary}{fg=white,bg=kiekerBlue}
+\setbeamercolor*{palette tertiary}{fg=kiekerBlue,bg=kiekerGray}
+\setbeamercolor*{palette quaternary}{fg=kiekerBlue,bg=kiekerGray}
+
+\setbeamercolor*{author in head/foot}{fg=black,bg=kiekerGray}
+\setbeamercolor*{title in head/foot}{parent=author in head/foot}
+\setbeamercolor*{date in head/foot}{parent=author in head/foot}
+
+\setbeamercolor*{section in head/foot}{fg=black,bg=kiekerGray}
+\setbeamercolor*{subsection in head/foot}{parent=section in head/foot}
+\setbeamercolor*{subsubsection in head/foot}{parent=section in head/foot}
+
+\setbeamercolor*{frametitle}{fg=white,bg=kiekerBlue}
+\setbeamercolor*{framesubtitle}{parent=frametitle}
+
+\setbeamercolor{block title}{parent=palette tertiary}
+\setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!15!bg}
+
+\mode<all>
