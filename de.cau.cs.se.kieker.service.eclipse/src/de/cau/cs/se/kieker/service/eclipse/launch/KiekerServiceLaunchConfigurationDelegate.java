@@ -44,14 +44,11 @@ import kieker.common.configuration.Configuration;
 import kieker.common.record.IMonitoringRecord;
 import kieker.monitoring.core.configuration.ConfigurationFactory;
 
-import de.cau.cs.se.kieker.service.AbstractService;
+import de.cau.cs.se.kieker.service.connector.ServiceConnectorFactory;
+import de.cau.cs.se.kieker.service.ServiceContainer;
+import de.cau.cs.se.kieker.service.connector.IServiceConnector;
 import de.cau.cs.se.kieker.service.eclipse.Activator;
 import de.cau.cs.se.kieker.service.eclipse.job.KiekerServiceJob;
-import de.cau.cs.se.kieker.service.jms.JMSEmbeddedService;
-import de.cau.cs.se.kieker.service.jms.JMSService;
-import de.cau.cs.se.kieker.service.tcp.TCPClientService;
-import de.cau.cs.se.kieker.service.tcp.TCPMultiServerService;
-import de.cau.cs.se.kieker.service.tcp.TCPSingleServerService;
 
 /**
  * Service launch delegate for the Kieker bridge.
@@ -136,25 +133,25 @@ public class KiekerServiceLaunchConfigurationDelegate extends LaunchConfiguratio
 			}
 		}
 
-		AbstractService service;
+		IServiceConnector connector;
 		String type = configuration.getAttribute(ATTR_TYPE, "");
 		if (ServiceTypes.TCP_SERVER.name().equals(type)) {
 			final int port = configuration.getAttribute(ATTR_SERVER_PORT, 9000);
-			service = new TCPSingleServerService(kiekerConfiguration, records, port);
+			connector = ServiceConnectorFactory.createTCPSingleServerServiceConnector(records, port);
 		} else if (ServiceTypes.TCP_MULTI_SERVER.name().equals(type)) {
 			final int port = configuration.getAttribute(ATTR_SERVER_PORT, 9000);
-			service = new TCPMultiServerService(kiekerConfiguration, records, port);
+			connector = ServiceConnectorFactory.createTCPMultiServerServiceConnector(records, port);
 		} else if (ServiceTypes.TCP_CLIENT.name().equals(type)) {
 			final int port = configuration.getAttribute(ATTR_CLIENT_PORT, 9000);
 			final String hostname = configuration.getAttribute(ATTR_IP, "localhost");
-			service = new TCPClientService(kiekerConfiguration, records, hostname, port);
+			connector = ServiceConnectorFactory.createTCPClientServiceConnector(records, hostname, port);
 		} else if (ServiceTypes.JMS_CLIENT.name().equals(type)) {
 			final String username = configuration.getAttribute(ATTR_USER, "");
 			final String password = configuration.getAttribute(ATTR_PASSWORD, "");
 
 			try {
 				final URI uri = new URI(configuration.getAttribute(ATTR_URL, ""));
-				service = new JMSService(kiekerConfiguration, records, username, password, uri);
+				connector = ServiceConnectorFactory.createJMSServiceConnector(records, username, password, uri);
 			} catch (URISyntaxException e) {
 				throw new CoreException(new Status(IStatus.ERROR, Activator.PLUGIN_ID,
 				        "Malformed JMS URI " + configuration.getAttribute(ATTR_URL, ""), e));
@@ -162,7 +159,7 @@ public class KiekerServiceLaunchConfigurationDelegate extends LaunchConfiguratio
 		} else if (ServiceTypes.JMS_EMBEDDED.name().equals(type)) {
 			final int port = configuration.getAttribute(ATTR_JMS_PORT, 9000);
 			try {
-				service = new JMSEmbeddedService(kiekerConfiguration, records, port);
+				connector = ServiceConnectorFactory.createJMSEmbeddedServiceConnector(records, port);
 			} catch (URISyntaxException e) {
 				throw new CoreException(new Status(IStatus.ERROR, Activator.PLUGIN_ID,
 				        "Auto-generated JMS URI is malformed.", e));
@@ -172,8 +169,9 @@ public class KiekerServiceLaunchConfigurationDelegate extends LaunchConfiguratio
 			        "Missing implementation for server start of "
 			                + configuration.getAttribute(ATTR_TYPE, "")));
 		}
-		final KiekerServiceJob job = new KiekerServiceJob("Kieker Data Bridge", service);
-		service.addListener(job);
+		final ServiceContainer container = new ServiceContainer(kiekerConfiguration,connector);
+		final KiekerServiceJob job = new KiekerServiceJob("Kieker Data Bridge",container);
+		container.addListener(job);
 		job.schedule();
 	}
 

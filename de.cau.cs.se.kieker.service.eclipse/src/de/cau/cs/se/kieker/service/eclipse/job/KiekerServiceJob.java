@@ -24,29 +24,29 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 
-import de.cau.cs.se.kieker.service.AbstractService;
 import de.cau.cs.se.kieker.service.IServiceListener;
+import de.cau.cs.se.kieker.service.ServiceContainer;
 
 /**
- * Generic job for all Kieker bridge service implementations.
+ * Generic job for all Kieker bridge container implementations.
  * 
  * @author rju -- initial contribution
  * 
  */
 public class KiekerServiceJob extends Job implements IServiceListener {
 
-	private AbstractService service;
+	private ServiceContainer container;
 	private IProgressMonitor progressMonitor;
 
 	/**
 	 * Constructor.
 	 * 
 	 * @param name name to be shown in the job view
-	 * @param service the service to be executed
+	 * @param container the container to be executed
 	 */
-	public KiekerServiceJob(final String name, final AbstractService service) {
+	public KiekerServiceJob(final String name, final ServiceContainer container) {
 		super(name);
-		this.service = service;
+		this.container = container;
 	}
 
 	/*
@@ -58,7 +58,7 @@ public class KiekerServiceJob extends Job implements IServiceListener {
 		this.progressMonitor = monitor;
 	    try {
 	    	this.progressMonitor.beginTask("Processing: ", IProgressMonitor.UNKNOWN);
-	        this.service.run();
+	        this.container.run();
 	        this.progressMonitor.done();
 	        return Status.OK_STATUS;
 	        // CHECKSTYLE:OFF different services can produce different exceptions. They all have to be handled. 
