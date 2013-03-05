@@ -1,11 +1,37 @@
 sec: Instrumentation Language
 
-> Instrumentation Description Language
 
-'Goal: Language independent record notation
+> Goals \& Requirements
+
+$+<1->{
+'Goals
+- Annotate nodes of arbitrary models
+- Language independent record notation
+}
+
+$+<2->{'Requirements
+- Source language meta model independence
+- Define probes for meta-model classes (nodes)
+- Define annotations (like AspectJ)
+}
+
+> Features
+
+'Generation of
+- Type compatible record types accross languages
+- Serialization functions
+
+'Supports
+- Java (example generator, run-time environment present)
+- C (example probe code)
+- Perl (example prode code \& weaver)
+
+> Language Independent Record Notation
 
 -- idl
-record OperationExecution {
+package kieker.common
+
+record OperationExecutionRecord {
    default string NO_SESSION_ID = "<no-session-id>"
    default long NO_TRACEID = -1
    default long NO_HOSTNAME = "<default-host>"
@@ -23,12 +49,17 @@ record OperationExecution {
 }
 --
 
-> Instrumentation Annotation Language
+> Language Independent Probe Notation
 
-'Goal: Annotate nodes of arbitrary models
+-- ial
+package kieker.common
 
-'Requirements
-- Meta model independence
-- Declare nodes as annotatable
-- Define annotations
+model java "http://www.eclipse.org/JvmTypes"
+
+import kieker.common.OperationExecutionRecord
+
+probe OperationExecutionProbe : java::MethodDeclaration {
+   use OperationExecutionRecord
+}
+--
 
