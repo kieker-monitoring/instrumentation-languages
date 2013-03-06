@@ -1,30 +1,29 @@
 sec: Instrumentation Language
 
-
-> Goals \& Requirements
+> Instrumentation Language
 
 $+<1->{
 'Goals
-- Annotate nodes of arbitrary models
 - Language independent record notation
+- Annotate nodes of arbitrary models/ASTs
 }
 
 $+<2->{'Requirements
-- Source language meta model independence
+- Source language meta model independent
 - Define probes for meta-model classes (nodes)
 - Define annotations (like AspectJ)
 }
 
-> Features
+> Language Features
 
 'Generation of
-- Type compatible record types accross languages
+- Type compatible record types across languages
 - Serialization functions
 
 'Supports
 - Java (example generator, run-time environment present)
 - C (example probe code)
-- Perl (example prode code \& weaver)
+- Perl (example probe code)
 
 > Language Independent Record Notation
 
@@ -62,4 +61,13 @@ probe OperationExecutionProbe : java::MethodDeclaration {
    use OperationExecutionRecord
 }
 --
+
+> Weaver
+
+'Weaver Technologies
+- AspectJ
+- Perl-Weaver (Nis)
+- AspectC or other C weaver
+
+'Question: Do we need a generic weaving language?
 

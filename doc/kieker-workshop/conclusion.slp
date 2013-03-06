@@ -1,0 +1,32 @@
+sec: Conclusion
+
+> Summary
+
+- Kieker Data Bridge
+  - Multi protocol support
+  - Serialization method
+  - Extendable record library
+  - Two use cases in Perl and C
+
+- Instrumentation Language
+  - Platform independent record notation
+  - Generator for Java (experimental)
+
+> To Do List
+
+- Kieker Data Bridge
+  - Improve documentation
+  - Refactor to meet Kieker package naming
+  - Integrate into Kieker distribution
+  - Support for adaptive monitoring
+  - Support for AJAX/HTTP connection
+
+- Instrumentation Language
+  - Finalize grammar (checks and type evaluation)
+  - Generator for Perl \& C
+  - Finalize generator for Java
+
+- Kieker
+  - C run-time library and instrumentation (thesis)
+  - Perl run-rime package
+

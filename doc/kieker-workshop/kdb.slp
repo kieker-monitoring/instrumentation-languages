@@ -1,0 +1,95 @@
+sec: Kieker Data Bridge
+
+> Kieker Data Bridge
+
+img:[width=\textwidth]images/kieker-data-bridge
+
+> Service Connectors
+
+'TCP Client: Connects to a remote service on startup
+'TCP Single Server: Listens for one client
+'TCP Multi Server: Handles multiple clients
+'JMS Client: Connects to a JMS queue
+'JMS Embedded: Start a JMS service and connects to it  
+
+> Service Container
+
+'Input
+- Kieker Configuration
+- Service Connector
+
+'Main Loop
+# Setup Kieker
+# Setup service connector
+# Get record
+# goto 3 if not terminated
+# Close service connector
+# Shutdown Kieker
+
+
+> Service Container
+
+'Other Features
+- Connector respawn
+- Progress monitor support
+- Load record types at startup
+- Embeddable container
+
+> Service Implementations
+
+'CLI Server
+- Command line application
+- Read class id mapping from ASCII file
+- Can run as deamon
+
+'Eclipse Plugin
+- Eclipse job \& run configuration
+- Class mapping setup in run configuration
+
+
+> Serialization Format
+
+'General Structure
+- First value \textbf{type id} (int32) 
+- Other values in order of declaration
+  * Kieker = fields expressed in TYPES
+  * Other = reflection API (non static fields)
+
+'References
+- Id only
+  - First byte = 0
+  - Second value \textbf{type id} (int32)
+  - Unique object run-time id
+- Containment
+  - First byte = 1
+  - Second value \textbf{type id} (int32)
+  - Other values in order of declaration (Java only)
+
+> Serialization Format
+
+'Binary Format
+- Based on \textbf{Java base-types}
+- Byte order \textbf{big endien} (network byte order)
+- String composed of
+  * length = 32bit signed integer (int) 
+  * data = variable length byte vector
+
+'Text Format
+- Semicolon separated value list
+
+> Service Connector API
+
+-- Java - [2(3,4) 3(6,7) 4(9,10)]
+public interface IServiceConnector {
+
+	/** setup connector */
+	void setup() throws Exception;
+
+	/** close connector */
+	void close() throws Exception;
+
+	/** get next record */
+	IMonitoringRecord deserialize() throws Exception;
+}
+--
+

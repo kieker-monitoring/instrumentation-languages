@@ -1,0 +1,27 @@
+sec:Introduction
+
+> Motivation
+
+- Kieker
+  - Primarily supports Java 
+  - Special solutions for some languages
+- Every new languages have to implement
+  - Monitoring records \& probes
+  - Record translation
+  - Record transmission 
+  - Weaving mechanism
+
+> Present Solutions
+
+- Kieker.4com VisualBasic 6
+- Kieker.4net C\#
+- Cobol-Dialects
+
+> Goal
+
+'Goal: Establish a standard way to add new languages and platforms
+
+'Solution
+- Kieker Data Bridge
+- Instrumentation (Record) Language
+- Weaver Collection
