@@ -86,12 +86,12 @@ void send_data(int sockfd, int iterations) {
 		dummy.tout = tv.tv_sec * 1000000ULL + tv.tv_usec;
 */
 		/* serialize */
-		int offset = operation_execution_record_serialize(buffer,offset,OPERATION_EXECUTION_RECORD_TYPE_ID,dummy);
+		int length = operation_execution_record_serialize(buffer,OPERATION_EXECUTION_RECORD_TYPE_ID,0,dummy);
 
 		/* send and measure its own message send time conspuption */
 		gettimeofday(&tv, NULL);
 		dummy.tin = tv.tv_sec * 1000000ULL + tv.tv_usec;
-		n = write(sockfd, buffer, offset);
+		n = write(sockfd, buffer, length);
 		gettimeofday(&tv, NULL);
 		dummy.tout = tv.tv_sec * 1000000ULL + tv.tv_usec;
 		if (n < 0)
