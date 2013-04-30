@@ -1,0 +1,94 @@
+
+%%
+\section{Instrumentation Language}
+
+% FRAME
+\begin{frame}[fragile]
+\frametitle{Instrumentation Language}
+\uncover<1->{\structure{Goals}
+\begin{itemize}
+\item Language independent record notation
+\item Annotate nodes of arbitrary models/ASTs
+\end{itemize}
+}
+\uncover<2->{\vskip1em
+\structure{Requirements}
+\begin{itemize}
+\item Source language meta model independent
+\item Define probes for meta-model classes (nodes)
+\item Define annotations (like AspectJ)
+\end{itemize}
+}
+\end{frame}
+
+% FRAME
+\begin{frame}[fragile]
+\frametitle{Language Features}
+\structure{Generation of}
+\begin{itemize}
+\item Type compatible record types across languages
+\item Serialization functions
+\end{itemize}
+\vskip1em
+\structure{Supports}
+\begin{itemize}
+\item Java (example generator, run-time environment present)
+\item C (example probe code)
+\item Perl (example probe code)
+\end{itemize}
+\end{frame}
+
+% FRAME
+\begin{frame}[fragile]
+\frametitle{Language Independent Record Notation}
+\begin{lstlisting}[escapechar=@,language=idl]
+package kieker.common
+
+record OperationExecutionRecord {
+   default string NO_SESSION_ID = "<no-session-id>"
+   default long NO_TRACEID = -1
+   default long NO_HOSTNAME = "<default-host>"
+   default long NO_TIMESTAMP = -1
+   default int NO_EOI_ESS = -1
+
+   string operationSignature
+   string sessionId = NO_SESSION_ID
+   long traceId = NO_TRACEID
+   long tin
+   long tout
+   string hostname = NO_HOSTNAME
+   int eoi = NO_EOI_ESS
+   int ess = NO_EOI_ESS
+}
+\end{lstlisting}
+\end{frame}
+
+% FRAME
+\begin{frame}[fragile]
+\frametitle{Language Independent Probe Notation}
+\begin{lstlisting}[escapechar=@,language=ial]
+package kieker.common
+
+model java "http://www.eclipse.org/JvmTypes"
+
+import kieker.common.OperationExecutionRecord
+
+probe OperationExecutionProbe : java::MethodDeclaration {
+   use OperationExecutionRecord
+}
+\end{lstlisting}
+\end{frame}
+
+% FRAME
+\begin{frame}[fragile]
+\frametitle{Weaver}
+\structure{Weaver Technologies}
+\begin{itemize}
+\item AspectJ
+\item Perl-Weaver (Nis)
+\item AspectC or other C weaver
+\end{itemize}
+\vskip1em
+\structure{Question}  Do we need a generic weaving language?
+\end{frame}
+

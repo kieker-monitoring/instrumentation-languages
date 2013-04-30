@@ -1,3 +1,16 @@
+/**
+ * MAMBA - Measurement Architecture for Model-Based Analysis
+ * 
+ * http://http://se.informatik.uni-kiel.de/research/projects/mamba
+ * 
+ * Copyright 2011 by
+ * + Christian-Albrechts-University of Kiel
+ *   + Department of Computer Science
+ *     + Software Engineering Group
+ * 
+ * This code is provided under the terms of the Eclipse Public License (EPL).
+ * See the file epl-v10.html for the license text.
+ */
 package de.cau.cs.se.instrumentation.language.generator;
 
 import com.google.common.collect.Iterables;
