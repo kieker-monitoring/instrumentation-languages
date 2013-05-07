@@ -1,0 +1,9 @@
+grammar de.cau.cs.se.instrumentation.al.ApplicationLang with org.eclipse.xtext.common.Terminals
+
+generate applicationLang "http://www.cau.de/cs/se/instrumentation/al/ApplicationLang"
+
+Model:
+	greetings+=Greeting*;
+	
+Greeting:
+	'Hello' name=ID '!';
