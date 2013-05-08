@@ -16,7 +16,7 @@ package de.cau.cs.se.instrumentation.language.generator
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess
-import de.cau.cs.se.instrumentation.language.instrumentation.Probe
+import de.cau.cs.se.instrumentation.language.instrumentation.Record
 import de.cau.cs.se.instrumentation.language.instrumentation.Model
 import de.cau.cs.se.instrumentation.language.instrumentation.Property
 
@@ -24,40 +24,40 @@ class InstrumentationLanguageGenerator implements IGenerator {
 
     // FIXME be aware this function uses / for path separation
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		for(e: resource.allContents.toIterable.filter(typeof(Probe))) {
+		for(e: resource.allContents.toIterable.filter(typeof(Record))) {
 			fsa.generateFile((e.eContainer as Model).name.replace('.','/') + "/" + e.name.toFirstUpper + "Record.java",e.compile)
 		}
 	}
 	
-	def CharSequence compile(Probe probe) '''
-		package «(probe.eContainer as Model).name»;
+	def CharSequence compile(Record record) '''
+		package «(record.eContainer as Model).name»;
 		
 		import kieker.common.record.AbstractMonitoringRecord;
 		
-		public class «probe.name.toFirstUpper»Record extends AbstractMonitoringRecord 
+		public class «record.name.toFirstUpper»Record extends AbstractMonitoringRecord 
 		  implements IMonitoringRecord.Factory {
 			
 			private static final long serialVersionUID = 1L;
 			private static final Class<?>[] TYPES = {
-			    «FOR property : probe.properties SEPARATOR ', '»«property.propertyType»«ENDFOR»
+			    «FOR property : record.properties SEPARATOR ', '»«property.propertyType»«ENDFOR»
 			};
 			
-			«FOR property : probe.properties»«property.propertyDeclaration»«ENDFOR»
-			«FOR property : probe.properties»«property.propertyGetter»«ENDFOR»
+			«FOR property : record.properties»«property.propertyDeclaration»«ENDFOR»
+			«FOR property : record.properties»«property.propertyGetter»«ENDFOR»
 			
-			public «probe.name.toFirstUpper»Record («FOR property : probe.properties SEPARATOR ','»«property.constructorParameterDeclaration»«ENDFOR») {
-				«FOR property : probe.properties»«property.propertyInitialization»«ENDFOR»
+			public «record.name.toFirstUpper»Record («FOR property : record.properties SEPARATOR ','»«property.constructorParameterDeclaration»«ENDFOR») {
+				«FOR property : record.properties»«property.propertyInitialization»«ENDFOR»
 			}
 			
-			public «probe.name.toFirstUpper»Record (final Object[] values) {
-			    AbstractMonitoringRecord.checkArray(values, «probe.name.toFirstUpper»Record.TYPES);
-			    «FOR property : probe.properties»«property.propertyInitializationFromArray(probe.properties.indexOf(property))»«ENDFOR»
+			public «record.name.toFirstUpper»Record (final Object[] values) {
+			    AbstractMonitoringRecord.checkArray(values, «record.name.toFirstUpper»Record.TYPES);
+			    «FOR property : record.properties»«property.propertyInitializationFromArray(record.properties.indexOf(property))»«ENDFOR»
 			}
 			
 			@Override
 			public Object[] toArray() {
 				return new Object[] {
-				    «FOR property : probe.properties SEPARATOR ', '»this.«property.name»«ENDFOR»
+				    «FOR property : record.properties SEPARATOR ', '»this.«property.name»«ENDFOR»
 				};
 			}
 			
@@ -68,7 +68,7 @@ class InstrumentationLanguageGenerator implements IGenerator {
 			
 			@Override
 			public Class<?>[] getValueTypes() {
-				return «probe.name.toFirstUpper»Record.TYPES.clone();
+				return «record.name.toFirstUpper»Record.TYPES.clone();
 			}
 		}
 	'''

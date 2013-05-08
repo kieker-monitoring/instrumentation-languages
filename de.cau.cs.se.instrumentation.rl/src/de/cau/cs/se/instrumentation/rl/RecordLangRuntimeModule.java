@@ -3,9 +3,30 @@
  */
 package de.cau.cs.se.instrumentation.rl;
 
+import org.eclipse.xtext.naming.IQualifiedNameConverter;
+import org.eclipse.xtext.xtext.XtextQualifiedNameConverter;
+
+import de.cau.cs.se.instrumentation.rl.typing.TypeGlobalScopeProvider;
+
+
+
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 public class RecordLangRuntimeModule extends de.cau.cs.se.instrumentation.rl.AbstractRecordLangRuntimeModule {
-
+	
+	public Class<? extends IQualifiedNameConverter> bindIQualifiedNameConverter() {
+		return XtextQualifiedNameConverter.class;
+	}
+	
+	/**
+     * {@inheritDoc}<br>
+     * This extension registers the custom {@link TypeGlobalScopeProvider} that realizes e.g. the
+     * correct linking of primitive data types. The implementation of that part is broadly transfered
+     * from the JVMTypes binding.
+     */
+    @Override
+    public Class<? extends org.eclipse.xtext.scoping.IGlobalScopeProvider> bindIGlobalScopeProvider() {
+              return TypeGlobalScopeProvider.class;
+    }
 }

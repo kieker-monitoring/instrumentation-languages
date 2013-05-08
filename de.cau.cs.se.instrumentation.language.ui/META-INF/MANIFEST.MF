@@ -23,5 +23,6 @@ Import-Package: org.apache.log4j,
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: de.cau.cs.se.instrumentation.language.ui.contentassist,
  de.cau.cs.se.instrumentation.language.ui.contentassist.antlr,
- de.cau.cs.se.instrumentation.language.ui.internal
+ de.cau.cs.se.instrumentation.language.ui.internal,
+ de.cau.cs.se.instrumentation.language.ui.quickfix
 Bundle-Activator: de.cau.cs.se.instrumentation.language.ui.internal.InstrumentationLanguageActivator
