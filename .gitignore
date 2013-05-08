@@ -15,6 +15,12 @@
 **.out
 **.snm
 **.vrb
-
-
 doc/kieker-workshop/images/kieker-data-bridge.pdf
+**/*.launch
+**/.launch/**
+**/plugin.xml_gen
+/**/src/kieker/.deps/*
+/**/src/kieker/libkieker.la
+/**/src/kieker/.libs/*
+/**/src/.libs/*
+/**/src/.deps/*
