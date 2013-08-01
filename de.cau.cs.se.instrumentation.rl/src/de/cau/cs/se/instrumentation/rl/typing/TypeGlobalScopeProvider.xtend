@@ -12,9 +12,7 @@ import org.eclipse.xtext.scoping.impl.DefaultGlobalScopeProvider;
 
 import com.google.common.base.Predicate;
 import com.google.inject.Inject;
-import org.eclipse.emf.ecore.EcorePackage
-import org.eclipse.emf.ecore.EcoreFactory
-import org.eclipse.emf.ecore.EClassifier
+import org.eclipse.emf.ecore.EcorePackage$Literals
 
 class TypeGlobalScopeProvider extends DefaultGlobalScopeProvider {
 	@Inject
@@ -30,8 +28,8 @@ class TypeGlobalScopeProvider extends DefaultGlobalScopeProvider {
 
     def IScope getParentTypeScope(Resource resource, EReference reference,
             Predicate filter, EClass referenceType) {
-            	val top = EcoreFactory::eINSTANCE.createEClass()
-        if (EcoreUtil2::isAssignableFrom(top, referenceType)) {
+        // check whether the reference type is a type of any kind 
+        if (EcoreUtil2::isAssignableFrom(Literals::ECLASSIFIER, referenceType)) {
         	if (resource != null) {
         		val ResourceSet resourceSet = resource.getResourceSet()
     			if (resourceSet != null) {

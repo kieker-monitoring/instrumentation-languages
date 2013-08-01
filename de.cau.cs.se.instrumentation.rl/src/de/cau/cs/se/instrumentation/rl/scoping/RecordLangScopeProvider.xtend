@@ -42,7 +42,8 @@ class RecordLangScopeProvider extends org.eclipse.xtext.scoping.impl.AbstractDec
 	 * @return The scope for the package attribute.
 	 */
 	def IScope scope_Package_package(Package context, EReference reference) {
-		return new FilteringScope(delegateGetScope(context, reference),new MyPredicate())
+		val IScope result = new FilteringScope(delegateGetScope(context, reference),new MyPredicate())
+		return result
 	}
 		
 	/**
@@ -98,8 +99,8 @@ class RecordLangScopeProvider extends org.eclipse.xtext.scoping.impl.AbstractDec
 // this is most likely not necessary in Xtend and can be merged some how
 class MyPredicate implements Predicate<IEObjectDescription> {
 
-		override boolean apply(IEObjectDescription input) {
-			val String isNSURI = input.getUserData("nsURI")
-			return "true".equals(isNSURI)
-		}
+	override boolean apply(IEObjectDescription input) {
+		val String isNSURI = input.getUserData("nsURI")
+		return "true".equals(isNSURI)
 	}
+}

@@ -23,6 +23,6 @@ package de.cau.cs.se.instrumentation.rl.typing;
 public interface EcoreURIHelperConstants {
 
         String PRIMITIVES = "/Primitives"; //$NON-NLS-1$
-        String PROTOCOL = "ecore"; //$NON-NLS-1$
+        String PROTOCOL = "internal"; //$NON-NLS-1$
         
 }

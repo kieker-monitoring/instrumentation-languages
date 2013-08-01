@@ -18,6 +18,17 @@ class RecordLangLabelProvider extends org.eclipse.xtext.ui.label.DefaultEObjectL
 	}
 
 	// Labels and icons can be computed like this:
+	def text(de.cau.cs.se.instrumentation.rl.recordLang.Property e) {
+		e.type.class_.name + ' ' + e.name
+	}
+	
+	def text(de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral e) {
+		'\'' + e.value + '\''
+	}
+	
+	def text(de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral e) {
+		e.value
+	}
 	
 //	def text(Greeting ele) {
 //		'A greeting to ' + ele.name

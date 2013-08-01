@@ -14,7 +14,7 @@
 package de.cau.cs.se.instrumentation.rl.typing;
 
 import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.EcoreFactory;
 
 /**
  * The primitive types of the language for app development.
@@ -23,17 +23,18 @@ import org.eclipse.emf.ecore.EcorePackage;
  * 
  */
 public enum PrimitiveTypes {
-	BIG_DECIMAL(EcorePackage.Literals.EBIG_DECIMAL),
-	EBIG_INTEGER(EcorePackage.Literals.EBIG_INTEGER),
-	EBOOLEAN(EcorePackage.Literals.EBOOLEAN),
-	EINT(EcorePackage.Literals.EINT),
-	EFLOAT(EcorePackage.Literals.EFLOAT),
-	ESTRING(EcorePackage.Literals.ESTRING);
+	ELONG("long"),
+	EBOOLEAN("boolean"),
+	EINT("int"),
+	EFLOAT("float"),
+	EDOUBLE("double"),
+	ESTRING("string");
 
 	private EDataType etype;
 	
-	PrimitiveTypes(EDataType etype) {
-		this.etype = etype;
+	PrimitiveTypes(String name) {
+		this.etype = EcoreFactory.eINSTANCE.createEDataType();
+		this.etype.setName(name);	
 	}
 	
 	public EDataType getEType() {

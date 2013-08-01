@@ -15,7 +15,7 @@ Import:
 	'import' importedNamespace = QualifiedNameWithWildcard
 ;
 
-Package :
+Package:
 	'use' name=ID package=[ecore::EPackage|STRING] 
 ;
 
@@ -27,8 +27,8 @@ QualifiedNameWithWildcard:
 ;
 
 RecordType:
-	'record' name=ID '{'
-		(properties+=Property & defaults+=Default)*
+	'record' name=ID ('extends' parent=[RecordType|QualifiedName])? '{'
+		(properties+=Property | defaults+=Default)*
 	'}'
 ;
 
@@ -37,11 +37,18 @@ Default:
 ;
 
 Property:
-	type=Classifier name=ID ('{' (properties+=ReferenceProperty)* '}' | '=' value=Literal)
+	type=Classifier name=ID 
+		('{' (properties+=ReferenceProperty)* '}' | 
+		'=' value=Literal |
+		'=' const=Constant)
+;
+
+Constant:
+	name=ID value=Literal
 ;
 
 Classifier:
-	package=[Package] '.' class=[ecore::EClassifier|ID]
+	(package=[Package] '.')? class=[ecore::EClassifier|ID]
 ;
 
 ReferenceProperty:
@@ -49,7 +56,7 @@ ReferenceProperty:
 ;
 
 Literal:
-	StringLiteral | IntLiteral | FloatLiteral | BooleanLiteral
+	StringLiteral | IntLiteral | FloatLiteral | BooleanLiteral | DefaultLiteral
 ;
 
 StringLiteral:
@@ -68,7 +75,11 @@ BooleanLiteral:
 	{BooleanLiteral} ((value?='true')|'false')
 ;
 
-// terminals
-terminal INTEGER: ('+'|'-')? INT;
+DefaultLiteral:
+	value=[Default|ID]
+;
 
-terminal FLOAT: ('+'|'-')? (INT '.' INT? | '.' INT);
+// terminals
+terminal INTEGER returns ecore::EInt: ('+'|'-')? INT;
+
+terminal FLOAT returns ecore::EFloat: ('+'|'-')? (INT '.' INT? | '.' INT);
