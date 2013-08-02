@@ -8,7 +8,7 @@ Model:
 	'package' name = QualifiedName
 	(packages += Package)*
 	(imports += Import)*
-	(records+=RecordType)*
+	(records += RecordType)*
 ;
 
 Import:
@@ -27,7 +27,7 @@ QualifiedNameWithWildcard:
 ;
 
 RecordType:
-	'record' name=ID ('extends' parent=[RecordType|QualifiedName])? '{'
+	'struct' name=ID ('extends' parent=[RecordType|QualifiedName])? '{'
 		(properties+=Property | defaults+=Default)*
 	'}'
 ;
