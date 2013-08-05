@@ -22,7 +22,7 @@ import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
 import com.google.inject.Inject
 
 /**
- * Generates one Java class file for every 
+ * Generates one single files per record for java, c, and perl. 
  */
 class RecordLangGenerator implements IGenerator {
 	@Inject RecordLangJavaGenerator java
