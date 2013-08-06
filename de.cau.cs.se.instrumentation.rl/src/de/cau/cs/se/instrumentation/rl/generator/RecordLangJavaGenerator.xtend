@@ -12,11 +12,21 @@ import de.cau.cs.se.instrumentation.rl.recordLang.FloatLiteral
 import de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral
 import de.cau.cs.se.instrumentation.rl.recordLang.DefaultLiteral
 import org.eclipse.emf.common.util.EList
+import java.io.File
 
 class RecordLangJavaGenerator extends RecordLangGenericGenerator {
-	def createContent(RecordType type) {
-		val author = 'unknown'
-		val version = '1.8'
+	
+	/**
+	 * Primary code generation template.
+	 * 
+	 * @params type
+	 * 		one record type to be used to create monitoring record
+	 * @params author
+	 * 		generic author name for the record
+	 * @params version
+	 * 		generic kieker version for the record
+	 */
+	override createContent(RecordType type, String author, String version) {
 		val serialUID = '123456789L'
 		val allProperties = type.compileProperties
 		'''
@@ -263,13 +273,18 @@ class RecordLangJavaGenerator extends RecordLangGenericGenerator {
 	 * 
 	 * @returns a java type name
 	 */
-	def createTypeName(Classifier classifier) {
+	override createTypeName(Classifier classifier) {
 		switch (classifier.class_.name) {
 			case 'string' : 'String'
 			default : classifier.class_.name
-		}
-		
+		}	
 	}
+	
+	/**
+	 * Compute the directory name for a record type.
+	 */
+	override directoryName(RecordType type) '''java«File::separator»«(type.eContainer as Model).name.replace('.',File::separator)»'''
+	
 	
 	
 	/**
@@ -284,4 +299,6 @@ class RecordLangJavaGenerator extends RecordLangGenericGenerator {
 	dispatch def CharSequence createValue(Literal literal) {
 		'ERROR ' + literal.class.name
 	}
+	
+	override getExtension() '''java'''
 }

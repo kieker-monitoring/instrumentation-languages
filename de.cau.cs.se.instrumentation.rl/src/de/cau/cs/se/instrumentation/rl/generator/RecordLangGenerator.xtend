@@ -19,22 +19,31 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
-import com.google.inject.Inject
+import java.io.File
 
 /**
  * Generates one single files per record for java, c, and perl. 
  */
 class RecordLangGenerator implements IGenerator {
-	@Inject RecordLangJavaGenerator java
-	@Inject RecordLangCGenerator c
-	@Inject RecordLangCHeaderGenerator h
-	@Inject RecordLangPerlGenerator perl
-	
+		
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		resource.allContents.filter(typeof(RecordType)).forEach[type | fsa.generateFile(type.name+".java", java.createContent(type))]
-		resource.allContents.filter(typeof(RecordType)).forEach[type | fsa.generateFile(type.name+".c", c.createContent(type))]
-		resource.allContents.filter(typeof(RecordType)).forEach[type | fsa.generateFile(type.name+".h", h.createContent(type))]
-		resource.allContents.filter(typeof(RecordType)).forEach[type | fsa.generateFile(type.name+".pl", perl.createContent(type))]
+		val author = "Generic Kieker"
+		val version = "1.8"
+		
+		// list all generators to support
+		val Class<?>[] generators = #[
+			typeof(RecordLangCGenerator),
+			typeof(RecordLangCHeaderGenerator),
+			typeof(RecordLangJavaGenerator),
+			typeof(RecordLangPerlGenerator)
+		]
+						
+		for (Class<?> generator : generators) {
+			val cg = generator.getConstructor().newInstance() as RecordLangGenericGenerator
+			resource.allContents.filter(typeof(RecordType)).forEach[type | fsa.generateFile(cg.directoryName(type) + File::separator + type.name+'.'+cg.extension, cg.createContent(type,author,version))]
+		} 
+			
+		
 	}
 	
 }

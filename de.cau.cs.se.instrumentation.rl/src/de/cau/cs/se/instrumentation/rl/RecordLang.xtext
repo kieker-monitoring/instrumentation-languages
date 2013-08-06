@@ -52,7 +52,7 @@ Classifier:
 ;
 
 ReferenceProperty:
-	ref=[ecore::EStructuralFeature|ID] ('{' (properties+=ReferenceProperty)* '}' | '=' value=Literal) 
+	ref=[ecore::EStructuralFeature|ID] '{' (properties+=ReferenceProperty)* '}'
 ;
 
 Literal:

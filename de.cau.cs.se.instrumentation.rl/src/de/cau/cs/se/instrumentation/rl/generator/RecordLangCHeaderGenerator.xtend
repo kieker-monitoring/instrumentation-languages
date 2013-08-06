@@ -2,12 +2,20 @@ package de.cau.cs.se.instrumentation.rl.generator
 
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
 import de.cau.cs.se.instrumentation.rl.recordLang.Property
-import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
-import de.cau.cs.se.instrumentation.rl.recordLang.Model
 
 class RecordLangCHeaderGenerator extends RecordLangCGenerator {
 	
-	override def createContent(RecordType type) '''
+	/**
+	 * Primary code generation template.
+	 * 
+	 * @params type
+	 * 		one record type to be used to create monitoring record
+	 * @params author
+	 * 		generic author name for the record
+	 * @params version
+	 * 		generic kieker version for the record
+	 */
+	override createContent(RecordType type, String author, String version) '''
 	/***************************************************************************
 	 * Copyright 2013 Kieker Project (http://kieker-monitoring.net)
 	 *
@@ -26,6 +34,10 @@ class RecordLangCHeaderGenerator extends RecordLangCGenerator {
 	#include <stdlib.h>
 	#include <kieker.h>
 	
+	/*
+	 * Author: «author»
+	 * Version: «version»
+	 */
 	«type.createStructure»
 	
 	«type.createSerializerDeclaration»
@@ -58,4 +70,5 @@ class RecordLangCHeaderGenerator extends RecordLangCGenerator {
 		int «type.packageName»_«type.name»_serialize(char *buffer, const int id, const int offset, const «type.packageName»_«type.name» value);
 	'''
 	
+	override getExtension() '''h'''
 }

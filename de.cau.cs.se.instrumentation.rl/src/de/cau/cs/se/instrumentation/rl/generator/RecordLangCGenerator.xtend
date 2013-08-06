@@ -4,10 +4,21 @@ import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
 import de.cau.cs.se.instrumentation.rl.recordLang.Property
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
 import de.cau.cs.se.instrumentation.rl.recordLang.Model
+import java.io.File
 
 class RecordLangCGenerator extends RecordLangGenericGenerator {
 	
-	def createContent(RecordType type) '''
+	/**
+	 * Primary code generation template.
+	 * 
+	 * @params type
+	 * 		one record type to be used to create monitoring record
+	 * @params author
+	 * 		generic author name for the record
+	 * @params version
+	 * 		generic kieker version for the record
+	 */
+	override createContent(RecordType type, String author, String version) '''
 	/***************************************************************************
 	 * Copyright 2013 Kieker Project (http://kieker-monitoring.net)
 	 *
@@ -25,12 +36,24 @@ class RecordLangCGenerator extends RecordLangGenericGenerator {
 	 ***************************************************************************/
 	#include <stdlib.h>
 	#include <kieker.h>
-	#include "«type.packageName»_«type.name»"	
+	#include "«type.directoryName»/«type.packageName»_«type.name».h"
 
+	/**
+	 * Author: «author»
+	 * Version: «version»
+	 */
 	«type.createSerializer»
 	'''
 	
-	def getPackageName(RecordType type) '''«(type.eContainer as Model).name.replace('.','_')»'''
+	/**
+	 * Compute the directory name for a record type.
+	 */
+	override directoryName(RecordType type) '''c«File::separator»«(type.eContainer as Model).name.replace('.',File::separator)»'''
+	
+	/**
+	 * Compute the package name used as prefix for all functions.
+	 */
+	def packageName(RecordType type) '''«(type.eContainer as Model).name.replace('.','_')»'''
 					
 	/**
 	 * Determine the right C string for a given system type.
@@ -40,7 +63,7 @@ class RecordLangCGenerator extends RecordLangGenericGenerator {
 	 * 
 	 * @returns a C type name
 	 */
-	def createTypeName(Classifier classifier) {
+	override createTypeName(Classifier classifier) {
 		switch (classifier.class_.name) {
 			case 'string' : 'const char*'
 			case 'int' : 'long'
@@ -74,10 +97,16 @@ class RecordLangCGenerator extends RecordLangGenericGenerator {
 		}
 	'''
 	
+	/**
+	 * 
+	 */
 	def createValueSerializer(Property property) '''
 		length += serialize_«property.type.serializerSuffix»(buffer,offset,«property.name»);
 	'''
 	
+	/**
+	 * 
+	 */
 	def serializerSuffix(Classifier classifier) {
 		switch (classifier.class_.name) {
 			case 'string' : 'string'
@@ -89,5 +118,7 @@ class RecordLangCGenerator extends RecordLangGenericGenerator {
 			default : classifier.class_.name
 		}
 	}
+	
+	override getExtension() '''c'''
 	
 }
