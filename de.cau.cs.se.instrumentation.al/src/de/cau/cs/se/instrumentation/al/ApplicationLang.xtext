@@ -2,8 +2,28 @@ grammar de.cau.cs.se.instrumentation.al.ApplicationLang with org.eclipse.xtext.c
 
 generate applicationLang "http://www.cau.de/cs/se/instrumentation/al/ApplicationLang"
 
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
 Model:
-	greetings+=Greeting*;
-	
-Greeting:
-	'Hello' name=ID '!';
+	'package' name = QualifiedName
+	(packages += Package)*
+	(imports += Import)*
+;
+
+Import:
+	'import' importedNamespace = QualifiedNameWithWildcard
+;
+
+Package:
+	'use' name=ID package=[ecore::EPackage|STRING] 
+;
+
+QualifiedName:
+  ID (=>'.' ID)*;
+
+QualifiedNameWithWildcard:
+	QualifiedName ('.' '*')?
+;
+
+// define subgraph-pattern to locate structures in models
+// define selector for reference destination

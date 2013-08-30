@@ -33,7 +33,7 @@ RecordType:
 ;
 
 Default:
-	'default' type=Classifier name=ID '=' value=Literal
+	'const' type=Classifier name=ID '=' value=Literal
 ;
 
 Property:
@@ -52,7 +52,12 @@ Classifier:
 ;
 
 ReferenceProperty:
-	ref=[ecore::EStructuralFeature|ID] '{' (properties+=ReferenceProperty)* '}'
+	(modifier=Modifier)? ref=[ecore::EStructuralFeature|ID] '{' (properties+=ReferenceProperty)* '}'
+;
+
+enum Modifier:
+	DEFAULT = 'default' |
+	OPTIONAL = 'optional'
 ;
 
 Literal:
