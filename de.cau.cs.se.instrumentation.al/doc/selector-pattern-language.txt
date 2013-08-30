@@ -1,0 +1,12 @@
+Two possible approaches:
+a) Graph traversal
+   - Gremlin https://github.com/tinkerpop/gremlin/wiki
+   - XPath http://www.w3.org/TR/2010/REC-xpath20-20101214/
+b) Pattern matching 
+   - (Gremlin) http://markorodriguez.com/2011/06/15/graph-pattern-matching-with-gremlin-1-1/
+   - (SPARQL) http://www.w3.org/2001/sw/DataAccess/rq23/
+   - http://lambda-the-ultimate.org/node/1167
+   - http://briangallagher.net/publications.html
+     Gallagher, B., "Matching Structure and Semantics: A Survey on Graph-Based Pattern Matching," Papers from the AAAI Fall Symposium on Capturing and Using Patterns for Evidence Detection, 2006
+
+     
