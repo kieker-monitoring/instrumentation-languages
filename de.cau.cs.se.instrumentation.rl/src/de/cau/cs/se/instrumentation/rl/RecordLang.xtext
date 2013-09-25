@@ -48,16 +48,16 @@ Constant:
 ;
 
 Classifier:
-	(package=[Package] '.')? class=[ecore::EClassifier|ID]
+	(package=[Package] '.')? class=[ecore::EClassifier|ID] ( '[' (sizes+=ArraySize (',' sizes+=ArraySize)*)? ']' )?
+;
+
+ArraySize:
+	size=INTEGER |
+	unbounded?='*'
 ;
 
 ReferenceProperty:
-	(modifier=Modifier)? ref=[ecore::EStructuralFeature|ID] '{' (properties+=ReferenceProperty)* '}'
-;
-
-enum Modifier:
-	DEFAULT = 'default' |
-	OPTIONAL = 'optional'
+	ref=[ecore::EStructuralFeature|ID] '{' (properties+=ReferenceProperty)* '}'
 ;
 
 Literal:
