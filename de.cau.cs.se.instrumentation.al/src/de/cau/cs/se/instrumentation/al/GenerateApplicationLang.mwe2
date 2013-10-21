@@ -17,6 +17,8 @@ Workflow {
     	// The following two lines can be removed, if Xbase is not used.
     	registerGeneratedEPackage = "org.eclipse.xtext.xbase.XbasePackage"
     	registerGenModelFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel"
+    	registerGenModelFile = "platform:/resource/de.cau.cs.kieler.core.annotations/model/annotations.genmodel"
+        registerGeneratedEPackage = "de.cau.cs.kieler.core.annotations.AnnotationsPackage"
     }
     
     component = DirectoryCleaner {
@@ -60,9 +62,9 @@ Workflow {
     
     		// The antlr parser generator fragment.
     		fragment = parser.antlr.XtextAntlrGeneratorFragment auto-inject {
-    		//  options = {
-    		//      backtrack = true
-    		//  }
+    		  options = {
+    		      backtrack = true
+    		  }
     		}
     
     		// Xtend-based API for validation
@@ -100,7 +102,11 @@ Workflow {
     		fragment = contentAssist.ContentAssistFragment auto-inject {}
     
     		// generates a more lightweight Antlr parser and lexer tailored for content assist
-    		fragment = parser.antlr.XtextAntlrUiGeneratorFragment auto-inject {}
+    		fragment = parser.antlr.XtextAntlrUiGeneratorFragment auto-inject {
+    			options = {
+    		      backtrack = true
+    		  }
+    		}
     
     		// generates junit test support classes into Generator#pathTestProject
     		fragment = junit.Junit4Fragment auto-inject {}

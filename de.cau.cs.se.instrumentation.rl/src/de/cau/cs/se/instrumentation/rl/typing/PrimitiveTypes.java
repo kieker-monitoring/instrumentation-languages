@@ -31,13 +31,13 @@ public enum PrimitiveTypes {
 	ESTRING("string");
 
 	private EDataType etype;
-	
-	PrimitiveTypes(String name) {
+
+	PrimitiveTypes(final String name) {
 		this.etype = EcoreFactory.eINSTANCE.createEDataType();
-		this.etype.setName(name);	
+		this.etype.setName(name);
 	}
-	
+
 	public EDataType getEType() {
-		return etype;
+		return this.etype;
 	}
 }

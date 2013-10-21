@@ -1,13 +1,15 @@
-grammar de.cau.cs.se.instrumentation.al.ApplicationLang with org.eclipse.xtext.common.Terminals
+grammar de.cau.cs.se.instrumentation.al.ApplicationLang with de.cau.cs.kieler.core.annotations.text.Annotations 
 
 generate applicationLang "http://www.cau.de/cs/se/instrumentation/al/ApplicationLang"
 
+import "http://kieler.cs.cau.de/annotations" as annotations
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 Model:
 	'package' name = QualifiedName
 	(packages += Package)*
 	(imports += Import)*
+	(aspects += Aspect)*
 ;
 
 Import:
@@ -27,3 +29,65 @@ QualifiedNameWithWildcard:
 
 // define subgraph-pattern to locate structures in models
 // define selector for reference destination
+
+Aspect: annotation=Annotation 'probe' query=Query ;
+
+Query:
+	node=Node ('.' specialization=Query)?
+;
+
+Node:
+	(SubPathNode | WildcardNode | NamedNode) (parameter=Parameter)?  
+;
+
+Parameter: // extend ParamQuery to boolean expression with | & !
+	'[' parameters+=ParamQuery+ ']'
+;
+
+ParamQuery:
+	'@' property=ID operator=Operator value=Value
+;
+
+Value:
+	StringValue | IntValue | FloatValue | ReferenceValue
+;
+
+FloatValue:
+	value=FLOAT
+;
+
+IntValue:
+	value=INT
+;
+
+StringValue:
+	value=STRING
+;
+
+ReferenceValue:
+	query=Query parameter=ParamQuery
+;
+
+enum Operator:
+	EQ = '=' |
+	LIKE = '~' |
+	NE = '!=' |
+	GR = '>' |
+	LW = '<' |
+	GE = '>=' |
+	LE = '<='
+;
+
+NamedNode:
+	ref=ID 
+;
+
+WildcardNode: {WoldcardNode}
+	'*'
+;
+
+SubPathNode: {SubPathNode}
+	'**'
+;
+
+
