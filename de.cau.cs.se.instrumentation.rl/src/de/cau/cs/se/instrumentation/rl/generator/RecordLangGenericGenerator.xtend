@@ -29,7 +29,7 @@ abstract class RecordLangGenericGenerator {
 	def abstract CharSequence createTypeName(Classifier classifier);
 	
 	/**
-	 * Compute the directory name for a given type , based on the package it belongs to.
+	 * Compute the directory name for a given type based on the package it belongs to.
 	 * 
 	 * @param type
 	 * 		the type model
@@ -51,9 +51,11 @@ abstract class RecordLangGenericGenerator {
 	 * 		a complete list of all properties in a record
 	 */
 	def EList<Property> compileProperties(RecordType type) {
-		val result = new org.eclipse.emf.common.util.BasicEList<Property>();
+		var EList<Property> result
 		if (type.parent!=null)
-			result.addAll(type.parent.compileProperties)
+			result = type.parent.compileProperties
+		else
+			result = new org.eclipse.emf.common.util.BasicEList<Property>()
 		result.addAll(type.properties)
 		return result
 	}

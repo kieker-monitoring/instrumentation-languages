@@ -19,6 +19,8 @@ Workflow {
     	registerGenModelFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel"
     	registerGenModelFile = "platform:/resource/de.cau.cs.kieler.core.annotations/model/annotations.genmodel"
         registerGeneratedEPackage = "de.cau.cs.kieler.core.annotations.AnnotationsPackage"
+    	registerGeneratedEPackage = "de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage"
+    	registerGenModelFile = "platform:/resource/de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/RecordLang.genmodel"
     }
     
     component = DirectoryCleaner {

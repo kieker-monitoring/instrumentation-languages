@@ -20,6 +20,7 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  de.cau.cs.kieler.core.annotations;bundle-version="0.3.1",
  de.cau.cs.kieler.core.annotations.text;bundle-version="0.4.1",
  de.cau.cs.kieler.core.annotations.text.ui;bundle-version="0.4.1"
+ de.cau.cs.se.instrumentation.rl;bundle-version="1.0.0"
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: J2SE-1.5

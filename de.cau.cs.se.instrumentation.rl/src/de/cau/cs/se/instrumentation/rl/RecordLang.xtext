@@ -27,24 +27,19 @@ QualifiedNameWithWildcard:
 ;
 
 RecordType:
-	'struct' name=ID ('extends' parent=[RecordType|QualifiedName])? '{'
-		(properties+=Property | defaults+=Default)*
+	'struct' name=ID (':' parent=[RecordType|QualifiedName])? '{'
+		(properties+=Property | constants+=Constant)*
 	'}'
 ;
 
-Default:
+Constant:
 	'const' type=Classifier name=ID '=' value=Literal
 ;
 
 Property:
 	type=Classifier name=ID 
 		('{' (properties+=ReferenceProperty)* '}' | 
-		'=' value=Literal |
-		'=' const=Constant)
-;
-
-Constant:
-	name=ID value=Literal
+		'=' value=Literal)
 ;
 
 Classifier:
@@ -61,7 +56,7 @@ ReferenceProperty:
 ;
 
 Literal:
-	StringLiteral | IntLiteral | FloatLiteral | BooleanLiteral | DefaultLiteral
+	StringLiteral | IntLiteral | FloatLiteral | BooleanLiteral | ConstantLiteral
 ;
 
 StringLiteral:
@@ -80,8 +75,8 @@ BooleanLiteral:
 	{BooleanLiteral} ((value?='true')|'false')
 ;
 
-DefaultLiteral:
-	value=[Default|ID]
+ConstantLiteral:
+	value=[Constant|ID]
 ;
 
 // terminals

@@ -1,7 +1,7 @@
 package de.cau.cs.se.instrumentation.rl.generator
 
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
-import de.cau.cs.se.instrumentation.rl.recordLang.Default
+import de.cau.cs.se.instrumentation.rl.recordLang.Constant
 import de.cau.cs.se.instrumentation.rl.recordLang.Property
 import de.cau.cs.se.instrumentation.rl.recordLang.Literal
 import de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral
@@ -10,7 +10,7 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
 import de.cau.cs.se.instrumentation.rl.recordLang.Model
 import de.cau.cs.se.instrumentation.rl.recordLang.FloatLiteral
 import de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral
-import de.cau.cs.se.instrumentation.rl.recordLang.DefaultLiteral
+import de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral
 import org.eclipse.emf.common.util.EList
 import java.io.File
 
@@ -59,8 +59,7 @@ class RecordLangJavaGenerator extends RecordLangGenericGenerator {
 		 */
 		public final class «type.name» extends «if (type.parent!=null) type.parent.name else 'AbstractMonitoringRecord'» implements IMonitoringRecord.Factory, IFlowRecord {
 		
-			«type.defaults.map[const | createDefaultConstant(const)].join»
-			«type.properties.filter[property | property.const != null].map[property |createPropertyConstant(property)].join»
+			«type.constants.map[const | createDefaultConstant(const)].join»
 					
 			private static final long serialVersionUID = «serialUID»;
 			private static final Class<?>[] TYPES = {
@@ -242,16 +241,12 @@ class RecordLangJavaGenerator extends RecordLangGenericGenerator {
 	''' 
 	
 	/**
-	 * Create a property constant based on the language property constant expression.
-	 * 
-	 * @param property
-	 * 		a property of the record type
-	 * 
-	 * @returns a constant declaration
+	 * create a constant name from a standard name camel case name.
 	 */
-	def createPropertyConstant(de.cau.cs.se.instrumentation.rl.recordLang.Property constant) '''
-		public static final «constant.type.createTypeName» «constant.const.name» = «constant.const.value.createValue»;
-	'''
+	def createConstName(String name) {
+		// CaMeL -> CA_ME_L
+		return name.replaceAll("","")
+	}
 	
 	/**
 	 * Create a property constant based on the language default expression.
@@ -261,7 +256,7 @@ class RecordLangJavaGenerator extends RecordLangGenericGenerator {
 	 * 
 	 * @returns a constant declaration
 	 */
-	def createDefaultConstant(Default constant) '''
+	def createDefaultConstant(Constant constant) '''
 		public static final «constant.type.createTypeName» «constant.name» = «constant.value.createValue»;
 	'''
 	
@@ -294,7 +289,7 @@ class RecordLangJavaGenerator extends RecordLangGenericGenerator {
 	dispatch def CharSequence createValue(IntLiteral literal) '''«literal.value»'''
 	dispatch def CharSequence createValue(FloatLiteral literal) '''«literal.value»'''
 	dispatch def CharSequence createValue(BooleanLiteral literal) '''«if (literal.value) 'true' else 'false'»'''
-	dispatch def CharSequence createValue(DefaultLiteral literal) '''«literal.value.value.createValue»'''
+	dispatch def CharSequence createValue(ConstantLiteral literal) '''«literal.value.value.createValue»'''
 	
 	dispatch def CharSequence createValue(Literal literal) {
 		'ERROR ' + literal.class.name
