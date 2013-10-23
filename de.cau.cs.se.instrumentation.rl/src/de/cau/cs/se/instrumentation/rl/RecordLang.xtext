@@ -43,12 +43,11 @@ Property:
 ;
 
 Classifier:
-	(package=[Package] '.')? class=[ecore::EClassifier|ID] ( '[' (sizes+=ArraySize (',' sizes+=ArraySize)*)? ']' )?
+	(package=[Package] '.')? class=[ecore::EClassifier|ID] (sizes+=ArraySize)*
 ;
 
-ArraySize:
-	size=INTEGER |
-	unbounded?='*'
+ArraySize: {ArraySize}
+	'[' (size=INT)? ']' 
 ;
 
 ReferenceProperty:
@@ -64,7 +63,7 @@ StringLiteral:
 ;
 
 IntLiteral:
-	value=INTEGER
+	value=INT
 ;
 
 FloatLiteral:
@@ -72,7 +71,7 @@ FloatLiteral:
 ;
 
 BooleanLiteral: 
-	{BooleanLiteral} ((value?='true')|'false')
+	value=BOOLEAN
 ;
 
 ConstantLiteral:
@@ -80,6 +79,18 @@ ConstantLiteral:
 ;
 
 // terminals
-terminal INTEGER returns ecore::EInt: ('+'|'-')? INT;
+terminal fragment NUMBER :
+    '0'..'9';
+   
+// redefine INT terminal to allow negative numbers
+terminal INT returns ecore::EInt:
+    '-'? NUMBER+;
 
-terminal FLOAT returns ecore::EFloat: ('+'|'-')? (INT '.' INT? | '.' INT);
+// make sure the Float rule does not shadow the INT rule
+terminal FLOAT returns ecore::EFloatObject :
+    '-'? NUMBER+ ('.' NUMBER*) (("e"|"E") ("+"|"-")? NUMBER+)? 'f'? |
+    '-'? NUMBER+ 'f';
+    
+// introduce boolean values
+terminal BOOLEAN returns ecore::EBooleanObject :
+    'true' | 'false';
