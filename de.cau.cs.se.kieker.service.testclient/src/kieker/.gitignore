@@ -1,8 +1,0 @@
-/binary_serializer.o
-/operation_execution_record.o
-/socket.o
-/binary_serializer.lo
-/operation_execution_record.lo
-/socket.lo
-/Makefile
-/Makefile.in
