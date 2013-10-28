@@ -38,9 +38,10 @@ public class TypeProvider implements Resource.Factory, ITypeProvider {
 	/**
 	 * @param resourceSet
 	 */
-	public TypeProvider(ResourceSet resourceSet) {
+	public TypeProvider(final ResourceSet resourceSet) {
+		System.out.println(TypeProvider.class.getName() + " (" + resourceSet + ")");
 		this.resourceSet = resourceSet;
-		typeUriHelper = new EcoreTypeURIHelper();
+		this.typeUriHelper = new EcoreTypeURIHelper();
 	}
 
 	/**
@@ -48,20 +49,23 @@ public class TypeProvider implements Resource.Factory, ITypeProvider {
 	 * 
 	 * @return Returns an iterable with all primitive types.
 	 */
+	@Override
 	public Iterable<EClassifier> getAllTypes() {
+		System.out.println(TypeProvider.class.getName() + ".geTallTypes (" + ")");
 		/*
 		 * Get the (already created) types from the helper resource and cast the list to a list of
 		 * types.
 		 */
 		return IterableExtensions.map(
-		        resourceSet.getResource(
-		                URI.createURI(EcoreURIHelperConstants.PROTOCOL + ":"
-		                        + EcoreURIHelperConstants.PRIMITIVES), true).getContents(),
-		        new Function1<EObject, EClassifier>() {
-			        public EClassifier apply(EObject p) {
-				        return (EClassifier) p;
-			        }
-		        });
+				this.resourceSet.getResource(
+						URI.createURI(EcoreURIHelperConstants.PROTOCOL + ":"
+								+ EcoreURIHelperConstants.PRIMITIVES), true).getContents(),
+				new Function1<EObject, EClassifier>() {
+					@Override
+					public EClassifier apply(final EObject p) {
+						return (EClassifier) p;
+					}
+				});
 	}
 
 	/**
@@ -71,11 +75,14 @@ public class TypeProvider implements Resource.Factory, ITypeProvider {
 	 *            The name of the type.
 	 * @return Returns the primitive type for a given type name, or null.
 	 */
-	public EClassifier findTypeByName(String name) {
-		if (Strings.isEmpty(name))
+	@Override
+	public EClassifier findTypeByName(final String name) {
+		System.out.println(TypeProvider.class.getName() + ".findTypeName (" + name + ")");
+		if (Strings.isEmpty(name)) {
 			throw new IllegalArgumentException("null");
-		URI resourceURI = typeUriHelper.createResourceURI();
-		TypeResource resource = (TypeResource) resourceSet.getResource(resourceURI, true);
+		}
+		final URI resourceURI = this.typeUriHelper.createResourceURI();
+		final TypeResource resource = (TypeResource) this.resourceSet.getResource(resourceURI, true);
 		return (EClassifier) resource.getEObject(name);
 	}
 
@@ -85,15 +92,19 @@ public class TypeProvider implements Resource.Factory, ITypeProvider {
 	 * @param uri
 	 *            The URI for the resource
 	 */
-	public TypeResource createResource(URI uri) {
-		return new TypeResource(uri, createPrimitiveMirror(uri));
+	@Override
+	public TypeResource createResource(final URI uri) {
+		System.out.println(TypeProvider.class.getName() + ".createResource (" + uri + ")");
+		return new TypeResource(uri, this.createPrimitiveMirror(uri));
 	}
 
 	/**
 	 * @returns Returns the URI helper for the type system.
 	 */
+	@Override
 	public EcoreTypeURIHelper getTypeUriHelper() {
-		return typeUriHelper;
+		System.out.println(TypeProvider.class.getName() + ".getTypeUriHelper ()");
+		return this.typeUriHelper;
 	}
 
 	/**
@@ -105,16 +116,19 @@ public class TypeProvider implements Resource.Factory, ITypeProvider {
 	 *            The URI the mirror is created for.
 	 * @return Returns the mirror for primitive types and null for object-types.
 	 */
-	private PrimitiveMirror createPrimitiveMirror(URI resourceURI) {
-		if (resourceURI.hasFragment())
+	private PrimitiveMirror createPrimitiveMirror(final URI resourceURI) {
+		System.out.println(TypeProvider.class.getName() + ".createPrimitiveMirror (" + resourceURI + ")");
+		if (resourceURI.hasFragment()) {
 			throw new IllegalArgumentException("Cannot create mirror for uri '"
-			        + resourceURI.toString() + "'");
-		String name = resourceURI.path();
-		if (EcoreURIHelperConstants.PRIMITIVES.equals(name))
+					+ resourceURI.toString() + "'");
+		}
+		final String name = resourceURI.path();
+		if (EcoreURIHelperConstants.PRIMITIVES.equals(name)) {
 			return new PrimitiveMirror();
-		else
+		} else {
 			throw new IllegalArgumentException("Invalid resource uri '" + resourceURI.toString()
-			        + "'");
+					+ "'");
+		}
 	}
 
 }

@@ -4,7 +4,6 @@
  */
 package de.cau.cs.se.instrumentation.rl.typing;
 
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
@@ -23,57 +22,62 @@ import org.eclipse.xtext.resource.IFragmentProvider;
 public class TypeResource extends ResourceImpl {
 
 	private PrimitiveMirror mirror;
-	
-	private IFragmentProvider.Fallback fragmentProviderFallback = new IFragmentProvider.Fallback() {
-		
-		public String getFragment(EObject obj) {
+
+	private final IFragmentProvider.Fallback fragmentProviderFallback = new IFragmentProvider.Fallback() {
+
+		@Override
+		public String getFragment(final EObject obj) {
 			return TypeResource.super.getURIFragment(obj);
 		}
-		
-		public EObject getEObject(String fragment) {
+
+		@Override
+		public EObject getEObject(final String fragment) {
 			return TypeResource.super.getEObject(fragment);
 		}
 	};
-	
+
 	public TypeResource() {
 		super();
+		System.out.println(TypeResource.class.getName() + ":" + this + "()");
 	}
 
-	public TypeResource(URI uri, PrimitiveMirror mirror) {
+	public TypeResource(final URI uri, final PrimitiveMirror mirror) {
 		super(uri);
+		System.out.println(TypeResource.class.getName() + ":" + this + "(" + uri + "," + mirror + ")");
 		this.mirror = mirror;
 	}
 
 	@Override
-	public EObject getEObject(String uriFragment) {
-		if (mirror != null) {
-			EObject result = mirror.getEObject(this, uriFragment, fragmentProviderFallback);
+	public EObject getEObject(final String uriFragment) {
+		if (this.mirror != null) {
+			final EObject result = this.mirror.getEObject(this, uriFragment, this.fragmentProviderFallback);
 			return result;
 		}
 		return super.getEObject(uriFragment);
 	}
-	
+
 	@Override
-	public String getURIFragment(EObject eObject) {
-		if (mirror != null) {
-			String result = mirror.getFragment(eObject, fragmentProviderFallback);
+	public String getURIFragment(final EObject eObject) {
+		System.out.println(TypeResource.class.getName() + ".getURIFragment (" + eObject + ")");
+		if (this.mirror != null) {
+			final String result = this.mirror.getFragment(eObject, this.fragmentProviderFallback);
 			return result;
 		}
 		return super.getURIFragment(eObject);
 	}
 
 	@Override
-	public void load(Map<?, ?> options) throws IOException {
-		if (!isLoaded) {
-			load(null, options);
+	public void load(final Map<?, ?> options) throws IOException {
+		if (!this.isLoaded) {
+			this.load(null, options);
 		}
 	}
-	
+
 	@Override
-	public void save(Map<?, ?> options) throws IOException {
+	public void save(final Map<?, ?> options) throws IOException {
 		throw new UnsupportedOperationException();
 	}
-	
+
 	/**
 	 * This routine is called from ResourceImpl load after the load method above is triggered.
 	 * It initialises the primitive type mirror.
@@ -81,12 +85,12 @@ public class TypeResource extends ResourceImpl {
 	 * The input stream is always empty in this context and the options are ignored.
 	 */
 	@Override
-	protected void doLoad(InputStream inputStream, Map<?, ?> options) throws IOException {
+	protected void doLoad(final InputStream inputStream, final Map<?, ?> options) throws IOException {
 		try {
-			if (getURI() != null && mirror != null) {
-				mirror.initialize(this);
+			if ((this.getURI() != null) && (this.mirror != null)) {
+				this.mirror.initialize(this);
 			}
-		} catch(Exception e) {
+		} catch (final Exception e) {
 			throw new IOException(e.getMessage());
 		}
 	}

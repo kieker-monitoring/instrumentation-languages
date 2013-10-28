@@ -12,6 +12,7 @@ import org.eclipse.xtext.scoping.impl.DefaultGlobalScopeProvider;
 import com.google.common.base.Predicate;
 import com.google.inject.Inject;
 import org.eclipse.emf.ecore.EcorePackage$Literals
+import org.eclipse.xtext.resource.IEObjectDescription
 
 class TypeGlobalScopeProvider extends DefaultGlobalScopeProvider {
 	@Inject
@@ -20,13 +21,13 @@ class TypeGlobalScopeProvider extends DefaultGlobalScopeProvider {
 	@Inject
 	private IQualifiedNameConverter qualifiedNameConverter;
 
-    override IScope getScope(Resource resource, EReference reference, Predicate filter) {
+    override IScope getScope(Resource resource, EReference reference, Predicate<IEObjectDescription> filter) {
             val IScope parentTypeScope = resource.getParentTypeScope(reference, filter, reference.getEReferenceType());
             return super.getScope(parentTypeScope, resource, false, reference.getEReferenceType(), filter);
     }
 
     def IScope getParentTypeScope(Resource resource, EReference reference,
-            Predicate filter, EClass referenceType) {
+            Predicate<IEObjectDescription> filter, EClass referenceType) {
         // check whether the reference type is a type of any kind 
         if (EcoreUtil2::isAssignableFrom(Literals::ECLASSIFIER, referenceType)) {
         	if (resource != null) {

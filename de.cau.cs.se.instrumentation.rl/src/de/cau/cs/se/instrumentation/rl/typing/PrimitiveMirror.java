@@ -28,9 +28,11 @@ public class PrimitiveMirror {
 	 * Constructs the primitive mirror. It requires a type factory for primitive types described
 	 * with strings.
 	 * 
-	 * @param typeFactory The type factory
+	 * @param typeFactory
+	 *            The type factory
 	 */
 	public PrimitiveMirror() {
+		System.out.println(PrimitiveMirror.class.getName() + "()");
 	}
 
 	/**
@@ -42,11 +44,13 @@ public class PrimitiveMirror {
 	 * @return
 	 */
 	public EObject getEObject(final Resource resource, final String fragment,
-	        final IFragmentProvider.Fallback fallback) {
-		for (EObject obj : resource.getContents()) {
-			String otherFragment = getFragment(obj, fallback);
-			if (fragment.equals(otherFragment))
+			final IFragmentProvider.Fallback fallback) {
+		System.out.println(PrimitiveMirror.class.getName() + ".getEObject (" + resource + "," + fragment + "," + fallback + ")");
+		for (final EObject obj : resource.getContents()) {
+			final String otherFragment = this.getFragment(obj, fallback);
+			if (fragment.equals(otherFragment)) {
 				return obj;
+			}
 		}
 		return fallback.getEObject(fragment);
 	}
@@ -55,7 +59,8 @@ public class PrimitiveMirror {
 	/**
 	 * This specialisation is introduced to hide the JVMType filtering. {@inheritDoc}
 	 */
-	public String getFragment(EObject obj, IFragmentProvider.Fallback fallback) {
+	public String getFragment(final EObject obj, final IFragmentProvider.Fallback fallback) {
+		System.out.println(PrimitiveMirror.class.getName() + ".getFragment (" + obj + "," + fallback + ")");
 		if (EcorePackage.eINSTANCE.getEDataType().isInstance(obj)) {
 			return ((EDataType) obj).getName();
 		} else {
@@ -71,7 +76,8 @@ public class PrimitiveMirror {
 	 * 
 	 */
 	public void initialize(final TypeResource typeResource) {
-		for (PrimitiveTypes primitiveType : PrimitiveTypes.values()) {
+		System.out.println(PrimitiveMirror.class.getName() + ".initialize (" + typeResource + ")");
+		for (final PrimitiveTypes primitiveType : PrimitiveTypes.values()) {
 			typeResource.getContents().add(primitiveType.getEType());
 		}
 	}
