@@ -39,7 +39,6 @@ public class TypeProvider implements Resource.Factory, ITypeProvider {
 	 * @param resourceSet
 	 */
 	public TypeProvider(final ResourceSet resourceSet) {
-		System.out.println(TypeProvider.class.getName() + " (" + resourceSet + ")");
 		this.resourceSet = resourceSet;
 		this.typeUriHelper = new EcoreTypeURIHelper();
 	}
@@ -51,7 +50,6 @@ public class TypeProvider implements Resource.Factory, ITypeProvider {
 	 */
 	@Override
 	public Iterable<EClassifier> getAllTypes() {
-		System.out.println(TypeProvider.class.getName() + ".geTallTypes (" + ")");
 		/*
 		 * Get the (already created) types from the helper resource and cast the list to a list of
 		 * types.
@@ -77,12 +75,12 @@ public class TypeProvider implements Resource.Factory, ITypeProvider {
 	 */
 	@Override
 	public EClassifier findTypeByName(final String name) {
-		System.out.println(TypeProvider.class.getName() + ".findTypeName (" + name + ")");
 		if (Strings.isEmpty(name)) {
-			throw new IllegalArgumentException("null");
+			throw new IllegalArgumentException("Internal error: Empty type name.");
 		}
 		final URI resourceURI = this.typeUriHelper.createResourceURI();
 		final TypeResource resource = (TypeResource) this.resourceSet.getResource(resourceURI, true);
+
 		return (EClassifier) resource.getEObject(name);
 	}
 
@@ -94,8 +92,7 @@ public class TypeProvider implements Resource.Factory, ITypeProvider {
 	 */
 	@Override
 	public TypeResource createResource(final URI uri) {
-		System.out.println(TypeProvider.class.getName() + ".createResource (" + uri + ")");
-		return new TypeResource(uri, this.createPrimitiveMirror(uri));
+		return new TypeResource(uri);
 	}
 
 	/**
@@ -103,32 +100,7 @@ public class TypeProvider implements Resource.Factory, ITypeProvider {
 	 */
 	@Override
 	public EcoreTypeURIHelper getTypeUriHelper() {
-		System.out.println(TypeProvider.class.getName() + ".getTypeUriHelper ()");
 		return this.typeUriHelper;
-	}
-
-	/**
-	 * Create a mirror only for primitive types. Throws errors for URIs with a fragment (the stuff
-	 * after the # in the URI) and for URIs which are neither references to primitive or object
-	 * types.
-	 * 
-	 * @param resourceURI
-	 *            The URI the mirror is created for.
-	 * @return Returns the mirror for primitive types and null for object-types.
-	 */
-	private PrimitiveMirror createPrimitiveMirror(final URI resourceURI) {
-		System.out.println(TypeProvider.class.getName() + ".createPrimitiveMirror (" + resourceURI + ")");
-		if (resourceURI.hasFragment()) {
-			throw new IllegalArgumentException("Cannot create mirror for uri '"
-					+ resourceURI.toString() + "'");
-		}
-		final String name = resourceURI.path();
-		if (EcoreURIHelperConstants.PRIMITIVES.equals(name)) {
-			return new PrimitiveMirror();
-		} else {
-			throw new IllegalArgumentException("Invalid resource uri '" + resourceURI.toString()
-					+ "'");
-		}
 	}
 
 }

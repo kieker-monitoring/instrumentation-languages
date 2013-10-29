@@ -27,8 +27,7 @@ import com.google.inject.Inject;
 public class TypeProviderFactory {
 
 	@Inject
-	public TypeProviderFactory() {
-	}
+	public TypeProviderFactory() {}
 
 	/**
 	 * Create a new type provider or fetch the already created type provider for the primitive
@@ -38,21 +37,22 @@ public class TypeProviderFactory {
 	 *            The resource set associated with the type provider.
 	 * @return Returns the type provider for primitive types.
 	 */
-	public ITypeProvider getTypeProvider(ResourceSet resourceSet) {
+	public ITypeProvider getTypeProvider(final ResourceSet resourceSet) {
 		if (resourceSet == null) {
 			throw new IllegalArgumentException("resourceSet may not be null.");
 		} else {
-			Object o = resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
-			        .get(EcoreURIHelperConstants.PROTOCOL);
+			final Object o = resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
+					.get(EcoreURIHelperConstants.PROTOCOL);
 			if (o != null) {
 				if (!(o instanceof ITypeProvider)) {
-					// something went terribly wrong, to be save create a new type provider
-					return createTypeProvider(resourceSet);
+					// TODO something went terribly wrong, to be save create a new type provider
+					return this.createTypeProvider(resourceSet);
 				} else {
 					return (ITypeProvider) o;
 				}
-			} else
-				return createTypeProvider(resourceSet);
+			} else {
+				return this.createTypeProvider(resourceSet);
+			}
 		}
 	}
 
@@ -63,11 +63,11 @@ public class TypeProviderFactory {
 	 *            The resource set associated with the type provider.
 	 * @return Returns the new type provider.
 	 */
-	private ITypeProvider createTypeProvider(ResourceSet resourceSet) {
-			ITypeProvider typeProvider = new TypeProvider(resourceSet);
-			resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
-			        .put(EcoreURIHelperConstants.PROTOCOL, typeProvider);
-			return typeProvider;
+	private ITypeProvider createTypeProvider(final ResourceSet resourceSet) {
+		final ITypeProvider typeProvider = new TypeProvider(resourceSet);
+		resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
+				.put(EcoreURIHelperConstants.PROTOCOL, typeProvider);
+		return typeProvider;
 
 	}
 

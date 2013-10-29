@@ -1,6 +1,15 @@
 /*
- * Copyright 2006, Itemis
- * Copyright 2012, Reiner Jung (AG SE)
+ * Science Blog 
+ *
+ * http://www.se.informatik.uni-kiel.de
+ * 
+ * Copyright 2013 by
+ * + Christian-Albrechts-University of Kiel
+ *   + Department of Computer Science
+ *     + Software Engineering Group
+ * 
+ * This code is provided under the terms of the Eclipse Public License (EPL).
+ * See the file epl-v10.html for the license text.
  */
 package de.cau.cs.se.instrumentation.rl.typing;
 
@@ -9,61 +18,60 @@ import java.io.InputStream;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
-import org.eclipse.xtext.resource.IFragmentProvider;
 
 /**
  * Simulates a real resource for primitive types.
  * 
  * @author Sebastian Zarnekow - Initial contribution and API
- * @author Reiner Jung - Adaptation for a general typ approach
+ * @author Reiner Jung - Adaptation for a general type approach; rewrite 2013
  */
 public class TypeResource extends ResourceImpl {
 
-	private PrimitiveMirror mirror;
-
-	private final IFragmentProvider.Fallback fragmentProviderFallback = new IFragmentProvider.Fallback() {
-
-		@Override
-		public String getFragment(final EObject obj) {
-			return TypeResource.super.getURIFragment(obj);
-		}
-
-		@Override
-		public EObject getEObject(final String fragment) {
-			return TypeResource.super.getEObject(fragment);
-		}
-	};
-
 	public TypeResource() {
 		super();
-		System.out.println(TypeResource.class.getName() + ":" + this + "()");
 	}
 
-	public TypeResource(final URI uri, final PrimitiveMirror mirror) {
+	public TypeResource(final URI uri) {
 		super(uri);
-		System.out.println(TypeResource.class.getName() + ":" + this + "(" + uri + "," + mirror + ")");
-		this.mirror = mirror;
 	}
 
 	@Override
 	public EObject getEObject(final String uriFragment) {
-		if (this.mirror != null) {
-			final EObject result = this.mirror.getEObject(this, uriFragment, this.fragmentProviderFallback);
-			return result;
+		if (this.getContents().size() == 0) {
+			// TODO Resource contents is empty, this should not happen.
+			/*
+			 * I debugged this issue, but could not find the cause of it. I wondered that
+			 * multiple TypeProvider instances are used and therefore multiple TypeResources.
+			 * However, the problem occurs after the creation of a new TypeResource when the
+			 * old is accessed again. Then the contents of the resource is gone. Debugging
+			 * did not provide signification insight in what and where the contents is emptied
+			 * or replaced.
+			 * 
+			 * However, to circumvent this bug, the following code refills the content.
+			 */
+			for (final PrimitiveTypes primitiveType : PrimitiveTypes.values()) {
+				this.getContents().add(primitiveType.getEType());
+			}
+		}
+		for (final EObject obj : this.getContents()) {
+			if (uriFragment.equals(this.getURIFragment(obj))) {
+				return obj;
+			}
 		}
 		return super.getEObject(uriFragment);
 	}
 
 	@Override
 	public String getURIFragment(final EObject eObject) {
-		System.out.println(TypeResource.class.getName() + ".getURIFragment (" + eObject + ")");
-		if (this.mirror != null) {
-			final String result = this.mirror.getFragment(eObject, this.fragmentProviderFallback);
-			return result;
+		if (EcorePackage.eINSTANCE.getEDataType().isInstance(eObject)) {
+			return ((EDataType) eObject).getName();
+		} else {
+			return super.getURIFragment(eObject);
 		}
-		return super.getURIFragment(eObject);
 	}
 
 	@Override
@@ -87,8 +95,16 @@ public class TypeResource extends ResourceImpl {
 	@Override
 	protected void doLoad(final InputStream inputStream, final Map<?, ?> options) throws IOException {
 		try {
-			if ((this.getURI() != null) && (this.mirror != null)) {
-				this.mirror.initialize(this);
+			if (this.getURI() != null) {
+				for (final PrimitiveTypes primitiveType : PrimitiveTypes.values()) {
+					this.getContents().add(primitiveType.getEType());
+				}
+			} else {
+				try {
+					throw new IOException("Malformed URI in TypeResource.onLoad");
+				} catch (final IOException e) {
+					e.printStackTrace();
+				}
 			}
 		} catch (final Exception e) {
 			throw new IOException(e.getMessage());
