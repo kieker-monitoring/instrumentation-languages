@@ -1,0 +1,1 @@
+SUBDIRS=libkiekermon include exampleProgram

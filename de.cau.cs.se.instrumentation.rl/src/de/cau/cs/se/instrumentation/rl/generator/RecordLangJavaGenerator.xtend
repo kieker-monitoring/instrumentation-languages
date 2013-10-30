@@ -48,25 +48,33 @@ class RecordLangJavaGenerator extends RecordLangGenericGenerator {
 		
 		package «(type.eContainer as Model).name»;
 		
+		import java.nio.BufferOverflowException;
+		import java.nio.BufferUnderflowException;
+		import java.io.UnsupportedEncodingException;
+		import java.nio.ByteBuffer;
+
 		import kieker.common.record.AbstractMonitoringRecord;
 		import kieker.common.record.IMonitoringRecord;
-		import kieker.common.record.flow.IFlowRecord;
+		import kieker.common.util.registry.IRegistry;
 		
 		/**
 		 * @author «author»
 		 * 
 		 * @since «version»
 		 */
-		public final class «type.name» extends «if (type.parent!=null) type.parent.name else 'AbstractMonitoringRecord'» implements IMonitoringRecord.Factory, IFlowRecord {
-		
+		public final class «type.name» extends «if (type.parent!=null) type.parent.name else 'AbstractMonitoringRecord'» implements IMonitoringRecord.Factory, IMonitoringRecord.BinaryFactory {
+			public static final int SIZE = «allProperties.calculateSize»; // serialization size (without variable part of strings
+			
 			«type.constants.map[const | createDefaultConstant(const)].join»
 					
 			private static final long serialVersionUID = «serialUID»;
 			private static final Class<?>[] TYPES = {
-				«allProperties.map[property |createPropertyType(property)].join»
+				«allProperties.map[property | createPropertyType(property)].join»
 			};
 		
-			«type.properties.map[property |createProperty(property)].join»
+			«type.properties.map[property | createProperty(property)].join»
+			
+			«if (allProperties.exists[property | property.type.class_.name == 'string']) 'private byte[] stringBuffer = new byte[65535];'»
 		
 			/**
 			 * Creates a new instance of this class using the given parameters.
@@ -96,10 +104,26 @@ class RecordLangJavaGenerator extends RecordLangGenericGenerator {
 			}
 		
 			/**
+			 * This constructor converts the given array into a record.
+			 * 
+			 * @param buffer
+			 *            The bytes for the record.
+			 * 
+			 * @throws BufferUnderflowException
+			 *             if buffer not sufficient
+			 */
+			public OperationExecutionRecord(final ByteBuffer buffer, final IRegistry<String> stringRegistry) throws BufferUnderflowException {
+				«if (type.parent!=null) 'super(buffer,stringRegistry);'»
+				«type.properties.map[property | createPropertyValueFromBuffer(property)].join('\n')»
+			}
+		
+			/**
 			 * {@inheritDoc}
 			 */
 			public final Object[] toArray() {
-				return new Object[] { «type.properties.map[property | createPropertyArray(property)].join(',\n')»  };
+				return new Object[] {
+					«type.properties.map[property | createPropertyArray(property)].join(',\n')»
+				};
 			}
 		
 			/**
@@ -114,6 +138,13 @@ class RecordLangJavaGenerator extends RecordLangGenericGenerator {
 			 */
 			public final Class<?>[] getValueTypes() {
 				return TYPES; // NOPMD
+			}
+
+			/**
+			 * {@inheritDoc}
+			 */
+			public int getSize() {
+				return SIZE;
 			}
 		
 			/**
@@ -141,21 +172,53 @@ class RecordLangJavaGenerator extends RecordLangGenericGenerator {
 		'''
 	}
 	
-	def createPropertyBinarySerialization(Property property) '''
-		buffer.«property.createPropertyFunctionCall»;'''
-	
-	def createPropertyFunctionCall(Property property) {
+	def createPropertyValueFromBuffer(Property property) {
 		switch (property.type.class_.name) {
-			case 'key' : '''putInt(stringRegistry.get(this.get«property.name.toFirstUpper»()))'''
-			case 'string' : '''putString(this.get«property.name.toFirstUpper»())'''
-			case 'byte' : '''putByte(this.get«property.name.toFirstUpper»())'''
-			case 'short' : '''putShort(this.get«property.name.toFirstUpper»())'''
-			case 'int' : '''putInt(this.get«property.name.toFirstUpper»())'''
-			case 'long' : '''putLong(this.get«property.name.toFirstUpper»())'''
-			case 'float' : '''putFloat(this.get«property.name.toFirstUpper»())'''
-			case 'double' : '''putDouble(this.get«property.name.toFirstUpper»())'''
-			case 'char' : '''putChar(this.get«property.name.toFirstUpper»())'''
-			case 'boolean' : '''putBoolean(this.get«property.name.toFirstUpper»())'''
+			case 'key' : '''this.«property.name» = stringRegistry.get(buffer.getInt());'''
+			case 'string' : '''
+				String temp«property.name.toFirstUpper»;
+				try {
+					final int bufLen = buffer.getInt();
+					buffer.get(this.stringBuffer,buffer.position(), bufLen);
+					temp«property.name.toFirstUpper» = new String(this.stringBuffer, 0, bufLen, "UTF-8");
+				} catch (UnsupportedEncodingException e) {
+					e.printStackTrace();
+					temp«property.name.toFirstUpper» = "<serialization error>";
+				}
+				this.«property.name» = temp«property.name.toFirstUpper»;
+				'''
+			case 'byte' : '''this.«property.name» = buffer.get();'''
+			case 'short' : '''this.«property.name» = buffer.getshort();'''
+			case 'int' : '''this.«property.name» = buffer.getInt();'''
+			case 'long' : '''this.«property.name» = buffer.getLong();'''
+			case 'float' : '''this.«property.name» = buffer.getFloat();'''
+			case 'double' : '''this.«property.name» = buffer.getDouble();'''
+			case 'char' : '''this.«property.name» = buffer.getChar();'''
+			case 'boolean' : '''this.«property.name» = buffer.get()==1?true:false;'''
+			
+		}
+	}
+		
+	def createPropertyBinarySerialization(Property property) {
+		switch (property.type.class_.name) {
+			case 'key' : '''buffer.putInt(stringRegistry.get(this.get«property.name.toFirstUpper»()));'''
+			case 'string' : '''
+				try {
+					byte stringBuffer[] = this.get«property.name.toFirstUpper»().getBytes("UTF-8");
+					buffer.putInt(stringBuffer.length);
+					buffer.put(stringBuffer,0,stringBuffer.length);
+				} catch (UnsupportedEncodingException e) {
+					e.printStackTrace();
+					buffer.putInt(0);
+				}'''
+			case 'byte' : '''buffer.putByte(this.get«property.name.toFirstUpper»());'''
+			case 'short' : '''buffer.putShort(this.get«property.name.toFirstUpper»());'''
+			case 'int' : '''buffer.putInt(this.get«property.name.toFirstUpper»());'''
+			case 'long' : '''buffer.putLong(this.get«property.name.toFirstUpper»());'''
+			case 'float' : '''buffer.putFloat(this.get«property.name.toFirstUpper»());'''
+			case 'double' : '''buffer.putDouble(this.get«property.name.toFirstUpper»());'''
+			case 'char' : '''buffer.putChar(this.get«property.name.toFirstUpper»());'''
+			case 'boolean' : '''buffer.putBYte(this.is«property.name.toFirstUpper»()?1:0);'''
 		}
 	}
 

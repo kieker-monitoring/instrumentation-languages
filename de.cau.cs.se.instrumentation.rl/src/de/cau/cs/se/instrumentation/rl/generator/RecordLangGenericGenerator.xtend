@@ -44,7 +44,7 @@ abstract class RecordLangGenericGenerator {
 	/**
 	 * Collect recursively a list of all properties.
 	 * 
-	 * @param
+	 * @param type
 	 * 		a recordType
 	 * 
 	 * @returns
@@ -60,4 +60,40 @@ abstract class RecordLangGenericGenerator {
 		return result
 	}
 	
+	/**
+	 * Determine the size of the resulting binary serialization.
+	 * 
+	 * @param allProperties
+	 * 		all properties of a record type
+	 * 
+	 * @returns
+	 * 		the computed value
+	 */
+	 def int calculateSize(EList<Property> list) {
+		list.fold(0)[result, property | result + property.size]
+	}
+	
+	/**
+	 * Determine the size of one type.
+	 * 
+	 * @param property
+	 * 		property which serialization size is determined.
+	 * 
+	 * @returns
+	 * 		the serialization size of the property
+	 */
+	def private int getSize(Property property) {
+		switch (property.type.class_.name) {
+			case 'key' : 4
+			case 'string' : 4
+			case 'byte' : 1
+			case 'short' : 2
+			case 'int' : 4
+			case 'long' : 8
+			case 'float' : 4
+			case 'double' : 8
+			case 'char' : 2
+			case 'boolean' : 1
+		}
+	}
 }

@@ -65,7 +65,10 @@ class RecordLangCGenerator extends RecordLangGenericGenerator {
 	 */
 	override createTypeName(Classifier classifier) {
 		switch (classifier.class_.name) {
+			case 'key' : 'const char*'
 			case 'string' : 'const char*'
+			case 'byte' : 'char'
+			case 'short' : 'short'
 			case 'int' : 'long'
 			case 'long' : 'long long'
 			case 'float' : 'float'
