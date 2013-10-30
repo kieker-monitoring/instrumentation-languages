@@ -99,14 +99,21 @@ class RecordLangJavaGenerator extends RecordLangGenericGenerator {
 			 * {@inheritDoc}
 			 */
 			public final Object[] toArray() {
-				return new Object[] { «type.properties.map[property | createPropertyArray(property)].join(', ')»  };
+				return new Object[] { «type.properties.map[property | createPropertyArray(property)].join(',\n')»  };
 			}
 		
 			/**
 			 * {@inheritDoc}
 			 */
+			public void writeBytes(final ByteBuffer buffer, final IRegistry<String> stringRegistry) throws BufferOverflowException {
+				«allProperties.map[property | createPropertyBinarySerialization(property)].join('\n')»
+			}
+
+			/**
+			 * {@inheritDoc}
+			 */
 			public final Class<?>[] getValueTypes() {
-				return TYPES.clone();
+				return TYPES; // NOPMD
 			}
 		
 			/**
@@ -118,12 +125,39 @@ class RecordLangJavaGenerator extends RecordLangGenericGenerator {
 			public final void initFromArray(final Object[] values) {
 				throw new UnsupportedOperationException();
 			}
+			
+			/**
+			 * {@inheritDoc}
+			 * 
+			 * @deprecated This record uses the {@link kieker.common.record.IMonitoringRecord.BinaryFactory} mechanism. Hence, this method is not implemented.
+			 */
+			@Deprecated
+			public final void initFromBytes(final ByteBuffer buffer, final IRegistry<String> stringRegistry) throws BufferUnderflowException {
+				throw new UnsupportedOperationException();
+			}
 		
 			«type.properties.map[property | createPropertyGetter(property)].join»
 		}
 		'''
 	}
-		
+	
+	def createPropertyBinarySerialization(Property property) '''
+		buffer.«property.createPropertyFunctionCall»;'''
+	
+	def createPropertyFunctionCall(Property property) {
+		switch (property.type.class_.name) {
+			case 'key' : '''putInt(stringRegistry.get(this.get«property.name.toFirstUpper»()))'''
+			case 'string' : '''putString(this.get«property.name.toFirstUpper»())'''
+			case 'byte' : '''putByte(this.get«property.name.toFirstUpper»())'''
+			case 'short' : '''putShort(this.get«property.name.toFirstUpper»())'''
+			case 'int' : '''putInt(this.get«property.name.toFirstUpper»())'''
+			case 'long' : '''putLong(this.get«property.name.toFirstUpper»())'''
+			case 'float' : '''putFloat(this.get«property.name.toFirstUpper»())'''
+			case 'double' : '''putDouble(this.get«property.name.toFirstUpper»())'''
+			case 'char' : '''putChar(this.get«property.name.toFirstUpper»())'''
+			case 'boolean' : '''putBoolean(this.get«property.name.toFirstUpper»())'''
+		}
+	}
 
 	
 	/**
@@ -271,6 +305,7 @@ class RecordLangJavaGenerator extends RecordLangGenericGenerator {
 	override createTypeName(Classifier classifier) {
 		switch (classifier.class_.name) {
 			case 'string' : 'String'
+			case 'key' : 'String'
 			default : classifier.class_.name
 		}	
 	}
