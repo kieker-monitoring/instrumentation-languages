@@ -28,7 +28,7 @@ class RecordLangJavaGenerator extends RecordLangGenericGenerator {
 	 */
 	override createContent(RecordType type, String author, String version) {
 		val serialUID = '123456789L'
-		val allProperties = type.compileProperties
+		val allProperties = type.collectAllProperties
 		'''
 		/***************************************************************************
 		 * Copyright 2013 Kieker Project (http://kieker-monitoring.net)
@@ -74,7 +74,7 @@ class RecordLangJavaGenerator extends RecordLangGenericGenerator {
 			 «type.properties.map[property |createPropertyComment(property)].join»
 			 */
 			public «type.name»(«allProperties.map[property |createPropertyParameter(property)].join(', ')») {
-				«if (type.parent!=null) 'super('+type.parent.compileProperties.map[name].join(', ')+');'»
+				«if (type.parent!=null) 'super('+type.parent.collectAllProperties.map[name].join(', ')+');'»
 				«type.properties.map[property | createPropertyAssignment(property)].join»
 			}
 		
@@ -87,12 +87,12 @@ class RecordLangJavaGenerator extends RecordLangGenericGenerator {
 			public «type.name»(final Object[] values) { // NOPMD (values stored directly)
 				AbstractMonitoringRecord.checkArray(values, TYPES);
 				«IF (type.parent!=null)»
-					final Object[] parentValues = new Object[«type.parent.compileProperties.size»];
-					for(int i=0;i<«type.parent.compileProperties.size»;i++)
+					final Object[] parentValues = new Object[«type.parent.collectAllProperties.size»];
+					for(int i=0;i<«type.parent.collectAllProperties.size»;i++)
 						parentValues[i]=values[i];
 					super(parentValues);
 				«ENDIF»
-				«type.properties.createPropertyGenericAssignments(if (type.parent!=null) type.parent.compileProperties.size else 0)»
+				«type.properties.createPropertyGenericAssignments(if (type.parent!=null) type.parent.collectAllProperties.size else 0)»
 			}
 		
 			/**
@@ -295,5 +295,5 @@ class RecordLangJavaGenerator extends RecordLangGenericGenerator {
 		'ERROR ' + literal.class.name
 	}
 	
-	override getExtension() '''java'''
+	override getFileExtension() '''java'''
 }

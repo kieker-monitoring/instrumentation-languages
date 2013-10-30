@@ -28,7 +28,7 @@ class RecordLangGenerator implements IGenerator {
 		
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		val author = "Generic Kieker"
-		val version = "1.8"
+		val version = "1.9"
 		
 		// list all generators to support
 		val Class<?>[] generators = #[
@@ -40,7 +40,7 @@ class RecordLangGenerator implements IGenerator {
 						
 		for (Class<?> generator : generators) {
 			val cg = generator.getConstructor().newInstance() as RecordLangGenericGenerator
-			resource.allContents.filter(typeof(RecordType)).forEach[type | fsa.generateFile(cg.directoryName(type) + File::separator + type.name+'.'+cg.extension, cg.createContent(type,author,version))]
+			resource.allContents.filter(typeof(RecordType)).forEach[type | fsa.generateFile(cg.directoryName(type) + File::separator + type.name+'.'+cg.fileExtension, cg.createContent(type,author,version))]
 		} 
 			
 		

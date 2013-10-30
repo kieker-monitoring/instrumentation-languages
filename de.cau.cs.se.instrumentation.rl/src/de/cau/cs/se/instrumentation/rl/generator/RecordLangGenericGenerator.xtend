@@ -39,10 +39,10 @@ abstract class RecordLangGenericGenerator {
 	/**
 	 * Return the extension of the file type this generator produces.
 	 */
-	def abstract String getExtension();
+	def abstract String getFileExtension();
 	
 	/**
-	 * Compile recursively a list of all properties.
+	 * Collect recursively a list of all properties.
 	 * 
 	 * @param
 	 * 		a recordType
@@ -50,10 +50,10 @@ abstract class RecordLangGenericGenerator {
 	 * @returns
 	 * 		a complete list of all properties in a record
 	 */
-	def EList<Property> compileProperties(RecordType type) {
+	def EList<Property> collectAllProperties(RecordType type) {
 		var EList<Property> result
 		if (type.parent!=null)
-			result = type.parent.compileProperties
+			result = type.parent.collectAllProperties
 		else
 			result = new org.eclipse.emf.common.util.BasicEList<Property>()
 		result.addAll(type.properties)

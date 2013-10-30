@@ -24,10 +24,13 @@ import org.eclipse.emf.ecore.EcoreFactory;
  */
 public enum PrimitiveTypes {
 	ELONG("long"),
-	EBOOLEAN("boolean"),
 	EINT("int"),
+	ESHORT("short"),
+	EBYTE("byte"),
+	EBOOLEAN("boolean"),
 	EFLOAT("float"),
 	EDOUBLE("double"),
+	ECHAR("char"),
 	ESTRING("string");
 
 	private EDataType etype;

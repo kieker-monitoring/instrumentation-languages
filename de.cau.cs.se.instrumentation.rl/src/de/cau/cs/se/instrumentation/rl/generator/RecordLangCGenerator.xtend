@@ -92,7 +92,7 @@ class RecordLangCGenerator extends RecordLangGenericGenerator {
 		 */
 		int «type.packageName»_«type.name»_serialize(char *buffer, const int id, const int offset, const «type.packageName»_«type.name» value) {
 			int length = 0;
-			«type.compileProperties.map[createValueSerializer].join»
+			«type.collectAllProperties.map[createValueSerializer].join»
 			return length;
 		}
 	'''
@@ -119,6 +119,6 @@ class RecordLangCGenerator extends RecordLangGenericGenerator {
 		}
 	}
 	
-	override getExtension() '''c'''
+	override getFileExtension() '''c'''
 	
 }

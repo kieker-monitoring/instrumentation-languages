@@ -45,7 +45,7 @@ class RecordLangCHeaderGenerator extends RecordLangCGenerator {
 	
 	def createStructure(RecordType type) '''
 		typedef struct {
-			«type.compileProperties.map[createPropertyDeclaration].join»
+			«type.collectAllProperties.map[createPropertyDeclaration].join»
 		} «type.packageName»_«type.name»;
 	'''
 	
@@ -70,5 +70,5 @@ class RecordLangCHeaderGenerator extends RecordLangCGenerator {
 		int «type.packageName»_«type.name»_serialize(char *buffer, const int id, const int offset, const «type.packageName»_«type.name» value);
 	'''
 	
-	override getExtension() '''h'''
+	override getFileExtension() '''h'''
 }
