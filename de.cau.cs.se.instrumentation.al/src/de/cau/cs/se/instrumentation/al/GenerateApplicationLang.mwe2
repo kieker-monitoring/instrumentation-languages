@@ -15,12 +15,14 @@ Workflow {
     	scanClassPath = true
     	platformUri = "${runtimeProject}/.."
     	// The following two lines can be removed, if Xbase is not used.
-    	registerGeneratedEPackage = "org.eclipse.xtext.xbase.XbasePackage"
-    	registerGenModelFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel"
     	registerGenModelFile = "platform:/resource/de.cau.cs.kieler.core.annotations/model/annotations.genmodel"
         registerGeneratedEPackage = "de.cau.cs.kieler.core.annotations.AnnotationsPackage"
     	registerGeneratedEPackage = "de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage"
     	registerGenModelFile = "platform:/resource/de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/RecordLang.genmodel"
+    	registerGenModelFile = "platform:/resource/de.uka.ipd.sdq.pcm/model/pcm.genmodel"
+    	registerGeneratedEPackage = "de.uka.ipd.sdq.pcm.core.entity.EntityPackage"
+    	registerGeneratedEPackage = "org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage"
+    	registerGenModelFile = "platform:/resource/org.eclipse.uml2.codegen.ecore/model/GenModel.genmodel"
     }
     
     component = DirectoryCleaner {
