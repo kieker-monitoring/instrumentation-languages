@@ -14,6 +14,7 @@
 package de.cau.cs.se.instrumentation.rl.typing;
 
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.xtext.common.types.access.jdt.TypeURIHelper;
 
 /**
  * The type provider interface. It is used by the scoping and plays a role in the content assist.

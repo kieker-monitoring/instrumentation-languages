@@ -62,7 +62,7 @@ class RecordLangJavaGenerator extends RecordLangGenericGenerator {
 		 * 
 		 * @since «version»
 		 */
-		public final class «type.name» extends «if (type.parent!=null) type.parent.name else 'AbstractMonitoringRecord'» implements IMonitoringRecord.Factory, IMonitoringRecord.BinaryFactory {
+		public «if (type.abstract) 'abstract'» class «type.name» extends «if (type.parent!=null) type.parent.name else 'AbstractMonitoringRecord'» implements IMonitoringRecord.Factory, IMonitoringRecord.BinaryFactory {
 			public static final int SIZE = «allProperties.calculateSize»; // serialization size (without variable part of strings
 			
 			«type.constants.map[const | createDefaultConstant(const)].join»
@@ -91,14 +91,25 @@ class RecordLangJavaGenerator extends RecordLangGenericGenerator {
 			 * 
 			 * @param values
 			 *            The array containing the values for the fields of this class. This should normally be the array resulting in a call to {@link #toArray()}.
+			 * @param types
+			 *            The types of the elements in the first array.
 			 */
 			public «type.name»(final Object[] values) { // NOPMD (values stored directly)
-				AbstractMonitoringRecord.checkArray(values, TYPES);
 				«IF (type.parent!=null)»
-					final Object[] parentValues = new Object[«type.parent.collectAllProperties.size»];
-					for(int i=0;i<«type.parent.collectAllProperties.size»;i++)
-						parentValues[i]=values[i];
-					super(parentValues);
+					super(values, TYPES);
+				«ENDIF»
+				«type.properties.createPropertyGenericAssignments(if (type.parent!=null) type.parent.collectAllProperties.size else 0)»
+			}
+			
+			/**
+			 * Initialize parent data structures.
+			 * 
+			 * @param values
+			 *            The array containing the values for the fields of this class. This should normally be the array resulting in a call to {@link #toArray()}.
+			 */
+			protected «type.name»(final Object[] values) { // NOPMD (values stored directly)
+				«IF (type.parent!=null)»
+					super(values, TYPES);
 				«ENDIF»
 				«type.properties.createPropertyGenericAssignments(if (type.parent!=null) type.parent.collectAllProperties.size else 0)»
 			}
@@ -112,7 +123,7 @@ class RecordLangJavaGenerator extends RecordLangGenericGenerator {
 			 * @throws BufferUnderflowException
 			 *             if buffer not sufficient
 			 */
-			public OperationExecutionRecord(final ByteBuffer buffer, final IRegistry<String> stringRegistry) throws BufferUnderflowException {
+			public «type.name»(final ByteBuffer buffer, final IRegistry<String> stringRegistry) throws BufferUnderflowException {
 				«if (type.parent!=null) 'super(buffer,stringRegistry);'»
 				«type.properties.map[property | createPropertyValueFromBuffer(property)].join('\n')»
 			}
@@ -393,5 +404,5 @@ class RecordLangJavaGenerator extends RecordLangGenericGenerator {
 		'ERROR ' + literal.class.name
 	}
 	
-	override getFileExtension() '''java'''
+	override fileName(RecordType type) '''«type.directoryName»«File::separator»«type.name».java'''
 }

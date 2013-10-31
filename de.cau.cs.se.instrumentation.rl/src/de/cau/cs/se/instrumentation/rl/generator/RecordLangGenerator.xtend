@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
-import java.io.File
 
 /**
  * Generates one single files per record for java, c, and perl. 
@@ -40,7 +39,7 @@ class RecordLangGenerator implements IGenerator {
 						
 		for (Class<?> generator : generators) {
 			val cg = generator.getConstructor().newInstance() as RecordLangGenericGenerator
-			resource.allContents.filter(typeof(RecordType)).forEach[type | fsa.generateFile(cg.directoryName(type) + File::separator + type.name+'.'+cg.fileExtension, cg.createContent(type,author,version))]
+			resource.allContents.filter(typeof(RecordType)).forEach[type | fsa.generateFile(cg.fileName(type), cg.createContent(type,author,version))]
 		} 
 			
 		

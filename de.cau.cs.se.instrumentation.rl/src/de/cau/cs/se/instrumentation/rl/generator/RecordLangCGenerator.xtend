@@ -5,6 +5,7 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Property
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
 import de.cau.cs.se.instrumentation.rl.recordLang.Model
 import java.io.File
+import java.util.regex.Pattern
 
 class RecordLangCGenerator extends RecordLangGenericGenerator {
 	
@@ -36,7 +37,7 @@ class RecordLangCGenerator extends RecordLangGenericGenerator {
 	 ***************************************************************************/
 	#include <stdlib.h>
 	#include <kieker.h>
-	#include "«type.directoryName»/«type.packageName»_«type.name».h"
+	#include "«type.directoryName»/«type.packageName»_«type.name.cstyle».h"
 
 	/**
 	 * Author: «author»
@@ -44,6 +45,10 @@ class RecordLangCGenerator extends RecordLangGenericGenerator {
 	 */
 	«type.createSerializer»
 	'''
+	
+	def String getCstyle(String string) {
+		return Pattern::compile('([A-Z])').matcher(string).replaceAll("_$1").toLowerCase.substring(1)
+	}
 	
 	/**
 	 * Compute the directory name for a record type.
@@ -93,7 +98,7 @@ class RecordLangCGenerator extends RecordLangGenericGenerator {
 		 *
 		 * returns size of written structure
 		 */
-		int «type.packageName»_«type.name»_serialize(char *buffer, const int id, const int offset, const «type.packageName»_«type.name» value) {
+		int «type.packageName»_«type.name.cstyle»_serialize(char *buffer, const int id, const int offset, const «type.packageName»_«type.name.cstyle» value) {
 			int length = 0;
 			«type.collectAllProperties.map[createValueSerializer].join»
 			return length;
@@ -122,6 +127,6 @@ class RecordLangCGenerator extends RecordLangGenericGenerator {
 		}
 	}
 	
-	override getFileExtension() '''c'''
+	override fileName(RecordType type) '''«type.directoryName»«File::separator»«type.name.cstyle».c'''
 	
 }

@@ -48,7 +48,7 @@ public class TypeProvider implements Resource.Factory, ITypeProvider {
 	 * 
 	 * @return Returns an iterable with all primitive types.
 	 */
-	@Override
+	// @Override
 	public Iterable<EClassifier> getAllTypes() {
 		/*
 		 * Get the (already created) types from the helper resource and cast the list to a list of
@@ -59,7 +59,7 @@ public class TypeProvider implements Resource.Factory, ITypeProvider {
 						URI.createURI(EcoreURIHelperConstants.PROTOCOL + ":"
 								+ EcoreURIHelperConstants.PRIMITIVES), true).getContents(),
 				new Function1<EObject, EClassifier>() {
-					@Override
+					// @Override
 					public EClassifier apply(final EObject p) {
 						return (EClassifier) p;
 					}
@@ -73,7 +73,7 @@ public class TypeProvider implements Resource.Factory, ITypeProvider {
 	 *            The name of the type.
 	 * @return Returns the primitive type for a given type name, or null.
 	 */
-	@Override
+	// @Override
 	public EClassifier findTypeByName(final String name) {
 		if (Strings.isEmpty(name)) {
 			throw new IllegalArgumentException("Internal error: Empty type name.");
@@ -90,7 +90,7 @@ public class TypeProvider implements Resource.Factory, ITypeProvider {
 	 * @param uri
 	 *            The URI for the resource
 	 */
-	@Override
+	// @Override
 	public TypeResource createResource(final URI uri) {
 		return new TypeResource(uri);
 	}
@@ -98,7 +98,7 @@ public class TypeProvider implements Resource.Factory, ITypeProvider {
 	/**
 	 * @returns Returns the URI helper for the type system.
 	 */
-	@Override
+	// @Override
 	public EcoreTypeURIHelper getTypeUriHelper() {
 		return this.typeUriHelper;
 	}

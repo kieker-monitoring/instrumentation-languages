@@ -37,9 +37,10 @@ abstract class RecordLangGenericGenerator {
 	def abstract CharSequence directoryName(RecordType type);
 	
 	/**
-	 * Return the extension of the file type this generator produces.
+	 * Return the complete filename of the file type this generator produces in correct
+	 * language format for the given record.
 	 */
-	def abstract String getFileExtension();
+	def abstract String fileName(RecordType type);
 	
 	/**
 	 * Collect recursively a list of all properties.
@@ -96,4 +97,5 @@ abstract class RecordLangGenericGenerator {
 			case 'boolean' : 1
 		}
 	}
+		
 }

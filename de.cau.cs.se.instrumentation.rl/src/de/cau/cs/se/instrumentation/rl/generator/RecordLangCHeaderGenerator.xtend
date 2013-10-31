@@ -2,6 +2,7 @@ package de.cau.cs.se.instrumentation.rl.generator
 
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
 import de.cau.cs.se.instrumentation.rl.recordLang.Property
+import java.io.File
 
 class RecordLangCHeaderGenerator extends RecordLangCGenerator {
 	
@@ -46,7 +47,7 @@ class RecordLangCHeaderGenerator extends RecordLangCGenerator {
 	def createStructure(RecordType type) '''
 		typedef struct {
 			«type.collectAllProperties.map[createPropertyDeclaration].join»
-		} «type.packageName»_«type.name»;
+		} «type.packageName»_«type.name.cstyle»;
 	'''
 	
 	def createPropertyDeclaration(Property property) '''
@@ -67,8 +68,8 @@ class RecordLangCHeaderGenerator extends RecordLangCGenerator {
 		 *
 		 * returns size of written structure
 		 */
-		int «type.packageName»_«type.name»_serialize(char *buffer, const int id, const int offset, const «type.packageName»_«type.name» value);
+		int «type.packageName»_«type.name.cstyle»_serialize(char *buffer, const int id, const int offset, const «type.packageName»_«type.name.cstyle» value);
 	'''
 	
-	override getFileExtension() '''h'''
+	override fileName(RecordType type) '''«type.directoryName»«File::separator»«type.name.cstyle».h'''
 }

@@ -27,7 +27,7 @@ QualifiedNameWithWildcard:
 ;
 
 RecordType:
-	'struct' name=ID (':' parent=[RecordType|QualifiedName])? '{'
+	(abstract?='abstract') 'struct' name=ID (':' parent=[RecordType|QualifiedName])? '{'
 		(properties+=Property | constants+=Constant)*
 	'}'
 ;
