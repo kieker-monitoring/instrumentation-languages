@@ -1,0 +1,23 @@
+public abstract class AbstractMonitoringRecord implements IMonitoringRecord
+public class *                                 extends AbstractMonitoringRecord implements IMonitoringRecord.Factory, IMonitoringRecord.BinaryFactory
+public class TraceMetadata                     extends AbstractMonitoringRecord implements IMonitoringRecord.Factory, IMonitoringRecord.BinaryFactory, IFlowRecord
+public abstract class AbstractEvent            extends AbstractMonitoringRecord implements IMonitoringRecord.Factory, IMonitoringRecord.BinaryFactory, IEventRecord
+public abstract class AbstractTraceEvent       extends AbstractEvent implements ITraceRecord
+public class *                                 extends AbstractTraceEvent
+public abstract class AbstractMonitorEvent     extends AbstractTraceEvent
+public class ConstructionEvent                 extends AbstractTraceEvent implements IObjectRecord
+public class *                                 extends AbstractMonitorEvent
+public abstract class AbstractOperationEvent   extends AbstractTraceEvent implements IOperationRecord
+public class *                                 extends AbstractOperationEvent
+public class CallOperationEvent                extends AbstractOperationEvent implements ICallRecord
+public class BeforeOperationObjectEvent        extends BeforeOperationEvent implements IObjectRecord
+public class BeforeConstructorEvent            extends BeforeOperationEvent implements IConstructorRecord
+public class CallOperationObjectEvent          extends CallOperationEvent implements ICallObjectRecord
+public class AfterOperationObjectEvent         extends AfterOperationEvent implements IObjectRecord
+public class AfterOperationFailedEvent         extends AfterOperationEvent implements IExceptionRecord
+public class AfterConstructorEvent             extends AfterOperationEvent implements IConstructorRecord
+public class AfterOperationFailedObjectEvent   extends AfterOperationFailedEvent implements IObjectRecord
+public class AfterConstructorFailedEvent       extends AfterOperationFailedEvent implements IConstructorRecord
+public class CallConstructorEvent              extends CallOperationEvent implements IConstructorRecord
+
+
