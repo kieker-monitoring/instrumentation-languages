@@ -14,15 +14,17 @@ Workflow {
     bean = StandaloneSetup {
     	scanClassPath = true
     	platformUri = "${runtimeProject}/.."
-    	// The following two lines can be removed, if Xbase is not used.
     	registerGenModelFile = "platform:/resource/de.cau.cs.kieler.core.annotations/model/annotations.genmodel"
         registerGeneratedEPackage = "de.cau.cs.kieler.core.annotations.AnnotationsPackage"
     	registerGeneratedEPackage = "de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage"
     	registerGenModelFile = "platform:/resource/de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/RecordLang.genmodel"
+    	registerGenModelFile = "platform:/resource/org.eclipse.uml2.codegen.ecore/model/GenModel.genmodel"
+    	//registerEcoreFile = "platform:/resource/org.eclipse.uml2.codegen.ecore/model/GenModel.ecore"
+    	registerGeneratedEPackage = "org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage"
+    	//registerEcoreFile = "platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore"
+    	//registerGenModelFile = "platform:/resource/org.eclipse.emf.ecore/model/Ecore.genmodel"
     	registerGenModelFile = "platform:/resource/de.uka.ipd.sdq.pcm/model/pcm.genmodel"
     	registerGeneratedEPackage = "de.uka.ipd.sdq.pcm.core.entity.EntityPackage"
-    	registerGeneratedEPackage = "org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage"
-    	registerGenModelFile = "platform:/resource/org.eclipse.uml2.codegen.ecore/model/GenModel.genmodel"
     }
     
     component = DirectoryCleaner {
@@ -41,7 +43,7 @@ Workflow {
     	projectNameUi = "${projectName}.ui"
     	language = auto-inject {
     		uri = grammarURI
-    
+    		//loadedResource = "platform:/resource/org.eclipse.uml2.codegen.ecore/model/GenModel.genmodel"
     		// Java API to access grammar elements (required by several other fragments)
     		fragment = grammarAccess.GrammarAccessFragment auto-inject {}
     
