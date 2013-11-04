@@ -22,5 +22,10 @@ doc/kieker-workshop/images/kieker-data-bridge.pdf
 /**/src/kieker/.deps/*
 /**/src/kieker/libkieker.la
 /**/src/kieker/.libs/*
-/**/src/.libs/*
-/**/src/.deps/*
+/**/.deps/*
+/**/.libs/*
+/**/runtime-M4DSL/*
+/**/Makefile
+/**/libkiekermon/libkiekermon*
+/**/exampleProgram/exampleProgram*
+
