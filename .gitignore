@@ -28,5 +28,5 @@ doc/kieker-workshop/images/kieker-data-bridge.pdf
 /**/Makefile
 /**/libkiekermon/libkiekermon*
 /**/exampleProgram/exampleProgram*
-/**/Makefile
+/**/kieker4c/**/Makefile
 
