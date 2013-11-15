@@ -8,7 +8,7 @@ Model:
 	'package' name = QualifiedName
 	(packages += Package)*
 	(imports += Import)*
-	(records += RecordType)*
+	(types += Type)*
 ;
 
 Import:
@@ -26,8 +26,29 @@ QualifiedNameWithWildcard:
 	QualifiedName ('.' '*')?
 ;
 
+Type:
+	RecordType | PartialType
+;
+
+PartialType:
+	 PartialRecordType | TagType
+;
+
+PartialRecordType:
+	'pattern' name=ID (':' parents+=[PartialType|QualifiedName] (',' parents+=[PartialType|QualifiedName])*)? '{'
+		(properties+=Property | constants+=Constant)*
+	'}'
+;
+
+TagType:
+	'tag' name=ID (':' parents+=[TagType|QualifiedName] (',' parents+=[TagType|QualifiedName])*)?
+;
+
+
 RecordType:
-	(abstract?='abstract') 'struct' name=ID (':' parent=[RecordType|QualifiedName])? '{'
+	(abstract?='abstract')? 'struct' name=ID 
+		('extends' parent=[RecordType|QualifiedName])?
+		(':' parents+=[PartialType|QualifiedName] (',' parents+=[PartialType|QualifiedName])*)?  '{'
 		(properties+=Property | constants+=Constant)*
 	'}'
 ;

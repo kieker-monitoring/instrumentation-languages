@@ -19,6 +19,8 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
+import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType
+import de.cau.cs.se.instrumentation.rl.recordLang.TagType
 
 /**
  * Generates one single files per record for java, c, and perl. 
@@ -29,17 +31,37 @@ class RecordLangGenerator implements IGenerator {
 		val author = "Generic Kieker"
 		val version = "1.9"
 		
-		// list all generators to support
-		val Class<?>[] generators = #[
-			typeof(RecordLangCGenerator),
-			typeof(RecordLangCHeaderGenerator),
-			typeof(RecordLangJavaGenerator),
-			typeof(RecordLangPerlGenerator)
+		// list all generators to support RecordType
+		val Class<?>[] recordTypeGenerators = #[
+			typeof(de.cau.cs.se.instrumentation.rl.generator.c.RecordTypeGenerator),
+			typeof(de.cau.cs.se.instrumentation.rl.generator.cheader.RecordTypeGenerator),
+			typeof(de.cau.cs.se.instrumentation.rl.generator.java.RecordTypeGenerator),
+			typeof(de.cau.cs.se.instrumentation.rl.generator.perl.RecordTypeGenerator)
+		]
+		
+		// list all generators to support PartialRecordType
+		val Class<?>[] partialRecordTypeGenerators = #[
+			typeof(de.cau.cs.se.instrumentation.rl.generator.java.PartialRecordTypeGenerator)
+		]
+		
+		// list all generators to support RecordType
+		val Class<?>[] tagTypeGenerators = #[
+			typeof(de.cau.cs.se.instrumentation.rl.generator.java.TagTypeGenerator)
 		]
 						
-		for (Class<?> generator : generators) {
-			val cg = generator.getConstructor().newInstance() as RecordLangGenericGenerator
+		for (Class<?> generator : recordTypeGenerators) {
+			val cg = generator.getConstructor().newInstance() as AbstractRecordTypeGenerator
 			resource.allContents.filter(typeof(RecordType)).forEach[type | fsa.generateFile(cg.fileName(type), cg.createContent(type,author,version))]
+		}
+		
+		for (Class<?> generator : partialRecordTypeGenerators) {
+			val cg = generator.getConstructor().newInstance() as AbstractPartialRecordTypeGenerator
+			resource.allContents.filter(typeof(PartialRecordType)).forEach[type | fsa.generateFile(cg.fileName(type), cg.createContent(type,author,version))]
+		} 
+		
+		for (Class<?> generator : tagTypeGenerators) {
+			val cg = generator.getConstructor().newInstance() as AbstractTagTypeGenerator
+			resource.allContents.filter(typeof(TagType)).forEach[type | fsa.generateFile(cg.fileName(type), cg.createContent(type,author,version))]
 		} 
 			
 		

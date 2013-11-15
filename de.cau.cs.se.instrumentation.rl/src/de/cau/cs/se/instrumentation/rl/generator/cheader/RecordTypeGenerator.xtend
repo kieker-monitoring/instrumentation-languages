@@ -1,10 +1,11 @@
-package de.cau.cs.se.instrumentation.rl.generator
+package de.cau.cs.se.instrumentation.rl.generator.cheader
 
+import de.cau.cs.se.instrumentation.rl.recordLang.Type
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
 import de.cau.cs.se.instrumentation.rl.recordLang.Property
 import java.io.File
 
-class RecordLangCHeaderGenerator extends RecordLangCGenerator {
+class RecordTypeGenerator extends de.cau.cs.se.instrumentation.rl.generator.c.RecordTypeGenerator {
 	
 	/**
 	 * Primary code generation template.
@@ -71,5 +72,5 @@ class RecordLangCHeaderGenerator extends RecordLangCGenerator {
 		int «type.packageName»_«type.name.cstyle»_serialize(char *buffer, const int id, const int offset, const «type.packageName»_«type.name.cstyle» value);
 	'''
 	
-	override fileName(RecordType type) '''«type.directoryName»«File::separator»«type.name.cstyle».h'''
+	override fileName(Type type) '''«type.directoryName»«File::separator»«type.name.cstyle».h'''
 }

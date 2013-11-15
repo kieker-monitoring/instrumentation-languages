@@ -1,5 +1,6 @@
-package de.cau.cs.se.instrumentation.rl.generator
+package de.cau.cs.se.instrumentation.rl.generator.java
 
+import de.cau.cs.se.instrumentation.rl.recordLang.Type
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
 import de.cau.cs.se.instrumentation.rl.recordLang.Constant
 import de.cau.cs.se.instrumentation.rl.recordLang.Property
@@ -13,8 +14,10 @@ import de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral
 import de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral
 import org.eclipse.emf.common.util.EList
 import java.io.File
+import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator
+import de.cau.cs.se.instrumentation.rl.recordLang.PartialType
 
-class RecordLangJavaGenerator extends RecordLangGenericGenerator {
+class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	
 	/**
 	 * Primary code generation template.
@@ -48,70 +51,73 @@ class RecordLangJavaGenerator extends RecordLangGenericGenerator {
 		
 		package «(type.eContainer as Model).name»;
 		
-		import java.nio.BufferOverflowException;
-		import java.nio.BufferUnderflowException;
-		import java.io.UnsupportedEncodingException;
-		import java.nio.ByteBuffer;
+		«IF (!type.abstract)»import java.nio.BufferOverflowException;
+		«ENDIF»import java.nio.BufferUnderflowException;
+		«IF (type.collectAllProperties.exists[property | property.type.class_.name == 'string'])»import java.io.UnsupportedEncodingException;
+		«ENDIF»import java.nio.ByteBuffer;
 
 		import kieker.common.record.AbstractMonitoringRecord;
 		import kieker.common.record.IMonitoringRecord;
 		import kieker.common.util.registry.IRegistry;
+		
+		«if (type.parent != null) type.createParentImport»
+		«if (type.parents != null && type.parents.size > 0) type.parents.map[i | i.createInterfaceImport].join»
 		
 		/**
 		 * @author «author»
 		 * 
 		 * @since «version»
 		 */
-		public «if (type.abstract) 'abstract'» class «type.name» extends «if (type.parent!=null) type.parent.name else 'AbstractMonitoringRecord'» implements IMonitoringRecord.Factory, IMonitoringRecord.BinaryFactory {
-			public static final int SIZE = «allProperties.calculateSize»; // serialization size (without variable part of strings
+		public «if (type.abstract) 'abstract '»class «type.name» extends «if (type.parent!=null) type.parent.name else 'AbstractMonitoringRecord'» implements «type.createImplements» {
+			«IF (!type.abstract) »public static final int SIZE = «allProperties.calculateSize»; // serialization size (without variable part of strings)
+			«ENDIF»
+			private static final long serialVersionUID = «serialUID»;
+			
+			«IF (!type.abstract) »private static final Class<?>[] TYPES = {
+				«allProperties.map[property | createPropertyType(property)].join»
+			};«ENDIF»
 			
 			«type.constants.map[const | createDefaultConstant(const)].join»
-					
-			private static final long serialVersionUID = «serialUID»;
-			private static final Class<?>[] TYPES = {
-				«allProperties.map[property | createPropertyType(property)].join»
-			};
-		
-			«type.properties.map[property | createProperty(property)].join»
 			
+			«type.collectAllImplementationProperties.map[property | createProperty(property)].join»
 			«if (allProperties.exists[property | property.type.class_.name == 'string']) 'private byte[] stringBuffer = new byte[65535];'»
 		
 			/**
 			 * Creates a new instance of this class using the given parameters.
 			 * 
-			 «type.properties.map[property |createPropertyComment(property)].join»
+			 «allProperties.map[property |createPropertyComment(property)].join»
 			 */
-			public «type.name»(«allProperties.map[property |createPropertyParameter(property)].join(', ')») {
+			public «type.name»(«allProperties.map[property | createPropertyParameter(property)].join(', ')») {
 				«if (type.parent!=null) 'super('+type.parent.collectAllProperties.map[name].join(', ')+');'»
-				«type.properties.map[property | createPropertyAssignment(property)].join»
+				«type.collectAllImplementationProperties.map[property | createPropertyAssignment(property)].join»
 			}
 		
+			«IF (!type.abstract)»
 			/**
-			 * Creates a new instance of this class using the given parameter.
+			 * This constructor converts the given array into a record. It is recommended to use the array which is the result of a call to {@link #toArray()}.
 			 * 
 			 * @param values
-			 *            The array containing the values for the fields of this class. This should normally be the array resulting in a call to {@link #toArray()}.
-			 * @param types
-			 *            The types of the elements in the first array.
+			 *            The values for the record.
 			 */
-			public «type.name»(final Object[] values) { // NOPMD (values stored directly)
-				«IF (type.parent!=null)»
-					super(values, TYPES);
-				«ENDIF»
-				«type.properties.createPropertyGenericAssignments(if (type.parent!=null) type.parent.collectAllProperties.size else 0)»
+			public «type.name»(final Object[] values) { // NOPMD (direct store of values)
+				«IF (type.parent==null)»AbstractMonitoringRecord.checkArray(values, TYPES);
+				«ELSE»super(values, TYPES);
+				«ENDIF»«type.collectAllImplementationProperties.createPropertyGenericAssignments(if (type.parent!=null) type.parent.collectAllProperties.size else 0)»
 			}
+			«ENDIF»
 			
 			/**
-			 * Initialize parent data structures.
+			 * This constructor uses the given array to initialize the fields of this record.
 			 * 
 			 * @param values
-			 *            The array containing the values for the fields of this class. This should normally be the array resulting in a call to {@link #toArray()}.
+			 *            The values for the record.
+			 * @param valueTypes
+			 *            The types of the elements in the first array.
 			 */
-			protected «type.name»(final Object[] values) { // NOPMD (values stored directly)
-				«IF (type.parent!=null)»
-					super(values, TYPES);
-				«ENDIF»
-				«type.properties.createPropertyGenericAssignments(if (type.parent!=null) type.parent.collectAllProperties.size else 0)»
+			protected «type.name»(final Object[] values, final Class<?>[] valueTypes) { // NOPMD (values stored directly)
+				«IF (type.parent==null)»AbstractMonitoringRecord.checkArray(values, valueTypes);
+				«ELSE»super(values, valueTypes);
+				«ENDIF»«type.collectAllImplementationProperties.createPropertyGenericAssignments(if (type.parent!=null) type.parent.collectAllProperties.size else 0)»
 			}
 		
 			/**
@@ -124,16 +130,17 @@ class RecordLangJavaGenerator extends RecordLangGenericGenerator {
 			 *             if buffer not sufficient
 			 */
 			public «type.name»(final ByteBuffer buffer, final IRegistry<String> stringRegistry) throws BufferUnderflowException {
-				«if (type.parent!=null) 'super(buffer,stringRegistry);'»
-				«type.properties.map[property | createPropertyValueFromBuffer(property)].join('\n')»
+				«IF (type.parent!=null)»super(buffer, stringRegistry);
+				«ENDIF»«type.collectAllImplementationProperties.map[property | createPropertyValueFromBuffer(property)].join('\n')»
 			}
 		
+		«IF (!type.abstract)»
 			/**
 			 * {@inheritDoc}
 			 */
-			public final Object[] toArray() {
+			public Object[] toArray() {
 				return new Object[] {
-					«type.properties.map[property | createPropertyArray(property)].join(',\n')»
+					«allProperties.map[property | createPropertyArray(property)].join(',\n')»
 				};
 			}
 		
@@ -147,7 +154,7 @@ class RecordLangJavaGenerator extends RecordLangGenericGenerator {
 			/**
 			 * {@inheritDoc}
 			 */
-			public final Class<?>[] getValueTypes() {
+			public Class<?>[] getValueTypes() {
 				return TYPES; // NOPMD
 			}
 
@@ -157,32 +164,53 @@ class RecordLangJavaGenerator extends RecordLangGenericGenerator {
 			public int getSize() {
 				return SIZE;
 			}
-		
+		«ENDIF»
 			/**
 			 * {@inheritDoc}
 			 * 
 			 * @deprecated This record uses the {@link kieker.common.record.IMonitoringRecord.Factory} mechanism. Hence, this method is not implemented.
 			 */
 			@Deprecated
-			public final void initFromArray(final Object[] values) {
+			public void initFromArray(final Object[] values) {
 				throw new UnsupportedOperationException();
 			}
-			
+		
 			/**
 			 * {@inheritDoc}
 			 * 
 			 * @deprecated This record uses the {@link kieker.common.record.IMonitoringRecord.BinaryFactory} mechanism. Hence, this method is not implemented.
 			 */
 			@Deprecated
-			public final void initFromBytes(final ByteBuffer buffer, final IRegistry<String> stringRegistry) throws BufferUnderflowException {
+			public void initFromBytes(final ByteBuffer buffer, final IRegistry<String> stringRegistry) throws BufferUnderflowException {
 				throw new UnsupportedOperationException();
 			}
 		
-			«type.properties.map[property | createPropertyGetter(property)].join»
+			«type.collectAllImplementationProperties.map[property | createPropertyGetter(property)].join»
 		}
 		'''
 	}
+		
+	/**
+	 * Create the sequence of implements of the class
+	 */
+	def CharSequence createImplements(RecordType type) '''IMonitoringRecord.Factory, IMonitoringRecord.BinaryFactory«if (type.parents != null && type.parents.size > 0) ', ' + type.parents.map[i | i.createImplement].join(', ')»'''
+		
+	def createImplement(PartialType type) '''«type.name»'''
+	/**
+	 * Create a list of imports for the given type.
+	 */	
+	def createInterfaceImport(PartialType type) '''import «(type.eContainer as Model).name».«type.name»;
+	'''
 	
+	/**
+	 * Create import for the parent structure.
+	 */
+	def createParentImport(RecordType type) '''import «(type.parent.eContainer as Model).name».«type.parent.name»;
+	'''
+
+	/**
+	 * 
+	 */
 	def createPropertyValueFromBuffer(Property property) {
 		switch (property.type.class_.name) {
 			case 'key' : '''this.«property.name» = stringRegistry.get(buffer.getInt());'''
@@ -257,7 +285,7 @@ class RecordLangJavaGenerator extends RecordLangGenericGenerator {
 	 * 
 	 * @returns the resulting array entry
 	 */
-	def createPropertyArray(Property property) '''this.«property.name»'''
+	def createPropertyArray(Property property) '''this.get«property.name.toFirstUpper»()'''
 	
 	/**
 	 * Create all assignments for the generic constructor based on property name and an array.
@@ -387,8 +415,10 @@ class RecordLangJavaGenerator extends RecordLangGenericGenerator {
 	/**
 	 * Compute the directory name for a record type.
 	 */
-	override directoryName(RecordType type) '''java«File::separator»«(type.eContainer as Model).name.replace('.',File::separator)»'''
-	
+	override directoryName(Type type) '''java«File::separator»«(type.eContainer as Model).name.replace('.',File::separator)»'''
+
+	override fileName(Type type) '''«type.directoryName»«File::separator»«type.name».java'''
+
 	
 	
 	/**
@@ -403,6 +433,4 @@ class RecordLangJavaGenerator extends RecordLangGenericGenerator {
 	dispatch def CharSequence createValue(Literal literal) {
 		'ERROR ' + literal.class.name
 	}
-	
-	override fileName(RecordType type) '''«type.directoryName»«File::separator»«type.name».java'''
 }

@@ -1,13 +1,15 @@
-package de.cau.cs.se.instrumentation.rl.generator
+package de.cau.cs.se.instrumentation.rl.generator.c
 
+import de.cau.cs.se.instrumentation.rl.recordLang.Type
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
 import de.cau.cs.se.instrumentation.rl.recordLang.Property
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
 import de.cau.cs.se.instrumentation.rl.recordLang.Model
 import java.io.File
 import java.util.regex.Pattern
+import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator
 
-class RecordLangCGenerator extends RecordLangGenericGenerator {
+class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	
 	/**
 	 * Primary code generation template.
@@ -53,7 +55,9 @@ class RecordLangCGenerator extends RecordLangGenericGenerator {
 	/**
 	 * Compute the directory name for a record type.
 	 */
-	override directoryName(RecordType type) '''c«File::separator»«(type.eContainer as Model).name.replace('.',File::separator)»'''
+	override directoryName(Type type) '''c«File::separator»«(type.eContainer as Model).name.replace('.',File::separator)»'''
+	
+	override fileName(Type type) '''«type.directoryName»«File::separator»«type.name.cstyle».c'''
 	
 	/**
 	 * Compute the package name used as prefix for all functions.
@@ -126,7 +130,5 @@ class RecordLangCGenerator extends RecordLangGenericGenerator {
 			default : classifier.class_.name
 		}
 	}
-	
-	override fileName(RecordType type) '''«type.directoryName»«File::separator»«type.name.cstyle».c'''
-	
+		
 }

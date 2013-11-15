@@ -4,12 +4,22 @@
 package de.cau.cs.se.instrumentation.rl.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 
 /**
  * Use this class to register components to be used within the IDE.
  */
 public class RecordLangUiModule extends de.cau.cs.se.instrumentation.rl.ui.AbstractRecordLangUiModule {
-	public RecordLangUiModule(AbstractUIPlugin plugin) {
+	public RecordLangUiModule(final AbstractUIPlugin plugin) {
 		super(plugin);
+	}
+
+	public Class<? extends ISemanticHighlightingCalculator> bindISemanticHighlightingCalculator() {
+		return TypesHighlightingCalculator.class;
+	}
+
+	public Class<? extends IHighlightingConfiguration> bindIHighlightingConfiguration() {
+		return TypesHighlightingConfiguration.class;
 	}
 }
