@@ -36,13 +36,13 @@ abstract class AbstractTypeGenerator {
 			val EList<Property> result = type.parent.collectAllProperties
 			if (type.parents != null) 
 				type.parents.forEach[result.addAll(collectAllProperties)]
-			result.addAll(type.properties)
+			result.addAllUnique(type.properties)
 			return result
 		} else {
 			val EList<Property> result = new org.eclipse.emf.common.util.BasicEList<Property>()
 			if (type.parents != null) 
 				type.parents.forEach[result.addAll(collectAllProperties)]
-			result.addAll(type.properties)
+			result.addAllUnique(type.properties)
 			return result
 		}
 	}
@@ -61,7 +61,7 @@ abstract class AbstractTypeGenerator {
 		val EList<Property> result = new org.eclipse.emf.common.util.BasicEList<Property>()
 		if (type.parents != null)
 			type.parents.forEach[result.addAll(collectAllProperties)]
-		result.addAll(type.properties)
+		result.addAllUnique(type.properties)
 		return result
 	}
 	
@@ -98,8 +98,16 @@ abstract class AbstractTypeGenerator {
 		val EList<Property> result = new org.eclipse.emf.common.util.BasicEList<Property>()
 		if (type.parents!=null)
 			type.parents.forEach[result.addAll(collectAllInterfaceProperties)]
-		result.addAll(type.properties)
+		result.addAllUnique(type.properties)
 		return result
+	}
+	
+	/**
+	 * Add elements of the second list to the first list if it is not already in there.
+	 */
+	def EList<Property> addAllUnique(EList<Property> list, EList<Property> addList) {
+		addList.forEach[item | if (!list.contains(item)) list.add(item)]
+		return list
 	}
 	
 	/**
