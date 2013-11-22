@@ -39,6 +39,7 @@ Workflow {
     	registerGeneratedEPackage = "de.uka.ipd.sdq.pcm.system.SystemPackage"
     	registerGeneratedEPackage = "de.uka.ipd.sdq.pcm.usagemodel.UsagemodelPackage"
     	registerGeneratedEPackage = "de.uka.ipd.sdq.stoex.StoexPackage"
+
     	registerGenModelFile = "platform:/resource/de.cau.cs.kieler.core.annotations/model/annotations.genmodel"
         registerGenModelFile = "platform:/resource/de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/RecordLang.genmodel"
     	registerGenModelFile = "platform:/resource/org.eclipse.uml2.codegen.ecore/model/GenModel.genmodel"
@@ -64,7 +65,6 @@ Workflow {
     	projectNameUi = "${projectName}.ui"
     	language = auto-inject {
     		uri = grammarURI
-    		//loadedResource = "platform:/resource/org.eclipse.uml2.codegen.ecore/model/GenModel.genmodel"
     		// Java API to access grammar elements (required by several other fragments)
     		fragment = grammarAccess.GrammarAccessFragment auto-inject {}
     
