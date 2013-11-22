@@ -82,7 +82,22 @@ ReferenceValue:
 ;
 
 Parameter:
-	'@' property=ID
+	RuntimeProperty | ReflectionProperty
+;
+
+RuntimeProperty:
+	'#' reference=ID
+;
+
+ReflectionProperty:
+	'$' function=ReflectionFunction
+;
+
+enum ReflectionFunction:
+	NAME = 'name' |
+	SIGNATURE = 'signature' |
+	CLASS ='class' |
+	RETURN_TYPE = 'return-type'
 ;
 
 enum Operator:

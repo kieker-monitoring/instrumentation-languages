@@ -3,11 +3,11 @@ package de.cau.cs.se.instrumentation.rl.generator
 import org.eclipse.emf.common.util.EList
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
 import de.cau.cs.se.instrumentation.rl.recordLang.Property
-import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType
 import de.cau.cs.se.instrumentation.rl.recordLang.Type
+import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation
 
 abstract class AbstractTypeGenerator {
-		
+			
 	/**
 	 * Compute the directory name for a given type based on the package it belongs to.
 	 * 
@@ -21,95 +21,7 @@ abstract class AbstractTypeGenerator {
 	 * language format for the given record.
 	 */
 	def abstract String fileName(Type type);
-	
-	/**
-	 * Collect recursively a list of all properties.
-	 * 
-	 * @param type
-	 * 		a recordType
-	 * 
-	 * @returns
-	 * 		a complete list of all properties in a record
-	 */
-	dispatch def EList<Property> collectAllProperties(RecordType type) {
-		if (type.parent != null) {
-			val EList<Property> result = type.parent.collectAllProperties
-			if (type.parents != null) 
-				type.parents.forEach[result.addAll(collectAllProperties)]
-			result.addAllUnique(type.properties)
-			return result
-		} else {
-			val EList<Property> result = new org.eclipse.emf.common.util.BasicEList<Property>()
-			if (type.parents != null) 
-				type.parents.forEach[result.addAll(collectAllProperties)]
-			result.addAllUnique(type.properties)
-			return result
-		}
-	}
 		
-	
-	/**
-	 * Collect recursively a list of all properties.
-	 * 
-	 * @param type
-	 * 		a recordType
-	 * 
-	 * @returns
-	 * 		a complete list of all properties in a record
-	 */
-	dispatch def EList<Property> collectAllProperties(PartialRecordType type) {
-		val EList<Property> result = new org.eclipse.emf.common.util.BasicEList<Property>()
-		if (type.parents != null)
-			type.parents.forEach[result.addAll(collectAllProperties)]
-		result.addAllUnique(type.properties)
-		return result
-	}
-	
-	/**
-	 * Collect recursively a list of all properties of interfaces
-	 * 
-	 * @param type
-	 * 		a recordType
-	 * 
-	 * @returns
-	 * 		a complete list of all properties in a record
-	 */
-	dispatch def EList<Property> collectAllInterfaceProperties(RecordType type) {
-		if (type.parents != null) {
-			val EList<Property> result = new org.eclipse.emf.common.util.BasicEList<Property>()
-			type.parents.forEach[result.addAll(collectAllInterfaceProperties)]
-			return result
-		} else {
-			return new org.eclipse.emf.common.util.BasicEList<Property>()
-		}
-	}
-		
-	
-	/**
-	 * Collect recursively a list of all properties of interfaces
-	 * 
-	 * @param type
-	 * 		a recordType
-	 * 
-	 * @returns
-	 * 		a complete list of all properties in a record
-	 */
-	dispatch def EList<Property> collectAllInterfaceProperties(PartialRecordType type) {
-		val EList<Property> result = new org.eclipse.emf.common.util.BasicEList<Property>()
-		if (type.parents!=null)
-			type.parents.forEach[result.addAll(collectAllInterfaceProperties)]
-		result.addAllUnique(type.properties)
-		return result
-	}
-	
-	/**
-	 * Add elements of the second list to the first list if it is not already in there.
-	 */
-	def EList<Property> addAllUnique(EList<Property> list, EList<Property> addList) {
-		addList.forEach[item | if (!list.contains(item)) list.add(item)]
-		return list
-	}
-	
 	/**
 	 * Collect recursively a list of all properties of interfaces and add those of
 	 * the type.
@@ -121,7 +33,7 @@ abstract class AbstractTypeGenerator {
 	 * 		a complete list of all properties in a record
 	 */
 	def EList<Property> collectAllImplementationProperties(RecordType type) {
-		val EList<Property> result = type.collectAllInterfaceProperties
+		val EList<Property> result = PropertyEvaluation::collectAllInterfaceProperties(type)
 		result.addAll(type.properties)
 		return result
 	}

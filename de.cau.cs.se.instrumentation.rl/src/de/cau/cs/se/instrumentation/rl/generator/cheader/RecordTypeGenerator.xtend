@@ -4,6 +4,7 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Type
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
 import de.cau.cs.se.instrumentation.rl.recordLang.Property
 import java.io.File
+import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation
 
 class RecordTypeGenerator extends de.cau.cs.se.instrumentation.rl.generator.c.RecordTypeGenerator {
 	
@@ -47,7 +48,7 @@ class RecordTypeGenerator extends de.cau.cs.se.instrumentation.rl.generator.c.Re
 	
 	def createStructure(RecordType type) '''
 		typedef struct {
-			«type.collectAllProperties.map[createPropertyDeclaration].join»
+			«PropertyEvaluation::collectAllProperties(type).map[createPropertyDeclaration].join»
 		} «type.packageName»_«type.name.cstyle»;
 	'''
 	

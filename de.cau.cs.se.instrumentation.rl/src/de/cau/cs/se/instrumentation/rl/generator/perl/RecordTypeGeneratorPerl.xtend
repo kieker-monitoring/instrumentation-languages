@@ -8,6 +8,7 @@ import org.eclipse.emf.common.util.EList
 import de.cau.cs.se.instrumentation.rl.recordLang.Property
 import java.io.File
 import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator
+import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation
 
 class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		
@@ -26,7 +27,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		
 		=head1 SYNOPSIS
 		
-		 my $record = «type.recordName»->new(«type.collectAllProperties.createParameterCall»);
+		 my $record = «type.recordName»->new(«PropertyEvaluation::collectAllProperties(type).createParameterCall»);
 		 
 		 $writer->write($record->genoutput());
 		
@@ -36,16 +37,16 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 				
 		=head1 METHODS
 		
-		=head2 $record = «type.recordName»->new(«type.collectAllProperties.createParameterCall»);
+		=head2 $record = «type.recordName»->new(«PropertyEvaluation::collectAllProperties(type).createParameterCall»);
 		
 		Creates a new record with the given parameters.
 		
 		=cut
 		
 		sub new {
-		  my («type.collectAllProperties.createParameterCall») = @_;
+		  my («PropertyEvaluation::collectAllProperties(type).createParameterCall») = @_;
 		  my $this = {
-		    «type.collectAllProperties.map[createProperty].join(',\n')»
+		    «PropertyEvaluation::collectAllProperties(type).map[createProperty].join(',\n')»
 		  };
 		
 		  return bless($this,$type);

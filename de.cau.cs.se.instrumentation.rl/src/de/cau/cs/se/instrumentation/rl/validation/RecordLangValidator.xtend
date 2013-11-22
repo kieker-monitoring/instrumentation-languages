@@ -24,15 +24,15 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 	@Check
 	def checkPropertyDeclaration(Property property) {
 		if (property.eContainer instanceof RecordType) {
-			if ((property.eContainer as RecordType).collectAllProperties.exists[p | p.name.equals(property.name) && p != property]) {
-				val Type type = ((property.eContainer as RecordType).collectAllProperties.findFirst[p | p.name.equals(property.name) && p != property].eContainer as Type)
+			if (PropertyEvaluation::collectAllProperties(property.eContainer as RecordType).exists[p | p.name.equals(property.name) && p != property]) {
+				val Type type = PropertyEvaluation::collectAllProperties(property.eContainer as RecordType).findFirst[p | p.name.equals(property.name) && p != property].eContainer as Type
 				error('Property has been defined in ' + type.name + '. Cannot be declared again.', 
 					RecordLangPackage$Literals::PROPERTY__NAME,
 					INVALID_NAME)
 			}
 		} else if (property.eContainer instanceof PartialRecordType) {
-			if ((property.eContainer as PartialRecordType).collectAllProperties.exists[p | p.name.equals(property.name) && p != property]) {
-				val Type type = ((property.eContainer as PartialRecordType).collectAllProperties.findFirst[p | p.name.equals(property.name) && p != property].eContainer as Type)
+			if (PropertyEvaluation::collectAllProperties(property.eContainer as PartialRecordType).exists[p | p.name.equals(property.name) && p != property]) {
+				val Type type = PropertyEvaluation::collectAllProperties(property.eContainer as PartialRecordType).findFirst[p | p.name.equals(property.name) && p != property].eContainer as Type
 				error('Property has been defined in ' + type.name + '. Cannot be declared again.', 
 					RecordLangPackage$Literals::PROPERTY__NAME,
 					INVALID_NAME)
@@ -41,18 +41,17 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 	}
 	
 	@Check
-	def checkTypeComposition(RecordType type) {
-		val EList<Property> properties = type.collectAllProperties
+	def checkRecordTypeComposition(RecordType type) {
+		val EList<Property> properties = PropertyEvaluation::collectAllProperties(type)
 		if (properties.exists[p | properties.exists[pInner | p.name.equals(pInner.name) && p != pInner]]) {
 			val EList<Pair<Property,Property>> duplicates = new org.eclipse.emf.common.util.BasicEList<Pair<Property,Property>>()
 			properties.forEach[p | duplicates.add(p.findDuplicate(properties))]
-			val entry = duplicates.get(0)
-			System::out.println('The struct ' + type.name + ' inherits the property ' + entry.key.name + 
-						' from ' + (entry.key.eContainer as Type).name + ' and ' + (entry.value.eContainer as Type).name)
-			error('The struct ' + type.name + ' inherits the property ' + entry.key.name + 
-						' from ' + (entry.key.eContainer as Type).name + ' and ' + (entry.value.eContainer as Type).name, 
-						RecordLangPackage$Literals::RECORD_TYPE__PROPERTIES,
-						INVALID_NAME)
+			duplicates.forEach[entry |
+				error('Multiple property inheritance of ' + entry.key.name + 
+							' from ' + (entry.key.eContainer as Type).name + ' and ' + (entry.value.eContainer as Type).name, 
+							RecordLangPackage$Literals::PARTIAL_RECORD_TYPE__PARENTS,
+							INVALID_NAME)
+			]
 		}
 	}
 	
@@ -62,60 +61,18 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 	}
 	
 	@Check
-	def checkTypeComposition(PartialRecordType type) {
-		val EList<Property> properties = type.collectAllProperties
+	def checkPartialTypeComposition(PartialRecordType type) {
+		val EList<Property> properties = PropertyEvaluation::collectAllProperties(type)
 		if (properties.exists[p | properties.exists[pInner | p.name.equals(pInner.name) && p != pInner]]) {
 			val EList<Pair<Property,Property>> duplicates = new org.eclipse.emf.common.util.BasicEList<Pair<Property,Property>>()
 			properties.forEach[p | duplicates.add(p.findDuplicate(properties))]
-			System::out.println('PartialRecordType duplicates ' + duplicates.size)
-			duplicates.forEach[entry | 
-					error('The struct ' + type.name + ' inherits the property ' + entry.key.name + 
-						' from ' + (entry.key.eContainer as Type).name + ' and ' + (entry.value.eContainer as Type).name, 
-						RecordLangPackage$Literals::RECORD_TYPE__PROPERTIES,
-						INVALID_NAME)]
+			duplicates.forEach[entry |
+				error('Multiple property inheritance of ' + entry.key.name + 
+							' from ' + (entry.key.eContainer as Type).name + ' and ' + (entry.value.eContainer as Type).name, 
+							RecordLangPackage$Literals::PARTIAL_RECORD_TYPE__PARENTS,
+							INVALID_NAME)
+			]
 		}
 	}
 	
-	/**
-	 * Collect recursively a list of all properties.
-	 * 
-	 * @param type
-	 * 		a recordType
-	 * 
-	 * @returns
-	 * 		a complete list of all properties in a record
-	 */
-	dispatch def EList<Property> collectAllProperties(RecordType type) {
-		if (type.parent != null) {
-			val EList<Property> result = type.parent.collectAllProperties
-			if (type.parents != null) 
-				type.parents.forEach[result.addAll(collectAllProperties)]
-			result.addAll(type.properties)
-			return result
-		} else {
-			val EList<Property> result = new org.eclipse.emf.common.util.BasicEList<Property>()
-			if (type.parents != null) 
-				type.parents.forEach[result.addAll(collectAllProperties)]
-			result.addAll(type.properties)
-			return result
-		}
-	}
-		
-	
-	/**
-	 * Collect recursively a list of all properties.
-	 * 
-	 * @param type
-	 * 		a recordType
-	 * 
-	 * @returns
-	 * 		a complete list of all properties in a record
-	 */
-	dispatch def EList<Property> collectAllProperties(PartialRecordType type) {
-		val EList<Property> result = new org.eclipse.emf.common.util.BasicEList<Property>()
-		if (type.parents != null)
-			type.parents.forEach[result.addAll(collectAllProperties)]
-		result.addAll(type.properties)
-		return result
-	}
 }

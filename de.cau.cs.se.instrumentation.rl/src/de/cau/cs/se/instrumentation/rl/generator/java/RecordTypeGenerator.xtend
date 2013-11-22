@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.EList
 import java.io.File
 import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator
 import de.cau.cs.se.instrumentation.rl.recordLang.PartialType
+import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation
 
 class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	
@@ -31,7 +32,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 */
 	override createContent(RecordType type, String author, String version) {
 		val serialUID = '123456789L'
-		val allProperties = type.collectAllProperties
+		val allProperties = PropertyEvaluation::collectAllProperties(type)
 		'''
 		/***************************************************************************
 		 * Copyright 2013 Kieker Project (http://kieker-monitoring.net)
@@ -53,7 +54,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		
 		«IF (!type.abstract)»import java.nio.BufferOverflowException;
 		«ENDIF»import java.nio.BufferUnderflowException;
-		«IF (type.collectAllProperties.exists[property | property.type.class_.name == 'string'])»import java.io.UnsupportedEncodingException;
+		«IF (PropertyEvaluation::collectAllProperties(type).exists[property | property.type.class_.name == 'string'])»import java.io.UnsupportedEncodingException;
 		«ENDIF»import java.nio.ByteBuffer;
 
 		import kieker.common.record.AbstractMonitoringRecord;
@@ -88,7 +89,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 			 «allProperties.map[property |createPropertyComment(property)].join»
 			 */
 			public «type.name»(«allProperties.map[property | createPropertyParameter(property)].join(', ')») {
-				«if (type.parent!=null) 'super('+type.parent.collectAllProperties.map[name].join(', ')+');'»
+				«if (type.parent!=null) 'super('+PropertyEvaluation::collectAllProperties(type.parent).map[name].join(', ')+');'»
 				«type.collectAllImplementationProperties.map[property | createPropertyAssignment(property)].join»
 			}
 		
@@ -102,7 +103,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 			public «type.name»(final Object[] values) { // NOPMD (direct store of values)
 				«IF (type.parent==null)»AbstractMonitoringRecord.checkArray(values, TYPES);
 				«ELSE»super(values, TYPES);
-				«ENDIF»«type.collectAllImplementationProperties.createPropertyGenericAssignments(if (type.parent!=null) type.parent.collectAllProperties.size else 0)»
+				«ENDIF»«type.collectAllImplementationProperties.createPropertyGenericAssignments(if (type.parent!=null) PropertyEvaluation::collectAllProperties(type.parent).size else 0)»
 			}
 			«ENDIF»
 			
@@ -117,7 +118,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 			protected «type.name»(final Object[] values, final Class<?>[] valueTypes) { // NOPMD (values stored directly)
 				«IF (type.parent==null)»AbstractMonitoringRecord.checkArray(values, valueTypes);
 				«ELSE»super(values, valueTypes);
-				«ENDIF»«type.collectAllImplementationProperties.createPropertyGenericAssignments(if (type.parent!=null) type.parent.collectAllProperties.size else 0)»
+				«ENDIF»«type.collectAllImplementationProperties.createPropertyGenericAssignments(if (type.parent!=null) PropertyEvaluation::collectAllProperties(type.parent).size else 0)»
 			}
 		
 			/**

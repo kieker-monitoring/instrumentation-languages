@@ -8,6 +8,7 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Model
 import java.io.File
 import java.util.regex.Pattern
 import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator
+import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation
 
 class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	
@@ -104,7 +105,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		 */
 		int «type.packageName»_«type.name.cstyle»_serialize(char *buffer, const int id, const int offset, const «type.packageName»_«type.name.cstyle» value) {
 			int length = 0;
-			«type.collectAllProperties.map[createValueSerializer].join»
+			«PropertyEvaluation::collectAllProperties(type).map[createValueSerializer].join»
 			return length;
 		}
 	'''
