@@ -1,0 +1,33 @@
+SMAP
+RecordLangScopeProvider.java
+Xtend
+*S Xtend
+*F
++ 0 RecordLangScopeProvider.xtend
+src/de/cau/cs/se/instrumentation/rl/scoping/RecordLangScopeProvider.xtend
+*L
+45:41,4
+46:45
+57:54,3
+56:57
+63:61,3
+65:64,11
+71:75,4
+72:79,2
+74:81
+75:82,3
+74:85
+78:86
+74:87
+71:88,2
+63:90
+82:91
+63:92
+88:96
+89:97
+90:98,2
+91:100,3
+90:103
+89:104
+94:105
+*E
