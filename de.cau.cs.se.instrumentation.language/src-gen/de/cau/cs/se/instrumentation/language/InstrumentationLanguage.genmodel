@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.cau.cs.se.instrumentation.language/src-gen"
+    editDirectory="/de.cau.cs.se.instrumentation.language.edit/src" editorDirectory="/de.cau.cs.se.instrumentation.language.editor/src"
+    modelPluginID="de.cau.cs.se.instrumentation.language" forceOverwrite="true" modelName="InstrumentationLanguage"
+    updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="de.cau.cs.se.instrumentation.language.edit"
+    editorPluginID="de.cau.cs.se.instrumentation.language.editor" runtimeVersion="2.8">
+  <genPackages prefix="Instrumentation" basePackage="de.cau.cs.se.instrumentation.language"
+      disposableProviderFactory="true" ecorePackage="InstrumentationLanguage.ecore#/">
+    <genClasses ecoreClass="InstrumentationLanguage.ecore#//Model">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute InstrumentationLanguage.ecore#//Model/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference InstrumentationLanguage.ecore#//Model/packages"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference InstrumentationLanguage.ecore#//Model/imports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference InstrumentationLanguage.ecore#//Model/patterns"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference InstrumentationLanguage.ecore#//Model/records"/>
+    </genClasses>
+    <genClasses ecoreClass="InstrumentationLanguage.ecore#//Import">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute InstrumentationLanguage.ecore#//Import/importedNamespace"/>
+    </genClasses>
+    <genClasses ecoreClass="InstrumentationLanguage.ecore#//Package">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute InstrumentationLanguage.ecore#//Package/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference InstrumentationLanguage.ecore#//Package/package"/>
+    </genClasses>
+    <genClasses ecoreClass="InstrumentationLanguage.ecore#//Pattern">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute InstrumentationLanguage.ecore#//Pattern/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference InstrumentationLanguage.ecore#//Pattern/parameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference InstrumentationLanguage.ecore#//Pattern/codeSequcene"/>
+    </genClasses>
+    <genClasses ecoreClass="InstrumentationLanguage.ecore#//Parameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute InstrumentationLanguage.ecore#//Parameter/name"/>
+    </genClasses>
+    <genClasses ecoreClass="InstrumentationLanguage.ecore#//CodeElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute InstrumentationLanguage.ecore#//CodeElement/toUpper"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference InstrumentationLanguage.ecore#//CodeElement/value"/>
+    </genClasses>
+    <genClasses ecoreClass="InstrumentationLanguage.ecore#//SimpleCodeElement"/>
+    <genClasses ecoreClass="InstrumentationLanguage.ecore#//ParameterRef">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference InstrumentationLanguage.ecore#//ParameterRef/ref"/>
+    </genClasses>
+    <genClasses ecoreClass="InstrumentationLanguage.ecore#//XStringLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute InstrumentationLanguage.ecore#//XStringLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="InstrumentationLanguage.ecore#//Record">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute InstrumentationLanguage.ecore#//Record/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference InstrumentationLanguage.ecore#//Record/properties"/>
+    </genClasses>
+    <genClasses ecoreClass="InstrumentationLanguage.ecore#//Classifier">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference InstrumentationLanguage.ecore#//Classifier/package"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference InstrumentationLanguage.ecore#//Classifier/class"/>
+    </genClasses>
+    <genClasses ecoreClass="InstrumentationLanguage.ecore#//Property">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference InstrumentationLanguage.ecore#//Property/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute InstrumentationLanguage.ecore#//Property/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference InstrumentationLanguage.ecore#//Property/properties"/>
+    </genClasses>
+    <genClasses ecoreClass="InstrumentationLanguage.ecore#//ReferenceProperty">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference InstrumentationLanguage.ecore#//ReferenceProperty/ref"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference InstrumentationLanguage.ecore#//ReferenceProperty/properties"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
