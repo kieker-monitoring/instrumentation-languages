@@ -5,12 +5,9 @@ package de.cau.cs.se.instrumentation.al.validation;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.eclipse.emf.ecore.EPackage;
 
-import de.cau.cs.kieler.core.annotations.text.validation.AnnotationsJavaValidator;
-
-public class AbstractApplicationLangValidator extends AnnotationsJavaValidator {
+public class AbstractApplicationLangValidator extends de.cau.cs.kieler.core.annotations.text.validation.AnnotationsValidator {
 
 	@Override
 	protected List<EPackage> getEPackages() {

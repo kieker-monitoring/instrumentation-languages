@@ -1,6 +1,5 @@
 # ignore those files
 */bin/*
-*/*-gen/**
 /de.cau.cs.se.kieker.service.testclient/autoscan.log
 /de.cau.cs.se.kieker.service.testclient/config.log
 /doc/kieker-workshop/idl-slides.tex
