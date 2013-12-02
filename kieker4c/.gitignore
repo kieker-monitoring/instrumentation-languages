@@ -1,4 +1,5 @@
-/TestProgram
-/config.status
-/libtool
-/Makefile
+**/TestProgram
+**/config.status
+**/libtool
+**/Makefile
+**/.deps/**
