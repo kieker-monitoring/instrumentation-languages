@@ -3,9 +3,20 @@
  */
 package de.cau.cs.se.instrumentation.al;
 
+import de.cau.cs.se.instrumentation.al.modelhandling.ModelHandlerGlobalScopeProvider;
+
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 public class ApplicationLangRuntimeModule extends de.cau.cs.se.instrumentation.al.AbstractApplicationLangRuntimeModule {
-
+	/**
+	 * {@inheritDoc}<br>
+	 * This extension registers the custom {@link ModelHandlerGlobalScopeProvider} that realizes e.g. the
+	 * correct linking of primitive data types. The implementation of that part is broadly transfered
+	 * from the JVMTypes binding.
+	 */
+	@Override
+	public Class<? extends org.eclipse.xtext.scoping.IGlobalScopeProvider> bindIGlobalScopeProvider() {
+		return ModelHandlerGlobalScopeProvider.class;
+	}
 }

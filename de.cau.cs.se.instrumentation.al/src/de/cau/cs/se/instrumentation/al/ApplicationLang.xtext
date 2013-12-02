@@ -5,8 +5,7 @@ generate applicationLang "http://www.cau.de/cs/se/instrumentation/al/Application
 import "http://kieler.cs.cau.de/annotations" as annotations
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 import "http://www.cau.de/cs/se/instrumentation/rl/RecordLang" as irl
-import "http://sdq.ipd.uka.de/PalladioComponentModel/Repository/5.0" as repository
-import "http://sdq.ipd.uka.de/PalladioComponentModel/Core/Entity/5.0" as entity
+import "http://modelstructure.se.cs.cau.de/structure" as structure
 
 Model:
 	'package' name = QualifiedName
@@ -41,7 +40,18 @@ Aspect:
 ;
 
 Query:
-	location=LocationQuery ((modifier=Modifier|'*') (returnType=ReturnType) methodName=ID '(' ')')?
+	location=LocationQuery 
+	((modifier=[structure::MethodModifier|ID]|'*')
+		(returnType=[structure::Type|ID]|'*') 
+		method=[structure::Method|ID]
+		'(' parameter+=ParameterPattern (',' parameter+=ParameterPattern)* ')'
+	)?
+;
+
+ParameterPattern:
+	modifier=[structure::ParameterModifier|ID]
+	type=[structure::Type|ID]
+	parameter=[structure::Parameter|ID]
 ;
 
 LocationQuery:
@@ -50,7 +60,7 @@ LocationQuery:
 
 
 Node:
-	(SubPathNode | WildcardNode | NamedNode) (parameter=ParamQuery)?  
+	(SubPathNode | WildcardNode | ContainerNode) (parameter=ParamQuery)?  
 ;
 
 ParamQuery: // extend ParamQuery to boolean expression with | & !
@@ -110,8 +120,8 @@ enum Operator:
 	LE = '<='
 ;
 
-NamedNode:
-	reference=[entity::NamedElement|ID]
+ContainerNode:
+	container=[structure::Container|ID]
 ;
 
 WildcardNode: {WoldcardNode}
@@ -124,15 +134,6 @@ SubPathNode: {SubPathNode}
 
 Collector:
 	insertionPoint=InsertionPoint type=[irl::RecordType|QualifiedName] '(' (initializations+=Value (',' initializations+=Value)*)? ')'
-;
-
-ReturnType:
-	type=ID
-;
-
-enum Modifier:
-	PUBLIC = 'public' |
-	PRIVATE = 'private'
 ;
 
 enum InsertionPoint: 

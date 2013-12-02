@@ -1,14 +1,16 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: de.cau.cs.se.instrumentation.al
-Bundle-Vendor: My Company
+Bundle-Name: %pluginName
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
 Bundle-Version: 1.0.0.qualifier
-Bundle-SymbolicName: de.cau.cs.se.instrumentation.al; singleton:=true
+Bundle-ClassPath: .
+Bundle-SymbolicName: de.cau.cs.se.instrumentation.al;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.xtext.xbase;resolution:=optional;visibility:=reexport,
  org.eclipse.xtext.generator;resolution:=optional,
- org.apache.commons.logging;bundle-version="1.0.4";resolution:=optional,
+ org.apache.commons.logging;resolution:=optional;bundle-version="1.0.4",
  org.eclipse.emf.codegen.ecore;resolution:=optional,
  org.eclipse.emf.mwe.utils;resolution:=optional,
  org.eclipse.emf.mwe2.launch;resolution:=optional,
@@ -24,16 +26,11 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.uml2.codegen.ecore;bundle-version="1.8.1",
  org.eclipse.ocl.ecore;bundle-version="1.2.1",
  org.eclipse.xtext.common.types,
- de.uka.ipd.sdq.identifier;visibility:=reexport,
- de.uka.ipd.sdq.probfunction;visibility:=reexport,
- de.uka.ipd.sdq.stoex;visibility:=reexport,
- de.uka.ipd.sdq.units;visibility:=reexport,
- de.uka.ipd.sdq.errorhandling,
- de.uka.ipd.sdq.pcm;bundle-version="3.2.0",
  de.cau.cs.kieler.core.annotations;bundle-version="0.3.1",
  de.cau.cs.kieler.core.annotations.text;bundle-version="0.4.1",
  de.cau.cs.kieler.core.annotations.text.ui;bundle-version="0.4.1",
- de.cau.cs.se.instrumentation.rl;bundle-version="1.0.0" 
+ de.cau.cs.se.instrumentation.rl;bundle-version="1.0.0",
+ org.eclipse.xtext.common.types.ui
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
@@ -48,5 +45,8 @@ Export-Package: de.cau.cs.se.instrumentation.al,
  de.cau.cs.se.instrumentation.al.validation,
  de.cau.cs.se.instrumentation.al.scoping,
  de.cau.cs.se.instrumentation.al.generator,
- de.cau.cs.se.instrumentation.al.formatting
+ de.cau.cs.se.instrumentation.al.formatting,
+ de.cau.cs.se.instrumantation.model.structure,
+ de.cau.cs.se.instrumantation.model.structure.impl,
+ de.cau.cs.se.instrumantation.model.structure.util
 
