@@ -14,9 +14,9 @@ import com.google.inject.Inject;
 import org.eclipse.emf.ecore.EcorePackage$Literals
 import org.eclipse.xtext.resource.IEObjectDescription
 
-class ModelHandlerGlobalScopeProvider extends DefaultGlobalScopeProvider {
+class ForeignModelGlobalScopeProvider extends DefaultGlobalScopeProvider {
 	@Inject
-	private ModelMappingProviderFactory typeProviderFactory;
+	private ForeignModelTypeProviderFactory typeProviderFactory;
 
 	@Inject
 	private IQualifiedNameConverter qualifiedNameConverter;
@@ -33,8 +33,8 @@ class ModelHandlerGlobalScopeProvider extends DefaultGlobalScopeProvider {
         	if (resource != null) {
         		val ResourceSet resourceSet = resource.getResourceSet()
         		if (resourceSet != null) {
-        			val ITypeProvider typeProvider = typeProviderFactory.getTypeProvider(resourceSet)
-        			return new ModelMappingScope(typeProvider, qualifiedNameConverter, filter)
+        			val IForeignModelTypeProvider typeProvider = typeProviderFactory.getTypeProvider(resourceSet)
+        			return new ForeignModelTypeScope(typeProvider, qualifiedNameConverter, filter)
 				} else
     				throw new IllegalStateException("context must be contained in a resource set")
         	} else

@@ -3,9 +3,9 @@ package de.cau.cs.se.instrumentation.al.modelhandling;
 import com.google.common.base.Objects;
 import com.google.common.base.Predicate;
 import com.google.inject.Inject;
-import de.cau.cs.se.instrumentation.al.modelhandling.ITypeProvider;
-import de.cau.cs.se.instrumentation.al.modelhandling.ModelMappingProviderFactory;
-import de.cau.cs.se.instrumentation.al.modelhandling.ModelMappingScope;
+import de.cau.cs.se.instrumentation.al.modelhandling.ForeignModelTypeProviderFactory;
+import de.cau.cs.se.instrumentation.al.modelhandling.ForeignModelTypeScope;
+import de.cau.cs.se.instrumentation.al.modelhandling.IForeignModelTypeProvider;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage.Literals;
@@ -18,9 +18,9 @@ import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.impl.DefaultGlobalScopeProvider;
 
 @SuppressWarnings("all")
-public class ModelHandlerGlobalScopeProvider extends DefaultGlobalScopeProvider {
+public class ForeignModelGlobalScopeProvider extends DefaultGlobalScopeProvider {
   @Inject
-  private ModelMappingProviderFactory typeProviderFactory;
+  private ForeignModelTypeProviderFactory typeProviderFactory;
   
   @Inject
   private IQualifiedNameConverter qualifiedNameConverter;
@@ -40,9 +40,9 @@ public class ModelHandlerGlobalScopeProvider extends DefaultGlobalScopeProvider 
         final ResourceSet resourceSet = resource.getResourceSet();
         boolean _notEquals_1 = (!Objects.equal(resourceSet, null));
         if (_notEquals_1) {
-          final ITypeProvider typeProvider = this.typeProviderFactory.getTypeProvider(resourceSet);
-          ModelMappingScope _modelMappingScope = new ModelMappingScope(typeProvider, this.qualifiedNameConverter, filter);
-          return _modelMappingScope;
+          final IForeignModelTypeProvider typeProvider = this.typeProviderFactory.getTypeProvider(resourceSet);
+          ForeignModelTypeScope _foreignModelTypeScope = new ForeignModelTypeScope(typeProvider, this.qualifiedNameConverter, filter);
+          return _foreignModelTypeScope;
         } else {
           IllegalStateException _illegalStateException = new IllegalStateException("context must be contained in a resource set");
           throw _illegalStateException;

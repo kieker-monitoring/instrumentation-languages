@@ -41,13 +41,13 @@ public interface ApplicationLangFactory extends EFactory
   Import createImport();
 
   /**
-   * Returns a new object of class '<em>Package</em>'.
+   * Returns a new object of class '<em>Application Model</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Package</em>'.
+   * @return a new object of class '<em>Application Model</em>'.
    * @generated
    */
-  Package createPackage();
+  ApplicationModel createApplicationModel();
 
   /**
    * Returns a new object of class '<em>Aspect</em>'.

@@ -24,18 +24,18 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cPackageKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameQualifiedNameParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Assignment cPackagesAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cPackagesPackageParserRuleCall_2_0 = (RuleCall)cPackagesAssignment_2.eContents().get(0);
+		private final Assignment cSourcesAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cSourcesApplicationModelParserRuleCall_2_0 = (RuleCall)cSourcesAssignment_2.eContents().get(0);
 		private final Assignment cImportsAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cImportsImportParserRuleCall_3_0 = (RuleCall)cImportsAssignment_3.eContents().get(0);
 		private final Assignment cAspectsAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cAspectsAspectParserRuleCall_4_0 = (RuleCall)cAspectsAssignment_4.eContents().get(0);
 		
 		//Model:
-		//	"package" name=QualifiedName packages+=Package* imports+=Import* aspects+=Aspect*;
+		//	"package" name=QualifiedName sources+=ApplicationModel* imports+=Import* aspects+=Aspect*;
 		public ParserRule getRule() { return rule; }
 
-		//"package" name=QualifiedName packages+=Package* imports+=Import* aspects+=Aspect*
+		//"package" name=QualifiedName sources+=ApplicationModel* imports+=Import* aspects+=Aspect*
 		public Group getGroup() { return cGroup; }
 
 		//"package"
@@ -47,11 +47,11 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 		//QualifiedName
 		public RuleCall getNameQualifiedNameParserRuleCall_1_0() { return cNameQualifiedNameParserRuleCall_1_0; }
 
-		//packages+=Package*
-		public Assignment getPackagesAssignment_2() { return cPackagesAssignment_2; }
+		//sources+=ApplicationModel*
+		public Assignment getSourcesAssignment_2() { return cSourcesAssignment_2; }
 
-		//Package
-		public RuleCall getPackagesPackageParserRuleCall_2_0() { return cPackagesPackageParserRuleCall_2_0; }
+		//ApplicationModel
+		public RuleCall getSourcesApplicationModelParserRuleCall_2_0() { return cSourcesApplicationModelParserRuleCall_2_0; }
 
 		//imports+=Import*
 		public Assignment getImportsAssignment_3() { return cImportsAssignment_3; }
@@ -90,25 +90,25 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_0() { return cImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_0; }
 	}
 
-	public class PackageElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Package");
+	public class ApplicationModelElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ApplicationModel");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cUseKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cModelKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Assignment cPackageAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final CrossReference cPackageEPackageCrossReference_2_0 = (CrossReference)cPackageAssignment_2.eContents().get(0);
-		private final RuleCall cPackageEPackageSTRINGTerminalRuleCall_2_0_1 = (RuleCall)cPackageEPackageCrossReference_2_0.eContents().get(1);
+		private final Assignment cModelAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cModelEPackageCrossReference_2_0 = (CrossReference)cModelAssignment_2.eContents().get(0);
+		private final RuleCall cModelEPackageSTRINGTerminalRuleCall_2_0_1 = (RuleCall)cModelEPackageCrossReference_2_0.eContents().get(1);
 		
-		//Package:
-		//	"use" name=ID package=[ecore::EPackage|STRING];
+		//ApplicationModel:
+		//	"model" name=ID model=[ecore::EPackage|STRING];
 		public ParserRule getRule() { return rule; }
 
-		//"use" name=ID package=[ecore::EPackage|STRING]
+		//"model" name=ID model=[ecore::EPackage|STRING]
 		public Group getGroup() { return cGroup; }
 
-		//"use"
-		public Keyword getUseKeyword_0() { return cUseKeyword_0; }
+		//"model"
+		public Keyword getModelKeyword_0() { return cModelKeyword_0; }
 
 		//name=ID
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -116,14 +116,14 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//package=[ecore::EPackage|STRING]
-		public Assignment getPackageAssignment_2() { return cPackageAssignment_2; }
+		//model=[ecore::EPackage|STRING]
+		public Assignment getModelAssignment_2() { return cModelAssignment_2; }
 
 		//[ecore::EPackage|STRING]
-		public CrossReference getPackageEPackageCrossReference_2_0() { return cPackageEPackageCrossReference_2_0; }
+		public CrossReference getModelEPackageCrossReference_2_0() { return cModelEPackageCrossReference_2_0; }
 
 		//STRING
-		public RuleCall getPackageEPackageSTRINGTerminalRuleCall_2_0_1() { return cPackageEPackageSTRINGTerminalRuleCall_2_0_1; }
+		public RuleCall getModelEPackageSTRINGTerminalRuleCall_2_0_1() { return cModelEPackageSTRINGTerminalRuleCall_2_0_1; }
 	}
 
 	public class QualifiedNameElements extends AbstractParserRuleElementFinder {
@@ -977,7 +977,7 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 	
 	private ModelElements pModel;
 	private ImportElements pImport;
-	private PackageElements pPackage;
+	private ApplicationModelElements pApplicationModel;
 	private QualifiedNameElements pQualifiedName;
 	private QualifiedNameWithWildcardElements pQualifiedNameWithWildcard;
 	private AspectElements pAspect;
@@ -1042,7 +1042,7 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//Model:
-	//	"package" name=QualifiedName packages+=Package* imports+=Import* aspects+=Aspect*;
+	//	"package" name=QualifiedName sources+=ApplicationModel* imports+=Import* aspects+=Aspect*;
 	public ModelElements getModelAccess() {
 		return (pModel != null) ? pModel : (pModel = new ModelElements());
 	}
@@ -1061,14 +1061,14 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 		return getImportAccess().getRule();
 	}
 
-	//Package:
-	//	"use" name=ID package=[ecore::EPackage|STRING];
-	public PackageElements getPackageAccess() {
-		return (pPackage != null) ? pPackage : (pPackage = new PackageElements());
+	//ApplicationModel:
+	//	"model" name=ID model=[ecore::EPackage|STRING];
+	public ApplicationModelElements getApplicationModelAccess() {
+		return (pApplicationModel != null) ? pApplicationModel : (pApplicationModel = new ApplicationModelElements());
 	}
 	
-	public ParserRule getPackageRule() {
-		return getPackageAccess().getRule();
+	public ParserRule getApplicationModelRule() {
+		return getApplicationModelAccess().getRule();
 	}
 
 	//QualifiedName:

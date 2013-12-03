@@ -24,10 +24,10 @@ import com.google.inject.Inject;
  *         org.eclipse.xtext.common.types.access.jdt.JdtTypeProviderFactory
  * @author Reiner Jung - commentary and cleanups
  */
-public class ModelMappingProviderFactory {
+public class ForeignModelTypeProviderFactory {
 
 	@Inject
-	public ModelMappingProviderFactory() {}
+	public ForeignModelTypeProviderFactory() {}
 
 	/**
 	 * Create a new type provider or fetch the already created type provider for the primitive
@@ -37,18 +37,18 @@ public class ModelMappingProviderFactory {
 	 *            The resource set associated with the type provider.
 	 * @return Returns the type provider for primitive types.
 	 */
-	public ITypeProvider getTypeProvider(final ResourceSet resourceSet) {
+	public IForeignModelTypeProvider getTypeProvider(final ResourceSet resourceSet) {
 		if (resourceSet == null) {
 			throw new IllegalArgumentException("resourceSet may not be null.");
 		} else {
 			final Object o = resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
-					.get(EcoreTypeURIHelper.PROTOCOL);
+					.get(ForeignModelTypeURIHelper.PROTOCOL);
 			if (o != null) {
-				if (!(o instanceof ITypeProvider)) {
+				if (!(o instanceof IForeignModelTypeProvider)) {
 					// TODO something went terribly wrong, to be save create a new type provider
 					return this.createTypeProvider(resourceSet);
 				} else {
-					return (ITypeProvider) o;
+					return (IForeignModelTypeProvider) o;
 				}
 			} else {
 				return this.createTypeProvider(resourceSet);
@@ -63,10 +63,10 @@ public class ModelMappingProviderFactory {
 	 *            The resource set associated with the type provider.
 	 * @return Returns the new type provider.
 	 */
-	private ITypeProvider createTypeProvider(final ResourceSet resourceSet) {
-		final ITypeProvider typeProvider = new ModelMappingProvider(resourceSet);
+	private IForeignModelTypeProvider createTypeProvider(final ResourceSet resourceSet) {
+		final IForeignModelTypeProvider typeProvider = new ForeignModelTypeProvider(resourceSet);
 		resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
-				.put(EcoreTypeURIHelper.PROTOCOL, typeProvider);
+				.put(ForeignModelTypeURIHelper.PROTOCOL, typeProvider);
 		return typeProvider;
 
 	}

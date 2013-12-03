@@ -2,29 +2,7 @@
  */
 package de.cau.cs.se.instrumentation.al.applicationLang.util;
 
-import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationLangPackage;
-import de.cau.cs.se.instrumentation.al.applicationLang.Aspect;
-import de.cau.cs.se.instrumentation.al.applicationLang.Collector;
-import de.cau.cs.se.instrumentation.al.applicationLang.ContainerNode;
-import de.cau.cs.se.instrumentation.al.applicationLang.FloatValue;
-import de.cau.cs.se.instrumentation.al.applicationLang.Import;
-import de.cau.cs.se.instrumentation.al.applicationLang.IntValue;
-import de.cau.cs.se.instrumentation.al.applicationLang.LocationQuery;
-import de.cau.cs.se.instrumentation.al.applicationLang.Model;
-import de.cau.cs.se.instrumentation.al.applicationLang.Node;
-import de.cau.cs.se.instrumentation.al.applicationLang.ParamCompare;
-import de.cau.cs.se.instrumentation.al.applicationLang.ParamQuery;
-import de.cau.cs.se.instrumentation.al.applicationLang.Parameter;
-import de.cau.cs.se.instrumentation.al.applicationLang.ParameterPattern;
-import de.cau.cs.se.instrumentation.al.applicationLang.Query;
-import de.cau.cs.se.instrumentation.al.applicationLang.ReferenceValue;
-import de.cau.cs.se.instrumentation.al.applicationLang.ReflectionProperty;
-import de.cau.cs.se.instrumentation.al.applicationLang.RuntimeProperty;
-import de.cau.cs.se.instrumentation.al.applicationLang.StringValue;
-import de.cau.cs.se.instrumentation.al.applicationLang.SubPathNode;
-import de.cau.cs.se.instrumentation.al.applicationLang.Value;
-import de.cau.cs.se.instrumentation.al.applicationLang.WildcardNode;
-import de.cau.cs.se.instrumentation.al.applicationLang.WoldcardNode;
+import de.cau.cs.se.instrumentation.al.applicationLang.*;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -108,10 +86,10 @@ public class ApplicationLangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ApplicationLangPackage.PACKAGE:
+      case ApplicationLangPackage.APPLICATION_MODEL:
       {
-        de.cau.cs.se.instrumentation.al.applicationLang.Package package_ = (de.cau.cs.se.instrumentation.al.applicationLang.Package)theEObject;
-        T result = casePackage(package_);
+        ApplicationModel applicationModel = (ApplicationModel)theEObject;
+        T result = caseApplicationModel(applicationModel);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -303,17 +281,17 @@ public class ApplicationLangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Package</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Application Model</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Package</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Application Model</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T casePackage(de.cau.cs.se.instrumentation.al.applicationLang.Package object)
+  public T caseApplicationModel(ApplicationModel object)
   {
     return null;
   }

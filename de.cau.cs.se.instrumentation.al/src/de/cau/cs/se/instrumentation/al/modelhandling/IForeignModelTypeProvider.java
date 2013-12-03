@@ -25,7 +25,7 @@ import de.cau.cs.se.instrumantation.model.structure.NamedElement;
  *         org.eclipse.xtext.common.types.access.IJvmTypeProvider)
  * @author Reiner Jung - Cleanups and commentary
  */
-public interface ITypeProvider {
+public interface IForeignModelTypeProvider {
 
 	/**
 	 * Provides a collection of all supported primitive types (helpful for content assist).
@@ -47,6 +47,6 @@ public interface ITypeProvider {
 	 * 
 	 * @return the used {@link TypeURIHelper}
 	 */
-	EcoreTypeURIHelper getTypeUriHelper();
+	ForeignModelTypeURIHelper getTypeUriHelper();
 
 }

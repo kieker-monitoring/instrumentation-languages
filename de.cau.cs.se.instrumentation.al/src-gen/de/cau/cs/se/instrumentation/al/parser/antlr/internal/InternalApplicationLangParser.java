@@ -23,7 +23,7 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalApplicationLangParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_FLOAT", "RULE_INT", "RULE_COMMENT_ANNOTATION", "RULE_BOOLEAN", "RULE_ML_COMMENT", "RULE_NUMBER", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'package'", "'import'", "'use'", "'.'", "'*'", "'aspect'", "'{'", "'}'", "'('", "','", "')'", "'['", "']'", "'#'", "'$'", "'**'", "'@'", "'name'", "'signature'", "'class'", "'return-type'", "'='", "'~'", "'!='", "'>'", "'<'", "'>='", "'<='", "'before'", "'after'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_FLOAT", "RULE_INT", "RULE_COMMENT_ANNOTATION", "RULE_BOOLEAN", "RULE_ML_COMMENT", "RULE_NUMBER", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'package'", "'import'", "'model'", "'.'", "'*'", "'aspect'", "'{'", "'}'", "'('", "','", "')'", "'['", "']'", "'#'", "'$'", "'**'", "'@'", "'name'", "'signature'", "'class'", "'return-type'", "'='", "'~'", "'!='", "'>'", "'<'", "'>='", "'<='", "'before'", "'after'"
     };
     public static final int RULE_BOOLEAN=9;
     public static final int RULE_ID=4;
@@ -152,14 +152,14 @@ public class InternalApplicationLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleModel"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:83:1: ruleModel returns [EObject current=null] : (otherlv_0= 'package' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_packages_2_0= rulePackage ) )* ( (lv_imports_3_0= ruleImport ) )* ( (lv_aspects_4_0= ruleAspect ) )* ) ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:83:1: ruleModel returns [EObject current=null] : (otherlv_0= 'package' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_sources_2_0= ruleApplicationModel ) )* ( (lv_imports_3_0= ruleImport ) )* ( (lv_aspects_4_0= ruleAspect ) )* ) ;
     public final EObject ruleModel() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
         AntlrDatatypeRuleToken lv_name_1_0 = null;
 
-        EObject lv_packages_2_0 = null;
+        EObject lv_sources_2_0 = null;
 
         EObject lv_imports_3_0 = null;
 
@@ -169,11 +169,11 @@ public class InternalApplicationLangParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:86:28: ( (otherlv_0= 'package' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_packages_2_0= rulePackage ) )* ( (lv_imports_3_0= ruleImport ) )* ( (lv_aspects_4_0= ruleAspect ) )* ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:87:1: (otherlv_0= 'package' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_packages_2_0= rulePackage ) )* ( (lv_imports_3_0= ruleImport ) )* ( (lv_aspects_4_0= ruleAspect ) )* )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:86:28: ( (otherlv_0= 'package' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_sources_2_0= ruleApplicationModel ) )* ( (lv_imports_3_0= ruleImport ) )* ( (lv_aspects_4_0= ruleAspect ) )* ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:87:1: (otherlv_0= 'package' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_sources_2_0= ruleApplicationModel ) )* ( (lv_imports_3_0= ruleImport ) )* ( (lv_aspects_4_0= ruleAspect ) )* )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:87:1: (otherlv_0= 'package' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_packages_2_0= rulePackage ) )* ( (lv_imports_3_0= ruleImport ) )* ( (lv_aspects_4_0= ruleAspect ) )* )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:87:3: otherlv_0= 'package' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_packages_2_0= rulePackage ) )* ( (lv_imports_3_0= ruleImport ) )* ( (lv_aspects_4_0= ruleAspect ) )*
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:87:1: (otherlv_0= 'package' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_sources_2_0= ruleApplicationModel ) )* ( (lv_imports_3_0= ruleImport ) )* ( (lv_aspects_4_0= ruleAspect ) )* )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:87:3: otherlv_0= 'package' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_sources_2_0= ruleApplicationModel ) )* ( (lv_imports_3_0= ruleImport ) )* ( (lv_aspects_4_0= ruleAspect ) )*
             {
             otherlv_0=(Token)match(input,15,FOLLOW_15_in_ruleModel128); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -216,7 +216,7 @@ public class InternalApplicationLangParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:109:2: ( (lv_packages_2_0= rulePackage ) )*
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:109:2: ( (lv_sources_2_0= ruleApplicationModel ) )*
             loop1:
             do {
                 int alt1=2;
@@ -229,18 +229,18 @@ public class InternalApplicationLangParser extends AbstractInternalAntlrParser {
 
                 switch (alt1) {
             	case 1 :
-            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:110:1: (lv_packages_2_0= rulePackage )
+            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:110:1: (lv_sources_2_0= ruleApplicationModel )
             	    {
-            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:110:1: (lv_packages_2_0= rulePackage )
-            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:111:3: lv_packages_2_0= rulePackage
+            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:110:1: (lv_sources_2_0= ruleApplicationModel )
+            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:111:3: lv_sources_2_0= ruleApplicationModel
             	    {
             	    if ( state.backtracking==0 ) {
             	       
-            	      	        newCompositeNode(grammarAccess.getModelAccess().getPackagesPackageParserRuleCall_2_0()); 
+            	      	        newCompositeNode(grammarAccess.getModelAccess().getSourcesApplicationModelParserRuleCall_2_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_rulePackage_in_ruleModel170);
-            	    lv_packages_2_0=rulePackage();
+            	    pushFollow(FOLLOW_ruleApplicationModel_in_ruleModel170);
+            	    lv_sources_2_0=ruleApplicationModel();
 
             	    state._fsp--;
             	    if (state.failed) return current;
@@ -251,9 +251,9 @@ public class InternalApplicationLangParser extends AbstractInternalAntlrParser {
             	      	        }
             	             		add(
             	             			current, 
-            	             			"packages",
-            	              		lv_packages_2_0, 
-            	              		"Package");
+            	             			"sources",
+            	              		lv_sources_2_0, 
+            	              		"ApplicationModel");
             	      	        afterParserOrEnumRuleCall();
             	      	    
             	    }
@@ -518,30 +518,30 @@ public class InternalApplicationLangParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleImport"
 
 
-    // $ANTLR start "entryRulePackage"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:214:1: entryRulePackage returns [EObject current=null] : iv_rulePackage= rulePackage EOF ;
-    public final EObject entryRulePackage() throws RecognitionException {
+    // $ANTLR start "entryRuleApplicationModel"
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:214:1: entryRuleApplicationModel returns [EObject current=null] : iv_ruleApplicationModel= ruleApplicationModel EOF ;
+    public final EObject entryRuleApplicationModel() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_rulePackage = null;
+        EObject iv_ruleApplicationModel = null;
 
 
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:215:2: (iv_rulePackage= rulePackage EOF )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:216:2: iv_rulePackage= rulePackage EOF
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:215:2: (iv_ruleApplicationModel= ruleApplicationModel EOF )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:216:2: iv_ruleApplicationModel= ruleApplicationModel EOF
             {
             if ( state.backtracking==0 ) {
-               newCompositeNode(grammarAccess.getPackageRule()); 
+               newCompositeNode(grammarAccess.getApplicationModelRule()); 
             }
-            pushFollow(FOLLOW_rulePackage_in_entryRulePackage355);
-            iv_rulePackage=rulePackage();
+            pushFollow(FOLLOW_ruleApplicationModel_in_entryRuleApplicationModel355);
+            iv_ruleApplicationModel=ruleApplicationModel();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
-               current =iv_rulePackage; 
+               current =iv_ruleApplicationModel; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRulePackage365); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleApplicationModel365); if (state.failed) return current;
 
             }
 
@@ -555,12 +555,12 @@ public class InternalApplicationLangParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRulePackage"
+    // $ANTLR end "entryRuleApplicationModel"
 
 
-    // $ANTLR start "rulePackage"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:223:1: rulePackage returns [EObject current=null] : (otherlv_0= 'use' ( (lv_name_1_0= RULE_ID ) ) ( (otherlv_2= RULE_STRING ) ) ) ;
-    public final EObject rulePackage() throws RecognitionException {
+    // $ANTLR start "ruleApplicationModel"
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:223:1: ruleApplicationModel returns [EObject current=null] : (otherlv_0= 'model' ( (lv_name_1_0= RULE_ID ) ) ( (otherlv_2= RULE_STRING ) ) ) ;
+    public final EObject ruleApplicationModel() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
@@ -570,16 +570,16 @@ public class InternalApplicationLangParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:226:28: ( (otherlv_0= 'use' ( (lv_name_1_0= RULE_ID ) ) ( (otherlv_2= RULE_STRING ) ) ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:227:1: (otherlv_0= 'use' ( (lv_name_1_0= RULE_ID ) ) ( (otherlv_2= RULE_STRING ) ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:226:28: ( (otherlv_0= 'model' ( (lv_name_1_0= RULE_ID ) ) ( (otherlv_2= RULE_STRING ) ) ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:227:1: (otherlv_0= 'model' ( (lv_name_1_0= RULE_ID ) ) ( (otherlv_2= RULE_STRING ) ) )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:227:1: (otherlv_0= 'use' ( (lv_name_1_0= RULE_ID ) ) ( (otherlv_2= RULE_STRING ) ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:227:3: otherlv_0= 'use' ( (lv_name_1_0= RULE_ID ) ) ( (otherlv_2= RULE_STRING ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:227:1: (otherlv_0= 'model' ( (lv_name_1_0= RULE_ID ) ) ( (otherlv_2= RULE_STRING ) ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:227:3: otherlv_0= 'model' ( (lv_name_1_0= RULE_ID ) ) ( (otherlv_2= RULE_STRING ) )
             {
-            otherlv_0=(Token)match(input,17,FOLLOW_17_in_rulePackage402); if (state.failed) return current;
+            otherlv_0=(Token)match(input,17,FOLLOW_17_in_ruleApplicationModel402); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_0, grammarAccess.getPackageAccess().getUseKeyword_0());
+                  	newLeafNode(otherlv_0, grammarAccess.getApplicationModelAccess().getModelKeyword_0());
                   
             }
             // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:231:1: ( (lv_name_1_0= RULE_ID ) )
@@ -588,16 +588,16 @@ public class InternalApplicationLangParser extends AbstractInternalAntlrParser {
             // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:232:1: (lv_name_1_0= RULE_ID )
             // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:233:3: lv_name_1_0= RULE_ID
             {
-            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_rulePackage419); if (state.failed) return current;
+            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleApplicationModel419); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              			newLeafNode(lv_name_1_0, grammarAccess.getPackageAccess().getNameIDTerminalRuleCall_1_0()); 
+              			newLeafNode(lv_name_1_0, grammarAccess.getApplicationModelAccess().getNameIDTerminalRuleCall_1_0()); 
               		
             }
             if ( state.backtracking==0 ) {
 
               	        if (current==null) {
-              	            current = createModelElement(grammarAccess.getPackageRule());
+              	            current = createModelElement(grammarAccess.getApplicationModelRule());
               	        }
                      		setWithLastConsumed(
                      			current, 
@@ -626,14 +626,14 @@ public class InternalApplicationLangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
 
               			if (current==null) {
-              	            current = createModelElement(grammarAccess.getPackageRule());
+              	            current = createModelElement(grammarAccess.getApplicationModelRule());
               	        }
                       
             }
-            otherlv_2=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rulePackage448); if (state.failed) return current;
+            otherlv_2=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleApplicationModel448); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              		newLeafNode(otherlv_2, grammarAccess.getPackageAccess().getPackageEPackageCrossReference_2_0()); 
+              		newLeafNode(otherlv_2, grammarAccess.getApplicationModelAccess().getModelEPackageCrossReference_2_0()); 
               	
             }
 
@@ -661,7 +661,7 @@ public class InternalApplicationLangParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "rulePackage"
+    // $ANTLR end "ruleApplicationModel"
 
 
     // $ANTLR start "entryRuleQualifiedName"
@@ -6798,18 +6798,18 @@ public class InternalApplicationLangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_EOF_in_entryRuleModel91 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_15_in_ruleModel128 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_ruleQualifiedName_in_ruleModel149 = new BitSet(new long[]{0x0000000080030102L});
-    public static final BitSet FOLLOW_rulePackage_in_ruleModel170 = new BitSet(new long[]{0x0000000080030102L});
+    public static final BitSet FOLLOW_ruleApplicationModel_in_ruleModel170 = new BitSet(new long[]{0x0000000080030102L});
     public static final BitSet FOLLOW_ruleImport_in_ruleModel192 = new BitSet(new long[]{0x0000000080010102L});
     public static final BitSet FOLLOW_ruleAspect_in_ruleModel214 = new BitSet(new long[]{0x0000000080000102L});
     public static final BitSet FOLLOW_ruleImport_in_entryRuleImport251 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleImport261 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_16_in_ruleImport298 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_ruleQualifiedNameWithWildcard_in_ruleImport319 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePackage_in_entryRulePackage355 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRulePackage365 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_17_in_rulePackage402 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_rulePackage419 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rulePackage448 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleApplicationModel_in_entryRuleApplicationModel355 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleApplicationModel365 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_17_in_ruleApplicationModel402 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleApplicationModel419 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleApplicationModel448 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName485 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedName496 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedName536 = new BitSet(new long[]{0x0000000000040002L});

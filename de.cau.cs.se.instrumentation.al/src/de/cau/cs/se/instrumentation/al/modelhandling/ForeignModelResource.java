@@ -33,15 +33,15 @@ import de.cau.cs.se.instrumantation.model.structure.StructureFactory;
  * @author Sebastian Zarnekow - Initial contribution and API
  * @author Reiner Jung - Adaptation for a general type approach; rewrite 2013
  */
-public class ModelMappingResource extends ResourceImpl {
+public class ForeignModelResource extends ResourceImpl {
 
 	StructureFactory structure = StructureFactory.eINSTANCE;
 
-	public ModelMappingResource() {
+	public ForeignModelResource() {
 		super();
 	}
 
-	public ModelMappingResource(final URI uri) {
+	public ForeignModelResource(final URI uri) {
 		super(uri);
 	}
 

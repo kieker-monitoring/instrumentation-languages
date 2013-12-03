@@ -28,16 +28,16 @@
     </genEnums>
     <genClasses ecoreClass="ApplicationLang.ecore#//Model">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ApplicationLang.ecore#//Model/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplicationLang.ecore#//Model/packages"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplicationLang.ecore#//Model/sources"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplicationLang.ecore#//Model/imports"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplicationLang.ecore#//Model/aspects"/>
     </genClasses>
     <genClasses ecoreClass="ApplicationLang.ecore#//Import">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ApplicationLang.ecore#//Import/importedNamespace"/>
     </genClasses>
-    <genClasses ecoreClass="ApplicationLang.ecore#//Package">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ApplicationLang.ecore#//Package/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ApplicationLang.ecore#//Package/package"/>
+    <genClasses ecoreClass="ApplicationLang.ecore#//ApplicationModel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ApplicationLang.ecore#//ApplicationModel/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ApplicationLang.ecore#//ApplicationModel/model"/>
     </genClasses>
     <genClasses ecoreClass="ApplicationLang.ecore#//Aspect">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplicationLang.ecore#//Aspect/annotation"/>

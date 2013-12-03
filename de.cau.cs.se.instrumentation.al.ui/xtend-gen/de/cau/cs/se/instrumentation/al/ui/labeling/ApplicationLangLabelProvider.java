@@ -9,10 +9,12 @@ import de.cau.cs.se.instrumantation.model.structure.NamedElement;
 import de.cau.cs.se.instrumentation.al.applicationLang.Aspect;
 import de.cau.cs.se.instrumentation.al.applicationLang.Collector;
 import de.cau.cs.se.instrumentation.al.applicationLang.ContainerNode;
+import de.cau.cs.se.instrumentation.al.applicationLang.InsertionPoint;
 import de.cau.cs.se.instrumentation.al.applicationLang.LocationQuery;
 import de.cau.cs.se.instrumentation.al.applicationLang.Query;
 import de.cau.cs.se.instrumentation.al.applicationLang.SubPathNode;
 import de.cau.cs.se.instrumentation.al.applicationLang.WildcardNode;
+import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
 
@@ -54,10 +56,14 @@ public class ApplicationLangLabelProvider extends DefaultEObjectLabelProvider {
     return "path";
   }
   
-  public Object text(final Collector e) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nname cannot be resolved"
-      + "\n+ cannot be resolved"
-      + "\n+ cannot be resolved");
+  public String text(final Collector e) {
+    RecordType _type = e.getType();
+    String _name = _type.getName();
+    String _plus = (_name + " ");
+    InsertionPoint _insertionPoint = e.getInsertionPoint();
+    String _name_1 = _insertionPoint.name();
+    String _lowerCase = _name_1.toLowerCase();
+    String _plus_1 = (_plus + _lowerCase);
+    return _plus_1;
   }
 }

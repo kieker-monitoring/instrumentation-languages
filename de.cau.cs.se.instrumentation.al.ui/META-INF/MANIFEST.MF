@@ -16,6 +16,7 @@ Require-Bundle: de.cau.cs.se.instrumentation.al;visibility:=reexport,
  org.eclipse.xtext.common.types.ui,
  org.eclipse.xtext.ui.codetemplates.ui,
  org.eclipse.compare,
+ de.cau.cs.se.instrumentation.rl.ui,
  de.cau.cs.kieler.core.annotations.edit;bundle-version="0.3.0",
  de.cau.cs.kieler.core.annotations.text,
  de.cau.cs.kieler.core.annotations.text.ui;bundle-version="0.4.1"

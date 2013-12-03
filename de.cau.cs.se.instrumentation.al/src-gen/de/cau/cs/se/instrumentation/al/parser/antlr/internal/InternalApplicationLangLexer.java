@@ -115,10 +115,10 @@ public class InternalApplicationLangLexer extends Lexer {
         try {
             int _type = T__17;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:13:7: ( 'use' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:13:9: 'use'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:13:7: ( 'model' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:13:9: 'model'
             {
-            match("use"); 
+            match("model"); 
 
 
             }
@@ -1831,13 +1831,13 @@ public class InternalApplicationLangLexer extends Lexer {
     static final String DFA14_maxS =
         "\2\71\1\146\2\uffff";
     static final String DFA14_acceptS =
-        "\3\uffff\1\2\1\1";
+        "\3\uffff\1\1\1\2";
     static final String DFA14_specialS =
         "\5\uffff}>";
     static final String[] DFA14_transitionS = {
             "\1\1\2\uffff\12\2",
             "\12\2",
-            "\1\4\1\uffff\12\2\54\uffff\1\3",
+            "\1\3\1\uffff\12\2\54\uffff\1\4",
             "",
             ""
     };
@@ -1879,48 +1879,49 @@ public class InternalApplicationLangLexer extends Lexer {
         "\1\uffff\3\46\1\uffff\1\53\1\46\12\uffff\4\46\2\uffff\1\44\1\100"+
         "\1\102\1\46\2\44\1\107\2\46\2\44\3\uffff\1\46\1\uffff\2\46\3\uffff"+
         "\2\46\12\uffff\4\46\7\uffff\1\46\2\uffff\1\107\2\uffff\2\46\2\uffff"+
-        "\2\46\1\135\7\46\2\uffff\4\46\1\uffff\2\46\1\153\4\46\1\160\4\46"+
-        "\1\165\1\uffff\1\46\1\167\2\46\1\uffff\1\160\1\46\1\173\1\174\1"+
-        "\uffff\1\46\1\uffff\1\46\1\177\1\u0080\2\uffff\1\46\3\uffff\1\46"+
-        "\1\u0083\1\uffff";
+        "\12\46\2\uffff\7\46\1\154\4\46\1\161\3\46\1\165\1\46\1\167\1\uffff"+
+        "\1\46\1\171\2\46\1\uffff\1\161\1\46\1\175\1\uffff\1\176\1\uffff"+
+        "\1\46\1\uffff\1\46\1\u0081\1\u0082\2\uffff\1\46\3\uffff\1\46\1\u0085"+
+        "\1\uffff";
     static final String DFA23_eofS =
-        "\u0084\uffff";
+        "\u0086\uffff";
     static final String DFA23_minS =
-        "\1\0\1\141\1\155\1\163\1\uffff\1\52\1\146\12\uffff\1\141\1\151\1"+
+        "\1\0\1\141\1\155\1\157\1\uffff\1\52\1\146\12\uffff\1\141\1\151\1"+
         "\154\1\145\2\uffff\3\75\1\145\1\52\1\60\1\56\1\162\1\141\1\0\1\101"+
-        "\3\uffff\1\143\1\uffff\1\160\1\145\3\uffff\1\160\1\164\12\uffff"+
+        "\3\uffff\1\143\1\uffff\1\160\1\144\3\uffff\1\160\1\164\12\uffff"+
         "\1\155\1\147\1\141\1\164\7\uffff\1\146\1\0\1\uffff\1\56\2\uffff"+
-        "\1\165\1\154\2\uffff\1\153\1\157\1\60\3\145\1\156\1\163\1\165\1"+
-        "\157\2\uffff\1\145\1\163\1\141\1\162\1\uffff\1\143\1\162\1\60\1"+
-        "\141\1\163\2\162\1\60\1\145\1\147\2\164\1\60\1\uffff\1\164\1\60"+
-        "\1\156\1\145\1\uffff\1\60\1\145\2\60\1\uffff\1\165\1\uffff\1\55"+
-        "\2\60\2\uffff\1\162\3\uffff\1\145\1\60\1\uffff";
+        "\1\165\1\154\2\uffff\1\153\1\157\4\145\1\156\1\163\1\165\1\157\2"+
+        "\uffff\1\145\1\163\1\141\1\162\1\154\1\143\1\162\1\60\1\141\1\163"+
+        "\2\162\1\60\1\145\1\147\1\164\1\60\1\164\1\60\1\uffff\1\164\1\60"+
+        "\1\156\1\145\1\uffff\1\60\1\145\1\60\1\uffff\1\60\1\uffff\1\165"+
+        "\1\uffff\1\55\2\60\2\uffff\1\162\3\uffff\1\145\1\60\1\uffff";
     static final String DFA23_maxS =
-        "\1\uffff\1\141\1\155\1\163\1\uffff\1\52\1\163\12\uffff\1\141\1\151"+
+        "\1\uffff\1\141\1\155\1\157\1\uffff\1\52\1\163\12\uffff\1\141\1\151"+
         "\1\154\1\145\2\uffff\3\75\1\145\1\57\1\71\1\146\1\162\1\141\1\uffff"+
-        "\1\172\3\uffff\1\143\1\uffff\1\160\1\145\3\uffff\1\160\1\164\12"+
+        "\1\172\3\uffff\1\143\1\uffff\1\160\1\144\3\uffff\1\160\1\164\12"+
         "\uffff\1\155\1\147\1\141\1\164\7\uffff\1\146\1\uffff\1\uffff\1\146"+
-        "\2\uffff\1\165\1\154\2\uffff\1\153\1\157\1\172\3\145\1\156\1\163"+
-        "\1\165\1\157\2\uffff\1\145\1\163\1\141\1\162\1\uffff\1\143\1\162"+
-        "\1\172\1\141\1\163\2\162\1\172\1\145\1\147\2\164\1\172\1\uffff\1"+
-        "\164\1\172\1\156\1\145\1\uffff\1\172\1\145\2\172\1\uffff\1\165\1"+
-        "\uffff\1\55\2\172\2\uffff\1\162\3\uffff\1\145\1\172\1\uffff";
+        "\2\uffff\1\165\1\154\2\uffff\1\153\1\157\4\145\1\156\1\163\1\165"+
+        "\1\157\2\uffff\1\145\1\163\1\141\1\162\1\154\1\143\1\162\1\172\1"+
+        "\141\1\163\2\162\1\172\1\145\1\147\1\164\1\172\1\164\1\172\1\uffff"+
+        "\1\164\1\172\1\156\1\145\1\uffff\1\172\1\145\1\172\1\uffff\1\172"+
+        "\1\uffff\1\165\1\uffff\1\55\2\172\2\uffff\1\162\3\uffff\1\145\1"+
+        "\172\1\uffff";
     static final String DFA23_acceptS =
         "\4\uffff\1\4\2\uffff\1\7\1\10\1\11\1\12\1\13\1\14\1\15\1\16\1\17"+
         "\1\21\4\uffff\1\26\1\27\13\uffff\1\45\1\47\1\50\1\uffff\1\45\2\uffff"+
         "\1\4\1\20\1\5\2\uffff\1\7\1\10\1\11\1\12\1\13\1\14\1\15\1\16\1\17"+
         "\1\21\4\uffff\1\26\1\27\1\30\1\33\1\31\1\34\1\32\2\uffff\1\46\1"+
-        "\uffff\1\41\1\42\2\uffff\1\44\1\47\12\uffff\1\37\1\40\4\uffff\1"+
-        "\3\15\uffff\1\22\4\uffff\1\43\4\uffff\1\36\1\uffff\1\24\3\uffff"+
-        "\1\2\1\6\1\uffff\1\25\1\35\1\1\2\uffff\1\23";
+        "\uffff\1\41\1\42\2\uffff\1\44\1\47\12\uffff\1\37\1\40\23\uffff\1"+
+        "\22\4\uffff\1\43\3\uffff\1\3\1\uffff\1\36\1\uffff\1\24\3\uffff\1"+
+        "\2\1\6\1\uffff\1\25\1\35\1\1\2\uffff\1\23";
     static final String DFA23_specialS =
-        "\1\1\37\uffff\1\0\43\uffff\1\2\77\uffff}>";
+        "\1\2\37\uffff\1\1\43\uffff\1\0\101\uffff}>";
     static final String[] DFA23_transitionS = {
             "\11\44\2\43\2\44\1\43\22\44\1\43\1\27\1\40\1\16\1\17\3\44\1"+
             "\11\1\13\1\5\1\44\1\12\1\34\1\4\1\33\12\35\2\44\1\31\1\25\1"+
             "\30\1\44\1\20\32\42\1\14\1\44\1\15\1\41\1\42\1\44\1\6\1\32\1"+
-            "\23\2\42\1\37\2\42\1\2\4\42\1\21\1\42\1\1\1\42\1\24\1\22\1\36"+
-            "\1\3\5\42\1\7\1\44\1\10\1\26\uff81\44",
+            "\23\2\42\1\37\2\42\1\2\3\42\1\3\1\21\1\42\1\1\1\42\1\24\1\22"+
+            "\1\36\6\42\1\7\1\44\1\10\1\26\uff81\44",
             "\1\45",
             "\1\47",
             "\1\50",
@@ -1999,7 +2000,7 @@ public class InternalApplicationLangLexer extends Lexer {
             "",
             "\1\133",
             "\1\134",
-            "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
+            "\1\135",
             "\1\136",
             "\1\137",
             "\1\140",
@@ -2013,43 +2014,45 @@ public class InternalApplicationLangLexer extends Lexer {
             "\1\146",
             "\1\147",
             "\1\150",
-            "",
             "\1\151",
             "\1\152",
+            "\1\153",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
-            "\1\154",
             "\1\155",
             "\1\156",
             "\1\157",
+            "\1\160",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
-            "\1\161",
             "\1\162",
             "\1\163",
             "\1\164",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
-            "",
             "\1\166",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
-            "\1\170",
-            "\1\171",
             "",
+            "\1\170",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
             "\1\172",
+            "\1\173",
+            "",
+            "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
+            "\1\174",
+            "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
+            "",
+            "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
+            "",
+            "\1\177",
+            "",
+            "\1\u0080",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
             "",
-            "\1\175",
             "",
-            "\1\176",
-            "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
-            "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
-            "",
-            "",
-            "\1\u0081",
+            "\1\u0083",
             "",
             "",
             "",
-            "\1\u0082",
+            "\1\u0084",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
             ""
     };
@@ -2091,6 +2094,16 @@ public class InternalApplicationLangLexer extends Lexer {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
+                        int LA23_68 = input.LA(1);
+
+                        s = -1;
+                        if ( (LA23_68=='*') ) {s = 87;}
+
+                        else if ( ((LA23_68>='\u0000' && LA23_68<=')')||(LA23_68>='+' && LA23_68<='\uFFFF')) ) {s = 88;}
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 1 : 
                         int LA23_32 = input.LA(1);
 
                         s = -1;
@@ -2100,7 +2113,7 @@ public class InternalApplicationLangLexer extends Lexer {
 
                         if ( s>=0 ) return s;
                         break;
-                    case 1 : 
+                    case 2 : 
                         int LA23_0 = input.LA(1);
 
                         s = -1;
@@ -2108,7 +2121,7 @@ public class InternalApplicationLangLexer extends Lexer {
 
                         else if ( (LA23_0=='i') ) {s = 2;}
 
-                        else if ( (LA23_0=='u') ) {s = 3;}
+                        else if ( (LA23_0=='m') ) {s = 3;}
 
                         else if ( (LA23_0=='.') ) {s = 4;}
 
@@ -2170,21 +2183,11 @@ public class InternalApplicationLangLexer extends Lexer {
 
                         else if ( (LA23_0=='^') ) {s = 33;}
 
-                        else if ( ((LA23_0>='A' && LA23_0<='Z')||LA23_0=='_'||(LA23_0>='d' && LA23_0<='e')||(LA23_0>='g' && LA23_0<='h')||(LA23_0>='j' && LA23_0<='m')||LA23_0=='o'||LA23_0=='q'||(LA23_0>='v' && LA23_0<='z')) ) {s = 34;}
+                        else if ( ((LA23_0>='A' && LA23_0<='Z')||LA23_0=='_'||(LA23_0>='d' && LA23_0<='e')||(LA23_0>='g' && LA23_0<='h')||(LA23_0>='j' && LA23_0<='l')||LA23_0=='o'||LA23_0=='q'||(LA23_0>='u' && LA23_0<='z')) ) {s = 34;}
 
                         else if ( ((LA23_0>='\t' && LA23_0<='\n')||LA23_0=='\r'||LA23_0==' ') ) {s = 35;}
 
                         else if ( ((LA23_0>='\u0000' && LA23_0<='\b')||(LA23_0>='\u000B' && LA23_0<='\f')||(LA23_0>='\u000E' && LA23_0<='\u001F')||(LA23_0>='%' && LA23_0<='\'')||LA23_0=='+'||(LA23_0>=':' && LA23_0<=';')||LA23_0=='?'||LA23_0=='\\'||LA23_0=='`'||LA23_0=='|'||(LA23_0>='\u007F' && LA23_0<='\uFFFF')) ) {s = 36;}
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 2 : 
-                        int LA23_68 = input.LA(1);
-
-                        s = -1;
-                        if ( (LA23_68=='*') ) {s = 87;}
-
-                        else if ( ((LA23_68>='\u0000' && LA23_68<=')')||(LA23_68>='+' && LA23_68<='\uFFFF')) ) {s = 88;}
 
                         if ( s>=0 ) return s;
                         break;

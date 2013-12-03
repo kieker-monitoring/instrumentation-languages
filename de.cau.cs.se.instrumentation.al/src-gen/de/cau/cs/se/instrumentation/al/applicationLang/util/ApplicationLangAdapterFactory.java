@@ -2,29 +2,7 @@
  */
 package de.cau.cs.se.instrumentation.al.applicationLang.util;
 
-import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationLangPackage;
-import de.cau.cs.se.instrumentation.al.applicationLang.Aspect;
-import de.cau.cs.se.instrumentation.al.applicationLang.Collector;
-import de.cau.cs.se.instrumentation.al.applicationLang.ContainerNode;
-import de.cau.cs.se.instrumentation.al.applicationLang.FloatValue;
-import de.cau.cs.se.instrumentation.al.applicationLang.Import;
-import de.cau.cs.se.instrumentation.al.applicationLang.IntValue;
-import de.cau.cs.se.instrumentation.al.applicationLang.LocationQuery;
-import de.cau.cs.se.instrumentation.al.applicationLang.Model;
-import de.cau.cs.se.instrumentation.al.applicationLang.Node;
-import de.cau.cs.se.instrumentation.al.applicationLang.ParamCompare;
-import de.cau.cs.se.instrumentation.al.applicationLang.ParamQuery;
-import de.cau.cs.se.instrumentation.al.applicationLang.Parameter;
-import de.cau.cs.se.instrumentation.al.applicationLang.ParameterPattern;
-import de.cau.cs.se.instrumentation.al.applicationLang.Query;
-import de.cau.cs.se.instrumentation.al.applicationLang.ReferenceValue;
-import de.cau.cs.se.instrumentation.al.applicationLang.ReflectionProperty;
-import de.cau.cs.se.instrumentation.al.applicationLang.RuntimeProperty;
-import de.cau.cs.se.instrumentation.al.applicationLang.StringValue;
-import de.cau.cs.se.instrumentation.al.applicationLang.SubPathNode;
-import de.cau.cs.se.instrumentation.al.applicationLang.Value;
-import de.cau.cs.se.instrumentation.al.applicationLang.WildcardNode;
-import de.cau.cs.se.instrumentation.al.applicationLang.WoldcardNode;
+import de.cau.cs.se.instrumentation.al.applicationLang.*;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -107,9 +85,9 @@ public class ApplicationLangAdapterFactory extends AdapterFactoryImpl
         return createImportAdapter();
       }
       @Override
-      public Adapter casePackage(de.cau.cs.se.instrumentation.al.applicationLang.Package object)
+      public Adapter caseApplicationModel(ApplicationModel object)
       {
-        return createPackageAdapter();
+        return createApplicationModelAdapter();
       }
       @Override
       public Adapter caseAspect(Aspect object)
@@ -264,16 +242,16 @@ public class ApplicationLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.applicationLang.Package <em>Package</em>}'.
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel <em>Application Model</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.applicationLang.Package
+   * @see de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel
    * @generated
    */
-  public Adapter createPackageAdapter()
+  public Adapter createApplicationModelAdapter()
   {
     return null;
   }

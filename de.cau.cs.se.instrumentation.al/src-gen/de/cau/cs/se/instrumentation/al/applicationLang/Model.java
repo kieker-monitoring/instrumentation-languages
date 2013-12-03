@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.Model#getName <em>Name</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.Model#getPackages <em>Packages</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.Model#getSources <em>Sources</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.Model#getImports <em>Imports</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.Model#getAspects <em>Aspects</em>}</li>
  * </ul>
@@ -54,20 +54,20 @@ public interface Model extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Packages</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.cs.se.instrumentation.al.applicationLang.Package}.
+   * Returns the value of the '<em><b>Sources</b></em>' containment reference list.
+   * The list contents are of type {@link de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Packages</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Sources</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Packages</em>' containment reference list.
-   * @see de.cau.cs.se.instrumentation.al.applicationLang.ApplicationLangPackage#getModel_Packages()
+   * @return the value of the '<em>Sources</em>' containment reference list.
+   * @see de.cau.cs.se.instrumentation.al.applicationLang.ApplicationLangPackage#getModel_Sources()
    * @model containment="true"
    * @generated
    */
-  EList<de.cau.cs.se.instrumentation.al.applicationLang.Package> getPackages();
+  EList<ApplicationModel> getSources();
 
   /**
    * Returns the value of the '<em><b>Imports</b></em>' containment reference list.

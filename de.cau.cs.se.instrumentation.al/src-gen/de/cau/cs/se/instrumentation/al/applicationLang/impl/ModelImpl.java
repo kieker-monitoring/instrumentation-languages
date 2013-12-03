@@ -3,6 +3,7 @@
 package de.cau.cs.se.instrumentation.al.applicationLang.impl;
 
 import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationLangPackage;
+import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel;
 import de.cau.cs.se.instrumentation.al.applicationLang.Aspect;
 import de.cau.cs.se.instrumentation.al.applicationLang.Import;
 import de.cau.cs.se.instrumentation.al.applicationLang.Model;
@@ -31,7 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.impl.ModelImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.impl.ModelImpl#getPackages <em>Packages</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.impl.ModelImpl#getSources <em>Sources</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.impl.ModelImpl#getImports <em>Imports</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.impl.ModelImpl#getAspects <em>Aspects</em>}</li>
  * </ul>
@@ -62,14 +63,14 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getPackages() <em>Packages</em>}' containment reference list.
+   * The cached value of the '{@link #getSources() <em>Sources</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getPackages()
+   * @see #getSources()
    * @generated
    * @ordered
    */
-  protected EList<de.cau.cs.se.instrumentation.al.applicationLang.Package> packages;
+  protected EList<ApplicationModel> sources;
 
   /**
    * The cached value of the '{@link #getImports() <em>Imports</em>}' containment reference list.
@@ -140,13 +141,13 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<de.cau.cs.se.instrumentation.al.applicationLang.Package> getPackages()
+  public EList<ApplicationModel> getSources()
   {
-    if (packages == null)
+    if (sources == null)
     {
-      packages = new EObjectContainmentEList<de.cau.cs.se.instrumentation.al.applicationLang.Package>(de.cau.cs.se.instrumentation.al.applicationLang.Package.class, this, ApplicationLangPackage.MODEL__PACKAGES);
+      sources = new EObjectContainmentEList<ApplicationModel>(ApplicationModel.class, this, ApplicationLangPackage.MODEL__SOURCES);
     }
-    return packages;
+    return sources;
   }
 
   /**
@@ -187,8 +188,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case ApplicationLangPackage.MODEL__PACKAGES:
-        return ((InternalEList<?>)getPackages()).basicRemove(otherEnd, msgs);
+      case ApplicationLangPackage.MODEL__SOURCES:
+        return ((InternalEList<?>)getSources()).basicRemove(otherEnd, msgs);
       case ApplicationLangPackage.MODEL__IMPORTS:
         return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
       case ApplicationLangPackage.MODEL__ASPECTS:
@@ -209,8 +210,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
     {
       case ApplicationLangPackage.MODEL__NAME:
         return getName();
-      case ApplicationLangPackage.MODEL__PACKAGES:
-        return getPackages();
+      case ApplicationLangPackage.MODEL__SOURCES:
+        return getSources();
       case ApplicationLangPackage.MODEL__IMPORTS:
         return getImports();
       case ApplicationLangPackage.MODEL__ASPECTS:
@@ -233,9 +234,9 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
       case ApplicationLangPackage.MODEL__NAME:
         setName((String)newValue);
         return;
-      case ApplicationLangPackage.MODEL__PACKAGES:
-        getPackages().clear();
-        getPackages().addAll((Collection<? extends de.cau.cs.se.instrumentation.al.applicationLang.Package>)newValue);
+      case ApplicationLangPackage.MODEL__SOURCES:
+        getSources().clear();
+        getSources().addAll((Collection<? extends ApplicationModel>)newValue);
         return;
       case ApplicationLangPackage.MODEL__IMPORTS:
         getImports().clear();
@@ -262,8 +263,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
       case ApplicationLangPackage.MODEL__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case ApplicationLangPackage.MODEL__PACKAGES:
-        getPackages().clear();
+      case ApplicationLangPackage.MODEL__SOURCES:
+        getSources().clear();
         return;
       case ApplicationLangPackage.MODEL__IMPORTS:
         getImports().clear();
@@ -287,8 +288,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
     {
       case ApplicationLangPackage.MODEL__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case ApplicationLangPackage.MODEL__PACKAGES:
-        return packages != null && !packages.isEmpty();
+      case ApplicationLangPackage.MODEL__SOURCES:
+        return sources != null && !sources.isEmpty();
       case ApplicationLangPackage.MODEL__IMPORTS:
         return imports != null && !imports.isEmpty();
       case ApplicationLangPackage.MODEL__ASPECTS:

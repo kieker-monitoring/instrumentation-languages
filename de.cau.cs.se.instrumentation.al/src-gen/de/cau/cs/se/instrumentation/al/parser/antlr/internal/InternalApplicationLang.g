@@ -109,17 +109,17 @@ ruleModel returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getModelAccess().getPackagesPackageParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getModelAccess().getSourcesApplicationModelParserRuleCall_2_0()); 
 	    }
-		lv_packages_2_0=rulePackage		{
+		lv_sources_2_0=ruleApplicationModel		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getModelRule());
 	        }
        		add(
        			$current, 
-       			"packages",
-        		lv_packages_2_0, 
-        		"Package");
+       			"sources",
+        		lv_sources_2_0, 
+        		"ApplicationModel");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -210,33 +210,33 @@ ruleImport returns [EObject current=null]
 
 
 
-// Entry rule entryRulePackage
-entryRulePackage returns [EObject current=null] 
+// Entry rule entryRuleApplicationModel
+entryRuleApplicationModel returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getPackageRule()); }
-	 iv_rulePackage=rulePackage 
-	 { $current=$iv_rulePackage.current; } 
+	{ newCompositeNode(grammarAccess.getApplicationModelRule()); }
+	 iv_ruleApplicationModel=ruleApplicationModel 
+	 { $current=$iv_ruleApplicationModel.current; } 
 	 EOF 
 ;
 
-// Rule Package
-rulePackage returns [EObject current=null] 
+// Rule ApplicationModel
+ruleApplicationModel returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='use' 
+(	otherlv_0='model' 
     {
-    	newLeafNode(otherlv_0, grammarAccess.getPackageAccess().getUseKeyword_0());
+    	newLeafNode(otherlv_0, grammarAccess.getApplicationModelAccess().getModelKeyword_0());
     }
 (
 (
 		lv_name_1_0=RULE_ID
 		{
-			newLeafNode(lv_name_1_0, grammarAccess.getPackageAccess().getNameIDTerminalRuleCall_1_0()); 
+			newLeafNode(lv_name_1_0, grammarAccess.getApplicationModelAccess().getNameIDTerminalRuleCall_1_0()); 
 		}
 		{
 	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getPackageRule());
+	            $current = createModelElement(grammarAccess.getApplicationModelRule());
 	        }
        		setWithLastConsumed(
        			$current, 
@@ -253,12 +253,12 @@ rulePackage returns [EObject current=null]
 		}
 		{
 			if ($current==null) {
-	            $current = createModelElement(grammarAccess.getPackageRule());
+	            $current = createModelElement(grammarAccess.getApplicationModelRule());
 	        }
         }
 	otherlv_2=RULE_STRING
 	{
-		newLeafNode(otherlv_2, grammarAccess.getPackageAccess().getPackageEPackageCrossReference_2_0()); 
+		newLeafNode(otherlv_2, grammarAccess.getApplicationModelAccess().getModelEPackageCrossReference_2_0()); 
 	}
 
 )

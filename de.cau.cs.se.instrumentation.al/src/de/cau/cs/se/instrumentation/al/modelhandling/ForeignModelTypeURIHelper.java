@@ -14,18 +14,29 @@
 package de.cau.cs.se.instrumentation.al.modelhandling;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.xtext.common.types.access.jdt.TypeURIHelper;
 
 /**
  * @author Reiner Jung
  */
-public class EcoreTypeURIHelper extends TypeURIHelper {
+public class ForeignModelTypeURIHelper {
 
 	public static String ELEMENTS = "/Elements"; //$NON-NLS-1$
 	public static String PROTOCOL = "internal"; //$NON-NLS-1$
+	public static String OBJECTS = "/Objects/"; //$NON-NLS-1$
 
 	public URI createResourceURI() {
-		return URI.createURI(EcoreTypeURIHelper.PROTOCOL + ':' + EcoreTypeURIHelper.ELEMENTS);
+		return URI.createURI(ForeignModelTypeURIHelper.PROTOCOL + ':' + ForeignModelTypeURIHelper.ELEMENTS);
+	}
+
+	// TODO check if this contraption is really useful
+	public URI getFullURIForClass(final String fqn) {
+		final StringBuilder uriBuilder = new StringBuilder(48);
+		uriBuilder.append(PROTOCOL);
+		uriBuilder.append(':');
+		uriBuilder.append(OBJECTS).append(fqn);
+		uriBuilder.append('#');
+		uriBuilder.append(fqn);
+		return URI.createURI(uriBuilder.toString());
 	}
 
 }

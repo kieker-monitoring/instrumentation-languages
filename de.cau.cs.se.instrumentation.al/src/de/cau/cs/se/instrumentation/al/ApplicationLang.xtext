@@ -9,7 +9,7 @@ import "http://modelstructure.se.cs.cau.de/structure" as structure
 
 Model:
 	'package' name = QualifiedName
-	(packages += Package)*
+	(sources += ApplicationModel)*
 	(imports += Import)*
 	(aspects += Aspect)*
 ;
@@ -18,8 +18,8 @@ Import:
 	'import' importedNamespace = QualifiedNameWithWildcard
 ;
 
-Package:
-	'use' name=ID package=[ecore::EPackage|STRING] 
+ApplicationModel:
+	'model' name=ID model=[ecore::EPackage|STRING] 
 ;
 
 QualifiedName:

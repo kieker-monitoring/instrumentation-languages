@@ -2,33 +2,7 @@
  */
 package de.cau.cs.se.instrumentation.al.applicationLang.impl;
 
-import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationLangFactory;
-import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationLangPackage;
-import de.cau.cs.se.instrumentation.al.applicationLang.Aspect;
-import de.cau.cs.se.instrumentation.al.applicationLang.Collector;
-import de.cau.cs.se.instrumentation.al.applicationLang.ContainerNode;
-import de.cau.cs.se.instrumentation.al.applicationLang.FloatValue;
-import de.cau.cs.se.instrumentation.al.applicationLang.Import;
-import de.cau.cs.se.instrumentation.al.applicationLang.InsertionPoint;
-import de.cau.cs.se.instrumentation.al.applicationLang.IntValue;
-import de.cau.cs.se.instrumentation.al.applicationLang.LocationQuery;
-import de.cau.cs.se.instrumentation.al.applicationLang.Model;
-import de.cau.cs.se.instrumentation.al.applicationLang.Node;
-import de.cau.cs.se.instrumentation.al.applicationLang.Operator;
-import de.cau.cs.se.instrumentation.al.applicationLang.ParamCompare;
-import de.cau.cs.se.instrumentation.al.applicationLang.ParamQuery;
-import de.cau.cs.se.instrumentation.al.applicationLang.Parameter;
-import de.cau.cs.se.instrumentation.al.applicationLang.ParameterPattern;
-import de.cau.cs.se.instrumentation.al.applicationLang.Query;
-import de.cau.cs.se.instrumentation.al.applicationLang.ReferenceValue;
-import de.cau.cs.se.instrumentation.al.applicationLang.ReflectionFunction;
-import de.cau.cs.se.instrumentation.al.applicationLang.ReflectionProperty;
-import de.cau.cs.se.instrumentation.al.applicationLang.RuntimeProperty;
-import de.cau.cs.se.instrumentation.al.applicationLang.StringValue;
-import de.cau.cs.se.instrumentation.al.applicationLang.SubPathNode;
-import de.cau.cs.se.instrumentation.al.applicationLang.Value;
-import de.cau.cs.se.instrumentation.al.applicationLang.WildcardNode;
-import de.cau.cs.se.instrumentation.al.applicationLang.WoldcardNode;
+import de.cau.cs.se.instrumentation.al.applicationLang.*;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -93,7 +67,7 @@ public class ApplicationLangFactoryImpl extends EFactoryImpl implements Applicat
     {
       case ApplicationLangPackage.MODEL: return createModel();
       case ApplicationLangPackage.IMPORT: return createImport();
-      case ApplicationLangPackage.PACKAGE: return createPackage();
+      case ApplicationLangPackage.APPLICATION_MODEL: return createApplicationModel();
       case ApplicationLangPackage.ASPECT: return createAspect();
       case ApplicationLangPackage.QUERY: return createQuery();
       case ApplicationLangPackage.PARAMETER_PATTERN: return createParameterPattern();
@@ -188,10 +162,10 @@ public class ApplicationLangFactoryImpl extends EFactoryImpl implements Applicat
    * <!-- end-user-doc -->
    * @generated
    */
-  public de.cau.cs.se.instrumentation.al.applicationLang.Package createPackage()
+  public ApplicationModel createApplicationModel()
   {
-    PackageImpl package_ = new PackageImpl();
-    return package_;
+    ApplicationModelImpl applicationModel = new ApplicationModelImpl();
+    return applicationModel;
   }
 
   /**

@@ -19,7 +19,6 @@ import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
@@ -34,21 +33,22 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 import de.cau.cs.se.instrumantation.model.structure.NamedElement;
+import de.cau.cs.se.instrumantation.model.structure.StructureFactory;
 
 /**
  * 
  * 
- * @author Christian Schneider
+ * @author Reiner Jung
  */
-public class ModelMappingScope extends AbstractScope {
+public class ForeignModelTypeScope extends AbstractScope {
 
-	private final ITypeProvider typeProvider;
+	private final IForeignModelTypeProvider typeProvider;
 
 	private final IQualifiedNameConverter qualifiedNameConverter;
 
 	private final Predicate<IEObjectDescription> filter;
 
-	protected ModelMappingScope(final ITypeProvider typeProvider,
+	protected ForeignModelTypeScope(final IForeignModelTypeProvider typeProvider,
 			final IQualifiedNameConverter qualifiedNameConverter,
 			final Predicate<IEObjectDescription> filter) {
 		super(IScope.NULLSCOPE, false);
@@ -124,9 +124,8 @@ public class ModelMappingScope extends AbstractScope {
 	}
 
 	protected InternalEObject createProxy(final String fullyQualifiedName) {
-		final URI uri = this.typeProvider.getTypeUriHelper().getFullURIForClass(
-				fullyQualifiedName);
-		final InternalEObject proxy = (InternalEObject) EcoreFactory.eINSTANCE.createEDataType();
+		final URI uri = this.typeProvider.getTypeUriHelper().getFullURIForClass(fullyQualifiedName);
+		final InternalEObject proxy = (InternalEObject) StructureFactory.eINSTANCE.createContainment();
 		proxy.eSetProxyURI(uri);
 		return proxy;
 	}

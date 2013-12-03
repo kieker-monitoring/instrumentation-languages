@@ -30,18 +30,18 @@ import de.cau.cs.se.instrumantation.model.structure.NamedElement;
  * @author Reiner Jung - Cleanup and commentary
  * 
  */
-public class ModelMappingProvider implements Resource.Factory, ITypeProvider {
+public class ForeignModelTypeProvider implements Resource.Factory, IForeignModelTypeProvider {
 
-	private final EcoreTypeURIHelper typeUriHelper;
+	private final ForeignModelTypeURIHelper typeUriHelper;
 
 	private final ResourceSet resourceSet;
 
 	/**
 	 * @param resourceSet
 	 */
-	public ModelMappingProvider(final ResourceSet resourceSet) {
+	public ForeignModelTypeProvider(final ResourceSet resourceSet) {
 		this.resourceSet = resourceSet;
-		this.typeUriHelper = new EcoreTypeURIHelper();
+		this.typeUriHelper = new ForeignModelTypeURIHelper();
 	}
 
 	/**
@@ -57,8 +57,8 @@ public class ModelMappingProvider implements Resource.Factory, ITypeProvider {
 		 */
 		return IterableExtensions.map(
 				this.resourceSet.getResource(
-						URI.createURI(EcoreTypeURIHelper.PROTOCOL + ":"
-								+ EcoreTypeURIHelper.ELEMENTS), true).getContents(),
+						URI.createURI(ForeignModelTypeURIHelper.PROTOCOL + ":"
+								+ ForeignModelTypeURIHelper.ELEMENTS), true).getContents(),
 				new Function1<EObject, NamedElement>() {
 					// @Override
 					public NamedElement apply(final EObject p) {
@@ -80,7 +80,7 @@ public class ModelMappingProvider implements Resource.Factory, ITypeProvider {
 			throw new IllegalArgumentException("Internal error: Empty type name.");
 		}
 		final URI resourceURI = this.typeUriHelper.createResourceURI();
-		final ModelMappingResource resource = (ModelMappingResource) this.resourceSet.getResource(resourceURI, true);
+		final ForeignModelResource resource = (ForeignModelResource) this.resourceSet.getResource(resourceURI, true);
 
 		return (NamedElement) resource.getEObject(name);
 	}
@@ -92,15 +92,15 @@ public class ModelMappingProvider implements Resource.Factory, ITypeProvider {
 	 *            The URI for the resource
 	 */
 	// @Override
-	public ModelMappingResource createResource(final URI uri) {
-		return new ModelMappingResource(uri);
+	public ForeignModelResource createResource(final URI uri) {
+		return new ForeignModelResource(uri);
 	}
 
 	/**
 	 * @returns Returns the URI helper for the type system.
 	 */
 	// @Override
-	public EcoreTypeURIHelper getTypeUriHelper() {
+	public ForeignModelTypeURIHelper getTypeUriHelper() {
 		return this.typeUriHelper;
 	}
 

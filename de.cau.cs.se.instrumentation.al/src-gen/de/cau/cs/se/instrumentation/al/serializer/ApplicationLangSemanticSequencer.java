@@ -12,6 +12,7 @@ import de.cau.cs.kieler.core.annotations.StringAnnotation;
 import de.cau.cs.kieler.core.annotations.TypedStringAnnotation;
 import de.cau.cs.kieler.core.annotations.text.serializer.AnnotationsSemanticSequencer;
 import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationLangPackage;
+import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel;
 import de.cau.cs.se.instrumentation.al.applicationLang.Aspect;
 import de.cau.cs.se.instrumentation.al.applicationLang.Collector;
 import de.cau.cs.se.instrumentation.al.applicationLang.ContainerNode;
@@ -112,6 +113,12 @@ public class ApplicationLangSemanticSequencer extends AnnotationsSemanticSequenc
 				else break;
 			}
 		else if(semanticObject.eClass().getEPackage() == ApplicationLangPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case ApplicationLangPackage.APPLICATION_MODEL:
+				if(context == grammarAccess.getApplicationModelRule()) {
+					sequence_ApplicationModel(context, (ApplicationModel) semanticObject); 
+					return; 
+				}
+				else break;
 			case ApplicationLangPackage.ASPECT:
 				if(context == grammarAccess.getAspectRule()) {
 					sequence_Aspect(context, (Aspect) semanticObject); 
@@ -163,12 +170,6 @@ public class ApplicationLangSemanticSequencer extends AnnotationsSemanticSequenc
 			case ApplicationLangPackage.MODEL:
 				if(context == grammarAccess.getModelRule()) {
 					sequence_Model(context, (Model) semanticObject); 
-					return; 
-				}
-				else break;
-			case ApplicationLangPackage.PACKAGE:
-				if(context == grammarAccess.getPackageRule()) {
-					sequence_Package(context, (de.cau.cs.se.instrumentation.al.applicationLang.Package) semanticObject); 
 					return; 
 				}
 				else break;
@@ -247,6 +248,25 @@ public class ApplicationLangSemanticSequencer extends AnnotationsSemanticSequenc
 			}
 		if (errorAcceptor != null) errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
 	}
+	
+	/**
+	 * Constraint:
+	 *     (name=ID model=[EPackage|STRING])
+	 */
+	protected void sequence_ApplicationModel(EObject context, ApplicationModel semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, ApplicationLangPackage.Literals.APPLICATION_MODEL__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ApplicationLangPackage.Literals.APPLICATION_MODEL__NAME));
+			if(transientValues.isValueTransient(semanticObject, ApplicationLangPackage.Literals.APPLICATION_MODEL__MODEL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ApplicationLangPackage.Literals.APPLICATION_MODEL__MODEL));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getApplicationModelAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getApplicationModelAccess().getModelEPackageSTRINGTerminalRuleCall_2_0_1(), semanticObject.getModel());
+		feeder.finish();
+	}
+	
 	
 	/**
 	 * Constraint:
@@ -343,7 +363,7 @@ public class ApplicationLangSemanticSequencer extends AnnotationsSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (name=QualifiedName packages+=Package* imports+=Import* aspects+=Aspect*)
+	 *     (name=QualifiedName sources+=ApplicationModel* imports+=Import* aspects+=Aspect*)
 	 */
 	protected void sequence_Model(EObject context, Model semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -365,25 +385,6 @@ public class ApplicationLangSemanticSequencer extends AnnotationsSemanticSequenc
 	 */
 	protected void sequence_Node(EObject context, WoldcardNode semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (name=ID package=[EPackage|STRING])
-	 */
-	protected void sequence_Package(EObject context, de.cau.cs.se.instrumentation.al.applicationLang.Package semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ApplicationLangPackage.Literals.PACKAGE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ApplicationLangPackage.Literals.PACKAGE__NAME));
-			if(transientValues.isValueTransient(semanticObject, ApplicationLangPackage.Literals.PACKAGE__PACKAGE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ApplicationLangPackage.Literals.PACKAGE__PACKAGE));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getPackageAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getPackageAccess().getPackageEPackageSTRINGTerminalRuleCall_2_0_1(), semanticObject.getPackage());
-		feeder.finish();
 	}
 	
 	
