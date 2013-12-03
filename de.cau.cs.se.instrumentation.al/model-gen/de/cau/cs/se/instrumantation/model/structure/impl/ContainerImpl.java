@@ -3,6 +3,7 @@
 package de.cau.cs.se.instrumantation.model.structure.impl;
 
 import de.cau.cs.se.instrumantation.model.structure.ContainerModifier;
+import de.cau.cs.se.instrumantation.model.structure.Containment;
 import de.cau.cs.se.instrumantation.model.structure.Method;
 import de.cau.cs.se.instrumantation.model.structure.StructurePackage;
 import java.util.Collection;
@@ -237,6 +238,38 @@ public class ContainerImpl extends NamedElementImpl implements de.cau.cs.se.inst
 				return methods != null && !methods.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == Containment.class) {
+			switch (derivedFeatureID) {
+				case StructurePackage.CONTAINER__CONTENTS: return StructurePackage.CONTAINMENT__CONTENTS;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == Containment.class) {
+			switch (baseFeatureID) {
+				case StructurePackage.CONTAINMENT__CONTENTS: return StructurePackage.CONTAINER__CONTENTS;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 } //ContainerImpl

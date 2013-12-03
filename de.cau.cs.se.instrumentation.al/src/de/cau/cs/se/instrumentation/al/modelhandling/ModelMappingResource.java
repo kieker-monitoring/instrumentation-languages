@@ -18,16 +18,13 @@ import java.io.InputStream;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
-
-import com.google.inject.Inject;
 
 import de.cau.cs.se.instrumantation.model.structure.Container;
 import de.cau.cs.se.instrumantation.model.structure.ContainerModifier;
 import de.cau.cs.se.instrumantation.model.structure.Model;
+import de.cau.cs.se.instrumantation.model.structure.NamedElement;
 import de.cau.cs.se.instrumantation.model.structure.StructureFactory;
 
 /**
@@ -38,9 +35,8 @@ import de.cau.cs.se.instrumantation.model.structure.StructureFactory;
  */
 public class ModelMappingResource extends ResourceImpl {
 
-	@Inject
-	StructureFactory structure;
-	
+	StructureFactory structure = StructureFactory.eINSTANCE;
+
 	public ModelMappingResource() {
 		super();
 	}
@@ -51,6 +47,7 @@ public class ModelMappingResource extends ResourceImpl {
 
 	@Override
 	public EObject getEObject(final String uriFragment) {
+		System.out.println("getObject " + uriFragment);
 		if (this.getContents().size() == 0) {
 			// TODO Resource contents is empty, this should not happen.
 			/*
@@ -63,8 +60,8 @@ public class ModelMappingResource extends ResourceImpl {
 			 * 
 			 * However, to circumvent this bug, the following code refills the content.
 			 */
-			// TODO reconstruct model 
-			createModel();
+			// TODO reconstruct model
+			this.createModel();
 		}
 		for (final EObject obj : this.getContents()) {
 			if (uriFragment.equals(this.getURIFragment(obj))) {
@@ -76,8 +73,9 @@ public class ModelMappingResource extends ResourceImpl {
 
 	@Override
 	public String getURIFragment(final EObject eObject) {
-		if (EcorePackage.eINSTANCE.getEDataType().isInstance(eObject)) {
-			return ((EDataType) eObject).getName();
+		if (eObject instanceof NamedElement) {
+			System.out.println("NamedElement " + ((NamedElement) eObject).getName() + " " + eObject.getClass());
+			return ((NamedElement) eObject).getName();
 		} else {
 			return super.getURIFragment(eObject);
 		}
@@ -105,10 +103,10 @@ public class ModelMappingResource extends ResourceImpl {
 	protected void doLoad(final InputStream inputStream, final Map<?, ?> options) throws IOException {
 		try {
 			if (this.getURI() != null) {
-				createModel();
-				//for (final primitiveType : PrimitiveTypes.values()) {
-				//	this.getContents().add(primitiveType.getEType());
-				//}
+				this.createModel();
+				// for (final primitiveType : PrimitiveTypes.values()) {
+				// this.getContents().add(primitiveType.getEType());
+				// }
 			} else {
 				try {
 					throw new IOException("Malformed URI in TypeResource.onLoad");
@@ -122,14 +120,16 @@ public class ModelMappingResource extends ResourceImpl {
 	}
 
 	private void createModel() {
-		Model model = structure.createModel();
-		Container container = structure.createContainer();
-		container.setName("TradingSystem");
-		ContainerModifier containerModifier = structure.createContainerModifier();
+		final Model model = this.structure.createModel();
+		model.setName("TradingSystem");
+		this.getContents().add(model);
+		// fill model
+		final Container container = this.structure.createContainer();
+		container.setName("Application");
+		final ContainerModifier containerModifier = this.structure.createContainerModifier();
 		containerModifier.setName("in");
 		container.setModifier(containerModifier);
 		model.getContents().add(container);
 		this.getContents().add(container);
 	}
-
 }

@@ -4,8 +4,6 @@ package de.cau.cs.se.instrumantation.model.structure;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Model</b></em>'.
@@ -14,7 +12,6 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumantation.model.structure.Model#getContents <em>Contents</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumantation.model.structure.Model#getTypes <em>Types</em>}</li>
  * </ul>
  * </p>
@@ -23,23 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Model extends EObject {
-	/**
-	 * Returns the value of the '<em><b>Contents</b></em>' containment reference list.
-	 * The list contents are of type {@link de.cau.cs.se.instrumantation.model.structure.Container}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Contents</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Contents</em>' containment reference list.
-	 * @see de.cau.cs.se.instrumantation.model.structure.StructurePackage#getModel_Contents()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Container> getContents();
-
+public interface Model extends NamedElement, Containment {
 	/**
 	 * Returns the value of the '<em><b>Types</b></em>' containment reference list.
 	 * The list contents are of type {@link de.cau.cs.se.instrumantation.model.structure.Type}.

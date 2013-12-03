@@ -4,6 +4,15 @@
 package de.cau.cs.se.instrumentation.al.ui.labeling;
 
 import com.google.inject.Inject;
+import de.cau.cs.se.instrumantation.model.structure.Containment;
+import de.cau.cs.se.instrumantation.model.structure.NamedElement;
+import de.cau.cs.se.instrumentation.al.applicationLang.Aspect;
+import de.cau.cs.se.instrumentation.al.applicationLang.Collector;
+import de.cau.cs.se.instrumentation.al.applicationLang.ContainerNode;
+import de.cau.cs.se.instrumentation.al.applicationLang.LocationQuery;
+import de.cau.cs.se.instrumentation.al.applicationLang.Query;
+import de.cau.cs.se.instrumentation.al.applicationLang.SubPathNode;
+import de.cau.cs.se.instrumentation.al.applicationLang.WildcardNode;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
 
@@ -17,5 +26,38 @@ public class ApplicationLangLabelProvider extends DefaultEObjectLabelProvider {
   @Inject
   public ApplicationLangLabelProvider(final AdapterFactoryLabelProvider delegate) {
     super(delegate);
+  }
+  
+  public String text(final Aspect e) {
+    return "aspect";
+  }
+  
+  public String text(final ContainerNode e) {
+    Containment _container = e.getContainer();
+    String _name = ((NamedElement) _container).getName();
+    return _name;
+  }
+  
+  public String text(final WildcardNode e) {
+    return "*";
+  }
+  
+  public String text(final SubPathNode e) {
+    return "**";
+  }
+  
+  public String text(final Query e) {
+    return "query";
+  }
+  
+  public String text(final LocationQuery e) {
+    return "path";
+  }
+  
+  public Object text(final Collector e) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nname cannot be resolved"
+      + "\n+ cannot be resolved"
+      + "\n+ cannot be resolved");
   }
 }

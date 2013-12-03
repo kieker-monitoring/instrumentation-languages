@@ -33,7 +33,7 @@ public class ModelHandlerGlobalScopeProvider extends DefaultGlobalScopeProvider 
   }
   
   public IScope getParentTypeScope(final Resource resource, final EReference reference, final Predicate<IEObjectDescription> filter, final EClass referenceType) {
-    boolean _isAssignableFrom = EcoreUtil2.isAssignableFrom(Literals.ECLASSIFIER, referenceType);
+    boolean _isAssignableFrom = EcoreUtil2.isAssignableFrom(Literals.EOBJECT, referenceType);
     if (_isAssignableFrom) {
       boolean _notEquals = (!Objects.equal(resource, null));
       if (_notEquals) {

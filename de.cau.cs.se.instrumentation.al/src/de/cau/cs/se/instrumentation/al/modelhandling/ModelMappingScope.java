@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -33,6 +32,8 @@ import org.eclipse.xtext.scoping.impl.AbstractScope;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+
+import de.cau.cs.se.instrumantation.model.structure.NamedElement;
 
 /**
  * 
@@ -58,7 +59,7 @@ public class ModelMappingScope extends AbstractScope {
 
 	@Override
 	public IEObjectDescription getSingleElement(final QualifiedName name) {
-		final EClassifier type = this.typeProvider
+		final NamedElement type = this.typeProvider
 				.findTypeByName(this.qualifiedNameConverter.toString(name));
 		if (type == null) {
 			return null;
@@ -107,7 +108,7 @@ public class ModelMappingScope extends AbstractScope {
 	protected Iterable<IEObjectDescription> internalGetAllElements() {
 		final List<IEObjectDescription> types = Lists.newArrayList();
 
-		for (final EClassifier t : this.typeProvider.getAllTypes()) {
+		for (final NamedElement t : this.typeProvider.getAllTypes()) {
 			types.add(this.createScopedElement(t.getName()));
 		}
 

@@ -22,24 +22,25 @@ class ModelHandlerGlobalScopeProvider extends DefaultGlobalScopeProvider {
 	private IQualifiedNameConverter qualifiedNameConverter;
 
     override IScope getScope(Resource resource, EReference reference, Predicate<IEObjectDescription> filter) {
-            val IScope parentTypeScope = resource.getParentTypeScope(reference, filter, reference.getEReferenceType());
-            return super.getScope(parentTypeScope, resource, false, reference.getEReferenceType(), filter);
+    	val IScope parentTypeScope = resource.getParentTypeScope(reference, filter, reference.getEReferenceType());
+        return super.getScope(parentTypeScope, resource, false, reference.getEReferenceType(), filter);
     }
 
     def IScope getParentTypeScope(Resource resource, EReference reference,
             Predicate<IEObjectDescription> filter, EClass referenceType) {
         // check whether the reference type is a type of any kind 
-        if (EcoreUtil2::isAssignableFrom(Literals::ECLASSIFIER, referenceType)) {
+        if (EcoreUtil2::isAssignableFrom(Literals::EOBJECT, referenceType)) {
         	if (resource != null) {
         		val ResourceSet resourceSet = resource.getResourceSet()
-    			if (resourceSet != null) {
+        		if (resourceSet != null) {
         			val ITypeProvider typeProvider = typeProviderFactory.getTypeProvider(resourceSet)
-					return new ModelMappingScope(typeProvider, qualifiedNameConverter, filter)
+        			return new ModelMappingScope(typeProvider, qualifiedNameConverter, filter)
 				} else
     				throw new IllegalStateException("context must be contained in a resource set")
         	} else
     			throw new IllegalStateException("context must be contained in a resource")
-        } else
+        } else {
         	return IScope::NULLSCOPE
+        }
     }
 }

@@ -1321,7 +1321,7 @@ ruleContainerNode returns [EObject current=null]
         }
 	otherlv_0=RULE_ID
 	{
-		newLeafNode(otherlv_0, grammarAccess.getContainerNodeAccess().getContainerContainerCrossReference_0()); 
+		newLeafNode(otherlv_0, grammarAccess.getContainerNodeAccess().getContainerContainmentCrossReference_0()); 
 	}
 
 )

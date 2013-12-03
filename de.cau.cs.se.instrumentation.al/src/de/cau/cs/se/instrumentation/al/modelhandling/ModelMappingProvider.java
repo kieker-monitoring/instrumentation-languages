@@ -14,13 +14,14 @@
 package de.cau.cs.se.instrumentation.al.modelhandling;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+
+import de.cau.cs.se.instrumantation.model.structure.NamedElement;
 
 /**
  * The type provider allows to retrieve a list of all primitive types and provides type name lookup.
@@ -49,19 +50,19 @@ public class ModelMappingProvider implements Resource.Factory, ITypeProvider {
 	 * @return Returns an iterable with all primitive types.
 	 */
 	// @Override
-	public Iterable<EClassifier> getAllTypes() {
+	public Iterable<NamedElement> getAllTypes() {
 		/*
 		 * Get the (already created) types from the helper resource and cast the list to a list of
 		 * types.
 		 */
 		return IterableExtensions.map(
 				this.resourceSet.getResource(
-						URI.createURI(EcoreURIHelperConstants.PROTOCOL + ":"
-								+ EcoreURIHelperConstants.PRIMITIVES), true).getContents(),
-				new Function1<EObject, EClassifier>() {
+						URI.createURI(EcoreTypeURIHelper.PROTOCOL + ":"
+								+ EcoreTypeURIHelper.ELEMENTS), true).getContents(),
+				new Function1<EObject, NamedElement>() {
 					// @Override
-					public EClassifier apply(final EObject p) {
-						return (EClassifier) p;
+					public NamedElement apply(final EObject p) {
+						return (NamedElement) p;
 					}
 				});
 	}
@@ -74,14 +75,14 @@ public class ModelMappingProvider implements Resource.Factory, ITypeProvider {
 	 * @return Returns the primitive type for a given type name, or null.
 	 */
 	// @Override
-	public EClassifier findTypeByName(final String name) {
+	public NamedElement findTypeByName(final String name) {
 		if (Strings.isEmpty(name)) {
 			throw new IllegalArgumentException("Internal error: Empty type name.");
 		}
 		final URI resourceURI = this.typeUriHelper.createResourceURI();
 		final ModelMappingResource resource = (ModelMappingResource) this.resourceSet.getResource(resourceURI, true);
 
-		return (EClassifier) resource.getEObject(name);
+		return (NamedElement) resource.getEObject(name);
 	}
 
 	/**

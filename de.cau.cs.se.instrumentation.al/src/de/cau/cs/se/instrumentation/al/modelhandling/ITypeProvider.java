@@ -13,8 +13,9 @@
  */
 package de.cau.cs.se.instrumentation.al.modelhandling;
 
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.xtext.common.types.access.jdt.TypeURIHelper;
+
+import de.cau.cs.se.instrumantation.model.structure.NamedElement;
 
 /**
  * The type provider interface. It is used by the scoping and plays a role in the content assist.
@@ -31,14 +32,14 @@ public interface ITypeProvider {
 	 * 
 	 * @author chsch
 	 */
-	Iterable<EClassifier> getAllTypes();
+	Iterable<NamedElement> getAllTypes();
 
 	/**
 	 * Find a type by its fully qualified name, which is for primitive types their normal name.
 	 * 
 	 * @return the found {@link Type} or null if no such type could be found.
 	 */
-	EClassifier findTypeByName(String name);
+	NamedElement findTypeByName(String name);
 
 	/**
 	 * Introduced analogously to {@link org.eclipse.xtext.common.types.access.jdt.IJdtTypeProvider

@@ -17,12 +17,15 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.xtext.common.types.access.jdt.TypeURIHelper;
 
 /**
- * @author Christian Schneider
+ * @author Reiner Jung
  */
 public class EcoreTypeURIHelper extends TypeURIHelper {
 
-    public URI createResourceURI() {
-        return URI.createURI(EcoreURIHelperConstants.PROTOCOL + ':' + EcoreURIHelperConstants.PRIMITIVES);
-    }
-    
+	public static String ELEMENTS = "/Elements"; //$NON-NLS-1$
+	public static String PROTOCOL = "internal"; //$NON-NLS-1$
+
+	public URI createResourceURI() {
+		return URI.createURI(EcoreTypeURIHelper.PROTOCOL + ':' + EcoreTypeURIHelper.ELEMENTS);
+	}
+
 }

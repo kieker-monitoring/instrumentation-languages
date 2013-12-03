@@ -42,7 +42,7 @@ public class ModelMappingProviderFactory {
 			throw new IllegalArgumentException("resourceSet may not be null.");
 		} else {
 			final Object o = resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
-					.get(EcoreURIHelperConstants.PROTOCOL);
+					.get(EcoreTypeURIHelper.PROTOCOL);
 			if (o != null) {
 				if (!(o instanceof ITypeProvider)) {
 					// TODO something went terribly wrong, to be save create a new type provider
@@ -66,7 +66,7 @@ public class ModelMappingProviderFactory {
 	private ITypeProvider createTypeProvider(final ResourceSet resourceSet) {
 		final ITypeProvider typeProvider = new ModelMappingProvider(resourceSet);
 		resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
-				.put(EcoreURIHelperConstants.PROTOCOL, typeProvider);
+				.put(EcoreTypeURIHelper.PROTOCOL, typeProvider);
 		return typeProvider;
 
 	}

@@ -12,7 +12,6 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumantation.model.structure.Container#getContents <em>Contents</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumantation.model.structure.Container#getModifier <em>Modifier</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumantation.model.structure.Container#getMethods <em>Methods</em>}</li>
  * </ul>
@@ -22,23 +21,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Container extends NamedElement {
-	/**
-	 * Returns the value of the '<em><b>Contents</b></em>' containment reference list.
-	 * The list contents are of type {@link de.cau.cs.se.instrumantation.model.structure.Container}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Contents</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Contents</em>' containment reference list.
-	 * @see de.cau.cs.se.instrumantation.model.structure.StructurePackage#getContainer_Contents()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Container> getContents();
-
+public interface Container extends NamedElement, Containment {
 	/**
 	 * Returns the value of the '<em><b>Modifier</b></em>' reference.
 	 * <!-- begin-user-doc -->

@@ -121,7 +121,7 @@ enum Operator:
 ;
 
 ContainerNode:
-	container=[structure::Container|ID]
+	container=[structure::Containment|ID]
 ;
 
 WildcardNode: {WoldcardNode}

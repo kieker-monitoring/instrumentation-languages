@@ -3,6 +3,7 @@
 package de.cau.cs.se.instrumantation.model.structure.impl;
 
 import de.cau.cs.se.instrumantation.model.structure.ContainerModifier;
+import de.cau.cs.se.instrumantation.model.structure.Containment;
 import de.cau.cs.se.instrumantation.model.structure.Method;
 import de.cau.cs.se.instrumantation.model.structure.MethodModifier;
 import de.cau.cs.se.instrumantation.model.structure.Model;
@@ -99,6 +100,13 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 	private EClass containerModifierEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass containmentEClass = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -191,7 +199,7 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getContainer_Contents() {
+	public EReference getContainer_Modifier() {
 		return (EReference)containerEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -200,17 +208,8 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getContainer_Modifier() {
-		return (EReference)containerEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getContainer_Methods() {
-		return (EReference)containerEClass.getEStructuralFeatures().get(2);
+		return (EReference)containerEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -308,17 +307,8 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getModel_Contents() {
-		return (EReference)modelEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getModel_Types() {
-		return (EReference)modelEClass.getEStructuralFeatures().get(1);
+		return (EReference)modelEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -337,6 +327,24 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 	 */
 	public EClass getContainerModifier() {
 		return containerModifierEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getContainment() {
+		return containmentEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getContainment_Contents() {
+		return (EReference)containmentEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -372,7 +380,6 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 		typeReferenceEClass = createEClass(TYPE_REFERENCE);
 
 		containerEClass = createEClass(CONTAINER);
-		createEReference(containerEClass, CONTAINER__CONTENTS);
 		createEReference(containerEClass, CONTAINER__MODIFIER);
 		createEReference(containerEClass, CONTAINER__METHODS);
 
@@ -390,12 +397,14 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 		createEReference(parameterEClass, PARAMETER__MODIFIER);
 
 		modelEClass = createEClass(MODEL);
-		createEReference(modelEClass, MODEL__CONTENTS);
 		createEReference(modelEClass, MODEL__TYPES);
 
 		methodModifierEClass = createEClass(METHOD_MODIFIER);
 
 		containerModifierEClass = createEClass(CONTAINER_MODIFIER);
+
+		containmentEClass = createEClass(CONTAINMENT);
+		createEReference(containmentEClass, CONTAINMENT__CONTENTS);
 	}
 
 	/**
@@ -428,9 +437,12 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 		// Add supertypes to classes
 		typeEClass.getESuperTypes().add(this.getNamedElement());
 		containerEClass.getESuperTypes().add(this.getNamedElement());
+		containerEClass.getESuperTypes().add(this.getContainment());
 		methodEClass.getESuperTypes().add(this.getNamedElement());
 		parameterModifierEClass.getESuperTypes().add(this.getNamedElement());
 		parameterEClass.getESuperTypes().add(this.getNamedElement());
+		modelEClass.getESuperTypes().add(this.getNamedElement());
+		modelEClass.getESuperTypes().add(this.getContainment());
 		methodModifierEClass.getESuperTypes().add(this.getNamedElement());
 		containerModifierEClass.getESuperTypes().add(this.getNamedElement());
 
@@ -440,7 +452,6 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 		initEClass(typeReferenceEClass, TypeReference.class, "TypeReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(containerEClass, de.cau.cs.se.instrumantation.model.structure.Container.class, "Container", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getContainer_Contents(), this.getContainer(), null, "contents", null, 0, -1, de.cau.cs.se.instrumantation.model.structure.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getContainer_Modifier(), this.getContainerModifier(), null, "modifier", null, 1, 1, de.cau.cs.se.instrumantation.model.structure.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getContainer_Methods(), this.getMethod(), null, "methods", null, 0, -1, de.cau.cs.se.instrumantation.model.structure.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -458,12 +469,14 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 		initEReference(getParameter_Modifier(), this.getParameterModifier(), null, "modifier", null, 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getModel_Contents(), this.getContainer(), null, "contents", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModel_Types(), this.getType(), null, "types", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(methodModifierEClass, MethodModifier.class, "MethodModifier", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(containerModifierEClass, ContainerModifier.class, "ContainerModifier", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(containmentEClass, Containment.class, "Containment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getContainment_Contents(), this.getContainer(), null, "contents", null, 0, -1, Containment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

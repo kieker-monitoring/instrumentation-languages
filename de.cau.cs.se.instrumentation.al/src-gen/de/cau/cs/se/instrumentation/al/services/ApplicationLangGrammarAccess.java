@@ -707,21 +707,21 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 	public class ContainerNodeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ContainerNode");
 		private final Assignment cContainerAssignment = (Assignment)rule.eContents().get(1);
-		private final CrossReference cContainerContainerCrossReference_0 = (CrossReference)cContainerAssignment.eContents().get(0);
-		private final RuleCall cContainerContainerIDTerminalRuleCall_0_1 = (RuleCall)cContainerContainerCrossReference_0.eContents().get(1);
+		private final CrossReference cContainerContainmentCrossReference_0 = (CrossReference)cContainerAssignment.eContents().get(0);
+		private final RuleCall cContainerContainmentIDTerminalRuleCall_0_1 = (RuleCall)cContainerContainmentCrossReference_0.eContents().get(1);
 		
 		//ContainerNode:
-		//	container=[structure::Container];
+		//	container=[structure::Containment];
 		public ParserRule getRule() { return rule; }
 
-		//container=[structure::Container]
+		//container=[structure::Containment]
 		public Assignment getContainerAssignment() { return cContainerAssignment; }
 
-		//[structure::Container]
-		public CrossReference getContainerContainerCrossReference_0() { return cContainerContainerCrossReference_0; }
+		//[structure::Containment]
+		public CrossReference getContainerContainmentCrossReference_0() { return cContainerContainmentCrossReference_0; }
 
 		//ID
-		public RuleCall getContainerContainerIDTerminalRuleCall_0_1() { return cContainerContainerIDTerminalRuleCall_0_1; }
+		public RuleCall getContainerContainmentIDTerminalRuleCall_0_1() { return cContainerContainmentIDTerminalRuleCall_0_1; }
 	}
 
 	public class WildcardNodeElements extends AbstractParserRuleElementFinder {
@@ -1266,7 +1266,7 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ContainerNode:
-	//	container=[structure::Container];
+	//	container=[structure::Containment];
 	public ContainerNodeElements getContainerNodeAccess() {
 		return (pContainerNode != null) ? pContainerNode : (pContainerNode = new ContainerNodeElements());
 	}

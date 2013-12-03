@@ -380,13 +380,22 @@ public interface StructurePackage extends EPackage {
 	int MODEL = 7;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__NAME = NAMED_ELEMENT__NAME;
+
+	/**
 	 * The feature id for the '<em><b>Contents</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL__CONTENTS = 0;
+	int MODEL__CONTENTS = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Types</b></em>' containment reference list.
@@ -395,7 +404,7 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL__TYPES = 1;
+	int MODEL__TYPES = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Model</em>' class.
@@ -404,7 +413,7 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_FEATURE_COUNT = 2;
+	int MODEL_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Model</em>' class.
@@ -413,7 +422,7 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_OPERATION_COUNT = 0;
+	int MODEL_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.MethodModifierImpl <em>Method Modifier</em>}' class.
@@ -491,6 +500,44 @@ public interface StructurePackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.ContainmentImpl <em>Containment</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.cau.cs.se.instrumantation.model.structure.impl.ContainmentImpl
+	 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getContainment()
+	 * @generated
+	 */
+	int CONTAINMENT = 10;
+
+	/**
+	 * The feature id for the '<em><b>Contents</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINMENT__CONTENTS = 0;
+
+	/**
+	 * The number of structural features of the '<em>Containment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINMENT_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Containment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINMENT_OPERATION_COUNT = 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link de.cau.cs.se.instrumantation.model.structure.Type <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -519,17 +566,6 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getContainer();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumantation.model.structure.Container#getContents <em>Contents</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Contents</em>'.
-	 * @see de.cau.cs.se.instrumantation.model.structure.Container#getContents()
-	 * @see #getContainer()
-	 * @generated
-	 */
-	EReference getContainer_Contents();
 
 	/**
 	 * Returns the meta object for the reference '{@link de.cau.cs.se.instrumantation.model.structure.Container#getModifier <em>Modifier</em>}'.
@@ -659,17 +695,6 @@ public interface StructurePackage extends EPackage {
 	EClass getModel();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumantation.model.structure.Model#getContents <em>Contents</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Contents</em>'.
-	 * @see de.cau.cs.se.instrumantation.model.structure.Model#getContents()
-	 * @see #getModel()
-	 * @generated
-	 */
-	EReference getModel_Contents();
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumantation.model.structure.Model#getTypes <em>Types</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -699,6 +724,27 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getContainerModifier();
+
+	/**
+	 * Returns the meta object for class '{@link de.cau.cs.se.instrumantation.model.structure.Containment <em>Containment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Containment</em>'.
+	 * @see de.cau.cs.se.instrumantation.model.structure.Containment
+	 * @generated
+	 */
+	EClass getContainment();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumantation.model.structure.Containment#getContents <em>Contents</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Contents</em>'.
+	 * @see de.cau.cs.se.instrumantation.model.structure.Containment#getContents()
+	 * @see #getContainment()
+	 * @generated
+	 */
+	EReference getContainment_Contents();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -752,14 +798,6 @@ public interface StructurePackage extends EPackage {
 		 * @generated
 		 */
 		EClass CONTAINER = eINSTANCE.getContainer();
-
-		/**
-		 * The meta object literal for the '<em><b>Contents</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference CONTAINER__CONTENTS = eINSTANCE.getContainer_Contents();
 
 		/**
 		 * The meta object literal for the '<em><b>Modifier</b></em>' reference feature.
@@ -868,14 +906,6 @@ public interface StructurePackage extends EPackage {
 		EClass MODEL = eINSTANCE.getModel();
 
 		/**
-		 * The meta object literal for the '<em><b>Contents</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference MODEL__CONTENTS = eINSTANCE.getModel_Contents();
-
-		/**
 		 * The meta object literal for the '<em><b>Types</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -902,6 +932,24 @@ public interface StructurePackage extends EPackage {
 		 * @generated
 		 */
 		EClass CONTAINER_MODIFIER = eINSTANCE.getContainerModifier();
+
+		/**
+		 * The meta object literal for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.ContainmentImpl <em>Containment</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.cau.cs.se.instrumantation.model.structure.impl.ContainmentImpl
+		 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getContainment()
+		 * @generated
+		 */
+		EClass CONTAINMENT = eINSTANCE.getContainment();
+
+		/**
+		 * The meta object literal for the '<em><b>Contents</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONTAINMENT__CONTENTS = eINSTANCE.getContainment_Contents();
 
 	}
 

@@ -268,7 +268,7 @@ public class ApplicationLangSemanticSequencer extends AnnotationsSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     container=[Container|ID]
+	 *     container=[Containment|ID]
 	 */
 	protected void sequence_ContainerNode(EObject context, ContainerNode semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -277,7 +277,7 @@ public class ApplicationLangSemanticSequencer extends AnnotationsSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (container=[Container|ID] parameter=ParamQuery?)
+	 *     (container=[Containment|ID] parameter=ParamQuery?)
 	 */
 	protected void sequence_ContainerNode_Node(EObject context, ContainerNode semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

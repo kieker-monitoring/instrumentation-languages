@@ -16204,23 +16204,23 @@ public class InternalApplicationLangParser extends AbstractInternalContentAssist
             // ../de.cau.cs.se.instrumentation.al.ui/src-gen/de/cau/cs/se/instrumentation/al/ui/contentassist/antlr/internal/InternalApplicationLang.g:5650:1: ( RULE_ID )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getContainerNodeAccess().getContainerContainerCrossReference_0()); 
+               before(grammarAccess.getContainerNodeAccess().getContainerContainmentCrossReference_0()); 
             }
             // ../de.cau.cs.se.instrumentation.al.ui/src-gen/de/cau/cs/se/instrumentation/al/ui/contentassist/antlr/internal/InternalApplicationLang.g:5651:1: ( RULE_ID )
             // ../de.cau.cs.se.instrumentation.al.ui/src-gen/de/cau/cs/se/instrumentation/al/ui/contentassist/antlr/internal/InternalApplicationLang.g:5652:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getContainerNodeAccess().getContainerContainerIDTerminalRuleCall_0_1()); 
+               before(grammarAccess.getContainerNodeAccess().getContainerContainmentIDTerminalRuleCall_0_1()); 
             }
             match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__ContainerNode__ContainerAssignment11443); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getContainerNodeAccess().getContainerContainerIDTerminalRuleCall_0_1()); 
+               after(grammarAccess.getContainerNodeAccess().getContainerContainmentIDTerminalRuleCall_0_1()); 
             }
 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getContainerNodeAccess().getContainerContainerCrossReference_0()); 
+               after(grammarAccess.getContainerNodeAccess().getContainerContainmentCrossReference_0()); 
             }
 
             }
