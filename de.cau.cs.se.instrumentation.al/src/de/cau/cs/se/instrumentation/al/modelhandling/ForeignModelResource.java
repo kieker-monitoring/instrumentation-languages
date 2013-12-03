@@ -37,10 +37,6 @@ public class ForeignModelResource extends ResourceImpl {
 
 	StructureFactory structure = StructureFactory.eINSTANCE;
 
-	public ForeignModelResource() {
-		super();
-	}
-
 	public ForeignModelResource(final URI uri) {
 		super(uri);
 	}

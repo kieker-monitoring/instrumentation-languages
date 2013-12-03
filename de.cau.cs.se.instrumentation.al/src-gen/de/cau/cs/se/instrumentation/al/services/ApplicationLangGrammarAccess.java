@@ -97,14 +97,13 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Assignment cModelAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final CrossReference cModelEPackageCrossReference_2_0 = (CrossReference)cModelAssignment_2.eContents().get(0);
-		private final RuleCall cModelEPackageSTRINGTerminalRuleCall_2_0_1 = (RuleCall)cModelEPackageCrossReference_2_0.eContents().get(1);
+		private final RuleCall cModelSTRINGTerminalRuleCall_2_0 = (RuleCall)cModelAssignment_2.eContents().get(0);
 		
 		//ApplicationModel:
-		//	"model" name=ID model=[ecore::EPackage|STRING];
+		//	"model" name=ID model=STRING;
 		public ParserRule getRule() { return rule; }
 
-		//"model" name=ID model=[ecore::EPackage|STRING]
+		//"model" name=ID model=STRING
 		public Group getGroup() { return cGroup; }
 
 		//"model"
@@ -116,14 +115,11 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//model=[ecore::EPackage|STRING]
+		//model=STRING
 		public Assignment getModelAssignment_2() { return cModelAssignment_2; }
 
-		//[ecore::EPackage|STRING]
-		public CrossReference getModelEPackageCrossReference_2_0() { return cModelEPackageCrossReference_2_0; }
-
 		//STRING
-		public RuleCall getModelEPackageSTRINGTerminalRuleCall_2_0_1() { return cModelEPackageSTRINGTerminalRuleCall_2_0_1; }
+		public RuleCall getModelSTRINGTerminalRuleCall_2_0() { return cModelSTRINGTerminalRuleCall_2_0; }
 	}
 
 	public class QualifiedNameElements extends AbstractParserRuleElementFinder {
@@ -1062,7 +1058,7 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ApplicationModel:
-	//	"model" name=ID model=[ecore::EPackage|STRING];
+	//	"model" name=ID model=STRING;
 	public ApplicationModelElements getApplicationModelAccess() {
 		return (pApplicationModel != null) ? pApplicationModel : (pApplicationModel = new ApplicationModelElements());
 	}

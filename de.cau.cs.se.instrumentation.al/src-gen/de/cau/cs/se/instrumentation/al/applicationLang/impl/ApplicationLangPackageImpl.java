@@ -399,9 +399,9 @@ public class ApplicationLangPackageImpl extends EPackageImpl implements Applicat
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getApplicationModel_Model()
+  public EAttribute getApplicationModel_Model()
   {
-    return (EReference)applicationModelEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)applicationModelEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -965,7 +965,7 @@ public class ApplicationLangPackageImpl extends EPackageImpl implements Applicat
 
     applicationModelEClass = createEClass(APPLICATION_MODEL);
     createEAttribute(applicationModelEClass, APPLICATION_MODEL__NAME);
-    createEReference(applicationModelEClass, APPLICATION_MODEL__MODEL);
+    createEAttribute(applicationModelEClass, APPLICATION_MODEL__MODEL);
 
     aspectEClass = createEClass(ASPECT);
     createEReference(aspectEClass, ASPECT__ANNOTATION);
@@ -1100,7 +1100,7 @@ public class ApplicationLangPackageImpl extends EPackageImpl implements Applicat
 
     initEClass(applicationModelEClass, ApplicationModel.class, "ApplicationModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getApplicationModel_Name(), theEcorePackage.getEString(), "name", null, 0, 1, ApplicationModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getApplicationModel_Model(), theEcorePackage.getEPackage(), null, "model", null, 0, 1, ApplicationModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getApplicationModel_Model(), theEcorePackage.getEString(), "model", null, 0, 1, ApplicationModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(aspectEClass, Aspect.class, "Aspect", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getAspect_Annotation(), theAnnotationsPackage.getAnnotation(), null, "annotation", null, 0, 1, Aspect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

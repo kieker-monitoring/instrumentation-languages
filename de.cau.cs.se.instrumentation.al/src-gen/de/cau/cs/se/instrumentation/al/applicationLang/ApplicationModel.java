@@ -3,7 +3,6 @@
 package de.cau.cs.se.instrumentation.al.applicationLang;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -51,29 +50,29 @@ public interface ApplicationModel extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Model</b></em>' reference.
+   * Returns the value of the '<em><b>Model</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Model</em>' reference isn't clear,
+   * If the meaning of the '<em>Model</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Model</em>' reference.
-   * @see #setModel(EPackage)
+   * @return the value of the '<em>Model</em>' attribute.
+   * @see #setModel(String)
    * @see de.cau.cs.se.instrumentation.al.applicationLang.ApplicationLangPackage#getApplicationModel_Model()
    * @model
    * @generated
    */
-  EPackage getModel();
+  String getModel();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel#getModel <em>Model</em>}' reference.
+   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel#getModel <em>Model</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Model</em>' reference.
+   * @param value the new value of the '<em>Model</em>' attribute.
    * @see #getModel()
    * @generated
    */
-  void setModel(EPackage value);
+  void setModel(String value);
 
 } // ApplicationModel

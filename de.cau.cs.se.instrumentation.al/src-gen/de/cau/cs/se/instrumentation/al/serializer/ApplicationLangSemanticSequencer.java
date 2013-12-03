@@ -251,7 +251,7 @@ public class ApplicationLangSemanticSequencer extends AnnotationsSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (name=ID model=[EPackage|STRING])
+	 *     (name=ID model=STRING)
 	 */
 	protected void sequence_ApplicationModel(EObject context, ApplicationModel semanticObject) {
 		if(errorAcceptor != null) {
@@ -263,7 +263,7 @@ public class ApplicationLangSemanticSequencer extends AnnotationsSemanticSequenc
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getApplicationModelAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getApplicationModelAccess().getModelEPackageSTRINGTerminalRuleCall_2_0_1(), semanticObject.getModel());
+		feeder.accept(grammarAccess.getApplicationModelAccess().getModelSTRINGTerminalRuleCall_2_0(), semanticObject.getModel());
 		feeder.finish();
 	}
 	

@@ -248,18 +248,20 @@ ruleApplicationModel returns [EObject current=null]
 )
 )(
 (
-		{ 
-		  /* */ 
+		lv_model_2_0=RULE_STRING
+		{
+			newLeafNode(lv_model_2_0, grammarAccess.getApplicationModelAccess().getModelSTRINGTerminalRuleCall_2_0()); 
 		}
 		{
-			if ($current==null) {
+	        if ($current==null) {
 	            $current = createModelElement(grammarAccess.getApplicationModelRule());
 	        }
-        }
-	otherlv_2=RULE_STRING
-	{
-		newLeafNode(otherlv_2, grammarAccess.getApplicationModelAccess().getModelEPackageCrossReference_2_0()); 
-	}
+       		setWithLastConsumed(
+       			$current, 
+       			"model",
+        		lv_model_2_0, 
+        		"STRING");
+	    }
 
 )
 ))

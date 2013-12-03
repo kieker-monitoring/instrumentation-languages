@@ -8,8 +8,6 @@ import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -51,14 +49,24 @@ public class ApplicationModelImpl extends MinimalEObjectImpl.Container implement
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getModel() <em>Model</em>}' reference.
+   * The default value of the '{@link #getModel() <em>Model</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getModel()
    * @generated
    * @ordered
    */
-  protected EPackage model;
+  protected static final String MODEL_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getModel() <em>Model</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getModel()
+   * @generated
+   * @ordered
+   */
+  protected String model = MODEL_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -109,27 +117,7 @@ public class ApplicationModelImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public EPackage getModel()
-  {
-    if (model != null && model.eIsProxy())
-    {
-      InternalEObject oldModel = (InternalEObject)model;
-      model = (EPackage)eResolveProxy(oldModel);
-      if (model != oldModel)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ApplicationLangPackage.APPLICATION_MODEL__MODEL, oldModel, model));
-      }
-    }
-    return model;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EPackage basicGetModel()
+  public String getModel()
   {
     return model;
   }
@@ -139,9 +127,9 @@ public class ApplicationModelImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setModel(EPackage newModel)
+  public void setModel(String newModel)
   {
-    EPackage oldModel = model;
+    String oldModel = model;
     model = newModel;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ApplicationLangPackage.APPLICATION_MODEL__MODEL, oldModel, model));
@@ -160,8 +148,7 @@ public class ApplicationModelImpl extends MinimalEObjectImpl.Container implement
       case ApplicationLangPackage.APPLICATION_MODEL__NAME:
         return getName();
       case ApplicationLangPackage.APPLICATION_MODEL__MODEL:
-        if (resolve) return getModel();
-        return basicGetModel();
+        return getModel();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -180,7 +167,7 @@ public class ApplicationModelImpl extends MinimalEObjectImpl.Container implement
         setName((String)newValue);
         return;
       case ApplicationLangPackage.APPLICATION_MODEL__MODEL:
-        setModel((EPackage)newValue);
+        setModel((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -200,7 +187,7 @@ public class ApplicationModelImpl extends MinimalEObjectImpl.Container implement
         setName(NAME_EDEFAULT);
         return;
       case ApplicationLangPackage.APPLICATION_MODEL__MODEL:
-        setModel((EPackage)null);
+        setModel(MODEL_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -219,7 +206,7 @@ public class ApplicationModelImpl extends MinimalEObjectImpl.Container implement
       case ApplicationLangPackage.APPLICATION_MODEL__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case ApplicationLangPackage.APPLICATION_MODEL__MODEL:
-        return model != null;
+        return MODEL_EDEFAULT == null ? model != null : !MODEL_EDEFAULT.equals(model);
     }
     return super.eIsSet(featureID);
   }
@@ -237,6 +224,8 @@ public class ApplicationModelImpl extends MinimalEObjectImpl.Container implement
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
+    result.append(", model: ");
+    result.append(model);
     result.append(')');
     return result.toString();
   }

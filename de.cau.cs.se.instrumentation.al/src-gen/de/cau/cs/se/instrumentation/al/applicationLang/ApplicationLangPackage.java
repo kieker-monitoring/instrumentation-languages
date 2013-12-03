@@ -160,7 +160,7 @@ public interface ApplicationLangPackage extends EPackage
   int APPLICATION_MODEL__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Model</b></em>' reference.
+   * The feature id for the '<em><b>Model</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -982,15 +982,15 @@ public interface ApplicationLangPackage extends EPackage
   EAttribute getApplicationModel_Name();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel#getModel <em>Model</em>}'.
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel#getModel <em>Model</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Model</em>'.
+   * @return the meta object for the attribute '<em>Model</em>'.
    * @see de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel#getModel()
    * @see #getApplicationModel()
    * @generated
    */
-  EReference getApplicationModel_Model();
+  EAttribute getApplicationModel_Model();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.applicationLang.Aspect <em>Aspect</em>}'.
@@ -1643,12 +1643,12 @@ public interface ApplicationLangPackage extends EPackage
     EAttribute APPLICATION_MODEL__NAME = eINSTANCE.getApplicationModel_Name();
 
     /**
-     * The meta object literal for the '<em><b>Model</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Model</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference APPLICATION_MODEL__MODEL = eINSTANCE.getApplicationModel_Model();
+    EAttribute APPLICATION_MODEL__MODEL = eINSTANCE.getApplicationModel_Model();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.applicationLang.impl.AspectImpl <em>Aspect</em>}' class.

@@ -19,7 +19,7 @@ Import:
 ;
 
 ApplicationModel:
-	'model' name=ID model=[ecore::EPackage|STRING] 
+	'model' name=ID model=STRING 
 ;
 
 QualifiedName:
