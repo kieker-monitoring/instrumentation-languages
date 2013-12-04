@@ -16,6 +16,7 @@ package de.cau.cs.se.instrumentation.al.modelhandling;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import com.google.inject.Inject;
+import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel;
 
 /**
  * The type provider factory controls the type provider, which is created by this class.
@@ -37,7 +38,7 @@ public class ForeignModelTypeProviderFactory {
 	 *            The resource set associated with the type provider.
 	 * @return Returns the type provider for primitive types.
 	 */
-	public IForeignModelTypeProvider getTypeProvider(final ResourceSet resourceSet) {
+	public IForeignModelTypeProvider getTypeProvider(final ResourceSet resourceSet, ApplicationModel model) {
 		if (resourceSet == null) {
 			throw new IllegalArgumentException("resourceSet may not be null.");
 		} else {
@@ -46,12 +47,12 @@ public class ForeignModelTypeProviderFactory {
 			if (o != null) {
 				if (!(o instanceof IForeignModelTypeProvider)) {
 					// TODO something went terribly wrong, to be save create a new type provider
-					return this.createTypeProvider(resourceSet);
+					return this.createTypeProvider(resourceSet, model);
 				} else {
 					return (IForeignModelTypeProvider) o;
 				}
 			} else {
-				return this.createTypeProvider(resourceSet);
+				return this.createTypeProvider(resourceSet, model);
 			}
 		}
 	}
@@ -63,12 +64,14 @@ public class ForeignModelTypeProviderFactory {
 	 *            The resource set associated with the type provider.
 	 * @return Returns the new type provider.
 	 */
-	private IForeignModelTypeProvider createTypeProvider(final ResourceSet resourceSet) {
-		final IForeignModelTypeProvider typeProvider = new ForeignModelTypeProvider(resourceSet);
+	private IForeignModelTypeProvider createTypeProvider(final ResourceSet resourceSet, ApplicationModel model) {
+		final IForeignModelTypeProvider typeProvider = new ForeignModelTypeProvider(resourceSet, model);
 		resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
 				.put(ForeignModelTypeURIHelper.PROTOCOL, typeProvider);
 		return typeProvider;
 
 	}
+
+
 
 }

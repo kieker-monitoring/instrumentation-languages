@@ -15,17 +15,20 @@ package de.cau.cs.se.instrumentation.al.modelhandling;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
+import org.eclipse.emf.ecore.resource.Resource;
 
 import de.cau.cs.se.instrumantation.model.structure.Container;
 import de.cau.cs.se.instrumantation.model.structure.ContainerModifier;
 import de.cau.cs.se.instrumantation.model.structure.Model;
 import de.cau.cs.se.instrumantation.model.structure.NamedElement;
 import de.cau.cs.se.instrumantation.model.structure.StructureFactory;
+import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel;
 
 /**
  * Simulates a real resource for primitive types.
@@ -36,9 +39,11 @@ import de.cau.cs.se.instrumantation.model.structure.StructureFactory;
 public class ForeignModelResource extends ResourceImpl {
 
 	StructureFactory structure = StructureFactory.eINSTANCE;
+	private ApplicationModel model;
 
-	public ForeignModelResource(final URI uri) {
+	public ForeignModelResource(final URI uri, ApplicationModel model) {
 		super(uri);
+		this.model = model;
 	}
 
 	@Override
@@ -116,16 +121,28 @@ public class ForeignModelResource extends ResourceImpl {
 	}
 
 	private void createModel() {
-		final Model model = this.structure.createModel();
-		model.setName("TradingSystem");
-		this.getContents().add(model);
+		final Model resultModel = this.structure.createModel();
+		if (model != null) {
+			System.out.println ("model " + model);
+			System.out.println ("model file " + model.getModel());
+			Resource source = new ResourceImpl(URI.createFileURI(model.getModel()));
+			System.out.println("source " + source);
+			Iterator<EObject> iterator = source.getAllContents();
+			while (iterator.hasNext()) {
+				EObject o = iterator.next();
+				System.out.println("Node " + o.eClass() + " contained in " + o.eContainer().eClass());
+			}
+			System.out.println("-- done -- ");
+		}
+		resultModel.setName("TradingSystem");
+		this.getContents().add(resultModel);
 		// fill model
 		final Container container = this.structure.createContainer();
 		container.setName("Application");
 		final ContainerModifier containerModifier = this.structure.createContainerModifier();
 		containerModifier.setName("in");
 		container.setModifier(containerModifier);
-		model.getContents().add(container);
+		resultModel.getContents().add(container);
 		this.getContents().add(container);
 	}
 }

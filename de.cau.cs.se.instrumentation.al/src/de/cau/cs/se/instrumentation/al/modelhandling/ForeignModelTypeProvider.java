@@ -22,6 +22,7 @@ import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 import de.cau.cs.se.instrumantation.model.structure.NamedElement;
+import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel;
 
 /**
  * The type provider allows to retrieve a list of all primitive types and provides type name lookup.
@@ -35,13 +36,16 @@ public class ForeignModelTypeProvider implements Resource.Factory, IForeignModel
 	private final ForeignModelTypeURIHelper typeUriHelper;
 
 	private final ResourceSet resourceSet;
+	
+	private final ApplicationModel model;
 
 	/**
 	 * @param resourceSet
 	 */
-	public ForeignModelTypeProvider(final ResourceSet resourceSet) {
+	public ForeignModelTypeProvider(final ResourceSet resourceSet, ApplicationModel model) {
 		this.resourceSet = resourceSet;
 		this.typeUriHelper = new ForeignModelTypeURIHelper();
+		this.model = model;
 	}
 
 	/**
@@ -93,7 +97,7 @@ public class ForeignModelTypeProvider implements Resource.Factory, IForeignModel
 	 */
 	// @Override
 	public ForeignModelResource createResource(final URI uri) {
-		return new ForeignModelResource(uri);
+		return new ForeignModelResource(uri,model);
 	}
 
 	/**

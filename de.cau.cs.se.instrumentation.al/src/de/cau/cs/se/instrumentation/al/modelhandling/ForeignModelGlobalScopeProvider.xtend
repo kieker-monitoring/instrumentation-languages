@@ -13,6 +13,7 @@ import com.google.common.base.Predicate;
 import com.google.inject.Inject;
 import org.eclipse.emf.ecore.EcorePackage$Literals
 import org.eclipse.xtext.resource.IEObjectDescription
+import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel
 
 class ForeignModelGlobalScopeProvider extends DefaultGlobalScopeProvider {
 	@Inject
@@ -22,8 +23,8 @@ class ForeignModelGlobalScopeProvider extends DefaultGlobalScopeProvider {
 	private IQualifiedNameConverter qualifiedNameConverter;
 
     override IScope getScope(Resource resource, EReference reference, Predicate<IEObjectDescription> filter) {
-    	val IScope parentTypeScope = resource.getParentTypeScope(reference, filter, reference.getEReferenceType());
-        return super.getScope(parentTypeScope, resource, false, reference.getEReferenceType(), filter);
+    	val IScope parentTypeScope = resource.getParentTypeScope(reference, filter, reference.getEReferenceType())
+        return super.getScope(parentTypeScope, resource, false, reference.getEReferenceType(), filter)
     }
 
     def IScope getParentTypeScope(Resource resource, EReference reference,
@@ -33,7 +34,10 @@ class ForeignModelGlobalScopeProvider extends DefaultGlobalScopeProvider {
         	if (resource != null) {
         		val ResourceSet resourceSet = resource.getResourceSet()
         		if (resourceSet != null) {
-        			val IForeignModelTypeProvider typeProvider = typeProviderFactory.getTypeProvider(resourceSet)
+        			val IForeignModelTypeProvider typeProvider = 
+        				typeProviderFactory.getTypeProvider(resourceSet, 
+        					resource.allContents.filter(typeof(ApplicationModel)).head
+        				)
         			return new ForeignModelTypeScope(typeProvider, qualifiedNameConverter, filter)
 				} else
     				throw new IllegalStateException("context must be contained in a resource set")

@@ -5214,12 +5214,8 @@ rule__ApplicationModel__ModelAssignment_2
     }
 :
 (
-{ before(grammarAccess.getApplicationModelAccess().getModelEPackageCrossReference_2_0()); }
-(
-{ before(grammarAccess.getApplicationModelAccess().getModelEPackageSTRINGTerminalRuleCall_2_0_1()); }
-	RULE_STRING{ after(grammarAccess.getApplicationModelAccess().getModelEPackageSTRINGTerminalRuleCall_2_0_1()); }
-)
-{ after(grammarAccess.getApplicationModelAccess().getModelEPackageCrossReference_2_0()); }
+{ before(grammarAccess.getApplicationModelAccess().getModelSTRINGTerminalRuleCall_2_0()); }
+	RULE_STRING{ after(grammarAccess.getApplicationModelAccess().getModelSTRINGTerminalRuleCall_2_0()); }
 )
 
 ;
