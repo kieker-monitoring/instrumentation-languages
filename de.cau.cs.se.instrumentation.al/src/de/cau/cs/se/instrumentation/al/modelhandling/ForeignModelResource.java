@@ -85,7 +85,7 @@ public class ForeignModelResource extends ResourceImpl {
 	@Override
 	public void load(final Map<?, ?> options) throws IOException {
 		if (!this.isLoaded) {
-			this.load(null, options);
+			this.doLoad(null,null);
 		}
 	}
 
@@ -127,12 +127,22 @@ public class ForeignModelResource extends ResourceImpl {
 			System.out.println ("model file " + model.getModel());
 			Resource source = new ResourceImpl(URI.createFileURI(model.getModel()));
 			System.out.println("source " + source);
-			Iterator<EObject> iterator = source.getAllContents();
-			while (iterator.hasNext()) {
-				EObject o = iterator.next();
-				System.out.println("Node " + o.eClass() + " contained in " + o.eContainer().eClass());
+			if (!source.isLoaded()) {
+				try {
+					source.load(null);
+					Iterator<EObject> iterator = source.getAllContents();
+					while (iterator.hasNext()) {
+						EObject o = iterator.next();
+						System.out.println("Node " + o.eClass() + " contained in " + o.eContainer().eClass());
+					}
+					System.out.println("-- done -- ");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} else {
+				System.out.println("already loaded !!");
 			}
-			System.out.println("-- done -- ");
 		}
 		resultModel.setName("TradingSystem");
 		this.getContents().add(resultModel);

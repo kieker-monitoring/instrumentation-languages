@@ -11,12 +11,6 @@
 	
   </extension>
 
-  <extension point="org.eclipse.emf.ecore.generated_package">
-	<package
-		uri="http://www.eclipse.org/uml2/2.2.0/GenModel"
-		class="org.eclipse.uml2.codegen.ecore.genmodel.GenModelPackage"/>
-  </extension>
-
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated ModelStructure -->
       <package
