@@ -21,7 +21,10 @@ import java.util.Map;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 import de.cau.cs.se.instrumantation.model.structure.Container;
 import de.cau.cs.se.instrumantation.model.structure.ContainerModifier;
@@ -29,6 +32,7 @@ import de.cau.cs.se.instrumantation.model.structure.Model;
 import de.cau.cs.se.instrumantation.model.structure.NamedElement;
 import de.cau.cs.se.instrumantation.model.structure.StructureFactory;
 import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel;
+import de.uka.ipd.sdq.pcm.PcmPackage;
 
 /**
  * Simulates a real resource for primitive types.
@@ -123,26 +127,30 @@ public class ForeignModelResource extends ResourceImpl {
 	private void createModel() {
 		final Model resultModel = this.structure.createModel();
 		if (model != null) {
+			PcmPackage.eINSTANCE.eClass();
+			
+			Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
+		    Map<String, Object> m = reg.getExtensionToFactoryMap();
+		    m.put("repository", new XMIResourceFactoryImpl());
+			
+		    // Obtain a new resource set
+		    ResourceSet resourceSet = new ResourceSetImpl();
+		    
 			System.out.println ("model " + model);
 			System.out.println ("model file " + model.getModel());
-			Resource source = new ResourceImpl(URI.createFileURI(model.getModel()));
+			
+			// Get the resource
+		    Resource source = resourceSet.getResource(URI.createURI(model.getModel()), true);
+			
 			System.out.println("source " + source);
-			if (!source.isLoaded()) {
-				try {
-					source.load(null);
-					Iterator<EObject> iterator = source.getAllContents();
-					while (iterator.hasNext()) {
-						EObject o = iterator.next();
-						System.out.println("Node " + o.eClass() + " contained in " + o.eContainer().eClass());
-					}
-					System.out.println("-- done -- ");
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			} else {
-				System.out.println("already loaded !!");
+
+			Iterator<EObject> iterator = source.getAllContents();
+			while (iterator.hasNext()) {
+				EObject o = iterator.next();
+				System.out.println("Node " + o.eClass() + " contained in " + o.eContainer().eClass());
 			}
+			System.out.println("-- done -- ");
+
 		}
 		resultModel.setName("TradingSystem");
 		this.getContents().add(resultModel);
