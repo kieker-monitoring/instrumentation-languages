@@ -15,7 +15,10 @@ package de.cau.cs.se.instrumentation.al.modelhandling;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
@@ -28,11 +31,15 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 import de.cau.cs.se.instrumantation.model.structure.Container;
 import de.cau.cs.se.instrumantation.model.structure.ContainerModifier;
+import de.cau.cs.se.instrumantation.model.structure.Containment;
 import de.cau.cs.se.instrumantation.model.structure.Model;
 import de.cau.cs.se.instrumantation.model.structure.NamedElement;
 import de.cau.cs.se.instrumantation.model.structure.StructureFactory;
 import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel;
 import de.uka.ipd.sdq.pcm.PcmPackage;
+import de.uka.ipd.sdq.pcm.repository.BasicComponent;
+import de.uka.ipd.sdq.pcm.repository.CompleteComponentType;
+import de.uka.ipd.sdq.pcm.repository.CompositeComponent;
 
 /**
  * Simulates a real resource for primitive types.
@@ -79,7 +86,6 @@ public class ForeignModelResource extends ResourceImpl {
 	@Override
 	public String getURIFragment(final EObject eObject) {
 		if (eObject instanceof NamedElement) {
-			System.out.println("NamedElement " + ((NamedElement) eObject).getName() + " " + eObject.getClass());
 			return ((NamedElement) eObject).getName();
 		} else {
 			return super.getURIFragment(eObject);
@@ -126,6 +132,9 @@ public class ForeignModelResource extends ResourceImpl {
 
 	private void createModel() {
 		final Model resultModel = this.structure.createModel();
+		resultModel.setName("TradingSystem");
+		this.getContents().add(resultModel);
+		
 		if (model != null) {
 			PcmPackage.eINSTANCE.eClass();
 			
@@ -140,20 +149,31 @@ public class ForeignModelResource extends ResourceImpl {
 			System.out.println ("model file " + model.getModel());
 			
 			// Get the resource
-		    Resource source = resourceSet.getResource(URI.createURI(model.getModel()), true);
+		    Resource source = resourceSet.getResource(URI.createFileURI(model.getModel()), true);
 			
 			System.out.println("source " + source);
 
 			Iterator<EObject> iterator = source.getAllContents();
 			while (iterator.hasNext()) {
 				EObject o = iterator.next();
-				System.out.println("Node " + o.eClass() + " contained in " + o.eContainer().eClass());
+				if (o instanceof de.uka.ipd.sdq.pcm.core.entity.NamedElement) {
+					String entityName = ((de.uka.ipd.sdq.pcm.core.entity.NamedElement)o).getEntityName();
+					List<String> names = new ArrayList<String>();
+					for (String name : entityName.split("\\.")) names.add(name);
+									
+					if ((o instanceof BasicComponent) ||
+							(o instanceof CompositeComponent) ||
+							(o instanceof CompleteComponentType)) 
+						findNode(resultModel,names);
+					else
+						System.out.println("Node " + o.eClass());
+				} else
+					System.out.println("Node " + o.eClass());
 			}
 			System.out.println("-- done -- ");
 
 		}
-		resultModel.setName("TradingSystem");
-		this.getContents().add(resultModel);
+		
 		// fill model
 		final Container container = this.structure.createContainer();
 		container.setName("Application");
@@ -161,6 +181,40 @@ public class ForeignModelResource extends ResourceImpl {
 		containerModifier.setName("in");
 		container.setModifier(containerModifier);
 		resultModel.getContents().add(container);
-		this.getContents().add(container);
+		
+	}
+
+	private void findNode(Model container, List<String> names) {
+		if (container.getName().equals(names.get(0))) {
+			names.remove(0);
+			findNode(container, container.getContents(), names);
+		}
+		
+	}
+	
+	private void findNode(Containment parent, List<Container> containers, List<String> names) {
+		for (Container c : containers) {
+			if (c.getName().equals(names.get(0))) {
+				names.remove(0);
+				findNode(c,c.getContents(),names);
+			}
+		}
+		
+		// no node found, create one
+		final Container container = this.structure.createContainer();
+		container.setName(names.get(0));
+		parent.getContents().add(container);
+		this.getContents().add(container); // this line might not be necessary
+		
+		names.remove(0);
+		parent = container;
+		
+		for (String name : names) {
+			final Container child = this.structure.createContainer();
+			child.setName(name);
+			parent.getContents().add(child);
+			this.getContents().add(child); // this line might not be necessary
+			parent = container;
+		}
 	}
 }
