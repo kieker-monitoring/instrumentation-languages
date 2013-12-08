@@ -20,6 +20,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
@@ -36,9 +37,12 @@ import de.cau.cs.se.instrumantation.model.structure.NamedElement;
 import de.cau.cs.se.instrumantation.model.structure.StructureFactory;
 import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel;
 import de.uka.ipd.sdq.pcm.PcmPackage;
+import de.uka.ipd.sdq.pcm.core.entity.InterfaceProvidingRequiringEntity;
 import de.uka.ipd.sdq.pcm.repository.BasicComponent;
 import de.uka.ipd.sdq.pcm.repository.CompleteComponentType;
 import de.uka.ipd.sdq.pcm.repository.CompositeComponent;
+import de.uka.ipd.sdq.pcm.repository.ProvidedRole;
+import de.uka.ipd.sdq.pcm.repository.RequiredRole;
 
 /**
  * Simulates a real source by mapping the a PCM model to our model.
@@ -113,9 +117,6 @@ public class ForeignModelResource extends ResourceImpl {
 		try {
 			if (this.getURI() != null) {
 				this.createModel();
-				// for (final primitiveType : PrimitiveTypes.values()) {
-				// this.getContents().add(primitiveType.getEType());
-				// }
 			} else {
 				try {
 					throw new IOException("Malformed URI in TypeResource.onLoad");
@@ -128,12 +129,9 @@ public class ForeignModelResource extends ResourceImpl {
 		}
 	}
 
-	private void createModel() {
-		final Model resultModel = this.structure.createModel();
-		resultModel.setName("TradingSystem");
-		this.getContents().add(resultModel);
-		
+	private void createModel() {		
 		if (model != null) {
+			Model resultModel = null;
 			PcmPackage.eINSTANCE.eClass();
 			
 			Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
@@ -143,76 +141,59 @@ public class ForeignModelResource extends ResourceImpl {
 		    // Obtain a new resource set
 		    ResourceSet resourceSet = new ResourceSetImpl();
 		    
-			System.out.println ("model " + model);
-			System.out.println ("model file " + model.getModel());
-			
 			// Get the resource
 		    Resource source = resourceSet.getResource(URI.createFileURI(model.getModel()), true);
 			
-			System.out.println("source " + source);
-
 			Iterator<EObject> iterator = source.getAllContents();
 			while (iterator.hasNext()) {
 				EObject o = iterator.next();
 				if (o instanceof de.uka.ipd.sdq.pcm.core.entity.NamedElement) {
-					String entityName = ((de.uka.ipd.sdq.pcm.core.entity.NamedElement)o).getEntityName();
-					List<String> names = new ArrayList<String>();
-					for (String name : entityName.split("\\.")) names.add(name);
+					String[] names = ((de.uka.ipd.sdq.pcm.core.entity.NamedElement)o).getEntityName().split("\\.");
 									
 					if ((o instanceof BasicComponent) ||
 							(o instanceof CompositeComponent) ||
-							(o instanceof CompleteComponentType)) 
-						findNode(resultModel,names);
-					else
-						System.out.println("Node " + o.eClass());
+							(o instanceof CompleteComponentType)) {
+						EList<ProvidedRole> providedRoles = ((InterfaceProvidingRequiringEntity)o).getProvidedRoles_InterfaceProvidingEntity();
+						EList<RequiredRole> requiredRoles = ((InterfaceProvidingRequiringEntity)o).getRequiredRoles_InterfaceRequiringEntity();
+						if (resultModel == null) {
+							resultModel = this.structure.createModel();
+							resultModel.setName(names[0]);
+							this.getContents().add(resultModel);
+						} else {
+							if (resultModel.getName().equals(names[0])) {
+								createNode(resultModel, resultModel.getContents(), names, 1, providedRoles, requiredRoles);
+							} // TODO else would require additional model elements. Can this happen?
+						}
+					} else
+						System.out.println("Named " + o.eClass());
 				} else
 					System.out.println("Node " + o.eClass());
 			}
-			System.out.println("-- done -- ");
-
 		}
-		
-		// fill model
-		final Container container = this.structure.createContainer();
-		container.setName("Application");
-		final ContainerModifier containerModifier = this.structure.createContainerModifier();
-		containerModifier.setName("in");
-		container.setModifier(containerModifier);
-		resultModel.getContents().add(container);
-		
-	}
-
-	private void findNode(Model container, List<String> names) {
-		if (container.getName().equals(names.get(0))) {
-			names.remove(0);
-			findNode(container, container.getContents(), names);
-		}
-		
 	}
 	
-	private void findNode(Containment parent, List<Container> containers, List<String> names) {
+	private void createNode(Containment parent, List<Container> containers, String[] names, int level, 
+			EList<ProvidedRole> providedRoles, EList<RequiredRole> requiredRoles) {
 		for (Container c : containers) {
-			if (c.getName().equals(names.get(0))) {
-				names.remove(0);
-				findNode(c,c.getContents(),names);
-			}
+			if (c.getName().equals(names[level])) 
+				createNode(c,c.getContents(),names,level+1,providedRoles,requiredRoles);
 		}
 		
 		// no node found, create one
-		final Container container = this.structure.createContainer();
-		container.setName(names.get(0));
-		parent.getContents().add(container);
-		this.getContents().add(container); // this line might not be necessary
-		
-		names.remove(0);
-		parent = container;
-		
-		for (String name : names) {
+		for (int i = level ; i < names.length ; i++) {
 			final Container child = this.structure.createContainer();
-			child.setName(name);
+			child.setName(names[i]);
 			parent.getContents().add(child);
 			this.getContents().add(child); // this line might not be necessary
-			parent = container;
+			parent = child;
+		}
+		
+		// add provided and required role
+		for (ProvidedRole provided : providedRoles) {
+			System.out.println("provided " + provided.getEntityName());
+		}
+		for (RequiredRole required : requiredRoles) {
+			System.out.println("required " + required.getEntityName());
 		}
 	}
 }
