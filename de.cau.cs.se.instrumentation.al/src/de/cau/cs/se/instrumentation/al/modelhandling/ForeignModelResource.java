@@ -16,7 +16,6 @@ package de.cau.cs.se.instrumentation.al.modelhandling;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -42,10 +41,9 @@ import de.uka.ipd.sdq.pcm.repository.CompleteComponentType;
 import de.uka.ipd.sdq.pcm.repository.CompositeComponent;
 
 /**
- * Simulates a real resource for primitive types.
+ * Simulates a real source by mapping the a PCM model to our model.
  * 
- * @author Sebastian Zarnekow - Initial contribution and API
- * @author Reiner Jung - Adaptation for a general type approach; rewrite 2013
+ * @author Reiner Jung - initial contribution
  */
 public class ForeignModelResource extends ResourceImpl {
 
