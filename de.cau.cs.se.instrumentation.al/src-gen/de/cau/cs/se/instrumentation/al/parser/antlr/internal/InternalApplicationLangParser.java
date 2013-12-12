@@ -3646,7 +3646,7 @@ public class InternalApplicationLangParser extends AbstractInternalAntlrParser {
             otherlv_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleContainerNode2882); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              		newLeafNode(otherlv_0, grammarAccess.getContainerNodeAccess().getContainerContainmentCrossReference_0()); 
+              		newLeafNode(otherlv_0, grammarAccess.getContainerNodeAccess().getContainerContainerCrossReference_0()); 
               	
             }
 
@@ -3741,7 +3741,7 @@ public class InternalApplicationLangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
 
                       current = forceCreateModelElement(
-                          grammarAccess.getWildcardNodeAccess().getWoldcardNodeAction_0(),
+                          grammarAccess.getWildcardNodeAccess().getWildcardNodeAction_0(),
                           current);
                   
             }

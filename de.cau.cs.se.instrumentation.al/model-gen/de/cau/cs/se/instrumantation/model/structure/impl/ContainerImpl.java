@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -54,7 +53,7 @@ public class ContainerImpl extends NamedElementImpl implements de.cau.cs.se.inst
 	protected ContainerModifier modifier;
 
 	/**
-	 * The cached value of the '{@link #getMethods() <em>Methods</em>}' reference list.
+	 * The cached value of the '{@link #getMethods() <em>Methods</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getMethods()
@@ -139,7 +138,7 @@ public class ContainerImpl extends NamedElementImpl implements de.cau.cs.se.inst
 	 */
 	public EList<Method> getMethods() {
 		if (methods == null) {
-			methods = new EObjectResolvingEList<Method>(Method.class, this, StructurePackage.CONTAINER__METHODS);
+			methods = new EObjectContainmentEList<Method>(Method.class, this, StructurePackage.CONTAINER__METHODS);
 		}
 		return methods;
 	}
@@ -154,6 +153,8 @@ public class ContainerImpl extends NamedElementImpl implements de.cau.cs.se.inst
 		switch (featureID) {
 			case StructurePackage.CONTAINER__CONTENTS:
 				return ((InternalEList<?>)getContents()).basicRemove(otherEnd, msgs);
+			case StructurePackage.CONTAINER__METHODS:
+				return ((InternalEList<?>)getMethods()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}

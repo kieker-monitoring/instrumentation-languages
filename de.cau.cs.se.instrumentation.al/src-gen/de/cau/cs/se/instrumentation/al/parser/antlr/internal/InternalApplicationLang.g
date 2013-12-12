@@ -1323,7 +1323,7 @@ ruleContainerNode returns [EObject current=null]
         }
 	otherlv_0=RULE_ID
 	{
-		newLeafNode(otherlv_0, grammarAccess.getContainerNodeAccess().getContainerContainmentCrossReference_0()); 
+		newLeafNode(otherlv_0, grammarAccess.getContainerNodeAccess().getContainerContainerCrossReference_0()); 
 	}
 
 )
@@ -1354,7 +1354,7 @@ ruleWildcardNode returns [EObject current=null]
 	}
     {
         $current = forceCreateModelElement(
-            grammarAccess.getWildcardNodeAccess().getWoldcardNodeAction_0(),
+            grammarAccess.getWildcardNodeAccess().getWildcardNodeAction_0(),
             $current);
     }
 )	otherlv_1='*' 

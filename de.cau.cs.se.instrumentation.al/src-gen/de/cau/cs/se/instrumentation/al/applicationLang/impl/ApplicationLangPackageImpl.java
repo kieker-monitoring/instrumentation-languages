@@ -33,7 +33,6 @@ import de.cau.cs.se.instrumentation.al.applicationLang.StringValue;
 import de.cau.cs.se.instrumentation.al.applicationLang.SubPathNode;
 import de.cau.cs.se.instrumentation.al.applicationLang.Value;
 import de.cau.cs.se.instrumentation.al.applicationLang.WildcardNode;
-import de.cau.cs.se.instrumentation.al.applicationLang.WoldcardNode;
 
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
 
@@ -207,13 +206,6 @@ public class ApplicationLangPackageImpl extends EPackageImpl implements Applicat
    * @generated
    */
   private EClass collectorEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass woldcardNodeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -889,16 +881,6 @@ public class ApplicationLangPackageImpl extends EPackageImpl implements Applicat
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getWoldcardNode()
-  {
-    return woldcardNodeEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EEnum getReflectionFunction()
   {
     return reflectionFunctionEEnum;
@@ -1034,8 +1016,6 @@ public class ApplicationLangPackageImpl extends EPackageImpl implements Applicat
     createEReference(collectorEClass, COLLECTOR__TYPE);
     createEReference(collectorEClass, COLLECTOR__INITIALIZATIONS);
 
-    woldcardNodeEClass = createEClass(WOLDCARD_NODE);
-
     // Create enums
     reflectionFunctionEEnum = createEEnum(REFLECTION_FUNCTION);
     operatorEEnum = createEEnum(OPERATOR);
@@ -1086,7 +1066,6 @@ public class ApplicationLangPackageImpl extends EPackageImpl implements Applicat
     containerNodeEClass.getESuperTypes().add(this.getNode());
     wildcardNodeEClass.getESuperTypes().add(this.getNode());
     subPathNodeEClass.getESuperTypes().add(this.getNode());
-    woldcardNodeEClass.getESuperTypes().add(this.getWildcardNode());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1158,7 +1137,7 @@ public class ApplicationLangPackageImpl extends EPackageImpl implements Applicat
     initEAttribute(getReflectionProperty_Function(), this.getReflectionFunction(), "function", null, 0, 1, ReflectionProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(containerNodeEClass, ContainerNode.class, "ContainerNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getContainerNode_Container(), theStructurePackage.getContainment(), null, "container", null, 0, 1, ContainerNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getContainerNode_Container(), theStructurePackage.getContainer(), null, "container", null, 0, 1, ContainerNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(wildcardNodeEClass, WildcardNode.class, "WildcardNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1168,8 +1147,6 @@ public class ApplicationLangPackageImpl extends EPackageImpl implements Applicat
     initEAttribute(getCollector_InsertionPoint(), this.getInsertionPoint(), "insertionPoint", null, 0, 1, Collector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCollector_Type(), theRecordLangPackage.getRecordType(), null, "type", null, 0, 1, Collector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCollector_Initializations(), this.getValue(), null, "initializations", null, 0, -1, Collector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(woldcardNodeEClass, WoldcardNode.class, "WoldcardNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     // Initialize enums and add enum literals
     initEEnum(reflectionFunctionEEnum, ReflectionFunction.class, "ReflectionFunction");

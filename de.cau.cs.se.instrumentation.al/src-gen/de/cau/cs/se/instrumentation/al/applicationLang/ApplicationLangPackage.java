@@ -827,34 +827,6 @@ public interface ApplicationLangPackage extends EPackage
   int COLLECTOR_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.applicationLang.impl.WoldcardNodeImpl <em>Woldcard Node</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.WoldcardNodeImpl
-   * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationLangPackageImpl#getWoldcardNode()
-   * @generated
-   */
-  int WOLDCARD_NODE = 22;
-
-  /**
-   * The feature id for the '<em><b>Parameter</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int WOLDCARD_NODE__PARAMETER = WILDCARD_NODE__PARAMETER;
-
-  /**
-   * The number of structural features of the '<em>Woldcard Node</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int WOLDCARD_NODE_FEATURE_COUNT = WILDCARD_NODE_FEATURE_COUNT + 0;
-
-  /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.applicationLang.ReflectionFunction <em>Reflection Function</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -862,7 +834,7 @@ public interface ApplicationLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationLangPackageImpl#getReflectionFunction()
    * @generated
    */
-  int REFLECTION_FUNCTION = 23;
+  int REFLECTION_FUNCTION = 22;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.applicationLang.Operator <em>Operator</em>}' enum.
@@ -872,7 +844,7 @@ public interface ApplicationLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationLangPackageImpl#getOperator()
    * @generated
    */
-  int OPERATOR = 24;
+  int OPERATOR = 23;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.applicationLang.InsertionPoint <em>Insertion Point</em>}' enum.
@@ -882,7 +854,7 @@ public interface ApplicationLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationLangPackageImpl#getInsertionPoint()
    * @generated
    */
-  int INSERTION_POINT = 25;
+  int INSERTION_POINT = 24;
 
 
   /**
@@ -1502,16 +1474,6 @@ public interface ApplicationLangPackage extends EPackage
   EReference getCollector_Initializations();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.applicationLang.WoldcardNode <em>Woldcard Node</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Woldcard Node</em>'.
-   * @see de.cau.cs.se.instrumentation.al.applicationLang.WoldcardNode
-   * @generated
-   */
-  EClass getWoldcardNode();
-
-  /**
    * Returns the meta object for enum '{@link de.cau.cs.se.instrumentation.al.applicationLang.ReflectionFunction <em>Reflection Function</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2071,16 +2033,6 @@ public interface ApplicationLangPackage extends EPackage
      * @generated
      */
     EReference COLLECTOR__INITIALIZATIONS = eINSTANCE.getCollector_Initializations();
-
-    /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.applicationLang.impl.WoldcardNodeImpl <em>Woldcard Node</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.WoldcardNodeImpl
-     * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationLangPackageImpl#getWoldcardNode()
-     * @generated
-     */
-    EClass WOLDCARD_NODE = eINSTANCE.getWoldcardNode();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.applicationLang.ReflectionFunction <em>Reflection Function</em>}' enum.

@@ -49,7 +49,7 @@ public interface Container extends NamedElement, Containment {
 	void setModifier(ContainerModifier value);
 
 	/**
-	 * Returns the value of the '<em><b>Methods</b></em>' reference list.
+	 * Returns the value of the '<em><b>Methods</b></em>' containment reference list.
 	 * The list contents are of type {@link de.cau.cs.se.instrumantation.model.structure.Method}.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -57,9 +57,9 @@ public interface Container extends NamedElement, Containment {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Methods</em>' reference list.
+	 * @return the value of the '<em>Methods</em>' containment reference list.
 	 * @see de.cau.cs.se.instrumantation.model.structure.StructurePackage#getContainer_Methods()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<Method> getMethods();

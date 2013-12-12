@@ -30,7 +30,7 @@ import de.cau.cs.se.instrumentation.al.applicationLang.ReflectionProperty;
 import de.cau.cs.se.instrumentation.al.applicationLang.RuntimeProperty;
 import de.cau.cs.se.instrumentation.al.applicationLang.StringValue;
 import de.cau.cs.se.instrumentation.al.applicationLang.SubPathNode;
-import de.cau.cs.se.instrumentation.al.applicationLang.WoldcardNode;
+import de.cau.cs.se.instrumentation.al.applicationLang.WildcardNode;
 import de.cau.cs.se.instrumentation.al.services.ApplicationLangGrammarAccess;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.serializer.acceptor.ISemanticSequenceAcceptor;
@@ -235,13 +235,13 @@ public class ApplicationLangSemanticSequencer extends AnnotationsSemanticSequenc
 					return; 
 				}
 				else break;
-			case ApplicationLangPackage.WOLDCARD_NODE:
+			case ApplicationLangPackage.WILDCARD_NODE:
 				if(context == grammarAccess.getNodeRule()) {
-					sequence_Node(context, (WoldcardNode) semanticObject); 
+					sequence_Node(context, (WildcardNode) semanticObject); 
 					return; 
 				}
 				else if(context == grammarAccess.getWildcardNodeRule()) {
-					sequence_WildcardNode(context, (WoldcardNode) semanticObject); 
+					sequence_WildcardNode(context, (WildcardNode) semanticObject); 
 					return; 
 				}
 				else break;
@@ -288,7 +288,7 @@ public class ApplicationLangSemanticSequencer extends AnnotationsSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     container=[Containment|ID]
+	 *     container=[Container|ID]
 	 */
 	protected void sequence_ContainerNode(EObject context, ContainerNode semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -297,7 +297,7 @@ public class ApplicationLangSemanticSequencer extends AnnotationsSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (container=[Containment|ID] parameter=ParamQuery?)
+	 *     (container=[Container|ID] parameter=ParamQuery?)
 	 */
 	protected void sequence_ContainerNode_Node(EObject context, ContainerNode semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -383,7 +383,7 @@ public class ApplicationLangSemanticSequencer extends AnnotationsSemanticSequenc
 	 * Constraint:
 	 *     (parameter=ParamQuery?)
 	 */
-	protected void sequence_Node(EObject context, WoldcardNode semanticObject) {
+	protected void sequence_Node(EObject context, WildcardNode semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -531,9 +531,9 @@ public class ApplicationLangSemanticSequencer extends AnnotationsSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     {WoldcardNode}
+	 *     {WildcardNode}
 	 */
-	protected void sequence_WildcardNode(EObject context, WoldcardNode semanticObject) {
+	protected void sequence_WildcardNode(EObject context, WildcardNode semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 }

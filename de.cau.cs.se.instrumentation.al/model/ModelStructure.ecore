@@ -3,12 +3,14 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="structure" nsURI="http://modelstructure.se.cs.cau.de/structure"
     nsPrefix="structure">
   <eClassifiers xsi:type="ecore:EClass" name="Type" eSuperTypes="#//NamedElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="TypeReference"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TypeReference">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//Type"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Container" eSuperTypes="#//NamedElement #//Containment">
     <eStructuralFeatures xsi:type="ecore:EReference" name="modifier" lowerBound="1"
         eType="#//ContainerModifier"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="methods" upperBound="-1"
-        eType="#//Method"/>
+        eType="#//Method" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Method" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="returnType" lowerBound="1"
@@ -26,7 +28,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="modifier" lowerBound="1"
         eType="#//ParameterModifier"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Model" eSuperTypes="#//NamedElement #//Containment">
+  <eClassifiers xsi:type="ecore:EClass" name="Model" eSuperTypes="#//Containment">
     <eStructuralFeatures xsi:type="ecore:EReference" name="types" upperBound="-1"
         eType="#//Type" containment="true"/>
   </eClassifiers>

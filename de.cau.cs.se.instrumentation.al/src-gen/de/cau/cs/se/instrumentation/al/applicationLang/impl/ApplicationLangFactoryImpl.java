@@ -87,7 +87,6 @@ public class ApplicationLangFactoryImpl extends EFactoryImpl implements Applicat
       case ApplicationLangPackage.WILDCARD_NODE: return createWildcardNode();
       case ApplicationLangPackage.SUB_PATH_NODE: return createSubPathNode();
       case ApplicationLangPackage.COLLECTOR: return createCollector();
-      case ApplicationLangPackage.WOLDCARD_NODE: return createWoldcardNode();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -375,17 +374,6 @@ public class ApplicationLangFactoryImpl extends EFactoryImpl implements Applicat
   {
     CollectorImpl collector = new CollectorImpl();
     return collector;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public WoldcardNode createWoldcardNode()
-  {
-    WoldcardNodeImpl woldcardNode = new WoldcardNodeImpl();
-    return woldcardNode;
   }
 
   /**

@@ -117,7 +117,6 @@ public class StructureSwitch<T> extends Switch<T> {
 			case StructurePackage.MODEL: {
 				Model model = (Model)theEObject;
 				T result = caseModel(model);
-				if (result == null) result = caseNamedElement(model);
 				if (result == null) result = caseContainment(model);
 				if (result == null) result = defaultCase(theEObject);
 				return result;

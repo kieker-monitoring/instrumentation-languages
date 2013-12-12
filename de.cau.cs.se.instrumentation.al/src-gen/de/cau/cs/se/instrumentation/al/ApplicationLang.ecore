@@ -99,7 +99,7 @@
     <eLiterals name="LE" value="6" literal="&lt;="/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ContainerNode" eSuperTypes="#//Node">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="container" eType="ecore:EClass ../../../../../../../model/ModelStructure.ecore#//Containment"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="container" eType="ecore:EClass ../../../../../../../model/ModelStructure.ecore#//Container"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WildcardNode" eSuperTypes="#//Node"/>
   <eClassifiers xsi:type="ecore:EClass" name="SubPathNode" eSuperTypes="#//Node"/>
@@ -113,5 +113,4 @@
     <eLiterals name="BEFORE" literal="before"/>
     <eLiterals name="AFTER" value="1" literal="after"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WoldcardNode" eSuperTypes="#//WildcardNode"/>
 </ecore:EPackage>

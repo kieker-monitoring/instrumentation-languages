@@ -3,6 +3,17 @@
  */
 package de.cau.cs.se.instrumentation.al.scoping;
 
+import com.google.common.base.Objects;
+import de.cau.cs.se.instrumantation.model.structure.Container;
+import de.cau.cs.se.instrumantation.model.structure.Method;
+import de.cau.cs.se.instrumentation.al.applicationLang.ContainerNode;
+import de.cau.cs.se.instrumentation.al.applicationLang.LocationQuery;
+import de.cau.cs.se.instrumentation.al.applicationLang.Node;
+import de.cau.cs.se.instrumentation.al.applicationLang.Query;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.xtext.scoping.IScope;
+import org.eclipse.xtext.scoping.Scopes;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 
 /**
@@ -13,4 +24,38 @@ import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
  */
 @SuppressWarnings("all")
 public class ApplicationLangScopeProvider extends AbstractDeclarativeScopeProvider {
+  public IScope scope_Query_method(final Query context, final EReference reference) {
+    System.out.println("scope_Query_method");
+    LocationQuery _location = context.getLocation();
+    final Node node = this.leaveNode(_location);
+    Container _container = null;
+    if (((ContainerNode) node)!=null) {
+      _container=((ContainerNode) node).getContainer();
+    }
+    String _name = _container.getName();
+    String _plus = ("node " + _name);
+    System.out.println(_plus);
+    if ((node instanceof ContainerNode)) {
+      Container _container_1 = ((ContainerNode) node).getContainer();
+      EList<Method> _methods = _container_1.getMethods();
+      return Scopes.scopeFor(_methods);
+    } else {
+      return IScope.NULLSCOPE;
+    }
+  }
+  
+  public Node leaveNode(final LocationQuery query) {
+    Node _xifexpression = null;
+    LocationQuery _specialization = query.getSpecialization();
+    boolean _notEquals = (!Objects.equal(_specialization, null));
+    if (_notEquals) {
+      LocationQuery _specialization_1 = query.getSpecialization();
+      Node _leaveNode = this.leaveNode(_specialization_1);
+      _xifexpression = _leaveNode;
+    } else {
+      Node _node = query.getNode();
+      _xifexpression = _node;
+    }
+    return _xifexpression;
+  }
 }

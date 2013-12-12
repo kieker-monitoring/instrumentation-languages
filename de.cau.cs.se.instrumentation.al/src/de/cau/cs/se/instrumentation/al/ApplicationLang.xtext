@@ -121,10 +121,10 @@ enum Operator:
 ;
 
 ContainerNode:
-	container=[structure::Containment|ID]
+	container=[structure::Container|ID]
 ;
 
-WildcardNode: {WoldcardNode}
+WildcardNode: {WildcardNode}
 	'*'
 ;
 

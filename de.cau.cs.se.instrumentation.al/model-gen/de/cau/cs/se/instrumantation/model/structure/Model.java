@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Model extends NamedElement, Containment {
+public interface Model extends Containment {
 	/**
 	 * Returns the value of the '<em><b>Types</b></em>' containment reference list.
 	 * The list contents are of type {@link de.cau.cs.se.instrumantation.model.structure.Type}.

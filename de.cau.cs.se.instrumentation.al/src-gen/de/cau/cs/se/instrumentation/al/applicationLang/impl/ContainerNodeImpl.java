@@ -2,8 +2,6 @@
  */
 package de.cau.cs.se.instrumentation.al.applicationLang.impl;
 
-import de.cau.cs.se.instrumantation.model.structure.Containment;
-
 import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationLangPackage;
 import de.cau.cs.se.instrumentation.al.applicationLang.ContainerNode;
 
@@ -37,7 +35,7 @@ public class ContainerNodeImpl extends NodeImpl implements ContainerNode
    * @generated
    * @ordered
    */
-  protected Containment container;
+  protected de.cau.cs.se.instrumantation.model.structure.Container container;
 
   /**
    * <!-- begin-user-doc -->
@@ -65,12 +63,12 @@ public class ContainerNodeImpl extends NodeImpl implements ContainerNode
    * <!-- end-user-doc -->
    * @generated
    */
-  public Containment getContainer()
+  public de.cau.cs.se.instrumantation.model.structure.Container getContainer()
   {
     if (container != null && container.eIsProxy())
     {
       InternalEObject oldContainer = (InternalEObject)container;
-      container = (Containment)eResolveProxy(oldContainer);
+      container = (de.cau.cs.se.instrumantation.model.structure.Container)eResolveProxy(oldContainer);
       if (container != oldContainer)
       {
         if (eNotificationRequired())
@@ -85,7 +83,7 @@ public class ContainerNodeImpl extends NodeImpl implements ContainerNode
    * <!-- end-user-doc -->
    * @generated
    */
-  public Containment basicGetContainer()
+  public de.cau.cs.se.instrumantation.model.structure.Container basicGetContainer()
   {
     return container;
   }
@@ -95,9 +93,9 @@ public class ContainerNodeImpl extends NodeImpl implements ContainerNode
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setContainer(Containment newContainer)
+  public void setContainer(de.cau.cs.se.instrumantation.model.structure.Container newContainer)
   {
-    Containment oldContainer = container;
+    de.cau.cs.se.instrumantation.model.structure.Container oldContainer = container;
     container = newContainer;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ApplicationLangPackage.CONTAINER_NODE__CONTAINER, oldContainer, container));
@@ -131,7 +129,7 @@ public class ContainerNodeImpl extends NodeImpl implements ContainerNode
     switch (featureID)
     {
       case ApplicationLangPackage.CONTAINER_NODE__CONTAINER:
-        setContainer((Containment)newValue);
+        setContainer((de.cau.cs.se.instrumantation.model.structure.Container)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -148,7 +146,7 @@ public class ContainerNodeImpl extends NodeImpl implements ContainerNode
     switch (featureID)
     {
       case ApplicationLangPackage.CONTAINER_NODE__CONTAINER:
-        setContainer((Containment)null);
+        setContainer((de.cau.cs.se.instrumantation.model.structure.Container)null);
         return;
     }
     super.eUnset(featureID);

@@ -2,7 +2,7 @@
  */
 package de.cau.cs.se.instrumentation.al.applicationLang;
 
-import de.cau.cs.se.instrumantation.model.structure.Containment;
+import de.cau.cs.se.instrumantation.model.structure.Container;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,12 +31,12 @@ public interface ContainerNode extends Node
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Container</em>' reference.
-   * @see #setContainer(Containment)
+   * @see #setContainer(Container)
    * @see de.cau.cs.se.instrumentation.al.applicationLang.ApplicationLangPackage#getContainerNode_Container()
    * @model
    * @generated
    */
-  Containment getContainer();
+  Container getContainer();
 
   /**
    * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.applicationLang.ContainerNode#getContainer <em>Container</em>}' reference.
@@ -46,6 +46,6 @@ public interface ContainerNode extends Node
    * @see #getContainer()
    * @generated
    */
-  void setContainer(Containment value);
+  void setContainer(Container value);
 
 } // ContainerNode

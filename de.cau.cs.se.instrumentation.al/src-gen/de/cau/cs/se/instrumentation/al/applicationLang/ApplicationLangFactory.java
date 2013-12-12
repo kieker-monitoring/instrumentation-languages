@@ -221,15 +221,6 @@ public interface ApplicationLangFactory extends EFactory
   Collector createCollector();
 
   /**
-   * Returns a new object of class '<em>Woldcard Node</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Woldcard Node</em>'.
-   * @generated
-   */
-  WoldcardNode createWoldcardNode();
-
-  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

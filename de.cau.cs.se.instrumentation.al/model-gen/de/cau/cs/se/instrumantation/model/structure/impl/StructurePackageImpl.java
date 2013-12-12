@@ -190,6 +190,15 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getTypeReference_Type() {
+		return (EReference)typeReferenceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getContainer() {
 		return containerEClass;
 	}
@@ -378,6 +387,7 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 		typeEClass = createEClass(TYPE);
 
 		typeReferenceEClass = createEClass(TYPE_REFERENCE);
+		createEReference(typeReferenceEClass, TYPE_REFERENCE__TYPE);
 
 		containerEClass = createEClass(CONTAINER);
 		createEReference(containerEClass, CONTAINER__MODIFIER);
@@ -441,7 +451,6 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 		methodEClass.getESuperTypes().add(this.getNamedElement());
 		parameterModifierEClass.getESuperTypes().add(this.getNamedElement());
 		parameterEClass.getESuperTypes().add(this.getNamedElement());
-		modelEClass.getESuperTypes().add(this.getNamedElement());
 		modelEClass.getESuperTypes().add(this.getContainment());
 		methodModifierEClass.getESuperTypes().add(this.getNamedElement());
 		containerModifierEClass.getESuperTypes().add(this.getNamedElement());
@@ -450,10 +459,11 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 		initEClass(typeEClass, Type.class, "Type", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(typeReferenceEClass, TypeReference.class, "TypeReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTypeReference_Type(), this.getType(), null, "type", null, 1, 1, TypeReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(containerEClass, de.cau.cs.se.instrumantation.model.structure.Container.class, "Container", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getContainer_Modifier(), this.getContainerModifier(), null, "modifier", null, 1, 1, de.cau.cs.se.instrumantation.model.structure.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getContainer_Methods(), this.getMethod(), null, "methods", null, 0, -1, de.cau.cs.se.instrumantation.model.structure.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getContainer_Methods(), this.getMethod(), null, "methods", null, 0, -1, de.cau.cs.se.instrumantation.model.structure.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(methodEClass, Method.class, "Method", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMethod_ReturnType(), this.getTypeReference(), null, "returnType", null, 1, 1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

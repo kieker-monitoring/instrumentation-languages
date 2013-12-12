@@ -235,15 +235,6 @@ public class ApplicationLangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ApplicationLangPackage.WOLDCARD_NODE:
-      {
-        WoldcardNode woldcardNode = (WoldcardNode)theEObject;
-        T result = caseWoldcardNode(woldcardNode);
-        if (result == null) result = caseWildcardNode(woldcardNode);
-        if (result == null) result = caseNode(woldcardNode);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       default: return defaultCase(theEObject);
     }
   }
@@ -596,22 +587,6 @@ public class ApplicationLangSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseCollector(Collector object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Woldcard Node</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Woldcard Node</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseWoldcardNode(WoldcardNode object)
   {
     return null;
   }

@@ -102,6 +102,5 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ApplicationLang.ecore#//Collector/type"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplicationLang.ecore#//Collector/initializations"/>
     </genClasses>
-    <genClasses ecoreClass="ApplicationLang.ecore#//WoldcardNode"/>
   </genPackages>
 </genmodel:GenModel>

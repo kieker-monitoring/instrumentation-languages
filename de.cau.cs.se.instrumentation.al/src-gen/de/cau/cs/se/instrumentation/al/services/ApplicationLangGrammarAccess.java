@@ -703,38 +703,38 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 	public class ContainerNodeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ContainerNode");
 		private final Assignment cContainerAssignment = (Assignment)rule.eContents().get(1);
-		private final CrossReference cContainerContainmentCrossReference_0 = (CrossReference)cContainerAssignment.eContents().get(0);
-		private final RuleCall cContainerContainmentIDTerminalRuleCall_0_1 = (RuleCall)cContainerContainmentCrossReference_0.eContents().get(1);
+		private final CrossReference cContainerContainerCrossReference_0 = (CrossReference)cContainerAssignment.eContents().get(0);
+		private final RuleCall cContainerContainerIDTerminalRuleCall_0_1 = (RuleCall)cContainerContainerCrossReference_0.eContents().get(1);
 		
 		//ContainerNode:
-		//	container=[structure::Containment];
+		//	container=[structure::Container];
 		public ParserRule getRule() { return rule; }
 
-		//container=[structure::Containment]
+		//container=[structure::Container]
 		public Assignment getContainerAssignment() { return cContainerAssignment; }
 
-		//[structure::Containment]
-		public CrossReference getContainerContainmentCrossReference_0() { return cContainerContainmentCrossReference_0; }
+		//[structure::Container]
+		public CrossReference getContainerContainerCrossReference_0() { return cContainerContainerCrossReference_0; }
 
 		//ID
-		public RuleCall getContainerContainmentIDTerminalRuleCall_0_1() { return cContainerContainmentIDTerminalRuleCall_0_1; }
+		public RuleCall getContainerContainerIDTerminalRuleCall_0_1() { return cContainerContainerIDTerminalRuleCall_0_1; }
 	}
 
 	public class WildcardNodeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "WildcardNode");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cWoldcardNodeAction_0 = (Action)cGroup.eContents().get(0);
+		private final Action cWildcardNodeAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cAsteriskKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		
 		//WildcardNode:
-		//	{WoldcardNode} "*";
+		//	{WildcardNode} "*";
 		public ParserRule getRule() { return rule; }
 
-		//{WoldcardNode} "*"
+		//{WildcardNode} "*"
 		public Group getGroup() { return cGroup; }
 
-		//{WoldcardNode}
-		public Action getWoldcardNodeAction_0() { return cWoldcardNodeAction_0; }
+		//{WildcardNode}
+		public Action getWildcardNodeAction_0() { return cWildcardNodeAction_0; }
 
 		//"*"
 		public Keyword getAsteriskKeyword_1() { return cAsteriskKeyword_1; }
@@ -1262,7 +1262,7 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ContainerNode:
-	//	container=[structure::Containment];
+	//	container=[structure::Container];
 	public ContainerNodeElements getContainerNodeAccess() {
 		return (pContainerNode != null) ? pContainerNode : (pContainerNode = new ContainerNodeElements());
 	}
@@ -1272,7 +1272,7 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//WildcardNode:
-	//	{WoldcardNode} "*";
+	//	{WildcardNode} "*";
 	public WildcardNodeElements getWildcardNodeAccess() {
 		return (pWildcardNode != null) ? pWildcardNode : (pWildcardNode = new WildcardNodeElements());
 	}
