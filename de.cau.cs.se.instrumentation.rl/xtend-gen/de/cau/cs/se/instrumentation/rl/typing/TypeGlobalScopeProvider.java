@@ -8,7 +8,7 @@ import de.cau.cs.se.instrumentation.rl.typing.PrimitiveTypeScope;
 import de.cau.cs.se.instrumentation.rl.typing.TypeProviderFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EcorePackage.Literals;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.EcoreUtil2;
@@ -33,7 +33,7 @@ public class TypeGlobalScopeProvider extends DefaultGlobalScopeProvider {
   }
   
   public IScope getParentTypeScope(final Resource resource, final EReference reference, final Predicate<IEObjectDescription> filter, final EClass referenceType) {
-    boolean _isAssignableFrom = EcoreUtil2.isAssignableFrom(Literals.ECLASSIFIER, referenceType);
+    boolean _isAssignableFrom = EcoreUtil2.isAssignableFrom(EcorePackage.Literals.ECLASSIFIER, referenceType);
     if (_isAssignableFrom) {
       boolean _notEquals = (!Objects.equal(resource, null));
       if (_notEquals) {

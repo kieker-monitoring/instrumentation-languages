@@ -1,10 +1,9 @@
 package de.cau.cs.se.instrumentation.rl.generator
 
-import org.eclipse.emf.common.util.EList
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
 import de.cau.cs.se.instrumentation.rl.recordLang.Property
 import de.cau.cs.se.instrumentation.rl.recordLang.Type
-import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation
+import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
+import java.util.Collection
 
 abstract class AbstractTypeGenerator {
 			
@@ -23,22 +22,6 @@ abstract class AbstractTypeGenerator {
 	def abstract String fileName(Type type);
 		
 	/**
-	 * Collect recursively a list of all properties of interfaces and add those of
-	 * the type.
-	 * 
-	 * @param type
-	 * 		a recordType
-	 * 
-	 * @returns
-	 * 		a complete list of all properties in a record
-	 */
-	def EList<Property> collectAllImplementationProperties(RecordType type) {
-		val EList<Property> result = PropertyEvaluation::collectAllInterfaceProperties(type)
-		result.addAll(type.properties)
-		return result
-	}
-	
-	/**
 	 * Determine the size of the resulting binary serialization.
 	 * 
 	 * @param allProperties
@@ -47,8 +30,18 @@ abstract class AbstractTypeGenerator {
 	 * @returns
 	 * 		the computed value
 	 */
-	 def int calculateSize(EList<Property> list) {
+	 def int calculateSize(Collection<Property> list) {
 		list.fold(0)[result, property | result + property.size]
+	}
+	
+	/**
+	 * Recursively search for the type of a property.
+	 */
+	def Classifier findType(Property property) {
+		if (property.type != null)
+			return property.type
+		else 
+			return property.referTo.findType
 	}
 	
 	/**
@@ -61,8 +54,7 @@ abstract class AbstractTypeGenerator {
 	 * 		the serialization size of the property
 	 */
 	def private int getSize(Property property) {
-		switch (property.type.class_.name) {
-			case 'key' : 4
+		switch (property.findType.class_.name) {
 			case 'string' : 4
 			case 'byte' : 1
 			case 'short' : 2
@@ -72,6 +64,7 @@ abstract class AbstractTypeGenerator {
 			case 'double' : 8
 			case 'char' : 2
 			case 'boolean' : 1
+			default: throw new InternalErrorException(property.findType.class_.name + 'is not a valid type name')
 		}
 	}
 		

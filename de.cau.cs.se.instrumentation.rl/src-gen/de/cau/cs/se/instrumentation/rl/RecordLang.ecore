@@ -20,29 +20,17 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Type">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType ../../../../../../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PartialType" eSuperTypes="#//Type"/>
-  <eClassifiers xsi:type="ecore:EClass" name="PartialRecordType" eSuperTypes="#//PartialType">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parents" unique="false"
-        upperBound="-1" eType="#//PartialType"/>
+        upperBound="-1" eType="#//PartialRecordType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
         eType="#//Property" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="constants" upperBound="-1"
         eType="#//Constant" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TagType" eSuperTypes="#//PartialType">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parents" unique="false"
-        upperBound="-1" eType="#//TagType"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PartialRecordType" eSuperTypes="#//Type"/>
   <eClassifiers xsi:type="ecore:EClass" name="RecordType" eSuperTypes="#//Type">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="abstract" eType="ecore:EDataType ../../../../../../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//RecordType"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parents" unique="false"
-        upperBound="-1" eType="#//PartialType"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
-        eType="#//Property" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="constants" upperBound="-1"
-        eType="#//Constant" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Constant">
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//Classifier"
@@ -54,6 +42,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Property">
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//Classifier"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="referTo" eType="#//Property"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType ../../../../../../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
         eType="#//ReferenceProperty" containment="true"/>

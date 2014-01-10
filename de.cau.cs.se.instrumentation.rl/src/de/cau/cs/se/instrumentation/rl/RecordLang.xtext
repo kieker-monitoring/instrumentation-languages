@@ -27,30 +27,23 @@ QualifiedNameWithWildcard:
 ;
 
 Type:
-	RecordType | PartialType
-;
-
-PartialType:
-	 PartialRecordType | TagType
+	RecordType | PartialRecordType 
 ;
 
 PartialRecordType:
-	'pattern' name=ID (':' parents+=[PartialType|QualifiedName] (',' parents+=[PartialType|QualifiedName])*)? '{'
+	'template' name=ID (':' parents+=[PartialRecordType|QualifiedName] (',' parents+=[PartialRecordType|QualifiedName])*)? 
+	('{'
 		(properties+=Property | constants+=Constant)*
-	'}'
+	'}')?
 ;
-
-TagType:
-	'tag' name=ID (':' parents+=[TagType|QualifiedName] (',' parents+=[TagType|QualifiedName])*)?
-;
-
 
 RecordType:
-	(abstract?='abstract')? 'struct' name=ID 
-		('extends' parent=[RecordType|QualifiedName])?
-		(':' parents+=[PartialType|QualifiedName] (',' parents+=[PartialType|QualifiedName])*)?  '{'
+	(abstract?='abstract')? 'entity' name=ID 
+	('extends' parent=[RecordType|QualifiedName])?
+	(':' parents+=[PartialRecordType|QualifiedName] (',' parents+=[PartialRecordType|QualifiedName])*)?  
+	('{'
 		(properties+=Property | constants+=Constant)*
-	'}'
+	'}')?
 ;
 
 Constant:
@@ -58,9 +51,9 @@ Constant:
 ;
 
 Property:
-	type=Classifier name=ID 
+	(type=Classifier|'alias' referTo=[Property|ID] 'as') name=ID 
 		('{' (properties+=ReferenceProperty)* '}' | 
-		'=' value=Literal)
+		'=' value=Literal)?
 ;
 
 Classifier:

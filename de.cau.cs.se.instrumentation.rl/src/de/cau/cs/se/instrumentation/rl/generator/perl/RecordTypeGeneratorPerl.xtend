@@ -4,11 +4,11 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Type
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
 import de.cau.cs.se.instrumentation.rl.recordLang.Model
-import org.eclipse.emf.common.util.EList
 import de.cau.cs.se.instrumentation.rl.recordLang.Property
 import java.io.File
 import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator
 import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation
+import java.util.Collection
 
 class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		
@@ -27,7 +27,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		
 		=head1 SYNOPSIS
 		
-		 my $record = «type.recordName»->new(«PropertyEvaluation::collectAllProperties(type).createParameterCall»);
+		 my $record = «type.recordName»->new(«PropertyEvaluation::collectAllDataProperties(type).createParameterCall»);
 		 
 		 $writer->write($record->genoutput());
 		
@@ -37,16 +37,16 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 				
 		=head1 METHODS
 		
-		=head2 $record = «type.recordName»->new(«PropertyEvaluation::collectAllProperties(type).createParameterCall»);
+		=head2 $record = «type.recordName»->new(«PropertyEvaluation::collectAllDataProperties(type).createParameterCall»);
 		
 		Creates a new record with the given parameters.
 		
 		=cut
 		
 		sub new {
-		  my («PropertyEvaluation::collectAllProperties(type).createParameterCall») = @_;
+		  my («PropertyEvaluation::collectAllDataProperties(type).createParameterCall») = @_;
 		  my $this = {
-		    «PropertyEvaluation::collectAllProperties(type).map[createProperty].join(',\n')»
+		    «PropertyEvaluation::collectAllDataProperties(type).map[createProperty].join(',\n')»
 		  };
 		
 		  return bless($this,$type);
@@ -99,7 +99,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	/**
 	 * 
 	 */
-	def createParameterCall(EList<Property> list) {
+	def createParameterCall(Collection<Property> list) {
 		list.map['''$«name»'''].join(', ')
 	}
 	

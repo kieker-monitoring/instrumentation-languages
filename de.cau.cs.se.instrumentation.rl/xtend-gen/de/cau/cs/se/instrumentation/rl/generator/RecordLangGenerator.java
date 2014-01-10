@@ -18,13 +18,10 @@ package de.cau.cs.se.instrumentation.rl.generator;
 import com.google.common.collect.Iterators;
 import de.cau.cs.se.instrumentation.rl.generator.AbstractPartialRecordTypeGenerator;
 import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator;
-import de.cau.cs.se.instrumentation.rl.generator.AbstractTagTypeGenerator;
 import de.cau.cs.se.instrumentation.rl.generator.c.RecordTypeGenerator;
 import de.cau.cs.se.instrumentation.rl.generator.java.PartialRecordTypeGenerator;
-import de.cau.cs.se.instrumentation.rl.generator.java.TagTypeGenerator;
 import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
-import de.cau.cs.se.instrumentation.rl.recordLang.TagType;
 import java.lang.reflect.Constructor;
 import java.util.Iterator;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -47,7 +44,6 @@ public class RecordLangGenerator implements IGenerator {
       final String version = "1.9";
       final Class<?>[] recordTypeGenerators = { RecordTypeGenerator.class, de.cau.cs.se.instrumentation.rl.generator.cheader.RecordTypeGenerator.class, de.cau.cs.se.instrumentation.rl.generator.java.RecordTypeGenerator.class, de.cau.cs.se.instrumentation.rl.generator.perl.RecordTypeGenerator.class };
       final Class<?>[] partialRecordTypeGenerators = { PartialRecordTypeGenerator.class };
-      final Class<?>[] tagTypeGenerators = { TagTypeGenerator.class };
       for (final Class<?> generator : recordTypeGenerators) {
         {
           Constructor<? extends Object> _constructor = generator.getConstructor();
@@ -80,23 +76,6 @@ public class RecordLangGenerator implements IGenerator {
             }
           };
           IteratorExtensions.<PartialRecordType>forEach(_filter, _function);
-        }
-      }
-      for (final Class<?> generator_2 : tagTypeGenerators) {
-        {
-          Constructor<? extends Object> _constructor = generator_2.getConstructor();
-          Object _newInstance = _constructor.newInstance();
-          final AbstractTagTypeGenerator cg = ((AbstractTagTypeGenerator) _newInstance);
-          TreeIterator<EObject> _allContents = resource.getAllContents();
-          Iterator<TagType> _filter = Iterators.<TagType>filter(_allContents, TagType.class);
-          final Procedure1<TagType> _function = new Procedure1<TagType>() {
-            public void apply(final TagType type) {
-              String _fileName = cg.fileName(type);
-              CharSequence _createContent = cg.createContent(type, author, version);
-              fsa.generateFile(_fileName, _createContent);
-            }
-          };
-          IteratorExtensions.<TagType>forEach(_filter, _function);
         }
       }
     } catch (Throwable _e) {

@@ -9,14 +9,12 @@ import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
 import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation;
 import java.io.File;
-import java.util.List;
-import org.eclipse.emf.common.util.EList;
+import java.util.Collection;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.ListExtensions;
 
 @SuppressWarnings("all")
 public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
@@ -52,8 +50,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     CharSequence _recordName_2 = this.recordName(type);
     _builder.append(_recordName_2, " ");
     _builder.append("->new(");
-    EList<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(type);
-    String _createParameterCall = this.createParameterCall(_collectAllProperties);
+    Collection<Property> _collectAllDataProperties = PropertyEvaluation.collectAllDataProperties(type);
+    String _createParameterCall = this.createParameterCall(_collectAllDataProperties);
     _builder.append(_createParameterCall, " ");
     _builder.append(");");
     _builder.newLineIfNotEmpty();
@@ -77,8 +75,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     CharSequence _recordName_3 = this.recordName(type);
     _builder.append(_recordName_3, "");
     _builder.append("->new(");
-    EList<Property> _collectAllProperties_1 = PropertyEvaluation.collectAllProperties(type);
-    String _createParameterCall_1 = this.createParameterCall(_collectAllProperties_1);
+    Collection<Property> _collectAllDataProperties_1 = PropertyEvaluation.collectAllDataProperties(type);
+    String _createParameterCall_1 = this.createParameterCall(_collectAllDataProperties_1);
     _builder.append(_createParameterCall_1, "");
     _builder.append(");");
     _builder.newLineIfNotEmpty();
@@ -93,8 +91,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     _builder.newLine();
     _builder.append("  ");
     _builder.append("my (");
-    EList<Property> _collectAllProperties_2 = PropertyEvaluation.collectAllProperties(type);
-    String _createParameterCall_2 = this.createParameterCall(_collectAllProperties_2);
+    Collection<Property> _collectAllDataProperties_2 = PropertyEvaluation.collectAllDataProperties(type);
+    String _createParameterCall_2 = this.createParameterCall(_collectAllDataProperties_2);
     _builder.append(_createParameterCall_2, "  ");
     _builder.append(") = @_;");
     _builder.newLineIfNotEmpty();
@@ -102,14 +100,14 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     _builder.append("my $this = {");
     _builder.newLine();
     _builder.append("    ");
-    EList<Property> _collectAllProperties_3 = PropertyEvaluation.collectAllProperties(type);
+    Collection<Property> _collectAllDataProperties_3 = PropertyEvaluation.collectAllDataProperties(type);
     final Function1<Property,CharSequence> _function = new Function1<Property,CharSequence>() {
       public CharSequence apply(final Property it) {
         CharSequence _createProperty = RecordTypeGenerator.this.createProperty(it);
         return _createProperty;
       }
     };
-    List<CharSequence> _map = ListExtensions.<Property, CharSequence>map(_collectAllProperties_3, _function);
+    Iterable<CharSequence> _map = IterableExtensions.<Property, CharSequence>map(_collectAllDataProperties_3, _function);
     String _join = IterableExtensions.join(_map, ",\n");
     _builder.append(_join, "    ");
     _builder.newLineIfNotEmpty();
@@ -214,7 +212,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     return _builder;
   }
   
-  public String createParameterCall(final EList<Property> list) {
+  public String createParameterCall(final Collection<Property> list) {
     final Function1<Property,String> _function = new Function1<Property,String>() {
       public String apply(final Property it) {
         StringConcatenation _builder = new StringConcatenation();
@@ -224,7 +222,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         return _builder.toString();
       }
     };
-    List<String> _map = ListExtensions.<Property, String>map(list, _function);
+    Iterable<String> _map = IterableExtensions.<Property, String>map(list, _function);
     String _join = IterableExtensions.join(_map, ", ");
     return _join;
   }

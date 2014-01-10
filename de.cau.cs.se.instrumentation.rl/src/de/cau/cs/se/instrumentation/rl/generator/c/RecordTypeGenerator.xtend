@@ -105,7 +105,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		 */
 		int «type.packageName»_«type.name.cstyle»_serialize(char *buffer, const int id, const int offset, const «type.packageName»_«type.name.cstyle» value) {
 			int length = 0;
-			«PropertyEvaluation::collectAllProperties(type).map[createValueSerializer].join»
+			«PropertyEvaluation::collectAllDataProperties(type).map[createValueSerializer].join»
 			return length;
 		}
 	'''
@@ -114,9 +114,9 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * 
 	 */
 	def createValueSerializer(Property property) '''
-		length += serialize_«property.type.serializerSuffix»(buffer,offset,«property.name»);
+		length += serialize_«property.findType.serializerSuffix»(buffer,offset,«property.name»);
 	'''
-	
+		
 	/**
 	 * 
 	 */

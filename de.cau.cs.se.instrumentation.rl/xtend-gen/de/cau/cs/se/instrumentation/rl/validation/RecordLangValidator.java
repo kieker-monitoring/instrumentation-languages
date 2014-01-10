@@ -4,14 +4,18 @@
 package de.cau.cs.se.instrumentation.rl.validation;
 
 import com.google.common.base.Objects;
+import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize;
+import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage.Literals;
+import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
 import de.cau.cs.se.instrumentation.rl.validation.AbstractRecordLangValidator;
 import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation;
-import org.eclipse.emf.common.util.BasicEList;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.validation.Check;
@@ -29,12 +33,53 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 public class RecordLangValidator extends AbstractRecordLangValidator {
   public final static String INVALID_NAME = "invalidName";
   
+  /**
+   * Check if an alias is a cyclic definition.
+   */
+  @Check
+  public void checkCyclicAlias(final Property property) {
+    Property _referTo = property.getReferTo();
+    boolean _notEquals = (!Objects.equal(_referTo, null));
+    if (_notEquals) {
+      ArrayList<Property> _arrayList = new ArrayList<Property>();
+      final List<Property> visitedProperties = _arrayList;
+      visitedProperties.add(property);
+      Property referredProperty = property.getReferTo();
+      Property _referTo_1 = referredProperty.getReferTo();
+      boolean _notEquals_1 = (!Objects.equal(_referTo_1, null));
+      boolean _while = _notEquals_1;
+      while (_while) {
+        {
+          boolean _contains = visitedProperties.contains(referredProperty);
+          if (_contains) {
+            String _name = property.getName();
+            String _plus = ("Property alias " + _name);
+            String _plus_1 = (_plus + " has a cyclic definition.");
+            this.error(_plus_1, 
+              RecordLangPackage.Literals.PROPERTY__REFER_TO, 
+              RecordLangValidator.INVALID_NAME);
+            return;
+          }
+          visitedProperties.add(referredProperty);
+          Property _referTo_2 = referredProperty.getReferTo();
+          referredProperty = _referTo_2;
+        }
+        Property _referTo_2 = referredProperty.getReferTo();
+        boolean _notEquals_2 = (!Objects.equal(_referTo_2, null));
+        _while = _notEquals_2;
+      }
+    }
+  }
+  
+  /**
+   * Check whether a property has been declared twice with different types.
+   */
   @Check
   public void checkPropertyDeclaration(final Property property) {
     EObject _eContainer = property.eContainer();
-    if ((_eContainer instanceof RecordType)) {
+    if ((_eContainer instanceof Type)) {
       EObject _eContainer_1 = property.eContainer();
-      EList<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(((RecordType) _eContainer_1));
+      Collection<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(((Type) _eContainer_1));
       final Function1<Property,Boolean> _function = new Function1<Property,Boolean>() {
         public Boolean apply(final Property p) {
           boolean _and = false;
@@ -53,7 +98,7 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
       boolean _exists = IterableExtensions.<Property>exists(_collectAllProperties, _function);
       if (_exists) {
         EObject _eContainer_2 = property.eContainer();
-        EList<Property> _collectAllProperties_1 = PropertyEvaluation.collectAllProperties(((RecordType) _eContainer_2));
+        Collection<Property> _collectAllProperties_1 = PropertyEvaluation.collectAllProperties(((Type) _eContainer_2));
         final Function1<Property,Boolean> _function_1 = new Function1<Property,Boolean>() {
           public Boolean apply(final Property p) {
             boolean _and = false;
@@ -69,72 +114,30 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
             return Boolean.valueOf(_and);
           }
         };
-        Property _findFirst = IterableExtensions.<Property>findFirst(_collectAllProperties_1, _function_1);
-        EObject _eContainer_3 = _findFirst.eContainer();
-        final Type type = ((Type) _eContainer_3);
-        String _name = type.getName();
-        String _plus = ("Property has been defined in " + _name);
-        String _plus_1 = (_plus + ". Cannot be declared again.");
-        this.error(_plus_1, 
-          Literals.PROPERTY__NAME, 
-          RecordLangValidator.INVALID_NAME);
-      }
-    } else {
-      EObject _eContainer_4 = property.eContainer();
-      if ((_eContainer_4 instanceof PartialRecordType)) {
-        EObject _eContainer_5 = property.eContainer();
-        EList<Property> _collectAllProperties_2 = PropertyEvaluation.collectAllProperties(((PartialRecordType) _eContainer_5));
-        final Function1<Property,Boolean> _function_2 = new Function1<Property,Boolean>() {
-          public Boolean apply(final Property p) {
-            boolean _and = false;
-            String _name = p.getName();
-            String _name_1 = property.getName();
-            boolean _equals = _name.equals(_name_1);
-            if (!_equals) {
-              _and = false;
-            } else {
-              boolean _notEquals = (!Objects.equal(p, property));
-              _and = (_equals && _notEquals);
-            }
-            return Boolean.valueOf(_and);
-          }
-        };
-        boolean _exists_1 = IterableExtensions.<Property>exists(_collectAllProperties_2, _function_2);
-        if (_exists_1) {
-          EObject _eContainer_6 = property.eContainer();
-          EList<Property> _collectAllProperties_3 = PropertyEvaluation.collectAllProperties(((PartialRecordType) _eContainer_6));
-          final Function1<Property,Boolean> _function_3 = new Function1<Property,Boolean>() {
-            public Boolean apply(final Property p) {
-              boolean _and = false;
-              String _name = p.getName();
-              String _name_1 = property.getName();
-              boolean _equals = _name.equals(_name_1);
-              if (!_equals) {
-                _and = false;
-              } else {
-                boolean _notEquals = (!Objects.equal(p, property));
-                _and = (_equals && _notEquals);
-              }
-              return Boolean.valueOf(_and);
-            }
-          };
-          Property _findFirst_1 = IterableExtensions.<Property>findFirst(_collectAllProperties_3, _function_3);
-          EObject _eContainer_7 = _findFirst_1.eContainer();
-          final Type type_1 = ((Type) _eContainer_7);
-          String _name_1 = type_1.getName();
-          String _plus_2 = ("Property has been defined in " + _name_1);
-          String _plus_3 = (_plus_2 + ". Cannot be declared again.");
-          this.error(_plus_3, 
-            Literals.PROPERTY__NAME, 
+        final Property otherProperty = IterableExtensions.<Property>findFirst(_collectAllProperties_1, _function_1);
+        Classifier _type = otherProperty.getType();
+        Classifier _type_1 = property.getType();
+        boolean _typeAndPackageIdentical = this.typeAndPackageIdentical(_type, _type_1);
+        boolean _not = (!_typeAndPackageIdentical);
+        if (_not) {
+          EObject _eContainer_3 = otherProperty.eContainer();
+          String _name = ((Type) _eContainer_3).getName();
+          String _plus = ("Property has been defined in " + _name);
+          String _plus_1 = (_plus + ". Cannot be declared again with a different type.");
+          this.error(_plus_1, 
+            RecordLangPackage.Literals.PROPERTY__NAME, 
             RecordLangValidator.INVALID_NAME);
         }
       }
     }
   }
   
+  /**
+   * Check a RecordType for multiple inheritance of the same property with different types.
+   */
   @Check
   public void checkRecordTypeComposition(final RecordType type) {
-    final EList<Property> properties = PropertyEvaluation.collectAllProperties(type);
+    final Collection<Property> properties = PropertyEvaluation.collectAllProperties(type);
     final Function1<Property,Boolean> _function = new Function1<Property,Boolean>() {
       public Boolean apply(final Property p) {
         final Function1<Property,Boolean> _function = new Function1<Property,Boolean>() {
@@ -158,8 +161,8 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
     };
     boolean _exists = IterableExtensions.<Property>exists(properties, _function);
     if (_exists) {
-      BasicEList<Pair<Property,Property>> _basicEList = new BasicEList<Pair<Property, Property>>();
-      final EList<Pair<Property,Property>> duplicates = _basicEList;
+      ArrayList<Pair<Property,Property>> _arrayList = new ArrayList<Pair<Property, Property>>();
+      final Collection<Pair<Property,Property>> duplicates = _arrayList;
       final Procedure1<Property> _function_1 = new Procedure1<Property>() {
         public void apply(final Property p) {
           Pair<Property,Property> _findDuplicate = RecordLangValidator.this.findDuplicate(p, properties);
@@ -170,29 +173,178 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
       final Procedure1<Pair<Property,Property>> _function_2 = new Procedure1<Pair<Property,Property>>() {
         public void apply(final Pair<Property,Property> entry) {
           Property _key = entry.getKey();
-          String _name = _key.getName();
-          String _plus = ("Multiple property inheritance of " + _name);
-          String _plus_1 = (_plus + 
-            " from ");
-          Property _key_1 = entry.getKey();
-          EObject _eContainer = _key_1.eContainer();
-          String _name_1 = ((Type) _eContainer).getName();
-          String _plus_2 = (_plus_1 + _name_1);
-          String _plus_3 = (_plus_2 + " and ");
+          Classifier _type = _key.getType();
           Property _value = entry.getValue();
-          EObject _eContainer_1 = _value.eContainer();
-          String _name_2 = ((Type) _eContainer_1).getName();
-          String _plus_4 = (_plus_3 + _name_2);
-          RecordLangValidator.this.error(_plus_4, 
-            Literals.PARTIAL_RECORD_TYPE__PARENTS, 
-            RecordLangValidator.INVALID_NAME);
+          Classifier _type_1 = _value.getType();
+          boolean _typeAndPackageIdentical = RecordLangValidator.this.typeAndPackageIdentical(_type, _type_1);
+          boolean _not = (!_typeAndPackageIdentical);
+          if (_not) {
+            Property _key_1 = entry.getKey();
+            String _name = _key_1.getName();
+            String _plus = ("Multiple property inheritance must have same type: Property " + _name);
+            String _plus_1 = (_plus + 
+              " inherited from ");
+            Property _key_2 = entry.getKey();
+            EObject _eContainer = _key_2.eContainer();
+            String _name_1 = ((Type) _eContainer).getName();
+            String _plus_2 = (_plus_1 + _name_1);
+            String _plus_3 = (_plus_2 + " and ");
+            Property _value_1 = entry.getValue();
+            EObject _eContainer_1 = _value_1.eContainer();
+            String _name_2 = ((Type) _eContainer_1).getName();
+            String _plus_4 = (_plus_3 + _name_2);
+            RecordLangValidator.this.error(_plus_4, 
+              RecordLangPackage.Literals.TYPE__PARENTS, 
+              RecordLangValidator.INVALID_NAME);
+          }
         }
       };
       IterableExtensions.<Pair<Property,Property>>forEach(duplicates, _function_2);
     }
   }
   
-  public Pair<Property,Property> findDuplicate(final Property property, final EList<Property> properties) {
+  /**
+   * Check a PartialType for multiple inheritance of the same property with different types.
+   */
+  @Check
+  public void checkPartialTypeComposition(final PartialRecordType type) {
+    final Collection<Property> properties = PropertyEvaluation.collectAllProperties(type);
+    final Function1<Property,Boolean> _function = new Function1<Property,Boolean>() {
+      public Boolean apply(final Property p) {
+        final Function1<Property,Boolean> _function = new Function1<Property,Boolean>() {
+          public Boolean apply(final Property pInner) {
+            boolean _and = false;
+            String _name = p.getName();
+            String _name_1 = pInner.getName();
+            boolean _equals = _name.equals(_name_1);
+            if (!_equals) {
+              _and = false;
+            } else {
+              boolean _notEquals = (!Objects.equal(p, pInner));
+              _and = (_equals && _notEquals);
+            }
+            return Boolean.valueOf(_and);
+          }
+        };
+        boolean _exists = IterableExtensions.<Property>exists(properties, _function);
+        return Boolean.valueOf(_exists);
+      }
+    };
+    boolean _exists = IterableExtensions.<Property>exists(properties, _function);
+    if (_exists) {
+      ArrayList<Pair<Property,Property>> _arrayList = new ArrayList<Pair<Property, Property>>();
+      final Collection<Pair<Property,Property>> duplicates = _arrayList;
+      final Procedure1<Property> _function_1 = new Procedure1<Property>() {
+        public void apply(final Property p) {
+          Pair<Property,Property> _findDuplicate = RecordLangValidator.this.findDuplicate(p, properties);
+          duplicates.add(_findDuplicate);
+        }
+      };
+      IterableExtensions.<Property>forEach(properties, _function_1);
+      final Procedure1<Pair<Property,Property>> _function_2 = new Procedure1<Pair<Property,Property>>() {
+        public void apply(final Pair<Property,Property> entry) {
+          Property _key = entry.getKey();
+          Classifier _type = _key.getType();
+          Property _value = entry.getValue();
+          Classifier _type_1 = _value.getType();
+          boolean _typeAndPackageIdentical = RecordLangValidator.this.typeAndPackageIdentical(_type, _type_1);
+          boolean _not = (!_typeAndPackageIdentical);
+          if (_not) {
+            Property _key_1 = entry.getKey();
+            String _name = _key_1.getName();
+            String _plus = ("Multiple property inheritance must have same type: Property " + _name);
+            String _plus_1 = (_plus + 
+              " inherited from ");
+            Property _key_2 = entry.getKey();
+            EObject _eContainer = _key_2.eContainer();
+            String _name_1 = ((Type) _eContainer).getName();
+            String _plus_2 = (_plus_1 + _name_1);
+            String _plus_3 = (_plus_2 + " and ");
+            Property _value_1 = entry.getValue();
+            EObject _eContainer_1 = _value_1.eContainer();
+            String _name_2 = ((Type) _eContainer_1).getName();
+            String _plus_4 = (_plus_3 + _name_2);
+            RecordLangValidator.this.error(_plus_4, 
+              RecordLangPackage.Literals.TYPE__PARENTS, 
+              RecordLangValidator.INVALID_NAME);
+          }
+        }
+      };
+      IterableExtensions.<Pair<Property,Property>>forEach(duplicates, _function_2);
+    }
+  }
+  
+  /**
+   * Compare types of a property for equality including package name.
+   */
+  public boolean typeAndPackageIdentical(final Classifier left, final Classifier right) {
+    de.cau.cs.se.instrumentation.rl.recordLang.Package _package = left.getPackage();
+    boolean _notEquals = (!Objects.equal(_package, null));
+    if (_notEquals) {
+      de.cau.cs.se.instrumentation.rl.recordLang.Package _package_1 = right.getPackage();
+      boolean _notEquals_1 = (!Objects.equal(_package_1, null));
+      if (_notEquals_1) {
+        de.cau.cs.se.instrumentation.rl.recordLang.Package _package_2 = left.getPackage();
+        de.cau.cs.se.instrumentation.rl.recordLang.Package _package_3 = right.getPackage();
+        boolean _equals = _package_2.equals(_package_3);
+        if (_equals) {
+          return this.typeIdentical(left, right);
+        } else {
+          return false;
+        }
+      } else {
+        return false;
+      }
+    } else {
+      return this.typeIdentical(left, right);
+    }
+  }
+  
+  /**
+   * Compare types of a property for equality.
+   */
+  public boolean typeIdentical(final Classifier left, final Classifier right) {
+    Class<? extends Classifier> _class = left.getClass();
+    Class<? extends Classifier> _class_1 = right.getClass();
+    boolean _equals = _class.equals(_class_1);
+    if (_equals) {
+      EList<ArraySize> _sizes = left.getSizes();
+      int _size = _sizes.size();
+      EList<ArraySize> _sizes_1 = right.getSizes();
+      int _size_1 = _sizes_1.size();
+      boolean _equals_1 = (_size == _size_1);
+      if (_equals_1) {
+        int i = 0;
+        EList<ArraySize> _sizes_2 = left.getSizes();
+        int _size_2 = _sizes_2.size();
+        boolean _lessThan = (i < _size_2);
+        boolean _while = _lessThan;
+        while (_while) {
+          EList<ArraySize> _sizes_3 = left.getSizes();
+          ArraySize _get = _sizes_3.get(i);
+          int _size_3 = _get.getSize();
+          EList<ArraySize> _sizes_4 = right.getSizes();
+          ArraySize _get_1 = _sizes_4.get(i);
+          int _size_4 = _get_1.getSize();
+          boolean _notEquals = (_size_3 != _size_4);
+          if (_notEquals) {
+            return false;
+          }
+          EList<ArraySize> _sizes_5 = left.getSizes();
+          int _size_5 = _sizes_5.size();
+          boolean _lessThan_1 = (i < _size_5);
+          _while = _lessThan_1;
+        }
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+  
+  public Pair<Property,Property> findDuplicate(final Property property, final Collection<Property> properties) {
     final Function1<Property,Boolean> _function = new Function1<Property,Boolean>() {
       public Boolean apply(final Property p) {
         boolean _and = false;
@@ -211,65 +363,5 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
     final Property second = IterableExtensions.<Property>findFirst(properties, _function);
     Pair<Property,Property> _pair = new Pair<Property, Property>(property, second);
     return _pair;
-  }
-  
-  @Check
-  public void checkPartialTypeComposition(final PartialRecordType type) {
-    final EList<Property> properties = PropertyEvaluation.collectAllProperties(type);
-    final Function1<Property,Boolean> _function = new Function1<Property,Boolean>() {
-      public Boolean apply(final Property p) {
-        final Function1<Property,Boolean> _function = new Function1<Property,Boolean>() {
-          public Boolean apply(final Property pInner) {
-            boolean _and = false;
-            String _name = p.getName();
-            String _name_1 = pInner.getName();
-            boolean _equals = _name.equals(_name_1);
-            if (!_equals) {
-              _and = false;
-            } else {
-              boolean _notEquals = (!Objects.equal(p, pInner));
-              _and = (_equals && _notEquals);
-            }
-            return Boolean.valueOf(_and);
-          }
-        };
-        boolean _exists = IterableExtensions.<Property>exists(properties, _function);
-        return Boolean.valueOf(_exists);
-      }
-    };
-    boolean _exists = IterableExtensions.<Property>exists(properties, _function);
-    if (_exists) {
-      BasicEList<Pair<Property,Property>> _basicEList = new BasicEList<Pair<Property, Property>>();
-      final EList<Pair<Property,Property>> duplicates = _basicEList;
-      final Procedure1<Property> _function_1 = new Procedure1<Property>() {
-        public void apply(final Property p) {
-          Pair<Property,Property> _findDuplicate = RecordLangValidator.this.findDuplicate(p, properties);
-          duplicates.add(_findDuplicate);
-        }
-      };
-      IterableExtensions.<Property>forEach(properties, _function_1);
-      final Procedure1<Pair<Property,Property>> _function_2 = new Procedure1<Pair<Property,Property>>() {
-        public void apply(final Pair<Property,Property> entry) {
-          Property _key = entry.getKey();
-          String _name = _key.getName();
-          String _plus = ("Multiple property inheritance of " + _name);
-          String _plus_1 = (_plus + 
-            " from ");
-          Property _key_1 = entry.getKey();
-          EObject _eContainer = _key_1.eContainer();
-          String _name_1 = ((Type) _eContainer).getName();
-          String _plus_2 = (_plus_1 + _name_1);
-          String _plus_3 = (_plus_2 + " and ");
-          Property _value = entry.getValue();
-          EObject _eContainer_1 = _value.eContainer();
-          String _name_2 = ((Type) _eContainer_1).getName();
-          String _plus_4 = (_plus_3 + _name_2);
-          RecordLangValidator.this.error(_plus_4, 
-            Literals.PARTIAL_RECORD_TYPE__PARENTS, 
-            RecordLangValidator.INVALID_NAME);
-        }
-      };
-      IterableExtensions.<Pair<Property,Property>>forEach(duplicates, _function_2);
-    }
   }
 }

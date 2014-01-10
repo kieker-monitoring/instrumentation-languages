@@ -22,6 +22,8 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Property;
 import de.cau.cs.se.instrumentation.rl.recordLang.ReferenceProperty;
 import java.util.Collection
 import java.util.List
+import de.cau.cs.se.instrumentation.rl.recordLang.Type
+import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation
 
 /**
  * This class contains custom scoping description.
@@ -45,7 +47,14 @@ class RecordLangScopeProvider extends org.eclipse.xtext.scoping.impl.AbstractDec
 		val IScope result = new FilteringScope(delegateGetScope(context, reference),new MyPredicate())
 		return result
 	}
-		
+	
+	/**
+	 * Build a scope containing all properties.
+	 */
+	def IScope scope_Property_referTo(Property property, EReference reference) {
+		return Scopes::scopeFor(PropertyEvaluation::collectAllProperties(property.eContainer() as Type))
+	}
+			
 	/**
 	 * 
 	 * @param classifier
@@ -57,12 +66,14 @@ class RecordLangScopeProvider extends org.eclipse.xtext.scoping.impl.AbstractDec
 				context.getPackage().getPackage(), typeof(EClassifier)))
 	}
 
-	
+	/**
+	 * 
+	 */
 	def IScope scope_ReferenceProperty_ref(ReferenceProperty property, EReference reference) {
 		// Check if the parent is a property or a nested property reference.
 		switch property.eContainer() {
 			// For properties you can directly access the EClassifier via getClass_.
-			Property : return Scopes::scopeFor(getAllProperties((property.eContainer() as Property).type.class_, typeof(EStructuralFeature)))
+			Property : return Scopes::scopeFor(getAllExternalProperties((property.eContainer() as Property).type.class_, typeof(EStructuralFeature)))
 			/*
 			 * If the present property is nested in another property, then the type for the parent
 			 * property can be found in the structural feature, which is located in the ref
@@ -72,7 +83,7 @@ class RecordLangScopeProvider extends org.eclipse.xtext.scoping.impl.AbstractDec
 				val parent = (property.eContainer() as ReferenceProperty).ref
 				// Also, only EReferences refer to classes and can therefore have properties
 				if (parent instanceof EReference) {
-					return Scopes::scopeFor(getAllProperties((parent as EReference).getEReferenceType(),typeof(EStructuralFeature)))
+					return Scopes::scopeFor(getAllExternalProperties((parent as EReference).getEReferenceType(),typeof(EStructuralFeature)))
 				} else {
 					// Attributes as such do not have properties.
 					return null
@@ -83,17 +94,20 @@ class RecordLangScopeProvider extends org.eclipse.xtext.scoping.impl.AbstractDec
 		}
 	}
 		
-	def Collection<EStructuralFeature> getAllProperties(EClassifier classifier,
+	/**
+	 * Internal function to collect all properties of a imported classifier.
+	 */
+	def Collection<EStructuralFeature> getAllExternalProperties(EClassifier classifier,
 	        Class<EStructuralFeature> type) {
 		val List<EStructuralFeature> result = EcoreUtil2::getAllContentsOfType(classifier, type)
 		if (classifier instanceof EClass) {
 			for (EGenericType generic : (classifier as EClass).getEGenericSuperTypes() ) {
-				result.addAll(getAllProperties(generic.getEClassifier(), type))
+				result.addAll(getAllExternalProperties(generic.getEClassifier(), type))
 			}
 		}
 		return result
 	}
-		
+
 }
 
 // this is most likely not necessary in Xtend and can be merged some how

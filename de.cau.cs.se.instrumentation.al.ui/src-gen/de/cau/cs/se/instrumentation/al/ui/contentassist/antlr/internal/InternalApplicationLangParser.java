@@ -26,47 +26,47 @@ public class InternalApplicationLangParser extends AbstractInternalContentAssist
         "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_STRING", "RULE_ID", "RULE_FLOAT", "RULE_INT", "RULE_COMMENT_ANNOTATION", "RULE_BOOLEAN", "RULE_ML_COMMENT", "RULE_NUMBER", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'*'", "'name'", "'signature'", "'class'", "'return-type'", "'='", "'~'", "'!='", "'>'", "'<'", "'>='", "'<='", "'before'", "'after'", "'package'", "'import'", "'model'", "'.'", "'aspect'", "'{'", "'}'", "'('", "')'", "','", "'['", "']'", "'#'", "'$'", "'**'", "'@'"
     };
     public static final int RULE_BOOLEAN=9;
-    public static final int RULE_ID=5;
-    public static final int T__29=29;
-    public static final int T__28=28;
-    public static final int T__27=27;
-    public static final int T__26=26;
-    public static final int T__25=25;
-    public static final int T__24=24;
-    public static final int T__23=23;
-    public static final int T__22=22;
-    public static final int RULE_ANY_OTHER=14;
-    public static final int T__21=21;
-    public static final int T__20=20;
-    public static final int EOF=-1;
     public static final int T__19=19;
-    public static final int T__16=16;
     public static final int T__15=15;
-    public static final int T__18=18;
+    public static final int T__16=16;
     public static final int T__17=17;
-    public static final int RULE_NUMBER=11;
+    public static final int T__18=18;
+    public static final int RULE_ID=5;
+    public static final int T__26=26;
+    public static final int T__27=27;
+    public static final int T__28=28;
     public static final int RULE_INT=7;
-    public static final int RULE_COMMENT_ANNOTATION=8;
-    public static final int T__42=42;
-    public static final int T__43=43;
-    public static final int T__40=40;
-    public static final int T__41=41;
-    public static final int T__44=44;
-    public static final int RULE_FLOAT=6;
-    public static final int RULE_SL_COMMENT=12;
+    public static final int T__29=29;
+    public static final int T__22=22;
     public static final int RULE_ML_COMMENT=10;
-    public static final int T__30=30;
-    public static final int T__31=31;
-    public static final int T__32=32;
+    public static final int T__23=23;
+    public static final int T__24=24;
+    public static final int T__25=25;
+    public static final int T__20=20;
+    public static final int T__21=21;
+    public static final int RULE_COMMENT_ANNOTATION=8;
     public static final int RULE_STRING=4;
+    public static final int RULE_SL_COMMENT=12;
+    public static final int T__37=37;
+    public static final int T__38=38;
+    public static final int T__39=39;
     public static final int T__33=33;
     public static final int T__34=34;
     public static final int T__35=35;
     public static final int T__36=36;
-    public static final int T__37=37;
-    public static final int T__38=38;
-    public static final int T__39=39;
+    public static final int EOF=-1;
+    public static final int T__30=30;
+    public static final int T__31=31;
+    public static final int T__32=32;
     public static final int RULE_WS=13;
+    public static final int RULE_ANY_OTHER=14;
+    public static final int RULE_NUMBER=11;
+    public static final int T__44=44;
+    public static final int RULE_FLOAT=6;
+    public static final int T__40=40;
+    public static final int T__41=41;
+    public static final int T__42=42;
+    public static final int T__43=43;
 
     // delegates
     // delegators
@@ -9466,7 +9466,7 @@ public class InternalApplicationLangParser extends AbstractInternalContentAssist
             // ../de.cau.cs.se.instrumentation.al.ui/src-gen/de/cau/cs/se/instrumentation/al/ui/contentassist/antlr/internal/InternalApplicationLang.g:3209:1: ()
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getWildcardNodeAccess().getWoldcardNodeAction_0()); 
+               before(grammarAccess.getWildcardNodeAccess().getWildcardNodeAction_0()); 
             }
             // ../de.cau.cs.se.instrumentation.al.ui/src-gen/de/cau/cs/se/instrumentation/al/ui/contentassist/antlr/internal/InternalApplicationLang.g:3210:1: ()
             // ../de.cau.cs.se.instrumentation.al.ui/src-gen/de/cau/cs/se/instrumentation/al/ui/contentassist/antlr/internal/InternalApplicationLang.g:3212:1: 
@@ -9474,7 +9474,7 @@ public class InternalApplicationLangParser extends AbstractInternalContentAssist
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getWildcardNodeAccess().getWoldcardNodeAction_0()); 
+               after(grammarAccess.getWildcardNodeAccess().getWildcardNodeAction_0()); 
             }
 
             }
@@ -16192,23 +16192,23 @@ public class InternalApplicationLangParser extends AbstractInternalContentAssist
             // ../de.cau.cs.se.instrumentation.al.ui/src-gen/de/cau/cs/se/instrumentation/al/ui/contentassist/antlr/internal/InternalApplicationLang.g:5646:1: ( RULE_ID )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getContainerNodeAccess().getContainerContainmentCrossReference_0()); 
+               before(grammarAccess.getContainerNodeAccess().getContainerContainerCrossReference_0()); 
             }
             // ../de.cau.cs.se.instrumentation.al.ui/src-gen/de/cau/cs/se/instrumentation/al/ui/contentassist/antlr/internal/InternalApplicationLang.g:5647:1: ( RULE_ID )
             // ../de.cau.cs.se.instrumentation.al.ui/src-gen/de/cau/cs/se/instrumentation/al/ui/contentassist/antlr/internal/InternalApplicationLang.g:5648:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getContainerNodeAccess().getContainerContainmentIDTerminalRuleCall_0_1()); 
+               before(grammarAccess.getContainerNodeAccess().getContainerContainerIDTerminalRuleCall_0_1()); 
             }
             match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__ContainerNode__ContainerAssignment11435); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getContainerNodeAccess().getContainerContainmentIDTerminalRuleCall_0_1()); 
+               after(grammarAccess.getContainerNodeAccess().getContainerContainerIDTerminalRuleCall_0_1()); 
             }
 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getContainerNodeAccess().getContainerContainmentCrossReference_0()); 
+               after(grammarAccess.getContainerNodeAccess().getContainerContainerCrossReference_0()); 
             }
 
             }
@@ -17268,21 +17268,21 @@ public class InternalApplicationLangParser extends AbstractInternalContentAssist
     static final String DFA6_eotS =
         "\14\uffff";
     static final String DFA6_eofS =
-        "\3\uffff\1\5\7\uffff\1\5";
+        "\3\uffff\1\7\7\uffff\1\7";
     static final String DFA6_minS =
         "\1\10\1\uffff\1\5\1\4\1\5\6\uffff\1\4";
     static final String DFA6_maxS =
         "\1\54\1\uffff\1\5\1\54\1\5\6\uffff\1\54";
     static final String DFA6_acceptS =
-        "\1\uffff\1\1\3\uffff\1\2\1\3\1\4\1\5\1\6\1\7\1\uffff";
+        "\1\uffff\1\1\3\uffff\1\6\1\7\1\2\1\3\1\4\1\5\1\uffff";
     static final String DFA6_specialS =
         "\14\uffff}>";
     static final String[] DFA6_transitionS = {
             "\1\1\43\uffff\1\2",
             "",
             "\1\3",
-            "\2\6\1\12\1\11\1\5\1\10\26\uffff\1\4\1\5\2\uffff\2\5\1\uffff"+
-            "\1\7\4\uffff\1\5",
+            "\2\10\1\6\1\5\1\7\1\12\26\uffff\1\4\1\7\2\uffff\2\7\1\uffff"+
+            "\1\11\4\uffff\1\7",
             "\1\13",
             "",
             "",
@@ -17290,8 +17290,8 @@ public class InternalApplicationLangParser extends AbstractInternalContentAssist
             "",
             "",
             "",
-            "\2\6\1\12\1\11\1\5\1\10\26\uffff\1\4\1\5\2\uffff\2\5\1\uffff"+
-            "\1\7\4\uffff\1\5"
+            "\2\10\1\6\1\5\1\7\1\12\26\uffff\1\4\1\7\2\uffff\2\7\1\uffff"+
+            "\1\11\4\uffff\1\7"
     };
 
     static final short[] DFA6_eot = DFA.unpackEncodedString(DFA6_eotS);

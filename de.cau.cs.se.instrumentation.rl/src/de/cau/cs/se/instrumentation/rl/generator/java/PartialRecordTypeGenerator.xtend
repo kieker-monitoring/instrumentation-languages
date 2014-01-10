@@ -8,7 +8,6 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
 import de.cau.cs.se.instrumentation.rl.recordLang.Model
 import java.io.File
 import org.eclipse.emf.common.util.EList
-import de.cau.cs.se.instrumentation.rl.recordLang.PartialType
 
 class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerator {
 	
@@ -52,7 +51,7 @@ class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerator {
 		'''
 	}
 	
-	def createExtends(EList<PartialType> parents) ''' extends «parents.map[t | t.name].join(', ')»'''
+	def createExtends(EList<PartialRecordType> parents) ''' extends «parents.map[t | t.name].join(', ')»'''
 	
 	/**
 	 * Creates a getter for a given property.
@@ -63,9 +62,24 @@ class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerator {
 	 * @returns the resulting getter as a CharSequence
 	 */
 	def createPropertyGetter(Property property) '''
-	public «property.type.createTypeName» get«property.name.toFirstUpper»() ;
+	public «property.findType.createTypeName» «property.createGetterName»() ;
 		
 	'''
+	
+	/**
+	 * Returns the correct name for a getter following Java conventions.
+	 * 
+	 * @param property
+	 * 		a property of a record type
+	 * 
+	 * @returns the name of the getter of the property
+	 */
+	def CharSequence createGetterName(Property property) {
+		if (property.findType.class.name.equals('boolean')) 
+			'''is«property.name.toFirstUpper»'''
+		else
+			'''get«property.name.toFirstUpper»'''
+	}
 	
 	/**
 	 * Determine the right Java string for a given system type.
@@ -78,7 +92,6 @@ class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerator {
 	override createTypeName(Classifier classifier) {
 		switch (classifier.class_.name) {
 			case 'string' : 'String'
-			case 'key' : 'String'
 			default : classifier.class_.name
 		}	
 	}

@@ -48,12 +48,12 @@ class RecordTypeGenerator extends de.cau.cs.se.instrumentation.rl.generator.c.Re
 	
 	def createStructure(RecordType type) '''
 		typedef struct {
-			«PropertyEvaluation::collectAllProperties(type).map[createPropertyDeclaration].join»
+			«PropertyEvaluation::collectAllDataProperties(type).map[createPropertyDeclaration].join»
 		} «type.packageName»_«type.name.cstyle»;
 	'''
 	
 	def createPropertyDeclaration(Property property) '''
-		«property.type.createTypeName» «property.name»;
+		«property.findType.createTypeName» «property.name»;
 	'''
 		
 	/**

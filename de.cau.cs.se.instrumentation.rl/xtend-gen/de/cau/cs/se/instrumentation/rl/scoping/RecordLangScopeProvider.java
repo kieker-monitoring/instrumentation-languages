@@ -6,7 +6,9 @@ package de.cau.cs.se.instrumentation.rl.scoping;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
 import de.cau.cs.se.instrumentation.rl.recordLang.ReferenceProperty;
+import de.cau.cs.se.instrumentation.rl.recordLang.Type;
 import de.cau.cs.se.instrumentation.rl.scoping.MyPredicate;
+import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation;
 import java.util.Collection;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
@@ -49,6 +51,15 @@ public class RecordLangScopeProvider extends AbstractDeclarativeScopeProvider {
   }
   
   /**
+   * Build a scope containing all properties.
+   */
+  public IScope scope_Property_referTo(final Property property, final EReference reference) {
+    EObject _eContainer = property.eContainer();
+    Collection<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(((Type) _eContainer));
+    return Scopes.scopeFor(_collectAllProperties);
+  }
+  
+  /**
    * @param classifier
    * @param reference
    * @return
@@ -66,25 +77,23 @@ public class RecordLangScopeProvider extends AbstractDeclarativeScopeProvider {
     boolean _matched = false;
     if (!_matched) {
       if (_switchValue instanceof Property) {
-        final Property _property = (Property)_switchValue;
         _matched=true;
         EObject _eContainer_1 = property.eContainer();
         Classifier _type = ((Property) _eContainer_1).getType();
         EClassifier _class_ = _type.getClass_();
-        Collection<EStructuralFeature> _allProperties = this.getAllProperties(_class_, EStructuralFeature.class);
-        return Scopes.scopeFor(_allProperties);
+        Collection<EStructuralFeature> _allExternalProperties = this.getAllExternalProperties(_class_, EStructuralFeature.class);
+        return Scopes.scopeFor(_allExternalProperties);
       }
     }
     if (!_matched) {
       if (_switchValue instanceof ReferenceProperty) {
-        final ReferenceProperty _referenceProperty = (ReferenceProperty)_switchValue;
         _matched=true;
         EObject _eContainer_1 = property.eContainer();
         final EStructuralFeature parent = ((ReferenceProperty) _eContainer_1).getRef();
         if ((parent instanceof EReference)) {
           EClass _eReferenceType = ((EReference) parent).getEReferenceType();
-          Collection<EStructuralFeature> _allProperties = this.getAllProperties(_eReferenceType, EStructuralFeature.class);
-          return Scopes.scopeFor(_allProperties);
+          Collection<EStructuralFeature> _allExternalProperties = this.getAllExternalProperties(_eReferenceType, EStructuralFeature.class);
+          return Scopes.scopeFor(_allExternalProperties);
         } else {
           return null;
         }
@@ -93,14 +102,17 @@ public class RecordLangScopeProvider extends AbstractDeclarativeScopeProvider {
     return null;
   }
   
-  public Collection<EStructuralFeature> getAllProperties(final EClassifier classifier, final Class<EStructuralFeature> type) {
+  /**
+   * Internal function to collect all properties of a imported classifier.
+   */
+  public Collection<EStructuralFeature> getAllExternalProperties(final EClassifier classifier, final Class<EStructuralFeature> type) {
     final List<EStructuralFeature> result = EcoreUtil2.<EStructuralFeature>getAllContentsOfType(classifier, type);
     if ((classifier instanceof EClass)) {
       EList<EGenericType> _eGenericSuperTypes = ((EClass) classifier).getEGenericSuperTypes();
       for (final EGenericType generic : _eGenericSuperTypes) {
         EClassifier _eClassifier = generic.getEClassifier();
-        Collection<EStructuralFeature> _allProperties = this.getAllProperties(_eClassifier, type);
-        result.addAll(_allProperties);
+        Collection<EStructuralFeature> _allExternalProperties = this.getAllExternalProperties(_eClassifier, type);
+        result.addAll(_allExternalProperties);
       }
     }
     return result;

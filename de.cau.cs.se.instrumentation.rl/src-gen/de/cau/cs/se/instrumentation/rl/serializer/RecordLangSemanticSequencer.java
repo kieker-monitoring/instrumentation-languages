@@ -17,7 +17,6 @@ import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.ReferenceProperty;
 import de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral;
-import de.cau.cs.se.instrumentation.rl.recordLang.TagType;
 import de.cau.cs.se.instrumentation.rl.services.RecordLangGrammarAccess;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.serializer.acceptor.ISemanticSequenceAcceptor;
@@ -105,7 +104,6 @@ public class RecordLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 				else break;
 			case RecordLangPackage.PARTIAL_RECORD_TYPE:
 				if(context == grammarAccess.getPartialRecordTypeRule() ||
-				   context == grammarAccess.getPartialTypeRule() ||
 				   context == grammarAccess.getTypeRule()) {
 					sequence_PartialRecordType(context, (PartialRecordType) semanticObject); 
 					return; 
@@ -134,14 +132,6 @@ public class RecordLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 				if(context == grammarAccess.getLiteralRule() ||
 				   context == grammarAccess.getStringLiteralRule()) {
 					sequence_StringLiteral(context, (StringLiteral) semanticObject); 
-					return; 
-				}
-				else break;
-			case RecordLangPackage.TAG_TYPE:
-				if(context == grammarAccess.getPartialTypeRule() ||
-				   context == grammarAccess.getTagTypeRule() ||
-				   context == grammarAccess.getTypeRule()) {
-					sequence_TagType(context, (TagType) semanticObject); 
 					return; 
 				}
 				else break;
@@ -299,7 +289,11 @@ public class RecordLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 	
 	/**
 	 * Constraint:
-	 *     (name=ID (parents+=[PartialType|QualifiedName] parents+=[PartialType|QualifiedName]*)? (properties+=Property | constants+=Constant)*)
+	 *     (
+	 *         name=ID 
+	 *         (parents+=[PartialRecordType|QualifiedName] parents+=[PartialRecordType|QualifiedName]*)? 
+	 *         (properties+=Property | constants+=Constant)*
+	 *     )
 	 */
 	protected void sequence_PartialRecordType(EObject context, PartialRecordType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -308,7 +302,7 @@ public class RecordLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 	
 	/**
 	 * Constraint:
-	 *     (type=Classifier name=ID (properties+=ReferenceProperty* | value=Literal))
+	 *     ((type=Classifier | referTo=[Property|ID]) name=ID (properties+=ReferenceProperty* | value=Literal)?)
 	 */
 	protected void sequence_Property(EObject context, Property semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -321,7 +315,7 @@ public class RecordLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 *         abstract?='abstract'? 
 	 *         name=ID 
 	 *         parent=[RecordType|QualifiedName]? 
-	 *         (parents+=[PartialType|QualifiedName] parents+=[PartialType|QualifiedName]*)? 
+	 *         (parents+=[PartialRecordType|QualifiedName] parents+=[PartialRecordType|QualifiedName]*)? 
 	 *         (properties+=Property | constants+=Constant)*
 	 *     )
 	 */
@@ -352,14 +346,5 @@ public class RecordLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getStringLiteralAccess().getValueSTRINGTerminalRuleCall_0(), semanticObject.getValue());
 		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (name=ID (parents+=[TagType|QualifiedName] parents+=[TagType|QualifiedName]*)?)
-	 */
-	protected void sequence_TagType(EObject context, TagType semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
 	}
 }

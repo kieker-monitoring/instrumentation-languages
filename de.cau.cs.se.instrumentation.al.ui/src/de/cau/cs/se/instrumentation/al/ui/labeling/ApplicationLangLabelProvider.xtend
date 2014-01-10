@@ -28,7 +28,10 @@ class ApplicationLangLabelProvider extends org.eclipse.xtext.ui.label.DefaultEOb
 	def text(Aspect e) { 'aspect' }
 	
 	def text(ContainerNode e) {
-		(e.container as NamedElement).name
+		if (e.container instanceof NamedElement)
+			(e.container as NamedElement).name
+		else
+			'''Container is of type «e.container.class.name»'''
 	}
 	
 	def text (WildcardNode e) { '*' }

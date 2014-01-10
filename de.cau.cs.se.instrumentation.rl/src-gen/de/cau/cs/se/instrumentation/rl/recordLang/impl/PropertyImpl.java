@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.PropertyImpl#getType <em>Type</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.PropertyImpl#getReferTo <em>Refer To</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.PropertyImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.PropertyImpl#getProperties <em>Properties</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.PropertyImpl#getValue <em>Value</em>}</li>
@@ -51,6 +52,16 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
    * @ordered
    */
   protected Classifier type;
+
+  /**
+   * The cached value of the '{@link #getReferTo() <em>Refer To</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getReferTo()
+   * @generated
+   * @ordered
+   */
+  protected Property referTo;
 
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -159,6 +170,49 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, RecordLangPackage.PROPERTY__TYPE, newType, newType));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Property getReferTo()
+  {
+    if (referTo != null && referTo.eIsProxy())
+    {
+      InternalEObject oldReferTo = (InternalEObject)referTo;
+      referTo = (Property)eResolveProxy(oldReferTo);
+      if (referTo != oldReferTo)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, RecordLangPackage.PROPERTY__REFER_TO, oldReferTo, referTo));
+      }
+    }
+    return referTo;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Property basicGetReferTo()
+  {
+    return referTo;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setReferTo(Property newReferTo)
+  {
+    Property oldReferTo = referTo;
+    referTo = newReferTo;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RecordLangPackage.PROPERTY__REFER_TO, oldReferTo, referTo));
   }
 
   /**
@@ -278,6 +332,9 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
     {
       case RecordLangPackage.PROPERTY__TYPE:
         return getType();
+      case RecordLangPackage.PROPERTY__REFER_TO:
+        if (resolve) return getReferTo();
+        return basicGetReferTo();
       case RecordLangPackage.PROPERTY__NAME:
         return getName();
       case RecordLangPackage.PROPERTY__PROPERTIES:
@@ -301,6 +358,9 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
     {
       case RecordLangPackage.PROPERTY__TYPE:
         setType((Classifier)newValue);
+        return;
+      case RecordLangPackage.PROPERTY__REFER_TO:
+        setReferTo((Property)newValue);
         return;
       case RecordLangPackage.PROPERTY__NAME:
         setName((String)newValue);
@@ -329,6 +389,9 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
       case RecordLangPackage.PROPERTY__TYPE:
         setType((Classifier)null);
         return;
+      case RecordLangPackage.PROPERTY__REFER_TO:
+        setReferTo((Property)null);
+        return;
       case RecordLangPackage.PROPERTY__NAME:
         setName(NAME_EDEFAULT);
         return;
@@ -354,6 +417,8 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
     {
       case RecordLangPackage.PROPERTY__TYPE:
         return type != null;
+      case RecordLangPackage.PROPERTY__REFER_TO:
+        return referTo != null;
       case RecordLangPackage.PROPERTY__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case RecordLangPackage.PROPERTY__PROPERTIES:

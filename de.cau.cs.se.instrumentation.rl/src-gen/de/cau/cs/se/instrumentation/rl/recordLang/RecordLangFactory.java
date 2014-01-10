@@ -59,15 +59,6 @@ public interface RecordLangFactory extends EFactory
   Type createType();
 
   /**
-   * Returns a new object of class '<em>Partial Type</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Partial Type</em>'.
-   * @generated
-   */
-  PartialType createPartialType();
-
-  /**
    * Returns a new object of class '<em>Partial Record Type</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -75,15 +66,6 @@ public interface RecordLangFactory extends EFactory
    * @generated
    */
   PartialRecordType createPartialRecordType();
-
-  /**
-   * Returns a new object of class '<em>Tag Type</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Tag Type</em>'.
-   * @generated
-   */
-  TagType createTagType();
 
   /**
    * Returns a new object of class '<em>Record Type</em>'.

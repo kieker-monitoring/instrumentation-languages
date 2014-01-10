@@ -9,16 +9,14 @@ import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
 import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation;
 import java.io.File;
-import java.util.List;
+import java.util.Collection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.ListExtensions;
 
 @SuppressWarnings("all")
 public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
@@ -293,16 +291,16 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     _builder.append("int length = 0;");
     _builder.newLine();
     _builder.append("\t");
-    EList<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(type);
+    Collection<Property> _collectAllDataProperties = PropertyEvaluation.collectAllDataProperties(type);
     final Function1<Property,CharSequence> _function = new Function1<Property,CharSequence>() {
       public CharSequence apply(final Property it) {
         CharSequence _createValueSerializer = RecordTypeGenerator.this.createValueSerializer(it);
         return _createValueSerializer;
       }
     };
-    List<CharSequence> _map = ListExtensions.<Property, CharSequence>map(_collectAllProperties, _function);
+    Iterable<CharSequence> _map = IterableExtensions.<Property, CharSequence>map(_collectAllDataProperties, _function);
     String _join = IterableExtensions.join(_map);
-    _builder.append(_join, "	");
+    _builder.append(_join, "\t");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("return length;");
@@ -315,8 +313,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   public CharSequence createValueSerializer(final Property property) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("length += serialize_");
-    Classifier _type = property.getType();
-    String _serializerSuffix = this.serializerSuffix(_type);
+    Classifier _findType = this.findType(property);
+    String _serializerSuffix = this.serializerSuffix(_findType);
     _builder.append(_serializerSuffix, "");
     _builder.append("(buffer,offset,");
     String _name = property.getName();

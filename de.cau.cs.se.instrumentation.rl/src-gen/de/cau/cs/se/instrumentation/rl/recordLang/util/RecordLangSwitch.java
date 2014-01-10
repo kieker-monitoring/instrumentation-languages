@@ -13,13 +13,11 @@ import de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Literal;
 import de.cau.cs.se.instrumentation.rl.recordLang.Model;
 import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType;
-import de.cau.cs.se.instrumentation.rl.recordLang.PartialType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.ReferenceProperty;
 import de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral;
-import de.cau.cs.se.instrumentation.rl.recordLang.TagType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
 
 import org.eclipse.emf.ecore.EObject;
@@ -118,29 +116,11 @@ public class RecordLangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case RecordLangPackage.PARTIAL_TYPE:
-      {
-        PartialType partialType = (PartialType)theEObject;
-        T result = casePartialType(partialType);
-        if (result == null) result = caseType(partialType);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case RecordLangPackage.PARTIAL_RECORD_TYPE:
       {
         PartialRecordType partialRecordType = (PartialRecordType)theEObject;
         T result = casePartialRecordType(partialRecordType);
-        if (result == null) result = casePartialType(partialRecordType);
         if (result == null) result = caseType(partialRecordType);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case RecordLangPackage.TAG_TYPE:
-      {
-        TagType tagType = (TagType)theEObject;
-        T result = caseTagType(tagType);
-        if (result == null) result = casePartialType(tagType);
-        if (result == null) result = caseType(tagType);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -303,22 +283,6 @@ public class RecordLangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Partial Type</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Partial Type</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T casePartialType(PartialType object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Partial Record Type</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -330,22 +294,6 @@ public class RecordLangSwitch<T> extends Switch<T>
    * @generated
    */
   public T casePartialRecordType(PartialRecordType object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Tag Type</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Tag Type</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseTagType(TagType object)
   {
     return null;
   }

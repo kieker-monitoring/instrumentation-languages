@@ -13,14 +13,12 @@ import de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Literal;
 import de.cau.cs.se.instrumentation.rl.recordLang.Model;
 import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType;
-import de.cau.cs.se.instrumentation.rl.recordLang.PartialType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangFactory;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.ReferenceProperty;
 import de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral;
-import de.cau.cs.se.instrumentation.rl.recordLang.TagType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
 
 import org.eclipse.emf.ecore.EClass;
@@ -87,9 +85,7 @@ public class RecordLangFactoryImpl extends EFactoryImpl implements RecordLangFac
       case RecordLangPackage.IMPORT: return createImport();
       case RecordLangPackage.PACKAGE: return createPackage();
       case RecordLangPackage.TYPE: return createType();
-      case RecordLangPackage.PARTIAL_TYPE: return createPartialType();
       case RecordLangPackage.PARTIAL_RECORD_TYPE: return createPartialRecordType();
-      case RecordLangPackage.TAG_TYPE: return createTagType();
       case RecordLangPackage.RECORD_TYPE: return createRecordType();
       case RecordLangPackage.CONSTANT: return createConstant();
       case RecordLangPackage.PROPERTY: return createProperty();
@@ -156,32 +152,10 @@ public class RecordLangFactoryImpl extends EFactoryImpl implements RecordLangFac
    * <!-- end-user-doc -->
    * @generated
    */
-  public PartialType createPartialType()
-  {
-    PartialTypeImpl partialType = new PartialTypeImpl();
-    return partialType;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public PartialRecordType createPartialRecordType()
   {
     PartialRecordTypeImpl partialRecordType = new PartialRecordTypeImpl();
     return partialRecordType;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public TagType createTagType()
-  {
-    TagTypeImpl tagType = new TagTypeImpl();
-    return tagType;
   }
 
   /**

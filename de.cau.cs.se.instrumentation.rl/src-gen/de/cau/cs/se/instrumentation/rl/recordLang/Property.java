@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.Property#getType <em>Type</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.Property#getReferTo <em>Refer To</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.Property#getName <em>Name</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.Property#getProperties <em>Properties</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.Property#getValue <em>Value</em>}</li>
@@ -52,6 +53,32 @@ public interface Property extends EObject
    * @generated
    */
   void setType(Classifier value);
+
+  /**
+   * Returns the value of the '<em><b>Refer To</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Refer To</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Refer To</em>' reference.
+   * @see #setReferTo(Property)
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getProperty_ReferTo()
+   * @model
+   * @generated
+   */
+  Property getReferTo();
+
+  /**
+   * Sets the value of the '{@link de.cau.cs.se.instrumentation.rl.recordLang.Property#getReferTo <em>Refer To</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Refer To</em>' reference.
+   * @see #getReferTo()
+   * @generated
+   */
+  void setReferTo(Property value);
 
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

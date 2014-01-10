@@ -1,13 +1,13 @@
 package de.cau.cs.se.instrumentation.rl.generator;
 
 import com.google.common.base.Objects;
+import de.cau.cs.se.instrumentation.rl.generator.InternalErrorException;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
-import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation;
-import org.eclipse.emf.common.util.EList;
+import java.util.Collection;
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function2;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
@@ -28,23 +28,6 @@ public abstract class AbstractTypeGenerator {
   public abstract String fileName(final Type type);
   
   /**
-   * Collect recursively a list of all properties of interfaces and add those of
-   * the type.
-   * 
-   * @param type
-   * 		a recordType
-   * 
-   * @returns
-   * 		a complete list of all properties in a record
-   */
-  public EList<Property> collectAllImplementationProperties(final RecordType type) {
-    final EList<Property> result = PropertyEvaluation.collectAllInterfaceProperties(type);
-    EList<Property> _properties = type.getProperties();
-    result.addAll(_properties);
-    return result;
-  }
-  
-  /**
    * Determine the size of the resulting binary serialization.
    * 
    * @param allProperties
@@ -53,7 +36,7 @@ public abstract class AbstractTypeGenerator {
    * @returns
    * 		the computed value
    */
-  public int calculateSize(final EList<Property> list) {
+  public int calculateSize(final Collection<Property> list) {
     final Function2<Integer,Property,Integer> _function = new Function2<Integer,Property,Integer>() {
       public Integer apply(final Integer result, final Property property) {
         int _size = AbstractTypeGenerator.this.getSize(property);
@@ -66,6 +49,20 @@ public abstract class AbstractTypeGenerator {
   }
   
   /**
+   * Recursively search for the type of a property.
+   */
+  public Classifier findType(final Property property) {
+    Classifier _type = property.getType();
+    boolean _notEquals = (!Objects.equal(_type, null));
+    if (_notEquals) {
+      return property.getType();
+    } else {
+      Property _referTo = property.getReferTo();
+      return this.findType(_referTo);
+    }
+  }
+  
+  /**
    * Determine the size of one type.
    * 
    * @param property
@@ -75,72 +72,78 @@ public abstract class AbstractTypeGenerator {
    * 		the serialization size of the property
    */
   private int getSize(final Property property) {
-    Integer _switchResult = null;
-    Classifier _type = property.getType();
-    EClassifier _class_ = _type.getClass_();
-    String _name = _class_.getName();
-    final String _switchValue = _name;
-    boolean _matched = false;
-    if (!_matched) {
-      if (Objects.equal(_switchValue,"key")) {
-        _matched=true;
-        _switchResult = Integer.valueOf(4);
+    try {
+      int _switchResult = (int) 0;
+      Classifier _findType = this.findType(property);
+      EClassifier _class_ = _findType.getClass_();
+      String _name = _class_.getName();
+      final String _switchValue = _name;
+      boolean _matched = false;
+      if (!_matched) {
+        if (Objects.equal(_switchValue,"string")) {
+          _matched=true;
+          _switchResult = 4;
+        }
       }
-    }
-    if (!_matched) {
-      if (Objects.equal(_switchValue,"string")) {
-        _matched=true;
-        _switchResult = Integer.valueOf(4);
+      if (!_matched) {
+        if (Objects.equal(_switchValue,"byte")) {
+          _matched=true;
+          _switchResult = 1;
+        }
       }
-    }
-    if (!_matched) {
-      if (Objects.equal(_switchValue,"byte")) {
-        _matched=true;
-        _switchResult = Integer.valueOf(1);
+      if (!_matched) {
+        if (Objects.equal(_switchValue,"short")) {
+          _matched=true;
+          _switchResult = 2;
+        }
       }
-    }
-    if (!_matched) {
-      if (Objects.equal(_switchValue,"short")) {
-        _matched=true;
-        _switchResult = Integer.valueOf(2);
+      if (!_matched) {
+        if (Objects.equal(_switchValue,"int")) {
+          _matched=true;
+          _switchResult = 4;
+        }
       }
-    }
-    if (!_matched) {
-      if (Objects.equal(_switchValue,"int")) {
-        _matched=true;
-        _switchResult = Integer.valueOf(4);
+      if (!_matched) {
+        if (Objects.equal(_switchValue,"long")) {
+          _matched=true;
+          _switchResult = 8;
+        }
       }
-    }
-    if (!_matched) {
-      if (Objects.equal(_switchValue,"long")) {
-        _matched=true;
-        _switchResult = Integer.valueOf(8);
+      if (!_matched) {
+        if (Objects.equal(_switchValue,"float")) {
+          _matched=true;
+          _switchResult = 4;
+        }
       }
-    }
-    if (!_matched) {
-      if (Objects.equal(_switchValue,"float")) {
-        _matched=true;
-        _switchResult = Integer.valueOf(4);
+      if (!_matched) {
+        if (Objects.equal(_switchValue,"double")) {
+          _matched=true;
+          _switchResult = 8;
+        }
       }
-    }
-    if (!_matched) {
-      if (Objects.equal(_switchValue,"double")) {
-        _matched=true;
-        _switchResult = Integer.valueOf(8);
+      if (!_matched) {
+        if (Objects.equal(_switchValue,"char")) {
+          _matched=true;
+          _switchResult = 2;
+        }
       }
-    }
-    if (!_matched) {
-      if (Objects.equal(_switchValue,"char")) {
-        _matched=true;
-        _switchResult = Integer.valueOf(2);
+      if (!_matched) {
+        if (Objects.equal(_switchValue,"boolean")) {
+          _matched=true;
+          _switchResult = 1;
+        }
       }
-    }
-    if (!_matched) {
-      if (Objects.equal(_switchValue,"boolean")) {
-        _matched=true;
-        _switchResult = Integer.valueOf(1);
+      if (!_matched) {
+        Classifier _findType_1 = this.findType(property);
+        EClassifier _class__1 = _findType_1.getClass_();
+        String _name_1 = _class__1.getName();
+        String _plus = (_name_1 + "is not a valid type name");
+        InternalErrorException _internalErrorException = new InternalErrorException(_plus);
+        throw _internalErrorException;
       }
+      return _switchResult;
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
     }
-    return (_switchResult).intValue();
   }
 }

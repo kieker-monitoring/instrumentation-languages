@@ -22,22 +22,14 @@
     </genClasses>
     <genClasses ecoreClass="RecordLang.ecore#//Type">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RecordLang.ecore#//Type/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Type/parents"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Type/properties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Type/constants"/>
     </genClasses>
-    <genClasses ecoreClass="RecordLang.ecore#//PartialType"/>
-    <genClasses ecoreClass="RecordLang.ecore#//PartialRecordType">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RecordLang.ecore#//PartialRecordType/parents"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RecordLang.ecore#//PartialRecordType/properties"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RecordLang.ecore#//PartialRecordType/constants"/>
-    </genClasses>
-    <genClasses ecoreClass="RecordLang.ecore#//TagType">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RecordLang.ecore#//TagType/parents"/>
-    </genClasses>
+    <genClasses ecoreClass="RecordLang.ecore#//PartialRecordType"/>
     <genClasses ecoreClass="RecordLang.ecore#//RecordType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RecordLang.ecore#//RecordType/abstract"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RecordLang.ecore#//RecordType/parent"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RecordLang.ecore#//RecordType/parents"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RecordLang.ecore#//RecordType/properties"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RecordLang.ecore#//RecordType/constants"/>
     </genClasses>
     <genClasses ecoreClass="RecordLang.ecore#//Constant">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Constant/type"/>
@@ -46,6 +38,7 @@
     </genClasses>
     <genClasses ecoreClass="RecordLang.ecore#//Property">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Property/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Property/referTo"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RecordLang.ecore#//Property/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Property/properties"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Property/value"/>

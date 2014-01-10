@@ -31,8 +31,7 @@ public enum PrimitiveTypes {
 	EFLOAT("float"),
 	EDOUBLE("double"),
 	ECHAR("char"),
-	ESTRING("string"),
-	EKEY("key");
+	ESTRING("string");
 
 	private EDataType etype;
 

@@ -196,41 +196,40 @@ public interface RecordLangPackage extends EPackage
   int TYPE__NAME = 0;
 
   /**
+   * The feature id for the '<em><b>Parents</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPE__PARENTS = 1;
+
+  /**
+   * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPE__PROPERTIES = 2;
+
+  /**
+   * The feature id for the '<em><b>Constants</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPE__CONSTANTS = 3;
+
+  /**
    * The number of structural features of the '<em>Type</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TYPE_FEATURE_COUNT = 1;
-
-  /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.PartialTypeImpl <em>Partial Type</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.PartialTypeImpl
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getPartialType()
-   * @generated
-   */
-  int PARTIAL_TYPE = 4;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PARTIAL_TYPE__NAME = TYPE__NAME;
-
-  /**
-   * The number of structural features of the '<em>Partial Type</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PARTIAL_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 0;
+  int TYPE_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.PartialRecordTypeImpl <em>Partial Record Type</em>}' class.
@@ -240,7 +239,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getPartialRecordType()
    * @generated
    */
-  int PARTIAL_RECORD_TYPE = 5;
+  int PARTIAL_RECORD_TYPE = 4;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -249,7 +248,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PARTIAL_RECORD_TYPE__NAME = PARTIAL_TYPE__NAME;
+  int PARTIAL_RECORD_TYPE__NAME = TYPE__NAME;
 
   /**
    * The feature id for the '<em><b>Parents</b></em>' reference list.
@@ -258,7 +257,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PARTIAL_RECORD_TYPE__PARENTS = PARTIAL_TYPE_FEATURE_COUNT + 0;
+  int PARTIAL_RECORD_TYPE__PARENTS = TYPE__PARENTS;
 
   /**
    * The feature id for the '<em><b>Properties</b></em>' containment reference list.
@@ -267,7 +266,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PARTIAL_RECORD_TYPE__PROPERTIES = PARTIAL_TYPE_FEATURE_COUNT + 1;
+  int PARTIAL_RECORD_TYPE__PROPERTIES = TYPE__PROPERTIES;
 
   /**
    * The feature id for the '<em><b>Constants</b></em>' containment reference list.
@@ -276,7 +275,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PARTIAL_RECORD_TYPE__CONSTANTS = PARTIAL_TYPE_FEATURE_COUNT + 2;
+  int PARTIAL_RECORD_TYPE__CONSTANTS = TYPE__CONSTANTS;
 
   /**
    * The number of structural features of the '<em>Partial Record Type</em>' class.
@@ -285,44 +284,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PARTIAL_RECORD_TYPE_FEATURE_COUNT = PARTIAL_TYPE_FEATURE_COUNT + 3;
-
-  /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.TagTypeImpl <em>Tag Type</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.TagTypeImpl
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getTagType()
-   * @generated
-   */
-  int TAG_TYPE = 6;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TAG_TYPE__NAME = PARTIAL_TYPE__NAME;
-
-  /**
-   * The feature id for the '<em><b>Parents</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TAG_TYPE__PARENTS = PARTIAL_TYPE_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Tag Type</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TAG_TYPE_FEATURE_COUNT = PARTIAL_TYPE_FEATURE_COUNT + 1;
+  int PARTIAL_RECORD_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordTypeImpl <em>Record Type</em>}' class.
@@ -332,7 +294,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getRecordType()
    * @generated
    */
-  int RECORD_TYPE = 7;
+  int RECORD_TYPE = 5;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -342,6 +304,33 @@ public interface RecordLangPackage extends EPackage
    * @ordered
    */
   int RECORD_TYPE__NAME = TYPE__NAME;
+
+  /**
+   * The feature id for the '<em><b>Parents</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RECORD_TYPE__PARENTS = TYPE__PARENTS;
+
+  /**
+   * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RECORD_TYPE__PROPERTIES = TYPE__PROPERTIES;
+
+  /**
+   * The feature id for the '<em><b>Constants</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RECORD_TYPE__CONSTANTS = TYPE__CONSTANTS;
 
   /**
    * The feature id for the '<em><b>Abstract</b></em>' attribute.
@@ -362,40 +351,13 @@ public interface RecordLangPackage extends EPackage
   int RECORD_TYPE__PARENT = TYPE_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Parents</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RECORD_TYPE__PARENTS = TYPE_FEATURE_COUNT + 2;
-
-  /**
-   * The feature id for the '<em><b>Properties</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RECORD_TYPE__PROPERTIES = TYPE_FEATURE_COUNT + 3;
-
-  /**
-   * The feature id for the '<em><b>Constants</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RECORD_TYPE__CONSTANTS = TYPE_FEATURE_COUNT + 4;
-
-  /**
    * The number of structural features of the '<em>Record Type</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RECORD_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 5;
+  int RECORD_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ConstantImpl <em>Constant</em>}' class.
@@ -405,7 +367,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getConstant()
    * @generated
    */
-  int CONSTANT = 8;
+  int CONSTANT = 6;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -451,7 +413,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getProperty()
    * @generated
    */
-  int PROPERTY = 9;
+  int PROPERTY = 7;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -463,13 +425,22 @@ public interface RecordLangPackage extends EPackage
   int PROPERTY__TYPE = 0;
 
   /**
+   * The feature id for the '<em><b>Refer To</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROPERTY__REFER_TO = 1;
+
+  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROPERTY__NAME = 1;
+  int PROPERTY__NAME = 2;
 
   /**
    * The feature id for the '<em><b>Properties</b></em>' containment reference list.
@@ -478,7 +449,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY__PROPERTIES = 2;
+  int PROPERTY__PROPERTIES = 3;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -487,7 +458,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY__VALUE = 3;
+  int PROPERTY__VALUE = 4;
 
   /**
    * The number of structural features of the '<em>Property</em>' class.
@@ -496,7 +467,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY_FEATURE_COUNT = 4;
+  int PROPERTY_FEATURE_COUNT = 5;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ClassifierImpl <em>Classifier</em>}' class.
@@ -506,7 +477,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getClassifier()
    * @generated
    */
-  int CLASSIFIER = 10;
+  int CLASSIFIER = 8;
 
   /**
    * The feature id for the '<em><b>Package</b></em>' reference.
@@ -552,7 +523,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getArraySize()
    * @generated
    */
-  int ARRAY_SIZE = 11;
+  int ARRAY_SIZE = 9;
 
   /**
    * The feature id for the '<em><b>Size</b></em>' attribute.
@@ -580,7 +551,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getReferenceProperty()
    * @generated
    */
-  int REFERENCE_PROPERTY = 12;
+  int REFERENCE_PROPERTY = 10;
 
   /**
    * The feature id for the '<em><b>Ref</b></em>' reference.
@@ -617,7 +588,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getLiteral()
    * @generated
    */
-  int LITERAL = 13;
+  int LITERAL = 11;
 
   /**
    * The number of structural features of the '<em>Literal</em>' class.
@@ -636,7 +607,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getStringLiteral()
    * @generated
    */
-  int STRING_LITERAL = 14;
+  int STRING_LITERAL = 12;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -664,7 +635,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getIntLiteral()
    * @generated
    */
-  int INT_LITERAL = 15;
+  int INT_LITERAL = 13;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -692,7 +663,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getFloatLiteral()
    * @generated
    */
-  int FLOAT_LITERAL = 16;
+  int FLOAT_LITERAL = 14;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -720,7 +691,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getBooleanLiteral()
    * @generated
    */
-  int BOOLEAN_LITERAL = 17;
+  int BOOLEAN_LITERAL = 15;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -748,7 +719,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getConstantLiteral()
    * @generated
    */
-  int CONSTANT_LITERAL = 18;
+  int CONSTANT_LITERAL = 16;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' reference.
@@ -898,14 +869,37 @@ public interface RecordLangPackage extends EPackage
   EAttribute getType_Name();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.PartialType <em>Partial Type</em>}'.
+   * Returns the meta object for the reference list '{@link de.cau.cs.se.instrumentation.rl.recordLang.Type#getParents <em>Parents</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Partial Type</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.PartialType
+   * @return the meta object for the reference list '<em>Parents</em>'.
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.Type#getParents()
+   * @see #getType()
    * @generated
    */
-  EClass getPartialType();
+  EReference getType_Parents();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.rl.recordLang.Type#getProperties <em>Properties</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Properties</em>'.
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.Type#getProperties()
+   * @see #getType()
+   * @generated
+   */
+  EReference getType_Properties();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.rl.recordLang.Type#getConstants <em>Constants</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Constants</em>'.
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.Type#getConstants()
+   * @see #getType()
+   * @generated
+   */
+  EReference getType_Constants();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType <em>Partial Record Type</em>}'.
@@ -916,60 +910,6 @@ public interface RecordLangPackage extends EPackage
    * @generated
    */
   EClass getPartialRecordType();
-
-  /**
-   * Returns the meta object for the reference list '{@link de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType#getParents <em>Parents</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Parents</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType#getParents()
-   * @see #getPartialRecordType()
-   * @generated
-   */
-  EReference getPartialRecordType_Parents();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType#getProperties <em>Properties</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Properties</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType#getProperties()
-   * @see #getPartialRecordType()
-   * @generated
-   */
-  EReference getPartialRecordType_Properties();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType#getConstants <em>Constants</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Constants</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType#getConstants()
-   * @see #getPartialRecordType()
-   * @generated
-   */
-  EReference getPartialRecordType_Constants();
-
-  /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.TagType <em>Tag Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Tag Type</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.TagType
-   * @generated
-   */
-  EClass getTagType();
-
-  /**
-   * Returns the meta object for the reference list '{@link de.cau.cs.se.instrumentation.rl.recordLang.TagType#getParents <em>Parents</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Parents</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.TagType#getParents()
-   * @see #getTagType()
-   * @generated
-   */
-  EReference getTagType_Parents();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.RecordType <em>Record Type</em>}'.
@@ -1002,39 +942,6 @@ public interface RecordLangPackage extends EPackage
    * @generated
    */
   EReference getRecordType_Parent();
-
-  /**
-   * Returns the meta object for the reference list '{@link de.cau.cs.se.instrumentation.rl.recordLang.RecordType#getParents <em>Parents</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Parents</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordType#getParents()
-   * @see #getRecordType()
-   * @generated
-   */
-  EReference getRecordType_Parents();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.rl.recordLang.RecordType#getProperties <em>Properties</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Properties</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordType#getProperties()
-   * @see #getRecordType()
-   * @generated
-   */
-  EReference getRecordType_Properties();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.rl.recordLang.RecordType#getConstants <em>Constants</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Constants</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordType#getConstants()
-   * @see #getRecordType()
-   * @generated
-   */
-  EReference getRecordType_Constants();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.Constant <em>Constant</em>}'.
@@ -1099,6 +1006,17 @@ public interface RecordLangPackage extends EPackage
    * @generated
    */
   EReference getProperty_Type();
+
+  /**
+   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.rl.recordLang.Property#getReferTo <em>Refer To</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Refer To</em>'.
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.Property#getReferTo()
+   * @see #getProperty()
+   * @generated
+   */
+  EReference getProperty_ReferTo();
 
   /**
    * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.rl.recordLang.Property#getName <em>Name</em>}'.
@@ -1472,14 +1390,28 @@ public interface RecordLangPackage extends EPackage
     EAttribute TYPE__NAME = eINSTANCE.getType_Name();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.PartialTypeImpl <em>Partial Type</em>}' class.
+     * The meta object literal for the '<em><b>Parents</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.PartialTypeImpl
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getPartialType()
      * @generated
      */
-    EClass PARTIAL_TYPE = eINSTANCE.getPartialType();
+    EReference TYPE__PARENTS = eINSTANCE.getType_Parents();
+
+    /**
+     * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TYPE__PROPERTIES = eINSTANCE.getType_Properties();
+
+    /**
+     * The meta object literal for the '<em><b>Constants</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TYPE__CONSTANTS = eINSTANCE.getType_Constants();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.PartialRecordTypeImpl <em>Partial Record Type</em>}' class.
@@ -1490,48 +1422,6 @@ public interface RecordLangPackage extends EPackage
      * @generated
      */
     EClass PARTIAL_RECORD_TYPE = eINSTANCE.getPartialRecordType();
-
-    /**
-     * The meta object literal for the '<em><b>Parents</b></em>' reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference PARTIAL_RECORD_TYPE__PARENTS = eINSTANCE.getPartialRecordType_Parents();
-
-    /**
-     * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference PARTIAL_RECORD_TYPE__PROPERTIES = eINSTANCE.getPartialRecordType_Properties();
-
-    /**
-     * The meta object literal for the '<em><b>Constants</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference PARTIAL_RECORD_TYPE__CONSTANTS = eINSTANCE.getPartialRecordType_Constants();
-
-    /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.TagTypeImpl <em>Tag Type</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.TagTypeImpl
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getTagType()
-     * @generated
-     */
-    EClass TAG_TYPE = eINSTANCE.getTagType();
-
-    /**
-     * The meta object literal for the '<em><b>Parents</b></em>' reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference TAG_TYPE__PARENTS = eINSTANCE.getTagType_Parents();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordTypeImpl <em>Record Type</em>}' class.
@@ -1558,30 +1448,6 @@ public interface RecordLangPackage extends EPackage
      * @generated
      */
     EReference RECORD_TYPE__PARENT = eINSTANCE.getRecordType_Parent();
-
-    /**
-     * The meta object literal for the '<em><b>Parents</b></em>' reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference RECORD_TYPE__PARENTS = eINSTANCE.getRecordType_Parents();
-
-    /**
-     * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference RECORD_TYPE__PROPERTIES = eINSTANCE.getRecordType_Properties();
-
-    /**
-     * The meta object literal for the '<em><b>Constants</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference RECORD_TYPE__CONSTANTS = eINSTANCE.getRecordType_Constants();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ConstantImpl <em>Constant</em>}' class.
@@ -1634,6 +1500,14 @@ public interface RecordLangPackage extends EPackage
      * @generated
      */
     EReference PROPERTY__TYPE = eINSTANCE.getProperty_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Refer To</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PROPERTY__REFER_TO = eINSTANCE.getProperty_ReferTo();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.

@@ -3206,11 +3206,11 @@ rule__WildcardNode__Group__0__Impl
     }
 :
 (
-{ before(grammarAccess.getWildcardNodeAccess().getWoldcardNodeAction_0()); }
+{ before(grammarAccess.getWildcardNodeAccess().getWildcardNodeAction_0()); }
 (
 
 )
-{ after(grammarAccess.getWildcardNodeAccess().getWoldcardNodeAction_0()); }
+{ after(grammarAccess.getWildcardNodeAccess().getWildcardNodeAction_0()); }
 )
 
 ;
@@ -5643,12 +5643,12 @@ rule__ContainerNode__ContainerAssignment
     }
 :
 (
-{ before(grammarAccess.getContainerNodeAccess().getContainerContainmentCrossReference_0()); }
+{ before(grammarAccess.getContainerNodeAccess().getContainerContainerCrossReference_0()); }
 (
-{ before(grammarAccess.getContainerNodeAccess().getContainerContainmentIDTerminalRuleCall_0_1()); }
-	RULE_ID{ after(grammarAccess.getContainerNodeAccess().getContainerContainmentIDTerminalRuleCall_0_1()); }
+{ before(grammarAccess.getContainerNodeAccess().getContainerContainerIDTerminalRuleCall_0_1()); }
+	RULE_ID{ after(grammarAccess.getContainerNodeAccess().getContainerContainerIDTerminalRuleCall_0_1()); }
 )
-{ after(grammarAccess.getContainerNodeAccess().getContainerContainmentCrossReference_0()); }
+{ after(grammarAccess.getContainerNodeAccess().getContainerContainerCrossReference_0()); }
 )
 
 ;

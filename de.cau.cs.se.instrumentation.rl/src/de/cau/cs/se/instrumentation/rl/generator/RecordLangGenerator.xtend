@@ -20,7 +20,6 @@ import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
 import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType
-import de.cau.cs.se.instrumentation.rl.recordLang.TagType
 
 /**
  * Generates one single files per record for java, c, and perl. 
@@ -44,10 +43,6 @@ class RecordLangGenerator implements IGenerator {
 			typeof(de.cau.cs.se.instrumentation.rl.generator.java.PartialRecordTypeGenerator)
 		]
 		
-		// list all generators to support RecordType
-		val Class<?>[] tagTypeGenerators = #[
-			typeof(de.cau.cs.se.instrumentation.rl.generator.java.TagTypeGenerator)
-		]
 						
 		for (Class<?> generator : recordTypeGenerators) {
 			val cg = generator.getConstructor().newInstance() as AbstractRecordTypeGenerator
@@ -58,12 +53,7 @@ class RecordLangGenerator implements IGenerator {
 			val cg = generator.getConstructor().newInstance() as AbstractPartialRecordTypeGenerator
 			resource.allContents.filter(typeof(PartialRecordType)).forEach[type | fsa.generateFile(cg.fileName(type), cg.createContent(type,author,version))]
 		} 
-		
-		for (Class<?> generator : tagTypeGenerators) {
-			val cg = generator.getConstructor().newInstance() as AbstractTagTypeGenerator
-			resource.allContents.filter(typeof(TagType)).forEach[type | fsa.generateFile(cg.fileName(type), cg.createContent(type,author,version))]
-		} 
-			
+				
 		
 	}
 	

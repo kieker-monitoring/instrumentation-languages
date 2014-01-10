@@ -3,14 +3,17 @@
  */
 package de.cau.cs.se.instrumentation.rl.validation
 
-import org.eclipse.xtext.validation.Check
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage
-import de.cau.cs.se.instrumentation.rl.recordLang.Property
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
-import org.eclipse.emf.common.util.EList
+import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
 import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType
+import de.cau.cs.se.instrumentation.rl.recordLang.Property
+import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage
+import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
 import de.cau.cs.se.instrumentation.rl.recordLang.Type
+import java.util.ArrayList
+import org.eclipse.xtext.validation.Check
 import org.eclipse.xtext.xbase.lib.Pair
+import java.util.List
+import java.util.Collection
 
 /**
  * Custom validation rules. 
@@ -20,59 +23,122 @@ import org.eclipse.xtext.xbase.lib.Pair
 class RecordLangValidator extends AbstractRecordLangValidator {
 
   	public static val INVALID_NAME = 'invalidName'
+  	
+  	/**
+  	 * Check if an alias is a cyclic definition.
+  	 */
+  	@Check
+  	def checkCyclicAlias(Property property) {
+  		if (property.referTo != null) { // property is just an alias
+  			val List<Property> visitedProperties = new ArrayList<Property>()
+  			visitedProperties.add(property)
+  			var referredProperty = property.referTo
+  			
+  			while (referredProperty.referTo != null) {
+  				if (visitedProperties.contains(referredProperty)) { // cyclic definition
+  					 error('Property alias ' + property.name + ' has a cyclic definition.', 
+						RecordLangPackage$Literals::PROPERTY__REFER_TO,
+						INVALID_NAME)
+					return
+  				} 
+  				visitedProperties.add(referredProperty)
+  				referredProperty = referredProperty.referTo
+  			}
+  				
+  		}
+  	}
 
+	/**
+	 * Check whether a property has been declared twice with different types. 
+	 */
 	@Check
 	def checkPropertyDeclaration(Property property) {
-		if (property.eContainer instanceof RecordType) {
-			if (PropertyEvaluation::collectAllProperties(property.eContainer as RecordType).exists[p | p.name.equals(property.name) && p != property]) {
-				val Type type = PropertyEvaluation::collectAllProperties(property.eContainer as RecordType).findFirst[p | p.name.equals(property.name) && p != property].eContainer as Type
-				error('Property has been defined in ' + type.name + '. Cannot be declared again.', 
-					RecordLangPackage$Literals::PROPERTY__NAME,
-					INVALID_NAME)
-			}
-		} else if (property.eContainer instanceof PartialRecordType) {
-			if (PropertyEvaluation::collectAllProperties(property.eContainer as PartialRecordType).exists[p | p.name.equals(property.name) && p != property]) {
-				val Type type = PropertyEvaluation::collectAllProperties(property.eContainer as PartialRecordType).findFirst[p | p.name.equals(property.name) && p != property].eContainer as Type
-				error('Property has been defined in ' + type.name + '. Cannot be declared again.', 
-					RecordLangPackage$Literals::PROPERTY__NAME,
-					INVALID_NAME)
+		if (property.eContainer instanceof Type) {
+			if (PropertyEvaluation::collectAllProperties(property.eContainer as Type).exists[p | p.name.equals(property.name) && p != property]) {
+				val Property otherProperty = PropertyEvaluation::collectAllProperties(property.eContainer as Type).findFirst[p | p.name.equals(property.name) && p != property]
+				if (!typeAndPackageIdentical(otherProperty.type,property.type))
+					error('Property has been defined in ' + (otherProperty.eContainer as Type).name + '. Cannot be declared again with a different type.', 
+						RecordLangPackage$Literals::PROPERTY__NAME,
+						INVALID_NAME)
 			}
 		}
 	}
 	
+
+	/** 
+	 * Check a RecordType for multiple inheritance of the same property with different types. 
+	 */
 	@Check
 	def checkRecordTypeComposition(RecordType type) {
-		val EList<Property> properties = PropertyEvaluation::collectAllProperties(type)
+		val Collection<Property> properties = PropertyEvaluation::collectAllProperties(type)
 		if (properties.exists[p | properties.exists[pInner | p.name.equals(pInner.name) && p != pInner]]) {
-			val EList<Pair<Property,Property>> duplicates = new org.eclipse.emf.common.util.BasicEList<Pair<Property,Property>>()
+			val Collection<Pair<Property,Property>> duplicates = new ArrayList<Pair<Property,Property>>()
 			properties.forEach[p | duplicates.add(p.findDuplicate(properties))]
-			duplicates.forEach[entry |
-				error('Multiple property inheritance of ' + entry.key.name + 
-							' from ' + (entry.key.eContainer as Type).name + ' and ' + (entry.value.eContainer as Type).name, 
-							RecordLangPackage$Literals::PARTIAL_RECORD_TYPE__PARENTS,
-							INVALID_NAME)
+			duplicates.forEach[entry | if (!typeAndPackageIdentical(entry.key.type,entry.value.type))
+				error('Multiple property inheritance must have same type: Property ' + entry.key.name + 
+						' inherited from ' + (entry.key.eContainer as Type).name + ' and ' + (entry.value.eContainer as Type).name, 
+						RecordLangPackage$Literals::TYPE__PARENTS,
+						INVALID_NAME)
 			]
 		}
 	}
-	
-	def Pair<Property, Property> findDuplicate(Property property, EList<Property> properties) {
-		val Property second = properties.findFirst[p | property.name.equals(p.name) && p != property]
-		return new Pair(property,second)
-	}
-	
+		
+	/** 
+	 * Check a PartialType for multiple inheritance of the same property with different types. 
+	 */	
 	@Check
 	def checkPartialTypeComposition(PartialRecordType type) {
-		val EList<Property> properties = PropertyEvaluation::collectAllProperties(type)
+		val Collection<Property> properties = PropertyEvaluation::collectAllProperties(type)
 		if (properties.exists[p | properties.exists[pInner | p.name.equals(pInner.name) && p != pInner]]) {
-			val EList<Pair<Property,Property>> duplicates = new org.eclipse.emf.common.util.BasicEList<Pair<Property,Property>>()
+			val Collection<Pair<Property,Property>> duplicates = new ArrayList<Pair<Property,Property>>()
 			properties.forEach[p | duplicates.add(p.findDuplicate(properties))]
-			duplicates.forEach[entry |
-				error('Multiple property inheritance of ' + entry.key.name + 
-							' from ' + (entry.key.eContainer as Type).name + ' and ' + (entry.value.eContainer as Type).name, 
-							RecordLangPackage$Literals::PARTIAL_RECORD_TYPE__PARENTS,
-							INVALID_NAME)
+			duplicates.forEach[entry | if (!typeAndPackageIdentical(entry.key.type,entry.value.type))
+				error('Multiple property inheritance must have same type: Property ' + entry.key.name + 
+						' inherited from ' + (entry.key.eContainer as Type).name + ' and ' + (entry.value.eContainer as Type).name, 
+						RecordLangPackage$Literals::TYPE__PARENTS,
+						INVALID_NAME)
 			]
 		}
+	}
+	
+	/**
+	 * Compare types of a property for equality including package name.
+	 */
+	def boolean typeAndPackageIdentical(Classifier left, Classifier right) {
+		if (left.package != null) {
+			if (right.package != null) {
+				if (left.package.equals(right.package)) {
+					return typeIdentical(left,right)
+				} else
+					return false
+			} else
+				return false
+		} else {
+			return typeIdentical(left,right)
+		}
+	}
+	
+	/**
+	 * Compare types of a property for equality.
+	 */
+	def boolean typeIdentical(Classifier left, Classifier right) {
+		if (left.class.equals(right.class)) {
+			if (left.sizes.size == right.sizes.size) {
+				var i = 0
+				while (i<left.sizes.size) {
+					if (left.sizes.get(i).size != right.sizes.get(i).size)
+						return false
+				}
+				return true
+			} else
+				return false
+		} else
+			return false
+	}
+	
+	def Pair<Property, Property> findDuplicate(Property property, Collection<Property> properties) {
+		val Property second = properties.findFirst[p | property.name.equals(p.name) && p != property]
+		return new Pair(property,second)
 	}
 	
 }

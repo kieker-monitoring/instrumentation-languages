@@ -13,14 +13,12 @@ import de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Literal;
 import de.cau.cs.se.instrumentation.rl.recordLang.Model;
 import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType;
-import de.cau.cs.se.instrumentation.rl.recordLang.PartialType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangFactory;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.ReferenceProperty;
 import de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral;
-import de.cau.cs.se.instrumentation.rl.recordLang.TagType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -72,21 +70,7 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass partialTypeEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass partialRecordTypeEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass tagTypeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -363,9 +347,29 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getPartialType()
+  public EReference getType_Parents()
   {
-    return partialTypeEClass;
+    return (EReference)typeEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getType_Properties()
+  {
+    return (EReference)typeEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getType_Constants()
+  {
+    return (EReference)typeEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -376,56 +380,6 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
   public EClass getPartialRecordType()
   {
     return partialRecordTypeEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getPartialRecordType_Parents()
-  {
-    return (EReference)partialRecordTypeEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getPartialRecordType_Properties()
-  {
-    return (EReference)partialRecordTypeEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getPartialRecordType_Constants()
-  {
-    return (EReference)partialRecordTypeEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getTagType()
-  {
-    return tagTypeEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getTagType_Parents()
-  {
-    return (EReference)tagTypeEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -456,36 +410,6 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
   public EReference getRecordType_Parent()
   {
     return (EReference)recordTypeEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getRecordType_Parents()
-  {
-    return (EReference)recordTypeEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getRecordType_Properties()
-  {
-    return (EReference)recordTypeEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getRecordType_Constants()
-  {
-    return (EReference)recordTypeEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -553,9 +477,19 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getProperty_ReferTo()
+  {
+    return (EReference)propertyEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EAttribute getProperty_Name()
   {
-    return (EAttribute)propertyEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)propertyEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -565,7 +499,7 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
    */
   public EReference getProperty_Properties()
   {
-    return (EReference)propertyEClass.getEStructuralFeatures().get(2);
+    return (EReference)propertyEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -575,7 +509,7 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
    */
   public EReference getProperty_Value()
   {
-    return (EReference)propertyEClass.getEStructuralFeatures().get(3);
+    return (EReference)propertyEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -823,23 +757,15 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
 
     typeEClass = createEClass(TYPE);
     createEAttribute(typeEClass, TYPE__NAME);
-
-    partialTypeEClass = createEClass(PARTIAL_TYPE);
+    createEReference(typeEClass, TYPE__PARENTS);
+    createEReference(typeEClass, TYPE__PROPERTIES);
+    createEReference(typeEClass, TYPE__CONSTANTS);
 
     partialRecordTypeEClass = createEClass(PARTIAL_RECORD_TYPE);
-    createEReference(partialRecordTypeEClass, PARTIAL_RECORD_TYPE__PARENTS);
-    createEReference(partialRecordTypeEClass, PARTIAL_RECORD_TYPE__PROPERTIES);
-    createEReference(partialRecordTypeEClass, PARTIAL_RECORD_TYPE__CONSTANTS);
-
-    tagTypeEClass = createEClass(TAG_TYPE);
-    createEReference(tagTypeEClass, TAG_TYPE__PARENTS);
 
     recordTypeEClass = createEClass(RECORD_TYPE);
     createEAttribute(recordTypeEClass, RECORD_TYPE__ABSTRACT);
     createEReference(recordTypeEClass, RECORD_TYPE__PARENT);
-    createEReference(recordTypeEClass, RECORD_TYPE__PARENTS);
-    createEReference(recordTypeEClass, RECORD_TYPE__PROPERTIES);
-    createEReference(recordTypeEClass, RECORD_TYPE__CONSTANTS);
 
     constantEClass = createEClass(CONSTANT);
     createEReference(constantEClass, CONSTANT__TYPE);
@@ -848,6 +774,7 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
 
     propertyEClass = createEClass(PROPERTY);
     createEReference(propertyEClass, PROPERTY__TYPE);
+    createEReference(propertyEClass, PROPERTY__REFER_TO);
     createEAttribute(propertyEClass, PROPERTY__NAME);
     createEReference(propertyEClass, PROPERTY__PROPERTIES);
     createEReference(propertyEClass, PROPERTY__VALUE);
@@ -914,9 +841,7 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    partialTypeEClass.getESuperTypes().add(this.getType());
-    partialRecordTypeEClass.getESuperTypes().add(this.getPartialType());
-    tagTypeEClass.getESuperTypes().add(this.getPartialType());
+    partialRecordTypeEClass.getESuperTypes().add(this.getType());
     recordTypeEClass.getESuperTypes().add(this.getType());
     stringLiteralEClass.getESuperTypes().add(this.getLiteral());
     intLiteralEClass.getESuperTypes().add(this.getLiteral());
@@ -940,23 +865,15 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
 
     initEClass(typeEClass, Type.class, "Type", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getType_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(partialTypeEClass, PartialType.class, "PartialType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getType_Parents(), this.getPartialRecordType(), null, "parents", null, 0, -1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getType_Properties(), this.getProperty(), null, "properties", null, 0, -1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getType_Constants(), this.getConstant(), null, "constants", null, 0, -1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(partialRecordTypeEClass, PartialRecordType.class, "PartialRecordType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getPartialRecordType_Parents(), this.getPartialType(), null, "parents", null, 0, -1, PartialRecordType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getPartialRecordType_Properties(), this.getProperty(), null, "properties", null, 0, -1, PartialRecordType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getPartialRecordType_Constants(), this.getConstant(), null, "constants", null, 0, -1, PartialRecordType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(tagTypeEClass, TagType.class, "TagType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getTagType_Parents(), this.getTagType(), null, "parents", null, 0, -1, TagType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(recordTypeEClass, RecordType.class, "RecordType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getRecordType_Abstract(), theEcorePackage.getEBoolean(), "abstract", null, 0, 1, RecordType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getRecordType_Parent(), this.getRecordType(), null, "parent", null, 0, 1, RecordType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRecordType_Parents(), this.getPartialType(), null, "parents", null, 0, -1, RecordType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRecordType_Properties(), this.getProperty(), null, "properties", null, 0, -1, RecordType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRecordType_Constants(), this.getConstant(), null, "constants", null, 0, -1, RecordType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(constantEClass, Constant.class, "Constant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getConstant_Type(), this.getClassifier(), null, "type", null, 0, 1, Constant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -965,6 +882,7 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
 
     initEClass(propertyEClass, Property.class, "Property", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getProperty_Type(), this.getClassifier(), null, "type", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProperty_ReferTo(), this.getProperty(), null, "referTo", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getProperty_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProperty_Properties(), this.getReferenceProperty(), null, "properties", null, 0, -1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProperty_Value(), this.getLiteral(), null, "value", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

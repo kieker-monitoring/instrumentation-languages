@@ -6,12 +6,10 @@ import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
 import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation;
 import java.io.File;
-import java.util.List;
-import org.eclipse.emf.common.util.EList;
+import java.util.Collection;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.ListExtensions;
 
 @SuppressWarnings("all")
 public class RecordTypeGenerator extends de.cau.cs.se.instrumentation.rl.generator.c.RecordTypeGenerator {
@@ -104,16 +102,16 @@ public class RecordTypeGenerator extends de.cau.cs.se.instrumentation.rl.generat
     _builder.append("typedef struct {");
     _builder.newLine();
     _builder.append("\t");
-    EList<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(type);
+    Collection<Property> _collectAllDataProperties = PropertyEvaluation.collectAllDataProperties(type);
     final Function1<Property,CharSequence> _function = new Function1<Property,CharSequence>() {
       public CharSequence apply(final Property it) {
         CharSequence _createPropertyDeclaration = RecordTypeGenerator.this.createPropertyDeclaration(it);
         return _createPropertyDeclaration;
       }
     };
-    List<CharSequence> _map = ListExtensions.<Property, CharSequence>map(_collectAllProperties, _function);
+    Iterable<CharSequence> _map = IterableExtensions.<Property, CharSequence>map(_collectAllDataProperties, _function);
     String _join = IterableExtensions.join(_map);
-    _builder.append(_join, "	");
+    _builder.append(_join, "\t");
     _builder.newLineIfNotEmpty();
     _builder.append("} ");
     CharSequence _packageName = this.packageName(type);
@@ -129,8 +127,8 @@ public class RecordTypeGenerator extends de.cau.cs.se.instrumentation.rl.generat
   
   public CharSequence createPropertyDeclaration(final Property property) {
     StringConcatenation _builder = new StringConcatenation();
-    Classifier _type = property.getType();
-    CharSequence _createTypeName = this.createTypeName(_type);
+    Classifier _findType = this.findType(property);
+    CharSequence _createTypeName = this.createTypeName(_findType);
     _builder.append(_createTypeName, "");
     _builder.append(" ");
     String _name = property.getName();
