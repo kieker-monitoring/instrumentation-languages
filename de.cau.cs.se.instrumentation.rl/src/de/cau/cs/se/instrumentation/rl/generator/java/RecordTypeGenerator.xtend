@@ -19,6 +19,8 @@ import java.io.File
 import java.util.ArrayList
 import java.util.Collection
 import org.eclipse.emf.common.util.EList
+import org.eclipse.emf.ecore.EClassifier
+import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize
 
 class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	
@@ -60,8 +62,8 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		«ENDIF»import java.nio.BufferUnderflowException;
 		import java.nio.ByteBuffer;
 
-		import kieker.common.record.AbstractMonitoringRecord;
-		import kieker.common.record.IMonitoringRecord;
+		«IF (type.parent == null)»import kieker.common.record.AbstractMonitoringRecord;
+		«ENDIF»import kieker.common.record.IMonitoringRecord;
 		import kieker.common.util.registry.IRegistry;
 		
 		«if (type.parent != null) type.createParentImport»
@@ -83,7 +85,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 			
 			«type.constants.map[const | createDefaultConstant(const)].join»
 			
-			«allDeclarationProperties.map[property | createProperty(property)].join»
+			«allDeclarationProperties.map[property | createPropertyDeclaration(property)].join»
 		
 			/**
 			 * Creates a new instance of this class using the given parameters.
@@ -212,23 +214,70 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	'''
 
 	/**
+	 * Determine the correct deserialization code for a property by type.
 	 * 
+	 * @param property
+	 * 		the property to deserialize
+	 * 
+	 * @returns
+	 * 		code to deserialize the given property 
 	 */
 	def createPropertyValueFromBuffer(Property property) {
-		switch (property.findType.class_.name) {
-			case 'string' : '''this.«property.name» = stringRegistry.get(buffer.getInt());'''
-			case 'byte' : '''this.«property.name» = buffer.get();'''
-			case 'short' : '''this.«property.name» = buffer.getshort();'''
-			case 'int' : '''this.«property.name» = buffer.getInt();'''
-			case 'long' : '''this.«property.name» = buffer.getLong();'''
-			case 'float' : '''this.«property.name» = buffer.getFloat();'''
-			case 'double' : '''this.«property.name» = buffer.getDouble();'''
-			case 'char' : '''this.«property.name» = buffer.getChar();'''
-			case 'boolean' : '''this.«property.name» = buffer.get()==1?true:false;'''
+		if (property.findType.sizes.size > 0) {
+			val sizes = property.findType.sizes
+			'''
+				{
+					int __sizes[] = new int[«sizes.size»];
+					for (int i=0;i<«sizes.size»;i++)
+						__sizes[i] = buffer.getInt();
+					«makeLoop(sizes,0,property)»
+				}
+			'''
+		} else
+			'''this.«property.name» = «property.findType.class_.createPropertyPrimitiveTypeDeserialization»;'''
+	}
+	
+	def CharSequence makeLoop(EList<ArraySize> sizes, int depth, Property property) {
+		'''
+			for (int i«depth»=0;i«depth»<__sizes[«depth»];i«depth»++)
+				«if (sizes.size-1 > depth)
+					makeLoop(sizes,depth+1,property)
+				else
+					makeAssignment(sizes,property)»
+		'''
+	}
+	
+	def makeAssignment(EList<ArraySize> sizes, Property property) {
+		var String arrays = ''
+		for (i : 0 ..< sizes.size) 
+			arrays = '''«arrays»[i«i»]'''
+		return '''this.«property.name»«arrays» = «property.findType.class_.createPropertyPrimitiveTypeDeserialization»;'''
+	}
+	
+	def createPropertyPrimitiveTypeDeserialization(EClassifier classifier) {
+		switch (classifier.name) {
+			case 'string' : '''stringRegistry.get(buffer.getInt())'''
+			case 'byte' : '''buffer.get()'''
+			case 'short' : '''buffer.getshort()'''
+			case 'int' : '''buffer.getInt()'''
+			case 'long' : '''buffer.getLong()'''
+			case 'float' : '''buffer.getFloat()'''
+			case 'double' : '''buffer.getDouble()'''
+			case 'char' : '''buffer.getChar()'''
+			case 'boolean' : '''buffer.get()==1?true:false'''
 			
 		}
 	}
 		
+	/**
+	 * Determine the correct serialization for a property by type.
+	 * 
+	 * @param property
+	 * 		the property to serialize
+	 * 
+	 * @returns
+	 * 		code to serialize the given property
+	 */
 	def createPropertyBinarySerialization(Property property) {
 		switch (property.findType.class_.name) {
 			case 'string' : '''buffer.putInt(stringRegistry.get(this.get«property.name.toFirstUpper»()));'''
@@ -253,12 +302,12 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * @returns the resulting getter as a CharSequence
 	 */
 	def createPropertyGetter(Property property) '''
-	public final «property.findType.createTypeName» «property.createGetterName»() {
-		return this.«property.name»;
-	}
-	
+		public final «property.findType.createTypeName» «property.createGetterName»() {
+			return this.«property.resolveName»;
+		}
+		
 	'''
-	
+		
 	/**
 	 * Returns the name of a property for the object array composition
 	 * 
@@ -282,6 +331,21 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 			'''is«property.name.toFirstUpper»'''
 		else
 			'''get«property.name.toFirstUpper»'''
+	}
+	
+	/**
+	 * Determine the implementation property name of a property by following the alias graph.
+	 * 
+	 * @param property
+	 * 		The property to resolve
+	 * 
+	 * @returns the implementation name of the property
+	 */
+	def CharSequence resolveName(Property property) {
+		if (property.referTo != null)
+			return '''«property.referTo.createGetterName»()'''
+		else
+			return property.name
 	}
 	
 	/**
@@ -359,7 +423,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * 
 	 * @returns  one property declaration
 	 */
-	def createProperty(Property property) '''private final «property.findType.createTypeName» «property.name»;
+	def createPropertyDeclaration(Property property) '''private final «property.findType.createTypeName» «property.name»;
 	'''
 	
 	/**
@@ -458,9 +522,20 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * @returns a java type name
 	 */
 	override createTypeName(Classifier classifier) {
-		switch (classifier.class_.name) {
+		if (classifier.sizes.size>0)
+			classifier.class_.createPrimitiveTypeName + 
+			classifier.sizes.map[size | '''[]''' ].join
+		else
+			classifier.class_.createPrimitiveTypeName
+	}
+	
+	/**
+	 * Determine the right Java string for a given system type.
+	 */
+	def createPrimitiveTypeName(EClassifier classifier) {
+		switch (classifier.name) {
 			case 'string' : 'String'
-			default : classifier.class_.name
+			default : classifier.name
 		}	
 	}
 	
@@ -482,35 +557,38 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * @returns
 	 * 		a complete list of all properties which require getters
 	 */
-	def Collection<Property> collectAllGetterDeclarationProperties(RecordType type) {
-		val Collection<Property> result = PropertyEvaluation::collectAllTemplateProperties(type)
-		result.addAll(type.properties)
+	def Iterable<Property> collectAllGetterDeclarationProperties(RecordType type) {
+		var Iterable<Property> result = PropertyEvaluation::collectAllProperties(type)
 		if (type.parent != null)
-			result.removeAlreadyImplementedProperties(type.parent)
-		return result
+			return result.removeAlreadyImplementedProperties(type.parent)
+		else
+			return result
 	}
 	
 	
 	/**
-	 * Collect recursively a list of all properties of interfaces realized by this type and
-	 * remove all properties implemented by a parent type.
+	 * Collect all properties which must be declared for this type. In total that are:
+	 * - properties declared by the type, which are not an alias.
+	 * - properties declared by any imported interface, which are not implemented in a parent type
+	 *   and which are not an alias.
 	 * 
 	 * @param type
 	 * 		a recordType
 	 * 
 	 * @returns
-	 * 		a complete list of all properties which require getters
+	 * 		a complete list of all properties which require declaration
 	 */
 	def Iterable<Property> collectAllDeclarationProperties(RecordType type) {
-		System.out.println("my type is " + type.name + " -----------------------------------")
-		val Iterable<Property> properties = PropertyEvaluation::collectAllTemplateProperties(type).
-			filter[property | (property.referTo == null)]
+		var Collection<Property> properties = new ArrayList<Property>() 
+		properties.addAll(type.properties)
+		properties.addAll(PropertyEvaluation::collectAllTemplateProperties(type))
+		
+		var Iterable<Property> declarationProperties = properties.filter[property | (property.referTo == null)]
+		
 		if (type.parent != null)
-			properties.removeAlreadyImplementedProperties(type.parent)
-		val Collection<Property> result = new ArrayList<Property>()
-		result.addAll(properties)
-		result.addAll(type.properties)
-		return result
+			return declarationProperties.removeAlreadyImplementedProperties(type.parent)
+		else
+			return declarationProperties
 	}
 	
 	/**
@@ -522,23 +600,13 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * @returns
 	 * 		the remaining list of properties
 	 */
-	def Iterable<Property> removeAlreadyImplementedProperties(Iterable<Property> list, RecordType type) {
-		System.out.println("Parent type is " + type.name)
-		val Collection<Property> interfaceProperties = PropertyEvaluation::collectAllTemplateProperties(type)
-		interfaceProperties.addAll(type.properties)
+	def Iterable<Property> removeAlreadyImplementedProperties(Iterable<Property> list, RecordType parentType) {
+		val Collection<Property> interfaceProperties = PropertyEvaluation::collectAllProperties(parentType)
 		var result = list // necessary for the loop below. very ugly 
-		for (Property interfaceProperty : interfaceProperties) {
-			System.out.println("> " + interfaceProperty.name)
-			for (Property p : result)
-				System.out.println(">> " + p.name)
+		for (Property interfaceProperty : interfaceProperties) 
 			result = result.filter[item | (!item.name.equals(interfaceProperty.name))]
-			for (Property p : result)
-				System.out.println("<< " + p.name)
-		}
-		if (type.parent != null)
-			return result.removeAlreadyImplementedProperties(type.parent)
-		else
-			return result
+		
+		return result
 	}
 			
 	/**
