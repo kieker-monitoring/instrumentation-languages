@@ -226,20 +226,27 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		if (property.findType.sizes.size > 0) {
 			val sizes = property.findType.sizes
 			'''
-				{
-					int __sizes[] = new int[«sizes.size»];
-					for (int i=0;i<«sizes.size»;i++)
-						__sizes[i] = buffer.getInt();
-					«makeLoop(sizes,0,property)»
-				}
+				int _«property.name»_sizes[] = new int[«sizes.size»];
+				for (int i=0;i<«sizes.size»;i++)
+					_«property.name»_sizes[i] = buffer.getInt();
+				«property.name» = new «property.findType.createTypeInstantiationName(property.name)»;
+				«makeLoop(sizes,0,property)»
 			'''
 		} else
 			'''this.«property.name» = «property.findType.class_.createPropertyPrimitiveTypeDeserialization»;'''
 	}
 	
+	def CharSequence createTypeInstantiationName(Classifier classifier, String name) {
+		if (classifier.sizes.size>0)
+			classifier.class_.createPrimitiveTypeName + 
+			classifier.sizes.map[size | '''[_«name»_sizes[«classifier.sizes.indexOf(size)»]]''' ].join
+		else
+			classifier.class_.createPrimitiveTypeName
+	}
+	
 	def CharSequence makeLoop(EList<ArraySize> sizes, int depth, Property property) {
 		'''
-			for (int i«depth»=0;i«depth»<__sizes[«depth»];i«depth»++)
+			for (int i«depth»=0;i«depth»<_«property.name»_sizes[«depth»];i«depth»++)
 				«if (sizes.size-1 > depth)
 					makeLoop(sizes,depth+1,property)
 				else
@@ -248,10 +255,14 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	}
 	
 	def makeAssignment(EList<ArraySize> sizes, Property property) {
-		var String arrays = ''
+		return '''this.«property.name»«sizes.arrays» = «property.findType.class_.createPropertyPrimitiveTypeDeserialization»;'''
+	}
+	
+	def CharSequence arrays(EList<ArraySize> sizes) {
+		var String result = ''
 		for (i : 0 ..< sizes.size) 
-			arrays = '''«arrays»[i«i»]'''
-		return '''this.«property.name»«arrays» = «property.findType.class_.createPropertyPrimitiveTypeDeserialization»;'''
+			result = '''«result»[i«i»]'''
+		return result
 	}
 	
 	def createPropertyPrimitiveTypeDeserialization(EClassifier classifier) {

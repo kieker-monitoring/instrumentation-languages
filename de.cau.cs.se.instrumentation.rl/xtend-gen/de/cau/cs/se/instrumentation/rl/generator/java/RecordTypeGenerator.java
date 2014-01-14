@@ -823,29 +823,37 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         Classifier _findType_1 = this.findType(property);
         final EList<ArraySize> sizes = _findType_1.getSizes();
         StringConcatenation _builder = new StringConcatenation();
-        _builder.append("{");
-        _builder.newLine();
-        _builder.append("\t");
-        _builder.append("int __sizes[] = new int[");
+        _builder.append("int _");
+        String _name = property.getName();
+        _builder.append(_name, "");
+        _builder.append("_sizes[] = new int[");
         int _size_1 = sizes.size();
-        _builder.append(_size_1, "\t");
+        _builder.append(_size_1, "");
         _builder.append("];");
         _builder.newLineIfNotEmpty();
-        _builder.append("\t");
         _builder.append("for (int i=0;i<");
         int _size_2 = sizes.size();
-        _builder.append(_size_2, "\t");
+        _builder.append(_size_2, "");
         _builder.append(";i++)");
         _builder.newLineIfNotEmpty();
-        _builder.append("\t\t");
-        _builder.append("__sizes[i] = buffer.getInt();");
-        _builder.newLine();
         _builder.append("\t");
-        CharSequence _makeLoop = this.makeLoop(sizes, 0, property);
-        _builder.append(_makeLoop, "\t");
+        _builder.append("_");
+        String _name_1 = property.getName();
+        _builder.append(_name_1, "\t");
+        _builder.append("_sizes[i] = buffer.getInt();");
         _builder.newLineIfNotEmpty();
-        _builder.append("}");
-        _builder.newLine();
+        String _name_2 = property.getName();
+        _builder.append(_name_2, "");
+        _builder.append(" = new ");
+        Classifier _findType_2 = this.findType(property);
+        String _name_3 = property.getName();
+        CharSequence _createTypeInstantiationName = this.createTypeInstantiationName(_findType_2, _name_3);
+        _builder.append(_createTypeInstantiationName, "");
+        _builder.append(";");
+        _builder.newLineIfNotEmpty();
+        CharSequence _makeLoop = this.makeLoop(sizes, 0, property);
+        _builder.append(_makeLoop, "");
+        _builder.newLineIfNotEmpty();
         _xblockexpression = (_builder);
       }
       _xifexpression = _xblockexpression;
@@ -865,13 +873,50 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     return _xifexpression;
   }
   
+  public CharSequence createTypeInstantiationName(final Classifier classifier, final String name) {
+    String _xifexpression = null;
+    EList<ArraySize> _sizes = classifier.getSizes();
+    int _size = _sizes.size();
+    boolean _greaterThan = (_size > 0);
+    if (_greaterThan) {
+      EClassifier _class_ = classifier.getClass_();
+      String _createPrimitiveTypeName = this.createPrimitiveTypeName(_class_);
+      EList<ArraySize> _sizes_1 = classifier.getSizes();
+      final Function1<ArraySize,String> _function = new Function1<ArraySize,String>() {
+        public String apply(final ArraySize size) {
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("[_");
+          _builder.append(name, "");
+          _builder.append("_sizes[");
+          EList<ArraySize> _sizes = classifier.getSizes();
+          int _indexOf = _sizes.indexOf(size);
+          _builder.append(_indexOf, "");
+          _builder.append("]]");
+          return _builder.toString();
+        }
+      };
+      List<String> _map = ListExtensions.<ArraySize, String>map(_sizes_1, _function);
+      String _join = IterableExtensions.join(_map);
+      String _plus = (_createPrimitiveTypeName + _join);
+      _xifexpression = _plus;
+    } else {
+      EClassifier _class__1 = classifier.getClass_();
+      String _createPrimitiveTypeName_1 = this.createPrimitiveTypeName(_class__1);
+      _xifexpression = _createPrimitiveTypeName_1;
+    }
+    return _xifexpression;
+  }
+  
   public CharSequence makeLoop(final EList<ArraySize> sizes, final int depth, final Property property) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("for (int i");
     _builder.append(depth, "");
     _builder.append("=0;i");
     _builder.append(depth, "");
-    _builder.append("<__sizes[");
+    _builder.append("<_");
+    String _name = property.getName();
+    _builder.append(_name, "");
+    _builder.append("_sizes[");
     _builder.append(depth, "");
     _builder.append("];i");
     _builder.append(depth, "");
@@ -895,29 +940,34 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   }
   
   public String makeAssignment(final EList<ArraySize> sizes, final Property property) {
-    String arrays = "";
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("this.");
+    String _name = property.getName();
+    _builder.append(_name, "");
+    CharSequence _arrays = this.arrays(sizes);
+    _builder.append(_arrays, "");
+    _builder.append(" = ");
+    Classifier _findType = this.findType(property);
+    EClassifier _class_ = _findType.getClass_();
+    CharSequence _createPropertyPrimitiveTypeDeserialization = this.createPropertyPrimitiveTypeDeserialization(_class_);
+    _builder.append(_createPropertyPrimitiveTypeDeserialization, "");
+    _builder.append(";");
+    return _builder.toString();
+  }
+  
+  public CharSequence arrays(final EList<ArraySize> sizes) {
+    String result = "";
     int _size = sizes.size();
     ExclusiveRange _doubleDotLessThan = new ExclusiveRange(0, _size, true);
     for (final Integer i : _doubleDotLessThan) {
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append(arrays, "");
+      _builder.append(result, "");
       _builder.append("[i");
       _builder.append(i, "");
       _builder.append("]");
-      arrays = _builder.toString();
+      result = _builder.toString();
     }
-    StringConcatenation _builder_1 = new StringConcatenation();
-    _builder_1.append("this.");
-    String _name = property.getName();
-    _builder_1.append(_name, "");
-    _builder_1.append(arrays, "");
-    _builder_1.append(" = ");
-    Classifier _findType = this.findType(property);
-    EClassifier _class_ = _findType.getClass_();
-    CharSequence _createPropertyPrimitiveTypeDeserialization = this.createPropertyPrimitiveTypeDeserialization(_class_);
-    _builder_1.append(_createPropertyPrimitiveTypeDeserialization, "");
-    _builder_1.append(";");
-    return _builder_1.toString();
+    return result;
   }
   
   public CharSequence createPropertyPrimitiveTypeDeserialization(final EClassifier classifier) {
