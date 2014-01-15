@@ -2,6 +2,7 @@
  */
 package de.cau.cs.se.instrumentation.rl.recordLang.util;
 
+import de.cau.cs.se.instrumentation.rl.recordLang.Array;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize;
 import de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
@@ -171,6 +172,14 @@ public class RecordLangSwitch<T> extends Switch<T>
       {
         Literal literal = (Literal)theEObject;
         T result = caseLiteral(literal);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RecordLangPackage.ARRAY:
+      {
+        Array array = (Array)theEObject;
+        T result = caseArray(array);
+        if (result == null) result = caseLiteral(array);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -406,6 +415,22 @@ public class RecordLangSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseLiteral(Literal object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Array</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Array</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseArray(Array object)
   {
     return null;
   }

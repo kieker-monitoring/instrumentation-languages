@@ -136,7 +136,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 			 */
 			public «type.name»(final ByteBuffer buffer, final IRegistry<String> stringRegistry) throws BufferUnderflowException {
 				«IF (type.parent!=null)»super(buffer, stringRegistry);
-				«ENDIF»«allDeclarationProperties.map[property | createPropertyValueFromBuffer(property)].join('\n')»
+				«ENDIF»«allDeclarationProperties.map[property | createPropertyBinaryDeserialization(property)].join('\n')»
 			}
 		
 		«IF (!type.abstract)»
@@ -222,49 +222,81 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * @returns
 	 * 		code to deserialize the given property 
 	 */
-	def createPropertyValueFromBuffer(Property property) {
+	def createPropertyBinaryDeserialization(Property property) {
 		if (property.findType.sizes.size > 0) {
 			val sizes = property.findType.sizes
 			'''
-				int _«property.name»_sizes[] = new int[«sizes.size»];
-				for (int i=0;i<«sizes.size»;i++)
-					_«property.name»_sizes[i] = buffer.getInt();
+				// load array sizes
+				«FOR size : sizes»
+					«IF (size.size == 0)»
+						int _«property.name»_size«sizes.indexOf(size)» = buffer.getInt();
+					«ENDIF»
+				«ENDFOR»
 				«property.name» = new «property.findType.createTypeInstantiationName(property.name)»;
-				«makeLoop(sizes,0,property)»
+				«createForLoopForDeserialization(sizes,0,property)»
 			'''
 		} else
 			'''this.«property.name» = «property.findType.class_.createPropertyPrimitiveTypeDeserialization»;'''
 	}
 	
+	/**
+	 * Determine the name and additional array sizes for an array deserialization.
+	 * For example property[2][_property_size1][6] or just property for simple fields
+	 */
 	def CharSequence createTypeInstantiationName(Classifier classifier, String name) {
 		if (classifier.sizes.size>0)
 			classifier.class_.createPrimitiveTypeName + 
-			classifier.sizes.map[size | '''[_«name»_sizes[«classifier.sizes.indexOf(size)»]]''' ].join
+			classifier.sizes.map[size | size.createArraySize(name,classifier.sizes.indexOf(size)) ].join
 		else
 			classifier.class_.createPrimitiveTypeName
 	}
 	
-	def CharSequence makeLoop(EList<ArraySize> sizes, int depth, Property property) {
+	/**
+	 * Creates code for fixed and runtime array sizes according to the record model.
+	 */
+	def createArraySize(ArraySize size, String name, int index) {
+		if (size.size > 0)
+			'''[«size.size»]'''
+		else
+			'''[_«name»_size«index»]'''
+	}
+	
+	/**
+	 * Create for loops for the deserialization of array data.
+	 */
+	def CharSequence createForLoopForDeserialization(EList<ArraySize> sizes, int depth, Property property) {
 		'''
-			for (int i«depth»=0;i«depth»<_«property.name»_sizes[«depth»];i«depth»++)
+			for (int i«depth»=0;i«depth»<«if (sizes.get(depth).size > 0) sizes.get(depth).size else 
+				'_' + property.name + '_size' + depth»;i«depth»++)
 				«if (sizes.size-1 > depth)
-					makeLoop(sizes,depth+1,property)
+					createForLoopForDeserialization(sizes,depth+1,property)
 				else
-					makeAssignment(sizes,property)»
+					createValueAssignmentForDeserialization(sizes,property)»
 		'''
 	}
 	
-	def makeAssignment(EList<ArraySize> sizes, Property property) {
-		return '''this.«property.name»«sizes.arrays» = «property.findType.class_.createPropertyPrimitiveTypeDeserialization»;'''
+	/**
+	 * Assignment for a primitive value
+	 */
+	def createValueAssignmentForDeserialization(EList<ArraySize> sizes, Property property) {
+		return '''this.«property.name»«sizes.determineArrayAccessCode» = «property.findType.class_.createPropertyPrimitiveTypeDeserialization»;'''
 	}
 	
-	def CharSequence arrays(EList<ArraySize> sizes) {
+	/**
+	 * Used in serialization and deserialization to compose a sequence of [iX] for every 
+	 * dimension of an array containing the counter variable. If the variable is primitive
+	 * the function returns an empty string. 
+	 */
+	def CharSequence determineArrayAccessCode(EList<ArraySize> sizes) {
 		var String result = ''
 		for (i : 0 ..< sizes.size) 
 			result = '''«result»[i«i»]'''
 		return result
 	}
 	
+	/**
+	 * Create code to get values from the input buffer.
+	 */
 	def createPropertyPrimitiveTypeDeserialization(EClassifier classifier) {
 		switch (classifier.name) {
 			case 'string' : '''stringRegistry.get(buffer.getInt())'''
@@ -290,19 +322,62 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * 		code to serialize the given property
 	 */
 	def createPropertyBinarySerialization(Property property) {
-		switch (property.findType.class_.name) {
-			case 'string' : '''buffer.putInt(stringRegistry.get(this.get«property.name.toFirstUpper»()));'''
-			case 'byte' : '''buffer.put((byte)this.get«property.name.toFirstUpper»());'''
-			case 'short' : '''buffer.putShort(this.get«property.name.toFirstUpper»());'''
-			case 'int' : '''buffer.putInt(this.get«property.name.toFirstUpper»());'''
-			case 'long' : '''buffer.putLong(this.get«property.name.toFirstUpper»());'''
-			case 'float' : '''buffer.putFloat(this.get«property.name.toFirstUpper»());'''
-			case 'double' : '''buffer.putDouble(this.get«property.name.toFirstUpper»());'''
-			case 'char' : '''buffer.putChar(this.get«property.name.toFirstUpper»());'''
-			case 'boolean' : '''buffer.put((byte)(this.is«property.name.toFirstUpper»()?1:0));'''
+		val sizes = property.findType.sizes
+		if (sizes.size > 0) {
+			'''
+				// store array sizes
+				«FOR size : sizes»
+					«IF (size.size == 0)»
+						int _«property.name»_size«sizes.indexOf(size)» = this.«property.createGetterName»()«createCodeToDetermineArraySize(sizes.indexOf(size))».length;
+						buffer.putInt(_«property.name»_size«sizes.indexOf(size)»);
+					«ENDIF»
+				«ENDFOR»
+				«createForLoopForSerialization(sizes,0,property)»
+			'''
+		} else {
+			createForLoopForSerialization(sizes,0,property)
 		}
 	}
+	
+	/**
+	 * This produces a sequence of [0] assuming that arrays follow a matrix layout.
+	 */
+	def createCodeToDetermineArraySize(int count) {
+		var String result = ''
+		var i = 0
+		while (i < count) {
+			result = result + '[0]'
+			i=i+1	
+		}
+		return result
+	}
 
+	def CharSequence createForLoopForSerialization(EList<ArraySize> sizes, int depth, Property property) {
+		'''
+			for (int i«depth»=0;i«depth»<«if (sizes.get(depth).size > 0) sizes.get(depth).size else 
+				'_' + property.name + '_size' + depth»;i«depth»++)
+				«if (sizes.size-1 > depth)
+					createForLoopForSerialization(sizes,depth+1,property)
+				else
+					createValueStoreForSerialization(sizes,property)»
+		'''
+	}
+	
+	def createValueStoreForSerialization(EList<ArraySize> sizes, Property property) {
+		switch (property.findType.class_.name) {
+			case 'string' : '''buffer.putInt(stringRegistry.get(this.get«property.name.toFirstUpper»()«sizes.determineArrayAccessCode»));'''
+			case 'byte' : '''buffer.put((byte)this.get«property.name.toFirstUpper»()«sizes.determineArrayAccessCode»);'''
+			case 'short' : '''buffer.putShort(this.get«property.name.toFirstUpper»()«sizes.determineArrayAccessCode»);'''
+			case 'int' : '''buffer.putInt(this.get«property.name.toFirstUpper»()«sizes.determineArrayAccessCode»);'''
+			case 'long' : '''buffer.putLong(this.get«property.name.toFirstUpper»()«sizes.determineArrayAccessCode»);'''
+			case 'float' : '''buffer.putFloat(this.get«property.name.toFirstUpper»()«sizes.determineArrayAccessCode»);'''
+			case 'double' : '''buffer.putDouble(this.get«property.name.toFirstUpper»()«sizes.determineArrayAccessCode»);'''
+			case 'char' : '''buffer.putChar(this.get«property.name.toFirstUpper»()«sizes.determineArrayAccessCode»);'''
+			case 'boolean' : '''buffer.put((byte)(this.is«property.name.toFirstUpper»()«sizes.determineArrayAccessCode»?1:0));'''
+		}
+	}
+	
+	
 	
 	/**
 	 * Creates a getter for a given property.

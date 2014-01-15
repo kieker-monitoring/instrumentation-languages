@@ -600,6 +600,34 @@ public interface RecordLangPackage extends EPackage
   int LITERAL_FEATURE_COUNT = 0;
 
   /**
+   * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ArrayImpl <em>Array</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.ArrayImpl
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getArray()
+   * @generated
+   */
+  int ARRAY = 12;
+
+  /**
+   * The feature id for the '<em><b>Literals</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ARRAY__LITERALS = LITERAL_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Array</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ARRAY_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.StringLiteralImpl <em>String Literal</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -607,7 +635,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getStringLiteral()
    * @generated
    */
-  int STRING_LITERAL = 12;
+  int STRING_LITERAL = 13;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -635,7 +663,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getIntLiteral()
    * @generated
    */
-  int INT_LITERAL = 13;
+  int INT_LITERAL = 14;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -663,7 +691,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getFloatLiteral()
    * @generated
    */
-  int FLOAT_LITERAL = 14;
+  int FLOAT_LITERAL = 15;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -691,7 +719,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getBooleanLiteral()
    * @generated
    */
-  int BOOLEAN_LITERAL = 15;
+  int BOOLEAN_LITERAL = 16;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -719,7 +747,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getConstantLiteral()
    * @generated
    */
-  int CONSTANT_LITERAL = 16;
+  int CONSTANT_LITERAL = 17;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' reference.
@@ -1156,6 +1184,27 @@ public interface RecordLangPackage extends EPackage
    * @generated
    */
   EClass getLiteral();
+
+  /**
+   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.Array <em>Array</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Array</em>'.
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.Array
+   * @generated
+   */
+  EClass getArray();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.rl.recordLang.Array#getLiterals <em>Literals</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Literals</em>'.
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.Array#getLiterals()
+   * @see #getArray()
+   * @generated
+   */
+  EReference getArray_Literals();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral <em>String Literal</em>}'.
@@ -1620,6 +1669,24 @@ public interface RecordLangPackage extends EPackage
      * @generated
      */
     EClass LITERAL = eINSTANCE.getLiteral();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ArrayImpl <em>Array</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.ArrayImpl
+     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getArray()
+     * @generated
+     */
+    EClass ARRAY = eINSTANCE.getArray();
+
+    /**
+     * The meta object literal for the '<em><b>Literals</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ARRAY__LITERALS = eINSTANCE.getArray_Literals();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.StringLiteralImpl <em>String Literal</em>}' class.

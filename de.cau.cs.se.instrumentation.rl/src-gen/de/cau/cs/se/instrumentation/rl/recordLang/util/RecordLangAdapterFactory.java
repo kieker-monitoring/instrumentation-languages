@@ -2,6 +2,7 @@
  */
 package de.cau.cs.se.instrumentation.rl.recordLang.util;
 
+import de.cau.cs.se.instrumentation.rl.recordLang.Array;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize;
 import de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
@@ -149,6 +150,11 @@ public class RecordLangAdapterFactory extends AdapterFactoryImpl
       public Adapter caseLiteral(Literal object)
       {
         return createLiteralAdapter();
+      }
+      @Override
+      public Adapter caseArray(Array object)
+      {
+        return createArrayAdapter();
       }
       @Override
       public Adapter caseStringLiteral(StringLiteral object)
@@ -373,6 +379,21 @@ public class RecordLangAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.rl.recordLang.Array <em>Array</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.Array
+   * @generated
+   */
+  public Adapter createArrayAdapter()
   {
     return null;
   }

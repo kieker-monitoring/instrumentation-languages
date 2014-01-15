@@ -69,7 +69,11 @@ ReferenceProperty:
 ;
 
 Literal:
-	StringLiteral | IntLiteral | FloatLiteral | BooleanLiteral | ConstantLiteral
+	StringLiteral | IntLiteral | FloatLiteral | BooleanLiteral | ConstantLiteral | Array
+;
+
+Array:
+	'{' literals+=Literal (',' literals+=Literal)* '}'
 ;
 
 StringLiteral:

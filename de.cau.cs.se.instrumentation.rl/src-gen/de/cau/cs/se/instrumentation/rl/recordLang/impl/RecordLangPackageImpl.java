@@ -2,6 +2,7 @@
  */
 package de.cau.cs.se.instrumentation.rl.recordLang.impl;
 
+import de.cau.cs.se.instrumentation.rl.recordLang.Array;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize;
 import de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
@@ -120,6 +121,13 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
    * @generated
    */
   private EClass literalEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass arrayEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -617,6 +625,26 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getArray()
+  {
+    return arrayEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getArray_Literals()
+  {
+    return (EReference)arrayEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getStringLiteral()
   {
     return stringLiteralEClass;
@@ -793,6 +821,9 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
 
     literalEClass = createEClass(LITERAL);
 
+    arrayEClass = createEClass(ARRAY);
+    createEReference(arrayEClass, ARRAY__LITERALS);
+
     stringLiteralEClass = createEClass(STRING_LITERAL);
     createEAttribute(stringLiteralEClass, STRING_LITERAL__VALUE);
 
@@ -843,6 +874,7 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
     // Add supertypes to classes
     partialRecordTypeEClass.getESuperTypes().add(this.getType());
     recordTypeEClass.getESuperTypes().add(this.getType());
+    arrayEClass.getESuperTypes().add(this.getLiteral());
     stringLiteralEClass.getESuperTypes().add(this.getLiteral());
     intLiteralEClass.getESuperTypes().add(this.getLiteral());
     floatLiteralEClass.getESuperTypes().add(this.getLiteral());
@@ -900,6 +932,9 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
     initEReference(getReferenceProperty_Properties(), this.getReferenceProperty(), null, "properties", null, 0, -1, ReferenceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(literalEClass, Literal.class, "Literal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(arrayEClass, Array.class, "Array", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getArray_Literals(), this.getLiteral(), null, "literals", null, 0, -1, Array.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(stringLiteralEClass, StringLiteral.class, "StringLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getStringLiteral_Value(), theEcorePackage.getEString(), "value", null, 0, 1, StringLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

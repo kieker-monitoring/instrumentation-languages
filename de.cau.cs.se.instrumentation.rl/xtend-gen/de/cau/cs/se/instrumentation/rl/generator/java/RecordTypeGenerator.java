@@ -535,8 +535,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       }
       final Function1<Property,CharSequence> _function_8 = new Function1<Property,CharSequence>() {
         public CharSequence apply(final Property property) {
-          CharSequence _createPropertyValueFromBuffer = RecordTypeGenerator.this.createPropertyValueFromBuffer(property);
-          return _createPropertyValueFromBuffer;
+          CharSequence _createPropertyBinaryDeserialization = RecordTypeGenerator.this.createPropertyBinaryDeserialization(property);
+          return _createPropertyBinaryDeserialization;
         }
       };
       Iterable<CharSequence> _map_8 = IterableExtensions.<Property, CharSequence>map(allDeclarationProperties, _function_8);
@@ -811,7 +811,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    * @returns
    * 		code to deserialize the given property
    */
-  public CharSequence createPropertyValueFromBuffer(final Property property) {
+  public CharSequence createPropertyBinaryDeserialization(final Property property) {
     CharSequence _xifexpression = null;
     Classifier _findType = this.findType(property);
     EList<ArraySize> _sizes = _findType.getSizes();
@@ -823,36 +823,37 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         Classifier _findType_1 = this.findType(property);
         final EList<ArraySize> sizes = _findType_1.getSizes();
         StringConcatenation _builder = new StringConcatenation();
-        _builder.append("int _");
-        String _name = property.getName();
-        _builder.append(_name, "");
-        _builder.append("_sizes[] = new int[");
-        int _size_1 = sizes.size();
-        _builder.append(_size_1, "");
-        _builder.append("];");
-        _builder.newLineIfNotEmpty();
-        _builder.append("for (int i=0;i<");
-        int _size_2 = sizes.size();
-        _builder.append(_size_2, "");
-        _builder.append(";i++)");
-        _builder.newLineIfNotEmpty();
-        _builder.append("\t");
-        _builder.append("_");
+        _builder.append("// load array sizes");
+        _builder.newLine();
+        {
+          for(final ArraySize size : sizes) {
+            {
+              int _size_1 = size.getSize();
+              boolean _equals = (_size_1 == 0);
+              if (_equals) {
+                _builder.append("int _");
+                String _name = property.getName();
+                _builder.append(_name, "");
+                _builder.append("_size");
+                int _indexOf = sizes.indexOf(size);
+                _builder.append(_indexOf, "");
+                _builder.append(" = buffer.getInt();");
+                _builder.newLineIfNotEmpty();
+              }
+            }
+          }
+        }
         String _name_1 = property.getName();
-        _builder.append(_name_1, "\t");
-        _builder.append("_sizes[i] = buffer.getInt();");
-        _builder.newLineIfNotEmpty();
-        String _name_2 = property.getName();
-        _builder.append(_name_2, "");
+        _builder.append(_name_1, "");
         _builder.append(" = new ");
         Classifier _findType_2 = this.findType(property);
-        String _name_3 = property.getName();
-        CharSequence _createTypeInstantiationName = this.createTypeInstantiationName(_findType_2, _name_3);
+        String _name_2 = property.getName();
+        CharSequence _createTypeInstantiationName = this.createTypeInstantiationName(_findType_2, _name_2);
         _builder.append(_createTypeInstantiationName, "");
         _builder.append(";");
         _builder.newLineIfNotEmpty();
-        CharSequence _makeLoop = this.makeLoop(sizes, 0, property);
-        _builder.append(_makeLoop, "");
+        CharSequence _createForLoopForDeserialization = this.createForLoopForDeserialization(sizes, 0, property);
+        _builder.append(_createForLoopForDeserialization, "");
         _builder.newLineIfNotEmpty();
         _xblockexpression = (_builder);
       }
@@ -873,6 +874,10 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     return _xifexpression;
   }
   
+  /**
+   * Determine the name and additional array sizes for an array deserialization.
+   * For example property[2][_property_size1][6] or just property for simple fields
+   */
   public CharSequence createTypeInstantiationName(final Classifier classifier, final String name) {
     String _xifexpression = null;
     EList<ArraySize> _sizes = classifier.getSizes();
@@ -882,20 +887,15 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       EClassifier _class_ = classifier.getClass_();
       String _createPrimitiveTypeName = this.createPrimitiveTypeName(_class_);
       EList<ArraySize> _sizes_1 = classifier.getSizes();
-      final Function1<ArraySize,String> _function = new Function1<ArraySize,String>() {
-        public String apply(final ArraySize size) {
-          StringConcatenation _builder = new StringConcatenation();
-          _builder.append("[_");
-          _builder.append(name, "");
-          _builder.append("_sizes[");
+      final Function1<ArraySize,CharSequence> _function = new Function1<ArraySize,CharSequence>() {
+        public CharSequence apply(final ArraySize size) {
           EList<ArraySize> _sizes = classifier.getSizes();
           int _indexOf = _sizes.indexOf(size);
-          _builder.append(_indexOf, "");
-          _builder.append("]]");
-          return _builder.toString();
+          CharSequence _createArraySize = RecordTypeGenerator.this.createArraySize(size, name, _indexOf);
+          return _createArraySize;
         }
       };
-      List<String> _map = ListExtensions.<ArraySize, String>map(_sizes_1, _function);
+      List<CharSequence> _map = ListExtensions.<ArraySize, CharSequence>map(_sizes_1, _function);
       String _join = IterableExtensions.join(_map);
       String _plus = (_createPrimitiveTypeName + _join);
       _xifexpression = _plus;
@@ -907,45 +907,89 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     return _xifexpression;
   }
   
-  public CharSequence makeLoop(final EList<ArraySize> sizes, final int depth, final Property property) {
+  /**
+   * Creates code for fixed and runtime array sizes according to the record model.
+   */
+  public CharSequence createArraySize(final ArraySize size, final String name, final int index) {
+    CharSequence _xifexpression = null;
+    int _size = size.getSize();
+    boolean _greaterThan = (_size > 0);
+    if (_greaterThan) {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("[");
+      int _size_1 = size.getSize();
+      _builder.append(_size_1, "");
+      _builder.append("]");
+      _xifexpression = _builder;
+    } else {
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("[_");
+      _builder_1.append(name, "");
+      _builder_1.append("_size");
+      _builder_1.append(index, "");
+      _builder_1.append("]");
+      _xifexpression = _builder_1;
+    }
+    return _xifexpression;
+  }
+  
+  /**
+   * Create for loops for the deserialization of array data.
+   */
+  public CharSequence createForLoopForDeserialization(final EList<ArraySize> sizes, final int depth, final Property property) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("for (int i");
     _builder.append(depth, "");
     _builder.append("=0;i");
     _builder.append(depth, "");
-    _builder.append("<_");
-    String _name = property.getName();
-    _builder.append(_name, "");
-    _builder.append("_sizes[");
-    _builder.append(depth, "");
-    _builder.append("];i");
+    _builder.append("<");
+    Object _xifexpression = null;
+    ArraySize _get = sizes.get(depth);
+    int _size = _get.getSize();
+    boolean _greaterThan = (_size > 0);
+    if (_greaterThan) {
+      ArraySize _get_1 = sizes.get(depth);
+      int _size_1 = _get_1.getSize();
+      _xifexpression = Integer.valueOf(_size_1);
+    } else {
+      String _name = property.getName();
+      String _plus = ("_" + _name);
+      String _plus_1 = (_plus + "_size");
+      String _plus_2 = (_plus_1 + Integer.valueOf(depth));
+      _xifexpression = _plus_2;
+    }
+    _builder.append(_xifexpression, "");
+    _builder.append(";i");
     _builder.append(depth, "");
     _builder.append("++)");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
-    CharSequence _xifexpression = null;
-    int _size = sizes.size();
-    int _minus = (_size - 1);
-    boolean _greaterThan = (_minus > depth);
-    if (_greaterThan) {
-      CharSequence _makeLoop = this.makeLoop(sizes, (depth + 1), property);
-      _xifexpression = _makeLoop;
+    CharSequence _xifexpression_1 = null;
+    int _size_2 = sizes.size();
+    int _minus = (_size_2 - 1);
+    boolean _greaterThan_1 = (_minus > depth);
+    if (_greaterThan_1) {
+      CharSequence _createForLoopForDeserialization = this.createForLoopForDeserialization(sizes, (depth + 1), property);
+      _xifexpression_1 = _createForLoopForDeserialization;
     } else {
-      String _makeAssignment = this.makeAssignment(sizes, property);
-      _xifexpression = _makeAssignment;
+      String _createValueAssignmentForDeserialization = this.createValueAssignmentForDeserialization(sizes, property);
+      _xifexpression_1 = _createValueAssignmentForDeserialization;
     }
-    _builder.append(_xifexpression, "\t");
+    _builder.append(_xifexpression_1, "\t");
     _builder.newLineIfNotEmpty();
     return _builder;
   }
   
-  public String makeAssignment(final EList<ArraySize> sizes, final Property property) {
+  /**
+   * Assignment for a primitive value
+   */
+  public String createValueAssignmentForDeserialization(final EList<ArraySize> sizes, final Property property) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("this.");
     String _name = property.getName();
     _builder.append(_name, "");
-    CharSequence _arrays = this.arrays(sizes);
-    _builder.append(_arrays, "");
+    CharSequence _determineArrayAccessCode = this.determineArrayAccessCode(sizes);
+    _builder.append(_determineArrayAccessCode, "");
     _builder.append(" = ");
     Classifier _findType = this.findType(property);
     EClassifier _class_ = _findType.getClass_();
@@ -955,7 +999,12 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     return _builder.toString();
   }
   
-  public CharSequence arrays(final EList<ArraySize> sizes) {
+  /**
+   * Used in serialization and deserialization to compose a sequence of [iX] for every
+   * dimension of an array containing the counter variable. If the variable is primitive
+   * the function returns an empty string.
+   */
+  public CharSequence determineArrayAccessCode(final EList<ArraySize> sizes) {
     String result = "";
     int _size = sizes.size();
     ExclusiveRange _doubleDotLessThan = new ExclusiveRange(0, _size, true);
@@ -970,6 +1019,9 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     return result;
   }
   
+  /**
+   * Create code to get values from the input buffer.
+   */
   public CharSequence createPropertyPrimitiveTypeDeserialization(final EClassifier classifier) {
     CharSequence _switchResult = null;
     String _name = classifier.getName();
@@ -1060,6 +1112,125 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    * 		code to serialize the given property
    */
   public CharSequence createPropertyBinarySerialization(final Property property) {
+    CharSequence _xblockexpression = null;
+    {
+      Classifier _findType = this.findType(property);
+      final EList<ArraySize> sizes = _findType.getSizes();
+      CharSequence _xifexpression = null;
+      int _size = sizes.size();
+      boolean _greaterThan = (_size > 0);
+      if (_greaterThan) {
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("// store array sizes");
+        _builder.newLine();
+        {
+          for(final ArraySize size : sizes) {
+            {
+              int _size_1 = size.getSize();
+              boolean _equals = (_size_1 == 0);
+              if (_equals) {
+                _builder.append("int _");
+                String _name = property.getName();
+                _builder.append(_name, "");
+                _builder.append("_size");
+                int _indexOf = sizes.indexOf(size);
+                _builder.append(_indexOf, "");
+                _builder.append(" = this.");
+                CharSequence _createGetterName = this.createGetterName(property);
+                _builder.append(_createGetterName, "");
+                _builder.append("()");
+                int _indexOf_1 = sizes.indexOf(size);
+                String _createCodeToDetermineArraySize = this.createCodeToDetermineArraySize(_indexOf_1);
+                _builder.append(_createCodeToDetermineArraySize, "");
+                _builder.append(".length;");
+                _builder.newLineIfNotEmpty();
+                _builder.append("buffer.putInt(_");
+                String _name_1 = property.getName();
+                _builder.append(_name_1, "");
+                _builder.append("_size");
+                int _indexOf_2 = sizes.indexOf(size);
+                _builder.append(_indexOf_2, "");
+                _builder.append(");");
+                _builder.newLineIfNotEmpty();
+              }
+            }
+          }
+        }
+        CharSequence _createForLoopForSerialization = this.createForLoopForSerialization(sizes, 0, property);
+        _builder.append(_createForLoopForSerialization, "");
+        _builder.newLineIfNotEmpty();
+        _xifexpression = _builder;
+      } else {
+        CharSequence _createForLoopForSerialization_1 = this.createForLoopForSerialization(sizes, 0, property);
+        _xifexpression = _createForLoopForSerialization_1;
+      }
+      _xblockexpression = (_xifexpression);
+    }
+    return _xblockexpression;
+  }
+  
+  /**
+   * This produces a sequence of [0] assuming that arrays follow a matrix layout.
+   */
+  public String createCodeToDetermineArraySize(final int count) {
+    String result = "";
+    int i = 0;
+    boolean _while = (i < count);
+    while (_while) {
+      {
+        result = (result + "[0]");
+        i = (i + 1);
+      }
+      _while = (i < count);
+    }
+    return result;
+  }
+  
+  public CharSequence createForLoopForSerialization(final EList<ArraySize> sizes, final int depth, final Property property) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("for (int i");
+    _builder.append(depth, "");
+    _builder.append("=0;i");
+    _builder.append(depth, "");
+    _builder.append("<");
+    Object _xifexpression = null;
+    ArraySize _get = sizes.get(depth);
+    int _size = _get.getSize();
+    boolean _greaterThan = (_size > 0);
+    if (_greaterThan) {
+      ArraySize _get_1 = sizes.get(depth);
+      int _size_1 = _get_1.getSize();
+      _xifexpression = Integer.valueOf(_size_1);
+    } else {
+      String _name = property.getName();
+      String _plus = ("_" + _name);
+      String _plus_1 = (_plus + "_size");
+      String _plus_2 = (_plus_1 + Integer.valueOf(depth));
+      _xifexpression = _plus_2;
+    }
+    _builder.append(_xifexpression, "");
+    _builder.append(";i");
+    _builder.append(depth, "");
+    _builder.append("++)");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    CharSequence _xifexpression_1 = null;
+    int _size_2 = sizes.size();
+    int _minus = (_size_2 - 1);
+    boolean _greaterThan_1 = (_minus > depth);
+    if (_greaterThan_1) {
+      CharSequence _createForLoopForSerialization = this.createForLoopForSerialization(sizes, (depth + 1), property);
+      _xifexpression_1 = _createForLoopForSerialization;
+    } else {
+      CharSequence _createValueStoreForSerialization = this.createValueStoreForSerialization(sizes, property);
+      _xifexpression_1 = _createValueStoreForSerialization;
+    }
+    _builder.append(_xifexpression_1, "\t");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+  
+  public CharSequence createValueStoreForSerialization(final EList<ArraySize> sizes, final Property property) {
     CharSequence _switchResult = null;
     Classifier _findType = this.findType(property);
     EClassifier _class_ = _findType.getClass_();
@@ -1074,7 +1245,10 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         String _name_1 = property.getName();
         String _firstUpper = StringExtensions.toFirstUpper(_name_1);
         _builder.append(_firstUpper, "");
-        _builder.append("()));");
+        _builder.append("()");
+        CharSequence _determineArrayAccessCode = this.determineArrayAccessCode(sizes);
+        _builder.append(_determineArrayAccessCode, "");
+        _builder.append("));");
         _switchResult = _builder;
       }
     }
@@ -1086,7 +1260,10 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         String _name_2 = property.getName();
         String _firstUpper_1 = StringExtensions.toFirstUpper(_name_2);
         _builder_1.append(_firstUpper_1, "");
-        _builder_1.append("());");
+        _builder_1.append("()");
+        CharSequence _determineArrayAccessCode_1 = this.determineArrayAccessCode(sizes);
+        _builder_1.append(_determineArrayAccessCode_1, "");
+        _builder_1.append(");");
         _switchResult = _builder_1;
       }
     }
@@ -1098,7 +1275,10 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         String _name_3 = property.getName();
         String _firstUpper_2 = StringExtensions.toFirstUpper(_name_3);
         _builder_2.append(_firstUpper_2, "");
-        _builder_2.append("());");
+        _builder_2.append("()");
+        CharSequence _determineArrayAccessCode_2 = this.determineArrayAccessCode(sizes);
+        _builder_2.append(_determineArrayAccessCode_2, "");
+        _builder_2.append(");");
         _switchResult = _builder_2;
       }
     }
@@ -1110,7 +1290,10 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         String _name_4 = property.getName();
         String _firstUpper_3 = StringExtensions.toFirstUpper(_name_4);
         _builder_3.append(_firstUpper_3, "");
-        _builder_3.append("());");
+        _builder_3.append("()");
+        CharSequence _determineArrayAccessCode_3 = this.determineArrayAccessCode(sizes);
+        _builder_3.append(_determineArrayAccessCode_3, "");
+        _builder_3.append(");");
         _switchResult = _builder_3;
       }
     }
@@ -1122,7 +1305,10 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         String _name_5 = property.getName();
         String _firstUpper_4 = StringExtensions.toFirstUpper(_name_5);
         _builder_4.append(_firstUpper_4, "");
-        _builder_4.append("());");
+        _builder_4.append("()");
+        CharSequence _determineArrayAccessCode_4 = this.determineArrayAccessCode(sizes);
+        _builder_4.append(_determineArrayAccessCode_4, "");
+        _builder_4.append(");");
         _switchResult = _builder_4;
       }
     }
@@ -1134,7 +1320,10 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         String _name_6 = property.getName();
         String _firstUpper_5 = StringExtensions.toFirstUpper(_name_6);
         _builder_5.append(_firstUpper_5, "");
-        _builder_5.append("());");
+        _builder_5.append("()");
+        CharSequence _determineArrayAccessCode_5 = this.determineArrayAccessCode(sizes);
+        _builder_5.append(_determineArrayAccessCode_5, "");
+        _builder_5.append(");");
         _switchResult = _builder_5;
       }
     }
@@ -1146,7 +1335,10 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         String _name_7 = property.getName();
         String _firstUpper_6 = StringExtensions.toFirstUpper(_name_7);
         _builder_6.append(_firstUpper_6, "");
-        _builder_6.append("());");
+        _builder_6.append("()");
+        CharSequence _determineArrayAccessCode_6 = this.determineArrayAccessCode(sizes);
+        _builder_6.append(_determineArrayAccessCode_6, "");
+        _builder_6.append(");");
         _switchResult = _builder_6;
       }
     }
@@ -1158,7 +1350,10 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         String _name_8 = property.getName();
         String _firstUpper_7 = StringExtensions.toFirstUpper(_name_8);
         _builder_7.append(_firstUpper_7, "");
-        _builder_7.append("());");
+        _builder_7.append("()");
+        CharSequence _determineArrayAccessCode_7 = this.determineArrayAccessCode(sizes);
+        _builder_7.append(_determineArrayAccessCode_7, "");
+        _builder_7.append(");");
         _switchResult = _builder_7;
       }
     }
@@ -1170,7 +1365,10 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         String _name_9 = property.getName();
         String _firstUpper_8 = StringExtensions.toFirstUpper(_name_9);
         _builder_8.append(_firstUpper_8, "");
-        _builder_8.append("()?1:0));");
+        _builder_8.append("()");
+        CharSequence _determineArrayAccessCode_8 = this.determineArrayAccessCode(sizes);
+        _builder_8.append(_determineArrayAccessCode_8, "");
+        _builder_8.append("?1:0));");
         _switchResult = _builder_8;
       }
     }
