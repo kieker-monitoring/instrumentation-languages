@@ -21,6 +21,7 @@ import java.util.Collection
 import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.EClassifier
 import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize
+import de.cau.cs.se.instrumentation.rl.recordLang.Array
 
 class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	
@@ -84,6 +85,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 			};«ENDIF»
 			
 			«type.constants.map[const | createDefaultConstant(const)].join»
+			«type.properties.filter[property | property.value != null].map[property | createDefaultConstant(property)].join»
 			
 			«allDeclarationProperties.map[property | createPropertyDeclaration(property)].join»
 		
@@ -301,7 +303,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		switch (classifier.name) {
 			case 'string' : '''stringRegistry.get(buffer.getInt())'''
 			case 'byte' : '''buffer.get()'''
-			case 'short' : '''buffer.getshort()'''
+			case 'short' : '''buffer.getShort()'''
 			case 'int' : '''buffer.getInt()'''
 			case 'long' : '''buffer.getLong()'''
 			case 'float' : '''buffer.getFloat()'''
@@ -335,7 +337,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 				«createForLoopForSerialization(sizes,0,property)»
 			'''
 		} else {
-			createForLoopForSerialization(sizes,0,property)
+			createValueStoreForSerialization(sizes,property)
 		}
 	}
 	
@@ -582,13 +584,13 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	/**
 	 * create a constant name from a standard name camel case name.
 	 */
-	def createConstName(String name) {
-		// CaMeL -> CA_ME_L (this code is not functional
-		return name.replaceAll("","")
+	def createConstantName(String name) {
+		// CaMeL -> CA_ME_L
+		return name.replaceAll("([a-z])([A-Z])", "$1_$2").toUpperCase
 	}
 	
 	/**
-	 * Create a property constant based on the language default expression.
+	 * Create a property constant based on the language constant expression.
 	 * 
 	 * @param constant
 	 * 		a default constant object
@@ -597,6 +599,18 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 */
 	def createDefaultConstant(Constant constant) '''
 		public static final «constant.type.createTypeName» «constant.name» = «constant.value.createValue»;
+	'''
+	
+	/**
+	 * Create a property constant based on the language property expression.
+	 * 
+	 * @param property
+	 * 		a default constant object
+	 * 
+	 * @returns a constant declaration
+	 */
+	def createDefaultConstant(Property property) '''
+		public static final «property.type.createTypeName» «property.name.createConstantName» = «property.value.createValue»;
 	'''
 	
 	/**
@@ -698,11 +712,29 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	/**
 	 * Dispatch for literals
 	 */
-	dispatch def CharSequence createValue(StringLiteral literal) '''"«literal.value»"'''
+	dispatch def CharSequence createValue(StringLiteral literal) {
+		if (literal.getRequiredType.equals('string'))
+			'''"«literal.value»"'''
+		else
+			'\'' + literal.value + '\''
+	}
+	
+	/**
+	 * Resolve the primitive type for the given literal.
+	 */
+	def String getRequiredType(Literal literal) {
+		switch (literal.eContainer) {
+			Constant : (literal.eContainer as Constant).type.class_.name
+			Property : (literal.eContainer as Property).type.class_.name
+			Literal : (literal.eContainer as Literal).getRequiredType
+		}
+	}
+	
 	dispatch def CharSequence createValue(IntLiteral literal) '''«literal.value»'''
-	dispatch def CharSequence createValue(FloatLiteral literal) '''«literal.value»'''
+	dispatch def CharSequence createValue(FloatLiteral literal) '''«literal.value»«if (literal.getRequiredType.equals('float')) 'f'»'''
 	dispatch def CharSequence createValue(BooleanLiteral literal) '''«if (literal.value) 'true' else 'false'»'''
 	dispatch def CharSequence createValue(ConstantLiteral literal) '''«literal.value.value.createValue»'''
+	dispatch def CharSequence createValue(Array literal) '''{ «literal.literals.map[element | element.createValue].join(if (literal.literals.get(0) instanceof Array) ",\n" else ", ")» }'''
 	
 	dispatch def CharSequence createValue(Literal literal) {
 		'ERROR ' + literal.class.name
