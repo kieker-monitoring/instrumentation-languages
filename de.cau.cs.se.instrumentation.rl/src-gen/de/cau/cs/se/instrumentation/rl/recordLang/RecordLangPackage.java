@@ -600,14 +600,14 @@ public interface RecordLangPackage extends EPackage
   int LITERAL_FEATURE_COUNT = 0;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ArrayImpl <em>Array</em>}' class.
+   * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ArrayLiteralImpl <em>Array Literal</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.ArrayImpl
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getArray()
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.ArrayLiteralImpl
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getArrayLiteral()
    * @generated
    */
-  int ARRAY = 12;
+  int ARRAY_LITERAL = 12;
 
   /**
    * The feature id for the '<em><b>Literals</b></em>' containment reference list.
@@ -616,16 +616,16 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ARRAY__LITERALS = LITERAL_FEATURE_COUNT + 0;
+  int ARRAY_LITERAL__LITERALS = LITERAL_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Array</em>' class.
+   * The number of structural features of the '<em>Array Literal</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ARRAY_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
+  int ARRAY_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.StringLiteralImpl <em>String Literal</em>}' class.
@@ -1186,25 +1186,25 @@ public interface RecordLangPackage extends EPackage
   EClass getLiteral();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.Array <em>Array</em>}'.
+   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral <em>Array Literal</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Array</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Array
+   * @return the meta object for class '<em>Array Literal</em>'.
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral
    * @generated
    */
-  EClass getArray();
+  EClass getArrayLiteral();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.rl.recordLang.Array#getLiterals <em>Literals</em>}'.
+   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral#getLiterals <em>Literals</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Literals</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Array#getLiterals()
-   * @see #getArray()
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral#getLiterals()
+   * @see #getArrayLiteral()
    * @generated
    */
-  EReference getArray_Literals();
+  EReference getArrayLiteral_Literals();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral <em>String Literal</em>}'.
@@ -1671,14 +1671,14 @@ public interface RecordLangPackage extends EPackage
     EClass LITERAL = eINSTANCE.getLiteral();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ArrayImpl <em>Array</em>}' class.
+     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ArrayLiteralImpl <em>Array Literal</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.ArrayImpl
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getArray()
+     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.ArrayLiteralImpl
+     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getArrayLiteral()
      * @generated
      */
-    EClass ARRAY = eINSTANCE.getArray();
+    EClass ARRAY_LITERAL = eINSTANCE.getArrayLiteral();
 
     /**
      * The meta object literal for the '<em><b>Literals</b></em>' containment reference list feature.
@@ -1686,7 +1686,7 @@ public interface RecordLangPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ARRAY__LITERALS = eINSTANCE.getArray_Literals();
+    EReference ARRAY_LITERAL__LITERALS = eINSTANCE.getArrayLiteral_Literals();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.StringLiteralImpl <em>String Literal</em>}' class.

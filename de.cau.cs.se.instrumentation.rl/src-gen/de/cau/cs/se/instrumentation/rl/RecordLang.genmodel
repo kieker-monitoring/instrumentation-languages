@@ -56,8 +56,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RecordLang.ecore#//ReferenceProperty/properties"/>
     </genClasses>
     <genClasses ecoreClass="RecordLang.ecore#//Literal"/>
-    <genClasses ecoreClass="RecordLang.ecore#//Array">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Array/literals"/>
+    <genClasses ecoreClass="RecordLang.ecore#//ArrayLiteral">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RecordLang.ecore#//ArrayLiteral/literals"/>
     </genClasses>
     <genClasses ecoreClass="RecordLang.ecore#//StringLiteral">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RecordLang.ecore#//StringLiteral/value"/>

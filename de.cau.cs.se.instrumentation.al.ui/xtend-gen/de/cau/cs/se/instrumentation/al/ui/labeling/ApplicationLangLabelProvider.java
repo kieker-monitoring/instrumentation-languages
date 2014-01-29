@@ -9,10 +9,12 @@ import de.cau.cs.se.instrumantation.model.structure.NamedElement;
 import de.cau.cs.se.instrumentation.al.applicationLang.Aspect;
 import de.cau.cs.se.instrumentation.al.applicationLang.Collector;
 import de.cau.cs.se.instrumentation.al.applicationLang.ContainerNode;
+import de.cau.cs.se.instrumentation.al.applicationLang.InsertionPoint;
 import de.cau.cs.se.instrumentation.al.applicationLang.LocationQuery;
 import de.cau.cs.se.instrumentation.al.applicationLang.Query;
 import de.cau.cs.se.instrumentation.al.applicationLang.SubPathNode;
 import de.cau.cs.se.instrumentation.al.applicationLang.WildcardNode;
+import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
@@ -69,7 +71,12 @@ public class ApplicationLangLabelProvider extends DefaultEObjectLabelProvider {
   }
   
   public String text(final Collector e) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nAmbiguous feature call.\nThe methods\n\tname() in Enum and\n\tgetName() in InsertionPoint\nboth match.");
+    RecordType _type = e.getType();
+    String _name = _type.getName();
+    String _plus = (_name + " ");
+    InsertionPoint _insertionPoint = e.getInsertionPoint();
+    String _string = _insertionPoint.toString();
+    String _plus_1 = (_plus + _string);
+    return _plus_1;
   }
 }

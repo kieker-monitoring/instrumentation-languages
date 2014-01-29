@@ -15,10 +15,11 @@ Workflow {
     	scanClassPath = true
     	platformUri = "${runtimeProject}/.."
     	registerGeneratedEPackage = "de.cau.cs.kieler.core.annotations.AnnotationsPackage"
+    	registerGenModelFile = "platform:/resource/de.cau.cs.kieler.core.annotations/annotations.genmodel"
+    	
     	registerGeneratedEPackage = "de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage"
     	registerGeneratedEPackage = "de.cau.cs.se.instrumantation.model.structure.StructurePackage"
     	
-    	registerGenModelFile = "platform:/resource/de.cau.cs.kieler.core.annotations/model/annotations.genmodel"
         registerGenModelFile = "platform:/resource/de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/RecordLang.genmodel"
     	registerGenModelFile = "platform:/resource/de.cau.cs.se.instrumentation.al/model/ModelStructure.genmodel"
     }

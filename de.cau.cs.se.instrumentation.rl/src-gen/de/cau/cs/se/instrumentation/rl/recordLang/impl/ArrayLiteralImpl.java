@@ -2,7 +2,7 @@
  */
 package de.cau.cs.se.instrumentation.rl.recordLang.impl;
 
-import de.cau.cs.se.instrumentation.rl.recordLang.Array;
+import de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Literal;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
 
@@ -20,18 +20,18 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Array</b></em>'.
+ * An implementation of the model object '<em><b>Array Literal</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ArrayImpl#getLiterals <em>Literals</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ArrayLiteralImpl#getLiterals <em>Literals</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ArrayImpl extends LiteralImpl implements Array
+public class ArrayLiteralImpl extends LiteralImpl implements ArrayLiteral
 {
   /**
    * The cached value of the '{@link #getLiterals() <em>Literals</em>}' containment reference list.
@@ -48,7 +48,7 @@ public class ArrayImpl extends LiteralImpl implements Array
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ArrayImpl()
+  protected ArrayLiteralImpl()
   {
     super();
   }
@@ -61,7 +61,7 @@ public class ArrayImpl extends LiteralImpl implements Array
   @Override
   protected EClass eStaticClass()
   {
-    return RecordLangPackage.Literals.ARRAY;
+    return RecordLangPackage.Literals.ARRAY_LITERAL;
   }
 
   /**
@@ -73,7 +73,7 @@ public class ArrayImpl extends LiteralImpl implements Array
   {
     if (literals == null)
     {
-      literals = new EObjectContainmentEList<Literal>(Literal.class, this, RecordLangPackage.ARRAY__LITERALS);
+      literals = new EObjectContainmentEList<Literal>(Literal.class, this, RecordLangPackage.ARRAY_LITERAL__LITERALS);
     }
     return literals;
   }
@@ -88,7 +88,7 @@ public class ArrayImpl extends LiteralImpl implements Array
   {
     switch (featureID)
     {
-      case RecordLangPackage.ARRAY__LITERALS:
+      case RecordLangPackage.ARRAY_LITERAL__LITERALS:
         return ((InternalEList<?>)getLiterals()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -104,7 +104,7 @@ public class ArrayImpl extends LiteralImpl implements Array
   {
     switch (featureID)
     {
-      case RecordLangPackage.ARRAY__LITERALS:
+      case RecordLangPackage.ARRAY_LITERAL__LITERALS:
         return getLiterals();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -121,7 +121,7 @@ public class ArrayImpl extends LiteralImpl implements Array
   {
     switch (featureID)
     {
-      case RecordLangPackage.ARRAY__LITERALS:
+      case RecordLangPackage.ARRAY_LITERAL__LITERALS:
         getLiterals().clear();
         getLiterals().addAll((Collection<? extends Literal>)newValue);
         return;
@@ -139,7 +139,7 @@ public class ArrayImpl extends LiteralImpl implements Array
   {
     switch (featureID)
     {
-      case RecordLangPackage.ARRAY__LITERALS:
+      case RecordLangPackage.ARRAY_LITERAL__LITERALS:
         getLiterals().clear();
         return;
     }
@@ -156,10 +156,10 @@ public class ArrayImpl extends LiteralImpl implements Array
   {
     switch (featureID)
     {
-      case RecordLangPackage.ARRAY__LITERALS:
+      case RecordLangPackage.ARRAY_LITERAL__LITERALS:
         return literals != null && !literals.isEmpty();
     }
     return super.eIsSet(featureID);
   }
 
-} //ArrayImpl
+} //ArrayLiteralImpl

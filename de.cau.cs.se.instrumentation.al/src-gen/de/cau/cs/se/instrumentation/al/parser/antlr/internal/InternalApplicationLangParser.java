@@ -26,47 +26,47 @@ public class InternalApplicationLangParser extends AbstractInternalAntlrParser {
         "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_FLOAT", "RULE_INT", "RULE_COMMENT_ANNOTATION", "RULE_BOOLEAN", "RULE_ML_COMMENT", "RULE_NUMBER", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'package'", "'import'", "'model'", "'.'", "'*'", "'aspect'", "'{'", "'}'", "'('", "','", "')'", "'['", "']'", "'#'", "'$'", "'**'", "'@'", "'name'", "'signature'", "'class'", "'return-type'", "'='", "'~'", "'!='", "'>'", "'<'", "'>='", "'<='", "'before'", "'after'"
     };
     public static final int RULE_BOOLEAN=9;
-    public static final int T__19=19;
-    public static final int T__15=15;
-    public static final int T__16=16;
-    public static final int T__17=17;
-    public static final int T__18=18;
     public static final int RULE_ID=4;
-    public static final int T__26=26;
-    public static final int T__27=27;
-    public static final int T__28=28;
-    public static final int RULE_INT=7;
     public static final int T__29=29;
-    public static final int T__22=22;
-    public static final int RULE_ML_COMMENT=10;
-    public static final int T__23=23;
-    public static final int T__24=24;
+    public static final int T__28=28;
+    public static final int T__27=27;
+    public static final int T__26=26;
     public static final int T__25=25;
-    public static final int T__20=20;
+    public static final int T__24=24;
+    public static final int T__23=23;
+    public static final int T__22=22;
+    public static final int RULE_ANY_OTHER=14;
     public static final int T__21=21;
+    public static final int T__20=20;
+    public static final int EOF=-1;
+    public static final int T__19=19;
+    public static final int T__16=16;
+    public static final int T__15=15;
+    public static final int T__18=18;
+    public static final int T__17=17;
+    public static final int RULE_NUMBER=11;
+    public static final int RULE_INT=7;
     public static final int RULE_COMMENT_ANNOTATION=8;
-    public static final int RULE_STRING=5;
+    public static final int T__42=42;
+    public static final int T__43=43;
+    public static final int T__40=40;
+    public static final int T__41=41;
+    public static final int T__44=44;
+    public static final int RULE_FLOAT=6;
     public static final int RULE_SL_COMMENT=12;
-    public static final int T__37=37;
-    public static final int T__38=38;
-    public static final int T__39=39;
+    public static final int RULE_ML_COMMENT=10;
+    public static final int T__30=30;
+    public static final int T__31=31;
+    public static final int T__32=32;
+    public static final int RULE_STRING=5;
     public static final int T__33=33;
     public static final int T__34=34;
     public static final int T__35=35;
     public static final int T__36=36;
-    public static final int EOF=-1;
-    public static final int T__30=30;
-    public static final int T__31=31;
-    public static final int T__32=32;
+    public static final int T__37=37;
+    public static final int T__38=38;
+    public static final int T__39=39;
     public static final int RULE_WS=13;
-    public static final int RULE_ANY_OTHER=14;
-    public static final int RULE_NUMBER=11;
-    public static final int T__44=44;
-    public static final int RULE_FLOAT=6;
-    public static final int T__40=40;
-    public static final int T__41=41;
-    public static final int T__42=42;
-    public static final int T__43=43;
 
     // delegates
     // delegators
@@ -6733,21 +6733,21 @@ public class InternalApplicationLangParser extends AbstractInternalAntlrParser {
     static final String DFA18_eotS =
         "\14\uffff";
     static final String DFA18_eofS =
-        "\3\uffff\1\10\7\uffff\1\10";
+        "\3\uffff\1\7\7\uffff\1\7";
     static final String DFA18_minS =
         "\1\10\1\uffff\3\4\6\uffff\1\4";
     static final String DFA18_maxS =
         "\1\37\1\uffff\1\4\1\37\1\4\6\uffff\1\37";
     static final String DFA18_acceptS =
-        "\1\uffff\1\1\3\uffff\1\7\1\3\1\5\1\2\1\4\1\6\1\uffff";
+        "\1\uffff\1\1\3\uffff\1\3\1\4\1\2\1\7\1\5\1\6\1\uffff";
     static final String DFA18_specialS =
         "\14\uffff}>";
     static final String[] DFA18_transitionS = {
             "\1\1\26\uffff\1\2",
             "",
             "\1\3",
-            "\2\6\1\5\1\12\1\10\1\7\10\uffff\1\4\1\uffff\1\10\2\uffff\1"+
-            "\10\1\uffff\1\10\1\11\4\uffff\1\10",
+            "\2\5\1\10\1\12\1\7\1\11\10\uffff\1\4\1\uffff\1\7\2\uffff\1"+
+            "\7\1\uffff\1\7\1\6\4\uffff\1\7",
             "\1\13",
             "",
             "",
@@ -6755,8 +6755,8 @@ public class InternalApplicationLangParser extends AbstractInternalAntlrParser {
             "",
             "",
             "",
-            "\2\6\1\5\1\12\1\10\1\7\10\uffff\1\4\1\uffff\1\10\2\uffff\1"+
-            "\10\1\uffff\1\10\1\11\4\uffff\1\10"
+            "\2\5\1\10\1\12\1\7\1\11\10\uffff\1\4\1\uffff\1\7\2\uffff\1"+
+            "\7\1\uffff\1\7\1\6\4\uffff\1\7"
     };
 
     static final short[] DFA18_eot = DFA.unpackEncodedString(DFA18_eotS);

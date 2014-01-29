@@ -702,13 +702,13 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cFloatLiteralParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cBooleanLiteralParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		private final RuleCall cConstantLiteralParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
-		private final RuleCall cArrayParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+		private final RuleCall cArrayLiteralParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
 		
 		//Literal:
-		//	StringLiteral | IntLiteral | FloatLiteral | BooleanLiteral | ConstantLiteral | Array;
+		//	StringLiteral | IntLiteral | FloatLiteral | BooleanLiteral | ConstantLiteral | ArrayLiteral;
 		public ParserRule getRule() { return rule; }
 
-		//StringLiteral | IntLiteral | FloatLiteral | BooleanLiteral | ConstantLiteral | Array
+		//StringLiteral | IntLiteral | FloatLiteral | BooleanLiteral | ConstantLiteral | ArrayLiteral
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//StringLiteral
@@ -726,12 +726,12 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 		//ConstantLiteral
 		public RuleCall getConstantLiteralParserRuleCall_4() { return cConstantLiteralParserRuleCall_4; }
 
-		//Array
-		public RuleCall getArrayParserRuleCall_5() { return cArrayParserRuleCall_5; }
+		//ArrayLiteral
+		public RuleCall getArrayLiteralParserRuleCall_5() { return cArrayLiteralParserRuleCall_5; }
 	}
 
-	public class ArrayElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Array");
+	public class ArrayLiteralElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ArrayLiteral");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cLeftCurlyBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cLiteralsAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -742,7 +742,7 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cLiteralsLiteralParserRuleCall_2_1_0 = (RuleCall)cLiteralsAssignment_2_1.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
-		//Array:
+		//ArrayLiteral:
 		//	"{" literals+=Literal ("," literals+=Literal)* "}";
 		public ParserRule getRule() { return rule; }
 
@@ -873,7 +873,7 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	private ArraySizeElements pArraySize;
 	private ReferencePropertyElements pReferenceProperty;
 	private LiteralElements pLiteral;
-	private ArrayElements pArray;
+	private ArrayLiteralElements pArrayLiteral;
 	private StringLiteralElements pStringLiteral;
 	private IntLiteralElements pIntLiteral;
 	private FloatLiteralElements pFloatLiteral;
@@ -1057,7 +1057,7 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Literal:
-	//	StringLiteral | IntLiteral | FloatLiteral | BooleanLiteral | ConstantLiteral | Array;
+	//	StringLiteral | IntLiteral | FloatLiteral | BooleanLiteral | ConstantLiteral | ArrayLiteral;
 	public LiteralElements getLiteralAccess() {
 		return (pLiteral != null) ? pLiteral : (pLiteral = new LiteralElements());
 	}
@@ -1066,14 +1066,14 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 		return getLiteralAccess().getRule();
 	}
 
-	//Array:
+	//ArrayLiteral:
 	//	"{" literals+=Literal ("," literals+=Literal)* "}";
-	public ArrayElements getArrayAccess() {
-		return (pArray != null) ? pArray : (pArray = new ArrayElements());
+	public ArrayLiteralElements getArrayLiteralAccess() {
+		return (pArrayLiteral != null) ? pArrayLiteral : (pArrayLiteral = new ArrayLiteralElements());
 	}
 	
-	public ParserRule getArrayRule() {
-		return getArrayAccess().getRule();
+	public ParserRule getArrayLiteralRule() {
+		return getArrayLiteralAccess().getRule();
 	}
 
 	//StringLiteral:

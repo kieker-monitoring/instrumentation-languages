@@ -3047,7 +3047,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLiteral"
-    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:1078:1: ruleLiteral returns [EObject current=null] : (this_StringLiteral_0= ruleStringLiteral | this_IntLiteral_1= ruleIntLiteral | this_FloatLiteral_2= ruleFloatLiteral | this_BooleanLiteral_3= ruleBooleanLiteral | this_ConstantLiteral_4= ruleConstantLiteral | this_Array_5= ruleArray ) ;
+    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:1078:1: ruleLiteral returns [EObject current=null] : (this_StringLiteral_0= ruleStringLiteral | this_IntLiteral_1= ruleIntLiteral | this_FloatLiteral_2= ruleFloatLiteral | this_BooleanLiteral_3= ruleBooleanLiteral | this_ConstantLiteral_4= ruleConstantLiteral | this_ArrayLiteral_5= ruleArrayLiteral ) ;
     public final EObject ruleLiteral() throws RecognitionException {
         EObject current = null;
 
@@ -3061,16 +3061,16 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
 
         EObject this_ConstantLiteral_4 = null;
 
-        EObject this_Array_5 = null;
+        EObject this_ArrayLiteral_5 = null;
 
 
          enterRule(); 
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:1081:28: ( (this_StringLiteral_0= ruleStringLiteral | this_IntLiteral_1= ruleIntLiteral | this_FloatLiteral_2= ruleFloatLiteral | this_BooleanLiteral_3= ruleBooleanLiteral | this_ConstantLiteral_4= ruleConstantLiteral | this_Array_5= ruleArray ) )
-            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:1082:1: (this_StringLiteral_0= ruleStringLiteral | this_IntLiteral_1= ruleIntLiteral | this_FloatLiteral_2= ruleFloatLiteral | this_BooleanLiteral_3= ruleBooleanLiteral | this_ConstantLiteral_4= ruleConstantLiteral | this_Array_5= ruleArray )
+            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:1081:28: ( (this_StringLiteral_0= ruleStringLiteral | this_IntLiteral_1= ruleIntLiteral | this_FloatLiteral_2= ruleFloatLiteral | this_BooleanLiteral_3= ruleBooleanLiteral | this_ConstantLiteral_4= ruleConstantLiteral | this_ArrayLiteral_5= ruleArrayLiteral ) )
+            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:1082:1: (this_StringLiteral_0= ruleStringLiteral | this_IntLiteral_1= ruleIntLiteral | this_FloatLiteral_2= ruleFloatLiteral | this_BooleanLiteral_3= ruleBooleanLiteral | this_ConstantLiteral_4= ruleConstantLiteral | this_ArrayLiteral_5= ruleArrayLiteral )
             {
-            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:1082:1: (this_StringLiteral_0= ruleStringLiteral | this_IntLiteral_1= ruleIntLiteral | this_FloatLiteral_2= ruleFloatLiteral | this_BooleanLiteral_3= ruleBooleanLiteral | this_ConstantLiteral_4= ruleConstantLiteral | this_Array_5= ruleArray )
+            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:1082:1: (this_StringLiteral_0= ruleStringLiteral | this_IntLiteral_1= ruleIntLiteral | this_FloatLiteral_2= ruleFloatLiteral | this_BooleanLiteral_3= ruleBooleanLiteral | this_ConstantLiteral_4= ruleConstantLiteral | this_ArrayLiteral_5= ruleArrayLiteral )
             int alt24=6;
             switch ( input.LA(1) ) {
             case RULE_STRING:
@@ -3223,21 +3223,21 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:1133:5: this_Array_5= ruleArray
+                    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:1133:5: this_ArrayLiteral_5= ruleArrayLiteral
                     {
                     if ( state.backtracking==0 ) {
                        
-                              newCompositeNode(grammarAccess.getLiteralAccess().getArrayParserRuleCall_5()); 
+                              newCompositeNode(grammarAccess.getLiteralAccess().getArrayLiteralParserRuleCall_5()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleArray_in_ruleLiteral2480);
-                    this_Array_5=ruleArray();
+                    pushFollow(FOLLOW_ruleArrayLiteral_in_ruleLiteral2480);
+                    this_ArrayLiteral_5=ruleArrayLiteral();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
                        
-                              current = this_Array_5; 
+                              current = this_ArrayLiteral_5; 
                               afterParserOrEnumRuleCall();
                           
                     }
@@ -3266,30 +3266,30 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleLiteral"
 
 
-    // $ANTLR start "entryRuleArray"
-    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:1149:1: entryRuleArray returns [EObject current=null] : iv_ruleArray= ruleArray EOF ;
-    public final EObject entryRuleArray() throws RecognitionException {
+    // $ANTLR start "entryRuleArrayLiteral"
+    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:1149:1: entryRuleArrayLiteral returns [EObject current=null] : iv_ruleArrayLiteral= ruleArrayLiteral EOF ;
+    public final EObject entryRuleArrayLiteral() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_ruleArray = null;
+        EObject iv_ruleArrayLiteral = null;
 
 
         try {
-            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:1150:2: (iv_ruleArray= ruleArray EOF )
-            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:1151:2: iv_ruleArray= ruleArray EOF
+            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:1150:2: (iv_ruleArrayLiteral= ruleArrayLiteral EOF )
+            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:1151:2: iv_ruleArrayLiteral= ruleArrayLiteral EOF
             {
             if ( state.backtracking==0 ) {
-               newCompositeNode(grammarAccess.getArrayRule()); 
+               newCompositeNode(grammarAccess.getArrayLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleArray_in_entryRuleArray2515);
-            iv_ruleArray=ruleArray();
+            pushFollow(FOLLOW_ruleArrayLiteral_in_entryRuleArrayLiteral2515);
+            iv_ruleArrayLiteral=ruleArrayLiteral();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
-               current =iv_ruleArray; 
+               current =iv_ruleArrayLiteral; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleArray2525); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleArrayLiteral2525); if (state.failed) return current;
 
             }
 
@@ -3303,12 +3303,12 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRuleArray"
+    // $ANTLR end "entryRuleArrayLiteral"
 
 
-    // $ANTLR start "ruleArray"
-    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:1158:1: ruleArray returns [EObject current=null] : (otherlv_0= '{' ( (lv_literals_1_0= ruleLiteral ) ) (otherlv_2= ',' ( (lv_literals_3_0= ruleLiteral ) ) )* otherlv_4= '}' ) ;
-    public final EObject ruleArray() throws RecognitionException {
+    // $ANTLR start "ruleArrayLiteral"
+    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:1158:1: ruleArrayLiteral returns [EObject current=null] : (otherlv_0= '{' ( (lv_literals_1_0= ruleLiteral ) ) (otherlv_2= ',' ( (lv_literals_3_0= ruleLiteral ) ) )* otherlv_4= '}' ) ;
+    public final EObject ruleArrayLiteral() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
@@ -3328,10 +3328,10 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
             // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:1162:1: (otherlv_0= '{' ( (lv_literals_1_0= ruleLiteral ) ) (otherlv_2= ',' ( (lv_literals_3_0= ruleLiteral ) ) )* otherlv_4= '}' )
             // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:1162:3: otherlv_0= '{' ( (lv_literals_1_0= ruleLiteral ) ) (otherlv_2= ',' ( (lv_literals_3_0= ruleLiteral ) ) )* otherlv_4= '}'
             {
-            otherlv_0=(Token)match(input,22,FOLLOW_22_in_ruleArray2562); if (state.failed) return current;
+            otherlv_0=(Token)match(input,22,FOLLOW_22_in_ruleArrayLiteral2562); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_0, grammarAccess.getArrayAccess().getLeftCurlyBracketKeyword_0());
+                  	newLeafNode(otherlv_0, grammarAccess.getArrayLiteralAccess().getLeftCurlyBracketKeyword_0());
                   
             }
             // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:1166:1: ( (lv_literals_1_0= ruleLiteral ) )
@@ -3342,10 +3342,10 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
             {
             if ( state.backtracking==0 ) {
                
-              	        newCompositeNode(grammarAccess.getArrayAccess().getLiteralsLiteralParserRuleCall_1_0()); 
+              	        newCompositeNode(grammarAccess.getArrayLiteralAccess().getLiteralsLiteralParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleLiteral_in_ruleArray2583);
+            pushFollow(FOLLOW_ruleLiteral_in_ruleArrayLiteral2583);
             lv_literals_1_0=ruleLiteral();
 
             state._fsp--;
@@ -3353,7 +3353,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
 
               	        if (current==null) {
-              	            current = createModelElementForParent(grammarAccess.getArrayRule());
+              	            current = createModelElementForParent(grammarAccess.getArrayLiteralRule());
               	        }
                      		add(
                      			current, 
@@ -3384,10 +3384,10 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
             	case 1 :
             	    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:1184:4: otherlv_2= ',' ( (lv_literals_3_0= ruleLiteral ) )
             	    {
-            	    otherlv_2=(Token)match(input,21,FOLLOW_21_in_ruleArray2596); if (state.failed) return current;
+            	    otherlv_2=(Token)match(input,21,FOLLOW_21_in_ruleArrayLiteral2596); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
-            	          	newLeafNode(otherlv_2, grammarAccess.getArrayAccess().getCommaKeyword_2_0());
+            	          	newLeafNode(otherlv_2, grammarAccess.getArrayLiteralAccess().getCommaKeyword_2_0());
             	          
             	    }
             	    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:1188:1: ( (lv_literals_3_0= ruleLiteral ) )
@@ -3398,10 +3398,10 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
             	    {
             	    if ( state.backtracking==0 ) {
             	       
-            	      	        newCompositeNode(grammarAccess.getArrayAccess().getLiteralsLiteralParserRuleCall_2_1_0()); 
+            	      	        newCompositeNode(grammarAccess.getArrayLiteralAccess().getLiteralsLiteralParserRuleCall_2_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleLiteral_in_ruleArray2617);
+            	    pushFollow(FOLLOW_ruleLiteral_in_ruleArrayLiteral2617);
             	    lv_literals_3_0=ruleLiteral();
 
             	    state._fsp--;
@@ -3409,7 +3409,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
             	    if ( state.backtracking==0 ) {
 
             	      	        if (current==null) {
-            	      	            current = createModelElementForParent(grammarAccess.getArrayRule());
+            	      	            current = createModelElementForParent(grammarAccess.getArrayLiteralRule());
             	      	        }
             	             		add(
             	             			current, 
@@ -3434,10 +3434,10 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_4=(Token)match(input,23,FOLLOW_23_in_ruleArray2631); if (state.failed) return current;
+            otherlv_4=(Token)match(input,23,FOLLOW_23_in_ruleArrayLiteral2631); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_4, grammarAccess.getArrayAccess().getRightCurlyBracketKeyword_3());
+                  	newLeafNode(otherlv_4, grammarAccess.getArrayLiteralAccess().getRightCurlyBracketKeyword_3());
                   
             }
 
@@ -3459,7 +3459,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleArray"
+    // $ANTLR end "ruleArrayLiteral"
 
 
     // $ANTLR start "entryRuleStringLiteral"
@@ -4097,14 +4097,14 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleFloatLiteral_in_ruleLiteral2399 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleBooleanLiteral_in_ruleLiteral2426 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleConstantLiteral_in_ruleLiteral2453 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleArray_in_ruleLiteral2480 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleArray_in_entryRuleArray2515 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleArray2525 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_22_in_ruleArray2562 = new BitSet(new long[]{0x00000000004001F0L});
-    public static final BitSet FOLLOW_ruleLiteral_in_ruleArray2583 = new BitSet(new long[]{0x0000000000A00000L});
-    public static final BitSet FOLLOW_21_in_ruleArray2596 = new BitSet(new long[]{0x00000000004001F0L});
-    public static final BitSet FOLLOW_ruleLiteral_in_ruleArray2617 = new BitSet(new long[]{0x0000000000A00000L});
-    public static final BitSet FOLLOW_23_in_ruleArray2631 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleArrayLiteral_in_ruleLiteral2480 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleArrayLiteral_in_entryRuleArrayLiteral2515 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleArrayLiteral2525 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_22_in_ruleArrayLiteral2562 = new BitSet(new long[]{0x00000000004001F0L});
+    public static final BitSet FOLLOW_ruleLiteral_in_ruleArrayLiteral2583 = new BitSet(new long[]{0x0000000000A00000L});
+    public static final BitSet FOLLOW_21_in_ruleArrayLiteral2596 = new BitSet(new long[]{0x00000000004001F0L});
+    public static final BitSet FOLLOW_ruleLiteral_in_ruleArrayLiteral2617 = new BitSet(new long[]{0x0000000000A00000L});
+    public static final BitSet FOLLOW_23_in_ruleArrayLiteral2631 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleStringLiteral_in_entryRuleStringLiteral2667 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleStringLiteral2677 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_STRING_in_ruleStringLiteral2718 = new BitSet(new long[]{0x0000000000000002L});

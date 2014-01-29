@@ -4,7 +4,8 @@ generate applicationLang "http://www.cau.de/cs/se/instrumentation/al/Application
 
 import "http://kieler.cs.cau.de/annotations" as annotations
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
-import "http://www.cau.de/cs/se/instrumentation/rl/RecordLang" as irl
+//import "http://www.cau.de/cs/se/instrumentation/rl/RecordLang" as irl
+import "platform:/resource/de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/RecordLang.ecore" as irl
 import "http://modelstructure.se.cs.cau.de/structure" as structure
 
 Model:

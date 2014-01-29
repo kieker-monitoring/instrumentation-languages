@@ -6,21 +6,21 @@ import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Array</b></em>'.
+ * A representation of the model object '<em><b>Array Literal</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.Array#getLiterals <em>Literals</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral#getLiterals <em>Literals</em>}</li>
  * </ul>
  * </p>
  *
- * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getArray()
+ * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getArrayLiteral()
  * @model
  * @generated
  */
-public interface Array extends Literal
+public interface ArrayLiteral extends Literal
 {
   /**
    * Returns the value of the '<em><b>Literals</b></em>' containment reference list.
@@ -32,10 +32,10 @@ public interface Array extends Literal
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Literals</em>' containment reference list.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getArray_Literals()
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getArrayLiteral_Literals()
    * @model containment="true"
    * @generated
    */
   EList<Literal> getLiterals();
 
-} // Array
+} // ArrayLiteral

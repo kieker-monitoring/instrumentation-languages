@@ -3,6 +3,9 @@
 */
 package de.cau.cs.se.instrumentation.rl.ui.outline
 
+import de.cau.cs.se.instrumentation.rl.recordLang.Constant
+import de.cau.cs.se.instrumentation.rl.recordLang.Property
+
 /**
  * Customization of the default outline structure.
  *
@@ -10,4 +13,13 @@ package de.cau.cs.se.instrumentation.rl.ui.outline
  */
 class RecordLangOutlineTreeProvider extends org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider {
 	
+	// do not nest into property
+	def boolean _isLeaf(Property feature) {
+  		return true;
+	}
+	
+	// do not nest into constant
+	def boolean _isLeaf(Constant feature) {
+  		return true;
+	}
 }

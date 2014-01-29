@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.emf.ecore.EPackage;
 
-public class AbstractApplicationLangValidator extends de.cau.cs.kieler.core.annotations.text.validation.AnnotationsValidator {
+public class AbstractApplicationLangValidator extends de.cau.cs.kieler.core.annotations.text.validation.AnnotationsJavaValidator {
 
 	@Override
 	protected List<EPackage> getEPackages() {

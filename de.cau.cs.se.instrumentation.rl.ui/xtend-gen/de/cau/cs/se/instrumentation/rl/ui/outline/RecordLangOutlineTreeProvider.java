@@ -3,6 +3,8 @@
  */
 package de.cau.cs.se.instrumentation.rl.ui.outline;
 
+import de.cau.cs.se.instrumentation.rl.recordLang.Constant;
+import de.cau.cs.se.instrumentation.rl.recordLang.Property;
 import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider;
 
 /**
@@ -12,4 +14,11 @@ import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider;
  */
 @SuppressWarnings("all")
 public class RecordLangOutlineTreeProvider extends DefaultOutlineTreeProvider {
+  public boolean _isLeaf(final Property feature) {
+    return true;
+  }
+  
+  public boolean _isLeaf(final Constant feature) {
+    return true;
+  }
 }

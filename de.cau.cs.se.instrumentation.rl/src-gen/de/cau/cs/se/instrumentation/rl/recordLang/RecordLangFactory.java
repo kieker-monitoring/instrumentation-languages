@@ -131,13 +131,13 @@ public interface RecordLangFactory extends EFactory
   Literal createLiteral();
 
   /**
-   * Returns a new object of class '<em>Array</em>'.
+   * Returns a new object of class '<em>Array Literal</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Array</em>'.
+   * @return a new object of class '<em>Array Literal</em>'.
    * @generated
    */
-  Array createArray();
+  ArrayLiteral createArrayLiteral();
 
   /**
    * Returns a new object of class '<em>String Literal</em>'.

@@ -41,8 +41,8 @@ class ApplicationLangLabelProvider extends org.eclipse.xtext.ui.label.DefaultEOb
 	def text(Query e) { 'query' }
 	def text(LocationQuery e) { 'path' }
 	 
-	def text (Collector e) {
-		e.type.name + " " + e.insertionPoint.name.toLowerCase
+	def text (Collector e) { // TODO this is most likely broken
+		e.type.name + " " + e.insertionPoint.toString
 	}
 	
 	// Labels and icons can be computed like this:

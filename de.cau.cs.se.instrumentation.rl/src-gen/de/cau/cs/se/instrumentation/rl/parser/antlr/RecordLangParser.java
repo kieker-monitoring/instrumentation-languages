@@ -9,7 +9,7 @@ import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import de.cau.cs.se.instrumentation.rl.services.RecordLangGrammarAccess;
 
 public class RecordLangParser extends org.eclipse.xtext.parser.antlr.AbstractAntlrParser {
-	
+		
 	@Inject
 	private RecordLangGrammarAccess grammarAccess;
 	

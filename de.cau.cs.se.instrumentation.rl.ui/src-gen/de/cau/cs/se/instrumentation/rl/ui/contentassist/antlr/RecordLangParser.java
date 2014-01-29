@@ -68,8 +68,8 @@ public class RecordLangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getClassifierAccess().getGroup_0(), "rule__Classifier__Group_0__0");
 					put(grammarAccess.getArraySizeAccess().getGroup(), "rule__ArraySize__Group__0");
 					put(grammarAccess.getReferencePropertyAccess().getGroup(), "rule__ReferenceProperty__Group__0");
-					put(grammarAccess.getArrayAccess().getGroup(), "rule__Array__Group__0");
-					put(grammarAccess.getArrayAccess().getGroup_2(), "rule__Array__Group_2__0");
+					put(grammarAccess.getArrayLiteralAccess().getGroup(), "rule__ArrayLiteral__Group__0");
+					put(grammarAccess.getArrayLiteralAccess().getGroup_2(), "rule__ArrayLiteral__Group_2__0");
 					put(grammarAccess.getModelAccess().getNameAssignment_1(), "rule__Model__NameAssignment_1");
 					put(grammarAccess.getModelAccess().getPackagesAssignment_2(), "rule__Model__PackagesAssignment_2");
 					put(grammarAccess.getModelAccess().getImportsAssignment_3(), "rule__Model__ImportsAssignment_3");
@@ -103,8 +103,8 @@ public class RecordLangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getArraySizeAccess().getSizeAssignment_2(), "rule__ArraySize__SizeAssignment_2");
 					put(grammarAccess.getReferencePropertyAccess().getRefAssignment_0(), "rule__ReferenceProperty__RefAssignment_0");
 					put(grammarAccess.getReferencePropertyAccess().getPropertiesAssignment_2(), "rule__ReferenceProperty__PropertiesAssignment_2");
-					put(grammarAccess.getArrayAccess().getLiteralsAssignment_1(), "rule__Array__LiteralsAssignment_1");
-					put(grammarAccess.getArrayAccess().getLiteralsAssignment_2_1(), "rule__Array__LiteralsAssignment_2_1");
+					put(grammarAccess.getArrayLiteralAccess().getLiteralsAssignment_1(), "rule__ArrayLiteral__LiteralsAssignment_1");
+					put(grammarAccess.getArrayLiteralAccess().getLiteralsAssignment_2_1(), "rule__ArrayLiteral__LiteralsAssignment_2_1");
 					put(grammarAccess.getStringLiteralAccess().getValueAssignment(), "rule__StringLiteral__ValueAssignment");
 					put(grammarAccess.getIntLiteralAccess().getValueAssignment(), "rule__IntLiteral__ValueAssignment");
 					put(grammarAccess.getFloatLiteralAccess().getValueAssignment(), "rule__FloatLiteral__ValueAssignment");

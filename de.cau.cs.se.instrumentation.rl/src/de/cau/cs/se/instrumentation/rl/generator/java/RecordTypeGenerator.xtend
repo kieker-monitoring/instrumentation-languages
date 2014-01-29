@@ -1,6 +1,8 @@
 package de.cau.cs.se.instrumentation.rl.generator.java
 
 import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator
+import de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral
+import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize
 import de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
 import de.cau.cs.se.instrumentation.rl.recordLang.Constant
@@ -18,10 +20,9 @@ import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation
 import java.io.File
 import java.util.ArrayList
 import java.util.Collection
+import java.util.Date
 import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.EClassifier
-import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize
-import de.cau.cs.se.instrumentation.rl.recordLang.Array
 
 class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	
@@ -36,7 +37,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * 		generic kieker version for the record
 	 */
 	override createContent(RecordType type, String author, String version) {
-		val serialUID = '123456789L'
+		val serialUID = new Date().time.toString + 'L'
 		val allDataProperties = PropertyEvaluation::collectAllDataProperties(type)
 		val allDeclarationProperties = collectAllDeclarationProperties(type)
 		val allGetterDeclarationProperties = collectAllGetterDeclarationProperties(type) 
@@ -734,7 +735,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	dispatch def CharSequence createValue(FloatLiteral literal) '''«literal.value»«if (literal.getRequiredType.equals('float')) 'f'»'''
 	dispatch def CharSequence createValue(BooleanLiteral literal) '''«if (literal.value) 'true' else 'false'»'''
 	dispatch def CharSequence createValue(ConstantLiteral literal) '''«literal.value.value.createValue»'''
-	dispatch def CharSequence createValue(Array literal) '''{ «literal.literals.map[element | element.createValue].join(if (literal.literals.get(0) instanceof Array) ",\n" else ", ")» }'''
+	dispatch def CharSequence createValue(ArrayLiteral literal) '''{ «literal.literals.map[element | element.createValue].join(if (literal.literals.get(0) instanceof ArrayLiteral) ",\n" else ", ")» }'''
 	
 	dispatch def CharSequence createValue(Literal literal) {
 		'ERROR ' + literal.class.name

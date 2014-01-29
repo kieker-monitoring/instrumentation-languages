@@ -2,7 +2,7 @@ package de.cau.cs.se.instrumentation.rl.serializer;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
-import de.cau.cs.se.instrumentation.rl.recordLang.Array;
+import de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize;
 import de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
@@ -39,10 +39,10 @@ public class RecordLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == RecordLangPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
-			case RecordLangPackage.ARRAY:
-				if(context == grammarAccess.getArrayRule() ||
+			case RecordLangPackage.ARRAY_LITERAL:
+				if(context == grammarAccess.getArrayLiteralRule() ||
 				   context == grammarAccess.getLiteralRule()) {
-					sequence_Array(context, (Array) semanticObject); 
+					sequence_ArrayLiteral(context, (ArrayLiteral) semanticObject); 
 					return; 
 				}
 				else break;
@@ -149,18 +149,18 @@ public class RecordLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 	
 	/**
 	 * Constraint:
-	 *     (size=INT?)
+	 *     (literals+=Literal literals+=Literal*)
 	 */
-	protected void sequence_ArraySize(EObject context, ArraySize semanticObject) {
+	protected void sequence_ArrayLiteral(EObject context, ArrayLiteral semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (literals+=Literal literals+=Literal*)
+	 *     (size=INT?)
 	 */
-	protected void sequence_Array(EObject context, Array semanticObject) {
+	protected void sequence_ArraySize(EObject context, ArraySize semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

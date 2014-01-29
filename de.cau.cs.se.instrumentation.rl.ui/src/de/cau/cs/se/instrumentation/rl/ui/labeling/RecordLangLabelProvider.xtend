@@ -19,7 +19,7 @@ class RecordLangLabelProvider extends org.eclipse.xtext.ui.label.DefaultEObjectL
 
 	// Labels and icons can be computed like this:
 	def text(de.cau.cs.se.instrumentation.rl.recordLang.Property e) {
-		e.type.class_.name + ' ' + e.name
+		e.name + ' : ' + e.type.text
 	}
 	
 	def text(de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral e) {
@@ -28,6 +28,42 @@ class RecordLangLabelProvider extends org.eclipse.xtext.ui.label.DefaultEObjectL
 	
 	def text(de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral e) {
 		e.value
+	}
+	
+	def text(de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral e) {
+		'array'
+	}
+	
+	def text(de.cau.cs.se.instrumentation.rl.recordLang.FloatLiteral e) {
+		e.value
+	}
+	
+	def text(de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral e) {
+		if (e.value) 'true' else 'false'
+	}
+	
+	def text(de.cau.cs.se.instrumentation.rl.recordLang.Classifier e) {
+		e.class_.name + e.sizes.map['[' + (if (it.size != 0) it.size else '') + ']'].join
+	}
+	
+	def image(de.cau.cs.se.instrumentation.rl.recordLang.Property e) {
+		'property.gif'
+	}
+	
+	def image(de.cau.cs.se.instrumentation.rl.recordLang.Constant e) {
+		'constant.gif'
+	}
+	
+	def image(de.cau.cs.se.instrumentation.rl.recordLang.RecordType e) {
+		'record.png'
+	}
+	
+	def image(de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType e) {
+		'template.png'
+	}
+	
+	def image(de.cau.cs.se.instrumentation.rl.recordLang.Model e) {
+		'package.gif'
 	}
 	
 //	def text(Greeting ele) {

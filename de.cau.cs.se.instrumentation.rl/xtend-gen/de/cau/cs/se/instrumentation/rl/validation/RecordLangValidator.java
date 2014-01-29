@@ -4,23 +4,40 @@
 package de.cau.cs.se.instrumentation.rl.validation;
 
 import com.google.common.base.Objects;
+import de.cau.cs.se.instrumentation.rl.generator.InternalErrorException;
+import de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize;
+import de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
+import de.cau.cs.se.instrumentation.rl.recordLang.Constant;
+import de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral;
+import de.cau.cs.se.instrumentation.rl.recordLang.FloatLiteral;
+import de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral;
+import de.cau.cs.se.instrumentation.rl.recordLang.Literal;
 import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
+import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangFactory;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
+import de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
+import de.cau.cs.se.instrumentation.rl.typing.PrimitiveTypes;
 import de.cau.cs.se.instrumentation.rl.validation.AbstractRecordLangValidator;
 import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.xtext.validation.Check;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Pair;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
@@ -275,6 +292,557 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
   }
   
   /**
+   * Check it a given constant's type and the assigned value's type match.
+   */
+  @Check
+  public void checkConstantValueTyping(final Constant constant) {
+    Literal _value = constant.getValue();
+    boolean _notEquals = (!Objects.equal(_value, null));
+    if (_notEquals) {
+      Classifier _type = constant.getType();
+      Literal _value_1 = constant.getValue();
+      Classifier _type_1 = this.getType(_value_1);
+      Literal _value_2 = constant.getValue();
+      boolean _compareTypesInAssignment = this.compareTypesInAssignment(_type, _type_1, _value_2);
+      boolean _not = (!_compareTypesInAssignment);
+      if (_not) {
+        Classifier _type_2 = constant.getType();
+        String _createFQNTypeName = this.createFQNTypeName(_type_2);
+        String _plus = ("Constant type \'" + _createFQNTypeName);
+        String _plus_1 = (_plus + "\' does not match value type \'");
+        Literal _value_3 = constant.getValue();
+        Classifier _type_3 = this.getType(_value_3);
+        String _createFQNTypeName_1 = this.createFQNTypeName(_type_3);
+        String _plus_2 = (_plus_1 + _createFQNTypeName_1);
+        String _plus_3 = (_plus_2 + "\'.");
+        this.error(_plus_3, 
+          RecordLangPackage.Literals.CONSTANT__TYPE, 
+          RecordLangValidator.INVALID_NAME);
+      }
+    }
+  }
+  
+  /**
+   * Check it a given property's type and the assigned value's type match.
+   */
+  @Check
+  public void checkPropertyValueTyping(final Property property) {
+    Literal _value = property.getValue();
+    boolean _notEquals = (!Objects.equal(_value, null));
+    if (_notEquals) {
+      Classifier _type = property.getType();
+      Literal _value_1 = property.getValue();
+      Classifier _type_1 = this.getType(_value_1);
+      Literal _value_2 = property.getValue();
+      boolean _compareTypesInAssignment = this.compareTypesInAssignment(_type, _type_1, _value_2);
+      boolean _not = (!_compareTypesInAssignment);
+      if (_not) {
+        Classifier _type_2 = property.getType();
+        String _createFQNTypeName = this.createFQNTypeName(_type_2);
+        String _plus = ("Property type \'" + _createFQNTypeName);
+        String _plus_1 = (_plus + "\' does not match value type \'");
+        Literal _value_3 = property.getValue();
+        Classifier _type_3 = this.getType(_value_3);
+        String _createFQNTypeName_1 = this.createFQNTypeName(_type_3);
+        String _plus_2 = (_plus_1 + _createFQNTypeName_1);
+        String _plus_3 = (_plus_2 + "\'.");
+        this.error(_plus_3, 
+          RecordLangPackage.Literals.PROPERTY__TYPE, 
+          RecordLangValidator.INVALID_NAME);
+      }
+    }
+  }
+  
+  /**
+   * Check it a given type of one array element matches the other.
+   */
+  @Check
+  public void checkValueTyping(final ArrayLiteral literal) {
+    EList<Literal> _literals = literal.getLiterals();
+    int _size = _literals.size();
+    boolean _greaterThan = (_size > 0);
+    if (_greaterThan) {
+      EList<Literal> _literals_1 = literal.getLiterals();
+      Literal _get = _literals_1.get(0);
+      final Classifier type = this.getType(_get);
+      EList<Literal> _literals_2 = literal.getLiterals();
+      final Function1<Literal,Boolean> _function = new Function1<Literal,Boolean>() {
+        public Boolean apply(final Literal element) {
+          Classifier _type = RecordLangValidator.this.getType(element);
+          boolean _typeEquality = RecordLangValidator.this.typeEquality(_type, type);
+          return Boolean.valueOf(_typeEquality);
+        }
+      };
+      boolean _forall = IterableExtensions.<Literal>forall(_literals_2, _function);
+      boolean _not = (!_forall);
+      if (_not) {
+        EList<Literal> _literals_3 = literal.getLiterals();
+        final Function1<Literal,String> _function_1 = new Function1<Literal,String>() {
+          public String apply(final Literal it) {
+            Classifier _type = RecordLangValidator.this.getType(it);
+            String _createFQNTypeName = RecordLangValidator.this.createFQNTypeName(_type);
+            return _createFQNTypeName;
+          }
+        };
+        List<String> _map = ListExtensions.<Literal, String>map(_literals_3, _function_1);
+        String _join = IterableExtensions.join(_map, ", ");
+        String _plus = ("Value types " + _join);
+        String _plus_1 = (_plus + " do not match");
+        this.error(_plus_1, 
+          RecordLangPackage.Literals.ARRAY_LITERAL__LITERALS);
+      }
+    }
+  }
+  
+  public String createFQNTypeName(final Classifier classifier) {
+    EClassifier _class_ = classifier.getClass_();
+    String _name = _class_.getName();
+    EList<ArraySize> _sizes = classifier.getSizes();
+    final Function1<ArraySize,String> _function = new Function1<ArraySize,String>() {
+      public String apply(final ArraySize it) {
+        Object _xifexpression = null;
+        int _size = it.getSize();
+        boolean _notEquals = (_size != 0);
+        if (_notEquals) {
+          int _size_1 = it.getSize();
+          _xifexpression = Integer.valueOf(_size_1);
+        } else {
+          _xifexpression = "";
+        }
+        String _plus = ("[" + ((Comparable<Object>)_xifexpression));
+        String _plus_1 = (_plus + "]");
+        return _plus_1;
+      }
+    };
+    List<String> _map = ListExtensions.<ArraySize, String>map(_sizes, _function);
+    String _join = IterableExtensions.join(_map);
+    String _plus = (_name + _join);
+    return _plus;
+  }
+  
+  /**
+   * Check if types are a exact match.
+   */
+  public boolean typeEquality(final Classifier left, final Classifier right) {
+    EClassifier _class_ = left.getClass_();
+    String _name = _class_.getName();
+    EClassifier _class__1 = right.getClass_();
+    String _name_1 = _class__1.getName();
+    boolean _equals = _name.equals(_name_1);
+    if (_equals) {
+      EList<ArraySize> _sizes = left.getSizes();
+      int _size = _sizes.size();
+      EList<ArraySize> _sizes_1 = right.getSizes();
+      int _size_1 = _sizes_1.size();
+      boolean _equals_1 = (_size == _size_1);
+      if (_equals_1) {
+        int i = 0;
+        EList<ArraySize> _sizes_2 = left.getSizes();
+        int _size_2 = _sizes_2.size();
+        boolean _lessThan = (i < _size_2);
+        boolean _while = _lessThan;
+        while (_while) {
+          {
+            EList<ArraySize> _sizes_3 = left.getSizes();
+            ArraySize _get = _sizes_3.get(i);
+            int _size_3 = _get.getSize();
+            EList<ArraySize> _sizes_4 = right.getSizes();
+            ArraySize _get_1 = _sizes_4.get(i);
+            int _size_4 = _get_1.getSize();
+            boolean _notEquals = (_size_3 != _size_4);
+            if (_notEquals) {
+              return false;
+            }
+            i = (i + 1);
+          }
+          EList<ArraySize> _sizes_3 = left.getSizes();
+          int _size_3 = _sizes_3.size();
+          boolean _lessThan_1 = (i < _size_3);
+          _while = _lessThan_1;
+        }
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  /**
+   * Compare two types for a type match in a value assignment.
+   */
+  public boolean compareTypesInAssignment(final Classifier left, final Classifier right, final Literal literal) {
+    boolean _and = false;
+    de.cau.cs.se.instrumentation.rl.recordLang.Package _package = left.getPackage();
+    boolean _notEquals = (!Objects.equal(_package, null));
+    if (!_notEquals) {
+      _and = false;
+    } else {
+      de.cau.cs.se.instrumentation.rl.recordLang.Package _package_1 = right.getPackage();
+      boolean _notEquals_1 = (!Objects.equal(_package_1, null));
+      _and = (_notEquals && _notEquals_1);
+    }
+    if (_and) {
+      de.cau.cs.se.instrumentation.rl.recordLang.Package _package_2 = left.getPackage();
+      EPackage _package_3 = _package_2.getPackage();
+      String _nsURI = _package_3.getNsURI();
+      de.cau.cs.se.instrumentation.rl.recordLang.Package _package_4 = right.getPackage();
+      EPackage _package_5 = _package_4.getPackage();
+      String _nsURI_1 = _package_5.getNsURI();
+      boolean _equals = _nsURI.equals(_nsURI_1);
+      if (_equals) {
+        return this.compareClassifierTypesInAssignment(left, right, literal);
+      } else {
+        return false;
+      }
+    } else {
+      boolean _and_1 = false;
+      de.cau.cs.se.instrumentation.rl.recordLang.Package _package_6 = left.getPackage();
+      boolean _equals_1 = Objects.equal(_package_6, null);
+      if (!_equals_1) {
+        _and_1 = false;
+      } else {
+        de.cau.cs.se.instrumentation.rl.recordLang.Package _package_7 = right.getPackage();
+        boolean _equals_2 = Objects.equal(_package_7, null);
+        _and_1 = (_equals_1 && _equals_2);
+      }
+      if (_and_1) {
+        return this.compareClassifierTypesInAssignment(left, right, literal);
+      } else {
+        return false;
+      }
+    }
+  }
+  
+  public boolean compareClassifierTypesInAssignment(final Classifier left, final Classifier right, final Literal literal) {
+    boolean _compareClassifierTypeEquvalenceSet = this.compareClassifierTypeEquvalenceSet(left, right, literal);
+    if (_compareClassifierTypeEquvalenceSet) {
+      EList<ArraySize> _sizes = left.getSizes();
+      int _size = _sizes.size();
+      EList<ArraySize> _sizes_1 = right.getSizes();
+      int _size_1 = _sizes_1.size();
+      boolean _equals = (_size == _size_1);
+      if (_equals) {
+        int i = 0;
+        EList<ArraySize> _sizes_2 = left.getSizes();
+        int _size_2 = _sizes_2.size();
+        boolean _lessThan = (i < _size_2);
+        boolean _while = _lessThan;
+        while (_while) {
+          {
+            boolean _and = false;
+            EList<ArraySize> _sizes_3 = left.getSizes();
+            ArraySize _get = _sizes_3.get(i);
+            int _size_3 = _get.getSize();
+            EList<ArraySize> _sizes_4 = right.getSizes();
+            ArraySize _get_1 = _sizes_4.get(i);
+            int _size_4 = _get_1.getSize();
+            boolean _notEquals = (_size_3 != _size_4);
+            if (!_notEquals) {
+              _and = false;
+            } else {
+              EList<ArraySize> _sizes_5 = left.getSizes();
+              ArraySize _get_2 = _sizes_5.get(i);
+              int _size_5 = _get_2.getSize();
+              boolean _notEquals_1 = (_size_5 != 0);
+              _and = (_notEquals && _notEquals_1);
+            }
+            if (_and) {
+              return false;
+            }
+            i = (i + 1);
+          }
+          EList<ArraySize> _sizes_3 = left.getSizes();
+          int _size_3 = _sizes_3.size();
+          boolean _lessThan_1 = (i < _size_3);
+          _while = _lessThan_1;
+        }
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+  
+  public boolean compareClassifierTypeEquvalenceSet(final Classifier left, final Classifier right, final Literal literal) {
+    boolean _xifexpression = false;
+    EClassifier _class_ = left.getClass_();
+    String _name = _class_.getName();
+    EClassifier _class__1 = right.getClass_();
+    String _name_1 = _class__1.getName();
+    boolean _equals = _name.equals(_name_1);
+    if (_equals) {
+      _xifexpression = true;
+    } else {
+      boolean _checkTypeEquivalenceSet = this.checkTypeEquivalenceSet(left, right, literal);
+      _xifexpression = _checkTypeEquivalenceSet;
+    }
+    return _xifexpression;
+  }
+  
+  public boolean checkTypeEquivalenceSet(final Classifier left, final Classifier right, final Literal literal) {
+    boolean _xifexpression = false;
+    EClassifier _class_ = left.getClass_();
+    String _name = _class_.getName();
+    boolean _equals = _name.equals("double");
+    if (_equals) {
+      boolean _xifexpression_1 = false;
+      EClassifier _class__1 = right.getClass_();
+      String _name_1 = _class__1.getName();
+      boolean _equals_1 = _name_1.equals("float");
+      if (_equals_1) {
+        boolean _xifexpression_2 = false;
+        if ((literal instanceof FloatLiteral)) {
+          _xifexpression_2 = true;
+        } else {
+          boolean _xifexpression_3 = false;
+          if ((literal instanceof ArrayLiteral)) {
+            boolean _checkAllLiteralsArtOfType = this.checkAllLiteralsArtOfType(FloatLiteral.class, ((ArrayLiteral)literal));
+            _xifexpression_3 = _checkAllLiteralsArtOfType;
+          }
+          _xifexpression_2 = _xifexpression_3;
+        }
+        _xifexpression_1 = _xifexpression_2;
+      } else {
+        _xifexpression_1 = false;
+      }
+      _xifexpression = _xifexpression_1;
+    } else {
+      boolean _xifexpression_4 = false;
+      EClassifier _class__2 = left.getClass_();
+      String _name_2 = _class__2.getName();
+      boolean _equals_2 = _name_2.equals("long");
+      if (_equals_2) {
+        boolean _xifexpression_5 = false;
+        EClassifier _class__3 = right.getClass_();
+        String _name_3 = _class__3.getName();
+        boolean _equals_3 = _name_3.equals("int");
+        if (_equals_3) {
+          boolean _xifexpression_6 = false;
+          if ((literal instanceof IntLiteral)) {
+            boolean _xifexpression_7 = false;
+            boolean _and = false;
+            int _value = ((IntLiteral) literal).getValue();
+            boolean _greaterEqualsThan = (_value >= Long.MIN_VALUE);
+            if (!_greaterEqualsThan) {
+              _and = false;
+            } else {
+              int _value_1 = ((IntLiteral) literal).getValue();
+              boolean _lessEqualsThan = (_value_1 <= Long.MAX_VALUE);
+              _and = (_greaterEqualsThan && _lessEqualsThan);
+            }
+            if (_and) {
+              _xifexpression_7 = true;
+            } else {
+              _xifexpression_7 = false;
+            }
+            _xifexpression_6 = _xifexpression_7;
+          } else {
+            boolean _xifexpression_8 = false;
+            if ((literal instanceof ArrayLiteral)) {
+              boolean _checkAllLiteralsArtOfType_1 = this.checkAllLiteralsArtOfType(IntLiteral.class, ((ArrayLiteral)literal));
+              _xifexpression_8 = _checkAllLiteralsArtOfType_1;
+            }
+            _xifexpression_6 = _xifexpression_8;
+          }
+          _xifexpression_5 = _xifexpression_6;
+        } else {
+          _xifexpression_5 = false;
+        }
+        _xifexpression_4 = _xifexpression_5;
+      } else {
+        boolean _xifexpression_9 = false;
+        EClassifier _class__4 = left.getClass_();
+        String _name_4 = _class__4.getName();
+        boolean _equals_4 = _name_4.equals("byte");
+        if (_equals_4) {
+          boolean _xifexpression_10 = false;
+          EClassifier _class__5 = right.getClass_();
+          String _name_5 = _class__5.getName();
+          boolean _equals_5 = _name_5.equals("int");
+          if (_equals_5) {
+            boolean _xifexpression_11 = false;
+            if ((literal instanceof IntLiteral)) {
+              boolean _xifexpression_12 = false;
+              boolean _and_1 = false;
+              int _value_2 = ((IntLiteral) literal).getValue();
+              boolean _greaterEqualsThan_1 = (_value_2 >= Byte.MIN_VALUE);
+              if (!_greaterEqualsThan_1) {
+                _and_1 = false;
+              } else {
+                int _value_3 = ((IntLiteral) literal).getValue();
+                boolean _lessEqualsThan_1 = (_value_3 <= Byte.MAX_VALUE);
+                _and_1 = (_greaterEqualsThan_1 && _lessEqualsThan_1);
+              }
+              if (_and_1) {
+                _xifexpression_12 = true;
+              } else {
+                _xifexpression_12 = false;
+              }
+              _xifexpression_11 = _xifexpression_12;
+            } else {
+              boolean _xifexpression_13 = false;
+              if ((literal instanceof ArrayLiteral)) {
+                boolean _checkAllLiteralsArtOfType_2 = this.checkAllLiteralsArtOfType(IntLiteral.class, ((ArrayLiteral)literal));
+                _xifexpression_13 = _checkAllLiteralsArtOfType_2;
+              }
+              _xifexpression_11 = _xifexpression_13;
+            }
+            _xifexpression_10 = _xifexpression_11;
+          } else {
+            _xifexpression_10 = false;
+          }
+          _xifexpression_9 = _xifexpression_10;
+        } else {
+          boolean _xifexpression_14 = false;
+          EClassifier _class__6 = left.getClass_();
+          String _name_6 = _class__6.getName();
+          boolean _equals_6 = _name_6.equals("short");
+          if (_equals_6) {
+            boolean _xifexpression_15 = false;
+            EClassifier _class__7 = right.getClass_();
+            String _name_7 = _class__7.getName();
+            boolean _equals_7 = _name_7.equals("int");
+            if (_equals_7) {
+              boolean _xifexpression_16 = false;
+              if ((literal instanceof IntLiteral)) {
+                boolean _xifexpression_17 = false;
+                boolean _and_2 = false;
+                int _value_4 = ((IntLiteral) literal).getValue();
+                boolean _greaterEqualsThan_2 = (_value_4 >= Short.MIN_VALUE);
+                if (!_greaterEqualsThan_2) {
+                  _and_2 = false;
+                } else {
+                  int _value_5 = ((IntLiteral) literal).getValue();
+                  boolean _lessEqualsThan_2 = (_value_5 <= Short.MAX_VALUE);
+                  _and_2 = (_greaterEqualsThan_2 && _lessEqualsThan_2);
+                }
+                if (_and_2) {
+                  _xifexpression_17 = true;
+                } else {
+                  _xifexpression_17 = false;
+                }
+                _xifexpression_16 = _xifexpression_17;
+              } else {
+                boolean _xifexpression_18 = false;
+                if ((literal instanceof ArrayLiteral)) {
+                  boolean _checkAllLiteralsArtOfType_3 = this.checkAllLiteralsArtOfType(IntLiteral.class, ((ArrayLiteral)literal));
+                  _xifexpression_18 = _checkAllLiteralsArtOfType_3;
+                }
+                _xifexpression_16 = _xifexpression_18;
+              }
+              _xifexpression_15 = _xifexpression_16;
+            } else {
+              _xifexpression_15 = false;
+            }
+            _xifexpression_14 = _xifexpression_15;
+          } else {
+            _xifexpression_14 = false;
+          }
+          _xifexpression_9 = _xifexpression_14;
+        }
+        _xifexpression_4 = _xifexpression_9;
+      }
+      _xifexpression = _xifexpression_4;
+    }
+    return _xifexpression;
+  }
+  
+  /**
+   * Check in depth if all elements match the specific type.
+   */
+  public boolean checkAllLiteralsArtOfType(final Class<? extends Literal> type, final ArrayLiteral literal) {
+    EList<Literal> _literals = literal.getLiterals();
+    final Function1<Literal,Boolean> _function = new Function1<Literal,Boolean>() {
+      public Boolean apply(final Literal element) {
+        boolean _xifexpression = false;
+        if ((element instanceof ArrayLiteral)) {
+          boolean _checkAllLiteralsArtOfType = RecordLangValidator.this.checkAllLiteralsArtOfType(type, ((ArrayLiteral)element));
+          _xifexpression = _checkAllLiteralsArtOfType;
+        } else {
+          boolean _isInstance = type.isInstance(element);
+          _xifexpression = _isInstance;
+        }
+        return Boolean.valueOf(_xifexpression);
+      }
+    };
+    boolean _forall = IterableExtensions.<Literal>forall(_literals, _function);
+    return _forall;
+  }
+  
+  /**
+   * Compute the classifier for a literal.
+   */
+  protected Classifier _getType(final StringLiteral literal) {
+    Classifier _xifexpression = null;
+    String _value = literal.getValue();
+    int _length = _value.length();
+    boolean _notEquals = (_length != 1);
+    if (_notEquals) {
+      EDataType _eType = PrimitiveTypes.ESTRING.getEType();
+      Classifier _createPrimitiveClassifier = this.createPrimitiveClassifier(_eType);
+      _xifexpression = _createPrimitiveClassifier;
+    } else {
+      EDataType _eType_1 = PrimitiveTypes.ECHAR.getEType();
+      Classifier _createPrimitiveClassifier_1 = this.createPrimitiveClassifier(_eType_1);
+      _xifexpression = _createPrimitiveClassifier_1;
+    }
+    return _xifexpression;
+  }
+  
+  protected Classifier _getType(final IntLiteral literal) {
+    EDataType _eType = PrimitiveTypes.EINT.getEType();
+    Classifier _createPrimitiveClassifier = this.createPrimitiveClassifier(_eType);
+    return _createPrimitiveClassifier;
+  }
+  
+  protected Classifier _getType(final FloatLiteral literal) {
+    EDataType _eType = PrimitiveTypes.EFLOAT.getEType();
+    Classifier _createPrimitiveClassifier = this.createPrimitiveClassifier(_eType);
+    return _createPrimitiveClassifier;
+  }
+  
+  protected Classifier _getType(final BooleanLiteral literal) {
+    EDataType _eType = PrimitiveTypes.EBOOLEAN.getEType();
+    Classifier _createPrimitiveClassifier = this.createPrimitiveClassifier(_eType);
+    return _createPrimitiveClassifier;
+  }
+  
+  protected Classifier _getType(final ConstantLiteral literal) {
+    Constant _value = literal.getValue();
+    Classifier _type = _value.getType();
+    return _type;
+  }
+  
+  protected Classifier _getType(final ArrayLiteral literal) {
+    EList<Literal> _literals = literal.getLiterals();
+    Literal _get = _literals.get(0);
+    final Classifier classifier = this.getType(_get);
+    final ArraySize size = RecordLangFactory.eINSTANCE.createArraySize();
+    EList<Literal> _literals_1 = literal.getLiterals();
+    int _size = _literals_1.size();
+    size.setSize(_size);
+    EList<ArraySize> _sizes = classifier.getSizes();
+    _sizes.add(0, size);
+    return classifier;
+  }
+  
+  protected Classifier _getType(final Literal literal) {
+    try {
+      InternalErrorException _internalErrorException = new InternalErrorException("Unhandled literal type");
+      throw _internalErrorException;
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  public Classifier createPrimitiveClassifier(final EDataType type) {
+    final Classifier classifier = RecordLangFactory.eINSTANCE.createClassifier();
+    classifier.setClass(type);
+    return classifier;
+  }
+  
+  /**
    * Compare types of a property for equality including package name.
    */
   public boolean typeAndPackageIdentical(final Classifier left, final Classifier right) {
@@ -363,5 +931,26 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
     final Property second = IterableExtensions.<Property>findFirst(properties, _function);
     Pair<Property,Property> _pair = new Pair<Property, Property>(property, second);
     return _pair;
+  }
+  
+  public Classifier getType(final Literal literal) {
+    if (literal instanceof ArrayLiteral) {
+      return _getType((ArrayLiteral)literal);
+    } else if (literal instanceof BooleanLiteral) {
+      return _getType((BooleanLiteral)literal);
+    } else if (literal instanceof ConstantLiteral) {
+      return _getType((ConstantLiteral)literal);
+    } else if (literal instanceof FloatLiteral) {
+      return _getType((FloatLiteral)literal);
+    } else if (literal instanceof IntLiteral) {
+      return _getType((IntLiteral)literal);
+    } else if (literal instanceof StringLiteral) {
+      return _getType((StringLiteral)literal);
+    } else if (literal != null) {
+      return _getType(literal);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(literal).toString());
+    }
   }
 }

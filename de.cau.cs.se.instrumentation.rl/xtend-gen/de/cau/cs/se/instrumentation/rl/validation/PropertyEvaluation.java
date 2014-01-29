@@ -1,6 +1,7 @@
 package de.cau.cs.se.instrumentation.rl.validation;
 
 import com.google.common.base.Objects;
+import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
@@ -10,6 +11,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
@@ -240,14 +242,33 @@ public class PropertyEvaluation {
   }
   
   /**
-   * check if a property of a given name does already exist in the collected list of properties.
+   * check if a property of a given name and of the same type does already exist in the collected list of properties.
+   * 
+   * @param list property collection
+   * @param item the property to check against the list
+   * 
+   * @returns
+   * 		true if a property of the same name and type already exists, else false
    */
   public static boolean containsProperty(final Collection<Property> list, final Property item) {
     for (final Property p : list) {
+      boolean _and = false;
       String _name = p.getName();
       String _name_1 = item.getName();
       boolean _equals = _name.equals(_name_1);
-      if (_equals) {
+      if (!_equals) {
+        _and = false;
+      } else {
+        Classifier _type = p.getType();
+        EClassifier _class_ = _type.getClass_();
+        String _name_2 = _class_.getName();
+        Classifier _type_1 = item.getType();
+        EClassifier _class__1 = _type_1.getClass_();
+        String _name_3 = _class__1.getName();
+        boolean _equals_1 = _name_2.equals(_name_3);
+        _and = (_equals && _equals_1);
+      }
+      if (_and) {
         return true;
       }
     }

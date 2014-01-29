@@ -138,11 +138,17 @@ class PropertyEvaluation {
 	}
 	
 	/**
-	 * check if a property of a given name does already exist in the collected list of properties.
+	 * check if a property of a given name and of the same type does already exist in the collected list of properties.
+	 * 
+	 * @param list property collection
+	 * @param item the property to check against the list
+	 * 
+	 * @returns
+	 * 		true if a property of the same name and type already exists, else false
 	 */
 	def static boolean containsProperty (Collection<Property> list, Property item) {
 		for (Property p : list) {
-			if (p.name.equals(item.name))
+			if (p.name.equals(item.name) && (p.type.class_.name.equals(item.type.class_.name)))
 				return true
 		}
 		return false

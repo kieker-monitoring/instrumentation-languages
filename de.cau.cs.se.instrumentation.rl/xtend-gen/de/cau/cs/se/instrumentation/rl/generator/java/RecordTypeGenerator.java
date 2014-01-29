@@ -2,7 +2,7 @@ package de.cau.cs.se.instrumentation.rl.generator.java;
 
 import com.google.common.base.Objects;
 import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator;
-import de.cau.cs.se.instrumentation.rl.recordLang.Array;
+import de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize;
 import de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
@@ -22,6 +22,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -50,7 +51,10 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   public CharSequence createContent(final RecordType type, final String author, final String version) {
     CharSequence _xblockexpression = null;
     {
-      final String serialUID = "123456789L";
+      Date _date = new Date();
+      long _time = _date.getTime();
+      String _string = Long.valueOf(_time).toString();
+      final String serialUID = (_string + "L");
       final Collection<Property> allDataProperties = PropertyEvaluation.collectAllDataProperties(type);
       final Iterable<Property> allDeclarationProperties = this.collectAllDeclarationProperties(type);
       final Iterable<Property> allGetterDeclarationProperties = this.collectAllGetterDeclarationProperties(type);
@@ -2076,7 +2080,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     return _builder;
   }
   
-  protected CharSequence _createValue(final Array literal) {
+  protected CharSequence _createValue(final ArrayLiteral literal) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("{ ");
     EList<Literal> _literals = literal.getLiterals();
@@ -2090,7 +2094,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     String _xifexpression = null;
     EList<Literal> _literals_1 = literal.getLiterals();
     Literal _get = _literals_1.get(0);
-    if ((_get instanceof Array)) {
+    if ((_get instanceof ArrayLiteral)) {
       _xifexpression = ",\n";
     } else {
       _xifexpression = ", ";
@@ -2109,8 +2113,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   }
   
   public CharSequence createValue(final Literal literal) {
-    if (literal instanceof Array) {
-      return _createValue((Array)literal);
+    if (literal instanceof ArrayLiteral) {
+      return _createValue((ArrayLiteral)literal);
     } else if (literal instanceof BooleanLiteral) {
       return _createValue((BooleanLiteral)literal);
     } else if (literal instanceof ConstantLiteral) {

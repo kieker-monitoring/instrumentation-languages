@@ -3,17 +3,29 @@
  */
 package de.cau.cs.se.instrumentation.rl.validation
 
+import de.cau.cs.se.instrumentation.rl.generator.InternalErrorException
+import de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral
+import de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
+import de.cau.cs.se.instrumentation.rl.recordLang.Constant
+import de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral
+import de.cau.cs.se.instrumentation.rl.recordLang.FloatLiteral
+import de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral
+import de.cau.cs.se.instrumentation.rl.recordLang.Literal
 import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType
 import de.cau.cs.se.instrumentation.rl.recordLang.Property
+import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangFactory
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
+import de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral
 import de.cau.cs.se.instrumentation.rl.recordLang.Type
+import de.cau.cs.se.instrumentation.rl.typing.PrimitiveTypes
 import java.util.ArrayList
+import java.util.Collection
+import java.util.List
+import org.eclipse.emf.ecore.EDataType
 import org.eclipse.xtext.validation.Check
 import org.eclipse.xtext.xbase.lib.Pair
-import java.util.List
-import java.util.Collection
 
 /**
  * Custom validation rules. 
@@ -100,6 +112,204 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 			]
 		}
 	}
+	
+	/**
+	 * Check it a given constant's type and the assigned value's type match.
+	 */
+	@Check
+	def checkConstantValueTyping(Constant constant) {
+		if (constant.value != null) {
+			if (!compareTypesInAssignment(constant.type, constant.value.type, constant.value)) {
+				error('Constant type \'' + constant.type.createFQNTypeName + '\' does not match value type \'' + constant.value.type.createFQNTypeName + '\'.', 
+							RecordLangPackage$Literals::CONSTANT__TYPE,
+							INVALID_NAME)
+			}
+		}
+	}
+	
+	/**
+	 * Check it a given property's type and the assigned value's type match.
+	 */
+	@Check
+	def checkPropertyValueTyping(Property property) {
+		if (property.value != null) {
+			if (!compareTypesInAssignment(property.type, property.value.type, property.value)) {
+				error('Property type \'' + property.type.createFQNTypeName + '\' does not match value type \'' + property.value.type.createFQNTypeName + '\'.', 
+							RecordLangPackage$Literals::PROPERTY__TYPE,
+							INVALID_NAME)
+			}
+		}
+	}
+	
+	/**
+	 * Check it a given type of one array element matches the other.
+	 */
+	@Check
+	def checkValueTyping(ArrayLiteral literal) {
+		if (literal.literals.size > 0) {
+			val type = literal.literals.get(0).type
+			if (!literal.literals.forall[element | typeEquality(element.type,type)]) {
+				error('Value types ' + literal.literals.map[it.type.createFQNTypeName].join(', ') + ' do not match', 
+							RecordLangPackage$Literals::ARRAY_LITERAL__LITERALS)
+			}
+		}
+	}
+	
+	def String createFQNTypeName(Classifier classifier) {
+		classifier.class_.name + classifier.sizes.map['[' + (if (it.size != 0) it.size else '') + ']'].join
+	}
+	
+	/**
+	 * Check if types are a exact match.
+	 */
+	def typeEquality(Classifier left, Classifier right) {
+		if (left.class_.name.equals(right.class_.name)) {
+			if (left.sizes.size == right.sizes.size) {
+				var i=0
+				while (i<left.sizes.size) {
+					if (left.sizes.get(i).size != right.sizes.get(i).size)
+						return false
+					i=i+1
+				}
+				return true
+			}
+		}
+	}
+	
+	/**
+	 * Compare two types for a type match in a value assignment.
+	 */
+	def compareTypesInAssignment(Classifier left, Classifier right, Literal literal) {
+		if (left.package != null && right.package != null) {
+			if (left.package.package.nsURI.equals(right.package.package.nsURI)) 
+				return compareClassifierTypesInAssignment(left,right,literal)
+			else
+				return false
+		} else if (left.package == null && right.package == null) {
+			return compareClassifierTypesInAssignment(left,right,literal)
+		} else
+			return false	
+	}
+	
+	def compareClassifierTypesInAssignment(Classifier left, Classifier right, Literal literal) {
+		if (compareClassifierTypeEquvalenceSet(left,right,literal)) {
+			if (left.sizes.size == right.sizes.size) {
+				var i=0
+				while (i<left.sizes.size) {
+					if ((left.sizes.get(i).size != right.sizes.get(i).size) &&
+						(left.sizes.get(i).size != 0))
+						return false
+					i=i+1
+				}
+				return true
+			} else
+				return false
+		} else
+			return false
+	}
+	
+	def compareClassifierTypeEquvalenceSet(Classifier left, Classifier right, Literal literal) {
+		if (left.class_.name.equals(right.class_.name))
+			true
+		else 
+			checkTypeEquivalenceSet(left,right,literal)
+	}
+	
+	def checkTypeEquivalenceSet(Classifier left, Classifier right, Literal literal) {
+		if (left.class_.name.equals('double')) {
+				if (right.class_.name.equals('float')) {
+					if (literal instanceof FloatLiteral)
+						true
+					else if (literal instanceof ArrayLiteral)
+						checkAllLiteralsArtOfType(FloatLiteral,literal)
+				} else
+					false
+			} else if (left.class_.name.equals('long')) {
+				if (right.class_.name.equals('int')) {
+					if (literal instanceof IntLiteral)
+						if (((literal as IntLiteral).value >= Long.MIN_VALUE) && 
+							((literal as IntLiteral).value <= Long.MAX_VALUE))
+							true
+						else
+						 	false
+					else if (literal instanceof ArrayLiteral)
+						checkAllLiteralsArtOfType(IntLiteral,literal)
+				} else
+					false
+			} else if (left.class_.name.equals('byte')) {
+				if (right.class_.name.equals('int')) {
+					if (literal instanceof IntLiteral)
+						if (((literal as IntLiteral).value >= Byte.MIN_VALUE) && 
+							((literal as IntLiteral).value <= Byte.MAX_VALUE))
+							true
+						else
+						 	false
+					else if (literal instanceof ArrayLiteral)
+						checkAllLiteralsArtOfType(IntLiteral,literal)
+				} else
+					false
+			} else if (left.class_.name.equals('short')) {
+				if (right.class_.name.equals('int')) {
+					if (literal instanceof IntLiteral)
+						if (((literal as IntLiteral).value >= Short.MIN_VALUE) && 
+							((literal as IntLiteral).value <= Short.MAX_VALUE))
+							true
+						else
+						 	false
+					else if (literal instanceof ArrayLiteral)
+						checkAllLiteralsArtOfType(IntLiteral,literal)
+				} else
+					false
+			} else
+				false
+	}
+	
+	
+	
+	/**
+	 * Check in depth if all elements match the specific type.
+	 */
+	def boolean checkAllLiteralsArtOfType(Class<? extends Literal> type, ArrayLiteral literal) {
+		literal.literals.forall[element |
+			if (element instanceof ArrayLiteral) 
+				checkAllLiteralsArtOfType(type, element)
+			else 
+				type.isInstance(element)
+		]
+	}
+	
+	/**
+	 * Compute the classifier for a literal.
+	 */
+	def dispatch Classifier getType(StringLiteral literal) {
+		if (literal.value.length != 1) 
+			createPrimitiveClassifier(PrimitiveTypes.ESTRING.EType)
+		else
+			createPrimitiveClassifier(PrimitiveTypes.ECHAR.EType)
+	}
+	def dispatch Classifier getType(IntLiteral literal) { createPrimitiveClassifier(PrimitiveTypes.EINT.EType) }
+	def dispatch Classifier getType(FloatLiteral literal) { createPrimitiveClassifier(PrimitiveTypes.EFLOAT.EType) }
+	def dispatch Classifier getType(BooleanLiteral literal) { createPrimitiveClassifier(PrimitiveTypes.EBOOLEAN.EType) }
+	def dispatch Classifier getType(ConstantLiteral literal) { literal.value.type }
+	def dispatch Classifier getType(ArrayLiteral literal) {
+		val classifier = getType(literal.literals.get(0))
+		val size = RecordLangFactory::eINSTANCE.createArraySize
+		size.setSize(literal.literals.size)
+		classifier.sizes.add(0,size)
+		return classifier		
+	}
+		
+	def dispatch Classifier getType(Literal literal) {
+		throw new InternalErrorException('Unhandled literal type')
+	}
+	
+	def createPrimitiveClassifier(EDataType type) {
+		val classifier = RecordLangFactory::eINSTANCE.createClassifier()
+		classifier.setClass(type)
+		return classifier
+	}
+	
+	/* -- service routines -- */
 	
 	/**
 	 * Compare types of a property for equality including package name.

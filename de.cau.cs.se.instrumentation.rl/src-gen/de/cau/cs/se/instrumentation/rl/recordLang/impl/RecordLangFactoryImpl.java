@@ -2,7 +2,7 @@
  */
 package de.cau.cs.se.instrumentation.rl.recordLang.impl;
 
-import de.cau.cs.se.instrumentation.rl.recordLang.Array;
+import de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize;
 import de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
@@ -94,7 +94,7 @@ public class RecordLangFactoryImpl extends EFactoryImpl implements RecordLangFac
       case RecordLangPackage.ARRAY_SIZE: return createArraySize();
       case RecordLangPackage.REFERENCE_PROPERTY: return createReferenceProperty();
       case RecordLangPackage.LITERAL: return createLiteral();
-      case RecordLangPackage.ARRAY: return createArray();
+      case RecordLangPackage.ARRAY_LITERAL: return createArrayLiteral();
       case RecordLangPackage.STRING_LITERAL: return createStringLiteral();
       case RecordLangPackage.INT_LITERAL: return createIntLiteral();
       case RecordLangPackage.FLOAT_LITERAL: return createFloatLiteral();
@@ -242,10 +242,10 @@ public class RecordLangFactoryImpl extends EFactoryImpl implements RecordLangFac
    * <!-- end-user-doc -->
    * @generated
    */
-  public Array createArray()
+  public ArrayLiteral createArrayLiteral()
   {
-    ArrayImpl array = new ArrayImpl();
-    return array;
+    ArrayLiteralImpl arrayLiteral = new ArrayLiteralImpl();
+    return arrayLiteral;
   }
 
   /**
