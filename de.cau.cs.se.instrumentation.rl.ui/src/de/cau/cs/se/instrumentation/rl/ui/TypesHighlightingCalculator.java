@@ -25,7 +25,6 @@ public class TypesHighlightingCalculator implements ISemanticHighlightingCalcula
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
 	public void provideHighlightingFor(final XtextResource resource, final IHighlightedPositionAcceptor acceptor) {
 		if ((resource == null) || (resource.getParseResult() == null)) {
 			return;

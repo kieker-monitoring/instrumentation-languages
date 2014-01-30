@@ -1,10 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.cau.cs.se.instrumentation</groupId>
-	<artifactId>parent</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<artifactId>Master</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Master Project</name>
+
 	<packaging>pom</packaging>
+
 	<modules>
 		<module>../de.cau.cs.se.instrumentation.al</module>
 		<module>../de.cau.cs.se.instrumentation.al.ui</module>
@@ -19,8 +22,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<tycho-version>0.16.0</tycho-version>
-		<tycho-extras.version>0.16.0</tycho-extras.version>
+		<tycho.version>0.19.0</tycho.version>
 		<kepler-repo.url>http://download.eclipse.org/releases/kepler</kepler-repo.url>
 		<kieler-repo.url>http://rtsys.informatik.uni-kiel.de/~kieler/updatesite/nightly</kieler-repo.url>
 		<palladio-repo.url>http://sdqweb.ipd.kit.edu/eclipse/palladio/releases/3.4.1</palladio-repo.url>
@@ -41,13 +43,13 @@
 			<layout>p2</layout>
 			<url>${kepler-repo.url}</url>
 		</repository>
-		
+
 		<repository>
 			<id>kieler</id>
 			<layout>p2</layout>
 			<url>${kieler-repo.url}</url>
 		</repository>
-		
+
 		<repository>
 			<id>probespec</id>
 			<layout>p2</layout>
@@ -86,6 +88,7 @@
 			<layout>p2</layout>
 			<url>${eclipselabs-site}</url>
 		</repository>
+
 	</repositories>
 
 	<build>
@@ -93,7 +96,7 @@
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-maven-plugin</artifactId>
-				<version>${tycho-version}</version>
+				<version>${tycho.version}</version>
 				<extensions>true</extensions>
 			</plugin>
 
@@ -130,110 +133,8 @@
 					</environments>
 				</configuration>
 			</plugin>
-
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-source-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>plugin-source</id>
-						<goals>
-							<goal>plugin-source</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
 
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>target-platform-configuration</artifactId>
-					<version>${tycho-version}</version>
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>tycho-compiler-plugin</artifactId>
-					<version>${tycho-version}</version>
-					<configuration>
-						<compilerArguments>
-							<inlineJSR />
-							<enableJavadoc />
-							<encoding>ISO-8859-1</encoding>
-						</compilerArguments>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>tycho-packaging-plugin</artifactId>
-					<version>${tycho-version}</version>
-					<dependencies>
-						<dependency>
-							<groupId>org.eclipse.tycho.extras</groupId>
-							<artifactId>tycho-buildtimestamp-jgit</artifactId>
-							<version>${tycho-extras.version}</version>
-						</dependency>
-					</dependencies>
-					<configuration>
-						<strictBinIncludes>false</strictBinIncludes>
-						<format>'v'yyyyMMdd-HHmm</format>
-						<timestampProvider>jgit</timestampProvider>
-						<jgit.ignore>
-						</jgit.ignore>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>tycho-surefire-plugin</artifactId>
-					<version>${tycho-version}</version>
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>tycho-source-plugin</artifactId>
-					<version>${tycho-version}</version>
-					<configuration>
-						<strictSrcIncludes>false</strictSrcIncludes>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>tycho-p2-director-plugin</artifactId>
-					<version>${tycho-version}</version>
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>tycho-p2-repository-plugin</artifactId>
-					<version>${tycho-version}</version>
-					<configuration>
-						<includeAllDependencies>true</includeAllDependencies>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.tycho.extras</groupId>
-					<artifactId>tycho-source-feature-plugin</artifactId>
-					<version>${tycho-extras.version}</version>
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.tycho.extras</groupId>
-					<artifactId>tycho-custom-bundle-plugin</artifactId>
-					<version>${tycho-extras.version}</version>
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>tycho-p2-plugin</artifactId>
-					<version>${tycho-version}</version>
-					<configuration>
-						<baselineMode>warn</baselineMode>
-						<baselineReplace>none</baselineReplace>
-						<baselineRepositories>
-							<repository>
-								<url>http://download.eclipse.org/eclipse/updates/4.2</url>
-							</repository>
-						</baselineRepositories>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 	</build>
+
 </project>
