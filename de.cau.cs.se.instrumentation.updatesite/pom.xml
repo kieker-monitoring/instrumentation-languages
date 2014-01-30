@@ -1,16 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-  <modelVersion>4.0.0</modelVersion>
+	<modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <relativePath>../de.cau.cs.se.instrumentation.releng/pom.xml</relativePath>
-    <groupId>de.cau.cs.se.instrumentation</groupId>
-    <artifactId>parent</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-  </parent>
+	<parent>
+		<relativePath>../de.cau.cs.se.instrumentation.releng/pom.xml</relativePath>
+		<groupId>de.cau.cs.se.instrumentation</groupId>
+		<artifactId>parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
 
-  <artifactId>de.cau.cs.se.instrumentation.updatesite</artifactId>
-  <packaging>eclipse-repository</packaging>
+	<artifactId>de.cau.cs.se.instrumentation.updatesite</artifactId>
+	<packaging>eclipse-repository</packaging>
 
-  <name>Instrumentation Languages Update Site</name>
+	<name>Instrumentation Languages Update Site</name>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-p2-repository-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<includeAllDependencies>true</includeAllDependencies>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-p2-director-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<executions>
+					<execution>
+						<id>materialize-products</id>
+						<goals>
+							<goal>materialize-products</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>archive-products</id>
+						<goals>
+							<goal>archive-products</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>

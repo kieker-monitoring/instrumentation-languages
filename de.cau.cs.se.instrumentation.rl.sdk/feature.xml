@@ -6,12 +6,12 @@
 			id="de.cau.cs.se.instrumentation.rl"
 			download-size="0"
 			install-size="0"
-			version="0.0.0"
+			version="1.0.0.qualifier"
 			unpack="false"/>
 	<plugin
 			id="de.cau.cs.se.instrumentation.rl.ui"
 			download-size="0"
 			install-size="0"
-			version="0.0.0"
+			version="1.0.0.qualifier"
 			unpack="false"/>
 </feature>

@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-  <modelVersion>4.0.0</modelVersion>
+	<modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <relativePath>../de.cau.cs.se.instrumentation.releng/pom.xml</relativePath>
-    <groupId>de.cau.cs.se.instrumentation</groupId>
-    <artifactId>parent</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-  </parent>
+	<parent>
+		<relativePath>../de.cau.cs.se.instrumentation.releng/pom.xml</relativePath>
+		<groupId>de.cau.cs.se.instrumentation</groupId>
+		<artifactId>parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
 
-  <artifactId>de.cau.cs.se.instrumentation.al.tests</artifactId>
-  <packaging>eclipse-test-plugin</packaging>
+	<artifactId>de.cau.cs.se.instrumentation.al.tests</artifactId>
+	<packaging>eclipse-test-plugin</packaging>
 
-  <name>Instrumentation application language tests</name>
+	<name>Instrumentation application language tests</name>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.eclipse.tycho</groupId>
-        <artifactId>tycho-surefire-plugin</artifactId>
-        <version>${tycho-version}</version>
-        <configuration>
-          <useUIHarness>false</useUIHarness>
-          <useUIThread>false</useUIThread>
-        </configuration>
-      </plugin>
-        </plugins>
-  </build>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-surefire-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<useUIHarness>false</useUIHarness>
+					<useUIThread>false</useUIThread>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

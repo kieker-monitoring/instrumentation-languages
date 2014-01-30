@@ -16,12 +16,14 @@ Require-Bundle: de.cau.cs.se.instrumentation.al;visibility:=reexport,
  org.eclipse.xtext.common.types.ui,
  org.eclipse.xtext.ui.codetemplates.ui,
  org.eclipse.compare,
+ org.eclipse.ui.ide.application,
  de.cau.cs.se.instrumentation.rl.ui,
  de.cau.cs.kieler.core.annotations.edit;bundle-version="0.3.0",
  de.cau.cs.kieler.core.annotations.text,
  de.cau.cs.kieler.core.annotations.text.ui;bundle-version="0.4.1"
 Import-Package: org.apache.log4j,
- org.eclipse.xtext.xbase.lib
+ org.eclipse.xtext.xbase.lib,
+ org.eclipse.xtend2.lib
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: de.cau.cs.se.instrumentation.al.ui.quickfix,
  de.cau.cs.se.instrumentation.al.ui.contentassist,
