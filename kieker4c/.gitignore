@@ -3,4 +3,5 @@
 **/libtool
 **/Makefile
 **/.deps/**
+**/.libs/**
 /Build (GNU)
