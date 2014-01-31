@@ -33,7 +33,7 @@
  *
  * return socket handle id or -1 on error.
  */
-unsigned short socket_open_read (unsigned short port);
+unsigned short kieker_io_server_socket_open (unsigned short port);
 
 /*
  * Open a client socket, by connecting to a remote service and return the socket handle.
@@ -44,7 +44,7 @@ unsigned short socket_open_read (unsigned short port);
  * returns the socket for the connection or
  *         -1 or h_errno negative numbers on error
  */
-int socket_open_write (const char* host, unsigned short port);
+int kieker_io_client_socket_open (const char* host, unsigned short port);
 
 /*
  * Close a previously opened socket connection.
@@ -53,6 +53,6 @@ int socket_open_write (const char* host, unsigned short port);
  *
  * returns the result of close (man 2 close)
  */
-int socket_close (unsigned short socket);
+int kieker_io_socket_close (unsigned short socket);
 
 #endif /* SOCKET_H_ */

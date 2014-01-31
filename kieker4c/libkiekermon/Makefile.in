@@ -119,7 +119,9 @@ am__uninstall_files_from_dir = { \
 am__installdirs = "$(DESTDIR)$(libdir)"
 LTLIBRARIES = $(lib_LTLIBRARIES)
 libkiekermon_la_LIBADD =
-am_libkiekermon_la_OBJECTS = libkiekermon_la-kieker.lo
+am_libkiekermon_la_OBJECTS = libkiekermon_la-kieker_io.lo \
+	libkiekermon_la-kieker_serialize.lo \
+	libkiekermon_la-kieker_lookup.lo
 libkiekermon_la_OBJECTS = $(am_libkiekermon_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -319,7 +321,7 @@ lib_LTLIBRARIES = libkiekermon.la
 # Build information for each library
 
 # Sources for libkiekermon
-libkiekermon_la_SOURCES = kieker.c
+libkiekermon_la_SOURCES = kieker_io.c kieker_serialize.c kieker_lookup.c
 
 # Linker options libTestProgram
 libkiekermon_la_LDFLAGS = 
@@ -406,7 +408,9 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libkiekermon_la-kieker.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libkiekermon_la-kieker_io.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libkiekermon_la-kieker_lookup.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libkiekermon_la-kieker_serialize.Plo@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -429,12 +433,26 @@ distclean-compile:
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LTCOMPILE) -c -o $@ $<
 
-libkiekermon_la-kieker.lo: kieker.c
-@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libkiekermon_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT libkiekermon_la-kieker.lo -MD -MP -MF $(DEPDIR)/libkiekermon_la-kieker.Tpo -c -o libkiekermon_la-kieker.lo `test -f 'kieker.c' || echo '$(srcdir)/'`kieker.c
-@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libkiekermon_la-kieker.Tpo $(DEPDIR)/libkiekermon_la-kieker.Plo
-@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='kieker.c' object='libkiekermon_la-kieker.lo' libtool=yes @AMDEPBACKSLASH@
+libkiekermon_la-kieker_io.lo: kieker_io.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libkiekermon_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT libkiekermon_la-kieker_io.lo -MD -MP -MF $(DEPDIR)/libkiekermon_la-kieker_io.Tpo -c -o libkiekermon_la-kieker_io.lo `test -f 'kieker_io.c' || echo '$(srcdir)/'`kieker_io.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libkiekermon_la-kieker_io.Tpo $(DEPDIR)/libkiekermon_la-kieker_io.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='kieker_io.c' object='libkiekermon_la-kieker_io.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
-@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libkiekermon_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o libkiekermon_la-kieker.lo `test -f 'kieker.c' || echo '$(srcdir)/'`kieker.c
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libkiekermon_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o libkiekermon_la-kieker_io.lo `test -f 'kieker_io.c' || echo '$(srcdir)/'`kieker_io.c
+
+libkiekermon_la-kieker_serialize.lo: kieker_serialize.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libkiekermon_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT libkiekermon_la-kieker_serialize.lo -MD -MP -MF $(DEPDIR)/libkiekermon_la-kieker_serialize.Tpo -c -o libkiekermon_la-kieker_serialize.lo `test -f 'kieker_serialize.c' || echo '$(srcdir)/'`kieker_serialize.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libkiekermon_la-kieker_serialize.Tpo $(DEPDIR)/libkiekermon_la-kieker_serialize.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='kieker_serialize.c' object='libkiekermon_la-kieker_serialize.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libkiekermon_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o libkiekermon_la-kieker_serialize.lo `test -f 'kieker_serialize.c' || echo '$(srcdir)/'`kieker_serialize.c
+
+libkiekermon_la-kieker_lookup.lo: kieker_lookup.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libkiekermon_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT libkiekermon_la-kieker_lookup.lo -MD -MP -MF $(DEPDIR)/libkiekermon_la-kieker_lookup.Tpo -c -o libkiekermon_la-kieker_lookup.lo `test -f 'kieker_lookup.c' || echo '$(srcdir)/'`kieker_lookup.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libkiekermon_la-kieker_lookup.Tpo $(DEPDIR)/libkiekermon_la-kieker_lookup.Plo
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='kieker_lookup.c' object='libkiekermon_la-kieker_lookup.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libkiekermon_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o libkiekermon_la-kieker_lookup.lo `test -f 'kieker_lookup.c' || echo '$(srcdir)/'`kieker_lookup.c
 
 mostlyclean-libtool:
 	-rm -f *.lo

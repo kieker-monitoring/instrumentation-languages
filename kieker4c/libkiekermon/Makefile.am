@@ -8,7 +8,7 @@ lib_LTLIBRARIES = libkiekermon.la
 # Build information for each library
 
 # Sources for libkiekermon
-libkiekermon_la_SOURCES = kieker.c
+libkiekermon_la_SOURCES = kieker_io.c kieker_serialize.c kieker_lookup.c
 
 # Linker options libTestProgram
 libkiekermon_la_LDFLAGS = 
