@@ -262,6 +262,12 @@
             name="Compiler">
             <keywordReference id="de.cau.cs.se.instrumentation.rl.ui.keyword_RecordLang"/>
         </page>
+        <page
+        	category="de.cau.cs.se.instrumentation.rl.RecordLang"
+              class="de.cau.cs.se.instrumentation.rl.ui.preferences.CompilerPreferencePage"
+              id="de.cau.cs.se.instrumentation.rl.ui.preferences.compiler"
+              name="Compiler 2">
+        </page>
     </extension>
     <extension
             point="org.eclipse.ui.propertyPages">

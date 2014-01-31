@@ -15,7 +15,7 @@
       <!-- @generated ModelStructure -->
       <package
             uri="http://modelstructure.se.cs.cau.de/structure"
-            class="de.cau.cs.se.instrumantation.model.structure.StructurePackage"
+            class="de.cau.cs.se.instrumentation.model.structure.StructurePackage"
             genModel="model/ModelStructure.genmodel"/>
    </extension>
 
