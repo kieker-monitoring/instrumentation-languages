@@ -4,4 +4,7 @@
 **/Makefile
 **/.deps/**
 **/.libs/**
+**/autom4te.cache/output.*
+**/autom4te.cache/traces.*
+**/autom4te.cache/requests
 /Build (GNU)
