@@ -12,7 +12,7 @@
 	<artifactId>de.cau.cs.se.instrumentation.al.tests</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
 
-	<name>Instrumentation application language tests</name>
+	<name>Instrumentation Aspect Language Tests</name>
 
 	<build>
 		<plugins>

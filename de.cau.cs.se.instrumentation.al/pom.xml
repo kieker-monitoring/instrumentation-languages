@@ -12,5 +12,5 @@
   <artifactId>de.cau.cs.se.instrumentation.al</artifactId>
   <packaging>eclipse-plugin</packaging>
 
-  <name>Instrumentation application core language services</name>
+  <name>Instrumentation Aspect Language Core Services</name>
 </project>
