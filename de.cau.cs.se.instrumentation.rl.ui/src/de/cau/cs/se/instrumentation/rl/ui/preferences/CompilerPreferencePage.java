@@ -30,7 +30,6 @@ public class CompilerPreferencePage extends FieldEditorPreferencePage implements
 				"&Perl source directory:", getFieldEditorParent()));
 	}
 
-	@Override
 	public void init(IWorkbench workbench) {
 		setPreferenceStore(RecordLangActivator.getInstance()
 				.getPreferenceStore());
