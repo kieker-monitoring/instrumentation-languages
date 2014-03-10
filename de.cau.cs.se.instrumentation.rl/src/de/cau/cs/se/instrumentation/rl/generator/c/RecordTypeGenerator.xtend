@@ -114,7 +114,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * 
 	 */
 	def createValueSerializer(Property property) '''
-		length += serialize_«property.findType.serializerSuffix»(buffer,offset,«property.name»);
+		length += kieker_serialize_«property.findType.serializerSuffix»(buffer,offset,«property.name»);
 	'''
 		
 	/**
@@ -123,10 +123,13 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	def serializerSuffix(Classifier classifier) {
 		switch (classifier.class_.name) {
 			case 'string' : 'string'
+			case 'byte' : 'int8'
+			case 'short' : 'int16'
 			case 'int' : 'int32'
 			case 'long' : 'int64'
 			case 'float' : 'float'
 			case 'double' : 'double'
+			case 'char' : 'int16'
 			case 'boolean' : 'boolean'
 			default : classifier.class_.name
 		}

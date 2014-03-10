@@ -312,7 +312,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   
   public CharSequence createValueSerializer(final Property property) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("length += serialize_");
+    _builder.append("length += kieker_serialize_");
     Classifier _findType = this.findType(property);
     String _serializerSuffix = this.serializerSuffix(_findType);
     _builder.append(_serializerSuffix, "");
@@ -337,6 +337,18 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       }
     }
     if (!_matched) {
+      if (Objects.equal(_switchValue,"byte")) {
+        _matched=true;
+        _switchResult = "int8";
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(_switchValue,"short")) {
+        _matched=true;
+        _switchResult = "int16";
+      }
+    }
+    if (!_matched) {
       if (Objects.equal(_switchValue,"int")) {
         _matched=true;
         _switchResult = "int32";
@@ -358,6 +370,12 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       if (Objects.equal(_switchValue,"double")) {
         _matched=true;
         _switchResult = "double";
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(_switchValue,"char")) {
+        _matched=true;
+        _switchResult = "int16";
       }
     }
     if (!_matched) {
