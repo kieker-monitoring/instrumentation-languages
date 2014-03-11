@@ -1,16 +1,18 @@
-/*
- * Science Blog 
+/***************************************************************************
+ * Copyright 2013 Kieker Project (http://kieker-monitoring.net)
  *
- * http://www.se.informatik.uni-kiel.de
- * 
- * Copyright 2013 by
- * + Christian-Albrechts-University of Kiel
- *   + Department of Computer Science
- *     + Software Engineering Group
- * 
- * This code is provided under the terms of the Eclipse Public License (EPL).
- * See the file epl-v10.html for the license text.
- */
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ***************************************************************************/
 package de.cau.cs.se.instrumentation.al.modelhandling;
 
 import java.io.IOException;
@@ -64,6 +66,12 @@ public class ForeignModelResource extends ResourceImpl {
 	private de.cau.cs.se.instrumantation.model.structure.Model resultModel;
 	private Map<String, Interface> interfaceMap;
 
+	/**
+	 * Integrate a foreign model.
+	 * 
+	 * @param uri of the foreign model
+	 * @param model the application model
+	 */
 	public ForeignModelResource(final URI uri, final ApplicationModel model) {
 		super(uri);
 		this.applicationModel = model;
@@ -120,22 +128,23 @@ public class ForeignModelResource extends ResourceImpl {
 	 * This routine is called from ResourceImpl load after the load method above is triggered.
 	 * It initialises the primitive type mirror.
 	 * 
-	 * The input stream is always empty in this context and the options are ignored.
+	 * TODO fix documentation
+	 * 
+	 * @param inputStream
+	 * @param options
+	 * 
+	 * @throws IOException
 	 */
 	@Override
 	protected void doLoad(final InputStream inputStream, final Map<?, ?> options) throws IOException {
-		try {
-			if (this.getURI() != null) {
-				this.createModel();
-			} else {
-				try {
-					throw new IOException("Malformed URI in TypeResource.onLoad");
-				} catch (final IOException e) {
-					e.printStackTrace();
-				}
+		if (this.getURI() != null) {
+			this.createModel();
+		} else {
+			try {
+				throw new IOException("Malformed URI in TypeResource.onLoad");
+			} catch (final IOException e) {
+				e.printStackTrace();
 			}
-		} catch (final Exception e) {
-			throw new IOException(e.getMessage());
 		}
 	}
 
@@ -172,9 +181,9 @@ public class ForeignModelResource extends ResourceImpl {
 		final Iterator<EObject> iterator = source.getAllContents();
 		while (iterator.hasNext()) {
 			final EObject o = iterator.next();
-			if ((o instanceof BasicComponent) ||
-					(o instanceof CompositeComponent) ||
-					(o instanceof CompleteComponentType)) {
+			if ((o instanceof BasicComponent) 
+				|| (o instanceof CompositeComponent)
+				|| (o instanceof CompleteComponentType)) {
 				final String[] names = ((de.uka.ipd.sdq.pcm.core.entity.NamedElement) o).getEntityName().split("\\.");
 				final EList<ProvidedRole> providedRoles = ((InterfaceProvidingRequiringEntity) o).getProvidedRoles_InterfaceProvidingEntity();
 				final EList<RequiredRole> requiredRoles = ((InterfaceProvidingRequiringEntity) o).getRequiredRoles_InterfaceRequiringEntity();
@@ -245,8 +254,9 @@ public class ForeignModelResource extends ResourceImpl {
 	 * @param providedRoles
 	 * @param requiredRoles
 	 */
-	private void createNode(Containment parent, final List<Container> containers, final String[] names, final int level,
+	private void createNode(final Containment container, final List<Container> containers, final String[] names, final int level,
 			final EList<ProvidedRole> providedRoles, final EList<RequiredRole> requiredRoles) {
+		Containment parent = container;
 		for (final Container c : containers) {
 			if (c.getName().equals(names[level])) {
 				this.createNode(c, c.getContents(), names, level + 1, providedRoles, requiredRoles);

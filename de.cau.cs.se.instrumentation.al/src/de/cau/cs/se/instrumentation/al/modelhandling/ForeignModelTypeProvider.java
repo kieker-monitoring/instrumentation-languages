@@ -1,16 +1,18 @@
-/*
- * Science Blog 
+/***************************************************************************
+ * Copyright 2013 Kieker Project (http://kieker-monitoring.net)
  *
- * http://www.se.informatik.uni-kiel.de
- * 
- * Copyright 2012 by
- * + Christian-Albrechts-University of Kiel
- *   + Department of Computer Science
- *     + Software Engineering Group
- * 
- * This code is provided under the terms of the Eclipse Public License (EPL).
- * See the file epl-v10.html for the license text.
- */
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ***************************************************************************/
 package de.cau.cs.se.instrumentation.al.modelhandling;
 
 import org.eclipse.emf.common.util.URI;
@@ -40,9 +42,12 @@ public class ForeignModelTypeProvider implements Resource.Factory, IForeignModel
 	private final ApplicationModel model;
 
 	/**
-	 * @param resourceSet
+	 * Construct the type provider.
+	 * 
+	 * @param resourceSet context resource set
+	 * @param model the application model
 	 */
-	public ForeignModelTypeProvider(final ResourceSet resourceSet, ApplicationModel model) {
+	public ForeignModelTypeProvider(final ResourceSet resourceSet, final ApplicationModel model) {
 		this.resourceSet = resourceSet;
 		this.typeUriHelper = new ForeignModelTypeURIHelper();
 		this.model = model;
@@ -95,15 +100,13 @@ public class ForeignModelTypeProvider implements Resource.Factory, IForeignModel
 	 * @param uri
 	 *            The URI for the resource
 	 */
-	// @Override
 	public ForeignModelResource createResource(final URI uri) {
-		return new ForeignModelResource(uri,model);
+		return new ForeignModelResource(uri, this.model);
 	}
 
 	/**
 	 * @returns Returns the URI helper for the type system.
 	 */
-	// @Override
 	public ForeignModelTypeURIHelper getTypeUriHelper() {
 		return this.typeUriHelper;
 	}

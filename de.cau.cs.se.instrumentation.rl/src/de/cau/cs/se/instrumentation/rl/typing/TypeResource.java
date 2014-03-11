@@ -1,16 +1,18 @@
-/*
- * Science Blog 
+/***************************************************************************
+ * Copyright 2013 Kieker Project (http://kieker-monitoring.net)
  *
- * http://www.se.informatik.uni-kiel.de
- * 
- * Copyright 2013 by
- * + Christian-Albrechts-University of Kiel
- *   + Department of Computer Science
- *     + Software Engineering Group
- * 
- * This code is provided under the terms of the Eclipse Public License (EPL).
- * See the file epl-v10.html for the license text.
- */
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ***************************************************************************/
 package de.cau.cs.se.instrumentation.rl.typing;
 
 import java.io.IOException;
@@ -31,10 +33,18 @@ import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
  */
 public class TypeResource extends ResourceImpl {
 
+	/**
+	 * Construct the type resource without an URI.
+	 */
 	public TypeResource() {
 		super();
 	}
 
+	/**
+	 * Construct the type resource with an URI.
+	 * 
+	 * @param uri the URI of the fake resource
+	 */
 	public TypeResource(final URI uri) {
 		super(uri);
 	}
@@ -88,26 +98,26 @@ public class TypeResource extends ResourceImpl {
 
 	/**
 	 * This routine is called from ResourceImpl load after the load method above is triggered.
-	 * It initialises the primitive type mirror.
+	 * It initializes the primitive type mirror.
 	 * 
 	 * The input stream is always empty in this context and the options are ignored.
+	 * 
+	 * @param inputStream the field is ignored, as this resource is an in memory resource.
+	 * @param options ignored field, as the resource is an in memory resource.
+	 * @throws IOException when the URI is malformed.
 	 */
 	@Override
 	protected void doLoad(final InputStream inputStream, final Map<?, ?> options) throws IOException {
-		try {
-			if (this.getURI() != null) {
-				for (final PrimitiveTypes primitiveType : PrimitiveTypes.values()) {
-					this.getContents().add(primitiveType.getEType());
-				}
-			} else {
-				try {
-					throw new IOException("Malformed URI in TypeResource.onLoad");
-				} catch (final IOException e) {
-					e.printStackTrace();
-				}
+		if (this.getURI() != null) {
+			for (final PrimitiveTypes primitiveType : PrimitiveTypes.values()) {
+				this.getContents().add(primitiveType.getEType());
 			}
-		} catch (final Exception e) {
-			throw new IOException(e.getMessage());
+		} else {
+			try {
+				throw new IOException("Malformed URI in TypeResource.onLoad");
+			} catch (final IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 

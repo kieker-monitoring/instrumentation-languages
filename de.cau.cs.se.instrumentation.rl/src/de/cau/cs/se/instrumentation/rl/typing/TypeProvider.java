@@ -1,16 +1,18 @@
-/*
- * Science Blog 
+/***************************************************************************
+ * Copyright 2013 Kieker Project (http://kieker-monitoring.net)
  *
- * http://www.se.informatik.uni-kiel.de
- * 
- * Copyright 2012 by
- * + Christian-Albrechts-University of Kiel
- *   + Department of Computer Science
- *     + Software Engineering Group
- * 
- * This code is provided under the terms of the Eclipse Public License (EPL).
- * See the file epl-v10.html for the license text.
- */
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ***************************************************************************/
 package de.cau.cs.se.instrumentation.rl.typing;
 
 import org.eclipse.emf.common.util.URI;
@@ -48,7 +50,6 @@ public class TypeProvider implements Resource.Factory, ITypeProvider {
 	 * 
 	 * @return Returns an iterable with all primitive types.
 	 */
-	// @Override
 	public Iterable<EClassifier> getAllTypes() {
 		/*
 		 * Get the (already created) types from the helper resource and cast the list to a list of
@@ -56,10 +57,8 @@ public class TypeProvider implements Resource.Factory, ITypeProvider {
 		 */
 		return IterableExtensions.map(
 				this.resourceSet.getResource(
-						URI.createURI(EcoreURIHelperConstants.PROTOCOL + ":"
-								+ EcoreURIHelperConstants.PRIMITIVES), true).getContents(),
+						this.typeUriHelper.createResourceURI(), true).getContents(),
 				new Function1<EObject, EClassifier>() {
-					// @Override
 					public EClassifier apply(final EObject p) {
 						return (EClassifier) p;
 					}
@@ -73,7 +72,6 @@ public class TypeProvider implements Resource.Factory, ITypeProvider {
 	 *            The name of the type.
 	 * @return Returns the primitive type for a given type name, or null.
 	 */
-	// @Override
 	public EClassifier findTypeByName(final String name) {
 		if (Strings.isEmpty(name)) {
 			throw new IllegalArgumentException("Internal error: Empty type name.");
