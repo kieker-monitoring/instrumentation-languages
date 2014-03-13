@@ -43,9 +43,7 @@ public class TypeProviderFactory {
 	 * @return Returns the type provider for primitive types.
 	 */
 	public ITypeProvider getTypeProvider(final ResourceSet resourceSet) {
-		if (resourceSet == null) {
-			throw new IllegalArgumentException("resourceSet may not be null.");
-		} else {
+		if (resourceSet != null) {
 			final Object o = resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
 					.get(EcoreTypeURIHelper.PROTOCOL);
 			if (o != null) {
@@ -58,6 +56,8 @@ public class TypeProviderFactory {
 			} else {
 				return this.createTypeProvider(resourceSet);
 			}
+		} else {
+			throw new IllegalArgumentException("Cannot get type provide without a resourceSet.");
 		}
 	}
 

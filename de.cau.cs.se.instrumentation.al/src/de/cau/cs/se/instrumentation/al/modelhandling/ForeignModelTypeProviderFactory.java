@@ -43,9 +43,7 @@ public class ForeignModelTypeProviderFactory {
 	 * @return Returns the type provider for primitive types.
 	 */
 	public IForeignModelTypeProvider getTypeProvider(final ResourceSet resourceSet, final ApplicationModel model) {
-		if (resourceSet == null) {
-			throw new IllegalArgumentException("resourceSet may not be null.");
-		} else {
+		if (resourceSet != null) {
 			final Object o = resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
 					.get(ForeignModelTypeURIHelper.PROTOCOL);
 			if (o != null) {
@@ -58,6 +56,8 @@ public class ForeignModelTypeProviderFactory {
 			} else {
 				return this.createTypeProvider(resourceSet, model);
 			}
+		} else {
+			throw new IllegalArgumentException("Cannot get type provide without a resourceSet.");
 		}
 	}
 
@@ -74,7 +74,6 @@ public class ForeignModelTypeProviderFactory {
 		resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
 				.put(ForeignModelTypeURIHelper.PROTOCOL, typeProvider);
 		return typeProvider;
-
 	}
 
 

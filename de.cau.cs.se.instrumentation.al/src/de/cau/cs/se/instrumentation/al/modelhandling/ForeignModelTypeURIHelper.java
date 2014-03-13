@@ -39,13 +39,13 @@ public class ForeignModelTypeURIHelper { // NOCS -- constructor not required
 	}
 
 	// TODO check if this contraption is really useful
-	public URI getFullURIForClass(final String fqn) {
+	public URI getFullURIForClass(final String fullQualifiedClassName) {
 		final StringBuilder uriBuilder = new StringBuilder(48);
 		uriBuilder.append(PROTOCOL);
 		uriBuilder.append(':');
-		uriBuilder.append(OBJECTS).append(fqn);
+		uriBuilder.append(OBJECTS).append(fullQualifiedClassName);
 		uriBuilder.append('#');
-		uriBuilder.append(fqn);
+		uriBuilder.append(fullQualifiedClassName);
 		return URI.createURI(uriBuilder.toString());
 	}
 
