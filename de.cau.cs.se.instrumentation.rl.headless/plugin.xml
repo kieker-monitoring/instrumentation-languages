@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         id="IRLBuilder"
+         point="org.eclipse.core.runtime.applications">
+      <application
+            cardinality="singleton-global"
+            thread="main"
+            visible="true">
+         <run
+               class="de.cau.cs.se.instrumentation.rl.headless.IRLBuilderApplication">
+         </run>
+      </application>
+   </extension>
+   <extension
+         id="IRLCompiler"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="de.cau.cs.se.instrumentation.rl.headless.IRLBuilder"
+            name="Command Line IRL Compiler">
+         <property
+               name="appName"
+               value="Command Line IRL Compiler">
+         </property>
+      </product>
+   </extension>
+
+</plugin>
