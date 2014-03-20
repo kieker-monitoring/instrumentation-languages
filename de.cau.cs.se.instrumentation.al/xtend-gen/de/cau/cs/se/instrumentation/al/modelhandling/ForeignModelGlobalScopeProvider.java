@@ -65,15 +65,12 @@ public class ForeignModelGlobalScopeProvider extends DefaultGlobalScopeProvider 
           Iterator<ApplicationModel> _filter = Iterators.<ApplicationModel>filter(_allContents, ApplicationModel.class);
           ApplicationModel _head = IteratorExtensions.<ApplicationModel>head(_filter);
           final IForeignModelTypeProvider typeProvider = this.typeProviderFactory.getTypeProvider(resourceSet, _head);
-          ForeignModelTypeScope _foreignModelTypeScope = new ForeignModelTypeScope(typeProvider, this.qualifiedNameConverter, filter);
-          return _foreignModelTypeScope;
+          return new ForeignModelTypeScope(typeProvider, this.qualifiedNameConverter, filter);
         } else {
-          IllegalStateException _illegalStateException = new IllegalStateException("context must be contained in a resource set");
-          throw _illegalStateException;
+          throw new IllegalStateException("context must be contained in a resource set");
         }
       } else {
-        IllegalStateException _illegalStateException_1 = new IllegalStateException("context must be contained in a resource");
-        throw _illegalStateException_1;
+        throw new IllegalStateException("context must be contained in a resource");
       }
     } else {
       return IScope.NULLSCOPE;

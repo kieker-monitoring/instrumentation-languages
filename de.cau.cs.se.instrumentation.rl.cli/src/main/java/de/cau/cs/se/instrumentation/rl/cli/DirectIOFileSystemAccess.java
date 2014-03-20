@@ -24,13 +24,19 @@ import java.io.UnsupportedEncodingException;
 
 import org.eclipse.xtext.generator.IFileSystemAccess;
 
+import kieker.common.logging.Log;
+import kieker.common.logging.LogFactory;
+
 /**
  * File system access class used by the generator.
  * 
  * @author Reiner Jung
  * 
  */
-public class HeadlessFileSystemAccess implements IFileSystemAccess {
+public class DirectIOFileSystemAccess implements IFileSystemAccess {
+
+	/** Central logger for the compiler. */
+	private static final Log LOG = LogFactory.getLog(DirectIOFileSystemAccess.class);
 
 	private String rootPath = "";
 
@@ -40,7 +46,7 @@ public class HeadlessFileSystemAccess implements IFileSystemAccess {
 	 * @param rootPath
 	 *            root path where the files are stored
 	 */
-	public HeadlessFileSystemAccess(final String rootPath) {
+	public DirectIOFileSystemAccess(final String rootPath) {
 		this.rootPath = rootPath;
 	}
 
@@ -54,7 +60,7 @@ public class HeadlessFileSystemAccess implements IFileSystemAccess {
 	 */
 	public void generateFile(final String fileName, final CharSequence contents) {
 		try {
-			System.out.println("File: " + this.rootPath + "/" + fileName);
+			LOG.info("Create " + this.rootPath + "/" + fileName);
 			final File file = new File(this.rootPath + "/" + fileName);
 			file.getParentFile().mkdirs();
 			final BufferedWriter writer = new BufferedWriter(new FileWriter(file));
@@ -62,11 +68,11 @@ public class HeadlessFileSystemAccess implements IFileSystemAccess {
 			writer.flush();
 			writer.close();
 		} catch (final UnsupportedEncodingException e) {
-			System.out.println("Error: " + e.getLocalizedMessage() + "  " + fileName);
+			LOG.error("Error: " + fileName, e);
 		} catch (final FileNotFoundException e) {
-			System.out.println("Error: " + e.getLocalizedMessage() + "  " + fileName);
+			LOG.error("Error: " + fileName, e);
 		} catch (final IOException e) {
-			System.out.println("Error: " + e.getLocalizedMessage() + "  " + fileName);
+			LOG.error("Error: " + fileName, e);
 		}
 	}
 
@@ -82,7 +88,7 @@ public class HeadlessFileSystemAccess implements IFileSystemAccess {
 	 */
 	public void generateFile(final String fileName, final String outputConfigurationName,
 			final CharSequence contents) {
-		System.out.println("OutputconfigurationName " + outputConfigurationName);
+		LOG.info("OutputconfigurationName " + outputConfigurationName);
 		this.generateFile(fileName, contents);
 	}
 
@@ -93,7 +99,8 @@ public class HeadlessFileSystemAccess implements IFileSystemAccess {
 	 *            file to be deleted
 	 */
 	public void deleteFile(final String fileName) {
-		final File file = new File(fileName);
+		LOG.info("Delete " + this.rootPath + "/" + fileName);
+		final File file = new File(this.rootPath + "/" + fileName);
 		if (file.exists()) {
 			file.delete();
 		}

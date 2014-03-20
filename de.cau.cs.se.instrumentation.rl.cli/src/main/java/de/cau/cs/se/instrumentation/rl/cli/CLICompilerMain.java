@@ -44,10 +44,10 @@ import kieker.tools.util.CLIHelpFormatter;
  * @author Reiner Jung
  * 
  */
-public class HeadlessCompiler { // NOCS
+public class CLICompilerMain { // NOCS
 
 	/** Central logger for the compiler. */
-	private static final Log LOG = LogFactory.getLog(HeadlessCompiler.class);
+	private static final Log LOG = LogFactory.getLog(CLICompilerMain.class);
 
 	/** Legal extensions for IRL files. */
 	private static final Object FILE_EXTENSION_IRL = "irl";
@@ -92,14 +92,15 @@ public class HeadlessCompiler { // NOCS
 	private static CommandLine commandLine;
 
 	/**
-	 * Main method for the compiler, decoding parameter and execution compilation.
+	 * Main method for the compiler, decoding parameter and execution
+	 * compilation.
 	 * 
 	 * @param args
 	 *            command line arguments
 	 */
 	public static void main(final String[] args) {
 		int exitCode = 0;
-		HeadlessCompiler.declareOptions();
+		CLICompilerMain.declareOptions();
 		try {
 			// parse the command line arguments
 			commandLine = new BasicParser().parse(options, args);
@@ -117,24 +118,29 @@ public class HeadlessCompiler { // NOCS
 			}
 
 			if (commandLine.hasOption(CMD_DESTINATION)) {
-				projectDestinationPath = commandLine.getOptionValue(CMD_DESTINATION);
+				projectDestinationPath = commandLine
+						.getOptionValue(CMD_DESTINATION);
 			}
 
 			// EMF and compiler setup
-			new org.eclipse.emf.mwe.utils.StandaloneSetup().setPlatformUri(runtimeRoot);
+			new org.eclipse.emf.mwe.utils.StandaloneSetup()
+					.setPlatformUri(runtimeRoot);
 
-			final Injector injector = new RecordLangStandaloneSetup().createInjectorAndDoEMFRegistration();
+			final Injector injector = new RecordLangStandaloneSetup()
+					.createInjectorAndDoEMFRegistration();
 			resourceSet = injector.getInstance(XtextResourceSet.class);
 			resourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL,
 					Boolean.TRUE);
 
-			sourceRootPath = runtimeRoot + "/" + projectName + "/" + projectSourcePath;
-			targetRootPath = runtimeRoot + "/" + projectName + "/" + projectDestinationPath;
+			sourceRootPath = runtimeRoot + "/" + projectName + "/"
+					+ projectSourcePath;
+			targetRootPath = runtimeRoot + "/" + projectName + "/"
+					+ projectDestinationPath;
 
-			HeadlessCompiler.directoryWalkerResource("");
-			HeadlessCompiler.directoryWalkerCompile("");
+			CLICompilerMain.directoryWalkerResource("");
+			CLICompilerMain.directoryWalkerCompile("");
 		} catch (final ParseException e) {
-			HeadlessCompiler.usage("Parsing failed.  Reason: " + e.getMessage());
+			CLICompilerMain.usage("Parsing failed.  Reason: " + e.getMessage());
 			exitCode = 4;
 		}
 		System.exit(exitCode);
@@ -151,19 +157,15 @@ public class HeadlessCompiler { // NOCS
 
 		if (file.isDirectory()) {
 			for (final String innerFileName : file.list()) {
-				HeadlessCompiler.directoryWalkerResource(pathName + "/" + innerFileName);
+				CLICompilerMain.directoryWalkerResource(pathName + "/"
+						+ innerFileName);
 			}
 		} else {
 			final int i = pathName.lastIndexOf('.');
 
 			if (i > 0) {
 				if (FILE_EXTENSION_IRL.equals(pathName.substring(i + 1))) {
-					resourceSet
-							.getResource(
-									URI.createURI("platform:/resource/"
-											+ projectName + "/"
-											+ projectSourcePath + pathName),
-									true);
+					CLICompilerMain.getResource(pathName);
 				}
 			}
 		}
@@ -180,7 +182,8 @@ public class HeadlessCompiler { // NOCS
 
 		if (file.isDirectory()) {
 			for (final String innerFileName : file.list()) {
-				HeadlessCompiler.directoryWalkerCompile(pathName + "/" + innerFileName);
+				CLICompilerMain.directoryWalkerCompile(pathName + "/"
+						+ innerFileName);
 			}
 		} else {
 			final int i = pathName.lastIndexOf('.');
@@ -188,7 +191,7 @@ public class HeadlessCompiler { // NOCS
 			if (i > 0) {
 				final String extension = pathName.substring(i + 1);
 				if (FILE_EXTENSION_IRL.equals(extension)) {
-					HeadlessCompiler.compile(pathName);
+					CLICompilerMain.compile(pathName);
 				}
 			}
 		}
@@ -203,19 +206,32 @@ public class HeadlessCompiler { // NOCS
 	 * @param version
 	 */
 	private static void compile(final String pathName) {
-		System.out.println("Compiling " + pathName);
+		LOG.info("Compiling " + pathName);
 
 		// load resource
-		final Resource resource = resourceSet.getResource(
-				URI.createURI("platform:/resource/" + projectName + "/"
-						+ projectSourcePath + pathName), true);
+		final Resource resource = CLICompilerMain.getResource(pathName);
 
 		// invoke generator
 		final RecordLangGenerator generator = new RecordLangGenerator();
-		final IFileSystemAccess fsa = new HeadlessFileSystemAccess(targetRootPath);
+		final IFileSystemAccess fsa = new DirectIOFileSystemAccess(
+				targetRootPath);
 		generator.setVersion(version);
 		generator.setAuthor(author);
 		generator.doGenerate(resource, fsa);
+	}
+
+	/**
+	 * Add a resource for the present project and present project source path to
+	 * the resource set and return that resource.
+	 * 
+	 * @param pathName
+	 *            relative path name to the file to be added to the resource set
+	 * @return the resource added to the resource set
+	 */
+	private static Resource getResource(final String pathName) {
+		return resourceSet.getResource(
+				URI.createURI("platform:/resource/" + projectName + "/"
+						+ projectSourcePath + pathName), true);
 	}
 
 	/**
@@ -228,25 +244,29 @@ public class HeadlessCompiler { // NOCS
 		Option option;
 
 		// runtime root
-		option = new Option(CMD_ROOT, CMD_ROOT_LONG, true, "Root folder of eclipse platfrom/workspace.");
+		option = new Option(CMD_ROOT, CMD_ROOT_LONG, true,
+				"Root folder of eclipse platfrom/workspace.");
 		option.setArgName("r");
 		option.setRequired(true);
 		options.addOption(option);
 
 		// eclipse project name
-		option = new Option(CMD_PROJECT, CMD_PROJECT_LONG, true, "Eclipse project containing the files.");
+		option = new Option(CMD_PROJECT, CMD_PROJECT_LONG, true,
+				"Eclipse project containing the files.");
 		option.setArgName("p");
 		option.setRequired(false);
 		options.addOption(option);
 
 		// project relative source folder
-		option = new Option(CMD_SOURCE, CMD_SOURCE_LONG, true, "Project relative source folder.");
+		option = new Option(CMD_SOURCE, CMD_SOURCE_LONG, true,
+				"Project relative source folder.");
 		option.setArgName("s");
 		option.setRequired(false);
 		options.addOption(option);
 
 		// project relative target folder
-		option = new Option(CMD_DESTINATION, CMD_DESTINATION_LONG, true, "Project relative destination folder.");
+		option = new Option(CMD_DESTINATION, CMD_DESTINATION_LONG, true,
+				"Project relative destination folder.");
 		option.setArgName("t");
 		option.setRequired(false);
 		options.addOption(option);
@@ -255,7 +275,8 @@ public class HeadlessCompiler { // NOCS
 	}
 
 	/**
-	 * Print out the server usage and an additional message describing the cause of the failure. Finally terminate the server.
+	 * Print out the server usage and an additional message describing the cause
+	 * of the failure. Finally terminate the server.
 	 * 
 	 * @param message
 	 *            the message to be printed
@@ -263,7 +284,7 @@ public class HeadlessCompiler { // NOCS
 	 *            the exit code
 	 */
 	private static void usage(final String message) {
-		HeadlessCompiler.LOG.error(message);
+		CLICompilerMain.LOG.error(message);
 		final HelpFormatter formatter = new CLIHelpFormatter();
 		formatter.printHelp("irl-compiler", options, true);
 	}

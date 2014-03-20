@@ -105,8 +105,7 @@ public class RecordTypeGenerator extends de.cau.cs.se.instrumentation.rl.generat
     Collection<Property> _collectAllDataProperties = PropertyEvaluation.collectAllDataProperties(type);
     final Function1<Property,CharSequence> _function = new Function1<Property,CharSequence>() {
       public CharSequence apply(final Property it) {
-        CharSequence _createPropertyDeclaration = RecordTypeGenerator.this.createPropertyDeclaration(it);
-        return _createPropertyDeclaration;
+        return RecordTypeGenerator.this.createPropertyDeclaration(it);
       }
     };
     Iterable<CharSequence> _map = IterableExtensions.<Property, CharSequence>map(_collectAllDataProperties, _function);

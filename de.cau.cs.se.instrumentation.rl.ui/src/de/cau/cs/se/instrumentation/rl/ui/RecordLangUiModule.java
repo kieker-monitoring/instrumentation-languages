@@ -21,16 +21,34 @@ import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculato
 
 /**
  * Use this class to register components to be used within the IDE.
+ * 
+ * @author Reiner Jung
  */
 public class RecordLangUiModule extends de.cau.cs.se.instrumentation.rl.ui.AbstractRecordLangUiModule {
+	
+	/**
+	 * Generic UI constructor.
+	 * 
+	 * @param plugin the parent plugin for the module
+	 */
 	public RecordLangUiModule(final AbstractUIPlugin plugin) {
 		super(plugin);
 	}
 
+	/**
+	 * Add highlighting calculator for types.
+	 * 
+	 * @return return the highlighter
+	 */
 	public Class<? extends ISemanticHighlightingCalculator> bindISemanticHighlightingCalculator() {
 		return TypesHighlightingCalculator.class;
 	}
 
+	/**
+	 * Add highlighting configuration for types.
+	 * 
+	 * @return return the configuration
+	 */
 	public Class<? extends IHighlightingConfiguration> bindIHighlightingConfiguration() {
 		return TypesHighlightingConfiguration.class;
 	}

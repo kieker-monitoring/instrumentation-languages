@@ -155,6 +155,11 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 		}
 	}
 	
+	/**
+	 * Create a full qualified type name based on a classifier.
+	 * 
+	 * @param classifier the classifier where the FQN is computed for
+	 */
 	def String createFQNTypeName(Classifier classifier) {
 		classifier.class_.name + classifier.sizes.map['[' + (if (it.size != 0) it.size else '') + ']'].join
 	}
@@ -191,6 +196,9 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 			return false	
 	}
 	
+	/**
+	 * Check if types match in an assignment.
+	 */
 	def compareClassifierTypesInAssignment(Classifier left, Classifier right, Literal literal) {
 		if (compareClassifierTypeEquvalenceSet(left,right,literal)) {
 			if (left.sizes.size == right.sizes.size) {
@@ -208,6 +216,10 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 			return false
 	}
 	
+	/**
+	 * Check if the left and the right type are compatible. First check if they are identical. If
+	 * not use checkTypeEquivalenceSet to check for compatible types. This is required for constants values.
+	 */
 	def compareClassifierTypeEquvalenceSet(Classifier left, Classifier right, Literal literal) {
 		if (left.class_.name.equals(right.class_.name))
 			true
@@ -215,13 +227,16 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 			checkTypeEquivalenceSet(left,right,literal)
 	}
 	
+	/**
+	 * Check if types match.
+	 */
 	def checkTypeEquivalenceSet(Classifier left, Classifier right, Literal literal) {
 		if (left.class_.name.equals('double')) {
 				if (right.class_.name.equals('float')) {
 					if (literal instanceof FloatLiteral)
 						true
 					else if (literal instanceof ArrayLiteral)
-						checkAllLiteralsArtOfType(FloatLiteral,literal)
+						checkAllLiteralsArtOfType(FloatLiteral,literal as ArrayLiteral)
 				} else
 					false
 			} else if (left.class_.name.equals('long')) {
@@ -233,7 +248,7 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 						else
 						 	false
 					else if (literal instanceof ArrayLiteral)
-						checkAllLiteralsArtOfType(IntLiteral,literal)
+						checkAllLiteralsArtOfType(IntLiteral,literal as ArrayLiteral)
 				} else
 					false
 			} else if (left.class_.name.equals('byte')) {
@@ -245,7 +260,7 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 						else
 						 	false
 					else if (literal instanceof ArrayLiteral)
-						checkAllLiteralsArtOfType(IntLiteral,literal)
+						checkAllLiteralsArtOfType(IntLiteral,literal as ArrayLiteral)
 				} else
 					false
 			} else if (left.class_.name.equals('short')) {
@@ -257,7 +272,7 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 						else
 						 	false
 					else if (literal instanceof ArrayLiteral)
-						checkAllLiteralsArtOfType(IntLiteral,literal)
+						checkAllLiteralsArtOfType(IntLiteral,literal as ArrayLiteral)
 				} else
 					false
 			} else
@@ -272,7 +287,7 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 	def boolean checkAllLiteralsArtOfType(Class<? extends Literal> type, ArrayLiteral literal) {
 		literal.literals.forall[element |
 			if (element instanceof ArrayLiteral) 
-				checkAllLiteralsArtOfType(type, element)
+				checkAllLiteralsArtOfType(type, element as ArrayLiteral)
 			else 
 				type.isInstance(element)
 		]

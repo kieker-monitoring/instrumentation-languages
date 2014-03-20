@@ -10,6 +10,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<checkstyle.config.location>../cs-conf.xml</checkstyle.config.location>
 		<tycho-version>0.16.0</tycho-version>
 		<kepler-repo.url>http://download.eclipse.org/releases/kepler</kepler-repo.url>
 		<kieler-repo.url>http://rtsys.informatik.uni-kiel.de/~kieler/updatesite/nightly</kieler-repo.url>
@@ -141,6 +142,12 @@
 					</environments>
 				</configuration>
 			</plugin>
+			<!--  ceckstyle plugin -->
+			<plugin>
+    			<groupId>org.apache.maven.plugins</groupId>
+    			<artifactId>maven-checkstyle-plugin</artifactId>
+    			<version>2.9.1</version>
+ 			</plugin>
 		</plugins>
 
 	</build>

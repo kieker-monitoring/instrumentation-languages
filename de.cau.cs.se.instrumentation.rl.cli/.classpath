@@ -1,29 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5"/>
-	<classpathentry kind="lib" path="/home/rju/eclipse/plugins/org.eclipse.emf.mwe.utils_1.3.1.v201402030544.jar" sourcepath="/home/rju/eclipse/plugins/org.eclipse.emf.mwe.utils.source_1.3.1.v201402030544.jar">
-		<accessrules>
-			<accessrule kind="accessible" pattern="org/eclipse/emf/mwe/utils/*"/>
-			<accessrule ignoreifbetter="true" kind="nonaccessible" pattern="**/*"/>
-		</accessrules>
+	<classpathentry kind="src" output="target/classes" path="src/main/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
 	</classpathentry>
-	<classpathentry kind="src" path="/de.cau.cs.se.instrumentation.rl"/>
-	<classpathentry kind="lib" path="/home/rju/eclipse/plugins/com.google.inject_3.0.0.v201203062045.jar" sourcepath="/home/rju/eclipse/plugins/com.google.inject.source_3.0.0.v201203062045.jar">
-		<accessrules>
-			<accessrule kind="accessible" pattern="com/google/inject/*"/>
-			<accessrule kind="accessible" pattern="com/google/inject/binder/*"/>
-			<accessrule kind="discouraged" pattern="com/google/inject/internal/*"/>
-			<accessrule kind="accessible" pattern="com/google/inject/matcher/*"/>
-			<accessrule kind="accessible" pattern="com/google/inject/name/*"/>
-			<accessrule kind="accessible" pattern="com/google/inject/spi/*"/>
-			<accessrule kind="accessible" pattern="com/google/inject/util/*"/>
-			<accessrule kind="accessible" pattern="com/google/inject/assistedinject/*"/>
-			<accessrule kind="accessible" pattern="com/google/inject/multibindings/*"/>
-			<accessrule ignoreifbetter="true" kind="nonaccessible" pattern="**/*"/>
-		</accessrules>
+	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/rju/eclipse/plugins/org.eclipse.xtext_2.5.3.v201402240820.jar" sourcepath="/home/rju/eclipse/plugins/org.eclipse.xtext.source_2.4.3.v201309030823.jar">
+	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry excluding="**" kind="src" output="target/test-classes" path="src/test/resources">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="/Kieker"/>
+	<classpathentry kind="lib" path="/home/rju/eclipse/plugins/org.eclipse.xtext_2.5.3.v201402240820.jar" sourcepath="/home/rju/eclipse/plugins/org.eclipse.xtext.source_2.5.3.v201402240820.jar">
 		<accessrules>
 			<accessrule kind="accessible" pattern="org/eclipse/xtext/*"/>
 			<accessrule kind="accessible" pattern="org/eclipse/xtext/common/*"/>
@@ -91,56 +101,15 @@
 			<accessrule ignoreifbetter="true" kind="nonaccessible" pattern="**/*"/>
 		</accessrules>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/rju/eclipse/plugins/org.eclipse.core.resources_3.8.101.v20130717-0806.jar"/>
-	<classpathentry kind="lib" path="/home/rju/eclipse/plugins/org.eclipse.emf.ecore_2.9.2.v20131212-0545.jar"/>
-	<classpathentry kind="lib" path="/home/rju/eclipse/plugins/org.eclipse.emf.common_2.9.2.v20131212-0545.jar" sourcepath="/home/rju/eclipse/plugins/org.eclipse.emf.common.source_2.9.2.v20131212-0545.jar">
+	<classpathentry kind="src" path="/de.cau.cs.se.instrumentation.rl"/>
+	<classpathentry kind="lib" path="/home/rju/eclipse/plugins/org.eclipse.emf.mwe.utils_1.3.1.v201402030544.jar" sourcepath="/home/rju/eclipse/plugins/org.eclipse.emf.mwe.utils.source_1.3.1.v201402030544.jar">
 		<accessrules>
-			<accessrule kind="accessible" pattern="org/eclipse/emf/common/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/emf/common/archive/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/emf/common/command/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/emf/common/notify/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/emf/common/notify/impl/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/emf/common/util/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/mwe/utils/*"/>
 			<accessrule ignoreifbetter="true" kind="nonaccessible" pattern="**/*"/>
 		</accessrules>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/rju/eclipse/plugins/org.eclipse.jdt_3.9.1.v20140221-1700.jar"/>
 	<classpathentry kind="lib" path="/home/rju/eclipse/plugins/org.eclipse.jdt.core_3.9.2.v20140114-1555.jar"/>
-	<classpathentry kind="lib" path="/home/rju/eclipse/plugins/org.eclipse.xtext.builder.standalone_2.5.3.v201402240820.jar" sourcepath="/home/rju/eclipse/plugins/org.eclipse.xtext.builder.source_2.4.3.v201309030823.jar">
-		<accessrules>
-			<accessrule kind="accessible" pattern="org/eclipse/xtext/builder/*"/>
-			<accessrule kind="discouraged" pattern="org/eclipse/xtext/builder/builderState/*"/>
-			<accessrule kind="discouraged" pattern="org/eclipse/xtext/builder/builderState/impl/*"/>
-			<accessrule kind="discouraged" pattern="org/eclipse/xtext/builder/builderState/util/*"/>
-			<accessrule kind="discouraged" pattern="org/eclipse/xtext/builder/clustering/*"/>
-			<accessrule kind="discouraged" pattern="org/eclipse/xtext/builder/impl/*"/>
-			<accessrule kind="discouraged" pattern="org/eclipse/xtext/builder/impl/javasupport/*"/>
-			<accessrule kind="discouraged" pattern="org/eclipse/xtext/builder/internal/*"/>
-			<accessrule kind="discouraged" pattern="org/eclipse/xtext/builder/nature/*"/>
-			<accessrule kind="discouraged" pattern="org/eclipse/xtext/builder/preferences/*"/>
-			<accessrule kind="discouraged" pattern="org/eclipse/xtext/builder/resourceloader/*"/>
-			<accessrule kind="discouraged" pattern="org/eclipse/xtext/builder/smap/*"/>
-			<accessrule kind="discouraged" pattern="org/eclipse/xtext/builder/trace/*"/>
-			<accessrule kind="discouraged" pattern="org/eclipse/xtext/builder/trace/impl/*"/>
-			<accessrule kind="discouraged" pattern="org/eclipse/xtext/builder/trace/util/*"/>
-			<accessrule ignoreifbetter="true" kind="nonaccessible" pattern="**/*"/>
-		</accessrules>
-	</classpathentry>
-	<classpathentry kind="lib" path="/home/rju/eclipse/plugins/org.eclipse.core.runtime_3.9.100.v20131218-1515.jar"/>
-	<classpathentry kind="lib" path="/home/rju/eclipse/plugins/org.eclipse.core.runtime.compatibility_3.2.200.v20130326-1255.jar"/>
-	<classpathentry kind="lib" path="/home/rju/eclipse/plugins/org.eclipse.equinox.common_3.6.200.v20130402-1505.jar"/>
-	<classpathentry kind="lib" path="/home/rju/eclipse/plugins/org.eclipse.core.jobs_3.5.300.v20130429-1813.jar"/>
-	<classpathentry kind="lib" path="/home/rju/eclipse/plugins/org.eclipse.core.contenttype_3.4.200.v20130326-1255.jar" sourcepath="/home/rju/eclipse/plugins/org.eclipse.core.contenttype.source_3.4.200.v20130326-1255.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:file:/home/rju/eclipse/plugins/org.eclipse.platform.doc.isv_4.3.2.v20140205-0929.jar!/reference/api"/>
-		</attributes>
-		<accessrules>
-			<accessrule kind="discouraged" pattern="org/eclipse/core/internal/content/*"/>
-			<accessrule kind="accessible" pattern="org/eclipse/core/runtime/content/*"/>
-			<accessrule ignoreifbetter="true" kind="nonaccessible" pattern="**/*"/>
-		</accessrules>
-	</classpathentry>
-	<classpathentry kind="lib" path="/Kieker/lib/commons-cli-1.2.jar"/>
-	<classpathentry kind="src" path="/Kieker"/>
-	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="lib" path="/home/rju/eclipse/plugins/org.eclipse.emf.common_2.9.2.v20131212-0545.jar"/>
+	<classpathentry kind="lib" path="/home/rju/eclipse/plugins/org.eclipse.emf.ecore_2.9.2.v20131212-0545.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
 </classpath>

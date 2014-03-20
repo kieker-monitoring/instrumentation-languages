@@ -25,10 +25,12 @@ import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType
  * Generates one single files per record for java, c, and perl. 
  */
 class RecordLangGenerator implements IGenerator {
+	
+	@Property var version = "1.9"
+	@Property var author = "Generic Kieker"
 		
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		val author = "Generic Kieker"
-		val version = "1.9"
+		
 		
 		// list all generators to support RecordType
 		val Class<?>[] recordTypeGenerators = #[
@@ -56,5 +58,6 @@ class RecordLangGenerator implements IGenerator {
 				
 		
 	}
+	
 	
 }

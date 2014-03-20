@@ -214,7 +214,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * Create import for the parent structure.
 	 */
 	def createParentImport(RecordType type) '''import «(type.parent.eContainer as Model).name».«type.parent.name»;
-	'''
+		'''
 
 	/**
 	 * Determine the correct deserialization code for a property by type.

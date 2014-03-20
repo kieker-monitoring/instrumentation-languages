@@ -56,15 +56,12 @@ public class TypeGlobalScopeProvider extends DefaultGlobalScopeProvider {
         boolean _notEquals_1 = (!Objects.equal(resourceSet, null));
         if (_notEquals_1) {
           final ITypeProvider typeProvider = this.typeProviderFactory.getTypeProvider(resourceSet);
-          PrimitiveTypeScope _primitiveTypeScope = new PrimitiveTypeScope(typeProvider, this.qualifiedNameConverter, filter);
-          return _primitiveTypeScope;
+          return new PrimitiveTypeScope(typeProvider, this.qualifiedNameConverter, filter);
         } else {
-          IllegalStateException _illegalStateException = new IllegalStateException("context must be contained in a resource set");
-          throw _illegalStateException;
+          throw new IllegalStateException("context must be contained in a resource set");
         }
       } else {
-        IllegalStateException _illegalStateException_1 = new IllegalStateException("context must be contained in a resource");
-        throw _illegalStateException_1;
+        throw new IllegalStateException("context must be contained in a resource");
       }
     } else {
       return IScope.NULLSCOPE;

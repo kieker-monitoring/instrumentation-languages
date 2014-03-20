@@ -50,11 +50,9 @@ public class ApplicationLangScopeProvider extends AbstractDeclarativeScopeProvid
     boolean _notEquals = (!Objects.equal(_specialization, null));
     if (_notEquals) {
       LocationQuery _specialization_1 = query.getSpecialization();
-      Node _leaveNode = this.leaveNode(_specialization_1);
-      _xifexpression = _leaveNode;
+      _xifexpression = this.leaveNode(_specialization_1);
     } else {
-      Node _node = query.getNode();
-      _xifexpression = _node;
+      _xifexpression = query.getNode();
     }
     return _xifexpression;
   }

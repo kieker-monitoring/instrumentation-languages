@@ -22,7 +22,7 @@ import de.cau.cs.se.instrumentation.rl.typing.TypeGlobalScopeProvider;
  * 
  * @author rju
  */
-public class RecordLangRuntimeModule extends de.cau.cs.se.instrumentation.rl.AbstractRecordLangRuntimeModule { // NOCS ignoring constructor
+public class RecordLangRuntimeModule extends de.cau.cs.se.instrumentation.rl.AbstractRecordLangRuntimeModule { // NOCS
 
 	/**
 	 * {@inheritDoc}<br>

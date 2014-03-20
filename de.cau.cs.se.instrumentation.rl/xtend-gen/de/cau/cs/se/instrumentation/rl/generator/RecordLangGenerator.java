@@ -38,15 +38,33 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
  */
 @SuppressWarnings("all")
 public class RecordLangGenerator implements IGenerator {
+  private String _version = "1.9";
+  
+  public String getVersion() {
+    return this._version;
+  }
+  
+  public void setVersion(final String version) {
+    this._version = version;
+  }
+  
+  private String _author = "Generic Kieker";
+  
+  public String getAuthor() {
+    return this._author;
+  }
+  
+  public void setAuthor(final String author) {
+    this._author = author;
+  }
+  
   public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
     try {
-      final String author = "Generic Kieker";
-      final String version = "1.9";
       final Class<?>[] recordTypeGenerators = { RecordTypeGenerator.class, de.cau.cs.se.instrumentation.rl.generator.cheader.RecordTypeGenerator.class, de.cau.cs.se.instrumentation.rl.generator.java.RecordTypeGenerator.class, de.cau.cs.se.instrumentation.rl.generator.perl.RecordTypeGenerator.class };
       final Class<?>[] partialRecordTypeGenerators = { PartialRecordTypeGenerator.class };
       for (final Class<?> generator : recordTypeGenerators) {
         {
-          Constructor<? extends Object> _constructor = generator.getConstructor();
+          Constructor<?> _constructor = generator.getConstructor();
           Object _newInstance = _constructor.newInstance();
           final AbstractRecordTypeGenerator cg = ((AbstractRecordTypeGenerator) _newInstance);
           TreeIterator<EObject> _allContents = resource.getAllContents();
@@ -54,7 +72,9 @@ public class RecordLangGenerator implements IGenerator {
           final Procedure1<RecordType> _function = new Procedure1<RecordType>() {
             public void apply(final RecordType type) {
               String _fileName = cg.fileName(type);
-              CharSequence _createContent = cg.createContent(type, author, version);
+              String _author = RecordLangGenerator.this.getAuthor();
+              String _version = RecordLangGenerator.this.getVersion();
+              CharSequence _createContent = cg.createContent(type, _author, _version);
               fsa.generateFile(_fileName, _createContent);
             }
           };
@@ -63,7 +83,7 @@ public class RecordLangGenerator implements IGenerator {
       }
       for (final Class<?> generator_1 : partialRecordTypeGenerators) {
         {
-          Constructor<? extends Object> _constructor = generator_1.getConstructor();
+          Constructor<?> _constructor = generator_1.getConstructor();
           Object _newInstance = _constructor.newInstance();
           final AbstractPartialRecordTypeGenerator cg = ((AbstractPartialRecordTypeGenerator) _newInstance);
           TreeIterator<EObject> _allContents = resource.getAllContents();
@@ -71,7 +91,9 @@ public class RecordLangGenerator implements IGenerator {
           final Procedure1<PartialRecordType> _function = new Procedure1<PartialRecordType>() {
             public void apply(final PartialRecordType type) {
               String _fileName = cg.fileName(type);
-              CharSequence _createContent = cg.createContent(type, author, version);
+              String _author = RecordLangGenerator.this.getAuthor();
+              String _version = RecordLangGenerator.this.getVersion();
+              CharSequence _createContent = cg.createContent(type, _author, _version);
               fsa.generateFile(_fileName, _createContent);
             }
           };
