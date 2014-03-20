@@ -206,7 +206,7 @@ public class CLICompilerMain { // NOCS
 	 * @param version
 	 */
 	private static void compile(final String pathName) {
-		LOG.info("Compiling " + pathName);
+		LOG.info("Compiling " + sourceRootPath + pathName);
 
 		// load resource
 		final Resource resource = CLICompilerMain.getResource(pathName);
