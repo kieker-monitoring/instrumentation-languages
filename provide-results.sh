@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Create archive for IRL compiler
-export COMPILER_DIR="$WORKSPACE/de.cau.cs.se.instrumentationrl.cli"
+export COMPILER_DIR="$WORKSPACE/de.cau.cs.se.instrumentation.rl.cli"
 
 # irl compiler
 cd $COMPILER_DIR
