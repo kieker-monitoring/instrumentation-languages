@@ -37,6 +37,7 @@
 		<module>../de.cau.cs.se.instrumentation.rl.tests</module>
 		<module>../de.cau.cs.se.instrumentation.rl.sdk</module>
 		<module>../de.cau.cs.se.instrumentation.updatesite</module>
+		<module>../de.cau.cs.se.instrumentation.rl.cli</module>
 	</modules>
 
 	<repositories>

@@ -4,7 +4,7 @@
 	<groupId>de.cau.cs.se.instrumentation.rl.cli</groupId>
 	<artifactId>de.cau.cs.se.instrumentation.rl.cli</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>irl-compiler</name>
+	<name>Instrumentation Record Language Compiler</name>
 	<description>Code generator for Kieker's Instrumentation Record Language</description>
 
 	<properties>
