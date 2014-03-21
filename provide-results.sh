@@ -11,14 +11,14 @@ export UPDATE_SITE_SOURCE="$WORKSPACE/de.cau.cs.se.instrumentation.updatesite/ta
 echo $LAST_SUCCESSFUL_BUILD/*
 echo $JENKINS_HOME
 echo $WORKSPACE
-ls -l "$JENKINS_HOME/jobs/modules/de.cau.cs.se.instrumentation$de.cau.cs.se.instrumentation.updatesite/builds/"
-ls -l "$JENKINS_HOME/jobs/modules/de.cau.cs.se.instrumentation$de.cau.cs.se.instrumentation.updatesite/builds/$BUILD_ID"
+ls -l "$JENKINS_HOME/jobs/modules/de.cau.cs.se.instrumentation\$de.cau.cs.se.instrumentation.updatesite/builds/"
+ls -l "$JENKINS_HOME/jobs/modules/de.cau.cs.se.instrumentation\$de.cau.cs.se.instrumentation.updatesite/builds/$BUILD_ID"
 
-ls -l "$JENKINS_HOME/jobs/modules/de.cau.cs.se.instrumentation$de.cau.cs.se.instrumentation.cli/builds/"
-ls -l "$JENKINS_HOME/jobs/modules/de.cau.cs.se.instrumentation$de.cau.cs.se.instrumentation.cli/builds/$BUILD_ID"
+ls -l "$JENKINS_HOME/jobs/modules/de.cau.cs.se.instrumentation\$de.cau.cs.se.instrumentation.cli/builds/"
+ls -l "$JENKINS_HOME/jobs/modules/de.cau.cs.se.instrumentation\$de.cau.cs.se.instrumentation.cli/builds/$BUILD_ID"
 
 echo "EXAMPLE" > "$JENKINS_HOME/jobs/Kieker-Instrumentation-Record-Language/builds/$BUILD_ID/example.txt"
-echo "EXAMPLE2" > "$JENKINS_HOME/jobs/modules/de.cau.cs.se.instrumentation$de.cau.cs.se.instrumentation.cli/builds/$BUILD_ID/example2.txt"
+echo "EXAMPLE2" > "$JENKINS_HOME/jobs/modules/de.cau.cs.se.instrumentation\$de.cau.cs.se.instrumentation.cli/builds/$BUILD_ID/example2.txt"
 
 # mkdir $IRL_COMPILER
 # mkdir $UPDATE_SITE
