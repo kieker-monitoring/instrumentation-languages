@@ -11,10 +11,9 @@ export PROJECT_NAME="Kieker-Instrumentation-Record-Language"
 export PROJECT_RESULTS="$JENKINS_HOME/jobs/$PROJECT_NAME/"
 
 ls -l "$PROJECT_RESULTS/builds/$BUILD_ID"
-ls -l "$PROJECT_RESULTS/modules/de.cau.cs.se.instrumentation\$de.cau.cs.se.instrumentation.updatesite/builds/"
-ls -l "$PROJECT_RESULTS/modules/de.cau.cs.se.instrumentation\$de.cau.cs.se.instrumentation.updatesite/builds/$BUILD_ID"
+ls -l "$PROJECT_RESULTS/builds/$BUILD_ID/de.cau.cs.se.instrumentation.updatesite/builds/$BUILD_NUMBER"
 
-echo "EXAMPLE2" > "$PROJECT_RESULTS/modules/de.cau.cs.se.instrumentation\$de.cau.cs.se.instrumentation.cli/builds/$BUILD_ID/example2.txt"
+echo "EXAMPLE2" > "$PROJECT_RESULTS/builds/$BUILD_ID/de.cau.cs.se.instrumentation.updatesite/builds/$BUILD_NUMBER/example2.txt"
 
 # mkdir $IRL_COMPILER
 # mkdir $UPDATE_SITE
