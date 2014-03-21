@@ -7,18 +7,14 @@ export IRL_COMPILER="$LAST_SUCCESSFUL_BUILD/irl-compiler"
 export UPDATE_SITE="$LAST_SUCCESSFUL_BUILD/updatesite"
 export UPDATE_SITE_SOURCE="$WORKSPACE/de.cau.cs.se.instrumentation.updatesite/target/"
 
-# rm -rf $IRL_COMPILER $UPDATE_SITE
-echo $LAST_SUCCESSFUL_BUILD/*
-echo $JENKINS_HOME
-echo $WORKSPACE
-ls -l "$JENKINS_HOME/jobs/modules/de.cau.cs.se.instrumentation\$de.cau.cs.se.instrumentation.updatesite/builds/"
-ls -l "$JENKINS_HOME/jobs/modules/de.cau.cs.se.instrumentation\$de.cau.cs.se.instrumentation.updatesite/builds/$BUILD_ID"
+export PROJECT_NAME="Kieker-Instrumentation-Record-Language"
+export PROJECT_RESULTS="$JENKINS_HOME/jobs/$PROJECT_NAME/"
 
-ls -l "$JENKINS_HOME/jobs/modules/de.cau.cs.se.instrumentation\$de.cau.cs.se.instrumentation.cli/builds/"
-ls -l "$JENKINS_HOME/jobs/modules/de.cau.cs.se.instrumentation\$de.cau.cs.se.instrumentation.cli/builds/$BUILD_ID"
+ls -l "$PROJECT_RESULTS/builds/$BUILD_ID"
+ls -l "$PROJECT_RESULTS/modules/de.cau.cs.se.instrumentation\$de.cau.cs.se.instrumentation.updatesite/builds/"
+ls -l "$PROJECT_RESULTS/modules/de.cau.cs.se.instrumentation\$de.cau.cs.se.instrumentation.updatesite/builds/$BUILD_ID"
 
-echo "EXAMPLE" > "$JENKINS_HOME/jobs/Kieker-Instrumentation-Record-Language/builds/$BUILD_ID/example.txt"
-echo "EXAMPLE2" > "$JENKINS_HOME/jobs/modules/de.cau.cs.se.instrumentation\$de.cau.cs.se.instrumentation.cli/builds/$BUILD_ID/example2.txt"
+echo "EXAMPLE2" > "$PROJECT_RESULTS/modules/de.cau.cs.se.instrumentation\$de.cau.cs.se.instrumentation.cli/builds/$BUILD_ID/example2.txt"
 
 # mkdir $IRL_COMPILER
 # mkdir $UPDATE_SITE
