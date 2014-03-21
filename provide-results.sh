@@ -9,14 +9,17 @@ export UPDATE_SITE_SOURCE="$WORKSPACE/de.cau.cs.se.instrumentation.updatesite/ta
 
 # rm -rf $IRL_COMPILER $UPDATE_SITE
 echo $LAST_SUCESSFUL_BUILD/*
+echo $JENKINS_HOME
+echo $WORKSPACE
+ls -R $JENKINS_HOME
 
-mkdir $IRL_COMPILER
-mkdir $UPDATE_SITE
+# mkdir $IRL_COMPILER
+# mkdir $UPDATE_SITE
 
 # irl compiler
-tar -cvzpf $IRL_COMPILER/irl-compiler.tar.gz $WORKSPACE/run-irl-compiler.sh $WORKSPACE/lib $WORKSPACE/target/de.cau.cs.se.instrumentation.rl.cli-*.jar
+# tar -cvzpf $IRL_COMPILER/irl-compiler.tar.gz $WORKSPACE/run-irl-compiler.sh $WORKSPACE/lib $WORKSPACE/target/de.cau.cs.se.instrumentation.rl.cli-*.jar
 
 # update site
-cp -r $UPDATE_SITE_SOURCE/* $UPDATE_SITE
+# cp -r $UPDATE_SITE_SOURCE/* $UPDATE_SITE
 
 # end
