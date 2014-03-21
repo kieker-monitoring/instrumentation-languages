@@ -8,10 +8,10 @@ export UPDATE_SITE="$LAST_SUCCESSFUL_BUILD/updatesite"
 export UPDATE_SITE_SOURCE="$WORKSPACE/de.cau.cs.se.instrumentation.updatesite/target/"
 
 # rm -rf $IRL_COMPILER $UPDATE_SITE
-echo $LAST_SUCESSFUL_BUILD/*
+echo $LAST_SUCCESSFUL_BUILD/*
 echo $JENKINS_HOME
 echo $WORKSPACE
-ls -R $JENKINS_HOME
+ls -R $JENKINS_HOME/jobs/Kieker-Instrumentation-Record-Language
 
 # mkdir $IRL_COMPILER
 # mkdir $UPDATE_SITE
