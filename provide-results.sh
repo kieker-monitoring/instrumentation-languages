@@ -11,7 +11,7 @@ export UPDATE_SITE_SOURCE="$WORKSPACE/de.cau.cs.se.instrumentation.updatesite/ta
 echo $LAST_SUCCESSFUL_BUILD/*
 echo $JENKINS_HOME
 echo $WORKSPACE
-ls -R $JENKINS_HOME/jobs/Kieker-Instrumentation-Record-Language
+ls -lR $JENKINS_HOME/jobs/Kieker-Instrumentation-Record-Language
 
 # mkdir $IRL_COMPILER
 # mkdir $UPDATE_SITE
