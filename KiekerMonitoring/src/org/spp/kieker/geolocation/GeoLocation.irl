@@ -1,0 +1,15 @@
+package org.spp.kieker.geolocation
+
+entity Trace {
+	int[][] reply
+	string[] hostname = { "" }
+}
+
+entity StaticArray {
+	int[4] v = { 1, 2, 3, 4 }
+	int[2][][2] combi
+}
+
+entity GeoLocation {
+	int countryCode = 049
+}

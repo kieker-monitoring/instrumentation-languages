@@ -1,0 +1,61 @@
+package test
+
+entity SimpleTypes {
+	boolean a = true
+	byte b = 4
+	char c = '4'
+	double d = 4.4
+	float f = 4.3
+	int g = 44
+	long h = 444
+	short i = 123
+	string s = "some demo string"
+}
+
+entity DynamicArrayTypes  {
+	boolean[] a
+	byte[] b
+	char[] c
+	double[] d
+	float[] f
+	int[] g
+	long[] h
+	short[] i
+	string[] s
+}
+
+entity StaticArrayTypes  {
+	boolean[2] a = { true, false }
+	byte[2] b = { 1, 2 }
+	char[2] c = { '1', '2' }
+	double[2] d = { 1.1, 2.2 }
+	float[2] f = { 1.0, 2.0 }
+	int[2] g = { 10, 20 }
+	long[2] h = { 100, 200 }
+	short[2] i = { 5, 6 }
+	string[2] s = { "first", "second" }
+}
+
+entity StaticDeepArrayTypes {
+	boolean[2][3][2] a = {
+		{
+			{ true, true }, 
+			{ true, false },
+			{ false, false}
+		},
+		{
+			{ true, true }, 
+			{ true, false },
+			{ false, false}
+		}
+	}
+	byte[2][3][2] b 
+	char[2][3][2] c
+	double[2][3][2] d
+	float[2][3][2] f
+	int[2][3][2] g 
+	long[2][3][2] h 
+	short[2][3][2] i
+	string[2][3][2] s
+}
+

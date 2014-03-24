@@ -1,0 +1,11 @@
+package example
+
+register ecore "http://www.eclipse.org/emf/2002/Ecore"
+register repository "http://sdq.ipd.uka.de/PalladioComponentModel/Repository/5.0"
+
+use repository on cocome "KiekerMonitoring/src/cocome/cocome.repository"
+   
+//@communication SOAP
+aspect TradingSystem.Inventory.Data.Enterprise.EnterpriseQueryIf * queryEnterpriseById (Parameter enterpirseId, Parameter pctx) {
+	before AbstractOperationEvent (0,1,1,1)
+}
