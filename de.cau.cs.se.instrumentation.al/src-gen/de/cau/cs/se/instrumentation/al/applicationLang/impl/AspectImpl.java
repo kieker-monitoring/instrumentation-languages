@@ -2,8 +2,6 @@
  */
 package de.cau.cs.se.instrumentation.al.applicationLang.impl;
 
-import de.cau.cs.kieler.core.annotations.Annotation;
-
 import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationLangPackage;
 import de.cau.cs.se.instrumentation.al.applicationLang.Aspect;
 import de.cau.cs.se.instrumentation.al.applicationLang.Collector;
@@ -32,7 +30,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.impl.AspectImpl#getAnnotation <em>Annotation</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.impl.AspectImpl#getQuery <em>Query</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.impl.AspectImpl#getCollectors <em>Collectors</em>}</li>
  * </ul>
@@ -42,16 +39,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
 {
-  /**
-   * The cached value of the '{@link #getAnnotation() <em>Annotation</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getAnnotation()
-   * @generated
-   * @ordered
-   */
-  protected Annotation annotation;
-
   /**
    * The cached value of the '{@link #getQuery() <em>Query</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -91,54 +78,6 @@ public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
   protected EClass eStaticClass()
   {
     return ApplicationLangPackage.Literals.ASPECT;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Annotation getAnnotation()
-  {
-    return annotation;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetAnnotation(Annotation newAnnotation, NotificationChain msgs)
-  {
-    Annotation oldAnnotation = annotation;
-    annotation = newAnnotation;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplicationLangPackage.ASPECT__ANNOTATION, oldAnnotation, newAnnotation);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setAnnotation(Annotation newAnnotation)
-  {
-    if (newAnnotation != annotation)
-    {
-      NotificationChain msgs = null;
-      if (annotation != null)
-        msgs = ((InternalEObject)annotation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplicationLangPackage.ASPECT__ANNOTATION, null, msgs);
-      if (newAnnotation != null)
-        msgs = ((InternalEObject)newAnnotation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplicationLangPackage.ASPECT__ANNOTATION, null, msgs);
-      msgs = basicSetAnnotation(newAnnotation, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ApplicationLangPackage.ASPECT__ANNOTATION, newAnnotation, newAnnotation));
   }
 
   /**
@@ -213,8 +152,6 @@ public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
   {
     switch (featureID)
     {
-      case ApplicationLangPackage.ASPECT__ANNOTATION:
-        return basicSetAnnotation(null, msgs);
       case ApplicationLangPackage.ASPECT__QUERY:
         return basicSetQuery(null, msgs);
       case ApplicationLangPackage.ASPECT__COLLECTORS:
@@ -233,8 +170,6 @@ public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
   {
     switch (featureID)
     {
-      case ApplicationLangPackage.ASPECT__ANNOTATION:
-        return getAnnotation();
       case ApplicationLangPackage.ASPECT__QUERY:
         return getQuery();
       case ApplicationLangPackage.ASPECT__COLLECTORS:
@@ -254,9 +189,6 @@ public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
   {
     switch (featureID)
     {
-      case ApplicationLangPackage.ASPECT__ANNOTATION:
-        setAnnotation((Annotation)newValue);
-        return;
       case ApplicationLangPackage.ASPECT__QUERY:
         setQuery((Query)newValue);
         return;
@@ -278,9 +210,6 @@ public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
   {
     switch (featureID)
     {
-      case ApplicationLangPackage.ASPECT__ANNOTATION:
-        setAnnotation((Annotation)null);
-        return;
       case ApplicationLangPackage.ASPECT__QUERY:
         setQuery((Query)null);
         return;
@@ -301,8 +230,6 @@ public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
   {
     switch (featureID)
     {
-      case ApplicationLangPackage.ASPECT__ANNOTATION:
-        return annotation != null;
       case ApplicationLangPackage.ASPECT__QUERY:
         return query != null;
       case ApplicationLangPackage.ASPECT__COLLECTORS:

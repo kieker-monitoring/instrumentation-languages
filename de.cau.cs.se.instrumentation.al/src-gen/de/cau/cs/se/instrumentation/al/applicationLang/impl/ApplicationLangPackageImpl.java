@@ -2,8 +2,6 @@
  */
 package de.cau.cs.se.instrumentation.al.applicationLang.impl;
 
-import de.cau.cs.kieler.core.annotations.AnnotationsPackage;
-
 import de.cau.cs.se.instrumantation.model.structure.StructurePackage;
 
 import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationLangFactory;
@@ -13,10 +11,10 @@ import de.cau.cs.se.instrumentation.al.applicationLang.Aspect;
 import de.cau.cs.se.instrumentation.al.applicationLang.Collector;
 import de.cau.cs.se.instrumentation.al.applicationLang.ContainerNode;
 import de.cau.cs.se.instrumentation.al.applicationLang.FloatValue;
-import de.cau.cs.se.instrumentation.al.applicationLang.Import;
 import de.cau.cs.se.instrumentation.al.applicationLang.InsertionPoint;
 import de.cau.cs.se.instrumentation.al.applicationLang.IntValue;
 import de.cau.cs.se.instrumentation.al.applicationLang.LocationQuery;
+import de.cau.cs.se.instrumentation.al.applicationLang.MetaModel;
 import de.cau.cs.se.instrumentation.al.applicationLang.Model;
 import de.cau.cs.se.instrumentation.al.applicationLang.Node;
 import de.cau.cs.se.instrumentation.al.applicationLang.Operator;
@@ -65,7 +63,7 @@ public class ApplicationLangPackageImpl extends EPackageImpl implements Applicat
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass importEClass = null;
+  private EClass metaModelEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -277,7 +275,6 @@ public class ApplicationLangPackageImpl extends EPackageImpl implements Applicat
     isInited = true;
 
     // Initialize simple dependencies
-    AnnotationsPackage.eINSTANCE.eClass();
     StructurePackage.eINSTANCE.eClass();
     RecordLangPackage.eINSTANCE.eClass();
 
@@ -321,7 +318,7 @@ public class ApplicationLangPackageImpl extends EPackageImpl implements Applicat
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModel_Sources()
+  public EReference getModel_Metamodels()
   {
     return (EReference)modelEClass.getEStructuralFeatures().get(1);
   }
@@ -331,7 +328,7 @@ public class ApplicationLangPackageImpl extends EPackageImpl implements Applicat
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModel_Imports()
+  public EReference getModel_Sources()
   {
     return (EReference)modelEClass.getEStructuralFeatures().get(2);
   }
@@ -351,9 +348,9 @@ public class ApplicationLangPackageImpl extends EPackageImpl implements Applicat
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getImport()
+  public EClass getMetaModel()
   {
-    return importEClass;
+    return metaModelEClass;
   }
 
   /**
@@ -361,9 +358,19 @@ public class ApplicationLangPackageImpl extends EPackageImpl implements Applicat
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getImport_ImportedNamespace()
+  public EAttribute getMetaModel_Name()
   {
-    return (EAttribute)importEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)metaModelEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getMetaModel_Package()
+  {
+    return (EReference)metaModelEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -381,9 +388,19 @@ public class ApplicationLangPackageImpl extends EPackageImpl implements Applicat
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getApplicationModel_Metamodel()
+  {
+    return (EReference)applicationModelEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EAttribute getApplicationModel_Name()
   {
-    return (EAttribute)applicationModelEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)applicationModelEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -393,7 +410,7 @@ public class ApplicationLangPackageImpl extends EPackageImpl implements Applicat
    */
   public EAttribute getApplicationModel_Model()
   {
-    return (EAttribute)applicationModelEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)applicationModelEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -411,7 +428,7 @@ public class ApplicationLangPackageImpl extends EPackageImpl implements Applicat
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAspect_Annotation()
+  public EReference getAspect_Query()
   {
     return (EReference)aspectEClass.getEStructuralFeatures().get(0);
   }
@@ -421,19 +438,9 @@ public class ApplicationLangPackageImpl extends EPackageImpl implements Applicat
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAspect_Query()
-  {
-    return (EReference)aspectEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getAspect_Collectors()
   {
-    return (EReference)aspectEClass.getEStructuralFeatures().get(2);
+    return (EReference)aspectEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -938,19 +945,20 @@ public class ApplicationLangPackageImpl extends EPackageImpl implements Applicat
     // Create classes and their features
     modelEClass = createEClass(MODEL);
     createEAttribute(modelEClass, MODEL__NAME);
+    createEReference(modelEClass, MODEL__METAMODELS);
     createEReference(modelEClass, MODEL__SOURCES);
-    createEReference(modelEClass, MODEL__IMPORTS);
     createEReference(modelEClass, MODEL__ASPECTS);
 
-    importEClass = createEClass(IMPORT);
-    createEAttribute(importEClass, IMPORT__IMPORTED_NAMESPACE);
+    metaModelEClass = createEClass(META_MODEL);
+    createEAttribute(metaModelEClass, META_MODEL__NAME);
+    createEReference(metaModelEClass, META_MODEL__PACKAGE);
 
     applicationModelEClass = createEClass(APPLICATION_MODEL);
+    createEReference(applicationModelEClass, APPLICATION_MODEL__METAMODEL);
     createEAttribute(applicationModelEClass, APPLICATION_MODEL__NAME);
     createEAttribute(applicationModelEClass, APPLICATION_MODEL__MODEL);
 
     aspectEClass = createEClass(ASPECT);
-    createEReference(aspectEClass, ASPECT__ANNOTATION);
     createEReference(aspectEClass, ASPECT__QUERY);
     createEReference(aspectEClass, ASPECT__COLLECTORS);
 
@@ -1048,7 +1056,6 @@ public class ApplicationLangPackageImpl extends EPackageImpl implements Applicat
 
     // Obtain other dependent packages
     EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
-    AnnotationsPackage theAnnotationsPackage = (AnnotationsPackage)EPackage.Registry.INSTANCE.getEPackage(AnnotationsPackage.eNS_URI);
     StructurePackage theStructurePackage = (StructurePackage)EPackage.Registry.INSTANCE.getEPackage(StructurePackage.eNS_URI);
     RecordLangPackage theRecordLangPackage = (RecordLangPackage)EPackage.Registry.INSTANCE.getEPackage(RecordLangPackage.eNS_URI);
 
@@ -1070,19 +1077,20 @@ public class ApplicationLangPackageImpl extends EPackageImpl implements Applicat
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getModel_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModel_Metamodels(), this.getMetaModel(), null, "metamodels", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Sources(), this.getApplicationModel(), null, "sources", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getModel_Imports(), this.getImport(), null, "imports", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Aspects(), this.getAspect(), null, "aspects", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getImport_ImportedNamespace(), theEcorePackage.getEString(), "importedNamespace", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(metaModelEClass, MetaModel.class, "MetaModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getMetaModel_Name(), theEcorePackage.getEString(), "name", null, 0, 1, MetaModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMetaModel_Package(), theEcorePackage.getEPackage(), null, "package", null, 0, 1, MetaModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(applicationModelEClass, ApplicationModel.class, "ApplicationModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getApplicationModel_Metamodel(), this.getMetaModel(), null, "metamodel", null, 0, 1, ApplicationModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getApplicationModel_Name(), theEcorePackage.getEString(), "name", null, 0, 1, ApplicationModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getApplicationModel_Model(), theEcorePackage.getEString(), "model", null, 0, 1, ApplicationModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(aspectEClass, Aspect.class, "Aspect", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAspect_Annotation(), theAnnotationsPackage.getAnnotation(), null, "annotation", null, 0, 1, Aspect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAspect_Query(), this.getQuery(), null, "query", null, 0, 1, Aspect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAspect_Collectors(), this.getCollector(), null, "collectors", null, 0, -1, Aspect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1116,7 +1124,7 @@ public class ApplicationLangPackageImpl extends EPackageImpl implements Applicat
     initEClass(valueEClass, Value.class, "Value", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(floatValueEClass, FloatValue.class, "FloatValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getFloatValue_Value(), theEcorePackage.getEFloatObject(), "value", null, 0, 1, FloatValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFloatValue_Value(), theEcorePackage.getEInt(), "value", null, 0, 1, FloatValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(intValueEClass, IntValue.class, "IntValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getIntValue_Value(), theEcorePackage.getEInt(), "value", null, 0, 1, IntValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

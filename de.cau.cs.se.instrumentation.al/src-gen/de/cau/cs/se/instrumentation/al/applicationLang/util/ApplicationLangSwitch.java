@@ -79,10 +79,10 @@ public class ApplicationLangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ApplicationLangPackage.IMPORT:
+      case ApplicationLangPackage.META_MODEL:
       {
-        Import import_ = (Import)theEObject;
-        T result = caseImport(import_);
+        MetaModel metaModel = (MetaModel)theEObject;
+        T result = caseMetaModel(metaModel);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -256,17 +256,17 @@ public class ApplicationLangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Import</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Meta Model</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Import</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Meta Model</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseImport(Import object)
+  public T caseMetaModel(MetaModel object)
   {
     return null;
   }

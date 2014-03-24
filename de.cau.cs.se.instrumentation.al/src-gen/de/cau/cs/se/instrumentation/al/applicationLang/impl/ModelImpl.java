@@ -5,7 +5,7 @@ package de.cau.cs.se.instrumentation.al.applicationLang.impl;
 import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationLangPackage;
 import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel;
 import de.cau.cs.se.instrumentation.al.applicationLang.Aspect;
-import de.cau.cs.se.instrumentation.al.applicationLang.Import;
+import de.cau.cs.se.instrumentation.al.applicationLang.MetaModel;
 import de.cau.cs.se.instrumentation.al.applicationLang.Model;
 
 import java.util.Collection;
@@ -32,8 +32,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.impl.ModelImpl#getName <em>Name</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.impl.ModelImpl#getMetamodels <em>Metamodels</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.impl.ModelImpl#getSources <em>Sources</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.impl.ModelImpl#getImports <em>Imports</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.impl.ModelImpl#getAspects <em>Aspects</em>}</li>
  * </ul>
  * </p>
@@ -63,6 +63,16 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   protected String name = NAME_EDEFAULT;
 
   /**
+   * The cached value of the '{@link #getMetamodels() <em>Metamodels</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMetamodels()
+   * @generated
+   * @ordered
+   */
+  protected EList<MetaModel> metamodels;
+
+  /**
    * The cached value of the '{@link #getSources() <em>Sources</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -71,16 +81,6 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * @ordered
    */
   protected EList<ApplicationModel> sources;
-
-  /**
-   * The cached value of the '{@link #getImports() <em>Imports</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getImports()
-   * @generated
-   * @ordered
-   */
-  protected EList<Import> imports;
 
   /**
    * The cached value of the '{@link #getAspects() <em>Aspects</em>}' containment reference list.
@@ -141,13 +141,13 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<ApplicationModel> getSources()
+  public EList<MetaModel> getMetamodels()
   {
-    if (sources == null)
+    if (metamodels == null)
     {
-      sources = new EObjectContainmentEList<ApplicationModel>(ApplicationModel.class, this, ApplicationLangPackage.MODEL__SOURCES);
+      metamodels = new EObjectContainmentEList<MetaModel>(MetaModel.class, this, ApplicationLangPackage.MODEL__METAMODELS);
     }
-    return sources;
+    return metamodels;
   }
 
   /**
@@ -155,13 +155,13 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Import> getImports()
+  public EList<ApplicationModel> getSources()
   {
-    if (imports == null)
+    if (sources == null)
     {
-      imports = new EObjectContainmentEList<Import>(Import.class, this, ApplicationLangPackage.MODEL__IMPORTS);
+      sources = new EObjectContainmentEList<ApplicationModel>(ApplicationModel.class, this, ApplicationLangPackage.MODEL__SOURCES);
     }
-    return imports;
+    return sources;
   }
 
   /**
@@ -188,10 +188,10 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
+      case ApplicationLangPackage.MODEL__METAMODELS:
+        return ((InternalEList<?>)getMetamodels()).basicRemove(otherEnd, msgs);
       case ApplicationLangPackage.MODEL__SOURCES:
         return ((InternalEList<?>)getSources()).basicRemove(otherEnd, msgs);
-      case ApplicationLangPackage.MODEL__IMPORTS:
-        return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
       case ApplicationLangPackage.MODEL__ASPECTS:
         return ((InternalEList<?>)getAspects()).basicRemove(otherEnd, msgs);
     }
@@ -210,10 +210,10 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
     {
       case ApplicationLangPackage.MODEL__NAME:
         return getName();
+      case ApplicationLangPackage.MODEL__METAMODELS:
+        return getMetamodels();
       case ApplicationLangPackage.MODEL__SOURCES:
         return getSources();
-      case ApplicationLangPackage.MODEL__IMPORTS:
-        return getImports();
       case ApplicationLangPackage.MODEL__ASPECTS:
         return getAspects();
     }
@@ -234,13 +234,13 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
       case ApplicationLangPackage.MODEL__NAME:
         setName((String)newValue);
         return;
+      case ApplicationLangPackage.MODEL__METAMODELS:
+        getMetamodels().clear();
+        getMetamodels().addAll((Collection<? extends MetaModel>)newValue);
+        return;
       case ApplicationLangPackage.MODEL__SOURCES:
         getSources().clear();
         getSources().addAll((Collection<? extends ApplicationModel>)newValue);
-        return;
-      case ApplicationLangPackage.MODEL__IMPORTS:
-        getImports().clear();
-        getImports().addAll((Collection<? extends Import>)newValue);
         return;
       case ApplicationLangPackage.MODEL__ASPECTS:
         getAspects().clear();
@@ -263,11 +263,11 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
       case ApplicationLangPackage.MODEL__NAME:
         setName(NAME_EDEFAULT);
         return;
+      case ApplicationLangPackage.MODEL__METAMODELS:
+        getMetamodels().clear();
+        return;
       case ApplicationLangPackage.MODEL__SOURCES:
         getSources().clear();
-        return;
-      case ApplicationLangPackage.MODEL__IMPORTS:
-        getImports().clear();
         return;
       case ApplicationLangPackage.MODEL__ASPECTS:
         getAspects().clear();
@@ -288,10 +288,10 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
     {
       case ApplicationLangPackage.MODEL__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case ApplicationLangPackage.MODEL__METAMODELS:
+        return metamodels != null && !metamodels.isEmpty();
       case ApplicationLangPackage.MODEL__SOURCES:
         return sources != null && !sources.isEmpty();
-      case ApplicationLangPackage.MODEL__IMPORTS:
-        return imports != null && !imports.isEmpty();
       case ApplicationLangPackage.MODEL__ASPECTS:
         return aspects != null && !aspects.isEmpty();
     }

@@ -66,7 +66,7 @@ public class ApplicationLangFactoryImpl extends EFactoryImpl implements Applicat
     switch (eClass.getClassifierID())
     {
       case ApplicationLangPackage.MODEL: return createModel();
-      case ApplicationLangPackage.IMPORT: return createImport();
+      case ApplicationLangPackage.META_MODEL: return createMetaModel();
       case ApplicationLangPackage.APPLICATION_MODEL: return createApplicationModel();
       case ApplicationLangPackage.ASPECT: return createAspect();
       case ApplicationLangPackage.QUERY: return createQuery();
@@ -150,10 +150,10 @@ public class ApplicationLangFactoryImpl extends EFactoryImpl implements Applicat
    * <!-- end-user-doc -->
    * @generated
    */
-  public Import createImport()
+  public MetaModel createMetaModel()
   {
-    ImportImpl import_ = new ImportImpl();
-    return import_;
+    MetaModelImpl metaModel = new MetaModelImpl();
+    return metaModel;
   }
 
   /**

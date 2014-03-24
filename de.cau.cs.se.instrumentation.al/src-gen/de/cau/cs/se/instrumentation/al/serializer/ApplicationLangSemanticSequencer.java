@@ -2,24 +2,15 @@ package de.cau.cs.se.instrumentation.al.serializer;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
-import de.cau.cs.kieler.core.annotations.Annotation;
-import de.cau.cs.kieler.core.annotations.AnnotationsPackage;
-import de.cau.cs.kieler.core.annotations.BooleanAnnotation;
-import de.cau.cs.kieler.core.annotations.FloatAnnotation;
-import de.cau.cs.kieler.core.annotations.ImportAnnotation;
-import de.cau.cs.kieler.core.annotations.IntAnnotation;
-import de.cau.cs.kieler.core.annotations.StringAnnotation;
-import de.cau.cs.kieler.core.annotations.TypedStringAnnotation;
-import de.cau.cs.kieler.core.annotations.text.serializer.AnnotationsSemanticSequencer;
 import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationLangPackage;
 import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel;
 import de.cau.cs.se.instrumentation.al.applicationLang.Aspect;
 import de.cau.cs.se.instrumentation.al.applicationLang.Collector;
 import de.cau.cs.se.instrumentation.al.applicationLang.ContainerNode;
 import de.cau.cs.se.instrumentation.al.applicationLang.FloatValue;
-import de.cau.cs.se.instrumentation.al.applicationLang.Import;
 import de.cau.cs.se.instrumentation.al.applicationLang.IntValue;
 import de.cau.cs.se.instrumentation.al.applicationLang.LocationQuery;
+import de.cau.cs.se.instrumentation.al.applicationLang.MetaModel;
 import de.cau.cs.se.instrumentation.al.applicationLang.Model;
 import de.cau.cs.se.instrumentation.al.applicationLang.ParamCompare;
 import de.cau.cs.se.instrumentation.al.applicationLang.ParamQuery;
@@ -37,6 +28,7 @@ import org.eclipse.xtext.serializer.acceptor.ISemanticSequenceAcceptor;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.diagnostic.ISemanticSequencerDiagnosticProvider;
 import org.eclipse.xtext.serializer.diagnostic.ISerializationDiagnostic.Acceptor;
+import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.GenericSequencer;
 import org.eclipse.xtext.serializer.sequencer.ISemanticNodeProvider.INodesForEObjectProvider;
 import org.eclipse.xtext.serializer.sequencer.ISemanticSequencer;
@@ -44,75 +36,13 @@ import org.eclipse.xtext.serializer.sequencer.ITransientValueService;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 
 @SuppressWarnings("all")
-public class ApplicationLangSemanticSequencer extends AnnotationsSemanticSequencer {
+public class ApplicationLangSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 
 	@Inject
 	private ApplicationLangGrammarAccess grammarAccess;
 	
 	public void createSequence(EObject context, EObject semanticObject) {
-		if(semanticObject.eClass().getEPackage() == AnnotationsPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
-			case AnnotationsPackage.ANNOTATION:
-				if(context == grammarAccess.getAnnotationRule() ||
-				   context == grammarAccess.getTagAnnotationRule()) {
-					sequence_TagAnnotation(context, (Annotation) semanticObject); 
-					return; 
-				}
-				else break;
-			case AnnotationsPackage.BOOLEAN_ANNOTATION:
-				if(context == grammarAccess.getAnnotationRule() ||
-				   context == grammarAccess.getKeyBooleanValueAnnotationRule() ||
-				   context == grammarAccess.getValuedAnnotationRule()) {
-					sequence_KeyBooleanValueAnnotation(context, (BooleanAnnotation) semanticObject); 
-					return; 
-				}
-				else break;
-			case AnnotationsPackage.FLOAT_ANNOTATION:
-				if(context == grammarAccess.getAnnotationRule() ||
-				   context == grammarAccess.getKeyFloatValueAnnotationRule() ||
-				   context == grammarAccess.getValuedAnnotationRule()) {
-					sequence_KeyFloatValueAnnotation(context, (FloatAnnotation) semanticObject); 
-					return; 
-				}
-				else break;
-			case AnnotationsPackage.IMPORT_ANNOTATION:
-				if(context == grammarAccess.getImportAnnotationRule()) {
-					sequence_ImportAnnotation(context, (ImportAnnotation) semanticObject); 
-					return; 
-				}
-				else break;
-			case AnnotationsPackage.INT_ANNOTATION:
-				if(context == grammarAccess.getAnnotationRule() ||
-				   context == grammarAccess.getKeyIntValueAnnotationRule() ||
-				   context == grammarAccess.getValuedAnnotationRule()) {
-					sequence_KeyIntValueAnnotation(context, (IntAnnotation) semanticObject); 
-					return; 
-				}
-				else break;
-			case AnnotationsPackage.STRING_ANNOTATION:
-				if(context == grammarAccess.getAnnotationRule() ||
-				   context == grammarAccess.getValuedAnnotationRule()) {
-					sequence_Annotation_CommentAnnotation_KeyStringValueAnnotation(context, (StringAnnotation) semanticObject); 
-					return; 
-				}
-				else if(context == grammarAccess.getCommentAnnotationRule()) {
-					sequence_CommentAnnotation(context, (StringAnnotation) semanticObject); 
-					return; 
-				}
-				else if(context == grammarAccess.getKeyStringValueAnnotationRule()) {
-					sequence_KeyStringValueAnnotation(context, (StringAnnotation) semanticObject); 
-					return; 
-				}
-				else break;
-			case AnnotationsPackage.TYPED_STRING_ANNOTATION:
-				if(context == grammarAccess.getAnnotationRule() ||
-				   context == grammarAccess.getTypedKeyStringValueAnnotationRule() ||
-				   context == grammarAccess.getValuedAnnotationRule()) {
-					sequence_TypedKeyStringValueAnnotation(context, (TypedStringAnnotation) semanticObject); 
-					return; 
-				}
-				else break;
-			}
-		else if(semanticObject.eClass().getEPackage() == ApplicationLangPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+		if(semanticObject.eClass().getEPackage() == ApplicationLangPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
 			case ApplicationLangPackage.APPLICATION_MODEL:
 				if(context == grammarAccess.getApplicationModelRule()) {
 					sequence_ApplicationModel(context, (ApplicationModel) semanticObject); 
@@ -148,12 +78,6 @@ public class ApplicationLangSemanticSequencer extends AnnotationsSemanticSequenc
 					return; 
 				}
 				else break;
-			case ApplicationLangPackage.IMPORT:
-				if(context == grammarAccess.getImportRule()) {
-					sequence_Import(context, (Import) semanticObject); 
-					return; 
-				}
-				else break;
 			case ApplicationLangPackage.INT_VALUE:
 				if(context == grammarAccess.getIntValueRule() ||
 				   context == grammarAccess.getValueRule()) {
@@ -164,6 +88,12 @@ public class ApplicationLangSemanticSequencer extends AnnotationsSemanticSequenc
 			case ApplicationLangPackage.LOCATION_QUERY:
 				if(context == grammarAccess.getLocationQueryRule()) {
 					sequence_LocationQuery(context, (LocationQuery) semanticObject); 
+					return; 
+				}
+				else break;
+			case ApplicationLangPackage.META_MODEL:
+				if(context == grammarAccess.getMetaModelRule()) {
+					sequence_MetaModel(context, (MetaModel) semanticObject); 
 					return; 
 				}
 				else break;
@@ -251,10 +181,12 @@ public class ApplicationLangSemanticSequencer extends AnnotationsSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (name=ID model=STRING)
+	 *     (metamodel=[MetaModel|ID] name=ID model=STRING)
 	 */
 	protected void sequence_ApplicationModel(EObject context, ApplicationModel semanticObject) {
 		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, ApplicationLangPackage.Literals.APPLICATION_MODEL__METAMODEL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ApplicationLangPackage.Literals.APPLICATION_MODEL__METAMODEL));
 			if(transientValues.isValueTransient(semanticObject, ApplicationLangPackage.Literals.APPLICATION_MODEL__NAME) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ApplicationLangPackage.Literals.APPLICATION_MODEL__NAME));
 			if(transientValues.isValueTransient(semanticObject, ApplicationLangPackage.Literals.APPLICATION_MODEL__MODEL) == ValueTransient.YES)
@@ -262,15 +194,16 @@ public class ApplicationLangSemanticSequencer extends AnnotationsSemanticSequenc
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getApplicationModelAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getApplicationModelAccess().getModelSTRINGTerminalRuleCall_2_0(), semanticObject.getModel());
+		feeder.accept(grammarAccess.getApplicationModelAccess().getMetamodelMetaModelIDTerminalRuleCall_1_0_1(), semanticObject.getMetamodel());
+		feeder.accept(grammarAccess.getApplicationModelAccess().getNameIDTerminalRuleCall_3_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getApplicationModelAccess().getModelSTRINGTerminalRuleCall_4_0(), semanticObject.getModel());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (annotation=Annotation query=Query collectors+=Collector)
+	 *     (query=Query collectors+=Collector)
 	 */
 	protected void sequence_Aspect(EObject context, Aspect semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -306,7 +239,7 @@ public class ApplicationLangSemanticSequencer extends AnnotationsSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     value=FLOAT
+	 *     value=INT
 	 */
 	protected void sequence_FloatValue(EObject context, FloatValue semanticObject) {
 		if(errorAcceptor != null) {
@@ -315,23 +248,7 @@ public class ApplicationLangSemanticSequencer extends AnnotationsSemanticSequenc
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getFloatValueAccess().getValueFLOATTerminalRuleCall_0(), semanticObject.getValue());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     importedNamespace=QualifiedNameWithWildcard
-	 */
-	protected void sequence_Import(EObject context, Import semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ApplicationLangPackage.Literals.IMPORT__IMPORTED_NAMESPACE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ApplicationLangPackage.Literals.IMPORT__IMPORTED_NAMESPACE));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getImportAccess().getImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_0(), semanticObject.getImportedNamespace());
+		feeder.accept(grammarAccess.getFloatValueAccess().getValueINTTerminalRuleCall_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -363,7 +280,26 @@ public class ApplicationLangSemanticSequencer extends AnnotationsSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (name=QualifiedName sources+=ApplicationModel* imports+=Import* aspects+=Aspect*)
+	 *     (name=ID package=[EPackage|STRING])
+	 */
+	protected void sequence_MetaModel(EObject context, MetaModel semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, ApplicationLangPackage.Literals.META_MODEL__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ApplicationLangPackage.Literals.META_MODEL__NAME));
+			if(transientValues.isValueTransient(semanticObject, ApplicationLangPackage.Literals.META_MODEL__PACKAGE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ApplicationLangPackage.Literals.META_MODEL__PACKAGE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getMetaModelAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getMetaModelAccess().getPackageEPackageSTRINGTerminalRuleCall_2_0_1(), semanticObject.getPackage());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=QualifiedName metamodels+=MetaModel* sources+=ApplicationModel* aspects+=Aspect*)
 	 */
 	protected void sequence_Model(EObject context, Model semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

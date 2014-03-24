@@ -7,13 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.emf.ecore.EPackage;
 
-public class AbstractApplicationLangValidator extends de.cau.cs.kieler.core.annotations.text.validation.AnnotationsJavaValidator {
+public class AbstractApplicationLangValidator extends org.eclipse.xtext.validation.AbstractDeclarativeValidator {
 
 	@Override
 	protected List<EPackage> getEPackages() {
 	    List<EPackage> result = new ArrayList<EPackage>();
 	    result.add(de.cau.cs.se.instrumentation.al.applicationLang.ApplicationLangPackage.eINSTANCE);
-	    result.add(EPackage.Registry.INSTANCE.getEPackage("http://kieler.cs.cau.de/annotations"));
 		return result;
 	}
 }

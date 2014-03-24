@@ -12,7 +12,7 @@ import org.eclipse.xtext.*;
 import org.eclipse.xtext.service.GrammarProvider;
 import org.eclipse.xtext.service.AbstractElementFinder.*;
 
-import de.cau.cs.kieler.core.annotations.text.services.AnnotationsGrammarAccess;
+import org.eclipse.xtext.common.services.TerminalsGrammarAccess;
 
 @Singleton
 public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
@@ -24,18 +24,18 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cPackageKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameQualifiedNameParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Assignment cSourcesAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cSourcesApplicationModelParserRuleCall_2_0 = (RuleCall)cSourcesAssignment_2.eContents().get(0);
-		private final Assignment cImportsAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cImportsImportParserRuleCall_3_0 = (RuleCall)cImportsAssignment_3.eContents().get(0);
+		private final Assignment cMetamodelsAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cMetamodelsMetaModelParserRuleCall_2_0 = (RuleCall)cMetamodelsAssignment_2.eContents().get(0);
+		private final Assignment cSourcesAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cSourcesApplicationModelParserRuleCall_3_0 = (RuleCall)cSourcesAssignment_3.eContents().get(0);
 		private final Assignment cAspectsAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cAspectsAspectParserRuleCall_4_0 = (RuleCall)cAspectsAssignment_4.eContents().get(0);
 		
 		//Model:
-		//	"package" name=QualifiedName sources+=ApplicationModel* imports+=Import* aspects+=Aspect*;
+		//	"package" name=QualifiedName metamodels+=MetaModel* sources+=ApplicationModel* aspects+=Aspect*;
 		public ParserRule getRule() { return rule; }
 
-		//"package" name=QualifiedName sources+=ApplicationModel* imports+=Import* aspects+=Aspect*
+		//"package" name=QualifiedName metamodels+=MetaModel* sources+=ApplicationModel* aspects+=Aspect*
 		public Group getGroup() { return cGroup; }
 
 		//"package"
@@ -47,17 +47,17 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 		//QualifiedName
 		public RuleCall getNameQualifiedNameParserRuleCall_1_0() { return cNameQualifiedNameParserRuleCall_1_0; }
 
+		//metamodels+=MetaModel*
+		public Assignment getMetamodelsAssignment_2() { return cMetamodelsAssignment_2; }
+
+		//MetaModel
+		public RuleCall getMetamodelsMetaModelParserRuleCall_2_0() { return cMetamodelsMetaModelParserRuleCall_2_0; }
+
 		//sources+=ApplicationModel*
-		public Assignment getSourcesAssignment_2() { return cSourcesAssignment_2; }
+		public Assignment getSourcesAssignment_3() { return cSourcesAssignment_3; }
 
 		//ApplicationModel
-		public RuleCall getSourcesApplicationModelParserRuleCall_2_0() { return cSourcesApplicationModelParserRuleCall_2_0; }
-
-		//imports+=Import*
-		public Assignment getImportsAssignment_3() { return cImportsAssignment_3; }
-
-		//Import
-		public RuleCall getImportsImportParserRuleCall_3_0() { return cImportsImportParserRuleCall_3_0; }
+		public RuleCall getSourcesApplicationModelParserRuleCall_3_0() { return cSourcesApplicationModelParserRuleCall_3_0; }
 
 		//aspects+=Aspect*
 		public Assignment getAspectsAssignment_4() { return cAspectsAssignment_4; }
@@ -66,48 +66,25 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getAspectsAspectParserRuleCall_4_0() { return cAspectsAspectParserRuleCall_4_0; }
 	}
 
-	public class ImportElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Import");
+	public class MetaModelElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MetaModel");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cImportKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cImportedNamespaceAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_0 = (RuleCall)cImportedNamespaceAssignment_1.eContents().get(0);
-		
-		//Import:
-		//	"import" importedNamespace=QualifiedNameWithWildcard;
-		public ParserRule getRule() { return rule; }
-
-		//"import" importedNamespace=QualifiedNameWithWildcard
-		public Group getGroup() { return cGroup; }
-
-		//"import"
-		public Keyword getImportKeyword_0() { return cImportKeyword_0; }
-
-		//importedNamespace=QualifiedNameWithWildcard
-		public Assignment getImportedNamespaceAssignment_1() { return cImportedNamespaceAssignment_1; }
-
-		//QualifiedNameWithWildcard
-		public RuleCall getImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_0() { return cImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_0; }
-	}
-
-	public class ApplicationModelElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ApplicationModel");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cModelKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cRegisterKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Assignment cModelAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cModelSTRINGTerminalRuleCall_2_0 = (RuleCall)cModelAssignment_2.eContents().get(0);
+		private final Assignment cPackageAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cPackageEPackageCrossReference_2_0 = (CrossReference)cPackageAssignment_2.eContents().get(0);
+		private final RuleCall cPackageEPackageSTRINGTerminalRuleCall_2_0_1 = (RuleCall)cPackageEPackageCrossReference_2_0.eContents().get(1);
 		
-		//ApplicationModel:
-		//	"model" name=ID model=STRING;
+		//MetaModel:
+		//	"register" name=ID package=[ecore::EPackage|STRING];
 		public ParserRule getRule() { return rule; }
 
-		//"model" name=ID model=STRING
+		//"register" name=ID package=[ecore::EPackage|STRING]
 		public Group getGroup() { return cGroup; }
 
-		//"model"
-		public Keyword getModelKeyword_0() { return cModelKeyword_0; }
+		//"register"
+		public Keyword getRegisterKeyword_0() { return cRegisterKeyword_0; }
 
 		//name=ID
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -115,11 +92,62 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//model=STRING
-		public Assignment getModelAssignment_2() { return cModelAssignment_2; }
+		//package=[ecore::EPackage|STRING]
+		public Assignment getPackageAssignment_2() { return cPackageAssignment_2; }
+
+		//[ecore::EPackage|STRING]
+		public CrossReference getPackageEPackageCrossReference_2_0() { return cPackageEPackageCrossReference_2_0; }
 
 		//STRING
-		public RuleCall getModelSTRINGTerminalRuleCall_2_0() { return cModelSTRINGTerminalRuleCall_2_0; }
+		public RuleCall getPackageEPackageSTRINGTerminalRuleCall_2_0_1() { return cPackageEPackageSTRINGTerminalRuleCall_2_0_1; }
+	}
+
+	public class ApplicationModelElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ApplicationModel");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cUseKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cMetamodelAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cMetamodelMetaModelCrossReference_1_0 = (CrossReference)cMetamodelAssignment_1.eContents().get(0);
+		private final RuleCall cMetamodelMetaModelIDTerminalRuleCall_1_0_1 = (RuleCall)cMetamodelMetaModelCrossReference_1_0.eContents().get(1);
+		private final Keyword cOnKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cNameIDTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
+		private final Assignment cModelAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cModelSTRINGTerminalRuleCall_4_0 = (RuleCall)cModelAssignment_4.eContents().get(0);
+		
+		//ApplicationModel:
+		//	"use" metamodel=[MetaModel] "on" name=ID model=STRING;
+		public ParserRule getRule() { return rule; }
+
+		//"use" metamodel=[MetaModel] "on" name=ID model=STRING
+		public Group getGroup() { return cGroup; }
+
+		//"use"
+		public Keyword getUseKeyword_0() { return cUseKeyword_0; }
+
+		//metamodel=[MetaModel]
+		public Assignment getMetamodelAssignment_1() { return cMetamodelAssignment_1; }
+
+		//[MetaModel]
+		public CrossReference getMetamodelMetaModelCrossReference_1_0() { return cMetamodelMetaModelCrossReference_1_0; }
+
+		//ID
+		public RuleCall getMetamodelMetaModelIDTerminalRuleCall_1_0_1() { return cMetamodelMetaModelIDTerminalRuleCall_1_0_1; }
+
+		//"on"
+		public Keyword getOnKeyword_2() { return cOnKeyword_2; }
+
+		//name=ID
+		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_3_0() { return cNameIDTerminalRuleCall_3_0; }
+
+		//model=STRING
+		public Assignment getModelAssignment_4() { return cModelAssignment_4; }
+
+		//STRING
+		public RuleCall getModelSTRINGTerminalRuleCall_4_0() { return cModelSTRINGTerminalRuleCall_4_0; }
 	}
 
 	public class QualifiedNameElements extends AbstractParserRuleElementFinder {
@@ -181,51 +209,45 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 	public class AspectElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Aspect");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cAnnotationAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cAnnotationAnnotationParserRuleCall_0_0 = (RuleCall)cAnnotationAssignment_0.eContents().get(0);
-		private final Keyword cAspectKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cQueryAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cQueryQueryParserRuleCall_2_0 = (RuleCall)cQueryAssignment_2.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cCollectorsAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cCollectorsCollectorParserRuleCall_4_0 = (RuleCall)cCollectorsAssignment_4.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Keyword cAspectKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cQueryAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cQueryQueryParserRuleCall_1_0 = (RuleCall)cQueryAssignment_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cCollectorsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cCollectorsCollectorParserRuleCall_3_0 = (RuleCall)cCollectorsAssignment_3.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//// define subgraph-pattern to locate structures in models
 		//// define selector for reference destination
-		//Aspect:
-		//	annotation=Annotation "aspect" query=Query "{" collectors+=Collector "}";
+		//Aspect: //annotation=Annotation
+		//	"aspect" query=Query "{" collectors+=Collector "}";
 		public ParserRule getRule() { return rule; }
 
-		//annotation=Annotation "aspect" query=Query "{" collectors+=Collector "}"
+		////annotation=Annotation
+		//"aspect" query=Query "{" collectors+=Collector "}"
 		public Group getGroup() { return cGroup; }
 
-		//annotation=Annotation
-		public Assignment getAnnotationAssignment_0() { return cAnnotationAssignment_0; }
-
-		//Annotation
-		public RuleCall getAnnotationAnnotationParserRuleCall_0_0() { return cAnnotationAnnotationParserRuleCall_0_0; }
-
+		////annotation=Annotation
 		//"aspect"
-		public Keyword getAspectKeyword_1() { return cAspectKeyword_1; }
+		public Keyword getAspectKeyword_0() { return cAspectKeyword_0; }
 
 		//query=Query
-		public Assignment getQueryAssignment_2() { return cQueryAssignment_2; }
+		public Assignment getQueryAssignment_1() { return cQueryAssignment_1; }
 
 		//Query
-		public RuleCall getQueryQueryParserRuleCall_2_0() { return cQueryQueryParserRuleCall_2_0; }
+		public RuleCall getQueryQueryParserRuleCall_1_0() { return cQueryQueryParserRuleCall_1_0; }
 
 		//"{"
-		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 
 		//collectors+=Collector
-		public Assignment getCollectorsAssignment_4() { return cCollectorsAssignment_4; }
+		public Assignment getCollectorsAssignment_3() { return cCollectorsAssignment_3; }
 
 		//Collector
-		public RuleCall getCollectorsCollectorParserRuleCall_4_0() { return cCollectorsCollectorParserRuleCall_4_0; }
+		public RuleCall getCollectorsCollectorParserRuleCall_3_0() { return cCollectorsCollectorParserRuleCall_3_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 	}
 
 	public class QueryElements extends AbstractParserRuleElementFinder {
@@ -559,17 +581,20 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 	public class FloatValueElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FloatValue");
 		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cValueFLOATTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
+		private final RuleCall cValueINTTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
 		
 		//FloatValue:
-		//	value=FLOAT;
+		//	value= //FLOAT
+		//	INT;
 		public ParserRule getRule() { return rule; }
 
-		//value=FLOAT
+		//value= //FLOAT
+		//INT
 		public Assignment getValueAssignment() { return cValueAssignment; }
 
-		//FLOAT
-		public RuleCall getValueFLOATTerminalRuleCall_0() { return cValueFLOATTerminalRuleCall_0; }
+		////FLOAT
+		//INT
+		public RuleCall getValueINTTerminalRuleCall_0() { return cValueINTTerminalRuleCall_0; }
 	}
 
 	public class IntValueElements extends AbstractParserRuleElementFinder {
@@ -972,7 +997,7 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	private ModelElements pModel;
-	private ImportElements pImport;
+	private MetaModelElements pMetaModel;
 	private ApplicationModelElements pApplicationModel;
 	private QualifiedNameElements pQualifiedName;
 	private QualifiedNameWithWildcardElements pQualifiedNameWithWildcard;
@@ -1001,13 +1026,13 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 	
 	private final Grammar grammar;
 
-	private AnnotationsGrammarAccess gaAnnotations;
+	private TerminalsGrammarAccess gaTerminals;
 
 	@Inject
 	public ApplicationLangGrammarAccess(GrammarProvider grammarProvider,
-		AnnotationsGrammarAccess gaAnnotations) {
+		TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
-		this.gaAnnotations = gaAnnotations;
+		this.gaTerminals = gaTerminals;
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -1032,13 +1057,13 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 
-	public AnnotationsGrammarAccess getAnnotationsGrammarAccess() {
-		return gaAnnotations;
+	public TerminalsGrammarAccess getTerminalsGrammarAccess() {
+		return gaTerminals;
 	}
 
 	
 	//Model:
-	//	"package" name=QualifiedName sources+=ApplicationModel* imports+=Import* aspects+=Aspect*;
+	//	"package" name=QualifiedName metamodels+=MetaModel* sources+=ApplicationModel* aspects+=Aspect*;
 	public ModelElements getModelAccess() {
 		return (pModel != null) ? pModel : (pModel = new ModelElements());
 	}
@@ -1047,18 +1072,18 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 		return getModelAccess().getRule();
 	}
 
-	//Import:
-	//	"import" importedNamespace=QualifiedNameWithWildcard;
-	public ImportElements getImportAccess() {
-		return (pImport != null) ? pImport : (pImport = new ImportElements());
+	//MetaModel:
+	//	"register" name=ID package=[ecore::EPackage|STRING];
+	public MetaModelElements getMetaModelAccess() {
+		return (pMetaModel != null) ? pMetaModel : (pMetaModel = new MetaModelElements());
 	}
 	
-	public ParserRule getImportRule() {
-		return getImportAccess().getRule();
+	public ParserRule getMetaModelRule() {
+		return getMetaModelAccess().getRule();
 	}
 
 	//ApplicationModel:
-	//	"model" name=ID model=STRING;
+	//	"use" metamodel=[MetaModel] "on" name=ID model=STRING;
 	public ApplicationModelElements getApplicationModelAccess() {
 		return (pApplicationModel != null) ? pApplicationModel : (pApplicationModel = new ApplicationModelElements());
 	}
@@ -1089,8 +1114,8 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 
 	//// define subgraph-pattern to locate structures in models
 	//// define selector for reference destination
-	//Aspect:
-	//	annotation=Annotation "aspect" query=Query "{" collectors+=Collector "}";
+	//Aspect: //annotation=Annotation
+	//	"aspect" query=Query "{" collectors+=Collector "}";
 	public AspectElements getAspectAccess() {
 		return (pAspect != null) ? pAspect : (pAspect = new AspectElements());
 	}
@@ -1172,7 +1197,8 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//FloatValue:
-	//	value=FLOAT;
+	//	value= //FLOAT
+	//	INT;
 	public FloatValueElements getFloatValueAccess() {
 		return (pFloatValue != null) ? pFloatValue : (pFloatValue = new FloatValueElements());
 	}
@@ -1312,219 +1338,46 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 		return getInsertionPointAccess().getRule();
 	}
 
-	//// --------------------------
-	////
-	////   ANNOTATIONS
-	////
-	//// --------------------------
-	//Annotation:
-	//	CommentAnnotation | TagAnnotation | KeyStringValueAnnotation | TypedKeyStringValueAnnotation |
-	//	KeyBooleanValueAnnotation | KeyIntValueAnnotation | KeyFloatValueAnnotation;
-	public AnnotationsGrammarAccess.AnnotationElements getAnnotationAccess() {
-		return gaAnnotations.getAnnotationAccess();
-	}
-	
-	public ParserRule getAnnotationRule() {
-		return getAnnotationAccess().getRule();
-	}
-
-	//ValuedAnnotation returns Annotation:
-	//	CommentAnnotation | KeyStringValueAnnotation | TypedKeyStringValueAnnotation | KeyBooleanValueAnnotation |
-	//	KeyIntValueAnnotation | KeyFloatValueAnnotation;
-	public AnnotationsGrammarAccess.ValuedAnnotationElements getValuedAnnotationAccess() {
-		return gaAnnotations.getValuedAnnotationAccess();
-	}
-	
-	public ParserRule getValuedAnnotationRule() {
-		return getValuedAnnotationAccess().getRule();
-	}
-
-	//// e.g.: / ** semantic comment * /
-	//CommentAnnotation returns StringAnnotation:
-	//	value=COMMENT_ANNOTATION;
-	public AnnotationsGrammarAccess.CommentAnnotationElements getCommentAnnotationAccess() {
-		return gaAnnotations.getCommentAnnotationAccess();
-	}
-	
-	public ParserRule getCommentAnnotationRule() {
-		return getCommentAnnotationAccess().getRule();
-	}
-
-	//// e.g.: @HVlayout
-	//TagAnnotation returns Annotation:
-	//	"@" name=ExtendedID ("(" annotations+=Annotation* ")")?;
-	public AnnotationsGrammarAccess.TagAnnotationElements getTagAnnotationAccess() {
-		return gaAnnotations.getTagAnnotationAccess();
-	}
-	
-	public ParserRule getTagAnnotationRule() {
-		return getTagAnnotationAccess().getRule();
-	}
-
-	//// e.g.: @layouter dot;   
-	//KeyStringValueAnnotation returns StringAnnotation:
-	//	"@" name=ExtendedID value=EString ("(" annotations+=Annotation* ")")?;
-	public AnnotationsGrammarAccess.KeyStringValueAnnotationElements getKeyStringValueAnnotationAccess() {
-		return gaAnnotations.getKeyStringValueAnnotationAccess();
-	}
-	
-	public ParserRule getKeyStringValueAnnotationRule() {
-		return getKeyStringValueAnnotationAccess().getRule();
-	}
-
-	//// e.g.: @position[de.cau.cs.kieler.core.math.KVector] "(3,2)"
-	//TypedKeyStringValueAnnotation returns TypedStringAnnotation:
-	//	"@" name=ExtendedID "[" type=ExtendedID "]" value=EString ("(" annotations+=Annotation* ")")?;
-	public AnnotationsGrammarAccess.TypedKeyStringValueAnnotationElements getTypedKeyStringValueAnnotationAccess() {
-		return gaAnnotations.getTypedKeyStringValueAnnotationAccess();
-	}
-	
-	public ParserRule getTypedKeyStringValueAnnotationRule() {
-		return getTypedKeyStringValueAnnotationAccess().getRule();
-	}
-
-	//// e.g.: @visible true;
-	//KeyBooleanValueAnnotation returns BooleanAnnotation:
-	//	"@" name=ExtendedID value=BOOLEAN ("(" annotations+=Annotation* ")")?;
-	public AnnotationsGrammarAccess.KeyBooleanValueAnnotationElements getKeyBooleanValueAnnotationAccess() {
-		return gaAnnotations.getKeyBooleanValueAnnotationAccess();
-	}
-	
-	public ParserRule getKeyBooleanValueAnnotationRule() {
-		return getKeyBooleanValueAnnotationAccess().getRule();
-	}
-
-	//// e.g.: @minSpace 10;    
-	//KeyIntValueAnnotation returns IntAnnotation:
-	//	"@" name=ExtendedID value=INT ("(" annotations+=Annotation* ")")?;
-	public AnnotationsGrammarAccess.KeyIntValueAnnotationElements getKeyIntValueAnnotationAccess() {
-		return gaAnnotations.getKeyIntValueAnnotationAccess();
-	}
-	
-	public ParserRule getKeyIntValueAnnotationRule() {
-		return getKeyIntValueAnnotationAccess().getRule();
-	}
-
-	//// e.g.: @minSpace 10.0;    
-	//KeyFloatValueAnnotation returns FloatAnnotation:
-	//	"@" name=ExtendedID value=FLOAT ("(" annotations+=Annotation* ")")?;
-	public AnnotationsGrammarAccess.KeyFloatValueAnnotationElements getKeyFloatValueAnnotationAccess() {
-		return gaAnnotations.getKeyFloatValueAnnotationAccess();
-	}
-	
-	public ParserRule getKeyFloatValueAnnotationRule() {
-		return getKeyFloatValueAnnotationAccess().getRule();
-	}
-
-	//// needed for importing other resources
-	//ImportAnnotation:
-	//	"import" importURI=STRING;
-	public AnnotationsGrammarAccess.ImportAnnotationElements getImportAnnotationAccess() {
-		return gaAnnotations.getImportAnnotationAccess();
-	}
-	
-	public ParserRule getImportAnnotationRule() {
-		return getImportAnnotationAccess().getRule();
-	}
-
-	//// allow strings without quotes as they don'c contain spaces
-	//EString returns ecore::EString:
-	//	STRING | ID;
-	public AnnotationsGrammarAccess.EStringElements getEStringAccess() {
-		return gaAnnotations.getEStringAccess();
-	}
-	
-	public ParserRule getEStringRule() {
-		return getEStringAccess().getRule();
-	}
-
-	//ExtendedID returns ecore::EString:
-	//	ID ("." ID)*;
-	public AnnotationsGrammarAccess.ExtendedIDElements getExtendedIDAccess() {
-		return gaAnnotations.getExtendedIDAccess();
-	}
-	
-	public ParserRule getExtendedIDRule() {
-		return getExtendedIDAccess().getRule();
-	}
-
-	//// --------------------------
-	////
-	////  Terminals...
-	////
-	//// --------------------------
-	//// custom terminals
-	//// custom terminal rule introducing semantic comments
-	//terminal COMMENT_ANNOTATION:
-	//	"/ **"->"* /";
-	public TerminalRule getCOMMENT_ANNOTATIONRule() {
-		return gaAnnotations.getCOMMENT_ANNOTATIONRule();
-	} 
-
-	//// modified version of Terminals.ML_COMMENT as
-	//// COMMENT_ANNOTATION is not recognized correctly with original one 
-	//terminal ML_COMMENT:
-	//	"/ *" !"*"->"* /";
-	public TerminalRule getML_COMMENTRule() {
-		return gaAnnotations.getML_COMMENTRule();
-	} 
-
-	//// generic terminals
-	//terminal fragment NUMBER:
-	//	"0".."9";
-	public TerminalRule getNUMBERRule() {
-		return gaAnnotations.getNUMBERRule();
-	} 
-
-	//// redefine INT terminal to allow negative numbers
-	//terminal INT returns ecore::EInt:
-	//	"-"? NUMBER+;
-	public TerminalRule getINTRule() {
-		return gaAnnotations.getINTRule();
-	} 
-
-	//// make sure the Float rule does not shadow the INT rule
-	//terminal FLOAT returns ecore::EFloatObject:
-	//	"-"? NUMBER+ ("." NUMBER*) (("e" | "E") ("+" | "-")? NUMBER+)? "f"? | "-"? NUMBER+ "f";
-	public TerminalRule getFLOATRule() {
-		return gaAnnotations.getFLOATRule();
-	} 
-
-	//// introduce boolean values
-	//terminal BOOLEAN returns ecore::EBooleanObject:
-	//	"true" | "false";
-	public TerminalRule getBOOLEANRule() {
-		return gaAnnotations.getBOOLEANRule();
-	} 
-
-	//// custom terminal rule for strings
-	//terminal STRING:
-	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"";
-	public TerminalRule getSTRINGRule() {
-		return gaAnnotations.getSTRINGRule();
-	} 
-
 	//terminal ID:
 	//	"^"? ("a".."z" | "A".."Z" | "_") ("a".."z" | "A".."Z" | "_" | "0".."9")*;
 	public TerminalRule getIDRule() {
-		return gaAnnotations.getIDRule();
+		return gaTerminals.getIDRule();
+	} 
+
+	//terminal INT returns ecore::EInt:
+	//	"0".."9"+;
+	public TerminalRule getINTRule() {
+		return gaTerminals.getINTRule();
+	} 
+
+	//terminal STRING:
+	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
+	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
+	public TerminalRule getSTRINGRule() {
+		return gaTerminals.getSTRINGRule();
+	} 
+
+	//terminal ML_COMMENT:
+	//	"/ *"->"* /";
+	public TerminalRule getML_COMMENTRule() {
+		return gaTerminals.getML_COMMENTRule();
 	} 
 
 	//terminal SL_COMMENT:
 	//	"//" !("\n" | "\r")* ("\r"? "\n")?;
 	public TerminalRule getSL_COMMENTRule() {
-		return gaAnnotations.getSL_COMMENTRule();
+		return gaTerminals.getSL_COMMENTRule();
 	} 
 
 	//terminal WS:
 	//	(" " | "\t" | "\r" | "\n")+;
 	public TerminalRule getWSRule() {
-		return gaAnnotations.getWSRule();
+		return gaTerminals.getWSRule();
 	} 
 
 	//terminal ANY_OTHER:
 	//	.;
 	public TerminalRule getANY_OTHERRule() {
-		return gaAnnotations.getANY_OTHERRule();
+		return gaTerminals.getANY_OTHERRule();
 	} 
 }

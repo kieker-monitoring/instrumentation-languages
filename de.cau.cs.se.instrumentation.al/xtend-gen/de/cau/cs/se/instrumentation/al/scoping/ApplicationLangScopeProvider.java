@@ -8,13 +8,16 @@ import de.cau.cs.se.instrumantation.model.structure.Container;
 import de.cau.cs.se.instrumantation.model.structure.Method;
 import de.cau.cs.se.instrumentation.al.applicationLang.ContainerNode;
 import de.cau.cs.se.instrumentation.al.applicationLang.LocationQuery;
+import de.cau.cs.se.instrumentation.al.applicationLang.MetaModel;
 import de.cau.cs.se.instrumentation.al.applicationLang.Node;
 import de.cau.cs.se.instrumentation.al.applicationLang.Query;
+import de.cau.cs.se.instrumentation.al.scoping.URIPredicate;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
+import org.eclipse.xtext.scoping.impl.FilteringScope;
 
 /**
  * This class contains custom scoping description.
@@ -55,5 +58,22 @@ public class ApplicationLangScopeProvider extends AbstractDeclarativeScopeProvid
       _xifexpression = query.getNode();
     }
     return _xifexpression;
+  }
+  
+  /**
+   * Find scope for the package property in the MetaModel rule.
+   * 
+   * @param context
+   *            The Package-object of the resulting model.
+   * @param reference
+   *            The EReference-reference object of the AST.
+   * @return The scope for the package attribute.
+   */
+  public IScope scope_MetaModel_package(final MetaModel context, final EReference reference) {
+    System.out.println(("scope " + context));
+    IScope _delegateGetScope = this.delegateGetScope(context, reference);
+    URIPredicate _uRIPredicate = new URIPredicate();
+    final IScope result = new FilteringScope(_delegateGetScope, _uRIPredicate);
+    return result;
   }
 }

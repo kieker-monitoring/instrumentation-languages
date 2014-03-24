@@ -1,8 +1,9 @@
-grammar de.cau.cs.se.instrumentation.al.ApplicationLang with de.cau.cs.kieler.core.annotations.text.Annotations 
+grammar de.cau.cs.se.instrumentation.al.ApplicationLang with org.eclipse.xtext.common.Terminals
+// de.cau.cs.kieler.core.annotations.text.Annotations 
 
 generate applicationLang "http://www.cau.de/cs/se/instrumentation/al/ApplicationLang"
 
-import "http://kieler.cs.cau.de/annotations" as annotations
+//import "http://kieler.cs.cau.de/annotations" as annotations
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 // TODO fix this, in a stable setup, the nsURI should work
 //import "http://www.cau.de/cs/se/instrumentation/rl/RecordLang" as irl
@@ -11,17 +12,17 @@ import "http://modelstructure.se.cs.cau.de/structure" as structure
 
 Model:
 	'package' name = QualifiedName
+	(metamodels+= MetaModel)*
 	(sources += ApplicationModel)*
-	(imports += Import)*
 	(aspects += Aspect)*
 ;
 
-Import:
-	'import' importedNamespace = QualifiedNameWithWildcard
+MetaModel:
+	'register' name=ID package=[ecore::EPackage|STRING]
 ;
 
 ApplicationModel:
-	'model' name=ID model=STRING 
+	'use' metamodel=[MetaModel|ID] 'on' name=ID model=STRING 
 ;
 
 QualifiedName:
@@ -35,7 +36,7 @@ QualifiedNameWithWildcard:
 // define selector for reference destination
 
 Aspect:
-	annotation=Annotation
+	//annotation=Annotation
 	'aspect' query=Query '{'
 		collectors+=Collector
 	'}'
@@ -78,7 +79,7 @@ Value:
 ;
 
 FloatValue:
-	value=FLOAT
+	value=INT //FLOAT
 ;
 
 IntValue:

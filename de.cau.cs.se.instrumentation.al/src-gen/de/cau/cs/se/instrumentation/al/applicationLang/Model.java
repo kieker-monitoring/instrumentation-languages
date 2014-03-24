@@ -15,8 +15,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.Model#getName <em>Name</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.Model#getMetamodels <em>Metamodels</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.Model#getSources <em>Sources</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.Model#getImports <em>Imports</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.Model#getAspects <em>Aspects</em>}</li>
  * </ul>
  * </p>
@@ -54,6 +54,22 @@ public interface Model extends EObject
   void setName(String value);
 
   /**
+   * Returns the value of the '<em><b>Metamodels</b></em>' containment reference list.
+   * The list contents are of type {@link de.cau.cs.se.instrumentation.al.applicationLang.MetaModel}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Metamodels</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Metamodels</em>' containment reference list.
+   * @see de.cau.cs.se.instrumentation.al.applicationLang.ApplicationLangPackage#getModel_Metamodels()
+   * @model containment="true"
+   * @generated
+   */
+  EList<MetaModel> getMetamodels();
+
+  /**
    * Returns the value of the '<em><b>Sources</b></em>' containment reference list.
    * The list contents are of type {@link de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel}.
    * <!-- begin-user-doc -->
@@ -68,22 +84,6 @@ public interface Model extends EObject
    * @generated
    */
   EList<ApplicationModel> getSources();
-
-  /**
-   * Returns the value of the '<em><b>Imports</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.cs.se.instrumentation.al.applicationLang.Import}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Imports</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Imports</em>' containment reference list.
-   * @see de.cau.cs.se.instrumentation.al.applicationLang.ApplicationLangPackage#getModel_Imports()
-   * @model containment="true"
-   * @generated
-   */
-  EList<Import> getImports();
 
   /**
    * Returns the value of the '<em><b>Aspects</b></em>' containment reference list.

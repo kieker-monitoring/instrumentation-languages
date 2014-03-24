@@ -10,6 +10,10 @@ import de.cau.cs.se.instrumentation.al.applicationLang.LocationQuery
 import de.cau.cs.se.instrumentation.al.applicationLang.Node
 import de.cau.cs.se.instrumentation.al.applicationLang.ContainerNode
 import org.eclipse.xtext.scoping.Scopes;
+import com.google.common.base.Predicate
+import org.eclipse.xtext.resource.IEObjectDescription
+import org.eclipse.xtext.scoping.impl.FilteringScope
+import de.cau.cs.se.instrumentation.al.applicationLang.MetaModel
 
 /**
  * This class contains custom scoping description.
@@ -39,4 +43,29 @@ class ApplicationLangScopeProvider extends org.eclipse.xtext.scoping.impl.Abstra
 			query.node
 	}
 	
+		/**
+	 * Find scope for the package property in the MetaModel rule.
+	 * 
+	 * @param context
+	 *            The Package-object of the resulting model.
+	 * @param reference
+	 *            The EReference-reference object of the AST.
+	 * @return The scope for the package attribute.
+	 */
+	def IScope scope_MetaModel_package(MetaModel context, EReference reference) {
+		System.out.println("scope " + context)
+		val IScope result = new FilteringScope(delegateGetScope(context, reference),new URIPredicate())
+		return result
+	}
+	
+}
+
+// this is most likely not necessary in Xtend and can be merged some how
+class URIPredicate implements Predicate<IEObjectDescription> {
+
+	override boolean apply(IEObjectDescription input) {
+		System.out.println("filter " + input)
+		val String isNSURI = input.getUserData("nsURI")
+		return "true".equals(isNSURI)
+	}
 }

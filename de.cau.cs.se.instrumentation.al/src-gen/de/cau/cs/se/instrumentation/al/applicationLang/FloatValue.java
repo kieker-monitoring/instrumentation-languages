@@ -30,12 +30,12 @@ public interface FloatValue extends Value
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Value</em>' attribute.
-   * @see #setValue(Float)
+   * @see #setValue(int)
    * @see de.cau.cs.se.instrumentation.al.applicationLang.ApplicationLangPackage#getFloatValue_Value()
    * @model
    * @generated
    */
-  Float getValue();
+  int getValue();
 
   /**
    * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.applicationLang.FloatValue#getValue <em>Value</em>}' attribute.
@@ -45,6 +45,6 @@ public interface FloatValue extends Value
    * @see #getValue()
    * @generated
    */
-  void setValue(Float value);
+  void setValue(int value);
 
 } // FloatValue

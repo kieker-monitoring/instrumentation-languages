@@ -15,6 +15,9 @@
  ***************************************************************************/
 package de.cau.cs.se.instrumentation.al;
 
+import org.eclipse.xtext.naming.IQualifiedNameConverter;
+import org.eclipse.xtext.xtext.XtextQualifiedNameConverter;
+
 import de.cau.cs.se.instrumentation.al.modelhandling.ForeignModelGlobalScopeProvider;
 
 /**
@@ -32,5 +35,10 @@ public class ApplicationLangRuntimeModule extends de.cau.cs.se.instrumentation.a
 	@Override
 	public Class<? extends org.eclipse.xtext.scoping.IGlobalScopeProvider> bindIGlobalScopeProvider() {
 		return ForeignModelGlobalScopeProvider.class;
+	}
+	
+	// temporary solution
+	public Class<? extends IQualifiedNameConverter> bindIQualifiedNameConverter() {
+		return XtextQualifiedNameConverter.class;
 	}
 }

@@ -34,7 +34,7 @@ public class FloatValueImpl extends ValueImpl implements FloatValue
    * @generated
    * @ordered
    */
-  protected static final Float VALUE_EDEFAULT = null;
+  protected static final int VALUE_EDEFAULT = 0;
 
   /**
    * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -44,7 +44,7 @@ public class FloatValueImpl extends ValueImpl implements FloatValue
    * @generated
    * @ordered
    */
-  protected Float value = VALUE_EDEFAULT;
+  protected int value = VALUE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -72,7 +72,7 @@ public class FloatValueImpl extends ValueImpl implements FloatValue
    * <!-- end-user-doc -->
    * @generated
    */
-  public Float getValue()
+  public int getValue()
   {
     return value;
   }
@@ -82,9 +82,9 @@ public class FloatValueImpl extends ValueImpl implements FloatValue
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setValue(Float newValue)
+  public void setValue(int newValue)
   {
-    Float oldValue = value;
+    int oldValue = value;
     value = newValue;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ApplicationLangPackage.FLOAT_VALUE__VALUE, oldValue, value));
@@ -117,7 +117,7 @@ public class FloatValueImpl extends ValueImpl implements FloatValue
     switch (featureID)
     {
       case ApplicationLangPackage.FLOAT_VALUE__VALUE:
-        setValue((Float)newValue);
+        setValue((Integer)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -151,7 +151,7 @@ public class FloatValueImpl extends ValueImpl implements FloatValue
     switch (featureID)
     {
       case ApplicationLangPackage.FLOAT_VALUE__VALUE:
-        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+        return value != VALUE_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }

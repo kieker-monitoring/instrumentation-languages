@@ -15,6 +15,9 @@
  ***************************************************************************/
 package de.cau.cs.se.instrumentation.rl;
 
+import org.eclipse.xtext.naming.IQualifiedNameConverter;
+import org.eclipse.xtext.xtext.XtextQualifiedNameConverter;
+
 import de.cau.cs.se.instrumentation.rl.typing.TypeGlobalScopeProvider;
 
 /**
@@ -33,5 +36,10 @@ public class RecordLangRuntimeModule extends de.cau.cs.se.instrumentation.rl.Abs
 	@Override
 	public Class<? extends org.eclipse.xtext.scoping.IGlobalScopeProvider> bindIGlobalScopeProvider() {
 		return TypeGlobalScopeProvider.class;
+	}
+
+	// temporary solution
+	public Class<? extends IQualifiedNameConverter> bindIQualifiedNameConverter() {
+		return XtextQualifiedNameConverter.class;
 	}
 }

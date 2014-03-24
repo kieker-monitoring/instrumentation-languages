@@ -7,7 +7,7 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
 import de.cau.cs.se.instrumentation.rl.recordLang.ReferenceProperty;
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
-import de.cau.cs.se.instrumentation.rl.scoping.MyPredicate;
+import de.cau.cs.se.instrumentation.rl.scoping.URIPredicate;
 import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation;
 import java.util.Collection;
 import java.util.List;
@@ -44,8 +44,8 @@ public class RecordLangScopeProvider extends AbstractDeclarativeScopeProvider {
    */
   public IScope scope_Package_package(final de.cau.cs.se.instrumentation.rl.recordLang.Package context, final EReference reference) {
     IScope _delegateGetScope = this.delegateGetScope(context, reference);
-    MyPredicate _myPredicate = new MyPredicate();
-    final IScope result = new FilteringScope(_delegateGetScope, _myPredicate);
+    URIPredicate _uRIPredicate = new URIPredicate();
+    final IScope result = new FilteringScope(_delegateGetScope, _uRIPredicate);
     return result;
   }
   
