@@ -31,7 +31,7 @@ import kieker.common.record.flow.IEventRecord;
  * @since 1.10
  */
 public abstract class AbstractEvent extends AbstractMonitoringRecord implements IMonitoringRecord.Factory, IMonitoringRecord.BinaryFactory, IEventRecord {
-		private static final long serialVersionUID = 1395333732070L;
+		private static final long serialVersionUID = 1395754982925L;
 	
 	
 	public static final long TIMESTAMP = 0;

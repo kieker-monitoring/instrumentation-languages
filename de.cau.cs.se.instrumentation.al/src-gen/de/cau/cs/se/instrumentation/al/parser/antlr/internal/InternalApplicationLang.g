@@ -109,9 +109,9 @@ ruleModel returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getModelAccess().getMetamodelsMetaModelParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getModelAccess().getMetamodelsRegisteredPackageParserRuleCall_2_0()); 
 	    }
-		lv_metamodels_2_0=ruleMetaModel		{
+		lv_metamodels_2_0=ruleRegisteredPackage		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getModelRule());
 	        }
@@ -119,7 +119,7 @@ ruleModel returns [EObject current=null]
        			$current, 
        			"metamodels",
         		lv_metamodels_2_0, 
-        		"MetaModel");
+        		"RegisteredPackage");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -167,33 +167,33 @@ ruleModel returns [EObject current=null]
 
 
 
-// Entry rule entryRuleMetaModel
-entryRuleMetaModel returns [EObject current=null] 
+// Entry rule entryRuleRegisteredPackage
+entryRuleRegisteredPackage returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getMetaModelRule()); }
-	 iv_ruleMetaModel=ruleMetaModel 
-	 { $current=$iv_ruleMetaModel.current; } 
+	{ newCompositeNode(grammarAccess.getRegisteredPackageRule()); }
+	 iv_ruleRegisteredPackage=ruleRegisteredPackage 
+	 { $current=$iv_ruleRegisteredPackage.current; } 
 	 EOF 
 ;
 
-// Rule MetaModel
-ruleMetaModel returns [EObject current=null] 
+// Rule RegisteredPackage
+ruleRegisteredPackage returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
 (	otherlv_0='register' 
     {
-    	newLeafNode(otherlv_0, grammarAccess.getMetaModelAccess().getRegisterKeyword_0());
+    	newLeafNode(otherlv_0, grammarAccess.getRegisteredPackageAccess().getRegisterKeyword_0());
     }
 (
 (
 		lv_name_1_0=RULE_ID
 		{
-			newLeafNode(lv_name_1_0, grammarAccess.getMetaModelAccess().getNameIDTerminalRuleCall_1_0()); 
+			newLeafNode(lv_name_1_0, grammarAccess.getRegisteredPackageAccess().getNameIDTerminalRuleCall_1_0()); 
 		}
 		{
 	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getMetaModelRule());
+	            $current = createModelElement(grammarAccess.getRegisteredPackageRule());
 	        }
        		setWithLastConsumed(
        			$current, 
@@ -210,12 +210,12 @@ ruleMetaModel returns [EObject current=null]
 		}
 		{
 			if ($current==null) {
-	            $current = createModelElement(grammarAccess.getMetaModelRule());
+	            $current = createModelElement(grammarAccess.getRegisteredPackageRule());
 	        }
         }
 	otherlv_2=RULE_STRING
 	{
-		newLeafNode(otherlv_2, grammarAccess.getMetaModelAccess().getPackageEPackageCrossReference_2_0()); 
+		newLeafNode(otherlv_2, grammarAccess.getRegisteredPackageAccess().getEPackageEPackageCrossReference_2_0()); 
 	}
 
 )
@@ -254,10 +254,12 @@ ruleApplicationModel returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getApplicationModelRule());
 	        }
         }
-	otherlv_1=RULE_ID
-	{
-		newLeafNode(otherlv_1, grammarAccess.getApplicationModelAccess().getMetamodelMetaModelCrossReference_1_0()); 
-	}
+		{ 
+	        newCompositeNode(grammarAccess.getApplicationModelAccess().getUsePackageRegisteredPackageCrossReference_1_0()); 
+	    }
+		ruleQualifiedName		{ 
+	        afterParserOrEnumRuleCall();
+	    }
 
 )
 )	otherlv_2='on' 

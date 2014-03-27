@@ -21,13 +21,6 @@
  * Version: 1.10
  */
 typedef struct {
-	long long timestamp;
-	long long traceId;
-	long orderIndex;
-	const char* classSignature;
-	const char* operationSignature;
-	const char* calleeClassSignature;
-	const char* calleeOperationSignature;
 } kieker_common_record_flow_trace_operation_constructor_call_constructor_event;
 
 /*

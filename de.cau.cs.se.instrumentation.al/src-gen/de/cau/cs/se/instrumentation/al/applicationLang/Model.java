@@ -55,7 +55,7 @@ public interface Model extends EObject
 
   /**
    * Returns the value of the '<em><b>Metamodels</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.cs.se.instrumentation.al.applicationLang.MetaModel}.
+   * The list contents are of type {@link de.cau.cs.se.instrumentation.al.applicationLang.RegisteredPackage}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Metamodels</em>' containment reference list isn't clear,
@@ -67,7 +67,7 @@ public interface Model extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<MetaModel> getMetamodels();
+  EList<RegisteredPackage> getMetamodels();
 
   /**
    * Returns the value of the '<em><b>Sources</b></em>' containment reference list.

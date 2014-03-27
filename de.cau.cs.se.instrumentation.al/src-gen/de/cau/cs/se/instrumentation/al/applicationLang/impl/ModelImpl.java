@@ -5,8 +5,8 @@ package de.cau.cs.se.instrumentation.al.applicationLang.impl;
 import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationLangPackage;
 import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel;
 import de.cau.cs.se.instrumentation.al.applicationLang.Aspect;
-import de.cau.cs.se.instrumentation.al.applicationLang.MetaModel;
 import de.cau.cs.se.instrumentation.al.applicationLang.Model;
+import de.cau.cs.se.instrumentation.al.applicationLang.RegisteredPackage;
 
 import java.util.Collection;
 
@@ -70,7 +70,7 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * @generated
    * @ordered
    */
-  protected EList<MetaModel> metamodels;
+  protected EList<RegisteredPackage> metamodels;
 
   /**
    * The cached value of the '{@link #getSources() <em>Sources</em>}' containment reference list.
@@ -141,11 +141,11 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<MetaModel> getMetamodels()
+  public EList<RegisteredPackage> getMetamodels()
   {
     if (metamodels == null)
     {
-      metamodels = new EObjectContainmentEList<MetaModel>(MetaModel.class, this, ApplicationLangPackage.MODEL__METAMODELS);
+      metamodels = new EObjectContainmentEList<RegisteredPackage>(RegisteredPackage.class, this, ApplicationLangPackage.MODEL__METAMODELS);
     }
     return metamodels;
   }
@@ -236,7 +236,7 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return;
       case ApplicationLangPackage.MODEL__METAMODELS:
         getMetamodels().clear();
-        getMetamodels().addAll((Collection<? extends MetaModel>)newValue);
+        getMetamodels().addAll((Collection<? extends RegisteredPackage>)newValue);
         return;
       case ApplicationLangPackage.MODEL__SOURCES:
         getSources().clear();

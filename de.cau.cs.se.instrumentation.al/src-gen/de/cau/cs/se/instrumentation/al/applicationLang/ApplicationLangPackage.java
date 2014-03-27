@@ -113,14 +113,14 @@ public interface ApplicationLangPackage extends EPackage
   int MODEL_FEATURE_COUNT = 4;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.applicationLang.impl.MetaModelImpl <em>Meta Model</em>}' class.
+   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.applicationLang.impl.RegisteredPackageImpl <em>Registered Package</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.MetaModelImpl
-   * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationLangPackageImpl#getMetaModel()
+   * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.RegisteredPackageImpl
+   * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationLangPackageImpl#getRegisteredPackage()
    * @generated
    */
-  int META_MODEL = 1;
+  int REGISTERED_PACKAGE = 1;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -129,25 +129,25 @@ public interface ApplicationLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int META_MODEL__NAME = 0;
+  int REGISTERED_PACKAGE__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Package</b></em>' reference.
+   * The feature id for the '<em><b>EPackage</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int META_MODEL__PACKAGE = 1;
+  int REGISTERED_PACKAGE__EPACKAGE = 1;
 
   /**
-   * The number of structural features of the '<em>Meta Model</em>' class.
+   * The number of structural features of the '<em>Registered Package</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int META_MODEL_FEATURE_COUNT = 2;
+  int REGISTERED_PACKAGE_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationModelImpl <em>Application Model</em>}' class.
@@ -160,13 +160,13 @@ public interface ApplicationLangPackage extends EPackage
   int APPLICATION_MODEL = 2;
 
   /**
-   * The feature id for the '<em><b>Metamodel</b></em>' reference.
+   * The feature id for the '<em><b>Use Package</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int APPLICATION_MODEL__METAMODEL = 0;
+  int APPLICATION_MODEL__USE_PACKAGE = 0;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -921,36 +921,36 @@ public interface ApplicationLangPackage extends EPackage
   EReference getModel_Aspects();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.applicationLang.MetaModel <em>Meta Model</em>}'.
+   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.applicationLang.RegisteredPackage <em>Registered Package</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Meta Model</em>'.
-   * @see de.cau.cs.se.instrumentation.al.applicationLang.MetaModel
+   * @return the meta object for class '<em>Registered Package</em>'.
+   * @see de.cau.cs.se.instrumentation.al.applicationLang.RegisteredPackage
    * @generated
    */
-  EClass getMetaModel();
+  EClass getRegisteredPackage();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.applicationLang.MetaModel#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.applicationLang.RegisteredPackage#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.cau.cs.se.instrumentation.al.applicationLang.MetaModel#getName()
-   * @see #getMetaModel()
+   * @see de.cau.cs.se.instrumentation.al.applicationLang.RegisteredPackage#getName()
+   * @see #getRegisteredPackage()
    * @generated
    */
-  EAttribute getMetaModel_Name();
+  EAttribute getRegisteredPackage_Name();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.al.applicationLang.MetaModel#getPackage <em>Package</em>}'.
+   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.al.applicationLang.RegisteredPackage#getEPackage <em>EPackage</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Package</em>'.
-   * @see de.cau.cs.se.instrumentation.al.applicationLang.MetaModel#getPackage()
-   * @see #getMetaModel()
+   * @return the meta object for the reference '<em>EPackage</em>'.
+   * @see de.cau.cs.se.instrumentation.al.applicationLang.RegisteredPackage#getEPackage()
+   * @see #getRegisteredPackage()
    * @generated
    */
-  EReference getMetaModel_Package();
+  EReference getRegisteredPackage_EPackage();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel <em>Application Model</em>}'.
@@ -963,15 +963,15 @@ public interface ApplicationLangPackage extends EPackage
   EClass getApplicationModel();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel#getMetamodel <em>Metamodel</em>}'.
+   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel#getUsePackage <em>Use Package</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Metamodel</em>'.
-   * @see de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel#getMetamodel()
+   * @return the meta object for the reference '<em>Use Package</em>'.
+   * @see de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel#getUsePackage()
    * @see #getApplicationModel()
    * @generated
    */
-  EReference getApplicationModel_Metamodel();
+  EReference getApplicationModel_UsePackage();
 
   /**
    * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel#getName <em>Name</em>}'.
@@ -1589,14 +1589,14 @@ public interface ApplicationLangPackage extends EPackage
     EReference MODEL__ASPECTS = eINSTANCE.getModel_Aspects();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.applicationLang.impl.MetaModelImpl <em>Meta Model</em>}' class.
+     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.applicationLang.impl.RegisteredPackageImpl <em>Registered Package</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.MetaModelImpl
-     * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationLangPackageImpl#getMetaModel()
+     * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.RegisteredPackageImpl
+     * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationLangPackageImpl#getRegisteredPackage()
      * @generated
      */
-    EClass META_MODEL = eINSTANCE.getMetaModel();
+    EClass REGISTERED_PACKAGE = eINSTANCE.getRegisteredPackage();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -1604,15 +1604,15 @@ public interface ApplicationLangPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute META_MODEL__NAME = eINSTANCE.getMetaModel_Name();
+    EAttribute REGISTERED_PACKAGE__NAME = eINSTANCE.getRegisteredPackage_Name();
 
     /**
-     * The meta object literal for the '<em><b>Package</b></em>' reference feature.
+     * The meta object literal for the '<em><b>EPackage</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference META_MODEL__PACKAGE = eINSTANCE.getMetaModel_Package();
+    EReference REGISTERED_PACKAGE__EPACKAGE = eINSTANCE.getRegisteredPackage_EPackage();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationModelImpl <em>Application Model</em>}' class.
@@ -1625,12 +1625,12 @@ public interface ApplicationLangPackage extends EPackage
     EClass APPLICATION_MODEL = eINSTANCE.getApplicationModel();
 
     /**
-     * The meta object literal for the '<em><b>Metamodel</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Use Package</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference APPLICATION_MODEL__METAMODEL = eINSTANCE.getApplicationModel_Metamodel();
+    EReference APPLICATION_MODEL__USE_PACKAGE = eINSTANCE.getApplicationModel_UsePackage();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.

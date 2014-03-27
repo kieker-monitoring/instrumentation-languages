@@ -16,14 +16,13 @@
 package de.cau.cs.se.instrumentation.al;
 
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
-import org.eclipse.xtext.xtext.XtextQualifiedNameConverter;
 
 import de.cau.cs.se.instrumentation.al.modelhandling.ForeignModelGlobalScopeProvider;
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  * 
- * @author rju
+ * @author Reiner Jung
  */
 public class ApplicationLangRuntimeModule extends de.cau.cs.se.instrumentation.al.AbstractApplicationLangRuntimeModule { // NOCS -- constructor not required
 	/**
@@ -37,8 +36,11 @@ public class ApplicationLangRuntimeModule extends de.cau.cs.se.instrumentation.a
 		return ForeignModelGlobalScopeProvider.class;
 	}
 	
-	// temporary solution
+	/**
+	 * Use the XtextQualifiedNameConverter to support URIs??
+	 * @return
+	 */
 	public Class<? extends IQualifiedNameConverter> bindIQualifiedNameConverter() {
-		return XtextQualifiedNameConverter.class;
+		return IQualifiedNameConverter.DefaultImpl.class;
 	}
 }

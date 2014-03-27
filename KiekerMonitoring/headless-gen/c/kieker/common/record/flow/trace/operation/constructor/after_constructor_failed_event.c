@@ -33,11 +33,5 @@
  */
 int kieker_common_record_flow_trace_operation_constructor_after_constructor_failed_event_serialize(char *buffer, const int id, const int offset, const kieker_common_record_flow_trace_operation_constructor_after_constructor_failed_event value) {
 	int length = 0;
-	length += kieker_serialize_int64(buffer,offset,timestamp);
-	length += kieker_serialize_int64(buffer,offset,traceId);
-	length += kieker_serialize_int32(buffer,offset,orderIndex);
-	length += kieker_serialize_string(buffer,offset,classSignature);
-	length += kieker_serialize_string(buffer,offset,operationSignature);
-	length += kieker_serialize_string(buffer,offset,cause);
 	return length;
 }

@@ -32,13 +32,13 @@ public interface ApplicationLangFactory extends EFactory
   Model createModel();
 
   /**
-   * Returns a new object of class '<em>Meta Model</em>'.
+   * Returns a new object of class '<em>Registered Package</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Meta Model</em>'.
+   * @return a new object of class '<em>Registered Package</em>'.
    * @generated
    */
-  MetaModel createMetaModel();
+  RegisteredPackage createRegisteredPackage();
 
   /**
    * Returns a new object of class '<em>Application Model</em>'.

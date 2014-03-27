@@ -21,12 +21,6 @@
  * Version: 1.10
  */
 typedef struct {
-	long long timestamp;
-	long long traceId;
-	long orderIndex;
-	const char* classSignature;
-	const char* operationSignature;
-	const char* cause;
 } kieker_common_record_flow_trace_operation_constructor_after_constructor_failed_event;
 
 /*

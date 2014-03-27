@@ -14,7 +14,6 @@ import de.cau.cs.se.instrumentation.al.applicationLang.FloatValue;
 import de.cau.cs.se.instrumentation.al.applicationLang.InsertionPoint;
 import de.cau.cs.se.instrumentation.al.applicationLang.IntValue;
 import de.cau.cs.se.instrumentation.al.applicationLang.LocationQuery;
-import de.cau.cs.se.instrumentation.al.applicationLang.MetaModel;
 import de.cau.cs.se.instrumentation.al.applicationLang.Model;
 import de.cau.cs.se.instrumentation.al.applicationLang.Node;
 import de.cau.cs.se.instrumentation.al.applicationLang.Operator;
@@ -26,6 +25,7 @@ import de.cau.cs.se.instrumentation.al.applicationLang.Query;
 import de.cau.cs.se.instrumentation.al.applicationLang.ReferenceValue;
 import de.cau.cs.se.instrumentation.al.applicationLang.ReflectionFunction;
 import de.cau.cs.se.instrumentation.al.applicationLang.ReflectionProperty;
+import de.cau.cs.se.instrumentation.al.applicationLang.RegisteredPackage;
 import de.cau.cs.se.instrumentation.al.applicationLang.RuntimeProperty;
 import de.cau.cs.se.instrumentation.al.applicationLang.StringValue;
 import de.cau.cs.se.instrumentation.al.applicationLang.SubPathNode;
@@ -63,7 +63,7 @@ public class ApplicationLangPackageImpl extends EPackageImpl implements Applicat
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass metaModelEClass = null;
+  private EClass registeredPackageEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -348,9 +348,9 @@ public class ApplicationLangPackageImpl extends EPackageImpl implements Applicat
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getMetaModel()
+  public EClass getRegisteredPackage()
   {
-    return metaModelEClass;
+    return registeredPackageEClass;
   }
 
   /**
@@ -358,9 +358,9 @@ public class ApplicationLangPackageImpl extends EPackageImpl implements Applicat
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getMetaModel_Name()
+  public EAttribute getRegisteredPackage_Name()
   {
-    return (EAttribute)metaModelEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)registeredPackageEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -368,9 +368,9 @@ public class ApplicationLangPackageImpl extends EPackageImpl implements Applicat
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getMetaModel_Package()
+  public EReference getRegisteredPackage_EPackage()
   {
-    return (EReference)metaModelEClass.getEStructuralFeatures().get(1);
+    return (EReference)registeredPackageEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -388,7 +388,7 @@ public class ApplicationLangPackageImpl extends EPackageImpl implements Applicat
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getApplicationModel_Metamodel()
+  public EReference getApplicationModel_UsePackage()
   {
     return (EReference)applicationModelEClass.getEStructuralFeatures().get(0);
   }
@@ -949,12 +949,12 @@ public class ApplicationLangPackageImpl extends EPackageImpl implements Applicat
     createEReference(modelEClass, MODEL__SOURCES);
     createEReference(modelEClass, MODEL__ASPECTS);
 
-    metaModelEClass = createEClass(META_MODEL);
-    createEAttribute(metaModelEClass, META_MODEL__NAME);
-    createEReference(metaModelEClass, META_MODEL__PACKAGE);
+    registeredPackageEClass = createEClass(REGISTERED_PACKAGE);
+    createEAttribute(registeredPackageEClass, REGISTERED_PACKAGE__NAME);
+    createEReference(registeredPackageEClass, REGISTERED_PACKAGE__EPACKAGE);
 
     applicationModelEClass = createEClass(APPLICATION_MODEL);
-    createEReference(applicationModelEClass, APPLICATION_MODEL__METAMODEL);
+    createEReference(applicationModelEClass, APPLICATION_MODEL__USE_PACKAGE);
     createEAttribute(applicationModelEClass, APPLICATION_MODEL__NAME);
     createEAttribute(applicationModelEClass, APPLICATION_MODEL__MODEL);
 
@@ -1077,16 +1077,16 @@ public class ApplicationLangPackageImpl extends EPackageImpl implements Applicat
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getModel_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getModel_Metamodels(), this.getMetaModel(), null, "metamodels", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModel_Metamodels(), this.getRegisteredPackage(), null, "metamodels", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Sources(), this.getApplicationModel(), null, "sources", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Aspects(), this.getAspect(), null, "aspects", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(metaModelEClass, MetaModel.class, "MetaModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getMetaModel_Name(), theEcorePackage.getEString(), "name", null, 0, 1, MetaModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMetaModel_Package(), theEcorePackage.getEPackage(), null, "package", null, 0, 1, MetaModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(registeredPackageEClass, RegisteredPackage.class, "RegisteredPackage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getRegisteredPackage_Name(), theEcorePackage.getEString(), "name", null, 0, 1, RegisteredPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRegisteredPackage_EPackage(), theEcorePackage.getEPackage(), null, "ePackage", null, 0, 1, RegisteredPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(applicationModelEClass, ApplicationModel.class, "ApplicationModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getApplicationModel_Metamodel(), this.getMetaModel(), null, "metamodel", null, 0, 1, ApplicationModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getApplicationModel_UsePackage(), this.getRegisteredPackage(), null, "usePackage", null, 0, 1, ApplicationModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getApplicationModel_Name(), theEcorePackage.getEString(), "name", null, 0, 1, ApplicationModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getApplicationModel_Model(), theEcorePackage.getEString(), "model", null, 0, 1, ApplicationModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

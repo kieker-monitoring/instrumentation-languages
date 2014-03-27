@@ -10,7 +10,6 @@ import de.cau.cs.se.instrumentation.al.applicationLang.ContainerNode;
 import de.cau.cs.se.instrumentation.al.applicationLang.FloatValue;
 import de.cau.cs.se.instrumentation.al.applicationLang.IntValue;
 import de.cau.cs.se.instrumentation.al.applicationLang.LocationQuery;
-import de.cau.cs.se.instrumentation.al.applicationLang.MetaModel;
 import de.cau.cs.se.instrumentation.al.applicationLang.Model;
 import de.cau.cs.se.instrumentation.al.applicationLang.ParamCompare;
 import de.cau.cs.se.instrumentation.al.applicationLang.ParamQuery;
@@ -18,6 +17,7 @@ import de.cau.cs.se.instrumentation.al.applicationLang.ParameterPattern;
 import de.cau.cs.se.instrumentation.al.applicationLang.Query;
 import de.cau.cs.se.instrumentation.al.applicationLang.ReferenceValue;
 import de.cau.cs.se.instrumentation.al.applicationLang.ReflectionProperty;
+import de.cau.cs.se.instrumentation.al.applicationLang.RegisteredPackage;
 import de.cau.cs.se.instrumentation.al.applicationLang.RuntimeProperty;
 import de.cau.cs.se.instrumentation.al.applicationLang.StringValue;
 import de.cau.cs.se.instrumentation.al.applicationLang.SubPathNode;
@@ -91,12 +91,6 @@ public class ApplicationLangSemanticSequencer extends AbstractDelegatingSemantic
 					return; 
 				}
 				else break;
-			case ApplicationLangPackage.META_MODEL:
-				if(context == grammarAccess.getMetaModelRule()) {
-					sequence_MetaModel(context, (MetaModel) semanticObject); 
-					return; 
-				}
-				else break;
 			case ApplicationLangPackage.MODEL:
 				if(context == grammarAccess.getModelRule()) {
 					sequence_Model(context, (Model) semanticObject); 
@@ -141,6 +135,12 @@ public class ApplicationLangSemanticSequencer extends AbstractDelegatingSemantic
 					return; 
 				}
 				else break;
+			case ApplicationLangPackage.REGISTERED_PACKAGE:
+				if(context == grammarAccess.getRegisteredPackageRule()) {
+					sequence_RegisteredPackage(context, (RegisteredPackage) semanticObject); 
+					return; 
+				}
+				else break;
 			case ApplicationLangPackage.RUNTIME_PROPERTY:
 				if(context == grammarAccess.getParameterRule() ||
 				   context == grammarAccess.getRuntimePropertyRule()) {
@@ -181,12 +181,12 @@ public class ApplicationLangSemanticSequencer extends AbstractDelegatingSemantic
 	
 	/**
 	 * Constraint:
-	 *     (metamodel=[MetaModel|ID] name=ID model=STRING)
+	 *     (usePackage=[RegisteredPackage|QualifiedName] name=ID model=STRING)
 	 */
 	protected void sequence_ApplicationModel(EObject context, ApplicationModel semanticObject) {
 		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ApplicationLangPackage.Literals.APPLICATION_MODEL__METAMODEL) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ApplicationLangPackage.Literals.APPLICATION_MODEL__METAMODEL));
+			if(transientValues.isValueTransient(semanticObject, ApplicationLangPackage.Literals.APPLICATION_MODEL__USE_PACKAGE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ApplicationLangPackage.Literals.APPLICATION_MODEL__USE_PACKAGE));
 			if(transientValues.isValueTransient(semanticObject, ApplicationLangPackage.Literals.APPLICATION_MODEL__NAME) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ApplicationLangPackage.Literals.APPLICATION_MODEL__NAME));
 			if(transientValues.isValueTransient(semanticObject, ApplicationLangPackage.Literals.APPLICATION_MODEL__MODEL) == ValueTransient.YES)
@@ -194,7 +194,7 @@ public class ApplicationLangSemanticSequencer extends AbstractDelegatingSemantic
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getApplicationModelAccess().getMetamodelMetaModelIDTerminalRuleCall_1_0_1(), semanticObject.getMetamodel());
+		feeder.accept(grammarAccess.getApplicationModelAccess().getUsePackageRegisteredPackageQualifiedNameParserRuleCall_1_0_1(), semanticObject.getUsePackage());
 		feeder.accept(grammarAccess.getApplicationModelAccess().getNameIDTerminalRuleCall_3_0(), semanticObject.getName());
 		feeder.accept(grammarAccess.getApplicationModelAccess().getModelSTRINGTerminalRuleCall_4_0(), semanticObject.getModel());
 		feeder.finish();
@@ -280,26 +280,7 @@ public class ApplicationLangSemanticSequencer extends AbstractDelegatingSemantic
 	
 	/**
 	 * Constraint:
-	 *     (name=ID package=[EPackage|STRING])
-	 */
-	protected void sequence_MetaModel(EObject context, MetaModel semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ApplicationLangPackage.Literals.META_MODEL__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ApplicationLangPackage.Literals.META_MODEL__NAME));
-			if(transientValues.isValueTransient(semanticObject, ApplicationLangPackage.Literals.META_MODEL__PACKAGE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ApplicationLangPackage.Literals.META_MODEL__PACKAGE));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getMetaModelAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getMetaModelAccess().getPackageEPackageSTRINGTerminalRuleCall_2_0_1(), semanticObject.getPackage());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (name=QualifiedName metamodels+=MetaModel* sources+=ApplicationModel* aspects+=Aspect*)
+	 *     (name=QualifiedName metamodels+=RegisteredPackage* sources+=ApplicationModel* aspects+=Aspect*)
 	 */
 	protected void sequence_Model(EObject context, Model semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -420,6 +401,25 @@ public class ApplicationLangSemanticSequencer extends AbstractDelegatingSemantic
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getReflectionPropertyAccess().getFunctionReflectionFunctionEnumRuleCall_1_0(), semanticObject.getFunction());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=ID ePackage=[EPackage|STRING])
+	 */
+	protected void sequence_RegisteredPackage(EObject context, RegisteredPackage semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, ApplicationLangPackage.Literals.REGISTERED_PACKAGE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ApplicationLangPackage.Literals.REGISTERED_PACKAGE__NAME));
+			if(transientValues.isValueTransient(semanticObject, ApplicationLangPackage.Literals.REGISTERED_PACKAGE__EPACKAGE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ApplicationLangPackage.Literals.REGISTERED_PACKAGE__EPACKAGE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getRegisteredPackageAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getRegisteredPackageAccess().getEPackageEPackageSTRINGTerminalRuleCall_2_0_1(), semanticObject.getEPackage());
 		feeder.finish();
 	}
 	

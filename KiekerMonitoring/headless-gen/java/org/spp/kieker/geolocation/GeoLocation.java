@@ -32,7 +32,7 @@ import kieker.common.util.registry.IRegistry;
  */
 public class GeoLocation extends AbstractMonitoringRecord implements IMonitoringRecord.Factory, IMonitoringRecord.BinaryFactory {
 	public static final int SIZE = 4; // serialization size (without variable part of strings)
-	private static final long serialVersionUID = 1395333732059L;
+	private static final long serialVersionUID = 1395754982918L;
 	
 	private static final Class<?>[] TYPES = {
 		int.class, // GeoLocation.countryCode

@@ -4,7 +4,7 @@ package de.cau.cs.se.instrumentation.al.applicationLang.impl;
 
 import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationLangPackage;
 import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel;
-import de.cau.cs.se.instrumentation.al.applicationLang.MetaModel;
+import de.cau.cs.se.instrumentation.al.applicationLang.RegisteredPackage;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationModelImpl#getMetamodel <em>Metamodel</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationModelImpl#getUsePackage <em>Use Package</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationModelImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationModelImpl#getModel <em>Model</em>}</li>
  * </ul>
@@ -32,14 +32,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class ApplicationModelImpl extends MinimalEObjectImpl.Container implements ApplicationModel
 {
   /**
-   * The cached value of the '{@link #getMetamodel() <em>Metamodel</em>}' reference.
+   * The cached value of the '{@link #getUsePackage() <em>Use Package</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getMetamodel()
+   * @see #getUsePackage()
    * @generated
    * @ordered
    */
-  protected MetaModel metamodel;
+  protected RegisteredPackage usePackage;
 
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -107,19 +107,19 @@ public class ApplicationModelImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public MetaModel getMetamodel()
+  public RegisteredPackage getUsePackage()
   {
-    if (metamodel != null && metamodel.eIsProxy())
+    if (usePackage != null && usePackage.eIsProxy())
     {
-      InternalEObject oldMetamodel = (InternalEObject)metamodel;
-      metamodel = (MetaModel)eResolveProxy(oldMetamodel);
-      if (metamodel != oldMetamodel)
+      InternalEObject oldUsePackage = (InternalEObject)usePackage;
+      usePackage = (RegisteredPackage)eResolveProxy(oldUsePackage);
+      if (usePackage != oldUsePackage)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ApplicationLangPackage.APPLICATION_MODEL__METAMODEL, oldMetamodel, metamodel));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ApplicationLangPackage.APPLICATION_MODEL__USE_PACKAGE, oldUsePackage, usePackage));
       }
     }
-    return metamodel;
+    return usePackage;
   }
 
   /**
@@ -127,9 +127,9 @@ public class ApplicationModelImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public MetaModel basicGetMetamodel()
+  public RegisteredPackage basicGetUsePackage()
   {
-    return metamodel;
+    return usePackage;
   }
 
   /**
@@ -137,12 +137,12 @@ public class ApplicationModelImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setMetamodel(MetaModel newMetamodel)
+  public void setUsePackage(RegisteredPackage newUsePackage)
   {
-    MetaModel oldMetamodel = metamodel;
-    metamodel = newMetamodel;
+    RegisteredPackage oldUsePackage = usePackage;
+    usePackage = newUsePackage;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ApplicationLangPackage.APPLICATION_MODEL__METAMODEL, oldMetamodel, metamodel));
+      eNotify(new ENotificationImpl(this, Notification.SET, ApplicationLangPackage.APPLICATION_MODEL__USE_PACKAGE, oldUsePackage, usePackage));
   }
 
   /**
@@ -201,9 +201,9 @@ public class ApplicationModelImpl extends MinimalEObjectImpl.Container implement
   {
     switch (featureID)
     {
-      case ApplicationLangPackage.APPLICATION_MODEL__METAMODEL:
-        if (resolve) return getMetamodel();
-        return basicGetMetamodel();
+      case ApplicationLangPackage.APPLICATION_MODEL__USE_PACKAGE:
+        if (resolve) return getUsePackage();
+        return basicGetUsePackage();
       case ApplicationLangPackage.APPLICATION_MODEL__NAME:
         return getName();
       case ApplicationLangPackage.APPLICATION_MODEL__MODEL:
@@ -222,8 +222,8 @@ public class ApplicationModelImpl extends MinimalEObjectImpl.Container implement
   {
     switch (featureID)
     {
-      case ApplicationLangPackage.APPLICATION_MODEL__METAMODEL:
-        setMetamodel((MetaModel)newValue);
+      case ApplicationLangPackage.APPLICATION_MODEL__USE_PACKAGE:
+        setUsePackage((RegisteredPackage)newValue);
         return;
       case ApplicationLangPackage.APPLICATION_MODEL__NAME:
         setName((String)newValue);
@@ -245,8 +245,8 @@ public class ApplicationModelImpl extends MinimalEObjectImpl.Container implement
   {
     switch (featureID)
     {
-      case ApplicationLangPackage.APPLICATION_MODEL__METAMODEL:
-        setMetamodel((MetaModel)null);
+      case ApplicationLangPackage.APPLICATION_MODEL__USE_PACKAGE:
+        setUsePackage((RegisteredPackage)null);
         return;
       case ApplicationLangPackage.APPLICATION_MODEL__NAME:
         setName(NAME_EDEFAULT);
@@ -268,8 +268,8 @@ public class ApplicationModelImpl extends MinimalEObjectImpl.Container implement
   {
     switch (featureID)
     {
-      case ApplicationLangPackage.APPLICATION_MODEL__METAMODEL:
-        return metamodel != null;
+      case ApplicationLangPackage.APPLICATION_MODEL__USE_PACKAGE:
+        return usePackage != null;
       case ApplicationLangPackage.APPLICATION_MODEL__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case ApplicationLangPackage.APPLICATION_MODEL__MODEL:

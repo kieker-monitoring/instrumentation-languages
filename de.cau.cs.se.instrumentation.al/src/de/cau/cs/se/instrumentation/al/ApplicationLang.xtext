@@ -12,17 +12,17 @@ import "http://modelstructure.se.cs.cau.de/structure" as structure
 
 Model:
 	'package' name = QualifiedName
-	(metamodels+= MetaModel)*
+	(metamodels+= RegisteredPackage)*
 	(sources += ApplicationModel)*
 	(aspects += Aspect)*
 ;
 
-MetaModel:
-	'register' name=ID package=[ecore::EPackage|STRING]
+RegisteredPackage:
+	'register' name=ID ePackage=[ecore::EPackage|STRING]
 ;
 
 ApplicationModel:
-	'use' metamodel=[MetaModel|ID] 'on' name=ID model=STRING 
+	'use' usePackage=[RegisteredPackage|QualifiedName] 'on' name=ID model=STRING 
 ;
 
 QualifiedName:

@@ -33,6 +33,7 @@ import de.cau.cs.se.instrumantation.model.structure.NamedElement;
 import de.cau.cs.se.instrumantation.model.structure.StructureFactory;
 import de.cau.cs.se.instrumantation.model.structure.Type;
 import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel;
+import de.cau.cs.se.instrumentation.al.applicationLang.RegisteredPackage;
 
 /**
  * Simulates a real source by mapping the a PCM model to our model.
@@ -44,6 +45,7 @@ public class ForeignModelResource extends ResourceImpl {
 	private final StructureFactory structure = StructureFactory.eINSTANCE;
 	private final ApplicationModel applicationModel;
 	private de.cau.cs.se.instrumantation.model.structure.Model resultModel;
+	private boolean loading = false;
 	
 	/**
 	 * Integrate a foreign model.
@@ -128,14 +130,19 @@ public class ForeignModelResource extends ResourceImpl {
 	}
 
 	private void createModel() {
-		if (this.applicationModel != null) {
-
+		if (this.applicationModel != null && !this.loading) {
+			this.loading = true;
+			// register the meta model and its packages (Steinberg 2009, EMF 15.3.4)
+			final RegisteredPackage metaModel = this.applicationModel.getUsePackage();
+			final ResourceSet resourceSet = metaModel.getEPackage().eResource().getResourceSet();
+			metaModel.eResource().getContents().get(0);
+			
+			resourceSet.getPackageRegistry().put(metaModel.getEPackage().getNsURI(), metaModel.getEPackage());
+			
+			// register the XMI facility for repository (this is not correct, as this is limiting)
 			final Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
 			final Map<String, Object> m = reg.getExtensionToFactoryMap();
 			m.put("repository", new XMIResourceFactoryImpl());
-
-			// Obtain a new resource set
-			final ResourceSet resourceSet = new ResourceSetImpl();
 
 			// Get the resource
 			final Resource source = resourceSet.getResource(URI.createPlatformResourceURI(this.applicationModel.getModel(), true), true);
@@ -148,6 +155,7 @@ public class ForeignModelResource extends ResourceImpl {
 			this.determineDataTypes(source);
 			// compose container hierarchy
 			this.determineContainerHierarchy(source);
+			this.loading = false;
 		}
 	}
 

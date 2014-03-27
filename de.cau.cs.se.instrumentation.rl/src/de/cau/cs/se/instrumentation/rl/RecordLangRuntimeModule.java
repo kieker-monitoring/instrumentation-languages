@@ -15,15 +15,12 @@
  ***************************************************************************/
 package de.cau.cs.se.instrumentation.rl;
 
-import org.eclipse.xtext.naming.IQualifiedNameConverter;
-import org.eclipse.xtext.xtext.XtextQualifiedNameConverter;
-
 import de.cau.cs.se.instrumentation.rl.typing.TypeGlobalScopeProvider;
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  * 
- * @author rju
+ * @author Reiner Jung
  */
 public class RecordLangRuntimeModule extends de.cau.cs.se.instrumentation.rl.AbstractRecordLangRuntimeModule { // NOCS
 
@@ -38,8 +35,4 @@ public class RecordLangRuntimeModule extends de.cau.cs.se.instrumentation.rl.Abs
 		return TypeGlobalScopeProvider.class;
 	}
 
-	// temporary solution
-	public Class<? extends IQualifiedNameConverter> bindIQualifiedNameConverter() {
-		return XtextQualifiedNameConverter.class;
-	}
 }

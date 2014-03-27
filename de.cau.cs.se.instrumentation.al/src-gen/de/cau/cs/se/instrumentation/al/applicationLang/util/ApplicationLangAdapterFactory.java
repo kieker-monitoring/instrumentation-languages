@@ -80,9 +80,9 @@ public class ApplicationLangAdapterFactory extends AdapterFactoryImpl
         return createModelAdapter();
       }
       @Override
-      public Adapter caseMetaModel(MetaModel object)
+      public Adapter caseRegisteredPackage(RegisteredPackage object)
       {
-        return createMetaModelAdapter();
+        return createRegisteredPackageAdapter();
       }
       @Override
       public Adapter caseApplicationModel(ApplicationModel object)
@@ -222,16 +222,16 @@ public class ApplicationLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.applicationLang.MetaModel <em>Meta Model</em>}'.
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.applicationLang.RegisteredPackage <em>Registered Package</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.applicationLang.MetaModel
+   * @see de.cau.cs.se.instrumentation.al.applicationLang.RegisteredPackage
    * @generated
    */
-  public Adapter createMetaModelAdapter()
+  public Adapter createRegisteredPackageAdapter()
   {
     return null;
   }

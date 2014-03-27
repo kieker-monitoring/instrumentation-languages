@@ -25,17 +25,17 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameQualifiedNameParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Assignment cMetamodelsAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cMetamodelsMetaModelParserRuleCall_2_0 = (RuleCall)cMetamodelsAssignment_2.eContents().get(0);
+		private final RuleCall cMetamodelsRegisteredPackageParserRuleCall_2_0 = (RuleCall)cMetamodelsAssignment_2.eContents().get(0);
 		private final Assignment cSourcesAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cSourcesApplicationModelParserRuleCall_3_0 = (RuleCall)cSourcesAssignment_3.eContents().get(0);
 		private final Assignment cAspectsAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cAspectsAspectParserRuleCall_4_0 = (RuleCall)cAspectsAssignment_4.eContents().get(0);
 		
 		//Model:
-		//	"package" name=QualifiedName metamodels+=MetaModel* sources+=ApplicationModel* aspects+=Aspect*;
+		//	"package" name=QualifiedName metamodels+=RegisteredPackage* sources+=ApplicationModel* aspects+=Aspect*;
 		public ParserRule getRule() { return rule; }
 
-		//"package" name=QualifiedName metamodels+=MetaModel* sources+=ApplicationModel* aspects+=Aspect*
+		//"package" name=QualifiedName metamodels+=RegisteredPackage* sources+=ApplicationModel* aspects+=Aspect*
 		public Group getGroup() { return cGroup; }
 
 		//"package"
@@ -47,11 +47,11 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 		//QualifiedName
 		public RuleCall getNameQualifiedNameParserRuleCall_1_0() { return cNameQualifiedNameParserRuleCall_1_0; }
 
-		//metamodels+=MetaModel*
+		//metamodels+=RegisteredPackage*
 		public Assignment getMetamodelsAssignment_2() { return cMetamodelsAssignment_2; }
 
-		//MetaModel
-		public RuleCall getMetamodelsMetaModelParserRuleCall_2_0() { return cMetamodelsMetaModelParserRuleCall_2_0; }
+		//RegisteredPackage
+		public RuleCall getMetamodelsRegisteredPackageParserRuleCall_2_0() { return cMetamodelsRegisteredPackageParserRuleCall_2_0; }
 
 		//sources+=ApplicationModel*
 		public Assignment getSourcesAssignment_3() { return cSourcesAssignment_3; }
@@ -66,21 +66,21 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getAspectsAspectParserRuleCall_4_0() { return cAspectsAspectParserRuleCall_4_0; }
 	}
 
-	public class MetaModelElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MetaModel");
+	public class RegisteredPackageElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RegisteredPackage");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cRegisterKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Assignment cPackageAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final CrossReference cPackageEPackageCrossReference_2_0 = (CrossReference)cPackageAssignment_2.eContents().get(0);
-		private final RuleCall cPackageEPackageSTRINGTerminalRuleCall_2_0_1 = (RuleCall)cPackageEPackageCrossReference_2_0.eContents().get(1);
+		private final Assignment cEPackageAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cEPackageEPackageCrossReference_2_0 = (CrossReference)cEPackageAssignment_2.eContents().get(0);
+		private final RuleCall cEPackageEPackageSTRINGTerminalRuleCall_2_0_1 = (RuleCall)cEPackageEPackageCrossReference_2_0.eContents().get(1);
 		
-		//MetaModel:
-		//	"register" name=ID package=[ecore::EPackage|STRING];
+		//RegisteredPackage:
+		//	"register" name=ID ePackage=[ecore::EPackage|STRING];
 		public ParserRule getRule() { return rule; }
 
-		//"register" name=ID package=[ecore::EPackage|STRING]
+		//"register" name=ID ePackage=[ecore::EPackage|STRING]
 		public Group getGroup() { return cGroup; }
 
 		//"register"
@@ -92,23 +92,23 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//package=[ecore::EPackage|STRING]
-		public Assignment getPackageAssignment_2() { return cPackageAssignment_2; }
+		//ePackage=[ecore::EPackage|STRING]
+		public Assignment getEPackageAssignment_2() { return cEPackageAssignment_2; }
 
 		//[ecore::EPackage|STRING]
-		public CrossReference getPackageEPackageCrossReference_2_0() { return cPackageEPackageCrossReference_2_0; }
+		public CrossReference getEPackageEPackageCrossReference_2_0() { return cEPackageEPackageCrossReference_2_0; }
 
 		//STRING
-		public RuleCall getPackageEPackageSTRINGTerminalRuleCall_2_0_1() { return cPackageEPackageSTRINGTerminalRuleCall_2_0_1; }
+		public RuleCall getEPackageEPackageSTRINGTerminalRuleCall_2_0_1() { return cEPackageEPackageSTRINGTerminalRuleCall_2_0_1; }
 	}
 
 	public class ApplicationModelElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ApplicationModel");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cUseKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cMetamodelAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final CrossReference cMetamodelMetaModelCrossReference_1_0 = (CrossReference)cMetamodelAssignment_1.eContents().get(0);
-		private final RuleCall cMetamodelMetaModelIDTerminalRuleCall_1_0_1 = (RuleCall)cMetamodelMetaModelCrossReference_1_0.eContents().get(1);
+		private final Assignment cUsePackageAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cUsePackageRegisteredPackageCrossReference_1_0 = (CrossReference)cUsePackageAssignment_1.eContents().get(0);
+		private final RuleCall cUsePackageRegisteredPackageQualifiedNameParserRuleCall_1_0_1 = (RuleCall)cUsePackageRegisteredPackageCrossReference_1_0.eContents().get(1);
 		private final Keyword cOnKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cNameIDTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
@@ -116,23 +116,23 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cModelSTRINGTerminalRuleCall_4_0 = (RuleCall)cModelAssignment_4.eContents().get(0);
 		
 		//ApplicationModel:
-		//	"use" metamodel=[MetaModel] "on" name=ID model=STRING;
+		//	"use" usePackage=[RegisteredPackage|QualifiedName] "on" name=ID model=STRING;
 		public ParserRule getRule() { return rule; }
 
-		//"use" metamodel=[MetaModel] "on" name=ID model=STRING
+		//"use" usePackage=[RegisteredPackage|QualifiedName] "on" name=ID model=STRING
 		public Group getGroup() { return cGroup; }
 
 		//"use"
 		public Keyword getUseKeyword_0() { return cUseKeyword_0; }
 
-		//metamodel=[MetaModel]
-		public Assignment getMetamodelAssignment_1() { return cMetamodelAssignment_1; }
+		//usePackage=[RegisteredPackage|QualifiedName]
+		public Assignment getUsePackageAssignment_1() { return cUsePackageAssignment_1; }
 
-		//[MetaModel]
-		public CrossReference getMetamodelMetaModelCrossReference_1_0() { return cMetamodelMetaModelCrossReference_1_0; }
+		//[RegisteredPackage|QualifiedName]
+		public CrossReference getUsePackageRegisteredPackageCrossReference_1_0() { return cUsePackageRegisteredPackageCrossReference_1_0; }
 
-		//ID
-		public RuleCall getMetamodelMetaModelIDTerminalRuleCall_1_0_1() { return cMetamodelMetaModelIDTerminalRuleCall_1_0_1; }
+		//QualifiedName
+		public RuleCall getUsePackageRegisteredPackageQualifiedNameParserRuleCall_1_0_1() { return cUsePackageRegisteredPackageQualifiedNameParserRuleCall_1_0_1; }
 
 		//"on"
 		public Keyword getOnKeyword_2() { return cOnKeyword_2; }
@@ -997,7 +997,7 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	private ModelElements pModel;
-	private MetaModelElements pMetaModel;
+	private RegisteredPackageElements pRegisteredPackage;
 	private ApplicationModelElements pApplicationModel;
 	private QualifiedNameElements pQualifiedName;
 	private QualifiedNameWithWildcardElements pQualifiedNameWithWildcard;
@@ -1063,7 +1063,7 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//Model:
-	//	"package" name=QualifiedName metamodels+=MetaModel* sources+=ApplicationModel* aspects+=Aspect*;
+	//	"package" name=QualifiedName metamodels+=RegisteredPackage* sources+=ApplicationModel* aspects+=Aspect*;
 	public ModelElements getModelAccess() {
 		return (pModel != null) ? pModel : (pModel = new ModelElements());
 	}
@@ -1072,18 +1072,18 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 		return getModelAccess().getRule();
 	}
 
-	//MetaModel:
-	//	"register" name=ID package=[ecore::EPackage|STRING];
-	public MetaModelElements getMetaModelAccess() {
-		return (pMetaModel != null) ? pMetaModel : (pMetaModel = new MetaModelElements());
+	//RegisteredPackage:
+	//	"register" name=ID ePackage=[ecore::EPackage|STRING];
+	public RegisteredPackageElements getRegisteredPackageAccess() {
+		return (pRegisteredPackage != null) ? pRegisteredPackage : (pRegisteredPackage = new RegisteredPackageElements());
 	}
 	
-	public ParserRule getMetaModelRule() {
-		return getMetaModelAccess().getRule();
+	public ParserRule getRegisteredPackageRule() {
+		return getRegisteredPackageAccess().getRule();
 	}
 
 	//ApplicationModel:
-	//	"use" metamodel=[MetaModel] "on" name=ID model=STRING;
+	//	"use" usePackage=[RegisteredPackage|QualifiedName] "on" name=ID model=STRING;
 	public ApplicationModelElements getApplicationModelAccess() {
 		return (pApplicationModel != null) ? pApplicationModel : (pApplicationModel = new ApplicationModelElements());
 	}

@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel#getMetamodel <em>Metamodel</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel#getUsePackage <em>Use Package</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel#getName <em>Name</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel#getModel <em>Model</em>}</li>
  * </ul>
@@ -25,30 +25,30 @@ import org.eclipse.emf.ecore.EObject;
 public interface ApplicationModel extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Metamodel</b></em>' reference.
+   * Returns the value of the '<em><b>Use Package</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Metamodel</em>' reference isn't clear,
+   * If the meaning of the '<em>Use Package</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Metamodel</em>' reference.
-   * @see #setMetamodel(MetaModel)
-   * @see de.cau.cs.se.instrumentation.al.applicationLang.ApplicationLangPackage#getApplicationModel_Metamodel()
+   * @return the value of the '<em>Use Package</em>' reference.
+   * @see #setUsePackage(RegisteredPackage)
+   * @see de.cau.cs.se.instrumentation.al.applicationLang.ApplicationLangPackage#getApplicationModel_UsePackage()
    * @model
    * @generated
    */
-  MetaModel getMetamodel();
+  RegisteredPackage getUsePackage();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel#getMetamodel <em>Metamodel</em>}' reference.
+   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel#getUsePackage <em>Use Package</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Metamodel</em>' reference.
-   * @see #getMetamodel()
+   * @param value the new value of the '<em>Use Package</em>' reference.
+   * @see #getUsePackage()
    * @generated
    */
-  void setMetamodel(MetaModel value);
+  void setUsePackage(RegisteredPackage value);
 
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

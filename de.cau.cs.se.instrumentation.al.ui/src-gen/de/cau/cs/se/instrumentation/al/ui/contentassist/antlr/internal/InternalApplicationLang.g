@@ -85,25 +85,25 @@ finally {
 
 
 
-// Entry rule entryRuleMetaModel
-entryRuleMetaModel 
+// Entry rule entryRuleRegisteredPackage
+entryRuleRegisteredPackage 
 :
-{ before(grammarAccess.getMetaModelRule()); }
-	 ruleMetaModel
-{ after(grammarAccess.getMetaModelRule()); } 
+{ before(grammarAccess.getRegisteredPackageRule()); }
+	 ruleRegisteredPackage
+{ after(grammarAccess.getRegisteredPackageRule()); } 
 	 EOF 
 ;
 
-// Rule MetaModel
-ruleMetaModel
+// Rule RegisteredPackage
+ruleRegisteredPackage
     @init {
 		int stackSize = keepStackSize();
     }
 	:
 (
-{ before(grammarAccess.getMetaModelAccess().getGroup()); }
-(rule__MetaModel__Group__0)
-{ after(grammarAccess.getMetaModelAccess().getGroup()); }
+{ before(grammarAccess.getRegisteredPackageAccess().getGroup()); }
+(rule__RegisteredPackage__Group__0)
+{ after(grammarAccess.getRegisteredPackageAccess().getGroup()); }
 )
 
 ;
@@ -1172,29 +1172,29 @@ finally {
 
 
 
-rule__MetaModel__Group__0
+rule__RegisteredPackage__Group__0
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__MetaModel__Group__0__Impl
-	rule__MetaModel__Group__1
+	rule__RegisteredPackage__Group__0__Impl
+	rule__RegisteredPackage__Group__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__MetaModel__Group__0__Impl
+rule__RegisteredPackage__Group__0__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getMetaModelAccess().getRegisterKeyword_0()); }
+{ before(grammarAccess.getRegisteredPackageAccess().getRegisterKeyword_0()); }
 
 	'register' 
 
-{ after(grammarAccess.getMetaModelAccess().getRegisterKeyword_0()); }
+{ after(grammarAccess.getRegisteredPackageAccess().getRegisterKeyword_0()); }
 )
 
 ;
@@ -1203,27 +1203,27 @@ finally {
 }
 
 
-rule__MetaModel__Group__1
+rule__RegisteredPackage__Group__1
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__MetaModel__Group__1__Impl
-	rule__MetaModel__Group__2
+	rule__RegisteredPackage__Group__1__Impl
+	rule__RegisteredPackage__Group__2
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__MetaModel__Group__1__Impl
+rule__RegisteredPackage__Group__1__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getMetaModelAccess().getNameAssignment_1()); }
-(rule__MetaModel__NameAssignment_1)
-{ after(grammarAccess.getMetaModelAccess().getNameAssignment_1()); }
+{ before(grammarAccess.getRegisteredPackageAccess().getNameAssignment_1()); }
+(rule__RegisteredPackage__NameAssignment_1)
+{ after(grammarAccess.getRegisteredPackageAccess().getNameAssignment_1()); }
 )
 
 ;
@@ -1232,26 +1232,26 @@ finally {
 }
 
 
-rule__MetaModel__Group__2
+rule__RegisteredPackage__Group__2
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__MetaModel__Group__2__Impl
+	rule__RegisteredPackage__Group__2__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__MetaModel__Group__2__Impl
+rule__RegisteredPackage__Group__2__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getMetaModelAccess().getPackageAssignment_2()); }
-(rule__MetaModel__PackageAssignment_2)
-{ after(grammarAccess.getMetaModelAccess().getPackageAssignment_2()); }
+{ before(grammarAccess.getRegisteredPackageAccess().getEPackageAssignment_2()); }
+(rule__RegisteredPackage__EPackageAssignment_2)
+{ after(grammarAccess.getRegisteredPackageAccess().getEPackageAssignment_2()); }
 )
 
 ;
@@ -1315,9 +1315,9 @@ rule__ApplicationModel__Group__1__Impl
     }
 :
 (
-{ before(grammarAccess.getApplicationModelAccess().getMetamodelAssignment_1()); }
-(rule__ApplicationModel__MetamodelAssignment_1)
-{ after(grammarAccess.getApplicationModelAccess().getMetamodelAssignment_1()); }
+{ before(grammarAccess.getApplicationModelAccess().getUsePackageAssignment_1()); }
+(rule__ApplicationModel__UsePackageAssignment_1)
+{ after(grammarAccess.getApplicationModelAccess().getUsePackageAssignment_1()); }
 )
 
 ;
@@ -3177,8 +3177,8 @@ rule__Model__MetamodelsAssignment_2
     }
 :
 (
-{ before(grammarAccess.getModelAccess().getMetamodelsMetaModelParserRuleCall_2_0()); }
-	ruleMetaModel{ after(grammarAccess.getModelAccess().getMetamodelsMetaModelParserRuleCall_2_0()); }
+{ before(grammarAccess.getModelAccess().getMetamodelsRegisteredPackageParserRuleCall_2_0()); }
+	ruleRegisteredPackage{ after(grammarAccess.getModelAccess().getMetamodelsRegisteredPackageParserRuleCall_2_0()); }
 )
 
 ;
@@ -3216,14 +3216,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__MetaModel__NameAssignment_1
+rule__RegisteredPackage__NameAssignment_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getMetaModelAccess().getNameIDTerminalRuleCall_1_0()); }
-	RULE_ID{ after(grammarAccess.getMetaModelAccess().getNameIDTerminalRuleCall_1_0()); }
+{ before(grammarAccess.getRegisteredPackageAccess().getNameIDTerminalRuleCall_1_0()); }
+	RULE_ID{ after(grammarAccess.getRegisteredPackageAccess().getNameIDTerminalRuleCall_1_0()); }
 )
 
 ;
@@ -3231,18 +3231,18 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__MetaModel__PackageAssignment_2
+rule__RegisteredPackage__EPackageAssignment_2
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getMetaModelAccess().getPackageEPackageCrossReference_2_0()); }
+{ before(grammarAccess.getRegisteredPackageAccess().getEPackageEPackageCrossReference_2_0()); }
 (
-{ before(grammarAccess.getMetaModelAccess().getPackageEPackageSTRINGTerminalRuleCall_2_0_1()); }
-	RULE_STRING{ after(grammarAccess.getMetaModelAccess().getPackageEPackageSTRINGTerminalRuleCall_2_0_1()); }
+{ before(grammarAccess.getRegisteredPackageAccess().getEPackageEPackageSTRINGTerminalRuleCall_2_0_1()); }
+	RULE_STRING{ after(grammarAccess.getRegisteredPackageAccess().getEPackageEPackageSTRINGTerminalRuleCall_2_0_1()); }
 )
-{ after(grammarAccess.getMetaModelAccess().getPackageEPackageCrossReference_2_0()); }
+{ after(grammarAccess.getRegisteredPackageAccess().getEPackageEPackageCrossReference_2_0()); }
 )
 
 ;
@@ -3250,18 +3250,18 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ApplicationModel__MetamodelAssignment_1
+rule__ApplicationModel__UsePackageAssignment_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getApplicationModelAccess().getMetamodelMetaModelCrossReference_1_0()); }
+{ before(grammarAccess.getApplicationModelAccess().getUsePackageRegisteredPackageCrossReference_1_0()); }
 (
-{ before(grammarAccess.getApplicationModelAccess().getMetamodelMetaModelIDTerminalRuleCall_1_0_1()); }
-	RULE_ID{ after(grammarAccess.getApplicationModelAccess().getMetamodelMetaModelIDTerminalRuleCall_1_0_1()); }
+{ before(grammarAccess.getApplicationModelAccess().getUsePackageRegisteredPackageQualifiedNameParserRuleCall_1_0_1()); }
+	ruleQualifiedName{ after(grammarAccess.getApplicationModelAccess().getUsePackageRegisteredPackageQualifiedNameParserRuleCall_1_0_1()); }
 )
-{ after(grammarAccess.getApplicationModelAccess().getMetamodelMetaModelCrossReference_1_0()); }
+{ after(grammarAccess.getApplicationModelAccess().getUsePackageRegisteredPackageCrossReference_1_0()); }
 )
 
 ;

@@ -32,12 +32,12 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplicationLang.ecore#//Model/sources"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplicationLang.ecore#//Model/aspects"/>
     </genClasses>
-    <genClasses ecoreClass="ApplicationLang.ecore#//MetaModel">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ApplicationLang.ecore#//MetaModel/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ApplicationLang.ecore#//MetaModel/package"/>
+    <genClasses ecoreClass="ApplicationLang.ecore#//RegisteredPackage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ApplicationLang.ecore#//RegisteredPackage/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ApplicationLang.ecore#//RegisteredPackage/ePackage"/>
     </genClasses>
     <genClasses ecoreClass="ApplicationLang.ecore#//ApplicationModel">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ApplicationLang.ecore#//ApplicationModel/metamodel"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ApplicationLang.ecore#//ApplicationModel/usePackage"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ApplicationLang.ecore#//ApplicationModel/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ApplicationLang.ecore#//ApplicationModel/model"/>
     </genClasses>

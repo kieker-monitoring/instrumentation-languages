@@ -79,10 +79,10 @@ public class ApplicationLangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ApplicationLangPackage.META_MODEL:
+      case ApplicationLangPackage.REGISTERED_PACKAGE:
       {
-        MetaModel metaModel = (MetaModel)theEObject;
-        T result = caseMetaModel(metaModel);
+        RegisteredPackage registeredPackage = (RegisteredPackage)theEObject;
+        T result = caseRegisteredPackage(registeredPackage);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -256,17 +256,17 @@ public class ApplicationLangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Meta Model</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Registered Package</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Meta Model</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Registered Package</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseMetaModel(MetaModel object)
+  public T caseRegisteredPackage(RegisteredPackage object)
   {
     return null;
   }
