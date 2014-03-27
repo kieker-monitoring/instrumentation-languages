@@ -32,7 +32,7 @@ import kieker.common.record.flow.trace.AbstractTraceEvent;
  */
 public class SplitEvent extends AbstractTraceEvent implements IMonitoringRecord.Factory, IMonitoringRecord.BinaryFactory {
 	public static final int SIZE = 20; // serialization size (without variable part of strings)
-	private static final long serialVersionUID = 1395940968066L;
+	private static final long serialVersionUID = 1395951954281L;
 	
 	private static final Class<?>[] TYPES = {
 		long.class, // AbstractEvent.timestamp

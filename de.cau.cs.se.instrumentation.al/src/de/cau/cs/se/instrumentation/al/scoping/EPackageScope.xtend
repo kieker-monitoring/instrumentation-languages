@@ -11,6 +11,7 @@ import org.eclipse.xtext.resource.EObjectDescription
 import java.util.Collection
 import java.util.ArrayList
 import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.common.util.EList
 
 class EPackageScope implements IScope {
 	
@@ -28,17 +29,34 @@ class EPackageScope implements IScope {
 	override IEObjectDescription getSingleElement(QualifiedName name) {
 		System.out.println("EPackageScope.getSingleElement(name) " + name)
 		val URI ePackageURI = URI.createURI(name.toString(), true)
-		var EPackage ePackage = null;
-		if (ePackageURI.fragment() == null) {
-			var Resource resource = resourceSet.getResource(ePackageURI, true);
-			if (resource.getContents().isEmpty())
-				return null
+		val plainPackageURI = ePackageURI.trimFragment
+		val fragment = ePackageURI.fragment
+		
+		var Resource resource = resourceSet.getResource(plainPackageURI, true)
+		if (!resource.getContents().isEmpty()) {
+			var EPackage ePackage = resource.getContents().get(0) as EPackage
+			if (fragment != null)  
+				ePackage = findPackage(ePackage.ESubpackages,
+					QualifiedName.create(fragment.split('.'))
+				)
+			if (ePackage != null)
+				return EObjectDescription.create(name, ePackage)
 			else
-				ePackage = resource.getContents().get(0) as EPackage
-		} else { // TODO handling fragments fails
-			ePackage = resourceSet.getEObject(ePackageURI, true) as EPackage
-		}
-		return EObjectDescription.create(name, ePackage)
+				return null
+		} else
+			return null
+	}
+	
+	def EPackage findPackage(EList<EPackage> ePackages, QualifiedName qualifiedPackageName) {
+		val packageName = qualifiedPackageName.firstSegment
+		val ePackage = ePackages.findFirst[it.name.equals(packageName)]
+		if (ePackage != null) {
+			if (qualifiedPackageName.segmentCount > 1)
+				return findPackage(ePackage.ESubpackages, qualifiedPackageName.skipFirst(1))
+			else
+				return ePackage
+		} else
+			return null
 	}
 
 	override Iterable<IEObjectDescription> getElements(QualifiedName name) {

@@ -13,6 +13,8 @@ import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.EObjectDescription;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public class EPackageScope implements IScope {
@@ -28,46 +30,86 @@ public class EPackageScope implements IScope {
   }
   
   public IEObjectDescription getSingleElement(final QualifiedName name) {
-    System.out.println(("EPackageScope.getSingleElement(name) " + name));
+    String _plus = ("EPackageScope.getSingleElement(name) " + name);
+    System.out.println(_plus);
     String _string = name.toString();
     final URI ePackageURI = URI.createURI(_string, true);
-    EPackage ePackage = null;
-    String _fragment = ePackageURI.fragment();
-    boolean _equals = Objects.equal(_fragment, null);
-    if (_equals) {
-      Resource resource = this.resourceSet.getResource(ePackageURI, true);
-      EList<EObject> _contents = resource.getContents();
-      boolean _isEmpty = _contents.isEmpty();
-      if (_isEmpty) {
-        return null;
+    final URI plainPackageURI = ePackageURI.trimFragment();
+    final String fragment = ePackageURI.fragment();
+    Resource resource = this.resourceSet.getResource(plainPackageURI, true);
+    EList<EObject> _contents = resource.getContents();
+    boolean _isEmpty = _contents.isEmpty();
+    boolean _not = (!_isEmpty);
+    if (_not) {
+      EList<EObject> _contents_1 = resource.getContents();
+      EObject _get = _contents_1.get(0);
+      EPackage ePackage = ((EPackage) _get);
+      boolean _notEquals = (!Objects.equal(fragment, null));
+      if (_notEquals) {
+        EList<EPackage> _eSubpackages = ePackage.getESubpackages();
+        String[] _split = fragment.split(".");
+        QualifiedName _create = QualifiedName.create(_split);
+        EPackage _findPackage = this.findPackage(_eSubpackages, _create);
+        ePackage = _findPackage;
+      }
+      boolean _notEquals_1 = (!Objects.equal(ePackage, null));
+      if (_notEquals_1) {
+        return EObjectDescription.create(name, ePackage);
       } else {
-        EList<EObject> _contents_1 = resource.getContents();
-        EObject _get = _contents_1.get(0);
-        ePackage = ((EPackage) _get);
+        return null;
       }
     } else {
-      EObject _eObject = this.resourceSet.getEObject(ePackageURI, true);
-      ePackage = ((EPackage) _eObject);
+      return null;
     }
-    return EObjectDescription.create(name, ePackage);
+  }
+  
+  public EPackage findPackage(final EList<EPackage> ePackages, final QualifiedName qualifiedPackageName) {
+    final String packageName = qualifiedPackageName.getFirstSegment();
+    final Function1<EPackage,Boolean> _function = new Function1<EPackage,Boolean>() {
+      public Boolean apply(final EPackage it) {
+        String _name = it.getName();
+        boolean _equals = _name.equals(packageName);
+        return Boolean.valueOf(_equals);
+      }
+    };
+    final EPackage ePackage = IterableExtensions.<EPackage>findFirst(ePackages, _function);
+    boolean _notEquals = (!Objects.equal(ePackage, null));
+    if (_notEquals) {
+      int _segmentCount = qualifiedPackageName.getSegmentCount();
+      boolean _greaterThan = (_segmentCount > 1);
+      if (_greaterThan) {
+        EList<EPackage> _eSubpackages = ePackage.getESubpackages();
+        QualifiedName _skipFirst = qualifiedPackageName.skipFirst(1);
+        return this.findPackage(_eSubpackages, _skipFirst);
+      } else {
+        return ePackage;
+      }
+    } else {
+      return null;
+    }
   }
   
   public Iterable<IEObjectDescription> getElements(final QualifiedName name) {
-    System.out.println(("EPackageScope.getElements(name) " + name));
-    final Collection<IEObjectDescription> result = new ArrayList<IEObjectDescription>();
+    String _plus = ("EPackageScope.getElements(name) " + name);
+    System.out.println(_plus);
+    ArrayList<IEObjectDescription> _arrayList = new ArrayList<IEObjectDescription>();
+    final Collection<IEObjectDescription> result = _arrayList;
     IEObjectDescription _singleElement = this.getSingleElement(name);
     result.add(_singleElement);
     return result;
   }
   
   public IEObjectDescription getSingleElement(final EObject object) {
-    System.out.println(("EPackageScope.getSingleElement(object) " + object));
+    String _plus = ("EPackageScope.getSingleElement(object) " + object);
+    System.out.println(_plus);
     return null;
   }
   
   public Iterable<IEObjectDescription> getElements(final EObject object) {
-    System.out.println(("EPackageScope.getElements(object) " + object));
-    final Collection<IEObjectDescription> result = new ArrayList<IEObjectDescription>();
+    String _plus = ("EPackageScope.getElements(object) " + object);
+    System.out.println(_plus);
+    ArrayList<IEObjectDescription> _arrayList = new ArrayList<IEObjectDescription>();
+    final Collection<IEObjectDescription> result = _arrayList;
     IEObjectDescription _singleElement = this.getSingleElement(object);
     result.add(_singleElement);
     return result;
@@ -75,7 +117,8 @@ public class EPackageScope implements IScope {
   
   public Iterable<IEObjectDescription> getAllElements() {
     System.out.println("EPackageScope.getAllElements()");
-    final Collection<IEObjectDescription> result = new ArrayList<IEObjectDescription>();
+    ArrayList<IEObjectDescription> _arrayList = new ArrayList<IEObjectDescription>();
+    final Collection<IEObjectDescription> result = _arrayList;
     return result;
   }
 }

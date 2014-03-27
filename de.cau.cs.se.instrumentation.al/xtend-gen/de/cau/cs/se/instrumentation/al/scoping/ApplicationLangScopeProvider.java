@@ -54,9 +54,11 @@ public class ApplicationLangScopeProvider extends AbstractDeclarativeScopeProvid
     boolean _notEquals = (!Objects.equal(_specialization, null));
     if (_notEquals) {
       LocationQuery _specialization_1 = query.getSpecialization();
-      _xifexpression = this.leaveNode(_specialization_1);
+      Node _leaveNode = this.leaveNode(_specialization_1);
+      _xifexpression = _leaveNode;
     } else {
-      _xifexpression = query.getNode();
+      Node _node = query.getNode();
+      _xifexpression = _node;
     }
     return _xifexpression;
   }
@@ -71,10 +73,12 @@ public class ApplicationLangScopeProvider extends AbstractDeclarativeScopeProvid
    * @return The scope for the package attribute.
    */
   public IScope scope_RegisteredPackage_ePackage(final RegisteredPackage context, final EReference reference) {
-    System.out.println(("scope " + context));
+    String _plus = ("scope " + context);
+    System.out.println(_plus);
     Resource _eResource = context.eResource();
     ResourceSet _resourceSet = _eResource.getResourceSet();
-    final IScope result = new EPackageScope(_resourceSet);
+    EPackageScope _ePackageScope = new EPackageScope(_resourceSet);
+    final IScope result = _ePackageScope;
     return result;
   }
 }

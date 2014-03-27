@@ -2,3 +2,7 @@
 /ApplicationLangScopeProvider.java
 /.MyPredicate.java._trace
 /.URIPredicate.java._trace
+/.EPackageScope.java._trace
+/.PackageContentScope.java._trace
+/EPackageScope.java
+/PackageContentScope.java
