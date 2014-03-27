@@ -7,9 +7,12 @@ import de.cau.cs.se.instrumentation.al.applicationLang.RegisteredPackage;
 import java.util.Iterator;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.EObjectDescription;
@@ -148,22 +151,50 @@ public class PackageContentScope implements IScope {
    * @returns either an EReference or an EAttribute
    */
   public IEObjectDescription findPropertyInClassifier(final EClassifier classifier, final QualifiedName name) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nno viable alternative at input \'class\'"
-      + "\nThe method or field class is undefined for the type PackageContentScope"
-      + "\nThe method EAllAttributes is undefined for the type PackageContentScope"
-      + "\nThe method name is undefined for the type PackageContentScope"
-      + "\nThe method EAllReferences is undefined for the type PackageContentScope"
-      + "\nThe method name is undefined for the type PackageContentScope"
-      + "\nValue must be initialized"
-      + "\nType cannot be derived"
-      + "\nfindFirst cannot be resolved"
-      + "\nequals cannot be resolved"
-      + "\n== cannot be resolved"
-      + "\nfindFirst cannot be resolved"
-      + "\nequals cannot be resolved"
-      + "\n!= cannot be resolved"
-      + "\nEReferenceType cannot be resolved");
+    if ((classifier instanceof EClass)) {
+      final EClass clazz = ((EClass) classifier);
+      EList<EAttribute> _eAllAttributes = clazz.getEAllAttributes();
+      final Function1<EAttribute,Boolean> _function = new Function1<EAttribute,Boolean>() {
+        public Boolean apply(final EAttribute it) {
+          String _name = it.getName();
+          String _firstSegment = name.getFirstSegment();
+          boolean _equals = _name.equals(_firstSegment);
+          return Boolean.valueOf(_equals);
+        }
+      };
+      final EAttribute attribute = IterableExtensions.<EAttribute>findFirst(_eAllAttributes, _function);
+      boolean _equals = Objects.equal(attribute, null);
+      if (_equals) {
+        EList<EReference> _eAllReferences = clazz.getEAllReferences();
+        final Function1<EReference,Boolean> _function_1 = new Function1<EReference,Boolean>() {
+          public Boolean apply(final EReference it) {
+            String _name = it.getName();
+            String _firstSegment = name.getFirstSegment();
+            boolean _equals = _name.equals(_firstSegment);
+            return Boolean.valueOf(_equals);
+          }
+        };
+        final EReference reference = IterableExtensions.<EReference>findFirst(_eAllReferences, _function_1);
+        boolean _notEquals = (!Objects.equal(reference, null));
+        if (_notEquals) {
+          int _segmentCount = name.getSegmentCount();
+          boolean _greaterThan = (_segmentCount > 1);
+          if (_greaterThan) {
+            EClass _eReferenceType = reference.getEReferenceType();
+            QualifiedName _skipFirst = name.skipFirst(1);
+            return this.findPropertyInClassifier(_eReferenceType, _skipFirst);
+          } else {
+            return EObjectDescription.create(name, reference);
+          }
+        } else {
+          return null;
+        }
+      } else {
+        return EObjectDescription.create(name, attribute);
+      }
+    } else {
+      return null;
+    }
   }
   
   /**
