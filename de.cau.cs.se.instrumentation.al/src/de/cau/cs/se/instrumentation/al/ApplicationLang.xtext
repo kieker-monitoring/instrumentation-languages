@@ -22,7 +22,7 @@ RegisteredPackage:
 ;
 
 ApplicationModel:
-	'use' usePackage=[RegisteredPackage|QualifiedName] 'on' name=ID model=STRING 
+	'use' usePackages+=[RegisteredPackage|ID] (',' usePackages+=[RegisteredPackage|ID])* 'on' name=ID model=STRING 
 ;
 
 QualifiedName:

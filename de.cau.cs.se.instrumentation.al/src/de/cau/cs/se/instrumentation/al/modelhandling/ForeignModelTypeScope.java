@@ -60,7 +60,7 @@ public class ForeignModelTypeScope extends AbstractScope {
 	}
 
 	@Override
-	public IEObjectDescription getSingleElement(final QualifiedName name) {
+	public IEObjectDescription getSingleElement(final QualifiedName name) { 
 		final NamedElement type = this.typeProvider
 				.findTypeByName(this.qualifiedNameConverter.toString(name));
 		if (type == null) {

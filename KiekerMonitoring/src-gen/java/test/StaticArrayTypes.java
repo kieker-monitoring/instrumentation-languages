@@ -32,7 +32,7 @@ import kieker.common.util.registry.IRegistry;
  */
 public class StaticArrayTypes extends AbstractMonitoringRecord implements IMonitoringRecord.Factory, IMonitoringRecord.BinaryFactory {
 	public static final int SIZE = 34; // serialization size (without variable part of strings)
-	private static final long serialVersionUID = 1395951938381L;
+	private static final long serialVersionUID = 1396022535397L;
 	
 	private static final Class<?>[] TYPES = {
 		boolean[].class, // StaticArrayTypes.a

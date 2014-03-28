@@ -160,13 +160,13 @@ public interface ApplicationLangPackage extends EPackage
   int APPLICATION_MODEL = 2;
 
   /**
-   * The feature id for the '<em><b>Use Package</b></em>' reference.
+   * The feature id for the '<em><b>Use Packages</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int APPLICATION_MODEL__USE_PACKAGE = 0;
+  int APPLICATION_MODEL__USE_PACKAGES = 0;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -963,15 +963,15 @@ public interface ApplicationLangPackage extends EPackage
   EClass getApplicationModel();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel#getUsePackage <em>Use Package</em>}'.
+   * Returns the meta object for the reference list '{@link de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel#getUsePackages <em>Use Packages</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Use Package</em>'.
-   * @see de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel#getUsePackage()
+   * @return the meta object for the reference list '<em>Use Packages</em>'.
+   * @see de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel#getUsePackages()
    * @see #getApplicationModel()
    * @generated
    */
-  EReference getApplicationModel_UsePackage();
+  EReference getApplicationModel_UsePackages();
 
   /**
    * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel#getName <em>Name</em>}'.
@@ -1625,12 +1625,12 @@ public interface ApplicationLangPackage extends EPackage
     EClass APPLICATION_MODEL = eINSTANCE.getApplicationModel();
 
     /**
-     * The meta object literal for the '<em><b>Use Package</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Use Packages</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference APPLICATION_MODEL__USE_PACKAGE = eINSTANCE.getApplicationModel_UsePackage();
+    EReference APPLICATION_MODEL__USE_PACKAGES = eINSTANCE.getApplicationModel_UsePackages();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.

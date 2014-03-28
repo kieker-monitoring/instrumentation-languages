@@ -48,6 +48,7 @@ public class ApplicationLangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getModelAccess().getGroup(), "rule__Model__Group__0");
 					put(grammarAccess.getRegisteredPackageAccess().getGroup(), "rule__RegisteredPackage__Group__0");
 					put(grammarAccess.getApplicationModelAccess().getGroup(), "rule__ApplicationModel__Group__0");
+					put(grammarAccess.getApplicationModelAccess().getGroup_2(), "rule__ApplicationModel__Group_2__0");
 					put(grammarAccess.getQualifiedNameAccess().getGroup(), "rule__QualifiedName__Group__0");
 					put(grammarAccess.getQualifiedNameAccess().getGroup_1(), "rule__QualifiedName__Group_1__0");
 					put(grammarAccess.getQualifiedNameWithWildcardAccess().getGroup(), "rule__QualifiedNameWithWildcard__Group__0");
@@ -77,9 +78,10 @@ public class ApplicationLangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getModelAccess().getAspectsAssignment_4(), "rule__Model__AspectsAssignment_4");
 					put(grammarAccess.getRegisteredPackageAccess().getNameAssignment_1(), "rule__RegisteredPackage__NameAssignment_1");
 					put(grammarAccess.getRegisteredPackageAccess().getEPackageAssignment_2(), "rule__RegisteredPackage__EPackageAssignment_2");
-					put(grammarAccess.getApplicationModelAccess().getUsePackageAssignment_1(), "rule__ApplicationModel__UsePackageAssignment_1");
-					put(grammarAccess.getApplicationModelAccess().getNameAssignment_3(), "rule__ApplicationModel__NameAssignment_3");
-					put(grammarAccess.getApplicationModelAccess().getModelAssignment_4(), "rule__ApplicationModel__ModelAssignment_4");
+					put(grammarAccess.getApplicationModelAccess().getUsePackagesAssignment_1(), "rule__ApplicationModel__UsePackagesAssignment_1");
+					put(grammarAccess.getApplicationModelAccess().getUsePackagesAssignment_2_1(), "rule__ApplicationModel__UsePackagesAssignment_2_1");
+					put(grammarAccess.getApplicationModelAccess().getNameAssignment_4(), "rule__ApplicationModel__NameAssignment_4");
+					put(grammarAccess.getApplicationModelAccess().getModelAssignment_5(), "rule__ApplicationModel__ModelAssignment_5");
 					put(grammarAccess.getAspectAccess().getQueryAssignment_1(), "rule__Aspect__QueryAssignment_1");
 					put(grammarAccess.getAspectAccess().getCollectorsAssignment_3(), "rule__Aspect__CollectorsAssignment_3");
 					put(grammarAccess.getQueryAccess().getLocationAssignment_0(), "rule__Query__LocationAssignment_0");

@@ -11,6 +11,8 @@ import de.cau.cs.se.instrumentation.al.applicationLang.Node
 import de.cau.cs.se.instrumentation.al.applicationLang.ContainerNode
 import org.eclipse.xtext.scoping.Scopes
 import de.cau.cs.se.instrumentation.al.applicationLang.RegisteredPackage
+import de.cau.cs.se.instrumentation.al.modelhandling.ForeignModelTypeProviderFactory
+import com.google.inject.Inject
 
 /**
  * This class contains custom scoping description.
@@ -20,6 +22,13 @@ import de.cau.cs.se.instrumentation.al.applicationLang.RegisteredPackage
  *
  */
 class ApplicationLangScopeProvider extends org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider {
+	
+	@Inject extension ForeignModelTypeProviderFactory typeProviderFactory
+	
+	def IScope scope_ContainerNode_container(ContainerNode context, EReference reference) {
+		val IScope result = new ContainerParentScope(typeProviderFactory,context)
+		return result
+	}
 
 	def IScope scope_Query_method(Query context, EReference reference) {
 		System.out.println("scope_Query_method")
@@ -50,7 +59,6 @@ class ApplicationLangScopeProvider extends org.eclipse.xtext.scoping.impl.Abstra
 	 * @return The scope for the package attribute.
 	 */
 	def IScope scope_RegisteredPackage_ePackage(RegisteredPackage context, EReference reference) {
-		System.out.println("scope " + context)
 		val IScope result = new EPackageScope(context.eResource().getResourceSet())
 		return result
 	}

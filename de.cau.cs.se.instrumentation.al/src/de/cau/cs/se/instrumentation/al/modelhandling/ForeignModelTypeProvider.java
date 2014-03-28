@@ -15,13 +15,14 @@
  ***************************************************************************/
 package de.cau.cs.se.instrumentation.al.modelhandling;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.util.Strings;
-import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 import de.cau.cs.se.instrumantation.model.structure.NamedElement;
 import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel;
@@ -64,16 +65,14 @@ public class ForeignModelTypeProvider implements Resource.Factory, IForeignModel
 		 * Get the (already created) types from the helper resource and cast the list to a list of
 		 * types.
 		 */
-		return IterableExtensions.map(
-				this.resourceSet.getResource(
-						URI.createURI(ForeignModelTypeURIHelper.PROTOCOL + ":"
-								+ ForeignModelTypeURIHelper.ELEMENTS), true).getContents(),
-				new Function1<EObject, NamedElement>() {
-					// @Override
-					public NamedElement apply(final EObject p) {
-						return (NamedElement) p;
-					}
-				});
+		final Resource resource = this.resourceSet.getResource(
+				URI.createURI(ForeignModelTypeURIHelper.PROTOCOL + ":" + ForeignModelTypeURIHelper.ELEMENTS), true);
+		Collection<NamedElement> result = new ArrayList<NamedElement>();
+		for (EObject container : resource.getContents()) {
+			if (container instanceof NamedElement)
+				result.add((NamedElement)container);
+		}
+		return result;
 	}
 
 	/**

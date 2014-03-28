@@ -4,6 +4,7 @@
 package de.cau.cs.se.instrumentation.al.scoping;
 
 import com.google.common.base.Objects;
+import com.google.inject.Inject;
 import de.cau.cs.se.instrumantation.model.structure.Container;
 import de.cau.cs.se.instrumantation.model.structure.Method;
 import de.cau.cs.se.instrumentation.al.applicationLang.ContainerNode;
@@ -11,6 +12,8 @@ import de.cau.cs.se.instrumentation.al.applicationLang.LocationQuery;
 import de.cau.cs.se.instrumentation.al.applicationLang.Node;
 import de.cau.cs.se.instrumentation.al.applicationLang.Query;
 import de.cau.cs.se.instrumentation.al.applicationLang.RegisteredPackage;
+import de.cau.cs.se.instrumentation.al.modelhandling.ForeignModelTypeProviderFactory;
+import de.cau.cs.se.instrumentation.al.scoping.ContainerParentScope;
 import de.cau.cs.se.instrumentation.al.scoping.EPackageScope;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EReference;
@@ -19,6 +22,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
+import org.eclipse.xtext.xbase.lib.Extension;
 
 /**
  * This class contains custom scoping description.
@@ -28,6 +32,15 @@ import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
  */
 @SuppressWarnings("all")
 public class ApplicationLangScopeProvider extends AbstractDeclarativeScopeProvider {
+  @Inject
+  @Extension
+  private ForeignModelTypeProviderFactory typeProviderFactory;
+  
+  public IScope scope_ContainerNode_container(final ContainerNode context, final EReference reference) {
+    final IScope result = new ContainerParentScope(this.typeProviderFactory, context);
+    return result;
+  }
+  
   public IScope scope_Query_method(final Query context, final EReference reference) {
     System.out.println("scope_Query_method");
     LocationQuery _location = context.getLocation();
@@ -71,7 +84,6 @@ public class ApplicationLangScopeProvider extends AbstractDeclarativeScopeProvid
    * @return The scope for the package attribute.
    */
   public IScope scope_RegisteredPackage_ePackage(final RegisteredPackage context, final EReference reference) {
-    System.out.println(("scope " + context));
     Resource _eResource = context.eResource();
     ResourceSet _resourceSet = _eResource.getResourceSet();
     final IScope result = new EPackageScope(_resourceSet);

@@ -181,23 +181,10 @@ public class ApplicationLangSemanticSequencer extends AbstractDelegatingSemantic
 	
 	/**
 	 * Constraint:
-	 *     (usePackage=[RegisteredPackage|QualifiedName] name=ID model=STRING)
+	 *     (usePackages+=[RegisteredPackage|ID] usePackages+=[RegisteredPackage|ID]* name=ID model=STRING)
 	 */
 	protected void sequence_ApplicationModel(EObject context, ApplicationModel semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ApplicationLangPackage.Literals.APPLICATION_MODEL__USE_PACKAGE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ApplicationLangPackage.Literals.APPLICATION_MODEL__USE_PACKAGE));
-			if(transientValues.isValueTransient(semanticObject, ApplicationLangPackage.Literals.APPLICATION_MODEL__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ApplicationLangPackage.Literals.APPLICATION_MODEL__NAME));
-			if(transientValues.isValueTransient(semanticObject, ApplicationLangPackage.Literals.APPLICATION_MODEL__MODEL) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ApplicationLangPackage.Literals.APPLICATION_MODEL__MODEL));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getApplicationModelAccess().getUsePackageRegisteredPackageQualifiedNameParserRuleCall_1_0_1(), semanticObject.getUsePackage());
-		feeder.accept(grammarAccess.getApplicationModelAccess().getNameIDTerminalRuleCall_3_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getApplicationModelAccess().getModelSTRINGTerminalRuleCall_4_0(), semanticObject.getModel());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

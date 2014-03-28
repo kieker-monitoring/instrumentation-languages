@@ -31,7 +31,7 @@ import kieker.common.record.flow.ITraceRecord;
  * @since 1.9
  */
 public abstract class AbstractTraceEvent extends AbstractEvent implements IMonitoringRecord.Factory, IMonitoringRecord.BinaryFactory, ITraceRecord {
-		private static final long serialVersionUID = 1395951951214L;
+		private static final long serialVersionUID = 1396022535333L;
 	
 	
 	

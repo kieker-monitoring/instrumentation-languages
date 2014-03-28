@@ -254,23 +254,41 @@ ruleApplicationModel returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getApplicationModelRule());
 	        }
         }
-		{ 
-	        newCompositeNode(grammarAccess.getApplicationModelAccess().getUsePackageRegisteredPackageCrossReference_1_0()); 
-	    }
-		ruleQualifiedName		{ 
-	        afterParserOrEnumRuleCall();
-	    }
+	otherlv_1=RULE_ID
+	{
+		newLeafNode(otherlv_1, grammarAccess.getApplicationModelAccess().getUsePackagesRegisteredPackageCrossReference_1_0()); 
+	}
 
 )
-)	otherlv_2='on' 
+)(	otherlv_2=',' 
     {
-    	newLeafNode(otherlv_2, grammarAccess.getApplicationModelAccess().getOnKeyword_2());
+    	newLeafNode(otherlv_2, grammarAccess.getApplicationModelAccess().getCommaKeyword_2_0());
     }
 (
 (
-		lv_name_3_0=RULE_ID
+		{ 
+		  /* */ 
+		}
 		{
-			newLeafNode(lv_name_3_0, grammarAccess.getApplicationModelAccess().getNameIDTerminalRuleCall_3_0()); 
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getApplicationModelRule());
+	        }
+        }
+	otherlv_3=RULE_ID
+	{
+		newLeafNode(otherlv_3, grammarAccess.getApplicationModelAccess().getUsePackagesRegisteredPackageCrossReference_2_1_0()); 
+	}
+
+)
+))*	otherlv_4='on' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getApplicationModelAccess().getOnKeyword_3());
+    }
+(
+(
+		lv_name_5_0=RULE_ID
+		{
+			newLeafNode(lv_name_5_0, grammarAccess.getApplicationModelAccess().getNameIDTerminalRuleCall_4_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -279,16 +297,16 @@ ruleApplicationModel returns [EObject current=null]
        		setWithLastConsumed(
        			$current, 
        			"name",
-        		lv_name_3_0, 
+        		lv_name_5_0, 
         		"ID");
 	    }
 
 )
 )(
 (
-		lv_model_4_0=RULE_STRING
+		lv_model_6_0=RULE_STRING
 		{
-			newLeafNode(lv_model_4_0, grammarAccess.getApplicationModelAccess().getModelSTRINGTerminalRuleCall_4_0()); 
+			newLeafNode(lv_model_6_0, grammarAccess.getApplicationModelAccess().getModelSTRINGTerminalRuleCall_5_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -297,7 +315,7 @@ ruleApplicationModel returns [EObject current=null]
        		setWithLastConsumed(
        			$current, 
        			"model",
-        		lv_model_4_0, 
+        		lv_model_6_0, 
         		"STRING");
 	    }
 

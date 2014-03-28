@@ -106,48 +106,68 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ApplicationModel");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cUseKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cUsePackageAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final CrossReference cUsePackageRegisteredPackageCrossReference_1_0 = (CrossReference)cUsePackageAssignment_1.eContents().get(0);
-		private final RuleCall cUsePackageRegisteredPackageQualifiedNameParserRuleCall_1_0_1 = (RuleCall)cUsePackageRegisteredPackageCrossReference_1_0.eContents().get(1);
-		private final Keyword cOnKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cNameIDTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
-		private final Assignment cModelAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cModelSTRINGTerminalRuleCall_4_0 = (RuleCall)cModelAssignment_4.eContents().get(0);
+		private final Assignment cUsePackagesAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cUsePackagesRegisteredPackageCrossReference_1_0 = (CrossReference)cUsePackagesAssignment_1.eContents().get(0);
+		private final RuleCall cUsePackagesRegisteredPackageIDTerminalRuleCall_1_0_1 = (RuleCall)cUsePackagesRegisteredPackageCrossReference_1_0.eContents().get(1);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cCommaKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cUsePackagesAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final CrossReference cUsePackagesRegisteredPackageCrossReference_2_1_0 = (CrossReference)cUsePackagesAssignment_2_1.eContents().get(0);
+		private final RuleCall cUsePackagesRegisteredPackageIDTerminalRuleCall_2_1_0_1 = (RuleCall)cUsePackagesRegisteredPackageCrossReference_2_1_0.eContents().get(1);
+		private final Keyword cOnKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cNameAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cNameIDTerminalRuleCall_4_0 = (RuleCall)cNameAssignment_4.eContents().get(0);
+		private final Assignment cModelAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cModelSTRINGTerminalRuleCall_5_0 = (RuleCall)cModelAssignment_5.eContents().get(0);
 		
 		//ApplicationModel:
-		//	"use" usePackage=[RegisteredPackage|QualifiedName] "on" name=ID model=STRING;
+		//	"use" usePackages+=[RegisteredPackage] ("," usePackages+=[RegisteredPackage])* "on" name=ID model=STRING;
 		public ParserRule getRule() { return rule; }
 
-		//"use" usePackage=[RegisteredPackage|QualifiedName] "on" name=ID model=STRING
+		//"use" usePackages+=[RegisteredPackage] ("," usePackages+=[RegisteredPackage])* "on" name=ID model=STRING
 		public Group getGroup() { return cGroup; }
 
 		//"use"
 		public Keyword getUseKeyword_0() { return cUseKeyword_0; }
 
-		//usePackage=[RegisteredPackage|QualifiedName]
-		public Assignment getUsePackageAssignment_1() { return cUsePackageAssignment_1; }
+		//usePackages+=[RegisteredPackage]
+		public Assignment getUsePackagesAssignment_1() { return cUsePackagesAssignment_1; }
 
-		//[RegisteredPackage|QualifiedName]
-		public CrossReference getUsePackageRegisteredPackageCrossReference_1_0() { return cUsePackageRegisteredPackageCrossReference_1_0; }
-
-		//QualifiedName
-		public RuleCall getUsePackageRegisteredPackageQualifiedNameParserRuleCall_1_0_1() { return cUsePackageRegisteredPackageQualifiedNameParserRuleCall_1_0_1; }
-
-		//"on"
-		public Keyword getOnKeyword_2() { return cOnKeyword_2; }
-
-		//name=ID
-		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
+		//[RegisteredPackage]
+		public CrossReference getUsePackagesRegisteredPackageCrossReference_1_0() { return cUsePackagesRegisteredPackageCrossReference_1_0; }
 
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_3_0() { return cNameIDTerminalRuleCall_3_0; }
+		public RuleCall getUsePackagesRegisteredPackageIDTerminalRuleCall_1_0_1() { return cUsePackagesRegisteredPackageIDTerminalRuleCall_1_0_1; }
+
+		//("," usePackages+=[RegisteredPackage])*
+		public Group getGroup_2() { return cGroup_2; }
+
+		//","
+		public Keyword getCommaKeyword_2_0() { return cCommaKeyword_2_0; }
+
+		//usePackages+=[RegisteredPackage]
+		public Assignment getUsePackagesAssignment_2_1() { return cUsePackagesAssignment_2_1; }
+
+		//[RegisteredPackage]
+		public CrossReference getUsePackagesRegisteredPackageCrossReference_2_1_0() { return cUsePackagesRegisteredPackageCrossReference_2_1_0; }
+
+		//ID
+		public RuleCall getUsePackagesRegisteredPackageIDTerminalRuleCall_2_1_0_1() { return cUsePackagesRegisteredPackageIDTerminalRuleCall_2_1_0_1; }
+
+		//"on"
+		public Keyword getOnKeyword_3() { return cOnKeyword_3; }
+
+		//name=ID
+		public Assignment getNameAssignment_4() { return cNameAssignment_4; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_4_0() { return cNameIDTerminalRuleCall_4_0; }
 
 		//model=STRING
-		public Assignment getModelAssignment_4() { return cModelAssignment_4; }
+		public Assignment getModelAssignment_5() { return cModelAssignment_5; }
 
 		//STRING
-		public RuleCall getModelSTRINGTerminalRuleCall_4_0() { return cModelSTRINGTerminalRuleCall_4_0; }
+		public RuleCall getModelSTRINGTerminalRuleCall_5_0() { return cModelSTRINGTerminalRuleCall_5_0; }
 	}
 
 	public class QualifiedNameElements extends AbstractParserRuleElementFinder {
@@ -1083,7 +1103,7 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ApplicationModel:
-	//	"use" usePackage=[RegisteredPackage|QualifiedName] "on" name=ID model=STRING;
+	//	"use" usePackages+=[RegisteredPackage] ("," usePackages+=[RegisteredPackage])* "on" name=ID model=STRING;
 	public ApplicationModelElements getApplicationModelAccess() {
 		return (pApplicationModel != null) ? pApplicationModel : (pApplicationModel = new ApplicationModelElements());
 	}

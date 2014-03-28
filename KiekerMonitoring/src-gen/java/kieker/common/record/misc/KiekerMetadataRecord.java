@@ -32,7 +32,7 @@ import kieker.common.util.registry.IRegistry;
  */
 public class KiekerMetadataRecord extends AbstractMonitoringRecord implements IMonitoringRecord.Factory, IMonitoringRecord.BinaryFactory {
 	public static final int SIZE = 37; // serialization size (without variable part of strings)
-	private static final long serialVersionUID = 1395951938031L;
+	private static final long serialVersionUID = 1396022535184L;
 	
 	private static final Class<?>[] TYPES = {
 		String.class, // KiekerMetadataRecord.version

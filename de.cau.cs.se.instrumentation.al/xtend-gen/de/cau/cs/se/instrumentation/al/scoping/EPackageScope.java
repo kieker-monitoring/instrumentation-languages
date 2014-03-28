@@ -3,6 +3,7 @@ package de.cau.cs.se.instrumentation.al.scoping;
 import com.google.common.base.Objects;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -13,6 +14,7 @@ import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.EObjectDescription;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
+import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
@@ -30,7 +32,6 @@ public class EPackageScope implements IScope {
   }
   
   public IEObjectDescription getSingleElement(final QualifiedName name) {
-    System.out.println(("EPackageScope.getSingleElement(name) " + name));
     String _string = name.toString();
     final URI ePackageURI = URI.createURI(_string, true);
     final URI plainPackageURI = ePackageURI.trimFragment();
@@ -45,10 +46,17 @@ public class EPackageScope implements IScope {
       EPackage ePackage = ((EPackage) _get);
       boolean _notEquals = (!Objects.equal(fragment, null));
       if (_notEquals) {
+        String[] list = fragment.split(".");
         EList<EPackage> _eSubpackages = ePackage.getESubpackages();
-        String[] _split = fragment.split(".");
-        QualifiedName _create = QualifiedName.create(_split);
-        EPackage _findPackage = this.findPackage(_eSubpackages, _create);
+        QualifiedName _xifexpression = null;
+        final String[] _converted_list = (String[])list;
+        boolean _isEmpty_1 = ((List<String>)Conversions.doWrapArray(_converted_list)).isEmpty();
+        if (_isEmpty_1) {
+          _xifexpression = QualifiedName.create(fragment);
+        } else {
+          _xifexpression = QualifiedName.create(list);
+        }
+        EPackage _findPackage = this.findPackage(_eSubpackages, _xifexpression);
         ePackage = _findPackage;
       }
       boolean _notEquals_1 = (!Objects.equal(ePackage, null));

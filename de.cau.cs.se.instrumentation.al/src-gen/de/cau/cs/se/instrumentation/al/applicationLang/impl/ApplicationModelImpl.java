@@ -6,13 +6,18 @@ import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationLangPackage;
 import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel;
 import de.cau.cs.se.instrumentation.al.applicationLang.RegisteredPackage;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +26,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationModelImpl#getUsePackage <em>Use Package</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationModelImpl#getUsePackages <em>Use Packages</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationModelImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationModelImpl#getModel <em>Model</em>}</li>
  * </ul>
@@ -32,14 +37,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class ApplicationModelImpl extends MinimalEObjectImpl.Container implements ApplicationModel
 {
   /**
-   * The cached value of the '{@link #getUsePackage() <em>Use Package</em>}' reference.
+   * The cached value of the '{@link #getUsePackages() <em>Use Packages</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getUsePackage()
+   * @see #getUsePackages()
    * @generated
    * @ordered
    */
-  protected RegisteredPackage usePackage;
+  protected EList<RegisteredPackage> usePackages;
 
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -107,42 +112,13 @@ public class ApplicationModelImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public RegisteredPackage getUsePackage()
+  public EList<RegisteredPackage> getUsePackages()
   {
-    if (usePackage != null && usePackage.eIsProxy())
+    if (usePackages == null)
     {
-      InternalEObject oldUsePackage = (InternalEObject)usePackage;
-      usePackage = (RegisteredPackage)eResolveProxy(oldUsePackage);
-      if (usePackage != oldUsePackage)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ApplicationLangPackage.APPLICATION_MODEL__USE_PACKAGE, oldUsePackage, usePackage));
-      }
+      usePackages = new EObjectResolvingEList<RegisteredPackage>(RegisteredPackage.class, this, ApplicationLangPackage.APPLICATION_MODEL__USE_PACKAGES);
     }
-    return usePackage;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public RegisteredPackage basicGetUsePackage()
-  {
-    return usePackage;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setUsePackage(RegisteredPackage newUsePackage)
-  {
-    RegisteredPackage oldUsePackage = usePackage;
-    usePackage = newUsePackage;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ApplicationLangPackage.APPLICATION_MODEL__USE_PACKAGE, oldUsePackage, usePackage));
+    return usePackages;
   }
 
   /**
@@ -201,9 +177,8 @@ public class ApplicationModelImpl extends MinimalEObjectImpl.Container implement
   {
     switch (featureID)
     {
-      case ApplicationLangPackage.APPLICATION_MODEL__USE_PACKAGE:
-        if (resolve) return getUsePackage();
-        return basicGetUsePackage();
+      case ApplicationLangPackage.APPLICATION_MODEL__USE_PACKAGES:
+        return getUsePackages();
       case ApplicationLangPackage.APPLICATION_MODEL__NAME:
         return getName();
       case ApplicationLangPackage.APPLICATION_MODEL__MODEL:
@@ -217,13 +192,15 @@ public class ApplicationModelImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case ApplicationLangPackage.APPLICATION_MODEL__USE_PACKAGE:
-        setUsePackage((RegisteredPackage)newValue);
+      case ApplicationLangPackage.APPLICATION_MODEL__USE_PACKAGES:
+        getUsePackages().clear();
+        getUsePackages().addAll((Collection<? extends RegisteredPackage>)newValue);
         return;
       case ApplicationLangPackage.APPLICATION_MODEL__NAME:
         setName((String)newValue);
@@ -245,8 +222,8 @@ public class ApplicationModelImpl extends MinimalEObjectImpl.Container implement
   {
     switch (featureID)
     {
-      case ApplicationLangPackage.APPLICATION_MODEL__USE_PACKAGE:
-        setUsePackage((RegisteredPackage)null);
+      case ApplicationLangPackage.APPLICATION_MODEL__USE_PACKAGES:
+        getUsePackages().clear();
         return;
       case ApplicationLangPackage.APPLICATION_MODEL__NAME:
         setName(NAME_EDEFAULT);
@@ -268,8 +245,8 @@ public class ApplicationModelImpl extends MinimalEObjectImpl.Container implement
   {
     switch (featureID)
     {
-      case ApplicationLangPackage.APPLICATION_MODEL__USE_PACKAGE:
-        return usePackage != null;
+      case ApplicationLangPackage.APPLICATION_MODEL__USE_PACKAGES:
+        return usePackages != null && !usePackages.isEmpty();
       case ApplicationLangPackage.APPLICATION_MODEL__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case ApplicationLangPackage.APPLICATION_MODEL__MODEL:

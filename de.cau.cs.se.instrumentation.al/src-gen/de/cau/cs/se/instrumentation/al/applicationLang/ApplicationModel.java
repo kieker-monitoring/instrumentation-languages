@@ -2,6 +2,8 @@
  */
 package de.cau.cs.se.instrumentation.al.applicationLang;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -12,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel#getUsePackage <em>Use Package</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel#getUsePackages <em>Use Packages</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel#getName <em>Name</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel#getModel <em>Model</em>}</li>
  * </ul>
@@ -25,30 +27,20 @@ import org.eclipse.emf.ecore.EObject;
 public interface ApplicationModel extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Use Package</b></em>' reference.
+   * Returns the value of the '<em><b>Use Packages</b></em>' reference list.
+   * The list contents are of type {@link de.cau.cs.se.instrumentation.al.applicationLang.RegisteredPackage}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Use Package</em>' reference isn't clear,
+   * If the meaning of the '<em>Use Packages</em>' reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Use Package</em>' reference.
-   * @see #setUsePackage(RegisteredPackage)
-   * @see de.cau.cs.se.instrumentation.al.applicationLang.ApplicationLangPackage#getApplicationModel_UsePackage()
+   * @return the value of the '<em>Use Packages</em>' reference list.
+   * @see de.cau.cs.se.instrumentation.al.applicationLang.ApplicationLangPackage#getApplicationModel_UsePackages()
    * @model
    * @generated
    */
-  RegisteredPackage getUsePackage();
-
-  /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel#getUsePackage <em>Use Package</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Use Package</em>' reference.
-   * @see #getUsePackage()
-   * @generated
-   */
-  void setUsePackage(RegisteredPackage value);
+  EList<RegisteredPackage> getUsePackages();
 
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

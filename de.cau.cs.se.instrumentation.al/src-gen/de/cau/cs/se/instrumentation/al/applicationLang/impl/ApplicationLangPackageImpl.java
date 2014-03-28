@@ -388,7 +388,7 @@ public class ApplicationLangPackageImpl extends EPackageImpl implements Applicat
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getApplicationModel_UsePackage()
+  public EReference getApplicationModel_UsePackages()
   {
     return (EReference)applicationModelEClass.getEStructuralFeatures().get(0);
   }
@@ -954,7 +954,7 @@ public class ApplicationLangPackageImpl extends EPackageImpl implements Applicat
     createEReference(registeredPackageEClass, REGISTERED_PACKAGE__EPACKAGE);
 
     applicationModelEClass = createEClass(APPLICATION_MODEL);
-    createEReference(applicationModelEClass, APPLICATION_MODEL__USE_PACKAGE);
+    createEReference(applicationModelEClass, APPLICATION_MODEL__USE_PACKAGES);
     createEAttribute(applicationModelEClass, APPLICATION_MODEL__NAME);
     createEAttribute(applicationModelEClass, APPLICATION_MODEL__MODEL);
 
@@ -1086,7 +1086,7 @@ public class ApplicationLangPackageImpl extends EPackageImpl implements Applicat
     initEReference(getRegisteredPackage_EPackage(), theEcorePackage.getEPackage(), null, "ePackage", null, 0, 1, RegisteredPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(applicationModelEClass, ApplicationModel.class, "ApplicationModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getApplicationModel_UsePackage(), this.getRegisteredPackage(), null, "usePackage", null, 0, 1, ApplicationModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getApplicationModel_UsePackages(), this.getRegisteredPackage(), null, "usePackages", null, 0, -1, ApplicationModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getApplicationModel_Name(), theEcorePackage.getEString(), "name", null, 0, 1, ApplicationModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getApplicationModel_Model(), theEcorePackage.getEString(), "model", null, 0, 1, ApplicationModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

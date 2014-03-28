@@ -132,11 +132,10 @@ public class InternalApplicationLangLexer extends Lexer {
         try {
             int _type = T__14;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:14:7: ( 'on' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:14:9: 'on'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:14:7: ( ',' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:14:9: ','
             {
-            match("on"); 
-
+            match(','); 
 
             }
 
@@ -153,10 +152,11 @@ public class InternalApplicationLangLexer extends Lexer {
         try {
             int _type = T__15;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:15:7: ( '.' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:15:9: '.'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:15:7: ( 'on' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:15:9: 'on'
             {
-            match('.'); 
+            match("on"); 
+
 
             }
 
@@ -173,11 +173,10 @@ public class InternalApplicationLangLexer extends Lexer {
         try {
             int _type = T__16;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:16:7: ( 'aspect' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:16:9: 'aspect'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:16:7: ( '.' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:16:9: '.'
             {
-            match("aspect"); 
-
+            match('.'); 
 
             }
 
@@ -194,10 +193,11 @@ public class InternalApplicationLangLexer extends Lexer {
         try {
             int _type = T__17;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:17:7: ( '{' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:17:9: '{'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:17:7: ( 'aspect' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:17:9: 'aspect'
             {
-            match('{'); 
+            match("aspect"); 
+
 
             }
 
@@ -214,10 +214,10 @@ public class InternalApplicationLangLexer extends Lexer {
         try {
             int _type = T__18;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:18:7: ( '}' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:18:9: '}'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:18:7: ( '{' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:18:9: '{'
             {
-            match('}'); 
+            match('{'); 
 
             }
 
@@ -234,10 +234,10 @@ public class InternalApplicationLangLexer extends Lexer {
         try {
             int _type = T__19;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:19:7: ( '*' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:19:9: '*'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:19:7: ( '}' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:19:9: '}'
             {
-            match('*'); 
+            match('}'); 
 
             }
 
@@ -254,10 +254,10 @@ public class InternalApplicationLangLexer extends Lexer {
         try {
             int _type = T__20;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:20:7: ( '(' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:20:9: '('
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:20:7: ( '*' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:20:9: '*'
             {
-            match('('); 
+            match('*'); 
 
             }
 
@@ -274,10 +274,10 @@ public class InternalApplicationLangLexer extends Lexer {
         try {
             int _type = T__21;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:21:7: ( ',' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:21:9: ','
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:21:7: ( '(' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:21:9: '('
             {
-            match(','); 
+            match('('); 
 
             }
 
@@ -684,10 +684,10 @@ public class InternalApplicationLangLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1587:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1587:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1605:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1605:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1587:11: ( '^' )?
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1605:11: ( '^' )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -696,7 +696,7 @@ public class InternalApplicationLangLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1587:11: '^'
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1605:11: '^'
                     {
                     match('^'); 
 
@@ -714,7 +714,7 @@ public class InternalApplicationLangLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1587:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1605:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -763,10 +763,10 @@ public class InternalApplicationLangLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1589:10: ( ( '0' .. '9' )+ )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1589:12: ( '0' .. '9' )+
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1607:10: ( ( '0' .. '9' )+ )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1607:12: ( '0' .. '9' )+
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1589:12: ( '0' .. '9' )+
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1607:12: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -780,7 +780,7 @@ public class InternalApplicationLangLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1589:13: '0' .. '9'
+            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1607:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -812,10 +812,10 @@ public class InternalApplicationLangLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1591:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1591:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1609:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1609:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1591:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1609:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -833,10 +833,10 @@ public class InternalApplicationLangLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1591:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1609:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1591:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1609:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop4:
                     do {
                         int alt4=3;
@@ -852,7 +852,7 @@ public class InternalApplicationLangLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1591:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1609:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -868,7 +868,7 @@ public class InternalApplicationLangLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1591:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1609:66: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -893,10 +893,10 @@ public class InternalApplicationLangLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1591:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1609:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1591:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1609:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -912,7 +912,7 @@ public class InternalApplicationLangLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1591:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1609:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -928,7 +928,7 @@ public class InternalApplicationLangLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1591:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1609:137: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -971,12 +971,12 @@ public class InternalApplicationLangLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1593:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1593:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1611:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1611:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1593:24: ( options {greedy=false; } : . )*
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1611:24: ( options {greedy=false; } : . )*
             loop7:
             do {
                 int alt7=2;
@@ -1001,7 +1001,7 @@ public class InternalApplicationLangLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1593:52: .
+            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1611:52: .
             	    {
             	    matchAny(); 
 
@@ -1031,12 +1031,12 @@ public class InternalApplicationLangLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1595:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1595:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1613:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1613:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1595:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1613:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop8:
             do {
                 int alt8=2;
@@ -1049,7 +1049,7 @@ public class InternalApplicationLangLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1595:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1613:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -1069,7 +1069,7 @@ public class InternalApplicationLangLexer extends Lexer {
                 }
             } while (true);
 
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1595:40: ( ( '\\r' )? '\\n' )?
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1613:40: ( ( '\\r' )? '\\n' )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -1078,9 +1078,9 @@ public class InternalApplicationLangLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1595:41: ( '\\r' )? '\\n'
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1613:41: ( '\\r' )? '\\n'
                     {
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1595:41: ( '\\r' )?
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1613:41: ( '\\r' )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -1089,7 +1089,7 @@ public class InternalApplicationLangLexer extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1595:41: '\\r'
+                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1613:41: '\\r'
                             {
                             match('\r'); 
 
@@ -1121,10 +1121,10 @@ public class InternalApplicationLangLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1597:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1597:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1615:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1615:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1597:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1615:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt11=0;
             loop11:
             do {
@@ -1178,8 +1178,8 @@ public class InternalApplicationLangLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1599:16: ( . )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1599:18: .
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1617:16: ( . )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalApplicationLang.g:1617:18: .
             {
             matchAny(); 
 
@@ -1465,58 +1465,59 @@ public class InternalApplicationLangLexer extends Lexer {
 
     protected DFA12 dfa12 = new DFA12(this);
     static final String DFA12_eotS =
-        "\1\uffff\4\43\1\uffff\1\43\2\uffff\1\55\7\uffff\3\43\2\uffff\1\41"+
-        "\1\74\1\76\1\43\1\41\2\uffff\3\41\2\uffff\1\43\1\uffff\2\43\1\111"+
-        "\1\uffff\2\43\13\uffff\3\43\7\uffff\1\43\5\uffff\3\43\1\123\1\uffff"+
-        "\11\43\1\uffff\2\43\1\137\7\43\1\147\1\uffff\1\43\1\151\4\43\1\156"+
-        "\1\uffff\1\43\1\uffff\1\160\1\161\1\43\2\uffff\1\43\2\uffff\1\164"+
-        "\1\43\1\uffff\1\166\1\uffff";
+        "\1\uffff\3\43\1\uffff\1\43\1\uffff\1\43\2\uffff\1\56\6\uffff\3\43"+
+        "\2\uffff\1\41\1\74\1\76\1\43\1\41\2\uffff\3\41\2\uffff\1\43\1\uffff"+
+        "\2\43\1\uffff\1\111\1\uffff\2\43\12\uffff\3\43\7\uffff\1\43\5\uffff"+
+        "\3\43\1\123\1\uffff\11\43\1\uffff\2\43\1\137\7\43\1\147\1\uffff"+
+        "\1\43\1\151\4\43\1\156\1\uffff\1\43\1\uffff\1\160\1\161\1\43\2\uffff"+
+        "\1\43\2\uffff\1\164\1\43\1\uffff\1\166\1\uffff";
     static final String DFA12_eofS =
         "\167\uffff";
     static final String DFA12_minS =
-        "\1\0\1\141\1\145\1\163\1\156\1\uffff\1\146\2\uffff\1\52\7\uffff"+
-        "\1\141\1\151\1\154\2\uffff\3\75\1\145\1\101\2\uffff\2\0\1\52\2\uffff"+
-        "\1\143\1\uffff\1\147\1\145\1\60\1\uffff\1\160\1\164\13\uffff\1\155"+
-        "\1\147\1\141\7\uffff\1\146\5\uffff\1\153\1\151\1\165\1\60\1\uffff"+
-        "\3\145\1\156\1\163\1\157\1\141\1\163\1\162\1\uffff\1\143\1\162\1"+
-        "\60\1\141\1\163\1\162\1\147\1\164\1\156\1\164\1\60\1\uffff\1\164"+
-        "\1\60\3\145\1\55\1\60\1\uffff\1\165\1\uffff\2\60\1\162\2\uffff\1"+
-        "\162\2\uffff\1\60\1\145\1\uffff\1\60\1\uffff";
+        "\1\0\1\141\1\145\1\163\1\uffff\1\156\1\uffff\1\146\2\uffff\1\52"+
+        "\6\uffff\1\141\1\151\1\154\2\uffff\3\75\1\145\1\101\2\uffff\2\0"+
+        "\1\52\2\uffff\1\143\1\uffff\1\147\1\145\1\uffff\1\60\1\uffff\1\160"+
+        "\1\164\12\uffff\1\155\1\147\1\141\7\uffff\1\146\5\uffff\1\153\1"+
+        "\151\1\165\1\60\1\uffff\3\145\1\156\1\163\1\157\1\141\1\163\1\162"+
+        "\1\uffff\1\143\1\162\1\60\1\141\1\163\1\162\1\147\1\164\1\156\1"+
+        "\164\1\60\1\uffff\1\164\1\60\3\145\1\55\1\60\1\uffff\1\165\1\uffff"+
+        "\2\60\1\162\2\uffff\1\162\2\uffff\1\60\1\145\1\uffff\1\60\1\uffff";
     static final String DFA12_maxS =
-        "\1\uffff\1\141\1\145\1\163\1\156\1\uffff\1\163\2\uffff\1\52\7\uffff"+
-        "\1\141\1\151\1\154\2\uffff\3\75\1\145\1\172\2\uffff\2\uffff\1\57"+
-        "\2\uffff\1\143\1\uffff\1\164\1\145\1\172\1\uffff\1\160\1\164\13"+
-        "\uffff\1\155\1\147\1\141\7\uffff\1\146\5\uffff\1\153\1\151\1\165"+
-        "\1\172\1\uffff\3\145\1\156\1\163\1\157\1\141\1\163\1\162\1\uffff"+
-        "\1\143\1\162\1\172\1\141\1\163\1\162\1\147\1\164\1\156\1\164\1\172"+
-        "\1\uffff\1\164\1\172\3\145\1\55\1\172\1\uffff\1\165\1\uffff\2\172"+
-        "\1\162\2\uffff\1\162\2\uffff\1\172\1\145\1\uffff\1\172\1\uffff";
+        "\1\uffff\1\141\1\145\1\163\1\uffff\1\156\1\uffff\1\163\2\uffff\1"+
+        "\52\6\uffff\1\141\1\151\1\154\2\uffff\3\75\1\145\1\172\2\uffff\2"+
+        "\uffff\1\57\2\uffff\1\143\1\uffff\1\164\1\145\1\uffff\1\172\1\uffff"+
+        "\1\160\1\164\12\uffff\1\155\1\147\1\141\7\uffff\1\146\5\uffff\1"+
+        "\153\1\151\1\165\1\172\1\uffff\3\145\1\156\1\163\1\157\1\141\1\163"+
+        "\1\162\1\uffff\1\143\1\162\1\172\1\141\1\163\1\162\1\147\1\164\1"+
+        "\156\1\164\1\172\1\uffff\1\164\1\172\3\145\1\55\1\172\1\uffff\1"+
+        "\165\1\uffff\2\172\1\162\2\uffff\1\162\2\uffff\1\172\1\145\1\uffff"+
+        "\1\172\1\uffff";
     static final String DFA12_acceptS =
-        "\5\uffff\1\5\1\uffff\1\7\1\10\1\uffff\1\12\1\13\1\14\1\15\1\16\1"+
-        "\17\1\20\3\uffff\1\26\1\27\5\uffff\1\37\1\40\3\uffff\1\44\1\45\1"+
-        "\uffff\1\37\3\uffff\1\5\2\uffff\1\7\1\10\1\21\1\11\1\12\1\13\1\14"+
-        "\1\15\1\16\1\17\1\20\3\uffff\1\26\1\27\1\30\1\33\1\31\1\34\1\32"+
-        "\1\uffff\1\40\1\41\1\42\1\43\1\44\4\uffff\1\4\11\uffff\1\3\13\uffff"+
-        "\1\22\7\uffff\1\36\1\uffff\1\24\3\uffff\1\25\1\6\1\uffff\1\35\1"+
-        "\1\2\uffff\1\2\1\uffff\1\23";
+        "\4\uffff\1\4\1\uffff\1\6\1\uffff\1\10\1\11\1\uffff\1\13\1\14\1\15"+
+        "\1\16\1\17\1\20\3\uffff\1\26\1\27\5\uffff\1\37\1\40\3\uffff\1\44"+
+        "\1\45\1\uffff\1\37\2\uffff\1\4\1\uffff\1\6\2\uffff\1\10\1\11\1\21"+
+        "\1\12\1\13\1\14\1\15\1\16\1\17\1\20\3\uffff\1\26\1\27\1\30\1\33"+
+        "\1\31\1\34\1\32\1\uffff\1\40\1\41\1\42\1\43\1\44\4\uffff\1\5\11"+
+        "\uffff\1\3\13\uffff\1\22\7\uffff\1\36\1\uffff\1\24\3\uffff\1\25"+
+        "\1\7\1\uffff\1\35\1\1\2\uffff\1\2\1\uffff\1\23";
     static final String DFA12_specialS =
         "\1\0\34\uffff\1\1\1\2\130\uffff}>";
     static final String[] DFA12_transitionS = {
             "\11\41\2\40\2\41\1\40\22\41\1\40\1\26\1\35\1\17\1\20\2\41\1"+
-            "\36\1\12\1\14\1\11\1\41\1\13\1\41\1\5\1\37\12\34\2\41\1\30\1"+
-            "\24\1\27\2\41\32\33\1\15\1\41\1\16\1\32\1\33\1\41\1\6\1\31\1"+
-            "\23\12\33\1\21\1\4\1\1\1\33\1\2\1\22\1\33\1\3\5\33\1\7\1\41"+
-            "\1\10\1\25\uff81\41",
+            "\36\1\13\1\14\1\12\1\41\1\4\1\41\1\6\1\37\12\34\2\41\1\30\1"+
+            "\24\1\27\2\41\32\33\1\15\1\41\1\16\1\32\1\33\1\41\1\7\1\31\1"+
+            "\23\12\33\1\21\1\5\1\1\1\33\1\2\1\22\1\33\1\3\5\33\1\10\1\41"+
+            "\1\11\1\25\uff81\41",
             "\1\42",
             "\1\44",
             "\1\45",
-            "\1\46",
             "",
-            "\1\51\14\uffff\1\50",
+            "\1\47",
+            "",
+            "\1\52\14\uffff\1\51",
             "",
             "",
-            "\1\54",
-            "",
+            "\1\55",
             "",
             "",
             "",
@@ -1544,11 +1545,11 @@ public class InternalApplicationLangLexer extends Lexer {
             "",
             "\1\106\14\uffff\1\107",
             "\1\110",
+            "",
             "\12\43\7\uffff\32\43\4\uffff\1\43\1\uffff\32\43",
             "",
             "\1\112",
             "\1\113",
-            "",
             "",
             "",
             "",
@@ -1673,21 +1674,21 @@ public class InternalApplicationLangLexer extends Lexer {
 
                         else if ( (LA12_0=='u') ) {s = 3;}
 
-                        else if ( (LA12_0=='o') ) {s = 4;}
+                        else if ( (LA12_0==',') ) {s = 4;}
 
-                        else if ( (LA12_0=='.') ) {s = 5;}
+                        else if ( (LA12_0=='o') ) {s = 5;}
 
-                        else if ( (LA12_0=='a') ) {s = 6;}
+                        else if ( (LA12_0=='.') ) {s = 6;}
 
-                        else if ( (LA12_0=='{') ) {s = 7;}
+                        else if ( (LA12_0=='a') ) {s = 7;}
 
-                        else if ( (LA12_0=='}') ) {s = 8;}
+                        else if ( (LA12_0=='{') ) {s = 8;}
 
-                        else if ( (LA12_0=='*') ) {s = 9;}
+                        else if ( (LA12_0=='}') ) {s = 9;}
 
-                        else if ( (LA12_0=='(') ) {s = 10;}
+                        else if ( (LA12_0=='*') ) {s = 10;}
 
-                        else if ( (LA12_0==',') ) {s = 11;}
+                        else if ( (LA12_0=='(') ) {s = 11;}
 
                         else if ( (LA12_0==')') ) {s = 12;}
 

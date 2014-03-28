@@ -32,7 +32,7 @@ import kieker.common.util.registry.IRegistry;
  */
 public class BranchingRecord extends AbstractMonitoringRecord implements IMonitoringRecord.Factory, IMonitoringRecord.BinaryFactory {
 	public static final int SIZE = 16; // serialization size (without variable part of strings)
-	private static final long serialVersionUID = 1395951939221L;
+	private static final long serialVersionUID = 1396022535247L;
 	
 	private static final Class<?>[] TYPES = {
 		long.class, // BranchingRecord.timestamp

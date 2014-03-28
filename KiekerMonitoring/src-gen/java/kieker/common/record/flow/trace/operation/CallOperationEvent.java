@@ -33,7 +33,7 @@ import kieker.common.record.flow.ICallRecord;
  */
 public class CallOperationEvent extends AbstractOperationEvent implements IMonitoringRecord.Factory, IMonitoringRecord.BinaryFactory, ICallRecord {
 	public static final int SIZE = 36; // serialization size (without variable part of strings)
-	private static final long serialVersionUID = 1395951954675L;
+	private static final long serialVersionUID = 1396022535144L;
 	
 	private static final Class<?>[] TYPES = {
 		long.class, // AbstractEvent.timestamp

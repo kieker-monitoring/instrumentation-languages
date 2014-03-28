@@ -34,7 +34,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MethodModifier" eSuperTypes="#//NamedElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="ContainerModifier" eSuperTypes="#//NamedElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Containment">
+  <eClassifiers xsi:type="ecore:EClass" name="Containment" abstract="true" interface="true">
     <eStructuralFeatures xsi:type="ecore:EReference" name="contents" upperBound="-1"
         eType="#//Container" containment="true"/>
   </eClassifiers>

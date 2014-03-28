@@ -27,7 +27,6 @@ class EPackageScope implements IScope {
 	}
 
 	override IEObjectDescription getSingleElement(QualifiedName name) {
-		System.out.println("EPackageScope.getSingleElement(name) " + name)
 		val URI ePackageURI = URI.createURI(name.toString(), true)
 		val plainPackageURI = ePackageURI.trimFragment
 		val fragment = ePackageURI.fragment
@@ -35,10 +34,15 @@ class EPackageScope implements IScope {
 		var Resource resource = resourceSet.getResource(plainPackageURI, true)
 		if (!resource.getContents().isEmpty()) {
 			var EPackage ePackage = resource.getContents().get(0) as EPackage
-			if (fragment != null)  
+			if (fragment != null) {
+				var list = fragment.split('.')
 				ePackage = findPackage(ePackage.ESubpackages,
-					QualifiedName.create(fragment.split('.'))
-				)
+					if (list.empty)
+						QualifiedName.create(fragment)
+					else
+						QualifiedName.create(list)
+					)
+			}
 			if (ePackage != null)
 				return EObjectDescription.create(name, ePackage)
 			else

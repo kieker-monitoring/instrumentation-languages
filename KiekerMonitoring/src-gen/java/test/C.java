@@ -32,7 +32,7 @@ import test.A;
  */
 public class C extends A implements IMonitoringRecord.Factory, IMonitoringRecord.BinaryFactory {
 	public static final int SIZE = 4; // serialization size (without variable part of strings)
-	private static final long serialVersionUID = 1395951938931L;
+	private static final long serialVersionUID = 1396022535350L;
 	
 	private static final Class<?>[] TYPES = {
 		int.class, // A.a

@@ -32,7 +32,7 @@ import kieker.common.util.registry.IRegistry;
  */
 public class ResourceUtilizationRecord extends AbstractMonitoringRecord implements IMonitoringRecord.Factory, IMonitoringRecord.BinaryFactory {
 	public static final int SIZE = 24; // serialization size (without variable part of strings)
-	private static final long serialVersionUID = 1395951938879L;
+	private static final long serialVersionUID = 1396022535317L;
 	
 	private static final Class<?>[] TYPES = {
 		long.class, // ResourceUtilizationRecord.timestamp

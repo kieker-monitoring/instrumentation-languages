@@ -33,7 +33,7 @@ import kieker.common.record.flow.IObjectRecord;
  */
 public class AfterOperationFailedObjectEvent extends AfterOperationFailedEvent implements IMonitoringRecord.Factory, IMonitoringRecord.BinaryFactory, IObjectRecord {
 	public static final int SIZE = 36; // serialization size (without variable part of strings)
-	private static final long serialVersionUID = 1395952003224L;
+	private static final long serialVersionUID = 1396022535422L;
 	
 	private static final Class<?>[] TYPES = {
 		long.class, // AbstractEvent.timestamp
