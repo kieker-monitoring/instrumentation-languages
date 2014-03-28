@@ -30,8 +30,7 @@ public class EPackageScope implements IScope {
   }
   
   public IEObjectDescription getSingleElement(final QualifiedName name) {
-    String _plus = ("EPackageScope.getSingleElement(name) " + name);
-    System.out.println(_plus);
+    System.out.println(("EPackageScope.getSingleElement(name) " + name));
     String _string = name.toString();
     final URI ePackageURI = URI.createURI(_string, true);
     final URI plainPackageURI = ePackageURI.trimFragment();
@@ -68,8 +67,7 @@ public class EPackageScope implements IScope {
     final Function1<EPackage,Boolean> _function = new Function1<EPackage,Boolean>() {
       public Boolean apply(final EPackage it) {
         String _name = it.getName();
-        boolean _equals = _name.equals(packageName);
-        return Boolean.valueOf(_equals);
+        return Boolean.valueOf(_name.equals(packageName));
       }
     };
     final EPackage ePackage = IterableExtensions.<EPackage>findFirst(ePackages, _function);
@@ -90,26 +88,21 @@ public class EPackageScope implements IScope {
   }
   
   public Iterable<IEObjectDescription> getElements(final QualifiedName name) {
-    String _plus = ("EPackageScope.getElements(name) " + name);
-    System.out.println(_plus);
-    ArrayList<IEObjectDescription> _arrayList = new ArrayList<IEObjectDescription>();
-    final Collection<IEObjectDescription> result = _arrayList;
+    System.out.println(("EPackageScope.getElements(name) " + name));
+    final Collection<IEObjectDescription> result = new ArrayList<IEObjectDescription>();
     IEObjectDescription _singleElement = this.getSingleElement(name);
     result.add(_singleElement);
     return result;
   }
   
   public IEObjectDescription getSingleElement(final EObject object) {
-    String _plus = ("EPackageScope.getSingleElement(object) " + object);
-    System.out.println(_plus);
+    System.out.println(("EPackageScope.getSingleElement(object) " + object));
     return null;
   }
   
   public Iterable<IEObjectDescription> getElements(final EObject object) {
-    String _plus = ("EPackageScope.getElements(object) " + object);
-    System.out.println(_plus);
-    ArrayList<IEObjectDescription> _arrayList = new ArrayList<IEObjectDescription>();
-    final Collection<IEObjectDescription> result = _arrayList;
+    System.out.println(("EPackageScope.getElements(object) " + object));
+    final Collection<IEObjectDescription> result = new ArrayList<IEObjectDescription>();
     IEObjectDescription _singleElement = this.getSingleElement(object);
     result.add(_singleElement);
     return result;
@@ -117,8 +110,7 @@ public class EPackageScope implements IScope {
   
   public Iterable<IEObjectDescription> getAllElements() {
     System.out.println("EPackageScope.getAllElements()");
-    ArrayList<IEObjectDescription> _arrayList = new ArrayList<IEObjectDescription>();
-    final Collection<IEObjectDescription> result = _arrayList;
+    final Collection<IEObjectDescription> result = new ArrayList<IEObjectDescription>();
     return result;
   }
 }
