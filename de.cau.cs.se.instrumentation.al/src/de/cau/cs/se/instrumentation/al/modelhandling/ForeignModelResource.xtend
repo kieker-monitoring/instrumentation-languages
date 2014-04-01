@@ -38,6 +38,7 @@ import de.cau.cs.se.instrumantation.model.structure.Type
 import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel
 import de.cau.cs.se.instrumentation.al.applicationLang.RegisteredPackage
 import org.eclipse.xtext.naming.QualifiedName
+import java.util.HashMap
 
 /**
  * Simulates a real source by mapping the a PCM model to our model.
@@ -50,6 +51,7 @@ public class ForeignModelResource extends ResourceImpl {
 	private final ApplicationModel applicationModel
 	private de.cau.cs.se.instrumantation.model.structure.Model resultModel
 	private boolean loading = false
+	private final Map<String,EObject> interfaceMap = new HashMap<String,EObject>()
 	
 	/**
 	 * Integrate a foreign model.
@@ -63,21 +65,6 @@ public class ForeignModelResource extends ResourceImpl {
 	}
 
 	override EObject getEObject(String uriFragment) {
-		//if (this.getContents().size == 0) {
-			// TODO Resource contents is empty, this should not happen.
-			/*
-			 * I debugged this issue, but could not find the cause of it. I wondered that
-			 * multiple TypeProvider instances are used and therefore multiple TypeResources.
-			 * However, the problem occurs after the creation of a new TypeResource when the
-			 * old is accessed again. Then the contents of the resource is gone. Debugging
-			 * did not provide signification insight in what and where the contents is emptied
-			 * or replaced.
-			 * 
-			 * However, to circumvent this bug, the following code refills the content.
-			 */
-			// TODO reconstruct model
-			// this.createModel()
-		//}
 		System::out.println("ForeignModelResource.getEObject(uriFragment) " + uriFragment)
 		val EObject object = this.getContents().findFirst[uriFragment.equals(this.getURIFragment(it))]
 		if (object != null)
@@ -91,7 +78,9 @@ public class ForeignModelResource extends ResourceImpl {
 	override String getURIFragment(EObject eObject) {
 		System::out.println("ForeignModelResource.getURIFragment(eObject) " + eObject)
 		if (eObject instanceof NamedElement) {
-			return (eObject as NamedElement).getName()
+			return (eObject as NamedElement).name
+		} else if (eObject instanceof Container) {
+			return (eObject as Container).name 
 		} else {
 			return super.getURIFragment(eObject)
 		}
@@ -187,6 +176,13 @@ public class ForeignModelResource extends ResourceImpl {
 						names.add(fullQualifiedName as String)
 					val QualifiedName name = QualifiedName.create(names)
 					container.setName(name.getLastSegment())
+					/*val providedInterfaceReference = component.eClass().getEStructuralFeature("providedRoles_InterfaceProvidingEntity") as EReference
+					val providedInterfaces = object.eGet(providedInterfaceReference) as EList<EObject>
+					for (EObject providedInterface : providedInterfaces) {
+						val name2 = providedInterface.eGet(providedInterface.eClass().getEStructuralFeature("entityName")) 
+						// providingEntity_ProvidedRole
+						System::out.println("name " + name2)
+					}*/
 					insertContainerInHierarchy(this.resultModel,container,name)
 				}				
 			}
@@ -208,13 +204,9 @@ public class ForeignModelResource extends ResourceImpl {
 				for (String name : fullQualifiedName.skipLast(1).segments) {
 					val newContainer = this.structure.createContainer()
 					newContainer.setName(name)
-					// NOTE maybe this call must be removed. 
-					// this.getContents().add(newContainer)
 					runningParent.contents.add(newContainer)
 					runningParent = newContainer
 				}
-				// NOTE maybe this call must be removed. 
-				//this.getContents().add(entity)
 				runningParent.contents.add(entity)
 			}
 		}
@@ -222,8 +214,6 @@ public class ForeignModelResource extends ResourceImpl {
 
 	private def addEntityToParentContainer(Containment parent, Container entity) {
 		if (!parent.contents.exists[it.name.equals(entity.name)]) {
-			// NOTE maybe this call must be removed. 
-			// this.getContents().add(entity)
 			parent.contents.add(entity)
 		} else
 			System::out.println("Double container declaration")
@@ -242,28 +232,25 @@ public class ForeignModelResource extends ResourceImpl {
 	}
 
 	/**
-	 * 
-	 * @param types
-	 * @param literal
-	 * @return
-	 */
-	private def boolean contains(EList<Type> types, String literal) {
-		for (Type type : types) {
-			if (type.getName().equals(literal)) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	/**
 	 * Determine all interfaces in the given source.
 	 * 
 	 * @param source
 	 *            the resource containing the PCM model
 	 */
 	private def determineInterfaces(Resource source) {
-		
+		val Iterator<EObject> iterator = source.getAllContents()
+		while (iterator.hasNext()) {
+			val EObject object = iterator.next()
+			if (object.eClass().getName().equals("Repository")) {
+				val reference = object.eClass().getEStructuralFeature("interfaces__Repository") as EReference
+				val interfaces = object.eGet(reference) as EList<EObject>
+				for (EObject interfaze : interfaces) {
+					val fullQualifiedName = interfaze.eGet(interfaze.eClass().getEStructuralFeature("entityName")) as String
+					System::out.println("interface " + fullQualifiedName)
+					interfaceMap.put (fullQualifiedName, interfaze)
+				}
+			}
+		}
 	}
 
 	

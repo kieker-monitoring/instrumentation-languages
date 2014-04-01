@@ -7,15 +7,19 @@ import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import de.cau.cs.se.instrumantation.model.structure.Container;
 import de.cau.cs.se.instrumantation.model.structure.Method;
+import de.cau.cs.se.instrumantation.model.structure.NamedElement;
 import de.cau.cs.se.instrumentation.al.applicationLang.ContainerNode;
 import de.cau.cs.se.instrumentation.al.applicationLang.LocationQuery;
+import de.cau.cs.se.instrumentation.al.applicationLang.Model;
 import de.cau.cs.se.instrumentation.al.applicationLang.Node;
 import de.cau.cs.se.instrumentation.al.applicationLang.Query;
 import de.cau.cs.se.instrumentation.al.applicationLang.RegisteredPackage;
 import de.cau.cs.se.instrumentation.al.modelhandling.ForeignModelTypeProviderFactory;
+import de.cau.cs.se.instrumentation.al.modelhandling.IForeignModelTypeProvider;
 import de.cau.cs.se.instrumentation.al.scoping.ContainerParentScope;
 import de.cau.cs.se.instrumentation.al.scoping.EPackageScope;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -37,8 +41,33 @@ public class ApplicationLangScopeProvider extends AbstractDeclarativeScopeProvid
   private ForeignModelTypeProviderFactory typeProviderFactory;
   
   public IScope scope_ContainerNode_container(final ContainerNode context, final EReference reference) {
-    final IScope result = new ContainerParentScope(this.typeProviderFactory, context);
-    return result;
+    EObject _eContainer = context.eContainer();
+    EObject _eContainer_1 = _eContainer.eContainer();
+    if ((_eContainer_1 instanceof LocationQuery)) {
+      Resource _eResource = context.eResource();
+      ResourceSet _resourceSet = _eResource.getResourceSet();
+      final IForeignModelTypeProvider typeProvider = this.typeProviderFactory.getTypeProvider(_resourceSet, null);
+      Iterable<NamedElement> _allTypes = typeProvider.getAllTypes();
+      ContainerParentScope _containerParentScope = new ContainerParentScope(_allTypes, context);
+      final IScope result = _containerParentScope;
+      return result;
+    } else {
+      return null;
+    }
+  }
+  
+  public Model getModel(final ContainerNode node) {
+    EObject _eContainer = node.eContainer();
+    return this.getModel(_eContainer);
+  }
+  
+  public Model getModel(final EObject node) {
+    if ((node instanceof Model)) {
+      return ((Model) node);
+    } else {
+      EObject _eContainer = node.eContainer();
+      return this.getModel(_eContainer);
+    }
   }
   
   public IScope scope_Query_method(final Query context, final EReference reference) {
@@ -67,9 +96,11 @@ public class ApplicationLangScopeProvider extends AbstractDeclarativeScopeProvid
     boolean _notEquals = (!Objects.equal(_specialization, null));
     if (_notEquals) {
       LocationQuery _specialization_1 = query.getSpecialization();
-      _xifexpression = this.leaveNode(_specialization_1);
+      Node _leaveNode = this.leaveNode(_specialization_1);
+      _xifexpression = _leaveNode;
     } else {
-      _xifexpression = query.getNode();
+      Node _node = query.getNode();
+      _xifexpression = _node;
     }
     return _xifexpression;
   }
@@ -86,7 +117,8 @@ public class ApplicationLangScopeProvider extends AbstractDeclarativeScopeProvid
   public IScope scope_RegisteredPackage_ePackage(final RegisteredPackage context, final EReference reference) {
     Resource _eResource = context.eResource();
     ResourceSet _resourceSet = _eResource.getResourceSet();
-    final IScope result = new EPackageScope(_resourceSet);
+    EPackageScope _ePackageScope = new EPackageScope(_resourceSet);
+    final IScope result = _ePackageScope;
     return result;
   }
 }

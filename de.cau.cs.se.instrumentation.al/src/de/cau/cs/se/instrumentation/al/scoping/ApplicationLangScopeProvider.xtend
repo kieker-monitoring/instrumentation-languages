@@ -13,6 +13,8 @@ import org.eclipse.xtext.scoping.Scopes
 import de.cau.cs.se.instrumentation.al.applicationLang.RegisteredPackage
 import de.cau.cs.se.instrumentation.al.modelhandling.ForeignModelTypeProviderFactory
 import com.google.inject.Inject
+import de.cau.cs.se.instrumentation.al.applicationLang.Model
+import org.eclipse.emf.ecore.EObject
 
 /**
  * This class contains custom scoping description.
@@ -26,8 +28,24 @@ class ApplicationLangScopeProvider extends org.eclipse.xtext.scoping.impl.Abstra
 	@Inject extension ForeignModelTypeProviderFactory typeProviderFactory
 	
 	def IScope scope_ContainerNode_container(ContainerNode context, EReference reference) {
-		val IScope result = new ContainerParentScope(typeProviderFactory,context)
-		return result
+		if (context.eContainer.eContainer instanceof LocationQuery) {
+			val typeProvider = typeProviderFactory.getTypeProvider(context.eResource.resourceSet, null)
+			val IScope result = new ContainerParentScope(typeProvider.allTypes, context)   
+			return result
+		} else {
+			return null // null required here to cascade to default resolver
+		}
+	}
+	
+	def Model getModel(ContainerNode node) {
+		return node.eContainer.model
+	}
+	
+	def Model getModel(EObject node) {
+		if (node instanceof Model)
+			return node as Model
+		else
+			return node.eContainer.model
 	}
 
 	def IScope scope_Query_method(Query context, EReference reference) {
