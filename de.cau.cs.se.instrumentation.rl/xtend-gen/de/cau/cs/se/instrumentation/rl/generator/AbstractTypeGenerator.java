@@ -40,10 +40,12 @@ public abstract class AbstractTypeGenerator {
     final Function2<Integer,Property,Integer> _function = new Function2<Integer,Property,Integer>() {
       public Integer apply(final Integer result, final Property property) {
         int _size = AbstractTypeGenerator.this.getSize(property);
-        return Integer.valueOf(((result).intValue() + _size));
+        int _plus = ((result).intValue() + _size);
+        return Integer.valueOf(_plus);
       }
     };
-    return (int) IterableExtensions.<Property, Integer>fold(list, Integer.valueOf(0), _function);
+    Integer _fold = IterableExtensions.<Property, Integer>fold(list, Integer.valueOf(0), _function);
+    return (_fold).intValue();
   }
   
   /**
@@ -75,57 +77,58 @@ public abstract class AbstractTypeGenerator {
       Classifier _findType = this.findType(property);
       EClassifier _class_ = _findType.getClass_();
       String _name = _class_.getName();
+      final String _switchValue = _name;
       boolean _matched = false;
       if (!_matched) {
-        if (Objects.equal(_name,"string")) {
+        if (Objects.equal(_switchValue,"string")) {
           _matched=true;
           _switchResult = 4;
         }
       }
       if (!_matched) {
-        if (Objects.equal(_name,"byte")) {
+        if (Objects.equal(_switchValue,"byte")) {
           _matched=true;
           _switchResult = 1;
         }
       }
       if (!_matched) {
-        if (Objects.equal(_name,"short")) {
+        if (Objects.equal(_switchValue,"short")) {
           _matched=true;
           _switchResult = 2;
         }
       }
       if (!_matched) {
-        if (Objects.equal(_name,"int")) {
+        if (Objects.equal(_switchValue,"int")) {
           _matched=true;
           _switchResult = 4;
         }
       }
       if (!_matched) {
-        if (Objects.equal(_name,"long")) {
+        if (Objects.equal(_switchValue,"long")) {
           _matched=true;
           _switchResult = 8;
         }
       }
       if (!_matched) {
-        if (Objects.equal(_name,"float")) {
+        if (Objects.equal(_switchValue,"float")) {
           _matched=true;
           _switchResult = 4;
         }
       }
       if (!_matched) {
-        if (Objects.equal(_name,"double")) {
+        if (Objects.equal(_switchValue,"double")) {
           _matched=true;
           _switchResult = 8;
         }
       }
       if (!_matched) {
-        if (Objects.equal(_name,"char")) {
+        if (Objects.equal(_switchValue,"char")) {
           _matched=true;
           _switchResult = 2;
         }
       }
       if (!_matched) {
-        if (Objects.equal(_name,"boolean")) {
+        if (Objects.equal(_switchValue,"boolean")) {
           _matched=true;
           _switchResult = 1;
         }
@@ -135,7 +138,8 @@ public abstract class AbstractTypeGenerator {
         EClassifier _class__1 = _findType_1.getClass_();
         String _name_1 = _class__1.getName();
         String _plus = (_name_1 + "is not a valid type name");
-        throw new InternalErrorException(_plus);
+        InternalErrorException _internalErrorException = new InternalErrorException(_plus);
+        throw _internalErrorException;
       }
       return _switchResult;
     } catch (Throwable _e) {

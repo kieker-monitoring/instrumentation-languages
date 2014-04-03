@@ -42,24 +42,16 @@ public class ContainerParentScope implements IScope {
   }
   
   public IEObjectDescription getSingleElement(final QualifiedName name) {
-    String _plus = ("TODO: auto-generated method stub getSingleElement name " + name);
-    System.out.println(_plus);
     EObject _eContainer = this.node.eContainer();
     LocationQuery parent = ((LocationQuery) _eContainer);
-    Container container = null;
     Node _node = parent.getNode();
     boolean _equals = Objects.equal(_node, this.node);
     if (_equals) {
       EObject _eContainer_1 = parent.eContainer();
       parent = ((LocationQuery) _eContainer_1);
-      Node _node_1 = parent.getNode();
-      Container _container = ((ContainerNode) _node_1).getContainer();
-      container = _container;
-    } else {
-      Node _node_2 = parent.getNode();
-      Container _container_1 = ((ContainerNode) _node_2).getContainer();
-      container = _container_1;
     }
+    Node _node_1 = parent.getNode();
+    final Container container = ((ContainerNode) _node_1).getContainer();
     EList<Container> _contents = container.getContents();
     final Function1<Container,Boolean> _function = new Function1<Container,Boolean>() {
       public Boolean apply(final Container it) {

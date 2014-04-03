@@ -7,18 +7,22 @@ register repository "platform:/resource/KiekerMonitoring/src/pcm.ecore#repositor
 register seff "platform:/resource/KiekerMonitoring/src/pcm.ecore#seff"
 register stoex "platform:/resource/KiekerMonitoring/src/stoex.ecore"
 
+import kieker.common.record.flow.trace.operation.AbstractOperationEvent
+import kieker.common.record.flow.AbstractEvent
+
 use repository,seff,stoex on cocome "KiekerMonitoring/src/cocome/cocome.repository"
- 
+
 aspect TradingSystem {
-	before kieker.common.record.flow.AbstractEvent()
+	before AbstractEvent()
 }
 
 aspect TradingSystem.Inventory {
-	before kieker.common.record.flow.AbstractEvent()
+	before AbstractEvent()
 }
  
 //@communication SOAP
-aspect TradingSystem.Inventory.Data.Enterprise.EnterpriseQueryIf * queryEnterpriseById (Parameter enterpirseId, Parameter pctx) {
+aspect TradingSystem.Inventory.Data.Enterprise.EnterpriseQueryIf 
+	* * queryEnterpriseById (* INT enterpriseId, * aName pctx) {
 	before AbstractOperationEvent (0,1,1,1) 
 }
 

@@ -16,6 +16,9 @@
 package de.cau.cs.se.instrumentation.al.modelhandling;
 
 import de.cau.cs.se.instrumantation.model.structure.NamedElement;
+import de.cau.cs.se.instrumantation.model.structure.Type;
+
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * The type provider interface. It is used by the scoping and plays a role in the content assist.
@@ -52,5 +55,7 @@ public interface IForeignModelTypeProvider {
 	 * @return the used {@link TypeURIHelper}
 	 */
 	ForeignModelTypeURIHelper getTypeUriHelper();
+
+	Iterable<Type> getAllDataTyes();
 
 }

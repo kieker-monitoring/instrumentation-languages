@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  *
  * @see de.cau.cs.se.instrumantation.model.structure.StructurePackage#getContainment()
- * @model
+ * @model interface="true" abstract="true"
  * @generated
  */
 public interface Containment extends EObject {

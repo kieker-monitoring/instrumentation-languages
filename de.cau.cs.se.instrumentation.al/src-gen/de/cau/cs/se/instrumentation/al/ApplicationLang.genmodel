@@ -29,8 +29,12 @@
     <genClasses ecoreClass="ApplicationLang.ecore#//Model">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ApplicationLang.ecore#//Model/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplicationLang.ecore#//Model/metamodels"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplicationLang.ecore#//Model/imports"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplicationLang.ecore#//Model/sources"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ApplicationLang.ecore#//Model/aspects"/>
+    </genClasses>
+    <genClasses ecoreClass="ApplicationLang.ecore#//Import">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ApplicationLang.ecore#//Import/importedNamespace"/>
     </genClasses>
     <genClasses ecoreClass="ApplicationLang.ecore#//RegisteredPackage">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ApplicationLang.ecore#//RegisteredPackage/name"/>

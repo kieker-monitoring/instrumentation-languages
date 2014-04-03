@@ -39,6 +39,7 @@ public class ApplicationLangParser extends AbstractContentAssistParser {
 				{
 					put(grammarAccess.getQueryAccess().getAlternatives_1_0(), "rule__Query__Alternatives_1_0");
 					put(grammarAccess.getQueryAccess().getAlternatives_1_1(), "rule__Query__Alternatives_1_1");
+					put(grammarAccess.getParameterPatternAccess().getAlternatives_0(), "rule__ParameterPattern__Alternatives_0");
 					put(grammarAccess.getNodeAccess().getAlternatives_0(), "rule__Node__Alternatives_0");
 					put(grammarAccess.getValueAccess().getAlternatives(), "rule__Value__Alternatives");
 					put(grammarAccess.getParameterAccess().getAlternatives(), "rule__Parameter__Alternatives");
@@ -46,6 +47,7 @@ public class ApplicationLangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getOperatorAccess().getAlternatives(), "rule__Operator__Alternatives");
 					put(grammarAccess.getInsertionPointAccess().getAlternatives(), "rule__InsertionPoint__Alternatives");
 					put(grammarAccess.getModelAccess().getGroup(), "rule__Model__Group__0");
+					put(grammarAccess.getImportAccess().getGroup(), "rule__Import__Group__0");
 					put(grammarAccess.getRegisteredPackageAccess().getGroup(), "rule__RegisteredPackage__Group__0");
 					put(grammarAccess.getApplicationModelAccess().getGroup(), "rule__ApplicationModel__Group__0");
 					put(grammarAccess.getApplicationModelAccess().getGroup_2(), "rule__ApplicationModel__Group_2__0");
@@ -74,8 +76,10 @@ public class ApplicationLangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getCollectorAccess().getGroup_3_1(), "rule__Collector__Group_3_1__0");
 					put(grammarAccess.getModelAccess().getNameAssignment_1(), "rule__Model__NameAssignment_1");
 					put(grammarAccess.getModelAccess().getMetamodelsAssignment_2(), "rule__Model__MetamodelsAssignment_2");
-					put(grammarAccess.getModelAccess().getSourcesAssignment_3(), "rule__Model__SourcesAssignment_3");
-					put(grammarAccess.getModelAccess().getAspectsAssignment_4(), "rule__Model__AspectsAssignment_4");
+					put(grammarAccess.getModelAccess().getImportsAssignment_3(), "rule__Model__ImportsAssignment_3");
+					put(grammarAccess.getModelAccess().getSourcesAssignment_4(), "rule__Model__SourcesAssignment_4");
+					put(grammarAccess.getModelAccess().getAspectsAssignment_5(), "rule__Model__AspectsAssignment_5");
+					put(grammarAccess.getImportAccess().getImportedNamespaceAssignment_1(), "rule__Import__ImportedNamespaceAssignment_1");
 					put(grammarAccess.getRegisteredPackageAccess().getNameAssignment_1(), "rule__RegisteredPackage__NameAssignment_1");
 					put(grammarAccess.getRegisteredPackageAccess().getEPackageAssignment_2(), "rule__RegisteredPackage__EPackageAssignment_2");
 					put(grammarAccess.getApplicationModelAccess().getUsePackagesAssignment_1(), "rule__ApplicationModel__UsePackagesAssignment_1");
@@ -90,7 +94,7 @@ public class ApplicationLangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getQueryAccess().getMethodAssignment_1_2(), "rule__Query__MethodAssignment_1_2");
 					put(grammarAccess.getQueryAccess().getParameterAssignment_1_4(), "rule__Query__ParameterAssignment_1_4");
 					put(grammarAccess.getQueryAccess().getParameterAssignment_1_5_1(), "rule__Query__ParameterAssignment_1_5_1");
-					put(grammarAccess.getParameterPatternAccess().getModifierAssignment_0(), "rule__ParameterPattern__ModifierAssignment_0");
+					put(grammarAccess.getParameterPatternAccess().getModifierAssignment_0_0(), "rule__ParameterPattern__ModifierAssignment_0_0");
 					put(grammarAccess.getParameterPatternAccess().getTypeAssignment_1(), "rule__ParameterPattern__TypeAssignment_1");
 					put(grammarAccess.getParameterPatternAccess().getParameterAssignment_2(), "rule__ParameterPattern__ParameterAssignment_2");
 					put(grammarAccess.getLocationQueryAccess().getNodeAssignment_0(), "rule__LocationQuery__NodeAssignment_0");

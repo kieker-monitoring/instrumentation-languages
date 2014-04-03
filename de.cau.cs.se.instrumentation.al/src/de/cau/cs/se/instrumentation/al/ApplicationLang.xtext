@@ -12,9 +12,14 @@ import "http://modelstructure.se.cs.cau.de/structure" as structure
 
 Model:
 	'package' name = QualifiedName
-	(metamodels+= RegisteredPackage)*
+	(metamodels += RegisteredPackage)*
+	(imports += Import)*
 	(sources += ApplicationModel)*
 	(aspects += Aspect)*
+;
+
+Import:
+	'import' importedNamespace = QualifiedNameWithWildcard
 ;
 
 RegisteredPackage:
@@ -44,7 +49,8 @@ Aspect:
 
 Query:
 	location=LocationQuery 
-	((modifier=[structure::MethodModifier|ID]|'*')
+	(
+		(modifier=[structure::MethodModifier|ID]|'*')
 		(returnType=[structure::Type|ID]|'*') 
 		method=[structure::Method|ID]
 		'(' parameter+=ParameterPattern (',' parameter+=ParameterPattern)* ')'
@@ -52,7 +58,7 @@ Query:
 ;
 
 ParameterPattern:
-	modifier=[structure::ParameterModifier|ID]
+	(modifier=[structure::ParameterModifier|ID]|'*')
 	type=[structure::Type|ID]
 	parameter=[structure::Parameter|ID]
 ;

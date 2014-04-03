@@ -66,6 +66,7 @@ public class ApplicationLangFactoryImpl extends EFactoryImpl implements Applicat
     switch (eClass.getClassifierID())
     {
       case ApplicationLangPackage.MODEL: return createModel();
+      case ApplicationLangPackage.IMPORT: return createImport();
       case ApplicationLangPackage.REGISTERED_PACKAGE: return createRegisteredPackage();
       case ApplicationLangPackage.APPLICATION_MODEL: return createApplicationModel();
       case ApplicationLangPackage.ASPECT: return createAspect();
@@ -143,6 +144,17 @@ public class ApplicationLangFactoryImpl extends EFactoryImpl implements Applicat
   {
     ModelImpl model = new ModelImpl();
     return model;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Import createImport()
+  {
+    ImportImpl import_ = new ImportImpl();
+    return import_;
   }
 
   /**

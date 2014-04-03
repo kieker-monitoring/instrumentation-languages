@@ -5,6 +5,7 @@ package de.cau.cs.se.instrumantation.model.structure.impl;
 import de.cau.cs.se.instrumantation.model.structure.Parameter;
 import de.cau.cs.se.instrumantation.model.structure.ParameterModifier;
 import de.cau.cs.se.instrumantation.model.structure.StructurePackage;
+import de.cau.cs.se.instrumantation.model.structure.TypeReference;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -18,6 +19,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumantation.model.structure.impl.ParameterImpl#getModifier <em>Modifier</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumantation.model.structure.impl.ParameterImpl#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  *
@@ -33,6 +35,16 @@ public class ParameterImpl extends NamedElementImpl implements Parameter {
 	 * @ordered
 	 */
 	protected ParameterModifier modifier;
+
+	/**
+	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getType()
+	 * @generated
+	 * @ordered
+	 */
+	protected TypeReference type;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -96,12 +108,53 @@ public class ParameterImpl extends NamedElementImpl implements Parameter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public TypeReference getType() {
+		if (type != null && type.eIsProxy()) {
+			InternalEObject oldType = (InternalEObject)type;
+			type = (TypeReference)eResolveProxy(oldType);
+			if (type != oldType) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, StructurePackage.PARAMETER__TYPE, oldType, type));
+			}
+		}
+		return type;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TypeReference basicGetType() {
+		return type;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setType(TypeReference newType) {
+		TypeReference oldType = type;
+		type = newType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.PARAMETER__TYPE, oldType, type));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case StructurePackage.PARAMETER__MODIFIER:
 				if (resolve) return getModifier();
 				return basicGetModifier();
+			case StructurePackage.PARAMETER__TYPE:
+				if (resolve) return getType();
+				return basicGetType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -116,6 +169,9 @@ public class ParameterImpl extends NamedElementImpl implements Parameter {
 		switch (featureID) {
 			case StructurePackage.PARAMETER__MODIFIER:
 				setModifier((ParameterModifier)newValue);
+				return;
+			case StructurePackage.PARAMETER__TYPE:
+				setType((TypeReference)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -132,6 +188,9 @@ public class ParameterImpl extends NamedElementImpl implements Parameter {
 			case StructurePackage.PARAMETER__MODIFIER:
 				setModifier((ParameterModifier)null);
 				return;
+			case StructurePackage.PARAMETER__TYPE:
+				setType((TypeReference)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -146,6 +205,8 @@ public class ParameterImpl extends NamedElementImpl implements Parameter {
 		switch (featureID) {
 			case StructurePackage.PARAMETER__MODIFIER:
 				return modifier != null;
+			case StructurePackage.PARAMETER__TYPE:
+				return type != null;
 		}
 		return super.eIsSet(featureID);
 	}

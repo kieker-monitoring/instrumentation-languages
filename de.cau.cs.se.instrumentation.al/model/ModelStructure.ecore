@@ -27,6 +27,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Parameter" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="modifier" lowerBound="1"
         eType="#//ParameterModifier"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//TypeReference"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Model" eSuperTypes="#//Containment">
     <eStructuralFeatures xsi:type="ecore:EReference" name="types" upperBound="-1"

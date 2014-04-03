@@ -33,9 +33,11 @@ public class PropertyEvaluation {
     boolean _notEquals = (!Objects.equal(_parent, null));
     if (_notEquals) {
       RecordType _parent_1 = type.getParent();
-      _xifexpression = PropertyEvaluation.collectAllDataProperties(_parent_1);
+      Collection<Property> _collectAllDataProperties = PropertyEvaluation.collectAllDataProperties(_parent_1);
+      _xifexpression = _collectAllDataProperties;
     } else {
-      _xifexpression = new ArrayList<Property>();
+      ArrayList<Property> _arrayList = new ArrayList<Property>();
+      _xifexpression = _arrayList;
     }
     final Collection<Property> result = _xifexpression;
     EList<PartialRecordType> _parents = type.getParents();
@@ -54,7 +56,8 @@ public class PropertyEvaluation {
     final Function1<Property,Boolean> _function_1 = new Function1<Property,Boolean>() {
       public Boolean apply(final Property property) {
         Property _referTo = property.getReferTo();
-        return Boolean.valueOf(Objects.equal(_referTo, null));
+        boolean _equals = Objects.equal(_referTo, null);
+        return Boolean.valueOf(_equals);
       }
     };
     Iterable<Property> _filter = IterableExtensions.<Property>filter(_properties, _function_1);
@@ -71,7 +74,8 @@ public class PropertyEvaluation {
    * 		a complete list of all properties in a record
    */
   protected static Collection<Property> _collectAllDataProperties(final PartialRecordType type) {
-    final Collection<Property> result = new ArrayList<Property>();
+    ArrayList<Property> _arrayList = new ArrayList<Property>();
+    final Collection<Property> result = _arrayList;
     EList<PartialRecordType> _parents = type.getParents();
     boolean _notEquals = (!Objects.equal(_parents, null));
     if (_notEquals) {
@@ -88,7 +92,8 @@ public class PropertyEvaluation {
     final Function1<Property,Boolean> _function_1 = new Function1<Property,Boolean>() {
       public Boolean apply(final Property property) {
         Property _referTo = property.getReferTo();
-        return Boolean.valueOf(Objects.equal(_referTo, null));
+        boolean _equals = Objects.equal(_referTo, null);
+        return Boolean.valueOf(_equals);
       }
     };
     Iterable<Property> _filter = IterableExtensions.<Property>filter(_properties, _function_1);
@@ -110,9 +115,11 @@ public class PropertyEvaluation {
     boolean _notEquals = (!Objects.equal(_parent, null));
     if (_notEquals) {
       RecordType _parent_1 = type.getParent();
-      _xifexpression = PropertyEvaluation.collectAllDataProperties(_parent_1);
+      Collection<Property> _collectAllDataProperties = PropertyEvaluation.collectAllDataProperties(_parent_1);
+      _xifexpression = _collectAllDataProperties;
     } else {
-      _xifexpression = new ArrayList<Property>();
+      ArrayList<Property> _arrayList = new ArrayList<Property>();
+      _xifexpression = _arrayList;
     }
     final Collection<Property> result = _xifexpression;
     EList<PartialRecordType> _parents = type.getParents();
@@ -141,7 +148,8 @@ public class PropertyEvaluation {
    * 		a complete list of all properties in a record
    */
   protected static Collection<Property> _collectAllProperties(final PartialRecordType type) {
-    final Collection<Property> result = new ArrayList<Property>();
+    ArrayList<Property> _arrayList = new ArrayList<Property>();
+    final Collection<Property> result = _arrayList;
     EList<PartialRecordType> _parents = type.getParents();
     boolean _notEquals = (!Objects.equal(_parents, null));
     if (_notEquals) {
@@ -171,7 +179,8 @@ public class PropertyEvaluation {
     EList<PartialRecordType> _parents = type.getParents();
     boolean _notEquals = (!Objects.equal(_parents, null));
     if (_notEquals) {
-      final Collection<Property> result = new ArrayList<Property>();
+      ArrayList<Property> _arrayList = new ArrayList<Property>();
+      final Collection<Property> result = _arrayList;
       EList<PartialRecordType> _parents_1 = type.getParents();
       final Procedure1<PartialRecordType> _function = new Procedure1<PartialRecordType>() {
         public void apply(final PartialRecordType iface) {
@@ -182,7 +191,8 @@ public class PropertyEvaluation {
       IterableExtensions.<PartialRecordType>forEach(_parents_1, _function);
       return result;
     } else {
-      return new ArrayList<Property>();
+      ArrayList<Property> _arrayList_1 = new ArrayList<Property>();
+      return _arrayList_1;
     }
   }
   
@@ -196,7 +206,8 @@ public class PropertyEvaluation {
    * 		a complete list of all properties in a record
    */
   protected static Collection<Property> _collectAllTemplateProperties(final PartialRecordType type) {
-    final EList<Property> result = new BasicEList<Property>();
+    BasicEList<Property> _basicEList = new BasicEList<Property>();
+    final EList<Property> result = _basicEList;
     EList<PartialRecordType> _parents = type.getParents();
     boolean _notEquals = (!Objects.equal(_parents, null));
     if (_notEquals) {
@@ -255,7 +266,7 @@ public class PropertyEvaluation {
         EClassifier _class__1 = _type_1.getClass_();
         String _name_3 = _class__1.getName();
         boolean _equals_1 = _name_2.equals(_name_3);
-        _and = _equals_1;
+        _and = (_equals && _equals_1);
       }
       if (_and) {
         return true;

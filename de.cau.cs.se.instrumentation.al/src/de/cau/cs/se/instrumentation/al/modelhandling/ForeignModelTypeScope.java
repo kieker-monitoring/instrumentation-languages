@@ -127,7 +127,7 @@ public class ForeignModelTypeScope extends AbstractScope {
 
 	protected InternalEObject createProxy(final String fullyQualifiedName) {
 		final URI uri = this.typeProvider.getTypeUriHelper().getFullURIForClass(fullyQualifiedName);
-		final InternalEObject proxy = (InternalEObject) StructureFactory.eINSTANCE.createContainment();
+		final InternalEObject proxy = (InternalEObject) StructureFactory.eINSTANCE.createContainer();
 		proxy.eSetProxyURI(uri);
 		return proxy;
 	}

@@ -8,6 +8,7 @@ import de.cau.cs.se.instrumentation.al.applicationLang.Aspect;
 import de.cau.cs.se.instrumentation.al.applicationLang.Collector;
 import de.cau.cs.se.instrumentation.al.applicationLang.ContainerNode;
 import de.cau.cs.se.instrumentation.al.applicationLang.FloatValue;
+import de.cau.cs.se.instrumentation.al.applicationLang.Import;
 import de.cau.cs.se.instrumentation.al.applicationLang.IntValue;
 import de.cau.cs.se.instrumentation.al.applicationLang.LocationQuery;
 import de.cau.cs.se.instrumentation.al.applicationLang.Model;
@@ -75,6 +76,12 @@ public class ApplicationLangSemanticSequencer extends AbstractDelegatingSemantic
 				if(context == grammarAccess.getFloatValueRule() ||
 				   context == grammarAccess.getValueRule()) {
 					sequence_FloatValue(context, (FloatValue) semanticObject); 
+					return; 
+				}
+				else break;
+			case ApplicationLangPackage.IMPORT:
+				if(context == grammarAccess.getImportRule()) {
+					sequence_Import(context, (Import) semanticObject); 
 					return; 
 				}
 				else break;
@@ -242,6 +249,22 @@ public class ApplicationLangSemanticSequencer extends AbstractDelegatingSemantic
 	
 	/**
 	 * Constraint:
+	 *     importedNamespace=QualifiedNameWithWildcard
+	 */
+	protected void sequence_Import(EObject context, Import semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, ApplicationLangPackage.Literals.IMPORT__IMPORTED_NAMESPACE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ApplicationLangPackage.Literals.IMPORT__IMPORTED_NAMESPACE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getImportAccess().getImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_0(), semanticObject.getImportedNamespace());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     value=INT
 	 */
 	protected void sequence_IntValue(EObject context, IntValue semanticObject) {
@@ -267,7 +290,7 @@ public class ApplicationLangSemanticSequencer extends AbstractDelegatingSemantic
 	
 	/**
 	 * Constraint:
-	 *     (name=QualifiedName metamodels+=RegisteredPackage* sources+=ApplicationModel* aspects+=Aspect*)
+	 *     (name=QualifiedName metamodels+=RegisteredPackage* imports+=Import* sources+=ApplicationModel* aspects+=Aspect*)
 	 */
 	protected void sequence_Model(EObject context, Model semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -325,23 +348,10 @@ public class ApplicationLangSemanticSequencer extends AbstractDelegatingSemantic
 	
 	/**
 	 * Constraint:
-	 *     (modifier=[ParameterModifier|ID] type=[Type|ID] parameter=[Parameter|ID])
+	 *     (modifier=[ParameterModifier|ID]? type=[Type|ID] parameter=[Parameter|ID])
 	 */
 	protected void sequence_ParameterPattern(EObject context, ParameterPattern semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ApplicationLangPackage.Literals.PARAMETER_PATTERN__MODIFIER) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ApplicationLangPackage.Literals.PARAMETER_PATTERN__MODIFIER));
-			if(transientValues.isValueTransient(semanticObject, ApplicationLangPackage.Literals.PARAMETER_PATTERN__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ApplicationLangPackage.Literals.PARAMETER_PATTERN__TYPE));
-			if(transientValues.isValueTransient(semanticObject, ApplicationLangPackage.Literals.PARAMETER_PATTERN__PARAMETER) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ApplicationLangPackage.Literals.PARAMETER_PATTERN__PARAMETER));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getParameterPatternAccess().getModifierParameterModifierIDTerminalRuleCall_0_0_1(), semanticObject.getModifier());
-		feeder.accept(grammarAccess.getParameterPatternAccess().getTypeTypeIDTerminalRuleCall_1_0_1(), semanticObject.getType());
-		feeder.accept(grammarAccess.getParameterPatternAccess().getParameterParameterIDTerminalRuleCall_2_0_1(), semanticObject.getParameter());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

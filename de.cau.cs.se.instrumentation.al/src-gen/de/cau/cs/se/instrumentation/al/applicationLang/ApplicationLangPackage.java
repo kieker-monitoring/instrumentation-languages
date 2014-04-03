@@ -86,13 +86,22 @@ public interface ApplicationLangPackage extends EPackage
   int MODEL__METAMODELS = 1;
 
   /**
+   * The feature id for the '<em><b>Imports</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODEL__IMPORTS = 2;
+
+  /**
    * The feature id for the '<em><b>Sources</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL__SOURCES = 2;
+  int MODEL__SOURCES = 3;
 
   /**
    * The feature id for the '<em><b>Aspects</b></em>' containment reference list.
@@ -101,7 +110,7 @@ public interface ApplicationLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODEL__ASPECTS = 3;
+  int MODEL__ASPECTS = 4;
 
   /**
    * The number of structural features of the '<em>Model</em>' class.
@@ -110,7 +119,35 @@ public interface ApplicationLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODEL_FEATURE_COUNT = 4;
+  int MODEL_FEATURE_COUNT = 5;
+
+  /**
+   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.applicationLang.impl.ImportImpl <em>Import</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ImportImpl
+   * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationLangPackageImpl#getImport()
+   * @generated
+   */
+  int IMPORT = 1;
+
+  /**
+   * The feature id for the '<em><b>Imported Namespace</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IMPORT__IMPORTED_NAMESPACE = 0;
+
+  /**
+   * The number of structural features of the '<em>Import</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IMPORT_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.applicationLang.impl.RegisteredPackageImpl <em>Registered Package</em>}' class.
@@ -120,7 +157,7 @@ public interface ApplicationLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationLangPackageImpl#getRegisteredPackage()
    * @generated
    */
-  int REGISTERED_PACKAGE = 1;
+  int REGISTERED_PACKAGE = 2;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -157,7 +194,7 @@ public interface ApplicationLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationLangPackageImpl#getApplicationModel()
    * @generated
    */
-  int APPLICATION_MODEL = 2;
+  int APPLICATION_MODEL = 3;
 
   /**
    * The feature id for the '<em><b>Use Packages</b></em>' reference list.
@@ -203,7 +240,7 @@ public interface ApplicationLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationLangPackageImpl#getAspect()
    * @generated
    */
-  int ASPECT = 3;
+  int ASPECT = 4;
 
   /**
    * The feature id for the '<em><b>Query</b></em>' containment reference.
@@ -240,7 +277,7 @@ public interface ApplicationLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationLangPackageImpl#getQuery()
    * @generated
    */
-  int QUERY = 4;
+  int QUERY = 5;
 
   /**
    * The feature id for the '<em><b>Location</b></em>' containment reference.
@@ -304,7 +341,7 @@ public interface ApplicationLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationLangPackageImpl#getParameterPattern()
    * @generated
    */
-  int PARAMETER_PATTERN = 5;
+  int PARAMETER_PATTERN = 6;
 
   /**
    * The feature id for the '<em><b>Modifier</b></em>' reference.
@@ -350,7 +387,7 @@ public interface ApplicationLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationLangPackageImpl#getLocationQuery()
    * @generated
    */
-  int LOCATION_QUERY = 6;
+  int LOCATION_QUERY = 7;
 
   /**
    * The feature id for the '<em><b>Node</b></em>' containment reference.
@@ -387,7 +424,7 @@ public interface ApplicationLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationLangPackageImpl#getNode()
    * @generated
    */
-  int NODE = 7;
+  int NODE = 8;
 
   /**
    * The feature id for the '<em><b>Parameter</b></em>' containment reference.
@@ -415,7 +452,7 @@ public interface ApplicationLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationLangPackageImpl#getParamQuery()
    * @generated
    */
-  int PARAM_QUERY = 8;
+  int PARAM_QUERY = 9;
 
   /**
    * The feature id for the '<em><b>Queries</b></em>' containment reference list.
@@ -443,7 +480,7 @@ public interface ApplicationLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationLangPackageImpl#getParamCompare()
    * @generated
    */
-  int PARAM_COMPARE = 9;
+  int PARAM_COMPARE = 10;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -489,7 +526,7 @@ public interface ApplicationLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationLangPackageImpl#getValue()
    * @generated
    */
-  int VALUE = 10;
+  int VALUE = 11;
 
   /**
    * The number of structural features of the '<em>Value</em>' class.
@@ -508,7 +545,7 @@ public interface ApplicationLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationLangPackageImpl#getFloatValue()
    * @generated
    */
-  int FLOAT_VALUE = 11;
+  int FLOAT_VALUE = 12;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -536,7 +573,7 @@ public interface ApplicationLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationLangPackageImpl#getIntValue()
    * @generated
    */
-  int INT_VALUE = 12;
+  int INT_VALUE = 13;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -564,7 +601,7 @@ public interface ApplicationLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationLangPackageImpl#getStringValue()
    * @generated
    */
-  int STRING_VALUE = 13;
+  int STRING_VALUE = 14;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -592,7 +629,7 @@ public interface ApplicationLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationLangPackageImpl#getReferenceValue()
    * @generated
    */
-  int REFERENCE_VALUE = 14;
+  int REFERENCE_VALUE = 15;
 
   /**
    * The feature id for the '<em><b>Query</b></em>' containment reference.
@@ -629,7 +666,7 @@ public interface ApplicationLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationLangPackageImpl#getParameter()
    * @generated
    */
-  int PARAMETER = 15;
+  int PARAMETER = 16;
 
   /**
    * The number of structural features of the '<em>Parameter</em>' class.
@@ -648,7 +685,7 @@ public interface ApplicationLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationLangPackageImpl#getRuntimeProperty()
    * @generated
    */
-  int RUNTIME_PROPERTY = 16;
+  int RUNTIME_PROPERTY = 17;
 
   /**
    * The feature id for the '<em><b>Reference</b></em>' attribute.
@@ -676,7 +713,7 @@ public interface ApplicationLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationLangPackageImpl#getReflectionProperty()
    * @generated
    */
-  int REFLECTION_PROPERTY = 17;
+  int REFLECTION_PROPERTY = 18;
 
   /**
    * The feature id for the '<em><b>Function</b></em>' attribute.
@@ -704,7 +741,7 @@ public interface ApplicationLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationLangPackageImpl#getContainerNode()
    * @generated
    */
-  int CONTAINER_NODE = 18;
+  int CONTAINER_NODE = 19;
 
   /**
    * The feature id for the '<em><b>Parameter</b></em>' containment reference.
@@ -741,7 +778,7 @@ public interface ApplicationLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationLangPackageImpl#getWildcardNode()
    * @generated
    */
-  int WILDCARD_NODE = 19;
+  int WILDCARD_NODE = 20;
 
   /**
    * The feature id for the '<em><b>Parameter</b></em>' containment reference.
@@ -769,7 +806,7 @@ public interface ApplicationLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationLangPackageImpl#getSubPathNode()
    * @generated
    */
-  int SUB_PATH_NODE = 20;
+  int SUB_PATH_NODE = 21;
 
   /**
    * The feature id for the '<em><b>Parameter</b></em>' containment reference.
@@ -797,7 +834,7 @@ public interface ApplicationLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationLangPackageImpl#getCollector()
    * @generated
    */
-  int COLLECTOR = 21;
+  int COLLECTOR = 22;
 
   /**
    * The feature id for the '<em><b>Insertion Point</b></em>' attribute.
@@ -843,7 +880,7 @@ public interface ApplicationLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationLangPackageImpl#getReflectionFunction()
    * @generated
    */
-  int REFLECTION_FUNCTION = 22;
+  int REFLECTION_FUNCTION = 23;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.applicationLang.Operator <em>Operator</em>}' enum.
@@ -853,7 +890,7 @@ public interface ApplicationLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationLangPackageImpl#getOperator()
    * @generated
    */
-  int OPERATOR = 23;
+  int OPERATOR = 24;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.applicationLang.InsertionPoint <em>Insertion Point</em>}' enum.
@@ -863,7 +900,7 @@ public interface ApplicationLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationLangPackageImpl#getInsertionPoint()
    * @generated
    */
-  int INSERTION_POINT = 24;
+  int INSERTION_POINT = 25;
 
 
   /**
@@ -899,6 +936,17 @@ public interface ApplicationLangPackage extends EPackage
   EReference getModel_Metamodels();
 
   /**
+   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.al.applicationLang.Model#getImports <em>Imports</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Imports</em>'.
+   * @see de.cau.cs.se.instrumentation.al.applicationLang.Model#getImports()
+   * @see #getModel()
+   * @generated
+   */
+  EReference getModel_Imports();
+
+  /**
    * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.al.applicationLang.Model#getSources <em>Sources</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -919,6 +967,27 @@ public interface ApplicationLangPackage extends EPackage
    * @generated
    */
   EReference getModel_Aspects();
+
+  /**
+   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.applicationLang.Import <em>Import</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Import</em>'.
+   * @see de.cau.cs.se.instrumentation.al.applicationLang.Import
+   * @generated
+   */
+  EClass getImport();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.applicationLang.Import#getImportedNamespace <em>Imported Namespace</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Imported Namespace</em>'.
+   * @see de.cau.cs.se.instrumentation.al.applicationLang.Import#getImportedNamespace()
+   * @see #getImport()
+   * @generated
+   */
+  EAttribute getImport_ImportedNamespace();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.applicationLang.RegisteredPackage <em>Registered Package</em>}'.
@@ -1573,6 +1642,14 @@ public interface ApplicationLangPackage extends EPackage
     EReference MODEL__METAMODELS = eINSTANCE.getModel_Metamodels();
 
     /**
+     * The meta object literal for the '<em><b>Imports</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MODEL__IMPORTS = eINSTANCE.getModel_Imports();
+
+    /**
      * The meta object literal for the '<em><b>Sources</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1587,6 +1664,24 @@ public interface ApplicationLangPackage extends EPackage
      * @generated
      */
     EReference MODEL__ASPECTS = eINSTANCE.getModel_Aspects();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.applicationLang.impl.ImportImpl <em>Import</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ImportImpl
+     * @see de.cau.cs.se.instrumentation.al.applicationLang.impl.ApplicationLangPackageImpl#getImport()
+     * @generated
+     */
+    EClass IMPORT = eINSTANCE.getImport();
+
+    /**
+     * The meta object literal for the '<em><b>Imported Namespace</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute IMPORT__IMPORTED_NAMESPACE = eINSTANCE.getImport_ImportedNamespace();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.applicationLang.impl.RegisteredPackageImpl <em>Registered Package</em>}' class.

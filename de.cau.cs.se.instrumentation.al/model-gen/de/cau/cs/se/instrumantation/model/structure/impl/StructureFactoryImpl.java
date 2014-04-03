@@ -66,7 +66,6 @@ public class StructureFactoryImpl extends EFactoryImpl implements StructureFacto
 			case StructurePackage.MODEL: return createModel();
 			case StructurePackage.METHOD_MODIFIER: return createMethodModifier();
 			case StructurePackage.CONTAINER_MODIFIER: return createContainerModifier();
-			case StructurePackage.CONTAINMENT: return createContainment();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -170,16 +169,6 @@ public class StructureFactoryImpl extends EFactoryImpl implements StructureFacto
 	public ContainerModifier createContainerModifier() {
 		ContainerModifierImpl containerModifier = new ContainerModifierImpl();
 		return containerModifier;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Containment createContainment() {
-		ContainmentImpl containment = new ContainmentImpl();
-		return containment;
 	}
 
 	/**

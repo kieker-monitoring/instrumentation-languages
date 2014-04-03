@@ -8,9 +8,10 @@
   <genPackages prefix="Structure" basePackage="de.cau.cs.se.instrumantation.model"
       disposableProviderFactory="true" ecorePackage="ModelStructure.ecore#/">
     <genClasses ecoreClass="ModelStructure.ecore#//Type"/>
-    <genClasses ecoreClass="ModelStructure.ecore#//TypeReference"/>
+    <genClasses ecoreClass="ModelStructure.ecore#//TypeReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ModelStructure.ecore#//TypeReference/type"/>
+    </genClasses>
     <genClasses ecoreClass="ModelStructure.ecore#//Container">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ModelStructure.ecore#//Container/contents"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ModelStructure.ecore#//Container/modifier"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ModelStructure.ecore#//Container/methods"/>
     </genClasses>
@@ -20,15 +21,20 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ModelStructure.ecore#//Method/modifier"/>
     </genClasses>
     <genClasses ecoreClass="ModelStructure.ecore#//ParameterModifier"/>
-    <genClasses ecoreClass="ModelStructure.ecore#//NamedElement"/>
+    <genClasses ecoreClass="ModelStructure.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ModelStructure.ecore#//NamedElement/name"/>
+    </genClasses>
     <genClasses ecoreClass="ModelStructure.ecore#//Parameter">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ModelStructure.ecore#//Parameter/modifier"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ModelStructure.ecore#//Parameter/type"/>
     </genClasses>
     <genClasses ecoreClass="ModelStructure.ecore#//Model">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ModelStructure.ecore#//Model/contents"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ModelStructure.ecore#//Model/types"/>
     </genClasses>
     <genClasses ecoreClass="ModelStructure.ecore#//MethodModifier"/>
     <genClasses ecoreClass="ModelStructure.ecore#//ContainerModifier"/>
+    <genClasses image="false" ecoreClass="ModelStructure.ecore#//Containment">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ModelStructure.ecore#//Containment/contents"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

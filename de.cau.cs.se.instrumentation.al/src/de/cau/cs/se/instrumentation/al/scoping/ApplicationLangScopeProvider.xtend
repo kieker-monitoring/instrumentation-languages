@@ -13,8 +13,8 @@ import org.eclipse.xtext.scoping.Scopes
 import de.cau.cs.se.instrumentation.al.applicationLang.RegisteredPackage
 import de.cau.cs.se.instrumentation.al.modelhandling.ForeignModelTypeProviderFactory
 import com.google.inject.Inject
-import de.cau.cs.se.instrumentation.al.applicationLang.Model
-import org.eclipse.emf.ecore.EObject
+import de.cau.cs.se.instrumentation.al.applicationLang.ParameterPattern
+import de.cau.cs.se.instrumantation.model.structure.Method
 
 /**
  * This class contains custom scoping description.
@@ -36,31 +36,42 @@ class ApplicationLangScopeProvider extends org.eclipse.xtext.scoping.impl.Abstra
 			return null // null required here to cascade to default resolver
 		}
 	}
-	
-	def Model getModel(ContainerNode node) {
-		return node.eContainer.model
-	}
-	
-	def Model getModel(EObject node) {
-		if (node instanceof Model)
-			return node as Model
-		else
-			return node.eContainer.model
-	}
 
-	def IScope scope_Query_method(Query context, EReference reference) {
-		System.out.println("scope_Query_method")
+	def IScope scope_Query_returnType(Query context, EReference reference) {
 		val Node node = context.location.leaveNode
-		System.out.println("node " + (node as ContainerNode)?.container.name)
 		if (node instanceof ContainerNode) {
-			return  Scopes.scopeFor((node as ContainerNode).container.methods)
+			val typeProvider = typeProviderFactory.getTypeProvider(context.eResource.resourceSet, null)
+			return Scopes.scopeFor(typeProvider.allDataTyes)
 		} else {
 			return IScope.NULLSCOPE
 		}
 	}
 	
+	def IScope scope_Query_method(Query context, EReference reference) {
+		val Node node = context.location.leaveNode
+		if (node instanceof ContainerNode) {
+			return Scopes.scopeFor((node as ContainerNode).container.methods)
+		} else {
+			return IScope.NULLSCOPE
+		}
+	}
 	
-	def Node leaveNode(LocationQuery query) {
+	def IScope scope_ParameterPattern_modifier(ParameterPattern context, EReference reference) {
+		// TODO modifier lookup
+		return IScope.NULLSCOPE
+	}
+	
+	def IScope scope_ParameterPattern_type(ParameterPattern context, EReference reference) {
+		val typeProvider = typeProviderFactory.getTypeProvider(context.eResource.resourceSet, null)
+		return Scopes.scopeFor(typeProvider.allDataTyes)
+	}
+	
+	def IScope scope_ParameterPattern_parameter(ParameterPattern context, EReference reference) {
+		val Method method = (context.eContainer as Query).method
+		return Scopes.scopeFor(method.parameters)
+	}
+	
+	private def Node leaveNode(LocationQuery query) {
 		if (query.specialization != null)
 			query.specialization.leaveNode
 		else

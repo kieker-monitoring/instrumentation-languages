@@ -361,13 +361,22 @@ public interface StructurePackage extends EPackage {
 	int PARAMETER__MODIFIER = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__TYPE = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Parameter</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int PARAMETER_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Parameter</em>' class.
@@ -409,10 +418,10 @@ public interface StructurePackage extends EPackage {
 	int CONTAINER_MODIFIER = 9;
 
 	/**
-	 * The meta object id for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.ContainmentImpl <em>Containment</em>}' class.
+	 * The meta object id for the '{@link de.cau.cs.se.instrumantation.model.structure.Containment <em>Containment</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.cau.cs.se.instrumantation.model.structure.impl.ContainmentImpl
+	 * @see de.cau.cs.se.instrumantation.model.structure.Containment
 	 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getContainment()
 	 * @generated
 	 */
@@ -695,6 +704,17 @@ public interface StructurePackage extends EPackage {
 	EReference getParameter_Modifier();
 
 	/**
+	 * Returns the meta object for the reference '{@link de.cau.cs.se.instrumantation.model.structure.Parameter#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Type</em>'.
+	 * @see de.cau.cs.se.instrumantation.model.structure.Parameter#getType()
+	 * @see #getParameter()
+	 * @generated
+	 */
+	EReference getParameter_Type();
+
+	/**
 	 * Returns the meta object for class '{@link de.cau.cs.se.instrumantation.model.structure.Model <em>Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -914,6 +934,14 @@ public interface StructurePackage extends EPackage {
 		EReference PARAMETER__MODIFIER = eINSTANCE.getParameter_Modifier();
 
 		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PARAMETER__TYPE = eINSTANCE.getParameter_Type();
+
+		/**
 		 * The meta object literal for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.ModelImpl <em>Model</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -952,10 +980,10 @@ public interface StructurePackage extends EPackage {
 		EClass CONTAINER_MODIFIER = eINSTANCE.getContainerModifier();
 
 		/**
-		 * The meta object literal for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.ContainmentImpl <em>Containment</em>}' class.
+		 * The meta object literal for the '{@link de.cau.cs.se.instrumantation.model.structure.Containment <em>Containment</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.cau.cs.se.instrumantation.model.structure.impl.ContainmentImpl
+		 * @see de.cau.cs.se.instrumantation.model.structure.Containment
 		 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getContainment()
 		 * @generated
 		 */

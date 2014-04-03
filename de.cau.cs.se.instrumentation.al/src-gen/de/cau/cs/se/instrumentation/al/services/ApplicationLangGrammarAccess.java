@@ -26,16 +26,19 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cNameQualifiedNameParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Assignment cMetamodelsAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cMetamodelsRegisteredPackageParserRuleCall_2_0 = (RuleCall)cMetamodelsAssignment_2.eContents().get(0);
-		private final Assignment cSourcesAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cSourcesApplicationModelParserRuleCall_3_0 = (RuleCall)cSourcesAssignment_3.eContents().get(0);
-		private final Assignment cAspectsAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cAspectsAspectParserRuleCall_4_0 = (RuleCall)cAspectsAssignment_4.eContents().get(0);
+		private final Assignment cImportsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cImportsImportParserRuleCall_3_0 = (RuleCall)cImportsAssignment_3.eContents().get(0);
+		private final Assignment cSourcesAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cSourcesApplicationModelParserRuleCall_4_0 = (RuleCall)cSourcesAssignment_4.eContents().get(0);
+		private final Assignment cAspectsAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cAspectsAspectParserRuleCall_5_0 = (RuleCall)cAspectsAssignment_5.eContents().get(0);
 		
 		//Model:
-		//	"package" name=QualifiedName metamodels+=RegisteredPackage* sources+=ApplicationModel* aspects+=Aspect*;
+		//	"package" name=QualifiedName metamodels+=RegisteredPackage* imports+=Import* sources+=ApplicationModel*
+		//	aspects+=Aspect*;
 		public ParserRule getRule() { return rule; }
 
-		//"package" name=QualifiedName metamodels+=RegisteredPackage* sources+=ApplicationModel* aspects+=Aspect*
+		//"package" name=QualifiedName metamodels+=RegisteredPackage* imports+=Import* sources+=ApplicationModel* aspects+=Aspect*
 		public Group getGroup() { return cGroup; }
 
 		//"package"
@@ -53,17 +56,47 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 		//RegisteredPackage
 		public RuleCall getMetamodelsRegisteredPackageParserRuleCall_2_0() { return cMetamodelsRegisteredPackageParserRuleCall_2_0; }
 
+		//imports+=Import*
+		public Assignment getImportsAssignment_3() { return cImportsAssignment_3; }
+
+		//Import
+		public RuleCall getImportsImportParserRuleCall_3_0() { return cImportsImportParserRuleCall_3_0; }
+
 		//sources+=ApplicationModel*
-		public Assignment getSourcesAssignment_3() { return cSourcesAssignment_3; }
+		public Assignment getSourcesAssignment_4() { return cSourcesAssignment_4; }
 
 		//ApplicationModel
-		public RuleCall getSourcesApplicationModelParserRuleCall_3_0() { return cSourcesApplicationModelParserRuleCall_3_0; }
+		public RuleCall getSourcesApplicationModelParserRuleCall_4_0() { return cSourcesApplicationModelParserRuleCall_4_0; }
 
 		//aspects+=Aspect*
-		public Assignment getAspectsAssignment_4() { return cAspectsAssignment_4; }
+		public Assignment getAspectsAssignment_5() { return cAspectsAssignment_5; }
 
 		//Aspect
-		public RuleCall getAspectsAspectParserRuleCall_4_0() { return cAspectsAspectParserRuleCall_4_0; }
+		public RuleCall getAspectsAspectParserRuleCall_5_0() { return cAspectsAspectParserRuleCall_5_0; }
+	}
+
+	public class ImportElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Import");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cImportKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cImportedNamespaceAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_0 = (RuleCall)cImportedNamespaceAssignment_1.eContents().get(0);
+		
+		//Import:
+		//	"import" importedNamespace=QualifiedNameWithWildcard;
+		public ParserRule getRule() { return rule; }
+
+		//"import" importedNamespace=QualifiedNameWithWildcard
+		public Group getGroup() { return cGroup; }
+
+		//"import"
+		public Keyword getImportKeyword_0() { return cImportKeyword_0; }
+
+		//importedNamespace=QualifiedNameWithWildcard
+		public Assignment getImportedNamespaceAssignment_1() { return cImportedNamespaceAssignment_1; }
+
+		//QualifiedNameWithWildcard
+		public RuleCall getImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_0() { return cImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_0; }
 	}
 
 	public class RegisteredPackageElements extends AbstractParserRuleElementFinder {
@@ -384,9 +417,11 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 	public class ParameterPatternElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ParameterPattern");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cModifierAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final CrossReference cModifierParameterModifierCrossReference_0_0 = (CrossReference)cModifierAssignment_0.eContents().get(0);
-		private final RuleCall cModifierParameterModifierIDTerminalRuleCall_0_0_1 = (RuleCall)cModifierParameterModifierCrossReference_0_0.eContents().get(1);
+		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
+		private final Assignment cModifierAssignment_0_0 = (Assignment)cAlternatives_0.eContents().get(0);
+		private final CrossReference cModifierParameterModifierCrossReference_0_0_0 = (CrossReference)cModifierAssignment_0_0.eContents().get(0);
+		private final RuleCall cModifierParameterModifierIDTerminalRuleCall_0_0_0_1 = (RuleCall)cModifierParameterModifierCrossReference_0_0_0.eContents().get(1);
+		private final Keyword cAsteriskKeyword_0_1 = (Keyword)cAlternatives_0.eContents().get(1);
 		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final CrossReference cTypeTypeCrossReference_1_0 = (CrossReference)cTypeAssignment_1.eContents().get(0);
 		private final RuleCall cTypeTypeIDTerminalRuleCall_1_0_1 = (RuleCall)cTypeTypeCrossReference_1_0.eContents().get(1);
@@ -395,20 +430,26 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cParameterParameterIDTerminalRuleCall_2_0_1 = (RuleCall)cParameterParameterCrossReference_2_0.eContents().get(1);
 		
 		//ParameterPattern:
-		//	modifier=[structure::ParameterModifier] type=[structure::Type] parameter=[structure::Parameter];
+		//	(modifier=[structure::ParameterModifier] | "*") type=[structure::Type] parameter=[structure::Parameter];
 		public ParserRule getRule() { return rule; }
 
-		//modifier=[structure::ParameterModifier] type=[structure::Type] parameter=[structure::Parameter]
+		//(modifier=[structure::ParameterModifier] | "*") type=[structure::Type] parameter=[structure::Parameter]
 		public Group getGroup() { return cGroup; }
 
+		//modifier=[structure::ParameterModifier] | "*"
+		public Alternatives getAlternatives_0() { return cAlternatives_0; }
+
 		//modifier=[structure::ParameterModifier]
-		public Assignment getModifierAssignment_0() { return cModifierAssignment_0; }
+		public Assignment getModifierAssignment_0_0() { return cModifierAssignment_0_0; }
 
 		//[structure::ParameterModifier]
-		public CrossReference getModifierParameterModifierCrossReference_0_0() { return cModifierParameterModifierCrossReference_0_0; }
+		public CrossReference getModifierParameterModifierCrossReference_0_0_0() { return cModifierParameterModifierCrossReference_0_0_0; }
 
 		//ID
-		public RuleCall getModifierParameterModifierIDTerminalRuleCall_0_0_1() { return cModifierParameterModifierIDTerminalRuleCall_0_0_1; }
+		public RuleCall getModifierParameterModifierIDTerminalRuleCall_0_0_0_1() { return cModifierParameterModifierIDTerminalRuleCall_0_0_0_1; }
+
+		//"*"
+		public Keyword getAsteriskKeyword_0_1() { return cAsteriskKeyword_0_1; }
 
 		//type=[structure::Type]
 		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
@@ -1017,6 +1058,7 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	private ModelElements pModel;
+	private ImportElements pImport;
 	private RegisteredPackageElements pRegisteredPackage;
 	private ApplicationModelElements pApplicationModel;
 	private QualifiedNameElements pQualifiedName;
@@ -1083,13 +1125,24 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//Model:
-	//	"package" name=QualifiedName metamodels+=RegisteredPackage* sources+=ApplicationModel* aspects+=Aspect*;
+	//	"package" name=QualifiedName metamodels+=RegisteredPackage* imports+=Import* sources+=ApplicationModel*
+	//	aspects+=Aspect*;
 	public ModelElements getModelAccess() {
 		return (pModel != null) ? pModel : (pModel = new ModelElements());
 	}
 	
 	public ParserRule getModelRule() {
 		return getModelAccess().getRule();
+	}
+
+	//Import:
+	//	"import" importedNamespace=QualifiedNameWithWildcard;
+	public ImportElements getImportAccess() {
+		return (pImport != null) ? pImport : (pImport = new ImportElements());
+	}
+	
+	public ParserRule getImportRule() {
+		return getImportAccess().getRule();
 	}
 
 	//RegisteredPackage:
@@ -1156,7 +1209,7 @@ public class ApplicationLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ParameterPattern:
-	//	modifier=[structure::ParameterModifier] type=[structure::Type] parameter=[structure::Parameter];
+	//	(modifier=[structure::ParameterModifier] | "*") type=[structure::Type] parameter=[structure::Parameter];
 	public ParameterPatternElements getParameterPatternAccess() {
 		return (pParameterPattern != null) ? pParameterPattern : (pParameterPattern = new ParameterPatternElements());
 	}

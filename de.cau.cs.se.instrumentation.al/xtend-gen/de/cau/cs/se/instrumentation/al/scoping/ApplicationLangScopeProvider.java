@@ -8,10 +8,12 @@ import com.google.inject.Inject;
 import de.cau.cs.se.instrumantation.model.structure.Container;
 import de.cau.cs.se.instrumantation.model.structure.Method;
 import de.cau.cs.se.instrumantation.model.structure.NamedElement;
+import de.cau.cs.se.instrumantation.model.structure.Parameter;
+import de.cau.cs.se.instrumantation.model.structure.Type;
 import de.cau.cs.se.instrumentation.al.applicationLang.ContainerNode;
 import de.cau.cs.se.instrumentation.al.applicationLang.LocationQuery;
-import de.cau.cs.se.instrumentation.al.applicationLang.Model;
 import de.cau.cs.se.instrumentation.al.applicationLang.Node;
+import de.cau.cs.se.instrumentation.al.applicationLang.ParameterPattern;
 import de.cau.cs.se.instrumentation.al.applicationLang.Query;
 import de.cau.cs.se.instrumentation.al.applicationLang.RegisteredPackage;
 import de.cau.cs.se.instrumentation.al.modelhandling.ForeignModelTypeProviderFactory;
@@ -56,41 +58,52 @@ public class ApplicationLangScopeProvider extends AbstractDeclarativeScopeProvid
     }
   }
   
-  public Model getModel(final ContainerNode node) {
-    EObject _eContainer = node.eContainer();
-    return this.getModel(_eContainer);
-  }
-  
-  public Model getModel(final EObject node) {
-    if ((node instanceof Model)) {
-      return ((Model) node);
+  public IScope scope_Query_returnType(final Query context, final EReference reference) {
+    LocationQuery _location = context.getLocation();
+    final Node node = this.leaveNode(_location);
+    if ((node instanceof ContainerNode)) {
+      Resource _eResource = context.eResource();
+      ResourceSet _resourceSet = _eResource.getResourceSet();
+      final IForeignModelTypeProvider typeProvider = this.typeProviderFactory.getTypeProvider(_resourceSet, null);
+      Iterable<Type> _allDataTyes = typeProvider.getAllDataTyes();
+      return Scopes.scopeFor(_allDataTyes);
     } else {
-      EObject _eContainer = node.eContainer();
-      return this.getModel(_eContainer);
+      return IScope.NULLSCOPE;
     }
   }
   
   public IScope scope_Query_method(final Query context, final EReference reference) {
-    System.out.println("scope_Query_method");
     LocationQuery _location = context.getLocation();
     final Node node = this.leaveNode(_location);
-    Container _container = null;
-    if (((ContainerNode) node)!=null) {
-      _container=((ContainerNode) node).getContainer();
-    }
-    String _name = _container.getName();
-    String _plus = ("node " + _name);
-    System.out.println(_plus);
     if ((node instanceof ContainerNode)) {
-      Container _container_1 = ((ContainerNode) node).getContainer();
-      EList<Method> _methods = _container_1.getMethods();
+      Container _container = ((ContainerNode) node).getContainer();
+      EList<Method> _methods = _container.getMethods();
       return Scopes.scopeFor(_methods);
     } else {
       return IScope.NULLSCOPE;
     }
   }
   
-  public Node leaveNode(final LocationQuery query) {
+  public IScope scope_ParameterPattern_modifier(final ParameterPattern context, final EReference reference) {
+    return IScope.NULLSCOPE;
+  }
+  
+  public IScope scope_ParameterPattern_type(final ParameterPattern context, final EReference reference) {
+    Resource _eResource = context.eResource();
+    ResourceSet _resourceSet = _eResource.getResourceSet();
+    final IForeignModelTypeProvider typeProvider = this.typeProviderFactory.getTypeProvider(_resourceSet, null);
+    Iterable<Type> _allDataTyes = typeProvider.getAllDataTyes();
+    return Scopes.scopeFor(_allDataTyes);
+  }
+  
+  public IScope scope_ParameterPattern_parameter(final ParameterPattern context, final EReference reference) {
+    EObject _eContainer = context.eContainer();
+    final Method method = ((Query) _eContainer).getMethod();
+    EList<Parameter> _parameters = method.getParameters();
+    return Scopes.scopeFor(_parameters);
+  }
+  
+  private Node leaveNode(final LocationQuery query) {
     Node _xifexpression = null;
     LocationQuery _specialization = query.getSpecialization();
     boolean _notEquals = (!Objects.equal(_specialization, null));

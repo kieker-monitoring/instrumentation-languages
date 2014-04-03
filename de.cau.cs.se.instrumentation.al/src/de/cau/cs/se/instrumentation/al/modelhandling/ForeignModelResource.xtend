@@ -34,11 +34,17 @@ import de.cau.cs.se.instrumantation.model.structure.Container
 import de.cau.cs.se.instrumantation.model.structure.Containment
 import de.cau.cs.se.instrumantation.model.structure.NamedElement
 import de.cau.cs.se.instrumantation.model.structure.StructureFactory
-import de.cau.cs.se.instrumantation.model.structure.Type
 import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel
 import de.cau.cs.se.instrumentation.al.applicationLang.RegisteredPackage
 import org.eclipse.xtext.naming.QualifiedName
+import org.eclipse.emf.ecore.EStructuralFeature
 import java.util.HashMap
+import java.util.Collection
+import de.cau.cs.se.instrumantation.model.structure.Method
+import de.cau.cs.se.instrumantation.model.structure.Model
+import de.cau.cs.se.instrumantation.model.structure.Parameter
+import de.cau.cs.se.instrumantation.model.structure.ParameterModifier
+import de.cau.cs.se.instrumantation.model.structure.Type
 
 /**
  * Simulates a real source by mapping the a PCM model to our model.
@@ -49,7 +55,7 @@ public class ForeignModelResource extends ResourceImpl {
 
 	private final StructureFactory structure = StructureFactory.eINSTANCE
 	private final ApplicationModel applicationModel
-	private de.cau.cs.se.instrumantation.model.structure.Model resultModel
+	private Model resultModel
 	private boolean loading = false
 	private final Map<String,EObject> interfaceMap = new HashMap<String,EObject>()
 	
@@ -65,18 +71,15 @@ public class ForeignModelResource extends ResourceImpl {
 	}
 
 	override EObject getEObject(String uriFragment) {
-		System::out.println("ForeignModelResource.getEObject(uriFragment) " + uriFragment)
-		val EObject object = this.getContents().findFirst[uriFragment.equals(this.getURIFragment(it))]
+		val EObject object = (this.getContents().get(0) as Model).contents.findFirst[uriFragment.equals(this.getURIFragment(it))]
 		if (object != null)
 			return object
-		else { 
-			System::out.println("\tcontents did not include " + uriFragment)
+		else {
 			return super.getEObject(uriFragment)
 		}
 	}
 
 	override String getURIFragment(EObject eObject) {
-		System::out.println("ForeignModelResource.getURIFragment(eObject) " + eObject)
 		if (eObject instanceof NamedElement) {
 			return (eObject as NamedElement).name
 		} else if (eObject instanceof Container) {
@@ -108,7 +111,6 @@ public class ForeignModelResource extends ResourceImpl {
 	 * @throws IOException
 	 */
 	override void doLoad(InputStream inputStream, Map<?, ?> options) throws IOException {
-		System::out.println("ForeignModelResource.doLoad(inputStream, options) " + inputStream + ", " + options)
 		if (this.getURI() != null) {
 			this.createModel()
 		} else {
@@ -119,9 +121,12 @@ public class ForeignModelResource extends ResourceImpl {
 			}
 		}
 	}
+	
+	def EList<Type> getAllDataTypes() {
+		return this.resultModel.types
+	}
 
 	private def createModel() {
-		System::out.println("ForeignModelResource.createModel() " + this.loading)
 		if (this.applicationModel != null && !this.loading) {
 			this.loading = true
 			// register the meta model (package) and its packages (Steinberg 2009, EMF 15.3.4)
@@ -151,13 +156,15 @@ public class ForeignModelResource extends ResourceImpl {
 			determineContainerHierarchy(source)
 			// contents must be called via its getter otherwise xtend will used the variable which may
 			// result in an null pointer result
-			this.getContents().addAll(this.resultModel.contents)
+			this.getContents().add(this.resultModel)
 			this.loading = false;
-			System::out.println("ForeignModelResource.createModel() " + this.contents.size)
 		}
 	}
 
 	/**
+	 * Scan the application model (i.e. in PCM the repository) and determine the container hierarchy.
+	 * The hierarchy does not differentiate between packages, components or classes as only the
+	 * hierarchy must be known.
 	 * 
 	 * @param source
 	 */
@@ -166,30 +173,199 @@ public class ForeignModelResource extends ResourceImpl {
 		while (iterator.hasNext()) {
 			val EObject object = iterator.next()
 			if (object.eClass().getName().equals("Repository")) {
-				val reference = object.eClass().getEStructuralFeature("components__Repository") as EReference
-				val components = object.eGet(reference) as EList<EObject>
+				val components = object.getFeature("components__Repository") as EList<EObject>
 				for (EObject component : components) {
 					val container = this.structure.createContainer()
-					val fullQualifiedName = component.eGet(component.eClass().getEStructuralFeature("entityName")) as String
+					val fullQualifiedName = component.getFeature("entityName") as String
 					val names = fullQualifiedName.split('\\.')
 					if (names.size == 0)
 						names.add(fullQualifiedName as String)
 					val QualifiedName name = QualifiedName.create(names)
 					container.setName(name.getLastSegment())
-					/*val providedInterfaceReference = component.eClass().getEStructuralFeature("providedRoles_InterfaceProvidingEntity") as EReference
-					val providedInterfaces = object.eGet(providedInterfaceReference) as EList<EObject>
-					for (EObject providedInterface : providedInterfaces) {
-						val name2 = providedInterface.eGet(providedInterface.eClass().getEStructuralFeature("entityName")) 
-						// providingEntity_ProvidedRole
-						System::out.println("name " + name2)
-					}*/
+					container.addInterfaces(component)
 					insertContainerInHierarchy(this.resultModel,container,name)
 				}				
 			}
 		}
 
 	}
+	
+	/**
+	 * Identify the interfaces a given container implements and add that interface
+	 * to the hierarchy structure.
+	 * 
+	 * @param container the container the interfaces are added to
+	 * @param component the PCM model component
+	 */
+	private def void addInterfaces(Container container, EObject component) {
+		val providedInterfaces = component.getFeature("providedRoles_InterfaceProvidingEntity") as EList<EObject>
+		for (EObject providedInterface : providedInterfaces) {
+			val name = providedInterface.getFeature("entityName") as String
+			val interfaze = this.structure.createContainer()
+			val interfazeDeclaration = this.interfaceMap.get(name)
+			interfaze.setName(name)
+			interfaze.methods.createMethods(interfazeDeclaration.determineMethods)
+			container.contents.add(interfaze)
+		}
+	}
+		
+	/**
+	 * Create methods for an interface in the intermediate model.
+	 */
+	private def void createMethods(EList<Method> list, Collection<EObject> objects) {
+		objects.forEach[signature | list.add(createMethod(signature))]
+	}
+	
+	/**
+	 * Construct a method in the application model based on the PCM structure.
+	 * 
+	 * @param signature the method signature from the PCM repository to be used to create
+	 * the application model method signature.
+	 * 
+	 * @return returns an application model method declaration.
+	 */
+	private def Method createMethod(EObject signature) {
+		val method = this.structure.createMethod()
+		method.setName(signature.getFeature("entityName") as String)
+		val modifier = this.structure.createMethodModifier()
+		modifier.setName("public")
+		method.setModifier(modifier)
+		// returnType__OperationSignature
+		// TODO define void type instead of null
+		method.setReturnType(signature.getReferenceFeature("returnType__OperationSignature")?.createTypeReference)
+		// parameters__OperationSignature
+		val parameters = signature.getFeature("parameters__OperationSignature") as Collection<EObject>
+		parameters.forEach[parameter | method.parameters.add(createParameter(parameter))]
+		return method
+	}
+	
+	/**
+	 * Create an application model parameter.
+	 * 
+	 * @param object the parameter declaration in PCM which is used to create the application
+	 * model parameter.
+	 * 
+	 * @return the application model parameter
+	 */
+	private def Parameter createParameter(EObject object) {
+		val parameter = this.structure.createParameter()
+		parameter.setName(object.getFeature("parameterName") as String)
+		parameter.setModifier(object.getFeature("modifier__Parameter").createParameterModifier)
+		parameter.setType(object.getReferenceFeature("dataType__Parameter")?.createTypeReference)
+		
+		return parameter
+	}
+	
+	/**
+	 * Create a reference to a type declaration.
+	 * 
+	 * @param the PCM type reference to be mapped to an application model reference.
+	 * 
+	 * @return returns the application model type reference.
+	 */
+	private def createTypeReference(EObject object) {
+		val typeReference = this.structure.createTypeReference()
+		if (object.eClass != null) {
+			if (object.eClass.name != null) {
+				switch (object.eClass.name) {
+					case 'CompositeDataType' : typeReference.setType((object.getFeature("entityName") as String).findCompositeType)	
+					case 'PrimitiveDataType' : typeReference.setType(object.getFeature("type").findPrimitiveType)
+				}
+			} else { // TODO: this is a temporary measure
+				typeReference.setType(emptyType)
+			}
+		} else { // TODO: this is a temporary measure
+			typeReference.setType(emptyType)
+		}
+		return typeReference
+	}
+	
+	/**
+	 * Emergency routine if the type is not found.
+	 * 
+	 * @return returns the empty type.
+	 */
+	private def emptyType() {
+		var type = this.resultModel.types.findFirst[it.name.equals("EMPTY")]
+		if (type == null) {
+			type = this.structure.createType()
+			type.setName("EMPTY")
+			this.resultModel.types.add(type)
+		}
+		return type
+	}
+	
+	/**
+	 * Determine an primitive type. If the primitive type is missing, it is created.
+	 * 
+	 * @param type name as object
+	 * 
+	 * @return return a primitive type conforming to the PCM type.
+	 */
+	private def findPrimitiveType(Object object) {
+		// TODO fix this. No side effects please.
+		val typeName = object.toString
+		var type = this.resultModel.types.findFirst[it.name.equals(typeName)]
+		if (type == null) {
+			type = this.structure.createType()
+			type.setName(typeName)
+			this.resultModel.types.add(type)
+		}
+		return type
+	}
+	
+	/**
+	 * Method has side effect. TODO fix this. No side effects please.
+	 * 
+	 * @param name of the complex type.
+	 */
+	private def findCompositeType(String typeName) {
+		var type = this.resultModel.types.findFirst[it.name.equals(typeName)]
+		if (type == null) {
+			type = this.structure.createType()
+			type.setName(typeName)
+			this.resultModel.types.add(type)
+		}
+		return type
+	}
+	
+	private def ParameterModifier createParameterModifier(Object object) {
+		val modifier = this.structure.createParameterModifier()
+		return modifier
+	}
+	
+	/**
+	 * Determine which methods are defined in an interface.
+	 */
+	private def Collection<EObject> determineMethods(EObject interfazeDeclaration) {
+		// parentInterfaces__Interface
+		// TODO inherit signatures
+		// signatures__OperationInterface
+		return interfazeDeclaration.getFeature("signatures__OperationInterface") as Collection<EObject>
+	}
+	
+	/**
+	 * Find dynamically a feature of an object.
+	 */
+	private def Object getFeature(EObject object, String featureName) {
+		val EStructuralFeature feature = object.eClass.getEStructuralFeature(featureName)
+		return object.eGet(feature)
+	}
+	
+	/**
+	 * Find dynamically an reference feature of an object.
+	 */
+	private def EObject getReferenceFeature(EObject object, String featureName) {
+		val EStructuralFeature feature = object.eClass.getEStructuralFeature(featureName)
+		if (feature instanceof EReference)
+			return object.eGet(feature) as EObject
+		else
+			return null
+	}
 
+	/**
+	 * Insert component type in the container hierarchy. If necessary establish that hierarchy.
+	 */
 	private def void insertContainerInHierarchy(Containment parent, Container entity,
 			QualifiedName fullQualifiedName) {
 		if (fullQualifiedName.getSegmentCount() == 1) {
@@ -212,6 +388,9 @@ public class ForeignModelResource extends ResourceImpl {
 		}
 	}
 
+	/**
+	 * What does this routine do?
+	 */
 	private def addEntityToParentContainer(Containment parent, Container entity) {
 		if (!parent.contents.exists[it.name.equals(entity.name)]) {
 			parent.contents.add(entity)
@@ -246,29 +425,10 @@ public class ForeignModelResource extends ResourceImpl {
 				val interfaces = object.eGet(reference) as EList<EObject>
 				for (EObject interfaze : interfaces) {
 					val fullQualifiedName = interfaze.eGet(interfaze.eClass().getEStructuralFeature("entityName")) as String
-					System::out.println("interface " + fullQualifiedName)
 					interfaceMap.put (fullQualifiedName, interfaze)
 				}
 			}
 		}
 	}
-
-	
-
-	/**
-	 * 
-	 * @param typeName
-	 * @return
-	 */
-	private def Type findType(String typeName) {
-		for (Type type : this.resultModel.getTypes()) {
-			if (type.getName().equals(typeName)) {
-				return type
-			}
-		}
-		return null
-	}
-
-
 
 }

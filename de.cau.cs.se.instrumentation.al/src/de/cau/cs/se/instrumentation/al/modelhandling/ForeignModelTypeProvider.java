@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.util.Strings;
 
 import de.cau.cs.se.instrumantation.model.structure.NamedElement;
+import de.cau.cs.se.instrumantation.model.structure.Type;
 import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel;
 
 /**
@@ -108,6 +109,12 @@ public class ForeignModelTypeProvider implements Resource.Factory, IForeignModel
 	 */
 	public ForeignModelTypeURIHelper getTypeUriHelper() {
 		return this.typeUriHelper;
+	}
+
+	public Iterable<Type> getAllDataTyes() {
+		final Resource resource = this.resourceSet.getResource(
+				URI.createURI(ForeignModelTypeURIHelper.PROTOCOL + ":" + ForeignModelTypeURIHelper.ELEMENTS), true);
+		return ((ForeignModelResource)resource).getAllDataTypes();
 	}
 
 }
