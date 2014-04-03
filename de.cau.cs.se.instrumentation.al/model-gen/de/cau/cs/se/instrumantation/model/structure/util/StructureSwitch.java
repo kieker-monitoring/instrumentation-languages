@@ -70,6 +70,7 @@ public class StructureSwitch<T> extends Switch<T> {
 				Type type = (Type)theEObject;
 				T result = caseType(type);
 				if (result == null) result = caseNamedElement(type);
+				if (result == null) result = caseTraceability(type);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -84,6 +85,7 @@ public class StructureSwitch<T> extends Switch<T> {
 				T result = caseContainer(container);
 				if (result == null) result = caseNamedElement(container);
 				if (result == null) result = caseContainment(container);
+				if (result == null) result = caseTraceability(container);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -91,6 +93,7 @@ public class StructureSwitch<T> extends Switch<T> {
 				Method method = (Method)theEObject;
 				T result = caseMethod(method);
 				if (result == null) result = caseNamedElement(method);
+				if (result == null) result = caseTraceability(method);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -98,6 +101,7 @@ public class StructureSwitch<T> extends Switch<T> {
 				ParameterModifier parameterModifier = (ParameterModifier)theEObject;
 				T result = caseParameterModifier(parameterModifier);
 				if (result == null) result = caseNamedElement(parameterModifier);
+				if (result == null) result = caseTraceability(parameterModifier);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -111,6 +115,7 @@ public class StructureSwitch<T> extends Switch<T> {
 				Parameter parameter = (Parameter)theEObject;
 				T result = caseParameter(parameter);
 				if (result == null) result = caseNamedElement(parameter);
+				if (result == null) result = caseTraceability(parameter);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -125,6 +130,7 @@ public class StructureSwitch<T> extends Switch<T> {
 				MethodModifier methodModifier = (MethodModifier)theEObject;
 				T result = caseMethodModifier(methodModifier);
 				if (result == null) result = caseNamedElement(methodModifier);
+				if (result == null) result = caseTraceability(methodModifier);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -132,12 +138,19 @@ public class StructureSwitch<T> extends Switch<T> {
 				ContainerModifier containerModifier = (ContainerModifier)theEObject;
 				T result = caseContainerModifier(containerModifier);
 				if (result == null) result = caseNamedElement(containerModifier);
+				if (result == null) result = caseTraceability(containerModifier);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case StructurePackage.CONTAINMENT: {
 				Containment containment = (Containment)theEObject;
 				T result = caseContainment(containment);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case StructurePackage.TRACEABILITY: {
+				Traceability traceability = (Traceability)theEObject;
+				T result = caseTraceability(traceability);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -307,6 +320,21 @@ public class StructureSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseContainment(Containment object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Traceability</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Traceability</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTraceability(Traceability object) {
 		return null;
 	}
 

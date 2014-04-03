@@ -6,11 +6,13 @@ import de.cau.cs.se.instrumantation.model.structure.ContainerModifier;
 import de.cau.cs.se.instrumantation.model.structure.Containment;
 import de.cau.cs.se.instrumantation.model.structure.Method;
 import de.cau.cs.se.instrumantation.model.structure.StructurePackage;
+import de.cau.cs.se.instrumantation.model.structure.Traceability;
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -24,6 +26,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumantation.model.structure.impl.ContainerImpl#getContents <em>Contents</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumantation.model.structure.impl.ContainerImpl#getPredecessor <em>Predecessor</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumantation.model.structure.impl.ContainerImpl#getModifier <em>Modifier</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumantation.model.structure.impl.ContainerImpl#getMethods <em>Methods</em>}</li>
  * </ul>
@@ -41,6 +44,16 @@ public class ContainerImpl extends NamedElementImpl implements de.cau.cs.se.inst
 	 * @ordered
 	 */
 	protected EList<de.cau.cs.se.instrumantation.model.structure.Container> contents;
+
+	/**
+	 * The cached value of the '{@link #getPredecessor() <em>Predecessor</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPredecessor()
+	 * @generated
+	 * @ordered
+	 */
+	protected EObject predecessor;
 
 	/**
 	 * The cached value of the '{@link #getModifier() <em>Modifier</em>}' reference.
@@ -91,6 +104,44 @@ public class ContainerImpl extends NamedElementImpl implements de.cau.cs.se.inst
 			contents = new EObjectContainmentEList<de.cau.cs.se.instrumantation.model.structure.Container>(de.cau.cs.se.instrumantation.model.structure.Container.class, this, StructurePackage.CONTAINER__CONTENTS);
 		}
 		return contents;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EObject getPredecessor() {
+		if (predecessor != null && predecessor.eIsProxy()) {
+			InternalEObject oldPredecessor = (InternalEObject)predecessor;
+			predecessor = eResolveProxy(oldPredecessor);
+			if (predecessor != oldPredecessor) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, StructurePackage.CONTAINER__PREDECESSOR, oldPredecessor, predecessor));
+			}
+		}
+		return predecessor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EObject basicGetPredecessor() {
+		return predecessor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPredecessor(EObject newPredecessor) {
+		EObject oldPredecessor = predecessor;
+		predecessor = newPredecessor;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.CONTAINER__PREDECESSOR, oldPredecessor, predecessor));
 	}
 
 	/**
@@ -169,6 +220,9 @@ public class ContainerImpl extends NamedElementImpl implements de.cau.cs.se.inst
 		switch (featureID) {
 			case StructurePackage.CONTAINER__CONTENTS:
 				return getContents();
+			case StructurePackage.CONTAINER__PREDECESSOR:
+				if (resolve) return getPredecessor();
+				return basicGetPredecessor();
 			case StructurePackage.CONTAINER__MODIFIER:
 				if (resolve) return getModifier();
 				return basicGetModifier();
@@ -190,6 +244,9 @@ public class ContainerImpl extends NamedElementImpl implements de.cau.cs.se.inst
 			case StructurePackage.CONTAINER__CONTENTS:
 				getContents().clear();
 				getContents().addAll((Collection<? extends de.cau.cs.se.instrumantation.model.structure.Container>)newValue);
+				return;
+			case StructurePackage.CONTAINER__PREDECESSOR:
+				setPredecessor((EObject)newValue);
 				return;
 			case StructurePackage.CONTAINER__MODIFIER:
 				setModifier((ContainerModifier)newValue);
@@ -213,6 +270,9 @@ public class ContainerImpl extends NamedElementImpl implements de.cau.cs.se.inst
 			case StructurePackage.CONTAINER__CONTENTS:
 				getContents().clear();
 				return;
+			case StructurePackage.CONTAINER__PREDECESSOR:
+				setPredecessor((EObject)null);
+				return;
 			case StructurePackage.CONTAINER__MODIFIER:
 				setModifier((ContainerModifier)null);
 				return;
@@ -233,6 +293,8 @@ public class ContainerImpl extends NamedElementImpl implements de.cau.cs.se.inst
 		switch (featureID) {
 			case StructurePackage.CONTAINER__CONTENTS:
 				return contents != null && !contents.isEmpty();
+			case StructurePackage.CONTAINER__PREDECESSOR:
+				return predecessor != null;
 			case StructurePackage.CONTAINER__MODIFIER:
 				return modifier != null;
 			case StructurePackage.CONTAINER__METHODS:
@@ -254,6 +316,12 @@ public class ContainerImpl extends NamedElementImpl implements de.cau.cs.se.inst
 				default: return -1;
 			}
 		}
+		if (baseClass == Traceability.class) {
+			switch (derivedFeatureID) {
+				case StructurePackage.CONTAINER__PREDECESSOR: return StructurePackage.TRACEABILITY__PREDECESSOR;
+				default: return -1;
+			}
+		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
 	}
 
@@ -267,6 +335,12 @@ public class ContainerImpl extends NamedElementImpl implements de.cau.cs.se.inst
 		if (baseClass == Containment.class) {
 			switch (baseFeatureID) {
 				case StructurePackage.CONTAINMENT__CONTENTS: return StructurePackage.CONTAINER__CONTENTS;
+				default: return -1;
+			}
+		}
+		if (baseClass == Traceability.class) {
+			switch (baseFeatureID) {
+				case StructurePackage.TRACEABILITY__PREDECESSOR: return StructurePackage.CONTAINER__PREDECESSOR;
 				default: return -1;
 			}
 		}

@@ -12,6 +12,7 @@ import de.cau.cs.se.instrumantation.model.structure.Parameter;
 import de.cau.cs.se.instrumantation.model.structure.ParameterModifier;
 import de.cau.cs.se.instrumantation.model.structure.StructureFactory;
 import de.cau.cs.se.instrumantation.model.structure.StructurePackage;
+import de.cau.cs.se.instrumantation.model.structure.Traceability;
 import de.cau.cs.se.instrumantation.model.structure.Type;
 import de.cau.cs.se.instrumantation.model.structure.TypeReference;
 
@@ -105,6 +106,13 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 	 * @generated
 	 */
 	private EClass containmentEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass traceabilityEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -370,6 +378,24 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getTraceability() {
+		return traceabilityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTraceability_Predecessor() {
+		return (EReference)traceabilityEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public StructureFactory getStructureFactory() {
 		return (StructureFactory)getEFactoryInstance();
 	}
@@ -425,6 +451,9 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 
 		containmentEClass = createEClass(CONTAINMENT);
 		createEReference(containmentEClass, CONTAINMENT__CONTENTS);
+
+		traceabilityEClass = createEClass(TRACEABILITY);
+		createEReference(traceabilityEClass, TRACEABILITY__PREDECESSOR);
 	}
 
 	/**
@@ -456,14 +485,21 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 
 		// Add supertypes to classes
 		typeEClass.getESuperTypes().add(this.getNamedElement());
+		typeEClass.getESuperTypes().add(this.getTraceability());
 		containerEClass.getESuperTypes().add(this.getNamedElement());
 		containerEClass.getESuperTypes().add(this.getContainment());
+		containerEClass.getESuperTypes().add(this.getTraceability());
 		methodEClass.getESuperTypes().add(this.getNamedElement());
+		methodEClass.getESuperTypes().add(this.getTraceability());
 		parameterModifierEClass.getESuperTypes().add(this.getNamedElement());
+		parameterModifierEClass.getESuperTypes().add(this.getTraceability());
 		parameterEClass.getESuperTypes().add(this.getNamedElement());
+		parameterEClass.getESuperTypes().add(this.getTraceability());
 		modelEClass.getESuperTypes().add(this.getContainment());
 		methodModifierEClass.getESuperTypes().add(this.getNamedElement());
+		methodModifierEClass.getESuperTypes().add(this.getTraceability());
 		containerModifierEClass.getESuperTypes().add(this.getNamedElement());
+		containerModifierEClass.getESuperTypes().add(this.getTraceability());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(typeEClass, Type.class, "Type", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -498,6 +534,9 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 
 		initEClass(containmentEClass, Containment.class, "Containment", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getContainment_Contents(), this.getContainer(), null, "contents", null, 0, -1, Containment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(traceabilityEClass, Traceability.class, "Traceability", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTraceability_Predecessor(), ecorePackage.getEObject(), null, "predecessor", null, 1, 1, Traceability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -2,17 +2,17 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="structure" nsURI="http://modelstructure.se.cs.cau.de/structure"
     nsPrefix="structure">
-  <eClassifiers xsi:type="ecore:EClass" name="Type" eSuperTypes="#//NamedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Type" eSuperTypes="#//NamedElement #//Traceability"/>
   <eClassifiers xsi:type="ecore:EClass" name="TypeReference">
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//Type"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Container" eSuperTypes="#//NamedElement #//Containment">
+  <eClassifiers xsi:type="ecore:EClass" name="Container" eSuperTypes="#//NamedElement #//Containment #//Traceability">
     <eStructuralFeatures xsi:type="ecore:EReference" name="modifier" lowerBound="1"
         eType="#//ContainerModifier"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="methods" upperBound="-1"
         eType="#//Method" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Method" eSuperTypes="#//NamedElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Method" eSuperTypes="#//NamedElement #//Traceability">
     <eStructuralFeatures xsi:type="ecore:EReference" name="returnType" lowerBound="1"
         eType="#//TypeReference"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
@@ -20,11 +20,11 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="modifier" lowerBound="1"
         eType="#//MethodModifier"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ParameterModifier" eSuperTypes="#//NamedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ParameterModifier" eSuperTypes="#//NamedElement #//Traceability"/>
   <eClassifiers xsi:type="ecore:EClass" name="NamedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Parameter" eSuperTypes="#//NamedElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Parameter" eSuperTypes="#//NamedElement #//Traceability">
     <eStructuralFeatures xsi:type="ecore:EReference" name="modifier" lowerBound="1"
         eType="#//ParameterModifier"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//TypeReference"/>
@@ -33,10 +33,14 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="types" upperBound="-1"
         eType="#//Type" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MethodModifier" eSuperTypes="#//NamedElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ContainerModifier" eSuperTypes="#//NamedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MethodModifier" eSuperTypes="#//NamedElement #//Traceability"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ContainerModifier" eSuperTypes="#//NamedElement #//Traceability"/>
   <eClassifiers xsi:type="ecore:EClass" name="Containment" abstract="true" interface="true">
     <eStructuralFeatures xsi:type="ecore:EReference" name="contents" upperBound="-1"
         eType="#//Container" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Traceability" abstract="true" interface="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="predecessor" lowerBound="1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </eClassifiers>
 </ecore:EPackage>

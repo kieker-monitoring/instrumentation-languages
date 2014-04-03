@@ -20,7 +20,7 @@ package de.cau.cs.se.instrumantation.model.structure;
  * @model
  * @generated
  */
-public interface Parameter extends NamedElement {
+public interface Parameter extends NamedElement, Traceability {
 	/**
 	 * Returns the value of the '<em><b>Modifier</b></em>' reference.
 	 * <!-- begin-user-doc -->

@@ -13,5 +13,5 @@ package de.cau.cs.se.instrumantation.model.structure;
  * @model
  * @generated
  */
-public interface Type extends NamedElement {
+public interface Type extends NamedElement, Traceability {
 } // Type

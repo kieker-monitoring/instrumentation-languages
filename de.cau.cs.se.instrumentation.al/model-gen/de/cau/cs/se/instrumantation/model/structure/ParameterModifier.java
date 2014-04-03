@@ -13,5 +13,5 @@ package de.cau.cs.se.instrumantation.model.structure;
  * @model
  * @generated
  */
-public interface ParameterModifier extends NamedElement {
+public interface ParameterModifier extends NamedElement, Traceability {
 } // ParameterModifier

@@ -69,9 +69,9 @@ public class ForeignModelResource extends ResourceImpl {
   private final StructureFactory structureFactory = StructureFactory.eINSTANCE;
   
   /**
-   * Aspect language model.
+   * Model of the application to be instrumented.
    */
-  private final ApplicationModel aspectModel;
+  private final ApplicationModel applicationModel;
   
   /**
    * Resulting hierarchy model.
@@ -97,11 +97,11 @@ public class ForeignModelResource extends ResourceImpl {
    * Integrate a foreign model.
    * 
    * @param uri of the foreign model
-   * @param model the application model
+   * @param applicationModel the application model
    */
-  public ForeignModelResource(final URI uri, final ApplicationModel aspectModel) {
+  public ForeignModelResource(final URI uri, final ApplicationModel applicationModel) {
     super(uri);
-    this.aspectModel = aspectModel;
+    this.applicationModel = applicationModel;
   }
   
   /**
@@ -212,7 +212,7 @@ public class ForeignModelResource extends ResourceImpl {
   private Boolean createModel() {
     Boolean _xifexpression = null;
     boolean _and = false;
-    boolean _notEquals = (!Objects.equal(this.aspectModel, null));
+    boolean _notEquals = (!Objects.equal(this.applicationModel, null));
     if (!_notEquals) {
       _and = false;
     } else {
@@ -223,7 +223,7 @@ public class ForeignModelResource extends ResourceImpl {
       boolean _xblockexpression = false;
       {
         this.loading = true;
-        final List<RegisteredPackage> usePackages = this.aspectModel.getUsePackages();
+        final List<RegisteredPackage> usePackages = this.applicationModel.getUsePackages();
         for (final RegisteredPackage usePackage : usePackages) {
           {
             EPackage _ePackage = usePackage.getEPackage();
@@ -245,7 +245,7 @@ public class ForeignModelResource extends ResourceImpl {
             extensiontoFactoryMap.put(_name, _xMIResourceFactoryImpl);
           }
         }
-        String _model = this.aspectModel.getModel();
+        String _model = this.applicationModel.getModel();
         URI _createPlatformResourceURI = URI.createPlatformResourceURI(_model, true);
         final Resource source = this.resourceSet.getResource(_createPlatformResourceURI, true);
         Model _createModel = this.structureFactory.createModel();
@@ -296,6 +296,7 @@ public class ForeignModelResource extends ResourceImpl {
               final QualifiedName name = QualifiedName.create(names);
               String _lastSegment = name.getLastSegment();
               container.setName(_lastSegment);
+              container.setPredecessor(component);
               this.addInterfaces(container, component);
               this.insertContainerInHierarchy(this.resultModel, container, name);
             }

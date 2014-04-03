@@ -113,13 +113,22 @@ public interface StructurePackage extends EPackage {
 	int TYPE__NAME = NAMED_ELEMENT__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE__PREDECESSOR = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TYPE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int TYPE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Type</em>' class.
@@ -196,13 +205,22 @@ public interface StructurePackage extends EPackage {
 	int CONTAINER__CONTENTS = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER__PREDECESSOR = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Modifier</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINER__MODIFIER = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int CONTAINER__MODIFIER = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Methods</b></em>' containment reference list.
@@ -211,7 +229,7 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINER__METHODS = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int CONTAINER__METHODS = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Container</em>' class.
@@ -220,7 +238,7 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINER_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int CONTAINER_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Container</em>' class.
@@ -251,13 +269,22 @@ public interface StructurePackage extends EPackage {
 	int METHOD__NAME = NAMED_ELEMENT__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METHOD__PREDECESSOR = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Return Type</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int METHOD__RETURN_TYPE = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int METHOD__RETURN_TYPE = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -266,7 +293,7 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int METHOD__PARAMETERS = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int METHOD__PARAMETERS = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Modifier</b></em>' reference.
@@ -275,7 +302,7 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int METHOD__MODIFIER = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int METHOD__MODIFIER = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Method</em>' class.
@@ -284,7 +311,7 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int METHOD_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int METHOD_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Method</em>' class.
@@ -315,13 +342,22 @@ public interface StructurePackage extends EPackage {
 	int PARAMETER_MODIFIER__NAME = NAMED_ELEMENT__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER_MODIFIER__PREDECESSOR = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Parameter Modifier</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_MODIFIER_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int PARAMETER_MODIFIER_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Parameter Modifier</em>' class.
@@ -352,13 +388,22 @@ public interface StructurePackage extends EPackage {
 	int PARAMETER__NAME = NAMED_ELEMENT__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PARAMETER__PREDECESSOR = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Modifier</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__MODIFIER = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int PARAMETER__MODIFIER = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Type</b></em>' reference.
@@ -367,7 +412,7 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__TYPE = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int PARAMETER__TYPE = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Parameter</em>' class.
@@ -376,7 +421,7 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int PARAMETER_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Parameter</em>' class.
@@ -500,13 +545,22 @@ public interface StructurePackage extends EPackage {
 	int METHOD_MODIFIER__NAME = NAMED_ELEMENT__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METHOD_MODIFIER__PREDECESSOR = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Method Modifier</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int METHOD_MODIFIER_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int METHOD_MODIFIER_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Method Modifier</em>' class.
@@ -527,13 +581,22 @@ public interface StructurePackage extends EPackage {
 	int CONTAINER_MODIFIER__NAME = NAMED_ELEMENT__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER_MODIFIER__PREDECESSOR = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Container Modifier</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINER_MODIFIER_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int CONTAINER_MODIFIER_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Container Modifier</em>' class.
@@ -543,6 +606,44 @@ public interface StructurePackage extends EPackage {
 	 * @ordered
 	 */
 	int CONTAINER_MODIFIER_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+
+	/**
+	 * The meta object id for the '{@link de.cau.cs.se.instrumantation.model.structure.Traceability <em>Traceability</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.cau.cs.se.instrumantation.model.structure.Traceability
+	 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getTraceability()
+	 * @generated
+	 */
+	int TRACEABILITY = 11;
+
+	/**
+	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACEABILITY__PREDECESSOR = 0;
+
+	/**
+	 * The number of structural features of the '<em>Traceability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACEABILITY_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Traceability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACEABILITY_OPERATION_COUNT = 0;
 
 
 	/**
@@ -777,6 +878,27 @@ public interface StructurePackage extends EPackage {
 	EReference getContainment_Contents();
 
 	/**
+	 * Returns the meta object for class '{@link de.cau.cs.se.instrumantation.model.structure.Traceability <em>Traceability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Traceability</em>'.
+	 * @see de.cau.cs.se.instrumantation.model.structure.Traceability
+	 * @generated
+	 */
+	EClass getTraceability();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.cau.cs.se.instrumantation.model.structure.Traceability#getPredecessor <em>Predecessor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Predecessor</em>'.
+	 * @see de.cau.cs.se.instrumantation.model.structure.Traceability#getPredecessor()
+	 * @see #getTraceability()
+	 * @generated
+	 */
+	EReference getTraceability_Predecessor();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -996,6 +1118,24 @@ public interface StructurePackage extends EPackage {
 		 * @generated
 		 */
 		EReference CONTAINMENT__CONTENTS = eINSTANCE.getContainment_Contents();
+
+		/**
+		 * The meta object literal for the '{@link de.cau.cs.se.instrumantation.model.structure.Traceability <em>Traceability</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.cau.cs.se.instrumantation.model.structure.Traceability
+		 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getTraceability()
+		 * @generated
+		 */
+		EClass TRACEABILITY = eINSTANCE.getTraceability();
+
+		/**
+		 * The meta object literal for the '<em><b>Predecessor</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRACEABILITY__PREDECESSOR = eINSTANCE.getTraceability_Predecessor();
 
 	}
 

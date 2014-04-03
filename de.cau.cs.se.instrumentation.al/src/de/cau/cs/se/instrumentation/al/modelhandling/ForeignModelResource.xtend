@@ -55,8 +55,8 @@ public class ForeignModelResource extends ResourceImpl {
 
 	/** hierarchy mapping model factory. */
 	private final StructureFactory structureFactory = StructureFactory.eINSTANCE
-	/** Aspect language model. */
-	private final ApplicationModel aspectModel
+	/** Model of the application to be instrumented. */
+	private final ApplicationModel applicationModel
 	/** Resulting hierarchy model. */
 	private Model resultModel
 	/** Helper variable to prohibit recursion of model loading. */
@@ -68,11 +68,11 @@ public class ForeignModelResource extends ResourceImpl {
 	 * Integrate a foreign model.
 	 * 
 	 * @param uri of the foreign model
-	 * @param model the application model
+	 * @param applicationModel the application model
 	 */
-	public new(URI uri, ApplicationModel aspectModel) {
+	public new(URI uri, ApplicationModel applicationModel) {
 		super(uri)
-		this.aspectModel = aspectModel
+		this.applicationModel = applicationModel
 	}
 
 	/**
@@ -158,10 +158,10 @@ public class ForeignModelResource extends ResourceImpl {
 	 * Create an result model for a given ecore model.
 	 */
 	private def createModel() {
-		if (this.aspectModel != null && !this.loading) {
+		if (this.applicationModel != null && !this.loading) {
 			this.loading = true
 			// register the meta model (package) and its packages (Steinberg 2009, EMF 15.3.4)
-			val List<RegisteredPackage> usePackages = this.aspectModel.getUsePackages()
+			val List<RegisteredPackage> usePackages = this.applicationModel.getUsePackages()
 			for (RegisteredPackage usePackage : usePackages) {
 				val ResourceSet resourceSet = usePackage.getEPackage().eResource().getResourceSet()
 				usePackage.eResource().getContents().get(0)
@@ -175,7 +175,7 @@ public class ForeignModelResource extends ResourceImpl {
 			}
 
 			// Get the resource
-			val Resource source = resourceSet.getResource(URI::createPlatformResourceURI(this.aspectModel.getModel(), true), true)
+			val Resource source = resourceSet.getResource(URI::createPlatformResourceURI(this.applicationModel.getModel(), true), true)
 
 			// create main result model
 			this.resultModel = this.structureFactory.createModel()
@@ -211,6 +211,7 @@ public class ForeignModelResource extends ResourceImpl {
 						names.add(fullQualifiedName as String)
 					val QualifiedName name = QualifiedName.create(names)
 					container.setName(name.getLastSegment())
+					container.setPredecessor(component)
 					container.addInterfaces(component)
 					insertContainerInHierarchy(this.resultModel,container,name)
 				}				
@@ -233,6 +234,7 @@ public class ForeignModelResource extends ResourceImpl {
 			val interfaze = this.structureFactory.createContainer()
 			val interfazeDeclaration = this.interfaceMap.get(name)
 			interfaze.setName(name)
+			interfaze.setPredecessor(providedInterface)
 			interfaze.methods.createMethods(interfazeDeclaration.determineMethods)
 			container.contents.add(interfaze)
 		}

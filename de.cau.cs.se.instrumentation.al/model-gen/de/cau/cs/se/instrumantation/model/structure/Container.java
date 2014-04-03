@@ -21,7 +21,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Container extends NamedElement, Containment {
+public interface Container extends NamedElement, Containment, Traceability {
 	/**
 	 * Returns the value of the '<em><b>Modifier</b></em>' reference.
 	 * <!-- begin-user-doc -->

@@ -112,6 +112,10 @@ public class StructureAdapterFactory extends AdapterFactoryImpl {
 				return createContainmentAdapter();
 			}
 			@Override
+			public Adapter caseTraceability(Traceability object) {
+				return createTraceabilityAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -282,6 +286,20 @@ public class StructureAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createContainmentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumantation.model.structure.Traceability <em>Traceability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.cau.cs.se.instrumantation.model.structure.Traceability
+	 * @generated
+	 */
+	public Adapter createTraceabilityAdapter() {
 		return null;
 	}
 
