@@ -27,6 +27,6 @@ aspect TradingSystem.Inventory.Data.Enterprise.EnterpriseQueryIf
 }
 
 // well this should cause an error
-aspect Inventory.TradingSystem {
+/*aspect Inventory.TradingSystem {
 	before AbstractOperationEvent (0,1,1,1)
-}
+}*/

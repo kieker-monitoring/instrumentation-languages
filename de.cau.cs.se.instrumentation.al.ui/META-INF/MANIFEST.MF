@@ -26,4 +26,4 @@ Export-Package: de.cau.cs.se.instrumentation.al.ui.quickfix,
  de.cau.cs.se.instrumentation.al.ui.contentassist,
  de.cau.cs.se.instrumentation.al.ui.contentassist.antlr,
  de.cau.cs.se.instrumentation.al.ui.internal
-Bundle-Activator: de.cau.cs.se.instrumentation.al.ui.internal.ApplicationLangActivator
+Bundle-Activator: de.cau.cs.se.instrumentation.al.ui.internal.AspectLangActivator

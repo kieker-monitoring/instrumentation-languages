@@ -27,8 +27,8 @@ import de.cau.cs.se.instrumantation.model.structure.ParameterModifier;
 import de.cau.cs.se.instrumantation.model.structure.StructureFactory;
 import de.cau.cs.se.instrumantation.model.structure.Type;
 import de.cau.cs.se.instrumantation.model.structure.TypeReference;
-import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel;
-import de.cau.cs.se.instrumentation.al.applicationLang.RegisteredPackage;
+import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel;
+import de.cau.cs.se.instrumentation.al.aspectLang.RegisteredPackage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
@@ -57,20 +57,35 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 /**
- * Simulates a real source by mapping the a PCM model to our model.
+ * Simulates a real resource by mapping the a PCM model to our hierarchy model.
  * 
  * @author Reiner Jung - initial contribution
  */
 @SuppressWarnings("all")
 public class ForeignModelResource extends ResourceImpl {
-  private final StructureFactory structure = StructureFactory.eINSTANCE;
+  /**
+   * hierarchy mapping model factory.
+   */
+  private final StructureFactory structureFactory = StructureFactory.eINSTANCE;
   
-  private final ApplicationModel applicationModel;
+  /**
+   * Aspect language model.
+   */
+  private final ApplicationModel aspectModel;
   
+  /**
+   * Resulting hierarchy model.
+   */
   private Model resultModel;
   
+  /**
+   * Helper variable to prohibit recursion of model loading.
+   */
   private boolean loading = false;
   
+  /**
+   * Map containing all interface declarations.
+   */
   private final Map<String,EObject> interfaceMap = new Function0<Map<String,EObject>>() {
     public Map<String,EObject> apply() {
       HashMap<String,EObject> _hashMap = new HashMap<String, EObject>();
@@ -84,11 +99,18 @@ public class ForeignModelResource extends ResourceImpl {
    * @param uri of the foreign model
    * @param model the application model
    */
-  public ForeignModelResource(final URI uri, final ApplicationModel model) {
+  public ForeignModelResource(final URI uri, final ApplicationModel aspectModel) {
     super(uri);
-    this.applicationModel = model;
+    this.aspectModel = aspectModel;
   }
   
+  /**
+   * Return an EObject with the name specified by the uriFragment.
+   * 
+   * @param uriFragment
+   * 
+   * @return the EObject identified by the uriFragment or null if no such object exists.
+   */
   public EObject getEObject(final String uriFragment) {
     EList<EObject> _contents = this.getContents();
     EObject _get = _contents.get(0);
@@ -109,6 +131,13 @@ public class ForeignModelResource extends ResourceImpl {
     }
   }
   
+  /**
+   * Compute the uriFragment for a given EObject.
+   * 
+   * @param eObject the object the fragment is computed for.
+   * 
+   * @return returns the uriFragment for the given object.
+   */
   public String getURIFragment(final EObject eObject) {
     if ((eObject instanceof NamedElement)) {
       return ((NamedElement) eObject).getName();
@@ -121,6 +150,9 @@ public class ForeignModelResource extends ResourceImpl {
     }
   }
   
+  /**
+   * load the resource iff it is not already loaded.
+   */
   public void load(final Map<? extends Object,? extends Object> options) throws IOException {
     boolean _not = (!this.isLoaded);
     if (_not) {
@@ -128,6 +160,9 @@ public class ForeignModelResource extends ResourceImpl {
     }
   }
   
+  /**
+   * Saving this resource is not allowed, as it is a virtual resource.
+   */
   public void save(final Map<? extends Object,? extends Object> options) throws IOException {
     UnsupportedOperationException _unsupportedOperationException = new UnsupportedOperationException();
     throw _unsupportedOperationException;
@@ -164,14 +199,20 @@ public class ForeignModelResource extends ResourceImpl {
     }
   }
   
+  /**
+   * Helper routine to get a special part of the result model.
+   */
   public EList<Type> getAllDataTypes() {
     return this.resultModel.getTypes();
   }
   
+  /**
+   * Create an result model for a given ecore model.
+   */
   private Boolean createModel() {
     Boolean _xifexpression = null;
     boolean _and = false;
-    boolean _notEquals = (!Objects.equal(this.applicationModel, null));
+    boolean _notEquals = (!Objects.equal(this.aspectModel, null));
     if (!_notEquals) {
       _and = false;
     } else {
@@ -182,7 +223,7 @@ public class ForeignModelResource extends ResourceImpl {
       boolean _xblockexpression = false;
       {
         this.loading = true;
-        final List<RegisteredPackage> usePackages = this.applicationModel.getUsePackages();
+        final List<RegisteredPackage> usePackages = this.aspectModel.getUsePackages();
         for (final RegisteredPackage usePackage : usePackages) {
           {
             EPackage _ePackage = usePackage.getEPackage();
@@ -204,13 +245,12 @@ public class ForeignModelResource extends ResourceImpl {
             extensiontoFactoryMap.put(_name, _xMIResourceFactoryImpl);
           }
         }
-        String _model = this.applicationModel.getModel();
+        String _model = this.aspectModel.getModel();
         URI _createPlatformResourceURI = URI.createPlatformResourceURI(_model, true);
         final Resource source = this.resourceSet.getResource(_createPlatformResourceURI, true);
-        Model _createModel = this.structure.createModel();
+        Model _createModel = this.structureFactory.createModel();
         this.resultModel = _createModel;
         this.determineInterfaces(source);
-        this.determineDataTypes(source);
         this.determineContainerHierarchy(source);
         EList<EObject> _contents = this.getContents();
         _contents.add(this.resultModel);
@@ -244,7 +284,7 @@ public class ForeignModelResource extends ResourceImpl {
           final EList<EObject> components = ((EList<EObject>) _feature);
           for (final EObject component : components) {
             {
-              final Container container = this.structure.createContainer();
+              final Container container = this.structureFactory.createContainer();
               Object _feature_1 = this.getFeature(component, "entityName");
               final String fullQualifiedName = ((String) _feature_1);
               final String[] names = fullQualifiedName.split("\\.");
@@ -281,7 +321,7 @@ public class ForeignModelResource extends ResourceImpl {
       {
         Object _feature_1 = this.getFeature(providedInterface, "entityName");
         final String name = ((String) _feature_1);
-        final Container interfaze = this.structure.createContainer();
+        final Container interfaze = this.structureFactory.createContainer();
         final EObject interfazeDeclaration = this.interfaceMap.get(name);
         interfaze.setName(name);
         EList<Method> _methods = interfaze.getMethods();
@@ -315,10 +355,10 @@ public class ForeignModelResource extends ResourceImpl {
    * @return returns an application model method declaration.
    */
   private Method createMethod(final EObject signature) {
-    final Method method = this.structure.createMethod();
+    final Method method = this.structureFactory.createMethod();
     Object _feature = this.getFeature(signature, "entityName");
     method.setName(((String) _feature));
-    final MethodModifier modifier = this.structure.createMethodModifier();
+    final MethodModifier modifier = this.structureFactory.createMethodModifier();
     modifier.setName("public");
     method.setModifier(modifier);
     TypeReference _createTypeReference = null;
@@ -349,7 +389,7 @@ public class ForeignModelResource extends ResourceImpl {
    * @return the application model parameter
    */
   private Parameter createParameter(final EObject object) {
-    final Parameter parameter = this.structure.createParameter();
+    final Parameter parameter = this.structureFactory.createParameter();
     Object _feature = this.getFeature(object, "parameterName");
     parameter.setName(((String) _feature));
     Object _feature_1 = this.getFeature(object, "modifier__Parameter");
@@ -372,7 +412,7 @@ public class ForeignModelResource extends ResourceImpl {
    * @return returns the application model type reference.
    */
   private TypeReference createTypeReference(final EObject object) {
-    final TypeReference typeReference = this.structure.createTypeReference();
+    final TypeReference typeReference = this.structureFactory.createTypeReference();
     EClass _eClass = object.eClass();
     boolean _notEquals = (!Objects.equal(_eClass, null));
     if (_notEquals) {
@@ -428,7 +468,7 @@ public class ForeignModelResource extends ResourceImpl {
     Type type = IterableExtensions.<Type>findFirst(_types, _function);
     boolean _equals = Objects.equal(type, null);
     if (_equals) {
-      Type _createType = this.structure.createType();
+      Type _createType = this.structureFactory.createType();
       type = _createType;
       type.setName("EMPTY");
       EList<Type> _types_1 = this.resultModel.getTypes();
@@ -457,7 +497,7 @@ public class ForeignModelResource extends ResourceImpl {
     Type type = IterableExtensions.<Type>findFirst(_types, _function);
     boolean _equals = Objects.equal(type, null);
     if (_equals) {
-      Type _createType = this.structure.createType();
+      Type _createType = this.structureFactory.createType();
       type = _createType;
       type.setName(typeName);
       EList<Type> _types_1 = this.resultModel.getTypes();
@@ -483,7 +523,7 @@ public class ForeignModelResource extends ResourceImpl {
     Type type = IterableExtensions.<Type>findFirst(_types, _function);
     boolean _equals = Objects.equal(type, null);
     if (_equals) {
-      Type _createType = this.structure.createType();
+      Type _createType = this.structureFactory.createType();
       type = _createType;
       type.setName(typeName);
       EList<Type> _types_1 = this.resultModel.getTypes();
@@ -493,7 +533,7 @@ public class ForeignModelResource extends ResourceImpl {
   }
   
   private ParameterModifier createParameterModifier(final Object object) {
-    final ParameterModifier modifier = this.structure.createParameterModifier();
+    final ParameterModifier modifier = this.structureFactory.createParameterModifier();
     return modifier;
   }
   
@@ -557,7 +597,7 @@ public class ForeignModelResource extends ResourceImpl {
         List<String> _segments = _skipLast.getSegments();
         for (final String name : _segments) {
           {
-            final Container newContainer = this.structure.createContainer();
+            final Container newContainer = this.structureFactory.createContainer();
             newContainer.setName(name);
             EList<Container> _contents_1 = runningParent.getContents();
             _contents_1.add(newContainer);
@@ -594,20 +634,6 @@ public class ForeignModelResource extends ResourceImpl {
       System.out.println("Double container declaration");
     }
     return _xifexpression;
-  }
-  
-  /**
-   * @param source
-   */
-  private void determineDataTypes(final Resource source) {
-    final Iterator<EObject> iterator = source.getAllContents();
-    boolean _hasNext = iterator.hasNext();
-    boolean _while = _hasNext;
-    while (_while) {
-      final EObject o = iterator.next();
-      boolean _hasNext_1 = iterator.hasNext();
-      _while = _hasNext_1;
-    }
   }
   
   /**

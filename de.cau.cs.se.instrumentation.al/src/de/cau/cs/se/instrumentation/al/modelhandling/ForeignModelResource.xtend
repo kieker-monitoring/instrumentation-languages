@@ -34,8 +34,8 @@ import de.cau.cs.se.instrumantation.model.structure.Container
 import de.cau.cs.se.instrumantation.model.structure.Containment
 import de.cau.cs.se.instrumantation.model.structure.NamedElement
 import de.cau.cs.se.instrumantation.model.structure.StructureFactory
-import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel
-import de.cau.cs.se.instrumentation.al.applicationLang.RegisteredPackage
+import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel
+import de.cau.cs.se.instrumentation.al.aspectLang.RegisteredPackage
 import org.eclipse.xtext.naming.QualifiedName
 import org.eclipse.emf.ecore.EStructuralFeature
 import java.util.HashMap
@@ -47,16 +47,21 @@ import de.cau.cs.se.instrumantation.model.structure.ParameterModifier
 import de.cau.cs.se.instrumantation.model.structure.Type
 
 /**
- * Simulates a real source by mapping the a PCM model to our model.
+ * Simulates a real resource by mapping the a PCM model to our hierarchy model.
  * 
  * @author Reiner Jung - initial contribution
  */
 public class ForeignModelResource extends ResourceImpl {
 
-	private final StructureFactory structure = StructureFactory.eINSTANCE
-	private final ApplicationModel applicationModel
+	/** hierarchy mapping model factory. */
+	private final StructureFactory structureFactory = StructureFactory.eINSTANCE
+	/** Aspect language model. */
+	private final ApplicationModel aspectModel
+	/** Resulting hierarchy model. */
 	private Model resultModel
+	/** Helper variable to prohibit recursion of model loading. */
 	private boolean loading = false
+	/** Map containing all interface declarations. */
 	private final Map<String,EObject> interfaceMap = new HashMap<String,EObject>()
 	
 	/**
@@ -65,11 +70,18 @@ public class ForeignModelResource extends ResourceImpl {
 	 * @param uri of the foreign model
 	 * @param model the application model
 	 */
-	public new(URI uri, ApplicationModel model) {
+	public new(URI uri, ApplicationModel aspectModel) {
 		super(uri)
-		this.applicationModel = model
+		this.aspectModel = aspectModel
 	}
 
+	/**
+	 * Return an EObject with the name specified by the uriFragment.
+	 * 
+	 * @param uriFragment
+	 * 
+	 * @return the EObject identified by the uriFragment or null if no such object exists. 
+	 */
 	override EObject getEObject(String uriFragment) {
 		val EObject object = (this.getContents().get(0) as Model).contents.findFirst[uriFragment.equals(this.getURIFragment(it))]
 		if (object != null)
@@ -79,6 +91,13 @@ public class ForeignModelResource extends ResourceImpl {
 		}
 	}
 
+	/**
+	 * Compute the uriFragment for a given EObject.
+	 * 
+	 * @param eObject the object the fragment is computed for.
+	 * 
+	 * @return returns the uriFragment for the given object.
+	 */
 	override String getURIFragment(EObject eObject) {
 		if (eObject instanceof NamedElement) {
 			return (eObject as NamedElement).name
@@ -89,12 +108,18 @@ public class ForeignModelResource extends ResourceImpl {
 		}
 	}
 
+	/**
+	 * load the resource iff it is not already loaded.
+	 */
 	override void load(Map<?, ?> options) throws IOException {
 		if (!this.isLoaded) {
 			this.doLoad(null, null)
 		}
 	}
 
+	/**
+	 * Saving this resource is not allowed, as it is a virtual resource.
+	 */
 	override void save(Map<?, ?> options) throws IOException {
 		throw new UnsupportedOperationException()
 	}
@@ -122,15 +147,21 @@ public class ForeignModelResource extends ResourceImpl {
 		}
 	}
 	
+	/**
+	 * Helper routine to get a special part of the result model.
+	 */
 	def EList<Type> getAllDataTypes() {
 		return this.resultModel.types
 	}
 
+	/**
+	 * Create an result model for a given ecore model.
+	 */
 	private def createModel() {
-		if (this.applicationModel != null && !this.loading) {
+		if (this.aspectModel != null && !this.loading) {
 			this.loading = true
 			// register the meta model (package) and its packages (Steinberg 2009, EMF 15.3.4)
-			val List<RegisteredPackage> usePackages = this.applicationModel.getUsePackages()
+			val List<RegisteredPackage> usePackages = this.aspectModel.getUsePackages()
 			for (RegisteredPackage usePackage : usePackages) {
 				val ResourceSet resourceSet = usePackage.getEPackage().eResource().getResourceSet()
 				usePackage.eResource().getContents().get(0)
@@ -144,14 +175,12 @@ public class ForeignModelResource extends ResourceImpl {
 			}
 
 			// Get the resource
-			val Resource source = resourceSet.getResource(URI::createPlatformResourceURI(this.applicationModel.getModel(), true), true)
+			val Resource source = resourceSet.getResource(URI::createPlatformResourceURI(this.aspectModel.getModel(), true), true)
 
 			// create main result model
-			this.resultModel = this.structure.createModel()
+			this.resultModel = this.structureFactory.createModel()
 			// determine all interfaces
 			determineInterfaces(source)
-			// determine all datatypes
-			determineDataTypes(source)
 			// compose container hierarchy
 			determineContainerHierarchy(source)
 			// contents must be called via its getter otherwise xtend will used the variable which may
@@ -175,7 +204,7 @@ public class ForeignModelResource extends ResourceImpl {
 			if (object.eClass().getName().equals("Repository")) {
 				val components = object.getFeature("components__Repository") as EList<EObject>
 				for (EObject component : components) {
-					val container = this.structure.createContainer()
+					val container = this.structureFactory.createContainer()
 					val fullQualifiedName = component.getFeature("entityName") as String
 					val names = fullQualifiedName.split('\\.')
 					if (names.size == 0)
@@ -201,7 +230,7 @@ public class ForeignModelResource extends ResourceImpl {
 		val providedInterfaces = component.getFeature("providedRoles_InterfaceProvidingEntity") as EList<EObject>
 		for (EObject providedInterface : providedInterfaces) {
 			val name = providedInterface.getFeature("entityName") as String
-			val interfaze = this.structure.createContainer()
+			val interfaze = this.structureFactory.createContainer()
 			val interfazeDeclaration = this.interfaceMap.get(name)
 			interfaze.setName(name)
 			interfaze.methods.createMethods(interfazeDeclaration.determineMethods)
@@ -225,9 +254,9 @@ public class ForeignModelResource extends ResourceImpl {
 	 * @return returns an application model method declaration.
 	 */
 	private def Method createMethod(EObject signature) {
-		val method = this.structure.createMethod()
+		val method = this.structureFactory.createMethod()
 		method.setName(signature.getFeature("entityName") as String)
-		val modifier = this.structure.createMethodModifier()
+		val modifier = this.structureFactory.createMethodModifier()
 		modifier.setName("public")
 		method.setModifier(modifier)
 		// returnType__OperationSignature
@@ -248,7 +277,7 @@ public class ForeignModelResource extends ResourceImpl {
 	 * @return the application model parameter
 	 */
 	private def Parameter createParameter(EObject object) {
-		val parameter = this.structure.createParameter()
+		val parameter = this.structureFactory.createParameter()
 		parameter.setName(object.getFeature("parameterName") as String)
 		parameter.setModifier(object.getFeature("modifier__Parameter").createParameterModifier)
 		parameter.setType(object.getReferenceFeature("dataType__Parameter")?.createTypeReference)
@@ -264,7 +293,7 @@ public class ForeignModelResource extends ResourceImpl {
 	 * @return returns the application model type reference.
 	 */
 	private def createTypeReference(EObject object) {
-		val typeReference = this.structure.createTypeReference()
+		val typeReference = this.structureFactory.createTypeReference()
 		if (object.eClass != null) {
 			if (object.eClass.name != null) {
 				switch (object.eClass.name) {
@@ -288,7 +317,7 @@ public class ForeignModelResource extends ResourceImpl {
 	private def emptyType() {
 		var type = this.resultModel.types.findFirst[it.name.equals("EMPTY")]
 		if (type == null) {
-			type = this.structure.createType()
+			type = this.structureFactory.createType()
 			type.setName("EMPTY")
 			this.resultModel.types.add(type)
 		}
@@ -307,7 +336,7 @@ public class ForeignModelResource extends ResourceImpl {
 		val typeName = object.toString
 		var type = this.resultModel.types.findFirst[it.name.equals(typeName)]
 		if (type == null) {
-			type = this.structure.createType()
+			type = this.structureFactory.createType()
 			type.setName(typeName)
 			this.resultModel.types.add(type)
 		}
@@ -322,7 +351,7 @@ public class ForeignModelResource extends ResourceImpl {
 	private def findCompositeType(String typeName) {
 		var type = this.resultModel.types.findFirst[it.name.equals(typeName)]
 		if (type == null) {
-			type = this.structure.createType()
+			type = this.structureFactory.createType()
 			type.setName(typeName)
 			this.resultModel.types.add(type)
 		}
@@ -330,7 +359,7 @@ public class ForeignModelResource extends ResourceImpl {
 	}
 	
 	private def ParameterModifier createParameterModifier(Object object) {
-		val modifier = this.structure.createParameterModifier()
+		val modifier = this.structureFactory.createParameterModifier()
 		return modifier
 	}
 	
@@ -378,7 +407,7 @@ public class ForeignModelResource extends ResourceImpl {
 			else { // no match found, create missing container
 				var runningParent = parent
 				for (String name : fullQualifiedName.skipLast(1).segments) {
-					val newContainer = this.structure.createContainer()
+					val newContainer = this.structureFactory.createContainer()
 					newContainer.setName(name)
 					runningParent.contents.add(newContainer)
 					runningParent = newContainer
@@ -396,18 +425,6 @@ public class ForeignModelResource extends ResourceImpl {
 			parent.contents.add(entity)
 		} else
 			System::out.println("Double container declaration")
-	}
-
-	/**
-	 * 
-	 * @param source
-	 */
-	private def determineDataTypes(Resource source) {
-		val Iterator<EObject> iterator = source.getAllContents()
-		while (iterator.hasNext()) {
-			val EObject o = iterator.next()
-			
-		}
 	}
 
 	/**

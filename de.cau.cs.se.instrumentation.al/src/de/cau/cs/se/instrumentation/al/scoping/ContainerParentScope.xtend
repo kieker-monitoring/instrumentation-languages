@@ -3,11 +3,11 @@ package de.cau.cs.se.instrumentation.al.scoping
 import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.naming.QualifiedName
 import org.eclipse.emf.ecore.EObject
-import de.cau.cs.se.instrumentation.al.applicationLang.ContainerNode
+import de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode
+import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery
 import de.cau.cs.se.instrumantation.model.structure.Container
 import org.eclipse.xtext.resource.EObjectDescription
 import de.cau.cs.se.instrumantation.model.structure.NamedElement
-import de.cau.cs.se.instrumentation.al.applicationLang.LocationQuery
 
 class ContainerParentScope implements IScope {
 		

@@ -26,7 +26,7 @@ import org.eclipse.xtext.util.Strings;
 
 import de.cau.cs.se.instrumantation.model.structure.NamedElement;
 import de.cau.cs.se.instrumantation.model.structure.Type;
-import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel;
+import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel;
 
 /**
  * The type provider allows to retrieve a list of all primitive types and provides type name lookup.

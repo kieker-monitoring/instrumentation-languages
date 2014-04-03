@@ -12,8 +12,8 @@ import org.eclipse.xtext.scoping.IScope
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EClass
-import de.cau.cs.se.instrumentation.al.applicationLang.Model
-import de.cau.cs.se.instrumentation.al.applicationLang.RegisteredPackage
+import de.cau.cs.se.instrumentation.al.aspectLang.Model
+import de.cau.cs.se.instrumentation.al.aspectLang.RegisteredPackage
 
 /**
  * @author Reiner Jung

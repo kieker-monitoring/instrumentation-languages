@@ -28,7 +28,7 @@ import com.google.common.base.Predicate;
 import com.google.inject.Inject;
 import org.eclipse.emf.ecore.EcorePackage$Literals
 import org.eclipse.xtext.resource.IEObjectDescription
-import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel
+import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel
 
 class ForeignModelGlobalScopeProvider extends DefaultGlobalScopeProvider {
 	@Inject

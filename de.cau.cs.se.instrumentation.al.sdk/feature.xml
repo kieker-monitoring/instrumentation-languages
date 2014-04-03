@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature id="de.cau.cs.se.instrumentation.al.sdk"
-	label="ApplicationLang SDK Feature "
+	label="AspectLang SDK Feature "
 	version="1.0.0.qualifier">
 	<plugin
 			id="de.cau.cs.se.instrumentation.al"

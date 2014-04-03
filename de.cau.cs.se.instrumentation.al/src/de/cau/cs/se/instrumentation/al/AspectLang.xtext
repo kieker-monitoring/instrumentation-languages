@@ -1,0 +1,151 @@
+grammar de.cau.cs.se.instrumentation.al.AspectLang with org.eclipse.xtext.common.Terminals
+// de.cau.cs.kieler.core.annotations.text.Annotations 
+
+generate aspectLang "http://www.cau.de/cs/se/instrumentation/al/AspectLang"
+
+//import "http://kieler.cs.cau.de/annotations" as annotations
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+// TODO fix this, in a stable setup, the nsURI should work
+//import "http://www.cau.de/cs/se/instrumentation/rl/RecordLang" as irl
+import "platform:/resource/de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/RecordLang.ecore" as irl
+import "http://modelstructure.se.cs.cau.de/structure" as structure
+
+Model:
+	'package' name = QualifiedName
+	(metamodels += RegisteredPackage)*
+	(imports += Import)*
+	(sources += ApplicationModel)*
+	(aspects += Aspect)*
+;
+
+Import:
+	'import' importedNamespace = QualifiedNameWithWildcard
+;
+
+RegisteredPackage:
+	'register' name=ID ePackage=[ecore::EPackage|STRING]
+;
+
+ApplicationModel:
+	'use' usePackages+=[RegisteredPackage|ID] (',' usePackages+=[RegisteredPackage|ID])* 'on' name=ID model=STRING 
+;
+
+QualifiedName:
+  ID (=>'.' ID)*;
+
+QualifiedNameWithWildcard:
+	QualifiedName ('.' '*')?
+;
+
+// define subgraph-pattern to locate structures in models
+// define selector for reference destination
+
+Aspect:
+	//annotation=Annotation
+	'aspect' query=Query '{'
+		collectors+=Collector
+	'}'
+;
+
+Query:
+	location=LocationQuery 
+	(
+		(modifier=[structure::MethodModifier|ID]|'*')
+		(returnType=[structure::Type|ID]|'*') 
+		method=[structure::Method|ID]
+		'(' parameter+=ParameterPattern (',' parameter+=ParameterPattern)* ')'
+	)?
+;
+
+ParameterPattern:
+	(modifier=[structure::ParameterModifier|ID]|'*')
+	type=[structure::Type|ID]
+	parameter=[structure::Parameter|ID]
+;
+
+LocationQuery:
+	node=Node ('.' specialization=LocationQuery)? 
+;
+
+
+Node:
+	(SubPathNode | WildcardNode | ContainerNode) (parameter=ParamQuery)?  
+;
+
+ParamQuery: // extend ParamQuery to boolean expression with | & !
+	'[' queries+=ParamCompare+ ']'
+;
+
+ParamCompare:
+	left=Value (operator=Operator right=Value)
+;
+
+Value:
+	StringValue | IntValue | FloatValue | ReferenceValue
+;
+
+FloatValue:
+	value=INT //FLOAT
+;
+
+IntValue:
+	value=INT
+;
+
+StringValue:
+	value=STRING
+;
+
+ReferenceValue:
+	(query=LocationQuery) parameter=Parameter
+;
+
+Parameter:
+	RuntimeProperty | ReflectionProperty
+;
+
+RuntimeProperty:
+	'#' reference=ID
+;
+
+ReflectionProperty:
+	'$' function=ReflectionFunction
+;
+
+enum ReflectionFunction:
+	NAME = 'name' |
+	SIGNATURE = 'signature' |
+	CLASS ='class' |
+	RETURN_TYPE = 'return-type'
+;
+
+enum Operator:
+	EQ = '=' |
+	LIKE = '~' |
+	NE = '!=' |
+	GR = '>' |
+	LW = '<' |
+	GE = '>=' |
+	LE = '<='
+;
+
+ContainerNode:
+	container=[structure::Container|ID]
+;
+
+WildcardNode: {WildcardNode}
+	'*'
+;
+
+SubPathNode: {SubPathNode}
+	'**'
+;
+
+Collector:
+	insertionPoint=InsertionPoint type=[irl::RecordType|QualifiedName] '(' (initializations+=Value (',' initializations+=Value)*)? ')'
+;
+
+enum InsertionPoint: 
+	BEFORE = 'before' |
+	AFTER = 'after'
+;

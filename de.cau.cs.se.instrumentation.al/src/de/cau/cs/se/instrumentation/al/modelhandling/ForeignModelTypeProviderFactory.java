@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import com.google.inject.Inject;
 
-import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel;
+import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel;
 
 /**
  * The type provider factory controls the type provider, which is created by this class.

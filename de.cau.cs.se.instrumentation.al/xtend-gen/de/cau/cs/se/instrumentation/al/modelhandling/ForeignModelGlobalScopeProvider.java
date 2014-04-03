@@ -19,7 +19,7 @@ import com.google.common.base.Objects;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
 import com.google.inject.Inject;
-import de.cau.cs.se.instrumentation.al.applicationLang.ApplicationModel;
+import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel;
 import de.cau.cs.se.instrumentation.al.modelhandling.ForeignModelTypeProviderFactory;
 import de.cau.cs.se.instrumentation.al.modelhandling.ForeignModelTypeScope;
 import de.cau.cs.se.instrumentation.al.modelhandling.IForeignModelTypeProvider;

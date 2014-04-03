@@ -2,8 +2,8 @@ package de.cau.cs.se.instrumentation.al.scoping;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterators;
-import de.cau.cs.se.instrumentation.al.applicationLang.Model;
-import de.cau.cs.se.instrumentation.al.applicationLang.RegisteredPackage;
+import de.cau.cs.se.instrumentation.al.aspectLang.Model;
+import de.cau.cs.se.instrumentation.al.aspectLang.RegisteredPackage;
 import java.util.Iterator;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;

@@ -5,9 +5,9 @@
 
   <extension point="org.eclipse.emf.ecore.generated_package">
     <package 
-       uri = "http://www.cau.de/cs/se/instrumentation/al/ApplicationLang" 
-       class = "de.cau.cs.se.instrumentation.al.applicationLang.ApplicationLangPackage"
-       genModel = "de/cau/cs/se/instrumentation/al/ApplicationLang.genmodel" /> 
+       uri = "http://www.cau.de/cs/se/instrumentation/al/AspectLang" 
+       class = "de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage"
+       genModel = "de/cau/cs/se/instrumentation/al/AspectLang.genmodel" /> 
 	
   </extension>
 
