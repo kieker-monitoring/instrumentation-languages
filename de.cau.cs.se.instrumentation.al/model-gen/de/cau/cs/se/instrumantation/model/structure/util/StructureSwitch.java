@@ -77,6 +77,7 @@ public class StructureSwitch<T> extends Switch<T> {
 			case StructurePackage.TYPE_REFERENCE: {
 				TypeReference typeReference = (TypeReference)theEObject;
 				T result = caseTypeReference(typeReference);
+				if (result == null) result = caseTraceability(typeReference);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

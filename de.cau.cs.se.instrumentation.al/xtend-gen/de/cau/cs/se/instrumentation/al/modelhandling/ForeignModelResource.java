@@ -325,6 +325,7 @@ public class ForeignModelResource extends ResourceImpl {
         final Container interfaze = this.structureFactory.createContainer();
         final EObject interfazeDeclaration = this.interfaceMap.get(name);
         interfaze.setName(name);
+        interfaze.setPredecessor(providedInterface);
         EList<Method> _methods = interfaze.getMethods();
         Collection<EObject> _determineMethods = this.determineMethods(interfazeDeclaration);
         this.createMethods(_methods, _determineMethods);
@@ -359,6 +360,7 @@ public class ForeignModelResource extends ResourceImpl {
     final Method method = this.structureFactory.createMethod();
     Object _feature = this.getFeature(signature, "entityName");
     method.setName(((String) _feature));
+    method.setPredecessor(signature);
     final MethodModifier modifier = this.structureFactory.createMethodModifier();
     modifier.setName("public");
     method.setModifier(modifier);
@@ -393,6 +395,7 @@ public class ForeignModelResource extends ResourceImpl {
     final Parameter parameter = this.structureFactory.createParameter();
     Object _feature = this.getFeature(object, "parameterName");
     parameter.setName(((String) _feature));
+    parameter.setPredecessor(object);
     Object _feature_1 = this.getFeature(object, "modifier__Parameter");
     ParameterModifier _createParameterModifier = this.createParameterModifier(_feature_1);
     parameter.setModifier(_createParameterModifier);
@@ -414,6 +417,7 @@ public class ForeignModelResource extends ResourceImpl {
    */
   private TypeReference createTypeReference(final EObject object) {
     final TypeReference typeReference = this.structureFactory.createTypeReference();
+    typeReference.setPredecessor(object);
     EClass _eClass = object.eClass();
     boolean _notEquals = (!Objects.equal(_eClass, null));
     if (_notEquals) {

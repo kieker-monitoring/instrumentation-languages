@@ -1,3 +1,18 @@
+/**
+ * Copyright 2013 Kieker Project (http://kieker-monitoring.net)
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package de.cau.cs.se.instrumentation.al.scoping;
 
 import com.google.common.base.Objects;
@@ -15,14 +30,25 @@ import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
+/**
+ * TODO why is this named ContainerParentScope
+ * 
+ * @author Reiner Jung
+ */
 @SuppressWarnings("all")
 public class ContainerParentScope implements IScope {
   private Iterable<NamedElement> types;
   
   private ContainerNode node;
   
-  public ContainerParentScope(final Iterable<NamedElement> elements, final ContainerNode node) {
-    this.types = this.types;
+  /**
+   * Constructor.
+   * 
+   * @param types list of type name
+   * @param node representing a hierarchy model node
+   */
+  public ContainerParentScope(final Iterable<NamedElement> types, final ContainerNode node) {
+    this.types = types;
     this.node = node;
   }
   

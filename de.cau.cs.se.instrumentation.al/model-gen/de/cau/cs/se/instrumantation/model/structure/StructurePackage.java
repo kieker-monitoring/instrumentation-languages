@@ -150,33 +150,6 @@ public interface StructurePackage extends EPackage {
 	int TYPE_REFERENCE = 1;
 
 	/**
-	 * The feature id for the '<em><b>Type</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPE_REFERENCE__TYPE = 0;
-
-	/**
-	 * The number of structural features of the '<em>Type Reference</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPE_REFERENCE_FEATURE_COUNT = 1;
-
-	/**
-	 * The number of operations of the '<em>Type Reference</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPE_REFERENCE_OPERATION_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.ContainerImpl <em>Container</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -185,6 +158,149 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 */
 	int CONTAINER = 2;
+
+	/**
+	 * The meta object id for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.MethodImpl <em>Method</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.cau.cs.se.instrumantation.model.structure.impl.MethodImpl
+	 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getMethod()
+	 * @generated
+	 */
+	int METHOD = 3;
+
+	/**
+	 * The meta object id for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.ParameterModifierImpl <em>Parameter Modifier</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.cau.cs.se.instrumantation.model.structure.impl.ParameterModifierImpl
+	 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getParameterModifier()
+	 * @generated
+	 */
+	int PARAMETER_MODIFIER = 4;
+
+	/**
+	 * The meta object id for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.ParameterImpl <em>Parameter</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.cau.cs.se.instrumantation.model.structure.impl.ParameterImpl
+	 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getParameter()
+	 * @generated
+	 */
+	int PARAMETER = 6;
+
+	/**
+	 * The meta object id for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.ModelImpl <em>Model</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.cau.cs.se.instrumantation.model.structure.impl.ModelImpl
+	 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getModel()
+	 * @generated
+	 */
+	int MODEL = 7;
+
+	/**
+	 * The meta object id for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.MethodModifierImpl <em>Method Modifier</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.cau.cs.se.instrumantation.model.structure.impl.MethodModifierImpl
+	 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getMethodModifier()
+	 * @generated
+	 */
+	int METHOD_MODIFIER = 8;
+
+	/**
+	 * The meta object id for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.ContainerModifierImpl <em>Container Modifier</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.cau.cs.se.instrumantation.model.structure.impl.ContainerModifierImpl
+	 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getContainerModifier()
+	 * @generated
+	 */
+	int CONTAINER_MODIFIER = 9;
+
+	/**
+	 * The meta object id for the '{@link de.cau.cs.se.instrumantation.model.structure.Containment <em>Containment</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.cau.cs.se.instrumantation.model.structure.Containment
+	 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getContainment()
+	 * @generated
+	 */
+	int CONTAINMENT = 10;
+
+	/**
+	 * The meta object id for the '{@link de.cau.cs.se.instrumantation.model.structure.Traceability <em>Traceability</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.cau.cs.se.instrumantation.model.structure.Traceability
+	 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getTraceability()
+	 * @generated
+	 */
+	int TRACEABILITY = 11;
+
+	/**
+	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACEABILITY__PREDECESSOR = 0;
+
+	/**
+	 * The number of structural features of the '<em>Traceability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACEABILITY_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Traceability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACEABILITY_OPERATION_COUNT = 0;
+
+	/**
+	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_REFERENCE__PREDECESSOR = TRACEABILITY__PREDECESSOR;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_REFERENCE__TYPE = TRACEABILITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Type Reference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_REFERENCE_FEATURE_COUNT = TRACEABILITY_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Type Reference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_REFERENCE_OPERATION_COUNT = TRACEABILITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -250,16 +366,6 @@ public interface StructurePackage extends EPackage {
 	int CONTAINER_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.MethodImpl <em>Method</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.cau.cs.se.instrumantation.model.structure.impl.MethodImpl
-	 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getMethod()
-	 * @generated
-	 */
-	int METHOD = 3;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -323,16 +429,6 @@ public interface StructurePackage extends EPackage {
 	int METHOD_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.ParameterModifierImpl <em>Parameter Modifier</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.cau.cs.se.instrumantation.model.structure.impl.ParameterModifierImpl
-	 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getParameterModifier()
-	 * @generated
-	 */
-	int PARAMETER_MODIFIER = 4;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -367,16 +463,6 @@ public interface StructurePackage extends EPackage {
 	 * @ordered
 	 */
 	int PARAMETER_MODIFIER_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.ParameterImpl <em>Parameter</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.cau.cs.se.instrumantation.model.structure.impl.ParameterImpl
-	 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getParameter()
-	 * @generated
-	 */
-	int PARAMETER = 6;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -431,46 +517,6 @@ public interface StructurePackage extends EPackage {
 	 * @ordered
 	 */
 	int PARAMETER_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.ModelImpl <em>Model</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.cau.cs.se.instrumantation.model.structure.impl.ModelImpl
-	 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getModel()
-	 * @generated
-	 */
-	int MODEL = 7;
-
-	/**
-	 * The meta object id for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.MethodModifierImpl <em>Method Modifier</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.cau.cs.se.instrumantation.model.structure.impl.MethodModifierImpl
-	 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getMethodModifier()
-	 * @generated
-	 */
-	int METHOD_MODIFIER = 8;
-
-	/**
-	 * The meta object id for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.ContainerModifierImpl <em>Container Modifier</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.cau.cs.se.instrumantation.model.structure.impl.ContainerModifierImpl
-	 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getContainerModifier()
-	 * @generated
-	 */
-	int CONTAINER_MODIFIER = 9;
-
-	/**
-	 * The meta object id for the '{@link de.cau.cs.se.instrumantation.model.structure.Containment <em>Containment</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.cau.cs.se.instrumantation.model.structure.Containment
-	 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getContainment()
-	 * @generated
-	 */
-	int CONTAINMENT = 10;
 
 	/**
 	 * The feature id for the '<em><b>Contents</b></em>' containment reference list.
@@ -606,44 +652,6 @@ public interface StructurePackage extends EPackage {
 	 * @ordered
 	 */
 	int CONTAINER_MODIFIER_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
-
-
-	/**
-	 * The meta object id for the '{@link de.cau.cs.se.instrumantation.model.structure.Traceability <em>Traceability</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.cau.cs.se.instrumantation.model.structure.Traceability
-	 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getTraceability()
-	 * @generated
-	 */
-	int TRACEABILITY = 11;
-
-	/**
-	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRACEABILITY__PREDECESSOR = 0;
-
-	/**
-	 * The number of structural features of the '<em>Traceability</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRACEABILITY_FEATURE_COUNT = 1;
-
-	/**
-	 * The number of operations of the '<em>Traceability</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRACEABILITY_OPERATION_COUNT = 0;
 
 
 	/**

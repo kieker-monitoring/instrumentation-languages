@@ -258,6 +258,7 @@ public class ForeignModelResource extends ResourceImpl {
 	private def Method createMethod(EObject signature) {
 		val method = this.structureFactory.createMethod()
 		method.setName(signature.getFeature("entityName") as String)
+		method.setPredecessor(signature)
 		val modifier = this.structureFactory.createMethodModifier()
 		modifier.setName("public")
 		method.setModifier(modifier)
@@ -281,6 +282,7 @@ public class ForeignModelResource extends ResourceImpl {
 	private def Parameter createParameter(EObject object) {
 		val parameter = this.structureFactory.createParameter()
 		parameter.setName(object.getFeature("parameterName") as String)
+		parameter.setPredecessor(object)
 		parameter.setModifier(object.getFeature("modifier__Parameter").createParameterModifier)
 		parameter.setType(object.getReferenceFeature("dataType__Parameter")?.createTypeReference)
 		
@@ -296,6 +298,7 @@ public class ForeignModelResource extends ResourceImpl {
 	 */
 	private def createTypeReference(EObject object) {
 		val typeReference = this.structureFactory.createTypeReference()
+		typeReference.setPredecessor(object)
 		if (object.eClass != null) {
 			if (object.eClass.name != null) {
 				switch (object.eClass.name) {

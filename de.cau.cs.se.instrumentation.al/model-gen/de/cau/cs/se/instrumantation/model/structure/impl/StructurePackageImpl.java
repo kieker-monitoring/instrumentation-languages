@@ -486,6 +486,7 @@ public class StructurePackageImpl extends EPackageImpl implements StructurePacka
 		// Add supertypes to classes
 		typeEClass.getESuperTypes().add(this.getNamedElement());
 		typeEClass.getESuperTypes().add(this.getTraceability());
+		typeReferenceEClass.getESuperTypes().add(this.getTraceability());
 		containerEClass.getESuperTypes().add(this.getNamedElement());
 		containerEClass.getESuperTypes().add(this.getContainment());
 		containerEClass.getESuperTypes().add(this.getTraceability());

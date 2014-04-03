@@ -2,7 +2,6 @@
  */
 package de.cau.cs.se.instrumantation.model.structure;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface TypeReference extends EObject {
+public interface TypeReference extends Traceability {
 
 	/**
 	 * Returns the value of the '<em><b>Type</b></em>' reference.
