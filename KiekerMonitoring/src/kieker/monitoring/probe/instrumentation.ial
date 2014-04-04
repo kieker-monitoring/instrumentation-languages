@@ -23,7 +23,7 @@ aspect TradingSystem.Inventory {
 	before AbstractEvent()
 }
  
-@J2EE
+@AspectJ
 aspect TradingSystem.Inventory.Data.Enterprise.EnterpriseQueryIf 
 	* * queryEnterpriseById (* INT enterpriseId, * aName pctx) {
 // AbstractEvent.timestamp
