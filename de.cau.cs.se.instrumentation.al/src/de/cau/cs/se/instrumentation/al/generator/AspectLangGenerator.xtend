@@ -18,6 +18,7 @@ package de.cau.cs.se.instrumentation.al.generator
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess
+import de.cau.cs.se.instrumentation.al.aspectLang.Aspect
 
 /**
  * Generates code from your model files on save.
@@ -27,11 +28,38 @@ import org.eclipse.xtext.generator.IFileSystemAccess
 class AspectLangGenerator implements IGenerator {
 	
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		
+		val aspects = resource.allContents.filter(typeof(Aspect))
+		aspects.forEach[it.createProbe(fsa)]
+		aspects.forEach[it.createConfiguration(fsa)]
 //		fsa.generateFile('greetings.txt', 'People to greet: ' + 
 //			resource.allContents
 //				.filter(typeof(Greeting))
 //				.map[name]
 //				.join(', '))
 	}
+	
+	/**
+	 * Generate configuration for the given aspect.
+	 */
+	def void createConfiguration(Aspect aspect, IFileSystemAccess access) {
+		aspect.annotation.annotations.forEach[annotation |
+			access.generateFile('configuration.txt', switch(annotation.name) {
+				case 'J2EE' : createJ2EEConfiguration(aspect, access)
+				case 'Spring' : createSpringConfiguration(aspect, access)
+			})
+		]
+	}
+	
+	def createSpringConfiguration(Aspect aspect, IFileSystemAccess access) {
+		"TODO: auto-generated method stub"
+	}
+	
+	def createJ2EEConfiguration(Aspect aspect, IFileSystemAccess access) {
+		"TODO: auto-generated method stub"
+	}
+	
+	def void createProbe(Aspect aspect, IFileSystemAccess access) {
+		
+	}
+	
 }

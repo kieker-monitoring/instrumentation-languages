@@ -4,9 +4,14 @@
     editorDirectory="/de.cau.cs.se.instrumentation.al.editor/src" modelPluginID="de.cau.cs.se.instrumentation.al"
     forceOverwrite="true" modelName="AspectLang" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="de.cau.cs.se.instrumentation.al.edit"
-    editorPluginID="de.cau.cs.se.instrumentation.al.editor" runtimeVersion="2.9" usedGenPackages="../ModelStructure.genmodel#//structure ../../../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/RecordLang.genmodel#//recordLang ../../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+    editorPluginID="de.cau.cs.se.instrumentation.al.editor" runtimeVersion="2.9" usedGenPackages="../ModelStructure.genmodel#//structure ../../../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/RecordLang.genmodel#//recordLang ../../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../../de.cau.cs.kieler.core.annotations/model/annotations.genmodel#//annotations">
   <genPackages prefix="AspectLang" basePackage="de.cau.cs.se.instrumentation.al" disposableProviderFactory="true"
       fileExtensions="ial" ecorePackage="AspectLang.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="AspectLang.ecore#//InternalFunction">
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//InternalFunction/TIME"/>
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//InternalFunction/TRACE_ID"/>
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//InternalFunction/ORDER_INDEX"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="AspectLang.ecore#//ReflectionFunction">
       <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//ReflectionFunction/NAME"/>
       <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//ReflectionFunction/SIGNATURE"/>
@@ -46,6 +51,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//ApplicationModel/model"/>
     </genClasses>
     <genClasses ecoreClass="AspectLang.ecore#//Aspect">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Aspect/annotation"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Aspect/query"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Aspect/collectors"/>
     </genClasses>
@@ -91,6 +97,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//ReferenceValue/parameter"/>
     </genClasses>
     <genClasses ecoreClass="AspectLang.ecore#//Parameter"/>
+    <genClasses ecoreClass="AspectLang.ecore#//InternalFunctionProperty">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//InternalFunctionProperty/function"/>
+    </genClasses>
     <genClasses ecoreClass="AspectLang.ecore#//RuntimeProperty">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//RuntimeProperty/reference"/>
     </genClasses>
@@ -102,10 +111,14 @@
     </genClasses>
     <genClasses ecoreClass="AspectLang.ecore#//WildcardNode"/>
     <genClasses ecoreClass="AspectLang.ecore#//SubPathNode"/>
+    <genClasses ecoreClass="AspectLang.ecore#//ParentNode"/>
     <genClasses ecoreClass="AspectLang.ecore#//Collector">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//Collector/insertionPoint"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Collector/type"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Collector/initializations"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//InternalFunctionValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//InternalFunctionValue/function"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

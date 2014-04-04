@@ -2,6 +2,8 @@
  */
 package de.cau.cs.se.instrumentation.al.aspectLang;
 
+import de.cau.cs.kieler.core.annotations.Annotation;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -14,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Aspect#getAnnotation <em>Annotation</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Aspect#getQuery <em>Query</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Aspect#getCollectors <em>Collectors</em>}</li>
  * </ul>
@@ -25,6 +28,32 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Aspect extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Annotation</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Annotation</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Annotation</em>' containment reference.
+   * @see #setAnnotation(Annotation)
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getAspect_Annotation()
+   * @model containment="true"
+   * @generated
+   */
+  Annotation getAnnotation();
+
+  /**
+   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.Aspect#getAnnotation <em>Annotation</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Annotation</em>' containment reference.
+   * @see #getAnnotation()
+   * @generated
+   */
+  void setAnnotation(Annotation value);
+
   /**
    * Returns the value of the '<em><b>Query</b></em>' containment reference.
    * <!-- begin-user-doc -->

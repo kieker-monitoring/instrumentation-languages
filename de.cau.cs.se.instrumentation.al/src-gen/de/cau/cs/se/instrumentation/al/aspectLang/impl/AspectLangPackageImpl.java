@@ -2,6 +2,8 @@
  */
 package de.cau.cs.se.instrumentation.al.aspectLang.impl;
 
+import de.cau.cs.kieler.core.annotations.AnnotationsPackage;
+
 import de.cau.cs.se.instrumantation.model.structure.StructurePackage;
 
 import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel;
@@ -14,6 +16,8 @@ import de.cau.cs.se.instrumentation.al.aspectLang.FloatValue;
 import de.cau.cs.se.instrumentation.al.aspectLang.Import;
 import de.cau.cs.se.instrumentation.al.aspectLang.InsertionPoint;
 import de.cau.cs.se.instrumentation.al.aspectLang.IntValue;
+import de.cau.cs.se.instrumentation.al.aspectLang.InternalFunction;
+import de.cau.cs.se.instrumentation.al.aspectLang.InternalFunctionProperty;
 import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.Model;
 import de.cau.cs.se.instrumentation.al.aspectLang.Node;
@@ -22,6 +26,7 @@ import de.cau.cs.se.instrumentation.al.aspectLang.ParamCompare;
 import de.cau.cs.se.instrumentation.al.aspectLang.ParamQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.Parameter;
 import de.cau.cs.se.instrumentation.al.aspectLang.ParameterPattern;
+import de.cau.cs.se.instrumentation.al.aspectLang.ParentNode;
 import de.cau.cs.se.instrumentation.al.aspectLang.Query;
 import de.cau.cs.se.instrumentation.al.aspectLang.ReferenceValue;
 import de.cau.cs.se.instrumentation.al.aspectLang.ReflectionFunction;
@@ -176,6 +181,13 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass internalFunctionPropertyEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass runtimePropertyEClass = null;
 
   /**
@@ -211,7 +223,21 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass parentNodeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass collectorEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum internalFunctionEEnum = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -285,6 +311,7 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
     // Initialize simple dependencies
     StructurePackage.eINSTANCE.eClass();
     RecordLangPackage.eINSTANCE.eClass();
+    AnnotationsPackage.eINSTANCE.eClass();
 
     // Create package meta-data objects
     theAspectLangPackage.createPackageContents();
@@ -466,7 +493,7 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAspect_Query()
+  public EReference getAspect_Annotation()
   {
     return (EReference)aspectEClass.getEStructuralFeatures().get(0);
   }
@@ -476,9 +503,19 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAspect_Collectors()
+  public EReference getAspect_Query()
   {
     return (EReference)aspectEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAspect_Collectors()
+  {
+    return (EReference)aspectEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -806,6 +843,26 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getInternalFunctionProperty()
+  {
+    return internalFunctionPropertyEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getInternalFunctionProperty_Function()
+  {
+    return (EAttribute)internalFunctionPropertyEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getRuntimeProperty()
   {
     return runtimePropertyEClass;
@@ -886,6 +943,16 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getParentNode()
+  {
+    return parentNodeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getCollector()
   {
     return collectorEClass;
@@ -919,6 +986,16 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
   public EReference getCollector_Initializations()
   {
     return (EReference)collectorEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EEnum getInternalFunction()
+  {
+    return internalFunctionEEnum;
   }
 
   /**
@@ -1001,6 +1078,7 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
     createEAttribute(applicationModelEClass, APPLICATION_MODEL__MODEL);
 
     aspectEClass = createEClass(ASPECT);
+    createEReference(aspectEClass, ASPECT__ANNOTATION);
     createEReference(aspectEClass, ASPECT__QUERY);
     createEReference(aspectEClass, ASPECT__COLLECTORS);
 
@@ -1048,6 +1126,9 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
 
     parameterEClass = createEClass(PARAMETER);
 
+    internalFunctionPropertyEClass = createEClass(INTERNAL_FUNCTION_PROPERTY);
+    createEAttribute(internalFunctionPropertyEClass, INTERNAL_FUNCTION_PROPERTY__FUNCTION);
+
     runtimePropertyEClass = createEClass(RUNTIME_PROPERTY);
     createEAttribute(runtimePropertyEClass, RUNTIME_PROPERTY__REFERENCE);
 
@@ -1061,12 +1142,15 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
 
     subPathNodeEClass = createEClass(SUB_PATH_NODE);
 
+    parentNodeEClass = createEClass(PARENT_NODE);
+
     collectorEClass = createEClass(COLLECTOR);
     createEAttribute(collectorEClass, COLLECTOR__INSERTION_POINT);
     createEReference(collectorEClass, COLLECTOR__TYPE);
     createEReference(collectorEClass, COLLECTOR__INITIALIZATIONS);
 
     // Create enums
+    internalFunctionEEnum = createEEnum(INTERNAL_FUNCTION);
     reflectionFunctionEEnum = createEEnum(REFLECTION_FUNCTION);
     operatorEEnum = createEEnum(OPERATOR);
     insertionPointEEnum = createEEnum(INSERTION_POINT);
@@ -1098,6 +1182,7 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
 
     // Obtain other dependent packages
     EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
+    AnnotationsPackage theAnnotationsPackage = (AnnotationsPackage)EPackage.Registry.INSTANCE.getEPackage(AnnotationsPackage.eNS_URI);
     StructurePackage theStructurePackage = (StructurePackage)EPackage.Registry.INSTANCE.getEPackage(StructurePackage.eNS_URI);
     RecordLangPackage theRecordLangPackage = (RecordLangPackage)EPackage.Registry.INSTANCE.getEPackage(RecordLangPackage.eNS_URI);
 
@@ -1110,11 +1195,13 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
     intValueEClass.getESuperTypes().add(this.getValue());
     stringValueEClass.getESuperTypes().add(this.getValue());
     referenceValueEClass.getESuperTypes().add(this.getValue());
+    internalFunctionPropertyEClass.getESuperTypes().add(this.getParameter());
     runtimePropertyEClass.getESuperTypes().add(this.getParameter());
     reflectionPropertyEClass.getESuperTypes().add(this.getParameter());
     containerNodeEClass.getESuperTypes().add(this.getNode());
     wildcardNodeEClass.getESuperTypes().add(this.getNode());
     subPathNodeEClass.getESuperTypes().add(this.getNode());
+    parentNodeEClass.getESuperTypes().add(this.getNode());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1137,6 +1224,7 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
     initEAttribute(getApplicationModel_Model(), theEcorePackage.getEString(), "model", null, 0, 1, ApplicationModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(aspectEClass, Aspect.class, "Aspect", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAspect_Annotation(), theAnnotationsPackage.getAnnotation(), null, "annotation", null, 0, 1, Aspect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAspect_Query(), this.getQuery(), null, "query", null, 0, 1, Aspect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAspect_Collectors(), this.getCollector(), null, "collectors", null, 0, -1, Aspect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1170,7 +1258,7 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
     initEClass(valueEClass, Value.class, "Value", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(floatValueEClass, FloatValue.class, "FloatValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getFloatValue_Value(), theEcorePackage.getEInt(), "value", null, 0, 1, FloatValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFloatValue_Value(), theEcorePackage.getEFloatObject(), "value", null, 0, 1, FloatValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(intValueEClass, IntValue.class, "IntValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getIntValue_Value(), theEcorePackage.getEInt(), "value", null, 0, 1, IntValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1183,6 +1271,9 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
     initEReference(getReferenceValue_Parameter(), this.getParameter(), null, "parameter", null, 0, 1, ReferenceValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(internalFunctionPropertyEClass, InternalFunctionProperty.class, "InternalFunctionProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getInternalFunctionProperty_Function(), this.getInternalFunction(), "function", null, 0, 1, InternalFunctionProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(runtimePropertyEClass, RuntimeProperty.class, "RuntimeProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getRuntimeProperty_Reference(), theEcorePackage.getEString(), "reference", null, 0, 1, RuntimeProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1197,12 +1288,19 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
 
     initEClass(subPathNodeEClass, SubPathNode.class, "SubPathNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+    initEClass(parentNodeEClass, ParentNode.class, "ParentNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
     initEClass(collectorEClass, Collector.class, "Collector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getCollector_InsertionPoint(), this.getInsertionPoint(), "insertionPoint", null, 0, 1, Collector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCollector_Type(), theRecordLangPackage.getRecordType(), null, "type", null, 0, 1, Collector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCollector_Initializations(), this.getValue(), null, "initializations", null, 0, -1, Collector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
+    initEEnum(internalFunctionEEnum, InternalFunction.class, "InternalFunction");
+    addEEnumLiteral(internalFunctionEEnum, InternalFunction.TIME);
+    addEEnumLiteral(internalFunctionEEnum, InternalFunction.TRACE_ID);
+    addEEnumLiteral(internalFunctionEEnum, InternalFunction.ORDER_INDEX);
+
     initEEnum(reflectionFunctionEEnum, ReflectionFunction.class, "ReflectionFunction");
     addEEnumLiteral(reflectionFunctionEEnum, ReflectionFunction.NAME);
     addEEnumLiteral(reflectionFunctionEEnum, ReflectionFunction.SIGNATURE);

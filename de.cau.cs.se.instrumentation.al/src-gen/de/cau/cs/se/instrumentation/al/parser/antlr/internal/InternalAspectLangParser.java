@@ -23,11 +23,10 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalAspectLangParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'package'", "'import'", "'register'", "'use'", "','", "'on'", "'.'", "'*'", "'aspect'", "'{'", "'}'", "'('", "')'", "'['", "']'", "'#'", "'$'", "'**'", "'name'", "'signature'", "'class'", "'return-type'", "'='", "'~'", "'!='", "'>'", "'<'", "'>='", "'<='", "'before'", "'after'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_FLOAT", "RULE_INT", "RULE_COMMENT_ANNOTATION", "RULE_BOOLEAN", "RULE_ML_COMMENT", "RULE_NUMBER", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'package'", "'import'", "'register'", "'use'", "','", "'on'", "'.'", "'*'", "'aspect'", "'{'", "'}'", "'('", "')'", "'['", "']'", "'#'", "'$'", "'**'", "'<<'", "'@'", "'time'", "'traceId'", "'orderIndex'", "'name'", "'signature'", "'class'", "'return-type'", "'='", "'~'", "'!='", "'>'", "'<'", "'>='", "'<='", "'before'", "'after'"
     };
+    public static final int RULE_BOOLEAN=9;
     public static final int RULE_ID=4;
-    public static final int T__40=40;
-    public static final int T__41=41;
     public static final int T__29=29;
     public static final int T__28=28;
     public static final int T__27=27;
@@ -36,34 +35,44 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
     public static final int T__24=24;
     public static final int T__23=23;
     public static final int T__22=22;
-    public static final int RULE_ANY_OTHER=10;
+    public static final int RULE_ANY_OTHER=14;
     public static final int T__21=21;
     public static final int T__20=20;
-    public static final int RULE_SL_COMMENT=8;
     public static final int EOF=-1;
-    public static final int RULE_ML_COMMENT=7;
-    public static final int T__30=30;
     public static final int T__19=19;
-    public static final int T__31=31;
-    public static final int RULE_STRING=5;
-    public static final int T__32=32;
-    public static final int T__33=33;
     public static final int T__16=16;
-    public static final int T__34=34;
     public static final int T__15=15;
-    public static final int T__35=35;
     public static final int T__18=18;
-    public static final int T__36=36;
     public static final int T__17=17;
+    public static final int RULE_NUMBER=11;
+    public static final int RULE_INT=7;
+    public static final int RULE_COMMENT_ANNOTATION=8;
+    public static final int T__50=50;
+    public static final int T__42=42;
+    public static final int T__43=43;
+    public static final int T__40=40;
+    public static final int T__41=41;
+    public static final int T__46=46;
+    public static final int T__47=47;
+    public static final int T__44=44;
+    public static final int T__45=45;
+    public static final int T__48=48;
+    public static final int T__49=49;
+    public static final int RULE_FLOAT=6;
+    public static final int RULE_SL_COMMENT=12;
+    public static final int RULE_ML_COMMENT=10;
+    public static final int T__30=30;
+    public static final int T__31=31;
+    public static final int T__32=32;
+    public static final int RULE_STRING=5;
+    public static final int T__33=33;
+    public static final int T__34=34;
+    public static final int T__35=35;
+    public static final int T__36=36;
     public static final int T__37=37;
-    public static final int T__12=12;
     public static final int T__38=38;
-    public static final int T__11=11;
     public static final int T__39=39;
-    public static final int T__14=14;
-    public static final int T__13=13;
-    public static final int RULE_INT=6;
-    public static final int RULE_WS=9;
+    public static final int RULE_WS=13;
 
     // delegates
     // delegators
@@ -174,7 +183,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:87:1: (otherlv_0= 'package' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_metamodels_2_0= ruleRegisteredPackage ) )* ( (lv_imports_3_0= ruleImport ) )* ( (lv_sources_4_0= ruleApplicationModel ) )* ( (lv_aspects_5_0= ruleAspect ) )* )
             // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:87:3: otherlv_0= 'package' ( (lv_name_1_0= ruleQualifiedName ) ) ( (lv_metamodels_2_0= ruleRegisteredPackage ) )* ( (lv_imports_3_0= ruleImport ) )* ( (lv_sources_4_0= ruleApplicationModel ) )* ( (lv_aspects_5_0= ruleAspect ) )*
             {
-            otherlv_0=(Token)match(input,11,FOLLOW_11_in_ruleModel128); if (state.failed) return current;
+            otherlv_0=(Token)match(input,15,FOLLOW_15_in_ruleModel128); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getModelAccess().getPackageKeyword_0());
@@ -221,7 +230,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( (LA1_0==13) ) {
+                if ( (LA1_0==17) ) {
                     alt1=1;
                 }
 
@@ -274,7 +283,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                 int alt2=2;
                 int LA2_0 = input.LA(1);
 
-                if ( (LA2_0==12) ) {
+                if ( (LA2_0==16) ) {
                     alt2=1;
                 }
 
@@ -327,7 +336,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                 int alt3=2;
                 int LA3_0 = input.LA(1);
 
-                if ( (LA3_0==14) ) {
+                if ( (LA3_0==18) ) {
                     alt3=1;
                 }
 
@@ -380,7 +389,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                 int alt4=2;
                 int LA4_0 = input.LA(1);
 
-                if ( (LA4_0==19) ) {
+                if ( (LA4_0==RULE_COMMENT_ANNOTATION||LA4_0==23||LA4_0==34) ) {
                     alt4=1;
                 }
 
@@ -507,7 +516,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:202:1: (otherlv_0= 'import' ( (lv_importedNamespace_1_0= ruleQualifiedNameWithWildcard ) ) )
             // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:202:3: otherlv_0= 'import' ( (lv_importedNamespace_1_0= ruleQualifiedNameWithWildcard ) )
             {
-            otherlv_0=(Token)match(input,12,FOLLOW_12_in_ruleImport320); if (state.failed) return current;
+            otherlv_0=(Token)match(input,16,FOLLOW_16_in_ruleImport320); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getImportAccess().getImportKeyword_0());
@@ -628,7 +637,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:245:1: (otherlv_0= 'register' ( (lv_name_1_0= RULE_ID ) ) ( (otherlv_2= RULE_STRING ) ) )
             // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:245:3: otherlv_0= 'register' ( (lv_name_1_0= RULE_ID ) ) ( (otherlv_2= RULE_STRING ) )
             {
-            otherlv_0=(Token)match(input,13,FOLLOW_13_in_ruleRegisteredPackage424); if (state.failed) return current;
+            otherlv_0=(Token)match(input,17,FOLLOW_17_in_ruleRegisteredPackage424); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getRegisteredPackageAccess().getRegisterKeyword_0());
@@ -778,7 +787,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:304:1: (otherlv_0= 'use' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) )* otherlv_4= 'on' ( (lv_name_5_0= RULE_ID ) ) ( (lv_model_6_0= RULE_STRING ) ) )
             // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:304:3: otherlv_0= 'use' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) )* otherlv_4= 'on' ( (lv_name_5_0= RULE_ID ) ) ( (lv_model_6_0= RULE_STRING ) )
             {
-            otherlv_0=(Token)match(input,14,FOLLOW_14_in_ruleApplicationModel553); if (state.failed) return current;
+            otherlv_0=(Token)match(input,18,FOLLOW_18_in_ruleApplicationModel553); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getApplicationModelAccess().getUseKeyword_0());
@@ -820,7 +829,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                 int alt5=2;
                 int LA5_0 = input.LA(1);
 
-                if ( (LA5_0==15) ) {
+                if ( (LA5_0==19) ) {
                     alt5=1;
                 }
 
@@ -829,7 +838,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             	case 1 :
             	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:324:4: otherlv_2= ',' ( (otherlv_3= RULE_ID ) )
             	    {
-            	    otherlv_2=(Token)match(input,15,FOLLOW_15_in_ruleApplicationModel590); if (state.failed) return current;
+            	    otherlv_2=(Token)match(input,19,FOLLOW_19_in_ruleApplicationModel590); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	          	newLeafNode(otherlv_2, grammarAccess.getApplicationModelAccess().getCommaKeyword_2_0());
@@ -874,7 +883,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_4=(Token)match(input,16,FOLLOW_16_in_ruleApplicationModel628); if (state.failed) return current;
+            otherlv_4=(Token)match(input,20,FOLLOW_20_in_ruleApplicationModel628); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_4, grammarAccess.getApplicationModelAccess().getOnKeyword_3());
@@ -1037,7 +1046,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                 int alt6=2;
                 int LA6_0 = input.LA(1);
 
-                if ( (LA6_0==17) ) {
+                if ( (LA6_0==21) ) {
                     int LA6_2 = input.LA(2);
 
                     if ( (LA6_2==RULE_ID) ) {
@@ -1055,7 +1064,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:412:2: ( ( '.' )=>kw= '.' )
             	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:412:3: ( '.' )=>kw= '.'
             	    {
-            	    kw=(Token)match(input,17,FOLLOW_17_in_ruleQualifiedName788); if (state.failed) return current;
+            	    kw=(Token)match(input,21,FOLLOW_21_in_ruleQualifiedName788); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	              current.merge(kw);
@@ -1189,21 +1198,21 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             int alt7=2;
             int LA7_0 = input.LA(1);
 
-            if ( (LA7_0==17) ) {
+            if ( (LA7_0==21) ) {
                 alt7=1;
             }
             switch (alt7) {
                 case 1 :
                     // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:460:2: kw= '.' kw= '*'
                     {
-                    kw=(Token)match(input,17,FOLLOW_17_in_ruleQualifiedNameWithWildcard929); if (state.failed) return current;
+                    kw=(Token)match(input,21,FOLLOW_21_in_ruleQualifiedNameWithWildcard929); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
                               newLeafNode(kw, grammarAccess.getQualifiedNameWithWildcardAccess().getFullStopKeyword_1_0()); 
                           
                     }
-                    kw=(Token)match(input,18,FOLLOW_18_in_ruleQualifiedNameWithWildcard942); if (state.failed) return current;
+                    kw=(Token)match(input,22,FOLLOW_22_in_ruleQualifiedNameWithWildcard942); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -1279,46 +1288,94 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAspect"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:488:1: ruleAspect returns [EObject current=null] : (otherlv_0= 'aspect' ( (lv_query_1_0= ruleQuery ) ) otherlv_2= '{' ( (lv_collectors_3_0= ruleCollector ) ) otherlv_4= '}' ) ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:488:1: ruleAspect returns [EObject current=null] : ( ( (lv_annotation_0_0= ruleAnnotation ) )? otherlv_1= 'aspect' ( (lv_query_2_0= ruleQuery ) ) otherlv_3= '{' ( (lv_collectors_4_0= ruleCollector ) )* otherlv_5= '}' ) ;
     public final EObject ruleAspect() throws RecognitionException {
         EObject current = null;
 
-        Token otherlv_0=null;
-        Token otherlv_2=null;
-        Token otherlv_4=null;
-        EObject lv_query_1_0 = null;
+        Token otherlv_1=null;
+        Token otherlv_3=null;
+        Token otherlv_5=null;
+        EObject lv_annotation_0_0 = null;
 
-        EObject lv_collectors_3_0 = null;
+        EObject lv_query_2_0 = null;
+
+        EObject lv_collectors_4_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:491:28: ( (otherlv_0= 'aspect' ( (lv_query_1_0= ruleQuery ) ) otherlv_2= '{' ( (lv_collectors_3_0= ruleCollector ) ) otherlv_4= '}' ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:492:1: (otherlv_0= 'aspect' ( (lv_query_1_0= ruleQuery ) ) otherlv_2= '{' ( (lv_collectors_3_0= ruleCollector ) ) otherlv_4= '}' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:491:28: ( ( ( (lv_annotation_0_0= ruleAnnotation ) )? otherlv_1= 'aspect' ( (lv_query_2_0= ruleQuery ) ) otherlv_3= '{' ( (lv_collectors_4_0= ruleCollector ) )* otherlv_5= '}' ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:492:1: ( ( (lv_annotation_0_0= ruleAnnotation ) )? otherlv_1= 'aspect' ( (lv_query_2_0= ruleQuery ) ) otherlv_3= '{' ( (lv_collectors_4_0= ruleCollector ) )* otherlv_5= '}' )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:492:1: (otherlv_0= 'aspect' ( (lv_query_1_0= ruleQuery ) ) otherlv_2= '{' ( (lv_collectors_3_0= ruleCollector ) ) otherlv_4= '}' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:492:3: otherlv_0= 'aspect' ( (lv_query_1_0= ruleQuery ) ) otherlv_2= '{' ( (lv_collectors_3_0= ruleCollector ) ) otherlv_4= '}'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:492:1: ( ( (lv_annotation_0_0= ruleAnnotation ) )? otherlv_1= 'aspect' ( (lv_query_2_0= ruleQuery ) ) otherlv_3= '{' ( (lv_collectors_4_0= ruleCollector ) )* otherlv_5= '}' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:492:2: ( (lv_annotation_0_0= ruleAnnotation ) )? otherlv_1= 'aspect' ( (lv_query_2_0= ruleQuery ) ) otherlv_3= '{' ( (lv_collectors_4_0= ruleCollector ) )* otherlv_5= '}'
             {
-            otherlv_0=(Token)match(input,19,FOLLOW_19_in_ruleAspect1031); if (state.failed) return current;
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:492:2: ( (lv_annotation_0_0= ruleAnnotation ) )?
+            int alt8=2;
+            int LA8_0 = input.LA(1);
+
+            if ( (LA8_0==RULE_COMMENT_ANNOTATION||LA8_0==34) ) {
+                alt8=1;
+            }
+            switch (alt8) {
+                case 1 :
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:493:1: (lv_annotation_0_0= ruleAnnotation )
+                    {
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:493:1: (lv_annotation_0_0= ruleAnnotation )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:494:3: lv_annotation_0_0= ruleAnnotation
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getAspectAccess().getAnnotationAnnotationParserRuleCall_0_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleAnnotation_in_ruleAspect1040);
+                    lv_annotation_0_0=ruleAnnotation();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElementForParent(grammarAccess.getAspectRule());
+                      	        }
+                             		set(
+                             			current, 
+                             			"annotation",
+                              		lv_annotation_0_0, 
+                              		"Annotation");
+                      	        afterParserOrEnumRuleCall();
+                      	    
+                    }
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+            otherlv_1=(Token)match(input,23,FOLLOW_23_in_ruleAspect1053); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_0, grammarAccess.getAspectAccess().getAspectKeyword_0());
+                  	newLeafNode(otherlv_1, grammarAccess.getAspectAccess().getAspectKeyword_1());
                   
             }
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:496:1: ( (lv_query_1_0= ruleQuery ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:497:1: (lv_query_1_0= ruleQuery )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:514:1: ( (lv_query_2_0= ruleQuery ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:515:1: (lv_query_2_0= ruleQuery )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:497:1: (lv_query_1_0= ruleQuery )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:498:3: lv_query_1_0= ruleQuery
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:515:1: (lv_query_2_0= ruleQuery )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:516:3: lv_query_2_0= ruleQuery
             {
             if ( state.backtracking==0 ) {
                
-              	        newCompositeNode(grammarAccess.getAspectAccess().getQueryQueryParserRuleCall_1_0()); 
+              	        newCompositeNode(grammarAccess.getAspectAccess().getQueryQueryParserRuleCall_2_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleQuery_in_ruleAspect1052);
-            lv_query_1_0=ruleQuery();
+            pushFollow(FOLLOW_ruleQuery_in_ruleAspect1074);
+            lv_query_2_0=ruleQuery();
 
             state._fsp--;
             if (state.failed) return current;
@@ -1330,7 +1387,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                      		set(
                      			current, 
                      			"query",
-                      		lv_query_1_0, 
+                      		lv_query_2_0, 
                       		"Query");
               	        afterParserOrEnumRuleCall();
               	    
@@ -1341,51 +1398,69 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,20,FOLLOW_20_in_ruleAspect1064); if (state.failed) return current;
+            otherlv_3=(Token)match(input,24,FOLLOW_24_in_ruleAspect1086); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_2, grammarAccess.getAspectAccess().getLeftCurlyBracketKeyword_2());
+                  	newLeafNode(otherlv_3, grammarAccess.getAspectAccess().getLeftCurlyBracketKeyword_3());
                   
             }
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:518:1: ( (lv_collectors_3_0= ruleCollector ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:519:1: (lv_collectors_3_0= ruleCollector )
-            {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:519:1: (lv_collectors_3_0= ruleCollector )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:520:3: lv_collectors_3_0= ruleCollector
-            {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:536:1: ( (lv_collectors_4_0= ruleCollector ) )*
+            loop9:
+            do {
+                int alt9=2;
+                int LA9_0 = input.LA(1);
+
+                if ( ((LA9_0>=49 && LA9_0<=50)) ) {
+                    alt9=1;
+                }
+
+
+                switch (alt9) {
+            	case 1 :
+            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:537:1: (lv_collectors_4_0= ruleCollector )
+            	    {
+            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:537:1: (lv_collectors_4_0= ruleCollector )
+            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:538:3: lv_collectors_4_0= ruleCollector
+            	    {
+            	    if ( state.backtracking==0 ) {
+            	       
+            	      	        newCompositeNode(grammarAccess.getAspectAccess().getCollectorsCollectorParserRuleCall_4_0()); 
+            	      	    
+            	    }
+            	    pushFollow(FOLLOW_ruleCollector_in_ruleAspect1107);
+            	    lv_collectors_4_0=ruleCollector();
+
+            	    state._fsp--;
+            	    if (state.failed) return current;
+            	    if ( state.backtracking==0 ) {
+
+            	      	        if (current==null) {
+            	      	            current = createModelElementForParent(grammarAccess.getAspectRule());
+            	      	        }
+            	             		add(
+            	             			current, 
+            	             			"collectors",
+            	              		lv_collectors_4_0, 
+            	              		"Collector");
+            	      	        afterParserOrEnumRuleCall();
+            	      	    
+            	    }
+
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop9;
+                }
+            } while (true);
+
+            otherlv_5=(Token)match(input,25,FOLLOW_25_in_ruleAspect1120); if (state.failed) return current;
             if ( state.backtracking==0 ) {
-               
-              	        newCompositeNode(grammarAccess.getAspectAccess().getCollectorsCollectorParserRuleCall_3_0()); 
-              	    
-            }
-            pushFollow(FOLLOW_ruleCollector_in_ruleAspect1085);
-            lv_collectors_3_0=ruleCollector();
 
-            state._fsp--;
-            if (state.failed) return current;
-            if ( state.backtracking==0 ) {
-
-              	        if (current==null) {
-              	            current = createModelElementForParent(grammarAccess.getAspectRule());
-              	        }
-                     		add(
-                     			current, 
-                     			"collectors",
-                      		lv_collectors_3_0, 
-                      		"Collector");
-              	        afterParserOrEnumRuleCall();
-              	    
-            }
-
-            }
-
-
-            }
-
-            otherlv_4=(Token)match(input,21,FOLLOW_21_in_ruleAspect1097); if (state.failed) return current;
-            if ( state.backtracking==0 ) {
-
-                  	newLeafNode(otherlv_4, grammarAccess.getAspectAccess().getRightCurlyBracketKeyword_4());
+                  	newLeafNode(otherlv_5, grammarAccess.getAspectAccess().getRightCurlyBracketKeyword_5());
                   
             }
 
@@ -1411,7 +1486,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleQuery"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:548:1: entryRuleQuery returns [EObject current=null] : iv_ruleQuery= ruleQuery EOF ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:566:1: entryRuleQuery returns [EObject current=null] : iv_ruleQuery= ruleQuery EOF ;
     public final EObject entryRuleQuery() throws RecognitionException {
         EObject current = null;
 
@@ -1419,13 +1494,13 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:549:2: (iv_ruleQuery= ruleQuery EOF )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:550:2: iv_ruleQuery= ruleQuery EOF
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:567:2: (iv_ruleQuery= ruleQuery EOF )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:568:2: iv_ruleQuery= ruleQuery EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getQueryRule()); 
             }
-            pushFollow(FOLLOW_ruleQuery_in_entryRuleQuery1133);
+            pushFollow(FOLLOW_ruleQuery_in_entryRuleQuery1156);
             iv_ruleQuery=ruleQuery();
 
             state._fsp--;
@@ -1433,7 +1508,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleQuery; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleQuery1143); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleQuery1166); if (state.failed) return current;
 
             }
 
@@ -1451,7 +1526,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleQuery"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:557:1: ruleQuery returns [EObject current=null] : ( ( (lv_location_0_0= ruleLocationQuery ) ) ( ( ( (otherlv_1= RULE_ID ) ) | otherlv_2= '*' ) ( ( (otherlv_3= RULE_ID ) ) | otherlv_4= '*' ) ( (otherlv_5= RULE_ID ) ) otherlv_6= '(' ( (lv_parameter_7_0= ruleParameterPattern ) ) (otherlv_8= ',' ( (lv_parameter_9_0= ruleParameterPattern ) ) )* otherlv_10= ')' )? ) ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:575:1: ruleQuery returns [EObject current=null] : ( ( (lv_location_0_0= ruleLocationQuery ) ) ( ( ( (otherlv_1= RULE_ID ) ) | otherlv_2= '*' ) ( ( (otherlv_3= RULE_ID ) ) | otherlv_4= '*' ) ( (otherlv_5= RULE_ID ) ) otherlv_6= '(' ( (lv_parameter_7_0= ruleParameterPattern ) ) (otherlv_8= ',' ( (lv_parameter_9_0= ruleParameterPattern ) ) )* otherlv_10= ')' )? ) ;
     public final EObject ruleQuery() throws RecognitionException {
         EObject current = null;
 
@@ -1473,24 +1548,24 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:560:28: ( ( ( (lv_location_0_0= ruleLocationQuery ) ) ( ( ( (otherlv_1= RULE_ID ) ) | otherlv_2= '*' ) ( ( (otherlv_3= RULE_ID ) ) | otherlv_4= '*' ) ( (otherlv_5= RULE_ID ) ) otherlv_6= '(' ( (lv_parameter_7_0= ruleParameterPattern ) ) (otherlv_8= ',' ( (lv_parameter_9_0= ruleParameterPattern ) ) )* otherlv_10= ')' )? ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:561:1: ( ( (lv_location_0_0= ruleLocationQuery ) ) ( ( ( (otherlv_1= RULE_ID ) ) | otherlv_2= '*' ) ( ( (otherlv_3= RULE_ID ) ) | otherlv_4= '*' ) ( (otherlv_5= RULE_ID ) ) otherlv_6= '(' ( (lv_parameter_7_0= ruleParameterPattern ) ) (otherlv_8= ',' ( (lv_parameter_9_0= ruleParameterPattern ) ) )* otherlv_10= ')' )? )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:578:28: ( ( ( (lv_location_0_0= ruleLocationQuery ) ) ( ( ( (otherlv_1= RULE_ID ) ) | otherlv_2= '*' ) ( ( (otherlv_3= RULE_ID ) ) | otherlv_4= '*' ) ( (otherlv_5= RULE_ID ) ) otherlv_6= '(' ( (lv_parameter_7_0= ruleParameterPattern ) ) (otherlv_8= ',' ( (lv_parameter_9_0= ruleParameterPattern ) ) )* otherlv_10= ')' )? ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:579:1: ( ( (lv_location_0_0= ruleLocationQuery ) ) ( ( ( (otherlv_1= RULE_ID ) ) | otherlv_2= '*' ) ( ( (otherlv_3= RULE_ID ) ) | otherlv_4= '*' ) ( (otherlv_5= RULE_ID ) ) otherlv_6= '(' ( (lv_parameter_7_0= ruleParameterPattern ) ) (otherlv_8= ',' ( (lv_parameter_9_0= ruleParameterPattern ) ) )* otherlv_10= ')' )? )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:561:1: ( ( (lv_location_0_0= ruleLocationQuery ) ) ( ( ( (otherlv_1= RULE_ID ) ) | otherlv_2= '*' ) ( ( (otherlv_3= RULE_ID ) ) | otherlv_4= '*' ) ( (otherlv_5= RULE_ID ) ) otherlv_6= '(' ( (lv_parameter_7_0= ruleParameterPattern ) ) (otherlv_8= ',' ( (lv_parameter_9_0= ruleParameterPattern ) ) )* otherlv_10= ')' )? )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:561:2: ( (lv_location_0_0= ruleLocationQuery ) ) ( ( ( (otherlv_1= RULE_ID ) ) | otherlv_2= '*' ) ( ( (otherlv_3= RULE_ID ) ) | otherlv_4= '*' ) ( (otherlv_5= RULE_ID ) ) otherlv_6= '(' ( (lv_parameter_7_0= ruleParameterPattern ) ) (otherlv_8= ',' ( (lv_parameter_9_0= ruleParameterPattern ) ) )* otherlv_10= ')' )?
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:579:1: ( ( (lv_location_0_0= ruleLocationQuery ) ) ( ( ( (otherlv_1= RULE_ID ) ) | otherlv_2= '*' ) ( ( (otherlv_3= RULE_ID ) ) | otherlv_4= '*' ) ( (otherlv_5= RULE_ID ) ) otherlv_6= '(' ( (lv_parameter_7_0= ruleParameterPattern ) ) (otherlv_8= ',' ( (lv_parameter_9_0= ruleParameterPattern ) ) )* otherlv_10= ')' )? )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:579:2: ( (lv_location_0_0= ruleLocationQuery ) ) ( ( ( (otherlv_1= RULE_ID ) ) | otherlv_2= '*' ) ( ( (otherlv_3= RULE_ID ) ) | otherlv_4= '*' ) ( (otherlv_5= RULE_ID ) ) otherlv_6= '(' ( (lv_parameter_7_0= ruleParameterPattern ) ) (otherlv_8= ',' ( (lv_parameter_9_0= ruleParameterPattern ) ) )* otherlv_10= ')' )?
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:561:2: ( (lv_location_0_0= ruleLocationQuery ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:562:1: (lv_location_0_0= ruleLocationQuery )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:579:2: ( (lv_location_0_0= ruleLocationQuery ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:580:1: (lv_location_0_0= ruleLocationQuery )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:562:1: (lv_location_0_0= ruleLocationQuery )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:563:3: lv_location_0_0= ruleLocationQuery
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:580:1: (lv_location_0_0= ruleLocationQuery )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:581:3: lv_location_0_0= ruleLocationQuery
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getQueryAccess().getLocationLocationQueryParserRuleCall_0_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleLocationQuery_in_ruleQuery1189);
+            pushFollow(FOLLOW_ruleLocationQuery_in_ruleQuery1212);
             lv_location_0_0=ruleLocationQuery();
 
             state._fsp--;
@@ -1514,43 +1589,43 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:579:2: ( ( ( (otherlv_1= RULE_ID ) ) | otherlv_2= '*' ) ( ( (otherlv_3= RULE_ID ) ) | otherlv_4= '*' ) ( (otherlv_5= RULE_ID ) ) otherlv_6= '(' ( (lv_parameter_7_0= ruleParameterPattern ) ) (otherlv_8= ',' ( (lv_parameter_9_0= ruleParameterPattern ) ) )* otherlv_10= ')' )?
-            int alt11=2;
-            int LA11_0 = input.LA(1);
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:597:2: ( ( ( (otherlv_1= RULE_ID ) ) | otherlv_2= '*' ) ( ( (otherlv_3= RULE_ID ) ) | otherlv_4= '*' ) ( (otherlv_5= RULE_ID ) ) otherlv_6= '(' ( (lv_parameter_7_0= ruleParameterPattern ) ) (otherlv_8= ',' ( (lv_parameter_9_0= ruleParameterPattern ) ) )* otherlv_10= ')' )?
+            int alt13=2;
+            int LA13_0 = input.LA(1);
 
-            if ( (LA11_0==RULE_ID||LA11_0==18) ) {
-                alt11=1;
+            if ( (LA13_0==RULE_ID||LA13_0==22) ) {
+                alt13=1;
             }
-            switch (alt11) {
+            switch (alt13) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:579:3: ( ( (otherlv_1= RULE_ID ) ) | otherlv_2= '*' ) ( ( (otherlv_3= RULE_ID ) ) | otherlv_4= '*' ) ( (otherlv_5= RULE_ID ) ) otherlv_6= '(' ( (lv_parameter_7_0= ruleParameterPattern ) ) (otherlv_8= ',' ( (lv_parameter_9_0= ruleParameterPattern ) ) )* otherlv_10= ')'
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:597:3: ( ( (otherlv_1= RULE_ID ) ) | otherlv_2= '*' ) ( ( (otherlv_3= RULE_ID ) ) | otherlv_4= '*' ) ( (otherlv_5= RULE_ID ) ) otherlv_6= '(' ( (lv_parameter_7_0= ruleParameterPattern ) ) (otherlv_8= ',' ( (lv_parameter_9_0= ruleParameterPattern ) ) )* otherlv_10= ')'
                     {
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:579:3: ( ( (otherlv_1= RULE_ID ) ) | otherlv_2= '*' )
-                    int alt8=2;
-                    int LA8_0 = input.LA(1);
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:597:3: ( ( (otherlv_1= RULE_ID ) ) | otherlv_2= '*' )
+                    int alt10=2;
+                    int LA10_0 = input.LA(1);
 
-                    if ( (LA8_0==RULE_ID) ) {
-                        alt8=1;
+                    if ( (LA10_0==RULE_ID) ) {
+                        alt10=1;
                     }
-                    else if ( (LA8_0==18) ) {
-                        alt8=2;
+                    else if ( (LA10_0==22) ) {
+                        alt10=2;
                     }
                     else {
                         if (state.backtracking>0) {state.failed=true; return current;}
                         NoViableAltException nvae =
-                            new NoViableAltException("", 8, 0, input);
+                            new NoViableAltException("", 10, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt8) {
+                    switch (alt10) {
                         case 1 :
-                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:579:4: ( (otherlv_1= RULE_ID ) )
+                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:597:4: ( (otherlv_1= RULE_ID ) )
                             {
-                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:579:4: ( (otherlv_1= RULE_ID ) )
-                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:580:1: (otherlv_1= RULE_ID )
+                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:597:4: ( (otherlv_1= RULE_ID ) )
+                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:598:1: (otherlv_1= RULE_ID )
                             {
-                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:580:1: (otherlv_1= RULE_ID )
-                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:581:3: otherlv_1= RULE_ID
+                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:598:1: (otherlv_1= RULE_ID )
+                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:599:3: otherlv_1= RULE_ID
                             {
                             if ( state.backtracking==0 ) {
                                
@@ -1564,7 +1639,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                               	        }
                                       
                             }
-                            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQuery1215); if (state.failed) return current;
+                            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQuery1238); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               		newLeafNode(otherlv_1, grammarAccess.getQueryAccess().getModifierMethodModifierCrossReference_1_0_0_0()); 
@@ -1580,9 +1655,9 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:596:7: otherlv_2= '*'
+                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:614:7: otherlv_2= '*'
                             {
-                            otherlv_2=(Token)match(input,18,FOLLOW_18_in_ruleQuery1233); if (state.failed) return current;
+                            otherlv_2=(Token)match(input,22,FOLLOW_22_in_ruleQuery1256); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                   	newLeafNode(otherlv_2, grammarAccess.getQueryAccess().getAsteriskKeyword_1_0_1());
@@ -1594,32 +1669,32 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:600:2: ( ( (otherlv_3= RULE_ID ) ) | otherlv_4= '*' )
-                    int alt9=2;
-                    int LA9_0 = input.LA(1);
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:618:2: ( ( (otherlv_3= RULE_ID ) ) | otherlv_4= '*' )
+                    int alt11=2;
+                    int LA11_0 = input.LA(1);
 
-                    if ( (LA9_0==RULE_ID) ) {
-                        alt9=1;
+                    if ( (LA11_0==RULE_ID) ) {
+                        alt11=1;
                     }
-                    else if ( (LA9_0==18) ) {
-                        alt9=2;
+                    else if ( (LA11_0==22) ) {
+                        alt11=2;
                     }
                     else {
                         if (state.backtracking>0) {state.failed=true; return current;}
                         NoViableAltException nvae =
-                            new NoViableAltException("", 9, 0, input);
+                            new NoViableAltException("", 11, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt9) {
+                    switch (alt11) {
                         case 1 :
-                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:600:3: ( (otherlv_3= RULE_ID ) )
+                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:618:3: ( (otherlv_3= RULE_ID ) )
                             {
-                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:600:3: ( (otherlv_3= RULE_ID ) )
-                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:601:1: (otherlv_3= RULE_ID )
+                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:618:3: ( (otherlv_3= RULE_ID ) )
+                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:619:1: (otherlv_3= RULE_ID )
                             {
-                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:601:1: (otherlv_3= RULE_ID )
-                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:602:3: otherlv_3= RULE_ID
+                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:619:1: (otherlv_3= RULE_ID )
+                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:620:3: otherlv_3= RULE_ID
                             {
                             if ( state.backtracking==0 ) {
                                
@@ -1633,7 +1708,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                               	        }
                                       
                             }
-                            otherlv_3=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQuery1259); if (state.failed) return current;
+                            otherlv_3=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQuery1282); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                               		newLeafNode(otherlv_3, grammarAccess.getQueryAccess().getReturnTypeTypeCrossReference_1_1_0_0()); 
@@ -1649,9 +1724,9 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:617:7: otherlv_4= '*'
+                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:635:7: otherlv_4= '*'
                             {
-                            otherlv_4=(Token)match(input,18,FOLLOW_18_in_ruleQuery1277); if (state.failed) return current;
+                            otherlv_4=(Token)match(input,22,FOLLOW_22_in_ruleQuery1300); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                   	newLeafNode(otherlv_4, grammarAccess.getQueryAccess().getAsteriskKeyword_1_1_1());
@@ -1663,11 +1738,11 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:621:2: ( (otherlv_5= RULE_ID ) )
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:622:1: (otherlv_5= RULE_ID )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:639:2: ( (otherlv_5= RULE_ID ) )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:640:1: (otherlv_5= RULE_ID )
                     {
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:622:1: (otherlv_5= RULE_ID )
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:623:3: otherlv_5= RULE_ID
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:640:1: (otherlv_5= RULE_ID )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:641:3: otherlv_5= RULE_ID
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -1681,7 +1756,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                       	        }
                               
                     }
-                    otherlv_5=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQuery1302); if (state.failed) return current;
+                    otherlv_5=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleQuery1325); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       		newLeafNode(otherlv_5, grammarAccess.getQueryAccess().getMethodMethodCrossReference_1_2_0()); 
@@ -1693,24 +1768,24 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_6=(Token)match(input,22,FOLLOW_22_in_ruleQuery1314); if (state.failed) return current;
+                    otherlv_6=(Token)match(input,26,FOLLOW_26_in_ruleQuery1337); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_6, grammarAccess.getQueryAccess().getLeftParenthesisKeyword_1_3());
                           
                     }
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:641:1: ( (lv_parameter_7_0= ruleParameterPattern ) )
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:642:1: (lv_parameter_7_0= ruleParameterPattern )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:659:1: ( (lv_parameter_7_0= ruleParameterPattern ) )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:660:1: (lv_parameter_7_0= ruleParameterPattern )
                     {
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:642:1: (lv_parameter_7_0= ruleParameterPattern )
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:643:3: lv_parameter_7_0= ruleParameterPattern
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:660:1: (lv_parameter_7_0= ruleParameterPattern )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:661:3: lv_parameter_7_0= ruleParameterPattern
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getQueryAccess().getParameterParameterPatternParserRuleCall_1_4_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleParameterPattern_in_ruleQuery1335);
+                    pushFollow(FOLLOW_ruleParameterPattern_in_ruleQuery1358);
                     lv_parameter_7_0=ruleParameterPattern();
 
                     state._fsp--;
@@ -1734,39 +1809,39 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:659:2: (otherlv_8= ',' ( (lv_parameter_9_0= ruleParameterPattern ) ) )*
-                    loop10:
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:677:2: (otherlv_8= ',' ( (lv_parameter_9_0= ruleParameterPattern ) ) )*
+                    loop12:
                     do {
-                        int alt10=2;
-                        int LA10_0 = input.LA(1);
+                        int alt12=2;
+                        int LA12_0 = input.LA(1);
 
-                        if ( (LA10_0==15) ) {
-                            alt10=1;
+                        if ( (LA12_0==19) ) {
+                            alt12=1;
                         }
 
 
-                        switch (alt10) {
+                        switch (alt12) {
                     	case 1 :
-                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:659:4: otherlv_8= ',' ( (lv_parameter_9_0= ruleParameterPattern ) )
+                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:677:4: otherlv_8= ',' ( (lv_parameter_9_0= ruleParameterPattern ) )
                     	    {
-                    	    otherlv_8=(Token)match(input,15,FOLLOW_15_in_ruleQuery1348); if (state.failed) return current;
+                    	    otherlv_8=(Token)match(input,19,FOLLOW_19_in_ruleQuery1371); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	          	newLeafNode(otherlv_8, grammarAccess.getQueryAccess().getCommaKeyword_1_5_0());
                     	          
                     	    }
-                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:663:1: ( (lv_parameter_9_0= ruleParameterPattern ) )
-                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:664:1: (lv_parameter_9_0= ruleParameterPattern )
+                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:681:1: ( (lv_parameter_9_0= ruleParameterPattern ) )
+                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:682:1: (lv_parameter_9_0= ruleParameterPattern )
                     	    {
-                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:664:1: (lv_parameter_9_0= ruleParameterPattern )
-                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:665:3: lv_parameter_9_0= ruleParameterPattern
+                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:682:1: (lv_parameter_9_0= ruleParameterPattern )
+                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:683:3: lv_parameter_9_0= ruleParameterPattern
                     	    {
                     	    if ( state.backtracking==0 ) {
                     	       
                     	      	        newCompositeNode(grammarAccess.getQueryAccess().getParameterParameterPatternParserRuleCall_1_5_1_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleParameterPattern_in_ruleQuery1369);
+                    	    pushFollow(FOLLOW_ruleParameterPattern_in_ruleQuery1392);
                     	    lv_parameter_9_0=ruleParameterPattern();
 
                     	    state._fsp--;
@@ -1795,11 +1870,11 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop10;
+                    	    break loop12;
                         }
                     } while (true);
 
-                    otherlv_10=(Token)match(input,23,FOLLOW_23_in_ruleQuery1383); if (state.failed) return current;
+                    otherlv_10=(Token)match(input,27,FOLLOW_27_in_ruleQuery1406); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_10, grammarAccess.getQueryAccess().getRightParenthesisKeyword_1_6());
@@ -1834,7 +1909,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleParameterPattern"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:693:1: entryRuleParameterPattern returns [EObject current=null] : iv_ruleParameterPattern= ruleParameterPattern EOF ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:711:1: entryRuleParameterPattern returns [EObject current=null] : iv_ruleParameterPattern= ruleParameterPattern EOF ;
     public final EObject entryRuleParameterPattern() throws RecognitionException {
         EObject current = null;
 
@@ -1842,13 +1917,13 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:694:2: (iv_ruleParameterPattern= ruleParameterPattern EOF )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:695:2: iv_ruleParameterPattern= ruleParameterPattern EOF
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:712:2: (iv_ruleParameterPattern= ruleParameterPattern EOF )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:713:2: iv_ruleParameterPattern= ruleParameterPattern EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getParameterPatternRule()); 
             }
-            pushFollow(FOLLOW_ruleParameterPattern_in_entryRuleParameterPattern1421);
+            pushFollow(FOLLOW_ruleParameterPattern_in_entryRuleParameterPattern1444);
             iv_ruleParameterPattern=ruleParameterPattern();
 
             state._fsp--;
@@ -1856,7 +1931,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleParameterPattern; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleParameterPattern1431); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleParameterPattern1454); if (state.failed) return current;
 
             }
 
@@ -1874,7 +1949,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParameterPattern"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:702:1: ruleParameterPattern returns [EObject current=null] : ( ( ( (otherlv_0= RULE_ID ) ) | otherlv_1= '*' ) ( (otherlv_2= RULE_ID ) ) ( (otherlv_3= RULE_ID ) ) ) ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:720:1: ruleParameterPattern returns [EObject current=null] : ( ( ( (otherlv_0= RULE_ID ) ) | otherlv_1= '*' ) ( (otherlv_2= RULE_ID ) ) ( (otherlv_3= RULE_ID ) ) ) ;
     public final EObject ruleParameterPattern() throws RecognitionException {
         EObject current = null;
 
@@ -1886,38 +1961,38 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:705:28: ( ( ( ( (otherlv_0= RULE_ID ) ) | otherlv_1= '*' ) ( (otherlv_2= RULE_ID ) ) ( (otherlv_3= RULE_ID ) ) ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:706:1: ( ( ( (otherlv_0= RULE_ID ) ) | otherlv_1= '*' ) ( (otherlv_2= RULE_ID ) ) ( (otherlv_3= RULE_ID ) ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:723:28: ( ( ( ( (otherlv_0= RULE_ID ) ) | otherlv_1= '*' ) ( (otherlv_2= RULE_ID ) ) ( (otherlv_3= RULE_ID ) ) ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:724:1: ( ( ( (otherlv_0= RULE_ID ) ) | otherlv_1= '*' ) ( (otherlv_2= RULE_ID ) ) ( (otherlv_3= RULE_ID ) ) )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:706:1: ( ( ( (otherlv_0= RULE_ID ) ) | otherlv_1= '*' ) ( (otherlv_2= RULE_ID ) ) ( (otherlv_3= RULE_ID ) ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:706:2: ( ( (otherlv_0= RULE_ID ) ) | otherlv_1= '*' ) ( (otherlv_2= RULE_ID ) ) ( (otherlv_3= RULE_ID ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:724:1: ( ( ( (otherlv_0= RULE_ID ) ) | otherlv_1= '*' ) ( (otherlv_2= RULE_ID ) ) ( (otherlv_3= RULE_ID ) ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:724:2: ( ( (otherlv_0= RULE_ID ) ) | otherlv_1= '*' ) ( (otherlv_2= RULE_ID ) ) ( (otherlv_3= RULE_ID ) )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:706:2: ( ( (otherlv_0= RULE_ID ) ) | otherlv_1= '*' )
-            int alt12=2;
-            int LA12_0 = input.LA(1);
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:724:2: ( ( (otherlv_0= RULE_ID ) ) | otherlv_1= '*' )
+            int alt14=2;
+            int LA14_0 = input.LA(1);
 
-            if ( (LA12_0==RULE_ID) ) {
-                alt12=1;
+            if ( (LA14_0==RULE_ID) ) {
+                alt14=1;
             }
-            else if ( (LA12_0==18) ) {
-                alt12=2;
+            else if ( (LA14_0==22) ) {
+                alt14=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 12, 0, input);
+                    new NoViableAltException("", 14, 0, input);
 
                 throw nvae;
             }
-            switch (alt12) {
+            switch (alt14) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:706:3: ( (otherlv_0= RULE_ID ) )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:724:3: ( (otherlv_0= RULE_ID ) )
                     {
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:706:3: ( (otherlv_0= RULE_ID ) )
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:707:1: (otherlv_0= RULE_ID )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:724:3: ( (otherlv_0= RULE_ID ) )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:725:1: (otherlv_0= RULE_ID )
                     {
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:707:1: (otherlv_0= RULE_ID )
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:708:3: otherlv_0= RULE_ID
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:725:1: (otherlv_0= RULE_ID )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:726:3: otherlv_0= RULE_ID
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -1931,7 +2006,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                       	        }
                               
                     }
-                    otherlv_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleParameterPattern1481); if (state.failed) return current;
+                    otherlv_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleParameterPattern1504); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       		newLeafNode(otherlv_0, grammarAccess.getParameterPatternAccess().getModifierParameterModifierCrossReference_0_0_0()); 
@@ -1947,9 +2022,9 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:723:7: otherlv_1= '*'
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:741:7: otherlv_1= '*'
                     {
-                    otherlv_1=(Token)match(input,18,FOLLOW_18_in_ruleParameterPattern1499); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,22,FOLLOW_22_in_ruleParameterPattern1522); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_1, grammarAccess.getParameterPatternAccess().getAsteriskKeyword_0_1());
@@ -1961,11 +2036,11 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:727:2: ( (otherlv_2= RULE_ID ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:728:1: (otherlv_2= RULE_ID )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:745:2: ( (otherlv_2= RULE_ID ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:746:1: (otherlv_2= RULE_ID )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:728:1: (otherlv_2= RULE_ID )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:729:3: otherlv_2= RULE_ID
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:746:1: (otherlv_2= RULE_ID )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:747:3: otherlv_2= RULE_ID
             {
             if ( state.backtracking==0 ) {
                
@@ -1979,7 +2054,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
               	        }
                       
             }
-            otherlv_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleParameterPattern1524); if (state.failed) return current;
+            otherlv_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleParameterPattern1547); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               		newLeafNode(otherlv_2, grammarAccess.getParameterPatternAccess().getTypeTypeCrossReference_1_0()); 
@@ -1991,11 +2066,11 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:743:2: ( (otherlv_3= RULE_ID ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:744:1: (otherlv_3= RULE_ID )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:761:2: ( (otherlv_3= RULE_ID ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:762:1: (otherlv_3= RULE_ID )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:744:1: (otherlv_3= RULE_ID )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:745:3: otherlv_3= RULE_ID
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:762:1: (otherlv_3= RULE_ID )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:763:3: otherlv_3= RULE_ID
             {
             if ( state.backtracking==0 ) {
                
@@ -2009,7 +2084,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
               	        }
                       
             }
-            otherlv_3=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleParameterPattern1548); if (state.failed) return current;
+            otherlv_3=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleParameterPattern1571); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               		newLeafNode(otherlv_3, grammarAccess.getParameterPatternAccess().getParameterParameterCrossReference_2_0()); 
@@ -2044,7 +2119,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleLocationQuery"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:767:1: entryRuleLocationQuery returns [EObject current=null] : iv_ruleLocationQuery= ruleLocationQuery EOF ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:785:1: entryRuleLocationQuery returns [EObject current=null] : iv_ruleLocationQuery= ruleLocationQuery EOF ;
     public final EObject entryRuleLocationQuery() throws RecognitionException {
         EObject current = null;
 
@@ -2052,13 +2127,13 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:768:2: (iv_ruleLocationQuery= ruleLocationQuery EOF )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:769:2: iv_ruleLocationQuery= ruleLocationQuery EOF
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:786:2: (iv_ruleLocationQuery= ruleLocationQuery EOF )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:787:2: iv_ruleLocationQuery= ruleLocationQuery EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getLocationQueryRule()); 
             }
-            pushFollow(FOLLOW_ruleLocationQuery_in_entryRuleLocationQuery1584);
+            pushFollow(FOLLOW_ruleLocationQuery_in_entryRuleLocationQuery1607);
             iv_ruleLocationQuery=ruleLocationQuery();
 
             state._fsp--;
@@ -2066,7 +2141,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleLocationQuery; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleLocationQuery1594); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleLocationQuery1617); if (state.failed) return current;
 
             }
 
@@ -2084,7 +2159,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLocationQuery"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:776:1: ruleLocationQuery returns [EObject current=null] : ( ( (lv_node_0_0= ruleNode ) ) (otherlv_1= '.' ( (lv_specialization_2_0= ruleLocationQuery ) ) )? ) ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:794:1: ruleLocationQuery returns [EObject current=null] : ( ( (lv_node_0_0= ruleNode ) ) (otherlv_1= '.' ( (lv_specialization_2_0= ruleLocationQuery ) ) )? ) ;
     public final EObject ruleLocationQuery() throws RecognitionException {
         EObject current = null;
 
@@ -2097,24 +2172,24 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:779:28: ( ( ( (lv_node_0_0= ruleNode ) ) (otherlv_1= '.' ( (lv_specialization_2_0= ruleLocationQuery ) ) )? ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:780:1: ( ( (lv_node_0_0= ruleNode ) ) (otherlv_1= '.' ( (lv_specialization_2_0= ruleLocationQuery ) ) )? )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:797:28: ( ( ( (lv_node_0_0= ruleNode ) ) (otherlv_1= '.' ( (lv_specialization_2_0= ruleLocationQuery ) ) )? ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:798:1: ( ( (lv_node_0_0= ruleNode ) ) (otherlv_1= '.' ( (lv_specialization_2_0= ruleLocationQuery ) ) )? )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:780:1: ( ( (lv_node_0_0= ruleNode ) ) (otherlv_1= '.' ( (lv_specialization_2_0= ruleLocationQuery ) ) )? )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:780:2: ( (lv_node_0_0= ruleNode ) ) (otherlv_1= '.' ( (lv_specialization_2_0= ruleLocationQuery ) ) )?
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:798:1: ( ( (lv_node_0_0= ruleNode ) ) (otherlv_1= '.' ( (lv_specialization_2_0= ruleLocationQuery ) ) )? )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:798:2: ( (lv_node_0_0= ruleNode ) ) (otherlv_1= '.' ( (lv_specialization_2_0= ruleLocationQuery ) ) )?
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:780:2: ( (lv_node_0_0= ruleNode ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:781:1: (lv_node_0_0= ruleNode )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:798:2: ( (lv_node_0_0= ruleNode ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:799:1: (lv_node_0_0= ruleNode )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:781:1: (lv_node_0_0= ruleNode )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:782:3: lv_node_0_0= ruleNode
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:799:1: (lv_node_0_0= ruleNode )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:800:3: lv_node_0_0= ruleNode
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getLocationQueryAccess().getNodeNodeParserRuleCall_0_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleNode_in_ruleLocationQuery1640);
+            pushFollow(FOLLOW_ruleNode_in_ruleLocationQuery1663);
             lv_node_0_0=ruleNode();
 
             state._fsp--;
@@ -2138,35 +2213,35 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:798:2: (otherlv_1= '.' ( (lv_specialization_2_0= ruleLocationQuery ) ) )?
-            int alt13=2;
-            int LA13_0 = input.LA(1);
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:816:2: (otherlv_1= '.' ( (lv_specialization_2_0= ruleLocationQuery ) ) )?
+            int alt15=2;
+            int LA15_0 = input.LA(1);
 
-            if ( (LA13_0==17) ) {
-                alt13=1;
+            if ( (LA15_0==21) ) {
+                alt15=1;
             }
-            switch (alt13) {
+            switch (alt15) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:798:4: otherlv_1= '.' ( (lv_specialization_2_0= ruleLocationQuery ) )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:816:4: otherlv_1= '.' ( (lv_specialization_2_0= ruleLocationQuery ) )
                     {
-                    otherlv_1=(Token)match(input,17,FOLLOW_17_in_ruleLocationQuery1653); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,21,FOLLOW_21_in_ruleLocationQuery1676); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_1, grammarAccess.getLocationQueryAccess().getFullStopKeyword_1_0());
                           
                     }
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:802:1: ( (lv_specialization_2_0= ruleLocationQuery ) )
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:803:1: (lv_specialization_2_0= ruleLocationQuery )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:820:1: ( (lv_specialization_2_0= ruleLocationQuery ) )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:821:1: (lv_specialization_2_0= ruleLocationQuery )
                     {
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:803:1: (lv_specialization_2_0= ruleLocationQuery )
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:804:3: lv_specialization_2_0= ruleLocationQuery
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:821:1: (lv_specialization_2_0= ruleLocationQuery )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:822:3: lv_specialization_2_0= ruleLocationQuery
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getLocationQueryAccess().getSpecializationLocationQueryParserRuleCall_1_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleLocationQuery_in_ruleLocationQuery1674);
+                    pushFollow(FOLLOW_ruleLocationQuery_in_ruleLocationQuery1697);
                     lv_specialization_2_0=ruleLocationQuery();
 
                     state._fsp--;
@@ -2219,7 +2294,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleNode"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:828:1: entryRuleNode returns [EObject current=null] : iv_ruleNode= ruleNode EOF ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:846:1: entryRuleNode returns [EObject current=null] : iv_ruleNode= ruleNode EOF ;
     public final EObject entryRuleNode() throws RecognitionException {
         EObject current = null;
 
@@ -2227,13 +2302,13 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:829:2: (iv_ruleNode= ruleNode EOF )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:830:2: iv_ruleNode= ruleNode EOF
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:847:2: (iv_ruleNode= ruleNode EOF )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:848:2: iv_ruleNode= ruleNode EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getNodeRule()); 
             }
-            pushFollow(FOLLOW_ruleNode_in_entryRuleNode1712);
+            pushFollow(FOLLOW_ruleNode_in_entryRuleNode1735);
             iv_ruleNode=ruleNode();
 
             state._fsp--;
@@ -2241,7 +2316,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleNode; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleNode1722); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleNode1745); if (state.failed) return current;
 
             }
 
@@ -2259,7 +2334,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleNode"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:837:1: ruleNode returns [EObject current=null] : ( (this_SubPathNode_0= ruleSubPathNode | this_WildcardNode_1= ruleWildcardNode | this_ContainerNode_2= ruleContainerNode ) ( (lv_parameter_3_0= ruleParamQuery ) )? ) ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:855:1: ruleNode returns [EObject current=null] : ( (this_SubPathNode_0= ruleSubPathNode | this_WildcardNode_1= ruleWildcardNode | this_ParentNode_2= ruleParentNode | this_ContainerNode_3= ruleContainerNode ) ( (lv_parameter_4_0= ruleParamQuery ) )? ) ;
     public final EObject ruleNode() throws RecognitionException {
         EObject current = null;
 
@@ -2267,49 +2342,56 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
         EObject this_WildcardNode_1 = null;
 
-        EObject this_ContainerNode_2 = null;
+        EObject this_ParentNode_2 = null;
 
-        EObject lv_parameter_3_0 = null;
+        EObject this_ContainerNode_3 = null;
+
+        EObject lv_parameter_4_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:840:28: ( ( (this_SubPathNode_0= ruleSubPathNode | this_WildcardNode_1= ruleWildcardNode | this_ContainerNode_2= ruleContainerNode ) ( (lv_parameter_3_0= ruleParamQuery ) )? ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:841:1: ( (this_SubPathNode_0= ruleSubPathNode | this_WildcardNode_1= ruleWildcardNode | this_ContainerNode_2= ruleContainerNode ) ( (lv_parameter_3_0= ruleParamQuery ) )? )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:858:28: ( ( (this_SubPathNode_0= ruleSubPathNode | this_WildcardNode_1= ruleWildcardNode | this_ParentNode_2= ruleParentNode | this_ContainerNode_3= ruleContainerNode ) ( (lv_parameter_4_0= ruleParamQuery ) )? ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:859:1: ( (this_SubPathNode_0= ruleSubPathNode | this_WildcardNode_1= ruleWildcardNode | this_ParentNode_2= ruleParentNode | this_ContainerNode_3= ruleContainerNode ) ( (lv_parameter_4_0= ruleParamQuery ) )? )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:841:1: ( (this_SubPathNode_0= ruleSubPathNode | this_WildcardNode_1= ruleWildcardNode | this_ContainerNode_2= ruleContainerNode ) ( (lv_parameter_3_0= ruleParamQuery ) )? )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:841:2: (this_SubPathNode_0= ruleSubPathNode | this_WildcardNode_1= ruleWildcardNode | this_ContainerNode_2= ruleContainerNode ) ( (lv_parameter_3_0= ruleParamQuery ) )?
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:859:1: ( (this_SubPathNode_0= ruleSubPathNode | this_WildcardNode_1= ruleWildcardNode | this_ParentNode_2= ruleParentNode | this_ContainerNode_3= ruleContainerNode ) ( (lv_parameter_4_0= ruleParamQuery ) )? )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:859:2: (this_SubPathNode_0= ruleSubPathNode | this_WildcardNode_1= ruleWildcardNode | this_ParentNode_2= ruleParentNode | this_ContainerNode_3= ruleContainerNode ) ( (lv_parameter_4_0= ruleParamQuery ) )?
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:841:2: (this_SubPathNode_0= ruleSubPathNode | this_WildcardNode_1= ruleWildcardNode | this_ContainerNode_2= ruleContainerNode )
-            int alt14=3;
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:859:2: (this_SubPathNode_0= ruleSubPathNode | this_WildcardNode_1= ruleWildcardNode | this_ParentNode_2= ruleParentNode | this_ContainerNode_3= ruleContainerNode )
+            int alt16=4;
             switch ( input.LA(1) ) {
-            case 28:
+            case 32:
                 {
-                alt14=1;
+                alt16=1;
                 }
                 break;
-            case 18:
+            case 22:
                 {
-                alt14=2;
+                alt16=2;
+                }
+                break;
+            case 33:
+                {
+                alt16=3;
                 }
                 break;
             case RULE_ID:
                 {
-                alt14=3;
+                alt16=4;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 14, 0, input);
+                    new NoViableAltException("", 16, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt14) {
+            switch (alt16) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:842:2: this_SubPathNode_0= ruleSubPathNode
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:860:2: this_SubPathNode_0= ruleSubPathNode
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -2321,7 +2403,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getNodeAccess().getSubPathNodeParserRuleCall_0_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleSubPathNode_in_ruleNode1773);
+                    pushFollow(FOLLOW_ruleSubPathNode_in_ruleNode1796);
                     this_SubPathNode_0=ruleSubPathNode();
 
                     state._fsp--;
@@ -2336,7 +2418,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:855:2: this_WildcardNode_1= ruleWildcardNode
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:873:2: this_WildcardNode_1= ruleWildcardNode
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -2348,7 +2430,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getNodeAccess().getWildcardNodeParserRuleCall_0_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleWildcardNode_in_ruleNode1803);
+                    pushFollow(FOLLOW_ruleWildcardNode_in_ruleNode1826);
                     this_WildcardNode_1=ruleWildcardNode();
 
                     state._fsp--;
@@ -2363,7 +2445,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:868:2: this_ContainerNode_2= ruleContainerNode
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:886:2: this_ParentNode_2= ruleParentNode
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -2372,17 +2454,44 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     }
                     if ( state.backtracking==0 ) {
                        
-                              newCompositeNode(grammarAccess.getNodeAccess().getContainerNodeParserRuleCall_0_2()); 
+                              newCompositeNode(grammarAccess.getNodeAccess().getParentNodeParserRuleCall_0_2()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleContainerNode_in_ruleNode1833);
-                    this_ContainerNode_2=ruleContainerNode();
+                    pushFollow(FOLLOW_ruleParentNode_in_ruleNode1856);
+                    this_ParentNode_2=ruleParentNode();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
                        
-                              current = this_ContainerNode_2; 
+                              current = this_ParentNode_2; 
+                              afterParserOrEnumRuleCall();
+                          
+                    }
+
+                    }
+                    break;
+                case 4 :
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:899:2: this_ContainerNode_3= ruleContainerNode
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	  /* */ 
+                      	
+                    }
+                    if ( state.backtracking==0 ) {
+                       
+                              newCompositeNode(grammarAccess.getNodeAccess().getContainerNodeParserRuleCall_0_3()); 
+                          
+                    }
+                    pushFollow(FOLLOW_ruleContainerNode_in_ruleNode1886);
+                    this_ContainerNode_3=ruleContainerNode();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+                       
+                              current = this_ContainerNode_3; 
                               afterParserOrEnumRuleCall();
                           
                     }
@@ -2392,27 +2501,27 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:879:2: ( (lv_parameter_3_0= ruleParamQuery ) )?
-            int alt15=2;
-            int LA15_0 = input.LA(1);
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:910:2: ( (lv_parameter_4_0= ruleParamQuery ) )?
+            int alt17=2;
+            int LA17_0 = input.LA(1);
 
-            if ( (LA15_0==24) ) {
-                alt15=1;
+            if ( (LA17_0==28) ) {
+                alt17=1;
             }
-            switch (alt15) {
+            switch (alt17) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:880:1: (lv_parameter_3_0= ruleParamQuery )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:911:1: (lv_parameter_4_0= ruleParamQuery )
                     {
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:880:1: (lv_parameter_3_0= ruleParamQuery )
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:881:3: lv_parameter_3_0= ruleParamQuery
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:911:1: (lv_parameter_4_0= ruleParamQuery )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:912:3: lv_parameter_4_0= ruleParamQuery
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getNodeAccess().getParameterParamQueryParserRuleCall_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleParamQuery_in_ruleNode1854);
-                    lv_parameter_3_0=ruleParamQuery();
+                    pushFollow(FOLLOW_ruleParamQuery_in_ruleNode1907);
+                    lv_parameter_4_0=ruleParamQuery();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -2424,7 +2533,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"parameter",
-                              		lv_parameter_3_0, 
+                              		lv_parameter_4_0, 
                               		"ParamQuery");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -2461,7 +2570,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleParamQuery"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:905:1: entryRuleParamQuery returns [EObject current=null] : iv_ruleParamQuery= ruleParamQuery EOF ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:936:1: entryRuleParamQuery returns [EObject current=null] : iv_ruleParamQuery= ruleParamQuery EOF ;
     public final EObject entryRuleParamQuery() throws RecognitionException {
         EObject current = null;
 
@@ -2469,13 +2578,13 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:906:2: (iv_ruleParamQuery= ruleParamQuery EOF )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:907:2: iv_ruleParamQuery= ruleParamQuery EOF
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:937:2: (iv_ruleParamQuery= ruleParamQuery EOF )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:938:2: iv_ruleParamQuery= ruleParamQuery EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getParamQueryRule()); 
             }
-            pushFollow(FOLLOW_ruleParamQuery_in_entryRuleParamQuery1891);
+            pushFollow(FOLLOW_ruleParamQuery_in_entryRuleParamQuery1944);
             iv_ruleParamQuery=ruleParamQuery();
 
             state._fsp--;
@@ -2483,7 +2592,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleParamQuery; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleParamQuery1901); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleParamQuery1954); if (state.failed) return current;
 
             }
 
@@ -2501,7 +2610,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParamQuery"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:914:1: ruleParamQuery returns [EObject current=null] : (otherlv_0= '[' ( (lv_queries_1_0= ruleParamCompare ) )+ otherlv_2= ']' ) ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:945:1: ruleParamQuery returns [EObject current=null] : (otherlv_0= '[' ( (lv_queries_1_0= ruleParamCompare ) )+ otherlv_2= ']' ) ;
     public final EObject ruleParamQuery() throws RecognitionException {
         EObject current = null;
 
@@ -2513,43 +2622,43 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:917:28: ( (otherlv_0= '[' ( (lv_queries_1_0= ruleParamCompare ) )+ otherlv_2= ']' ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:918:1: (otherlv_0= '[' ( (lv_queries_1_0= ruleParamCompare ) )+ otherlv_2= ']' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:948:28: ( (otherlv_0= '[' ( (lv_queries_1_0= ruleParamCompare ) )+ otherlv_2= ']' ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:949:1: (otherlv_0= '[' ( (lv_queries_1_0= ruleParamCompare ) )+ otherlv_2= ']' )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:918:1: (otherlv_0= '[' ( (lv_queries_1_0= ruleParamCompare ) )+ otherlv_2= ']' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:918:3: otherlv_0= '[' ( (lv_queries_1_0= ruleParamCompare ) )+ otherlv_2= ']'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:949:1: (otherlv_0= '[' ( (lv_queries_1_0= ruleParamCompare ) )+ otherlv_2= ']' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:949:3: otherlv_0= '[' ( (lv_queries_1_0= ruleParamCompare ) )+ otherlv_2= ']'
             {
-            otherlv_0=(Token)match(input,24,FOLLOW_24_in_ruleParamQuery1938); if (state.failed) return current;
+            otherlv_0=(Token)match(input,28,FOLLOW_28_in_ruleParamQuery1991); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getParamQueryAccess().getLeftSquareBracketKeyword_0());
                   
             }
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:922:1: ( (lv_queries_1_0= ruleParamCompare ) )+
-            int cnt16=0;
-            loop16:
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:953:1: ( (lv_queries_1_0= ruleParamCompare ) )+
+            int cnt18=0;
+            loop18:
             do {
-                int alt16=2;
-                int LA16_0 = input.LA(1);
+                int alt18=2;
+                int LA18_0 = input.LA(1);
 
-                if ( ((LA16_0>=RULE_ID && LA16_0<=RULE_INT)||LA16_0==18||LA16_0==28) ) {
-                    alt16=1;
+                if ( ((LA18_0>=RULE_ID && LA18_0<=RULE_INT)||LA18_0==22||(LA18_0>=30 && LA18_0<=33)||(LA18_0>=35 && LA18_0<=37)) ) {
+                    alt18=1;
                 }
 
 
-                switch (alt16) {
+                switch (alt18) {
             	case 1 :
-            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:923:1: (lv_queries_1_0= ruleParamCompare )
+            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:954:1: (lv_queries_1_0= ruleParamCompare )
             	    {
-            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:923:1: (lv_queries_1_0= ruleParamCompare )
-            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:924:3: lv_queries_1_0= ruleParamCompare
+            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:954:1: (lv_queries_1_0= ruleParamCompare )
+            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:955:3: lv_queries_1_0= ruleParamCompare
             	    {
             	    if ( state.backtracking==0 ) {
             	       
             	      	        newCompositeNode(grammarAccess.getParamQueryAccess().getQueriesParamCompareParserRuleCall_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleParamCompare_in_ruleParamQuery1959);
+            	    pushFollow(FOLLOW_ruleParamCompare_in_ruleParamQuery2012);
             	    lv_queries_1_0=ruleParamCompare();
 
             	    state._fsp--;
@@ -2575,16 +2684,16 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    if ( cnt16 >= 1 ) break loop16;
+            	    if ( cnt18 >= 1 ) break loop18;
             	    if (state.backtracking>0) {state.failed=true; return current;}
                         EarlyExitException eee =
-                            new EarlyExitException(16, input);
+                            new EarlyExitException(18, input);
                         throw eee;
                 }
-                cnt16++;
+                cnt18++;
             } while (true);
 
-            otherlv_2=(Token)match(input,25,FOLLOW_25_in_ruleParamQuery1972); if (state.failed) return current;
+            otherlv_2=(Token)match(input,29,FOLLOW_29_in_ruleParamQuery2025); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_2, grammarAccess.getParamQueryAccess().getRightSquareBracketKeyword_2());
@@ -2613,7 +2722,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleParamCompare"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:952:1: entryRuleParamCompare returns [EObject current=null] : iv_ruleParamCompare= ruleParamCompare EOF ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:983:1: entryRuleParamCompare returns [EObject current=null] : iv_ruleParamCompare= ruleParamCompare EOF ;
     public final EObject entryRuleParamCompare() throws RecognitionException {
         EObject current = null;
 
@@ -2621,13 +2730,13 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:953:2: (iv_ruleParamCompare= ruleParamCompare EOF )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:954:2: iv_ruleParamCompare= ruleParamCompare EOF
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:984:2: (iv_ruleParamCompare= ruleParamCompare EOF )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:985:2: iv_ruleParamCompare= ruleParamCompare EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getParamCompareRule()); 
             }
-            pushFollow(FOLLOW_ruleParamCompare_in_entryRuleParamCompare2008);
+            pushFollow(FOLLOW_ruleParamCompare_in_entryRuleParamCompare2061);
             iv_ruleParamCompare=ruleParamCompare();
 
             state._fsp--;
@@ -2635,7 +2744,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleParamCompare; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleParamCompare2018); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleParamCompare2071); if (state.failed) return current;
 
             }
 
@@ -2653,7 +2762,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParamCompare"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:961:1: ruleParamCompare returns [EObject current=null] : ( ( (lv_left_0_0= ruleValue ) ) ( ( (lv_operator_1_0= ruleOperator ) ) ( (lv_right_2_0= ruleValue ) ) ) ) ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:992:1: ruleParamCompare returns [EObject current=null] : ( ( (lv_left_0_0= ruleValue ) ) ( ( (lv_operator_1_0= ruleOperator ) ) ( (lv_right_2_0= ruleValue ) ) ) ) ;
     public final EObject ruleParamCompare() throws RecognitionException {
         EObject current = null;
 
@@ -2667,24 +2776,24 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:964:28: ( ( ( (lv_left_0_0= ruleValue ) ) ( ( (lv_operator_1_0= ruleOperator ) ) ( (lv_right_2_0= ruleValue ) ) ) ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:965:1: ( ( (lv_left_0_0= ruleValue ) ) ( ( (lv_operator_1_0= ruleOperator ) ) ( (lv_right_2_0= ruleValue ) ) ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:995:28: ( ( ( (lv_left_0_0= ruleValue ) ) ( ( (lv_operator_1_0= ruleOperator ) ) ( (lv_right_2_0= ruleValue ) ) ) ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:996:1: ( ( (lv_left_0_0= ruleValue ) ) ( ( (lv_operator_1_0= ruleOperator ) ) ( (lv_right_2_0= ruleValue ) ) ) )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:965:1: ( ( (lv_left_0_0= ruleValue ) ) ( ( (lv_operator_1_0= ruleOperator ) ) ( (lv_right_2_0= ruleValue ) ) ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:965:2: ( (lv_left_0_0= ruleValue ) ) ( ( (lv_operator_1_0= ruleOperator ) ) ( (lv_right_2_0= ruleValue ) ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:996:1: ( ( (lv_left_0_0= ruleValue ) ) ( ( (lv_operator_1_0= ruleOperator ) ) ( (lv_right_2_0= ruleValue ) ) ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:996:2: ( (lv_left_0_0= ruleValue ) ) ( ( (lv_operator_1_0= ruleOperator ) ) ( (lv_right_2_0= ruleValue ) ) )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:965:2: ( (lv_left_0_0= ruleValue ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:966:1: (lv_left_0_0= ruleValue )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:996:2: ( (lv_left_0_0= ruleValue ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:997:1: (lv_left_0_0= ruleValue )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:966:1: (lv_left_0_0= ruleValue )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:967:3: lv_left_0_0= ruleValue
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:997:1: (lv_left_0_0= ruleValue )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:998:3: lv_left_0_0= ruleValue
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getParamCompareAccess().getLeftValueParserRuleCall_0_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleValue_in_ruleParamCompare2064);
+            pushFollow(FOLLOW_ruleValue_in_ruleParamCompare2117);
             lv_left_0_0=ruleValue();
 
             state._fsp--;
@@ -2708,21 +2817,21 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:983:2: ( ( (lv_operator_1_0= ruleOperator ) ) ( (lv_right_2_0= ruleValue ) ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:983:3: ( (lv_operator_1_0= ruleOperator ) ) ( (lv_right_2_0= ruleValue ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1014:2: ( ( (lv_operator_1_0= ruleOperator ) ) ( (lv_right_2_0= ruleValue ) ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1014:3: ( (lv_operator_1_0= ruleOperator ) ) ( (lv_right_2_0= ruleValue ) )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:983:3: ( (lv_operator_1_0= ruleOperator ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:984:1: (lv_operator_1_0= ruleOperator )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1014:3: ( (lv_operator_1_0= ruleOperator ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1015:1: (lv_operator_1_0= ruleOperator )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:984:1: (lv_operator_1_0= ruleOperator )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:985:3: lv_operator_1_0= ruleOperator
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1015:1: (lv_operator_1_0= ruleOperator )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1016:3: lv_operator_1_0= ruleOperator
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getParamCompareAccess().getOperatorOperatorEnumRuleCall_1_0_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleOperator_in_ruleParamCompare2086);
+            pushFollow(FOLLOW_ruleOperator_in_ruleParamCompare2139);
             lv_operator_1_0=ruleOperator();
 
             state._fsp--;
@@ -2746,18 +2855,18 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1001:2: ( (lv_right_2_0= ruleValue ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1002:1: (lv_right_2_0= ruleValue )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1032:2: ( (lv_right_2_0= ruleValue ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1033:1: (lv_right_2_0= ruleValue )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1002:1: (lv_right_2_0= ruleValue )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1003:3: lv_right_2_0= ruleValue
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1033:1: (lv_right_2_0= ruleValue )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1034:3: lv_right_2_0= ruleValue
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getParamCompareAccess().getRightValueParserRuleCall_1_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleValue_in_ruleParamCompare2107);
+            pushFollow(FOLLOW_ruleValue_in_ruleParamCompare2160);
             lv_right_2_0=ruleValue();
 
             state._fsp--;
@@ -2807,7 +2916,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleValue"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1027:1: entryRuleValue returns [EObject current=null] : iv_ruleValue= ruleValue EOF ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1058:1: entryRuleValue returns [EObject current=null] : iv_ruleValue= ruleValue EOF ;
     public final EObject entryRuleValue() throws RecognitionException {
         EObject current = null;
 
@@ -2815,13 +2924,13 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1028:2: (iv_ruleValue= ruleValue EOF )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1029:2: iv_ruleValue= ruleValue EOF
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1059:2: (iv_ruleValue= ruleValue EOF )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1060:2: iv_ruleValue= ruleValue EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getValueRule()); 
             }
-            pushFollow(FOLLOW_ruleValue_in_entryRuleValue2144);
+            pushFollow(FOLLOW_ruleValue_in_entryRuleValue2197);
             iv_ruleValue=ruleValue();
 
             state._fsp--;
@@ -2829,7 +2938,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleValue; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleValue2154); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleValue2207); if (state.failed) return current;
 
             }
 
@@ -2847,7 +2956,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleValue"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1036:1: ruleValue returns [EObject current=null] : (this_StringValue_0= ruleStringValue | this_IntValue_1= ruleIntValue | this_FloatValue_2= ruleFloatValue | this_ReferenceValue_3= ruleReferenceValue ) ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1067:1: ruleValue returns [EObject current=null] : (this_StringValue_0= ruleStringValue | this_IntValue_1= ruleIntValue | this_FloatValue_2= ruleFloatValue | this_ReferenceValue_3= ruleReferenceValue ) ;
     public final EObject ruleValue() throws RecognitionException {
         EObject current = null;
 
@@ -2863,54 +2972,51 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1039:28: ( (this_StringValue_0= ruleStringValue | this_IntValue_1= ruleIntValue | this_FloatValue_2= ruleFloatValue | this_ReferenceValue_3= ruleReferenceValue ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1040:1: (this_StringValue_0= ruleStringValue | this_IntValue_1= ruleIntValue | this_FloatValue_2= ruleFloatValue | this_ReferenceValue_3= ruleReferenceValue )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1070:28: ( (this_StringValue_0= ruleStringValue | this_IntValue_1= ruleIntValue | this_FloatValue_2= ruleFloatValue | this_ReferenceValue_3= ruleReferenceValue ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1071:1: (this_StringValue_0= ruleStringValue | this_IntValue_1= ruleIntValue | this_FloatValue_2= ruleFloatValue | this_ReferenceValue_3= ruleReferenceValue )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1040:1: (this_StringValue_0= ruleStringValue | this_IntValue_1= ruleIntValue | this_FloatValue_2= ruleFloatValue | this_ReferenceValue_3= ruleReferenceValue )
-            int alt17=4;
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1071:1: (this_StringValue_0= ruleStringValue | this_IntValue_1= ruleIntValue | this_FloatValue_2= ruleFloatValue | this_ReferenceValue_3= ruleReferenceValue )
+            int alt19=4;
             switch ( input.LA(1) ) {
             case RULE_STRING:
                 {
-                alt17=1;
+                alt19=1;
                 }
                 break;
             case RULE_INT:
                 {
-                int LA17_2 = input.LA(2);
-
-                if ( (synpred20_InternalAspectLang()) ) {
-                    alt17=2;
+                alt19=2;
                 }
-                else if ( (synpred21_InternalAspectLang()) ) {
-                    alt17=3;
-                }
-                else {
-                    if (state.backtracking>0) {state.failed=true; return current;}
-                    NoViableAltException nvae =
-                        new NoViableAltException("", 17, 2, input);
-
-                    throw nvae;
-                }
+                break;
+            case RULE_FLOAT:
+                {
+                alt19=3;
                 }
                 break;
             case RULE_ID:
-            case 18:
-            case 28:
+            case 22:
+            case 30:
+            case 31:
+            case 32:
+            case 33:
+            case 35:
+            case 36:
+            case 37:
                 {
-                alt17=4;
+                alt19=4;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 17, 0, input);
+                    new NoViableAltException("", 19, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt17) {
+            switch (alt19) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1041:2: this_StringValue_0= ruleStringValue
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1072:2: this_StringValue_0= ruleStringValue
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -2922,7 +3028,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getValueAccess().getStringValueParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleStringValue_in_ruleValue2204);
+                    pushFollow(FOLLOW_ruleStringValue_in_ruleValue2257);
                     this_StringValue_0=ruleStringValue();
 
                     state._fsp--;
@@ -2937,7 +3043,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1054:2: this_IntValue_1= ruleIntValue
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1085:2: this_IntValue_1= ruleIntValue
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -2949,7 +3055,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getValueAccess().getIntValueParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleIntValue_in_ruleValue2234);
+                    pushFollow(FOLLOW_ruleIntValue_in_ruleValue2287);
                     this_IntValue_1=ruleIntValue();
 
                     state._fsp--;
@@ -2964,7 +3070,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1067:2: this_FloatValue_2= ruleFloatValue
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1098:2: this_FloatValue_2= ruleFloatValue
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -2976,7 +3082,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getValueAccess().getFloatValueParserRuleCall_2()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleFloatValue_in_ruleValue2264);
+                    pushFollow(FOLLOW_ruleFloatValue_in_ruleValue2317);
                     this_FloatValue_2=ruleFloatValue();
 
                     state._fsp--;
@@ -2991,7 +3097,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1080:2: this_ReferenceValue_3= ruleReferenceValue
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1111:2: this_ReferenceValue_3= ruleReferenceValue
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -3003,7 +3109,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getValueAccess().getReferenceValueParserRuleCall_3()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleReferenceValue_in_ruleValue2294);
+                    pushFollow(FOLLOW_ruleReferenceValue_in_ruleValue2347);
                     this_ReferenceValue_3=ruleReferenceValue();
 
                     state._fsp--;
@@ -3040,7 +3146,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFloatValue"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1099:1: entryRuleFloatValue returns [EObject current=null] : iv_ruleFloatValue= ruleFloatValue EOF ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1130:1: entryRuleFloatValue returns [EObject current=null] : iv_ruleFloatValue= ruleFloatValue EOF ;
     public final EObject entryRuleFloatValue() throws RecognitionException {
         EObject current = null;
 
@@ -3048,13 +3154,13 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1100:2: (iv_ruleFloatValue= ruleFloatValue EOF )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1101:2: iv_ruleFloatValue= ruleFloatValue EOF
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1131:2: (iv_ruleFloatValue= ruleFloatValue EOF )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1132:2: iv_ruleFloatValue= ruleFloatValue EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getFloatValueRule()); 
             }
-            pushFollow(FOLLOW_ruleFloatValue_in_entryRuleFloatValue2329);
+            pushFollow(FOLLOW_ruleFloatValue_in_entryRuleFloatValue2382);
             iv_ruleFloatValue=ruleFloatValue();
 
             state._fsp--;
@@ -3062,7 +3168,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleFloatValue; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFloatValue2339); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFloatValue2392); if (state.failed) return current;
 
             }
 
@@ -3080,7 +3186,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFloatValue"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1108:1: ruleFloatValue returns [EObject current=null] : ( (lv_value_0_0= RULE_INT ) ) ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1139:1: ruleFloatValue returns [EObject current=null] : ( (lv_value_0_0= RULE_FLOAT ) ) ;
     public final EObject ruleFloatValue() throws RecognitionException {
         EObject current = null;
 
@@ -3089,19 +3195,19 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1111:28: ( ( (lv_value_0_0= RULE_INT ) ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1112:1: ( (lv_value_0_0= RULE_INT ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1142:28: ( ( (lv_value_0_0= RULE_FLOAT ) ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1143:1: ( (lv_value_0_0= RULE_FLOAT ) )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1112:1: ( (lv_value_0_0= RULE_INT ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1113:1: (lv_value_0_0= RULE_INT )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1143:1: ( (lv_value_0_0= RULE_FLOAT ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1144:1: (lv_value_0_0= RULE_FLOAT )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1113:1: (lv_value_0_0= RULE_INT )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1114:3: lv_value_0_0= RULE_INT
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1144:1: (lv_value_0_0= RULE_FLOAT )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1145:3: lv_value_0_0= RULE_FLOAT
             {
-            lv_value_0_0=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleFloatValue2380); if (state.failed) return current;
+            lv_value_0_0=(Token)match(input,RULE_FLOAT,FOLLOW_RULE_FLOAT_in_ruleFloatValue2433); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              			newLeafNode(lv_value_0_0, grammarAccess.getFloatValueAccess().getValueINTTerminalRuleCall_0()); 
+              			newLeafNode(lv_value_0_0, grammarAccess.getFloatValueAccess().getValueFLOATTerminalRuleCall_0()); 
               		
             }
             if ( state.backtracking==0 ) {
@@ -3113,7 +3219,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                      			current, 
                      			"value",
                       		lv_value_0_0, 
-                      		"INT");
+                      		"FLOAT");
               	    
             }
 
@@ -3142,7 +3248,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleIntValue"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1138:1: entryRuleIntValue returns [EObject current=null] : iv_ruleIntValue= ruleIntValue EOF ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1169:1: entryRuleIntValue returns [EObject current=null] : iv_ruleIntValue= ruleIntValue EOF ;
     public final EObject entryRuleIntValue() throws RecognitionException {
         EObject current = null;
 
@@ -3150,13 +3256,13 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1139:2: (iv_ruleIntValue= ruleIntValue EOF )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1140:2: iv_ruleIntValue= ruleIntValue EOF
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1170:2: (iv_ruleIntValue= ruleIntValue EOF )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1171:2: iv_ruleIntValue= ruleIntValue EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getIntValueRule()); 
             }
-            pushFollow(FOLLOW_ruleIntValue_in_entryRuleIntValue2420);
+            pushFollow(FOLLOW_ruleIntValue_in_entryRuleIntValue2473);
             iv_ruleIntValue=ruleIntValue();
 
             state._fsp--;
@@ -3164,7 +3270,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleIntValue; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleIntValue2430); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleIntValue2483); if (state.failed) return current;
 
             }
 
@@ -3182,7 +3288,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleIntValue"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1147:1: ruleIntValue returns [EObject current=null] : ( (lv_value_0_0= RULE_INT ) ) ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1178:1: ruleIntValue returns [EObject current=null] : ( (lv_value_0_0= RULE_INT ) ) ;
     public final EObject ruleIntValue() throws RecognitionException {
         EObject current = null;
 
@@ -3191,16 +3297,16 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1150:28: ( ( (lv_value_0_0= RULE_INT ) ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1151:1: ( (lv_value_0_0= RULE_INT ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1181:28: ( ( (lv_value_0_0= RULE_INT ) ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1182:1: ( (lv_value_0_0= RULE_INT ) )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1151:1: ( (lv_value_0_0= RULE_INT ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1152:1: (lv_value_0_0= RULE_INT )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1182:1: ( (lv_value_0_0= RULE_INT ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1183:1: (lv_value_0_0= RULE_INT )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1152:1: (lv_value_0_0= RULE_INT )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1153:3: lv_value_0_0= RULE_INT
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1183:1: (lv_value_0_0= RULE_INT )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1184:3: lv_value_0_0= RULE_INT
             {
-            lv_value_0_0=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleIntValue2471); if (state.failed) return current;
+            lv_value_0_0=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleIntValue2524); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(lv_value_0_0, grammarAccess.getIntValueAccess().getValueINTTerminalRuleCall_0()); 
@@ -3244,7 +3350,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleStringValue"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1177:1: entryRuleStringValue returns [EObject current=null] : iv_ruleStringValue= ruleStringValue EOF ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1208:1: entryRuleStringValue returns [EObject current=null] : iv_ruleStringValue= ruleStringValue EOF ;
     public final EObject entryRuleStringValue() throws RecognitionException {
         EObject current = null;
 
@@ -3252,13 +3358,13 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1178:2: (iv_ruleStringValue= ruleStringValue EOF )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1179:2: iv_ruleStringValue= ruleStringValue EOF
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1209:2: (iv_ruleStringValue= ruleStringValue EOF )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1210:2: iv_ruleStringValue= ruleStringValue EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getStringValueRule()); 
             }
-            pushFollow(FOLLOW_ruleStringValue_in_entryRuleStringValue2511);
+            pushFollow(FOLLOW_ruleStringValue_in_entryRuleStringValue2564);
             iv_ruleStringValue=ruleStringValue();
 
             state._fsp--;
@@ -3266,7 +3372,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleStringValue; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleStringValue2521); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleStringValue2574); if (state.failed) return current;
 
             }
 
@@ -3284,7 +3390,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleStringValue"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1186:1: ruleStringValue returns [EObject current=null] : ( (lv_value_0_0= RULE_STRING ) ) ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1217:1: ruleStringValue returns [EObject current=null] : ( (lv_value_0_0= RULE_STRING ) ) ;
     public final EObject ruleStringValue() throws RecognitionException {
         EObject current = null;
 
@@ -3293,16 +3399,16 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1189:28: ( ( (lv_value_0_0= RULE_STRING ) ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1190:1: ( (lv_value_0_0= RULE_STRING ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1220:28: ( ( (lv_value_0_0= RULE_STRING ) ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1221:1: ( (lv_value_0_0= RULE_STRING ) )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1190:1: ( (lv_value_0_0= RULE_STRING ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1191:1: (lv_value_0_0= RULE_STRING )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1221:1: ( (lv_value_0_0= RULE_STRING ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1222:1: (lv_value_0_0= RULE_STRING )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1191:1: (lv_value_0_0= RULE_STRING )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1192:3: lv_value_0_0= RULE_STRING
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1222:1: (lv_value_0_0= RULE_STRING )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1223:3: lv_value_0_0= RULE_STRING
             {
-            lv_value_0_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleStringValue2562); if (state.failed) return current;
+            lv_value_0_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleStringValue2615); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(lv_value_0_0, grammarAccess.getStringValueAccess().getValueSTRINGTerminalRuleCall_0()); 
@@ -3346,7 +3452,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleReferenceValue"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1216:1: entryRuleReferenceValue returns [EObject current=null] : iv_ruleReferenceValue= ruleReferenceValue EOF ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1247:1: entryRuleReferenceValue returns [EObject current=null] : iv_ruleReferenceValue= ruleReferenceValue EOF ;
     public final EObject entryRuleReferenceValue() throws RecognitionException {
         EObject current = null;
 
@@ -3354,13 +3460,13 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1217:2: (iv_ruleReferenceValue= ruleReferenceValue EOF )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1218:2: iv_ruleReferenceValue= ruleReferenceValue EOF
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1248:2: (iv_ruleReferenceValue= ruleReferenceValue EOF )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1249:2: iv_ruleReferenceValue= ruleReferenceValue EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getReferenceValueRule()); 
             }
-            pushFollow(FOLLOW_ruleReferenceValue_in_entryRuleReferenceValue2602);
+            pushFollow(FOLLOW_ruleReferenceValue_in_entryRuleReferenceValue2655);
             iv_ruleReferenceValue=ruleReferenceValue();
 
             state._fsp--;
@@ -3368,7 +3474,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleReferenceValue; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleReferenceValue2612); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleReferenceValue2665); if (state.failed) return current;
 
             }
 
@@ -3386,7 +3492,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleReferenceValue"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1225:1: ruleReferenceValue returns [EObject current=null] : ( ( (lv_query_0_0= ruleLocationQuery ) ) ( (lv_parameter_1_0= ruleParameter ) ) ) ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1256:1: ruleReferenceValue returns [EObject current=null] : ( ( (lv_query_0_0= ruleLocationQuery ) )? ( (lv_parameter_1_0= ruleParameter ) ) ) ;
     public final EObject ruleReferenceValue() throws RecognitionException {
         EObject current = null;
 
@@ -3398,59 +3504,70 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1228:28: ( ( ( (lv_query_0_0= ruleLocationQuery ) ) ( (lv_parameter_1_0= ruleParameter ) ) ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1229:1: ( ( (lv_query_0_0= ruleLocationQuery ) ) ( (lv_parameter_1_0= ruleParameter ) ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1259:28: ( ( ( (lv_query_0_0= ruleLocationQuery ) )? ( (lv_parameter_1_0= ruleParameter ) ) ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1260:1: ( ( (lv_query_0_0= ruleLocationQuery ) )? ( (lv_parameter_1_0= ruleParameter ) ) )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1229:1: ( ( (lv_query_0_0= ruleLocationQuery ) ) ( (lv_parameter_1_0= ruleParameter ) ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1229:2: ( (lv_query_0_0= ruleLocationQuery ) ) ( (lv_parameter_1_0= ruleParameter ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1260:1: ( ( (lv_query_0_0= ruleLocationQuery ) )? ( (lv_parameter_1_0= ruleParameter ) ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1260:2: ( (lv_query_0_0= ruleLocationQuery ) )? ( (lv_parameter_1_0= ruleParameter ) )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1229:2: ( (lv_query_0_0= ruleLocationQuery ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1230:1: (lv_query_0_0= ruleLocationQuery )
-            {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1230:1: (lv_query_0_0= ruleLocationQuery )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1231:3: lv_query_0_0= ruleLocationQuery
-            {
-            if ( state.backtracking==0 ) {
-               
-              	        newCompositeNode(grammarAccess.getReferenceValueAccess().getQueryLocationQueryParserRuleCall_0_0()); 
-              	    
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1260:2: ( (lv_query_0_0= ruleLocationQuery ) )?
+            int alt20=2;
+            int LA20_0 = input.LA(1);
+
+            if ( (LA20_0==RULE_ID||LA20_0==22||(LA20_0>=32 && LA20_0<=33)) ) {
+                alt20=1;
             }
-            pushFollow(FOLLOW_ruleLocationQuery_in_ruleReferenceValue2658);
-            lv_query_0_0=ruleLocationQuery();
+            switch (alt20) {
+                case 1 :
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1261:1: (lv_query_0_0= ruleLocationQuery )
+                    {
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1261:1: (lv_query_0_0= ruleLocationQuery )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1262:3: lv_query_0_0= ruleLocationQuery
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getReferenceValueAccess().getQueryLocationQueryParserRuleCall_0_0()); 
+                      	    
+                    }
+                    pushFollow(FOLLOW_ruleLocationQuery_in_ruleReferenceValue2711);
+                    lv_query_0_0=ruleLocationQuery();
 
-            state._fsp--;
-            if (state.failed) return current;
-            if ( state.backtracking==0 ) {
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
 
-              	        if (current==null) {
-              	            current = createModelElementForParent(grammarAccess.getReferenceValueRule());
-              	        }
-                     		set(
-                     			current, 
-                     			"query",
-                      		lv_query_0_0, 
-                      		"LocationQuery");
-              	        afterParserOrEnumRuleCall();
-              	    
+                      	        if (current==null) {
+                      	            current = createModelElementForParent(grammarAccess.getReferenceValueRule());
+                      	        }
+                             		set(
+                             			current, 
+                             			"query",
+                              		lv_query_0_0, 
+                              		"LocationQuery");
+                      	        afterParserOrEnumRuleCall();
+                      	    
+                    }
+
+                    }
+
+
+                    }
+                    break;
+
             }
 
-            }
-
-
-            }
-
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1247:2: ( (lv_parameter_1_0= ruleParameter ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1248:1: (lv_parameter_1_0= ruleParameter )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1278:3: ( (lv_parameter_1_0= ruleParameter ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1279:1: (lv_parameter_1_0= ruleParameter )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1248:1: (lv_parameter_1_0= ruleParameter )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1249:3: lv_parameter_1_0= ruleParameter
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1279:1: (lv_parameter_1_0= ruleParameter )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1280:3: lv_parameter_1_0= ruleParameter
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getReferenceValueAccess().getParameterParameterParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleParameter_in_ruleReferenceValue2679);
+            pushFollow(FOLLOW_ruleParameter_in_ruleReferenceValue2733);
             lv_parameter_1_0=ruleParameter();
 
             state._fsp--;
@@ -3497,7 +3614,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleParameter"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1273:1: entryRuleParameter returns [EObject current=null] : iv_ruleParameter= ruleParameter EOF ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1304:1: entryRuleParameter returns [EObject current=null] : iv_ruleParameter= ruleParameter EOF ;
     public final EObject entryRuleParameter() throws RecognitionException {
         EObject current = null;
 
@@ -3505,13 +3622,13 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1274:2: (iv_ruleParameter= ruleParameter EOF )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1275:2: iv_ruleParameter= ruleParameter EOF
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1305:2: (iv_ruleParameter= ruleParameter EOF )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1306:2: iv_ruleParameter= ruleParameter EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getParameterRule()); 
             }
-            pushFollow(FOLLOW_ruleParameter_in_entryRuleParameter2715);
+            pushFollow(FOLLOW_ruleParameter_in_entryRuleParameter2769);
             iv_ruleParameter=ruleParameter();
 
             state._fsp--;
@@ -3519,7 +3636,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleParameter; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleParameter2725); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleParameter2779); if (state.failed) return current;
 
             }
 
@@ -3537,7 +3654,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleParameter"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1282:1: ruleParameter returns [EObject current=null] : (this_RuntimeProperty_0= ruleRuntimeProperty | this_ReflectionProperty_1= ruleReflectionProperty ) ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1313:1: ruleParameter returns [EObject current=null] : (this_RuntimeProperty_0= ruleRuntimeProperty | this_ReflectionProperty_1= ruleReflectionProperty | this_InternalFunctionProperty_2= ruleInternalFunctionProperty ) ;
     public final EObject ruleParameter() throws RecognitionException {
         EObject current = null;
 
@@ -3545,33 +3662,46 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
         EObject this_ReflectionProperty_1 = null;
 
+        EObject this_InternalFunctionProperty_2 = null;
+
 
          enterRule(); 
             
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1285:28: ( (this_RuntimeProperty_0= ruleRuntimeProperty | this_ReflectionProperty_1= ruleReflectionProperty ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1286:1: (this_RuntimeProperty_0= ruleRuntimeProperty | this_ReflectionProperty_1= ruleReflectionProperty )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1316:28: ( (this_RuntimeProperty_0= ruleRuntimeProperty | this_ReflectionProperty_1= ruleReflectionProperty | this_InternalFunctionProperty_2= ruleInternalFunctionProperty ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1317:1: (this_RuntimeProperty_0= ruleRuntimeProperty | this_ReflectionProperty_1= ruleReflectionProperty | this_InternalFunctionProperty_2= ruleInternalFunctionProperty )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1286:1: (this_RuntimeProperty_0= ruleRuntimeProperty | this_ReflectionProperty_1= ruleReflectionProperty )
-            int alt18=2;
-            int LA18_0 = input.LA(1);
-
-            if ( (LA18_0==26) ) {
-                alt18=1;
-            }
-            else if ( (LA18_0==27) ) {
-                alt18=2;
-            }
-            else {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1317:1: (this_RuntimeProperty_0= ruleRuntimeProperty | this_ReflectionProperty_1= ruleReflectionProperty | this_InternalFunctionProperty_2= ruleInternalFunctionProperty )
+            int alt21=3;
+            switch ( input.LA(1) ) {
+            case 30:
+                {
+                alt21=1;
+                }
+                break;
+            case 31:
+                {
+                alt21=2;
+                }
+                break;
+            case 35:
+            case 36:
+            case 37:
+                {
+                alt21=3;
+                }
+                break;
+            default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 18, 0, input);
+                    new NoViableAltException("", 21, 0, input);
 
                 throw nvae;
             }
-            switch (alt18) {
+
+            switch (alt21) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1287:2: this_RuntimeProperty_0= ruleRuntimeProperty
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1318:2: this_RuntimeProperty_0= ruleRuntimeProperty
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -3583,7 +3713,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getParameterAccess().getRuntimePropertyParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleRuntimeProperty_in_ruleParameter2775);
+                    pushFollow(FOLLOW_ruleRuntimeProperty_in_ruleParameter2829);
                     this_RuntimeProperty_0=ruleRuntimeProperty();
 
                     state._fsp--;
@@ -3598,7 +3728,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1300:2: this_ReflectionProperty_1= ruleReflectionProperty
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1331:2: this_ReflectionProperty_1= ruleReflectionProperty
                     {
                     if ( state.backtracking==0 ) {
                        
@@ -3610,7 +3740,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getParameterAccess().getReflectionPropertyParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleReflectionProperty_in_ruleParameter2805);
+                    pushFollow(FOLLOW_ruleReflectionProperty_in_ruleParameter2859);
                     this_ReflectionProperty_1=ruleReflectionProperty();
 
                     state._fsp--;
@@ -3618,6 +3748,33 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     if ( state.backtracking==0 ) {
                        
                               current = this_ReflectionProperty_1; 
+                              afterParserOrEnumRuleCall();
+                          
+                    }
+
+                    }
+                    break;
+                case 3 :
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1344:2: this_InternalFunctionProperty_2= ruleInternalFunctionProperty
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	  /* */ 
+                      	
+                    }
+                    if ( state.backtracking==0 ) {
+                       
+                              newCompositeNode(grammarAccess.getParameterAccess().getInternalFunctionPropertyParserRuleCall_2()); 
+                          
+                    }
+                    pushFollow(FOLLOW_ruleInternalFunctionProperty_in_ruleParameter2889);
+                    this_InternalFunctionProperty_2=ruleInternalFunctionProperty();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+                       
+                              current = this_InternalFunctionProperty_2; 
                               afterParserOrEnumRuleCall();
                           
                     }
@@ -3646,8 +3803,116 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleParameter"
 
 
+    // $ANTLR start "entryRuleInternalFunctionProperty"
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1363:1: entryRuleInternalFunctionProperty returns [EObject current=null] : iv_ruleInternalFunctionProperty= ruleInternalFunctionProperty EOF ;
+    public final EObject entryRuleInternalFunctionProperty() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleInternalFunctionProperty = null;
+
+
+        try {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1364:2: (iv_ruleInternalFunctionProperty= ruleInternalFunctionProperty EOF )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1365:2: iv_ruleInternalFunctionProperty= ruleInternalFunctionProperty EOF
+            {
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getInternalFunctionPropertyRule()); 
+            }
+            pushFollow(FOLLOW_ruleInternalFunctionProperty_in_entryRuleInternalFunctionProperty2924);
+            iv_ruleInternalFunctionProperty=ruleInternalFunctionProperty();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleInternalFunctionProperty; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleInternalFunctionProperty2934); if (state.failed) return current;
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleInternalFunctionProperty"
+
+
+    // $ANTLR start "ruleInternalFunctionProperty"
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1372:1: ruleInternalFunctionProperty returns [EObject current=null] : ( (lv_function_0_0= ruleInternalFunction ) ) ;
+    public final EObject ruleInternalFunctionProperty() throws RecognitionException {
+        EObject current = null;
+
+        Enumerator lv_function_0_0 = null;
+
+
+         enterRule(); 
+            
+        try {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1375:28: ( ( (lv_function_0_0= ruleInternalFunction ) ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1376:1: ( (lv_function_0_0= ruleInternalFunction ) )
+            {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1376:1: ( (lv_function_0_0= ruleInternalFunction ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1377:1: (lv_function_0_0= ruleInternalFunction )
+            {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1377:1: (lv_function_0_0= ruleInternalFunction )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1378:3: lv_function_0_0= ruleInternalFunction
+            {
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getInternalFunctionPropertyAccess().getFunctionInternalFunctionEnumRuleCall_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleInternalFunction_in_ruleInternalFunctionProperty2979);
+            lv_function_0_0=ruleInternalFunction();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElementForParent(grammarAccess.getInternalFunctionPropertyRule());
+              	        }
+                     		set(
+                     			current, 
+                     			"function",
+                      		lv_function_0_0, 
+                      		"InternalFunction");
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
+
+            }
+
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleInternalFunctionProperty"
+
+
     // $ANTLR start "entryRuleRuntimeProperty"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1319:1: entryRuleRuntimeProperty returns [EObject current=null] : iv_ruleRuntimeProperty= ruleRuntimeProperty EOF ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1402:1: entryRuleRuntimeProperty returns [EObject current=null] : iv_ruleRuntimeProperty= ruleRuntimeProperty EOF ;
     public final EObject entryRuleRuntimeProperty() throws RecognitionException {
         EObject current = null;
 
@@ -3655,13 +3920,13 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1320:2: (iv_ruleRuntimeProperty= ruleRuntimeProperty EOF )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1321:2: iv_ruleRuntimeProperty= ruleRuntimeProperty EOF
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1403:2: (iv_ruleRuntimeProperty= ruleRuntimeProperty EOF )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1404:2: iv_ruleRuntimeProperty= ruleRuntimeProperty EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getRuntimePropertyRule()); 
             }
-            pushFollow(FOLLOW_ruleRuntimeProperty_in_entryRuleRuntimeProperty2840);
+            pushFollow(FOLLOW_ruleRuntimeProperty_in_entryRuleRuntimeProperty3014);
             iv_ruleRuntimeProperty=ruleRuntimeProperty();
 
             state._fsp--;
@@ -3669,7 +3934,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleRuntimeProperty; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleRuntimeProperty2850); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleRuntimeProperty3024); if (state.failed) return current;
 
             }
 
@@ -3687,7 +3952,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleRuntimeProperty"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1328:1: ruleRuntimeProperty returns [EObject current=null] : (otherlv_0= '#' ( (lv_reference_1_0= RULE_ID ) ) ) ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1411:1: ruleRuntimeProperty returns [EObject current=null] : (otherlv_0= '#' ( (lv_reference_1_0= RULE_ID ) ) ) ;
     public final EObject ruleRuntimeProperty() throws RecognitionException {
         EObject current = null;
 
@@ -3697,25 +3962,25 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1331:28: ( (otherlv_0= '#' ( (lv_reference_1_0= RULE_ID ) ) ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1332:1: (otherlv_0= '#' ( (lv_reference_1_0= RULE_ID ) ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1414:28: ( (otherlv_0= '#' ( (lv_reference_1_0= RULE_ID ) ) ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1415:1: (otherlv_0= '#' ( (lv_reference_1_0= RULE_ID ) ) )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1332:1: (otherlv_0= '#' ( (lv_reference_1_0= RULE_ID ) ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1332:3: otherlv_0= '#' ( (lv_reference_1_0= RULE_ID ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1415:1: (otherlv_0= '#' ( (lv_reference_1_0= RULE_ID ) ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1415:3: otherlv_0= '#' ( (lv_reference_1_0= RULE_ID ) )
             {
-            otherlv_0=(Token)match(input,26,FOLLOW_26_in_ruleRuntimeProperty2887); if (state.failed) return current;
+            otherlv_0=(Token)match(input,30,FOLLOW_30_in_ruleRuntimeProperty3061); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getRuntimePropertyAccess().getNumberSignKeyword_0());
                   
             }
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1336:1: ( (lv_reference_1_0= RULE_ID ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1337:1: (lv_reference_1_0= RULE_ID )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1419:1: ( (lv_reference_1_0= RULE_ID ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1420:1: (lv_reference_1_0= RULE_ID )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1337:1: (lv_reference_1_0= RULE_ID )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1338:3: lv_reference_1_0= RULE_ID
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1420:1: (lv_reference_1_0= RULE_ID )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1421:3: lv_reference_1_0= RULE_ID
             {
-            lv_reference_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleRuntimeProperty2904); if (state.failed) return current;
+            lv_reference_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleRuntimeProperty3078); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(lv_reference_1_0, grammarAccess.getRuntimePropertyAccess().getReferenceIDTerminalRuleCall_1_0()); 
@@ -3762,7 +4027,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleReflectionProperty"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1362:1: entryRuleReflectionProperty returns [EObject current=null] : iv_ruleReflectionProperty= ruleReflectionProperty EOF ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1445:1: entryRuleReflectionProperty returns [EObject current=null] : iv_ruleReflectionProperty= ruleReflectionProperty EOF ;
     public final EObject entryRuleReflectionProperty() throws RecognitionException {
         EObject current = null;
 
@@ -3770,13 +4035,13 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1363:2: (iv_ruleReflectionProperty= ruleReflectionProperty EOF )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1364:2: iv_ruleReflectionProperty= ruleReflectionProperty EOF
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1446:2: (iv_ruleReflectionProperty= ruleReflectionProperty EOF )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1447:2: iv_ruleReflectionProperty= ruleReflectionProperty EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getReflectionPropertyRule()); 
             }
-            pushFollow(FOLLOW_ruleReflectionProperty_in_entryRuleReflectionProperty2945);
+            pushFollow(FOLLOW_ruleReflectionProperty_in_entryRuleReflectionProperty3119);
             iv_ruleReflectionProperty=ruleReflectionProperty();
 
             state._fsp--;
@@ -3784,7 +4049,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleReflectionProperty; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleReflectionProperty2955); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleReflectionProperty3129); if (state.failed) return current;
 
             }
 
@@ -3802,7 +4067,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleReflectionProperty"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1371:1: ruleReflectionProperty returns [EObject current=null] : (otherlv_0= '$' ( (lv_function_1_0= ruleReflectionFunction ) ) ) ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1454:1: ruleReflectionProperty returns [EObject current=null] : (otherlv_0= '$' ( (lv_function_1_0= ruleReflectionFunction ) ) ) ;
     public final EObject ruleReflectionProperty() throws RecognitionException {
         EObject current = null;
 
@@ -3813,30 +4078,30 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1374:28: ( (otherlv_0= '$' ( (lv_function_1_0= ruleReflectionFunction ) ) ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1375:1: (otherlv_0= '$' ( (lv_function_1_0= ruleReflectionFunction ) ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1457:28: ( (otherlv_0= '$' ( (lv_function_1_0= ruleReflectionFunction ) ) ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1458:1: (otherlv_0= '$' ( (lv_function_1_0= ruleReflectionFunction ) ) )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1375:1: (otherlv_0= '$' ( (lv_function_1_0= ruleReflectionFunction ) ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1375:3: otherlv_0= '$' ( (lv_function_1_0= ruleReflectionFunction ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1458:1: (otherlv_0= '$' ( (lv_function_1_0= ruleReflectionFunction ) ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1458:3: otherlv_0= '$' ( (lv_function_1_0= ruleReflectionFunction ) )
             {
-            otherlv_0=(Token)match(input,27,FOLLOW_27_in_ruleReflectionProperty2992); if (state.failed) return current;
+            otherlv_0=(Token)match(input,31,FOLLOW_31_in_ruleReflectionProperty3166); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getReflectionPropertyAccess().getDollarSignKeyword_0());
                   
             }
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1379:1: ( (lv_function_1_0= ruleReflectionFunction ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1380:1: (lv_function_1_0= ruleReflectionFunction )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1462:1: ( (lv_function_1_0= ruleReflectionFunction ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1463:1: (lv_function_1_0= ruleReflectionFunction )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1380:1: (lv_function_1_0= ruleReflectionFunction )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1381:3: lv_function_1_0= ruleReflectionFunction
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1463:1: (lv_function_1_0= ruleReflectionFunction )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1464:3: lv_function_1_0= ruleReflectionFunction
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getReflectionPropertyAccess().getFunctionReflectionFunctionEnumRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleReflectionFunction_in_ruleReflectionProperty3013);
+            pushFollow(FOLLOW_ruleReflectionFunction_in_ruleReflectionProperty3187);
             lv_function_1_0=ruleReflectionFunction();
 
             state._fsp--;
@@ -3883,7 +4148,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleContainerNode"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1405:1: entryRuleContainerNode returns [EObject current=null] : iv_ruleContainerNode= ruleContainerNode EOF ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1488:1: entryRuleContainerNode returns [EObject current=null] : iv_ruleContainerNode= ruleContainerNode EOF ;
     public final EObject entryRuleContainerNode() throws RecognitionException {
         EObject current = null;
 
@@ -3891,13 +4156,13 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1406:2: (iv_ruleContainerNode= ruleContainerNode EOF )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1407:2: iv_ruleContainerNode= ruleContainerNode EOF
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1489:2: (iv_ruleContainerNode= ruleContainerNode EOF )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1490:2: iv_ruleContainerNode= ruleContainerNode EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getContainerNodeRule()); 
             }
-            pushFollow(FOLLOW_ruleContainerNode_in_entryRuleContainerNode3049);
+            pushFollow(FOLLOW_ruleContainerNode_in_entryRuleContainerNode3223);
             iv_ruleContainerNode=ruleContainerNode();
 
             state._fsp--;
@@ -3905,7 +4170,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleContainerNode; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleContainerNode3059); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleContainerNode3233); if (state.failed) return current;
 
             }
 
@@ -3923,7 +4188,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleContainerNode"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1414:1: ruleContainerNode returns [EObject current=null] : ( (otherlv_0= RULE_ID ) ) ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1497:1: ruleContainerNode returns [EObject current=null] : ( (otherlv_0= RULE_ID ) ) ;
     public final EObject ruleContainerNode() throws RecognitionException {
         EObject current = null;
 
@@ -3932,14 +4197,14 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1417:28: ( ( (otherlv_0= RULE_ID ) ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1418:1: ( (otherlv_0= RULE_ID ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1500:28: ( ( (otherlv_0= RULE_ID ) ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1501:1: ( (otherlv_0= RULE_ID ) )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1418:1: ( (otherlv_0= RULE_ID ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1419:1: (otherlv_0= RULE_ID )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1501:1: ( (otherlv_0= RULE_ID ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1502:1: (otherlv_0= RULE_ID )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1419:1: (otherlv_0= RULE_ID )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1420:3: otherlv_0= RULE_ID
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1502:1: (otherlv_0= RULE_ID )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1503:3: otherlv_0= RULE_ID
             {
             if ( state.backtracking==0 ) {
                
@@ -3953,7 +4218,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
               	        }
                       
             }
-            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleContainerNode3107); if (state.failed) return current;
+            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleContainerNode3281); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               		newLeafNode(otherlv_0, grammarAccess.getContainerNodeAccess().getContainerContainerCrossReference_0()); 
@@ -3985,7 +4250,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleWildcardNode"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1442:1: entryRuleWildcardNode returns [EObject current=null] : iv_ruleWildcardNode= ruleWildcardNode EOF ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1525:1: entryRuleWildcardNode returns [EObject current=null] : iv_ruleWildcardNode= ruleWildcardNode EOF ;
     public final EObject entryRuleWildcardNode() throws RecognitionException {
         EObject current = null;
 
@@ -3993,13 +4258,13 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1443:2: (iv_ruleWildcardNode= ruleWildcardNode EOF )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1444:2: iv_ruleWildcardNode= ruleWildcardNode EOF
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1526:2: (iv_ruleWildcardNode= ruleWildcardNode EOF )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1527:2: iv_ruleWildcardNode= ruleWildcardNode EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getWildcardNodeRule()); 
             }
-            pushFollow(FOLLOW_ruleWildcardNode_in_entryRuleWildcardNode3142);
+            pushFollow(FOLLOW_ruleWildcardNode_in_entryRuleWildcardNode3316);
             iv_ruleWildcardNode=ruleWildcardNode();
 
             state._fsp--;
@@ -4007,7 +4272,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleWildcardNode; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleWildcardNode3152); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleWildcardNode3326); if (state.failed) return current;
 
             }
 
@@ -4025,7 +4290,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleWildcardNode"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1451:1: ruleWildcardNode returns [EObject current=null] : ( () otherlv_1= '*' ) ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1534:1: ruleWildcardNode returns [EObject current=null] : ( () otherlv_1= '*' ) ;
     public final EObject ruleWildcardNode() throws RecognitionException {
         EObject current = null;
 
@@ -4034,14 +4299,14 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1454:28: ( ( () otherlv_1= '*' ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1455:1: ( () otherlv_1= '*' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1537:28: ( ( () otherlv_1= '*' ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1538:1: ( () otherlv_1= '*' )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1455:1: ( () otherlv_1= '*' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1455:2: () otherlv_1= '*'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1538:1: ( () otherlv_1= '*' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1538:2: () otherlv_1= '*'
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1455:2: ()
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1456:2: 
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1538:2: ()
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1539:2: 
             {
             if ( state.backtracking==0 ) {
                
@@ -4058,7 +4323,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,18,FOLLOW_18_in_ruleWildcardNode3201); if (state.failed) return current;
+            otherlv_1=(Token)match(input,22,FOLLOW_22_in_ruleWildcardNode3375); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getWildcardNodeAccess().getAsteriskKeyword_1());
@@ -4087,7 +4352,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSubPathNode"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1476:1: entryRuleSubPathNode returns [EObject current=null] : iv_ruleSubPathNode= ruleSubPathNode EOF ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1559:1: entryRuleSubPathNode returns [EObject current=null] : iv_ruleSubPathNode= ruleSubPathNode EOF ;
     public final EObject entryRuleSubPathNode() throws RecognitionException {
         EObject current = null;
 
@@ -4095,13 +4360,13 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1477:2: (iv_ruleSubPathNode= ruleSubPathNode EOF )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1478:2: iv_ruleSubPathNode= ruleSubPathNode EOF
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1560:2: (iv_ruleSubPathNode= ruleSubPathNode EOF )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1561:2: iv_ruleSubPathNode= ruleSubPathNode EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getSubPathNodeRule()); 
             }
-            pushFollow(FOLLOW_ruleSubPathNode_in_entryRuleSubPathNode3237);
+            pushFollow(FOLLOW_ruleSubPathNode_in_entryRuleSubPathNode3411);
             iv_ruleSubPathNode=ruleSubPathNode();
 
             state._fsp--;
@@ -4109,7 +4374,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleSubPathNode; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleSubPathNode3247); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleSubPathNode3421); if (state.failed) return current;
 
             }
 
@@ -4127,7 +4392,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSubPathNode"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1485:1: ruleSubPathNode returns [EObject current=null] : ( () otherlv_1= '**' ) ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1568:1: ruleSubPathNode returns [EObject current=null] : ( () otherlv_1= '**' ) ;
     public final EObject ruleSubPathNode() throws RecognitionException {
         EObject current = null;
 
@@ -4136,14 +4401,14 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1488:28: ( ( () otherlv_1= '**' ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1489:1: ( () otherlv_1= '**' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1571:28: ( ( () otherlv_1= '**' ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1572:1: ( () otherlv_1= '**' )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1489:1: ( () otherlv_1= '**' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1489:2: () otherlv_1= '**'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1572:1: ( () otherlv_1= '**' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1572:2: () otherlv_1= '**'
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1489:2: ()
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1490:2: 
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1572:2: ()
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1573:2: 
             {
             if ( state.backtracking==0 ) {
                
@@ -4160,7 +4425,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,28,FOLLOW_28_in_ruleSubPathNode3296); if (state.failed) return current;
+            otherlv_1=(Token)match(input,32,FOLLOW_32_in_ruleSubPathNode3470); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getSubPathNodeAccess().getAsteriskAsteriskKeyword_1());
@@ -4188,8 +4453,110 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleSubPathNode"
 
 
+    // $ANTLR start "entryRuleParentNode"
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1593:1: entryRuleParentNode returns [EObject current=null] : iv_ruleParentNode= ruleParentNode EOF ;
+    public final EObject entryRuleParentNode() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleParentNode = null;
+
+
+        try {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1594:2: (iv_ruleParentNode= ruleParentNode EOF )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1595:2: iv_ruleParentNode= ruleParentNode EOF
+            {
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getParentNodeRule()); 
+            }
+            pushFollow(FOLLOW_ruleParentNode_in_entryRuleParentNode3506);
+            iv_ruleParentNode=ruleParentNode();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleParentNode; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleParentNode3516); if (state.failed) return current;
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleParentNode"
+
+
+    // $ANTLR start "ruleParentNode"
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1602:1: ruleParentNode returns [EObject current=null] : ( () otherlv_1= '<<' ) ;
+    public final EObject ruleParentNode() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_1=null;
+
+         enterRule(); 
+            
+        try {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1605:28: ( ( () otherlv_1= '<<' ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1606:1: ( () otherlv_1= '<<' )
+            {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1606:1: ( () otherlv_1= '<<' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1606:2: () otherlv_1= '<<'
+            {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1606:2: ()
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1607:2: 
+            {
+            if ( state.backtracking==0 ) {
+               
+              	  /* */ 
+              	
+            }
+            if ( state.backtracking==0 ) {
+
+                      current = forceCreateModelElement(
+                          grammarAccess.getParentNodeAccess().getParentNodeAction_0(),
+                          current);
+                  
+            }
+
+            }
+
+            otherlv_1=(Token)match(input,33,FOLLOW_33_in_ruleParentNode3565); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_1, grammarAccess.getParentNodeAccess().getLessThanSignLessThanSignKeyword_1());
+                  
+            }
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleParentNode"
+
+
     // $ANTLR start "entryRuleCollector"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1510:1: entryRuleCollector returns [EObject current=null] : iv_ruleCollector= ruleCollector EOF ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1627:1: entryRuleCollector returns [EObject current=null] : iv_ruleCollector= ruleCollector EOF ;
     public final EObject entryRuleCollector() throws RecognitionException {
         EObject current = null;
 
@@ -4197,13 +4564,13 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1511:2: (iv_ruleCollector= ruleCollector EOF )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1512:2: iv_ruleCollector= ruleCollector EOF
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1628:2: (iv_ruleCollector= ruleCollector EOF )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1629:2: iv_ruleCollector= ruleCollector EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getCollectorRule()); 
             }
-            pushFollow(FOLLOW_ruleCollector_in_entryRuleCollector3332);
+            pushFollow(FOLLOW_ruleCollector_in_entryRuleCollector3601);
             iv_ruleCollector=ruleCollector();
 
             state._fsp--;
@@ -4211,7 +4578,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleCollector; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleCollector3342); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleCollector3611); if (state.failed) return current;
 
             }
 
@@ -4229,7 +4596,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCollector"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1519:1: ruleCollector returns [EObject current=null] : ( ( (lv_insertionPoint_0_0= ruleInsertionPoint ) ) ( ( ruleQualifiedName ) ) otherlv_2= '(' ( ( (lv_initializations_3_0= ruleValue ) ) (otherlv_4= ',' ( (lv_initializations_5_0= ruleValue ) ) )* )? otherlv_6= ')' ) ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1636:1: ruleCollector returns [EObject current=null] : ( ( (lv_insertionPoint_0_0= ruleInsertionPoint ) ) ( ( ruleQualifiedName ) ) otherlv_2= '(' ( ( (lv_initializations_3_0= ruleValue ) ) (otherlv_4= ',' ( (lv_initializations_5_0= ruleValue ) ) )* )? otherlv_6= ')' ) ;
     public final EObject ruleCollector() throws RecognitionException {
         EObject current = null;
 
@@ -4246,24 +4613,24 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1522:28: ( ( ( (lv_insertionPoint_0_0= ruleInsertionPoint ) ) ( ( ruleQualifiedName ) ) otherlv_2= '(' ( ( (lv_initializations_3_0= ruleValue ) ) (otherlv_4= ',' ( (lv_initializations_5_0= ruleValue ) ) )* )? otherlv_6= ')' ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1523:1: ( ( (lv_insertionPoint_0_0= ruleInsertionPoint ) ) ( ( ruleQualifiedName ) ) otherlv_2= '(' ( ( (lv_initializations_3_0= ruleValue ) ) (otherlv_4= ',' ( (lv_initializations_5_0= ruleValue ) ) )* )? otherlv_6= ')' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1639:28: ( ( ( (lv_insertionPoint_0_0= ruleInsertionPoint ) ) ( ( ruleQualifiedName ) ) otherlv_2= '(' ( ( (lv_initializations_3_0= ruleValue ) ) (otherlv_4= ',' ( (lv_initializations_5_0= ruleValue ) ) )* )? otherlv_6= ')' ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1640:1: ( ( (lv_insertionPoint_0_0= ruleInsertionPoint ) ) ( ( ruleQualifiedName ) ) otherlv_2= '(' ( ( (lv_initializations_3_0= ruleValue ) ) (otherlv_4= ',' ( (lv_initializations_5_0= ruleValue ) ) )* )? otherlv_6= ')' )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1523:1: ( ( (lv_insertionPoint_0_0= ruleInsertionPoint ) ) ( ( ruleQualifiedName ) ) otherlv_2= '(' ( ( (lv_initializations_3_0= ruleValue ) ) (otherlv_4= ',' ( (lv_initializations_5_0= ruleValue ) ) )* )? otherlv_6= ')' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1523:2: ( (lv_insertionPoint_0_0= ruleInsertionPoint ) ) ( ( ruleQualifiedName ) ) otherlv_2= '(' ( ( (lv_initializations_3_0= ruleValue ) ) (otherlv_4= ',' ( (lv_initializations_5_0= ruleValue ) ) )* )? otherlv_6= ')'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1640:1: ( ( (lv_insertionPoint_0_0= ruleInsertionPoint ) ) ( ( ruleQualifiedName ) ) otherlv_2= '(' ( ( (lv_initializations_3_0= ruleValue ) ) (otherlv_4= ',' ( (lv_initializations_5_0= ruleValue ) ) )* )? otherlv_6= ')' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1640:2: ( (lv_insertionPoint_0_0= ruleInsertionPoint ) ) ( ( ruleQualifiedName ) ) otherlv_2= '(' ( ( (lv_initializations_3_0= ruleValue ) ) (otherlv_4= ',' ( (lv_initializations_5_0= ruleValue ) ) )* )? otherlv_6= ')'
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1523:2: ( (lv_insertionPoint_0_0= ruleInsertionPoint ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1524:1: (lv_insertionPoint_0_0= ruleInsertionPoint )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1640:2: ( (lv_insertionPoint_0_0= ruleInsertionPoint ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1641:1: (lv_insertionPoint_0_0= ruleInsertionPoint )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1524:1: (lv_insertionPoint_0_0= ruleInsertionPoint )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1525:3: lv_insertionPoint_0_0= ruleInsertionPoint
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1641:1: (lv_insertionPoint_0_0= ruleInsertionPoint )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1642:3: lv_insertionPoint_0_0= ruleInsertionPoint
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getCollectorAccess().getInsertionPointInsertionPointEnumRuleCall_0_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleInsertionPoint_in_ruleCollector3388);
+            pushFollow(FOLLOW_ruleInsertionPoint_in_ruleCollector3657);
             lv_insertionPoint_0_0=ruleInsertionPoint();
 
             state._fsp--;
@@ -4287,11 +4654,11 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1541:2: ( ( ruleQualifiedName ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1542:1: ( ruleQualifiedName )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1658:2: ( ( ruleQualifiedName ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1659:1: ( ruleQualifiedName )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1542:1: ( ruleQualifiedName )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1543:3: ruleQualifiedName
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1659:1: ( ruleQualifiedName )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1660:3: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                
@@ -4310,7 +4677,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getCollectorAccess().getTypeRecordTypeCrossReference_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_ruleCollector3415);
+            pushFollow(FOLLOW_ruleQualifiedName_in_ruleCollector3684);
             ruleQualifiedName();
 
             state._fsp--;
@@ -4326,35 +4693,35 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,22,FOLLOW_22_in_ruleCollector3427); if (state.failed) return current;
+            otherlv_2=(Token)match(input,26,FOLLOW_26_in_ruleCollector3696); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_2, grammarAccess.getCollectorAccess().getLeftParenthesisKeyword_2());
                   
             }
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1563:1: ( ( (lv_initializations_3_0= ruleValue ) ) (otherlv_4= ',' ( (lv_initializations_5_0= ruleValue ) ) )* )?
-            int alt20=2;
-            int LA20_0 = input.LA(1);
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1680:1: ( ( (lv_initializations_3_0= ruleValue ) ) (otherlv_4= ',' ( (lv_initializations_5_0= ruleValue ) ) )* )?
+            int alt23=2;
+            int LA23_0 = input.LA(1);
 
-            if ( ((LA20_0>=RULE_ID && LA20_0<=RULE_INT)||LA20_0==18||LA20_0==28) ) {
-                alt20=1;
+            if ( ((LA23_0>=RULE_ID && LA23_0<=RULE_INT)||LA23_0==22||(LA23_0>=30 && LA23_0<=33)||(LA23_0>=35 && LA23_0<=37)) ) {
+                alt23=1;
             }
-            switch (alt20) {
+            switch (alt23) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1563:2: ( (lv_initializations_3_0= ruleValue ) ) (otherlv_4= ',' ( (lv_initializations_5_0= ruleValue ) ) )*
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1680:2: ( (lv_initializations_3_0= ruleValue ) ) (otherlv_4= ',' ( (lv_initializations_5_0= ruleValue ) ) )*
                     {
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1563:2: ( (lv_initializations_3_0= ruleValue ) )
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1564:1: (lv_initializations_3_0= ruleValue )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1680:2: ( (lv_initializations_3_0= ruleValue ) )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1681:1: (lv_initializations_3_0= ruleValue )
                     {
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1564:1: (lv_initializations_3_0= ruleValue )
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1565:3: lv_initializations_3_0= ruleValue
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1681:1: (lv_initializations_3_0= ruleValue )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1682:3: lv_initializations_3_0= ruleValue
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getCollectorAccess().getInitializationsValueParserRuleCall_3_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleValue_in_ruleCollector3449);
+                    pushFollow(FOLLOW_ruleValue_in_ruleCollector3718);
                     lv_initializations_3_0=ruleValue();
 
                     state._fsp--;
@@ -4378,39 +4745,39 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1581:2: (otherlv_4= ',' ( (lv_initializations_5_0= ruleValue ) ) )*
-                    loop19:
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1698:2: (otherlv_4= ',' ( (lv_initializations_5_0= ruleValue ) ) )*
+                    loop22:
                     do {
-                        int alt19=2;
-                        int LA19_0 = input.LA(1);
+                        int alt22=2;
+                        int LA22_0 = input.LA(1);
 
-                        if ( (LA19_0==15) ) {
-                            alt19=1;
+                        if ( (LA22_0==19) ) {
+                            alt22=1;
                         }
 
 
-                        switch (alt19) {
+                        switch (alt22) {
                     	case 1 :
-                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1581:4: otherlv_4= ',' ( (lv_initializations_5_0= ruleValue ) )
+                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1698:4: otherlv_4= ',' ( (lv_initializations_5_0= ruleValue ) )
                     	    {
-                    	    otherlv_4=(Token)match(input,15,FOLLOW_15_in_ruleCollector3462); if (state.failed) return current;
+                    	    otherlv_4=(Token)match(input,19,FOLLOW_19_in_ruleCollector3731); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	          	newLeafNode(otherlv_4, grammarAccess.getCollectorAccess().getCommaKeyword_3_1_0());
                     	          
                     	    }
-                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1585:1: ( (lv_initializations_5_0= ruleValue ) )
-                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1586:1: (lv_initializations_5_0= ruleValue )
+                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1702:1: ( (lv_initializations_5_0= ruleValue ) )
+                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1703:1: (lv_initializations_5_0= ruleValue )
                     	    {
-                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1586:1: (lv_initializations_5_0= ruleValue )
-                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1587:3: lv_initializations_5_0= ruleValue
+                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1703:1: (lv_initializations_5_0= ruleValue )
+                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1704:3: lv_initializations_5_0= ruleValue
                     	    {
                     	    if ( state.backtracking==0 ) {
                     	       
                     	      	        newCompositeNode(grammarAccess.getCollectorAccess().getInitializationsValueParserRuleCall_3_1_1_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleValue_in_ruleCollector3483);
+                    	    pushFollow(FOLLOW_ruleValue_in_ruleCollector3752);
                     	    lv_initializations_5_0=ruleValue();
 
                     	    state._fsp--;
@@ -4439,7 +4806,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop19;
+                    	    break loop22;
                         }
                     } while (true);
 
@@ -4449,7 +4816,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_6=(Token)match(input,23,FOLLOW_23_in_ruleCollector3499); if (state.failed) return current;
+            otherlv_6=(Token)match(input,27,FOLLOW_27_in_ruleCollector3768); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_6, grammarAccess.getCollectorAccess().getRightParenthesisKeyword_4());
@@ -4477,8 +4844,2232 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleCollector"
 
 
+    // $ANTLR start "entryRuleAnnotation"
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1732:1: entryRuleAnnotation returns [EObject current=null] : iv_ruleAnnotation= ruleAnnotation EOF ;
+    public final EObject entryRuleAnnotation() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleAnnotation = null;
+
+
+        try {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1733:2: (iv_ruleAnnotation= ruleAnnotation EOF )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1734:2: iv_ruleAnnotation= ruleAnnotation EOF
+            {
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getAnnotationRule()); 
+            }
+            pushFollow(FOLLOW_ruleAnnotation_in_entryRuleAnnotation3804);
+            iv_ruleAnnotation=ruleAnnotation();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleAnnotation; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleAnnotation3814); if (state.failed) return current;
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleAnnotation"
+
+
+    // $ANTLR start "ruleAnnotation"
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1741:1: ruleAnnotation returns [EObject current=null] : (this_CommentAnnotation_0= ruleCommentAnnotation | this_TagAnnotation_1= ruleTagAnnotation | this_KeyStringValueAnnotation_2= ruleKeyStringValueAnnotation | this_TypedKeyStringValueAnnotation_3= ruleTypedKeyStringValueAnnotation | this_KeyBooleanValueAnnotation_4= ruleKeyBooleanValueAnnotation | this_KeyIntValueAnnotation_5= ruleKeyIntValueAnnotation | this_KeyFloatValueAnnotation_6= ruleKeyFloatValueAnnotation ) ;
+    public final EObject ruleAnnotation() throws RecognitionException {
+        EObject current = null;
+
+        EObject this_CommentAnnotation_0 = null;
+
+        EObject this_TagAnnotation_1 = null;
+
+        EObject this_KeyStringValueAnnotation_2 = null;
+
+        EObject this_TypedKeyStringValueAnnotation_3 = null;
+
+        EObject this_KeyBooleanValueAnnotation_4 = null;
+
+        EObject this_KeyIntValueAnnotation_5 = null;
+
+        EObject this_KeyFloatValueAnnotation_6 = null;
+
+
+         enterRule(); 
+            
+        try {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1744:28: ( (this_CommentAnnotation_0= ruleCommentAnnotation | this_TagAnnotation_1= ruleTagAnnotation | this_KeyStringValueAnnotation_2= ruleKeyStringValueAnnotation | this_TypedKeyStringValueAnnotation_3= ruleTypedKeyStringValueAnnotation | this_KeyBooleanValueAnnotation_4= ruleKeyBooleanValueAnnotation | this_KeyIntValueAnnotation_5= ruleKeyIntValueAnnotation | this_KeyFloatValueAnnotation_6= ruleKeyFloatValueAnnotation ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1745:1: (this_CommentAnnotation_0= ruleCommentAnnotation | this_TagAnnotation_1= ruleTagAnnotation | this_KeyStringValueAnnotation_2= ruleKeyStringValueAnnotation | this_TypedKeyStringValueAnnotation_3= ruleTypedKeyStringValueAnnotation | this_KeyBooleanValueAnnotation_4= ruleKeyBooleanValueAnnotation | this_KeyIntValueAnnotation_5= ruleKeyIntValueAnnotation | this_KeyFloatValueAnnotation_6= ruleKeyFloatValueAnnotation )
+            {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1745:1: (this_CommentAnnotation_0= ruleCommentAnnotation | this_TagAnnotation_1= ruleTagAnnotation | this_KeyStringValueAnnotation_2= ruleKeyStringValueAnnotation | this_TypedKeyStringValueAnnotation_3= ruleTypedKeyStringValueAnnotation | this_KeyBooleanValueAnnotation_4= ruleKeyBooleanValueAnnotation | this_KeyIntValueAnnotation_5= ruleKeyIntValueAnnotation | this_KeyFloatValueAnnotation_6= ruleKeyFloatValueAnnotation )
+            int alt24=7;
+            alt24 = dfa24.predict(input);
+            switch (alt24) {
+                case 1 :
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1746:2: this_CommentAnnotation_0= ruleCommentAnnotation
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	  /* */ 
+                      	
+                    }
+                    if ( state.backtracking==0 ) {
+                       
+                              newCompositeNode(grammarAccess.getAnnotationAccess().getCommentAnnotationParserRuleCall_0()); 
+                          
+                    }
+                    pushFollow(FOLLOW_ruleCommentAnnotation_in_ruleAnnotation3864);
+                    this_CommentAnnotation_0=ruleCommentAnnotation();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+                       
+                              current = this_CommentAnnotation_0; 
+                              afterParserOrEnumRuleCall();
+                          
+                    }
+
+                    }
+                    break;
+                case 2 :
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1759:2: this_TagAnnotation_1= ruleTagAnnotation
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	  /* */ 
+                      	
+                    }
+                    if ( state.backtracking==0 ) {
+                       
+                              newCompositeNode(grammarAccess.getAnnotationAccess().getTagAnnotationParserRuleCall_1()); 
+                          
+                    }
+                    pushFollow(FOLLOW_ruleTagAnnotation_in_ruleAnnotation3894);
+                    this_TagAnnotation_1=ruleTagAnnotation();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+                       
+                              current = this_TagAnnotation_1; 
+                              afterParserOrEnumRuleCall();
+                          
+                    }
+
+                    }
+                    break;
+                case 3 :
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1772:2: this_KeyStringValueAnnotation_2= ruleKeyStringValueAnnotation
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	  /* */ 
+                      	
+                    }
+                    if ( state.backtracking==0 ) {
+                       
+                              newCompositeNode(grammarAccess.getAnnotationAccess().getKeyStringValueAnnotationParserRuleCall_2()); 
+                          
+                    }
+                    pushFollow(FOLLOW_ruleKeyStringValueAnnotation_in_ruleAnnotation3924);
+                    this_KeyStringValueAnnotation_2=ruleKeyStringValueAnnotation();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+                       
+                              current = this_KeyStringValueAnnotation_2; 
+                              afterParserOrEnumRuleCall();
+                          
+                    }
+
+                    }
+                    break;
+                case 4 :
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1785:2: this_TypedKeyStringValueAnnotation_3= ruleTypedKeyStringValueAnnotation
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	  /* */ 
+                      	
+                    }
+                    if ( state.backtracking==0 ) {
+                       
+                              newCompositeNode(grammarAccess.getAnnotationAccess().getTypedKeyStringValueAnnotationParserRuleCall_3()); 
+                          
+                    }
+                    pushFollow(FOLLOW_ruleTypedKeyStringValueAnnotation_in_ruleAnnotation3954);
+                    this_TypedKeyStringValueAnnotation_3=ruleTypedKeyStringValueAnnotation();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+                       
+                              current = this_TypedKeyStringValueAnnotation_3; 
+                              afterParserOrEnumRuleCall();
+                          
+                    }
+
+                    }
+                    break;
+                case 5 :
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1798:2: this_KeyBooleanValueAnnotation_4= ruleKeyBooleanValueAnnotation
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	  /* */ 
+                      	
+                    }
+                    if ( state.backtracking==0 ) {
+                       
+                              newCompositeNode(grammarAccess.getAnnotationAccess().getKeyBooleanValueAnnotationParserRuleCall_4()); 
+                          
+                    }
+                    pushFollow(FOLLOW_ruleKeyBooleanValueAnnotation_in_ruleAnnotation3984);
+                    this_KeyBooleanValueAnnotation_4=ruleKeyBooleanValueAnnotation();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+                       
+                              current = this_KeyBooleanValueAnnotation_4; 
+                              afterParserOrEnumRuleCall();
+                          
+                    }
+
+                    }
+                    break;
+                case 6 :
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1811:2: this_KeyIntValueAnnotation_5= ruleKeyIntValueAnnotation
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	  /* */ 
+                      	
+                    }
+                    if ( state.backtracking==0 ) {
+                       
+                              newCompositeNode(grammarAccess.getAnnotationAccess().getKeyIntValueAnnotationParserRuleCall_5()); 
+                          
+                    }
+                    pushFollow(FOLLOW_ruleKeyIntValueAnnotation_in_ruleAnnotation4014);
+                    this_KeyIntValueAnnotation_5=ruleKeyIntValueAnnotation();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+                       
+                              current = this_KeyIntValueAnnotation_5; 
+                              afterParserOrEnumRuleCall();
+                          
+                    }
+
+                    }
+                    break;
+                case 7 :
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1824:2: this_KeyFloatValueAnnotation_6= ruleKeyFloatValueAnnotation
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	  /* */ 
+                      	
+                    }
+                    if ( state.backtracking==0 ) {
+                       
+                              newCompositeNode(grammarAccess.getAnnotationAccess().getKeyFloatValueAnnotationParserRuleCall_6()); 
+                          
+                    }
+                    pushFollow(FOLLOW_ruleKeyFloatValueAnnotation_in_ruleAnnotation4044);
+                    this_KeyFloatValueAnnotation_6=ruleKeyFloatValueAnnotation();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+                       
+                              current = this_KeyFloatValueAnnotation_6; 
+                              afterParserOrEnumRuleCall();
+                          
+                    }
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleAnnotation"
+
+
+    // $ANTLR start "entryRuleCommentAnnotation"
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1845:1: entryRuleCommentAnnotation returns [EObject current=null] : iv_ruleCommentAnnotation= ruleCommentAnnotation EOF ;
+    public final EObject entryRuleCommentAnnotation() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleCommentAnnotation = null;
+
+
+        try {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1846:2: (iv_ruleCommentAnnotation= ruleCommentAnnotation EOF )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1847:2: iv_ruleCommentAnnotation= ruleCommentAnnotation EOF
+            {
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getCommentAnnotationRule()); 
+            }
+            pushFollow(FOLLOW_ruleCommentAnnotation_in_entryRuleCommentAnnotation4081);
+            iv_ruleCommentAnnotation=ruleCommentAnnotation();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleCommentAnnotation; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleCommentAnnotation4091); if (state.failed) return current;
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleCommentAnnotation"
+
+
+    // $ANTLR start "ruleCommentAnnotation"
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1854:1: ruleCommentAnnotation returns [EObject current=null] : ( (lv_value_0_0= RULE_COMMENT_ANNOTATION ) ) ;
+    public final EObject ruleCommentAnnotation() throws RecognitionException {
+        EObject current = null;
+
+        Token lv_value_0_0=null;
+
+         enterRule(); 
+            
+        try {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1857:28: ( ( (lv_value_0_0= RULE_COMMENT_ANNOTATION ) ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1858:1: ( (lv_value_0_0= RULE_COMMENT_ANNOTATION ) )
+            {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1858:1: ( (lv_value_0_0= RULE_COMMENT_ANNOTATION ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1859:1: (lv_value_0_0= RULE_COMMENT_ANNOTATION )
+            {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1859:1: (lv_value_0_0= RULE_COMMENT_ANNOTATION )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1860:3: lv_value_0_0= RULE_COMMENT_ANNOTATION
+            {
+            lv_value_0_0=(Token)match(input,RULE_COMMENT_ANNOTATION,FOLLOW_RULE_COMMENT_ANNOTATION_in_ruleCommentAnnotation4132); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              			newLeafNode(lv_value_0_0, grammarAccess.getCommentAnnotationAccess().getValueCOMMENT_ANNOTATIONTerminalRuleCall_0()); 
+              		
+            }
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElement(grammarAccess.getCommentAnnotationRule());
+              	        }
+                     		setWithLastConsumed(
+                     			current, 
+                     			"value",
+                      		lv_value_0_0, 
+                      		"COMMENT_ANNOTATION");
+              	    
+            }
+
+            }
+
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleCommentAnnotation"
+
+
+    // $ANTLR start "entryRuleTagAnnotation"
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1884:1: entryRuleTagAnnotation returns [EObject current=null] : iv_ruleTagAnnotation= ruleTagAnnotation EOF ;
+    public final EObject entryRuleTagAnnotation() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleTagAnnotation = null;
+
+
+        try {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1885:2: (iv_ruleTagAnnotation= ruleTagAnnotation EOF )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1886:2: iv_ruleTagAnnotation= ruleTagAnnotation EOF
+            {
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getTagAnnotationRule()); 
+            }
+            pushFollow(FOLLOW_ruleTagAnnotation_in_entryRuleTagAnnotation4172);
+            iv_ruleTagAnnotation=ruleTagAnnotation();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleTagAnnotation; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleTagAnnotation4182); if (state.failed) return current;
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleTagAnnotation"
+
+
+    // $ANTLR start "ruleTagAnnotation"
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1893:1: ruleTagAnnotation returns [EObject current=null] : (otherlv_0= '@' ( (lv_name_1_0= ruleExtendedID ) ) (otherlv_2= '(' ( (lv_annotations_3_0= ruleAnnotation ) )* otherlv_4= ')' )? ) ;
+    public final EObject ruleTagAnnotation() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_0=null;
+        Token otherlv_2=null;
+        Token otherlv_4=null;
+        AntlrDatatypeRuleToken lv_name_1_0 = null;
+
+        EObject lv_annotations_3_0 = null;
+
+
+         enterRule(); 
+            
+        try {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1896:28: ( (otherlv_0= '@' ( (lv_name_1_0= ruleExtendedID ) ) (otherlv_2= '(' ( (lv_annotations_3_0= ruleAnnotation ) )* otherlv_4= ')' )? ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1897:1: (otherlv_0= '@' ( (lv_name_1_0= ruleExtendedID ) ) (otherlv_2= '(' ( (lv_annotations_3_0= ruleAnnotation ) )* otherlv_4= ')' )? )
+            {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1897:1: (otherlv_0= '@' ( (lv_name_1_0= ruleExtendedID ) ) (otherlv_2= '(' ( (lv_annotations_3_0= ruleAnnotation ) )* otherlv_4= ')' )? )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1897:3: otherlv_0= '@' ( (lv_name_1_0= ruleExtendedID ) ) (otherlv_2= '(' ( (lv_annotations_3_0= ruleAnnotation ) )* otherlv_4= ')' )?
+            {
+            otherlv_0=(Token)match(input,34,FOLLOW_34_in_ruleTagAnnotation4219); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_0, grammarAccess.getTagAnnotationAccess().getCommercialAtKeyword_0());
+                  
+            }
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1901:1: ( (lv_name_1_0= ruleExtendedID ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1902:1: (lv_name_1_0= ruleExtendedID )
+            {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1902:1: (lv_name_1_0= ruleExtendedID )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1903:3: lv_name_1_0= ruleExtendedID
+            {
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getTagAnnotationAccess().getNameExtendedIDParserRuleCall_1_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleExtendedID_in_ruleTagAnnotation4240);
+            lv_name_1_0=ruleExtendedID();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElementForParent(grammarAccess.getTagAnnotationRule());
+              	        }
+                     		set(
+                     			current, 
+                     			"name",
+                      		lv_name_1_0, 
+                      		"ExtendedID");
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
+
+            }
+
+
+            }
+
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1919:2: (otherlv_2= '(' ( (lv_annotations_3_0= ruleAnnotation ) )* otherlv_4= ')' )?
+            int alt26=2;
+            int LA26_0 = input.LA(1);
+
+            if ( (LA26_0==26) ) {
+                alt26=1;
+            }
+            switch (alt26) {
+                case 1 :
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1919:4: otherlv_2= '(' ( (lv_annotations_3_0= ruleAnnotation ) )* otherlv_4= ')'
+                    {
+                    otherlv_2=(Token)match(input,26,FOLLOW_26_in_ruleTagAnnotation4253); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_2, grammarAccess.getTagAnnotationAccess().getLeftParenthesisKeyword_2_0());
+                          
+                    }
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1923:1: ( (lv_annotations_3_0= ruleAnnotation ) )*
+                    loop25:
+                    do {
+                        int alt25=2;
+                        int LA25_0 = input.LA(1);
+
+                        if ( (LA25_0==RULE_COMMENT_ANNOTATION||LA25_0==34) ) {
+                            alt25=1;
+                        }
+
+
+                        switch (alt25) {
+                    	case 1 :
+                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1924:1: (lv_annotations_3_0= ruleAnnotation )
+                    	    {
+                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1924:1: (lv_annotations_3_0= ruleAnnotation )
+                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1925:3: lv_annotations_3_0= ruleAnnotation
+                    	    {
+                    	    if ( state.backtracking==0 ) {
+                    	       
+                    	      	        newCompositeNode(grammarAccess.getTagAnnotationAccess().getAnnotationsAnnotationParserRuleCall_2_1_0()); 
+                    	      	    
+                    	    }
+                    	    pushFollow(FOLLOW_ruleAnnotation_in_ruleTagAnnotation4274);
+                    	    lv_annotations_3_0=ruleAnnotation();
+
+                    	    state._fsp--;
+                    	    if (state.failed) return current;
+                    	    if ( state.backtracking==0 ) {
+
+                    	      	        if (current==null) {
+                    	      	            current = createModelElementForParent(grammarAccess.getTagAnnotationRule());
+                    	      	        }
+                    	             		add(
+                    	             			current, 
+                    	             			"annotations",
+                    	              		lv_annotations_3_0, 
+                    	              		"Annotation");
+                    	      	        afterParserOrEnumRuleCall();
+                    	      	    
+                    	    }
+
+                    	    }
+
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    break loop25;
+                        }
+                    } while (true);
+
+                    otherlv_4=(Token)match(input,27,FOLLOW_27_in_ruleTagAnnotation4287); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_4, grammarAccess.getTagAnnotationAccess().getRightParenthesisKeyword_2_2());
+                          
+                    }
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleTagAnnotation"
+
+
+    // $ANTLR start "entryRuleKeyStringValueAnnotation"
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1953:1: entryRuleKeyStringValueAnnotation returns [EObject current=null] : iv_ruleKeyStringValueAnnotation= ruleKeyStringValueAnnotation EOF ;
+    public final EObject entryRuleKeyStringValueAnnotation() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleKeyStringValueAnnotation = null;
+
+
+        try {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1954:2: (iv_ruleKeyStringValueAnnotation= ruleKeyStringValueAnnotation EOF )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1955:2: iv_ruleKeyStringValueAnnotation= ruleKeyStringValueAnnotation EOF
+            {
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getKeyStringValueAnnotationRule()); 
+            }
+            pushFollow(FOLLOW_ruleKeyStringValueAnnotation_in_entryRuleKeyStringValueAnnotation4325);
+            iv_ruleKeyStringValueAnnotation=ruleKeyStringValueAnnotation();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleKeyStringValueAnnotation; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleKeyStringValueAnnotation4335); if (state.failed) return current;
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleKeyStringValueAnnotation"
+
+
+    // $ANTLR start "ruleKeyStringValueAnnotation"
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1962:1: ruleKeyStringValueAnnotation returns [EObject current=null] : (otherlv_0= '@' ( (lv_name_1_0= ruleExtendedID ) ) ( (lv_value_2_0= ruleEString ) ) (otherlv_3= '(' ( (lv_annotations_4_0= ruleAnnotation ) )* otherlv_5= ')' )? ) ;
+    public final EObject ruleKeyStringValueAnnotation() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_0=null;
+        Token otherlv_3=null;
+        Token otherlv_5=null;
+        AntlrDatatypeRuleToken lv_name_1_0 = null;
+
+        AntlrDatatypeRuleToken lv_value_2_0 = null;
+
+        EObject lv_annotations_4_0 = null;
+
+
+         enterRule(); 
+            
+        try {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1965:28: ( (otherlv_0= '@' ( (lv_name_1_0= ruleExtendedID ) ) ( (lv_value_2_0= ruleEString ) ) (otherlv_3= '(' ( (lv_annotations_4_0= ruleAnnotation ) )* otherlv_5= ')' )? ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1966:1: (otherlv_0= '@' ( (lv_name_1_0= ruleExtendedID ) ) ( (lv_value_2_0= ruleEString ) ) (otherlv_3= '(' ( (lv_annotations_4_0= ruleAnnotation ) )* otherlv_5= ')' )? )
+            {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1966:1: (otherlv_0= '@' ( (lv_name_1_0= ruleExtendedID ) ) ( (lv_value_2_0= ruleEString ) ) (otherlv_3= '(' ( (lv_annotations_4_0= ruleAnnotation ) )* otherlv_5= ')' )? )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1966:3: otherlv_0= '@' ( (lv_name_1_0= ruleExtendedID ) ) ( (lv_value_2_0= ruleEString ) ) (otherlv_3= '(' ( (lv_annotations_4_0= ruleAnnotation ) )* otherlv_5= ')' )?
+            {
+            otherlv_0=(Token)match(input,34,FOLLOW_34_in_ruleKeyStringValueAnnotation4372); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_0, grammarAccess.getKeyStringValueAnnotationAccess().getCommercialAtKeyword_0());
+                  
+            }
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1970:1: ( (lv_name_1_0= ruleExtendedID ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1971:1: (lv_name_1_0= ruleExtendedID )
+            {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1971:1: (lv_name_1_0= ruleExtendedID )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1972:3: lv_name_1_0= ruleExtendedID
+            {
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getKeyStringValueAnnotationAccess().getNameExtendedIDParserRuleCall_1_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleExtendedID_in_ruleKeyStringValueAnnotation4393);
+            lv_name_1_0=ruleExtendedID();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElementForParent(grammarAccess.getKeyStringValueAnnotationRule());
+              	        }
+                     		set(
+                     			current, 
+                     			"name",
+                      		lv_name_1_0, 
+                      		"ExtendedID");
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
+
+            }
+
+
+            }
+
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1988:2: ( (lv_value_2_0= ruleEString ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1989:1: (lv_value_2_0= ruleEString )
+            {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1989:1: (lv_value_2_0= ruleEString )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1990:3: lv_value_2_0= ruleEString
+            {
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getKeyStringValueAnnotationAccess().getValueEStringParserRuleCall_2_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleEString_in_ruleKeyStringValueAnnotation4414);
+            lv_value_2_0=ruleEString();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElementForParent(grammarAccess.getKeyStringValueAnnotationRule());
+              	        }
+                     		set(
+                     			current, 
+                     			"value",
+                      		lv_value_2_0, 
+                      		"EString");
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
+
+            }
+
+
+            }
+
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2006:2: (otherlv_3= '(' ( (lv_annotations_4_0= ruleAnnotation ) )* otherlv_5= ')' )?
+            int alt28=2;
+            int LA28_0 = input.LA(1);
+
+            if ( (LA28_0==26) ) {
+                alt28=1;
+            }
+            switch (alt28) {
+                case 1 :
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2006:4: otherlv_3= '(' ( (lv_annotations_4_0= ruleAnnotation ) )* otherlv_5= ')'
+                    {
+                    otherlv_3=(Token)match(input,26,FOLLOW_26_in_ruleKeyStringValueAnnotation4427); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_3, grammarAccess.getKeyStringValueAnnotationAccess().getLeftParenthesisKeyword_3_0());
+                          
+                    }
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2010:1: ( (lv_annotations_4_0= ruleAnnotation ) )*
+                    loop27:
+                    do {
+                        int alt27=2;
+                        int LA27_0 = input.LA(1);
+
+                        if ( (LA27_0==RULE_COMMENT_ANNOTATION||LA27_0==34) ) {
+                            alt27=1;
+                        }
+
+
+                        switch (alt27) {
+                    	case 1 :
+                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2011:1: (lv_annotations_4_0= ruleAnnotation )
+                    	    {
+                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2011:1: (lv_annotations_4_0= ruleAnnotation )
+                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2012:3: lv_annotations_4_0= ruleAnnotation
+                    	    {
+                    	    if ( state.backtracking==0 ) {
+                    	       
+                    	      	        newCompositeNode(grammarAccess.getKeyStringValueAnnotationAccess().getAnnotationsAnnotationParserRuleCall_3_1_0()); 
+                    	      	    
+                    	    }
+                    	    pushFollow(FOLLOW_ruleAnnotation_in_ruleKeyStringValueAnnotation4448);
+                    	    lv_annotations_4_0=ruleAnnotation();
+
+                    	    state._fsp--;
+                    	    if (state.failed) return current;
+                    	    if ( state.backtracking==0 ) {
+
+                    	      	        if (current==null) {
+                    	      	            current = createModelElementForParent(grammarAccess.getKeyStringValueAnnotationRule());
+                    	      	        }
+                    	             		add(
+                    	             			current, 
+                    	             			"annotations",
+                    	              		lv_annotations_4_0, 
+                    	              		"Annotation");
+                    	      	        afterParserOrEnumRuleCall();
+                    	      	    
+                    	    }
+
+                    	    }
+
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    break loop27;
+                        }
+                    } while (true);
+
+                    otherlv_5=(Token)match(input,27,FOLLOW_27_in_ruleKeyStringValueAnnotation4461); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_5, grammarAccess.getKeyStringValueAnnotationAccess().getRightParenthesisKeyword_3_2());
+                          
+                    }
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleKeyStringValueAnnotation"
+
+
+    // $ANTLR start "entryRuleTypedKeyStringValueAnnotation"
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2040:1: entryRuleTypedKeyStringValueAnnotation returns [EObject current=null] : iv_ruleTypedKeyStringValueAnnotation= ruleTypedKeyStringValueAnnotation EOF ;
+    public final EObject entryRuleTypedKeyStringValueAnnotation() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleTypedKeyStringValueAnnotation = null;
+
+
+        try {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2041:2: (iv_ruleTypedKeyStringValueAnnotation= ruleTypedKeyStringValueAnnotation EOF )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2042:2: iv_ruleTypedKeyStringValueAnnotation= ruleTypedKeyStringValueAnnotation EOF
+            {
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getTypedKeyStringValueAnnotationRule()); 
+            }
+            pushFollow(FOLLOW_ruleTypedKeyStringValueAnnotation_in_entryRuleTypedKeyStringValueAnnotation4499);
+            iv_ruleTypedKeyStringValueAnnotation=ruleTypedKeyStringValueAnnotation();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleTypedKeyStringValueAnnotation; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleTypedKeyStringValueAnnotation4509); if (state.failed) return current;
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleTypedKeyStringValueAnnotation"
+
+
+    // $ANTLR start "ruleTypedKeyStringValueAnnotation"
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2049:1: ruleTypedKeyStringValueAnnotation returns [EObject current=null] : (otherlv_0= '@' ( (lv_name_1_0= ruleExtendedID ) ) otherlv_2= '[' ( (lv_type_3_0= ruleExtendedID ) ) otherlv_4= ']' ( (lv_value_5_0= ruleEString ) ) (otherlv_6= '(' ( (lv_annotations_7_0= ruleAnnotation ) )* otherlv_8= ')' )? ) ;
+    public final EObject ruleTypedKeyStringValueAnnotation() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_0=null;
+        Token otherlv_2=null;
+        Token otherlv_4=null;
+        Token otherlv_6=null;
+        Token otherlv_8=null;
+        AntlrDatatypeRuleToken lv_name_1_0 = null;
+
+        AntlrDatatypeRuleToken lv_type_3_0 = null;
+
+        AntlrDatatypeRuleToken lv_value_5_0 = null;
+
+        EObject lv_annotations_7_0 = null;
+
+
+         enterRule(); 
+            
+        try {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2052:28: ( (otherlv_0= '@' ( (lv_name_1_0= ruleExtendedID ) ) otherlv_2= '[' ( (lv_type_3_0= ruleExtendedID ) ) otherlv_4= ']' ( (lv_value_5_0= ruleEString ) ) (otherlv_6= '(' ( (lv_annotations_7_0= ruleAnnotation ) )* otherlv_8= ')' )? ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2053:1: (otherlv_0= '@' ( (lv_name_1_0= ruleExtendedID ) ) otherlv_2= '[' ( (lv_type_3_0= ruleExtendedID ) ) otherlv_4= ']' ( (lv_value_5_0= ruleEString ) ) (otherlv_6= '(' ( (lv_annotations_7_0= ruleAnnotation ) )* otherlv_8= ')' )? )
+            {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2053:1: (otherlv_0= '@' ( (lv_name_1_0= ruleExtendedID ) ) otherlv_2= '[' ( (lv_type_3_0= ruleExtendedID ) ) otherlv_4= ']' ( (lv_value_5_0= ruleEString ) ) (otherlv_6= '(' ( (lv_annotations_7_0= ruleAnnotation ) )* otherlv_8= ')' )? )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2053:3: otherlv_0= '@' ( (lv_name_1_0= ruleExtendedID ) ) otherlv_2= '[' ( (lv_type_3_0= ruleExtendedID ) ) otherlv_4= ']' ( (lv_value_5_0= ruleEString ) ) (otherlv_6= '(' ( (lv_annotations_7_0= ruleAnnotation ) )* otherlv_8= ')' )?
+            {
+            otherlv_0=(Token)match(input,34,FOLLOW_34_in_ruleTypedKeyStringValueAnnotation4546); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_0, grammarAccess.getTypedKeyStringValueAnnotationAccess().getCommercialAtKeyword_0());
+                  
+            }
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2057:1: ( (lv_name_1_0= ruleExtendedID ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2058:1: (lv_name_1_0= ruleExtendedID )
+            {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2058:1: (lv_name_1_0= ruleExtendedID )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2059:3: lv_name_1_0= ruleExtendedID
+            {
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getTypedKeyStringValueAnnotationAccess().getNameExtendedIDParserRuleCall_1_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleExtendedID_in_ruleTypedKeyStringValueAnnotation4567);
+            lv_name_1_0=ruleExtendedID();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElementForParent(grammarAccess.getTypedKeyStringValueAnnotationRule());
+              	        }
+                     		set(
+                     			current, 
+                     			"name",
+                      		lv_name_1_0, 
+                      		"ExtendedID");
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
+
+            }
+
+
+            }
+
+            otherlv_2=(Token)match(input,28,FOLLOW_28_in_ruleTypedKeyStringValueAnnotation4579); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_2, grammarAccess.getTypedKeyStringValueAnnotationAccess().getLeftSquareBracketKeyword_2());
+                  
+            }
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2079:1: ( (lv_type_3_0= ruleExtendedID ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2080:1: (lv_type_3_0= ruleExtendedID )
+            {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2080:1: (lv_type_3_0= ruleExtendedID )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2081:3: lv_type_3_0= ruleExtendedID
+            {
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getTypedKeyStringValueAnnotationAccess().getTypeExtendedIDParserRuleCall_3_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleExtendedID_in_ruleTypedKeyStringValueAnnotation4600);
+            lv_type_3_0=ruleExtendedID();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElementForParent(grammarAccess.getTypedKeyStringValueAnnotationRule());
+              	        }
+                     		set(
+                     			current, 
+                     			"type",
+                      		lv_type_3_0, 
+                      		"ExtendedID");
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
+
+            }
+
+
+            }
+
+            otherlv_4=(Token)match(input,29,FOLLOW_29_in_ruleTypedKeyStringValueAnnotation4612); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_4, grammarAccess.getTypedKeyStringValueAnnotationAccess().getRightSquareBracketKeyword_4());
+                  
+            }
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2101:1: ( (lv_value_5_0= ruleEString ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2102:1: (lv_value_5_0= ruleEString )
+            {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2102:1: (lv_value_5_0= ruleEString )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2103:3: lv_value_5_0= ruleEString
+            {
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getTypedKeyStringValueAnnotationAccess().getValueEStringParserRuleCall_5_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleEString_in_ruleTypedKeyStringValueAnnotation4633);
+            lv_value_5_0=ruleEString();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElementForParent(grammarAccess.getTypedKeyStringValueAnnotationRule());
+              	        }
+                     		set(
+                     			current, 
+                     			"value",
+                      		lv_value_5_0, 
+                      		"EString");
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
+
+            }
+
+
+            }
+
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2119:2: (otherlv_6= '(' ( (lv_annotations_7_0= ruleAnnotation ) )* otherlv_8= ')' )?
+            int alt30=2;
+            int LA30_0 = input.LA(1);
+
+            if ( (LA30_0==26) ) {
+                alt30=1;
+            }
+            switch (alt30) {
+                case 1 :
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2119:4: otherlv_6= '(' ( (lv_annotations_7_0= ruleAnnotation ) )* otherlv_8= ')'
+                    {
+                    otherlv_6=(Token)match(input,26,FOLLOW_26_in_ruleTypedKeyStringValueAnnotation4646); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_6, grammarAccess.getTypedKeyStringValueAnnotationAccess().getLeftParenthesisKeyword_6_0());
+                          
+                    }
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2123:1: ( (lv_annotations_7_0= ruleAnnotation ) )*
+                    loop29:
+                    do {
+                        int alt29=2;
+                        int LA29_0 = input.LA(1);
+
+                        if ( (LA29_0==RULE_COMMENT_ANNOTATION||LA29_0==34) ) {
+                            alt29=1;
+                        }
+
+
+                        switch (alt29) {
+                    	case 1 :
+                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2124:1: (lv_annotations_7_0= ruleAnnotation )
+                    	    {
+                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2124:1: (lv_annotations_7_0= ruleAnnotation )
+                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2125:3: lv_annotations_7_0= ruleAnnotation
+                    	    {
+                    	    if ( state.backtracking==0 ) {
+                    	       
+                    	      	        newCompositeNode(grammarAccess.getTypedKeyStringValueAnnotationAccess().getAnnotationsAnnotationParserRuleCall_6_1_0()); 
+                    	      	    
+                    	    }
+                    	    pushFollow(FOLLOW_ruleAnnotation_in_ruleTypedKeyStringValueAnnotation4667);
+                    	    lv_annotations_7_0=ruleAnnotation();
+
+                    	    state._fsp--;
+                    	    if (state.failed) return current;
+                    	    if ( state.backtracking==0 ) {
+
+                    	      	        if (current==null) {
+                    	      	            current = createModelElementForParent(grammarAccess.getTypedKeyStringValueAnnotationRule());
+                    	      	        }
+                    	             		add(
+                    	             			current, 
+                    	             			"annotations",
+                    	              		lv_annotations_7_0, 
+                    	              		"Annotation");
+                    	      	        afterParserOrEnumRuleCall();
+                    	      	    
+                    	    }
+
+                    	    }
+
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    break loop29;
+                        }
+                    } while (true);
+
+                    otherlv_8=(Token)match(input,27,FOLLOW_27_in_ruleTypedKeyStringValueAnnotation4680); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_8, grammarAccess.getTypedKeyStringValueAnnotationAccess().getRightParenthesisKeyword_6_2());
+                          
+                    }
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleTypedKeyStringValueAnnotation"
+
+
+    // $ANTLR start "entryRuleKeyBooleanValueAnnotation"
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2153:1: entryRuleKeyBooleanValueAnnotation returns [EObject current=null] : iv_ruleKeyBooleanValueAnnotation= ruleKeyBooleanValueAnnotation EOF ;
+    public final EObject entryRuleKeyBooleanValueAnnotation() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleKeyBooleanValueAnnotation = null;
+
+
+        try {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2154:2: (iv_ruleKeyBooleanValueAnnotation= ruleKeyBooleanValueAnnotation EOF )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2155:2: iv_ruleKeyBooleanValueAnnotation= ruleKeyBooleanValueAnnotation EOF
+            {
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getKeyBooleanValueAnnotationRule()); 
+            }
+            pushFollow(FOLLOW_ruleKeyBooleanValueAnnotation_in_entryRuleKeyBooleanValueAnnotation4718);
+            iv_ruleKeyBooleanValueAnnotation=ruleKeyBooleanValueAnnotation();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleKeyBooleanValueAnnotation; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleKeyBooleanValueAnnotation4728); if (state.failed) return current;
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleKeyBooleanValueAnnotation"
+
+
+    // $ANTLR start "ruleKeyBooleanValueAnnotation"
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2162:1: ruleKeyBooleanValueAnnotation returns [EObject current=null] : (otherlv_0= '@' ( (lv_name_1_0= ruleExtendedID ) ) ( (lv_value_2_0= RULE_BOOLEAN ) ) (otherlv_3= '(' ( (lv_annotations_4_0= ruleAnnotation ) )* otherlv_5= ')' )? ) ;
+    public final EObject ruleKeyBooleanValueAnnotation() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_0=null;
+        Token lv_value_2_0=null;
+        Token otherlv_3=null;
+        Token otherlv_5=null;
+        AntlrDatatypeRuleToken lv_name_1_0 = null;
+
+        EObject lv_annotations_4_0 = null;
+
+
+         enterRule(); 
+            
+        try {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2165:28: ( (otherlv_0= '@' ( (lv_name_1_0= ruleExtendedID ) ) ( (lv_value_2_0= RULE_BOOLEAN ) ) (otherlv_3= '(' ( (lv_annotations_4_0= ruleAnnotation ) )* otherlv_5= ')' )? ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2166:1: (otherlv_0= '@' ( (lv_name_1_0= ruleExtendedID ) ) ( (lv_value_2_0= RULE_BOOLEAN ) ) (otherlv_3= '(' ( (lv_annotations_4_0= ruleAnnotation ) )* otherlv_5= ')' )? )
+            {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2166:1: (otherlv_0= '@' ( (lv_name_1_0= ruleExtendedID ) ) ( (lv_value_2_0= RULE_BOOLEAN ) ) (otherlv_3= '(' ( (lv_annotations_4_0= ruleAnnotation ) )* otherlv_5= ')' )? )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2166:3: otherlv_0= '@' ( (lv_name_1_0= ruleExtendedID ) ) ( (lv_value_2_0= RULE_BOOLEAN ) ) (otherlv_3= '(' ( (lv_annotations_4_0= ruleAnnotation ) )* otherlv_5= ')' )?
+            {
+            otherlv_0=(Token)match(input,34,FOLLOW_34_in_ruleKeyBooleanValueAnnotation4765); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_0, grammarAccess.getKeyBooleanValueAnnotationAccess().getCommercialAtKeyword_0());
+                  
+            }
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2170:1: ( (lv_name_1_0= ruleExtendedID ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2171:1: (lv_name_1_0= ruleExtendedID )
+            {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2171:1: (lv_name_1_0= ruleExtendedID )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2172:3: lv_name_1_0= ruleExtendedID
+            {
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getKeyBooleanValueAnnotationAccess().getNameExtendedIDParserRuleCall_1_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleExtendedID_in_ruleKeyBooleanValueAnnotation4786);
+            lv_name_1_0=ruleExtendedID();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElementForParent(grammarAccess.getKeyBooleanValueAnnotationRule());
+              	        }
+                     		set(
+                     			current, 
+                     			"name",
+                      		lv_name_1_0, 
+                      		"ExtendedID");
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
+
+            }
+
+
+            }
+
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2188:2: ( (lv_value_2_0= RULE_BOOLEAN ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2189:1: (lv_value_2_0= RULE_BOOLEAN )
+            {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2189:1: (lv_value_2_0= RULE_BOOLEAN )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2190:3: lv_value_2_0= RULE_BOOLEAN
+            {
+            lv_value_2_0=(Token)match(input,RULE_BOOLEAN,FOLLOW_RULE_BOOLEAN_in_ruleKeyBooleanValueAnnotation4803); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              			newLeafNode(lv_value_2_0, grammarAccess.getKeyBooleanValueAnnotationAccess().getValueBOOLEANTerminalRuleCall_2_0()); 
+              		
+            }
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElement(grammarAccess.getKeyBooleanValueAnnotationRule());
+              	        }
+                     		setWithLastConsumed(
+                     			current, 
+                     			"value",
+                      		lv_value_2_0, 
+                      		"BOOLEAN");
+              	    
+            }
+
+            }
+
+
+            }
+
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2206:2: (otherlv_3= '(' ( (lv_annotations_4_0= ruleAnnotation ) )* otherlv_5= ')' )?
+            int alt32=2;
+            int LA32_0 = input.LA(1);
+
+            if ( (LA32_0==26) ) {
+                alt32=1;
+            }
+            switch (alt32) {
+                case 1 :
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2206:4: otherlv_3= '(' ( (lv_annotations_4_0= ruleAnnotation ) )* otherlv_5= ')'
+                    {
+                    otherlv_3=(Token)match(input,26,FOLLOW_26_in_ruleKeyBooleanValueAnnotation4821); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_3, grammarAccess.getKeyBooleanValueAnnotationAccess().getLeftParenthesisKeyword_3_0());
+                          
+                    }
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2210:1: ( (lv_annotations_4_0= ruleAnnotation ) )*
+                    loop31:
+                    do {
+                        int alt31=2;
+                        int LA31_0 = input.LA(1);
+
+                        if ( (LA31_0==RULE_COMMENT_ANNOTATION||LA31_0==34) ) {
+                            alt31=1;
+                        }
+
+
+                        switch (alt31) {
+                    	case 1 :
+                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2211:1: (lv_annotations_4_0= ruleAnnotation )
+                    	    {
+                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2211:1: (lv_annotations_4_0= ruleAnnotation )
+                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2212:3: lv_annotations_4_0= ruleAnnotation
+                    	    {
+                    	    if ( state.backtracking==0 ) {
+                    	       
+                    	      	        newCompositeNode(grammarAccess.getKeyBooleanValueAnnotationAccess().getAnnotationsAnnotationParserRuleCall_3_1_0()); 
+                    	      	    
+                    	    }
+                    	    pushFollow(FOLLOW_ruleAnnotation_in_ruleKeyBooleanValueAnnotation4842);
+                    	    lv_annotations_4_0=ruleAnnotation();
+
+                    	    state._fsp--;
+                    	    if (state.failed) return current;
+                    	    if ( state.backtracking==0 ) {
+
+                    	      	        if (current==null) {
+                    	      	            current = createModelElementForParent(grammarAccess.getKeyBooleanValueAnnotationRule());
+                    	      	        }
+                    	             		add(
+                    	             			current, 
+                    	             			"annotations",
+                    	              		lv_annotations_4_0, 
+                    	              		"Annotation");
+                    	      	        afterParserOrEnumRuleCall();
+                    	      	    
+                    	    }
+
+                    	    }
+
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    break loop31;
+                        }
+                    } while (true);
+
+                    otherlv_5=(Token)match(input,27,FOLLOW_27_in_ruleKeyBooleanValueAnnotation4855); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_5, grammarAccess.getKeyBooleanValueAnnotationAccess().getRightParenthesisKeyword_3_2());
+                          
+                    }
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleKeyBooleanValueAnnotation"
+
+
+    // $ANTLR start "entryRuleKeyIntValueAnnotation"
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2240:1: entryRuleKeyIntValueAnnotation returns [EObject current=null] : iv_ruleKeyIntValueAnnotation= ruleKeyIntValueAnnotation EOF ;
+    public final EObject entryRuleKeyIntValueAnnotation() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleKeyIntValueAnnotation = null;
+
+
+        try {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2241:2: (iv_ruleKeyIntValueAnnotation= ruleKeyIntValueAnnotation EOF )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2242:2: iv_ruleKeyIntValueAnnotation= ruleKeyIntValueAnnotation EOF
+            {
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getKeyIntValueAnnotationRule()); 
+            }
+            pushFollow(FOLLOW_ruleKeyIntValueAnnotation_in_entryRuleKeyIntValueAnnotation4893);
+            iv_ruleKeyIntValueAnnotation=ruleKeyIntValueAnnotation();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleKeyIntValueAnnotation; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleKeyIntValueAnnotation4903); if (state.failed) return current;
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleKeyIntValueAnnotation"
+
+
+    // $ANTLR start "ruleKeyIntValueAnnotation"
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2249:1: ruleKeyIntValueAnnotation returns [EObject current=null] : (otherlv_0= '@' ( (lv_name_1_0= ruleExtendedID ) ) ( (lv_value_2_0= RULE_INT ) ) (otherlv_3= '(' ( (lv_annotations_4_0= ruleAnnotation ) )* otherlv_5= ')' )? ) ;
+    public final EObject ruleKeyIntValueAnnotation() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_0=null;
+        Token lv_value_2_0=null;
+        Token otherlv_3=null;
+        Token otherlv_5=null;
+        AntlrDatatypeRuleToken lv_name_1_0 = null;
+
+        EObject lv_annotations_4_0 = null;
+
+
+         enterRule(); 
+            
+        try {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2252:28: ( (otherlv_0= '@' ( (lv_name_1_0= ruleExtendedID ) ) ( (lv_value_2_0= RULE_INT ) ) (otherlv_3= '(' ( (lv_annotations_4_0= ruleAnnotation ) )* otherlv_5= ')' )? ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2253:1: (otherlv_0= '@' ( (lv_name_1_0= ruleExtendedID ) ) ( (lv_value_2_0= RULE_INT ) ) (otherlv_3= '(' ( (lv_annotations_4_0= ruleAnnotation ) )* otherlv_5= ')' )? )
+            {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2253:1: (otherlv_0= '@' ( (lv_name_1_0= ruleExtendedID ) ) ( (lv_value_2_0= RULE_INT ) ) (otherlv_3= '(' ( (lv_annotations_4_0= ruleAnnotation ) )* otherlv_5= ')' )? )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2253:3: otherlv_0= '@' ( (lv_name_1_0= ruleExtendedID ) ) ( (lv_value_2_0= RULE_INT ) ) (otherlv_3= '(' ( (lv_annotations_4_0= ruleAnnotation ) )* otherlv_5= ')' )?
+            {
+            otherlv_0=(Token)match(input,34,FOLLOW_34_in_ruleKeyIntValueAnnotation4940); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_0, grammarAccess.getKeyIntValueAnnotationAccess().getCommercialAtKeyword_0());
+                  
+            }
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2257:1: ( (lv_name_1_0= ruleExtendedID ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2258:1: (lv_name_1_0= ruleExtendedID )
+            {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2258:1: (lv_name_1_0= ruleExtendedID )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2259:3: lv_name_1_0= ruleExtendedID
+            {
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getKeyIntValueAnnotationAccess().getNameExtendedIDParserRuleCall_1_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleExtendedID_in_ruleKeyIntValueAnnotation4961);
+            lv_name_1_0=ruleExtendedID();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElementForParent(grammarAccess.getKeyIntValueAnnotationRule());
+              	        }
+                     		set(
+                     			current, 
+                     			"name",
+                      		lv_name_1_0, 
+                      		"ExtendedID");
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
+
+            }
+
+
+            }
+
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2275:2: ( (lv_value_2_0= RULE_INT ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2276:1: (lv_value_2_0= RULE_INT )
+            {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2276:1: (lv_value_2_0= RULE_INT )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2277:3: lv_value_2_0= RULE_INT
+            {
+            lv_value_2_0=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleKeyIntValueAnnotation4978); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              			newLeafNode(lv_value_2_0, grammarAccess.getKeyIntValueAnnotationAccess().getValueINTTerminalRuleCall_2_0()); 
+              		
+            }
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElement(grammarAccess.getKeyIntValueAnnotationRule());
+              	        }
+                     		setWithLastConsumed(
+                     			current, 
+                     			"value",
+                      		lv_value_2_0, 
+                      		"INT");
+              	    
+            }
+
+            }
+
+
+            }
+
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2293:2: (otherlv_3= '(' ( (lv_annotations_4_0= ruleAnnotation ) )* otherlv_5= ')' )?
+            int alt34=2;
+            int LA34_0 = input.LA(1);
+
+            if ( (LA34_0==26) ) {
+                alt34=1;
+            }
+            switch (alt34) {
+                case 1 :
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2293:4: otherlv_3= '(' ( (lv_annotations_4_0= ruleAnnotation ) )* otherlv_5= ')'
+                    {
+                    otherlv_3=(Token)match(input,26,FOLLOW_26_in_ruleKeyIntValueAnnotation4996); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_3, grammarAccess.getKeyIntValueAnnotationAccess().getLeftParenthesisKeyword_3_0());
+                          
+                    }
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2297:1: ( (lv_annotations_4_0= ruleAnnotation ) )*
+                    loop33:
+                    do {
+                        int alt33=2;
+                        int LA33_0 = input.LA(1);
+
+                        if ( (LA33_0==RULE_COMMENT_ANNOTATION||LA33_0==34) ) {
+                            alt33=1;
+                        }
+
+
+                        switch (alt33) {
+                    	case 1 :
+                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2298:1: (lv_annotations_4_0= ruleAnnotation )
+                    	    {
+                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2298:1: (lv_annotations_4_0= ruleAnnotation )
+                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2299:3: lv_annotations_4_0= ruleAnnotation
+                    	    {
+                    	    if ( state.backtracking==0 ) {
+                    	       
+                    	      	        newCompositeNode(grammarAccess.getKeyIntValueAnnotationAccess().getAnnotationsAnnotationParserRuleCall_3_1_0()); 
+                    	      	    
+                    	    }
+                    	    pushFollow(FOLLOW_ruleAnnotation_in_ruleKeyIntValueAnnotation5017);
+                    	    lv_annotations_4_0=ruleAnnotation();
+
+                    	    state._fsp--;
+                    	    if (state.failed) return current;
+                    	    if ( state.backtracking==0 ) {
+
+                    	      	        if (current==null) {
+                    	      	            current = createModelElementForParent(grammarAccess.getKeyIntValueAnnotationRule());
+                    	      	        }
+                    	             		add(
+                    	             			current, 
+                    	             			"annotations",
+                    	              		lv_annotations_4_0, 
+                    	              		"Annotation");
+                    	      	        afterParserOrEnumRuleCall();
+                    	      	    
+                    	    }
+
+                    	    }
+
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    break loop33;
+                        }
+                    } while (true);
+
+                    otherlv_5=(Token)match(input,27,FOLLOW_27_in_ruleKeyIntValueAnnotation5030); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_5, grammarAccess.getKeyIntValueAnnotationAccess().getRightParenthesisKeyword_3_2());
+                          
+                    }
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleKeyIntValueAnnotation"
+
+
+    // $ANTLR start "entryRuleKeyFloatValueAnnotation"
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2327:1: entryRuleKeyFloatValueAnnotation returns [EObject current=null] : iv_ruleKeyFloatValueAnnotation= ruleKeyFloatValueAnnotation EOF ;
+    public final EObject entryRuleKeyFloatValueAnnotation() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleKeyFloatValueAnnotation = null;
+
+
+        try {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2328:2: (iv_ruleKeyFloatValueAnnotation= ruleKeyFloatValueAnnotation EOF )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2329:2: iv_ruleKeyFloatValueAnnotation= ruleKeyFloatValueAnnotation EOF
+            {
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getKeyFloatValueAnnotationRule()); 
+            }
+            pushFollow(FOLLOW_ruleKeyFloatValueAnnotation_in_entryRuleKeyFloatValueAnnotation5068);
+            iv_ruleKeyFloatValueAnnotation=ruleKeyFloatValueAnnotation();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleKeyFloatValueAnnotation; 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleKeyFloatValueAnnotation5078); if (state.failed) return current;
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleKeyFloatValueAnnotation"
+
+
+    // $ANTLR start "ruleKeyFloatValueAnnotation"
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2336:1: ruleKeyFloatValueAnnotation returns [EObject current=null] : (otherlv_0= '@' ( (lv_name_1_0= ruleExtendedID ) ) ( (lv_value_2_0= RULE_FLOAT ) ) (otherlv_3= '(' ( (lv_annotations_4_0= ruleAnnotation ) )* otherlv_5= ')' )? ) ;
+    public final EObject ruleKeyFloatValueAnnotation() throws RecognitionException {
+        EObject current = null;
+
+        Token otherlv_0=null;
+        Token lv_value_2_0=null;
+        Token otherlv_3=null;
+        Token otherlv_5=null;
+        AntlrDatatypeRuleToken lv_name_1_0 = null;
+
+        EObject lv_annotations_4_0 = null;
+
+
+         enterRule(); 
+            
+        try {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2339:28: ( (otherlv_0= '@' ( (lv_name_1_0= ruleExtendedID ) ) ( (lv_value_2_0= RULE_FLOAT ) ) (otherlv_3= '(' ( (lv_annotations_4_0= ruleAnnotation ) )* otherlv_5= ')' )? ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2340:1: (otherlv_0= '@' ( (lv_name_1_0= ruleExtendedID ) ) ( (lv_value_2_0= RULE_FLOAT ) ) (otherlv_3= '(' ( (lv_annotations_4_0= ruleAnnotation ) )* otherlv_5= ')' )? )
+            {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2340:1: (otherlv_0= '@' ( (lv_name_1_0= ruleExtendedID ) ) ( (lv_value_2_0= RULE_FLOAT ) ) (otherlv_3= '(' ( (lv_annotations_4_0= ruleAnnotation ) )* otherlv_5= ')' )? )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2340:3: otherlv_0= '@' ( (lv_name_1_0= ruleExtendedID ) ) ( (lv_value_2_0= RULE_FLOAT ) ) (otherlv_3= '(' ( (lv_annotations_4_0= ruleAnnotation ) )* otherlv_5= ')' )?
+            {
+            otherlv_0=(Token)match(input,34,FOLLOW_34_in_ruleKeyFloatValueAnnotation5115); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+                  	newLeafNode(otherlv_0, grammarAccess.getKeyFloatValueAnnotationAccess().getCommercialAtKeyword_0());
+                  
+            }
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2344:1: ( (lv_name_1_0= ruleExtendedID ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2345:1: (lv_name_1_0= ruleExtendedID )
+            {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2345:1: (lv_name_1_0= ruleExtendedID )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2346:3: lv_name_1_0= ruleExtendedID
+            {
+            if ( state.backtracking==0 ) {
+               
+              	        newCompositeNode(grammarAccess.getKeyFloatValueAnnotationAccess().getNameExtendedIDParserRuleCall_1_0()); 
+              	    
+            }
+            pushFollow(FOLLOW_ruleExtendedID_in_ruleKeyFloatValueAnnotation5136);
+            lv_name_1_0=ruleExtendedID();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElementForParent(grammarAccess.getKeyFloatValueAnnotationRule());
+              	        }
+                     		set(
+                     			current, 
+                     			"name",
+                      		lv_name_1_0, 
+                      		"ExtendedID");
+              	        afterParserOrEnumRuleCall();
+              	    
+            }
+
+            }
+
+
+            }
+
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2362:2: ( (lv_value_2_0= RULE_FLOAT ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2363:1: (lv_value_2_0= RULE_FLOAT )
+            {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2363:1: (lv_value_2_0= RULE_FLOAT )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2364:3: lv_value_2_0= RULE_FLOAT
+            {
+            lv_value_2_0=(Token)match(input,RULE_FLOAT,FOLLOW_RULE_FLOAT_in_ruleKeyFloatValueAnnotation5153); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              			newLeafNode(lv_value_2_0, grammarAccess.getKeyFloatValueAnnotationAccess().getValueFLOATTerminalRuleCall_2_0()); 
+              		
+            }
+            if ( state.backtracking==0 ) {
+
+              	        if (current==null) {
+              	            current = createModelElement(grammarAccess.getKeyFloatValueAnnotationRule());
+              	        }
+                     		setWithLastConsumed(
+                     			current, 
+                     			"value",
+                      		lv_value_2_0, 
+                      		"FLOAT");
+              	    
+            }
+
+            }
+
+
+            }
+
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2380:2: (otherlv_3= '(' ( (lv_annotations_4_0= ruleAnnotation ) )* otherlv_5= ')' )?
+            int alt36=2;
+            int LA36_0 = input.LA(1);
+
+            if ( (LA36_0==26) ) {
+                alt36=1;
+            }
+            switch (alt36) {
+                case 1 :
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2380:4: otherlv_3= '(' ( (lv_annotations_4_0= ruleAnnotation ) )* otherlv_5= ')'
+                    {
+                    otherlv_3=(Token)match(input,26,FOLLOW_26_in_ruleKeyFloatValueAnnotation5171); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_3, grammarAccess.getKeyFloatValueAnnotationAccess().getLeftParenthesisKeyword_3_0());
+                          
+                    }
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2384:1: ( (lv_annotations_4_0= ruleAnnotation ) )*
+                    loop35:
+                    do {
+                        int alt35=2;
+                        int LA35_0 = input.LA(1);
+
+                        if ( (LA35_0==RULE_COMMENT_ANNOTATION||LA35_0==34) ) {
+                            alt35=1;
+                        }
+
+
+                        switch (alt35) {
+                    	case 1 :
+                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2385:1: (lv_annotations_4_0= ruleAnnotation )
+                    	    {
+                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2385:1: (lv_annotations_4_0= ruleAnnotation )
+                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2386:3: lv_annotations_4_0= ruleAnnotation
+                    	    {
+                    	    if ( state.backtracking==0 ) {
+                    	       
+                    	      	        newCompositeNode(grammarAccess.getKeyFloatValueAnnotationAccess().getAnnotationsAnnotationParserRuleCall_3_1_0()); 
+                    	      	    
+                    	    }
+                    	    pushFollow(FOLLOW_ruleAnnotation_in_ruleKeyFloatValueAnnotation5192);
+                    	    lv_annotations_4_0=ruleAnnotation();
+
+                    	    state._fsp--;
+                    	    if (state.failed) return current;
+                    	    if ( state.backtracking==0 ) {
+
+                    	      	        if (current==null) {
+                    	      	            current = createModelElementForParent(grammarAccess.getKeyFloatValueAnnotationRule());
+                    	      	        }
+                    	             		add(
+                    	             			current, 
+                    	             			"annotations",
+                    	              		lv_annotations_4_0, 
+                    	              		"Annotation");
+                    	      	        afterParserOrEnumRuleCall();
+                    	      	    
+                    	    }
+
+                    	    }
+
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    break loop35;
+                        }
+                    } while (true);
+
+                    otherlv_5=(Token)match(input,27,FOLLOW_27_in_ruleKeyFloatValueAnnotation5205); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                          	newLeafNode(otherlv_5, grammarAccess.getKeyFloatValueAnnotationAccess().getRightParenthesisKeyword_3_2());
+                          
+                    }
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleKeyFloatValueAnnotation"
+
+
+    // $ANTLR start "entryRuleEString"
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2416:1: entryRuleEString returns [String current=null] : iv_ruleEString= ruleEString EOF ;
+    public final String entryRuleEString() throws RecognitionException {
+        String current = null;
+
+        AntlrDatatypeRuleToken iv_ruleEString = null;
+
+
+        try {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2417:2: (iv_ruleEString= ruleEString EOF )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2418:2: iv_ruleEString= ruleEString EOF
+            {
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getEStringRule()); 
+            }
+            pushFollow(FOLLOW_ruleEString_in_entryRuleEString5246);
+            iv_ruleEString=ruleEString();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleEString.getText(); 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleEString5257); if (state.failed) return current;
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleEString"
+
+
+    // $ANTLR start "ruleEString"
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2425:1: ruleEString returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID ) ;
+    public final AntlrDatatypeRuleToken ruleEString() throws RecognitionException {
+        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
+
+        Token this_STRING_0=null;
+        Token this_ID_1=null;
+
+         enterRule(); 
+            
+        try {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2428:28: ( (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2429:1: (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID )
+            {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2429:1: (this_STRING_0= RULE_STRING | this_ID_1= RULE_ID )
+            int alt37=2;
+            int LA37_0 = input.LA(1);
+
+            if ( (LA37_0==RULE_STRING) ) {
+                alt37=1;
+            }
+            else if ( (LA37_0==RULE_ID) ) {
+                alt37=2;
+            }
+            else {
+                if (state.backtracking>0) {state.failed=true; return current;}
+                NoViableAltException nvae =
+                    new NoViableAltException("", 37, 0, input);
+
+                throw nvae;
+            }
+            switch (alt37) {
+                case 1 :
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2429:6: this_STRING_0= RULE_STRING
+                    {
+                    this_STRING_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleEString5297); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      		current.merge(this_STRING_0);
+                          
+                    }
+                    if ( state.backtracking==0 ) {
+                       
+                          newLeafNode(this_STRING_0, grammarAccess.getEStringAccess().getSTRINGTerminalRuleCall_0()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 2 :
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2437:10: this_ID_1= RULE_ID
+                    {
+                    this_ID_1=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleEString5323); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      		current.merge(this_ID_1);
+                          
+                    }
+                    if ( state.backtracking==0 ) {
+                       
+                          newLeafNode(this_ID_1, grammarAccess.getEStringAccess().getIDTerminalRuleCall_1()); 
+                          
+                    }
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleEString"
+
+
+    // $ANTLR start "entryRuleExtendedID"
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2452:1: entryRuleExtendedID returns [String current=null] : iv_ruleExtendedID= ruleExtendedID EOF ;
+    public final String entryRuleExtendedID() throws RecognitionException {
+        String current = null;
+
+        AntlrDatatypeRuleToken iv_ruleExtendedID = null;
+
+
+        try {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2453:2: (iv_ruleExtendedID= ruleExtendedID EOF )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2454:2: iv_ruleExtendedID= ruleExtendedID EOF
+            {
+            if ( state.backtracking==0 ) {
+               newCompositeNode(grammarAccess.getExtendedIDRule()); 
+            }
+            pushFollow(FOLLOW_ruleExtendedID_in_entryRuleExtendedID5369);
+            iv_ruleExtendedID=ruleExtendedID();
+
+            state._fsp--;
+            if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+               current =iv_ruleExtendedID.getText(); 
+            }
+            match(input,EOF,FOLLOW_EOF_in_entryRuleExtendedID5380); if (state.failed) return current;
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleExtendedID"
+
+
+    // $ANTLR start "ruleExtendedID"
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2461:1: ruleExtendedID returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* ) ;
+    public final AntlrDatatypeRuleToken ruleExtendedID() throws RecognitionException {
+        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
+
+        Token this_ID_0=null;
+        Token kw=null;
+        Token this_ID_2=null;
+
+         enterRule(); 
+            
+        try {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2464:28: ( (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2465:1: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* )
+            {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2465:1: (this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )* )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2465:6: this_ID_0= RULE_ID (kw= '.' this_ID_2= RULE_ID )*
+            {
+            this_ID_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleExtendedID5420); if (state.failed) return current;
+            if ( state.backtracking==0 ) {
+
+              		current.merge(this_ID_0);
+                  
+            }
+            if ( state.backtracking==0 ) {
+               
+                  newLeafNode(this_ID_0, grammarAccess.getExtendedIDAccess().getIDTerminalRuleCall_0()); 
+                  
+            }
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2472:1: (kw= '.' this_ID_2= RULE_ID )*
+            loop38:
+            do {
+                int alt38=2;
+                int LA38_0 = input.LA(1);
+
+                if ( (LA38_0==21) ) {
+                    alt38=1;
+                }
+
+
+                switch (alt38) {
+            	case 1 :
+            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2473:2: kw= '.' this_ID_2= RULE_ID
+            	    {
+            	    kw=(Token)match(input,21,FOLLOW_21_in_ruleExtendedID5439); if (state.failed) return current;
+            	    if ( state.backtracking==0 ) {
+
+            	              current.merge(kw);
+            	              newLeafNode(kw, grammarAccess.getExtendedIDAccess().getFullStopKeyword_1_0()); 
+            	          
+            	    }
+            	    this_ID_2=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleExtendedID5454); if (state.failed) return current;
+            	    if ( state.backtracking==0 ) {
+
+            	      		current.merge(this_ID_2);
+            	          
+            	    }
+            	    if ( state.backtracking==0 ) {
+            	       
+            	          newLeafNode(this_ID_2, grammarAccess.getExtendedIDAccess().getIDTerminalRuleCall_1_1()); 
+            	          
+            	    }
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop38;
+                }
+            } while (true);
+
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleExtendedID"
+
+
+    // $ANTLR start "ruleInternalFunction"
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2493:1: ruleInternalFunction returns [Enumerator current=null] : ( (enumLiteral_0= 'time' ) | (enumLiteral_1= 'traceId' ) | (enumLiteral_2= 'orderIndex' ) ) ;
+    public final Enumerator ruleInternalFunction() throws RecognitionException {
+        Enumerator current = null;
+
+        Token enumLiteral_0=null;
+        Token enumLiteral_1=null;
+        Token enumLiteral_2=null;
+
+         enterRule(); 
+        try {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2495:28: ( ( (enumLiteral_0= 'time' ) | (enumLiteral_1= 'traceId' ) | (enumLiteral_2= 'orderIndex' ) ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2496:1: ( (enumLiteral_0= 'time' ) | (enumLiteral_1= 'traceId' ) | (enumLiteral_2= 'orderIndex' ) )
+            {
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2496:1: ( (enumLiteral_0= 'time' ) | (enumLiteral_1= 'traceId' ) | (enumLiteral_2= 'orderIndex' ) )
+            int alt39=3;
+            switch ( input.LA(1) ) {
+            case 35:
+                {
+                alt39=1;
+                }
+                break;
+            case 36:
+                {
+                alt39=2;
+                }
+                break;
+            case 37:
+                {
+                alt39=3;
+                }
+                break;
+            default:
+                if (state.backtracking>0) {state.failed=true; return current;}
+                NoViableAltException nvae =
+                    new NoViableAltException("", 39, 0, input);
+
+                throw nvae;
+            }
+
+            switch (alt39) {
+                case 1 :
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2496:2: (enumLiteral_0= 'time' )
+                    {
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2496:2: (enumLiteral_0= 'time' )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2496:4: enumLiteral_0= 'time'
+                    {
+                    enumLiteral_0=(Token)match(input,35,FOLLOW_35_in_ruleInternalFunction5515); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current = grammarAccess.getInternalFunctionAccess().getTIMEEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+                              newLeafNode(enumLiteral_0, grammarAccess.getInternalFunctionAccess().getTIMEEnumLiteralDeclaration_0()); 
+                          
+                    }
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2502:6: (enumLiteral_1= 'traceId' )
+                    {
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2502:6: (enumLiteral_1= 'traceId' )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2502:8: enumLiteral_1= 'traceId'
+                    {
+                    enumLiteral_1=(Token)match(input,36,FOLLOW_36_in_ruleInternalFunction5532); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current = grammarAccess.getInternalFunctionAccess().getTRACE_IDEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+                              newLeafNode(enumLiteral_1, grammarAccess.getInternalFunctionAccess().getTRACE_IDEnumLiteralDeclaration_1()); 
+                          
+                    }
+
+                    }
+
+
+                    }
+                    break;
+                case 3 :
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2508:6: (enumLiteral_2= 'orderIndex' )
+                    {
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2508:6: (enumLiteral_2= 'orderIndex' )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2508:8: enumLiteral_2= 'orderIndex'
+                    {
+                    enumLiteral_2=(Token)match(input,37,FOLLOW_37_in_ruleInternalFunction5549); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current = grammarAccess.getInternalFunctionAccess().getORDER_INDEXEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+                              newLeafNode(enumLiteral_2, grammarAccess.getInternalFunctionAccess().getORDER_INDEXEnumLiteralDeclaration_2()); 
+                          
+                    }
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+            if ( state.backtracking==0 ) {
+               leaveRule(); 
+            }
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleInternalFunction"
+
+
     // $ANTLR start "ruleReflectionFunction"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1615:1: ruleReflectionFunction returns [Enumerator current=null] : ( (enumLiteral_0= 'name' ) | (enumLiteral_1= 'signature' ) | (enumLiteral_2= 'class' ) | (enumLiteral_3= 'return-type' ) ) ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2518:1: ruleReflectionFunction returns [Enumerator current=null] : ( (enumLiteral_0= 'name' ) | (enumLiteral_1= 'signature' ) | (enumLiteral_2= 'class' ) | (enumLiteral_3= 'return-type' ) ) ;
     public final Enumerator ruleReflectionFunction() throws RecognitionException {
         Enumerator current = null;
 
@@ -4489,48 +7080,48 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1617:28: ( ( (enumLiteral_0= 'name' ) | (enumLiteral_1= 'signature' ) | (enumLiteral_2= 'class' ) | (enumLiteral_3= 'return-type' ) ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1618:1: ( (enumLiteral_0= 'name' ) | (enumLiteral_1= 'signature' ) | (enumLiteral_2= 'class' ) | (enumLiteral_3= 'return-type' ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2520:28: ( ( (enumLiteral_0= 'name' ) | (enumLiteral_1= 'signature' ) | (enumLiteral_2= 'class' ) | (enumLiteral_3= 'return-type' ) ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2521:1: ( (enumLiteral_0= 'name' ) | (enumLiteral_1= 'signature' ) | (enumLiteral_2= 'class' ) | (enumLiteral_3= 'return-type' ) )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1618:1: ( (enumLiteral_0= 'name' ) | (enumLiteral_1= 'signature' ) | (enumLiteral_2= 'class' ) | (enumLiteral_3= 'return-type' ) )
-            int alt21=4;
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2521:1: ( (enumLiteral_0= 'name' ) | (enumLiteral_1= 'signature' ) | (enumLiteral_2= 'class' ) | (enumLiteral_3= 'return-type' ) )
+            int alt40=4;
             switch ( input.LA(1) ) {
-            case 29:
+            case 38:
                 {
-                alt21=1;
+                alt40=1;
                 }
                 break;
-            case 30:
+            case 39:
                 {
-                alt21=2;
+                alt40=2;
                 }
                 break;
-            case 31:
+            case 40:
                 {
-                alt21=3;
+                alt40=3;
                 }
                 break;
-            case 32:
+            case 41:
                 {
-                alt21=4;
+                alt40=4;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 21, 0, input);
+                    new NoViableAltException("", 40, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt21) {
+            switch (alt40) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1618:2: (enumLiteral_0= 'name' )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2521:2: (enumLiteral_0= 'name' )
                     {
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1618:2: (enumLiteral_0= 'name' )
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1618:4: enumLiteral_0= 'name'
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2521:2: (enumLiteral_0= 'name' )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2521:4: enumLiteral_0= 'name'
                     {
-                    enumLiteral_0=(Token)match(input,29,FOLLOW_29_in_ruleReflectionFunction3549); if (state.failed) return current;
+                    enumLiteral_0=(Token)match(input,38,FOLLOW_38_in_ruleReflectionFunction5594); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getReflectionFunctionAccess().getNAMEEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
@@ -4544,12 +7135,12 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1624:6: (enumLiteral_1= 'signature' )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2527:6: (enumLiteral_1= 'signature' )
                     {
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1624:6: (enumLiteral_1= 'signature' )
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1624:8: enumLiteral_1= 'signature'
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2527:6: (enumLiteral_1= 'signature' )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2527:8: enumLiteral_1= 'signature'
                     {
-                    enumLiteral_1=(Token)match(input,30,FOLLOW_30_in_ruleReflectionFunction3566); if (state.failed) return current;
+                    enumLiteral_1=(Token)match(input,39,FOLLOW_39_in_ruleReflectionFunction5611); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getReflectionFunctionAccess().getSIGNATUREEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
@@ -4563,12 +7154,12 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1630:6: (enumLiteral_2= 'class' )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2533:6: (enumLiteral_2= 'class' )
                     {
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1630:6: (enumLiteral_2= 'class' )
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1630:8: enumLiteral_2= 'class'
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2533:6: (enumLiteral_2= 'class' )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2533:8: enumLiteral_2= 'class'
                     {
-                    enumLiteral_2=(Token)match(input,31,FOLLOW_31_in_ruleReflectionFunction3583); if (state.failed) return current;
+                    enumLiteral_2=(Token)match(input,40,FOLLOW_40_in_ruleReflectionFunction5628); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getReflectionFunctionAccess().getCLASSEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
@@ -4582,12 +7173,12 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1636:6: (enumLiteral_3= 'return-type' )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2539:6: (enumLiteral_3= 'return-type' )
                     {
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1636:6: (enumLiteral_3= 'return-type' )
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1636:8: enumLiteral_3= 'return-type'
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2539:6: (enumLiteral_3= 'return-type' )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2539:8: enumLiteral_3= 'return-type'
                     {
-                    enumLiteral_3=(Token)match(input,32,FOLLOW_32_in_ruleReflectionFunction3600); if (state.failed) return current;
+                    enumLiteral_3=(Token)match(input,41,FOLLOW_41_in_ruleReflectionFunction5645); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getReflectionFunctionAccess().getRETURN_TYPEEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
@@ -4623,7 +7214,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleOperator"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1646:1: ruleOperator returns [Enumerator current=null] : ( (enumLiteral_0= '=' ) | (enumLiteral_1= '~' ) | (enumLiteral_2= '!=' ) | (enumLiteral_3= '>' ) | (enumLiteral_4= '<' ) | (enumLiteral_5= '>=' ) | (enumLiteral_6= '<=' ) ) ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2549:1: ruleOperator returns [Enumerator current=null] : ( (enumLiteral_0= '=' ) | (enumLiteral_1= '~' ) | (enumLiteral_2= '!=' ) | (enumLiteral_3= '>' ) | (enumLiteral_4= '<' ) | (enumLiteral_5= '>=' ) | (enumLiteral_6= '<=' ) ) ;
     public final Enumerator ruleOperator() throws RecognitionException {
         Enumerator current = null;
 
@@ -4637,63 +7228,63 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1648:28: ( ( (enumLiteral_0= '=' ) | (enumLiteral_1= '~' ) | (enumLiteral_2= '!=' ) | (enumLiteral_3= '>' ) | (enumLiteral_4= '<' ) | (enumLiteral_5= '>=' ) | (enumLiteral_6= '<=' ) ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1649:1: ( (enumLiteral_0= '=' ) | (enumLiteral_1= '~' ) | (enumLiteral_2= '!=' ) | (enumLiteral_3= '>' ) | (enumLiteral_4= '<' ) | (enumLiteral_5= '>=' ) | (enumLiteral_6= '<=' ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2551:28: ( ( (enumLiteral_0= '=' ) | (enumLiteral_1= '~' ) | (enumLiteral_2= '!=' ) | (enumLiteral_3= '>' ) | (enumLiteral_4= '<' ) | (enumLiteral_5= '>=' ) | (enumLiteral_6= '<=' ) ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2552:1: ( (enumLiteral_0= '=' ) | (enumLiteral_1= '~' ) | (enumLiteral_2= '!=' ) | (enumLiteral_3= '>' ) | (enumLiteral_4= '<' ) | (enumLiteral_5= '>=' ) | (enumLiteral_6= '<=' ) )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1649:1: ( (enumLiteral_0= '=' ) | (enumLiteral_1= '~' ) | (enumLiteral_2= '!=' ) | (enumLiteral_3= '>' ) | (enumLiteral_4= '<' ) | (enumLiteral_5= '>=' ) | (enumLiteral_6= '<=' ) )
-            int alt22=7;
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2552:1: ( (enumLiteral_0= '=' ) | (enumLiteral_1= '~' ) | (enumLiteral_2= '!=' ) | (enumLiteral_3= '>' ) | (enumLiteral_4= '<' ) | (enumLiteral_5= '>=' ) | (enumLiteral_6= '<=' ) )
+            int alt41=7;
             switch ( input.LA(1) ) {
-            case 33:
+            case 42:
                 {
-                alt22=1;
+                alt41=1;
                 }
                 break;
-            case 34:
+            case 43:
                 {
-                alt22=2;
+                alt41=2;
                 }
                 break;
-            case 35:
+            case 44:
                 {
-                alt22=3;
+                alt41=3;
                 }
                 break;
-            case 36:
+            case 45:
                 {
-                alt22=4;
+                alt41=4;
                 }
                 break;
-            case 37:
+            case 46:
                 {
-                alt22=5;
+                alt41=5;
                 }
                 break;
-            case 38:
+            case 47:
                 {
-                alt22=6;
+                alt41=6;
                 }
                 break;
-            case 39:
+            case 48:
                 {
-                alt22=7;
+                alt41=7;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 22, 0, input);
+                    new NoViableAltException("", 41, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt22) {
+            switch (alt41) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1649:2: (enumLiteral_0= '=' )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2552:2: (enumLiteral_0= '=' )
                     {
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1649:2: (enumLiteral_0= '=' )
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1649:4: enumLiteral_0= '='
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2552:2: (enumLiteral_0= '=' )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2552:4: enumLiteral_0= '='
                     {
-                    enumLiteral_0=(Token)match(input,33,FOLLOW_33_in_ruleOperator3645); if (state.failed) return current;
+                    enumLiteral_0=(Token)match(input,42,FOLLOW_42_in_ruleOperator5690); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getOperatorAccess().getEQEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
@@ -4707,12 +7298,12 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1655:6: (enumLiteral_1= '~' )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2558:6: (enumLiteral_1= '~' )
                     {
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1655:6: (enumLiteral_1= '~' )
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1655:8: enumLiteral_1= '~'
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2558:6: (enumLiteral_1= '~' )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2558:8: enumLiteral_1= '~'
                     {
-                    enumLiteral_1=(Token)match(input,34,FOLLOW_34_in_ruleOperator3662); if (state.failed) return current;
+                    enumLiteral_1=(Token)match(input,43,FOLLOW_43_in_ruleOperator5707); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getOperatorAccess().getLIKEEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
@@ -4726,12 +7317,12 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1661:6: (enumLiteral_2= '!=' )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2564:6: (enumLiteral_2= '!=' )
                     {
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1661:6: (enumLiteral_2= '!=' )
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1661:8: enumLiteral_2= '!='
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2564:6: (enumLiteral_2= '!=' )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2564:8: enumLiteral_2= '!='
                     {
-                    enumLiteral_2=(Token)match(input,35,FOLLOW_35_in_ruleOperator3679); if (state.failed) return current;
+                    enumLiteral_2=(Token)match(input,44,FOLLOW_44_in_ruleOperator5724); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getOperatorAccess().getNEEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
@@ -4745,12 +7336,12 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1667:6: (enumLiteral_3= '>' )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2570:6: (enumLiteral_3= '>' )
                     {
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1667:6: (enumLiteral_3= '>' )
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1667:8: enumLiteral_3= '>'
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2570:6: (enumLiteral_3= '>' )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2570:8: enumLiteral_3= '>'
                     {
-                    enumLiteral_3=(Token)match(input,36,FOLLOW_36_in_ruleOperator3696); if (state.failed) return current;
+                    enumLiteral_3=(Token)match(input,45,FOLLOW_45_in_ruleOperator5741); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getOperatorAccess().getGREnumLiteralDeclaration_3().getEnumLiteral().getInstance();
@@ -4764,12 +7355,12 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1673:6: (enumLiteral_4= '<' )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2576:6: (enumLiteral_4= '<' )
                     {
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1673:6: (enumLiteral_4= '<' )
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1673:8: enumLiteral_4= '<'
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2576:6: (enumLiteral_4= '<' )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2576:8: enumLiteral_4= '<'
                     {
-                    enumLiteral_4=(Token)match(input,37,FOLLOW_37_in_ruleOperator3713); if (state.failed) return current;
+                    enumLiteral_4=(Token)match(input,46,FOLLOW_46_in_ruleOperator5758); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getOperatorAccess().getLWEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
@@ -4783,12 +7374,12 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1679:6: (enumLiteral_5= '>=' )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2582:6: (enumLiteral_5= '>=' )
                     {
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1679:6: (enumLiteral_5= '>=' )
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1679:8: enumLiteral_5= '>='
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2582:6: (enumLiteral_5= '>=' )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2582:8: enumLiteral_5= '>='
                     {
-                    enumLiteral_5=(Token)match(input,38,FOLLOW_38_in_ruleOperator3730); if (state.failed) return current;
+                    enumLiteral_5=(Token)match(input,47,FOLLOW_47_in_ruleOperator5775); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getOperatorAccess().getGEEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
@@ -4802,12 +7393,12 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1685:6: (enumLiteral_6= '<=' )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2588:6: (enumLiteral_6= '<=' )
                     {
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1685:6: (enumLiteral_6= '<=' )
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1685:8: enumLiteral_6= '<='
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2588:6: (enumLiteral_6= '<=' )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2588:8: enumLiteral_6= '<='
                     {
-                    enumLiteral_6=(Token)match(input,39,FOLLOW_39_in_ruleOperator3747); if (state.failed) return current;
+                    enumLiteral_6=(Token)match(input,48,FOLLOW_48_in_ruleOperator5792); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getOperatorAccess().getLEEnumLiteralDeclaration_6().getEnumLiteral().getInstance();
@@ -4843,7 +7434,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleInsertionPoint"
-    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1695:1: ruleInsertionPoint returns [Enumerator current=null] : ( (enumLiteral_0= 'before' ) | (enumLiteral_1= 'after' ) ) ;
+    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2598:1: ruleInsertionPoint returns [Enumerator current=null] : ( (enumLiteral_0= 'before' ) | (enumLiteral_1= 'after' ) ) ;
     public final Enumerator ruleInsertionPoint() throws RecognitionException {
         Enumerator current = null;
 
@@ -4852,34 +7443,34 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1697:28: ( ( (enumLiteral_0= 'before' ) | (enumLiteral_1= 'after' ) ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1698:1: ( (enumLiteral_0= 'before' ) | (enumLiteral_1= 'after' ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2600:28: ( ( (enumLiteral_0= 'before' ) | (enumLiteral_1= 'after' ) ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2601:1: ( (enumLiteral_0= 'before' ) | (enumLiteral_1= 'after' ) )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1698:1: ( (enumLiteral_0= 'before' ) | (enumLiteral_1= 'after' ) )
-            int alt23=2;
-            int LA23_0 = input.LA(1);
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2601:1: ( (enumLiteral_0= 'before' ) | (enumLiteral_1= 'after' ) )
+            int alt42=2;
+            int LA42_0 = input.LA(1);
 
-            if ( (LA23_0==40) ) {
-                alt23=1;
+            if ( (LA42_0==49) ) {
+                alt42=1;
             }
-            else if ( (LA23_0==41) ) {
-                alt23=2;
+            else if ( (LA42_0==50) ) {
+                alt42=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 23, 0, input);
+                    new NoViableAltException("", 42, 0, input);
 
                 throw nvae;
             }
-            switch (alt23) {
+            switch (alt42) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1698:2: (enumLiteral_0= 'before' )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2601:2: (enumLiteral_0= 'before' )
                     {
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1698:2: (enumLiteral_0= 'before' )
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1698:4: enumLiteral_0= 'before'
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2601:2: (enumLiteral_0= 'before' )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2601:4: enumLiteral_0= 'before'
                     {
-                    enumLiteral_0=(Token)match(input,40,FOLLOW_40_in_ruleInsertionPoint3792); if (state.failed) return current;
+                    enumLiteral_0=(Token)match(input,49,FOLLOW_49_in_ruleInsertionPoint5837); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getInsertionPointAccess().getBEFOREEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
@@ -4893,12 +7484,12 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1704:6: (enumLiteral_1= 'after' )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2607:6: (enumLiteral_1= 'after' )
                     {
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1704:6: (enumLiteral_1= 'after' )
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1704:8: enumLiteral_1= 'after'
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2607:6: (enumLiteral_1= 'after' )
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2607:8: enumLiteral_1= 'after'
                     {
-                    enumLiteral_1=(Token)match(input,41,FOLLOW_41_in_ruleInsertionPoint3809); if (state.failed) return current;
+                    enumLiteral_1=(Token)match(input,50,FOLLOW_50_in_ruleInsertionPoint5854); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getInsertionPointAccess().getAFTEREnumLiteralDeclaration_1().getEnumLiteral().getInstance();
@@ -4932,232 +7523,301 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
     }
     // $ANTLR end "ruleInsertionPoint"
 
-    // $ANTLR start synpred20_InternalAspectLang
-    public final void synpred20_InternalAspectLang_fragment() throws RecognitionException {   
-        EObject this_IntValue_1 = null;
-
-
-        // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1054:2: (this_IntValue_1= ruleIntValue )
-        // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1054:2: this_IntValue_1= ruleIntValue
-        {
-        if ( state.backtracking==0 ) {
-           
-          	  /* */ 
-          	
-        }
-        pushFollow(FOLLOW_ruleIntValue_in_synpred20_InternalAspectLang2234);
-        this_IntValue_1=ruleIntValue();
-
-        state._fsp--;
-        if (state.failed) return ;
-
-        }
-    }
-    // $ANTLR end synpred20_InternalAspectLang
-
-    // $ANTLR start synpred21_InternalAspectLang
-    public final void synpred21_InternalAspectLang_fragment() throws RecognitionException {   
-        EObject this_FloatValue_2 = null;
-
-
-        // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1067:2: (this_FloatValue_2= ruleFloatValue )
-        // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1067:2: this_FloatValue_2= ruleFloatValue
-        {
-        if ( state.backtracking==0 ) {
-           
-          	  /* */ 
-          	
-        }
-        pushFollow(FOLLOW_ruleFloatValue_in_synpred21_InternalAspectLang2264);
-        this_FloatValue_2=ruleFloatValue();
-
-        state._fsp--;
-        if (state.failed) return ;
-
-        }
-    }
-    // $ANTLR end synpred21_InternalAspectLang
-
     // Delegated rules
 
-    public final boolean synpred21_InternalAspectLang() {
-        state.backtracking++;
-        int start = input.mark();
-        try {
-            synpred21_InternalAspectLang_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
+
+    protected DFA24 dfa24 = new DFA24(this);
+    static final String DFA24_eotS =
+        "\14\uffff";
+    static final String DFA24_eofS =
+        "\3\uffff\1\6\7\uffff\1\6";
+    static final String DFA24_minS =
+        "\1\10\1\uffff\3\4\6\uffff\1\4";
+    static final String DFA24_maxS =
+        "\1\42\1\uffff\1\4\1\42\1\4\6\uffff\1\42";
+    static final String DFA24_acceptS =
+        "\1\uffff\1\1\3\uffff\1\3\1\2\1\5\1\4\1\7\1\6\1\uffff";
+    static final String DFA24_specialS =
+        "\14\uffff}>";
+    static final String[] DFA24_transitionS = {
+            "\1\1\31\uffff\1\2",
+            "",
+            "\1\3",
+            "\2\5\1\11\1\12\1\6\1\7\13\uffff\1\4\1\uffff\1\6\2\uffff\2\6"+
+            "\1\10\5\uffff\1\6",
+            "\1\13",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "\2\5\1\11\1\12\1\6\1\7\13\uffff\1\4\1\uffff\1\6\2\uffff\2\6"+
+            "\1\10\5\uffff\1\6"
+    };
+
+    static final short[] DFA24_eot = DFA.unpackEncodedString(DFA24_eotS);
+    static final short[] DFA24_eof = DFA.unpackEncodedString(DFA24_eofS);
+    static final char[] DFA24_min = DFA.unpackEncodedStringToUnsignedChars(DFA24_minS);
+    static final char[] DFA24_max = DFA.unpackEncodedStringToUnsignedChars(DFA24_maxS);
+    static final short[] DFA24_accept = DFA.unpackEncodedString(DFA24_acceptS);
+    static final short[] DFA24_special = DFA.unpackEncodedString(DFA24_specialS);
+    static final short[][] DFA24_transition;
+
+    static {
+        int numStates = DFA24_transitionS.length;
+        DFA24_transition = new short[numStates][];
+        for (int i=0; i<numStates; i++) {
+            DFA24_transition[i] = DFA.unpackEncodedString(DFA24_transitionS[i]);
         }
-        boolean success = !state.failed;
-        input.rewind(start);
-        state.backtracking--;
-        state.failed=false;
-        return success;
-    }
-    public final boolean synpred20_InternalAspectLang() {
-        state.backtracking++;
-        int start = input.mark();
-        try {
-            synpred20_InternalAspectLang_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
-        }
-        boolean success = !state.failed;
-        input.rewind(start);
-        state.backtracking--;
-        state.failed=false;
-        return success;
     }
 
+    class DFA24 extends DFA {
 
+        public DFA24(BaseRecognizer recognizer) {
+            this.recognizer = recognizer;
+            this.decisionNumber = 24;
+            this.eot = DFA24_eot;
+            this.eof = DFA24_eof;
+            this.min = DFA24_min;
+            this.max = DFA24_max;
+            this.accept = DFA24_accept;
+            this.special = DFA24_special;
+            this.transition = DFA24_transition;
+        }
+        public String getDescription() {
+            return "1745:1: (this_CommentAnnotation_0= ruleCommentAnnotation | this_TagAnnotation_1= ruleTagAnnotation | this_KeyStringValueAnnotation_2= ruleKeyStringValueAnnotation | this_TypedKeyStringValueAnnotation_3= ruleTypedKeyStringValueAnnotation | this_KeyBooleanValueAnnotation_4= ruleKeyBooleanValueAnnotation | this_KeyIntValueAnnotation_5= ruleKeyIntValueAnnotation | this_KeyFloatValueAnnotation_6= ruleKeyFloatValueAnnotation )";
+        }
+    }
  
 
     public static final BitSet FOLLOW_ruleModel_in_entryRuleModel81 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleModel91 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_11_in_ruleModel128 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleModel149 = new BitSet(new long[]{0x0000000000087002L});
-    public static final BitSet FOLLOW_ruleRegisteredPackage_in_ruleModel170 = new BitSet(new long[]{0x0000000000087002L});
-    public static final BitSet FOLLOW_ruleImport_in_ruleModel192 = new BitSet(new long[]{0x0000000000085002L});
-    public static final BitSet FOLLOW_ruleApplicationModel_in_ruleModel214 = new BitSet(new long[]{0x0000000000084002L});
-    public static final BitSet FOLLOW_ruleAspect_in_ruleModel236 = new BitSet(new long[]{0x0000000000080002L});
+    public static final BitSet FOLLOW_15_in_ruleModel128 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleModel149 = new BitSet(new long[]{0x0000000400870102L});
+    public static final BitSet FOLLOW_ruleRegisteredPackage_in_ruleModel170 = new BitSet(new long[]{0x0000000400870102L});
+    public static final BitSet FOLLOW_ruleImport_in_ruleModel192 = new BitSet(new long[]{0x0000000400850102L});
+    public static final BitSet FOLLOW_ruleApplicationModel_in_ruleModel214 = new BitSet(new long[]{0x0000000400840102L});
+    public static final BitSet FOLLOW_ruleAspect_in_ruleModel236 = new BitSet(new long[]{0x0000000400800102L});
     public static final BitSet FOLLOW_ruleImport_in_entryRuleImport273 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleImport283 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_12_in_ruleImport320 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_16_in_ruleImport320 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_ruleQualifiedNameWithWildcard_in_ruleImport341 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleRegisteredPackage_in_entryRuleRegisteredPackage377 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleRegisteredPackage387 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_13_in_ruleRegisteredPackage424 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_17_in_ruleRegisteredPackage424 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_RULE_ID_in_ruleRegisteredPackage441 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_RULE_STRING_in_ruleRegisteredPackage470 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleApplicationModel_in_entryRuleApplicationModel506 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleApplicationModel516 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_14_in_ruleApplicationModel553 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleApplicationModel577 = new BitSet(new long[]{0x0000000000018000L});
-    public static final BitSet FOLLOW_15_in_ruleApplicationModel590 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleApplicationModel614 = new BitSet(new long[]{0x0000000000018000L});
-    public static final BitSet FOLLOW_16_in_ruleApplicationModel628 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_18_in_ruleApplicationModel553 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleApplicationModel577 = new BitSet(new long[]{0x0000000000180000L});
+    public static final BitSet FOLLOW_19_in_ruleApplicationModel590 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleApplicationModel614 = new BitSet(new long[]{0x0000000000180000L});
+    public static final BitSet FOLLOW_20_in_ruleApplicationModel628 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_RULE_ID_in_ruleApplicationModel645 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_RULE_STRING_in_ruleApplicationModel667 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName709 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedName720 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedName760 = new BitSet(new long[]{0x0000000000020002L});
-    public static final BitSet FOLLOW_17_in_ruleQualifiedName788 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedName804 = new BitSet(new long[]{0x0000000000020002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedName760 = new BitSet(new long[]{0x0000000000200002L});
+    public static final BitSet FOLLOW_21_in_ruleQualifiedName788 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleQualifiedName804 = new BitSet(new long[]{0x0000000000200002L});
     public static final BitSet FOLLOW_ruleQualifiedNameWithWildcard_in_entryRuleQualifiedNameWithWildcard852 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedNameWithWildcard863 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleQualifiedNameWithWildcard910 = new BitSet(new long[]{0x0000000000020002L});
-    public static final BitSet FOLLOW_17_in_ruleQualifiedNameWithWildcard929 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_18_in_ruleQualifiedNameWithWildcard942 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleQualifiedNameWithWildcard910 = new BitSet(new long[]{0x0000000000200002L});
+    public static final BitSet FOLLOW_21_in_ruleQualifiedNameWithWildcard929 = new BitSet(new long[]{0x0000000000400000L});
+    public static final BitSet FOLLOW_22_in_ruleQualifiedNameWithWildcard942 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleAspect_in_entryRuleAspect984 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleAspect994 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_19_in_ruleAspect1031 = new BitSet(new long[]{0x0000000010040010L});
-    public static final BitSet FOLLOW_ruleQuery_in_ruleAspect1052 = new BitSet(new long[]{0x0000000000100000L});
-    public static final BitSet FOLLOW_20_in_ruleAspect1064 = new BitSet(new long[]{0x0000030000000000L});
-    public static final BitSet FOLLOW_ruleCollector_in_ruleAspect1085 = new BitSet(new long[]{0x0000000000200000L});
-    public static final BitSet FOLLOW_21_in_ruleAspect1097 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQuery_in_entryRuleQuery1133 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleQuery1143 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLocationQuery_in_ruleQuery1189 = new BitSet(new long[]{0x0000000000040012L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleQuery1215 = new BitSet(new long[]{0x0000000000040010L});
-    public static final BitSet FOLLOW_18_in_ruleQuery1233 = new BitSet(new long[]{0x0000000000040010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleQuery1259 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_18_in_ruleQuery1277 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleQuery1302 = new BitSet(new long[]{0x0000000000400000L});
-    public static final BitSet FOLLOW_22_in_ruleQuery1314 = new BitSet(new long[]{0x0000000000040010L});
-    public static final BitSet FOLLOW_ruleParameterPattern_in_ruleQuery1335 = new BitSet(new long[]{0x0000000000808000L});
-    public static final BitSet FOLLOW_15_in_ruleQuery1348 = new BitSet(new long[]{0x0000000000040010L});
-    public static final BitSet FOLLOW_ruleParameterPattern_in_ruleQuery1369 = new BitSet(new long[]{0x0000000000808000L});
-    public static final BitSet FOLLOW_23_in_ruleQuery1383 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleParameterPattern_in_entryRuleParameterPattern1421 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleParameterPattern1431 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleParameterPattern1481 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_18_in_ruleParameterPattern1499 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleParameterPattern1524 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleParameterPattern1548 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLocationQuery_in_entryRuleLocationQuery1584 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleLocationQuery1594 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNode_in_ruleLocationQuery1640 = new BitSet(new long[]{0x0000000000020002L});
-    public static final BitSet FOLLOW_17_in_ruleLocationQuery1653 = new BitSet(new long[]{0x0000000010040010L});
-    public static final BitSet FOLLOW_ruleLocationQuery_in_ruleLocationQuery1674 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNode_in_entryRuleNode1712 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleNode1722 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSubPathNode_in_ruleNode1773 = new BitSet(new long[]{0x0000000001000002L});
-    public static final BitSet FOLLOW_ruleWildcardNode_in_ruleNode1803 = new BitSet(new long[]{0x0000000001000002L});
-    public static final BitSet FOLLOW_ruleContainerNode_in_ruleNode1833 = new BitSet(new long[]{0x0000000001000002L});
-    public static final BitSet FOLLOW_ruleParamQuery_in_ruleNode1854 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleParamQuery_in_entryRuleParamQuery1891 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleParamQuery1901 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_24_in_ruleParamQuery1938 = new BitSet(new long[]{0x0000000010040070L});
-    public static final BitSet FOLLOW_ruleParamCompare_in_ruleParamQuery1959 = new BitSet(new long[]{0x0000000012040070L});
-    public static final BitSet FOLLOW_25_in_ruleParamQuery1972 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleParamCompare_in_entryRuleParamCompare2008 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleParamCompare2018 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValue_in_ruleParamCompare2064 = new BitSet(new long[]{0x000000FE00000000L});
-    public static final BitSet FOLLOW_ruleOperator_in_ruleParamCompare2086 = new BitSet(new long[]{0x0000000010040070L});
-    public static final BitSet FOLLOW_ruleValue_in_ruleParamCompare2107 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValue_in_entryRuleValue2144 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleValue2154 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleStringValue_in_ruleValue2204 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntValue_in_ruleValue2234 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFloatValue_in_ruleValue2264 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleReferenceValue_in_ruleValue2294 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFloatValue_in_entryRuleFloatValue2329 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFloatValue2339 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_INT_in_ruleFloatValue2380 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntValue_in_entryRuleIntValue2420 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleIntValue2430 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_INT_in_ruleIntValue2471 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleStringValue_in_entryRuleStringValue2511 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleStringValue2521 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleStringValue2562 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleReferenceValue_in_entryRuleReferenceValue2602 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleReferenceValue2612 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLocationQuery_in_ruleReferenceValue2658 = new BitSet(new long[]{0x000000000C000000L});
-    public static final BitSet FOLLOW_ruleParameter_in_ruleReferenceValue2679 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleParameter_in_entryRuleParameter2715 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleParameter2725 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRuntimeProperty_in_ruleParameter2775 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleReflectionProperty_in_ruleParameter2805 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRuntimeProperty_in_entryRuleRuntimeProperty2840 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleRuntimeProperty2850 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_26_in_ruleRuntimeProperty2887 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleRuntimeProperty2904 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleReflectionProperty_in_entryRuleReflectionProperty2945 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleReflectionProperty2955 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_27_in_ruleReflectionProperty2992 = new BitSet(new long[]{0x00000001E0000000L});
-    public static final BitSet FOLLOW_ruleReflectionFunction_in_ruleReflectionProperty3013 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleContainerNode_in_entryRuleContainerNode3049 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleContainerNode3059 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleContainerNode3107 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleWildcardNode_in_entryRuleWildcardNode3142 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleWildcardNode3152 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_18_in_ruleWildcardNode3201 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSubPathNode_in_entryRuleSubPathNode3237 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleSubPathNode3247 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_28_in_ruleSubPathNode3296 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCollector_in_entryRuleCollector3332 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleCollector3342 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInsertionPoint_in_ruleCollector3388 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleCollector3415 = new BitSet(new long[]{0x0000000000400000L});
-    public static final BitSet FOLLOW_22_in_ruleCollector3427 = new BitSet(new long[]{0x0000000010840070L});
-    public static final BitSet FOLLOW_ruleValue_in_ruleCollector3449 = new BitSet(new long[]{0x0000000000808000L});
-    public static final BitSet FOLLOW_15_in_ruleCollector3462 = new BitSet(new long[]{0x0000000010040070L});
-    public static final BitSet FOLLOW_ruleValue_in_ruleCollector3483 = new BitSet(new long[]{0x0000000000808000L});
-    public static final BitSet FOLLOW_23_in_ruleCollector3499 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_29_in_ruleReflectionFunction3549 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_30_in_ruleReflectionFunction3566 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_31_in_ruleReflectionFunction3583 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_32_in_ruleReflectionFunction3600 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_33_in_ruleOperator3645 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_34_in_ruleOperator3662 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_35_in_ruleOperator3679 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_36_in_ruleOperator3696 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_37_in_ruleOperator3713 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_38_in_ruleOperator3730 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_39_in_ruleOperator3747 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_ruleInsertionPoint3792 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_41_in_ruleInsertionPoint3809 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntValue_in_synpred20_InternalAspectLang2234 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFloatValue_in_synpred21_InternalAspectLang2264 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAnnotation_in_ruleAspect1040 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_23_in_ruleAspect1053 = new BitSet(new long[]{0x0000000300400010L});
+    public static final BitSet FOLLOW_ruleQuery_in_ruleAspect1074 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_24_in_ruleAspect1086 = new BitSet(new long[]{0x0006000002000000L});
+    public static final BitSet FOLLOW_ruleCollector_in_ruleAspect1107 = new BitSet(new long[]{0x0006000002000000L});
+    public static final BitSet FOLLOW_25_in_ruleAspect1120 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQuery_in_entryRuleQuery1156 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleQuery1166 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLocationQuery_in_ruleQuery1212 = new BitSet(new long[]{0x0000000000400012L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleQuery1238 = new BitSet(new long[]{0x0000000000400010L});
+    public static final BitSet FOLLOW_22_in_ruleQuery1256 = new BitSet(new long[]{0x0000000000400010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleQuery1282 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_22_in_ruleQuery1300 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleQuery1325 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_26_in_ruleQuery1337 = new BitSet(new long[]{0x0000000000400010L});
+    public static final BitSet FOLLOW_ruleParameterPattern_in_ruleQuery1358 = new BitSet(new long[]{0x0000000008080000L});
+    public static final BitSet FOLLOW_19_in_ruleQuery1371 = new BitSet(new long[]{0x0000000000400010L});
+    public static final BitSet FOLLOW_ruleParameterPattern_in_ruleQuery1392 = new BitSet(new long[]{0x0000000008080000L});
+    public static final BitSet FOLLOW_27_in_ruleQuery1406 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleParameterPattern_in_entryRuleParameterPattern1444 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleParameterPattern1454 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleParameterPattern1504 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_22_in_ruleParameterPattern1522 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleParameterPattern1547 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleParameterPattern1571 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLocationQuery_in_entryRuleLocationQuery1607 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleLocationQuery1617 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleNode_in_ruleLocationQuery1663 = new BitSet(new long[]{0x0000000000200002L});
+    public static final BitSet FOLLOW_21_in_ruleLocationQuery1676 = new BitSet(new long[]{0x0000000300400010L});
+    public static final BitSet FOLLOW_ruleLocationQuery_in_ruleLocationQuery1697 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleNode_in_entryRuleNode1735 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleNode1745 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSubPathNode_in_ruleNode1796 = new BitSet(new long[]{0x0000000010000002L});
+    public static final BitSet FOLLOW_ruleWildcardNode_in_ruleNode1826 = new BitSet(new long[]{0x0000000010000002L});
+    public static final BitSet FOLLOW_ruleParentNode_in_ruleNode1856 = new BitSet(new long[]{0x0000000010000002L});
+    public static final BitSet FOLLOW_ruleContainerNode_in_ruleNode1886 = new BitSet(new long[]{0x0000000010000002L});
+    public static final BitSet FOLLOW_ruleParamQuery_in_ruleNode1907 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleParamQuery_in_entryRuleParamQuery1944 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleParamQuery1954 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_28_in_ruleParamQuery1991 = new BitSet(new long[]{0x0000003BC04000F0L});
+    public static final BitSet FOLLOW_ruleParamCompare_in_ruleParamQuery2012 = new BitSet(new long[]{0x0000003BE04000F0L});
+    public static final BitSet FOLLOW_29_in_ruleParamQuery2025 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleParamCompare_in_entryRuleParamCompare2061 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleParamCompare2071 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValue_in_ruleParamCompare2117 = new BitSet(new long[]{0x0001FC0000000000L});
+    public static final BitSet FOLLOW_ruleOperator_in_ruleParamCompare2139 = new BitSet(new long[]{0x0000003BC04000F0L});
+    public static final BitSet FOLLOW_ruleValue_in_ruleParamCompare2160 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValue_in_entryRuleValue2197 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleValue2207 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStringValue_in_ruleValue2257 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIntValue_in_ruleValue2287 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFloatValue_in_ruleValue2317 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleReferenceValue_in_ruleValue2347 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFloatValue_in_entryRuleFloatValue2382 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFloatValue2392 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_FLOAT_in_ruleFloatValue2433 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIntValue_in_entryRuleIntValue2473 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleIntValue2483 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_INT_in_ruleIntValue2524 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStringValue_in_entryRuleStringValue2564 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleStringValue2574 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleStringValue2615 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleReferenceValue_in_entryRuleReferenceValue2655 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleReferenceValue2665 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLocationQuery_in_ruleReferenceValue2711 = new BitSet(new long[]{0x0000003BC04000F0L});
+    public static final BitSet FOLLOW_ruleParameter_in_ruleReferenceValue2733 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleParameter_in_entryRuleParameter2769 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleParameter2779 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRuntimeProperty_in_ruleParameter2829 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleReflectionProperty_in_ruleParameter2859 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInternalFunctionProperty_in_ruleParameter2889 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInternalFunctionProperty_in_entryRuleInternalFunctionProperty2924 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleInternalFunctionProperty2934 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInternalFunction_in_ruleInternalFunctionProperty2979 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRuntimeProperty_in_entryRuleRuntimeProperty3014 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleRuntimeProperty3024 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_30_in_ruleRuntimeProperty3061 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleRuntimeProperty3078 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleReflectionProperty_in_entryRuleReflectionProperty3119 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleReflectionProperty3129 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_31_in_ruleReflectionProperty3166 = new BitSet(new long[]{0x000003C000000000L});
+    public static final BitSet FOLLOW_ruleReflectionFunction_in_ruleReflectionProperty3187 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleContainerNode_in_entryRuleContainerNode3223 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleContainerNode3233 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleContainerNode3281 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleWildcardNode_in_entryRuleWildcardNode3316 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleWildcardNode3326 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_22_in_ruleWildcardNode3375 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSubPathNode_in_entryRuleSubPathNode3411 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleSubPathNode3421 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_32_in_ruleSubPathNode3470 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleParentNode_in_entryRuleParentNode3506 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleParentNode3516 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_33_in_ruleParentNode3565 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCollector_in_entryRuleCollector3601 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleCollector3611 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInsertionPoint_in_ruleCollector3657 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleCollector3684 = new BitSet(new long[]{0x0000000004000000L});
+    public static final BitSet FOLLOW_26_in_ruleCollector3696 = new BitSet(new long[]{0x0000003BC84000F0L});
+    public static final BitSet FOLLOW_ruleValue_in_ruleCollector3718 = new BitSet(new long[]{0x0000000008080000L});
+    public static final BitSet FOLLOW_19_in_ruleCollector3731 = new BitSet(new long[]{0x0000003BC04000F0L});
+    public static final BitSet FOLLOW_ruleValue_in_ruleCollector3752 = new BitSet(new long[]{0x0000000008080000L});
+    public static final BitSet FOLLOW_27_in_ruleCollector3768 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAnnotation_in_entryRuleAnnotation3804 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleAnnotation3814 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCommentAnnotation_in_ruleAnnotation3864 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTagAnnotation_in_ruleAnnotation3894 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleKeyStringValueAnnotation_in_ruleAnnotation3924 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTypedKeyStringValueAnnotation_in_ruleAnnotation3954 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleKeyBooleanValueAnnotation_in_ruleAnnotation3984 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleKeyIntValueAnnotation_in_ruleAnnotation4014 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleKeyFloatValueAnnotation_in_ruleAnnotation4044 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCommentAnnotation_in_entryRuleCommentAnnotation4081 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleCommentAnnotation4091 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_COMMENT_ANNOTATION_in_ruleCommentAnnotation4132 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTagAnnotation_in_entryRuleTagAnnotation4172 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleTagAnnotation4182 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_34_in_ruleTagAnnotation4219 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleExtendedID_in_ruleTagAnnotation4240 = new BitSet(new long[]{0x0000000004000002L});
+    public static final BitSet FOLLOW_26_in_ruleTagAnnotation4253 = new BitSet(new long[]{0x0000000408000100L});
+    public static final BitSet FOLLOW_ruleAnnotation_in_ruleTagAnnotation4274 = new BitSet(new long[]{0x0000000408000100L});
+    public static final BitSet FOLLOW_27_in_ruleTagAnnotation4287 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleKeyStringValueAnnotation_in_entryRuleKeyStringValueAnnotation4325 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleKeyStringValueAnnotation4335 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_34_in_ruleKeyStringValueAnnotation4372 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleExtendedID_in_ruleKeyStringValueAnnotation4393 = new BitSet(new long[]{0x0000000000000030L});
+    public static final BitSet FOLLOW_ruleEString_in_ruleKeyStringValueAnnotation4414 = new BitSet(new long[]{0x0000000004000002L});
+    public static final BitSet FOLLOW_26_in_ruleKeyStringValueAnnotation4427 = new BitSet(new long[]{0x0000000408000100L});
+    public static final BitSet FOLLOW_ruleAnnotation_in_ruleKeyStringValueAnnotation4448 = new BitSet(new long[]{0x0000000408000100L});
+    public static final BitSet FOLLOW_27_in_ruleKeyStringValueAnnotation4461 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTypedKeyStringValueAnnotation_in_entryRuleTypedKeyStringValueAnnotation4499 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleTypedKeyStringValueAnnotation4509 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_34_in_ruleTypedKeyStringValueAnnotation4546 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleExtendedID_in_ruleTypedKeyStringValueAnnotation4567 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_28_in_ruleTypedKeyStringValueAnnotation4579 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleExtendedID_in_ruleTypedKeyStringValueAnnotation4600 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_29_in_ruleTypedKeyStringValueAnnotation4612 = new BitSet(new long[]{0x0000000000000030L});
+    public static final BitSet FOLLOW_ruleEString_in_ruleTypedKeyStringValueAnnotation4633 = new BitSet(new long[]{0x0000000004000002L});
+    public static final BitSet FOLLOW_26_in_ruleTypedKeyStringValueAnnotation4646 = new BitSet(new long[]{0x0000000408000100L});
+    public static final BitSet FOLLOW_ruleAnnotation_in_ruleTypedKeyStringValueAnnotation4667 = new BitSet(new long[]{0x0000000408000100L});
+    public static final BitSet FOLLOW_27_in_ruleTypedKeyStringValueAnnotation4680 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleKeyBooleanValueAnnotation_in_entryRuleKeyBooleanValueAnnotation4718 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleKeyBooleanValueAnnotation4728 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_34_in_ruleKeyBooleanValueAnnotation4765 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleExtendedID_in_ruleKeyBooleanValueAnnotation4786 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_RULE_BOOLEAN_in_ruleKeyBooleanValueAnnotation4803 = new BitSet(new long[]{0x0000000004000002L});
+    public static final BitSet FOLLOW_26_in_ruleKeyBooleanValueAnnotation4821 = new BitSet(new long[]{0x0000000408000100L});
+    public static final BitSet FOLLOW_ruleAnnotation_in_ruleKeyBooleanValueAnnotation4842 = new BitSet(new long[]{0x0000000408000100L});
+    public static final BitSet FOLLOW_27_in_ruleKeyBooleanValueAnnotation4855 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleKeyIntValueAnnotation_in_entryRuleKeyIntValueAnnotation4893 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleKeyIntValueAnnotation4903 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_34_in_ruleKeyIntValueAnnotation4940 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleExtendedID_in_ruleKeyIntValueAnnotation4961 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_RULE_INT_in_ruleKeyIntValueAnnotation4978 = new BitSet(new long[]{0x0000000004000002L});
+    public static final BitSet FOLLOW_26_in_ruleKeyIntValueAnnotation4996 = new BitSet(new long[]{0x0000000408000100L});
+    public static final BitSet FOLLOW_ruleAnnotation_in_ruleKeyIntValueAnnotation5017 = new BitSet(new long[]{0x0000000408000100L});
+    public static final BitSet FOLLOW_27_in_ruleKeyIntValueAnnotation5030 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleKeyFloatValueAnnotation_in_entryRuleKeyFloatValueAnnotation5068 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleKeyFloatValueAnnotation5078 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_34_in_ruleKeyFloatValueAnnotation5115 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleExtendedID_in_ruleKeyFloatValueAnnotation5136 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_RULE_FLOAT_in_ruleKeyFloatValueAnnotation5153 = new BitSet(new long[]{0x0000000004000002L});
+    public static final BitSet FOLLOW_26_in_ruleKeyFloatValueAnnotation5171 = new BitSet(new long[]{0x0000000408000100L});
+    public static final BitSet FOLLOW_ruleAnnotation_in_ruleKeyFloatValueAnnotation5192 = new BitSet(new long[]{0x0000000408000100L});
+    public static final BitSet FOLLOW_27_in_ruleKeyFloatValueAnnotation5205 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleEString_in_entryRuleEString5246 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleEString5257 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleEString5297 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleEString5323 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleExtendedID_in_entryRuleExtendedID5369 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleExtendedID5380 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleExtendedID5420 = new BitSet(new long[]{0x0000000000200002L});
+    public static final BitSet FOLLOW_21_in_ruleExtendedID5439 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleExtendedID5454 = new BitSet(new long[]{0x0000000000200002L});
+    public static final BitSet FOLLOW_35_in_ruleInternalFunction5515 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_36_in_ruleInternalFunction5532 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_37_in_ruleInternalFunction5549 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_38_in_ruleReflectionFunction5594 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_39_in_ruleReflectionFunction5611 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_40_in_ruleReflectionFunction5628 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_41_in_ruleReflectionFunction5645 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_42_in_ruleOperator5690 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_43_in_ruleOperator5707 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_44_in_ruleOperator5724 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_45_in_ruleOperator5741 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_46_in_ruleOperator5758 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_47_in_ruleOperator5775 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_48_in_ruleOperator5792 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_49_in_ruleInsertionPoint5837 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_50_in_ruleInsertionPoint5854 = new BitSet(new long[]{0x0000000000000002L});
 
 }

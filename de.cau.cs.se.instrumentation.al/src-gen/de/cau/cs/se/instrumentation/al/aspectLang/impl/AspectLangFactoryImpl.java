@@ -82,11 +82,13 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
       case AspectLangPackage.STRING_VALUE: return createStringValue();
       case AspectLangPackage.REFERENCE_VALUE: return createReferenceValue();
       case AspectLangPackage.PARAMETER: return createParameter();
+      case AspectLangPackage.INTERNAL_FUNCTION_PROPERTY: return createInternalFunctionProperty();
       case AspectLangPackage.RUNTIME_PROPERTY: return createRuntimeProperty();
       case AspectLangPackage.REFLECTION_PROPERTY: return createReflectionProperty();
       case AspectLangPackage.CONTAINER_NODE: return createContainerNode();
       case AspectLangPackage.WILDCARD_NODE: return createWildcardNode();
       case AspectLangPackage.SUB_PATH_NODE: return createSubPathNode();
+      case AspectLangPackage.PARENT_NODE: return createParentNode();
       case AspectLangPackage.COLLECTOR: return createCollector();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -103,6 +105,8 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
   {
     switch (eDataType.getClassifierID())
     {
+      case AspectLangPackage.INTERNAL_FUNCTION:
+        return createInternalFunctionFromString(eDataType, initialValue);
       case AspectLangPackage.REFLECTION_FUNCTION:
         return createReflectionFunctionFromString(eDataType, initialValue);
       case AspectLangPackage.OPERATOR:
@@ -124,6 +128,8 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
   {
     switch (eDataType.getClassifierID())
     {
+      case AspectLangPackage.INTERNAL_FUNCTION:
+        return convertInternalFunctionToString(eDataType, instanceValue);
       case AspectLangPackage.REFLECTION_FUNCTION:
         return convertReflectionFunctionToString(eDataType, instanceValue);
       case AspectLangPackage.OPERATOR:
@@ -327,6 +333,17 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
    * <!-- end-user-doc -->
    * @generated
    */
+  public InternalFunctionProperty createInternalFunctionProperty()
+  {
+    InternalFunctionPropertyImpl internalFunctionProperty = new InternalFunctionPropertyImpl();
+    return internalFunctionProperty;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public RuntimeProperty createRuntimeProperty()
   {
     RuntimePropertyImpl runtimeProperty = new RuntimePropertyImpl();
@@ -382,10 +399,43 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
    * <!-- end-user-doc -->
    * @generated
    */
+  public ParentNode createParentNode()
+  {
+    ParentNodeImpl parentNode = new ParentNodeImpl();
+    return parentNode;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Collector createCollector()
   {
     CollectorImpl collector = new CollectorImpl();
     return collector;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public InternalFunction createInternalFunctionFromString(EDataType eDataType, String initialValue)
+  {
+    InternalFunction result = InternalFunction.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertInternalFunctionToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**

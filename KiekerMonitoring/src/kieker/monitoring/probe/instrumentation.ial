@@ -9,9 +9,12 @@ register stoex "platform:/resource/KiekerMonitoring/src/stoex.ecore"
 
 import kieker.common.record.flow.trace.operation.AbstractOperationEvent
 import kieker.common.record.flow.AbstractEvent
+import kieker.common.record.flow.trace.operation.AfterOperationEvent
+import kieker.common.record.flow.trace.operation.BeforeOperationEvent
 
 use repository,seff,stoex on cocome "KiekerMonitoring/src/cocome/cocome.repository"
 
+@AspectJ
 aspect TradingSystem {
 	before AbstractEvent()
 }
@@ -20,10 +23,19 @@ aspect TradingSystem.Inventory {
 	before AbstractEvent()
 }
  
-//@communication SOAP
+@J2EE
 aspect TradingSystem.Inventory.Data.Enterprise.EnterpriseQueryIf 
 	* * queryEnterpriseById (* INT enterpriseId, * aName pctx) {
-	before AbstractOperationEvent (0,1,1,1) 
+// AbstractEvent.timestamp
+// ITraceRecord.traceId
+// ITraceRecord.orderIndex
+// IOperationRecord.classSignature
+// IOperationRecord.operationSignature
+	before BeforeOperationEvent (time,traceId,orderIndex,
+		<<.<<$signature,
+		$signature
+	)
+	after AfterOperationEvent () 
 }
 
 // well this should cause an error

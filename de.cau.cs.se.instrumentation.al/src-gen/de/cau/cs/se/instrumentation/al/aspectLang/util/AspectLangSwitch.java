@@ -195,6 +195,14 @@ public class AspectLangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case AspectLangPackage.INTERNAL_FUNCTION_PROPERTY:
+      {
+        InternalFunctionProperty internalFunctionProperty = (InternalFunctionProperty)theEObject;
+        T result = caseInternalFunctionProperty(internalFunctionProperty);
+        if (result == null) result = caseParameter(internalFunctionProperty);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case AspectLangPackage.RUNTIME_PROPERTY:
       {
         RuntimeProperty runtimeProperty = (RuntimeProperty)theEObject;
@@ -232,6 +240,14 @@ public class AspectLangSwitch<T> extends Switch<T>
         SubPathNode subPathNode = (SubPathNode)theEObject;
         T result = caseSubPathNode(subPathNode);
         if (result == null) result = caseNode(subPathNode);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AspectLangPackage.PARENT_NODE:
+      {
+        ParentNode parentNode = (ParentNode)theEObject;
+        T result = caseParentNode(parentNode);
+        if (result == null) result = caseNode(parentNode);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -519,6 +535,22 @@ public class AspectLangSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Internal Function Property</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Internal Function Property</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseInternalFunctionProperty(InternalFunctionProperty object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Runtime Property</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -594,6 +626,22 @@ public class AspectLangSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseSubPathNode(SubPathNode object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Parent Node</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Parent Node</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseParentNode(ParentNode object)
   {
     return null;
   }

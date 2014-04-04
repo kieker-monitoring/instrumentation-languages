@@ -14,8 +14,8 @@ Workflow {
     bean = StandaloneSetup {
     	scanClassPath = true
     	platformUri = "${runtimeProject}/.."
-    	//registerGeneratedEPackage = "de.cau.cs.kieler.core.annotations.AnnotationsPackage"
-    	//registerGenModelFile = "platform:/resource/de.cau.cs.kieler.core.annotations/annotations.genmodel"
+    	registerGeneratedEPackage = "de.cau.cs.kieler.core.annotations.AnnotationsPackage"
+    	registerGenModelFile = "platform:/resource/de.cau.cs.kieler.core.annotations/model/annotations.genmodel"
     	
     	registerGeneratedEPackage = "de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage"
     	registerGeneratedEPackage = "de.cau.cs.se.instrumantation.model.structure.StructurePackage"

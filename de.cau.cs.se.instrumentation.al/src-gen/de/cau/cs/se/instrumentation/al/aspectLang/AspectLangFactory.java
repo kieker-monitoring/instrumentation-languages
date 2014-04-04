@@ -176,6 +176,15 @@ public interface AspectLangFactory extends EFactory
   Parameter createParameter();
 
   /**
+   * Returns a new object of class '<em>Internal Function Property</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Internal Function Property</em>'.
+   * @generated
+   */
+  InternalFunctionProperty createInternalFunctionProperty();
+
+  /**
    * Returns a new object of class '<em>Runtime Property</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -219,6 +228,15 @@ public interface AspectLangFactory extends EFactory
    * @generated
    */
   SubPathNode createSubPathNode();
+
+  /**
+   * Returns a new object of class '<em>Parent Node</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Parent Node</em>'.
+   * @generated
+   */
+  ParentNode createParentNode();
 
   /**
    * Returns a new object of class '<em>Collector</em>'.

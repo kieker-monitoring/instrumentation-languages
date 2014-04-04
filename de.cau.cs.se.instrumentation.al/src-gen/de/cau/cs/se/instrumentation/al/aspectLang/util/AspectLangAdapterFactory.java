@@ -160,6 +160,11 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
         return createParameterAdapter();
       }
       @Override
+      public Adapter caseInternalFunctionProperty(InternalFunctionProperty object)
+      {
+        return createInternalFunctionPropertyAdapter();
+      }
+      @Override
       public Adapter caseRuntimeProperty(RuntimeProperty object)
       {
         return createRuntimePropertyAdapter();
@@ -183,6 +188,11 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
       public Adapter caseSubPathNode(SubPathNode object)
       {
         return createSubPathNodeAdapter();
+      }
+      @Override
+      public Adapter caseParentNode(ParentNode object)
+      {
+        return createParentNodeAdapter();
       }
       @Override
       public Adapter caseCollector(Collector object)
@@ -467,6 +477,21 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.InternalFunctionProperty <em>Internal Function Property</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.InternalFunctionProperty
+   * @generated
+   */
+  public Adapter createInternalFunctionPropertyAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.RuntimeProperty <em>Runtime Property</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -537,6 +562,21 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createSubPathNodeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ParentNode <em>Parent Node</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.ParentNode
+   * @generated
+   */
+  public Adapter createParentNodeAdapter()
   {
     return null;
   }

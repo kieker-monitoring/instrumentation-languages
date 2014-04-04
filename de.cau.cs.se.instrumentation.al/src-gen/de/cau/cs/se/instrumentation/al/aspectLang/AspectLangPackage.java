@@ -243,13 +243,22 @@ public interface AspectLangPackage extends EPackage
   int ASPECT = 4;
 
   /**
+   * The feature id for the '<em><b>Annotation</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ASPECT__ANNOTATION = 0;
+
+  /**
    * The feature id for the '<em><b>Query</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ASPECT__QUERY = 0;
+  int ASPECT__QUERY = 1;
 
   /**
    * The feature id for the '<em><b>Collectors</b></em>' containment reference list.
@@ -258,7 +267,7 @@ public interface AspectLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ASPECT__COLLECTORS = 1;
+  int ASPECT__COLLECTORS = 2;
 
   /**
    * The number of structural features of the '<em>Aspect</em>' class.
@@ -267,7 +276,7 @@ public interface AspectLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ASPECT_FEATURE_COUNT = 2;
+  int ASPECT_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.QueryImpl <em>Query</em>}' class.
@@ -678,6 +687,34 @@ public interface AspectLangPackage extends EPackage
   int PARAMETER_FEATURE_COUNT = 0;
 
   /**
+   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.InternalFunctionPropertyImpl <em>Internal Function Property</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.InternalFunctionPropertyImpl
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getInternalFunctionProperty()
+   * @generated
+   */
+  int INTERNAL_FUNCTION_PROPERTY = 17;
+
+  /**
+   * The feature id for the '<em><b>Function</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTERNAL_FUNCTION_PROPERTY__FUNCTION = PARAMETER_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Internal Function Property</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTERNAL_FUNCTION_PROPERTY_FEATURE_COUNT = PARAMETER_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.RuntimePropertyImpl <em>Runtime Property</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -685,7 +722,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getRuntimeProperty()
    * @generated
    */
-  int RUNTIME_PROPERTY = 17;
+  int RUNTIME_PROPERTY = 18;
 
   /**
    * The feature id for the '<em><b>Reference</b></em>' attribute.
@@ -713,7 +750,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getReflectionProperty()
    * @generated
    */
-  int REFLECTION_PROPERTY = 18;
+  int REFLECTION_PROPERTY = 19;
 
   /**
    * The feature id for the '<em><b>Function</b></em>' attribute.
@@ -741,7 +778,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getContainerNode()
    * @generated
    */
-  int CONTAINER_NODE = 19;
+  int CONTAINER_NODE = 20;
 
   /**
    * The feature id for the '<em><b>Parameter</b></em>' containment reference.
@@ -778,7 +815,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getWildcardNode()
    * @generated
    */
-  int WILDCARD_NODE = 20;
+  int WILDCARD_NODE = 21;
 
   /**
    * The feature id for the '<em><b>Parameter</b></em>' containment reference.
@@ -806,7 +843,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getSubPathNode()
    * @generated
    */
-  int SUB_PATH_NODE = 21;
+  int SUB_PATH_NODE = 22;
 
   /**
    * The feature id for the '<em><b>Parameter</b></em>' containment reference.
@@ -827,6 +864,34 @@ public interface AspectLangPackage extends EPackage
   int SUB_PATH_NODE_FEATURE_COUNT = NODE_FEATURE_COUNT + 0;
 
   /**
+   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ParentNodeImpl <em>Parent Node</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.ParentNodeImpl
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getParentNode()
+   * @generated
+   */
+  int PARENT_NODE = 23;
+
+  /**
+   * The feature id for the '<em><b>Parameter</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARENT_NODE__PARAMETER = NODE__PARAMETER;
+
+  /**
+   * The number of structural features of the '<em>Parent Node</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARENT_NODE_FEATURE_COUNT = NODE_FEATURE_COUNT + 0;
+
+  /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.CollectorImpl <em>Collector</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -834,7 +899,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getCollector()
    * @generated
    */
-  int COLLECTOR = 22;
+  int COLLECTOR = 24;
 
   /**
    * The feature id for the '<em><b>Insertion Point</b></em>' attribute.
@@ -873,6 +938,16 @@ public interface AspectLangPackage extends EPackage
   int COLLECTOR_FEATURE_COUNT = 3;
 
   /**
+   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.InternalFunction <em>Internal Function</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.InternalFunction
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getInternalFunction()
+   * @generated
+   */
+  int INTERNAL_FUNCTION = 25;
+
+  /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.ReflectionFunction <em>Reflection Function</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -880,7 +955,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getReflectionFunction()
    * @generated
    */
-  int REFLECTION_FUNCTION = 23;
+  int REFLECTION_FUNCTION = 26;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.Operator <em>Operator</em>}' enum.
@@ -890,7 +965,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getOperator()
    * @generated
    */
-  int OPERATOR = 24;
+  int OPERATOR = 27;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.InsertionPoint <em>Insertion Point</em>}' enum.
@@ -900,7 +975,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getInsertionPoint()
    * @generated
    */
-  int INSERTION_POINT = 25;
+  int INSERTION_POINT = 28;
 
 
   /**
@@ -1073,6 +1148,17 @@ public interface AspectLangPackage extends EPackage
    * @generated
    */
   EClass getAspect();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.Aspect#getAnnotation <em>Annotation</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Annotation</em>'.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.Aspect#getAnnotation()
+   * @see #getAspect()
+   * @generated
+   */
+  EReference getAspect_Annotation();
 
   /**
    * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.Aspect#getQuery <em>Query</em>}'.
@@ -1437,6 +1523,27 @@ public interface AspectLangPackage extends EPackage
   EClass getParameter();
 
   /**
+   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.InternalFunctionProperty <em>Internal Function Property</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Internal Function Property</em>'.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.InternalFunctionProperty
+   * @generated
+   */
+  EClass getInternalFunctionProperty();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.aspectLang.InternalFunctionProperty#getFunction <em>Function</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Function</em>'.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.InternalFunctionProperty#getFunction()
+   * @see #getInternalFunctionProperty()
+   * @generated
+   */
+  EAttribute getInternalFunctionProperty_Function();
+
+  /**
    * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.RuntimeProperty <em>Runtime Property</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1520,6 +1627,16 @@ public interface AspectLangPackage extends EPackage
   EClass getSubPathNode();
 
   /**
+   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ParentNode <em>Parent Node</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Parent Node</em>'.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.ParentNode
+   * @generated
+   */
+  EClass getParentNode();
+
+  /**
    * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Collector <em>Collector</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1561,6 +1678,16 @@ public interface AspectLangPackage extends EPackage
    * @generated
    */
   EReference getCollector_Initializations();
+
+  /**
+   * Returns the meta object for enum '{@link de.cau.cs.se.instrumentation.al.aspectLang.InternalFunction <em>Internal Function</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Internal Function</em>'.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.InternalFunction
+   * @generated
+   */
+  EEnum getInternalFunction();
 
   /**
    * Returns the meta object for enum '{@link de.cau.cs.se.instrumentation.al.aspectLang.ReflectionFunction <em>Reflection Function</em>}'.
@@ -1752,6 +1879,14 @@ public interface AspectLangPackage extends EPackage
      * @generated
      */
     EClass ASPECT = eINSTANCE.getAspect();
+
+    /**
+     * The meta object literal for the '<em><b>Annotation</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ASPECT__ANNOTATION = eINSTANCE.getAspect_Annotation();
 
     /**
      * The meta object literal for the '<em><b>Query</b></em>' containment reference feature.
@@ -2050,6 +2185,24 @@ public interface AspectLangPackage extends EPackage
     EClass PARAMETER = eINSTANCE.getParameter();
 
     /**
+     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.InternalFunctionPropertyImpl <em>Internal Function Property</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.InternalFunctionPropertyImpl
+     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getInternalFunctionProperty()
+     * @generated
+     */
+    EClass INTERNAL_FUNCTION_PROPERTY = eINSTANCE.getInternalFunctionProperty();
+
+    /**
+     * The meta object literal for the '<em><b>Function</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute INTERNAL_FUNCTION_PROPERTY__FUNCTION = eINSTANCE.getInternalFunctionProperty_Function();
+
+    /**
      * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.RuntimePropertyImpl <em>Runtime Property</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2124,6 +2277,16 @@ public interface AspectLangPackage extends EPackage
     EClass SUB_PATH_NODE = eINSTANCE.getSubPathNode();
 
     /**
+     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ParentNodeImpl <em>Parent Node</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.ParentNodeImpl
+     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getParentNode()
+     * @generated
+     */
+    EClass PARENT_NODE = eINSTANCE.getParentNode();
+
+    /**
      * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.CollectorImpl <em>Collector</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2156,6 +2319,16 @@ public interface AspectLangPackage extends EPackage
      * @generated
      */
     EReference COLLECTOR__INITIALIZATIONS = eINSTANCE.getCollector_Initializations();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.InternalFunction <em>Internal Function</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.instrumentation.al.aspectLang.InternalFunction
+     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getInternalFunction()
+     * @generated
+     */
+    EEnum INTERNAL_FUNCTION = eINSTANCE.getInternalFunction();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.ReflectionFunction <em>Reflection Function</em>}' enum.

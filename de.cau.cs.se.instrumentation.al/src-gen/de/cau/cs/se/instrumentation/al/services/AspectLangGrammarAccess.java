@@ -12,7 +12,7 @@ import org.eclipse.xtext.*;
 import org.eclipse.xtext.service.GrammarProvider;
 import org.eclipse.xtext.service.AbstractElementFinder.*;
 
-import org.eclipse.xtext.common.services.TerminalsGrammarAccess;
+import de.cau.cs.kieler.core.annotations.text.services.AnnotationsGrammarAccess;
 
 @Singleton
 public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
@@ -262,45 +262,51 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	public class AspectElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Aspect");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cAspectKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cQueryAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cQueryQueryParserRuleCall_1_0 = (RuleCall)cQueryAssignment_1.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cCollectorsAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cCollectorsCollectorParserRuleCall_3_0 = (RuleCall)cCollectorsAssignment_3.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cAnnotationAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cAnnotationAnnotationParserRuleCall_0_0 = (RuleCall)cAnnotationAssignment_0.eContents().get(0);
+		private final Keyword cAspectKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cQueryAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cQueryQueryParserRuleCall_2_0 = (RuleCall)cQueryAssignment_2.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cCollectorsAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cCollectorsCollectorParserRuleCall_4_0 = (RuleCall)cCollectorsAssignment_4.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//// define subgraph-pattern to locate structures in models
 		//// define selector for reference destination
-		//Aspect: //annotation=Annotation
-		//	"aspect" query=Query "{" collectors+=Collector "}";
+		//Aspect:
+		//	annotation=Annotation? "aspect" query=Query "{" collectors+=Collector* "}";
 		public ParserRule getRule() { return rule; }
 
-		////annotation=Annotation
-		//"aspect" query=Query "{" collectors+=Collector "}"
+		//annotation=Annotation? "aspect" query=Query "{" collectors+=Collector* "}"
 		public Group getGroup() { return cGroup; }
 
-		////annotation=Annotation
+		//annotation=Annotation?
+		public Assignment getAnnotationAssignment_0() { return cAnnotationAssignment_0; }
+
+		//Annotation
+		public RuleCall getAnnotationAnnotationParserRuleCall_0_0() { return cAnnotationAnnotationParserRuleCall_0_0; }
+
 		//"aspect"
-		public Keyword getAspectKeyword_0() { return cAspectKeyword_0; }
+		public Keyword getAspectKeyword_1() { return cAspectKeyword_1; }
 
 		//query=Query
-		public Assignment getQueryAssignment_1() { return cQueryAssignment_1; }
+		public Assignment getQueryAssignment_2() { return cQueryAssignment_2; }
 
 		//Query
-		public RuleCall getQueryQueryParserRuleCall_1_0() { return cQueryQueryParserRuleCall_1_0; }
+		public RuleCall getQueryQueryParserRuleCall_2_0() { return cQueryQueryParserRuleCall_2_0; }
 
 		//"{"
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 
-		//collectors+=Collector
-		public Assignment getCollectorsAssignment_3() { return cCollectorsAssignment_3; }
+		//collectors+=Collector*
+		public Assignment getCollectorsAssignment_4() { return cCollectorsAssignment_4; }
 
 		//Collector
-		public RuleCall getCollectorsCollectorParserRuleCall_3_0() { return cCollectorsCollectorParserRuleCall_3_0; }
+		public RuleCall getCollectorsCollectorParserRuleCall_4_0() { return cCollectorsCollectorParserRuleCall_4_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 	}
 
 	public class QueryElements extends AbstractParserRuleElementFinder {
@@ -512,18 +518,19 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
 		private final RuleCall cSubPathNodeParserRuleCall_0_0 = (RuleCall)cAlternatives_0.eContents().get(0);
 		private final RuleCall cWildcardNodeParserRuleCall_0_1 = (RuleCall)cAlternatives_0.eContents().get(1);
-		private final RuleCall cContainerNodeParserRuleCall_0_2 = (RuleCall)cAlternatives_0.eContents().get(2);
+		private final RuleCall cParentNodeParserRuleCall_0_2 = (RuleCall)cAlternatives_0.eContents().get(2);
+		private final RuleCall cContainerNodeParserRuleCall_0_3 = (RuleCall)cAlternatives_0.eContents().get(3);
 		private final Assignment cParameterAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cParameterParamQueryParserRuleCall_1_0 = (RuleCall)cParameterAssignment_1.eContents().get(0);
 		
 		//Node:
-		//	(SubPathNode | WildcardNode | ContainerNode) parameter=ParamQuery?;
+		//	(SubPathNode | WildcardNode | ParentNode | ContainerNode) parameter=ParamQuery?;
 		public ParserRule getRule() { return rule; }
 
-		//(SubPathNode | WildcardNode | ContainerNode) parameter=ParamQuery?
+		//(SubPathNode | WildcardNode | ParentNode | ContainerNode) parameter=ParamQuery?
 		public Group getGroup() { return cGroup; }
 
-		//SubPathNode | WildcardNode | ContainerNode
+		//SubPathNode | WildcardNode | ParentNode | ContainerNode
 		public Alternatives getAlternatives_0() { return cAlternatives_0; }
 
 		//SubPathNode
@@ -532,8 +539,11 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//WildcardNode
 		public RuleCall getWildcardNodeParserRuleCall_0_1() { return cWildcardNodeParserRuleCall_0_1; }
 
+		//ParentNode
+		public RuleCall getParentNodeParserRuleCall_0_2() { return cParentNodeParserRuleCall_0_2; }
+
 		//ContainerNode
-		public RuleCall getContainerNodeParserRuleCall_0_2() { return cContainerNodeParserRuleCall_0_2; }
+		public RuleCall getContainerNodeParserRuleCall_0_3() { return cContainerNodeParserRuleCall_0_3; }
 
 		//parameter=ParamQuery?
 		public Assignment getParameterAssignment_1() { return cParameterAssignment_1; }
@@ -642,20 +652,17 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	public class FloatValueElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FloatValue");
 		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cValueINTTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
+		private final RuleCall cValueFLOATTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
 		
 		//FloatValue:
-		//	value= //FLOAT
-		//	INT;
+		//	value=FLOAT;
 		public ParserRule getRule() { return rule; }
 
-		//value= //FLOAT
-		//INT
+		//value=FLOAT
 		public Assignment getValueAssignment() { return cValueAssignment; }
 
-		////FLOAT
-		//INT
-		public RuleCall getValueINTTerminalRuleCall_0() { return cValueINTTerminalRuleCall_0; }
+		//FLOAT
+		public RuleCall getValueFLOATTerminalRuleCall_0() { return cValueFLOATTerminalRuleCall_0; }
 	}
 
 	public class IntValueElements extends AbstractParserRuleElementFinder {
@@ -699,13 +706,13 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cParameterParameterParserRuleCall_1_0 = (RuleCall)cParameterAssignment_1.eContents().get(0);
 		
 		//ReferenceValue:
-		//	query=LocationQuery parameter=Parameter;
+		//	query=LocationQuery? parameter=Parameter;
 		public ParserRule getRule() { return rule; }
 
-		//query=LocationQuery parameter=Parameter
+		//query=LocationQuery? parameter=Parameter
 		public Group getGroup() { return cGroup; }
 
-		//query=LocationQuery
+		//query=LocationQuery?
 		public Assignment getQueryAssignment_0() { return cQueryAssignment_0; }
 
 		//LocationQuery
@@ -723,12 +730,13 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cRuntimePropertyParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cReflectionPropertyParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cInternalFunctionPropertyParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//Parameter:
-		//	RuntimeProperty | ReflectionProperty;
+		//	RuntimeProperty | ReflectionProperty | InternalFunctionProperty;
 		public ParserRule getRule() { return rule; }
 
-		//RuntimeProperty | ReflectionProperty
+		//RuntimeProperty | ReflectionProperty | InternalFunctionProperty
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//RuntimeProperty
@@ -736,6 +744,25 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 
 		//ReflectionProperty
 		public RuleCall getReflectionPropertyParserRuleCall_1() { return cReflectionPropertyParserRuleCall_1; }
+
+		//InternalFunctionProperty
+		public RuleCall getInternalFunctionPropertyParserRuleCall_2() { return cInternalFunctionPropertyParserRuleCall_2; }
+	}
+
+	public class InternalFunctionPropertyElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "InternalFunctionProperty");
+		private final Assignment cFunctionAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cFunctionInternalFunctionEnumRuleCall_0 = (RuleCall)cFunctionAssignment.eContents().get(0);
+		
+		//InternalFunctionProperty:
+		//	function=InternalFunction;
+		public ParserRule getRule() { return rule; }
+
+		//function=InternalFunction
+		public Assignment getFunctionAssignment() { return cFunctionAssignment; }
+
+		//InternalFunction
+		public RuleCall getFunctionInternalFunctionEnumRuleCall_0() { return cFunctionInternalFunctionEnumRuleCall_0; }
 	}
 
 	public class RuntimePropertyElements extends AbstractParserRuleElementFinder {
@@ -846,6 +873,26 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getAsteriskAsteriskKeyword_1() { return cAsteriskAsteriskKeyword_1; }
 	}
 
+	public class ParentNodeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ParentNode");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cParentNodeAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cLessThanSignLessThanSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		
+		//ParentNode:
+		//	{ParentNode} "<<";
+		public ParserRule getRule() { return rule; }
+
+		//{ParentNode} "<<"
+		public Group getGroup() { return cGroup; }
+
+		//{ParentNode}
+		public Action getParentNodeAction_0() { return cParentNodeAction_0; }
+
+		//"<<"
+		public Keyword getLessThanSignLessThanSignKeyword_1() { return cLessThanSignLessThanSignKeyword_1; }
+	}
+
 	public class CollectorElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Collector");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -917,6 +964,42 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	
+	public class InternalFunctionElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "InternalFunction");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cTIMEEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cTIMETimeKeyword_0_0 = (Keyword)cTIMEEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cTRACE_IDEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cTRACE_IDTraceIdKeyword_1_0 = (Keyword)cTRACE_IDEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cORDER_INDEXEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cORDER_INDEXOrderIndexKeyword_2_0 = (Keyword)cORDER_INDEXEnumLiteralDeclaration_2.eContents().get(0);
+		
+		//enum InternalFunction:
+		//	TIME="time" | TRACE_ID="traceId" | ORDER_INDEX="orderIndex";
+		public EnumRule getRule() { return rule; }
+
+		//TIME="time" | TRACE_ID="traceId" | ORDER_INDEX="orderIndex"
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//TIME="time"
+		public EnumLiteralDeclaration getTIMEEnumLiteralDeclaration_0() { return cTIMEEnumLiteralDeclaration_0; }
+
+		//"time"
+		public Keyword getTIMETimeKeyword_0_0() { return cTIMETimeKeyword_0_0; }
+
+		//TRACE_ID="traceId"
+		public EnumLiteralDeclaration getTRACE_IDEnumLiteralDeclaration_1() { return cTRACE_IDEnumLiteralDeclaration_1; }
+
+		//"traceId"
+		public Keyword getTRACE_IDTraceIdKeyword_1_0() { return cTRACE_IDTraceIdKeyword_1_0; }
+
+		//ORDER_INDEX="orderIndex"
+		public EnumLiteralDeclaration getORDER_INDEXEnumLiteralDeclaration_2() { return cORDER_INDEXEnumLiteralDeclaration_2; }
+
+		//"orderIndex"
+		public Keyword getORDER_INDEXOrderIndexKeyword_2_0() { return cORDER_INDEXOrderIndexKeyword_2_0; }
+	}
+
 	public class ReflectionFunctionElements extends AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "ReflectionFunction");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -1076,6 +1159,8 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	private StringValueElements pStringValue;
 	private ReferenceValueElements pReferenceValue;
 	private ParameterElements pParameter;
+	private InternalFunctionPropertyElements pInternalFunctionProperty;
+	private InternalFunctionElements unknownRuleInternalFunction;
 	private RuntimePropertyElements pRuntimeProperty;
 	private ReflectionPropertyElements pReflectionProperty;
 	private ReflectionFunctionElements unknownRuleReflectionFunction;
@@ -1083,18 +1168,19 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	private ContainerNodeElements pContainerNode;
 	private WildcardNodeElements pWildcardNode;
 	private SubPathNodeElements pSubPathNode;
+	private ParentNodeElements pParentNode;
 	private CollectorElements pCollector;
 	private InsertionPointElements unknownRuleInsertionPoint;
 	
 	private final Grammar grammar;
 
-	private TerminalsGrammarAccess gaTerminals;
+	private AnnotationsGrammarAccess gaAnnotations;
 
 	@Inject
 	public AspectLangGrammarAccess(GrammarProvider grammarProvider,
-		TerminalsGrammarAccess gaTerminals) {
+		AnnotationsGrammarAccess gaAnnotations) {
 		this.grammar = internalFindGrammar(grammarProvider);
-		this.gaTerminals = gaTerminals;
+		this.gaAnnotations = gaAnnotations;
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -1119,8 +1205,8 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 
-	public TerminalsGrammarAccess getTerminalsGrammarAccess() {
-		return gaTerminals;
+	public AnnotationsGrammarAccess getAnnotationsGrammarAccess() {
+		return gaAnnotations;
 	}
 
 	
@@ -1187,8 +1273,8 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 
 	//// define subgraph-pattern to locate structures in models
 	//// define selector for reference destination
-	//Aspect: //annotation=Annotation
-	//	"aspect" query=Query "{" collectors+=Collector "}";
+	//Aspect:
+	//	annotation=Annotation? "aspect" query=Query "{" collectors+=Collector* "}";
 	public AspectElements getAspectAccess() {
 		return (pAspect != null) ? pAspect : (pAspect = new AspectElements());
 	}
@@ -1229,7 +1315,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Node:
-	//	(SubPathNode | WildcardNode | ContainerNode) parameter=ParamQuery?;
+	//	(SubPathNode | WildcardNode | ParentNode | ContainerNode) parameter=ParamQuery?;
 	public NodeElements getNodeAccess() {
 		return (pNode != null) ? pNode : (pNode = new NodeElements());
 	}
@@ -1270,8 +1356,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//FloatValue:
-	//	value= //FLOAT
-	//	INT;
+	//	value=FLOAT;
 	public FloatValueElements getFloatValueAccess() {
 		return (pFloatValue != null) ? pFloatValue : (pFloatValue = new FloatValueElements());
 	}
@@ -1301,7 +1386,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ReferenceValue:
-	//	query=LocationQuery parameter=Parameter;
+	//	query=LocationQuery? parameter=Parameter;
 	public ReferenceValueElements getReferenceValueAccess() {
 		return (pReferenceValue != null) ? pReferenceValue : (pReferenceValue = new ReferenceValueElements());
 	}
@@ -1311,13 +1396,33 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Parameter:
-	//	RuntimeProperty | ReflectionProperty;
+	//	RuntimeProperty | ReflectionProperty | InternalFunctionProperty;
 	public ParameterElements getParameterAccess() {
 		return (pParameter != null) ? pParameter : (pParameter = new ParameterElements());
 	}
 	
 	public ParserRule getParameterRule() {
 		return getParameterAccess().getRule();
+	}
+
+	//InternalFunctionProperty:
+	//	function=InternalFunction;
+	public InternalFunctionPropertyElements getInternalFunctionPropertyAccess() {
+		return (pInternalFunctionProperty != null) ? pInternalFunctionProperty : (pInternalFunctionProperty = new InternalFunctionPropertyElements());
+	}
+	
+	public ParserRule getInternalFunctionPropertyRule() {
+		return getInternalFunctionPropertyAccess().getRule();
+	}
+
+	//enum InternalFunction:
+	//	TIME="time" | TRACE_ID="traceId" | ORDER_INDEX="orderIndex";
+	public InternalFunctionElements getInternalFunctionAccess() {
+		return (unknownRuleInternalFunction != null) ? unknownRuleInternalFunction : (unknownRuleInternalFunction = new InternalFunctionElements());
+	}
+	
+	public EnumRule getInternalFunctionRule() {
+		return getInternalFunctionAccess().getRule();
 	}
 
 	//RuntimeProperty:
@@ -1390,6 +1495,16 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		return getSubPathNodeAccess().getRule();
 	}
 
+	//ParentNode:
+	//	{ParentNode} "<<";
+	public ParentNodeElements getParentNodeAccess() {
+		return (pParentNode != null) ? pParentNode : (pParentNode = new ParentNodeElements());
+	}
+	
+	public ParserRule getParentNodeRule() {
+		return getParentNodeAccess().getRule();
+	}
+
 	//Collector:
 	//	insertionPoint=InsertionPoint type=[irl::RecordType|QualifiedName] "(" (initializations+=Value (","
 	//	initializations+=Value)*)? ")";
@@ -1411,46 +1526,219 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		return getInsertionPointAccess().getRule();
 	}
 
+	//// --------------------------
+	////
+	////   ANNOTATIONS
+	////
+	//// --------------------------
+	//Annotation:
+	//	CommentAnnotation | TagAnnotation | KeyStringValueAnnotation | TypedKeyStringValueAnnotation |
+	//	KeyBooleanValueAnnotation | KeyIntValueAnnotation | KeyFloatValueAnnotation;
+	public AnnotationsGrammarAccess.AnnotationElements getAnnotationAccess() {
+		return gaAnnotations.getAnnotationAccess();
+	}
+	
+	public ParserRule getAnnotationRule() {
+		return getAnnotationAccess().getRule();
+	}
+
+	//ValuedAnnotation returns Annotation:
+	//	CommentAnnotation | KeyStringValueAnnotation | TypedKeyStringValueAnnotation | KeyBooleanValueAnnotation |
+	//	KeyIntValueAnnotation | KeyFloatValueAnnotation;
+	public AnnotationsGrammarAccess.ValuedAnnotationElements getValuedAnnotationAccess() {
+		return gaAnnotations.getValuedAnnotationAccess();
+	}
+	
+	public ParserRule getValuedAnnotationRule() {
+		return getValuedAnnotationAccess().getRule();
+	}
+
+	//// e.g.: / ** semantic comment * /
+	//CommentAnnotation returns StringAnnotation:
+	//	value=COMMENT_ANNOTATION;
+	public AnnotationsGrammarAccess.CommentAnnotationElements getCommentAnnotationAccess() {
+		return gaAnnotations.getCommentAnnotationAccess();
+	}
+	
+	public ParserRule getCommentAnnotationRule() {
+		return getCommentAnnotationAccess().getRule();
+	}
+
+	//// e.g.: @HVlayout
+	//TagAnnotation returns Annotation:
+	//	"@" name=ExtendedID ("(" annotations+=Annotation* ")")?;
+	public AnnotationsGrammarAccess.TagAnnotationElements getTagAnnotationAccess() {
+		return gaAnnotations.getTagAnnotationAccess();
+	}
+	
+	public ParserRule getTagAnnotationRule() {
+		return getTagAnnotationAccess().getRule();
+	}
+
+	//// e.g.: @layouter dot;   
+	//KeyStringValueAnnotation returns StringAnnotation:
+	//	"@" name=ExtendedID value=EString ("(" annotations+=Annotation* ")")?;
+	public AnnotationsGrammarAccess.KeyStringValueAnnotationElements getKeyStringValueAnnotationAccess() {
+		return gaAnnotations.getKeyStringValueAnnotationAccess();
+	}
+	
+	public ParserRule getKeyStringValueAnnotationRule() {
+		return getKeyStringValueAnnotationAccess().getRule();
+	}
+
+	//// e.g.: @position[de.cau.cs.kieler.core.math.KVector] "(3,2)"
+	//TypedKeyStringValueAnnotation returns TypedStringAnnotation:
+	//	"@" name=ExtendedID "[" type=ExtendedID "]" value=EString ("(" annotations+=Annotation* ")")?;
+	public AnnotationsGrammarAccess.TypedKeyStringValueAnnotationElements getTypedKeyStringValueAnnotationAccess() {
+		return gaAnnotations.getTypedKeyStringValueAnnotationAccess();
+	}
+	
+	public ParserRule getTypedKeyStringValueAnnotationRule() {
+		return getTypedKeyStringValueAnnotationAccess().getRule();
+	}
+
+	//// e.g.: @visible true;
+	//KeyBooleanValueAnnotation returns BooleanAnnotation:
+	//	"@" name=ExtendedID value=BOOLEAN ("(" annotations+=Annotation* ")")?;
+	public AnnotationsGrammarAccess.KeyBooleanValueAnnotationElements getKeyBooleanValueAnnotationAccess() {
+		return gaAnnotations.getKeyBooleanValueAnnotationAccess();
+	}
+	
+	public ParserRule getKeyBooleanValueAnnotationRule() {
+		return getKeyBooleanValueAnnotationAccess().getRule();
+	}
+
+	//// e.g.: @minSpace 10;    
+	//KeyIntValueAnnotation returns IntAnnotation:
+	//	"@" name=ExtendedID value=INT ("(" annotations+=Annotation* ")")?;
+	public AnnotationsGrammarAccess.KeyIntValueAnnotationElements getKeyIntValueAnnotationAccess() {
+		return gaAnnotations.getKeyIntValueAnnotationAccess();
+	}
+	
+	public ParserRule getKeyIntValueAnnotationRule() {
+		return getKeyIntValueAnnotationAccess().getRule();
+	}
+
+	//// e.g.: @minSpace 10.0;    
+	//KeyFloatValueAnnotation returns FloatAnnotation:
+	//	"@" name=ExtendedID value=FLOAT ("(" annotations+=Annotation* ")")?;
+	public AnnotationsGrammarAccess.KeyFloatValueAnnotationElements getKeyFloatValueAnnotationAccess() {
+		return gaAnnotations.getKeyFloatValueAnnotationAccess();
+	}
+	
+	public ParserRule getKeyFloatValueAnnotationRule() {
+		return getKeyFloatValueAnnotationAccess().getRule();
+	}
+
+	//// needed for importing other resources
+	//ImportAnnotation:
+	//	"import" importURI=STRING;
+	public AnnotationsGrammarAccess.ImportAnnotationElements getImportAnnotationAccess() {
+		return gaAnnotations.getImportAnnotationAccess();
+	}
+	
+	public ParserRule getImportAnnotationRule() {
+		return getImportAnnotationAccess().getRule();
+	}
+
+	//// allow strings without quotes as they don'c contain spaces
+	//EString returns ecore::EString:
+	//	STRING | ID;
+	public AnnotationsGrammarAccess.EStringElements getEStringAccess() {
+		return gaAnnotations.getEStringAccess();
+	}
+	
+	public ParserRule getEStringRule() {
+		return getEStringAccess().getRule();
+	}
+
+	//ExtendedID returns ecore::EString:
+	//	ID ("." ID)*;
+	public AnnotationsGrammarAccess.ExtendedIDElements getExtendedIDAccess() {
+		return gaAnnotations.getExtendedIDAccess();
+	}
+	
+	public ParserRule getExtendedIDRule() {
+		return getExtendedIDAccess().getRule();
+	}
+
+	//// --------------------------
+	////
+	////  Terminals...
+	////
+	//// --------------------------
+	//// custom terminals
+	//// custom terminal rule introducing semantic comments
+	//terminal COMMENT_ANNOTATION:
+	//	"/ **"->"* /";
+	public TerminalRule getCOMMENT_ANNOTATIONRule() {
+		return gaAnnotations.getCOMMENT_ANNOTATIONRule();
+	} 
+
+	//// modified version of Terminals.ML_COMMENT as
+	//// COMMENT_ANNOTATION is not recognized correctly with original one 
+	//terminal ML_COMMENT:
+	//	"/ *" !"*"->"* /";
+	public TerminalRule getML_COMMENTRule() {
+		return gaAnnotations.getML_COMMENTRule();
+	} 
+
+	//// generic terminals
+	//terminal fragment NUMBER:
+	//	"0".."9";
+	public TerminalRule getNUMBERRule() {
+		return gaAnnotations.getNUMBERRule();
+	} 
+
+	//// redefine INT terminal to allow negative numbers
+	//terminal INT returns ecore::EInt:
+	//	"-"? NUMBER+;
+	public TerminalRule getINTRule() {
+		return gaAnnotations.getINTRule();
+	} 
+
+	//// make sure the Float rule does not shadow the INT rule
+	//terminal FLOAT returns ecore::EFloatObject:
+	//	"-"? NUMBER+ ("." NUMBER*) (("e" | "E") ("+" | "-")? NUMBER+)? "f"? | "-"? NUMBER+ "f";
+	public TerminalRule getFLOATRule() {
+		return gaAnnotations.getFLOATRule();
+	} 
+
+	//// introduce boolean values
+	//terminal BOOLEAN returns ecore::EBooleanObject:
+	//	"true" | "false";
+	public TerminalRule getBOOLEANRule() {
+		return gaAnnotations.getBOOLEANRule();
+	} 
+
+	//// custom terminal rule for strings
+	//terminal STRING:
+	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"";
+	public TerminalRule getSTRINGRule() {
+		return gaAnnotations.getSTRINGRule();
+	} 
+
 	//terminal ID:
 	//	"^"? ("a".."z" | "A".."Z" | "_") ("a".."z" | "A".."Z" | "_" | "0".."9")*;
 	public TerminalRule getIDRule() {
-		return gaTerminals.getIDRule();
-	} 
-
-	//terminal INT returns ecore::EInt:
-	//	"0".."9"+;
-	public TerminalRule getINTRule() {
-		return gaTerminals.getINTRule();
-	} 
-
-	//terminal STRING:
-	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
-	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
-	public TerminalRule getSTRINGRule() {
-		return gaTerminals.getSTRINGRule();
-	} 
-
-	//terminal ML_COMMENT:
-	//	"/ *"->"* /";
-	public TerminalRule getML_COMMENTRule() {
-		return gaTerminals.getML_COMMENTRule();
+		return gaAnnotations.getIDRule();
 	} 
 
 	//terminal SL_COMMENT:
 	//	"//" !("\n" | "\r")* ("\r"? "\n")?;
 	public TerminalRule getSL_COMMENTRule() {
-		return gaTerminals.getSL_COMMENTRule();
+		return gaAnnotations.getSL_COMMENTRule();
 	} 
 
 	//terminal WS:
 	//	(" " | "\t" | "\r" | "\n")+;
 	public TerminalRule getWSRule() {
-		return gaTerminals.getWSRule();
+		return gaAnnotations.getWSRule();
 	} 
 
 	//terminal ANY_OTHER:
 	//	.;
 	public TerminalRule getANY_OTHERRule() {
-		return gaTerminals.getANY_OTHERRule();
+		return gaAnnotations.getANY_OTHERRule();
 	} 
 }
