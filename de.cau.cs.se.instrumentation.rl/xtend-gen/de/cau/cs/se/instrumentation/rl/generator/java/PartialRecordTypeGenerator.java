@@ -119,12 +119,11 @@ public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerat
       EList<PartialRecordType> _parents_1 = type.getParents();
       int _size = _parents_1.size();
       boolean _greaterThan = (_size > 0);
-      _and = (_notEquals && _greaterThan);
+      _and = _greaterThan;
     }
     if (_and) {
       EList<PartialRecordType> _parents_2 = type.getParents();
-      CharSequence _createExtends = this.createExtends(_parents_2);
-      _xifexpression = _createExtends;
+      _xifexpression = this.createExtends(_parents_2);
     }
     _builder.append(_xifexpression, "");
     _builder.append(" {");
@@ -133,13 +132,12 @@ public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerat
     EList<Property> _properties = type.getProperties();
     final Function1<Property,CharSequence> _function = new Function1<Property,CharSequence>() {
       public CharSequence apply(final Property property) {
-        CharSequence _createPropertyGetter = PartialRecordTypeGenerator.this.createPropertyGetter(property);
-        return _createPropertyGetter;
+        return PartialRecordTypeGenerator.this.createPropertyGetter(property);
       }
     };
     List<CharSequence> _map = ListExtensions.<Property, CharSequence>map(_properties, _function);
     String _join = IterableExtensions.join(_map);
-    _builder.append(_join, "	");
+    _builder.append(_join, "\t");
     _builder.newLineIfNotEmpty();
     _builder.append("}");
     _builder.newLine();
@@ -152,8 +150,7 @@ public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerat
     _builder.append("extends ");
     final Function1<PartialRecordType,String> _function = new Function1<PartialRecordType,String>() {
       public String apply(final PartialRecordType t) {
-        String _name = t.getName();
-        return _name;
+        return t.getName();
       }
     };
     List<String> _map = ListExtensions.<PartialRecordType, String>map(parents, _function);
@@ -230,18 +227,16 @@ public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerat
     String _switchResult = null;
     EClassifier _class_ = classifier.getClass_();
     String _name = _class_.getName();
-    final String _switchValue = _name;
     boolean _matched = false;
     if (!_matched) {
-      if (Objects.equal(_switchValue,"string")) {
+      if (Objects.equal(_name,"string")) {
         _matched=true;
         _switchResult = "String";
       }
     }
     if (!_matched) {
       EClassifier _class__1 = classifier.getClass_();
-      String _name_1 = _class__1.getName();
-      _switchResult = _name_1;
+      _switchResult = _class__1.getName();
     }
     return _switchResult;
   }

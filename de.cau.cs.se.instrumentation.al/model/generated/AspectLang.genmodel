@@ -4,7 +4,7 @@
     editorDirectory="/de.cau.cs.se.instrumentation.al.editor/src" modelPluginID="de.cau.cs.se.instrumentation.al"
     forceOverwrite="true" modelName="AspectLang" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="de.cau.cs.se.instrumentation.al.edit"
-    editorPluginID="de.cau.cs.se.instrumentation.al.editor" runtimeVersion="2.9" usedGenPackages="../ModelStructure.genmodel#//structure ../../../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/RecordLang.genmodel#//recordLang ../../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../../de.cau.cs.kieler.core.annotations/model/annotations.genmodel#//annotations">
+    editorPluginID="de.cau.cs.se.instrumentation.al.editor" runtimeVersion="2.9" usedGenPackages="../ModelStructure.genmodel#//structure ../../../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/RecordLang.genmodel#//recordLang ../../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../../de.cau.cs.kieler.core.annotations/model/annotations.genmodel#//annotations ../../../de.cau.cs.kieler.core.annotations/annotations.genmodel#//annotations">
   <genPackages prefix="AspectLang" basePackage="de.cau.cs.se.instrumentation.al" disposableProviderFactory="true"
       fileExtensions="ial" ecorePackage="AspectLang.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="AspectLang.ecore#//InternalFunction">
