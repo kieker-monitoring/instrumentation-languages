@@ -11,7 +11,7 @@
             default="true"
             extensions="ial"
             id="de.cau.cs.se.instrumentation.al.AspectLang"
-            name="AspectLang Editor">
+            name="Kieker IAL Editor">
         </editor>
     </extension>
     <extension
@@ -82,7 +82,7 @@
         <page
             class="de.cau.cs.se.instrumentation.al.ui.AspectLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
             id="de.cau.cs.se.instrumentation.al.AspectLang"
-            name="AspectLang">
+            name="Kieker IAL">
             <keywordReference id="de.cau.cs.se.instrumentation.al.ui.keyword_AspectLang"/>
         </page>
         <page
@@ -105,7 +105,7 @@
         <page
             class="de.cau.cs.se.instrumentation.al.ui.AspectLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
             id="de.cau.cs.se.instrumentation.al.AspectLang"
-            name="AspectLang">
+            name="Kieker IAL">
             <keywordReference id="de.cau.cs.se.instrumentation.al.ui.keyword_AspectLang"/>
             <enabledWhen>
 	            <adapt type="org.eclipse.core.resources.IProject"/>
@@ -117,7 +117,7 @@
         point="org.eclipse.ui.keywords">
         <keyword
             id="de.cau.cs.se.instrumentation.al.ui.keyword_AspectLang"
-            label="AspectLang"/>
+            label="Kieker IAL"/>
     </extension>
     <extension
          point="org.eclipse.ui.commands">
@@ -227,21 +227,21 @@
 	<!-- marker definitions for de.cau.cs.se.instrumentation.al.AspectLang -->
 	<extension
 	        id="AspectLang.check.fast"
-	        name="AspectLang Problem"
+	        name="Kieker IAL Problem"
 	        point="org.eclipse.core.resources.markers">
 	    <super type="org.eclipse.xtext.ui.check.fast"/>
 	    <persistent value="true"/>
 	</extension>
 	<extension
 	        id="AspectLang.check.normal"
-	        name="AspectLang Problem"
+	        name="Kieker IAL Problem"
 	        point="org.eclipse.core.resources.markers">
 	    <super type="org.eclipse.xtext.ui.check.normal"/>
 	    <persistent value="true"/>
 	</extension>
 	<extension
 	        id="AspectLang.check.expensive"
-	        name="AspectLang Problem"
+	        name="Kieker IAL Problem"
 	        point="org.eclipse.core.resources.markers">
 	    <super type="org.eclipse.xtext.ui.check.expensive"/>
 	    <persistent value="true"/>
@@ -383,7 +383,7 @@
   <extension point="org.eclipse.compare.contentMergeViewers">
     <viewer id="de.cau.cs.se.instrumentation.al.AspectLang.compare.contentMergeViewers"
             class="de.cau.cs.se.instrumentation.al.ui.AspectLangExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-            extensions="ial" label="AspectLang Compare">
+            extensions="ial" label="Kieker IAL Compare">
      </viewer>
   </extension>
   <extension point="org.eclipse.ui.editors.documentProviders">

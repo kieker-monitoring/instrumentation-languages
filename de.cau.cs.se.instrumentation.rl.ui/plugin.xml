@@ -11,7 +11,7 @@
             default="true"
             extensions="irl"
             id="de.cau.cs.se.instrumentation.rl.RecordLang"
-            name="RecordLang Editor">
+            name="Kieker IRL Editor">
         </editor>
     </extension>
     <extension
@@ -82,7 +82,7 @@
         <page
             class="de.cau.cs.se.instrumentation.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
             id="de.cau.cs.se.instrumentation.rl.RecordLang"
-            name="RecordLang">
+            name="Kieker IRL">
             <keywordReference id="de.cau.cs.se.instrumentation.rl.ui.keyword_RecordLang"/>
         </page>
         <page
@@ -105,7 +105,7 @@
         <page
             class="de.cau.cs.se.instrumentation.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
             id="de.cau.cs.se.instrumentation.rl.RecordLang"
-            name="RecordLang">
+            name="Kieker IRL">
             <keywordReference id="de.cau.cs.se.instrumentation.rl.ui.keyword_RecordLang"/>
             <enabledWhen>
 	            <adapt type="org.eclipse.core.resources.IProject"/>
@@ -117,7 +117,7 @@
         point="org.eclipse.ui.keywords">
         <keyword
             id="de.cau.cs.se.instrumentation.rl.ui.keyword_RecordLang"
-            label="RecordLang"/>
+            label="Kieker IRL"/>
     </extension>
     <extension
          point="org.eclipse.ui.commands">
@@ -227,21 +227,21 @@
 	<!-- marker definitions for de.cau.cs.se.instrumentation.rl.RecordLang -->
 	<extension
 	        id="recordlang.check.fast"
-	        name="RecordLang Problem"
+	        name="Kieker IRL Problem"
 	        point="org.eclipse.core.resources.markers">
 	    <super type="org.eclipse.xtext.ui.check.fast"/>
 	    <persistent value="true"/>
 	</extension>
 	<extension
 	        id="recordlang.check.normal"
-	        name="RecordLang Problem"
+	        name="Kieker IRL Problem"
 	        point="org.eclipse.core.resources.markers">
 	    <super type="org.eclipse.xtext.ui.check.normal"/>
 	    <persistent value="true"/>
 	</extension>
 	<extension
 	        id="recordlang.check.expensive"
-	        name="RecordLang Problem"
+	        name="Kieker IRL Problem"
 	        point="org.eclipse.core.resources.markers">
 	    <super type="org.eclipse.xtext.ui.check.expensive"/>
 	    <persistent value="true"/>
@@ -389,7 +389,7 @@
   <extension point="org.eclipse.compare.contentMergeViewers">
     <viewer id="de.cau.cs.se.instrumentation.rl.RecordLang.compare.contentMergeViewers"
             class="de.cau.cs.se.instrumentation.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-            extensions="irl" label="RecordLang Compare">
+            extensions="irl" label="Kieker IRL Compare">
      </viewer>
   </extension>
   <extension point="org.eclipse.ui.editors.documentProviders">
