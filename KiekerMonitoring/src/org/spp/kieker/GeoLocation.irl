@@ -1,4 +1,4 @@
-package org.spp.kieker.geolocation
+package org.spp.kieker
 
 entity Trace {
 	int[][] reply

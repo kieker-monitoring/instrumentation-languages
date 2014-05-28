@@ -1,0 +1,13 @@
+package org.spp.kieker
+
+import kieker.common.record.flow.IEventRecord
+
+template ContextEvent : IEventRecord {
+	string serivce
+	string context  
+	string hostname 
+}
+
+entity ContextInitializedEvent : ContextEvent
+entity ContextDestroyedEvent : ContextEvent
+
