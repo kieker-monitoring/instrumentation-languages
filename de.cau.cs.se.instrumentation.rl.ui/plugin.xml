@@ -398,5 +398,34 @@
             extensions="irl">
     </provider>
   </extension>
+  <extension
+        point="org.eclipse.debug.core.launchConfigurationTypes">
+     <launchConfigurationType
+           delegate="de.cau.cs.se.instrumentation.rl.ui.launch.EMFLaunchConfigurationDelegate"
+           id="de.cau.cs.se.instrumentation.rl.ui.launchConfigurationType"
+           modes="run"
+           name="Compile EMF"
+           public="true">
+     </launchConfigurationType>
+  </extension>
+  <extension
+        point="org.eclipse.debug.ui.launchConfigurationTypeImages">
+     <launchConfigurationTypeImage
+           configTypeID="de.cau.cs.se.instrumentation.rl.ui.launchConfigurationTypeImage"
+           icon="icons/constant.gif"
+           id="de.cau.cs.se.instrumentation.rl.ui.launchConfigurationTypeImage">
+     </launchConfigurationTypeImage>
+  </extension>
+  <extension
+        point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+     <launchConfigurationTabGroup
+           class="de.cau.cs.se.instrumentation.rl.ui.launch.EMFLaunchConfigurationTabGroup"
+           id="de.cau.cs.se.instrumentation.rl.ui.launchConfigurationTabGroup"
+           type="de.cau.cs.se.instrumentation.rl.ui.launchConfigurationType">
+        <launchMode
+              mode="run">
+        </launchMode>
+     </launchConfigurationTabGroup>
+  </extension>
 
 </plugin>
