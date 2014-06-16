@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcoreFactory;
-import org.eclipse.emf.ecore.EcorePackage.Literals;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.xbase.lib.Conversions;
@@ -109,8 +109,7 @@ public class EMFModelGenerator {
       public Boolean apply(final EPackage p) {
         String _name = p.getName();
         Object _get = modelName[0];
-        boolean _equals = _name.equals(_get);
-        return Boolean.valueOf(_equals);
+        return Boolean.valueOf(_name.equals(_get));
       }
     };
     boolean _exists = IterableExtensions.<EPackage>exists(_filter_1, _function_1);
@@ -150,8 +149,7 @@ public class EMFModelGenerator {
     final Function1<EPackage,Boolean> _function_1 = new Function1<EPackage,Boolean>() {
       public Boolean apply(final EPackage p) {
         String _name = p.getName();
-        boolean _equals = _name.equals(nodeName);
-        return Boolean.valueOf(_equals);
+        return Boolean.valueOf(_name.equals(nodeName));
       }
     };
     boolean _exists = IterableExtensions.<EPackage>exists(_eSubpackages_1, _function_1);
@@ -168,9 +166,7 @@ public class EMFModelGenerator {
     final EPackage p = this.factory.createEPackage();
     p.setName(name);
     p.setNsPrefix(name);
-    String _plus = (parentURI + "/");
-    String _plus_1 = (_plus + name);
-    p.setNsURI(_plus_1);
+    p.setNsURI(((parentURI + "/") + name));
     return p;
   }
   
@@ -198,8 +194,7 @@ public class EMFModelGenerator {
       public Boolean apply(final EPackage it) {
         String _get = packagePath[0];
         String _name = it.getName();
-        boolean _equals = _get.equals(_name);
-        return Boolean.valueOf(_equals);
+        return Boolean.valueOf(_get.equals(_name));
       }
     };
     EPackage _findFirst = IterableExtensions.<EPackage>findFirst(_filter, _function);
@@ -218,8 +213,7 @@ public class EMFModelGenerator {
         public Boolean apply(final EPackage it) {
           String _get = ((String[])Conversions.unwrapArray(packagePath, String.class))[0];
           String _name = it.getName();
-          boolean _equals = _get.equals(_name);
-          return Boolean.valueOf(_equals);
+          return Boolean.valueOf(_get.equals(_name));
         }
       };
       EPackage _findFirst = IterableExtensions.<EPackage>findFirst(_eSubpackages, _function);
@@ -302,53 +296,53 @@ public class EMFModelGenerator {
     if (!_matched) {
       if (Objects.equal(name,"byte")) {
         _matched=true;
-        _switchResult = Literals.EBYTE;
+        _switchResult = EcorePackage.Literals.EBYTE;
       }
     }
     if (!_matched) {
       if (Objects.equal(name,"short")) {
         _matched=true;
-        _switchResult = Literals.ESHORT;
+        _switchResult = EcorePackage.Literals.ESHORT;
       }
     }
     if (!_matched) {
       if (Objects.equal(name,"int")) {
         _matched=true;
-        _switchResult = Literals.EINT;
+        _switchResult = EcorePackage.Literals.EINT;
       }
     }
     if (!_matched) {
       if (Objects.equal(name,"long")) {
         _matched=true;
-        _switchResult = Literals.ELONG;
+        _switchResult = EcorePackage.Literals.ELONG;
       }
     }
     if (!_matched) {
       if (Objects.equal(name,"float")) {
         _matched=true;
-        _switchResult = Literals.EFLOAT;
+        _switchResult = EcorePackage.Literals.EFLOAT;
       }
     }
     if (!_matched) {
       if (Objects.equal(name,"double")) {
         _matched=true;
-        _switchResult = Literals.EDOUBLE;
+        _switchResult = EcorePackage.Literals.EDOUBLE;
       }
     }
     if (!_matched) {
       if (Objects.equal(name,"string")) {
         _matched=true;
-        _switchResult = Literals.ESTRING;
+        _switchResult = EcorePackage.Literals.ESTRING;
       }
     }
     if (!_matched) {
       if (Objects.equal(name,"boolean")) {
         _matched=true;
-        _switchResult = Literals.EBOOLEAN;
+        _switchResult = EcorePackage.Literals.EBOOLEAN;
       }
     }
     if (!_matched) {
-      _switchResult = Literals.EBOOLEAN;
+      _switchResult = EcorePackage.Literals.EBOOLEAN;
     }
     return _switchResult;
   }
@@ -366,8 +360,7 @@ public class EMFModelGenerator {
       public Boolean apply(final EPackage p) {
         String _name = p.getName();
         Object _get = packagePath[0];
-        boolean _equals = _name.equals(_get);
-        return Boolean.valueOf(_equals);
+        return Boolean.valueOf(_name.equals(_get));
       }
     };
     final EPackage pkg = IterableExtensions.<EPackage>findFirst(_filter, _function);
@@ -383,8 +376,7 @@ public class EMFModelGenerator {
         public Boolean apply(final EClassifier clazz) {
           String _name = clazz.getName();
           String _name_1 = type.getName();
-          boolean _equals = _name.equals(_name_1);
-          return Boolean.valueOf(_equals);
+          return Boolean.valueOf(_name.equals(_name_1));
         }
       };
       EClassifier _findFirst = IterableExtensions.<EClassifier>findFirst(_eClassifiers, _function);
@@ -395,8 +387,7 @@ public class EMFModelGenerator {
         public Boolean apply(final EPackage p) {
           String _name = p.getName();
           Object _get = ((Object[])Conversions.unwrapArray(packagePath, Object.class))[0];
-          boolean _equals = _name.equals(_get);
-          return Boolean.valueOf(_equals);
+          return Boolean.valueOf(_name.equals(_get));
         }
       };
       final EPackage subpkg = IterableExtensions.<EPackage>findFirst(_eSubpackages, _function_1);
