@@ -43,6 +43,7 @@ import de.cau.cs.se.instrumentation.al.aspectLang.Collector
 import org.w3c.dom.Element
 import org.w3c.dom.Document
 import de.cau.cs.se.instrumentation.al.aspectLang.InsertionPoint
+import javax.xml.transform.OutputKeys
 
 /**
  * Generates code from your model files on save.
@@ -53,6 +54,9 @@ class AspectLangGenerator implements IGenerator {
 	
 	val Map<String,Collection<Aspect>> aspectMap = new HashMap<String,Collection<Aspect>>()
 	
+	/**
+	 * Central generation function.
+	 */
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		resource.allContents.filter(typeof(Aspect)).forEach[aspectMap.addAspect(it)]
 		aspectMap.forEach[key, value | switch(key) {
@@ -62,6 +66,12 @@ class AspectLangGenerator implements IGenerator {
 		}]
 	}
 	
+	/**
+	 * Helper function to create a map of aspects and the aspect technology annotation.
+	 * 
+	 * @param map the map of all aspect technologies and its corresponding aspects.
+	 * @param aspect a new aspect to be added to the map.
+	 */
 	def void addAspect(Map<String, Collection<Aspect>> map, Aspect aspect) {
 		var list = map.get(aspect?.annotation?.name)
 		if (list == null) {
@@ -71,6 +81,12 @@ class AspectLangGenerator implements IGenerator {
 		list.add(aspect)
 	}
 	
+	/**
+	 * Create AspectJ configuration (aop.xml) for a given collection of aspects.
+	 * 
+	 * @param aspects collection of aspects for AspectJ
+	 * @param access file system access
+	 */
 	def createAspectJConfiguration(Collection<Aspect> aspects, IFileSystemAccess access) {
 		val docFactory = DocumentBuilderFactory.newInstance()
 		val docBuilder = docFactory.newDocumentBuilder()
@@ -92,13 +108,15 @@ class AspectLangGenerator implements IGenerator {
 		val aspectsElement = doc.createElement("aspects")
 		aspectjElement.appendChild(aspectsElement)
 		for (Aspect aspect : aspects) {
-			aspect.collectors.filter[it.insertionPoint == InsertionPoint.^BEFORE].createCollector(doc, aspectsElement)
-			aspect.collectors.filter[it.insertionPoint == InsertionPoint.^AFTER].createCollector(doc, aspectsElement)
+			aspect.collectors.filter[it.insertionPoint == InsertionPoint.^BEFORE].createDataCollectorAspect(doc, aspectsElement)
+			aspect.collectors.filter[it.insertionPoint == InsertionPoint.^AFTER].createDataCollectorAspect(doc, aspectsElement)
 		}
 		
 		// writing stuff
 		val transformerFactory = TransformerFactory.newInstance()
 		val transformer = transformerFactory.newTransformer()
+		transformer.setOutputProperty(OutputKeys.INDENT, "yes")
+		transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "3")
 		
 		val writer = new StringWriter()
 		
@@ -107,12 +125,22 @@ class AspectLangGenerator implements IGenerator {
 		access.generateFile('aop.xml',writer.toString)
 	}
 	
-	def void createCollector(Iterable<Collector> list, Document doc, Element aspectsElement) {
-		val aspectElement = doc.createElement("aspect")
-		aspectElement.setAttribute("name","record types are " + list.map[it.type.name].join(', '))
-		aspectsElement.appendChild(aspectElement)
+	/**
+	 * Create an aop.xml aspect for a data collector probe.
+	 * 
+	 * @param list list of collectors
+	 * @param doc the document
+	 * @param parent the parent node of the aspect
+	 */
+	def void createDataCollectorAspect(Iterable<Collector> list, Document doc, Element parent) {
+		val aspect = doc.createElement("aspect")
+		aspect.setAttribute("name","record types are " + list.map[it.type.name].join(', '))
+		parent.appendChild(aspect)
 	}
 	
+	/**
+	 * Compute the query for model nodes.
+	 */
 	def String computeAspectJQuery(Query query) '''«query.location.computeLocation» «query.modifier.computeModifier» «if (query.method != null) query.method.computeMethod else '*'»'''
 	
 	def CharSequence computeLocation(LocationQuery query) '''«query.node.computeNode»«if (query.specialization != null) '.' + query.specialization.computeLocation»'''
@@ -130,10 +158,22 @@ class AspectLangGenerator implements IGenerator {
 	
 	def CharSequence computeType(TypeReference reference) '''«reference.type.name»'''
 	
+	/**
+	 * Create Spring configuration for a given collection of aspects.
+	 * 
+	 * @param aspects collection of aspects for AspectJ
+	 * @param access file system access
+	 */
 	def createSpringConfiguration(Collection<Aspect> aspects, IFileSystemAccess access) {
 		"TODO: auto-generated method stub"
 	}
 	
+	/**
+	 * Create J2EE configuration for a given collection of aspects.
+	 * 
+	 * @param aspects collection of aspects for AspectJ
+	 * @param access file system access
+	 */
 	def createJ2EEConfiguration(Collection<Aspect> aspects, IFileSystemAccess access) {
 		"TODO: auto-generated method stub"
 	}

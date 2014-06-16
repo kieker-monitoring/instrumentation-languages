@@ -42,6 +42,7 @@ import java.util.List;
 import java.util.Map;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
@@ -73,6 +74,9 @@ import org.w3c.dom.Element;
 public class AspectLangGenerator implements IGenerator {
   private final Map<String,Collection<Aspect>> aspectMap = new HashMap<String, Collection<Aspect>>();
   
+  /**
+   * Central generation function.
+   */
   public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
     TreeIterator<EObject> _allContents = resource.getAllContents();
     Iterator<Aspect> _filter = Iterators.<Aspect>filter(_allContents, Aspect.class);
@@ -108,6 +112,12 @@ public class AspectLangGenerator implements IGenerator {
     MapExtensions.<String, Collection<Aspect>>forEach(this.aspectMap, _function_1);
   }
   
+  /**
+   * Helper function to create a map of aspects and the aspect technology annotation.
+   * 
+   * @param map the map of all aspect technologies and its corresponding aspects.
+   * @param aspect a new aspect to be added to the map.
+   */
   public void addAspect(final Map<String,Collection<Aspect>> map, final Aspect aspect) {
     Annotation _annotation = null;
     if (aspect!=null) {
@@ -135,6 +145,12 @@ public class AspectLangGenerator implements IGenerator {
     list.add(aspect);
   }
   
+  /**
+   * Create AspectJ configuration (aop.xml) for a given collection of aspects.
+   * 
+   * @param aspects collection of aspects for AspectJ
+   * @param access file system access
+   */
   public void createAspectJConfiguration(final Collection<Aspect> aspects, final IFileSystemAccess access) {
     try {
       final DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -166,7 +182,7 @@ public class AspectLangGenerator implements IGenerator {
             }
           };
           Iterable<Collector> _filter = IterableExtensions.<Collector>filter(_collectors, _function);
-          this.createCollector(_filter, doc, aspectsElement);
+          this.createDataCollectorAspect(_filter, doc, aspectsElement);
           EList<Collector> _collectors_1 = aspect_1.getCollectors();
           final Function1<Collector,Boolean> _function_1 = new Function1<Collector,Boolean>() {
             public Boolean apply(final Collector it) {
@@ -175,11 +191,13 @@ public class AspectLangGenerator implements IGenerator {
             }
           };
           Iterable<Collector> _filter_1 = IterableExtensions.<Collector>filter(_collectors_1, _function_1);
-          this.createCollector(_filter_1, doc, aspectsElement);
+          this.createDataCollectorAspect(_filter_1, doc, aspectsElement);
         }
       }
       final TransformerFactory transformerFactory = TransformerFactory.newInstance();
       final Transformer transformer = transformerFactory.newTransformer();
+      transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+      transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "3");
       final StringWriter writer = new StringWriter();
       DOMSource _dOMSource = new DOMSource(doc);
       StreamResult _streamResult = new StreamResult(writer);
@@ -191,8 +209,15 @@ public class AspectLangGenerator implements IGenerator {
     }
   }
   
-  public void createCollector(final Iterable<Collector> list, final Document doc, final Element aspectsElement) {
-    final Element aspectElement = doc.createElement("aspect");
+  /**
+   * Create an aop.xml aspect for a data collector probe.
+   * 
+   * @param list list of collectors
+   * @param doc the document
+   * @param parent the parent node of the aspect
+   */
+  public void createDataCollectorAspect(final Iterable<Collector> list, final Document doc, final Element parent) {
+    final Element aspect = doc.createElement("aspect");
     final Function1<Collector,String> _function = new Function1<Collector,String>() {
       public String apply(final Collector it) {
         RecordType _type = it.getType();
@@ -202,10 +227,13 @@ public class AspectLangGenerator implements IGenerator {
     Iterable<String> _map = IterableExtensions.<Collector, String>map(list, _function);
     String _join = IterableExtensions.join(_map, ", ");
     String _plus = ("record types are " + _join);
-    aspectElement.setAttribute("name", _plus);
-    aspectsElement.appendChild(aspectElement);
+    aspect.setAttribute("name", _plus);
+    parent.appendChild(aspect);
   }
   
+  /**
+   * Compute the query for model nodes.
+   */
   public String computeAspectJQuery(final Query query) {
     StringConcatenation _builder = new StringConcatenation();
     LocationQuery _location = query.getLocation();
@@ -310,10 +338,22 @@ public class AspectLangGenerator implements IGenerator {
     return _builder;
   }
   
+  /**
+   * Create Spring configuration for a given collection of aspects.
+   * 
+   * @param aspects collection of aspects for AspectJ
+   * @param access file system access
+   */
   public String createSpringConfiguration(final Collection<Aspect> aspects, final IFileSystemAccess access) {
     return "TODO: auto-generated method stub";
   }
   
+  /**
+   * Create J2EE configuration for a given collection of aspects.
+   * 
+   * @param aspects collection of aspects for AspectJ
+   * @param access file system access
+   */
   public String createJ2EEConfiguration(final Collection<Aspect> aspects, final IFileSystemAccess access) {
     return "TODO: auto-generated method stub";
   }

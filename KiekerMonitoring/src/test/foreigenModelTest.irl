@@ -1,6 +1,6 @@
 package test
 
-use ecore "http://www.eclipse.org/emf/2002/Ecore"
+use ecore http://www.eclipse.org/emf/2002/Ecore"
 
 entity ForeignRecord {
 	int value = 0

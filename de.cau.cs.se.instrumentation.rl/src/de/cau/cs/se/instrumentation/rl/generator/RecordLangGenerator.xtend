@@ -55,8 +55,7 @@ class RecordLangGenerator implements IGenerator {
 			val cg = generator.getConstructor().newInstance() as AbstractPartialRecordTypeGenerator
 			resource.allContents.filter(typeof(PartialRecordType)).forEach[type | fsa.generateFile(cg.fileName(type), cg.createContent(type,author,version))]
 		} 
-				
-		
+
 	}
 	
 	
