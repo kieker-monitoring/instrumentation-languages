@@ -1,6 +1,18 @@
-/**
- * 
- */
+/***************************************************************************
+ * Copyright 2013 Kieker Project (http://kieker-monitoring.net)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ***************************************************************************/
 package de.cau.cs.se.instrumentation.rl.ui.launch;
 
 import java.io.IOException;
@@ -22,20 +34,24 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 
 /**
- * @author reiner
+ * Launcher delegate.
+ * 
+ * @author Reiner Jung
  *
  */
 public class EMFLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 
+	/** property constant for the selected project. */
 	public static final String ATTR_PROJECT = "project";
+	/** property constant for the name of the target file. */
 	public static final String ATTR_TARGET_FILE = "target-file";
 
+	/** internal constant for the file extension. */
 	private static final String IRL_EXTENSION = "irl";
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.debug.core.model.ILaunchConfigurationDelegate#launch(org.eclipse.debug.core.ILaunchConfiguration, java.lang.String, org.eclipse.debug.core.ILaunch, org.eclipse.core.runtime.IProgressMonitor)
+	/**
+	 * Central launcher for the EMF export functionality.
 	 */
-	@Override
 	public void launch(final ILaunchConfiguration configuration, final String mode, final ILaunch launch, final IProgressMonitor monitor) throws CoreException {
 		// PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().saveAllEditors(true);
 
@@ -46,6 +62,10 @@ public class EMFLaunchConfigurationDelegate extends LaunchConfigurationDelegate 
 
 		final ResourceSet resourceSet = new ResourceSetImpl();
 		final EMFModelGenerator generator = new EMFModelGenerator(resourceSet);
+
+		if (targetFile.exists()) {
+			targetFile.delete(true, null);
+		}
 
 		final Resource output = resourceSet.createResource(URI.createURI(targetFile.getFullPath().toPortableString()));
 

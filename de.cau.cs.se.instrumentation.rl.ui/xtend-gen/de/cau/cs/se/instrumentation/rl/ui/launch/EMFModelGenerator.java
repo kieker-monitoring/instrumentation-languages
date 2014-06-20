@@ -1,3 +1,18 @@
+/**
+ * Copyright 2013 Kieker Project (http://kieker-monitoring.net)
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package de.cau.cs.se.instrumentation.rl.ui.launch;
 
 import com.google.common.base.Objects;
@@ -32,6 +47,11 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
+/**
+ * Provides an example generator for EMF models out of IRL specification.
+ * 
+ * @author Reiner Jung
+ */
 @SuppressWarnings("all")
 public class EMFModelGenerator {
   private ResourceSet resourceSet;
@@ -45,7 +65,16 @@ public class EMFModelGenerator {
     this.resourceSet = resourceSet;
   }
   
+  /**
+   * Primary generation method.
+   * 
+   * @param file the IRL file to be interpreted
+   * @param destination the EMF model resource
+   */
   public void doGenerate(final IFile file, final Resource destination) {
+    String _string = file.toString();
+    String _plus = ("FILE " + _string);
+    System.out.println(_plus);
     IPath _fullPath = file.getFullPath();
     String _portableString = _fullPath.toPortableString();
     URI _createPlatformResourceURI = URI.createPlatformResourceURI(_portableString, true);
@@ -62,10 +91,10 @@ public class EMFModelGenerator {
     Iterator<PartialRecordType> _filter_1 = Iterators.<PartialRecordType>filter(_allContents_1, PartialRecordType.class);
     final Procedure1<PartialRecordType> _function_1 = new Procedure1<PartialRecordType>() {
       public void apply(final PartialRecordType type) {
-        EClass _composeInterface = EMFModelGenerator.this.composeInterface(type, destination);
+        EClass _createInterface = EMFModelGenerator.this.createInterface(type, destination);
         EObject _eContainer = type.eContainer();
         String _name = ((Model) _eContainer).getName();
-        EMFModelGenerator.this.insert(destination, _composeInterface, _name);
+        EMFModelGenerator.this.insert(destination, _createInterface, _name);
       }
     };
     IteratorExtensions.<PartialRecordType>forEach(_filter_1, _function_1);
@@ -73,13 +102,29 @@ public class EMFModelGenerator {
     Iterator<RecordType> _filter_2 = Iterators.<RecordType>filter(_allContents_2, RecordType.class);
     final Procedure1<RecordType> _function_2 = new Procedure1<RecordType>() {
       public void apply(final RecordType type) {
-        EClass _composeClass = EMFModelGenerator.this.composeClass(type, destination);
+        EClass _createClass = EMFModelGenerator.this.createClass(type, destination);
         EObject _eContainer = type.eContainer();
         String _name = ((Model) _eContainer).getName();
-        EMFModelGenerator.this.insert(destination, _composeClass, _name);
+        EMFModelGenerator.this.insert(destination, _createClass, _name);
       }
     };
     IteratorExtensions.<RecordType>forEach(_filter_2, _function_2);
+    TreeIterator<EObject> _allContents_3 = source.getAllContents();
+    Iterator<PartialRecordType> _filter_3 = Iterators.<PartialRecordType>filter(_allContents_3, PartialRecordType.class);
+    final Procedure1<PartialRecordType> _function_3 = new Procedure1<PartialRecordType>() {
+      public void apply(final PartialRecordType type) {
+        EMFModelGenerator.this.composeInterface(type, destination);
+      }
+    };
+    IteratorExtensions.<PartialRecordType>forEach(_filter_3, _function_3);
+    TreeIterator<EObject> _allContents_4 = source.getAllContents();
+    Iterator<RecordType> _filter_4 = Iterators.<RecordType>filter(_allContents_4, RecordType.class);
+    final Procedure1<RecordType> _function_4 = new Procedure1<RecordType>() {
+      public void apply(final RecordType type) {
+        EMFModelGenerator.this.composeClass(type, destination);
+      }
+    };
+    IteratorExtensions.<RecordType>forEach(_filter_4, _function_4);
   }
   
   /**
@@ -206,145 +251,32 @@ public class EMFModelGenerator {
     boolean _isEmpty = IterableExtensions.isEmpty(packagePath);
     if (_isEmpty) {
       EList<EClassifier> _eClassifiers = pkg.getEClassifiers();
-      _eClassifiers.add(classifier);
+      final Function1<EClassifier,Boolean> _function = new Function1<EClassifier,Boolean>() {
+        public Boolean apply(final EClassifier it) {
+          String _name = it.getName();
+          String _name_1 = classifier.getName();
+          return Boolean.valueOf(_name.equals(_name_1));
+        }
+      };
+      boolean _exists = IterableExtensions.<EClassifier>exists(_eClassifiers, _function);
+      boolean _not = (!_exists);
+      if (_not) {
+        EList<EClassifier> _eClassifiers_1 = pkg.getEClassifiers();
+        _eClassifiers_1.add(classifier);
+      }
     } else {
       EList<EPackage> _eSubpackages = pkg.getESubpackages();
-      final Function1<EPackage,Boolean> _function = new Function1<EPackage,Boolean>() {
+      final Function1<EPackage,Boolean> _function_1 = new Function1<EPackage,Boolean>() {
         public Boolean apply(final EPackage it) {
           String _get = ((String[])Conversions.unwrapArray(packagePath, String.class))[0];
           String _name = it.getName();
           return Boolean.valueOf(_get.equals(_name));
         }
       };
-      EPackage _findFirst = IterableExtensions.<EPackage>findFirst(_eSubpackages, _function);
+      EPackage _findFirst = IterableExtensions.<EPackage>findFirst(_eSubpackages, _function_1);
       Iterable<String> _tail = IterableExtensions.<String>tail(packagePath);
       this.findAndinsert(_findFirst, classifier, _tail);
     }
-  }
-  
-  /**
-   * Compose an EMF class for the given record type.
-   */
-  public EClass composeClass(final RecordType type, final Resource resource) {
-    final EClass clazz = this.factory.createEClass();
-    String _name = type.getName();
-    clazz.setName(_name);
-    boolean _isAbstract = type.isAbstract();
-    clazz.setAbstract(_isAbstract);
-    clazz.setInterface(false);
-    RecordType _parent = type.getParent();
-    boolean _notEquals = (!Objects.equal(_parent, null));
-    if (_notEquals) {
-      EList<EClass> _eSuperTypes = clazz.getESuperTypes();
-      RecordType _parent_1 = type.getParent();
-      EClass _findResultClass = this.findResultClass(_parent_1, resource);
-      _eSuperTypes.add(_findResultClass);
-    }
-    EList<PartialRecordType> _parents = type.getParents();
-    boolean _isEmpty = _parents.isEmpty();
-    boolean _not = (!_isEmpty);
-    if (_not) {
-      EList<PartialRecordType> _parents_1 = type.getParents();
-      final Procedure1<PartialRecordType> _function = new Procedure1<PartialRecordType>() {
-        public void apply(final PartialRecordType iface) {
-          EList<EClass> _eSuperTypes = clazz.getESuperTypes();
-          EClass _findResultClass = EMFModelGenerator.this.findResultClass(iface, resource);
-          _eSuperTypes.add(_findResultClass);
-        }
-      };
-      IterableExtensions.<PartialRecordType>forEach(_parents_1, _function);
-    }
-    EList<Property> _properties = type.getProperties();
-    final Procedure1<Property> _function_1 = new Procedure1<Property>() {
-      public void apply(final Property property) {
-        EList<EStructuralFeature> _eStructuralFeatures = clazz.getEStructuralFeatures();
-        EAttribute _composeProperty = EMFModelGenerator.this.composeProperty(property);
-        _eStructuralFeatures.add(_composeProperty);
-      }
-    };
-    IterableExtensions.<Property>forEach(_properties, _function_1);
-    return clazz;
-  }
-  
-  public EAttribute composeProperty(final Property property) {
-    final EAttribute attribute = this.factory.createEAttribute();
-    String _name = property.getName();
-    attribute.setName(_name);
-    String _name_1 = property.getName();
-    String _plus = (" attribute " + _name_1);
-    System.out.println(_plus);
-    Classifier _type = property.getType();
-    boolean _notEquals = (!Objects.equal(_type, null));
-    if (_notEquals) {
-      Classifier _type_1 = property.getType();
-      EClassifier _class_ = _type_1.getClass_();
-      boolean _notEquals_1 = (!Objects.equal(_class_, null));
-      if (_notEquals_1) {
-        Classifier _type_2 = property.getType();
-        EClassifier _class__1 = _type_2.getClass_();
-        String _name_2 = _class__1.getName();
-        EDataType _mapToEMfLiteral = this.getMapToEMfLiteral(_name_2);
-        attribute.setEType(_mapToEMfLiteral);
-      }
-    }
-    return attribute;
-  }
-  
-  public EDataType getMapToEMfLiteral(final String name) {
-    EDataType _switchResult = null;
-    boolean _matched = false;
-    if (!_matched) {
-      if (Objects.equal(name,"byte")) {
-        _matched=true;
-        _switchResult = EcorePackage.Literals.EBYTE;
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(name,"short")) {
-        _matched=true;
-        _switchResult = EcorePackage.Literals.ESHORT;
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(name,"int")) {
-        _matched=true;
-        _switchResult = EcorePackage.Literals.EINT;
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(name,"long")) {
-        _matched=true;
-        _switchResult = EcorePackage.Literals.ELONG;
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(name,"float")) {
-        _matched=true;
-        _switchResult = EcorePackage.Literals.EFLOAT;
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(name,"double")) {
-        _matched=true;
-        _switchResult = EcorePackage.Literals.EDOUBLE;
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(name,"string")) {
-        _matched=true;
-        _switchResult = EcorePackage.Literals.ESTRING;
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(name,"boolean")) {
-        _matched=true;
-        _switchResult = EcorePackage.Literals.EBOOLEAN;
-      }
-    }
-    if (!_matched) {
-      _switchResult = EcorePackage.Literals.EBOOLEAN;
-    }
-    return _switchResult;
   }
   
   /**
@@ -404,12 +336,198 @@ public class EMFModelGenerator {
   /**
    * Compose an EMF interface for the given partial record type/template.
    */
-  public EClass composeInterface(final PartialRecordType type, final Resource resource) {
+  public EClass createInterface(final PartialRecordType type, final Resource resource) {
     final EClass clazz = this.factory.createEClass();
     String _name = type.getName();
     clazz.setName(_name);
     clazz.setInterface(true);
     clazz.setAbstract(true);
     return clazz;
+  }
+  
+  /**
+   * Compose an EMF class for the given record type.
+   */
+  public EClass createClass(final RecordType type, final Resource resource) {
+    final EClass clazz = this.factory.createEClass();
+    String _name = type.getName();
+    clazz.setName(_name);
+    boolean _isAbstract = type.isAbstract();
+    clazz.setAbstract(_isAbstract);
+    clazz.setInterface(false);
+    return clazz;
+  }
+  
+  /**
+   * Complete the interface construction with inheritance and attributes.
+   */
+  public void composeInterface(final PartialRecordType type, final Resource resource) {
+    final EClass clazz = this.findResultClass(type, resource);
+    EList<PartialRecordType> _parents = type.getParents();
+    boolean _isEmpty = _parents.isEmpty();
+    boolean _not = (!_isEmpty);
+    if (_not) {
+      EList<PartialRecordType> _parents_1 = type.getParents();
+      final Procedure1<PartialRecordType> _function = new Procedure1<PartialRecordType>() {
+        public void apply(final PartialRecordType iface) {
+          EList<EClass> _eSuperTypes = clazz.getESuperTypes();
+          EClass _findResultClass = EMFModelGenerator.this.findResultClass(iface, resource);
+          _eSuperTypes.add(_findResultClass);
+        }
+      };
+      IterableExtensions.<PartialRecordType>forEach(_parents_1, _function);
+    }
+    String _name = clazz.getName();
+    String _plus = ("template " + _name);
+    System.out.println(_plus);
+    EList<Property> _properties = type.getProperties();
+    final Procedure1<Property> _function_1 = new Procedure1<Property>() {
+      public void apply(final Property property) {
+        EList<EStructuralFeature> _eStructuralFeatures = clazz.getEStructuralFeatures();
+        EAttribute _composeProperty = EMFModelGenerator.this.composeProperty(property);
+        EMFModelGenerator.this.addUnique(_eStructuralFeatures, _composeProperty);
+      }
+    };
+    IterableExtensions.<Property>forEach(_properties, _function_1);
+  }
+  
+  /**
+   * Complete the class construction with inheritance and attributes.
+   */
+  public void composeClass(final RecordType type, final Resource resource) {
+    final EClass clazz = this.findResultClass(type, resource);
+    RecordType _parent = type.getParent();
+    boolean _notEquals = (!Objects.equal(_parent, null));
+    if (_notEquals) {
+      EList<EClass> _eSuperTypes = clazz.getESuperTypes();
+      RecordType _parent_1 = type.getParent();
+      EClass _findResultClass = this.findResultClass(_parent_1, resource);
+      _eSuperTypes.add(_findResultClass);
+    }
+    EList<PartialRecordType> _parents = type.getParents();
+    boolean _isEmpty = _parents.isEmpty();
+    boolean _not = (!_isEmpty);
+    if (_not) {
+      EList<PartialRecordType> _parents_1 = type.getParents();
+      final Procedure1<PartialRecordType> _function = new Procedure1<PartialRecordType>() {
+        public void apply(final PartialRecordType iface) {
+          EList<EClass> _eSuperTypes = clazz.getESuperTypes();
+          EClass _findResultClass = EMFModelGenerator.this.findResultClass(iface, resource);
+          _eSuperTypes.add(_findResultClass);
+        }
+      };
+      IterableExtensions.<PartialRecordType>forEach(_parents_1, _function);
+    }
+    String _name = clazz.getName();
+    String _plus = ("entity " + _name);
+    System.out.println(_plus);
+    EList<Property> _properties = type.getProperties();
+    final Procedure1<Property> _function_1 = new Procedure1<Property>() {
+      public void apply(final Property property) {
+        EList<EStructuralFeature> _eStructuralFeatures = clazz.getEStructuralFeatures();
+        EAttribute _composeProperty = EMFModelGenerator.this.composeProperty(property);
+        EMFModelGenerator.this.addUnique(_eStructuralFeatures, _composeProperty);
+      }
+    };
+    IterableExtensions.<Property>forEach(_properties, _function_1);
+  }
+  
+  public void addUnique(final EList<EStructuralFeature> list, final EAttribute attribute) {
+    final Function1<EStructuralFeature,Boolean> _function = new Function1<EStructuralFeature,Boolean>() {
+      public Boolean apply(final EStructuralFeature it) {
+        String _name = it.getName();
+        String _name_1 = attribute.getName();
+        return Boolean.valueOf(_name.equals(_name_1));
+      }
+    };
+    boolean _exists = IterableExtensions.<EStructuralFeature>exists(list, _function);
+    boolean _not = (!_exists);
+    if (_not) {
+      list.add(attribute);
+    }
+  }
+  
+  /**
+   * Create an EMF attribute for a given IRL property.
+   */
+  public EAttribute composeProperty(final Property property) {
+    final EAttribute attribute = this.factory.createEAttribute();
+    String _name = property.getName();
+    attribute.setName(_name);
+    Classifier _type = property.getType();
+    boolean _notEquals = (!Objects.equal(_type, null));
+    if (_notEquals) {
+      Classifier _type_1 = property.getType();
+      EClassifier _class_ = _type_1.getClass_();
+      boolean _notEquals_1 = (!Objects.equal(_class_, null));
+      if (_notEquals_1) {
+        Classifier _type_2 = property.getType();
+        EClassifier _class__1 = _type_2.getClass_();
+        String _name_1 = _class__1.getName();
+        EDataType _mapToEMfLiteral = this.getMapToEMfLiteral(_name_1);
+        attribute.setEType(_mapToEMfLiteral);
+      }
+    }
+    String _name_2 = attribute.getName();
+    String _plus = ("  prop: " + _name_2);
+    System.out.println(_plus);
+    return attribute;
+  }
+  
+  public EDataType getMapToEMfLiteral(final String name) {
+    EDataType _switchResult = null;
+    boolean _matched = false;
+    if (!_matched) {
+      if (Objects.equal(name,"byte")) {
+        _matched=true;
+        _switchResult = EcorePackage.Literals.EBYTE;
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(name,"short")) {
+        _matched=true;
+        _switchResult = EcorePackage.Literals.ESHORT;
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(name,"int")) {
+        _matched=true;
+        _switchResult = EcorePackage.Literals.EINT;
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(name,"long")) {
+        _matched=true;
+        _switchResult = EcorePackage.Literals.ELONG;
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(name,"float")) {
+        _matched=true;
+        _switchResult = EcorePackage.Literals.EFLOAT;
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(name,"double")) {
+        _matched=true;
+        _switchResult = EcorePackage.Literals.EDOUBLE;
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(name,"string")) {
+        _matched=true;
+        _switchResult = EcorePackage.Literals.ESTRING;
+      }
+    }
+    if (!_matched) {
+      if (Objects.equal(name,"boolean")) {
+        _matched=true;
+        _switchResult = EcorePackage.Literals.EBOOLEAN;
+      }
+    }
+    if (!_matched) {
+      _switchResult = EcorePackage.Literals.EBOOLEAN;
+    }
+    return _switchResult;
   }
 }

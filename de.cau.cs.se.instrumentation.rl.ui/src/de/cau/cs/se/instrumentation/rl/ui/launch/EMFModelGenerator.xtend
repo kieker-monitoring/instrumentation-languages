@@ -1,3 +1,18 @@
+/***************************************************************************
+ * Copyright 2013 Kieker Project (http://kieker-monitoring.net)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ***************************************************************************/
 package de.cau.cs.se.instrumentation.rl.ui.launch
 
 import org.eclipse.emf.ecore.resource.Resource
@@ -14,10 +29,16 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Model
 import de.cau.cs.se.instrumentation.rl.recordLang.Type
 import org.eclipse.emf.ecore.EAttribute
 import de.cau.cs.se.instrumentation.rl.recordLang.Property
-import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
 import org.eclipse.emf.ecore.EcorePackage
 import org.eclipse.emf.ecore.EDataType
+import org.eclipse.emf.common.util.EList
+import org.eclipse.emf.ecore.EStructuralFeature
 
+/**
+ * Provides an example generator for EMF models out of IRL specification.
+ * 
+ * @author Reiner Jung
+ */
 class EMFModelGenerator {
 	
 	private ResourceSet resourceSet
@@ -30,17 +51,30 @@ class EMFModelGenerator {
 		this.resourceSet = resourceSet
 	}
 	
+	/**
+	 * Primary generation method.
+	 * 
+	 * @param file the IRL file to be interpreted
+	 * @param destination the EMF model resource
+	 */
 	def void doGenerate (IFile file, Resource destination) {
+		System.out.println ("FILE " + file.toString)
 		val Resource source = resourceSet.getResource(URI::createPlatformResourceURI(file.getFullPath().toPortableString(), true), true)
 		
-		source.allContents.filter(typeof(Model)).
-			forEach[type | type.composePackageHierarchy(destination)]
+		// create package hierarchy
+		source.allContents.filter(typeof(Model)).forEach[type | type.composePackageHierarchy(destination)]
+
+		// create classes and interfaces
 		source.allContents.filter(typeof(PartialRecordType)).
-			forEach[type | destination.insert(type.composeInterface(destination), (type.eContainer as Model).name)]
+			forEach[type | destination.insert(type.createInterface(destination), (type.eContainer as Model).name)]
 		source.allContents.filter(typeof(RecordType)).
-			forEach[type | destination.insert(type.composeClass(destination), (type.eContainer as Model).name)]
+			forEach[type | destination.insert(type.createClass(destination), (type.eContainer as Model).name)]
+
+		// complete declaration classes and interfaces
+		source.allContents.filter(typeof(PartialRecordType)).forEach[type | type.composeInterface(destination)]
+		source.allContents.filter(typeof(RecordType)).forEach[type | type.composeClass(destination)]
 	}
-	
+		
 	/**
 	 * Check if a package hierarchy exists for the given model and if not
 	 * add one to the hierarchy. For all root packages add that to the resource
@@ -104,59 +138,12 @@ class EMFModelGenerator {
 	}
 	
 	def void findAndinsert(EPackage pkg, EClassifier classifier, Iterable<String> packagePath) {
-		if (packagePath.empty)
-			pkg.EClassifiers.add(classifier)
-		else
+		if (packagePath.empty) {
+			if (!pkg.EClassifiers.exists[it.name.equals(classifier.name)])
+				pkg.EClassifiers.add(classifier)
+		} else
 			pkg.ESubpackages.findFirst[packagePath.get(0).equals(it.name)].findAndinsert(classifier,packagePath.tail)
 	}
-	
-	/**
-	 * Compose an EMF class for the given record type.
-	 */
-	def EClass composeClass(RecordType type, Resource resource) {
-		val EClass clazz = factory.createEClass()
-		clazz.setName(type.name)
-		clazz.setAbstract(type.abstract)
-		clazz.setInterface(false)
-		
-		if (type.parent != null) {
-			clazz.ESuperTypes.add(type.parent.findResultClass(resource))
-		}
-		if (!type.parents.empty) {
-			type.parents.forEach[iface | clazz.ESuperTypes.add(iface.findResultClass(resource))]
-		}
-		
-		type.properties.forEach[property | clazz.getEStructuralFeatures.add(property.composeProperty)]
-		
-		return clazz
-	}
-	
-	def EAttribute composeProperty(Property property) {
-		val attribute = factory.createEAttribute()
-		attribute.setName(property.name)
-		System.out.println(" attribute " + property.name)
-		if (property.type != null) {
-			if (property.type.class_ != null) {
-				attribute.setEType(property.type.class_.name.mapToEMfLiteral)		
-			}
-		}
-		return attribute
-	}
-	
-	def EDataType getMapToEMfLiteral(String name) {
-		switch(name) {
-			case 'byte' : EcorePackage.Literals.EBYTE
-			case 'short' : EcorePackage.Literals.ESHORT
-			case 'int' : EcorePackage.Literals.EINT
-			case 'long' : EcorePackage.Literals.ELONG
-			case 'float' : EcorePackage.Literals.EFLOAT
-			case 'double' : EcorePackage.Literals.EDOUBLE
-			case 'string' : EcorePackage.Literals.ESTRING
-			case 'boolean' : EcorePackage.Literals.EBOOLEAN
-			default : EcorePackage.Literals.EBOOLEAN
-		}
-	}
-		
 	
 	/**
 	 * Search for a class in the resource specified by the record type.
@@ -184,13 +171,90 @@ class EMFModelGenerator {
 	/**
 	 * Compose an EMF interface for the given partial record type/template.
 	 */
-	def EClass composeInterface(PartialRecordType type, Resource resource) {
+	def EClass createInterface(PartialRecordType type, Resource resource) {
 		val EClass clazz = factory.createEClass()
 		clazz.setName(type.name)
 		clazz.setInterface(true)
 		clazz.setAbstract(true)
-		
+	
 		return clazz
+	}
+	
+	/**
+	 * Compose an EMF class for the given record type.
+	 */
+	def EClass createClass(RecordType type, Resource resource) {
+		val EClass clazz = factory.createEClass()
+		clazz.setName(type.name)
+		clazz.setAbstract(type.abstract)
+		clazz.setInterface(false)
+						
+		return clazz
+	}
+	
+	/**
+	 * Complete the interface construction with inheritance and attributes.
+	 */
+	def void composeInterface(PartialRecordType type, Resource resource) {
+		val EClass clazz = type.findResultClass(resource)
+		
+		if (!type.parents.empty) {
+			type.parents.forEach[iface | clazz.ESuperTypes.add(iface.findResultClass(resource))]
+		}
+		System.out.println("template " + clazz.name)
+		type.properties.forEach[property | clazz.getEStructuralFeatures.addUnique(property.composeProperty)]
+	}
+	
+	/**
+	 * Complete the class construction with inheritance and attributes.
+	 */
+	def void composeClass(RecordType type, Resource resource) {
+		val EClass clazz = type.findResultClass(resource)
+		
+		if (type.parent != null) {
+			clazz.ESuperTypes.add(type.parent.findResultClass(resource))
+		} 
+		if (!type.parents.empty) {
+			type.parents.forEach[iface | clazz.ESuperTypes.add(iface.findResultClass(resource))]
+		}
+		System.out.println("entity " + clazz.name)
+		type.properties.forEach[property | clazz.getEStructuralFeatures.addUnique(property.composeProperty)]
+	}
+	
+	/**
+	 * 
+	 */
+	def void addUnique(EList<EStructuralFeature> list, EAttribute attribute) {
+		if (!list.exists[it.name.equals(attribute.name)]) list.add(attribute)
+	}
+	
+	/**
+	 * Create an EMF attribute for a given IRL property.
+	 */
+	def EAttribute composeProperty(Property property) {
+		val attribute = factory.createEAttribute()
+		attribute.setName(property.name)
+		if (property.type != null) {
+			if (property.type.class_ != null) {
+				attribute.setEType(property.type.class_.name.mapToEMfLiteral)		
+			}
+		}
+		System.out.println("  prop: " + attribute.name)
+		return attribute
+	}
+		
+	def EDataType getMapToEMfLiteral(String name) {
+		switch(name) {
+			case 'byte' : EcorePackage.Literals.EBYTE
+			case 'short' : EcorePackage.Literals.ESHORT
+			case 'int' : EcorePackage.Literals.EINT
+			case 'long' : EcorePackage.Literals.ELONG
+			case 'float' : EcorePackage.Literals.EFLOAT
+			case 'double' : EcorePackage.Literals.EDOUBLE
+			case 'string' : EcorePackage.Literals.ESTRING
+			case 'boolean' : EcorePackage.Literals.EBOOLEAN
+			default : EcorePackage.Literals.EBOOLEAN
+		}
 	}
 	
 }
