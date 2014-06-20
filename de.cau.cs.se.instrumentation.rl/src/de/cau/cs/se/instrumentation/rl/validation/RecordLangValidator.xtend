@@ -68,8 +68,8 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 		if (property.eContainer instanceof Type) {
 			if (PropertyEvaluation::collectAllProperties(property.eContainer as Type).exists[p | p.name.equals(property.name) && p != property]) {
 				val Property otherProperty = PropertyEvaluation::collectAllProperties(property.eContainer as Type).findFirst[p | p.name.equals(property.name) && p != property]
-				if (!typeAndPackageIdentical(otherProperty.type,property.type))
-					error('Property has been defined in ' + (otherProperty.eContainer as Type).name + '. Cannot be declared again with a different type.', 
+				//if (!typeAndPackageIdentical(otherProperty.type,property.type))
+					error('Property has been defined in ' + (otherProperty.eContainer as Type).name + '. Cannot be declared again.', 
 						RecordLangPackage$Literals::PROPERTY__NAME,
 						INVALID_NAME)
 			}
@@ -86,8 +86,8 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 		if (properties.exists[p | properties.exists[pInner | p.name.equals(pInner.name) && p != pInner]]) {
 			val Collection<Pair<Property,Property>> duplicates = new ArrayList<Pair<Property,Property>>()
 			properties.forEach[p | duplicates.add(p.findDuplicate(properties))]
-			duplicates.forEach[entry | if (!typeAndPackageIdentical(entry.key.type,entry.value.type))
-				error('Multiple property inheritance must have same type: Property ' + entry.key.name + 
+			duplicates.forEach[entry | // if (!typeAndPackageIdentical(entry.key.type,entry.value.type))
+				error('Multiple property inheritance form ' + entry.key.name + 
 						' inherited from ' + (entry.key.eContainer as Type).name + ' and ' + (entry.value.eContainer as Type).name, 
 						RecordLangPackage$Literals::TYPE__PARENTS,
 						INVALID_NAME)
@@ -104,8 +104,8 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 		if (properties.exists[p | properties.exists[pInner | p.name.equals(pInner.name) && p != pInner]]) {
 			val Collection<Pair<Property,Property>> duplicates = new ArrayList<Pair<Property,Property>>()
 			properties.forEach[p | duplicates.add(p.findDuplicate(properties))]
-			duplicates.forEach[entry | if (!typeAndPackageIdentical(entry.key.type,entry.value.type))
-				error('Multiple property inheritance must have same type: Property ' + entry.key.name + 
+			duplicates.forEach[entry | // if (!typeAndPackageIdentical(entry.key.type,entry.value.type))
+				error('Multiple property inheritance from ' + entry.key.name + 
 						' inherited from ' + (entry.key.eContainer as Type).name + ' and ' + (entry.value.eContainer as Type).name, 
 						RecordLangPackage$Literals::TYPE__PARENTS,
 						INVALID_NAME)

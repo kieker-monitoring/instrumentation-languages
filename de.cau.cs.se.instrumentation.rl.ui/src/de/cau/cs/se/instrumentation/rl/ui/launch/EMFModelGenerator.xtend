@@ -43,6 +43,7 @@ class EMFModelGenerator {
 	
 	private ResourceSet resourceSet
 	private EcoreFactory factory = EcoreFactory.eINSTANCE
+	private EClass abstractRecordClass
 	
 	/**
 	 * Constructor.
@@ -61,6 +62,9 @@ class EMFModelGenerator {
 		System.out.println ("FILE " + file.toString)
 		val Resource source = resourceSet.getResource(URI::createPlatformResourceURI(file.getFullPath().toPortableString(), true), true)
 		
+		// create basic classes and interfaces
+		abstractRecordClass = createAbstractRecordClass(destination)
+		
 		// create package hierarchy
 		source.allContents.filter(typeof(Model)).forEach[type | type.composePackageHierarchy(destination)]
 
@@ -73,6 +77,23 @@ class EMFModelGenerator {
 		// complete declaration classes and interfaces
 		source.allContents.filter(typeof(PartialRecordType)).forEach[type | type.composeInterface(destination)]
 		source.allContents.filter(typeof(RecordType)).forEach[type | type.composeClass(destination)]
+	}
+	
+	/**
+	 * Create the abstract record of Kieker which is hidden from IRL.
+	 */
+	def createAbstractRecordClass(Resource resource) {
+		val EClass clazz = factory.createEClass()
+		clazz.setName("AbstractRecord")
+		clazz.setAbstract(true)
+		clazz.setInterface(false)
+		
+		val attribute = factory.createEAttribute()
+		attribute.setName('loggingTimestamp')
+		attribute.setEType("long".mapToEMFLiteral)							
+		clazz.getEStructuralFeatures.add(attribute)			
+						
+		return clazz
 	}
 		
 	/**
@@ -201,7 +222,6 @@ class EMFModelGenerator {
 		if (!type.parents.empty) {
 			type.parents.forEach[iface | clazz.ESuperTypes.add(iface.findResultClass(resource))]
 		}
-		System.out.println("template " + clazz.name)
 		type.properties.forEach[property | clazz.getEStructuralFeatures.addUnique(property.composeProperty)]
 	}
 	
@@ -213,16 +233,17 @@ class EMFModelGenerator {
 		
 		if (type.parent != null) {
 			clazz.ESuperTypes.add(type.parent.findResultClass(resource))
-		} 
+		} else {
+			clazz.ESuperTypes.add(abstractRecordClass)
+		}
 		if (!type.parents.empty) {
 			type.parents.forEach[iface | clazz.ESuperTypes.add(iface.findResultClass(resource))]
 		}
-		System.out.println("entity " + clazz.name)
 		type.properties.forEach[property | clazz.getEStructuralFeatures.addUnique(property.composeProperty)]
 	}
 	
 	/**
-	 * 
+	 * Check if a given feature already exists.
 	 */
 	def void addUnique(EList<EStructuralFeature> list, EAttribute attribute) {
 		if (!list.exists[it.name.equals(attribute.name)]) list.add(attribute)
@@ -234,16 +255,36 @@ class EMFModelGenerator {
 	def EAttribute composeProperty(Property property) {
 		val attribute = factory.createEAttribute()
 		attribute.setName(property.name)
-		if (property.type != null) {
-			if (property.type.class_ != null) {
-				attribute.setEType(property.type.class_.name.mapToEMfLiteral)		
+		// TODO EMF only supports single dimension arrays
+		if (!property.type.sizes.empty) {
+			val size = property.type.sizes.get(0).size
+			if (size == 0) {
+				attribute.setLowerBound(0)
+				attribute.setUpperBound(-1)
+			} else {
+				attribute.setLowerBound(size)
+				attribute.setUpperBound(size)
 			}
+		} else {
+			attribute.setLowerBound(1)
+			attribute.setUpperBound(1)
 		}
-		System.out.println("  prop: " + attribute.name)
+		if (property.type != null) {
+			attribute.setDerived(false)
+			if (property.type.class_ != null) {
+				attribute.setEType(property.type.class_.name.mapToEMFLiteral)		
+			}
+		} else { // property is derived
+			attribute.setDerived(true)
+			var originalProperty = property
+			while (originalProperty.referTo != null)
+				originalProperty = originalProperty.referTo			
+			attribute.setEType(originalProperty.type.class_.name.mapToEMFLiteral)
+		}
 		return attribute
 	}
 		
-	def EDataType getMapToEMfLiteral(String name) {
+	def EDataType getMapToEMFLiteral(String name) {
 		switch(name) {
 			case 'byte' : EcorePackage.Literals.EBYTE
 			case 'short' : EcorePackage.Literals.ESHORT

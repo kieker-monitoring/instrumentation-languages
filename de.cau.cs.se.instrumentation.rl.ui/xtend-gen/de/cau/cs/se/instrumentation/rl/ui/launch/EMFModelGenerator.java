@@ -18,6 +18,7 @@ package de.cau.cs.se.instrumentation.rl.ui.launch;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
+import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.Model;
 import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType;
@@ -58,6 +59,8 @@ public class EMFModelGenerator {
   
   private EcoreFactory factory = EcoreFactory.eINSTANCE;
   
+  private EClass abstractRecordClass;
+  
   /**
    * Constructor.
    */
@@ -79,6 +82,8 @@ public class EMFModelGenerator {
     String _portableString = _fullPath.toPortableString();
     URI _createPlatformResourceURI = URI.createPlatformResourceURI(_portableString, true);
     final Resource source = this.resourceSet.getResource(_createPlatformResourceURI, true);
+    EClass _createAbstractRecordClass = this.createAbstractRecordClass(destination);
+    this.abstractRecordClass = _createAbstractRecordClass;
     TreeIterator<EObject> _allContents = source.getAllContents();
     Iterator<Model> _filter = Iterators.<Model>filter(_allContents, Model.class);
     final Procedure1<Model> _function = new Procedure1<Model>() {
@@ -125,6 +130,23 @@ public class EMFModelGenerator {
       }
     };
     IteratorExtensions.<RecordType>forEach(_filter_4, _function_4);
+  }
+  
+  /**
+   * Create the abstract record of Kieker which is hidden from IRL.
+   */
+  public EClass createAbstractRecordClass(final Resource resource) {
+    final EClass clazz = this.factory.createEClass();
+    clazz.setName("AbstractRecord");
+    clazz.setAbstract(true);
+    clazz.setInterface(false);
+    final EAttribute attribute = this.factory.createEAttribute();
+    attribute.setName("loggingTimestamp");
+    EDataType _mapToEMFLiteral = this.getMapToEMFLiteral("long");
+    attribute.setEType(_mapToEMFLiteral);
+    EList<EStructuralFeature> _eStructuralFeatures = clazz.getEStructuralFeatures();
+    _eStructuralFeatures.add(attribute);
+    return clazz;
   }
   
   /**
@@ -377,9 +399,6 @@ public class EMFModelGenerator {
       };
       IterableExtensions.<PartialRecordType>forEach(_parents_1, _function);
     }
-    String _name = clazz.getName();
-    String _plus = ("template " + _name);
-    System.out.println(_plus);
     EList<Property> _properties = type.getProperties();
     final Procedure1<Property> _function_1 = new Procedure1<Property>() {
       public void apply(final Property property) {
@@ -403,6 +422,9 @@ public class EMFModelGenerator {
       RecordType _parent_1 = type.getParent();
       EClass _findResultClass = this.findResultClass(_parent_1, resource);
       _eSuperTypes.add(_findResultClass);
+    } else {
+      EList<EClass> _eSuperTypes_1 = clazz.getESuperTypes();
+      _eSuperTypes_1.add(this.abstractRecordClass);
     }
     EList<PartialRecordType> _parents = type.getParents();
     boolean _isEmpty = _parents.isEmpty();
@@ -418,9 +440,6 @@ public class EMFModelGenerator {
       };
       IterableExtensions.<PartialRecordType>forEach(_parents_1, _function);
     }
-    String _name = clazz.getName();
-    String _plus = ("entity " + _name);
-    System.out.println(_plus);
     EList<Property> _properties = type.getProperties();
     final Procedure1<Property> _function_1 = new Procedure1<Property>() {
       public void apply(final Property property) {
@@ -432,6 +451,9 @@ public class EMFModelGenerator {
     IterableExtensions.<Property>forEach(_properties, _function_1);
   }
   
+  /**
+   * Check if a given feature already exists.
+   */
   public void addUnique(final EList<EStructuralFeature> list, final EAttribute attribute) {
     final Function1<EStructuralFeature,Boolean> _function = new Function1<EStructuralFeature,Boolean>() {
       public Boolean apply(final EStructuralFeature it) {
@@ -455,26 +477,62 @@ public class EMFModelGenerator {
     String _name = property.getName();
     attribute.setName(_name);
     Classifier _type = property.getType();
-    boolean _notEquals = (!Objects.equal(_type, null));
-    if (_notEquals) {
+    EList<ArraySize> _sizes = _type.getSizes();
+    boolean _isEmpty = _sizes.isEmpty();
+    boolean _not = (!_isEmpty);
+    if (_not) {
       Classifier _type_1 = property.getType();
-      EClassifier _class_ = _type_1.getClass_();
+      EList<ArraySize> _sizes_1 = _type_1.getSizes();
+      ArraySize _get = _sizes_1.get(0);
+      final int size = _get.getSize();
+      if ((size == 0)) {
+        attribute.setLowerBound(0);
+        attribute.setUpperBound((-1));
+      } else {
+        attribute.setLowerBound(size);
+        attribute.setUpperBound(size);
+      }
+    } else {
+      attribute.setLowerBound(1);
+      attribute.setUpperBound(1);
+    }
+    Classifier _type_2 = property.getType();
+    boolean _notEquals = (!Objects.equal(_type_2, null));
+    if (_notEquals) {
+      attribute.setDerived(false);
+      Classifier _type_3 = property.getType();
+      EClassifier _class_ = _type_3.getClass_();
       boolean _notEquals_1 = (!Objects.equal(_class_, null));
       if (_notEquals_1) {
-        Classifier _type_2 = property.getType();
-        EClassifier _class__1 = _type_2.getClass_();
+        Classifier _type_4 = property.getType();
+        EClassifier _class__1 = _type_4.getClass_();
         String _name_1 = _class__1.getName();
-        EDataType _mapToEMfLiteral = this.getMapToEMfLiteral(_name_1);
-        attribute.setEType(_mapToEMfLiteral);
+        EDataType _mapToEMFLiteral = this.getMapToEMFLiteral(_name_1);
+        attribute.setEType(_mapToEMFLiteral);
       }
+    } else {
+      attribute.setDerived(true);
+      Property originalProperty = property;
+      Property _referTo = originalProperty.getReferTo();
+      boolean _notEquals_2 = (!Objects.equal(_referTo, null));
+      boolean _while = _notEquals_2;
+      while (_while) {
+        Property _referTo_1 = originalProperty.getReferTo();
+        originalProperty = _referTo_1;
+        Property _referTo_2 = originalProperty.getReferTo();
+        boolean _notEquals_3 = (!Objects.equal(_referTo_2, null));
+        _while = _notEquals_3;
+      }
+      Classifier _type_5 = originalProperty.getType();
+      EClassifier _class__2 = _type_5.getClass_();
+      String _name_2 = _class__2.getName();
+      EDataType _mapToEMFLiteral_1 = this.getMapToEMFLiteral(_name_2);
+      attribute.setEType(_mapToEMFLiteral_1);
     }
-    String _name_2 = attribute.getName();
-    String _plus = ("  prop: " + _name_2);
-    System.out.println(_plus);
     return attribute;
   }
   
-  public EDataType getMapToEMfLiteral(final String name) {
+  public EDataType getMapToEMFLiteral(final String name) {
     EDataType _switchResult = null;
     boolean _matched = false;
     if (!_matched) {

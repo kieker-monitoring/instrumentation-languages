@@ -26,15 +26,17 @@ template IExceptionRecord : IFlowRecord {
 	string cause = ""
 }
 
+template IClassSignature {
+	string classSignature = ""
+}
+
 template IFlowRecord
 
-template IObjectRecord : IFlowRecord {
-	string classSignature = ""
+template IObjectRecord : IFlowRecord, IClassSignature {
 	int objectId = 0
 }
 
-template IOperationRecord : IFlowRecord {
-	string classSignature = ""
+template IOperationRecord : IFlowRecord, IClassSignature {
 	string operationSignature = ""
 
 	// not supported

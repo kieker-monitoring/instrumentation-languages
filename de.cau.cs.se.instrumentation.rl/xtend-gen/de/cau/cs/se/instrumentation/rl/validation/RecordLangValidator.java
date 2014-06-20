@@ -131,19 +131,13 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
           }
         };
         final Property otherProperty = IterableExtensions.<Property>findFirst(_collectAllProperties_1, _function_1);
-        Classifier _type = otherProperty.getType();
-        Classifier _type_1 = property.getType();
-        boolean _typeAndPackageIdentical = this.typeAndPackageIdentical(_type, _type_1);
-        boolean _not = (!_typeAndPackageIdentical);
-        if (_not) {
-          EObject _eContainer_3 = otherProperty.eContainer();
-          String _name = ((Type) _eContainer_3).getName();
-          String _plus = ("Property has been defined in " + _name);
-          String _plus_1 = (_plus + ". Cannot be declared again with a different type.");
-          this.error(_plus_1, 
-            RecordLangPackage.Literals.PROPERTY__NAME, 
-            RecordLangValidator.INVALID_NAME);
-        }
+        EObject _eContainer_3 = otherProperty.eContainer();
+        String _name = ((Type) _eContainer_3).getName();
+        String _plus = ("Property has been defined in " + _name);
+        String _plus_1 = (_plus + ". Cannot be declared again.");
+        this.error(_plus_1, 
+          RecordLangPackage.Literals.PROPERTY__NAME, 
+          RecordLangValidator.INVALID_NAME);
       }
     }
   }
@@ -187,30 +181,22 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
       final Procedure1<Pair<Property,Property>> _function_2 = new Procedure1<Pair<Property,Property>>() {
         public void apply(final Pair<Property,Property> entry) {
           Property _key = entry.getKey();
-          Classifier _type = _key.getType();
+          String _name = _key.getName();
+          String _plus = ("Multiple property inheritance form " + _name);
+          String _plus_1 = (_plus + 
+            " inherited from ");
+          Property _key_1 = entry.getKey();
+          EObject _eContainer = _key_1.eContainer();
+          String _name_1 = ((Type) _eContainer).getName();
+          String _plus_2 = (_plus_1 + _name_1);
+          String _plus_3 = (_plus_2 + " and ");
           Property _value = entry.getValue();
-          Classifier _type_1 = _value.getType();
-          boolean _typeAndPackageIdentical = RecordLangValidator.this.typeAndPackageIdentical(_type, _type_1);
-          boolean _not = (!_typeAndPackageIdentical);
-          if (_not) {
-            Property _key_1 = entry.getKey();
-            String _name = _key_1.getName();
-            String _plus = ("Multiple property inheritance must have same type: Property " + _name);
-            String _plus_1 = (_plus + 
-              " inherited from ");
-            Property _key_2 = entry.getKey();
-            EObject _eContainer = _key_2.eContainer();
-            String _name_1 = ((Type) _eContainer).getName();
-            String _plus_2 = (_plus_1 + _name_1);
-            String _plus_3 = (_plus_2 + " and ");
-            Property _value_1 = entry.getValue();
-            EObject _eContainer_1 = _value_1.eContainer();
-            String _name_2 = ((Type) _eContainer_1).getName();
-            String _plus_4 = (_plus_3 + _name_2);
-            RecordLangValidator.this.error(_plus_4, 
-              RecordLangPackage.Literals.TYPE__PARENTS, 
-              RecordLangValidator.INVALID_NAME);
-          }
+          EObject _eContainer_1 = _value.eContainer();
+          String _name_2 = ((Type) _eContainer_1).getName();
+          String _plus_4 = (_plus_3 + _name_2);
+          RecordLangValidator.this.error(_plus_4, 
+            RecordLangPackage.Literals.TYPE__PARENTS, 
+            RecordLangValidator.INVALID_NAME);
         }
       };
       IterableExtensions.<Pair<Property,Property>>forEach(duplicates, _function_2);
@@ -256,30 +242,22 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
       final Procedure1<Pair<Property,Property>> _function_2 = new Procedure1<Pair<Property,Property>>() {
         public void apply(final Pair<Property,Property> entry) {
           Property _key = entry.getKey();
-          Classifier _type = _key.getType();
+          String _name = _key.getName();
+          String _plus = ("Multiple property inheritance from " + _name);
+          String _plus_1 = (_plus + 
+            " inherited from ");
+          Property _key_1 = entry.getKey();
+          EObject _eContainer = _key_1.eContainer();
+          String _name_1 = ((Type) _eContainer).getName();
+          String _plus_2 = (_plus_1 + _name_1);
+          String _plus_3 = (_plus_2 + " and ");
           Property _value = entry.getValue();
-          Classifier _type_1 = _value.getType();
-          boolean _typeAndPackageIdentical = RecordLangValidator.this.typeAndPackageIdentical(_type, _type_1);
-          boolean _not = (!_typeAndPackageIdentical);
-          if (_not) {
-            Property _key_1 = entry.getKey();
-            String _name = _key_1.getName();
-            String _plus = ("Multiple property inheritance must have same type: Property " + _name);
-            String _plus_1 = (_plus + 
-              " inherited from ");
-            Property _key_2 = entry.getKey();
-            EObject _eContainer = _key_2.eContainer();
-            String _name_1 = ((Type) _eContainer).getName();
-            String _plus_2 = (_plus_1 + _name_1);
-            String _plus_3 = (_plus_2 + " and ");
-            Property _value_1 = entry.getValue();
-            EObject _eContainer_1 = _value_1.eContainer();
-            String _name_2 = ((Type) _eContainer_1).getName();
-            String _plus_4 = (_plus_3 + _name_2);
-            RecordLangValidator.this.error(_plus_4, 
-              RecordLangPackage.Literals.TYPE__PARENTS, 
-              RecordLangValidator.INVALID_NAME);
-          }
+          EObject _eContainer_1 = _value.eContainer();
+          String _name_2 = ((Type) _eContainer_1).getName();
+          String _plus_4 = (_plus_3 + _name_2);
+          RecordLangValidator.this.error(_plus_4, 
+            RecordLangPackage.Literals.TYPE__PARENTS, 
+            RecordLangValidator.INVALID_NAME);
         }
       };
       IterableExtensions.<Pair<Property,Property>>forEach(duplicates, _function_2);
