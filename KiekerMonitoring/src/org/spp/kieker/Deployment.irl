@@ -7,10 +7,10 @@ template GeoLocation {
 	short countryCode = 049 // country code ISO
 }
 
-abstract entity ContextEvent extends AbstractEvent : IEventRecord {
+abstract entity ContextEvent extends AbstractEvent {
 	string serivce
 	string context
-	string nodeId  
+	string deploymentId  
 }
 
 entity ContextInitializedEvent extends ContextEvent
@@ -22,7 +22,7 @@ entity ContextDestroyedEvent extends ContextEvent
  * describe the logical unit while the IP specifies a concrete
  * server. 
  */
-entity ServerGeoLocation : GeoLocation {
+entity ServerGeoLocation extends AbstractEvent : GeoLocation {
 	string hostname
 	string address
 }

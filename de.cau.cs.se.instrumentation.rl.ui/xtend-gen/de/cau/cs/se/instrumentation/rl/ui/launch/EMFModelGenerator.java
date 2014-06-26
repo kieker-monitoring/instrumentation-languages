@@ -37,9 +37,10 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcoreFactory;
-import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.EcorePackage.Literals;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.xbase.lib.Conversions;
@@ -55,6 +56,8 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
  */
 @SuppressWarnings("all")
 public class EMFModelGenerator {
+  private final static String SERVICE_PACKAGE = "kieker.common.model";
+  
   private ResourceSet resourceSet;
   
   private EcoreFactory factory = EcoreFactory.eINSTANCE;
@@ -82,7 +85,7 @@ public class EMFModelGenerator {
     String _portableString = _fullPath.toPortableString();
     URI _createPlatformResourceURI = URI.createPlatformResourceURI(_portableString, true);
     final Resource source = this.resourceSet.getResource(_createPlatformResourceURI, true);
-    EClass _createAbstractRecordClass = this.createAbstractRecordClass(destination);
+    EClass _createAbstractRecordClass = this.createAbstractRecordClass();
     this.abstractRecordClass = _createAbstractRecordClass;
     TreeIterator<EObject> _allContents = source.getAllContents();
     Iterator<Model> _filter = Iterators.<Model>filter(_allContents, Model.class);
@@ -92,11 +95,16 @@ public class EMFModelGenerator {
       }
     };
     IteratorExtensions.<Model>forEach(_filter, _function);
+    String[] _split = EMFModelGenerator.SERVICE_PACKAGE.split("\\.");
+    this.composePackageHierarchy(_split, destination);
+    this.insert(destination, this.abstractRecordClass, "kieker.common.record");
+    EClass _createContainmentClass = this.createContainmentClass();
+    this.insert(destination, _createContainmentClass, EMFModelGenerator.SERVICE_PACKAGE);
     TreeIterator<EObject> _allContents_1 = source.getAllContents();
     Iterator<PartialRecordType> _filter_1 = Iterators.<PartialRecordType>filter(_allContents_1, PartialRecordType.class);
     final Procedure1<PartialRecordType> _function_1 = new Procedure1<PartialRecordType>() {
       public void apply(final PartialRecordType type) {
-        EClass _createInterface = EMFModelGenerator.this.createInterface(type, destination);
+        EClass _createInterface = EMFModelGenerator.this.createInterface(type);
         EObject _eContainer = type.eContainer();
         String _name = ((Model) _eContainer).getName();
         EMFModelGenerator.this.insert(destination, _createInterface, _name);
@@ -107,7 +115,7 @@ public class EMFModelGenerator {
     Iterator<RecordType> _filter_2 = Iterators.<RecordType>filter(_allContents_2, RecordType.class);
     final Procedure1<RecordType> _function_2 = new Procedure1<RecordType>() {
       public void apply(final RecordType type) {
-        EClass _createClass = EMFModelGenerator.this.createClass(type, destination);
+        EClass _createClass = EMFModelGenerator.this.createClass(type);
         EObject _eContainer = type.eContainer();
         String _name = ((Model) _eContainer).getName();
         EMFModelGenerator.this.insert(destination, _createClass, _name);
@@ -135,9 +143,9 @@ public class EMFModelGenerator {
   /**
    * Create the abstract record of Kieker which is hidden from IRL.
    */
-  public EClass createAbstractRecordClass(final Resource resource) {
+  public EClass createAbstractRecordClass() {
     final EClass clazz = this.factory.createEClass();
-    clazz.setName("AbstractRecord");
+    clazz.setName("AbstractMonitoringRecord");
     clazz.setAbstract(true);
     clazz.setInterface(false);
     final EAttribute attribute = this.factory.createEAttribute();
@@ -149,6 +157,24 @@ public class EMFModelGenerator {
     return clazz;
   }
   
+  public EClass createContainmentClass() {
+    final EClass clazz = this.factory.createEClass();
+    clazz.setName("MonitoringModel");
+    clazz.setAbstract(false);
+    clazz.setInterface(false);
+    final EReference reference = this.factory.createEReference();
+    reference.setName("data");
+    reference.setEType(this.abstractRecordClass);
+    reference.setContainment(true);
+    reference.setLowerBound(0);
+    int _minus = (-1);
+    reference.setUpperBound(_minus);
+    reference.setOrdered(true);
+    EList<EStructuralFeature> _eStructuralFeatures = clazz.getEStructuralFeatures();
+    _eStructuralFeatures.add(reference);
+    return clazz;
+  }
+  
   /**
    * Check if a package hierarchy exists for the given model and if not
    * add one to the hierarchy. For all root packages add that to the resource
@@ -156,6 +182,10 @@ public class EMFModelGenerator {
   public void composePackageHierarchy(final Model model, final Resource resource) {
     String _name = model.getName();
     final String[] modelName = _name.split("\\.");
+    this.composePackageHierarchy(modelName, resource);
+  }
+  
+  public void composePackageHierarchy(final String[] modelName, final Resource resource) {
     EList<EObject> _contents = resource.getContents();
     Iterable<EPackage> _filter = Iterables.<EPackage>filter(_contents, EPackage.class);
     final Procedure1<EPackage> _function = new Procedure1<EPackage>() {
@@ -176,7 +206,8 @@ public class EMFModelGenerator {
       public Boolean apply(final EPackage p) {
         String _name = p.getName();
         Object _get = modelName[0];
-        return Boolean.valueOf(_name.equals(_get));
+        boolean _equals = _name.equals(_get);
+        return Boolean.valueOf(_equals);
       }
     };
     boolean _exists = IterableExtensions.<EPackage>exists(_filter_1, _function_1);
@@ -216,7 +247,8 @@ public class EMFModelGenerator {
     final Function1<EPackage,Boolean> _function_1 = new Function1<EPackage,Boolean>() {
       public Boolean apply(final EPackage p) {
         String _name = p.getName();
-        return Boolean.valueOf(_name.equals(nodeName));
+        boolean _equals = _name.equals(nodeName);
+        return Boolean.valueOf(_equals);
       }
     };
     boolean _exists = IterableExtensions.<EPackage>exists(_eSubpackages_1, _function_1);
@@ -233,7 +265,9 @@ public class EMFModelGenerator {
     final EPackage p = this.factory.createEPackage();
     p.setName(name);
     p.setNsPrefix(name);
-    p.setNsURI(((parentURI + "/") + name));
+    String _plus = (parentURI + "/");
+    String _plus_1 = (_plus + name);
+    p.setNsURI(_plus_1);
     return p;
   }
   
@@ -261,15 +295,16 @@ public class EMFModelGenerator {
       public Boolean apply(final EPackage it) {
         String _get = packagePath[0];
         String _name = it.getName();
-        return Boolean.valueOf(_get.equals(_name));
+        boolean _equals = _get.equals(_name);
+        return Boolean.valueOf(_equals);
       }
     };
     EPackage _findFirst = IterableExtensions.<EPackage>findFirst(_filter, _function);
     Iterable<String> _tail = IterableExtensions.<String>tail(((Iterable<String>)Conversions.doWrapArray(packagePath)));
-    this.findAndinsert(_findFirst, classifier, _tail);
+    this.findAndInsert(_findFirst, classifier, _tail);
   }
   
-  public void findAndinsert(final EPackage pkg, final EClassifier classifier, final Iterable<String> packagePath) {
+  public void findAndInsert(final EPackage pkg, final EClassifier classifier, final Iterable<String> packagePath) {
     boolean _isEmpty = IterableExtensions.isEmpty(packagePath);
     if (_isEmpty) {
       EList<EClassifier> _eClassifiers = pkg.getEClassifiers();
@@ -277,7 +312,8 @@ public class EMFModelGenerator {
         public Boolean apply(final EClassifier it) {
           String _name = it.getName();
           String _name_1 = classifier.getName();
-          return Boolean.valueOf(_name.equals(_name_1));
+          boolean _equals = _name.equals(_name_1);
+          return Boolean.valueOf(_equals);
         }
       };
       boolean _exists = IterableExtensions.<EClassifier>exists(_eClassifiers, _function);
@@ -292,12 +328,13 @@ public class EMFModelGenerator {
         public Boolean apply(final EPackage it) {
           String _get = ((String[])Conversions.unwrapArray(packagePath, String.class))[0];
           String _name = it.getName();
-          return Boolean.valueOf(_get.equals(_name));
+          boolean _equals = _get.equals(_name);
+          return Boolean.valueOf(_equals);
         }
       };
       EPackage _findFirst = IterableExtensions.<EPackage>findFirst(_eSubpackages, _function_1);
       Iterable<String> _tail = IterableExtensions.<String>tail(packagePath);
-      this.findAndinsert(_findFirst, classifier, _tail);
+      this.findAndInsert(_findFirst, classifier, _tail);
     }
   }
   
@@ -314,7 +351,8 @@ public class EMFModelGenerator {
       public Boolean apply(final EPackage p) {
         String _name = p.getName();
         Object _get = packagePath[0];
-        return Boolean.valueOf(_name.equals(_get));
+        boolean _equals = _name.equals(_get);
+        return Boolean.valueOf(_equals);
       }
     };
     final EPackage pkg = IterableExtensions.<EPackage>findFirst(_filter, _function);
@@ -330,7 +368,8 @@ public class EMFModelGenerator {
         public Boolean apply(final EClassifier clazz) {
           String _name = clazz.getName();
           String _name_1 = type.getName();
-          return Boolean.valueOf(_name.equals(_name_1));
+          boolean _equals = _name.equals(_name_1);
+          return Boolean.valueOf(_equals);
         }
       };
       EClassifier _findFirst = IterableExtensions.<EClassifier>findFirst(_eClassifiers, _function);
@@ -341,7 +380,8 @@ public class EMFModelGenerator {
         public Boolean apply(final EPackage p) {
           String _name = p.getName();
           Object _get = ((Object[])Conversions.unwrapArray(packagePath, Object.class))[0];
-          return Boolean.valueOf(_name.equals(_get));
+          boolean _equals = _name.equals(_get);
+          return Boolean.valueOf(_equals);
         }
       };
       final EPackage subpkg = IterableExtensions.<EPackage>findFirst(_eSubpackages, _function_1);
@@ -358,7 +398,7 @@ public class EMFModelGenerator {
   /**
    * Compose an EMF interface for the given partial record type/template.
    */
-  public EClass createInterface(final PartialRecordType type, final Resource resource) {
+  public EClass createInterface(final PartialRecordType type) {
     final EClass clazz = this.factory.createEClass();
     String _name = type.getName();
     clazz.setName(_name);
@@ -370,7 +410,7 @@ public class EMFModelGenerator {
   /**
    * Compose an EMF class for the given record type.
    */
-  public EClass createClass(final RecordType type, final Resource resource) {
+  public EClass createClass(final RecordType type) {
     final EClass clazz = this.factory.createEClass();
     String _name = type.getName();
     clazz.setName(_name);
@@ -459,7 +499,8 @@ public class EMFModelGenerator {
       public Boolean apply(final EStructuralFeature it) {
         String _name = it.getName();
         String _name_1 = attribute.getName();
-        return Boolean.valueOf(_name.equals(_name_1));
+        boolean _equals = _name.equals(_name_1);
+        return Boolean.valueOf(_equals);
       }
     };
     boolean _exists = IterableExtensions.<EStructuralFeature>exists(list, _function);
@@ -476,39 +517,17 @@ public class EMFModelGenerator {
     final EAttribute attribute = this.factory.createEAttribute();
     String _name = property.getName();
     attribute.setName(_name);
+    Classifier type = null;
     Classifier _type = property.getType();
-    EList<ArraySize> _sizes = _type.getSizes();
-    boolean _isEmpty = _sizes.isEmpty();
-    boolean _not = (!_isEmpty);
-    if (_not) {
-      Classifier _type_1 = property.getType();
-      EList<ArraySize> _sizes_1 = _type_1.getSizes();
-      ArraySize _get = _sizes_1.get(0);
-      final int size = _get.getSize();
-      if ((size == 0)) {
-        attribute.setLowerBound(0);
-        attribute.setUpperBound((-1));
-      } else {
-        attribute.setLowerBound(size);
-        attribute.setUpperBound(size);
-      }
-    } else {
-      attribute.setLowerBound(1);
-      attribute.setUpperBound(1);
-    }
-    Classifier _type_2 = property.getType();
-    boolean _notEquals = (!Objects.equal(_type_2, null));
+    boolean _notEquals = (!Objects.equal(_type, null));
     if (_notEquals) {
       attribute.setDerived(false);
-      Classifier _type_3 = property.getType();
-      EClassifier _class_ = _type_3.getClass_();
+      Classifier _type_1 = property.getType();
+      EClassifier _class_ = _type_1.getClass_();
       boolean _notEquals_1 = (!Objects.equal(_class_, null));
       if (_notEquals_1) {
-        Classifier _type_4 = property.getType();
-        EClassifier _class__1 = _type_4.getClass_();
-        String _name_1 = _class__1.getName();
-        EDataType _mapToEMFLiteral = this.getMapToEMFLiteral(_name_1);
-        attribute.setEType(_mapToEMFLiteral);
+        Classifier _type_2 = property.getType();
+        type = _type_2;
       }
     } else {
       attribute.setDerived(true);
@@ -523,11 +542,41 @@ public class EMFModelGenerator {
         boolean _notEquals_3 = (!Objects.equal(_referTo_2, null));
         _while = _notEquals_3;
       }
-      Classifier _type_5 = originalProperty.getType();
-      EClassifier _class__2 = _type_5.getClass_();
-      String _name_2 = _class__2.getName();
-      EDataType _mapToEMFLiteral_1 = this.getMapToEMFLiteral(_name_2);
-      attribute.setEType(_mapToEMFLiteral_1);
+      Classifier _type_3 = originalProperty.getType();
+      type = _type_3;
+    }
+    String _plus = ("t " + type);
+    System.out.println(_plus);
+    EClassifier _class__1 = type.getClass_();
+    String _name_1 = _class__1.getName();
+    EDataType _mapToEMFLiteral = this.getMapToEMFLiteral(_name_1);
+    attribute.setEType(_mapToEMFLiteral);
+    EList<ArraySize> _sizes = type.getSizes();
+    boolean _notEquals_3 = (!Objects.equal(_sizes, null));
+    if (_notEquals_3) {
+      EList<ArraySize> _sizes_1 = type.getSizes();
+      boolean _isEmpty = _sizes_1.isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        EList<ArraySize> _sizes_2 = type.getSizes();
+        ArraySize _get = _sizes_2.get(0);
+        final int size = _get.getSize();
+        boolean _equals = (size == 0);
+        if (_equals) {
+          attribute.setLowerBound(0);
+          int _minus = (-1);
+          attribute.setUpperBound(_minus);
+        } else {
+          attribute.setLowerBound(size);
+          attribute.setUpperBound(size);
+        }
+      } else {
+        attribute.setLowerBound(1);
+        attribute.setUpperBound(1);
+      }
+    } else {
+      attribute.setLowerBound(1);
+      attribute.setUpperBound(1);
     }
     return attribute;
   }
@@ -538,53 +587,53 @@ public class EMFModelGenerator {
     if (!_matched) {
       if (Objects.equal(name,"byte")) {
         _matched=true;
-        _switchResult = EcorePackage.Literals.EBYTE;
+        _switchResult = Literals.EBYTE;
       }
     }
     if (!_matched) {
       if (Objects.equal(name,"short")) {
         _matched=true;
-        _switchResult = EcorePackage.Literals.ESHORT;
+        _switchResult = Literals.ESHORT;
       }
     }
     if (!_matched) {
       if (Objects.equal(name,"int")) {
         _matched=true;
-        _switchResult = EcorePackage.Literals.EINT;
+        _switchResult = Literals.EINT;
       }
     }
     if (!_matched) {
       if (Objects.equal(name,"long")) {
         _matched=true;
-        _switchResult = EcorePackage.Literals.ELONG;
+        _switchResult = Literals.ELONG;
       }
     }
     if (!_matched) {
       if (Objects.equal(name,"float")) {
         _matched=true;
-        _switchResult = EcorePackage.Literals.EFLOAT;
+        _switchResult = Literals.EFLOAT;
       }
     }
     if (!_matched) {
       if (Objects.equal(name,"double")) {
         _matched=true;
-        _switchResult = EcorePackage.Literals.EDOUBLE;
+        _switchResult = Literals.EDOUBLE;
       }
     }
     if (!_matched) {
       if (Objects.equal(name,"string")) {
         _matched=true;
-        _switchResult = EcorePackage.Literals.ESTRING;
+        _switchResult = Literals.ESTRING;
       }
     }
     if (!_matched) {
       if (Objects.equal(name,"boolean")) {
         _matched=true;
-        _switchResult = EcorePackage.Literals.EBOOLEAN;
+        _switchResult = Literals.EBOOLEAN;
       }
     }
     if (!_matched) {
-      _switchResult = EcorePackage.Literals.EBOOLEAN;
+      _switchResult = Literals.EBOOLEAN;
     }
     return _switchResult;
   }

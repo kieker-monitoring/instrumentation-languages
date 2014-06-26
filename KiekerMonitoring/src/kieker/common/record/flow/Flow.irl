@@ -52,6 +52,6 @@ template IOperationRecord : IFlowRecord, IClassSignature {
 }
 
 template ITraceRecord : IFlowRecord {
-	long traceId = -1
+	long traceId = -1 // fkey TraceMetadata.traceId
 	int orderIndex = -1
 }

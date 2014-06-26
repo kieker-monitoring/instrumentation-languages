@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.EcorePackage
 import org.eclipse.emf.ecore.EDataType
 import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.EStructuralFeature
+import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
 
 /**
  * Provides an example generator for EMF models out of IRL specification.
@@ -40,6 +41,8 @@ import org.eclipse.emf.ecore.EStructuralFeature
  * @author Reiner Jung
  */
 class EMFModelGenerator {
+	
+	private val static SERVICE_PACKAGE = 'kieker.common.model'
 	
 	private ResourceSet resourceSet
 	private EcoreFactory factory = EcoreFactory.eINSTANCE
@@ -61,18 +64,26 @@ class EMFModelGenerator {
 	def void doGenerate (IFile file, Resource destination) {
 		System.out.println ("FILE " + file.toString)
 		val Resource source = resourceSet.getResource(URI::createPlatformResourceURI(file.getFullPath().toPortableString(), true), true)
-		
+
 		// create basic classes and interfaces
-		abstractRecordClass = createAbstractRecordClass(destination)
+		abstractRecordClass = createAbstractRecordClass()
 		
+		// TODO containment main class missing, think of further required infrastructure
+	
+				
 		// create package hierarchy
 		source.allContents.filter(typeof(Model)).forEach[type | type.composePackageHierarchy(destination)]
+		composePackageHierarchy(SERVICE_PACKAGE.split('\\.'), destination)
+
+		// TODO make this configurable
+		destination.insert(abstractRecordClass, 'kieker.common.record')		
+		destination.insert(createContainmentClass(), SERVICE_PACKAGE)
 
 		// create classes and interfaces
 		source.allContents.filter(typeof(PartialRecordType)).
-			forEach[type | destination.insert(type.createInterface(destination), (type.eContainer as Model).name)]
+			forEach[type | destination.insert(type.createInterface, (type.eContainer as Model).name)]
 		source.allContents.filter(typeof(RecordType)).
-			forEach[type | destination.insert(type.createClass(destination), (type.eContainer as Model).name)]
+			forEach[type | destination.insert(type.createClass, (type.eContainer as Model).name)]
 
 		// complete declaration classes and interfaces
 		source.allContents.filter(typeof(PartialRecordType)).forEach[type | type.composeInterface(destination)]
@@ -82,9 +93,9 @@ class EMFModelGenerator {
 	/**
 	 * Create the abstract record of Kieker which is hidden from IRL.
 	 */
-	def createAbstractRecordClass(Resource resource) {
+	def createAbstractRecordClass() {
 		val EClass clazz = factory.createEClass()
-		clazz.setName("AbstractRecord")
+		clazz.setName("AbstractMonitoringRecord")
 		clazz.setAbstract(true)
 		clazz.setInterface(false)
 		
@@ -95,6 +106,25 @@ class EMFModelGenerator {
 						
 		return clazz
 	}
+	
+	def createContainmentClass() {
+		val EClass clazz = factory.createEClass()
+		clazz.setName("MonitoringModel")
+		clazz.setAbstract(false)
+		clazz.setInterface(false)
+		
+		val reference = factory.createEReference()
+		reference.setName('data')
+		reference.setEType(abstractRecordClass)
+		reference.setContainment(true)
+		reference.setLowerBound(0)
+		reference.setUpperBound(-1)
+		reference.setOrdered(true)
+		
+		clazz.getEStructuralFeatures.add(reference)
+		
+		return clazz
+	}
 		
 	/**
 	 * Check if a package hierarchy exists for the given model and if not
@@ -102,6 +132,10 @@ class EMFModelGenerator {
 	 */
 	def void composePackageHierarchy(Model model, Resource resource) {
 		val String[] modelName = model.name.split('\\.')
+		composePackageHierarchy(modelName,resource)
+	}
+	
+	def void composePackageHierarchy(String[] modelName, Resource resource) {
 		resource.contents.filter(typeof(EPackage)).forEach[p | if (p.name.equals(modelName.get(0))) checkChildPackages(modelName.tail, p)]
 		if (!resource.contents.filter(typeof(EPackage)).exists[p | p.name.equals(modelName.get(0))]) {
 			// unknown root node create node tree
@@ -155,15 +189,15 @@ class EMFModelGenerator {
 	
 	def void insert(Resource resource, EClassifier classifier, String packageName) {
 		val packagePath = packageName.split('\\.')
-		resource.contents.filter(typeof(EPackage)).findFirst[packagePath.get(0).equals(it.name)].findAndinsert(classifier,packagePath.tail)
+		resource.contents.filter(typeof(EPackage)).findFirst[packagePath.get(0).equals(it.name)].findAndInsert(classifier,packagePath.tail)
 	}
 	
-	def void findAndinsert(EPackage pkg, EClassifier classifier, Iterable<String> packagePath) {
+	def void findAndInsert(EPackage pkg, EClassifier classifier, Iterable<String> packagePath) {
 		if (packagePath.empty) {
 			if (!pkg.EClassifiers.exists[it.name.equals(classifier.name)])
 				pkg.EClassifiers.add(classifier)
 		} else
-			pkg.ESubpackages.findFirst[packagePath.get(0).equals(it.name)].findAndinsert(classifier,packagePath.tail)
+			pkg.ESubpackages.findFirst[packagePath.get(0).equals(it.name)].findAndInsert(classifier,packagePath.tail)
 	}
 	
 	/**
@@ -192,7 +226,7 @@ class EMFModelGenerator {
 	/**
 	 * Compose an EMF interface for the given partial record type/template.
 	 */
-	def EClass createInterface(PartialRecordType type, Resource resource) {
+	def EClass createInterface(PartialRecordType type) {
 		val EClass clazz = factory.createEClass()
 		clazz.setName(type.name)
 		clazz.setInterface(true)
@@ -204,7 +238,7 @@ class EMFModelGenerator {
 	/**
 	 * Compose an EMF class for the given record type.
 	 */
-	def EClass createClass(RecordType type, Resource resource) {
+	def EClass createClass(RecordType type) {
 		val EClass clazz = factory.createEClass()
 		clazz.setName(type.name)
 		clazz.setAbstract(type.abstract)
@@ -256,31 +290,41 @@ class EMFModelGenerator {
 		val attribute = factory.createEAttribute()
 		attribute.setName(property.name)
 		// TODO EMF only supports single dimension arrays
-		if (!property.type.sizes.empty) {
-			val size = property.type.sizes.get(0).size
-			if (size == 0) {
-				attribute.setLowerBound(0)
-				attribute.setUpperBound(-1)
-			} else {
-				attribute.setLowerBound(size)
-				attribute.setUpperBound(size)
-			}
-		} else {
-			attribute.setLowerBound(1)
-			attribute.setUpperBound(1)
-		}
+		var Classifier type = null
 		if (property.type != null) {
 			attribute.setDerived(false)
 			if (property.type.class_ != null) {
-				attribute.setEType(property.type.class_.name.mapToEMFLiteral)		
+				type = property.type		
 			}
 		} else { // property is derived
 			attribute.setDerived(true)
 			var originalProperty = property
 			while (originalProperty.referTo != null)
 				originalProperty = originalProperty.referTo			
-			attribute.setEType(originalProperty.type.class_.name.mapToEMFLiteral)
+			type = originalProperty.type
 		}
+		
+		System.out.println("t " + type)
+		attribute.setEType(type.class_.name.mapToEMFLiteral)
+		if (type.sizes != null) {
+			if (!type.sizes.empty) {
+				val size = type.sizes.get(0).size
+				if (size == 0) {
+					attribute.setLowerBound(0)
+					attribute.setUpperBound(-1)
+				} else {
+					attribute.setLowerBound(size)
+					attribute.setUpperBound(size)
+				}
+			} else {
+				attribute.setLowerBound(1)
+				attribute.setUpperBound(1)
+			}
+		} else {
+			attribute.setLowerBound(1)
+			attribute.setUpperBound(1)
+		}
+		
 		return attribute
 	}
 		
