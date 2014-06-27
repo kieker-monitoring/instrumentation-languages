@@ -82,7 +82,6 @@ public class EMFLaunchConfigurationDelegate extends LaunchConfigurationDelegate 
 		for (final IResource resource : members) {
 			if (resource instanceof IFile) {
 				if (IRL_EXTENSION.equals(((IFile)resource).getFileExtension())) {
-					System.out.println(" path " + resource.getFullPath().toString());
 					generator.doGenerate(((IFile)resource), output);
 				}
 			} else if (resource instanceof IFolder) {

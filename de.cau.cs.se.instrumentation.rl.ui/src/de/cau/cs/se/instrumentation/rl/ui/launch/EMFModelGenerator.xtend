@@ -43,7 +43,9 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
 class EMFModelGenerator {
 	
 	private val static SERVICE_PACKAGE = 'kieker.common.model'
-	
+	private val static KIEKER_ROOT_PACKAGE = 'kieker.common.record'
+	private val static KIEKER_ROOT_RECORD = 'AbstractMonitoringRecord'
+		
 	private ResourceSet resourceSet
 	private EcoreFactory factory = EcoreFactory.eINSTANCE
 	private EClass abstractRecordClass
@@ -62,23 +64,22 @@ class EMFModelGenerator {
 	 * @param destination the EMF model resource
 	 */
 	def void doGenerate (IFile file, Resource destination) {
-		System.out.println ("FILE " + file.toString)
-		val Resource source = resourceSet.getResource(URI::createPlatformResourceURI(file.getFullPath().toPortableString(), true), true)
-
-		// create basic classes and interfaces
-		abstractRecordClass = createAbstractRecordClass()
-		
-		// TODO containment main class missing, think of further required infrastructure
-	
+		val Resource source = resourceSet.getResource(URI::createPlatformResourceURI(file.getFullPath().toPortableString(), true), true)	
 				
 		// create package hierarchy
-		source.allContents.filter(typeof(Model)).forEach[type | type.composePackageHierarchy(destination)]
+		composePackageHierarchy(KIEKER_ROOT_PACKAGE.split('\\.'), destination)
 		composePackageHierarchy(SERVICE_PACKAGE.split('\\.'), destination)
+		source.allContents.filter(typeof(Model)).forEach[type | type.composePackageHierarchy(destination)]
 
-		// TODO make this configurable
-		destination.insert(abstractRecordClass, 'kieker.common.record')		
+		// TODO make locations configurable
+		// create basic classes and interfaces  if they do not already exist
+		destination.insert(createAbstractRecordClass(), KIEKER_ROOT_PACKAGE)
+		// find base class
+		abstractRecordClass = destination.findPackage(KIEKER_ROOT_PACKAGE).
+			EClassifiers.findFirst[KIEKER_ROOT_RECORD.equals(it.name)] as EClass 
+				
 		destination.insert(createContainmentClass(), SERVICE_PACKAGE)
-
+				
 		// create classes and interfaces
 		source.allContents.filter(typeof(PartialRecordType)).
 			forEach[type | destination.insert(type.createInterface, (type.eContainer as Model).name)]
@@ -89,13 +90,13 @@ class EMFModelGenerator {
 		source.allContents.filter(typeof(PartialRecordType)).forEach[type | type.composeInterface(destination)]
 		source.allContents.filter(typeof(RecordType)).forEach[type | type.composeClass(destination)]
 	}
-	
+		
 	/**
 	 * Create the abstract record of Kieker which is hidden from IRL.
 	 */
 	def createAbstractRecordClass() {
 		val EClass clazz = factory.createEClass()
-		clazz.setName("AbstractMonitoringRecord")
+		clazz.setName(KIEKER_ROOT_RECORD)
 		clazz.setAbstract(true)
 		clazz.setInterface(false)
 		
@@ -187,17 +188,32 @@ class EMFModelGenerator {
 		}
 	}
 	
+	/**
+	 * Insert classifier into a package.
+	 */
 	def void insert(Resource resource, EClassifier classifier, String packageName) {
+		val pkg = resource.findPackage(packageName)
+		if (!pkg.EClassifiers.exists[it.name.equals(classifier.name)])
+			pkg.EClassifiers.add(classifier)
+	}
+		
+	/**
+	 * Find the correct nested package.
+	 */
+	def EPackage findPackage(Resource resource, String packageName) {
 		val packagePath = packageName.split('\\.')
-		resource.contents.filter(typeof(EPackage)).findFirst[packagePath.get(0).equals(it.name)].findAndInsert(classifier,packagePath.tail)
+		return resource.contents.filter(typeof(EPackage)).findFirst[packagePath.get(0).equals(it.name)].findPackage(packagePath.tail)
 	}
 	
-	def void findAndInsert(EPackage pkg, EClassifier classifier, Iterable<String> packagePath) {
+	/**
+	 * Find the correct nested package.
+	 */
+	def EPackage findPackage(EPackage parent, Iterable<String> packagePath) {
 		if (packagePath.empty) {
-			if (!pkg.EClassifiers.exists[it.name.equals(classifier.name)])
-				pkg.EClassifiers.add(classifier)
-		} else
-			pkg.ESubpackages.findFirst[packagePath.get(0).equals(it.name)].findAndInsert(classifier,packagePath.tail)
+			return parent
+		} else {
+			return parent.ESubpackages.findFirst[packagePath.get(0).equals(it.name)].findPackage(packagePath.tail)
+		}
 	}
 	
 	/**
@@ -304,7 +320,6 @@ class EMFModelGenerator {
 			type = originalProperty.type
 		}
 		
-		System.out.println("t " + type)
 		attribute.setEType(type.class_.name.mapToEMFLiteral)
 		if (type.sizes != null) {
 			if (!type.sizes.empty) {
