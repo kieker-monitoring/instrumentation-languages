@@ -19,13 +19,6 @@ Package:
 	'use' name=ID package=[ecore::EPackage|STRING] 
 ;
 
-QualifiedName:
-  ID (=>'.' ID)*;
-
-QualifiedNameWithWildcard:
-	QualifiedName ('.' '*')?
-;
-
 Type:
 	RecordType | PartialRecordType 
 ;
@@ -94,6 +87,13 @@ BooleanLiteral:
 
 ConstantLiteral:
 	value=[Constant|ID]
+;
+
+QualifiedName:
+  ID (=>'.' ID)*;
+
+QualifiedNameWithWildcard:
+	QualifiedName ('.' '*')?
 ;
 
 // terminals
