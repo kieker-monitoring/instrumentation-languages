@@ -30,86 +30,91 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    * @params version
    * 		generic kieker version for the record
    */
-  public CharSequence createContent(final RecordType type, final String author, final String version) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("/***************************************************************************");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* Copyright 2013 Kieker Project (http://kieker-monitoring.net)");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("*");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* Licensed under the Apache License, Version 2.0 (the \"License\");");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* you may not use this file except in compliance with the License.");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* You may obtain a copy of the License at");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("*");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("*     http://www.apache.org/licenses/LICENSE-2.0");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("*");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* Unless required by applicable law or agreed to in writing, software");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* distributed under the License is distributed on an \"AS IS\" BASIS,");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* See the License for the specific language governing permissions and");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* limitations under the License.");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("***************************************************************************/");
-    _builder.newLine();
-    _builder.append("#include <stdlib.h>");
-    _builder.newLine();
-    _builder.append("#include <kieker.h>");
-    _builder.newLine();
-    _builder.append("#include \"");
-    CharSequence _directoryName = this.directoryName(type);
-    _builder.append(_directoryName, "");
-    _builder.append("/");
-    CharSequence _packageName = this.packageName(type);
-    _builder.append(_packageName, "");
-    _builder.append("_");
-    String _name = type.getName();
-    String _cstyle = this.getCstyle(_name);
-    _builder.append(_cstyle, "");
-    _builder.append(".h\"");
-    _builder.newLineIfNotEmpty();
-    _builder.newLine();
-    _builder.append("/**");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* Author: ");
-    _builder.append(author, " ");
-    _builder.newLineIfNotEmpty();
-    _builder.append(" ");
-    _builder.append("* Version: ");
-    _builder.append(version, " ");
-    _builder.newLineIfNotEmpty();
-    _builder.append(" ");
-    _builder.append("*/");
-    _builder.newLine();
-    CharSequence _createSerializer = this.createSerializer(type);
-    _builder.append(_createSerializer, "");
-    _builder.newLineIfNotEmpty();
-    return _builder;
+  public CharSequence createContent(final RecordType type, final String author, final String version, final boolean languageSpecificFolder) {
+    CharSequence _xblockexpression = null;
+    {
+      this.languageSpecificFolder = languageSpecificFolder;
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("/***************************************************************************");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.append("* Copyright 2013 Kieker Project (http://kieker-monitoring.net)");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.append("*");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.append("* Licensed under the Apache License, Version 2.0 (the \"License\");");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.append("* you may not use this file except in compliance with the License.");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.append("* You may obtain a copy of the License at");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.append("*");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.append("*     http://www.apache.org/licenses/LICENSE-2.0");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.append("*");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.append("* Unless required by applicable law or agreed to in writing, software");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.append("* distributed under the License is distributed on an \"AS IS\" BASIS,");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.append("* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.append("* See the License for the specific language governing permissions and");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.append("* limitations under the License.");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.append("***************************************************************************/");
+      _builder.newLine();
+      _builder.append("#include <stdlib.h>");
+      _builder.newLine();
+      _builder.append("#include <kieker.h>");
+      _builder.newLine();
+      _builder.append("#include \"");
+      CharSequence _directoryName = this.directoryName(type);
+      _builder.append(_directoryName, "");
+      _builder.append("/");
+      CharSequence _packageName = this.packageName(type);
+      _builder.append(_packageName, "");
+      _builder.append("_");
+      String _name = type.getName();
+      String _cstyle = this.getCstyle(_name);
+      _builder.append(_cstyle, "");
+      _builder.append(".h\"");
+      _builder.newLineIfNotEmpty();
+      _builder.newLine();
+      _builder.append("/**");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.append("* Author: ");
+      _builder.append(author, " ");
+      _builder.newLineIfNotEmpty();
+      _builder.append(" ");
+      _builder.append("* Version: ");
+      _builder.append(version, " ");
+      _builder.newLineIfNotEmpty();
+      _builder.append(" ");
+      _builder.append("*/");
+      _builder.newLine();
+      CharSequence _createSerializer = this.createSerializer(type);
+      _builder.append(_createSerializer, "");
+      _builder.newLineIfNotEmpty();
+      _xblockexpression = _builder;
+    }
+    return _xblockexpression;
   }
   
   public String getCstyle(final String string) {
@@ -124,14 +129,25 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    * Compute the directory name for a record type.
    */
   public CharSequence directoryName(final Type type) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("c");
-    _builder.append(File.separator, "");
-    EObject _eContainer = type.eContainer();
-    String _name = ((Model) _eContainer).getName();
-    String _replace = _name.replace(".", File.separator);
-    _builder.append(_replace, "");
-    return _builder;
+    CharSequence _xifexpression = null;
+    if (this.languageSpecificFolder) {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("c");
+      _builder.append(File.separator, "");
+      EObject _eContainer = type.eContainer();
+      String _name = ((Model) _eContainer).getName();
+      String _replace = _name.replace(".", File.separator);
+      _builder.append(_replace, "");
+      _xifexpression = _builder;
+    } else {
+      StringConcatenation _builder_1 = new StringConcatenation();
+      EObject _eContainer_1 = type.eContainer();
+      String _name_1 = ((Model) _eContainer_1).getName();
+      String _replace_1 = _name_1.replace(".", File.separator);
+      _builder_1.append(_replace_1, "");
+      _xifexpression = _builder_1;
+    }
+    return _xifexpression;
   }
   
   public String fileName(final Type type) {
@@ -143,6 +159,12 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     String _cstyle = this.getCstyle(_name);
     _builder.append(_cstyle, "");
     _builder.append(".c");
+    return _builder.toString();
+  }
+  
+  public String getLanguageType() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("c");
     return _builder.toString();
   }
   

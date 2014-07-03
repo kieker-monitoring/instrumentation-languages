@@ -11,7 +11,7 @@ import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator
 import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation
 
 class RecordTypeGenerator extends AbstractRecordTypeGenerator {
-	
+			
 	/**
 	 * Primary code generation template.
 	 * 
@@ -22,32 +22,35 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * @params version
 	 * 		generic kieker version for the record
 	 */
-	override createContent(RecordType type, String author, String version) '''
-	/***************************************************************************
-	 * Copyright 2013 Kieker Project (http://kieker-monitoring.net)
-	 *
-	 * Licensed under the Apache License, Version 2.0 (the "License");
-	 * you may not use this file except in compliance with the License.
-	 * You may obtain a copy of the License at
-	 *
-	 *     http://www.apache.org/licenses/LICENSE-2.0
-	 *
-	 * Unless required by applicable law or agreed to in writing, software
-	 * distributed under the License is distributed on an "AS IS" BASIS,
-	 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-	 * See the License for the specific language governing permissions and
-	 * limitations under the License.
-	 ***************************************************************************/
-	#include <stdlib.h>
-	#include <kieker.h>
-	#include "«type.directoryName»/«type.packageName»_«type.name.cstyle».h"
+	override createContent(RecordType type, String author, String version, boolean languageSpecificFolder) {
+		this.languageSpecificFolder = languageSpecificFolder
+		'''
+		/***************************************************************************
+		 * Copyright 2013 Kieker Project (http://kieker-monitoring.net)
+		 *
+		 * Licensed under the Apache License, Version 2.0 (the "License");
+		 * you may not use this file except in compliance with the License.
+		 * You may obtain a copy of the License at
+		 *
+		 *     http://www.apache.org/licenses/LICENSE-2.0
+		 *
+		 * Unless required by applicable law or agreed to in writing, software
+		 * distributed under the License is distributed on an "AS IS" BASIS,
+		 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+		 * See the License for the specific language governing permissions and
+		 * limitations under the License.
+		 ***************************************************************************/
+		#include <stdlib.h>
+		#include <kieker.h>
+		#include "«type.directoryName»/«type.packageName»_«type.name.cstyle».h"
 
-	/**
-	 * Author: «author»
-	 * Version: «version»
-	 */
-	«type.createSerializer»
-	'''
+		/**
+		 * Author: «author»
+		 * Version: «version»
+		 */
+		«type.createSerializer»
+		'''
+	}
 	
 	def String getCstyle(String string) {
 		return Pattern::compile('([A-Z])').matcher(string).replaceAll("_$1").toLowerCase.substring(1)
@@ -56,9 +59,16 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	/**
 	 * Compute the directory name for a record type.
 	 */
-	override directoryName(Type type) '''c«File::separator»«(type.eContainer as Model).name.replace('.',File::separator)»'''
+	override directoryName(Type type) {
+		if (languageSpecificFolder)
+			'''c«File::separator»«(type.eContainer as Model).name.replace('.',File::separator)»'''
+		else
+			'''«(type.eContainer as Model).name.replace('.',File::separator)»'''
+	}
+
+	override fileName(Type type) '''«type.directoryName»«File::separator»«type.name.cstyle».c'''	
 	
-	override fileName(Type type) '''«type.directoryName»«File::separator»«type.name.cstyle».c'''
+	override getLanguageType() '''c'''
 	
 	/**
 	 * Compute the package name used as prefix for all functions.

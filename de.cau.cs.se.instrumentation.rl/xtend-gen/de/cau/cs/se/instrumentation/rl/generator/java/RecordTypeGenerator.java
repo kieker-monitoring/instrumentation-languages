@@ -38,6 +38,12 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
 public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
+  public String getLanguageType() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("java");
+    return _builder.toString();
+  }
+  
   /**
    * Primary code generation template.
    * 
@@ -48,9 +54,10 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    * @params version
    * 		generic kieker version for the record
    */
-  public CharSequence createContent(final RecordType type, final String author, final String version) {
+  public CharSequence createContent(final RecordType type, final String author, final String version, final boolean languageSpecificFolder) {
     CharSequence _xblockexpression = null;
     {
+      this.languageSpecificFolder = languageSpecificFolder;
       Date _date = new Date();
       long _time = _date.getTime();
       String _string = Long.valueOf(_time).toString();
@@ -1826,14 +1833,25 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    * Compute the directory name for a record type.
    */
   public CharSequence directoryName(final Type type) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("java");
-    _builder.append(File.separator, "");
-    EObject _eContainer = type.eContainer();
-    String _name = ((Model) _eContainer).getName();
-    String _replace = _name.replace(".", File.separator);
-    _builder.append(_replace, "");
-    return _builder;
+    CharSequence _xifexpression = null;
+    if (this.languageSpecificFolder) {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("java");
+      _builder.append(File.separator, "");
+      EObject _eContainer = type.eContainer();
+      String _name = ((Model) _eContainer).getName();
+      String _replace = _name.replace(".", File.separator);
+      _builder.append(_replace, "");
+      _xifexpression = _builder;
+    } else {
+      StringConcatenation _builder_1 = new StringConcatenation();
+      EObject _eContainer_1 = type.eContainer();
+      String _name_1 = ((Model) _eContainer_1).getName();
+      String _replace_1 = _name_1.replace(".", File.separator);
+      _builder_1.append(_replace_1, "");
+      _xifexpression = _builder_1;
+    }
+    return _xifexpression;
   }
   
   public String fileName(final Type type) {

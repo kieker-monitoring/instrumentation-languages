@@ -28,10 +28,13 @@ class RecordLangGenerator implements IGenerator {
 	
 	@Property var version = "1.9"
 	@Property var author = "Generic Kieker"
+	
+	@Property var String[] selectedLanguageTypes = {}
+	
+	@Property var boolean languageSpecificTargetFolder = true
 		
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		
-		
+				
 		// list all generators to support RecordType
 		val Class<?>[] recordTypeGenerators = #[
 			typeof(de.cau.cs.se.instrumentation.rl.generator.c.RecordTypeGenerator),
@@ -48,15 +51,25 @@ class RecordLangGenerator implements IGenerator {
 						
 		for (Class<?> generator : recordTypeGenerators) {
 			val cg = generator.getConstructor().newInstance() as AbstractRecordTypeGenerator
-			resource.allContents.filter(typeof(RecordType)).forEach[type | fsa.generateFile(cg.fileName(type), cg.createContent(type,author,version))]
+			resource.allContents.filter(typeof(RecordType)).forEach[type | 
+				if (cg.isActive) fsa.generateFile(cg.fileName(type), cg.createContent(type,author,version,languageSpecificTargetFolder))
+			]
 		}
 		
 		for (Class<?> generator : partialRecordTypeGenerators) {
 			val cg = generator.getConstructor().newInstance() as AbstractPartialRecordTypeGenerator
-			resource.allContents.filter(typeof(PartialRecordType)).forEach[type | fsa.generateFile(cg.fileName(type), cg.createContent(type,author,version))]
+			resource.allContents.filter(typeof(PartialRecordType)).forEach[type | 
+				if (cg.isActive) fsa.generateFile(cg.fileName(type), cg.createContent(type,author,version,languageSpecificTargetFolder))
+			]
 		} 
 
 	}
 	
+	def boolean isActive(AbstractRecordTypeGenerator generator) {
+		return selectedLanguageTypes.exists[generator.languageType.equals(it)]
+	}
 	
+	def boolean isActive(AbstractPartialRecordTypeGenerator generator) {
+		return selectedLanguageTypes.exists[generator.languageType.equals(it)]
+	}
 }

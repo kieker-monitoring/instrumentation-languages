@@ -6,6 +6,8 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
 import java.util.Collection
 
 abstract class AbstractTypeGenerator {
+	
+	protected var boolean languageSpecificFolder;
 			
 	/**
 	 * Compute the directory name for a given type based on the package it belongs to.

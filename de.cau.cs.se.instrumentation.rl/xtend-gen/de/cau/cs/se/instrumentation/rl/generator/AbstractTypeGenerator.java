@@ -13,6 +13,8 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public abstract class AbstractTypeGenerator {
+  protected boolean languageSpecificFolder;
+  
   /**
    * Compute the directory name for a given type based on the package it belongs to.
    * 

@@ -33,7 +33,6 @@ import com.google.inject.Injector;
 
 import de.cau.cs.se.instrumentation.rl.RecordLangStandaloneSetup;
 import de.cau.cs.se.instrumentation.rl.generator.RecordLangGenerator;
-
 import kieker.common.logging.Log;
 import kieker.common.logging.LogFactory;
 import kieker.tools.util.CLIHelpFormatter;
@@ -67,6 +66,14 @@ public class CLICompilerMain { // NOCS
 	private static final String CMD_DESTINATION = "d";
 
 	private static final String CMD_DESTINATION_LONG = "destination";
+	
+	private static final String CMD_SPECIFIC_DESTINATION = "m";
+
+	private static final String CMD_SPECIFIC_DESTINATION_LONG = "multi";
+
+	private static final String CMD_LANGUAGES = "l";
+
+	private static final String CMD_LANGUAGES_LONG = "languages";
 
 	/** resource set for the compilation. */
 	private static XtextResourceSet resourceSet;
@@ -90,6 +97,10 @@ public class CLICompilerMain { // NOCS
 	private static Options options;
 
 	private static CommandLine commandLine;
+	
+	private static String[] selectedLanguageTypes;
+
+	private static boolean specificTargetFolder;
 
 	/**
 	 * Main method for the compiler, decoding parameter and execution
@@ -120,6 +131,15 @@ public class CLICompilerMain { // NOCS
 			if (commandLine.hasOption(CMD_DESTINATION)) {
 				projectDestinationPath = commandLine
 						.getOptionValue(CMD_DESTINATION);
+			}
+			
+			specificTargetFolder = commandLine.hasOption(CMD_SPECIFIC_DESTINATION);
+			
+			if (commandLine.hasOption(CMD_LANGUAGES)) {
+				selectedLanguageTypes = commandLine.getOptionValues(CMD_LANGUAGES);
+			} else {
+				usage("No target languages defined.");
+				System.exit(-1);
 			}
 
 			// EMF and compiler setup
@@ -217,6 +237,8 @@ public class CLICompilerMain { // NOCS
 				targetRootPath);
 		generator.setVersion(version);
 		generator.setAuthor(author);
+		generator.setSelectedLanguageTypes(selectedLanguageTypes);
+		generator.setLanguageSpecificTargetFolder(specificTargetFolder);
 		generator.doGenerate(resource, fsa);
 	}
 
@@ -246,29 +268,43 @@ public class CLICompilerMain { // NOCS
 		// runtime root
 		option = new Option(CMD_ROOT, CMD_ROOT_LONG, true,
 				"Root folder of eclipse platfrom/workspace.");
-		option.setArgName("r");
+		option.setArgName(CMD_ROOT);
 		option.setRequired(true);
 		options.addOption(option);
 
 		// eclipse project name
 		option = new Option(CMD_PROJECT, CMD_PROJECT_LONG, true,
 				"Eclipse project containing the files.");
-		option.setArgName("p");
+		option.setArgName(CMD_PROJECT);
 		option.setRequired(false);
 		options.addOption(option);
 
 		// project relative source folder
 		option = new Option(CMD_SOURCE, CMD_SOURCE_LONG, true,
 				"Project relative source folder.");
-		option.setArgName("s");
+		option.setArgName(CMD_SOURCE);
 		option.setRequired(false);
 		options.addOption(option);
 
 		// project relative target folder
 		option = new Option(CMD_DESTINATION, CMD_DESTINATION_LONG, true,
 				"Project relative destination folder.");
-		option.setArgName("t");
+		option.setArgName(CMD_DESTINATION);
 		option.setRequired(false);
+		options.addOption(option);
+		
+		// use language specific target folders
+		option = new Option(CMD_SPECIFIC_DESTINATION, CMD_SPECIFIC_DESTINATION_LONG, false,
+				"Use language specific destination folders.");
+		option.setArgName(CMD_SPECIFIC_DESTINATION);
+		option.setRequired(false);
+		options.addOption(option);
+		
+		// select languages
+		option = new Option(CMD_LANGUAGES, CMD_LANGUAGES_LONG, true,
+				"Generate code for all named languages.");
+		option.setArgName(CMD_LANGUAGES);
+		option.setRequired(true);
 		options.addOption(option);
 
 		return options;

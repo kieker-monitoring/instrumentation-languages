@@ -26,6 +26,8 @@ import org.eclipse.emf.ecore.EClassifier
 
 class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	
+	override getLanguageType() '''java'''
+	
 	/**
 	 * Primary code generation template.
 	 * 
@@ -36,7 +38,8 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * @params version
 	 * 		generic kieker version for the record
 	 */
-	override createContent(RecordType type, String author, String version) {
+	override createContent(RecordType type, String author, String version, boolean languageSpecificFolder) {
+		this.languageSpecificFolder = languageSpecificFolder
 		val serialUID = new Date().time.toString + 'L'
 		val allDataProperties = PropertyEvaluation::collectAllDataProperties(type)
 		val allDeclarationProperties = collectAllDeclarationProperties(type)
@@ -643,7 +646,12 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	/**
 	 * Compute the directory name for a record type.
 	 */
-	override directoryName(Type type) '''java«File::separator»«(type.eContainer as Model).name.replace('.',File::separator)»'''
+	override directoryName(Type type) {
+		if (languageSpecificFolder)
+			'''java«File::separator»«(type.eContainer as Model).name.replace('.',File::separator)»'''
+		else
+			'''«(type.eContainer as Model).name.replace('.',File::separator)»'''
+	}
 
 	override fileName(Type type) '''«type.directoryName»«File::separator»«type.name».java'''
 

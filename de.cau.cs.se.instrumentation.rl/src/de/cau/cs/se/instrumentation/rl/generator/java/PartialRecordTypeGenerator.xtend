@@ -11,7 +11,8 @@ import org.eclipse.emf.common.util.EList
 
 class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerator {
 	
-	override createContent(PartialRecordType type, String author, String version) {
+	override createContent(PartialRecordType type, String author, String version, boolean languageSpecificFolder) {
+		this.languageSpecificFolder = languageSpecificFolder
 		'''
 		/***************************************************************************
 		 * Copyright 2013 Kieker Project (http://kieker-monitoring.net)
@@ -99,8 +100,16 @@ class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerator {
 	/**
 	 * Compute the directory name for a record type.
 	 */
-	override directoryName(Type type) '''java«File::separator»«(type.eContainer as Model).name.replace('.',File::separator)»'''
+	override directoryName(Type type) {
+		if (languageSpecificFolder)
+			'''java«File::separator»«(type.eContainer as Model).name.replace('.',File::separator)»'''
+		else
+			'''«(type.eContainer as Model).name.replace('.',File::separator)»'''
+	}
 
 	override fileName(Type type) '''«type.directoryName»«File::separator»«type.name».java'''
+
+	
+	override getLanguageType() '''java'''
 		
 }
