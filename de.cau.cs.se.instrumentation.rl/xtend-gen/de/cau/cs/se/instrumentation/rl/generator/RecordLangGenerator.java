@@ -24,24 +24,46 @@ import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
 import java.lang.reflect.Constructor;
 import java.util.Iterator;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
+import org.eclipse.core.runtime.preferences.IPreferencesService;
 import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.osgi.service.prefs.Preferences;
 
 /**
  * Generates one single files per record for java, c, and perl.
  */
 @SuppressWarnings("all")
 public class RecordLangGenerator implements IGenerator {
+  private final static String className = "de.cau.cs.se.instrumentation.rl.generator.RecordLangGenerator";
+  
+  public final static String JAVA_DIR_PROPERTY = (RecordLangGenerator.className + ".JAVA_DIR_PROPERTY");
+  
+  public final static String JAVA_CHECK_PROPERTY = (RecordLangGenerator.className + ".JAVA_CHECK_PROPERTY");
+  
+  public final static String C_DIR_PROPERTY = (RecordLangGenerator.className + ".C_DIR_PROPERTY");
+  
+  public final static String C_CHECK_PROPERTY = (RecordLangGenerator.className + ".C_CHECK_PROPERTY");
+  
+  public final static String PERL_DIR_PROPERTY = (RecordLangGenerator.className + ".PERL_DIR_PROPERTY");
+  
+  public final static String PERL_CHECK_PROPERTY = (RecordLangGenerator.className + ".PERL_CHECK_PROPERTY");
+  
+  public final static String AUTHOR_PROPERTY = (RecordLangGenerator.className + ".AUTHOR_PROPERTY");
+  
+  public final static String VERSION_PROPERTY = (RecordLangGenerator.className + ".VERSION_PROPERTY");
+  
   private String _version = "1.9";
   
   public String getVersion() {
@@ -62,11 +84,7 @@ public class RecordLangGenerator implements IGenerator {
     this._author = author;
   }
   
-  private String[] _selectedLanguageTypes = new Function0<String[]>() {
-    public String[] apply() {
-      return null;
-    }
-  }.apply();
+  private String[] _selectedLanguageTypes = {};
   
   public String[] getSelectedLanguageTypes() {
     return this._selectedLanguageTypes;
@@ -88,57 +106,78 @@ public class RecordLangGenerator implements IGenerator {
   
   public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
     try {
-      final Class<?>[] recordTypeGenerators = { RecordTypeGenerator.class, de.cau.cs.se.instrumentation.rl.generator.cheader.RecordTypeGenerator.class, de.cau.cs.se.instrumentation.rl.generator.java.RecordTypeGenerator.class, de.cau.cs.se.instrumentation.rl.generator.perl.RecordTypeGenerator.class };
-      final Class<?>[] partialRecordTypeGenerators = { PartialRecordTypeGenerator.class };
-      for (final Class<?> generator : recordTypeGenerators) {
-        {
-          Constructor<?> _constructor = generator.getConstructor();
-          Object _newInstance = _constructor.newInstance();
-          final AbstractRecordTypeGenerator cg = ((AbstractRecordTypeGenerator) _newInstance);
-          TreeIterator<EObject> _allContents = resource.getAllContents();
-          Iterator<RecordType> _filter = Iterators.<RecordType>filter(_allContents, RecordType.class);
-          final Procedure1<RecordType> _function = new Procedure1<RecordType>() {
-            public void apply(final RecordType type) {
-              boolean _isActive = RecordLangGenerator.this.isActive(cg);
-              if (_isActive) {
-                String _fileName = cg.fileName(type);
-                String _author = RecordLangGenerator.this.getAuthor();
-                String _version = RecordLangGenerator.this.getVersion();
-                boolean _isLanguageSpecificTargetFolder = RecordLangGenerator.this.isLanguageSpecificTargetFolder();
-                CharSequence _createContent = cg.createContent(type, _author, _version, _isLanguageSpecificTargetFolder);
-                fsa.generateFile(_fileName, _createContent);
+      this.setSelectedLanguageTypes(new String[] { "Java" });
+      URI _uRI = resource.getURI();
+      boolean _isPlatformResource = _uRI.isPlatformResource();
+      if (_isPlatformResource) {
+        IPreferencesService _preferencesService = Platform.getPreferencesService();
+        IEclipsePreferences _rootNode = _preferencesService.getRootNode();
+        Preferences _node = _rootNode.node("project");
+        URI _uRI_1 = resource.getURI();
+        String[] _segments = _uRI_1.segments();
+        String _get = _segments[1];
+        final Preferences properties = _node.node(_get);
+        String _get_1 = properties.get(RecordLangGenerator.JAVA_DIR_PROPERTY, "");
+        String _plus = ("node " + _get_1);
+        System.out.println(_plus);
+        Preferences _node_1 = properties.node(RecordLangGenerator.JAVA_DIR_PROPERTY);
+        String _plus_1 = ("node " + _node_1);
+        System.out.println(_plus_1);
+        final Class<?>[] recordTypeGenerators = { RecordTypeGenerator.class, de.cau.cs.se.instrumentation.rl.generator.cheader.RecordTypeGenerator.class, de.cau.cs.se.instrumentation.rl.generator.java.RecordTypeGenerator.class, de.cau.cs.se.instrumentation.rl.generator.perl.RecordTypeGenerator.class };
+        final Class<?>[] partialRecordTypeGenerators = { PartialRecordTypeGenerator.class };
+        for (final Class<?> generator : recordTypeGenerators) {
+          {
+            Constructor<?> _constructor = generator.getConstructor();
+            Object _newInstance = _constructor.newInstance();
+            final AbstractRecordTypeGenerator cg = ((AbstractRecordTypeGenerator) _newInstance);
+            TreeIterator<EObject> _allContents = resource.getAllContents();
+            Iterator<RecordType> _filter = Iterators.<RecordType>filter(_allContents, RecordType.class);
+            final Procedure1<RecordType> _function = new Procedure1<RecordType>() {
+              public void apply(final RecordType type) {
+                boolean _isActive = RecordLangGenerator.this.isActive(cg);
+                if (_isActive) {
+                  String _fileName = cg.fileName(type);
+                  String _author = RecordLangGenerator.this.getAuthor();
+                  String _version = RecordLangGenerator.this.getVersion();
+                  boolean _isLanguageSpecificTargetFolder = RecordLangGenerator.this.isLanguageSpecificTargetFolder();
+                  CharSequence _createContent = cg.createContent(type, _author, _version, _isLanguageSpecificTargetFolder);
+                  fsa.generateFile(_fileName, _createContent);
+                }
               }
-            }
-          };
-          IteratorExtensions.<RecordType>forEach(_filter, _function);
+            };
+            IteratorExtensions.<RecordType>forEach(_filter, _function);
+          }
         }
-      }
-      for (final Class<?> generator_1 : partialRecordTypeGenerators) {
-        {
-          Constructor<?> _constructor = generator_1.getConstructor();
-          Object _newInstance = _constructor.newInstance();
-          final AbstractPartialRecordTypeGenerator cg = ((AbstractPartialRecordTypeGenerator) _newInstance);
-          TreeIterator<EObject> _allContents = resource.getAllContents();
-          Iterator<PartialRecordType> _filter = Iterators.<PartialRecordType>filter(_allContents, PartialRecordType.class);
-          final Procedure1<PartialRecordType> _function = new Procedure1<PartialRecordType>() {
-            public void apply(final PartialRecordType type) {
-              boolean _isActive = RecordLangGenerator.this.isActive(cg);
-              if (_isActive) {
-                String _fileName = cg.fileName(type);
-                String _author = RecordLangGenerator.this.getAuthor();
-                String _version = RecordLangGenerator.this.getVersion();
-                boolean _isLanguageSpecificTargetFolder = RecordLangGenerator.this.isLanguageSpecificTargetFolder();
-                CharSequence _createContent = cg.createContent(type, _author, _version, _isLanguageSpecificTargetFolder);
-                fsa.generateFile(_fileName, _createContent);
+        for (final Class<?> generator_1 : partialRecordTypeGenerators) {
+          {
+            Constructor<?> _constructor = generator_1.getConstructor();
+            Object _newInstance = _constructor.newInstance();
+            final AbstractPartialRecordTypeGenerator cg = ((AbstractPartialRecordTypeGenerator) _newInstance);
+            TreeIterator<EObject> _allContents = resource.getAllContents();
+            Iterator<PartialRecordType> _filter = Iterators.<PartialRecordType>filter(_allContents, PartialRecordType.class);
+            final Procedure1<PartialRecordType> _function = new Procedure1<PartialRecordType>() {
+              public void apply(final PartialRecordType type) {
+                boolean _isActive = RecordLangGenerator.this.isActive(cg);
+                if (_isActive) {
+                  String _fileName = cg.fileName(type);
+                  String _author = RecordLangGenerator.this.getAuthor();
+                  String _version = RecordLangGenerator.this.getVersion();
+                  boolean _isLanguageSpecificTargetFolder = RecordLangGenerator.this.isLanguageSpecificTargetFolder();
+                  CharSequence _createContent = cg.createContent(type, _author, _version, _isLanguageSpecificTargetFolder);
+                  fsa.generateFile(_fileName, _createContent);
+                }
               }
-            }
-          };
-          IteratorExtensions.<PartialRecordType>forEach(_filter, _function);
+            };
+            IteratorExtensions.<PartialRecordType>forEach(_filter, _function);
+          }
         }
       }
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
+  }
+  
+  public void show() {
   }
   
   public boolean isActive(final AbstractRecordTypeGenerator generator) {

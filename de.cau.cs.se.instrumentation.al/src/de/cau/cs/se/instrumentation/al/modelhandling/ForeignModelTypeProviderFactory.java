@@ -30,6 +30,9 @@ import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel;
  */
 public class ForeignModelTypeProviderFactory {
 
+	/**
+	 * empty constructor.
+	 */
 	@Inject
 	public ForeignModelTypeProviderFactory() {}
 
@@ -39,7 +42,8 @@ public class ForeignModelTypeProviderFactory {
 	 * 
 	 * @param resourceSet
 	 *            The resource set associated with the type provider
-	 * @param model the application model
+	 * @param model
+	 *            the application model
 	 * @return Returns the type provider for primitive types.
 	 */
 	public IForeignModelTypeProvider getTypeProvider(final ResourceSet resourceSet, final ApplicationModel model) {
@@ -66,7 +70,8 @@ public class ForeignModelTypeProviderFactory {
 	 * 
 	 * @param resourceSet
 	 *            The resource set associated with the type provider.
-	 * @param model the application model
+	 * @param model
+	 *            the application model
 	 * @return Returns the new type provider.
 	 */
 	private IForeignModelTypeProvider createTypeProvider(final ResourceSet resourceSet, final ApplicationModel model) {
@@ -75,7 +80,5 @@ public class ForeignModelTypeProviderFactory {
 				.put(ForeignModelTypeURIHelper.PROTOCOL, typeProvider);
 		return typeProvider;
 	}
-
-
 
 }

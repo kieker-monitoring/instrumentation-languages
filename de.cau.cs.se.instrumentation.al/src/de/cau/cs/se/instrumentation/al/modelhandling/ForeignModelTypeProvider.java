@@ -40,14 +40,16 @@ public class ForeignModelTypeProvider implements Resource.Factory, IForeignModel
 	private final ForeignModelTypeURIHelper typeUriHelper;
 
 	private final ResourceSet resourceSet;
-	
+
 	private final ApplicationModel model;
 
 	/**
 	 * Construct the type provider.
 	 * 
-	 * @param resourceSet context resource set
-	 * @param model the application model
+	 * @param resourceSet
+	 *            context resource set
+	 * @param model
+	 *            the application model
 	 */
 	public ForeignModelTypeProvider(final ResourceSet resourceSet, final ApplicationModel model) {
 		this.resourceSet = resourceSet;
@@ -68,10 +70,11 @@ public class ForeignModelTypeProvider implements Resource.Factory, IForeignModel
 		 */
 		final Resource resource = this.resourceSet.getResource(
 				URI.createURI(ForeignModelTypeURIHelper.PROTOCOL + ":" + ForeignModelTypeURIHelper.ELEMENTS), true);
-		Collection<NamedElement> result = new ArrayList<NamedElement>();
-		for (EObject container : resource.getContents()) {
-			if (container instanceof NamedElement)
-				result.add((NamedElement)container);
+		final Collection<NamedElement> result = new ArrayList<NamedElement>();
+		for (final EObject container : resource.getContents()) {
+			if (container instanceof NamedElement) {
+				result.add((NamedElement) container);
+			}
 		}
 		return result;
 	}
@@ -114,7 +117,7 @@ public class ForeignModelTypeProvider implements Resource.Factory, IForeignModel
 	public Iterable<Type> getAllDataTyes() {
 		final Resource resource = this.resourceSet.getResource(
 				URI.createURI(ForeignModelTypeURIHelper.PROTOCOL + ":" + ForeignModelTypeURIHelper.ELEMENTS), true);
-		return ((ForeignModelResource)resource).getAllDataTypes();
+		return ((ForeignModelResource) resource).getAllDataTypes();
 	}
 
 }

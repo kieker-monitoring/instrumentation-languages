@@ -16,7 +16,9 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.emf.common,
  org.eclipse.emf.ecore,
  org.antlr.runtime,
- org.eclipse.xtext.common.types
+ org.eclipse.xtext.common.types,
+ org.eclipse.core.resources,
+ org.eclipse.core.runtime;bundle-version="3.9.100"
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.common.types.access.jdt,
  org.eclipse.xtext.xbase.lib
