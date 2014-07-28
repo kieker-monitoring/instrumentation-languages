@@ -33,6 +33,7 @@ import com.google.inject.Injector;
 
 import de.cau.cs.se.instrumentation.rl.RecordLangStandaloneSetup;
 import de.cau.cs.se.instrumentation.rl.generator.RecordLangGenerator;
+
 import kieker.common.logging.Log;
 import kieker.common.logging.LogFactory;
 import kieker.tools.util.CLIHelpFormatter;
@@ -43,7 +44,7 @@ import kieker.tools.util.CLIHelpFormatter;
  * @author Reiner Jung
  * 
  */
-public class CLICompilerMain { // NOCS
+public final class CLICompilerMain {
 
 	/** Central logger for the compiler. */
 	private static final Log LOG = LogFactory.getLog(CLICompilerMain.class);
@@ -66,10 +67,10 @@ public class CLICompilerMain { // NOCS
 	private static final String CMD_DESTINATION = "d";
 
 	private static final String CMD_DESTINATION_LONG = "destination";
-	
-	private static final String CMD_SPECIFIC_DESTINATION = "m";
 
-	private static final String CMD_SPECIFIC_DESTINATION_LONG = "multi";
+	private static final String CMD_MAVEN_FOLDER_LAYOUT = "m";
+
+	private static final String CMD_MAVEN_FOLDER_LAYOUT_LONG = "maven";
 
 	private static final String CMD_LANGUAGES = "l";
 
@@ -97,10 +98,15 @@ public class CLICompilerMain { // NOCS
 	private static Options options;
 
 	private static CommandLine commandLine;
-	
+
 	private static String[] selectedLanguageTypes;
 
-	private static boolean specificTargetFolder;
+	private static boolean mavenFolderLayout;
+
+	/**
+	 * main class does not need instantiation.
+	 */
+	private CLICompilerMain() {}
 
 	/**
 	 * Main method for the compiler, decoding parameter and execution
@@ -132,13 +138,13 @@ public class CLICompilerMain { // NOCS
 				projectDestinationPath = commandLine
 						.getOptionValue(CMD_DESTINATION);
 			}
-			
-			specificTargetFolder = commandLine.hasOption(CMD_SPECIFIC_DESTINATION);
-			
+
+			mavenFolderLayout = commandLine.hasOption(CMD_MAVEN_FOLDER_LAYOUT);
+
 			if (commandLine.hasOption(CMD_LANGUAGES)) {
 				selectedLanguageTypes = commandLine.getOptionValues(CMD_LANGUAGES);
 			} else {
-				usage("No target languages defined.");
+				CLICompilerMain.usage("No target languages defined.");
 				System.exit(-1);
 			}
 
@@ -238,7 +244,7 @@ public class CLICompilerMain { // NOCS
 		generator.setVersion(version);
 		generator.setAuthor(author);
 		generator.setSelectedLanguageTypes(selectedLanguageTypes);
-		generator.setLanguageSpecificTargetFolder(specificTargetFolder);
+		generator.setLanguageSpecificTargetFolder(mavenFolderLayout);
 		generator.doGenerate(resource, fsa);
 	}
 
@@ -292,14 +298,14 @@ public class CLICompilerMain { // NOCS
 		option.setArgName(CMD_DESTINATION);
 		option.setRequired(false);
 		options.addOption(option);
-		
+
 		// use language specific target folders
-		option = new Option(CMD_SPECIFIC_DESTINATION, CMD_SPECIFIC_DESTINATION_LONG, false,
-				"Use language specific destination folders.");
-		option.setArgName(CMD_SPECIFIC_DESTINATION);
+		option = new Option(CMD_MAVEN_FOLDER_LAYOUT, CMD_MAVEN_FOLDER_LAYOUT_LONG, false,
+				"Use language specific destination folders (maven layout).");
+		option.setArgName(CMD_MAVEN_FOLDER_LAYOUT);
 		option.setRequired(false);
 		options.addOption(option);
-		
+
 		// select languages
 		option = new Option(CMD_LANGUAGES, CMD_LANGUAGES_LONG, true,
 				"Generate code for all named languages.");

@@ -33,10 +33,17 @@ import de.cau.cs.se.instrumentation.rl.cli.DirectIOFileSystemAccess;
  * @author Reiner Jung
  * 
  */
-public class TestDirectIOFileSystemAccess { // NOCS
+public class TestDirectIOFileSystemAccess {
 
 	private static final String EXAMPLE_FILE_NAME = "example.txt";
 	private static final String OUTPUT_CONFIG = "output configuration";
+
+	/**
+	 * Default constructor.
+	 */
+	public TestDirectIOFileSystemAccess() {
+		// empty default constructor
+	}
 
 	/**
 	 * Test if the file is created in the right place.
