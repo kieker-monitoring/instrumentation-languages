@@ -50,7 +50,21 @@ public class EMFLaunchConfigurationDelegate extends LaunchConfigurationDelegate 
 	private static final String IRL_EXTENSION = "irl";
 
 	/**
+	 * Default constructor.
+	 */
+	public EMFLaunchConfigurationDelegate() {
+		super();
+	}
+
+	/**
 	 * Central launcher for the EMF export functionality.
+	 * 
+	 * @throws CoreException API delegated exception
+	 * 
+	 * @param configuration launcher configuration
+	 * @param mode mode is either debug or run
+	 * @param launch the operation to be launched
+	 * @param monitor UI part to display the progress of the launched operation
 	 */
 	public void launch(final ILaunchConfiguration configuration, final String mode, final ILaunch launch, final IProgressMonitor monitor) throws CoreException {
 		// PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().saveAllEditors(true);
@@ -81,11 +95,11 @@ public class EMFLaunchConfigurationDelegate extends LaunchConfigurationDelegate 
 	private void compileFolder(final IResource[] members, final Resource output, final EMFModelGenerator generator) throws CoreException {
 		for (final IResource resource : members) {
 			if (resource instanceof IFile) {
-				if (IRL_EXTENSION.equals(((IFile)resource).getFileExtension())) {
-					generator.doGenerate(((IFile)resource), output);
+				if (IRL_EXTENSION.equals(((IFile) resource).getFileExtension())) {
+					generator.doGenerate((IFile) resource, output);
 				}
 			} else if (resource instanceof IFolder) {
-				this.compileFolder(((IFolder)resource).members(), output, generator);
+				this.compileFolder(((IFolder) resource).members(), output, generator);
 			}
 		}
 	}

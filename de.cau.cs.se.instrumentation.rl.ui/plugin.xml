@@ -262,11 +262,12 @@
             name="Compiler">
             <keywordReference id="de.cau.cs.se.instrumentation.rl.ui.keyword_RecordLang"/>
         </page>
-        <page
-        	category="de.cau.cs.se.instrumentation.rl.RecordLang"
-              class="de.cau.cs.se.instrumentation.rl.ui.preferences.CompilerPreferencePage"
-              id="de.cau.cs.se.instrumentation.rl.ui.preferences.compiler"
-              name="Compiler 2">
+		<page
+            category="de.cau.cs.se.instrumentation.rl.RecordLang"
+            class="de.cau.cs.se.instrumentation.rl.ui.RecordLangExecutableExtensionFactory:de.cau.cs.se.instrumentation.rl.ui.preferences.CompilerPreferencePage"
+            id="de.cau.cs.se.instrumentation.rl.RecordLang.compiler.preferencePage.target"
+            name="Targets">
+            <keywordReference id="de.cau.cs.se.instrumentation.rl.ui.keyword_RecordLang"/>
         </page>
     </extension>
     <extension
@@ -276,6 +277,17 @@
             class="de.cau.cs.se.instrumentation.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
             id="de.cau.cs.se.instrumentation.rl.RecordLang.compiler.propertyPage"
             name="Compiler">
+            <keywordReference id="de.cau.cs.se.instrumentation.rl.ui.keyword_RecordLang"/>
+            <enabledWhen>
+	            <adapt type="org.eclipse.core.resources.IProject"/>
+			</enabledWhen>
+	        <filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
+        </page>
+        <page
+            category="de.cau.cs.se.instrumentation.rl.RecordLang"
+            class="de.cau.cs.se.instrumentation.rl.ui.RecordLangExecutableExtensionFactory:de.cau.cs.se.instrumentation.rl.ui.preferences.CompilerPreferencePage"
+            id="de.cau.cs.se.instrumentation.rl.RecordLang.compiler.propertyPage.targets"
+            name="Targets">
             <keywordReference id="de.cau.cs.se.instrumentation.rl.ui.keyword_RecordLang"/>
             <enabledWhen>
 	            <adapt type="org.eclipse.core.resources.IProject"/>
@@ -411,8 +423,8 @@
   <extension
         point="org.eclipse.debug.ui.launchConfigurationTypeImages">
      <launchConfigurationTypeImage
-           configTypeID="de.cau.cs.se.instrumentation.rl.ui.launchConfigurationTypeImage"
-           icon="icons/constant.gif"
+           configTypeID="de.cau.cs.se.instrumentation.rl.ui.launchConfigurationType"
+           icon="icons/EcoreModelFile.png"
            id="de.cau.cs.se.instrumentation.rl.ui.launchConfigurationTypeImage">
      </launchConfigurationTypeImage>
   </extension>

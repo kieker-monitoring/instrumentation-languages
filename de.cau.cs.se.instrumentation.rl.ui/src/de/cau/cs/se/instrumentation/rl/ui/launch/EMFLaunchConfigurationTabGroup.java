@@ -29,11 +29,14 @@ public class EMFLaunchConfigurationTabGroup extends AbstractLaunchConfigurationT
 	 * 
 	 */
 	public EMFLaunchConfigurationTabGroup() {
-		// TODO Auto-generated constructor stub
+		// Auto-generated constructor stub
 	}
 
 	/**
 	 * Setup tabs.
+	 * 
+	 * @param dialog the launch configuration dialog
+	 * @param mode execution mode
 	 */
 	public void createTabs(final ILaunchConfigurationDialog dialog, final String mode) {
 		this.setTabs(new ILaunchConfigurationTab[] { new EMFProjectTab() });

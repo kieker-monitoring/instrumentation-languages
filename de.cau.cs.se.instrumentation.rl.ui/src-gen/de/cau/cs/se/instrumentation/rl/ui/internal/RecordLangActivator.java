@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.ui.shared.SharedStateModule;
 import org.eclipse.xtext.util.Modules2;
@@ -17,79 +18,93 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Module;
 
+import de.cau.cs.se.instrumentation.rl.generator.RecordLangGenerator;
+
 /**
  * This class was generated. Customizations should only happen in a newly
- * introduced subclass. 
+ * introduced subclass.
  */
 public class RecordLangActivator extends AbstractUIPlugin {
-	
+
 	public static final String DE_CAU_CS_SE_INSTRUMENTATION_RL_RECORDLANG = "de.cau.cs.se.instrumentation.rl.RecordLang";
-	
+
 	private static final Logger logger = Logger.getLogger(RecordLangActivator.class);
-	
+
 	private static RecordLangActivator INSTANCE;
-	
-	private Map<String, Injector> injectors = Collections.synchronizedMap(Maps.<String, Injector> newHashMapWithExpectedSize(1));
-	
+
+	private final Map<String, Injector> injectors = Collections.synchronizedMap(Maps.<String, Injector> newHashMapWithExpectedSize(1));
+
 	@Override
-	public void start(BundleContext context) throws Exception {
+	public void start(final BundleContext context) throws Exception {
 		super.start(context);
 		INSTANCE = this;
 	}
-	
+
 	@Override
-	public void stop(BundleContext context) throws Exception {
-		injectors.clear();
+	public void stop(final BundleContext context) throws Exception {
+		this.injectors.clear();
 		INSTANCE = null;
 		super.stop(context);
 	}
-	
+
 	public static RecordLangActivator getInstance() {
 		return INSTANCE;
 	}
-	
-	public Injector getInjector(String language) {
-		synchronized (injectors) {
-			Injector injector = injectors.get(language);
+
+	public Injector getInjector(final String language) {
+		synchronized (this.injectors) {
+			Injector injector = this.injectors.get(language);
 			if (injector == null) {
-				injectors.put(language, injector = createInjector(language));
+				this.injectors.put(language, injector = this.createInjector(language));
 			}
 			return injector;
 		}
 	}
-	
-	protected Injector createInjector(String language) {
+
+	protected Injector createInjector(final String language) {
 		try {
-			Module runtimeModule = getRuntimeModule(language);
-			Module sharedStateModule = getSharedStateModule();
-			Module uiModule = getUiModule(language);
-			Module mergedModule = Modules2.mixin(runtimeModule, sharedStateModule, uiModule);
+			final Module runtimeModule = this.getRuntimeModule(language);
+			final Module sharedStateModule = this.getSharedStateModule();
+			final Module uiModule = this.getUiModule(language);
+			final Module mergedModule = Modules2.mixin(runtimeModule, sharedStateModule, uiModule);
 			return Guice.createInjector(mergedModule);
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			logger.error("Failed to create injector for " + language);
 			logger.error(e.getMessage(), e);
 			throw new RuntimeException("Failed to create injector for " + language, e);
 		}
 	}
 
-	protected Module getRuntimeModule(String grammar) {
+	protected Module getRuntimeModule(final String grammar) {
 		if (DE_CAU_CS_SE_INSTRUMENTATION_RL_RECORDLANG.equals(grammar)) {
 			return new de.cau.cs.se.instrumentation.rl.RecordLangRuntimeModule();
 		}
-		
+
 		throw new IllegalArgumentException(grammar);
 	}
-	
-	protected Module getUiModule(String grammar) {
+
+	protected Module getUiModule(final String grammar) {
 		if (DE_CAU_CS_SE_INSTRUMENTATION_RL_RECORDLANG.equals(grammar)) {
 			return new de.cau.cs.se.instrumentation.rl.ui.RecordLangUiModule(this);
 		}
-		
+
 		throw new IllegalArgumentException(grammar);
 	}
-	
+
 	protected Module getSharedStateModule() {
 		return new SharedStateModule();
 	}
-	
+
+	@Override
+	protected void initializeDefaultPreferences(final IPreferenceStore store) {
+		store.setDefault(RecordLangGenerator.JAVA_DIR_PROPERTY, "");
+		store.setDefault(RecordLangGenerator.C_DIR_PROPERTY, "");
+		store.setDefault(RecordLangGenerator.PERL_DIR_PROPERTY, "");
+		store.setDefault(RecordLangGenerator.JAVA_CHECK_PROPERTY, false);
+		store.setDefault(RecordLangGenerator.C_CHECK_PROPERTY, false);
+		store.setDefault(RecordLangGenerator.PERL_CHECK_PROPERTY, false);
+		store.setDefault(RecordLangGenerator.AUTHOR_PROPERTY, "Kieker Generated");
+		store.setDefault(RecordLangGenerator.VERSION_PROPERTY, "1.10");
+	}
+
 }

@@ -1,6 +1,6 @@
 package kieker.common.record.controlflow
 
-entity OperationExecutionRecord {
+entity OperationExecutionRecord { 
 	const string NO_HOSTNAME = "<default-host>"
 	const string NO_SESSION_ID = "<no-session-id>"
 	const string NO_OPERATION_SIGNATURE = "noOperation"

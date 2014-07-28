@@ -36,7 +36,7 @@ import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
 
 /**
- * Setup tab for IRL to EMF generator
+ * Setup tab for IRL to EMF generator.
  * 
  * @author Reiner Jung
  *
@@ -49,6 +49,18 @@ public class EMFProjectTab extends AbstractLaunchConfigurationTab implements ILa
 
 	private IProject selectedProject;
 
+	/**
+	 * Default constructor.
+	 */
+	public EMFProjectTab() {
+		super();
+	}
+
+	/**
+	 * create control for run configuration.
+	 * 
+	 * @param parent parent element in the UI
+	 */
 	public void createControl(final Composite parent) {
 		this.tab = new Composite(parent, SWT.NONE);
 		this.setControl(this.tab);
@@ -116,7 +128,7 @@ public class EMFProjectTab extends AbstractLaunchConfigurationTab implements ILa
 	public void initializeFrom(final ILaunchConfiguration configuration) {
 		try {
 			this.projectText.setText(configuration.getAttribute(EMFLaunchConfigurationDelegate.ATTR_PROJECT, ""));
-			if (!this.projectText.getText().equals("")) {
+			if (!"".equals(this.projectText.getText())) {
 				this.selectedProject = ResourcesPlugin.getWorkspace().getRoot()
 						.getProject(this.projectText.getText());
 			} else {
@@ -143,6 +155,8 @@ public class EMFProjectTab extends AbstractLaunchConfigurationTab implements ILa
 
 	/**
 	 * The name.
+	 * 
+	 * @return the name of the tab
 	 */
 	public String getName() {
 		return "EMF meta-model generation";
