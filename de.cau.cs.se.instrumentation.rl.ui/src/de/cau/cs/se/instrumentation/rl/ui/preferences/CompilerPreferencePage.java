@@ -55,17 +55,14 @@ implements org.eclipse.ui.IWorkbenchPreferencePage, org.eclipse.ui.IWorkbenchPro
 		super();
 	}
 
-	@Override
 	public IAdaptable getElement() {
 		return this.adaptable;
 	}
 
-	@Override
 	public void setElement(final IAdaptable element) {
 		this.adaptable = element;
 	}
 
-	@Override
 	public void init(final IWorkbench workbench) {
 
 	}
@@ -279,7 +276,6 @@ implements org.eclipse.ui.IWorkbenchPreferencePage, org.eclipse.ui.IWorkbenchPro
 			this.directoryPath = directoryPath;
 		}
 
-		@Override
 		public void widgetSelected(final SelectionEvent e) {
 			if (this.adaptable instanceof IJavaProject) {
 				final ContainerSelectionDialog dialog =
@@ -297,7 +293,6 @@ implements org.eclipse.ui.IWorkbenchPreferencePage, org.eclipse.ui.IWorkbenchPro
 			}
 		}
 
-		@Override
 		public void widgetDefaultSelected(final SelectionEvent e) {
 			this.widgetSelected(e);
 		}
