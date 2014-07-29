@@ -38,8 +38,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * @params version
 	 * 		generic kieker version for the record
 	 */
-	override createContent(RecordType type, String author, String version, boolean languageSpecificFolder) {
-		this.languageSpecificFolder = languageSpecificFolder
+	override createContent(RecordType type, String author, String version) {
 		val serialUID = new Date().time.toString + 'L'
 		val allDataProperties = PropertyEvaluation::collectAllDataProperties(type)
 		val allDeclarationProperties = collectAllDeclarationProperties(type)

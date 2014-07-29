@@ -11,8 +11,7 @@ import org.eclipse.emf.common.util.EList
 
 class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerator {
 	
-	override createContent(PartialRecordType type, String author, String version, boolean languageSpecificFolder) {
-		this.languageSpecificFolder = languageSpecificFolder
+	override createContent(PartialRecordType type, String author, String version) {
 		'''
 		/***************************************************************************
 		 * Copyright 2013 Kieker Project (http://kieker-monitoring.net)

@@ -25,7 +25,7 @@ import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculato
  * @author Reiner Jung
  */
 public class RecordLangUiModule extends de.cau.cs.se.instrumentation.rl.ui.AbstractRecordLangUiModule {
-	
+
 	/**
 	 * Generic UI constructor.
 	 * 

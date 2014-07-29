@@ -30,6 +30,20 @@ public abstract class AbstractTypeGenerator {
   public abstract String fileName(final Type type);
   
   /**
+   * Convert a classifier into a primitive type for a
+   * target language.
+   * 
+   * @param classifier
+   * 		a classifier specifying a primitive type
+   */
+  public abstract CharSequence createTypeName(final Classifier classifier);
+  
+  /**
+   * Returns the language type the generator supports.
+   */
+  public abstract String getLanguageType();
+  
+  /**
    * Determine the size of the resulting binary serialization.
    * 
    * @param allProperties

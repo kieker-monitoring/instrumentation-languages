@@ -54,10 +54,9 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    * @params version
    * 		generic kieker version for the record
    */
-  public CharSequence createContent(final RecordType type, final String author, final String version, final boolean languageSpecificFolder) {
+  public CharSequence createContent(final RecordType type, final String author, final String version) {
     CharSequence _xblockexpression = null;
     {
-      this.languageSpecificFolder = languageSpecificFolder;
       Date _date = new Date();
       long _time = _date.getTime();
       String _string = Long.valueOf(_time).toString();

@@ -20,133 +20,128 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
 public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerator {
-  public CharSequence createContent(final PartialRecordType type, final String author, final String version, final boolean languageSpecificFolder) {
-    CharSequence _xblockexpression = null;
-    {
-      this.languageSpecificFolder = languageSpecificFolder;
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("/***************************************************************************");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* Copyright 2013 Kieker Project (http://kieker-monitoring.net)");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("*");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* Licensed under the Apache License, Version 2.0 (the \"License\");");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* you may not use this file except in compliance with the License.");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* You may obtain a copy of the License at");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("*");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("*     http://www.apache.org/licenses/LICENSE-2.0");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("*");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* Unless required by applicable law or agreed to in writing, software");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* distributed under the License is distributed on an \"AS IS\" BASIS,");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* See the License for the specific language governing permissions and");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* limitations under the License.");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("***************************************************************************/");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("package ");
-      EObject _eContainer = type.eContainer();
-      String _name = ((Model) _eContainer).getName();
-      _builder.append(_name, "");
-      _builder.append(";");
-      _builder.newLineIfNotEmpty();
-      _builder.newLine();
-      _builder.append("import java.nio.BufferOverflowException;");
-      _builder.newLine();
-      _builder.append("import java.nio.BufferUnderflowException;");
-      _builder.newLine();
-      _builder.append("import java.io.UnsupportedEncodingException;");
-      _builder.newLine();
-      _builder.append("import java.nio.ByteBuffer;");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("import kieker.common.record.AbstractMonitoringRecord;");
-      _builder.newLine();
-      _builder.append("import kieker.common.record.IMonitoringRecord;");
-      _builder.newLine();
-      _builder.append("import kieker.common.util.registry.IRegistry;");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("/**");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* @author ");
-      _builder.append(author, " ");
-      _builder.newLineIfNotEmpty();
-      _builder.append(" ");
-      _builder.append("* ");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* @since ");
-      _builder.append(version, " ");
-      _builder.newLineIfNotEmpty();
-      _builder.append(" ");
-      _builder.append("*/");
-      _builder.newLine();
-      _builder.append("public interface ");
-      String _name_1 = type.getName();
-      _builder.append(_name_1, "");
-      CharSequence _xifexpression = null;
-      boolean _and = false;
-      EList<PartialRecordType> _parents = type.getParents();
-      boolean _notEquals = (!Objects.equal(_parents, null));
-      if (!_notEquals) {
-        _and = false;
-      } else {
-        EList<PartialRecordType> _parents_1 = type.getParents();
-        int _size = _parents_1.size();
-        boolean _greaterThan = (_size > 0);
-        _and = _greaterThan;
-      }
-      if (_and) {
-        EList<PartialRecordType> _parents_2 = type.getParents();
-        _xifexpression = this.createExtends(_parents_2);
-      }
-      _builder.append(_xifexpression, "");
-      _builder.append(" {");
-      _builder.newLineIfNotEmpty();
-      _builder.append("\t");
-      EList<Property> _properties = type.getProperties();
-      final Function1<Property,CharSequence> _function = new Function1<Property,CharSequence>() {
-        public CharSequence apply(final Property property) {
-          return PartialRecordTypeGenerator.this.createPropertyGetter(property);
-        }
-      };
-      List<CharSequence> _map = ListExtensions.<Property, CharSequence>map(_properties, _function);
-      String _join = IterableExtensions.join(_map);
-      _builder.append(_join, "\t");
-      _builder.newLineIfNotEmpty();
-      _builder.append("}");
-      _builder.newLine();
-      _xblockexpression = _builder;
+  public CharSequence createContent(final PartialRecordType type, final String author, final String version) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("/***************************************************************************");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("* Copyright 2013 Kieker Project (http://kieker-monitoring.net)");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("*");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("* Licensed under the Apache License, Version 2.0 (the \"License\");");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("* you may not use this file except in compliance with the License.");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("* You may obtain a copy of the License at");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("*");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("*     http://www.apache.org/licenses/LICENSE-2.0");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("*");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("* Unless required by applicable law or agreed to in writing, software");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("* distributed under the License is distributed on an \"AS IS\" BASIS,");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("* See the License for the specific language governing permissions and");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("* limitations under the License.");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("***************************************************************************/");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("package ");
+    EObject _eContainer = type.eContainer();
+    String _name = ((Model) _eContainer).getName();
+    _builder.append(_name, "");
+    _builder.append(";");
+    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    _builder.append("import java.nio.BufferOverflowException;");
+    _builder.newLine();
+    _builder.append("import java.nio.BufferUnderflowException;");
+    _builder.newLine();
+    _builder.append("import java.io.UnsupportedEncodingException;");
+    _builder.newLine();
+    _builder.append("import java.nio.ByteBuffer;");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("import kieker.common.record.AbstractMonitoringRecord;");
+    _builder.newLine();
+    _builder.append("import kieker.common.record.IMonitoringRecord;");
+    _builder.newLine();
+    _builder.append("import kieker.common.util.registry.IRegistry;");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("/**");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("* @author ");
+    _builder.append(author, " ");
+    _builder.newLineIfNotEmpty();
+    _builder.append(" ");
+    _builder.append("* ");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("* @since ");
+    _builder.append(version, " ");
+    _builder.newLineIfNotEmpty();
+    _builder.append(" ");
+    _builder.append("*/");
+    _builder.newLine();
+    _builder.append("public interface ");
+    String _name_1 = type.getName();
+    _builder.append(_name_1, "");
+    CharSequence _xifexpression = null;
+    boolean _and = false;
+    EList<PartialRecordType> _parents = type.getParents();
+    boolean _notEquals = (!Objects.equal(_parents, null));
+    if (!_notEquals) {
+      _and = false;
+    } else {
+      EList<PartialRecordType> _parents_1 = type.getParents();
+      int _size = _parents_1.size();
+      boolean _greaterThan = (_size > 0);
+      _and = _greaterThan;
     }
-    return _xblockexpression;
+    if (_and) {
+      EList<PartialRecordType> _parents_2 = type.getParents();
+      _xifexpression = this.createExtends(_parents_2);
+    }
+    _builder.append(_xifexpression, "");
+    _builder.append(" {");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    EList<Property> _properties = type.getProperties();
+    final Function1<Property,CharSequence> _function = new Function1<Property,CharSequence>() {
+      public CharSequence apply(final Property property) {
+        return PartialRecordTypeGenerator.this.createPropertyGetter(property);
+      }
+    };
+    List<CharSequence> _map = ListExtensions.<Property, CharSequence>map(_properties, _function);
+    String _join = IterableExtensions.join(_map);
+    _builder.append(_join, "\t");
+    _builder.newLineIfNotEmpty();
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
   }
   
   public CharSequence createExtends(final EList<PartialRecordType> parents) {

@@ -2,7 +2,6 @@ package de.cau.cs.se.instrumentation.rl.generator
 
 import de.cau.cs.se.instrumentation.rl.generator.AbstractTypeGenerator
 import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType
-import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
 
 abstract class AbstractPartialRecordTypeGenerator extends AbstractTypeGenerator {
 	/**
@@ -15,20 +14,6 @@ abstract class AbstractPartialRecordTypeGenerator extends AbstractTypeGenerator 
 	 * @params version
 	 * 		generic kieker version for the record
 	 */
-	def abstract CharSequence createContent(PartialRecordType type, String author, String version, boolean languageSpecificFolder);
-	
-	/**
-	 * Convert a classifier into a primitive type for a
-	 * target language.
-	 * 
-	 * @param classifier
-	 * 		a classifier specifying a primitive type
-	 */
-	def abstract CharSequence createTypeName(Classifier classifier);
-	
-	/**
-	 * Returns the language type the generator supports.
-	 */
-	def abstract String getLanguageType();
-	
+	def abstract CharSequence createContent(PartialRecordType type, String author, String version);
+		
 }

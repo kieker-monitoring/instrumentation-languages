@@ -22,6 +22,20 @@ abstract class AbstractTypeGenerator {
 	 * language format for the given record.
 	 */
 	def abstract String fileName(Type type);
+	
+	/**
+	 * Convert a classifier into a primitive type for a
+	 * target language.
+	 * 
+	 * @param classifier
+	 * 		a classifier specifying a primitive type
+	 */
+	def abstract CharSequence createTypeName(Classifier classifier);
+	
+	/**
+	 * Returns the language type the generator supports.
+	 */
+	def abstract String getLanguageType();
 		
 	/**
 	 * Determine the size of the resulting binary serialization.

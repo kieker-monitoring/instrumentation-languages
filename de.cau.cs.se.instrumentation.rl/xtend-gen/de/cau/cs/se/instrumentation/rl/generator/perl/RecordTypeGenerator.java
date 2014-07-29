@@ -27,10 +27,10 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   /**
    * Create a perl based record for kieker
    */
-  public CharSequence createContent(final RecordType type, final String author, final String version, final boolean languageSpecificFolder) {
+  public CharSequence createContent(final RecordType type, final String author, final String version) {
     CharSequence _xblockexpression = null;
     {
-      this.languageSpecificFolder = languageSpecificFolder;
+      this.languageSpecificFolder = this.languageSpecificFolder;
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("use strict;");
       _builder.newLine();

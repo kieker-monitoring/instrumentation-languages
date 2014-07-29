@@ -43,16 +43,16 @@ class RecordLangGenerator implements IGenerator {
 	@Property var version = "1.9"
 	@Property var author = "Generic Kieker"
 	
-	@Property var String[] selectedLanguageTypes = #[]
+	@Property var String[] selectedLanguageTypes = #[ ]
 	
 	@Property var boolean languageSpecificTargetFolder = true
 		
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		selectedLanguageTypes = #[ "Java" ]
+		// selectedLanguageTypes = #[ "java" ]
 		if (resource.URI.platformResource) {
-			val properties = Platform.getPreferencesService().getRootNode().node("project").node(resource.URI.segments.get(1))
-			System.out.println ("node " + properties.get(JAVA_DIR_PROPERTY,""))
-			System.out.println ("node " + properties.node(JAVA_DIR_PROPERTY))
+			// val properties = Platform.getPreferencesService().getRootNode().node("project").node(resource.URI.segments.get(1))
+			//System.out.println ("node " + properties.get(JAVA_DIR_PROPERTY,""))
+			//System.out.println ("node " + properties.node(JAVA_DIR_PROPERTY))
 			// list all generators to support RecordType
 			val Class<?>[] recordTypeGenerators = #[
 				typeof(de.cau.cs.se.instrumentation.rl.generator.c.RecordTypeGenerator),
@@ -65,21 +65,30 @@ class RecordLangGenerator implements IGenerator {
 			val Class<?>[] partialRecordTypeGenerators = #[
 				typeof(de.cau.cs.se.instrumentation.rl.generator.java.PartialRecordTypeGenerator)
 			]
-			
-							
+								
 			for (Class<?> generator : recordTypeGenerators) {
 				val cg = generator.getConstructor().newInstance() as AbstractRecordTypeGenerator
-				resource.allContents.filter(typeof(RecordType)).forEach[type | 
-					if (cg.isActive) fsa.generateFile(cg.fileName(type), cg.createContent(type,author,version,languageSpecificTargetFolder))
-				]
+				if (cg.isActive) {
+					cg.languageSpecificFolder = languageSpecificTargetFolder
+					resource.allContents.filter(typeof(RecordType)).forEach[type | 
+						fsa.generateFile(cg.fileName(type), 
+							cg.createContent(type,author,version)
+						)
+					]
+				}
 			}
 			
 			for (Class<?> generator : partialRecordTypeGenerators) {
 				val cg = generator.getConstructor().newInstance() as AbstractPartialRecordTypeGenerator
-				resource.allContents.filter(typeof(PartialRecordType)).forEach[type | 
-					if (cg.isActive) fsa.generateFile(cg.fileName(type), cg.createContent(type,author,version,languageSpecificTargetFolder))
-				]
-			} 
+				if (cg.isActive) {
+					cg.languageSpecificFolder = languageSpecificTargetFolder
+					resource.allContents.filter(typeof(PartialRecordType)).forEach[type | 
+						fsa.generateFile(cg.fileName(type), 
+							cg.createContent(type,author,version)
+						)
+					]
+				}
+			}
 		}
 	}
 	
@@ -87,11 +96,8 @@ class RecordLangGenerator implements IGenerator {
 		
 	}
 	
-	def boolean isActive(AbstractRecordTypeGenerator generator) {
+	def boolean isActive(AbstractTypeGenerator generator) {
 		return selectedLanguageTypes.exists[generator.languageType.equals(it)]
 	}
-	
-	def boolean isActive(AbstractPartialRecordTypeGenerator generator) {
-		return selectedLanguageTypes.exists[generator.languageType.equals(it)]
-	}
+
 }

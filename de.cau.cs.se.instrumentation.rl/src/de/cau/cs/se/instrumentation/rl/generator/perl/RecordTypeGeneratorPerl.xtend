@@ -17,7 +17,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	/**
 	 * Create a perl based record for kieker
 	 */
-	override createContent(RecordType type, String author, String version, boolean languageSpecificFolder) {
+	override createContent(RecordType type, String author, String version) {
 		this.languageSpecificFolder = languageSpecificFolder
 		'''
 		use strict;

@@ -18,8 +18,7 @@ class RecordTypeGenerator extends de.cau.cs.se.instrumentation.rl.generator.c.Re
 	 * @params version
 	 * 		generic kieker version for the record
 	 */
-	override createContent(RecordType type, String author, String version, boolean languageSpecificFolder) {
-		this.languageSpecificFolder = languageSpecificFolder
+	override createContent(RecordType type, String author, String version) {
 		'''
 		/***************************************************************************
 		 * Copyright 2013 Kieker Project (http://kieker-monitoring.net)
