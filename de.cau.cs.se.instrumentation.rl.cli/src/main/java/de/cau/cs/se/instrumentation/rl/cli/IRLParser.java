@@ -16,7 +16,6 @@
 package de.cau.cs.se.instrumentation.rl.cli;
 
 import java.io.File;
-import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
@@ -57,13 +56,13 @@ public class IRLParser {
 	/** Location for the generated code. */
 	private final String targetRootPath;
 	/** The Kieker eclipse project name. */
-	private String projectName = "Kieker";
+	private final String projectName;
 	/** The source path for the IRL files. */
 	private final String projectSourcePath;
 	/** The author name for the generated records. */
-	private String author = "Generic Kieker";
+	private final String author;
 	/** The Kieker version for the records. */
-	private String version = "1.10";
+	private final String version;
 	/** Derive value representing the project root path. */
 	private final String sourceRootPath;
 
@@ -71,7 +70,7 @@ public class IRLParser {
 
 	private final boolean mavenFolderLayout;
 
-	private final String platformUri;
+	private final StandaloneSetup setup;
 
 	/**
 	 * Construct an IRL parser.
@@ -84,6 +83,8 @@ public class IRLParser {
 	 *            project local path to generated sources
 	 * @param projectName
 	 *            project name
+	 * @param projectDirectoryName
+	 *            project path name (optional, can be null)
 	 * @param author
 	 *            author name for the code generation
 	 * @param version
@@ -93,7 +94,8 @@ public class IRLParser {
 	 * @param mavenFolderLayout
 	 *            maven directory layout
 	 */
-	public IRLParser(final String platformUri, final String projectName, final String projectSourcePath, final String projectDestinationPath,
+	public IRLParser(final String platformUri, final String projectName, final String projectDirectoryName,
+			final String projectSourcePath, final String projectDestinationPath,
 			final boolean mavenFolderLayout, final String[] selectedLanguageTypes, final String version, final String author) {
 		this.projectSourcePath = projectSourcePath;
 		this.projectName = projectName;
@@ -101,31 +103,42 @@ public class IRLParser {
 		this.version = version;
 		this.selectedLanguageTypes = selectedLanguageTypes;
 		this.mavenFolderLayout = mavenFolderLayout;
-		this.platformUri = platformUri;
 
-		// org.eclipse.emf.mwe.utils.
-		final org.eclipse.emf.mwe.utils.StandaloneSetup setup = new StandaloneSetup();
-		setup.setPlatformUri(platformUri);
+		this.setup = new StandaloneSetup();
+		this.setup.setProjectDirectoryName(projectDirectoryName);
 
-		final Map<String, URI> map = EcorePlugin.getPlatformResourceMap();
-		for (final String key : map.keySet()) {
-			System.out.println(key + " = " + map.get(key));
+		if (this.setup.initialize(platformUri)) {
+
+			// query real path name of project
+			final URI projectURI = EcorePlugin.getPlatformResourceMap().get(projectName);
+			if (projectURI != null) {
+				final String realProjectPathName = projectURI.trimSegments(1).lastSegment();
+
+				final Injector injector = new RecordLangStandaloneSetup().createInjectorAndDoEMFRegistration();
+				injector.injectMembers(this);
+				this.resourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
+
+				this.sourceRootPath = platformUri + "/" + realProjectPathName + "/" + projectSourcePath;
+				this.targetRootPath = platformUri + "/" + realProjectPathName + "/" + projectDestinationPath;
+			} else {
+				LOG.error("Specified project " + projectName + " cannot be found.");
+				this.sourceRootPath = null;
+				this.targetRootPath = null;
+			}
+		} else {
+			this.sourceRootPath = null;
+			this.targetRootPath = null;
 		}
-
-		final Injector injector = new RecordLangStandaloneSetup().createInjectorAndDoEMFRegistration();
-		injector.injectMembers(this);
-		this.resourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
-
-		this.sourceRootPath = platformUri + "/" + projectName + "/" + projectSourcePath;
-		this.targetRootPath = platformUri + "/" + projectName + "/" + projectDestinationPath;
 	}
 
 	/**
 	 * Central compiler hook.
 	 */
 	public void compileAll() {
-		this.directoryWalkerResource("");
-		this.directoryWalkerCompile("");
+		if (this.setup.isConfigured()) {
+			this.directoryWalkerResource("");
+			this.directoryWalkerCompile("");
+		}
 	}
 
 	/**
@@ -186,10 +199,7 @@ public class IRLParser {
 	 * @return the resource added to the resource set
 	 */
 	private Resource getResource(final String pathName) {
-		LOG.info("normal URI " + this.platformUri + ":" + this.projectName + ":" + this.projectSourcePath);
 		final URI uri = URI.createURI("platform:/resource/" + this.projectName + "/" + this.projectSourcePath + pathName);
-		// final URI uri = URI.createPlatformResourceURI("/" + this.projectName + "/" + this.projectSourcePath + pathName, true);
-		// final URI uri = URI.createFileURI(this.projectSourcePath + pathName);
 		return this.resourceSet.getResource(uri, true);
 	}
 

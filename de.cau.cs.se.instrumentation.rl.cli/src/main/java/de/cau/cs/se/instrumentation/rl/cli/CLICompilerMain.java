@@ -45,6 +45,10 @@ public final class CLICompilerMain {
 
 	private static final String CMD_PROJECT_LONG = "project";
 
+	private static final String CMD_PROJECT_DIRECTORY = "n";
+
+	private static final String CMD_PROJECT_DIRECTORY_LONG = "project-directory";
+
 	private static final String CMD_SOURCE = "s";
 
 	private static final String CMD_SOURCE_LONG = "source";
@@ -60,6 +64,14 @@ public final class CLICompilerMain {
 	private static final String CMD_LANGUAGES = "l";
 
 	private static final String CMD_LANGUAGES_LONG = "languages";
+
+	private static final String CMD_AUTHOR = "a";
+
+	private static final String CMD_AUHTOR_LONG = "author";
+
+	private static final String CMD_VERSION = "v";
+
+	private static final String CMD_VERSION_LONG = "version";
 
 	/** Command line options. */
 	private static Options options;
@@ -85,6 +97,7 @@ public final class CLICompilerMain {
 		String projectName = "";
 		String projectSourcePath = "src";
 		String projectDestinationPath = "src-gen";
+		String projectDirectoryName = null;
 		boolean mavenFolderLayout = false;
 		String[] selectedLanguageTypes = {};
 		int exitCode = 0;
@@ -100,6 +113,10 @@ public final class CLICompilerMain {
 
 			if (commandLine.hasOption(CMD_PROJECT)) {
 				projectName = commandLine.getOptionValue(CMD_PROJECT);
+			}
+
+			if (commandLine.hasOption(CMD_PROJECT_DIRECTORY)) {
+				projectDirectoryName = commandLine.getOptionValue(CMD_PROJECT_DIRECTORY);
 			}
 
 			if (commandLine.hasOption(CMD_SOURCE)) {
@@ -120,7 +137,7 @@ public final class CLICompilerMain {
 				System.exit(-1);
 			}
 
-			parser = new IRLParser(runtimeRoot, projectName, projectSourcePath, projectDestinationPath,
+			parser = new IRLParser(runtimeRoot, projectName, projectDirectoryName, projectSourcePath, projectDestinationPath,
 					mavenFolderLayout, selectedLanguageTypes, "1.10", "Generic Kieker");
 			parser.compileAll();
 		} catch (final ParseException e) {
@@ -150,6 +167,13 @@ public final class CLICompilerMain {
 		option = new Option(CMD_PROJECT, CMD_PROJECT_LONG, true,
 				"Eclipse project containing the files.");
 		option.setArgName(CMD_PROJECT);
+		option.setRequired(true);
+		options.addOption(option);
+
+		// eclipse project path name
+		option = new Option(CMD_PROJECT_DIRECTORY, CMD_PROJECT_DIRECTORY_LONG, true,
+				"Directory path name of the project (normally determined automatically).");
+		option.setArgName(CMD_PROJECT_DIRECTORY);
 		option.setRequired(false);
 		options.addOption(option);
 
@@ -179,6 +203,20 @@ public final class CLICompilerMain {
 				"Generate code for all named languages.");
 		option.setArgName(CMD_LANGUAGES);
 		option.setRequired(true);
+		options.addOption(option);
+
+		// set author for the generated code
+		option = new Option(CMD_AUTHOR, CMD_AUHTOR_LONG, true,
+				"Set author name for the generated code. Default is 'generated'.");
+		option.setArgName(CMD_AUTHOR);
+		option.setRequired(false);
+		options.addOption(option);
+
+		// set author for the generated code
+		option = new Option(CMD_VERSION, CMD_VERSION_LONG, true,
+				"Set version for the generated code. Default is 'none'.");
+		option.setArgName(CMD_VERSION);
+		option.setRequired(false);
 		options.addOption(option);
 
 		return options;

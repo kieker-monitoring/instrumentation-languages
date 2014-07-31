@@ -32,5 +32,35 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/home/rju/eclipse-SR2/plugins/org.eclipse.emf.mwe.core_1.2.1.v201402030544.jar" sourcepath="/home/rju/eclipse-SR2/plugins/org.eclipse.emf.mwe.core.source_1.2.1.v201402030544.jar">
+		<accessrules>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/mwe/core/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/mwe/core/ant/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/mwe/core/ao/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/mwe/core/config/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/mwe/core/container/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/mwe/core/customizer/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/mwe/core/debug/model/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/mwe/core/debug/processing/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/mwe/core/issues/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/mwe/core/lib/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/mwe/core/monitor/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/mwe/core/resources/*"/>
+			<accessrule kind="discouraged" pattern="org/eclipse/emf/mwe/internal/core/*"/>
+			<accessrule kind="accessible" pattern="org/eclipse/emf/mwe/internal/core/ant/*"/>
+			<accessrule kind="discouraged" pattern="org/eclipse/emf/mwe/internal/core/ast/*"/>
+			<accessrule kind="discouraged" pattern="org/eclipse/emf/mwe/internal/core/ast/parser/*"/>
+			<accessrule kind="discouraged" pattern="org/eclipse/emf/mwe/internal/core/ast/util/*"/>
+			<accessrule kind="discouraged" pattern="org/eclipse/emf/mwe/internal/core/ast/util/converter/*"/>
+			<accessrule kind="discouraged" pattern="org/eclipse/emf/mwe/internal/core/debug/communication/*"/>
+			<accessrule kind="discouraged" pattern="org/eclipse/emf/mwe/internal/core/debug/communication/packages/*"/>
+			<accessrule kind="discouraged" pattern="org/eclipse/emf/mwe/internal/core/debug/model/*"/>
+			<accessrule kind="discouraged" pattern="org/eclipse/emf/mwe/internal/core/debug/mwe/*"/>
+			<accessrule kind="discouraged" pattern="org/eclipse/emf/mwe/internal/core/debug/processing/*"/>
+			<accessrule kind="discouraged" pattern="org/eclipse/emf/mwe/internal/core/debug/processing/handlers/*"/>
+			<accessrule kind="discouraged" pattern="org/eclipse/emf/mwe/internal/core/util/*"/>
+			<accessrule ignoreifbetter="true" kind="nonaccessible" pattern="**/*"/>
+		</accessrules>
+	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
