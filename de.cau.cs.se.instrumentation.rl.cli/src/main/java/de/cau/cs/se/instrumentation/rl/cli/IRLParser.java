@@ -16,18 +16,19 @@
 package de.cau.cs.se.instrumentation.rl.cli;
 
 import java.io.File;
+import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
 
-import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 
-import de.cau.cs.se.instrumentation.rl.RecordLangRuntimeModule;
+import de.cau.cs.se.instrumentation.rl.RecordLangStandaloneSetup;
 import de.cau.cs.se.instrumentation.rl.generator.RecordLangGenerator;
 
 import kieker.common.logging.Log;
@@ -70,6 +71,8 @@ public class IRLParser {
 
 	private final boolean mavenFolderLayout;
 
+	private final String platformUri;
+
 	/**
 	 * Construct an IRL parser.
 	 * 
@@ -98,26 +101,23 @@ public class IRLParser {
 		this.version = version;
 		this.selectedLanguageTypes = selectedLanguageTypes;
 		this.mavenFolderLayout = mavenFolderLayout;
+		this.platformUri = platformUri;
 
-		new org.eclipse.emf.mwe.utils.StandaloneSetup().setPlatformUri(platformUri);
-		final Injector injector = Guice.createInjector(new RecordLangRuntimeModule());
+		// org.eclipse.emf.mwe.utils.
+		final org.eclipse.emf.mwe.utils.StandaloneSetup setup = new StandaloneSetup();
+		setup.setPlatformUri(platformUri);
+
+		final Map<String, URI> map = EcorePlugin.getPlatformResourceMap();
+		for (final String key : map.keySet()) {
+			System.out.println(key + " = " + map.get(key));
+		}
+
+		final Injector injector = new RecordLangStandaloneSetup().createInjectorAndDoEMFRegistration();
 		injector.injectMembers(this);
 		this.resourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
 
 		this.sourceRootPath = platformUri + "/" + projectName + "/" + projectSourcePath;
 		this.targetRootPath = platformUri + "/" + projectName + "/" + projectDestinationPath;
-	}
-
-	/**
-	 * Add a resource for the present project and present project source path to
-	 * the resource set and return that resource.
-	 * 
-	 * @param pathName
-	 *            relative path name to the file to be added to the resource set
-	 * @return the resource added to the resource set
-	 */
-	public Resource getResource(final String pathName) {
-		return this.resourceSet.getResource(URI.createURI("platform:/resource/" + this.projectName + "/" + this.projectSourcePath + pathName), true);
 	}
 
 	/**
@@ -175,6 +175,22 @@ public class IRLParser {
 				}
 			}
 		}
+	}
+
+	/**
+	 * Add a resource for the present project and present project source path to
+	 * the resource set and return that resource.
+	 * 
+	 * @param pathName
+	 *            relative path name to the file to be added to the resource set
+	 * @return the resource added to the resource set
+	 */
+	private Resource getResource(final String pathName) {
+		LOG.info("normal URI " + this.platformUri + ":" + this.projectName + ":" + this.projectSourcePath);
+		final URI uri = URI.createURI("platform:/resource/" + this.projectName + "/" + this.projectSourcePath + pathName);
+		// final URI uri = URI.createPlatformResourceURI("/" + this.projectName + "/" + this.projectSourcePath + pathName, true);
+		// final URI uri = URI.createFileURI(this.projectSourcePath + pathName);
+		return this.resourceSet.getResource(uri, true);
 	}
 
 	/**

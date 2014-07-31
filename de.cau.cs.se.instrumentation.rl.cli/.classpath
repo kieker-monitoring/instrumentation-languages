@@ -32,7 +32,5 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="src" path="/Kieker"/>
-	<classpathentry kind="src" path="/de.cau.cs.se.instrumentation.rl"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

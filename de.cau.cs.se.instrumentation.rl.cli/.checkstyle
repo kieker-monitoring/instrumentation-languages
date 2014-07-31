@@ -4,7 +4,7 @@
   <local-check-config name="Kieker Checkstyle" location="/Kieker/lib/static-analysis/checkstyle-5.6/cs-conf.xml" type="project" description="">
     <additional-data name="protect-config-file" value="true"/>
   </local-check-config>
-  <fileset name="all" enabled="true" check-config-name="Kieker Checkstyle" local="true">
+  <fileset name="all" enabled="true" check-config-name="Kieker Eclipse" local="false">
     <file-match-pattern match-pattern="." include-pattern="true"/>
   </fileset>
   <filter name="FilesFromPackage" enabled="true">
