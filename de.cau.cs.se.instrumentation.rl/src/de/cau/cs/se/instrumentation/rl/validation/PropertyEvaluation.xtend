@@ -63,12 +63,13 @@ class PropertyEvaluation {
 	 * 		a complete list of all properties in a record
 	 */
 	dispatch static def Collection<Property> collectAllProperties(RecordType type) {
-		val Collection<Property> result = if (type.parent != null)
-			type.parent.collectAllDataProperties
-		else 
-			new ArrayList<Property>()
+		val Collection<Property> result =
+			if (type.parent != null)
+				type.parent.collectAllProperties
+			else 
+				new ArrayList<Property>()
 		if (type.parents != null) 
-			type.parents.forEach[result.addAllUnique(collectAllProperties)]
+			type.parents.forEach[result.addAllUnique(it.collectAllProperties)]
 		return result.addAllUnique(type.properties)
 	}
 	

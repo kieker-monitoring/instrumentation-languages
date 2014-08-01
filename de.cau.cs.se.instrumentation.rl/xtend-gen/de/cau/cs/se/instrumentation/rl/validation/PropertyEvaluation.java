@@ -110,7 +110,7 @@ public class PropertyEvaluation {
     boolean _notEquals = (!Objects.equal(_parent, null));
     if (_notEquals) {
       RecordType _parent_1 = type.getParent();
-      _xifexpression = PropertyEvaluation.collectAllDataProperties(_parent_1);
+      _xifexpression = PropertyEvaluation.collectAllProperties(_parent_1);
     } else {
       _xifexpression = new ArrayList<Property>();
     }

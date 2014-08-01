@@ -40,15 +40,14 @@ class RecordLangGenerator implements IGenerator {
 	public static val AUTHOR_PROPERTY = className + ".AUTHOR_PROPERTY"
 	public static val VERSION_PROPERTY = className + ".VERSION_PROPERTY"
 	
-	@Property var version = "1.9"
+	@Property var version = "1.10"
 	@Property var author = "Generic Kieker"
 	
-	@Property var String[] selectedLanguageTypes = #[ ]
+	@Property var String[] selectedLanguageTypes = #[ 'java' ]
 	
-	@Property var boolean languageSpecificTargetFolder = true
+	@Property var boolean languageSpecificTargetFolder = false
 		
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		// selectedLanguageTypes = #[ "java" ]
 		if (resource.URI.platformResource) {
 			// val properties = Platform.getPreferencesService().getRootNode().node("project").node(resource.URI.segments.get(1))
 			//System.out.println ("node " + properties.get(JAVA_DIR_PROPERTY,""))

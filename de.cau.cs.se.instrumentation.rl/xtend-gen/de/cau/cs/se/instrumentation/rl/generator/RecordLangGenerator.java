@@ -61,7 +61,7 @@ public class RecordLangGenerator implements IGenerator {
   
   public final static String VERSION_PROPERTY = (RecordLangGenerator.className + ".VERSION_PROPERTY");
   
-  private String _version = "1.9";
+  private String _version = "1.10";
   
   public String getVersion() {
     return this._version;
@@ -81,7 +81,7 @@ public class RecordLangGenerator implements IGenerator {
     this._author = author;
   }
   
-  private String[] _selectedLanguageTypes = {};
+  private String[] _selectedLanguageTypes = { "java" };
   
   public String[] getSelectedLanguageTypes() {
     return this._selectedLanguageTypes;
@@ -91,7 +91,7 @@ public class RecordLangGenerator implements IGenerator {
     this._selectedLanguageTypes = selectedLanguageTypes;
   }
   
-  private boolean _languageSpecificTargetFolder = true;
+  private boolean _languageSpecificTargetFolder = false;
   
   public boolean isLanguageSpecificTargetFolder() {
     return this._languageSpecificTargetFolder;

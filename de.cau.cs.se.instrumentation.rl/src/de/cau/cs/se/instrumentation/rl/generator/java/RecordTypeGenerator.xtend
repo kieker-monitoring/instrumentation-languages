@@ -20,7 +20,6 @@ import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation
 import java.io.File
 import java.util.ArrayList
 import java.util.Collection
-import java.util.Date
 import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.EClassifier
 
@@ -39,10 +38,9 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * 		generic kieker version for the record
 	 */
 	override createContent(RecordType type, String author, String version) {
-		val serialUID = new Date().time.toString + 'L'
+		val serialUID = ComputeUID.computeDefaultSUID(type) + 'L'
 		val allDataProperties = PropertyEvaluation::collectAllDataProperties(type)
 		val allDeclarationProperties = collectAllDeclarationProperties(type)
-		val allGetterDeclarationProperties = collectAllGetterDeclarationProperties(type) 
 		'''
 		/***************************************************************************
 		 * Copyright 2013 Kieker Project (http://kieker-monitoring.net)
@@ -195,7 +193,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 				throw new UnsupportedOperationException();
 			}
 		
-			«allGetterDeclarationProperties.map[property | createPropertyGetter(property)].join»
+			«type.collectAllGetterDeclarationProperties.map[property | createPropertyGetter(property)].join»
 		}
 		'''
 	}
@@ -237,11 +235,11 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 						int _«property.name»_size«sizes.indexOf(size)» = buffer.getInt();
 					«ENDIF»
 				«ENDFOR»
-				«property.name» = new «property.findType.createTypeInstantiationName(property.name)»;
+				«property.name.protectKeywords» = new «property.findType.createTypeInstantiationName(property.name)»;
 				«createForLoopForDeserialization(sizes,0,property)»
 			'''
 		} else
-			'''this.«property.name» = «property.findType.class_.createPropertyPrimitiveTypeDeserialization»;'''
+			'''this.«property.name.protectKeywords» = «property.findType.class_.createPropertyPrimitiveTypeDeserialization»;'''
 	}
 	
 	/**
@@ -436,7 +434,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		if (property.referTo != null)
 			return '''«property.referTo.createGetterName»()'''
 		else
-			return property.name
+			return property.name.protectKeywords
 	}
 	
 	/**
@@ -466,7 +464,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * 
 	 * @returns one assignment
 	 */
-	def String createPropertyGenericAssignment(Property property, int index) '''this.«property.name» = («property.findType.createTypeName») values[«index»];
+	def String createPropertyGenericAssignment(Property property, int index) '''this.«property.name.protectKeywords» = («property.findType.createObjectTypeName») values[«index»];
 	'''
 	
 	/**
@@ -479,7 +477,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * 
 	 * @returns one assignment
 	 */
-	def createPropertyAssignment(Property property) '''this.«property.name» = «property.name»;
+	def createPropertyAssignment(Property property) '''this.«property.name.protectKeywords» = «property.name.protectKeywords»;
 	'''
 	
 	/**
@@ -490,7 +488,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * 
 	 * @returns one parameter for the given property
 	 */
-	def createPropertyParameter(Property property) '''final «property.findType.createTypeName» «property.name»'''
+	def createPropertyParameter(Property property) '''final «property.findType.createTypeName» «property.name.protectKeywords»'''
 	
 	/**
 	 * Create an arbitrary comment for a property of a monitoring record.
@@ -502,8 +500,8 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 */
 	def createPropertyComment(Property property)
 	'''
-	* @param «property.name»
-	*            «property.name»
+	* @param «property.name.protectKeywords»
+	*            «property.name.protectKeywords»
 	'''
 	
 	/**
@@ -514,8 +512,19 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * 
 	 * @returns  one property declaration
 	 */
-	def createPropertyDeclaration(Property property) '''private final «property.findType.createTypeName» «property.name»;
+	def createPropertyDeclaration(Property property) '''private final «property.findType.createTypeName» «property.name.protectKeywords»;
 	'''
+	
+	/**
+	 * Check whether a given name is identical to a keyword of the target language and prepends an _. 
+	 */
+	def protectKeywords(String name) {
+		val keywords = #[ 'interface', 'class', 'private', 'protected', 'public', 'return', 'final', 'volatile', 'if', 'else', 'for', 'foreach' ]
+		if (keywords.exists[it.equals(name)])
+			'_' + name
+		else
+			name
+	}
 	
 	/**
 	 * Create one entry of the property type array.
@@ -525,7 +534,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * 
 	 * @returns one type entry 
 	 */
-	def createPropertyType(Property property, RecordType type) '''«property.findType.createTypeName».class, // «property.computeFullQualifiedPropertyName(type)»
+	def createPropertyType(Property property, RecordType type) '''«property.findType.createObjectTypeName».class, // «property.computeFullQualifiedPropertyName(type)»
 	'''
 	
 	/**
@@ -601,7 +610,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * @returns a constant declaration
 	 */
 	def createDefaultConstant(Constant constant) '''
-		public static final «constant.type.createTypeName» «constant.name» = «constant.value.createValue»;
+		public static final «constant.type.createTypeName» «constant.name.protectKeywords» = «constant.value.createValue»;
 	'''
 	
 	/**
@@ -613,7 +622,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * @returns a constant declaration
 	 */
 	def createDefaultConstant(Property property) '''
-		public static final «property.type.createTypeName» «property.name.createConstantName» = «property.value.createValue»;
+		public static final «property.type.createTypeName» «property.name.createConstantName.protectKeywords» = «property.value.createValue»;
 	'''
 	
 	/**
@@ -637,7 +646,49 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 */
 	def createPrimitiveTypeName(EClassifier classifier) {
 		switch (classifier.name) {
+			case 'int' : 'int'
+			case 'long' : 'long'
+			case 'short' : 'short'
+			case 'double' : 'double'
+			case 'float' : 'float'
+			case 'char' : 'char'
+			case 'byte' : 'byte'
 			case 'string' : 'String'
+			case 'boolean' : 'boolean'
+			default : classifier.name
+		}	
+	}
+	
+	/**
+	 * Determine the right Java string for a given system type.
+	 * 
+	 * @param classifier
+	 * 		a classifier representing a type
+	 * 
+	 * @returns a java type name
+	 */
+	def createObjectTypeName(Classifier classifier) {
+		if (classifier.sizes.size>0)
+			classifier.class_.createObjectPrimitiveTypeName + 
+			classifier.sizes.map[size | '''[]''' ].join
+		else
+			classifier.class_.createObjectPrimitiveTypeName
+	}
+	
+	/**
+	 * Determine the right Java string for a given system type.
+	 */
+	def createObjectPrimitiveTypeName(EClassifier classifier) {
+		switch (classifier.name) {
+			case 'int' : 'Integer'
+			case 'long' : 'Long'
+			case 'short' : 'Short'
+			case 'double' : 'Double'
+			case 'float' : 'Float'
+			case 'char' : 'Character'
+			case 'byte' : 'Byte'
+			case 'string' : 'String'
+			case 'boolean' : 'Boolean'
 			default : classifier.name
 		}	
 	}
@@ -709,10 +760,10 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * 		the remaining list of properties
 	 */
 	def Iterable<Property> removeAlreadyImplementedProperties(Iterable<Property> list, RecordType parentType) {
-		val Collection<Property> interfaceProperties = PropertyEvaluation::collectAllProperties(parentType)
+		val Collection<Property> allParentProperties = PropertyEvaluation::collectAllProperties(parentType)
 		var result = list // necessary for the loop below. very ugly 
-		for (Property interfaceProperty : interfaceProperties) 
-			result = result.filter[item | (!item.name.equals(interfaceProperty.name))]
+		for (Property parentProperty : allParentProperties) 
+			result = result.filter[item | (!item.name.equals(parentProperty.name))]
 		
 		return result
 	}
@@ -738,7 +789,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		}
 	}
 	
-	dispatch def CharSequence createValue(IntLiteral literal) '''«literal.value»'''
+	dispatch def CharSequence createValue(IntLiteral literal) '''«literal.value»«if (literal.getRequiredType.equals('long')) 'L'»'''
 	dispatch def CharSequence createValue(FloatLiteral literal) '''«literal.value»«if (literal.getRequiredType.equals('float')) 'f'»'''
 	dispatch def CharSequence createValue(BooleanLiteral literal) '''«if (literal.value) 'true' else 'false'»'''
 	dispatch def CharSequence createValue(ConstantLiteral literal) '''«literal.value.value.createValue»'''
