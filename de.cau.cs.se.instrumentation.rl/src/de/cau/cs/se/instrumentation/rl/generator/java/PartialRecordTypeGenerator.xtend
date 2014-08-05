@@ -8,6 +8,7 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
 import de.cau.cs.se.instrumentation.rl.recordLang.Model
 import java.io.File
 import org.eclipse.emf.common.util.EList
+import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation
 
 class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerator {
 	
@@ -31,15 +32,6 @@ class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerator {
 		
 		package «(type.eContainer as Model).name»;
 		
-		import java.nio.BufferOverflowException;
-		import java.nio.BufferUnderflowException;
-		import java.io.UnsupportedEncodingException;
-		import java.nio.ByteBuffer;
-
-		import kieker.common.record.AbstractMonitoringRecord;
-		import kieker.common.record.IMonitoringRecord;
-		import kieker.common.util.registry.IRegistry;
-		
 		/**
 		 * @author «author»
 		 * 
@@ -62,7 +54,7 @@ class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerator {
 	 * @returns the resulting getter as a CharSequence
 	 */
 	def createPropertyGetter(Property property) '''
-	public «property.findType.createTypeName» «property.createGetterName»() ;
+	public «PropertyEvaluation::findType(property).createTypeName» «property.createGetterName»() ;
 		
 	'''
 	
@@ -75,7 +67,7 @@ class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerator {
 	 * @returns the name of the getter of the property
 	 */
 	def CharSequence createGetterName(Property property) {
-		if (property.findType.class.name.equals('boolean')) 
+		if (PropertyEvaluation::findType(property).class.name.equals('boolean')) 
 			'''is«property.name.toFirstUpper»'''
 		else
 			'''get«property.name.toFirstUpper»'''

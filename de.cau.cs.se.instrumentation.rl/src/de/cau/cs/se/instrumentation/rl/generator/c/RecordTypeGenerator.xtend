@@ -123,7 +123,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * 
 	 */
 	def createValueSerializer(Property property) '''
-		length += kieker_serialize_«property.findType.serializerSuffix»(buffer,offset,«property.name»);
+		length += kieker_serialize_«PropertyEvaluation::findType(property).serializerSuffix»(buffer,offset,«property.name»);
 	'''
 		
 	/**

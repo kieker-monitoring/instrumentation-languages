@@ -97,7 +97,7 @@ public class RecordLangActivator extends AbstractUIPlugin {
 
 	@Override
 	protected void initializeDefaultPreferences(final IPreferenceStore store) {
-		store.setDefault(RecordLangGenerator.JAVA_DIR_PROPERTY, "");
+		store.setDefault(RecordLangGenerator.JAVA_DIR_PROPERTY, "X");
 		store.setDefault(RecordLangGenerator.C_DIR_PROPERTY, "");
 		store.setDefault(RecordLangGenerator.PERL_DIR_PROPERTY, "");
 		store.setDefault(RecordLangGenerator.JAVA_CHECK_PROPERTY, false);

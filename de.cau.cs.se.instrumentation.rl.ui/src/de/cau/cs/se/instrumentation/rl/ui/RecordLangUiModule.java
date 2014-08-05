@@ -52,4 +52,16 @@ public class RecordLangUiModule extends de.cau.cs.se.instrumentation.rl.ui.Abstr
 	public Class<? extends IHighlightingConfiguration> bindIHighlightingConfiguration() {
 		return TypesHighlightingConfiguration.class;
 	}
+
+	/**
+	 * Overriding original implementation.
+	 * 
+	 * @param binder binder to assign interfaces with classes
+	 */
+	//	@Override
+	//	public void configureBuilderPreferenceStoreInitializer(final com.google.inject.Binder binder) {
+	//		binder.bind(org.eclipse.xtext.ui.editor.preferences.IPreferenceStoreInitializer.class).
+	//		annotatedWith(com.google.inject.name.Names.named("builderPreferenceInitializer")).
+	//		to(RecordLangBuilderPreferenceAccess.Initializer.class);
+	//	}
 }

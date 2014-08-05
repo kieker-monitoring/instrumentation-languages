@@ -6,6 +6,7 @@ import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
 import java.util.ArrayList
 import org.eclipse.emf.common.util.EList
 import java.util.Collection
+import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
 
 class PropertyEvaluation {
 	
@@ -23,13 +24,9 @@ class PropertyEvaluation {
 	 * 		a complete list of all properties in a record
 	 */
 	dispatch static def Collection<Property> collectAllDataProperties(RecordType type) {
-		val Collection<Property> result = if (type.parent != null)
-			type.parent.collectAllDataProperties
-		else 
-			new ArrayList<Property>()
-		if (type.parents != null) 
-			type.parents.forEach[result.addAllUnique(collectAllDataProperties)]
-		return result.addAllUnique(type.properties.filter[property | (property.referTo == null)])
+		val list = new ArrayList<Property>()
+		list.addAll(collectAllProperties(type).filter[property | (property.referTo == null)])
+		return list
 	}
 		
 	
@@ -43,10 +40,9 @@ class PropertyEvaluation {
 	 * 		a complete list of all properties in a record
 	 */
 	dispatch static def Collection<Property> collectAllDataProperties(PartialRecordType type) {
-		val Collection<Property> result = new ArrayList<Property>()
-		if (type.parents != null)
-			type.parents.forEach[iface | result.addAllUnique(iface.collectAllDataProperties)]
-		return result.addAllUnique(type.properties.filter[property | (property.referTo == null)])
+		val list = new ArrayList<Property>()
+		list.addAll(collectAllProperties(type).filter[property | (property.referTo == null)])
+		return list
 	}
 	
 	/* -- data and alias properties -- */
@@ -139,7 +135,7 @@ class PropertyEvaluation {
 	}
 	
 	/**
-	 * check if a property of a given name and of the same type does already exist in the collected list of properties.
+	 * Check if a property of a given name and of the same type does already exist in the collected list of properties.
 	 * 
 	 * @param list property collection
 	 * @param item the property to check against the list
@@ -149,10 +145,24 @@ class PropertyEvaluation {
 	 */
 	def static boolean containsProperty (Collection<Property> list, Property item) {
 		for (Property p : list) {
-			if (p.name.equals(item.name) && (p.type.class_.name.equals(item.type.class_.name)))
+			if (p.name.equals(item.name) && (p.findType.class_.name.equals(item.findType.class_.name)))
 				return true
 		}
 		return false
+	}
+	
+	/**
+	 * Determine the type of a property. Even if it is an alias.
+	 * 
+	 * @param property the property
+	 * 
+	 * @param the type classifier
+	 */
+	def static Classifier findType(Property property) {
+		if (property.type != null)
+			return property.type
+		else
+			return property.referTo.findType
 	}
 		
 }

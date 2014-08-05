@@ -226,8 +226,8 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * 		code to deserialize the given property 
 	 */
 	def createPropertyBinaryDeserialization(Property property) {
-		if (property.findType.sizes.size > 0) {
-			val sizes = property.findType.sizes
+		if (PropertyEvaluation::findType(property).sizes.size > 0) {
+			val sizes = PropertyEvaluation::findType(property).sizes
 			'''
 				// load array sizes
 				«FOR size : sizes»
@@ -235,11 +235,11 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 						int _«property.name»_size«sizes.indexOf(size)» = buffer.getInt();
 					«ENDIF»
 				«ENDFOR»
-				«property.name.protectKeywords» = new «property.findType.createTypeInstantiationName(property.name)»;
+				«property.name.protectKeywords» = new «PropertyEvaluation::findType(property).createTypeInstantiationName(property.name)»;
 				«createForLoopForDeserialization(sizes,0,property)»
 			'''
 		} else
-			'''this.«property.name.protectKeywords» = «property.findType.class_.createPropertyPrimitiveTypeDeserialization»;'''
+			'''this.«property.name.protectKeywords» = «PropertyEvaluation::findType(property).class_.createPropertyPrimitiveTypeDeserialization»;'''
 	}
 	
 	/**
@@ -282,7 +282,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * Assignment for a primitive value
 	 */
 	def createValueAssignmentForDeserialization(EList<ArraySize> sizes, Property property) {
-		return '''this.«property.name»«sizes.determineArrayAccessCode» = «property.findType.class_.createPropertyPrimitiveTypeDeserialization»;'''
+		return '''this.«property.name»«sizes.determineArrayAccessCode» = «PropertyEvaluation::findType(property).class_.createPropertyPrimitiveTypeDeserialization»;'''
 	}
 	
 	/**
@@ -325,7 +325,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * 		code to serialize the given property
 	 */
 	def createPropertyBinarySerialization(Property property) {
-		val sizes = property.findType.sizes
+		val sizes = PropertyEvaluation::findType(property).sizes
 		if (sizes.size > 0) {
 			'''
 				// store array sizes
@@ -367,7 +367,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	}
 	
 	def createValueStoreForSerialization(EList<ArraySize> sizes, Property property) {
-		switch (property.findType.class_.name) {
+		switch (PropertyEvaluation::findType(property).class_.name) {
 			case 'string' : '''buffer.putInt(stringRegistry.get(this.get«property.name.toFirstUpper»()«sizes.determineArrayAccessCode»));'''
 			case 'byte' : '''buffer.put((byte)this.get«property.name.toFirstUpper»()«sizes.determineArrayAccessCode»);'''
 			case 'short' : '''buffer.putShort(this.get«property.name.toFirstUpper»()«sizes.determineArrayAccessCode»);'''
@@ -391,7 +391,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * @returns the resulting getter as a CharSequence
 	 */
 	def createPropertyGetter(Property property) '''
-		public final «property.findType.createTypeName» «property.createGetterName»() {
+		public final «PropertyEvaluation::findType(property).createTypeName» «property.createGetterName»() {
 			return this.«property.resolveName»;
 		}
 		
@@ -416,7 +416,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * @returns the name of the getter of the property
 	 */
 	def CharSequence createGetterName(Property property) {
-		if (property.findType.class_.name.equals('boolean')) 
+		if (PropertyEvaluation::findType(property).class_.name.equals('boolean')) 
 			'''is«property.name.toFirstUpper»'''
 		else
 			'''get«property.name.toFirstUpper»'''
@@ -464,7 +464,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * 
 	 * @returns one assignment
 	 */
-	def String createPropertyGenericAssignment(Property property, int index) '''this.«property.name.protectKeywords» = («property.findType.createObjectTypeName») values[«index»];
+	def String createPropertyGenericAssignment(Property property, int index) '''this.«property.name.protectKeywords» = («PropertyEvaluation::findType(property).createObjectTypeName») values[«index»];
 	'''
 	
 	/**
@@ -488,7 +488,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * 
 	 * @returns one parameter for the given property
 	 */
-	def createPropertyParameter(Property property) '''final «property.findType.createTypeName» «property.name.protectKeywords»'''
+	def createPropertyParameter(Property property) '''final «PropertyEvaluation::findType(property).createTypeName» «property.name.protectKeywords»'''
 	
 	/**
 	 * Create an arbitrary comment for a property of a monitoring record.
@@ -512,7 +512,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * 
 	 * @returns  one property declaration
 	 */
-	def createPropertyDeclaration(Property property) '''private final «property.findType.createTypeName» «property.name.protectKeywords»;
+	def createPropertyDeclaration(Property property) '''private final «PropertyEvaluation::findType(property).createTypeName» «property.name.protectKeywords»;
 	'''
 	
 	/**
@@ -534,7 +534,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * 
 	 * @returns one type entry 
 	 */
-	def createPropertyType(Property property, RecordType type) '''«property.findType.createObjectTypeName».class, // «property.computeFullQualifiedPropertyName(type)»
+	def createPropertyType(Property property, RecordType type) '''«PropertyEvaluation::findType(property).createObjectTypeName».class, // «property.computeFullQualifiedPropertyName(type)»
 	'''
 	
 	/**

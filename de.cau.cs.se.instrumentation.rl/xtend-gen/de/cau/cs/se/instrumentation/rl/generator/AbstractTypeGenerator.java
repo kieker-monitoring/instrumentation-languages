@@ -5,7 +5,7 @@ import de.cau.cs.se.instrumentation.rl.generator.InternalErrorException;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
-import java.util.Collection;
+import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function2;
@@ -52,7 +52,7 @@ public abstract class AbstractTypeGenerator {
    * @returns
    * 		the computed value
    */
-  public int calculateSize(final Collection<Property> list) {
+  public int calculateSize(final Iterable<Property> list) {
     final Function2<Integer,Property,Integer> _function = new Function2<Integer,Property,Integer>() {
       public Integer apply(final Integer result, final Property property) {
         int _size = AbstractTypeGenerator.this.getSize(property);
@@ -60,20 +60,6 @@ public abstract class AbstractTypeGenerator {
       }
     };
     return (int) IterableExtensions.<Property, Integer>fold(list, Integer.valueOf(0), _function);
-  }
-  
-  /**
-   * Recursively search for the type of a property.
-   */
-  public Classifier findType(final Property property) {
-    Classifier _type = property.getType();
-    boolean _notEquals = (!Objects.equal(_type, null));
-    if (_notEquals) {
-      return property.getType();
-    } else {
-      Property _referTo = property.getReferTo();
-      return this.findType(_referTo);
-    }
   }
   
   /**
@@ -88,7 +74,7 @@ public abstract class AbstractTypeGenerator {
   private int getSize(final Property property) {
     try {
       int _switchResult = (int) 0;
-      Classifier _findType = this.findType(property);
+      Classifier _findType = PropertyEvaluation.findType(property);
       EClassifier _class_ = _findType.getClass_();
       String _name = _class_.getName();
       boolean _matched = false;
@@ -147,7 +133,7 @@ public abstract class AbstractTypeGenerator {
         }
       }
       if (!_matched) {
-        Classifier _findType_1 = this.findType(property);
+        Classifier _findType_1 = PropertyEvaluation.findType(property);
         EClassifier _class__1 = _findType_1.getClass_();
         String _name_1 = _class__1.getName();
         String _plus = (_name_1 + "is not a valid type name");

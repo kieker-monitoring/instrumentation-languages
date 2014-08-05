@@ -122,10 +122,11 @@ public class RecordLangGenerator implements IGenerator {
               final Procedure1<RecordType> _function = new Procedure1<RecordType>() {
                 public void apply(final RecordType type) {
                   String _fileName = cg.fileName(type);
+                  String _languageType = cg.getLanguageType();
                   String _author = RecordLangGenerator.this.getAuthor();
                   String _version = RecordLangGenerator.this.getVersion();
                   CharSequence _createContent = cg.createContent(type, _author, _version);
-                  fsa.generateFile(_fileName, _createContent);
+                  fsa.generateFile(_fileName, _languageType, _createContent);
                 }
               };
               IteratorExtensions.<RecordType>forEach(_filter, _function);
@@ -146,10 +147,11 @@ public class RecordLangGenerator implements IGenerator {
               final Procedure1<PartialRecordType> _function = new Procedure1<PartialRecordType>() {
                 public void apply(final PartialRecordType type) {
                   String _fileName = cg.fileName(type);
+                  String _languageType = cg.getLanguageType();
                   String _author = RecordLangGenerator.this.getAuthor();
                   String _version = RecordLangGenerator.this.getVersion();
                   CharSequence _createContent = cg.createContent(type, _author, _version);
-                  fsa.generateFile(_fileName, _createContent);
+                  fsa.generateFile(_fileName, _languageType, _createContent);
                 }
               };
               IteratorExtensions.<PartialRecordType>forEach(_filter, _function);
@@ -160,9 +162,6 @@ public class RecordLangGenerator implements IGenerator {
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
-  }
-  
-  public void show() {
   }
   
   public boolean isActive(final AbstractTypeGenerator generator) {

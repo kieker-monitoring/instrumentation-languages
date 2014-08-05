@@ -3,7 +3,7 @@ package de.cau.cs.se.instrumentation.rl.generator
 import de.cau.cs.se.instrumentation.rl.recordLang.Property
 import de.cau.cs.se.instrumentation.rl.recordLang.Type
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
-import java.util.Collection
+import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation
 
 abstract class AbstractTypeGenerator {
 	
@@ -46,20 +46,10 @@ abstract class AbstractTypeGenerator {
 	 * @returns
 	 * 		the computed value
 	 */
-	 def int calculateSize(Collection<Property> list) {
+	 def int calculateSize(Iterable<Property> list) {
 		list.fold(0)[result, property | result + property.size]
 	}
-	
-	/**
-	 * Recursively search for the type of a property.
-	 */
-	def Classifier findType(Property property) {
-		if (property.type != null)
-			return property.type
-		else 
-			return property.referTo.findType
-	}
-	
+		
 	/**
 	 * Determine the size of one type.
 	 * 
@@ -70,7 +60,7 @@ abstract class AbstractTypeGenerator {
 	 * 		the serialization size of the property
 	 */
 	def private int getSize(Property property) {
-		switch (property.findType.class_.name) {
+		switch (PropertyEvaluation::findType(property).class_.name) {
 			case 'string' : 4
 			case 'byte' : 1
 			case 'short' : 2
@@ -80,7 +70,7 @@ abstract class AbstractTypeGenerator {
 			case 'double' : 8
 			case 'char' : 2
 			case 'boolean' : 1
-			default: throw new InternalErrorException(property.findType.class_.name + 'is not a valid type name')
+			default: throw new InternalErrorException(PropertyEvaluation::findType(property).class_.name + 'is not a valid type name')
 		}
 	}
 		

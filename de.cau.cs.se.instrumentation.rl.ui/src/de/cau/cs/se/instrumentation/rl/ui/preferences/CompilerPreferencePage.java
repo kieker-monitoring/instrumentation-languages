@@ -44,6 +44,8 @@ import de.cau.cs.se.instrumentation.rl.ui.internal.RecordLangActivator;
 public class CompilerPreferencePage extends org.eclipse.jface.preference.PreferencePage
 implements org.eclipse.ui.IWorkbenchPreferencePage, org.eclipse.ui.IWorkbenchPropertyPage {
 
+	private static final String WIDGET_DATA_PROPERTY_ID = "name";
+
 	private IAdaptable adaptable;
 	private Group langGroup;
 	private Group miscGroup;
@@ -63,8 +65,13 @@ implements org.eclipse.ui.IWorkbenchPreferencePage, org.eclipse.ui.IWorkbenchPro
 		this.adaptable = element;
 	}
 
+	/**
+	 * Initializes the preference page of the given workbench.
+	 * 
+	 * @param workbench the workbench
+	 */
 	public void init(final IWorkbench workbench) {
-
+		System.out.println("CompilerPreferencePage.init" + workbench);
 	}
 
 	@Override
@@ -135,7 +142,7 @@ implements org.eclipse.ui.IWorkbenchPreferencePage, org.eclipse.ui.IWorkbenchPro
 		final Label label = new Label(parent, SWT.NONE);
 		label.setText(name);
 		final Text text = new Text(parent, SWT.NONE);
-		text.setData("name", propertyId);
+		text.setData(WIDGET_DATA_PROPERTY_ID, propertyId);
 		text.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
 		text.setText(this.getPreferenceStore().getString(propertyId));
 	}
@@ -150,7 +157,7 @@ implements org.eclipse.ui.IWorkbenchPreferencePage, org.eclipse.ui.IWorkbenchPro
 	private void createLanguageCheck(final Composite parent, final String name, final String propertyActivatedId) {
 		final Button check = new Button(parent, SWT.CHECK);
 		check.setText(name);
-		check.setData("name", propertyActivatedId);
+		check.setData(WIDGET_DATA_PROPERTY_ID, propertyActivatedId);
 		check.setSelection(this.getPreferenceStore().getBoolean(propertyActivatedId));
 	}
 
@@ -163,7 +170,7 @@ implements org.eclipse.ui.IWorkbenchPreferencePage, org.eclipse.ui.IWorkbenchPro
 	 */
 	private void createLanguageDirectory(final Composite parent, final String propertyDirectoryId) {
 		final Text directoryPath = new Text(parent, SWT.SINGLE);
-		directoryPath.setData("name", propertyDirectoryId);
+		directoryPath.setData(WIDGET_DATA_PROPERTY_ID, propertyDirectoryId);
 		directoryPath.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
 		directoryPath.setText(this.getPreferenceStore().getString(propertyDirectoryId));
 		final Button browse = new Button(parent, SWT.PUSH);
@@ -195,7 +202,7 @@ implements org.eclipse.ui.IWorkbenchPreferencePage, org.eclipse.ui.IWorkbenchPro
 	 */
 	private void storeStringProperty(final Control[] children, final IPreferenceStore store, final String dirProperty) {
 		for (final Control child : children) {
-			if (dirProperty.equals(child.getData("name"))) {
+			if (dirProperty.equals(child.getData(WIDGET_DATA_PROPERTY_ID))) {
 				store.setValue(dirProperty, ((Text) child).getText());
 			}
 		}
@@ -210,7 +217,7 @@ implements org.eclipse.ui.IWorkbenchPreferencePage, org.eclipse.ui.IWorkbenchPro
 	 */
 	private void storeBooleanProperty(final Control[] children, final IPreferenceStore store, final String checkProperty) {
 		for (final Control child : children) {
-			if (checkProperty.equals(child.getData("name"))) {
+			if (checkProperty.equals(child.getData(WIDGET_DATA_PROPERTY_ID))) {
 				store.setValue(checkProperty, ((Button) child).getSelection());
 			}
 		}
@@ -239,7 +246,7 @@ implements org.eclipse.ui.IWorkbenchPreferencePage, org.eclipse.ui.IWorkbenchPro
 	 */
 	private void retrieveStringProperty(final Control[] children, final IPreferenceStore store, final String dirProperty) {
 		for (final Control child : children) {
-			if (dirProperty.equals(child.getData("name"))) {
+			if (dirProperty.equals(child.getData(WIDGET_DATA_PROPERTY_ID))) {
 				((Text) child).setText(store.getDefaultString(dirProperty));
 			}
 		}
@@ -254,7 +261,7 @@ implements org.eclipse.ui.IWorkbenchPreferencePage, org.eclipse.ui.IWorkbenchPro
 	 */
 	private void retrieveBooleanProperty(final Control[] children, final IPreferenceStore store, final String checkProperty) {
 		for (final Control child : children) {
-			if (checkProperty.equals(child.getData("name"))) {
+			if (checkProperty.equals(child.getData(WIDGET_DATA_PROPERTY_ID))) {
 				((Button) child).setSelection(store.getDefaultBoolean(checkProperty));
 			}
 		}

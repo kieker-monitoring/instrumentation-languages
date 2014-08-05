@@ -24,15 +24,16 @@ Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: de.cau.cs.se.instrumentation.rl,
- de.cau.cs.se.instrumentation.rl.services,
+ de.cau.cs.se.instrumentation.rl.formatting,
+ de.cau.cs.se.instrumentation.rl.generator,
+ de.cau.cs.se.instrumentation.rl.ouput.config,
+ de.cau.cs.se.instrumentation.rl.parser.antlr,
+ de.cau.cs.se.instrumentation.rl.parser.antlr.internal,
  de.cau.cs.se.instrumentation.rl.recordLang,
  de.cau.cs.se.instrumentation.rl.recordLang.impl,
  de.cau.cs.se.instrumentation.rl.recordLang.util,
- de.cau.cs.se.instrumentation.rl.serializer,
- de.cau.cs.se.instrumentation.rl.parser.antlr,
- de.cau.cs.se.instrumentation.rl.parser.antlr.internal,
- de.cau.cs.se.instrumentation.rl.validation,
  de.cau.cs.se.instrumentation.rl.scoping,
- de.cau.cs.se.instrumentation.rl.generator,
- de.cau.cs.se.instrumentation.rl.formatting
+ de.cau.cs.se.instrumentation.rl.serializer,
+ de.cau.cs.se.instrumentation.rl.services,
+ de.cau.cs.se.instrumentation.rl.validation
 

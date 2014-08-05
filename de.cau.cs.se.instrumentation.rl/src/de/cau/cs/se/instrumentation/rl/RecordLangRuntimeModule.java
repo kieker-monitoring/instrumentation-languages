@@ -35,4 +35,13 @@ public class RecordLangRuntimeModule extends de.cau.cs.se.instrumentation.rl.Abs
 		return TypeGlobalScopeProvider.class;
 	}
 
+	/**
+	 * Register my own output outlet provider. We need an outlet for each language.
+	 */
+	// @Override
+	// public void configure(final Binder binder) {
+	// super.configure(binder);
+	// binder.bind(IRecordLangOutputConfigurationProvider.class).to(RecordLangOutputConfigurationProvider.class).in(Singleton.class);
+	// }
+
 }

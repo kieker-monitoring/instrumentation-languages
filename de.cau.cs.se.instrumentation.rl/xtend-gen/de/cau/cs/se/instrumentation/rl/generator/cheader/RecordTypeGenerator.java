@@ -126,7 +126,7 @@ public class RecordTypeGenerator extends de.cau.cs.se.instrumentation.rl.generat
   
   public CharSequence createPropertyDeclaration(final Property property) {
     StringConcatenation _builder = new StringConcatenation();
-    Classifier _findType = this.findType(property);
+    Classifier _findType = PropertyEvaluation.findType(property);
     CharSequence _createTypeName = this.createTypeName(_findType);
     _builder.append(_createTypeName, "");
     _builder.append(" ");

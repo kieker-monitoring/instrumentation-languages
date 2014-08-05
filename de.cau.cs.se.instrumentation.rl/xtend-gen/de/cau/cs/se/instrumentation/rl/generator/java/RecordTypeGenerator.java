@@ -822,14 +822,14 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    */
   public CharSequence createPropertyBinaryDeserialization(final Property property) {
     CharSequence _xifexpression = null;
-    Classifier _findType = this.findType(property);
+    Classifier _findType = PropertyEvaluation.findType(property);
     EList<ArraySize> _sizes = _findType.getSizes();
     int _size = _sizes.size();
     boolean _greaterThan = (_size > 0);
     if (_greaterThan) {
       CharSequence _xblockexpression = null;
       {
-        Classifier _findType_1 = this.findType(property);
+        Classifier _findType_1 = PropertyEvaluation.findType(property);
         final EList<ArraySize> sizes = _findType_1.getSizes();
         StringConcatenation _builder = new StringConcatenation();
         _builder.append("// load array sizes");
@@ -856,7 +856,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         String _protectKeywords = this.protectKeywords(_name_1);
         _builder.append(_protectKeywords, "");
         _builder.append(" = new ");
-        Classifier _findType_2 = this.findType(property);
+        Classifier _findType_2 = PropertyEvaluation.findType(property);
         String _name_2 = property.getName();
         CharSequence _createTypeInstantiationName = this.createTypeInstantiationName(_findType_2, _name_2);
         _builder.append(_createTypeInstantiationName, "");
@@ -875,7 +875,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       String _protectKeywords = this.protectKeywords(_name);
       _builder.append(_protectKeywords, "");
       _builder.append(" = ");
-      Classifier _findType_1 = this.findType(property);
+      Classifier _findType_1 = PropertyEvaluation.findType(property);
       EClassifier _class_ = _findType_1.getClass_();
       CharSequence _createPropertyPrimitiveTypeDeserialization = this.createPropertyPrimitiveTypeDeserialization(_class_);
       _builder.append(_createPropertyPrimitiveTypeDeserialization, "");
@@ -995,7 +995,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     CharSequence _determineArrayAccessCode = this.determineArrayAccessCode(sizes);
     _builder.append(_determineArrayAccessCode, "");
     _builder.append(" = ");
-    Classifier _findType = this.findType(property);
+    Classifier _findType = PropertyEvaluation.findType(property);
     EClassifier _class_ = _findType.getClass_();
     CharSequence _createPropertyPrimitiveTypeDeserialization = this.createPropertyPrimitiveTypeDeserialization(_class_);
     _builder.append(_createPropertyPrimitiveTypeDeserialization, "");
@@ -1117,7 +1117,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   public CharSequence createPropertyBinarySerialization(final Property property) {
     CharSequence _xblockexpression = null;
     {
-      Classifier _findType = this.findType(property);
+      Classifier _findType = PropertyEvaluation.findType(property);
       final EList<ArraySize> sizes = _findType.getSizes();
       CharSequence _xifexpression = null;
       int _size = sizes.size();
@@ -1230,7 +1230,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   
   public CharSequence createValueStoreForSerialization(final EList<ArraySize> sizes, final Property property) {
     CharSequence _switchResult = null;
-    Classifier _findType = this.findType(property);
+    Classifier _findType = PropertyEvaluation.findType(property);
     EClassifier _class_ = _findType.getClass_();
     String _name = _class_.getName();
     boolean _matched = false;
@@ -1383,7 +1383,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   public CharSequence createPropertyGetter(final Property property) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("public final ");
-    Classifier _findType = this.findType(property);
+    Classifier _findType = PropertyEvaluation.findType(property);
     CharSequence _createTypeName = this.createTypeName(_findType);
     _builder.append(_createTypeName, "");
     _builder.append(" ");
@@ -1430,7 +1430,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    */
   public CharSequence createGetterName(final Property property) {
     CharSequence _xifexpression = null;
-    Classifier _findType = this.findType(property);
+    Classifier _findType = PropertyEvaluation.findType(property);
     EClassifier _class_ = _findType.getClass_();
     String _name = _class_.getName();
     boolean _equals = _name.equals("boolean");
@@ -1516,7 +1516,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     String _protectKeywords = this.protectKeywords(_name);
     _builder.append(_protectKeywords, "");
     _builder.append(" = (");
-    Classifier _findType = this.findType(property);
+    Classifier _findType = PropertyEvaluation.findType(property);
     String _createObjectTypeName = this.createObjectTypeName(_findType);
     _builder.append(_createObjectTypeName, "");
     _builder.append(") values[");
@@ -1562,7 +1562,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   public CharSequence createPropertyParameter(final Property property) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("final ");
-    Classifier _findType = this.findType(property);
+    Classifier _findType = PropertyEvaluation.findType(property);
     CharSequence _createTypeName = this.createTypeName(_findType);
     _builder.append(_createTypeName, "");
     _builder.append(" ");
@@ -1606,7 +1606,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   public CharSequence createPropertyDeclaration(final Property property) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("private final ");
-    Classifier _findType = this.findType(property);
+    Classifier _findType = PropertyEvaluation.findType(property);
     CharSequence _createTypeName = this.createTypeName(_findType);
     _builder.append(_createTypeName, "");
     _builder.append(" ");
@@ -1652,7 +1652,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    */
   public CharSequence createPropertyType(final Property property, final RecordType type) {
     StringConcatenation _builder = new StringConcatenation();
-    Classifier _findType = this.findType(property);
+    Classifier _findType = PropertyEvaluation.findType(property);
     String _createObjectTypeName = this.createObjectTypeName(_findType);
     _builder.append(_createObjectTypeName, "");
     _builder.append(".class, // ");

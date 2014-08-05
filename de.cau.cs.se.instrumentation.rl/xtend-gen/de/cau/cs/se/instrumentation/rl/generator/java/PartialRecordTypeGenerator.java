@@ -7,6 +7,7 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Model;
 import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
+import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation;
 import java.io.File;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
@@ -73,22 +74,6 @@ public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerat
     _builder.append(_name, "");
     _builder.append(";");
     _builder.newLineIfNotEmpty();
-    _builder.newLine();
-    _builder.append("import java.nio.BufferOverflowException;");
-    _builder.newLine();
-    _builder.append("import java.nio.BufferUnderflowException;");
-    _builder.newLine();
-    _builder.append("import java.io.UnsupportedEncodingException;");
-    _builder.newLine();
-    _builder.append("import java.nio.ByteBuffer;");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("import kieker.common.record.AbstractMonitoringRecord;");
-    _builder.newLine();
-    _builder.append("import kieker.common.record.IMonitoringRecord;");
-    _builder.newLine();
-    _builder.append("import kieker.common.util.registry.IRegistry;");
-    _builder.newLine();
     _builder.newLine();
     _builder.append("/**");
     _builder.newLine();
@@ -170,7 +155,7 @@ public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerat
   public CharSequence createPropertyGetter(final Property property) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("public ");
-    Classifier _findType = this.findType(property);
+    Classifier _findType = PropertyEvaluation.findType(property);
     CharSequence _createTypeName = this.createTypeName(_findType);
     _builder.append(_createTypeName, "");
     _builder.append(" ");
@@ -193,7 +178,7 @@ public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerat
    */
   public CharSequence createGetterName(final Property property) {
     CharSequence _xifexpression = null;
-    Classifier _findType = this.findType(property);
+    Classifier _findType = PropertyEvaluation.findType(property);
     Class<? extends Classifier> _class = _findType.getClass();
     String _name = _class.getName();
     boolean _equals = _name.equals("boolean");

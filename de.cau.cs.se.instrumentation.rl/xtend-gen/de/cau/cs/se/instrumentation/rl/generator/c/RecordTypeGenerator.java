@@ -327,7 +327,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   public CharSequence createValueSerializer(final Property property) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("length += kieker_serialize_");
-    Classifier _findType = this.findType(property);
+    Classifier _findType = PropertyEvaluation.findType(property);
     String _serializerSuffix = this.serializerSuffix(_findType);
     _builder.append(_serializerSuffix, "");
     _builder.append("(buffer,offset,");

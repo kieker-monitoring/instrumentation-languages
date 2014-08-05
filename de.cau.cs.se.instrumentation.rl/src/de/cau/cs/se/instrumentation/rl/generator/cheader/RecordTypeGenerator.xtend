@@ -55,7 +55,7 @@ class RecordTypeGenerator extends de.cau.cs.se.instrumentation.rl.generator.c.Re
 	'''
 	
 	def createPropertyDeclaration(Property property) '''
-		«property.findType.createTypeName» «property.name»;
+		«PropertyEvaluation::findType(property).createTypeName» «property.name»;
 	'''
 		
 	/**

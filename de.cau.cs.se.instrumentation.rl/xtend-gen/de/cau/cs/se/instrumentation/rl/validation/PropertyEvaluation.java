@@ -1,6 +1,7 @@
 package de.cau.cs.se.instrumentation.rl.validation;
 
 import com.google.common.base.Objects;
+import com.google.common.collect.Iterables;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
@@ -28,37 +29,17 @@ public class PropertyEvaluation {
    * 		a complete list of all properties in a record
    */
   protected static Collection<Property> _collectAllDataProperties(final RecordType type) {
-    Collection<Property> _xifexpression = null;
-    RecordType _parent = type.getParent();
-    boolean _notEquals = (!Objects.equal(_parent, null));
-    if (_notEquals) {
-      RecordType _parent_1 = type.getParent();
-      _xifexpression = PropertyEvaluation.collectAllDataProperties(_parent_1);
-    } else {
-      _xifexpression = new ArrayList<Property>();
-    }
-    final Collection<Property> result = _xifexpression;
-    EList<PartialRecordType> _parents = type.getParents();
-    boolean _notEquals_1 = (!Objects.equal(_parents, null));
-    if (_notEquals_1) {
-      EList<PartialRecordType> _parents_1 = type.getParents();
-      final Procedure1<PartialRecordType> _function = new Procedure1<PartialRecordType>() {
-        public void apply(final PartialRecordType it) {
-          Collection<Property> _collectAllDataProperties = PropertyEvaluation.collectAllDataProperties(it);
-          PropertyEvaluation.addAllUnique(result, _collectAllDataProperties);
-        }
-      };
-      IterableExtensions.<PartialRecordType>forEach(_parents_1, _function);
-    }
-    EList<Property> _properties = type.getProperties();
-    final Function1<Property,Boolean> _function_1 = new Function1<Property,Boolean>() {
+    final ArrayList<Property> list = new ArrayList<Property>();
+    Collection<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(type);
+    final Function1<Property,Boolean> _function = new Function1<Property,Boolean>() {
       public Boolean apply(final Property property) {
         Property _referTo = property.getReferTo();
         return Boolean.valueOf(Objects.equal(_referTo, null));
       }
     };
-    Iterable<Property> _filter = IterableExtensions.<Property>filter(_properties, _function_1);
-    return PropertyEvaluation.addAllUnique(result, _filter);
+    Iterable<Property> _filter = IterableExtensions.<Property>filter(_collectAllProperties, _function);
+    Iterables.<Property>addAll(list, _filter);
+    return list;
   }
   
   /**
@@ -71,28 +52,17 @@ public class PropertyEvaluation {
    * 		a complete list of all properties in a record
    */
   protected static Collection<Property> _collectAllDataProperties(final PartialRecordType type) {
-    final Collection<Property> result = new ArrayList<Property>();
-    EList<PartialRecordType> _parents = type.getParents();
-    boolean _notEquals = (!Objects.equal(_parents, null));
-    if (_notEquals) {
-      EList<PartialRecordType> _parents_1 = type.getParents();
-      final Procedure1<PartialRecordType> _function = new Procedure1<PartialRecordType>() {
-        public void apply(final PartialRecordType iface) {
-          Collection<Property> _collectAllDataProperties = PropertyEvaluation.collectAllDataProperties(iface);
-          PropertyEvaluation.addAllUnique(result, _collectAllDataProperties);
-        }
-      };
-      IterableExtensions.<PartialRecordType>forEach(_parents_1, _function);
-    }
-    EList<Property> _properties = type.getProperties();
-    final Function1<Property,Boolean> _function_1 = new Function1<Property,Boolean>() {
+    final ArrayList<Property> list = new ArrayList<Property>();
+    Collection<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(type);
+    final Function1<Property,Boolean> _function = new Function1<Property,Boolean>() {
       public Boolean apply(final Property property) {
         Property _referTo = property.getReferTo();
         return Boolean.valueOf(Objects.equal(_referTo, null));
       }
     };
-    Iterable<Property> _filter = IterableExtensions.<Property>filter(_properties, _function_1);
-    return PropertyEvaluation.addAllUnique(result, _filter);
+    Iterable<Property> _filter = IterableExtensions.<Property>filter(_collectAllProperties, _function);
+    Iterables.<Property>addAll(list, _filter);
+    return list;
   }
   
   /**
@@ -231,7 +201,7 @@ public class PropertyEvaluation {
   }
   
   /**
-   * check if a property of a given name and of the same type does already exist in the collected list of properties.
+   * Check if a property of a given name and of the same type does already exist in the collected list of properties.
    * 
    * @param list property collection
    * @param item the property to check against the list
@@ -248,11 +218,11 @@ public class PropertyEvaluation {
       if (!_equals) {
         _and = false;
       } else {
-        Classifier _type = p.getType();
-        EClassifier _class_ = _type.getClass_();
+        Classifier _findType = PropertyEvaluation.findType(p);
+        EClassifier _class_ = _findType.getClass_();
         String _name_2 = _class_.getName();
-        Classifier _type_1 = item.getType();
-        EClassifier _class__1 = _type_1.getClass_();
+        Classifier _findType_1 = PropertyEvaluation.findType(item);
+        EClassifier _class__1 = _findType_1.getClass_();
         String _name_3 = _class__1.getName();
         boolean _equals_1 = _name_2.equals(_name_3);
         _and = _equals_1;
@@ -262,6 +232,24 @@ public class PropertyEvaluation {
       }
     }
     return false;
+  }
+  
+  /**
+   * Determine the type of a property. Even if it is an alias.
+   * 
+   * @param property the property
+   * 
+   * @param the type classifier
+   */
+  public static Classifier findType(final Property property) {
+    Classifier _type = property.getType();
+    boolean _notEquals = (!Objects.equal(_type, null));
+    if (_notEquals) {
+      return property.getType();
+    } else {
+      Property _referTo = property.getReferTo();
+      return PropertyEvaluation.findType(_referTo);
+    }
   }
   
   public static Collection<Property> collectAllDataProperties(final Type type) {
