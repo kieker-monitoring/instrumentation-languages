@@ -40,7 +40,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcoreFactory;
-import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.EcorePackage.Literals;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.xbase.lib.Conversions;
@@ -105,7 +105,8 @@ public class EMFModelGenerator {
     final Function1<EClassifier,Boolean> _function_1 = new Function1<EClassifier,Boolean>() {
       public Boolean apply(final EClassifier it) {
         String _name = it.getName();
-        return Boolean.valueOf(EMFModelGenerator.KIEKER_ROOT_RECORD.equals(_name));
+        boolean _equals = EMFModelGenerator.KIEKER_ROOT_RECORD.equals(_name);
+        return Boolean.valueOf(_equals);
       }
     };
     EClassifier _findFirst = IterableExtensions.<EClassifier>findFirst(_eClassifiers, _function_1);
@@ -179,7 +180,8 @@ public class EMFModelGenerator {
     reference.setEType(this.abstractRecordClass);
     reference.setContainment(true);
     reference.setLowerBound(0);
-    reference.setUpperBound((-1));
+    int _minus = (-1);
+    reference.setUpperBound(_minus);
     reference.setOrdered(true);
     EList<EStructuralFeature> _eStructuralFeatures = clazz.getEStructuralFeatures();
     _eStructuralFeatures.add(reference);
@@ -217,7 +219,8 @@ public class EMFModelGenerator {
       public Boolean apply(final EPackage p) {
         String _name = p.getName();
         Object _get = modelName[0];
-        return Boolean.valueOf(_name.equals(_get));
+        boolean _equals = _name.equals(_get);
+        return Boolean.valueOf(_equals);
       }
     };
     boolean _exists = IterableExtensions.<EPackage>exists(_filter_1, _function_1);
@@ -257,7 +260,8 @@ public class EMFModelGenerator {
     final Function1<EPackage,Boolean> _function_1 = new Function1<EPackage,Boolean>() {
       public Boolean apply(final EPackage p) {
         String _name = p.getName();
-        return Boolean.valueOf(_name.equals(nodeName));
+        boolean _equals = _name.equals(nodeName);
+        return Boolean.valueOf(_equals);
       }
     };
     boolean _exists = IterableExtensions.<EPackage>exists(_eSubpackages_1, _function_1);
@@ -274,7 +278,9 @@ public class EMFModelGenerator {
     final EPackage p = this.factory.createEPackage();
     p.setName(name);
     p.setNsPrefix(name);
-    p.setNsURI(((parentURI + "/") + name));
+    String _plus = (parentURI + "/");
+    String _plus_1 = (_plus + name);
+    p.setNsURI(_plus_1);
     return p;
   }
   
@@ -304,7 +310,8 @@ public class EMFModelGenerator {
       public Boolean apply(final EClassifier it) {
         String _name = it.getName();
         String _name_1 = classifier.getName();
-        return Boolean.valueOf(_name.equals(_name_1));
+        boolean _equals = _name.equals(_name_1);
+        return Boolean.valueOf(_equals);
       }
     };
     boolean _exists = IterableExtensions.<EClassifier>exists(_eClassifiers, _function);
@@ -326,7 +333,8 @@ public class EMFModelGenerator {
       public Boolean apply(final EPackage it) {
         String _get = packagePath[0];
         String _name = it.getName();
-        return Boolean.valueOf(_get.equals(_name));
+        boolean _equals = _get.equals(_name);
+        return Boolean.valueOf(_equals);
       }
     };
     EPackage _findFirst = IterableExtensions.<EPackage>findFirst(_filter, _function);
@@ -347,7 +355,8 @@ public class EMFModelGenerator {
         public Boolean apply(final EPackage it) {
           String _get = ((String[])Conversions.unwrapArray(packagePath, String.class))[0];
           String _name = it.getName();
-          return Boolean.valueOf(_get.equals(_name));
+          boolean _equals = _get.equals(_name);
+          return Boolean.valueOf(_equals);
         }
       };
       EPackage _findFirst = IterableExtensions.<EPackage>findFirst(_eSubpackages, _function);
@@ -369,7 +378,8 @@ public class EMFModelGenerator {
       public Boolean apply(final EPackage p) {
         String _name = p.getName();
         Object _get = packagePath[0];
-        return Boolean.valueOf(_name.equals(_get));
+        boolean _equals = _name.equals(_get);
+        return Boolean.valueOf(_equals);
       }
     };
     final EPackage pkg = IterableExtensions.<EPackage>findFirst(_filter, _function);
@@ -385,7 +395,8 @@ public class EMFModelGenerator {
         public Boolean apply(final EClassifier clazz) {
           String _name = clazz.getName();
           String _name_1 = type.getName();
-          return Boolean.valueOf(_name.equals(_name_1));
+          boolean _equals = _name.equals(_name_1);
+          return Boolean.valueOf(_equals);
         }
       };
       EClassifier _findFirst = IterableExtensions.<EClassifier>findFirst(_eClassifiers, _function);
@@ -396,7 +407,8 @@ public class EMFModelGenerator {
         public Boolean apply(final EPackage p) {
           String _name = p.getName();
           Object _get = ((Object[])Conversions.unwrapArray(packagePath, Object.class))[0];
-          return Boolean.valueOf(_name.equals(_get));
+          boolean _equals = _name.equals(_get);
+          return Boolean.valueOf(_equals);
         }
       };
       final EPackage subpkg = IterableExtensions.<EPackage>findFirst(_eSubpackages, _function_1);
@@ -514,7 +526,8 @@ public class EMFModelGenerator {
       public Boolean apply(final EStructuralFeature it) {
         String _name = it.getName();
         String _name_1 = attribute.getName();
-        return Boolean.valueOf(_name.equals(_name_1));
+        boolean _equals = _name.equals(_name_1);
+        return Boolean.valueOf(_equals);
       }
     };
     boolean _exists = IterableExtensions.<EStructuralFeature>exists(list, _function);
@@ -573,9 +586,11 @@ public class EMFModelGenerator {
         EList<ArraySize> _sizes_2 = type.getSizes();
         ArraySize _get = _sizes_2.get(0);
         final int size = _get.getSize();
-        if ((size == 0)) {
+        boolean _equals = (size == 0);
+        if (_equals) {
           attribute.setLowerBound(0);
-          attribute.setUpperBound((-1));
+          int _minus = (-1);
+          attribute.setUpperBound(_minus);
         } else {
           attribute.setLowerBound(size);
           attribute.setUpperBound(size);
@@ -597,53 +612,53 @@ public class EMFModelGenerator {
     if (!_matched) {
       if (Objects.equal(name,"byte")) {
         _matched=true;
-        _switchResult = EcorePackage.Literals.EBYTE;
+        _switchResult = Literals.EBYTE;
       }
     }
     if (!_matched) {
       if (Objects.equal(name,"short")) {
         _matched=true;
-        _switchResult = EcorePackage.Literals.ESHORT;
+        _switchResult = Literals.ESHORT;
       }
     }
     if (!_matched) {
       if (Objects.equal(name,"int")) {
         _matched=true;
-        _switchResult = EcorePackage.Literals.EINT;
+        _switchResult = Literals.EINT;
       }
     }
     if (!_matched) {
       if (Objects.equal(name,"long")) {
         _matched=true;
-        _switchResult = EcorePackage.Literals.ELONG;
+        _switchResult = Literals.ELONG;
       }
     }
     if (!_matched) {
       if (Objects.equal(name,"float")) {
         _matched=true;
-        _switchResult = EcorePackage.Literals.EFLOAT;
+        _switchResult = Literals.EFLOAT;
       }
     }
     if (!_matched) {
       if (Objects.equal(name,"double")) {
         _matched=true;
-        _switchResult = EcorePackage.Literals.EDOUBLE;
+        _switchResult = Literals.EDOUBLE;
       }
     }
     if (!_matched) {
       if (Objects.equal(name,"string")) {
         _matched=true;
-        _switchResult = EcorePackage.Literals.ESTRING;
+        _switchResult = Literals.ESTRING;
       }
     }
     if (!_matched) {
       if (Objects.equal(name,"boolean")) {
         _matched=true;
-        _switchResult = EcorePackage.Literals.EBOOLEAN;
+        _switchResult = Literals.EBOOLEAN;
       }
     }
     if (!_matched) {
-      _switchResult = EcorePackage.Literals.EBOOLEAN;
+      _switchResult = Literals.EBOOLEAN;
     }
     return _switchResult;
   }

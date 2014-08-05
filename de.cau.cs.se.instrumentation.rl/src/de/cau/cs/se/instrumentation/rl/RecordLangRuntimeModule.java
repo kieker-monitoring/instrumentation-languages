@@ -20,7 +20,7 @@ import org.eclipse.xtext.generator.IOutputConfigurationProvider;
 import com.google.inject.Binder;
 import com.google.inject.Singleton;
 
-import de.cau.cs.se.instrumentation.rl.ouput.config.RLOutputConfigurationProvider;
+import de.cau.cs.se.instrumentation.rl.ouput.config.RecordLangOutputConfigurationProvider;
 import de.cau.cs.se.instrumentation.rl.typing.TypeGlobalScopeProvider;
 
 /**
@@ -47,7 +47,7 @@ public class RecordLangRuntimeModule extends de.cau.cs.se.instrumentation.rl.Abs
 	@Override
 	public void configure(final Binder binder) {
 		super.configure(binder);
-		binder.bind(IOutputConfigurationProvider.class).to(RLOutputConfigurationProvider.class).in(Singleton.class);
+		binder.bind(IOutputConfigurationProvider.class).to(RecordLangOutputConfigurationProvider.class).in(Singleton.class);
 	}
 
 }

@@ -16,11 +16,14 @@
 package de.cau.cs.se.instrumentation.rl.cli.test;
 
 import java.io.File;
+import java.util.Set;
 
+import org.eclipse.xtext.generator.OutputConfiguration;
 import org.junit.Assert;
 import org.junit.Test;
 
 import de.cau.cs.se.instrumentation.rl.cli.DirectIOFileSystemAccess;
+import de.cau.cs.se.instrumentation.rl.ouput.config.RecordLangOutputConfigurationProvider;
 
 /**
  * Test class for the DirectIOFileSystemAccess class which is used to
@@ -36,7 +39,7 @@ import de.cau.cs.se.instrumentation.rl.cli.DirectIOFileSystemAccess;
 public class TestDirectIOFileSystemAccess {
 
 	private static final String EXAMPLE_FILE_NAME = "example.txt";
-	private static final String OUTPUT_CONFIG = "output configuration";
+	private static final String OUTPUT_CONFIG = "java";
 
 	/**
 	 * Default constructor.
@@ -52,14 +55,20 @@ public class TestDirectIOFileSystemAccess {
 	public void testGenerateFileStringCharSequence() {
 		final String tempDirectory = System.getProperty("java.io.tmpdir");
 		final CharSequence contents = "This is test content.";
-		final DirectIOFileSystemAccess fsa = new DirectIOFileSystemAccess(tempDirectory);
+		final RecordLangOutputConfigurationProvider outputConfigurationProvider = new RecordLangOutputConfigurationProvider();
+		final Set<OutputConfiguration> configurations = outputConfigurationProvider.getOutputConfigurations();
+
+		for (final OutputConfiguration configuration : configurations) {
+			configuration.setOutputDirectory(".");
+		}
+
+		final DirectIOFileSystemAccess fsa = new DirectIOFileSystemAccess(tempDirectory, configurations);
 		fsa.generateFile(EXAMPLE_FILE_NAME, contents);
 
 		// check if the file exists
-		final File file = new File(tempDirectory + "/" + EXAMPLE_FILE_NAME);
-		Assert.assertTrue("File creation failed.", file.exists());
-		// cleanup
-		file.delete();
+		// this must fail, as a target language "none" should not exist.
+		final File file = new File(tempDirectory + File.separator + EXAMPLE_FILE_NAME);
+		Assert.assertFalse("File creation should have failed.", file.exists());
 	}
 
 	/**
@@ -69,11 +78,18 @@ public class TestDirectIOFileSystemAccess {
 	public void testGenerateFileStringStringCharSequence() {
 		final String tempDirectory = System.getProperty("java.io.tmpdir");
 		final CharSequence contents = "This is test content.";
-		final DirectIOFileSystemAccess fsa = new DirectIOFileSystemAccess(tempDirectory);
+		final RecordLangOutputConfigurationProvider outputConfigurationProvider = new RecordLangOutputConfigurationProvider();
+		final Set<OutputConfiguration> configurations = outputConfigurationProvider.getOutputConfigurations();
+
+		for (final OutputConfiguration configuration : configurations) {
+			configuration.setOutputDirectory(".");
+		}
+
+		final DirectIOFileSystemAccess fsa = new DirectIOFileSystemAccess(tempDirectory, configurations);
 		fsa.generateFile(EXAMPLE_FILE_NAME, OUTPUT_CONFIG, contents);
 
 		// check if the file exists
-		final File file = new File(tempDirectory + "/" + EXAMPLE_FILE_NAME);
+		final File file = new File(tempDirectory + File.separator + EXAMPLE_FILE_NAME);
 		Assert.assertTrue("File creation failed.", file.exists());
 		// cleanup
 		file.delete();
@@ -86,11 +102,18 @@ public class TestDirectIOFileSystemAccess {
 	public void testDeleteFile() {
 		final String tempDirectory = System.getProperty("java.io.tmpdir");
 		final CharSequence contents = "This is test content.";
-		final DirectIOFileSystemAccess fsa = new DirectIOFileSystemAccess(tempDirectory);
-		fsa.generateFile(EXAMPLE_FILE_NAME, contents);
+		final RecordLangOutputConfigurationProvider outputConfigurationProvider = new RecordLangOutputConfigurationProvider();
+		final Set<OutputConfiguration> configurations = outputConfigurationProvider.getOutputConfigurations();
+
+		for (final OutputConfiguration configuration : configurations) {
+			configuration.setOutputDirectory(".");
+		}
+
+		final DirectIOFileSystemAccess fsa = new DirectIOFileSystemAccess(tempDirectory, configurations);
+		fsa.generateFile(EXAMPLE_FILE_NAME, OUTPUT_CONFIG, contents);
 
 		// check if the file exists
-		final File file = new File(tempDirectory + "/" + EXAMPLE_FILE_NAME);
+		final File file = new File(tempDirectory + File.separator + EXAMPLE_FILE_NAME);
 		Assert.assertTrue("File creation failed.", file.exists());
 		// check if the file is deleted
 		fsa.deleteFile(EXAMPLE_FILE_NAME);

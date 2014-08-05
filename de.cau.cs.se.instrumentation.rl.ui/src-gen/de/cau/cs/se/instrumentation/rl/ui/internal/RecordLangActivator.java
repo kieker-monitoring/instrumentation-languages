@@ -7,7 +7,6 @@ import java.util.Collections;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
-import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.ui.shared.SharedStateModule;
 import org.eclipse.xtext.util.Modules2;
@@ -17,8 +16,6 @@ import com.google.common.collect.Maps;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Module;
-
-import de.cau.cs.se.instrumentation.rl.generator.RecordLangGenerator;
 
 /**
  * This class was generated. Customizations should only happen in a newly
@@ -93,18 +90,6 @@ public class RecordLangActivator extends AbstractUIPlugin {
 
 	protected Module getSharedStateModule() {
 		return new SharedStateModule();
-	}
-
-	@Override
-	protected void initializeDefaultPreferences(final IPreferenceStore store) {
-		store.setDefault(RecordLangGenerator.JAVA_DIR_PROPERTY, "X");
-		store.setDefault(RecordLangGenerator.C_DIR_PROPERTY, "");
-		store.setDefault(RecordLangGenerator.PERL_DIR_PROPERTY, "");
-		store.setDefault(RecordLangGenerator.JAVA_CHECK_PROPERTY, false);
-		store.setDefault(RecordLangGenerator.C_CHECK_PROPERTY, false);
-		store.setDefault(RecordLangGenerator.PERL_CHECK_PROPERTY, false);
-		store.setDefault(RecordLangGenerator.AUTHOR_PROPERTY, "Kieker Generated");
-		store.setDefault(RecordLangGenerator.VERSION_PROPERTY, "1.10");
 	}
 
 }

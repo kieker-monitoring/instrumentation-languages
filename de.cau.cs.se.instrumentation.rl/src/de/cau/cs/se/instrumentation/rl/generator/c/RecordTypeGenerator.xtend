@@ -58,12 +58,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	/**
 	 * Compute the directory name for a record type.
 	 */
-	override directoryName(Type type) {
-		if (languageSpecificFolder)
-			'''c«File::separator»«(type.eContainer as Model).name.replace('.',File::separator)»'''
-		else
-			'''«(type.eContainer as Model).name.replace('.',File::separator)»'''
-	}
+	override directoryName(Type type) '''«(type.eContainer as Model).name.replace('.',File::separator)»'''
 
 	override fileName(Type type) '''«type.directoryName»«File::separator»«type.name.cstyle».c'''	
 	

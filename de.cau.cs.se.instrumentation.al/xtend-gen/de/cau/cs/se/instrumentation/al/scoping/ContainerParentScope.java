@@ -83,7 +83,8 @@ public class ContainerParentScope implements IScope {
       public Boolean apply(final Container it) {
         String _name = it.getName();
         String _lastSegment = name.getLastSegment();
-        return Boolean.valueOf(_name.equals(_lastSegment));
+        boolean _equals = _name.equals(_lastSegment);
+        return Boolean.valueOf(_equals);
       }
     };
     final Container element = IterableExtensions.<Container>findFirst(_contents, _function);

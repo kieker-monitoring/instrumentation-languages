@@ -40,14 +40,15 @@ public class AspectLangLabelProvider extends DefaultEObjectLabelProvider {
     Container _container = e.getContainer();
     if ((_container instanceof NamedElement)) {
       Container _container_1 = e.getContainer();
-      _xifexpression = ((NamedElement) _container_1).getName();
+      String _name = ((NamedElement) _container_1).getName();
+      _xifexpression = _name;
     } else {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Container is of type ");
       Container _container_2 = e.getContainer();
       Class<? extends Container> _class = _container_2.getClass();
-      String _name = _class.getName();
-      _builder.append(_name, "");
+      String _name_1 = _class.getName();
+      _builder.append(_name_1, "");
       _xifexpression = _builder;
     }
     return _xifexpression;
@@ -75,6 +76,7 @@ public class AspectLangLabelProvider extends DefaultEObjectLabelProvider {
     String _plus = (_name + " ");
     InsertionPoint _insertionPoint = e.getInsertionPoint();
     String _string = _insertionPoint.toString();
-    return (_plus + _string);
+    String _plus_1 = (_plus + _string);
+    return _plus_1;
   }
 }

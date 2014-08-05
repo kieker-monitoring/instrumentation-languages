@@ -21,8 +21,10 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.Set;
 
 import org.eclipse.xtext.generator.IFileSystemAccess;
+import org.eclipse.xtext.generator.OutputConfiguration;
 
 import kieker.common.logging.Log;
 import kieker.common.logging.LogFactory;
@@ -38,16 +40,20 @@ public class DirectIOFileSystemAccess implements IFileSystemAccess {
 	/** Central logger for the compiler. */
 	private static final Log LOG = LogFactory.getLog(DirectIOFileSystemAccess.class);
 
-	private String rootPath = "";
+	private final String projectHostPath;
+
+	private final Set<OutputConfiguration> configurations;
 
 	/**
 	 * Constructor for the headless file system access.
 	 * 
-	 * @param rootPath
+	 * @param projectHostPath
 	 *            root path where the files are stored
+	 * @param configurations
 	 */
-	public DirectIOFileSystemAccess(final String rootPath) {
-		this.rootPath = rootPath;
+	public DirectIOFileSystemAccess(final String projectHostPath, final Set<OutputConfiguration> configurations) {
+		this.projectHostPath = projectHostPath;
+		this.configurations = configurations;
 	}
 
 	/**
@@ -59,21 +65,7 @@ public class DirectIOFileSystemAccess implements IFileSystemAccess {
 	 *            the content to be stored
 	 */
 	public void generateFile(final String fileName, final CharSequence contents) {
-		try {
-			LOG.info("Create " + this.rootPath + "/" + fileName);
-			final File file = new File(this.rootPath + "/" + fileName);
-			file.getParentFile().mkdirs();
-			final BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-			writer.write(contents.toString());
-			writer.flush();
-			writer.close();
-		} catch (final UnsupportedEncodingException e) {
-			LOG.error("Error: " + fileName, e);
-		} catch (final FileNotFoundException e) {
-			LOG.error("Error: " + fileName, e);
-		} catch (final IOException e) {
-			LOG.error("Error: " + fileName, e);
-		}
+		this.generateFile(fileName, "none", contents);
 	}
 
 	/**
@@ -88,8 +80,43 @@ public class DirectIOFileSystemAccess implements IFileSystemAccess {
 	 */
 	public void generateFile(final String fileName, final String outputConfigurationName,
 			final CharSequence contents) {
-		LOG.info("OutputconfigurationName " + outputConfigurationName);
-		this.generateFile(fileName, contents);
+		final OutputConfiguration configuration = this.getOutputConfiguration(outputConfigurationName);
+		if (configuration != null) {
+			try {
+				final String targetFilePath = this.projectHostPath + File.separator + configuration.getOutputDirectory() + File.separator + fileName;
+				LOG.info("Create " + targetFilePath);
+				final File file = new File(targetFilePath);
+				file.getParentFile().mkdirs();
+				final BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+				writer.write(contents.toString());
+				writer.flush();
+				writer.close();
+			} catch (final UnsupportedEncodingException e) {
+				LOG.error("Error: " + fileName, e);
+			} catch (final FileNotFoundException e) {
+				LOG.error("Error: " + fileName, e);
+			} catch (final IOException e) {
+				LOG.error("Error: " + fileName, e);
+			}
+		} else {
+			LOG.error("Output for " + outputConfigurationName + " not configured. Language not supported.");
+		}
+	}
+
+	/**
+	 * Find a output configuration based on its name.
+	 * 
+	 * @param outputConfigurationName
+	 *            the output configuration name
+	 * @return either a valid output configuration or null if no such output configuration exist
+	 */
+	private OutputConfiguration getOutputConfiguration(final String outputConfigurationName) {
+		for (final OutputConfiguration configuration : this.configurations) {
+			if (configuration.getName().equals(outputConfigurationName)) {
+				return configuration;
+			}
+		}
+		return null;
 	}
 
 	/**
@@ -99,8 +126,8 @@ public class DirectIOFileSystemAccess implements IFileSystemAccess {
 	 *            file to be deleted
 	 */
 	public void deleteFile(final String fileName) {
-		LOG.info("Delete " + this.rootPath + "/" + fileName);
-		final File file = new File(this.rootPath + "/" + fileName);
+		LOG.info("Delete " + this.projectHostPath + File.separator + fileName);
+		final File file = new File(this.projectHostPath + File.separator + fileName);
 		if (file.exists()) {
 			file.delete();
 		}

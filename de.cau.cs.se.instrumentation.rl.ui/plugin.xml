@@ -439,5 +439,11 @@
         </launchMode>
      </launchConfigurationTabGroup>
   </extension>
+  <extension
+        point="org.eclipse.core.runtime.preferences">
+     <initializer
+           class="de.cau.cs.se.instrumentation.rl.ui.preferences.CompilerPreferenceInitializer">
+     </initializer>
+  </extension>
 
 </plugin>

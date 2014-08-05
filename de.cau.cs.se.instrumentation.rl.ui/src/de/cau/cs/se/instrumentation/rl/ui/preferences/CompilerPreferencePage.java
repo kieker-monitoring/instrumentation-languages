@@ -17,6 +17,7 @@ package de.cau.cs.se.instrumentation.rl.ui.preferences;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.SWT;
@@ -32,13 +33,15 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.dialogs.ContainerSelectionDialog;
+import org.eclipse.ui.preferences.ScopedPreferenceStore;
 
-import de.cau.cs.se.instrumentation.rl.generator.RecordLangGenerator;
+import de.cau.cs.se.instrumentation.rl.generator.LanguageSetup;
+import de.cau.cs.se.instrumentation.rl.preferences.CompilerPreferences;
 import de.cau.cs.se.instrumentation.rl.ui.internal.RecordLangActivator;
 
 
 /**
- * @author rju
+ * @author Reiner Jung
  * 
  */
 public class CompilerPreferencePage extends org.eclipse.jface.preference.PreferencePage
@@ -55,6 +58,7 @@ implements org.eclipse.ui.IWorkbenchPreferencePage, org.eclipse.ui.IWorkbenchPro
 	 */
 	public CompilerPreferencePage() {
 		super();
+		this.setPreferenceStore(new ScopedPreferenceStore(InstanceScope.INSTANCE, "de.cau.cs.se.instrumentation.rl"));
 	}
 
 	public IAdaptable getElement() {
@@ -95,12 +99,9 @@ implements org.eclipse.ui.IWorkbenchPreferencePage, org.eclipse.ui.IWorkbenchPro
 		langLayout.numColumns = 3;
 		this.langGroup.setLayout(langLayout);
 
-		this.createLanguageCheck(this.langGroup, "Java", RecordLangGenerator.JAVA_CHECK_PROPERTY);
-		this.createLanguageDirectory(this.langGroup, RecordLangGenerator.JAVA_DIR_PROPERTY);
-		this.createLanguageCheck(this.langGroup, "C", RecordLangGenerator.C_CHECK_PROPERTY);
-		this.createLanguageDirectory(this.langGroup, RecordLangGenerator.C_DIR_PROPERTY);
-		this.createLanguageCheck(this.langGroup, "Perl", RecordLangGenerator.PERL_CHECK_PROPERTY);
-		this.createLanguageDirectory(this.langGroup, RecordLangGenerator.PERL_DIR_PROPERTY);
+		for (final String language : LanguageSetup.getPresentLanguages()) {
+			this.createLanguageCheck(this.langGroup, "Java", CompilerPreferences.GENERATOR_ACTIVE + language);
+		}
 
 		/* misc */
 		this.miscGroup = new Group(control, SWT.SHADOW_NONE);
@@ -110,8 +111,8 @@ implements org.eclipse.ui.IWorkbenchPreferencePage, org.eclipse.ui.IWorkbenchPro
 		miscLayout.numColumns = 2;
 		this.miscGroup.setLayout(miscLayout);
 
-		this.createCompilerProperty(this.miscGroup, "Author", RecordLangGenerator.AUTHOR_PROPERTY);
-		this.createCompilerProperty(this.miscGroup, "Version", RecordLangGenerator.VERSION_PROPERTY);
+		this.createCompilerProperty(this.miscGroup, "Author", CompilerPreferences.AUTHOR_NAME);
+		this.createCompilerProperty(this.miscGroup, "Version", CompilerPreferences.VERSION_ID);
 
 		control.pack();
 
@@ -161,46 +162,33 @@ implements org.eclipse.ui.IWorkbenchPreferencePage, org.eclipse.ui.IWorkbenchPro
 		check.setSelection(this.getPreferenceStore().getBoolean(propertyActivatedId));
 	}
 
-	/**
-	 * Create a language directory entry.
-	 * 
-	 * @param parent the preference page group for language
-	 * @param name the name of the language
-	 * @param propertyDirectoryId the associated property id
-	 */
-	private void createLanguageDirectory(final Composite parent, final String propertyDirectoryId) {
-		final Text directoryPath = new Text(parent, SWT.SINGLE);
-		directoryPath.setData(WIDGET_DATA_PROPERTY_ID, propertyDirectoryId);
-		directoryPath.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
-		directoryPath.setText(this.getPreferenceStore().getString(propertyDirectoryId));
-		final Button browse = new Button(parent, SWT.PUSH);
-		browse.setText("Browse ...");
-		browse.addSelectionListener(new DirectorySelector(this.adaptable, directoryPath));
-
-	}
 
 	private void storeValues() {
-		final IPreferenceStore store = this.getPreferenceStore();
-		this.storeStringProperty(this.langGroup.getChildren(), store, RecordLangGenerator.JAVA_DIR_PROPERTY);
-		this.storeStringProperty(this.langGroup.getChildren(), store, RecordLangGenerator.C_DIR_PROPERTY);
-		this.storeStringProperty(this.langGroup.getChildren(), store, RecordLangGenerator.PERL_DIR_PROPERTY);
+		for (final String language : LanguageSetup.getPresentLanguages()) {
+			this.storeBooleanProperty(this.langGroup.getChildren(), CompilerPreferences.GENERATOR_ACTIVE + language);
+		}
 
-		this.storeBooleanProperty(this.langGroup.getChildren(), store, RecordLangGenerator.JAVA_CHECK_PROPERTY);
-		this.storeBooleanProperty(this.langGroup.getChildren(), store, RecordLangGenerator.C_CHECK_PROPERTY);
-		this.storeBooleanProperty(this.langGroup.getChildren(), store, RecordLangGenerator.PERL_CHECK_PROPERTY);
+		this.storeStringProperty(this.miscGroup.getChildren(), CompilerPreferences.AUTHOR_NAME);
+		this.storeStringProperty(this.miscGroup.getChildren(), CompilerPreferences.AUTHOR_NAME);
+	}
 
-		this.storeStringProperty(this.miscGroup.getChildren(), store, RecordLangGenerator.AUTHOR_PROPERTY);
-		this.storeStringProperty(this.miscGroup.getChildren(), store, RecordLangGenerator.VERSION_PROPERTY);
+	private void initializeDefaults() {
+		for (final String language : LanguageSetup.getPresentLanguages()) {
+			this.retrieveBooleanProperty(this.langGroup.getChildren(), CompilerPreferences.GENERATOR_ACTIVE + language);
+		}
+
+		this.retrieveStringProperty(this.miscGroup.getChildren(), CompilerPreferences.AUTHOR_NAME);
+		this.retrieveStringProperty(this.miscGroup.getChildren(), CompilerPreferences.AUTHOR_NAME);
 	}
 
 	/**
 	 * Get a string property from an UI element and store is in the preference store.
 	 * 
 	 * @param children all UI elements to check for data
-	 * @param store the store
 	 * @param dirProperty the requested property
 	 */
-	private void storeStringProperty(final Control[] children, final IPreferenceStore store, final String dirProperty) {
+	private void storeStringProperty(final Control[] children, final String dirProperty) {
+		final IPreferenceStore store = this.getPreferenceStore();
 		for (final Control child : children) {
 			if (dirProperty.equals(child.getData(WIDGET_DATA_PROPERTY_ID))) {
 				store.setValue(dirProperty, ((Text) child).getText());
@@ -212,10 +200,10 @@ implements org.eclipse.ui.IWorkbenchPreferencePage, org.eclipse.ui.IWorkbenchPro
 	 * Get a boolean property from an UI element and store is in the preference store.
 	 * 
 	 * @param children all UI elements to check for data
-	 * @param store the store
 	 * @param dirProperty the requested property
 	 */
-	private void storeBooleanProperty(final Control[] children, final IPreferenceStore store, final String checkProperty) {
+	private void storeBooleanProperty(final Control[] children, final String checkProperty) {
+		final IPreferenceStore store = this.getPreferenceStore();
 		for (final Control child : children) {
 			if (checkProperty.equals(child.getData(WIDGET_DATA_PROPERTY_ID))) {
 				store.setValue(checkProperty, ((Button) child).getSelection());
@@ -223,28 +211,14 @@ implements org.eclipse.ui.IWorkbenchPreferencePage, org.eclipse.ui.IWorkbenchPro
 		}
 	}
 
-	private void initializeDefaults() {
-		final IPreferenceStore store = this.getPreferenceStore();
-		this.retrieveStringProperty(this.langGroup.getChildren(), store, RecordLangGenerator.JAVA_DIR_PROPERTY);
-		this.retrieveStringProperty(this.langGroup.getChildren(), store, RecordLangGenerator.C_DIR_PROPERTY);
-		this.retrieveStringProperty(this.langGroup.getChildren(), store, RecordLangGenerator.PERL_DIR_PROPERTY);
-
-		this.retrieveBooleanProperty(this.langGroup.getChildren(), store, RecordLangGenerator.JAVA_CHECK_PROPERTY);
-		this.retrieveBooleanProperty(this.langGroup.getChildren(), store, RecordLangGenerator.C_CHECK_PROPERTY);
-		this.retrieveBooleanProperty(this.langGroup.getChildren(), store, RecordLangGenerator.PERL_CHECK_PROPERTY);
-
-		this.retrieveStringProperty(this.miscGroup.getChildren(), store, RecordLangGenerator.AUTHOR_PROPERTY);
-		this.retrieveStringProperty(this.miscGroup.getChildren(), store, RecordLangGenerator.VERSION_PROPERTY);
-	}
-
 	/**
 	 * Set a string property of an UI element with a value from the preference store.
 	 * 
 	 * @param children all UI elements to check for data
-	 * @param store the store
 	 * @param dirProperty the requested property
 	 */
-	private void retrieveStringProperty(final Control[] children, final IPreferenceStore store, final String dirProperty) {
+	private void retrieveStringProperty(final Control[] children, final String dirProperty) {
+		final IPreferenceStore store = this.getPreferenceStore();
 		for (final Control child : children) {
 			if (dirProperty.equals(child.getData(WIDGET_DATA_PROPERTY_ID))) {
 				((Text) child).setText(store.getDefaultString(dirProperty));
@@ -256,10 +230,10 @@ implements org.eclipse.ui.IWorkbenchPreferencePage, org.eclipse.ui.IWorkbenchPro
 	 * Set a boolean property of an UI element with a value from the preference store.
 	 * 
 	 * @param children all UI elements to check for data
-	 * @param store the store
 	 * @param dirProperty the requested property
 	 */
-	private void retrieveBooleanProperty(final Control[] children, final IPreferenceStore store, final String checkProperty) {
+	private void retrieveBooleanProperty(final Control[] children, final String checkProperty) {
+		final IPreferenceStore store = this.getPreferenceStore();
 		for (final Control child : children) {
 			if (checkProperty.equals(child.getData(WIDGET_DATA_PROPERTY_ID))) {
 				((Button) child).setSelection(store.getDefaultBoolean(checkProperty));

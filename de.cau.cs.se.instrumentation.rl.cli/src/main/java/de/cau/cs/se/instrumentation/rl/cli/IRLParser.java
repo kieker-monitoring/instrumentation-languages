@@ -16,11 +16,14 @@
 package de.cau.cs.se.instrumentation.rl.cli;
 
 import java.io.File;
+import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.IFileSystemAccess;
+import org.eclipse.xtext.generator.IOutputConfigurationProvider;
+import org.eclipse.xtext.generator.OutputConfiguration;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
 
@@ -28,7 +31,11 @@ import com.google.inject.Inject;
 import com.google.inject.Injector;
 
 import de.cau.cs.se.instrumentation.rl.RecordLangStandaloneSetup;
+import de.cau.cs.se.instrumentation.rl.generator.LanguageSetup;
 import de.cau.cs.se.instrumentation.rl.generator.RecordLangGenerator;
+import de.cau.cs.se.instrumentation.rl.ouput.config.RecordLangOutputConfigurationProvider;
+import de.cau.cs.se.instrumentation.rl.preferences.CompilerPreferenceInitializer;
+import de.cau.cs.se.instrumentation.rl.preferences.CompilerPreferences;
 
 import kieker.common.logging.Log;
 import kieker.common.logging.LogFactory;
@@ -53,24 +60,18 @@ public class IRLParser {
 	@Inject
 	private XtextResourceSet resourceSet;
 
-	/** Location for the generated code. */
-	private final String targetRootPath;
+	/** Project location in host path notation */
+	private final String projectHostPath;
 	/** The Kieker eclipse project name. */
 	private final String projectName;
 	/** The source path for the IRL files. */
 	private final String projectSourcePath;
-	/** The author name for the generated records. */
-	private final String author;
-	/** The Kieker version for the records. */
-	private final String version;
 	/** Derive value representing the project root path. */
 	private final String sourceRootPath;
 
-	private final String[] selectedLanguageTypes;
-
-	private final boolean mavenFolderLayout;
-
 	private final StandaloneSetup setup;
+
+	private final IOutputConfigurationProvider outputConfigurationProvider;
 
 	/**
 	 * Construct an IRL parser.
@@ -99,10 +100,6 @@ public class IRLParser {
 			final boolean mavenFolderLayout, final String[] selectedLanguageTypes, final String version, final String author) {
 		this.projectSourcePath = projectSourcePath;
 		this.projectName = projectName;
-		this.author = author;
-		this.version = version;
-		this.selectedLanguageTypes = selectedLanguageTypes;
-		this.mavenFolderLayout = mavenFolderLayout;
 
 		this.setup = new StandaloneSetup();
 		this.setup.setProjectDirectoryName(projectDirectoryName);
@@ -118,16 +115,45 @@ public class IRLParser {
 				injector.injectMembers(this);
 				this.resourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
 
-				this.sourceRootPath = platformUri + "/" + realProjectPathName + "/" + projectSourcePath;
-				this.targetRootPath = platformUri + "/" + realProjectPathName + "/" + projectDestinationPath;
+				this.sourceRootPath = platformUri + File.separator + realProjectPathName + File.separator + projectSourcePath;
+				this.projectHostPath = platformUri + File.separator + realProjectPathName;
+
+				// setup generator preferences
+				new CompilerPreferenceInitializer().initializeDefaultPreferences();
+				CompilerPreferences.setAuthorName(author);
+				CompilerPreferences.setVersionID(version);
+				// setup language activation
+				for (final String language : LanguageSetup.getPresentLanguages()) {
+					CompilerPreferences.setGeneratorActive(language, false);
+					for (final String selected : selectedLanguageTypes) {
+						if (selected.equals(language)) {
+							CompilerPreferences.setGeneratorActive(language, true);
+						}
+					}
+				}
+				// setup outlets
+				this.outputConfigurationProvider = new RecordLangOutputConfigurationProvider();
+				final Set<OutputConfiguration> configurations = this.outputConfigurationProvider.getOutputConfigurations();
+
+				if (mavenFolderLayout) {
+					for (final OutputConfiguration configuration : configurations) {
+						configuration.setOutputDirectory(projectDestinationPath + File.separator + configuration.getName());
+					}
+				} else {
+					for (final OutputConfiguration configuration : configurations) {
+						configuration.setOutputDirectory(projectDestinationPath);
+					}
+				}
 			} else {
 				LOG.error("Specified project " + projectName + " cannot be found.");
 				this.sourceRootPath = null;
-				this.targetRootPath = null;
+				this.projectHostPath = null;
+				this.outputConfigurationProvider = null;
 			}
 		} else {
 			this.sourceRootPath = null;
-			this.targetRootPath = null;
+			this.projectHostPath = null;
+			this.outputConfigurationProvider = null;
 		}
 	}
 
@@ -148,11 +174,11 @@ public class IRLParser {
 	 *            project relative path
 	 */
 	private void directoryWalkerResource(final String pathName) {
-		final File file = new File(this.sourceRootPath + "/" + pathName);
+		final File file = new File(this.sourceRootPath + File.separator + pathName);
 
 		if (file.isDirectory()) {
 			for (final String innerFileName : file.list()) {
-				this.directoryWalkerResource(pathName + "/" + innerFileName);
+				this.directoryWalkerResource(pathName + File.separator + innerFileName);
 			}
 		} else {
 			final int i = pathName.lastIndexOf('.');
@@ -172,11 +198,11 @@ public class IRLParser {
 	 *            relative path name in source folder
 	 */
 	private void directoryWalkerCompile(final String pathName) {
-		final File file = new File(this.sourceRootPath + "/" + pathName);
+		final File file = new File(this.sourceRootPath + File.separator + pathName);
 
 		if (file.isDirectory()) {
 			for (final String innerFileName : file.list()) {
-				this.directoryWalkerCompile(pathName + "/" + innerFileName);
+				this.directoryWalkerCompile(pathName + File.separator + innerFileName);
 			}
 		} else {
 			final int i = pathName.lastIndexOf('.');
@@ -219,11 +245,9 @@ public class IRLParser {
 
 		// invoke generator
 		final RecordLangGenerator generator = new RecordLangGenerator();
-		final IFileSystemAccess fsa = new DirectIOFileSystemAccess(this.targetRootPath);
-		generator.setVersion(this.version);
-		generator.setAuthor(this.author);
-		generator.setSelectedLanguageTypes(this.selectedLanguageTypes);
-		generator.setLanguageSpecificTargetFolder(this.mavenFolderLayout);
+		final IFileSystemAccess fsa = new DirectIOFileSystemAccess(this.projectHostPath,
+				this.outputConfigurationProvider.getOutputConfigurations());
+
 		generator.doGenerate(resource, fsa);
 	}
 

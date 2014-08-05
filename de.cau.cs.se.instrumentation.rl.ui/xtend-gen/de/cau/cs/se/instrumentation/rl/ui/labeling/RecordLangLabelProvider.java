@@ -54,17 +54,20 @@ public class RecordLangLabelProvider extends DefaultEObjectLabelProvider {
     String _plus = (_name + " : ");
     Classifier _type = e.getType();
     String _text = this.text(_type);
-    return (_plus + _text);
+    String _plus_1 = (_plus + _text);
+    return _plus_1;
   }
   
   public String text(final StringLiteral e) {
     String _value = e.getValue();
     String _plus = ("\'" + _value);
-    return (_plus + "\'");
+    String _plus_1 = (_plus + "\'");
+    return _plus_1;
   }
   
   public int text(final IntLiteral e) {
-    return e.getValue();
+    int _value = e.getValue();
+    return _value;
   }
   
   public String text(final ArrayLiteral e) {
@@ -72,7 +75,8 @@ public class RecordLangLabelProvider extends DefaultEObjectLabelProvider {
   }
   
   public Float text(final FloatLiteral e) {
-    return e.getValue();
+    Float _value = e.getValue();
+    return _value;
   }
   
   public String text(final BooleanLiteral e) {
@@ -96,17 +100,20 @@ public class RecordLangLabelProvider extends DefaultEObjectLabelProvider {
         int _size = it.getSize();
         boolean _notEquals = (_size != 0);
         if (_notEquals) {
-          _xifexpression = Integer.valueOf(it.getSize());
+          int _size_1 = it.getSize();
+          _xifexpression = Integer.valueOf(_size_1);
         } else {
           _xifexpression = "";
         }
         String _plus = ("[" + ((Comparable<Object>)_xifexpression));
-        return (_plus + "]");
+        String _plus_1 = (_plus + "]");
+        return _plus_1;
       }
     };
     List<String> _map = ListExtensions.<ArraySize, String>map(_sizes, _function);
     String _join = IterableExtensions.join(_map);
-    return (_name + _join);
+    String _plus = (_name + _join);
+    return _plus;
   }
   
   public String image(final Property e) {

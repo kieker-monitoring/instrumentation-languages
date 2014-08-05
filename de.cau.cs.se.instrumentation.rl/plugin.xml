@@ -10,6 +10,12 @@
        genModel = "de/cau/cs/se/instrumentation/rl/RecordLang.genmodel" /> 
 	
   </extension>
+  <extension
+        point="org.eclipse.core.runtime.preferences">
+     <initializer
+           class="de.cau.cs.se.instrumentation.rl.preferences.CompilerPreferenceInitializer">
+     </initializer>
+  </extension>
 
 
 

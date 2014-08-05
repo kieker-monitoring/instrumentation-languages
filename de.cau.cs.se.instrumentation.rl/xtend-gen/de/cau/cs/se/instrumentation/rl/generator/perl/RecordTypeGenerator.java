@@ -28,146 +28,142 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    * Create a perl based record for kieker
    */
   public CharSequence createContent(final RecordType type, final String author, final String version) {
-    CharSequence _xblockexpression = null;
-    {
-      this.languageSpecificFolder = this.languageSpecificFolder;
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("use strict;");
-      _builder.newLine();
-      _builder.append("use warnings;");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("package ");
-      CharSequence _recordName = this.recordName(type);
-      _builder.append(_recordName, "");
-      _builder.append(";");
-      _builder.newLineIfNotEmpty();
-      _builder.newLine();
-      _builder.append("=head1 NAME");
-      _builder.newLine();
-      _builder.newLine();
-      CharSequence _recordName_1 = this.recordName(type);
-      _builder.append(_recordName_1, "");
-      _builder.append(" ");
-      _builder.newLineIfNotEmpty();
-      _builder.newLine();
-      _builder.append("=head1 SYNOPSIS");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("my $record = ");
-      CharSequence _recordName_2 = this.recordName(type);
-      _builder.append(_recordName_2, " ");
-      _builder.append("->new(");
-      Collection<Property> _collectAllDataProperties = PropertyEvaluation.collectAllDataProperties(type);
-      String _createParameterCall = this.createParameterCall(_collectAllDataProperties);
-      _builder.append(_createParameterCall, " ");
-      _builder.append(");");
-      _builder.newLineIfNotEmpty();
-      _builder.append(" ");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("$writer->write($record->genoutput());");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("=head1 DESCRIPTION");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("Auto-generated structures. See the IRL code.");
-      _builder.newLine();
-      _builder.append("\t\t");
-      _builder.newLine();
-      _builder.append("=head1 METHODS");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("=head2 $record = ");
-      CharSequence _recordName_3 = this.recordName(type);
-      _builder.append(_recordName_3, "");
-      _builder.append("->new(");
-      Collection<Property> _collectAllDataProperties_1 = PropertyEvaluation.collectAllDataProperties(type);
-      String _createParameterCall_1 = this.createParameterCall(_collectAllDataProperties_1);
-      _builder.append(_createParameterCall_1, "");
-      _builder.append(");");
-      _builder.newLineIfNotEmpty();
-      _builder.newLine();
-      _builder.append("Creates a new record with the given parameters.");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("=cut");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("sub new {");
-      _builder.newLine();
-      _builder.append("  ");
-      _builder.append("my (");
-      Collection<Property> _collectAllDataProperties_2 = PropertyEvaluation.collectAllDataProperties(type);
-      String _createParameterCall_2 = this.createParameterCall(_collectAllDataProperties_2);
-      _builder.append(_createParameterCall_2, "  ");
-      _builder.append(") = @_;");
-      _builder.newLineIfNotEmpty();
-      _builder.append("  ");
-      _builder.append("my $this = {");
-      _builder.newLine();
-      _builder.append("    ");
-      Collection<Property> _collectAllDataProperties_3 = PropertyEvaluation.collectAllDataProperties(type);
-      final Function1<Property,CharSequence> _function = new Function1<Property,CharSequence>() {
-        public CharSequence apply(final Property it) {
-          return RecordTypeGenerator.this.createProperty(it);
-        }
-      };
-      Iterable<CharSequence> _map = IterableExtensions.<Property, CharSequence>map(_collectAllDataProperties_3, _function);
-      String _join = IterableExtensions.join(_map, ",\n");
-      _builder.append(_join, "    ");
-      _builder.newLineIfNotEmpty();
-      _builder.append("  ");
-      _builder.append("};");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("  ");
-      _builder.append("return bless($this,$type);");
-      _builder.newLine();
-      _builder.append("}");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("=head2 $string = $record->genoutput();");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("Serializes the record for output. Returns the serialized form of the record.");
-      _builder.newLine();
-      _builder.append("\t\t\t\t");
-      _builder.newLine();
-      _builder.append("=head1 COPYRIGHT and LICENCE");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("Copyright 2013 Kieker Project (http://kieker-monitoring.net)");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("Licensed under the Apache License, Version 2.0 (the \"License\"); ");
-      _builder.newLine();
-      _builder.append("you may not use this file except in compliance with the License.");
-      _builder.newLine();
-      _builder.append("You may obtain a copy of the License at");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("http://www.apache.org/licenses/LICENSE-2.0");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("Unless required by applicable law or agreed to in writing, software");
-      _builder.newLine();
-      _builder.append("distributed under the License is distributed on an \"AS IS\" BASIS,");
-      _builder.newLine();
-      _builder.append("WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.");
-      _builder.newLine();
-      _builder.append("See the License for the specific language governing permissions and");
-      _builder.newLine();
-      _builder.append("limitations under the License.");
-      _builder.newLine();
-      _builder.newLine();
-      _builder.append("=cut");
-      _builder.newLine();
-      _xblockexpression = _builder;
-    }
-    return _xblockexpression;
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("use strict;");
+    _builder.newLine();
+    _builder.append("use warnings;");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("package ");
+    CharSequence _recordName = this.recordName(type);
+    _builder.append(_recordName, "");
+    _builder.append(";");
+    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    _builder.append("=head1 NAME");
+    _builder.newLine();
+    _builder.newLine();
+    CharSequence _recordName_1 = this.recordName(type);
+    _builder.append(_recordName_1, "");
+    _builder.append(" ");
+    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    _builder.append("=head1 SYNOPSIS");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("my $record = ");
+    CharSequence _recordName_2 = this.recordName(type);
+    _builder.append(_recordName_2, " ");
+    _builder.append("->new(");
+    Collection<Property> _collectAllDataProperties = PropertyEvaluation.collectAllDataProperties(type);
+    String _createParameterCall = this.createParameterCall(_collectAllDataProperties);
+    _builder.append(_createParameterCall, " ");
+    _builder.append(");");
+    _builder.newLineIfNotEmpty();
+    _builder.append(" ");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("$writer->write($record->genoutput());");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("=head1 DESCRIPTION");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("Auto-generated structures. See the IRL code.");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.newLine();
+    _builder.append("=head1 METHODS");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("=head2 $record = ");
+    CharSequence _recordName_3 = this.recordName(type);
+    _builder.append(_recordName_3, "");
+    _builder.append("->new(");
+    Collection<Property> _collectAllDataProperties_1 = PropertyEvaluation.collectAllDataProperties(type);
+    String _createParameterCall_1 = this.createParameterCall(_collectAllDataProperties_1);
+    _builder.append(_createParameterCall_1, "");
+    _builder.append(");");
+    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    _builder.append("Creates a new record with the given parameters.");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("=cut");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("sub new {");
+    _builder.newLine();
+    _builder.append("  ");
+    _builder.append("my (");
+    Collection<Property> _collectAllDataProperties_2 = PropertyEvaluation.collectAllDataProperties(type);
+    String _createParameterCall_2 = this.createParameterCall(_collectAllDataProperties_2);
+    _builder.append(_createParameterCall_2, "  ");
+    _builder.append(") = @_;");
+    _builder.newLineIfNotEmpty();
+    _builder.append("  ");
+    _builder.append("my $this = {");
+    _builder.newLine();
+    _builder.append("    ");
+    Collection<Property> _collectAllDataProperties_3 = PropertyEvaluation.collectAllDataProperties(type);
+    final Function1<Property,CharSequence> _function = new Function1<Property,CharSequence>() {
+      public CharSequence apply(final Property it) {
+        CharSequence _createProperty = RecordTypeGenerator.this.createProperty(it);
+        return _createProperty;
+      }
+    };
+    Iterable<CharSequence> _map = IterableExtensions.<Property, CharSequence>map(_collectAllDataProperties_3, _function);
+    String _join = IterableExtensions.join(_map, ",\n");
+    _builder.append(_join, "    ");
+    _builder.newLineIfNotEmpty();
+    _builder.append("  ");
+    _builder.append("};");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("  ");
+    _builder.append("return bless($this,$type);");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("=head2 $string = $record->genoutput();");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("Serializes the record for output. Returns the serialized form of the record.");
+    _builder.newLine();
+    _builder.append("\t\t\t\t");
+    _builder.newLine();
+    _builder.append("=head1 COPYRIGHT and LICENCE");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("Copyright 2013 Kieker Project (http://kieker-monitoring.net)");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("Licensed under the Apache License, Version 2.0 (the \"License\"); ");
+    _builder.newLine();
+    _builder.append("you may not use this file except in compliance with the License.");
+    _builder.newLine();
+    _builder.append("You may obtain a copy of the License at");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("http://www.apache.org/licenses/LICENSE-2.0");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("Unless required by applicable law or agreed to in writing, software");
+    _builder.newLine();
+    _builder.append("distributed under the License is distributed on an \"AS IS\" BASIS,");
+    _builder.newLine();
+    _builder.append("WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.");
+    _builder.newLine();
+    _builder.append("See the License for the specific language governing permissions and");
+    _builder.newLine();
+    _builder.append("limitations under the License.");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("=cut");
+    _builder.newLine();
+    return _builder;
   }
   
   /**
@@ -178,16 +174,18 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     String _switchResult = null;
     EClassifier _class_ = classifier.getClass_();
     String _name = _class_.getName();
+    final String _switchValue = _name;
     boolean _matched = false;
     if (!_matched) {
-      if (Objects.equal(_name,"string")) {
+      if (Objects.equal(_switchValue,"string")) {
         _matched=true;
         _switchResult = "String";
       }
     }
     if (!_matched) {
       EClassifier _class__1 = classifier.getClass_();
-      _switchResult = _class__1.getName();
+      String _name_1 = _class__1.getName();
+      _switchResult = _name_1;
     }
     return _switchResult;
   }
@@ -231,32 +229,20 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       }
     };
     Iterable<String> _map = IterableExtensions.<Property, String>map(list, _function);
-    return IterableExtensions.join(_map, ", ");
+    String _join = IterableExtensions.join(_map, ", ");
+    return _join;
   }
   
   /**
    * Compute the directory name for a record type.
    */
   public CharSequence directoryName(final Type type) {
-    CharSequence _xifexpression = null;
-    if (this.languageSpecificFolder) {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("perl");
-      _builder.append(File.separator, "");
-      EObject _eContainer = type.eContainer();
-      String _name = ((Model) _eContainer).getName();
-      String _replace = _name.replace(".", File.separator);
-      _builder.append(_replace, "");
-      _xifexpression = _builder;
-    } else {
-      StringConcatenation _builder_1 = new StringConcatenation();
-      EObject _eContainer_1 = type.eContainer();
-      String _name_1 = ((Model) _eContainer_1).getName();
-      String _replace_1 = _name_1.replace(".", File.separator);
-      _builder_1.append(_replace_1, "");
-      _xifexpression = _builder_1;
-    }
-    return _xifexpression;
+    StringConcatenation _builder = new StringConcatenation();
+    EObject _eContainer = type.eContainer();
+    String _name = ((Model) _eContainer).getName();
+    String _replace = _name.replace(".", File.separator);
+    _builder.append(_replace, "");
+    return _builder;
   }
   
   /**
