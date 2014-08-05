@@ -15,6 +15,12 @@
  ***************************************************************************/
 package de.cau.cs.se.instrumentation.rl;
 
+import org.eclipse.xtext.generator.IOutputConfigurationProvider;
+
+import com.google.inject.Binder;
+import com.google.inject.Singleton;
+
+import de.cau.cs.se.instrumentation.rl.ouput.config.RLOutputConfigurationProvider;
 import de.cau.cs.se.instrumentation.rl.typing.TypeGlobalScopeProvider;
 
 /**
@@ -38,10 +44,10 @@ public class RecordLangRuntimeModule extends de.cau.cs.se.instrumentation.rl.Abs
 	/**
 	 * Register my own output outlet provider. We need an outlet for each language.
 	 */
-	// @Override
-	// public void configure(final Binder binder) {
-	// super.configure(binder);
-	// binder.bind(IRecordLangOutputConfigurationProvider.class).to(RecordLangOutputConfigurationProvider.class).in(Singleton.class);
-	// }
+	@Override
+	public void configure(final Binder binder) {
+		super.configure(binder);
+		binder.bind(IOutputConfigurationProvider.class).to(RLOutputConfigurationProvider.class).in(Singleton.class);
+	}
 
 }
