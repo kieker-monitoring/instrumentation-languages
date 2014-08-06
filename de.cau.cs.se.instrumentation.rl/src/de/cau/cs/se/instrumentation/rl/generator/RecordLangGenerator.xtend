@@ -34,6 +34,8 @@ class RecordLangGenerator implements IGenerator {
 			val version = TargetsPreferences.getVersionID()
 			val author = TargetsPreferences.getAuthorName()
 											
+			// System.out.println("Generator setup " + version + " " + author)
+											
 			for (Class<?> generator : LanguageSetup.recordTypeGenerators) {
 				val cg = generator.getConstructor().newInstance() as AbstractRecordTypeGenerator
 				if (TargetsPreferences.isGeneratorActive(cg.languageType)) {

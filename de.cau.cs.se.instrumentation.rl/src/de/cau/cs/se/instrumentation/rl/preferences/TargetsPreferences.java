@@ -27,13 +27,19 @@ import org.eclipse.core.runtime.preferences.InstanceScope;
 public final class TargetsPreferences {
 
 	/** Node id for the preference store. */
-	public static final String NODE_ID = "de.cau.cs.se.instrumentation.rl";
+	public static final String PLUGIN_ID = "de.cau.cs.se.instrumentation.rl";
 	/** Constant prefix for generator activation. */
 	public static final String GENERATOR_ACTIVE = TargetsPreferences.class + ".generator.";
 	/** Constant for author name in generators. */
 	public static final String AUTHOR_NAME = TargetsPreferences.class + ".author";
 	/** Constant for version id in generators. */
 	public static final String VERSION_ID = TargetsPreferences.class + ".version";
+	/** Default author. */
+	public static final String DEFAULT_AUTHOR = "Generic Kieker";
+	/** Default version. */
+	public static final String DEFAULT_VERSION = "1.10";
+	/** Default deactivate all generators. */
+	public static final boolean DEFAULT_GENERATOR_INACTIVE = false;
 
 	/**
 	 * Dummy constructor.
@@ -41,12 +47,11 @@ public final class TargetsPreferences {
 	private TargetsPreferences() {}
 
 	public static IEclipsePreferences getPreferenceStore() {
-		System.out.println("Preference store (prefs) " + InstanceScope.INSTANCE.getNode(NODE_ID));
-		return InstanceScope.INSTANCE.getNode(NODE_ID);
+		return InstanceScope.INSTANCE.getNode(PLUGIN_ID);
 	}
 
 	public static String getAuthorName() {
-		return TargetsPreferences.getPreferenceStore().get(AUTHOR_NAME, "Generic Kieker");
+		return TargetsPreferences.getPreferenceStore().get(AUTHOR_NAME, DEFAULT_AUTHOR);
 	}
 
 	public static void setAuthorName(final String author) {
@@ -54,7 +59,7 @@ public final class TargetsPreferences {
 	}
 
 	public static String getVersionID() {
-		return TargetsPreferences.getPreferenceStore().get(VERSION_ID, "1.10");
+		return TargetsPreferences.getPreferenceStore().get(VERSION_ID, DEFAULT_VERSION);
 	}
 
 	public static void setVersionID(final String version) {
@@ -62,7 +67,7 @@ public final class TargetsPreferences {
 	}
 
 	public static boolean isGeneratorActive(final String language) {
-		return TargetsPreferences.getPreferenceStore().getBoolean(GENERATOR_ACTIVE + language, false);
+		return TargetsPreferences.getPreferenceStore().getBoolean(GENERATOR_ACTIVE + language, DEFAULT_GENERATOR_INACTIVE);
 	}
 
 	public static void setGeneratorActive(final String language, final boolean active) {

@@ -42,11 +42,12 @@ public class TargetsPreferenceInitializer extends AbstractPreferenceInitializer 
 	@Override
 	public void initializeDefaultPreferences() {
 		for (final String language : LanguageSetup.getPresentLanguages()) {
-			TargetsPreferenceInitializer.getPreferenceStore().putBoolean(TargetsPreferences.GENERATOR_ACTIVE + language, true);
+			TargetsPreferenceInitializer.getPreferenceStore().putBoolean(TargetsPreferences.GENERATOR_ACTIVE + language,
+					TargetsPreferences.DEFAULT_GENERATOR_INACTIVE);
 		}
 
-		TargetsPreferenceInitializer.getPreferenceStore().put(TargetsPreferences.AUTHOR_NAME, "Generic Kieker");
-		TargetsPreferenceInitializer.getPreferenceStore().put(TargetsPreferences.VERSION_ID, "1.10");
+		TargetsPreferenceInitializer.getPreferenceStore().put(TargetsPreferences.AUTHOR_NAME, TargetsPreferences.DEFAULT_AUTHOR);
+		TargetsPreferenceInitializer.getPreferenceStore().put(TargetsPreferences.VERSION_ID, TargetsPreferences.DEFAULT_VERSION);
 	}
 
 	/**
@@ -55,8 +56,7 @@ public class TargetsPreferenceInitializer extends AbstractPreferenceInitializer 
 	 * @return return the default scope
 	 */
 	public static IEclipsePreferences getPreferenceStore() {
-		System.out.println("Preference store (init) " + DefaultScope.INSTANCE.getNode(TargetsPreferences.NODE_ID));
-		return DefaultScope.INSTANCE.getNode(TargetsPreferences.NODE_ID);
+		return DefaultScope.INSTANCE.getNode(TargetsPreferences.PLUGIN_ID);
 	}
 
 }
