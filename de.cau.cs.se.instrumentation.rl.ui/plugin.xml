@@ -264,8 +264,8 @@
         </page>
 		<page
             category="de.cau.cs.se.instrumentation.rl.RecordLang"
-            class="de.cau.cs.se.instrumentation.rl.ui.RecordLangExecutableExtensionFactory:de.cau.cs.se.instrumentation.rl.ui.preferences.CompilerPreferencePage"
-            id="de.cau.cs.se.instrumentation.rl.RecordLang.compiler.preferencePage.target"
+            class="de.cau.cs.se.instrumentation.rl.ui.preferences.TargetsPreferencePage"
+            id="de.cau.cs.se.instrumentation.rl.ui.preferences.TargetsPreferencePage"
             name="Targets">
             <keywordReference id="de.cau.cs.se.instrumentation.rl.ui.keyword_RecordLang"/>
         </page>
@@ -285,7 +285,7 @@
         </page>
         <page
             category="de.cau.cs.se.instrumentation.rl.RecordLang"
-            class="de.cau.cs.se.instrumentation.rl.ui.RecordLangExecutableExtensionFactory:de.cau.cs.se.instrumentation.rl.ui.preferences.CompilerPreferencePage"
+            class="de.cau.cs.se.instrumentation.rl.ui.preferences.TargetsPreferencePage"
             id="de.cau.cs.se.instrumentation.rl.RecordLang.compiler.propertyPage.targets"
             name="Targets">
             <keywordReference id="de.cau.cs.se.instrumentation.rl.ui.keyword_RecordLang"/>
@@ -442,7 +442,7 @@
   <extension
         point="org.eclipse.core.runtime.preferences">
      <initializer
-           class="de.cau.cs.se.instrumentation.rl.ui.preferences.CompilerPreferenceInitializer">
+           class="de.cau.cs.se.instrumentation.rl.preferences.TargetsPreferenceInitializer">
      </initializer>
   </extension>
 

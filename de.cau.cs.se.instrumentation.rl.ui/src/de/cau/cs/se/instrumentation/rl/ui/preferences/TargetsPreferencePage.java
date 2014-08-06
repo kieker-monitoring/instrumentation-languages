@@ -36,7 +36,7 @@ import org.eclipse.ui.dialogs.ContainerSelectionDialog;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
 
 import de.cau.cs.se.instrumentation.rl.generator.LanguageSetup;
-import de.cau.cs.se.instrumentation.rl.preferences.CompilerPreferences;
+import de.cau.cs.se.instrumentation.rl.preferences.TargetsPreferences;
 import de.cau.cs.se.instrumentation.rl.ui.internal.RecordLangActivator;
 
 
@@ -44,7 +44,7 @@ import de.cau.cs.se.instrumentation.rl.ui.internal.RecordLangActivator;
  * @author Reiner Jung
  * 
  */
-public class CompilerPreferencePage extends org.eclipse.jface.preference.PreferencePage
+public class TargetsPreferencePage extends org.eclipse.jface.preference.PreferencePage
 implements org.eclipse.ui.IWorkbenchPreferencePage, org.eclipse.ui.IWorkbenchPropertyPage {
 
 	private static final String WIDGET_DATA_PROPERTY_ID = "name";
@@ -56,9 +56,10 @@ implements org.eclipse.ui.IWorkbenchPreferencePage, org.eclipse.ui.IWorkbenchPro
 	/**
 	 * Default constructor.
 	 */
-	public CompilerPreferencePage() {
+	public TargetsPreferencePage() {
 		super();
-		this.setPreferenceStore(new ScopedPreferenceStore(InstanceScope.INSTANCE, "de.cau.cs.se.instrumentation.rl"));
+		this.setPreferenceStore(new ScopedPreferenceStore(InstanceScope.INSTANCE, TargetsPreferences.NODE_ID));
+		System.out.println("Preference store (page) " + this.getPreferenceStore());
 	}
 
 	public IAdaptable getElement() {
@@ -96,11 +97,11 @@ implements org.eclipse.ui.IWorkbenchPreferencePage, org.eclipse.ui.IWorkbenchPro
 		this.langGroup.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false));
 		this.langGroup.setText("Languages");
 		final GridLayout langLayout = new GridLayout();
-		langLayout.numColumns = 3;
+		langLayout.numColumns = 1;
 		this.langGroup.setLayout(langLayout);
 
 		for (final String language : LanguageSetup.getPresentLanguages()) {
-			this.createLanguageCheck(this.langGroup, "Java", CompilerPreferences.GENERATOR_ACTIVE + language);
+			this.createLanguageCheck(this.langGroup, language, TargetsPreferences.GENERATOR_ACTIVE + language);
 		}
 
 		/* misc */
@@ -111,8 +112,8 @@ implements org.eclipse.ui.IWorkbenchPreferencePage, org.eclipse.ui.IWorkbenchPro
 		miscLayout.numColumns = 2;
 		this.miscGroup.setLayout(miscLayout);
 
-		this.createCompilerProperty(this.miscGroup, "Author", CompilerPreferences.AUTHOR_NAME);
-		this.createCompilerProperty(this.miscGroup, "Version", CompilerPreferences.VERSION_ID);
+		this.createCompilerProperty(this.miscGroup, "Author", TargetsPreferences.AUTHOR_NAME);
+		this.createCompilerProperty(this.miscGroup, "Version", TargetsPreferences.VERSION_ID);
 
 		control.pack();
 
@@ -165,20 +166,20 @@ implements org.eclipse.ui.IWorkbenchPreferencePage, org.eclipse.ui.IWorkbenchPro
 
 	private void storeValues() {
 		for (final String language : LanguageSetup.getPresentLanguages()) {
-			this.storeBooleanProperty(this.langGroup.getChildren(), CompilerPreferences.GENERATOR_ACTIVE + language);
+			this.storeBooleanProperty(this.langGroup.getChildren(), TargetsPreferences.GENERATOR_ACTIVE + language);
 		}
 
-		this.storeStringProperty(this.miscGroup.getChildren(), CompilerPreferences.AUTHOR_NAME);
-		this.storeStringProperty(this.miscGroup.getChildren(), CompilerPreferences.AUTHOR_NAME);
+		this.storeStringProperty(this.miscGroup.getChildren(), TargetsPreferences.AUTHOR_NAME);
+		this.storeStringProperty(this.miscGroup.getChildren(), TargetsPreferences.AUTHOR_NAME);
 	}
 
 	private void initializeDefaults() {
 		for (final String language : LanguageSetup.getPresentLanguages()) {
-			this.retrieveBooleanProperty(this.langGroup.getChildren(), CompilerPreferences.GENERATOR_ACTIVE + language);
+			this.retrieveBooleanProperty(this.langGroup.getChildren(), TargetsPreferences.GENERATOR_ACTIVE + language);
 		}
 
-		this.retrieveStringProperty(this.miscGroup.getChildren(), CompilerPreferences.AUTHOR_NAME);
-		this.retrieveStringProperty(this.miscGroup.getChildren(), CompilerPreferences.AUTHOR_NAME);
+		this.retrieveStringProperty(this.miscGroup.getChildren(), TargetsPreferences.AUTHOR_NAME);
+		this.retrieveStringProperty(this.miscGroup.getChildren(), TargetsPreferences.AUTHOR_NAME);
 	}
 
 	/**
@@ -260,7 +261,7 @@ implements org.eclipse.ui.IWorkbenchPreferencePage, org.eclipse.ui.IWorkbenchPro
 		public void widgetSelected(final SelectionEvent e) {
 			if (this.adaptable instanceof IJavaProject) {
 				final ContainerSelectionDialog dialog =
-						new ContainerSelectionDialog(CompilerPreferencePage.this.getShell(),
+						new ContainerSelectionDialog(TargetsPreferencePage.this.getShell(),
 								((IJavaProject) this.adaptable).getProject(), true, "find target directory.");
 				dialog.open();
 				final Object[] result = dialog.getResult();

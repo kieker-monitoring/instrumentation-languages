@@ -41,7 +41,16 @@ public class LanguageSetup {
 			for (final Class<?> generatorType : recordTypeGenerators) {
 				final AbstractRecordTypeGenerator cg = ((Class<AbstractRecordTypeGenerator>) generatorType).
 						getConstructor().newInstance();
-				presentLanguages.add(cg.getLanguageType());
+				boolean exists = false;
+				for (final String existingType : presentLanguages) {
+					if (existingType.equals(cg.getLanguageType())) {
+						exists = true;
+						break;
+					}
+				}
+				if (!exists) {
+					presentLanguages.add(cg.getLanguageType());
+				}
 			}
 		} catch (final InstantiationException e) {
 			e.printStackTrace();

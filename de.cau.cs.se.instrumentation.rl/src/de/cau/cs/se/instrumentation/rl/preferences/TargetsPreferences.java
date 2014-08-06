@@ -15,13 +15,8 @@
  ***************************************************************************/
 package de.cau.cs.se.instrumentation.rl.preferences;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.InstanceScope;
-
-import de.cau.cs.se.instrumentation.rl.generator.LanguageSetup;
 
 /**
  * Utility class for preference constants.
@@ -29,54 +24,49 @@ import de.cau.cs.se.instrumentation.rl.generator.LanguageSetup;
  * @author Reiner Jung
  * 
  */
-public final class CompilerPreferences {
+public final class TargetsPreferences {
 
+	/** Node id for the preference store. */
+	public static final String NODE_ID = "de.cau.cs.se.instrumentation.rl";
 	/** Constant prefix for generator activation. */
-	public static final String GENERATOR_ACTIVE = CompilerPreferences.class + ".generator.";
+	public static final String GENERATOR_ACTIVE = TargetsPreferences.class + ".generator.";
 	/** Constant for author name in generators. */
-	public static final String AUTHOR_NAME = CompilerPreferences.class + ".author";
+	public static final String AUTHOR_NAME = TargetsPreferences.class + ".author";
 	/** Constant for version id in generators. */
-	public static final String VERSION_ID = CompilerPreferences.class + ".version";
+	public static final String VERSION_ID = TargetsPreferences.class + ".version";
 
 	/**
 	 * Dummy constructor.
 	 */
-	private CompilerPreferences() {}
+	private TargetsPreferences() {}
 
 	public static IEclipsePreferences getPreferenceStore() {
-		return InstanceScope.INSTANCE.getNode("de.cau.cs.se.instrumentation.rl");
-	}
-
-	public static Map<String, Boolean> getGeneratorActivationProperty() {
-		final Map<String, Boolean> map = new HashMap<String, Boolean>();
-		for (final String language : LanguageSetup.getPresentLanguages()) {
-			map.put(language, CompilerPreferences.getPreferenceStore().getBoolean(GENERATOR_ACTIVE + language, false));
-		}
-		return map;
+		System.out.println("Preference store (prefs) " + InstanceScope.INSTANCE.getNode(NODE_ID));
+		return InstanceScope.INSTANCE.getNode(NODE_ID);
 	}
 
 	public static String getAuthorName() {
-		return CompilerPreferences.getPreferenceStore().get(AUTHOR_NAME, "Generic Kieker");
+		return TargetsPreferences.getPreferenceStore().get(AUTHOR_NAME, "Generic Kieker");
 	}
 
 	public static void setAuthorName(final String author) {
-		CompilerPreferences.getPreferenceStore().put(AUTHOR_NAME, author);
+		TargetsPreferences.getPreferenceStore().put(AUTHOR_NAME, author);
 	}
 
 	public static String getVersionID() {
-		return CompilerPreferences.getPreferenceStore().get(VERSION_ID, "1.10");
+		return TargetsPreferences.getPreferenceStore().get(VERSION_ID, "1.10");
 	}
 
 	public static void setVersionID(final String version) {
-		CompilerPreferences.getPreferenceStore().put(VERSION_ID, version);
+		TargetsPreferences.getPreferenceStore().put(VERSION_ID, version);
 	}
 
 	public static boolean isGeneratorActive(final String language) {
-		return CompilerPreferences.getPreferenceStore().getBoolean(GENERATOR_ACTIVE + language, false);
+		return TargetsPreferences.getPreferenceStore().getBoolean(GENERATOR_ACTIVE + language, false);
 	}
 
 	public static void setGeneratorActive(final String language, final boolean active) {
-		CompilerPreferences.getPreferenceStore().putBoolean(GENERATOR_ACTIVE + language, active);
+		TargetsPreferences.getPreferenceStore().putBoolean(GENERATOR_ACTIVE + language, active);
 	}
 
 }

@@ -11,9 +11,9 @@
 	
   </extension>
   <extension
-        point="org.eclipse.core.runtime.preferences">
+        point="org.eclipse.equinox.preferences.preferences">
      <initializer
-           class="de.cau.cs.se.instrumentation.rl.preferences.CompilerPreferenceInitializer">
+           class="de.cau.cs.se.instrumentation.rl.preferences.TargetsPreferenceInitializer">
      </initializer>
   </extension>
 

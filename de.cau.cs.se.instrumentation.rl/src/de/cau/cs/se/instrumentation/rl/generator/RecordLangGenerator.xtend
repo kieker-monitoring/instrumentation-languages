@@ -20,7 +20,7 @@ import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
 import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType
-import de.cau.cs.se.instrumentation.rl.preferences.CompilerPreferences
+import de.cau.cs.se.instrumentation.rl.preferences.TargetsPreferences
 
 /**
  * Generates one single files per record for java, c, and perl. 
@@ -31,12 +31,12 @@ class RecordLangGenerator implements IGenerator {
 		if (resource.URI.platformResource) {			
 			// list all generators to support RecordType
 
-			val version = CompilerPreferences.getVersionID()
-			val author = CompilerPreferences.getAuthorName()
+			val version = TargetsPreferences.getVersionID()
+			val author = TargetsPreferences.getAuthorName()
 											
 			for (Class<?> generator : LanguageSetup.recordTypeGenerators) {
 				val cg = generator.getConstructor().newInstance() as AbstractRecordTypeGenerator
-				if (CompilerPreferences.isGeneratorActive(cg.languageType)) {
+				if (TargetsPreferences.isGeneratorActive(cg.languageType)) {
 					resource.allContents.filter(typeof(RecordType)).forEach[type | 
 						fsa.generateFile(cg.fileName(type),
 							cg.languageType, 
@@ -48,7 +48,7 @@ class RecordLangGenerator implements IGenerator {
 			
 			for (Class<?> generator : LanguageSetup.partialRecordTypeGenerators) {
 				val cg = generator.getConstructor().newInstance() as AbstractPartialRecordTypeGenerator
-				if (CompilerPreferences.isGeneratorActive(cg.languageType)) {
+				if (TargetsPreferences.isGeneratorActive(cg.languageType)) {
 					resource.allContents.filter(typeof(PartialRecordType)).forEach[type | 
 						fsa.generateFile(cg.fileName(type),
 							cg.languageType,

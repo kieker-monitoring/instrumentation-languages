@@ -19,7 +19,7 @@ import com.google.common.collect.Iterators;
 import de.cau.cs.se.instrumentation.rl.generator.AbstractPartialRecordTypeGenerator;
 import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator;
 import de.cau.cs.se.instrumentation.rl.generator.LanguageSetup;
-import de.cau.cs.se.instrumentation.rl.preferences.CompilerPreferences;
+import de.cau.cs.se.instrumentation.rl.preferences.TargetsPreferences;
 import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
 import java.lang.reflect.Constructor;
@@ -44,15 +44,15 @@ public class RecordLangGenerator implements IGenerator {
       URI _uRI = resource.getURI();
       boolean _isPlatformResource = _uRI.isPlatformResource();
       if (_isPlatformResource) {
-        final String version = CompilerPreferences.getVersionID();
-        final String author = CompilerPreferences.getAuthorName();
+        final String version = TargetsPreferences.getVersionID();
+        final String author = TargetsPreferences.getAuthorName();
         for (final Class<?> generator : LanguageSetup.recordTypeGenerators) {
           {
             Constructor<? extends Object> _constructor = generator.getConstructor();
             Object _newInstance = _constructor.newInstance();
             final AbstractRecordTypeGenerator cg = ((AbstractRecordTypeGenerator) _newInstance);
             String _languageType = cg.getLanguageType();
-            boolean _isGeneratorActive = CompilerPreferences.isGeneratorActive(_languageType);
+            boolean _isGeneratorActive = TargetsPreferences.isGeneratorActive(_languageType);
             if (_isGeneratorActive) {
               TreeIterator<EObject> _allContents = resource.getAllContents();
               Iterator<RecordType> _filter = Iterators.<RecordType>filter(_allContents, RecordType.class);
@@ -74,7 +74,7 @@ public class RecordLangGenerator implements IGenerator {
             Object _newInstance = _constructor.newInstance();
             final AbstractPartialRecordTypeGenerator cg = ((AbstractPartialRecordTypeGenerator) _newInstance);
             String _languageType = cg.getLanguageType();
-            boolean _isGeneratorActive = CompilerPreferences.isGeneratorActive(_languageType);
+            boolean _isGeneratorActive = TargetsPreferences.isGeneratorActive(_languageType);
             if (_isGeneratorActive) {
               TreeIterator<EObject> _allContents = resource.getAllContents();
               Iterator<PartialRecordType> _filter = Iterators.<PartialRecordType>filter(_allContents, PartialRecordType.class);

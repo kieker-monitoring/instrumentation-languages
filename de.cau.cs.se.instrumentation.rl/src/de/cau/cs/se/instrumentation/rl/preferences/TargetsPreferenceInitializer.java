@@ -25,12 +25,12 @@ import de.cau.cs.se.instrumentation.rl.generator.LanguageSetup;
  * @author Reiner Jung
  * 
  */
-public class CompilerPreferenceInitializer extends AbstractPreferenceInitializer {
+public class TargetsPreferenceInitializer extends AbstractPreferenceInitializer {
 
 	/**
 	 * Dummy constructor.
 	 */
-	public CompilerPreferenceInitializer() {
+	public TargetsPreferenceInitializer() {
 		super();
 	}
 
@@ -42,11 +42,11 @@ public class CompilerPreferenceInitializer extends AbstractPreferenceInitializer
 	@Override
 	public void initializeDefaultPreferences() {
 		for (final String language : LanguageSetup.getPresentLanguages()) {
-			CompilerPreferenceInitializer.getPreferenceStore().putBoolean(CompilerPreferences.GENERATOR_ACTIVE + language, true);
+			TargetsPreferenceInitializer.getPreferenceStore().putBoolean(TargetsPreferences.GENERATOR_ACTIVE + language, true);
 		}
 
-		CompilerPreferenceInitializer.getPreferenceStore().put(CompilerPreferences.AUTHOR_NAME, "Generic Kieker");
-		CompilerPreferenceInitializer.getPreferenceStore().put(CompilerPreferences.VERSION_ID, "1.10");
+		TargetsPreferenceInitializer.getPreferenceStore().put(TargetsPreferences.AUTHOR_NAME, "Generic Kieker");
+		TargetsPreferenceInitializer.getPreferenceStore().put(TargetsPreferences.VERSION_ID, "1.10");
 	}
 
 	/**
@@ -55,7 +55,8 @@ public class CompilerPreferenceInitializer extends AbstractPreferenceInitializer
 	 * @return return the default scope
 	 */
 	public static IEclipsePreferences getPreferenceStore() {
-		return DefaultScope.INSTANCE.getNode("de.cau.cs.se.instrumentation.rl");
+		System.out.println("Preference store (init) " + DefaultScope.INSTANCE.getNode(TargetsPreferences.NODE_ID));
+		return DefaultScope.INSTANCE.getNode(TargetsPreferences.NODE_ID);
 	}
 
 }
