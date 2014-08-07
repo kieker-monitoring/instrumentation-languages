@@ -29,6 +29,10 @@ import de.cau.cs.se.instrumentation.rl.preferences.TargetsPreferences;
 
 
 /**
+ * Implements a simple preference page for IRL.
+ * 
+ * Created after: http://xtextcasts.org/episodes/21-preference-page
+ * 
  * @author Reiner Jung
  * 
  */

@@ -434,5 +434,19 @@
            class="de.cau.cs.se.instrumentation.rl.preferences.TargetsPreferenceInitializer">
      </initializer>
   </extension>
+  <extension
+        point="org.eclipse.ui.newWizards">
+     <category
+           id="de.cau.cs.se.instrumentation.rl.ui"
+           name="IRL Wizards">
+     </category>
+     <wizard
+           category="de.cau.cs.se.instrumentation.rl.ui"
+           class="de.cau.cs.se.instrumentation.rl.ui.wizards.RecordLangNewWizard"
+           icon="icons/sample.gif"
+           id="de.cau.cs.se.instrumentation.rl.ui.wizards.RecordLangNewWizard"
+           name="IRL File">
+     </wizard>
+  </extension>
 
 </plugin>
