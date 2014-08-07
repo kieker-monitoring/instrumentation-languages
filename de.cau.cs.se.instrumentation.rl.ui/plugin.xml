@@ -443,7 +443,7 @@
      <wizard
            category="de.cau.cs.se.instrumentation.rl.ui"
            class="de.cau.cs.se.instrumentation.rl.ui.wizards.RecordLangNewWizard"
-           icon="icons/sample.gif"
+           icon="icons/kieker-irl-wizard.png"
            id="de.cau.cs.se.instrumentation.rl.ui.wizards.RecordLangNewWizard"
            name="IRL File">
      </wizard>
