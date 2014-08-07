@@ -34,8 +34,8 @@ import de.cau.cs.se.instrumentation.rl.RecordLangStandaloneSetup;
 import de.cau.cs.se.instrumentation.rl.generator.LanguageSetup;
 import de.cau.cs.se.instrumentation.rl.generator.RecordLangGenerator;
 import de.cau.cs.se.instrumentation.rl.ouput.config.RecordLangOutputConfigurationProvider;
-import de.cau.cs.se.instrumentation.rl.preferences.CompilerPreferenceInitializer;
-import de.cau.cs.se.instrumentation.rl.preferences.CompilerPreferences;
+import de.cau.cs.se.instrumentation.rl.preferences.TargetsPreferenceInitializer;
+import de.cau.cs.se.instrumentation.rl.preferences.TargetsPreferences;
 
 import kieker.common.logging.Log;
 import kieker.common.logging.LogFactory;
@@ -119,15 +119,15 @@ public class IRLParser {
 				this.projectHostPath = platformUri + File.separator + realProjectPathName;
 
 				// setup generator preferences
-				new CompilerPreferenceInitializer().initializeDefaultPreferences();
-				CompilerPreferences.setAuthorName(author);
-				CompilerPreferences.setVersionID(version);
+				new TargetsPreferenceInitializer().initializeDefaultPreferences();
+				TargetsPreferences.setAuthorName(author);
+				TargetsPreferences.setVersionID(version);
 				// setup language activation
 				for (final String language : LanguageSetup.getPresentLanguages()) {
-					CompilerPreferences.setGeneratorActive(language, false);
+					TargetsPreferences.setGeneratorActive(language, false);
 					for (final String selected : selectedLanguageTypes) {
 						if (selected.equals(language)) {
-							CompilerPreferences.setGeneratorActive(language, true);
+							TargetsPreferences.setGeneratorActive(language, true);
 						}
 					}
 				}
