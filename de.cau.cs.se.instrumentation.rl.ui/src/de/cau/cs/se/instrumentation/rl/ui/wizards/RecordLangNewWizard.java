@@ -78,7 +78,6 @@ public class RecordLangNewWizard extends Wizard implements INewWizard {
 	public boolean performFinish() {
 		final IRunnableWithProgress op = new IRunnableWithProgress() {
 
-			@Override
 			public void run(final IProgressMonitor monitor) throws InvocationTargetException {
 				try {
 					RecordLangNewWizard.this.doFinish(monitor);
@@ -118,7 +117,6 @@ public class RecordLangNewWizard extends Wizard implements INewWizard {
 		monitor.worked(1);
 		monitor.setTaskName("Opening file for editing...");
 		this.getShell().getDisplay().asyncExec(new Runnable() {
-			@Override
 			public void run() {
 				final IWorkbenchPage localPage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
 				try {
@@ -159,7 +157,6 @@ public class RecordLangNewWizard extends Wizard implements INewWizard {
 	 * @param workbench
 	 * @param selection
 	 */
-	@Override
 	public void init(final IWorkbench workbench, final IStructuredSelection selection) { // NOCS
 		this.selection = selection;
 	}

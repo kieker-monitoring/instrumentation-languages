@@ -264,7 +264,6 @@ public class RecordLangNewWizardPage extends WizardPage {
 	private IPackageFragmentRoot chooseSourceFolder() {
 		final ISelectionStatusValidator validator = new ISelectionStatusValidator() {
 
-			@Override
 			public IStatus validate(final Object[] selection) { // NOCS
 				if (selection.length == 1) {
 					if (this.isSelectedValid(selection[0])) {
