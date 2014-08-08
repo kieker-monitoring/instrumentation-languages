@@ -24,6 +24,7 @@ public class LanguageSetup {
 		de.cau.cs.se.instrumentation.rl.generator.c.RecordTypeGenerator.class,
 		de.cau.cs.se.instrumentation.rl.generator.cheader.RecordTypeGenerator.class,
 		de.cau.cs.se.instrumentation.rl.generator.java.RecordTypeGenerator.class,
+		de.cau.cs.se.instrumentation.rl.generator.java.junit.RecordTypeGenerator.class,
 		de.cau.cs.se.instrumentation.rl.generator.perl.RecordTypeGenerator.class
 	};
 

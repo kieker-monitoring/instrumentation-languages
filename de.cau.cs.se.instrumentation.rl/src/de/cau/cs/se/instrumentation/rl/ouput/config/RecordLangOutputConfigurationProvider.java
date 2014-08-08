@@ -26,6 +26,7 @@ public class RecordLangOutputConfigurationProvider implements IOutputConfigurati
 		final Set<OutputConfiguration> configurations = new HashSet<OutputConfiguration>();
 
 		configurations.add(this.createOutputConfiguration("java", "Java Output Folder", "./src-gen/java"));
+		configurations.add(this.createOutputConfiguration("junit", "Junit Output Folder", "./test-gen/common"));
 		configurations.add(this.createOutputConfiguration("c", "C Output Folder", "./src-gen/c"));
 		configurations.add(this.createOutputConfiguration("perl", "Perl Output Folder", "./src-gen/perl"));
 
