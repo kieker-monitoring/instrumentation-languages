@@ -1,9 +1,0 @@
-package kieker.common.record.flow.trace.concurrency
-
-import kieker.common.record.flow.trace.*
-
-entity JoinEvent extends AbstractTraceEvent {
-	long joinedTraceId = 0
-}
-
-entity SplitEvent extends AbstractTraceEvent
