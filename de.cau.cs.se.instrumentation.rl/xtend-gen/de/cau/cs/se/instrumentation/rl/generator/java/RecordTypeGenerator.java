@@ -1581,18 +1581,55 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    * @returns one assignment
    */
   public CharSequence createPropertyAssignment(final Property property) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("this.");
-    String _name = property.getName();
-    String _protectKeywords = this.protectKeywords(_name);
-    _builder.append(_protectKeywords, "");
-    _builder.append(" = ");
-    String _name_1 = property.getName();
-    String _protectKeywords_1 = this.protectKeywords(_name_1);
-    _builder.append(_protectKeywords_1, "");
-    _builder.append(";");
-    _builder.newLineIfNotEmpty();
-    return _builder;
+    CharSequence _xifexpression = null;
+    Classifier _findType = PropertyEvaluation.findType(property);
+    EClassifier _class_ = _findType.getClass_();
+    String _name = _class_.getName();
+    boolean _equals = "string".equals(_name);
+    if (_equals) {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("this.");
+      String _name_1 = property.getName();
+      String _protectKeywords = this.protectKeywords(_name_1);
+      _builder.append(_protectKeywords, "");
+      _builder.append(" = ");
+      String _name_2 = property.getName();
+      String _protectKeywords_1 = this.protectKeywords(_name_2);
+      _builder.append(_protectKeywords_1, "");
+      _builder.append(" == null?");
+      CharSequence _xifexpression_1 = null;
+      Literal _value = property.getValue();
+      boolean _notEquals = (!Objects.equal(_value, null));
+      if (_notEquals) {
+        Literal _value_1 = property.getValue();
+        CharSequence _createValue = this.createValue(_value_1);
+        _xifexpression_1 = _createValue;
+      } else {
+        _xifexpression_1 = "\"\"";
+      }
+      _builder.append(_xifexpression_1, "");
+      _builder.append(":");
+      String _name_3 = property.getName();
+      String _protectKeywords_2 = this.protectKeywords(_name_3);
+      _builder.append(_protectKeywords_2, "");
+      _builder.append(";");
+      _builder.newLineIfNotEmpty();
+      _xifexpression = _builder;
+    } else {
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("this.");
+      String _name_4 = property.getName();
+      String _protectKeywords_3 = this.protectKeywords(_name_4);
+      _builder_1.append(_protectKeywords_3, "");
+      _builder_1.append(" = ");
+      String _name_5 = property.getName();
+      String _protectKeywords_4 = this.protectKeywords(_name_5);
+      _builder_1.append(_protectKeywords_4, "");
+      _builder_1.append(";");
+      _builder_1.newLineIfNotEmpty();
+      _xifexpression = _builder_1;
+    }
+    return _xifexpression;
   }
   
   /**
@@ -2200,48 +2237,6 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     return _xifexpression;
   }
   
-  /**
-   * Resolve the primitive type for the given literal.
-   */
-  public String getRequiredType(final Literal literal) {
-    String _switchResult = null;
-    EObject _eContainer = literal.eContainer();
-    final EObject _switchValue = _eContainer;
-    boolean _matched = false;
-    if (!_matched) {
-      if (_switchValue instanceof Constant) {
-        final Constant _constant = (Constant)_switchValue;
-        _matched=true;
-        EObject _eContainer_1 = literal.eContainer();
-        Classifier _type = ((Constant) _eContainer_1).getType();
-        EClassifier _class_ = _type.getClass_();
-        String _name = _class_.getName();
-        _switchResult = _name;
-      }
-    }
-    if (!_matched) {
-      if (_switchValue instanceof Property) {
-        final Property _property = (Property)_switchValue;
-        _matched=true;
-        EObject _eContainer_1 = literal.eContainer();
-        Classifier _type = ((Property) _eContainer_1).getType();
-        EClassifier _class_ = _type.getClass_();
-        String _name = _class_.getName();
-        _switchResult = _name;
-      }
-    }
-    if (!_matched) {
-      if (_switchValue instanceof Literal) {
-        final Literal _literal = (Literal)_switchValue;
-        _matched=true;
-        EObject _eContainer_1 = literal.eContainer();
-        String _requiredType = this.getRequiredType(((Literal) _eContainer_1));
-        _switchResult = _requiredType;
-      }
-    }
-    return _switchResult;
-  }
-  
   protected CharSequence _createValue(final IntLiteral literal) {
     StringConcatenation _builder = new StringConcatenation();
     int _value = literal.getValue();
@@ -2322,6 +2317,48 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     String _name = _class.getName();
     String _plus = ("ERROR " + _name);
     return _plus;
+  }
+  
+  /**
+   * Resolve the primitive type for the given literal.
+   */
+  public String getRequiredType(final Literal literal) {
+    String _switchResult = null;
+    EObject _eContainer = literal.eContainer();
+    final EObject _switchValue = _eContainer;
+    boolean _matched = false;
+    if (!_matched) {
+      if (_switchValue instanceof Constant) {
+        final Constant _constant = (Constant)_switchValue;
+        _matched=true;
+        EObject _eContainer_1 = literal.eContainer();
+        Classifier _type = ((Constant) _eContainer_1).getType();
+        EClassifier _class_ = _type.getClass_();
+        String _name = _class_.getName();
+        _switchResult = _name;
+      }
+    }
+    if (!_matched) {
+      if (_switchValue instanceof Property) {
+        final Property _property = (Property)_switchValue;
+        _matched=true;
+        EObject _eContainer_1 = literal.eContainer();
+        Classifier _type = ((Property) _eContainer_1).getType();
+        EClassifier _class_ = _type.getClass_();
+        String _name = _class_.getName();
+        _switchResult = _name;
+      }
+    }
+    if (!_matched) {
+      if (_switchValue instanceof Literal) {
+        final Literal _literal = (Literal)_switchValue;
+        _matched=true;
+        EObject _eContainer_1 = literal.eContainer();
+        String _requiredType = this.getRequiredType(((Literal) _eContainer_1));
+        _switchResult = _requiredType;
+      }
+    }
+    return _switchResult;
   }
   
   public CharSequence createValue(final Literal literal) {

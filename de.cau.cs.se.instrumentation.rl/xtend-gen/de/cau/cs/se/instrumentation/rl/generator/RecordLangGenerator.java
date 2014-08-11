@@ -15,6 +15,7 @@
  */
 package de.cau.cs.se.instrumentation.rl.generator;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.Iterators;
 import de.cau.cs.se.instrumentation.rl.generator.AbstractPartialRecordTypeGenerator;
 import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator;
@@ -58,10 +59,13 @@ public class RecordLangGenerator implements IGenerator {
               Iterator<RecordType> _filter = Iterators.<RecordType>filter(_allContents, RecordType.class);
               final Procedure1<RecordType> _function = new Procedure1<RecordType>() {
                 public void apply(final RecordType type) {
-                  String _fileName = cg.fileName(type);
-                  String _languageType = cg.getLanguageType();
-                  CharSequence _createContent = cg.createContent(type, author, version);
-                  fsa.generateFile(_fileName, _languageType, _createContent);
+                  final CharSequence content = cg.createContent(type, author, version);
+                  boolean _notEquals = (!Objects.equal(content, null));
+                  if (_notEquals) {
+                    String _fileName = cg.fileName(type);
+                    String _languageType = cg.getLanguageType();
+                    fsa.generateFile(_fileName, _languageType, content);
+                  }
                 }
               };
               IteratorExtensions.<RecordType>forEach(_filter, _function);
@@ -80,10 +84,13 @@ public class RecordLangGenerator implements IGenerator {
               Iterator<PartialRecordType> _filter = Iterators.<PartialRecordType>filter(_allContents, PartialRecordType.class);
               final Procedure1<PartialRecordType> _function = new Procedure1<PartialRecordType>() {
                 public void apply(final PartialRecordType type) {
-                  String _fileName = cg.fileName(type);
-                  String _languageType = cg.getLanguageType();
-                  CharSequence _createContent = cg.createContent(type, author, version);
-                  fsa.generateFile(_fileName, _languageType, _createContent);
+                  final CharSequence content = cg.createContent(type, author, version);
+                  boolean _notEquals = (!Objects.equal(content, null));
+                  if (_notEquals) {
+                    String _fileName = cg.fileName(type);
+                    String _languageType = cg.getLanguageType();
+                    fsa.generateFile(_fileName, _languageType, content);
+                  }
                 }
               };
               IteratorExtensions.<PartialRecordType>forEach(_filter, _function);
