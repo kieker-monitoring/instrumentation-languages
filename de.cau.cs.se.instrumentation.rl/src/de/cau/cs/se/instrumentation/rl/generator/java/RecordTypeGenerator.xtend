@@ -267,16 +267,14 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	/**
 	 * Create for loops for the deserialization of array data.
 	 */
-	def CharSequence createForLoopForDeserialization(EList<ArraySize> sizes, int depth, Property property) {
-		'''
-			for (int i«depth»=0;i«depth»<«if (sizes.get(depth).size > 0) sizes.get(depth).size else 
-				'_' + property.name + '_size' + depth»;i«depth»++)
-				«if (sizes.size-1 > depth)
-					createForLoopForDeserialization(sizes,depth+1,property)
-				else
-					createValueAssignmentForDeserialization(sizes,property)»
-		'''
-	}
+	def CharSequence createForLoopForDeserialization(EList<ArraySize> sizes, int depth, Property property) '''
+		for (int i«depth»=0;i«depth»<«if (sizes.get(depth).size > 0) sizes.get(depth).size else 
+			'_' + property.name + '_size' + depth»;i«depth»++)
+			«if (sizes.size-1 > depth)
+				createForLoopForDeserialization(sizes,depth+1,property)
+			else
+				createValueAssignmentForDeserialization(sizes,property)»
+	'''
 	
 	/**
 	 * Assignment for a primitive value
@@ -477,8 +475,14 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * 
 	 * @returns one assignment
 	 */
-	def createPropertyAssignment(Property property) '''this.«property.name.protectKeywords» = «property.name.protectKeywords»;
-	'''
+	def createPropertyAssignment(Property property) {
+		if ('string'.equals(PropertyEvaluation::findType(property).class_.name)) { // guarantee initialization is always not null
+			'''this.«property.name.protectKeywords» = «property.name.protectKeywords» == null?«if (property.value != null) property.value.createValue else '""'»:«property.name.protectKeywords»;
+			'''
+		} else
+			'''this.«property.name.protectKeywords» = «property.name.protectKeywords»;
+			'''
+	}
 	
 	/**
 	 * Create one entry for the constructor parameter sequence.
@@ -771,6 +775,15 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 			'''"«literal.value»"'''
 		else
 			'\'' + literal.value + '\''
+	}	
+	dispatch def CharSequence createValue(IntLiteral literal) '''«literal.value»«if (literal.getRequiredType.equals('long')) 'L'»'''
+	dispatch def CharSequence createValue(FloatLiteral literal) '''«literal.value»«if (literal.getRequiredType.equals('float')) 'f'»'''
+	dispatch def CharSequence createValue(BooleanLiteral literal) '''«if (literal.value) 'true' else 'false'»'''
+	dispatch def CharSequence createValue(ConstantLiteral literal) '''«literal.value.value.createValue»'''
+	dispatch def CharSequence createValue(ArrayLiteral literal) '''{ «literal.literals.map[element | element.createValue].join(if (literal.literals.get(0) instanceof ArrayLiteral) ",\n" else ", ")» }'''
+	
+	dispatch def CharSequence createValue(Literal literal) {
+		'ERROR ' + literal.class.name
 	}
 	
 	/**
@@ -782,15 +795,5 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 			Property : (literal.eContainer as Property).type.class_.name
 			Literal : (literal.eContainer as Literal).getRequiredType
 		}
-	}
-	
-	dispatch def CharSequence createValue(IntLiteral literal) '''«literal.value»«if (literal.getRequiredType.equals('long')) 'L'»'''
-	dispatch def CharSequence createValue(FloatLiteral literal) '''«literal.value»«if (literal.getRequiredType.equals('float')) 'f'»'''
-	dispatch def CharSequence createValue(BooleanLiteral literal) '''«if (literal.value) 'true' else 'false'»'''
-	dispatch def CharSequence createValue(ConstantLiteral literal) '''«literal.value.value.createValue»'''
-	dispatch def CharSequence createValue(ArrayLiteral literal) '''{ «literal.literals.map[element | element.createValue].join(if (literal.literals.get(0) instanceof ArrayLiteral) ",\n" else ", ")» }'''
-	
-	dispatch def CharSequence createValue(Literal literal) {
-		'ERROR ' + literal.class.name
 	}
 }

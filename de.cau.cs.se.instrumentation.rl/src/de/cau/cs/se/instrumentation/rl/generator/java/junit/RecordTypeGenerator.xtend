@@ -12,10 +12,13 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Property
 import java.util.Collection
 import java.util.List
 import java.util.ArrayList
+import de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral
 
 class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	
 	override createContent(RecordType type, String author, String version) {
+		if (type.abstract)
+			return null
 		val allDataProperties = PropertyEvaluation::collectAllDataProperties(type)
 		'''
 		/***************************************************************************
@@ -57,9 +60,9 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		 * 
 		 * @since «version»
 		 */
-		public class Test«type.name» extends AbstractKiekerTest {
+		public class TestGenerated«type.name» extends AbstractKiekerTest {
 		
-			public Test«type.name»() {
+			public TestGenerated«type.name»() {
 				// empty default constructor
 			}
 		
@@ -77,9 +80,15 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 					
 					Object[] values = record.toArray();
 					
+					Assert.assertNotNull("Record array serialization failed. No values array returned.", values);
+					Assert.assertEquals("Record array size does not match expected number of properties «allDataProperties.size».", «allDataProperties.size», values.length);
+					
+					// check all object values exist
+					«allDataProperties.createAllValueExistAssertions»
+					
 					// check all types
 					«allDataProperties.createAllTypeAssertions»
-					
+										
 					// check all object values 
 					«allDataProperties.createAllValueAssertions»
 				}
@@ -112,8 +121,20 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 					«allDataProperties.createAllGetterValueAssertions(type)»
 				}
 			}
+		}
 		'''
 	}
+	
+	def createAllValueExistAssertions(Collection<Property> properties) {
+		val List<CharSequence> result = new ArrayList<CharSequence>()
+		properties.forEach[property, index | result.add(property.createValueExistAssertion(index))]
+		
+		return result.join
+	}
+	
+	def CharSequence createValueExistAssertion(Property property, Integer index) '''
+		Assert.assertNotNull("Array value [«index»] of type «property.getObjectType» must be not null.", values[«index»]); 
+	'''
 	
 	/**
 	 * This routine is ugly.
@@ -126,14 +147,33 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		return result.join
 	}
 	
-	def createValueAssertion(Property property, Integer index) {
-		'''
+	def createValueAssertion(Property property, Integer index) '''
+		Assert.assertEquals("Array value [«index»] " + values[«index»] + " does not match the desired value " + «property.createPropertyValueSet»,
 			«IF property.type.class_.name == 'float' || property.type.class_.name == 'double'»
-				Assert.assertEquals("Value «index» in array does not match the desired value.", «createPropertyValueSet(property)», («property.getObjectType»)values[«index»], 0.0000001);
+				«createPropertyValueSet(property)», «property.getPrimitiveType» («property.getObjectType»)values[«index»], 0.0000001
+			«ELSEIF property.type.class_.name == 'string'»
+				«property.createPropertyValueSet» == null?"«property.createConstantValue»":«property.createPropertyValueSet», values[«index»]
 			«ELSE»
-				Assert.assertEquals("Value «index» in array does not match the desired value.", «createPropertyValueSet(property)», («property.getObjectType»)values[«index»]);
-			«ENDIF»
-		'''
+				«property.createPropertyValueSet», «property.getPrimitiveType» («property.getObjectType»)values[«index»]
+		«ENDIF»);
+	'''
+	
+	/**
+	 * Create constant value for string.
+	 */
+	def createConstantValue(Property property) {
+		if (property.value != null)
+			return (property.value as StringLiteral).value
+		else
+			return ""
+	}
+	
+	def getPrimitiveType(Property property) {
+		if ('string'.equals(property.type.class_.name)) {
+			return ""
+		} else {
+			return '(' + property.type.class_.name + ')'			
+		}
 	}
 	
 	/**
@@ -144,10 +184,14 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 */
 	def createAllGetterValueAssertions(Collection<Property> properties, RecordType type) '''
 		«FOR property : properties»
-			«IF property.type.class_.name == 'float' || property.type.class_.name == 'double'»
-				Assert.assertEquals("«type.name».«property.name» values are not equal.", «createPropertyValueSet(property)», record.get«property.name.toFirstUpper»(), 0.0000001);
+			Assert.assertEquals("«type.name».«property.name» values are not equal.", «IF property.type.class_.name == 'float' || property.type.class_.name == 'double'»
+				«property.createPropertyValueSet», record.get«property.name.toFirstUpper»(), 0.0000001);
+			«ELSEIF property.type.class_.name == 'boolean'»
+				«property.createPropertyValueSet», record.is«property.name.toFirstUpper»());
+			«ELSEIF property.type.class_.name == 'string'»
+				«property.createPropertyValueSet» == null?"«property.createConstantValue»":«property.createPropertyValueSet», record.get«property.name.toFirstUpper»());
 			«ELSE»
-				Assert.assertEquals("«type.name».«property.name» values are not equal.", «createPropertyValueSet(property)», record.get«property.name.toFirstUpper»());
+				«property.createPropertyValueSet», record.get«property.name.toFirstUpper»());
 			«ENDIF»
 		«ENDFOR»
 	'''
@@ -163,9 +207,9 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		return result.join
 	}
 	
-	def createTypeAssertion(Property property, Integer index) {
-		'''Assert.assertTrue("Type of Value «index» in array does not match the desired type.", values[«index»] instanceof «property.getObjectType»);'''
-	}
+	def createTypeAssertion(Property property, Integer index) '''
+		Assert.assertTrue("Type of array value [«index»] " + values[«index»].getClass().getCanonicalName() + " does not match the desired type «property.getObjectType»", values[«index»] instanceof «property.getObjectType»);
+	'''
 	
 	def getGetObjectType(Property property) {
 		switch (property.type.class_.name) {
@@ -202,7 +246,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	
 	override directoryName(Type type) '''«(type.eContainer as Model).name.createTestPackageName.replace('.',File::separator)»'''
 
-	override fileName(Type type) '''«type.directoryName»«File::separator»Test«type.name».java'''
+	override fileName(Type type) '''«type.directoryName»«File::separator»TestGenerated«type.name».java'''
 	
 	/**
 	 * Determine the right Java string for a given system type.
