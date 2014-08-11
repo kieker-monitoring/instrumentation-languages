@@ -222,35 +222,38 @@ public class ComputeUID {
 				}
 			}
 
+			// TODO: this requires a rewrite
+			// Kieker API methods must be added here too.
 			final EList<Property> methods = type.getProperties();
-			final MemberSignature[] methSigs = new MemberSignature[methods.size()];
+
+			final Property[] methodsArray = methods.toArray(new Property[methods.size()]);
 			for (int i = 0; i < methods.size(); i++) {
-				methSigs[i] = new MemberSignature(methods.get(i));
+				methodsArray[i] = methods.get(i);
 			}
-			Arrays.sort(methSigs, new Comparator<MemberSignature>() {
-				public int compare(final MemberSignature o1, final MemberSignature o2) {
-					int comp = o1.name.compareTo(o2.name);
+			Arrays.sort(methodsArray, new Comparator<Property>() {
+				public int compare(final Property o1, final Property o2) {
+					int comp = o1.getName().compareTo(o2.getName());
 					if (comp == 0) {
-						comp = o1.signature.compareTo(o2.signature);
+						comp = ComputeUID.getClassSignature(o1.getType()).
+								compareTo(ComputeUID.getClassSignature(o2.getType()));
 					}
 					return comp;
 				}
 			});
 
 			// TODO this produces only info on getters of properties and ignores other methods.
-			for (final MemberSignature sig : methSigs) {
-				final Property property = (Property) sig.member;
+			for (final Property property : methodsArray) {
 				final int mods = Modifier.PUBLIC | Modifier.FINAL;
 				// supported modifiers
 				// Modifier.PUBLIC | Modifier.PRIVATE | Modifier.PROTECTED |
 				// Modifier.STATIC | Modifier.FINAL |
 				// Modifier.SYNCHRONIZED | Modifier.NATIVE |
 				// Modifier.ABSTRACT | Modifier.STRICT
-				if ((mods & Modifier.PRIVATE) == 0) {
-					dout.writeUTF("get" + ComputeUID.firstToUpper(sig.name));
-					dout.writeInt(mods);
-					dout.writeUTF(sig.signature.replace('/', '.'));
-				}
+				// if ((mods & Modifier.PRIVATE) == 0) {
+				dout.writeUTF("get" + ComputeUID.firstToUpper(property.getName()));
+				dout.writeInt(mods);
+				dout.writeUTF(ComputeUID.getClassSignature(property.getType()).replace('/', '.'));
+				// }
 			}
 
 			dout.flush();

@@ -40,6 +40,7 @@ public class LanguageSetup {
 		final List<String> presentLanguages = new ArrayList<String>();
 		try {
 			for (final Class<?> generatorType : recordTypeGenerators) {
+				@SuppressWarnings("unchecked")
 				final AbstractRecordTypeGenerator cg = ((Class<AbstractRecordTypeGenerator>) generatorType).
 						getConstructor().newInstance();
 				boolean exists = false;
