@@ -71,7 +71,7 @@ public class IRLParser {
 
 	private final StandaloneSetup setup;
 
-	private final IOutputConfigurationProvider outputConfigurationProvider;
+	private Set<OutputConfiguration> configurations;
 
 	/**
 	 * Construct an IRL parser.
@@ -132,15 +132,15 @@ public class IRLParser {
 					}
 				}
 				// setup outlets
-				this.outputConfigurationProvider = new RecordLangOutputConfigurationProvider();
-				final Set<OutputConfiguration> configurations = this.outputConfigurationProvider.getOutputConfigurations();
+				final IOutputConfigurationProvider outputConfigurationProvider = new RecordLangOutputConfigurationProvider();
+				this.configurations = outputConfigurationProvider.getOutputConfigurations();
 
 				if (mavenFolderLayout) {
-					for (final OutputConfiguration configuration : configurations) {
+					for (final OutputConfiguration configuration : this.configurations) {
 						configuration.setOutputDirectory(projectDestinationPath + File.separator + configuration.getName());
 					}
 				} else {
-					for (final OutputConfiguration configuration : configurations) {
+					for (final OutputConfiguration configuration : this.configurations) {
 						configuration.setOutputDirectory(projectDestinationPath);
 					}
 				}
@@ -148,12 +148,12 @@ public class IRLParser {
 				LOG.error("Specified project " + projectName + " cannot be found.");
 				this.sourceRootPath = null;
 				this.projectHostPath = null;
-				this.outputConfigurationProvider = null;
+				this.configurations = null;
 			}
 		} else {
 			this.sourceRootPath = null;
 			this.projectHostPath = null;
-			this.outputConfigurationProvider = null;
+			this.configurations = null;
 		}
 	}
 
@@ -245,8 +245,7 @@ public class IRLParser {
 
 		// invoke generator
 		final RecordLangGenerator generator = new RecordLangGenerator();
-		final IFileSystemAccess fsa = new DirectIOFileSystemAccess(this.projectHostPath,
-				this.outputConfigurationProvider.getOutputConfigurations());
+		final IFileSystemAccess fsa = new DirectIOFileSystemAccess(this.projectHostPath, this.configurations);
 
 		generator.doGenerate(resource, fsa);
 	}
