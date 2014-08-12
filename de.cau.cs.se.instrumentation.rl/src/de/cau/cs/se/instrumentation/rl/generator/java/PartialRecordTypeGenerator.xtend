@@ -11,6 +11,21 @@ import org.eclipse.emf.common.util.EList
 import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation
 
 class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerator {
+		
+	/**
+	 * Define language/generation type, which is also used to define the outlet.
+	 */
+	override getLanguageType() '''java'''
+	
+	/**
+	 * Compute the directory name for a record type.
+	 */
+	override directoryName(Type type) '''«(type.eContainer as Model).name.replace('.',File::separator)»'''
+		
+	/**
+	 * Compute file name.
+	 */
+	override fileName(Type type) '''«type.directoryName»«File::separator»«type.name».java'''
 	
 	override createContent(PartialRecordType type, String author, String version) {
 		'''
@@ -87,15 +102,5 @@ class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerator {
 			default : classifier.class_.name
 		}	
 	}
-		
-	/**
-	 * Compute the directory name for a record type.
-	 */
-	override directoryName(Type type) '''«(type.eContainer as Model).name.replace('.',File::separator)»'''
-
-	override fileName(Type type) '''«type.directoryName»«File::separator»«type.name».java'''
-
-	
-	override getLanguageType() '''java'''
-		
+			
 }

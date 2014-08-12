@@ -7,6 +7,7 @@ import java.util.ArrayList
 import org.eclipse.emf.common.util.EList
 import java.util.Collection
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
+import de.cau.cs.se.instrumentation.rl.generator.InternalErrorException
 
 class PropertyEvaluation {
 	
@@ -163,6 +164,43 @@ class PropertyEvaluation {
 			return property.type
 		else
 			return property.referTo.findType
+	}
+	
+		/**
+	 * Determine the size of the resulting binary serialization.
+	 * 
+	 * @param allProperties
+	 * 		all properties of a record type
+	 * 
+	 * @returns
+	 * 		the computed value
+	 */
+	 def static int calculateSize(Iterable<Property> list) {
+		list.fold(0)[result, property | result + property.size]
+	}
+		
+	/**
+	 * Determine the size of one type.
+	 * 
+	 * @param property
+	 * 		property which serialization size is determined.
+	 * 
+	 * @returns
+	 * 		the serialization size of the property
+	 */
+	def static private int getSize(Property property) {
+		switch (PropertyEvaluation::findType(property).class_.name) {
+			case 'string' : 4
+			case 'byte' : 1
+			case 'short' : 2
+			case 'int' : 4
+			case 'long' : 8
+			case 'float' : 4
+			case 'double' : 8
+			case 'char' : 2
+			case 'boolean' : 1
+			default: throw new InternalErrorException(PropertyEvaluation::findType(property).class_.name + 'is not a valid type name')
+		}
 	}
 		
 }

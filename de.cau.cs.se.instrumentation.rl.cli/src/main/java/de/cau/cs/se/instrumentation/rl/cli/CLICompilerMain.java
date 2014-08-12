@@ -98,6 +98,9 @@ public final class CLICompilerMain {
 		String projectSourcePath = "src";
 		String projectDestinationPath = "src-gen";
 		String projectDirectoryName = null;
+		String authorName = "Generic Kieker";
+		String version = "1.10";
+
 		boolean mavenFolderLayout = false;
 		String[] selectedLanguageTypes = {};
 		int exitCode = 0;
@@ -137,8 +140,16 @@ public final class CLICompilerMain {
 				System.exit(-1);
 			}
 
+			if (commandLine.hasOption(CMD_AUTHOR)) {
+				authorName = commandLine.getOptionValue(CMD_AUTHOR);
+			}
+
+			if (commandLine.hasOption(CMD_VERSION)) {
+				version = commandLine.getOptionValue(CMD_VERSION);
+			}
+
 			parser = new IRLParser(runtimeRoot, projectName, projectDirectoryName, projectSourcePath, projectDestinationPath,
-					mavenFolderLayout, selectedLanguageTypes, "1.10", "Generic Kieker");
+					mavenFolderLayout, selectedLanguageTypes, version, authorName);
 			parser.compileAll();
 		} catch (final ParseException e) {
 			CLICompilerMain.usage("Parsing failed.  Reason: " + e.getMessage());

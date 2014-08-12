@@ -2,6 +2,7 @@ package de.cau.cs.se.instrumentation.rl.validation;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
+import de.cau.cs.se.instrumentation.rl.generator.InternalErrorException;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
@@ -13,7 +14,9 @@ import java.util.Collection;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.Functions.Function2;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
@@ -259,6 +262,112 @@ public class PropertyEvaluation {
     } else {
       Property _referTo = property.getReferTo();
       return PropertyEvaluation.findType(_referTo);
+    }
+  }
+  
+  /**
+   * Determine the size of the resulting binary serialization.
+   * 
+   * @param allProperties
+   * 		all properties of a record type
+   * 
+   * @returns
+   * 		the computed value
+   */
+  public static int calculateSize(final Iterable<Property> list) {
+    final Function2<Integer,Property,Integer> _function = new Function2<Integer,Property,Integer>() {
+      public Integer apply(final Integer result, final Property property) {
+        int _size = PropertyEvaluation.getSize(property);
+        int _plus = ((result).intValue() + _size);
+        return Integer.valueOf(_plus);
+      }
+    };
+    Integer _fold = IterableExtensions.<Property, Integer>fold(list, Integer.valueOf(0), _function);
+    return (_fold).intValue();
+  }
+  
+  /**
+   * Determine the size of one type.
+   * 
+   * @param property
+   * 		property which serialization size is determined.
+   * 
+   * @returns
+   * 		the serialization size of the property
+   */
+  private static int getSize(final Property property) {
+    try {
+      int _switchResult = (int) 0;
+      Classifier _findType = PropertyEvaluation.findType(property);
+      EClassifier _class_ = _findType.getClass_();
+      String _name = _class_.getName();
+      final String _switchValue = _name;
+      boolean _matched = false;
+      if (!_matched) {
+        if (Objects.equal(_switchValue,"string")) {
+          _matched=true;
+          _switchResult = 4;
+        }
+      }
+      if (!_matched) {
+        if (Objects.equal(_switchValue,"byte")) {
+          _matched=true;
+          _switchResult = 1;
+        }
+      }
+      if (!_matched) {
+        if (Objects.equal(_switchValue,"short")) {
+          _matched=true;
+          _switchResult = 2;
+        }
+      }
+      if (!_matched) {
+        if (Objects.equal(_switchValue,"int")) {
+          _matched=true;
+          _switchResult = 4;
+        }
+      }
+      if (!_matched) {
+        if (Objects.equal(_switchValue,"long")) {
+          _matched=true;
+          _switchResult = 8;
+        }
+      }
+      if (!_matched) {
+        if (Objects.equal(_switchValue,"float")) {
+          _matched=true;
+          _switchResult = 4;
+        }
+      }
+      if (!_matched) {
+        if (Objects.equal(_switchValue,"double")) {
+          _matched=true;
+          _switchResult = 8;
+        }
+      }
+      if (!_matched) {
+        if (Objects.equal(_switchValue,"char")) {
+          _matched=true;
+          _switchResult = 2;
+        }
+      }
+      if (!_matched) {
+        if (Objects.equal(_switchValue,"boolean")) {
+          _matched=true;
+          _switchResult = 1;
+        }
+      }
+      if (!_matched) {
+        Classifier _findType_1 = PropertyEvaluation.findType(property);
+        EClassifier _class__1 = _findType_1.getClass_();
+        String _name_1 = _class__1.getName();
+        String _plus = (_name_1 + "is not a valid type name");
+        InternalErrorException _internalErrorException = new InternalErrorException(_plus);
+        throw _internalErrorException;
+      }
+      return _switchResult;
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
     }
   }
   

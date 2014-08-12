@@ -21,6 +21,41 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
 public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerator {
+  /**
+   * Define language/generation type, which is also used to define the outlet.
+   */
+  public String getLanguageType() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("java");
+    return _builder.toString();
+  }
+  
+  /**
+   * Compute the directory name for a record type.
+   */
+  public CharSequence directoryName(final Type type) {
+    StringConcatenation _builder = new StringConcatenation();
+    EObject _eContainer = type.eContainer();
+    String _name = ((Model) _eContainer).getName();
+    String _replace = _name.replace(".", File.separator);
+    _builder.append(_replace, "");
+    return _builder;
+  }
+  
+  /**
+   * Compute file name.
+   */
+  public String fileName(final Type type) {
+    StringConcatenation _builder = new StringConcatenation();
+    CharSequence _directoryName = this.directoryName(type);
+    _builder.append(_directoryName, "");
+    _builder.append(File.separator, "");
+    String _name = type.getName();
+    _builder.append(_name, "");
+    _builder.append(".java");
+    return _builder.toString();
+  }
+  
   public CharSequence createContent(final PartialRecordType type, final String author, final String version) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("/***************************************************************************");
@@ -229,34 +264,5 @@ public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerat
       _switchResult = _name_1;
     }
     return _switchResult;
-  }
-  
-  /**
-   * Compute the directory name for a record type.
-   */
-  public CharSequence directoryName(final Type type) {
-    StringConcatenation _builder = new StringConcatenation();
-    EObject _eContainer = type.eContainer();
-    String _name = ((Model) _eContainer).getName();
-    String _replace = _name.replace(".", File.separator);
-    _builder.append(_replace, "");
-    return _builder;
-  }
-  
-  public String fileName(final Type type) {
-    StringConcatenation _builder = new StringConcatenation();
-    CharSequence _directoryName = this.directoryName(type);
-    _builder.append(_directoryName, "");
-    _builder.append(File.separator, "");
-    String _name = type.getName();
-    _builder.append(_name, "");
-    _builder.append(".java");
-    return _builder.toString();
-  }
-  
-  public String getLanguageType() {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("java");
-    return _builder.toString();
   }
 }
