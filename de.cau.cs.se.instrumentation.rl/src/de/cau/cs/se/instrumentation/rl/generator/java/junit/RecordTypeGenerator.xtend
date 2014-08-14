@@ -48,8 +48,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		import kieker.common.util.registry.IRegistry;
 		import kieker.common.util.registry.Registry;
 		
-		import kieker.test.common.junit.AbstractKiekerTest;
-		import kieker.test.common.junit.TestValueRangeConstants;
+		import kieker.test.common.junit.AbstractGeneratedKiekerTest;
 		import kieker.test.common.util.record.BookstoreOperationExecutionRecordFactory;
 				
 		/**
@@ -60,7 +59,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		 * 
 		 * @since «version»
 		 */
-		public class TestGenerated«type.name» extends AbstractKiekerTest {
+		public class TestGenerated«type.name» extends AbstractGeneratedKiekerTest {
 		
 			public TestGenerated«type.name»() {
 				// empty default constructor
@@ -71,7 +70,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 			 */
 			@Test
 			public void testToArray() { // NOPMD (assert missing)
-			for (int i=0;i<TestValueRangeConstants.ARRAY_LENGTH;i++) {
+			for (int i=0;i<ARRAY_LENGTH;i++) {
 					// initialize
 					«type.name» record = new «type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
 					
@@ -99,7 +98,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 			 */
 			@Test
 			public void testBuffer() { // NOPMD (assert missing)
-				for (int i=0;i<TestValueRangeConstants.ARRAY_LENGTH;i++) {
+				for (int i=0;i<ARRAY_LENGTH;i++) {
 					// initialize
 					«type.name» record = new «type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
 					
@@ -113,7 +112,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 			 */
 			@Test
 			public void testParameterConstruction() { // NOPMD (assert missing)
-				for (int i=0;i<TestValueRangeConstants.ARRAY_LENGTH;i++) {
+				for (int i=0;i<ARRAY_LENGTH;i++) {
 					// initialize
 					«type.name» record = new «type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
 					
@@ -150,11 +149,11 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	def createValueAssertion(Property property, Integer index) '''
 		Assert.assertEquals("Array value [«index»] " + values[«index»] + " does not match the desired value " + «property.createPropertyValueSet»,
 			«IF property.type.class_.name == 'float' || property.type.class_.name == 'double'»
-				«createPropertyValueSet(property)», «property.getPrimitiveType» («property.getObjectType»)values[«index»], 0.0000001
+				«property.getCastToPrimitiveType» «createPropertyValueSet(property)», «property.getCastToPrimitiveType» («property.getObjectType»)values[«index»], 0.0000001
 			«ELSEIF property.type.class_.name == 'string'»
 				«property.createPropertyValueSet» == null?"«property.createConstantValue»":«property.createPropertyValueSet», values[«index»]
 			«ELSE»
-				«property.createPropertyValueSet», «property.getPrimitiveType» («property.getObjectType»)values[«index»]
+				«property.getCastToPrimitiveType» «property.createPropertyValueSet», «property.getCastToPrimitiveType» («property.getObjectType»)values[«index»]
 		«ENDIF»);
 	'''
 	
@@ -168,7 +167,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 			return ""
 	}
 	
-	def getPrimitiveType(Property property) {
+	def getCastToPrimitiveType(Property property) {
 		if ('string'.equals(property.type.class_.name)) {
 			return ""
 		} else {
@@ -185,13 +184,13 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	def createAllGetterValueAssertions(Collection<Property> properties, RecordType type) '''
 		«FOR property : properties»
 			Assert.assertEquals("«type.name».«property.name» values are not equal.", «IF property.type.class_.name == 'float' || property.type.class_.name == 'double'»
-				«property.createPropertyValueSet», record.get«property.name.toFirstUpper»(), 0.0000001);
+				«property.getCastToPrimitiveType» «property.createPropertyValueSet», record.get«property.name.toFirstUpper»(), 0.0000001);
 			«ELSEIF property.type.class_.name == 'boolean'»
-				«property.createPropertyValueSet», record.is«property.name.toFirstUpper»());
+				(boolean) «property.createPropertyValueSet», record.is«property.name.toFirstUpper»());
 			«ELSEIF property.type.class_.name == 'string'»
 				«property.createPropertyValueSet» == null?"«property.createConstantValue»":«property.createPropertyValueSet», record.get«property.name.toFirstUpper»());
 			«ELSE»
-				«property.createPropertyValueSet», record.get«property.name.toFirstUpper»());
+				«property.getCastToPrimitiveType» «property.createPropertyValueSet», record.get«property.name.toFirstUpper»());
 			«ENDIF»
 		«ENDFOR»
 	'''
@@ -229,7 +228,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	/**
 	 * Produce a type conform value for input. This only works for primitive types.
 	 */
-	def createPropertyValueSet(Property property) '''TestValueRangeConstants.«property.type.class_.name.toUpperCase»_VALUES[i%TestValueRangeConstants.«property.type.class_.name.toUpperCase»_VALUES.length]'''
+	def createPropertyValueSet(Property property) '''«property.type.class_.name.toUpperCase»_VALUES.get(i % «property.type.class_.name.toUpperCase»_VALUES.size())'''
 	
 	
 	/**

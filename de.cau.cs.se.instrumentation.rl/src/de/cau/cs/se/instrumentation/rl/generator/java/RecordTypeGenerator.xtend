@@ -23,6 +23,7 @@ import java.util.Collection
 import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.EClassifier
 import de.cau.cs.se.instrumentation.rl.generator.InternalErrorException
+import java.util.List
 
 class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	
@@ -79,8 +80,8 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		import java.nio.ByteBuffer;
 
 		«IF (type.parent == null)»import kieker.common.record.AbstractMonitoringRecord;
-		«ENDIF»import kieker.common.record.IMonitoringRecord;
-		import kieker.common.util.registry.IRegistry;
+		import kieker.common.record.IMonitoringRecord;
+		«ENDIF»import kieker.common.util.registry.IRegistry;
 		
 		«if (type.parent != null) type.createParentImport»
 		«if (type.parents != null && type.parents.size > 0) type.parents.map[i | i.createInterfaceImport].join»
@@ -90,14 +91,14 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		 * 
 		 * @since «version»
 		 */
-		public «if (type.abstract) 'abstract '»class «type.name» extends «if (type.parent!=null) type.parent.name else 'AbstractMonitoringRecord'» implements «type.createImplements» {
+		public «if (type.abstract) 'abstract '»class «type.name» extends «type.createParent»«type.createImplements» {
 			«IF (!type.abstract) »/** Descriptive definition of the serialization size of the record. */
 			public static final int SIZE = «if (allDataProperties.size == 0) '0' else allDataProperties.map[property | property.createSizeConstant(type)].join('\n\t\t + ')»
 			;
 			«ENDIF»
 			private static final long serialVersionUID = «serialUID»;
 			
-			«IF (!type.abstract) »private static final Class<?>[] TYPES = {
+			«IF (!type.abstract) »public static final Class<?>[] TYPES = {
 				«allDataProperties.map[property | property.createPropertyType(type)].join»
 			};«ENDIF»
 			
@@ -118,7 +119,8 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		
 			«IF (!type.abstract)»
 			/**
-			 * This constructor converts the given array into a record. It is recommended to use the array which is the result of a call to {@link #toArray()}.
+			 * This constructor converts the given array into a record.
+			 * It is recommended to use the array which is the result of a call to {@link #toArray()}.
 			 * 
 			 * @param values
 			 *            The values for the record.
@@ -219,9 +221,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		}
 		'''
 	}
-	
-	
-			
+				
 	/**
 	 * Determine the size of one type.
 	 * 
@@ -245,13 +245,33 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 			default: throw new InternalErrorException(PropertyEvaluation::findType(property).class_.name + 'is not a valid type name')
 		} + ''' // «property.computeFullQualifiedPropertyName(type)»'''
 	}
+	
+	/**
+	 * Determine the name of the parent class.
+	 */
+	def private CharSequence createParent(RecordType type) {
+		if (type.parent!=null) type.parent.name else 'AbstractMonitoringRecord'
+	}
 		
 	/**
-	 * Create the sequence of implements of the class
+	 * Create the sequence of implements of the class and render the implements char sequence.
 	 */
-	def private CharSequence createImplements(RecordType type) '''IMonitoringRecord.Factory, IMonitoringRecord.BinaryFactory«if (type.parents != null && type.parents.size > 0) ', ' + type.parents.map[i | i.createImplement].join(', ')»'''
-		
-	def private createImplement(PartialRecordType type) '''«type.name»'''
+	def private CharSequence createImplements(RecordType type) {
+		val List<CharSequence> interfaces = new ArrayList() 
+		if (type.parent == null) { // only add these interfaces for classes directly inheriting AbstractMonitoringRecord
+			interfaces.add('IMonitoringRecord.Factory')
+			interfaces.add('IMonitoringRecord.BinaryFactory')
+		}
+		if (type.parents != null && type.parents.size > 0) {
+			interfaces.addAll(type.parents.map[iface | iface.name]);
+		}
+
+		if (interfaces.size > 0)
+			return ''' implements «interfaces.join(', ')»'''
+		else
+			return ' '
+	} 
+			
 	/**
 	 * Create a list of imports for the given type.
 	 */	
@@ -586,7 +606,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * 
 	 * @returns one type entry 
 	 */
-	def private createPropertyType(Property property, RecordType type) '''«PropertyEvaluation::findType(property).createObjectTypeName».class, // «property.computeFullQualifiedPropertyName(type)»
+	def private createPropertyType(Property property, RecordType type) '''«PropertyEvaluation::findType(property).createTypeName».class, // «property.computeFullQualifiedPropertyName(type)»
 	'''
 	
 	/**

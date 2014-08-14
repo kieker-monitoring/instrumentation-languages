@@ -111,9 +111,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.append("import kieker.common.util.registry.Registry;");
       _builder.newLine();
       _builder.newLine();
-      _builder.append("import kieker.test.common.junit.AbstractKiekerTest;");
-      _builder.newLine();
-      _builder.append("import kieker.test.common.junit.TestValueRangeConstants;");
+      _builder.append("import kieker.test.common.junit.AbstractGeneratedKiekerTest;");
       _builder.newLine();
       _builder.append("import kieker.test.common.util.record.BookstoreOperationExecutionRecordFactory;");
       _builder.newLine();
@@ -147,7 +145,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.append("public class TestGenerated");
       String _name_3 = type.getName();
       _builder.append(_name_3, "");
-      _builder.append(" extends AbstractKiekerTest {");
+      _builder.append(" extends AbstractGeneratedKiekerTest {");
       _builder.newLineIfNotEmpty();
       _builder.newLine();
       _builder.append("\t");
@@ -185,7 +183,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.append("public void testToArray() { // NOPMD (assert missing)");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("for (int i=0;i<TestValueRangeConstants.ARRAY_LENGTH;i++) {");
+      _builder.append("for (int i=0;i<ARRAY_LENGTH;i++) {");
       _builder.newLine();
       _builder.append("\t\t\t");
       _builder.append("// initialize");
@@ -293,7 +291,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.append("public void testBuffer() { // NOPMD (assert missing)");
       _builder.newLine();
       _builder.append("\t\t");
-      _builder.append("for (int i=0;i<TestValueRangeConstants.ARRAY_LENGTH;i++) {");
+      _builder.append("for (int i=0;i<ARRAY_LENGTH;i++) {");
       _builder.newLine();
       _builder.append("\t\t\t");
       _builder.append("// initialize");
@@ -355,7 +353,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.append("public void testParameterConstruction() { // NOPMD (assert missing)");
       _builder.newLine();
       _builder.append("\t\t");
-      _builder.append("for (int i=0;i<TestValueRangeConstants.ARRAY_LENGTH;i++) {");
+      _builder.append("for (int i=0;i<ARRAY_LENGTH;i++) {");
       _builder.newLine();
       _builder.append("\t\t\t");
       _builder.append("// initialize");
@@ -472,11 +470,14 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       }
       if (_or) {
         _builder.append("\t");
+        String _castToPrimitiveType = this.getCastToPrimitiveType(property);
+        _builder.append(_castToPrimitiveType, "	");
+        _builder.append(" ");
         CharSequence _createPropertyValueSet_1 = this.createPropertyValueSet(property);
         _builder.append(_createPropertyValueSet_1, "	");
         _builder.append(", ");
-        String _primitiveType = this.getPrimitiveType(property);
-        _builder.append(_primitiveType, "	");
+        String _castToPrimitiveType_1 = this.getCastToPrimitiveType(property);
+        _builder.append(_castToPrimitiveType_1, "	");
         _builder.append(" (");
         String _getObjectType = this.getGetObjectType(property);
         _builder.append(_getObjectType, "	");
@@ -505,11 +506,14 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
           _builder.newLineIfNotEmpty();
         } else {
           _builder.append("\t");
+          String _castToPrimitiveType_2 = this.getCastToPrimitiveType(property);
+          _builder.append(_castToPrimitiveType_2, "	");
+          _builder.append(" ");
           CharSequence _createPropertyValueSet_4 = this.createPropertyValueSet(property);
           _builder.append(_createPropertyValueSet_4, "	");
           _builder.append(", ");
-          String _primitiveType_1 = this.getPrimitiveType(property);
-          _builder.append(_primitiveType_1, "	");
+          String _castToPrimitiveType_3 = this.getCastToPrimitiveType(property);
+          _builder.append(_castToPrimitiveType_3, "	");
           _builder.append(" (");
           String _getObjectType_1 = this.getGetObjectType(property);
           _builder.append(_getObjectType_1, "	");
@@ -540,7 +544,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     }
   }
   
-  public String getPrimitiveType(final Property property) {
+  public String getCastToPrimitiveType(final Property property) {
     Classifier _type = property.getType();
     EClassifier _class_ = _type.getClass_();
     String _name = _class_.getName();
@@ -590,6 +594,9 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
           }
           if (_or) {
             _builder.newLineIfNotEmpty();
+            String _castToPrimitiveType = this.getCastToPrimitiveType(property);
+            _builder.append(_castToPrimitiveType, "");
+            _builder.append(" ");
             CharSequence _createPropertyValueSet = this.createPropertyValueSet(property);
             _builder.append(_createPropertyValueSet, "");
             _builder.append(", record.get");
@@ -604,6 +611,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
             String _name_5 = _class__2.getName();
             boolean _equals_2 = Objects.equal(_name_5, "boolean");
             if (_equals_2) {
+              _builder.append("(boolean) ");
               CharSequence _createPropertyValueSet_1 = this.createPropertyValueSet(property);
               _builder.append(_createPropertyValueSet_1, "");
               _builder.append(", record.is");
@@ -633,6 +641,9 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
                 _builder.append("());");
                 _builder.newLineIfNotEmpty();
               } else {
+                String _castToPrimitiveType_1 = this.getCastToPrimitiveType(property);
+                _builder.append(_castToPrimitiveType_1, "");
+                _builder.append(" ");
                 CharSequence _createPropertyValueSet_4 = this.createPropertyValueSet(property);
                 _builder.append(_createPropertyValueSet_4, "");
                 _builder.append(", record.get");
@@ -761,19 +772,18 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    */
   public CharSequence createPropertyValueSet(final Property property) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("TestValueRangeConstants.");
     Classifier _type = property.getType();
     EClassifier _class_ = _type.getClass_();
     String _name = _class_.getName();
     String _upperCase = _name.toUpperCase();
     _builder.append(_upperCase, "");
-    _builder.append("_VALUES[i%TestValueRangeConstants.");
+    _builder.append("_VALUES.get(i % ");
     Classifier _type_1 = property.getType();
     EClassifier _class__1 = _type_1.getClass_();
     String _name_1 = _class__1.getName();
     String _upperCase_1 = _name_1.toUpperCase();
     _builder.append(_upperCase_1, "");
-    _builder.append("_VALUES.length]");
+    _builder.append("_VALUES.size())");
     return _builder;
   }
   

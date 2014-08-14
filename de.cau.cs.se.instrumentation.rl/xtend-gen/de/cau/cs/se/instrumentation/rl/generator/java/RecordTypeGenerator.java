@@ -166,12 +166,12 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         if (_equals) {
           _builder.append("import kieker.common.record.AbstractMonitoringRecord;");
           _builder.newLineIfNotEmpty();
+          _builder.append("import kieker.common.record.IMonitoringRecord;");
+          _builder.newLine();
         }
       }
-      _builder.append("import kieker.common.record.IMonitoringRecord;");
-      _builder.newLineIfNotEmpty();
       _builder.append("import kieker.common.util.registry.IRegistry;");
-      _builder.newLine();
+      _builder.newLineIfNotEmpty();
       _builder.newLine();
       CharSequence _xifexpression = null;
       RecordType _parent_1 = type.getParent();
@@ -236,18 +236,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       String _name_1 = type.getName();
       _builder.append(_name_1, "");
       _builder.append(" extends ");
-      String _xifexpression_3 = null;
-      RecordType _parent_2 = type.getParent();
-      boolean _notEquals_2 = (!Objects.equal(_parent_2, null));
-      if (_notEquals_2) {
-        RecordType _parent_3 = type.getParent();
-        String _name_2 = _parent_3.getName();
-        _xifexpression_3 = _name_2;
-      } else {
-        _xifexpression_3 = "AbstractMonitoringRecord";
-      }
-      _builder.append(_xifexpression_3, "");
-      _builder.append(" implements ");
+      CharSequence _createParent = this.createParent(type);
+      _builder.append(_createParent, "");
       CharSequence _createImplements = this.createImplements(type);
       _builder.append(_createImplements, "");
       _builder.append(" {");
@@ -261,11 +251,11 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
           _builder.newLineIfNotEmpty();
           _builder.append("\t");
           _builder.append("public static final int SIZE = ");
-          String _xifexpression_4 = null;
+          String _xifexpression_3 = null;
           int _size_1 = allDataProperties.size();
           boolean _equals_1 = (_size_1 == 0);
           if (_equals_1) {
-            _xifexpression_4 = "0";
+            _xifexpression_3 = "0";
           } else {
             final Function1<Property,String> _function_1 = new Function1<Property,String>() {
               public String apply(final Property property) {
@@ -275,9 +265,9 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
             };
             Iterable<String> _map_1 = IterableExtensions.<Property, String>map(allDataProperties, _function_1);
             String _join_1 = IterableExtensions.join(_map_1, "\n\t\t + ");
-            _xifexpression_4 = _join_1;
+            _xifexpression_3 = _join_1;
           }
-          _builder.append(_xifexpression_4, "	");
+          _builder.append(_xifexpression_3, "	");
           _builder.newLineIfNotEmpty();
           _builder.append("\t");
           _builder.append(";");
@@ -296,7 +286,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         boolean _isAbstract_3 = type.isAbstract();
         boolean _not_2 = (!_isAbstract_3);
         if (_not_2) {
-          _builder.append("private static final Class<?>[] TYPES = {");
+          _builder.append("public static final Class<?>[] TYPES = {");
           _builder.newLineIfNotEmpty();
           _builder.append("\t");
           _builder.append("\t");
@@ -388,8 +378,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.newLine();
       _builder.append("\t");
       _builder.append("public ");
-      String _name_3 = type.getName();
-      _builder.append(_name_3, "	");
+      String _name_2 = type.getName();
+      _builder.append(_name_2, "	");
       _builder.append("(");
       final Function1<Property,CharSequence> _function_8 = new Function1<Property,CharSequence>() {
         public CharSequence apply(final Property property) {
@@ -403,12 +393,12 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.append(") {");
       _builder.newLineIfNotEmpty();
       _builder.append("\t\t");
-      String _xifexpression_5 = null;
-      RecordType _parent_4 = type.getParent();
-      boolean _notEquals_3 = (!Objects.equal(_parent_4, null));
-      if (_notEquals_3) {
-        RecordType _parent_5 = type.getParent();
-        Collection<Property> _collectAllDataProperties = PropertyEvaluation.collectAllDataProperties(_parent_5);
+      String _xifexpression_4 = null;
+      RecordType _parent_2 = type.getParent();
+      boolean _notEquals_2 = (!Objects.equal(_parent_2, null));
+      if (_notEquals_2) {
+        RecordType _parent_3 = type.getParent();
+        Collection<Property> _collectAllDataProperties = PropertyEvaluation.collectAllDataProperties(_parent_3);
         final Function1<Property,String> _function_9 = new Function1<Property,String>() {
           public String apply(final Property it) {
             String _name = it.getName();
@@ -419,9 +409,9 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         String _join_8 = IterableExtensions.join(_map_8, ", ");
         String _plus = ("super(" + _join_8);
         String _plus_1 = (_plus + ");");
-        _xifexpression_5 = _plus_1;
+        _xifexpression_4 = _plus_1;
       }
-      _builder.append(_xifexpression_5, "		");
+      _builder.append(_xifexpression_4, "		");
       _builder.newLineIfNotEmpty();
       _builder.append("\t\t");
       final Function1<Property,CharSequence> _function_10 = new Function1<Property,CharSequence>() {
@@ -447,7 +437,11 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
           _builder.newLine();
           _builder.append("\t");
           _builder.append(" ");
-          _builder.append("* This constructor converts the given array into a record. It is recommended to use the array which is the result of a call to {@link #toArray()}.");
+          _builder.append("* This constructor converts the given array into a record.");
+          _builder.newLine();
+          _builder.append("\t");
+          _builder.append(" ");
+          _builder.append("* It is recommended to use the array which is the result of a call to {@link #toArray()}.");
           _builder.newLine();
           _builder.append("\t");
           _builder.append(" ");
@@ -467,15 +461,15 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
           _builder.newLine();
           _builder.append("\t");
           _builder.append("public ");
-          String _name_4 = type.getName();
-          _builder.append(_name_4, "	");
+          String _name_3 = type.getName();
+          _builder.append(_name_3, "	");
           _builder.append("(final Object[] values) { // NOPMD (direct store of values)");
           _builder.newLineIfNotEmpty();
           _builder.append("\t");
           _builder.append("\t");
           {
-            RecordType _parent_6 = type.getParent();
-            boolean _equals_2 = Objects.equal(_parent_6, null);
+            RecordType _parent_4 = type.getParent();
+            boolean _equals_2 = Objects.equal(_parent_4, null);
             if (_equals_2) {
               _builder.append("AbstractMonitoringRecord.checkArray(values, TYPES);");
               _builder.newLineIfNotEmpty();
@@ -488,18 +482,18 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
               _builder.append("\t");
             }
           }
-          int _xifexpression_6 = (int) 0;
-          RecordType _parent_7 = type.getParent();
-          boolean _notEquals_4 = (!Objects.equal(_parent_7, null));
-          if (_notEquals_4) {
-            RecordType _parent_8 = type.getParent();
-            Collection<Property> _collectAllDataProperties_1 = PropertyEvaluation.collectAllDataProperties(_parent_8);
+          int _xifexpression_5 = (int) 0;
+          RecordType _parent_5 = type.getParent();
+          boolean _notEquals_3 = (!Objects.equal(_parent_5, null));
+          if (_notEquals_3) {
+            RecordType _parent_6 = type.getParent();
+            Collection<Property> _collectAllDataProperties_1 = PropertyEvaluation.collectAllDataProperties(_parent_6);
             int _size_2 = _collectAllDataProperties_1.size();
-            _xifexpression_6 = _size_2;
+            _xifexpression_5 = _size_2;
           } else {
-            _xifexpression_6 = 0;
+            _xifexpression_5 = 0;
           }
-          String _createPropertyGenericAssignments = this.createPropertyGenericAssignments(allDeclarationProperties, _xifexpression_6);
+          String _createPropertyGenericAssignments = this.createPropertyGenericAssignments(allDeclarationProperties, _xifexpression_5);
           _builder.append(_createPropertyGenericAssignments, "		");
           _builder.newLineIfNotEmpty();
           _builder.append("\t");
@@ -535,14 +529,14 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.newLine();
       _builder.append("\t");
       _builder.append("protected ");
-      String _name_5 = type.getName();
-      _builder.append(_name_5, "	");
+      String _name_4 = type.getName();
+      _builder.append(_name_4, "	");
       _builder.append("(final Object[] values, final Class<?>[] valueTypes) { // NOPMD (values stored directly)");
       _builder.newLineIfNotEmpty();
       _builder.append("\t\t");
       {
-        RecordType _parent_9 = type.getParent();
-        boolean _equals_3 = Objects.equal(_parent_9, null);
+        RecordType _parent_7 = type.getParent();
+        boolean _equals_3 = Objects.equal(_parent_7, null);
         if (_equals_3) {
           _builder.append("AbstractMonitoringRecord.checkArray(values, valueTypes);");
           _builder.newLineIfNotEmpty();
@@ -553,18 +547,18 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
           _builder.append("\t\t");
         }
       }
-      int _xifexpression_7 = (int) 0;
-      RecordType _parent_10 = type.getParent();
-      boolean _notEquals_5 = (!Objects.equal(_parent_10, null));
-      if (_notEquals_5) {
-        RecordType _parent_11 = type.getParent();
-        Collection<Property> _collectAllDataProperties_2 = PropertyEvaluation.collectAllDataProperties(_parent_11);
+      int _xifexpression_6 = (int) 0;
+      RecordType _parent_8 = type.getParent();
+      boolean _notEquals_4 = (!Objects.equal(_parent_8, null));
+      if (_notEquals_4) {
+        RecordType _parent_9 = type.getParent();
+        Collection<Property> _collectAllDataProperties_2 = PropertyEvaluation.collectAllDataProperties(_parent_9);
         int _size_3 = _collectAllDataProperties_2.size();
-        _xifexpression_7 = _size_3;
+        _xifexpression_6 = _size_3;
       } else {
-        _xifexpression_7 = 0;
+        _xifexpression_6 = 0;
       }
-      String _createPropertyGenericAssignments_1 = this.createPropertyGenericAssignments(allDeclarationProperties, _xifexpression_7);
+      String _createPropertyGenericAssignments_1 = this.createPropertyGenericAssignments(allDeclarationProperties, _xifexpression_6);
       _builder.append(_createPropertyGenericAssignments_1, "		");
       _builder.newLineIfNotEmpty();
       _builder.append("\t");
@@ -600,15 +594,15 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.newLine();
       _builder.append("\t");
       _builder.append("public ");
-      String _name_6 = type.getName();
-      _builder.append(_name_6, "	");
+      String _name_5 = type.getName();
+      _builder.append(_name_5, "	");
       _builder.append("(final ByteBuffer buffer, final IRegistry<String> stringRegistry) throws BufferUnderflowException {");
       _builder.newLineIfNotEmpty();
       _builder.append("\t\t");
       {
-        RecordType _parent_12 = type.getParent();
-        boolean _notEquals_6 = (!Objects.equal(_parent_12, null));
-        if (_notEquals_6) {
+        RecordType _parent_10 = type.getParent();
+        boolean _notEquals_5 = (!Objects.equal(_parent_10, null));
+        if (_notEquals_5) {
           _builder.append("super(buffer, stringRegistry);");
           _builder.newLineIfNotEmpty();
           _builder.append("\t\t");
@@ -916,12 +910,34 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   }
   
   /**
-   * Create the sequence of implements of the class
+   * Determine the name of the parent class.
+   */
+  private CharSequence createParent(final RecordType type) {
+    String _xifexpression = null;
+    RecordType _parent = type.getParent();
+    boolean _notEquals = (!Objects.equal(_parent, null));
+    if (_notEquals) {
+      RecordType _parent_1 = type.getParent();
+      String _name = _parent_1.getName();
+      _xifexpression = _name;
+    } else {
+      _xifexpression = "AbstractMonitoringRecord";
+    }
+    return _xifexpression;
+  }
+  
+  /**
+   * Create the sequence of implements of the class and render the implements char sequence.
    */
   private CharSequence createImplements(final RecordType type) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("IMonitoringRecord.Factory, IMonitoringRecord.BinaryFactory");
-    String _xifexpression = null;
+    ArrayList<CharSequence> _arrayList = new ArrayList<CharSequence>();
+    final List<CharSequence> interfaces = _arrayList;
+    RecordType _parent = type.getParent();
+    boolean _equals = Objects.equal(_parent, null);
+    if (_equals) {
+      interfaces.add("IMonitoringRecord.Factory");
+      interfaces.add("IMonitoringRecord.BinaryFactory");
+    }
     boolean _and = false;
     EList<PartialRecordType> _parents = type.getParents();
     boolean _notEquals = (!Objects.equal(_parents, null));
@@ -935,26 +951,27 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     }
     if (_and) {
       EList<PartialRecordType> _parents_2 = type.getParents();
-      final Function1<PartialRecordType,CharSequence> _function = new Function1<PartialRecordType,CharSequence>() {
-        public CharSequence apply(final PartialRecordType i) {
-          CharSequence _createImplement = RecordTypeGenerator.this.createImplement(i);
-          return _createImplement;
+      final Function1<PartialRecordType,String> _function = new Function1<PartialRecordType,String>() {
+        public String apply(final PartialRecordType iface) {
+          String _name = iface.getName();
+          return _name;
         }
       };
-      List<CharSequence> _map = ListExtensions.<PartialRecordType, CharSequence>map(_parents_2, _function);
-      String _join = IterableExtensions.join(_map, ", ");
-      String _plus = (", " + _join);
-      _xifexpression = _plus;
+      List<String> _map = ListExtensions.<PartialRecordType, String>map(_parents_2, _function);
+      interfaces.addAll(_map);
     }
-    _builder.append(_xifexpression, "");
-    return _builder;
-  }
-  
-  private CharSequence createImplement(final PartialRecordType type) {
-    StringConcatenation _builder = new StringConcatenation();
-    String _name = type.getName();
-    _builder.append(_name, "");
-    return _builder;
+    int _size_1 = interfaces.size();
+    boolean _greaterThan_1 = (_size_1 > 0);
+    if (_greaterThan_1) {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append(" ");
+      _builder.append("implements ");
+      String _join = IterableExtensions.join(interfaces, ", ");
+      _builder.append(_join, " ");
+      return _builder;
+    } else {
+      return " ";
+    }
   }
   
   /**
@@ -1896,8 +1913,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   private CharSequence createPropertyType(final Property property, final RecordType type) {
     StringConcatenation _builder = new StringConcatenation();
     Classifier _findType = PropertyEvaluation.findType(property);
-    String _createObjectTypeName = this.createObjectTypeName(_findType);
-    _builder.append(_createObjectTypeName, "");
+    CharSequence _createTypeName = this.createTypeName(_findType);
+    _builder.append(_createTypeName, "");
     _builder.append(".class, // ");
     CharSequence _computeFullQualifiedPropertyName = this.computeFullQualifiedPropertyName(property, type);
     _builder.append(_computeFullQualifiedPropertyName, "");
