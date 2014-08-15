@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.cau.cs.se.instrumentation.rl/src-gen" editDirectory="/de.cau.cs.se.instrumentation.rl.edit/src"
+    editorDirectory="/de.cau.cs.se.instrumentation.rl.editor/src" modelPluginID="de.cau.cs.se.instrumentation.rl"
+    forceOverwrite="true" modelName="RecordLang" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="de.cau.cs.se.instrumentation.rl.edit"
+    editorPluginID="de.cau.cs.se.instrumentation.rl.editor" runtimeVersion="2.9" usedGenPackages="../../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+  <genPackages prefix="RecordLang" basePackage="de.cau.cs.se.instrumentation.rl" disposableProviderFactory="true"
+      fileExtensions="irl" ecorePackage="RecordLang.ecore#/">
+    <genClasses ecoreClass="RecordLang.ecore#//Model">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RecordLang.ecore#//Model/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Model/packages"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Model/imports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Model/types"/>
+    </genClasses>
+    <genClasses ecoreClass="RecordLang.ecore#//Import">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RecordLang.ecore#//Import/importedNamespace"/>
+    </genClasses>
+    <genClasses ecoreClass="RecordLang.ecore#//Package">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RecordLang.ecore#//Package/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Package/package"/>
+    </genClasses>
+    <genClasses ecoreClass="RecordLang.ecore#//Type">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RecordLang.ecore#//Type/author"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RecordLang.ecore#//Type/since"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RecordLang.ecore#//Type/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Type/parents"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Type/properties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Type/constants"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RecordLang.ecore#//Type/version"/>
+    </genClasses>
+    <genClasses ecoreClass="RecordLang.ecore#//PartialRecordType"/>
+    <genClasses ecoreClass="RecordLang.ecore#//RecordType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RecordLang.ecore#//RecordType/abstract"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RecordLang.ecore#//RecordType/parent"/>
+    </genClasses>
+    <genClasses ecoreClass="RecordLang.ecore#//Constant">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Constant/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RecordLang.ecore#//Constant/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Constant/value"/>
+    </genClasses>
+    <genClasses ecoreClass="RecordLang.ecore#//Property">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Property/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Property/referTo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RecordLang.ecore#//Property/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Property/properties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Property/value"/>
+    </genClasses>
+    <genClasses ecoreClass="RecordLang.ecore#//Classifier">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Classifier/package"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Classifier/class"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Classifier/sizes"/>
+    </genClasses>
+    <genClasses ecoreClass="RecordLang.ecore#//ArraySize">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RecordLang.ecore#//ArraySize/size"/>
+    </genClasses>
+    <genClasses ecoreClass="RecordLang.ecore#//ReferenceProperty">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RecordLang.ecore#//ReferenceProperty/ref"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RecordLang.ecore#//ReferenceProperty/properties"/>
+    </genClasses>
+    <genClasses ecoreClass="RecordLang.ecore#//Literal"/>
+    <genClasses ecoreClass="RecordLang.ecore#//ArrayLiteral">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RecordLang.ecore#//ArrayLiteral/literals"/>
+    </genClasses>
+    <genClasses ecoreClass="RecordLang.ecore#//StringLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RecordLang.ecore#//StringLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="RecordLang.ecore#//IntLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RecordLang.ecore#//IntLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="RecordLang.ecore#//FloatLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RecordLang.ecore#//FloatLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="RecordLang.ecore#//BooleanLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RecordLang.ecore#//BooleanLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="RecordLang.ecore#//ConstantLiteral">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RecordLang.ecore#//ConstantLiteral/value"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
