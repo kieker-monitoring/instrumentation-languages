@@ -56,6 +56,8 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		val serialUID = ComputeUID.computeDefaultSUID(type) + 'L'
 		val allDataProperties = PropertyEvaluation::collectAllDataProperties(type)
 		val allDeclarationProperties = collectAllDeclarationProperties(type)
+		val definedAuthor = if (type.author == null) author else type.author
+		val definedVersion = if (type.since == null) version else type.since
 		'''
 		/***************************************************************************
 		 * Copyright 2013 Kieker Project (http://kieker-monitoring.net)
@@ -87,9 +89,9 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		«if (type.parents != null && type.parents.size > 0) type.parents.map[i | i.createInterfaceImport].join»
 		
 		/**
-		 * @author «author»
+		 * @author «definedAuthor»
 		 * 
-		 * @since «version»
+		 * @since «definedVersion»
 		 */
 		public «if (type.abstract) 'abstract '»class «type.name» extends «type.createParent»«type.createImplements» {
 			«IF (!type.abstract) »/** Descriptive definition of the serialization size of the record. */

@@ -28,6 +28,8 @@ class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerator {
 	override fileName(Type type) '''«type.directoryName»«File::separator»«type.name».java'''
 	
 	override createContent(PartialRecordType type, String author, String version) {
+		val definedAuthor = if (type.author == null) author else type.author
+		val definedVersion = if (type.since == null) version else type.since
 		'''
 		/***************************************************************************
 		 * Copyright 2013 Kieker Project (http://kieker-monitoring.net)
@@ -47,18 +49,32 @@ class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerator {
 		
 		package «(type.eContainer as Model).name»;
 		
+		«type.parents.createImports(type)»
+		
 		/**
-		 * @author «author»
+		 * @author «definedAuthor»
 		 * 
-		 * @since «version»
+		 * @since «definedVersion»
 		 */
-		public interface «type.name»«if (type.parents!=null && type.parents.size>0) type.parents.createExtends» {
+		public interface «type.name» extends «type.parents.createExtends» {
 			«type.properties.map[property | createPropertyGetter(property)].join»
 		}
 		'''
 	}
 	
-	def createExtends(EList<PartialRecordType> parents) ''' extends «parents.map[t | t.name].join(', ')»'''
+	def isInSamePackage(PartialRecordType left, PartialRecordType right) {
+		return (left.eContainer as Model).name != (right.eContainer as Model).name
+	}
+	
+	def createImports(EList<PartialRecordType> parents, PartialRecordType type) '''«if (parents!=null && parents.size>0) parents.filter[t | isInSamePackage(type, t)].map[createImport].join() else createDefaultImport»'''
+	
+	def createDefaultImport() '''import kieker.common.record.IMonitoringRecord;
+	'''
+	
+	def createImport(PartialRecordType type) '''import «(type.eContainer as Model).name».«type»;
+	'''
+	
+	def createExtends(EList<PartialRecordType> parents) '''«if (parents!=null && parents.size>0) parents.map[t | t.name].join(', ') else 'IMonitoringRecord'»'''
 	
 	/**
 	 * Creates a getter for a given property.

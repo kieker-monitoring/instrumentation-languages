@@ -19,77 +19,77 @@ import com.google.inject.Module;
 
 /**
  * This class was generated. Customizations should only happen in a newly
- * introduced subclass.
+ * introduced subclass. 
  */
 public class RecordLangActivator extends AbstractUIPlugin {
-
+	
 	public static final String DE_CAU_CS_SE_INSTRUMENTATION_RL_RECORDLANG = "de.cau.cs.se.instrumentation.rl.RecordLang";
-
+	
 	private static final Logger logger = Logger.getLogger(RecordLangActivator.class);
-
+	
 	private static RecordLangActivator INSTANCE;
-
-	private final Map<String, Injector> injectors = Collections.synchronizedMap(Maps.<String, Injector> newHashMapWithExpectedSize(1));
-
+	
+	private Map<String, Injector> injectors = Collections.synchronizedMap(Maps.<String, Injector> newHashMapWithExpectedSize(1));
+	
 	@Override
-	public void start(final BundleContext context) throws Exception {
+	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		INSTANCE = this;
 	}
-
+	
 	@Override
-	public void stop(final BundleContext context) throws Exception {
-		this.injectors.clear();
+	public void stop(BundleContext context) throws Exception {
+		injectors.clear();
 		INSTANCE = null;
 		super.stop(context);
 	}
-
+	
 	public static RecordLangActivator getInstance() {
 		return INSTANCE;
 	}
-
-	public Injector getInjector(final String language) {
-		synchronized (this.injectors) {
-			Injector injector = this.injectors.get(language);
+	
+	public Injector getInjector(String language) {
+		synchronized (injectors) {
+			Injector injector = injectors.get(language);
 			if (injector == null) {
-				this.injectors.put(language, injector = this.createInjector(language));
+				injectors.put(language, injector = createInjector(language));
 			}
 			return injector;
 		}
 	}
-
-	protected Injector createInjector(final String language) {
+	
+	protected Injector createInjector(String language) {
 		try {
-			final Module runtimeModule = this.getRuntimeModule(language);
-			final Module sharedStateModule = this.getSharedStateModule();
-			final Module uiModule = this.getUiModule(language);
-			final Module mergedModule = Modules2.mixin(runtimeModule, sharedStateModule, uiModule);
+			Module runtimeModule = getRuntimeModule(language);
+			Module sharedStateModule = getSharedStateModule();
+			Module uiModule = getUiModule(language);
+			Module mergedModule = Modules2.mixin(runtimeModule, sharedStateModule, uiModule);
 			return Guice.createInjector(mergedModule);
-		} catch (final Exception e) {
+		} catch (Exception e) {
 			logger.error("Failed to create injector for " + language);
 			logger.error(e.getMessage(), e);
 			throw new RuntimeException("Failed to create injector for " + language, e);
 		}
 	}
 
-	protected Module getRuntimeModule(final String grammar) {
+	protected Module getRuntimeModule(String grammar) {
 		if (DE_CAU_CS_SE_INSTRUMENTATION_RL_RECORDLANG.equals(grammar)) {
 			return new de.cau.cs.se.instrumentation.rl.RecordLangRuntimeModule();
 		}
-
+		
 		throw new IllegalArgumentException(grammar);
 	}
-
-	protected Module getUiModule(final String grammar) {
+	
+	protected Module getUiModule(String grammar) {
 		if (DE_CAU_CS_SE_INSTRUMENTATION_RL_RECORDLANG.equals(grammar)) {
 			return new de.cau.cs.se.instrumentation.rl.ui.RecordLangUiModule(this);
 		}
-
+		
 		throw new IllegalArgumentException(grammar);
 	}
-
+	
 	protected Module getSharedStateModule() {
 		return new SharedStateModule();
 	}
-
+	
 }

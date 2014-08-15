@@ -30,6 +30,8 @@ public class TypesHighlightingConfiguration extends DefaultHighlightingConfigura
 
 	/** Bogous type id. */
 	public static final String TYPE_ID = "type";
+	/** tag id. */
+	public static final String TAG_ID = "tag";
 
 	/**
 	 * 
@@ -42,6 +44,7 @@ public class TypesHighlightingConfiguration extends DefaultHighlightingConfigura
 	public void configure(final IHighlightingConfigurationAcceptor acceptor) {
 		super.configure(acceptor);
 		acceptor.acceptDefaultHighlighting(TYPE_ID, "Type", this.typeTextStyle());
+		acceptor.acceptDefaultHighlighting(TAG_ID, "Tag", this.tagTextStyle());
 	}
 
 	/**
@@ -52,6 +55,18 @@ public class TypesHighlightingConfiguration extends DefaultHighlightingConfigura
 	public TextStyle typeTextStyle() {
 		final TextStyle textStyle = this.defaultTextStyle().copy();
 		textStyle.setColor(new RGB(255, 42, 42));
+		textStyle.setStyle(SWT.BOLD);
+		return textStyle;
+	}
+
+	/**
+	 * Define text style for types.
+	 * 
+	 * @return the text style
+	 */
+	public TextStyle tagTextStyle() {
+		final TextStyle textStyle = this.defaultTextStyle().copy();
+		textStyle.setColor(new RGB(129, 129, 199));
 		textStyle.setStyle(SWT.BOLD);
 		return textStyle;
 	}

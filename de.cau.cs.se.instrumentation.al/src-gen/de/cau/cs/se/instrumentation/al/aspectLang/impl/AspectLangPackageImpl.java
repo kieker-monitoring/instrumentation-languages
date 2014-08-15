@@ -310,8 +310,8 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
 
     // Initialize simple dependencies
     StructurePackage.eINSTANCE.eClass();
-    RecordLangPackage.eINSTANCE.eClass();
     AnnotationsPackage.eINSTANCE.eClass();
+    RecordLangPackage.eINSTANCE.eClass();
 
     // Create package meta-data objects
     theAspectLangPackage.createPackageContents();

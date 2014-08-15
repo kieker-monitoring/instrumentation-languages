@@ -32,6 +32,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.TypeImpl#getAuthor <em>Author</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.TypeImpl#getSince <em>Since</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.TypeImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.TypeImpl#getParents <em>Parents</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.TypeImpl#getProperties <em>Properties</em>}</li>
@@ -43,6 +45,46 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class TypeImpl extends MinimalEObjectImpl.Container implements Type
 {
+  /**
+   * The default value of the '{@link #getAuthor() <em>Author</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAuthor()
+   * @generated
+   * @ordered
+   */
+  protected static final String AUTHOR_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getAuthor() <em>Author</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAuthor()
+   * @generated
+   * @ordered
+   */
+  protected String author = AUTHOR_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getSince() <em>Since</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSince()
+   * @generated
+   * @ordered
+   */
+  protected static final Float SINCE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getSince() <em>Since</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSince()
+   * @generated
+   * @ordered
+   */
+  protected Float since = SINCE_EDEFAULT;
+
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -112,6 +154,52 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type
   protected EClass eStaticClass()
   {
     return RecordLangPackage.Literals.TYPE;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getAuthor()
+  {
+    return author;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setAuthor(String newAuthor)
+  {
+    String oldAuthor = author;
+    author = newAuthor;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RecordLangPackage.TYPE__AUTHOR, oldAuthor, author));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Float getSince()
+  {
+    return since;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSince(Float newSince)
+  {
+    Float oldSince = since;
+    since = newSince;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RecordLangPackage.TYPE__SINCE, oldSince, since));
   }
 
   /**
@@ -207,6 +295,10 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type
   {
     switch (featureID)
     {
+      case RecordLangPackage.TYPE__AUTHOR:
+        return getAuthor();
+      case RecordLangPackage.TYPE__SINCE:
+        return getSince();
       case RecordLangPackage.TYPE__NAME:
         return getName();
       case RecordLangPackage.TYPE__PARENTS:
@@ -230,6 +322,12 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type
   {
     switch (featureID)
     {
+      case RecordLangPackage.TYPE__AUTHOR:
+        setAuthor((String)newValue);
+        return;
+      case RecordLangPackage.TYPE__SINCE:
+        setSince((Float)newValue);
+        return;
       case RecordLangPackage.TYPE__NAME:
         setName((String)newValue);
         return;
@@ -259,6 +357,12 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type
   {
     switch (featureID)
     {
+      case RecordLangPackage.TYPE__AUTHOR:
+        setAuthor(AUTHOR_EDEFAULT);
+        return;
+      case RecordLangPackage.TYPE__SINCE:
+        setSince(SINCE_EDEFAULT);
+        return;
       case RecordLangPackage.TYPE__NAME:
         setName(NAME_EDEFAULT);
         return;
@@ -285,6 +389,10 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type
   {
     switch (featureID)
     {
+      case RecordLangPackage.TYPE__AUTHOR:
+        return AUTHOR_EDEFAULT == null ? author != null : !AUTHOR_EDEFAULT.equals(author);
+      case RecordLangPackage.TYPE__SINCE:
+        return SINCE_EDEFAULT == null ? since != null : !SINCE_EDEFAULT.equals(since);
       case RecordLangPackage.TYPE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case RecordLangPackage.TYPE__PARENTS:
@@ -308,7 +416,11 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
+    result.append(" (author: ");
+    result.append(author);
+    result.append(", since: ");
+    result.append(since);
+    result.append(", name: ");
     result.append(name);
     result.append(')');
     return result.toString();

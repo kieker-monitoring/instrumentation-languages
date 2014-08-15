@@ -307,6 +307,8 @@ public class RecordLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 	/**
 	 * Constraint:
 	 *     (
+	 *         author=STRING? 
+	 *         since=FLOAT? 
 	 *         name=ID 
 	 *         (parents+=[PartialRecordType|QualifiedName] parents+=[PartialRecordType|QualifiedName]*)? 
 	 *         (properties+=Property | constants+=Constant)*
@@ -329,6 +331,8 @@ public class RecordLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 	/**
 	 * Constraint:
 	 *     (
+	 *         author=STRING? 
+	 *         since=FLOAT? 
 	 *         abstract?='abstract'? 
 	 *         name=ID 
 	 *         parent=[RecordType|QualifiedName]? 

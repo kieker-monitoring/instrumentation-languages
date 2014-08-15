@@ -187,13 +187,31 @@ public interface RecordLangPackage extends EPackage
   int TYPE = 3;
 
   /**
+   * The feature id for the '<em><b>Author</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPE__AUTHOR = 0;
+
+  /**
+   * The feature id for the '<em><b>Since</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPE__SINCE = 1;
+
+  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TYPE__NAME = 0;
+  int TYPE__NAME = 2;
 
   /**
    * The feature id for the '<em><b>Parents</b></em>' reference list.
@@ -202,7 +220,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TYPE__PARENTS = 1;
+  int TYPE__PARENTS = 3;
 
   /**
    * The feature id for the '<em><b>Properties</b></em>' containment reference list.
@@ -211,7 +229,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TYPE__PROPERTIES = 2;
+  int TYPE__PROPERTIES = 4;
 
   /**
    * The feature id for the '<em><b>Constants</b></em>' containment reference list.
@@ -220,7 +238,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TYPE__CONSTANTS = 3;
+  int TYPE__CONSTANTS = 5;
 
   /**
    * The number of structural features of the '<em>Type</em>' class.
@@ -229,7 +247,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TYPE_FEATURE_COUNT = 4;
+  int TYPE_FEATURE_COUNT = 6;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.PartialRecordTypeImpl <em>Partial Record Type</em>}' class.
@@ -240,6 +258,24 @@ public interface RecordLangPackage extends EPackage
    * @generated
    */
   int PARTIAL_RECORD_TYPE = 4;
+
+  /**
+   * The feature id for the '<em><b>Author</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARTIAL_RECORD_TYPE__AUTHOR = TYPE__AUTHOR;
+
+  /**
+   * The feature id for the '<em><b>Since</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARTIAL_RECORD_TYPE__SINCE = TYPE__SINCE;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -295,6 +331,24 @@ public interface RecordLangPackage extends EPackage
    * @generated
    */
   int RECORD_TYPE = 5;
+
+  /**
+   * The feature id for the '<em><b>Author</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RECORD_TYPE__AUTHOR = TYPE__AUTHOR;
+
+  /**
+   * The feature id for the '<em><b>Since</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RECORD_TYPE__SINCE = TYPE__SINCE;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -886,6 +940,28 @@ public interface RecordLangPackage extends EPackage
   EClass getType();
 
   /**
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.rl.recordLang.Type#getAuthor <em>Author</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Author</em>'.
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.Type#getAuthor()
+   * @see #getType()
+   * @generated
+   */
+  EAttribute getType_Author();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.rl.recordLang.Type#getSince <em>Since</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Since</em>'.
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.Type#getSince()
+   * @see #getType()
+   * @generated
+   */
+  EAttribute getType_Since();
+
+  /**
    * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.rl.recordLang.Type#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1429,6 +1505,22 @@ public interface RecordLangPackage extends EPackage
      * @generated
      */
     EClass TYPE = eINSTANCE.getType();
+
+    /**
+     * The meta object literal for the '<em><b>Author</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TYPE__AUTHOR = eINSTANCE.getType_Author();
+
+    /**
+     * The meta object literal for the '<em><b>Since</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TYPE__SINCE = eINSTANCE.getType_Since();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.

@@ -15,6 +15,7 @@
  ***************************************************************************/
 package de.cau.cs.se.instrumentation.rl.ui;
 
+import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.nodemodel.BidiTreeIterator;
 import org.eclipse.xtext.nodemodel.ILeafNode;
 import org.eclipse.xtext.nodemodel.INode;
@@ -29,6 +30,9 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
  * 
  */
 public class TypesHighlightingCalculator implements ISemanticHighlightingCalculator {
+
+	private static final String AUTHOR_TAG = "@author";
+	private static final String SINCE_TAG = "@since";
 
 	/**
 	 * 
@@ -54,6 +58,16 @@ public class TypesHighlightingCalculator implements ISemanticHighlightingCalcula
 			final INode node = iterator.next();
 			if (node.getSemanticElement() instanceof Classifier) {
 				this.highlightNode(node, TypesHighlightingConfiguration.TYPE_ID, acceptor);
+			}
+			// set special colors for tags
+			if (node.getGrammarElement() instanceof Keyword) {
+				final Keyword keyword = (Keyword) node.getGrammarElement();
+				if (AUTHOR_TAG.equals(keyword.getValue())
+						|| SINCE_TAG.equals(keyword.getValue())) {
+					this.highlightNode(node, TypesHighlightingConfiguration.TAG_ID, acceptor);
+				}
+
+
 			}
 		}
 	}

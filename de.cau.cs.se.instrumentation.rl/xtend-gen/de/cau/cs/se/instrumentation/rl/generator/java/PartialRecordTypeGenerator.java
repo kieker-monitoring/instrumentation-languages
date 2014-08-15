@@ -57,128 +57,221 @@ public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerat
   }
   
   public CharSequence createContent(final PartialRecordType type, final String author, final String version) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("/***************************************************************************");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* Copyright 2013 Kieker Project (http://kieker-monitoring.net)");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("*");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* Licensed under the Apache License, Version 2.0 (the \"License\");");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* you may not use this file except in compliance with the License.");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* You may obtain a copy of the License at");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("*");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("*     http://www.apache.org/licenses/LICENSE-2.0");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("*");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* Unless required by applicable law or agreed to in writing, software");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* distributed under the License is distributed on an \"AS IS\" BASIS,");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* See the License for the specific language governing permissions and");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* limitations under the License.");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("***************************************************************************/");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("package ");
-    EObject _eContainer = type.eContainer();
+    CharSequence _xblockexpression = null;
+    {
+      String _xifexpression = null;
+      String _author = type.getAuthor();
+      boolean _equals = Objects.equal(_author, null);
+      if (_equals) {
+        _xifexpression = author;
+      } else {
+        String _author_1 = type.getAuthor();
+        _xifexpression = _author_1;
+      }
+      final String definedAuthor = _xifexpression;
+      Object _xifexpression_1 = null;
+      Float _since = type.getSince();
+      boolean _equals_1 = Objects.equal(_since, null);
+      if (_equals_1) {
+        _xifexpression_1 = version;
+      } else {
+        Float _since_1 = type.getSince();
+        _xifexpression_1 = _since_1;
+      }
+      final Object definedVersion = _xifexpression_1;
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("/***************************************************************************");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.append("* Copyright 2013 Kieker Project (http://kieker-monitoring.net)");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.append("*");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.append("* Licensed under the Apache License, Version 2.0 (the \"License\");");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.append("* you may not use this file except in compliance with the License.");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.append("* You may obtain a copy of the License at");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.append("*");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.append("*     http://www.apache.org/licenses/LICENSE-2.0");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.append("*");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.append("* Unless required by applicable law or agreed to in writing, software");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.append("* distributed under the License is distributed on an \"AS IS\" BASIS,");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.append("* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.append("* See the License for the specific language governing permissions and");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.append("* limitations under the License.");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.append("***************************************************************************/");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("package ");
+      EObject _eContainer = type.eContainer();
+      String _name = ((Model) _eContainer).getName();
+      _builder.append(_name, "");
+      _builder.append(";");
+      _builder.newLineIfNotEmpty();
+      _builder.newLine();
+      EList<PartialRecordType> _parents = type.getParents();
+      CharSequence _createImports = this.createImports(_parents, type);
+      _builder.append(_createImports, "");
+      _builder.newLineIfNotEmpty();
+      _builder.newLine();
+      _builder.append("/**");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.append("* @author ");
+      _builder.append(definedAuthor, " ");
+      _builder.newLineIfNotEmpty();
+      _builder.append(" ");
+      _builder.append("* ");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.append("* @since ");
+      _builder.append(definedVersion, " ");
+      _builder.newLineIfNotEmpty();
+      _builder.append(" ");
+      _builder.append("*/");
+      _builder.newLine();
+      _builder.append("public interface ");
+      String _name_1 = type.getName();
+      _builder.append(_name_1, "");
+      _builder.append(" extends ");
+      EList<PartialRecordType> _parents_1 = type.getParents();
+      CharSequence _createExtends = this.createExtends(_parents_1);
+      _builder.append(_createExtends, "");
+      _builder.append(" {");
+      _builder.newLineIfNotEmpty();
+      _builder.append("\t");
+      EList<Property> _properties = type.getProperties();
+      final Function1<Property,CharSequence> _function = new Function1<Property,CharSequence>() {
+        public CharSequence apply(final Property property) {
+          CharSequence _createPropertyGetter = PartialRecordTypeGenerator.this.createPropertyGetter(property);
+          return _createPropertyGetter;
+        }
+      };
+      List<CharSequence> _map = ListExtensions.<Property, CharSequence>map(_properties, _function);
+      String _join = IterableExtensions.join(_map);
+      _builder.append(_join, "	");
+      _builder.newLineIfNotEmpty();
+      _builder.append("}");
+      _builder.newLine();
+      _xblockexpression = (_builder);
+    }
+    return _xblockexpression;
+  }
+  
+  public boolean isInSamePackage(final PartialRecordType left, final PartialRecordType right) {
+    EObject _eContainer = left.eContainer();
     String _name = ((Model) _eContainer).getName();
-    _builder.append(_name, "");
-    _builder.append(";");
-    _builder.newLineIfNotEmpty();
-    _builder.newLine();
-    _builder.append("/**");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* @author ");
-    _builder.append(author, " ");
-    _builder.newLineIfNotEmpty();
-    _builder.append(" ");
-    _builder.append("* ");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* @since ");
-    _builder.append(version, " ");
-    _builder.newLineIfNotEmpty();
-    _builder.append(" ");
-    _builder.append("*/");
-    _builder.newLine();
-    _builder.append("public interface ");
-    String _name_1 = type.getName();
-    _builder.append(_name_1, "");
+    EObject _eContainer_1 = right.eContainer();
+    String _name_1 = ((Model) _eContainer_1).getName();
+    return (!Objects.equal(_name, _name_1));
+  }
+  
+  public CharSequence createImports(final EList<PartialRecordType> parents, final PartialRecordType type) {
+    StringConcatenation _builder = new StringConcatenation();
     CharSequence _xifexpression = null;
     boolean _and = false;
-    EList<PartialRecordType> _parents = type.getParents();
-    boolean _notEquals = (!Objects.equal(_parents, null));
+    boolean _notEquals = (!Objects.equal(parents, null));
     if (!_notEquals) {
       _and = false;
     } else {
-      EList<PartialRecordType> _parents_1 = type.getParents();
-      int _size = _parents_1.size();
+      int _size = parents.size();
       boolean _greaterThan = (_size > 0);
       _and = (_notEquals && _greaterThan);
     }
     if (_and) {
-      EList<PartialRecordType> _parents_2 = type.getParents();
-      CharSequence _createExtends = this.createExtends(_parents_2);
-      _xifexpression = _createExtends;
+      final Function1<PartialRecordType,Boolean> _function = new Function1<PartialRecordType,Boolean>() {
+        public Boolean apply(final PartialRecordType t) {
+          boolean _isInSamePackage = PartialRecordTypeGenerator.this.isInSamePackage(type, t);
+          return Boolean.valueOf(_isInSamePackage);
+        }
+      };
+      Iterable<PartialRecordType> _filter = IterableExtensions.<PartialRecordType>filter(parents, _function);
+      final Function1<PartialRecordType,CharSequence> _function_1 = new Function1<PartialRecordType,CharSequence>() {
+        public CharSequence apply(final PartialRecordType it) {
+          CharSequence _createImport = PartialRecordTypeGenerator.this.createImport(it);
+          return _createImport;
+        }
+      };
+      Iterable<CharSequence> _map = IterableExtensions.<PartialRecordType, CharSequence>map(_filter, _function_1);
+      String _join = IterableExtensions.join(_map);
+      _xifexpression = _join;
+    } else {
+      CharSequence _createDefaultImport = this.createDefaultImport();
+      _xifexpression = _createDefaultImport;
     }
     _builder.append(_xifexpression, "");
-    _builder.append(" {");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t");
-    EList<Property> _properties = type.getProperties();
-    final Function1<Property,CharSequence> _function = new Function1<Property,CharSequence>() {
-      public CharSequence apply(final Property property) {
-        CharSequence _createPropertyGetter = PartialRecordTypeGenerator.this.createPropertyGetter(property);
-        return _createPropertyGetter;
-      }
-    };
-    List<CharSequence> _map = ListExtensions.<Property, CharSequence>map(_properties, _function);
-    String _join = IterableExtensions.join(_map);
-    _builder.append(_join, "	");
-    _builder.newLineIfNotEmpty();
-    _builder.append("}");
+    return _builder;
+  }
+  
+  public CharSequence createDefaultImport() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("import kieker.common.record.IMonitoringRecord;");
     _builder.newLine();
+    return _builder;
+  }
+  
+  public CharSequence createImport(final PartialRecordType type) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("import ");
+    EObject _eContainer = type.eContainer();
+    String _name = ((Model) _eContainer).getName();
+    _builder.append(_name, "");
+    _builder.append(".");
+    _builder.append(type, "");
+    _builder.append(";");
+    _builder.newLineIfNotEmpty();
     return _builder;
   }
   
   public CharSequence createExtends(final EList<PartialRecordType> parents) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append(" ");
-    _builder.append("extends ");
-    final Function1<PartialRecordType,String> _function = new Function1<PartialRecordType,String>() {
-      public String apply(final PartialRecordType t) {
-        String _name = t.getName();
-        return _name;
-      }
-    };
-    List<String> _map = ListExtensions.<PartialRecordType, String>map(parents, _function);
-    String _join = IterableExtensions.join(_map, ", ");
-    _builder.append(_join, " ");
+    String _xifexpression = null;
+    boolean _and = false;
+    boolean _notEquals = (!Objects.equal(parents, null));
+    if (!_notEquals) {
+      _and = false;
+    } else {
+      int _size = parents.size();
+      boolean _greaterThan = (_size > 0);
+      _and = (_notEquals && _greaterThan);
+    }
+    if (_and) {
+      final Function1<PartialRecordType,String> _function = new Function1<PartialRecordType,String>() {
+        public String apply(final PartialRecordType t) {
+          String _name = t.getName();
+          return _name;
+        }
+      };
+      List<String> _map = ListExtensions.<PartialRecordType, String>map(parents, _function);
+      String _join = IterableExtensions.join(_map, ", ");
+      _xifexpression = _join;
+    } else {
+      _xifexpression = "IMonitoringRecord";
+    }
+    _builder.append(_xifexpression, "");
     return _builder;
   }
   

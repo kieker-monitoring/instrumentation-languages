@@ -14,6 +14,8 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.Type#getAuthor <em>Author</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.Type#getSince <em>Since</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.Type#getName <em>Name</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.Type#getParents <em>Parents</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.Type#getProperties <em>Properties</em>}</li>
@@ -27,6 +29,58 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Type extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Author</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Author</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Author</em>' attribute.
+   * @see #setAuthor(String)
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getType_Author()
+   * @model
+   * @generated
+   */
+  String getAuthor();
+
+  /**
+   * Sets the value of the '{@link de.cau.cs.se.instrumentation.rl.recordLang.Type#getAuthor <em>Author</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Author</em>' attribute.
+   * @see #getAuthor()
+   * @generated
+   */
+  void setAuthor(String value);
+
+  /**
+   * Returns the value of the '<em><b>Since</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Since</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Since</em>' attribute.
+   * @see #setSince(Float)
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getType_Since()
+   * @model
+   * @generated
+   */
+  Float getSince();
+
+  /**
+   * Sets the value of the '{@link de.cau.cs.se.instrumentation.rl.recordLang.Type#getSince <em>Since</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Since</em>' attribute.
+   * @see #getSince()
+   * @generated
+   */
+  void setSince(Float value);
+
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->

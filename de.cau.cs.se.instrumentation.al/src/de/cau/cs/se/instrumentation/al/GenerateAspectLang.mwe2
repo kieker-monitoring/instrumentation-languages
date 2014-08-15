@@ -25,7 +25,7 @@ Workflow {
     	registerGeneratedEPackage = "de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage"
     	registerGeneratedEPackage = "de.cau.cs.se.instrumantation.model.structure.StructurePackage"
     	
-        registerGenModelFile = "platform:/resource/de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/RecordLang.genmodel"
+        registerGenModelFile = "platform:/resource/de.cau.cs.se.instrumentation.rl/model/generated/RecordLang.genmodel"
     	registerGenModelFile = "platform:/resource/de.cau.cs.se.instrumentation.al/model/ModelStructure.genmodel"
     }
     

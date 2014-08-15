@@ -126,62 +126,6 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getPackageEPackageSTRINGTerminalRuleCall_2_0_1() { return cPackageEPackageSTRINGTerminalRuleCall_2_0_1; }
 	}
 
-	public class QualifiedNameElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "QualifiedName");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cIDTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Keyword cFullStopKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final RuleCall cIDTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
-		
-		//QualifiedName:
-		//	ID ("." ID)*;
-		public ParserRule getRule() { return rule; }
-
-		//ID ("." ID)*
-		public Group getGroup() { return cGroup; }
-
-		//ID
-		public RuleCall getIDTerminalRuleCall_0() { return cIDTerminalRuleCall_0; }
-
-		//(=> "." ID)*
-		public Group getGroup_1() { return cGroup_1; }
-
-		//=> "."
-		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
-
-		//ID
-		public RuleCall getIDTerminalRuleCall_1_1() { return cIDTerminalRuleCall_1_1; }
-	}
-
-	public class QualifiedNameWithWildcardElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "QualifiedNameWithWildcard");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cQualifiedNameParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Keyword cFullStopKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Keyword cAsteriskKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
-		
-		//QualifiedNameWithWildcard:
-		//	QualifiedName ("." "*")?;
-		public ParserRule getRule() { return rule; }
-
-		//QualifiedName ("." "*")?
-		public Group getGroup() { return cGroup; }
-
-		//QualifiedName
-		public RuleCall getQualifiedNameParserRuleCall_0() { return cQualifiedNameParserRuleCall_0; }
-
-		//("." "*")?
-		public Group getGroup_1() { return cGroup_1; }
-
-		//"."
-		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
-
-		//"*"
-		public Keyword getAsteriskKeyword_1_1() { return cAsteriskKeyword_1_1; }
-	}
-
 	public class TypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Type");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -205,114 +149,17 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	public class PartialRecordTypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "PartialRecordType");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cTemplateKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cColonKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Assignment cParentsAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final CrossReference cParentsPartialRecordTypeCrossReference_2_1_0 = (CrossReference)cParentsAssignment_2_1.eContents().get(0);
-		private final RuleCall cParentsPartialRecordTypeQualifiedNameParserRuleCall_2_1_0_1 = (RuleCall)cParentsPartialRecordTypeCrossReference_2_1_0.eContents().get(1);
-		private final Group cGroup_2_2 = (Group)cGroup_2.eContents().get(2);
-		private final Keyword cCommaKeyword_2_2_0 = (Keyword)cGroup_2_2.eContents().get(0);
-		private final Assignment cParentsAssignment_2_2_1 = (Assignment)cGroup_2_2.eContents().get(1);
-		private final CrossReference cParentsPartialRecordTypeCrossReference_2_2_1_0 = (CrossReference)cParentsAssignment_2_2_1.eContents().get(0);
-		private final RuleCall cParentsPartialRecordTypeQualifiedNameParserRuleCall_2_2_1_0_1 = (RuleCall)cParentsPartialRecordTypeCrossReference_2_2_1_0.eContents().get(1);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cLeftCurlyBracketKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Alternatives cAlternatives_3_1 = (Alternatives)cGroup_3.eContents().get(1);
-		private final Assignment cPropertiesAssignment_3_1_0 = (Assignment)cAlternatives_3_1.eContents().get(0);
-		private final RuleCall cPropertiesPropertyParserRuleCall_3_1_0_0 = (RuleCall)cPropertiesAssignment_3_1_0.eContents().get(0);
-		private final Assignment cConstantsAssignment_3_1_1 = (Assignment)cAlternatives_3_1.eContents().get(1);
-		private final RuleCall cConstantsConstantParserRuleCall_3_1_1_0 = (RuleCall)cConstantsAssignment_3_1_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
-		
-		//PartialRecordType:
-		//	"template" name=ID (":" parents+=[PartialRecordType|QualifiedName] ("," parents+=[PartialRecordType|QualifiedName])*)?
-		//	("{" (properties+=Property | constants+=Constant)* "}")?;
-		public ParserRule getRule() { return rule; }
-
-		//"template" name=ID (":" parents+=[PartialRecordType|QualifiedName] ("," parents+=[PartialRecordType|QualifiedName])*)?
-		//("{" (properties+=Property | constants+=Constant)* "}")?
-		public Group getGroup() { return cGroup; }
-
-		//"template"
-		public Keyword getTemplateKeyword_0() { return cTemplateKeyword_0; }
-
-		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
-
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
-
-		//(":" parents+=[PartialRecordType|QualifiedName] ("," parents+=[PartialRecordType|QualifiedName])*)?
-		public Group getGroup_2() { return cGroup_2; }
-
-		//":"
-		public Keyword getColonKeyword_2_0() { return cColonKeyword_2_0; }
-
-		//parents+=[PartialRecordType|QualifiedName]
-		public Assignment getParentsAssignment_2_1() { return cParentsAssignment_2_1; }
-
-		//[PartialRecordType|QualifiedName]
-		public CrossReference getParentsPartialRecordTypeCrossReference_2_1_0() { return cParentsPartialRecordTypeCrossReference_2_1_0; }
-
-		//QualifiedName
-		public RuleCall getParentsPartialRecordTypeQualifiedNameParserRuleCall_2_1_0_1() { return cParentsPartialRecordTypeQualifiedNameParserRuleCall_2_1_0_1; }
-
-		//("," parents+=[PartialRecordType|QualifiedName])*
-		public Group getGroup_2_2() { return cGroup_2_2; }
-
-		//","
-		public Keyword getCommaKeyword_2_2_0() { return cCommaKeyword_2_2_0; }
-
-		//parents+=[PartialRecordType|QualifiedName]
-		public Assignment getParentsAssignment_2_2_1() { return cParentsAssignment_2_2_1; }
-
-		//[PartialRecordType|QualifiedName]
-		public CrossReference getParentsPartialRecordTypeCrossReference_2_2_1_0() { return cParentsPartialRecordTypeCrossReference_2_2_1_0; }
-
-		//QualifiedName
-		public RuleCall getParentsPartialRecordTypeQualifiedNameParserRuleCall_2_2_1_0_1() { return cParentsPartialRecordTypeQualifiedNameParserRuleCall_2_2_1_0_1; }
-
-		//("{" (properties+=Property | constants+=Constant)* "}")?
-		public Group getGroup_3() { return cGroup_3; }
-
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_3_0() { return cLeftCurlyBracketKeyword_3_0; }
-
-		//(properties+=Property | constants+=Constant)*
-		public Alternatives getAlternatives_3_1() { return cAlternatives_3_1; }
-
-		//properties+=Property
-		public Assignment getPropertiesAssignment_3_1_0() { return cPropertiesAssignment_3_1_0; }
-
-		//Property
-		public RuleCall getPropertiesPropertyParserRuleCall_3_1_0_0() { return cPropertiesPropertyParserRuleCall_3_1_0_0; }
-
-		//constants+=Constant
-		public Assignment getConstantsAssignment_3_1_1() { return cConstantsAssignment_3_1_1; }
-
-		//Constant
-		public RuleCall getConstantsConstantParserRuleCall_3_1_1_0() { return cConstantsConstantParserRuleCall_3_1_1_0; }
-
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_3_2() { return cRightCurlyBracketKeyword_3_2; }
-	}
-
-	public class RecordTypeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RecordType");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cAbstractAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final Keyword cAbstractAbstractKeyword_0_0 = (Keyword)cAbstractAssignment_0.eContents().get(0);
-		private final Keyword cEntityKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cExtendsKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cParentAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final CrossReference cParentRecordTypeCrossReference_3_1_0 = (CrossReference)cParentAssignment_3_1.eContents().get(0);
-		private final RuleCall cParentRecordTypeQualifiedNameParserRuleCall_3_1_0_1 = (RuleCall)cParentRecordTypeCrossReference_3_1_0.eContents().get(1);
+		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
+		private final Keyword cAuthorKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final Assignment cAuthorAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final RuleCall cAuthorSTRINGTerminalRuleCall_0_1_0 = (RuleCall)cAuthorAssignment_0_1.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cSinceKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cSinceAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cSinceFLOATTerminalRuleCall_1_1_0 = (RuleCall)cSinceAssignment_1_1.eContents().get(0);
+		private final Keyword cTemplateKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cNameIDTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
 		private final Keyword cColonKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
 		private final Assignment cParentsAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
@@ -332,46 +179,47 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cConstantsConstantParserRuleCall_5_1_1_0 = (RuleCall)cConstantsAssignment_5_1_1.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_5_2 = (Keyword)cGroup_5.eContents().get(2);
 		
-		//RecordType:
-		//	abstract?="abstract"? "entity" name=ID ("extends" parent=[RecordType|QualifiedName])? (":"
-		//	parents+=[PartialRecordType|QualifiedName] ("," parents+=[PartialRecordType|QualifiedName])*)? ("{"
-		//	(properties+=Property | constants+=Constant)* "}")?;
+		//PartialRecordType:
+		//	("@author" author=STRING)? ("@since" since=FLOAT)? "template" name=ID (":" parents+=[PartialRecordType|QualifiedName]
+		//	("," parents+=[PartialRecordType|QualifiedName])*)? ("{" (properties+=Property | constants+=Constant)* "}")?;
 		public ParserRule getRule() { return rule; }
 
-		//abstract?="abstract"? "entity" name=ID ("extends" parent=[RecordType|QualifiedName])? (":"
-		//parents+=[PartialRecordType|QualifiedName] ("," parents+=[PartialRecordType|QualifiedName])*)? ("{"
-		//(properties+=Property | constants+=Constant)* "}")?
+		//("@author" author=STRING)? ("@since" since=FLOAT)? "template" name=ID (":" parents+=[PartialRecordType|QualifiedName]
+		//("," parents+=[PartialRecordType|QualifiedName])*)? ("{" (properties+=Property | constants+=Constant)* "}")?
 		public Group getGroup() { return cGroup; }
 
-		//abstract?="abstract"?
-		public Assignment getAbstractAssignment_0() { return cAbstractAssignment_0; }
+		//("@author" author=STRING)?
+		public Group getGroup_0() { return cGroup_0; }
 
-		//"abstract"
-		public Keyword getAbstractAbstractKeyword_0_0() { return cAbstractAbstractKeyword_0_0; }
+		//"@author"
+		public Keyword getAuthorKeyword_0_0() { return cAuthorKeyword_0_0; }
 
-		//"entity"
-		public Keyword getEntityKeyword_1() { return cEntityKeyword_1; }
+		//author=STRING
+		public Assignment getAuthorAssignment_0_1() { return cAuthorAssignment_0_1; }
+
+		//STRING
+		public RuleCall getAuthorSTRINGTerminalRuleCall_0_1_0() { return cAuthorSTRINGTerminalRuleCall_0_1_0; }
+
+		//("@since" since=FLOAT)?
+		public Group getGroup_1() { return cGroup_1; }
+
+		//"@since"
+		public Keyword getSinceKeyword_1_0() { return cSinceKeyword_1_0; }
+
+		//since=FLOAT
+		public Assignment getSinceAssignment_1_1() { return cSinceAssignment_1_1; }
+
+		//FLOAT
+		public RuleCall getSinceFLOATTerminalRuleCall_1_1_0() { return cSinceFLOATTerminalRuleCall_1_1_0; }
+
+		//"template"
+		public Keyword getTemplateKeyword_2() { return cTemplateKeyword_2; }
 
 		//name=ID
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
 
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
-
-		//("extends" parent=[RecordType|QualifiedName])?
-		public Group getGroup_3() { return cGroup_3; }
-
-		//"extends"
-		public Keyword getExtendsKeyword_3_0() { return cExtendsKeyword_3_0; }
-
-		//parent=[RecordType|QualifiedName]
-		public Assignment getParentAssignment_3_1() { return cParentAssignment_3_1; }
-
-		//[RecordType|QualifiedName]
-		public CrossReference getParentRecordTypeCrossReference_3_1_0() { return cParentRecordTypeCrossReference_3_1_0; }
-
-		//QualifiedName
-		public RuleCall getParentRecordTypeQualifiedNameParserRuleCall_3_1_0_1() { return cParentRecordTypeQualifiedNameParserRuleCall_3_1_0_1; }
+		public RuleCall getNameIDTerminalRuleCall_3_0() { return cNameIDTerminalRuleCall_3_0; }
 
 		//(":" parents+=[PartialRecordType|QualifiedName] ("," parents+=[PartialRecordType|QualifiedName])*)?
 		public Group getGroup_4() { return cGroup_4; }
@@ -426,6 +274,166 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_5_2() { return cRightCurlyBracketKeyword_5_2; }
+	}
+
+	public class RecordTypeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RecordType");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
+		private final Keyword cAuthorKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final Assignment cAuthorAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final RuleCall cAuthorSTRINGTerminalRuleCall_0_1_0 = (RuleCall)cAuthorAssignment_0_1.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cSinceKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cSinceAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cSinceFLOATTerminalRuleCall_1_1_0 = (RuleCall)cSinceAssignment_1_1.eContents().get(0);
+		private final Assignment cAbstractAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final Keyword cAbstractAbstractKeyword_2_0 = (Keyword)cAbstractAssignment_2.eContents().get(0);
+		private final Keyword cEntityKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cNameAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cNameIDTerminalRuleCall_4_0 = (RuleCall)cNameAssignment_4.eContents().get(0);
+		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
+		private final Keyword cExtendsKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final Assignment cParentAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
+		private final CrossReference cParentRecordTypeCrossReference_5_1_0 = (CrossReference)cParentAssignment_5_1.eContents().get(0);
+		private final RuleCall cParentRecordTypeQualifiedNameParserRuleCall_5_1_0_1 = (RuleCall)cParentRecordTypeCrossReference_5_1_0.eContents().get(1);
+		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
+		private final Keyword cColonKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
+		private final Assignment cParentsAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
+		private final CrossReference cParentsPartialRecordTypeCrossReference_6_1_0 = (CrossReference)cParentsAssignment_6_1.eContents().get(0);
+		private final RuleCall cParentsPartialRecordTypeQualifiedNameParserRuleCall_6_1_0_1 = (RuleCall)cParentsPartialRecordTypeCrossReference_6_1_0.eContents().get(1);
+		private final Group cGroup_6_2 = (Group)cGroup_6.eContents().get(2);
+		private final Keyword cCommaKeyword_6_2_0 = (Keyword)cGroup_6_2.eContents().get(0);
+		private final Assignment cParentsAssignment_6_2_1 = (Assignment)cGroup_6_2.eContents().get(1);
+		private final CrossReference cParentsPartialRecordTypeCrossReference_6_2_1_0 = (CrossReference)cParentsAssignment_6_2_1.eContents().get(0);
+		private final RuleCall cParentsPartialRecordTypeQualifiedNameParserRuleCall_6_2_1_0_1 = (RuleCall)cParentsPartialRecordTypeCrossReference_6_2_1_0.eContents().get(1);
+		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
+		private final Keyword cLeftCurlyBracketKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
+		private final Alternatives cAlternatives_7_1 = (Alternatives)cGroup_7.eContents().get(1);
+		private final Assignment cPropertiesAssignment_7_1_0 = (Assignment)cAlternatives_7_1.eContents().get(0);
+		private final RuleCall cPropertiesPropertyParserRuleCall_7_1_0_0 = (RuleCall)cPropertiesAssignment_7_1_0.eContents().get(0);
+		private final Assignment cConstantsAssignment_7_1_1 = (Assignment)cAlternatives_7_1.eContents().get(1);
+		private final RuleCall cConstantsConstantParserRuleCall_7_1_1_0 = (RuleCall)cConstantsAssignment_7_1_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_7_2 = (Keyword)cGroup_7.eContents().get(2);
+		
+		//RecordType:
+		//	("@author" author=STRING)? ("@since" since=FLOAT)? abstract?="abstract"? "entity" name=ID ("extends"
+		//	parent=[RecordType|QualifiedName])? (":" parents+=[PartialRecordType|QualifiedName] (","
+		//	parents+=[PartialRecordType|QualifiedName])*)? ("{" (properties+=Property | constants+=Constant)* "}")?;
+		public ParserRule getRule() { return rule; }
+
+		//("@author" author=STRING)? ("@since" since=FLOAT)? abstract?="abstract"? "entity" name=ID ("extends"
+		//parent=[RecordType|QualifiedName])? (":" parents+=[PartialRecordType|QualifiedName] (","
+		//parents+=[PartialRecordType|QualifiedName])*)? ("{" (properties+=Property | constants+=Constant)* "}")?
+		public Group getGroup() { return cGroup; }
+
+		//("@author" author=STRING)?
+		public Group getGroup_0() { return cGroup_0; }
+
+		//"@author"
+		public Keyword getAuthorKeyword_0_0() { return cAuthorKeyword_0_0; }
+
+		//author=STRING
+		public Assignment getAuthorAssignment_0_1() { return cAuthorAssignment_0_1; }
+
+		//STRING
+		public RuleCall getAuthorSTRINGTerminalRuleCall_0_1_0() { return cAuthorSTRINGTerminalRuleCall_0_1_0; }
+
+		//("@since" since=FLOAT)?
+		public Group getGroup_1() { return cGroup_1; }
+
+		//"@since"
+		public Keyword getSinceKeyword_1_0() { return cSinceKeyword_1_0; }
+
+		//since=FLOAT
+		public Assignment getSinceAssignment_1_1() { return cSinceAssignment_1_1; }
+
+		//FLOAT
+		public RuleCall getSinceFLOATTerminalRuleCall_1_1_0() { return cSinceFLOATTerminalRuleCall_1_1_0; }
+
+		//abstract?="abstract"?
+		public Assignment getAbstractAssignment_2() { return cAbstractAssignment_2; }
+
+		//"abstract"
+		public Keyword getAbstractAbstractKeyword_2_0() { return cAbstractAbstractKeyword_2_0; }
+
+		//"entity"
+		public Keyword getEntityKeyword_3() { return cEntityKeyword_3; }
+
+		//name=ID
+		public Assignment getNameAssignment_4() { return cNameAssignment_4; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_4_0() { return cNameIDTerminalRuleCall_4_0; }
+
+		//("extends" parent=[RecordType|QualifiedName])?
+		public Group getGroup_5() { return cGroup_5; }
+
+		//"extends"
+		public Keyword getExtendsKeyword_5_0() { return cExtendsKeyword_5_0; }
+
+		//parent=[RecordType|QualifiedName]
+		public Assignment getParentAssignment_5_1() { return cParentAssignment_5_1; }
+
+		//[RecordType|QualifiedName]
+		public CrossReference getParentRecordTypeCrossReference_5_1_0() { return cParentRecordTypeCrossReference_5_1_0; }
+
+		//QualifiedName
+		public RuleCall getParentRecordTypeQualifiedNameParserRuleCall_5_1_0_1() { return cParentRecordTypeQualifiedNameParserRuleCall_5_1_0_1; }
+
+		//(":" parents+=[PartialRecordType|QualifiedName] ("," parents+=[PartialRecordType|QualifiedName])*)?
+		public Group getGroup_6() { return cGroup_6; }
+
+		//":"
+		public Keyword getColonKeyword_6_0() { return cColonKeyword_6_0; }
+
+		//parents+=[PartialRecordType|QualifiedName]
+		public Assignment getParentsAssignment_6_1() { return cParentsAssignment_6_1; }
+
+		//[PartialRecordType|QualifiedName]
+		public CrossReference getParentsPartialRecordTypeCrossReference_6_1_0() { return cParentsPartialRecordTypeCrossReference_6_1_0; }
+
+		//QualifiedName
+		public RuleCall getParentsPartialRecordTypeQualifiedNameParserRuleCall_6_1_0_1() { return cParentsPartialRecordTypeQualifiedNameParserRuleCall_6_1_0_1; }
+
+		//("," parents+=[PartialRecordType|QualifiedName])*
+		public Group getGroup_6_2() { return cGroup_6_2; }
+
+		//","
+		public Keyword getCommaKeyword_6_2_0() { return cCommaKeyword_6_2_0; }
+
+		//parents+=[PartialRecordType|QualifiedName]
+		public Assignment getParentsAssignment_6_2_1() { return cParentsAssignment_6_2_1; }
+
+		//[PartialRecordType|QualifiedName]
+		public CrossReference getParentsPartialRecordTypeCrossReference_6_2_1_0() { return cParentsPartialRecordTypeCrossReference_6_2_1_0; }
+
+		//QualifiedName
+		public RuleCall getParentsPartialRecordTypeQualifiedNameParserRuleCall_6_2_1_0_1() { return cParentsPartialRecordTypeQualifiedNameParserRuleCall_6_2_1_0_1; }
+
+		//("{" (properties+=Property | constants+=Constant)* "}")?
+		public Group getGroup_7() { return cGroup_7; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_7_0() { return cLeftCurlyBracketKeyword_7_0; }
+
+		//(properties+=Property | constants+=Constant)*
+		public Alternatives getAlternatives_7_1() { return cAlternatives_7_1; }
+
+		//properties+=Property
+		public Assignment getPropertiesAssignment_7_1_0() { return cPropertiesAssignment_7_1_0; }
+
+		//Property
+		public RuleCall getPropertiesPropertyParserRuleCall_7_1_0_0() { return cPropertiesPropertyParserRuleCall_7_1_0_0; }
+
+		//constants+=Constant
+		public Assignment getConstantsAssignment_7_1_1() { return cConstantsAssignment_7_1_1; }
+
+		//Constant
+		public RuleCall getConstantsConstantParserRuleCall_7_1_1_0() { return cConstantsConstantParserRuleCall_7_1_1_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_7_2() { return cRightCurlyBracketKeyword_7_2; }
 	}
 
 	public class ConstantElements extends AbstractParserRuleElementFinder {
@@ -857,13 +865,67 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getValueConstantIDTerminalRuleCall_0_1() { return cValueConstantIDTerminalRuleCall_0_1; }
 	}
+
+	public class QualifiedNameElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "QualifiedName");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cIDTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cFullStopKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final RuleCall cIDTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
+		
+		//QualifiedName:
+		//	ID ("." ID)*;
+		public ParserRule getRule() { return rule; }
+
+		//ID ("." ID)*
+		public Group getGroup() { return cGroup; }
+
+		//ID
+		public RuleCall getIDTerminalRuleCall_0() { return cIDTerminalRuleCall_0; }
+
+		//(=> "." ID)*
+		public Group getGroup_1() { return cGroup_1; }
+
+		//=> "."
+		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
+
+		//ID
+		public RuleCall getIDTerminalRuleCall_1_1() { return cIDTerminalRuleCall_1_1; }
+	}
+
+	public class QualifiedNameWithWildcardElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "QualifiedNameWithWildcard");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cQualifiedNameParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cFullStopKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Keyword cAsteriskKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		
+		//QualifiedNameWithWildcard:
+		//	QualifiedName ("." "*")?;
+		public ParserRule getRule() { return rule; }
+
+		//QualifiedName ("." "*")?
+		public Group getGroup() { return cGroup; }
+
+		//QualifiedName
+		public RuleCall getQualifiedNameParserRuleCall_0() { return cQualifiedNameParserRuleCall_0; }
+
+		//("." "*")?
+		public Group getGroup_1() { return cGroup_1; }
+
+		//"."
+		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
+
+		//"*"
+		public Keyword getAsteriskKeyword_1_1() { return cAsteriskKeyword_1_1; }
+	}
 	
 	
 	private ModelElements pModel;
 	private ImportElements pImport;
 	private PackageElements pPackage;
-	private QualifiedNameElements pQualifiedName;
-	private QualifiedNameWithWildcardElements pQualifiedNameWithWildcard;
 	private TypeElements pType;
 	private PartialRecordTypeElements pPartialRecordType;
 	private RecordTypeElements pRecordType;
@@ -879,6 +941,8 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	private FloatLiteralElements pFloatLiteral;
 	private BooleanLiteralElements pBooleanLiteral;
 	private ConstantLiteralElements pConstantLiteral;
+	private QualifiedNameElements pQualifiedName;
+	private QualifiedNameWithWildcardElements pQualifiedNameWithWildcard;
 	private TerminalRule tNUMBER;
 	private TerminalRule tINT;
 	private TerminalRule tFLOAT;
@@ -952,26 +1016,6 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 		return getPackageAccess().getRule();
 	}
 
-	//QualifiedName:
-	//	ID ("." ID)*;
-	public QualifiedNameElements getQualifiedNameAccess() {
-		return (pQualifiedName != null) ? pQualifiedName : (pQualifiedName = new QualifiedNameElements());
-	}
-	
-	public ParserRule getQualifiedNameRule() {
-		return getQualifiedNameAccess().getRule();
-	}
-
-	//QualifiedNameWithWildcard:
-	//	QualifiedName ("." "*")?;
-	public QualifiedNameWithWildcardElements getQualifiedNameWithWildcardAccess() {
-		return (pQualifiedNameWithWildcard != null) ? pQualifiedNameWithWildcard : (pQualifiedNameWithWildcard = new QualifiedNameWithWildcardElements());
-	}
-	
-	public ParserRule getQualifiedNameWithWildcardRule() {
-		return getQualifiedNameWithWildcardAccess().getRule();
-	}
-
 	//Type:
 	//	RecordType | PartialRecordType;
 	public TypeElements getTypeAccess() {
@@ -983,8 +1027,8 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//PartialRecordType:
-	//	"template" name=ID (":" parents+=[PartialRecordType|QualifiedName] ("," parents+=[PartialRecordType|QualifiedName])*)?
-	//	("{" (properties+=Property | constants+=Constant)* "}")?;
+	//	("@author" author=STRING)? ("@since" since=FLOAT)? "template" name=ID (":" parents+=[PartialRecordType|QualifiedName]
+	//	("," parents+=[PartialRecordType|QualifiedName])*)? ("{" (properties+=Property | constants+=Constant)* "}")?;
 	public PartialRecordTypeElements getPartialRecordTypeAccess() {
 		return (pPartialRecordType != null) ? pPartialRecordType : (pPartialRecordType = new PartialRecordTypeElements());
 	}
@@ -994,9 +1038,9 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//RecordType:
-	//	abstract?="abstract"? "entity" name=ID ("extends" parent=[RecordType|QualifiedName])? (":"
-	//	parents+=[PartialRecordType|QualifiedName] ("," parents+=[PartialRecordType|QualifiedName])*)? ("{"
-	//	(properties+=Property | constants+=Constant)* "}")?;
+	//	("@author" author=STRING)? ("@since" since=FLOAT)? abstract?="abstract"? "entity" name=ID ("extends"
+	//	parent=[RecordType|QualifiedName])? (":" parents+=[PartialRecordType|QualifiedName] (","
+	//	parents+=[PartialRecordType|QualifiedName])*)? ("{" (properties+=Property | constants+=Constant)* "}")?;
 	public RecordTypeElements getRecordTypeAccess() {
 		return (pRecordType != null) ? pRecordType : (pRecordType = new RecordTypeElements());
 	}
@@ -1124,6 +1168,26 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getConstantLiteralRule() {
 		return getConstantLiteralAccess().getRule();
+	}
+
+	//QualifiedName:
+	//	ID ("." ID)*;
+	public QualifiedNameElements getQualifiedNameAccess() {
+		return (pQualifiedName != null) ? pQualifiedName : (pQualifiedName = new QualifiedNameElements());
+	}
+	
+	public ParserRule getQualifiedNameRule() {
+		return getQualifiedNameAccess().getRule();
+	}
+
+	//QualifiedNameWithWildcard:
+	//	QualifiedName ("." "*")?;
+	public QualifiedNameWithWildcardElements getQualifiedNameWithWildcardAccess() {
+		return (pQualifiedNameWithWildcard != null) ? pQualifiedNameWithWildcard : (pQualifiedNameWithWildcard = new QualifiedNameWithWildcardElements());
+	}
+	
+	public ParserRule getQualifiedNameWithWildcardRule() {
+		return getQualifiedNameWithWildcardAccess().getRule();
 	}
 
 	//// terminals
