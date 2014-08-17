@@ -3833,8 +3833,8 @@ rule__PartialRecordType__SinceAssignment_1_1
     }
 :
 (
-{ before(grammarAccess.getPartialRecordTypeAccess().getSinceFLOATTerminalRuleCall_1_1_0()); }
-	RULE_FLOAT{ after(grammarAccess.getPartialRecordTypeAccess().getSinceFLOATTerminalRuleCall_1_1_0()); }
+{ before(grammarAccess.getPartialRecordTypeAccess().getSinceSTRINGTerminalRuleCall_1_1_0()); }
+	RULE_STRING{ after(grammarAccess.getPartialRecordTypeAccess().getSinceSTRINGTerminalRuleCall_1_1_0()); }
 )
 
 ;
@@ -3946,8 +3946,8 @@ rule__RecordType__SinceAssignment_1_1
     }
 :
 (
-{ before(grammarAccess.getRecordTypeAccess().getSinceFLOATTerminalRuleCall_1_1_0()); }
-	RULE_FLOAT{ after(grammarAccess.getRecordTypeAccess().getSinceFLOATTerminalRuleCall_1_1_0()); }
+{ before(grammarAccess.getRecordTypeAccess().getSinceSTRINGTerminalRuleCall_1_1_0()); }
+	RULE_STRING{ after(grammarAccess.getRecordTypeAccess().getSinceSTRINGTerminalRuleCall_1_1_0()); }
 )
 
 ;

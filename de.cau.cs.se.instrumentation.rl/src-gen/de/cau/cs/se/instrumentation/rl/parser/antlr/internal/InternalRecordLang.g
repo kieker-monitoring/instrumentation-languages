@@ -341,9 +341,9 @@ rulePartialRecordType returns [EObject current=null]
     }
 (
 (
-		lv_since_3_0=RULE_FLOAT
+		lv_since_3_0=RULE_STRING
 		{
-			newLeafNode(lv_since_3_0, grammarAccess.getPartialRecordTypeAccess().getSinceFLOATTerminalRuleCall_1_1_0()); 
+			newLeafNode(lv_since_3_0, grammarAccess.getPartialRecordTypeAccess().getSinceSTRINGTerminalRuleCall_1_1_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -353,7 +353,7 @@ rulePartialRecordType returns [EObject current=null]
        			$current, 
        			"since",
         		lv_since_3_0, 
-        		"FLOAT");
+        		"STRING");
 	    }
 
 )
@@ -511,9 +511,9 @@ ruleRecordType returns [EObject current=null]
     }
 (
 (
-		lv_since_3_0=RULE_FLOAT
+		lv_since_3_0=RULE_STRING
 		{
-			newLeafNode(lv_since_3_0, grammarAccess.getRecordTypeAccess().getSinceFLOATTerminalRuleCall_1_1_0()); 
+			newLeafNode(lv_since_3_0, grammarAccess.getRecordTypeAccess().getSinceSTRINGTerminalRuleCall_1_1_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -523,7 +523,7 @@ ruleRecordType returns [EObject current=null]
        			$current, 
        			"since",
         		lv_since_3_0, 
-        		"FLOAT");
+        		"STRING");
 	    }
 
 )

@@ -22,7 +22,7 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalRecordLangParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_FLOAT", "RULE_INT", "RULE_BOOLEAN", "RULE_NUMBER", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'package'", "'import'", "'use'", "'@author'", "'@since'", "'template'", "':'", "','", "'{'", "'}'", "'abstract'", "'entity'", "'extends'", "'const'", "'='", "'alias'", "'as'", "'.'", "'['", "']'", "'*'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_FLOAT", "RULE_BOOLEAN", "RULE_NUMBER", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'package'", "'import'", "'use'", "'@author'", "'@since'", "'template'", "':'", "','", "'{'", "'}'", "'abstract'", "'entity'", "'extends'", "'const'", "'='", "'alias'", "'as'", "'.'", "'['", "']'", "'*'"
     };
     public static final int RULE_BOOLEAN=8;
     public static final int RULE_ID=4;
@@ -37,7 +37,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
     public static final int RULE_ANY_OTHER=13;
     public static final int T__21=21;
     public static final int T__20=20;
-    public static final int RULE_FLOAT=6;
+    public static final int RULE_FLOAT=7;
     public static final int RULE_SL_COMMENT=11;
     public static final int EOF=-1;
     public static final int RULE_ML_COMMENT=10;
@@ -54,7 +54,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
     public static final int T__17=17;
     public static final int RULE_NUMBER=9;
     public static final int T__14=14;
-    public static final int RULE_INT=7;
+    public static final int RULE_INT=6;
     public static final int RULE_WS=12;
 
     // delegates
@@ -712,7 +712,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                         {
                         int LA4_2 = input.LA(4);
 
-                        if ( (LA4_2==RULE_FLOAT) ) {
+                        if ( (LA4_2==RULE_STRING) ) {
                             int LA4_6 = input.LA(5);
 
                             if ( (LA4_6==19) ) {
@@ -771,7 +771,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                 {
                 int LA4_2 = input.LA(2);
 
-                if ( (LA4_2==RULE_FLOAT) ) {
+                if ( (LA4_2==RULE_STRING) ) {
                     int LA4_6 = input.LA(3);
 
                     if ( (LA4_6==19) ) {
@@ -924,7 +924,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePartialRecordType"
-    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:312:1: rulePartialRecordType returns [EObject current=null] : ( (otherlv_0= '@author' ( (lv_author_1_0= RULE_STRING ) ) )? (otherlv_2= '@since' ( (lv_since_3_0= RULE_FLOAT ) ) )? otherlv_4= 'template' ( (lv_name_5_0= RULE_ID ) ) (otherlv_6= ':' ( ( ruleQualifiedName ) ) (otherlv_8= ',' ( ( ruleQualifiedName ) ) )* )? (otherlv_10= '{' ( ( (lv_properties_11_0= ruleProperty ) ) | ( (lv_constants_12_0= ruleConstant ) ) )* otherlv_13= '}' )? ) ;
+    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:312:1: rulePartialRecordType returns [EObject current=null] : ( (otherlv_0= '@author' ( (lv_author_1_0= RULE_STRING ) ) )? (otherlv_2= '@since' ( (lv_since_3_0= RULE_STRING ) ) )? otherlv_4= 'template' ( (lv_name_5_0= RULE_ID ) ) (otherlv_6= ':' ( ( ruleQualifiedName ) ) (otherlv_8= ',' ( ( ruleQualifiedName ) ) )* )? (otherlv_10= '{' ( ( (lv_properties_11_0= ruleProperty ) ) | ( (lv_constants_12_0= ruleConstant ) ) )* otherlv_13= '}' )? ) ;
     public final EObject rulePartialRecordType() throws RecognitionException {
         EObject current = null;
 
@@ -946,11 +946,11 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:315:28: ( ( (otherlv_0= '@author' ( (lv_author_1_0= RULE_STRING ) ) )? (otherlv_2= '@since' ( (lv_since_3_0= RULE_FLOAT ) ) )? otherlv_4= 'template' ( (lv_name_5_0= RULE_ID ) ) (otherlv_6= ':' ( ( ruleQualifiedName ) ) (otherlv_8= ',' ( ( ruleQualifiedName ) ) )* )? (otherlv_10= '{' ( ( (lv_properties_11_0= ruleProperty ) ) | ( (lv_constants_12_0= ruleConstant ) ) )* otherlv_13= '}' )? ) )
-            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:316:1: ( (otherlv_0= '@author' ( (lv_author_1_0= RULE_STRING ) ) )? (otherlv_2= '@since' ( (lv_since_3_0= RULE_FLOAT ) ) )? otherlv_4= 'template' ( (lv_name_5_0= RULE_ID ) ) (otherlv_6= ':' ( ( ruleQualifiedName ) ) (otherlv_8= ',' ( ( ruleQualifiedName ) ) )* )? (otherlv_10= '{' ( ( (lv_properties_11_0= ruleProperty ) ) | ( (lv_constants_12_0= ruleConstant ) ) )* otherlv_13= '}' )? )
+            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:315:28: ( ( (otherlv_0= '@author' ( (lv_author_1_0= RULE_STRING ) ) )? (otherlv_2= '@since' ( (lv_since_3_0= RULE_STRING ) ) )? otherlv_4= 'template' ( (lv_name_5_0= RULE_ID ) ) (otherlv_6= ':' ( ( ruleQualifiedName ) ) (otherlv_8= ',' ( ( ruleQualifiedName ) ) )* )? (otherlv_10= '{' ( ( (lv_properties_11_0= ruleProperty ) ) | ( (lv_constants_12_0= ruleConstant ) ) )* otherlv_13= '}' )? ) )
+            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:316:1: ( (otherlv_0= '@author' ( (lv_author_1_0= RULE_STRING ) ) )? (otherlv_2= '@since' ( (lv_since_3_0= RULE_STRING ) ) )? otherlv_4= 'template' ( (lv_name_5_0= RULE_ID ) ) (otherlv_6= ':' ( ( ruleQualifiedName ) ) (otherlv_8= ',' ( ( ruleQualifiedName ) ) )* )? (otherlv_10= '{' ( ( (lv_properties_11_0= ruleProperty ) ) | ( (lv_constants_12_0= ruleConstant ) ) )* otherlv_13= '}' )? )
             {
-            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:316:1: ( (otherlv_0= '@author' ( (lv_author_1_0= RULE_STRING ) ) )? (otherlv_2= '@since' ( (lv_since_3_0= RULE_FLOAT ) ) )? otherlv_4= 'template' ( (lv_name_5_0= RULE_ID ) ) (otherlv_6= ':' ( ( ruleQualifiedName ) ) (otherlv_8= ',' ( ( ruleQualifiedName ) ) )* )? (otherlv_10= '{' ( ( (lv_properties_11_0= ruleProperty ) ) | ( (lv_constants_12_0= ruleConstant ) ) )* otherlv_13= '}' )? )
-            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:316:2: (otherlv_0= '@author' ( (lv_author_1_0= RULE_STRING ) ) )? (otherlv_2= '@since' ( (lv_since_3_0= RULE_FLOAT ) ) )? otherlv_4= 'template' ( (lv_name_5_0= RULE_ID ) ) (otherlv_6= ':' ( ( ruleQualifiedName ) ) (otherlv_8= ',' ( ( ruleQualifiedName ) ) )* )? (otherlv_10= '{' ( ( (lv_properties_11_0= ruleProperty ) ) | ( (lv_constants_12_0= ruleConstant ) ) )* otherlv_13= '}' )?
+            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:316:1: ( (otherlv_0= '@author' ( (lv_author_1_0= RULE_STRING ) ) )? (otherlv_2= '@since' ( (lv_since_3_0= RULE_STRING ) ) )? otherlv_4= 'template' ( (lv_name_5_0= RULE_ID ) ) (otherlv_6= ':' ( ( ruleQualifiedName ) ) (otherlv_8= ',' ( ( ruleQualifiedName ) ) )* )? (otherlv_10= '{' ( ( (lv_properties_11_0= ruleProperty ) ) | ( (lv_constants_12_0= ruleConstant ) ) )* otherlv_13= '}' )? )
+            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:316:2: (otherlv_0= '@author' ( (lv_author_1_0= RULE_STRING ) ) )? (otherlv_2= '@since' ( (lv_since_3_0= RULE_STRING ) ) )? otherlv_4= 'template' ( (lv_name_5_0= RULE_ID ) ) (otherlv_6= ':' ( ( ruleQualifiedName ) ) (otherlv_8= ',' ( ( ruleQualifiedName ) ) )* )? (otherlv_10= '{' ( ( (lv_properties_11_0= ruleProperty ) ) | ( (lv_constants_12_0= ruleConstant ) ) )* otherlv_13= '}' )?
             {
             // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:316:2: (otherlv_0= '@author' ( (lv_author_1_0= RULE_STRING ) ) )?
             int alt5=2;
@@ -1005,7 +1005,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:338:4: (otherlv_2= '@since' ( (lv_since_3_0= RULE_FLOAT ) ) )?
+            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:338:4: (otherlv_2= '@since' ( (lv_since_3_0= RULE_STRING ) ) )?
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -1014,7 +1014,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
             }
             switch (alt6) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:338:6: otherlv_2= '@since' ( (lv_since_3_0= RULE_FLOAT ) )
+                    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:338:6: otherlv_2= '@since' ( (lv_since_3_0= RULE_STRING ) )
                     {
                     otherlv_2=(Token)match(input,18,FOLLOW_18_in_rulePartialRecordType678); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -1022,16 +1022,16 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                           	newLeafNode(otherlv_2, grammarAccess.getPartialRecordTypeAccess().getSinceKeyword_1_0());
                           
                     }
-                    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:342:1: ( (lv_since_3_0= RULE_FLOAT ) )
-                    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:343:1: (lv_since_3_0= RULE_FLOAT )
+                    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:342:1: ( (lv_since_3_0= RULE_STRING ) )
+                    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:343:1: (lv_since_3_0= RULE_STRING )
                     {
-                    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:343:1: (lv_since_3_0= RULE_FLOAT )
-                    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:344:3: lv_since_3_0= RULE_FLOAT
+                    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:343:1: (lv_since_3_0= RULE_STRING )
+                    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:344:3: lv_since_3_0= RULE_STRING
                     {
-                    lv_since_3_0=(Token)match(input,RULE_FLOAT,FOLLOW_RULE_FLOAT_in_rulePartialRecordType695); if (state.failed) return current;
+                    lv_since_3_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rulePartialRecordType695); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      			newLeafNode(lv_since_3_0, grammarAccess.getPartialRecordTypeAccess().getSinceFLOATTerminalRuleCall_1_1_0()); 
+                      			newLeafNode(lv_since_3_0, grammarAccess.getPartialRecordTypeAccess().getSinceSTRINGTerminalRuleCall_1_1_0()); 
                       		
                     }
                     if ( state.backtracking==0 ) {
@@ -1043,7 +1043,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"since",
                               		lv_since_3_0, 
-                              		"FLOAT");
+                              		"STRING");
                       	    
                     }
 
@@ -1410,7 +1410,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleRecordType"
-    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:482:1: ruleRecordType returns [EObject current=null] : ( (otherlv_0= '@author' ( (lv_author_1_0= RULE_STRING ) ) )? (otherlv_2= '@since' ( (lv_since_3_0= RULE_FLOAT ) ) )? ( (lv_abstract_4_0= 'abstract' ) )? otherlv_5= 'entity' ( (lv_name_6_0= RULE_ID ) ) (otherlv_7= 'extends' ( ( ruleQualifiedName ) ) )? (otherlv_9= ':' ( ( ruleQualifiedName ) ) (otherlv_11= ',' ( ( ruleQualifiedName ) ) )* )? (otherlv_13= '{' ( ( (lv_properties_14_0= ruleProperty ) ) | ( (lv_constants_15_0= ruleConstant ) ) )* otherlv_16= '}' )? ) ;
+    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:482:1: ruleRecordType returns [EObject current=null] : ( (otherlv_0= '@author' ( (lv_author_1_0= RULE_STRING ) ) )? (otherlv_2= '@since' ( (lv_since_3_0= RULE_STRING ) ) )? ( (lv_abstract_4_0= 'abstract' ) )? otherlv_5= 'entity' ( (lv_name_6_0= RULE_ID ) ) (otherlv_7= 'extends' ( ( ruleQualifiedName ) ) )? (otherlv_9= ':' ( ( ruleQualifiedName ) ) (otherlv_11= ',' ( ( ruleQualifiedName ) ) )* )? (otherlv_13= '{' ( ( (lv_properties_14_0= ruleProperty ) ) | ( (lv_constants_15_0= ruleConstant ) ) )* otherlv_16= '}' )? ) ;
     public final EObject ruleRecordType() throws RecognitionException {
         EObject current = null;
 
@@ -1434,11 +1434,11 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:485:28: ( ( (otherlv_0= '@author' ( (lv_author_1_0= RULE_STRING ) ) )? (otherlv_2= '@since' ( (lv_since_3_0= RULE_FLOAT ) ) )? ( (lv_abstract_4_0= 'abstract' ) )? otherlv_5= 'entity' ( (lv_name_6_0= RULE_ID ) ) (otherlv_7= 'extends' ( ( ruleQualifiedName ) ) )? (otherlv_9= ':' ( ( ruleQualifiedName ) ) (otherlv_11= ',' ( ( ruleQualifiedName ) ) )* )? (otherlv_13= '{' ( ( (lv_properties_14_0= ruleProperty ) ) | ( (lv_constants_15_0= ruleConstant ) ) )* otherlv_16= '}' )? ) )
-            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:486:1: ( (otherlv_0= '@author' ( (lv_author_1_0= RULE_STRING ) ) )? (otherlv_2= '@since' ( (lv_since_3_0= RULE_FLOAT ) ) )? ( (lv_abstract_4_0= 'abstract' ) )? otherlv_5= 'entity' ( (lv_name_6_0= RULE_ID ) ) (otherlv_7= 'extends' ( ( ruleQualifiedName ) ) )? (otherlv_9= ':' ( ( ruleQualifiedName ) ) (otherlv_11= ',' ( ( ruleQualifiedName ) ) )* )? (otherlv_13= '{' ( ( (lv_properties_14_0= ruleProperty ) ) | ( (lv_constants_15_0= ruleConstant ) ) )* otherlv_16= '}' )? )
+            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:485:28: ( ( (otherlv_0= '@author' ( (lv_author_1_0= RULE_STRING ) ) )? (otherlv_2= '@since' ( (lv_since_3_0= RULE_STRING ) ) )? ( (lv_abstract_4_0= 'abstract' ) )? otherlv_5= 'entity' ( (lv_name_6_0= RULE_ID ) ) (otherlv_7= 'extends' ( ( ruleQualifiedName ) ) )? (otherlv_9= ':' ( ( ruleQualifiedName ) ) (otherlv_11= ',' ( ( ruleQualifiedName ) ) )* )? (otherlv_13= '{' ( ( (lv_properties_14_0= ruleProperty ) ) | ( (lv_constants_15_0= ruleConstant ) ) )* otherlv_16= '}' )? ) )
+            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:486:1: ( (otherlv_0= '@author' ( (lv_author_1_0= RULE_STRING ) ) )? (otherlv_2= '@since' ( (lv_since_3_0= RULE_STRING ) ) )? ( (lv_abstract_4_0= 'abstract' ) )? otherlv_5= 'entity' ( (lv_name_6_0= RULE_ID ) ) (otherlv_7= 'extends' ( ( ruleQualifiedName ) ) )? (otherlv_9= ':' ( ( ruleQualifiedName ) ) (otherlv_11= ',' ( ( ruleQualifiedName ) ) )* )? (otherlv_13= '{' ( ( (lv_properties_14_0= ruleProperty ) ) | ( (lv_constants_15_0= ruleConstant ) ) )* otherlv_16= '}' )? )
             {
-            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:486:1: ( (otherlv_0= '@author' ( (lv_author_1_0= RULE_STRING ) ) )? (otherlv_2= '@since' ( (lv_since_3_0= RULE_FLOAT ) ) )? ( (lv_abstract_4_0= 'abstract' ) )? otherlv_5= 'entity' ( (lv_name_6_0= RULE_ID ) ) (otherlv_7= 'extends' ( ( ruleQualifiedName ) ) )? (otherlv_9= ':' ( ( ruleQualifiedName ) ) (otherlv_11= ',' ( ( ruleQualifiedName ) ) )* )? (otherlv_13= '{' ( ( (lv_properties_14_0= ruleProperty ) ) | ( (lv_constants_15_0= ruleConstant ) ) )* otherlv_16= '}' )? )
-            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:486:2: (otherlv_0= '@author' ( (lv_author_1_0= RULE_STRING ) ) )? (otherlv_2= '@since' ( (lv_since_3_0= RULE_FLOAT ) ) )? ( (lv_abstract_4_0= 'abstract' ) )? otherlv_5= 'entity' ( (lv_name_6_0= RULE_ID ) ) (otherlv_7= 'extends' ( ( ruleQualifiedName ) ) )? (otherlv_9= ':' ( ( ruleQualifiedName ) ) (otherlv_11= ',' ( ( ruleQualifiedName ) ) )* )? (otherlv_13= '{' ( ( (lv_properties_14_0= ruleProperty ) ) | ( (lv_constants_15_0= ruleConstant ) ) )* otherlv_16= '}' )?
+            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:486:1: ( (otherlv_0= '@author' ( (lv_author_1_0= RULE_STRING ) ) )? (otherlv_2= '@since' ( (lv_since_3_0= RULE_STRING ) ) )? ( (lv_abstract_4_0= 'abstract' ) )? otherlv_5= 'entity' ( (lv_name_6_0= RULE_ID ) ) (otherlv_7= 'extends' ( ( ruleQualifiedName ) ) )? (otherlv_9= ':' ( ( ruleQualifiedName ) ) (otherlv_11= ',' ( ( ruleQualifiedName ) ) )* )? (otherlv_13= '{' ( ( (lv_properties_14_0= ruleProperty ) ) | ( (lv_constants_15_0= ruleConstant ) ) )* otherlv_16= '}' )? )
+            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:486:2: (otherlv_0= '@author' ( (lv_author_1_0= RULE_STRING ) ) )? (otherlv_2= '@since' ( (lv_since_3_0= RULE_STRING ) ) )? ( (lv_abstract_4_0= 'abstract' ) )? otherlv_5= 'entity' ( (lv_name_6_0= RULE_ID ) ) (otherlv_7= 'extends' ( ( ruleQualifiedName ) ) )? (otherlv_9= ':' ( ( ruleQualifiedName ) ) (otherlv_11= ',' ( ( ruleQualifiedName ) ) )* )? (otherlv_13= '{' ( ( (lv_properties_14_0= ruleProperty ) ) | ( (lv_constants_15_0= ruleConstant ) ) )* otherlv_16= '}' )?
             {
             // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:486:2: (otherlv_0= '@author' ( (lv_author_1_0= RULE_STRING ) ) )?
             int alt11=2;
@@ -1493,7 +1493,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:508:4: (otherlv_2= '@since' ( (lv_since_3_0= RULE_FLOAT ) ) )?
+            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:508:4: (otherlv_2= '@since' ( (lv_since_3_0= RULE_STRING ) ) )?
             int alt12=2;
             int LA12_0 = input.LA(1);
 
@@ -1502,7 +1502,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
             }
             switch (alt12) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:508:6: otherlv_2= '@since' ( (lv_since_3_0= RULE_FLOAT ) )
+                    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:508:6: otherlv_2= '@since' ( (lv_since_3_0= RULE_STRING ) )
                     {
                     otherlv_2=(Token)match(input,18,FOLLOW_18_in_ruleRecordType1011); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
@@ -1510,16 +1510,16 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                           	newLeafNode(otherlv_2, grammarAccess.getRecordTypeAccess().getSinceKeyword_1_0());
                           
                     }
-                    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:512:1: ( (lv_since_3_0= RULE_FLOAT ) )
-                    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:513:1: (lv_since_3_0= RULE_FLOAT )
+                    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:512:1: ( (lv_since_3_0= RULE_STRING ) )
+                    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:513:1: (lv_since_3_0= RULE_STRING )
                     {
-                    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:513:1: (lv_since_3_0= RULE_FLOAT )
-                    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:514:3: lv_since_3_0= RULE_FLOAT
+                    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:513:1: (lv_since_3_0= RULE_STRING )
+                    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:514:3: lv_since_3_0= RULE_STRING
                     {
-                    lv_since_3_0=(Token)match(input,RULE_FLOAT,FOLLOW_RULE_FLOAT_in_ruleRecordType1028); if (state.failed) return current;
+                    lv_since_3_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleRecordType1028); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      			newLeafNode(lv_since_3_0, grammarAccess.getRecordTypeAccess().getSinceFLOATTerminalRuleCall_1_1_0()); 
+                      			newLeafNode(lv_since_3_0, grammarAccess.getRecordTypeAccess().getSinceSTRINGTerminalRuleCall_1_1_0()); 
                       		
                     }
                     if ( state.backtracking==0 ) {
@@ -1531,7 +1531,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"since",
                               		lv_since_3_0, 
-                              		"FLOAT");
+                              		"STRING");
                       	    
                     }
 
@@ -4343,8 +4343,8 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_EOF_in_entryRulePartialRecordType603 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_17_in_rulePartialRecordType641 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_RULE_STRING_in_rulePartialRecordType658 = new BitSet(new long[]{0x00000000000C0000L});
-    public static final BitSet FOLLOW_18_in_rulePartialRecordType678 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_RULE_FLOAT_in_rulePartialRecordType695 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_18_in_rulePartialRecordType678 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rulePartialRecordType695 = new BitSet(new long[]{0x0000000000080000L});
     public static final BitSet FOLLOW_19_in_rulePartialRecordType714 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_RULE_ID_in_rulePartialRecordType731 = new BitSet(new long[]{0x0000000000500002L});
     public static final BitSet FOLLOW_20_in_rulePartialRecordType749 = new BitSet(new long[]{0x0000000000000010L});
@@ -4359,8 +4359,8 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_EOF_in_entryRuleRecordType936 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_17_in_ruleRecordType974 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_RULE_STRING_in_ruleRecordType991 = new BitSet(new long[]{0x0000000003040000L});
-    public static final BitSet FOLLOW_18_in_ruleRecordType1011 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_RULE_FLOAT_in_ruleRecordType1028 = new BitSet(new long[]{0x0000000003000000L});
+    public static final BitSet FOLLOW_18_in_ruleRecordType1011 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleRecordType1028 = new BitSet(new long[]{0x0000000003000000L});
     public static final BitSet FOLLOW_24_in_ruleRecordType1053 = new BitSet(new long[]{0x0000000002000000L});
     public static final BitSet FOLLOW_25_in_ruleRecordType1079 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_RULE_ID_in_ruleRecordType1096 = new BitSet(new long[]{0x0000000004500002L});
@@ -4401,7 +4401,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleArraySize_in_ruleClassifier1859 = new BitSet(new long[]{0x0000000100000002L});
     public static final BitSet FOLLOW_ruleArraySize_in_entryRuleArraySize1896 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleArraySize1906 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_32_in_ruleArraySize1952 = new BitSet(new long[]{0x0000000200000080L});
+    public static final BitSet FOLLOW_32_in_ruleArraySize1952 = new BitSet(new long[]{0x0000000200000040L});
     public static final BitSet FOLLOW_RULE_INT_in_ruleArraySize1969 = new BitSet(new long[]{0x0000000200000000L});
     public static final BitSet FOLLOW_33_in_ruleArraySize1987 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleReferenceProperty_in_entryRuleReferenceProperty2023 = new BitSet(new long[]{0x0000000000000000L});

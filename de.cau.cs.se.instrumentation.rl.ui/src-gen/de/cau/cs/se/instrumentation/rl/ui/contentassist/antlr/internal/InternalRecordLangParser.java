@@ -23,7 +23,7 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalRecordLangParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_FLOAT", "RULE_INT", "RULE_BOOLEAN", "RULE_NUMBER", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'package'", "'import'", "'use'", "'template'", "'@author'", "'@since'", "':'", "','", "'{'", "'}'", "'entity'", "'extends'", "'const'", "'='", "'alias'", "'as'", "'.'", "'['", "']'", "'*'", "'abstract'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_FLOAT", "RULE_BOOLEAN", "RULE_NUMBER", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'package'", "'import'", "'use'", "'template'", "'@author'", "'@since'", "':'", "','", "'{'", "'}'", "'entity'", "'extends'", "'const'", "'='", "'alias'", "'as'", "'.'", "'['", "']'", "'*'", "'abstract'"
     };
     public static final int RULE_BOOLEAN=8;
     public static final int RULE_ID=4;
@@ -38,7 +38,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
     public static final int RULE_ANY_OTHER=13;
     public static final int T__21=21;
     public static final int T__20=20;
-    public static final int RULE_FLOAT=6;
+    public static final int RULE_FLOAT=7;
     public static final int RULE_SL_COMMENT=11;
     public static final int EOF=-1;
     public static final int RULE_ML_COMMENT=10;
@@ -55,7 +55,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
     public static final int T__17=17;
     public static final int RULE_NUMBER=9;
     public static final int T__14=14;
-    public static final int RULE_INT=7;
+    public static final int RULE_INT=6;
     public static final int RULE_WS=12;
 
     // delegates
@@ -1815,7 +1815,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
                         {
                         int LA1_2 = input.LA(4);
 
-                        if ( (LA1_2==RULE_FLOAT) ) {
+                        if ( (LA1_2==RULE_STRING) ) {
                             int LA1_6 = input.LA(5);
 
                             if ( (LA1_6==17) ) {
@@ -1874,7 +1874,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
                 {
                 int LA1_2 = input.LA(2);
 
-                if ( (LA1_2==RULE_FLOAT) ) {
+                if ( (LA1_2==RULE_STRING) ) {
                     int LA1_6 = input.LA(3);
 
                     if ( (LA1_6==17) ) {
@@ -11060,24 +11060,24 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__PartialRecordType__SinceAssignment_1_1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3830:1: rule__PartialRecordType__SinceAssignment_1_1 : ( RULE_FLOAT ) ;
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3830:1: rule__PartialRecordType__SinceAssignment_1_1 : ( RULE_STRING ) ;
     public final void rule__PartialRecordType__SinceAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3834:1: ( ( RULE_FLOAT ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3835:1: ( RULE_FLOAT )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3834:1: ( ( RULE_STRING ) )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3835:1: ( RULE_STRING )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3835:1: ( RULE_FLOAT )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3836:1: RULE_FLOAT
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3835:1: ( RULE_STRING )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3836:1: RULE_STRING
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPartialRecordTypeAccess().getSinceFLOATTerminalRuleCall_1_1_0()); 
+               before(grammarAccess.getPartialRecordTypeAccess().getSinceSTRINGTerminalRuleCall_1_1_0()); 
             }
-            match(input,RULE_FLOAT,FOLLOW_RULE_FLOAT_in_rule__PartialRecordType__SinceAssignment_1_17676); if (state.failed) return ;
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__PartialRecordType__SinceAssignment_1_17676); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPartialRecordTypeAccess().getSinceFLOATTerminalRuleCall_1_1_0()); 
+               after(grammarAccess.getPartialRecordTypeAccess().getSinceSTRINGTerminalRuleCall_1_1_0()); 
             }
 
             }
@@ -11387,24 +11387,24 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__SinceAssignment_1_1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3943:1: rule__RecordType__SinceAssignment_1_1 : ( RULE_FLOAT ) ;
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3943:1: rule__RecordType__SinceAssignment_1_1 : ( RULE_STRING ) ;
     public final void rule__RecordType__SinceAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3947:1: ( ( RULE_FLOAT ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3948:1: ( RULE_FLOAT )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3947:1: ( ( RULE_STRING ) )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3948:1: ( RULE_STRING )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3948:1: ( RULE_FLOAT )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3949:1: RULE_FLOAT
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3948:1: ( RULE_STRING )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3949:1: RULE_STRING
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getRecordTypeAccess().getSinceFLOATTerminalRuleCall_1_1_0()); 
+               before(grammarAccess.getRecordTypeAccess().getSinceSTRINGTerminalRuleCall_1_1_0()); 
             }
-            match(input,RULE_FLOAT,FOLLOW_RULE_FLOAT_in_rule__RecordType__SinceAssignment_1_17909); if (state.failed) return ;
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__RecordType__SinceAssignment_1_17909); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getRecordTypeAccess().getSinceFLOATTerminalRuleCall_1_1_0()); 
+               after(grammarAccess.getRecordTypeAccess().getSinceSTRINGTerminalRuleCall_1_1_0()); 
             }
 
             }
@@ -12868,7 +12868,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
     public static final BitSet FOLLOW_18_in_rule__PartialRecordType__Group_0__0__Impl2670 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__PartialRecordType__Group_0__1__Impl_in_rule__PartialRecordType__Group_0__12701 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__PartialRecordType__AuthorAssignment_0_1_in_rule__PartialRecordType__Group_0__1__Impl2728 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group_1__0__Impl_in_rule__PartialRecordType__Group_1__02762 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_rule__PartialRecordType__Group_1__0__Impl_in_rule__PartialRecordType__Group_1__02762 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_rule__PartialRecordType__Group_1__1_in_rule__PartialRecordType__Group_1__02765 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_19_in_rule__PartialRecordType__Group_1__0__Impl2793 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__PartialRecordType__Group_1__1__Impl_in_rule__PartialRecordType__Group_1__12824 = new BitSet(new long[]{0x0000000000000002L});
@@ -12922,7 +12922,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
     public static final BitSet FOLLOW_18_in_rule__RecordType__Group_0__0__Impl3914 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__RecordType__Group_0__1__Impl_in_rule__RecordType__Group_0__13945 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__RecordType__AuthorAssignment_0_1_in_rule__RecordType__Group_0__1__Impl3972 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__Group_1__0__Impl_in_rule__RecordType__Group_1__04006 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_rule__RecordType__Group_1__0__Impl_in_rule__RecordType__Group_1__04006 = new BitSet(new long[]{0x0000000000000020L});
     public static final BitSet FOLLOW_rule__RecordType__Group_1__1_in_rule__RecordType__Group_1__04009 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_19_in_rule__RecordType__Group_1__0__Impl4037 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__RecordType__Group_1__1__Impl_in_rule__RecordType__Group_1__14068 = new BitSet(new long[]{0x0000000000000002L});
@@ -13011,10 +13011,10 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
     public static final BitSet FOLLOW_30_in_rule__Classifier__Group_0__1__Impl6015 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ArraySize__Group__0__Impl_in_rule__ArraySize__Group__06050 = new BitSet(new long[]{0x0000000080000000L});
     public static final BitSet FOLLOW_rule__ArraySize__Group__1_in_rule__ArraySize__Group__06053 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ArraySize__Group__1__Impl_in_rule__ArraySize__Group__16111 = new BitSet(new long[]{0x0000000100000080L});
+    public static final BitSet FOLLOW_rule__ArraySize__Group__1__Impl_in_rule__ArraySize__Group__16111 = new BitSet(new long[]{0x0000000100000040L});
     public static final BitSet FOLLOW_rule__ArraySize__Group__2_in_rule__ArraySize__Group__16114 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_31_in_rule__ArraySize__Group__1__Impl6142 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ArraySize__Group__2__Impl_in_rule__ArraySize__Group__26173 = new BitSet(new long[]{0x0000000100000080L});
+    public static final BitSet FOLLOW_rule__ArraySize__Group__2__Impl_in_rule__ArraySize__Group__26173 = new BitSet(new long[]{0x0000000100000040L});
     public static final BitSet FOLLOW_rule__ArraySize__Group__3_in_rule__ArraySize__Group__26176 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ArraySize__SizeAssignment_2_in_rule__ArraySize__Group__2__Impl6203 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__ArraySize__Group__3__Impl_in_rule__ArraySize__Group__36234 = new BitSet(new long[]{0x0000000000000002L});
@@ -13074,14 +13074,14 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
     public static final BitSet FOLLOW_RULE_ID_in_rule__Package__NameAssignment_17575 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_STRING_in_rule__Package__PackageAssignment_27610 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_STRING_in_rule__PartialRecordType__AuthorAssignment_0_17645 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_FLOAT_in_rule__PartialRecordType__SinceAssignment_1_17676 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__PartialRecordType__SinceAssignment_1_17676 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_ID_in_rule__PartialRecordType__NameAssignment_37707 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleQualifiedName_in_rule__PartialRecordType__ParentsAssignment_4_17742 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleQualifiedName_in_rule__PartialRecordType__ParentsAssignment_4_2_17781 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleProperty_in_rule__PartialRecordType__PropertiesAssignment_5_1_07816 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleConstant_in_rule__PartialRecordType__ConstantsAssignment_5_1_17847 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_STRING_in_rule__RecordType__AuthorAssignment_0_17878 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_FLOAT_in_rule__RecordType__SinceAssignment_1_17909 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__RecordType__SinceAssignment_1_17909 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_34_in_rule__RecordType__AbstractAssignment_27945 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_ID_in_rule__RecordType__NameAssignment_47984 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleQualifiedName_in_rule__RecordType__ParentAssignment_5_18019 = new BitSet(new long[]{0x0000000000000002L});

@@ -25,7 +25,7 @@ Type:
 
 PartialRecordType:
 	('@author' author=STRING)?
-	('@since' since=FLOAT)?
+	('@since' since=STRING)?
 	'template' name=ID (':' parents+=[PartialRecordType|QualifiedName] (',' parents+=[PartialRecordType|QualifiedName])*)? 
 	('{'
 		(properties+=Property | constants+=Constant)*
@@ -34,7 +34,7 @@ PartialRecordType:
 
 RecordType:
 	('@author' author=STRING)?
-	('@since' since=FLOAT)?
+	('@since' since=STRING)?
 	(abstract?='abstract')? 'entity' name=ID 
 	('extends' parent=[RecordType|QualifiedName])?
 	(':' parents+=[PartialRecordType|QualifiedName] (',' parents+=[PartialRecordType|QualifiedName])*)?  

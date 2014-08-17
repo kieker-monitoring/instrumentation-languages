@@ -64,12 +64,12 @@ public interface Type extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Since</em>' attribute.
-   * @see #setSince(Float)
+   * @see #setSince(String)
    * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getType_Since()
    * @model
    * @generated
    */
-  Float getSince();
+  String getSince();
 
   /**
    * Sets the value of the '{@link de.cau.cs.se.instrumentation.rl.recordLang.Type#getSince <em>Since</em>}' attribute.
@@ -79,7 +79,7 @@ public interface Type extends EObject
    * @see #getSince()
    * @generated
    */
-  void setSince(Float value);
+  void setSince(String value);
 
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

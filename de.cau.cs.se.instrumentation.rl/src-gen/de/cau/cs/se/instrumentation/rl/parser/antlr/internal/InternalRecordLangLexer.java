@@ -25,7 +25,7 @@ public class InternalRecordLangLexer extends Lexer {
     public static final int RULE_ANY_OTHER=13;
     public static final int T__21=21;
     public static final int T__20=20;
-    public static final int RULE_FLOAT=6;
+    public static final int RULE_FLOAT=7;
     public static final int EOF=-1;
     public static final int RULE_SL_COMMENT=11;
     public static final int RULE_ML_COMMENT=10;
@@ -42,7 +42,7 @@ public class InternalRecordLangLexer extends Lexer {
     public static final int T__17=17;
     public static final int RULE_NUMBER=9;
     public static final int T__14=14;
-    public static final int RULE_INT=7;
+    public static final int RULE_INT=6;
     public static final int RULE_WS=12;
 
     // delegates

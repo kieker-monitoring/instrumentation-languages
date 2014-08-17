@@ -4,7 +4,7 @@
     editorDirectory="/de.cau.cs.se.instrumentation.rl.editor/src" modelPluginID="de.cau.cs.se.instrumentation.rl"
     forceOverwrite="true" modelName="RecordLang" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="de.cau.cs.se.instrumentation.rl.edit"
-    editorPluginID="de.cau.cs.se.instrumentation.rl.editor" runtimeVersion="2.9" usedGenPackages="../../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+    editorPluginID="de.cau.cs.se.instrumentation.rl.editor" runtimeVersion="2.9" usedGenPackages="platform:/resource/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
   <genPackages prefix="RecordLang" basePackage="de.cau.cs.se.instrumentation.rl" disposableProviderFactory="true"
       fileExtensions="irl" ecorePackage="RecordLang.ecore#/">
     <genClasses ecoreClass="RecordLang.ecore#//Model">

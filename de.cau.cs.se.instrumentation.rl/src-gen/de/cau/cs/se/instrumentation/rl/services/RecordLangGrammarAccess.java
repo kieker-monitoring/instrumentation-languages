@@ -156,7 +156,7 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Keyword cSinceKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final Assignment cSinceAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cSinceFLOATTerminalRuleCall_1_1_0 = (RuleCall)cSinceAssignment_1_1.eContents().get(0);
+		private final RuleCall cSinceSTRINGTerminalRuleCall_1_1_0 = (RuleCall)cSinceAssignment_1_1.eContents().get(0);
 		private final Keyword cTemplateKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cNameIDTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
@@ -180,11 +180,11 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_5_2 = (Keyword)cGroup_5.eContents().get(2);
 		
 		//PartialRecordType:
-		//	("@author" author=STRING)? ("@since" since=FLOAT)? "template" name=ID (":" parents+=[PartialRecordType|QualifiedName]
+		//	("@author" author=STRING)? ("@since" since=STRING)? "template" name=ID (":" parents+=[PartialRecordType|QualifiedName]
 		//	("," parents+=[PartialRecordType|QualifiedName])*)? ("{" (properties+=Property | constants+=Constant)* "}")?;
 		public ParserRule getRule() { return rule; }
 
-		//("@author" author=STRING)? ("@since" since=FLOAT)? "template" name=ID (":" parents+=[PartialRecordType|QualifiedName]
+		//("@author" author=STRING)? ("@since" since=STRING)? "template" name=ID (":" parents+=[PartialRecordType|QualifiedName]
 		//("," parents+=[PartialRecordType|QualifiedName])*)? ("{" (properties+=Property | constants+=Constant)* "}")?
 		public Group getGroup() { return cGroup; }
 
@@ -200,17 +200,17 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 		//STRING
 		public RuleCall getAuthorSTRINGTerminalRuleCall_0_1_0() { return cAuthorSTRINGTerminalRuleCall_0_1_0; }
 
-		//("@since" since=FLOAT)?
+		//("@since" since=STRING)?
 		public Group getGroup_1() { return cGroup_1; }
 
 		//"@since"
 		public Keyword getSinceKeyword_1_0() { return cSinceKeyword_1_0; }
 
-		//since=FLOAT
+		//since=STRING
 		public Assignment getSinceAssignment_1_1() { return cSinceAssignment_1_1; }
 
-		//FLOAT
-		public RuleCall getSinceFLOATTerminalRuleCall_1_1_0() { return cSinceFLOATTerminalRuleCall_1_1_0; }
+		//STRING
+		public RuleCall getSinceSTRINGTerminalRuleCall_1_1_0() { return cSinceSTRINGTerminalRuleCall_1_1_0; }
 
 		//"template"
 		public Keyword getTemplateKeyword_2() { return cTemplateKeyword_2; }
@@ -286,7 +286,7 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Keyword cSinceKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final Assignment cSinceAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cSinceFLOATTerminalRuleCall_1_1_0 = (RuleCall)cSinceAssignment_1_1.eContents().get(0);
+		private final RuleCall cSinceSTRINGTerminalRuleCall_1_1_0 = (RuleCall)cSinceAssignment_1_1.eContents().get(0);
 		private final Assignment cAbstractAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final Keyword cAbstractAbstractKeyword_2_0 = (Keyword)cAbstractAssignment_2.eContents().get(0);
 		private final Keyword cEntityKeyword_3 = (Keyword)cGroup.eContents().get(3);
@@ -317,12 +317,12 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_7_2 = (Keyword)cGroup_7.eContents().get(2);
 		
 		//RecordType:
-		//	("@author" author=STRING)? ("@since" since=FLOAT)? abstract?="abstract"? "entity" name=ID ("extends"
+		//	("@author" author=STRING)? ("@since" since=STRING)? abstract?="abstract"? "entity" name=ID ("extends"
 		//	parent=[RecordType|QualifiedName])? (":" parents+=[PartialRecordType|QualifiedName] (","
 		//	parents+=[PartialRecordType|QualifiedName])*)? ("{" (properties+=Property | constants+=Constant)* "}")?;
 		public ParserRule getRule() { return rule; }
 
-		//("@author" author=STRING)? ("@since" since=FLOAT)? abstract?="abstract"? "entity" name=ID ("extends"
+		//("@author" author=STRING)? ("@since" since=STRING)? abstract?="abstract"? "entity" name=ID ("extends"
 		//parent=[RecordType|QualifiedName])? (":" parents+=[PartialRecordType|QualifiedName] (","
 		//parents+=[PartialRecordType|QualifiedName])*)? ("{" (properties+=Property | constants+=Constant)* "}")?
 		public Group getGroup() { return cGroup; }
@@ -339,17 +339,17 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 		//STRING
 		public RuleCall getAuthorSTRINGTerminalRuleCall_0_1_0() { return cAuthorSTRINGTerminalRuleCall_0_1_0; }
 
-		//("@since" since=FLOAT)?
+		//("@since" since=STRING)?
 		public Group getGroup_1() { return cGroup_1; }
 
 		//"@since"
 		public Keyword getSinceKeyword_1_0() { return cSinceKeyword_1_0; }
 
-		//since=FLOAT
+		//since=STRING
 		public Assignment getSinceAssignment_1_1() { return cSinceAssignment_1_1; }
 
-		//FLOAT
-		public RuleCall getSinceFLOATTerminalRuleCall_1_1_0() { return cSinceFLOATTerminalRuleCall_1_1_0; }
+		//STRING
+		public RuleCall getSinceSTRINGTerminalRuleCall_1_1_0() { return cSinceSTRINGTerminalRuleCall_1_1_0; }
 
 		//abstract?="abstract"?
 		public Assignment getAbstractAssignment_2() { return cAbstractAssignment_2; }
@@ -1027,7 +1027,7 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//PartialRecordType:
-	//	("@author" author=STRING)? ("@since" since=FLOAT)? "template" name=ID (":" parents+=[PartialRecordType|QualifiedName]
+	//	("@author" author=STRING)? ("@since" since=STRING)? "template" name=ID (":" parents+=[PartialRecordType|QualifiedName]
 	//	("," parents+=[PartialRecordType|QualifiedName])*)? ("{" (properties+=Property | constants+=Constant)* "}")?;
 	public PartialRecordTypeElements getPartialRecordTypeAccess() {
 		return (pPartialRecordType != null) ? pPartialRecordType : (pPartialRecordType = new PartialRecordTypeElements());
@@ -1038,7 +1038,7 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//RecordType:
-	//	("@author" author=STRING)? ("@since" since=FLOAT)? abstract?="abstract"? "entity" name=ID ("extends"
+	//	("@author" author=STRING)? ("@since" since=STRING)? abstract?="abstract"? "entity" name=ID ("extends"
 	//	parent=[RecordType|QualifiedName])? (":" parents+=[PartialRecordType|QualifiedName] (","
 	//	parents+=[PartialRecordType|QualifiedName])*)? ("{" (properties+=Property | constants+=Constant)* "}")?;
 	public RecordTypeElements getRecordTypeAccess() {

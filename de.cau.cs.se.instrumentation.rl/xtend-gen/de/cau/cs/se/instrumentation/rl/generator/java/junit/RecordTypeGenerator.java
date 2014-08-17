@@ -466,13 +466,13 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       if (_or) {
         _builder.append("\t");
         String _castToPrimitiveType = this.getCastToPrimitiveType(property);
-        _builder.append(_castToPrimitiveType, "	");
+        _builder.append(_castToPrimitiveType, "\t");
         _builder.append(" ");
         CharSequence _createPropertyValueSet_1 = this.createPropertyValueSet(property);
         _builder.append(_createPropertyValueSet_1, "\t");
         _builder.append(", ");
         String _castToPrimitiveType_1 = this.getCastToPrimitiveType(property);
-        _builder.append(_castToPrimitiveType_1, "	");
+        _builder.append(_castToPrimitiveType_1, "\t");
         _builder.append(" (");
         String _getObjectType = this.getGetObjectType(property);
         _builder.append(_getObjectType, "\t");
@@ -502,13 +502,13 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         } else {
           _builder.append("\t");
           String _castToPrimitiveType_2 = this.getCastToPrimitiveType(property);
-          _builder.append(_castToPrimitiveType_2, "	");
+          _builder.append(_castToPrimitiveType_2, "\t");
           _builder.append(" ");
           CharSequence _createPropertyValueSet_4 = this.createPropertyValueSet(property);
           _builder.append(_createPropertyValueSet_4, "\t");
           _builder.append(", ");
           String _castToPrimitiveType_3 = this.getCastToPrimitiveType(property);
-          _builder.append(_castToPrimitiveType_3, "	");
+          _builder.append(_castToPrimitiveType_3, "\t");
           _builder.append(" (");
           String _getObjectType_1 = this.getGetObjectType(property);
           _builder.append(_getObjectType_1, "\t");

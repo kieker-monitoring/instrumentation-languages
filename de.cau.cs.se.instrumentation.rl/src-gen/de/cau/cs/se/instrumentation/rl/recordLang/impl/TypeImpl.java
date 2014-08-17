@@ -73,7 +73,7 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type
    * @generated
    * @ordered
    */
-  protected static final Float SINCE_EDEFAULT = null;
+  protected static final String SINCE_EDEFAULT = null;
 
   /**
    * The cached value of the '{@link #getSince() <em>Since</em>}' attribute.
@@ -83,7 +83,7 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type
    * @generated
    * @ordered
    */
-  protected Float since = SINCE_EDEFAULT;
+  protected String since = SINCE_EDEFAULT;
 
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -184,7 +184,7 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type
    * <!-- end-user-doc -->
    * @generated
    */
-  public Float getSince()
+  public String getSince()
   {
     return since;
   }
@@ -194,9 +194,9 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setSince(Float newSince)
+  public void setSince(String newSince)
   {
-    Float oldSince = since;
+    String oldSince = since;
     since = newSince;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, RecordLangPackage.TYPE__SINCE, oldSince, since));
@@ -326,7 +326,7 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type
         setAuthor((String)newValue);
         return;
       case RecordLangPackage.TYPE__SINCE:
-        setSince((Float)newValue);
+        setSince((String)newValue);
         return;
       case RecordLangPackage.TYPE__NAME:
         setName((String)newValue);
