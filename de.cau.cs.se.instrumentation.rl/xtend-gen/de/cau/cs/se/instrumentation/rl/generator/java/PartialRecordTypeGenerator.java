@@ -199,7 +199,7 @@ public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerat
     } else {
       int _size = parents.size();
       boolean _greaterThan = (_size > 0);
-      _and = (_notEquals && _greaterThan);
+      _and = _greaterThan;
     }
     if (_and) {
       final Function1<PartialRecordType,Boolean> _function = new Function1<PartialRecordType,Boolean>() {
@@ -343,18 +343,16 @@ public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerat
     String _switchResult = null;
     EClassifier _class_ = classifier.getClass_();
     String _name = _class_.getName();
-    final String _switchValue = _name;
     boolean _matched = false;
     if (!_matched) {
-      if (Objects.equal(_switchValue,"string")) {
+      if (Objects.equal(_name, "string")) {
         _matched=true;
         _switchResult = "String";
       }
     }
     if (!_matched) {
       EClassifier _class__1 = classifier.getClass_();
-      String _name_1 = _class__1.getName();
-      _switchResult = _name_1;
+      _switchResult = _class__1.getName();
     }
     return _switchResult;
   }

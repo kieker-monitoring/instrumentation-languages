@@ -70,16 +70,14 @@ public class PackageContentScope implements IScope {
   public IEObjectDescription getSingleElement(final QualifiedName name) {
     IEObjectDescription _xblockexpression = null;
     {
-      String _plus = ("PackageContentScope.getSingleElement(name) " + name);
-      System.out.println(_plus);
+      System.out.println(("PackageContentScope.getSingleElement(name) " + name));
       TreeIterator<EObject> _eAllContents = this.model.eAllContents();
       Iterator<RegisteredPackage> _filter = Iterators.<RegisteredPackage>filter(_eAllContents, RegisteredPackage.class);
-      final Function1<RegisteredPackage,Boolean> _function = new Function1<RegisteredPackage,Boolean>() {
+      final Function1<RegisteredPackage, Boolean> _function = new Function1<RegisteredPackage, Boolean>() {
         public Boolean apply(final RegisteredPackage it) {
           String _name = it.getName();
           String _firstSegment = name.getFirstSegment();
-          boolean _equals = _name.equals(_firstSegment);
-          return Boolean.valueOf(_equals);
+          return Boolean.valueOf(_name.equals(_firstSegment));
         }
       };
       final RegisteredPackage registeredPackage = IteratorExtensions.<RegisteredPackage>findFirst(_filter, _function);
@@ -88,12 +86,11 @@ public class PackageContentScope implements IScope {
       if (_notEquals) {
         EPackage _ePackage = registeredPackage.getEPackage();
         QualifiedName _skipFirst = name.skipFirst(1);
-        IEObjectDescription _findClassifierInPackageHierarchy = this.findClassifierInPackageHierarchy(_ePackage, _skipFirst);
-        _xifexpression = _findClassifierInPackageHierarchy;
+        _xifexpression = this.findClassifierInPackageHierarchy(_ePackage, _skipFirst);
       } else {
         return null;
       }
-      _xblockexpression = (_xifexpression);
+      _xblockexpression = _xifexpression;
     }
     return _xblockexpression;
   }
@@ -114,12 +111,11 @@ public class PackageContentScope implements IScope {
       return this.findClassifierInPackage(ePackage, name);
     } else {
       EList<EPackage> _eSubpackages = ePackage.getESubpackages();
-      final Function1<EPackage,Boolean> _function = new Function1<EPackage,Boolean>() {
+      final Function1<EPackage, Boolean> _function = new Function1<EPackage, Boolean>() {
         public Boolean apply(final EPackage it) {
           String _name = it.getName();
           String _firstSegment = name.getFirstSegment();
-          boolean _equals = _name.equals(_firstSegment);
-          return Boolean.valueOf(_equals);
+          return Boolean.valueOf(_name.equals(_firstSegment));
         }
       };
       final EPackage subPackage = IterableExtensions.<EPackage>findFirst(_eSubpackages, _function);
@@ -143,12 +139,11 @@ public class PackageContentScope implements IScope {
    */
   public IEObjectDescription findClassifierInPackage(final EPackage pkg, final QualifiedName name) {
     EList<EClassifier> _eClassifiers = pkg.getEClassifiers();
-    final Function1<EClassifier,Boolean> _function = new Function1<EClassifier,Boolean>() {
+    final Function1<EClassifier, Boolean> _function = new Function1<EClassifier, Boolean>() {
       public Boolean apply(final EClassifier it) {
         String _name = it.getName();
         String _firstSegment = name.getFirstSegment();
-        boolean _equals = _name.equals(_firstSegment);
-        return Boolean.valueOf(_equals);
+        return Boolean.valueOf(_name.equals(_firstSegment));
       }
     };
     final EClassifier classifier = IterableExtensions.<EClassifier>findFirst(_eClassifiers, _function);
@@ -180,24 +175,22 @@ public class PackageContentScope implements IScope {
     if ((classifier instanceof EClass)) {
       final EClass clazz = ((EClass) classifier);
       EList<EAttribute> _eAllAttributes = clazz.getEAllAttributes();
-      final Function1<EAttribute,Boolean> _function = new Function1<EAttribute,Boolean>() {
+      final Function1<EAttribute, Boolean> _function = new Function1<EAttribute, Boolean>() {
         public Boolean apply(final EAttribute it) {
           String _name = it.getName();
           String _firstSegment = name.getFirstSegment();
-          boolean _equals = _name.equals(_firstSegment);
-          return Boolean.valueOf(_equals);
+          return Boolean.valueOf(_name.equals(_firstSegment));
         }
       };
       final EAttribute attribute = IterableExtensions.<EAttribute>findFirst(_eAllAttributes, _function);
       boolean _equals = Objects.equal(attribute, null);
       if (_equals) {
         EList<EReference> _eAllReferences = clazz.getEAllReferences();
-        final Function1<EReference,Boolean> _function_1 = new Function1<EReference,Boolean>() {
+        final Function1<EReference, Boolean> _function_1 = new Function1<EReference, Boolean>() {
           public Boolean apply(final EReference it) {
             String _name = it.getName();
             String _firstSegment = name.getFirstSegment();
-            boolean _equals = _name.equals(_firstSegment);
-            return Boolean.valueOf(_equals);
+            return Boolean.valueOf(_name.equals(_firstSegment));
           }
         };
         final EReference reference = IterableExtensions.<EReference>findFirst(_eAllReferences, _function_1);
@@ -228,8 +221,7 @@ public class PackageContentScope implements IScope {
    * @see org.eclipse.xtext.scoping.IScope#getElements(org.eclipse.xtext.naming.QualifiedName)
    */
   public Iterable<IEObjectDescription> getElements(final QualifiedName name) {
-    String _plus = ("PackageContentScope.getElements(name) " + name);
-    System.out.println(_plus);
+    System.out.println(("PackageContentScope.getElements(name) " + name));
     return null;
   }
   
@@ -238,8 +230,7 @@ public class PackageContentScope implements IScope {
    * @see org.eclipse.xtext.scoping.IScope#getSingleElement(org.eclipse.emf.ecore.EObject)
    */
   public IEObjectDescription getSingleElement(final EObject object) {
-    String _plus = ("PackageContentScope.getSingleElement(object) " + object);
-    System.out.println(_plus);
+    System.out.println(("PackageContentScope.getSingleElement(object) " + object));
     return null;
   }
   
@@ -248,8 +239,7 @@ public class PackageContentScope implements IScope {
    * @see org.eclipse.xtext.scoping.IScope#getElements(org.eclipse.emf.ecore.EObject)
    */
   public Iterable<IEObjectDescription> getElements(final EObject object) {
-    String _plus = ("PackageContentScope.getElements(object) " + object);
-    System.out.println(_plus);
+    System.out.println(("PackageContentScope.getElements(object) " + object));
     return null;
   }
   
