@@ -66,7 +66,7 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
     _builder.append("\t\t");
     _builder.append("return new ");
     String _name_2 = type.getName();
-    _builder.append(_name_2, "\t\t");
+    _builder.append(_name_2, "		");
     _builder.append("(buffer, stringRegistry);");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -83,7 +83,7 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
     _builder.append("\t\t");
     _builder.append("return new ");
     String _name_3 = type.getName();
-    _builder.append(_name_3, "\t\t");
+    _builder.append(_name_3, "		");
     _builder.append("(values, stringRegistry);");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -125,7 +125,7 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
         EClassifier _class_ = classifier.getClass_();
         String _createPrimitiveTypeName = this.createPrimitiveTypeName(_class_);
         EList<ArraySize> _sizes_1 = classifier.getSizes();
-        final Function1<ArraySize, String> _function = new Function1<ArraySize, String>() {
+        final Function1<ArraySize,String> _function = new Function1<ArraySize,String>() {
           public String apply(final ArraySize size) {
             StringConcatenation _builder = new StringConcatenation();
             _builder.append("[]");
@@ -134,13 +134,16 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
         };
         List<String> _map = ListExtensions.<ArraySize, String>map(_sizes_1, _function);
         String _join = IterableExtensions.join(_map);
-        _xifexpression = (_createPrimitiveTypeName + _join);
+        String _plus = (_createPrimitiveTypeName + _join);
+        _xifexpression = _plus;
       } else {
         EClassifier _class__1 = classifier.getClass_();
-        _xifexpression = this.createPrimitiveTypeName(_class__1);
+        String _createPrimitiveTypeName_1 = this.createPrimitiveTypeName(_class__1);
+        _xifexpression = _createPrimitiveTypeName_1;
       }
       final String typeName = _xifexpression;
-      _xblockexpression = (typeName + "Factory");
+      String _plus_1 = (typeName + "Factory");
+      _xblockexpression = (_plus_1);
     }
     return _xblockexpression;
   }
@@ -151,63 +154,65 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
   public String createPrimitiveTypeName(final EClassifier classifier) {
     String _switchResult = null;
     String _name = classifier.getName();
+    final String _switchValue = _name;
     boolean _matched = false;
     if (!_matched) {
-      if (Objects.equal(_name, "int")) {
+      if (Objects.equal(_switchValue,"int")) {
         _matched=true;
         _switchResult = "int";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_name, "long")) {
+      if (Objects.equal(_switchValue,"long")) {
         _matched=true;
         _switchResult = "long";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_name, "short")) {
+      if (Objects.equal(_switchValue,"short")) {
         _matched=true;
         _switchResult = "short";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_name, "double")) {
+      if (Objects.equal(_switchValue,"double")) {
         _matched=true;
         _switchResult = "double";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_name, "float")) {
+      if (Objects.equal(_switchValue,"float")) {
         _matched=true;
         _switchResult = "float";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_name, "char")) {
+      if (Objects.equal(_switchValue,"char")) {
         _matched=true;
         _switchResult = "char";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_name, "byte")) {
+      if (Objects.equal(_switchValue,"byte")) {
         _matched=true;
         _switchResult = "byte";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_name, "string")) {
+      if (Objects.equal(_switchValue,"string")) {
         _matched=true;
         _switchResult = "String";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_name, "boolean")) {
+      if (Objects.equal(_switchValue,"boolean")) {
         _matched=true;
         _switchResult = "boolean";
       }
     }
     if (!_matched) {
-      _switchResult = classifier.getName();
+      String _name_1 = classifier.getName();
+      _switchResult = _name_1;
     }
     return _switchResult;
   }

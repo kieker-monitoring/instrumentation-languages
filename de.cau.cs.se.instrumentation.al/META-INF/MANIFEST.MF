@@ -28,7 +28,7 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  de.cau.cs.kieler.core.annotations.text;bundle-version="0.4.2"
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: de.cau.cs.se.instrumantation.model.structure,
  de.cau.cs.se.instrumantation.model.structure.impl,
  de.cau.cs.se.instrumantation.model.structure.util,

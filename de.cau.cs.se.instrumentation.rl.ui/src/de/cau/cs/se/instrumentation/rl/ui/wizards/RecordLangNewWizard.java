@@ -133,7 +133,7 @@ public class RecordLangNewWizard extends Wizard implements INewWizard {
 	 */
 	private String templateContents(final String location) {
 		return "/***************************************************************************\n"
-				+ " * Copyright 2013 Kieker Project (http://kieker-monitoring.net)\n"
+				+ " * Copyright 2014 Kieker Project (http://kieker-monitoring.net)\n"
 				+ " *\n"
 				+ " * Licensed under the Apache License, Version 2.0 (the \"License\");\n"
 				+ " * you may not use this file except in compliance with the License.\n"

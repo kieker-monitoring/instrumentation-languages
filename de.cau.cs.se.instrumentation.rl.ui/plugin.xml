@@ -438,7 +438,7 @@
         point="org.eclipse.ui.newWizards">
      <category
            id="de.cau.cs.se.instrumentation.rl.ui"
-           name="IRL Wizards">
+           name="Kieker">
      </category>
      <wizard
            category="de.cau.cs.se.instrumentation.rl.ui"
