@@ -29,6 +29,7 @@ import de.cau.cs.se.instrumantation.model.structure.Method
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.scoping.Scopes
+import de.cau.cs.se.instrumentation.al.aspectLang.MethodQuery
 
 /**
  * This class contains custom scoping description.
@@ -81,7 +82,7 @@ class AspectLangScopeProvider extends org.eclipse.xtext.scoping.impl.AbstractDec
 	}
 	
 	def IScope scope_ParameterPattern_parameter(ParameterPattern context, EReference reference) {
-		val Method method = (context.eContainer as Query).method
+		val Method method = (context.eContainer as MethodQuery).methodReference
 		return Scopes.scopeFor(method.parameters)
 	}
 	

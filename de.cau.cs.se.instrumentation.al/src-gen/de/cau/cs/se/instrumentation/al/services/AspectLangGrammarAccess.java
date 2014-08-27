@@ -30,15 +30,19 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cImportsImportParserRuleCall_3_0 = (RuleCall)cImportsAssignment_3.eContents().get(0);
 		private final Assignment cSourcesAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cSourcesApplicationModelParserRuleCall_4_0 = (RuleCall)cSourcesAssignment_4.eContents().get(0);
-		private final Assignment cAspectsAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cAspectsAspectParserRuleCall_5_0 = (RuleCall)cAspectsAssignment_5.eContents().get(0);
+		private final Alternatives cAlternatives_5 = (Alternatives)cGroup.eContents().get(5);
+		private final Assignment cProbesAssignment_5_0 = (Assignment)cAlternatives_5.eContents().get(0);
+		private final RuleCall cProbesProbeParserRuleCall_5_0_0 = (RuleCall)cProbesAssignment_5_0.eContents().get(0);
+		private final Assignment cAspectsAssignment_5_1 = (Assignment)cAlternatives_5.eContents().get(1);
+		private final RuleCall cAspectsAspectParserRuleCall_5_1_0 = (RuleCall)cAspectsAssignment_5_1.eContents().get(0);
 		
 		//Model:
-		//	"package" name=QualifiedName metamodels+=RegisteredPackage* imports+=Import* sources+=ApplicationModel*
-		//	aspects+=Aspect*;
+		//	"package" name=QualifiedName metamodels+=RegisteredPackage* imports+=Import* sources+=ApplicationModel* (probes+=Probe
+		//	| aspects+=Aspect)*;
 		public ParserRule getRule() { return rule; }
 
-		//"package" name=QualifiedName metamodels+=RegisteredPackage* imports+=Import* sources+=ApplicationModel* aspects+=Aspect*
+		//"package" name=QualifiedName metamodels+=RegisteredPackage* imports+=Import* sources+=ApplicationModel* (probes+=Probe |
+		//aspects+=Aspect)*
 		public Group getGroup() { return cGroup; }
 
 		//"package"
@@ -68,11 +72,20 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//ApplicationModel
 		public RuleCall getSourcesApplicationModelParserRuleCall_4_0() { return cSourcesApplicationModelParserRuleCall_4_0; }
 
-		//aspects+=Aspect*
-		public Assignment getAspectsAssignment_5() { return cAspectsAssignment_5; }
+		//(probes+=Probe | aspects+=Aspect)*
+		public Alternatives getAlternatives_5() { return cAlternatives_5; }
+
+		//probes+=Probe
+		public Assignment getProbesAssignment_5_0() { return cProbesAssignment_5_0; }
+
+		//Probe
+		public RuleCall getProbesProbeParserRuleCall_5_0_0() { return cProbesProbeParserRuleCall_5_0_0; }
+
+		//aspects+=Aspect
+		public Assignment getAspectsAssignment_5_1() { return cAspectsAssignment_5_1; }
 
 		//Aspect
-		public RuleCall getAspectsAspectParserRuleCall_5_0() { return cAspectsAspectParserRuleCall_5_0; }
+		public RuleCall getAspectsAspectParserRuleCall_5_1_0() { return cAspectsAspectParserRuleCall_5_1_0; }
 	}
 
 	public class ImportElements extends AbstractParserRuleElementFinder {
@@ -265,20 +278,20 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cAnnotationAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cAnnotationAnnotationParserRuleCall_0_0 = (RuleCall)cAnnotationAssignment_0.eContents().get(0);
 		private final Keyword cAspectKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cQueryAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cQueryQueryParserRuleCall_2_0 = (RuleCall)cQueryAssignment_2.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cCollectorsAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cCollectorsCollectorParserRuleCall_4_0 = (RuleCall)cCollectorsAssignment_4.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cProbeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cProbeProbeCrossReference_2_0 = (CrossReference)cProbeAssignment_2.eContents().get(0);
+		private final RuleCall cProbeProbeQualifiedNameParserRuleCall_2_0_1 = (RuleCall)cProbeProbeCrossReference_2_0.eContents().get(1);
+		private final Keyword cColonKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cQueryAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cQueryQueryParserRuleCall_4_0 = (RuleCall)cQueryAssignment_4.eContents().get(0);
 		
 		//// define subgraph-pattern to locate structures in models
 		//// define selector for reference destination
 		//Aspect:
-		//	annotation=Annotation? "aspect" query=Query "{" collectors+=Collector* "}";
+		//	annotation=Annotation? "aspect" probe=[Probe|QualifiedName] ":" query=Query;
 		public ParserRule getRule() { return rule; }
 
-		//annotation=Annotation? "aspect" query=Query "{" collectors+=Collector* "}"
+		//annotation=Annotation? "aspect" probe=[Probe|QualifiedName] ":" query=Query
 		public Group getGroup() { return cGroup; }
 
 		//annotation=Annotation?
@@ -290,11 +303,93 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//"aspect"
 		public Keyword getAspectKeyword_1() { return cAspectKeyword_1; }
 
+		//probe=[Probe|QualifiedName]
+		public Assignment getProbeAssignment_2() { return cProbeAssignment_2; }
+
+		//[Probe|QualifiedName]
+		public CrossReference getProbeProbeCrossReference_2_0() { return cProbeProbeCrossReference_2_0; }
+
+		//QualifiedName
+		public RuleCall getProbeProbeQualifiedNameParserRuleCall_2_0_1() { return cProbeProbeQualifiedNameParserRuleCall_2_0_1; }
+
+		//":"
+		public Keyword getColonKeyword_3() { return cColonKeyword_3; }
+
 		//query=Query
-		public Assignment getQueryAssignment_2() { return cQueryAssignment_2; }
+		public Assignment getQueryAssignment_4() { return cQueryAssignment_4; }
 
 		//Query
-		public RuleCall getQueryQueryParserRuleCall_2_0() { return cQueryQueryParserRuleCall_2_0; }
+		public RuleCall getQueryQueryParserRuleCall_4_0() { return cQueryQueryParserRuleCall_4_0; }
+	}
+
+	public class ProbeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Probe");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cProbeKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cLeftParenthesisKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Group cGroup_2_1 = (Group)cGroup_2.eContents().get(1);
+		private final Assignment cParameterDeclarationsAssignment_2_1_0 = (Assignment)cGroup_2_1.eContents().get(0);
+		private final RuleCall cParameterDeclarationsParameterDeclarationParserRuleCall_2_1_0_0 = (RuleCall)cParameterDeclarationsAssignment_2_1_0.eContents().get(0);
+		private final Group cGroup_2_1_1 = (Group)cGroup_2_1.eContents().get(1);
+		private final Keyword cCommaKeyword_2_1_1_0 = (Keyword)cGroup_2_1_1.eContents().get(0);
+		private final Assignment cParameterDeclarationsAssignment_2_1_1_1 = (Assignment)cGroup_2_1_1.eContents().get(1);
+		private final RuleCall cParameterDeclarationsParameterDeclarationParserRuleCall_2_1_1_1_0 = (RuleCall)cParameterDeclarationsAssignment_2_1_1_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
+		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cCollectorsAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cCollectorsCollectorParserRuleCall_4_0 = (RuleCall)cCollectorsAssignment_4.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		
+		//Probe:
+		//	"probe" name=ID ("(" (parameterDeclarations+=ParameterDeclaration ("," parameterDeclarations+=ParameterDeclaration)*)?
+		//	")")? "{" collectors+=Collector* "}";
+		public ParserRule getRule() { return rule; }
+
+		//"probe" name=ID ("(" (parameterDeclarations+=ParameterDeclaration ("," parameterDeclarations+=ParameterDeclaration)*)?
+		//")")? "{" collectors+=Collector* "}"
+		public Group getGroup() { return cGroup; }
+
+		//"probe"
+		public Keyword getProbeKeyword_0() { return cProbeKeyword_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+
+		//("(" (parameterDeclarations+=ParameterDeclaration ("," parameterDeclarations+=ParameterDeclaration)*)? ")")?
+		public Group getGroup_2() { return cGroup_2; }
+
+		//"("
+		public Keyword getLeftParenthesisKeyword_2_0() { return cLeftParenthesisKeyword_2_0; }
+
+		//(parameterDeclarations+=ParameterDeclaration ("," parameterDeclarations+=ParameterDeclaration)*)?
+		public Group getGroup_2_1() { return cGroup_2_1; }
+
+		//parameterDeclarations+=ParameterDeclaration
+		public Assignment getParameterDeclarationsAssignment_2_1_0() { return cParameterDeclarationsAssignment_2_1_0; }
+
+		//ParameterDeclaration
+		public RuleCall getParameterDeclarationsParameterDeclarationParserRuleCall_2_1_0_0() { return cParameterDeclarationsParameterDeclarationParserRuleCall_2_1_0_0; }
+
+		//("," parameterDeclarations+=ParameterDeclaration)*
+		public Group getGroup_2_1_1() { return cGroup_2_1_1; }
+
+		//","
+		public Keyword getCommaKeyword_2_1_1_0() { return cCommaKeyword_2_1_1_0; }
+
+		//parameterDeclarations+=ParameterDeclaration
+		public Assignment getParameterDeclarationsAssignment_2_1_1_1() { return cParameterDeclarationsAssignment_2_1_1_1; }
+
+		//ParameterDeclaration
+		public RuleCall getParameterDeclarationsParameterDeclarationParserRuleCall_2_1_1_1_0() { return cParameterDeclarationsParameterDeclarationParserRuleCall_2_1_1_1_0; }
+
+		//")"
+		public Keyword getRightParenthesisKeyword_2_2() { return cRightParenthesisKeyword_2_2; }
 
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
@@ -309,41 +404,47 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 	}
 
+	public class ParameterDeclarationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ParameterDeclaration");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final Keyword cTypeTypeKeyword_0_0 = (Keyword)cTypeAssignment_0.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		
+		//ParameterDeclaration:
+		//	type="type" name=ID;
+		public ParserRule getRule() { return rule; }
+
+		//type="type" name=ID
+		public Group getGroup() { return cGroup; }
+
+		//type="type"
+		public Assignment getTypeAssignment_0() { return cTypeAssignment_0; }
+
+		//"type"
+		public Keyword getTypeTypeKeyword_0_0() { return cTypeTypeKeyword_0_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+	}
+
 	public class QueryElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Query");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cLocationAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cLocationLocationQueryParserRuleCall_0_0 = (RuleCall)cLocationAssignment_0.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Alternatives cAlternatives_1_0 = (Alternatives)cGroup_1.eContents().get(0);
-		private final Assignment cModifierAssignment_1_0_0 = (Assignment)cAlternatives_1_0.eContents().get(0);
-		private final CrossReference cModifierMethodModifierCrossReference_1_0_0_0 = (CrossReference)cModifierAssignment_1_0_0.eContents().get(0);
-		private final RuleCall cModifierMethodModifierIDTerminalRuleCall_1_0_0_0_1 = (RuleCall)cModifierMethodModifierCrossReference_1_0_0_0.eContents().get(1);
-		private final Keyword cAsteriskKeyword_1_0_1 = (Keyword)cAlternatives_1_0.eContents().get(1);
-		private final Alternatives cAlternatives_1_1 = (Alternatives)cGroup_1.eContents().get(1);
-		private final Assignment cReturnTypeAssignment_1_1_0 = (Assignment)cAlternatives_1_1.eContents().get(0);
-		private final CrossReference cReturnTypeTypeCrossReference_1_1_0_0 = (CrossReference)cReturnTypeAssignment_1_1_0.eContents().get(0);
-		private final RuleCall cReturnTypeTypeIDTerminalRuleCall_1_1_0_0_1 = (RuleCall)cReturnTypeTypeCrossReference_1_1_0_0.eContents().get(1);
-		private final Keyword cAsteriskKeyword_1_1_1 = (Keyword)cAlternatives_1_1.eContents().get(1);
-		private final Assignment cMethodAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final CrossReference cMethodMethodCrossReference_1_2_0 = (CrossReference)cMethodAssignment_1_2.eContents().get(0);
-		private final RuleCall cMethodMethodIDTerminalRuleCall_1_2_0_1 = (RuleCall)cMethodMethodCrossReference_1_2_0.eContents().get(1);
-		private final Keyword cLeftParenthesisKeyword_1_3 = (Keyword)cGroup_1.eContents().get(3);
-		private final Assignment cParameterAssignment_1_4 = (Assignment)cGroup_1.eContents().get(4);
-		private final RuleCall cParameterParameterPatternParserRuleCall_1_4_0 = (RuleCall)cParameterAssignment_1_4.eContents().get(0);
-		private final Group cGroup_1_5 = (Group)cGroup_1.eContents().get(5);
-		private final Keyword cCommaKeyword_1_5_0 = (Keyword)cGroup_1_5.eContents().get(0);
-		private final Assignment cParameterAssignment_1_5_1 = (Assignment)cGroup_1_5.eContents().get(1);
-		private final RuleCall cParameterParameterPatternParserRuleCall_1_5_1_0 = (RuleCall)cParameterAssignment_1_5_1.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_1_6 = (Keyword)cGroup_1.eContents().get(6);
+		private final Assignment cMethodAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cMethodMethodQueryParserRuleCall_1_0 = (RuleCall)cMethodAssignment_1.eContents().get(0);
 		
 		//Query:
-		//	location=LocationQuery ((modifier=[structure::MethodModifier] | "*") (returnType=[structure::Type] | "*")
-		//	method=[structure::Method] "(" parameter+=ParameterPattern ("," parameter+=ParameterPattern)* ")")?;
+		//	location=LocationQuery method=MethodQuery?;
 		public ParserRule getRule() { return rule; }
 
-		//location=LocationQuery ((modifier=[structure::MethodModifier] | "*") (returnType=[structure::Type] | "*")
-		//method=[structure::Method] "(" parameter+=ParameterPattern ("," parameter+=ParameterPattern)* ")")?
+		//location=LocationQuery method=MethodQuery?
 		public Group getGroup() { return cGroup; }
 
 		//location=LocationQuery
@@ -352,72 +453,109 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//LocationQuery
 		public RuleCall getLocationLocationQueryParserRuleCall_0_0() { return cLocationLocationQueryParserRuleCall_0_0; }
 
-		//((modifier=[structure::MethodModifier] | "*") (returnType=[structure::Type] | "*") method=[structure::Method] "("
-		//parameter+=ParameterPattern ("," parameter+=ParameterPattern)* ")")?
-		public Group getGroup_1() { return cGroup_1; }
+		//method=MethodQuery?
+		public Assignment getMethodAssignment_1() { return cMethodAssignment_1; }
+
+		//MethodQuery
+		public RuleCall getMethodMethodQueryParserRuleCall_1_0() { return cMethodMethodQueryParserRuleCall_1_0; }
+	}
+
+	public class MethodQueryElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MethodQuery");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
+		private final Assignment cModifierAssignment_0_0 = (Assignment)cAlternatives_0.eContents().get(0);
+		private final CrossReference cModifierMethodModifierCrossReference_0_0_0 = (CrossReference)cModifierAssignment_0_0.eContents().get(0);
+		private final RuleCall cModifierMethodModifierIDTerminalRuleCall_0_0_0_1 = (RuleCall)cModifierMethodModifierCrossReference_0_0_0.eContents().get(1);
+		private final Keyword cAsteriskKeyword_0_1 = (Keyword)cAlternatives_0.eContents().get(1);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final Assignment cReturnTypeAssignment_1_0 = (Assignment)cAlternatives_1.eContents().get(0);
+		private final CrossReference cReturnTypeTypeCrossReference_1_0_0 = (CrossReference)cReturnTypeAssignment_1_0.eContents().get(0);
+		private final RuleCall cReturnTypeTypeIDTerminalRuleCall_1_0_0_1 = (RuleCall)cReturnTypeTypeCrossReference_1_0_0.eContents().get(1);
+		private final Keyword cAsteriskKeyword_1_1 = (Keyword)cAlternatives_1.eContents().get(1);
+		private final Assignment cMethodReferenceAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cMethodReferenceMethodCrossReference_2_0 = (CrossReference)cMethodReferenceAssignment_2.eContents().get(0);
+		private final RuleCall cMethodReferenceMethodIDTerminalRuleCall_2_0_1 = (RuleCall)cMethodReferenceMethodCrossReference_2_0.eContents().get(1);
+		private final Keyword cLeftParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cParameterAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cParameterParameterPatternParserRuleCall_4_0 = (RuleCall)cParameterAssignment_4.eContents().get(0);
+		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
+		private final Keyword cCommaKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final Assignment cParameterAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
+		private final RuleCall cParameterParameterPatternParserRuleCall_5_1_0 = (RuleCall)cParameterAssignment_5_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		
+		//MethodQuery:
+		//	(modifier=[structure::MethodModifier] | "*") (returnType=[structure::Type] | "*") methodReference=[structure::Method]
+		//	"(" parameter+=ParameterPattern ("," parameter+=ParameterPattern)* ")";
+		public ParserRule getRule() { return rule; }
+
+		//(modifier=[structure::MethodModifier] | "*") (returnType=[structure::Type] | "*") methodReference=[structure::Method]
+		//"(" parameter+=ParameterPattern ("," parameter+=ParameterPattern)* ")"
+		public Group getGroup() { return cGroup; }
 
 		//modifier=[structure::MethodModifier] | "*"
-		public Alternatives getAlternatives_1_0() { return cAlternatives_1_0; }
+		public Alternatives getAlternatives_0() { return cAlternatives_0; }
 
 		//modifier=[structure::MethodModifier]
-		public Assignment getModifierAssignment_1_0_0() { return cModifierAssignment_1_0_0; }
+		public Assignment getModifierAssignment_0_0() { return cModifierAssignment_0_0; }
 
 		//[structure::MethodModifier]
-		public CrossReference getModifierMethodModifierCrossReference_1_0_0_0() { return cModifierMethodModifierCrossReference_1_0_0_0; }
+		public CrossReference getModifierMethodModifierCrossReference_0_0_0() { return cModifierMethodModifierCrossReference_0_0_0; }
 
 		//ID
-		public RuleCall getModifierMethodModifierIDTerminalRuleCall_1_0_0_0_1() { return cModifierMethodModifierIDTerminalRuleCall_1_0_0_0_1; }
+		public RuleCall getModifierMethodModifierIDTerminalRuleCall_0_0_0_1() { return cModifierMethodModifierIDTerminalRuleCall_0_0_0_1; }
 
 		//"*"
-		public Keyword getAsteriskKeyword_1_0_1() { return cAsteriskKeyword_1_0_1; }
+		public Keyword getAsteriskKeyword_0_1() { return cAsteriskKeyword_0_1; }
 
 		//returnType=[structure::Type] | "*"
-		public Alternatives getAlternatives_1_1() { return cAlternatives_1_1; }
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 
 		//returnType=[structure::Type]
-		public Assignment getReturnTypeAssignment_1_1_0() { return cReturnTypeAssignment_1_1_0; }
+		public Assignment getReturnTypeAssignment_1_0() { return cReturnTypeAssignment_1_0; }
 
 		//[structure::Type]
-		public CrossReference getReturnTypeTypeCrossReference_1_1_0_0() { return cReturnTypeTypeCrossReference_1_1_0_0; }
+		public CrossReference getReturnTypeTypeCrossReference_1_0_0() { return cReturnTypeTypeCrossReference_1_0_0; }
 
 		//ID
-		public RuleCall getReturnTypeTypeIDTerminalRuleCall_1_1_0_0_1() { return cReturnTypeTypeIDTerminalRuleCall_1_1_0_0_1; }
+		public RuleCall getReturnTypeTypeIDTerminalRuleCall_1_0_0_1() { return cReturnTypeTypeIDTerminalRuleCall_1_0_0_1; }
 
 		//"*"
-		public Keyword getAsteriskKeyword_1_1_1() { return cAsteriskKeyword_1_1_1; }
+		public Keyword getAsteriskKeyword_1_1() { return cAsteriskKeyword_1_1; }
 
-		//method=[structure::Method]
-		public Assignment getMethodAssignment_1_2() { return cMethodAssignment_1_2; }
+		//methodReference=[structure::Method]
+		public Assignment getMethodReferenceAssignment_2() { return cMethodReferenceAssignment_2; }
 
 		//[structure::Method]
-		public CrossReference getMethodMethodCrossReference_1_2_0() { return cMethodMethodCrossReference_1_2_0; }
+		public CrossReference getMethodReferenceMethodCrossReference_2_0() { return cMethodReferenceMethodCrossReference_2_0; }
 
 		//ID
-		public RuleCall getMethodMethodIDTerminalRuleCall_1_2_0_1() { return cMethodMethodIDTerminalRuleCall_1_2_0_1; }
+		public RuleCall getMethodReferenceMethodIDTerminalRuleCall_2_0_1() { return cMethodReferenceMethodIDTerminalRuleCall_2_0_1; }
 
 		//"("
-		public Keyword getLeftParenthesisKeyword_1_3() { return cLeftParenthesisKeyword_1_3; }
+		public Keyword getLeftParenthesisKeyword_3() { return cLeftParenthesisKeyword_3; }
 
 		//parameter+=ParameterPattern
-		public Assignment getParameterAssignment_1_4() { return cParameterAssignment_1_4; }
+		public Assignment getParameterAssignment_4() { return cParameterAssignment_4; }
 
 		//ParameterPattern
-		public RuleCall getParameterParameterPatternParserRuleCall_1_4_0() { return cParameterParameterPatternParserRuleCall_1_4_0; }
+		public RuleCall getParameterParameterPatternParserRuleCall_4_0() { return cParameterParameterPatternParserRuleCall_4_0; }
 
 		//("," parameter+=ParameterPattern)*
-		public Group getGroup_1_5() { return cGroup_1_5; }
+		public Group getGroup_5() { return cGroup_5; }
 
 		//","
-		public Keyword getCommaKeyword_1_5_0() { return cCommaKeyword_1_5_0; }
+		public Keyword getCommaKeyword_5_0() { return cCommaKeyword_5_0; }
 
 		//parameter+=ParameterPattern
-		public Assignment getParameterAssignment_1_5_1() { return cParameterAssignment_1_5_1; }
+		public Assignment getParameterAssignment_5_1() { return cParameterAssignment_5_1; }
 
 		//ParameterPattern
-		public RuleCall getParameterParameterPatternParserRuleCall_1_5_1_0() { return cParameterParameterPatternParserRuleCall_1_5_1_0; }
+		public RuleCall getParameterParameterPatternParserRuleCall_5_1_0() { return cParameterParameterPatternParserRuleCall_5_1_0; }
 
 		//")"
-		public Keyword getRightParenthesisKeyword_1_6() { return cRightParenthesisKeyword_1_6; }
+		public Keyword getRightParenthesisKeyword_6() { return cRightParenthesisKeyword_6; }
 	}
 
 	public class ParameterPatternElements extends AbstractParserRuleElementFinder {
@@ -481,16 +619,19 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cNodeAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cNodeNodeParserRuleCall_0_0 = (RuleCall)cNodeAssignment_0.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Keyword cFullStopKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Assignment cSpecializationAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cSpecializationLocationQueryParserRuleCall_1_1_0 = (RuleCall)cSpecializationAssignment_1_1.eContents().get(0);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final Group cGroup_1_0 = (Group)cAlternatives_1.eContents().get(0);
+		private final Keyword cFullStopKeyword_1_0_0 = (Keyword)cGroup_1_0.eContents().get(0);
+		private final Assignment cSpecializationAssignment_1_0_1 = (Assignment)cGroup_1_0.eContents().get(1);
+		private final RuleCall cSpecializationLocationQueryParserRuleCall_1_0_1_0 = (RuleCall)cSpecializationAssignment_1_0_1.eContents().get(0);
+		private final Assignment cCompositionAssignment_1_1 = (Assignment)cAlternatives_1.eContents().get(1);
+		private final RuleCall cCompositionCompositionQueryParserRuleCall_1_1_0 = (RuleCall)cCompositionAssignment_1_1.eContents().get(0);
 		
 		//LocationQuery:
-		//	node=Node ("." specialization=LocationQuery)?;
+		//	node=Node ("." specialization=LocationQuery | composition=CompositionQuery)?;
 		public ParserRule getRule() { return rule; }
 
-		//node=Node ("." specialization=LocationQuery)?
+		//node=Node ("." specialization=LocationQuery | composition=CompositionQuery)?
 		public Group getGroup() { return cGroup; }
 
 		//node=Node
@@ -499,17 +640,66 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//Node
 		public RuleCall getNodeNodeParserRuleCall_0_0() { return cNodeNodeParserRuleCall_0_0; }
 
-		//("." specialization=LocationQuery)?
-		public Group getGroup_1() { return cGroup_1; }
+		//("." specialization=LocationQuery | composition=CompositionQuery)?
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+
+		//"." specialization=LocationQuery
+		public Group getGroup_1_0() { return cGroup_1_0; }
 
 		//"."
-		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
+		public Keyword getFullStopKeyword_1_0_0() { return cFullStopKeyword_1_0_0; }
 
 		//specialization=LocationQuery
-		public Assignment getSpecializationAssignment_1_1() { return cSpecializationAssignment_1_1; }
+		public Assignment getSpecializationAssignment_1_0_1() { return cSpecializationAssignment_1_0_1; }
 
 		//LocationQuery
-		public RuleCall getSpecializationLocationQueryParserRuleCall_1_1_0() { return cSpecializationLocationQueryParserRuleCall_1_1_0; }
+		public RuleCall getSpecializationLocationQueryParserRuleCall_1_0_1_0() { return cSpecializationLocationQueryParserRuleCall_1_0_1_0; }
+
+		//composition=CompositionQuery
+		public Assignment getCompositionAssignment_1_1() { return cCompositionAssignment_1_1; }
+
+		//CompositionQuery
+		public RuleCall getCompositionCompositionQueryParserRuleCall_1_1_0() { return cCompositionCompositionQueryParserRuleCall_1_1_0; }
+	}
+
+	public class CompositionQueryElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CompositionQuery");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cCompositionQueryAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cModifierAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cModifierQueryModifierEnumRuleCall_1_0 = (RuleCall)cModifierAssignment_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cSubQueriesAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cSubQueriesLocationQueryParserRuleCall_3_0 = (RuleCall)cSubQueriesAssignment_3.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		
+		//CompositionQuery:
+		//	{CompositionQuery} modifier=QueryModifier? "{" subQueries+=LocationQuery* "}";
+		public ParserRule getRule() { return rule; }
+
+		//{CompositionQuery} modifier=QueryModifier? "{" subQueries+=LocationQuery* "}"
+		public Group getGroup() { return cGroup; }
+
+		//{CompositionQuery}
+		public Action getCompositionQueryAction_0() { return cCompositionQueryAction_0; }
+
+		//modifier=QueryModifier?
+		public Assignment getModifierAssignment_1() { return cModifierAssignment_1; }
+
+		//QueryModifier
+		public RuleCall getModifierQueryModifierEnumRuleCall_1_0() { return cModifierQueryModifierEnumRuleCall_1_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+
+		//subQueries+=LocationQuery*
+		public Assignment getSubQueriesAssignment_3() { return cSubQueriesAssignment_3; }
+
+		//LocationQuery
+		public RuleCall getSubQueriesLocationQueryParserRuleCall_3_0() { return cSubQueriesLocationQueryParserRuleCall_3_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 	}
 
 	public class NodeElements extends AbstractParserRuleElementFinder {
@@ -964,6 +1154,34 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	
+	public class QueryModifierElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "QueryModifier");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cINCLUDEEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cINCLUDEIncludeKeyword_0_0 = (Keyword)cINCLUDEEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cEXCLUDEEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cEXCLUDEExcludeKeyword_1_0 = (Keyword)cEXCLUDEEnumLiteralDeclaration_1.eContents().get(0);
+		
+		//enum QueryModifier:
+		//	INCLUDE="include" | EXCLUDE="exclude";
+		public EnumRule getRule() { return rule; }
+
+		//INCLUDE="include" | EXCLUDE="exclude"
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//INCLUDE="include"
+		public EnumLiteralDeclaration getINCLUDEEnumLiteralDeclaration_0() { return cINCLUDEEnumLiteralDeclaration_0; }
+
+		//"include"
+		public Keyword getINCLUDEIncludeKeyword_0_0() { return cINCLUDEIncludeKeyword_0_0; }
+
+		//EXCLUDE="exclude"
+		public EnumLiteralDeclaration getEXCLUDEEnumLiteralDeclaration_1() { return cEXCLUDEEnumLiteralDeclaration_1; }
+
+		//"exclude"
+		public Keyword getEXCLUDEExcludeKeyword_1_0() { return cEXCLUDEExcludeKeyword_1_0; }
+	}
+
 	public class InternalFunctionElements extends AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "InternalFunction");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -1147,9 +1365,14 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	private QualifiedNameElements pQualifiedName;
 	private QualifiedNameWithWildcardElements pQualifiedNameWithWildcard;
 	private AspectElements pAspect;
+	private ProbeElements pProbe;
+	private ParameterDeclarationElements pParameterDeclaration;
 	private QueryElements pQuery;
+	private MethodQueryElements pMethodQuery;
 	private ParameterPatternElements pParameterPattern;
 	private LocationQueryElements pLocationQuery;
+	private CompositionQueryElements pCompositionQuery;
+	private QueryModifierElements unknownRuleQueryModifier;
 	private NodeElements pNode;
 	private ParamQueryElements pParamQuery;
 	private ParamCompareElements pParamCompare;
@@ -1211,8 +1434,8 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//Model:
-	//	"package" name=QualifiedName metamodels+=RegisteredPackage* imports+=Import* sources+=ApplicationModel*
-	//	aspects+=Aspect*;
+	//	"package" name=QualifiedName metamodels+=RegisteredPackage* imports+=Import* sources+=ApplicationModel* (probes+=Probe
+	//	| aspects+=Aspect)*;
 	public ModelElements getModelAccess() {
 		return (pModel != null) ? pModel : (pModel = new ModelElements());
 	}
@@ -1274,7 +1497,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//// define subgraph-pattern to locate structures in models
 	//// define selector for reference destination
 	//Aspect:
-	//	annotation=Annotation? "aspect" query=Query "{" collectors+=Collector* "}";
+	//	annotation=Annotation? "aspect" probe=[Probe|QualifiedName] ":" query=Query;
 	public AspectElements getAspectAccess() {
 		return (pAspect != null) ? pAspect : (pAspect = new AspectElements());
 	}
@@ -1283,15 +1506,46 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		return getAspectAccess().getRule();
 	}
 
+	//Probe:
+	//	"probe" name=ID ("(" (parameterDeclarations+=ParameterDeclaration ("," parameterDeclarations+=ParameterDeclaration)*)?
+	//	")")? "{" collectors+=Collector* "}";
+	public ProbeElements getProbeAccess() {
+		return (pProbe != null) ? pProbe : (pProbe = new ProbeElements());
+	}
+	
+	public ParserRule getProbeRule() {
+		return getProbeAccess().getRule();
+	}
+
+	//ParameterDeclaration:
+	//	type="type" name=ID;
+	public ParameterDeclarationElements getParameterDeclarationAccess() {
+		return (pParameterDeclaration != null) ? pParameterDeclaration : (pParameterDeclaration = new ParameterDeclarationElements());
+	}
+	
+	public ParserRule getParameterDeclarationRule() {
+		return getParameterDeclarationAccess().getRule();
+	}
+
 	//Query:
-	//	location=LocationQuery ((modifier=[structure::MethodModifier] | "*") (returnType=[structure::Type] | "*")
-	//	method=[structure::Method] "(" parameter+=ParameterPattern ("," parameter+=ParameterPattern)* ")")?;
+	//	location=LocationQuery method=MethodQuery?;
 	public QueryElements getQueryAccess() {
 		return (pQuery != null) ? pQuery : (pQuery = new QueryElements());
 	}
 	
 	public ParserRule getQueryRule() {
 		return getQueryAccess().getRule();
+	}
+
+	//MethodQuery:
+	//	(modifier=[structure::MethodModifier] | "*") (returnType=[structure::Type] | "*") methodReference=[structure::Method]
+	//	"(" parameter+=ParameterPattern ("," parameter+=ParameterPattern)* ")";
+	public MethodQueryElements getMethodQueryAccess() {
+		return (pMethodQuery != null) ? pMethodQuery : (pMethodQuery = new MethodQueryElements());
+	}
+	
+	public ParserRule getMethodQueryRule() {
+		return getMethodQueryAccess().getRule();
 	}
 
 	//ParameterPattern:
@@ -1305,13 +1559,33 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//LocationQuery:
-	//	node=Node ("." specialization=LocationQuery)?;
+	//	node=Node ("." specialization=LocationQuery | composition=CompositionQuery)?;
 	public LocationQueryElements getLocationQueryAccess() {
 		return (pLocationQuery != null) ? pLocationQuery : (pLocationQuery = new LocationQueryElements());
 	}
 	
 	public ParserRule getLocationQueryRule() {
 		return getLocationQueryAccess().getRule();
+	}
+
+	//CompositionQuery:
+	//	{CompositionQuery} modifier=QueryModifier? "{" subQueries+=LocationQuery* "}";
+	public CompositionQueryElements getCompositionQueryAccess() {
+		return (pCompositionQuery != null) ? pCompositionQuery : (pCompositionQuery = new CompositionQueryElements());
+	}
+	
+	public ParserRule getCompositionQueryRule() {
+		return getCompositionQueryAccess().getRule();
+	}
+
+	//enum QueryModifier:
+	//	INCLUDE="include" | EXCLUDE="exclude";
+	public QueryModifierElements getQueryModifierAccess() {
+		return (unknownRuleQueryModifier != null) ? unknownRuleQueryModifier : (unknownRuleQueryModifier = new QueryModifierElements());
+	}
+	
+	public EnumRule getQueryModifierRule() {
+		return getQueryModifierAccess().getRule();
 	}
 
 	//Node:

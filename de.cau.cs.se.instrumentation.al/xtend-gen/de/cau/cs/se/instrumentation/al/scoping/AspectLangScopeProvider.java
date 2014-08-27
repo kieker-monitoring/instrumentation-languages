@@ -24,6 +24,7 @@ import de.cau.cs.se.instrumantation.model.structure.Parameter;
 import de.cau.cs.se.instrumantation.model.structure.Type;
 import de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode;
 import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery;
+import de.cau.cs.se.instrumentation.al.aspectLang.MethodQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.Node;
 import de.cau.cs.se.instrumentation.al.aspectLang.ParameterPattern;
 import de.cau.cs.se.instrumentation.al.aspectLang.Query;
@@ -62,8 +63,7 @@ public class AspectLangScopeProvider extends AbstractDeclarativeScopeProvider {
       ResourceSet _resourceSet = _eResource.getResourceSet();
       final IForeignModelTypeProvider typeProvider = this.typeProviderFactory.getTypeProvider(_resourceSet, null);
       Iterable<NamedElement> _allTypes = typeProvider.getAllTypes();
-      ContainerParentScope _containerParentScope = new ContainerParentScope(_allTypes, context);
-      final IScope result = _containerParentScope;
+      final IScope result = new ContainerParentScope(_allTypes, context);
       return result;
     } else {
       return null;
@@ -110,7 +110,7 @@ public class AspectLangScopeProvider extends AbstractDeclarativeScopeProvider {
   
   public IScope scope_ParameterPattern_parameter(final ParameterPattern context, final EReference reference) {
     EObject _eContainer = context.eContainer();
-    final Method method = ((Query) _eContainer).getMethod();
+    final Method method = ((MethodQuery) _eContainer).getMethodReference();
     EList<Parameter> _parameters = method.getParameters();
     return Scopes.scopeFor(_parameters);
   }
@@ -121,11 +121,9 @@ public class AspectLangScopeProvider extends AbstractDeclarativeScopeProvider {
     boolean _notEquals = (!Objects.equal(_specialization, null));
     if (_notEquals) {
       LocationQuery _specialization_1 = query.getSpecialization();
-      Node _leaveNode = this.leaveNode(_specialization_1);
-      _xifexpression = _leaveNode;
+      _xifexpression = this.leaveNode(_specialization_1);
     } else {
-      Node _node = query.getNode();
-      _xifexpression = _node;
+      _xifexpression = query.getNode();
     }
     return _xifexpression;
   }
@@ -142,8 +140,7 @@ public class AspectLangScopeProvider extends AbstractDeclarativeScopeProvider {
   public IScope scope_RegisteredPackage_ePackage(final RegisteredPackage context, final EReference reference) {
     Resource _eResource = context.eResource();
     ResourceSet _resourceSet = _eResource.getResourceSet();
-    EPackageScope _ePackageScope = new EPackageScope(_resourceSet);
-    final IScope result = _ePackageScope;
+    final IScope result = new EPackageScope(_resourceSet);
     return result;
   }
 }

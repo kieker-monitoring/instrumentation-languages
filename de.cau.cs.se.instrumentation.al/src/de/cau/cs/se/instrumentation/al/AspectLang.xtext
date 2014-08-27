@@ -16,7 +16,7 @@ Model:
 	(metamodels += RegisteredPackage)*
 	(imports += Import)*
 	(sources += ApplicationModel)*
-	(aspects += Aspect)*
+	(probes += Probe | aspects += Aspect)*
 ;
 
 Import:
@@ -43,19 +43,29 @@ QualifiedNameWithWildcard:
 
 Aspect:
 	(annotation=Annotation)?
-	'aspect' query=Query '{'
+	'aspect' probe=[Probe|QualifiedName] ':' query=Query
+;
+
+Probe:
+	'probe' name=ID ('(' (parameterDeclarations+=ParameterDeclaration (',' parameterDeclarations+=ParameterDeclaration)*)? ')')? '{'
 		collectors+=Collector*
 	'}'
 ;
 
+ParameterDeclaration:
+	type='type' name=ID 
+;
+
 Query:
 	location=LocationQuery 
-	(
-		(modifier=[structure::MethodModifier|ID]|'*')
-		(returnType=[structure::Type|ID]|'*') 
-		method=[structure::Method|ID]
-		'(' parameter+=ParameterPattern (',' parameter+=ParameterPattern)* ')'
-	)?
+	(method=MethodQuery)?
+;
+
+MethodQuery:
+	(modifier=[structure::MethodModifier|ID]|'*')
+	(returnType=[structure::Type|ID]|'*') 
+	methodReference=[structure::Method|ID]
+	'(' parameter+=ParameterPattern (',' parameter+=ParameterPattern)* ')'
 ;
 
 ParameterPattern:
@@ -65,7 +75,16 @@ ParameterPattern:
 ;
 
 LocationQuery:
-	node=Node ('.' specialization=LocationQuery)? 
+	node=Node (('.' specialization=LocationQuery) | (composition=CompositionQuery))?
+;
+
+CompositionQuery: {CompositionQuery}
+	(modifier=QueryModifier)? '{' (subQueries += LocationQuery)* '}'	
+;
+
+enum QueryModifier:
+	INCLUDE = 'include' |
+	EXCLUDE = 'exclude'
 ;
 
 

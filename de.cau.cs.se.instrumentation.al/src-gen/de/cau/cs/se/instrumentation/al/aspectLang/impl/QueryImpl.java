@@ -2,30 +2,19 @@
  */
 package de.cau.cs.se.instrumentation.al.aspectLang.impl;
 
-import de.cau.cs.se.instrumantation.model.structure.Method;
-import de.cau.cs.se.instrumantation.model.structure.MethodModifier;
-import de.cau.cs.se.instrumantation.model.structure.Type;
-
 import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
 import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery;
-import de.cau.cs.se.instrumentation.al.aspectLang.ParameterPattern;
+import de.cau.cs.se.instrumentation.al.aspectLang.MethodQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.Query;
-
-import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,10 +24,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.QueryImpl#getLocation <em>Location</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.QueryImpl#getModifier <em>Modifier</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.QueryImpl#getReturnType <em>Return Type</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.QueryImpl#getMethod <em>Method</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.QueryImpl#getParameter <em>Parameter</em>}</li>
  * </ul>
  * </p>
  *
@@ -57,44 +43,14 @@ public class QueryImpl extends MinimalEObjectImpl.Container implements Query
   protected LocationQuery location;
 
   /**
-   * The cached value of the '{@link #getModifier() <em>Modifier</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getModifier()
-   * @generated
-   * @ordered
-   */
-  protected MethodModifier modifier;
-
-  /**
-   * The cached value of the '{@link #getReturnType() <em>Return Type</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getReturnType()
-   * @generated
-   * @ordered
-   */
-  protected Type returnType;
-
-  /**
-   * The cached value of the '{@link #getMethod() <em>Method</em>}' reference.
+   * The cached value of the '{@link #getMethod() <em>Method</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getMethod()
    * @generated
    * @ordered
    */
-  protected Method method;
-
-  /**
-   * The cached value of the '{@link #getParameter() <em>Parameter</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getParameter()
-   * @generated
-   * @ordered
-   */
-  protected EList<ParameterPattern> parameter;
+  protected MethodQuery method;
 
   /**
    * <!-- begin-user-doc -->
@@ -170,113 +126,7 @@ public class QueryImpl extends MinimalEObjectImpl.Container implements Query
    * <!-- end-user-doc -->
    * @generated
    */
-  public MethodModifier getModifier()
-  {
-    if (modifier != null && modifier.eIsProxy())
-    {
-      InternalEObject oldModifier = (InternalEObject)modifier;
-      modifier = (MethodModifier)eResolveProxy(oldModifier);
-      if (modifier != oldModifier)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, AspectLangPackage.QUERY__MODIFIER, oldModifier, modifier));
-      }
-    }
-    return modifier;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public MethodModifier basicGetModifier()
-  {
-    return modifier;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setModifier(MethodModifier newModifier)
-  {
-    MethodModifier oldModifier = modifier;
-    modifier = newModifier;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.QUERY__MODIFIER, oldModifier, modifier));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Type getReturnType()
-  {
-    if (returnType != null && returnType.eIsProxy())
-    {
-      InternalEObject oldReturnType = (InternalEObject)returnType;
-      returnType = (Type)eResolveProxy(oldReturnType);
-      if (returnType != oldReturnType)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, AspectLangPackage.QUERY__RETURN_TYPE, oldReturnType, returnType));
-      }
-    }
-    return returnType;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Type basicGetReturnType()
-  {
-    return returnType;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setReturnType(Type newReturnType)
-  {
-    Type oldReturnType = returnType;
-    returnType = newReturnType;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.QUERY__RETURN_TYPE, oldReturnType, returnType));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Method getMethod()
-  {
-    if (method != null && method.eIsProxy())
-    {
-      InternalEObject oldMethod = (InternalEObject)method;
-      method = (Method)eResolveProxy(oldMethod);
-      if (method != oldMethod)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, AspectLangPackage.QUERY__METHOD, oldMethod, method));
-      }
-    }
-    return method;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Method basicGetMethod()
+  public MethodQuery getMethod()
   {
     return method;
   }
@@ -286,12 +136,16 @@ public class QueryImpl extends MinimalEObjectImpl.Container implements Query
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setMethod(Method newMethod)
+  public NotificationChain basicSetMethod(MethodQuery newMethod, NotificationChain msgs)
   {
-    Method oldMethod = method;
+    MethodQuery oldMethod = method;
     method = newMethod;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.QUERY__METHOD, oldMethod, method));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AspectLangPackage.QUERY__METHOD, oldMethod, newMethod);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -299,13 +153,20 @@ public class QueryImpl extends MinimalEObjectImpl.Container implements Query
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<ParameterPattern> getParameter()
+  public void setMethod(MethodQuery newMethod)
   {
-    if (parameter == null)
+    if (newMethod != method)
     {
-      parameter = new EObjectContainmentEList<ParameterPattern>(ParameterPattern.class, this, AspectLangPackage.QUERY__PARAMETER);
+      NotificationChain msgs = null;
+      if (method != null)
+        msgs = ((InternalEObject)method).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AspectLangPackage.QUERY__METHOD, null, msgs);
+      if (newMethod != null)
+        msgs = ((InternalEObject)newMethod).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AspectLangPackage.QUERY__METHOD, null, msgs);
+      msgs = basicSetMethod(newMethod, msgs);
+      if (msgs != null) msgs.dispatch();
     }
-    return parameter;
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.QUERY__METHOD, newMethod, newMethod));
   }
 
   /**
@@ -320,8 +181,8 @@ public class QueryImpl extends MinimalEObjectImpl.Container implements Query
     {
       case AspectLangPackage.QUERY__LOCATION:
         return basicSetLocation(null, msgs);
-      case AspectLangPackage.QUERY__PARAMETER:
-        return ((InternalEList<?>)getParameter()).basicRemove(otherEnd, msgs);
+      case AspectLangPackage.QUERY__METHOD:
+        return basicSetMethod(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -338,17 +199,8 @@ public class QueryImpl extends MinimalEObjectImpl.Container implements Query
     {
       case AspectLangPackage.QUERY__LOCATION:
         return getLocation();
-      case AspectLangPackage.QUERY__MODIFIER:
-        if (resolve) return getModifier();
-        return basicGetModifier();
-      case AspectLangPackage.QUERY__RETURN_TYPE:
-        if (resolve) return getReturnType();
-        return basicGetReturnType();
       case AspectLangPackage.QUERY__METHOD:
-        if (resolve) return getMethod();
-        return basicGetMethod();
-      case AspectLangPackage.QUERY__PARAMETER:
-        return getParameter();
+        return getMethod();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -358,7 +210,6 @@ public class QueryImpl extends MinimalEObjectImpl.Container implements Query
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -367,18 +218,8 @@ public class QueryImpl extends MinimalEObjectImpl.Container implements Query
       case AspectLangPackage.QUERY__LOCATION:
         setLocation((LocationQuery)newValue);
         return;
-      case AspectLangPackage.QUERY__MODIFIER:
-        setModifier((MethodModifier)newValue);
-        return;
-      case AspectLangPackage.QUERY__RETURN_TYPE:
-        setReturnType((Type)newValue);
-        return;
       case AspectLangPackage.QUERY__METHOD:
-        setMethod((Method)newValue);
-        return;
-      case AspectLangPackage.QUERY__PARAMETER:
-        getParameter().clear();
-        getParameter().addAll((Collection<? extends ParameterPattern>)newValue);
+        setMethod((MethodQuery)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -397,17 +238,8 @@ public class QueryImpl extends MinimalEObjectImpl.Container implements Query
       case AspectLangPackage.QUERY__LOCATION:
         setLocation((LocationQuery)null);
         return;
-      case AspectLangPackage.QUERY__MODIFIER:
-        setModifier((MethodModifier)null);
-        return;
-      case AspectLangPackage.QUERY__RETURN_TYPE:
-        setReturnType((Type)null);
-        return;
       case AspectLangPackage.QUERY__METHOD:
-        setMethod((Method)null);
-        return;
-      case AspectLangPackage.QUERY__PARAMETER:
-        getParameter().clear();
+        setMethod((MethodQuery)null);
         return;
     }
     super.eUnset(featureID);
@@ -425,14 +257,8 @@ public class QueryImpl extends MinimalEObjectImpl.Container implements Query
     {
       case AspectLangPackage.QUERY__LOCATION:
         return location != null;
-      case AspectLangPackage.QUERY__MODIFIER:
-        return modifier != null;
-      case AspectLangPackage.QUERY__RETURN_TYPE:
-        return returnType != null;
       case AspectLangPackage.QUERY__METHOD:
         return method != null;
-      case AspectLangPackage.QUERY__PARAMETER:
-        return parameter != null && !parameter.isEmpty();
     }
     return super.eIsSet(featureID);
   }

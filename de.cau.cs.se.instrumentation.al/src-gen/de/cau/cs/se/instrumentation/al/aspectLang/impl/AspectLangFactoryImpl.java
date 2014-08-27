@@ -70,9 +70,13 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
       case AspectLangPackage.REGISTERED_PACKAGE: return createRegisteredPackage();
       case AspectLangPackage.APPLICATION_MODEL: return createApplicationModel();
       case AspectLangPackage.ASPECT: return createAspect();
+      case AspectLangPackage.PROBE: return createProbe();
+      case AspectLangPackage.PARAMETER_DECLARATION: return createParameterDeclaration();
       case AspectLangPackage.QUERY: return createQuery();
+      case AspectLangPackage.METHOD_QUERY: return createMethodQuery();
       case AspectLangPackage.PARAMETER_PATTERN: return createParameterPattern();
       case AspectLangPackage.LOCATION_QUERY: return createLocationQuery();
+      case AspectLangPackage.COMPOSITION_QUERY: return createCompositionQuery();
       case AspectLangPackage.NODE: return createNode();
       case AspectLangPackage.PARAM_QUERY: return createParamQuery();
       case AspectLangPackage.PARAM_COMPARE: return createParamCompare();
@@ -105,6 +109,8 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
   {
     switch (eDataType.getClassifierID())
     {
+      case AspectLangPackage.QUERY_MODIFIER:
+        return createQueryModifierFromString(eDataType, initialValue);
       case AspectLangPackage.INTERNAL_FUNCTION:
         return createInternalFunctionFromString(eDataType, initialValue);
       case AspectLangPackage.REFLECTION_FUNCTION:
@@ -128,6 +134,8 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
   {
     switch (eDataType.getClassifierID())
     {
+      case AspectLangPackage.QUERY_MODIFIER:
+        return convertQueryModifierToString(eDataType, instanceValue);
       case AspectLangPackage.INTERNAL_FUNCTION:
         return convertInternalFunctionToString(eDataType, instanceValue);
       case AspectLangPackage.REFLECTION_FUNCTION:
@@ -201,10 +209,43 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
    * <!-- end-user-doc -->
    * @generated
    */
+  public Probe createProbe()
+  {
+    ProbeImpl probe = new ProbeImpl();
+    return probe;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ParameterDeclaration createParameterDeclaration()
+  {
+    ParameterDeclarationImpl parameterDeclaration = new ParameterDeclarationImpl();
+    return parameterDeclaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Query createQuery()
   {
     QueryImpl query = new QueryImpl();
     return query;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public MethodQuery createMethodQuery()
+  {
+    MethodQueryImpl methodQuery = new MethodQueryImpl();
+    return methodQuery;
   }
 
   /**
@@ -227,6 +268,17 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
   {
     LocationQueryImpl locationQuery = new LocationQueryImpl();
     return locationQuery;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CompositionQuery createCompositionQuery()
+  {
+    CompositionQueryImpl compositionQuery = new CompositionQueryImpl();
+    return compositionQuery;
   }
 
   /**
@@ -414,6 +466,28 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
   {
     CollectorImpl collector = new CollectorImpl();
     return collector;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public QueryModifier createQueryModifierFromString(EDataType eDataType, String initialValue)
+  {
+    QueryModifier result = QueryModifier.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertQueryModifierToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**

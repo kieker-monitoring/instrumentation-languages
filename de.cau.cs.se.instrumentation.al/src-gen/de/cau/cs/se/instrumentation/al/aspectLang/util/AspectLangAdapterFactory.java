@@ -100,9 +100,24 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
         return createAspectAdapter();
       }
       @Override
+      public Adapter caseProbe(Probe object)
+      {
+        return createProbeAdapter();
+      }
+      @Override
+      public Adapter caseParameterDeclaration(ParameterDeclaration object)
+      {
+        return createParameterDeclarationAdapter();
+      }
+      @Override
       public Adapter caseQuery(Query object)
       {
         return createQueryAdapter();
+      }
+      @Override
+      public Adapter caseMethodQuery(MethodQuery object)
+      {
+        return createMethodQueryAdapter();
       }
       @Override
       public Adapter caseParameterPattern(ParameterPattern object)
@@ -113,6 +128,11 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
       public Adapter caseLocationQuery(LocationQuery object)
       {
         return createLocationQueryAdapter();
+      }
+      @Override
+      public Adapter caseCompositionQuery(CompositionQuery object)
+      {
+        return createCompositionQueryAdapter();
       }
       @Override
       public Adapter caseNode(Node object)
@@ -297,6 +317,36 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Probe <em>Probe</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.Probe
+   * @generated
+   */
+  public Adapter createProbeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ParameterDeclaration <em>Parameter Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.ParameterDeclaration
+   * @generated
+   */
+  public Adapter createParameterDeclarationAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Query <em>Query</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -307,6 +357,21 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createQueryAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.MethodQuery <em>Method Query</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.MethodQuery
+   * @generated
+   */
+  public Adapter createMethodQueryAdapter()
   {
     return null;
   }
@@ -337,6 +402,21 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createLocationQueryAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.CompositionQuery <em>Composition Query</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.CompositionQuery
+   * @generated
+   */
+  public Adapter createCompositionQueryAdapter()
   {
     return null;
   }

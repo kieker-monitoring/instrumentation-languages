@@ -25,7 +25,8 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.xtext.common.types.ui,
  org.eclipse.platform;bundle-version="4.3.0",
  de.cau.cs.kieler.core.annotations;bundle-version="0.3.2",
- de.cau.cs.kieler.core.annotations.text;bundle-version="0.4.2"
+ de.cau.cs.kieler.core.annotations.text;bundle-version="0.4.2",
+ org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6

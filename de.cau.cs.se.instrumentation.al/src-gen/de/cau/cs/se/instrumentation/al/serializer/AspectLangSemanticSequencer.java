@@ -15,17 +15,21 @@ import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel;
 import de.cau.cs.se.instrumentation.al.aspectLang.Aspect;
 import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
 import de.cau.cs.se.instrumentation.al.aspectLang.Collector;
+import de.cau.cs.se.instrumentation.al.aspectLang.CompositionQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode;
 import de.cau.cs.se.instrumentation.al.aspectLang.FloatValue;
 import de.cau.cs.se.instrumentation.al.aspectLang.Import;
 import de.cau.cs.se.instrumentation.al.aspectLang.IntValue;
 import de.cau.cs.se.instrumentation.al.aspectLang.InternalFunctionProperty;
 import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery;
+import de.cau.cs.se.instrumentation.al.aspectLang.MethodQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.Model;
 import de.cau.cs.se.instrumentation.al.aspectLang.ParamCompare;
 import de.cau.cs.se.instrumentation.al.aspectLang.ParamQuery;
+import de.cau.cs.se.instrumentation.al.aspectLang.ParameterDeclaration;
 import de.cau.cs.se.instrumentation.al.aspectLang.ParameterPattern;
 import de.cau.cs.se.instrumentation.al.aspectLang.ParentNode;
+import de.cau.cs.se.instrumentation.al.aspectLang.Probe;
 import de.cau.cs.se.instrumentation.al.aspectLang.Query;
 import de.cau.cs.se.instrumentation.al.aspectLang.ReferenceValue;
 import de.cau.cs.se.instrumentation.al.aspectLang.ReflectionProperty;
@@ -134,6 +138,12 @@ public class AspectLangSemanticSequencer extends AnnotationsSemanticSequencer {
 					return; 
 				}
 				else break;
+			case AspectLangPackage.COMPOSITION_QUERY:
+				if(context == grammarAccess.getCompositionQueryRule()) {
+					sequence_CompositionQuery(context, (CompositionQuery) semanticObject); 
+					return; 
+				}
+				else break;
 			case AspectLangPackage.CONTAINER_NODE:
 				if(context == grammarAccess.getContainerNodeRule()) {
 					sequence_ContainerNode(context, (ContainerNode) semanticObject); 
@@ -177,6 +187,12 @@ public class AspectLangSemanticSequencer extends AnnotationsSemanticSequencer {
 					return; 
 				}
 				else break;
+			case AspectLangPackage.METHOD_QUERY:
+				if(context == grammarAccess.getMethodQueryRule()) {
+					sequence_MethodQuery(context, (MethodQuery) semanticObject); 
+					return; 
+				}
+				else break;
 			case AspectLangPackage.MODEL:
 				if(context == grammarAccess.getModelRule()) {
 					sequence_Model(context, (Model) semanticObject); 
@@ -195,6 +211,12 @@ public class AspectLangSemanticSequencer extends AnnotationsSemanticSequencer {
 					return; 
 				}
 				else break;
+			case AspectLangPackage.PARAMETER_DECLARATION:
+				if(context == grammarAccess.getParameterDeclarationRule()) {
+					sequence_ParameterDeclaration(context, (ParameterDeclaration) semanticObject); 
+					return; 
+				}
+				else break;
 			case AspectLangPackage.PARAMETER_PATTERN:
 				if(context == grammarAccess.getParameterPatternRule()) {
 					sequence_ParameterPattern(context, (ParameterPattern) semanticObject); 
@@ -208,6 +230,12 @@ public class AspectLangSemanticSequencer extends AnnotationsSemanticSequencer {
 				}
 				else if(context == grammarAccess.getParentNodeRule()) {
 					sequence_ParentNode(context, (ParentNode) semanticObject); 
+					return; 
+				}
+				else break;
+			case AspectLangPackage.PROBE:
+				if(context == grammarAccess.getProbeRule()) {
+					sequence_Probe(context, (Probe) semanticObject); 
 					return; 
 				}
 				else break;
@@ -286,7 +314,7 @@ public class AspectLangSemanticSequencer extends AnnotationsSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (annotation=Annotation? query=Query collectors+=Collector*)
+	 *     (annotation=Annotation? probe=[Probe|QualifiedName] query=Query)
 	 */
 	protected void sequence_Aspect(EObject context, Aspect semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -298,6 +326,15 @@ public class AspectLangSemanticSequencer extends AnnotationsSemanticSequencer {
 	 *     (insertionPoint=InsertionPoint type=[RecordType|QualifiedName] (initializations+=Value initializations+=Value*)?)
 	 */
 	protected void sequence_Collector(EObject context, Collector semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (modifier=QueryModifier? subQueries+=LocationQuery*)
+	 */
+	protected void sequence_CompositionQuery(EObject context, CompositionQuery semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -386,7 +423,7 @@ public class AspectLangSemanticSequencer extends AnnotationsSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (node=Node specialization=LocationQuery?)
+	 *     (node=Node (specialization=LocationQuery | composition=CompositionQuery)?)
 	 */
 	protected void sequence_LocationQuery(EObject context, LocationQuery semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -395,7 +432,16 @@ public class AspectLangSemanticSequencer extends AnnotationsSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=QualifiedName metamodels+=RegisteredPackage* imports+=Import* sources+=ApplicationModel* aspects+=Aspect*)
+	 *     (modifier=[MethodModifier|ID]? returnType=[Type|ID]? methodReference=[Method|ID] parameter+=ParameterPattern parameter+=ParameterPattern*)
+	 */
+	protected void sequence_MethodQuery(EObject context, MethodQuery semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=QualifiedName metamodels+=RegisteredPackage* imports+=Import* sources+=ApplicationModel* (probes+=Probe | aspects+=Aspect)*)
 	 */
 	protected void sequence_Model(EObject context, Model semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -462,6 +508,25 @@ public class AspectLangSemanticSequencer extends AnnotationsSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     (type='type' name=ID)
+	 */
+	protected void sequence_ParameterDeclaration(EObject context, ParameterDeclaration semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, AspectLangPackage.Literals.PARAMETER_DECLARATION__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AspectLangPackage.Literals.PARAMETER_DECLARATION__TYPE));
+			if(transientValues.isValueTransient(semanticObject, AspectLangPackage.Literals.PARAMETER_DECLARATION__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AspectLangPackage.Literals.PARAMETER_DECLARATION__NAME));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getParameterDeclarationAccess().getTypeTypeKeyword_0_0(), semanticObject.getType());
+		feeder.accept(grammarAccess.getParameterDeclarationAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (modifier=[ParameterModifier|ID]? type=[Type|ID] parameter=[Parameter|ID])
 	 */
 	protected void sequence_ParameterPattern(EObject context, ParameterPattern semanticObject) {
@@ -480,10 +545,16 @@ public class AspectLangSemanticSequencer extends AnnotationsSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (
-	 *         location=LocationQuery 
-	 *         (modifier=[MethodModifier|ID]? returnType=[Type|ID]? method=[Method|ID] parameter+=ParameterPattern parameter+=ParameterPattern*)?
-	 *     )
+	 *     (name=ID (parameterDeclarations+=ParameterDeclaration parameterDeclarations+=ParameterDeclaration*)? collectors+=Collector*)
+	 */
+	protected void sequence_Probe(EObject context, Probe semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (location=LocationQuery method=MethodQuery?)
 	 */
 	protected void sequence_Query(EObject context, Query semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

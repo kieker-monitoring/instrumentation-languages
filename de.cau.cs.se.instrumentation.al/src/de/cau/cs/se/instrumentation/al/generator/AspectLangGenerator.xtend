@@ -108,8 +108,8 @@ class AspectLangGenerator implements IGenerator {
 		val aspectsElement = doc.createElement("aspects")
 		aspectjElement.appendChild(aspectsElement)
 		for (Aspect aspect : aspects) {
-			aspect.collectors.filter[it.insertionPoint == InsertionPoint.^BEFORE].createDataCollectorAspect(doc, aspectsElement)
-			aspect.collectors.filter[it.insertionPoint == InsertionPoint.^AFTER].createDataCollectorAspect(doc, aspectsElement)
+			aspect.probe.collectors.filter[it.insertionPoint == InsertionPoint.^BEFORE].createDataCollectorAspect(doc, aspectsElement)
+			aspect.probe.collectors.filter[it.insertionPoint == InsertionPoint.^AFTER].createDataCollectorAspect(doc, aspectsElement)
 		}
 		
 		// writing stuff
@@ -141,7 +141,7 @@ class AspectLangGenerator implements IGenerator {
 	/**
 	 * Compute the query for model nodes.
 	 */
-	def String computeAspectJQuery(Query query) '''«query.location.computeLocation» «query.modifier.computeModifier» «if (query.method != null) query.method.computeMethod else '*'»'''
+	def String computeAspectJQuery(Query query) '''«query.location.computeLocation» «query.method.modifier.computeModifier» «if (query.method != null) query.method.methodReference.computeMethod else '*'»'''
 	
 	def CharSequence computeLocation(LocationQuery query) '''«query.node.computeNode»«if (query.specialization != null) '.' + query.specialization.computeLocation»'''
 	

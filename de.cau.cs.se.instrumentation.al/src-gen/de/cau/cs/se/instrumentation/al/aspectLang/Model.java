@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Model#getMetamodels <em>Metamodels</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Model#getImports <em>Imports</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Model#getSources <em>Sources</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Model#getProbes <em>Probes</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Model#getAspects <em>Aspects</em>}</li>
  * </ul>
  * </p>
@@ -101,6 +102,22 @@ public interface Model extends EObject
    * @generated
    */
   EList<ApplicationModel> getSources();
+
+  /**
+   * Returns the value of the '<em><b>Probes</b></em>' containment reference list.
+   * The list contents are of type {@link de.cau.cs.se.instrumentation.al.aspectLang.Probe}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Probes</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Probes</em>' containment reference list.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getModel_Probes()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Probe> getProbes();
 
   /**
    * Returns the value of the '<em><b>Aspects</b></em>' containment reference list.

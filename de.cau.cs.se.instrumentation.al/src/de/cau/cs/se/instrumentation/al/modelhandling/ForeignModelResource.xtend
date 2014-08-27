@@ -83,12 +83,16 @@ public class ForeignModelResource extends ResourceImpl {
 	 * @return the EObject identified by the uriFragment or null if no such object exists. 
 	 */
 	override EObject getEObject(String uriFragment) {
-		val EObject object = (this.getContents().get(0) as Model).contents.findFirst[uriFragment.equals(this.getURIFragment(it))]
-		if (object != null)
-			return object
-		else {
+		System.out.println("this.getContents " + this.getContents())
+		if (!this.getContents().empty) {
+			System.out.println("this.getContents get element " + this.getContents().get(0))
+			val EObject object = (this.getContents()?.get(0) as Model).contents?.findFirst[uriFragment.equals(this.getURIFragment(it))]
+			if (object != null)
+				return object
+			else
+				return super.getEObject(uriFragment)
+		} else
 			return super.getEObject(uriFragment)
-		}
 	}
 
 	/**

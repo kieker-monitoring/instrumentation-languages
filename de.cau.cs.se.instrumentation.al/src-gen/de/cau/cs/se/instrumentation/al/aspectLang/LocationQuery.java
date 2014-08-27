@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery#getNode <em>Node</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery#getSpecialization <em>Specialization</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery#getComposition <em>Composition</em>}</li>
  * </ul>
  * </p>
  *
@@ -74,5 +75,31 @@ public interface LocationQuery extends EObject
    * @generated
    */
   void setSpecialization(LocationQuery value);
+
+  /**
+   * Returns the value of the '<em><b>Composition</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Composition</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Composition</em>' containment reference.
+   * @see #setComposition(CompositionQuery)
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getLocationQuery_Composition()
+   * @model containment="true"
+   * @generated
+   */
+  CompositionQuery getComposition();
+
+  /**
+   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery#getComposition <em>Composition</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Composition</em>' containment reference.
+   * @see #getComposition()
+   * @generated
+   */
+  void setComposition(CompositionQuery value);
 
 } // LocationQuery

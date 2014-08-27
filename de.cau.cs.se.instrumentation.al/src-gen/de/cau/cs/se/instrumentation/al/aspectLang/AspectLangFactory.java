@@ -68,6 +68,24 @@ public interface AspectLangFactory extends EFactory
   Aspect createAspect();
 
   /**
+   * Returns a new object of class '<em>Probe</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Probe</em>'.
+   * @generated
+   */
+  Probe createProbe();
+
+  /**
+   * Returns a new object of class '<em>Parameter Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Parameter Declaration</em>'.
+   * @generated
+   */
+  ParameterDeclaration createParameterDeclaration();
+
+  /**
    * Returns a new object of class '<em>Query</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -75,6 +93,15 @@ public interface AspectLangFactory extends EFactory
    * @generated
    */
   Query createQuery();
+
+  /**
+   * Returns a new object of class '<em>Method Query</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Method Query</em>'.
+   * @generated
+   */
+  MethodQuery createMethodQuery();
 
   /**
    * Returns a new object of class '<em>Parameter Pattern</em>'.
@@ -93,6 +120,15 @@ public interface AspectLangFactory extends EFactory
    * @generated
    */
   LocationQuery createLocationQuery();
+
+  /**
+   * Returns a new object of class '<em>Composition Query</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Composition Query</em>'.
+   * @generated
+   */
+  CompositionQuery createCompositionQuery();
 
   /**
    * Returns a new object of class '<em>Node</em>'.

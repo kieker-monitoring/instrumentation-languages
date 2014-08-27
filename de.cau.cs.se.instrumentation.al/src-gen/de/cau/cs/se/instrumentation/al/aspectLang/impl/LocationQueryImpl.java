@@ -3,6 +3,7 @@
 package de.cau.cs.se.instrumentation.al.aspectLang.impl;
 
 import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
+import de.cau.cs.se.instrumentation.al.aspectLang.CompositionQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.Node;
 
@@ -24,6 +25,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.LocationQueryImpl#getNode <em>Node</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.LocationQueryImpl#getSpecialization <em>Specialization</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.LocationQueryImpl#getComposition <em>Composition</em>}</li>
  * </ul>
  * </p>
  *
@@ -50,6 +52,16 @@ public class LocationQueryImpl extends MinimalEObjectImpl.Container implements L
    * @ordered
    */
   protected LocationQuery specialization;
+
+  /**
+   * The cached value of the '{@link #getComposition() <em>Composition</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getComposition()
+   * @generated
+   * @ordered
+   */
+  protected CompositionQuery composition;
 
   /**
    * <!-- begin-user-doc -->
@@ -173,6 +185,54 @@ public class LocationQueryImpl extends MinimalEObjectImpl.Container implements L
    * <!-- end-user-doc -->
    * @generated
    */
+  public CompositionQuery getComposition()
+  {
+    return composition;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetComposition(CompositionQuery newComposition, NotificationChain msgs)
+  {
+    CompositionQuery oldComposition = composition;
+    composition = newComposition;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AspectLangPackage.LOCATION_QUERY__COMPOSITION, oldComposition, newComposition);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setComposition(CompositionQuery newComposition)
+  {
+    if (newComposition != composition)
+    {
+      NotificationChain msgs = null;
+      if (composition != null)
+        msgs = ((InternalEObject)composition).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AspectLangPackage.LOCATION_QUERY__COMPOSITION, null, msgs);
+      if (newComposition != null)
+        msgs = ((InternalEObject)newComposition).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AspectLangPackage.LOCATION_QUERY__COMPOSITION, null, msgs);
+      msgs = basicSetComposition(newComposition, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.LOCATION_QUERY__COMPOSITION, newComposition, newComposition));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -182,6 +242,8 @@ public class LocationQueryImpl extends MinimalEObjectImpl.Container implements L
         return basicSetNode(null, msgs);
       case AspectLangPackage.LOCATION_QUERY__SPECIALIZATION:
         return basicSetSpecialization(null, msgs);
+      case AspectLangPackage.LOCATION_QUERY__COMPOSITION:
+        return basicSetComposition(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -200,6 +262,8 @@ public class LocationQueryImpl extends MinimalEObjectImpl.Container implements L
         return getNode();
       case AspectLangPackage.LOCATION_QUERY__SPECIALIZATION:
         return getSpecialization();
+      case AspectLangPackage.LOCATION_QUERY__COMPOSITION:
+        return getComposition();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -219,6 +283,9 @@ public class LocationQueryImpl extends MinimalEObjectImpl.Container implements L
         return;
       case AspectLangPackage.LOCATION_QUERY__SPECIALIZATION:
         setSpecialization((LocationQuery)newValue);
+        return;
+      case AspectLangPackage.LOCATION_QUERY__COMPOSITION:
+        setComposition((CompositionQuery)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -240,6 +307,9 @@ public class LocationQueryImpl extends MinimalEObjectImpl.Container implements L
       case AspectLangPackage.LOCATION_QUERY__SPECIALIZATION:
         setSpecialization((LocationQuery)null);
         return;
+      case AspectLangPackage.LOCATION_QUERY__COMPOSITION:
+        setComposition((CompositionQuery)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -258,6 +328,8 @@ public class LocationQueryImpl extends MinimalEObjectImpl.Container implements L
         return node != null;
       case AspectLangPackage.LOCATION_QUERY__SPECIALIZATION:
         return specialization != null;
+      case AspectLangPackage.LOCATION_QUERY__COMPOSITION:
+        return composition != null;
     }
     return super.eIsSet(featureID);
   }

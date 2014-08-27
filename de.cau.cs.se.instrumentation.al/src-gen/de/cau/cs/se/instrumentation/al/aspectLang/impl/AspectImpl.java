@@ -6,24 +6,17 @@ import de.cau.cs.kieler.core.annotations.Annotation;
 
 import de.cau.cs.se.instrumentation.al.aspectLang.Aspect;
 import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
-import de.cau.cs.se.instrumentation.al.aspectLang.Collector;
+import de.cau.cs.se.instrumentation.al.aspectLang.Probe;
 import de.cau.cs.se.instrumentation.al.aspectLang.Query;
-
-import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,8 +26,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectImpl#getAnnotation <em>Annotation</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectImpl#getProbe <em>Probe</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectImpl#getQuery <em>Query</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectImpl#getCollectors <em>Collectors</em>}</li>
  * </ul>
  * </p>
  *
@@ -53,6 +46,16 @@ public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
   protected Annotation annotation;
 
   /**
+   * The cached value of the '{@link #getProbe() <em>Probe</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getProbe()
+   * @generated
+   * @ordered
+   */
+  protected Probe probe;
+
+  /**
    * The cached value of the '{@link #getQuery() <em>Query</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -61,16 +64,6 @@ public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
    * @ordered
    */
   protected Query query;
-
-  /**
-   * The cached value of the '{@link #getCollectors() <em>Collectors</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getCollectors()
-   * @generated
-   * @ordered
-   */
-  protected EList<Collector> collectors;
 
   /**
    * <!-- begin-user-doc -->
@@ -146,6 +139,49 @@ public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
    * <!-- end-user-doc -->
    * @generated
    */
+  public Probe getProbe()
+  {
+    if (probe != null && probe.eIsProxy())
+    {
+      InternalEObject oldProbe = (InternalEObject)probe;
+      probe = (Probe)eResolveProxy(oldProbe);
+      if (probe != oldProbe)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, AspectLangPackage.ASPECT__PROBE, oldProbe, probe));
+      }
+    }
+    return probe;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Probe basicGetProbe()
+  {
+    return probe;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setProbe(Probe newProbe)
+  {
+    Probe oldProbe = probe;
+    probe = newProbe;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.ASPECT__PROBE, oldProbe, probe));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Query getQuery()
   {
     return query;
@@ -194,20 +230,6 @@ public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Collector> getCollectors()
-  {
-    if (collectors == null)
-    {
-      collectors = new EObjectContainmentEList<Collector>(Collector.class, this, AspectLangPackage.ASPECT__COLLECTORS);
-    }
-    return collectors;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -217,8 +239,6 @@ public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
         return basicSetAnnotation(null, msgs);
       case AspectLangPackage.ASPECT__QUERY:
         return basicSetQuery(null, msgs);
-      case AspectLangPackage.ASPECT__COLLECTORS:
-        return ((InternalEList<?>)getCollectors()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -235,10 +255,11 @@ public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
     {
       case AspectLangPackage.ASPECT__ANNOTATION:
         return getAnnotation();
+      case AspectLangPackage.ASPECT__PROBE:
+        if (resolve) return getProbe();
+        return basicGetProbe();
       case AspectLangPackage.ASPECT__QUERY:
         return getQuery();
-      case AspectLangPackage.ASPECT__COLLECTORS:
-        return getCollectors();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -248,7 +269,6 @@ public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -257,12 +277,11 @@ public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
       case AspectLangPackage.ASPECT__ANNOTATION:
         setAnnotation((Annotation)newValue);
         return;
+      case AspectLangPackage.ASPECT__PROBE:
+        setProbe((Probe)newValue);
+        return;
       case AspectLangPackage.ASPECT__QUERY:
         setQuery((Query)newValue);
-        return;
-      case AspectLangPackage.ASPECT__COLLECTORS:
-        getCollectors().clear();
-        getCollectors().addAll((Collection<? extends Collector>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -281,11 +300,11 @@ public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
       case AspectLangPackage.ASPECT__ANNOTATION:
         setAnnotation((Annotation)null);
         return;
+      case AspectLangPackage.ASPECT__PROBE:
+        setProbe((Probe)null);
+        return;
       case AspectLangPackage.ASPECT__QUERY:
         setQuery((Query)null);
-        return;
-      case AspectLangPackage.ASPECT__COLLECTORS:
-        getCollectors().clear();
         return;
     }
     super.eUnset(featureID);
@@ -303,10 +322,10 @@ public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
     {
       case AspectLangPackage.ASPECT__ANNOTATION:
         return annotation != null;
+      case AspectLangPackage.ASPECT__PROBE:
+        return probe != null;
       case AspectLangPackage.ASPECT__QUERY:
         return query != null;
-      case AspectLangPackage.ASPECT__COLLECTORS:
-        return collectors != null && !collectors.isEmpty();
     }
     return super.eIsSet(featureID);
   }

@@ -26,10 +26,15 @@ public class InternalAspectLangLexer extends Lexer {
     public static final int RULE_ANY_OTHER=14;
     public static final int T__20=20;
     public static final int EOF=-1;
+    public static final int T__55=55;
     public static final int T__19=19;
     public static final int T__16=16;
+    public static final int T__51=51;
     public static final int T__15=15;
+    public static final int T__52=52;
     public static final int T__18=18;
+    public static final int T__53=53;
+    public static final int T__54=54;
     public static final int T__17=17;
     public static final int RULE_NUMBER=11;
     public static final int RULE_INT=7;
@@ -265,10 +270,10 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = T__24;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:20:7: ( '{' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:20:9: '{'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:20:7: ( ':' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:20:9: ':'
             {
-            match('{'); 
+            match(':'); 
 
             }
 
@@ -285,10 +290,11 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = T__25;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:21:7: ( '}' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:21:9: '}'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:21:7: ( 'probe' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:21:9: 'probe'
             {
-            match('}'); 
+            match("probe"); 
+
 
             }
 
@@ -345,10 +351,10 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = T__28;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:24:7: ( '[' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:24:9: '['
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:24:7: ( '{' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:24:9: '{'
             {
-            match('['); 
+            match('{'); 
 
             }
 
@@ -365,10 +371,10 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = T__29;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:25:7: ( ']' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:25:9: ']'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:25:7: ( '}' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:25:9: '}'
             {
-            match(']'); 
+            match('}'); 
 
             }
 
@@ -385,10 +391,11 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = T__30;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:26:7: ( '#' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:26:9: '#'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:26:7: ( 'type' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:26:9: 'type'
             {
-            match('#'); 
+            match("type"); 
+
 
             }
 
@@ -405,10 +412,10 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = T__31;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:27:7: ( '$' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:27:9: '$'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:27:7: ( '[' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:27:9: '['
             {
-            match('$'); 
+            match('['); 
 
             }
 
@@ -425,11 +432,10 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = T__32;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:28:7: ( '**' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:28:9: '**'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:28:7: ( ']' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:28:9: ']'
             {
-            match("**"); 
-
+            match(']'); 
 
             }
 
@@ -446,11 +452,10 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = T__33;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:29:7: ( '<<' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:29:9: '<<'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:29:7: ( '#' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:29:9: '#'
             {
-            match("<<"); 
-
+            match('#'); 
 
             }
 
@@ -467,10 +472,10 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = T__34;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:30:7: ( '@' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:30:9: '@'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:30:7: ( '$' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:30:9: '$'
             {
-            match('@'); 
+            match('$'); 
 
             }
 
@@ -487,10 +492,10 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = T__35;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:31:7: ( 'time' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:31:9: 'time'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:31:7: ( '**' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:31:9: '**'
             {
-            match("time"); 
+            match("**"); 
 
 
             }
@@ -508,10 +513,10 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = T__36;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:32:7: ( 'traceId' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:32:9: 'traceId'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:32:7: ( '<<' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:32:9: '<<'
             {
-            match("traceId"); 
+            match("<<"); 
 
 
             }
@@ -529,11 +534,10 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = T__37;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:33:7: ( 'orderIndex' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:33:9: 'orderIndex'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:33:7: ( '@' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:33:9: '@'
             {
-            match("orderIndex"); 
-
+            match('@'); 
 
             }
 
@@ -550,10 +554,10 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = T__38;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:34:7: ( 'name' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:34:9: 'name'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:34:7: ( 'include' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:34:9: 'include'
             {
-            match("name"); 
+            match("include"); 
 
 
             }
@@ -571,10 +575,10 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = T__39;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:35:7: ( 'signature' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:35:9: 'signature'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:35:7: ( 'exclude' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:35:9: 'exclude'
             {
-            match("signature"); 
+            match("exclude"); 
 
 
             }
@@ -592,10 +596,10 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = T__40;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:36:7: ( 'class' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:36:9: 'class'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:36:7: ( 'time' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:36:9: 'time'
             {
-            match("class"); 
+            match("time"); 
 
 
             }
@@ -613,10 +617,10 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = T__41;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:37:7: ( 'return-type' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:37:9: 'return-type'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:37:7: ( 'traceId' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:37:9: 'traceId'
             {
-            match("return-type"); 
+            match("traceId"); 
 
 
             }
@@ -634,10 +638,11 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = T__42;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:38:7: ( '=' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:38:9: '='
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:38:7: ( 'orderIndex' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:38:9: 'orderIndex'
             {
-            match('='); 
+            match("orderIndex"); 
+
 
             }
 
@@ -654,10 +659,11 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = T__43;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:39:7: ( '~' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:39:9: '~'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:39:7: ( 'name' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:39:9: 'name'
             {
-            match('~'); 
+            match("name"); 
+
 
             }
 
@@ -674,10 +680,10 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = T__44;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:40:7: ( '!=' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:40:9: '!='
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:40:7: ( 'signature' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:40:9: 'signature'
             {
-            match("!="); 
+            match("signature"); 
 
 
             }
@@ -695,10 +701,11 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = T__45;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:41:7: ( '>' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:41:9: '>'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:41:7: ( 'class' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:41:9: 'class'
             {
-            match('>'); 
+            match("class"); 
+
 
             }
 
@@ -715,10 +722,11 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = T__46;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:42:7: ( '<' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:42:9: '<'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:42:7: ( 'return-type' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:42:9: 'return-type'
             {
-            match('<'); 
+            match("return-type"); 
+
 
             }
 
@@ -735,11 +743,10 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = T__47;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:43:7: ( '>=' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:43:9: '>='
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:43:7: ( '=' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:43:9: '='
             {
-            match(">="); 
-
+            match('='); 
 
             }
 
@@ -756,11 +763,10 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = T__48;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:44:7: ( '<=' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:44:9: '<='
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:44:7: ( '~' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:44:9: '~'
             {
-            match("<="); 
-
+            match('~'); 
 
             }
 
@@ -777,10 +783,10 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = T__49;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:45:7: ( 'before' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:45:9: 'before'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:45:7: ( '!=' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:45:9: '!='
             {
-            match("before"); 
+            match("!="); 
 
 
             }
@@ -798,8 +804,111 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = T__50;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:46:7: ( 'after' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:46:9: 'after'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:46:7: ( '>' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:46:9: '>'
+            {
+            match('>'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__50"
+
+    // $ANTLR start "T__51"
+    public final void mT__51() throws RecognitionException {
+        try {
+            int _type = T__51;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:47:7: ( '<' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:47:9: '<'
+            {
+            match('<'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__51"
+
+    // $ANTLR start "T__52"
+    public final void mT__52() throws RecognitionException {
+        try {
+            int _type = T__52;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:48:7: ( '>=' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:48:9: '>='
+            {
+            match(">="); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__52"
+
+    // $ANTLR start "T__53"
+    public final void mT__53() throws RecognitionException {
+        try {
+            int _type = T__53;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:49:7: ( '<=' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:49:9: '<='
+            {
+            match("<="); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__53"
+
+    // $ANTLR start "T__54"
+    public final void mT__54() throws RecognitionException {
+        try {
+            int _type = T__54;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:50:7: ( 'before' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:50:9: 'before'
+            {
+            match("before"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__54"
+
+    // $ANTLR start "T__55"
+    public final void mT__55() throws RecognitionException {
+        try {
+            int _type = T__55;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:51:7: ( 'after' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:51:9: 'after'
             {
             match("after"); 
 
@@ -812,19 +921,19 @@ public class InternalAspectLangLexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "T__50"
+    // $ANTLR end "T__55"
 
     // $ANTLR start "RULE_COMMENT_ANNOTATION"
     public final void mRULE_COMMENT_ANNOTATION() throws RecognitionException {
         try {
             int _type = RULE_COMMENT_ANNOTATION;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2616:25: ( '/**' ( options {greedy=false; } : . )* '*/' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2616:27: '/**' ( options {greedy=false; } : . )* '*/'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2953:25: ( '/**' ( options {greedy=false; } : . )* '*/' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2953:27: '/**' ( options {greedy=false; } : . )* '*/'
             {
             match("/**"); 
 
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2616:33: ( options {greedy=false; } : . )*
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2953:33: ( options {greedy=false; } : . )*
             loop1:
             do {
                 int alt1=2;
@@ -849,7 +958,7 @@ public class InternalAspectLangLexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2616:61: .
+            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2953:61: .
             	    {
             	    matchAny(); 
 
@@ -879,8 +988,8 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2618:17: ( '/*' ~ ( '*' ) ( options {greedy=false; } : . )* '*/' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2618:19: '/*' ~ ( '*' ) ( options {greedy=false; } : . )* '*/'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2955:17: ( '/*' ~ ( '*' ) ( options {greedy=false; } : . )* '*/' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2955:19: '/*' ~ ( '*' ) ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
@@ -893,7 +1002,7 @@ public class InternalAspectLangLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2618:31: ( options {greedy=false; } : . )*
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2955:31: ( options {greedy=false; } : . )*
             loop2:
             do {
                 int alt2=2;
@@ -918,7 +1027,7 @@ public class InternalAspectLangLexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2618:59: .
+            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2955:59: .
             	    {
             	    matchAny(); 
 
@@ -946,8 +1055,8 @@ public class InternalAspectLangLexer extends Lexer {
     // $ANTLR start "RULE_NUMBER"
     public final void mRULE_NUMBER() throws RecognitionException {
         try {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2620:22: ( '0' .. '9' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2620:24: '0' .. '9'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2957:22: ( '0' .. '9' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2957:24: '0' .. '9'
             {
             matchRange('0','9'); 
 
@@ -964,10 +1073,10 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2622:10: ( ( '-' )? ( RULE_NUMBER )+ )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2622:12: ( '-' )? ( RULE_NUMBER )+
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2959:10: ( ( '-' )? ( RULE_NUMBER )+ )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2959:12: ( '-' )? ( RULE_NUMBER )+
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2622:12: ( '-' )?
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2959:12: ( '-' )?
             int alt3=2;
             int LA3_0 = input.LA(1);
 
@@ -976,7 +1085,7 @@ public class InternalAspectLangLexer extends Lexer {
             }
             switch (alt3) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2622:12: '-'
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2959:12: '-'
                     {
                     match('-'); 
 
@@ -985,7 +1094,7 @@ public class InternalAspectLangLexer extends Lexer {
 
             }
 
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2622:17: ( RULE_NUMBER )+
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2959:17: ( RULE_NUMBER )+
             int cnt4=0;
             loop4:
             do {
@@ -999,7 +1108,7 @@ public class InternalAspectLangLexer extends Lexer {
 
                 switch (alt4) {
             	case 1 :
-            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2622:17: RULE_NUMBER
+            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2959:17: RULE_NUMBER
             	    {
             	    mRULE_NUMBER(); 
 
@@ -1031,17 +1140,17 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = RULE_FLOAT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2624:12: ( ( ( '-' )? ( RULE_NUMBER )+ '.' ( RULE_NUMBER )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_NUMBER )+ )? ( 'f' )? | ( '-' )? ( RULE_NUMBER )+ 'f' ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2624:14: ( ( '-' )? ( RULE_NUMBER )+ '.' ( RULE_NUMBER )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_NUMBER )+ )? ( 'f' )? | ( '-' )? ( RULE_NUMBER )+ 'f' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2961:12: ( ( ( '-' )? ( RULE_NUMBER )+ '.' ( RULE_NUMBER )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_NUMBER )+ )? ( 'f' )? | ( '-' )? ( RULE_NUMBER )+ 'f' ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2961:14: ( ( '-' )? ( RULE_NUMBER )+ '.' ( RULE_NUMBER )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_NUMBER )+ )? ( 'f' )? | ( '-' )? ( RULE_NUMBER )+ 'f' )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2624:14: ( ( '-' )? ( RULE_NUMBER )+ '.' ( RULE_NUMBER )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_NUMBER )+ )? ( 'f' )? | ( '-' )? ( RULE_NUMBER )+ 'f' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2961:14: ( ( '-' )? ( RULE_NUMBER )+ '.' ( RULE_NUMBER )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_NUMBER )+ )? ( 'f' )? | ( '-' )? ( RULE_NUMBER )+ 'f' )
             int alt14=2;
             alt14 = dfa14.predict(input);
             switch (alt14) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2624:15: ( '-' )? ( RULE_NUMBER )+ '.' ( RULE_NUMBER )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_NUMBER )+ )? ( 'f' )?
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2961:15: ( '-' )? ( RULE_NUMBER )+ '.' ( RULE_NUMBER )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_NUMBER )+ )? ( 'f' )?
                     {
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2624:15: ( '-' )?
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2961:15: ( '-' )?
                     int alt5=2;
                     int LA5_0 = input.LA(1);
 
@@ -1050,7 +1159,7 @@ public class InternalAspectLangLexer extends Lexer {
                     }
                     switch (alt5) {
                         case 1 :
-                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2624:15: '-'
+                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2961:15: '-'
                             {
                             match('-'); 
 
@@ -1059,7 +1168,7 @@ public class InternalAspectLangLexer extends Lexer {
 
                     }
 
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2624:20: ( RULE_NUMBER )+
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2961:20: ( RULE_NUMBER )+
                     int cnt6=0;
                     loop6:
                     do {
@@ -1073,7 +1182,7 @@ public class InternalAspectLangLexer extends Lexer {
 
                         switch (alt6) {
                     	case 1 :
-                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2624:20: RULE_NUMBER
+                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2961:20: RULE_NUMBER
                     	    {
                     	    mRULE_NUMBER(); 
 
@@ -1090,7 +1199,7 @@ public class InternalAspectLangLexer extends Lexer {
                     } while (true);
 
                     match('.'); 
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2624:37: ( RULE_NUMBER )*
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2961:37: ( RULE_NUMBER )*
                     loop7:
                     do {
                         int alt7=2;
@@ -1103,7 +1212,7 @@ public class InternalAspectLangLexer extends Lexer {
 
                         switch (alt7) {
                     	case 1 :
-                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2624:37: RULE_NUMBER
+                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2961:37: RULE_NUMBER
                     	    {
                     	    mRULE_NUMBER(); 
 
@@ -1115,7 +1224,7 @@ public class InternalAspectLangLexer extends Lexer {
                         }
                     } while (true);
 
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2624:50: ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_NUMBER )+ )?
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2961:50: ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_NUMBER )+ )?
                     int alt10=2;
                     int LA10_0 = input.LA(1);
 
@@ -1124,7 +1233,7 @@ public class InternalAspectLangLexer extends Lexer {
                     }
                     switch (alt10) {
                         case 1 :
-                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2624:51: ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_NUMBER )+
+                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2961:51: ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_NUMBER )+
                             {
                             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                                 input.consume();
@@ -1135,7 +1244,7 @@ public class InternalAspectLangLexer extends Lexer {
                                 recover(mse);
                                 throw mse;}
 
-                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2624:61: ( '+' | '-' )?
+                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2961:61: ( '+' | '-' )?
                             int alt8=2;
                             int LA8_0 = input.LA(1);
 
@@ -1161,7 +1270,7 @@ public class InternalAspectLangLexer extends Lexer {
 
                             }
 
-                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2624:72: ( RULE_NUMBER )+
+                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2961:72: ( RULE_NUMBER )+
                             int cnt9=0;
                             loop9:
                             do {
@@ -1175,7 +1284,7 @@ public class InternalAspectLangLexer extends Lexer {
 
                                 switch (alt9) {
                             	case 1 :
-                            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2624:72: RULE_NUMBER
+                            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2961:72: RULE_NUMBER
                             	    {
                             	    mRULE_NUMBER(); 
 
@@ -1197,7 +1306,7 @@ public class InternalAspectLangLexer extends Lexer {
 
                     }
 
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2624:87: ( 'f' )?
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2961:87: ( 'f' )?
                     int alt11=2;
                     int LA11_0 = input.LA(1);
 
@@ -1206,7 +1315,7 @@ public class InternalAspectLangLexer extends Lexer {
                     }
                     switch (alt11) {
                         case 1 :
-                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2624:87: 'f'
+                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2961:87: 'f'
                             {
                             match('f'); 
 
@@ -1219,9 +1328,9 @@ public class InternalAspectLangLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2624:92: ( '-' )? ( RULE_NUMBER )+ 'f'
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2961:92: ( '-' )? ( RULE_NUMBER )+ 'f'
                     {
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2624:92: ( '-' )?
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2961:92: ( '-' )?
                     int alt12=2;
                     int LA12_0 = input.LA(1);
 
@@ -1230,7 +1339,7 @@ public class InternalAspectLangLexer extends Lexer {
                     }
                     switch (alt12) {
                         case 1 :
-                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2624:92: '-'
+                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2961:92: '-'
                             {
                             match('-'); 
 
@@ -1239,7 +1348,7 @@ public class InternalAspectLangLexer extends Lexer {
 
                     }
 
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2624:97: ( RULE_NUMBER )+
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2961:97: ( RULE_NUMBER )+
                     int cnt13=0;
                     loop13:
                     do {
@@ -1253,7 +1362,7 @@ public class InternalAspectLangLexer extends Lexer {
 
                         switch (alt13) {
                     	case 1 :
-                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2624:97: RULE_NUMBER
+                    	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2961:97: RULE_NUMBER
                     	    {
                     	    mRULE_NUMBER(); 
 
@@ -1292,10 +1401,10 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = RULE_BOOLEAN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2626:14: ( ( 'true' | 'false' ) )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2626:16: ( 'true' | 'false' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2963:14: ( ( 'true' | 'false' ) )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2963:16: ( 'true' | 'false' )
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2626:16: ( 'true' | 'false' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2963:16: ( 'true' | 'false' )
             int alt15=2;
             int LA15_0 = input.LA(1);
 
@@ -1313,7 +1422,7 @@ public class InternalAspectLangLexer extends Lexer {
             }
             switch (alt15) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2626:17: 'true'
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2963:17: 'true'
                     {
                     match("true"); 
 
@@ -1321,7 +1430,7 @@ public class InternalAspectLangLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2626:24: 'false'
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2963:24: 'false'
                     {
                     match("false"); 
 
@@ -1347,11 +1456,11 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2628:13: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2628:15: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2965:13: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2965:15: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
             {
             match('\"'); 
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2628:19: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2965:19: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
             loop16:
             do {
                 int alt16=3;
@@ -1367,7 +1476,7 @@ public class InternalAspectLangLexer extends Lexer {
 
                 switch (alt16) {
             	case 1 :
-            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2628:20: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' )
+            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2965:20: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' )
             	    {
             	    match('\\'); 
             	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||input.LA(1)=='t' ) {
@@ -1383,7 +1492,7 @@ public class InternalAspectLangLexer extends Lexer {
             	    }
             	    break;
             	case 2 :
-            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2628:61: ~ ( ( '\\\\' | '\"' ) )
+            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2965:61: ~ ( ( '\\\\' | '\"' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -1420,10 +1529,10 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2630:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2630:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2967:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2967:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2630:11: ( '^' )?
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2967:11: ( '^' )?
             int alt17=2;
             int LA17_0 = input.LA(1);
 
@@ -1432,7 +1541,7 @@ public class InternalAspectLangLexer extends Lexer {
             }
             switch (alt17) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2630:11: '^'
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2967:11: '^'
                     {
                     match('^'); 
 
@@ -1450,7 +1559,7 @@ public class InternalAspectLangLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2630:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2967:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop18:
             do {
                 int alt18=2;
@@ -1499,12 +1608,12 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2632:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2632:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2969:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2969:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2632:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2969:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop19:
             do {
                 int alt19=2;
@@ -1517,7 +1626,7 @@ public class InternalAspectLangLexer extends Lexer {
 
                 switch (alt19) {
             	case 1 :
-            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2632:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2969:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -1537,7 +1646,7 @@ public class InternalAspectLangLexer extends Lexer {
                 }
             } while (true);
 
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2632:40: ( ( '\\r' )? '\\n' )?
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2969:40: ( ( '\\r' )? '\\n' )?
             int alt21=2;
             int LA21_0 = input.LA(1);
 
@@ -1546,9 +1655,9 @@ public class InternalAspectLangLexer extends Lexer {
             }
             switch (alt21) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2632:41: ( '\\r' )? '\\n'
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2969:41: ( '\\r' )? '\\n'
                     {
-                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2632:41: ( '\\r' )?
+                    // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2969:41: ( '\\r' )?
                     int alt20=2;
                     int LA20_0 = input.LA(1);
 
@@ -1557,7 +1666,7 @@ public class InternalAspectLangLexer extends Lexer {
                     }
                     switch (alt20) {
                         case 1 :
-                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2632:41: '\\r'
+                            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2969:41: '\\r'
                             {
                             match('\r'); 
 
@@ -1589,10 +1698,10 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2634:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2634:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2971:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2971:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2634:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2971:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt22=0;
             loop22:
             do {
@@ -1646,8 +1755,8 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2636:16: ( . )
-            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2636:18: .
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2973:16: ( . )
+            // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:2973:18: .
             {
             matchAny(); 
 
@@ -1662,8 +1771,8 @@ public class InternalAspectLangLexer extends Lexer {
     // $ANTLR end "RULE_ANY_OTHER"
 
     public void mTokens() throws RecognitionException {
-        // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1:8: ( T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | RULE_COMMENT_ANNOTATION | RULE_ML_COMMENT | RULE_INT | RULE_FLOAT | RULE_BOOLEAN | RULE_STRING | RULE_ID | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
-        int alt23=46;
+        // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1:8: ( T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | RULE_COMMENT_ANNOTATION | RULE_ML_COMMENT | RULE_INT | RULE_FLOAT | RULE_BOOLEAN | RULE_STRING | RULE_ID | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
+        int alt23=51;
         alt23 = dfa23.predict(input);
         switch (alt23) {
             case 1 :
@@ -1919,70 +2028,105 @@ public class InternalAspectLangLexer extends Lexer {
                 }
                 break;
             case 37 :
-                // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1:226: RULE_COMMENT_ANNOTATION
+                // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1:226: T__51
+                {
+                mT__51(); 
+
+                }
+                break;
+            case 38 :
+                // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1:232: T__52
+                {
+                mT__52(); 
+
+                }
+                break;
+            case 39 :
+                // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1:238: T__53
+                {
+                mT__53(); 
+
+                }
+                break;
+            case 40 :
+                // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1:244: T__54
+                {
+                mT__54(); 
+
+                }
+                break;
+            case 41 :
+                // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1:250: T__55
+                {
+                mT__55(); 
+
+                }
+                break;
+            case 42 :
+                // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1:256: RULE_COMMENT_ANNOTATION
                 {
                 mRULE_COMMENT_ANNOTATION(); 
 
                 }
                 break;
-            case 38 :
-                // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1:250: RULE_ML_COMMENT
+            case 43 :
+                // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1:280: RULE_ML_COMMENT
                 {
                 mRULE_ML_COMMENT(); 
 
                 }
                 break;
-            case 39 :
-                // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1:266: RULE_INT
+            case 44 :
+                // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1:296: RULE_INT
                 {
                 mRULE_INT(); 
 
                 }
                 break;
-            case 40 :
-                // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1:275: RULE_FLOAT
+            case 45 :
+                // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1:305: RULE_FLOAT
                 {
                 mRULE_FLOAT(); 
 
                 }
                 break;
-            case 41 :
-                // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1:286: RULE_BOOLEAN
+            case 46 :
+                // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1:316: RULE_BOOLEAN
                 {
                 mRULE_BOOLEAN(); 
 
                 }
                 break;
-            case 42 :
-                // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1:299: RULE_STRING
+            case 47 :
+                // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1:329: RULE_STRING
                 {
                 mRULE_STRING(); 
 
                 }
                 break;
-            case 43 :
-                // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1:311: RULE_ID
+            case 48 :
+                // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1:341: RULE_ID
                 {
                 mRULE_ID(); 
 
                 }
                 break;
-            case 44 :
-                // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1:319: RULE_SL_COMMENT
+            case 49 :
+                // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1:349: RULE_SL_COMMENT
                 {
                 mRULE_SL_COMMENT(); 
 
                 }
                 break;
-            case 45 :
-                // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1:335: RULE_WS
+            case 50 :
+                // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1:365: RULE_WS
                 {
                 mRULE_WS(); 
 
                 }
                 break;
-            case 46 :
-                // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1:343: RULE_ANY_OTHER
+            case 51 :
+                // ../de.cau.cs.se.instrumentation.al/src-gen/de/cau/cs/se/instrumentation/al/parser/antlr/internal/InternalAspectLang.g:1:373: RULE_ANY_OTHER
                 {
                 mRULE_ANY_OTHER(); 
 
@@ -2005,13 +2149,13 @@ public class InternalAspectLangLexer extends Lexer {
     static final String DFA14_maxS =
         "\2\71\1\146\2\uffff";
     static final String DFA14_acceptS =
-        "\3\uffff\1\2\1\1";
+        "\3\uffff\1\1\1\2";
     static final String DFA14_specialS =
         "\5\uffff}>";
     static final String[] DFA14_transitionS = {
             "\1\1\2\uffff\12\2",
             "\12\2",
-            "\1\4\1\uffff\12\2\54\uffff\1\3",
+            "\1\3\1\uffff\12\2\54\uffff\1\4",
             "",
             ""
     };
@@ -2046,181 +2190,182 @@ public class InternalAspectLangLexer extends Lexer {
             this.transition = DFA14_transition;
         }
         public String getDescription() {
-            return "2624:14: ( ( '-' )? ( RULE_NUMBER )+ '.' ( RULE_NUMBER )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_NUMBER )+ )? ( 'f' )? | ( '-' )? ( RULE_NUMBER )+ 'f' )";
+            return "2961:14: ( ( '-' )? ( RULE_NUMBER )+ '.' ( RULE_NUMBER )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_NUMBER )+ )? ( 'f' )? | ( '-' )? ( RULE_NUMBER )+ 'f' )";
         }
     }
     static final String DFA23_eotS =
-        "\1\uffff\4\47\1\uffff\1\47\1\uffff\1\60\1\47\10\uffff\1\75\1\uffff"+
-        "\4\47\2\uffff\1\45\1\110\1\47\2\45\1\115\1\47\2\45\3\uffff\1\47"+
-        "\1\uffff\3\47\1\uffff\1\127\1\47\3\uffff\2\47\14\uffff\5\47\5\uffff"+
-        "\1\47\2\uffff\1\115\2\uffff\1\47\2\uffff\4\47\1\151\1\uffff\12\47"+
-        "\2\uffff\5\47\1\uffff\3\47\1\174\1\47\1\176\1\177\12\47\1\u008a"+
-        "\1\uffff\1\47\2\uffff\1\47\1\u008d\1\47\1\176\1\47\1\u0090\3\47"+
-        "\1\u0094\1\uffff\2\47\1\uffff\1\u0097\1\u0098\1\uffff\1\47\1\uffff"+
-        "\1\47\1\uffff\1\u009b\1\47\2\uffff\1\u009d\1\47\1\uffff\1\47\1\uffff"+
-        "\1\47\1\u00a1\1\u00a2\2\uffff";
+        "\1\uffff\4\52\1\uffff\1\52\1\uffff\1\64\1\52\5\uffff\1\52\4\uffff"+
+        "\1\105\1\uffff\4\52\2\uffff\1\47\1\117\1\52\2\47\1\124\1\52\2\47"+
+        "\3\uffff\2\52\1\uffff\4\52\1\uffff\1\140\1\52\3\uffff\2\52\5\uffff"+
+        "\3\52\10\uffff\4\52\5\uffff\1\52\2\uffff\1\124\2\uffff\1\52\2\uffff"+
+        "\6\52\1\166\1\uffff\14\52\2\uffff\7\52\1\uffff\3\52\1\u008d\1\u008e"+
+        "\1\52\1\u0090\1\52\1\u0092\5\52\1\u0098\6\52\1\u009f\2\uffff\1\52"+
+        "\1\uffff\1\52\1\uffff\1\52\1\u00a3\1\52\1\u0090\1\52\1\uffff\1\u00a6"+
+        "\4\52\1\u00ab\1\uffff\3\52\1\uffff\1\u00af\1\u00b0\1\uffff\1\u00b1"+
+        "\1\52\1\uffff\1\52\1\uffff\1\u00b4\1\u00b5\1\52\3\uffff\1\u00b7"+
+        "\1\52\2\uffff\1\52\1\uffff\1\52\1\u00bb\1\u00bc\2\uffff";
     static final String DFA23_eofS =
-        "\u00a3\uffff";
+        "\u00bd\uffff";
     static final String DFA23_minS =
-        "\1\0\1\141\1\155\1\145\1\163\1\uffff\1\156\1\uffff\1\52\1\146\10"+
-        "\uffff\1\74\1\uffff\1\151\1\141\1\151\1\154\2\uffff\2\75\1\145\1"+
-        "\52\1\60\1\56\1\141\1\0\1\101\3\uffff\1\143\1\uffff\1\160\1\147"+
-        "\1\145\1\uffff\1\60\1\144\3\uffff\1\160\1\164\14\uffff\1\155\1\141"+
-        "\1\155\1\147\1\141\5\uffff\1\146\1\0\1\uffff\1\56\2\uffff\1\154"+
-        "\2\uffff\1\153\1\157\1\151\1\165\1\60\1\uffff\4\145\1\143\2\145"+
-        "\1\156\1\163\1\157\2\uffff\1\163\1\141\1\162\1\163\1\162\1\uffff"+
-        "\1\162\1\143\1\162\1\60\1\145\2\60\1\141\1\163\1\162\1\145\1\147"+
-        "\2\164\1\156\1\111\1\164\1\60\1\uffff\1\111\2\uffff\1\164\1\60\1"+
-        "\145\1\60\1\145\1\60\1\145\1\55\1\156\1\60\1\uffff\1\144\1\165\1"+
-        "\uffff\2\60\1\uffff\1\162\1\uffff\1\144\1\uffff\1\60\1\162\2\uffff"+
-        "\1\60\1\145\1\uffff\1\145\1\uffff\1\170\2\60\2\uffff";
+        "\1\0\1\141\1\155\1\145\1\163\1\uffff\1\156\1\uffff\1\52\1\146\5"+
+        "\uffff\1\151\4\uffff\1\74\1\uffff\1\170\1\141\1\151\1\154\2\uffff"+
+        "\2\75\1\145\1\52\1\60\1\56\1\141\1\0\1\101\3\uffff\1\143\1\157\1"+
+        "\uffff\1\160\1\143\1\147\1\145\1\uffff\1\60\1\144\3\uffff\1\160"+
+        "\1\164\5\uffff\1\160\1\155\1\141\10\uffff\1\143\1\155\1\147\1\141"+
+        "\5\uffff\1\146\1\0\1\uffff\1\56\2\uffff\1\154\2\uffff\1\153\1\142"+
+        "\1\157\1\154\1\151\1\165\1\60\1\uffff\5\145\1\143\1\145\1\154\1"+
+        "\145\1\156\1\163\1\157\2\uffff\1\163\1\141\1\145\1\162\1\165\1\163"+
+        "\1\162\1\uffff\1\162\1\143\1\162\2\60\1\145\1\60\1\165\1\60\1\141"+
+        "\1\163\1\162\1\145\1\147\1\60\1\164\1\144\1\164\1\156\1\111\1\164"+
+        "\1\60\2\uffff\1\111\1\uffff\1\144\1\uffff\1\164\1\60\1\145\1\60"+
+        "\1\145\1\uffff\1\60\2\145\1\55\1\156\1\60\1\uffff\1\144\1\145\1"+
+        "\165\1\uffff\2\60\1\uffff\1\60\1\162\1\uffff\1\144\1\uffff\2\60"+
+        "\1\162\3\uffff\1\60\1\145\2\uffff\1\145\1\uffff\1\170\2\60\2\uffff";
     static final String DFA23_maxS =
-        "\1\uffff\1\141\1\155\1\145\1\163\1\uffff\1\162\1\uffff\1\52\1\163"+
-        "\10\uffff\1\75\1\uffff\1\162\1\141\1\151\1\154\2\uffff\2\75\1\145"+
-        "\1\57\1\71\1\146\1\141\1\uffff\1\172\3\uffff\1\143\1\uffff\1\160"+
-        "\1\164\1\145\1\uffff\1\172\1\144\3\uffff\1\160\1\164\14\uffff\1"+
-        "\155\1\165\1\155\1\147\1\141\5\uffff\1\146\1\uffff\1\uffff\1\146"+
-        "\2\uffff\1\154\2\uffff\1\153\1\157\1\151\1\165\1\172\1\uffff\4\145"+
-        "\1\143\2\145\1\156\1\163\1\157\2\uffff\1\163\1\141\1\162\1\163\1"+
-        "\162\1\uffff\1\162\1\143\1\162\1\172\1\145\2\172\1\141\1\163\1\162"+
-        "\1\145\1\147\2\164\1\156\1\111\1\164\1\172\1\uffff\1\111\2\uffff"+
-        "\1\164\1\172\1\145\1\172\1\145\1\172\1\145\1\55\1\156\1\172\1\uffff"+
-        "\1\144\1\165\1\uffff\2\172\1\uffff\1\162\1\uffff\1\144\1\uffff\1"+
-        "\172\1\162\2\uffff\1\172\1\145\1\uffff\1\145\1\uffff\1\170\2\172"+
-        "\2\uffff";
+        "\1\uffff\1\162\1\156\1\145\1\163\1\uffff\1\162\1\uffff\1\52\1\163"+
+        "\5\uffff\1\171\4\uffff\1\75\1\uffff\1\170\1\141\1\151\1\154\2\uffff"+
+        "\2\75\1\145\1\57\1\71\1\146\1\141\1\uffff\1\172\3\uffff\1\143\1"+
+        "\157\1\uffff\1\160\1\143\1\164\1\145\1\uffff\1\172\1\144\3\uffff"+
+        "\1\160\1\164\5\uffff\1\160\1\155\1\165\10\uffff\1\143\1\155\1\147"+
+        "\1\141\5\uffff\1\146\1\uffff\1\uffff\1\146\2\uffff\1\154\2\uffff"+
+        "\1\153\1\142\1\157\1\154\1\151\1\165\1\172\1\uffff\5\145\1\143\1"+
+        "\145\1\154\1\145\1\156\1\163\1\157\2\uffff\1\163\1\141\1\145\1\162"+
+        "\1\165\1\163\1\162\1\uffff\1\162\1\143\1\162\2\172\1\145\1\172\1"+
+        "\165\1\172\1\141\1\163\1\162\1\145\1\147\1\172\1\164\1\144\1\164"+
+        "\1\156\1\111\1\164\1\172\2\uffff\1\111\1\uffff\1\144\1\uffff\1\164"+
+        "\1\172\1\145\1\172\1\145\1\uffff\1\172\2\145\1\55\1\156\1\172\1"+
+        "\uffff\1\144\1\145\1\165\1\uffff\2\172\1\uffff\1\172\1\162\1\uffff"+
+        "\1\144\1\uffff\2\172\1\162\3\uffff\1\172\1\145\2\uffff\1\145\1\uffff"+
+        "\1\170\2\172\2\uffff";
     static final String DFA23_acceptS =
-        "\5\uffff\1\5\1\uffff\1\7\2\uffff\1\12\1\13\1\14\1\15\1\16\1\17\1"+
-        "\20\1\21\1\uffff\1\24\4\uffff\1\34\1\35\11\uffff\1\53\1\55\1\56"+
-        "\1\uffff\1\53\3\uffff\1\5\2\uffff\1\7\1\22\1\10\2\uffff\1\12\1\13"+
-        "\1\14\1\15\1\16\1\17\1\20\1\21\1\23\1\42\1\40\1\24\5\uffff\1\34"+
-        "\1\35\1\36\1\41\1\37\2\uffff\1\54\1\uffff\1\47\1\50\1\uffff\1\52"+
-        "\1\55\5\uffff\1\6\12\uffff\1\45\1\46\5\uffff\1\4\22\uffff\1\25\1"+
-        "\uffff\1\51\1\30\12\uffff\1\44\2\uffff\1\32\2\uffff\1\2\1\uffff"+
-        "\1\33\1\uffff\1\11\2\uffff\1\43\1\1\2\uffff\1\26\1\uffff\1\3\3\uffff"+
-        "\1\31\1\27";
+        "\5\uffff\1\5\1\uffff\1\7\2\uffff\1\12\1\14\1\15\1\16\1\17\1\uffff"+
+        "\1\21\1\22\1\23\1\24\1\uffff\1\27\4\uffff\1\41\1\42\11\uffff\1\60"+
+        "\1\62\1\63\2\uffff\1\60\4\uffff\1\5\2\uffff\1\7\1\25\1\10\2\uffff"+
+        "\1\12\1\14\1\15\1\16\1\17\3\uffff\1\21\1\22\1\23\1\24\1\26\1\47"+
+        "\1\45\1\27\4\uffff\1\41\1\42\1\43\1\46\1\44\2\uffff\1\61\1\uffff"+
+        "\1\54\1\55\1\uffff\1\57\1\62\7\uffff\1\6\14\uffff\1\52\1\53\7\uffff"+
+        "\1\4\26\uffff\1\20\1\32\1\uffff\1\56\1\uffff\1\35\5\uffff\1\13\6"+
+        "\uffff\1\51\3\uffff\1\37\2\uffff\1\2\2\uffff\1\40\1\uffff\1\11\3"+
+        "\uffff\1\50\1\1\1\30\2\uffff\1\33\1\31\1\uffff\1\3\3\uffff\1\36"+
+        "\1\34";
     static final String DFA23_specialS =
-        "\1\2\40\uffff\1\0\50\uffff\1\1\130\uffff}>";
+        "\1\0\42\uffff\1\2\55\uffff\1\1\153\uffff}>";
     static final String[] DFA23_transitionS = {
-            "\11\45\2\44\2\45\1\44\22\45\1\44\1\32\1\41\1\20\1\21\3\45\1"+
-            "\14\1\15\1\10\1\45\1\5\1\36\1\7\1\35\12\37\2\45\1\22\1\30\1"+
-            "\33\1\45\1\23\32\43\1\16\1\45\1\17\1\42\1\43\1\45\1\11\1\34"+
-            "\1\27\2\43\1\40\2\43\1\2\4\43\1\25\1\6\1\1\1\43\1\3\1\26\1\24"+
-            "\1\4\5\43\1\12\1\45\1\13\1\31\uff81\45",
-            "\1\46",
-            "\1\50",
-            "\1\51",
-            "\1\52",
+            "\11\47\2\46\2\47\1\46\22\47\1\46\1\34\1\43\1\22\1\23\3\47\1"+
+            "\13\1\14\1\10\1\47\1\5\1\40\1\7\1\37\12\41\1\12\1\47\1\24\1"+
+            "\32\1\35\1\47\1\25\32\45\1\20\1\47\1\21\1\44\1\45\1\47\1\11"+
+            "\1\36\1\31\1\45\1\26\1\42\2\45\1\2\4\45\1\27\1\6\1\1\1\45\1"+
+            "\3\1\30\1\17\1\4\5\45\1\15\1\47\1\16\1\33\uff81\47",
+            "\1\50\20\uffff\1\51",
+            "\1\53\1\54",
+            "\1\55",
+            "\1\56",
             "",
-            "\1\54\3\uffff\1\55",
+            "\1\60\3\uffff\1\61",
             "",
-            "\1\57",
-            "\1\62\14\uffff\1\61",
-            "",
-            "",
+            "\1\63",
+            "\1\66\14\uffff\1\65",
             "",
             "",
             "",
             "",
             "",
-            "",
-            "\1\73\1\74",
-            "",
-            "\1\77\10\uffff\1\100",
-            "\1\101",
-            "\1\102",
-            "\1\103",
+            "\1\75\10\uffff\1\76\6\uffff\1\74",
             "",
             "",
-            "\1\106",
+            "",
+            "",
+            "\1\103\1\104",
+            "",
             "\1\107",
+            "\1\110",
             "\1\111",
-            "\1\112\4\uffff\1\113",
-            "\12\114",
-            "\1\116\1\uffff\12\114\54\uffff\1\116",
-            "\1\117",
-            "\0\120",
-            "\32\47\4\uffff\1\47\1\uffff\32\47",
+            "\1\112",
             "",
             "",
-            "",
-            "\1\122",
-            "",
-            "\1\123",
-            "\1\124\14\uffff\1\125",
+            "\1\115",
+            "\1\116",
+            "\1\120",
+            "\1\121\4\uffff\1\122",
+            "\12\123",
+            "\1\125\1\uffff\12\123\54\uffff\1\125",
             "\1\126",
-            "",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
-            "\1\130",
+            "\0\127",
+            "\32\52\4\uffff\1\52\1\uffff\32\52",
             "",
             "",
             "",
             "\1\131",
             "\1\132",
             "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
             "\1\133",
-            "\1\134\23\uffff\1\135",
-            "\1\136",
+            "\1\134",
+            "\1\135\14\uffff\1\136",
             "\1\137",
-            "\1\140",
             "",
-            "",
-            "",
-            "",
-            "",
+            "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
             "\1\141",
-            "\52\143\1\142\uffd5\143",
             "",
-            "\1\116\1\uffff\12\114\54\uffff\1\116",
+            "",
+            "",
+            "\1\142",
+            "\1\143",
+            "",
+            "",
+            "",
             "",
             "",
             "\1\144",
-            "",
-            "",
             "\1\145",
-            "\1\146",
-            "\1\147",
-            "\1\150",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "\1\146\23\uffff\1\147",
             "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "\1\150",
+            "\1\151",
             "\1\152",
             "\1\153",
+            "",
+            "",
+            "",
+            "",
+            "",
             "\1\154",
-            "\1\155",
-            "\1\156",
+            "\52\156\1\155\uffd5\156",
+            "",
+            "\1\125\1\uffff\12\123\54\uffff\1\125",
+            "",
+            "",
             "\1\157",
+            "",
+            "",
             "\1\160",
             "\1\161",
             "\1\162",
             "\1\163",
-            "",
-            "",
             "\1\164",
             "\1\165",
-            "\1\166",
+            "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "",
             "\1\167",
             "\1\170",
-            "",
             "\1\171",
             "\1\172",
             "\1\173",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "\1\174",
             "\1\175",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "\1\176",
+            "\1\177",
             "\1\u0080",
             "\1\u0081",
             "\1\u0082",
+            "",
+            "",
             "\1\u0083",
             "\1\u0084",
             "\1\u0085",
@@ -2228,44 +2373,75 @@ public class InternalAspectLangLexer extends Lexer {
             "\1\u0087",
             "\1\u0088",
             "\1\u0089",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
             "",
+            "\1\u008a",
             "\1\u008b",
-            "",
-            "",
             "\1\u008c",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
-            "\1\u008e",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
             "\1\u008f",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
             "\1\u0091",
-            "\1\u0092",
+            "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
             "\1\u0093",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
-            "",
+            "\1\u0094",
             "\1\u0095",
             "\1\u0096",
-            "",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
-            "",
+            "\1\u0097",
+            "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
             "\1\u0099",
-            "",
             "\1\u009a",
-            "",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "\1\u009b",
             "\1\u009c",
-            "",
-            "",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "\1\u009d",
             "\1\u009e",
+            "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
             "",
-            "\1\u009f",
             "",
             "\1\u00a0",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "",
+            "\1\u00a1",
+            "",
+            "\1\u00a2",
+            "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "\1\u00a4",
+            "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "\1\u00a5",
+            "",
+            "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "\1\u00a7",
+            "\1\u00a8",
+            "\1\u00a9",
+            "\1\u00aa",
+            "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "",
+            "\1\u00ac",
+            "\1\u00ad",
+            "\1\u00ae",
+            "",
+            "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "",
+            "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "\1\u00b2",
+            "",
+            "\1\u00b3",
+            "",
+            "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "\1\u00b6",
+            "",
+            "",
+            "",
+            "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "\1\u00b8",
+            "",
+            "",
+            "\1\u00b9",
+            "",
+            "\1\u00ba",
+            "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
+            "\12\52\7\uffff\32\52\4\uffff\1\52\1\uffff\32\52",
             "",
             ""
     };
@@ -2300,33 +2476,13 @@ public class InternalAspectLangLexer extends Lexer {
             this.transition = DFA23_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | RULE_COMMENT_ANNOTATION | RULE_ML_COMMENT | RULE_INT | RULE_FLOAT | RULE_BOOLEAN | RULE_STRING | RULE_ID | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
+            return "1:1: Tokens : ( T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | RULE_COMMENT_ANNOTATION | RULE_ML_COMMENT | RULE_INT | RULE_FLOAT | RULE_BOOLEAN | RULE_STRING | RULE_ID | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA23_33 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA23_33>='\u0000' && LA23_33<='\uFFFF')) ) {s = 80;}
-
-                        else s = 37;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 1 : 
-                        int LA23_74 = input.LA(1);
-
-                        s = -1;
-                        if ( (LA23_74=='*') ) {s = 98;}
-
-                        else if ( ((LA23_74>='\u0000' && LA23_74<=')')||(LA23_74>='+' && LA23_74<='\uFFFF')) ) {s = 99;}
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 2 : 
                         int LA23_0 = input.LA(1);
 
                         s = -1;
@@ -2348,61 +2504,85 @@ public class InternalAspectLangLexer extends Lexer {
 
                         else if ( (LA23_0=='a') ) {s = 9;}
 
-                        else if ( (LA23_0=='{') ) {s = 10;}
+                        else if ( (LA23_0==':') ) {s = 10;}
 
-                        else if ( (LA23_0=='}') ) {s = 11;}
+                        else if ( (LA23_0=='(') ) {s = 11;}
 
-                        else if ( (LA23_0=='(') ) {s = 12;}
+                        else if ( (LA23_0==')') ) {s = 12;}
 
-                        else if ( (LA23_0==')') ) {s = 13;}
+                        else if ( (LA23_0=='{') ) {s = 13;}
 
-                        else if ( (LA23_0=='[') ) {s = 14;}
+                        else if ( (LA23_0=='}') ) {s = 14;}
 
-                        else if ( (LA23_0==']') ) {s = 15;}
+                        else if ( (LA23_0=='t') ) {s = 15;}
 
-                        else if ( (LA23_0=='#') ) {s = 16;}
+                        else if ( (LA23_0=='[') ) {s = 16;}
 
-                        else if ( (LA23_0=='$') ) {s = 17;}
+                        else if ( (LA23_0==']') ) {s = 17;}
 
-                        else if ( (LA23_0=='<') ) {s = 18;}
+                        else if ( (LA23_0=='#') ) {s = 18;}
 
-                        else if ( (LA23_0=='@') ) {s = 19;}
+                        else if ( (LA23_0=='$') ) {s = 19;}
 
-                        else if ( (LA23_0=='t') ) {s = 20;}
+                        else if ( (LA23_0=='<') ) {s = 20;}
 
-                        else if ( (LA23_0=='n') ) {s = 21;}
+                        else if ( (LA23_0=='@') ) {s = 21;}
 
-                        else if ( (LA23_0=='s') ) {s = 22;}
+                        else if ( (LA23_0=='e') ) {s = 22;}
 
-                        else if ( (LA23_0=='c') ) {s = 23;}
+                        else if ( (LA23_0=='n') ) {s = 23;}
 
-                        else if ( (LA23_0=='=') ) {s = 24;}
+                        else if ( (LA23_0=='s') ) {s = 24;}
 
-                        else if ( (LA23_0=='~') ) {s = 25;}
+                        else if ( (LA23_0=='c') ) {s = 25;}
 
-                        else if ( (LA23_0=='!') ) {s = 26;}
+                        else if ( (LA23_0=='=') ) {s = 26;}
 
-                        else if ( (LA23_0=='>') ) {s = 27;}
+                        else if ( (LA23_0=='~') ) {s = 27;}
 
-                        else if ( (LA23_0=='b') ) {s = 28;}
+                        else if ( (LA23_0=='!') ) {s = 28;}
 
-                        else if ( (LA23_0=='/') ) {s = 29;}
+                        else if ( (LA23_0=='>') ) {s = 29;}
 
-                        else if ( (LA23_0=='-') ) {s = 30;}
+                        else if ( (LA23_0=='b') ) {s = 30;}
 
-                        else if ( ((LA23_0>='0' && LA23_0<='9')) ) {s = 31;}
+                        else if ( (LA23_0=='/') ) {s = 31;}
 
-                        else if ( (LA23_0=='f') ) {s = 32;}
+                        else if ( (LA23_0=='-') ) {s = 32;}
 
-                        else if ( (LA23_0=='\"') ) {s = 33;}
+                        else if ( ((LA23_0>='0' && LA23_0<='9')) ) {s = 33;}
 
-                        else if ( (LA23_0=='^') ) {s = 34;}
+                        else if ( (LA23_0=='f') ) {s = 34;}
 
-                        else if ( ((LA23_0>='A' && LA23_0<='Z')||LA23_0=='_'||(LA23_0>='d' && LA23_0<='e')||(LA23_0>='g' && LA23_0<='h')||(LA23_0>='j' && LA23_0<='m')||LA23_0=='q'||(LA23_0>='v' && LA23_0<='z')) ) {s = 35;}
+                        else if ( (LA23_0=='\"') ) {s = 35;}
 
-                        else if ( ((LA23_0>='\t' && LA23_0<='\n')||LA23_0=='\r'||LA23_0==' ') ) {s = 36;}
+                        else if ( (LA23_0=='^') ) {s = 36;}
 
-                        else if ( ((LA23_0>='\u0000' && LA23_0<='\b')||(LA23_0>='\u000B' && LA23_0<='\f')||(LA23_0>='\u000E' && LA23_0<='\u001F')||(LA23_0>='%' && LA23_0<='\'')||LA23_0=='+'||(LA23_0>=':' && LA23_0<=';')||LA23_0=='?'||LA23_0=='\\'||LA23_0=='`'||LA23_0=='|'||(LA23_0>='\u007F' && LA23_0<='\uFFFF')) ) {s = 37;}
+                        else if ( ((LA23_0>='A' && LA23_0<='Z')||LA23_0=='_'||LA23_0=='d'||(LA23_0>='g' && LA23_0<='h')||(LA23_0>='j' && LA23_0<='m')||LA23_0=='q'||(LA23_0>='v' && LA23_0<='z')) ) {s = 37;}
+
+                        else if ( ((LA23_0>='\t' && LA23_0<='\n')||LA23_0=='\r'||LA23_0==' ') ) {s = 38;}
+
+                        else if ( ((LA23_0>='\u0000' && LA23_0<='\b')||(LA23_0>='\u000B' && LA23_0<='\f')||(LA23_0>='\u000E' && LA23_0<='\u001F')||(LA23_0>='%' && LA23_0<='\'')||LA23_0=='+'||LA23_0==';'||LA23_0=='?'||LA23_0=='\\'||LA23_0=='`'||LA23_0=='|'||(LA23_0>='\u007F' && LA23_0<='\uFFFF')) ) {s = 39;}
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 1 : 
+                        int LA23_81 = input.LA(1);
+
+                        s = -1;
+                        if ( (LA23_81=='*') ) {s = 109;}
+
+                        else if ( ((LA23_81>='\u0000' && LA23_81<=')')||(LA23_81>='+' && LA23_81<='\uFFFF')) ) {s = 110;}
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
+                        int LA23_35 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA23_35>='\u0000' && LA23_35<='\uFFFF')) ) {s = 87;}
+
+                        else s = 39;
 
                         if ( s>=0 ) return s;
                         break;
