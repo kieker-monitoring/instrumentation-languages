@@ -25,6 +25,8 @@ import org.eclipse.emf.ecore.EClassifier
 import de.cau.cs.se.instrumentation.rl.generator.InternalErrorException
 import java.util.List
 
+import static extension de.cau.cs.se.instrumentation.rl.generator.java.RlType2JavaTypeExtensions.createPrimitiveTypeName
+
 class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	
 	/**
@@ -713,24 +715,6 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 			classifier.sizes.map[size | '''[]''' ].join
 		else
 			classifier.class_.createPrimitiveTypeName
-	}
-	
-	/**
-	 * Determine the right Java string for a given system type.
-	 */
-	def private createPrimitiveTypeName(EClassifier classifier) {
-		switch (classifier.name) {
-			case 'int' : 'int'
-			case 'long' : 'long'
-			case 'short' : 'short'
-			case 'double' : 'double'
-			case 'float' : 'float'
-			case 'char' : 'char'
-			case 'byte' : 'byte'
-			case 'string' : 'String'
-			case 'boolean' : 'boolean'
-			default : classifier.name
-		}	
 	}
 	
 	/**

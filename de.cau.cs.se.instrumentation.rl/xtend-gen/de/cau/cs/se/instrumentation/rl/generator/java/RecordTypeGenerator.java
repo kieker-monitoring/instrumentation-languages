@@ -5,6 +5,7 @@ import com.google.common.collect.Lists;
 import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator;
 import de.cau.cs.se.instrumentation.rl.generator.InternalErrorException;
 import de.cau.cs.se.instrumentation.rl.generator.java.ComputeUID;
+import de.cau.cs.se.instrumentation.rl.generator.java.RlType2JavaTypeExtensions;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize;
 import de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral;
@@ -1086,7 +1087,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     boolean _greaterThan = (_size > 0);
     if (_greaterThan) {
       EClassifier _class_ = classifier.getClass_();
-      String _createPrimitiveTypeName = this.createPrimitiveTypeName(_class_);
+      String _createPrimitiveTypeName = RlType2JavaTypeExtensions.createPrimitiveTypeName(_class_);
       EList<ArraySize> _sizes_1 = classifier.getSizes();
       final Function1<ArraySize, CharSequence> _function = new Function1<ArraySize, CharSequence>() {
         public CharSequence apply(final ArraySize size) {
@@ -1100,7 +1101,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _xifexpression = (_createPrimitiveTypeName + _join);
     } else {
       EClassifier _class__1 = classifier.getClass_();
-      _xifexpression = this.createPrimitiveTypeName(_class__1);
+      _xifexpression = RlType2JavaTypeExtensions.createPrimitiveTypeName(_class__1);
     }
     return _xifexpression;
   }
@@ -2052,7 +2053,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     boolean _greaterThan = (_size > 0);
     if (_greaterThan) {
       EClassifier _class_ = classifier.getClass_();
-      String _createPrimitiveTypeName = this.createPrimitiveTypeName(_class_);
+      String _createPrimitiveTypeName = RlType2JavaTypeExtensions.createPrimitiveTypeName(_class_);
       EList<ArraySize> _sizes_1 = classifier.getSizes();
       final Function1<ArraySize, String> _function = new Function1<ArraySize, String>() {
         public String apply(final ArraySize size) {
@@ -2066,76 +2067,9 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _xifexpression = (_createPrimitiveTypeName + _join);
     } else {
       EClassifier _class__1 = classifier.getClass_();
-      _xifexpression = this.createPrimitiveTypeName(_class__1);
+      _xifexpression = RlType2JavaTypeExtensions.createPrimitiveTypeName(_class__1);
     }
     return _xifexpression;
-  }
-  
-  /**
-   * Determine the right Java string for a given system type.
-   */
-  private String createPrimitiveTypeName(final EClassifier classifier) {
-    String _switchResult = null;
-    String _name = classifier.getName();
-    boolean _matched = false;
-    if (!_matched) {
-      if (Objects.equal(_name, "int")) {
-        _matched=true;
-        _switchResult = "int";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "long")) {
-        _matched=true;
-        _switchResult = "long";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "short")) {
-        _matched=true;
-        _switchResult = "short";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "double")) {
-        _matched=true;
-        _switchResult = "double";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "float")) {
-        _matched=true;
-        _switchResult = "float";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "char")) {
-        _matched=true;
-        _switchResult = "char";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "byte")) {
-        _matched=true;
-        _switchResult = "byte";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "string")) {
-        _matched=true;
-        _switchResult = "String";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "boolean")) {
-        _matched=true;
-        _switchResult = "boolean";
-      }
-    }
-    if (!_matched) {
-      _switchResult = classifier.getName();
-    }
-    return _switchResult;
   }
   
   /**

@@ -1,7 +1,7 @@
 package de.cau.cs.se.instrumentation.rl.generator.java.factory;
 
-import com.google.common.base.Objects;
 import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator;
+import de.cau.cs.se.instrumentation.rl.generator.java.RlType2JavaTypeExtensions;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.Model;
@@ -19,12 +19,51 @@ import org.eclipse.xtext.xbase.lib.ListExtensions;
 
 @SuppressWarnings("all")
 public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
+  /**
+   * Define language/generation type, which is also used to define the outlet.
+   */
   public String getLanguageType() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("java");
     return _builder.toString();
   }
   
+  /**
+   * Compute the directory name for a record type.
+   */
+  public CharSequence directoryName(final Type type) {
+    StringConcatenation _builder = new StringConcatenation();
+    EObject _eContainer = type.eContainer();
+    String _name = ((Model) _eContainer).getName();
+    String _replace = _name.replace(".", File.separator);
+    _builder.append(_replace, "");
+    return _builder;
+  }
+  
+  /**
+   * Compute file name.
+   */
+  public String fileName(final Type type) {
+    StringConcatenation _builder = new StringConcatenation();
+    CharSequence _directoryName = this.directoryName(type);
+    _builder.append(_directoryName, "");
+    _builder.append(File.separator, "");
+    String _name = type.getName();
+    _builder.append(_name, "");
+    _builder.append("Factory.java");
+    return _builder.toString();
+  }
+  
+  /**
+   * Primary code generation template.
+   * 
+   * @params type
+   * 		one record type to be used to create the corresponding monitoring record factory
+   * @params author
+   * 		generic author name for the record
+   * @params version
+   * 		generic kieker version for the record
+   */
   public CharSequence createContent(final RecordType type, final String author, final String version) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("import x.y.z.ByteBuffer;");
@@ -94,26 +133,14 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
     return _builder;
   }
   
-  public CharSequence directoryName(final Type type) {
-    StringConcatenation _builder = new StringConcatenation();
-    EObject _eContainer = type.eContainer();
-    String _name = ((Model) _eContainer).getName();
-    String _replace = _name.replace(".", File.separator);
-    _builder.append(_replace, "");
-    return _builder;
-  }
-  
-  public String fileName(final Type type) {
-    StringConcatenation _builder = new StringConcatenation();
-    CharSequence _directoryName = this.directoryName(type);
-    _builder.append(_directoryName, "");
-    _builder.append(File.separator, "");
-    String _name = type.getName();
-    _builder.append(_name, "");
-    _builder.append("Factory.java");
-    return _builder.toString();
-  }
-  
+  /**
+   * Determine the right Java string for a given system type.
+   * 
+   * @param classifier
+   * 		a classifier representing a type
+   * 
+   * @returns a java type name
+   */
   public CharSequence createTypeName(final Classifier classifier) {
     String _xblockexpression = null;
     {
@@ -123,7 +150,7 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
       boolean _greaterThan = (_size > 0);
       if (_greaterThan) {
         EClassifier _class_ = classifier.getClass_();
-        String _createPrimitiveTypeName = this.createPrimitiveTypeName(_class_);
+        String _createPrimitiveTypeName = RlType2JavaTypeExtensions.createPrimitiveTypeName(_class_);
         EList<ArraySize> _sizes_1 = classifier.getSizes();
         final Function1<ArraySize, String> _function = new Function1<ArraySize, String>() {
           public String apply(final ArraySize size) {
@@ -137,78 +164,11 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
         _xifexpression = (_createPrimitiveTypeName + _join);
       } else {
         EClassifier _class__1 = classifier.getClass_();
-        _xifexpression = this.createPrimitiveTypeName(_class__1);
+        _xifexpression = RlType2JavaTypeExtensions.createPrimitiveTypeName(_class__1);
       }
       final String typeName = _xifexpression;
       _xblockexpression = (typeName + "Factory");
     }
     return _xblockexpression;
-  }
-  
-  /**
-   * Determine the right Java string for a given system type.
-   */
-  public String createPrimitiveTypeName(final EClassifier classifier) {
-    String _switchResult = null;
-    String _name = classifier.getName();
-    boolean _matched = false;
-    if (!_matched) {
-      if (Objects.equal(_name, "int")) {
-        _matched=true;
-        _switchResult = "int";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "long")) {
-        _matched=true;
-        _switchResult = "long";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "short")) {
-        _matched=true;
-        _switchResult = "short";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "double")) {
-        _matched=true;
-        _switchResult = "double";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "float")) {
-        _matched=true;
-        _switchResult = "float";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "char")) {
-        _matched=true;
-        _switchResult = "char";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "byte")) {
-        _matched=true;
-        _switchResult = "byte";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "string")) {
-        _matched=true;
-        _switchResult = "String";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "boolean")) {
-        _matched=true;
-        _switchResult = "boolean";
-      }
-    }
-    if (!_matched) {
-      _switchResult = classifier.getName();
-    }
-    return _switchResult;
   }
 }
