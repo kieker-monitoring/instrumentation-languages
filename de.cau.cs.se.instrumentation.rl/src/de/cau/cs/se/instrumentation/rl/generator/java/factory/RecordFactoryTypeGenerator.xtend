@@ -38,16 +38,17 @@ class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
 	 */
 	override createContent(RecordType type, String author, String version) {
 		'''
-			import x.y.z.ByteBuffer;
-			import x.y.z.IRegistry;
+			import java.nio.ByteBuffer;
+
+			import kieker.common.util.registry.IRegistry;
 			
-			public interface IRecordFactory<T> {
-				
-				T create(ByteBuffer buffer, IRegistry<String> stringRegistry);
-				
-				T create(Object[] values, IRegistry<String> stringRegistry);
-			}
-			
+«««			public interface IRecordFactory<T> {
+«««				
+«««				T create(ByteBuffer buffer, IRegistry<String> stringRegistry);
+«««				
+«««				T create(Object[] values, IRegistry<String> stringRegistry);
+«««			}
+«««			
 			public class «type.name»Factory implements IRecordFactory<«type.name»> {
 				
 				@Override
