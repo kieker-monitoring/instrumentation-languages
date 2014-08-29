@@ -63,7 +63,8 @@ public class AspectLangScopeProvider extends AbstractDeclarativeScopeProvider {
       ResourceSet _resourceSet = _eResource.getResourceSet();
       final IForeignModelTypeProvider typeProvider = this.typeProviderFactory.getTypeProvider(_resourceSet, null);
       Iterable<NamedElement> _allTypes = typeProvider.getAllTypes();
-      final IScope result = new ContainerParentScope(_allTypes, context);
+      ContainerParentScope _containerParentScope = new ContainerParentScope(_allTypes, context);
+      final IScope result = _containerParentScope;
       return result;
     } else {
       return null;
@@ -121,9 +122,11 @@ public class AspectLangScopeProvider extends AbstractDeclarativeScopeProvider {
     boolean _notEquals = (!Objects.equal(_specialization, null));
     if (_notEquals) {
       LocationQuery _specialization_1 = query.getSpecialization();
-      _xifexpression = this.leaveNode(_specialization_1);
+      Node _leaveNode = this.leaveNode(_specialization_1);
+      _xifexpression = _leaveNode;
     } else {
-      _xifexpression = query.getNode();
+      Node _node = query.getNode();
+      _xifexpression = _node;
     }
     return _xifexpression;
   }
@@ -140,7 +143,8 @@ public class AspectLangScopeProvider extends AbstractDeclarativeScopeProvider {
   public IScope scope_RegisteredPackage_ePackage(final RegisteredPackage context, final EReference reference) {
     Resource _eResource = context.eResource();
     ResourceSet _resourceSet = _eResource.getResourceSet();
-    final IScope result = new EPackageScope(_resourceSet);
+    EPackageScope _ePackageScope = new EPackageScope(_resourceSet);
+    final IScope result = _ePackageScope;
     return result;
   }
 }

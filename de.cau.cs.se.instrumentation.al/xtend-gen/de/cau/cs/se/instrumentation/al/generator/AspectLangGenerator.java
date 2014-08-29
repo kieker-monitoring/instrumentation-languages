@@ -57,6 +57,7 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
@@ -74,7 +75,12 @@ import org.w3c.dom.Element;
  */
 @SuppressWarnings("all")
 public class AspectLangGenerator implements IGenerator {
-  private final Map<String, Collection<Aspect>> aspectMap = new HashMap<String, Collection<Aspect>>();
+  private final Map<String,Collection<Aspect>> aspectMap = new Function0<Map<String,Collection<Aspect>>>() {
+    public Map<String,Collection<Aspect>> apply() {
+      HashMap<String,Collection<Aspect>> _hashMap = new HashMap<String, Collection<Aspect>>();
+      return _hashMap;
+    }
+  }.apply();
   
   /**
    * Central generation function.
@@ -88,23 +94,23 @@ public class AspectLangGenerator implements IGenerator {
       }
     };
     IteratorExtensions.<Aspect>forEach(_filter, _function);
-    final Procedure2<String, Collection<Aspect>> _function_1 = new Procedure2<String, Collection<Aspect>>() {
+    final Procedure2<String,Collection<Aspect>> _function_1 = new Procedure2<String,Collection<Aspect>>() {
       public void apply(final String key, final Collection<Aspect> value) {
         boolean _matched = false;
         if (!_matched) {
-          if (Objects.equal(key, "AspectJ")) {
+          if (Objects.equal(key,"AspectJ")) {
             _matched=true;
             AspectLangGenerator.this.createAspectJConfiguration(value, fsa);
           }
         }
         if (!_matched) {
-          if (Objects.equal(key, "J2EE")) {
+          if (Objects.equal(key,"J2EE")) {
             _matched=true;
             AspectLangGenerator.this.createJ2EEConfiguration(value, fsa);
           }
         }
         if (!_matched) {
-          if (Objects.equal(key, "Spring")) {
+          if (Objects.equal(key,"Spring")) {
             _matched=true;
             AspectLangGenerator.this.createSpringConfiguration(value, fsa);
           }
@@ -120,7 +126,7 @@ public class AspectLangGenerator implements IGenerator {
    * @param map the map of all aspect technologies and its corresponding aspects.
    * @param aspect a new aspect to be added to the map.
    */
-  public void addAspect(final Map<String, Collection<Aspect>> map, final Aspect aspect) {
+  public void addAspect(final Map<String,Collection<Aspect>> map, final Aspect aspect) {
     Annotation _annotation = null;
     if (aspect!=null) {
       _annotation=aspect.getAnnotation();
@@ -178,20 +184,22 @@ public class AspectLangGenerator implements IGenerator {
         {
           Probe _probe = aspect_1.getProbe();
           EList<Collector> _collectors = _probe.getCollectors();
-          final Function1<Collector, Boolean> _function = new Function1<Collector, Boolean>() {
+          final Function1<Collector,Boolean> _function = new Function1<Collector,Boolean>() {
             public Boolean apply(final Collector it) {
               InsertionPoint _insertionPoint = it.getInsertionPoint();
-              return Boolean.valueOf(Objects.equal(_insertionPoint, InsertionPoint.BEFORE));
+              boolean _equals = Objects.equal(_insertionPoint, InsertionPoint.BEFORE);
+              return Boolean.valueOf(_equals);
             }
           };
           Iterable<Collector> _filter = IterableExtensions.<Collector>filter(_collectors, _function);
           this.createDataCollectorAspect(_filter, doc, aspectsElement);
           Probe _probe_1 = aspect_1.getProbe();
           EList<Collector> _collectors_1 = _probe_1.getCollectors();
-          final Function1<Collector, Boolean> _function_1 = new Function1<Collector, Boolean>() {
+          final Function1<Collector,Boolean> _function_1 = new Function1<Collector,Boolean>() {
             public Boolean apply(final Collector it) {
               InsertionPoint _insertionPoint = it.getInsertionPoint();
-              return Boolean.valueOf(Objects.equal(_insertionPoint, InsertionPoint.AFTER));
+              boolean _equals = Objects.equal(_insertionPoint, InsertionPoint.AFTER);
+              return Boolean.valueOf(_equals);
             }
           };
           Iterable<Collector> _filter_1 = IterableExtensions.<Collector>filter(_collectors_1, _function_1);
@@ -202,7 +210,8 @@ public class AspectLangGenerator implements IGenerator {
       final Transformer transformer = transformerFactory.newTransformer();
       transformer.setOutputProperty(OutputKeys.INDENT, "yes");
       transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "3");
-      final StringWriter writer = new StringWriter();
+      StringWriter _stringWriter = new StringWriter();
+      final StringWriter writer = _stringWriter;
       DOMSource _dOMSource = new DOMSource(doc);
       StreamResult _streamResult = new StreamResult(writer);
       transformer.transform(_dOMSource, _streamResult);
@@ -222,10 +231,11 @@ public class AspectLangGenerator implements IGenerator {
    */
   public void createDataCollectorAspect(final Iterable<Collector> list, final Document doc, final Element parent) {
     final Element aspect = doc.createElement("aspect");
-    final Function1<Collector, String> _function = new Function1<Collector, String>() {
+    final Function1<Collector,String> _function = new Function1<Collector,String>() {
       public String apply(final Collector it) {
         RecordType _type = it.getType();
-        return _type.getName();
+        String _name = _type.getName();
+        return _name;
       }
     };
     Iterable<String> _map = IterableExtensions.<Collector, String>map(list, _function);
@@ -255,7 +265,8 @@ public class AspectLangGenerator implements IGenerator {
     if (_notEquals) {
       MethodQuery _method_2 = query.getMethod();
       Method _methodReference = _method_2.getMethodReference();
-      _xifexpression = this.computeMethod(_methodReference);
+      CharSequence _computeMethod = this.computeMethod(_methodReference);
+      _xifexpression = _computeMethod;
     } else {
       _xifexpression = "*";
     }
@@ -274,7 +285,8 @@ public class AspectLangGenerator implements IGenerator {
     if (_notEquals) {
       LocationQuery _specialization_1 = query.getSpecialization();
       CharSequence _computeLocation = this.computeLocation(_specialization_1);
-      _xifexpression = ("." + _computeLocation);
+      String _plus = ("." + _computeLocation);
+      _xifexpression = _plus;
     }
     _builder.append(_xifexpression, "");
     return _builder;
@@ -299,7 +311,8 @@ public class AspectLangGenerator implements IGenerator {
     String _xifexpression = null;
     boolean _notEquals = (!Objects.equal(modifier, null));
     if (_notEquals) {
-      _xifexpression = modifier.getName();
+      String _name = modifier.getName();
+      _xifexpression = _name;
     } else {
       _xifexpression = "*";
     }
@@ -313,9 +326,10 @@ public class AspectLangGenerator implements IGenerator {
     _builder.append(_name, "");
     _builder.append(" (");
     EList<Parameter> _parameters = method.getParameters();
-    final Function1<Parameter, CharSequence> _function = new Function1<Parameter, CharSequence>() {
+    final Function1<Parameter,CharSequence> _function = new Function1<Parameter,CharSequence>() {
       public CharSequence apply(final Parameter it) {
-        return AspectLangGenerator.this.computeParameter(it);
+        CharSequence _computeParameter = AspectLangGenerator.this.computeParameter(it);
+        return _computeParameter;
       }
     };
     List<CharSequence> _map = ListExtensions.<Parameter, CharSequence>map(_parameters, _function);

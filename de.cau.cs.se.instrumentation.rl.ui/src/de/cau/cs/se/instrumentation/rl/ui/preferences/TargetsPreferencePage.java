@@ -24,7 +24,7 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
 
-import de.cau.cs.se.instrumentation.rl.generator.LanguageSetup;
+import de.cau.cs.se.instrumentation.rl.generator.GeneratorConfiguration;
 import de.cau.cs.se.instrumentation.rl.preferences.TargetsPreferences;
 
 
@@ -50,7 +50,7 @@ public class TargetsPreferencePage extends FieldEditorPreferencePage implements 
 
 	@Override
 	public void createFieldEditors() {
-		for (final String language : LanguageSetup.getPresentLanguages()) {
+		for (final String language : GeneratorConfiguration.getPresentGenerators()) {
 			this.addField(new BooleanFieldEditor(TargetsPreferences.GENERATOR_ACTIVE + language, language, this.getFieldEditorParent()));
 		}
 
