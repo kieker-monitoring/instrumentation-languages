@@ -19,7 +19,7 @@ import com.google.common.base.Objects;
 import com.google.common.collect.Iterators;
 import de.cau.cs.se.instrumentation.rl.generator.AbstractPartialRecordTypeGenerator;
 import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator;
-import de.cau.cs.se.instrumentation.rl.generator.LanguageSetup;
+import de.cau.cs.se.instrumentation.rl.generator.GeneratorConfiguration;
 import de.cau.cs.se.instrumentation.rl.preferences.TargetsPreferences;
 import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
@@ -47,7 +47,7 @@ public class RecordLangGenerator implements IGenerator {
       if (_isPlatformResource) {
         final String version = TargetsPreferences.getVersionID();
         final String author = TargetsPreferences.getAuthorName();
-        for (final Class<?> generator : LanguageSetup.recordTypeGenerators) {
+        for (final Class<?> generator : GeneratorConfiguration.recordTypeGenerators) {
           {
             Constructor<? extends Object> _constructor = generator.getConstructor();
             Object _newInstance = _constructor.newInstance();
@@ -72,7 +72,7 @@ public class RecordLangGenerator implements IGenerator {
             }
           }
         }
-        for (final Class<?> generator_1 : LanguageSetup.partialRecordTypeGenerators) {
+        for (final Class<?> generator_1 : GeneratorConfiguration.partialRecordTypeGenerators) {
           {
             Constructor<? extends Object> _constructor = generator_1.getConstructor();
             Object _newInstance = _constructor.newInstance();

@@ -21,7 +21,17 @@ import java.util.List;
 
 import de.cau.cs.se.instrumentation.rl.ouput.config.OutletConfiguration;
 
-public class LanguageSetup {
+/**
+ * Configuration and registration of IRL generators.
+ * The class also contains functions for derived values based on the
+ * configuration values.
+ * 
+ * @author Reiner Jung
+ * 
+ * @since 1.0
+ * 
+ */
+public class GeneratorConfiguration {
 	/** list of all generators to support RecordType */
 	public final static Class<?>[] recordTypeGenerators = {
 		de.cau.cs.se.instrumentation.rl.generator.c.main.RecordTypeGenerator.class,

@@ -9,7 +9,7 @@ import java.util.Set;
 import org.eclipse.xtext.generator.IOutputConfigurationProvider;
 import org.eclipse.xtext.generator.OutputConfiguration;
 
-import de.cau.cs.se.instrumentation.rl.generator.LanguageSetup;
+import de.cau.cs.se.instrumentation.rl.generator.GeneratorConfiguration;
 
 /**
  * Based on http://xtextcasts.org/episodes/15-output-configurations.
@@ -27,7 +27,7 @@ public class RecordLangOutputConfigurationProvider implements IOutputConfigurati
 	public Set<OutputConfiguration> getOutputConfigurations() {
 		final Set<OutputConfiguration> configurations = new HashSet<OutputConfiguration>();
 
-		for (final OutletConfiguration outlet : LanguageSetup.outletConfigurations) {
+		for (final OutletConfiguration outlet : GeneratorConfiguration.outletConfigurations) {
 			configurations.add(this.createOutputConfiguration(outlet));
 		}
 

@@ -19,7 +19,7 @@ import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.core.runtime.preferences.DefaultScope;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 
-import de.cau.cs.se.instrumentation.rl.generator.LanguageSetup;
+import de.cau.cs.se.instrumentation.rl.generator.GeneratorConfiguration;
 
 /**
  * @author Reiner Jung
@@ -41,7 +41,7 @@ public class TargetsPreferenceInitializer extends AbstractPreferenceInitializer 
 	 */
 	@Override
 	public void initializeDefaultPreferences() {
-		for (final String language : LanguageSetup.getPresentGenerators()) {
+		for (final String language : GeneratorConfiguration.getPresentGenerators()) {
 			TargetsPreferenceInitializer.getPreferenceStore().putBoolean(TargetsPreferences.GENERATOR_ACTIVE + language,
 					TargetsPreferences.DEFAULT_GENERATOR_INACTIVE);
 		}
