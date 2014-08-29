@@ -38,22 +38,22 @@ class RecordLangGenerator implements IGenerator {
 											
 			for (Class<?> generator : LanguageSetup.recordTypeGenerators) {
 				val cg = generator.getConstructor().newInstance() as AbstractRecordTypeGenerator
-				if (TargetsPreferences.isGeneratorActive(cg.languageType)) {
+				if (TargetsPreferences.isGeneratorActive(cg.outletType)) {
 					resource.allContents.filter(typeof(RecordType)).forEach[type | 
 						val content = cg.createContent(type,author,version)
 						if (content != null)
-							fsa.generateFile(cg.fileName(type),	cg.languageType, content)
+							fsa.generateFile(cg.fileName(type),	cg.outletType, content)
 					]
 				}
 			}
 			
 			for (Class<?> generator : LanguageSetup.partialRecordTypeGenerators) {
 				val cg = generator.getConstructor().newInstance() as AbstractPartialRecordTypeGenerator
-				if (TargetsPreferences.isGeneratorActive(cg.languageType)) {
+				if (TargetsPreferences.isGeneratorActive(cg.outletType)) {
 					resource.allContents.filter(typeof(PartialRecordType)).forEach[type | 
 						val content = cg.createContent(type,author,version)
 						if (content != null)
-							fsa.generateFile(cg.fileName(type),	cg.languageType, content)
+							fsa.generateFile(cg.fileName(type),	cg.outletType, content)
 					]
 				}
 			}

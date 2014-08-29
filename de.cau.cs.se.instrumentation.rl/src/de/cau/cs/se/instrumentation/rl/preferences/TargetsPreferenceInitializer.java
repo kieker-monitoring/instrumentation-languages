@@ -41,7 +41,7 @@ public class TargetsPreferenceInitializer extends AbstractPreferenceInitializer 
 	 */
 	@Override
 	public void initializeDefaultPreferences() {
-		for (final String language : LanguageSetup.getPresentLanguages()) {
+		for (final String language : LanguageSetup.getPresentGenerators()) {
 			TargetsPreferenceInitializer.getPreferenceStore().putBoolean(TargetsPreferences.GENERATOR_ACTIVE + language,
 					TargetsPreferences.DEFAULT_GENERATOR_INACTIVE);
 		}

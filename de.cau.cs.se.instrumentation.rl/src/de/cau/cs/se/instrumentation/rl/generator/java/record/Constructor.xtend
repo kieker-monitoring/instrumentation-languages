@@ -1,4 +1,4 @@
-package de.cau.cs.se.instrumentation.rl.generator.java
+package de.cau.cs.se.instrumentation.rl.generator.java.record
 
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
 

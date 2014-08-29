@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.rl.generator.java;
+package de.cau.cs.se.instrumentation.rl.generator.java.record;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;

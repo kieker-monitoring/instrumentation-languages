@@ -14,7 +14,7 @@ class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
 	/**
 	 * Define language/generation type, which is also used to define the outlet.
 	 */
-	override getLanguageType() '''java'''
+	override outletType() '''java'''
 
 	/**
 	 * Compute the directory name for a record type.

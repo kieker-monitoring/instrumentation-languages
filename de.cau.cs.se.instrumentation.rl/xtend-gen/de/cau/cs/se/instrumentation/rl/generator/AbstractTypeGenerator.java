@@ -19,7 +19,7 @@ public abstract class AbstractTypeGenerator {
   public abstract String fileName(final Type type);
   
   /**
-   * Returns the language type the generator supports.
+   * Returns the outlet type for the generator.
    */
-  public abstract String getLanguageType();
+  public abstract String outletType();
 }

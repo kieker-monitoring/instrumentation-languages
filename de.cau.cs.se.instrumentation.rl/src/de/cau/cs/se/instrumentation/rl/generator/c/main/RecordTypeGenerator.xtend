@@ -26,7 +26,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	/**
 	 * Return the language type name.
 	 */
-	override getLanguageType() '''c'''
+	override outletType() '''c'''
 			
 	/**
 	 * Primary code generation template.

@@ -1,4 +1,4 @@
-package de.cau.cs.se.instrumentation.rl.generator.java
+package de.cau.cs.se.instrumentation.rl.generator.java.record
 
 import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator
 import de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral
@@ -32,7 +32,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	/**
 	 * Define language/generation type, which is also used to define the outlet.
 	 */
-	override getLanguageType() '''java'''
+	override outletType() '''java'''
 	
 	/**
 	 * Compute the directory name for a record type.

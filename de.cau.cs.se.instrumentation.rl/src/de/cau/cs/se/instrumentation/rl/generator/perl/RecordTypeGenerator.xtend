@@ -22,7 +22,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 */
 	override fileName(Type type) '''«type.directoryName»«File::separator»«type.name».pm'''
 		
-	override getLanguageType() '''perl'''
+	override outletType() '''perl'''
 	
 	/**
 	 * Create a perl based record for kieker

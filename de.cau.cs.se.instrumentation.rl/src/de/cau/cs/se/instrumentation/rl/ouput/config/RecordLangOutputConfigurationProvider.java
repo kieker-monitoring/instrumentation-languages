@@ -9,6 +9,8 @@ import java.util.Set;
 import org.eclipse.xtext.generator.IOutputConfigurationProvider;
 import org.eclipse.xtext.generator.OutputConfiguration;
 
+import de.cau.cs.se.instrumentation.rl.generator.LanguageSetup;
+
 /**
  * Based on http://xtextcasts.org/episodes/15-output-configurations.
  * 
@@ -25,18 +27,17 @@ public class RecordLangOutputConfigurationProvider implements IOutputConfigurati
 	public Set<OutputConfiguration> getOutputConfigurations() {
 		final Set<OutputConfiguration> configurations = new HashSet<OutputConfiguration>();
 
-		configurations.add(this.createOutputConfiguration("java", "Java Output Folder", "./src-gen/java"));
-		configurations.add(this.createOutputConfiguration("junit", "Junit Output Folder", "./test-gen/common"));
-		configurations.add(this.createOutputConfiguration("c", "C Output Folder", "./src-gen/c"));
-		configurations.add(this.createOutputConfiguration("perl", "Perl Output Folder", "./src-gen/perl"));
+		for (final OutletConfiguration outlet : LanguageSetup.outletConfigurations) {
+			configurations.add(this.createOutputConfiguration(outlet));
+		}
 
 		return configurations;
 	}
 
-	private OutputConfiguration createOutputConfiguration(final String type, final String description, final String folder) {
-		final OutputConfiguration configuration = new OutputConfiguration(type);
-		configuration.setDescription(description);
-		configuration.setOutputDirectory(folder);
+	private OutputConfiguration createOutputConfiguration(final OutletConfiguration outlet) {
+		final OutputConfiguration configuration = new OutputConfiguration(outlet.getName());
+		configuration.setDescription(outlet.getDescription());
+		configuration.setOutputDirectory(outlet.getDirectory());
 		configuration.setCleanUpDerivedResources(true);
 		configuration.setOverrideExistingResources(true);
 		configuration.setSetDerivedProperty(true);

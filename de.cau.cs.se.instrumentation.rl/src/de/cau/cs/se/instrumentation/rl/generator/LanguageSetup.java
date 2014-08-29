@@ -19,24 +19,35 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.cau.cs.se.instrumentation.rl.ouput.config.OutletConfiguration;
+
 public class LanguageSetup {
+	/** list of all generators to support RecordType */
 	public final static Class<?>[] recordTypeGenerators = {
 		de.cau.cs.se.instrumentation.rl.generator.c.main.RecordTypeGenerator.class,
 		de.cau.cs.se.instrumentation.rl.generator.c.header.RecordTypeGenerator.class,
-		de.cau.cs.se.instrumentation.rl.generator.java.RecordTypeGenerator.class,
+		de.cau.cs.se.instrumentation.rl.generator.java.record.RecordTypeGenerator.class,
 		de.cau.cs.se.instrumentation.rl.generator.java.junit.RecordTypeGenerator.class,
 		de.cau.cs.se.instrumentation.rl.generator.perl.RecordTypeGenerator.class
 	};
 
-	// list all generators to support PartialRecordType
+	/** list of all generators to support PartialRecordType */
 	public final static Class<?>[] partialRecordTypeGenerators = {
-		de.cau.cs.se.instrumentation.rl.generator.java.PartialRecordTypeGenerator.class
+		de.cau.cs.se.instrumentation.rl.generator.java.record.PartialRecordTypeGenerator.class
+	};
+
+	/** list of all outlet configurations */
+	public final static OutletConfiguration[] outletConfigurations = {
+		new OutletConfiguration("java", "Java Output Folder", "./src-gen/java"),
+		new OutletConfiguration("junit", "Junit Output Folder", "./test-gen/common"),
+		new OutletConfiguration("c", "C Output Folder", "./src-gen/c"),
+		new OutletConfiguration("perl", "Perl Output Folder", "./src-gen/perl")
 	};
 
 	/**
 	 * Return a list of all registered generators.
 	 */
-	public static List<String> getPresentLanguages() {
+	public static List<String> getPresentGenerators() {
 		final List<String> presentLanguages = new ArrayList<String>();
 		try {
 			for (final Class<?> generatorType : recordTypeGenerators) {
@@ -45,13 +56,13 @@ public class LanguageSetup {
 						getConstructor().newInstance();
 				boolean exists = false;
 				for (final String existingType : presentLanguages) {
-					if (existingType.equals(cg.getLanguageType())) {
+					if (existingType.equals(cg.outletType())) {
 						exists = true;
 						break;
 					}
 				}
 				if (!exists) {
-					presentLanguages.add(cg.getLanguageType());
+					presentLanguages.add(cg.outletType());
 				}
 			}
 		} catch (final InstantiationException e) {

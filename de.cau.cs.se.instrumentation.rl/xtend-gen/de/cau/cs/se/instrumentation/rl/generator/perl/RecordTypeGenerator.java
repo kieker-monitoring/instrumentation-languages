@@ -44,7 +44,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     return _builder.toString();
   }
   
-  public String getLanguageType() {
+  public String outletType() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("perl");
     return _builder.toString();

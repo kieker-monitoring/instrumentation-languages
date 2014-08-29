@@ -20,7 +20,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 
 	override fileName(Type type) '''«type.directoryName»«File::separator»TestGenerated«type.name».java'''
 	
-	override getLanguageType() '''junit'''
+	override outletType() '''junit'''
 	
 	override createContent(RecordType type, String author, String version) {
 		if (type.abstract)

@@ -22,7 +22,7 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
   /**
    * Define language/generation type, which is also used to define the outlet.
    */
-  public String getLanguageType() {
+  public String outletType() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("java");
     return _builder.toString();
