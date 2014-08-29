@@ -16,6 +16,12 @@ import de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral
 
 class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	
+	override directoryName(Type type) '''«(type.eContainer as Model).name.createTestPackageName.replace('.',File::separator)»'''
+
+	override fileName(Type type) '''«type.directoryName»«File::separator»TestGenerated«type.name».java'''
+	
+	override getLanguageType() '''junit'''
+	
 	override createContent(RecordType type, String author, String version) {
 		if (type.abstract)
 			return null
@@ -242,11 +248,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		else
 			return name + ".junit"
 	}
-	
-	override directoryName(Type type) '''«(type.eContainer as Model).name.createTestPackageName.replace('.',File::separator)»'''
-
-	override fileName(Type type) '''«type.directoryName»«File::separator»TestGenerated«type.name».java'''
-	
+		
 	/**
 	 * Determine the right Java string for a given system type.
 	 * 
@@ -255,7 +257,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * 
 	 * @returns a java type name
 	 */
-	override createTypeName(Classifier classifier) {
+	def createTypeName(Classifier classifier) {
 		if (classifier.sizes.size>0)
 			classifier.class_.createPrimitiveTypeName + 
 			classifier.sizes.map[size | '''[]''' ].join
@@ -281,6 +283,6 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		}	
 	}
 	
-	override getLanguageType() '''junit'''
+
 	
 }

@@ -112,7 +112,7 @@ class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerator {
 	 * 
 	 * @returns a java type name
 	 */
-	override createTypeName(Classifier classifier) {
+	def createTypeName(Classifier classifier) {
 		switch (classifier.class_.name) {
 			case 'string' : 'String'
 			default : classifier.class_.name

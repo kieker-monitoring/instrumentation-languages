@@ -1,4 +1,4 @@
-package de.cau.cs.se.instrumentation.rl.generator.c
+package de.cau.cs.se.instrumentation.rl.generator.c.main
 
 import de.cau.cs.se.instrumentation.rl.recordLang.Type
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
@@ -6,11 +6,27 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Property
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
 import de.cau.cs.se.instrumentation.rl.recordLang.Model
 import java.io.File
-import java.util.regex.Pattern
 import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator
 import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation
 
+import static extension de.cau.cs.se.instrumentation.rl.generator.c.CommonCFunctionsExtension.*
+
 class RecordTypeGenerator extends AbstractRecordTypeGenerator {
+	
+	/**
+	 * Compute the directory name for a record type.
+	 */
+	override directoryName(Type type) '''«(type.eContainer as Model).name.replace('.',File::separator)»'''
+
+	/**
+	 * compute the filename of a c file. 
+ 	*/
+	override fileName(Type type) '''«type.directoryName»«File::separator»«type.name.cstyleName».c'''	
+	
+	/**
+	 * Return the language type name.
+	 */
+	override getLanguageType() '''c'''
 			
 	/**
 	 * Primary code generation template.
@@ -41,7 +57,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		 ***************************************************************************/
 		#include <stdlib.h>
 		#include <kieker.h>
-		#include "«type.directoryName»/«type.packageName»_«type.name.cstyle».h"
+		#include "«type.directoryName»/«type.packageName»_«type.name.cstyleName».h"
 
 		/**
 		 * Author: «author»
@@ -51,52 +67,10 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		'''
 	}
 	
-	def String getCstyle(String string) {
-		return Pattern::compile('([A-Z])').matcher(string).replaceAll("_$1").toLowerCase.substring(1)
-	}
-	
-	/**
-	 * Compute the directory name for a record type.
-	 */
-	override directoryName(Type type) '''«(type.eContainer as Model).name.replace('.',File::separator)»'''
-
-	override fileName(Type type) '''«type.directoryName»«File::separator»«type.name.cstyle».c'''	
-	
-	override getLanguageType() '''c'''
-	
-	/**
-	 * Compute the package name used as prefix for all functions.
-	 */
-	def packageName(RecordType type) '''«(type.eContainer as Model).name.replace('.','_')»'''
-					
-	/**
-	 * Determine the right C string for a given system type.
-	 * 
-	 * @param classifier
-	 * 		a classifier representing a type
-	 * 
-	 * @returns a C type name
-	 */
-	override createTypeName(Classifier classifier) {
-		switch (classifier.class_.name) {
-			case 'key' : 'const char*'
-			case 'string' : 'const char*'
-			case 'byte' : 'char'
-			case 'short' : 'short'
-			case 'int' : 'long'
-			case 'long' : 'long long'
-			case 'float' : 'float'
-			case 'double' : 'double'
-			case 'boolean' : 'char'
-			default : classifier.class_.name
-		}
-		
-	}
-	
 	/**
 	 * Generate the serializer for the given record type.
 	 */
-	def createSerializer(RecordType type) '''
+	private def createSerializer(RecordType type) '''
 		/*
 		 * Serialize an «type.name» and return the size of the written structure.
 		 *
@@ -107,7 +81,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		 *
 		 * returns size of written structure
 		 */
-		int «type.packageName»_«type.name.cstyle»_serialize(char *buffer, const int id, const int offset, const «type.packageName»_«type.name.cstyle» value) {
+		int «type.packageName»_«type.name.cstyleName»_serialize(char *buffer, const int id, const int offset, const «type.packageName»_«type.name.cstyleName» value) {
 			int length = 0;
 			«PropertyEvaluation::collectAllDataProperties(type).map[createValueSerializer].join»
 			return length;
@@ -117,14 +91,14 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	/**
 	 * 
 	 */
-	def createValueSerializer(Property property) '''
+	private def createValueSerializer(Property property) '''
 		length += kieker_serialize_«PropertyEvaluation::findType(property).serializerSuffix»(buffer,offset,«property.name»);
 	'''
 		
 	/**
 	 * 
 	 */
-	def serializerSuffix(Classifier classifier) {
+	private def serializerSuffix(Classifier classifier) {
 		switch (classifier.class_.name) {
 			case 'string' : 'string'
 			case 'byte' : 'int8'

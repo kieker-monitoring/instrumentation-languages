@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EClassifier
 import de.cau.cs.se.instrumentation.rl.generator.InternalErrorException
 import java.util.List
 
-import static extension de.cau.cs.se.instrumentation.rl.generator.java.RlType2JavaTypeExtensions.createPrimitiveTypeName
+import static extension de.cau.cs.se.instrumentation.rl.generator.java.RlType2JavaTypeExtensions.*
 
 class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	
@@ -709,7 +709,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * 
 	 * @returns a java type name
 	 */
-	override createTypeName(Classifier classifier) {
+	def createTypeName(Classifier classifier) {
 		if (classifier.sizes.size>0)
 			classifier.class_.createPrimitiveTypeName + 
 			classifier.sizes.map[size | '''[]''' ].join

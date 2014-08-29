@@ -21,8 +21,8 @@ import java.util.List;
 
 public class LanguageSetup {
 	public final static Class<?>[] recordTypeGenerators = {
-		de.cau.cs.se.instrumentation.rl.generator.c.RecordTypeGenerator.class,
-		de.cau.cs.se.instrumentation.rl.generator.cheader.RecordTypeGenerator.class,
+		de.cau.cs.se.instrumentation.rl.generator.c.main.RecordTypeGenerator.class,
+		de.cau.cs.se.instrumentation.rl.generator.c.header.RecordTypeGenerator.class,
 		de.cau.cs.se.instrumentation.rl.generator.java.RecordTypeGenerator.class,
 		de.cau.cs.se.instrumentation.rl.generator.java.junit.RecordTypeGenerator.class,
 		de.cau.cs.se.instrumentation.rl.generator.perl.RecordTypeGenerator.class

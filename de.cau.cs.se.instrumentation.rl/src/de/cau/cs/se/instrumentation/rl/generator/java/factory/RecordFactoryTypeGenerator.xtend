@@ -7,7 +7,7 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
 import de.cau.cs.se.instrumentation.rl.recordLang.Model
 import java.io.File
 
-import static extension de.cau.cs.se.instrumentation.rl.generator.java.RlType2JavaTypeExtensions.createPrimitiveTypeName
+import static extension de.cau.cs.se.instrumentation.rl.generator.java.RlType2JavaTypeExtensions.*
 
 class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
 
@@ -72,7 +72,7 @@ class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
 	 * 
 	 * @returns a java type name
 	 */
-	override createTypeName(Classifier classifier) {
+	def createTypeName(Classifier classifier) {
 		val typeName = if (classifier.sizes.size > 0)
 				classifier.class_.createPrimitiveTypeName + classifier.sizes.map[size|'''[]'''].join
 			else

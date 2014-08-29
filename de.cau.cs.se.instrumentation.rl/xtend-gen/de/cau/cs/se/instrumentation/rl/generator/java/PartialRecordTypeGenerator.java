@@ -65,7 +65,8 @@ public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerat
       if (_equals) {
         _xifexpression = author;
       } else {
-        _xifexpression = type.getAuthor();
+        String _author_1 = type.getAuthor();
+        _xifexpression = _author_1;
       }
       final String definedAuthor = _xifexpression;
       String _xifexpression_1 = null;
@@ -74,7 +75,8 @@ public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerat
       if (_equals_1) {
         _xifexpression_1 = version;
       } else {
-        _xifexpression_1 = type.getSince();
+        String _since_1 = type.getSince();
+        _xifexpression_1 = _since_1;
       }
       final String definedVersion = _xifexpression_1;
       StringConcatenation _builder = new StringConcatenation();
@@ -162,18 +164,19 @@ public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerat
       _builder.newLineIfNotEmpty();
       _builder.append("\t");
       EList<Property> _properties = type.getProperties();
-      final Function1<Property, CharSequence> _function = new Function1<Property, CharSequence>() {
+      final Function1<Property,CharSequence> _function = new Function1<Property,CharSequence>() {
         public CharSequence apply(final Property property) {
-          return PartialRecordTypeGenerator.this.createPropertyGetter(property);
+          CharSequence _createPropertyGetter = PartialRecordTypeGenerator.this.createPropertyGetter(property);
+          return _createPropertyGetter;
         }
       };
       List<CharSequence> _map = ListExtensions.<Property, CharSequence>map(_properties, _function);
       String _join = IterableExtensions.join(_map);
-      _builder.append(_join, "\t");
+      _builder.append(_join, "	");
       _builder.newLineIfNotEmpty();
       _builder.append("}");
       _builder.newLine();
-      _xblockexpression = _builder;
+      _xblockexpression = (_builder);
     }
     return _xblockexpression;
   }
@@ -196,24 +199,28 @@ public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerat
     } else {
       int _size = parents.size();
       boolean _greaterThan = (_size > 0);
-      _and = _greaterThan;
+      _and = (_notEquals && _greaterThan);
     }
     if (_and) {
-      final Function1<PartialRecordType, Boolean> _function = new Function1<PartialRecordType, Boolean>() {
+      final Function1<PartialRecordType,Boolean> _function = new Function1<PartialRecordType,Boolean>() {
         public Boolean apply(final PartialRecordType t) {
-          return Boolean.valueOf(PartialRecordTypeGenerator.this.isInSamePackage(type, t));
+          boolean _isInSamePackage = PartialRecordTypeGenerator.this.isInSamePackage(type, t);
+          return Boolean.valueOf(_isInSamePackage);
         }
       };
       Iterable<PartialRecordType> _filter = IterableExtensions.<PartialRecordType>filter(parents, _function);
-      final Function1<PartialRecordType, CharSequence> _function_1 = new Function1<PartialRecordType, CharSequence>() {
+      final Function1<PartialRecordType,CharSequence> _function_1 = new Function1<PartialRecordType,CharSequence>() {
         public CharSequence apply(final PartialRecordType it) {
-          return PartialRecordTypeGenerator.this.createImport(it);
+          CharSequence _createImport = PartialRecordTypeGenerator.this.createImport(it);
+          return _createImport;
         }
       };
       Iterable<CharSequence> _map = IterableExtensions.<PartialRecordType, CharSequence>map(_filter, _function_1);
-      _xifexpression = IterableExtensions.join(_map);
+      String _join = IterableExtensions.join(_map);
+      _xifexpression = _join;
     } else {
-      _xifexpression = this.createDefaultImport();
+      CharSequence _createDefaultImport = this.createDefaultImport();
+      _xifexpression = _createDefaultImport;
     }
     _builder.append(_xifexpression, "");
     return _builder;
@@ -249,16 +256,18 @@ public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerat
     } else {
       int _size = parents.size();
       boolean _greaterThan = (_size > 0);
-      _and = _greaterThan;
+      _and = (_notEquals && _greaterThan);
     }
     if (_and) {
-      final Function1<PartialRecordType, String> _function = new Function1<PartialRecordType, String>() {
+      final Function1<PartialRecordType,String> _function = new Function1<PartialRecordType,String>() {
         public String apply(final PartialRecordType t) {
-          return t.getName();
+          String _name = t.getName();
+          return _name;
         }
       };
       List<String> _map = ListExtensions.<PartialRecordType, String>map(parents, _function);
-      _xifexpression = IterableExtensions.join(_map, ", ");
+      String _join = IterableExtensions.join(_map, ", ");
+      _xifexpression = _join;
     } else {
       _xifexpression = "IMonitoringRecord";
     }
@@ -278,7 +287,7 @@ public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerat
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("public ");
     Classifier _findType = PropertyEvaluation.findType(property);
-    CharSequence _createTypeName = this.createTypeName(_findType);
+    String _createTypeName = this.createTypeName(_findType);
     _builder.append(_createTypeName, "");
     _builder.append(" ");
     CharSequence _createGetterName = this.createGetterName(property);
@@ -330,20 +339,22 @@ public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerat
    * 
    * @returns a java type name
    */
-  public CharSequence createTypeName(final Classifier classifier) {
+  public String createTypeName(final Classifier classifier) {
     String _switchResult = null;
     EClassifier _class_ = classifier.getClass_();
     String _name = _class_.getName();
+    final String _switchValue = _name;
     boolean _matched = false;
     if (!_matched) {
-      if (Objects.equal(_name, "string")) {
+      if (Objects.equal(_switchValue,"string")) {
         _matched=true;
         _switchResult = "String";
       }
     }
     if (!_matched) {
       EClassifier _class__1 = classifier.getClass_();
-      _switchResult = _class__1.getName();
+      String _name_1 = _class__1.getName();
+      _switchResult = _name_1;
     }
     return _switchResult;
   }

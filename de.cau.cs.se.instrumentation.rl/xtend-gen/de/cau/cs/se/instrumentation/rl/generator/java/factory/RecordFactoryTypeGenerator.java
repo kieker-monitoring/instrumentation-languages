@@ -66,24 +66,10 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
    */
   public CharSequence createContent(final RecordType type, final String author, final String version) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("import x.y.z.ByteBuffer;");
-    _builder.newLine();
-    _builder.append("import x.y.z.IRegistry;");
+    _builder.append("import java.nio.ByteBuffer;");
     _builder.newLine();
     _builder.newLine();
-    _builder.append("public interface IRecordFactory<T> {");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("T create(ByteBuffer buffer, IRegistry<String> stringRegistry);");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("T create(Object[] values, IRegistry<String> stringRegistry);");
-    _builder.newLine();
-    _builder.append("}");
+    _builder.append("import kieker.common.util.registry.IRegistry;");
     _builder.newLine();
     _builder.newLine();
     _builder.append("public class ");
@@ -105,7 +91,7 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
     _builder.append("\t\t");
     _builder.append("return new ");
     String _name_2 = type.getName();
-    _builder.append(_name_2, "\t\t");
+    _builder.append(_name_2, "		");
     _builder.append("(buffer, stringRegistry);");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -122,7 +108,7 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
     _builder.append("\t\t");
     _builder.append("return new ");
     String _name_3 = type.getName();
-    _builder.append(_name_3, "\t\t");
+    _builder.append(_name_3, "		");
     _builder.append("(values, stringRegistry);");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -141,7 +127,7 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
    * 
    * @returns a java type name
    */
-  public CharSequence createTypeName(final Classifier classifier) {
+  public String createTypeName(final Classifier classifier) {
     String _xblockexpression = null;
     {
       String _xifexpression = null;
@@ -152,7 +138,7 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
         EClassifier _class_ = classifier.getClass_();
         String _createPrimitiveTypeName = RlType2JavaTypeExtensions.createPrimitiveTypeName(_class_);
         EList<ArraySize> _sizes_1 = classifier.getSizes();
-        final Function1<ArraySize, String> _function = new Function1<ArraySize, String>() {
+        final Function1<ArraySize,String> _function = new Function1<ArraySize,String>() {
           public String apply(final ArraySize size) {
             StringConcatenation _builder = new StringConcatenation();
             _builder.append("[]");
@@ -161,13 +147,16 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
         };
         List<String> _map = ListExtensions.<ArraySize, String>map(_sizes_1, _function);
         String _join = IterableExtensions.join(_map);
-        _xifexpression = (_createPrimitiveTypeName + _join);
+        String _plus = (_createPrimitiveTypeName + _join);
+        _xifexpression = _plus;
       } else {
         EClassifier _class__1 = classifier.getClass_();
-        _xifexpression = RlType2JavaTypeExtensions.createPrimitiveTypeName(_class__1);
+        String _createPrimitiveTypeName_1 = RlType2JavaTypeExtensions.createPrimitiveTypeName(_class__1);
+        _xifexpression = _createPrimitiveTypeName_1;
       }
       final String typeName = _xifexpression;
-      _xblockexpression = (typeName + "Factory");
+      String _plus_1 = (typeName + "Factory");
+      _xblockexpression = (_plus_1);
     }
     return _xblockexpression;
   }

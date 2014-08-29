@@ -1,6 +1,5 @@
 package de.cau.cs.se.instrumentation.rl.generator;
 
-import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
 
 @SuppressWarnings("all")
@@ -18,15 +17,6 @@ public abstract class AbstractTypeGenerator {
    * language format for the given record.
    */
   public abstract String fileName(final Type type);
-  
-  /**
-   * Convert a classifier into a primitive type for a
-   * target language.
-   * 
-   * @param classifier
-   * 		a classifier specifying a primitive type
-   */
-  public abstract CharSequence createTypeName(final Classifier classifier);
   
   /**
    * Returns the language type the generator supports.

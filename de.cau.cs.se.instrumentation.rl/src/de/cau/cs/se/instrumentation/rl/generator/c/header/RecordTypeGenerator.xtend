@@ -1,4 +1,4 @@
-package de.cau.cs.se.instrumentation.rl.generator.cheader
+package de.cau.cs.se.instrumentation.rl.generator.c.header
 
 import de.cau.cs.se.instrumentation.rl.recordLang.Type
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
@@ -6,7 +6,14 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Property
 import java.io.File
 import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation
 
-class RecordTypeGenerator extends de.cau.cs.se.instrumentation.rl.generator.c.RecordTypeGenerator {
+import static extension de.cau.cs.se.instrumentation.rl.generator.c.CommonCFunctionsExtension.*
+
+class RecordTypeGenerator extends de.cau.cs.se.instrumentation.rl.generator.c.main.RecordTypeGenerator {
+
+	/**
+	 * File name for c-header files.
+	 */	
+	override fileName(Type type) '''«type.directoryName»«File::separator»«type.name.cstyleName».h'''
 	
 	/**
 	 * Primary code generation template.
@@ -48,20 +55,20 @@ class RecordTypeGenerator extends de.cau.cs.se.instrumentation.rl.generator.c.Re
 		'''
 	}
 	
-	def createStructure(RecordType type) '''
+	private def createStructure(RecordType type) '''
 		typedef struct {
 			«PropertyEvaluation::collectAllDataProperties(type).map[createPropertyDeclaration].join»
-		} «type.packageName»_«type.name.cstyle»;
+		} «type.packageName»_«type.name.cstyleName»;
 	'''
 	
-	def createPropertyDeclaration(Property property) '''
+	private def createPropertyDeclaration(Property property) '''
 		«PropertyEvaluation::findType(property).createTypeName» «property.name»;
 	'''
 		
 	/**
 	 * Generate the serializer for the given record type.
 	 */
-	def createSerializerDeclaration(RecordType type) '''
+	private def createSerializerDeclaration(RecordType type) '''
 		/*
 		 * Serialize an «type.name» and return the size of the written structure.
 		 *
@@ -72,8 +79,8 @@ class RecordTypeGenerator extends de.cau.cs.se.instrumentation.rl.generator.c.Re
 		 *
 		 * returns size of written structure
 		 */
-		int «type.packageName»_«type.name.cstyle»_serialize(char *buffer, const int id, const int offset, const «type.packageName»_«type.name.cstyle» value);
+		int «type.packageName»_«type.name.cstyleName»_serialize(char *buffer, const int id, const int offset, const «type.packageName»_«type.name.cstyleName» value);
 	'''
 	
-	override fileName(Type type) '''«type.directoryName»«File::separator»«type.name.cstyle».h'''
+
 }
