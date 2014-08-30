@@ -179,7 +179,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.append("\t");
       _builder.append("public TestGenerated");
       String _name_4 = type.getName();
-      _builder.append(_name_4, "	");
+      _builder.append(_name_4, "\t");
       _builder.append("() {");
       _builder.newLineIfNotEmpty();
       _builder.append("\t\t");
@@ -195,10 +195,10 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.append("\t ");
       _builder.append("* Tests {@link ");
       String _name_5 = type.getName();
-      _builder.append(_name_5, "	 ");
+      _builder.append(_name_5, "\t ");
       _builder.append("#Test");
       String _name_6 = type.getName();
-      _builder.append(_name_6, "	 ");
+      _builder.append(_name_6, "\t ");
       _builder.append("(String, String, long, long, long, String, int, int)}.");
       _builder.newLineIfNotEmpty();
       _builder.append("\t ");
@@ -218,20 +218,19 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.newLine();
       _builder.append("\t\t\t");
       String _name_7 = type.getName();
-      _builder.append(_name_7, "			");
+      _builder.append(_name_7, "\t\t\t");
       _builder.append(" record = new ");
       String _name_8 = type.getName();
-      _builder.append(_name_8, "			");
+      _builder.append(_name_8, "\t\t\t");
       _builder.append("(");
-      final Function1<Property,CharSequence> _function = new Function1<Property,CharSequence>() {
+      final Function1<Property, CharSequence> _function = new Function1<Property, CharSequence>() {
         public CharSequence apply(final Property property) {
-          CharSequence _createPropertyValueSet = RecordTypeGenerator.this.createPropertyValueSet(property);
-          return _createPropertyValueSet;
+          return RecordTypeGenerator.this.createPropertyValueSet(property);
         }
       };
       Iterable<CharSequence> _map = IterableExtensions.<Property, CharSequence>map(allDataProperties, _function);
       String _join = IterableExtensions.join(_map, ", ");
-      _builder.append(_join, "			");
+      _builder.append(_join, "\t\t\t");
       _builder.append(");");
       _builder.newLineIfNotEmpty();
       _builder.append("\t\t\t");
@@ -241,7 +240,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.newLine();
       _builder.append("\t\t\t");
       CharSequence _createAllGetterValueAssertions = this.createAllGetterValueAssertions(allDataProperties, type);
-      _builder.append(_createAllGetterValueAssertions, "			");
+      _builder.append(_createAllGetterValueAssertions, "\t\t\t");
       _builder.newLineIfNotEmpty();
       _builder.append("\t\t\t");
       _builder.newLine();
@@ -256,10 +255,10 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.append("\t\t\t");
       _builder.append("Assert.assertEquals(\"Record array size does not match expected number of properties ");
       int _size = allDataProperties.size();
-      _builder.append(_size, "			");
+      _builder.append(_size, "\t\t\t");
       _builder.append(".\", ");
       int _size_1 = allDataProperties.size();
-      _builder.append(_size_1, "			");
+      _builder.append(_size_1, "\t\t\t");
       _builder.append(", values.length);");
       _builder.newLineIfNotEmpty();
       _builder.append("\t\t\t");
@@ -269,7 +268,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.newLine();
       _builder.append("\t\t\t");
       String _createAllValueExistAssertions = this.createAllValueExistAssertions(allDataProperties);
-      _builder.append(_createAllValueExistAssertions, "			");
+      _builder.append(_createAllValueExistAssertions, "\t\t\t");
       _builder.newLineIfNotEmpty();
       _builder.append("\t\t\t");
       _builder.newLine();
@@ -278,7 +277,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.newLine();
       _builder.append("\t\t\t");
       String _createAllTypeAssertions = this.createAllTypeAssertions(allDataProperties);
-      _builder.append(_createAllTypeAssertions, "			");
+      _builder.append(_createAllTypeAssertions, "\t\t\t");
       _builder.newLineIfNotEmpty();
       _builder.append("\t\t\t\t\t\t\t\t");
       _builder.newLine();
@@ -287,7 +286,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.newLine();
       _builder.append("\t\t\t");
       String _createAllValueAssertions = this.createAllValueAssertions(allDataProperties);
-      _builder.append(_createAllValueAssertions, "			");
+      _builder.append(_createAllValueAssertions, "\t\t\t");
       _builder.newLineIfNotEmpty();
       _builder.append("\t\t");
       _builder.append("}");
@@ -303,10 +302,10 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.append("\t ");
       _builder.append("* Tests {@link ");
       String _name_9 = type.getName();
-      _builder.append(_name_9, "	 ");
+      _builder.append(_name_9, "\t ");
       _builder.append("#Test");
       String _name_10 = type.getName();
-      _builder.append(_name_10, "	 ");
+      _builder.append(_name_10, "\t ");
       _builder.append("(String, String, long, long, long, String, int, int)}.");
       _builder.newLineIfNotEmpty();
       _builder.append("\t ");
@@ -326,20 +325,19 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.newLine();
       _builder.append("\t\t\t");
       String _name_11 = type.getName();
-      _builder.append(_name_11, "			");
+      _builder.append(_name_11, "\t\t\t");
       _builder.append(" record = new ");
       String _name_12 = type.getName();
-      _builder.append(_name_12, "			");
+      _builder.append(_name_12, "\t\t\t");
       _builder.append("(");
-      final Function1<Property,CharSequence> _function_1 = new Function1<Property,CharSequence>() {
+      final Function1<Property, CharSequence> _function_1 = new Function1<Property, CharSequence>() {
         public CharSequence apply(final Property property) {
-          CharSequence _createPropertyValueSet = RecordTypeGenerator.this.createPropertyValueSet(property);
-          return _createPropertyValueSet;
+          return RecordTypeGenerator.this.createPropertyValueSet(property);
         }
       };
       Iterable<CharSequence> _map_1 = IterableExtensions.<Property, CharSequence>map(allDataProperties, _function_1);
       String _join_1 = IterableExtensions.join(_map_1, ", ");
-      _builder.append(_join_1, "			");
+      _builder.append(_join_1, "\t\t\t");
       _builder.append(");");
       _builder.newLineIfNotEmpty();
       _builder.append("\t\t\t");
@@ -349,7 +347,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.newLine();
       _builder.append("\t\t\t");
       CharSequence _createAllGetterValueAssertions_1 = this.createAllGetterValueAssertions(allDataProperties, type);
-      _builder.append(_createAllGetterValueAssertions_1, "			");
+      _builder.append(_createAllGetterValueAssertions_1, "\t\t\t");
       _builder.newLineIfNotEmpty();
       _builder.append("\t\t");
       _builder.append("}");
@@ -365,10 +363,10 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.append("\t ");
       _builder.append("* Tests {@link ");
       String _name_13 = type.getName();
-      _builder.append(_name_13, "	 ");
+      _builder.append(_name_13, "\t ");
       _builder.append("#Test");
       String _name_14 = type.getName();
-      _builder.append(_name_14, "	 ");
+      _builder.append(_name_14, "\t ");
       _builder.append("(String, String, long, long, long, String, int, int)}.");
       _builder.newLineIfNotEmpty();
       _builder.append("\t ");
@@ -388,20 +386,19 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.newLine();
       _builder.append("\t\t\t");
       String _name_15 = type.getName();
-      _builder.append(_name_15, "			");
+      _builder.append(_name_15, "\t\t\t");
       _builder.append(" record = new ");
       String _name_16 = type.getName();
-      _builder.append(_name_16, "			");
+      _builder.append(_name_16, "\t\t\t");
       _builder.append("(");
-      final Function1<Property,CharSequence> _function_2 = new Function1<Property,CharSequence>() {
+      final Function1<Property, CharSequence> _function_2 = new Function1<Property, CharSequence>() {
         public CharSequence apply(final Property property) {
-          CharSequence _createPropertyValueSet = RecordTypeGenerator.this.createPropertyValueSet(property);
-          return _createPropertyValueSet;
+          return RecordTypeGenerator.this.createPropertyValueSet(property);
         }
       };
       Iterable<CharSequence> _map_2 = IterableExtensions.<Property, CharSequence>map(allDataProperties, _function_2);
       String _join_2 = IterableExtensions.join(_map_2, ", ");
-      _builder.append(_join_2, "			");
+      _builder.append(_join_2, "\t\t\t");
       _builder.append(");");
       _builder.newLineIfNotEmpty();
       _builder.append("\t\t\t");
@@ -411,7 +408,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.newLine();
       _builder.append("\t\t\t");
       CharSequence _createAllGetterValueAssertions_2 = this.createAllGetterValueAssertions(allDataProperties, type);
-      _builder.append(_createAllGetterValueAssertions_2, "			");
+      _builder.append(_createAllGetterValueAssertions_2, "\t\t\t");
       _builder.newLineIfNotEmpty();
       _builder.append("\t\t");
       _builder.append("}");
@@ -421,15 +418,14 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.newLine();
       _builder.append("}");
       _builder.newLine();
-      _xblockexpression = (_builder);
+      _xblockexpression = _builder;
     }
     return _xblockexpression;
   }
   
   public String createAllValueExistAssertions(final Collection<Property> properties) {
-    ArrayList<CharSequence> _arrayList = new ArrayList<CharSequence>();
-    final List<CharSequence> result = _arrayList;
-    final Procedure2<Property,Integer> _function = new Procedure2<Property,Integer>() {
+    final List<CharSequence> result = new ArrayList<CharSequence>();
+    final Procedure2<Property, Integer> _function = new Procedure2<Property, Integer>() {
       public void apply(final Property property, final Integer index) {
         CharSequence _createValueExistAssertion = RecordTypeGenerator.this.createValueExistAssertion(property, index);
         result.add(_createValueExistAssertion);
@@ -458,9 +454,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    * Collect all value assertions
    */
   public String createAllValueAssertions(final Collection<Property> properties) {
-    ArrayList<CharSequence> _arrayList = new ArrayList<CharSequence>();
-    final List<CharSequence> result = _arrayList;
-    final Procedure2<Property,Integer> _function = new Procedure2<Property,Integer>() {
+    final List<CharSequence> result = new ArrayList<CharSequence>();
+    final Procedure2<Property, Integer> _function = new Procedure2<Property, Integer>() {
       public void apply(final Property property, final Integer index) {
         CharSequence _createValueAssertion = RecordTypeGenerator.this.createValueAssertion(property, index);
         result.add(_createValueAssertion);
@@ -494,23 +489,23 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         EClassifier _class__1 = _type_1.getClass_();
         String _name_1 = _class__1.getName();
         boolean _equals_1 = Objects.equal(_name_1, "double");
-        _or = (_equals || _equals_1);
+        _or = _equals_1;
       }
       if (_or) {
         _builder.append("\t");
         String _castToPrimitiveType = this.getCastToPrimitiveType(property);
-        _builder.append(_castToPrimitiveType, "	");
+        _builder.append(_castToPrimitiveType, "\t");
         _builder.append(" ");
         CharSequence _createPropertyValueSet_1 = this.createPropertyValueSet(property);
-        _builder.append(_createPropertyValueSet_1, "	");
+        _builder.append(_createPropertyValueSet_1, "\t");
         _builder.append(", ");
         String _castToPrimitiveType_1 = this.getCastToPrimitiveType(property);
-        _builder.append(_castToPrimitiveType_1, "	");
+        _builder.append(_castToPrimitiveType_1, "\t");
         _builder.append(" (");
         String _getObjectType = this.getGetObjectType(property);
-        _builder.append(_getObjectType, "	");
+        _builder.append(_getObjectType, "\t");
         _builder.append(")values[");
-        _builder.append(index, "	");
+        _builder.append(index, "\t");
         _builder.append("], 0.0000001");
         _builder.newLineIfNotEmpty();
       } else {
@@ -521,32 +516,32 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         if (_equals_2) {
           _builder.append("\t");
           CharSequence _createPropertyValueSet_2 = this.createPropertyValueSet(property);
-          _builder.append(_createPropertyValueSet_2, "	");
+          _builder.append(_createPropertyValueSet_2, "\t");
           _builder.append(" == null?\"");
           String _createConstantValue = this.createConstantValue(property);
-          _builder.append(_createConstantValue, "	");
+          _builder.append(_createConstantValue, "\t");
           _builder.append("\":");
           CharSequence _createPropertyValueSet_3 = this.createPropertyValueSet(property);
-          _builder.append(_createPropertyValueSet_3, "	");
+          _builder.append(_createPropertyValueSet_3, "\t");
           _builder.append(", values[");
-          _builder.append(index, "	");
+          _builder.append(index, "\t");
           _builder.append("]");
           _builder.newLineIfNotEmpty();
         } else {
           _builder.append("\t");
           String _castToPrimitiveType_2 = this.getCastToPrimitiveType(property);
-          _builder.append(_castToPrimitiveType_2, "	");
+          _builder.append(_castToPrimitiveType_2, "\t");
           _builder.append(" ");
           CharSequence _createPropertyValueSet_4 = this.createPropertyValueSet(property);
-          _builder.append(_createPropertyValueSet_4, "	");
+          _builder.append(_createPropertyValueSet_4, "\t");
           _builder.append(", ");
           String _castToPrimitiveType_3 = this.getCastToPrimitiveType(property);
-          _builder.append(_castToPrimitiveType_3, "	");
+          _builder.append(_castToPrimitiveType_3, "\t");
           _builder.append(" (");
           String _getObjectType_1 = this.getGetObjectType(property);
-          _builder.append(_getObjectType_1, "	");
+          _builder.append(_getObjectType_1, "\t");
           _builder.append(")values[");
-          _builder.append(index, "	");
+          _builder.append(index, "\t");
           _builder.append("]");
           _builder.newLineIfNotEmpty();
           _builder.append("\t\t");
@@ -618,7 +613,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
             EClassifier _class__1 = _type_1.getClass_();
             String _name_3 = _class__1.getName();
             boolean _equals_1 = Objects.equal(_name_3, "double");
-            _or = (_equals || _equals_1);
+            _or = _equals_1;
           }
           if (_or) {
             _builder.newLineIfNotEmpty();
@@ -694,9 +689,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    * Collects all type assertions.
    */
   public String createAllTypeAssertions(final Collection<Property> properties) {
-    ArrayList<CharSequence> _arrayList = new ArrayList<CharSequence>();
-    final List<CharSequence> result = _arrayList;
-    final Procedure2<Property,Integer> _function = new Procedure2<Property,Integer>() {
+    final List<CharSequence> result = new ArrayList<CharSequence>();
+    final Procedure2<Property, Integer> _function = new Procedure2<Property, Integer>() {
       public void apply(final Property property, final Integer index) {
         CharSequence _createTypeAssertion = RecordTypeGenerator.this.createTypeAssertion(property, index);
         result.add(_createTypeAssertion);
@@ -730,58 +724,57 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     Classifier _type = property.getType();
     EClassifier _class_ = _type.getClass_();
     String _name = _class_.getName();
-    final String _switchValue = _name;
     boolean _matched = false;
     if (!_matched) {
-      if (Objects.equal(_switchValue,"int")) {
+      if (Objects.equal(_name, "int")) {
         _matched=true;
         _switchResult = "Integer";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"long")) {
+      if (Objects.equal(_name, "long")) {
         _matched=true;
         _switchResult = "Long";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"short")) {
+      if (Objects.equal(_name, "short")) {
         _matched=true;
         _switchResult = "Short";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"double")) {
+      if (Objects.equal(_name, "double")) {
         _matched=true;
         _switchResult = "Double";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"float")) {
+      if (Objects.equal(_name, "float")) {
         _matched=true;
         _switchResult = "Float";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"char")) {
+      if (Objects.equal(_name, "char")) {
         _matched=true;
         _switchResult = "Character";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"byte")) {
+      if (Objects.equal(_name, "byte")) {
         _matched=true;
         _switchResult = "Byte";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"string")) {
+      if (Objects.equal(_name, "string")) {
         _matched=true;
         _switchResult = "String";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"boolean")) {
+      if (Objects.equal(_name, "boolean")) {
         _matched=true;
         _switchResult = "Boolean";
       }
@@ -789,8 +782,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     if (!_matched) {
       Classifier _type_1 = property.getType();
       EClassifier _class__1 = _type_1.getClass_();
-      String _name_1 = _class__1.getName();
-      _switchResult = _name_1;
+      _switchResult = _class__1.getName();
     }
     return _switchResult;
   }
@@ -846,7 +838,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       EClassifier _class_ = classifier.getClass_();
       String _createPrimitiveTypeName = this.createPrimitiveTypeName(_class_);
       EList<ArraySize> _sizes_1 = classifier.getSizes();
-      final Function1<ArraySize,String> _function = new Function1<ArraySize,String>() {
+      final Function1<ArraySize, String> _function = new Function1<ArraySize, String>() {
         public String apply(final ArraySize size) {
           StringConcatenation _builder = new StringConcatenation();
           _builder.append("[]");
@@ -855,12 +847,10 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       };
       List<String> _map = ListExtensions.<ArraySize, String>map(_sizes_1, _function);
       String _join = IterableExtensions.join(_map);
-      String _plus = (_createPrimitiveTypeName + _join);
-      _xifexpression = _plus;
+      _xifexpression = (_createPrimitiveTypeName + _join);
     } else {
       EClassifier _class__1 = classifier.getClass_();
-      String _createPrimitiveTypeName_1 = this.createPrimitiveTypeName(_class__1);
-      _xifexpression = _createPrimitiveTypeName_1;
+      _xifexpression = this.createPrimitiveTypeName(_class__1);
     }
     return _xifexpression;
   }
@@ -871,65 +861,63 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   public String createPrimitiveTypeName(final EClassifier classifier) {
     String _switchResult = null;
     String _name = classifier.getName();
-    final String _switchValue = _name;
     boolean _matched = false;
     if (!_matched) {
-      if (Objects.equal(_switchValue,"int")) {
+      if (Objects.equal(_name, "int")) {
         _matched=true;
         _switchResult = "int";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"long")) {
+      if (Objects.equal(_name, "long")) {
         _matched=true;
         _switchResult = "long";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"short")) {
+      if (Objects.equal(_name, "short")) {
         _matched=true;
         _switchResult = "short";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"double")) {
+      if (Objects.equal(_name, "double")) {
         _matched=true;
         _switchResult = "double";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"float")) {
+      if (Objects.equal(_name, "float")) {
         _matched=true;
         _switchResult = "float";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"char")) {
+      if (Objects.equal(_name, "char")) {
         _matched=true;
         _switchResult = "char";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"byte")) {
+      if (Objects.equal(_name, "byte")) {
         _matched=true;
         _switchResult = "byte";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"string")) {
+      if (Objects.equal(_name, "string")) {
         _matched=true;
         _switchResult = "String";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"boolean")) {
+      if (Objects.equal(_name, "boolean")) {
         _matched=true;
         _switchResult = "boolean";
       }
     }
     if (!_matched) {
-      String _name_1 = classifier.getName();
-      _switchResult = _name_1;
+      _switchResult = classifier.getName();
     }
     return _switchResult;
   }

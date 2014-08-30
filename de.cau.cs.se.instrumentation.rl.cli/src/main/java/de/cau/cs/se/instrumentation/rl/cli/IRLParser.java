@@ -31,7 +31,7 @@ import com.google.inject.Inject;
 import com.google.inject.Injector;
 
 import de.cau.cs.se.instrumentation.rl.RecordLangStandaloneSetup;
-import de.cau.cs.se.instrumentation.rl.generator.LanguageSetup;
+import de.cau.cs.se.instrumentation.rl.generator.GeneratorConfiguration;
 import de.cau.cs.se.instrumentation.rl.generator.RecordLangGenerator;
 import de.cau.cs.se.instrumentation.rl.ouput.config.RecordLangOutputConfigurationProvider;
 import de.cau.cs.se.instrumentation.rl.preferences.TargetsPreferenceInitializer;
@@ -42,11 +42,11 @@ import kieker.common.logging.LogFactory;
 
 /**
  * Parser class.
- * 
+ *
  * From http://davehofmann.de/blog/?tag=standalone
- * 
+ *
  * @author Reiner Jung
- * 
+ *
  */
 public class IRLParser {
 
@@ -75,7 +75,7 @@ public class IRLParser {
 
 	/**
 	 * Construct an IRL parser.
-	 * 
+	 *
 	 * @param platformUri
 	 *            the platform root
 	 * @param projectSourcePath
@@ -123,7 +123,7 @@ public class IRLParser {
 				TargetsPreferences.setAuthorName(author);
 				TargetsPreferences.setVersionID(version);
 				// setup language activation
-				for (final String language : LanguageSetup.getPresentLanguages()) {
+				for (final String language : GeneratorConfiguration.getPresentGenerators()) {
 					TargetsPreferences.setGeneratorActive(language, false);
 					for (final String selected : selectedLanguageTypes) {
 						if (selected.equals(language)) {
@@ -169,7 +169,7 @@ public class IRLParser {
 
 	/**
 	 * Collect all resources.
-	 * 
+	 *
 	 * @param pathName
 	 *            project relative path
 	 */
@@ -193,7 +193,7 @@ public class IRLParser {
 
 	/**
 	 * Walk over the directory tree and compile all files.
-	 * 
+	 *
 	 * @param pathName
 	 *            relative path name in source folder
 	 */
@@ -219,7 +219,7 @@ public class IRLParser {
 	/**
 	 * Add a resource for the present project and present project source path to
 	 * the resource set and return that resource.
-	 * 
+	 *
 	 * @param pathName
 	 *            relative path name to the file to be added to the resource set
 	 * @return the resource added to the resource set
@@ -231,7 +231,7 @@ public class IRLParser {
 
 	/**
 	 * Run the generator for one input file.
-	 * 
+	 *
 	 * @param pathName
 	 *            relative path of the input file
 	 * @param author

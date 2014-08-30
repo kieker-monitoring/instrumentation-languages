@@ -32,7 +32,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/rju/eclipse-SR2/plugins/org.eclipse.emf.mwe.core_1.2.1.v201402030544.jar" sourcepath="/home/rju/eclipse-SR2/plugins/org.eclipse.emf.mwe.core.source_1.2.1.v201402030544.jar">
+	<classpathentry kind="lib" path="lib/org.eclipse.emf.mwe.core_1.2.1.v201402030544.jar">
 		<accessrules>
 			<accessrule kind="accessible" pattern="org/eclipse/emf/mwe/core/*"/>
 			<accessrule kind="accessible" pattern="org/eclipse/emf/mwe/core/ant/*"/>
