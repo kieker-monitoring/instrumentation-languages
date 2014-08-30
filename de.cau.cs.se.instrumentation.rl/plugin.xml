@@ -7,7 +7,7 @@
     <package 
        uri = "http://www.cau.de/cs/se/instrumentation/rl/RecordLang" 
        class = "de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage"
-       genModel = "de/cau/cs/se/instrumentation/rl/RecordLang.genmodel" /> 
+       genModel = "model/generated/RecordLang.genmodel" /> 
 	
   </extension>
   <extension

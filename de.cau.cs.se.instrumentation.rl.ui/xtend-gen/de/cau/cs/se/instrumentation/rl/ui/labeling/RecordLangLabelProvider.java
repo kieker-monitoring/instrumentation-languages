@@ -54,20 +54,17 @@ public class RecordLangLabelProvider extends DefaultEObjectLabelProvider {
     String _plus = (_name + " : ");
     Classifier _type = e.getType();
     String _text = this.text(_type);
-    String _plus_1 = (_plus + _text);
-    return _plus_1;
+    return (_plus + _text);
   }
   
   public String text(final StringLiteral e) {
     String _value = e.getValue();
     String _plus = ("\'" + _value);
-    String _plus_1 = (_plus + "\'");
-    return _plus_1;
+    return (_plus + "\'");
   }
   
   public int text(final IntLiteral e) {
-    int _value = e.getValue();
-    return _value;
+    return e.getValue();
   }
   
   public String text(final ArrayLiteral e) {
@@ -75,8 +72,7 @@ public class RecordLangLabelProvider extends DefaultEObjectLabelProvider {
   }
   
   public Float text(final FloatLiteral e) {
-    Float _value = e.getValue();
-    return _value;
+    return e.getValue();
   }
   
   public String text(final BooleanLiteral e) {
@@ -94,26 +90,23 @@ public class RecordLangLabelProvider extends DefaultEObjectLabelProvider {
     EClassifier _class_ = e.getClass_();
     String _name = _class_.getName();
     EList<ArraySize> _sizes = e.getSizes();
-    final Function1<ArraySize,String> _function = new Function1<ArraySize,String>() {
+    final Function1<ArraySize, String> _function = new Function1<ArraySize, String>() {
       public String apply(final ArraySize it) {
         Object _xifexpression = null;
         int _size = it.getSize();
         boolean _notEquals = (_size != 0);
         if (_notEquals) {
-          int _size_1 = it.getSize();
-          _xifexpression = Integer.valueOf(_size_1);
+          _xifexpression = Integer.valueOf(it.getSize());
         } else {
           _xifexpression = "";
         }
-        String _plus = ("[" + ((Comparable<Object>)_xifexpression));
-        String _plus_1 = (_plus + "]");
-        return _plus_1;
+        String _plus = ("[" + ((Comparable<?>)_xifexpression));
+        return (_plus + "]");
       }
     };
     List<String> _map = ListExtensions.<ArraySize, String>map(_sizes, _function);
     String _join = IterableExtensions.join(_map);
-    String _plus = (_name + _join);
-    return _plus;
+    return (_name + _join);
   }
   
   public String image(final Property e) {
