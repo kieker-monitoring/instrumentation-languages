@@ -546,15 +546,9 @@ public class EMFModelGenerator {
     } else {
       attribute.setDerived(true);
       Property originalProperty = property;
-      Property _referTo = originalProperty.getReferTo();
-      boolean _notEquals_2 = (!Objects.equal(_referTo, null));
-      boolean _while = _notEquals_2;
-      while (_while) {
-        Property _referTo_1 = originalProperty.getReferTo();
-        originalProperty = _referTo_1;
-        Property _referTo_2 = originalProperty.getReferTo();
-        boolean _notEquals_3 = (!Objects.equal(_referTo_2, null));
-        _while = _notEquals_3;
+      while ((!Objects.equal(originalProperty.getReferTo(), null))) {
+        Property _referTo = originalProperty.getReferTo();
+        originalProperty = _referTo;
       }
       Classifier _type_3 = originalProperty.getType();
       type = _type_3;
@@ -564,8 +558,8 @@ public class EMFModelGenerator {
     EDataType _mapToEMFLiteral = this.getMapToEMFLiteral(_name_1);
     attribute.setEType(_mapToEMFLiteral);
     EList<ArraySize> _sizes = type.getSizes();
-    boolean _notEquals_3 = (!Objects.equal(_sizes, null));
-    if (_notEquals_3) {
+    boolean _notEquals_2 = (!Objects.equal(_sizes, null));
+    if (_notEquals_2) {
       EList<ArraySize> _sizes_1 = type.getSizes();
       boolean _isEmpty = _sizes_1.isEmpty();
       boolean _not = (!_isEmpty);

@@ -4,6 +4,10 @@ import com.google.common.base.Objects;
 import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
+import de.cau.cs.se.instrumentation.rl.recordLang.Constant;
+import de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral;
+import de.cau.cs.se.instrumentation.rl.recordLang.FloatLiteral;
+import de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Literal;
 import de.cau.cs.se.instrumentation.rl.recordLang.Model;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
@@ -561,10 +565,43 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     boolean _notEquals = (!Objects.equal(_value, null));
     if (_notEquals) {
       Literal _value_1 = property.getValue();
-      return ((StringLiteral) _value_1).getValue();
+      return this.createConstantValue(_value_1);
     } else {
       return "";
     }
+  }
+  
+  public String createConstantValue(final Literal value) {
+    boolean _matched = false;
+    if (!_matched) {
+      if (value instanceof StringLiteral) {
+        _matched=true;
+        return ((StringLiteral) value).getValue();
+      }
+    }
+    if (!_matched) {
+      if (value instanceof FloatLiteral) {
+        _matched=true;
+        Float _value = ((FloatLiteral) value).getValue();
+        return _value.toString();
+      }
+    }
+    if (!_matched) {
+      if (value instanceof IntLiteral) {
+        _matched=true;
+        int _value = ((IntLiteral) value).getValue();
+        return Integer.valueOf(_value).toString();
+      }
+    }
+    if (!_matched) {
+      if (value instanceof ConstantLiteral) {
+        _matched=true;
+        Constant _value = ((ConstantLiteral) value).getValue();
+        Literal _value_1 = _value.getValue();
+        return this.createConstantValue(_value_1);
+      }
+    }
+    return "";
   }
   
   public String getCastToPrimitiveType(final Property property) {

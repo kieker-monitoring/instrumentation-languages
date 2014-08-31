@@ -13,6 +13,10 @@ import java.util.Collection
 import java.util.List
 import java.util.ArrayList
 import de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral
+import de.cau.cs.se.instrumentation.rl.recordLang.FloatLiteral
+import de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral
+import de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral
+import de.cau.cs.se.instrumentation.rl.recordLang.Literal
 
 class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	
@@ -166,11 +170,21 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	/**
 	 * Create constant value for string.
 	 */
-	def createConstantValue(Property property) {
+	def String createConstantValue(Property property) {
 		if (property.value != null)
-			return (property.value as StringLiteral).value
+			return this.createConstantValue(property.value)
 		else
 			return ""
+	}
+	
+	def String createConstantValue(Literal value) {
+		switch (value) {
+			StringLiteral :	return (value as StringLiteral).value
+			FloatLiteral : return (value as FloatLiteral).value.toString
+			IntLiteral : return (value as IntLiteral).value.toString
+			ConstantLiteral : return createConstantValue((value as ConstantLiteral).value.value)
+			default : return ""	
+		}
 	}
 	
 	def getCastToPrimitiveType(Property property) {

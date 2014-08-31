@@ -61,10 +61,7 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
       final List<Property> visitedProperties = new ArrayList<Property>();
       visitedProperties.add(property);
       Property referredProperty = property.getReferTo();
-      Property _referTo_1 = referredProperty.getReferTo();
-      boolean _notEquals_1 = (!Objects.equal(_referTo_1, null));
-      boolean _while = _notEquals_1;
-      while (_while) {
+      while ((!Objects.equal(referredProperty.getReferTo(), null))) {
         {
           boolean _contains = visitedProperties.contains(referredProperty);
           if (_contains) {
@@ -77,12 +74,9 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
             return;
           }
           visitedProperties.add(referredProperty);
-          Property _referTo_2 = referredProperty.getReferTo();
-          referredProperty = _referTo_2;
+          Property _referTo_1 = referredProperty.getReferTo();
+          referredProperty = _referTo_1;
         }
-        Property _referTo_2 = referredProperty.getReferTo();
-        boolean _notEquals_2 = (!Objects.equal(_referTo_2, null));
-        _while = _notEquals_2;
       }
     }
   }
@@ -410,28 +404,20 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
       boolean _equals_1 = (_size == _size_1);
       if (_equals_1) {
         int i = 0;
-        EList<ArraySize> _sizes_2 = left.getSizes();
-        int _size_2 = _sizes_2.size();
-        boolean _lessThan = (i < _size_2);
-        boolean _while = _lessThan;
-        while (_while) {
+        while ((i < left.getSizes().size())) {
           {
-            EList<ArraySize> _sizes_3 = left.getSizes();
-            ArraySize _get = _sizes_3.get(i);
-            int _size_3 = _get.getSize();
-            EList<ArraySize> _sizes_4 = right.getSizes();
-            ArraySize _get_1 = _sizes_4.get(i);
-            int _size_4 = _get_1.getSize();
-            boolean _notEquals = (_size_3 != _size_4);
+            EList<ArraySize> _sizes_2 = left.getSizes();
+            ArraySize _get = _sizes_2.get(i);
+            int _size_2 = _get.getSize();
+            EList<ArraySize> _sizes_3 = right.getSizes();
+            ArraySize _get_1 = _sizes_3.get(i);
+            int _size_3 = _get_1.getSize();
+            boolean _notEquals = (_size_2 != _size_3);
             if (_notEquals) {
               return false;
             }
             i = (i + 1);
           }
-          EList<ArraySize> _sizes_3 = left.getSizes();
-          int _size_3 = _sizes_3.size();
-          boolean _lessThan_1 = (i < _size_3);
-          _while = _lessThan_1;
         }
         return true;
       }
@@ -498,27 +484,23 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
       boolean _equals = (_size == _size_1);
       if (_equals) {
         int i = 0;
-        EList<ArraySize> _sizes_2 = left.getSizes();
-        int _size_2 = _sizes_2.size();
-        boolean _lessThan = (i < _size_2);
-        boolean _while = _lessThan;
-        while (_while) {
+        while ((i < left.getSizes().size())) {
           {
             boolean _and = false;
-            EList<ArraySize> _sizes_3 = left.getSizes();
-            ArraySize _get = _sizes_3.get(i);
-            int _size_3 = _get.getSize();
-            EList<ArraySize> _sizes_4 = right.getSizes();
-            ArraySize _get_1 = _sizes_4.get(i);
-            int _size_4 = _get_1.getSize();
-            boolean _notEquals = (_size_3 != _size_4);
+            EList<ArraySize> _sizes_2 = left.getSizes();
+            ArraySize _get = _sizes_2.get(i);
+            int _size_2 = _get.getSize();
+            EList<ArraySize> _sizes_3 = right.getSizes();
+            ArraySize _get_1 = _sizes_3.get(i);
+            int _size_3 = _get_1.getSize();
+            boolean _notEquals = (_size_2 != _size_3);
             if (!_notEquals) {
               _and = false;
             } else {
-              EList<ArraySize> _sizes_5 = left.getSizes();
-              ArraySize _get_2 = _sizes_5.get(i);
-              int _size_5 = _get_2.getSize();
-              boolean _notEquals_1 = (_size_5 != 0);
+              EList<ArraySize> _sizes_4 = left.getSizes();
+              ArraySize _get_2 = _sizes_4.get(i);
+              int _size_4 = _get_2.getSize();
+              boolean _notEquals_1 = (_size_4 != 0);
               _and = _notEquals_1;
             }
             if (_and) {
@@ -526,10 +508,6 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
             }
             i = (i + 1);
           }
-          EList<ArraySize> _sizes_3 = left.getSizes();
-          int _size_3 = _sizes_3.size();
-          boolean _lessThan_1 = (i < _size_3);
-          _while = _lessThan_1;
         }
         return true;
       } else {
@@ -851,25 +829,17 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
       boolean _equals_1 = (_size == _size_1);
       if (_equals_1) {
         int i = 0;
-        EList<ArraySize> _sizes_2 = left.getSizes();
-        int _size_2 = _sizes_2.size();
-        boolean _lessThan = (i < _size_2);
-        boolean _while = _lessThan;
-        while (_while) {
-          EList<ArraySize> _sizes_3 = left.getSizes();
-          ArraySize _get = _sizes_3.get(i);
-          int _size_3 = _get.getSize();
-          EList<ArraySize> _sizes_4 = right.getSizes();
-          ArraySize _get_1 = _sizes_4.get(i);
-          int _size_4 = _get_1.getSize();
-          boolean _notEquals = (_size_3 != _size_4);
+        while ((i < left.getSizes().size())) {
+          EList<ArraySize> _sizes_2 = left.getSizes();
+          ArraySize _get = _sizes_2.get(i);
+          int _size_2 = _get.getSize();
+          EList<ArraySize> _sizes_3 = right.getSizes();
+          ArraySize _get_1 = _sizes_3.get(i);
+          int _size_3 = _get_1.getSize();
+          boolean _notEquals = (_size_2 != _size_3);
           if (_notEquals) {
             return false;
           }
-          EList<ArraySize> _sizes_5 = left.getSizes();
-          int _size_5 = _sizes_5.size();
-          boolean _lessThan_1 = (i < _size_5);
-          _while = _lessThan_1;
         }
         return true;
       } else {

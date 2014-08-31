@@ -16,22 +16,22 @@ class OutletConfiguration {
 	/**
 	 * Create a new outlet entity.
 	 */
-	new (String outletName, String description, String directory) {
+	new (String name, String description, String directory) {
 		this.name = name
 		this.description = description
 		this.directory = directory
 	}
 	
 	def getName() {
-		return name
+		return this.name
 	}
 	
 	def getDescription() {
-		return description
+		return this.description
 	}
 	
 	def getDirectory() {
-		return directory
+		return this.directory
 	}
 			
 }

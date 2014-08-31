@@ -23,8 +23,8 @@ public class OutletConfiguration {
   /**
    * Create a new outlet entity.
    */
-  public OutletConfiguration(final String outletName, final String description, final String directory) {
-    this.name = this.name;
+  public OutletConfiguration(final String name, final String description, final String directory) {
+    this.name = name;
     this.description = description;
     this.directory = directory;
   }

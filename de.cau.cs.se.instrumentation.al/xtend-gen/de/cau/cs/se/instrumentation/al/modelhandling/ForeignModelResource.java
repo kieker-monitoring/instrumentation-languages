@@ -275,9 +275,7 @@ public class ForeignModelResource extends ResourceImpl {
    */
   private void determineContainerHierarchy(final Resource source) {
     final Iterator<EObject> iterator = source.getAllContents();
-    boolean _hasNext = iterator.hasNext();
-    boolean _while = _hasNext;
-    while (_while) {
+    while (iterator.hasNext()) {
       {
         final EObject object = iterator.next();
         EClass _eClass = object.eClass();
@@ -307,8 +305,6 @@ public class ForeignModelResource extends ResourceImpl {
           }
         }
       }
-      boolean _hasNext_1 = iterator.hasNext();
-      _while = _hasNext_1;
     }
   }
   
@@ -635,7 +631,7 @@ public class ForeignModelResource extends ResourceImpl {
     } else {
       System.out.println("Double container declaration");
     }
-    return _xifexpression;
+    return Boolean.valueOf(_xifexpression);
   }
   
   /**
@@ -646,9 +642,7 @@ public class ForeignModelResource extends ResourceImpl {
    */
   private void determineInterfaces(final Resource source) {
     final Iterator<EObject> iterator = source.getAllContents();
-    boolean _hasNext = iterator.hasNext();
-    boolean _while = _hasNext;
-    while (_while) {
+    while (iterator.hasNext()) {
       {
         final EObject object = iterator.next();
         EClass _eClass = object.eClass();
@@ -671,8 +665,6 @@ public class ForeignModelResource extends ResourceImpl {
           }
         }
       }
-      boolean _hasNext_1 = iterator.hasNext();
-      _while = _hasNext_1;
     }
   }
 }
