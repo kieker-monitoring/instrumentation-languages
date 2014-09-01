@@ -32,12 +32,14 @@ public class PropertyEvaluation {
    * 		a complete list of all properties in a record
    */
   protected static Collection<Property> _collectAllDataProperties(final RecordType type) {
-    final ArrayList<Property> list = new ArrayList<Property>();
+    ArrayList<Property> _arrayList = new ArrayList<Property>();
+    final ArrayList<Property> list = _arrayList;
     Collection<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(type);
-    final Function1<Property, Boolean> _function = new Function1<Property, Boolean>() {
+    final Function1<Property,Boolean> _function = new Function1<Property,Boolean>() {
       public Boolean apply(final Property property) {
         Property _referTo = property.getReferTo();
-        return Boolean.valueOf(Objects.equal(_referTo, null));
+        boolean _equals = Objects.equal(_referTo, null);
+        return Boolean.valueOf(_equals);
       }
     };
     Iterable<Property> _filter = IterableExtensions.<Property>filter(_collectAllProperties, _function);
@@ -55,12 +57,14 @@ public class PropertyEvaluation {
    * 		a complete list of all properties in a record
    */
   protected static Collection<Property> _collectAllDataProperties(final PartialRecordType type) {
-    final ArrayList<Property> list = new ArrayList<Property>();
+    ArrayList<Property> _arrayList = new ArrayList<Property>();
+    final ArrayList<Property> list = _arrayList;
     Collection<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(type);
-    final Function1<Property, Boolean> _function = new Function1<Property, Boolean>() {
+    final Function1<Property,Boolean> _function = new Function1<Property,Boolean>() {
       public Boolean apply(final Property property) {
         Property _referTo = property.getReferTo();
-        return Boolean.valueOf(Objects.equal(_referTo, null));
+        boolean _equals = Objects.equal(_referTo, null);
+        return Boolean.valueOf(_equals);
       }
     };
     Iterable<Property> _filter = IterableExtensions.<Property>filter(_collectAllProperties, _function);
@@ -83,9 +87,11 @@ public class PropertyEvaluation {
     boolean _notEquals = (!Objects.equal(_parent, null));
     if (_notEquals) {
       RecordType _parent_1 = type.getParent();
-      _xifexpression = PropertyEvaluation.collectAllProperties(_parent_1);
+      Collection<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(_parent_1);
+      _xifexpression = _collectAllProperties;
     } else {
-      _xifexpression = new ArrayList<Property>();
+      ArrayList<Property> _arrayList = new ArrayList<Property>();
+      _xifexpression = _arrayList;
     }
     final Collection<Property> result = _xifexpression;
     EList<PartialRecordType> _parents = type.getParents();
@@ -114,7 +120,8 @@ public class PropertyEvaluation {
    * 		a complete list of all properties in a record
    */
   protected static Collection<Property> _collectAllProperties(final PartialRecordType type) {
-    final Collection<Property> result = new ArrayList<Property>();
+    ArrayList<Property> _arrayList = new ArrayList<Property>();
+    final Collection<Property> result = _arrayList;
     EList<PartialRecordType> _parents = type.getParents();
     boolean _notEquals = (!Objects.equal(_parents, null));
     if (_notEquals) {
@@ -144,7 +151,8 @@ public class PropertyEvaluation {
     EList<PartialRecordType> _parents = type.getParents();
     boolean _notEquals = (!Objects.equal(_parents, null));
     if (_notEquals) {
-      final Collection<Property> result = new ArrayList<Property>();
+      ArrayList<Property> _arrayList = new ArrayList<Property>();
+      final Collection<Property> result = _arrayList;
       EList<PartialRecordType> _parents_1 = type.getParents();
       final Procedure1<PartialRecordType> _function = new Procedure1<PartialRecordType>() {
         public void apply(final PartialRecordType iface) {
@@ -155,7 +163,8 @@ public class PropertyEvaluation {
       IterableExtensions.<PartialRecordType>forEach(_parents_1, _function);
       return result;
     } else {
-      return new ArrayList<Property>();
+      ArrayList<Property> _arrayList_1 = new ArrayList<Property>();
+      return _arrayList_1;
     }
   }
   
@@ -169,7 +178,8 @@ public class PropertyEvaluation {
    * 		a complete list of all properties in a record
    */
   protected static Collection<Property> _collectAllTemplateProperties(final PartialRecordType type) {
-    final EList<Property> result = new BasicEList<Property>();
+    BasicEList<Property> _basicEList = new BasicEList<Property>();
+    final EList<Property> result = _basicEList;
     EList<PartialRecordType> _parents = type.getParents();
     boolean _notEquals = (!Objects.equal(_parents, null));
     if (_notEquals) {
@@ -228,7 +238,7 @@ public class PropertyEvaluation {
         EClassifier _class__1 = _findType_1.getClass_();
         String _name_3 = _class__1.getName();
         boolean _equals_1 = _name_2.equals(_name_3);
-        _and = _equals_1;
+        _and = (_equals && _equals_1);
       }
       if (_and) {
         return true;
@@ -265,13 +275,15 @@ public class PropertyEvaluation {
    * 		the computed value
    */
   public static int calculateSize(final Iterable<Property> list) {
-    final Function2<Integer, Property, Integer> _function = new Function2<Integer, Property, Integer>() {
+    final Function2<Integer,Property,Integer> _function = new Function2<Integer,Property,Integer>() {
       public Integer apply(final Integer result, final Property property) {
         int _size = PropertyEvaluation.getSize(property);
-        return Integer.valueOf(((result).intValue() + _size));
+        int _plus = ((result).intValue() + _size);
+        return Integer.valueOf(_plus);
       }
     };
-    return (int) IterableExtensions.<Property, Integer>fold(list, Integer.valueOf(0), _function);
+    Integer _fold = IterableExtensions.<Property, Integer>fold(list, Integer.valueOf(0), _function);
+    return (_fold).intValue();
   }
   
   /**
@@ -289,57 +301,58 @@ public class PropertyEvaluation {
       Classifier _findType = PropertyEvaluation.findType(property);
       EClassifier _class_ = _findType.getClass_();
       String _name = _class_.getName();
+      final String _switchValue = _name;
       boolean _matched = false;
       if (!_matched) {
-        if (Objects.equal(_name, "string")) {
+        if (Objects.equal(_switchValue,"string")) {
           _matched=true;
           _switchResult = 4;
         }
       }
       if (!_matched) {
-        if (Objects.equal(_name, "byte")) {
+        if (Objects.equal(_switchValue,"byte")) {
           _matched=true;
           _switchResult = 1;
         }
       }
       if (!_matched) {
-        if (Objects.equal(_name, "short")) {
+        if (Objects.equal(_switchValue,"short")) {
           _matched=true;
           _switchResult = 2;
         }
       }
       if (!_matched) {
-        if (Objects.equal(_name, "int")) {
+        if (Objects.equal(_switchValue,"int")) {
           _matched=true;
           _switchResult = 4;
         }
       }
       if (!_matched) {
-        if (Objects.equal(_name, "long")) {
+        if (Objects.equal(_switchValue,"long")) {
           _matched=true;
           _switchResult = 8;
         }
       }
       if (!_matched) {
-        if (Objects.equal(_name, "float")) {
+        if (Objects.equal(_switchValue,"float")) {
           _matched=true;
           _switchResult = 4;
         }
       }
       if (!_matched) {
-        if (Objects.equal(_name, "double")) {
+        if (Objects.equal(_switchValue,"double")) {
           _matched=true;
           _switchResult = 8;
         }
       }
       if (!_matched) {
-        if (Objects.equal(_name, "char")) {
+        if (Objects.equal(_switchValue,"char")) {
           _matched=true;
           _switchResult = 2;
         }
       }
       if (!_matched) {
-        if (Objects.equal(_name, "boolean")) {
+        if (Objects.equal(_switchValue,"boolean")) {
           _matched=true;
           _switchResult = 1;
         }
@@ -349,7 +362,8 @@ public class PropertyEvaluation {
         EClassifier _class__1 = _findType_1.getClass_();
         String _name_1 = _class__1.getName();
         String _plus = (_name_1 + "is not a valid type name");
-        throw new InternalErrorException(_plus);
+        InternalErrorException _internalErrorException = new InternalErrorException(_plus);
+        throw _internalErrorException;
       }
       return _switchResult;
     } catch (Throwable _e) {

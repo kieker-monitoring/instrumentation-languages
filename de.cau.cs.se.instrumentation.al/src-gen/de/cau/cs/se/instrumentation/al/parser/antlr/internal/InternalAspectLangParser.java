@@ -47,8 +47,8 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
     public static final int T__52=52;
     public static final int T__18=18;
     public static final int T__53=53;
-    public static final int T__54=54;
     public static final int T__17=17;
+    public static final int T__54=54;
     public static final int RULE_NUMBER=11;
     public static final int RULE_INT=7;
     public static final int RULE_COMMENT_ANNOTATION=8;

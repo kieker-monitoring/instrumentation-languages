@@ -42,11 +42,11 @@ import kieker.common.logging.LogFactory;
 
 /**
  * Parser class.
- *
+ * 
  * From http://davehofmann.de/blog/?tag=standalone
- *
+ * 
  * @author Reiner Jung
- *
+ * 
  */
 public class IRLParser {
 
@@ -75,7 +75,7 @@ public class IRLParser {
 
 	/**
 	 * Construct an IRL parser.
-	 *
+	 * 
 	 * @param platformUri
 	 *            the platform root
 	 * @param projectSourcePath
@@ -169,7 +169,7 @@ public class IRLParser {
 
 	/**
 	 * Collect all resources.
-	 *
+	 * 
 	 * @param pathName
 	 *            project relative path
 	 */
@@ -193,7 +193,7 @@ public class IRLParser {
 
 	/**
 	 * Walk over the directory tree and compile all files.
-	 *
+	 * 
 	 * @param pathName
 	 *            relative path name in source folder
 	 */
@@ -219,7 +219,7 @@ public class IRLParser {
 	/**
 	 * Add a resource for the present project and present project source path to
 	 * the resource set and return that resource.
-	 *
+	 * 
 	 * @param pathName
 	 *            relative path name to the file to be added to the resource set
 	 * @return the resource added to the resource set
@@ -231,7 +231,7 @@ public class IRLParser {
 
 	/**
 	 * Run the generator for one input file.
-	 *
+	 * 
 	 * @param pathName
 	 *            relative path of the input file
 	 * @param author
