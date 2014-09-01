@@ -1,6 +1,7 @@
 package de.cau.cs.se.instrumentation.rl.generator.java.record;
 
 import com.google.common.base.Objects;
+import com.google.common.collect.Lists;
 import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator;
 import de.cau.cs.se.instrumentation.rl.generator.InternalErrorException;
 import de.cau.cs.se.instrumentation.rl.generator.java.RlType2JavaTypeExtensions;
@@ -32,7 +33,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.ExclusiveRange;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -1368,11 +1368,13 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   private String createCodeToDetermineArraySize(final int count) {
     String result = "";
     int i = 0;
-    while ((i < count)) {
+    boolean _while = (i < count);
+    while (_while) {
       {
         result = (result + "[0]");
         i = (i + 1);
       }
+      _while = (i < count);
     }
     return result;
   }
@@ -1849,7 +1851,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   private String protectKeywords(final String name) {
     String _xblockexpression = null;
     {
-      final List<String> keywords = Collections.<String>unmodifiableList(CollectionLiterals.<String>newArrayList("interface", "class", "private", "protected", "public", "return", "final", "volatile", "if", "else", "for", "foreach"));
+      final List<String> keywords = Collections.<String>unmodifiableList(Lists.<String>newArrayList("interface", "class", "private", "protected", "public", "return", "final", "volatile", "if", "else", "for", "foreach"));
       String _xifexpression = null;
       final Function1<String, Boolean> _function = new Function1<String, Boolean>() {
         public Boolean apply(final String it) {

@@ -25,11 +25,11 @@ import de.cau.cs.se.instrumentation.rl.ouput.config.OutletConfiguration;
  * Configuration and registration of IRL generators.
  * The class also contains functions for derived values based on the
  * configuration values.
- * 
+ *
  * @author Reiner Jung
- * 
+ *
  * @since 1.0
- * 
+ *
  */
 public class GeneratorConfiguration {
 	/** list of all generators to support RecordType */
@@ -38,6 +38,7 @@ public class GeneratorConfiguration {
 		de.cau.cs.se.instrumentation.rl.generator.c.header.RecordTypeGenerator.class,
 		de.cau.cs.se.instrumentation.rl.generator.java.record.RecordTypeGenerator.class,
 		de.cau.cs.se.instrumentation.rl.generator.java.junit.RecordTypeGenerator.class,
+		de.cau.cs.se.instrumentation.rl.generator.java.factory.RecordFactoryTypeGenerator.class,
 		de.cau.cs.se.instrumentation.rl.generator.perl.RecordTypeGenerator.class
 	};
 
