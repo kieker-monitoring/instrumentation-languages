@@ -44,9 +44,27 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
 @SuppressWarnings("all")
 public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   /**
+   * Return the unique id.
+   */
+  public String getId() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("java");
+    return _builder.toString();
+  }
+  
+  /**
+   * Return the preferences activation description.
+   */
+  public String getDescription() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("Java record generator");
+    return _builder.toString();
+  }
+  
+  /**
    * Define language/generation type, which is also used to define the outlet.
    */
-  public String outletType() {
+  public String getOutletType() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("java");
     return _builder.toString();
@@ -55,7 +73,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   /**
    * Compute the directory name for a record type.
    */
-  public CharSequence directoryName(final Type type) {
+  public CharSequence getDirectoryName(final Type type) {
     StringConcatenation _builder = new StringConcatenation();
     EObject _eContainer = type.eContainer();
     String _name = ((Model) _eContainer).getName();
@@ -67,9 +85,9 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   /**
    * Compute file name.
    */
-  public String fileName(final Type type) {
+  public String getFileName(final Type type) {
     StringConcatenation _builder = new StringConcatenation();
-    CharSequence _directoryName = this.directoryName(type);
+    CharSequence _directoryName = this.getDirectoryName(type);
     _builder.append(_directoryName, "");
     _builder.append(File.separator, "");
     String _name = type.getName();

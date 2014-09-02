@@ -20,11 +20,21 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Literal
 
 class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	
-	override directoryName(Type type) '''«(type.eContainer as Model).name.createTestPackageName.replace('.',File::separator)»'''
-
-	override fileName(Type type) '''«type.directoryName»«File::separator»TestGenerated«type.name».java'''
+	/**
+	 * Return the unique id.
+	 */
+	override getId() '''java.junit'''
 	
-	override outletType() '''junit'''
+	/**
+	 * Return the preferences activation description.
+	 */
+	override getDescription() '''JUnit tests for records'''
+	
+	override getDirectoryName(Type type) '''«(type.eContainer as Model).name.createTestPackageName.replace('.',File::separator)»'''
+
+	override getFileName(Type type) '''«type.getDirectoryName»«File::separator»TestGenerated«type.name».java'''
+	
+	override getOutletType() '''junit'''
 	
 	override createContent(RecordType type, String author, String version) {
 		if (type.abstract)

@@ -33,16 +33,14 @@ class RecordLangGenerator implements IGenerator {
 
 			val version = TargetsPreferences.getVersionID()
 			val author = TargetsPreferences.getAuthorName()
-											
-			// System.out.println("Generator setup " + version + " " + author)
-											
+																						
 			for (Class<?> generator : GeneratorConfiguration.recordTypeGenerators) {
 				val cg = generator.getConstructor().newInstance() as AbstractRecordTypeGenerator
 				if (TargetsPreferences.isGeneratorActive(cg.outletType)) {
 					resource.allContents.filter(typeof(RecordType)).forEach[type | 
 						val content = cg.createContent(type,author,version)
 						if (content != null)
-							fsa.generateFile(cg.fileName(type),	cg.outletType, content)
+							fsa.generateFile(cg.getFileName(type),	cg.outletType, content)
 					]
 				}
 			}
@@ -53,7 +51,7 @@ class RecordLangGenerator implements IGenerator {
 					resource.allContents.filter(typeof(PartialRecordType)).forEach[type | 
 						val content = cg.createContent(type,author,version)
 						if (content != null)
-							fsa.generateFile(cg.fileName(type),	cg.outletType, content)
+							fsa.generateFile(cg.getFileName(type),	cg.outletType, content)
 					]
 				}
 			}

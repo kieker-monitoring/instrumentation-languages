@@ -14,6 +14,15 @@ abstract class AbstractRecordTypeGenerator extends AbstractTypeGenerator {
 	 * @params version
 	 * 		generic kieker version for the record
 	 */
-	def abstract CharSequence createContent(RecordType type, String author, String version);
-			
+	def abstract CharSequence createContent(RecordType type, String author, String version)
+	
+	/**
+	 * Return the unique id of the generator.
+	 */
+	def abstract String getId()
+	
+	/**
+	 * Return the description for the preference dialog of the generator.
+	 */	
+	def abstract String getDescription()
 }

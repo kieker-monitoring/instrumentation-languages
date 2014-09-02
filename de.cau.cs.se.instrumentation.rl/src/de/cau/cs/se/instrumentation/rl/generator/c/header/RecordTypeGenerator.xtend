@@ -11,10 +11,20 @@ import static extension de.cau.cs.se.instrumentation.rl.generator.c.CommonCFunct
 class RecordTypeGenerator extends de.cau.cs.se.instrumentation.rl.generator.c.main.RecordTypeGenerator {
 
 	/**
+	 * Return the unique id.
+	 */
+	override getId() '''c.header'''
+	
+	/**
+	 * Return the preferences activation description.
+	 */
+	override getDescription() '''C header file generator'''
+
+	/**
 	 * File name for c-header files.
 	 */	
-	override fileName(Type type) '''«type.directoryName»«File::separator»«type.name.cstyleName».h'''
-	
+	override getFileName(Type type) '''«type.getDirectoryName»«File::separator»«type.name.cstyleName».h'''
+		
 	/**
 	 * Primary code generation template.
 	 * 
@@ -81,6 +91,6 @@ class RecordTypeGenerator extends de.cau.cs.se.instrumentation.rl.generator.c.ma
 		 */
 		int «type.packageName»_«type.name.cstyleName»_serialize(char *buffer, const int id, const int offset, const «type.packageName»_«type.name.cstyleName» value);
 	'''
-	
+		
 
 }

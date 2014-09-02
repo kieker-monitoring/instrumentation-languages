@@ -15,17 +15,17 @@ class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerator {
 	/**
 	 * Define language/generation type, which is also used to define the outlet.
 	 */
-	override outletType() '''java'''
+	override getOutletType() '''java'''
 	
 	/**
 	 * Compute the directory name for a record type.
 	 */
-	override directoryName(Type type) '''«(type.eContainer as Model).name.replace('.',File::separator)»'''
+	override getDirectoryName(Type type) '''«(type.eContainer as Model).name.replace('.',File::separator)»'''
 		
 	/**
 	 * Compute file name.
 	 */
-	override fileName(Type type) '''«type.directoryName»«File::separator»«type.name».java'''
+	override getFileName(Type type) '''«type.getDirectoryName»«File::separator»«type.name».java'''
 	
 	override createContent(PartialRecordType type, String author, String version) {
 		val definedAuthor = if (type.author == null) author else type.author

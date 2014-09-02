@@ -12,19 +12,29 @@ import static extension de.cau.cs.se.instrumentation.rl.generator.java.RlType2Ja
 class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
 
 	/**
+	 * Return the unique id.
+	 */
+	override getId() '''java.factory'''
+	
+	/**
+	 * Return the preferences activation description.
+	 */
+	override getDescription() '''Java factory'''
+
+	/**
 	 * Define language/generation type, which is also used to define the outlet.
 	 */
-	override outletType() '''java'''
+	override getOutletType() '''java'''
 
 	/**
 	 * Compute the directory name for a record type.
 	 */
-	override directoryName(Type type) '''«(type.eContainer as Model).name.replace('.', File::separator)»'''
+	override getDirectoryName(Type type) '''«(type.eContainer as Model).name.replace('.', File::separator)»'''
 
 	/**
 	 * Compute file name.
 	 */
-	override fileName(Type type) '''«type.directoryName»«File::separator»«type.name»Factory.java'''
+	override getFileName(Type type) '''«type.getDirectoryName»«File::separator»«type.name»Factory.java'''
 
 	/**
 	 * Primary code generation template.

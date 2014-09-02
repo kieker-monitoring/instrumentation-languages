@@ -14,19 +14,29 @@ import static extension de.cau.cs.se.instrumentation.rl.generator.c.CommonCFunct
 class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	
 	/**
+	 * Return the unique id.
+	 */
+	override getId() '''c.main'''
+	
+	/**
+	 * Return the preferences activation description.
+	 */
+	override getDescription() '''C code generator'''
+	
+	/**
 	 * Compute the directory name for a record type.
 	 */
-	override directoryName(Type type) '''«(type.eContainer as Model).name.replace('.',File::separator)»'''
+	override getDirectoryName(Type type) '''«(type.eContainer as Model).name.replace('.',File::separator)»'''
 
 	/**
 	 * compute the filename of a c file. 
  	*/
-	override fileName(Type type) '''«type.directoryName»«File::separator»«type.name.cstyleName».c'''	
+	override getFileName(Type type) '''«type.getDirectoryName»«File::separator»«type.name.cstyleName».c'''	
 	
 	/**
 	 * Return the language type name.
 	 */
-	override outletType() '''c'''
+	override getOutletType() '''c'''
 			
 	/**
 	 * Primary code generation template.
@@ -57,7 +67,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		 ***************************************************************************/
 		#include <stdlib.h>
 		#include <kieker.h>
-		#include "«type.directoryName»/«type.packageName»_«type.name.cstyleName».h"
+		#include "«type.getDirectoryName»/«type.packageName»_«type.name.cstyleName».h"
 
 		/**
 		 * Author: «author»

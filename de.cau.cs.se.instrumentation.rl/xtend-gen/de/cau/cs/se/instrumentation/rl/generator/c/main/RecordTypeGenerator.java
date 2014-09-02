@@ -20,9 +20,27 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 @SuppressWarnings("all")
 public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   /**
+   * Return the unique id.
+   */
+  public String getId() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("c.main");
+    return _builder.toString();
+  }
+  
+  /**
+   * Return the preferences activation description.
+   */
+  public String getDescription() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("C code generator");
+    return _builder.toString();
+  }
+  
+  /**
    * Compute the directory name for a record type.
    */
-  public CharSequence directoryName(final Type type) {
+  public CharSequence getDirectoryName(final Type type) {
     StringConcatenation _builder = new StringConcatenation();
     EObject _eContainer = type.eContainer();
     String _name = ((Model) _eContainer).getName();
@@ -34,9 +52,9 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   /**
    * compute the filename of a c file.
    */
-  public String fileName(final Type type) {
+  public String getFileName(final Type type) {
     StringConcatenation _builder = new StringConcatenation();
-    CharSequence _directoryName = this.directoryName(type);
+    CharSequence _directoryName = this.getDirectoryName(type);
     _builder.append(_directoryName, "");
     _builder.append(File.separator, "");
     String _name = type.getName();
@@ -49,7 +67,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   /**
    * Return the language type name.
    */
-  public String outletType() {
+  public String getOutletType() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("c");
     return _builder.toString();
@@ -116,7 +134,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     _builder.append("#include <kieker.h>");
     _builder.newLine();
     _builder.append("#include \"");
-    CharSequence _directoryName = this.directoryName(type);
+    CharSequence _directoryName = this.getDirectoryName(type);
     _builder.append(_directoryName, "");
     _builder.append("/");
     CharSequence _packageName = CommonCFunctionsExtension.packageName(type);

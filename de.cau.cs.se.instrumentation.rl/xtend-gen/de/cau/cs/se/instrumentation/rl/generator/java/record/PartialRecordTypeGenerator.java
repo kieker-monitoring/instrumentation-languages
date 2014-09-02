@@ -24,7 +24,7 @@ public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerat
   /**
    * Define language/generation type, which is also used to define the outlet.
    */
-  public String outletType() {
+  public String getOutletType() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("java");
     return _builder.toString();
@@ -33,7 +33,7 @@ public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerat
   /**
    * Compute the directory name for a record type.
    */
-  public CharSequence directoryName(final Type type) {
+  public CharSequence getDirectoryName(final Type type) {
     StringConcatenation _builder = new StringConcatenation();
     EObject _eContainer = type.eContainer();
     String _name = ((Model) _eContainer).getName();
@@ -45,9 +45,9 @@ public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerat
   /**
    * Compute file name.
    */
-  public String fileName(final Type type) {
+  public String getFileName(final Type type) {
     StringConcatenation _builder = new StringConcatenation();
-    CharSequence _directoryName = this.directoryName(type);
+    CharSequence _directoryName = this.getDirectoryName(type);
     _builder.append(_directoryName, "");
     _builder.append(File.separator, "");
     String _name = type.getName();

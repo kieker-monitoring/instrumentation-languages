@@ -15,11 +15,29 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 @SuppressWarnings("all")
 public class RecordTypeGenerator extends de.cau.cs.se.instrumentation.rl.generator.c.main.RecordTypeGenerator {
   /**
+   * Return the unique id.
+   */
+  public String getId() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("c.header");
+    return _builder.toString();
+  }
+  
+  /**
+   * Return the preferences activation description.
+   */
+  public String getDescription() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("C header file generator");
+    return _builder.toString();
+  }
+  
+  /**
    * File name for c-header files.
    */
-  public String fileName(final Type type) {
+  public String getFileName(final Type type) {
     StringConcatenation _builder = new StringConcatenation();
-    CharSequence _directoryName = this.directoryName(type);
+    CharSequence _directoryName = this.getDirectoryName(type);
     _builder.append(_directoryName, "");
     _builder.append(File.separator, "");
     String _name = type.getName();

@@ -15,10 +15,13 @@
  ***************************************************************************/
 package de.cau.cs.se.instrumentation.rl.preferences;
 
+import java.lang.reflect.InvocationTargetException;
+
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.core.runtime.preferences.DefaultScope;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 
+import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator;
 import de.cau.cs.se.instrumentation.rl.generator.GeneratorConfiguration;
 
 /**
@@ -41,9 +44,25 @@ public class TargetsPreferenceInitializer extends AbstractPreferenceInitializer 
 	 */
 	@Override
 	public void initializeDefaultPreferences() {
-		for (final String language : GeneratorConfiguration.getPresentGenerators()) {
-			TargetsPreferenceInitializer.getPreferenceStore().putBoolean(TargetsPreferences.GENERATOR_ACTIVE + language,
-					TargetsPreferences.DEFAULT_GENERATOR_INACTIVE);
+		for (final Class<?> generatorClass : GeneratorConfiguration.recordTypeGenerators) {
+			try {
+				final AbstractRecordTypeGenerator generator = (AbstractRecordTypeGenerator) generatorClass.getConstructor().newInstance();
+				TargetsPreferenceInitializer.getPreferenceStore().
+						putBoolean(TargetsPreferences.GENERATOR_ACTIVE + generator.getId(),
+								TargetsPreferences.DEFAULT_GENERATOR_INACTIVE);
+			} catch (final IllegalArgumentException e) {
+				e.printStackTrace();
+			} catch (final SecurityException e) {
+				e.printStackTrace();
+			} catch (final InstantiationException e) {
+				e.printStackTrace();
+			} catch (final IllegalAccessException e) {
+				e.printStackTrace();
+			} catch (final InvocationTargetException e) {
+				e.printStackTrace();
+			} catch (final NoSuchMethodException e) {
+				e.printStackTrace();
+			}
 		}
 
 		TargetsPreferenceInitializer.getPreferenceStore().put(TargetsPreferences.AUTHOR_NAME, TargetsPreferences.DEFAULT_AUTHOR);

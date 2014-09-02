@@ -52,7 +52,7 @@ public class RecordLangGenerator implements IGenerator {
             Constructor<? extends Object> _constructor = generator.getConstructor();
             Object _newInstance = _constructor.newInstance();
             final AbstractRecordTypeGenerator cg = ((AbstractRecordTypeGenerator) _newInstance);
-            String _outletType = cg.outletType();
+            String _outletType = cg.getOutletType();
             boolean _isGeneratorActive = TargetsPreferences.isGeneratorActive(_outletType);
             if (_isGeneratorActive) {
               TreeIterator<EObject> _allContents = resource.getAllContents();
@@ -62,8 +62,8 @@ public class RecordLangGenerator implements IGenerator {
                   final CharSequence content = cg.createContent(type, author, version);
                   boolean _notEquals = (!Objects.equal(content, null));
                   if (_notEquals) {
-                    String _fileName = cg.fileName(type);
-                    String _outletType = cg.outletType();
+                    String _fileName = cg.getFileName(type);
+                    String _outletType = cg.getOutletType();
                     fsa.generateFile(_fileName, _outletType, content);
                   }
                 }
@@ -77,7 +77,7 @@ public class RecordLangGenerator implements IGenerator {
             Constructor<? extends Object> _constructor = generator_1.getConstructor();
             Object _newInstance = _constructor.newInstance();
             final AbstractPartialRecordTypeGenerator cg = ((AbstractPartialRecordTypeGenerator) _newInstance);
-            String _outletType = cg.outletType();
+            String _outletType = cg.getOutletType();
             boolean _isGeneratorActive = TargetsPreferences.isGeneratorActive(_outletType);
             if (_isGeneratorActive) {
               TreeIterator<EObject> _allContents = resource.getAllContents();
@@ -87,8 +87,8 @@ public class RecordLangGenerator implements IGenerator {
                   final CharSequence content = cg.createContent(type, author, version);
                   boolean _notEquals = (!Objects.equal(content, null));
                   if (_notEquals) {
-                    String _fileName = cg.fileName(type);
-                    String _outletType = cg.outletType();
+                    String _fileName = cg.getFileName(type);
+                    String _outletType = cg.getOutletType();
                     fsa.generateFile(_fileName, _outletType, content);
                   }
                 }

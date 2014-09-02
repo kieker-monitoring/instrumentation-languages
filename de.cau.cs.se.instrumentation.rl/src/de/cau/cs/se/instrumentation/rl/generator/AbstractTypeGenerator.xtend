@@ -10,17 +10,17 @@ abstract class AbstractTypeGenerator {
 	 * @param type
 	 * 		the type model
 	 */
-	def abstract CharSequence directoryName(Type type)
+	def abstract CharSequence getDirectoryName(Type type)
 	
 	/**
 	 * Return the complete filename of the file type this generator produces in correct
 	 * language format for the given record.
 	 */
-	def abstract String fileName(Type type)
+	def abstract String getFileName(Type type)
 		
 	/**
 	 * Returns the outlet type for the generator.
 	 */
-	def abstract String outletType()
+	def abstract String getOutletType()
 		
 }

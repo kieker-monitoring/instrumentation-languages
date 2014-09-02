@@ -31,7 +31,25 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
 public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
-  public CharSequence directoryName(final Type type) {
+  /**
+   * Return the unique id.
+   */
+  public String getId() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("java.junit");
+    return _builder.toString();
+  }
+  
+  /**
+   * Return the preferences activation description.
+   */
+  public String getDescription() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("JUnit tests for records");
+    return _builder.toString();
+  }
+  
+  public CharSequence getDirectoryName(final Type type) {
     StringConcatenation _builder = new StringConcatenation();
     EObject _eContainer = type.eContainer();
     String _name = ((Model) _eContainer).getName();
@@ -41,9 +59,9 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     return _builder;
   }
   
-  public String fileName(final Type type) {
+  public String getFileName(final Type type) {
     StringConcatenation _builder = new StringConcatenation();
-    CharSequence _directoryName = this.directoryName(type);
+    CharSequence _directoryName = this.getDirectoryName(type);
     _builder.append(_directoryName, "");
     _builder.append(File.separator, "");
     _builder.append("TestGenerated");
@@ -53,7 +71,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     return _builder.toString();
   }
   
-  public String outletType() {
+  public String getOutletType() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("junit");
     return _builder.toString();

@@ -10,16 +10,16 @@ public abstract class AbstractTypeGenerator {
    * @param type
    * 		the type model
    */
-  public abstract CharSequence directoryName(final Type type);
+  public abstract CharSequence getDirectoryName(final Type type);
   
   /**
    * Return the complete filename of the file type this generator produces in correct
    * language format for the given record.
    */
-  public abstract String fileName(final Type type);
+  public abstract String getFileName(final Type type);
   
   /**
    * Returns the outlet type for the generator.
    */
-  public abstract String outletType();
+  public abstract String getOutletType();
 }

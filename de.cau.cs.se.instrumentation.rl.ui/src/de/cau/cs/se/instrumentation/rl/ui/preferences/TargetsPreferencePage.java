@@ -15,6 +15,8 @@
  ***************************************************************************/
 package de.cau.cs.se.instrumentation.rl.ui.preferences;
 
+import java.lang.reflect.InvocationTargetException;
+
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
@@ -24,6 +26,7 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
 
+import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator;
 import de.cau.cs.se.instrumentation.rl.generator.GeneratorConfiguration;
 import de.cau.cs.se.instrumentation.rl.preferences.TargetsPreferences;
 
@@ -50,8 +53,25 @@ public class TargetsPreferencePage extends FieldEditorPreferencePage implements 
 
 	@Override
 	public void createFieldEditors() {
-		for (final String language : GeneratorConfiguration.getPresentGenerators()) {
-			this.addField(new BooleanFieldEditor(TargetsPreferences.GENERATOR_ACTIVE + language, language, this.getFieldEditorParent()));
+		for (final Class<?> generatorClass : GeneratorConfiguration.recordTypeGenerators) {
+			try {
+				final AbstractRecordTypeGenerator generator = (AbstractRecordTypeGenerator) generatorClass.getConstructor().newInstance();
+
+				this.addField(new BooleanFieldEditor(TargetsPreferences.GENERATOR_ACTIVE + generator.getId(),
+						generator.getDescription(), this.getFieldEditorParent()));
+			} catch (final IllegalArgumentException e) {
+				e.printStackTrace();
+			} catch (final SecurityException e) {
+				e.printStackTrace();
+			} catch (final InstantiationException e) {
+				e.printStackTrace();
+			} catch (final IllegalAccessException e) {
+				e.printStackTrace();
+			} catch (final InvocationTargetException e) {
+				e.printStackTrace();
+			} catch (final NoSuchMethodException e) {
+				e.printStackTrace();
+			}
 		}
 
 		// SpacerFieldEditor spacer = new SpacerFieldEditor(getFieldEditorParent());
