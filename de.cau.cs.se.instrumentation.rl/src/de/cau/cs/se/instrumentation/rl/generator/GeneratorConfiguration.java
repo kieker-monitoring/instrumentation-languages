@@ -25,11 +25,11 @@ import de.cau.cs.se.instrumentation.rl.ouput.config.OutletConfiguration;
  * Configuration and registration of IRL generators.
  * The class also contains functions for derived values based on the
  * configuration values.
- *
+ * 
  * @author Reiner Jung
- *
+ * 
  * @since 1.0
- *
+ * 
  */
 public class GeneratorConfiguration {
 	/** list of all generators to support RecordType */
