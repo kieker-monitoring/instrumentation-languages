@@ -4,6 +4,12 @@ import de.cau.cs.se.instrumentation.rl.generator.AbstractTypeGenerator
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
 
 abstract class AbstractRecordTypeGenerator extends AbstractTypeGenerator {
+		
+	/**
+	 * Return the description for the preference dialog of the generator.
+	 */	
+	def abstract String getDescription()
+	
 	/**
 	 * Primary code generation template.
 	 * 
@@ -16,13 +22,4 @@ abstract class AbstractRecordTypeGenerator extends AbstractTypeGenerator {
 	 */
 	def abstract CharSequence createContent(RecordType type, String author, String version)
 	
-	/**
-	 * Return the unique id of the generator.
-	 */
-	def abstract String getId()
-	
-	/**
-	 * Return the description for the preference dialog of the generator.
-	 */	
-	def abstract String getDescription()
 }

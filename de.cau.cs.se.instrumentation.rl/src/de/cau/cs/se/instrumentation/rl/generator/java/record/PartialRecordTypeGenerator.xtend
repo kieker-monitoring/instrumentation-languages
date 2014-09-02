@@ -11,7 +11,12 @@ import org.eclipse.emf.common.util.EList
 import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation
 
 class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerator {
-		
+
+	/**
+	 * Return the unique id.
+	 */
+	override getId() '''java'''
+	
 	/**
 	 * Define language/generation type, which is also used to define the outlet.
 	 */

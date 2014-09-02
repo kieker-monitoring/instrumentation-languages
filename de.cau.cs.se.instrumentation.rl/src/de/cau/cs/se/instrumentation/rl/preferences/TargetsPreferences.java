@@ -66,12 +66,12 @@ public final class TargetsPreferences {
 		TargetsPreferences.getPreferenceStore().put(VERSION_ID, version);
 	}
 
-	public static boolean isGeneratorActive(final String language) {
-		return TargetsPreferences.getPreferenceStore().getBoolean(GENERATOR_ACTIVE + language, DEFAULT_GENERATOR_INACTIVE);
+	public static boolean isGeneratorActive(final String id) {
+		return TargetsPreferences.getPreferenceStore().getBoolean(GENERATOR_ACTIVE + id, DEFAULT_GENERATOR_INACTIVE);
 	}
 
-	public static void setGeneratorActive(final String language, final boolean active) {
-		TargetsPreferences.getPreferenceStore().putBoolean(GENERATOR_ACTIVE + language, active);
+	public static void setGeneratorActive(final String id, final boolean active) {
+		TargetsPreferences.getPreferenceStore().putBoolean(GENERATOR_ACTIVE + id, active);
 	}
 
 }

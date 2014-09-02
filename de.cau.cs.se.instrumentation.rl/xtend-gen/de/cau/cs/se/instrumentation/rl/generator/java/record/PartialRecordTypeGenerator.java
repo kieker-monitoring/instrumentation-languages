@@ -22,6 +22,15 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
 @SuppressWarnings("all")
 public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerator {
   /**
+   * Return the unique id.
+   */
+  public String getId() {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("java");
+    return _builder.toString();
+  }
+  
+  /**
    * Define language/generation type, which is also used to define the outlet.
    */
   public String getOutletType() {

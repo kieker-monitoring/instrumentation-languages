@@ -52,8 +52,8 @@ public class RecordLangGenerator implements IGenerator {
             Constructor<? extends Object> _constructor = generator.getConstructor();
             Object _newInstance = _constructor.newInstance();
             final AbstractRecordTypeGenerator cg = ((AbstractRecordTypeGenerator) _newInstance);
-            String _outletType = cg.getOutletType();
-            boolean _isGeneratorActive = TargetsPreferences.isGeneratorActive(_outletType);
+            String _id = cg.getId();
+            boolean _isGeneratorActive = TargetsPreferences.isGeneratorActive(_id);
             if (_isGeneratorActive) {
               TreeIterator<EObject> _allContents = resource.getAllContents();
               Iterator<RecordType> _filter = Iterators.<RecordType>filter(_allContents, RecordType.class);
@@ -77,8 +77,8 @@ public class RecordLangGenerator implements IGenerator {
             Constructor<? extends Object> _constructor = generator_1.getConstructor();
             Object _newInstance = _constructor.newInstance();
             final AbstractPartialRecordTypeGenerator cg = ((AbstractPartialRecordTypeGenerator) _newInstance);
-            String _outletType = cg.getOutletType();
-            boolean _isGeneratorActive = TargetsPreferences.isGeneratorActive(_outletType);
+            String _id = cg.getId();
+            boolean _isGeneratorActive = TargetsPreferences.isGeneratorActive(_id);
             if (_isGeneratorActive) {
               TreeIterator<EObject> _allContents = resource.getAllContents();
               Iterator<PartialRecordType> _filter = Iterators.<PartialRecordType>filter(_allContents, PartialRecordType.class);

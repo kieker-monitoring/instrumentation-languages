@@ -5,6 +5,11 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Type;
 @SuppressWarnings("all")
 public abstract class AbstractTypeGenerator {
   /**
+   * Return the unique id of the generator.
+   */
+  public abstract String getId();
+  
+  /**
    * Compute the directory name for a given type based on the package it belongs to.
    * 
    * @param type
