@@ -16,6 +16,7 @@
 package de.cau.cs.se.instrumentation.rl.cli;
 
 import java.io.File;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
@@ -31,6 +32,7 @@ import com.google.inject.Inject;
 import com.google.inject.Injector;
 
 import de.cau.cs.se.instrumentation.rl.RecordLangStandaloneSetup;
+import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator;
 import de.cau.cs.se.instrumentation.rl.generator.GeneratorConfiguration;
 import de.cau.cs.se.instrumentation.rl.generator.RecordLangGenerator;
 import de.cau.cs.se.instrumentation.rl.ouput.config.RecordLangOutputConfigurationProvider;
@@ -123,12 +125,27 @@ public class IRLParser {
 				TargetsPreferences.setAuthorName(author);
 				TargetsPreferences.setVersionID(version);
 				// setup language activation
-				for (final String language : GeneratorConfiguration.getPresentGenerators()) {
-					TargetsPreferences.setGeneratorActive(language, false);
-					for (final String selected : selectedLanguageTypes) {
-						if (selected.equals(language)) {
-							TargetsPreferences.setGeneratorActive(language, true);
+				for (final Class<?> generatorClass : GeneratorConfiguration.recordTypeGenerators) {
+					try {
+						final AbstractRecordTypeGenerator generator = (AbstractRecordTypeGenerator) generatorClass.getConstructor().newInstance();
+						TargetsPreferences.setGeneratorActive(generator.getId(), false);
+						for (final String selected : selectedLanguageTypes) {
+							if (selected.equals(generator.getId())) {
+								TargetsPreferences.setGeneratorActive(generator.getId(), true);
+							}
 						}
+					} catch (final IllegalArgumentException e) {
+						e.printStackTrace();
+					} catch (final SecurityException e) {
+						e.printStackTrace();
+					} catch (final InstantiationException e) {
+						e.printStackTrace();
+					} catch (final IllegalAccessException e) {
+						e.printStackTrace();
+					} catch (final InvocationTargetException e) {
+						e.printStackTrace();
+					} catch (final NoSuchMethodException e) {
+						e.printStackTrace();
 					}
 				}
 				// setup outlets
