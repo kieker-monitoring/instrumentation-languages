@@ -24,7 +24,7 @@ class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
 	/**
 	 * Define language/generation type, which is also used to define the outlet.
 	 */
-	override getOutletType() '''java'''
+	override getOutletType() '''java-factory'''
 
 	/**
 	 * Compute the directory name for a record type.
@@ -48,27 +48,39 @@ class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
 	 */
 	override createContent(RecordType type, String author, String version) {
 		'''
+			/***************************************************************************
+			 * Copyright 2013 Kieker Project (http://kieker-monitoring.net)
+			 *
+			 * Licensed under the Apache License, Version 2.0 (the "License");
+			 * you may not use this file except in compliance with the License.
+			 * You may obtain a copy of the License at
+			 *
+			 *     http://www.apache.org/licenses/LICENSE-2.0
+			 *
+			 * Unless required by applicable law or agreed to in writing, software
+			 * distributed under the License is distributed on an "AS IS" BASIS,
+			 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+			 * See the License for the specific language governing permissions and
+			 * limitations under the License.
+			 ***************************************************************************/
+
+			package «(type.eContainer as Model).name»;
+			
 			import java.nio.ByteBuffer;
 
+			import kieker.common.record.factory.IRecordFactory;
 			import kieker.common.util.registry.IRegistry;
 			
-«««			public interface IRecordFactory<T> {
-«««				
-«««				T create(ByteBuffer buffer, IRegistry<String> stringRegistry);
-«««				
-«««				T create(Object[] values, IRegistry<String> stringRegistry);
-«««			}
-«««			
 			public class «type.name»Factory implements IRecordFactory<«type.name»> {
 				
 				@Override
-				public T create(ByteBuffer buffer, IRegistry<String> stringRegistry) {
+				public «type.name» create(ByteBuffer buffer, IRegistry<String> stringRegistry) {
 					return new «type.name»(buffer, stringRegistry);
 				}
 				
 				@Override
-				public T create(Object[] values, IRegistry<String> stringRegistry) {
-					return new «type.name»(values, stringRegistry);
+				public «type.name» create(Object[] values) {
+					return new «type.name»(values);
 				}
 			}
 		'''

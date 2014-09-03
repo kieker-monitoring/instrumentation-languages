@@ -21,11 +21,11 @@ import de.cau.cs.se.instrumentation.rl.ouput.config.OutletConfiguration;
  * Configuration and registration of IRL generators.
  * The class also contains functions for derived values based on the
  * configuration values.
- * 
+ *
  * @author Reiner Jung
- * 
+ *
  * @since 1.0
- * 
+ *
  */
 public class GeneratorConfiguration {
 	/** list of all generators to support RecordType */
@@ -47,6 +47,7 @@ public class GeneratorConfiguration {
 	/** list of all outlet configurations */
 	public final static OutletConfiguration[] outletConfigurations = {
 		new OutletConfiguration("java", "Java Output Folder", "./src-gen/java"),
+		new OutletConfiguration("java-factory", "Java Factory Output Folder", "./src-gen/java-factory"),
 		new OutletConfiguration("junit", "Junit Output Folder", "./test-gen/common"),
 		new OutletConfiguration("c", "C Output Folder", "./src-gen/c"),
 		new OutletConfiguration("perl", "Perl Output Folder", "./src-gen/perl"),

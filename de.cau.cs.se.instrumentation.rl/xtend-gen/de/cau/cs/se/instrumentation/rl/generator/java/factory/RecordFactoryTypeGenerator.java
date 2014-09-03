@@ -42,7 +42,7 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
    */
   public String getOutletType() {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("java");
+    _builder.append("java-factory");
     return _builder.toString();
   }
   
@@ -84,18 +84,72 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
    */
   public CharSequence createContent(final RecordType type, final String author, final String version) {
     StringConcatenation _builder = new StringConcatenation();
+    _builder.append("/***************************************************************************");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("* Copyright 2013 Kieker Project (http://kieker-monitoring.net)");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("*");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("* Licensed under the Apache License, Version 2.0 (the \"License\");");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("* you may not use this file except in compliance with the License.");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("* You may obtain a copy of the License at");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("*");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("*     http://www.apache.org/licenses/LICENSE-2.0");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("*");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("* Unless required by applicable law or agreed to in writing, software");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("* distributed under the License is distributed on an \"AS IS\" BASIS,");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("* See the License for the specific language governing permissions and");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("* limitations under the License.");
+    _builder.newLine();
+    _builder.append(" ");
+    _builder.append("***************************************************************************/");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("package ");
+    EObject _eContainer = type.eContainer();
+    String _name = ((Model) _eContainer).getName();
+    _builder.append(_name, "");
+    _builder.append(";");
+    _builder.newLineIfNotEmpty();
+    _builder.newLine();
     _builder.append("import java.nio.ByteBuffer;");
     _builder.newLine();
+    _builder.newLine();
+    _builder.append("import kieker.common.record.factory.IRecordFactory;");
     _builder.newLine();
     _builder.append("import kieker.common.util.registry.IRegistry;");
     _builder.newLine();
     _builder.newLine();
     _builder.append("public class ");
-    String _name = type.getName();
-    _builder.append(_name, "");
-    _builder.append("Factory implements IRecordFactory<");
     String _name_1 = type.getName();
     _builder.append(_name_1, "");
+    _builder.append("Factory implements IRecordFactory<");
+    String _name_2 = type.getName();
+    _builder.append(_name_2, "");
     _builder.append("> {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -104,12 +158,15 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
     _builder.append("@Override");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("public T create(ByteBuffer buffer, IRegistry<String> stringRegistry) {");
-    _builder.newLine();
+    _builder.append("public ");
+    String _name_3 = type.getName();
+    _builder.append(_name_3, "\t");
+    _builder.append(" create(ByteBuffer buffer, IRegistry<String> stringRegistry) {");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.append("return new ");
-    String _name_2 = type.getName();
-    _builder.append(_name_2, "		");
+    String _name_4 = type.getName();
+    _builder.append(_name_4, "\t\t");
     _builder.append("(buffer, stringRegistry);");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -121,13 +178,16 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
     _builder.append("@Override");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("public T create(Object[] values, IRegistry<String> stringRegistry) {");
-    _builder.newLine();
+    _builder.append("public ");
+    String _name_5 = type.getName();
+    _builder.append(_name_5, "\t");
+    _builder.append(" create(Object[] values) {");
+    _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.append("return new ");
-    String _name_3 = type.getName();
-    _builder.append(_name_3, "		");
-    _builder.append("(values, stringRegistry);");
+    String _name_6 = type.getName();
+    _builder.append(_name_6, "\t\t");
+    _builder.append("(values);");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("}");
@@ -156,7 +216,7 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
         EClassifier _class_ = classifier.getClass_();
         String _createPrimitiveTypeName = RlType2JavaTypeExtensions.createPrimitiveTypeName(_class_);
         EList<ArraySize> _sizes_1 = classifier.getSizes();
-        final Function1<ArraySize,String> _function = new Function1<ArraySize,String>() {
+        final Function1<ArraySize, String> _function = new Function1<ArraySize, String>() {
           public String apply(final ArraySize size) {
             StringConcatenation _builder = new StringConcatenation();
             _builder.append("[]");
@@ -165,16 +225,13 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
         };
         List<String> _map = ListExtensions.<ArraySize, String>map(_sizes_1, _function);
         String _join = IterableExtensions.join(_map);
-        String _plus = (_createPrimitiveTypeName + _join);
-        _xifexpression = _plus;
+        _xifexpression = (_createPrimitiveTypeName + _join);
       } else {
         EClassifier _class__1 = classifier.getClass_();
-        String _createPrimitiveTypeName_1 = RlType2JavaTypeExtensions.createPrimitiveTypeName(_class__1);
-        _xifexpression = _createPrimitiveTypeName_1;
+        _xifexpression = RlType2JavaTypeExtensions.createPrimitiveTypeName(_class__1);
       }
       final String typeName = _xifexpression;
-      String _plus_1 = (typeName + "Factory");
-      _xblockexpression = (_plus_1);
+      _xblockexpression = (typeName + "Factory");
     }
     return _xblockexpression;
   }
