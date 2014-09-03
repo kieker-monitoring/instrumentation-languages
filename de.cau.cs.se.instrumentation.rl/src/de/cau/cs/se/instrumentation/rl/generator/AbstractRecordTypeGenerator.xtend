@@ -11,6 +11,11 @@ abstract class AbstractRecordTypeGenerator extends AbstractTypeGenerator {
 	def abstract String getDescription()
 	
 	/**
+	 * Returns if the generator also supports record types.
+	 */
+	def abstract boolean supportsAbstractRecordType()
+	
+	/**
 	 * Primary code generation template.
 	 * 
 	 * @params type

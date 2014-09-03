@@ -30,6 +30,11 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 */
 	override getDescription() '''JUnit tests for records'''
 	
+	/**
+	 * No junit test for abstract record types.
+	 */
+	override boolean supportsAbstractRecordType()  { false }
+	
 	override getDirectoryName(Type type) '''«(type.eContainer as Model).name.createTestPackageName.replace('.',File::separator)»'''
 
 	override getFileName(Type type) '''«type.getDirectoryName»«File::separator»TestGenerated«type.name».java'''

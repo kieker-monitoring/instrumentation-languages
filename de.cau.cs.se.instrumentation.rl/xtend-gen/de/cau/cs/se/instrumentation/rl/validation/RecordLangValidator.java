@@ -14,12 +14,12 @@ import de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.FloatLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Literal;
-import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangFactory;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage.Literals;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral;
+import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
 import de.cau.cs.se.instrumentation.rl.typing.PrimitiveTypes;
 import de.cau.cs.se.instrumentation.rl.validation.AbstractRecordLangValidator;
@@ -210,7 +210,7 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
    * Check a PartialType for multiple inheritance of the same property with different types.
    */
   @Check
-  public void checkPartialTypeComposition(final PartialRecordType type) {
+  public void checkPartialTypeComposition(final TemplateType type) {
     final Collection<Property> properties = PropertyEvaluation.collectAllProperties(type);
     final Function1<Property,Boolean> _function = new Function1<Property,Boolean>() {
       public Boolean apply(final Property p) {

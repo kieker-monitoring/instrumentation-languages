@@ -13,12 +13,12 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Import;
 import de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Literal;
 import de.cau.cs.se.instrumentation.rl.recordLang.Model;
-import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.ReferenceProperty;
 import de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral;
+import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
 
 import org.eclipse.emf.ecore.EObject;
@@ -117,11 +117,11 @@ public class RecordLangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case RecordLangPackage.PARTIAL_RECORD_TYPE:
+      case RecordLangPackage.TEMPLATE_TYPE:
       {
-        PartialRecordType partialRecordType = (PartialRecordType)theEObject;
-        T result = casePartialRecordType(partialRecordType);
-        if (result == null) result = caseType(partialRecordType);
+        TemplateType templateType = (TemplateType)theEObject;
+        T result = caseTemplateType(templateType);
+        if (result == null) result = caseType(templateType);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -292,17 +292,17 @@ public class RecordLangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Partial Record Type</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Template Type</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Partial Record Type</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Template Type</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T casePartialRecordType(PartialRecordType object)
+  public T caseTemplateType(TemplateType object)
   {
     return null;
   }

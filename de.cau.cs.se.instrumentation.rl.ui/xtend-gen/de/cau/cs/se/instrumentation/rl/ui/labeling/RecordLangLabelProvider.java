@@ -24,10 +24,10 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Constant;
 import de.cau.cs.se.instrumentation.rl.recordLang.FloatLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Model;
-import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral;
+import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClassifier;
@@ -128,7 +128,7 @@ public class RecordLangLabelProvider extends DefaultEObjectLabelProvider {
     return "record.png";
   }
   
-  public String image(final PartialRecordType e) {
+  public String image(final TemplateType e) {
     return "template.png";
   }
   

@@ -29,7 +29,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Type/constants"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RecordLang.ecore#//Type/version"/>
     </genClasses>
-    <genClasses ecoreClass="RecordLang.ecore#//PartialRecordType"/>
+    <genClasses ecoreClass="RecordLang.ecore#//TemplateType"/>
     <genClasses ecoreClass="RecordLang.ecore#//RecordType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RecordLang.ecore#//RecordType/abstract"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RecordLang.ecore#//RecordType/parent"/>
@@ -77,5 +77,6 @@
     <genClasses ecoreClass="RecordLang.ecore#//ConstantLiteral">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RecordLang.ecore#//ConstantLiteral/value"/>
     </genClasses>
+    <genClasses ecoreClass="RecordLang.ecore#//PartialRecordType"/>
   </genPackages>
 </genmodel:GenModel>

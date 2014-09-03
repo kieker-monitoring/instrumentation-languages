@@ -22,6 +22,13 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     return _builder.toString();
   }
   
+  /**
+   * Create abstract record types.
+   */
+  public boolean supportsAbstractRecordType() {
+    return true;
+  }
+  
   public CharSequence getDirectoryName(final Type type) {
     StringConcatenation _builder = new StringConcatenation();
     EObject _eContainer = type.eContainer();

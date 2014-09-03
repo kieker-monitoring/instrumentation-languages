@@ -15,14 +15,13 @@
  */
 package de.cau.cs.se.instrumentation.rl.generator;
 
-import com.google.common.base.Objects;
 import com.google.common.collect.Iterators;
-import de.cau.cs.se.instrumentation.rl.generator.AbstractPartialRecordTypeGenerator;
 import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator;
+import de.cau.cs.se.instrumentation.rl.generator.AbstractTemplateTypeGenerator;
 import de.cau.cs.se.instrumentation.rl.generator.GeneratorConfiguration;
 import de.cau.cs.se.instrumentation.rl.preferences.TargetsPreferences;
-import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
+import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType;
 import java.lang.reflect.Constructor;
 import java.util.Iterator;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -59,12 +58,28 @@ public class RecordLangGenerator implements IGenerator {
               Iterator<RecordType> _filter = Iterators.<RecordType>filter(_allContents, RecordType.class);
               final Procedure1<RecordType> _function = new Procedure1<RecordType>() {
                 public void apply(final RecordType type) {
-                  final CharSequence content = cg.createContent(type, author, version);
-                  boolean _notEquals = (!Objects.equal(content, null));
-                  if (_notEquals) {
+                  boolean _or = false;
+                  boolean _supportsAbstractRecordType = cg.supportsAbstractRecordType();
+                  if (_supportsAbstractRecordType) {
+                    _or = true;
+                  } else {
+                    boolean _and = false;
+                    boolean _supportsAbstractRecordType_1 = cg.supportsAbstractRecordType();
+                    boolean _not = (!_supportsAbstractRecordType_1);
+                    if (!_not) {
+                      _and = false;
+                    } else {
+                      boolean _isAbstract = type.isAbstract();
+                      boolean _not_1 = (!_isAbstract);
+                      _and = (_not && _not_1);
+                    }
+                    _or = (_supportsAbstractRecordType || _and);
+                  }
+                  if (_or) {
                     String _fileName = cg.getFileName(type);
                     String _outletType = cg.getOutletType();
-                    fsa.generateFile(_fileName, _outletType, content);
+                    CharSequence _createContent = cg.createContent(type, author, version);
+                    fsa.generateFile(_fileName, _outletType, _createContent);
                   }
                 }
               };
@@ -76,24 +91,21 @@ public class RecordLangGenerator implements IGenerator {
           {
             Constructor<? extends Object> _constructor = generator_1.getConstructor();
             Object _newInstance = _constructor.newInstance();
-            final AbstractPartialRecordTypeGenerator cg = ((AbstractPartialRecordTypeGenerator) _newInstance);
+            final AbstractTemplateTypeGenerator cg = ((AbstractTemplateTypeGenerator) _newInstance);
             String _id = cg.getId();
             boolean _isGeneratorActive = TargetsPreferences.isGeneratorActive(_id);
             if (_isGeneratorActive) {
               TreeIterator<EObject> _allContents = resource.getAllContents();
-              Iterator<PartialRecordType> _filter = Iterators.<PartialRecordType>filter(_allContents, PartialRecordType.class);
-              final Procedure1<PartialRecordType> _function = new Procedure1<PartialRecordType>() {
-                public void apply(final PartialRecordType type) {
-                  final CharSequence content = cg.createContent(type, author, version);
-                  boolean _notEquals = (!Objects.equal(content, null));
-                  if (_notEquals) {
-                    String _fileName = cg.getFileName(type);
-                    String _outletType = cg.getOutletType();
-                    fsa.generateFile(_fileName, _outletType, content);
-                  }
+              Iterator<TemplateType> _filter = Iterators.<TemplateType>filter(_allContents, TemplateType.class);
+              final Procedure1<TemplateType> _function = new Procedure1<TemplateType>() {
+                public void apply(final TemplateType type) {
+                  String _fileName = cg.getFileName(type);
+                  String _outletType = cg.getOutletType();
+                  CharSequence _createContent = cg.createContent(type, author, version);
+                  fsa.generateFile(_fileName, _outletType, _createContent);
                 }
               };
-              IteratorExtensions.<PartialRecordType>forEach(_filter, _function);
+              IteratorExtensions.<TemplateType>forEach(_filter, _function);
             }
           }
         }

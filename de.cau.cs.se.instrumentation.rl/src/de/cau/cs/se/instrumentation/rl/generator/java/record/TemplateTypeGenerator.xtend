@@ -1,16 +1,16 @@
 package de.cau.cs.se.instrumentation.rl.generator.java.record
 
-import de.cau.cs.se.instrumentation.rl.generator.AbstractPartialRecordTypeGenerator
 import de.cau.cs.se.instrumentation.rl.recordLang.Type
-import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType
+import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType
 import de.cau.cs.se.instrumentation.rl.recordLang.Property
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
 import de.cau.cs.se.instrumentation.rl.recordLang.Model
 import java.io.File
 import org.eclipse.emf.common.util.EList
 import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation
+import de.cau.cs.se.instrumentation.rl.generator.AbstractTemplateTypeGenerator
 
-class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerator {
+class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
 
 	/**
 	 * Return the unique id.
@@ -32,7 +32,7 @@ class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerator {
 	 */
 	override getFileName(Type type) '''«type.getDirectoryName»«File::separator»«type.name».java'''
 	
-	override createContent(PartialRecordType type, String author, String version) {
+	override createContent(TemplateType type, String author, String version) {
 		val definedAuthor = if (type.author == null) author else type.author
 		val definedVersion = if (type.since == null) version else type.since
 		'''
@@ -67,19 +67,19 @@ class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerator {
 		'''
 	}
 	
-	def isInSamePackage(PartialRecordType left, PartialRecordType right) {
+	def isInSamePackage(TemplateType left, TemplateType right) {
 		return (left.eContainer as Model).name != (right.eContainer as Model).name
 	}
 	
-	def createImports(EList<PartialRecordType> parents, PartialRecordType type) '''«if (parents!=null && parents.size>0) parents.filter[t | isInSamePackage(type, t)].map[createImport].join() else createDefaultImport»'''
+	def createImports(EList<TemplateType> parents, TemplateType type) '''«if (parents!=null && parents.size>0) parents.filter[t | isInSamePackage(type, t)].map[createImport].join() else createDefaultImport»'''
 	
 	def createDefaultImport() '''import kieker.common.record.IMonitoringRecord;
 	'''
 	
-	def createImport(PartialRecordType type) '''import «(type.eContainer as Model).name».«type»;
+	def createImport(TemplateType type) '''import «(type.eContainer as Model).name».«type»;
 	'''
 	
-	def createExtends(EList<PartialRecordType> parents) '''«if (parents!=null && parents.size>0) parents.map[t | t.name].join(', ') else 'IMonitoringRecord'»'''
+	def createExtends(EList<TemplateType> parents) '''«if (parents!=null && parents.size>0) parents.map[t | t.name].join(', ') else 'IMonitoringRecord'»'''
 	
 	/**
 	 * Creates a getter for a given property.

@@ -13,12 +13,12 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Import;
 import de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Literal;
 import de.cau.cs.se.instrumentation.rl.recordLang.Model;
-import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.ReferenceProperty;
 import de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral;
+import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -112,9 +112,9 @@ public class RecordLangAdapterFactory extends AdapterFactoryImpl
         return createTypeAdapter();
       }
       @Override
-      public Adapter casePartialRecordType(PartialRecordType object)
+      public Adapter caseTemplateType(TemplateType object)
       {
-        return createPartialRecordTypeAdapter();
+        return createTemplateTypeAdapter();
       }
       @Override
       public Adapter caseRecordType(RecordType object)
@@ -264,16 +264,16 @@ public class RecordLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType <em>Partial Record Type</em>}'.
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.rl.recordLang.TemplateType <em>Template Type</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.TemplateType
    * @generated
    */
-  public Adapter createPartialRecordTypeAdapter()
+  public Adapter createTemplateTypeAdapter()
   {
     return null;
   }

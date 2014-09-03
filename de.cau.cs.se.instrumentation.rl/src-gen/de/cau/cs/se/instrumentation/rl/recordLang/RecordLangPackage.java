@@ -250,14 +250,14 @@ public interface RecordLangPackage extends EPackage
   int TYPE_FEATURE_COUNT = 6;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.PartialRecordTypeImpl <em>Partial Record Type</em>}' class.
+   * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.TemplateTypeImpl <em>Template Type</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.PartialRecordTypeImpl
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getPartialRecordType()
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.TemplateTypeImpl
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getTemplateType()
    * @generated
    */
-  int PARTIAL_RECORD_TYPE = 4;
+  int TEMPLATE_TYPE = 4;
 
   /**
    * The feature id for the '<em><b>Author</b></em>' attribute.
@@ -266,7 +266,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PARTIAL_RECORD_TYPE__AUTHOR = TYPE__AUTHOR;
+  int TEMPLATE_TYPE__AUTHOR = TYPE__AUTHOR;
 
   /**
    * The feature id for the '<em><b>Since</b></em>' attribute.
@@ -275,7 +275,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PARTIAL_RECORD_TYPE__SINCE = TYPE__SINCE;
+  int TEMPLATE_TYPE__SINCE = TYPE__SINCE;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -284,7 +284,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PARTIAL_RECORD_TYPE__NAME = TYPE__NAME;
+  int TEMPLATE_TYPE__NAME = TYPE__NAME;
 
   /**
    * The feature id for the '<em><b>Parents</b></em>' reference list.
@@ -293,7 +293,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PARTIAL_RECORD_TYPE__PARENTS = TYPE__PARENTS;
+  int TEMPLATE_TYPE__PARENTS = TYPE__PARENTS;
 
   /**
    * The feature id for the '<em><b>Properties</b></em>' containment reference list.
@@ -302,7 +302,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PARTIAL_RECORD_TYPE__PROPERTIES = TYPE__PROPERTIES;
+  int TEMPLATE_TYPE__PROPERTIES = TYPE__PROPERTIES;
 
   /**
    * The feature id for the '<em><b>Constants</b></em>' containment reference list.
@@ -311,16 +311,16 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PARTIAL_RECORD_TYPE__CONSTANTS = TYPE__CONSTANTS;
+  int TEMPLATE_TYPE__CONSTANTS = TYPE__CONSTANTS;
 
   /**
-   * The number of structural features of the '<em>Partial Record Type</em>' class.
+   * The number of structural features of the '<em>Template Type</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PARTIAL_RECORD_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 0;
+  int TEMPLATE_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordTypeImpl <em>Record Type</em>}' class.
@@ -1006,14 +1006,14 @@ public interface RecordLangPackage extends EPackage
   EReference getType_Constants();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType <em>Partial Record Type</em>}'.
+   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.TemplateType <em>Template Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Partial Record Type</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType
+   * @return the meta object for class '<em>Template Type</em>'.
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.TemplateType
    * @generated
    */
-  EClass getPartialRecordType();
+  EClass getTemplateType();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.RecordType <em>Record Type</em>}'.
@@ -1555,14 +1555,14 @@ public interface RecordLangPackage extends EPackage
     EReference TYPE__CONSTANTS = eINSTANCE.getType_Constants();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.PartialRecordTypeImpl <em>Partial Record Type</em>}' class.
+     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.TemplateTypeImpl <em>Template Type</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.PartialRecordTypeImpl
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getPartialRecordType()
+     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.TemplateTypeImpl
+     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getTemplateType()
      * @generated
      */
-    EClass PARTIAL_RECORD_TYPE = eINSTANCE.getPartialRecordType();
+    EClass TEMPLATE_TYPE = eINSTANCE.getTemplateType();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordTypeImpl <em>Record Type</em>}' class.

@@ -38,6 +38,13 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
   }
   
   /**
+   * No factory for abstract record types.
+   */
+  public boolean supportsAbstractRecordType() {
+    return false;
+  }
+  
+  /**
    * Define language/generation type, which is also used to define the outlet.
    */
   public String getOutletType() {

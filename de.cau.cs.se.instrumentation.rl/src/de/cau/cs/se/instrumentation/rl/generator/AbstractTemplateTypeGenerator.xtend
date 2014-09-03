@@ -1,9 +1,9 @@
 package de.cau.cs.se.instrumentation.rl.generator
 
 import de.cau.cs.se.instrumentation.rl.generator.AbstractTypeGenerator
-import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType
+import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType
 
-abstract class AbstractPartialRecordTypeGenerator extends AbstractTypeGenerator {
+abstract class AbstractTemplateTypeGenerator extends AbstractTypeGenerator {
 	/**
 	 * Primary code generation template.
 	 * 
@@ -14,6 +14,6 @@ abstract class AbstractPartialRecordTypeGenerator extends AbstractTypeGenerator 
 	 * @params version
 	 * 		generic kieker version for the record
 	 */
-	def abstract CharSequence createContent(PartialRecordType type, String author, String version);
+	def abstract CharSequence createContent(TemplateType type, String author, String version);
 		
 }

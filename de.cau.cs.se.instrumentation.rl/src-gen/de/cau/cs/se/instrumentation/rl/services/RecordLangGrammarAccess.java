@@ -130,24 +130,24 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Type");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cRecordTypeParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cPartialRecordTypeParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cTemplateTypeParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//Type:
-		//	RecordType | PartialRecordType;
+		//	RecordType | TemplateType;
 		public ParserRule getRule() { return rule; }
 
-		//RecordType | PartialRecordType
+		//RecordType | TemplateType
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//RecordType
 		public RuleCall getRecordTypeParserRuleCall_0() { return cRecordTypeParserRuleCall_0; }
 
-		//PartialRecordType
-		public RuleCall getPartialRecordTypeParserRuleCall_1() { return cPartialRecordTypeParserRuleCall_1; }
+		//TemplateType
+		public RuleCall getTemplateTypeParserRuleCall_1() { return cTemplateTypeParserRuleCall_1; }
 	}
 
-	public class PartialRecordTypeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "PartialRecordType");
+	public class TemplateTypeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "TemplateType");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
 		private final Keyword cAuthorKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
@@ -163,13 +163,13 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
 		private final Keyword cColonKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
 		private final Assignment cParentsAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final CrossReference cParentsPartialRecordTypeCrossReference_4_1_0 = (CrossReference)cParentsAssignment_4_1.eContents().get(0);
-		private final RuleCall cParentsPartialRecordTypeQualifiedNameParserRuleCall_4_1_0_1 = (RuleCall)cParentsPartialRecordTypeCrossReference_4_1_0.eContents().get(1);
+		private final CrossReference cParentsTemplateTypeCrossReference_4_1_0 = (CrossReference)cParentsAssignment_4_1.eContents().get(0);
+		private final RuleCall cParentsTemplateTypeQualifiedNameParserRuleCall_4_1_0_1 = (RuleCall)cParentsTemplateTypeCrossReference_4_1_0.eContents().get(1);
 		private final Group cGroup_4_2 = (Group)cGroup_4.eContents().get(2);
 		private final Keyword cCommaKeyword_4_2_0 = (Keyword)cGroup_4_2.eContents().get(0);
 		private final Assignment cParentsAssignment_4_2_1 = (Assignment)cGroup_4_2.eContents().get(1);
-		private final CrossReference cParentsPartialRecordTypeCrossReference_4_2_1_0 = (CrossReference)cParentsAssignment_4_2_1.eContents().get(0);
-		private final RuleCall cParentsPartialRecordTypeQualifiedNameParserRuleCall_4_2_1_0_1 = (RuleCall)cParentsPartialRecordTypeCrossReference_4_2_1_0.eContents().get(1);
+		private final CrossReference cParentsTemplateTypeCrossReference_4_2_1_0 = (CrossReference)cParentsAssignment_4_2_1.eContents().get(0);
+		private final RuleCall cParentsTemplateTypeQualifiedNameParserRuleCall_4_2_1_0_1 = (RuleCall)cParentsTemplateTypeCrossReference_4_2_1_0.eContents().get(1);
 		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
 		private final Keyword cLeftCurlyBracketKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
 		private final Alternatives cAlternatives_5_1 = (Alternatives)cGroup_5.eContents().get(1);
@@ -179,13 +179,13 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cConstantsConstantParserRuleCall_5_1_1_0 = (RuleCall)cConstantsAssignment_5_1_1.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_5_2 = (Keyword)cGroup_5.eContents().get(2);
 		
-		//PartialRecordType:
-		//	("@author" author=STRING)? ("@since" since=STRING)? "template" name=ID (":" parents+=[PartialRecordType|QualifiedName]
-		//	("," parents+=[PartialRecordType|QualifiedName])*)? ("{" (properties+=Property | constants+=Constant)* "}")?;
+		//TemplateType:
+		//	("@author" author=STRING)? ("@since" since=STRING)? "template" name=ID (":" parents+=[TemplateType|QualifiedName] (","
+		//	parents+=[TemplateType|QualifiedName])*)? ("{" (properties+=Property | constants+=Constant)* "}")?;
 		public ParserRule getRule() { return rule; }
 
-		//("@author" author=STRING)? ("@since" since=STRING)? "template" name=ID (":" parents+=[PartialRecordType|QualifiedName]
-		//("," parents+=[PartialRecordType|QualifiedName])*)? ("{" (properties+=Property | constants+=Constant)* "}")?
+		//("@author" author=STRING)? ("@since" since=STRING)? "template" name=ID (":" parents+=[TemplateType|QualifiedName] (","
+		//parents+=[TemplateType|QualifiedName])*)? ("{" (properties+=Property | constants+=Constant)* "}")?
 		public Group getGroup() { return cGroup; }
 
 		//("@author" author=STRING)?
@@ -221,35 +221,35 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_3_0() { return cNameIDTerminalRuleCall_3_0; }
 
-		//(":" parents+=[PartialRecordType|QualifiedName] ("," parents+=[PartialRecordType|QualifiedName])*)?
+		//(":" parents+=[TemplateType|QualifiedName] ("," parents+=[TemplateType|QualifiedName])*)?
 		public Group getGroup_4() { return cGroup_4; }
 
 		//":"
 		public Keyword getColonKeyword_4_0() { return cColonKeyword_4_0; }
 
-		//parents+=[PartialRecordType|QualifiedName]
+		//parents+=[TemplateType|QualifiedName]
 		public Assignment getParentsAssignment_4_1() { return cParentsAssignment_4_1; }
 
-		//[PartialRecordType|QualifiedName]
-		public CrossReference getParentsPartialRecordTypeCrossReference_4_1_0() { return cParentsPartialRecordTypeCrossReference_4_1_0; }
+		//[TemplateType|QualifiedName]
+		public CrossReference getParentsTemplateTypeCrossReference_4_1_0() { return cParentsTemplateTypeCrossReference_4_1_0; }
 
 		//QualifiedName
-		public RuleCall getParentsPartialRecordTypeQualifiedNameParserRuleCall_4_1_0_1() { return cParentsPartialRecordTypeQualifiedNameParserRuleCall_4_1_0_1; }
+		public RuleCall getParentsTemplateTypeQualifiedNameParserRuleCall_4_1_0_1() { return cParentsTemplateTypeQualifiedNameParserRuleCall_4_1_0_1; }
 
-		//("," parents+=[PartialRecordType|QualifiedName])*
+		//("," parents+=[TemplateType|QualifiedName])*
 		public Group getGroup_4_2() { return cGroup_4_2; }
 
 		//","
 		public Keyword getCommaKeyword_4_2_0() { return cCommaKeyword_4_2_0; }
 
-		//parents+=[PartialRecordType|QualifiedName]
+		//parents+=[TemplateType|QualifiedName]
 		public Assignment getParentsAssignment_4_2_1() { return cParentsAssignment_4_2_1; }
 
-		//[PartialRecordType|QualifiedName]
-		public CrossReference getParentsPartialRecordTypeCrossReference_4_2_1_0() { return cParentsPartialRecordTypeCrossReference_4_2_1_0; }
+		//[TemplateType|QualifiedName]
+		public CrossReference getParentsTemplateTypeCrossReference_4_2_1_0() { return cParentsTemplateTypeCrossReference_4_2_1_0; }
 
 		//QualifiedName
-		public RuleCall getParentsPartialRecordTypeQualifiedNameParserRuleCall_4_2_1_0_1() { return cParentsPartialRecordTypeQualifiedNameParserRuleCall_4_2_1_0_1; }
+		public RuleCall getParentsTemplateTypeQualifiedNameParserRuleCall_4_2_1_0_1() { return cParentsTemplateTypeQualifiedNameParserRuleCall_4_2_1_0_1; }
 
 		//("{" (properties+=Property | constants+=Constant)* "}")?
 		public Group getGroup_5() { return cGroup_5; }
@@ -300,13 +300,13 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
 		private final Keyword cColonKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
 		private final Assignment cParentsAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
-		private final CrossReference cParentsPartialRecordTypeCrossReference_6_1_0 = (CrossReference)cParentsAssignment_6_1.eContents().get(0);
-		private final RuleCall cParentsPartialRecordTypeQualifiedNameParserRuleCall_6_1_0_1 = (RuleCall)cParentsPartialRecordTypeCrossReference_6_1_0.eContents().get(1);
+		private final CrossReference cParentsTemplateTypeCrossReference_6_1_0 = (CrossReference)cParentsAssignment_6_1.eContents().get(0);
+		private final RuleCall cParentsTemplateTypeQualifiedNameParserRuleCall_6_1_0_1 = (RuleCall)cParentsTemplateTypeCrossReference_6_1_0.eContents().get(1);
 		private final Group cGroup_6_2 = (Group)cGroup_6.eContents().get(2);
 		private final Keyword cCommaKeyword_6_2_0 = (Keyword)cGroup_6_2.eContents().get(0);
 		private final Assignment cParentsAssignment_6_2_1 = (Assignment)cGroup_6_2.eContents().get(1);
-		private final CrossReference cParentsPartialRecordTypeCrossReference_6_2_1_0 = (CrossReference)cParentsAssignment_6_2_1.eContents().get(0);
-		private final RuleCall cParentsPartialRecordTypeQualifiedNameParserRuleCall_6_2_1_0_1 = (RuleCall)cParentsPartialRecordTypeCrossReference_6_2_1_0.eContents().get(1);
+		private final CrossReference cParentsTemplateTypeCrossReference_6_2_1_0 = (CrossReference)cParentsAssignment_6_2_1.eContents().get(0);
+		private final RuleCall cParentsTemplateTypeQualifiedNameParserRuleCall_6_2_1_0_1 = (RuleCall)cParentsTemplateTypeCrossReference_6_2_1_0.eContents().get(1);
 		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
 		private final Keyword cLeftCurlyBracketKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
 		private final Alternatives cAlternatives_7_1 = (Alternatives)cGroup_7.eContents().get(1);
@@ -318,13 +318,13 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//RecordType:
 		//	("@author" author=STRING)? ("@since" since=STRING)? abstract?="abstract"? "entity" name=ID ("extends"
-		//	parent=[RecordType|QualifiedName])? (":" parents+=[PartialRecordType|QualifiedName] (","
-		//	parents+=[PartialRecordType|QualifiedName])*)? ("{" (properties+=Property | constants+=Constant)* "}")?;
+		//	parent=[RecordType|QualifiedName])? (":" parents+=[TemplateType|QualifiedName] (","
+		//	parents+=[TemplateType|QualifiedName])*)? ("{" (properties+=Property | constants+=Constant)* "}")?;
 		public ParserRule getRule() { return rule; }
 
 		//("@author" author=STRING)? ("@since" since=STRING)? abstract?="abstract"? "entity" name=ID ("extends"
-		//parent=[RecordType|QualifiedName])? (":" parents+=[PartialRecordType|QualifiedName] (","
-		//parents+=[PartialRecordType|QualifiedName])*)? ("{" (properties+=Property | constants+=Constant)* "}")?
+		//parent=[RecordType|QualifiedName])? (":" parents+=[TemplateType|QualifiedName] (","
+		//parents+=[TemplateType|QualifiedName])*)? ("{" (properties+=Property | constants+=Constant)* "}")?
 		public Group getGroup() { return cGroup; }
 
 		//("@author" author=STRING)?
@@ -381,35 +381,35 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 		//QualifiedName
 		public RuleCall getParentRecordTypeQualifiedNameParserRuleCall_5_1_0_1() { return cParentRecordTypeQualifiedNameParserRuleCall_5_1_0_1; }
 
-		//(":" parents+=[PartialRecordType|QualifiedName] ("," parents+=[PartialRecordType|QualifiedName])*)?
+		//(":" parents+=[TemplateType|QualifiedName] ("," parents+=[TemplateType|QualifiedName])*)?
 		public Group getGroup_6() { return cGroup_6; }
 
 		//":"
 		public Keyword getColonKeyword_6_0() { return cColonKeyword_6_0; }
 
-		//parents+=[PartialRecordType|QualifiedName]
+		//parents+=[TemplateType|QualifiedName]
 		public Assignment getParentsAssignment_6_1() { return cParentsAssignment_6_1; }
 
-		//[PartialRecordType|QualifiedName]
-		public CrossReference getParentsPartialRecordTypeCrossReference_6_1_0() { return cParentsPartialRecordTypeCrossReference_6_1_0; }
+		//[TemplateType|QualifiedName]
+		public CrossReference getParentsTemplateTypeCrossReference_6_1_0() { return cParentsTemplateTypeCrossReference_6_1_0; }
 
 		//QualifiedName
-		public RuleCall getParentsPartialRecordTypeQualifiedNameParserRuleCall_6_1_0_1() { return cParentsPartialRecordTypeQualifiedNameParserRuleCall_6_1_0_1; }
+		public RuleCall getParentsTemplateTypeQualifiedNameParserRuleCall_6_1_0_1() { return cParentsTemplateTypeQualifiedNameParserRuleCall_6_1_0_1; }
 
-		//("," parents+=[PartialRecordType|QualifiedName])*
+		//("," parents+=[TemplateType|QualifiedName])*
 		public Group getGroup_6_2() { return cGroup_6_2; }
 
 		//","
 		public Keyword getCommaKeyword_6_2_0() { return cCommaKeyword_6_2_0; }
 
-		//parents+=[PartialRecordType|QualifiedName]
+		//parents+=[TemplateType|QualifiedName]
 		public Assignment getParentsAssignment_6_2_1() { return cParentsAssignment_6_2_1; }
 
-		//[PartialRecordType|QualifiedName]
-		public CrossReference getParentsPartialRecordTypeCrossReference_6_2_1_0() { return cParentsPartialRecordTypeCrossReference_6_2_1_0; }
+		//[TemplateType|QualifiedName]
+		public CrossReference getParentsTemplateTypeCrossReference_6_2_1_0() { return cParentsTemplateTypeCrossReference_6_2_1_0; }
 
 		//QualifiedName
-		public RuleCall getParentsPartialRecordTypeQualifiedNameParserRuleCall_6_2_1_0_1() { return cParentsPartialRecordTypeQualifiedNameParserRuleCall_6_2_1_0_1; }
+		public RuleCall getParentsTemplateTypeQualifiedNameParserRuleCall_6_2_1_0_1() { return cParentsTemplateTypeQualifiedNameParserRuleCall_6_2_1_0_1; }
 
 		//("{" (properties+=Property | constants+=Constant)* "}")?
 		public Group getGroup_7() { return cGroup_7; }
@@ -927,7 +927,7 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	private ImportElements pImport;
 	private PackageElements pPackage;
 	private TypeElements pType;
-	private PartialRecordTypeElements pPartialRecordType;
+	private TemplateTypeElements pTemplateType;
 	private RecordTypeElements pRecordType;
 	private ConstantElements pConstant;
 	private PropertyElements pProperty;
@@ -1017,7 +1017,7 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Type:
-	//	RecordType | PartialRecordType;
+	//	RecordType | TemplateType;
 	public TypeElements getTypeAccess() {
 		return (pType != null) ? pType : (pType = new TypeElements());
 	}
@@ -1026,21 +1026,21 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 		return getTypeAccess().getRule();
 	}
 
-	//PartialRecordType:
-	//	("@author" author=STRING)? ("@since" since=STRING)? "template" name=ID (":" parents+=[PartialRecordType|QualifiedName]
-	//	("," parents+=[PartialRecordType|QualifiedName])*)? ("{" (properties+=Property | constants+=Constant)* "}")?;
-	public PartialRecordTypeElements getPartialRecordTypeAccess() {
-		return (pPartialRecordType != null) ? pPartialRecordType : (pPartialRecordType = new PartialRecordTypeElements());
+	//TemplateType:
+	//	("@author" author=STRING)? ("@since" since=STRING)? "template" name=ID (":" parents+=[TemplateType|QualifiedName] (","
+	//	parents+=[TemplateType|QualifiedName])*)? ("{" (properties+=Property | constants+=Constant)* "}")?;
+	public TemplateTypeElements getTemplateTypeAccess() {
+		return (pTemplateType != null) ? pTemplateType : (pTemplateType = new TemplateTypeElements());
 	}
 	
-	public ParserRule getPartialRecordTypeRule() {
-		return getPartialRecordTypeAccess().getRule();
+	public ParserRule getTemplateTypeRule() {
+		return getTemplateTypeAccess().getRule();
 	}
 
 	//RecordType:
 	//	("@author" author=STRING)? ("@since" since=STRING)? abstract?="abstract"? "entity" name=ID ("extends"
-	//	parent=[RecordType|QualifiedName])? (":" parents+=[PartialRecordType|QualifiedName] (","
-	//	parents+=[PartialRecordType|QualifiedName])*)? ("{" (properties+=Property | constants+=Constant)* "}")?;
+	//	parent=[RecordType|QualifiedName])? (":" parents+=[TemplateType|QualifiedName] (","
+	//	parents+=[TemplateType|QualifiedName])*)? ("{" (properties+=Property | constants+=Constant)* "}")?;
 	public RecordTypeElements getRecordTypeAccess() {
 		return (pRecordType != null) ? pRecordType : (pRecordType = new RecordTypeElements());
 	}

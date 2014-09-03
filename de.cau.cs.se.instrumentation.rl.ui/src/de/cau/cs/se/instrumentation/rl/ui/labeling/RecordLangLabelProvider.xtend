@@ -70,7 +70,7 @@ class RecordLangLabelProvider extends org.eclipse.xtext.ui.label.DefaultEObjectL
 		'record.png'
 	}
 	
-	def image(de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType e) {
+	def image(de.cau.cs.se.instrumentation.rl.recordLang.TemplateType e) {
 		'template.png'
 	}
 	

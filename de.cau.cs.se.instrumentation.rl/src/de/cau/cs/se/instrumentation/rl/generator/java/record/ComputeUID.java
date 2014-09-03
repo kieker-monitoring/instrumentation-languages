@@ -29,10 +29,10 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EcoreFactory;
 
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
-import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangFactory;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
+import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType;
 import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation;
 
 /**
@@ -119,7 +119,7 @@ public class ComputeUID {
 
 			dout.writeInt(classMods);
 
-			final EList<PartialRecordType> interfaces = type.getParents();
+			final EList<TemplateType> interfaces = type.getParents();
 			final String[] ifaceNames = new String[interfaces.size()];
 			for (int i = 0; i < interfaces.size(); i++) {
 				ifaceNames[i] = interfaces.get(i).getName();

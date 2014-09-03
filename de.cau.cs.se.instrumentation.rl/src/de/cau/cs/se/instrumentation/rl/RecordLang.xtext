@@ -20,13 +20,13 @@ Package:
 ;
 
 Type:
-	RecordType | PartialRecordType 
+	RecordType | TemplateType 
 ;
 
-PartialRecordType:
+TemplateType:
 	('@author' author=STRING)?
 	('@since' since=STRING)?
-	'template' name=ID (':' parents+=[PartialRecordType|QualifiedName] (',' parents+=[PartialRecordType|QualifiedName])*)? 
+	'template' name=ID (':' parents+=[TemplateType|QualifiedName] (',' parents+=[TemplateType|QualifiedName])*)? 
 	('{'
 		(properties+=Property | constants+=Constant)*
 	'}')?
@@ -37,7 +37,7 @@ RecordType:
 	('@since' since=STRING)?
 	(abstract?='abstract')? 'entity' name=ID 
 	('extends' parent=[RecordType|QualifiedName])?
-	(':' parents+=[PartialRecordType|QualifiedName] (',' parents+=[PartialRecordType|QualifiedName])*)?  
+	(':' parents+=[TemplateType|QualifiedName] (',' parents+=[TemplateType|QualifiedName])*)?  
 	('{'
 		(properties+=Property | constants+=Constant)*
 	'}')?

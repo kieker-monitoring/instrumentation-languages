@@ -13,13 +13,13 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Import;
 import de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Literal;
 import de.cau.cs.se.instrumentation.rl.recordLang.Model;
-import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangFactory;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.ReferenceProperty;
 import de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral;
+import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -71,7 +71,7 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass partialRecordTypeEClass = null;
+  private EClass templateTypeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -405,9 +405,9 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getPartialRecordType()
+  public EClass getTemplateType()
   {
-    return partialRecordTypeEClass;
+    return templateTypeEClass;
   }
 
   /**
@@ -811,7 +811,7 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
     createEReference(typeEClass, TYPE__PROPERTIES);
     createEReference(typeEClass, TYPE__CONSTANTS);
 
-    partialRecordTypeEClass = createEClass(PARTIAL_RECORD_TYPE);
+    templateTypeEClass = createEClass(TEMPLATE_TYPE);
 
     recordTypeEClass = createEClass(RECORD_TYPE);
     createEAttribute(recordTypeEClass, RECORD_TYPE__ABSTRACT);
@@ -894,7 +894,7 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    partialRecordTypeEClass.getESuperTypes().add(this.getType());
+    templateTypeEClass.getESuperTypes().add(this.getType());
     recordTypeEClass.getESuperTypes().add(this.getType());
     arrayLiteralEClass.getESuperTypes().add(this.getLiteral());
     stringLiteralEClass.getESuperTypes().add(this.getLiteral());
@@ -921,11 +921,11 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
     initEAttribute(getType_Author(), theEcorePackage.getEString(), "author", null, 0, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getType_Since(), theEcorePackage.getEString(), "since", null, 0, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getType_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getType_Parents(), this.getPartialRecordType(), null, "parents", null, 0, -1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getType_Parents(), this.getTemplateType(), null, "parents", null, 0, -1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getType_Properties(), this.getProperty(), null, "properties", null, 0, -1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getType_Constants(), this.getConstant(), null, "constants", null, 0, -1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(partialRecordTypeEClass, PartialRecordType.class, "PartialRecordType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(templateTypeEClass, TemplateType.class, "TemplateType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(recordTypeEClass, RecordType.class, "RecordType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getRecordType_Abstract(), theEcorePackage.getEBoolean(), "abstract", null, 0, 1, RecordType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

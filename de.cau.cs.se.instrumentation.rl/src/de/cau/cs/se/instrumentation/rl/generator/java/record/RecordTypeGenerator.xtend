@@ -11,11 +11,11 @@ import de.cau.cs.se.instrumentation.rl.recordLang.FloatLiteral
 import de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral
 import de.cau.cs.se.instrumentation.rl.recordLang.Literal
 import de.cau.cs.se.instrumentation.rl.recordLang.Model
-import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType
 import de.cau.cs.se.instrumentation.rl.recordLang.Property
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
 import de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral
 import de.cau.cs.se.instrumentation.rl.recordLang.Type
+import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType
 import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation
 import java.io.File
 import java.util.ArrayList
@@ -38,6 +38,11 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * Return the preferences activation description.
 	 */
 	override getDescription() '''Java record generator'''
+	
+	/**
+	 * Java requires abstract record types.
+	 */
+	override boolean supportsAbstractRecordType()  { true }
 	
 	/**
 	 * Define language/generation type, which is also used to define the outlet.
@@ -289,7 +294,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	/**
 	 * Create a list of imports for the given type.
 	 */	
-	def private createInterfaceImport(PartialRecordType type) '''import «(type.eContainer as Model).name».«type.name»;
+	def private createInterfaceImport(TemplateType type) '''import «(type.eContainer as Model).name».«type.name»;
 	'''
 	
 	/**

@@ -59,13 +59,13 @@ public interface RecordLangFactory extends EFactory
   Type createType();
 
   /**
-   * Returns a new object of class '<em>Partial Record Type</em>'.
+   * Returns a new object of class '<em>Template Type</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Partial Record Type</em>'.
+   * @return a new object of class '<em>Template Type</em>'.
    * @generated
    */
-  PartialRecordType createPartialRecordType();
+  TemplateType createTemplateType();
 
   /**
    * Returns a new object of class '<em>Record Type</em>'.

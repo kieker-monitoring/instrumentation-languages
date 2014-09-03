@@ -4,9 +4,9 @@ import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import de.cau.cs.se.instrumentation.rl.generator.InternalErrorException;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
-import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
+import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -56,7 +56,7 @@ public class PropertyEvaluation {
    * @returns
    * 		a complete list of all properties in a record
    */
-  protected static Collection<Property> _collectAllDataProperties(final PartialRecordType type) {
+  protected static Collection<Property> _collectAllDataProperties(final TemplateType type) {
     ArrayList<Property> _arrayList = new ArrayList<Property>();
     final ArrayList<Property> list = _arrayList;
     Collection<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(type);
@@ -94,17 +94,17 @@ public class PropertyEvaluation {
       _xifexpression = _arrayList;
     }
     final Collection<Property> result = _xifexpression;
-    EList<PartialRecordType> _parents = type.getParents();
+    EList<TemplateType> _parents = type.getParents();
     boolean _notEquals_1 = (!Objects.equal(_parents, null));
     if (_notEquals_1) {
-      EList<PartialRecordType> _parents_1 = type.getParents();
-      final Procedure1<PartialRecordType> _function = new Procedure1<PartialRecordType>() {
-        public void apply(final PartialRecordType it) {
+      EList<TemplateType> _parents_1 = type.getParents();
+      final Procedure1<TemplateType> _function = new Procedure1<TemplateType>() {
+        public void apply(final TemplateType it) {
           Collection<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(it);
           PropertyEvaluation.addAllUnique(result, _collectAllProperties);
         }
       };
-      IterableExtensions.<PartialRecordType>forEach(_parents_1, _function);
+      IterableExtensions.<TemplateType>forEach(_parents_1, _function);
     }
     EList<Property> _properties = type.getProperties();
     return PropertyEvaluation.addAllUnique(result, _properties);
@@ -119,20 +119,20 @@ public class PropertyEvaluation {
    * @returns
    * 		a complete list of all properties in a record
    */
-  protected static Collection<Property> _collectAllProperties(final PartialRecordType type) {
+  protected static Collection<Property> _collectAllProperties(final TemplateType type) {
     ArrayList<Property> _arrayList = new ArrayList<Property>();
     final Collection<Property> result = _arrayList;
-    EList<PartialRecordType> _parents = type.getParents();
+    EList<TemplateType> _parents = type.getParents();
     boolean _notEquals = (!Objects.equal(_parents, null));
     if (_notEquals) {
-      EList<PartialRecordType> _parents_1 = type.getParents();
-      final Procedure1<PartialRecordType> _function = new Procedure1<PartialRecordType>() {
-        public void apply(final PartialRecordType iface) {
+      EList<TemplateType> _parents_1 = type.getParents();
+      final Procedure1<TemplateType> _function = new Procedure1<TemplateType>() {
+        public void apply(final TemplateType iface) {
           Collection<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(iface);
           PropertyEvaluation.addAllUnique(result, _collectAllProperties);
         }
       };
-      IterableExtensions.<PartialRecordType>forEach(_parents_1, _function);
+      IterableExtensions.<TemplateType>forEach(_parents_1, _function);
     }
     EList<Property> _properties = type.getProperties();
     return PropertyEvaluation.addAllUnique(result, _properties);
@@ -148,19 +148,19 @@ public class PropertyEvaluation {
    * 		a complete list of all properties in a record
    */
   protected static Collection<Property> _collectAllTemplateProperties(final RecordType type) {
-    EList<PartialRecordType> _parents = type.getParents();
+    EList<TemplateType> _parents = type.getParents();
     boolean _notEquals = (!Objects.equal(_parents, null));
     if (_notEquals) {
       ArrayList<Property> _arrayList = new ArrayList<Property>();
       final Collection<Property> result = _arrayList;
-      EList<PartialRecordType> _parents_1 = type.getParents();
-      final Procedure1<PartialRecordType> _function = new Procedure1<PartialRecordType>() {
-        public void apply(final PartialRecordType iface) {
+      EList<TemplateType> _parents_1 = type.getParents();
+      final Procedure1<TemplateType> _function = new Procedure1<TemplateType>() {
+        public void apply(final TemplateType iface) {
           Collection<Property> _collectAllTemplateProperties = PropertyEvaluation.collectAllTemplateProperties(iface);
           PropertyEvaluation.addAllUnique(result, _collectAllTemplateProperties);
         }
       };
-      IterableExtensions.<PartialRecordType>forEach(_parents_1, _function);
+      IterableExtensions.<TemplateType>forEach(_parents_1, _function);
       return result;
     } else {
       ArrayList<Property> _arrayList_1 = new ArrayList<Property>();
@@ -177,20 +177,20 @@ public class PropertyEvaluation {
    * @returns
    * 		a complete list of all properties in a record
    */
-  protected static Collection<Property> _collectAllTemplateProperties(final PartialRecordType type) {
+  protected static Collection<Property> _collectAllTemplateProperties(final TemplateType type) {
     BasicEList<Property> _basicEList = new BasicEList<Property>();
     final EList<Property> result = _basicEList;
-    EList<PartialRecordType> _parents = type.getParents();
+    EList<TemplateType> _parents = type.getParents();
     boolean _notEquals = (!Objects.equal(_parents, null));
     if (_notEquals) {
-      EList<PartialRecordType> _parents_1 = type.getParents();
-      final Procedure1<PartialRecordType> _function = new Procedure1<PartialRecordType>() {
-        public void apply(final PartialRecordType iface) {
+      EList<TemplateType> _parents_1 = type.getParents();
+      final Procedure1<TemplateType> _function = new Procedure1<TemplateType>() {
+        public void apply(final TemplateType iface) {
           Collection<Property> _collectAllTemplateProperties = PropertyEvaluation.collectAllTemplateProperties(iface);
           PropertyEvaluation.addAllUnique(result, _collectAllTemplateProperties);
         }
       };
-      IterableExtensions.<PartialRecordType>forEach(_parents_1, _function);
+      IterableExtensions.<TemplateType>forEach(_parents_1, _function);
     }
     EList<Property> _properties = type.getProperties();
     return PropertyEvaluation.addAllUnique(result, _properties);
@@ -372,10 +372,10 @@ public class PropertyEvaluation {
   }
   
   public static Collection<Property> collectAllDataProperties(final Type type) {
-    if (type instanceof PartialRecordType) {
-      return _collectAllDataProperties((PartialRecordType)type);
-    } else if (type instanceof RecordType) {
+    if (type instanceof RecordType) {
       return _collectAllDataProperties((RecordType)type);
+    } else if (type instanceof TemplateType) {
+      return _collectAllDataProperties((TemplateType)type);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(type).toString());
@@ -383,10 +383,10 @@ public class PropertyEvaluation {
   }
   
   public static Collection<Property> collectAllProperties(final Type type) {
-    if (type instanceof PartialRecordType) {
-      return _collectAllProperties((PartialRecordType)type);
-    } else if (type instanceof RecordType) {
+    if (type instanceof RecordType) {
       return _collectAllProperties((RecordType)type);
+    } else if (type instanceof TemplateType) {
+      return _collectAllProperties((TemplateType)type);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(type).toString());
@@ -394,10 +394,10 @@ public class PropertyEvaluation {
   }
   
   public static Collection<Property> collectAllTemplateProperties(final Type type) {
-    if (type instanceof PartialRecordType) {
-      return _collectAllTemplateProperties((PartialRecordType)type);
-    } else if (type instanceof RecordType) {
+    if (type instanceof RecordType) {
       return _collectAllTemplateProperties((RecordType)type);
+    } else if (type instanceof TemplateType) {
+      return _collectAllTemplateProperties((TemplateType)type);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
         Arrays.<Object>asList(type).toString());

@@ -19,6 +19,11 @@ class RecordTypeGenerator extends de.cau.cs.se.instrumentation.rl.generator.c.ma
 	 * Return the preferences activation description.
 	 */
 	override getDescription() '''C header file generator'''
+	
+	/**
+	 * No header for abstract record types.
+	 */
+	override boolean supportsAbstractRecordType()  { false }
 
 	/**
 	 * File name for c-header files.

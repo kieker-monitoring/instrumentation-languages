@@ -21,9 +21,9 @@ import com.google.common.collect.Iterators;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.Model;
-import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
+import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
 import java.util.Iterator;
 import org.eclipse.core.resources.IFile;
@@ -114,16 +114,16 @@ public class EMFModelGenerator {
     EClass _createContainmentClass = this.createContainmentClass();
     this.insert(destination, _createContainmentClass, EMFModelGenerator.SERVICE_PACKAGE);
     TreeIterator<EObject> _allContents_1 = source.getAllContents();
-    Iterator<PartialRecordType> _filter_1 = Iterators.<PartialRecordType>filter(_allContents_1, PartialRecordType.class);
-    final Procedure1<PartialRecordType> _function_2 = new Procedure1<PartialRecordType>() {
-      public void apply(final PartialRecordType type) {
+    Iterator<TemplateType> _filter_1 = Iterators.<TemplateType>filter(_allContents_1, TemplateType.class);
+    final Procedure1<TemplateType> _function_2 = new Procedure1<TemplateType>() {
+      public void apply(final TemplateType type) {
         EClass _createInterface = EMFModelGenerator.this.createInterface(type);
         EObject _eContainer = type.eContainer();
         String _name = ((Model) _eContainer).getName();
         EMFModelGenerator.this.insert(destination, _createInterface, _name);
       }
     };
-    IteratorExtensions.<PartialRecordType>forEach(_filter_1, _function_2);
+    IteratorExtensions.<TemplateType>forEach(_filter_1, _function_2);
     TreeIterator<EObject> _allContents_2 = source.getAllContents();
     Iterator<RecordType> _filter_2 = Iterators.<RecordType>filter(_allContents_2, RecordType.class);
     final Procedure1<RecordType> _function_3 = new Procedure1<RecordType>() {
@@ -136,13 +136,13 @@ public class EMFModelGenerator {
     };
     IteratorExtensions.<RecordType>forEach(_filter_2, _function_3);
     TreeIterator<EObject> _allContents_3 = source.getAllContents();
-    Iterator<PartialRecordType> _filter_3 = Iterators.<PartialRecordType>filter(_allContents_3, PartialRecordType.class);
-    final Procedure1<PartialRecordType> _function_4 = new Procedure1<PartialRecordType>() {
-      public void apply(final PartialRecordType type) {
+    Iterator<TemplateType> _filter_3 = Iterators.<TemplateType>filter(_allContents_3, TemplateType.class);
+    final Procedure1<TemplateType> _function_4 = new Procedure1<TemplateType>() {
+      public void apply(final TemplateType type) {
         EMFModelGenerator.this.composeInterface(type, destination);
       }
     };
-    IteratorExtensions.<PartialRecordType>forEach(_filter_3, _function_4);
+    IteratorExtensions.<TemplateType>forEach(_filter_3, _function_4);
     TreeIterator<EObject> _allContents_4 = source.getAllContents();
     Iterator<RecordType> _filter_4 = Iterators.<RecordType>filter(_allContents_4, RecordType.class);
     final Procedure1<RecordType> _function_5 = new Procedure1<RecordType>() {
@@ -425,7 +425,7 @@ public class EMFModelGenerator {
   /**
    * Compose an EMF interface for the given partial record type/template.
    */
-  public EClass createInterface(final PartialRecordType type) {
+  public EClass createInterface(final TemplateType type) {
     final EClass clazz = this.factory.createEClass();
     String _name = type.getName();
     clazz.setName(_name);
@@ -450,21 +450,21 @@ public class EMFModelGenerator {
   /**
    * Complete the interface construction with inheritance and attributes.
    */
-  public void composeInterface(final PartialRecordType type, final Resource resource) {
+  public void composeInterface(final TemplateType type, final Resource resource) {
     final EClass clazz = this.findResultClass(type, resource);
-    EList<PartialRecordType> _parents = type.getParents();
+    EList<TemplateType> _parents = type.getParents();
     boolean _isEmpty = _parents.isEmpty();
     boolean _not = (!_isEmpty);
     if (_not) {
-      EList<PartialRecordType> _parents_1 = type.getParents();
-      final Procedure1<PartialRecordType> _function = new Procedure1<PartialRecordType>() {
-        public void apply(final PartialRecordType iface) {
+      EList<TemplateType> _parents_1 = type.getParents();
+      final Procedure1<TemplateType> _function = new Procedure1<TemplateType>() {
+        public void apply(final TemplateType iface) {
           EList<EClass> _eSuperTypes = clazz.getESuperTypes();
           EClass _findResultClass = EMFModelGenerator.this.findResultClass(iface, resource);
           _eSuperTypes.add(_findResultClass);
         }
       };
-      IterableExtensions.<PartialRecordType>forEach(_parents_1, _function);
+      IterableExtensions.<TemplateType>forEach(_parents_1, _function);
     }
     EList<Property> _properties = type.getProperties();
     final Procedure1<Property> _function_1 = new Procedure1<Property>() {
@@ -493,19 +493,19 @@ public class EMFModelGenerator {
       EList<EClass> _eSuperTypes_1 = clazz.getESuperTypes();
       _eSuperTypes_1.add(this.abstractRecordClass);
     }
-    EList<PartialRecordType> _parents = type.getParents();
+    EList<TemplateType> _parents = type.getParents();
     boolean _isEmpty = _parents.isEmpty();
     boolean _not = (!_isEmpty);
     if (_not) {
-      EList<PartialRecordType> _parents_1 = type.getParents();
-      final Procedure1<PartialRecordType> _function = new Procedure1<PartialRecordType>() {
-        public void apply(final PartialRecordType iface) {
+      EList<TemplateType> _parents_1 = type.getParents();
+      final Procedure1<TemplateType> _function = new Procedure1<TemplateType>() {
+        public void apply(final TemplateType iface) {
           EList<EClass> _eSuperTypes = clazz.getESuperTypes();
           EClass _findResultClass = EMFModelGenerator.this.findResultClass(iface, resource);
           _eSuperTypes.add(_findResultClass);
         }
       };
-      IterableExtensions.<PartialRecordType>forEach(_parents_1, _function);
+      IterableExtensions.<TemplateType>forEach(_parents_1, _function);
     }
     EList<Property> _properties = type.getProperties();
     final Procedure1<Property> _function_1 = new Procedure1<Property>() {

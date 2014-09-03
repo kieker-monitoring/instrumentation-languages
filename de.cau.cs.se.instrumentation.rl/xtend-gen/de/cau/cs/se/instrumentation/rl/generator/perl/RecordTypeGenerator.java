@@ -37,6 +37,13 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   }
   
   /**
+   * No perl structures for abstract record types.
+   */
+  public boolean supportsAbstractRecordType() {
+    return false;
+  }
+  
+  /**
    * Compute the directory name for a record type.
    */
   public CharSequence getDirectoryName(final Type type) {
@@ -151,9 +158,10 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     _builder.newLine();
     _builder.append("    ");
     Collection<Property> _collectAllDataProperties_3 = PropertyEvaluation.collectAllDataProperties(type);
-    final Function1<Property, CharSequence> _function = new Function1<Property, CharSequence>() {
+    final Function1<Property,CharSequence> _function = new Function1<Property,CharSequence>() {
       public CharSequence apply(final Property it) {
-        return RecordTypeGenerator.this.createProperty(it);
+        CharSequence _createProperty = RecordTypeGenerator.this.createProperty(it);
+        return _createProperty;
       }
     };
     Iterable<CharSequence> _map = IterableExtensions.<Property, CharSequence>map(_collectAllDataProperties_3, _function);
@@ -217,16 +225,18 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     String _switchResult = null;
     EClassifier _class_ = classifier.getClass_();
     String _name = _class_.getName();
+    final String _switchValue = _name;
     boolean _matched = false;
     if (!_matched) {
-      if (Objects.equal(_name, "string")) {
+      if (Objects.equal(_switchValue,"string")) {
         _matched=true;
         _switchResult = "String";
       }
     }
     if (!_matched) {
       EClassifier _class__1 = classifier.getClass_();
-      _switchResult = _class__1.getName();
+      String _name_1 = _class__1.getName();
+      _switchResult = _name_1;
     }
     return _switchResult;
   }
@@ -260,7 +270,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   }
   
   public String createParameterCall(final Collection<Property> list) {
-    final Function1<Property, String> _function = new Function1<Property, String>() {
+    final Function1<Property,String> _function = new Function1<Property,String>() {
       public String apply(final Property it) {
         StringConcatenation _builder = new StringConcatenation();
         _builder.append("$");
@@ -270,6 +280,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       }
     };
     Iterable<String> _map = IterableExtensions.<Property, String>map(list, _function);
-    return IterableExtensions.join(_map, ", ");
+    String _join = IterableExtensions.join(_map, ", ");
+    return _join;
   }
 }

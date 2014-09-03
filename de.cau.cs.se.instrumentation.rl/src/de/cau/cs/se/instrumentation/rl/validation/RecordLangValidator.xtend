@@ -12,7 +12,7 @@ import de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral
 import de.cau.cs.se.instrumentation.rl.recordLang.FloatLiteral
 import de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral
 import de.cau.cs.se.instrumentation.rl.recordLang.Literal
-import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType
+import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType
 import de.cau.cs.se.instrumentation.rl.recordLang.Property
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangFactory
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage
@@ -99,7 +99,7 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 	 * Check a PartialType for multiple inheritance of the same property with different types. 
 	 */	
 	@Check
-	def checkPartialTypeComposition(PartialRecordType type) {
+	def checkPartialTypeComposition(TemplateType type) {
 		val Collection<Property> properties = PropertyEvaluation::collectAllProperties(type)
 		if (properties.exists[p | properties.exists[pInner | p.name.equals(pInner.name) && p != pInner]]) {
 			val Collection<Pair<Property,Property>> duplicates = new ArrayList<Pair<Property,Property>>()

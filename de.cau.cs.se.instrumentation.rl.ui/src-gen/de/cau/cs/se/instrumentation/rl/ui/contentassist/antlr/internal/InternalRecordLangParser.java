@@ -435,25 +435,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
     // $ANTLR end "ruleType"
 
 
-    // $ANTLR start "entryRulePartialRecordType"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:173:1: entryRulePartialRecordType : rulePartialRecordType EOF ;
-    public final void entryRulePartialRecordType() throws RecognitionException {
+    // $ANTLR start "entryRuleTemplateType"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:173:1: entryRuleTemplateType : ruleTemplateType EOF ;
+    public final void entryRuleTemplateType() throws RecognitionException {
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:174:1: ( rulePartialRecordType EOF )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:175:1: rulePartialRecordType EOF
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:174:1: ( ruleTemplateType EOF )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:175:1: ruleTemplateType EOF
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPartialRecordTypeRule()); 
+               before(grammarAccess.getTemplateTypeRule()); 
             }
-            pushFollow(FOLLOW_rulePartialRecordType_in_entryRulePartialRecordType307);
-            rulePartialRecordType();
+            pushFollow(FOLLOW_ruleTemplateType_in_entryRuleTemplateType307);
+            ruleTemplateType();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPartialRecordTypeRule()); 
+               after(grammarAccess.getTemplateTypeRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRulePartialRecordType314); if (state.failed) return ;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleTemplateType314); if (state.failed) return ;
 
             }
 
@@ -466,30 +466,30 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "entryRulePartialRecordType"
+    // $ANTLR end "entryRuleTemplateType"
 
 
-    // $ANTLR start "rulePartialRecordType"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:182:1: rulePartialRecordType : ( ( rule__PartialRecordType__Group__0 ) ) ;
-    public final void rulePartialRecordType() throws RecognitionException {
+    // $ANTLR start "ruleTemplateType"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:182:1: ruleTemplateType : ( ( rule__TemplateType__Group__0 ) ) ;
+    public final void ruleTemplateType() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:186:2: ( ( ( rule__PartialRecordType__Group__0 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:187:1: ( ( rule__PartialRecordType__Group__0 ) )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:186:2: ( ( ( rule__TemplateType__Group__0 ) ) )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:187:1: ( ( rule__TemplateType__Group__0 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:187:1: ( ( rule__PartialRecordType__Group__0 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:188:1: ( rule__PartialRecordType__Group__0 )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:187:1: ( ( rule__TemplateType__Group__0 ) )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:188:1: ( rule__TemplateType__Group__0 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPartialRecordTypeAccess().getGroup()); 
+               before(grammarAccess.getTemplateTypeAccess().getGroup()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:189:1: ( rule__PartialRecordType__Group__0 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:189:2: rule__PartialRecordType__Group__0
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:189:1: ( rule__TemplateType__Group__0 )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:189:2: rule__TemplateType__Group__0
             {
-            pushFollow(FOLLOW_rule__PartialRecordType__Group__0_in_rulePartialRecordType340);
-            rule__PartialRecordType__Group__0();
+            pushFollow(FOLLOW_rule__TemplateType__Group__0_in_ruleTemplateType340);
+            rule__TemplateType__Group__0();
 
             state._fsp--;
             if (state.failed) return ;
@@ -497,7 +497,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPartialRecordTypeAccess().getGroup()); 
+               after(grammarAccess.getTemplateTypeAccess().getGroup()); 
             }
 
             }
@@ -517,7 +517,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rulePartialRecordType"
+    // $ANTLR end "ruleTemplateType"
 
 
     // $ANTLR start "entryRuleRecordType"
@@ -1796,13 +1796,13 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Type__Alternatives"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:621:1: rule__Type__Alternatives : ( ( ruleRecordType ) | ( rulePartialRecordType ) );
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:621:1: rule__Type__Alternatives : ( ( ruleRecordType ) | ( ruleTemplateType ) );
     public final void rule__Type__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:625:1: ( ( ruleRecordType ) | ( rulePartialRecordType ) )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:625:1: ( ( ruleRecordType ) | ( ruleTemplateType ) )
             int alt1=2;
             switch ( input.LA(1) ) {
             case 18:
@@ -1944,21 +1944,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:632:6: ( rulePartialRecordType )
+                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:632:6: ( ruleTemplateType )
                     {
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:632:6: ( rulePartialRecordType )
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:633:1: rulePartialRecordType
+                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:632:6: ( ruleTemplateType )
+                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:633:1: ruleTemplateType
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getTypeAccess().getPartialRecordTypeParserRuleCall_1()); 
+                       before(grammarAccess.getTypeAccess().getTemplateTypeParserRuleCall_1()); 
                     }
-                    pushFollow(FOLLOW_rulePartialRecordType_in_rule__Type__Alternatives1293);
-                    rulePartialRecordType();
+                    pushFollow(FOLLOW_ruleTemplateType_in_rule__Type__Alternatives1293);
+                    ruleTemplateType();
 
                     state._fsp--;
                     if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getTypeAccess().getPartialRecordTypeParserRuleCall_1()); 
+                       after(grammarAccess.getTypeAccess().getTemplateTypeParserRuleCall_1()); 
                     }
 
                     }
@@ -1983,14 +1983,14 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
     // $ANTLR end "rule__Type__Alternatives"
 
 
-    // $ANTLR start "rule__PartialRecordType__Alternatives_5_1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:643:1: rule__PartialRecordType__Alternatives_5_1 : ( ( ( rule__PartialRecordType__PropertiesAssignment_5_1_0 ) ) | ( ( rule__PartialRecordType__ConstantsAssignment_5_1_1 ) ) );
-    public final void rule__PartialRecordType__Alternatives_5_1() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__Alternatives_5_1"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:643:1: rule__TemplateType__Alternatives_5_1 : ( ( ( rule__TemplateType__PropertiesAssignment_5_1_0 ) ) | ( ( rule__TemplateType__ConstantsAssignment_5_1_1 ) ) );
+    public final void rule__TemplateType__Alternatives_5_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:647:1: ( ( ( rule__PartialRecordType__PropertiesAssignment_5_1_0 ) ) | ( ( rule__PartialRecordType__ConstantsAssignment_5_1_1 ) ) )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:647:1: ( ( ( rule__TemplateType__PropertiesAssignment_5_1_0 ) ) | ( ( rule__TemplateType__ConstantsAssignment_5_1_1 ) ) )
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -2009,19 +2009,19 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             }
             switch (alt2) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:648:1: ( ( rule__PartialRecordType__PropertiesAssignment_5_1_0 ) )
+                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:648:1: ( ( rule__TemplateType__PropertiesAssignment_5_1_0 ) )
                     {
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:648:1: ( ( rule__PartialRecordType__PropertiesAssignment_5_1_0 ) )
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:649:1: ( rule__PartialRecordType__PropertiesAssignment_5_1_0 )
+                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:648:1: ( ( rule__TemplateType__PropertiesAssignment_5_1_0 ) )
+                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:649:1: ( rule__TemplateType__PropertiesAssignment_5_1_0 )
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getPartialRecordTypeAccess().getPropertiesAssignment_5_1_0()); 
+                       before(grammarAccess.getTemplateTypeAccess().getPropertiesAssignment_5_1_0()); 
                     }
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:650:1: ( rule__PartialRecordType__PropertiesAssignment_5_1_0 )
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:650:2: rule__PartialRecordType__PropertiesAssignment_5_1_0
+                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:650:1: ( rule__TemplateType__PropertiesAssignment_5_1_0 )
+                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:650:2: rule__TemplateType__PropertiesAssignment_5_1_0
                     {
-                    pushFollow(FOLLOW_rule__PartialRecordType__PropertiesAssignment_5_1_0_in_rule__PartialRecordType__Alternatives_5_11325);
-                    rule__PartialRecordType__PropertiesAssignment_5_1_0();
+                    pushFollow(FOLLOW_rule__TemplateType__PropertiesAssignment_5_1_0_in_rule__TemplateType__Alternatives_5_11325);
+                    rule__TemplateType__PropertiesAssignment_5_1_0();
 
                     state._fsp--;
                     if (state.failed) return ;
@@ -2029,7 +2029,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
                     }
 
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getPartialRecordTypeAccess().getPropertiesAssignment_5_1_0()); 
+                       after(grammarAccess.getTemplateTypeAccess().getPropertiesAssignment_5_1_0()); 
                     }
 
                     }
@@ -2038,19 +2038,19 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:654:6: ( ( rule__PartialRecordType__ConstantsAssignment_5_1_1 ) )
+                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:654:6: ( ( rule__TemplateType__ConstantsAssignment_5_1_1 ) )
                     {
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:654:6: ( ( rule__PartialRecordType__ConstantsAssignment_5_1_1 ) )
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:655:1: ( rule__PartialRecordType__ConstantsAssignment_5_1_1 )
+                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:654:6: ( ( rule__TemplateType__ConstantsAssignment_5_1_1 ) )
+                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:655:1: ( rule__TemplateType__ConstantsAssignment_5_1_1 )
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getPartialRecordTypeAccess().getConstantsAssignment_5_1_1()); 
+                       before(grammarAccess.getTemplateTypeAccess().getConstantsAssignment_5_1_1()); 
                     }
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:656:1: ( rule__PartialRecordType__ConstantsAssignment_5_1_1 )
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:656:2: rule__PartialRecordType__ConstantsAssignment_5_1_1
+                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:656:1: ( rule__TemplateType__ConstantsAssignment_5_1_1 )
+                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:656:2: rule__TemplateType__ConstantsAssignment_5_1_1
                     {
-                    pushFollow(FOLLOW_rule__PartialRecordType__ConstantsAssignment_5_1_1_in_rule__PartialRecordType__Alternatives_5_11343);
-                    rule__PartialRecordType__ConstantsAssignment_5_1_1();
+                    pushFollow(FOLLOW_rule__TemplateType__ConstantsAssignment_5_1_1_in_rule__TemplateType__Alternatives_5_11343);
+                    rule__TemplateType__ConstantsAssignment_5_1_1();
 
                     state._fsp--;
                     if (state.failed) return ;
@@ -2058,7 +2058,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
                     }
 
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getPartialRecordTypeAccess().getConstantsAssignment_5_1_1()); 
+                       after(grammarAccess.getTemplateTypeAccess().getConstantsAssignment_5_1_1()); 
                     }
 
                     }
@@ -2080,7 +2080,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__Alternatives_5_1"
+    // $ANTLR end "rule__TemplateType__Alternatives_5_1"
 
 
     // $ANTLR start "rule__RecordType__Alternatives_7_1"
@@ -3486,23 +3486,23 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
     // $ANTLR end "rule__Package__Group__2__Impl"
 
 
-    // $ANTLR start "rule__PartialRecordType__Group__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1092:1: rule__PartialRecordType__Group__0 : rule__PartialRecordType__Group__0__Impl rule__PartialRecordType__Group__1 ;
-    public final void rule__PartialRecordType__Group__0() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__Group__0"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1092:1: rule__TemplateType__Group__0 : rule__TemplateType__Group__0__Impl rule__TemplateType__Group__1 ;
+    public final void rule__TemplateType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1096:1: ( rule__PartialRecordType__Group__0__Impl rule__PartialRecordType__Group__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1097:2: rule__PartialRecordType__Group__0__Impl rule__PartialRecordType__Group__1
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1096:1: ( rule__TemplateType__Group__0__Impl rule__TemplateType__Group__1 )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1097:2: rule__TemplateType__Group__0__Impl rule__TemplateType__Group__1
             {
-            pushFollow(FOLLOW_rule__PartialRecordType__Group__0__Impl_in_rule__PartialRecordType__Group__02264);
-            rule__PartialRecordType__Group__0__Impl();
+            pushFollow(FOLLOW_rule__TemplateType__Group__0__Impl_in_rule__TemplateType__Group__02264);
+            rule__TemplateType__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PartialRecordType__Group__1_in_rule__PartialRecordType__Group__02267);
-            rule__PartialRecordType__Group__1();
+            pushFollow(FOLLOW_rule__TemplateType__Group__1_in_rule__TemplateType__Group__02267);
+            rule__TemplateType__Group__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -3521,26 +3521,26 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__Group__0"
+    // $ANTLR end "rule__TemplateType__Group__0"
 
 
-    // $ANTLR start "rule__PartialRecordType__Group__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1104:1: rule__PartialRecordType__Group__0__Impl : ( ( rule__PartialRecordType__Group_0__0 )? ) ;
-    public final void rule__PartialRecordType__Group__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__Group__0__Impl"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1104:1: rule__TemplateType__Group__0__Impl : ( ( rule__TemplateType__Group_0__0 )? ) ;
+    public final void rule__TemplateType__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1108:1: ( ( ( rule__PartialRecordType__Group_0__0 )? ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1109:1: ( ( rule__PartialRecordType__Group_0__0 )? )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1108:1: ( ( ( rule__TemplateType__Group_0__0 )? ) )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1109:1: ( ( rule__TemplateType__Group_0__0 )? )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1109:1: ( ( rule__PartialRecordType__Group_0__0 )? )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1110:1: ( rule__PartialRecordType__Group_0__0 )?
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1109:1: ( ( rule__TemplateType__Group_0__0 )? )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1110:1: ( rule__TemplateType__Group_0__0 )?
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPartialRecordTypeAccess().getGroup_0()); 
+               before(grammarAccess.getTemplateTypeAccess().getGroup_0()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1111:1: ( rule__PartialRecordType__Group_0__0 )?
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1111:1: ( rule__TemplateType__Group_0__0 )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -3549,10 +3549,10 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             }
             switch (alt10) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1111:2: rule__PartialRecordType__Group_0__0
+                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1111:2: rule__TemplateType__Group_0__0
                     {
-                    pushFollow(FOLLOW_rule__PartialRecordType__Group_0__0_in_rule__PartialRecordType__Group__0__Impl2294);
-                    rule__PartialRecordType__Group_0__0();
+                    pushFollow(FOLLOW_rule__TemplateType__Group_0__0_in_rule__TemplateType__Group__0__Impl2294);
+                    rule__TemplateType__Group_0__0();
 
                     state._fsp--;
                     if (state.failed) return ;
@@ -3563,7 +3563,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPartialRecordTypeAccess().getGroup_0()); 
+               after(grammarAccess.getTemplateTypeAccess().getGroup_0()); 
             }
 
             }
@@ -3583,26 +3583,26 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__Group__0__Impl"
+    // $ANTLR end "rule__TemplateType__Group__0__Impl"
 
 
-    // $ANTLR start "rule__PartialRecordType__Group__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1121:1: rule__PartialRecordType__Group__1 : rule__PartialRecordType__Group__1__Impl rule__PartialRecordType__Group__2 ;
-    public final void rule__PartialRecordType__Group__1() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__Group__1"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1121:1: rule__TemplateType__Group__1 : rule__TemplateType__Group__1__Impl rule__TemplateType__Group__2 ;
+    public final void rule__TemplateType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1125:1: ( rule__PartialRecordType__Group__1__Impl rule__PartialRecordType__Group__2 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1126:2: rule__PartialRecordType__Group__1__Impl rule__PartialRecordType__Group__2
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1125:1: ( rule__TemplateType__Group__1__Impl rule__TemplateType__Group__2 )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1126:2: rule__TemplateType__Group__1__Impl rule__TemplateType__Group__2
             {
-            pushFollow(FOLLOW_rule__PartialRecordType__Group__1__Impl_in_rule__PartialRecordType__Group__12325);
-            rule__PartialRecordType__Group__1__Impl();
+            pushFollow(FOLLOW_rule__TemplateType__Group__1__Impl_in_rule__TemplateType__Group__12325);
+            rule__TemplateType__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PartialRecordType__Group__2_in_rule__PartialRecordType__Group__12328);
-            rule__PartialRecordType__Group__2();
+            pushFollow(FOLLOW_rule__TemplateType__Group__2_in_rule__TemplateType__Group__12328);
+            rule__TemplateType__Group__2();
 
             state._fsp--;
             if (state.failed) return ;
@@ -3621,26 +3621,26 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__Group__1"
+    // $ANTLR end "rule__TemplateType__Group__1"
 
 
-    // $ANTLR start "rule__PartialRecordType__Group__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1133:1: rule__PartialRecordType__Group__1__Impl : ( ( rule__PartialRecordType__Group_1__0 )? ) ;
-    public final void rule__PartialRecordType__Group__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__Group__1__Impl"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1133:1: rule__TemplateType__Group__1__Impl : ( ( rule__TemplateType__Group_1__0 )? ) ;
+    public final void rule__TemplateType__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1137:1: ( ( ( rule__PartialRecordType__Group_1__0 )? ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1138:1: ( ( rule__PartialRecordType__Group_1__0 )? )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1137:1: ( ( ( rule__TemplateType__Group_1__0 )? ) )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1138:1: ( ( rule__TemplateType__Group_1__0 )? )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1138:1: ( ( rule__PartialRecordType__Group_1__0 )? )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1139:1: ( rule__PartialRecordType__Group_1__0 )?
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1138:1: ( ( rule__TemplateType__Group_1__0 )? )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1139:1: ( rule__TemplateType__Group_1__0 )?
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPartialRecordTypeAccess().getGroup_1()); 
+               before(grammarAccess.getTemplateTypeAccess().getGroup_1()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1140:1: ( rule__PartialRecordType__Group_1__0 )?
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1140:1: ( rule__TemplateType__Group_1__0 )?
             int alt11=2;
             int LA11_0 = input.LA(1);
 
@@ -3649,10 +3649,10 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             }
             switch (alt11) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1140:2: rule__PartialRecordType__Group_1__0
+                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1140:2: rule__TemplateType__Group_1__0
                     {
-                    pushFollow(FOLLOW_rule__PartialRecordType__Group_1__0_in_rule__PartialRecordType__Group__1__Impl2355);
-                    rule__PartialRecordType__Group_1__0();
+                    pushFollow(FOLLOW_rule__TemplateType__Group_1__0_in_rule__TemplateType__Group__1__Impl2355);
+                    rule__TemplateType__Group_1__0();
 
                     state._fsp--;
                     if (state.failed) return ;
@@ -3663,7 +3663,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPartialRecordTypeAccess().getGroup_1()); 
+               after(grammarAccess.getTemplateTypeAccess().getGroup_1()); 
             }
 
             }
@@ -3683,26 +3683,26 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__Group__1__Impl"
+    // $ANTLR end "rule__TemplateType__Group__1__Impl"
 
 
-    // $ANTLR start "rule__PartialRecordType__Group__2"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1150:1: rule__PartialRecordType__Group__2 : rule__PartialRecordType__Group__2__Impl rule__PartialRecordType__Group__3 ;
-    public final void rule__PartialRecordType__Group__2() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__Group__2"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1150:1: rule__TemplateType__Group__2 : rule__TemplateType__Group__2__Impl rule__TemplateType__Group__3 ;
+    public final void rule__TemplateType__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1154:1: ( rule__PartialRecordType__Group__2__Impl rule__PartialRecordType__Group__3 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1155:2: rule__PartialRecordType__Group__2__Impl rule__PartialRecordType__Group__3
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1154:1: ( rule__TemplateType__Group__2__Impl rule__TemplateType__Group__3 )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1155:2: rule__TemplateType__Group__2__Impl rule__TemplateType__Group__3
             {
-            pushFollow(FOLLOW_rule__PartialRecordType__Group__2__Impl_in_rule__PartialRecordType__Group__22386);
-            rule__PartialRecordType__Group__2__Impl();
+            pushFollow(FOLLOW_rule__TemplateType__Group__2__Impl_in_rule__TemplateType__Group__22386);
+            rule__TemplateType__Group__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PartialRecordType__Group__3_in_rule__PartialRecordType__Group__22389);
-            rule__PartialRecordType__Group__3();
+            pushFollow(FOLLOW_rule__TemplateType__Group__3_in_rule__TemplateType__Group__22389);
+            rule__TemplateType__Group__3();
 
             state._fsp--;
             if (state.failed) return ;
@@ -3721,12 +3721,12 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__Group__2"
+    // $ANTLR end "rule__TemplateType__Group__2"
 
 
-    // $ANTLR start "rule__PartialRecordType__Group__2__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1162:1: rule__PartialRecordType__Group__2__Impl : ( 'template' ) ;
-    public final void rule__PartialRecordType__Group__2__Impl() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__Group__2__Impl"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1162:1: rule__TemplateType__Group__2__Impl : ( 'template' ) ;
+    public final void rule__TemplateType__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -3738,11 +3738,11 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1168:1: 'template'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPartialRecordTypeAccess().getTemplateKeyword_2()); 
+               before(grammarAccess.getTemplateTypeAccess().getTemplateKeyword_2()); 
             }
-            match(input,17,FOLLOW_17_in_rule__PartialRecordType__Group__2__Impl2417); if (state.failed) return ;
+            match(input,17,FOLLOW_17_in_rule__TemplateType__Group__2__Impl2417); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPartialRecordTypeAccess().getTemplateKeyword_2()); 
+               after(grammarAccess.getTemplateTypeAccess().getTemplateKeyword_2()); 
             }
 
             }
@@ -3762,26 +3762,26 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__Group__2__Impl"
+    // $ANTLR end "rule__TemplateType__Group__2__Impl"
 
 
-    // $ANTLR start "rule__PartialRecordType__Group__3"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1181:1: rule__PartialRecordType__Group__3 : rule__PartialRecordType__Group__3__Impl rule__PartialRecordType__Group__4 ;
-    public final void rule__PartialRecordType__Group__3() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__Group__3"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1181:1: rule__TemplateType__Group__3 : rule__TemplateType__Group__3__Impl rule__TemplateType__Group__4 ;
+    public final void rule__TemplateType__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1185:1: ( rule__PartialRecordType__Group__3__Impl rule__PartialRecordType__Group__4 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1186:2: rule__PartialRecordType__Group__3__Impl rule__PartialRecordType__Group__4
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1185:1: ( rule__TemplateType__Group__3__Impl rule__TemplateType__Group__4 )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1186:2: rule__TemplateType__Group__3__Impl rule__TemplateType__Group__4
             {
-            pushFollow(FOLLOW_rule__PartialRecordType__Group__3__Impl_in_rule__PartialRecordType__Group__32448);
-            rule__PartialRecordType__Group__3__Impl();
+            pushFollow(FOLLOW_rule__TemplateType__Group__3__Impl_in_rule__TemplateType__Group__32448);
+            rule__TemplateType__Group__3__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PartialRecordType__Group__4_in_rule__PartialRecordType__Group__32451);
-            rule__PartialRecordType__Group__4();
+            pushFollow(FOLLOW_rule__TemplateType__Group__4_in_rule__TemplateType__Group__32451);
+            rule__TemplateType__Group__4();
 
             state._fsp--;
             if (state.failed) return ;
@@ -3800,30 +3800,30 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__Group__3"
+    // $ANTLR end "rule__TemplateType__Group__3"
 
 
-    // $ANTLR start "rule__PartialRecordType__Group__3__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1193:1: rule__PartialRecordType__Group__3__Impl : ( ( rule__PartialRecordType__NameAssignment_3 ) ) ;
-    public final void rule__PartialRecordType__Group__3__Impl() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__Group__3__Impl"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1193:1: rule__TemplateType__Group__3__Impl : ( ( rule__TemplateType__NameAssignment_3 ) ) ;
+    public final void rule__TemplateType__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1197:1: ( ( ( rule__PartialRecordType__NameAssignment_3 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1198:1: ( ( rule__PartialRecordType__NameAssignment_3 ) )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1197:1: ( ( ( rule__TemplateType__NameAssignment_3 ) ) )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1198:1: ( ( rule__TemplateType__NameAssignment_3 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1198:1: ( ( rule__PartialRecordType__NameAssignment_3 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1199:1: ( rule__PartialRecordType__NameAssignment_3 )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1198:1: ( ( rule__TemplateType__NameAssignment_3 ) )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1199:1: ( rule__TemplateType__NameAssignment_3 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPartialRecordTypeAccess().getNameAssignment_3()); 
+               before(grammarAccess.getTemplateTypeAccess().getNameAssignment_3()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1200:1: ( rule__PartialRecordType__NameAssignment_3 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1200:2: rule__PartialRecordType__NameAssignment_3
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1200:1: ( rule__TemplateType__NameAssignment_3 )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1200:2: rule__TemplateType__NameAssignment_3
             {
-            pushFollow(FOLLOW_rule__PartialRecordType__NameAssignment_3_in_rule__PartialRecordType__Group__3__Impl2478);
-            rule__PartialRecordType__NameAssignment_3();
+            pushFollow(FOLLOW_rule__TemplateType__NameAssignment_3_in_rule__TemplateType__Group__3__Impl2478);
+            rule__TemplateType__NameAssignment_3();
 
             state._fsp--;
             if (state.failed) return ;
@@ -3831,7 +3831,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPartialRecordTypeAccess().getNameAssignment_3()); 
+               after(grammarAccess.getTemplateTypeAccess().getNameAssignment_3()); 
             }
 
             }
@@ -3851,26 +3851,26 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__Group__3__Impl"
+    // $ANTLR end "rule__TemplateType__Group__3__Impl"
 
 
-    // $ANTLR start "rule__PartialRecordType__Group__4"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1210:1: rule__PartialRecordType__Group__4 : rule__PartialRecordType__Group__4__Impl rule__PartialRecordType__Group__5 ;
-    public final void rule__PartialRecordType__Group__4() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__Group__4"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1210:1: rule__TemplateType__Group__4 : rule__TemplateType__Group__4__Impl rule__TemplateType__Group__5 ;
+    public final void rule__TemplateType__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1214:1: ( rule__PartialRecordType__Group__4__Impl rule__PartialRecordType__Group__5 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1215:2: rule__PartialRecordType__Group__4__Impl rule__PartialRecordType__Group__5
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1214:1: ( rule__TemplateType__Group__4__Impl rule__TemplateType__Group__5 )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1215:2: rule__TemplateType__Group__4__Impl rule__TemplateType__Group__5
             {
-            pushFollow(FOLLOW_rule__PartialRecordType__Group__4__Impl_in_rule__PartialRecordType__Group__42508);
-            rule__PartialRecordType__Group__4__Impl();
+            pushFollow(FOLLOW_rule__TemplateType__Group__4__Impl_in_rule__TemplateType__Group__42508);
+            rule__TemplateType__Group__4__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PartialRecordType__Group__5_in_rule__PartialRecordType__Group__42511);
-            rule__PartialRecordType__Group__5();
+            pushFollow(FOLLOW_rule__TemplateType__Group__5_in_rule__TemplateType__Group__42511);
+            rule__TemplateType__Group__5();
 
             state._fsp--;
             if (state.failed) return ;
@@ -3889,26 +3889,26 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__Group__4"
+    // $ANTLR end "rule__TemplateType__Group__4"
 
 
-    // $ANTLR start "rule__PartialRecordType__Group__4__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1222:1: rule__PartialRecordType__Group__4__Impl : ( ( rule__PartialRecordType__Group_4__0 )? ) ;
-    public final void rule__PartialRecordType__Group__4__Impl() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__Group__4__Impl"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1222:1: rule__TemplateType__Group__4__Impl : ( ( rule__TemplateType__Group_4__0 )? ) ;
+    public final void rule__TemplateType__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1226:1: ( ( ( rule__PartialRecordType__Group_4__0 )? ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1227:1: ( ( rule__PartialRecordType__Group_4__0 )? )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1226:1: ( ( ( rule__TemplateType__Group_4__0 )? ) )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1227:1: ( ( rule__TemplateType__Group_4__0 )? )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1227:1: ( ( rule__PartialRecordType__Group_4__0 )? )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1228:1: ( rule__PartialRecordType__Group_4__0 )?
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1227:1: ( ( rule__TemplateType__Group_4__0 )? )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1228:1: ( rule__TemplateType__Group_4__0 )?
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPartialRecordTypeAccess().getGroup_4()); 
+               before(grammarAccess.getTemplateTypeAccess().getGroup_4()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1229:1: ( rule__PartialRecordType__Group_4__0 )?
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1229:1: ( rule__TemplateType__Group_4__0 )?
             int alt12=2;
             int LA12_0 = input.LA(1);
 
@@ -3917,10 +3917,10 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             }
             switch (alt12) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1229:2: rule__PartialRecordType__Group_4__0
+                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1229:2: rule__TemplateType__Group_4__0
                     {
-                    pushFollow(FOLLOW_rule__PartialRecordType__Group_4__0_in_rule__PartialRecordType__Group__4__Impl2538);
-                    rule__PartialRecordType__Group_4__0();
+                    pushFollow(FOLLOW_rule__TemplateType__Group_4__0_in_rule__TemplateType__Group__4__Impl2538);
+                    rule__TemplateType__Group_4__0();
 
                     state._fsp--;
                     if (state.failed) return ;
@@ -3931,7 +3931,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPartialRecordTypeAccess().getGroup_4()); 
+               after(grammarAccess.getTemplateTypeAccess().getGroup_4()); 
             }
 
             }
@@ -3951,21 +3951,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__Group__4__Impl"
+    // $ANTLR end "rule__TemplateType__Group__4__Impl"
 
 
-    // $ANTLR start "rule__PartialRecordType__Group__5"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1239:1: rule__PartialRecordType__Group__5 : rule__PartialRecordType__Group__5__Impl ;
-    public final void rule__PartialRecordType__Group__5() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__Group__5"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1239:1: rule__TemplateType__Group__5 : rule__TemplateType__Group__5__Impl ;
+    public final void rule__TemplateType__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1243:1: ( rule__PartialRecordType__Group__5__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1244:2: rule__PartialRecordType__Group__5__Impl
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1243:1: ( rule__TemplateType__Group__5__Impl )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1244:2: rule__TemplateType__Group__5__Impl
             {
-            pushFollow(FOLLOW_rule__PartialRecordType__Group__5__Impl_in_rule__PartialRecordType__Group__52569);
-            rule__PartialRecordType__Group__5__Impl();
+            pushFollow(FOLLOW_rule__TemplateType__Group__5__Impl_in_rule__TemplateType__Group__52569);
+            rule__TemplateType__Group__5__Impl();
 
             state._fsp--;
             if (state.failed) return ;
@@ -3984,26 +3984,26 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__Group__5"
+    // $ANTLR end "rule__TemplateType__Group__5"
 
 
-    // $ANTLR start "rule__PartialRecordType__Group__5__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1250:1: rule__PartialRecordType__Group__5__Impl : ( ( rule__PartialRecordType__Group_5__0 )? ) ;
-    public final void rule__PartialRecordType__Group__5__Impl() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__Group__5__Impl"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1250:1: rule__TemplateType__Group__5__Impl : ( ( rule__TemplateType__Group_5__0 )? ) ;
+    public final void rule__TemplateType__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1254:1: ( ( ( rule__PartialRecordType__Group_5__0 )? ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1255:1: ( ( rule__PartialRecordType__Group_5__0 )? )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1254:1: ( ( ( rule__TemplateType__Group_5__0 )? ) )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1255:1: ( ( rule__TemplateType__Group_5__0 )? )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1255:1: ( ( rule__PartialRecordType__Group_5__0 )? )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1256:1: ( rule__PartialRecordType__Group_5__0 )?
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1255:1: ( ( rule__TemplateType__Group_5__0 )? )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1256:1: ( rule__TemplateType__Group_5__0 )?
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPartialRecordTypeAccess().getGroup_5()); 
+               before(grammarAccess.getTemplateTypeAccess().getGroup_5()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1257:1: ( rule__PartialRecordType__Group_5__0 )?
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1257:1: ( rule__TemplateType__Group_5__0 )?
             int alt13=2;
             int LA13_0 = input.LA(1);
 
@@ -4012,10 +4012,10 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             }
             switch (alt13) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1257:2: rule__PartialRecordType__Group_5__0
+                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1257:2: rule__TemplateType__Group_5__0
                     {
-                    pushFollow(FOLLOW_rule__PartialRecordType__Group_5__0_in_rule__PartialRecordType__Group__5__Impl2596);
-                    rule__PartialRecordType__Group_5__0();
+                    pushFollow(FOLLOW_rule__TemplateType__Group_5__0_in_rule__TemplateType__Group__5__Impl2596);
+                    rule__TemplateType__Group_5__0();
 
                     state._fsp--;
                     if (state.failed) return ;
@@ -4026,7 +4026,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPartialRecordTypeAccess().getGroup_5()); 
+               after(grammarAccess.getTemplateTypeAccess().getGroup_5()); 
             }
 
             }
@@ -4046,26 +4046,26 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__Group__5__Impl"
+    // $ANTLR end "rule__TemplateType__Group__5__Impl"
 
 
-    // $ANTLR start "rule__PartialRecordType__Group_0__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1279:1: rule__PartialRecordType__Group_0__0 : rule__PartialRecordType__Group_0__0__Impl rule__PartialRecordType__Group_0__1 ;
-    public final void rule__PartialRecordType__Group_0__0() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__Group_0__0"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1279:1: rule__TemplateType__Group_0__0 : rule__TemplateType__Group_0__0__Impl rule__TemplateType__Group_0__1 ;
+    public final void rule__TemplateType__Group_0__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1283:1: ( rule__PartialRecordType__Group_0__0__Impl rule__PartialRecordType__Group_0__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1284:2: rule__PartialRecordType__Group_0__0__Impl rule__PartialRecordType__Group_0__1
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1283:1: ( rule__TemplateType__Group_0__0__Impl rule__TemplateType__Group_0__1 )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1284:2: rule__TemplateType__Group_0__0__Impl rule__TemplateType__Group_0__1
             {
-            pushFollow(FOLLOW_rule__PartialRecordType__Group_0__0__Impl_in_rule__PartialRecordType__Group_0__02639);
-            rule__PartialRecordType__Group_0__0__Impl();
+            pushFollow(FOLLOW_rule__TemplateType__Group_0__0__Impl_in_rule__TemplateType__Group_0__02639);
+            rule__TemplateType__Group_0__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PartialRecordType__Group_0__1_in_rule__PartialRecordType__Group_0__02642);
-            rule__PartialRecordType__Group_0__1();
+            pushFollow(FOLLOW_rule__TemplateType__Group_0__1_in_rule__TemplateType__Group_0__02642);
+            rule__TemplateType__Group_0__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -4084,12 +4084,12 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__Group_0__0"
+    // $ANTLR end "rule__TemplateType__Group_0__0"
 
 
-    // $ANTLR start "rule__PartialRecordType__Group_0__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1291:1: rule__PartialRecordType__Group_0__0__Impl : ( '@author' ) ;
-    public final void rule__PartialRecordType__Group_0__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__Group_0__0__Impl"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1291:1: rule__TemplateType__Group_0__0__Impl : ( '@author' ) ;
+    public final void rule__TemplateType__Group_0__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -4101,11 +4101,11 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1297:1: '@author'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPartialRecordTypeAccess().getAuthorKeyword_0_0()); 
+               before(grammarAccess.getTemplateTypeAccess().getAuthorKeyword_0_0()); 
             }
-            match(input,18,FOLLOW_18_in_rule__PartialRecordType__Group_0__0__Impl2670); if (state.failed) return ;
+            match(input,18,FOLLOW_18_in_rule__TemplateType__Group_0__0__Impl2670); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPartialRecordTypeAccess().getAuthorKeyword_0_0()); 
+               after(grammarAccess.getTemplateTypeAccess().getAuthorKeyword_0_0()); 
             }
 
             }
@@ -4125,21 +4125,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__Group_0__0__Impl"
+    // $ANTLR end "rule__TemplateType__Group_0__0__Impl"
 
 
-    // $ANTLR start "rule__PartialRecordType__Group_0__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1310:1: rule__PartialRecordType__Group_0__1 : rule__PartialRecordType__Group_0__1__Impl ;
-    public final void rule__PartialRecordType__Group_0__1() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__Group_0__1"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1310:1: rule__TemplateType__Group_0__1 : rule__TemplateType__Group_0__1__Impl ;
+    public final void rule__TemplateType__Group_0__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1314:1: ( rule__PartialRecordType__Group_0__1__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1315:2: rule__PartialRecordType__Group_0__1__Impl
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1314:1: ( rule__TemplateType__Group_0__1__Impl )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1315:2: rule__TemplateType__Group_0__1__Impl
             {
-            pushFollow(FOLLOW_rule__PartialRecordType__Group_0__1__Impl_in_rule__PartialRecordType__Group_0__12701);
-            rule__PartialRecordType__Group_0__1__Impl();
+            pushFollow(FOLLOW_rule__TemplateType__Group_0__1__Impl_in_rule__TemplateType__Group_0__12701);
+            rule__TemplateType__Group_0__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
@@ -4158,30 +4158,30 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__Group_0__1"
+    // $ANTLR end "rule__TemplateType__Group_0__1"
 
 
-    // $ANTLR start "rule__PartialRecordType__Group_0__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1321:1: rule__PartialRecordType__Group_0__1__Impl : ( ( rule__PartialRecordType__AuthorAssignment_0_1 ) ) ;
-    public final void rule__PartialRecordType__Group_0__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__Group_0__1__Impl"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1321:1: rule__TemplateType__Group_0__1__Impl : ( ( rule__TemplateType__AuthorAssignment_0_1 ) ) ;
+    public final void rule__TemplateType__Group_0__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1325:1: ( ( ( rule__PartialRecordType__AuthorAssignment_0_1 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1326:1: ( ( rule__PartialRecordType__AuthorAssignment_0_1 ) )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1325:1: ( ( ( rule__TemplateType__AuthorAssignment_0_1 ) ) )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1326:1: ( ( rule__TemplateType__AuthorAssignment_0_1 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1326:1: ( ( rule__PartialRecordType__AuthorAssignment_0_1 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1327:1: ( rule__PartialRecordType__AuthorAssignment_0_1 )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1326:1: ( ( rule__TemplateType__AuthorAssignment_0_1 ) )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1327:1: ( rule__TemplateType__AuthorAssignment_0_1 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPartialRecordTypeAccess().getAuthorAssignment_0_1()); 
+               before(grammarAccess.getTemplateTypeAccess().getAuthorAssignment_0_1()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1328:1: ( rule__PartialRecordType__AuthorAssignment_0_1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1328:2: rule__PartialRecordType__AuthorAssignment_0_1
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1328:1: ( rule__TemplateType__AuthorAssignment_0_1 )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1328:2: rule__TemplateType__AuthorAssignment_0_1
             {
-            pushFollow(FOLLOW_rule__PartialRecordType__AuthorAssignment_0_1_in_rule__PartialRecordType__Group_0__1__Impl2728);
-            rule__PartialRecordType__AuthorAssignment_0_1();
+            pushFollow(FOLLOW_rule__TemplateType__AuthorAssignment_0_1_in_rule__TemplateType__Group_0__1__Impl2728);
+            rule__TemplateType__AuthorAssignment_0_1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -4189,7 +4189,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPartialRecordTypeAccess().getAuthorAssignment_0_1()); 
+               after(grammarAccess.getTemplateTypeAccess().getAuthorAssignment_0_1()); 
             }
 
             }
@@ -4209,26 +4209,26 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__Group_0__1__Impl"
+    // $ANTLR end "rule__TemplateType__Group_0__1__Impl"
 
 
-    // $ANTLR start "rule__PartialRecordType__Group_1__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1342:1: rule__PartialRecordType__Group_1__0 : rule__PartialRecordType__Group_1__0__Impl rule__PartialRecordType__Group_1__1 ;
-    public final void rule__PartialRecordType__Group_1__0() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__Group_1__0"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1342:1: rule__TemplateType__Group_1__0 : rule__TemplateType__Group_1__0__Impl rule__TemplateType__Group_1__1 ;
+    public final void rule__TemplateType__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1346:1: ( rule__PartialRecordType__Group_1__0__Impl rule__PartialRecordType__Group_1__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1347:2: rule__PartialRecordType__Group_1__0__Impl rule__PartialRecordType__Group_1__1
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1346:1: ( rule__TemplateType__Group_1__0__Impl rule__TemplateType__Group_1__1 )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1347:2: rule__TemplateType__Group_1__0__Impl rule__TemplateType__Group_1__1
             {
-            pushFollow(FOLLOW_rule__PartialRecordType__Group_1__0__Impl_in_rule__PartialRecordType__Group_1__02762);
-            rule__PartialRecordType__Group_1__0__Impl();
+            pushFollow(FOLLOW_rule__TemplateType__Group_1__0__Impl_in_rule__TemplateType__Group_1__02762);
+            rule__TemplateType__Group_1__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PartialRecordType__Group_1__1_in_rule__PartialRecordType__Group_1__02765);
-            rule__PartialRecordType__Group_1__1();
+            pushFollow(FOLLOW_rule__TemplateType__Group_1__1_in_rule__TemplateType__Group_1__02765);
+            rule__TemplateType__Group_1__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -4247,12 +4247,12 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__Group_1__0"
+    // $ANTLR end "rule__TemplateType__Group_1__0"
 
 
-    // $ANTLR start "rule__PartialRecordType__Group_1__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1354:1: rule__PartialRecordType__Group_1__0__Impl : ( '@since' ) ;
-    public final void rule__PartialRecordType__Group_1__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__Group_1__0__Impl"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1354:1: rule__TemplateType__Group_1__0__Impl : ( '@since' ) ;
+    public final void rule__TemplateType__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -4264,11 +4264,11 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1360:1: '@since'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPartialRecordTypeAccess().getSinceKeyword_1_0()); 
+               before(grammarAccess.getTemplateTypeAccess().getSinceKeyword_1_0()); 
             }
-            match(input,19,FOLLOW_19_in_rule__PartialRecordType__Group_1__0__Impl2793); if (state.failed) return ;
+            match(input,19,FOLLOW_19_in_rule__TemplateType__Group_1__0__Impl2793); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPartialRecordTypeAccess().getSinceKeyword_1_0()); 
+               after(grammarAccess.getTemplateTypeAccess().getSinceKeyword_1_0()); 
             }
 
             }
@@ -4288,21 +4288,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__Group_1__0__Impl"
+    // $ANTLR end "rule__TemplateType__Group_1__0__Impl"
 
 
-    // $ANTLR start "rule__PartialRecordType__Group_1__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1373:1: rule__PartialRecordType__Group_1__1 : rule__PartialRecordType__Group_1__1__Impl ;
-    public final void rule__PartialRecordType__Group_1__1() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__Group_1__1"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1373:1: rule__TemplateType__Group_1__1 : rule__TemplateType__Group_1__1__Impl ;
+    public final void rule__TemplateType__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1377:1: ( rule__PartialRecordType__Group_1__1__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1378:2: rule__PartialRecordType__Group_1__1__Impl
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1377:1: ( rule__TemplateType__Group_1__1__Impl )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1378:2: rule__TemplateType__Group_1__1__Impl
             {
-            pushFollow(FOLLOW_rule__PartialRecordType__Group_1__1__Impl_in_rule__PartialRecordType__Group_1__12824);
-            rule__PartialRecordType__Group_1__1__Impl();
+            pushFollow(FOLLOW_rule__TemplateType__Group_1__1__Impl_in_rule__TemplateType__Group_1__12824);
+            rule__TemplateType__Group_1__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
@@ -4321,30 +4321,30 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__Group_1__1"
+    // $ANTLR end "rule__TemplateType__Group_1__1"
 
 
-    // $ANTLR start "rule__PartialRecordType__Group_1__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1384:1: rule__PartialRecordType__Group_1__1__Impl : ( ( rule__PartialRecordType__SinceAssignment_1_1 ) ) ;
-    public final void rule__PartialRecordType__Group_1__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__Group_1__1__Impl"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1384:1: rule__TemplateType__Group_1__1__Impl : ( ( rule__TemplateType__SinceAssignment_1_1 ) ) ;
+    public final void rule__TemplateType__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1388:1: ( ( ( rule__PartialRecordType__SinceAssignment_1_1 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1389:1: ( ( rule__PartialRecordType__SinceAssignment_1_1 ) )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1388:1: ( ( ( rule__TemplateType__SinceAssignment_1_1 ) ) )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1389:1: ( ( rule__TemplateType__SinceAssignment_1_1 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1389:1: ( ( rule__PartialRecordType__SinceAssignment_1_1 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1390:1: ( rule__PartialRecordType__SinceAssignment_1_1 )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1389:1: ( ( rule__TemplateType__SinceAssignment_1_1 ) )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1390:1: ( rule__TemplateType__SinceAssignment_1_1 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPartialRecordTypeAccess().getSinceAssignment_1_1()); 
+               before(grammarAccess.getTemplateTypeAccess().getSinceAssignment_1_1()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1391:1: ( rule__PartialRecordType__SinceAssignment_1_1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1391:2: rule__PartialRecordType__SinceAssignment_1_1
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1391:1: ( rule__TemplateType__SinceAssignment_1_1 )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1391:2: rule__TemplateType__SinceAssignment_1_1
             {
-            pushFollow(FOLLOW_rule__PartialRecordType__SinceAssignment_1_1_in_rule__PartialRecordType__Group_1__1__Impl2851);
-            rule__PartialRecordType__SinceAssignment_1_1();
+            pushFollow(FOLLOW_rule__TemplateType__SinceAssignment_1_1_in_rule__TemplateType__Group_1__1__Impl2851);
+            rule__TemplateType__SinceAssignment_1_1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -4352,7 +4352,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPartialRecordTypeAccess().getSinceAssignment_1_1()); 
+               after(grammarAccess.getTemplateTypeAccess().getSinceAssignment_1_1()); 
             }
 
             }
@@ -4372,26 +4372,26 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__Group_1__1__Impl"
+    // $ANTLR end "rule__TemplateType__Group_1__1__Impl"
 
 
-    // $ANTLR start "rule__PartialRecordType__Group_4__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1405:1: rule__PartialRecordType__Group_4__0 : rule__PartialRecordType__Group_4__0__Impl rule__PartialRecordType__Group_4__1 ;
-    public final void rule__PartialRecordType__Group_4__0() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__Group_4__0"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1405:1: rule__TemplateType__Group_4__0 : rule__TemplateType__Group_4__0__Impl rule__TemplateType__Group_4__1 ;
+    public final void rule__TemplateType__Group_4__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1409:1: ( rule__PartialRecordType__Group_4__0__Impl rule__PartialRecordType__Group_4__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1410:2: rule__PartialRecordType__Group_4__0__Impl rule__PartialRecordType__Group_4__1
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1409:1: ( rule__TemplateType__Group_4__0__Impl rule__TemplateType__Group_4__1 )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1410:2: rule__TemplateType__Group_4__0__Impl rule__TemplateType__Group_4__1
             {
-            pushFollow(FOLLOW_rule__PartialRecordType__Group_4__0__Impl_in_rule__PartialRecordType__Group_4__02885);
-            rule__PartialRecordType__Group_4__0__Impl();
+            pushFollow(FOLLOW_rule__TemplateType__Group_4__0__Impl_in_rule__TemplateType__Group_4__02885);
+            rule__TemplateType__Group_4__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PartialRecordType__Group_4__1_in_rule__PartialRecordType__Group_4__02888);
-            rule__PartialRecordType__Group_4__1();
+            pushFollow(FOLLOW_rule__TemplateType__Group_4__1_in_rule__TemplateType__Group_4__02888);
+            rule__TemplateType__Group_4__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -4410,12 +4410,12 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__Group_4__0"
+    // $ANTLR end "rule__TemplateType__Group_4__0"
 
 
-    // $ANTLR start "rule__PartialRecordType__Group_4__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1417:1: rule__PartialRecordType__Group_4__0__Impl : ( ':' ) ;
-    public final void rule__PartialRecordType__Group_4__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__Group_4__0__Impl"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1417:1: rule__TemplateType__Group_4__0__Impl : ( ':' ) ;
+    public final void rule__TemplateType__Group_4__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -4427,11 +4427,11 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1423:1: ':'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPartialRecordTypeAccess().getColonKeyword_4_0()); 
+               before(grammarAccess.getTemplateTypeAccess().getColonKeyword_4_0()); 
             }
-            match(input,20,FOLLOW_20_in_rule__PartialRecordType__Group_4__0__Impl2916); if (state.failed) return ;
+            match(input,20,FOLLOW_20_in_rule__TemplateType__Group_4__0__Impl2916); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPartialRecordTypeAccess().getColonKeyword_4_0()); 
+               after(grammarAccess.getTemplateTypeAccess().getColonKeyword_4_0()); 
             }
 
             }
@@ -4451,110 +4451,26 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__Group_4__0__Impl"
+    // $ANTLR end "rule__TemplateType__Group_4__0__Impl"
 
 
-    // $ANTLR start "rule__PartialRecordType__Group_4__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1436:1: rule__PartialRecordType__Group_4__1 : rule__PartialRecordType__Group_4__1__Impl rule__PartialRecordType__Group_4__2 ;
-    public final void rule__PartialRecordType__Group_4__1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1440:1: ( rule__PartialRecordType__Group_4__1__Impl rule__PartialRecordType__Group_4__2 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1441:2: rule__PartialRecordType__Group_4__1__Impl rule__PartialRecordType__Group_4__2
-            {
-            pushFollow(FOLLOW_rule__PartialRecordType__Group_4__1__Impl_in_rule__PartialRecordType__Group_4__12947);
-            rule__PartialRecordType__Group_4__1__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PartialRecordType__Group_4__2_in_rule__PartialRecordType__Group_4__12950);
-            rule__PartialRecordType__Group_4__2();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__PartialRecordType__Group_4__1"
-
-
-    // $ANTLR start "rule__PartialRecordType__Group_4__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1448:1: rule__PartialRecordType__Group_4__1__Impl : ( ( rule__PartialRecordType__ParentsAssignment_4_1 ) ) ;
-    public final void rule__PartialRecordType__Group_4__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__Group_4__1"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1436:1: rule__TemplateType__Group_4__1 : rule__TemplateType__Group_4__1__Impl rule__TemplateType__Group_4__2 ;
+    public final void rule__TemplateType__Group_4__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1452:1: ( ( ( rule__PartialRecordType__ParentsAssignment_4_1 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1453:1: ( ( rule__PartialRecordType__ParentsAssignment_4_1 ) )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1440:1: ( rule__TemplateType__Group_4__1__Impl rule__TemplateType__Group_4__2 )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1441:2: rule__TemplateType__Group_4__1__Impl rule__TemplateType__Group_4__2
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1453:1: ( ( rule__PartialRecordType__ParentsAssignment_4_1 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1454:1: ( rule__PartialRecordType__ParentsAssignment_4_1 )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getPartialRecordTypeAccess().getParentsAssignment_4_1()); 
-            }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1455:1: ( rule__PartialRecordType__ParentsAssignment_4_1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1455:2: rule__PartialRecordType__ParentsAssignment_4_1
-            {
-            pushFollow(FOLLOW_rule__PartialRecordType__ParentsAssignment_4_1_in_rule__PartialRecordType__Group_4__1__Impl2977);
-            rule__PartialRecordType__ParentsAssignment_4_1();
+            pushFollow(FOLLOW_rule__TemplateType__Group_4__1__Impl_in_rule__TemplateType__Group_4__12947);
+            rule__TemplateType__Group_4__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-
-            }
-
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getPartialRecordTypeAccess().getParentsAssignment_4_1()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__PartialRecordType__Group_4__1__Impl"
-
-
-    // $ANTLR start "rule__PartialRecordType__Group_4__2"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1465:1: rule__PartialRecordType__Group_4__2 : rule__PartialRecordType__Group_4__2__Impl ;
-    public final void rule__PartialRecordType__Group_4__2() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1469:1: ( rule__PartialRecordType__Group_4__2__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1470:2: rule__PartialRecordType__Group_4__2__Impl
-            {
-            pushFollow(FOLLOW_rule__PartialRecordType__Group_4__2__Impl_in_rule__PartialRecordType__Group_4__23007);
-            rule__PartialRecordType__Group_4__2__Impl();
+            pushFollow(FOLLOW_rule__TemplateType__Group_4__2_in_rule__TemplateType__Group_4__12950);
+            rule__TemplateType__Group_4__2();
 
             state._fsp--;
             if (state.failed) return ;
@@ -4573,26 +4489,110 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__Group_4__2"
+    // $ANTLR end "rule__TemplateType__Group_4__1"
 
 
-    // $ANTLR start "rule__PartialRecordType__Group_4__2__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1476:1: rule__PartialRecordType__Group_4__2__Impl : ( ( rule__PartialRecordType__Group_4_2__0 )* ) ;
-    public final void rule__PartialRecordType__Group_4__2__Impl() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__Group_4__1__Impl"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1448:1: rule__TemplateType__Group_4__1__Impl : ( ( rule__TemplateType__ParentsAssignment_4_1 ) ) ;
+    public final void rule__TemplateType__Group_4__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1480:1: ( ( ( rule__PartialRecordType__Group_4_2__0 )* ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1481:1: ( ( rule__PartialRecordType__Group_4_2__0 )* )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1452:1: ( ( ( rule__TemplateType__ParentsAssignment_4_1 ) ) )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1453:1: ( ( rule__TemplateType__ParentsAssignment_4_1 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1481:1: ( ( rule__PartialRecordType__Group_4_2__0 )* )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1482:1: ( rule__PartialRecordType__Group_4_2__0 )*
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1453:1: ( ( rule__TemplateType__ParentsAssignment_4_1 ) )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1454:1: ( rule__TemplateType__ParentsAssignment_4_1 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPartialRecordTypeAccess().getGroup_4_2()); 
+               before(grammarAccess.getTemplateTypeAccess().getParentsAssignment_4_1()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1483:1: ( rule__PartialRecordType__Group_4_2__0 )*
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1455:1: ( rule__TemplateType__ParentsAssignment_4_1 )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1455:2: rule__TemplateType__ParentsAssignment_4_1
+            {
+            pushFollow(FOLLOW_rule__TemplateType__ParentsAssignment_4_1_in_rule__TemplateType__Group_4__1__Impl2977);
+            rule__TemplateType__ParentsAssignment_4_1();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getTemplateTypeAccess().getParentsAssignment_4_1()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__TemplateType__Group_4__1__Impl"
+
+
+    // $ANTLR start "rule__TemplateType__Group_4__2"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1465:1: rule__TemplateType__Group_4__2 : rule__TemplateType__Group_4__2__Impl ;
+    public final void rule__TemplateType__Group_4__2() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1469:1: ( rule__TemplateType__Group_4__2__Impl )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1470:2: rule__TemplateType__Group_4__2__Impl
+            {
+            pushFollow(FOLLOW_rule__TemplateType__Group_4__2__Impl_in_rule__TemplateType__Group_4__23007);
+            rule__TemplateType__Group_4__2__Impl();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__TemplateType__Group_4__2"
+
+
+    // $ANTLR start "rule__TemplateType__Group_4__2__Impl"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1476:1: rule__TemplateType__Group_4__2__Impl : ( ( rule__TemplateType__Group_4_2__0 )* ) ;
+    public final void rule__TemplateType__Group_4__2__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1480:1: ( ( ( rule__TemplateType__Group_4_2__0 )* ) )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1481:1: ( ( rule__TemplateType__Group_4_2__0 )* )
+            {
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1481:1: ( ( rule__TemplateType__Group_4_2__0 )* )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1482:1: ( rule__TemplateType__Group_4_2__0 )*
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getTemplateTypeAccess().getGroup_4_2()); 
+            }
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1483:1: ( rule__TemplateType__Group_4_2__0 )*
             loop14:
             do {
                 int alt14=2;
@@ -4605,10 +4605,10 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
                 switch (alt14) {
             	case 1 :
-            	    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1483:2: rule__PartialRecordType__Group_4_2__0
+            	    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1483:2: rule__TemplateType__Group_4_2__0
             	    {
-            	    pushFollow(FOLLOW_rule__PartialRecordType__Group_4_2__0_in_rule__PartialRecordType__Group_4__2__Impl3034);
-            	    rule__PartialRecordType__Group_4_2__0();
+            	    pushFollow(FOLLOW_rule__TemplateType__Group_4_2__0_in_rule__TemplateType__Group_4__2__Impl3034);
+            	    rule__TemplateType__Group_4_2__0();
 
             	    state._fsp--;
             	    if (state.failed) return ;
@@ -4622,7 +4622,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             } while (true);
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPartialRecordTypeAccess().getGroup_4_2()); 
+               after(grammarAccess.getTemplateTypeAccess().getGroup_4_2()); 
             }
 
             }
@@ -4642,26 +4642,26 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__Group_4__2__Impl"
+    // $ANTLR end "rule__TemplateType__Group_4__2__Impl"
 
 
-    // $ANTLR start "rule__PartialRecordType__Group_4_2__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1499:1: rule__PartialRecordType__Group_4_2__0 : rule__PartialRecordType__Group_4_2__0__Impl rule__PartialRecordType__Group_4_2__1 ;
-    public final void rule__PartialRecordType__Group_4_2__0() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__Group_4_2__0"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1499:1: rule__TemplateType__Group_4_2__0 : rule__TemplateType__Group_4_2__0__Impl rule__TemplateType__Group_4_2__1 ;
+    public final void rule__TemplateType__Group_4_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1503:1: ( rule__PartialRecordType__Group_4_2__0__Impl rule__PartialRecordType__Group_4_2__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1504:2: rule__PartialRecordType__Group_4_2__0__Impl rule__PartialRecordType__Group_4_2__1
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1503:1: ( rule__TemplateType__Group_4_2__0__Impl rule__TemplateType__Group_4_2__1 )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1504:2: rule__TemplateType__Group_4_2__0__Impl rule__TemplateType__Group_4_2__1
             {
-            pushFollow(FOLLOW_rule__PartialRecordType__Group_4_2__0__Impl_in_rule__PartialRecordType__Group_4_2__03071);
-            rule__PartialRecordType__Group_4_2__0__Impl();
+            pushFollow(FOLLOW_rule__TemplateType__Group_4_2__0__Impl_in_rule__TemplateType__Group_4_2__03071);
+            rule__TemplateType__Group_4_2__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PartialRecordType__Group_4_2__1_in_rule__PartialRecordType__Group_4_2__03074);
-            rule__PartialRecordType__Group_4_2__1();
+            pushFollow(FOLLOW_rule__TemplateType__Group_4_2__1_in_rule__TemplateType__Group_4_2__03074);
+            rule__TemplateType__Group_4_2__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -4680,12 +4680,12 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__Group_4_2__0"
+    // $ANTLR end "rule__TemplateType__Group_4_2__0"
 
 
-    // $ANTLR start "rule__PartialRecordType__Group_4_2__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1511:1: rule__PartialRecordType__Group_4_2__0__Impl : ( ',' ) ;
-    public final void rule__PartialRecordType__Group_4_2__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__Group_4_2__0__Impl"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1511:1: rule__TemplateType__Group_4_2__0__Impl : ( ',' ) ;
+    public final void rule__TemplateType__Group_4_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -4697,11 +4697,11 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1517:1: ','
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPartialRecordTypeAccess().getCommaKeyword_4_2_0()); 
+               before(grammarAccess.getTemplateTypeAccess().getCommaKeyword_4_2_0()); 
             }
-            match(input,21,FOLLOW_21_in_rule__PartialRecordType__Group_4_2__0__Impl3102); if (state.failed) return ;
+            match(input,21,FOLLOW_21_in_rule__TemplateType__Group_4_2__0__Impl3102); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPartialRecordTypeAccess().getCommaKeyword_4_2_0()); 
+               after(grammarAccess.getTemplateTypeAccess().getCommaKeyword_4_2_0()); 
             }
 
             }
@@ -4721,21 +4721,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__Group_4_2__0__Impl"
+    // $ANTLR end "rule__TemplateType__Group_4_2__0__Impl"
 
 
-    // $ANTLR start "rule__PartialRecordType__Group_4_2__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1530:1: rule__PartialRecordType__Group_4_2__1 : rule__PartialRecordType__Group_4_2__1__Impl ;
-    public final void rule__PartialRecordType__Group_4_2__1() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__Group_4_2__1"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1530:1: rule__TemplateType__Group_4_2__1 : rule__TemplateType__Group_4_2__1__Impl ;
+    public final void rule__TemplateType__Group_4_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1534:1: ( rule__PartialRecordType__Group_4_2__1__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1535:2: rule__PartialRecordType__Group_4_2__1__Impl
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1534:1: ( rule__TemplateType__Group_4_2__1__Impl )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1535:2: rule__TemplateType__Group_4_2__1__Impl
             {
-            pushFollow(FOLLOW_rule__PartialRecordType__Group_4_2__1__Impl_in_rule__PartialRecordType__Group_4_2__13133);
-            rule__PartialRecordType__Group_4_2__1__Impl();
+            pushFollow(FOLLOW_rule__TemplateType__Group_4_2__1__Impl_in_rule__TemplateType__Group_4_2__13133);
+            rule__TemplateType__Group_4_2__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
@@ -4754,30 +4754,30 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__Group_4_2__1"
+    // $ANTLR end "rule__TemplateType__Group_4_2__1"
 
 
-    // $ANTLR start "rule__PartialRecordType__Group_4_2__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1541:1: rule__PartialRecordType__Group_4_2__1__Impl : ( ( rule__PartialRecordType__ParentsAssignment_4_2_1 ) ) ;
-    public final void rule__PartialRecordType__Group_4_2__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__Group_4_2__1__Impl"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1541:1: rule__TemplateType__Group_4_2__1__Impl : ( ( rule__TemplateType__ParentsAssignment_4_2_1 ) ) ;
+    public final void rule__TemplateType__Group_4_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1545:1: ( ( ( rule__PartialRecordType__ParentsAssignment_4_2_1 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1546:1: ( ( rule__PartialRecordType__ParentsAssignment_4_2_1 ) )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1545:1: ( ( ( rule__TemplateType__ParentsAssignment_4_2_1 ) ) )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1546:1: ( ( rule__TemplateType__ParentsAssignment_4_2_1 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1546:1: ( ( rule__PartialRecordType__ParentsAssignment_4_2_1 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1547:1: ( rule__PartialRecordType__ParentsAssignment_4_2_1 )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1546:1: ( ( rule__TemplateType__ParentsAssignment_4_2_1 ) )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1547:1: ( rule__TemplateType__ParentsAssignment_4_2_1 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPartialRecordTypeAccess().getParentsAssignment_4_2_1()); 
+               before(grammarAccess.getTemplateTypeAccess().getParentsAssignment_4_2_1()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1548:1: ( rule__PartialRecordType__ParentsAssignment_4_2_1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1548:2: rule__PartialRecordType__ParentsAssignment_4_2_1
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1548:1: ( rule__TemplateType__ParentsAssignment_4_2_1 )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1548:2: rule__TemplateType__ParentsAssignment_4_2_1
             {
-            pushFollow(FOLLOW_rule__PartialRecordType__ParentsAssignment_4_2_1_in_rule__PartialRecordType__Group_4_2__1__Impl3160);
-            rule__PartialRecordType__ParentsAssignment_4_2_1();
+            pushFollow(FOLLOW_rule__TemplateType__ParentsAssignment_4_2_1_in_rule__TemplateType__Group_4_2__1__Impl3160);
+            rule__TemplateType__ParentsAssignment_4_2_1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -4785,7 +4785,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPartialRecordTypeAccess().getParentsAssignment_4_2_1()); 
+               after(grammarAccess.getTemplateTypeAccess().getParentsAssignment_4_2_1()); 
             }
 
             }
@@ -4805,26 +4805,26 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__Group_4_2__1__Impl"
+    // $ANTLR end "rule__TemplateType__Group_4_2__1__Impl"
 
 
-    // $ANTLR start "rule__PartialRecordType__Group_5__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1562:1: rule__PartialRecordType__Group_5__0 : rule__PartialRecordType__Group_5__0__Impl rule__PartialRecordType__Group_5__1 ;
-    public final void rule__PartialRecordType__Group_5__0() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__Group_5__0"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1562:1: rule__TemplateType__Group_5__0 : rule__TemplateType__Group_5__0__Impl rule__TemplateType__Group_5__1 ;
+    public final void rule__TemplateType__Group_5__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1566:1: ( rule__PartialRecordType__Group_5__0__Impl rule__PartialRecordType__Group_5__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1567:2: rule__PartialRecordType__Group_5__0__Impl rule__PartialRecordType__Group_5__1
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1566:1: ( rule__TemplateType__Group_5__0__Impl rule__TemplateType__Group_5__1 )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1567:2: rule__TemplateType__Group_5__0__Impl rule__TemplateType__Group_5__1
             {
-            pushFollow(FOLLOW_rule__PartialRecordType__Group_5__0__Impl_in_rule__PartialRecordType__Group_5__03194);
-            rule__PartialRecordType__Group_5__0__Impl();
+            pushFollow(FOLLOW_rule__TemplateType__Group_5__0__Impl_in_rule__TemplateType__Group_5__03194);
+            rule__TemplateType__Group_5__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PartialRecordType__Group_5__1_in_rule__PartialRecordType__Group_5__03197);
-            rule__PartialRecordType__Group_5__1();
+            pushFollow(FOLLOW_rule__TemplateType__Group_5__1_in_rule__TemplateType__Group_5__03197);
+            rule__TemplateType__Group_5__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -4843,12 +4843,12 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__Group_5__0"
+    // $ANTLR end "rule__TemplateType__Group_5__0"
 
 
-    // $ANTLR start "rule__PartialRecordType__Group_5__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1574:1: rule__PartialRecordType__Group_5__0__Impl : ( '{' ) ;
-    public final void rule__PartialRecordType__Group_5__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__Group_5__0__Impl"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1574:1: rule__TemplateType__Group_5__0__Impl : ( '{' ) ;
+    public final void rule__TemplateType__Group_5__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -4860,11 +4860,11 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1580:1: '{'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPartialRecordTypeAccess().getLeftCurlyBracketKeyword_5_0()); 
+               before(grammarAccess.getTemplateTypeAccess().getLeftCurlyBracketKeyword_5_0()); 
             }
-            match(input,22,FOLLOW_22_in_rule__PartialRecordType__Group_5__0__Impl3225); if (state.failed) return ;
+            match(input,22,FOLLOW_22_in_rule__TemplateType__Group_5__0__Impl3225); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPartialRecordTypeAccess().getLeftCurlyBracketKeyword_5_0()); 
+               after(grammarAccess.getTemplateTypeAccess().getLeftCurlyBracketKeyword_5_0()); 
             }
 
             }
@@ -4884,26 +4884,26 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__Group_5__0__Impl"
+    // $ANTLR end "rule__TemplateType__Group_5__0__Impl"
 
 
-    // $ANTLR start "rule__PartialRecordType__Group_5__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1593:1: rule__PartialRecordType__Group_5__1 : rule__PartialRecordType__Group_5__1__Impl rule__PartialRecordType__Group_5__2 ;
-    public final void rule__PartialRecordType__Group_5__1() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__Group_5__1"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1593:1: rule__TemplateType__Group_5__1 : rule__TemplateType__Group_5__1__Impl rule__TemplateType__Group_5__2 ;
+    public final void rule__TemplateType__Group_5__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1597:1: ( rule__PartialRecordType__Group_5__1__Impl rule__PartialRecordType__Group_5__2 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1598:2: rule__PartialRecordType__Group_5__1__Impl rule__PartialRecordType__Group_5__2
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1597:1: ( rule__TemplateType__Group_5__1__Impl rule__TemplateType__Group_5__2 )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1598:2: rule__TemplateType__Group_5__1__Impl rule__TemplateType__Group_5__2
             {
-            pushFollow(FOLLOW_rule__PartialRecordType__Group_5__1__Impl_in_rule__PartialRecordType__Group_5__13256);
-            rule__PartialRecordType__Group_5__1__Impl();
+            pushFollow(FOLLOW_rule__TemplateType__Group_5__1__Impl_in_rule__TemplateType__Group_5__13256);
+            rule__TemplateType__Group_5__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__PartialRecordType__Group_5__2_in_rule__PartialRecordType__Group_5__13259);
-            rule__PartialRecordType__Group_5__2();
+            pushFollow(FOLLOW_rule__TemplateType__Group_5__2_in_rule__TemplateType__Group_5__13259);
+            rule__TemplateType__Group_5__2();
 
             state._fsp--;
             if (state.failed) return ;
@@ -4922,26 +4922,26 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__Group_5__1"
+    // $ANTLR end "rule__TemplateType__Group_5__1"
 
 
-    // $ANTLR start "rule__PartialRecordType__Group_5__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1605:1: rule__PartialRecordType__Group_5__1__Impl : ( ( rule__PartialRecordType__Alternatives_5_1 )* ) ;
-    public final void rule__PartialRecordType__Group_5__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__Group_5__1__Impl"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1605:1: rule__TemplateType__Group_5__1__Impl : ( ( rule__TemplateType__Alternatives_5_1 )* ) ;
+    public final void rule__TemplateType__Group_5__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1609:1: ( ( ( rule__PartialRecordType__Alternatives_5_1 )* ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1610:1: ( ( rule__PartialRecordType__Alternatives_5_1 )* )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1609:1: ( ( ( rule__TemplateType__Alternatives_5_1 )* ) )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1610:1: ( ( rule__TemplateType__Alternatives_5_1 )* )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1610:1: ( ( rule__PartialRecordType__Alternatives_5_1 )* )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1611:1: ( rule__PartialRecordType__Alternatives_5_1 )*
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1610:1: ( ( rule__TemplateType__Alternatives_5_1 )* )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1611:1: ( rule__TemplateType__Alternatives_5_1 )*
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPartialRecordTypeAccess().getAlternatives_5_1()); 
+               before(grammarAccess.getTemplateTypeAccess().getAlternatives_5_1()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1612:1: ( rule__PartialRecordType__Alternatives_5_1 )*
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1612:1: ( rule__TemplateType__Alternatives_5_1 )*
             loop15:
             do {
                 int alt15=2;
@@ -4954,10 +4954,10 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
                 switch (alt15) {
             	case 1 :
-            	    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1612:2: rule__PartialRecordType__Alternatives_5_1
+            	    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1612:2: rule__TemplateType__Alternatives_5_1
             	    {
-            	    pushFollow(FOLLOW_rule__PartialRecordType__Alternatives_5_1_in_rule__PartialRecordType__Group_5__1__Impl3286);
-            	    rule__PartialRecordType__Alternatives_5_1();
+            	    pushFollow(FOLLOW_rule__TemplateType__Alternatives_5_1_in_rule__TemplateType__Group_5__1__Impl3286);
+            	    rule__TemplateType__Alternatives_5_1();
 
             	    state._fsp--;
             	    if (state.failed) return ;
@@ -4971,7 +4971,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             } while (true);
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPartialRecordTypeAccess().getAlternatives_5_1()); 
+               after(grammarAccess.getTemplateTypeAccess().getAlternatives_5_1()); 
             }
 
             }
@@ -4991,21 +4991,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__Group_5__1__Impl"
+    // $ANTLR end "rule__TemplateType__Group_5__1__Impl"
 
 
-    // $ANTLR start "rule__PartialRecordType__Group_5__2"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1622:1: rule__PartialRecordType__Group_5__2 : rule__PartialRecordType__Group_5__2__Impl ;
-    public final void rule__PartialRecordType__Group_5__2() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__Group_5__2"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1622:1: rule__TemplateType__Group_5__2 : rule__TemplateType__Group_5__2__Impl ;
+    public final void rule__TemplateType__Group_5__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1626:1: ( rule__PartialRecordType__Group_5__2__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1627:2: rule__PartialRecordType__Group_5__2__Impl
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1626:1: ( rule__TemplateType__Group_5__2__Impl )
+            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1627:2: rule__TemplateType__Group_5__2__Impl
             {
-            pushFollow(FOLLOW_rule__PartialRecordType__Group_5__2__Impl_in_rule__PartialRecordType__Group_5__23317);
-            rule__PartialRecordType__Group_5__2__Impl();
+            pushFollow(FOLLOW_rule__TemplateType__Group_5__2__Impl_in_rule__TemplateType__Group_5__23317);
+            rule__TemplateType__Group_5__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
@@ -5024,12 +5024,12 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__Group_5__2"
+    // $ANTLR end "rule__TemplateType__Group_5__2"
 
 
-    // $ANTLR start "rule__PartialRecordType__Group_5__2__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1633:1: rule__PartialRecordType__Group_5__2__Impl : ( '}' ) ;
-    public final void rule__PartialRecordType__Group_5__2__Impl() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__Group_5__2__Impl"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1633:1: rule__TemplateType__Group_5__2__Impl : ( '}' ) ;
+    public final void rule__TemplateType__Group_5__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -5041,11 +5041,11 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1639:1: '}'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPartialRecordTypeAccess().getRightCurlyBracketKeyword_5_2()); 
+               before(grammarAccess.getTemplateTypeAccess().getRightCurlyBracketKeyword_5_2()); 
             }
-            match(input,23,FOLLOW_23_in_rule__PartialRecordType__Group_5__2__Impl3345); if (state.failed) return ;
+            match(input,23,FOLLOW_23_in_rule__TemplateType__Group_5__2__Impl3345); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPartialRecordTypeAccess().getRightCurlyBracketKeyword_5_2()); 
+               after(grammarAccess.getTemplateTypeAccess().getRightCurlyBracketKeyword_5_2()); 
             }
 
             }
@@ -5065,7 +5065,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__Group_5__2__Impl"
+    // $ANTLR end "rule__TemplateType__Group_5__2__Impl"
 
 
     // $ANTLR start "rule__RecordType__Group__0"
@@ -11018,9 +11018,9 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
     // $ANTLR end "rule__Package__PackageAssignment_2"
 
 
-    // $ANTLR start "rule__PartialRecordType__AuthorAssignment_0_1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3815:1: rule__PartialRecordType__AuthorAssignment_0_1 : ( RULE_STRING ) ;
-    public final void rule__PartialRecordType__AuthorAssignment_0_1() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__AuthorAssignment_0_1"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3815:1: rule__TemplateType__AuthorAssignment_0_1 : ( RULE_STRING ) ;
+    public final void rule__TemplateType__AuthorAssignment_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -11032,11 +11032,11 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3821:1: RULE_STRING
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPartialRecordTypeAccess().getAuthorSTRINGTerminalRuleCall_0_1_0()); 
+               before(grammarAccess.getTemplateTypeAccess().getAuthorSTRINGTerminalRuleCall_0_1_0()); 
             }
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__PartialRecordType__AuthorAssignment_0_17645); if (state.failed) return ;
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__TemplateType__AuthorAssignment_0_17645); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPartialRecordTypeAccess().getAuthorSTRINGTerminalRuleCall_0_1_0()); 
+               after(grammarAccess.getTemplateTypeAccess().getAuthorSTRINGTerminalRuleCall_0_1_0()); 
             }
 
             }
@@ -11056,12 +11056,12 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__AuthorAssignment_0_1"
+    // $ANTLR end "rule__TemplateType__AuthorAssignment_0_1"
 
 
-    // $ANTLR start "rule__PartialRecordType__SinceAssignment_1_1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3830:1: rule__PartialRecordType__SinceAssignment_1_1 : ( RULE_STRING ) ;
-    public final void rule__PartialRecordType__SinceAssignment_1_1() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__SinceAssignment_1_1"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3830:1: rule__TemplateType__SinceAssignment_1_1 : ( RULE_STRING ) ;
+    public final void rule__TemplateType__SinceAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -11073,11 +11073,11 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3836:1: RULE_STRING
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPartialRecordTypeAccess().getSinceSTRINGTerminalRuleCall_1_1_0()); 
+               before(grammarAccess.getTemplateTypeAccess().getSinceSTRINGTerminalRuleCall_1_1_0()); 
             }
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__PartialRecordType__SinceAssignment_1_17676); if (state.failed) return ;
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__TemplateType__SinceAssignment_1_17676); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPartialRecordTypeAccess().getSinceSTRINGTerminalRuleCall_1_1_0()); 
+               after(grammarAccess.getTemplateTypeAccess().getSinceSTRINGTerminalRuleCall_1_1_0()); 
             }
 
             }
@@ -11097,12 +11097,12 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__SinceAssignment_1_1"
+    // $ANTLR end "rule__TemplateType__SinceAssignment_1_1"
 
 
-    // $ANTLR start "rule__PartialRecordType__NameAssignment_3"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3845:1: rule__PartialRecordType__NameAssignment_3 : ( RULE_ID ) ;
-    public final void rule__PartialRecordType__NameAssignment_3() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__NameAssignment_3"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3845:1: rule__TemplateType__NameAssignment_3 : ( RULE_ID ) ;
+    public final void rule__TemplateType__NameAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -11114,11 +11114,11 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3851:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPartialRecordTypeAccess().getNameIDTerminalRuleCall_3_0()); 
+               before(grammarAccess.getTemplateTypeAccess().getNameIDTerminalRuleCall_3_0()); 
             }
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__PartialRecordType__NameAssignment_37707); if (state.failed) return ;
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__TemplateType__NameAssignment_37707); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPartialRecordTypeAccess().getNameIDTerminalRuleCall_3_0()); 
+               after(grammarAccess.getTemplateTypeAccess().getNameIDTerminalRuleCall_3_0()); 
             }
 
             }
@@ -11138,12 +11138,12 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__NameAssignment_3"
+    // $ANTLR end "rule__TemplateType__NameAssignment_3"
 
 
-    // $ANTLR start "rule__PartialRecordType__ParentsAssignment_4_1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3860:1: rule__PartialRecordType__ParentsAssignment_4_1 : ( ( ruleQualifiedName ) ) ;
-    public final void rule__PartialRecordType__ParentsAssignment_4_1() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__ParentsAssignment_4_1"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3860:1: rule__TemplateType__ParentsAssignment_4_1 : ( ( ruleQualifiedName ) ) ;
+    public final void rule__TemplateType__ParentsAssignment_4_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -11155,27 +11155,27 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3866:1: ( ruleQualifiedName )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPartialRecordTypeAccess().getParentsPartialRecordTypeCrossReference_4_1_0()); 
+               before(grammarAccess.getTemplateTypeAccess().getParentsTemplateTypeCrossReference_4_1_0()); 
             }
             // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3867:1: ( ruleQualifiedName )
             // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3868:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPartialRecordTypeAccess().getParentsPartialRecordTypeQualifiedNameParserRuleCall_4_1_0_1()); 
+               before(grammarAccess.getTemplateTypeAccess().getParentsTemplateTypeQualifiedNameParserRuleCall_4_1_0_1()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_rule__PartialRecordType__ParentsAssignment_4_17742);
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__TemplateType__ParentsAssignment_4_17742);
             ruleQualifiedName();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPartialRecordTypeAccess().getParentsPartialRecordTypeQualifiedNameParserRuleCall_4_1_0_1()); 
+               after(grammarAccess.getTemplateTypeAccess().getParentsTemplateTypeQualifiedNameParserRuleCall_4_1_0_1()); 
             }
 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPartialRecordTypeAccess().getParentsPartialRecordTypeCrossReference_4_1_0()); 
+               after(grammarAccess.getTemplateTypeAccess().getParentsTemplateTypeCrossReference_4_1_0()); 
             }
 
             }
@@ -11195,12 +11195,12 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__ParentsAssignment_4_1"
+    // $ANTLR end "rule__TemplateType__ParentsAssignment_4_1"
 
 
-    // $ANTLR start "rule__PartialRecordType__ParentsAssignment_4_2_1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3879:1: rule__PartialRecordType__ParentsAssignment_4_2_1 : ( ( ruleQualifiedName ) ) ;
-    public final void rule__PartialRecordType__ParentsAssignment_4_2_1() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__ParentsAssignment_4_2_1"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3879:1: rule__TemplateType__ParentsAssignment_4_2_1 : ( ( ruleQualifiedName ) ) ;
+    public final void rule__TemplateType__ParentsAssignment_4_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -11212,27 +11212,27 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3885:1: ( ruleQualifiedName )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPartialRecordTypeAccess().getParentsPartialRecordTypeCrossReference_4_2_1_0()); 
+               before(grammarAccess.getTemplateTypeAccess().getParentsTemplateTypeCrossReference_4_2_1_0()); 
             }
             // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3886:1: ( ruleQualifiedName )
             // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3887:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPartialRecordTypeAccess().getParentsPartialRecordTypeQualifiedNameParserRuleCall_4_2_1_0_1()); 
+               before(grammarAccess.getTemplateTypeAccess().getParentsTemplateTypeQualifiedNameParserRuleCall_4_2_1_0_1()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_rule__PartialRecordType__ParentsAssignment_4_2_17781);
+            pushFollow(FOLLOW_ruleQualifiedName_in_rule__TemplateType__ParentsAssignment_4_2_17781);
             ruleQualifiedName();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPartialRecordTypeAccess().getParentsPartialRecordTypeQualifiedNameParserRuleCall_4_2_1_0_1()); 
+               after(grammarAccess.getTemplateTypeAccess().getParentsTemplateTypeQualifiedNameParserRuleCall_4_2_1_0_1()); 
             }
 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPartialRecordTypeAccess().getParentsPartialRecordTypeCrossReference_4_2_1_0()); 
+               after(grammarAccess.getTemplateTypeAccess().getParentsTemplateTypeCrossReference_4_2_1_0()); 
             }
 
             }
@@ -11252,12 +11252,12 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__ParentsAssignment_4_2_1"
+    // $ANTLR end "rule__TemplateType__ParentsAssignment_4_2_1"
 
 
-    // $ANTLR start "rule__PartialRecordType__PropertiesAssignment_5_1_0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3898:1: rule__PartialRecordType__PropertiesAssignment_5_1_0 : ( ruleProperty ) ;
-    public final void rule__PartialRecordType__PropertiesAssignment_5_1_0() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__PropertiesAssignment_5_1_0"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3898:1: rule__TemplateType__PropertiesAssignment_5_1_0 : ( ruleProperty ) ;
+    public final void rule__TemplateType__PropertiesAssignment_5_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -11269,15 +11269,15 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3904:1: ruleProperty
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPartialRecordTypeAccess().getPropertiesPropertyParserRuleCall_5_1_0_0()); 
+               before(grammarAccess.getTemplateTypeAccess().getPropertiesPropertyParserRuleCall_5_1_0_0()); 
             }
-            pushFollow(FOLLOW_ruleProperty_in_rule__PartialRecordType__PropertiesAssignment_5_1_07816);
+            pushFollow(FOLLOW_ruleProperty_in_rule__TemplateType__PropertiesAssignment_5_1_07816);
             ruleProperty();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPartialRecordTypeAccess().getPropertiesPropertyParserRuleCall_5_1_0_0()); 
+               after(grammarAccess.getTemplateTypeAccess().getPropertiesPropertyParserRuleCall_5_1_0_0()); 
             }
 
             }
@@ -11297,12 +11297,12 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__PropertiesAssignment_5_1_0"
+    // $ANTLR end "rule__TemplateType__PropertiesAssignment_5_1_0"
 
 
-    // $ANTLR start "rule__PartialRecordType__ConstantsAssignment_5_1_1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3913:1: rule__PartialRecordType__ConstantsAssignment_5_1_1 : ( ruleConstant ) ;
-    public final void rule__PartialRecordType__ConstantsAssignment_5_1_1() throws RecognitionException {
+    // $ANTLR start "rule__TemplateType__ConstantsAssignment_5_1_1"
+    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3913:1: rule__TemplateType__ConstantsAssignment_5_1_1 : ( ruleConstant ) ;
+    public final void rule__TemplateType__ConstantsAssignment_5_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
@@ -11314,15 +11314,15 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3919:1: ruleConstant
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPartialRecordTypeAccess().getConstantsConstantParserRuleCall_5_1_1_0()); 
+               before(grammarAccess.getTemplateTypeAccess().getConstantsConstantParserRuleCall_5_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleConstant_in_rule__PartialRecordType__ConstantsAssignment_5_1_17847);
+            pushFollow(FOLLOW_ruleConstant_in_rule__TemplateType__ConstantsAssignment_5_1_17847);
             ruleConstant();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPartialRecordTypeAccess().getConstantsConstantParserRuleCall_5_1_1_0()); 
+               after(grammarAccess.getTemplateTypeAccess().getConstantsConstantParserRuleCall_5_1_1_0()); 
             }
 
             }
@@ -11342,7 +11342,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__PartialRecordType__ConstantsAssignment_5_1_1"
+    // $ANTLR end "rule__TemplateType__ConstantsAssignment_5_1_1"
 
 
     // $ANTLR start "rule__RecordType__AuthorAssignment_0_1"
@@ -11592,13 +11592,13 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4021:1: ( ruleQualifiedName )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getRecordTypeAccess().getParentsPartialRecordTypeCrossReference_6_1_0()); 
+               before(grammarAccess.getRecordTypeAccess().getParentsTemplateTypeCrossReference_6_1_0()); 
             }
             // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4022:1: ( ruleQualifiedName )
             // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4023:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getRecordTypeAccess().getParentsPartialRecordTypeQualifiedNameParserRuleCall_6_1_0_1()); 
+               before(grammarAccess.getRecordTypeAccess().getParentsTemplateTypeQualifiedNameParserRuleCall_6_1_0_1()); 
             }
             pushFollow(FOLLOW_ruleQualifiedName_in_rule__RecordType__ParentsAssignment_6_18058);
             ruleQualifiedName();
@@ -11606,13 +11606,13 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getRecordTypeAccess().getParentsPartialRecordTypeQualifiedNameParserRuleCall_6_1_0_1()); 
+               after(grammarAccess.getRecordTypeAccess().getParentsTemplateTypeQualifiedNameParserRuleCall_6_1_0_1()); 
             }
 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getRecordTypeAccess().getParentsPartialRecordTypeCrossReference_6_1_0()); 
+               after(grammarAccess.getRecordTypeAccess().getParentsTemplateTypeCrossReference_6_1_0()); 
             }
 
             }
@@ -11649,13 +11649,13 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4040:1: ( ruleQualifiedName )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getRecordTypeAccess().getParentsPartialRecordTypeCrossReference_6_2_1_0()); 
+               before(grammarAccess.getRecordTypeAccess().getParentsTemplateTypeCrossReference_6_2_1_0()); 
             }
             // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4041:1: ( ruleQualifiedName )
             // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4042:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getRecordTypeAccess().getParentsPartialRecordTypeQualifiedNameParserRuleCall_6_2_1_0_1()); 
+               before(grammarAccess.getRecordTypeAccess().getParentsTemplateTypeQualifiedNameParserRuleCall_6_2_1_0_1()); 
             }
             pushFollow(FOLLOW_ruleQualifiedName_in_rule__RecordType__ParentsAssignment_6_2_18097);
             ruleQualifiedName();
@@ -11663,13 +11663,13 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getRecordTypeAccess().getParentsPartialRecordTypeQualifiedNameParserRuleCall_6_2_1_0_1()); 
+               after(grammarAccess.getRecordTypeAccess().getParentsTemplateTypeQualifiedNameParserRuleCall_6_2_1_0_1()); 
             }
 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getRecordTypeAccess().getParentsPartialRecordTypeCrossReference_6_2_1_0()); 
+               after(grammarAccess.getRecordTypeAccess().getParentsTemplateTypeCrossReference_6_2_1_0()); 
             }
 
             }
@@ -12755,9 +12755,9 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
     public static final BitSet FOLLOW_ruleType_in_entryRuleType247 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleType254 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Type__Alternatives_in_ruleType280 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePartialRecordType_in_entryRulePartialRecordType307 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRulePartialRecordType314 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group__0_in_rulePartialRecordType340 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTemplateType_in_entryRuleTemplateType307 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleTemplateType314 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group__0_in_ruleTemplateType340 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleRecordType_in_entryRuleRecordType367 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleRecordType374 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__RecordType__Group__0_in_ruleRecordType400 = new BitSet(new long[]{0x0000000000000002L});
@@ -12804,9 +12804,9 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
     public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedNameWithWildcard1214 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__QualifiedNameWithWildcard__Group__0_in_ruleQualifiedNameWithWildcard1240 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleRecordType_in_rule__Type__Alternatives1276 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePartialRecordType_in_rule__Type__Alternatives1293 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__PropertiesAssignment_5_1_0_in_rule__PartialRecordType__Alternatives_5_11325 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__ConstantsAssignment_5_1_1_in_rule__PartialRecordType__Alternatives_5_11343 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTemplateType_in_rule__Type__Alternatives1293 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TemplateType__PropertiesAssignment_5_1_0_in_rule__TemplateType__Alternatives_5_11325 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TemplateType__ConstantsAssignment_5_1_1_in_rule__TemplateType__Alternatives_5_11343 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__RecordType__PropertiesAssignment_7_1_0_in_rule__RecordType__Alternatives_7_11376 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__RecordType__ConstantsAssignment_7_1_1_in_rule__RecordType__Alternatives_7_11394 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Property__TypeAssignment_0_0_in_rule__Property__Alternatives_01427 = new BitSet(new long[]{0x0000000000000002L});
@@ -12846,54 +12846,54 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
     public static final BitSet FOLLOW_rule__Package__NameAssignment_1_in_rule__Package__Group__1__Impl2171 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Package__Group__2__Impl_in_rule__Package__Group__22201 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Package__PackageAssignment_2_in_rule__Package__Group__2__Impl2228 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group__0__Impl_in_rule__PartialRecordType__Group__02264 = new BitSet(new long[]{0x00000004010E0000L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group__1_in_rule__PartialRecordType__Group__02267 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group_0__0_in_rule__PartialRecordType__Group__0__Impl2294 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group__1__Impl_in_rule__PartialRecordType__Group__12325 = new BitSet(new long[]{0x00000004010E0000L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group__2_in_rule__PartialRecordType__Group__12328 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group_1__0_in_rule__PartialRecordType__Group__1__Impl2355 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group__2__Impl_in_rule__PartialRecordType__Group__22386 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group__3_in_rule__PartialRecordType__Group__22389 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_17_in_rule__PartialRecordType__Group__2__Impl2417 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group__3__Impl_in_rule__PartialRecordType__Group__32448 = new BitSet(new long[]{0x0000000000500000L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group__4_in_rule__PartialRecordType__Group__32451 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__NameAssignment_3_in_rule__PartialRecordType__Group__3__Impl2478 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group__4__Impl_in_rule__PartialRecordType__Group__42508 = new BitSet(new long[]{0x0000000000500000L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group__5_in_rule__PartialRecordType__Group__42511 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group_4__0_in_rule__PartialRecordType__Group__4__Impl2538 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group__5__Impl_in_rule__PartialRecordType__Group__52569 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group_5__0_in_rule__PartialRecordType__Group__5__Impl2596 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group_0__0__Impl_in_rule__PartialRecordType__Group_0__02639 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group_0__1_in_rule__PartialRecordType__Group_0__02642 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_18_in_rule__PartialRecordType__Group_0__0__Impl2670 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group_0__1__Impl_in_rule__PartialRecordType__Group_0__12701 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__AuthorAssignment_0_1_in_rule__PartialRecordType__Group_0__1__Impl2728 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group_1__0__Impl_in_rule__PartialRecordType__Group_1__02762 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group_1__1_in_rule__PartialRecordType__Group_1__02765 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_19_in_rule__PartialRecordType__Group_1__0__Impl2793 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group_1__1__Impl_in_rule__PartialRecordType__Group_1__12824 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__SinceAssignment_1_1_in_rule__PartialRecordType__Group_1__1__Impl2851 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group_4__0__Impl_in_rule__PartialRecordType__Group_4__02885 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group_4__1_in_rule__PartialRecordType__Group_4__02888 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_20_in_rule__PartialRecordType__Group_4__0__Impl2916 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group_4__1__Impl_in_rule__PartialRecordType__Group_4__12947 = new BitSet(new long[]{0x0000000000200000L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group_4__2_in_rule__PartialRecordType__Group_4__12950 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__ParentsAssignment_4_1_in_rule__PartialRecordType__Group_4__1__Impl2977 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group_4__2__Impl_in_rule__PartialRecordType__Group_4__23007 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group_4_2__0_in_rule__PartialRecordType__Group_4__2__Impl3034 = new BitSet(new long[]{0x0000000000200002L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group_4_2__0__Impl_in_rule__PartialRecordType__Group_4_2__03071 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group_4_2__1_in_rule__PartialRecordType__Group_4_2__03074 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_21_in_rule__PartialRecordType__Group_4_2__0__Impl3102 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group_4_2__1__Impl_in_rule__PartialRecordType__Group_4_2__13133 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__ParentsAssignment_4_2_1_in_rule__PartialRecordType__Group_4_2__1__Impl3160 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group_5__0__Impl_in_rule__PartialRecordType__Group_5__03194 = new BitSet(new long[]{0x0000000014800010L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group_5__1_in_rule__PartialRecordType__Group_5__03197 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_22_in_rule__PartialRecordType__Group_5__0__Impl3225 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group_5__1__Impl_in_rule__PartialRecordType__Group_5__13256 = new BitSet(new long[]{0x0000000014800010L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group_5__2_in_rule__PartialRecordType__Group_5__13259 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Alternatives_5_1_in_rule__PartialRecordType__Group_5__1__Impl3286 = new BitSet(new long[]{0x0000000014000012L});
-    public static final BitSet FOLLOW_rule__PartialRecordType__Group_5__2__Impl_in_rule__PartialRecordType__Group_5__23317 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_23_in_rule__PartialRecordType__Group_5__2__Impl3345 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group__0__Impl_in_rule__TemplateType__Group__02264 = new BitSet(new long[]{0x00000004010E0000L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group__1_in_rule__TemplateType__Group__02267 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group_0__0_in_rule__TemplateType__Group__0__Impl2294 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group__1__Impl_in_rule__TemplateType__Group__12325 = new BitSet(new long[]{0x00000004010E0000L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group__2_in_rule__TemplateType__Group__12328 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group_1__0_in_rule__TemplateType__Group__1__Impl2355 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group__2__Impl_in_rule__TemplateType__Group__22386 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group__3_in_rule__TemplateType__Group__22389 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_17_in_rule__TemplateType__Group__2__Impl2417 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group__3__Impl_in_rule__TemplateType__Group__32448 = new BitSet(new long[]{0x0000000000500000L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group__4_in_rule__TemplateType__Group__32451 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TemplateType__NameAssignment_3_in_rule__TemplateType__Group__3__Impl2478 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group__4__Impl_in_rule__TemplateType__Group__42508 = new BitSet(new long[]{0x0000000000500000L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group__5_in_rule__TemplateType__Group__42511 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group_4__0_in_rule__TemplateType__Group__4__Impl2538 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group__5__Impl_in_rule__TemplateType__Group__52569 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group_5__0_in_rule__TemplateType__Group__5__Impl2596 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group_0__0__Impl_in_rule__TemplateType__Group_0__02639 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group_0__1_in_rule__TemplateType__Group_0__02642 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_18_in_rule__TemplateType__Group_0__0__Impl2670 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group_0__1__Impl_in_rule__TemplateType__Group_0__12701 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TemplateType__AuthorAssignment_0_1_in_rule__TemplateType__Group_0__1__Impl2728 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group_1__0__Impl_in_rule__TemplateType__Group_1__02762 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group_1__1_in_rule__TemplateType__Group_1__02765 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_19_in_rule__TemplateType__Group_1__0__Impl2793 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group_1__1__Impl_in_rule__TemplateType__Group_1__12824 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TemplateType__SinceAssignment_1_1_in_rule__TemplateType__Group_1__1__Impl2851 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group_4__0__Impl_in_rule__TemplateType__Group_4__02885 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group_4__1_in_rule__TemplateType__Group_4__02888 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_20_in_rule__TemplateType__Group_4__0__Impl2916 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group_4__1__Impl_in_rule__TemplateType__Group_4__12947 = new BitSet(new long[]{0x0000000000200000L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group_4__2_in_rule__TemplateType__Group_4__12950 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TemplateType__ParentsAssignment_4_1_in_rule__TemplateType__Group_4__1__Impl2977 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group_4__2__Impl_in_rule__TemplateType__Group_4__23007 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group_4_2__0_in_rule__TemplateType__Group_4__2__Impl3034 = new BitSet(new long[]{0x0000000000200002L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group_4_2__0__Impl_in_rule__TemplateType__Group_4_2__03071 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group_4_2__1_in_rule__TemplateType__Group_4_2__03074 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_21_in_rule__TemplateType__Group_4_2__0__Impl3102 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group_4_2__1__Impl_in_rule__TemplateType__Group_4_2__13133 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TemplateType__ParentsAssignment_4_2_1_in_rule__TemplateType__Group_4_2__1__Impl3160 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group_5__0__Impl_in_rule__TemplateType__Group_5__03194 = new BitSet(new long[]{0x0000000014800010L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group_5__1_in_rule__TemplateType__Group_5__03197 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_22_in_rule__TemplateType__Group_5__0__Impl3225 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group_5__1__Impl_in_rule__TemplateType__Group_5__13256 = new BitSet(new long[]{0x0000000014800010L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group_5__2_in_rule__TemplateType__Group_5__13259 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__TemplateType__Alternatives_5_1_in_rule__TemplateType__Group_5__1__Impl3286 = new BitSet(new long[]{0x0000000014000012L});
+    public static final BitSet FOLLOW_rule__TemplateType__Group_5__2__Impl_in_rule__TemplateType__Group_5__23317 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_23_in_rule__TemplateType__Group_5__2__Impl3345 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__RecordType__Group__0__Impl_in_rule__RecordType__Group__03382 = new BitSet(new long[]{0x00000004010C0000L});
     public static final BitSet FOLLOW_rule__RecordType__Group__1_in_rule__RecordType__Group__03385 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__RecordType__Group_0__0_in_rule__RecordType__Group__0__Impl3412 = new BitSet(new long[]{0x0000000000000002L});
@@ -13073,13 +13073,13 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
     public static final BitSet FOLLOW_ruleQualifiedNameWithWildcard_in_rule__Import__ImportedNamespaceAssignment_17544 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_ID_in_rule__Package__NameAssignment_17575 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_STRING_in_rule__Package__PackageAssignment_27610 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__PartialRecordType__AuthorAssignment_0_17645 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__PartialRecordType__SinceAssignment_1_17676 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__PartialRecordType__NameAssignment_37707 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__PartialRecordType__ParentsAssignment_4_17742 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__PartialRecordType__ParentsAssignment_4_2_17781 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleProperty_in_rule__PartialRecordType__PropertiesAssignment_5_1_07816 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConstant_in_rule__PartialRecordType__ConstantsAssignment_5_1_17847 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__TemplateType__AuthorAssignment_0_17645 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__TemplateType__SinceAssignment_1_17676 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__TemplateType__NameAssignment_37707 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__TemplateType__ParentsAssignment_4_17742 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__TemplateType__ParentsAssignment_4_2_17781 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleProperty_in_rule__TemplateType__PropertiesAssignment_5_1_07816 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleConstant_in_rule__TemplateType__ConstantsAssignment_5_1_17847 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_STRING_in_rule__RecordType__AuthorAssignment_0_17878 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_RULE_STRING_in_rule__RecordType__SinceAssignment_1_17909 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_34_in_rule__RecordType__AbstractAssignment_27945 = new BitSet(new long[]{0x0000000000000002L});

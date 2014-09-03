@@ -1,6 +1,6 @@
 package de.cau.cs.se.instrumentation.rl.validation
 
-import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType
+import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType
 import de.cau.cs.se.instrumentation.rl.recordLang.Property
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
 import java.util.ArrayList
@@ -40,7 +40,7 @@ class PropertyEvaluation {
 	 * @returns
 	 * 		a complete list of all properties in a record
 	 */
-	dispatch static def Collection<Property> collectAllDataProperties(PartialRecordType type) {
+	dispatch static def Collection<Property> collectAllDataProperties(TemplateType type) {
 		val list = new ArrayList<Property>()
 		list.addAll(collectAllProperties(type).filter[property | (property.referTo == null)])
 		return list
@@ -79,7 +79,7 @@ class PropertyEvaluation {
 	 * @returns
 	 * 		a complete list of all properties in a record
 	 */
-	dispatch static def Collection<Property> collectAllProperties(PartialRecordType type) {
+	dispatch static def Collection<Property> collectAllProperties(TemplateType type) {
 		val Collection<Property> result = new ArrayList<Property>()
 		if (type.parents != null)
 			type.parents.forEach[iface | result.addAllUnique(iface.collectAllProperties)]
@@ -118,7 +118,7 @@ class PropertyEvaluation {
 	 * @returns
 	 * 		a complete list of all properties in a record
 	 */
-	dispatch static def Collection<Property> collectAllTemplateProperties(PartialRecordType type) {
+	dispatch static def Collection<Property> collectAllTemplateProperties(TemplateType type) {
 		val EList<Property> result = new org.eclipse.emf.common.util.BasicEList<Property>()
 		if (type.parents!=null)
 			type.parents.forEach[iface | result.addAllUnique(iface.collectAllTemplateProperties)]

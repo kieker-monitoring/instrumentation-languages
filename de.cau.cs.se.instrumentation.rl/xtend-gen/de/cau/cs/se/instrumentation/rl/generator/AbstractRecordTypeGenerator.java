@@ -11,6 +11,11 @@ public abstract class AbstractRecordTypeGenerator extends AbstractTypeGenerator 
   public abstract String getDescription();
   
   /**
+   * Returns if the generator also supports record types.
+   */
+  public abstract boolean supportsAbstractRecordType();
+  
+  /**
    * Primary code generation template.
    * 
    * @params type

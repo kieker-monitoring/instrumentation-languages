@@ -1,11 +1,11 @@
 package de.cau.cs.se.instrumentation.rl.generator.java.record;
 
 import com.google.common.base.Objects;
-import de.cau.cs.se.instrumentation.rl.generator.AbstractPartialRecordTypeGenerator;
+import de.cau.cs.se.instrumentation.rl.generator.AbstractTemplateTypeGenerator;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.Model;
-import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
+import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
 import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation;
 import java.io.File;
@@ -20,7 +20,7 @@ import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
-public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerator {
+public class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
   /**
    * Return the unique id.
    */
@@ -65,7 +65,7 @@ public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerat
     return _builder.toString();
   }
   
-  public CharSequence createContent(final PartialRecordType type, final String author, final String version) {
+  public CharSequence createContent(final TemplateType type, final String author, final String version) {
     CharSequence _xblockexpression = null;
     {
       String _xifexpression = null;
@@ -74,7 +74,8 @@ public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerat
       if (_equals) {
         _xifexpression = author;
       } else {
-        _xifexpression = type.getAuthor();
+        String _author_1 = type.getAuthor();
+        _xifexpression = _author_1;
       }
       final String definedAuthor = _xifexpression;
       String _xifexpression_1 = null;
@@ -83,7 +84,8 @@ public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerat
       if (_equals_1) {
         _xifexpression_1 = version;
       } else {
-        _xifexpression_1 = type.getSince();
+        String _since_1 = type.getSince();
+        _xifexpression_1 = _since_1;
       }
       final String definedVersion = _xifexpression_1;
       StringConcatenation _builder = new StringConcatenation();
@@ -139,7 +141,7 @@ public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerat
       _builder.append(";");
       _builder.newLineIfNotEmpty();
       _builder.newLine();
-      EList<PartialRecordType> _parents = type.getParents();
+      EList<TemplateType> _parents = type.getParents();
       CharSequence _createImports = this.createImports(_parents, type);
       _builder.append(_createImports, "");
       _builder.newLineIfNotEmpty();
@@ -164,30 +166,31 @@ public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerat
       String _name_1 = type.getName();
       _builder.append(_name_1, "");
       _builder.append(" extends ");
-      EList<PartialRecordType> _parents_1 = type.getParents();
+      EList<TemplateType> _parents_1 = type.getParents();
       CharSequence _createExtends = this.createExtends(_parents_1);
       _builder.append(_createExtends, "");
       _builder.append(" {");
       _builder.newLineIfNotEmpty();
       _builder.append("\t");
       EList<Property> _properties = type.getProperties();
-      final Function1<Property, CharSequence> _function = new Function1<Property, CharSequence>() {
+      final Function1<Property,CharSequence> _function = new Function1<Property,CharSequence>() {
         public CharSequence apply(final Property property) {
-          return PartialRecordTypeGenerator.this.createPropertyGetter(property);
+          CharSequence _createPropertyGetter = TemplateTypeGenerator.this.createPropertyGetter(property);
+          return _createPropertyGetter;
         }
       };
       List<CharSequence> _map = ListExtensions.<Property, CharSequence>map(_properties, _function);
       String _join = IterableExtensions.join(_map);
-      _builder.append(_join, "\t");
+      _builder.append(_join, "	");
       _builder.newLineIfNotEmpty();
       _builder.append("}");
       _builder.newLine();
-      _xblockexpression = _builder;
+      _xblockexpression = (_builder);
     }
     return _xblockexpression;
   }
   
-  public boolean isInSamePackage(final PartialRecordType left, final PartialRecordType right) {
+  public boolean isInSamePackage(final TemplateType left, final TemplateType right) {
     EObject _eContainer = left.eContainer();
     String _name = ((Model) _eContainer).getName();
     EObject _eContainer_1 = right.eContainer();
@@ -195,7 +198,7 @@ public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerat
     return (!Objects.equal(_name, _name_1));
   }
   
-  public CharSequence createImports(final EList<PartialRecordType> parents, final PartialRecordType type) {
+  public CharSequence createImports(final EList<TemplateType> parents, final TemplateType type) {
     StringConcatenation _builder = new StringConcatenation();
     CharSequence _xifexpression = null;
     boolean _and = false;
@@ -205,24 +208,28 @@ public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerat
     } else {
       int _size = parents.size();
       boolean _greaterThan = (_size > 0);
-      _and = _greaterThan;
+      _and = (_notEquals && _greaterThan);
     }
     if (_and) {
-      final Function1<PartialRecordType, Boolean> _function = new Function1<PartialRecordType, Boolean>() {
-        public Boolean apply(final PartialRecordType t) {
-          return Boolean.valueOf(PartialRecordTypeGenerator.this.isInSamePackage(type, t));
+      final Function1<TemplateType,Boolean> _function = new Function1<TemplateType,Boolean>() {
+        public Boolean apply(final TemplateType t) {
+          boolean _isInSamePackage = TemplateTypeGenerator.this.isInSamePackage(type, t);
+          return Boolean.valueOf(_isInSamePackage);
         }
       };
-      Iterable<PartialRecordType> _filter = IterableExtensions.<PartialRecordType>filter(parents, _function);
-      final Function1<PartialRecordType, CharSequence> _function_1 = new Function1<PartialRecordType, CharSequence>() {
-        public CharSequence apply(final PartialRecordType it) {
-          return PartialRecordTypeGenerator.this.createImport(it);
+      Iterable<TemplateType> _filter = IterableExtensions.<TemplateType>filter(parents, _function);
+      final Function1<TemplateType,CharSequence> _function_1 = new Function1<TemplateType,CharSequence>() {
+        public CharSequence apply(final TemplateType it) {
+          CharSequence _createImport = TemplateTypeGenerator.this.createImport(it);
+          return _createImport;
         }
       };
-      Iterable<CharSequence> _map = IterableExtensions.<PartialRecordType, CharSequence>map(_filter, _function_1);
-      _xifexpression = IterableExtensions.join(_map);
+      Iterable<CharSequence> _map = IterableExtensions.<TemplateType, CharSequence>map(_filter, _function_1);
+      String _join = IterableExtensions.join(_map);
+      _xifexpression = _join;
     } else {
-      _xifexpression = this.createDefaultImport();
+      CharSequence _createDefaultImport = this.createDefaultImport();
+      _xifexpression = _createDefaultImport;
     }
     _builder.append(_xifexpression, "");
     return _builder;
@@ -235,7 +242,7 @@ public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerat
     return _builder;
   }
   
-  public CharSequence createImport(final PartialRecordType type) {
+  public CharSequence createImport(final TemplateType type) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("import ");
     EObject _eContainer = type.eContainer();
@@ -248,7 +255,7 @@ public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerat
     return _builder;
   }
   
-  public CharSequence createExtends(final EList<PartialRecordType> parents) {
+  public CharSequence createExtends(final EList<TemplateType> parents) {
     StringConcatenation _builder = new StringConcatenation();
     String _xifexpression = null;
     boolean _and = false;
@@ -258,16 +265,18 @@ public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerat
     } else {
       int _size = parents.size();
       boolean _greaterThan = (_size > 0);
-      _and = _greaterThan;
+      _and = (_notEquals && _greaterThan);
     }
     if (_and) {
-      final Function1<PartialRecordType, String> _function = new Function1<PartialRecordType, String>() {
-        public String apply(final PartialRecordType t) {
-          return t.getName();
+      final Function1<TemplateType,String> _function = new Function1<TemplateType,String>() {
+        public String apply(final TemplateType t) {
+          String _name = t.getName();
+          return _name;
         }
       };
-      List<String> _map = ListExtensions.<PartialRecordType, String>map(parents, _function);
-      _xifexpression = IterableExtensions.join(_map, ", ");
+      List<String> _map = ListExtensions.<TemplateType, String>map(parents, _function);
+      String _join = IterableExtensions.join(_map, ", ");
+      _xifexpression = _join;
     } else {
       _xifexpression = "IMonitoringRecord";
     }
@@ -343,16 +352,18 @@ public class PartialRecordTypeGenerator extends AbstractPartialRecordTypeGenerat
     String _switchResult = null;
     EClassifier _class_ = classifier.getClass_();
     String _name = _class_.getName();
+    final String _switchValue = _name;
     boolean _matched = false;
     if (!_matched) {
-      if (Objects.equal(_name, "string")) {
+      if (Objects.equal(_switchValue,"string")) {
         _matched=true;
         _switchResult = "String";
       }
     }
     if (!_matched) {
       EClassifier _class__1 = classifier.getClass_();
-      _switchResult = _class__1.getName();
+      String _name_1 = _class__1.getName();
+      _switchResult = _name_1;
     }
     return _switchResult;
   }

@@ -33,6 +33,13 @@ public class RecordTypeGenerator extends de.cau.cs.se.instrumentation.rl.generat
   }
   
   /**
+   * No header for abstract record types.
+   */
+  public boolean supportsAbstractRecordType() {
+    return false;
+  }
+  
+  /**
    * File name for c-header files.
    */
   public String getFileName(final Type type) {
@@ -137,14 +144,15 @@ public class RecordTypeGenerator extends de.cau.cs.se.instrumentation.rl.generat
     _builder.newLine();
     _builder.append("\t");
     Collection<Property> _collectAllDataProperties = PropertyEvaluation.collectAllDataProperties(type);
-    final Function1<Property, CharSequence> _function = new Function1<Property, CharSequence>() {
+    final Function1<Property,CharSequence> _function = new Function1<Property,CharSequence>() {
       public CharSequence apply(final Property it) {
-        return RecordTypeGenerator.this.createPropertyDeclaration(it);
+        CharSequence _createPropertyDeclaration = RecordTypeGenerator.this.createPropertyDeclaration(it);
+        return _createPropertyDeclaration;
       }
     };
     Iterable<CharSequence> _map = IterableExtensions.<Property, CharSequence>map(_collectAllDataProperties, _function);
     String _join = IterableExtensions.join(_map);
-    _builder.append(_join, "\t");
+    _builder.append(_join, "	");
     _builder.newLineIfNotEmpty();
     _builder.append("} ");
     CharSequence _packageName = CommonCFunctionsExtension.packageName(type);

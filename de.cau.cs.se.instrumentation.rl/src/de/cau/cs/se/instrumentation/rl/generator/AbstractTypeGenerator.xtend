@@ -27,5 +27,5 @@ abstract class AbstractTypeGenerator {
 	 * Returns the outlet type for the generator.
 	 */
 	def abstract String getOutletType()
-			
+				
 }

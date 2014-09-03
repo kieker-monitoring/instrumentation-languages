@@ -18,16 +18,16 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class RecordLangSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected RecordLangGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_PartialRecordType___LeftCurlyBracketKeyword_5_0_RightCurlyBracketKeyword_5_2__q;
 	protected AbstractElementAlias match_Property___LeftCurlyBracketKeyword_2_0_0_RightCurlyBracketKeyword_2_0_2__q;
 	protected AbstractElementAlias match_RecordType___LeftCurlyBracketKeyword_7_0_RightCurlyBracketKeyword_7_2__q;
+	protected AbstractElementAlias match_TemplateType___LeftCurlyBracketKeyword_5_0_RightCurlyBracketKeyword_5_2__q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (RecordLangGrammarAccess) access;
-		match_PartialRecordType___LeftCurlyBracketKeyword_5_0_RightCurlyBracketKeyword_5_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getPartialRecordTypeAccess().getLeftCurlyBracketKeyword_5_0()), new TokenAlias(false, false, grammarAccess.getPartialRecordTypeAccess().getRightCurlyBracketKeyword_5_2()));
 		match_Property___LeftCurlyBracketKeyword_2_0_0_RightCurlyBracketKeyword_2_0_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getPropertyAccess().getLeftCurlyBracketKeyword_2_0_0()), new TokenAlias(false, false, grammarAccess.getPropertyAccess().getRightCurlyBracketKeyword_2_0_2()));
 		match_RecordType___LeftCurlyBracketKeyword_7_0_RightCurlyBracketKeyword_7_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getRecordTypeAccess().getLeftCurlyBracketKeyword_7_0()), new TokenAlias(false, false, grammarAccess.getRecordTypeAccess().getRightCurlyBracketKeyword_7_2()));
+		match_TemplateType___LeftCurlyBracketKeyword_5_0_RightCurlyBracketKeyword_5_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getTemplateTypeAccess().getLeftCurlyBracketKeyword_5_0()), new TokenAlias(false, false, grammarAccess.getTemplateTypeAccess().getRightCurlyBracketKeyword_5_2()));
 	}
 	
 	@Override
@@ -42,24 +42,16 @@ public class RecordLangSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if(match_PartialRecordType___LeftCurlyBracketKeyword_5_0_RightCurlyBracketKeyword_5_2__q.equals(syntax))
-				emit_PartialRecordType___LeftCurlyBracketKeyword_5_0_RightCurlyBracketKeyword_5_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_Property___LeftCurlyBracketKeyword_2_0_0_RightCurlyBracketKeyword_2_0_2__q.equals(syntax))
+			if(match_Property___LeftCurlyBracketKeyword_2_0_0_RightCurlyBracketKeyword_2_0_2__q.equals(syntax))
 				emit_Property___LeftCurlyBracketKeyword_2_0_0_RightCurlyBracketKeyword_2_0_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_RecordType___LeftCurlyBracketKeyword_7_0_RightCurlyBracketKeyword_7_2__q.equals(syntax))
 				emit_RecordType___LeftCurlyBracketKeyword_7_0_RightCurlyBracketKeyword_7_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_TemplateType___LeftCurlyBracketKeyword_5_0_RightCurlyBracketKeyword_5_2__q.equals(syntax))
+				emit_TemplateType___LeftCurlyBracketKeyword_5_0_RightCurlyBracketKeyword_5_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
-	/**
-	 * Syntax:
-	 *     ('{' '}')?
-	 */
-	protected void emit_PartialRecordType___LeftCurlyBracketKeyword_5_0_RightCurlyBracketKeyword_5_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
 	/**
 	 * Syntax:
 	 *     ('{' '}')?
@@ -73,6 +65,14 @@ public class RecordLangSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     ('{' '}')?
 	 */
 	protected void emit_RecordType___LeftCurlyBracketKeyword_7_0_RightCurlyBracketKeyword_7_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     ('{' '}')?
+	 */
+	protected void emit_TemplateType___LeftCurlyBracketKeyword_5_0_RightCurlyBracketKeyword_5_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

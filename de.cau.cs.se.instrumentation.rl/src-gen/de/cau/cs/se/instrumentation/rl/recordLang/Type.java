@@ -109,7 +109,7 @@ public interface Type extends EObject
 
   /**
    * Returns the value of the '<em><b>Parents</b></em>' reference list.
-   * The list contents are of type {@link de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType}.
+   * The list contents are of type {@link de.cau.cs.se.instrumentation.rl.recordLang.TemplateType}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Parents</em>' reference list isn't clear,
@@ -121,7 +121,7 @@ public interface Type extends EObject
    * @model
    * @generated
    */
-  EList<PartialRecordType> getParents();
+  EList<TemplateType> getParents();
 
   /**
    * Returns the value of the '<em><b>Properties</b></em>' containment reference list.

@@ -20,6 +20,11 @@ class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
 	 * Return the preferences activation description.
 	 */
 	override getDescription() '''Java factory'''
+	
+	/**
+	 * No factory for abstract record types.
+	 */
+	override boolean supportsAbstractRecordType()  { false }
 
 	/**
 	 * Define language/generation type, which is also used to define the outlet.

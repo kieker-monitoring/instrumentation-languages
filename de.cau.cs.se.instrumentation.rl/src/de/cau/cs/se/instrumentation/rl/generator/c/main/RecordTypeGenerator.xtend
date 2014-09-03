@@ -24,6 +24,11 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	override getDescription() '''C code generator'''
 	
 	/**
+	 * No serialization for abstract record types.
+	 */
+	override boolean supportsAbstractRecordType()  { false }
+	
+	/**
 	 * Compute the directory name for a record type.
 	 */
 	override getDirectoryName(Type type) '''«(type.eContainer as Model).name.replace('.',File::separator)»'''

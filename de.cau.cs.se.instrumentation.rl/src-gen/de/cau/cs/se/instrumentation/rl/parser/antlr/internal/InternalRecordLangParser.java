@@ -684,22 +684,22 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleType"
-    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:272:1: ruleType returns [EObject current=null] : (this_RecordType_0= ruleRecordType | this_PartialRecordType_1= rulePartialRecordType ) ;
+    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:272:1: ruleType returns [EObject current=null] : (this_RecordType_0= ruleRecordType | this_TemplateType_1= ruleTemplateType ) ;
     public final EObject ruleType() throws RecognitionException {
         EObject current = null;
 
         EObject this_RecordType_0 = null;
 
-        EObject this_PartialRecordType_1 = null;
+        EObject this_TemplateType_1 = null;
 
 
          enterRule(); 
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:275:28: ( (this_RecordType_0= ruleRecordType | this_PartialRecordType_1= rulePartialRecordType ) )
-            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:276:1: (this_RecordType_0= ruleRecordType | this_PartialRecordType_1= rulePartialRecordType )
+            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:275:28: ( (this_RecordType_0= ruleRecordType | this_TemplateType_1= ruleTemplateType ) )
+            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:276:1: (this_RecordType_0= ruleRecordType | this_TemplateType_1= ruleTemplateType )
             {
-            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:276:1: (this_RecordType_0= ruleRecordType | this_PartialRecordType_1= rulePartialRecordType )
+            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:276:1: (this_RecordType_0= ruleRecordType | this_TemplateType_1= ruleTemplateType )
             int alt4=2;
             switch ( input.LA(1) ) {
             case 17:
@@ -840,21 +840,21 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:287:5: this_PartialRecordType_1= rulePartialRecordType
+                    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:287:5: this_TemplateType_1= ruleTemplateType
                     {
                     if ( state.backtracking==0 ) {
                        
-                              newCompositeNode(grammarAccess.getTypeAccess().getPartialRecordTypeParserRuleCall_1()); 
+                              newCompositeNode(grammarAccess.getTypeAccess().getTemplateTypeParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_rulePartialRecordType_in_ruleType558);
-                    this_PartialRecordType_1=rulePartialRecordType();
+                    pushFollow(FOLLOW_ruleTemplateType_in_ruleType558);
+                    this_TemplateType_1=ruleTemplateType();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
                        
-                              current = this_PartialRecordType_1; 
+                              current = this_TemplateType_1; 
                               afterParserOrEnumRuleCall();
                           
                     }
@@ -883,30 +883,30 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleType"
 
 
-    // $ANTLR start "entryRulePartialRecordType"
-    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:303:1: entryRulePartialRecordType returns [EObject current=null] : iv_rulePartialRecordType= rulePartialRecordType EOF ;
-    public final EObject entryRulePartialRecordType() throws RecognitionException {
+    // $ANTLR start "entryRuleTemplateType"
+    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:303:1: entryRuleTemplateType returns [EObject current=null] : iv_ruleTemplateType= ruleTemplateType EOF ;
+    public final EObject entryRuleTemplateType() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_rulePartialRecordType = null;
+        EObject iv_ruleTemplateType = null;
 
 
         try {
-            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:304:2: (iv_rulePartialRecordType= rulePartialRecordType EOF )
-            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:305:2: iv_rulePartialRecordType= rulePartialRecordType EOF
+            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:304:2: (iv_ruleTemplateType= ruleTemplateType EOF )
+            // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:305:2: iv_ruleTemplateType= ruleTemplateType EOF
             {
             if ( state.backtracking==0 ) {
-               newCompositeNode(grammarAccess.getPartialRecordTypeRule()); 
+               newCompositeNode(grammarAccess.getTemplateTypeRule()); 
             }
-            pushFollow(FOLLOW_rulePartialRecordType_in_entryRulePartialRecordType593);
-            iv_rulePartialRecordType=rulePartialRecordType();
+            pushFollow(FOLLOW_ruleTemplateType_in_entryRuleTemplateType593);
+            iv_ruleTemplateType=ruleTemplateType();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
-               current =iv_rulePartialRecordType; 
+               current =iv_ruleTemplateType; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRulePartialRecordType603); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleTemplateType603); if (state.failed) return current;
 
             }
 
@@ -920,12 +920,12 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRulePartialRecordType"
+    // $ANTLR end "entryRuleTemplateType"
 
 
-    // $ANTLR start "rulePartialRecordType"
-    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:312:1: rulePartialRecordType returns [EObject current=null] : ( (otherlv_0= '@author' ( (lv_author_1_0= RULE_STRING ) ) )? (otherlv_2= '@since' ( (lv_since_3_0= RULE_STRING ) ) )? otherlv_4= 'template' ( (lv_name_5_0= RULE_ID ) ) (otherlv_6= ':' ( ( ruleQualifiedName ) ) (otherlv_8= ',' ( ( ruleQualifiedName ) ) )* )? (otherlv_10= '{' ( ( (lv_properties_11_0= ruleProperty ) ) | ( (lv_constants_12_0= ruleConstant ) ) )* otherlv_13= '}' )? ) ;
-    public final EObject rulePartialRecordType() throws RecognitionException {
+    // $ANTLR start "ruleTemplateType"
+    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:312:1: ruleTemplateType returns [EObject current=null] : ( (otherlv_0= '@author' ( (lv_author_1_0= RULE_STRING ) ) )? (otherlv_2= '@since' ( (lv_since_3_0= RULE_STRING ) ) )? otherlv_4= 'template' ( (lv_name_5_0= RULE_ID ) ) (otherlv_6= ':' ( ( ruleQualifiedName ) ) (otherlv_8= ',' ( ( ruleQualifiedName ) ) )* )? (otherlv_10= '{' ( ( (lv_properties_11_0= ruleProperty ) ) | ( (lv_constants_12_0= ruleConstant ) ) )* otherlv_13= '}' )? ) ;
+    public final EObject ruleTemplateType() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
@@ -963,10 +963,10 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:316:4: otherlv_0= '@author' ( (lv_author_1_0= RULE_STRING ) )
                     {
-                    otherlv_0=(Token)match(input,17,FOLLOW_17_in_rulePartialRecordType641); if (state.failed) return current;
+                    otherlv_0=(Token)match(input,17,FOLLOW_17_in_ruleTemplateType641); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_0, grammarAccess.getPartialRecordTypeAccess().getAuthorKeyword_0_0());
+                          	newLeafNode(otherlv_0, grammarAccess.getTemplateTypeAccess().getAuthorKeyword_0_0());
                           
                     }
                     // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:320:1: ( (lv_author_1_0= RULE_STRING ) )
@@ -975,16 +975,16 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                     // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:321:1: (lv_author_1_0= RULE_STRING )
                     // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:322:3: lv_author_1_0= RULE_STRING
                     {
-                    lv_author_1_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rulePartialRecordType658); if (state.failed) return current;
+                    lv_author_1_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleTemplateType658); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      			newLeafNode(lv_author_1_0, grammarAccess.getPartialRecordTypeAccess().getAuthorSTRINGTerminalRuleCall_0_1_0()); 
+                      			newLeafNode(lv_author_1_0, grammarAccess.getTemplateTypeAccess().getAuthorSTRINGTerminalRuleCall_0_1_0()); 
                       		
                     }
                     if ( state.backtracking==0 ) {
 
                       	        if (current==null) {
-                      	            current = createModelElement(grammarAccess.getPartialRecordTypeRule());
+                      	            current = createModelElement(grammarAccess.getTemplateTypeRule());
                       	        }
                              		setWithLastConsumed(
                              			current, 
@@ -1016,10 +1016,10 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:338:6: otherlv_2= '@since' ( (lv_since_3_0= RULE_STRING ) )
                     {
-                    otherlv_2=(Token)match(input,18,FOLLOW_18_in_rulePartialRecordType678); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,18,FOLLOW_18_in_ruleTemplateType678); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_2, grammarAccess.getPartialRecordTypeAccess().getSinceKeyword_1_0());
+                          	newLeafNode(otherlv_2, grammarAccess.getTemplateTypeAccess().getSinceKeyword_1_0());
                           
                     }
                     // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:342:1: ( (lv_since_3_0= RULE_STRING ) )
@@ -1028,16 +1028,16 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                     // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:343:1: (lv_since_3_0= RULE_STRING )
                     // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:344:3: lv_since_3_0= RULE_STRING
                     {
-                    lv_since_3_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rulePartialRecordType695); if (state.failed) return current;
+                    lv_since_3_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleTemplateType695); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      			newLeafNode(lv_since_3_0, grammarAccess.getPartialRecordTypeAccess().getSinceSTRINGTerminalRuleCall_1_1_0()); 
+                      			newLeafNode(lv_since_3_0, grammarAccess.getTemplateTypeAccess().getSinceSTRINGTerminalRuleCall_1_1_0()); 
                       		
                     }
                     if ( state.backtracking==0 ) {
 
                       	        if (current==null) {
-                      	            current = createModelElement(grammarAccess.getPartialRecordTypeRule());
+                      	            current = createModelElement(grammarAccess.getTemplateTypeRule());
                       	        }
                              		setWithLastConsumed(
                              			current, 
@@ -1058,10 +1058,10 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,19,FOLLOW_19_in_rulePartialRecordType714); if (state.failed) return current;
+            otherlv_4=(Token)match(input,19,FOLLOW_19_in_ruleTemplateType714); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-                  	newLeafNode(otherlv_4, grammarAccess.getPartialRecordTypeAccess().getTemplateKeyword_2());
+                  	newLeafNode(otherlv_4, grammarAccess.getTemplateTypeAccess().getTemplateKeyword_2());
                   
             }
             // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:364:1: ( (lv_name_5_0= RULE_ID ) )
@@ -1070,16 +1070,16 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
             // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:365:1: (lv_name_5_0= RULE_ID )
             // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:366:3: lv_name_5_0= RULE_ID
             {
-            lv_name_5_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_rulePartialRecordType731); if (state.failed) return current;
+            lv_name_5_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleTemplateType731); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              			newLeafNode(lv_name_5_0, grammarAccess.getPartialRecordTypeAccess().getNameIDTerminalRuleCall_3_0()); 
+              			newLeafNode(lv_name_5_0, grammarAccess.getTemplateTypeAccess().getNameIDTerminalRuleCall_3_0()); 
               		
             }
             if ( state.backtracking==0 ) {
 
               	        if (current==null) {
-              	            current = createModelElement(grammarAccess.getPartialRecordTypeRule());
+              	            current = createModelElement(grammarAccess.getTemplateTypeRule());
               	        }
                      		setWithLastConsumed(
                      			current, 
@@ -1105,10 +1105,10 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:382:4: otherlv_6= ':' ( ( ruleQualifiedName ) ) (otherlv_8= ',' ( ( ruleQualifiedName ) ) )*
                     {
-                    otherlv_6=(Token)match(input,20,FOLLOW_20_in_rulePartialRecordType749); if (state.failed) return current;
+                    otherlv_6=(Token)match(input,20,FOLLOW_20_in_ruleTemplateType749); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_6, grammarAccess.getPartialRecordTypeAccess().getColonKeyword_4_0());
+                          	newLeafNode(otherlv_6, grammarAccess.getTemplateTypeAccess().getColonKeyword_4_0());
                           
                     }
                     // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:386:1: ( ( ruleQualifiedName ) )
@@ -1120,16 +1120,16 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                     if ( state.backtracking==0 ) {
 
                       			if (current==null) {
-                      	            current = createModelElement(grammarAccess.getPartialRecordTypeRule());
+                      	            current = createModelElement(grammarAccess.getTemplateTypeRule());
                       	        }
                               
                     }
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getPartialRecordTypeAccess().getParentsPartialRecordTypeCrossReference_4_1_0()); 
+                      	        newCompositeNode(grammarAccess.getTemplateTypeAccess().getParentsTemplateTypeCrossReference_4_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleQualifiedName_in_rulePartialRecordType772);
+                    pushFollow(FOLLOW_ruleQualifiedName_in_ruleTemplateType772);
                     ruleQualifiedName();
 
                     state._fsp--;
@@ -1160,10 +1160,10 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                     	case 1 :
                     	    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:401:4: otherlv_8= ',' ( ( ruleQualifiedName ) )
                     	    {
-                    	    otherlv_8=(Token)match(input,21,FOLLOW_21_in_rulePartialRecordType785); if (state.failed) return current;
+                    	    otherlv_8=(Token)match(input,21,FOLLOW_21_in_ruleTemplateType785); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
-                    	          	newLeafNode(otherlv_8, grammarAccess.getPartialRecordTypeAccess().getCommaKeyword_4_2_0());
+                    	          	newLeafNode(otherlv_8, grammarAccess.getTemplateTypeAccess().getCommaKeyword_4_2_0());
                     	          
                     	    }
                     	    // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:405:1: ( ( ruleQualifiedName ) )
@@ -1175,16 +1175,16 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                     	    if ( state.backtracking==0 ) {
 
                     	      			if (current==null) {
-                    	      	            current = createModelElement(grammarAccess.getPartialRecordTypeRule());
+                    	      	            current = createModelElement(grammarAccess.getTemplateTypeRule());
                     	      	        }
                     	              
                     	    }
                     	    if ( state.backtracking==0 ) {
                     	       
-                    	      	        newCompositeNode(grammarAccess.getPartialRecordTypeAccess().getParentsPartialRecordTypeCrossReference_4_2_1_0()); 
+                    	      	        newCompositeNode(grammarAccess.getTemplateTypeAccess().getParentsTemplateTypeCrossReference_4_2_1_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleQualifiedName_in_rulePartialRecordType808);
+                    	    pushFollow(FOLLOW_ruleQualifiedName_in_ruleTemplateType808);
                     	    ruleQualifiedName();
 
                     	    state._fsp--;
@@ -1226,10 +1226,10 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:420:8: otherlv_10= '{' ( ( (lv_properties_11_0= ruleProperty ) ) | ( (lv_constants_12_0= ruleConstant ) ) )* otherlv_13= '}'
                     {
-                    otherlv_10=(Token)match(input,22,FOLLOW_22_in_rulePartialRecordType825); if (state.failed) return current;
+                    otherlv_10=(Token)match(input,22,FOLLOW_22_in_ruleTemplateType825); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_10, grammarAccess.getPartialRecordTypeAccess().getLeftCurlyBracketKeyword_5_0());
+                          	newLeafNode(otherlv_10, grammarAccess.getTemplateTypeAccess().getLeftCurlyBracketKeyword_5_0());
                           
                     }
                     // ../de.cau.cs.se.instrumentation.rl/src-gen/de/cau/cs/se/instrumentation/rl/parser/antlr/internal/InternalRecordLang.g:424:1: ( ( (lv_properties_11_0= ruleProperty ) ) | ( (lv_constants_12_0= ruleConstant ) ) )*
@@ -1258,10 +1258,10 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                     	    {
                     	    if ( state.backtracking==0 ) {
                     	       
-                    	      	        newCompositeNode(grammarAccess.getPartialRecordTypeAccess().getPropertiesPropertyParserRuleCall_5_1_0_0()); 
+                    	      	        newCompositeNode(grammarAccess.getTemplateTypeAccess().getPropertiesPropertyParserRuleCall_5_1_0_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleProperty_in_rulePartialRecordType847);
+                    	    pushFollow(FOLLOW_ruleProperty_in_ruleTemplateType847);
                     	    lv_properties_11_0=ruleProperty();
 
                     	    state._fsp--;
@@ -1269,7 +1269,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                     	    if ( state.backtracking==0 ) {
 
                     	      	        if (current==null) {
-                    	      	            current = createModelElementForParent(grammarAccess.getPartialRecordTypeRule());
+                    	      	            current = createModelElementForParent(grammarAccess.getTemplateTypeRule());
                     	      	        }
                     	             		add(
                     	             			current, 
@@ -1299,10 +1299,10 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                     	    {
                     	    if ( state.backtracking==0 ) {
                     	       
-                    	      	        newCompositeNode(grammarAccess.getPartialRecordTypeAccess().getConstantsConstantParserRuleCall_5_1_1_0()); 
+                    	      	        newCompositeNode(grammarAccess.getTemplateTypeAccess().getConstantsConstantParserRuleCall_5_1_1_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleConstant_in_rulePartialRecordType874);
+                    	    pushFollow(FOLLOW_ruleConstant_in_ruleTemplateType874);
                     	    lv_constants_12_0=ruleConstant();
 
                     	    state._fsp--;
@@ -1310,7 +1310,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                     	    if ( state.backtracking==0 ) {
 
                     	      	        if (current==null) {
-                    	      	            current = createModelElementForParent(grammarAccess.getPartialRecordTypeRule());
+                    	      	            current = createModelElementForParent(grammarAccess.getTemplateTypeRule());
                     	      	        }
                     	             		add(
                     	             			current, 
@@ -1335,10 +1335,10 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                         }
                     } while (true);
 
-                    otherlv_13=(Token)match(input,23,FOLLOW_23_in_rulePartialRecordType888); if (state.failed) return current;
+                    otherlv_13=(Token)match(input,23,FOLLOW_23_in_ruleTemplateType888); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                          	newLeafNode(otherlv_13, grammarAccess.getPartialRecordTypeAccess().getRightCurlyBracketKeyword_5_2());
+                          	newLeafNode(otherlv_13, grammarAccess.getTemplateTypeAccess().getRightCurlyBracketKeyword_5_2());
                           
                     }
 
@@ -1366,7 +1366,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "rulePartialRecordType"
+    // $ANTLR end "ruleTemplateType"
 
 
     // $ANTLR start "entryRuleRecordType"
@@ -1708,7 +1708,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                     }
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getRecordTypeAccess().getParentsPartialRecordTypeCrossReference_6_1_0()); 
+                      	        newCompositeNode(grammarAccess.getRecordTypeAccess().getParentsTemplateTypeCrossReference_6_1_0()); 
                       	    
                     }
                     pushFollow(FOLLOW_ruleQualifiedName_in_ruleRecordType1175);
@@ -1763,7 +1763,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                     	    }
                     	    if ( state.backtracking==0 ) {
                     	       
-                    	      	        newCompositeNode(grammarAccess.getRecordTypeAccess().getParentsPartialRecordTypeCrossReference_6_2_1_0()); 
+                    	      	        newCompositeNode(grammarAccess.getRecordTypeAccess().getParentsTemplateTypeCrossReference_6_2_1_0()); 
                     	      	    
                     	    }
                     	    pushFollow(FOLLOW_ruleQualifiedName_in_ruleRecordType1211);
@@ -4338,23 +4338,23 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleType_in_entryRuleType474 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleType484 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleRecordType_in_ruleType531 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePartialRecordType_in_ruleType558 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePartialRecordType_in_entryRulePartialRecordType593 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRulePartialRecordType603 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_17_in_rulePartialRecordType641 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rulePartialRecordType658 = new BitSet(new long[]{0x00000000000C0000L});
-    public static final BitSet FOLLOW_18_in_rulePartialRecordType678 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rulePartialRecordType695 = new BitSet(new long[]{0x0000000000080000L});
-    public static final BitSet FOLLOW_19_in_rulePartialRecordType714 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_rulePartialRecordType731 = new BitSet(new long[]{0x0000000000500002L});
-    public static final BitSet FOLLOW_20_in_rulePartialRecordType749 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rulePartialRecordType772 = new BitSet(new long[]{0x0000000000600002L});
-    public static final BitSet FOLLOW_21_in_rulePartialRecordType785 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rulePartialRecordType808 = new BitSet(new long[]{0x0000000000600002L});
-    public static final BitSet FOLLOW_22_in_rulePartialRecordType825 = new BitSet(new long[]{0x0000000028800010L});
-    public static final BitSet FOLLOW_ruleProperty_in_rulePartialRecordType847 = new BitSet(new long[]{0x0000000028800010L});
-    public static final BitSet FOLLOW_ruleConstant_in_rulePartialRecordType874 = new BitSet(new long[]{0x0000000028800010L});
-    public static final BitSet FOLLOW_23_in_rulePartialRecordType888 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTemplateType_in_ruleType558 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTemplateType_in_entryRuleTemplateType593 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleTemplateType603 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_17_in_ruleTemplateType641 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleTemplateType658 = new BitSet(new long[]{0x00000000000C0000L});
+    public static final BitSet FOLLOW_18_in_ruleTemplateType678 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleTemplateType695 = new BitSet(new long[]{0x0000000000080000L});
+    public static final BitSet FOLLOW_19_in_ruleTemplateType714 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleTemplateType731 = new BitSet(new long[]{0x0000000000500002L});
+    public static final BitSet FOLLOW_20_in_ruleTemplateType749 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleTemplateType772 = new BitSet(new long[]{0x0000000000600002L});
+    public static final BitSet FOLLOW_21_in_ruleTemplateType785 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleQualifiedName_in_ruleTemplateType808 = new BitSet(new long[]{0x0000000000600002L});
+    public static final BitSet FOLLOW_22_in_ruleTemplateType825 = new BitSet(new long[]{0x0000000028800010L});
+    public static final BitSet FOLLOW_ruleProperty_in_ruleTemplateType847 = new BitSet(new long[]{0x0000000028800010L});
+    public static final BitSet FOLLOW_ruleConstant_in_ruleTemplateType874 = new BitSet(new long[]{0x0000000028800010L});
+    public static final BitSet FOLLOW_23_in_ruleTemplateType888 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleRecordType_in_entryRuleRecordType926 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleRecordType936 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_17_in_ruleRecordType974 = new BitSet(new long[]{0x0000000000000020L});

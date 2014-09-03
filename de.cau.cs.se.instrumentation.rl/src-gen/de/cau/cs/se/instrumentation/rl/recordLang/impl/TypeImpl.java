@@ -3,9 +3,9 @@
 package de.cau.cs.se.instrumentation.rl.recordLang.impl;
 
 import de.cau.cs.se.instrumentation.rl.recordLang.Constant;
-import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
+import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
 
 import java.util.Collection;
@@ -113,7 +113,7 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type
    * @generated
    * @ordered
    */
-  protected EList<PartialRecordType> parents;
+  protected EList<TemplateType> parents;
 
   /**
    * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
@@ -230,11 +230,11 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<PartialRecordType> getParents()
+  public EList<TemplateType> getParents()
   {
     if (parents == null)
     {
-      parents = new EObjectResolvingEList<PartialRecordType>(PartialRecordType.class, this, RecordLangPackage.TYPE__PARENTS);
+      parents = new EObjectResolvingEList<TemplateType>(TemplateType.class, this, RecordLangPackage.TYPE__PARENTS);
     }
     return parents;
   }
@@ -333,7 +333,7 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type
         return;
       case RecordLangPackage.TYPE__PARENTS:
         getParents().clear();
-        getParents().addAll((Collection<? extends PartialRecordType>)newValue);
+        getParents().addAll((Collection<? extends TemplateType>)newValue);
         return;
       case RecordLangPackage.TYPE__PROPERTIES:
         getProperties().clear();

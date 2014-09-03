@@ -41,7 +41,7 @@ public class GeneratorConfiguration {
 
 	/** list of all generators to support PartialRecordType */
 	public final static Class<?>[] partialRecordTypeGenerators = {
-		de.cau.cs.se.instrumentation.rl.generator.java.record.PartialRecordTypeGenerator.class
+		de.cau.cs.se.instrumentation.rl.generator.java.record.TemplateTypeGenerator.class
 	};
 
 	/** list of all outlet configurations */

@@ -21,6 +21,11 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * Return the preferences activation description.
 	 */
 	override getDescription() '''Perl record generator'''
+	
+	/**
+	 * No perl structures for abstract record types.
+	 */
+	override boolean supportsAbstractRecordType()  { false }
 
 	/**
 	 * Compute the directory name for a record type.

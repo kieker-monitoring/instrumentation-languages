@@ -12,12 +12,12 @@ import de.cau.cs.se.instrumentation.rl.recordLang.FloatLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Import;
 import de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Model;
-import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.ReferenceProperty;
 import de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral;
+import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType;
 import de.cau.cs.se.instrumentation.rl.services.RecordLangGrammarAccess;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.serializer.acceptor.ISemanticSequenceAcceptor;
@@ -110,13 +110,6 @@ public class RecordLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 					return; 
 				}
 				else break;
-			case RecordLangPackage.PARTIAL_RECORD_TYPE:
-				if(context == grammarAccess.getPartialRecordTypeRule() ||
-				   context == grammarAccess.getTypeRule()) {
-					sequence_PartialRecordType(context, (PartialRecordType) semanticObject); 
-					return; 
-				}
-				else break;
 			case RecordLangPackage.PROPERTY:
 				if(context == grammarAccess.getPropertyRule()) {
 					sequence_Property(context, (Property) semanticObject); 
@@ -140,6 +133,13 @@ public class RecordLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 				if(context == grammarAccess.getLiteralRule() ||
 				   context == grammarAccess.getStringLiteralRule()) {
 					sequence_StringLiteral(context, (StringLiteral) semanticObject); 
+					return; 
+				}
+				else break;
+			case RecordLangPackage.TEMPLATE_TYPE:
+				if(context == grammarAccess.getTemplateTypeRule() ||
+				   context == grammarAccess.getTypeRule()) {
+					sequence_TemplateType(context, (TemplateType) semanticObject); 
 					return; 
 				}
 				else break;
@@ -306,21 +306,6 @@ public class RecordLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 	
 	/**
 	 * Constraint:
-	 *     (
-	 *         author=STRING? 
-	 *         since=STRING? 
-	 *         name=ID 
-	 *         (parents+=[PartialRecordType|QualifiedName] parents+=[PartialRecordType|QualifiedName]*)? 
-	 *         (properties+=Property | constants+=Constant)*
-	 *     )
-	 */
-	protected void sequence_PartialRecordType(EObject context, PartialRecordType semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
 	 *     ((type=Classifier | referTo=[Property|ID]) name=ID (properties+=ReferenceProperty* | value=Literal)?)
 	 */
 	protected void sequence_Property(EObject context, Property semanticObject) {
@@ -336,7 +321,7 @@ public class RecordLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 *         abstract?='abstract'? 
 	 *         name=ID 
 	 *         parent=[RecordType|QualifiedName]? 
-	 *         (parents+=[PartialRecordType|QualifiedName] parents+=[PartialRecordType|QualifiedName]*)? 
+	 *         (parents+=[TemplateType|QualifiedName] parents+=[TemplateType|QualifiedName]*)? 
 	 *         (properties+=Property | constants+=Constant)*
 	 *     )
 	 */
@@ -367,5 +352,20 @@ public class RecordLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getStringLiteralAccess().getValueSTRINGTerminalRuleCall_0(), semanticObject.getValue());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         author=STRING? 
+	 *         since=STRING? 
+	 *         name=ID 
+	 *         (parents+=[TemplateType|QualifiedName] parents+=[TemplateType|QualifiedName]*)? 
+	 *         (properties+=Property | constants+=Constant)*
+	 *     )
+	 */
+	protected void sequence_TemplateType(EObject context, TemplateType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 }

@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EPackage
 import org.eclipse.core.resources.IFile
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.ResourceSet
-import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType
+import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EClassifier
@@ -81,13 +81,13 @@ class EMFModelGenerator {
 		destination.insert(createContainmentClass(), SERVICE_PACKAGE)
 				
 		// create classes and interfaces
-		source.allContents.filter(typeof(PartialRecordType)).
+		source.allContents.filter(typeof(TemplateType)).
 			forEach[type | destination.insert(type.createInterface, (type.eContainer as Model).name)]
 		source.allContents.filter(typeof(RecordType)).
 			forEach[type | destination.insert(type.createClass, (type.eContainer as Model).name)]
 
 		// complete declaration classes and interfaces
-		source.allContents.filter(typeof(PartialRecordType)).forEach[type | type.composeInterface(destination)]
+		source.allContents.filter(typeof(TemplateType)).forEach[type | type.composeInterface(destination)]
 		source.allContents.filter(typeof(RecordType)).forEach[type | type.composeClass(destination)]
 	}
 		
@@ -242,7 +242,7 @@ class EMFModelGenerator {
 	/**
 	 * Compose an EMF interface for the given partial record type/template.
 	 */
-	def EClass createInterface(PartialRecordType type) {
+	def EClass createInterface(TemplateType type) {
 		val EClass clazz = factory.createEClass()
 		clazz.setName(type.name)
 		clazz.setInterface(true)
@@ -266,7 +266,7 @@ class EMFModelGenerator {
 	/**
 	 * Complete the interface construction with inheritance and attributes.
 	 */
-	def void composeInterface(PartialRecordType type, Resource resource) {
+	def void composeInterface(TemplateType type, Resource resource) {
 		val EClass clazz = type.findResultClass(resource)
 		
 		if (!type.parents.empty) {

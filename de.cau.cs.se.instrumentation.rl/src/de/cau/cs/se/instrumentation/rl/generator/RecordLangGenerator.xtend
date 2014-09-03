@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
-import de.cau.cs.se.instrumentation.rl.recordLang.PartialRecordType
+import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType
 import de.cau.cs.se.instrumentation.rl.preferences.TargetsPreferences
 
 /**
@@ -33,25 +33,24 @@ class RecordLangGenerator implements IGenerator {
 
 			val version = TargetsPreferences.getVersionID()
 			val author = TargetsPreferences.getAuthorName()
-																						
+					
+			/** Generator invocation for RecordTypes */																	
 			for (Class<?> generator : GeneratorConfiguration.recordTypeGenerators) {
 				val cg = generator.getConstructor().newInstance() as AbstractRecordTypeGenerator
 				if (TargetsPreferences.isGeneratorActive(cg.id)) {
-					resource.allContents.filter(typeof(RecordType)).forEach[type | 
-						val content = cg.createContent(type,author,version)
-						if (content != null)
-							fsa.generateFile(cg.getFileName(type),	cg.outletType, content)
+					resource.allContents.filter(typeof(RecordType)).forEach[type |
+						if (cg.supportsAbstractRecordType || (!cg.supportsAbstractRecordType && !type.abstract)) 
+							fsa.generateFile(cg.getFileName(type),	cg.outletType, cg.createContent(type,author,version))
 					]
 				}
 			}
 			
+			/** Generator invocation for TemplateTypes */
 			for (Class<?> generator : GeneratorConfiguration.partialRecordTypeGenerators) {
-				val cg = generator.getConstructor().newInstance() as AbstractPartialRecordTypeGenerator
+				val cg = generator.getConstructor().newInstance() as AbstractTemplateTypeGenerator
 				if (TargetsPreferences.isGeneratorActive(cg.id)) {
-					resource.allContents.filter(typeof(PartialRecordType)).forEach[type | 
-						val content = cg.createContent(type,author,version)
-						if (content != null)
-							fsa.generateFile(cg.getFileName(type),	cg.outletType, content)
+					resource.allContents.filter(typeof(TemplateType)).forEach[type | 
+						fsa.generateFile(cg.getFileName(type),	cg.outletType, cg.createContent(type,author,version))
 					]
 				}
 			}
