@@ -49,7 +49,7 @@ public class RecordLangGenerator implements IGenerator {
         final String author = TargetsPreferences.getAuthorName();
         for (final Class<?> generator : GeneratorConfiguration.recordTypeGenerators) {
           {
-            Constructor<?> _constructor = generator.getConstructor();
+            Constructor<? extends Object> _constructor = generator.getConstructor();
             Object _newInstance = _constructor.newInstance();
             final AbstractRecordTypeGenerator cg = ((AbstractRecordTypeGenerator) _newInstance);
             String _id = cg.getId();
@@ -74,7 +74,7 @@ public class RecordLangGenerator implements IGenerator {
         }
         for (final Class<?> generator_1 : GeneratorConfiguration.partialRecordTypeGenerators) {
           {
-            Constructor<?> _constructor = generator_1.getConstructor();
+            Constructor<? extends Object> _constructor = generator_1.getConstructor();
             Object _newInstance = _constructor.newInstance();
             final AbstractPartialRecordTypeGenerator cg = ((AbstractPartialRecordTypeGenerator) _newInstance);
             String _id = cg.getId();
