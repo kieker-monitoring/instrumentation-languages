@@ -161,7 +161,7 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
     _builder.append("public ");
     String _name_3 = type.getName();
     _builder.append(_name_3, "\t");
-    _builder.append(" create(ByteBuffer buffer, IRegistry<String> stringRegistry) {");
+    _builder.append(" create(final ByteBuffer buffer, final IRegistry<String> stringRegistry) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.append("return new ");
@@ -181,7 +181,7 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
     _builder.append("public ");
     String _name_5 = type.getName();
     _builder.append(_name_5, "\t");
-    _builder.append(" create(Object[] values) {");
+    _builder.append(" create(final Object[] values) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.append("return new ");

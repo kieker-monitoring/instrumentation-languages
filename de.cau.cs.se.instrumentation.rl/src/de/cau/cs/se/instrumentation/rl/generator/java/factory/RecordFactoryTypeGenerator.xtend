@@ -74,12 +74,12 @@ class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
 			public class «type.name»Factory implements IRecordFactory<«type.name»> {
 				
 				@Override
-				public «type.name» create(ByteBuffer buffer, IRegistry<String> stringRegistry) {
+				public «type.name» create(final ByteBuffer buffer, final IRegistry<String> stringRegistry) {
 					return new «type.name»(buffer, stringRegistry);
 				}
 				
 				@Override
-				public «type.name» create(Object[] values) {
+				public «type.name» create(final Object[] values) {
 					return new «type.name»(values);
 				}
 			}
