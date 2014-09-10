@@ -55,7 +55,7 @@ public class RecordLangScopeProvider extends AbstractDeclarativeScopeProvider {
    */
   public IScope scope_Property_referTo(final Property property, final EReference reference) {
     EObject _eContainer = property.eContainer();
-    Collection<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(((Type) _eContainer));
+    List<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(((Type) _eContainer));
     return Scopes.scopeFor(_collectAllProperties);
   }
   

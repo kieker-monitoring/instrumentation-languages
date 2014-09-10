@@ -19,7 +19,6 @@ import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType
 import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation
 import java.io.File
 import java.util.ArrayList
-import java.util.Collection
 import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.EClassifier
 import de.cau.cs.se.instrumentation.rl.generator.InternalErrorException
@@ -75,6 +74,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		val allDeclarationProperties = collectAllDeclarationProperties(type)
 		val definedAuthor = if (type.author == null) author else type.author
 		val definedVersion = if (type.since == null) version else type.since
+		System.out.println("TYPE " + type.name + " " + author + ":" + definedAuthor + " -- " + version + ":" + definedVersion) 
 		'''
 		/***************************************************************************
 		 * Copyright 2013 Kieker Project (http://kieker-monitoring.net)
@@ -776,8 +776,8 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * @returns
 	 * 		a complete list of all properties which require getters
 	 */
-	def private Iterable<Property> collectAllGetterDeclarationProperties(RecordType type) {
-		var Iterable<Property> result = PropertyEvaluation::collectAllProperties(type)
+	def private List<Property> collectAllGetterDeclarationProperties(RecordType type) {
+		var List<Property> result = PropertyEvaluation::collectAllProperties(type)
 		if (type.parent != null)
 			return result.removeAlreadyImplementedProperties(type.parent)
 		else
@@ -797,13 +797,14 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * @returns
 	 * 		a complete list of all properties which require declaration
 	 */
-	def private Iterable<Property> collectAllDeclarationProperties(RecordType type) {
-		var Collection<Property> properties = new ArrayList<Property>() 
+	def private List<Property> collectAllDeclarationProperties(RecordType type) {
+		var List<Property> properties = new ArrayList<Property>() 
 		properties.addAll(type.properties)
 		properties.addAll(PropertyEvaluation::collectAllTemplateProperties(type))
 		
-		var Iterable<Property> declarationProperties = properties.filter[property | (property.referTo == null)]
-		
+		val List<Property> declarationProperties = new ArrayList<Property>()
+		properties.forEach[property | if (property.referTo == null) declarationProperties.add(property)]
+				
 		if (type.parent != null)
 			return declarationProperties.removeAlreadyImplementedProperties(type.parent)
 		else
@@ -819,12 +820,14 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * @returns
 	 * 		the remaining list of properties
 	 */
-	def private Iterable<Property> removeAlreadyImplementedProperties(Iterable<Property> list, RecordType parentType) {
-		val Collection<Property> allParentProperties = PropertyEvaluation::collectAllProperties(parentType)
+	def private List<Property> removeAlreadyImplementedProperties(List<Property> list, RecordType parentType) {
+		val List<Property> allParentProperties = PropertyEvaluation::collectAllProperties(parentType)
 		var result = list // necessary for the loop below. very ugly 
-		for (Property parentProperty : allParentProperties) 
-			result = result.filter[item | (!item.name.equals(parentProperty.name))]
-		
+		for (Property parentProperty : allParentProperties) {
+			val property = result.findFirst[it.name.equals(parentProperty.name)]
+			result.remove(property)
+		}
+				
 		return result
 	}
 			

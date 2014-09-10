@@ -91,7 +91,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       if (_isAbstract) {
         return null;
       }
-      final Collection<Property> allDataProperties = PropertyEvaluation.collectAllDataProperties(type);
+      final List<Property> allDataProperties = PropertyEvaluation.collectAllDataProperties(type);
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("/***************************************************************************");
       _builder.newLine();
@@ -258,7 +258,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
           return _createPropertyValueSet;
         }
       };
-      Iterable<CharSequence> _map = IterableExtensions.<Property, CharSequence>map(allDataProperties, _function);
+      List<CharSequence> _map = ListExtensions.<Property, CharSequence>map(allDataProperties, _function);
       String _join = IterableExtensions.join(_map, ", ");
       _builder.append(_join, "			");
       _builder.append(");");
@@ -366,7 +366,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
           return _createPropertyValueSet;
         }
       };
-      Iterable<CharSequence> _map_1 = IterableExtensions.<Property, CharSequence>map(allDataProperties, _function_1);
+      List<CharSequence> _map_1 = ListExtensions.<Property, CharSequence>map(allDataProperties, _function_1);
       String _join_1 = IterableExtensions.join(_map_1, ", ");
       _builder.append(_join_1, "			");
       _builder.append(");");
@@ -428,7 +428,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
           return _createPropertyValueSet;
         }
       };
-      Iterable<CharSequence> _map_2 = IterableExtensions.<Property, CharSequence>map(allDataProperties, _function_2);
+      List<CharSequence> _map_2 = ListExtensions.<Property, CharSequence>map(allDataProperties, _function_2);
       String _join_2 = IterableExtensions.join(_map_2, ", ");
       _builder.append(_join_2, "			");
       _builder.append(");");

@@ -7,10 +7,11 @@ import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
 import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation;
 import java.io.File;
-import java.util.Collection;
+import java.util.List;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
 
 @SuppressWarnings("all")
 public class RecordTypeGenerator extends de.cau.cs.se.instrumentation.rl.generator.c.main.RecordTypeGenerator {
@@ -143,14 +144,14 @@ public class RecordTypeGenerator extends de.cau.cs.se.instrumentation.rl.generat
     _builder.append("typedef struct {");
     _builder.newLine();
     _builder.append("\t");
-    Collection<Property> _collectAllDataProperties = PropertyEvaluation.collectAllDataProperties(type);
+    List<Property> _collectAllDataProperties = PropertyEvaluation.collectAllDataProperties(type);
     final Function1<Property,CharSequence> _function = new Function1<Property,CharSequence>() {
       public CharSequence apply(final Property it) {
         CharSequence _createPropertyDeclaration = RecordTypeGenerator.this.createPropertyDeclaration(it);
         return _createPropertyDeclaration;
       }
     };
-    Iterable<CharSequence> _map = IterableExtensions.<Property, CharSequence>map(_collectAllDataProperties, _function);
+    List<CharSequence> _map = ListExtensions.<Property, CharSequence>map(_collectAllDataProperties, _function);
     String _join = IterableExtensions.join(_map);
     _builder.append(_join, "	");
     _builder.newLineIfNotEmpty();

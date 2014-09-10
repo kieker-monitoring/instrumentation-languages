@@ -10,8 +10,7 @@ import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import org.eclipse.emf.common.util.BasicEList;
+import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.xtext.xbase.lib.Exceptions;
@@ -31,10 +30,10 @@ public class PropertyEvaluation {
    * @returns
    * 		a complete list of all properties in a record
    */
-  protected static Collection<Property> _collectAllDataProperties(final RecordType type) {
+  protected static List<Property> _collectAllDataProperties(final RecordType type) {
     ArrayList<Property> _arrayList = new ArrayList<Property>();
     final ArrayList<Property> list = _arrayList;
-    Collection<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(type);
+    List<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(type);
     final Function1<Property,Boolean> _function = new Function1<Property,Boolean>() {
       public Boolean apply(final Property property) {
         Property _referTo = property.getReferTo();
@@ -56,10 +55,10 @@ public class PropertyEvaluation {
    * @returns
    * 		a complete list of all properties in a record
    */
-  protected static Collection<Property> _collectAllDataProperties(final TemplateType type) {
+  protected static List<Property> _collectAllDataProperties(final TemplateType type) {
     ArrayList<Property> _arrayList = new ArrayList<Property>();
     final ArrayList<Property> list = _arrayList;
-    Collection<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(type);
+    List<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(type);
     final Function1<Property,Boolean> _function = new Function1<Property,Boolean>() {
       public Boolean apply(final Property property) {
         Property _referTo = property.getReferTo();
@@ -81,26 +80,26 @@ public class PropertyEvaluation {
    * @returns
    * 		a complete list of all properties in a record
    */
-  protected static Collection<Property> _collectAllProperties(final RecordType type) {
-    Collection<Property> _xifexpression = null;
+  protected static List<Property> _collectAllProperties(final RecordType type) {
+    List<Property> _xifexpression = null;
     RecordType _parent = type.getParent();
     boolean _notEquals = (!Objects.equal(_parent, null));
     if (_notEquals) {
       RecordType _parent_1 = type.getParent();
-      Collection<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(_parent_1);
+      List<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(_parent_1);
       _xifexpression = _collectAllProperties;
     } else {
       ArrayList<Property> _arrayList = new ArrayList<Property>();
       _xifexpression = _arrayList;
     }
-    final Collection<Property> result = _xifexpression;
+    final List<Property> result = _xifexpression;
     EList<TemplateType> _parents = type.getParents();
     boolean _notEquals_1 = (!Objects.equal(_parents, null));
     if (_notEquals_1) {
       EList<TemplateType> _parents_1 = type.getParents();
       final Procedure1<TemplateType> _function = new Procedure1<TemplateType>() {
         public void apply(final TemplateType it) {
-          Collection<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(it);
+          List<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(it);
           PropertyEvaluation.addAllUnique(result, _collectAllProperties);
         }
       };
@@ -119,16 +118,16 @@ public class PropertyEvaluation {
    * @returns
    * 		a complete list of all properties in a record
    */
-  protected static Collection<Property> _collectAllProperties(final TemplateType type) {
+  protected static List<Property> _collectAllProperties(final TemplateType type) {
     ArrayList<Property> _arrayList = new ArrayList<Property>();
-    final Collection<Property> result = _arrayList;
+    final List<Property> result = _arrayList;
     EList<TemplateType> _parents = type.getParents();
     boolean _notEquals = (!Objects.equal(_parents, null));
     if (_notEquals) {
       EList<TemplateType> _parents_1 = type.getParents();
       final Procedure1<TemplateType> _function = new Procedure1<TemplateType>() {
         public void apply(final TemplateType iface) {
-          Collection<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(iface);
+          List<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(iface);
           PropertyEvaluation.addAllUnique(result, _collectAllProperties);
         }
       };
@@ -147,16 +146,16 @@ public class PropertyEvaluation {
    * @returns
    * 		a complete list of all properties in a record
    */
-  protected static Collection<Property> _collectAllTemplateProperties(final RecordType type) {
+  protected static List<Property> _collectAllTemplateProperties(final RecordType type) {
     EList<TemplateType> _parents = type.getParents();
     boolean _notEquals = (!Objects.equal(_parents, null));
     if (_notEquals) {
       ArrayList<Property> _arrayList = new ArrayList<Property>();
-      final Collection<Property> result = _arrayList;
+      final List<Property> result = _arrayList;
       EList<TemplateType> _parents_1 = type.getParents();
       final Procedure1<TemplateType> _function = new Procedure1<TemplateType>() {
         public void apply(final TemplateType iface) {
-          Collection<Property> _collectAllTemplateProperties = PropertyEvaluation.collectAllTemplateProperties(iface);
+          List<Property> _collectAllTemplateProperties = PropertyEvaluation.collectAllTemplateProperties(iface);
           PropertyEvaluation.addAllUnique(result, _collectAllTemplateProperties);
         }
       };
@@ -177,16 +176,16 @@ public class PropertyEvaluation {
    * @returns
    * 		a complete list of all properties in a record
    */
-  protected static Collection<Property> _collectAllTemplateProperties(final TemplateType type) {
-    BasicEList<Property> _basicEList = new BasicEList<Property>();
-    final EList<Property> result = _basicEList;
+  protected static List<Property> _collectAllTemplateProperties(final TemplateType type) {
+    ArrayList<Property> _arrayList = new ArrayList<Property>();
+    final List<Property> result = _arrayList;
     EList<TemplateType> _parents = type.getParents();
     boolean _notEquals = (!Objects.equal(_parents, null));
     if (_notEquals) {
       EList<TemplateType> _parents_1 = type.getParents();
       final Procedure1<TemplateType> _function = new Procedure1<TemplateType>() {
         public void apply(final TemplateType iface) {
-          Collection<Property> _collectAllTemplateProperties = PropertyEvaluation.collectAllTemplateProperties(iface);
+          List<Property> _collectAllTemplateProperties = PropertyEvaluation.collectAllTemplateProperties(iface);
           PropertyEvaluation.addAllUnique(result, _collectAllTemplateProperties);
         }
       };
@@ -199,7 +198,7 @@ public class PropertyEvaluation {
   /**
    * Add elements of the second list to the first list if it is not already in there.
    */
-  public static Collection<Property> addAllUnique(final Collection<Property> list, final Iterable<Property> addList) {
+  public static List<Property> addAllUnique(final List<Property> list, final List<Property> addList) {
     final Procedure1<Property> _function = new Procedure1<Property>() {
       public void apply(final Property item) {
         boolean _containsProperty = PropertyEvaluation.containsProperty(list, item);
@@ -222,7 +221,7 @@ public class PropertyEvaluation {
    * @returns
    * 		true if a property of the same name and type already exists, else false
    */
-  public static boolean containsProperty(final Collection<Property> list, final Property item) {
+  public static boolean containsProperty(final List<Property> list, final Property item) {
     for (final Property p : list) {
       boolean _and = false;
       String _name = p.getName();
@@ -371,7 +370,7 @@ public class PropertyEvaluation {
     }
   }
   
-  public static Collection<Property> collectAllDataProperties(final Type type) {
+  public static List<Property> collectAllDataProperties(final Type type) {
     if (type instanceof RecordType) {
       return _collectAllDataProperties((RecordType)type);
     } else if (type instanceof TemplateType) {
@@ -382,7 +381,7 @@ public class PropertyEvaluation {
     }
   }
   
-  public static Collection<Property> collectAllProperties(final Type type) {
+  public static List<Property> collectAllProperties(final Type type) {
     if (type instanceof RecordType) {
       return _collectAllProperties((RecordType)type);
     } else if (type instanceof TemplateType) {
@@ -393,7 +392,7 @@ public class PropertyEvaluation {
     }
   }
   
-  public static Collection<Property> collectAllTemplateProperties(final Type type) {
+  public static List<Property> collectAllTemplateProperties(final Type type) {
     if (type instanceof RecordType) {
       return _collectAllTemplateProperties((RecordType)type);
     } else if (type instanceof TemplateType) {

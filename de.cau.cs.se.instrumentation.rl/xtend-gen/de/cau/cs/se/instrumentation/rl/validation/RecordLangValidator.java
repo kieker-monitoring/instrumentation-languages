@@ -96,7 +96,7 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
     EObject _eContainer = property.eContainer();
     if ((_eContainer instanceof Type)) {
       EObject _eContainer_1 = property.eContainer();
-      Collection<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(((Type) _eContainer_1));
+      List<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(((Type) _eContainer_1));
       final Function1<Property,Boolean> _function = new Function1<Property,Boolean>() {
         public Boolean apply(final Property p) {
           boolean _and = false;
@@ -115,7 +115,7 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
       boolean _exists = IterableExtensions.<Property>exists(_collectAllProperties, _function);
       if (_exists) {
         EObject _eContainer_2 = property.eContainer();
-        Collection<Property> _collectAllProperties_1 = PropertyEvaluation.collectAllProperties(((Type) _eContainer_2));
+        List<Property> _collectAllProperties_1 = PropertyEvaluation.collectAllProperties(((Type) _eContainer_2));
         final Function1<Property,Boolean> _function_1 = new Function1<Property,Boolean>() {
           public Boolean apply(final Property p) {
             boolean _and = false;

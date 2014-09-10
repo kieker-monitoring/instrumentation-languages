@@ -4,10 +4,9 @@ import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType
 import de.cau.cs.se.instrumentation.rl.recordLang.Property
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
 import java.util.ArrayList
-import org.eclipse.emf.common.util.EList
-import java.util.Collection
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
 import de.cau.cs.se.instrumentation.rl.generator.InternalErrorException
+import java.util.List
 
 class PropertyEvaluation {
 	
@@ -24,7 +23,7 @@ class PropertyEvaluation {
 	 * @returns
 	 * 		a complete list of all properties in a record
 	 */
-	dispatch static def Collection<Property> collectAllDataProperties(RecordType type) {
+	dispatch static def List<Property> collectAllDataProperties(RecordType type) {
 		val list = new ArrayList<Property>()
 		list.addAll(collectAllProperties(type).filter[property | (property.referTo == null)])
 		return list
@@ -40,7 +39,7 @@ class PropertyEvaluation {
 	 * @returns
 	 * 		a complete list of all properties in a record
 	 */
-	dispatch static def Collection<Property> collectAllDataProperties(TemplateType type) {
+	dispatch static def List<Property> collectAllDataProperties(TemplateType type) {
 		val list = new ArrayList<Property>()
 		list.addAll(collectAllProperties(type).filter[property | (property.referTo == null)])
 		return list
@@ -59,14 +58,16 @@ class PropertyEvaluation {
 	 * @returns
 	 * 		a complete list of all properties in a record
 	 */
-	dispatch static def Collection<Property> collectAllProperties(RecordType type) {
-		val Collection<Property> result =
+	dispatch static def List<Property> collectAllProperties(RecordType type) {
+		val List<Property> result =
 			if (type.parent != null)
 				type.parent.collectAllProperties
 			else 
 				new ArrayList<Property>()
+		
 		if (type.parents != null) 
 			type.parents.forEach[result.addAllUnique(it.collectAllProperties)]
+	
 		return result.addAllUnique(type.properties)
 	}
 	
@@ -79,10 +80,11 @@ class PropertyEvaluation {
 	 * @returns
 	 * 		a complete list of all properties in a record
 	 */
-	dispatch static def Collection<Property> collectAllProperties(TemplateType type) {
-		val Collection<Property> result = new ArrayList<Property>()
+	dispatch static def List<Property> collectAllProperties(TemplateType type) {
+		val List<Property> result = new ArrayList<Property>()
 		if (type.parents != null)
 			type.parents.forEach[iface | result.addAllUnique(iface.collectAllProperties)]
+
 		return result.addAllUnique(type.properties)
 	}
 	
@@ -99,9 +101,9 @@ class PropertyEvaluation {
 	 * @returns
 	 * 		a complete list of all properties in a record
 	 */
-	dispatch static def Collection<Property> collectAllTemplateProperties(RecordType type) {
+	dispatch static def List<Property> collectAllTemplateProperties(RecordType type) {
 		if (type.parents != null) {
-			val Collection<Property> result = new ArrayList<Property>()
+			val List<Property> result = new ArrayList<Property>()
 			type.parents.forEach[iface | result.addAllUnique(iface.collectAllTemplateProperties)]
 			return result
 		} else
@@ -118,8 +120,8 @@ class PropertyEvaluation {
 	 * @returns
 	 * 		a complete list of all properties in a record
 	 */
-	dispatch static def Collection<Property> collectAllTemplateProperties(TemplateType type) {
-		val EList<Property> result = new org.eclipse.emf.common.util.BasicEList<Property>()
+	dispatch static def List<Property> collectAllTemplateProperties(TemplateType type) {
+		val List<Property> result = new ArrayList<Property>()
 		if (type.parents!=null)
 			type.parents.forEach[iface | result.addAllUnique(iface.collectAllTemplateProperties)]
 		return result.addAllUnique(type.properties)
@@ -130,7 +132,7 @@ class PropertyEvaluation {
 	/**
 	 * Add elements of the second list to the first list if it is not already in there.
 	 */
-	def static Collection<Property> addAllUnique(Collection<Property> list, Iterable<Property> addList) {
+	def static List<Property> addAllUnique(List<Property> list, List<Property> addList) {
 		addList.forEach[item | if (!list.containsProperty(item)) list.add(item)]
 		return list
 	}
@@ -144,7 +146,7 @@ class PropertyEvaluation {
 	 * @returns
 	 * 		true if a property of the same name and type already exists, else false
 	 */
-	def static boolean containsProperty (Collection<Property> list, Property item) {
+	def static boolean containsProperty (List<Property> list, Property item) {
 		for (Property p : list) {
 			if (p.name.equals(item.name) && (p.findType.class_.name.equals(item.findType.class_.name)))
 				return true
