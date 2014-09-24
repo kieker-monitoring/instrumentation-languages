@@ -10,7 +10,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<checkstyle.config.location>../de.cau.cs.se.instrumentation.releng/cs-conf.xml</checkstyle.config.location>
-		<tycho-version>0.16.0</tycho-version>
+		<tycho-version>0.18.1</tycho-version>
 		<!-- variables -->
 		<mwe2>${basedir}/lib/org.eclipse.emf.mwe.utils_1.3.1.v201402030544.jar</mwe2>
 		<kepler-repo.url>http://download.eclipse.org/releases/kepler</kepler-repo.url>

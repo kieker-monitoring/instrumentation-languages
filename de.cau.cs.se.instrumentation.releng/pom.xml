@@ -11,7 +11,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<checkstyle.config.location>cs-conf.xml</checkstyle.config.location>
-		<tycho-version>0.16.0</tycho-version>
+		<tycho-version>0.18.1</tycho-version>
 		<kepler-repo.url>http://download.eclipse.org/releases/kepler</kepler-repo.url>
 		<kieler-repo.url>http://rtsys.informatik.uni-kiel.de/~kieler/updatesite/nightly</kieler-repo.url>
 		<palladio-repo.url>http://sdqweb.ipd.kit.edu/eclipse/palladio/releases/3.4.1</palladio-repo.url>
