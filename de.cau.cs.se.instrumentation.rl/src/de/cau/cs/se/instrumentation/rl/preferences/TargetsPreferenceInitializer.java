@@ -44,7 +44,7 @@ public class TargetsPreferenceInitializer extends AbstractPreferenceInitializer 
 	 */
 	@Override
 	public void initializeDefaultPreferences() {
-		for (final Class<?> generatorClass : GeneratorConfiguration.recordTypeGenerators) {
+		for (final Class<?> generatorClass : GeneratorConfiguration.RECORD_TYPE_GENERATORS) {
 			try {
 				final AbstractRecordTypeGenerator generator = (AbstractRecordTypeGenerator) generatorClass.getConstructor().newInstance();
 				TargetsPreferenceInitializer.getPreferenceStore().

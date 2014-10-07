@@ -231,14 +231,15 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     _builder.newLine();
     _builder.append("\t");
     List<Property> _collectAllDataProperties = PropertyEvaluation.collectAllDataProperties(type);
-    final Function1<Property, CharSequence> _function = new Function1<Property, CharSequence>() {
+    final Function1<Property,CharSequence> _function = new Function1<Property,CharSequence>() {
       public CharSequence apply(final Property it) {
-        return RecordTypeGenerator.this.createValueSerializer(it);
+        CharSequence _createValueSerializer = RecordTypeGenerator.this.createValueSerializer(it);
+        return _createValueSerializer;
       }
     };
     List<CharSequence> _map = ListExtensions.<Property, CharSequence>map(_collectAllDataProperties, _function);
     String _join = IterableExtensions.join(_map);
-    _builder.append(_join, "\t");
+    _builder.append(_join, "	");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
     _builder.append("return length;");
@@ -266,64 +267,66 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     String _switchResult = null;
     EClassifier _class_ = classifier.getClass_();
     String _name = _class_.getName();
+    final String _switchValue = _name;
     boolean _matched = false;
     if (!_matched) {
-      if (Objects.equal(_name, "string")) {
+      if (Objects.equal(_switchValue,"string")) {
         _matched=true;
         _switchResult = "string";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_name, "byte")) {
+      if (Objects.equal(_switchValue,"byte")) {
         _matched=true;
         _switchResult = "int8";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_name, "short")) {
+      if (Objects.equal(_switchValue,"short")) {
         _matched=true;
         _switchResult = "int16";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_name, "int")) {
+      if (Objects.equal(_switchValue,"int")) {
         _matched=true;
         _switchResult = "int32";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_name, "long")) {
+      if (Objects.equal(_switchValue,"long")) {
         _matched=true;
         _switchResult = "int64";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_name, "float")) {
+      if (Objects.equal(_switchValue,"float")) {
         _matched=true;
         _switchResult = "float";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_name, "double")) {
+      if (Objects.equal(_switchValue,"double")) {
         _matched=true;
         _switchResult = "double";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_name, "char")) {
+      if (Objects.equal(_switchValue,"char")) {
         _matched=true;
         _switchResult = "int16";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_name, "boolean")) {
+      if (Objects.equal(_switchValue,"boolean")) {
         _matched=true;
         _switchResult = "boolean";
       }
     }
     if (!_matched) {
       EClassifier _class__1 = classifier.getClass_();
-      _switchResult = _class__1.getName();
+      String _name_1 = _class__1.getName();
+      _switchResult = _name_1;
     }
     return _switchResult;
   }

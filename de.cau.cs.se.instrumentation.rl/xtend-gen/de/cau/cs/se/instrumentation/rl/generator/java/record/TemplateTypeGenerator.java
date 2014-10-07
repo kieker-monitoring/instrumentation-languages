@@ -74,7 +74,8 @@ public class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
       if (_equals) {
         _xifexpression = author;
       } else {
-        _xifexpression = type.getAuthor();
+        String _author_1 = type.getAuthor();
+        _xifexpression = _author_1;
       }
       final String definedAuthor = _xifexpression;
       String _xifexpression_1 = null;
@@ -83,7 +84,8 @@ public class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
       if (_equals_1) {
         _xifexpression_1 = version;
       } else {
-        _xifexpression_1 = type.getSince();
+        String _since_1 = type.getSince();
+        _xifexpression_1 = _since_1;
       }
       final String definedVersion = _xifexpression_1;
       StringConcatenation _builder = new StringConcatenation();
@@ -171,18 +173,19 @@ public class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
       _builder.newLineIfNotEmpty();
       _builder.append("\t");
       EList<Property> _properties = type.getProperties();
-      final Function1<Property, CharSequence> _function = new Function1<Property, CharSequence>() {
+      final Function1<Property,CharSequence> _function = new Function1<Property,CharSequence>() {
         public CharSequence apply(final Property property) {
-          return TemplateTypeGenerator.this.createPropertyGetter(property);
+          CharSequence _createPropertyGetter = TemplateTypeGenerator.this.createPropertyGetter(property);
+          return _createPropertyGetter;
         }
       };
       List<CharSequence> _map = ListExtensions.<Property, CharSequence>map(_properties, _function);
       String _join = IterableExtensions.join(_map);
-      _builder.append(_join, "\t");
+      _builder.append(_join, "	");
       _builder.newLineIfNotEmpty();
       _builder.append("}");
       _builder.newLine();
-      _xblockexpression = _builder;
+      _xblockexpression = (_builder);
     }
     return _xblockexpression;
   }
@@ -205,24 +208,28 @@ public class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
     } else {
       int _size = parents.size();
       boolean _greaterThan = (_size > 0);
-      _and = _greaterThan;
+      _and = (_notEquals && _greaterThan);
     }
     if (_and) {
-      final Function1<TemplateType, Boolean> _function = new Function1<TemplateType, Boolean>() {
+      final Function1<TemplateType,Boolean> _function = new Function1<TemplateType,Boolean>() {
         public Boolean apply(final TemplateType t) {
-          return Boolean.valueOf(TemplateTypeGenerator.this.isInSamePackage(type, t));
+          boolean _isInSamePackage = TemplateTypeGenerator.this.isInSamePackage(type, t);
+          return Boolean.valueOf(_isInSamePackage);
         }
       };
       Iterable<TemplateType> _filter = IterableExtensions.<TemplateType>filter(parents, _function);
-      final Function1<TemplateType, CharSequence> _function_1 = new Function1<TemplateType, CharSequence>() {
+      final Function1<TemplateType,CharSequence> _function_1 = new Function1<TemplateType,CharSequence>() {
         public CharSequence apply(final TemplateType it) {
-          return TemplateTypeGenerator.this.createImport(it);
+          CharSequence _createImport = TemplateTypeGenerator.this.createImport(it);
+          return _createImport;
         }
       };
       Iterable<CharSequence> _map = IterableExtensions.<TemplateType, CharSequence>map(_filter, _function_1);
-      _xifexpression = IterableExtensions.join(_map);
+      String _join = IterableExtensions.join(_map);
+      _xifexpression = _join;
     } else {
-      _xifexpression = this.createDefaultImport();
+      CharSequence _createDefaultImport = this.createDefaultImport();
+      _xifexpression = _createDefaultImport;
     }
     _builder.append(_xifexpression, "");
     return _builder;
@@ -258,16 +265,18 @@ public class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
     } else {
       int _size = parents.size();
       boolean _greaterThan = (_size > 0);
-      _and = _greaterThan;
+      _and = (_notEquals && _greaterThan);
     }
     if (_and) {
-      final Function1<TemplateType, String> _function = new Function1<TemplateType, String>() {
+      final Function1<TemplateType,String> _function = new Function1<TemplateType,String>() {
         public String apply(final TemplateType t) {
-          return t.getName();
+          String _name = t.getName();
+          return _name;
         }
       };
       List<String> _map = ListExtensions.<TemplateType, String>map(parents, _function);
-      _xifexpression = IterableExtensions.join(_map, ", ");
+      String _join = IterableExtensions.join(_map, ", ");
+      _xifexpression = _join;
     } else {
       _xifexpression = "IMonitoringRecord";
     }
@@ -343,16 +352,18 @@ public class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
     String _switchResult = null;
     EClassifier _class_ = classifier.getClass_();
     String _name = _class_.getName();
+    final String _switchValue = _name;
     boolean _matched = false;
     if (!_matched) {
-      if (Objects.equal(_name, "string")) {
+      if (Objects.equal(_switchValue,"string")) {
         _matched=true;
         _switchResult = "String";
       }
     }
     if (!_matched) {
       EClassifier _class__1 = classifier.getClass_();
-      _switchResult = _class__1.getName();
+      String _name_1 = _class__1.getName();
+      _switchResult = _name_1;
     }
     return _switchResult;
   }
