@@ -1079,6 +1079,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
             }
           }
         }
+        _builder.append("this.");
         String _name_1 = property.getName();
         String _protectKeywords = this.protectKeywords(_name_1);
         _builder.append(_protectKeywords, "");

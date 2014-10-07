@@ -322,7 +322,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 						int _«property.name»_size«sizes.indexOf(size)» = buffer.getInt();
 					«ENDIF»
 				«ENDFOR»
-				«property.name.protectKeywords» = new «PropertyEvaluation::findType(property).createTypeInstantiationName(property.name)»;
+				this.«property.name.protectKeywords» = new «PropertyEvaluation::findType(property).createTypeInstantiationName(property.name)»;
 				«createForLoopForDeserialization(sizes,0,property)»
 			'''
 		} else
