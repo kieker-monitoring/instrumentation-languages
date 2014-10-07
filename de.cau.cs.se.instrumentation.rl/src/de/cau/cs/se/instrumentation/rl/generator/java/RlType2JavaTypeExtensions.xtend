@@ -28,4 +28,22 @@ class RlType2JavaTypeExtensions {
 			default: classifier.name
 		}
 	}
+
+	/**
+	 * Determine the right Java string for a given system type.
+	 */
+	def static createPrimitiveWrapperTypeName(EClassifier classifier) {
+		switch (classifier.name) {
+			case 'int': 'Integer'
+			case 'long': 'Long'
+			case 'short': 'Short'
+			case 'double': 'Double'
+			case 'float': 'Float'
+			case 'char': 'Character'
+			case 'byte': 'Byte'
+			case 'string': 'String'
+			case 'boolean': 'Boolean'
+			default: classifier.name
+		}
+	}
 }

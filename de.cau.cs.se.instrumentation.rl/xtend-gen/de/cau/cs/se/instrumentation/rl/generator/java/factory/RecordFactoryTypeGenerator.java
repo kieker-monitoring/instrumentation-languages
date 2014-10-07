@@ -167,13 +167,13 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
     _builder.append("\t");
     _builder.append("public ");
     String _name_3 = type.getName();
-    _builder.append(_name_3, "	");
+    _builder.append(_name_3, "\t");
     _builder.append(" create(final ByteBuffer buffer, final IRegistry<String> stringRegistry) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.append("return new ");
     String _name_4 = type.getName();
-    _builder.append(_name_4, "		");
+    _builder.append(_name_4, "\t\t");
     _builder.append("(buffer, stringRegistry);");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -187,13 +187,13 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
     _builder.append("\t");
     _builder.append("public ");
     String _name_5 = type.getName();
-    _builder.append(_name_5, "	");
+    _builder.append(_name_5, "\t");
     _builder.append(" create(final Object[] values) {");
     _builder.newLineIfNotEmpty();
     _builder.append("\t\t");
     _builder.append("return new ");
     String _name_6 = type.getName();
-    _builder.append(_name_6, "		");
+    _builder.append(_name_6, "\t\t");
     _builder.append("(values);");
     _builder.newLineIfNotEmpty();
     _builder.append("\t");
@@ -223,7 +223,7 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
         EClassifier _class_ = classifier.getClass_();
         String _createPrimitiveTypeName = RlType2JavaTypeExtensions.createPrimitiveTypeName(_class_);
         EList<ArraySize> _sizes_1 = classifier.getSizes();
-        final Function1<ArraySize,String> _function = new Function1<ArraySize,String>() {
+        final Function1<ArraySize, String> _function = new Function1<ArraySize, String>() {
           public String apply(final ArraySize size) {
             StringConcatenation _builder = new StringConcatenation();
             _builder.append("[]");
@@ -232,16 +232,13 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
         };
         List<String> _map = ListExtensions.<ArraySize, String>map(_sizes_1, _function);
         String _join = IterableExtensions.join(_map);
-        String _plus = (_createPrimitiveTypeName + _join);
-        _xifexpression = _plus;
+        _xifexpression = (_createPrimitiveTypeName + _join);
       } else {
         EClassifier _class__1 = classifier.getClass_();
-        String _createPrimitiveTypeName_1 = RlType2JavaTypeExtensions.createPrimitiveTypeName(_class__1);
-        _xifexpression = _createPrimitiveTypeName_1;
+        _xifexpression = RlType2JavaTypeExtensions.createPrimitiveTypeName(_class__1);
       }
       final String typeName = _xifexpression;
-      String _plus_1 = (typeName + "Factory");
-      _xblockexpression = (_plus_1);
+      _xblockexpression = (typeName + "Factory");
     }
     return _xblockexpression;
   }

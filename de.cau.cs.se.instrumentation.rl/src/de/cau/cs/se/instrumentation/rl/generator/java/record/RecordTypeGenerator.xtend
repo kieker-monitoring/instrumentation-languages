@@ -725,9 +725,8 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * @returns a java type name
 	 */
 	def createTypeName(Classifier classifier) {
-		if (classifier.sizes.size>0)
-			classifier.class_.createPrimitiveTypeName + 
-			classifier.sizes.map[size | '''[]''' ].join
+		if (classifier.sizes.size > 0)
+			classifier.createArrayTypeName
 		else
 			classifier.class_.createPrimitiveTypeName
 	}
@@ -741,29 +740,24 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * @returns a java type name
 	 */
 	def private createObjectTypeName(Classifier classifier) {
-		if (classifier.sizes.size>0)
-			classifier.class_.createObjectPrimitiveTypeName + 
-			classifier.sizes.map[size | '''[]''' ].join
+		if (classifier.sizes.size > 0)
+			classifier.createArrayTypeName
 		else
-			classifier.class_.createObjectPrimitiveTypeName
+			classifier.class_.createPrimitiveWrapperTypeName
 	}
 	
 	/**
-	 * Determine the right Java string for a given system type.
+	 * Determine the right Java string for a given system array type.
+	 * 
+	 * @param classifier
+	 * 		a classifier representing a type
+	 * 
+	 * @returns a java type name
 	 */
-	def private createObjectPrimitiveTypeName(EClassifier classifier) {
-		switch (classifier.name) {
-			case 'int' : 'Integer'
-			case 'long' : 'Long'
-			case 'short' : 'Short'
-			case 'double' : 'Double'
-			case 'float' : 'Float'
-			case 'char' : 'Character'
-			case 'byte' : 'Byte'
-			case 'string' : 'String'
-			case 'boolean' : 'Boolean'
-			default : classifier.name
-		}	
+	def private createArrayTypeName(Classifier classifier) {
+		val primitiveTypeName = classifier.class_.createPrimitiveTypeName
+		val arrayBrackets = classifier.sizes.map[size | '''[]''' ].join
+		primitiveTypeName + arrayBrackets
 	}
 	
 	/**

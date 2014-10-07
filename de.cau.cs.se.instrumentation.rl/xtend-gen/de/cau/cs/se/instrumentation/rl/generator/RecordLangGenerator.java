@@ -48,7 +48,7 @@ public class RecordLangGenerator implements IGenerator {
         final String author = TargetsPreferences.getAuthorName();
         for (final Class<?> generator : GeneratorConfiguration.recordTypeGenerators) {
           {
-            Constructor<? extends Object> _constructor = generator.getConstructor();
+            Constructor<?> _constructor = generator.getConstructor();
             Object _newInstance = _constructor.newInstance();
             final AbstractRecordTypeGenerator cg = ((AbstractRecordTypeGenerator) _newInstance);
             String _id = cg.getId();
@@ -71,9 +71,9 @@ public class RecordLangGenerator implements IGenerator {
                     } else {
                       boolean _isAbstract = type.isAbstract();
                       boolean _not_1 = (!_isAbstract);
-                      _and = (_not && _not_1);
+                      _and = _not_1;
                     }
-                    _or = (_supportsAbstractRecordType || _and);
+                    _or = _and;
                   }
                   if (_or) {
                     String _fileName = cg.getFileName(type);
@@ -89,7 +89,7 @@ public class RecordLangGenerator implements IGenerator {
         }
         for (final Class<?> generator_1 : GeneratorConfiguration.partialRecordTypeGenerators) {
           {
-            Constructor<? extends Object> _constructor = generator_1.getConstructor();
+            Constructor<?> _constructor = generator_1.getConstructor();
             Object _newInstance = _constructor.newInstance();
             final AbstractTemplateTypeGenerator cg = ((AbstractTemplateTypeGenerator) _newInstance);
             String _id = cg.getId();

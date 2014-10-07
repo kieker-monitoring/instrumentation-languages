@@ -160,10 +160,9 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     _builder.newLine();
     _builder.append("    ");
     List<Property> _collectAllDataProperties_3 = PropertyEvaluation.collectAllDataProperties(type);
-    final Function1<Property,CharSequence> _function = new Function1<Property,CharSequence>() {
+    final Function1<Property, CharSequence> _function = new Function1<Property, CharSequence>() {
       public CharSequence apply(final Property it) {
-        CharSequence _createProperty = RecordTypeGenerator.this.createProperty(it);
-        return _createProperty;
+        return RecordTypeGenerator.this.createProperty(it);
       }
     };
     List<CharSequence> _map = ListExtensions.<Property, CharSequence>map(_collectAllDataProperties_3, _function);
@@ -227,18 +226,16 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     String _switchResult = null;
     EClassifier _class_ = classifier.getClass_();
     String _name = _class_.getName();
-    final String _switchValue = _name;
     boolean _matched = false;
     if (!_matched) {
-      if (Objects.equal(_switchValue,"string")) {
+      if (Objects.equal(_name, "string")) {
         _matched=true;
         _switchResult = "String";
       }
     }
     if (!_matched) {
       EClassifier _class__1 = classifier.getClass_();
-      String _name_1 = _class__1.getName();
-      _switchResult = _name_1;
+      _switchResult = _class__1.getName();
     }
     return _switchResult;
   }
@@ -272,7 +269,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   }
   
   public String createParameterCall(final Collection<Property> list) {
-    final Function1<Property,String> _function = new Function1<Property,String>() {
+    final Function1<Property, String> _function = new Function1<Property, String>() {
       public String apply(final Property it) {
         StringConcatenation _builder = new StringConcatenation();
         _builder.append("$");
@@ -282,7 +279,6 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       }
     };
     Iterable<String> _map = IterableExtensions.<Property, String>map(list, _function);
-    String _join = IterableExtensions.join(_map, ", ");
-    return _join;
+    return IterableExtensions.join(_map, ", ");
   }
 }

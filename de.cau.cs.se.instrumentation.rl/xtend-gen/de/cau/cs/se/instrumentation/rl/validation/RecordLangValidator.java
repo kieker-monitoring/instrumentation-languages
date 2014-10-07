@@ -16,7 +16,7 @@ import de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Literal;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangFactory;
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage.Literals;
+import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType;
@@ -58,8 +58,7 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
     Property _referTo = property.getReferTo();
     boolean _notEquals = (!Objects.equal(_referTo, null));
     if (_notEquals) {
-      ArrayList<Property> _arrayList = new ArrayList<Property>();
-      final List<Property> visitedProperties = _arrayList;
+      final List<Property> visitedProperties = new ArrayList<Property>();
       visitedProperties.add(property);
       Property referredProperty = property.getReferTo();
       Property _referTo_1 = referredProperty.getReferTo();
@@ -73,7 +72,7 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
             String _plus = ("Property alias " + _name);
             String _plus_1 = (_plus + " has a cyclic definition.");
             this.error(_plus_1, 
-              Literals.PROPERTY__REFER_TO, 
+              RecordLangPackage.Literals.PROPERTY__REFER_TO, 
               RecordLangValidator.INVALID_NAME);
             return;
           }
@@ -97,7 +96,7 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
     if ((_eContainer instanceof Type)) {
       EObject _eContainer_1 = property.eContainer();
       List<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(((Type) _eContainer_1));
-      final Function1<Property,Boolean> _function = new Function1<Property,Boolean>() {
+      final Function1<Property, Boolean> _function = new Function1<Property, Boolean>() {
         public Boolean apply(final Property p) {
           boolean _and = false;
           String _name = p.getName();
@@ -107,7 +106,7 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
             _and = false;
           } else {
             boolean _notEquals = (!Objects.equal(p, property));
-            _and = (_equals && _notEquals);
+            _and = _notEquals;
           }
           return Boolean.valueOf(_and);
         }
@@ -116,7 +115,7 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
       if (_exists) {
         EObject _eContainer_2 = property.eContainer();
         List<Property> _collectAllProperties_1 = PropertyEvaluation.collectAllProperties(((Type) _eContainer_2));
-        final Function1<Property,Boolean> _function_1 = new Function1<Property,Boolean>() {
+        final Function1<Property, Boolean> _function_1 = new Function1<Property, Boolean>() {
           public Boolean apply(final Property p) {
             boolean _and = false;
             String _name = p.getName();
@@ -126,7 +125,7 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
               _and = false;
             } else {
               boolean _notEquals = (!Objects.equal(p, property));
-              _and = (_equals && _notEquals);
+              _and = _notEquals;
             }
             return Boolean.valueOf(_and);
           }
@@ -137,7 +136,7 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
         String _plus = ("Property has been defined in " + _name);
         String _plus_1 = (_plus + ". Cannot be declared again.");
         this.error(_plus_1, 
-          Literals.PROPERTY__NAME, 
+          RecordLangPackage.Literals.PROPERTY__NAME, 
           RecordLangValidator.INVALID_NAME);
       }
     }
@@ -149,9 +148,9 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
   @Check
   public void checkRecordTypeComposition(final RecordType type) {
     final Collection<Property> properties = PropertyEvaluation.collectAllProperties(type);
-    final Function1<Property,Boolean> _function = new Function1<Property,Boolean>() {
+    final Function1<Property, Boolean> _function = new Function1<Property, Boolean>() {
       public Boolean apply(final Property p) {
-        final Function1<Property,Boolean> _function = new Function1<Property,Boolean>() {
+        final Function1<Property, Boolean> _function = new Function1<Property, Boolean>() {
           public Boolean apply(final Property pInner) {
             boolean _and = false;
             String _name = p.getName();
@@ -161,28 +160,26 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
               _and = false;
             } else {
               boolean _notEquals = (!Objects.equal(p, pInner));
-              _and = (_equals && _notEquals);
+              _and = _notEquals;
             }
             return Boolean.valueOf(_and);
           }
         };
-        boolean _exists = IterableExtensions.<Property>exists(properties, _function);
-        return Boolean.valueOf(_exists);
+        return Boolean.valueOf(IterableExtensions.<Property>exists(properties, _function));
       }
     };
     boolean _exists = IterableExtensions.<Property>exists(properties, _function);
     if (_exists) {
-      ArrayList<Pair<Property,Property>> _arrayList = new ArrayList<Pair<Property, Property>>();
-      final Collection<Pair<Property,Property>> duplicates = _arrayList;
+      final Collection<Pair<Property, Property>> duplicates = new ArrayList<Pair<Property, Property>>();
       final Procedure1<Property> _function_1 = new Procedure1<Property>() {
         public void apply(final Property p) {
-          Pair<Property,Property> _findDuplicate = RecordLangValidator.this.findDuplicate(p, properties);
+          Pair<Property, Property> _findDuplicate = RecordLangValidator.this.findDuplicate(p, properties);
           duplicates.add(_findDuplicate);
         }
       };
       IterableExtensions.<Property>forEach(properties, _function_1);
-      final Procedure1<Pair<Property,Property>> _function_2 = new Procedure1<Pair<Property,Property>>() {
-        public void apply(final Pair<Property,Property> entry) {
+      final Procedure1<Pair<Property, Property>> _function_2 = new Procedure1<Pair<Property, Property>>() {
+        public void apply(final Pair<Property, Property> entry) {
           Property _key = entry.getKey();
           String _name = _key.getName();
           String _plus = ("Multiple property inheritance form " + _name);
@@ -198,11 +195,11 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
           String _name_2 = ((Type) _eContainer_1).getName();
           String _plus_4 = (_plus_3 + _name_2);
           RecordLangValidator.this.error(_plus_4, 
-            Literals.TYPE__PARENTS, 
+            RecordLangPackage.Literals.TYPE__PARENTS, 
             RecordLangValidator.INVALID_NAME);
         }
       };
-      IterableExtensions.<Pair<Property,Property>>forEach(duplicates, _function_2);
+      IterableExtensions.<Pair<Property, Property>>forEach(duplicates, _function_2);
     }
   }
   
@@ -212,9 +209,9 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
   @Check
   public void checkPartialTypeComposition(final TemplateType type) {
     final Collection<Property> properties = PropertyEvaluation.collectAllProperties(type);
-    final Function1<Property,Boolean> _function = new Function1<Property,Boolean>() {
+    final Function1<Property, Boolean> _function = new Function1<Property, Boolean>() {
       public Boolean apply(final Property p) {
-        final Function1<Property,Boolean> _function = new Function1<Property,Boolean>() {
+        final Function1<Property, Boolean> _function = new Function1<Property, Boolean>() {
           public Boolean apply(final Property pInner) {
             boolean _and = false;
             String _name = p.getName();
@@ -224,28 +221,26 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
               _and = false;
             } else {
               boolean _notEquals = (!Objects.equal(p, pInner));
-              _and = (_equals && _notEquals);
+              _and = _notEquals;
             }
             return Boolean.valueOf(_and);
           }
         };
-        boolean _exists = IterableExtensions.<Property>exists(properties, _function);
-        return Boolean.valueOf(_exists);
+        return Boolean.valueOf(IterableExtensions.<Property>exists(properties, _function));
       }
     };
     boolean _exists = IterableExtensions.<Property>exists(properties, _function);
     if (_exists) {
-      ArrayList<Pair<Property,Property>> _arrayList = new ArrayList<Pair<Property, Property>>();
-      final Collection<Pair<Property,Property>> duplicates = _arrayList;
+      final Collection<Pair<Property, Property>> duplicates = new ArrayList<Pair<Property, Property>>();
       final Procedure1<Property> _function_1 = new Procedure1<Property>() {
         public void apply(final Property p) {
-          Pair<Property,Property> _findDuplicate = RecordLangValidator.this.findDuplicate(p, properties);
+          Pair<Property, Property> _findDuplicate = RecordLangValidator.this.findDuplicate(p, properties);
           duplicates.add(_findDuplicate);
         }
       };
       IterableExtensions.<Property>forEach(properties, _function_1);
-      final Procedure1<Pair<Property,Property>> _function_2 = new Procedure1<Pair<Property,Property>>() {
-        public void apply(final Pair<Property,Property> entry) {
+      final Procedure1<Pair<Property, Property>> _function_2 = new Procedure1<Pair<Property, Property>>() {
+        public void apply(final Pair<Property, Property> entry) {
           Property _key = entry.getKey();
           String _name = _key.getName();
           String _plus = ("Multiple property inheritance from " + _name);
@@ -261,11 +256,11 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
           String _name_2 = ((Type) _eContainer_1).getName();
           String _plus_4 = (_plus_3 + _name_2);
           RecordLangValidator.this.error(_plus_4, 
-            Literals.TYPE__PARENTS, 
+            RecordLangPackage.Literals.TYPE__PARENTS, 
             RecordLangValidator.INVALID_NAME);
         }
       };
-      IterableExtensions.<Pair<Property,Property>>forEach(duplicates, _function_2);
+      IterableExtensions.<Pair<Property, Property>>forEach(duplicates, _function_2);
     }
   }
   
@@ -294,7 +289,7 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
         String _plus_2 = (_plus_1 + _createFQNTypeName_1);
         String _plus_3 = (_plus_2 + "\'.");
         this.error(_plus_3, 
-          Literals.CONSTANT__TYPE, 
+          RecordLangPackage.Literals.CONSTANT__TYPE, 
           RecordLangValidator.INVALID_NAME);
       }
     }
@@ -325,7 +320,7 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
         String _plus_2 = (_plus_1 + _createFQNTypeName_1);
         String _plus_3 = (_plus_2 + "\'.");
         this.error(_plus_3, 
-          Literals.PROPERTY__TYPE, 
+          RecordLangPackage.Literals.PROPERTY__TYPE, 
           RecordLangValidator.INVALID_NAME);
       }
     }
@@ -344,22 +339,20 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
       Literal _get = _literals_1.get(0);
       final Classifier type = this.getType(_get);
       EList<Literal> _literals_2 = literal.getLiterals();
-      final Function1<Literal,Boolean> _function = new Function1<Literal,Boolean>() {
+      final Function1<Literal, Boolean> _function = new Function1<Literal, Boolean>() {
         public Boolean apply(final Literal element) {
           Classifier _type = RecordLangValidator.this.getType(element);
-          Boolean _typeEquality = RecordLangValidator.this.typeEquality(_type, type);
-          return _typeEquality;
+          return Boolean.valueOf(RecordLangValidator.this.typeEquality(_type, type));
         }
       };
       boolean _forall = IterableExtensions.<Literal>forall(_literals_2, _function);
       boolean _not = (!_forall);
       if (_not) {
         EList<Literal> _literals_3 = literal.getLiterals();
-        final Function1<Literal,String> _function_1 = new Function1<Literal,String>() {
+        final Function1<Literal, String> _function_1 = new Function1<Literal, String>() {
           public String apply(final Literal it) {
             Classifier _type = RecordLangValidator.this.getType(it);
-            String _createFQNTypeName = RecordLangValidator.this.createFQNTypeName(_type);
-            return _createFQNTypeName;
+            return RecordLangValidator.this.createFQNTypeName(_type);
           }
         };
         List<String> _map = ListExtensions.<Literal, String>map(_literals_3, _function_1);
@@ -367,7 +360,7 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
         String _plus = ("Value types " + _join);
         String _plus_1 = (_plus + " do not match");
         this.error(_plus_1, 
-          Literals.ARRAY_LITERAL__LITERALS);
+          RecordLangPackage.Literals.ARRAY_LITERAL__LITERALS);
       }
     }
   }
@@ -381,40 +374,35 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
     EClassifier _class_ = classifier.getClass_();
     String _name = _class_.getName();
     EList<ArraySize> _sizes = classifier.getSizes();
-    final Function1<ArraySize,String> _function = new Function1<ArraySize,String>() {
+    final Function1<ArraySize, String> _function = new Function1<ArraySize, String>() {
       public String apply(final ArraySize it) {
         Object _xifexpression = null;
         int _size = it.getSize();
         boolean _notEquals = (_size != 0);
         if (_notEquals) {
-          int _size_1 = it.getSize();
-          _xifexpression = Integer.valueOf(_size_1);
+          _xifexpression = Integer.valueOf(it.getSize());
         } else {
           _xifexpression = "";
         }
-        String _plus = ("[" + ((Comparable<Object>)_xifexpression));
-        String _plus_1 = (_plus + "]");
-        return _plus_1;
+        String _plus = ("[" + ((Comparable<?>)_xifexpression));
+        return (_plus + "]");
       }
     };
     List<String> _map = ListExtensions.<ArraySize, String>map(_sizes, _function);
     String _join = IterableExtensions.join(_map);
-    String _plus = (_name + _join);
-    return _plus;
+    return (_name + _join);
   }
   
   /**
    * Check if types are a exact match.
    */
-  public Boolean typeEquality(final Classifier left, final Classifier right) {
-    Boolean _xifexpression = null;
+  public boolean typeEquality(final Classifier left, final Classifier right) {
     EClassifier _class_ = left.getClass_();
     String _name = _class_.getName();
     EClassifier _class__1 = right.getClass_();
     String _name_1 = _class__1.getName();
     boolean _equals = _name.equals(_name_1);
     if (_equals) {
-      Boolean _xifexpression_1 = null;
       EList<ArraySize> _sizes = left.getSizes();
       int _size = _sizes.size();
       EList<ArraySize> _sizes_1 = right.getSizes();
@@ -438,8 +426,7 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
             if (_notEquals) {
               return false;
             }
-            int _plus = (i + 1);
-            i = _plus;
+            i = (i + 1);
           }
           EList<ArraySize> _sizes_3 = left.getSizes();
           int _size_3 = _sizes_3.size();
@@ -448,9 +435,8 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
         }
         return true;
       }
-      _xifexpression = _xifexpression_1;
     }
-    return _xifexpression;
+    return false;
   }
   
   /**
@@ -465,7 +451,7 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
     } else {
       de.cau.cs.se.instrumentation.rl.recordLang.Package _package_1 = right.getPackage();
       boolean _notEquals_1 = (!Objects.equal(_package_1, null));
-      _and = (_notEquals && _notEquals_1);
+      _and = _notEquals_1;
     }
     if (_and) {
       de.cau.cs.se.instrumentation.rl.recordLang.Package _package_2 = left.getPackage();
@@ -489,7 +475,7 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
       } else {
         de.cau.cs.se.instrumentation.rl.recordLang.Package _package_7 = right.getPackage();
         boolean _equals_2 = Objects.equal(_package_7, null);
-        _and_1 = (_equals_1 && _equals_2);
+        _and_1 = _equals_2;
       }
       if (_and_1) {
         return this.compareClassifierTypesInAssignment(left, right, literal);
@@ -533,13 +519,12 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
               ArraySize _get_2 = _sizes_5.get(i);
               int _size_5 = _get_2.getSize();
               boolean _notEquals_1 = (_size_5 != 0);
-              _and = (_notEquals && _notEquals_1);
+              _and = _notEquals_1;
             }
             if (_and) {
               return false;
             }
-            int _plus = (i + 1);
-            i = _plus;
+            i = (i + 1);
           }
           EList<ArraySize> _sizes_3 = left.getSizes();
           int _size_3 = _sizes_3.size();
@@ -569,8 +554,7 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
     if (_equals) {
       _xifexpression = true;
     } else {
-      Boolean _checkTypeEquivalenceSet = this.checkTypeEquivalenceSet(left, right, literal);
-      _xifexpression = (_checkTypeEquivalenceSet).booleanValue();
+      _xifexpression = this.checkTypeEquivalenceSet(left, right, literal);
     }
     return _xifexpression;
   }
@@ -578,45 +562,44 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
   /**
    * Check if types match.
    */
-  public Boolean checkTypeEquivalenceSet(final Classifier left, final Classifier right, final Literal literal) {
-    Boolean _xifexpression = null;
+  public boolean checkTypeEquivalenceSet(final Classifier left, final Classifier right, final Literal literal) {
+    boolean _xifexpression = false;
     EClassifier _class_ = left.getClass_();
     String _name = _class_.getName();
     boolean _equals = _name.equals("double");
     if (_equals) {
-      Boolean _xifexpression_1 = null;
+      boolean _xifexpression_1 = false;
       EClassifier _class__1 = right.getClass_();
       String _name_1 = _class__1.getName();
       boolean _equals_1 = _name_1.equals("float");
       if (_equals_1) {
-        Boolean _xifexpression_2 = null;
+        boolean _xifexpression_2 = false;
         if ((literal instanceof FloatLiteral)) {
-          _xifexpression_2 = Boolean.valueOf(true);
+          _xifexpression_2 = true;
         } else {
-          Boolean _xifexpression_3 = null;
+          boolean _xifexpression_3 = false;
           if ((literal instanceof ArrayLiteral)) {
-            boolean _checkAllLiteralsArtOfType = this.checkAllLiteralsArtOfType(FloatLiteral.class, ((ArrayLiteral) literal));
-            _xifexpression_3 = Boolean.valueOf(_checkAllLiteralsArtOfType);
+            _xifexpression_3 = this.checkAllLiteralsArtOfType(FloatLiteral.class, ((ArrayLiteral) literal));
           }
           _xifexpression_2 = _xifexpression_3;
         }
         _xifexpression_1 = _xifexpression_2;
       } else {
-        _xifexpression_1 = Boolean.valueOf(false);
+        _xifexpression_1 = false;
       }
       _xifexpression = _xifexpression_1;
     } else {
-      Boolean _xifexpression_4 = null;
+      boolean _xifexpression_4 = false;
       EClassifier _class__2 = left.getClass_();
       String _name_2 = _class__2.getName();
       boolean _equals_2 = _name_2.equals("long");
       if (_equals_2) {
-        Boolean _xifexpression_5 = null;
+        boolean _xifexpression_5 = false;
         EClassifier _class__3 = right.getClass_();
         String _name_3 = _class__3.getName();
         boolean _equals_3 = _name_3.equals("int");
         if (_equals_3) {
-          Boolean _xifexpression_6 = null;
+          boolean _xifexpression_6 = false;
           if ((literal instanceof IntLiteral)) {
             boolean _xifexpression_7 = false;
             boolean _and = false;
@@ -627,39 +610,38 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
             } else {
               int _value_1 = ((IntLiteral) literal).getValue();
               boolean _lessEqualsThan = (_value_1 <= Long.MAX_VALUE);
-              _and = (_greaterEqualsThan && _lessEqualsThan);
+              _and = _lessEqualsThan;
             }
             if (_and) {
               _xifexpression_7 = true;
             } else {
               _xifexpression_7 = false;
             }
-            _xifexpression_6 = Boolean.valueOf(_xifexpression_7);
+            _xifexpression_6 = _xifexpression_7;
           } else {
-            Boolean _xifexpression_8 = null;
+            boolean _xifexpression_8 = false;
             if ((literal instanceof ArrayLiteral)) {
-              boolean _checkAllLiteralsArtOfType_1 = this.checkAllLiteralsArtOfType(IntLiteral.class, ((ArrayLiteral) literal));
-              _xifexpression_8 = Boolean.valueOf(_checkAllLiteralsArtOfType_1);
+              _xifexpression_8 = this.checkAllLiteralsArtOfType(IntLiteral.class, ((ArrayLiteral) literal));
             }
             _xifexpression_6 = _xifexpression_8;
           }
           _xifexpression_5 = _xifexpression_6;
         } else {
-          _xifexpression_5 = Boolean.valueOf(false);
+          _xifexpression_5 = false;
         }
         _xifexpression_4 = _xifexpression_5;
       } else {
-        Boolean _xifexpression_9 = null;
+        boolean _xifexpression_9 = false;
         EClassifier _class__4 = left.getClass_();
         String _name_4 = _class__4.getName();
         boolean _equals_4 = _name_4.equals("byte");
         if (_equals_4) {
-          Boolean _xifexpression_10 = null;
+          boolean _xifexpression_10 = false;
           EClassifier _class__5 = right.getClass_();
           String _name_5 = _class__5.getName();
           boolean _equals_5 = _name_5.equals("int");
           if (_equals_5) {
-            Boolean _xifexpression_11 = null;
+            boolean _xifexpression_11 = false;
             if ((literal instanceof IntLiteral)) {
               boolean _xifexpression_12 = false;
               boolean _and_1 = false;
@@ -670,39 +652,38 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
               } else {
                 int _value_3 = ((IntLiteral) literal).getValue();
                 boolean _lessEqualsThan_1 = (_value_3 <= Byte.MAX_VALUE);
-                _and_1 = (_greaterEqualsThan_1 && _lessEqualsThan_1);
+                _and_1 = _lessEqualsThan_1;
               }
               if (_and_1) {
                 _xifexpression_12 = true;
               } else {
                 _xifexpression_12 = false;
               }
-              _xifexpression_11 = Boolean.valueOf(_xifexpression_12);
+              _xifexpression_11 = _xifexpression_12;
             } else {
-              Boolean _xifexpression_13 = null;
+              boolean _xifexpression_13 = false;
               if ((literal instanceof ArrayLiteral)) {
-                boolean _checkAllLiteralsArtOfType_2 = this.checkAllLiteralsArtOfType(IntLiteral.class, ((ArrayLiteral) literal));
-                _xifexpression_13 = Boolean.valueOf(_checkAllLiteralsArtOfType_2);
+                _xifexpression_13 = this.checkAllLiteralsArtOfType(IntLiteral.class, ((ArrayLiteral) literal));
               }
               _xifexpression_11 = _xifexpression_13;
             }
             _xifexpression_10 = _xifexpression_11;
           } else {
-            _xifexpression_10 = Boolean.valueOf(false);
+            _xifexpression_10 = false;
           }
           _xifexpression_9 = _xifexpression_10;
         } else {
-          Boolean _xifexpression_14 = null;
+          boolean _xifexpression_14 = false;
           EClassifier _class__6 = left.getClass_();
           String _name_6 = _class__6.getName();
           boolean _equals_6 = _name_6.equals("short");
           if (_equals_6) {
-            Boolean _xifexpression_15 = null;
+            boolean _xifexpression_15 = false;
             EClassifier _class__7 = right.getClass_();
             String _name_7 = _class__7.getName();
             boolean _equals_7 = _name_7.equals("int");
             if (_equals_7) {
-              Boolean _xifexpression_16 = null;
+              boolean _xifexpression_16 = false;
               if ((literal instanceof IntLiteral)) {
                 boolean _xifexpression_17 = false;
                 boolean _and_2 = false;
@@ -713,29 +694,28 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
                 } else {
                   int _value_5 = ((IntLiteral) literal).getValue();
                   boolean _lessEqualsThan_2 = (_value_5 <= Short.MAX_VALUE);
-                  _and_2 = (_greaterEqualsThan_2 && _lessEqualsThan_2);
+                  _and_2 = _lessEqualsThan_2;
                 }
                 if (_and_2) {
                   _xifexpression_17 = true;
                 } else {
                   _xifexpression_17 = false;
                 }
-                _xifexpression_16 = Boolean.valueOf(_xifexpression_17);
+                _xifexpression_16 = _xifexpression_17;
               } else {
-                Boolean _xifexpression_18 = null;
+                boolean _xifexpression_18 = false;
                 if ((literal instanceof ArrayLiteral)) {
-                  boolean _checkAllLiteralsArtOfType_3 = this.checkAllLiteralsArtOfType(IntLiteral.class, ((ArrayLiteral) literal));
-                  _xifexpression_18 = Boolean.valueOf(_checkAllLiteralsArtOfType_3);
+                  _xifexpression_18 = this.checkAllLiteralsArtOfType(IntLiteral.class, ((ArrayLiteral) literal));
                 }
                 _xifexpression_16 = _xifexpression_18;
               }
               _xifexpression_15 = _xifexpression_16;
             } else {
-              _xifexpression_15 = Boolean.valueOf(false);
+              _xifexpression_15 = false;
             }
             _xifexpression_14 = _xifexpression_15;
           } else {
-            _xifexpression_14 = Boolean.valueOf(false);
+            _xifexpression_14 = false;
           }
           _xifexpression_9 = _xifexpression_14;
         }
@@ -751,21 +731,18 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
    */
   public boolean checkAllLiteralsArtOfType(final Class<? extends Literal> type, final ArrayLiteral literal) {
     EList<Literal> _literals = literal.getLiterals();
-    final Function1<Literal,Boolean> _function = new Function1<Literal,Boolean>() {
+    final Function1<Literal, Boolean> _function = new Function1<Literal, Boolean>() {
       public Boolean apply(final Literal element) {
         boolean _xifexpression = false;
         if ((element instanceof ArrayLiteral)) {
-          boolean _checkAllLiteralsArtOfType = RecordLangValidator.this.checkAllLiteralsArtOfType(type, ((ArrayLiteral) element));
-          _xifexpression = _checkAllLiteralsArtOfType;
+          _xifexpression = RecordLangValidator.this.checkAllLiteralsArtOfType(type, ((ArrayLiteral) element));
         } else {
-          boolean _isInstance = type.isInstance(element);
-          _xifexpression = _isInstance;
+          _xifexpression = type.isInstance(element);
         }
         return Boolean.valueOf(_xifexpression);
       }
     };
-    boolean _forall = IterableExtensions.<Literal>forall(_literals, _function);
-    return _forall;
+    return IterableExtensions.<Literal>forall(_literals, _function);
   }
   
   /**
@@ -778,38 +755,32 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
     boolean _notEquals = (_length != 1);
     if (_notEquals) {
       EDataType _eType = PrimitiveTypes.ESTRING.getEType();
-      Classifier _createPrimitiveClassifier = this.createPrimitiveClassifier(_eType);
-      _xifexpression = _createPrimitiveClassifier;
+      _xifexpression = this.createPrimitiveClassifier(_eType);
     } else {
       EDataType _eType_1 = PrimitiveTypes.ECHAR.getEType();
-      Classifier _createPrimitiveClassifier_1 = this.createPrimitiveClassifier(_eType_1);
-      _xifexpression = _createPrimitiveClassifier_1;
+      _xifexpression = this.createPrimitiveClassifier(_eType_1);
     }
     return _xifexpression;
   }
   
   protected Classifier _getType(final IntLiteral literal) {
     EDataType _eType = PrimitiveTypes.EINT.getEType();
-    Classifier _createPrimitiveClassifier = this.createPrimitiveClassifier(_eType);
-    return _createPrimitiveClassifier;
+    return this.createPrimitiveClassifier(_eType);
   }
   
   protected Classifier _getType(final FloatLiteral literal) {
     EDataType _eType = PrimitiveTypes.EFLOAT.getEType();
-    Classifier _createPrimitiveClassifier = this.createPrimitiveClassifier(_eType);
-    return _createPrimitiveClassifier;
+    return this.createPrimitiveClassifier(_eType);
   }
   
   protected Classifier _getType(final BooleanLiteral literal) {
     EDataType _eType = PrimitiveTypes.EBOOLEAN.getEType();
-    Classifier _createPrimitiveClassifier = this.createPrimitiveClassifier(_eType);
-    return _createPrimitiveClassifier;
+    return this.createPrimitiveClassifier(_eType);
   }
   
   protected Classifier _getType(final ConstantLiteral literal) {
     Constant _value = literal.getValue();
-    Classifier _type = _value.getType();
-    return _type;
+    return _value.getType();
   }
   
   protected Classifier _getType(final ArrayLiteral literal) {
@@ -827,8 +798,7 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
   
   protected Classifier _getType(final Literal literal) {
     try {
-      InternalErrorException _internalErrorException = new InternalErrorException("Unhandled literal type");
-      throw _internalErrorException;
+      throw new InternalErrorException("Unhandled literal type");
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -910,8 +880,8 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
     }
   }
   
-  public Pair<Property,Property> findDuplicate(final Property property, final Collection<Property> properties) {
-    final Function1<Property,Boolean> _function = new Function1<Property,Boolean>() {
+  public Pair<Property, Property> findDuplicate(final Property property, final Collection<Property> properties) {
+    final Function1<Property, Boolean> _function = new Function1<Property, Boolean>() {
       public Boolean apply(final Property p) {
         boolean _and = false;
         String _name = property.getName();
@@ -921,14 +891,13 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
           _and = false;
         } else {
           boolean _notEquals = (!Objects.equal(p, property));
-          _and = (_equals && _notEquals);
+          _and = _notEquals;
         }
         return Boolean.valueOf(_and);
       }
     };
     final Property second = IterableExtensions.<Property>findFirst(properties, _function);
-    Pair<Property,Property> _pair = new Pair<Property, Property>(property, second);
-    return _pair;
+    return new Pair<Property, Property>(property, second);
   }
   
   public Classifier getType(final Literal literal) {
