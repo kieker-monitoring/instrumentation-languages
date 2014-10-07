@@ -21,7 +21,8 @@ Require-Bundle: de.cau.cs.se.instrumentation.rl;visibility:=reexport,
  org.eclipse.emf.ecore,
  org.eclipse.jdt.ui,
  org.eclipse.jdt.core,
- org.eclipse.core.runtime
+ org.eclipse.core.runtime,
+ org.eclipse.core.filesystem
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6,

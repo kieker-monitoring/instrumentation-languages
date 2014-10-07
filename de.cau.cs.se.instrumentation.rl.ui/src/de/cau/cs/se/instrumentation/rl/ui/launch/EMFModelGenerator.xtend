@@ -220,15 +220,28 @@ class EMFModelGenerator {
 	 * Search for a class in the resource specified by the record type.
 	 */
 	def EClass findResultClass(Type type, Resource resource) {
-		val packagePath = (type.eContainer as Model).name.split('\\.')
+		System.err.println("findResultClass2: type " + type);
+		System.err.println("findResultClass2:   resource " + resource);
+		System.err.println("findResultClass2: name " + type.name);
+		if (type.name != null) {
+			System.err.println("findResultClass2: parent " + type.eContainer);
+			System.err.println("findResultClass2: parent name " + (type.eContainer as Model).name);
+			val packagePath = (type.eContainer as Model).name.split('\\.')
 		
-		val pkg = resource.contents.filter(typeof(EPackage)).findFirst[p | p.name.equals(packagePath.get(0))]
-		return type.findResultClass(pkg,packagePath.tail)
+			val pkg = resource.contents.filter(typeof(EPackage)).findFirst[p | p.name.equals(packagePath.get(0))]
+			return type.findResultClass(pkg,packagePath.tail)
+		} else
+			return null
 	}
 	
 	def EClass findResultClass(Type type, EPackage pkg, Iterable<String> packagePath) {
 		if (packagePath.empty) { // we reached the end of the package hierarchy. 
-			return pkg.EClassifiers.findFirst[clazz | clazz.name.equals(type.name)] as EClass
+			System.err.println("findResultClass3: type " + type)
+			System.err.println("findResultClass3: type name " + type.name)
+			System.err.println("findResultClass3: package " + pkg)
+			System.err.println("findResultClass3: package classifiers " + pkg.EClassifiers)
+			pkg.EClassifiers.forEach[clazz | System.err.println("findResultClass3: clazz " + clazz) System.err.println("findResultClass3: clazz name " + clazz.name) ]
+			return pkg.EClassifiers.findFirst[clazz | clazz.name.equals(type.name) ] as EClass
 		} else {
 			val subpkg = pkg.ESubpackages.findFirst[p | p.name.equals(packagePath.get(0))]
 			if (subpkg == null) {
@@ -280,16 +293,21 @@ class EMFModelGenerator {
 	 */
 	def void composeClass(RecordType type, Resource resource) {
 		val EClass clazz = type.findResultClass(resource)
-		
-		if (type.parent != null) {
-			clazz.ESuperTypes.add(type.parent.findResultClass(resource))
-		} else {
-			clazz.ESuperTypes.add(abstractRecordClass)
+		if (clazz != null) {
+			if (type.parent != null) {
+				val superType = type.parent.findResultClass(resource)
+				if (superType != null)
+					clazz.ESuperTypes.add(superType)
+				else
+					return
+			} else {
+				clazz.ESuperTypes.add(abstractRecordClass)
+			}
+			if (!type.parents.empty) {
+				type.parents.forEach[iface | clazz.ESuperTypes.add(iface.findResultClass(resource))]
+			}
+			type.properties.forEach[property | clazz.getEStructuralFeatures.addUnique(property.composeProperty)]
 		}
-		if (!type.parents.empty) {
-			type.parents.forEach[iface | clazz.ESuperTypes.add(iface.findResultClass(resource))]
-		}
-		type.properties.forEach[property | clazz.getEStructuralFeatures.addUnique(property.composeProperty)]
 	}
 	
 	/**

@@ -15,16 +15,20 @@
  ***************************************************************************/
 package de.cau.cs.se.instrumentation.rl.ui.launch;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
-import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.model.LaunchConfigurationDelegate;
@@ -41,10 +45,14 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
  */
 public class EMFLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 
+	/** property constant for the name of the target file. */
+	public static final String ATTR_DESTINATION_FILE = "target-file";
+	/** property constant for the name of the destination folder. */
+	public static final String ATTR_DESTINATION_FOLDER = "destination-folder";
 	/** property constant for the selected project. */
 	public static final String ATTR_PROJECT = "project";
-	/** property constant for the name of the target file. */
-	public static final String ATTR_TARGET_FILE = "target-file";
+	/** property constant for the source folders property. */
+	public static final String ATTR_SOURCE_FOLDER = "source-folder";
 
 	/** internal constant for the file extension. */
 	private static final String IRL_EXTENSION = "irl";
@@ -69,8 +77,13 @@ public class EMFLaunchConfigurationDelegate extends LaunchConfigurationDelegate 
 	public void launch(final ILaunchConfiguration configuration, final String mode, final ILaunch launch, final IProgressMonitor monitor) throws CoreException {
 		// PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().saveAllEditors(true);
 
-		final IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(configuration.getAttribute(ATTR_PROJECT, ""));
-		final IFile targetFile = project.getFile(project.getFullPath() + "/kieker.ecore" /* + configuration.getAttribute(ATTR_TARGET_FILE, "kieker.ecore") */);
+		final String destinationFolder = configuration.getAttribute(ATTR_DESTINATION_FOLDER, "");
+		final String destinationFile = configuration.getAttribute(ATTR_DESTINATION_FILE, "");
+
+		final IFile targetFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(destinationFolder + File.separator + destinationFile));
+
+		@SuppressWarnings("unchecked")
+		final List<String> sourceFolders = configuration.getAttribute(ATTR_SOURCE_FOLDER, new ArrayList<String>());
 
 		// create EMF model
 
@@ -83,7 +96,16 @@ public class EMFLaunchConfigurationDelegate extends LaunchConfigurationDelegate 
 
 		final Resource output = resourceSet.createResource(URI.createURI(targetFile.getFullPath().toPortableString()));
 
-		this.compileFolder(project.members(), output, generator);
+		for (final String folder : sourceFolders) {
+			final IPath path = new Path(folder);
+			if (path.segmentCount() > 1) {
+				this.compileFolder(ResourcesPlugin.getWorkspace().getRoot().getFolder(path).members(),
+						output, generator);
+			} else if (path.segmentCount() > 0) {
+				this.compileFolder(ResourcesPlugin.getWorkspace().getRoot().getProject(folder).members(),
+						output, generator);
+			}
+		}
 
 		try {
 			output.save(Collections.EMPTY_MAP);
