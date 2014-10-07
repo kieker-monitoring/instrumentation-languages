@@ -35,7 +35,7 @@ class RecordLangGenerator implements IGenerator {
 			val author = TargetsPreferences.getAuthorName()
 					
 			/** Generator invocation for RecordTypes */																	
-			for (Class<?> generator : GeneratorConfiguration.recordTypeGenerators) {
+			for (Class<?> generator : GeneratorConfiguration.RECORD_TYPE_GENERATORS) {
 				val cg = generator.getConstructor().newInstance() as AbstractRecordTypeGenerator
 				if (TargetsPreferences.isGeneratorActive(cg.id)) {
 					resource.allContents.filter(typeof(RecordType)).forEach[type |
@@ -46,7 +46,7 @@ class RecordLangGenerator implements IGenerator {
 			}
 			
 			/** Generator invocation for TemplateTypes */
-			for (Class<?> generator : GeneratorConfiguration.partialRecordTypeGenerators) {
+			for (Class<?> generator : GeneratorConfiguration.TEMPLATE_TYPE_GENERATORS) {
 				val cg = generator.getConstructor().newInstance() as AbstractTemplateTypeGenerator
 				if (TargetsPreferences.isGeneratorActive(cg.id)) {
 					resource.allContents.filter(typeof(TemplateType)).forEach[type | 
