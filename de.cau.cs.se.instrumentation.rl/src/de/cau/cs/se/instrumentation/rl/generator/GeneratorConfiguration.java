@@ -21,31 +21,31 @@ import de.cau.cs.se.instrumentation.rl.ouput.config.OutletConfiguration;
  * Configuration and registration of IRL generators.
  * The class also contains functions for derived values based on the
  * configuration values.
- *
+ * 
  * @author Reiner Jung
- *
+ * 
  * @since 1.0
- *
+ * 
  */
-public class GeneratorConfiguration {
-	/** list of all generators to support RecordType */
-	public final static Class<?>[] recordTypeGenerators = {
+public final class GeneratorConfiguration {
+	/** list of all generators to support RecordType. */
+	public static final Class<?>[] RECORD_TYPE_GENERATORS = {
 		de.cau.cs.se.instrumentation.rl.generator.c.main.RecordTypeGenerator.class,
 		de.cau.cs.se.instrumentation.rl.generator.c.header.RecordTypeGenerator.class,
 		de.cau.cs.se.instrumentation.rl.generator.java.record.RecordTypeGenerator.class,
 		de.cau.cs.se.instrumentation.rl.generator.java.junit.RecordTypeGenerator.class,
 		de.cau.cs.se.instrumentation.rl.generator.java.factory.RecordFactoryTypeGenerator.class,
 		de.cau.cs.se.instrumentation.rl.generator.perl.RecordTypeGenerator.class,
-		de.cau.cs.se.instrumentation.rl.generator.delphi.RecordTypeGenerator.class
+		de.cau.cs.se.instrumentation.rl.generator.delphi.RecordTypeGenerator.class,
 	};
 
-	/** list of all generators to support PartialRecordType */
-	public final static Class<?>[] partialRecordTypeGenerators = {
-		de.cau.cs.se.instrumentation.rl.generator.java.record.TemplateTypeGenerator.class
+	/** list of all generators to support TemplateType. */
+	public static final Class<?>[] TEMPLATE_TYPE_GENERATORS = {
+		de.cau.cs.se.instrumentation.rl.generator.java.record.TemplateTypeGenerator.class,
 	};
 
-	/** list of all outlet configurations */
-	public final static OutletConfiguration[] outletConfigurations = {
+	/** list of all outlet configurations. */
+	public static final OutletConfiguration[] OUTLET_CONFIGURATIONS = {
 		new OutletConfiguration("java", "Java Output Folder", "./src-gen/java"),
 		new OutletConfiguration("java-factory", "Java Factory Output Folder", "./src-gen/java-factory"),
 		new OutletConfiguration("junit", "Junit Output Folder", "./test-gen/common"),
@@ -54,4 +54,10 @@ public class GeneratorConfiguration {
 		new OutletConfiguration("delphi", "Delphi Output Folder", "./src-gen/delphi"),
 	};
 
+	/**
+	 * Empty default constructor.
+	 */
+	private GeneratorConfiguration() {
+		// utility class nothing to do here
+	}
 }

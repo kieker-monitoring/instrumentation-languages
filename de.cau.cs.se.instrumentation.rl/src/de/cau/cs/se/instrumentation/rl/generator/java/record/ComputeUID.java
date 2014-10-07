@@ -41,13 +41,13 @@ import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation;
  * @author Reiner Jung
  * 
  */
-public class ComputeUID {
+public final class ComputeUID {
 
 	/**
 	 * Creates blank class descriptor which should be initialized via a
 	 * subsequent call to initProxy(), initNonProxy() or readNonProxy().
 	 */
-	ComputeUID() {}
+	private ComputeUID() {}
 
 	/**
 	 * Returns JVM type signature for given class.
@@ -90,10 +90,16 @@ public class ComputeUID {
 
 	/**
 	 * Returns JVM type signature for given list of parameters and return type.
+	 * 
+	 * @param paramTypes
+	 *            list of parameter types.
+	 * @param retType
+	 *            return type of a method.
+	 * 
+	 * @returns a method signature as result
 	 */
 	private static String getMethodSignature(final Classifier[] paramTypes,
-			final Classifier retType)
-	{
+			final Classifier retType) {
 		final StringBuilder sbuf = new StringBuilder();
 		sbuf.append('(');
 		for (final Classifier paramType : paramTypes) {
@@ -106,6 +112,9 @@ public class ComputeUID {
 
 	/**
 	 * Computes the default serial version UID value for the given class.
+	 * 
+	 * @param type
+	 *            record type
 	 */
 	public static long computeDefaultSUID(final RecordType type) {
 		try {
@@ -114,7 +123,7 @@ public class ComputeUID {
 
 			dout.writeUTF(type.getName());
 
-			final int classMods = Modifier.PUBLIC | (type.isAbstract() ? Modifier.ABSTRACT : 0);
+			final int classMods = Modifier.PUBLIC | (type.isAbstract() ? Modifier.ABSTRACT : 0); // NOCS
 			// | Modifier.FINAL shall we make them final?
 
 			dout.writeInt(classMods);
@@ -181,7 +190,7 @@ public class ComputeUID {
 				new Constructor(type.getName(), EVisibility.PUBLIC, paramListComplete), // (final long timestamp, final long traceId, final int orderIndex)
 				new Constructor(type.getName(), EVisibility.PUBLIC, paramListGeneric), // (final Object[] values) non abstract
 				new Constructor(type.getName(), EVisibility.PROTECTED, paramListGenericAbstract), // (final Object[] values, final Class<?>[] valueTypes)
-				new Constructor(type.getName(), EVisibility.PUBLIC, paramListFromBuffer) // (final ByteBuffer buffer, final IRegistry<String> stringRegistry) throws
+				new Constructor(type.getName(), EVisibility.PUBLIC, paramListFromBuffer), // (final ByteBuffer buffer, final IRegistry<String> stringRegistry) throws
 																							// BufferUnderflowException"
 			};
 			final MemberSignature[] consSigs = new MemberSignature[cons.length];
@@ -284,9 +293,9 @@ public class ComputeUID {
 	 */
 	private static class MemberSignature {
 
-		public final Object member;
-		public final String name;
-		public final String signature;
+		private final Object member;
+		private final String name;
+		private final String signature;
 
 		public MemberSignature(final Property field) {
 			this.member = field;
@@ -298,6 +307,18 @@ public class ComputeUID {
 			this.member = cons;
 			this.name = cons.getName();
 			this.signature = ComputeUID.getMethodSignature(cons.getSignature(), null);
+		}
+
+		public Object getMember() {
+			return this.member;
+		}
+
+		public String getName() {
+			return this.name;
+		}
+
+		public String getSignature() {
+			return this.signature;
 		}
 
 	}
