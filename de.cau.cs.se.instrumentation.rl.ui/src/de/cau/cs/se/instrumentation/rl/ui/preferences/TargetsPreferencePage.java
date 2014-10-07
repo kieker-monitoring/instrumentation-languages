@@ -53,7 +53,7 @@ public class TargetsPreferencePage extends FieldEditorPreferencePage implements 
 
 	@Override
 	public void createFieldEditors() {
-		for (final Class<?> generatorClass : GeneratorConfiguration.recordTypeGenerators) {
+		for (final Class<?> generatorClass : GeneratorConfiguration.RECORD_TYPE_GENERATORS) {
 			try {
 				final AbstractRecordTypeGenerator generator = (AbstractRecordTypeGenerator) generatorClass.getConstructor().newInstance();
 
