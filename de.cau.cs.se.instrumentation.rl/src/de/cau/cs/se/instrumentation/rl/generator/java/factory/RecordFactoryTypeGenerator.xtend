@@ -52,6 +52,9 @@ class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
 	 * 		generic kieker version for the record
 	 */
 	override createContent(RecordType type, String author, String version) {
+		val definedAuthor = if (type.author == null) author else type.author
+		val definedVersion = if (type.since == null) version else type.since
+
 		'''
 			/***************************************************************************
 			 * Copyright 2013 Kieker Project (http://kieker-monitoring.net)
@@ -76,7 +79,12 @@ class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
 			import kieker.common.record.factory.IRecordFactory;
 			import kieker.common.util.registry.IRegistry;
 			
-			public class «type.name»Factory implements IRecordFactory<«type.name»> {
+			/**
+			 * @author «definedAuthor»
+			 * 
+			 * @since «definedVersion»
+			 */
+			public final class «type.name»Factory implements IRecordFactory<«type.name»> {
 				
 				@Override
 				public «type.name» create(final ByteBuffer buffer, final IRegistry<String> stringRegistry) {
