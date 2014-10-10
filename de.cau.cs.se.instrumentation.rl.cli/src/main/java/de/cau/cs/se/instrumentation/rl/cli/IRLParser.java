@@ -125,7 +125,7 @@ public class IRLParser {
 				TargetsPreferences.setAuthorName(author);
 				TargetsPreferences.setVersionID(version);
 				// setup language activation
-				for (final Class<?> generatorClass : GeneratorConfiguration.recordTypeGenerators) {
+				for (final Class<?> generatorClass : GeneratorConfiguration.RECORD_TYPE_GENERATORS) {
 					try {
 						final AbstractRecordTypeGenerator generator = (AbstractRecordTypeGenerator) generatorClass.getConstructor().newInstance();
 						TargetsPreferences.setGeneratorActive(generator.getId(), false);
