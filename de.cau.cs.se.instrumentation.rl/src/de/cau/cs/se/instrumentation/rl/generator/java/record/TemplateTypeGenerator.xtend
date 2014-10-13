@@ -9,6 +9,7 @@ import java.io.File
 import org.eclipse.emf.common.util.EList
 import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation
 import de.cau.cs.se.instrumentation.rl.generator.AbstractTemplateTypeGenerator
+import java.util.Calendar
 
 class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
 
@@ -37,7 +38,7 @@ class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
 		val definedVersion = if (type.since == null) version else type.since
 		'''
 		/***************************************************************************
-		 * Copyright 2013 Kieker Project (http://kieker-monitoring.net)
+		 * Copyright «Calendar.getInstance().get(Calendar.YEAR)» Kieker Project (http://kieker-monitoring.net)
 		 *
 		 * Licensed under the Apache License, Version 2.0 (the "License");
 		 * you may not use this file except in compliance with the License.

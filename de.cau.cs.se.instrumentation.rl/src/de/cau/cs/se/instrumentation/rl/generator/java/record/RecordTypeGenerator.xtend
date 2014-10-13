@@ -23,6 +23,7 @@ import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.EClassifier
 import de.cau.cs.se.instrumentation.rl.generator.InternalErrorException
 import java.util.List
+import java.util.Calendar
 
 import static extension de.cau.cs.se.instrumentation.rl.generator.java.RlType2JavaTypeExtensions.*
 
@@ -77,7 +78,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		System.out.println("TYPE " + type.name + " " + author + ":" + definedAuthor + " -- " + version + ":" + definedVersion) 
 		'''
 		/***************************************************************************
-		 * Copyright 2013 Kieker Project (http://kieker-monitoring.net)
+		 * Copyright «Calendar.getInstance().get(Calendar.YEAR)» Kieker Project (http://kieker-monitoring.net)
 		 *
 		 * Licensed under the Apache License, Version 2.0 (the "License");
 		 * you may not use this file except in compliance with the License.

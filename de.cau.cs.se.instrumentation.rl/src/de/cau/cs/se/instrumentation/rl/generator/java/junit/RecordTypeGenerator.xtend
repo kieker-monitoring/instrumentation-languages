@@ -17,6 +17,7 @@ import de.cau.cs.se.instrumentation.rl.recordLang.FloatLiteral
 import de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral
 import de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral
 import de.cau.cs.se.instrumentation.rl.recordLang.Literal
+import java.util.Calendar
 
 class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	
@@ -47,7 +48,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		val allDataProperties = PropertyEvaluation::collectAllDataProperties(type)
 		'''
 		/***************************************************************************
-		 * Copyright 2014 Kieker Project (http://kieker-monitoring.net)
+		 * Copyright «Calendar.getInstance().get(Calendar.YEAR)» Kieker Project (http://kieker-monitoring.net)
 		 *
 		 * Licensed under the Apache License, Version 2.0 (the "License");
 		 * you may not use this file except in compliance with the License.

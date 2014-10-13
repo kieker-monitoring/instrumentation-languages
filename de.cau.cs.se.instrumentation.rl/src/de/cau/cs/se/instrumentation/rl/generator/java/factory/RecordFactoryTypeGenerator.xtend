@@ -6,6 +6,7 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Type
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
 import de.cau.cs.se.instrumentation.rl.recordLang.Model
 import java.io.File
+import java.util.Calendar
 
 import static extension de.cau.cs.se.instrumentation.rl.generator.java.RlType2JavaTypeExtensions.*
 
@@ -57,7 +58,7 @@ class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
 
 		'''
 			/***************************************************************************
-			 * Copyright 2013 Kieker Project (http://kieker-monitoring.net)
+			 * Copyright «Calendar.getInstance().get(Calendar.YEAR)» Kieker Project (http://kieker-monitoring.net)
 			 *
 			 * Licensed under the Apache License, Version 2.0 (the "License");
 			 * you may not use this file except in compliance with the License.
