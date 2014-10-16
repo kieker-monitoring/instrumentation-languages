@@ -711,12 +711,13 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cBooleanLiteralParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		private final RuleCall cConstantLiteralParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
 		private final RuleCall cArrayLiteralParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+		private final RuleCall cBuiltInValueLiteralParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
 		
 		//Literal:
-		//	StringLiteral | IntLiteral | FloatLiteral | BooleanLiteral | ConstantLiteral | ArrayLiteral;
+		//	StringLiteral | IntLiteral | FloatLiteral | BooleanLiteral | ConstantLiteral | ArrayLiteral | BuiltInValueLiteral;
 		public ParserRule getRule() { return rule; }
 
-		//StringLiteral | IntLiteral | FloatLiteral | BooleanLiteral | ConstantLiteral | ArrayLiteral
+		//StringLiteral | IntLiteral | FloatLiteral | BooleanLiteral | ConstantLiteral | ArrayLiteral | BuiltInValueLiteral
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//StringLiteral
@@ -736,6 +737,9 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 
 		//ArrayLiteral
 		public RuleCall getArrayLiteralParserRuleCall_5() { return cArrayLiteralParserRuleCall_5; }
+
+		//BuiltInValueLiteral
+		public RuleCall getBuiltInValueLiteralParserRuleCall_6() { return cBuiltInValueLiteralParserRuleCall_6; }
 	}
 
 	public class ArrayLiteralElements extends AbstractParserRuleElementFinder {
@@ -866,6 +870,30 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getValueConstantIDTerminalRuleCall_0_1() { return cValueConstantIDTerminalRuleCall_0_1; }
 	}
 
+	public class BuiltInValueLiteralElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "BuiltInValueLiteral");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cBuiltInValueLiteralAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Keyword cValueKIEKER_VERSIONKeyword_1_0 = (Keyword)cValueAssignment_1.eContents().get(0);
+		
+		//BuiltInValueLiteral:
+		//	{BuiltInValueLiteral} value="KIEKER_VERSION";
+		public ParserRule getRule() { return rule; }
+
+		//{BuiltInValueLiteral} value="KIEKER_VERSION"
+		public Group getGroup() { return cGroup; }
+
+		//{BuiltInValueLiteral}
+		public Action getBuiltInValueLiteralAction_0() { return cBuiltInValueLiteralAction_0; }
+
+		//value="KIEKER_VERSION"
+		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
+
+		//"KIEKER_VERSION"
+		public Keyword getValueKIEKER_VERSIONKeyword_1_0() { return cValueKIEKER_VERSIONKeyword_1_0; }
+	}
+
 	public class QualifiedNameElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "QualifiedName");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -941,6 +969,7 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	private FloatLiteralElements pFloatLiteral;
 	private BooleanLiteralElements pBooleanLiteral;
 	private ConstantLiteralElements pConstantLiteral;
+	private BuiltInValueLiteralElements pBuiltInValueLiteral;
 	private QualifiedNameElements pQualifiedName;
 	private QualifiedNameWithWildcardElements pQualifiedNameWithWildcard;
 	private TerminalRule tNUMBER;
@@ -1101,7 +1130,7 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Literal:
-	//	StringLiteral | IntLiteral | FloatLiteral | BooleanLiteral | ConstantLiteral | ArrayLiteral;
+	//	StringLiteral | IntLiteral | FloatLiteral | BooleanLiteral | ConstantLiteral | ArrayLiteral | BuiltInValueLiteral;
 	public LiteralElements getLiteralAccess() {
 		return (pLiteral != null) ? pLiteral : (pLiteral = new LiteralElements());
 	}
@@ -1168,6 +1197,16 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getConstantLiteralRule() {
 		return getConstantLiteralAccess().getRule();
+	}
+
+	//BuiltInValueLiteral:
+	//	{BuiltInValueLiteral} value="KIEKER_VERSION";
+	public BuiltInValueLiteralElements getBuiltInValueLiteralAccess() {
+		return (pBuiltInValueLiteral != null) ? pBuiltInValueLiteral : (pBuiltInValueLiteral = new BuiltInValueLiteralElements());
+	}
+	
+	public ParserRule getBuiltInValueLiteralRule() {
+		return getBuiltInValueLiteralAccess().getRule();
 	}
 
 	//QualifiedName:

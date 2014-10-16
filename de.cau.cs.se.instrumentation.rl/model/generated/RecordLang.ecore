@@ -85,4 +85,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="ConstantLiteral" eSuperTypes="#//Literal">
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//Constant"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BuiltInValueLiteral" eSuperTypes="#//Literal">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
 </ecore:EPackage>

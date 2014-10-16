@@ -8,6 +8,7 @@ import de.cau.cs.se.instrumentation.rl.generator.InternalErrorException;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize;
 import de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral;
+import de.cau.cs.se.instrumentation.rl.recordLang.BuiltInValueLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.Constant;
 import de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral;
@@ -812,6 +813,22 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
     return _type;
   }
   
+  protected Classifier _getType(final BuiltInValueLiteral literal) {
+    Classifier _switchResult = null;
+    String _value = literal.getValue();
+    final String _switchValue = _value;
+    boolean _matched = false;
+    if (!_matched) {
+      if (Objects.equal(_switchValue,"KIEKER_VERSION")) {
+        _matched=true;
+        EDataType _eType = PrimitiveTypes.ESTRING.getEType();
+        Classifier _createPrimitiveClassifier = this.createPrimitiveClassifier(_eType);
+        _switchResult = _createPrimitiveClassifier;
+      }
+    }
+    return _switchResult;
+  }
+  
   protected Classifier _getType(final ArrayLiteral literal) {
     EList<Literal> _literals = literal.getLiterals();
     Literal _get = _literals.get(0);
@@ -936,6 +953,8 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
       return _getType((ArrayLiteral)literal);
     } else if (literal instanceof BooleanLiteral) {
       return _getType((BooleanLiteral)literal);
+    } else if (literal instanceof BuiltInValueLiteral) {
+      return _getType((BuiltInValueLiteral)literal);
     } else if (literal instanceof ConstantLiteral) {
       return _getType((ConstantLiteral)literal);
     } else if (literal instanceof FloatLiteral) {

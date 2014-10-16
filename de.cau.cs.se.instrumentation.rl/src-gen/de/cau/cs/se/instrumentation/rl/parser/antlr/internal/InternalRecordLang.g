@@ -1139,6 +1139,16 @@ ruleLiteral returns [EObject current=null]
         $current = $this_ArrayLiteral_5.current; 
         afterParserOrEnumRuleCall();
     }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getLiteralAccess().getBuiltInValueLiteralParserRuleCall_6()); 
+    }
+    this_BuiltInValueLiteral_6=ruleBuiltInValueLiteral
+    { 
+        $current = $this_BuiltInValueLiteral_6.current; 
+        afterParserOrEnumRuleCall();
+    }
 )
 ;
 
@@ -1399,6 +1409,48 @@ ruleConstantLiteral returns [EObject current=null]
 
 )
 )
+;
+
+
+
+
+
+// Entry rule entryRuleBuiltInValueLiteral
+entryRuleBuiltInValueLiteral returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getBuiltInValueLiteralRule()); }
+	 iv_ruleBuiltInValueLiteral=ruleBuiltInValueLiteral 
+	 { $current=$iv_ruleBuiltInValueLiteral.current; } 
+	 EOF 
+;
+
+// Rule BuiltInValueLiteral
+ruleBuiltInValueLiteral returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getBuiltInValueLiteralAccess().getBuiltInValueLiteralAction_0(),
+            $current);
+    }
+)(
+(
+		lv_value_1_0=	'KIEKER_VERSION' 
+    {
+        newLeafNode(lv_value_1_0, grammarAccess.getBuiltInValueLiteralAccess().getValueKIEKER_VERSIONKeyword_1_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getBuiltInValueLiteralRule());
+	        }
+       		setWithLastConsumed($current, "value", lv_value_1_0, "KIEKER_VERSION");
+	    }
+
+)
+))
 ;
 
 

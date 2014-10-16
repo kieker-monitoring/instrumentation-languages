@@ -185,6 +185,15 @@ public interface RecordLangFactory extends EFactory
   ConstantLiteral createConstantLiteral();
 
   /**
+   * Returns a new object of class '<em>Built In Value Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Built In Value Literal</em>'.
+   * @generated
+   */
+  BuiltInValueLiteral createBuiltInValueLiteral();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

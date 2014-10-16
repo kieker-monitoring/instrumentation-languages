@@ -5,6 +5,7 @@ package de.cau.cs.se.instrumentation.rl.recordLang.util;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize;
 import de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral;
+import de.cau.cs.se.instrumentation.rl.recordLang.BuiltInValueLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.Constant;
 import de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral;
@@ -180,6 +181,11 @@ public class RecordLangAdapterFactory extends AdapterFactoryImpl
       public Adapter caseConstantLiteral(ConstantLiteral object)
       {
         return createConstantLiteralAdapter();
+      }
+      @Override
+      public Adapter caseBuiltInValueLiteral(BuiltInValueLiteral object)
+      {
+        return createBuiltInValueLiteralAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -469,6 +475,21 @@ public class RecordLangAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createConstantLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.rl.recordLang.BuiltInValueLiteral <em>Built In Value Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.BuiltInValueLiteral
+   * @generated
+   */
+  public Adapter createBuiltInValueLiteralAdapter()
   {
     return null;
   }

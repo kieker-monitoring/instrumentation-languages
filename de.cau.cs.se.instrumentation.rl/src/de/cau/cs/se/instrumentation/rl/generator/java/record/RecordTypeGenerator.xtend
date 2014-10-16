@@ -26,6 +26,7 @@ import java.util.List
 import java.util.Calendar
 
 import static extension de.cau.cs.se.instrumentation.rl.generator.java.RlType2JavaTypeExtensions.*
+import de.cau.cs.se.instrumentation.rl.recordLang.BuiltInValueLiteral
 
 class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 
@@ -75,7 +76,6 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		val allDeclarationProperties = collectAllDeclarationProperties(type)
 		val definedAuthor = if (type.author == null) author else type.author
 		val definedVersion = if (type.since == null) version else type.since
-		System.out.println("TYPE " + type.name + " " + author + ":" + definedAuthor + " -- " + version + ":" + definedVersion) 
 		'''
 		/***************************************************************************
 		 * Copyright «Calendar.getInstance().get(Calendar.YEAR)» Kieker Project (http://kieker-monitoring.net)
@@ -102,6 +102,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		«IF (type.parent == null)»import kieker.common.record.AbstractMonitoringRecord;
 		import kieker.common.record.IMonitoringRecord;
 		«ENDIF»import kieker.common.util.registry.IRegistry;
+		import kieker.common.util.Version;
 		
 		«if (type.parent != null) type.createParentImport»
 		«if (type.parents != null && type.parents.size > 0) type.parents.map[i | i.createInterfaceImport].join»
@@ -565,11 +566,20 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 */
 	def private createPropertyAssignment(Property property) {
 		if ('string'.equals(PropertyEvaluation::findType(property).class_.name)) { // guarantee initialization is always not null
-			'''this.«property.name.protectKeywords» = «property.name.protectKeywords» == null?«if (property.value != null) property.value.createValue else '""'»:«property.name.protectKeywords»;
+			'''this.«property.name.protectKeywords» = «property.name.protectKeywords» == null?«if (property.value != null) property.value.createConstantReference(property) else '""'»:«property.name.protectKeywords»;
 			'''
 		} else
 			'''this.«property.name.protectKeywords» = «property.name.protectKeywords»;
 			'''
+	}
+	
+	def private createConstantReference(Literal literal, Property property) {
+		switch (literal) {
+			StringLiteral : property.name.createConstantName.protectKeywords
+			ConstantLiteral : literal.value.name
+			BuiltInValueLiteral : property.name.createConstantName.protectKeywords
+			default : throw new InternalErrorException("constant reference requested for " + literal.class + " which is not defined.")
+		}
 	}
 	
 	/**
@@ -827,20 +837,29 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	}
 			
 	/**
-	 * Dispatch for literals
+	 * Dispatch for literals.
 	 */
+	/** String and character literals. */
 	dispatch def private CharSequence createValue(StringLiteral literal) {
 		if (literal.getRequiredType.equals('string'))
 			'''"«literal.value»"'''
 		else
 			'\'' + literal.value + '\''
-	}	
+	}
+	/** All other data types and constants. */
 	dispatch def private CharSequence createValue(IntLiteral literal) '''«literal.value»«if (literal.getRequiredType.equals('long')) 'L'»'''
 	dispatch def private CharSequence createValue(FloatLiteral literal) '''«literal.value»«if (literal.getRequiredType.equals('float')) 'f'»'''
 	dispatch def private CharSequence createValue(BooleanLiteral literal) '''«if (literal.value) 'true' else 'false'»'''
-	dispatch def private CharSequence createValue(ConstantLiteral literal) '''«literal.value.value.createValue»'''
+	dispatch def private CharSequence createValue(ConstantLiteral literal) '''«literal.value.name»'''
+	dispatch def private CharSequence createValue(BuiltInValueLiteral literal) {
+		switch (literal.value) {
+			case "KIEKER_VERSION" : '''kieker.common.util.Version.getVERSION()'''
+			// presently there is only one built-in value
+		}
+	}
 	dispatch def private CharSequence createValue(ArrayLiteral literal) '''{ «literal.literals.map[element | element.createValue].join(if (literal.literals.get(0) instanceof ArrayLiteral) ",\n" else ", ")» }'''
 	
+	/** Create error when the dispatch fails. */
 	dispatch def private CharSequence createValue(Literal literal) {
 		'ERROR ' + literal.class.name
 	}

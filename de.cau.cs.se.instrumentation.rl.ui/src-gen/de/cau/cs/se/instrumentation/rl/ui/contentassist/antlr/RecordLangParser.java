@@ -70,6 +70,7 @@ public class RecordLangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getReferencePropertyAccess().getGroup(), "rule__ReferenceProperty__Group__0");
 					put(grammarAccess.getArrayLiteralAccess().getGroup(), "rule__ArrayLiteral__Group__0");
 					put(grammarAccess.getArrayLiteralAccess().getGroup_2(), "rule__ArrayLiteral__Group_2__0");
+					put(grammarAccess.getBuiltInValueLiteralAccess().getGroup(), "rule__BuiltInValueLiteral__Group__0");
 					put(grammarAccess.getQualifiedNameAccess().getGroup(), "rule__QualifiedName__Group__0");
 					put(grammarAccess.getQualifiedNameAccess().getGroup_1(), "rule__QualifiedName__Group_1__0");
 					put(grammarAccess.getQualifiedNameWithWildcardAccess().getGroup(), "rule__QualifiedNameWithWildcard__Group__0");
@@ -118,6 +119,7 @@ public class RecordLangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFloatLiteralAccess().getValueAssignment(), "rule__FloatLiteral__ValueAssignment");
 					put(grammarAccess.getBooleanLiteralAccess().getValueAssignment(), "rule__BooleanLiteral__ValueAssignment");
 					put(grammarAccess.getConstantLiteralAccess().getValueAssignment(), "rule__ConstantLiteral__ValueAssignment");
+					put(grammarAccess.getBuiltInValueLiteralAccess().getValueAssignment_1(), "rule__BuiltInValueLiteral__ValueAssignment_1");
 				}
 			};
 		}

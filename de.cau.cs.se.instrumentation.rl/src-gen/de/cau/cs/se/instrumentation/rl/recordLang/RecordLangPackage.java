@@ -821,6 +821,34 @@ public interface RecordLangPackage extends EPackage
    */
   int CONSTANT_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
 
+  /**
+   * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.BuiltInValueLiteralImpl <em>Built In Value Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.BuiltInValueLiteralImpl
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getBuiltInValueLiteral()
+   * @generated
+   */
+  int BUILT_IN_VALUE_LITERAL = 18;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUILT_IN_VALUE_LITERAL__VALUE = LITERAL_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Built In Value Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUILT_IN_VALUE_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
+
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.Model <em>Model</em>}'.
@@ -1388,6 +1416,27 @@ public interface RecordLangPackage extends EPackage
   EReference getConstantLiteral_Value();
 
   /**
+   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.BuiltInValueLiteral <em>Built In Value Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Built In Value Literal</em>'.
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.BuiltInValueLiteral
+   * @generated
+   */
+  EClass getBuiltInValueLiteral();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.rl.recordLang.BuiltInValueLiteral#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.BuiltInValueLiteral#getValue()
+   * @see #getBuiltInValueLiteral()
+   * @generated
+   */
+  EAttribute getBuiltInValueLiteral_Value();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1869,6 +1918,24 @@ public interface RecordLangPackage extends EPackage
      * @generated
      */
     EReference CONSTANT_LITERAL__VALUE = eINSTANCE.getConstantLiteral_Value();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.BuiltInValueLiteralImpl <em>Built In Value Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.BuiltInValueLiteralImpl
+     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getBuiltInValueLiteral()
+     * @generated
+     */
+    EClass BUILT_IN_VALUE_LITERAL = eINSTANCE.getBuiltInValueLiteral();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute BUILT_IN_VALUE_LITERAL__VALUE = eINSTANCE.getBuiltInValueLiteral_Value();
 
   }
 

@@ -5,6 +5,7 @@ package de.cau.cs.se.instrumentation.rl.recordLang.util;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize;
 import de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral;
+import de.cau.cs.se.instrumentation.rl.recordLang.BuiltInValueLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.Constant;
 import de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral;
@@ -220,6 +221,14 @@ public class RecordLangSwitch<T> extends Switch<T>
         ConstantLiteral constantLiteral = (ConstantLiteral)theEObject;
         T result = caseConstantLiteral(constantLiteral);
         if (result == null) result = caseLiteral(constantLiteral);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RecordLangPackage.BUILT_IN_VALUE_LITERAL:
+      {
+        BuiltInValueLiteral builtInValueLiteral = (BuiltInValueLiteral)theEObject;
+        T result = caseBuiltInValueLiteral(builtInValueLiteral);
+        if (result == null) result = caseLiteral(builtInValueLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -511,6 +520,22 @@ public class RecordLangSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseConstantLiteral(ConstantLiteral object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Built In Value Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Built In Value Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseBuiltInValueLiteral(BuiltInValueLiteral object)
   {
     return null;
   }

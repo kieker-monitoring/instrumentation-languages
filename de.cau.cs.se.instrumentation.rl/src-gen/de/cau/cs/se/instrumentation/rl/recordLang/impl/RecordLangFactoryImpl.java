@@ -5,6 +5,7 @@ package de.cau.cs.se.instrumentation.rl.recordLang.impl;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize;
 import de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral;
+import de.cau.cs.se.instrumentation.rl.recordLang.BuiltInValueLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.Constant;
 import de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral;
@@ -100,6 +101,7 @@ public class RecordLangFactoryImpl extends EFactoryImpl implements RecordLangFac
       case RecordLangPackage.FLOAT_LITERAL: return createFloatLiteral();
       case RecordLangPackage.BOOLEAN_LITERAL: return createBooleanLiteral();
       case RecordLangPackage.CONSTANT_LITERAL: return createConstantLiteral();
+      case RecordLangPackage.BUILT_IN_VALUE_LITERAL: return createBuiltInValueLiteral();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -301,6 +303,17 @@ public class RecordLangFactoryImpl extends EFactoryImpl implements RecordLangFac
   {
     ConstantLiteralImpl constantLiteral = new ConstantLiteralImpl();
     return constantLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public BuiltInValueLiteral createBuiltInValueLiteral()
+  {
+    BuiltInValueLiteralImpl builtInValueLiteral = new BuiltInValueLiteralImpl();
+    return builtInValueLiteral;
   }
 
   /**

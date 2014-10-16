@@ -26,6 +26,7 @@ import java.util.List
 import org.eclipse.emf.ecore.EDataType
 import org.eclipse.xtext.validation.Check
 import org.eclipse.xtext.xbase.lib.Pair
+import de.cau.cs.se.instrumentation.rl.recordLang.BuiltInValueLiteral
 
 /**
  * Custom validation rules. 
@@ -306,6 +307,12 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 	def dispatch Classifier getType(FloatLiteral literal) { createPrimitiveClassifier(PrimitiveTypes.EFLOAT.EType) }
 	def dispatch Classifier getType(BooleanLiteral literal) { createPrimitiveClassifier(PrimitiveTypes.EBOOLEAN.EType) }
 	def dispatch Classifier getType(ConstantLiteral literal) { literal.value.type }
+	def dispatch Classifier getType(BuiltInValueLiteral literal) {
+		switch (literal.value) {
+			case "KIEKER_VERSION" :  createPrimitiveClassifier(PrimitiveTypes.ESTRING.EType)
+			// add further built-in values here.
+		}
+	}
 	def dispatch Classifier getType(ArrayLiteral literal) {
 		val classifier = getType(literal.literals.get(0))
 		val size = RecordLangFactory::eINSTANCE.createArraySize

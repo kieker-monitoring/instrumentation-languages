@@ -5,6 +5,7 @@ package de.cau.cs.se.instrumentation.rl.recordLang.impl;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize;
 import de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral;
+import de.cau.cs.se.instrumentation.rl.recordLang.BuiltInValueLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.Constant;
 import de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral;
@@ -163,6 +164,13 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
    * @generated
    */
   private EClass constantLiteralEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass builtInValueLiteralEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -765,6 +773,26 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getBuiltInValueLiteral()
+  {
+    return builtInValueLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getBuiltInValueLiteral_Value()
+  {
+    return (EAttribute)builtInValueLiteralEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public RecordLangFactory getRecordLangFactory()
   {
     return (RecordLangFactory)getEFactoryInstance();
@@ -860,6 +888,9 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
 
     constantLiteralEClass = createEClass(CONSTANT_LITERAL);
     createEReference(constantLiteralEClass, CONSTANT_LITERAL__VALUE);
+
+    builtInValueLiteralEClass = createEClass(BUILT_IN_VALUE_LITERAL);
+    createEAttribute(builtInValueLiteralEClass, BUILT_IN_VALUE_LITERAL__VALUE);
   }
 
   /**
@@ -902,6 +933,7 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
     floatLiteralEClass.getESuperTypes().add(this.getLiteral());
     booleanLiteralEClass.getESuperTypes().add(this.getLiteral());
     constantLiteralEClass.getESuperTypes().add(this.getLiteral());
+    builtInValueLiteralEClass.getESuperTypes().add(this.getLiteral());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -974,6 +1006,9 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
 
     initEClass(constantLiteralEClass, ConstantLiteral.class, "ConstantLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getConstantLiteral_Value(), this.getConstant(), null, "value", null, 0, 1, ConstantLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(builtInValueLiteralEClass, BuiltInValueLiteral.class, "BuiltInValueLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getBuiltInValueLiteral_Value(), theEcorePackage.getEString(), "value", null, 0, 1, BuiltInValueLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

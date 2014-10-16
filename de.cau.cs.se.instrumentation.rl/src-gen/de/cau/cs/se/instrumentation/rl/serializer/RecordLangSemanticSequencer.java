@@ -5,6 +5,7 @@ import com.google.inject.Provider;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize;
 import de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral;
+import de.cau.cs.se.instrumentation.rl.recordLang.BuiltInValueLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.Constant;
 import de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral;
@@ -56,6 +57,13 @@ public class RecordLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 				if(context == grammarAccess.getBooleanLiteralRule() ||
 				   context == grammarAccess.getLiteralRule()) {
 					sequence_BooleanLiteral(context, (BooleanLiteral) semanticObject); 
+					return; 
+				}
+				else break;
+			case RecordLangPackage.BUILT_IN_VALUE_LITERAL:
+				if(context == grammarAccess.getBuiltInValueLiteralRule() ||
+				   context == grammarAccess.getLiteralRule()) {
+					sequence_BuiltInValueLiteral(context, (BuiltInValueLiteral) semanticObject); 
 					return; 
 				}
 				else break;
@@ -177,6 +185,22 @@ public class RecordLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getBooleanLiteralAccess().getValueBOOLEANTerminalRuleCall_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     value='KIEKER_VERSION'
+	 */
+	protected void sequence_BuiltInValueLiteral(EObject context, BuiltInValueLiteral semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, RecordLangPackage.Literals.BUILT_IN_VALUE_LITERAL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RecordLangPackage.Literals.BUILT_IN_VALUE_LITERAL__VALUE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getBuiltInValueLiteralAccess().getValueKIEKER_VERSIONKeyword_1_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
