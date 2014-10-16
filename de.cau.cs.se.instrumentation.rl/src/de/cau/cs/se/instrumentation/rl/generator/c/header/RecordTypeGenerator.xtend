@@ -7,6 +7,7 @@ import java.io.File
 import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation
 
 import static extension de.cau.cs.se.instrumentation.rl.generator.c.CommonCFunctionsExtension.*
+import java.util.Calendar
 
 class RecordTypeGenerator extends de.cau.cs.se.instrumentation.rl.generator.c.main.RecordTypeGenerator {
 
@@ -43,7 +44,7 @@ class RecordTypeGenerator extends de.cau.cs.se.instrumentation.rl.generator.c.ma
 	override createContent(RecordType type, String author, String version) {
 		'''
 		/***************************************************************************
-		 * Copyright 2013 Kieker Project (http://kieker-monitoring.net)
+		 * Copyright «Calendar.getInstance().get(Calendar.YEAR)» Kieker Project (http://kieker-monitoring.net)
 		 *
 		 * Licensed under the Apache License, Version 2.0 (the "License");
 		 * you may not use this file except in compliance with the License.
