@@ -26,8 +26,8 @@ import de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode;
 import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.MethodQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.Node;
-import de.cau.cs.se.instrumentation.al.aspectLang.ParameterPattern;
-import de.cau.cs.se.instrumentation.al.aspectLang.Query;
+import de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery;
+import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut;
 import de.cau.cs.se.instrumentation.al.aspectLang.RegisteredPackage;
 import de.cau.cs.se.instrumentation.al.modelhandling.ForeignModelTypeProviderFactory;
 import de.cau.cs.se.instrumentation.al.modelhandling.IForeignModelTypeProvider;
@@ -71,7 +71,7 @@ public class AspectLangScopeProvider extends AbstractDeclarativeScopeProvider {
     }
   }
   
-  public IScope scope_Query_returnType(final Query context, final EReference reference) {
+  public IScope scope_Pointcut_returnType(final Pointcut context, final EReference reference) {
     LocationQuery _location = context.getLocation();
     final Node node = this.leaveNode(_location);
     if ((node instanceof ContainerNode)) {
@@ -85,7 +85,7 @@ public class AspectLangScopeProvider extends AbstractDeclarativeScopeProvider {
     }
   }
   
-  public IScope scope_Query_method(final Query context, final EReference reference) {
+  public IScope scope_Pointcut_method(final Pointcut context, final EReference reference) {
     LocationQuery _location = context.getLocation();
     final Node node = this.leaveNode(_location);
     if ((node instanceof ContainerNode)) {
@@ -97,11 +97,11 @@ public class AspectLangScopeProvider extends AbstractDeclarativeScopeProvider {
     }
   }
   
-  public IScope scope_ParameterPattern_modifier(final ParameterPattern context, final EReference reference) {
+  public IScope scope_ParameterPattern_modifier(final ParameterQuery context, final EReference reference) {
     return IScope.NULLSCOPE;
   }
   
-  public IScope scope_ParameterPattern_type(final ParameterPattern context, final EReference reference) {
+  public IScope scope_ParameterPattern_type(final ParameterQuery context, final EReference reference) {
     Resource _eResource = context.eResource();
     ResourceSet _resourceSet = _eResource.getResourceSet();
     final IForeignModelTypeProvider typeProvider = this.typeProviderFactory.getTypeProvider(_resourceSet, null);
@@ -109,7 +109,7 @@ public class AspectLangScopeProvider extends AbstractDeclarativeScopeProvider {
     return Scopes.scopeFor(_allDataTyes);
   }
   
-  public IScope scope_ParameterPattern_parameter(final ParameterPattern context, final EReference reference) {
+  public IScope scope_ParameterPattern_parameter(final ParameterQuery context, final EReference reference) {
     EObject _eContainer = context.eContainer();
     final Method method = ((MethodQuery) _eContainer).getMethodReference();
     EList<Parameter> _parameters = method.getParameters();

@@ -70,11 +70,12 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
       case AspectLangPackage.REGISTERED_PACKAGE: return createRegisteredPackage();
       case AspectLangPackage.APPLICATION_MODEL: return createApplicationModel();
       case AspectLangPackage.ASPECT: return createAspect();
-      case AspectLangPackage.PROBE: return createProbe();
+      case AspectLangPackage.UTILIZE_PROBE: return createUtilizeProbe();
+      case AspectLangPackage.ADVICE: return createAdvice();
       case AspectLangPackage.PARAMETER_DECLARATION: return createParameterDeclaration();
-      case AspectLangPackage.QUERY: return createQuery();
+      case AspectLangPackage.POINTCUT: return createPointcut();
       case AspectLangPackage.METHOD_QUERY: return createMethodQuery();
-      case AspectLangPackage.PARAMETER_PATTERN: return createParameterPattern();
+      case AspectLangPackage.PARAMETER_QUERY: return createParameterQuery();
       case AspectLangPackage.LOCATION_QUERY: return createLocationQuery();
       case AspectLangPackage.COMPOSITION_QUERY: return createCompositionQuery();
       case AspectLangPackage.NODE: return createNode();
@@ -209,10 +210,21 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
    * <!-- end-user-doc -->
    * @generated
    */
-  public Probe createProbe()
+  public UtilizeProbe createUtilizeProbe()
   {
-    ProbeImpl probe = new ProbeImpl();
-    return probe;
+    UtilizeProbeImpl utilizeProbe = new UtilizeProbeImpl();
+    return utilizeProbe;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Advice createAdvice()
+  {
+    AdviceImpl advice = new AdviceImpl();
+    return advice;
   }
 
   /**
@@ -231,10 +243,10 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
    * <!-- end-user-doc -->
    * @generated
    */
-  public Query createQuery()
+  public Pointcut createPointcut()
   {
-    QueryImpl query = new QueryImpl();
-    return query;
+    PointcutImpl pointcut = new PointcutImpl();
+    return pointcut;
   }
 
   /**
@@ -253,10 +265,10 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
    * <!-- end-user-doc -->
    * @generated
    */
-  public ParameterPattern createParameterPattern()
+  public ParameterQuery createParameterQuery()
   {
-    ParameterPatternImpl parameterPattern = new ParameterPatternImpl();
-    return parameterPattern;
+    ParameterQueryImpl parameterQuery = new ParameterQueryImpl();
+    return parameterQuery;
   }
 
   /**

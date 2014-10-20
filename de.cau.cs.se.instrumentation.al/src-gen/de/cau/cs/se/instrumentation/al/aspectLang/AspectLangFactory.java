@@ -68,13 +68,22 @@ public interface AspectLangFactory extends EFactory
   Aspect createAspect();
 
   /**
-   * Returns a new object of class '<em>Probe</em>'.
+   * Returns a new object of class '<em>Utilize Probe</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Probe</em>'.
+   * @return a new object of class '<em>Utilize Probe</em>'.
    * @generated
    */
-  Probe createProbe();
+  UtilizeProbe createUtilizeProbe();
+
+  /**
+   * Returns a new object of class '<em>Advice</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Advice</em>'.
+   * @generated
+   */
+  Advice createAdvice();
 
   /**
    * Returns a new object of class '<em>Parameter Declaration</em>'.
@@ -86,13 +95,13 @@ public interface AspectLangFactory extends EFactory
   ParameterDeclaration createParameterDeclaration();
 
   /**
-   * Returns a new object of class '<em>Query</em>'.
+   * Returns a new object of class '<em>Pointcut</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Query</em>'.
+   * @return a new object of class '<em>Pointcut</em>'.
    * @generated
    */
-  Query createQuery();
+  Pointcut createPointcut();
 
   /**
    * Returns a new object of class '<em>Method Query</em>'.
@@ -104,13 +113,13 @@ public interface AspectLangFactory extends EFactory
   MethodQuery createMethodQuery();
 
   /**
-   * Returns a new object of class '<em>Parameter Pattern</em>'.
+   * Returns a new object of class '<em>Parameter Query</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Parameter Pattern</em>'.
+   * @return a new object of class '<em>Parameter Query</em>'.
    * @generated
    */
-  ParameterPattern createParameterPattern();
+  ParameterQuery createParameterQuery();
 
   /**
    * Returns a new object of class '<em>Location Query</em>'.

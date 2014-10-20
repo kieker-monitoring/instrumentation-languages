@@ -17,11 +17,11 @@ package de.cau.cs.se.instrumentation.al.scoping
 
 import com.google.inject.Inject
 
-import de.cau.cs.se.instrumentation.al.aspectLang.Query
+import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut
 import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery
 import de.cau.cs.se.instrumentation.al.aspectLang.Node
 import de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode
-import de.cau.cs.se.instrumentation.al.aspectLang.ParameterPattern
+import de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery
 import de.cau.cs.se.instrumentation.al.aspectLang.RegisteredPackage
 import de.cau.cs.se.instrumentation.al.modelhandling.ForeignModelTypeProviderFactory
 import de.cau.cs.se.instrumantation.model.structure.Method
@@ -52,7 +52,7 @@ class AspectLangScopeProvider extends org.eclipse.xtext.scoping.impl.AbstractDec
 		}
 	}
 
-	def IScope scope_Query_returnType(Query context, EReference reference) {
+	def IScope scope_Pointcut_returnType(Pointcut context, EReference reference) {
 		val Node node = context.location.leaveNode
 		if (node instanceof ContainerNode) {
 			val typeProvider = typeProviderFactory.getTypeProvider(context.eResource.resourceSet, null)
@@ -62,7 +62,7 @@ class AspectLangScopeProvider extends org.eclipse.xtext.scoping.impl.AbstractDec
 		}
 	}
 	
-	def IScope scope_Query_method(Query context, EReference reference) {
+	def IScope scope_Pointcut_method(Pointcut context, EReference reference) {
 		val Node node = context.location.leaveNode
 		if (node instanceof ContainerNode) {
 			return Scopes.scopeFor((node as ContainerNode).container.methods)
@@ -71,17 +71,17 @@ class AspectLangScopeProvider extends org.eclipse.xtext.scoping.impl.AbstractDec
 		}
 	}
 	
-	def IScope scope_ParameterPattern_modifier(ParameterPattern context, EReference reference) {
+	def IScope scope_ParameterPattern_modifier(ParameterQuery context, EReference reference) {
 		// TODO modifier lookup
 		return IScope.NULLSCOPE
 	}
 	
-	def IScope scope_ParameterPattern_type(ParameterPattern context, EReference reference) {
+	def IScope scope_ParameterPattern_type(ParameterQuery context, EReference reference) {
 		val typeProvider = typeProviderFactory.getTypeProvider(context.eResource.resourceSet, null)
 		return Scopes.scopeFor(typeProvider.allDataTyes)
 	}
 	
-	def IScope scope_ParameterPattern_parameter(ParameterPattern context, EReference reference) {
+	def IScope scope_ParameterPattern_parameter(ParameterQuery context, EReference reference) {
 		val Method method = (context.eContainer as MethodQuery).methodReference
 		return Scopes.scopeFor(method.parameters)
 	}

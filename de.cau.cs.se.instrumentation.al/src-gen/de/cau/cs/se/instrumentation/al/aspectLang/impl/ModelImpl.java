@@ -2,12 +2,13 @@
  */
 package de.cau.cs.se.instrumentation.al.aspectLang.impl;
 
+import de.cau.cs.se.instrumentation.al.aspectLang.Advice;
 import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel;
 import de.cau.cs.se.instrumentation.al.aspectLang.Aspect;
 import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
 import de.cau.cs.se.instrumentation.al.aspectLang.Import;
 import de.cau.cs.se.instrumentation.al.aspectLang.Model;
-import de.cau.cs.se.instrumentation.al.aspectLang.Probe;
+import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut;
 import de.cau.cs.se.instrumentation.al.aspectLang.RegisteredPackage;
 
 import java.util.Collection;
@@ -37,7 +38,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ModelImpl#getMetamodels <em>Metamodels</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ModelImpl#getImports <em>Imports</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ModelImpl#getSources <em>Sources</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ModelImpl#getProbes <em>Probes</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ModelImpl#getAdvices <em>Advices</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ModelImpl#getPointcuts <em>Pointcuts</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ModelImpl#getAspects <em>Aspects</em>}</li>
  * </ul>
  * </p>
@@ -97,14 +99,24 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   protected EList<ApplicationModel> sources;
 
   /**
-   * The cached value of the '{@link #getProbes() <em>Probes</em>}' containment reference list.
+   * The cached value of the '{@link #getAdvices() <em>Advices</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getProbes()
+   * @see #getAdvices()
    * @generated
    * @ordered
    */
-  protected EList<Probe> probes;
+  protected EList<Advice> advices;
+
+  /**
+   * The cached value of the '{@link #getPointcuts() <em>Pointcuts</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPointcuts()
+   * @generated
+   * @ordered
+   */
+  protected EList<Pointcut> pointcuts;
 
   /**
    * The cached value of the '{@link #getAspects() <em>Aspects</em>}' containment reference list.
@@ -207,13 +219,27 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Probe> getProbes()
+  public EList<Advice> getAdvices()
   {
-    if (probes == null)
+    if (advices == null)
     {
-      probes = new EObjectContainmentEList<Probe>(Probe.class, this, AspectLangPackage.MODEL__PROBES);
+      advices = new EObjectContainmentEList<Advice>(Advice.class, this, AspectLangPackage.MODEL__ADVICES);
     }
-    return probes;
+    return advices;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<Pointcut> getPointcuts()
+  {
+    if (pointcuts == null)
+    {
+      pointcuts = new EObjectContainmentEList<Pointcut>(Pointcut.class, this, AspectLangPackage.MODEL__POINTCUTS);
+    }
+    return pointcuts;
   }
 
   /**
@@ -246,8 +272,10 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
       case AspectLangPackage.MODEL__SOURCES:
         return ((InternalEList<?>)getSources()).basicRemove(otherEnd, msgs);
-      case AspectLangPackage.MODEL__PROBES:
-        return ((InternalEList<?>)getProbes()).basicRemove(otherEnd, msgs);
+      case AspectLangPackage.MODEL__ADVICES:
+        return ((InternalEList<?>)getAdvices()).basicRemove(otherEnd, msgs);
+      case AspectLangPackage.MODEL__POINTCUTS:
+        return ((InternalEList<?>)getPointcuts()).basicRemove(otherEnd, msgs);
       case AspectLangPackage.MODEL__ASPECTS:
         return ((InternalEList<?>)getAspects()).basicRemove(otherEnd, msgs);
     }
@@ -272,8 +300,10 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return getImports();
       case AspectLangPackage.MODEL__SOURCES:
         return getSources();
-      case AspectLangPackage.MODEL__PROBES:
-        return getProbes();
+      case AspectLangPackage.MODEL__ADVICES:
+        return getAdvices();
+      case AspectLangPackage.MODEL__POINTCUTS:
+        return getPointcuts();
       case AspectLangPackage.MODEL__ASPECTS:
         return getAspects();
     }
@@ -306,9 +336,13 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         getSources().clear();
         getSources().addAll((Collection<? extends ApplicationModel>)newValue);
         return;
-      case AspectLangPackage.MODEL__PROBES:
-        getProbes().clear();
-        getProbes().addAll((Collection<? extends Probe>)newValue);
+      case AspectLangPackage.MODEL__ADVICES:
+        getAdvices().clear();
+        getAdvices().addAll((Collection<? extends Advice>)newValue);
+        return;
+      case AspectLangPackage.MODEL__POINTCUTS:
+        getPointcuts().clear();
+        getPointcuts().addAll((Collection<? extends Pointcut>)newValue);
         return;
       case AspectLangPackage.MODEL__ASPECTS:
         getAspects().clear();
@@ -340,8 +374,11 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
       case AspectLangPackage.MODEL__SOURCES:
         getSources().clear();
         return;
-      case AspectLangPackage.MODEL__PROBES:
-        getProbes().clear();
+      case AspectLangPackage.MODEL__ADVICES:
+        getAdvices().clear();
+        return;
+      case AspectLangPackage.MODEL__POINTCUTS:
+        getPointcuts().clear();
         return;
       case AspectLangPackage.MODEL__ASPECTS:
         getAspects().clear();
@@ -368,8 +405,10 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return imports != null && !imports.isEmpty();
       case AspectLangPackage.MODEL__SOURCES:
         return sources != null && !sources.isEmpty();
-      case AspectLangPackage.MODEL__PROBES:
-        return probes != null && !probes.isEmpty();
+      case AspectLangPackage.MODEL__ADVICES:
+        return advices != null && !advices.isEmpty();
+      case AspectLangPackage.MODEL__POINTCUTS:
+        return pointcuts != null && !pointcuts.isEmpty();
       case AspectLangPackage.MODEL__ASPECTS:
         return aspects != null && !aspects.isEmpty();
     }

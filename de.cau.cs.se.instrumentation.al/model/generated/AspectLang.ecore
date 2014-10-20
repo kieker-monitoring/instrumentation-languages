@@ -10,8 +10,10 @@
         eType="#//Import" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sources" upperBound="-1"
         eType="#//ApplicationModel" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="probes" upperBound="-1"
-        eType="#//Probe" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="advices" upperBound="-1"
+        eType="#//Advice" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pointcuts" upperBound="-1"
+        eType="#//Pointcut" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="aspects" upperBound="-1"
         eType="#//Aspect" containment="true"/>
   </eClassifiers>
@@ -29,13 +31,16 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="model" eType="ecore:EDataType ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Aspect">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="annotation" eType="ecore:EClass ../../../de.cau.cs.kieler.core.annotations/model/annotations.ecore#//Annotation"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="probe" eType="#//Probe"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="query" eType="#//Query"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="query" eType="#//Pointcut"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="applyProbes" upperBound="-1"
+        eType="#//UtilizeProbe" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Probe">
+  <eClassifiers xsi:type="ecore:EClass" name="UtilizeProbe">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="probe" eType="#//Advice"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameterAssignments" upperBound="-1"
+        eType="#//Value" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Advice">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameterDeclarations"
         upperBound="-1" eType="#//ParameterDeclaration" containment="true"/>
@@ -46,7 +51,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Query">
+  <eClassifiers xsi:type="ecore:EClass" name="Pointcut">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="annotation" eType="ecore:EClass ../../../de.cau.cs.kieler.core.annotations/model/annotations.ecore#//Annotation"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType ../../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="location" eType="#//LocationQuery"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="method" eType="#//MethodQuery"
@@ -56,10 +64,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="modifier" eType="ecore:EClass ../ModelStructure.ecore#//MethodModifier"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="returnType" eType="ecore:EClass ../ModelStructure.ecore#//Type"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="methodReference" eType="ecore:EClass ../ModelStructure.ecore#//Method"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" upperBound="-1"
-        eType="#//ParameterPattern" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameterQueries" upperBound="-1"
+        eType="#//ParameterQuery" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ParameterPattern">
+  <eClassifiers xsi:type="ecore:EClass" name="ParameterQuery">
     <eStructuralFeatures xsi:type="ecore:EReference" name="modifier" eType="ecore:EClass ../ModelStructure.ecore#//ParameterModifier"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass ../ModelStructure.ecore#//Type"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" eType="ecore:EClass ../ModelStructure.ecore#//Parameter"/>

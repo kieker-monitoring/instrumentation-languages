@@ -11,7 +11,7 @@ import de.cau.cs.se.instrumentation.al.aspectLang.Collector;
 import de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode;
 import de.cau.cs.se.instrumentation.al.aspectLang.InsertionPoint;
 import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery;
-import de.cau.cs.se.instrumentation.al.aspectLang.Query;
+import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut;
 import de.cau.cs.se.instrumentation.al.aspectLang.SubPathNode;
 import de.cau.cs.se.instrumentation.al.aspectLang.WildcardNode;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
@@ -62,8 +62,10 @@ public class AspectLangLabelProvider extends DefaultEObjectLabelProvider {
     return "**";
   }
   
-  public String text(final Query e) {
-    return "query";
+  public String text(final Pointcut e) {
+    String _name = e.getName();
+    String _plus = ("pointcut" + _name);
+    return _plus;
   }
   
   public String text(final LocationQuery e) {

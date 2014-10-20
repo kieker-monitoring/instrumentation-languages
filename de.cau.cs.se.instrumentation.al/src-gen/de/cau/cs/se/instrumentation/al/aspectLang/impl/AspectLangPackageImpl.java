@@ -6,6 +6,7 @@ import de.cau.cs.kieler.core.annotations.AnnotationsPackage;
 
 import de.cau.cs.se.instrumantation.model.structure.StructurePackage;
 
+import de.cau.cs.se.instrumentation.al.aspectLang.Advice;
 import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel;
 import de.cau.cs.se.instrumentation.al.aspectLang.Aspect;
 import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangFactory;
@@ -28,10 +29,9 @@ import de.cau.cs.se.instrumentation.al.aspectLang.ParamCompare;
 import de.cau.cs.se.instrumentation.al.aspectLang.ParamQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.Parameter;
 import de.cau.cs.se.instrumentation.al.aspectLang.ParameterDeclaration;
-import de.cau.cs.se.instrumentation.al.aspectLang.ParameterPattern;
+import de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.ParentNode;
-import de.cau.cs.se.instrumentation.al.aspectLang.Probe;
-import de.cau.cs.se.instrumentation.al.aspectLang.Query;
+import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut;
 import de.cau.cs.se.instrumentation.al.aspectLang.QueryModifier;
 import de.cau.cs.se.instrumentation.al.aspectLang.ReferenceValue;
 import de.cau.cs.se.instrumentation.al.aspectLang.ReflectionFunction;
@@ -40,6 +40,7 @@ import de.cau.cs.se.instrumentation.al.aspectLang.RegisteredPackage;
 import de.cau.cs.se.instrumentation.al.aspectLang.RuntimeProperty;
 import de.cau.cs.se.instrumentation.al.aspectLang.StringValue;
 import de.cau.cs.se.instrumentation.al.aspectLang.SubPathNode;
+import de.cau.cs.se.instrumentation.al.aspectLang.UtilizeProbe;
 import de.cau.cs.se.instrumentation.al.aspectLang.Value;
 import de.cau.cs.se.instrumentation.al.aspectLang.WildcardNode;
 
@@ -102,7 +103,14 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass probeEClass = null;
+  private EClass utilizeProbeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass adviceEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -116,7 +124,7 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass queryEClass = null;
+  private EClass pointcutEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -130,7 +138,7 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass parameterPatternEClass = null;
+  private EClass parameterQueryEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -423,7 +431,7 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModel_Probes()
+  public EReference getModel_Advices()
   {
     return (EReference)modelEClass.getEStructuralFeatures().get(4);
   }
@@ -433,9 +441,19 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModel_Aspects()
+  public EReference getModel_Pointcuts()
   {
     return (EReference)modelEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getModel_Aspects()
+  {
+    return (EReference)modelEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -543,7 +561,7 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAspect_Annotation()
+  public EReference getAspect_Query()
   {
     return (EReference)aspectEClass.getEStructuralFeatures().get(0);
   }
@@ -553,7 +571,7 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAspect_Probe()
+  public EReference getAspect_ApplyProbes()
   {
     return (EReference)aspectEClass.getEStructuralFeatures().get(1);
   }
@@ -563,9 +581,9 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAspect_Query()
+  public EClass getUtilizeProbe()
   {
-    return (EReference)aspectEClass.getEStructuralFeatures().get(2);
+    return utilizeProbeEClass;
   }
 
   /**
@@ -573,9 +591,9 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getProbe()
+  public EReference getUtilizeProbe_Probe()
   {
-    return probeEClass;
+    return (EReference)utilizeProbeEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -583,9 +601,9 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getProbe_Name()
+  public EReference getUtilizeProbe_ParameterAssignments()
   {
-    return (EAttribute)probeEClass.getEStructuralFeatures().get(0);
+    return (EReference)utilizeProbeEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -593,9 +611,9 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getProbe_ParameterDeclarations()
+  public EClass getAdvice()
   {
-    return (EReference)probeEClass.getEStructuralFeatures().get(1);
+    return adviceEClass;
   }
 
   /**
@@ -603,9 +621,29 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getProbe_Collectors()
+  public EAttribute getAdvice_Name()
   {
-    return (EReference)probeEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)adviceEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAdvice_ParameterDeclarations()
+  {
+    return (EReference)adviceEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAdvice_Collectors()
+  {
+    return (EReference)adviceEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -643,9 +681,9 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getQuery()
+  public EClass getPointcut()
   {
-    return queryEClass;
+    return pointcutEClass;
   }
 
   /**
@@ -653,9 +691,9 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getQuery_Location()
+  public EReference getPointcut_Annotation()
   {
-    return (EReference)queryEClass.getEStructuralFeatures().get(0);
+    return (EReference)pointcutEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -663,9 +701,29 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getQuery_Method()
+  public EAttribute getPointcut_Name()
   {
-    return (EReference)queryEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)pointcutEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getPointcut_Location()
+  {
+    return (EReference)pointcutEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getPointcut_Method()
+  {
+    return (EReference)pointcutEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -713,7 +771,7 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getMethodQuery_Parameter()
+  public EReference getMethodQuery_ParameterQueries()
   {
     return (EReference)methodQueryEClass.getEStructuralFeatures().get(3);
   }
@@ -723,9 +781,9 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getParameterPattern()
+  public EClass getParameterQuery()
   {
-    return parameterPatternEClass;
+    return parameterQueryEClass;
   }
 
   /**
@@ -733,9 +791,9 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getParameterPattern_Modifier()
+  public EReference getParameterQuery_Modifier()
   {
-    return (EReference)parameterPatternEClass.getEStructuralFeatures().get(0);
+    return (EReference)parameterQueryEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -743,9 +801,9 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getParameterPattern_Type()
+  public EReference getParameterQuery_Type()
   {
-    return (EReference)parameterPatternEClass.getEStructuralFeatures().get(1);
+    return (EReference)parameterQueryEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -753,9 +811,9 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getParameterPattern_Parameter()
+  public EReference getParameterQuery_Parameter()
   {
-    return (EReference)parameterPatternEClass.getEStructuralFeatures().get(2);
+    return (EReference)parameterQueryEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1253,7 +1311,8 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
     createEReference(modelEClass, MODEL__METAMODELS);
     createEReference(modelEClass, MODEL__IMPORTS);
     createEReference(modelEClass, MODEL__SOURCES);
-    createEReference(modelEClass, MODEL__PROBES);
+    createEReference(modelEClass, MODEL__ADVICES);
+    createEReference(modelEClass, MODEL__POINTCUTS);
     createEReference(modelEClass, MODEL__ASPECTS);
 
     importEClass = createEClass(IMPORT);
@@ -1269,33 +1328,38 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
     createEAttribute(applicationModelEClass, APPLICATION_MODEL__MODEL);
 
     aspectEClass = createEClass(ASPECT);
-    createEReference(aspectEClass, ASPECT__ANNOTATION);
-    createEReference(aspectEClass, ASPECT__PROBE);
     createEReference(aspectEClass, ASPECT__QUERY);
+    createEReference(aspectEClass, ASPECT__APPLY_PROBES);
 
-    probeEClass = createEClass(PROBE);
-    createEAttribute(probeEClass, PROBE__NAME);
-    createEReference(probeEClass, PROBE__PARAMETER_DECLARATIONS);
-    createEReference(probeEClass, PROBE__COLLECTORS);
+    utilizeProbeEClass = createEClass(UTILIZE_PROBE);
+    createEReference(utilizeProbeEClass, UTILIZE_PROBE__PROBE);
+    createEReference(utilizeProbeEClass, UTILIZE_PROBE__PARAMETER_ASSIGNMENTS);
+
+    adviceEClass = createEClass(ADVICE);
+    createEAttribute(adviceEClass, ADVICE__NAME);
+    createEReference(adviceEClass, ADVICE__PARAMETER_DECLARATIONS);
+    createEReference(adviceEClass, ADVICE__COLLECTORS);
 
     parameterDeclarationEClass = createEClass(PARAMETER_DECLARATION);
     createEAttribute(parameterDeclarationEClass, PARAMETER_DECLARATION__TYPE);
     createEAttribute(parameterDeclarationEClass, PARAMETER_DECLARATION__NAME);
 
-    queryEClass = createEClass(QUERY);
-    createEReference(queryEClass, QUERY__LOCATION);
-    createEReference(queryEClass, QUERY__METHOD);
+    pointcutEClass = createEClass(POINTCUT);
+    createEReference(pointcutEClass, POINTCUT__ANNOTATION);
+    createEAttribute(pointcutEClass, POINTCUT__NAME);
+    createEReference(pointcutEClass, POINTCUT__LOCATION);
+    createEReference(pointcutEClass, POINTCUT__METHOD);
 
     methodQueryEClass = createEClass(METHOD_QUERY);
     createEReference(methodQueryEClass, METHOD_QUERY__MODIFIER);
     createEReference(methodQueryEClass, METHOD_QUERY__RETURN_TYPE);
     createEReference(methodQueryEClass, METHOD_QUERY__METHOD_REFERENCE);
-    createEReference(methodQueryEClass, METHOD_QUERY__PARAMETER);
+    createEReference(methodQueryEClass, METHOD_QUERY__PARAMETER_QUERIES);
 
-    parameterPatternEClass = createEClass(PARAMETER_PATTERN);
-    createEReference(parameterPatternEClass, PARAMETER_PATTERN__MODIFIER);
-    createEReference(parameterPatternEClass, PARAMETER_PATTERN__TYPE);
-    createEReference(parameterPatternEClass, PARAMETER_PATTERN__PARAMETER);
+    parameterQueryEClass = createEClass(PARAMETER_QUERY);
+    createEReference(parameterQueryEClass, PARAMETER_QUERY__MODIFIER);
+    createEReference(parameterQueryEClass, PARAMETER_QUERY__TYPE);
+    createEReference(parameterQueryEClass, PARAMETER_QUERY__PARAMETER);
 
     locationQueryEClass = createEClass(LOCATION_QUERY);
     createEReference(locationQueryEClass, LOCATION_QUERY__NODE);
@@ -1418,7 +1482,8 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
     initEReference(getModel_Metamodels(), this.getRegisteredPackage(), null, "metamodels", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Imports(), this.getImport(), null, "imports", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Sources(), this.getApplicationModel(), null, "sources", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getModel_Probes(), this.getProbe(), null, "probes", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModel_Advices(), this.getAdvice(), null, "advices", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModel_Pointcuts(), this.getPointcut(), null, "pointcuts", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Aspects(), this.getAspect(), null, "aspects", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1434,33 +1499,38 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
     initEAttribute(getApplicationModel_Model(), theEcorePackage.getEString(), "model", null, 0, 1, ApplicationModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(aspectEClass, Aspect.class, "Aspect", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAspect_Annotation(), theAnnotationsPackage.getAnnotation(), null, "annotation", null, 0, 1, Aspect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getAspect_Probe(), this.getProbe(), null, "probe", null, 0, 1, Aspect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getAspect_Query(), this.getQuery(), null, "query", null, 0, 1, Aspect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAspect_Query(), this.getPointcut(), null, "query", null, 0, 1, Aspect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAspect_ApplyProbes(), this.getUtilizeProbe(), null, "applyProbes", null, 0, -1, Aspect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(probeEClass, Probe.class, "Probe", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getProbe_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Probe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getProbe_ParameterDeclarations(), this.getParameterDeclaration(), null, "parameterDeclarations", null, 0, -1, Probe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getProbe_Collectors(), this.getCollector(), null, "collectors", null, 0, -1, Probe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(utilizeProbeEClass, UtilizeProbe.class, "UtilizeProbe", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getUtilizeProbe_Probe(), this.getAdvice(), null, "probe", null, 0, 1, UtilizeProbe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getUtilizeProbe_ParameterAssignments(), this.getValue(), null, "parameterAssignments", null, 0, -1, UtilizeProbe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(adviceEClass, Advice.class, "Advice", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getAdvice_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Advice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAdvice_ParameterDeclarations(), this.getParameterDeclaration(), null, "parameterDeclarations", null, 0, -1, Advice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAdvice_Collectors(), this.getCollector(), null, "collectors", null, 0, -1, Advice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(parameterDeclarationEClass, ParameterDeclaration.class, "ParameterDeclaration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getParameterDeclaration_Type(), theEcorePackage.getEString(), "type", null, 0, 1, ParameterDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getParameterDeclaration_Name(), theEcorePackage.getEString(), "name", null, 0, 1, ParameterDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(queryEClass, Query.class, "Query", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getQuery_Location(), this.getLocationQuery(), null, "location", null, 0, 1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getQuery_Method(), this.getMethodQuery(), null, "method", null, 0, 1, Query.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(pointcutEClass, Pointcut.class, "Pointcut", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getPointcut_Annotation(), theAnnotationsPackage.getAnnotation(), null, "annotation", null, 0, 1, Pointcut.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPointcut_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Pointcut.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPointcut_Location(), this.getLocationQuery(), null, "location", null, 0, 1, Pointcut.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPointcut_Method(), this.getMethodQuery(), null, "method", null, 0, 1, Pointcut.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(methodQueryEClass, MethodQuery.class, "MethodQuery", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getMethodQuery_Modifier(), theStructurePackage.getMethodModifier(), null, "modifier", null, 0, 1, MethodQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMethodQuery_ReturnType(), theStructurePackage.getType(), null, "returnType", null, 0, 1, MethodQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMethodQuery_MethodReference(), theStructurePackage.getMethod(), null, "methodReference", null, 0, 1, MethodQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMethodQuery_Parameter(), this.getParameterPattern(), null, "parameter", null, 0, -1, MethodQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMethodQuery_ParameterQueries(), this.getParameterQuery(), null, "parameterQueries", null, 0, -1, MethodQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(parameterPatternEClass, ParameterPattern.class, "ParameterPattern", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getParameterPattern_Modifier(), theStructurePackage.getParameterModifier(), null, "modifier", null, 0, 1, ParameterPattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getParameterPattern_Type(), theStructurePackage.getType(), null, "type", null, 0, 1, ParameterPattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getParameterPattern_Parameter(), theStructurePackage.getParameter(), null, "parameter", null, 0, 1, ParameterPattern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(parameterQueryEClass, ParameterQuery.class, "ParameterQuery", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getParameterQuery_Modifier(), theStructurePackage.getParameterModifier(), null, "modifier", null, 0, 1, ParameterQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getParameterQuery_Type(), theStructurePackage.getType(), null, "type", null, 0, 1, ParameterQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getParameterQuery_Parameter(), theStructurePackage.getParameter(), null, "parameter", null, 0, 1, ParameterQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(locationQueryEClass, LocationQuery.class, "LocationQuery", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getLocationQuery_Node(), this.getNode(), null, "node", null, 0, 1, LocationQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

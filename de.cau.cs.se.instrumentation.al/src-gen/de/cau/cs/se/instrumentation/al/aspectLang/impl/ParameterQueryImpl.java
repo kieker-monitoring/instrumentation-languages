@@ -7,7 +7,7 @@ import de.cau.cs.se.instrumantation.model.structure.ParameterModifier;
 import de.cau.cs.se.instrumantation.model.structure.Type;
 
 import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
-import de.cau.cs.se.instrumentation.al.aspectLang.ParameterPattern;
+import de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -19,20 +19,20 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Parameter Pattern</b></em>'.
+ * An implementation of the model object '<em><b>Parameter Query</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ParameterPatternImpl#getModifier <em>Modifier</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ParameterPatternImpl#getType <em>Type</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ParameterPatternImpl#getParameter <em>Parameter</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ParameterQueryImpl#getModifier <em>Modifier</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ParameterQueryImpl#getType <em>Type</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ParameterQueryImpl#getParameter <em>Parameter</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ParameterPatternImpl extends MinimalEObjectImpl.Container implements ParameterPattern
+public class ParameterQueryImpl extends MinimalEObjectImpl.Container implements ParameterQuery
 {
   /**
    * The cached value of the '{@link #getModifier() <em>Modifier</em>}' reference.
@@ -69,7 +69,7 @@ public class ParameterPatternImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ParameterPatternImpl()
+  protected ParameterQueryImpl()
   {
     super();
   }
@@ -82,7 +82,7 @@ public class ParameterPatternImpl extends MinimalEObjectImpl.Container implement
   @Override
   protected EClass eStaticClass()
   {
-    return AspectLangPackage.Literals.PARAMETER_PATTERN;
+    return AspectLangPackage.Literals.PARAMETER_QUERY;
   }
 
   /**
@@ -99,7 +99,7 @@ public class ParameterPatternImpl extends MinimalEObjectImpl.Container implement
       if (modifier != oldModifier)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, AspectLangPackage.PARAMETER_PATTERN__MODIFIER, oldModifier, modifier));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, AspectLangPackage.PARAMETER_QUERY__MODIFIER, oldModifier, modifier));
       }
     }
     return modifier;
@@ -125,7 +125,7 @@ public class ParameterPatternImpl extends MinimalEObjectImpl.Container implement
     ParameterModifier oldModifier = modifier;
     modifier = newModifier;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.PARAMETER_PATTERN__MODIFIER, oldModifier, modifier));
+      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.PARAMETER_QUERY__MODIFIER, oldModifier, modifier));
   }
 
   /**
@@ -142,7 +142,7 @@ public class ParameterPatternImpl extends MinimalEObjectImpl.Container implement
       if (type != oldType)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, AspectLangPackage.PARAMETER_PATTERN__TYPE, oldType, type));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, AspectLangPackage.PARAMETER_QUERY__TYPE, oldType, type));
       }
     }
     return type;
@@ -168,7 +168,7 @@ public class ParameterPatternImpl extends MinimalEObjectImpl.Container implement
     Type oldType = type;
     type = newType;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.PARAMETER_PATTERN__TYPE, oldType, type));
+      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.PARAMETER_QUERY__TYPE, oldType, type));
   }
 
   /**
@@ -185,7 +185,7 @@ public class ParameterPatternImpl extends MinimalEObjectImpl.Container implement
       if (parameter != oldParameter)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, AspectLangPackage.PARAMETER_PATTERN__PARAMETER, oldParameter, parameter));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, AspectLangPackage.PARAMETER_QUERY__PARAMETER, oldParameter, parameter));
       }
     }
     return parameter;
@@ -211,7 +211,7 @@ public class ParameterPatternImpl extends MinimalEObjectImpl.Container implement
     Parameter oldParameter = parameter;
     parameter = newParameter;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.PARAMETER_PATTERN__PARAMETER, oldParameter, parameter));
+      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.PARAMETER_QUERY__PARAMETER, oldParameter, parameter));
   }
 
   /**
@@ -224,13 +224,13 @@ public class ParameterPatternImpl extends MinimalEObjectImpl.Container implement
   {
     switch (featureID)
     {
-      case AspectLangPackage.PARAMETER_PATTERN__MODIFIER:
+      case AspectLangPackage.PARAMETER_QUERY__MODIFIER:
         if (resolve) return getModifier();
         return basicGetModifier();
-      case AspectLangPackage.PARAMETER_PATTERN__TYPE:
+      case AspectLangPackage.PARAMETER_QUERY__TYPE:
         if (resolve) return getType();
         return basicGetType();
-      case AspectLangPackage.PARAMETER_PATTERN__PARAMETER:
+      case AspectLangPackage.PARAMETER_QUERY__PARAMETER:
         if (resolve) return getParameter();
         return basicGetParameter();
     }
@@ -247,13 +247,13 @@ public class ParameterPatternImpl extends MinimalEObjectImpl.Container implement
   {
     switch (featureID)
     {
-      case AspectLangPackage.PARAMETER_PATTERN__MODIFIER:
+      case AspectLangPackage.PARAMETER_QUERY__MODIFIER:
         setModifier((ParameterModifier)newValue);
         return;
-      case AspectLangPackage.PARAMETER_PATTERN__TYPE:
+      case AspectLangPackage.PARAMETER_QUERY__TYPE:
         setType((Type)newValue);
         return;
-      case AspectLangPackage.PARAMETER_PATTERN__PARAMETER:
+      case AspectLangPackage.PARAMETER_QUERY__PARAMETER:
         setParameter((Parameter)newValue);
         return;
     }
@@ -270,13 +270,13 @@ public class ParameterPatternImpl extends MinimalEObjectImpl.Container implement
   {
     switch (featureID)
     {
-      case AspectLangPackage.PARAMETER_PATTERN__MODIFIER:
+      case AspectLangPackage.PARAMETER_QUERY__MODIFIER:
         setModifier((ParameterModifier)null);
         return;
-      case AspectLangPackage.PARAMETER_PATTERN__TYPE:
+      case AspectLangPackage.PARAMETER_QUERY__TYPE:
         setType((Type)null);
         return;
-      case AspectLangPackage.PARAMETER_PATTERN__PARAMETER:
+      case AspectLangPackage.PARAMETER_QUERY__PARAMETER:
         setParameter((Parameter)null);
         return;
     }
@@ -293,14 +293,14 @@ public class ParameterPatternImpl extends MinimalEObjectImpl.Container implement
   {
     switch (featureID)
     {
-      case AspectLangPackage.PARAMETER_PATTERN__MODIFIER:
+      case AspectLangPackage.PARAMETER_QUERY__MODIFIER:
         return modifier != null;
-      case AspectLangPackage.PARAMETER_PATTERN__TYPE:
+      case AspectLangPackage.PARAMETER_QUERY__TYPE:
         return type != null;
-      case AspectLangPackage.PARAMETER_PATTERN__PARAMETER:
+      case AspectLangPackage.PARAMETER_QUERY__PARAMETER:
         return parameter != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //ParameterPatternImpl
+} //ParameterQueryImpl

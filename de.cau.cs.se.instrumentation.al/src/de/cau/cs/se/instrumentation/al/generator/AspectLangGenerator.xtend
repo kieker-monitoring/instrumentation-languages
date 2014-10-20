@@ -26,7 +26,7 @@ import java.util.Collection
 import java.util.Map
 import java.util.HashMap
 import javax.xml.parsers.DocumentBuilderFactory
-import de.cau.cs.se.instrumentation.al.aspectLang.Query
+import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut
 import de.cau.cs.se.instrumantation.model.structure.Method
 import de.cau.cs.se.instrumantation.model.structure.MethodModifier
 import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery
@@ -73,12 +73,12 @@ class AspectLangGenerator implements IGenerator {
 	 * @param aspect a new aspect to be added to the map.
 	 */
 	def void addAspect(Map<String, Collection<Aspect>> map, Aspect aspect) {
-		var list = map.get(aspect?.annotation?.name)
+	/* 	var list = map.get(aspect?.annotation?.name)
 		if (list == null) {
 			list = new ArrayList<Aspect>()
 			map.put(aspect?.annotation?.name,list)
 		}
-		list.add(aspect)
+		list.add(aspect) */
 	}
 	
 	/**
@@ -108,8 +108,8 @@ class AspectLangGenerator implements IGenerator {
 		val aspectsElement = doc.createElement("aspects")
 		aspectjElement.appendChild(aspectsElement)
 		for (Aspect aspect : aspects) {
-			aspect.probe.collectors.filter[it.insertionPoint == InsertionPoint.^BEFORE].createDataCollectorAspect(doc, aspectsElement)
-			aspect.probe.collectors.filter[it.insertionPoint == InsertionPoint.^AFTER].createDataCollectorAspect(doc, aspectsElement)
+			aspect.applyProbes.forEach[it.probe.collectors.filter[it.insertionPoint == InsertionPoint.^BEFORE].createDataCollectorAspect(doc, aspectsElement)]
+			aspect.applyProbes.forEach[it.probe.collectors.filter[it.insertionPoint == InsertionPoint.^AFTER].createDataCollectorAspect(doc, aspectsElement)]
 		}
 		
 		// writing stuff
@@ -141,7 +141,7 @@ class AspectLangGenerator implements IGenerator {
 	/**
 	 * Compute the query for model nodes.
 	 */
-	def String computeAspectJQuery(Query query) '''«query.location.computeLocation» «query.method.modifier.computeModifier» «if (query.method != null) query.method.methodReference.computeMethod else '*'»'''
+	def String computeAspectJQuery(Pointcut pointcut) '''«pointcut.location.computeLocation» «pointcut.method.modifier.computeModifier» «if (pointcut.method != null) pointcut.method.methodReference.computeMethod else '*'»'''
 	
 	def CharSequence computeLocation(LocationQuery query) '''«query.node.computeNode»«if (query.specialization != null) '.' + query.specialization.computeLocation»'''
 	

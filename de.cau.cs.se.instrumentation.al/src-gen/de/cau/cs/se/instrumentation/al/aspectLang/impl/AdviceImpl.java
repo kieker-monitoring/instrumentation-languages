@@ -2,10 +2,10 @@
  */
 package de.cau.cs.se.instrumentation.al.aspectLang.impl;
 
+import de.cau.cs.se.instrumentation.al.aspectLang.Advice;
 import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
 import de.cau.cs.se.instrumentation.al.aspectLang.Collector;
 import de.cau.cs.se.instrumentation.al.aspectLang.ParameterDeclaration;
-import de.cau.cs.se.instrumentation.al.aspectLang.Probe;
 
 import java.util.Collection;
 
@@ -25,20 +25,20 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Probe</b></em>'.
+ * An implementation of the model object '<em><b>Advice</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ProbeImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ProbeImpl#getParameterDeclarations <em>Parameter Declarations</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ProbeImpl#getCollectors <em>Collectors</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AdviceImpl#getName <em>Name</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AdviceImpl#getParameterDeclarations <em>Parameter Declarations</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AdviceImpl#getCollectors <em>Collectors</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ProbeImpl extends MinimalEObjectImpl.Container implements Probe
+public class AdviceImpl extends MinimalEObjectImpl.Container implements Advice
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -85,7 +85,7 @@ public class ProbeImpl extends MinimalEObjectImpl.Container implements Probe
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ProbeImpl()
+  protected AdviceImpl()
   {
     super();
   }
@@ -98,7 +98,7 @@ public class ProbeImpl extends MinimalEObjectImpl.Container implements Probe
   @Override
   protected EClass eStaticClass()
   {
-    return AspectLangPackage.Literals.PROBE;
+    return AspectLangPackage.Literals.ADVICE;
   }
 
   /**
@@ -121,7 +121,7 @@ public class ProbeImpl extends MinimalEObjectImpl.Container implements Probe
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.PROBE__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.ADVICE__NAME, oldName, name));
   }
 
   /**
@@ -133,7 +133,7 @@ public class ProbeImpl extends MinimalEObjectImpl.Container implements Probe
   {
     if (parameterDeclarations == null)
     {
-      parameterDeclarations = new EObjectContainmentEList<ParameterDeclaration>(ParameterDeclaration.class, this, AspectLangPackage.PROBE__PARAMETER_DECLARATIONS);
+      parameterDeclarations = new EObjectContainmentEList<ParameterDeclaration>(ParameterDeclaration.class, this, AspectLangPackage.ADVICE__PARAMETER_DECLARATIONS);
     }
     return parameterDeclarations;
   }
@@ -147,7 +147,7 @@ public class ProbeImpl extends MinimalEObjectImpl.Container implements Probe
   {
     if (collectors == null)
     {
-      collectors = new EObjectContainmentEList<Collector>(Collector.class, this, AspectLangPackage.PROBE__COLLECTORS);
+      collectors = new EObjectContainmentEList<Collector>(Collector.class, this, AspectLangPackage.ADVICE__COLLECTORS);
     }
     return collectors;
   }
@@ -162,9 +162,9 @@ public class ProbeImpl extends MinimalEObjectImpl.Container implements Probe
   {
     switch (featureID)
     {
-      case AspectLangPackage.PROBE__PARAMETER_DECLARATIONS:
+      case AspectLangPackage.ADVICE__PARAMETER_DECLARATIONS:
         return ((InternalEList<?>)getParameterDeclarations()).basicRemove(otherEnd, msgs);
-      case AspectLangPackage.PROBE__COLLECTORS:
+      case AspectLangPackage.ADVICE__COLLECTORS:
         return ((InternalEList<?>)getCollectors()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -180,11 +180,11 @@ public class ProbeImpl extends MinimalEObjectImpl.Container implements Probe
   {
     switch (featureID)
     {
-      case AspectLangPackage.PROBE__NAME:
+      case AspectLangPackage.ADVICE__NAME:
         return getName();
-      case AspectLangPackage.PROBE__PARAMETER_DECLARATIONS:
+      case AspectLangPackage.ADVICE__PARAMETER_DECLARATIONS:
         return getParameterDeclarations();
-      case AspectLangPackage.PROBE__COLLECTORS:
+      case AspectLangPackage.ADVICE__COLLECTORS:
         return getCollectors();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -201,14 +201,14 @@ public class ProbeImpl extends MinimalEObjectImpl.Container implements Probe
   {
     switch (featureID)
     {
-      case AspectLangPackage.PROBE__NAME:
+      case AspectLangPackage.ADVICE__NAME:
         setName((String)newValue);
         return;
-      case AspectLangPackage.PROBE__PARAMETER_DECLARATIONS:
+      case AspectLangPackage.ADVICE__PARAMETER_DECLARATIONS:
         getParameterDeclarations().clear();
         getParameterDeclarations().addAll((Collection<? extends ParameterDeclaration>)newValue);
         return;
-      case AspectLangPackage.PROBE__COLLECTORS:
+      case AspectLangPackage.ADVICE__COLLECTORS:
         getCollectors().clear();
         getCollectors().addAll((Collection<? extends Collector>)newValue);
         return;
@@ -226,13 +226,13 @@ public class ProbeImpl extends MinimalEObjectImpl.Container implements Probe
   {
     switch (featureID)
     {
-      case AspectLangPackage.PROBE__NAME:
+      case AspectLangPackage.ADVICE__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case AspectLangPackage.PROBE__PARAMETER_DECLARATIONS:
+      case AspectLangPackage.ADVICE__PARAMETER_DECLARATIONS:
         getParameterDeclarations().clear();
         return;
-      case AspectLangPackage.PROBE__COLLECTORS:
+      case AspectLangPackage.ADVICE__COLLECTORS:
         getCollectors().clear();
         return;
     }
@@ -249,11 +249,11 @@ public class ProbeImpl extends MinimalEObjectImpl.Container implements Probe
   {
     switch (featureID)
     {
-      case AspectLangPackage.PROBE__NAME:
+      case AspectLangPackage.ADVICE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case AspectLangPackage.PROBE__PARAMETER_DECLARATIONS:
+      case AspectLangPackage.ADVICE__PARAMETER_DECLARATIONS:
         return parameterDeclarations != null && !parameterDeclarations.isEmpty();
-      case AspectLangPackage.PROBE__COLLECTORS:
+      case AspectLangPackage.ADVICE__COLLECTORS:
         return collectors != null && !collectors.isEmpty();
     }
     return super.eIsSet(featureID);
@@ -276,4 +276,4 @@ public class ProbeImpl extends MinimalEObjectImpl.Container implements Probe
     return result.toString();
   }
 
-} //ProbeImpl
+} //AdviceImpl

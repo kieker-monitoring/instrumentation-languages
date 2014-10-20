@@ -2,10 +2,10 @@
  */
 package de.cau.cs.se.instrumentation.al.aspectLang.impl;
 
-import de.cau.cs.se.instrumentation.al.aspectLang.Aspect;
+import de.cau.cs.se.instrumentation.al.aspectLang.Advice;
 import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
-import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut;
 import de.cau.cs.se.instrumentation.al.aspectLang.UtilizeProbe;
+import de.cau.cs.se.instrumentation.al.aspectLang.Value;
 
 import java.util.Collection;
 
@@ -25,46 +25,46 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Aspect</b></em>'.
+ * An implementation of the model object '<em><b>Utilize Probe</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectImpl#getQuery <em>Query</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectImpl#getApplyProbes <em>Apply Probes</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.UtilizeProbeImpl#getProbe <em>Probe</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.UtilizeProbeImpl#getParameterAssignments <em>Parameter Assignments</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
+public class UtilizeProbeImpl extends MinimalEObjectImpl.Container implements UtilizeProbe
 {
   /**
-   * The cached value of the '{@link #getQuery() <em>Query</em>}' reference.
+   * The cached value of the '{@link #getProbe() <em>Probe</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getQuery()
+   * @see #getProbe()
    * @generated
    * @ordered
    */
-  protected Pointcut query;
+  protected Advice probe;
 
   /**
-   * The cached value of the '{@link #getApplyProbes() <em>Apply Probes</em>}' containment reference list.
+   * The cached value of the '{@link #getParameterAssignments() <em>Parameter Assignments</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getApplyProbes()
+   * @see #getParameterAssignments()
    * @generated
    * @ordered
    */
-  protected EList<UtilizeProbe> applyProbes;
+  protected EList<Value> parameterAssignments;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected AspectImpl()
+  protected UtilizeProbeImpl()
   {
     super();
   }
@@ -77,7 +77,7 @@ public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
   @Override
   protected EClass eStaticClass()
   {
-    return AspectLangPackage.Literals.ASPECT;
+    return AspectLangPackage.Literals.UTILIZE_PROBE;
   }
 
   /**
@@ -85,19 +85,19 @@ public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
    * <!-- end-user-doc -->
    * @generated
    */
-  public Pointcut getQuery()
+  public Advice getProbe()
   {
-    if (query != null && query.eIsProxy())
+    if (probe != null && probe.eIsProxy())
     {
-      InternalEObject oldQuery = (InternalEObject)query;
-      query = (Pointcut)eResolveProxy(oldQuery);
-      if (query != oldQuery)
+      InternalEObject oldProbe = (InternalEObject)probe;
+      probe = (Advice)eResolveProxy(oldProbe);
+      if (probe != oldProbe)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, AspectLangPackage.ASPECT__QUERY, oldQuery, query));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, AspectLangPackage.UTILIZE_PROBE__PROBE, oldProbe, probe));
       }
     }
-    return query;
+    return probe;
   }
 
   /**
@@ -105,9 +105,9 @@ public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
    * <!-- end-user-doc -->
    * @generated
    */
-  public Pointcut basicGetQuery()
+  public Advice basicGetProbe()
   {
-    return query;
+    return probe;
   }
 
   /**
@@ -115,12 +115,12 @@ public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setQuery(Pointcut newQuery)
+  public void setProbe(Advice newProbe)
   {
-    Pointcut oldQuery = query;
-    query = newQuery;
+    Advice oldProbe = probe;
+    probe = newProbe;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.ASPECT__QUERY, oldQuery, query));
+      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.UTILIZE_PROBE__PROBE, oldProbe, probe));
   }
 
   /**
@@ -128,13 +128,13 @@ public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<UtilizeProbe> getApplyProbes()
+  public EList<Value> getParameterAssignments()
   {
-    if (applyProbes == null)
+    if (parameterAssignments == null)
     {
-      applyProbes = new EObjectContainmentEList<UtilizeProbe>(UtilizeProbe.class, this, AspectLangPackage.ASPECT__APPLY_PROBES);
+      parameterAssignments = new EObjectContainmentEList<Value>(Value.class, this, AspectLangPackage.UTILIZE_PROBE__PARAMETER_ASSIGNMENTS);
     }
-    return applyProbes;
+    return parameterAssignments;
   }
 
   /**
@@ -147,8 +147,8 @@ public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
   {
     switch (featureID)
     {
-      case AspectLangPackage.ASPECT__APPLY_PROBES:
-        return ((InternalEList<?>)getApplyProbes()).basicRemove(otherEnd, msgs);
+      case AspectLangPackage.UTILIZE_PROBE__PARAMETER_ASSIGNMENTS:
+        return ((InternalEList<?>)getParameterAssignments()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -163,11 +163,11 @@ public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
   {
     switch (featureID)
     {
-      case AspectLangPackage.ASPECT__QUERY:
-        if (resolve) return getQuery();
-        return basicGetQuery();
-      case AspectLangPackage.ASPECT__APPLY_PROBES:
-        return getApplyProbes();
+      case AspectLangPackage.UTILIZE_PROBE__PROBE:
+        if (resolve) return getProbe();
+        return basicGetProbe();
+      case AspectLangPackage.UTILIZE_PROBE__PARAMETER_ASSIGNMENTS:
+        return getParameterAssignments();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -183,12 +183,12 @@ public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
   {
     switch (featureID)
     {
-      case AspectLangPackage.ASPECT__QUERY:
-        setQuery((Pointcut)newValue);
+      case AspectLangPackage.UTILIZE_PROBE__PROBE:
+        setProbe((Advice)newValue);
         return;
-      case AspectLangPackage.ASPECT__APPLY_PROBES:
-        getApplyProbes().clear();
-        getApplyProbes().addAll((Collection<? extends UtilizeProbe>)newValue);
+      case AspectLangPackage.UTILIZE_PROBE__PARAMETER_ASSIGNMENTS:
+        getParameterAssignments().clear();
+        getParameterAssignments().addAll((Collection<? extends Value>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -204,11 +204,11 @@ public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
   {
     switch (featureID)
     {
-      case AspectLangPackage.ASPECT__QUERY:
-        setQuery((Pointcut)null);
+      case AspectLangPackage.UTILIZE_PROBE__PROBE:
+        setProbe((Advice)null);
         return;
-      case AspectLangPackage.ASPECT__APPLY_PROBES:
-        getApplyProbes().clear();
+      case AspectLangPackage.UTILIZE_PROBE__PARAMETER_ASSIGNMENTS:
+        getParameterAssignments().clear();
         return;
     }
     super.eUnset(featureID);
@@ -224,12 +224,12 @@ public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
   {
     switch (featureID)
     {
-      case AspectLangPackage.ASPECT__QUERY:
-        return query != null;
-      case AspectLangPackage.ASPECT__APPLY_PROBES:
-        return applyProbes != null && !applyProbes.isEmpty();
+      case AspectLangPackage.UTILIZE_PROBE__PROBE:
+        return probe != null;
+      case AspectLangPackage.UTILIZE_PROBE__PARAMETER_ASSIGNMENTS:
+        return parameterAssignments != null && !parameterAssignments.isEmpty();
     }
     return super.eIsSet(featureID);
   }
 
-} //AspectImpl
+} //UtilizeProbeImpl

@@ -9,9 +9,9 @@ import de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode
 import de.cau.cs.se.instrumantation.model.structure.NamedElement
 import de.cau.cs.se.instrumentation.al.aspectLang.WildcardNode
 import de.cau.cs.se.instrumentation.al.aspectLang.SubPathNode
-import de.cau.cs.se.instrumentation.al.aspectLang.Query
 import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery
 import de.cau.cs.se.instrumentation.al.aspectLang.Collector
+import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut
 
 /**
  * Provides labels for a EObjects.
@@ -38,7 +38,7 @@ class AspectLangLabelProvider extends org.eclipse.xtext.ui.label.DefaultEObjectL
 		
 		def text (SubPathNode e) { '**' }
 		
-		def text(Query e) { 'query' }
+		def text(Pointcut e) { 'pointcut' + e.name }
 		def text(LocationQuery e) { 'path' }
 		 
 		def text (Collector e) { // TODO this is most likely broken

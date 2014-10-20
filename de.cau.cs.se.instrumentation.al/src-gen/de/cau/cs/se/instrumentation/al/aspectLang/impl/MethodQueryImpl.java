@@ -8,7 +8,7 @@ import de.cau.cs.se.instrumantation.model.structure.Type;
 
 import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
 import de.cau.cs.se.instrumentation.al.aspectLang.MethodQuery;
-import de.cau.cs.se.instrumentation.al.aspectLang.ParameterPattern;
+import de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery;
 
 import java.util.Collection;
 
@@ -36,7 +36,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.MethodQueryImpl#getModifier <em>Modifier</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.MethodQueryImpl#getReturnType <em>Return Type</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.MethodQueryImpl#getMethodReference <em>Method Reference</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.MethodQueryImpl#getParameter <em>Parameter</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.MethodQueryImpl#getParameterQueries <em>Parameter Queries</em>}</li>
  * </ul>
  * </p>
  *
@@ -75,14 +75,14 @@ public class MethodQueryImpl extends MinimalEObjectImpl.Container implements Met
   protected Method methodReference;
 
   /**
-   * The cached value of the '{@link #getParameter() <em>Parameter</em>}' containment reference list.
+   * The cached value of the '{@link #getParameterQueries() <em>Parameter Queries</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getParameter()
+   * @see #getParameterQueries()
    * @generated
    * @ordered
    */
-  protected EList<ParameterPattern> parameter;
+  protected EList<ParameterQuery> parameterQueries;
 
   /**
    * <!-- begin-user-doc -->
@@ -239,13 +239,13 @@ public class MethodQueryImpl extends MinimalEObjectImpl.Container implements Met
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<ParameterPattern> getParameter()
+  public EList<ParameterQuery> getParameterQueries()
   {
-    if (parameter == null)
+    if (parameterQueries == null)
     {
-      parameter = new EObjectContainmentEList<ParameterPattern>(ParameterPattern.class, this, AspectLangPackage.METHOD_QUERY__PARAMETER);
+      parameterQueries = new EObjectContainmentEList<ParameterQuery>(ParameterQuery.class, this, AspectLangPackage.METHOD_QUERY__PARAMETER_QUERIES);
     }
-    return parameter;
+    return parameterQueries;
   }
 
   /**
@@ -258,8 +258,8 @@ public class MethodQueryImpl extends MinimalEObjectImpl.Container implements Met
   {
     switch (featureID)
     {
-      case AspectLangPackage.METHOD_QUERY__PARAMETER:
-        return ((InternalEList<?>)getParameter()).basicRemove(otherEnd, msgs);
+      case AspectLangPackage.METHOD_QUERY__PARAMETER_QUERIES:
+        return ((InternalEList<?>)getParameterQueries()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -283,8 +283,8 @@ public class MethodQueryImpl extends MinimalEObjectImpl.Container implements Met
       case AspectLangPackage.METHOD_QUERY__METHOD_REFERENCE:
         if (resolve) return getMethodReference();
         return basicGetMethodReference();
-      case AspectLangPackage.METHOD_QUERY__PARAMETER:
-        return getParameter();
+      case AspectLangPackage.METHOD_QUERY__PARAMETER_QUERIES:
+        return getParameterQueries();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -309,9 +309,9 @@ public class MethodQueryImpl extends MinimalEObjectImpl.Container implements Met
       case AspectLangPackage.METHOD_QUERY__METHOD_REFERENCE:
         setMethodReference((Method)newValue);
         return;
-      case AspectLangPackage.METHOD_QUERY__PARAMETER:
-        getParameter().clear();
-        getParameter().addAll((Collection<? extends ParameterPattern>)newValue);
+      case AspectLangPackage.METHOD_QUERY__PARAMETER_QUERIES:
+        getParameterQueries().clear();
+        getParameterQueries().addAll((Collection<? extends ParameterQuery>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -336,8 +336,8 @@ public class MethodQueryImpl extends MinimalEObjectImpl.Container implements Met
       case AspectLangPackage.METHOD_QUERY__METHOD_REFERENCE:
         setMethodReference((Method)null);
         return;
-      case AspectLangPackage.METHOD_QUERY__PARAMETER:
-        getParameter().clear();
+      case AspectLangPackage.METHOD_QUERY__PARAMETER_QUERIES:
+        getParameterQueries().clear();
         return;
     }
     super.eUnset(featureID);
@@ -359,8 +359,8 @@ public class MethodQueryImpl extends MinimalEObjectImpl.Container implements Met
         return returnType != null;
       case AspectLangPackage.METHOD_QUERY__METHOD_REFERENCE:
         return methodReference != null;
-      case AspectLangPackage.METHOD_QUERY__PARAMETER:
-        return parameter != null && !parameter.isEmpty();
+      case AspectLangPackage.METHOD_QUERY__PARAMETER_QUERIES:
+        return parameterQueries != null && !parameterQueries.isEmpty();
     }
     return super.eIsSet(featureID);
   }

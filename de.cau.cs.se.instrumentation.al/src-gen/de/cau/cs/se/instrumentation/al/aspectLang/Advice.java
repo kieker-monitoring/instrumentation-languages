@@ -8,23 +8,23 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Probe</b></em>'.
+ * A representation of the model object '<em><b>Advice</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Probe#getName <em>Name</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Probe#getParameterDeclarations <em>Parameter Declarations</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Probe#getCollectors <em>Collectors</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Advice#getName <em>Name</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Advice#getParameterDeclarations <em>Parameter Declarations</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Advice#getCollectors <em>Collectors</em>}</li>
  * </ul>
  * </p>
  *
- * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getProbe()
+ * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getAdvice()
  * @model
  * @generated
  */
-public interface Probe extends EObject
+public interface Advice extends EObject
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -36,14 +36,14 @@ public interface Probe extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getProbe_Name()
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getAdvice_Name()
    * @model
    * @generated
    */
   String getName();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.Probe#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.Advice#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Name</em>' attribute.
@@ -62,7 +62,7 @@ public interface Probe extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Parameter Declarations</em>' containment reference list.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getProbe_ParameterDeclarations()
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getAdvice_ParameterDeclarations()
    * @model containment="true"
    * @generated
    */
@@ -78,10 +78,10 @@ public interface Probe extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Collectors</em>' containment reference list.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getProbe_Collectors()
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getAdvice_Collectors()
    * @model containment="true"
    * @generated
    */
   EList<Collector> getCollectors();
 
-} // Probe
+} // Advice

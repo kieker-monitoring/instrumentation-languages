@@ -16,7 +16,7 @@ Model:
 	(metamodels += RegisteredPackage)*
 	(imports += Import)*
 	(sources += ApplicationModel)*
-	(probes += Probe | aspects += Aspect)*
+	(advices += Advice | pointcuts+=Pointcut | aspects += Aspect)*
 ;
 
 Import:
@@ -42,11 +42,15 @@ QualifiedNameWithWildcard:
 // define selector for reference destination
 
 Aspect:
-	(annotation=Annotation)?
-	'aspect' probe=[Probe|QualifiedName] ':' query=Query
+	'aspect' query=[Pointcut|QualifiedName] ':' applyProbes+=UtilizeProbe (',' applyProbes+=UtilizeProbe)* 
 ;
 
-Probe:
+UtilizeProbe:
+	probe=[Advice|QualifiedName]
+	('(' (parameterAssignments+=Value (',' parameterAssignments+=Value)*)? ')')?
+;
+
+Advice:
 	'probe' name=ID ('(' (parameterDeclarations+=ParameterDeclaration (',' parameterDeclarations+=ParameterDeclaration)*)? ')')? '{'
 		collectors+=Collector*
 	'}'
@@ -56,7 +60,9 @@ ParameterDeclaration:
 	type='type' name=ID 
 ;
 
-Query:
+Pointcut:
+	(annotation=Annotation)?
+	'pointcut' name=ID
 	location=LocationQuery 
 	(method=MethodQuery)?
 ;
@@ -65,10 +71,10 @@ MethodQuery:
 	(modifier=[structure::MethodModifier|ID]|'*')
 	(returnType=[structure::Type|ID]|'*') 
 	methodReference=[structure::Method|ID]
-	'(' parameter+=ParameterPattern (',' parameter+=ParameterPattern)* ')'
+	'(' parameterQueries+=ParameterQuery (',' parameterQueries+=ParameterQuery)* ')'
 ;
 
-ParameterPattern:
+ParameterQuery:
 	(modifier=[structure::ParameterModifier|ID]|'*')
 	type=[structure::Type|ID]
 	parameter=[structure::Parameter|ID]

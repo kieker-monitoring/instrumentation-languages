@@ -107,10 +107,17 @@ public class AspectLangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case AspectLangPackage.PROBE:
+      case AspectLangPackage.UTILIZE_PROBE:
       {
-        Probe probe = (Probe)theEObject;
-        T result = caseProbe(probe);
+        UtilizeProbe utilizeProbe = (UtilizeProbe)theEObject;
+        T result = caseUtilizeProbe(utilizeProbe);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AspectLangPackage.ADVICE:
+      {
+        Advice advice = (Advice)theEObject;
+        T result = caseAdvice(advice);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -121,10 +128,10 @@ public class AspectLangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case AspectLangPackage.QUERY:
+      case AspectLangPackage.POINTCUT:
       {
-        Query query = (Query)theEObject;
-        T result = caseQuery(query);
+        Pointcut pointcut = (Pointcut)theEObject;
+        T result = casePointcut(pointcut);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -135,10 +142,10 @@ public class AspectLangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case AspectLangPackage.PARAMETER_PATTERN:
+      case AspectLangPackage.PARAMETER_QUERY:
       {
-        ParameterPattern parameterPattern = (ParameterPattern)theEObject;
-        T result = caseParameterPattern(parameterPattern);
+        ParameterQuery parameterQuery = (ParameterQuery)theEObject;
+        T result = caseParameterQuery(parameterQuery);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -371,17 +378,33 @@ public class AspectLangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Probe</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Utilize Probe</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Probe</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Utilize Probe</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseProbe(Probe object)
+  public T caseUtilizeProbe(UtilizeProbe object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Advice</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Advice</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAdvice(Advice object)
   {
     return null;
   }
@@ -403,17 +426,17 @@ public class AspectLangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Query</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Pointcut</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Query</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Pointcut</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseQuery(Query object)
+  public T casePointcut(Pointcut object)
   {
     return null;
   }
@@ -435,17 +458,17 @@ public class AspectLangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Parameter Pattern</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Parameter Query</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Parameter Pattern</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Parameter Query</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseParameterPattern(ParameterPattern object)
+  public T caseParameterQuery(ParameterQuery object)
   {
     return null;
   }

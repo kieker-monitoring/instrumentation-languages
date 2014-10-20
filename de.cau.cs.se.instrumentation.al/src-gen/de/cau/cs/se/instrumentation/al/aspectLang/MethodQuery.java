@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.MethodQuery#getModifier <em>Modifier</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.MethodQuery#getReturnType <em>Return Type</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.MethodQuery#getMethodReference <em>Method Reference</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.MethodQuery#getParameter <em>Parameter</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.MethodQuery#getParameterQueries <em>Parameter Queries</em>}</li>
  * </ul>
  * </p>
  *
@@ -110,19 +110,19 @@ public interface MethodQuery extends EObject
   void setMethodReference(Method value);
 
   /**
-   * Returns the value of the '<em><b>Parameter</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.cs.se.instrumentation.al.aspectLang.ParameterPattern}.
+   * Returns the value of the '<em><b>Parameter Queries</b></em>' containment reference list.
+   * The list contents are of type {@link de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Parameter</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Parameter Queries</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Parameter</em>' containment reference list.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getMethodQuery_Parameter()
+   * @return the value of the '<em>Parameter Queries</em>' containment reference list.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getMethodQuery_ParameterQueries()
    * @model containment="true"
    * @generated
    */
-  EList<ParameterPattern> getParameter();
+  EList<ParameterQuery> getParameterQueries();
 
 } // MethodQuery

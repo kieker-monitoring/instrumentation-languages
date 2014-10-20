@@ -100,9 +100,14 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
         return createAspectAdapter();
       }
       @Override
-      public Adapter caseProbe(Probe object)
+      public Adapter caseUtilizeProbe(UtilizeProbe object)
       {
-        return createProbeAdapter();
+        return createUtilizeProbeAdapter();
+      }
+      @Override
+      public Adapter caseAdvice(Advice object)
+      {
+        return createAdviceAdapter();
       }
       @Override
       public Adapter caseParameterDeclaration(ParameterDeclaration object)
@@ -110,9 +115,9 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
         return createParameterDeclarationAdapter();
       }
       @Override
-      public Adapter caseQuery(Query object)
+      public Adapter casePointcut(Pointcut object)
       {
-        return createQueryAdapter();
+        return createPointcutAdapter();
       }
       @Override
       public Adapter caseMethodQuery(MethodQuery object)
@@ -120,9 +125,9 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
         return createMethodQueryAdapter();
       }
       @Override
-      public Adapter caseParameterPattern(ParameterPattern object)
+      public Adapter caseParameterQuery(ParameterQuery object)
       {
-        return createParameterPatternAdapter();
+        return createParameterQueryAdapter();
       }
       @Override
       public Adapter caseLocationQuery(LocationQuery object)
@@ -317,16 +322,31 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Probe <em>Probe</em>}'.
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.UtilizeProbe <em>Utilize Probe</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Probe
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.UtilizeProbe
    * @generated
    */
-  public Adapter createProbeAdapter()
+  public Adapter createUtilizeProbeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Advice <em>Advice</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.Advice
+   * @generated
+   */
+  public Adapter createAdviceAdapter()
   {
     return null;
   }
@@ -347,16 +367,16 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Query <em>Query</em>}'.
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Pointcut <em>Pointcut</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Query
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.Pointcut
    * @generated
    */
-  public Adapter createQueryAdapter()
+  public Adapter createPointcutAdapter()
   {
     return null;
   }
@@ -377,16 +397,16 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ParameterPattern <em>Parameter Pattern</em>}'.
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery <em>Parameter Query</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ParameterPattern
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery
    * @generated
    */
-  public Adapter createParameterPatternAdapter()
+  public Adapter createParameterQueryAdapter()
   {
     return null;
   }

@@ -18,7 +18,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Model#getMetamodels <em>Metamodels</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Model#getImports <em>Imports</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Model#getSources <em>Sources</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Model#getProbes <em>Probes</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Model#getAdvices <em>Advices</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Model#getPointcuts <em>Pointcuts</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Model#getAspects <em>Aspects</em>}</li>
  * </ul>
  * </p>
@@ -104,20 +105,36 @@ public interface Model extends EObject
   EList<ApplicationModel> getSources();
 
   /**
-   * Returns the value of the '<em><b>Probes</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.cs.se.instrumentation.al.aspectLang.Probe}.
+   * Returns the value of the '<em><b>Advices</b></em>' containment reference list.
+   * The list contents are of type {@link de.cau.cs.se.instrumentation.al.aspectLang.Advice}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Probes</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Advices</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Probes</em>' containment reference list.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getModel_Probes()
+   * @return the value of the '<em>Advices</em>' containment reference list.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getModel_Advices()
    * @model containment="true"
    * @generated
    */
-  EList<Probe> getProbes();
+  EList<Advice> getAdvices();
+
+  /**
+   * Returns the value of the '<em><b>Pointcuts</b></em>' containment reference list.
+   * The list contents are of type {@link de.cau.cs.se.instrumentation.al.aspectLang.Pointcut}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Pointcuts</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Pointcuts</em>' containment reference list.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getModel_Pointcuts()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Pointcut> getPointcuts();
 
   /**
    * Returns the value of the '<em><b>Aspects</b></em>' containment reference list.

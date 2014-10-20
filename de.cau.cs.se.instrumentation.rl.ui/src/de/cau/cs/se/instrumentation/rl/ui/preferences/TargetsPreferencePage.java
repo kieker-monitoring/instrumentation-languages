@@ -30,6 +30,7 @@ import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator;
 import de.cau.cs.se.instrumentation.rl.generator.GeneratorConfiguration;
 import de.cau.cs.se.instrumentation.rl.preferences.TargetsPreferences;
 
+// http://www.vogella.com/tutorials/EclipsePreferences/article.html
 
 /**
  * Implements a simple preference page for IRL.

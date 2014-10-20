@@ -17,13 +17,13 @@ package de.cau.cs.se.instrumentation.al.generator;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterators;
-import de.cau.cs.kieler.core.annotations.Annotation;
 import de.cau.cs.se.instrumantation.model.structure.Container;
 import de.cau.cs.se.instrumantation.model.structure.Method;
 import de.cau.cs.se.instrumantation.model.structure.MethodModifier;
 import de.cau.cs.se.instrumantation.model.structure.Parameter;
 import de.cau.cs.se.instrumantation.model.structure.Type;
 import de.cau.cs.se.instrumantation.model.structure.TypeReference;
+import de.cau.cs.se.instrumentation.al.aspectLang.Advice;
 import de.cau.cs.se.instrumentation.al.aspectLang.Aspect;
 import de.cau.cs.se.instrumentation.al.aspectLang.Collector;
 import de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode;
@@ -31,11 +31,10 @@ import de.cau.cs.se.instrumentation.al.aspectLang.InsertionPoint;
 import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.MethodQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.Node;
-import de.cau.cs.se.instrumentation.al.aspectLang.Probe;
-import de.cau.cs.se.instrumentation.al.aspectLang.Query;
+import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut;
+import de.cau.cs.se.instrumentation.al.aspectLang.UtilizeProbe;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
 import java.io.StringWriter;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
@@ -127,30 +126,6 @@ public class AspectLangGenerator implements IGenerator {
    * @param aspect a new aspect to be added to the map.
    */
   public void addAspect(final Map<String,Collection<Aspect>> map, final Aspect aspect) {
-    Annotation _annotation = null;
-    if (aspect!=null) {
-      _annotation=aspect.getAnnotation();
-    }
-    String _name = null;
-    if (_annotation!=null) {
-      _name=_annotation.getName();
-    }
-    Collection<Aspect> list = map.get(_name);
-    boolean _equals = Objects.equal(list, null);
-    if (_equals) {
-      ArrayList<Aspect> _arrayList = new ArrayList<Aspect>();
-      list = _arrayList;
-      Annotation _annotation_1 = null;
-      if (aspect!=null) {
-        _annotation_1=aspect.getAnnotation();
-      }
-      String _name_1 = null;
-      if (_annotation_1!=null) {
-        _name_1=_annotation_1.getName();
-      }
-      map.put(_name_1, list);
-    }
-    list.add(aspect);
   }
   
   /**
@@ -172,7 +147,7 @@ public class AspectLangGenerator implements IGenerator {
       for (final Aspect aspect : aspects) {
         {
           final Element includeElement = doc.createElement("include");
-          Query _query = aspect.getQuery();
+          Pointcut _query = aspect.getQuery();
           String _computeAspectJQuery = this.computeAspectJQuery(_query);
           includeElement.setAttribute("within", _computeAspectJQuery);
           weaverElement.appendChild(includeElement);
@@ -182,28 +157,40 @@ public class AspectLangGenerator implements IGenerator {
       aspectjElement.appendChild(aspectsElement);
       for (final Aspect aspect_1 : aspects) {
         {
-          Probe _probe = aspect_1.getProbe();
-          EList<Collector> _collectors = _probe.getCollectors();
-          final Function1<Collector,Boolean> _function = new Function1<Collector,Boolean>() {
-            public Boolean apply(final Collector it) {
-              InsertionPoint _insertionPoint = it.getInsertionPoint();
-              boolean _equals = Objects.equal(_insertionPoint, InsertionPoint.BEFORE);
-              return Boolean.valueOf(_equals);
+          EList<UtilizeProbe> _applyProbes = aspect_1.getApplyProbes();
+          final Procedure1<UtilizeProbe> _function = new Procedure1<UtilizeProbe>() {
+            public void apply(final UtilizeProbe it) {
+              Advice _probe = it.getProbe();
+              EList<Collector> _collectors = _probe.getCollectors();
+              final Function1<Collector,Boolean> _function = new Function1<Collector,Boolean>() {
+                public Boolean apply(final Collector it) {
+                  InsertionPoint _insertionPoint = it.getInsertionPoint();
+                  boolean _equals = Objects.equal(_insertionPoint, InsertionPoint.BEFORE);
+                  return Boolean.valueOf(_equals);
+                }
+              };
+              Iterable<Collector> _filter = IterableExtensions.<Collector>filter(_collectors, _function);
+              AspectLangGenerator.this.createDataCollectorAspect(_filter, doc, aspectsElement);
             }
           };
-          Iterable<Collector> _filter = IterableExtensions.<Collector>filter(_collectors, _function);
-          this.createDataCollectorAspect(_filter, doc, aspectsElement);
-          Probe _probe_1 = aspect_1.getProbe();
-          EList<Collector> _collectors_1 = _probe_1.getCollectors();
-          final Function1<Collector,Boolean> _function_1 = new Function1<Collector,Boolean>() {
-            public Boolean apply(final Collector it) {
-              InsertionPoint _insertionPoint = it.getInsertionPoint();
-              boolean _equals = Objects.equal(_insertionPoint, InsertionPoint.AFTER);
-              return Boolean.valueOf(_equals);
+          IterableExtensions.<UtilizeProbe>forEach(_applyProbes, _function);
+          EList<UtilizeProbe> _applyProbes_1 = aspect_1.getApplyProbes();
+          final Procedure1<UtilizeProbe> _function_1 = new Procedure1<UtilizeProbe>() {
+            public void apply(final UtilizeProbe it) {
+              Advice _probe = it.getProbe();
+              EList<Collector> _collectors = _probe.getCollectors();
+              final Function1<Collector,Boolean> _function = new Function1<Collector,Boolean>() {
+                public Boolean apply(final Collector it) {
+                  InsertionPoint _insertionPoint = it.getInsertionPoint();
+                  boolean _equals = Objects.equal(_insertionPoint, InsertionPoint.AFTER);
+                  return Boolean.valueOf(_equals);
+                }
+              };
+              Iterable<Collector> _filter = IterableExtensions.<Collector>filter(_collectors, _function);
+              AspectLangGenerator.this.createDataCollectorAspect(_filter, doc, aspectsElement);
             }
           };
-          Iterable<Collector> _filter_1 = IterableExtensions.<Collector>filter(_collectors_1, _function_1);
-          this.createDataCollectorAspect(_filter_1, doc, aspectsElement);
+          IterableExtensions.<UtilizeProbe>forEach(_applyProbes_1, _function_1);
         }
       }
       final TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -248,22 +235,22 @@ public class AspectLangGenerator implements IGenerator {
   /**
    * Compute the query for model nodes.
    */
-  public String computeAspectJQuery(final Query query) {
+  public String computeAspectJQuery(final Pointcut pointcut) {
     StringConcatenation _builder = new StringConcatenation();
-    LocationQuery _location = query.getLocation();
+    LocationQuery _location = pointcut.getLocation();
     CharSequence _computeLocation = this.computeLocation(_location);
     _builder.append(_computeLocation, "");
     _builder.append(" ");
-    MethodQuery _method = query.getMethod();
+    MethodQuery _method = pointcut.getMethod();
     MethodModifier _modifier = _method.getModifier();
     CharSequence _computeModifier = this.computeModifier(_modifier);
     _builder.append(_computeModifier, "");
     _builder.append(" ");
     CharSequence _xifexpression = null;
-    MethodQuery _method_1 = query.getMethod();
+    MethodQuery _method_1 = pointcut.getMethod();
     boolean _notEquals = (!Objects.equal(_method_1, null));
     if (_notEquals) {
-      MethodQuery _method_2 = query.getMethod();
+      MethodQuery _method_2 = pointcut.getMethod();
       Method _methodReference = _method_2.getMethodReference();
       CharSequence _computeMethod = this.computeMethod(_methodReference);
       _xifexpression = _computeMethod;
