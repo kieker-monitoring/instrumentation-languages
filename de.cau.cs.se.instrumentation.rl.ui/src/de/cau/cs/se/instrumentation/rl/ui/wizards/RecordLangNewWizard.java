@@ -43,7 +43,7 @@ import org.eclipse.ui.ide.IDE;
  * "irl". If a sample multi-page editor (also available
  * as a template) is registered for the same extension, it will
  * be able to open it.
- * 
+ *
  * @author Reiner Jung
  */
 public class RecordLangNewWizard extends Wizard implements INewWizard {
@@ -71,32 +71,46 @@ public class RecordLangNewWizard extends Wizard implements INewWizard {
 	 * This method is called when 'Finish' button is pressed in
 	 * the wizard. We will create an operation and run it
 	 * using wizard as execution context.
-	 * 
+	 *
 	 * @return true if the operation was successful
 	 */
 	@Override
 	public boolean performFinish() {
-		final IRunnableWithProgress op = new IRunnableWithProgress() {
+		final String selectedPackage = this.page.getSourcePackage().getElementName();
+		final String sourceText = this.page.getSourcePackageText();
+		boolean result = true;
 
-			public void run(final IProgressMonitor monitor) throws InvocationTargetException {
-				try {
-					RecordLangNewWizard.this.doFinish(monitor);
-				} catch (final CoreException e) {
-					throw new InvocationTargetException(e);
-				} finally {
-					monitor.done();
+		if (!sourceText.equals(selectedPackage)){
+			result = MessageDialog.openQuestion(this.getShell(), "Package doesn't exist", "The package you selected doesn't exist yet. \n \n Shall it be created?");
+		}
+		if (result){
+			final IRunnableWithProgress op = new IRunnableWithProgress() {
+
+				public void run(final IProgressMonitor monitor) throws InvocationTargetException {
+					try {
+						if(!sourceText.equals(selectedPackage)){
+							RecordLangNewWizard.this.page.setSourcePackage(RecordLangNewWizard.this.page.getSourceFolder().createPackageFragment(sourceText, false, monitor));
+						}
+						RecordLangNewWizard.this.doFinish(monitor);
+					} catch (final CoreException e) {
+						throw new InvocationTargetException(e);
+					} finally {
+						monitor.done();
+					}
 				}
-			}
 
-		};
-		try {
-			this.getContainer().run(true, false, op);
-			return true;
-		} catch (final InterruptedException e) {
-			return false;
-		} catch (final InvocationTargetException e) {
-			final Throwable realException = e.getTargetException();
-			MessageDialog.openError(this.getShell(), "Error", realException.getMessage());
+			};
+			try {
+				this.getContainer().run(true, false, op);
+				return true;
+			} catch (final InterruptedException e) {
+				return false;
+			} catch (final InvocationTargetException e) {
+				final Throwable realException = e.getTargetException();
+				MessageDialog.openError(this.getShell(), "Error", realException.getMessage());
+				return false;
+			}
+		} else {
 			return false;
 		}
 	}
@@ -132,28 +146,48 @@ public class RecordLangNewWizard extends Wizard implements INewWizard {
 	 * We will initialize file contents with a sample text.
 	 */
 	private String templateContents(final String location) {
-		return "/***************************************************************************\n"
-				+ " * Copyright 2014 Kieker Project (http://kieker-monitoring.net)\n"
-				+ " *\n"
-				+ " * Licensed under the Apache License, Version 2.0 (the \"License\");\n"
-				+ " * you may not use this file except in compliance with the License.\n"
-				+ " * You may obtain a copy of the License at\n"
-				+ " *\n"
-				+ " *     http://www.apache.org/licenses/LICENSE-2.0\n"
-				+ " *\n"
-				+ " * Unless required by applicable law or agreed to in writing, software\n"
-				+ " * distributed under the License is distributed on an \"AS IS\" BASIS,\n"
-				+ " * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n"
-				+ " * See the License for the specific language governing permissions and\n"
-				+ " * limitations under the License.\n"
-				+ " ***************************************************************************/\n"
-				+ "package " + location + "\n\n";
+		if(!location.equals("")){
+			return "/***************************************************************************\n"
+					+ " * Copyright 2014 Kieker Project (http://kieker-monitoring.net)\n"
+					+ " *\n"
+					+ " * Licensed under the Apache License, Version 2.0 (the \"License\");\n"
+					+ " * you may not use this file except in compliance with the License.\n"
+					+ " * You may obtain a copy of the License at\n"
+					+ " *\n"
+					+ " *     http://www.apache.org/licenses/LICENSE-2.0\n"
+					+ " *\n"
+					+ " * Unless required by applicable law or agreed to in writing, software\n"
+					+ " * distributed under the License is distributed on an \"AS IS\" BASIS,\n"
+					+ " * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n"
+					+ " * See the License for the specific language governing permissions and\n"
+					+ " * limitations under the License.\n"
+					+ " ***************************************************************************/\n"
+					+ "package " + location + "\n\n";
+		}
+		else{
+			return "/***************************************************************************\n"
+					+ " * Copyright 2014 Kieker Project (http://kieker-monitoring.net)\n"
+					+ " *\n"
+					+ " * Licensed under the Apache License, Version 2.0 (the \"License\");\n"
+					+ " * you may not use this file except in compliance with the License.\n"
+					+ " * You may obtain a copy of the License at\n"
+					+ " *\n"
+					+ " *     http://www.apache.org/licenses/LICENSE-2.0\n"
+					+ " *\n"
+					+ " * Unless required by applicable law or agreed to in writing, software\n"
+					+ " * distributed under the License is distributed on an \"AS IS\" BASIS,\n"
+					+ " * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n"
+					+ " * See the License for the specific language governing permissions and\n"
+					+ " * limitations under the License.\n"
+					+ " ***************************************************************************/\n"
+					+ "\n\n";
+		}
 	}
 
 	/**
 	 * We will accept the selection in the workbench to see if
 	 * we can initialize from it.
-	 * 
+	 *
 	 * @param workbench
 	 * @param selection
 	 */

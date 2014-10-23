@@ -58,7 +58,7 @@ import org.eclipse.ui.dialogs.ISelectionStatusValidator;
  * The "New" wizard page allows setting the container for the new file as well
  * as the file name. The page will only accept file name without the extension
  * OR with the extension that matches the expected one (irl).
- * 
+ *
  * @author Reiner Jung
  */
 public class RecordLangNewWizardPage extends WizardPage {
@@ -78,7 +78,7 @@ public class RecordLangNewWizardPage extends WizardPage {
 
 	/**
 	 * Constructor for RecordLangNewWizardPage.
-	 * 
+	 *
 	 * @param selection selected element in package explorer
 	 */
 	public RecordLangNewWizardPage(final ISelection selection) {
@@ -102,7 +102,7 @@ public class RecordLangNewWizardPage extends WizardPage {
 				}
 			} else if (element instanceof IPackageFragmentRoot) {
 				this.sourceFolder = (IPackageFragmentRoot) element;
-				this.sourcePackage = null;
+				this.sourcePackage = this.sourceFolder.getPackageFragment("");
 			} else if (element instanceof IJavaProject) {
 				this.sourceFolder = null;
 				this.sourcePackage = null;
@@ -138,12 +138,70 @@ public class RecordLangNewWizardPage extends WizardPage {
 	}
 
 	/**
+	 * Returns the current SourcePackageText
+	 * @return SourcePackageText
+	 */
+	protected String getSourcePackageText(){
+		return this.sourcePackageText.getText();
+	}
+
+	/**
+	 * Checks if a package is part of the current IPackageFragmentRoot
+	 *
+	 * @param packageName - name of the assumed package
+	 * @return boolean
+	 */
+	protected boolean existsPackage(final String packageName){
+		boolean result = false;
+		final IPackageFragmentRoot froot = this.sourceFolder;
+		IJavaElement[] existingPackages = null;
+		try {
+			if ((froot != null) && froot.exists()) {
+				existingPackages = froot.getChildren();
+			}
+		} catch (final JavaModelException e) {
+		}
+		if (existingPackages == null) {
+			existingPackages = new IJavaElement[0];
+		}
+		final String srcPackageText = this.sourcePackageText.getText();
+		final int j = existingPackages.length;
+		int i = 0;
+		while (j > i){
+			if(srcPackageText.equals(existingPackages[i].getElementName())){
+				result = true;
+				i = j +1;
+			}
+			i ++;
+		}
+		return result;
+	}
+
+	/**
+	 * Sets the SourcePackage
+	 *
+	 * @param pack - new SourcePackage
+	 */
+	protected void setSourcePackage (final IPackageFragment pack){
+		this.sourcePackage = pack;
+	}
+
+	/**
+	 * Returns the SourceFolder
+	 *
+	 * @return SourceFolder
+	 */
+	protected IPackageFragmentRoot getSourceFolder (){
+		return this.sourceFolder;
+	}
+
+	/**
 	 * Creates the top level control for this dialog
 	 * page under the given parent composite.
 	 * <p>
 	 * Implementors are responsible for ensuring that the created control can be accessed via <code>getControl</code>
 	 * </p>
-	 * 
+	 *
 	 * @param parent
 	 *            the parent composite
 	 */
@@ -191,6 +249,9 @@ public class RecordLangNewWizardPage extends WizardPage {
 		}
 		this.sourcePackageText.addModifyListener(new ModifyListener() {
 			public void modifyText(final ModifyEvent e) {
+				if (!RecordLangNewWizardPage.this.sourcePackageText.getText().equals(RecordLangNewWizardPage.this.sourcePackage.getElementName()) && RecordLangNewWizardPage.this.existsPackage(RecordLangNewWizardPage.this.sourcePackageText.getText())){
+					RecordLangNewWizardPage.this.sourcePackage = RecordLangNewWizardPage.this.sourceFolder.getPackageFragment(RecordLangNewWizardPage.this.sourcePackageText.getText());
+				}
 				RecordLangNewWizardPage.this.dialogChanged();
 			}
 		});
@@ -259,6 +320,7 @@ public class RecordLangNewWizardPage extends WizardPage {
 	private void handleSourceFolderBrowse() {
 		this.sourceFolder = this.chooseSourceFolder();
 		this.sourceFolderText.setText(this.generatedLocalPath(this.sourceFolder));
+		this.sourcePackage = this.sourceFolder.getPackageFragment("");
 	}
 
 	private IPackageFragmentRoot chooseSourceFolder() {
@@ -412,6 +474,7 @@ public class RecordLangNewWizardPage extends WizardPage {
 			if (this.sourcePackageText.getText().length() == 0) {
 				this.updateStatus("A source package must be specified");
 			}
+
 			if ((sourcePackageResource == null) || ((sourcePackageResource.getType() & IResource.FOLDER) == 0)) {
 				this.updateStatus("Source package must exist");
 				return;
