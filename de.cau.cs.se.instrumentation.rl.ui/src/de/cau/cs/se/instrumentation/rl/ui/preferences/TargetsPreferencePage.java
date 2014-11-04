@@ -19,7 +19,6 @@ import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.jface.preference.BooleanFieldEditor;
-import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.StringFieldEditor;
 import org.eclipse.ui.IWorkbench;
@@ -34,13 +33,13 @@ import de.cau.cs.se.instrumentation.rl.preferences.TargetsPreferences;
 
 /**
  * Implements a simple preference page for IRL.
- * 
+ *
  * Created after: http://xtextcasts.org/episodes/21-preference-page
- * 
+ *
  * @author Reiner Jung
- * 
+ *
  */
-public class TargetsPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
+public class TargetsPreferencePage extends FieldEditorOverlayPage implements IWorkbenchPreferencePage {
 
 	/**
 	 * Default constructor.
@@ -84,10 +83,18 @@ public class TargetsPreferencePage extends FieldEditorPreferencePage implements 
 
 	/**
 	 * Initializes the preference page of the given workbench.
-	 * 
+	 *
 	 * @param workbench the workbench
 	 */
 	public void init(final IWorkbench workbench) {
+	}
+
+	/**
+	 * returns the page identification specified in the preference page extension point
+	 */
+	@Override
+	protected String getPageId() {
+		return "de.cau.cs.se.instrumentation.rl.ui.preferences.TargetsPreferencePage";
 	}
 
 }

@@ -448,5 +448,26 @@
            name="IRL File">
      </wizard>
   </extension>
+  <extension
+        point="org.eclipse.ui.propertyPages">
+     <page
+           category="de.cau.cs.se.instrumentation.rl.RecordLang"
+           class="de.cau.cs.se.instrumentation.rl.ui.preferences.TargetsPreferencePage"
+           id="de.cau.cs.se.instrumentation.rl.ui.preferences.TargetsPropertyPage"
+           name="Targets">
+        <keywordReference
+              id="de.cau.cs.se.instrumentation.rl.ui.keyword_RecordLang">
+        </keywordReference>
+        <enabledWhen>
+           <adapt
+                 type="org.eclipse.core.resources.IProject">
+           </adapt>
+        </enabledWhen>
+        <filter
+              name="projectNature"
+              value="org.eclipse.xtext.ui.shared.xtextNature">
+        </filter>
+     </page>
+  </extension>
 
 </plugin>
