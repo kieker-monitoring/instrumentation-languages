@@ -191,6 +191,16 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 					«allDataProperties.map[property | createPropertyArrayEntry(property)].join(',\n')»
 				};
 			}
+
+			/**
+			 * {@inheritDoc}
+			 */
+			// TODO uncomment @Override
+			//@Override
+			public void registerStrings(final IRegistry<String> stringRegistry) {
+				«val filteredProperties = allDataProperties.filter[ PropertyEvaluation::findType(it).class_.name == 'string' ]»
+				«filteredProperties.map[property | createStringPropertyRegistration(property) ].join('\n')»
+			}
 		
 			/**
 			 * {@inheritDoc}
@@ -241,6 +251,15 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 			«type.collectAllGetterDeclarationProperties.map[property | createPropertyGetter(property)].join»
 		}
 		'''
+	}
+
+	def private createStringPropertyRegistration(Property property) {
+		'''
+		stringRegistry.get(this.get«property.name.toFirstUpper»());
+		/* TODO change interface of string registry to write the following
+		if (!stringRegistry.contains(this.get«property.name.toFirstUpper»())) {
+			stringRegistry.add(this.get«property.name.toFirstUpper»());
+		}*/'''
 	}
 				
 	/**
@@ -804,8 +823,8 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 */
 	def private List<Property> collectAllDeclarationProperties(RecordType type) {
 		var List<Property> properties = new ArrayList<Property>() 
-		properties.addAll(type.properties)
 		properties.addAll(PropertyEvaluation::collectAllTemplateProperties(type))
+		properties.addAll(type.properties)
 		
 		val List<Property> declarationProperties = new ArrayList<Property>()
 		properties.forEach[property | if (property.referTo == null) declarationProperties.add(property)]
