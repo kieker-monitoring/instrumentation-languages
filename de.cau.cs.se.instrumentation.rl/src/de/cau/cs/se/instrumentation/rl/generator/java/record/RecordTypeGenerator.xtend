@@ -123,9 +123,12 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 				«allDataProperties.map[property | property.createPropertyType(type)].join»
 			};«ENDIF»
 			
+			/* user-defined constants */
 			«type.constants.map[const | createDefaultConstant(const)].join»
-			«type.properties.filter[property | property.value != null].map[property | createDefaultConstant(property)].join»
-			
+			/* default constants */
+			«val filteredProperties = allDeclarationProperties.filter[it.value != null || PropertyEvaluation::findType(it).class_.name.equals('string')]»
+			«filteredProperties.map[property | createDefaultConstant(property)].join»
+			/* property declarations */
 			«allDeclarationProperties.map[property | createPropertyDeclaration(property)].join»
 		
 			/**
@@ -724,7 +727,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * @returns a constant declaration
 	 */
 	def private createDefaultConstant(Property property) '''
-		public static final «property.type.createTypeName» «property.name.createConstantName.protectKeywords» = «property.value.createValue»;
+		public static final «property.type.createTypeName» «property.name.createConstantName.protectKeywords» = «if (property.value==null) '""' else property.value.createValue»;
 	'''
 	
 	/**
