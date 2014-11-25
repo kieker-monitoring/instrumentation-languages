@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-Version: 1.1-SNAPSHOT
+Bundle-Version: 1.1.0.qualifier
 Bundle-ClassPath: .
 Bundle-SymbolicName: de.cau.cs.se.instrumentation.al;singleton:=true
 Bundle-ActivationPolicy: lazy
