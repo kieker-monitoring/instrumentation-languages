@@ -17,7 +17,7 @@
 	<properties>
 		<!-- Relative path to the repo being uploaded -->
 		<repo.path>${project.build.directory}/repository/</repo.path>
-		<updatesite.path>file:///srv/vhosts/default/htdocs/eus/release/1.0.0/</updatesite.path>
+		<updatesite.path>file:///srv/vhosts/default/htdocs/eus/release/1.0/</updatesite.path>
 		<!-- <updatesite.path>file:///home/rju/eus/snapshot/</updatesite.path> -->
 	</properties>
 
