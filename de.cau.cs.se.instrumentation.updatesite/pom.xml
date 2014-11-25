@@ -17,7 +17,7 @@
 	<properties>
 		<!-- Relative path to the repo being uploaded -->
 		<repo.path>${project.build.directory}/repository/</repo.path>
-		<updatesite.path>file:///srv/vhosts/default/htdocs/eus/release/1.0/</updatesite.path>
+		<updatesite.path>file:///srv/vhosts/default/htdocs/eus/mdm/release/1.0/</updatesite.path>
 		<!-- <updatesite.path>file:///home/rju/eus/snapshot/</updatesite.path> -->
 	</properties>
 
@@ -67,7 +67,7 @@
 							<fromDir>${repo.path}</fromDir>
 							<includes>**</includes>
 							<url>${updatesite.path}</url>
-							<toDir>mdm</toDir>
+							<toDir>.</toDir>
 						</configuration>
 					</execution>
 				</executions>
@@ -75,7 +75,7 @@
 		</plugins>
 
 		<extensions>
-			<!-- Enabling the use of fiel transfer -->
+			<!-- Enabling the use of file transfer -->
 			<extension>
 				<groupId>org.apache.maven.wagon</groupId>
 				<artifactId>wagon-file</artifactId>
