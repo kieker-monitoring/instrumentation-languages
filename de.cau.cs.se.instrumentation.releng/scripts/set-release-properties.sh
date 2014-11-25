@@ -1,5 +1,16 @@
 #!/bin/bash
 
+echo "this script is broken and should not be used."
+exit 1
+
+# This script must check the following files:
+# all pom.xml files but only change the package version tags value and not of any other element of the file
+# fix the feature.xml files in the SDK projects
+# fix the MANIFEST.MF files
+# fix the category.xml file
+# fix in cli pom the reference to the rl package version
+# please make sue that all these requirements are fulfilled before automating things again
+
 BINDIR=$(cd "$(dirname "$0")"; pwd)/
 UPDATESITE="${BINDIR}/../../de.cau.cs.se.instrumentation.updatesite"
 
