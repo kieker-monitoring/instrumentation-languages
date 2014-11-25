@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "This script is not functional and should not be used."
+exit 1
+
 BINDIR=$(cd "$(dirname "$0")"; pwd)/
 UPDATESITE="${BINDIR}/../../de.cau.cs.se.instrumentation.updatesite"
 
