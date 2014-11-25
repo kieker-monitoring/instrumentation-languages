@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: de.cau.cs.se.instrumentation.rl.tests
 Bundle-Vendor: My Company
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.0.0
 Bundle-SymbolicName: de.cau.cs.se.instrumentation.rl.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: de.cau.cs.se.instrumentation.rl,

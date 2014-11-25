@@ -7,7 +7,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
     <relativePath>../de.cau.cs.se.instrumentation.releng/pom.xml</relativePath>
     <groupId>de.cau.cs.se.instrumentation</groupId>
     <artifactId>parent</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
   </parent>
 
   <artifactId>de.cau.cs.se.instrumentation.rl.ui</artifactId>

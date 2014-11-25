@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.cau.cs.se.instrumentation.rl.cli</groupId>
 	<artifactId>de.cau.cs.se.instrumentation.rl.cli</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>Instrumentation Record Language Compiler</name>
 	<description>Code generator for Kieker's Instrumentation Record Language</description>
 
@@ -28,92 +28,92 @@
 		<dependency>
 			<groupId>com.google.inject</groupId>
 			<artifactId>guice</artifactId>
-			<version>3.0</version>
+			<version>1.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.11</version>
+			<version>1.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-cli</groupId>
 			<artifactId>commons-cli</artifactId>
-			<version>1.2</version>
+			<version>1.0.0</version>
 		</dependency>
 		<!-- used by kieker -->
 		<dependency>
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
-			<version>1.1.3</version>
+			<version>1.0.0</version>
 		</dependency>
 
 		<!-- eclipse -->
 		<dependency>
 			<groupId>org.eclipse.osgi</groupId>
 			<artifactId>org.eclipse.osgi</artifactId>
-			<version>3.7.1</version>
+			<version>1.0.0</version>
 		</dependency>
 
 		<!-- <dependency> -->
 		<!-- <groupId>org.eclipse.core</groupId> -->
 		<!-- <artifactId>contenttype</artifactId> -->
-		<!-- <version>3.4.200-v20130326-1255</version> -->
+		<!-- <version>1.0.0</version> -->
 		<!-- </dependency> -->
 
 		<!-- <dependency> -->
 		<!-- <groupId>org.eclipse.equinox</groupId> -->
 		<!-- <artifactId>common</artifactId> -->
-		<!-- <version>3.6.200-v20130402-1505</version> -->
+		<!-- <version>1.0.0</version> -->
 		<!-- </dependency> -->
 
 		<!-- <dependency> -->
 		<!-- <groupId>org.eclipse.equinox</groupId> -->
 		<!-- <artifactId>preferences</artifactId> -->
-		<!-- <version>3.5.100-v20130422-1538</version> -->
+		<!-- <version>1.0.0</version> -->
 		<!-- </dependency> -->
 
 		<!-- <dependency> -->
 		<!-- <groupId>org.eclipse.equinox</groupId> -->
 		<!-- <artifactId>registry</artifactId> -->
-		<!-- <version>3.5.301-v20130717-1549</version> -->
+		<!-- <version>1.0.0</version> -->
 		<!-- </dependency> -->
 
 
 		<!-- <dependency> -->
 		<!-- <groupId>org.eclipse.core</groupId> -->
 		<!-- <artifactId>runtime</artifactId> -->
-		<!-- <version>3.9.100-v20131218-1515</version> -->
+		<!-- <version>1.0.0</version> -->
 		<!-- </dependency> -->
 
 		<dependency>
 			<groupId>org.eclipse.equinox</groupId>
 			<artifactId>org.eclipse.equinox.preferences</artifactId>
-			<version>3.4.1</version>
+			<version>1.0.0</version>
 		</dependency>
 
 
 		<dependency>
 			<groupId>org.eclipse.emf</groupId>
 			<artifactId>org.eclipse.emf.ecore</artifactId>
-			<version>2.9.2-v20131212-0545</version>
+			<version>1.0.0</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.eclipse.xtext</groupId>
 			<artifactId>org.eclipse.xtext</artifactId>
-			<version>2.5.3</version>
+			<version>1.0.0</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.eclipse.tycho</groupId>
 			<artifactId>org.eclipse.jdt.core</artifactId>
-			<version>3.9.1.v20130905-0837</version>
+			<version>1.0.0</version>
 		</dependency>
 
 		<dependency>
 			<groupId>net.kieker-monitoring</groupId>
 			<artifactId>kieker</artifactId>
-			<version>1.9</version>
+			<version>1.0.0</version>
 		</dependency>
 
 		<!-- local jars -->
@@ -121,7 +121,7 @@
 		<dependency>
 			<groupId>org.eclipse.emf.mwe.utils</groupId>
 			<artifactId>MWE2</artifactId>
-			<version>1.0</version>
+			<version>1.0.0</version>
 			<scope>system</scope>
 			<systemPath>${mwe2}</systemPath>
 		</dependency>
@@ -129,7 +129,7 @@
 		<dependency>
 			<groupId>de.cau.cs.se.instrumentation</groupId>
 			<artifactId>de.cau.cs.se.instrumentation.rl</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+			<version>1.0.0</version>
 		</dependency>
 	</dependencies>
 
@@ -138,7 +138,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.1</version>
+				<version>1.0.0</version>
 				<configuration>
 					<source>1.6</source>
 					<target>1.6</target>
@@ -148,7 +148,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
-				<version>2.2</version>
+				<version>1.0.0</version>
 				<configuration>
 					<filters>
 						<filter>
@@ -180,14 +180,14 @@
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-maven-plugin</artifactId>
-				<version>${tycho-version}</version>
+				<version>1.0.0</version>
 				<extensions>true</extensions>
 			</plugin>
 			<!-- ceckstyle plugin -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>2.9.1</version>
+				<version>1.0.0</version>
 			</plugin>
 		</plugins>
 	</build>

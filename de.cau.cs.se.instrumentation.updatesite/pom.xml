@@ -6,7 +6,7 @@
 		<relativePath>../de.cau.cs.se.instrumentation.releng/pom.xml</relativePath>
 		<groupId>de.cau.cs.se.instrumentation</groupId>
 		<artifactId>parent</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<version>1.0.0</version>
 	</parent>
 
 	<artifactId>de.cau.cs.se.instrumentation.updatesite</artifactId>
@@ -17,7 +17,7 @@
 	<properties>
 		<!-- Relative path to the repo being uploaded -->
 		<repo.path>${project.build.directory}/repository/</repo.path>
-		<updatesite.path>file:///srv/vhosts/default/htdocs/eus/snapshot/</updatesite.path>
+		<updatesite.path>file:///srv/vhosts/default/htdocs/eus/release/1.0.0/</updatesite.path>
 		<!-- <updatesite.path>file:///home/rju/eus/snapshot/</updatesite.path> -->
 	</properties>
 
@@ -26,7 +26,7 @@
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-p2-repository-plugin</artifactId>
-				<version>${tycho-version}</version>
+				<version>1.0.0</version>
 				<configuration>
 					<includeAllDependencies>true</includeAllDependencies>
 				</configuration>
@@ -34,7 +34,7 @@
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-p2-director-plugin</artifactId>
-				<version>${tycho-version}</version>
+				<version>1.0.0</version>
 				<executions>
 					<execution>
 						<id>materialize-products</id>
@@ -55,7 +55,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>wagon-maven-plugin</artifactId>
-				<version>1.0-beta-5</version>
+				<version>1.0.0</version>
 				<executions>
 					<execution>
 						<id>upload-repo</id>
@@ -79,7 +79,7 @@
 			<extension>
 				<groupId>org.apache.maven.wagon</groupId>
 				<artifactId>wagon-file</artifactId>
-				<version>2.6</version>
+				<version>1.0.0</version>
 			</extension>
 		</extensions>
 
