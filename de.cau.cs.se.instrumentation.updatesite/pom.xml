@@ -67,7 +67,7 @@
 							<fromDir>${repo.path}</fromDir>
 							<includes>**</includes>
 							<url>${updatesite.path}</url>
-							<toDir>kieker-tools</toDir>
+							<toDir>mdm</toDir>
 						</configuration>
 					</execution>
 				</executions>
