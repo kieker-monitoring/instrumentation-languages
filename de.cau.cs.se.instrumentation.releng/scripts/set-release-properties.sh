@@ -1,7 +1,7 @@
 #!/bin/bash
 
 BINDIR=$(cd "$(dirname "$0")"; pwd)/
-UPDATESITE="${BINDIR}/../../de.cau.cs.sr.instrumentation.updatesite"
+UPDATESITE="${BINDIR}/../../de.cau.cs.se.instrumentation.updatesite"
 
 if [ "$1" == "" ] ; then
 	echo "Usage: $0 <version> <repo-rel-path>"
@@ -14,7 +14,7 @@ if [ "$2" == "" ] ; then
 	echo "Usage: $0 <version> <repo-rel-path>"
 	exit 1
 else
-	REL_PATH="$2"
+	REL_PATH=`echo "$2" | sed 's/\//\\\//g'`
 fi
 
 TMP=`tempfile`
@@ -30,7 +30,7 @@ done
 for I in `find ${BINDIR}/../.. -name 'MANIFEST.MF'` ; do
 	echo $I
 	cat "$I" |  sed "s/\(Bundle-Version: \).*/\1${VERSION}/g" > "$TMP"
-	cp "TMP" "$I"
+	cp "$TMP" "$I"
 done
 
 # fix update site path
