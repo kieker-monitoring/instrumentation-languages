@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.cau.cs.se.instrumentation.rl.cli</groupId>
 	<artifactId>de.cau.cs.se.instrumentation.rl.cli</artifactId>
-	<version>1.1-SNAPSHOT</version>
+	<version>#VERSION#</version>
 	<name>Instrumentation Record Language Compiler</name>
 	<description>Code generator for Kieker's Instrumentation Record Language</description>
 
@@ -129,7 +129,7 @@
 		<dependency>
 			<groupId>de.cau.cs.se.instrumentation</groupId>
 			<artifactId>de.cau.cs.se.instrumentation.rl</artifactId>
-			<version>1.1-SNAPSHOT</version>
+			<version>#VERSION#</version>
 		</dependency>
 	</dependencies>
 

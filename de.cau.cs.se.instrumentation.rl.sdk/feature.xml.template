@@ -2,21 +2,21 @@
 <feature
       id="de.cau.cs.se.instrumentation.rl.sdk"
       label="Kieker IRL SDK Feature"
-      version="1.1-SNAPSHOT"
+      version="#VERSION#"
       provider-name="Software Engineering Group, Kiel University">
 
    <plugin
          id="de.cau.cs.se.instrumentation.rl"
          download-size="0"
          install-size="0"
-         version="1.1-SNAPSHOT"
+         version="#VERSION#"
          unpack="false"/>
 
    <plugin
          id="de.cau.cs.se.instrumentation.rl.ui"
          download-size="0"
          install-size="0"
-         version="1.1-SNAPSHOT"
+         version="#VERSION#"
          unpack="false"/>
 
 </feature>
