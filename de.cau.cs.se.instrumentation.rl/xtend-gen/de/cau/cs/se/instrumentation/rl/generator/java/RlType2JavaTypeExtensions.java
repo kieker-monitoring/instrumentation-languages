@@ -17,65 +17,63 @@ public class RlType2JavaTypeExtensions {
   public static String createPrimitiveTypeName(final EClassifier classifier) {
     String _switchResult = null;
     String _name = classifier.getName();
-    final String _switchValue = _name;
     boolean _matched = false;
     if (!_matched) {
-      if (Objects.equal(_switchValue,"int")) {
+      if (Objects.equal(_name, "int")) {
         _matched=true;
         _switchResult = "int";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"long")) {
+      if (Objects.equal(_name, "long")) {
         _matched=true;
         _switchResult = "long";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"short")) {
+      if (Objects.equal(_name, "short")) {
         _matched=true;
         _switchResult = "short";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"double")) {
+      if (Objects.equal(_name, "double")) {
         _matched=true;
         _switchResult = "double";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"float")) {
+      if (Objects.equal(_name, "float")) {
         _matched=true;
         _switchResult = "float";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"char")) {
+      if (Objects.equal(_name, "char")) {
         _matched=true;
         _switchResult = "char";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"byte")) {
+      if (Objects.equal(_name, "byte")) {
         _matched=true;
         _switchResult = "byte";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"string")) {
+      if (Objects.equal(_name, "string")) {
         _matched=true;
         _switchResult = "String";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"boolean")) {
+      if (Objects.equal(_name, "boolean")) {
         _matched=true;
         _switchResult = "boolean";
       }
     }
     if (!_matched) {
-      String _name_1 = classifier.getName();
-      _switchResult = _name_1;
+      _switchResult = classifier.getName();
     }
     return _switchResult;
   }
@@ -86,65 +84,63 @@ public class RlType2JavaTypeExtensions {
   public static String createPrimitiveWrapperTypeName(final EClassifier classifier) {
     String _switchResult = null;
     String _name = classifier.getName();
-    final String _switchValue = _name;
     boolean _matched = false;
     if (!_matched) {
-      if (Objects.equal(_switchValue,"int")) {
+      if (Objects.equal(_name, "int")) {
         _matched=true;
         _switchResult = "Integer";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"long")) {
+      if (Objects.equal(_name, "long")) {
         _matched=true;
         _switchResult = "Long";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"short")) {
+      if (Objects.equal(_name, "short")) {
         _matched=true;
         _switchResult = "Short";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"double")) {
+      if (Objects.equal(_name, "double")) {
         _matched=true;
         _switchResult = "Double";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"float")) {
+      if (Objects.equal(_name, "float")) {
         _matched=true;
         _switchResult = "Float";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"char")) {
+      if (Objects.equal(_name, "char")) {
         _matched=true;
         _switchResult = "Character";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"byte")) {
+      if (Objects.equal(_name, "byte")) {
         _matched=true;
         _switchResult = "Byte";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"string")) {
+      if (Objects.equal(_name, "string")) {
         _matched=true;
         _switchResult = "String";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"boolean")) {
+      if (Objects.equal(_name, "boolean")) {
         _matched=true;
         _switchResult = "Boolean";
       }
     }
     if (!_matched) {
-      String _name_1 = classifier.getName();
-      _switchResult = _name_1;
+      _switchResult = classifier.getName();
     }
     return _switchResult;
   }

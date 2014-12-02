@@ -23,7 +23,7 @@ import de.cau.cs.se.instrumentation.rl.typing.PrimitiveTypeScope;
 import de.cau.cs.se.instrumentation.rl.typing.TypeProviderFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EcorePackage.Literals;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.EcoreUtil2;
@@ -48,7 +48,7 @@ public class TypeGlobalScopeProvider extends DefaultGlobalScopeProvider {
   }
   
   public IScope getParentTypeScope(final Resource resource, final EReference reference, final Predicate<IEObjectDescription> filter, final EClass referenceType) {
-    boolean _isAssignableFrom = EcoreUtil2.isAssignableFrom(Literals.ECLASSIFIER, referenceType);
+    boolean _isAssignableFrom = EcoreUtil2.isAssignableFrom(EcorePackage.Literals.ECLASSIFIER, referenceType);
     if (_isAssignableFrom) {
       boolean _notEquals = (!Objects.equal(resource, null));
       if (_notEquals) {
@@ -56,15 +56,12 @@ public class TypeGlobalScopeProvider extends DefaultGlobalScopeProvider {
         boolean _notEquals_1 = (!Objects.equal(resourceSet, null));
         if (_notEquals_1) {
           final ITypeProvider typeProvider = this.typeProviderFactory.getTypeProvider(resourceSet);
-          PrimitiveTypeScope _primitiveTypeScope = new PrimitiveTypeScope(typeProvider, this.qualifiedNameConverter, filter);
-          return _primitiveTypeScope;
+          return new PrimitiveTypeScope(typeProvider, this.qualifiedNameConverter, filter);
         } else {
-          IllegalStateException _illegalStateException = new IllegalStateException("context must be contained in a resource set");
-          throw _illegalStateException;
+          throw new IllegalStateException("context must be contained in a resource set");
         }
       } else {
-        IllegalStateException _illegalStateException_1 = new IllegalStateException("context must be contained in a resource");
-        throw _illegalStateException_1;
+        throw new IllegalStateException("context must be contained in a resource");
       }
     } else {
       return IScope.NULLSCOPE;

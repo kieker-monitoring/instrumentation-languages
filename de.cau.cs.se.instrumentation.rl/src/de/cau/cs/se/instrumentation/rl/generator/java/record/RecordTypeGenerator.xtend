@@ -245,7 +245,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		}
 		'''
 	}
-				
+
 	/**
 	 * Determine the size of one type.
 	 * 
@@ -807,8 +807,8 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 */
 	def private List<Property> collectAllDeclarationProperties(RecordType type) {
 		var List<Property> properties = new ArrayList<Property>() 
-		properties.addAll(type.properties)
 		properties.addAll(PropertyEvaluation::collectAllTemplateProperties(type))
+		properties.addAll(type.properties)
 		
 		val List<Property> declarationProperties = new ArrayList<Property>()
 		properties.forEach[property | if (property.referTo == null) declarationProperties.add(property)]
