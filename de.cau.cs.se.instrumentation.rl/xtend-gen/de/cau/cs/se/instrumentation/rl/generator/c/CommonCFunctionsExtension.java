@@ -52,66 +52,64 @@ public class CommonCFunctionsExtension {
     String _switchResult = null;
     EClassifier _class_ = classifier.getClass_();
     String _name = _class_.getName();
-    final String _switchValue = _name;
     boolean _matched = false;
     if (!_matched) {
-      if (Objects.equal(_switchValue,"key")) {
+      if (Objects.equal(_name, "key")) {
         _matched=true;
         _switchResult = "const char*";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"string")) {
+      if (Objects.equal(_name, "string")) {
         _matched=true;
         _switchResult = "const char*";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"byte")) {
+      if (Objects.equal(_name, "byte")) {
         _matched=true;
         _switchResult = "char";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"short")) {
+      if (Objects.equal(_name, "short")) {
         _matched=true;
         _switchResult = "short";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"int")) {
+      if (Objects.equal(_name, "int")) {
         _matched=true;
         _switchResult = "long";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"long")) {
+      if (Objects.equal(_name, "long")) {
         _matched=true;
         _switchResult = "long long";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"float")) {
+      if (Objects.equal(_name, "float")) {
         _matched=true;
         _switchResult = "float";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"double")) {
+      if (Objects.equal(_name, "double")) {
         _matched=true;
         _switchResult = "double";
       }
     }
     if (!_matched) {
-      if (Objects.equal(_switchValue,"boolean")) {
+      if (Objects.equal(_name, "boolean")) {
         _matched=true;
         _switchResult = "char";
       }
     }
     if (!_matched) {
       EClassifier _class__1 = classifier.getClass_();
-      String _name_1 = _class__1.getName();
-      _switchResult = _name_1;
+      _switchResult = _class__1.getName();
     }
     return _switchResult;
   }
