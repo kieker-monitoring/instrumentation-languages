@@ -191,16 +191,6 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 					«allDataProperties.map[property | createPropertyArrayEntry(property)].join(',\n')»
 				};
 			}
-
-			/**
-			 * {@inheritDoc}
-			 */
-			// TODO uncomment @Override
-			//@Override
-			public void registerStrings(final IRegistry<String> stringRegistry) {
-				«val filteredProperties = allDataProperties.filter[ PropertyEvaluation::findType(it).class_.name == 'string' ]»
-				«filteredProperties.map[property | createStringPropertyRegistration(property) ].join('\n')»
-			}
 		
 			/**
 			 * {@inheritDoc}
@@ -253,15 +243,6 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		'''
 	}
 
-	def private createStringPropertyRegistration(Property property) {
-		'''
-		stringRegistry.get(this.get«property.name.toFirstUpper»());
-		/* TODO change interface of string registry to write the following
-		if (!stringRegistry.contains(this.get«property.name.toFirstUpper»())) {
-			stringRegistry.add(this.get«property.name.toFirstUpper»());
-		}*/'''
-	}
-				
 	/**
 	 * Determine the size of one type.
 	 * 
