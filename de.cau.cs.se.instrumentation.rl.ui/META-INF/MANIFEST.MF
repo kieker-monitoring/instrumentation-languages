@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: de.cau.cs.se.instrumentation.rl.ui
 Bundle-Vendor: Software Engineering Group, Kiel University
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.1.0.qualifier
 Bundle-SymbolicName: de.cau.cs.se.instrumentation.rl.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: de.cau.cs.se.instrumentation.rl;visibility:=reexport,
