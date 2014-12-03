@@ -45,8 +45,7 @@ public class RecordLangScopeProvider extends AbstractDeclarativeScopeProvider {
   public IScope scope_Package_package(final de.cau.cs.se.instrumentation.rl.recordLang.Package context, final EReference reference) {
     IScope _delegateGetScope = this.delegateGetScope(context, reference);
     URIPredicate _uRIPredicate = new URIPredicate();
-    FilteringScope _filteringScope = new FilteringScope(_delegateGetScope, _uRIPredicate);
-    final IScope result = _filteringScope;
+    final IScope result = new FilteringScope(_delegateGetScope, _uRIPredicate);
     return result;
   }
   
@@ -73,11 +72,9 @@ public class RecordLangScopeProvider extends AbstractDeclarativeScopeProvider {
   
   public IScope scope_ReferenceProperty_ref(final ReferenceProperty property, final EReference reference) {
     EObject _eContainer = property.eContainer();
-    final EObject _switchValue = _eContainer;
     boolean _matched = false;
     if (!_matched) {
-      if (_switchValue instanceof Property) {
-        final Property _property = (Property)_switchValue;
+      if (_eContainer instanceof Property) {
         _matched=true;
         EObject _eContainer_1 = property.eContainer();
         Classifier _type = ((Property) _eContainer_1).getType();
@@ -87,8 +84,7 @@ public class RecordLangScopeProvider extends AbstractDeclarativeScopeProvider {
       }
     }
     if (!_matched) {
-      if (_switchValue instanceof ReferenceProperty) {
-        final ReferenceProperty _referenceProperty = (ReferenceProperty)_switchValue;
+      if (_eContainer instanceof ReferenceProperty) {
         _matched=true;
         EObject _eContainer_1 = property.eContainer();
         final EStructuralFeature parent = ((ReferenceProperty) _eContainer_1).getRef();

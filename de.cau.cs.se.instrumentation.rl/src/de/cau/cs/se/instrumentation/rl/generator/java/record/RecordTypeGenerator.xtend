@@ -195,8 +195,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 			/**
 			 * {@inheritDoc}
 			 */
-			// TODO uncomment @Override
-			//@Override
+			@Override
 			public void registerStrings(final IRegistry<String> stringRegistry) {
 				«val filteredProperties = allDataProperties.filter[ PropertyEvaluation::findType(it).class_.name == 'string' ]»
 				«filteredProperties.map[property | createStringPropertyRegistration(property) ].join('\n')»
