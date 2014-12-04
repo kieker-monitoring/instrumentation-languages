@@ -28,7 +28,7 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EcorePackage.Literals;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.EcoreUtil2;
@@ -54,7 +54,7 @@ public class ForeignModelGlobalScopeProvider extends DefaultGlobalScopeProvider 
   }
   
   public IScope getParentTypeScope(final Resource resource, final EReference reference, final Predicate<IEObjectDescription> filter, final EClass referenceType) {
-    boolean _isAssignableFrom = EcoreUtil2.isAssignableFrom(Literals.EOBJECT, referenceType);
+    boolean _isAssignableFrom = EcoreUtil2.isAssignableFrom(EcorePackage.Literals.EOBJECT, referenceType);
     if (_isAssignableFrom) {
       boolean _notEquals = (!Objects.equal(resource, null));
       if (_notEquals) {
@@ -65,15 +65,12 @@ public class ForeignModelGlobalScopeProvider extends DefaultGlobalScopeProvider 
           Iterator<ApplicationModel> _filter = Iterators.<ApplicationModel>filter(_allContents, ApplicationModel.class);
           ApplicationModel _head = IteratorExtensions.<ApplicationModel>head(_filter);
           final IForeignModelTypeProvider typeProvider = this.typeProviderFactory.getTypeProvider(resourceSet, _head);
-          ForeignModelTypeScope _foreignModelTypeScope = new ForeignModelTypeScope(typeProvider, this.qualifiedNameConverter, filter);
-          return _foreignModelTypeScope;
+          return new ForeignModelTypeScope(typeProvider, this.qualifiedNameConverter, filter);
         } else {
-          IllegalStateException _illegalStateException = new IllegalStateException("context must be contained in a resource set");
-          throw _illegalStateException;
+          throw new IllegalStateException("context must be contained in a resource set");
         }
       } else {
-        IllegalStateException _illegalStateException_1 = new IllegalStateException("context must be contained in a resource");
-        throw _illegalStateException_1;
+        throw new IllegalStateException("context must be contained in a resource");
       }
     } else {
       return IScope.NULLSCOPE;

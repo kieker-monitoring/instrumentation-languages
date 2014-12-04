@@ -28,7 +28,6 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
-import java.util.function.Consumer;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClassifier;
@@ -40,6 +39,7 @@ import org.eclipse.xtext.xbase.lib.ExclusiveRange;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure2;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 
@@ -354,6 +354,9 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.append("\t");
       _builder.newLine();
       _builder.append("\t");
+      _builder.append("/* user-defined constants */");
+      _builder.newLine();
+      _builder.append("\t");
       EList<Constant> _constants = type.getConstants();
       final Function1<Constant, CharSequence> _function_3 = new Function1<Constant, CharSequence>() {
         public CharSequence apply(final Constant const_) {
@@ -365,24 +368,40 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.append(_join_1, "\t");
       _builder.newLineIfNotEmpty();
       _builder.append("\t");
-      EList<Property> _properties = type.getProperties();
+      _builder.append("/* default constants */");
+      _builder.newLine();
+      _builder.append("\t");
       final Function1<Property, Boolean> _function_4 = new Function1<Property, Boolean>() {
-        public Boolean apply(final Property property) {
-          Literal _value = property.getValue();
-          return Boolean.valueOf((!Objects.equal(_value, null)));
+        public Boolean apply(final Property it) {
+          boolean _or = false;
+          Literal _value = it.getValue();
+          boolean _notEquals = (!Objects.equal(_value, null));
+          if (_notEquals) {
+            _or = true;
+          } else {
+            Classifier _findType = PropertyEvaluation.findType(it);
+            EClassifier _class_ = _findType.getClass_();
+            String _name = _class_.getName();
+            boolean _equals = _name.equals("string");
+            _or = _equals;
+          }
+          return Boolean.valueOf(_or);
         }
       };
-      Iterable<Property> _filter = IterableExtensions.<Property>filter(_properties, _function_4);
+      final Iterable<Property> filteredProperties = IterableExtensions.<Property>filter(allDeclarationProperties, _function_4);
+      _builder.newLineIfNotEmpty();
+      _builder.append("\t");
       final Function1<Property, CharSequence> _function_5 = new Function1<Property, CharSequence>() {
         public CharSequence apply(final Property property) {
           return RecordTypeGenerator.this.createDefaultConstant(property);
         }
       };
-      Iterable<CharSequence> _map_4 = IterableExtensions.<Property, CharSequence>map(_filter, _function_5);
+      Iterable<CharSequence> _map_4 = IterableExtensions.<Property, CharSequence>map(filteredProperties, _function_5);
       String _join_2 = IterableExtensions.join(_map_4);
       _builder.append(_join_2, "\t");
       _builder.newLineIfNotEmpty();
       _builder.append("\t");
+      _builder.append("/* property declarations */");
       _builder.newLine();
       _builder.append("\t");
       final Function1<Property, CharSequence> _function_6 = new Function1<Property, CharSequence>() {
@@ -2101,9 +2120,16 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     String _protectKeywords = this.protectKeywords(_createConstantName);
     _builder.append(_protectKeywords, "");
     _builder.append(" = ");
+    CharSequence _xifexpression = null;
     Literal _value = property.getValue();
-    CharSequence _createValue = this.createValue(_value);
-    _builder.append(_createValue, "");
+    boolean _equals = Objects.equal(_value, null);
+    if (_equals) {
+      _xifexpression = "\"\"";
+    } else {
+      Literal _value_1 = property.getValue();
+      _xifexpression = this.createValue(_value_1);
+    }
+    _builder.append(_xifexpression, "");
     _builder.append(";");
     _builder.newLineIfNotEmpty();
     return _builder;
@@ -2222,8 +2248,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     EList<Property> _properties = type.getProperties();
     properties.addAll(_properties);
     final List<Property> declarationProperties = new ArrayList<Property>();
-    final Consumer<Property> _function = new Consumer<Property>() {
-      public void accept(final Property property) {
+    final Procedure1<Property> _function = new Procedure1<Property>() {
+      public void apply(final Property property) {
         Property _referTo = property.getReferTo();
         boolean _equals = Objects.equal(_referTo, null);
         if (_equals) {
@@ -2231,7 +2257,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         }
       }
     };
-    properties.forEach(_function);
+    IterableExtensions.<Property>forEach(properties, _function);
     RecordType _parent = type.getParent();
     boolean _notEquals = (!Objects.equal(_parent, null));
     if (_notEquals) {

@@ -408,8 +408,8 @@ public class EMFModelGenerator {
       String _plus_1 = ("findResultClass3: package classifiers " + _eClassifiers);
       System.err.println(_plus_1);
       EList<EClassifier> _eClassifiers_1 = pkg.getEClassifiers();
-      final Consumer<EClassifier> _function = new Consumer<EClassifier>() {
-        public void accept(final EClassifier clazz) {
+      final Procedure1<EClassifier> _function = new Procedure1<EClassifier>() {
+        public void apply(final EClassifier clazz) {
           System.err.println(("findResultClass3: clazz " + clazz));
           String _name = clazz.getName();
           String _plus = ("findResultClass3: clazz name " + _name);

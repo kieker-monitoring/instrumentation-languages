@@ -48,8 +48,8 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
     public static final int T__52=52;
     public static final int T__18=18;
     public static final int T__53=53;
-    public static final int T__17=17;
     public static final int T__54=54;
+    public static final int T__17=17;
     public static final int RULE_NUMBER=11;
     public static final int RULE_INT=7;
     public static final int RULE_COMMENT_ANNOTATION=8;
@@ -8942,8 +8942,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             "\1\1\35\uffff\1\2",
             "",
             "\1\3",
-            "\2\11\1\7\1\6\1\5\1\10\13\uffff\1\4\3\uffff\2\5\4\uffff\1\5"+
-            "\1\12\5\uffff\1\5",
+            "\2\11\1\7\1\6\1\5\1\10\13\uffff\1\4\3\uffff\2\5\4\uffff\1\5\1\12\5\uffff\1\5",
             "\1\13",
             "",
             "",
@@ -8951,8 +8950,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             "",
             "",
             "",
-            "\2\11\1\7\1\6\1\5\1\10\13\uffff\1\4\3\uffff\2\5\4\uffff\1\5"+
-            "\1\12\5\uffff\1\5"
+            "\2\11\1\7\1\6\1\5\1\10\13\uffff\1\4\3\uffff\2\5\4\uffff\1\5\1\12\5\uffff\1\5"
     };
 
     static final short[] DFA33_eot = DFA.unpackEncodedString(DFA33_eotS);

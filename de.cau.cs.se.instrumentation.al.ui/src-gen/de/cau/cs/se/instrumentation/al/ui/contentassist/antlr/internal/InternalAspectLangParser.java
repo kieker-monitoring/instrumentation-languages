@@ -48,8 +48,8 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
     public static final int T__52=52;
     public static final int T__18=18;
     public static final int T__53=53;
-    public static final int T__17=17;
     public static final int T__54=54;
+    public static final int T__17=17;
     public static final int RULE_NUMBER=11;
     public static final int RULE_INT=7;
     public static final int RULE_COMMENT_ANNOTATION=8;
@@ -23635,8 +23635,7 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
             "\1\1\56\uffff\1\2",
             "",
             "\1\3",
-            "\2\6\1\11\1\10\1\12\1\7\36\uffff\1\4\2\uffff\2\12\3\uffff\1"+
-            "\12\1\5\5\uffff\1\12",
+            "\2\6\1\11\1\10\1\12\1\7\36\uffff\1\4\2\uffff\2\12\3\uffff\1\12\1\5\5\uffff\1\12",
             "\1\13",
             "",
             "",
@@ -23644,8 +23643,7 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
             "",
             "",
             "",
-            "\2\6\1\11\1\10\1\12\1\7\36\uffff\1\4\2\uffff\2\12\3\uffff\1"+
-            "\12\1\5\5\uffff\1\12"
+            "\2\6\1\11\1\10\1\12\1\7\36\uffff\1\4\2\uffff\2\12\3\uffff\1\12\1\5\5\uffff\1\12"
     };
 
     static final short[] DFA9_eot = DFA.unpackEncodedString(DFA9_eotS);

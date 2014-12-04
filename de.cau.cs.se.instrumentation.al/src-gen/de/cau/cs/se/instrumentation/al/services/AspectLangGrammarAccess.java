@@ -1458,53 +1458,90 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getAFTERAfterKeyword_1_0() { return cAFTERAfterKeyword_1_0; }
 	}
 	
-	private ModelElements pModel;
-	private ImportElements pImport;
-	private RegisteredPackageElements pRegisteredPackage;
-	private ApplicationModelElements pApplicationModel;
-	private QualifiedNameElements pQualifiedName;
-	private QualifiedNameWithWildcardElements pQualifiedNameWithWildcard;
-	private AspectElements pAspect;
-	private UtilizeProbeElements pUtilizeProbe;
-	private AdviceElements pAdvice;
-	private ParameterDeclarationElements pParameterDeclaration;
-	private PointcutElements pPointcut;
-	private MethodQueryElements pMethodQuery;
-	private ParameterQueryElements pParameterQuery;
-	private LocationQueryElements pLocationQuery;
-	private CompositionQueryElements pCompositionQuery;
-	private QueryModifierElements unknownRuleQueryModifier;
-	private NodeElements pNode;
-	private ParamQueryElements pParamQuery;
-	private ParamCompareElements pParamCompare;
-	private ValueElements pValue;
-	private FloatValueElements pFloatValue;
-	private IntValueElements pIntValue;
-	private StringValueElements pStringValue;
-	private ReferenceValueElements pReferenceValue;
-	private ParameterElements pParameter;
-	private InternalFunctionPropertyElements pInternalFunctionProperty;
-	private InternalFunctionElements unknownRuleInternalFunction;
-	private RuntimePropertyElements pRuntimeProperty;
-	private ReflectionPropertyElements pReflectionProperty;
-	private ReflectionFunctionElements unknownRuleReflectionFunction;
-	private OperatorElements unknownRuleOperator;
-	private ContainerNodeElements pContainerNode;
-	private WildcardNodeElements pWildcardNode;
-	private SubPathNodeElements pSubPathNode;
-	private ParentNodeElements pParentNode;
-	private CollectorElements pCollector;
-	private InsertionPointElements unknownRuleInsertionPoint;
+	private final ModelElements pModel;
+	private final ImportElements pImport;
+	private final RegisteredPackageElements pRegisteredPackage;
+	private final ApplicationModelElements pApplicationModel;
+	private final QualifiedNameElements pQualifiedName;
+	private final QualifiedNameWithWildcardElements pQualifiedNameWithWildcard;
+	private final AspectElements pAspect;
+	private final UtilizeProbeElements pUtilizeProbe;
+	private final AdviceElements pAdvice;
+	private final ParameterDeclarationElements pParameterDeclaration;
+	private final PointcutElements pPointcut;
+	private final MethodQueryElements pMethodQuery;
+	private final ParameterQueryElements pParameterQuery;
+	private final LocationQueryElements pLocationQuery;
+	private final CompositionQueryElements pCompositionQuery;
+	private final QueryModifierElements unknownRuleQueryModifier;
+	private final NodeElements pNode;
+	private final ParamQueryElements pParamQuery;
+	private final ParamCompareElements pParamCompare;
+	private final ValueElements pValue;
+	private final FloatValueElements pFloatValue;
+	private final IntValueElements pIntValue;
+	private final StringValueElements pStringValue;
+	private final ReferenceValueElements pReferenceValue;
+	private final ParameterElements pParameter;
+	private final InternalFunctionPropertyElements pInternalFunctionProperty;
+	private final InternalFunctionElements unknownRuleInternalFunction;
+	private final RuntimePropertyElements pRuntimeProperty;
+	private final ReflectionPropertyElements pReflectionProperty;
+	private final ReflectionFunctionElements unknownRuleReflectionFunction;
+	private final OperatorElements unknownRuleOperator;
+	private final ContainerNodeElements pContainerNode;
+	private final WildcardNodeElements pWildcardNode;
+	private final SubPathNodeElements pSubPathNode;
+	private final ParentNodeElements pParentNode;
+	private final CollectorElements pCollector;
+	private final InsertionPointElements unknownRuleInsertionPoint;
 	
 	private final Grammar grammar;
 
-	private AnnotationsGrammarAccess gaAnnotations;
+	private final AnnotationsGrammarAccess gaAnnotations;
 
 	@Inject
 	public AspectLangGrammarAccess(GrammarProvider grammarProvider,
 		AnnotationsGrammarAccess gaAnnotations) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaAnnotations = gaAnnotations;
+		this.pModel = new ModelElements();
+		this.pImport = new ImportElements();
+		this.pRegisteredPackage = new RegisteredPackageElements();
+		this.pApplicationModel = new ApplicationModelElements();
+		this.pQualifiedName = new QualifiedNameElements();
+		this.pQualifiedNameWithWildcard = new QualifiedNameWithWildcardElements();
+		this.pAspect = new AspectElements();
+		this.pUtilizeProbe = new UtilizeProbeElements();
+		this.pAdvice = new AdviceElements();
+		this.pParameterDeclaration = new ParameterDeclarationElements();
+		this.pPointcut = new PointcutElements();
+		this.pMethodQuery = new MethodQueryElements();
+		this.pParameterQuery = new ParameterQueryElements();
+		this.pLocationQuery = new LocationQueryElements();
+		this.pCompositionQuery = new CompositionQueryElements();
+		this.unknownRuleQueryModifier = new QueryModifierElements();
+		this.pNode = new NodeElements();
+		this.pParamQuery = new ParamQueryElements();
+		this.pParamCompare = new ParamCompareElements();
+		this.pValue = new ValueElements();
+		this.pFloatValue = new FloatValueElements();
+		this.pIntValue = new IntValueElements();
+		this.pStringValue = new StringValueElements();
+		this.pReferenceValue = new ReferenceValueElements();
+		this.pParameter = new ParameterElements();
+		this.pInternalFunctionProperty = new InternalFunctionPropertyElements();
+		this.unknownRuleInternalFunction = new InternalFunctionElements();
+		this.pRuntimeProperty = new RuntimePropertyElements();
+		this.pReflectionProperty = new ReflectionPropertyElements();
+		this.unknownRuleReflectionFunction = new ReflectionFunctionElements();
+		this.unknownRuleOperator = new OperatorElements();
+		this.pContainerNode = new ContainerNodeElements();
+		this.pWildcardNode = new WildcardNodeElements();
+		this.pSubPathNode = new SubPathNodeElements();
+		this.pParentNode = new ParentNodeElements();
+		this.pCollector = new CollectorElements();
+		this.unknownRuleInsertionPoint = new InsertionPointElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -1538,7 +1575,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//	"package" name=QualifiedName metamodels+=RegisteredPackage* imports+=Import* sources+=ApplicationModel*
 	//	(advices+=Advice | pointcuts+=Pointcut | aspects+=Aspect)*;
 	public ModelElements getModelAccess() {
-		return (pModel != null) ? pModel : (pModel = new ModelElements());
+		return pModel;
 	}
 	
 	public ParserRule getModelRule() {
@@ -1548,7 +1585,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//Import:
 	//	"import" importedNamespace=QualifiedNameWithWildcard;
 	public ImportElements getImportAccess() {
-		return (pImport != null) ? pImport : (pImport = new ImportElements());
+		return pImport;
 	}
 	
 	public ParserRule getImportRule() {
@@ -1558,7 +1595,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//RegisteredPackage:
 	//	"register" name=ID ePackage=[ecore::EPackage|STRING];
 	public RegisteredPackageElements getRegisteredPackageAccess() {
-		return (pRegisteredPackage != null) ? pRegisteredPackage : (pRegisteredPackage = new RegisteredPackageElements());
+		return pRegisteredPackage;
 	}
 	
 	public ParserRule getRegisteredPackageRule() {
@@ -1568,7 +1605,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//ApplicationModel:
 	//	"use" usePackages+=[RegisteredPackage] ("," usePackages+=[RegisteredPackage])* "on" name=ID model=STRING;
 	public ApplicationModelElements getApplicationModelAccess() {
-		return (pApplicationModel != null) ? pApplicationModel : (pApplicationModel = new ApplicationModelElements());
+		return pApplicationModel;
 	}
 	
 	public ParserRule getApplicationModelRule() {
@@ -1578,7 +1615,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//QualifiedName:
 	//	ID ("." ID)*;
 	public QualifiedNameElements getQualifiedNameAccess() {
-		return (pQualifiedName != null) ? pQualifiedName : (pQualifiedName = new QualifiedNameElements());
+		return pQualifiedName;
 	}
 	
 	public ParserRule getQualifiedNameRule() {
@@ -1588,7 +1625,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//QualifiedNameWithWildcard:
 	//	QualifiedName ("." "*")?;
 	public QualifiedNameWithWildcardElements getQualifiedNameWithWildcardAccess() {
-		return (pQualifiedNameWithWildcard != null) ? pQualifiedNameWithWildcard : (pQualifiedNameWithWildcard = new QualifiedNameWithWildcardElements());
+		return pQualifiedNameWithWildcard;
 	}
 	
 	public ParserRule getQualifiedNameWithWildcardRule() {
@@ -1600,7 +1637,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//Aspect:
 	//	"aspect" query=[Pointcut|QualifiedName] ":" applyProbes+=UtilizeProbe ("," applyProbes+=UtilizeProbe)*;
 	public AspectElements getAspectAccess() {
-		return (pAspect != null) ? pAspect : (pAspect = new AspectElements());
+		return pAspect;
 	}
 	
 	public ParserRule getAspectRule() {
@@ -1610,7 +1647,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//UtilizeProbe:
 	//	probe=[Advice|QualifiedName] ("(" (parameterAssignments+=Value ("," parameterAssignments+=Value)*)? ")")?;
 	public UtilizeProbeElements getUtilizeProbeAccess() {
-		return (pUtilizeProbe != null) ? pUtilizeProbe : (pUtilizeProbe = new UtilizeProbeElements());
+		return pUtilizeProbe;
 	}
 	
 	public ParserRule getUtilizeProbeRule() {
@@ -1621,7 +1658,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//	"probe" name=ID ("(" (parameterDeclarations+=ParameterDeclaration ("," parameterDeclarations+=ParameterDeclaration)*)?
 	//	")")? "{" collectors+=Collector* "}";
 	public AdviceElements getAdviceAccess() {
-		return (pAdvice != null) ? pAdvice : (pAdvice = new AdviceElements());
+		return pAdvice;
 	}
 	
 	public ParserRule getAdviceRule() {
@@ -1631,7 +1668,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//ParameterDeclaration:
 	//	type="type" name=ID;
 	public ParameterDeclarationElements getParameterDeclarationAccess() {
-		return (pParameterDeclaration != null) ? pParameterDeclaration : (pParameterDeclaration = new ParameterDeclarationElements());
+		return pParameterDeclaration;
 	}
 	
 	public ParserRule getParameterDeclarationRule() {
@@ -1641,7 +1678,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//Pointcut:
 	//	annotation=Annotation? "pointcut" name=ID location=LocationQuery method=MethodQuery?;
 	public PointcutElements getPointcutAccess() {
-		return (pPointcut != null) ? pPointcut : (pPointcut = new PointcutElements());
+		return pPointcut;
 	}
 	
 	public ParserRule getPointcutRule() {
@@ -1652,7 +1689,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//	(modifier=[structure::MethodModifier] | "*") (returnType=[structure::Type] | "*") methodReference=[structure::Method]
 	//	"(" parameterQueries+=ParameterQuery ("," parameterQueries+=ParameterQuery)* ")";
 	public MethodQueryElements getMethodQueryAccess() {
-		return (pMethodQuery != null) ? pMethodQuery : (pMethodQuery = new MethodQueryElements());
+		return pMethodQuery;
 	}
 	
 	public ParserRule getMethodQueryRule() {
@@ -1662,7 +1699,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//ParameterQuery:
 	//	(modifier=[structure::ParameterModifier] | "*") type=[structure::Type] parameter=[structure::Parameter];
 	public ParameterQueryElements getParameterQueryAccess() {
-		return (pParameterQuery != null) ? pParameterQuery : (pParameterQuery = new ParameterQueryElements());
+		return pParameterQuery;
 	}
 	
 	public ParserRule getParameterQueryRule() {
@@ -1672,7 +1709,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//LocationQuery:
 	//	node=Node ("." specialization=LocationQuery | composition=CompositionQuery)?;
 	public LocationQueryElements getLocationQueryAccess() {
-		return (pLocationQuery != null) ? pLocationQuery : (pLocationQuery = new LocationQueryElements());
+		return pLocationQuery;
 	}
 	
 	public ParserRule getLocationQueryRule() {
@@ -1682,7 +1719,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//CompositionQuery:
 	//	{CompositionQuery} modifier=QueryModifier? "{" subQueries+=LocationQuery* "}";
 	public CompositionQueryElements getCompositionQueryAccess() {
-		return (pCompositionQuery != null) ? pCompositionQuery : (pCompositionQuery = new CompositionQueryElements());
+		return pCompositionQuery;
 	}
 	
 	public ParserRule getCompositionQueryRule() {
@@ -1692,7 +1729,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//enum QueryModifier:
 	//	INCLUDE="include" | EXCLUDE="exclude";
 	public QueryModifierElements getQueryModifierAccess() {
-		return (unknownRuleQueryModifier != null) ? unknownRuleQueryModifier : (unknownRuleQueryModifier = new QueryModifierElements());
+		return unknownRuleQueryModifier;
 	}
 	
 	public EnumRule getQueryModifierRule() {
@@ -1702,7 +1739,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//Node:
 	//	(SubPathNode | WildcardNode | ParentNode | ContainerNode) parameter=ParamQuery?;
 	public NodeElements getNodeAccess() {
-		return (pNode != null) ? pNode : (pNode = new NodeElements());
+		return pNode;
 	}
 	
 	public ParserRule getNodeRule() {
@@ -1713,7 +1750,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//ParamQuery:
 	//	"[" queries+=ParamCompare+ "]";
 	public ParamQueryElements getParamQueryAccess() {
-		return (pParamQuery != null) ? pParamQuery : (pParamQuery = new ParamQueryElements());
+		return pParamQuery;
 	}
 	
 	public ParserRule getParamQueryRule() {
@@ -1723,7 +1760,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//ParamCompare:
 	//	left=Value (operator=Operator right=Value);
 	public ParamCompareElements getParamCompareAccess() {
-		return (pParamCompare != null) ? pParamCompare : (pParamCompare = new ParamCompareElements());
+		return pParamCompare;
 	}
 	
 	public ParserRule getParamCompareRule() {
@@ -1733,7 +1770,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//Value:
 	//	StringValue | IntValue | FloatValue | ReferenceValue;
 	public ValueElements getValueAccess() {
-		return (pValue != null) ? pValue : (pValue = new ValueElements());
+		return pValue;
 	}
 	
 	public ParserRule getValueRule() {
@@ -1743,7 +1780,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//FloatValue:
 	//	value=FLOAT;
 	public FloatValueElements getFloatValueAccess() {
-		return (pFloatValue != null) ? pFloatValue : (pFloatValue = new FloatValueElements());
+		return pFloatValue;
 	}
 	
 	public ParserRule getFloatValueRule() {
@@ -1753,7 +1790,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//IntValue:
 	//	value=INT;
 	public IntValueElements getIntValueAccess() {
-		return (pIntValue != null) ? pIntValue : (pIntValue = new IntValueElements());
+		return pIntValue;
 	}
 	
 	public ParserRule getIntValueRule() {
@@ -1763,7 +1800,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//StringValue:
 	//	value=STRING;
 	public StringValueElements getStringValueAccess() {
-		return (pStringValue != null) ? pStringValue : (pStringValue = new StringValueElements());
+		return pStringValue;
 	}
 	
 	public ParserRule getStringValueRule() {
@@ -1773,7 +1810,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//ReferenceValue:
 	//	query=LocationQuery? parameter=Parameter;
 	public ReferenceValueElements getReferenceValueAccess() {
-		return (pReferenceValue != null) ? pReferenceValue : (pReferenceValue = new ReferenceValueElements());
+		return pReferenceValue;
 	}
 	
 	public ParserRule getReferenceValueRule() {
@@ -1783,7 +1820,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//Parameter:
 	//	RuntimeProperty | ReflectionProperty | InternalFunctionProperty;
 	public ParameterElements getParameterAccess() {
-		return (pParameter != null) ? pParameter : (pParameter = new ParameterElements());
+		return pParameter;
 	}
 	
 	public ParserRule getParameterRule() {
@@ -1793,7 +1830,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//InternalFunctionProperty:
 	//	function=InternalFunction;
 	public InternalFunctionPropertyElements getInternalFunctionPropertyAccess() {
-		return (pInternalFunctionProperty != null) ? pInternalFunctionProperty : (pInternalFunctionProperty = new InternalFunctionPropertyElements());
+		return pInternalFunctionProperty;
 	}
 	
 	public ParserRule getInternalFunctionPropertyRule() {
@@ -1803,7 +1840,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//enum InternalFunction:
 	//	TIME="time" | TRACE_ID="traceId" | ORDER_INDEX="orderIndex";
 	public InternalFunctionElements getInternalFunctionAccess() {
-		return (unknownRuleInternalFunction != null) ? unknownRuleInternalFunction : (unknownRuleInternalFunction = new InternalFunctionElements());
+		return unknownRuleInternalFunction;
 	}
 	
 	public EnumRule getInternalFunctionRule() {
@@ -1813,7 +1850,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//RuntimeProperty:
 	//	"#" reference=ID;
 	public RuntimePropertyElements getRuntimePropertyAccess() {
-		return (pRuntimeProperty != null) ? pRuntimeProperty : (pRuntimeProperty = new RuntimePropertyElements());
+		return pRuntimeProperty;
 	}
 	
 	public ParserRule getRuntimePropertyRule() {
@@ -1823,7 +1860,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//ReflectionProperty:
 	//	"$" function=ReflectionFunction;
 	public ReflectionPropertyElements getReflectionPropertyAccess() {
-		return (pReflectionProperty != null) ? pReflectionProperty : (pReflectionProperty = new ReflectionPropertyElements());
+		return pReflectionProperty;
 	}
 	
 	public ParserRule getReflectionPropertyRule() {
@@ -1833,7 +1870,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//enum ReflectionFunction:
 	//	NAME="name" | SIGNATURE="signature" | CLASS="class" | RETURN_TYPE="return-type";
 	public ReflectionFunctionElements getReflectionFunctionAccess() {
-		return (unknownRuleReflectionFunction != null) ? unknownRuleReflectionFunction : (unknownRuleReflectionFunction = new ReflectionFunctionElements());
+		return unknownRuleReflectionFunction;
 	}
 	
 	public EnumRule getReflectionFunctionRule() {
@@ -1843,7 +1880,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//enum Operator:
 	//	EQ="=" | LIKE="~" | NE="!=" | GR=">" | LW="<" | GE=">=" | LE="<=";
 	public OperatorElements getOperatorAccess() {
-		return (unknownRuleOperator != null) ? unknownRuleOperator : (unknownRuleOperator = new OperatorElements());
+		return unknownRuleOperator;
 	}
 	
 	public EnumRule getOperatorRule() {
@@ -1853,7 +1890,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//ContainerNode:
 	//	container=[structure::Container];
 	public ContainerNodeElements getContainerNodeAccess() {
-		return (pContainerNode != null) ? pContainerNode : (pContainerNode = new ContainerNodeElements());
+		return pContainerNode;
 	}
 	
 	public ParserRule getContainerNodeRule() {
@@ -1863,7 +1900,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//WildcardNode:
 	//	{WildcardNode} "*";
 	public WildcardNodeElements getWildcardNodeAccess() {
-		return (pWildcardNode != null) ? pWildcardNode : (pWildcardNode = new WildcardNodeElements());
+		return pWildcardNode;
 	}
 	
 	public ParserRule getWildcardNodeRule() {
@@ -1873,7 +1910,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//SubPathNode:
 	//	{SubPathNode} "**";
 	public SubPathNodeElements getSubPathNodeAccess() {
-		return (pSubPathNode != null) ? pSubPathNode : (pSubPathNode = new SubPathNodeElements());
+		return pSubPathNode;
 	}
 	
 	public ParserRule getSubPathNodeRule() {
@@ -1883,7 +1920,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//ParentNode:
 	//	{ParentNode} "<<";
 	public ParentNodeElements getParentNodeAccess() {
-		return (pParentNode != null) ? pParentNode : (pParentNode = new ParentNodeElements());
+		return pParentNode;
 	}
 	
 	public ParserRule getParentNodeRule() {
@@ -1894,7 +1931,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//	insertionPoint=InsertionPoint type=[irl::RecordType|QualifiedName] "(" (initializations+=Value (","
 	//	initializations+=Value)*)? ")";
 	public CollectorElements getCollectorAccess() {
-		return (pCollector != null) ? pCollector : (pCollector = new CollectorElements());
+		return pCollector;
 	}
 	
 	public ParserRule getCollectorRule() {
@@ -1904,7 +1941,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//enum InsertionPoint:
 	//	BEFORE="before" | AFTER="after";
 	public InsertionPointElements getInsertionPointAccess() {
-		return (unknownRuleInsertionPoint != null) ? unknownRuleInsertionPoint : (unknownRuleInsertionPoint = new InsertionPointElements());
+		return unknownRuleInsertionPoint;
 	}
 	
 	public EnumRule getInsertionPointRule() {
