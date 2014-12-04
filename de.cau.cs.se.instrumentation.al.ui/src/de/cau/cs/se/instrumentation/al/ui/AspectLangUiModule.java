@@ -31,5 +31,6 @@ public class AspectLangUiModule extends de.cau.cs.se.instrumentation.al.ui.Abstr
 	 */
 	public AspectLangUiModule(final AbstractUIPlugin plugin) {
 		super(plugin);
+		
 	}
 }

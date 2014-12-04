@@ -26,7 +26,6 @@ import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
 import java.util.Iterator;
-import java.util.function.Consumer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.common.util.EList;
@@ -200,8 +199,8 @@ public class EMFModelGenerator {
   public void composePackageHierarchy(final String[] modelName, final Resource resource) {
     EList<EObject> _contents = resource.getContents();
     Iterable<EPackage> _filter = Iterables.<EPackage>filter(_contents, EPackage.class);
-    final Consumer<EPackage> _function = new Consumer<EPackage>() {
-      public void accept(final EPackage p) {
+    final Procedure1<EPackage> _function = new Procedure1<EPackage>() {
+      public void apply(final EPackage p) {
         String _name = p.getName();
         Object _get = modelName[0];
         boolean _equals = _name.equals(_get);
@@ -211,7 +210,7 @@ public class EMFModelGenerator {
         }
       }
     };
-    _filter.forEach(_function);
+    IterableExtensions.<EPackage>forEach(_filter, _function);
     EList<EObject> _contents_1 = resource.getContents();
     Iterable<EPackage> _filter_1 = Iterables.<EPackage>filter(_contents_1, EPackage.class);
     final Function1<EPackage, Boolean> _function_1 = new Function1<EPackage, Boolean>() {
@@ -244,8 +243,8 @@ public class EMFModelGenerator {
     final String nodeName = ((String[])Conversions.unwrapArray(modelName, String.class))[0];
     final Iterable<String> tailList = IterableExtensions.<String>tail(modelName);
     EList<EPackage> _eSubpackages = parent.getESubpackages();
-    final Consumer<EPackage> _function = new Consumer<EPackage>() {
-      public void accept(final EPackage p) {
+    final Procedure1<EPackage> _function = new Procedure1<EPackage>() {
+      public void apply(final EPackage p) {
         String _name = p.getName();
         boolean _equals = _name.equals(nodeName);
         if (_equals) {
@@ -253,7 +252,7 @@ public class EMFModelGenerator {
         }
       }
     };
-    _eSubpackages.forEach(_function);
+    IterableExtensions.<EPackage>forEach(_eSubpackages, _function);
     EList<EPackage> _eSubpackages_1 = parent.getESubpackages();
     final Function1<EPackage, Boolean> _function_1 = new Function1<EPackage, Boolean>() {
       public Boolean apply(final EPackage p) {
@@ -416,7 +415,7 @@ public class EMFModelGenerator {
           System.err.println(_plus);
         }
       };
-      _eClassifiers_1.forEach(_function);
+      IterableExtensions.<EClassifier>forEach(_eClassifiers_1, _function);
       EList<EClassifier> _eClassifiers_2 = pkg.getEClassifiers();
       final Function1<EClassifier, Boolean> _function_1 = new Function1<EClassifier, Boolean>() {
         public Boolean apply(final EClassifier clazz) {
@@ -482,24 +481,24 @@ public class EMFModelGenerator {
     boolean _not = (!_isEmpty);
     if (_not) {
       EList<TemplateType> _parents_1 = type.getParents();
-      final Consumer<TemplateType> _function = new Consumer<TemplateType>() {
-        public void accept(final TemplateType iface) {
+      final Procedure1<TemplateType> _function = new Procedure1<TemplateType>() {
+        public void apply(final TemplateType iface) {
           EList<EClass> _eSuperTypes = clazz.getESuperTypes();
           EClass _findResultClass = EMFModelGenerator.this.findResultClass(iface, resource);
           _eSuperTypes.add(_findResultClass);
         }
       };
-      _parents_1.forEach(_function);
+      IterableExtensions.<TemplateType>forEach(_parents_1, _function);
     }
     EList<Property> _properties = type.getProperties();
-    final Consumer<Property> _function_1 = new Consumer<Property>() {
-      public void accept(final Property property) {
+    final Procedure1<Property> _function_1 = new Procedure1<Property>() {
+      public void apply(final Property property) {
         EList<EStructuralFeature> _eStructuralFeatures = clazz.getEStructuralFeatures();
         EAttribute _composeProperty = EMFModelGenerator.this.composeProperty(property);
         EMFModelGenerator.this.addUnique(_eStructuralFeatures, _composeProperty);
       }
     };
-    _properties.forEach(_function_1);
+    IterableExtensions.<Property>forEach(_properties, _function_1);
   }
   
   /**
@@ -530,24 +529,24 @@ public class EMFModelGenerator {
       boolean _not = (!_isEmpty);
       if (_not) {
         EList<TemplateType> _parents_1 = type.getParents();
-        final Consumer<TemplateType> _function = new Consumer<TemplateType>() {
-          public void accept(final TemplateType iface) {
+        final Procedure1<TemplateType> _function = new Procedure1<TemplateType>() {
+          public void apply(final TemplateType iface) {
             EList<EClass> _eSuperTypes = clazz.getESuperTypes();
             EClass _findResultClass = EMFModelGenerator.this.findResultClass(iface, resource);
             _eSuperTypes.add(_findResultClass);
           }
         };
-        _parents_1.forEach(_function);
+        IterableExtensions.<TemplateType>forEach(_parents_1, _function);
       }
       EList<Property> _properties = type.getProperties();
-      final Consumer<Property> _function_1 = new Consumer<Property>() {
-        public void accept(final Property property) {
+      final Procedure1<Property> _function_1 = new Procedure1<Property>() {
+        public void apply(final Property property) {
           EList<EStructuralFeature> _eStructuralFeatures = clazz.getEStructuralFeatures();
           EAttribute _composeProperty = EMFModelGenerator.this.composeProperty(property);
           EMFModelGenerator.this.addUnique(_eStructuralFeatures, _composeProperty);
         }
       };
-      _properties.forEach(_function_1);
+      IterableExtensions.<Property>forEach(_properties, _function_1);
     }
   }
   
