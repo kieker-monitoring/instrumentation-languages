@@ -1,3 +1,18 @@
+/***************************************************************************
+ * Copyright 2013 Kieker Project (http://kieker-monitoring.net)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ***************************************************************************/
 package de.cau.cs.se.instrumentation.rl.ui.preferences;
 
 import java.util.ArrayList;
@@ -30,33 +45,31 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.IWorkbenchPropertyPage;
 
 /**
- * superclass for FieldEditorPreferencePage; can be used for preference pages and property pages
+ * superclass for FieldEditorPreferencePage; can be used for preference pages and property pages.
  *
  * Created after https://www.eclipse.org/articles/Article-Mutatis-mutandis/overlay-pages.html
  *
  * @author Yannic Kropp
  *
  */
-public abstract class FieldEditorOverlayPage
-extends FieldEditorPreferencePage
-implements IWorkbenchPropertyPage {
+public abstract class AbstractFieldEditorOverlayPage extends FieldEditorPreferencePage implements IWorkbenchPropertyPage {
 
-	/*** Name of resource property for the selection of workbench or project settings ***/
+	/** Name of resource property for the selection of workbench or project settings. */
 	public static final String USEPROJECTSETTINGS = "useProjectSettings";
 
 	private static final String FALSE = "false";
 	private static final String TRUE = "true";
 
 	// Stores all created field editors
-	private final List editors = new ArrayList();
+	private final List<FieldEditor> editors = new ArrayList<FieldEditor>();
 
 	// Stores owning element of properties
 	private IAdaptable element;
 
 	// Additional buttons for property pages
-	private Button useWorkspaceSettingsButton,
-	useProjectSettingsButton,
-	configureButton;
+	private Button useWorkspaceSettingsButton;
+	private Button useProjectSettingsButton;
+	private Button configureButton;
 
 	// Overlay preference store for property pages
 	private IPreferenceStore overlayStore;
@@ -68,27 +81,29 @@ implements IWorkbenchPropertyPage {
 	private String pageId;
 
 	/**
-	 * Constructor
+	 * Constructor.
 	 * @param style - layout style
 	 */
-	public FieldEditorOverlayPage(final int style) {
+	public AbstractFieldEditorOverlayPage(final int style) {
 		super(style);
 	}
 
 	/**
-	 * Constructor
-	 * @param title - title string	 */
-	public FieldEditorOverlayPage(final String title, final int style) {
+	 * Constructor.
+	 * @param title - title string
+	 * @param style some style setup
+	 */
+	public AbstractFieldEditorOverlayPage(final String title, final int style) {
 		super(title, style);
 	}
 
 	/**
-	 * Constructor
+	 * Constructor.
 	 * @param title - title string
 	 * @param image - title image
 	 * @param style - layout style
 	 */
-	public FieldEditorOverlayPage(
+	public AbstractFieldEditorOverlayPage(
 			final String title,
 			final ImageDescriptor image,
 			final int style) {
@@ -157,7 +172,7 @@ implements IWorkbenchPropertyPage {
 			try {
 				this.overlayStore =
 						new PropertyStore(
-								(((IJavaElement) this.getElement()).getCorrespondingResource()),
+								((IJavaElement) this.getElement()).getCorrespondingResource(),
 								super.getPreferenceStore(),
 								this.pageId);
 			} catch (final JavaModelException e) {
@@ -207,7 +222,7 @@ implements IWorkbenchPropertyPage {
 		this.configureButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(final SelectionEvent e) {
-				FieldEditorOverlayPage.this.configureWorkspaceSettings();
+				AbstractFieldEditorOverlayPage.this.configureWorkspaceSettings();
 			}
 		});
 		// Set workspace/project radio buttons
@@ -227,7 +242,7 @@ implements IWorkbenchPropertyPage {
 	}
 
 	/**
-	 * Convenience method creating a radio button
+	 * Convenience method creating a radio button.
 	 * @param parent - the parent composite
 	 * @param label - the button label
 	 * @return - the new button
@@ -238,17 +253,16 @@ implements IWorkbenchPropertyPage {
 		button.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(final SelectionEvent e) {
-				FieldEditorOverlayPage.this.configureButton.setEnabled(
-						button == FieldEditorOverlayPage.this.useWorkspaceSettingsButton);
-				FieldEditorOverlayPage.this.updateFieldEditors();
+				AbstractFieldEditorOverlayPage.this.configureButton.setEnabled(
+						button == AbstractFieldEditorOverlayPage.this.useWorkspaceSettingsButton);
+				AbstractFieldEditorOverlayPage.this.updateFieldEditors();
 			}
 		});
 		return button;
 	}
 
 	/**
-	 * Returns in case of property pages the overlay store,
-	 * in case of preference pages the standard preference store
+	 * Returns in case of property pages the overlay store, in case of preference pages the standard preference store.
 	 * @see org.eclipse.jface.preference.PreferencePage#getPreferenceStore()
 	 */
 	@Override
@@ -275,10 +289,9 @@ implements IWorkbenchPropertyPage {
 	 */
 	protected void updateFieldEditors(final boolean enabled) {
 		final Composite parent = this.getFieldEditorParent();
-		final Iterator it = this.editors.iterator();
+		final Iterator<FieldEditor> it = this.editors.iterator();
 		while (it.hasNext()) {
-			final FieldEditor editor = (FieldEditor) it.next();
-			editor.setEnabled(enabled, parent);
+			it.next().setEnabled(enabled, parent);
 		}
 	}
 
@@ -295,9 +308,8 @@ implements IWorkbenchPropertyPage {
 		if (result && this.isPropertyPage()) {
 			// Save state of radiobuttons in project properties
 			try {
-				final String value =
-						(this.useProjectSettingsButton.getSelection()) ? TRUE : FALSE;
-				((IJavaElement)this.getElement()).getCorrespondingResource().setPersistentProperty(
+				final String value = (this.useProjectSettingsButton.getSelection()) ? TRUE : FALSE; // NOCS
+				((IJavaElement) this.getElement()).getCorrespondingResource().setPersistentProperty(
 						new QualifiedName(this.pageId, USEPROJECTSETTINGS),
 						value);
 			} catch (final CoreException e) {
@@ -324,7 +336,7 @@ implements IWorkbenchPropertyPage {
 	}
 
 	/**
-	 * Creates a new preferences page and opens it
+	 * Creates a new preferences page and opens it.
 	 * @see com.bdaum.SpellChecker.preferences.SpellCheckerPreferencePage#configureWorkspaceSettings()
 	 */
 	protected void configureWorkspaceSettings() {
@@ -344,7 +356,7 @@ implements IWorkbenchPropertyPage {
 	}
 
 	/**
-	 * Show a single preference pages
+	 * Show a single preference pages.
 	 * @param id - the preference page identification
 	 * @param page - the preference page
 	 */

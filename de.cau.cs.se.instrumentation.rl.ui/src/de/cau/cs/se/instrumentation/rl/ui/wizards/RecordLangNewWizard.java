@@ -80,16 +80,17 @@ public class RecordLangNewWizard extends Wizard implements INewWizard {
 		final String sourceText = this.page.getSourcePackageText();
 		boolean result = true;
 
-		if (!sourceText.equals(selectedPackage)){
+		if (!sourceText.equals(selectedPackage)) {
 			result = MessageDialog.openQuestion(this.getShell(), "Package doesn't exist", "The package you selected doesn't exist yet. \n \n Shall it be created?");
 		}
-		if (result){
+		if (result) {
 			final IRunnableWithProgress op = new IRunnableWithProgress() {
 
 				public void run(final IProgressMonitor monitor) throws InvocationTargetException {
 					try {
-						if(!sourceText.equals(selectedPackage)){
-							RecordLangNewWizard.this.page.setSourcePackage(RecordLangNewWizard.this.page.getSourceFolder().createPackageFragment(sourceText, false, monitor));
+						if (!sourceText.equals(selectedPackage)) {
+							RecordLangNewWizard.this.page.setSourcePackage(RecordLangNewWizard.
+									this.page.getSourceFolder().createPackageFragment(sourceText, false, monitor));
 						}
 						RecordLangNewWizard.this.doFinish(monitor);
 					} catch (final CoreException e) {
@@ -146,7 +147,7 @@ public class RecordLangNewWizard extends Wizard implements INewWizard {
 	 * We will initialize file contents with a sample text.
 	 */
 	private String templateContents(final String location) {
-		if(!location.equals("")){
+		if (!location.isEmpty()) {
 			return "/***************************************************************************\n"
 					+ " * Copyright 2014 Kieker Project (http://kieker-monitoring.net)\n"
 					+ " *\n"
@@ -163,8 +164,7 @@ public class RecordLangNewWizard extends Wizard implements INewWizard {
 					+ " * limitations under the License.\n"
 					+ " ***************************************************************************/\n"
 					+ "package " + location + "\n\n";
-		}
-		else{
+		} else {
 			return "/***************************************************************************\n"
 					+ " * Copyright 2014 Kieker Project (http://kieker-monitoring.net)\n"
 					+ " *\n"

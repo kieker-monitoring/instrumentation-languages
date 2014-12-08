@@ -27,8 +27,9 @@ Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6,
  JavaSE-1.7
-Export-Package: de.cau.cs.se.instrumentation.rl.ui.quickfix,
+Export-Package: de.cau.cs.se.instrumentation.rl.ui,
  de.cau.cs.se.instrumentation.rl.ui.contentassist,
  de.cau.cs.se.instrumentation.rl.ui.contentassist.antlr,
+ de.cau.cs.se.instrumentation.rl.ui.contentassist.antlr.internal,
  de.cau.cs.se.instrumentation.rl.ui.internal
 Bundle-Activator: de.cau.cs.se.instrumentation.rl.ui.internal.RecordLangActivator

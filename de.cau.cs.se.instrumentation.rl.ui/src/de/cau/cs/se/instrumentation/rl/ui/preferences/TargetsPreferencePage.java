@@ -39,7 +39,7 @@ import de.cau.cs.se.instrumentation.rl.preferences.TargetsPreferences;
  * @author Reiner Jung
  *
  */
-public class TargetsPreferencePage extends FieldEditorOverlayPage implements IWorkbenchPreferencePage {
+public class TargetsPreferencePage extends AbstractFieldEditorOverlayPage implements IWorkbenchPreferencePage {
 
 	/**
 	 * Default constructor.

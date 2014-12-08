@@ -138,20 +138,20 @@ public class RecordLangNewWizardPage extends WizardPage {
 	}
 
 	/**
-	 * Returns the current SourcePackageText
+	 * Returns the current SourcePackageText.
 	 * @return SourcePackageText
 	 */
-	protected String getSourcePackageText(){
+	protected String getSourcePackageText() {
 		return this.sourcePackageText.getText();
 	}
 
 	/**
-	 * Checks if a package is part of the current IPackageFragmentRoot
+	 * Checks if a package is part of the current IPackageFragmentRoot.
 	 *
 	 * @param packageName - name of the assumed package
 	 * @return boolean
 	 */
-	protected boolean existsPackage(final String packageName){
+	protected boolean existsPackage(final String packageName) {
 		boolean result = false;
 		final IPackageFragmentRoot froot = this.sourceFolder;
 		IJavaElement[] existingPackages = null;
@@ -167,31 +167,31 @@ public class RecordLangNewWizardPage extends WizardPage {
 		final String srcPackageText = this.sourcePackageText.getText();
 		final int j = existingPackages.length;
 		int i = 0;
-		while (j > i){
-			if(srcPackageText.equals(existingPackages[i].getElementName())){
+		while (j > i) {
+			if (srcPackageText.equals(existingPackages[i].getElementName())) {
 				result = true;
-				i = j +1;
+				i = j + 1;
 			}
-			i ++;
+			i++;
 		}
 		return result;
 	}
 
 	/**
-	 * Sets the SourcePackage
+	 * Sets the SourcePackage.
 	 *
 	 * @param pack - new SourcePackage
 	 */
-	protected void setSourcePackage (final IPackageFragment pack){
+	protected void setSourcePackage(final IPackageFragment pack) {
 		this.sourcePackage = pack;
 	}
 
 	/**
-	 * Returns the SourceFolder
+	 * Returns the SourceFolder.
 	 *
 	 * @return SourceFolder
 	 */
-	protected IPackageFragmentRoot getSourceFolder (){
+	protected IPackageFragmentRoot getSourceFolder() {
 		return this.sourceFolder;
 	}
 
@@ -249,8 +249,10 @@ public class RecordLangNewWizardPage extends WizardPage {
 		}
 		this.sourcePackageText.addModifyListener(new ModifyListener() {
 			public void modifyText(final ModifyEvent e) {
-				if (!RecordLangNewWizardPage.this.sourcePackageText.getText().equals(RecordLangNewWizardPage.this.sourcePackage.getElementName()) && RecordLangNewWizardPage.this.existsPackage(RecordLangNewWizardPage.this.sourcePackageText.getText())){
-					RecordLangNewWizardPage.this.sourcePackage = RecordLangNewWizardPage.this.sourceFolder.getPackageFragment(RecordLangNewWizardPage.this.sourcePackageText.getText());
+				if (!RecordLangNewWizardPage.this.sourcePackageText.getText().equals(RecordLangNewWizardPage.this.sourcePackage.getElementName())
+						&& RecordLangNewWizardPage.this.existsPackage(RecordLangNewWizardPage.this.sourcePackageText.getText())) {
+					RecordLangNewWizardPage.this.sourcePackage = RecordLangNewWizardPage.this.sourceFolder.
+							getPackageFragment(RecordLangNewWizardPage.this.sourcePackageText.getText());
 				}
 				RecordLangNewWizardPage.this.dialogChanged();
 			}
