@@ -30,3 +30,4 @@ doc/kieker-workshop/images/kieker-data-bridge.pdf
 /**/exampleProgram/exampleProgram*
 /**/kieker4c/**/Makefile
 
+*/.antlr-generator-3.2.0-patch.jar
