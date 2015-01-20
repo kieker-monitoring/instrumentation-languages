@@ -96,6 +96,10 @@ class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
 				public «type.name» create(final Object[] values) {
 					return new «type.name»(values);
 				}
+				
+				public int getRecordSizeInBytes() {
+					return «type.name».SIZE;
+				}
 			}
 		'''
 	}
