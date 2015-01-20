@@ -28,7 +28,6 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
-import java.util.function.Consumer;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClassifier;
@@ -40,6 +39,7 @@ import org.eclipse.xtext.xbase.lib.ExclusiveRange;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure2;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 
@@ -2289,8 +2289,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     EList<Property> _properties = type.getProperties();
     properties.addAll(_properties);
     final List<Property> declarationProperties = new ArrayList<Property>();
-    final Consumer<Property> _function = new Consumer<Property>() {
-      public void accept(final Property property) {
+    final Procedure1<Property> _function = new Procedure1<Property>() {
+      public void apply(final Property property) {
         Property _referTo = property.getReferTo();
         boolean _equals = Objects.equal(_referTo, null);
         if (_equals) {
@@ -2298,7 +2298,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         }
       }
     };
-    properties.forEach(_function);
+    IterableExtensions.<Property>forEach(properties, _function);
     RecordType _parent = type.getParent();
     boolean _notEquals = (!Objects.equal(_parent, null));
     if (_notEquals) {
