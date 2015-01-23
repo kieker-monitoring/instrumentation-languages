@@ -179,7 +179,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 			«ELSEIF property.type.class_.name == 'string'»
 				«property.createPropertyValueSet» == null?"«property.createConstantValue»":«property.createPropertyValueSet», values[«index»]
 			«ELSE»
-				«property.getCastToPrimitiveType» «property.createPropertyValueSet», «property.getCastToPrimitiveType» («property.getObjectType»)values[«index»]
+				«property.createPropertyValueSet», values[«index»]
 		«ENDIF»);
 	'''
 	
@@ -222,7 +222,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 			Assert.assertEquals("«type.name».«property.name» values are not equal.", «IF property.type.class_.name == 'float' || property.type.class_.name == 'double'»
 				«property.getCastToPrimitiveType» «property.createPropertyValueSet», record.get«property.name.toFirstUpper»(), 0.0000001);
 			«ELSEIF property.type.class_.name == 'boolean'»
-				(boolean) «property.createPropertyValueSet», record.is«property.name.toFirstUpper»());
+				«property.createPropertyValueSet», Boolean.valueOf(record.is«property.name.toFirstUpper»()));
 			«ELSEIF property.type.class_.name == 'string'»
 				«property.createPropertyValueSet» == null?"«property.createConstantValue»":«property.createPropertyValueSet», record.get«property.name.toFirstUpper»());
 			«ELSE»

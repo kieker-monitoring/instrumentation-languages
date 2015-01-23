@@ -563,18 +563,9 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
           _builder.newLineIfNotEmpty();
         } else {
           _builder.append("\t");
-          String _castToPrimitiveType_2 = this.getCastToPrimitiveType(property);
-          _builder.append(_castToPrimitiveType_2, "\t");
-          _builder.append(" ");
           CharSequence _createPropertyValueSet_4 = this.createPropertyValueSet(property);
           _builder.append(_createPropertyValueSet_4, "\t");
-          _builder.append(", ");
-          String _castToPrimitiveType_3 = this.getCastToPrimitiveType(property);
-          _builder.append(_castToPrimitiveType_3, "\t");
-          _builder.append(" (");
-          String _getObjectType_1 = this.getGetObjectType(property);
-          _builder.append(_getObjectType_1, "\t");
-          _builder.append(")values[");
+          _builder.append(", values[");
           _builder.append(index, "\t");
           _builder.append("]");
           _builder.newLineIfNotEmpty();
@@ -701,14 +692,13 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
             String _name_5 = _class__2.getName();
             boolean _equals_2 = Objects.equal(_name_5, "boolean");
             if (_equals_2) {
-              _builder.append("(boolean) ");
               CharSequence _createPropertyValueSet_1 = this.createPropertyValueSet(property);
               _builder.append(_createPropertyValueSet_1, "");
-              _builder.append(", record.is");
+              _builder.append(", Boolean.valueOf(record.is");
               String _name_6 = property.getName();
               String _firstUpper_1 = StringExtensions.toFirstUpper(_name_6);
               _builder.append(_firstUpper_1, "");
-              _builder.append("());");
+              _builder.append("()));");
               _builder.newLineIfNotEmpty();
             } else {
               Classifier _type_3 = property.getType();
