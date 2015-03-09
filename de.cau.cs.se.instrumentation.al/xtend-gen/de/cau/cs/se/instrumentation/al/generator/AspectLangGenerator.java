@@ -41,6 +41,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
@@ -60,9 +62,7 @@ import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
-import org.eclipse.xtext.xbase.lib.MapExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.eclipse.xtext.xbase.lib.Procedures.Procedure2;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -87,8 +87,8 @@ public class AspectLangGenerator implements IGenerator {
       }
     };
     IteratorExtensions.<Aspect>forEach(_filter, _function);
-    final Procedure2<String, Collection<Aspect>> _function_1 = new Procedure2<String, Collection<Aspect>>() {
-      public void apply(final String key, final Collection<Aspect> value) {
+    final BiConsumer<String, Collection<Aspect>> _function_1 = new BiConsumer<String, Collection<Aspect>>() {
+      public void accept(final String key, final Collection<Aspect> value) {
         boolean _matched = false;
         if (!_matched) {
           if (Objects.equal(key, "AspectJ")) {
@@ -110,7 +110,7 @@ public class AspectLangGenerator implements IGenerator {
         }
       }
     };
-    MapExtensions.<String, Collection<Aspect>>forEach(this.aspectMap, _function_1);
+    this.aspectMap.forEach(_function_1);
   }
   
   /**
@@ -152,8 +152,8 @@ public class AspectLangGenerator implements IGenerator {
       for (final Aspect aspect_1 : aspects) {
         {
           EList<UtilizeProbe> _applyProbes = aspect_1.getApplyProbes();
-          final Procedure1<UtilizeProbe> _function = new Procedure1<UtilizeProbe>() {
-            public void apply(final UtilizeProbe it) {
+          final Consumer<UtilizeProbe> _function = new Consumer<UtilizeProbe>() {
+            public void accept(final UtilizeProbe it) {
               Advice _probe = it.getProbe();
               EList<Collector> _collectors = _probe.getCollectors();
               final Function1<Collector, Boolean> _function = new Function1<Collector, Boolean>() {
@@ -166,10 +166,10 @@ public class AspectLangGenerator implements IGenerator {
               AspectLangGenerator.this.createDataCollectorAspect(_filter, doc, aspectsElement);
             }
           };
-          IterableExtensions.<UtilizeProbe>forEach(_applyProbes, _function);
+          _applyProbes.forEach(_function);
           EList<UtilizeProbe> _applyProbes_1 = aspect_1.getApplyProbes();
-          final Procedure1<UtilizeProbe> _function_1 = new Procedure1<UtilizeProbe>() {
-            public void apply(final UtilizeProbe it) {
+          final Consumer<UtilizeProbe> _function_1 = new Consumer<UtilizeProbe>() {
+            public void accept(final UtilizeProbe it) {
               Advice _probe = it.getProbe();
               EList<Collector> _collectors = _probe.getCollectors();
               final Function1<Collector, Boolean> _function = new Function1<Collector, Boolean>() {
@@ -182,7 +182,7 @@ public class AspectLangGenerator implements IGenerator {
               AspectLangGenerator.this.createDataCollectorAspect(_filter, doc, aspectsElement);
             }
           };
-          IterableExtensions.<UtilizeProbe>forEach(_applyProbes_1, _function_1);
+          _applyProbes_1.forEach(_function_1);
         }
       }
       final TransformerFactory transformerFactory = TransformerFactory.newInstance();

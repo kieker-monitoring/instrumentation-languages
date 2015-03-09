@@ -11,13 +11,13 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.Functions.Function2;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 @SuppressWarnings("all")
 public class PropertyEvaluation {
@@ -91,13 +91,13 @@ public class PropertyEvaluation {
     boolean _notEquals_1 = (!Objects.equal(_parents, null));
     if (_notEquals_1) {
       EList<TemplateType> _parents_1 = type.getParents();
-      final Procedure1<TemplateType> _function = new Procedure1<TemplateType>() {
-        public void apply(final TemplateType it) {
+      final Consumer<TemplateType> _function = new Consumer<TemplateType>() {
+        public void accept(final TemplateType it) {
           List<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(it);
           PropertyEvaluation.addAllUnique(result, _collectAllProperties);
         }
       };
-      IterableExtensions.<TemplateType>forEach(_parents_1, _function);
+      _parents_1.forEach(_function);
     }
     EList<Property> _properties = type.getProperties();
     return PropertyEvaluation.addAllUnique(result, _properties);
@@ -118,13 +118,13 @@ public class PropertyEvaluation {
     boolean _notEquals = (!Objects.equal(_parents, null));
     if (_notEquals) {
       EList<TemplateType> _parents_1 = type.getParents();
-      final Procedure1<TemplateType> _function = new Procedure1<TemplateType>() {
-        public void apply(final TemplateType iface) {
+      final Consumer<TemplateType> _function = new Consumer<TemplateType>() {
+        public void accept(final TemplateType iface) {
           List<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(iface);
           PropertyEvaluation.addAllUnique(result, _collectAllProperties);
         }
       };
-      IterableExtensions.<TemplateType>forEach(_parents_1, _function);
+      _parents_1.forEach(_function);
     }
     EList<Property> _properties = type.getProperties();
     return PropertyEvaluation.addAllUnique(result, _properties);
@@ -145,13 +145,13 @@ public class PropertyEvaluation {
     if (_notEquals) {
       final List<Property> result = new ArrayList<Property>();
       EList<TemplateType> _parents_1 = type.getParents();
-      final Procedure1<TemplateType> _function = new Procedure1<TemplateType>() {
-        public void apply(final TemplateType iface) {
+      final Consumer<TemplateType> _function = new Consumer<TemplateType>() {
+        public void accept(final TemplateType iface) {
           List<Property> _collectAllTemplateProperties = PropertyEvaluation.collectAllTemplateProperties(iface);
           PropertyEvaluation.addAllUnique(result, _collectAllTemplateProperties);
         }
       };
-      IterableExtensions.<TemplateType>forEach(_parents_1, _function);
+      _parents_1.forEach(_function);
       return result;
     } else {
       return new ArrayList<Property>();
@@ -173,13 +173,13 @@ public class PropertyEvaluation {
     boolean _notEquals = (!Objects.equal(_parents, null));
     if (_notEquals) {
       EList<TemplateType> _parents_1 = type.getParents();
-      final Procedure1<TemplateType> _function = new Procedure1<TemplateType>() {
-        public void apply(final TemplateType iface) {
+      final Consumer<TemplateType> _function = new Consumer<TemplateType>() {
+        public void accept(final TemplateType iface) {
           List<Property> _collectAllTemplateProperties = PropertyEvaluation.collectAllTemplateProperties(iface);
           PropertyEvaluation.addAllUnique(result, _collectAllTemplateProperties);
         }
       };
-      IterableExtensions.<TemplateType>forEach(_parents_1, _function);
+      _parents_1.forEach(_function);
     }
     EList<Property> _properties = type.getProperties();
     return PropertyEvaluation.addAllUnique(result, _properties);
@@ -189,8 +189,8 @@ public class PropertyEvaluation {
    * Add elements of the second list to the first list if it is not already in there.
    */
   public static List<Property> addAllUnique(final List<Property> list, final List<Property> addList) {
-    final Procedure1<Property> _function = new Procedure1<Property>() {
-      public void apply(final Property item) {
+    final Consumer<Property> _function = new Consumer<Property>() {
+      public void accept(final Property item) {
         boolean _containsProperty = PropertyEvaluation.containsProperty(list, item);
         boolean _not = (!_containsProperty);
         if (_not) {
@@ -198,7 +198,7 @@ public class PropertyEvaluation {
         }
       }
     };
-    IterableExtensions.<Property>forEach(addList, _function);
+    addList.forEach(_function);
     return list;
   }
   

@@ -4,7 +4,7 @@
   <local-check-config name="Kieker based config" location="/de.cau.cs.se.instrumentation.releng/cs-conf.xml" type="project" description="">
     <additional-data name="protect-config-file" value="false"/>
   </local-check-config>
-  <fileset name="all" enabled="true" check-config-name="Kieker based config" local="true">
+  <fileset name="all" enabled="true" check-config-name="count" local="false">
     <file-match-pattern match-pattern="." include-pattern="true"/>
   </fileset>
 </fileset-config>

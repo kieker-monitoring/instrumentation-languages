@@ -36,6 +36,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
@@ -52,7 +53,6 @@ import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 /**
  * Simulates a real resource by mapping the a PCM model to our hierarchy model.
@@ -339,13 +339,13 @@ public class ForeignModelResource extends ResourceImpl {
    * Create methods for an interface in the intermediate model.
    */
   private void createMethods(final EList<Method> list, final Collection<EObject> objects) {
-    final Procedure1<EObject> _function = new Procedure1<EObject>() {
-      public void apply(final EObject signature) {
+    final Consumer<EObject> _function = new Consumer<EObject>() {
+      public void accept(final EObject signature) {
         Method _createMethod = ForeignModelResource.this.createMethod(signature);
         list.add(_createMethod);
       }
     };
-    IterableExtensions.<EObject>forEach(objects, _function);
+    objects.forEach(_function);
   }
   
   /**
@@ -372,14 +372,14 @@ public class ForeignModelResource extends ResourceImpl {
     method.setReturnType(_createTypeReference);
     Object _feature_1 = this.getFeature(signature, "parameters__OperationSignature");
     final Collection<EObject> parameters = ((Collection<EObject>) _feature_1);
-    final Procedure1<EObject> _function = new Procedure1<EObject>() {
-      public void apply(final EObject parameter) {
+    final Consumer<EObject> _function = new Consumer<EObject>() {
+      public void accept(final EObject parameter) {
         EList<Parameter> _parameters = method.getParameters();
         Parameter _createParameter = ForeignModelResource.this.createParameter(parameter);
         _parameters.add(_createParameter);
       }
     };
-    IterableExtensions.<EObject>forEach(parameters, _function);
+    parameters.forEach(_function);
     return method;
   }
   
