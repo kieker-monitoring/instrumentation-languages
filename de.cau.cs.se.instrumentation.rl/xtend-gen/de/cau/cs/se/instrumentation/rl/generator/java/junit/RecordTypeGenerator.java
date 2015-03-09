@@ -563,18 +563,9 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
           _builder.newLineIfNotEmpty();
         } else {
           _builder.append("\t");
-          String _castToPrimitiveType_2 = this.getCastToPrimitiveType(property);
-          _builder.append(_castToPrimitiveType_2, "\t");
-          _builder.append(" ");
           CharSequence _createPropertyValueSet_4 = this.createPropertyValueSet(property);
           _builder.append(_createPropertyValueSet_4, "\t");
-          _builder.append(", ");
-          String _castToPrimitiveType_3 = this.getCastToPrimitiveType(property);
-          _builder.append(_castToPrimitiveType_3, "\t");
-          _builder.append(" (");
-          String _getObjectType_1 = this.getGetObjectType(property);
-          _builder.append(_getObjectType_1, "\t");
-          _builder.append(")values[");
+          _builder.append(", values[");
           _builder.append(index, "\t");
           _builder.append("]");
           _builder.newLineIfNotEmpty();

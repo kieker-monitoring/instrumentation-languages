@@ -227,26 +227,15 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
     boolean _exists = IterableExtensions.<Property>exists(properties, _function);
     if (_exists) {
       final Collection<Pair<Property, Property>> duplicates = new ArrayList<Pair<Property, Property>>();
-<<<<<<< HEAD
-      final Procedure1<Property> _function_1 = new Procedure1<Property>() {
-        public void apply(final Property p) {
-=======
       final Consumer<Property> _function_1 = new Consumer<Property>() {
         public void accept(final Property p) {
->>>>>>> minor regeneration
           Pair<Property, Property> _findDuplicate = RecordLangValidator.this.findDuplicate(p, properties);
           duplicates.add(_findDuplicate);
         }
       };
-<<<<<<< HEAD
-      IterableExtensions.<Property>forEach(properties, _function_1);
-      final Procedure1<Pair<Property, Property>> _function_2 = new Procedure1<Pair<Property, Property>>() {
-        public void apply(final Pair<Property, Property> entry) {
-=======
       properties.forEach(_function_1);
       final Consumer<Pair<Property, Property>> _function_2 = new Consumer<Pair<Property, Property>>() {
         public void accept(final Pair<Property, Property> entry) {
->>>>>>> minor regeneration
           Property _key = entry.getKey();
           String _name = _key.getName();
           String _plus = ("Multiple property inheritance from " + _name);
@@ -266,11 +255,7 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
             RecordLangValidator.INVALID_NAME);
         }
       };
-<<<<<<< HEAD
-      IterableExtensions.<Pair<Property, Property>>forEach(duplicates, _function_2);
-=======
       duplicates.forEach(_function_2);
->>>>>>> minor regeneration
     }
   }
   
