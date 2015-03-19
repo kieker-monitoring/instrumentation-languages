@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>local</groupId>
+  <artifactId>org.eclipse.xtext.common.types</artifactId>
+  <versioning>
+    <release>2.5.3.v201402240820</release>
+    <versions>
+      <version>2.5.3.v201402240820</version>
+    </versions>
+    <lastUpdated>20150319104317</lastUpdated>
+  </versioning>
+</metadata>
