@@ -13,16 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.rl.typing;
+package de.cau.cs.se.instrumentation.rl.typing.jar;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
@@ -36,20 +34,22 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
+import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangFactory;
+import de.cau.cs.se.instrumentation.rl.recordLang.Type;
+
 /**
  *
- *
- * @author Christian Schneider
+ * broadly based on org.spp.cocome.behavior.pcm.handler.PCMModelTypeScope
  */
-public class PrimitiveTypeScope extends AbstractScope {
+public class JarModelTypeScope extends AbstractScope {
 
-	private final ITypeProvider typeProvider;
+	private final IJarModelTypeProvider typeProvider;
 
 	private final IQualifiedNameConverter qualifiedNameConverter;
 
 	private final Predicate<IEObjectDescription> filter;
 
-	public PrimitiveTypeScope(final ITypeProvider typeProvider,
+	protected JarModelTypeScope(final IJarModelTypeProvider typeProvider,
 			final IQualifiedNameConverter qualifiedNameConverter,
 			final Predicate<IEObjectDescription> filter) {
 		super(IScope.NULLSCOPE, false);
@@ -60,7 +60,7 @@ public class PrimitiveTypeScope extends AbstractScope {
 
 	@Override
 	public IEObjectDescription getSingleElement(final QualifiedName name) {
-		final EClassifier type = this.typeProvider
+		final Type type = this.typeProvider
 				.findTypeByName(this.qualifiedNameConverter.toString(name));
 		if (type == null) {
 			return null;
@@ -109,7 +109,7 @@ public class PrimitiveTypeScope extends AbstractScope {
 	protected Iterable<IEObjectDescription> internalGetAllElements() {
 		final List<IEObjectDescription> types = Lists.newArrayList();
 
-		for (final EClassifier t : this.typeProvider.getAllTypes()) {
+		for (final Type t : this.typeProvider.getAllTypes()) {
 			types.add(this.createScopedElement(t.getName()));
 		}
 
@@ -125,9 +125,9 @@ public class PrimitiveTypeScope extends AbstractScope {
 	}
 
 	protected InternalEObject createProxy(final String fullyQualifiedName) {
-		final URI uri = this.typeProvider.getTypeUriHelper().getFullURIForClass(
-				fullyQualifiedName);
-		final InternalEObject proxy = (InternalEObject) EcoreFactory.eINSTANCE.createEDataType();
+		final URI uri = this.typeProvider.getTypeUriHelper().getFullURIForClass(fullyQualifiedName);
+		// todo fix this: could be component or interface or method?
+		final InternalEObject proxy = (InternalEObject) RecordLangFactory.eINSTANCE.createModel();
 		proxy.eSetProxyURI(uri);
 		return proxy;
 	}
