@@ -25,7 +25,7 @@ public class JarModelTypeURIHelper { // NOCS -- constructor not required
 	/** */
 	public static final String ELEMENTS = "/Elements"; //$NON-NLS-1$
 	/** */
-	public static final String PROTOCOL = "internal"; //$NON-NLS-1$
+	public static final String PROTOCOL = "autojar"; //$NON-NLS-1$
 	/** */
 	public static final String OBJECTS = "/Objects/"; //$NON-NLS-1$
 

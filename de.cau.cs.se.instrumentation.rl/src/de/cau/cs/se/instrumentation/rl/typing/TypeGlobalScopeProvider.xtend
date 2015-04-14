@@ -38,7 +38,7 @@ class TypeGlobalScopeProvider extends DefaultGlobalScopeProvider {
 
     override IScope getScope(Resource resource, EReference reference, Predicate<IEObjectDescription> filter) {
             val IScope parentTypeScope = resource.getParentTypeScope(reference, filter, reference.getEReferenceType());
-            return super.getScope(parentTypeScope, resource, false, reference.getEReferenceType(), filter);
+            return super.getScope(parentTypeScope, resource, false, reference.getEReferenceType(), filter)
     }
 
     def IScope getParentTypeScope(Resource resource, EReference reference,

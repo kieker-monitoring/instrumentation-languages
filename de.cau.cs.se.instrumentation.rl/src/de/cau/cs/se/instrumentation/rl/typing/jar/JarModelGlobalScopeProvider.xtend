@@ -31,34 +31,20 @@ import org.eclipse.xtext.resource.IEObjectDescription
 import de.cau.cs.se.instrumentation.rl.typing.TypeProviderFactory
 import de.cau.cs.se.instrumentation.rl.typing.ITypeProvider
 import de.cau.cs.se.instrumentation.rl.typing.PrimitiveTypeScope
+import de.cau.cs.se.instrumentation.rl.typing.TypeGlobalScopeProvider
 
-class JarModelGlobalScopeProvider extends DefaultGlobalScopeProvider {
+class JarModelGlobalScopeProvider extends TypeGlobalScopeProvider {
 	@Inject
 	private JarModelTypeProviderFactory jarModeltypeProviderFactory;
-	@Inject
-	private TypeProviderFactory typeProviderFactory
 
 	@Inject
 	private IQualifiedNameConverter qualifiedNameConverter;
 
-    override IScope getScope(Resource resource, EReference reference, Predicate<IEObjectDescription> filter) {
-    	val IScope parentTypeScope = resource.getParentTypeScope(reference, filter, reference.getEReferenceType())
-        return super.getScope(parentTypeScope, resource, false, reference.getEReferenceType(), filter)
-    }
-
-    def IScope getParentTypeScope(Resource resource, EReference reference,
+	override IScope getParentTypeScope(Resource resource, EReference reference,
             Predicate<IEObjectDescription> filter, EClass referenceType) {
         // check whether the reference type is a type of any kind 
         if (EcoreUtil2::isAssignableFrom(Literals::ECLASSIFIER, referenceType)) {
-        	if (resource != null) {
-        		val ResourceSet resourceSet = resource.getResourceSet()
-    			if (resourceSet != null) {
-        			val ITypeProvider typeProvider = typeProviderFactory.getTypeProvider(resourceSet)
-					return new PrimitiveTypeScope(typeProvider, qualifiedNameConverter, filter)
-				} else
-    				throw new IllegalStateException("context must be contained in a resource set")
-        	} else
-    			throw new IllegalStateException("context must be contained in a resource")
+        	super.getParentTypeScope(resource, reference, filter, referenceType)
         } else {
         	if (resource != null) {
         		val ResourceSet resourceSet = resource.getResourceSet()
@@ -71,7 +57,6 @@ class JarModelGlobalScopeProvider extends DefaultGlobalScopeProvider {
     			throw new IllegalStateException("context must be contained in a resource")
         	
         }
-        	//return IScope::NULLSCOPE
         	
     }
 }
