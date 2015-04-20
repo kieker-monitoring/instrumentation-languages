@@ -7,6 +7,5 @@
 	<classpathentry kind="src" path="src-gen"/>
 	<classpathentry kind="src" path="xtend-gen"/>
 	<classpathentry exported="true" kind="lib" path="lib/reflections-0.9.9-RC1-uberjar.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Yannic/Desktop/kieker_jar/kieker-1.10.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
