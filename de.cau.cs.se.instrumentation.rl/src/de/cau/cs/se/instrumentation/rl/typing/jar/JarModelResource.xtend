@@ -59,10 +59,20 @@ public class JarModelResource extends ResourceImpl {
 	 * @return the EObject identified by the uriFragment or null if no such object exists. 
 	 */
 	override EObject getEObject(String uriFragment) {
-		System.out.println("this.getContents " + this.getContents())
+		//System.out.println("this.getContents " + this.getContents())
 		if (!this.getContents().empty) {
-			System.out.println("this.getContents get element " + this.getContents().get(0))
-			val EObject object = null // (this.getContents()?.get(0) as Model).contents?.findFirst[uriFragment.equals(this.getURIFragment(it))] TODO this way it's always null -> change?
+			//System.out.println("this.getContents get element " + this.getContents().get(0))
+			var EObject object = null
+			for (var i = 0; i < this.getContents.length; i ++){
+				var types = (this.getContents().get(i) as ModelImpl).getTypes()
+				var Iterator queue = types.iterator()
+				while (queue.hasNext() && object == null) {
+					var a = queue.next() as Type;
+					if (a.getName().endsWith("." + uriFragment) || a.getName().equals(uriFragment)) {
+						object = a
+						}
+					}			
+			}		
 			if (object != null) 
 				return object
 			else
@@ -138,14 +148,12 @@ public class JarModelResource extends ResourceImpl {
 	private def createModel() {
 		synchronized(this) {				
 				//create main result model
-				System.out.println("createModel start") //TODO rausnehmen
 				val ArrayList<String> jars = this.findJars()
-				System.out.println("jars.length : " + jars.length)	//TODO rausnehmen
+				//System.out.println("jars.length : " + jars.length)
 				val ArrayList<ModelImpl> resultModels = this.evaluateJars(jars)
 				if(resultModels != null){
 					this.getContents().addAll(resultModels)
 				}
-				System.out.println("createModel end") //TODO rausnehmen
 		}
 	}
 	
@@ -155,6 +163,7 @@ public class JarModelResource extends ResourceImpl {
 	 private def ArrayList<String> findJars(){
 		var ArrayList<String> jars = new ArrayList<String>(0)
         val URL[] urls = (ClassLoader.getSystemClassLoader() as URLClassLoader).getURLs()
+        //val URL[] urls = (Thread.getContextClassLoader() as URLClassLoader).getURLs()
         for(URL url: urls){
         	if(url.toString.endsWith(".jar")){
         		jars.add(url.path)      		
@@ -167,12 +176,11 @@ public class JarModelResource extends ResourceImpl {
 	 * starts model-creation for classes in the jars implementing IMonitoringRecord
 	 */
 	private def ArrayList<ModelImpl> evaluateJars(ArrayList<String> jarUrls){
-		System.out.println("evaluateJars")//TODO rausnehmen
 		var result = new ArrayList<ModelImpl>(0)
 		val ClassFinder classfinder = new ClassFinder();
 		for(var int i = 0; i<jarUrls.length; i++){
 			val temp = classfinder.getModelsForJar(jarUrls.get(i))
-			System.out.println(temp)//TODO rausnehmen
+			//System.out.println(temp)
 			if(temp != null){
 				result.addAll(temp)
 			}

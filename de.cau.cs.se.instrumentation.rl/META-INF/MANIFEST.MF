@@ -41,5 +41,6 @@ Export-Package: de.cau.cs.se.instrumentation.rl,
  de.cau.cs.se.instrumentation.rl.services,
  de.cau.cs.se.instrumentation.rl.validation
 Bundle-ClassPath: .,
- lib/reflections-0.9.9-RC1-uberjar.jar
+ lib/reflections-0.9.9-RC1-uberjar.jar,
+ lib/javassist.jar
 

@@ -30,8 +30,6 @@ public interface IJarModelTypeProvider {
 	/**
 	 * Provides a collection of all supported primitive types (helpful for content assist).
 	 *
-	 * @author chsch
-	 *
 	 * @return Collection of types
 	 */
 	Iterable<Type> getAllTypes();

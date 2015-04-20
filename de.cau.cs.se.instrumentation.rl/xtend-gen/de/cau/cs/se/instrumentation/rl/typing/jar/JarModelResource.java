@@ -24,6 +24,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Map;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
@@ -56,17 +57,37 @@ public class JarModelResource extends ResourceImpl {
    */
   public EObject getEObject(final String uriFragment) {
     EList<EObject> _contents = this.getContents();
-    String _plus = ("this.getContents " + _contents);
-    System.out.println(_plus);
-    EList<EObject> _contents_1 = this.getContents();
-    boolean _isEmpty = _contents_1.isEmpty();
+    boolean _isEmpty = _contents.isEmpty();
     boolean _not = (!_isEmpty);
     if (_not) {
-      EList<EObject> _contents_2 = this.getContents();
-      EObject _get = _contents_2.get(0);
-      String _plus_1 = ("this.getContents get element " + _get);
-      System.out.println(_plus_1);
-      final EObject object = null;
+      EObject object = null;
+      for (int i = 0; (i < ((Object[])Conversions.unwrapArray(this.getContents(), Object.class)).length); i++) {
+        {
+          EList<EObject> _contents_1 = this.getContents();
+          EObject _get = _contents_1.get(i);
+          EList<Type> types = ((ModelImpl) _get).getTypes();
+          Iterator queue = types.iterator();
+          while ((queue.hasNext() && Objects.equal(object, null))) {
+            {
+              Object _next = queue.next();
+              Type a = ((Type) _next);
+              boolean _or = false;
+              String _name = a.getName();
+              boolean _endsWith = _name.endsWith(("." + uriFragment));
+              if (_endsWith) {
+                _or = true;
+              } else {
+                String _name_1 = a.getName();
+                boolean _equals = _name_1.equals(uriFragment);
+                _or = _equals;
+              }
+              if (_or) {
+                object = a;
+              }
+            }
+          }
+        }
+      }
       boolean _notEquals = (!Objects.equal(object, null));
       if (_notEquals) {
         return object;
@@ -149,24 +170,24 @@ public class JarModelResource extends ResourceImpl {
   /**
    * Create an result model for a given ecore model.
    */
-  private void createModel() {
-    /* this; */
+  private boolean createModel() {
+    boolean _xsynchronizedexpression = false;
     synchronized (this) {
+      boolean _xblockexpression = false;
       {
-        System.out.println("createModel start");
         final ArrayList<String> jars = this.findJars();
-        int _length = ((Object[])Conversions.unwrapArray(jars, Object.class)).length;
-        String _plus = ("jars.length : " + Integer.valueOf(_length));
-        System.out.println(_plus);
         final ArrayList<ModelImpl> resultModels = this.evaluateJars(jars);
+        boolean _xifexpression = false;
         boolean _notEquals = (!Objects.equal(resultModels, null));
         if (_notEquals) {
           EList<EObject> _contents = this.getContents();
-          _contents.addAll(resultModels);
+          _xifexpression = _contents.addAll(resultModels);
         }
-        System.out.println("createModel end");
+        _xblockexpression = _xifexpression;
       }
+      _xsynchronizedexpression = _xblockexpression;
     }
+    return _xsynchronizedexpression;
   }
   
   /**
@@ -192,14 +213,12 @@ public class JarModelResource extends ResourceImpl {
    */
   private ArrayList<ModelImpl> evaluateJars(final ArrayList<String> jarUrls) {
     try {
-      System.out.println("evaluateJars");
       ArrayList<ModelImpl> result = new ArrayList<ModelImpl>(0);
       final ClassFinder classfinder = new ClassFinder();
       for (int i = 0; (i < ((Object[])Conversions.unwrapArray(jarUrls, Object.class)).length); i++) {
         {
           String _get = jarUrls.get(i);
           final ArrayList<ModelImpl> temp = classfinder.getModelsForJar(_get);
-          System.out.println(temp);
           boolean _notEquals = (!Objects.equal(temp, null));
           if (_notEquals) {
             result.addAll(temp);

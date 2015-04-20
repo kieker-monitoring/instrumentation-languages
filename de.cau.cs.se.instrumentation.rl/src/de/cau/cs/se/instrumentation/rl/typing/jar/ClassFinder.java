@@ -34,9 +34,11 @@ public class ClassFinder {
 	protected ClassFinder() {
 		final Reflections reflections = new Reflections(ClasspathHelper.forJavaClassPath(), new SubTypesScanner(false));
 		try {
-			this.classes = reflections.getSubTypesOf(Class.forName("kieker.common.record.IMonitoringRecord"));
+			// this.classes = reflections.getSubTypesOf(Class.forName("kieker.common.record.IMonitoringRecord"));
+			this.classes = reflections.getSubTypesOf(ClassLoader.getSystemClassLoader().loadClass("kieker.common.record.IMonitoringRecord"));
 		} catch (final ClassNotFoundException e) {
-			// System.out.println("IMonitorinRecord is not in ClassPath (no implementing classes possible)");
+			// System.out.println(e);
+			// System.out.println("IMonitoringRecord is not in ClassPath (no implementing classes possible)");
 			this.classes = Collections.EMPTY_SET;
 		}
 	}
