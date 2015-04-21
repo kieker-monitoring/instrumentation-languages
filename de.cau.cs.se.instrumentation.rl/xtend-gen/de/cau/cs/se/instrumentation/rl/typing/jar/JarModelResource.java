@@ -175,7 +175,7 @@ public class JarModelResource extends ResourceImpl {
     synchronized (this) {
       boolean _xblockexpression = false;
       {
-        final ArrayList<String> jars = this.findJars();
+        final ArrayList<URL> jars = this.findJars();
         final ArrayList<ModelImpl> resultModels = this.evaluateJars(jars);
         boolean _xifexpression = false;
         boolean _notEquals = (!Objects.equal(resultModels, null));
@@ -193,16 +193,15 @@ public class JarModelResource extends ResourceImpl {
   /**
    * locates all jars in  the current user directory
    */
-  private ArrayList<String> findJars() {
-    ArrayList<String> jars = new ArrayList<String>(0);
+  private ArrayList<URL> findJars() {
+    ArrayList<URL> jars = new ArrayList<URL>(0);
     ClassLoader _systemClassLoader = ClassLoader.getSystemClassLoader();
     final URL[] urls = ((URLClassLoader) _systemClassLoader).getURLs();
     for (final URL url : urls) {
       String _string = url.toString();
       boolean _endsWith = _string.endsWith(".jar");
       if (_endsWith) {
-        String _path = url.getPath();
-        jars.add(_path);
+        jars.add(url);
       }
     }
     return jars;
@@ -211,13 +210,13 @@ public class JarModelResource extends ResourceImpl {
   /**
    * starts model-creation for classes in the jars implementing IMonitoringRecord
    */
-  private ArrayList<ModelImpl> evaluateJars(final ArrayList<String> jarUrls) {
+  private ArrayList<ModelImpl> evaluateJars(final ArrayList<URL> jarUrls) {
     try {
       ArrayList<ModelImpl> result = new ArrayList<ModelImpl>(0);
-      final ClassFinder classfinder = new ClassFinder();
+      final ClassFinder classfinder = new ClassFinder(((URL[])Conversions.unwrapArray(jarUrls, URL.class)));
       for (int i = 0; (i < ((Object[])Conversions.unwrapArray(jarUrls, Object.class)).length); i++) {
         {
-          String _get = jarUrls.get(i);
+          URL _get = jarUrls.get(i);
           final ArrayList<ModelImpl> temp = classfinder.getModelsForJar(_get);
           boolean _notEquals = (!Objects.equal(temp, null));
           if (_notEquals) {

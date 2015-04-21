@@ -1,6 +1,9 @@
 package de.cau.cs.se.instrumentation.rl.typing.jar;
 
 import java.io.FileInputStream;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.security.AccessController;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -31,11 +34,13 @@ public class ClassFinder {
 	/**
 	 * creates new ClassFinder and scans whole classpath for IMonitoringRecords
 	 */
-	protected ClassFinder() {
+	protected ClassFinder(final URL urls[]) {
 		final Reflections reflections = new Reflections(ClasspathHelper.forJavaClassPath(), new SubTypesScanner(false));
 		try {
-			// this.classes = reflections.getSubTypesOf(Class.forName("kieker.common.record.IMonitoringRecord"));
-			this.classes = reflections.getSubTypesOf(ClassLoader.getSystemClassLoader().loadClass("kieker.common.record.IMonitoringRecord"));
+			final PrivilegedClassLoaderAction action = new PrivilegedClassLoaderAction(urls);
+			final URLClassLoader classLoader = AccessController.doPrivileged(action);
+
+			this.classes = reflections.getSubTypesOf(classLoader.loadClass("kieker.common.record.IMonitoringRecord"));
 		} catch (final ClassNotFoundException e) {
 			// System.out.println(e);
 			// System.out.println("IMonitoringRecord is not in ClassPath (no implementing classes possible)");
@@ -48,10 +53,10 @@ public class ClassFinder {
 	 *
 	 * @param - location of the jar-File which shall be checked for IMonitoringRecords
 	 */
-	protected ArrayList<ModelImpl> getModelsForJar(final String jarUrl) throws Exception {
+	protected ArrayList<ModelImpl> getModelsForJar(final URL jarUrl) throws Exception {
 		ArrayList<ModelImpl> resultModels = null;
 		final ArrayList<Class<?>> result = new ArrayList<Class<?>>();
-		final List<String> jarClasses = this.scanJar(jarUrl);
+		final List<String> jarClasses = this.scanJar(jarUrl.getPath());
 		final Iterator queue = this.classes.iterator();
 		while (queue.hasNext()) {
 			final Class a = (Class) queue.next();

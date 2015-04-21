@@ -148,7 +148,7 @@ public class JarModelResource extends ResourceImpl {
 	private def createModel() {
 		synchronized(this) {				
 				//create main result model
-				val ArrayList<String> jars = this.findJars()
+				val ArrayList<URL> jars = this.findJars()
 				//System.out.println("jars.length : " + jars.length)
 				val ArrayList<ModelImpl> resultModels = this.evaluateJars(jars)
 				if(resultModels != null){
@@ -160,13 +160,13 @@ public class JarModelResource extends ResourceImpl {
 	/**
 	 * locates all jars in  the current user directory
 	 */
-	 private def ArrayList<String> findJars(){
-		var ArrayList<String> jars = new ArrayList<String>(0)
+	 private def ArrayList<URL> findJars(){
+		var ArrayList<URL> jars = new ArrayList<URL>(0)
         val URL[] urls = (ClassLoader.getSystemClassLoader() as URLClassLoader).getURLs()
-        //val URL[] urls = (Thread.getContextClassLoader() as URLClassLoader).getURLs()
-        for(URL url: urls){
+        
+        for(URL url: urls) {
         	if(url.toString.endsWith(".jar")){
-        		jars.add(url.path)      		
+        		jars.add(url)      		
         	}
         }
 		return jars	
@@ -175,9 +175,9 @@ public class JarModelResource extends ResourceImpl {
 	/**
 	 * starts model-creation for classes in the jars implementing IMonitoringRecord
 	 */
-	private def ArrayList<ModelImpl> evaluateJars(ArrayList<String> jarUrls){
+	private def ArrayList<ModelImpl> evaluateJars(ArrayList<URL> jarUrls){
 		var result = new ArrayList<ModelImpl>(0)
-		val ClassFinder classfinder = new ClassFinder();
+		val ClassFinder classfinder = new ClassFinder(jarUrls);
 		for(var int i = 0; i<jarUrls.length; i++){
 			val temp = classfinder.getModelsForJar(jarUrls.get(i))
 			//System.out.println(temp)
