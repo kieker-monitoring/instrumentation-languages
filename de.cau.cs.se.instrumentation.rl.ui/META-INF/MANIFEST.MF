@@ -25,7 +25,7 @@ Require-Bundle: de.cau.cs.se.instrumentation.rl;visibility:=reexport,
  org.eclipse.core.filesystem
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6,
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8,
  JavaSE-1.7
 Export-Package: de.cau.cs.se.instrumentation.rl.ui,
  de.cau.cs.se.instrumentation.rl.ui.contentassist,

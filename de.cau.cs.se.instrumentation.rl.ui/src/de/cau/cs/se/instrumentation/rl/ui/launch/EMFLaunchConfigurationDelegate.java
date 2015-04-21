@@ -39,7 +39,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 
 /**
  * Launcher delegate.
- * 
+ *
  * @author Reiner Jung
  *
  */
@@ -66,9 +66,9 @@ public class EMFLaunchConfigurationDelegate extends LaunchConfigurationDelegate 
 
 	/**
 	 * Central launcher for the EMF export functionality.
-	 * 
+	 *
 	 * @throws CoreException API delegated exception
-	 * 
+	 *
 	 * @param configuration launcher configuration
 	 * @param mode mode is either debug or run
 	 * @param launch the operation to be launched
@@ -82,7 +82,6 @@ public class EMFLaunchConfigurationDelegate extends LaunchConfigurationDelegate 
 
 		final IFile targetFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(destinationFolder + File.separator + destinationFile));
 
-		@SuppressWarnings("unchecked")
 		final List<String> sourceFolders = configuration.getAttribute(ATTR_SOURCE_FOLDER, new ArrayList<String>());
 
 		// create EMF model

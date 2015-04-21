@@ -24,8 +24,7 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.common.types.access.jdt,
  org.eclipse.xtext.xbase.lib
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6,
- JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: de.cau.cs.se.instrumentation.rl,
  de.cau.cs.se.instrumentation.rl.formatting,
  de.cau.cs.se.instrumentation.rl.generator,

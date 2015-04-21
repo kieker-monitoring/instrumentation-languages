@@ -53,7 +53,7 @@ import org.eclipse.ui.dialogs.ContainerSelectionDialog;
 
 /**
  * Setup tab for IRL to EMF generator.
- * 
+ *
  * @author Reiner Jung
  *
  */
@@ -75,7 +75,7 @@ public class EMFProjectTab extends AbstractLaunchConfigurationTab implements ILa
 
 	/**
 	 * create control for run configuration.
-	 * 
+	 *
 	 * @param parent parent element in the UI
 	 */
 	public void createControl(final Composite parent) {
@@ -244,7 +244,7 @@ public class EMFProjectTab extends AbstractLaunchConfigurationTab implements ILa
 
 	/**
 	 * Set default values.
-	 * 
+	 *
 	 * @param configuration a launch configuration copy
 	 */
 	public void setDefaults(final ILaunchConfigurationWorkingCopy configuration) {
@@ -266,15 +266,14 @@ public class EMFProjectTab extends AbstractLaunchConfigurationTab implements ILa
 
 	/**
 	 * Initialize values of the tab from the configuration.
-	 * 
+	 *
 	 * @param configuration the configuration holding properties
 	 */
 	public void initializeFrom(final ILaunchConfiguration configuration) {
 		try {
 			this.sourceContainerList = new ArrayList<IContainer>();
-			@SuppressWarnings("unchecked")
 			final List<String> sourceFolders =
-			configuration.getAttribute(EMFLaunchConfigurationDelegate.ATTR_SOURCE_FOLDER, new ArrayList<String>());
+					configuration.getAttribute(EMFLaunchConfigurationDelegate.ATTR_SOURCE_FOLDER, new ArrayList<String>());
 			for (final String folder : sourceFolders) {
 				final IPath path = new Path(folder);
 				if (path.segmentCount() > 1) {
@@ -296,7 +295,7 @@ public class EMFProjectTab extends AbstractLaunchConfigurationTab implements ILa
 
 	/**
 	 * Store form data back to the configuration.
-	 * 
+	 *
 	 * @param configuration copy of the configuration to by updated by form data
 	 */
 	public void performApply(final ILaunchConfigurationWorkingCopy configuration) {
@@ -312,7 +311,7 @@ public class EMFProjectTab extends AbstractLaunchConfigurationTab implements ILa
 
 	/**
 	 * The name.
-	 * 
+	 *
 	 * @return the name of the tab
 	 */
 	public String getName() {
