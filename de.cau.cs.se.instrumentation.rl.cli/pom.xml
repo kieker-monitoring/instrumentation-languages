@@ -10,7 +10,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<checkstyle.config.location>../de.cau.cs.se.instrumentation.releng/cs-conf.xml</checkstyle.config.location>
-		<tycho-version>0.18.1</tycho-version>
+		<tycho-version>0.22.0</tycho-version>
 		<!-- variables -->
 		<eclipse-repo.url>http://download.eclipse.org/releases/luna</eclipse-repo.url>
 	</properties>
