@@ -19,10 +19,10 @@ import com.google.common.base.Objects;
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
 import de.cau.cs.se.instrumentation.rl.recordLang.impl.ModelImpl;
 import de.cau.cs.se.instrumentation.rl.typing.jar.ClassFinder;
+import de.cau.cs.se.instrumentation.rl.typing.jar.ProjectResolver;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
@@ -35,6 +35,8 @@ import org.eclipse.xtext.xbase.lib.Exceptions;
 
 /**
  * broadly based on org.spp.cocome.behavior.pcm.handler.PCMModelResource
+ * 
+ * @author Yannic Kropp
  */
 @SuppressWarnings("all")
 public class JarModelResource extends ResourceImpl {
@@ -194,17 +196,12 @@ public class JarModelResource extends ResourceImpl {
    * locates all jars in  the current user directory
    */
   private ArrayList<URL> findJars() {
-    ArrayList<URL> jars = new ArrayList<URL>(0);
-    ClassLoader _systemClassLoader = ClassLoader.getSystemClassLoader();
-    final URL[] urls = ((URLClassLoader) _systemClassLoader).getURLs();
-    for (final URL url : urls) {
-      String _string = url.toString();
-      boolean _endsWith = _string.endsWith(".jar");
-      if (_endsWith) {
-        jars.add(url);
-      }
+    try {
+      final ProjectResolver temp = new ProjectResolver();
+      return temp.findUrls();
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
     }
-    return jars;
   }
   
   /**

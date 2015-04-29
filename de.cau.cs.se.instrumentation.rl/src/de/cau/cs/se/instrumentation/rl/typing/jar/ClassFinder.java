@@ -14,8 +14,8 @@ import java.util.zip.ZipInputStream;
 
 //TODO add Dependency
 import org.reflections.Reflections;
-import org.reflections.scanners.SubTypesScanner;
 import org.reflections.util.ClasspathHelper;
+import org.reflections.util.ConfigurationBuilder;
 
 import de.cau.cs.se.instrumentation.rl.recordLang.impl.ModelImpl;
 
@@ -34,11 +34,12 @@ public class ClassFinder {
 	/**
 	 * creates new ClassFinder and scans whole classpath for IMonitoringRecords
 	 */
-	protected ClassFinder(final URL urls[]) {
-		final Reflections reflections = new Reflections(ClasspathHelper.forJavaClassPath(), new SubTypesScanner(false));
+	protected ClassFinder(final URL[] urls) {
+		final PrivilegedClassLoaderAction action = new PrivilegedClassLoaderAction(urls);
+		final URLClassLoader classLoader = AccessController.doPrivileged(action);
+		final URLClassLoader urlcl = new URLClassLoader(urls);
+		final Reflections reflections = new Reflections(new ConfigurationBuilder().setUrls(ClasspathHelper.forClassLoader(urlcl)).addClassLoader(urlcl));
 		try {
-			final PrivilegedClassLoaderAction action = new PrivilegedClassLoaderAction(urls);
-			final URLClassLoader classLoader = AccessController.doPrivileged(action);
 
 			this.classes = reflections.getSubTypesOf(classLoader.loadClass("kieker.common.record.IMonitoringRecord"));
 		} catch (final ClassNotFoundException e) {

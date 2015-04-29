@@ -34,11 +34,16 @@ import de.cau.cs.se.instrumentation.rl.typing.jar.ClassFinder;
 import de.cau.cs.se.instrumentation.rl.recordLang.impl.ModelImpl
 import java.net.URLClassLoader
 import java.net.URL
+import org.eclipse.core.resources.IResource
+import org.eclipse.core.runtime.URIUtil
 
 /**
  * broadly based on org.spp.cocome.behavior.pcm.handler.PCMModelResource
+ * 
+ * @author Yannic Kropp
+ * 
  */
-public class JarModelResource extends ResourceImpl {
+public class JarModelResource extends ResourceImpl{
 
 	
 	/**
@@ -59,9 +64,7 @@ public class JarModelResource extends ResourceImpl {
 	 * @return the EObject identified by the uriFragment or null if no such object exists. 
 	 */
 	override EObject getEObject(String uriFragment) {
-		//System.out.println("this.getContents " + this.getContents())
 		if (!this.getContents().empty) {
-			//System.out.println("this.getContents get element " + this.getContents().get(0))
 			var EObject object = null
 			for (var i = 0; i < this.getContents.length; i ++){
 				var types = (this.getContents().get(i) as ModelImpl).getTypes()
@@ -147,9 +150,7 @@ public class JarModelResource extends ResourceImpl {
 	 */
 	private def createModel() {
 		synchronized(this) {				
-				//create main result model
 				val ArrayList<URL> jars = this.findJars()
-				//System.out.println("jars.length : " + jars.length)
 				val ArrayList<ModelImpl> resultModels = this.evaluateJars(jars)
 				if(resultModels != null){
 					this.getContents().addAll(resultModels)
@@ -161,15 +162,8 @@ public class JarModelResource extends ResourceImpl {
 	 * locates all jars in  the current user directory
 	 */
 	 private def ArrayList<URL> findJars(){
-		var ArrayList<URL> jars = new ArrayList<URL>(0)
-        val URL[] urls = (ClassLoader.getSystemClassLoader() as URLClassLoader).getURLs()
-        
-        for(URL url: urls) {
-        	if(url.toString.endsWith(".jar")){
-        		jars.add(url)      		
-        	}
-        }
-		return jars	
+		val ProjectResolver temp = new ProjectResolver()
+		return temp.findUrls()
 	}
 	
 	/**
