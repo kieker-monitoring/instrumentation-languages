@@ -40,14 +40,17 @@ import org.eclipse.xtext.xbase.lib.Exceptions;
  */
 @SuppressWarnings("all")
 public class JarModelResource extends ResourceImpl {
+  private URI projectURI;
+  
   /**
    * Integrate a foreign model.
    * 
    * @param uri of the foreign model
    * @param applicationModel the application model
    */
-  public JarModelResource(final URI uri) {
+  public JarModelResource(final URI uri, final URI projUri) {
     super(uri);
+    this.projectURI = projUri;
   }
   
   /**
@@ -136,8 +139,6 @@ public class JarModelResource extends ResourceImpl {
    * This routine is called from ResourceImpl load after the load method above is triggered.
    * It initializes the primitive type mirror.
    * 
-   * TODO fix documentation
-   * 
    * @param inputStream
    * @param options
    * 
@@ -197,7 +198,7 @@ public class JarModelResource extends ResourceImpl {
    */
   private ArrayList<URL> findJars() {
     try {
-      final ProjectResolver temp = new ProjectResolver();
+      final ProjectResolver temp = new ProjectResolver(this.projectURI);
       return temp.findUrls();
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);

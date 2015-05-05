@@ -98,7 +98,7 @@ public class JarModelTypeProvider implements Resource.Factory, IJarModelTypeProv
 	 *            The URI for the resource
 	 */
 	public JarModelResource createResource(final URI uri) {
-		return new JarModelResource(uri);
+		return new JarModelResource(uri, this.resourceSet.getResources().get(0).getURI());
 	}
 
 	/**

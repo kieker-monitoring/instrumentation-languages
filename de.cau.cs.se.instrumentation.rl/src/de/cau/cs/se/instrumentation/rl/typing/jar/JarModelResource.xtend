@@ -44,6 +44,8 @@ import org.eclipse.core.runtime.URIUtil
  * 
  */
 public class JarModelResource extends ResourceImpl{
+	
+	var URI projectURI
 
 	
 	/**
@@ -52,8 +54,9 @@ public class JarModelResource extends ResourceImpl{
 	 * @param uri of the foreign model
 	 * @param applicationModel the application model
 	 */
-	public new(URI uri) {
+	public new(URI uri, URI projUri) {
 		super(uri)
+		this.projectURI = projUri
 	}
 	
 	/**
@@ -119,8 +122,6 @@ public class JarModelResource extends ResourceImpl{
 	 * This routine is called from ResourceImpl load after the load method above is triggered.
 	 * It initializes the primitive type mirror.
 	 * 
-	 * TODO fix documentation
-	 * 
 	 * @param inputStream
 	 * @param options
 	 * 
@@ -162,7 +163,7 @@ public class JarModelResource extends ResourceImpl{
 	 * locates all jars in  the current user directory
 	 */
 	 private def ArrayList<URL> findJars(){
-		val ProjectResolver temp = new ProjectResolver()
+		val ProjectResolver temp = new ProjectResolver(this.projectURI)
 		return temp.findUrls()
 	}
 	
