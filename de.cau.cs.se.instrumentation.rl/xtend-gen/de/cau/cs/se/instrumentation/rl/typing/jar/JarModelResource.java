@@ -212,15 +212,10 @@ public class JarModelResource extends ResourceImpl {
     try {
       ArrayList<ModelImpl> result = new ArrayList<ModelImpl>(0);
       final ClassFinder classfinder = new ClassFinder(((URL[])Conversions.unwrapArray(jarUrls, URL.class)));
-      for (int i = 0; (i < ((Object[])Conversions.unwrapArray(jarUrls, Object.class)).length); i++) {
-        {
-          URL _get = jarUrls.get(i);
-          final ArrayList<ModelImpl> temp = classfinder.getModelsForJar(_get);
-          boolean _notEquals = (!Objects.equal(temp, null));
-          if (_notEquals) {
-            result.addAll(temp);
-          }
-        }
+      final ArrayList<ModelImpl> temp = classfinder.getModels();
+      boolean _notEquals = (!Objects.equal(temp, null));
+      if (_notEquals) {
+        result = temp;
       }
       return result;
     } catch (Throwable _e) {

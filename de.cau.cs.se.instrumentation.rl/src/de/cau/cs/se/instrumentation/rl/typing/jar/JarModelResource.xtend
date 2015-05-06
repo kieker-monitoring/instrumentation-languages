@@ -164,13 +164,10 @@ public class JarModelResource extends ResourceImpl{
 	private def ArrayList<ModelImpl> evaluateJars(ArrayList<URL> jarUrls){
 		var result = new ArrayList<ModelImpl>(0)
 		val ClassFinder classfinder = new ClassFinder(jarUrls);
-		for(var int i = 0; i<jarUrls.length; i++){
-			val temp = classfinder.getModelsForJar(jarUrls.get(i))
-			//System.out.println(temp)
+		val ArrayList<ModelImpl> temp = classfinder.getModels()
 			if(temp != null){
-				result.addAll(temp)
-			}
-		}	
+				result = temp
+			}	
 		return result;
 	}
 }
