@@ -15,27 +15,18 @@
  ***************************************************************************/
 package de.cau.cs.se.instrumentation.rl.typing.jar;
 
+import de.cau.cs.se.instrumentation.rl.recordLang.Type
+import de.cau.cs.se.instrumentation.rl.recordLang.impl.ModelImpl
 import java.io.IOException
 import java.io.InputStream
+import java.net.URL
+import java.util.ArrayList
 import java.util.Iterator
-import java.util.List
 import java.util.Map
-
 import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl
-
-import java.util.ArrayList
-import de.cau.cs.se.instrumentation.rl.recordLang.Type
-
-import de.cau.cs.se.instrumentation.rl.typing.jar.ClassFinder;
-import de.cau.cs.se.instrumentation.rl.recordLang.impl.ModelImpl
-import java.net.URLClassLoader
-import java.net.URL
-import org.eclipse.core.resources.IResource
-import org.eclipse.core.runtime.URIUtil
 
 /**
  * broadly based on org.spp.cocome.behavior.pcm.handler.PCMModelResource

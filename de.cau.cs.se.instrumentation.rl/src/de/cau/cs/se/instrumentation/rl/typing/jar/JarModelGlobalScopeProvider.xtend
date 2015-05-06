@@ -15,23 +15,18 @@
  ***************************************************************************/
 package de.cau.cs.se.instrumentation.rl.typing.jar;
 
+import com.google.common.base.Predicate
+import com.google.inject.Inject
+import de.cau.cs.se.instrumentation.rl.typing.TypeGlobalScopeProvider
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EReference
-import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.EcorePackage.Literals
+import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.xtext.EcoreUtil2
-import org.eclipse.xtext.naming.IQualifiedNameConverter;
-import org.eclipse.xtext.scoping.IScope;
-import org.eclipse.xtext.scoping.impl.DefaultGlobalScopeProvider;
-
-import com.google.common.base.Predicate;
-import com.google.inject.Inject;
-import org.eclipse.emf.ecore.EcorePackage$Literals
+import org.eclipse.xtext.naming.IQualifiedNameConverter
 import org.eclipse.xtext.resource.IEObjectDescription
-import de.cau.cs.se.instrumentation.rl.typing.TypeProviderFactory
-import de.cau.cs.se.instrumentation.rl.typing.ITypeProvider
-import de.cau.cs.se.instrumentation.rl.typing.PrimitiveTypeScope
-import de.cau.cs.se.instrumentation.rl.typing.TypeGlobalScopeProvider
+import org.eclipse.xtext.scoping.IScope
 
 class JarModelGlobalScopeProvider extends TypeGlobalScopeProvider {
 	@Inject
