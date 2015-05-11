@@ -3,7 +3,7 @@ package de.cau.cs.se.instrumentation.rl.generator.java.record;
 import com.google.common.base.Objects;
 import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator;
 import de.cau.cs.se.instrumentation.rl.generator.InternalErrorException;
-import de.cau.cs.se.instrumentation.rl.generator.java.RlType2JavaTypeExtensions;
+import de.cau.cs.se.instrumentation.rl.generator.java.ModelTypeToJavaTypeExtensions;
 import de.cau.cs.se.instrumentation.rl.generator.java.record.ComputeUID;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize;
@@ -37,6 +37,7 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.ExclusiveRange;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
@@ -45,6 +46,9 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
 public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
+  @Extension
+  private ModelTypeToJavaTypeExtensions typeMapper = new ModelTypeToJavaTypeExtensions();
+  
   /**
    * Return the unique id.
    */
@@ -1140,7 +1144,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     boolean _greaterThan = (_size > 0);
     if (_greaterThan) {
       EClassifier _class_ = classifier.getClass_();
-      String _createPrimitiveTypeName = RlType2JavaTypeExtensions.createPrimitiveTypeName(_class_);
+      String _createPrimitiveTypeName = this.typeMapper.createPrimitiveTypeName(_class_);
       EList<ArraySize> _sizes_1 = classifier.getSizes();
       final Function1<ArraySize, CharSequence> _function = new Function1<ArraySize, CharSequence>() {
         public CharSequence apply(final ArraySize size) {
@@ -1154,7 +1158,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _xifexpression = (_createPrimitiveTypeName + _join);
     } else {
       EClassifier _class__1 = classifier.getClass_();
-      _xifexpression = RlType2JavaTypeExtensions.createPrimitiveTypeName(_class__1);
+      _xifexpression = this.typeMapper.createPrimitiveTypeName(_class__1);
     }
     return _xifexpression;
   }
@@ -2152,7 +2156,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _xifexpression = this.createArrayTypeName(classifier);
     } else {
       EClassifier _class_ = classifier.getClass_();
-      _xifexpression = RlType2JavaTypeExtensions.createPrimitiveTypeName(_class_);
+      _xifexpression = this.typeMapper.createPrimitiveTypeName(_class_);
     }
     return _xifexpression;
   }
@@ -2174,7 +2178,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _xifexpression = this.createArrayTypeName(classifier);
     } else {
       EClassifier _class_ = classifier.getClass_();
-      _xifexpression = RlType2JavaTypeExtensions.createPrimitiveWrapperTypeName(_class_);
+      _xifexpression = this.typeMapper.createPrimitiveWrapperTypeName(_class_);
     }
     return _xifexpression;
   }
@@ -2191,7 +2195,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     String _xblockexpression = null;
     {
       EClassifier _class_ = classifier.getClass_();
-      final String primitiveTypeName = RlType2JavaTypeExtensions.createPrimitiveTypeName(_class_);
+      final String primitiveTypeName = this.typeMapper.createPrimitiveTypeName(_class_);
       EList<ArraySize> _sizes = classifier.getSizes();
       final Function1<ArraySize, String> _function = new Function1<ArraySize, String>() {
         public String apply(final ArraySize size) {

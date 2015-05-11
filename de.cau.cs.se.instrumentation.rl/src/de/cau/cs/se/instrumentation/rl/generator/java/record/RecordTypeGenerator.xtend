@@ -25,11 +25,16 @@ import de.cau.cs.se.instrumentation.rl.generator.InternalErrorException
 import java.util.List
 import java.util.Calendar
 
-import static extension de.cau.cs.se.instrumentation.rl.generator.java.RlType2JavaTypeExtensions.*
 import de.cau.cs.se.instrumentation.rl.recordLang.BuiltInValueLiteral
+import de.cau.cs.se.instrumentation.rl.generator.java.ModelTypeToJavaTypeExtensions
+import com.google.inject.Inject
 
 class RecordTypeGenerator extends AbstractRecordTypeGenerator {
-
+	
+	// TODO for some strange reason the inject does not work.
+	//@Inject extension ModelTypeToJavaTypeExtensions typeMapper
+	extension ModelTypeToJavaTypeExtensions typeMapper = new ModelTypeToJavaTypeExtensions()
+	
 	/**
 	 * Return the unique id.
 	 */

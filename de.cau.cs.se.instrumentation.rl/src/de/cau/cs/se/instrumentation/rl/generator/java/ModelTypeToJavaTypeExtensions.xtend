@@ -1,11 +1,15 @@
 package de.cau.cs.se.instrumentation.rl.generator.java;
 
 import org.eclipse.emf.ecore.EClassifier
+import de.cau.cs.se.instrumentation.rl.generator.IModelTypeToTargetTypeExtensions
 
-class RlType2JavaTypeExtensions {
+class ModelTypeToJavaTypeExtensions implements IModelTypeToTargetTypeExtensions {
 
-	private new() {
-		// extension class
+	/**
+	 * 
+	 */
+	public new() {
+		// non static extension class
 	}
 
 	/**
@@ -14,7 +18,7 @@ class RlType2JavaTypeExtensions {
 	 * @return 
 	 * 		the Java type name of the given <code>classifier</code>
 	 */
-	def static createPrimitiveTypeName(EClassifier classifier) {
+	override String createPrimitiveTypeName(EClassifier classifier) {
 		switch (classifier.name) {
 			case 'int': 'int'
 			case 'long': 'long'
@@ -32,7 +36,7 @@ class RlType2JavaTypeExtensions {
 	/**
 	 * Determine the right Java string for a given system type.
 	 */
-	def static createPrimitiveWrapperTypeName(EClassifier classifier) {
+	override String createPrimitiveWrapperTypeName(EClassifier classifier) {
 		switch (classifier.name) {
 			case 'int': 'Integer'
 			case 'long': 'Long'

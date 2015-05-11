@@ -21,11 +21,11 @@ import de.cau.cs.se.instrumentation.rl.ouput.config.OutletConfiguration;
  * Configuration and registration of IRL generators.
  * The class also contains functions for derived values based on the
  * configuration values.
- * 
+ *
  * @author Reiner Jung
- * 
+ *
  * @since 1.0
- * 
+ *
  */
 public final class GeneratorConfiguration {
 	/** list of all generators to support RecordType. */
@@ -37,11 +37,13 @@ public final class GeneratorConfiguration {
 		de.cau.cs.se.instrumentation.rl.generator.java.factory.RecordFactoryTypeGenerator.class,
 		de.cau.cs.se.instrumentation.rl.generator.perl.RecordTypeGenerator.class,
 		de.cau.cs.se.instrumentation.rl.generator.delphi.RecordTypeGenerator.class,
+		de.cau.cs.se.instrumentation.rl.generator.csharp.RecordTypeGenerator.class,
 	};
 
 	/** list of all generators to support TemplateType. */
 	public static final Class<?>[] TEMPLATE_TYPE_GENERATORS = {
 		de.cau.cs.se.instrumentation.rl.generator.java.record.TemplateTypeGenerator.class,
+		de.cau.cs.se.instrumentation.rl.generator.csharp.TemplateTypeGenerator.class,
 	};
 
 	/** list of all outlet configurations. */
@@ -52,6 +54,7 @@ public final class GeneratorConfiguration {
 		new OutletConfiguration("c", "C Output Folder", "./src-gen/c"),
 		new OutletConfiguration("perl", "Perl Output Folder", "./src-gen/perl"),
 		new OutletConfiguration("delphi", "Delphi Output Folder", "./src-gen/delphi"),
+		new OutletConfiguration("csharp", "C# Output Folder", "./srg-gen/csharp"),
 	};
 
 	/**

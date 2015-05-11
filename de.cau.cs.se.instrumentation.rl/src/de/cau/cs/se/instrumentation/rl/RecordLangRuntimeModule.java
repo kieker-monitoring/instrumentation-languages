@@ -43,12 +43,15 @@ public class RecordLangRuntimeModule extends de.cau.cs.se.instrumentation.rl.Abs
 	}
 
 	/**
-	 * Register my own output outlet provider. We need an outlet for each language.
+	 * Register classes to guice.
 	 */
 	@Override
 	public void configure(final Binder binder) {
 		super.configure(binder);
+		// register my own output outlet provider. We need an outlet for each language.
 		binder.bind(IOutputConfigurationProvider.class).to(RecordLangOutputConfigurationProvider.class).in(Singleton.class);
+		// register
+		binder.bind(de.cau.cs.se.instrumentation.rl.generator.java.ModelTypeToJavaTypeExtensions.class);
 	}
 
 }

@@ -2,7 +2,7 @@ package de.cau.cs.se.instrumentation.rl.generator.java.factory;
 
 import com.google.common.base.Objects;
 import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator;
-import de.cau.cs.se.instrumentation.rl.generator.java.RlType2JavaTypeExtensions;
+import de.cau.cs.se.instrumentation.rl.generator.java.ModelTypeToJavaTypeExtensions;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.Model;
@@ -15,12 +15,16 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 
 @SuppressWarnings("all")
 public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
+  @Extension
+  private ModelTypeToJavaTypeExtensions typeMapper = new ModelTypeToJavaTypeExtensions();
+  
   /**
    * Return the unique id.
    */
@@ -279,7 +283,7 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
       boolean _greaterThan = (_size > 0);
       if (_greaterThan) {
         EClassifier _class_ = classifier.getClass_();
-        String _createPrimitiveTypeName = RlType2JavaTypeExtensions.createPrimitiveTypeName(_class_);
+        String _createPrimitiveTypeName = this.typeMapper.createPrimitiveTypeName(_class_);
         EList<ArraySize> _sizes_1 = classifier.getSizes();
         final Function1<ArraySize, String> _function = new Function1<ArraySize, String>() {
           public String apply(final ArraySize size) {
@@ -293,7 +297,7 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
         _xifexpression = (_createPrimitiveTypeName + _join);
       } else {
         EClassifier _class__1 = classifier.getClass_();
-        _xifexpression = RlType2JavaTypeExtensions.createPrimitiveTypeName(_class__1);
+        _xifexpression = this.typeMapper.createPrimitiveTypeName(_class__1);
       }
       final String typeName = _xifexpression;
       _xblockexpression = (typeName + "Factory");

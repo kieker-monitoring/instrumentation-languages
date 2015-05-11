@@ -7,11 +7,15 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
 import de.cau.cs.se.instrumentation.rl.recordLang.Model
 import java.io.File
 import java.util.Calendar
-
-import static extension de.cau.cs.se.instrumentation.rl.generator.java.RlType2JavaTypeExtensions.*
+import com.google.inject.Inject
+import de.cau.cs.se.instrumentation.rl.generator.java.ModelTypeToJavaTypeExtensions
 
 class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
 
+	// TODO inject does not work, fix it
+	//@Inject extension ModelTypeToJavaTypeExtensions typeMapper
+	extension ModelTypeToJavaTypeExtensions typeMapper = new ModelTypeToJavaTypeExtensions()
+	
 	/**
 	 * Return the unique id.
 	 */
