@@ -192,7 +192,7 @@ public class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
     return _xblockexpression;
   }
   
-  public boolean isInSamePackage(final TemplateType left, final TemplateType right) {
+  private boolean isInSamePackage(final TemplateType left, final TemplateType right) {
     EObject _eContainer = left.eContainer();
     String _name = ((Model) _eContainer).getName();
     EObject _eContainer_1 = right.eContainer();
@@ -200,7 +200,7 @@ public class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
     return (!Objects.equal(_name, _name_1));
   }
   
-  public CharSequence createImports(final EList<TemplateType> parents, final TemplateType type) {
+  private CharSequence createImports(final EList<TemplateType> parents, final TemplateType type) {
     StringConcatenation _builder = new StringConcatenation();
     CharSequence _xifexpression = null;
     boolean _and = false;
@@ -233,14 +233,14 @@ public class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
     return _builder;
   }
   
-  public CharSequence createDefaultImport() {
+  private CharSequence createDefaultImport() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("import kieker.common.record.IMonitoringRecord;");
     _builder.newLine();
     return _builder;
   }
   
-  public CharSequence createImport(final TemplateType type) {
+  private CharSequence createImport(final TemplateType type) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("import ");
     EObject _eContainer = type.eContainer();
@@ -253,7 +253,7 @@ public class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
     return _builder;
   }
   
-  public CharSequence createExtends(final EList<TemplateType> parents) {
+  private CharSequence createExtends(final EList<TemplateType> parents) {
     StringConcatenation _builder = new StringConcatenation();
     String _xifexpression = null;
     boolean _and = false;
@@ -288,7 +288,7 @@ public class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
    * 
    * @returns the resulting getter as a CharSequence
    */
-  public CharSequence createPropertyGetter(final Property property) {
+  private CharSequence createPropertyGetter(final Property property) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("public ");
     Classifier _findType = PropertyEvaluation.findType(property);
@@ -312,7 +312,7 @@ public class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
    * 
    * @returns the name of the getter of the property
    */
-  public CharSequence createGetterName(final Property property) {
+  private CharSequence createGetterName(final Property property) {
     CharSequence _xifexpression = null;
     Classifier _findType = PropertyEvaluation.findType(property);
     Class<? extends Classifier> _class = _findType.getClass();
@@ -344,7 +344,7 @@ public class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
    * 
    * @returns a java type name
    */
-  public String createTypeName(final Classifier classifier) {
+  private String createTypeName(final Classifier classifier) {
     String _switchResult = null;
     EClassifier _class_ = classifier.getClass_();
     String _name = _class_.getName();

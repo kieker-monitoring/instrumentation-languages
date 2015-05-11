@@ -68,19 +68,19 @@ class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
 		'''
 	}
 	
-	def isInSamePackage(TemplateType left, TemplateType right) {
+	private def isInSamePackage(TemplateType left, TemplateType right) {
 		return (left.eContainer as Model).name != (right.eContainer as Model).name
 	}
 	
-	def createImports(EList<TemplateType> parents, TemplateType type) '''«if (parents!=null && parents.size>0) parents.filter[t | isInSamePackage(type, t)].map[createImport].join() else createDefaultImport»'''
+	private def createImports(EList<TemplateType> parents, TemplateType type) '''«if (parents!=null && parents.size>0) parents.filter[t | isInSamePackage(type, t)].map[createImport].join() else createDefaultImport»'''
 	
-	def createDefaultImport() '''import kieker.common.record.IMonitoringRecord;
+	private def createDefaultImport() '''import kieker.common.record.IMonitoringRecord;
 	'''
 	
-	def createImport(TemplateType type) '''import «(type.eContainer as Model).name».«type»;
+	private def createImport(TemplateType type) '''import «(type.eContainer as Model).name».«type»;
 	'''
 	
-	def createExtends(EList<TemplateType> parents) '''«if (parents!=null && parents.size>0) parents.map[t | t.name].join(', ') else 'IMonitoringRecord'»'''
+	private def createExtends(EList<TemplateType> parents) '''«if (parents!=null && parents.size>0) parents.map[t | t.name].join(', ') else 'IMonitoringRecord'»'''
 	
 	/**
 	 * Creates a getter for a given property.
@@ -90,7 +90,7 @@ class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
 	 * 
 	 * @returns the resulting getter as a CharSequence
 	 */
-	def createPropertyGetter(Property property) '''
+	private def createPropertyGetter(Property property) '''
 	public «PropertyEvaluation::findType(property).createTypeName» «property.createGetterName»() ;
 		
 	'''
@@ -103,7 +103,7 @@ class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
 	 * 
 	 * @returns the name of the getter of the property
 	 */
-	def CharSequence createGetterName(Property property) {
+	private def CharSequence createGetterName(Property property) {
 		if (PropertyEvaluation::findType(property).class.name.equals('boolean')) 
 			'''is«property.name.toFirstUpper»'''
 		else
@@ -118,7 +118,7 @@ class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
 	 * 
 	 * @returns a java type name
 	 */
-	def createTypeName(Classifier classifier) {
+	private def createTypeName(Classifier classifier) {
 		switch (classifier.class_.name) {
 			case 'string' : 'String'
 			default : classifier.class_.name
