@@ -21,18 +21,23 @@ import org.eclipse.jdt.core.JavaModelException;
 public class ProjectResolver {
 
 	private final ArrayList<IJavaProject> projects;
+	private final ArrayList<IProject> iprojects;
 	private IJavaProject current;
+	private IProject icurrent;
 
 	protected ProjectResolver(final URI projectUri) {
 		final String[] temp = projectUri.toString().split("/");
 		final String projectName = temp[temp.length - 4];
 		this.projects = new ArrayList<IJavaProject>(0);
+		this.iprojects = new ArrayList<IProject>(0);
 		this.current = null;
 		final IProject[] iProjects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
 		for (final IProject iProject : iProjects) {
+			this.iprojects.add(iProject);
 			this.projects.add(JavaCore.create(iProject));
 			if (iProject.getName().equals(projectName)) {
 				this.current = JavaCore.create(iProject);
+				this.icurrent = iProject;
 			}
 
 		}
@@ -51,7 +56,13 @@ public class ProjectResolver {
 				for (final IClasspathEntry element : classpath) {
 					if ((element.getEntryKind() == 1) && element.getPath().toString().endsWith(".jar")
 							&& !this.projects.contains(element.getPath().toFile().toURI().toURL())) {
-						urls.add(element.getPath().toFile().toURI().toURL());
+						if (element.getPath().toString().startsWith("/")) {
+							urls.add(this.iprojects.get(i).getParent().getLocation().append(element.getPath()).toFile().toURI().toURL());
+						}
+						else {
+
+							urls.add(element.getPath().toFile().toURI().toURL());
+						}
 					}
 				}
 			}
@@ -61,7 +72,13 @@ public class ProjectResolver {
 			for (final IClasspathEntry element : classpath) {
 				if ((element.getEntryKind() == 1) && element.getPath().toString().endsWith(".jar")
 						&& !this.projects.contains(element.getPath().toFile().toURI().toURL())) {
-					urls.add(element.getPath().toFile().toURI().toURL());
+					if (element.getPath().toString().startsWith("/")) {
+						urls.add(this.icurrent.getParent().getLocation().append(element.getPath()).toFile().toURI().toURL());
+					}
+					else {
+
+						urls.add(element.getPath().toFile().toURI().toURL());
+					}
 				}
 			}
 
