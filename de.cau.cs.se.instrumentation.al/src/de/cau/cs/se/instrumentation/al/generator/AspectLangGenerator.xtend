@@ -37,7 +37,6 @@ import javax.xml.transform.TransformerFactory
 import javax.xml.transform.dom.DOMSource
 import javax.xml.transform.stream.StreamResult
 import java.io.StringWriter
-import java.util.ArrayList
 import de.cau.cs.se.instrumantation.model.structure.TypeReference
 import de.cau.cs.se.instrumentation.al.aspectLang.Collector
 import org.w3c.dom.Element

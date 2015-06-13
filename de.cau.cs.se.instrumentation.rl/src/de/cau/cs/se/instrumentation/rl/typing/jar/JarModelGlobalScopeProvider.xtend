@@ -40,6 +40,8 @@ class JarModelGlobalScopeProvider extends TypeGlobalScopeProvider {
         // check whether the reference type is a type of any kind 
         if (EcoreUtil2::isAssignableFrom(Literals::ECLASSIFIER, referenceType)) {
         	super.getParentTypeScope(resource, reference, filter, referenceType)
+        } else if (EcoreUtil2::isAssignableFrom(Literals::EPACKAGE, referenceType)) {
+        	return IScope.NULLSCOPE
         } else {
         	if (resource != null) {
         		val ResourceSet resourceSet = resource.getResourceSet()

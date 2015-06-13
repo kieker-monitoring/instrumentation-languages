@@ -46,18 +46,23 @@ public class JarModelGlobalScopeProvider extends TypeGlobalScopeProvider {
     if (_isAssignableFrom) {
       _xifexpression = super.getParentTypeScope(resource, reference, filter, referenceType);
     } else {
-      boolean _notEquals = (!Objects.equal(resource, null));
-      if (_notEquals) {
-        final ResourceSet resourceSet = resource.getResourceSet();
-        boolean _notEquals_1 = (!Objects.equal(resourceSet, null));
-        if (_notEquals_1) {
-          final IJarModelTypeProvider typeProvider = this.jarModeltypeProviderFactory.getTypeProvider(resourceSet);
-          return new JarModelTypeScope(typeProvider, this.qualifiedNameConverter, filter);
-        } else {
-          throw new IllegalStateException("context must be contained in a resource set");
-        }
+      boolean _isAssignableFrom_1 = EcoreUtil2.isAssignableFrom(EcorePackage.Literals.EPACKAGE, referenceType);
+      if (_isAssignableFrom_1) {
+        return IScope.NULLSCOPE;
       } else {
-        throw new IllegalStateException("context must be contained in a resource");
+        boolean _notEquals = (!Objects.equal(resource, null));
+        if (_notEquals) {
+          final ResourceSet resourceSet = resource.getResourceSet();
+          boolean _notEquals_1 = (!Objects.equal(resourceSet, null));
+          if (_notEquals_1) {
+            final IJarModelTypeProvider typeProvider = this.jarModeltypeProviderFactory.getTypeProvider(resourceSet);
+            return new JarModelTypeScope(typeProvider, this.qualifiedNameConverter, filter);
+          } else {
+            throw new IllegalStateException("context must be contained in a resource set");
+          }
+        } else {
+          throw new IllegalStateException("context must be contained in a resource");
+        }
       }
     }
     return _xifexpression;
