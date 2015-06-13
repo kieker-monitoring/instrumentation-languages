@@ -20,7 +20,8 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.core.resources,
  org.eclipse.core.runtime,
  org.eclipse.equinox.preferences,
- org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional
+ org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional,
+ org.eclipse.xtext.xbase.lib
 Import-Package: org.apache.log4j,
  org.eclipse.jdt.core,
  org.eclipse.xtext.common.types.access.jdt,
@@ -40,7 +41,4 @@ Export-Package: de.cau.cs.se.instrumentation.rl,
  de.cau.cs.se.instrumentation.rl.serializer,
  de.cau.cs.se.instrumentation.rl.services,
  de.cau.cs.se.instrumentation.rl.validation
-Bundle-ClassPath: .,
- lib/reflections-0.9.9-RC1-uberjar.jar,
- lib/javassist.jar
-
+Bundle-ClassPath: .,lib/reflections-0.9.9-RC1-uberjar.jar,lib/javassist.jar

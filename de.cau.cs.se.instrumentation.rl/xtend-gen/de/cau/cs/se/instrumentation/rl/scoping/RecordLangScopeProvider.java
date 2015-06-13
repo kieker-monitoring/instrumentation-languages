@@ -4,7 +4,9 @@
 package de.cau.cs.se.instrumentation.rl.scoping;
 
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
+import de.cau.cs.se.instrumentation.rl.recordLang.ForeignKey;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
+import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.ReferenceProperty;
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
 import de.cau.cs.se.instrumentation.rl.scoping.URIPredicate;
@@ -47,6 +49,15 @@ public class RecordLangScopeProvider extends AbstractDeclarativeScopeProvider {
     URIPredicate _uRIPredicate = new URIPredicate();
     final IScope result = new FilteringScope(_delegateGetScope, _uRIPredicate);
     return result;
+  }
+  
+  /**
+   * Define scope for foreign key reference.
+   */
+  public IScope scope_ForeignKey_propertyRef(final ForeignKey key, final EReference reference) {
+    RecordType _recordType = key.getRecordType();
+    List<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(_recordType);
+    return Scopes.scopeFor(_collectAllProperties);
   }
   
   /**

@@ -10,6 +10,7 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.Constant;
 import de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.FloatLiteral;
+import de.cau.cs.se.instrumentation.rl.recordLang.ForeignKey;
 import de.cau.cs.se.instrumentation.rl.recordLang.Import;
 import de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Literal;
@@ -131,6 +132,11 @@ public class RecordLangAdapterFactory extends AdapterFactoryImpl
       public Adapter caseProperty(Property object)
       {
         return createPropertyAdapter();
+      }
+      @Override
+      public Adapter caseForeignKey(ForeignKey object)
+      {
+        return createForeignKeyAdapter();
       }
       @Override
       public Adapter caseClassifier(Classifier object)
@@ -325,6 +331,21 @@ public class RecordLangAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createPropertyAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.rl.recordLang.ForeignKey <em>Foreign Key</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.ForeignKey
+   * @generated
+   */
+  public Adapter createForeignKeyAdapter()
   {
     return null;
   }

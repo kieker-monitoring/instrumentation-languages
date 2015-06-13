@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="units"
+    nsURI="http://sdq.ipd.uka.de/Units/1.0" nsPrefix="units">
+  <eClassifiers xsi:type="ecore:EClass" name="UnitCarryingElement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="unit" ordered="false" eType="#//Unit"
+        volatile="true" transient="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value=""/>
+        <details key="namespace" value=""/>
+      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="suppressedSetVisibility" value="true"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unitSpecification" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Unit" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BaseUnit">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" ordered="false" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" iD="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value=""/>
+        <details key="namespace" value=""/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UnitRepository">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="units" ordered="false"
+        upperBound="-1" eType="#//BaseUnit" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UnitMultiplication" eSuperTypes="#//Unit">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="units" ordered="false"
+        lowerBound="1" upperBound="-1" eType="#//Unit" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UnitPower" eSuperTypes="#//Unit">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="unit" ordered="false" lowerBound="1"
+        eType="#//Unit" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="exponent" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UnitLiteral" eSuperTypes="#//Unit">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="baseUnit" ordered="false"
+        lowerBound="1" eType="#//BaseUnit"/>
+  </eClassifiers>
+</ecore:EPackage>

@@ -48,9 +48,18 @@ Constant:
 ;
 
 Property:
-	(type=Classifier|'alias' referTo=[Property|ID] 'as') name=ID 
+	(modifiers+=PropertyModifier)* (foreignKey=ForeignKey)? (type=Classifier|'alias' referTo=[Property|ID] 'as') name=ID 
 		('{' (properties+=ReferenceProperty)* '}' | 
 		'=' value=Literal)?
+;
+
+ForeignKey:
+	'grouped' 'by' recordType=[RecordType|ID] '.' propertyRef=[Property|ID]
+;
+
+enum PropertyModifier:
+	TRANSIENT = 'transient' |
+	INCREMENT = 'auto-increment'
 ;
 
 Classifier:

@@ -10,11 +10,13 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.Constant;
 import de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.FloatLiteral;
+import de.cau.cs.se.instrumentation.rl.recordLang.ForeignKey;
 import de.cau.cs.se.instrumentation.rl.recordLang.Import;
 import de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Literal;
 import de.cau.cs.se.instrumentation.rl.recordLang.Model;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
+import de.cau.cs.se.instrumentation.rl.recordLang.PropertyModifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangFactory;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
@@ -24,6 +26,7 @@ import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -91,6 +94,7 @@ public class RecordLangFactoryImpl extends EFactoryImpl implements RecordLangFac
       case RecordLangPackage.RECORD_TYPE: return createRecordType();
       case RecordLangPackage.CONSTANT: return createConstant();
       case RecordLangPackage.PROPERTY: return createProperty();
+      case RecordLangPackage.FOREIGN_KEY: return createForeignKey();
       case RecordLangPackage.CLASSIFIER: return createClassifier();
       case RecordLangPackage.ARRAY_SIZE: return createArraySize();
       case RecordLangPackage.REFERENCE_PROPERTY: return createReferenceProperty();
@@ -104,6 +108,40 @@ public class RecordLangFactoryImpl extends EFactoryImpl implements RecordLangFac
       case RecordLangPackage.BUILT_IN_VALUE_LITERAL: return createBuiltInValueLiteral();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object createFromString(EDataType eDataType, String initialValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case RecordLangPackage.PROPERTY_MODIFIER:
+        return createPropertyModifierFromString(eDataType, initialValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String convertToString(EDataType eDataType, Object instanceValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case RecordLangPackage.PROPERTY_MODIFIER:
+        return convertPropertyModifierToString(eDataType, instanceValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
   }
 
@@ -193,6 +231,17 @@ public class RecordLangFactoryImpl extends EFactoryImpl implements RecordLangFac
   {
     PropertyImpl property = new PropertyImpl();
     return property;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ForeignKey createForeignKey()
+  {
+    ForeignKeyImpl foreignKey = new ForeignKeyImpl();
+    return foreignKey;
   }
 
   /**
@@ -314,6 +363,28 @@ public class RecordLangFactoryImpl extends EFactoryImpl implements RecordLangFac
   {
     BuiltInValueLiteralImpl builtInValueLiteral = new BuiltInValueLiteralImpl();
     return builtInValueLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PropertyModifier createPropertyModifierFromString(EDataType eDataType, String initialValue)
+  {
+    PropertyModifier result = PropertyModifier.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertPropertyModifierToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**

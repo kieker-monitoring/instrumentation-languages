@@ -93,7 +93,7 @@ class AspectLangScopeProvider extends org.eclipse.xtext.scoping.impl.AbstractDec
 			query.node
 	}
 	
-		/**
+	/**
 	 * Find scope for the package property in the MetaModel rule.
 	 * 
 	 * @param context

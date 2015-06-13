@@ -33,7 +33,6 @@ import de.cau.cs.se.instrumentation.al.aspectLang.MethodQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.Node;
 import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut;
 import de.cau.cs.se.instrumentation.al.aspectLang.UtilizeProbe;
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
 import java.io.StringWriter;
 import java.util.Arrays;
 import java.util.Collection;
@@ -208,18 +207,9 @@ public class AspectLangGenerator implements IGenerator {
    * @param parent the parent node of the aspect
    */
   public void createDataCollectorAspect(final Iterable<Collector> list, final Document doc, final Element parent) {
-    final Element aspect = doc.createElement("aspect");
-    final Function1<Collector, String> _function = new Function1<Collector, String>() {
-      public String apply(final Collector it) {
-        RecordType _type = it.getType();
-        return _type.getName();
-      }
-    };
-    Iterable<String> _map = IterableExtensions.<Collector, String>map(list, _function);
-    String _join = IterableExtensions.join(_map, ", ");
-    String _plus = ("record types are " + _join);
-    aspect.setAttribute("name", _plus);
-    parent.appendChild(aspect);
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method type is undefined for the type AspectLangGenerator"
+      + "\nname cannot be resolved");
   }
   
   /**

@@ -10,11 +10,13 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.Constant;
 import de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.FloatLiteral;
+import de.cau.cs.se.instrumentation.rl.recordLang.ForeignKey;
 import de.cau.cs.se.instrumentation.rl.recordLang.Import;
 import de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Literal;
 import de.cau.cs.se.instrumentation.rl.recordLang.Model;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
+import de.cau.cs.se.instrumentation.rl.recordLang.PropertyModifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangFactory;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
@@ -25,6 +27,7 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Type;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -94,6 +97,13 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
    * @generated
    */
   private EClass propertyEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass foreignKeyEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -171,6 +181,13 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
    * @generated
    */
   private EClass builtInValueLiteralEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum propertyModifierEEnum = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -503,9 +520,9 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getProperty_Type()
+  public EAttribute getProperty_Modifiers()
   {
-    return (EReference)propertyEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)propertyEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -513,7 +530,7 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getProperty_ReferTo()
+  public EReference getProperty_ForeignKey()
   {
     return (EReference)propertyEClass.getEStructuralFeatures().get(1);
   }
@@ -523,9 +540,9 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getProperty_Name()
+  public EReference getProperty_Type()
   {
-    return (EAttribute)propertyEClass.getEStructuralFeatures().get(2);
+    return (EReference)propertyEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -533,7 +550,7 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getProperty_Properties()
+  public EReference getProperty_ReferTo()
   {
     return (EReference)propertyEClass.getEStructuralFeatures().get(3);
   }
@@ -543,9 +560,59 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getProperty_Name()
+  {
+    return (EAttribute)propertyEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getProperty_Properties()
+  {
+    return (EReference)propertyEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getProperty_Value()
   {
-    return (EReference)propertyEClass.getEStructuralFeatures().get(4);
+    return (EReference)propertyEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getForeignKey()
+  {
+    return foreignKeyEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getForeignKey_RecordType()
+  {
+    return (EReference)foreignKeyEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getForeignKey_PropertyRef()
+  {
+    return (EReference)foreignKeyEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -793,6 +860,16 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
    * <!-- end-user-doc -->
    * @generated
    */
+  public EEnum getPropertyModifier()
+  {
+    return propertyModifierEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public RecordLangFactory getRecordLangFactory()
   {
     return (RecordLangFactory)getEFactoryInstance();
@@ -851,11 +928,17 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
     createEReference(constantEClass, CONSTANT__VALUE);
 
     propertyEClass = createEClass(PROPERTY);
+    createEAttribute(propertyEClass, PROPERTY__MODIFIERS);
+    createEReference(propertyEClass, PROPERTY__FOREIGN_KEY);
     createEReference(propertyEClass, PROPERTY__TYPE);
     createEReference(propertyEClass, PROPERTY__REFER_TO);
     createEAttribute(propertyEClass, PROPERTY__NAME);
     createEReference(propertyEClass, PROPERTY__PROPERTIES);
     createEReference(propertyEClass, PROPERTY__VALUE);
+
+    foreignKeyEClass = createEClass(FOREIGN_KEY);
+    createEReference(foreignKeyEClass, FOREIGN_KEY__RECORD_TYPE);
+    createEReference(foreignKeyEClass, FOREIGN_KEY__PROPERTY_REF);
 
     classifierEClass = createEClass(CLASSIFIER);
     createEReference(classifierEClass, CLASSIFIER__PACKAGE);
@@ -891,6 +974,9 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
 
     builtInValueLiteralEClass = createEClass(BUILT_IN_VALUE_LITERAL);
     createEAttribute(builtInValueLiteralEClass, BUILT_IN_VALUE_LITERAL__VALUE);
+
+    // Create enums
+    propertyModifierEEnum = createEEnum(PROPERTY_MODIFIER);
   }
 
   /**
@@ -969,11 +1055,17 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
     initEReference(getConstant_Value(), this.getLiteral(), null, "value", null, 0, 1, Constant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(propertyEClass, Property.class, "Property", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getProperty_Modifiers(), this.getPropertyModifier(), "modifiers", null, 0, -1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProperty_ForeignKey(), this.getForeignKey(), null, "foreignKey", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProperty_Type(), this.getClassifier(), null, "type", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProperty_ReferTo(), this.getProperty(), null, "referTo", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getProperty_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProperty_Properties(), this.getReferenceProperty(), null, "properties", null, 0, -1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProperty_Value(), this.getLiteral(), null, "value", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(foreignKeyEClass, ForeignKey.class, "ForeignKey", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getForeignKey_RecordType(), this.getRecordType(), null, "recordType", null, 0, 1, ForeignKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getForeignKey_PropertyRef(), this.getProperty(), null, "propertyRef", null, 0, 1, ForeignKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(classifierEClass, Classifier.class, "Classifier", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getClassifier_Package(), this.getPackage(), null, "package", null, 0, 1, Classifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1009,6 +1101,11 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
 
     initEClass(builtInValueLiteralEClass, BuiltInValueLiteral.class, "BuiltInValueLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getBuiltInValueLiteral_Value(), theEcorePackage.getEString(), "value", null, 0, 1, BuiltInValueLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    // Initialize enums and add enum literals
+    initEEnum(propertyModifierEEnum, PropertyModifier.class, "PropertyModifier");
+    addEEnumLiteral(propertyModifierEEnum, PropertyModifier.TRANSIENT);
+    addEEnumLiteral(propertyModifierEEnum, PropertyModifier.INCREMENT);
 
     // Create resource
     createResource(eNS_URI);

@@ -24,6 +24,7 @@ import org.eclipse.xtext.parser.*;
 import org.eclipse.xtext.parser.impl.*;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.xtext.parser.antlr.AbstractInternalAntlrParser;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
@@ -770,28 +771,64 @@ ruleProperty returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(((
+((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getPropertyAccess().getTypeClassifierParserRuleCall_0_0_0()); 
+	        newCompositeNode(grammarAccess.getPropertyAccess().getModifiersPropertyModifierEnumRuleCall_0_0()); 
 	    }
-		lv_type_0_0=ruleClassifier		{
+		lv_modifiers_0_0=rulePropertyModifier		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getPropertyRule());
+	        }
+       		add(
+       			$current, 
+       			"modifiers",
+        		lv_modifiers_0_0, 
+        		"PropertyModifier");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)*(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getPropertyAccess().getForeignKeyForeignKeyParserRuleCall_1_0()); 
+	    }
+		lv_foreignKey_1_0=ruleForeignKey		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getPropertyRule());
+	        }
+       		set(
+       			$current, 
+       			"foreignKey",
+        		lv_foreignKey_1_0, 
+        		"ForeignKey");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)?((
+(
+		{ 
+	        newCompositeNode(grammarAccess.getPropertyAccess().getTypeClassifierParserRuleCall_2_0_0()); 
+	    }
+		lv_type_2_0=ruleClassifier		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getPropertyRule());
 	        }
        		set(
        			$current, 
        			"type",
-        		lv_type_0_0, 
+        		lv_type_2_0, 
         		"Classifier");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
 )
-    |(	otherlv_1='alias' 
+    |(	otherlv_3='alias' 
     {
-    	newLeafNode(otherlv_1, grammarAccess.getPropertyAccess().getAliasKeyword_0_1_0());
+    	newLeafNode(otherlv_3, grammarAccess.getPropertyAccess().getAliasKeyword_2_1_0());
     }
 (
 (
@@ -800,21 +837,21 @@ ruleProperty returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getPropertyRule());
 	        }
         }
-	otherlv_2=RULE_ID
+	otherlv_4=RULE_ID
 	{
-		newLeafNode(otherlv_2, grammarAccess.getPropertyAccess().getReferToPropertyCrossReference_0_1_1_0()); 
+		newLeafNode(otherlv_4, grammarAccess.getPropertyAccess().getReferToPropertyCrossReference_2_1_1_0()); 
 	}
 
 )
-)	otherlv_3='as' 
+)	otherlv_5='as' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getPropertyAccess().getAsKeyword_0_1_2());
+    	newLeafNode(otherlv_5, grammarAccess.getPropertyAccess().getAsKeyword_2_1_2());
     }
 ))(
 (
-		lv_name_4_0=RULE_ID
+		lv_name_6_0=RULE_ID
 		{
-			newLeafNode(lv_name_4_0, grammarAccess.getPropertyAccess().getNameIDTerminalRuleCall_1_0()); 
+			newLeafNode(lv_name_6_0, grammarAccess.getPropertyAccess().getNameIDTerminalRuleCall_3_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -823,61 +860,120 @@ ruleProperty returns [EObject current=null]
        		setWithLastConsumed(
        			$current, 
        			"name",
-        		lv_name_4_0, 
+        		lv_name_6_0, 
         		"ID");
 	    }
 
 )
-)((	otherlv_5='{' 
+)((	otherlv_7='{' 
     {
-    	newLeafNode(otherlv_5, grammarAccess.getPropertyAccess().getLeftCurlyBracketKeyword_2_0_0());
+    	newLeafNode(otherlv_7, grammarAccess.getPropertyAccess().getLeftCurlyBracketKeyword_4_0_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getPropertyAccess().getPropertiesReferencePropertyParserRuleCall_2_0_1_0()); 
+	        newCompositeNode(grammarAccess.getPropertyAccess().getPropertiesReferencePropertyParserRuleCall_4_0_1_0()); 
 	    }
-		lv_properties_6_0=ruleReferenceProperty		{
+		lv_properties_8_0=ruleReferenceProperty		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getPropertyRule());
 	        }
        		add(
        			$current, 
        			"properties",
-        		lv_properties_6_0, 
+        		lv_properties_8_0, 
         		"ReferenceProperty");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)*	otherlv_7='}' 
+)*	otherlv_9='}' 
     {
-    	newLeafNode(otherlv_7, grammarAccess.getPropertyAccess().getRightCurlyBracketKeyword_2_0_2());
+    	newLeafNode(otherlv_9, grammarAccess.getPropertyAccess().getRightCurlyBracketKeyword_4_0_2());
     }
 )
-    |(	otherlv_8='=' 
+    |(	otherlv_10='=' 
     {
-    	newLeafNode(otherlv_8, grammarAccess.getPropertyAccess().getEqualsSignKeyword_2_1_0());
+    	newLeafNode(otherlv_10, grammarAccess.getPropertyAccess().getEqualsSignKeyword_4_1_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getPropertyAccess().getValueLiteralParserRuleCall_2_1_1_0()); 
+	        newCompositeNode(grammarAccess.getPropertyAccess().getValueLiteralParserRuleCall_4_1_1_0()); 
 	    }
-		lv_value_9_0=ruleLiteral		{
+		lv_value_11_0=ruleLiteral		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getPropertyRule());
 	        }
        		set(
        			$current, 
        			"value",
-        		lv_value_9_0, 
+        		lv_value_11_0, 
         		"Literal");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
 )))?)
+;
+
+
+
+
+
+// Entry rule entryRuleForeignKey
+entryRuleForeignKey returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getForeignKeyRule()); }
+	 iv_ruleForeignKey=ruleForeignKey 
+	 { $current=$iv_ruleForeignKey.current; } 
+	 EOF 
+;
+
+// Rule ForeignKey
+ruleForeignKey returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='grouped' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getForeignKeyAccess().getGroupedKeyword_0());
+    }
+	otherlv_1='by' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getForeignKeyAccess().getByKeyword_1());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getForeignKeyRule());
+	        }
+        }
+	otherlv_2=RULE_ID
+	{
+		newLeafNode(otherlv_2, grammarAccess.getForeignKeyAccess().getRecordTypeRecordTypeCrossReference_2_0()); 
+	}
+
+)
+)	otherlv_3='.' 
+    {
+    	newLeafNode(otherlv_3, grammarAccess.getForeignKeyAccess().getFullStopKeyword_3());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getForeignKeyRule());
+	        }
+        }
+	otherlv_4=RULE_ID
+	{
+		newLeafNode(otherlv_4, grammarAccess.getForeignKeyAccess().getPropertyRefPropertyCrossReference_4_0()); 
+	}
+
+)
+))
 ;
 
 
@@ -1544,6 +1640,25 @@ ruleQualifiedNameWithWildcard returns [AntlrDatatypeRuleToken current=new AntlrD
 
 
 
+// Rule PropertyModifier
+rulePropertyModifier returns [Enumerator current=null] 
+    @init { enterRule(); }
+    @after { leaveRule(); }:
+((	enumLiteral_0='transient' 
+	{
+        $current = grammarAccess.getPropertyModifierAccess().getTRANSIENTEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_0, grammarAccess.getPropertyModifierAccess().getTRANSIENTEnumLiteralDeclaration_0()); 
+    }
+)
+    |(	enumLiteral_1='auto-increment' 
+	{
+        $current = grammarAccess.getPropertyModifierAccess().getINCREMENTEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_1, grammarAccess.getPropertyModifierAccess().getINCREMENTEnumLiteralDeclaration_1()); 
+    }
+));
+
+
+
 fragment RULE_NUMBER : '0'..'9';
 
 RULE_INT : '-'? RULE_NUMBER+;
@@ -1554,7 +1669,7 @@ RULE_BOOLEAN : ('true'|'false');
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 
-RULE_STRING : ('"' ('\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|'\''|'\\')|~(('\\'|'"')))* '"'|'\'' ('\\' ('b'|'t'|'n'|'f'|'r'|'u'|'"'|'\''|'\\')|~(('\\'|'\'')))* '\'');
+RULE_STRING : ('"' ('\\' .|~(('\\'|'"')))* '"'|'\'' ('\\' .|~(('\\'|'\'')))* '\'');
 
 RULE_ML_COMMENT : '/*' ( options {greedy=false;} : . )*'*/';
 

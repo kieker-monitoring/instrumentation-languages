@@ -3,8 +3,10 @@
 package de.cau.cs.se.instrumentation.rl.recordLang.impl;
 
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
+import de.cau.cs.se.instrumentation.rl.recordLang.ForeignKey;
 import de.cau.cs.se.instrumentation.rl.recordLang.Literal;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
+import de.cau.cs.se.instrumentation.rl.recordLang.PropertyModifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
 import de.cau.cs.se.instrumentation.rl.recordLang.ReferenceProperty;
 
@@ -21,6 +23,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -31,6 +34,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.PropertyImpl#getModifiers <em>Modifiers</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.PropertyImpl#getForeignKey <em>Foreign Key</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.PropertyImpl#getType <em>Type</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.PropertyImpl#getReferTo <em>Refer To</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.PropertyImpl#getName <em>Name</em>}</li>
@@ -43,6 +48,26 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class PropertyImpl extends MinimalEObjectImpl.Container implements Property
 {
+  /**
+   * The cached value of the '{@link #getModifiers() <em>Modifiers</em>}' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getModifiers()
+   * @generated
+   * @ordered
+   */
+  protected EList<PropertyModifier> modifiers;
+
+  /**
+   * The cached value of the '{@link #getForeignKey() <em>Foreign Key</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getForeignKey()
+   * @generated
+   * @ordered
+   */
+  protected ForeignKey foreignKey;
+
   /**
    * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -122,6 +147,68 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
   protected EClass eStaticClass()
   {
     return RecordLangPackage.Literals.PROPERTY;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<PropertyModifier> getModifiers()
+  {
+    if (modifiers == null)
+    {
+      modifiers = new EDataTypeEList<PropertyModifier>(PropertyModifier.class, this, RecordLangPackage.PROPERTY__MODIFIERS);
+    }
+    return modifiers;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ForeignKey getForeignKey()
+  {
+    return foreignKey;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetForeignKey(ForeignKey newForeignKey, NotificationChain msgs)
+  {
+    ForeignKey oldForeignKey = foreignKey;
+    foreignKey = newForeignKey;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, RecordLangPackage.PROPERTY__FOREIGN_KEY, oldForeignKey, newForeignKey);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setForeignKey(ForeignKey newForeignKey)
+  {
+    if (newForeignKey != foreignKey)
+    {
+      NotificationChain msgs = null;
+      if (foreignKey != null)
+        msgs = ((InternalEObject)foreignKey).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - RecordLangPackage.PROPERTY__FOREIGN_KEY, null, msgs);
+      if (newForeignKey != null)
+        msgs = ((InternalEObject)newForeignKey).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - RecordLangPackage.PROPERTY__FOREIGN_KEY, null, msgs);
+      msgs = basicSetForeignKey(newForeignKey, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, RecordLangPackage.PROPERTY__FOREIGN_KEY, newForeignKey, newForeignKey));
   }
 
   /**
@@ -310,6 +397,8 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
   {
     switch (featureID)
     {
+      case RecordLangPackage.PROPERTY__FOREIGN_KEY:
+        return basicSetForeignKey(null, msgs);
       case RecordLangPackage.PROPERTY__TYPE:
         return basicSetType(null, msgs);
       case RecordLangPackage.PROPERTY__PROPERTIES:
@@ -330,6 +419,10 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
   {
     switch (featureID)
     {
+      case RecordLangPackage.PROPERTY__MODIFIERS:
+        return getModifiers();
+      case RecordLangPackage.PROPERTY__FOREIGN_KEY:
+        return getForeignKey();
       case RecordLangPackage.PROPERTY__TYPE:
         return getType();
       case RecordLangPackage.PROPERTY__REFER_TO:
@@ -356,6 +449,13 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
   {
     switch (featureID)
     {
+      case RecordLangPackage.PROPERTY__MODIFIERS:
+        getModifiers().clear();
+        getModifiers().addAll((Collection<? extends PropertyModifier>)newValue);
+        return;
+      case RecordLangPackage.PROPERTY__FOREIGN_KEY:
+        setForeignKey((ForeignKey)newValue);
+        return;
       case RecordLangPackage.PROPERTY__TYPE:
         setType((Classifier)newValue);
         return;
@@ -386,6 +486,12 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
   {
     switch (featureID)
     {
+      case RecordLangPackage.PROPERTY__MODIFIERS:
+        getModifiers().clear();
+        return;
+      case RecordLangPackage.PROPERTY__FOREIGN_KEY:
+        setForeignKey((ForeignKey)null);
+        return;
       case RecordLangPackage.PROPERTY__TYPE:
         setType((Classifier)null);
         return;
@@ -415,6 +521,10 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
   {
     switch (featureID)
     {
+      case RecordLangPackage.PROPERTY__MODIFIERS:
+        return modifiers != null && !modifiers.isEmpty();
+      case RecordLangPackage.PROPERTY__FOREIGN_KEY:
+        return foreignKey != null;
       case RecordLangPackage.PROPERTY__TYPE:
         return type != null;
       case RecordLangPackage.PROPERTY__REFER_TO:
@@ -440,7 +550,9 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
+    result.append(" (modifiers: ");
+    result.append(modifiers);
+    result.append(", name: ");
     result.append(name);
     result.append(')');
     return result.toString();

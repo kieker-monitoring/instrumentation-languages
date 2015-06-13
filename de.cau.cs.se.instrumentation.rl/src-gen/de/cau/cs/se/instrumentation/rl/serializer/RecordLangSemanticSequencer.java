@@ -10,6 +10,7 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.Constant;
 import de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.FloatLiteral;
+import de.cau.cs.se.instrumentation.rl.recordLang.ForeignKey;
 import de.cau.cs.se.instrumentation.rl.recordLang.Import;
 import de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Model;
@@ -90,6 +91,12 @@ public class RecordLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 				if(context == grammarAccess.getFloatLiteralRule() ||
 				   context == grammarAccess.getLiteralRule()) {
 					sequence_FloatLiteral(context, (FloatLiteral) semanticObject); 
+					return; 
+				}
+				else break;
+			case RecordLangPackage.FOREIGN_KEY:
+				if(context == grammarAccess.getForeignKeyRule()) {
+					sequence_ForeignKey(context, (ForeignKey) semanticObject); 
 					return; 
 				}
 				else break;
@@ -270,6 +277,25 @@ public class RecordLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 	
 	/**
 	 * Constraint:
+	 *     (recordType=[RecordType|ID] propertyRef=[Property|ID])
+	 */
+	protected void sequence_ForeignKey(EObject context, ForeignKey semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, RecordLangPackage.Literals.FOREIGN_KEY__RECORD_TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RecordLangPackage.Literals.FOREIGN_KEY__RECORD_TYPE));
+			if(transientValues.isValueTransient(semanticObject, RecordLangPackage.Literals.FOREIGN_KEY__PROPERTY_REF) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RecordLangPackage.Literals.FOREIGN_KEY__PROPERTY_REF));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getForeignKeyAccess().getRecordTypeRecordTypeIDTerminalRuleCall_2_0_1(), semanticObject.getRecordType());
+		feeder.accept(grammarAccess.getForeignKeyAccess().getPropertyRefPropertyIDTerminalRuleCall_4_0_1(), semanticObject.getPropertyRef());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     importedNamespace=QualifiedNameWithWildcard
 	 */
 	protected void sequence_Import(EObject context, Import semanticObject) {
@@ -330,7 +356,13 @@ public class RecordLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 	
 	/**
 	 * Constraint:
-	 *     ((type=Classifier | referTo=[Property|ID]) name=ID (properties+=ReferenceProperty* | value=Literal)?)
+	 *     (
+	 *         modifiers+=PropertyModifier* 
+	 *         foreignKey=ForeignKey? 
+	 *         (type=Classifier | referTo=[Property|ID]) 
+	 *         name=ID 
+	 *         (properties+=ReferenceProperty* | value=Literal)?
+	 *     )
 	 */
 	protected void sequence_Property(EObject context, Property semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

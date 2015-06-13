@@ -54,13 +54,12 @@ public class ProjectResolver {
 			for (int i = 0; i < this.projects.size(); i++) {
 				final IClasspathEntry[] classpath = this.projects.get(i).getRawClasspath();
 				for (final IClasspathEntry element : classpath) {
-					if ((element.getEntryKind() == 1) && element.getPath().toString().endsWith(".jar")
+					if ((element.getEntryKind() == IClasspathEntry.CPE_LIBRARY) && element.getPath().toString().endsWith(".jar")
 							&& !this.projects.contains(element.getPath().toFile().toURI().toURL())) {
 						if (element.getPath().toString().startsWith("/")) {
 							urls.add(this.iprojects.get(i).getParent().getLocation().append(element.getPath()).toFile().toURI().toURL());
 						}
 						else {
-
 							urls.add(element.getPath().toFile().toURI().toURL());
 						}
 					}
@@ -70,13 +69,12 @@ public class ProjectResolver {
 		else {
 			final IClasspathEntry[] classpath = this.current.getRawClasspath();
 			for (final IClasspathEntry element : classpath) {
-				if ((element.getEntryKind() == 1) && element.getPath().toString().endsWith(".jar")
+				if ((element.getEntryKind() == IClasspathEntry.CPE_LIBRARY) && element.getPath().toString().endsWith(".jar")
 						&& !this.projects.contains(element.getPath().toFile().toURI().toURL())) {
 					if (element.getPath().toString().startsWith("/")) {
 						urls.add(this.icurrent.getParent().getLocation().append(element.getPath()).toFile().toURI().toURL());
 					}
 					else {
-
 						urls.add(element.getPath().toFile().toURI().toURL());
 					}
 				}

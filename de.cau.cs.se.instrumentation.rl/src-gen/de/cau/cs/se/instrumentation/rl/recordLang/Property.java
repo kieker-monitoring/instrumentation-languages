@@ -14,6 +14,8 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.Property#getModifiers <em>Modifiers</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.Property#getForeignKey <em>Foreign Key</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.Property#getType <em>Type</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.Property#getReferTo <em>Refer To</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.Property#getName <em>Name</em>}</li>
@@ -28,6 +30,50 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Property extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Modifiers</b></em>' attribute list.
+   * The list contents are of type {@link de.cau.cs.se.instrumentation.rl.recordLang.PropertyModifier}.
+   * The literals are from the enumeration {@link de.cau.cs.se.instrumentation.rl.recordLang.PropertyModifier}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Modifiers</em>' attribute list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Modifiers</em>' attribute list.
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.PropertyModifier
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getProperty_Modifiers()
+   * @model unique="false"
+   * @generated
+   */
+  EList<PropertyModifier> getModifiers();
+
+  /**
+   * Returns the value of the '<em><b>Foreign Key</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Foreign Key</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Foreign Key</em>' containment reference.
+   * @see #setForeignKey(ForeignKey)
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getProperty_ForeignKey()
+   * @model containment="true"
+   * @generated
+   */
+  ForeignKey getForeignKey();
+
+  /**
+   * Sets the value of the '{@link de.cau.cs.se.instrumentation.rl.recordLang.Property#getForeignKey <em>Foreign Key</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Foreign Key</em>' containment reference.
+   * @see #getForeignKey()
+   * @generated
+   */
+  void setForeignKey(ForeignKey value);
+
   /**
    * Returns the value of the '<em><b>Type</b></em>' containment reference.
    * <!-- begin-user-doc -->

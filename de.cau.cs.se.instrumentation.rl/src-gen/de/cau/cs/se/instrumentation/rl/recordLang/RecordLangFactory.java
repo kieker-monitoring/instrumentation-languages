@@ -95,6 +95,15 @@ public interface RecordLangFactory extends EFactory
   Property createProperty();
 
   /**
+   * Returns a new object of class '<em>Foreign Key</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Foreign Key</em>'.
+   * @generated
+   */
+  ForeignKey createForeignKey();
+
+  /**
    * Returns a new object of class '<em>Classifier</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

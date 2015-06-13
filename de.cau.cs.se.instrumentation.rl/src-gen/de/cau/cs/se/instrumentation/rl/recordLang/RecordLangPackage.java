@@ -4,6 +4,7 @@ package de.cau.cs.se.instrumentation.rl.recordLang;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -470,13 +471,31 @@ public interface RecordLangPackage extends EPackage
   int PROPERTY = 7;
 
   /**
+   * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROPERTY__MODIFIERS = 0;
+
+  /**
+   * The feature id for the '<em><b>Foreign Key</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROPERTY__FOREIGN_KEY = 1;
+
+  /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROPERTY__TYPE = 0;
+  int PROPERTY__TYPE = 2;
 
   /**
    * The feature id for the '<em><b>Refer To</b></em>' reference.
@@ -485,7 +504,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY__REFER_TO = 1;
+  int PROPERTY__REFER_TO = 3;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -494,7 +513,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY__NAME = 2;
+  int PROPERTY__NAME = 4;
 
   /**
    * The feature id for the '<em><b>Properties</b></em>' containment reference list.
@@ -503,7 +522,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY__PROPERTIES = 3;
+  int PROPERTY__PROPERTIES = 5;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -512,7 +531,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY__VALUE = 4;
+  int PROPERTY__VALUE = 6;
 
   /**
    * The number of structural features of the '<em>Property</em>' class.
@@ -521,7 +540,44 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY_FEATURE_COUNT = 5;
+  int PROPERTY_FEATURE_COUNT = 7;
+
+  /**
+   * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ForeignKeyImpl <em>Foreign Key</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.ForeignKeyImpl
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getForeignKey()
+   * @generated
+   */
+  int FOREIGN_KEY = 8;
+
+  /**
+   * The feature id for the '<em><b>Record Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FOREIGN_KEY__RECORD_TYPE = 0;
+
+  /**
+   * The feature id for the '<em><b>Property Ref</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FOREIGN_KEY__PROPERTY_REF = 1;
+
+  /**
+   * The number of structural features of the '<em>Foreign Key</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FOREIGN_KEY_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ClassifierImpl <em>Classifier</em>}' class.
@@ -531,7 +587,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getClassifier()
    * @generated
    */
-  int CLASSIFIER = 8;
+  int CLASSIFIER = 9;
 
   /**
    * The feature id for the '<em><b>Package</b></em>' reference.
@@ -577,7 +633,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getArraySize()
    * @generated
    */
-  int ARRAY_SIZE = 9;
+  int ARRAY_SIZE = 10;
 
   /**
    * The feature id for the '<em><b>Size</b></em>' attribute.
@@ -605,7 +661,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getReferenceProperty()
    * @generated
    */
-  int REFERENCE_PROPERTY = 10;
+  int REFERENCE_PROPERTY = 11;
 
   /**
    * The feature id for the '<em><b>Ref</b></em>' reference.
@@ -642,7 +698,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getLiteral()
    * @generated
    */
-  int LITERAL = 11;
+  int LITERAL = 12;
 
   /**
    * The number of structural features of the '<em>Literal</em>' class.
@@ -661,7 +717,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getArrayLiteral()
    * @generated
    */
-  int ARRAY_LITERAL = 12;
+  int ARRAY_LITERAL = 13;
 
   /**
    * The feature id for the '<em><b>Literals</b></em>' containment reference list.
@@ -689,7 +745,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getStringLiteral()
    * @generated
    */
-  int STRING_LITERAL = 13;
+  int STRING_LITERAL = 14;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -717,7 +773,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getIntLiteral()
    * @generated
    */
-  int INT_LITERAL = 14;
+  int INT_LITERAL = 15;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -745,7 +801,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getFloatLiteral()
    * @generated
    */
-  int FLOAT_LITERAL = 15;
+  int FLOAT_LITERAL = 16;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -773,7 +829,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getBooleanLiteral()
    * @generated
    */
-  int BOOLEAN_LITERAL = 16;
+  int BOOLEAN_LITERAL = 17;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -801,7 +857,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getConstantLiteral()
    * @generated
    */
-  int CONSTANT_LITERAL = 17;
+  int CONSTANT_LITERAL = 18;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' reference.
@@ -829,7 +885,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getBuiltInValueLiteral()
    * @generated
    */
-  int BUILT_IN_VALUE_LITERAL = 18;
+  int BUILT_IN_VALUE_LITERAL = 19;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -848,6 +904,16 @@ public interface RecordLangPackage extends EPackage
    * @ordered
    */
   int BUILT_IN_VALUE_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.PropertyModifier <em>Property Modifier</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.PropertyModifier
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getPropertyModifier()
+   * @generated
+   */
+  int PROPERTY_MODIFIER = 20;
 
 
   /**
@@ -1129,6 +1195,28 @@ public interface RecordLangPackage extends EPackage
   EClass getProperty();
 
   /**
+   * Returns the meta object for the attribute list '{@link de.cau.cs.se.instrumentation.rl.recordLang.Property#getModifiers <em>Modifiers</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Modifiers</em>'.
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.Property#getModifiers()
+   * @see #getProperty()
+   * @generated
+   */
+  EAttribute getProperty_Modifiers();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.rl.recordLang.Property#getForeignKey <em>Foreign Key</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Foreign Key</em>'.
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.Property#getForeignKey()
+   * @see #getProperty()
+   * @generated
+   */
+  EReference getProperty_ForeignKey();
+
+  /**
    * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.rl.recordLang.Property#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1182,6 +1270,38 @@ public interface RecordLangPackage extends EPackage
    * @generated
    */
   EReference getProperty_Value();
+
+  /**
+   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.ForeignKey <em>Foreign Key</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Foreign Key</em>'.
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.ForeignKey
+   * @generated
+   */
+  EClass getForeignKey();
+
+  /**
+   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.rl.recordLang.ForeignKey#getRecordType <em>Record Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Record Type</em>'.
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.ForeignKey#getRecordType()
+   * @see #getForeignKey()
+   * @generated
+   */
+  EReference getForeignKey_RecordType();
+
+  /**
+   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.rl.recordLang.ForeignKey#getPropertyRef <em>Property Ref</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Property Ref</em>'.
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.ForeignKey#getPropertyRef()
+   * @see #getForeignKey()
+   * @generated
+   */
+  EReference getForeignKey_PropertyRef();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.Classifier <em>Classifier</em>}'.
@@ -1437,6 +1557,16 @@ public interface RecordLangPackage extends EPackage
   EAttribute getBuiltInValueLiteral_Value();
 
   /**
+   * Returns the meta object for enum '{@link de.cau.cs.se.instrumentation.rl.recordLang.PropertyModifier <em>Property Modifier</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Property Modifier</em>'.
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.PropertyModifier
+   * @generated
+   */
+  EEnum getPropertyModifier();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1684,6 +1814,22 @@ public interface RecordLangPackage extends EPackage
     EClass PROPERTY = eINSTANCE.getProperty();
 
     /**
+     * The meta object literal for the '<em><b>Modifiers</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PROPERTY__MODIFIERS = eINSTANCE.getProperty_Modifiers();
+
+    /**
+     * The meta object literal for the '<em><b>Foreign Key</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PROPERTY__FOREIGN_KEY = eINSTANCE.getProperty_ForeignKey();
+
+    /**
      * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1722,6 +1868,32 @@ public interface RecordLangPackage extends EPackage
      * @generated
      */
     EReference PROPERTY__VALUE = eINSTANCE.getProperty_Value();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ForeignKeyImpl <em>Foreign Key</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.ForeignKeyImpl
+     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getForeignKey()
+     * @generated
+     */
+    EClass FOREIGN_KEY = eINSTANCE.getForeignKey();
+
+    /**
+     * The meta object literal for the '<em><b>Record Type</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FOREIGN_KEY__RECORD_TYPE = eINSTANCE.getForeignKey_RecordType();
+
+    /**
+     * The meta object literal for the '<em><b>Property Ref</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FOREIGN_KEY__PROPERTY_REF = eINSTANCE.getForeignKey_PropertyRef();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ClassifierImpl <em>Classifier</em>}' class.
@@ -1936,6 +2108,16 @@ public interface RecordLangPackage extends EPackage
      * @generated
      */
     EAttribute BUILT_IN_VALUE_LITERAL__VALUE = eINSTANCE.getBuiltInValueLiteral_Value();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.PropertyModifier <em>Property Modifier</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.instrumentation.rl.recordLang.PropertyModifier
+     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getPropertyModifier()
+     * @generated
+     */
+    EEnum PROPERTY_MODIFIER = eINSTANCE.getPropertyModifier();
 
   }
 

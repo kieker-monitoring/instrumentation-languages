@@ -24,6 +24,7 @@ import java.util.Collection
 import java.util.List
 import de.cau.cs.se.instrumentation.rl.recordLang.Type
 import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation
+import de.cau.cs.se.instrumentation.rl.recordLang.ForeignKey
 
 /**
  * This class contains custom scoping description.
@@ -46,6 +47,13 @@ class RecordLangScopeProvider extends org.eclipse.xtext.scoping.impl.AbstractDec
 	def IScope scope_Package_package(Package context, EReference reference) {
 		val IScope result = new FilteringScope(delegateGetScope(context, reference),new URIPredicate())
 		return result
+	}
+
+	/**
+	 * Define scope for foreign key reference.
+	 */
+	def IScope scope_ForeignKey_propertyRef(ForeignKey key, EReference reference) {
+		return Scopes::scopeFor(PropertyEvaluation::collectAllProperties(key.recordType))
 	}
 	
 	/**

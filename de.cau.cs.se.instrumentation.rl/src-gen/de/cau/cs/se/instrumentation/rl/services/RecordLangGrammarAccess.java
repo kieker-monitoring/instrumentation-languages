@@ -483,99 +483,163 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	public class PropertyElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Property");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
-		private final Assignment cTypeAssignment_0_0 = (Assignment)cAlternatives_0.eContents().get(0);
-		private final RuleCall cTypeClassifierParserRuleCall_0_0_0 = (RuleCall)cTypeAssignment_0_0.eContents().get(0);
-		private final Group cGroup_0_1 = (Group)cAlternatives_0.eContents().get(1);
-		private final Keyword cAliasKeyword_0_1_0 = (Keyword)cGroup_0_1.eContents().get(0);
-		private final Assignment cReferToAssignment_0_1_1 = (Assignment)cGroup_0_1.eContents().get(1);
-		private final CrossReference cReferToPropertyCrossReference_0_1_1_0 = (CrossReference)cReferToAssignment_0_1_1.eContents().get(0);
-		private final RuleCall cReferToPropertyIDTerminalRuleCall_0_1_1_0_1 = (RuleCall)cReferToPropertyCrossReference_0_1_1_0.eContents().get(1);
-		private final Keyword cAsKeyword_0_1_2 = (Keyword)cGroup_0_1.eContents().get(2);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cModifiersAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cModifiersPropertyModifierEnumRuleCall_0_0 = (RuleCall)cModifiersAssignment_0.eContents().get(0);
+		private final Assignment cForeignKeyAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cForeignKeyForeignKeyParserRuleCall_1_0 = (RuleCall)cForeignKeyAssignment_1.eContents().get(0);
 		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
-		private final Group cGroup_2_0 = (Group)cAlternatives_2.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_2_0_0 = (Keyword)cGroup_2_0.eContents().get(0);
-		private final Assignment cPropertiesAssignment_2_0_1 = (Assignment)cGroup_2_0.eContents().get(1);
-		private final RuleCall cPropertiesReferencePropertyParserRuleCall_2_0_1_0 = (RuleCall)cPropertiesAssignment_2_0_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_2_0_2 = (Keyword)cGroup_2_0.eContents().get(2);
+		private final Assignment cTypeAssignment_2_0 = (Assignment)cAlternatives_2.eContents().get(0);
+		private final RuleCall cTypeClassifierParserRuleCall_2_0_0 = (RuleCall)cTypeAssignment_2_0.eContents().get(0);
 		private final Group cGroup_2_1 = (Group)cAlternatives_2.eContents().get(1);
-		private final Keyword cEqualsSignKeyword_2_1_0 = (Keyword)cGroup_2_1.eContents().get(0);
-		private final Assignment cValueAssignment_2_1_1 = (Assignment)cGroup_2_1.eContents().get(1);
-		private final RuleCall cValueLiteralParserRuleCall_2_1_1_0 = (RuleCall)cValueAssignment_2_1_1.eContents().get(0);
+		private final Keyword cAliasKeyword_2_1_0 = (Keyword)cGroup_2_1.eContents().get(0);
+		private final Assignment cReferToAssignment_2_1_1 = (Assignment)cGroup_2_1.eContents().get(1);
+		private final CrossReference cReferToPropertyCrossReference_2_1_1_0 = (CrossReference)cReferToAssignment_2_1_1.eContents().get(0);
+		private final RuleCall cReferToPropertyIDTerminalRuleCall_2_1_1_0_1 = (RuleCall)cReferToPropertyCrossReference_2_1_1_0.eContents().get(1);
+		private final Keyword cAsKeyword_2_1_2 = (Keyword)cGroup_2_1.eContents().get(2);
+		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cNameIDTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
+		private final Alternatives cAlternatives_4 = (Alternatives)cGroup.eContents().get(4);
+		private final Group cGroup_4_0 = (Group)cAlternatives_4.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_4_0_0 = (Keyword)cGroup_4_0.eContents().get(0);
+		private final Assignment cPropertiesAssignment_4_0_1 = (Assignment)cGroup_4_0.eContents().get(1);
+		private final RuleCall cPropertiesReferencePropertyParserRuleCall_4_0_1_0 = (RuleCall)cPropertiesAssignment_4_0_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_4_0_2 = (Keyword)cGroup_4_0.eContents().get(2);
+		private final Group cGroup_4_1 = (Group)cAlternatives_4.eContents().get(1);
+		private final Keyword cEqualsSignKeyword_4_1_0 = (Keyword)cGroup_4_1.eContents().get(0);
+		private final Assignment cValueAssignment_4_1_1 = (Assignment)cGroup_4_1.eContents().get(1);
+		private final RuleCall cValueLiteralParserRuleCall_4_1_1_0 = (RuleCall)cValueAssignment_4_1_1.eContents().get(0);
 		
 		//Property:
-		//	(type=Classifier | "alias" referTo=[Property] "as") name=ID ("{" properties+=ReferenceProperty* "}" | "="
-		//	value=Literal)?;
+		//	modifiers+=PropertyModifier* foreignKey=ForeignKey? (type=Classifier | "alias" referTo=[Property] "as") name=ID ("{"
+		//	properties+=ReferenceProperty* "}" | "=" value=Literal)?;
 		public ParserRule getRule() { return rule; }
 
-		//(type=Classifier | "alias" referTo=[Property] "as") name=ID ("{" properties+=ReferenceProperty* "}" | "="
-		//value=Literal)?
+		//modifiers+=PropertyModifier* foreignKey=ForeignKey? (type=Classifier | "alias" referTo=[Property] "as") name=ID ("{"
+		//properties+=ReferenceProperty* "}" | "=" value=Literal)?
 		public Group getGroup() { return cGroup; }
 
+		//modifiers+=PropertyModifier*
+		public Assignment getModifiersAssignment_0() { return cModifiersAssignment_0; }
+
+		//PropertyModifier
+		public RuleCall getModifiersPropertyModifierEnumRuleCall_0_0() { return cModifiersPropertyModifierEnumRuleCall_0_0; }
+
+		//foreignKey=ForeignKey?
+		public Assignment getForeignKeyAssignment_1() { return cForeignKeyAssignment_1; }
+
+		//ForeignKey
+		public RuleCall getForeignKeyForeignKeyParserRuleCall_1_0() { return cForeignKeyForeignKeyParserRuleCall_1_0; }
+
 		//type=Classifier | "alias" referTo=[Property] "as"
-		public Alternatives getAlternatives_0() { return cAlternatives_0; }
-
-		//type=Classifier
-		public Assignment getTypeAssignment_0_0() { return cTypeAssignment_0_0; }
-
-		//Classifier
-		public RuleCall getTypeClassifierParserRuleCall_0_0_0() { return cTypeClassifierParserRuleCall_0_0_0; }
-
-		//"alias" referTo=[Property] "as"
-		public Group getGroup_0_1() { return cGroup_0_1; }
-
-		//"alias"
-		public Keyword getAliasKeyword_0_1_0() { return cAliasKeyword_0_1_0; }
-
-		//referTo=[Property]
-		public Assignment getReferToAssignment_0_1_1() { return cReferToAssignment_0_1_1; }
-
-		//[Property]
-		public CrossReference getReferToPropertyCrossReference_0_1_1_0() { return cReferToPropertyCrossReference_0_1_1_0; }
-
-		//ID
-		public RuleCall getReferToPropertyIDTerminalRuleCall_0_1_1_0_1() { return cReferToPropertyIDTerminalRuleCall_0_1_1_0_1; }
-
-		//"as"
-		public Keyword getAsKeyword_0_1_2() { return cAsKeyword_0_1_2; }
-
-		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
-
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
-
-		//("{" properties+=ReferenceProperty* "}" | "=" value=Literal)?
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 
-		//"{" properties+=ReferenceProperty* "}"
-		public Group getGroup_2_0() { return cGroup_2_0; }
+		//type=Classifier
+		public Assignment getTypeAssignment_2_0() { return cTypeAssignment_2_0; }
 
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_2_0_0() { return cLeftCurlyBracketKeyword_2_0_0; }
+		//Classifier
+		public RuleCall getTypeClassifierParserRuleCall_2_0_0() { return cTypeClassifierParserRuleCall_2_0_0; }
 
-		//properties+=ReferenceProperty*
-		public Assignment getPropertiesAssignment_2_0_1() { return cPropertiesAssignment_2_0_1; }
-
-		//ReferenceProperty
-		public RuleCall getPropertiesReferencePropertyParserRuleCall_2_0_1_0() { return cPropertiesReferencePropertyParserRuleCall_2_0_1_0; }
-
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_2_0_2() { return cRightCurlyBracketKeyword_2_0_2; }
-
-		//"=" value=Literal
+		//"alias" referTo=[Property] "as"
 		public Group getGroup_2_1() { return cGroup_2_1; }
 
+		//"alias"
+		public Keyword getAliasKeyword_2_1_0() { return cAliasKeyword_2_1_0; }
+
+		//referTo=[Property]
+		public Assignment getReferToAssignment_2_1_1() { return cReferToAssignment_2_1_1; }
+
+		//[Property]
+		public CrossReference getReferToPropertyCrossReference_2_1_1_0() { return cReferToPropertyCrossReference_2_1_1_0; }
+
+		//ID
+		public RuleCall getReferToPropertyIDTerminalRuleCall_2_1_1_0_1() { return cReferToPropertyIDTerminalRuleCall_2_1_1_0_1; }
+
+		//"as"
+		public Keyword getAsKeyword_2_1_2() { return cAsKeyword_2_1_2; }
+
+		//name=ID
+		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_3_0() { return cNameIDTerminalRuleCall_3_0; }
+
+		//("{" properties+=ReferenceProperty* "}" | "=" value=Literal)?
+		public Alternatives getAlternatives_4() { return cAlternatives_4; }
+
+		//"{" properties+=ReferenceProperty* "}"
+		public Group getGroup_4_0() { return cGroup_4_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_4_0_0() { return cLeftCurlyBracketKeyword_4_0_0; }
+
+		//properties+=ReferenceProperty*
+		public Assignment getPropertiesAssignment_4_0_1() { return cPropertiesAssignment_4_0_1; }
+
+		//ReferenceProperty
+		public RuleCall getPropertiesReferencePropertyParserRuleCall_4_0_1_0() { return cPropertiesReferencePropertyParserRuleCall_4_0_1_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_4_0_2() { return cRightCurlyBracketKeyword_4_0_2; }
+
+		//"=" value=Literal
+		public Group getGroup_4_1() { return cGroup_4_1; }
+
 		//"="
-		public Keyword getEqualsSignKeyword_2_1_0() { return cEqualsSignKeyword_2_1_0; }
+		public Keyword getEqualsSignKeyword_4_1_0() { return cEqualsSignKeyword_4_1_0; }
 
 		//value=Literal
-		public Assignment getValueAssignment_2_1_1() { return cValueAssignment_2_1_1; }
+		public Assignment getValueAssignment_4_1_1() { return cValueAssignment_4_1_1; }
 
 		//Literal
-		public RuleCall getValueLiteralParserRuleCall_2_1_1_0() { return cValueLiteralParserRuleCall_2_1_1_0; }
+		public RuleCall getValueLiteralParserRuleCall_4_1_1_0() { return cValueLiteralParserRuleCall_4_1_1_0; }
+	}
+
+	public class ForeignKeyElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ForeignKey");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cGroupedKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cByKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cRecordTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cRecordTypeRecordTypeCrossReference_2_0 = (CrossReference)cRecordTypeAssignment_2.eContents().get(0);
+		private final RuleCall cRecordTypeRecordTypeIDTerminalRuleCall_2_0_1 = (RuleCall)cRecordTypeRecordTypeCrossReference_2_0.eContents().get(1);
+		private final Keyword cFullStopKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cPropertyRefAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final CrossReference cPropertyRefPropertyCrossReference_4_0 = (CrossReference)cPropertyRefAssignment_4.eContents().get(0);
+		private final RuleCall cPropertyRefPropertyIDTerminalRuleCall_4_0_1 = (RuleCall)cPropertyRefPropertyCrossReference_4_0.eContents().get(1);
+		
+		//ForeignKey:
+		//	"grouped" "by" recordType=[RecordType] "." propertyRef=[Property];
+		public ParserRule getRule() { return rule; }
+
+		//"grouped" "by" recordType=[RecordType] "." propertyRef=[Property]
+		public Group getGroup() { return cGroup; }
+
+		//"grouped"
+		public Keyword getGroupedKeyword_0() { return cGroupedKeyword_0; }
+
+		//"by"
+		public Keyword getByKeyword_1() { return cByKeyword_1; }
+
+		//recordType=[RecordType]
+		public Assignment getRecordTypeAssignment_2() { return cRecordTypeAssignment_2; }
+
+		//[RecordType]
+		public CrossReference getRecordTypeRecordTypeCrossReference_2_0() { return cRecordTypeRecordTypeCrossReference_2_0; }
+
+		//ID
+		public RuleCall getRecordTypeRecordTypeIDTerminalRuleCall_2_0_1() { return cRecordTypeRecordTypeIDTerminalRuleCall_2_0_1; }
+
+		//"."
+		public Keyword getFullStopKeyword_3() { return cFullStopKeyword_3; }
+
+		//propertyRef=[Property]
+		public Assignment getPropertyRefAssignment_4() { return cPropertyRefAssignment_4; }
+
+		//[Property]
+		public CrossReference getPropertyRefPropertyCrossReference_4_0() { return cPropertyRefPropertyCrossReference_4_0; }
+
+		//ID
+		public RuleCall getPropertyRefPropertyIDTerminalRuleCall_4_0_1() { return cPropertyRefPropertyIDTerminalRuleCall_4_0_1; }
 	}
 
 	public class ClassifierElements extends AbstractParserRuleElementFinder {
@@ -951,41 +1015,98 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	
-	private ModelElements pModel;
-	private ImportElements pImport;
-	private PackageElements pPackage;
-	private TypeElements pType;
-	private TemplateTypeElements pTemplateType;
-	private RecordTypeElements pRecordType;
-	private ConstantElements pConstant;
-	private PropertyElements pProperty;
-	private ClassifierElements pClassifier;
-	private ArraySizeElements pArraySize;
-	private ReferencePropertyElements pReferenceProperty;
-	private LiteralElements pLiteral;
-	private ArrayLiteralElements pArrayLiteral;
-	private StringLiteralElements pStringLiteral;
-	private IntLiteralElements pIntLiteral;
-	private FloatLiteralElements pFloatLiteral;
-	private BooleanLiteralElements pBooleanLiteral;
-	private ConstantLiteralElements pConstantLiteral;
-	private BuiltInValueLiteralElements pBuiltInValueLiteral;
-	private QualifiedNameElements pQualifiedName;
-	private QualifiedNameWithWildcardElements pQualifiedNameWithWildcard;
-	private TerminalRule tNUMBER;
-	private TerminalRule tINT;
-	private TerminalRule tFLOAT;
-	private TerminalRule tBOOLEAN;
+	public class PropertyModifierElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "PropertyModifier");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cTRANSIENTEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cTRANSIENTTransientKeyword_0_0 = (Keyword)cTRANSIENTEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cINCREMENTEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cINCREMENTAutoIncrementKeyword_1_0 = (Keyword)cINCREMENTEnumLiteralDeclaration_1.eContents().get(0);
+		
+		//enum PropertyModifier:
+		//	TRANSIENT="transient" | INCREMENT="auto-increment";
+		public EnumRule getRule() { return rule; }
+
+		//TRANSIENT="transient" | INCREMENT="auto-increment"
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//TRANSIENT="transient"
+		public EnumLiteralDeclaration getTRANSIENTEnumLiteralDeclaration_0() { return cTRANSIENTEnumLiteralDeclaration_0; }
+
+		//"transient"
+		public Keyword getTRANSIENTTransientKeyword_0_0() { return cTRANSIENTTransientKeyword_0_0; }
+
+		//INCREMENT="auto-increment"
+		public EnumLiteralDeclaration getINCREMENTEnumLiteralDeclaration_1() { return cINCREMENTEnumLiteralDeclaration_1; }
+
+		//"auto-increment"
+		public Keyword getINCREMENTAutoIncrementKeyword_1_0() { return cINCREMENTAutoIncrementKeyword_1_0; }
+	}
+	
+	private final ModelElements pModel;
+	private final ImportElements pImport;
+	private final PackageElements pPackage;
+	private final TypeElements pType;
+	private final TemplateTypeElements pTemplateType;
+	private final RecordTypeElements pRecordType;
+	private final ConstantElements pConstant;
+	private final PropertyElements pProperty;
+	private final ForeignKeyElements pForeignKey;
+	private final PropertyModifierElements unknownRulePropertyModifier;
+	private final ClassifierElements pClassifier;
+	private final ArraySizeElements pArraySize;
+	private final ReferencePropertyElements pReferenceProperty;
+	private final LiteralElements pLiteral;
+	private final ArrayLiteralElements pArrayLiteral;
+	private final StringLiteralElements pStringLiteral;
+	private final IntLiteralElements pIntLiteral;
+	private final FloatLiteralElements pFloatLiteral;
+	private final BooleanLiteralElements pBooleanLiteral;
+	private final ConstantLiteralElements pConstantLiteral;
+	private final BuiltInValueLiteralElements pBuiltInValueLiteral;
+	private final QualifiedNameElements pQualifiedName;
+	private final QualifiedNameWithWildcardElements pQualifiedNameWithWildcard;
+	private final TerminalRule tNUMBER;
+	private final TerminalRule tINT;
+	private final TerminalRule tFLOAT;
+	private final TerminalRule tBOOLEAN;
 	
 	private final Grammar grammar;
 
-	private TerminalsGrammarAccess gaTerminals;
+	private final TerminalsGrammarAccess gaTerminals;
 
 	@Inject
 	public RecordLangGrammarAccess(GrammarProvider grammarProvider,
 		TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
+		this.pModel = new ModelElements();
+		this.pImport = new ImportElements();
+		this.pPackage = new PackageElements();
+		this.pType = new TypeElements();
+		this.pTemplateType = new TemplateTypeElements();
+		this.pRecordType = new RecordTypeElements();
+		this.pConstant = new ConstantElements();
+		this.pProperty = new PropertyElements();
+		this.pForeignKey = new ForeignKeyElements();
+		this.unknownRulePropertyModifier = new PropertyModifierElements();
+		this.pClassifier = new ClassifierElements();
+		this.pArraySize = new ArraySizeElements();
+		this.pReferenceProperty = new ReferencePropertyElements();
+		this.pLiteral = new LiteralElements();
+		this.pArrayLiteral = new ArrayLiteralElements();
+		this.pStringLiteral = new StringLiteralElements();
+		this.pIntLiteral = new IntLiteralElements();
+		this.pFloatLiteral = new FloatLiteralElements();
+		this.pBooleanLiteral = new BooleanLiteralElements();
+		this.pConstantLiteral = new ConstantLiteralElements();
+		this.pBuiltInValueLiteral = new BuiltInValueLiteralElements();
+		this.pQualifiedName = new QualifiedNameElements();
+		this.pQualifiedNameWithWildcard = new QualifiedNameWithWildcardElements();
+		this.tNUMBER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "NUMBER");
+		this.tINT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "INT");
+		this.tFLOAT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "FLOAT");
+		this.tBOOLEAN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "BOOLEAN");
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -1018,7 +1139,7 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	//Model:
 	//	"package" name=QualifiedName packages+=Package* imports+=Import* types+=Type*;
 	public ModelElements getModelAccess() {
-		return (pModel != null) ? pModel : (pModel = new ModelElements());
+		return pModel;
 	}
 	
 	public ParserRule getModelRule() {
@@ -1028,7 +1149,7 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	//Import:
 	//	"import" importedNamespace=QualifiedNameWithWildcard;
 	public ImportElements getImportAccess() {
-		return (pImport != null) ? pImport : (pImport = new ImportElements());
+		return pImport;
 	}
 	
 	public ParserRule getImportRule() {
@@ -1038,7 +1159,7 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	//Package:
 	//	"use" name=ID package=[ecore::EPackage|STRING];
 	public PackageElements getPackageAccess() {
-		return (pPackage != null) ? pPackage : (pPackage = new PackageElements());
+		return pPackage;
 	}
 	
 	public ParserRule getPackageRule() {
@@ -1048,7 +1169,7 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	//Type:
 	//	RecordType | TemplateType;
 	public TypeElements getTypeAccess() {
-		return (pType != null) ? pType : (pType = new TypeElements());
+		return pType;
 	}
 	
 	public ParserRule getTypeRule() {
@@ -1059,7 +1180,7 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	//	("@author" author=STRING)? ("@since" since=STRING)? "template" name=ID (":" parents+=[TemplateType|QualifiedName] (","
 	//	parents+=[TemplateType|QualifiedName])*)? ("{" (properties+=Property | constants+=Constant)* "}")?;
 	public TemplateTypeElements getTemplateTypeAccess() {
-		return (pTemplateType != null) ? pTemplateType : (pTemplateType = new TemplateTypeElements());
+		return pTemplateType;
 	}
 	
 	public ParserRule getTemplateTypeRule() {
@@ -1071,7 +1192,7 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	//	parent=[RecordType|QualifiedName])? (":" parents+=[TemplateType|QualifiedName] (","
 	//	parents+=[TemplateType|QualifiedName])*)? ("{" (properties+=Property | constants+=Constant)* "}")?;
 	public RecordTypeElements getRecordTypeAccess() {
-		return (pRecordType != null) ? pRecordType : (pRecordType = new RecordTypeElements());
+		return pRecordType;
 	}
 	
 	public ParserRule getRecordTypeRule() {
@@ -1081,7 +1202,7 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	//Constant:
 	//	"const" type=Classifier name=ID "=" value=Literal;
 	public ConstantElements getConstantAccess() {
-		return (pConstant != null) ? pConstant : (pConstant = new ConstantElements());
+		return pConstant;
 	}
 	
 	public ParserRule getConstantRule() {
@@ -1089,20 +1210,40 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Property:
-	//	(type=Classifier | "alias" referTo=[Property] "as") name=ID ("{" properties+=ReferenceProperty* "}" | "="
-	//	value=Literal)?;
+	//	modifiers+=PropertyModifier* foreignKey=ForeignKey? (type=Classifier | "alias" referTo=[Property] "as") name=ID ("{"
+	//	properties+=ReferenceProperty* "}" | "=" value=Literal)?;
 	public PropertyElements getPropertyAccess() {
-		return (pProperty != null) ? pProperty : (pProperty = new PropertyElements());
+		return pProperty;
 	}
 	
 	public ParserRule getPropertyRule() {
 		return getPropertyAccess().getRule();
 	}
 
+	//ForeignKey:
+	//	"grouped" "by" recordType=[RecordType] "." propertyRef=[Property];
+	public ForeignKeyElements getForeignKeyAccess() {
+		return pForeignKey;
+	}
+	
+	public ParserRule getForeignKeyRule() {
+		return getForeignKeyAccess().getRule();
+	}
+
+	//enum PropertyModifier:
+	//	TRANSIENT="transient" | INCREMENT="auto-increment";
+	public PropertyModifierElements getPropertyModifierAccess() {
+		return unknownRulePropertyModifier;
+	}
+	
+	public EnumRule getPropertyModifierRule() {
+		return getPropertyModifierAccess().getRule();
+	}
+
 	//Classifier:
 	//	(package=[Package] ".")? class=[ecore::EClassifier] sizes+=ArraySize*;
 	public ClassifierElements getClassifierAccess() {
-		return (pClassifier != null) ? pClassifier : (pClassifier = new ClassifierElements());
+		return pClassifier;
 	}
 	
 	public ParserRule getClassifierRule() {
@@ -1112,7 +1253,7 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	//ArraySize:
 	//	{ArraySize} "[" size=INT? "]";
 	public ArraySizeElements getArraySizeAccess() {
-		return (pArraySize != null) ? pArraySize : (pArraySize = new ArraySizeElements());
+		return pArraySize;
 	}
 	
 	public ParserRule getArraySizeRule() {
@@ -1122,7 +1263,7 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	//ReferenceProperty:
 	//	ref=[ecore::EStructuralFeature] "{" properties+=ReferenceProperty* "}";
 	public ReferencePropertyElements getReferencePropertyAccess() {
-		return (pReferenceProperty != null) ? pReferenceProperty : (pReferenceProperty = new ReferencePropertyElements());
+		return pReferenceProperty;
 	}
 	
 	public ParserRule getReferencePropertyRule() {
@@ -1132,7 +1273,7 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	//Literal:
 	//	StringLiteral | IntLiteral | FloatLiteral | BooleanLiteral | ConstantLiteral | ArrayLiteral | BuiltInValueLiteral;
 	public LiteralElements getLiteralAccess() {
-		return (pLiteral != null) ? pLiteral : (pLiteral = new LiteralElements());
+		return pLiteral;
 	}
 	
 	public ParserRule getLiteralRule() {
@@ -1142,7 +1283,7 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	//ArrayLiteral:
 	//	"{" literals+=Literal ("," literals+=Literal)* "}";
 	public ArrayLiteralElements getArrayLiteralAccess() {
-		return (pArrayLiteral != null) ? pArrayLiteral : (pArrayLiteral = new ArrayLiteralElements());
+		return pArrayLiteral;
 	}
 	
 	public ParserRule getArrayLiteralRule() {
@@ -1152,7 +1293,7 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	//StringLiteral:
 	//	value=STRING;
 	public StringLiteralElements getStringLiteralAccess() {
-		return (pStringLiteral != null) ? pStringLiteral : (pStringLiteral = new StringLiteralElements());
+		return pStringLiteral;
 	}
 	
 	public ParserRule getStringLiteralRule() {
@@ -1162,7 +1303,7 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	//IntLiteral:
 	//	value=INT;
 	public IntLiteralElements getIntLiteralAccess() {
-		return (pIntLiteral != null) ? pIntLiteral : (pIntLiteral = new IntLiteralElements());
+		return pIntLiteral;
 	}
 	
 	public ParserRule getIntLiteralRule() {
@@ -1172,7 +1313,7 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	//FloatLiteral:
 	//	value=FLOAT;
 	public FloatLiteralElements getFloatLiteralAccess() {
-		return (pFloatLiteral != null) ? pFloatLiteral : (pFloatLiteral = new FloatLiteralElements());
+		return pFloatLiteral;
 	}
 	
 	public ParserRule getFloatLiteralRule() {
@@ -1182,7 +1323,7 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	//BooleanLiteral:
 	//	value=BOOLEAN;
 	public BooleanLiteralElements getBooleanLiteralAccess() {
-		return (pBooleanLiteral != null) ? pBooleanLiteral : (pBooleanLiteral = new BooleanLiteralElements());
+		return pBooleanLiteral;
 	}
 	
 	public ParserRule getBooleanLiteralRule() {
@@ -1192,7 +1333,7 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	//ConstantLiteral:
 	//	value=[Constant];
 	public ConstantLiteralElements getConstantLiteralAccess() {
-		return (pConstantLiteral != null) ? pConstantLiteral : (pConstantLiteral = new ConstantLiteralElements());
+		return pConstantLiteral;
 	}
 	
 	public ParserRule getConstantLiteralRule() {
@@ -1202,7 +1343,7 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	//BuiltInValueLiteral:
 	//	{BuiltInValueLiteral} value="KIEKER_VERSION";
 	public BuiltInValueLiteralElements getBuiltInValueLiteralAccess() {
-		return (pBuiltInValueLiteral != null) ? pBuiltInValueLiteral : (pBuiltInValueLiteral = new BuiltInValueLiteralElements());
+		return pBuiltInValueLiteral;
 	}
 	
 	public ParserRule getBuiltInValueLiteralRule() {
@@ -1212,7 +1353,7 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	//QualifiedName:
 	//	ID ("." ID)*;
 	public QualifiedNameElements getQualifiedNameAccess() {
-		return (pQualifiedName != null) ? pQualifiedName : (pQualifiedName = new QualifiedNameElements());
+		return pQualifiedName;
 	}
 	
 	public ParserRule getQualifiedNameRule() {
@@ -1222,7 +1363,7 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	//QualifiedNameWithWildcard:
 	//	QualifiedName ("." "*")?;
 	public QualifiedNameWithWildcardElements getQualifiedNameWithWildcardAccess() {
-		return (pQualifiedNameWithWildcard != null) ? pQualifiedNameWithWildcard : (pQualifiedNameWithWildcard = new QualifiedNameWithWildcardElements());
+		return pQualifiedNameWithWildcard;
 	}
 	
 	public ParserRule getQualifiedNameWithWildcardRule() {
@@ -1233,28 +1374,28 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	//terminal fragment NUMBER:
 	//	"0".."9";
 	public TerminalRule getNUMBERRule() {
-		return (tNUMBER != null) ? tNUMBER : (tNUMBER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "NUMBER"));
+		return tNUMBER;
 	} 
 
 	//// redefine INT terminal to allow negative numbers
 	//terminal INT returns ecore::EInt:
 	//	"-"? NUMBER+;
 	public TerminalRule getINTRule() {
-		return (tINT != null) ? tINT : (tINT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "INT"));
+		return tINT;
 	} 
 
 	//// make sure the Float rule does not shadow the INT rule
 	//terminal FLOAT returns ecore::EFloatObject:
 	//	"-"? NUMBER+ ("." NUMBER*) (("e" | "E") ("+" | "-")? NUMBER+)? "f"? | "-"? NUMBER+ "f";
 	public TerminalRule getFLOATRule() {
-		return (tFLOAT != null) ? tFLOAT : (tFLOAT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "FLOAT"));
+		return tFLOAT;
 	} 
 
 	//// introduce boolean values
 	//terminal BOOLEAN returns ecore::EBooleanObject:
 	//	"true" | "false";
 	public TerminalRule getBOOLEANRule() {
-		return (tBOOLEAN != null) ? tBOOLEAN : (tBOOLEAN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "BOOLEAN"));
+		return tBOOLEAN;
 	} 
 
 	//terminal ID:
@@ -1264,8 +1405,8 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	//terminal STRING:
-	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
-	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
+	//	"\"" ("\\" . / * 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' * / | !("\\" | "\""))* "\"" | "\'" ("\\" .
+	//	/ * 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' * / | !("\\" | "\'"))* "\'";
 	public TerminalRule getSTRINGRule() {
 		return gaTerminals.getSTRINGRule();
 	} 
