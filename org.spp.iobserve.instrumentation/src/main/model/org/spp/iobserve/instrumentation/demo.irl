@@ -1,0 +1,6 @@
+package org.spp.iobserve.iinstrumentation
+
+use repository "platform:/resource/org.spp.iobserve.instrumentation/src/main/resources/pcm.ecore#repository"
+
+use v "http://sdq.ipd.uka.de/PalladioComponentModel/5.0"
+
