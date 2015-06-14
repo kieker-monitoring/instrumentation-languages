@@ -32,7 +32,7 @@ import de.cau.cs.se.instrumentation.al.aspectLang.RegisteredPackage;
 import de.cau.cs.se.instrumentation.al.modelhandling.ForeignModelTypeProviderFactory;
 import de.cau.cs.se.instrumentation.al.modelhandling.IForeignModelTypeProvider;
 import de.cau.cs.se.instrumentation.al.scoping.ContainerParentScope;
-import de.cau.cs.se.instrumentation.al.scoping.EPackageScope;
+import de.cau.cs.se.instrumentation.rl.scoping.EPackageScope;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;

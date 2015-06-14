@@ -9,7 +9,7 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Property;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.ReferenceProperty;
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
-import de.cau.cs.se.instrumentation.rl.scoping.URIPredicate;
+import de.cau.cs.se.instrumentation.rl.scoping.EPackageScope;
 import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation;
 import java.util.Collection;
 import java.util.List;
@@ -21,11 +21,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
-import org.eclipse.xtext.scoping.impl.FilteringScope;
 
 /**
  * This class contains custom scoping description.
@@ -45,9 +46,9 @@ public class RecordLangScopeProvider extends AbstractDeclarativeScopeProvider {
    * @return The scope for the package attribute.
    */
   public IScope scope_Package_package(final de.cau.cs.se.instrumentation.rl.recordLang.Package context, final EReference reference) {
-    IScope _delegateGetScope = this.delegateGetScope(context, reference);
-    URIPredicate _uRIPredicate = new URIPredicate();
-    final IScope result = new FilteringScope(_delegateGetScope, _uRIPredicate);
+    Resource _eResource = context.eResource();
+    ResourceSet _resourceSet = _eResource.getResourceSet();
+    final IScope result = new EPackageScope(_resourceSet);
     return result;
   }
   

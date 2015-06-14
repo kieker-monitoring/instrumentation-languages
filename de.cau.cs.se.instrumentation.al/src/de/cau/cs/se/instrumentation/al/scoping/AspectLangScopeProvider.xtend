@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.EReference
 import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.scoping.Scopes
 import de.cau.cs.se.instrumentation.al.aspectLang.MethodQuery
+import de.cau.cs.se.instrumentation.rl.scoping.EPackageScope
 
 /**
  * This class contains custom scoping description.

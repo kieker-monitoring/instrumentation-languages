@@ -4,7 +4,7 @@ package org.spp.iobserve.instrumentation
 //register core "http://sdq.ipd.uka.de/PalladioComponentModel/Core/5.0"
 
 register ecore "http://www.eclipse.org/emf/2002/Ecore"
-// register repository "http://sdq.ipd.uka.de/PalladioComponentModel/Repository/5.0"
+register  repository "http://sdq.ipd.uka.de/PalladioComponentModel/Repository/5.0"
       
 register pcm "platform:/resource/org.spp.iobserve.instrumentation/src/main/resources/pcm.ecore"
 register repository "platform:/resource/org.spp.iobserve.instrumentation/src/main/resources/pcm.ecore#repository"
@@ -14,7 +14,7 @@ register stoex "platform:/resource/org.spp.iobserve.instrumentation/src/main/res
 import kieker.common.record.BeforeOperationEvent
 
 use pcm, repository on CoCoME "/home/rju/Projects/CoCoME/CoCoME-SPP/trunk/src/cocomePcmModel/cocome.repository"
-
+/*
 pointcut database TradingSystem.Inventory.Data.Enterprise.EnterpriseQueryIf 
 	* * queryEnterpriseById (* INT enterpriseId, * aName pctx)
 	
@@ -24,4 +24,4 @@ probe TraceInterceptor (type clazz, type operationSignature) {
 }
 
 aspect database : TraceInterceptor (<<.<<$signature, $signature)
-
+*/

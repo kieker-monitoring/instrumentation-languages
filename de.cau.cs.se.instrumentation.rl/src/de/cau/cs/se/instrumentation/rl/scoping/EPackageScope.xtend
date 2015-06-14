@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.al.scoping
+package de.cau.cs.se.instrumentation.rl.scoping
 
 import org.eclipse.xtext.scoping.IScope
 import org.eclipse.emf.ecore.resource.ResourceSet
@@ -71,7 +71,7 @@ class EPackageScope implements IScope {
 			return null
 	}
 	
-	def EPackage findPackage(EList<EPackage> ePackages, QualifiedName qualifiedPackageName) {
+	private def EPackage findPackage(EList<EPackage> ePackages, QualifiedName qualifiedPackageName) {
 		val packageName = qualifiedPackageName.firstSegment
 		val ePackage = ePackages.findFirst[it.name.equals(packageName)]
 		if (ePackage != null) {
