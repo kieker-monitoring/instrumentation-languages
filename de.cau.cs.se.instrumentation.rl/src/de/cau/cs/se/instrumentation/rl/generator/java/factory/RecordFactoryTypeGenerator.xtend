@@ -1,14 +1,11 @@
 package de.cau.cs.se.instrumentation.rl.generator.java.factory
 
 import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator
+import de.cau.cs.se.instrumentation.rl.recordLang.Model
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
 import de.cau.cs.se.instrumentation.rl.recordLang.Type
-import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
-import de.cau.cs.se.instrumentation.rl.recordLang.Model
 import java.io.File
 import java.util.Calendar
-
-import static extension de.cau.cs.se.instrumentation.rl.generator.java.RlType2JavaTypeExtensions.*
 
 class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
 
@@ -102,23 +99,6 @@ class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
 				}
 			}
 		'''
-	}
-
-	/**
-	 * Determine the right Java string for a given system type.
-	 * 
-	 * @param classifier
-	 * 		a classifier representing a type
-	 * 
-	 * @returns a java type name
-	 */
-	def createTypeName(Classifier classifier) {
-		val typeName = if (classifier.sizes.size > 0)
-				classifier.class_.createPrimitiveTypeName + classifier.sizes.map[size|'''[]'''].join
-			else
-				classifier.class_.createPrimitiveTypeName
-
-		typeName + 'Factory'
 	}
 
 }

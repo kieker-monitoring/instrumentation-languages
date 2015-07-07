@@ -3,7 +3,7 @@ package de.cau.cs.se.instrumentation.rl.generator.java.record;
 import com.google.common.base.Objects;
 import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator;
 import de.cau.cs.se.instrumentation.rl.generator.InternalErrorException;
-import de.cau.cs.se.instrumentation.rl.generator.java.RlType2JavaTypeExtensions;
+import de.cau.cs.se.instrumentation.rl.generator.java.IRL2JavaTypeMappingExtensions;
 import de.cau.cs.se.instrumentation.rl.generator.java.record.ComputeUID;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize;
@@ -1140,7 +1140,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     boolean _greaterThan = (_size > 0);
     if (_greaterThan) {
       EClassifier _class_ = classifier.getClass_();
-      String _createPrimitiveTypeName = RlType2JavaTypeExtensions.createPrimitiveTypeName(_class_);
+      String _createPrimitiveTypeName = IRL2JavaTypeMappingExtensions.createPrimitiveTypeName(_class_);
       EList<ArraySize> _sizes_1 = classifier.getSizes();
       final Function1<ArraySize, CharSequence> _function = new Function1<ArraySize, CharSequence>() {
         public CharSequence apply(final ArraySize size) {
@@ -1154,7 +1154,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _xifexpression = (_createPrimitiveTypeName + _join);
     } else {
       EClassifier _class__1 = classifier.getClass_();
-      _xifexpression = RlType2JavaTypeExtensions.createPrimitiveTypeName(_class__1);
+      _xifexpression = IRL2JavaTypeMappingExtensions.createPrimitiveTypeName(_class__1);
     }
     return _xifexpression;
   }
@@ -2143,7 +2143,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    * 
    * @returns a java type name
    */
-  public String createTypeName(final Classifier classifier) {
+  private String createTypeName(final Classifier classifier) {
     String _xifexpression = null;
     EList<ArraySize> _sizes = classifier.getSizes();
     int _size = _sizes.size();
@@ -2152,7 +2152,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _xifexpression = this.createArrayTypeName(classifier);
     } else {
       EClassifier _class_ = classifier.getClass_();
-      _xifexpression = RlType2JavaTypeExtensions.createPrimitiveTypeName(_class_);
+      _xifexpression = IRL2JavaTypeMappingExtensions.createPrimitiveTypeName(_class_);
     }
     return _xifexpression;
   }
@@ -2174,7 +2174,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _xifexpression = this.createArrayTypeName(classifier);
     } else {
       EClassifier _class_ = classifier.getClass_();
-      _xifexpression = RlType2JavaTypeExtensions.createPrimitiveWrapperTypeName(_class_);
+      _xifexpression = IRL2JavaTypeMappingExtensions.createPrimitiveWrapperTypeName(_class_);
     }
     return _xifexpression;
   }
@@ -2191,7 +2191,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     String _xblockexpression = null;
     {
       EClassifier _class_ = classifier.getClass_();
-      final String primitiveTypeName = RlType2JavaTypeExtensions.createPrimitiveTypeName(_class_);
+      final String primitiveTypeName = IRL2JavaTypeMappingExtensions.createPrimitiveTypeName(_class_);
       EList<ArraySize> _sizes = classifier.getSizes();
       final Function1<ArraySize, String> _function = new Function1<ArraySize, String>() {
         public String apply(final ArraySize size) {

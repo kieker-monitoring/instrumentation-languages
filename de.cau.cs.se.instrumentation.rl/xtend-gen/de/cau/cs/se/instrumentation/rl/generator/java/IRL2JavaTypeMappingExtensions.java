@@ -4,8 +4,8 @@ import com.google.common.base.Objects;
 import org.eclipse.emf.ecore.EClassifier;
 
 @SuppressWarnings("all")
-public class RlType2JavaTypeExtensions {
-  private RlType2JavaTypeExtensions() {
+public class IRL2JavaTypeMappingExtensions {
+  private IRL2JavaTypeMappingExtensions() {
   }
   
   /**

@@ -2,6 +2,7 @@ package de.cau.cs.se.instrumentation.rl.generator.java.record;
 
 import com.google.common.base.Objects;
 import de.cau.cs.se.instrumentation.rl.generator.AbstractTemplateTypeGenerator;
+import de.cau.cs.se.instrumentation.rl.generator.java.IRL2JavaTypeMappingExtensions;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.Model;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
@@ -192,7 +193,7 @@ public class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
     return _xblockexpression;
   }
   
-  public boolean isInSamePackage(final TemplateType left, final TemplateType right) {
+  private boolean isInSamePackage(final TemplateType left, final TemplateType right) {
     EObject _eContainer = left.eContainer();
     String _name = ((Model) _eContainer).getName();
     EObject _eContainer_1 = right.eContainer();
@@ -200,7 +201,7 @@ public class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
     return (!Objects.equal(_name, _name_1));
   }
   
-  public CharSequence createImports(final EList<TemplateType> parents, final TemplateType type) {
+  private CharSequence createImports(final EList<TemplateType> parents, final TemplateType type) {
     StringConcatenation _builder = new StringConcatenation();
     CharSequence _xifexpression = null;
     boolean _and = false;
@@ -233,14 +234,14 @@ public class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
     return _builder;
   }
   
-  public CharSequence createDefaultImport() {
+  private CharSequence createDefaultImport() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("import kieker.common.record.IMonitoringRecord;");
     _builder.newLine();
     return _builder;
   }
   
-  public CharSequence createImport(final TemplateType type) {
+  private CharSequence createImport(final TemplateType type) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("import ");
     EObject _eContainer = type.eContainer();
@@ -253,7 +254,7 @@ public class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
     return _builder;
   }
   
-  public CharSequence createExtends(final EList<TemplateType> parents) {
+  private CharSequence createExtends(final EList<TemplateType> parents) {
     StringConcatenation _builder = new StringConcatenation();
     String _xifexpression = null;
     boolean _and = false;
@@ -288,12 +289,13 @@ public class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
    * 
    * @returns the resulting getter as a CharSequence
    */
-  public CharSequence createPropertyGetter(final Property property) {
+  private CharSequence createPropertyGetter(final Property property) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("public ");
     Classifier _findType = PropertyEvaluation.findType(property);
-    String _createTypeName = this.createTypeName(_findType);
-    _builder.append(_createTypeName, "");
+    EClassifier _class_ = _findType.getClass_();
+    String _createPrimitiveTypeName = IRL2JavaTypeMappingExtensions.createPrimitiveTypeName(_class_);
+    _builder.append(_createPrimitiveTypeName, "");
     _builder.append(" ");
     CharSequence _createGetterName = this.createGetterName(property);
     _builder.append(_createGetterName, "");
@@ -312,7 +314,7 @@ public class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
    * 
    * @returns the name of the getter of the property
    */
-  public CharSequence createGetterName(final Property property) {
+  private CharSequence createGetterName(final Property property) {
     CharSequence _xifexpression = null;
     Classifier _findType = PropertyEvaluation.findType(property);
     Class<? extends Classifier> _class = _findType.getClass();
@@ -334,31 +336,5 @@ public class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
       _xifexpression = _builder_1;
     }
     return _xifexpression;
-  }
-  
-  /**
-   * Determine the right Java string for a given system type.
-   * 
-   * @param classifier
-   * 		a classifier representing a type
-   * 
-   * @returns a java type name
-   */
-  public String createTypeName(final Classifier classifier) {
-    String _switchResult = null;
-    EClassifier _class_ = classifier.getClass_();
-    String _name = _class_.getName();
-    boolean _matched = false;
-    if (!_matched) {
-      if (Objects.equal(_name, "string")) {
-        _matched=true;
-        _switchResult = "String";
-      }
-    }
-    if (!_matched) {
-      EClassifier _class__1 = classifier.getClass_();
-      _switchResult = _class__1.getName();
-    }
-    return _switchResult;
   }
 }

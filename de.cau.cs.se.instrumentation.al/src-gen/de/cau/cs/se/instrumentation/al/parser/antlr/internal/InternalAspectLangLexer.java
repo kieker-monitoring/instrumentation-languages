@@ -12,60 +12,60 @@ import java.util.ArrayList;
 
 @SuppressWarnings("all")
 public class InternalAspectLangLexer extends Lexer {
+    public static final int T__50=50;
     public static final int RULE_BOOLEAN=9;
-    public static final int RULE_ID=4;
-    public static final int T__29=29;
-    public static final int T__28=28;
-    public static final int T__27=27;
-    public static final int T__26=26;
-    public static final int T__25=25;
-    public static final int T__24=24;
-    public static final int T__23=23;
-    public static final int T__22=22;
-    public static final int T__21=21;
-    public static final int RULE_ANY_OTHER=14;
-    public static final int T__20=20;
-    public static final int EOF=-1;
+    public static final int T__19=19;
+    public static final int T__15=15;
+    public static final int T__16=16;
+    public static final int T__17=17;
+    public static final int T__18=18;
     public static final int T__55=55;
     public static final int T__56=56;
-    public static final int T__19=19;
-    public static final int T__16=16;
     public static final int T__51=51;
-    public static final int T__15=15;
     public static final int T__52=52;
-    public static final int T__18=18;
     public static final int T__53=53;
     public static final int T__54=54;
-    public static final int T__17=17;
-    public static final int RULE_NUMBER=11;
+    public static final int RULE_ID=4;
+    public static final int T__26=26;
+    public static final int T__27=27;
+    public static final int T__28=28;
     public static final int RULE_INT=7;
-    public static final int RULE_COMMENT_ANNOTATION=8;
-    public static final int T__50=50;
-    public static final int T__42=42;
-    public static final int T__43=43;
-    public static final int T__40=40;
-    public static final int T__41=41;
-    public static final int T__46=46;
-    public static final int T__47=47;
-    public static final int T__44=44;
-    public static final int T__45=45;
-    public static final int T__48=48;
-    public static final int T__49=49;
-    public static final int RULE_FLOAT=6;
-    public static final int RULE_SL_COMMENT=12;
+    public static final int T__29=29;
+    public static final int T__22=22;
     public static final int RULE_ML_COMMENT=10;
-    public static final int T__30=30;
-    public static final int T__31=31;
-    public static final int T__32=32;
+    public static final int T__23=23;
+    public static final int T__24=24;
+    public static final int T__25=25;
+    public static final int T__20=20;
+    public static final int T__21=21;
+    public static final int RULE_COMMENT_ANNOTATION=8;
     public static final int RULE_STRING=5;
+    public static final int RULE_SL_COMMENT=12;
+    public static final int T__37=37;
+    public static final int T__38=38;
+    public static final int T__39=39;
     public static final int T__33=33;
     public static final int T__34=34;
     public static final int T__35=35;
     public static final int T__36=36;
-    public static final int T__37=37;
-    public static final int T__38=38;
-    public static final int T__39=39;
+    public static final int EOF=-1;
+    public static final int T__30=30;
+    public static final int T__31=31;
+    public static final int T__32=32;
     public static final int RULE_WS=13;
+    public static final int RULE_ANY_OTHER=14;
+    public static final int RULE_NUMBER=11;
+    public static final int T__48=48;
+    public static final int T__49=49;
+    public static final int T__44=44;
+    public static final int T__45=45;
+    public static final int RULE_FLOAT=6;
+    public static final int T__46=46;
+    public static final int T__47=47;
+    public static final int T__40=40;
+    public static final int T__41=41;
+    public static final int T__42=42;
+    public static final int T__43=43;
 
     // delegates
     // delegators
@@ -2233,7 +2233,7 @@ public class InternalAspectLangLexer extends Lexer {
     static final String DFA23_acceptS =
         "\5\uffff\1\5\1\uffff\1\7\2\uffff\1\12\1\13\1\14\1\16\1\17\1\uffff\1\22\1\23\1\24\1\25\1\uffff\1\30\4\uffff\1\42\1\43\11\uffff\1\61\1\63\1\64\3\uffff\1\61\4\uffff\1\5\2\uffff\1\7\1\26\1\10\2\uffff\1\12\1\13\1\14\1\16\1\17\3\uffff\1\22\1\23\1\24\1\25\1\27\1\50\1\46\1\30\4\uffff\1\42\1\43\1\44\1\47\1\45\2\uffff\1\62\1\uffff\1\55\1\56\1\uffff\1\60\1\63\10\uffff\1\6\14\uffff\1\53\1\54\10\uffff\1\4\27\uffff\1\20\1\33\1\uffff\1\57\1\uffff\1\36\5\uffff\1\15\7\uffff\1\52\3\uffff\1\40\3\uffff\1\2\2\uffff\1\41\1\uffff\1\11\3\uffff\1\51\1\1\1\uffff\1\31\2\uffff\1\34\1\32\1\uffff\1\21\1\3\3\uffff\1\37\1\35";
     static final String DFA23_specialS =
-        "\1\2\42\uffff\1\1\56\uffff\1\0\162\uffff}>";
+        "\1\0\42\uffff\1\1\56\uffff\1\2\162\uffff}>";
     static final String[] DFA23_transitionS = {
             "\11\47\2\46\2\47\1\46\22\47\1\46\1\34\1\43\1\22\1\23\3\47\1\13\1\14\1\10\1\47\1\5\1\40\1\7\1\37\12\41\1\12\1\47\1\24\1\32\1\35\1\47\1\25\32\45\1\20\1\47\1\21\1\44\1\45\1\47\1\11\1\36\1\31\1\45\1\26\1\42\2\45\1\2\4\45\1\27\1\6\1\1\1\45\1\3\1\30\1\17\1\4\5\45\1\15\1\47\1\16\1\33\uff81\47",
             "\1\50\15\uffff\1\52\2\uffff\1\51",
@@ -2471,26 +2471,6 @@ public class InternalAspectLangLexer extends Lexer {
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA23_82 = input.LA(1);
-
-                        s = -1;
-                        if ( (LA23_82=='*') ) {s = 111;}
-
-                        else if ( ((LA23_82>='\u0000' && LA23_82<=')')||(LA23_82>='+' && LA23_82<='\uFFFF')) ) {s = 112;}
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 1 : 
-                        int LA23_35 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA23_35>='\u0000' && LA23_35<='\uFFFF')) ) {s = 88;}
-
-                        else s = 39;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 2 : 
                         int LA23_0 = input.LA(1);
 
                         s = -1;
@@ -2571,6 +2551,26 @@ public class InternalAspectLangLexer extends Lexer {
                         else if ( ((LA23_0>='\t' && LA23_0<='\n')||LA23_0=='\r'||LA23_0==' ') ) {s = 38;}
 
                         else if ( ((LA23_0>='\u0000' && LA23_0<='\b')||(LA23_0>='\u000B' && LA23_0<='\f')||(LA23_0>='\u000E' && LA23_0<='\u001F')||(LA23_0>='%' && LA23_0<='\'')||LA23_0=='+'||LA23_0==';'||LA23_0=='?'||LA23_0=='\\'||LA23_0=='`'||LA23_0=='|'||(LA23_0>='\u007F' && LA23_0<='\uFFFF')) ) {s = 39;}
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 1 : 
+                        int LA23_35 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA23_35>='\u0000' && LA23_35<='\uFFFF')) ) {s = 88;}
+
+                        else s = 39;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
+                        int LA23_82 = input.LA(1);
+
+                        s = -1;
+                        if ( (LA23_82=='*') ) {s = 111;}
+
+                        else if ( ((LA23_82>='\u0000' && LA23_82<=')')||(LA23_82>='+' && LA23_82<='\uFFFF')) ) {s = 112;}
 
                         if ( s>=0 ) return s;
                         break;

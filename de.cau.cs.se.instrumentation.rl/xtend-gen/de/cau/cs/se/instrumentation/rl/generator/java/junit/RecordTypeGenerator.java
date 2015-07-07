@@ -2,7 +2,7 @@ package de.cau.cs.se.instrumentation.rl.generator.java.junit;
 
 import com.google.common.base.Objects;
 import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator;
-import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize;
+import de.cau.cs.se.instrumentation.rl.generator.java.IRL2JavaTypeMappingExtensions;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.Constant;
 import de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral;
@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -457,7 +456,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     return _xblockexpression;
   }
   
-  public String createAllValueExistAssertions(final Collection<Property> properties) {
+  private String createAllValueExistAssertions(final Collection<Property> properties) {
     final List<CharSequence> result = new ArrayList<CharSequence>();
     final Procedure2<Property, Integer> _function = new Procedure2<Property, Integer>() {
       public void apply(final Property property, final Integer index) {
@@ -469,13 +468,15 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     return IterableExtensions.join(result);
   }
   
-  public CharSequence createValueExistAssertion(final Property property, final Integer index) {
+  private CharSequence createValueExistAssertion(final Property property, final Integer index) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Assert.assertNotNull(\"Array value [");
     _builder.append(index, "");
     _builder.append("] of type ");
-    String _getObjectType = this.getGetObjectType(property);
-    _builder.append(_getObjectType, "");
+    Classifier _type = property.getType();
+    EClassifier _class_ = _type.getClass_();
+    String _createPrimitiveWrapperTypeName = IRL2JavaTypeMappingExtensions.createPrimitiveWrapperTypeName(_class_);
+    _builder.append(_createPrimitiveWrapperTypeName, "");
     _builder.append(" must be not null.\", values[");
     _builder.append(index, "");
     _builder.append("]); ");
@@ -487,7 +488,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    * This routine is ugly.
    * Collect all value assertions
    */
-  public String createAllValueAssertions(final Collection<Property> properties) {
+  private String createAllValueAssertions(final Collection<Property> properties) {
     final List<CharSequence> result = new ArrayList<CharSequence>();
     final Procedure2<Property, Integer> _function = new Procedure2<Property, Integer>() {
       public void apply(final Property property, final Integer index) {
@@ -499,7 +500,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     return IterableExtensions.join(result);
   }
   
-  public CharSequence createValueAssertion(final Property property, final Integer index) {
+  private CharSequence createValueAssertion(final Property property, final Integer index) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Assert.assertEquals(\"Array value [");
     _builder.append(index, "");
@@ -536,16 +537,18 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         String _castToPrimitiveType_1 = this.getCastToPrimitiveType(property);
         _builder.append(_castToPrimitiveType_1, "\t");
         _builder.append(" (");
-        String _getObjectType = this.getGetObjectType(property);
-        _builder.append(_getObjectType, "\t");
+        Classifier _type_2 = property.getType();
+        EClassifier _class__2 = _type_2.getClass_();
+        String _createPrimitiveWrapperTypeName = IRL2JavaTypeMappingExtensions.createPrimitiveWrapperTypeName(_class__2);
+        _builder.append(_createPrimitiveWrapperTypeName, "\t");
         _builder.append(")values[");
         _builder.append(index, "\t");
         _builder.append("], 0.0000001");
         _builder.newLineIfNotEmpty();
       } else {
-        Classifier _type_2 = property.getType();
-        EClassifier _class__2 = _type_2.getClass_();
-        String _name_2 = _class__2.getName();
+        Classifier _type_3 = property.getType();
+        EClassifier _class__3 = _type_3.getClass_();
+        String _name_2 = _class__3.getName();
         boolean _equals_2 = Objects.equal(_name_2, "string");
         if (_equals_2) {
           _builder.append("\t");
@@ -581,7 +584,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   /**
    * Create constant value for string.
    */
-  public String createConstantValue(final Property property) {
+  private String createConstantValue(final Property property) {
     Literal _value = property.getValue();
     boolean _notEquals = (!Objects.equal(_value, null));
     if (_notEquals) {
@@ -592,7 +595,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     }
   }
   
-  public String createConstantValue(final Literal value) {
+  private String createConstantValue(final Literal value) {
     boolean _matched = false;
     if (!_matched) {
       if (value instanceof StringLiteral) {
@@ -625,7 +628,11 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     return "";
   }
   
-  public String getCastToPrimitiveType(final Property property) {
+  /**
+   * Returns a string representing a type case in Java iff
+   * the type is not of type string.
+   */
+  private String getCastToPrimitiveType(final Property property) {
     Classifier _type = property.getType();
     EClassifier _class_ = _type.getClass_();
     String _name = _class_.getName();
@@ -647,7 +654,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    * @param properties list of all data properties of a type
    * @param type the RecordType itself
    */
-  public CharSequence createAllGetterValueAssertions(final Collection<Property> properties, final RecordType type) {
+  private CharSequence createAllGetterValueAssertions(final Collection<Property> properties, final RecordType type) {
     StringConcatenation _builder = new StringConcatenation();
     {
       for(final Property property : properties) {
@@ -745,7 +752,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    * This routine is ugly.
    * Collects all type assertions.
    */
-  public String createAllTypeAssertions(final Collection<Property> properties) {
+  private String createAllTypeAssertions(final Collection<Property> properties) {
     final List<CharSequence> result = new ArrayList<CharSequence>();
     final Procedure2<Property, Integer> _function = new Procedure2<Property, Integer>() {
       public void apply(final Property property, final Integer index) {
@@ -757,97 +764,33 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     return IterableExtensions.join(result);
   }
   
-  public CharSequence createTypeAssertion(final Property property, final Integer index) {
+  private CharSequence createTypeAssertion(final Property property, final Integer index) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Assert.assertTrue(\"Type of array value [");
     _builder.append(index, "");
     _builder.append("] \" + values[");
     _builder.append(index, "");
     _builder.append("].getClass().getCanonicalName() + \" does not match the desired type ");
-    String _getObjectType = this.getGetObjectType(property);
-    _builder.append(_getObjectType, "");
+    Classifier _type = property.getType();
+    EClassifier _class_ = _type.getClass_();
+    String _createPrimitiveWrapperTypeName = IRL2JavaTypeMappingExtensions.createPrimitiveWrapperTypeName(_class_);
+    _builder.append(_createPrimitiveWrapperTypeName, "");
     _builder.append("\", values[");
     _builder.append(index, "");
     _builder.append("] instanceof ");
-    String _getObjectType_1 = this.getGetObjectType(property);
-    _builder.append(_getObjectType_1, "");
+    Classifier _type_1 = property.getType();
+    EClassifier _class__1 = _type_1.getClass_();
+    String _createPrimitiveWrapperTypeName_1 = IRL2JavaTypeMappingExtensions.createPrimitiveWrapperTypeName(_class__1);
+    _builder.append(_createPrimitiveWrapperTypeName_1, "");
     _builder.append(");");
     _builder.newLineIfNotEmpty();
     return _builder;
   }
   
-  public String getGetObjectType(final Property property) {
-    String _switchResult = null;
-    Classifier _type = property.getType();
-    EClassifier _class_ = _type.getClass_();
-    String _name = _class_.getName();
-    boolean _matched = false;
-    if (!_matched) {
-      if (Objects.equal(_name, "int")) {
-        _matched=true;
-        _switchResult = "Integer";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "long")) {
-        _matched=true;
-        _switchResult = "Long";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "short")) {
-        _matched=true;
-        _switchResult = "Short";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "double")) {
-        _matched=true;
-        _switchResult = "Double";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "float")) {
-        _matched=true;
-        _switchResult = "Float";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "char")) {
-        _matched=true;
-        _switchResult = "Character";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "byte")) {
-        _matched=true;
-        _switchResult = "Byte";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "string")) {
-        _matched=true;
-        _switchResult = "String";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "boolean")) {
-        _matched=true;
-        _switchResult = "Boolean";
-      }
-    }
-    if (!_matched) {
-      Classifier _type_1 = property.getType();
-      EClassifier _class__1 = _type_1.getClass_();
-      _switchResult = _class__1.getName();
-    }
-    return _switchResult;
-  }
-  
   /**
    * Produce a type conform value for input. This only works for primitive types.
    */
-  public CharSequence createPropertyValueSet(final Property property) {
+  private CharSequence createPropertyValueSet(final Property property) {
     StringConcatenation _builder = new StringConcatenation();
     Classifier _type = property.getType();
     EClassifier _class_ = _type.getClass_();
@@ -869,113 +812,12 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    * kieker.common.record -> kieker.test.common.junit.record
    * All other structures are converted by adding .junit to the package hierarchy
    */
-  public String createTestPackageName(final String name) {
+  private String createTestPackageName(final String name) {
     boolean _contains = name.contains("kieker.common.record");
     if (_contains) {
       return name.replaceAll("kieker\\.common\\.record", "kieker.test.common.junit.record");
     } else {
       return (name + ".junit");
     }
-  }
-  
-  /**
-   * Determine the right Java string for a given system type.
-   * 
-   * @param classifier
-   * 		a classifier representing a type
-   * 
-   * @returns a java type name
-   */
-  public String createTypeName(final Classifier classifier) {
-    String _xifexpression = null;
-    EList<ArraySize> _sizes = classifier.getSizes();
-    int _size = _sizes.size();
-    boolean _greaterThan = (_size > 0);
-    if (_greaterThan) {
-      EClassifier _class_ = classifier.getClass_();
-      String _createPrimitiveTypeName = this.createPrimitiveTypeName(_class_);
-      EList<ArraySize> _sizes_1 = classifier.getSizes();
-      final Function1<ArraySize, String> _function = new Function1<ArraySize, String>() {
-        public String apply(final ArraySize size) {
-          StringConcatenation _builder = new StringConcatenation();
-          _builder.append("[]");
-          return _builder.toString();
-        }
-      };
-      List<String> _map = ListExtensions.<ArraySize, String>map(_sizes_1, _function);
-      String _join = IterableExtensions.join(_map);
-      _xifexpression = (_createPrimitiveTypeName + _join);
-    } else {
-      EClassifier _class__1 = classifier.getClass_();
-      _xifexpression = this.createPrimitiveTypeName(_class__1);
-    }
-    return _xifexpression;
-  }
-  
-  /**
-   * Determine the right Java string for a given system type.
-   */
-  public String createPrimitiveTypeName(final EClassifier classifier) {
-    String _switchResult = null;
-    String _name = classifier.getName();
-    boolean _matched = false;
-    if (!_matched) {
-      if (Objects.equal(_name, "int")) {
-        _matched=true;
-        _switchResult = "int";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "long")) {
-        _matched=true;
-        _switchResult = "long";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "short")) {
-        _matched=true;
-        _switchResult = "short";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "double")) {
-        _matched=true;
-        _switchResult = "double";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "float")) {
-        _matched=true;
-        _switchResult = "float";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "char")) {
-        _matched=true;
-        _switchResult = "char";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "byte")) {
-        _matched=true;
-        _switchResult = "byte";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "string")) {
-        _matched=true;
-        _switchResult = "String";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "boolean")) {
-        _matched=true;
-        _switchResult = "boolean";
-      }
-    }
-    if (!_matched) {
-      _switchResult = classifier.getName();
-    }
-    return _switchResult;
   }
 }

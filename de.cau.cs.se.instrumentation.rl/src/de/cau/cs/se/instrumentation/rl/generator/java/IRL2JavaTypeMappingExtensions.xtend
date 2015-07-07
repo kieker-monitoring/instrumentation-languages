@@ -2,7 +2,7 @@ package de.cau.cs.se.instrumentation.rl.generator.java;
 
 import org.eclipse.emf.ecore.EClassifier
 
-class RlType2JavaTypeExtensions {
+class IRL2JavaTypeMappingExtensions {
 
 	private new() {
 		// extension class
