@@ -1,14 +1,7 @@
 /.PartialRecordTypeGenerator.java._trace
 /.RecordTypeGenerator.java._trace
 /.TagTypeGenerator.java._trace
-/PartialRecordTypeGenerator.java
-/RecordTypeGenerator.java
-/TagTypeGenerator.java
 /.ComputeUID.java._trace
 /.Constructor.java._trace
 /.EVisibility.java._trace
-/Constructor.java
-/EVisibility.java
-/.RlType2JavaType.java._trace
-/.RlType2JavaTypeExtensions.java._trace
-/RlType2JavaTypeExtensions.java
+/.IRL2JavaTypeExtensions.java._trace
