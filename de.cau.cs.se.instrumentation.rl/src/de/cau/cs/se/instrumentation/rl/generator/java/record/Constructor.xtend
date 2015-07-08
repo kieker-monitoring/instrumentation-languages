@@ -25,9 +25,3 @@ class Constructor {
 		return signature
 	}
 }
-
-enum EVisibility {
-	PUBLIC,
-	PROTECTED,
-	PRIVATE
-}
