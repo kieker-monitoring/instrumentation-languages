@@ -33,6 +33,9 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.Text;
 import org.xml.sax.SAXException;
 
 import kieker.common.logging.Log;
@@ -40,7 +43,7 @@ import kieker.common.logging.LogFactory;
 
 /**
  * Initializes EMF support. Primarily registers project.
- * 
+ *
  * @author Reiner Jung
  */
 public class StandaloneSetup {
@@ -72,7 +75,7 @@ public class StandaloneSetup {
 
 	/**
 	 * Set the real project directory name.
-	 * 
+	 *
 	 * @param projectDirectoryName
 	 *            the directory name
 	 */
@@ -86,7 +89,7 @@ public class StandaloneSetup {
 
 	/**
 	 * Initialize the project registry map.
-	 * 
+	 *
 	 * @param pathToPlatform
 	 *            the platform URI
 	 * @return returns true on success
@@ -120,7 +123,7 @@ public class StandaloneSetup {
 
 	/**
 	 * Register all projects in the platformURI.
-	 * 
+	 *
 	 * @param platformPath
 	 *            the platform URI as file path
 	 * @return true if projects where found
@@ -148,7 +151,7 @@ public class StandaloneSetup {
 
 	/**
 	 * Detect if a folder contains a .project file.
-	 * 
+	 *
 	 * @param projectDirectory
 	 *            project directory
 	 * @return true if a project was found
@@ -166,7 +169,7 @@ public class StandaloneSetup {
 
 	/**
 	 * Register a project specified by the given .project file.
-	 * 
+	 *
 	 * @param projectFile
 	 *            the project file
 	 * @return true if a project was found
@@ -174,16 +177,32 @@ public class StandaloneSetup {
 	private boolean registerProject(final File projectFile) {
 		try {
 			final Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new FileInputStream(projectFile));
-			final String name = document.getDocumentElement().getElementsByTagName("name").item(0).getTextContent();
-
-			final URI uri = URI.createFileURI(projectFile.getParentFile().getCanonicalPath() + File.separator);
-			final URI existing = EcorePlugin.getPlatformResourceMap().get(name);
-			if (existing != null) {
-				LOG.error("Duplicate project " + name + " at '" + uri + "'. Prev was: '" + existing + "'.");
-				return false;
+			final Node node = document.getDocumentElement().getElementsByTagName("name").item(0);
+			if (node instanceof Element) {
+				if (((Element) node).getChildNodes().getLength() > 0) {
+					final Node content = ((Element) node).getChildNodes().item(0);
+					if (content instanceof Text) {
+						final String name = ((Text) content).getNodeValue();
+						final URI uri = URI.createFileURI(projectFile.getParentFile().getCanonicalPath() + File.separator);
+						final URI existing = EcorePlugin.getPlatformResourceMap().get(name);
+						if (existing != null) {
+							LOG.error("Duplicate project " + name + " at '" + uri + "'. Prev was: '" + existing + "'.");
+							return false;
+						} else {
+							EcorePlugin.getPlatformResourceMap().put(name, uri);
+							return true;
+						}
+					} else {
+						LOG.error(".project file's name section contains no valid text.");
+						return false;
+					}
+				} else {
+					LOG.error(".project file's name section is empty.");
+					return false;
+				}
 			} else {
-				EcorePlugin.getPlatformResourceMap().put(name, uri);
-				return true;
+				LOG.error(".project file's contains no name tag.");
+				return false;
 			}
 		} catch (final FileNotFoundException e) {
 			LOG.error("Project file " + projectFile.getAbsolutePath() + " does not exist.");
