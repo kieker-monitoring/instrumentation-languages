@@ -18,6 +18,7 @@ package de.cau.cs.se.instrumentation.rl.typing.jar;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.eclipse.core.resources.IProject;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -38,6 +39,8 @@ public class JarModelTypeProvider implements Resource.Factory, IJarModelTypeProv
 
 	private final ResourceSet resourceSet;
 
+	private final IProject project;
+
 	/**
 	 * Construct the type provider.
 	 *
@@ -46,8 +49,9 @@ public class JarModelTypeProvider implements Resource.Factory, IJarModelTypeProv
 	 * @param model
 	 *            the application model
 	 */
-	public JarModelTypeProvider(final ResourceSet resourceSet) {
+	public JarModelTypeProvider(final ResourceSet resourceSet, final IProject project) {
 		this.resourceSet = resourceSet;
+		this.project = project;
 		this.typeUriHelper = new JarModelTypeURIHelper();
 	}
 
@@ -98,7 +102,7 @@ public class JarModelTypeProvider implements Resource.Factory, IJarModelTypeProv
 	 *            The URI for the resource
 	 */
 	public JarModelResource createResource(final URI uri) {
-		return new JarModelResource(uri, this.resourceSet.getResources().get(0).getURI());
+		return new JarModelResource(uri, this.project);
 	}
 
 	/**

@@ -1,6 +1,5 @@
 package de.cau.cs.se.instrumentation.rl.generator.c;
 
-import com.google.common.base.Objects;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.Model;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
@@ -52,64 +51,38 @@ public class CommonCFunctionsExtension {
     String _switchResult = null;
     EClassifier _class_ = classifier.getClass_();
     String _name = _class_.getName();
-    boolean _matched = false;
-    if (!_matched) {
-      if (Objects.equal(_name, "key")) {
-        _matched=true;
+    switch (_name) {
+      case "key":
         _switchResult = "const char*";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "string")) {
-        _matched=true;
+        break;
+      case "string":
         _switchResult = "const char*";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "byte")) {
-        _matched=true;
+        break;
+      case "byte":
         _switchResult = "char";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "short")) {
-        _matched=true;
+        break;
+      case "short":
         _switchResult = "short";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "int")) {
-        _matched=true;
+        break;
+      case "int":
         _switchResult = "long";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "long")) {
-        _matched=true;
+        break;
+      case "long":
         _switchResult = "long long";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "float")) {
-        _matched=true;
+        break;
+      case "float":
         _switchResult = "float";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "double")) {
-        _matched=true;
+        break;
+      case "double":
         _switchResult = "double";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "boolean")) {
-        _matched=true;
+        break;
+      case "boolean":
         _switchResult = "char";
-      }
-    }
-    if (!_matched) {
-      EClassifier _class__1 = classifier.getClass_();
-      _switchResult = _class__1.getName();
+        break;
+      default:
+        EClassifier _class__1 = classifier.getClass_();
+        _switchResult = _class__1.getName();
+        break;
     }
     return _switchResult;
   }

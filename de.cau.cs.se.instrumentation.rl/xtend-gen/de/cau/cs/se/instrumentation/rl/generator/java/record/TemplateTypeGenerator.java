@@ -26,6 +26,7 @@ public class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
   /**
    * Return the unique id.
    */
+  @Override
   public String getId() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("java");
@@ -35,6 +36,7 @@ public class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
   /**
    * Define language/generation type, which is also used to define the outlet.
    */
+  @Override
   public String getOutletType() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("java");
@@ -44,6 +46,7 @@ public class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
   /**
    * Compute the directory name for a record type.
    */
+  @Override
   public CharSequence getDirectoryName(final Type type) {
     StringConcatenation _builder = new StringConcatenation();
     EObject _eContainer = type.eContainer();
@@ -56,6 +59,7 @@ public class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
   /**
    * Compute file name.
    */
+  @Override
   public String getFileName(final Type type) {
     StringConcatenation _builder = new StringConcatenation();
     CharSequence _directoryName = this.getDirectoryName(type);
@@ -67,6 +71,7 @@ public class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
     return _builder.toString();
   }
   
+  @Override
   public CharSequence createContent(final TemplateType type, final String author, final String version) {
     CharSequence _xblockexpression = null;
     {
@@ -177,10 +182,8 @@ public class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
       _builder.newLineIfNotEmpty();
       _builder.append("\t");
       EList<Property> _properties = type.getProperties();
-      final Function1<Property, CharSequence> _function = new Function1<Property, CharSequence>() {
-        public CharSequence apply(final Property property) {
-          return TemplateTypeGenerator.this.createPropertyGetter(property);
-        }
+      final Function1<Property, CharSequence> _function = (Property property) -> {
+        return this.createPropertyGetter(property);
       };
       List<CharSequence> _map = ListExtensions.<Property, CharSequence>map(_properties, _function);
       String _join = IterableExtensions.join(_map);
@@ -214,16 +217,12 @@ public class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
       _and = _greaterThan;
     }
     if (_and) {
-      final Function1<TemplateType, Boolean> _function = new Function1<TemplateType, Boolean>() {
-        public Boolean apply(final TemplateType t) {
-          return Boolean.valueOf(TemplateTypeGenerator.this.isInSamePackage(type, t));
-        }
+      final Function1<TemplateType, Boolean> _function = (TemplateType t) -> {
+        return Boolean.valueOf(this.isInSamePackage(type, t));
       };
       Iterable<TemplateType> _filter = IterableExtensions.<TemplateType>filter(parents, _function);
-      final Function1<TemplateType, CharSequence> _function_1 = new Function1<TemplateType, CharSequence>() {
-        public CharSequence apply(final TemplateType it) {
-          return TemplateTypeGenerator.this.createImport(it);
-        }
+      final Function1<TemplateType, CharSequence> _function_1 = (TemplateType it) -> {
+        return this.createImport(it);
       };
       Iterable<CharSequence> _map = IterableExtensions.<TemplateType, CharSequence>map(_filter, _function_1);
       _xifexpression = IterableExtensions.join(_map);
@@ -267,10 +266,8 @@ public class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
       _and = _greaterThan;
     }
     if (_and) {
-      final Function1<TemplateType, String> _function = new Function1<TemplateType, String>() {
-        public String apply(final TemplateType t) {
-          return t.getName();
-        }
+      final Function1<TemplateType, String> _function = (TemplateType t) -> {
+        return t.getName();
       };
       List<String> _map = ListExtensions.<TemplateType, String>map(parents, _function);
       _xifexpression = IterableExtensions.join(_map, ", ");

@@ -15,6 +15,7 @@
  ***************************************************************************/
 package de.cau.cs.se.instrumentation.rl.typing.jar;
 
+import org.eclipse.core.resources.IProject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import com.google.inject.Inject;
@@ -42,19 +43,19 @@ public class JarModelTypeProviderFactory {
 	 *            the application model
 	 * @return Returns the type provider for primitive types.
 	 */
-	public IJarModelTypeProvider getTypeProvider(final ResourceSet resourceSet) {
+	public IJarModelTypeProvider getTypeProvider(final IProject project, final ResourceSet resourceSet) {
 		if (resourceSet != null) {
 			final Object o = resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
 					.get(JarModelTypeURIHelper.PROTOCOL);
 			if (o != null) {
 				if (!(o instanceof IJarModelTypeProvider)) {
 					// TODO something went terribly wrong, to be save create a new type provider
-					return this.createTypeProvider(resourceSet);
+					return this.createTypeProvider(project, resourceSet);
 				} else {
 					return (IJarModelTypeProvider) o;
 				}
 			} else {
-				return this.createTypeProvider(resourceSet);
+				return this.createTypeProvider(project, resourceSet);
 			}
 		} else {
 			throw new IllegalArgumentException("Cannot get type provide without a resourceSet.");
@@ -70,10 +71,10 @@ public class JarModelTypeProviderFactory {
 	 *            the application model
 	 * @return Returns the new type provider.
 	 */
-	private IJarModelTypeProvider createTypeProvider(final ResourceSet resourceSet) {
-		final IJarModelTypeProvider typeProvider = new JarModelTypeProvider(resourceSet);
+	private IJarModelTypeProvider createTypeProvider(final IProject project, final ResourceSet resourceSet) {
+		final IJarModelTypeProvider typeProvider = new JarModelTypeProvider(resourceSet, project);
 		resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
-				.put(JarModelTypeURIHelper.PROTOCOL, typeProvider);
+		.put(JarModelTypeURIHelper.PROTOCOL, typeProvider);
 		return typeProvider;
 	}
 

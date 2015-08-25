@@ -22,6 +22,13 @@ import de.cau.cs.se.instrumentation.rl.typing.TypeGlobalScopeProvider;
 import de.cau.cs.se.instrumentation.rl.typing.jar.IJarModelTypeProvider;
 import de.cau.cs.se.instrumentation.rl.typing.jar.JarModelTypeProviderFactory;
 import de.cau.cs.se.instrumentation.rl.typing.jar.JarModelTypeScope;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.IWorkspaceRoot;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -40,6 +47,7 @@ public class JarModelGlobalScopeProvider extends TypeGlobalScopeProvider {
   @Inject
   private IQualifiedNameConverter qualifiedNameConverter;
   
+  @Override
   public IScope getParentTypeScope(final Resource resource, final EReference reference, final Predicate<IEObjectDescription> filter, final EClass referenceType) {
     IScope _xifexpression = null;
     boolean _isAssignableFrom = EcoreUtil2.isAssignableFrom(EcorePackage.Literals.ECLASSIFIER, referenceType);
@@ -53,9 +61,17 @@ public class JarModelGlobalScopeProvider extends TypeGlobalScopeProvider {
         boolean _notEquals = (!Objects.equal(resource, null));
         if (_notEquals) {
           final ResourceSet resourceSet = resource.getResourceSet();
+          IWorkspace _workspace = ResourcesPlugin.getWorkspace();
+          final IWorkspaceRoot root = _workspace.getRoot();
+          URI _uRI = resource.getURI();
+          String _string = _uRI.toString();
+          final String uri = _string.replaceFirst("platform:/resource", "");
+          Path _path = new Path(uri);
+          IFile _file = root.getFile(_path);
+          final IProject project = _file.getProject();
           boolean _notEquals_1 = (!Objects.equal(resourceSet, null));
           if (_notEquals_1) {
-            final IJarModelTypeProvider typeProvider = this.jarModeltypeProviderFactory.getTypeProvider(resourceSet);
+            final IJarModelTypeProvider typeProvider = this.jarModeltypeProviderFactory.getTypeProvider(project, resourceSet);
             return new JarModelTypeScope(typeProvider, this.qualifiedNameConverter, filter);
           } else {
             throw new IllegalStateException("context must be contained in a resource set");

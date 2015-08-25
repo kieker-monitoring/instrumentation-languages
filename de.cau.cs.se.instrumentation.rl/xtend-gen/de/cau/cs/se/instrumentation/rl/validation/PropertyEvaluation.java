@@ -33,11 +33,9 @@ public class PropertyEvaluation {
   protected static List<Property> _collectAllDataProperties(final RecordType type) {
     final ArrayList<Property> list = new ArrayList<Property>();
     List<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(type);
-    final Function1<Property, Boolean> _function = new Function1<Property, Boolean>() {
-      public Boolean apply(final Property property) {
-        Property _referTo = property.getReferTo();
-        return Boolean.valueOf(Objects.equal(_referTo, null));
-      }
+    final Function1<Property, Boolean> _function = (Property property) -> {
+      Property _referTo = property.getReferTo();
+      return Boolean.valueOf(Objects.equal(_referTo, null));
     };
     Iterable<Property> _filter = IterableExtensions.<Property>filter(_collectAllProperties, _function);
     Iterables.<Property>addAll(list, _filter);
@@ -56,11 +54,9 @@ public class PropertyEvaluation {
   protected static List<Property> _collectAllDataProperties(final TemplateType type) {
     final ArrayList<Property> list = new ArrayList<Property>();
     List<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(type);
-    final Function1<Property, Boolean> _function = new Function1<Property, Boolean>() {
-      public Boolean apply(final Property property) {
-        Property _referTo = property.getReferTo();
-        return Boolean.valueOf(Objects.equal(_referTo, null));
-      }
+    final Function1<Property, Boolean> _function = (Property property) -> {
+      Property _referTo = property.getReferTo();
+      return Boolean.valueOf(Objects.equal(_referTo, null));
     };
     Iterable<Property> _filter = IterableExtensions.<Property>filter(_collectAllProperties, _function);
     Iterables.<Property>addAll(list, _filter);
@@ -91,11 +87,9 @@ public class PropertyEvaluation {
     boolean _notEquals_1 = (!Objects.equal(_parents, null));
     if (_notEquals_1) {
       EList<TemplateType> _parents_1 = type.getParents();
-      final Consumer<TemplateType> _function = new Consumer<TemplateType>() {
-        public void accept(final TemplateType it) {
-          List<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(it);
-          PropertyEvaluation.addAllUnique(result, _collectAllProperties);
-        }
+      final Consumer<TemplateType> _function = (TemplateType it) -> {
+        List<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(it);
+        PropertyEvaluation.addAllUnique(result, _collectAllProperties);
       };
       _parents_1.forEach(_function);
     }
@@ -118,11 +112,9 @@ public class PropertyEvaluation {
     boolean _notEquals = (!Objects.equal(_parents, null));
     if (_notEquals) {
       EList<TemplateType> _parents_1 = type.getParents();
-      final Consumer<TemplateType> _function = new Consumer<TemplateType>() {
-        public void accept(final TemplateType iface) {
-          List<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(iface);
-          PropertyEvaluation.addAllUnique(result, _collectAllProperties);
-        }
+      final Consumer<TemplateType> _function = (TemplateType iface) -> {
+        List<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(iface);
+        PropertyEvaluation.addAllUnique(result, _collectAllProperties);
       };
       _parents_1.forEach(_function);
     }
@@ -145,11 +137,9 @@ public class PropertyEvaluation {
     if (_notEquals) {
       final List<Property> result = new ArrayList<Property>();
       EList<TemplateType> _parents_1 = type.getParents();
-      final Consumer<TemplateType> _function = new Consumer<TemplateType>() {
-        public void accept(final TemplateType iface) {
-          List<Property> _collectAllTemplateProperties = PropertyEvaluation.collectAllTemplateProperties(iface);
-          PropertyEvaluation.addAllUnique(result, _collectAllTemplateProperties);
-        }
+      final Consumer<TemplateType> _function = (TemplateType iface) -> {
+        List<Property> _collectAllTemplateProperties = PropertyEvaluation.collectAllTemplateProperties(iface);
+        PropertyEvaluation.addAllUnique(result, _collectAllTemplateProperties);
       };
       _parents_1.forEach(_function);
       return result;
@@ -173,11 +163,9 @@ public class PropertyEvaluation {
     boolean _notEquals = (!Objects.equal(_parents, null));
     if (_notEquals) {
       EList<TemplateType> _parents_1 = type.getParents();
-      final Consumer<TemplateType> _function = new Consumer<TemplateType>() {
-        public void accept(final TemplateType iface) {
-          List<Property> _collectAllTemplateProperties = PropertyEvaluation.collectAllTemplateProperties(iface);
-          PropertyEvaluation.addAllUnique(result, _collectAllTemplateProperties);
-        }
+      final Consumer<TemplateType> _function = (TemplateType iface) -> {
+        List<Property> _collectAllTemplateProperties = PropertyEvaluation.collectAllTemplateProperties(iface);
+        PropertyEvaluation.addAllUnique(result, _collectAllTemplateProperties);
       };
       _parents_1.forEach(_function);
     }
@@ -189,13 +177,11 @@ public class PropertyEvaluation {
    * Add elements of the second list to the first list if it is not already in there.
    */
   public static List<Property> addAllUnique(final List<Property> list, final List<Property> addList) {
-    final Consumer<Property> _function = new Consumer<Property>() {
-      public void accept(final Property item) {
-        boolean _containsProperty = PropertyEvaluation.containsProperty(list, item);
-        boolean _not = (!_containsProperty);
-        if (_not) {
-          list.add(item);
-        }
+    final Consumer<Property> _function = (Property item) -> {
+      boolean _containsProperty = PropertyEvaluation.containsProperty(list, item);
+      boolean _not = (!_containsProperty);
+      if (_not) {
+        list.add(item);
       }
     };
     addList.forEach(_function);
@@ -264,11 +250,9 @@ public class PropertyEvaluation {
    * 		the computed value
    */
   public static int calculateSize(final Iterable<Property> list) {
-    final Function2<Integer, Property, Integer> _function = new Function2<Integer, Property, Integer>() {
-      public Integer apply(final Integer result, final Property property) {
-        int _size = PropertyEvaluation.getSize(property);
-        return Integer.valueOf(((result).intValue() + _size));
-      }
+    final Function2<Integer, Property, Integer> _function = (Integer result, Property property) -> {
+      int _size = PropertyEvaluation.getSize(property);
+      return Integer.valueOf(((result).intValue() + _size));
     };
     return (int) IterableExtensions.<Property, Integer>fold(list, Integer.valueOf(0), _function);
   }
@@ -288,67 +272,40 @@ public class PropertyEvaluation {
       Classifier _findType = PropertyEvaluation.findType(property);
       EClassifier _class_ = _findType.getClass_();
       String _name = _class_.getName();
-      boolean _matched = false;
-      if (!_matched) {
-        if (Objects.equal(_name, "string")) {
-          _matched=true;
+      switch (_name) {
+        case "string":
           _switchResult = 4;
-        }
-      }
-      if (!_matched) {
-        if (Objects.equal(_name, "byte")) {
-          _matched=true;
+          break;
+        case "byte":
           _switchResult = 1;
-        }
-      }
-      if (!_matched) {
-        if (Objects.equal(_name, "short")) {
-          _matched=true;
+          break;
+        case "short":
           _switchResult = 2;
-        }
-      }
-      if (!_matched) {
-        if (Objects.equal(_name, "int")) {
-          _matched=true;
+          break;
+        case "int":
           _switchResult = 4;
-        }
-      }
-      if (!_matched) {
-        if (Objects.equal(_name, "long")) {
-          _matched=true;
+          break;
+        case "long":
           _switchResult = 8;
-        }
-      }
-      if (!_matched) {
-        if (Objects.equal(_name, "float")) {
-          _matched=true;
+          break;
+        case "float":
           _switchResult = 4;
-        }
-      }
-      if (!_matched) {
-        if (Objects.equal(_name, "double")) {
-          _matched=true;
+          break;
+        case "double":
           _switchResult = 8;
-        }
-      }
-      if (!_matched) {
-        if (Objects.equal(_name, "char")) {
-          _matched=true;
+          break;
+        case "char":
           _switchResult = 2;
-        }
-      }
-      if (!_matched) {
-        if (Objects.equal(_name, "boolean")) {
-          _matched=true;
+          break;
+        case "boolean":
           _switchResult = 1;
-        }
-      }
-      if (!_matched) {
-        Classifier _findType_1 = PropertyEvaluation.findType(property);
-        EClassifier _class__1 = _findType_1.getClass_();
-        String _name_1 = _class__1.getName();
-        String _plus = (_name_1 + "is not a valid type name");
-        throw new InternalErrorException(_plus);
+          break;
+        default:
+          Classifier _findType_1 = PropertyEvaluation.findType(property);
+          EClassifier _class__1 = _findType_1.getClass_();
+          String _name_1 = _class__1.getName();
+          String _plus = (_name_1 + "is not a valid type name");
+          throw new InternalErrorException(_plus);
       }
       return _switchResult;
     } catch (Throwable _e) {

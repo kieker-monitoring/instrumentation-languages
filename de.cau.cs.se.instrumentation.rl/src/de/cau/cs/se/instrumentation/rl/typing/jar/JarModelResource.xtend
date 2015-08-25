@@ -27,6 +27,25 @@ import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl
+import org.eclipse.core.resources.IProject
+import org.eclipse.jdt.core.JavaCore
+import org.eclipse.jdt.core.IJavaProject
+import org.eclipse.jdt.core.IType
+import java.util.Collection
+import org.eclipse.jdt.core.IPackageFragment
+import org.eclipse.jdt.core.IClassFile
+import org.eclipse.jdt.core.ICompilationUnit
+import de.cau.cs.se.instrumentation.rl.recordLang.Model
+import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangFactory
+import java.util.HashMap
+import de.cau.cs.se.instrumentation.rl.recordLang.Property
+import org.eclipse.jdt.core.Flags
+import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
+import de.cau.cs.se.instrumentation.rl.typing.PrimitiveTypes
+import de.cau.cs.se.instrumentation.rl.recordLang.Literal
+import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType
+import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
+import org.eclipse.jdt.core.JavaModelException
 
 /**
  * broadly based on org.spp.cocome.behavior.pcm.handler.PCMModelResource
@@ -34,20 +53,21 @@ import org.eclipse.emf.ecore.resource.impl.ResourceImpl
  * @author Yannic Kropp
  * 
  */
-public class JarModelResource extends ResourceImpl{
+public class JarModelResource extends ResourceImpl {
 	
-	var URI projectURI
+	val rlFactory = RecordLangFactory.eINSTANCE
+	var IProject project
+	val Collection<Type> modelTypes = new ArrayList<Type>
 
-	
 	/**
 	 * Integrate a foreign model.
 	 * 
 	 * @param uri of the foreign model
 	 * @param applicationModel the application model
 	 */
-	public new(URI uri, URI projUri) {
+	public new(URI uri, IProject project) {
 		super(uri)
-		this.projectURI = projUri
+		this.project = project
 	}
 	
 	/**
@@ -59,21 +79,15 @@ public class JarModelResource extends ResourceImpl{
 	 */
 	override EObject getEObject(String uriFragment) {
 		if (!this.getContents().empty) {
-			var EObject object = null
-			for (var i = 0; i < this.getContents.length; i ++){
-				var types = (this.getContents().get(i) as ModelImpl).getTypes()
-				var Iterator queue = types.iterator()
-				while (queue.hasNext() && object == null) {
-					var a = queue.next() as Type;
-					if (a.getName().endsWith("." + uriFragment) || a.getName().equals(uriFragment)) {
-						object = a
-						}
-					}			
-			}		
-			if (object != null) 
-				return object
-			else
-				return super.getEObject(uriFragment)
+			for (object : this.getContents()) {
+				if (object instanceof Model) {
+					val types = (object as Model).types
+					val result = types.findFirst[type | type.name.endsWith("." + uriFragment) || type.name.equals(uriFragment)]
+					if (result != null)
+						return result
+				}
+			}
+			return super.getEObject(uriFragment)
 		} else
 			return super.getEObject(uriFragment)
 	}
@@ -130,11 +144,9 @@ public class JarModelResource extends ResourceImpl{
 		}
 	}
 	
-	/**
-	 * Helper routine to get a special part of the result model.
-	 */
-	def EList<Type> getAllDataTypes() {
-		return null
+	// TODO modelTypes is presently empty. fix this.
+	public def Iterable<Type> getAllDataTypes() {
+		modelTypes
 	}
 
 	/**
@@ -142,32 +154,259 @@ public class JarModelResource extends ResourceImpl{
 	 */
 	private def createModel() {
 		synchronized(this) {				
-				val ArrayList<URL> jars = this.findJars()
-				val ArrayList<ModelImpl> resultModels = this.evaluateJars(jars)
-				if(resultModels != null){
-					this.getContents().addAll(resultModels)
-				}
+			val javaProject = JavaCore.create(project)
+			val iface = javaProject.findType("kieker.common.record.IMonitoringRecord")
+			
+			/** find all types which are related to IMonitoringRecord */
+			val types = javaProject.findSubTypesOf(iface)
+			
+			val models = new HashMap<String,Model>()
+			/** create a model for each package */	
+			types.forEach[type | if (models.get(type.packageFragment.elementName)==null)
+				models.put(type.packageFragment.elementName, type.createModel)
+			]
+			
+			val typeMap = new HashMap<IType,Type>()
+			/** create a type for each type. */
+			types.forEach[type | 
+				val modelType = type.createType
+				models.get(type.packageFragment.elementName).types.add(modelType)
+				typeMap.put(type, modelType)
+			]
+			
+			/** link types. */
+			types.forEach[type | type.linkType(typeMap)]
+		
+			if(models.values != null) {
+				this.getContents().addAll(models.values)
+			}
 		}
 	}
 	
 	/**
-	 * locates all jars in  the current user directory
+	 * Link types.
 	 */
-	 private def ArrayList<URL> findJars(){
-		val ProjectResolver temp = new ProjectResolver(this.projectURI)
-		return temp.findUrls()
+	private def void linkType(IType type, Map<IType, Type> typeMap) {
+		val modelType = typeMap.get(type)
+		switch(modelType) {
+			TemplateType: {
+				val hierarchy = type.newSupertypeHierarchy(null)
+				hierarchy.getSuperInterfaces(type).forEach[iface |
+					val template = typeMap.get(iface) 
+					if (template != null)
+						modelType.parents.add(template as TemplateType)
+				]
+				
+			}
+			RecordType: {
+				val hierarchy = type.newSupertypeHierarchy(null)
+				hierarchy.getSuperInterfaces(type).forEach[iface |
+					val template = typeMap.get(iface) 
+					if (template != null)
+						modelType.parents.add(template as TemplateType)
+				]
+				val superType = hierarchy.getSuperclass(type)
+				if (superType != null) {
+					modelType.parent = typeMap.get(superType) as RecordType
+				}
+			}
+		}
+	}
+	
+	private def Model createModel(IType type) {
+		val model = rlFactory.createModel
+		model.name = type.packageFragment.elementName
+		return model
+	}
+	
+	private def Type createType(IType type) {
+		if (type.isInterface)
+			type.createTemplateType
+		else
+			type.createRecordType
+	}
+	
+	private def Type createRecordType(IType type) {
+		val result = rlFactory.createRecordType
+		
+		result.name = type.elementName
+		result.createAttributes(type)
+		
+		return result
+	}
+	
+	private def Type createTemplateType(IType type) {
+		val result = rlFactory.createTemplateType
+		
+		result.name = type.elementName
+		result.createAttributes(type)
+		
+		return result
+	}
+	
+	def void createAttributes(Type result, IType type) {
+		type.fields.forEach[field |	
+			if (Flags.isPublic(field.flags) && Flags.isStatic(field.flags) && Flags.isFinal(field.flags)) {
+				if (!field.elementName.startsWith("TYPE_SIZE") && 
+					!"TYPES".equals(field.elementName) && 
+					!field.elementName.startsWith("CACHED_KIEKERRECORDS")) {
+					/** create constants */
+					val constant = rlFactory.createConstant
+					constant.name = field.elementName
+					constant.type = field.typeSignature.createType
+					constant.value = field.constant.createLiteral
+					
+					result.constants.add(constant)
+				}
+			} else if (Flags.isPrivate(field.flags) && Flags.isFinal(field.flags) && !Flags.isStatic(field.flags)) {
+				/** create property */
+				val property = rlFactory.createProperty
+				property.name = field.elementName
+				property.type = field.typeSignature.createType
+				// TODO add constant and transient features later
+				result.properties.add(property)
+			}			
+		]
+	}
+	
+	private def Literal createLiteral(Object object) {
+		switch (object) {
+			Integer: {
+				val result = rlFactory.createIntLiteral
+				result.value = object
+				return result
+			}
+			Byte: {
+				val result = rlFactory.createIntLiteral
+				result.value = object
+				return result
+			}
+			Boolean: {
+				val result = rlFactory.createBooleanLiteral
+				result.value = object
+				return result
+			}
+			Character: {
+				val result = rlFactory.createStringLiteral
+				result.value = object.toString
+				return result
+			}
+			Double: {
+				val result = rlFactory.createFloatLiteral
+				result.value = object.floatValue
+				return result
+			}
+			Float: {
+				val result = rlFactory.createFloatLiteral
+				result.value = object
+				return result
+			}
+			Long: {
+				val result = rlFactory.createIntLiteral
+				result.value = object.intValue
+				return result
+			}
+			Short: {
+				val result = rlFactory.createIntLiteral
+				result.value = object.shortValue
+				return result
+			}
+			String: {
+				val result = rlFactory.createStringLiteral
+				result.value = object
+				return result
+			}
+			default: null	
+		}
+	}
+	
+	private def Classifier createType(String typeId) {
+		val classifier = rlFactory.createClassifier
+		switch(typeId) {
+			case "B": classifier.^class = PrimitiveTypes.EBYTE.EType
+			case "C": classifier.^class = PrimitiveTypes.ECHAR.EType
+			case "D": classifier.^class = PrimitiveTypes.EDOUBLE.EType
+			case "F": classifier.^class = PrimitiveTypes.EFLOAT.EType
+			case "I": classifier.^class = PrimitiveTypes.EINT.EType
+			case "J": classifier.^class = PrimitiveTypes.ELONG.EType
+			case "S": classifier.^class = PrimitiveTypes.ESHORT.EType
+			case "Z": classifier.^class = PrimitiveTypes.EBOOLEAN.EType
+			case "Ljava.lang.String": classifier.^class = PrimitiveTypes.ESTRING.EType
+		}
+		
+		return classifier
+	}
+		
+	/**
+	 * Find all classes which are subtypes of the given interface.
+	 */
+	private def Collection<IType> findSubTypesOf(IJavaProject project, IType iface) {
+		val types = new ArrayList<IType>()
+		project.allPackageFragmentRoots.forEach[root |
+			root.children.forEach[element |
+				if (element instanceof IPackageFragment)
+					types.addAll((element as IPackageFragment).findAllTypes)	
+			]
+		]
+		
+		val result = new ArrayList<IType>()
+		types.forEach[type |
+			if (types.isSubClassOf(type,iface)) {
+				result.add(type)
+			}
+		]
+		
+		return result
 	}
 	
 	/**
-	 * starts model-creation for classes in the jars implementing IMonitoringRecord
+	 * find all types in a package fragment recursively.
 	 */
-	private def ArrayList<ModelImpl> evaluateJars(ArrayList<URL> jarUrls){
-		var result = new ArrayList<ModelImpl>(0)
-		val ClassFinder classfinder = new ClassFinder(jarUrls);
-		val ArrayList<ModelImpl> temp = classfinder.getModels()
-			if(temp != null){
-				result = temp
-			}	
-		return result;
+	private def Collection<IType> findAllTypes(IPackageFragment fragment) {
+		val result = new ArrayList<IType>()
+		fragment.children.forEach[element |
+			switch (element) {
+				IPackageFragment: {
+					if (!element.elementName.startsWith("java"))
+						result.addAll(element.findAllTypes)
+				}
+				IClassFile: result.add(element.getType())
+				ICompilationUnit: result.addAll(element.types)
+			}
+		]
+		
+		return result
 	}
+
+	/**
+	 * check is a the child is subtype of the parent.
+	 */
+	private def boolean isSubClassOf(Collection<IType> types, IType child, IType iface) {
+		if (child == null)
+			return false
+		else if (child.equals(iface))
+			return true
+		else {
+			try {
+				if (!child.anonymous) {
+					val hierarchy = child.newSupertypeHierarchy(null)
+					return hierarchy.getAllSuperInterfaces(child).exists[it.equals(iface)]
+				} else
+					return false
+			} catch(JavaModelException ex) {
+				System.out.println("Class " + child.fullyQualifiedName)
+				return false
+			}
+		}
+	}
+	
+	/**
+	 * Match fypes by name.
+	 */
+	private def IType findByName(Collection<IType> types, String name) {
+		return types.findFirst[it.fullyQualifiedName.equals(name)]
+	}
+	
+	
+	
 }

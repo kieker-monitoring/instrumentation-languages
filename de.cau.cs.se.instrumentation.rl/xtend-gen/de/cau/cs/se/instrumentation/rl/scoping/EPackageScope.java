@@ -51,6 +51,7 @@ public class EPackageScope implements IScope {
     this.resourceSet = resourceSet;
   }
   
+  @Override
   public IEObjectDescription getSingleElement(final QualifiedName name) {
     String _string = name.toString();
     final URI ePackageURI = URI.createURI(_string, true);
@@ -92,11 +93,9 @@ public class EPackageScope implements IScope {
   
   private EPackage findPackage(final EList<EPackage> ePackages, final QualifiedName qualifiedPackageName) {
     final String packageName = qualifiedPackageName.getFirstSegment();
-    final Function1<EPackage, Boolean> _function = new Function1<EPackage, Boolean>() {
-      public Boolean apply(final EPackage it) {
-        String _name = it.getName();
-        return Boolean.valueOf(_name.equals(packageName));
-      }
+    final Function1<EPackage, Boolean> _function = (EPackage it) -> {
+      String _name = it.getName();
+      return Boolean.valueOf(_name.equals(packageName));
     };
     final EPackage ePackage = IterableExtensions.<EPackage>findFirst(ePackages, _function);
     boolean _notEquals = (!Objects.equal(ePackage, null));
@@ -115,6 +114,7 @@ public class EPackageScope implements IScope {
     }
   }
   
+  @Override
   public Iterable<IEObjectDescription> getElements(final QualifiedName name) {
     System.out.println(("EPackageScope.getElements(name) " + name));
     final Collection<IEObjectDescription> result = new ArrayList<IEObjectDescription>();
@@ -123,11 +123,13 @@ public class EPackageScope implements IScope {
     return result;
   }
   
+  @Override
   public IEObjectDescription getSingleElement(final EObject object) {
     System.out.println(("EPackageScope.getSingleElement(object) " + object));
     return null;
   }
   
+  @Override
   public Iterable<IEObjectDescription> getElements(final EObject object) {
     System.out.println(("EPackageScope.getElements(object) " + object));
     final Collection<IEObjectDescription> result = new ArrayList<IEObjectDescription>();
@@ -136,6 +138,7 @@ public class EPackageScope implements IScope {
     return result;
   }
   
+  @Override
   public Iterable<IEObjectDescription> getAllElements() {
     System.out.println("EPackageScope.getAllElements()");
     final Collection<IEObjectDescription> result = new ArrayList<IEObjectDescription>();

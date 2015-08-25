@@ -27,6 +27,8 @@ import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.naming.IQualifiedNameConverter
 import org.eclipse.xtext.resource.IEObjectDescription
 import org.eclipse.xtext.scoping.IScope
+import org.eclipse.core.resources.ResourcesPlugin
+import org.eclipse.core.runtime.Path
 
 class JarModelGlobalScopeProvider extends TypeGlobalScopeProvider {
 	@Inject
@@ -45,13 +47,17 @@ class JarModelGlobalScopeProvider extends TypeGlobalScopeProvider {
         } else {
         	if (resource != null) {
         		val ResourceSet resourceSet = resource.getResourceSet()
+        		val root = ResourcesPlugin.getWorkspace().getRoot()
+        		val uri = resource.URI.toString.replaceFirst("platform:/resource", "") 
+        		val project = root.getFile(new Path(uri)).project
+    
     			if (resourceSet != null) {
-        			val IJarModelTypeProvider typeProvider = jarModeltypeProviderFactory.getTypeProvider(resourceSet)
+        			val IJarModelTypeProvider typeProvider = jarModeltypeProviderFactory.getTypeProvider(project, resourceSet)
 					return new JarModelTypeScope(typeProvider, qualifiedNameConverter, filter)
 				} else
-    				throw new IllegalStateException("context must be contained in a resource set")
+    				throw new IllegalStateException("context must be contained in a resource set") 
         	} else
-    			throw new IllegalStateException("context must be contained in a resource")
+    			throw new IllegalStateException("context must be contained in a resource") 
         	
         }
         	

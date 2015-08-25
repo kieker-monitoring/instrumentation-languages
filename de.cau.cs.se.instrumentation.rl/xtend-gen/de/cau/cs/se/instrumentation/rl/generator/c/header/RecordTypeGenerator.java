@@ -19,6 +19,7 @@ public class RecordTypeGenerator extends de.cau.cs.se.instrumentation.rl.generat
   /**
    * Return the unique id.
    */
+  @Override
   public String getId() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("c.header");
@@ -28,6 +29,7 @@ public class RecordTypeGenerator extends de.cau.cs.se.instrumentation.rl.generat
   /**
    * Return the preferences activation description.
    */
+  @Override
   public String getDescription() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("C header file generator");
@@ -37,6 +39,7 @@ public class RecordTypeGenerator extends de.cau.cs.se.instrumentation.rl.generat
   /**
    * No header for abstract record types.
    */
+  @Override
   public boolean supportsAbstractRecordType() {
     return false;
   }
@@ -44,6 +47,7 @@ public class RecordTypeGenerator extends de.cau.cs.se.instrumentation.rl.generat
   /**
    * File name for c-header files.
    */
+  @Override
   public String getFileName(final Type type) {
     StringConcatenation _builder = new StringConcatenation();
     CharSequence _directoryName = this.getDirectoryName(type);
@@ -66,6 +70,7 @@ public class RecordTypeGenerator extends de.cau.cs.se.instrumentation.rl.generat
    * @params version
    * 		generic kieker version for the record
    */
+  @Override
   public CharSequence createContent(final RecordType type, final String author, final String version) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("/***************************************************************************");
@@ -150,10 +155,8 @@ public class RecordTypeGenerator extends de.cau.cs.se.instrumentation.rl.generat
     _builder.newLine();
     _builder.append("\t");
     List<Property> _collectAllDataProperties = PropertyEvaluation.collectAllDataProperties(type);
-    final Function1<Property, CharSequence> _function = new Function1<Property, CharSequence>() {
-      public CharSequence apply(final Property it) {
-        return RecordTypeGenerator.this.createPropertyDeclaration(it);
-      }
+    final Function1<Property, CharSequence> _function = (Property it) -> {
+      return this.createPropertyDeclaration(it);
     };
     List<CharSequence> _map = ListExtensions.<Property, CharSequence>map(_collectAllDataProperties, _function);
     String _join = IterableExtensions.join(_map);

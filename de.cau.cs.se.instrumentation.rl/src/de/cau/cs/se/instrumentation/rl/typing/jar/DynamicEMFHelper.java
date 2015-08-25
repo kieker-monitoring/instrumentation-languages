@@ -5,11 +5,13 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EcoreFactory;
 
+import de.cau.cs.se.instrumentation.rl.recordLang.Model;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangFactory;
 import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
@@ -35,7 +37,7 @@ public class DynamicEMFHelper {
 	private final RecordLangFactory rlFactory;
 
 	// models; one per package in jar
-	private final ArrayList<ModelImpl> models;
+	private final List<Model> models;
 
 	/**
 	 * Constructor, instantiates this.rlFactory and this.models; adds default model to this.models
@@ -44,7 +46,7 @@ public class DynamicEMFHelper {
 
 		this.rlFactory = RecordLangFactory.eINSTANCE;
 
-		this.models = new ArrayList<ModelImpl>(0);
+		this.models = new ArrayList<Model>();
 
 		// default model
 		final ModelImpl modelInstance = (ModelImpl) this.rlFactory.createModel();
@@ -57,7 +59,7 @@ public class DynamicEMFHelper {
 	 *
 	 * @return - created models
 	 */
-	protected ArrayList<ModelImpl> createTypes(final ArrayList<Class<?>> cl) {
+	protected List<Model> createTypes(final ArrayList<Class<?>> cl) {
 
 		// first run
 		for (int i = 0; i < cl.size(); i++) {

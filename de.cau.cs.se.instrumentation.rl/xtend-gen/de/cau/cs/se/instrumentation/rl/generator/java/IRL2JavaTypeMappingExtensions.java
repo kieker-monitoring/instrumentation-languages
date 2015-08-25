@@ -1,6 +1,5 @@
 package de.cau.cs.se.instrumentation.rl.generator.java;
 
-import com.google.common.base.Objects;
 import org.eclipse.emf.ecore.EClassifier;
 
 @SuppressWarnings("all")
@@ -17,63 +16,37 @@ public class IRL2JavaTypeMappingExtensions {
   public static String createPrimitiveTypeName(final EClassifier classifier) {
     String _switchResult = null;
     String _name = classifier.getName();
-    boolean _matched = false;
-    if (!_matched) {
-      if (Objects.equal(_name, "int")) {
-        _matched=true;
+    switch (_name) {
+      case "int":
         _switchResult = "int";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "long")) {
-        _matched=true;
+        break;
+      case "long":
         _switchResult = "long";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "short")) {
-        _matched=true;
+        break;
+      case "short":
         _switchResult = "short";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "double")) {
-        _matched=true;
+        break;
+      case "double":
         _switchResult = "double";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "float")) {
-        _matched=true;
+        break;
+      case "float":
         _switchResult = "float";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "char")) {
-        _matched=true;
+        break;
+      case "char":
         _switchResult = "char";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "byte")) {
-        _matched=true;
+        break;
+      case "byte":
         _switchResult = "byte";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "string")) {
-        _matched=true;
+        break;
+      case "string":
         _switchResult = "String";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "boolean")) {
-        _matched=true;
+        break;
+      case "boolean":
         _switchResult = "boolean";
-      }
-    }
-    if (!_matched) {
-      _switchResult = classifier.getName();
+        break;
+      default:
+        _switchResult = classifier.getName();
+        break;
     }
     return _switchResult;
   }
@@ -84,63 +57,37 @@ public class IRL2JavaTypeMappingExtensions {
   public static String createPrimitiveWrapperTypeName(final EClassifier classifier) {
     String _switchResult = null;
     String _name = classifier.getName();
-    boolean _matched = false;
-    if (!_matched) {
-      if (Objects.equal(_name, "int")) {
-        _matched=true;
+    switch (_name) {
+      case "int":
         _switchResult = "Integer";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "long")) {
-        _matched=true;
+        break;
+      case "long":
         _switchResult = "Long";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "short")) {
-        _matched=true;
+        break;
+      case "short":
         _switchResult = "Short";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "double")) {
-        _matched=true;
+        break;
+      case "double":
         _switchResult = "Double";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "float")) {
-        _matched=true;
+        break;
+      case "float":
         _switchResult = "Float";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "char")) {
-        _matched=true;
+        break;
+      case "char":
         _switchResult = "Character";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "byte")) {
-        _matched=true;
+        break;
+      case "byte":
         _switchResult = "Byte";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "string")) {
-        _matched=true;
+        break;
+      case "string":
         _switchResult = "String";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "boolean")) {
-        _matched=true;
+        break;
+      case "boolean":
         _switchResult = "Boolean";
-      }
-    }
-    if (!_matched) {
-      _switchResult = classifier.getName();
+        break;
+      default:
+        _switchResult = classifier.getName();
+        break;
     }
     return _switchResult;
   }

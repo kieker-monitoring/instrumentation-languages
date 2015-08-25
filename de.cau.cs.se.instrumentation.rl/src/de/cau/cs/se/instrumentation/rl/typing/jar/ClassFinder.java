@@ -6,6 +6,7 @@ import java.security.AccessController;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 //TODO add Dependency
@@ -13,7 +14,7 @@ import org.reflections.Reflections;
 import org.reflections.util.ClasspathHelper;
 import org.reflections.util.ConfigurationBuilder;
 
-import de.cau.cs.se.instrumentation.rl.recordLang.impl.ModelImpl;
+import de.cau.cs.se.instrumentation.rl.recordLang.Model;
 
 /**
  * Scans jars for classes implementing IMonitoringRecords and triggers the creation of RecordLang-Model-Instances,
@@ -49,19 +50,19 @@ public class ClassFinder {
 	 * creates models of IMonitoring-Classes
 	 *
 	 */
-	protected ArrayList<ModelImpl> getModels() throws Exception {
-		ArrayList<ModelImpl> resultModels = null;
+	protected List<Model> getModels() throws Exception {
 		final ArrayList<Class<?>> result = new ArrayList<Class<?>>();
-		final Iterator queue = this.classes.iterator();
+		final Iterator<?> queue = this.classes.iterator();
 		while (queue.hasNext()) {
-			final Class a = (Class) queue.next();
+			final Class<?> a = (Class<?>) queue.next();
 			result.add(a);
 		}
 		// Trigger Model-Creation
 		if (!result.isEmpty()) {
 			final DynamicEMFHelper emfHelper = new DynamicEMFHelper();
-			resultModels = emfHelper.createTypes(result);
+			return emfHelper.createTypes(result);
+		} else {
+			return null;
 		}
-		return resultModels;
 	}
 }

@@ -15,6 +15,7 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
   /**
    * Return the unique id.
    */
+  @Override
   public String getId() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("java.factory");
@@ -24,6 +25,7 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
   /**
    * Return the preferences activation description.
    */
+  @Override
   public String getDescription() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Java factory");
@@ -33,6 +35,7 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
   /**
    * No factory for abstract record types.
    */
+  @Override
   public boolean supportsAbstractRecordType() {
     return false;
   }
@@ -40,6 +43,7 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
   /**
    * Define language/generation type, which is also used to define the outlet.
    */
+  @Override
   public String getOutletType() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("java-factory");
@@ -49,6 +53,7 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
   /**
    * Compute the directory name for a record type.
    */
+  @Override
   public CharSequence getDirectoryName(final Type type) {
     StringConcatenation _builder = new StringConcatenation();
     EObject _eContainer = type.eContainer();
@@ -61,6 +66,7 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
   /**
    * Compute file name.
    */
+  @Override
   public String getFileName(final Type type) {
     StringConcatenation _builder = new StringConcatenation();
     CharSequence _directoryName = this.getDirectoryName(type);
@@ -82,6 +88,7 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
    * @params version
    * 		generic kieker version for the record
    */
+  @Override
   public CharSequence createContent(final RecordType type, final String author, final String version) {
     CharSequence _xblockexpression = null;
     {

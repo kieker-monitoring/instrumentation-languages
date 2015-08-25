@@ -1,6 +1,5 @@
 package de.cau.cs.se.instrumentation.rl.generator.c.main;
 
-import com.google.common.base.Objects;
 import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator;
 import de.cau.cs.se.instrumentation.rl.generator.c.CommonCFunctionsExtension;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
@@ -24,6 +23,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   /**
    * Return the unique id.
    */
+  @Override
   public String getId() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("c.main");
@@ -33,6 +33,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   /**
    * Return the preferences activation description.
    */
+  @Override
   public String getDescription() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("C code generator");
@@ -42,6 +43,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   /**
    * No serialization for abstract record types.
    */
+  @Override
   public boolean supportsAbstractRecordType() {
     return false;
   }
@@ -49,6 +51,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   /**
    * Compute the directory name for a record type.
    */
+  @Override
   public CharSequence getDirectoryName(final Type type) {
     StringConcatenation _builder = new StringConcatenation();
     EObject _eContainer = type.eContainer();
@@ -61,6 +64,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   /**
    * compute the filename of a c file.
    */
+  @Override
   public String getFileName(final Type type) {
     StringConcatenation _builder = new StringConcatenation();
     CharSequence _directoryName = this.getDirectoryName(type);
@@ -76,6 +80,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   /**
    * Return the language type name.
    */
+  @Override
   public String getOutletType() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("c");
@@ -92,6 +97,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    * @params version
    * 		generic kieker version for the record
    */
+  @Override
   public CharSequence createContent(final RecordType type, final String author, final String version) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("/***************************************************************************");
@@ -236,10 +242,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     _builder.newLine();
     _builder.append("\t");
     List<Property> _collectAllDataProperties = PropertyEvaluation.collectAllDataProperties(type);
-    final Function1<Property, CharSequence> _function = new Function1<Property, CharSequence>() {
-      public CharSequence apply(final Property it) {
-        return RecordTypeGenerator.this.createValueSerializer(it);
-      }
+    final Function1<Property, CharSequence> _function = (Property it) -> {
+      return this.createValueSerializer(it);
     };
     List<CharSequence> _map = ListExtensions.<Property, CharSequence>map(_collectAllDataProperties, _function);
     String _join = IterableExtensions.join(_map);
@@ -271,64 +275,38 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     String _switchResult = null;
     EClassifier _class_ = classifier.getClass_();
     String _name = _class_.getName();
-    boolean _matched = false;
-    if (!_matched) {
-      if (Objects.equal(_name, "string")) {
-        _matched=true;
+    switch (_name) {
+      case "string":
         _switchResult = "string";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "byte")) {
-        _matched=true;
+        break;
+      case "byte":
         _switchResult = "int8";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "short")) {
-        _matched=true;
+        break;
+      case "short":
         _switchResult = "int16";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "int")) {
-        _matched=true;
+        break;
+      case "int":
         _switchResult = "int32";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "long")) {
-        _matched=true;
+        break;
+      case "long":
         _switchResult = "int64";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "float")) {
-        _matched=true;
+        break;
+      case "float":
         _switchResult = "float";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "double")) {
-        _matched=true;
+        break;
+      case "double":
         _switchResult = "double";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "char")) {
-        _matched=true;
+        break;
+      case "char":
         _switchResult = "int16";
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(_name, "boolean")) {
-        _matched=true;
+        break;
+      case "boolean":
         _switchResult = "boolean";
-      }
-    }
-    if (!_matched) {
-      EClassifier _class__1 = classifier.getClass_();
-      _switchResult = _class__1.getName();
+        break;
+      default:
+        EClassifier _class__1 = classifier.getClass_();
+        _switchResult = _class__1.getName();
+        break;
     }
     return _switchResult;
   }

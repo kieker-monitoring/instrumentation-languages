@@ -10,12 +10,14 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 
 @SuppressWarnings("all")
 public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
+  @Override
   public String getId() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("delphi");
     return _builder.toString();
   }
   
+  @Override
   public String getDescription() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("Delphi record generator");
@@ -25,10 +27,12 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   /**
    * Create abstract record types.
    */
+  @Override
   public boolean supportsAbstractRecordType() {
     return true;
   }
   
+  @Override
   public CharSequence getDirectoryName(final Type type) {
     StringConcatenation _builder = new StringConcatenation();
     EObject _eContainer = type.eContainer();
@@ -38,6 +42,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     return _builder;
   }
   
+  @Override
   public String getFileName(final Type type) {
     StringConcatenation _builder = new StringConcatenation();
     CharSequence _directoryName = this.getDirectoryName(type);
@@ -49,12 +54,14 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     return _builder.toString();
   }
   
+  @Override
   public String getOutletType() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("delphi");
     return _builder.toString();
   }
   
+  @Override
   public CharSequence createContent(final RecordType type, final String author, final String version) {
     StringConcatenation _builder = new StringConcatenation();
     return _builder;

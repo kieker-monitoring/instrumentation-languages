@@ -34,6 +34,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   /**
    * Return the unique id.
    */
+  @Override
   public String getId() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("java.junit");
@@ -43,6 +44,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   /**
    * Return the preferences activation description.
    */
+  @Override
   public String getDescription() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("JUnit tests for records");
@@ -52,10 +54,12 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   /**
    * No junit test for abstract record types.
    */
+  @Override
   public boolean supportsAbstractRecordType() {
     return false;
   }
   
+  @Override
   public CharSequence getDirectoryName(final Type type) {
     StringConcatenation _builder = new StringConcatenation();
     EObject _eContainer = type.eContainer();
@@ -66,6 +70,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     return _builder;
   }
   
+  @Override
   public String getFileName(final Type type) {
     StringConcatenation _builder = new StringConcatenation();
     CharSequence _directoryName = this.getDirectoryName(type);
@@ -78,12 +83,14 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     return _builder.toString();
   }
   
+  @Override
   public String getOutletType() {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("junit");
     return _builder.toString();
   }
   
+  @Override
   public CharSequence createContent(final RecordType type, final String author, final String version) {
     CharSequence _xblockexpression = null;
     {
@@ -256,10 +263,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       String _name_8 = type.getName();
       _builder.append(_name_8, "\t\t\t");
       _builder.append("(");
-      final Function1<Property, CharSequence> _function = new Function1<Property, CharSequence>() {
-        public CharSequence apply(final Property property) {
-          return RecordTypeGenerator.this.createPropertyValueSet(property);
-        }
+      final Function1<Property, CharSequence> _function = (Property property) -> {
+        return this.createPropertyValueSet(property);
       };
       List<CharSequence> _map = ListExtensions.<Property, CharSequence>map(allDataProperties, _function);
       String _join = IterableExtensions.join(_map, ", ");
@@ -363,10 +368,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       String _name_12 = type.getName();
       _builder.append(_name_12, "\t\t\t");
       _builder.append("(");
-      final Function1<Property, CharSequence> _function_1 = new Function1<Property, CharSequence>() {
-        public CharSequence apply(final Property property) {
-          return RecordTypeGenerator.this.createPropertyValueSet(property);
-        }
+      final Function1<Property, CharSequence> _function_1 = (Property property) -> {
+        return this.createPropertyValueSet(property);
       };
       List<CharSequence> _map_1 = ListExtensions.<Property, CharSequence>map(allDataProperties, _function_1);
       String _join_1 = IterableExtensions.join(_map_1, ", ");
@@ -424,10 +427,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       String _name_16 = type.getName();
       _builder.append(_name_16, "\t\t\t");
       _builder.append("(");
-      final Function1<Property, CharSequence> _function_2 = new Function1<Property, CharSequence>() {
-        public CharSequence apply(final Property property) {
-          return RecordTypeGenerator.this.createPropertyValueSet(property);
-        }
+      final Function1<Property, CharSequence> _function_2 = (Property property) -> {
+        return this.createPropertyValueSet(property);
       };
       List<CharSequence> _map_2 = ListExtensions.<Property, CharSequence>map(allDataProperties, _function_2);
       String _join_2 = IterableExtensions.join(_map_2, ", ");
@@ -458,11 +459,9 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   
   private String createAllValueExistAssertions(final Collection<Property> properties) {
     final List<CharSequence> result = new ArrayList<CharSequence>();
-    final Procedure2<Property, Integer> _function = new Procedure2<Property, Integer>() {
-      public void apply(final Property property, final Integer index) {
-        CharSequence _createValueExistAssertion = RecordTypeGenerator.this.createValueExistAssertion(property, index);
-        result.add(_createValueExistAssertion);
-      }
+    final Procedure2<Property, Integer> _function = (Property property, Integer index) -> {
+      CharSequence _createValueExistAssertion = this.createValueExistAssertion(property, index);
+      result.add(_createValueExistAssertion);
     };
     IterableExtensions.<Property>forEach(properties, _function);
     return IterableExtensions.join(result);
@@ -490,11 +489,9 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    */
   private String createAllValueAssertions(final Collection<Property> properties) {
     final List<CharSequence> result = new ArrayList<CharSequence>();
-    final Procedure2<Property, Integer> _function = new Procedure2<Property, Integer>() {
-      public void apply(final Property property, final Integer index) {
-        CharSequence _createValueAssertion = RecordTypeGenerator.this.createValueAssertion(property, index);
-        result.add(_createValueAssertion);
-      }
+    final Procedure2<Property, Integer> _function = (Property property, Integer index) -> {
+      CharSequence _createValueAssertion = this.createValueAssertion(property, index);
+      result.add(_createValueAssertion);
     };
     IterableExtensions.<Property>forEach(properties, _function);
     return IterableExtensions.join(result);
@@ -754,11 +751,9 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    */
   private String createAllTypeAssertions(final Collection<Property> properties) {
     final List<CharSequence> result = new ArrayList<CharSequence>();
-    final Procedure2<Property, Integer> _function = new Procedure2<Property, Integer>() {
-      public void apply(final Property property, final Integer index) {
-        CharSequence _createTypeAssertion = RecordTypeGenerator.this.createTypeAssertion(property, index);
-        result.add(_createTypeAssertion);
-      }
+    final Procedure2<Property, Integer> _function = (Property property, Integer index) -> {
+      CharSequence _createTypeAssertion = this.createTypeAssertion(property, index);
+      result.add(_createTypeAssertion);
     };
     IterableExtensions.<Property>forEach(properties, _function);
     return IterableExtensions.join(result);

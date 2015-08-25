@@ -40,6 +40,7 @@ public class TypeGlobalScopeProvider extends DefaultGlobalScopeProvider {
   @Inject
   private IQualifiedNameConverter qualifiedNameConverter;
   
+  @Override
   public IScope getScope(final Resource resource, final EReference reference, final Predicate<IEObjectDescription> filter) {
     EClass _eReferenceType = reference.getEReferenceType();
     final IScope parentTypeScope = this.getParentTypeScope(resource, reference, filter, _eReferenceType);

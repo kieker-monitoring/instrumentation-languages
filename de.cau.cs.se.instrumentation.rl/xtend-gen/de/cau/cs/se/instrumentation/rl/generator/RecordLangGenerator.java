@@ -39,6 +39,7 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
  */
 @SuppressWarnings("all")
 public class RecordLangGenerator implements IGenerator {
+  @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
     try {
       URI _uRI = resource.getURI();
@@ -56,31 +57,29 @@ public class RecordLangGenerator implements IGenerator {
             if (_isGeneratorActive) {
               TreeIterator<EObject> _allContents = resource.getAllContents();
               Iterator<RecordType> _filter = Iterators.<RecordType>filter(_allContents, RecordType.class);
-              final Procedure1<RecordType> _function = new Procedure1<RecordType>() {
-                public void apply(final RecordType type) {
-                  boolean _or = false;
-                  boolean _supportsAbstractRecordType = cg.supportsAbstractRecordType();
-                  if (_supportsAbstractRecordType) {
-                    _or = true;
+              final Procedure1<RecordType> _function = (RecordType type) -> {
+                boolean _or = false;
+                boolean _supportsAbstractRecordType = cg.supportsAbstractRecordType();
+                if (_supportsAbstractRecordType) {
+                  _or = true;
+                } else {
+                  boolean _and = false;
+                  boolean _supportsAbstractRecordType_1 = cg.supportsAbstractRecordType();
+                  boolean _not = (!_supportsAbstractRecordType_1);
+                  if (!_not) {
+                    _and = false;
                   } else {
-                    boolean _and = false;
-                    boolean _supportsAbstractRecordType_1 = cg.supportsAbstractRecordType();
-                    boolean _not = (!_supportsAbstractRecordType_1);
-                    if (!_not) {
-                      _and = false;
-                    } else {
-                      boolean _isAbstract = type.isAbstract();
-                      boolean _not_1 = (!_isAbstract);
-                      _and = _not_1;
-                    }
-                    _or = _and;
+                    boolean _isAbstract = type.isAbstract();
+                    boolean _not_1 = (!_isAbstract);
+                    _and = _not_1;
                   }
-                  if (_or) {
-                    String _fileName = cg.getFileName(type);
-                    String _outletType = cg.getOutletType();
-                    CharSequence _createContent = cg.createContent(type, author, version);
-                    fsa.generateFile(_fileName, _outletType, _createContent);
-                  }
+                  _or = _and;
+                }
+                if (_or) {
+                  String _fileName = cg.getFileName(type);
+                  String _outletType = cg.getOutletType();
+                  CharSequence _createContent = cg.createContent(type, author, version);
+                  fsa.generateFile(_fileName, _outletType, _createContent);
                 }
               };
               IteratorExtensions.<RecordType>forEach(_filter, _function);
@@ -97,13 +96,11 @@ public class RecordLangGenerator implements IGenerator {
             if (_isGeneratorActive) {
               TreeIterator<EObject> _allContents = resource.getAllContents();
               Iterator<TemplateType> _filter = Iterators.<TemplateType>filter(_allContents, TemplateType.class);
-              final Procedure1<TemplateType> _function = new Procedure1<TemplateType>() {
-                public void apply(final TemplateType type) {
-                  String _fileName = cg.getFileName(type);
-                  String _outletType = cg.getOutletType();
-                  CharSequence _createContent = cg.createContent(type, author, version);
-                  fsa.generateFile(_fileName, _outletType, _createContent);
-                }
+              final Procedure1<TemplateType> _function = (TemplateType type) -> {
+                String _fileName = cg.getFileName(type);
+                String _outletType = cg.getOutletType();
+                CharSequence _createContent = cg.createContent(type, author, version);
+                fsa.generateFile(_fileName, _outletType, _createContent);
               };
               IteratorExtensions.<TemplateType>forEach(_filter, _function);
             }
