@@ -93,21 +93,17 @@ public class EMFModelGenerator {
     this.composePackageHierarchy(_split_1, destination);
     TreeIterator<EObject> _allContents = source.getAllContents();
     Iterator<Model> _filter = Iterators.<Model>filter(_allContents, Model.class);
-    final Procedure1<Model> _function = new Procedure1<Model>() {
-      public void apply(final Model type) {
-        EMFModelGenerator.this.composePackageHierarchy(type, destination);
-      }
+    final Procedure1<Model> _function = (Model type) -> {
+      this.composePackageHierarchy(type, destination);
     };
     IteratorExtensions.<Model>forEach(_filter, _function);
     EClass _createAbstractRecordClass = this.createAbstractRecordClass();
     this.insert(destination, _createAbstractRecordClass, EMFModelGenerator.KIEKER_ROOT_PACKAGE);
     EPackage _findPackage = this.findPackage(destination, EMFModelGenerator.KIEKER_ROOT_PACKAGE);
     EList<EClassifier> _eClassifiers = _findPackage.getEClassifiers();
-    final Function1<EClassifier, Boolean> _function_1 = new Function1<EClassifier, Boolean>() {
-      public Boolean apply(final EClassifier it) {
-        String _name = it.getName();
-        return Boolean.valueOf(EMFModelGenerator.KIEKER_ROOT_RECORD.equals(_name));
-      }
+    final Function1<EClassifier, Boolean> _function_1 = (EClassifier it) -> {
+      String _name = it.getName();
+      return Boolean.valueOf(EMFModelGenerator.KIEKER_ROOT_RECORD.equals(_name));
     };
     EClassifier _findFirst = IterableExtensions.<EClassifier>findFirst(_eClassifiers, _function_1);
     this.abstractRecordClass = ((EClass) _findFirst);
@@ -115,40 +111,32 @@ public class EMFModelGenerator {
     this.insert(destination, _createContainmentClass, EMFModelGenerator.SERVICE_PACKAGE);
     TreeIterator<EObject> _allContents_1 = source.getAllContents();
     Iterator<TemplateType> _filter_1 = Iterators.<TemplateType>filter(_allContents_1, TemplateType.class);
-    final Procedure1<TemplateType> _function_2 = new Procedure1<TemplateType>() {
-      public void apply(final TemplateType type) {
-        EClass _createInterface = EMFModelGenerator.this.createInterface(type);
-        EObject _eContainer = type.eContainer();
-        String _name = ((Model) _eContainer).getName();
-        EMFModelGenerator.this.insert(destination, _createInterface, _name);
-      }
+    final Procedure1<TemplateType> _function_2 = (TemplateType type) -> {
+      EClass _createInterface = this.createInterface(type);
+      EObject _eContainer = type.eContainer();
+      String _name = ((Model) _eContainer).getName();
+      this.insert(destination, _createInterface, _name);
     };
     IteratorExtensions.<TemplateType>forEach(_filter_1, _function_2);
     TreeIterator<EObject> _allContents_2 = source.getAllContents();
     Iterator<RecordType> _filter_2 = Iterators.<RecordType>filter(_allContents_2, RecordType.class);
-    final Procedure1<RecordType> _function_3 = new Procedure1<RecordType>() {
-      public void apply(final RecordType type) {
-        EClass _createClass = EMFModelGenerator.this.createClass(type);
-        EObject _eContainer = type.eContainer();
-        String _name = ((Model) _eContainer).getName();
-        EMFModelGenerator.this.insert(destination, _createClass, _name);
-      }
+    final Procedure1<RecordType> _function_3 = (RecordType type) -> {
+      EClass _createClass = this.createClass(type);
+      EObject _eContainer = type.eContainer();
+      String _name = ((Model) _eContainer).getName();
+      this.insert(destination, _createClass, _name);
     };
     IteratorExtensions.<RecordType>forEach(_filter_2, _function_3);
     TreeIterator<EObject> _allContents_3 = source.getAllContents();
     Iterator<TemplateType> _filter_3 = Iterators.<TemplateType>filter(_allContents_3, TemplateType.class);
-    final Procedure1<TemplateType> _function_4 = new Procedure1<TemplateType>() {
-      public void apply(final TemplateType type) {
-        EMFModelGenerator.this.composeInterface(type, destination);
-      }
+    final Procedure1<TemplateType> _function_4 = (TemplateType type) -> {
+      this.composeInterface(type, destination);
     };
     IteratorExtensions.<TemplateType>forEach(_filter_3, _function_4);
     TreeIterator<EObject> _allContents_4 = source.getAllContents();
     Iterator<RecordType> _filter_4 = Iterators.<RecordType>filter(_allContents_4, RecordType.class);
-    final Procedure1<RecordType> _function_5 = new Procedure1<RecordType>() {
-      public void apply(final RecordType type) {
-        EMFModelGenerator.this.composeClass(type, destination);
-      }
+    final Procedure1<RecordType> _function_5 = (RecordType type) -> {
+      this.composeClass(type, destination);
     };
     IteratorExtensions.<RecordType>forEach(_filter_4, _function_5);
   }
@@ -200,26 +188,22 @@ public class EMFModelGenerator {
   public void composePackageHierarchy(final String[] modelName, final Resource resource) {
     EList<EObject> _contents = resource.getContents();
     Iterable<EPackage> _filter = Iterables.<EPackage>filter(_contents, EPackage.class);
-    final Consumer<EPackage> _function = new Consumer<EPackage>() {
-      public void accept(final EPackage p) {
-        String _name = p.getName();
-        Object _get = modelName[0];
-        boolean _equals = _name.equals(_get);
-        if (_equals) {
-          Iterable<String> _tail = IterableExtensions.<String>tail(((Iterable<String>)Conversions.doWrapArray(modelName)));
-          EMFModelGenerator.this.checkChildPackages(_tail, p);
-        }
+    final Consumer<EPackage> _function = (EPackage p) -> {
+      String _name = p.getName();
+      Object _get = modelName[0];
+      boolean _equals = _name.equals(_get);
+      if (_equals) {
+        Iterable<String> _tail = IterableExtensions.<String>tail(((Iterable<String>)Conversions.doWrapArray(modelName)));
+        this.checkChildPackages(_tail, p);
       }
     };
     _filter.forEach(_function);
     EList<EObject> _contents_1 = resource.getContents();
     Iterable<EPackage> _filter_1 = Iterables.<EPackage>filter(_contents_1, EPackage.class);
-    final Function1<EPackage, Boolean> _function_1 = new Function1<EPackage, Boolean>() {
-      public Boolean apply(final EPackage p) {
-        String _name = p.getName();
-        Object _get = modelName[0];
-        return Boolean.valueOf(_name.equals(_get));
-      }
+    final Function1<EPackage, Boolean> _function_1 = (EPackage p) -> {
+      String _name = p.getName();
+      Object _get = modelName[0];
+      return Boolean.valueOf(_name.equals(_get));
     };
     boolean _exists = IterableExtensions.<EPackage>exists(_filter_1, _function_1);
     boolean _not = (!_exists);
@@ -244,22 +228,18 @@ public class EMFModelGenerator {
     final String nodeName = ((String[])Conversions.unwrapArray(modelName, String.class))[0];
     final Iterable<String> tailList = IterableExtensions.<String>tail(modelName);
     EList<EPackage> _eSubpackages = parent.getESubpackages();
-    final Consumer<EPackage> _function = new Consumer<EPackage>() {
-      public void accept(final EPackage p) {
-        String _name = p.getName();
-        boolean _equals = _name.equals(nodeName);
-        if (_equals) {
-          EMFModelGenerator.this.checkChildPackages(tailList, p);
-        }
+    final Consumer<EPackage> _function = (EPackage p) -> {
+      String _name = p.getName();
+      boolean _equals = _name.equals(nodeName);
+      if (_equals) {
+        this.checkChildPackages(tailList, p);
       }
     };
     _eSubpackages.forEach(_function);
     EList<EPackage> _eSubpackages_1 = parent.getESubpackages();
-    final Function1<EPackage, Boolean> _function_1 = new Function1<EPackage, Boolean>() {
-      public Boolean apply(final EPackage p) {
-        String _name = p.getName();
-        return Boolean.valueOf(_name.equals(nodeName));
-      }
+    final Function1<EPackage, Boolean> _function_1 = (EPackage p) -> {
+      String _name = p.getName();
+      return Boolean.valueOf(_name.equals(nodeName));
     };
     boolean _exists = IterableExtensions.<EPackage>exists(_eSubpackages_1, _function_1);
     boolean _not = (!_exists);
@@ -301,12 +281,10 @@ public class EMFModelGenerator {
   public void insert(final Resource resource, final EClassifier classifier, final String packageName) {
     final EPackage pkg = this.findPackage(resource, packageName);
     EList<EClassifier> _eClassifiers = pkg.getEClassifiers();
-    final Function1<EClassifier, Boolean> _function = new Function1<EClassifier, Boolean>() {
-      public Boolean apply(final EClassifier it) {
-        String _name = it.getName();
-        String _name_1 = classifier.getName();
-        return Boolean.valueOf(_name.equals(_name_1));
-      }
+    final Function1<EClassifier, Boolean> _function = (EClassifier it) -> {
+      String _name = it.getName();
+      String _name_1 = classifier.getName();
+      return Boolean.valueOf(_name.equals(_name_1));
     };
     boolean _exists = IterableExtensions.<EClassifier>exists(_eClassifiers, _function);
     boolean _not = (!_exists);
@@ -323,12 +301,10 @@ public class EMFModelGenerator {
     final String[] packagePath = packageName.split("\\.");
     EList<EObject> _contents = resource.getContents();
     Iterable<EPackage> _filter = Iterables.<EPackage>filter(_contents, EPackage.class);
-    final Function1<EPackage, Boolean> _function = new Function1<EPackage, Boolean>() {
-      public Boolean apply(final EPackage it) {
-        String _get = packagePath[0];
-        String _name = it.getName();
-        return Boolean.valueOf(_get.equals(_name));
-      }
+    final Function1<EPackage, Boolean> _function = (EPackage it) -> {
+      String _get = packagePath[0];
+      String _name = it.getName();
+      return Boolean.valueOf(_get.equals(_name));
     };
     EPackage _findFirst = IterableExtensions.<EPackage>findFirst(_filter, _function);
     Iterable<String> _tail = IterableExtensions.<String>tail(((Iterable<String>)Conversions.doWrapArray(packagePath)));
@@ -344,12 +320,10 @@ public class EMFModelGenerator {
       return parent;
     } else {
       EList<EPackage> _eSubpackages = parent.getESubpackages();
-      final Function1<EPackage, Boolean> _function = new Function1<EPackage, Boolean>() {
-        public Boolean apply(final EPackage it) {
-          String _get = ((String[])Conversions.unwrapArray(packagePath, String.class))[0];
-          String _name = it.getName();
-          return Boolean.valueOf(_get.equals(_name));
-        }
+      final Function1<EPackage, Boolean> _function = (EPackage it) -> {
+        String _get = ((String[])Conversions.unwrapArray(packagePath, String.class))[0];
+        String _name = it.getName();
+        return Boolean.valueOf(_get.equals(_name));
       };
       EPackage _findFirst = IterableExtensions.<EPackage>findFirst(_eSubpackages, _function);
       Iterable<String> _tail = IterableExtensions.<String>tail(packagePath);
@@ -381,12 +355,10 @@ public class EMFModelGenerator {
       final String[] packagePath = _name_3.split("\\.");
       EList<EObject> _contents = resource.getContents();
       Iterable<EPackage> _filter = Iterables.<EPackage>filter(_contents, EPackage.class);
-      final Function1<EPackage, Boolean> _function = new Function1<EPackage, Boolean>() {
-        public Boolean apply(final EPackage p) {
-          String _name = p.getName();
-          Object _get = packagePath[0];
-          return Boolean.valueOf(_name.equals(_get));
-        }
+      final Function1<EPackage, Boolean> _function = (EPackage p) -> {
+        String _name_4 = p.getName();
+        Object _get = packagePath[0];
+        return Boolean.valueOf(_name_4.equals(_get));
       };
       final EPackage pkg = IterableExtensions.<EPackage>findFirst(_filter, _function);
       Iterable<String> _tail = IterableExtensions.<String>tail(((Iterable<String>)Conversions.doWrapArray(packagePath)));
@@ -408,33 +380,27 @@ public class EMFModelGenerator {
       String _plus_1 = ("findResultClass3: package classifiers " + _eClassifiers);
       System.err.println(_plus_1);
       EList<EClassifier> _eClassifiers_1 = pkg.getEClassifiers();
-      final Consumer<EClassifier> _function = new Consumer<EClassifier>() {
-        public void accept(final EClassifier clazz) {
-          System.err.println(("findResultClass3: clazz " + clazz));
-          String _name = clazz.getName();
-          String _plus = ("findResultClass3: clazz name " + _name);
-          System.err.println(_plus);
-        }
+      final Consumer<EClassifier> _function = (EClassifier clazz) -> {
+        System.err.println(("findResultClass3: clazz " + clazz));
+        String _name_1 = clazz.getName();
+        String _plus_2 = ("findResultClass3: clazz name " + _name_1);
+        System.err.println(_plus_2);
       };
       _eClassifiers_1.forEach(_function);
       EList<EClassifier> _eClassifiers_2 = pkg.getEClassifiers();
-      final Function1<EClassifier, Boolean> _function_1 = new Function1<EClassifier, Boolean>() {
-        public Boolean apply(final EClassifier clazz) {
-          String _name = clazz.getName();
-          String _name_1 = type.getName();
-          return Boolean.valueOf(_name.equals(_name_1));
-        }
+      final Function1<EClassifier, Boolean> _function_1 = (EClassifier clazz) -> {
+        String _name_1 = clazz.getName();
+        String _name_2 = type.getName();
+        return Boolean.valueOf(_name_1.equals(_name_2));
       };
       EClassifier _findFirst = IterableExtensions.<EClassifier>findFirst(_eClassifiers_2, _function_1);
       return ((EClass) _findFirst);
     } else {
       EList<EPackage> _eSubpackages = pkg.getESubpackages();
-      final Function1<EPackage, Boolean> _function_2 = new Function1<EPackage, Boolean>() {
-        public Boolean apply(final EPackage p) {
-          String _name = p.getName();
-          Object _get = ((Object[])Conversions.unwrapArray(packagePath, Object.class))[0];
-          return Boolean.valueOf(_name.equals(_get));
-        }
+      final Function1<EPackage, Boolean> _function_2 = (EPackage p) -> {
+        String _name_1 = p.getName();
+        Object _get = ((Object[])Conversions.unwrapArray(packagePath, Object.class))[0];
+        return Boolean.valueOf(_name_1.equals(_get));
       };
       final EPackage subpkg = IterableExtensions.<EPackage>findFirst(_eSubpackages, _function_2);
       boolean _equals = Objects.equal(subpkg, null);
@@ -482,22 +448,18 @@ public class EMFModelGenerator {
     boolean _not = (!_isEmpty);
     if (_not) {
       EList<TemplateType> _parents_1 = type.getParents();
-      final Consumer<TemplateType> _function = new Consumer<TemplateType>() {
-        public void accept(final TemplateType iface) {
-          EList<EClass> _eSuperTypes = clazz.getESuperTypes();
-          EClass _findResultClass = EMFModelGenerator.this.findResultClass(iface, resource);
-          _eSuperTypes.add(_findResultClass);
-        }
+      final Consumer<TemplateType> _function = (TemplateType iface) -> {
+        EList<EClass> _eSuperTypes = clazz.getESuperTypes();
+        EClass _findResultClass = this.findResultClass(iface, resource);
+        _eSuperTypes.add(_findResultClass);
       };
       _parents_1.forEach(_function);
     }
     EList<Property> _properties = type.getProperties();
-    final Consumer<Property> _function_1 = new Consumer<Property>() {
-      public void accept(final Property property) {
-        EList<EStructuralFeature> _eStructuralFeatures = clazz.getEStructuralFeatures();
-        EAttribute _composeProperty = EMFModelGenerator.this.composeProperty(property);
-        EMFModelGenerator.this.addUnique(_eStructuralFeatures, _composeProperty);
-      }
+    final Consumer<Property> _function_1 = (Property property) -> {
+      EList<EStructuralFeature> _eStructuralFeatures = clazz.getEStructuralFeatures();
+      EAttribute _composeProperty = this.composeProperty(property);
+      this.addUnique(_eStructuralFeatures, _composeProperty);
     };
     _properties.forEach(_function_1);
   }
@@ -530,22 +492,18 @@ public class EMFModelGenerator {
       boolean _not = (!_isEmpty);
       if (_not) {
         EList<TemplateType> _parents_1 = type.getParents();
-        final Consumer<TemplateType> _function = new Consumer<TemplateType>() {
-          public void accept(final TemplateType iface) {
-            EList<EClass> _eSuperTypes = clazz.getESuperTypes();
-            EClass _findResultClass = EMFModelGenerator.this.findResultClass(iface, resource);
-            _eSuperTypes.add(_findResultClass);
-          }
+        final Consumer<TemplateType> _function = (TemplateType iface) -> {
+          EList<EClass> _eSuperTypes_2 = clazz.getESuperTypes();
+          EClass _findResultClass = this.findResultClass(iface, resource);
+          _eSuperTypes_2.add(_findResultClass);
         };
         _parents_1.forEach(_function);
       }
       EList<Property> _properties = type.getProperties();
-      final Consumer<Property> _function_1 = new Consumer<Property>() {
-        public void accept(final Property property) {
-          EList<EStructuralFeature> _eStructuralFeatures = clazz.getEStructuralFeatures();
-          EAttribute _composeProperty = EMFModelGenerator.this.composeProperty(property);
-          EMFModelGenerator.this.addUnique(_eStructuralFeatures, _composeProperty);
-        }
+      final Consumer<Property> _function_1 = (Property property) -> {
+        EList<EStructuralFeature> _eStructuralFeatures = clazz.getEStructuralFeatures();
+        EAttribute _composeProperty = this.composeProperty(property);
+        this.addUnique(_eStructuralFeatures, _composeProperty);
       };
       _properties.forEach(_function_1);
     }
@@ -555,12 +513,10 @@ public class EMFModelGenerator {
    * Check if a given feature already exists.
    */
   public void addUnique(final EList<EStructuralFeature> list, final EAttribute attribute) {
-    final Function1<EStructuralFeature, Boolean> _function = new Function1<EStructuralFeature, Boolean>() {
-      public Boolean apply(final EStructuralFeature it) {
-        String _name = it.getName();
-        String _name_1 = attribute.getName();
-        return Boolean.valueOf(_name.equals(_name_1));
-      }
+    final Function1<EStructuralFeature, Boolean> _function = (EStructuralFeature it) -> {
+      String _name = it.getName();
+      String _name_1 = attribute.getName();
+      return Boolean.valueOf(_name.equals(_name_1));
     };
     boolean _exists = IterableExtensions.<EStructuralFeature>exists(list, _function);
     boolean _not = (!_exists);
@@ -632,57 +588,34 @@ public class EMFModelGenerator {
   
   public EDataType getMapToEMFLiteral(final String name) {
     EDataType _switchResult = null;
-    boolean _matched = false;
-    if (!_matched) {
-      if (Objects.equal(name, "byte")) {
-        _matched=true;
+    switch (name) {
+      case "byte":
         _switchResult = EcorePackage.Literals.EBYTE;
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(name, "short")) {
-        _matched=true;
+        break;
+      case "short":
         _switchResult = EcorePackage.Literals.ESHORT;
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(name, "int")) {
-        _matched=true;
+        break;
+      case "int":
         _switchResult = EcorePackage.Literals.EINT;
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(name, "long")) {
-        _matched=true;
+        break;
+      case "long":
         _switchResult = EcorePackage.Literals.ELONG;
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(name, "float")) {
-        _matched=true;
+        break;
+      case "float":
         _switchResult = EcorePackage.Literals.EFLOAT;
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(name, "double")) {
-        _matched=true;
+        break;
+      case "double":
         _switchResult = EcorePackage.Literals.EDOUBLE;
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(name, "string")) {
-        _matched=true;
+        break;
+      case "string":
         _switchResult = EcorePackage.Literals.ESTRING;
-      }
-    }
-    if (!_matched) {
-      if (Objects.equal(name, "boolean")) {
-        _matched=true;
+        break;
+      case "boolean":
         _switchResult = EcorePackage.Literals.EBOOLEAN;
-      }
-    }
-    if (!_matched) {
-      _switchResult = EcorePackage.Literals.EBOOLEAN;
+        break;
+      default:
+        _switchResult = EcorePackage.Literals.EBOOLEAN;
+        break;
     }
     return _switchResult;
   }

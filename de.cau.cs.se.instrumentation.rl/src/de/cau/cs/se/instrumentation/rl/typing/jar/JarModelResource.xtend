@@ -15,42 +15,38 @@
  ***************************************************************************/
 package de.cau.cs.se.instrumentation.rl.typing.jar;
 
+import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
+import de.cau.cs.se.instrumentation.rl.recordLang.Literal
+import de.cau.cs.se.instrumentation.rl.recordLang.Model
+import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangFactory
+import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
+import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType
 import de.cau.cs.se.instrumentation.rl.recordLang.Type
-import de.cau.cs.se.instrumentation.rl.recordLang.impl.ModelImpl
+import de.cau.cs.se.instrumentation.rl.typing.PrimitiveTypes
 import java.io.IOException
 import java.io.InputStream
-import java.net.URL
 import java.util.ArrayList
-import java.util.Iterator
+import java.util.Collection
+import java.util.HashMap
 import java.util.Map
-import org.eclipse.emf.common.util.EList
+import org.eclipse.core.resources.IProject
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl
-import org.eclipse.core.resources.IProject
-import org.eclipse.jdt.core.JavaCore
-import org.eclipse.jdt.core.IJavaProject
-import org.eclipse.jdt.core.IType
-import java.util.Collection
-import org.eclipse.jdt.core.IPackageFragment
+import org.eclipse.jdt.core.Flags
 import org.eclipse.jdt.core.IClassFile
 import org.eclipse.jdt.core.ICompilationUnit
-import de.cau.cs.se.instrumentation.rl.recordLang.Model
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangFactory
-import java.util.HashMap
-import de.cau.cs.se.instrumentation.rl.recordLang.Property
-import org.eclipse.jdt.core.Flags
-import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
-import de.cau.cs.se.instrumentation.rl.typing.PrimitiveTypes
-import de.cau.cs.se.instrumentation.rl.recordLang.Literal
-import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
+import org.eclipse.jdt.core.IJavaProject
+import org.eclipse.jdt.core.IPackageFragment
+import org.eclipse.jdt.core.IType
+import org.eclipse.jdt.core.JavaCore
 import org.eclipse.jdt.core.JavaModelException
 
 /**
  * broadly based on org.spp.cocome.behavior.pcm.handler.PCMModelResource
  * 
- * @author Yannic Kropp
+ * @author Yannic Kropp -- initial contribution
+ * @author Reiner Jung
  * 
  */
 public class JarModelResource extends ResourceImpl {
@@ -82,7 +78,10 @@ public class JarModelResource extends ResourceImpl {
 			for (object : this.getContents()) {
 				if (object instanceof Model) {
 					val types = (object as Model).types
-					val result = types.findFirst[type | type.name.endsWith("." + uriFragment) || type.name.equals(uriFragment)]
+					val result = types.findFirst[type |
+						type.name.endsWith("." + uriFragment) || 
+						type.name.equals(uriFragment)
+					]
 					if (result != null)
 						return result
 				}
@@ -143,9 +142,11 @@ public class JarModelResource extends ResourceImpl {
 			}
 		}
 	}
-	
-	// TODO modelTypes is presently empty. fix this.
-	public def Iterable<Type> getAllDataTypes() {
+
+	/**
+	 * Return prepared set over all inferred types.
+	 */	
+	public def Iterable<Type> getAllTypes() {
 		modelTypes
 	}
 
@@ -172,6 +173,7 @@ public class JarModelResource extends ResourceImpl {
 				val modelType = type.createType
 				models.get(type.packageFragment.elementName).types.add(modelType)
 				typeMap.put(type, modelType)
+				modelTypes.add(modelType)
 			]
 			
 			/** link types. */
@@ -394,19 +396,11 @@ public class JarModelResource extends ResourceImpl {
 				} else
 					return false
 			} catch(JavaModelException ex) {
-				System.out.println("Class " + child.fullyQualifiedName)
+				System.out.println("Class " + child.fullyQualifiedName + " " + child.exists + " " + child.resolved)
 				return false
 			}
 		}
 	}
-	
-	/**
-	 * Match fypes by name.
-	 */
-	private def IType findByName(Collection<IType> types, String name) {
-		return types.findFirst[it.fullyQualifiedName.equals(name)]
-	}
-	
 	
 	
 }

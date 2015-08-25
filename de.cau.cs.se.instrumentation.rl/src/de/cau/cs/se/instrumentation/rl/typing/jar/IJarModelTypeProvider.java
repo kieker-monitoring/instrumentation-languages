@@ -15,8 +15,6 @@
  ***************************************************************************/
 package de.cau.cs.se.instrumentation.rl.typing.jar;
 
-import org.eclipse.xtext.common.types.access.jdt.TypeURIHelper;
-
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
 
 /**
@@ -28,7 +26,7 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Type;
 public interface IJarModelTypeProvider {
 
 	/**
-	 * Provides a collection of all supported primitive types (helpful for content assist).
+	 * Provides a collection of all supported types.
 	 *
 	 * @return Collection of types
 	 */
@@ -43,15 +41,5 @@ public interface IJarModelTypeProvider {
 	 * @return the found {@link Type} or null if no such type could be found.
 	 */
 	Type findTypeByName(String name);
-
-	/**
-	 * Introduced analogously to {@link org.eclipse.xtext.common.types.access.jdt.IJdtTypeProvider
-	 * IJdtTypeProvider#getTypeUriHelper()}.
-	 *
-	 * @return the used {@link TypeURIHelper}
-	 */
-	JarModelTypeURIHelper getTypeUriHelper();
-
-	Iterable<Type> getAllDataTyes();
 
 }

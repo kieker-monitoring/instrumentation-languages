@@ -16,11 +16,9 @@
 package de.cau.cs.se.instrumentation.rl.typing.jar;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.util.Strings;
@@ -35,11 +33,11 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Type;
  */
 public class JarModelTypeProvider implements Resource.Factory, IJarModelTypeProvider {
 
-	private final JarModelTypeURIHelper typeUriHelper;
-
-	private final ResourceSet resourceSet;
+	private final URI resourceURI;
 
 	private final IProject project;
+
+	private final ResourceSet resourceSet;
 
 	/**
 	 * Construct the type provider.
@@ -50,9 +48,9 @@ public class JarModelTypeProvider implements Resource.Factory, IJarModelTypeProv
 	 *            the application model
 	 */
 	public JarModelTypeProvider(final ResourceSet resourceSet, final IProject project) {
-		this.resourceSet = resourceSet;
 		this.project = project;
-		this.typeUriHelper = new JarModelTypeURIHelper();
+		this.resourceSet = resourceSet;
+		this.resourceURI = JarModelTypeURIHelper.createResourceURI();
 	}
 
 	/**
@@ -62,19 +60,12 @@ public class JarModelTypeProvider implements Resource.Factory, IJarModelTypeProv
 	 */
 	// @Override
 	public Iterable<Type> getAllTypes() {
-		/*
-		 * Get the (already created) types from the helper resource and cast the list to a list of
-		 * types.
-		 */
-		final Resource resource = this.resourceSet.getResource(
-				URI.createURI(JarModelTypeURIHelper.PROTOCOL + ":" + JarModelTypeURIHelper.ELEMENTS), true);
-		final Collection<Type> result = new ArrayList<Type>();
-		for (final EObject container : resource.getContents()) {
-			if (container instanceof Type) {
-				result.add((Type) container);
-			}
+		final Resource resource = this.resourceSet.getResource(this.resourceURI, true);
+		if (resource instanceof JarModelResource) {
+			return ((JarModelResource) resource).getAllTypes();
+		} else {
+			return new ArrayList<Type>();
 		}
-		return result;
 	}
 
 	/**
@@ -89,33 +80,22 @@ public class JarModelTypeProvider implements Resource.Factory, IJarModelTypeProv
 		if (Strings.isEmpty(name)) {
 			throw new IllegalArgumentException("Internal error: Empty type name.");
 		}
-		final URI resourceURI = this.typeUriHelper.createResourceURI();
-		final JarModelResource resource = (JarModelResource) this.resourceSet.getResource(resourceURI, true);
-
-		return (Type) resource.getEObject(name);
+		final Resource resource = this.resourceSet.getResource(this.resourceURI, true);
+		if (resource instanceof JarModelResource) {
+			return (Type) ((JarModelResource) resource).getEObject(name);
+		} else {
+			return null;
+		}
 	}
 
 	/**
-	 * Create a type resource for a given URI and assign a PrimitiveMirror to it.
+	 * Create a type resource for a given URI.
 	 *
 	 * @param uri
 	 *            The URI for the resource
 	 */
 	public JarModelResource createResource(final URI uri) {
 		return new JarModelResource(uri, this.project);
-	}
-
-	/**
-	 * @returns Returns the URI helper for the type system.
-	 */
-	public JarModelTypeURIHelper getTypeUriHelper() {
-		return this.typeUriHelper;
-	}
-
-	public Iterable<Type> getAllDataTyes() {
-		final Resource resource = this.resourceSet.getResource(
-				URI.createURI(JarModelTypeURIHelper.PROTOCOL + ":" + JarModelTypeURIHelper.ELEMENTS), true);
-		return ((JarModelResource) resource).getAllDataTypes();
 	}
 
 }

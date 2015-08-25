@@ -65,7 +65,8 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 /**
  * broadly based on org.spp.cocome.behavior.pcm.handler.PCMModelResource
  * 
- * @author Yannic Kropp
+ * @author Yannic Kropp -- initial contribution
+ * @author Reiner Jung
  */
 @SuppressWarnings("all")
 public class JarModelResource extends ResourceImpl {
@@ -192,7 +193,10 @@ public class JarModelResource extends ResourceImpl {
     }
   }
   
-  public Iterable<Type> getAllDataTypes() {
+  /**
+   * Return prepared set over all inferred types.
+   */
+  public Iterable<Type> getAllTypes() {
     return this.modelTypes;
   }
   
@@ -231,6 +235,7 @@ public class JarModelResource extends ResourceImpl {
             EList<Type> _types = _get.getTypes();
             _types.add(modelType);
             typeMap.put(type, modelType);
+            this.modelTypes.add(modelType);
           };
           types.forEach(_function_1);
           final Consumer<IType> _function_2 = (IType type) -> {
@@ -684,7 +689,13 @@ public class JarModelResource extends ResourceImpl {
             final JavaModelException ex = (JavaModelException)_t;
             String _fullyQualifiedName = child.getFullyQualifiedName();
             String _plus = ("Class " + _fullyQualifiedName);
-            System.out.println(_plus);
+            String _plus_1 = (_plus + " ");
+            boolean _exists = child.exists();
+            String _plus_2 = (_plus_1 + Boolean.valueOf(_exists));
+            String _plus_3 = (_plus_2 + " ");
+            boolean _isResolved = child.isResolved();
+            String _plus_4 = (_plus_3 + Boolean.valueOf(_isResolved));
+            System.out.println(_plus_4);
             return false;
           } else {
             throw Exceptions.sneakyThrow(_t);
@@ -692,16 +703,5 @@ public class JarModelResource extends ResourceImpl {
         }
       }
     }
-  }
-  
-  /**
-   * Match fypes by name.
-   */
-  private IType findByName(final Collection<IType> types, final String name) {
-    final Function1<IType, Boolean> _function = (IType it) -> {
-      String _fullyQualifiedName = it.getFullyQualifiedName();
-      return Boolean.valueOf(_fullyQualifiedName.equals(name));
-    };
-    return IterableExtensions.<IType>findFirst(types, _function);
   }
 }

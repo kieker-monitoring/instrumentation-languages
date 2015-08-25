@@ -34,7 +34,7 @@ public class JarModelTypeURIHelper { // NOCS -- constructor not required
 	 *
 	 * @return the URI
 	 */
-	public URI createResourceURI() {
+	public static URI createResourceURI() {
 		return URI.createURI(JarModelTypeURIHelper.PROTOCOL + ':' + JarModelTypeURIHelper.ELEMENTS);
 	}
 
@@ -45,8 +45,7 @@ public class JarModelTypeURIHelper { // NOCS -- constructor not required
 	 *            the full qualified class name
 	 * @return a complete URI
 	 */
-	// TODO check if this contraption is really useful
-	public URI getFullURIForClass(final String fullQualifiedClassName) {
+	public static URI getFullURIForClass(final String fullQualifiedClassName) {
 		final StringBuilder uriBuilder = new StringBuilder(48);
 		uriBuilder.append(PROTOCOL);
 		uriBuilder.append(':');

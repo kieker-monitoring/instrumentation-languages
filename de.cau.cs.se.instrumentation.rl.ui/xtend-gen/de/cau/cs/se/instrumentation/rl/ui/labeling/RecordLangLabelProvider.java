@@ -90,19 +90,17 @@ public class RecordLangLabelProvider extends DefaultEObjectLabelProvider {
     EClassifier _class_ = e.getClass_();
     String _name = _class_.getName();
     EList<ArraySize> _sizes = e.getSizes();
-    final Function1<ArraySize, String> _function = new Function1<ArraySize, String>() {
-      public String apply(final ArraySize it) {
-        Object _xifexpression = null;
-        int _size = it.getSize();
-        boolean _notEquals = (_size != 0);
-        if (_notEquals) {
-          _xifexpression = Integer.valueOf(it.getSize());
-        } else {
-          _xifexpression = "";
-        }
-        String _plus = ("[" + ((Comparable<?>)_xifexpression));
-        return (_plus + "]");
+    final Function1<ArraySize, String> _function = (ArraySize it) -> {
+      Object _xifexpression = null;
+      int _size = it.getSize();
+      boolean _notEquals = (_size != 0);
+      if (_notEquals) {
+        _xifexpression = Integer.valueOf(it.getSize());
+      } else {
+        _xifexpression = "";
       }
+      String _plus = ("[" + ((Comparable<?>)_xifexpression));
+      return (_plus + "]");
     };
     List<String> _map = ListExtensions.<ArraySize, String>map(_sizes, _function);
     String _join = IterableExtensions.join(_map);

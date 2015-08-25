@@ -74,7 +74,7 @@ public class JarModelTypeProviderFactory {
 	private IJarModelTypeProvider createTypeProvider(final IProject project, final ResourceSet resourceSet) {
 		final IJarModelTypeProvider typeProvider = new JarModelTypeProvider(resourceSet, project);
 		resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
-		.put(JarModelTypeURIHelper.PROTOCOL, typeProvider);
+				.put(JarModelTypeURIHelper.PROTOCOL, typeProvider);
 		return typeProvider;
 	}
 

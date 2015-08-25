@@ -104,6 +104,7 @@ public class ForeignModelResource extends ResourceImpl {
    * 
    * @return the EObject identified by the uriFragment or null if no such object exists.
    */
+  @Override
   public EObject getEObject(final String uriFragment) {
     EList<EObject> _contents = this.getContents();
     String _plus = ("this.getContents " + _contents);
@@ -124,11 +125,9 @@ public class ForeignModelResource extends ResourceImpl {
       EList<Container> _contents_4 = ((Model) _get_1).getContents();
       Container _findFirst = null;
       if (_contents_4!=null) {
-        final Function1<Container, Boolean> _function = new Function1<Container, Boolean>() {
-          public Boolean apply(final Container it) {
-            String _uRIFragment = ForeignModelResource.this.getURIFragment(it);
-            return Boolean.valueOf(uriFragment.equals(_uRIFragment));
-          }
+        final Function1<Container, Boolean> _function = (Container it) -> {
+          String _uRIFragment = this.getURIFragment(it);
+          return Boolean.valueOf(uriFragment.equals(_uRIFragment));
         };
         _findFirst=IterableExtensions.<Container>findFirst(_contents_4, _function);
       }
@@ -151,6 +150,7 @@ public class ForeignModelResource extends ResourceImpl {
    * 
    * @return returns the uriFragment for the given object.
    */
+  @Override
   public String getURIFragment(final EObject eObject) {
     if ((eObject instanceof NamedElement)) {
       return ((NamedElement) eObject).getName();
@@ -162,6 +162,7 @@ public class ForeignModelResource extends ResourceImpl {
   /**
    * load the resource iff it is not already loaded.
    */
+  @Override
   public void load(final Map<?, ?> options) throws IOException {
     if ((!this.isLoaded)) {
       this.doLoad(null, null);
@@ -171,6 +172,7 @@ public class ForeignModelResource extends ResourceImpl {
   /**
    * Saving this resource is not allowed, as it is a virtual resource.
    */
+  @Override
   public void save(final Map<?, ?> options) throws IOException {
     throw new UnsupportedOperationException();
   }
@@ -186,6 +188,7 @@ public class ForeignModelResource extends ResourceImpl {
    * 
    * @throws IOException
    */
+  @Override
   public void doLoad(final InputStream inputStream, final Map<?, ?> options) throws IOException {
     URI _uRI = this.getURI();
     boolean _notEquals = (!Objects.equal(_uRI, null));
@@ -339,11 +342,9 @@ public class ForeignModelResource extends ResourceImpl {
    * Create methods for an interface in the intermediate model.
    */
   private void createMethods(final EList<Method> list, final Collection<EObject> objects) {
-    final Consumer<EObject> _function = new Consumer<EObject>() {
-      public void accept(final EObject signature) {
-        Method _createMethod = ForeignModelResource.this.createMethod(signature);
-        list.add(_createMethod);
-      }
+    final Consumer<EObject> _function = (EObject signature) -> {
+      Method _createMethod = this.createMethod(signature);
+      list.add(_createMethod);
     };
     objects.forEach(_function);
   }
@@ -372,12 +373,10 @@ public class ForeignModelResource extends ResourceImpl {
     method.setReturnType(_createTypeReference);
     Object _feature_1 = this.getFeature(signature, "parameters__OperationSignature");
     final Collection<EObject> parameters = ((Collection<EObject>) _feature_1);
-    final Consumer<EObject> _function = new Consumer<EObject>() {
-      public void accept(final EObject parameter) {
-        EList<Parameter> _parameters = method.getParameters();
-        Parameter _createParameter = ForeignModelResource.this.createParameter(parameter);
-        _parameters.add(_createParameter);
-      }
+    final Consumer<EObject> _function = (EObject parameter) -> {
+      EList<Parameter> _parameters = method.getParameters();
+      Parameter _createParameter = this.createParameter(parameter);
+      _parameters.add(_createParameter);
     };
     parameters.forEach(_function);
     return method;
@@ -427,22 +426,17 @@ public class ForeignModelResource extends ResourceImpl {
       if (_notEquals_1) {
         EClass _eClass_2 = object.eClass();
         String _name_1 = _eClass_2.getName();
-        boolean _matched = false;
-        if (!_matched) {
-          if (Objects.equal(_name_1, "CompositeDataType")) {
-            _matched=true;
+        switch (_name_1) {
+          case "CompositeDataType":
             Object _feature = this.getFeature(object, "entityName");
             Type _findCompositeType = this.findCompositeType(((String) _feature));
             typeReference.setType(_findCompositeType);
-          }
-        }
-        if (!_matched) {
-          if (Objects.equal(_name_1, "PrimitiveDataType")) {
-            _matched=true;
+            break;
+          case "PrimitiveDataType":
             Object _feature_1 = this.getFeature(object, "type");
             Type _findPrimitiveType = this.findPrimitiveType(_feature_1);
             typeReference.setType(_findPrimitiveType);
-          }
+            break;
         }
       } else {
         Type _emptyType = this.emptyType();
@@ -462,11 +456,9 @@ public class ForeignModelResource extends ResourceImpl {
    */
   private Type emptyType() {
     EList<Type> _types = this.resultModel.getTypes();
-    final Function1<Type, Boolean> _function = new Function1<Type, Boolean>() {
-      public Boolean apply(final Type it) {
-        String _name = it.getName();
-        return Boolean.valueOf(_name.equals("EMPTY"));
-      }
+    final Function1<Type, Boolean> _function = (Type it) -> {
+      String _name = it.getName();
+      return Boolean.valueOf(_name.equals("EMPTY"));
     };
     Type type = IterableExtensions.<Type>findFirst(_types, _function);
     boolean _equals = Objects.equal(type, null);
@@ -490,11 +482,9 @@ public class ForeignModelResource extends ResourceImpl {
   private Type findPrimitiveType(final Object object) {
     final String typeName = object.toString();
     EList<Type> _types = this.resultModel.getTypes();
-    final Function1<Type, Boolean> _function = new Function1<Type, Boolean>() {
-      public Boolean apply(final Type it) {
-        String _name = it.getName();
-        return Boolean.valueOf(_name.equals(typeName));
-      }
+    final Function1<Type, Boolean> _function = (Type it) -> {
+      String _name = it.getName();
+      return Boolean.valueOf(_name.equals(typeName));
     };
     Type type = IterableExtensions.<Type>findFirst(_types, _function);
     boolean _equals = Objects.equal(type, null);
@@ -515,11 +505,9 @@ public class ForeignModelResource extends ResourceImpl {
    */
   private Type findCompositeType(final String typeName) {
     EList<Type> _types = this.resultModel.getTypes();
-    final Function1<Type, Boolean> _function = new Function1<Type, Boolean>() {
-      public Boolean apply(final Type it) {
-        String _name = it.getName();
-        return Boolean.valueOf(_name.equals(typeName));
-      }
+    final Function1<Type, Boolean> _function = (Type it) -> {
+      String _name = it.getName();
+      return Boolean.valueOf(_name.equals(typeName));
     };
     Type type = IterableExtensions.<Type>findFirst(_types, _function);
     boolean _equals = Objects.equal(type, null);
@@ -579,12 +567,10 @@ public class ForeignModelResource extends ResourceImpl {
       this.addEntityToParentContainer(parent, entity);
     } else {
       EList<Container> _contents = parent.getContents();
-      final Function1<Container, Boolean> _function = new Function1<Container, Boolean>() {
-        public Boolean apply(final Container it) {
-          String _name = it.getName();
-          String _firstSegment = fullQualifiedName.getFirstSegment();
-          return Boolean.valueOf(_name.equals(_firstSegment));
-        }
+      final Function1<Container, Boolean> _function = (Container it) -> {
+        String _name = it.getName();
+        String _firstSegment = fullQualifiedName.getFirstSegment();
+        return Boolean.valueOf(_name.equals(_firstSegment));
       };
       final Container container = IterableExtensions.<Container>findFirst(_contents, _function);
       boolean _notEquals = (!Objects.equal(container, null));
@@ -616,12 +602,10 @@ public class ForeignModelResource extends ResourceImpl {
   private Boolean addEntityToParentContainer(final Containment parent, final Container entity) {
     boolean _xifexpression = false;
     EList<Container> _contents = parent.getContents();
-    final Function1<Container, Boolean> _function = new Function1<Container, Boolean>() {
-      public Boolean apply(final Container it) {
-        String _name = it.getName();
-        String _name_1 = entity.getName();
-        return Boolean.valueOf(_name.equals(_name_1));
-      }
+    final Function1<Container, Boolean> _function = (Container it) -> {
+      String _name = it.getName();
+      String _name_1 = entity.getName();
+      return Boolean.valueOf(_name.equals(_name_1));
     };
     boolean _exists = IterableExtensions.<Container>exists(_contents, _function);
     boolean _not = (!_exists);

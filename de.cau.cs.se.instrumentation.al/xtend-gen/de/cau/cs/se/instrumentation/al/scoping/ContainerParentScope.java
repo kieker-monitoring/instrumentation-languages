@@ -52,21 +52,25 @@ public class ContainerParentScope implements IScope {
     this.node = node;
   }
   
+  @Override
   public Iterable<IEObjectDescription> getAllElements() {
     System.out.println("TODO: auto-generated method stub getAllElements");
     return null;
   }
   
+  @Override
   public Iterable<IEObjectDescription> getElements(final QualifiedName name) {
     System.out.println("TODO: auto-generated method stub getElements name");
     return null;
   }
   
+  @Override
   public Iterable<IEObjectDescription> getElements(final EObject object) {
     System.out.println("TODO: auto-generated method stub getElements object");
     return null;
   }
   
+  @Override
   public IEObjectDescription getSingleElement(final QualifiedName name) {
     EObject _eContainer = this.node.eContainer();
     LocationQuery parent = ((LocationQuery) _eContainer);
@@ -79,12 +83,10 @@ public class ContainerParentScope implements IScope {
     Node _node_1 = parent.getNode();
     final Container container = ((ContainerNode) _node_1).getContainer();
     EList<Container> _contents = container.getContents();
-    final Function1<Container, Boolean> _function = new Function1<Container, Boolean>() {
-      public Boolean apply(final Container it) {
-        String _name = it.getName();
-        String _lastSegment = name.getLastSegment();
-        return Boolean.valueOf(_name.equals(_lastSegment));
-      }
+    final Function1<Container, Boolean> _function = (Container it) -> {
+      String _name = it.getName();
+      String _lastSegment = name.getLastSegment();
+      return Boolean.valueOf(_name.equals(_lastSegment));
     };
     final Container element = IterableExtensions.<Container>findFirst(_contents, _function);
     boolean _notEquals = (!Objects.equal(element, null));
@@ -95,6 +97,7 @@ public class ContainerParentScope implements IScope {
     }
   }
   
+  @Override
   public IEObjectDescription getSingleElement(final EObject object) {
     System.out.println("TODO: auto-generated method stub getSingleElement object");
     return null;

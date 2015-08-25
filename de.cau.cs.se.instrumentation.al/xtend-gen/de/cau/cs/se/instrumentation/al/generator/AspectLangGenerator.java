@@ -78,36 +78,25 @@ public class AspectLangGenerator implements IGenerator {
   /**
    * Central generation function.
    */
+  @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
     TreeIterator<EObject> _allContents = resource.getAllContents();
     Iterator<Aspect> _filter = Iterators.<Aspect>filter(_allContents, Aspect.class);
-    final Procedure1<Aspect> _function = new Procedure1<Aspect>() {
-      public void apply(final Aspect it) {
-        AspectLangGenerator.this.addAspect(AspectLangGenerator.this.aspectMap, it);
-      }
+    final Procedure1<Aspect> _function = (Aspect it) -> {
+      this.addAspect(this.aspectMap, it);
     };
     IteratorExtensions.<Aspect>forEach(_filter, _function);
-    final BiConsumer<String, Collection<Aspect>> _function_1 = new BiConsumer<String, Collection<Aspect>>() {
-      public void accept(final String key, final Collection<Aspect> value) {
-        boolean _matched = false;
-        if (!_matched) {
-          if (Objects.equal(key, "AspectJ")) {
-            _matched=true;
-            AspectLangGenerator.this.createAspectJConfiguration(value, fsa);
-          }
-        }
-        if (!_matched) {
-          if (Objects.equal(key, "J2EE")) {
-            _matched=true;
-            AspectLangGenerator.this.createJ2EEConfiguration(value, fsa);
-          }
-        }
-        if (!_matched) {
-          if (Objects.equal(key, "Spring")) {
-            _matched=true;
-            AspectLangGenerator.this.createSpringConfiguration(value, fsa);
-          }
-        }
+    final BiConsumer<String, Collection<Aspect>> _function_1 = (String key, Collection<Aspect> value) -> {
+      switch (key) {
+        case "AspectJ":
+          this.createAspectJConfiguration(value, fsa);
+          break;
+        case "J2EE":
+          this.createJ2EEConfiguration(value, fsa);
+          break;
+        case "Spring":
+          this.createSpringConfiguration(value, fsa);
+          break;
       }
     };
     this.aspectMap.forEach(_function_1);
@@ -152,35 +141,27 @@ public class AspectLangGenerator implements IGenerator {
       for (final Aspect aspect_1 : aspects) {
         {
           EList<UtilizeProbe> _applyProbes = aspect_1.getApplyProbes();
-          final Consumer<UtilizeProbe> _function = new Consumer<UtilizeProbe>() {
-            public void accept(final UtilizeProbe it) {
-              Advice _probe = it.getProbe();
-              EList<Collector> _collectors = _probe.getCollectors();
-              final Function1<Collector, Boolean> _function = new Function1<Collector, Boolean>() {
-                public Boolean apply(final Collector it) {
-                  InsertionPoint _insertionPoint = it.getInsertionPoint();
-                  return Boolean.valueOf(Objects.equal(_insertionPoint, InsertionPoint.BEFORE));
-                }
-              };
-              Iterable<Collector> _filter = IterableExtensions.<Collector>filter(_collectors, _function);
-              AspectLangGenerator.this.createDataCollectorAspect(_filter, doc, aspectsElement);
-            }
+          final Consumer<UtilizeProbe> _function = (UtilizeProbe it) -> {
+            Advice _probe = it.getProbe();
+            EList<Collector> _collectors = _probe.getCollectors();
+            final Function1<Collector, Boolean> _function_1 = (Collector it_1) -> {
+              InsertionPoint _insertionPoint = it_1.getInsertionPoint();
+              return Boolean.valueOf(Objects.equal(_insertionPoint, InsertionPoint.BEFORE));
+            };
+            Iterable<Collector> _filter = IterableExtensions.<Collector>filter(_collectors, _function_1);
+            this.createDataCollectorAspect(_filter, doc, aspectsElement);
           };
           _applyProbes.forEach(_function);
           EList<UtilizeProbe> _applyProbes_1 = aspect_1.getApplyProbes();
-          final Consumer<UtilizeProbe> _function_1 = new Consumer<UtilizeProbe>() {
-            public void accept(final UtilizeProbe it) {
-              Advice _probe = it.getProbe();
-              EList<Collector> _collectors = _probe.getCollectors();
-              final Function1<Collector, Boolean> _function = new Function1<Collector, Boolean>() {
-                public Boolean apply(final Collector it) {
-                  InsertionPoint _insertionPoint = it.getInsertionPoint();
-                  return Boolean.valueOf(Objects.equal(_insertionPoint, InsertionPoint.AFTER));
-                }
-              };
-              Iterable<Collector> _filter = IterableExtensions.<Collector>filter(_collectors, _function);
-              AspectLangGenerator.this.createDataCollectorAspect(_filter, doc, aspectsElement);
-            }
+          final Consumer<UtilizeProbe> _function_1 = (UtilizeProbe it) -> {
+            Advice _probe = it.getProbe();
+            EList<Collector> _collectors = _probe.getCollectors();
+            final Function1<Collector, Boolean> _function_2 = (Collector it_1) -> {
+              InsertionPoint _insertionPoint = it_1.getInsertionPoint();
+              return Boolean.valueOf(Objects.equal(_insertionPoint, InsertionPoint.AFTER));
+            };
+            Iterable<Collector> _filter = IterableExtensions.<Collector>filter(_collectors, _function_2);
+            this.createDataCollectorAspect(_filter, doc, aspectsElement);
           };
           _applyProbes_1.forEach(_function_1);
         }
@@ -209,11 +190,9 @@ public class AspectLangGenerator implements IGenerator {
    */
   public void createDataCollectorAspect(final Iterable<Collector> list, final Document doc, final Element parent) {
     final Element aspect = doc.createElement("aspect");
-    final Function1<Collector, String> _function = new Function1<Collector, String>() {
-      public String apply(final Collector it) {
-        RecordType _type = it.getType();
-        return _type.getName();
-      }
+    final Function1<Collector, String> _function = (Collector it) -> {
+      RecordType _type = it.getType();
+      return _type.getName();
     };
     Iterable<String> _map = IterableExtensions.<Collector, String>map(list, _function);
     String _join = IterableExtensions.join(_map, ", ");
@@ -300,10 +279,8 @@ public class AspectLangGenerator implements IGenerator {
     _builder.append(_name, "");
     _builder.append(" (");
     EList<Parameter> _parameters = method.getParameters();
-    final Function1<Parameter, CharSequence> _function = new Function1<Parameter, CharSequence>() {
-      public CharSequence apply(final Parameter it) {
-        return AspectLangGenerator.this.computeParameter(it);
-      }
+    final Function1<Parameter, CharSequence> _function = (Parameter it) -> {
+      return this.computeParameter(it);
     };
     List<CharSequence> _map = ListExtensions.<Parameter, CharSequence>map(_parameters, _function);
     String _join = IterableExtensions.join(_map, ", ");
