@@ -42,9 +42,6 @@ import org.eclipse.xtext.scoping.IScope;
 @SuppressWarnings("all")
 public class JarModelGlobalScopeProvider extends TypeGlobalScopeProvider {
   @Inject
-  private JarModelTypeProviderFactory jarModeltypeProviderFactory;
-  
-  @Inject
   private IQualifiedNameConverter qualifiedNameConverter;
   
   @Override
@@ -71,7 +68,7 @@ public class JarModelGlobalScopeProvider extends TypeGlobalScopeProvider {
           final IProject project = _file.getProject();
           boolean _notEquals_1 = (!Objects.equal(resourceSet, null));
           if (_notEquals_1) {
-            final IJarModelTypeProvider typeProvider = this.jarModeltypeProviderFactory.getTypeProvider(project, resourceSet);
+            final IJarModelTypeProvider typeProvider = JarModelTypeProviderFactory.getTypeProvider(project, resourceSet);
             return new JarModelTypeScope(typeProvider, this.qualifiedNameConverter, filter);
           } else {
             throw new IllegalStateException("context must be contained in a resource set");

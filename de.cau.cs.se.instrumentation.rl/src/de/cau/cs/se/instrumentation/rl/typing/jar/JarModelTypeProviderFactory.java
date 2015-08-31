@@ -18,8 +18,6 @@ package de.cau.cs.se.instrumentation.rl.typing.jar;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
-import com.google.inject.Inject;
-
 /**
  * The type provider factory controls the type provider, which is created by this class.
  *
@@ -30,8 +28,7 @@ public class JarModelTypeProviderFactory {
 	/**
 	 * empty constructor.
 	 */
-	@Inject
-	public JarModelTypeProviderFactory() {}
+	private JarModelTypeProviderFactory() {}
 
 	/**
 	 * Create a new type provider or fetch the already created type provider for the primitive
@@ -43,19 +40,20 @@ public class JarModelTypeProviderFactory {
 	 *            the application model
 	 * @return Returns the type provider for primitive types.
 	 */
-	public IJarModelTypeProvider getTypeProvider(final IProject project, final ResourceSet resourceSet) {
+	public synchronized static IJarModelTypeProvider getTypeProvider(final IProject project, final ResourceSet resourceSet) {
 		if (resourceSet != null) {
-			final Object o = resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
+			final Object object = resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
 					.get(JarModelTypeURIHelper.PROTOCOL);
-			if (o != null) {
-				if (!(o instanceof IJarModelTypeProvider)) {
+			if (object != null) {
+				if (!(object instanceof IJarModelTypeProvider)) {
+					System.out.println("Type provider for " + JarModelTypeURIHelper.PROTOCOL + " is " + object);
 					// TODO something went terribly wrong, to be save create a new type provider
-					return this.createTypeProvider(project, resourceSet);
+					return JarModelTypeProviderFactory.createTypeProvider(project, resourceSet);
 				} else {
-					return (IJarModelTypeProvider) o;
+					return (IJarModelTypeProvider) object;
 				}
 			} else {
-				return this.createTypeProvider(project, resourceSet);
+				return JarModelTypeProviderFactory.createTypeProvider(project, resourceSet);
 			}
 		} else {
 			throw new IllegalArgumentException("Cannot get type provide without a resourceSet.");
@@ -71,8 +69,8 @@ public class JarModelTypeProviderFactory {
 	 *            the application model
 	 * @return Returns the new type provider.
 	 */
-	private IJarModelTypeProvider createTypeProvider(final IProject project, final ResourceSet resourceSet) {
-		final IJarModelTypeProvider typeProvider = new JarModelTypeProvider(resourceSet, project);
+	private static IJarModelTypeProvider createTypeProvider(final IProject project, final ResourceSet resourceSet) {
+		final IJarModelTypeProvider typeProvider = new JarModelTypeProvider(project);
 		resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
 				.put(JarModelTypeURIHelper.PROTOCOL, typeProvider);
 		return typeProvider;

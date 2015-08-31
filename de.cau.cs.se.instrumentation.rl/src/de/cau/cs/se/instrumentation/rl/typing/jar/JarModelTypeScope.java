@@ -87,18 +87,11 @@ public class JarModelTypeScope extends AbstractScope {
 			final Set<IEObjectDescription> result = Collections.singleton(EObjectDescription
 					.create(this.qualifiedNameConverter
 							.toQualifiedName(((JvmIdentifiableElement) object)
-									.getQualifiedName()), object));
+									.getQualifiedName()),
+							object));
 			return this.filterResult(result);
 		}
 		return Collections.emptySet();
-	}
-
-	protected Iterable<IEObjectDescription> filterResult(
-			final Iterable<IEObjectDescription> unfiltered) {
-		if (this.filter == null) {
-			return unfiltered;
-		}
-		return Iterables.filter(unfiltered, this.filter);
 	}
 
 	@Override
@@ -106,7 +99,15 @@ public class JarModelTypeScope extends AbstractScope {
 		return this.filterResult(this.internalGetAllElements());
 	}
 
-	protected Iterable<IEObjectDescription> internalGetAllElements() {
+	private Iterable<IEObjectDescription> filterResult(
+			final Iterable<IEObjectDescription> unfiltered) {
+		if (this.filter == null) {
+			return unfiltered;
+		}
+		return Iterables.filter(unfiltered, this.filter);
+	}
+
+	private Iterable<IEObjectDescription> internalGetAllElements() {
 		final List<IEObjectDescription> types = Lists.newArrayList();
 
 		for (final Type t : this.typeProvider.getAllTypes()) {
@@ -116,7 +117,7 @@ public class JarModelTypeScope extends AbstractScope {
 		return types;
 	}
 
-	protected IEObjectDescription createScopedElement(final String fullyQualifiedName) {
+	private IEObjectDescription createScopedElement(final String fullyQualifiedName) {
 		final InternalEObject proxy = this.createProxy(fullyQualifiedName);
 		final IEObjectDescription eObjectDescription = EObjectDescription.create(
 				this.qualifiedNameConverter.toQualifiedName(fullyQualifiedName),
@@ -124,7 +125,7 @@ public class JarModelTypeScope extends AbstractScope {
 		return eObjectDescription;
 	}
 
-	protected InternalEObject createProxy(final String fullyQualifiedName) {
+	private InternalEObject createProxy(final String fullyQualifiedName) {
 		final URI uri = JarModelTypeURIHelper.getFullURIForClass(fullyQualifiedName);
 		// TODO fix this: could be component or interface or method?
 		final InternalEObject proxy = (InternalEObject) RecordLangFactory.eINSTANCE.createModel();

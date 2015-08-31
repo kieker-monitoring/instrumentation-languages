@@ -203,10 +203,10 @@ public class JarModelResource extends ResourceImpl {
   /**
    * Create an result model for a given ecore model.
    */
-  private boolean createModel() {
+  private synchronized boolean createModel() {
     try {
-      boolean _xsynchronizedexpression = false;
-      synchronized (this) {
+      boolean _xifexpression = false;
+      if ((!this.isLoaded)) {
         boolean _xblockexpression = false;
         {
           final IJavaProject javaProject = JavaCore.create(this.project);
@@ -242,19 +242,19 @@ public class JarModelResource extends ResourceImpl {
             this.linkType(type, typeMap);
           };
           types.forEach(_function_2);
-          boolean _xifexpression = false;
+          boolean _xifexpression_1 = false;
           Collection<Model> _values = models.values();
           boolean _notEquals = (!Objects.equal(_values, null));
           if (_notEquals) {
             EList<EObject> _contents = this.getContents();
             Collection<Model> _values_1 = models.values();
-            _xifexpression = _contents.addAll(_values_1);
+            _xifexpression_1 = _contents.addAll(_values_1);
           }
-          _xblockexpression = _xifexpression;
+          _xblockexpression = _xifexpression_1;
         }
-        _xsynchronizedexpression = _xblockexpression;
+        _xifexpression = _xblockexpression;
       }
-      return _xsynchronizedexpression;
+      return _xifexpression;
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -626,9 +626,8 @@ public class JarModelResource extends ResourceImpl {
             if (element instanceof IPackageFragment) {
               _matched=true;
               String _elementName = ((IPackageFragment)element).getElementName();
-              boolean _startsWith = _elementName.startsWith("java");
-              boolean _not = (!_startsWith);
-              if (_not) {
+              boolean _startsWith = _elementName.startsWith("kieker");
+              if (_startsWith) {
                 Collection<IType> _findAllTypes = this.findAllTypes(((IPackageFragment)element));
                 result.addAll(_findAllTypes);
               }

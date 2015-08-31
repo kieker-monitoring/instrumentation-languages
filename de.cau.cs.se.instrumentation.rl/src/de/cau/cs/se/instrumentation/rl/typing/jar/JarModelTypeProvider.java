@@ -15,12 +15,12 @@
  ***************************************************************************/
 package de.cau.cs.se.instrumentation.rl.typing.jar;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.util.Strings;
 
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
@@ -33,11 +33,9 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Type;
  */
 public class JarModelTypeProvider implements Resource.Factory, IJarModelTypeProvider {
 
-	private final URI resourceURI;
-
 	private final IProject project;
 
-	private final ResourceSet resourceSet;
+	private JarModelResource resource;
 
 	/**
 	 * Construct the type provider.
@@ -47,10 +45,9 @@ public class JarModelTypeProvider implements Resource.Factory, IJarModelTypeProv
 	 * @param model
 	 *            the application model
 	 */
-	public JarModelTypeProvider(final ResourceSet resourceSet, final IProject project) {
+	public JarModelTypeProvider(final IProject project) {
 		this.project = project;
-		this.resourceSet = resourceSet;
-		this.resourceURI = JarModelTypeURIHelper.createResourceURI();
+		this.resource = null;
 	}
 
 	/**
@@ -58,11 +55,9 @@ public class JarModelTypeProvider implements Resource.Factory, IJarModelTypeProv
 	 *
 	 * @return Returns an iterable with all primitive types.
 	 */
-	// @Override
 	public Iterable<Type> getAllTypes() {
-		final Resource resource = this.resourceSet.getResource(this.resourceURI, true);
-		if (resource instanceof JarModelResource) {
-			return ((JarModelResource) resource).getAllTypes();
+		if (this.resource != null) {
+			return this.resource.getAllTypes();
 		} else {
 			return new ArrayList<Type>();
 		}
@@ -75,16 +70,15 @@ public class JarModelTypeProvider implements Resource.Factory, IJarModelTypeProv
 	 *            The name of the type.
 	 * @return Returns the primitive type for a given type name, or null.
 	 */
-	// @Override
 	public Type findTypeByName(final String name) {
 		if (Strings.isEmpty(name)) {
 			throw new IllegalArgumentException("Internal error: Empty type name.");
 		}
-		final Resource resource = this.resourceSet.getResource(this.resourceURI, true);
-		if (resource instanceof JarModelResource) {
-			return (Type) ((JarModelResource) resource).getEObject(name);
+
+		if (this.resource != null) {
+			return (Type) this.resource.getEObject(name);
 		} else {
-			return null;
+			return (Type) this.createResource(JarModelTypeURIHelper.createResourceURI()).getEObject(name);
 		}
 	}
 
@@ -95,7 +89,20 @@ public class JarModelTypeProvider implements Resource.Factory, IJarModelTypeProv
 	 *            The URI for the resource
 	 */
 	public JarModelResource createResource(final URI uri) {
-		return new JarModelResource(uri, this.project);
+		synchronized (this.project) {
+			if (this.resource == null) {
+				this.resource = new JarModelResource(uri, this.project);
+				if (!this.resource.isLoaded()) {
+					try {
+						this.resource.load(null);
+					} catch (final IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+			return this.resource;
+		}
 	}
 
 }

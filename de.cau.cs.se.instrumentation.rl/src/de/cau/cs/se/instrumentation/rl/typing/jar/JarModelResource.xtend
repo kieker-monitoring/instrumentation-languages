@@ -153,8 +153,8 @@ public class JarModelResource extends ResourceImpl {
 	/**
 	 * Create an result model for a given ecore model.
 	 */
-	private def createModel() {
-		synchronized(this) {				
+	private synchronized def createModel() {
+		if (!this.isLoaded) {
 			val javaProject = JavaCore.create(project)
 			val iface = javaProject.findType("kieker.common.record.IMonitoringRecord")
 			
@@ -369,7 +369,7 @@ public class JarModelResource extends ResourceImpl {
 		fragment.children.forEach[element |
 			switch (element) {
 				IPackageFragment: {
-					if (!element.elementName.startsWith("java"))
+					if (element.elementName.startsWith("kieker"))
 						result.addAll(element.findAllTypes)
 				}
 				IClassFile: result.add(element.getType())
