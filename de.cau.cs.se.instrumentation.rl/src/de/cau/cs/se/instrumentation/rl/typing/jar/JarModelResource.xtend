@@ -36,11 +36,9 @@ import org.eclipse.emf.ecore.resource.impl.ResourceImpl
 import org.eclipse.jdt.core.Flags
 import org.eclipse.jdt.core.IClassFile
 import org.eclipse.jdt.core.ICompilationUnit
-import org.eclipse.jdt.core.IJavaProject
 import org.eclipse.jdt.core.IPackageFragment
 import org.eclipse.jdt.core.IType
 import org.eclipse.jdt.core.JavaCore
-import org.eclipse.jdt.core.JavaModelException
 
 /**
  * broadly based on org.spp.cocome.behavior.pcm.handler.PCMModelResource
@@ -54,7 +52,7 @@ public class JarModelResource extends ResourceImpl {
 	val rlFactory = RecordLangFactory.eINSTANCE
 	var IProject project
 	val Collection<Type> modelTypes = new ArrayList<Type>
-
+	
 	/**
 	 * Integrate a foreign model.
 	 * 
@@ -157,9 +155,15 @@ public class JarModelResource extends ResourceImpl {
 		if (!this.isLoaded) {
 			val javaProject = JavaCore.create(project)
 			val iface = javaProject.findType("kieker.common.record.IMonitoringRecord")
-			
+						
 			/** find all types which are related to IMonitoringRecord */
-			val types = javaProject.findSubTypesOf(iface)
+			val hierarchy = iface.newTypeHierarchy(javaProject,null)
+			val types = hierarchy.allTypes.filter[
+				val name = it.fullyQualifiedName
+				!(name.equals("java.io.Serializable") ||
+					name.equals("java.lang.Comparable") ||
+					name.equals("java.lang.Object"))
+			]
 			
 			val models = new HashMap<String,Model>()
 			/** create a model for each package */	
@@ -178,7 +182,7 @@ public class JarModelResource extends ResourceImpl {
 			
 			/** link types. */
 			types.forEach[type | type.linkType(typeMap)]
-		
+			
 			if(models.values != null) {
 				this.getContents().addAll(models.values)
 			}
@@ -339,27 +343,7 @@ public class JarModelResource extends ResourceImpl {
 		return classifier
 	}
 		
-	/**
-	 * Find all classes which are subtypes of the given interface.
-	 */
-	private def Collection<IType> findSubTypesOf(IJavaProject project, IType iface) {
-		val types = new ArrayList<IType>()
-		project.allPackageFragmentRoots.forEach[root |
-			root.children.forEach[element |
-				if (element instanceof IPackageFragment)
-					types.addAll((element as IPackageFragment).findAllTypes)	
-			]
-		]
-		
-		val result = new ArrayList<IType>()
-		types.forEach[type |
-			if (types.isSubClassOf(type,iface)) {
-				result.add(type)
-			}
-		]
-		
-		return result
-	}
+
 	
 	/**
 	 * find all types in a package fragment recursively.
@@ -376,31 +360,11 @@ public class JarModelResource extends ResourceImpl {
 				ICompilationUnit: result.addAll(element.types)
 			}
 		]
-		
+				
 		return result
 	}
 
-	/**
-	 * check is a the child is subtype of the parent.
-	 */
-	private def boolean isSubClassOf(Collection<IType> types, IType child, IType iface) {
-		if (child == null)
-			return false
-		else if (child.equals(iface))
-			return true
-		else {
-			try {
-				if (!child.anonymous) {
-					val hierarchy = child.newSupertypeHierarchy(null)
-					return hierarchy.getAllSuperInterfaces(child).exists[it.equals(iface)]
-				} else
-					return false
-			} catch(JavaModelException ex) {
-				System.out.println("Class " + child.fullyQualifiedName + " " + child.exists + " " + child.resolved)
-				return false
-			}
-		}
-	}
+
 	
 	
 }

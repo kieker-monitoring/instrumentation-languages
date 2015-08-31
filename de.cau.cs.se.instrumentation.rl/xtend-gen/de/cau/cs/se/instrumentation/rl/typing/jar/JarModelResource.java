@@ -51,11 +51,9 @@ import org.eclipse.jdt.core.IField;
 import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.IPackageFragment;
-import org.eclipse.jdt.core.IPackageFragmentRoot;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.ITypeHierarchy;
 import org.eclipse.jdt.core.JavaCore;
-import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.xtext.xbase.lib.CollectionExtensions;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
@@ -211,9 +209,34 @@ public class JarModelResource extends ResourceImpl {
         {
           final IJavaProject javaProject = JavaCore.create(this.project);
           final IType iface = javaProject.findType("kieker.common.record.IMonitoringRecord");
-          final Collection<IType> types = this.findSubTypesOf(javaProject, iface);
+          final ITypeHierarchy hierarchy = iface.newTypeHierarchy(javaProject, null);
+          IType[] _allTypes = hierarchy.getAllTypes();
+          final Function1<IType, Boolean> _function = (IType it) -> {
+            boolean _xblockexpression_1 = false;
+            {
+              final String name = it.getFullyQualifiedName();
+              boolean _or = false;
+              boolean _or_1 = false;
+              boolean _equals = name.equals("java.io.Serializable");
+              if (_equals) {
+                _or_1 = true;
+              } else {
+                boolean _equals_1 = name.equals("java.lang.Comparable");
+                _or_1 = _equals_1;
+              }
+              if (_or_1) {
+                _or = true;
+              } else {
+                boolean _equals_2 = name.equals("java.lang.Object");
+                _or = _equals_2;
+              }
+              _xblockexpression_1 = (!_or);
+            }
+            return Boolean.valueOf(_xblockexpression_1);
+          };
+          final Iterable<IType> types = IterableExtensions.<IType>filter(((Iterable<IType>)Conversions.doWrapArray(_allTypes)), _function);
           final HashMap<String, Model> models = new HashMap<String, Model>();
-          final Consumer<IType> _function = (IType type) -> {
+          final Consumer<IType> _function_1 = (IType type) -> {
             IPackageFragment _packageFragment = type.getPackageFragment();
             String _elementName = _packageFragment.getElementName();
             Model _get = models.get(_elementName);
@@ -225,9 +248,9 @@ public class JarModelResource extends ResourceImpl {
               models.put(_elementName_1, _createModel);
             }
           };
-          types.forEach(_function);
+          types.forEach(_function_1);
           final HashMap<IType, Type> typeMap = new HashMap<IType, Type>();
-          final Consumer<IType> _function_1 = (IType type) -> {
+          final Consumer<IType> _function_2 = (IType type) -> {
             final Type modelType = this.createType(type);
             IPackageFragment _packageFragment = type.getPackageFragment();
             String _elementName = _packageFragment.getElementName();
@@ -237,11 +260,11 @@ public class JarModelResource extends ResourceImpl {
             typeMap.put(type, modelType);
             this.modelTypes.add(modelType);
           };
-          types.forEach(_function_1);
-          final Consumer<IType> _function_2 = (IType type) -> {
+          types.forEach(_function_2);
+          final Consumer<IType> _function_3 = (IType type) -> {
             this.linkType(type, typeMap);
           };
-          types.forEach(_function_2);
+          types.forEach(_function_3);
           boolean _xifexpression_1 = false;
           Collection<Model> _values = models.values();
           boolean _notEquals = (!Objects.equal(_values, null));
@@ -577,42 +600,6 @@ public class JarModelResource extends ResourceImpl {
   }
   
   /**
-   * Find all classes which are subtypes of the given interface.
-   */
-  private Collection<IType> findSubTypesOf(final IJavaProject project, final IType iface) {
-    try {
-      final ArrayList<IType> types = new ArrayList<IType>();
-      IPackageFragmentRoot[] _allPackageFragmentRoots = project.getAllPackageFragmentRoots();
-      final Consumer<IPackageFragmentRoot> _function = (IPackageFragmentRoot root) -> {
-        try {
-          IJavaElement[] _children = root.getChildren();
-          final Consumer<IJavaElement> _function_1 = (IJavaElement element) -> {
-            if ((element instanceof IPackageFragment)) {
-              Collection<IType> _findAllTypes = this.findAllTypes(((IPackageFragment) element));
-              types.addAll(_findAllTypes);
-            }
-          };
-          ((List<IJavaElement>)Conversions.doWrapArray(_children)).forEach(_function_1);
-        } catch (Throwable _e) {
-          throw Exceptions.sneakyThrow(_e);
-        }
-      };
-      ((List<IPackageFragmentRoot>)Conversions.doWrapArray(_allPackageFragmentRoots)).forEach(_function);
-      final ArrayList<IType> result = new ArrayList<IType>();
-      final Consumer<IType> _function_1 = (IType type) -> {
-        boolean _isSubClassOf = this.isSubClassOf(types, type, iface);
-        if (_isSubClassOf) {
-          result.add(type);
-        }
-      };
-      types.forEach(_function_1);
-      return result;
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
-  }
-  
-  /**
    * find all types in a package fragment recursively.
    */
   private Collection<IType> findAllTypes(final IPackageFragment fragment) {
@@ -655,52 +642,6 @@ public class JarModelResource extends ResourceImpl {
       return result;
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
-    }
-  }
-  
-  /**
-   * check is a the child is subtype of the parent.
-   */
-  private boolean isSubClassOf(final Collection<IType> types, final IType child, final IType iface) {
-    boolean _equals = Objects.equal(child, null);
-    if (_equals) {
-      return false;
-    } else {
-      boolean _equals_1 = child.equals(iface);
-      if (_equals_1) {
-        return true;
-      } else {
-        try {
-          boolean _isAnonymous = child.isAnonymous();
-          boolean _not = (!_isAnonymous);
-          if (_not) {
-            final ITypeHierarchy hierarchy = child.newSupertypeHierarchy(null);
-            IType[] _allSuperInterfaces = hierarchy.getAllSuperInterfaces(child);
-            final Function1<IType, Boolean> _function = (IType it) -> {
-              return Boolean.valueOf(it.equals(iface));
-            };
-            return IterableExtensions.<IType>exists(((Iterable<IType>)Conversions.doWrapArray(_allSuperInterfaces)), _function);
-          } else {
-            return false;
-          }
-        } catch (final Throwable _t) {
-          if (_t instanceof JavaModelException) {
-            final JavaModelException ex = (JavaModelException)_t;
-            String _fullyQualifiedName = child.getFullyQualifiedName();
-            String _plus = ("Class " + _fullyQualifiedName);
-            String _plus_1 = (_plus + " ");
-            boolean _exists = child.exists();
-            String _plus_2 = (_plus_1 + Boolean.valueOf(_exists));
-            String _plus_3 = (_plus_2 + " ");
-            boolean _isResolved = child.isResolved();
-            String _plus_4 = (_plus_3 + Boolean.valueOf(_isResolved));
-            System.out.println(_plus_4);
-            return false;
-          } else {
-            throw Exceptions.sneakyThrow(_t);
-          }
-        }
-      }
     }
   }
 }
