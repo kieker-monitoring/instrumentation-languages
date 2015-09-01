@@ -194,6 +194,19 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 					«allDataProperties.map[property | createPropertyArrayEntry(property)].join(',\n')»
 				};
 			}
+
+			/**
+			 * {@inheritDoc}
+			 */
+			@Override
+			public void registerStrings(final IRegistry<String> stringRegistry) {	// NOPMD (generated code)
+				«allDataProperties.map[
+					val classifier = PropertyEvaluation.findType(it)
+					if (classifier.class_.name == 'string') {
+						'''stringRegistry.get(«buildPropertyReadAccessorName(it, classifier)»);'''
+					}
+				].filterNull.join('\n')»
+			}
 		
 			/**
 			 * {@inheritDoc}
@@ -428,7 +441,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 				«createForLoopForSerialization(sizes,0,property)»
 			'''
 		} else {
-			createValueStoreForSerialization(sizes,property)
+			createValueStoreForSerialization(property)
 		}
 	}
 	
@@ -452,25 +465,33 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 				«if (sizes.size-1 > depth)
 					createForLoopForSerialization(sizes,depth+1,property)
 				else
-					createValueStoreForSerialization(sizes,property)»
+					createValueStoreForSerialization(property)»
 		'''
 	}
 	
-	private def createValueStoreForSerialization(EList<ArraySize> sizes, Property property) {
-		switch (PropertyEvaluation::findType(property).class_.name) {
-			case 'string' : '''buffer.putInt(stringRegistry.get(this.get«property.name.toFirstUpper»()«sizes.determineArrayAccessCode»));'''
-			case 'byte' : '''buffer.put((byte)this.get«property.name.toFirstUpper»()«sizes.determineArrayAccessCode»);'''
-			case 'short' : '''buffer.putShort(this.get«property.name.toFirstUpper»()«sizes.determineArrayAccessCode»);'''
-			case 'int' : '''buffer.putInt(this.get«property.name.toFirstUpper»()«sizes.determineArrayAccessCode»);'''
-			case 'long' : '''buffer.putLong(this.get«property.name.toFirstUpper»()«sizes.determineArrayAccessCode»);'''
-			case 'float' : '''buffer.putFloat(this.get«property.name.toFirstUpper»()«sizes.determineArrayAccessCode»);'''
-			case 'double' : '''buffer.putDouble(this.get«property.name.toFirstUpper»()«sizes.determineArrayAccessCode»);'''
-			case 'char' : '''buffer.putChar(this.get«property.name.toFirstUpper»()«sizes.determineArrayAccessCode»);'''
-			case 'boolean' : '''buffer.put((byte)(this.is«property.name.toFirstUpper»()«sizes.determineArrayAccessCode»?1:0));'''
+	private def createValueStoreForSerialization(Property property) {
+		val classifier = PropertyEvaluation::findType(property)
+		val getterName = buildPropertyReadAccessorName(property, classifier)
+		switch (classifier.class_.name) {
+			case 'string' : '''buffer.putInt(stringRegistry.get(«getterName»));'''
+			case 'byte' : '''buffer.put((byte)«getterName»);'''
+			case 'short' : '''buffer.putShort(«getterName»);'''
+			case 'int' : '''buffer.putInt(«getterName»);'''
+			case 'long' : '''buffer.putLong(«getterName»);'''
+			case 'float' : '''buffer.putFloat(«getterName»);'''
+			case 'double' : '''buffer.putDouble(«getterName»);'''
+			case 'char' : '''buffer.putChar(«getterName»);'''
+			case 'boolean' : '''buffer.put((byte)(«getterName»?1:0));'''
 		}
 	}
 	
-	
+	/**
+	 * @return "this" + get/is + "capitalized property name" + "()" + "array access code"
+	 */
+	private def buildPropertyReadAccessorName(Property property, Classifier classifier) {
+		val sizes = classifier.sizes
+		'''this.«property.createGetterName»()«sizes.determineArrayAccessCode»'''
+	}
 	
 	/**
 	 * Creates a getter for a given property.
