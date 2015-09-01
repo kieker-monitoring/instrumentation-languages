@@ -11,12 +11,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery#getNode <em>Node</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery#getSpecialization <em>Specialization</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery#getComposition <em>Composition</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getLocationQuery()
  * @model

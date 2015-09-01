@@ -25,12 +25,12 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ApplicationModelImpl#getUsePackages <em>Use Packages</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ApplicationModelImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ApplicationModelImpl#getModel <em>Model</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

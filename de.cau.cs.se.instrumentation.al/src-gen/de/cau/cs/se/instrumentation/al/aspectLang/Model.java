@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Model#getName <em>Name</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Model#getMetamodels <em>Metamodels</em>}</li>
@@ -22,7 +23,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Model#getPointcuts <em>Pointcuts</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Model#getAspects <em>Aspects</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getModel()
  * @model

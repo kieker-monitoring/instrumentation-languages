@@ -11,10 +11,10 @@ import de.cau.cs.se.instrumantation.model.structure.Container;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode#getContainer <em>Container</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getContainerNode()
  * @model

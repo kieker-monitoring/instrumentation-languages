@@ -29,12 +29,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AdviceImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AdviceImpl#getParameterDeclarations <em>Parameter Declarations</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AdviceImpl#getCollectors <em>Collectors</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

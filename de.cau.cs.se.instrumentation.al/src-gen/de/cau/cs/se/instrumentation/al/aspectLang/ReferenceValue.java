@@ -10,11 +10,11 @@ package de.cau.cs.se.instrumentation.al.aspectLang;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.ReferenceValue#getQuery <em>Query</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.ReferenceValue#getParameter <em>Parameter</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getReferenceValue()
  * @model

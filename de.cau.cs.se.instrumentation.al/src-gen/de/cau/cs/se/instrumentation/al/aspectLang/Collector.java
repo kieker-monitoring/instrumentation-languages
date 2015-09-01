@@ -15,12 +15,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Collector#getInsertionPoint <em>Insertion Point</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Collector#getType <em>Type</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Collector#getInitializations <em>Initializations</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getCollector()
  * @model

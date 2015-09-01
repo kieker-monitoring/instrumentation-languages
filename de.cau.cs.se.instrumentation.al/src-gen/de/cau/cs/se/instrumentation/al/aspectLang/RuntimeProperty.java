@@ -10,10 +10,10 @@ package de.cau.cs.se.instrumentation.al.aspectLang;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.RuntimeProperty#getReference <em>Reference</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getRuntimeProperty()
  * @model

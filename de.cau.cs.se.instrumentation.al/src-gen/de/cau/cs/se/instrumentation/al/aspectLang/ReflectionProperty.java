@@ -10,10 +10,10 @@ package de.cau.cs.se.instrumentation.al.aspectLang;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.ReflectionProperty#getFunction <em>Function</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getReflectionProperty()
  * @model

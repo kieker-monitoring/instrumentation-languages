@@ -15,12 +15,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery#getModifier <em>Modifier</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery#getType <em>Type</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery#getParameter <em>Parameter</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getParameterQuery()
  * @model

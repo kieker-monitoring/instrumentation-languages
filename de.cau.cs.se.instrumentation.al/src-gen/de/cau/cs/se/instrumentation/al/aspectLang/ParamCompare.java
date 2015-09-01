@@ -11,12 +11,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.ParamCompare#getLeft <em>Left</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.ParamCompare#getOperator <em>Operator</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.ParamCompare#getRight <em>Right</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getParamCompare()
  * @model

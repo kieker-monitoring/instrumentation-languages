@@ -31,12 +31,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.CollectorImpl#getInsertionPoint <em>Insertion Point</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.CollectorImpl#getType <em>Type</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.CollectorImpl#getInitializations <em>Initializations</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

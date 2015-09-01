@@ -29,11 +29,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.CompositionQueryImpl#getModifier <em>Modifier</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.CompositionQueryImpl#getSubQueries <em>Sub Queries</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -32,13 +32,13 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.MethodQueryImpl#getModifier <em>Modifier</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.MethodQueryImpl#getReturnType <em>Return Type</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.MethodQueryImpl#getMethodReference <em>Method Reference</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.MethodQueryImpl#getParameterQueries <em>Parameter Queries</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
