@@ -37,9 +37,9 @@ import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation;
 
 /**
  * Reconstructed (more or less) the algorithm behind the serializeVersionUID computation.
- * 
+ *
  * @author Reiner Jung
- * 
+ *
  */
 public final class ComputeUID {
 
@@ -90,12 +90,12 @@ public final class ComputeUID {
 
 	/**
 	 * Returns JVM type signature for given list of parameters and return type.
-	 * 
+	 *
 	 * @param paramTypes
 	 *            list of parameter types.
 	 * @param retType
 	 *            return type of a method.
-	 * 
+	 *
 	 * @returns a method signature as result
 	 */
 	private static String getMethodSignature(final Classifier[] paramTypes,
@@ -112,7 +112,7 @@ public final class ComputeUID {
 
 	/**
 	 * Computes the default serial version UID value for the given class.
-	 * 
+	 *
 	 * @param type
 	 *            record type
 	 */
@@ -243,8 +243,7 @@ public final class ComputeUID {
 				public int compare(final Property o1, final Property o2) {
 					int comp = o1.getName().compareTo(o2.getName());
 					if (comp == 0) {
-						comp = ComputeUID.getClassSignature(o1.getType()).
-								compareTo(ComputeUID.getClassSignature(o2.getType()));
+						comp = ComputeUID.getClassSignature(o1.getType()).compareTo(ComputeUID.getClassSignature(o2.getType()));
 					}
 					return comp;
 				}
@@ -308,19 +307,6 @@ public final class ComputeUID {
 			this.name = cons.getName();
 			this.signature = ComputeUID.getMethodSignature(cons.getSignature(), null);
 		}
-
-		public Object getMember() {
-			return this.member;
-		}
-
-		public String getName() {
-			return this.name;
-		}
-
-		public String getSignature() {
-			return this.signature;
-		}
-
 	}
 
 }

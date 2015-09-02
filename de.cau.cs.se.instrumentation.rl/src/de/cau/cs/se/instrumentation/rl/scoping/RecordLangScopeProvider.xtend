@@ -3,28 +3,24 @@
  */
 package de.cau.cs.se.instrumentation.rl.scoping
 
+import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
+import de.cau.cs.se.instrumentation.rl.recordLang.ForeignKey
+import de.cau.cs.se.instrumentation.rl.recordLang.Package
+import de.cau.cs.se.instrumentation.rl.recordLang.Property
+import de.cau.cs.se.instrumentation.rl.recordLang.ReferenceProperty
+import de.cau.cs.se.instrumentation.rl.recordLang.Type
+import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation
+import java.util.Collection
+import java.util.List
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EGenericType
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.xtext.EcoreUtil2
-import org.eclipse.xtext.resource.IEObjectDescription
 import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.scoping.Scopes
-import org.eclipse.xtext.scoping.impl.FilteringScope
-
-import com.google.common.base.Predicate
-
-import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
-import de.cau.cs.se.instrumentation.rl.recordLang.Package;
-import de.cau.cs.se.instrumentation.rl.recordLang.Property;
-import de.cau.cs.se.instrumentation.rl.recordLang.ReferenceProperty;
-import java.util.Collection
-import java.util.List
-import de.cau.cs.se.instrumentation.rl.recordLang.Type
-import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation
-import de.cau.cs.se.instrumentation.rl.recordLang.ForeignKey
+import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider
 
 /**
  * This class contains custom scoping description.
@@ -33,7 +29,7 @@ import de.cau.cs.se.instrumentation.rl.recordLang.ForeignKey
  * on how and when to use it 
  *
  */
-class RecordLangScopeProvider extends org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider {
+class RecordLangScopeProvider extends AbstractDeclarativeScopeProvider {
 
 	/**
 	 * Find scope for the package property in the Package rule.
