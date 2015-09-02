@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.QualifiedName;
@@ -65,6 +67,7 @@ public abstract class AbstractFieldEditorOverlayPage extends FieldEditorPreferen
 
 	// Stores owning element of properties
 	private IAdaptable element;
+
 
 	// Additional buttons for property pages
 	private Button useWorkspaceSettingsButton;
@@ -172,7 +175,7 @@ public abstract class AbstractFieldEditorOverlayPage extends FieldEditorPreferen
 			try {
 				this.overlayStore =
 						new PropertyStore(
-								((IJavaElement) this.getElement()).getCorrespondingResource(),
+								this.getResource(),
 								super.getPreferenceStore(),
 								this.pageId);
 			} catch (final JavaModelException e) {
@@ -227,9 +230,7 @@ public abstract class AbstractFieldEditorOverlayPage extends FieldEditorPreferen
 		});
 		// Set workspace/project radio buttons
 		try {
-			final String use =
-					((IJavaElement) this.getElement()).getCorrespondingResource().getPersistentProperty(
-							new QualifiedName(this.pageId, USEPROJECTSETTINGS));
+			final String use = this.getResource().getPersistentProperty(new QualifiedName(this.pageId, USEPROJECTSETTINGS));
 			if (TRUE.equals(use)) {
 				this.useProjectSettingsButton.setSelection(true);
 				this.configureButton.setEnabled(false);
@@ -309,13 +310,30 @@ public abstract class AbstractFieldEditorOverlayPage extends FieldEditorPreferen
 			// Save state of radiobuttons in project properties
 			try {
 				final String value = (this.useProjectSettingsButton.getSelection()) ? TRUE : FALSE; // NOCS
-				((IJavaElement) this.getElement()).getCorrespondingResource().setPersistentProperty(
+				this.getResource().setPersistentProperty(
 						new QualifiedName(this.pageId, USEPROJECTSETTINGS),
 						value);
 			} catch (final CoreException e) {
 			}
 		}
 		return result;
+	}
+
+	/**
+	 * Determine the correct resource for a given IAdaptable.
+	 *
+	 * @return a resource for the IAdaptable or null is no mapping exists.
+	 * @throws JavaModelException
+	 */
+	private IResource getResource() throws JavaModelException {
+		if (this.element instanceof IJavaElement) {
+			return ((IJavaElement) this.element).getCorrespondingResource();
+		} else if (this.element instanceof IProject) {
+			return (IProject) this.element;
+		} else {
+			System.out.println("Element type is " + this.element.getClass().getCanonicalName());
+			return null;
+		}
 	}
 
 	/**

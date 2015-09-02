@@ -591,7 +591,7 @@ public class JarModelResource extends ResourceImpl {
         EDataType _eType_7 = PrimitiveTypes.EBOOLEAN.getEType();
         classifier.setClass(_eType_7);
         break;
-      case "Ljava.lang.String":
+      case "Ljava.lang.String;":
         EDataType _eType_8 = PrimitiveTypes.ESTRING.getEType();
         classifier.setClass(_eType_8);
         break;

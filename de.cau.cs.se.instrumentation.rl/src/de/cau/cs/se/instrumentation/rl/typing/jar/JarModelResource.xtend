@@ -337,8 +337,9 @@ public class JarModelResource extends ResourceImpl {
 			case "J": classifier.^class = PrimitiveTypes.ELONG.EType
 			case "S": classifier.^class = PrimitiveTypes.ESHORT.EType
 			case "Z": classifier.^class = PrimitiveTypes.EBOOLEAN.EType
-			case "Ljava.lang.String": classifier.^class = PrimitiveTypes.ESTRING.EType
+			case "Ljava.lang.String;": classifier.^class = PrimitiveTypes.ESTRING.EType
 		}
+		// TODO support other complex types via the complex type mechanism
 		
 		return classifier
 	}

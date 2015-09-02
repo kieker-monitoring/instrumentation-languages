@@ -708,15 +708,60 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
           _builder.append("@Override");
           _builder.newLine();
           _builder.append("\t");
+          _builder.append("public void registerStrings(final IRegistry<String> stringRegistry) {\t// NOPMD (generated code)");
+          _builder.newLine();
+          _builder.append("\t\t");
+          final Function1<Property, String> _function_13 = (Property it) -> {
+            String _xblockexpression_1 = null;
+            {
+              final Classifier classifier = PropertyEvaluation.findType(it);
+              String _xifexpression_9 = null;
+              EClassifier _class_ = classifier.getClass_();
+              String _name_6 = _class_.getName();
+              boolean _equals_6 = Objects.equal(_name_6, "string");
+              if (_equals_6) {
+                StringConcatenation _builder_1 = new StringConcatenation();
+                _builder_1.append("stringRegistry.get(");
+                CharSequence _buildPropertyReadAccessorName = this.buildPropertyReadAccessorName(it, classifier);
+                _builder_1.append(_buildPropertyReadAccessorName, "");
+                _builder_1.append(");");
+                _xifexpression_9 = _builder_1.toString();
+              }
+              _xblockexpression_1 = _xifexpression_9;
+            }
+            return _xblockexpression_1;
+          };
+          List<String> _map_12 = ListExtensions.<Property, String>map(allDataProperties, _function_13);
+          Iterable<String> _filterNull = IterableExtensions.<String>filterNull(_map_12);
+          String _join_10 = IterableExtensions.join(_filterNull, "\n");
+          _builder.append(_join_10, "\t\t");
+          _builder.newLineIfNotEmpty();
+          _builder.append("\t");
+          _builder.append("}");
+          _builder.newLine();
+          _builder.newLine();
+          _builder.append("\t");
+          _builder.append("/**");
+          _builder.newLine();
+          _builder.append("\t ");
+          _builder.append("* {@inheritDoc}");
+          _builder.newLine();
+          _builder.append("\t ");
+          _builder.append("*/");
+          _builder.newLine();
+          _builder.append("\t");
+          _builder.append("@Override");
+          _builder.newLine();
+          _builder.append("\t");
           _builder.append("public void writeBytes(final ByteBuffer buffer, final IRegistry<String> stringRegistry) throws BufferOverflowException {");
           _builder.newLine();
           _builder.append("\t\t");
-          final Function1<Property, CharSequence> _function_13 = (Property property) -> {
+          final Function1<Property, CharSequence> _function_14 = (Property property) -> {
             return this.createPropertyBinarySerialization(property);
           };
-          List<CharSequence> _map_12 = ListExtensions.<Property, CharSequence>map(allDataProperties, _function_13);
-          String _join_10 = IterableExtensions.join(_map_12, "\n");
-          _builder.append(_join_10, "\t\t");
+          List<CharSequence> _map_13 = ListExtensions.<Property, CharSequence>map(allDataProperties, _function_14);
+          String _join_11 = IterableExtensions.join(_map_13, "\n");
+          _builder.append(_join_11, "\t\t");
           _builder.newLineIfNotEmpty();
           _builder.append("\t");
           _builder.append("}");
@@ -831,12 +876,12 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.newLine();
       _builder.append("\t");
       List<Property> _collectAllGetterDeclarationProperties = this.collectAllGetterDeclarationProperties(type);
-      final Function1<Property, CharSequence> _function_14 = (Property property) -> {
+      final Function1<Property, CharSequence> _function_15 = (Property property) -> {
         return this.createPropertyGetter(property);
       };
-      List<CharSequence> _map_13 = ListExtensions.<Property, CharSequence>map(_collectAllGetterDeclarationProperties, _function_14);
-      String _join_11 = IterableExtensions.join(_map_13);
-      _builder.append(_join_11, "\t");
+      List<CharSequence> _map_14 = ListExtensions.<Property, CharSequence>map(_collectAllGetterDeclarationProperties, _function_15);
+      String _join_12 = IterableExtensions.join(_map_14);
+      _builder.append(_join_12, "\t");
       _builder.newLineIfNotEmpty();
       _builder.append("}");
       _builder.newLine();
@@ -1328,7 +1373,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         _builder.newLineIfNotEmpty();
         _xifexpression = _builder;
       } else {
-        _xifexpression = this.createValueStoreForSerialization(sizes, property);
+        _xifexpression = this.createValueStoreForSerialization(property);
       }
       _xblockexpression = _xifexpression;
     }
@@ -1383,129 +1428,108 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     if (_greaterThan_1) {
       _xifexpression_1 = this.createForLoopForSerialization(sizes, (depth + 1), property);
     } else {
-      _xifexpression_1 = this.createValueStoreForSerialization(sizes, property);
+      _xifexpression_1 = this.createValueStoreForSerialization(property);
     }
     _builder.append(_xifexpression_1, "\t");
     _builder.newLineIfNotEmpty();
     return _builder;
   }
   
-  private CharSequence createValueStoreForSerialization(final EList<ArraySize> sizes, final Property property) {
-    CharSequence _switchResult = null;
-    Classifier _findType = PropertyEvaluation.findType(property);
-    EClassifier _class_ = _findType.getClass_();
-    String _name = _class_.getName();
-    switch (_name) {
-      case "string":
-        StringConcatenation _builder = new StringConcatenation();
-        _builder.append("buffer.putInt(stringRegistry.get(this.get");
-        String _name_1 = property.getName();
-        String _firstUpper = StringExtensions.toFirstUpper(_name_1);
-        _builder.append(_firstUpper, "");
-        _builder.append("()");
-        CharSequence _determineArrayAccessCode = this.determineArrayAccessCode(sizes);
-        _builder.append(_determineArrayAccessCode, "");
-        _builder.append("));");
-        _switchResult = _builder;
-        break;
-      case "byte":
-        StringConcatenation _builder_1 = new StringConcatenation();
-        _builder_1.append("buffer.put((byte)this.get");
-        String _name_2 = property.getName();
-        String _firstUpper_1 = StringExtensions.toFirstUpper(_name_2);
-        _builder_1.append(_firstUpper_1, "");
-        _builder_1.append("()");
-        CharSequence _determineArrayAccessCode_1 = this.determineArrayAccessCode(sizes);
-        _builder_1.append(_determineArrayAccessCode_1, "");
-        _builder_1.append(");");
-        _switchResult = _builder_1;
-        break;
-      case "short":
-        StringConcatenation _builder_2 = new StringConcatenation();
-        _builder_2.append("buffer.putShort(this.get");
-        String _name_3 = property.getName();
-        String _firstUpper_2 = StringExtensions.toFirstUpper(_name_3);
-        _builder_2.append(_firstUpper_2, "");
-        _builder_2.append("()");
-        CharSequence _determineArrayAccessCode_2 = this.determineArrayAccessCode(sizes);
-        _builder_2.append(_determineArrayAccessCode_2, "");
-        _builder_2.append(");");
-        _switchResult = _builder_2;
-        break;
-      case "int":
-        StringConcatenation _builder_3 = new StringConcatenation();
-        _builder_3.append("buffer.putInt(this.get");
-        String _name_4 = property.getName();
-        String _firstUpper_3 = StringExtensions.toFirstUpper(_name_4);
-        _builder_3.append(_firstUpper_3, "");
-        _builder_3.append("()");
-        CharSequence _determineArrayAccessCode_3 = this.determineArrayAccessCode(sizes);
-        _builder_3.append(_determineArrayAccessCode_3, "");
-        _builder_3.append(");");
-        _switchResult = _builder_3;
-        break;
-      case "long":
-        StringConcatenation _builder_4 = new StringConcatenation();
-        _builder_4.append("buffer.putLong(this.get");
-        String _name_5 = property.getName();
-        String _firstUpper_4 = StringExtensions.toFirstUpper(_name_5);
-        _builder_4.append(_firstUpper_4, "");
-        _builder_4.append("()");
-        CharSequence _determineArrayAccessCode_4 = this.determineArrayAccessCode(sizes);
-        _builder_4.append(_determineArrayAccessCode_4, "");
-        _builder_4.append(");");
-        _switchResult = _builder_4;
-        break;
-      case "float":
-        StringConcatenation _builder_5 = new StringConcatenation();
-        _builder_5.append("buffer.putFloat(this.get");
-        String _name_6 = property.getName();
-        String _firstUpper_5 = StringExtensions.toFirstUpper(_name_6);
-        _builder_5.append(_firstUpper_5, "");
-        _builder_5.append("()");
-        CharSequence _determineArrayAccessCode_5 = this.determineArrayAccessCode(sizes);
-        _builder_5.append(_determineArrayAccessCode_5, "");
-        _builder_5.append(");");
-        _switchResult = _builder_5;
-        break;
-      case "double":
-        StringConcatenation _builder_6 = new StringConcatenation();
-        _builder_6.append("buffer.putDouble(this.get");
-        String _name_7 = property.getName();
-        String _firstUpper_6 = StringExtensions.toFirstUpper(_name_7);
-        _builder_6.append(_firstUpper_6, "");
-        _builder_6.append("()");
-        CharSequence _determineArrayAccessCode_6 = this.determineArrayAccessCode(sizes);
-        _builder_6.append(_determineArrayAccessCode_6, "");
-        _builder_6.append(");");
-        _switchResult = _builder_6;
-        break;
-      case "char":
-        StringConcatenation _builder_7 = new StringConcatenation();
-        _builder_7.append("buffer.putChar(this.get");
-        String _name_8 = property.getName();
-        String _firstUpper_7 = StringExtensions.toFirstUpper(_name_8);
-        _builder_7.append(_firstUpper_7, "");
-        _builder_7.append("()");
-        CharSequence _determineArrayAccessCode_7 = this.determineArrayAccessCode(sizes);
-        _builder_7.append(_determineArrayAccessCode_7, "");
-        _builder_7.append(");");
-        _switchResult = _builder_7;
-        break;
-      case "boolean":
-        StringConcatenation _builder_8 = new StringConcatenation();
-        _builder_8.append("buffer.put((byte)(this.is");
-        String _name_9 = property.getName();
-        String _firstUpper_8 = StringExtensions.toFirstUpper(_name_9);
-        _builder_8.append(_firstUpper_8, "");
-        _builder_8.append("()");
-        CharSequence _determineArrayAccessCode_8 = this.determineArrayAccessCode(sizes);
-        _builder_8.append(_determineArrayAccessCode_8, "");
-        _builder_8.append("?1:0));");
-        _switchResult = _builder_8;
-        break;
+  private CharSequence createValueStoreForSerialization(final Property property) {
+    CharSequence _xblockexpression = null;
+    {
+      final Classifier classifier = PropertyEvaluation.findType(property);
+      final CharSequence getterName = this.buildPropertyReadAccessorName(property, classifier);
+      CharSequence _switchResult = null;
+      EClassifier _class_ = classifier.getClass_();
+      String _name = _class_.getName();
+      switch (_name) {
+        case "string":
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("buffer.putInt(stringRegistry.get(");
+          _builder.append(getterName, "");
+          _builder.append("));");
+          _switchResult = _builder;
+          break;
+        case "byte":
+          StringConcatenation _builder_1 = new StringConcatenation();
+          _builder_1.append("buffer.put((byte)");
+          _builder_1.append(getterName, "");
+          _builder_1.append(");");
+          _switchResult = _builder_1;
+          break;
+        case "short":
+          StringConcatenation _builder_2 = new StringConcatenation();
+          _builder_2.append("buffer.putShort(");
+          _builder_2.append(getterName, "");
+          _builder_2.append(");");
+          _switchResult = _builder_2;
+          break;
+        case "int":
+          StringConcatenation _builder_3 = new StringConcatenation();
+          _builder_3.append("buffer.putInt(");
+          _builder_3.append(getterName, "");
+          _builder_3.append(");");
+          _switchResult = _builder_3;
+          break;
+        case "long":
+          StringConcatenation _builder_4 = new StringConcatenation();
+          _builder_4.append("buffer.putLong(");
+          _builder_4.append(getterName, "");
+          _builder_4.append(");");
+          _switchResult = _builder_4;
+          break;
+        case "float":
+          StringConcatenation _builder_5 = new StringConcatenation();
+          _builder_5.append("buffer.putFloat(");
+          _builder_5.append(getterName, "");
+          _builder_5.append(");");
+          _switchResult = _builder_5;
+          break;
+        case "double":
+          StringConcatenation _builder_6 = new StringConcatenation();
+          _builder_6.append("buffer.putDouble(");
+          _builder_6.append(getterName, "");
+          _builder_6.append(");");
+          _switchResult = _builder_6;
+          break;
+        case "char":
+          StringConcatenation _builder_7 = new StringConcatenation();
+          _builder_7.append("buffer.putChar(");
+          _builder_7.append(getterName, "");
+          _builder_7.append(");");
+          _switchResult = _builder_7;
+          break;
+        case "boolean":
+          StringConcatenation _builder_8 = new StringConcatenation();
+          _builder_8.append("buffer.put((byte)(");
+          _builder_8.append(getterName, "");
+          _builder_8.append("?1:0));");
+          _switchResult = _builder_8;
+          break;
+      }
+      _xblockexpression = _switchResult;
     }
-    return _switchResult;
+    return _xblockexpression;
+  }
+  
+  /**
+   * @return "this" + get/is + "capitalized property name" + "()" + "array access code"
+   */
+  private CharSequence buildPropertyReadAccessorName(final Property property, final Classifier classifier) {
+    CharSequence _xblockexpression = null;
+    {
+      final EList<ArraySize> sizes = classifier.getSizes();
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("this.");
+      CharSequence _createGetterName = this.createGetterName(property);
+      _builder.append(_createGetterName, "");
+      _builder.append("()");
+      CharSequence _determineArrayAccessCode = this.determineArrayAccessCode(sizes);
+      _builder.append(_determineArrayAccessCode, "");
+      _xblockexpression = _builder;
+    }
+    return _xblockexpression;
   }
   
   /**
