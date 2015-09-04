@@ -22,7 +22,6 @@ import com.google.inject.Singleton;
 
 import de.cau.cs.se.instrumentation.rl.ouput.config.RecordLangOutputConfigurationProvider;
 import de.cau.cs.se.instrumentation.rl.typing.TypeGlobalScopeProvider;
-import de.cau.cs.se.instrumentation.rl.typing.jar.JarModelGlobalScopeProvider;
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
@@ -39,8 +38,8 @@ public class RecordLangRuntimeModule extends de.cau.cs.se.instrumentation.rl.Abs
 	 */
 	@Override
 	public Class<? extends org.eclipse.xtext.scoping.IGlobalScopeProvider> bindIGlobalScopeProvider() {
-		return JarModelGlobalScopeProvider.class;
-		// return TypeGlobalScopeProvider.class;
+		// return JarModelGlobalScopeProvider.class;
+		return TypeGlobalScopeProvider.class;
 	}
 
 	/**
