@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/de.cau.cs.se.instrumentation.al.sdk_1.1.0.qualifier.jar" id="de.cau.cs.se.instrumentation.al.sdk" version="1.1.0.qualifier">
+   <feature url="features/de.cau.cs.se.instrumentation.al.sdk_1.1.0.jar" id="de.cau.cs.se.instrumentation.al.sdk" version="1.1.0">
       <category name="de.cau.cs.se.instrumentation"/>
    </feature>
-   <feature url="features/de.cau.cs.se.instrumentation.rl.sdk_1.1.0.qualifier.jar" id="de.cau.cs.se.instrumentation.rl.sdk" version="1.1.0.qualifier">
+   <feature url="features/de.cau.cs.se.instrumentation.rl.sdk_1.1.0.jar" id="de.cau.cs.se.instrumentation.rl.sdk" version="1.1.0">
       <category name="de.cau.cs.se.instrumentation"/>
    </feature>
    <category-def name="de.cau.cs.se.instrumentation" label="Instrumentation Languages"/>

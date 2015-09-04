@@ -6,7 +6,7 @@
 		<relativePath>../de.cau.cs.se.instrumentation.releng/pom.xml</relativePath>
 		<groupId>de.cau.cs.se.instrumentation</groupId>
 		<artifactId>parent</artifactId>
-		<version>1.1.0-SNAPSHOT</version>
+		<version>1.1.0</version>
 	</parent>
 
 	<artifactId>de.cau.cs.se.instrumentation.updatesite</artifactId>
@@ -17,7 +17,7 @@
 	<properties>
 		<!-- Relative path to the repo being uploaded -->
 		<repo.path>${project.build.directory}/repository/</repo.path>
-		<updatesite.path>file:///srv/vhosts/default/htdocs/eus/mdm/snapshot/</updatesite.path>
+		<updatesite.path>file:///srv/vhosts/default/htdocs/eus/mdm/release/1.1/</updatesite.path>
 		<!-- <updatesite.path>file:///home/rju/eus/snapshot/</updatesite.path> -->
 	</properties>
 
