@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>local</groupId>
+  <artifactId>org.eclipse.core.runtime</artifactId>
+  <versioning>
+    <release>3.11.0.v20150405-1723</release>
+    <versions>
+      <version>3.11.0.v20150405-1723</version>
+    </versions>
+    <lastUpdated>20150904142932</lastUpdated>
+  </versioning>
+</metadata>

@@ -80,7 +80,7 @@
 			<artifactId>org.eclipse.jdt.core</artifactId>
 			<version>3.11.0.v20150602-1242</version>
 		</dependency>
-
+		
 		<dependency>
 			<groupId>net.kieker-monitoring</groupId>
 			<artifactId>kieker</artifactId>
@@ -118,7 +118,13 @@
 			<artifactId>org.eclipse.core.resources</artifactId>
 			<version>3.10.0.v20150423-0755</version>
 		</dependency>
-
+		
+		<dependency>
+			<groupId>local</groupId>
+			<artifactId>org.eclipse.core.runtime</artifactId>
+			<version>3.11.0.v20150405-1723</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>de.cau.cs.se.instrumentation</groupId>
 			<artifactId>de.cau.cs.se.instrumentation.rl</artifactId>
