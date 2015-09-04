@@ -1,8 +1,8 @@
 #!/bin/bash
 
 echo "This script is kept only for documentation purposes until this info is transferred to documentation elsewhere"
-
-exit 1
+echo "Indeed must it be reused when the eclipse version changes. create a lib directory and put all necessary files in it."
+# exit 1
 
 for I in `ls lib` ; do
 	ARTIFACT=`echo $I | sed 's/^\(.*\)_.*$/\1/'`
