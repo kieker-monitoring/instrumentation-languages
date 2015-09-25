@@ -253,6 +253,20 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 			public void initFromBytes(final ByteBuffer buffer, final IRegistry<String> stringRegistry) throws BufferUnderflowException {
 				throw new UnsupportedOperationException();
 			}
+
+			/**
+			 * {@inheritDoc}
+			 */
+			@Override
+			protected boolean equalsInternal(final IMonitoringRecord record) {
+				final «type.name» castedRecord = («type.name») record;
+				«type.collectAllGetterDeclarationProperties.map[
+					'''
+					if (this.«it.resolveName» != castedRecord.«it.resolveName») return false;
+					'''
+				].join»
+				return super.equalsInternal(castedRecord);
+			}
 		
 			«type.collectAllGetterDeclarationProperties.map[property | createPropertyGetter(property)].join»
 		}
