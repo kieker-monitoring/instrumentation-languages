@@ -887,7 +887,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.append("@Override");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("protected boolean equalsInternal(final IMonitoringRecord record) {");
+      _builder.append("protected boolean equalsInternal(final kieker.common.record.IMonitoringRecord record) {");
       _builder.newLine();
       _builder.append("\t\t");
       _builder.append("final ");
@@ -901,19 +901,42 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.append("\t\t");
       List<Property> _collectAllGetterDeclarationProperties = this.collectAllGetterDeclarationProperties(type);
       final Function1<Property, String> _function_15 = (Property it) -> {
-        StringConcatenation _builder_1 = new StringConcatenation();
-        _builder_1.append("if (this.");
-        CharSequence _resolveName = this.resolveName(it);
-        _builder_1.append(_resolveName, "");
-        _builder_1.append(" != castedRecord.");
-        CharSequence _resolveName_1 = this.resolveName(it);
-        _builder_1.append(_resolveName_1, "");
-        _builder_1.append(") return false;");
-        _builder_1.newLineIfNotEmpty();
-        return _builder_1.toString();
+        String _xblockexpression_1 = null;
+        {
+          Classifier _findType = PropertyEvaluation.findType(it);
+          EClassifier _class_ = _findType.getClass_();
+          final String typeName = _class_.getName();
+          String _switchResult = null;
+          switch (typeName) {
+            case "string":
+              StringConcatenation _builder_1 = new StringConcatenation();
+              _builder_1.append("if (!this.");
+              CharSequence _resolveName = this.resolveName(it);
+              _builder_1.append(_resolveName, "");
+              _builder_1.append(".equals(castedRecord.");
+              CharSequence _resolveName_1 = this.resolveName(it);
+              _builder_1.append(_resolveName_1, "");
+              _builder_1.append(")) return false;");
+              _switchResult = _builder_1.toString();
+              break;
+            default:
+              StringConcatenation _builder_2 = new StringConcatenation();
+              _builder_2.append("if (this.");
+              CharSequence _resolveName_2 = this.resolveName(it);
+              _builder_2.append(_resolveName_2, "");
+              _builder_2.append(" != castedRecord.");
+              CharSequence _resolveName_3 = this.resolveName(it);
+              _builder_2.append(_resolveName_3, "");
+              _builder_2.append(") return false;");
+              _switchResult = _builder_2.toString();
+              break;
+          }
+          _xblockexpression_1 = _switchResult;
+        }
+        return _xblockexpression_1;
       };
       List<String> _map_14 = ListExtensions.<Property, String>map(_collectAllGetterDeclarationProperties, _function_15);
-      String _join_12 = IterableExtensions.join(_map_14);
+      String _join_12 = IterableExtensions.join(_map_14, "\n");
       _builder.append(_join_12, "\t\t");
       _builder.newLineIfNotEmpty();
       _builder.append("\t\t");

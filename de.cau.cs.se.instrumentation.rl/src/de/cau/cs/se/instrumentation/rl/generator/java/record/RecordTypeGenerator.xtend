@@ -258,13 +258,17 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 			 * {@inheritDoc}
 			 */
 			@Override
-			protected boolean equalsInternal(final IMonitoringRecord record) {
+			protected boolean equalsInternal(final kieker.common.record.IMonitoringRecord record) {
 				final «type.name» castedRecord = («type.name») record;
 				«type.collectAllGetterDeclarationProperties.map[
-					'''
-					if (this.«it.resolveName» != castedRecord.«it.resolveName») return false;
-					'''
-				].join»
+					val typeName = PropertyEvaluation::findType(it).class_.name
+					switch (typeName) {
+						case 'string': 
+							'''if (!this.«it.resolveName».equals(castedRecord.«it.resolveName»)) return false;'''
+						default: 
+							'''if (this.«it.resolveName» != castedRecord.«it.resolveName») return false;'''
+					}
+				].join('\n')»
 				return super.equalsInternal(castedRecord);
 			}
 		
