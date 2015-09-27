@@ -6,3 +6,8 @@
 /.InternalErrorException.java._trace
 /.IGeneratorLanguageExtension.java._trace
 /.AbstractTemplateTypeGenerator.java._trace
+/AbstractRecordTypeGenerator.java
+/AbstractTemplateTypeGenerator.java
+/AbstractTypeGenerator.java
+/InternalErrorException.java
+/RecordLangGenerator.java
