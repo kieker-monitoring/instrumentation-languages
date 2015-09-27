@@ -1,0 +1,8 @@
+de.cau.cs.se.instrumentation.rl;size of observed system;17.0
+de.cau.cs.se.instrumentation.rl;number of modules;28.0
+de.cau.cs.se.instrumentation.rl;number of nodes;208.0
+de.cau.cs.se.instrumentation.rl;number of edges;593.0
+de.cau.cs.se.instrumentation.rl;hypergraph size;1452.2773131922156
+de.cau.cs.se.instrumentation.rl;hypergraph complexity;4470.537941899433
+de.cau.cs.se.instrumentation.rl;inter module coupling;3462.611824631518
+de.cau.cs.se.instrumentation.rl;graph cohesion;0.013395215249247529
