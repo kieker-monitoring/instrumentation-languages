@@ -921,7 +921,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
               break;
             case "float":
               StringConcatenation _builder_2 = new StringConcatenation();
-              _builder_2.append("if (isEqual(this.");
+              _builder_2.append("if (isNotEqual(this.");
               CharSequence _resolveName_2 = this.resolveName(it);
               _builder_2.append(_resolveName_2, "");
               _builder_2.append(", castedRecord.");
@@ -932,7 +932,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
               break;
             case "double":
               StringConcatenation _builder_3 = new StringConcatenation();
-              _builder_3.append("if (isEqual(this.");
+              _builder_3.append("if (isNotEqual(this.");
               CharSequence _resolveName_4 = this.resolveName(it);
               _builder_3.append(_resolveName_4, "");
               _builder_3.append(", castedRecord.");
