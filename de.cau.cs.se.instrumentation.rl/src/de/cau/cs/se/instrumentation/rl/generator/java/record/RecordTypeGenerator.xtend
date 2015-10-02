@@ -265,6 +265,10 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 					switch (typeName) {
 						case 'string': 
 							'''if (!this.«it.resolveName».equals(castedRecord.«it.resolveName»)) return false;'''
+						case 'float': 
+							'''if (isEqual(this.«it.resolveName», castedRecord.«it.resolveName»)) return false;'''
+						case 'double': 
+							'''if (isEqual(this.«it.resolveName», castedRecord.«it.resolveName»)) return false;'''
 						default: 
 							'''if (this.«it.resolveName» != castedRecord.«it.resolveName») return false;'''
 					}

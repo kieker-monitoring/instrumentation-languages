@@ -919,16 +919,38 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
               _builder_1.append(")) return false;");
               _switchResult = _builder_1.toString();
               break;
-            default:
+            case "float":
               StringConcatenation _builder_2 = new StringConcatenation();
-              _builder_2.append("if (this.");
+              _builder_2.append("if (isEqual(this.");
               CharSequence _resolveName_2 = this.resolveName(it);
               _builder_2.append(_resolveName_2, "");
-              _builder_2.append(" != castedRecord.");
+              _builder_2.append(", castedRecord.");
               CharSequence _resolveName_3 = this.resolveName(it);
               _builder_2.append(_resolveName_3, "");
-              _builder_2.append(") return false;");
+              _builder_2.append(")) return false;");
               _switchResult = _builder_2.toString();
+              break;
+            case "double":
+              StringConcatenation _builder_3 = new StringConcatenation();
+              _builder_3.append("if (isEqual(this.");
+              CharSequence _resolveName_4 = this.resolveName(it);
+              _builder_3.append(_resolveName_4, "");
+              _builder_3.append(", castedRecord.");
+              CharSequence _resolveName_5 = this.resolveName(it);
+              _builder_3.append(_resolveName_5, "");
+              _builder_3.append(")) return false;");
+              _switchResult = _builder_3.toString();
+              break;
+            default:
+              StringConcatenation _builder_4 = new StringConcatenation();
+              _builder_4.append("if (this.");
+              CharSequence _resolveName_6 = this.resolveName(it);
+              _builder_4.append(_resolveName_6, "");
+              _builder_4.append(" != castedRecord.");
+              CharSequence _resolveName_7 = this.resolveName(it);
+              _builder_4.append(_resolveName_7, "");
+              _builder_4.append(") return false;");
+              _switchResult = _builder_4.toString();
               break;
           }
           _xblockexpression_1 = _switchResult;
