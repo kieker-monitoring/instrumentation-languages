@@ -146,6 +146,26 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 					«allDataProperties.createAllGetterValueAssertions(type)»
 				}
 			}
+			
+			@Test
+			public void testEquality() {
+				int i = 0;
+				«type.name» oneRecord = new «type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
+				i = 0;
+				«type.name» copiedRecord = new «type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
+				
+				Assert.assertEquals(oneRecord, copiedRecord);
+			}
+			
+			@Test
+			public void testUnequality() {
+				int i = 0;
+				«type.name» oneRecord = new «type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
+				i = 1;
+				«type.name» anotherRecord = new «type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
+				
+				Assert.assertNotEquals(oneRecord, anotherRecord);
+			}
 		}
 		'''
 	}

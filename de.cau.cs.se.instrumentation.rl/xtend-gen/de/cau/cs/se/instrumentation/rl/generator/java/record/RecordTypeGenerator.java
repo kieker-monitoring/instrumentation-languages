@@ -721,7 +721,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
               boolean _equals_6 = Objects.equal(_name_6, "string");
               if (_equals_6) {
                 StringConcatenation _builder_1 = new StringConcatenation();
-                _builder_1.append("stringRegistry.get(");
+                _builder_1.append("stringRegistry.get(this.");
                 CharSequence _buildPropertyReadAccessorName = this.buildPropertyReadAccessorName(it, classifier);
                 _builder_1.append(_buildPropertyReadAccessorName, "");
                 _builder_1.append(");");
@@ -887,7 +887,18 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.append("@Override");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("protected boolean equalsInternal(final kieker.common.record.IMonitoringRecord record) {");
+      _builder.append("public boolean equals(final Object obj) {");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("if (obj == null) return false;");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("if (obj == this) return true;");
+      _builder.newLine();
+      _builder.append("\t\t");
+      _builder.append("if (obj.getClass() != this.getClass()) return false;");
+      _builder.newLine();
+      _builder.append("\t\t");
       _builder.newLine();
       _builder.append("\t\t");
       _builder.append("final ");
@@ -896,59 +907,54 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.append(" castedRecord = (");
       String _name_7 = type.getName();
       _builder.append(_name_7, "\t\t");
-      _builder.append(") record;");
+      _builder.append(") obj;");
       _builder.newLineIfNotEmpty();
       _builder.append("\t\t");
-      List<Property> _collectAllGetterDeclarationProperties = this.collectAllGetterDeclarationProperties(type);
+      _builder.append("if (this.getLoggingTimestamp() != castedRecord.getLoggingTimestamp()) return false;");
+      _builder.newLine();
+      _builder.append("\t\t");
       final Function1<Property, String> _function_15 = (Property it) -> {
         String _xblockexpression_1 = null;
         {
-          Classifier _findType = PropertyEvaluation.findType(it);
-          EClassifier _class_ = _findType.getClass_();
+          final Classifier classifier = PropertyEvaluation.findType(it);
+          final CharSequence getterName = this.buildPropertyReadAccessorName(it, classifier);
+          EClassifier _class_ = classifier.getClass_();
           final String typeName = _class_.getName();
           String _switchResult = null;
           switch (typeName) {
             case "string":
               StringConcatenation _builder_1 = new StringConcatenation();
               _builder_1.append("if (!this.");
-              CharSequence _resolveName = this.resolveName(it);
-              _builder_1.append(_resolveName, "");
+              _builder_1.append(getterName, "");
               _builder_1.append(".equals(castedRecord.");
-              CharSequence _resolveName_1 = this.resolveName(it);
-              _builder_1.append(_resolveName_1, "");
+              _builder_1.append(getterName, "");
               _builder_1.append(")) return false;");
               _switchResult = _builder_1.toString();
               break;
             case "float":
               StringConcatenation _builder_2 = new StringConcatenation();
               _builder_2.append("if (isNotEqual(this.");
-              CharSequence _resolveName_2 = this.resolveName(it);
-              _builder_2.append(_resolveName_2, "");
+              _builder_2.append(getterName, "");
               _builder_2.append(", castedRecord.");
-              CharSequence _resolveName_3 = this.resolveName(it);
-              _builder_2.append(_resolveName_3, "");
+              _builder_2.append(getterName, "");
               _builder_2.append(")) return false;");
               _switchResult = _builder_2.toString();
               break;
             case "double":
               StringConcatenation _builder_3 = new StringConcatenation();
               _builder_3.append("if (isNotEqual(this.");
-              CharSequence _resolveName_4 = this.resolveName(it);
-              _builder_3.append(_resolveName_4, "");
+              _builder_3.append(getterName, "");
               _builder_3.append(", castedRecord.");
-              CharSequence _resolveName_5 = this.resolveName(it);
-              _builder_3.append(_resolveName_5, "");
+              _builder_3.append(getterName, "");
               _builder_3.append(")) return false;");
               _switchResult = _builder_3.toString();
               break;
             default:
               StringConcatenation _builder_4 = new StringConcatenation();
               _builder_4.append("if (this.");
-              CharSequence _resolveName_6 = this.resolveName(it);
-              _builder_4.append(_resolveName_6, "");
+              _builder_4.append(getterName, "");
               _builder_4.append(" != castedRecord.");
-              CharSequence _resolveName_7 = this.resolveName(it);
-              _builder_4.append(_resolveName_7, "");
+              _builder_4.append(getterName, "");
               _builder_4.append(") return false;");
               _switchResult = _builder_4.toString();
               break;
@@ -957,23 +963,23 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         }
         return _xblockexpression_1;
       };
-      List<String> _map_14 = ListExtensions.<Property, String>map(_collectAllGetterDeclarationProperties, _function_15);
+      List<String> _map_14 = ListExtensions.<Property, String>map(allDataProperties, _function_15);
       String _join_12 = IterableExtensions.join(_map_14, "\n");
       _builder.append(_join_12, "\t\t");
       _builder.newLineIfNotEmpty();
       _builder.append("\t\t");
-      _builder.append("return super.equalsInternal(castedRecord);");
+      _builder.append("return true;");
       _builder.newLine();
       _builder.append("\t");
       _builder.append("}");
       _builder.newLine();
       _builder.newLine();
       _builder.append("\t");
-      List<Property> _collectAllGetterDeclarationProperties_1 = this.collectAllGetterDeclarationProperties(type);
+      List<Property> _collectAllGetterDeclarationProperties = this.collectAllGetterDeclarationProperties(type);
       final Function1<Property, CharSequence> _function_16 = (Property property) -> {
         return this.createPropertyGetter(property);
       };
-      List<CharSequence> _map_15 = ListExtensions.<Property, CharSequence>map(_collectAllGetterDeclarationProperties_1, _function_16);
+      List<CharSequence> _map_15 = ListExtensions.<Property, CharSequence>map(_collectAllGetterDeclarationProperties, _function_16);
       String _join_13 = IterableExtensions.join(_map_15);
       _builder.append(_join_13, "\t");
       _builder.newLineIfNotEmpty();
@@ -1533,7 +1539,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     CharSequence _xblockexpression = null;
     {
       final Classifier classifier = PropertyEvaluation.findType(property);
-      final CharSequence getterName = this.buildPropertyReadAccessorName(property, classifier);
+      CharSequence _buildPropertyReadAccessorName = this.buildPropertyReadAccessorName(property, classifier);
+      final String getterName = ("this." + _buildPropertyReadAccessorName);
       CharSequence _switchResult = null;
       EClassifier _class_ = classifier.getClass_();
       String _name = _class_.getName();
@@ -1608,14 +1615,13 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   }
   
   /**
-   * @return "this" + get/is + "capitalized property name" + "()" + "array access code"
+   * @return get/is + "capitalized property name" + "()" + "array access code"
    */
   private CharSequence buildPropertyReadAccessorName(final Property property, final Classifier classifier) {
     CharSequence _xblockexpression = null;
     {
       final EList<ArraySize> sizes = classifier.getSizes();
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("this.");
       CharSequence _createGetterName = this.createGetterName(property);
       _builder.append(_createGetterName, "");
       _builder.append("()");

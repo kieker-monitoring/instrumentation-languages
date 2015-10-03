@@ -203,7 +203,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 				«allDataProperties.map[
 					val classifier = PropertyEvaluation.findType(it)
 					if (classifier.class_.name == 'string') {
-						'''stringRegistry.get(«buildPropertyReadAccessorName(it, classifier)»);'''
+						'''stringRegistry.get(this.«buildPropertyReadAccessorName(it, classifier)»);'''
 					}
 				].filterNull.join('\n')»
 			}
@@ -258,22 +258,29 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 			 * {@inheritDoc}
 			 */
 			@Override
-			protected boolean equalsInternal(final kieker.common.record.IMonitoringRecord record) {
-				final «type.name» castedRecord = («type.name») record;
-				«type.collectAllGetterDeclarationProperties.map[
-					val typeName = PropertyEvaluation::findType(it).class_.name
+			public boolean equals(final Object obj) {
+				if (obj == null) return false;
+				if (obj == this) return true;
+				if (obj.getClass() != this.getClass()) return false;
+				
+				final «type.name» castedRecord = («type.name») obj;
+				if (this.getLoggingTimestamp() != castedRecord.getLoggingTimestamp()) return false;
+				«allDataProperties.map[
+					val classifier = PropertyEvaluation::findType(it)
+					val getterName = buildPropertyReadAccessorName(it, classifier)
+					val typeName = classifier.class_.name
 					switch (typeName) {
 						case 'string': 
-							'''if (!this.«it.resolveName».equals(castedRecord.«it.resolveName»)) return false;'''
+							'''if (!this.«getterName».equals(castedRecord.«getterName»)) return false;'''
 						case 'float': 
-							'''if (isNotEqual(this.«it.resolveName», castedRecord.«it.resolveName»)) return false;'''
+							'''if (isNotEqual(this.«getterName», castedRecord.«getterName»)) return false;'''
 						case 'double': 
-							'''if (isNotEqual(this.«it.resolveName», castedRecord.«it.resolveName»)) return false;'''
+							'''if (isNotEqual(this.«getterName», castedRecord.«getterName»)) return false;'''
 						default: 
-							'''if (this.«it.resolveName» != castedRecord.«it.resolveName») return false;'''
+							'''if (this.«getterName» != castedRecord.«getterName») return false;'''
 					}
 				].join('\n')»
-				return super.equalsInternal(castedRecord);
+				return true;
 			}
 		
 			«type.collectAllGetterDeclarationProperties.map[property | createPropertyGetter(property)].join»
@@ -493,7 +500,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	
 	private def createValueStoreForSerialization(Property property) {
 		val classifier = PropertyEvaluation::findType(property)
-		val getterName = buildPropertyReadAccessorName(property, classifier)
+		val getterName = "this." + buildPropertyReadAccessorName(property, classifier)
 		switch (classifier.class_.name) {
 			case 'string' : '''buffer.putInt(stringRegistry.get(«getterName»));'''
 			case 'byte' : '''buffer.put((byte)«getterName»);'''
@@ -508,11 +515,11 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	}
 	
 	/**
-	 * @return "this" + get/is + "capitalized property name" + "()" + "array access code"
+	 * @return get/is + "capitalized property name" + "()" + "array access code"
 	 */
 	private def buildPropertyReadAccessorName(Property property, Classifier classifier) {
 		val sizes = classifier.sizes
-		'''this.«property.createGetterName»()«sizes.determineArrayAccessCode»'''
+		'''«property.createGetterName»()«sizes.determineArrayAccessCode»'''
 	}
 	
 	/**
