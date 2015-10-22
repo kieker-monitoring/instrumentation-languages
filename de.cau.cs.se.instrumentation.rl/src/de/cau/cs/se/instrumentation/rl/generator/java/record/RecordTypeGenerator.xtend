@@ -765,7 +765,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * @returns a constant declaration
 	 */
 	private def createDefaultConstant(Constant constant) '''
-		public static final «constant.type.createTypeName» «constant.name.protectKeywords» = «constant.value.createValue»;
+		public static final «constant.type.createTypeName» «constant.name.protectKeywords» = «constant.value.createLiteral»;
 	'''
 	
 	/**
@@ -777,7 +777,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * @returns a constant declaration
 	 */
 	private def createDefaultConstant(Property property) '''
-		public static final «property.type.createTypeName» «property.name.createConstantName.protectKeywords» = «if (property.value==null) '""' else property.value.createValue»;
+		public static final «property.type.createTypeName» «property.name.createConstantName.protectKeywords» = «if (property.value==null) '""' else property.value.createLiteral»;
 	'''
 	
 	/**
@@ -890,33 +890,22 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	}
 			
 	/**
-	 * Dispatch for literals.
+	 * Literal mapping
 	 */
-	/** String and character literals. */
-	dispatch private def CharSequence createValue(StringLiteral literal) {
-		if (literal.getRequiredType.equals('string'))
-			'''"«literal.value»"'''
-		else
-			'\'' + literal.value + '\''
+	private def CharSequence createLiteral(Literal literal) {
+		switch (literal) {
+			IntLiteral: '''«literal.value»«if (literal.getRequiredType.equals('long')) 'L'»'''
+			FloatLiteral: '''«literal.value»«if (literal.getRequiredType.equals('float')) 'f'»'''
+			BooleanLiteral: '''«if (literal.value) 'true' else 'false'»'''
+			ConstantLiteral: '''«literal.value.name»'''
+			BuiltInValueLiteral case "KIEKER_VERSION".equals(literal.value): '''kieker.common.util.Version.getVERSION()'''
+			StringLiteral case literal.getRequiredType.equals('string'): '''"«literal.value»"'''
+			StringLiteral case literal.getRequiredType.equals('char'): '\'' + literal.value + '\''
+			ArrayLiteral: '''{ «literal.literals.map[element | element.createLiteral].join(if (literal.literals.get(0) instanceof ArrayLiteral) ",\n" else ", ")» }'''
+			default: 'ERROR ' + literal.class.name
+		}	
 	}
-	/** All other data types and constants. */
-	dispatch private def CharSequence createValue(IntLiteral literal) '''«literal.value»«if (literal.getRequiredType.equals('long')) 'L'»'''
-	dispatch private def CharSequence createValue(FloatLiteral literal) '''«literal.value»«if (literal.getRequiredType.equals('float')) 'f'»'''
-	dispatch private def CharSequence createValue(BooleanLiteral literal) '''«if (literal.value) 'true' else 'false'»'''
-	dispatch private def CharSequence createValue(ConstantLiteral literal) '''«literal.value.name»'''
-	dispatch private def CharSequence createValue(BuiltInValueLiteral literal) {
-		switch (literal.value) {
-			case "KIEKER_VERSION" : '''kieker.common.util.Version.getVERSION()'''
-			// presently there is only one built-in value
-		}
-	}
-	dispatch private def CharSequence createValue(ArrayLiteral literal) '''{ «literal.literals.map[element | element.createValue].join(if (literal.literals.get(0) instanceof ArrayLiteral) ",\n" else ", ")» }'''
-	
-	/** Create error when the dispatch fails. */
-	dispatch private def CharSequence createValue(Literal literal) {
-		'ERROR ' + literal.class.name
-	}
-	
+		
 	/**
 	 * Resolve the primitive type for the given literal.
 	 */

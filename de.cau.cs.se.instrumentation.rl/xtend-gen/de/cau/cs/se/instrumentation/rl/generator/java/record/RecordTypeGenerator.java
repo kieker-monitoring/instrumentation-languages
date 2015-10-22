@@ -24,7 +24,6 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Type;
 import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
@@ -2107,8 +2106,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     _builder.append(_protectKeywords, "");
     _builder.append(" = ");
     Literal _value = constant.getValue();
-    CharSequence _createValue = this.createValue(_value);
-    _builder.append(_createValue, "");
+    CharSequence _createLiteral = this.createLiteral(_value);
+    _builder.append(_createLiteral, "");
     _builder.append(";");
     _builder.newLineIfNotEmpty();
     return _builder;
@@ -2141,7 +2140,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _xifexpression = "\"\"";
     } else {
       Literal _value_1 = property.getValue();
-      _xifexpression = this.createValue(_value_1);
+      _xifexpression = this.createLiteral(_value_1);
     }
     _builder.append(_xifexpression, "");
     _builder.append(";");
@@ -2305,121 +2304,137 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   }
   
   /**
-   * String and character literals.
+   * Literal mapping
    */
-  private CharSequence _createValue(final StringLiteral literal) {
-    CharSequence _xifexpression = null;
-    String _requiredType = this.getRequiredType(literal);
-    boolean _equals = _requiredType.equals("string");
-    if (_equals) {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("\"");
-      String _value = literal.getValue();
-      _builder.append(_value, "");
-      _builder.append("\"");
-      _xifexpression = _builder;
-    } else {
-      String _value_1 = literal.getValue();
-      String _plus = ("\'" + _value_1);
-      _xifexpression = (_plus + "\'");
-    }
-    return _xifexpression;
-  }
-  
-  /**
-   * All other data types and constants.
-   */
-  private CharSequence _createValue(final IntLiteral literal) {
-    StringConcatenation _builder = new StringConcatenation();
-    int _value = literal.getValue();
-    _builder.append(_value, "");
-    String _xifexpression = null;
-    String _requiredType = this.getRequiredType(literal);
-    boolean _equals = _requiredType.equals("long");
-    if (_equals) {
-      _xifexpression = "L";
-    }
-    _builder.append(_xifexpression, "");
-    return _builder;
-  }
-  
-  private CharSequence _createValue(final FloatLiteral literal) {
-    StringConcatenation _builder = new StringConcatenation();
-    Float _value = literal.getValue();
-    _builder.append(_value, "");
-    String _xifexpression = null;
-    String _requiredType = this.getRequiredType(literal);
-    boolean _equals = _requiredType.equals("float");
-    if (_equals) {
-      _xifexpression = "f";
-    }
-    _builder.append(_xifexpression, "");
-    return _builder;
-  }
-  
-  private CharSequence _createValue(final BooleanLiteral literal) {
-    StringConcatenation _builder = new StringConcatenation();
-    String _xifexpression = null;
-    Boolean _value = literal.getValue();
-    if ((_value).booleanValue()) {
-      _xifexpression = "true";
-    } else {
-      _xifexpression = "false";
-    }
-    _builder.append(_xifexpression, "");
-    return _builder;
-  }
-  
-  private CharSequence _createValue(final ConstantLiteral literal) {
-    StringConcatenation _builder = new StringConcatenation();
-    Constant _value = literal.getValue();
-    String _name = _value.getName();
-    _builder.append(_name, "");
-    return _builder;
-  }
-  
-  private CharSequence _createValue(final BuiltInValueLiteral literal) {
+  private CharSequence createLiteral(final Literal literal) {
     CharSequence _switchResult = null;
-    String _value = literal.getValue();
-    switch (_value) {
-      case "KIEKER_VERSION":
+    boolean _matched = false;
+    if (!_matched) {
+      if (literal instanceof IntLiteral) {
+        _matched=true;
         StringConcatenation _builder = new StringConcatenation();
-        _builder.append("kieker.common.util.Version.getVERSION()");
+        int _value = ((IntLiteral)literal).getValue();
+        _builder.append(_value, "");
+        String _xifexpression = null;
+        String _requiredType = this.getRequiredType(literal);
+        boolean _equals = _requiredType.equals("long");
+        if (_equals) {
+          _xifexpression = "L";
+        }
+        _builder.append(_xifexpression, "");
         _switchResult = _builder;
-        break;
+      }
+    }
+    if (!_matched) {
+      if (literal instanceof FloatLiteral) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        Float _value = ((FloatLiteral)literal).getValue();
+        _builder.append(_value, "");
+        String _xifexpression = null;
+        String _requiredType = this.getRequiredType(literal);
+        boolean _equals = _requiredType.equals("float");
+        if (_equals) {
+          _xifexpression = "f";
+        }
+        _builder.append(_xifexpression, "");
+        _switchResult = _builder;
+      }
+    }
+    if (!_matched) {
+      if (literal instanceof BooleanLiteral) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        String _xifexpression = null;
+        Boolean _value = ((BooleanLiteral)literal).getValue();
+        if ((_value).booleanValue()) {
+          _xifexpression = "true";
+        } else {
+          _xifexpression = "false";
+        }
+        _builder.append(_xifexpression, "");
+        _switchResult = _builder;
+      }
+    }
+    if (!_matched) {
+      if (literal instanceof ConstantLiteral) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        Constant _value = ((ConstantLiteral)literal).getValue();
+        String _name = _value.getName();
+        _builder.append(_name, "");
+        _switchResult = _builder;
+      }
+    }
+    if (!_matched) {
+      if (literal instanceof BuiltInValueLiteral) {
+        String _value = ((BuiltInValueLiteral)literal).getValue();
+        boolean _equals = "KIEKER_VERSION".equals(_value);
+        if (_equals) {
+          _matched=true;
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("kieker.common.util.Version.getVERSION()");
+          _switchResult = _builder;
+        }
+      }
+    }
+    if (!_matched) {
+      if (literal instanceof StringLiteral) {
+        String _requiredType = this.getRequiredType(literal);
+        boolean _equals = _requiredType.equals("string");
+        if (_equals) {
+          _matched=true;
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("\"");
+          String _value = ((StringLiteral)literal).getValue();
+          _builder.append(_value, "");
+          _builder.append("\"");
+          _switchResult = _builder;
+        }
+      }
+    }
+    if (!_matched) {
+      if (literal instanceof StringLiteral) {
+        String _requiredType = this.getRequiredType(literal);
+        boolean _equals = _requiredType.equals("char");
+        if (_equals) {
+          _matched=true;
+          String _value = ((StringLiteral)literal).getValue();
+          String _plus = ("\'" + _value);
+          _switchResult = (_plus + "\'");
+        }
+      }
+    }
+    if (!_matched) {
+      if (literal instanceof ArrayLiteral) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("{ ");
+        EList<Literal> _literals = ((ArrayLiteral)literal).getLiterals();
+        final Function1<Literal, CharSequence> _function = (Literal element) -> {
+          return this.createLiteral(element);
+        };
+        List<CharSequence> _map = ListExtensions.<Literal, CharSequence>map(_literals, _function);
+        String _xifexpression = null;
+        EList<Literal> _literals_1 = ((ArrayLiteral)literal).getLiterals();
+        Literal _get = _literals_1.get(0);
+        if ((_get instanceof ArrayLiteral)) {
+          _xifexpression = ",\n";
+        } else {
+          _xifexpression = ", ";
+        }
+        String _join = IterableExtensions.join(_map, _xifexpression);
+        _builder.append(_join, "");
+        _builder.append(" }");
+        _switchResult = _builder;
+      }
+    }
+    if (!_matched) {
+      Class<? extends Literal> _class = literal.getClass();
+      String _name = _class.getName();
+      _switchResult = ("ERROR " + _name);
     }
     return _switchResult;
-  }
-  
-  private CharSequence _createValue(final ArrayLiteral literal) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("{ ");
-    EList<Literal> _literals = literal.getLiterals();
-    final Function1<Literal, CharSequence> _function = (Literal element) -> {
-      return this.createValue(element);
-    };
-    List<CharSequence> _map = ListExtensions.<Literal, CharSequence>map(_literals, _function);
-    String _xifexpression = null;
-    EList<Literal> _literals_1 = literal.getLiterals();
-    Literal _get = _literals_1.get(0);
-    if ((_get instanceof ArrayLiteral)) {
-      _xifexpression = ",\n";
-    } else {
-      _xifexpression = ", ";
-    }
-    String _join = IterableExtensions.join(_map, _xifexpression);
-    _builder.append(_join, "");
-    _builder.append(" }");
-    return _builder;
-  }
-  
-  /**
-   * Create error when the dispatch fails.
-   */
-  private CharSequence _createValue(final Literal literal) {
-    Class<? extends Literal> _class = literal.getClass();
-    String _name = _class.getName();
-    return ("ERROR " + _name);
   }
   
   /**
@@ -2455,28 +2470,5 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       }
     }
     return _switchResult;
-  }
-  
-  private CharSequence createValue(final Literal literal) {
-    if (literal instanceof ArrayLiteral) {
-      return _createValue((ArrayLiteral)literal);
-    } else if (literal instanceof BooleanLiteral) {
-      return _createValue((BooleanLiteral)literal);
-    } else if (literal instanceof BuiltInValueLiteral) {
-      return _createValue((BuiltInValueLiteral)literal);
-    } else if (literal instanceof ConstantLiteral) {
-      return _createValue((ConstantLiteral)literal);
-    } else if (literal instanceof FloatLiteral) {
-      return _createValue((FloatLiteral)literal);
-    } else if (literal instanceof IntLiteral) {
-      return _createValue((IntLiteral)literal);
-    } else if (literal instanceof StringLiteral) {
-      return _createValue((StringLiteral)literal);
-    } else if (literal != null) {
-      return _createValue(literal);
-    } else {
-      throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(literal).toString());
-    }
   }
 }
