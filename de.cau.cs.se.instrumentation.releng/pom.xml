@@ -12,7 +12,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<checkstyle.config.location>cs-conf.xml</checkstyle.config.location>
 		<tycho-version>0.22.0</tycho-version>
-		<eclipse-repo.url>http://download.eclipse.org/releases/luna</eclipse-repo.url>
+		<eclipse-repo.url>http://download.eclipse.org/releases/mars</eclipse-repo.url>
 		<kieler-repo.url>http://rtsys.informatik.uni-kiel.de/~kieler/updatesite/nightly</kieler-repo.url>
 		<palladio-repo.url>http://sdqweb.ipd.kit.edu/eclipse/palladio/releases/3.4.1</palladio-repo.url>
 		<probespec-repo.url>http://sdqweb.ipd.kit.edu/eclipse/probespec/releases/1.2</probespec-repo.url>
