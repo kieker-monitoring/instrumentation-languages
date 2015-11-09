@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-Version: 1.1.0.qualifier
+Bundle-Version: 1.2.0.qualifier
 Bundle-ClassPath: .
 Bundle-SymbolicName: de.cau.cs.se.instrumentation.al;singleton:=true
 Bundle-ActivationPolicy: lazy
@@ -21,7 +21,7 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.core.runtime,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.eclipse.xtext.common.types,
- de.cau.cs.se.instrumentation.rl;bundle-version="1.1.0",
+ de.cau.cs.se.instrumentation.rl;bundle-version="1.2.0",
  org.eclipse.xtext.common.types.ui,
  org.eclipse.platform;bundle-version="4.3.0",
  de.cau.cs.kieler.core.annotations,
