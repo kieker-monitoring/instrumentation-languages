@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Model#getName <em>Name</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Model#getMetamodels <em>Metamodels</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Model#getImports <em>Imports</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Model#getSources <em>Sources</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Model#getAdvices <em>Advices</em>}</li>
@@ -55,22 +54,6 @@ public interface Model extends EObject
    * @generated
    */
   void setName(String value);
-
-  /**
-   * Returns the value of the '<em><b>Metamodels</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.cs.se.instrumentation.al.aspectLang.RegisteredPackage}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Metamodels</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Metamodels</em>' containment reference list.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getModel_Metamodels()
-   * @model containment="true"
-   * @generated
-   */
-  EList<RegisteredPackage> getMetamodels();
 
   /**
    * Returns the value of the '<em><b>Imports</b></em>' containment reference list.

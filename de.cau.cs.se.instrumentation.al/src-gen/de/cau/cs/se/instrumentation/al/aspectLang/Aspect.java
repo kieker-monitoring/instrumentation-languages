@@ -15,8 +15,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Aspect#getQuery <em>Query</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Aspect#getApplyProbes <em>Apply Probes</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Aspect#getPointcut <em>Pointcut</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Aspect#getAdvices <em>Advices</em>}</li>
  * </ul>
  *
  * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getAspect()
@@ -26,45 +26,45 @@ import org.eclipse.emf.ecore.EObject;
 public interface Aspect extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Query</b></em>' reference.
+   * Returns the value of the '<em><b>Pointcut</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Query</em>' reference isn't clear,
+   * If the meaning of the '<em>Pointcut</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Query</em>' reference.
-   * @see #setQuery(Pointcut)
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getAspect_Query()
+   * @return the value of the '<em>Pointcut</em>' reference.
+   * @see #setPointcut(Pointcut)
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getAspect_Pointcut()
    * @model
    * @generated
    */
-  Pointcut getQuery();
+  Pointcut getPointcut();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.Aspect#getQuery <em>Query</em>}' reference.
+   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.Aspect#getPointcut <em>Pointcut</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Query</em>' reference.
-   * @see #getQuery()
+   * @param value the new value of the '<em>Pointcut</em>' reference.
+   * @see #getPointcut()
    * @generated
    */
-  void setQuery(Pointcut value);
+  void setPointcut(Pointcut value);
 
   /**
-   * Returns the value of the '<em><b>Apply Probes</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.cs.se.instrumentation.al.aspectLang.UtilizeProbe}.
+   * Returns the value of the '<em><b>Advices</b></em>' containment reference list.
+   * The list contents are of type {@link de.cau.cs.se.instrumentation.al.aspectLang.UtilizeAdvice}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Apply Probes</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Advices</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Apply Probes</em>' containment reference list.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getAspect_ApplyProbes()
+   * @return the value of the '<em>Advices</em>' containment reference list.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getAspect_Advices()
    * @model containment="true"
    * @generated
    */
-  EList<UtilizeProbe> getApplyProbes();
+  EList<UtilizeAdvice> getAdvices();
 
 } // Aspect

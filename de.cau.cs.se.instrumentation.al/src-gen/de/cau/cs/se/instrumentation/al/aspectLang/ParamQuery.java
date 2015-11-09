@@ -26,7 +26,7 @@ public interface ParamQuery extends EObject
 {
   /**
    * Returns the value of the '<em><b>Queries</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.cs.se.instrumentation.al.aspectLang.ParamCompare}.
+   * The list contents are of type {@link de.cau.cs.se.instrumentation.al.aspectLang.ParamExpression}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Queries</em>' containment reference list isn't clear,
@@ -38,6 +38,6 @@ public interface ParamQuery extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<ParamCompare> getQueries();
+  EList<ParamExpression> getQueries();
 
 } // ParamQuery

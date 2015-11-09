@@ -2,8 +2,6 @@
  */
 package de.cau.cs.se.instrumentation.al.aspectLang;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -15,7 +13,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel#getUsePackages <em>Use Packages</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel#getHandler <em>Handler</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel#getName <em>Name</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel#getModel <em>Model</em>}</li>
  * </ul>
@@ -27,20 +25,30 @@ import org.eclipse.emf.ecore.EObject;
 public interface ApplicationModel extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Use Packages</b></em>' reference list.
-   * The list contents are of type {@link de.cau.cs.se.instrumentation.al.aspectLang.RegisteredPackage}.
+   * Returns the value of the '<em><b>Handler</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Use Packages</em>' reference list isn't clear,
+   * If the meaning of the '<em>Handler</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Use Packages</em>' reference list.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getApplicationModel_UsePackages()
+   * @return the value of the '<em>Handler</em>' attribute.
+   * @see #setHandler(String)
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getApplicationModel_Handler()
    * @model
    * @generated
    */
-  EList<RegisteredPackage> getUsePackages();
+  String getHandler();
+
+  /**
+   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel#getHandler <em>Handler</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Handler</em>' attribute.
+   * @see #getHandler()
+   * @generated
+   */
+  void setHandler(String value);
 
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

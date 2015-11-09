@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class ReferenceValueImpl extends ValueImpl implements ReferenceValue
+public class ReferenceValueImpl extends ParamExpressionImpl implements ReferenceValue
 {
   /**
    * The cached value of the '{@link #getQuery() <em>Query</em>}' containment reference.

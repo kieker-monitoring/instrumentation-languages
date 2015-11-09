@@ -4,8 +4,6 @@
     nsPrefix="aspectLang">
   <eClassifiers xsi:type="ecore:EClass" name="Model">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="metamodels" upperBound="-1"
-        eType="#//RegisteredPackage" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
         eType="#//Import" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sources" upperBound="-1"
@@ -20,25 +18,20 @@
   <eClassifiers xsi:type="ecore:EClass" name="Import">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="importedNamespace" eType="ecore:EDataType platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RegisteredPackage">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ePackage" eType="ecore:EClass platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ApplicationModel">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="usePackages" unique="false"
-        upperBound="-1" eType="#//RegisteredPackage"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="handler" eType="ecore:EDataType platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="model" eType="ecore:EDataType platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Aspect">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="query" eType="#//Pointcut"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="applyProbes" upperBound="-1"
-        eType="#//UtilizeProbe" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pointcut" eType="#//Pointcut"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="advices" upperBound="-1"
+        eType="#//UtilizeAdvice" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="UtilizeProbe">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="probe" eType="#//Advice"/>
+  <eClassifiers xsi:type="ecore:EClass" name="UtilizeAdvice">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="advice" eType="#//Advice"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameterAssignments" upperBound="-1"
-        eType="#//Value" containment="true"/>
+        eType="#//ParamExpression" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Advice">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
@@ -94,26 +87,30 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ParamQuery">
     <eStructuralFeatures xsi:type="ecore:EReference" name="queries" upperBound="-1"
-        eType="#//ParamCompare" containment="true"/>
+        eType="#//ParamExpression" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ParamCompare">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Value"
+  <eClassifiers xsi:type="ecore:EClass" name="ParamExpression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//ParamExpression"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="#//Operator"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//Value"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="logic" eType="#//LogicOperator"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//ParamExpression"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="#//LogicOperator"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Value"/>
-  <eClassifiers xsi:type="ecore:EClass" name="FloatValue" eSuperTypes="#//Value">
+  <eClassifiers xsi:type="ecore:EEnum" name="LogicOperator">
+    <eLiterals name="AND" literal="&amp;&amp;"/>
+    <eLiterals name="OR" value="1" literal="||"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FloatValue" eSuperTypes="#//ParamExpression">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EFloatObject"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IntValue" eSuperTypes="#//Value">
+  <eClassifiers xsi:type="ecore:EClass" name="IntValue" eSuperTypes="#//ParamExpression">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="StringValue" eSuperTypes="#//Value">
+  <eClassifiers xsi:type="ecore:EClass" name="StringValue" eSuperTypes="#//ParamExpression">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ReferenceValue" eSuperTypes="#//Value">
+  <eClassifiers xsi:type="ecore:EClass" name="ReferenceValue" eSuperTypes="#//ParamExpression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="query" eType="#//LocationQuery"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" eType="#//Parameter"
@@ -137,7 +134,7 @@
   <eClassifiers xsi:type="ecore:EEnum" name="ReflectionFunction">
     <eLiterals name="NAME" literal="name"/>
     <eLiterals name="SIGNATURE" value="1" literal="signature"/>
-    <eLiterals name="CLASS" value="2" literal="class"/>
+    <eLiterals name="CLASS" value="2" literal="classname"/>
     <eLiterals name="RETURN_TYPE" value="3" literal="return-type"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Operator">
@@ -157,9 +154,13 @@
   <eClassifiers xsi:type="ecore:EClass" name="ParentNode" eSuperTypes="#//Node"/>
   <eClassifiers xsi:type="ecore:EClass" name="Collector">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="insertionPoint" eType="#//InsertionPoint"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="events" upperBound="-1"
+        eType="#//Event" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Event">
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/resource/de.cau.cs.se.instrumentation.rl/model/generated/RecordLang.ecore#//RecordType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="initializations" upperBound="-1"
-        eType="#//Value" containment="true"/>
+        eType="#//ParamExpression" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="InsertionPoint">
     <eLiterals name="BEFORE" literal="before"/>

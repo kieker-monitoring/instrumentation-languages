@@ -67,10 +67,9 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
     {
       case AspectLangPackage.MODEL: return createModel();
       case AspectLangPackage.IMPORT: return createImport();
-      case AspectLangPackage.REGISTERED_PACKAGE: return createRegisteredPackage();
       case AspectLangPackage.APPLICATION_MODEL: return createApplicationModel();
       case AspectLangPackage.ASPECT: return createAspect();
-      case AspectLangPackage.UTILIZE_PROBE: return createUtilizeProbe();
+      case AspectLangPackage.UTILIZE_ADVICE: return createUtilizeAdvice();
       case AspectLangPackage.ADVICE: return createAdvice();
       case AspectLangPackage.PARAMETER_DECLARATION: return createParameterDeclaration();
       case AspectLangPackage.POINTCUT: return createPointcut();
@@ -80,8 +79,7 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
       case AspectLangPackage.COMPOSITION_QUERY: return createCompositionQuery();
       case AspectLangPackage.NODE: return createNode();
       case AspectLangPackage.PARAM_QUERY: return createParamQuery();
-      case AspectLangPackage.PARAM_COMPARE: return createParamCompare();
-      case AspectLangPackage.VALUE: return createValue();
+      case AspectLangPackage.PARAM_EXPRESSION: return createParamExpression();
       case AspectLangPackage.FLOAT_VALUE: return createFloatValue();
       case AspectLangPackage.INT_VALUE: return createIntValue();
       case AspectLangPackage.STRING_VALUE: return createStringValue();
@@ -95,6 +93,7 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
       case AspectLangPackage.SUB_PATH_NODE: return createSubPathNode();
       case AspectLangPackage.PARENT_NODE: return createParentNode();
       case AspectLangPackage.COLLECTOR: return createCollector();
+      case AspectLangPackage.EVENT: return createEvent();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -112,6 +111,8 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
     {
       case AspectLangPackage.QUERY_MODIFIER:
         return createQueryModifierFromString(eDataType, initialValue);
+      case AspectLangPackage.LOGIC_OPERATOR:
+        return createLogicOperatorFromString(eDataType, initialValue);
       case AspectLangPackage.INTERNAL_FUNCTION:
         return createInternalFunctionFromString(eDataType, initialValue);
       case AspectLangPackage.REFLECTION_FUNCTION:
@@ -137,6 +138,8 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
     {
       case AspectLangPackage.QUERY_MODIFIER:
         return convertQueryModifierToString(eDataType, instanceValue);
+      case AspectLangPackage.LOGIC_OPERATOR:
+        return convertLogicOperatorToString(eDataType, instanceValue);
       case AspectLangPackage.INTERNAL_FUNCTION:
         return convertInternalFunctionToString(eDataType, instanceValue);
       case AspectLangPackage.REFLECTION_FUNCTION:
@@ -177,17 +180,6 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
    * <!-- end-user-doc -->
    * @generated
    */
-  public RegisteredPackage createRegisteredPackage()
-  {
-    RegisteredPackageImpl registeredPackage = new RegisteredPackageImpl();
-    return registeredPackage;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public ApplicationModel createApplicationModel()
   {
     ApplicationModelImpl applicationModel = new ApplicationModelImpl();
@@ -210,10 +202,10 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
    * <!-- end-user-doc -->
    * @generated
    */
-  public UtilizeProbe createUtilizeProbe()
+  public UtilizeAdvice createUtilizeAdvice()
   {
-    UtilizeProbeImpl utilizeProbe = new UtilizeProbeImpl();
-    return utilizeProbe;
+    UtilizeAdviceImpl utilizeAdvice = new UtilizeAdviceImpl();
+    return utilizeAdvice;
   }
 
   /**
@@ -320,21 +312,10 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
    * <!-- end-user-doc -->
    * @generated
    */
-  public ParamCompare createParamCompare()
+  public ParamExpression createParamExpression()
   {
-    ParamCompareImpl paramCompare = new ParamCompareImpl();
-    return paramCompare;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Value createValue()
-  {
-    ValueImpl value = new ValueImpl();
-    return value;
+    ParamExpressionImpl paramExpression = new ParamExpressionImpl();
+    return paramExpression;
   }
 
   /**
@@ -485,6 +466,17 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
    * <!-- end-user-doc -->
    * @generated
    */
+  public Event createEvent()
+  {
+    EventImpl event = new EventImpl();
+    return event;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public QueryModifier createQueryModifierFromString(EDataType eDataType, String initialValue)
   {
     QueryModifier result = QueryModifier.get(initialValue);
@@ -498,6 +490,28 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
    * @generated
    */
   public String convertQueryModifierToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public LogicOperator createLogicOperatorFromString(EDataType eDataType, String initialValue)
+  {
+    LogicOperator result = LogicOperator.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertLogicOperatorToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }

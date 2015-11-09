@@ -14,6 +14,7 @@ import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
 import de.cau.cs.se.instrumentation.al.aspectLang.Collector;
 import de.cau.cs.se.instrumentation.al.aspectLang.CompositionQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode;
+import de.cau.cs.se.instrumentation.al.aspectLang.Event;
 import de.cau.cs.se.instrumentation.al.aspectLang.FloatValue;
 import de.cau.cs.se.instrumentation.al.aspectLang.Import;
 import de.cau.cs.se.instrumentation.al.aspectLang.InsertionPoint;
@@ -21,11 +22,12 @@ import de.cau.cs.se.instrumentation.al.aspectLang.IntValue;
 import de.cau.cs.se.instrumentation.al.aspectLang.InternalFunction;
 import de.cau.cs.se.instrumentation.al.aspectLang.InternalFunctionProperty;
 import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery;
+import de.cau.cs.se.instrumentation.al.aspectLang.LogicOperator;
 import de.cau.cs.se.instrumentation.al.aspectLang.MethodQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.Model;
 import de.cau.cs.se.instrumentation.al.aspectLang.Node;
 import de.cau.cs.se.instrumentation.al.aspectLang.Operator;
-import de.cau.cs.se.instrumentation.al.aspectLang.ParamCompare;
+import de.cau.cs.se.instrumentation.al.aspectLang.ParamExpression;
 import de.cau.cs.se.instrumentation.al.aspectLang.ParamQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.Parameter;
 import de.cau.cs.se.instrumentation.al.aspectLang.ParameterDeclaration;
@@ -36,12 +38,10 @@ import de.cau.cs.se.instrumentation.al.aspectLang.QueryModifier;
 import de.cau.cs.se.instrumentation.al.aspectLang.ReferenceValue;
 import de.cau.cs.se.instrumentation.al.aspectLang.ReflectionFunction;
 import de.cau.cs.se.instrumentation.al.aspectLang.ReflectionProperty;
-import de.cau.cs.se.instrumentation.al.aspectLang.RegisteredPackage;
 import de.cau.cs.se.instrumentation.al.aspectLang.RuntimeProperty;
 import de.cau.cs.se.instrumentation.al.aspectLang.StringValue;
 import de.cau.cs.se.instrumentation.al.aspectLang.SubPathNode;
-import de.cau.cs.se.instrumentation.al.aspectLang.UtilizeProbe;
-import de.cau.cs.se.instrumentation.al.aspectLang.Value;
+import de.cau.cs.se.instrumentation.al.aspectLang.UtilizeAdvice;
 import de.cau.cs.se.instrumentation.al.aspectLang.WildcardNode;
 
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
@@ -82,13 +82,6 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass registeredPackageEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass applicationModelEClass = null;
 
   /**
@@ -103,7 +96,7 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass utilizeProbeEClass = null;
+  private EClass utilizeAdviceEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -173,14 +166,7 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass paramCompareEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass valueEClass = null;
+  private EClass paramExpressionEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -278,7 +264,21 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass eventEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EEnum queryModifierEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum logicOperatorEEnum = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -401,7 +401,7 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModel_Metamodels()
+  public EReference getModel_Imports()
   {
     return (EReference)modelEClass.getEStructuralFeatures().get(1);
   }
@@ -411,7 +411,7 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModel_Imports()
+  public EReference getModel_Sources()
   {
     return (EReference)modelEClass.getEStructuralFeatures().get(2);
   }
@@ -421,7 +421,7 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModel_Sources()
+  public EReference getModel_Advices()
   {
     return (EReference)modelEClass.getEStructuralFeatures().get(3);
   }
@@ -431,7 +431,7 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModel_Advices()
+  public EReference getModel_Pointcuts()
   {
     return (EReference)modelEClass.getEStructuralFeatures().get(4);
   }
@@ -441,19 +441,9 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModel_Pointcuts()
-  {
-    return (EReference)modelEClass.getEStructuralFeatures().get(5);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getModel_Aspects()
   {
-    return (EReference)modelEClass.getEStructuralFeatures().get(6);
+    return (EReference)modelEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -481,36 +471,6 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getRegisteredPackage()
-  {
-    return registeredPackageEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getRegisteredPackage_Name()
-  {
-    return (EAttribute)registeredPackageEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getRegisteredPackage_EPackage()
-  {
-    return (EReference)registeredPackageEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getApplicationModel()
   {
     return applicationModelEClass;
@@ -521,9 +481,9 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getApplicationModel_UsePackages()
+  public EAttribute getApplicationModel_Handler()
   {
-    return (EReference)applicationModelEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)applicationModelEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -561,7 +521,7 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAspect_Query()
+  public EReference getAspect_Pointcut()
   {
     return (EReference)aspectEClass.getEStructuralFeatures().get(0);
   }
@@ -571,7 +531,7 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAspect_ApplyProbes()
+  public EReference getAspect_Advices()
   {
     return (EReference)aspectEClass.getEStructuralFeatures().get(1);
   }
@@ -581,9 +541,9 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getUtilizeProbe()
+  public EClass getUtilizeAdvice()
   {
-    return utilizeProbeEClass;
+    return utilizeAdviceEClass;
   }
 
   /**
@@ -591,9 +551,9 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getUtilizeProbe_Probe()
+  public EReference getUtilizeAdvice_Advice()
   {
-    return (EReference)utilizeProbeEClass.getEStructuralFeatures().get(0);
+    return (EReference)utilizeAdviceEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -601,9 +561,9 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getUtilizeProbe_ParameterAssignments()
+  public EReference getUtilizeAdvice_ParameterAssignments()
   {
-    return (EReference)utilizeProbeEClass.getEStructuralFeatures().get(1);
+    return (EReference)utilizeAdviceEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -931,9 +891,9 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getParamCompare()
+  public EClass getParamExpression()
   {
-    return paramCompareEClass;
+    return paramExpressionEClass;
   }
 
   /**
@@ -941,9 +901,9 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getParamCompare_Left()
+  public EReference getParamExpression_Left()
   {
-    return (EReference)paramCompareEClass.getEStructuralFeatures().get(0);
+    return (EReference)paramExpressionEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -951,9 +911,9 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getParamCompare_Operator()
+  public EAttribute getParamExpression_Logic()
   {
-    return (EAttribute)paramCompareEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)paramExpressionEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -961,9 +921,9 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getParamCompare_Right()
+  public EReference getParamExpression_Right()
   {
-    return (EReference)paramCompareEClass.getEStructuralFeatures().get(2);
+    return (EReference)paramExpressionEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -971,9 +931,9 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getValue()
+  public EAttribute getParamExpression_Operator()
   {
-    return valueEClass;
+    return (EAttribute)paramExpressionEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -1211,7 +1171,7 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getCollector_Type()
+  public EReference getCollector_Events()
   {
     return (EReference)collectorEClass.getEStructuralFeatures().get(1);
   }
@@ -1221,9 +1181,29 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getCollector_Initializations()
+  public EClass getEvent()
   {
-    return (EReference)collectorEClass.getEStructuralFeatures().get(2);
+    return eventEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getEvent_Type()
+  {
+    return (EReference)eventEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getEvent_Initializations()
+  {
+    return (EReference)eventEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1234,6 +1214,16 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
   public EEnum getQueryModifier()
   {
     return queryModifierEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EEnum getLogicOperator()
+  {
+    return logicOperatorEEnum;
   }
 
   /**
@@ -1308,7 +1298,6 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
     // Create classes and their features
     modelEClass = createEClass(MODEL);
     createEAttribute(modelEClass, MODEL__NAME);
-    createEReference(modelEClass, MODEL__METAMODELS);
     createEReference(modelEClass, MODEL__IMPORTS);
     createEReference(modelEClass, MODEL__SOURCES);
     createEReference(modelEClass, MODEL__ADVICES);
@@ -1318,22 +1307,18 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
     importEClass = createEClass(IMPORT);
     createEAttribute(importEClass, IMPORT__IMPORTED_NAMESPACE);
 
-    registeredPackageEClass = createEClass(REGISTERED_PACKAGE);
-    createEAttribute(registeredPackageEClass, REGISTERED_PACKAGE__NAME);
-    createEReference(registeredPackageEClass, REGISTERED_PACKAGE__EPACKAGE);
-
     applicationModelEClass = createEClass(APPLICATION_MODEL);
-    createEReference(applicationModelEClass, APPLICATION_MODEL__USE_PACKAGES);
+    createEAttribute(applicationModelEClass, APPLICATION_MODEL__HANDLER);
     createEAttribute(applicationModelEClass, APPLICATION_MODEL__NAME);
     createEAttribute(applicationModelEClass, APPLICATION_MODEL__MODEL);
 
     aspectEClass = createEClass(ASPECT);
-    createEReference(aspectEClass, ASPECT__QUERY);
-    createEReference(aspectEClass, ASPECT__APPLY_PROBES);
+    createEReference(aspectEClass, ASPECT__POINTCUT);
+    createEReference(aspectEClass, ASPECT__ADVICES);
 
-    utilizeProbeEClass = createEClass(UTILIZE_PROBE);
-    createEReference(utilizeProbeEClass, UTILIZE_PROBE__PROBE);
-    createEReference(utilizeProbeEClass, UTILIZE_PROBE__PARAMETER_ASSIGNMENTS);
+    utilizeAdviceEClass = createEClass(UTILIZE_ADVICE);
+    createEReference(utilizeAdviceEClass, UTILIZE_ADVICE__ADVICE);
+    createEReference(utilizeAdviceEClass, UTILIZE_ADVICE__PARAMETER_ASSIGNMENTS);
 
     adviceEClass = createEClass(ADVICE);
     createEAttribute(adviceEClass, ADVICE__NAME);
@@ -1376,12 +1361,11 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
     paramQueryEClass = createEClass(PARAM_QUERY);
     createEReference(paramQueryEClass, PARAM_QUERY__QUERIES);
 
-    paramCompareEClass = createEClass(PARAM_COMPARE);
-    createEReference(paramCompareEClass, PARAM_COMPARE__LEFT);
-    createEAttribute(paramCompareEClass, PARAM_COMPARE__OPERATOR);
-    createEReference(paramCompareEClass, PARAM_COMPARE__RIGHT);
-
-    valueEClass = createEClass(VALUE);
+    paramExpressionEClass = createEClass(PARAM_EXPRESSION);
+    createEReference(paramExpressionEClass, PARAM_EXPRESSION__LEFT);
+    createEAttribute(paramExpressionEClass, PARAM_EXPRESSION__LOGIC);
+    createEReference(paramExpressionEClass, PARAM_EXPRESSION__RIGHT);
+    createEAttribute(paramExpressionEClass, PARAM_EXPRESSION__OPERATOR);
 
     floatValueEClass = createEClass(FLOAT_VALUE);
     createEAttribute(floatValueEClass, FLOAT_VALUE__VALUE);
@@ -1418,11 +1402,15 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
 
     collectorEClass = createEClass(COLLECTOR);
     createEAttribute(collectorEClass, COLLECTOR__INSERTION_POINT);
-    createEReference(collectorEClass, COLLECTOR__TYPE);
-    createEReference(collectorEClass, COLLECTOR__INITIALIZATIONS);
+    createEReference(collectorEClass, COLLECTOR__EVENTS);
+
+    eventEClass = createEClass(EVENT);
+    createEReference(eventEClass, EVENT__TYPE);
+    createEReference(eventEClass, EVENT__INITIALIZATIONS);
 
     // Create enums
     queryModifierEEnum = createEEnum(QUERY_MODIFIER);
+    logicOperatorEEnum = createEEnum(LOGIC_OPERATOR);
     internalFunctionEEnum = createEEnum(INTERNAL_FUNCTION);
     reflectionFunctionEEnum = createEEnum(REFLECTION_FUNCTION);
     operatorEEnum = createEEnum(OPERATOR);
@@ -1464,10 +1452,10 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    floatValueEClass.getESuperTypes().add(this.getValue());
-    intValueEClass.getESuperTypes().add(this.getValue());
-    stringValueEClass.getESuperTypes().add(this.getValue());
-    referenceValueEClass.getESuperTypes().add(this.getValue());
+    floatValueEClass.getESuperTypes().add(this.getParamExpression());
+    intValueEClass.getESuperTypes().add(this.getParamExpression());
+    stringValueEClass.getESuperTypes().add(this.getParamExpression());
+    referenceValueEClass.getESuperTypes().add(this.getParamExpression());
     internalFunctionPropertyEClass.getESuperTypes().add(this.getParameter());
     runtimePropertyEClass.getESuperTypes().add(this.getParameter());
     reflectionPropertyEClass.getESuperTypes().add(this.getParameter());
@@ -1479,7 +1467,6 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getModel_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getModel_Metamodels(), this.getRegisteredPackage(), null, "metamodels", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Imports(), this.getImport(), null, "imports", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Sources(), this.getApplicationModel(), null, "sources", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Advices(), this.getAdvice(), null, "advices", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1489,22 +1476,18 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
     initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getImport_ImportedNamespace(), theEcorePackage.getEString(), "importedNamespace", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(registeredPackageEClass, RegisteredPackage.class, "RegisteredPackage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getRegisteredPackage_Name(), theEcorePackage.getEString(), "name", null, 0, 1, RegisteredPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRegisteredPackage_EPackage(), theEcorePackage.getEPackage(), null, "ePackage", null, 0, 1, RegisteredPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(applicationModelEClass, ApplicationModel.class, "ApplicationModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getApplicationModel_UsePackages(), this.getRegisteredPackage(), null, "usePackages", null, 0, -1, ApplicationModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getApplicationModel_Handler(), theEcorePackage.getEString(), "handler", null, 0, 1, ApplicationModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getApplicationModel_Name(), theEcorePackage.getEString(), "name", null, 0, 1, ApplicationModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getApplicationModel_Model(), theEcorePackage.getEString(), "model", null, 0, 1, ApplicationModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(aspectEClass, Aspect.class, "Aspect", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAspect_Query(), this.getPointcut(), null, "query", null, 0, 1, Aspect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getAspect_ApplyProbes(), this.getUtilizeProbe(), null, "applyProbes", null, 0, -1, Aspect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAspect_Pointcut(), this.getPointcut(), null, "pointcut", null, 0, 1, Aspect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAspect_Advices(), this.getUtilizeAdvice(), null, "advices", null, 0, -1, Aspect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(utilizeProbeEClass, UtilizeProbe.class, "UtilizeProbe", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getUtilizeProbe_Probe(), this.getAdvice(), null, "probe", null, 0, 1, UtilizeProbe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getUtilizeProbe_ParameterAssignments(), this.getValue(), null, "parameterAssignments", null, 0, -1, UtilizeProbe.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(utilizeAdviceEClass, UtilizeAdvice.class, "UtilizeAdvice", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getUtilizeAdvice_Advice(), this.getAdvice(), null, "advice", null, 0, 1, UtilizeAdvice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getUtilizeAdvice_ParameterAssignments(), this.getParamExpression(), null, "parameterAssignments", null, 0, -1, UtilizeAdvice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(adviceEClass, Advice.class, "Advice", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getAdvice_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Advice.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1545,14 +1528,13 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
     initEReference(getNode_Parameter(), this.getParamQuery(), null, "parameter", null, 0, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(paramQueryEClass, ParamQuery.class, "ParamQuery", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getParamQuery_Queries(), this.getParamCompare(), null, "queries", null, 0, -1, ParamQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getParamQuery_Queries(), this.getParamExpression(), null, "queries", null, 0, -1, ParamQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(paramCompareEClass, ParamCompare.class, "ParamCompare", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getParamCompare_Left(), this.getValue(), null, "left", null, 0, 1, ParamCompare.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getParamCompare_Operator(), this.getOperator(), "operator", null, 0, 1, ParamCompare.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getParamCompare_Right(), this.getValue(), null, "right", null, 0, 1, ParamCompare.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(valueEClass, Value.class, "Value", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(paramExpressionEClass, ParamExpression.class, "ParamExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getParamExpression_Left(), this.getParamExpression(), null, "left", null, 0, 1, ParamExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getParamExpression_Logic(), this.getLogicOperator(), "logic", null, 0, 1, ParamExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getParamExpression_Right(), this.getParamExpression(), null, "right", null, 0, 1, ParamExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getParamExpression_Operator(), this.getLogicOperator(), "operator", null, 0, 1, ParamExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(floatValueEClass, FloatValue.class, "FloatValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFloatValue_Value(), theEcorePackage.getEFloatObject(), "value", null, 0, 1, FloatValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1589,13 +1571,20 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
 
     initEClass(collectorEClass, Collector.class, "Collector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getCollector_InsertionPoint(), this.getInsertionPoint(), "insertionPoint", null, 0, 1, Collector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCollector_Type(), theRecordLangPackage.getRecordType(), null, "type", null, 0, 1, Collector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCollector_Initializations(), this.getValue(), null, "initializations", null, 0, -1, Collector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCollector_Events(), this.getEvent(), null, "events", null, 0, -1, Collector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(eventEClass, Event.class, "Event", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getEvent_Type(), theRecordLangPackage.getRecordType(), null, "type", null, 0, 1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEvent_Initializations(), this.getParamExpression(), null, "initializations", null, 0, -1, Event.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
     initEEnum(queryModifierEEnum, QueryModifier.class, "QueryModifier");
     addEEnumLiteral(queryModifierEEnum, QueryModifier.INCLUDE);
     addEEnumLiteral(queryModifierEEnum, QueryModifier.EXCLUDE);
+
+    initEEnum(logicOperatorEEnum, LogicOperator.class, "LogicOperator");
+    addEEnumLiteral(logicOperatorEEnum, LogicOperator.AND);
+    addEEnumLiteral(logicOperatorEEnum, LogicOperator.OR);
 
     initEEnum(internalFunctionEEnum, InternalFunction.class, "InternalFunction");
     addEEnumLiteral(internalFunctionEEnum, InternalFunction.TIME);

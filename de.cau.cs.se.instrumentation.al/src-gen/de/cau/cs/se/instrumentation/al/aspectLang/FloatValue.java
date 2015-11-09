@@ -19,7 +19,7 @@ package de.cau.cs.se.instrumentation.al.aspectLang;
  * @model
  * @generated
  */
-public interface FloatValue extends Value
+public interface FloatValue extends ParamExpression
 {
   /**
    * Returns the value of the '<em><b>Value</b></em>' attribute.

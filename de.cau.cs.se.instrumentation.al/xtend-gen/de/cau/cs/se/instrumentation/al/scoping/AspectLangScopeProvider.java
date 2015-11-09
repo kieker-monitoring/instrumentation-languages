@@ -28,11 +28,9 @@ import de.cau.cs.se.instrumentation.al.aspectLang.MethodQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.Node;
 import de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut;
-import de.cau.cs.se.instrumentation.al.aspectLang.RegisteredPackage;
 import de.cau.cs.se.instrumentation.al.modelhandling.ForeignModelTypeProviderFactory;
 import de.cau.cs.se.instrumentation.al.modelhandling.IForeignModelTypeProvider;
 import de.cau.cs.se.instrumentation.al.scoping.ContainerParentScope;
-import de.cau.cs.se.instrumentation.rl.scoping.EPackageScope;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -126,21 +124,5 @@ public class AspectLangScopeProvider extends AbstractDeclarativeScopeProvider {
       _xifexpression = query.getNode();
     }
     return _xifexpression;
-  }
-  
-  /**
-   * Find scope for the package property in the MetaModel rule.
-   * 
-   * @param context
-   *            The Package-object of the resulting model.
-   * @param reference
-   *            The EReference-reference object of the AST.
-   * @return The scope for the package attribute.
-   */
-  public IScope scope_RegisteredPackage_ePackage(final RegisteredPackage context, final EReference reference) {
-    Resource _eResource = context.eResource();
-    ResourceSet _resourceSet = _eResource.getResourceSet();
-    final IScope result = new EPackageScope(_resourceSet);
-    return result;
   }
 }

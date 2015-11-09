@@ -16,12 +16,8 @@
 package de.cau.cs.se.instrumentation.al.scoping;
 
 import com.google.common.base.Objects;
-import com.google.common.collect.Iterators;
 import de.cau.cs.se.instrumentation.al.aspectLang.Model;
-import de.cau.cs.se.instrumentation.al.aspectLang.RegisteredPackage;
-import java.util.Iterator;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -35,7 +31,6 @@ import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 
 /**
  * @author Reiner Jung
@@ -69,29 +64,8 @@ public class PackageContentScope implements IScope {
    */
   @Override
   public IEObjectDescription getSingleElement(final QualifiedName name) {
-    IEObjectDescription _xblockexpression = null;
-    {
-      System.out.println(("PackageContentScope.getSingleElement(name) " + name));
-      TreeIterator<EObject> _eAllContents = this.model.eAllContents();
-      Iterator<RegisteredPackage> _filter = Iterators.<RegisteredPackage>filter(_eAllContents, RegisteredPackage.class);
-      final Function1<RegisteredPackage, Boolean> _function = (RegisteredPackage it) -> {
-        String _name = it.getName();
-        String _firstSegment = name.getFirstSegment();
-        return Boolean.valueOf(_name.equals(_firstSegment));
-      };
-      final RegisteredPackage registeredPackage = IteratorExtensions.<RegisteredPackage>findFirst(_filter, _function);
-      IEObjectDescription _xifexpression = null;
-      boolean _notEquals = (!Objects.equal(registeredPackage, null));
-      if (_notEquals) {
-        EPackage _ePackage = registeredPackage.getEPackage();
-        QualifiedName _skipFirst = name.skipFirst(1);
-        _xifexpression = this.findClassifierInPackageHierarchy(_ePackage, _skipFirst);
-      } else {
-        return null;
-      }
-      _xblockexpression = _xifexpression;
-    }
-    return _xblockexpression;
+    System.out.println(("PackageContentScope.getSingleElement(name) " + name));
+    return null;
   }
   
   /**

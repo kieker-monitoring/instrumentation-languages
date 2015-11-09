@@ -3,7 +3,7 @@
 package de.cau.cs.se.instrumentation.al.aspectLang.impl;
 
 import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
-import de.cau.cs.se.instrumentation.al.aspectLang.ParamCompare;
+import de.cau.cs.se.instrumentation.al.aspectLang.ParamExpression;
 import de.cau.cs.se.instrumentation.al.aspectLang.ParamQuery;
 
 import java.util.Collection;
@@ -43,7 +43,7 @@ public class ParamQueryImpl extends MinimalEObjectImpl.Container implements Para
    * @generated
    * @ordered
    */
-  protected EList<ParamCompare> queries;
+  protected EList<ParamExpression> queries;
 
   /**
    * <!-- begin-user-doc -->
@@ -71,11 +71,11 @@ public class ParamQueryImpl extends MinimalEObjectImpl.Container implements Para
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<ParamCompare> getQueries()
+  public EList<ParamExpression> getQueries()
   {
     if (queries == null)
     {
-      queries = new EObjectContainmentEList<ParamCompare>(ParamCompare.class, this, AspectLangPackage.PARAM_QUERY__QUERIES);
+      queries = new EObjectContainmentEList<ParamExpression>(ParamExpression.class, this, AspectLangPackage.PARAM_QUERY__QUERIES);
     }
     return queries;
   }
@@ -125,7 +125,7 @@ public class ParamQueryImpl extends MinimalEObjectImpl.Container implements Para
     {
       case AspectLangPackage.PARAM_QUERY__QUERIES:
         getQueries().clear();
-        getQueries().addAll((Collection<? extends ParamCompare>)newValue);
+        getQueries().addAll((Collection<? extends ParamExpression>)newValue);
         return;
     }
     super.eSet(featureID, newValue);

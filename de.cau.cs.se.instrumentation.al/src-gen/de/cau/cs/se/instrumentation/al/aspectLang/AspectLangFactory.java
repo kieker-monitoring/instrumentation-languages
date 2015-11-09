@@ -41,15 +41,6 @@ public interface AspectLangFactory extends EFactory
   Import createImport();
 
   /**
-   * Returns a new object of class '<em>Registered Package</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Registered Package</em>'.
-   * @generated
-   */
-  RegisteredPackage createRegisteredPackage();
-
-  /**
    * Returns a new object of class '<em>Application Model</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -68,13 +59,13 @@ public interface AspectLangFactory extends EFactory
   Aspect createAspect();
 
   /**
-   * Returns a new object of class '<em>Utilize Probe</em>'.
+   * Returns a new object of class '<em>Utilize Advice</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Utilize Probe</em>'.
+   * @return a new object of class '<em>Utilize Advice</em>'.
    * @generated
    */
-  UtilizeProbe createUtilizeProbe();
+  UtilizeAdvice createUtilizeAdvice();
 
   /**
    * Returns a new object of class '<em>Advice</em>'.
@@ -158,22 +149,13 @@ public interface AspectLangFactory extends EFactory
   ParamQuery createParamQuery();
 
   /**
-   * Returns a new object of class '<em>Param Compare</em>'.
+   * Returns a new object of class '<em>Param Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Param Compare</em>'.
+   * @return a new object of class '<em>Param Expression</em>'.
    * @generated
    */
-  ParamCompare createParamCompare();
-
-  /**
-   * Returns a new object of class '<em>Value</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Value</em>'.
-   * @generated
-   */
-  Value createValue();
+  ParamExpression createParamExpression();
 
   /**
    * Returns a new object of class '<em>Float Value</em>'.
@@ -291,6 +273,15 @@ public interface AspectLangFactory extends EFactory
    * @generated
    */
   Collector createCollector();
+
+  /**
+   * Returns a new object of class '<em>Event</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Event</em>'.
+   * @generated
+   */
+  Event createEvent();
 
   /**
    * Returns the package supported by this factory.

@@ -86,13 +86,6 @@ public class AspectLangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case AspectLangPackage.REGISTERED_PACKAGE:
-      {
-        RegisteredPackage registeredPackage = (RegisteredPackage)theEObject;
-        T result = caseRegisteredPackage(registeredPackage);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case AspectLangPackage.APPLICATION_MODEL:
       {
         ApplicationModel applicationModel = (ApplicationModel)theEObject;
@@ -107,10 +100,10 @@ public class AspectLangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case AspectLangPackage.UTILIZE_PROBE:
+      case AspectLangPackage.UTILIZE_ADVICE:
       {
-        UtilizeProbe utilizeProbe = (UtilizeProbe)theEObject;
-        T result = caseUtilizeProbe(utilizeProbe);
+        UtilizeAdvice utilizeAdvice = (UtilizeAdvice)theEObject;
+        T result = caseUtilizeAdvice(utilizeAdvice);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -177,17 +170,10 @@ public class AspectLangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case AspectLangPackage.PARAM_COMPARE:
+      case AspectLangPackage.PARAM_EXPRESSION:
       {
-        ParamCompare paramCompare = (ParamCompare)theEObject;
-        T result = caseParamCompare(paramCompare);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case AspectLangPackage.VALUE:
-      {
-        Value value = (Value)theEObject;
-        T result = caseValue(value);
+        ParamExpression paramExpression = (ParamExpression)theEObject;
+        T result = caseParamExpression(paramExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -195,7 +181,7 @@ public class AspectLangSwitch<T> extends Switch<T>
       {
         FloatValue floatValue = (FloatValue)theEObject;
         T result = caseFloatValue(floatValue);
-        if (result == null) result = caseValue(floatValue);
+        if (result == null) result = caseParamExpression(floatValue);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -203,7 +189,7 @@ public class AspectLangSwitch<T> extends Switch<T>
       {
         IntValue intValue = (IntValue)theEObject;
         T result = caseIntValue(intValue);
-        if (result == null) result = caseValue(intValue);
+        if (result == null) result = caseParamExpression(intValue);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -211,7 +197,7 @@ public class AspectLangSwitch<T> extends Switch<T>
       {
         StringValue stringValue = (StringValue)theEObject;
         T result = caseStringValue(stringValue);
-        if (result == null) result = caseValue(stringValue);
+        if (result == null) result = caseParamExpression(stringValue);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -219,7 +205,7 @@ public class AspectLangSwitch<T> extends Switch<T>
       {
         ReferenceValue referenceValue = (ReferenceValue)theEObject;
         T result = caseReferenceValue(referenceValue);
-        if (result == null) result = caseValue(referenceValue);
+        if (result == null) result = caseParamExpression(referenceValue);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -293,6 +279,13 @@ public class AspectLangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case AspectLangPackage.EVENT:
+      {
+        Event event = (Event)theEObject;
+        T result = caseEvent(event);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -330,22 +323,6 @@ public class AspectLangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Registered Package</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Registered Package</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseRegisteredPackage(RegisteredPackage object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Application Model</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -378,17 +355,17 @@ public class AspectLangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Utilize Probe</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Utilize Advice</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Utilize Probe</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Utilize Advice</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseUtilizeProbe(UtilizeProbe object)
+  public T caseUtilizeAdvice(UtilizeAdvice object)
   {
     return null;
   }
@@ -538,33 +515,17 @@ public class AspectLangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Param Compare</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Param Expression</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Param Compare</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Param Expression</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseParamCompare(ParamCompare object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Value</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Value</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseValue(Value object)
+  public T caseParamExpression(ParamExpression object)
   {
     return null;
   }
@@ -773,6 +734,22 @@ public class AspectLangSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseCollector(Collector object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Event</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Event</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEvent(Event object)
   {
     return null;
   }

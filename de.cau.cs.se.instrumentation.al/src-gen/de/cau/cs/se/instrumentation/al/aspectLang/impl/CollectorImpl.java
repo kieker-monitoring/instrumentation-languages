@@ -4,10 +4,8 @@ package de.cau.cs.se.instrumentation.al.aspectLang.impl;
 
 import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
 import de.cau.cs.se.instrumentation.al.aspectLang.Collector;
+import de.cau.cs.se.instrumentation.al.aspectLang.Event;
 import de.cau.cs.se.instrumentation.al.aspectLang.InsertionPoint;
-import de.cau.cs.se.instrumentation.al.aspectLang.Value;
-
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
 
 import java.util.Collection;
 
@@ -34,8 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.CollectorImpl#getInsertionPoint <em>Insertion Point</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.CollectorImpl#getType <em>Type</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.CollectorImpl#getInitializations <em>Initializations</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.CollectorImpl#getEvents <em>Events</em>}</li>
  * </ul>
  *
  * @generated
@@ -63,24 +60,14 @@ public class CollectorImpl extends MinimalEObjectImpl.Container implements Colle
   protected InsertionPoint insertionPoint = INSERTION_POINT_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' reference.
+   * The cached value of the '{@link #getEvents() <em>Events</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getType()
+   * @see #getEvents()
    * @generated
    * @ordered
    */
-  protected RecordType type;
-
-  /**
-   * The cached value of the '{@link #getInitializations() <em>Initializations</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getInitializations()
-   * @generated
-   * @ordered
-   */
-  protected EList<Value> initializations;
+  protected EList<Event> events;
 
   /**
    * <!-- begin-user-doc -->
@@ -131,56 +118,13 @@ public class CollectorImpl extends MinimalEObjectImpl.Container implements Colle
    * <!-- end-user-doc -->
    * @generated
    */
-  public RecordType getType()
+  public EList<Event> getEvents()
   {
-    if (type != null && type.eIsProxy())
+    if (events == null)
     {
-      InternalEObject oldType = (InternalEObject)type;
-      type = (RecordType)eResolveProxy(oldType);
-      if (type != oldType)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, AspectLangPackage.COLLECTOR__TYPE, oldType, type));
-      }
+      events = new EObjectContainmentEList<Event>(Event.class, this, AspectLangPackage.COLLECTOR__EVENTS);
     }
-    return type;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public RecordType basicGetType()
-  {
-    return type;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setType(RecordType newType)
-  {
-    RecordType oldType = type;
-    type = newType;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.COLLECTOR__TYPE, oldType, type));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<Value> getInitializations()
-  {
-    if (initializations == null)
-    {
-      initializations = new EObjectContainmentEList<Value>(Value.class, this, AspectLangPackage.COLLECTOR__INITIALIZATIONS);
-    }
-    return initializations;
+    return events;
   }
 
   /**
@@ -193,8 +137,8 @@ public class CollectorImpl extends MinimalEObjectImpl.Container implements Colle
   {
     switch (featureID)
     {
-      case AspectLangPackage.COLLECTOR__INITIALIZATIONS:
-        return ((InternalEList<?>)getInitializations()).basicRemove(otherEnd, msgs);
+      case AspectLangPackage.COLLECTOR__EVENTS:
+        return ((InternalEList<?>)getEvents()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -211,11 +155,8 @@ public class CollectorImpl extends MinimalEObjectImpl.Container implements Colle
     {
       case AspectLangPackage.COLLECTOR__INSERTION_POINT:
         return getInsertionPoint();
-      case AspectLangPackage.COLLECTOR__TYPE:
-        if (resolve) return getType();
-        return basicGetType();
-      case AspectLangPackage.COLLECTOR__INITIALIZATIONS:
-        return getInitializations();
+      case AspectLangPackage.COLLECTOR__EVENTS:
+        return getEvents();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -234,12 +175,9 @@ public class CollectorImpl extends MinimalEObjectImpl.Container implements Colle
       case AspectLangPackage.COLLECTOR__INSERTION_POINT:
         setInsertionPoint((InsertionPoint)newValue);
         return;
-      case AspectLangPackage.COLLECTOR__TYPE:
-        setType((RecordType)newValue);
-        return;
-      case AspectLangPackage.COLLECTOR__INITIALIZATIONS:
-        getInitializations().clear();
-        getInitializations().addAll((Collection<? extends Value>)newValue);
+      case AspectLangPackage.COLLECTOR__EVENTS:
+        getEvents().clear();
+        getEvents().addAll((Collection<? extends Event>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -258,11 +196,8 @@ public class CollectorImpl extends MinimalEObjectImpl.Container implements Colle
       case AspectLangPackage.COLLECTOR__INSERTION_POINT:
         setInsertionPoint(INSERTION_POINT_EDEFAULT);
         return;
-      case AspectLangPackage.COLLECTOR__TYPE:
-        setType((RecordType)null);
-        return;
-      case AspectLangPackage.COLLECTOR__INITIALIZATIONS:
-        getInitializations().clear();
+      case AspectLangPackage.COLLECTOR__EVENTS:
+        getEvents().clear();
         return;
     }
     super.eUnset(featureID);
@@ -280,10 +215,8 @@ public class CollectorImpl extends MinimalEObjectImpl.Container implements Colle
     {
       case AspectLangPackage.COLLECTOR__INSERTION_POINT:
         return insertionPoint != INSERTION_POINT_EDEFAULT;
-      case AspectLangPackage.COLLECTOR__TYPE:
-        return type != null;
-      case AspectLangPackage.COLLECTOR__INITIALIZATIONS:
-        return initializations != null && !initializations.isEmpty();
+      case AspectLangPackage.COLLECTOR__EVENTS:
+        return events != null && !events.isEmpty();
     }
     return super.eIsSet(featureID);
   }

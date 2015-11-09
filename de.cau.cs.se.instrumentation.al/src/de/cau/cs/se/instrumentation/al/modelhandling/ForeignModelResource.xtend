@@ -35,7 +35,6 @@ import de.cau.cs.se.instrumantation.model.structure.Containment
 import de.cau.cs.se.instrumantation.model.structure.NamedElement
 import de.cau.cs.se.instrumantation.model.structure.StructureFactory
 import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel
-import de.cau.cs.se.instrumentation.al.aspectLang.RegisteredPackage
 import org.eclipse.xtext.naming.QualifiedName
 import org.eclipse.emf.ecore.EStructuralFeature
 import java.util.HashMap
@@ -162,32 +161,32 @@ public class ForeignModelResource extends ResourceImpl {
 	private def createModel() {
 		if (this.applicationModel != null && !this.loading) {
 			this.loading = true
-			// register the meta model (package) and its packages (Steinberg 2009, EMF 15.3.4)
-			val List<RegisteredPackage> usePackages = this.applicationModel.getUsePackages()
-			for (RegisteredPackage usePackage : usePackages) {
-				val ResourceSet resourceSet = usePackage.getEPackage().eResource().getResourceSet()
-				usePackage.eResource().getContents().get(0)
-				
-				resourceSet.getPackageRegistry().put(usePackage.getEPackage().getNsURI(), usePackage.getEPackage())
-				
-				// register the XMI facility for repository (this is not correct, as this is limiting)
-				val Resource.Factory.Registry registry = Resource.Factory.Registry.INSTANCE
-				val Map<String, Object> extensiontoFactoryMap = registry.getExtensionToFactoryMap()
-				extensiontoFactoryMap.put(usePackage.getEPackage().getName(), new XMIResourceFactoryImpl())
-			}
-
-			// Get the resource
-			val Resource source = resourceSet.getResource(URI::createPlatformResourceURI(this.applicationModel.getModel(), true), true)
-
-			// create main result model
-			this.resultModel = this.structureFactory.createModel()
-			// determine all interfaces
-			determineInterfaces(source)
-			// compose container hierarchy
-			determineContainerHierarchy(source)
-			// contents must be called via its getter otherwise xtend will used the variable which may
-			// result in an null pointer result
-			this.getContents().add(this.resultModel)
+//			// register the meta model (package) and its packages (Steinberg 2009, EMF 15.3.4)
+//			val List<RegisteredPackage> usePackages = this.applicationModel.getUsePackages()
+//			for (RegisteredPackage usePackage : usePackages) {
+//				val ResourceSet resourceSet = usePackage.getEPackage().eResource().getResourceSet()
+//				usePackage.eResource().getContents().get(0)
+//				
+//				resourceSet.getPackageRegistry().put(usePackage.getEPackage().getNsURI(), usePackage.getEPackage())
+//				
+//				// register the XMI facility for repository (this is not correct, as this is limiting)
+//				val Resource.Factory.Registry registry = Resource.Factory.Registry.INSTANCE
+//				val Map<String, Object> extensiontoFactoryMap = registry.getExtensionToFactoryMap()
+//				extensiontoFactoryMap.put(usePackage.getEPackage().getName(), new XMIResourceFactoryImpl())
+//			}
+//
+//			// Get the resource
+//			val Resource source = resourceSet.getResource(URI::createPlatformResourceURI(this.applicationModel.getModel(), true), true)
+//
+//			// create main result model
+//			this.resultModel = this.structureFactory.createModel()
+//			// determine all interfaces
+//			determineInterfaces(source)
+//			// compose container hierarchy
+//			determineContainerHierarchy(source)
+//			// contents must be called via its getter otherwise xtend will used the variable which may
+//			// result in an null pointer result
+//			this.getContents().add(this.resultModel)
 			this.loading = false;
 		}
 	}

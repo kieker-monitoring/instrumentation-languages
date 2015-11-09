@@ -19,7 +19,7 @@ package de.cau.cs.se.instrumentation.al.aspectLang;
  * @model
  * @generated
  */
-public interface IntValue extends Value
+public interface IntValue extends ParamExpression
 {
   /**
    * Returns the value of the '<em><b>Value</b></em>' attribute.

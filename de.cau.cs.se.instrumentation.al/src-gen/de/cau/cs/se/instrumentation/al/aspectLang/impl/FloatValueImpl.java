@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class FloatValueImpl extends ValueImpl implements FloatValue
+public class FloatValueImpl extends ParamExpressionImpl implements FloatValue
 {
   /**
    * The default value of the '{@link #getValue() <em>Value</em>}' attribute.

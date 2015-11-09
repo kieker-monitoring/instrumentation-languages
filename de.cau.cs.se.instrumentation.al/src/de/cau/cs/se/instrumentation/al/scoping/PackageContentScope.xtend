@@ -25,7 +25,6 @@ import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EClass
 import de.cau.cs.se.instrumentation.al.aspectLang.Model
-import de.cau.cs.se.instrumentation.al.aspectLang.RegisteredPackage
 
 /**
  * 
@@ -55,10 +54,10 @@ public class PackageContentScope implements IScope {
 	 */
 	override IEObjectDescription getSingleElement(QualifiedName name) {
 		System::out.println("PackageContentScope.getSingleElement(name) " + name)
-		val registeredPackage = model.eAllContents.filter(RegisteredPackage).findFirst[it.name.equals(name.firstSegment)]
-		if (registeredPackage != null)
-			registeredPackage.EPackage.findClassifierInPackageHierarchy(name.skipFirst(1))
-		else
+		//val registeredPackage = model.eAllContents.filter(RegisteredPackage).findFirst[it.name.equals(name.firstSegment)]
+		//if (registeredPackage != null)
+		//	registeredPackage.EPackage.findClassifierInPackageHierarchy(name.skipFirst(1))
+		//else
 			return null		
 	}
 		

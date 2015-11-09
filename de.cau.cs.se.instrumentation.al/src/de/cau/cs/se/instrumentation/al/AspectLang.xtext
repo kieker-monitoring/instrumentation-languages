@@ -13,7 +13,6 @@ import "http://modelstructure.se.cs.cau.de/structure" as structure
 
 Model:
 	'package' name = QualifiedName
-	(metamodels += RegisteredPackage)*
 	(imports += Import)*
 	(sources += ApplicationModel)*
 	(advices += Advice | pointcuts+=Pointcut | aspects += Aspect)*
@@ -23,12 +22,8 @@ Import:
 	'import' importedNamespace = QualifiedNameWithWildcard
 ;
 
-RegisteredPackage:
-	'register' name=ID ePackage=[ecore::EPackage|STRING]
-;
-
 ApplicationModel:
-	'use' usePackages+=[RegisteredPackage|ID] (',' usePackages+=[RegisteredPackage|ID])* 'on' name=ID model=STRING 
+	'use' handler=ID 'on' name=ID model=STRING 
 ;
 
 QualifiedName:
@@ -42,16 +37,16 @@ QualifiedNameWithWildcard:
 // define selector for reference destination
 
 Aspect:
-	'aspect' query=[Pointcut|QualifiedName] ':' applyProbes+=UtilizeProbe (',' applyProbes+=UtilizeProbe)* 
+	'aspect' pointcut=[Pointcut|QualifiedName] ':' advices+=UtilizeAdvice (',' advices+=UtilizeAdvice)* 
 ;
 
-UtilizeProbe:
-	probe=[Advice|QualifiedName]
+UtilizeAdvice:
+	advice=[Advice|QualifiedName]
 	('(' (parameterAssignments+=Value (',' parameterAssignments+=Value)*)? ')')?
 ;
 
 Advice:
-	'probe' name=ID ('(' (parameterDeclarations+=ParameterDeclaration (',' parameterDeclarations+=ParameterDeclaration)*)? ')')? '{'
+	'advice' name=ID ('(' (parameterDeclarations+=ParameterDeclaration (',' parameterDeclarations+=ParameterDeclaration)*)? ')')? '{'
 		collectors+=Collector*
 	'}'
 ;
@@ -63,21 +58,26 @@ ParameterDeclaration:
 Pointcut:
 	(annotation=Annotation)?
 	'pointcut' name=ID
-	location=LocationQuery 
-	(method=MethodQuery)?
+	'class' location=LocationQuery 
+	('operation' method=MethodQuery)?
 ;
 
-MethodQuery:
-	(modifier=[structure::MethodModifier|ID]|'*')
-	(returnType=[structure::Type|ID]|'*') 
-	methodReference=[structure::Method|ID]
-	'(' parameterQueries+=ParameterQuery (',' parameterQueries+=ParameterQuery)* ')'
+MethodQuery: {MethodQuery}
+	modifier=[structure::MethodModifier|ID]?
+	returnType=[structure::Type|ID]? 
+	(
+		(
+			methodReference=[structure::Method|ID] 
+			('(' parameterQueries+=ParameterQuery (',' parameterQueries+=ParameterQuery)* ')')? 
+		) | 
+		'*'
+	)
 ;
 
 ParameterQuery:
-	(modifier=[structure::ParameterModifier|ID]|'*')
+	modifier=[structure::ParameterModifier|ID]?
 	type=[structure::Type|ID]
-	parameter=[structure::Parameter|ID]
+	parameter=[structure::Parameter|ID]?
 ;
 
 LocationQuery:
@@ -93,20 +93,28 @@ enum QueryModifier:
 	EXCLUDE = 'exclude'
 ;
 
-
 Node:
 	(SubPathNode | WildcardNode | ParentNode | ContainerNode) (parameter=ParamQuery)?  
 ;
 
-ParamQuery: // extend ParamQuery to boolean expression with | & !
-	'[' queries+=ParamCompare+ ']'
+ParamQuery: 
+	'[' queries+=ParamOperator+ ']'
 ;
 
-ParamCompare:
-	left=Value (operator=Operator right=Value)
+ParamOperator returns ParamExpression: 
+	ParamCompare ({ParamExpression.left=current} logic=LogicOperator right=ParamCompare)?
 ;
 
-Value:
+enum LogicOperator:
+	AND = '&&' |
+	OR = '||'
+;
+
+ParamCompare returns ParamExpression:
+	Value ({ParamExpression.left=current} operator=LogicOperator right=Value)?
+;
+
+Value returns ParamExpression:
 	StringValue | IntValue | FloatValue | ReferenceValue
 ;
 
@@ -151,7 +159,7 @@ ReflectionProperty:
 enum ReflectionFunction:
 	NAME = 'name' |
 	SIGNATURE = 'signature' |
-	CLASS ='class' |
+	CLASS ='classname' |
 	RETURN_TYPE = 'return-type'
 ;
 
@@ -182,7 +190,11 @@ ParentNode: {ParentNode}
 ;
 
 Collector:
-	insertionPoint=InsertionPoint type=[irl::RecordType|QualifiedName] '(' (initializations+=Value (',' initializations+=Value)*)? ')'
+	insertionPoint=InsertionPoint events+=Event+
+;
+
+Event:
+	type=[irl::RecordType|QualifiedName] '(' (initializations+=Value (',' initializations+=Value)*)? ')'
 ;
 
 enum InsertionPoint: 

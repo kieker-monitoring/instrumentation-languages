@@ -4,20 +4,13 @@ package de.cau.cs.se.instrumentation.al.aspectLang.impl;
 
 import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel;
 import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
-import de.cau.cs.se.instrumentation.al.aspectLang.RegisteredPackage;
-
-import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,7 +20,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ApplicationModelImpl#getUsePackages <em>Use Packages</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ApplicationModelImpl#getHandler <em>Handler</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ApplicationModelImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ApplicationModelImpl#getModel <em>Model</em>}</li>
  * </ul>
@@ -37,14 +30,24 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 public class ApplicationModelImpl extends MinimalEObjectImpl.Container implements ApplicationModel
 {
   /**
-   * The cached value of the '{@link #getUsePackages() <em>Use Packages</em>}' reference list.
+   * The default value of the '{@link #getHandler() <em>Handler</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getUsePackages()
+   * @see #getHandler()
    * @generated
    * @ordered
    */
-  protected EList<RegisteredPackage> usePackages;
+  protected static final String HANDLER_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getHandler() <em>Handler</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getHandler()
+   * @generated
+   * @ordered
+   */
+  protected String handler = HANDLER_EDEFAULT;
 
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -112,13 +115,22 @@ public class ApplicationModelImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<RegisteredPackage> getUsePackages()
+  public String getHandler()
   {
-    if (usePackages == null)
-    {
-      usePackages = new EObjectResolvingEList<RegisteredPackage>(RegisteredPackage.class, this, AspectLangPackage.APPLICATION_MODEL__USE_PACKAGES);
-    }
-    return usePackages;
+    return handler;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setHandler(String newHandler)
+  {
+    String oldHandler = handler;
+    handler = newHandler;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.APPLICATION_MODEL__HANDLER, oldHandler, handler));
   }
 
   /**
@@ -177,8 +189,8 @@ public class ApplicationModelImpl extends MinimalEObjectImpl.Container implement
   {
     switch (featureID)
     {
-      case AspectLangPackage.APPLICATION_MODEL__USE_PACKAGES:
-        return getUsePackages();
+      case AspectLangPackage.APPLICATION_MODEL__HANDLER:
+        return getHandler();
       case AspectLangPackage.APPLICATION_MODEL__NAME:
         return getName();
       case AspectLangPackage.APPLICATION_MODEL__MODEL:
@@ -192,15 +204,13 @@ public class ApplicationModelImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case AspectLangPackage.APPLICATION_MODEL__USE_PACKAGES:
-        getUsePackages().clear();
-        getUsePackages().addAll((Collection<? extends RegisteredPackage>)newValue);
+      case AspectLangPackage.APPLICATION_MODEL__HANDLER:
+        setHandler((String)newValue);
         return;
       case AspectLangPackage.APPLICATION_MODEL__NAME:
         setName((String)newValue);
@@ -222,8 +232,8 @@ public class ApplicationModelImpl extends MinimalEObjectImpl.Container implement
   {
     switch (featureID)
     {
-      case AspectLangPackage.APPLICATION_MODEL__USE_PACKAGES:
-        getUsePackages().clear();
+      case AspectLangPackage.APPLICATION_MODEL__HANDLER:
+        setHandler(HANDLER_EDEFAULT);
         return;
       case AspectLangPackage.APPLICATION_MODEL__NAME:
         setName(NAME_EDEFAULT);
@@ -245,8 +255,8 @@ public class ApplicationModelImpl extends MinimalEObjectImpl.Container implement
   {
     switch (featureID)
     {
-      case AspectLangPackage.APPLICATION_MODEL__USE_PACKAGES:
-        return usePackages != null && !usePackages.isEmpty();
+      case AspectLangPackage.APPLICATION_MODEL__HANDLER:
+        return HANDLER_EDEFAULT == null ? handler != null : !HANDLER_EDEFAULT.equals(handler);
       case AspectLangPackage.APPLICATION_MODEL__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case AspectLangPackage.APPLICATION_MODEL__MODEL:
@@ -266,7 +276,9 @@ public class ApplicationModelImpl extends MinimalEObjectImpl.Container implement
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
+    result.append(" (handler: ");
+    result.append(handler);
+    result.append(", name: ");
     result.append(name);
     result.append(", model: ");
     result.append(model);

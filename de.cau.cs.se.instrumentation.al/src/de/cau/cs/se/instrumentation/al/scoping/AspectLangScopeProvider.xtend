@@ -22,7 +22,6 @@ import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery
 import de.cau.cs.se.instrumentation.al.aspectLang.Node
 import de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode
 import de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery
-import de.cau.cs.se.instrumentation.al.aspectLang.RegisteredPackage
 import de.cau.cs.se.instrumentation.al.modelhandling.ForeignModelTypeProviderFactory
 import de.cau.cs.se.instrumantation.model.structure.Method
 
@@ -93,21 +92,7 @@ class AspectLangScopeProvider extends org.eclipse.xtext.scoping.impl.AbstractDec
 		else
 			query.node
 	}
-	
-	/**
-	 * Find scope for the package property in the MetaModel rule.
-	 * 
-	 * @param context
-	 *            The Package-object of the resulting model.
-	 * @param reference
-	 *            The EReference-reference object of the AST.
-	 * @return The scope for the package attribute.
-	 */
-	def IScope scope_RegisteredPackage_ePackage(RegisteredPackage context, EReference reference) {
-		val IScope result = new EPackageScope(context.eResource().getResourceSet())
-		return result
-	}
-	
+		
 }
 
 

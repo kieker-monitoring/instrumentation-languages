@@ -28,7 +28,6 @@ import de.cau.cs.se.instrumantation.model.structure.StructureFactory;
 import de.cau.cs.se.instrumantation.model.structure.Type;
 import de.cau.cs.se.instrumantation.model.structure.TypeReference;
 import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel;
-import de.cau.cs.se.instrumentation.al.aspectLang.RegisteredPackage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
@@ -41,13 +40,10 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
@@ -231,37 +227,6 @@ public class ForeignModelResource extends ResourceImpl {
       boolean _xblockexpression = false;
       {
         this.loading = true;
-        final List<RegisteredPackage> usePackages = this.applicationModel.getUsePackages();
-        for (final RegisteredPackage usePackage : usePackages) {
-          {
-            EPackage _ePackage = usePackage.getEPackage();
-            Resource _eResource = _ePackage.eResource();
-            final ResourceSet resourceSet = _eResource.getResourceSet();
-            Resource _eResource_1 = usePackage.eResource();
-            EList<EObject> _contents = _eResource_1.getContents();
-            _contents.get(0);
-            EPackage.Registry _packageRegistry = resourceSet.getPackageRegistry();
-            EPackage _ePackage_1 = usePackage.getEPackage();
-            String _nsURI = _ePackage_1.getNsURI();
-            EPackage _ePackage_2 = usePackage.getEPackage();
-            _packageRegistry.put(_nsURI, _ePackage_2);
-            final Resource.Factory.Registry registry = Resource.Factory.Registry.INSTANCE;
-            final Map<String, Object> extensiontoFactoryMap = registry.getExtensionToFactoryMap();
-            EPackage _ePackage_3 = usePackage.getEPackage();
-            String _name = _ePackage_3.getName();
-            XMIResourceFactoryImpl _xMIResourceFactoryImpl = new XMIResourceFactoryImpl();
-            extensiontoFactoryMap.put(_name, _xMIResourceFactoryImpl);
-          }
-        }
-        String _model = this.applicationModel.getModel();
-        URI _createPlatformResourceURI = URI.createPlatformResourceURI(_model, true);
-        final Resource source = this.resourceSet.getResource(_createPlatformResourceURI, true);
-        Model _createModel = this.structureFactory.createModel();
-        this.resultModel = _createModel;
-        this.determineInterfaces(source);
-        this.determineContainerHierarchy(source);
-        EList<EObject> _contents = this.getContents();
-        _contents.add(this.resultModel);
         _xblockexpression = this.loading = false;
       }
       _xifexpression = _xblockexpression;

@@ -100,15 +100,15 @@ class AspectLangGenerator implements IGenerator {
 		
 		for (Aspect aspect : aspects) {
 			val includeElement = doc.createElement("include")
-			includeElement.setAttribute("within", aspect.query.computeAspectJQuery)
+			// includeElement.setAttribute("within", aspect.query.computeAspectJQuery)
 			weaverElement.appendChild(includeElement)
 		} 
 		
 		val aspectsElement = doc.createElement("aspects")
 		aspectjElement.appendChild(aspectsElement)
 		for (Aspect aspect : aspects) {
-			aspect.applyProbes.forEach[it.probe.collectors.filter[it.insertionPoint == InsertionPoint.^BEFORE].createDataCollectorAspect(doc, aspectsElement)]
-			aspect.applyProbes.forEach[it.probe.collectors.filter[it.insertionPoint == InsertionPoint.^AFTER].createDataCollectorAspect(doc, aspectsElement)]
+			aspect.advices.forEach[it.advice.collectors.filter[it.insertionPoint == InsertionPoint.^BEFORE].createDataCollectorAspect(doc, aspectsElement)]
+			aspect.advices.forEach[it.advice.collectors.filter[it.insertionPoint == InsertionPoint.^AFTER].createDataCollectorAspect(doc, aspectsElement)]
 		}
 		
 		// writing stuff
@@ -133,7 +133,7 @@ class AspectLangGenerator implements IGenerator {
 	 */
 	def void createDataCollectorAspect(Iterable<Collector> list, Document doc, Element parent) {
 		val aspect = doc.createElement("aspect")
-		aspect.setAttribute("name","record types are " + list.map[it.type.name].join(', '))
+		//aspect.setAttribute("name","record types are " + list.map[it.type.name].join(', '))
 		parent.appendChild(aspect)
 	}
 	

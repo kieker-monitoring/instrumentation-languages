@@ -5,7 +5,7 @@ package de.cau.cs.se.instrumentation.al.aspectLang.impl;
 import de.cau.cs.se.instrumentation.al.aspectLang.Aspect;
 import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
 import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut;
-import de.cau.cs.se.instrumentation.al.aspectLang.UtilizeProbe;
+import de.cau.cs.se.instrumentation.al.aspectLang.UtilizeAdvice;
 
 import java.util.Collection;
 
@@ -31,8 +31,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectImpl#getQuery <em>Query</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectImpl#getApplyProbes <em>Apply Probes</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectImpl#getPointcut <em>Pointcut</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectImpl#getAdvices <em>Advices</em>}</li>
  * </ul>
  *
  * @generated
@@ -40,24 +40,24 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
 {
   /**
-   * The cached value of the '{@link #getQuery() <em>Query</em>}' reference.
+   * The cached value of the '{@link #getPointcut() <em>Pointcut</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getQuery()
+   * @see #getPointcut()
    * @generated
    * @ordered
    */
-  protected Pointcut query;
+  protected Pointcut pointcut;
 
   /**
-   * The cached value of the '{@link #getApplyProbes() <em>Apply Probes</em>}' containment reference list.
+   * The cached value of the '{@link #getAdvices() <em>Advices</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getApplyProbes()
+   * @see #getAdvices()
    * @generated
    * @ordered
    */
-  protected EList<UtilizeProbe> applyProbes;
+  protected EList<UtilizeAdvice> advices;
 
   /**
    * <!-- begin-user-doc -->
@@ -85,19 +85,19 @@ public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
    * <!-- end-user-doc -->
    * @generated
    */
-  public Pointcut getQuery()
+  public Pointcut getPointcut()
   {
-    if (query != null && query.eIsProxy())
+    if (pointcut != null && pointcut.eIsProxy())
     {
-      InternalEObject oldQuery = (InternalEObject)query;
-      query = (Pointcut)eResolveProxy(oldQuery);
-      if (query != oldQuery)
+      InternalEObject oldPointcut = (InternalEObject)pointcut;
+      pointcut = (Pointcut)eResolveProxy(oldPointcut);
+      if (pointcut != oldPointcut)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, AspectLangPackage.ASPECT__QUERY, oldQuery, query));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, AspectLangPackage.ASPECT__POINTCUT, oldPointcut, pointcut));
       }
     }
-    return query;
+    return pointcut;
   }
 
   /**
@@ -105,9 +105,9 @@ public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
    * <!-- end-user-doc -->
    * @generated
    */
-  public Pointcut basicGetQuery()
+  public Pointcut basicGetPointcut()
   {
-    return query;
+    return pointcut;
   }
 
   /**
@@ -115,12 +115,12 @@ public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setQuery(Pointcut newQuery)
+  public void setPointcut(Pointcut newPointcut)
   {
-    Pointcut oldQuery = query;
-    query = newQuery;
+    Pointcut oldPointcut = pointcut;
+    pointcut = newPointcut;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.ASPECT__QUERY, oldQuery, query));
+      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.ASPECT__POINTCUT, oldPointcut, pointcut));
   }
 
   /**
@@ -128,13 +128,13 @@ public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<UtilizeProbe> getApplyProbes()
+  public EList<UtilizeAdvice> getAdvices()
   {
-    if (applyProbes == null)
+    if (advices == null)
     {
-      applyProbes = new EObjectContainmentEList<UtilizeProbe>(UtilizeProbe.class, this, AspectLangPackage.ASPECT__APPLY_PROBES);
+      advices = new EObjectContainmentEList<UtilizeAdvice>(UtilizeAdvice.class, this, AspectLangPackage.ASPECT__ADVICES);
     }
-    return applyProbes;
+    return advices;
   }
 
   /**
@@ -147,8 +147,8 @@ public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
   {
     switch (featureID)
     {
-      case AspectLangPackage.ASPECT__APPLY_PROBES:
-        return ((InternalEList<?>)getApplyProbes()).basicRemove(otherEnd, msgs);
+      case AspectLangPackage.ASPECT__ADVICES:
+        return ((InternalEList<?>)getAdvices()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -163,11 +163,11 @@ public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
   {
     switch (featureID)
     {
-      case AspectLangPackage.ASPECT__QUERY:
-        if (resolve) return getQuery();
-        return basicGetQuery();
-      case AspectLangPackage.ASPECT__APPLY_PROBES:
-        return getApplyProbes();
+      case AspectLangPackage.ASPECT__POINTCUT:
+        if (resolve) return getPointcut();
+        return basicGetPointcut();
+      case AspectLangPackage.ASPECT__ADVICES:
+        return getAdvices();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -183,12 +183,12 @@ public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
   {
     switch (featureID)
     {
-      case AspectLangPackage.ASPECT__QUERY:
-        setQuery((Pointcut)newValue);
+      case AspectLangPackage.ASPECT__POINTCUT:
+        setPointcut((Pointcut)newValue);
         return;
-      case AspectLangPackage.ASPECT__APPLY_PROBES:
-        getApplyProbes().clear();
-        getApplyProbes().addAll((Collection<? extends UtilizeProbe>)newValue);
+      case AspectLangPackage.ASPECT__ADVICES:
+        getAdvices().clear();
+        getAdvices().addAll((Collection<? extends UtilizeAdvice>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -204,11 +204,11 @@ public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
   {
     switch (featureID)
     {
-      case AspectLangPackage.ASPECT__QUERY:
-        setQuery((Pointcut)null);
+      case AspectLangPackage.ASPECT__POINTCUT:
+        setPointcut((Pointcut)null);
         return;
-      case AspectLangPackage.ASPECT__APPLY_PROBES:
-        getApplyProbes().clear();
+      case AspectLangPackage.ASPECT__ADVICES:
+        getAdvices().clear();
         return;
     }
     super.eUnset(featureID);
@@ -224,10 +224,10 @@ public class AspectImpl extends MinimalEObjectImpl.Container implements Aspect
   {
     switch (featureID)
     {
-      case AspectLangPackage.ASPECT__QUERY:
-        return query != null;
-      case AspectLangPackage.ASPECT__APPLY_PROBES:
-        return applyProbes != null && !applyProbes.isEmpty();
+      case AspectLangPackage.ASPECT__POINTCUT:
+        return pointcut != null;
+      case AspectLangPackage.ASPECT__ADVICES:
+        return advices != null && !advices.isEmpty();
     }
     return super.eIsSet(featureID);
   }

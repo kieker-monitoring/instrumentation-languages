@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class IntValueImpl extends ValueImpl implements IntValue
+public class IntValueImpl extends ParamExpressionImpl implements IntValue
 {
   /**
    * The default value of the '{@link #getValue() <em>Value</em>}' attribute.

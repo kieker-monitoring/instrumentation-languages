@@ -42,7 +42,7 @@ class AspectLangLabelProvider extends org.eclipse.xtext.ui.label.DefaultEObjectL
 		def text(LocationQuery e) { 'path' }
 		 
 		def text (Collector e) { // TODO this is most likely broken
-			e.type.name + " " + e.insertionPoint.toString
+			//e.type.name + " " + e.insertionPoint.toString
 		}
 	// Labels and icons can be computed like this:
 	

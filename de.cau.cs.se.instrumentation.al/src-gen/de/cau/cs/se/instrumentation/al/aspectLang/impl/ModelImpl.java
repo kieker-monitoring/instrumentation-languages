@@ -9,7 +9,6 @@ import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
 import de.cau.cs.se.instrumentation.al.aspectLang.Import;
 import de.cau.cs.se.instrumentation.al.aspectLang.Model;
 import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut;
-import de.cau.cs.se.instrumentation.al.aspectLang.RegisteredPackage;
 
 import java.util.Collection;
 
@@ -36,7 +35,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ModelImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ModelImpl#getMetamodels <em>Metamodels</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ModelImpl#getImports <em>Imports</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ModelImpl#getSources <em>Sources</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ModelImpl#getAdvices <em>Advices</em>}</li>
@@ -67,16 +65,6 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getMetamodels() <em>Metamodels</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getMetamodels()
-   * @generated
-   * @ordered
-   */
-  protected EList<RegisteredPackage> metamodels;
 
   /**
    * The cached value of the '{@link #getImports() <em>Imports</em>}' containment reference list.
@@ -177,20 +165,6 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<RegisteredPackage> getMetamodels()
-  {
-    if (metamodels == null)
-    {
-      metamodels = new EObjectContainmentEList<RegisteredPackage>(RegisteredPackage.class, this, AspectLangPackage.MODEL__METAMODELS);
-    }
-    return metamodels;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EList<Import> getImports()
   {
     if (imports == null)
@@ -266,8 +240,6 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case AspectLangPackage.MODEL__METAMODELS:
-        return ((InternalEList<?>)getMetamodels()).basicRemove(otherEnd, msgs);
       case AspectLangPackage.MODEL__IMPORTS:
         return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
       case AspectLangPackage.MODEL__SOURCES:
@@ -294,8 +266,6 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
     {
       case AspectLangPackage.MODEL__NAME:
         return getName();
-      case AspectLangPackage.MODEL__METAMODELS:
-        return getMetamodels();
       case AspectLangPackage.MODEL__IMPORTS:
         return getImports();
       case AspectLangPackage.MODEL__SOURCES:
@@ -323,10 +293,6 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
     {
       case AspectLangPackage.MODEL__NAME:
         setName((String)newValue);
-        return;
-      case AspectLangPackage.MODEL__METAMODELS:
-        getMetamodels().clear();
-        getMetamodels().addAll((Collection<? extends RegisteredPackage>)newValue);
         return;
       case AspectLangPackage.MODEL__IMPORTS:
         getImports().clear();
@@ -365,9 +331,6 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
       case AspectLangPackage.MODEL__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case AspectLangPackage.MODEL__METAMODELS:
-        getMetamodels().clear();
-        return;
       case AspectLangPackage.MODEL__IMPORTS:
         getImports().clear();
         return;
@@ -399,8 +362,6 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
     {
       case AspectLangPackage.MODEL__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case AspectLangPackage.MODEL__METAMODELS:
-        return metamodels != null && !metamodels.isEmpty();
       case AspectLangPackage.MODEL__IMPORTS:
         return imports != null && !imports.isEmpty();
       case AspectLangPackage.MODEL__SOURCES:

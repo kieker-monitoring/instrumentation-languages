@@ -20,7 +20,7 @@ package de.cau.cs.se.instrumentation.al.aspectLang;
  * @model
  * @generated
  */
-public interface ReferenceValue extends Value
+public interface ReferenceValue extends ParamExpression
 {
   /**
    * Returns the value of the '<em><b>Query</b></em>' containment reference.

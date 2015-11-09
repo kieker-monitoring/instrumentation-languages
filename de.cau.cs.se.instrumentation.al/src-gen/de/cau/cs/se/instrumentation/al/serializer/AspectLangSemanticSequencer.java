@@ -21,6 +21,7 @@ import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
 import de.cau.cs.se.instrumentation.al.aspectLang.Collector;
 import de.cau.cs.se.instrumentation.al.aspectLang.CompositionQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode;
+import de.cau.cs.se.instrumentation.al.aspectLang.Event;
 import de.cau.cs.se.instrumentation.al.aspectLang.FloatValue;
 import de.cau.cs.se.instrumentation.al.aspectLang.Import;
 import de.cau.cs.se.instrumentation.al.aspectLang.IntValue;
@@ -28,7 +29,7 @@ import de.cau.cs.se.instrumentation.al.aspectLang.InternalFunctionProperty;
 import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.MethodQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.Model;
-import de.cau.cs.se.instrumentation.al.aspectLang.ParamCompare;
+import de.cau.cs.se.instrumentation.al.aspectLang.ParamExpression;
 import de.cau.cs.se.instrumentation.al.aspectLang.ParamQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.ParameterDeclaration;
 import de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery;
@@ -36,11 +37,10 @@ import de.cau.cs.se.instrumentation.al.aspectLang.ParentNode;
 import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut;
 import de.cau.cs.se.instrumentation.al.aspectLang.ReferenceValue;
 import de.cau.cs.se.instrumentation.al.aspectLang.ReflectionProperty;
-import de.cau.cs.se.instrumentation.al.aspectLang.RegisteredPackage;
 import de.cau.cs.se.instrumentation.al.aspectLang.RuntimeProperty;
 import de.cau.cs.se.instrumentation.al.aspectLang.StringValue;
 import de.cau.cs.se.instrumentation.al.aspectLang.SubPathNode;
-import de.cau.cs.se.instrumentation.al.aspectLang.UtilizeProbe;
+import de.cau.cs.se.instrumentation.al.aspectLang.UtilizeAdvice;
 import de.cau.cs.se.instrumentation.al.aspectLang.WildcardNode;
 import de.cau.cs.se.instrumentation.al.services.AspectLangGrammarAccess;
 import org.eclipse.emf.ecore.EObject;
@@ -123,6 +123,9 @@ public class AspectLangSemanticSequencer extends AnnotationsSemanticSequencer {
 					return; 
 				}
 				else break;
+			case AspectLangPackage.EVENT:
+				sequence_Event(context, (Event) semanticObject); 
+				return; 
 			case AspectLangPackage.FLOAT_VALUE:
 				sequence_FloatValue(context, (FloatValue) semanticObject); 
 				return; 
@@ -144,9 +147,17 @@ public class AspectLangSemanticSequencer extends AnnotationsSemanticSequencer {
 			case AspectLangPackage.MODEL:
 				sequence_Model(context, (Model) semanticObject); 
 				return; 
-			case AspectLangPackage.PARAM_COMPARE:
-				sequence_ParamCompare(context, (ParamCompare) semanticObject); 
-				return; 
+			case AspectLangPackage.PARAM_EXPRESSION:
+				if(context == grammarAccess.getParamCompareRule() ||
+				   context == grammarAccess.getParamOperatorAccess().getParamExpressionLeftAction_1_0()) {
+					sequence_ParamCompare(context, (ParamExpression) semanticObject); 
+					return; 
+				}
+				else if(context == grammarAccess.getParamOperatorRule()) {
+					sequence_ParamCompare_ParamOperator(context, (ParamExpression) semanticObject); 
+					return; 
+				}
+				else break;
 			case AspectLangPackage.PARAM_QUERY:
 				sequence_ParamQuery(context, (ParamQuery) semanticObject); 
 				return; 
@@ -175,9 +186,6 @@ public class AspectLangSemanticSequencer extends AnnotationsSemanticSequencer {
 			case AspectLangPackage.REFLECTION_PROPERTY:
 				sequence_ReflectionProperty(context, (ReflectionProperty) semanticObject); 
 				return; 
-			case AspectLangPackage.REGISTERED_PACKAGE:
-				sequence_RegisteredPackage(context, (RegisteredPackage) semanticObject); 
-				return; 
 			case AspectLangPackage.RUNTIME_PROPERTY:
 				sequence_RuntimeProperty(context, (RuntimeProperty) semanticObject); 
 				return; 
@@ -194,8 +202,8 @@ public class AspectLangSemanticSequencer extends AnnotationsSemanticSequencer {
 					return; 
 				}
 				else break;
-			case AspectLangPackage.UTILIZE_PROBE:
-				sequence_UtilizeProbe(context, (UtilizeProbe) semanticObject); 
+			case AspectLangPackage.UTILIZE_ADVICE:
+				sequence_UtilizeAdvice(context, (UtilizeAdvice) semanticObject); 
 				return; 
 			case AspectLangPackage.WILDCARD_NODE:
 				if(context == grammarAccess.getNodeRule()) {
@@ -222,16 +230,29 @@ public class AspectLangSemanticSequencer extends AnnotationsSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (usePackages+=[RegisteredPackage|ID] usePackages+=[RegisteredPackage|ID]* name=ID model=STRING)
+	 *     (handler=ID name=ID model=STRING)
 	 */
 	protected void sequence_ApplicationModel(EObject context, ApplicationModel semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, AspectLangPackage.Literals.APPLICATION_MODEL__HANDLER) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AspectLangPackage.Literals.APPLICATION_MODEL__HANDLER));
+			if(transientValues.isValueTransient(semanticObject, AspectLangPackage.Literals.APPLICATION_MODEL__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AspectLangPackage.Literals.APPLICATION_MODEL__NAME));
+			if(transientValues.isValueTransient(semanticObject, AspectLangPackage.Literals.APPLICATION_MODEL__MODEL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AspectLangPackage.Literals.APPLICATION_MODEL__MODEL));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getApplicationModelAccess().getHandlerIDTerminalRuleCall_1_0(), semanticObject.getHandler());
+		feeder.accept(grammarAccess.getApplicationModelAccess().getNameIDTerminalRuleCall_3_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getApplicationModelAccess().getModelSTRINGTerminalRuleCall_4_0(), semanticObject.getModel());
+		feeder.finish();
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (query=[Pointcut|QualifiedName] applyProbes+=UtilizeProbe applyProbes+=UtilizeProbe*)
+	 *     (pointcut=[Pointcut|QualifiedName] advices+=UtilizeAdvice advices+=UtilizeAdvice*)
 	 */
 	protected void sequence_Aspect(EObject context, Aspect semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -240,7 +261,7 @@ public class AspectLangSemanticSequencer extends AnnotationsSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (insertionPoint=InsertionPoint type=[RecordType|QualifiedName] (initializations+=Value initializations+=Value*)?)
+	 *     (insertionPoint=InsertionPoint events+=Event+)
 	 */
 	protected void sequence_Collector(EObject context, Collector semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -276,17 +297,19 @@ public class AspectLangSemanticSequencer extends AnnotationsSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     (type=[RecordType|QualifiedName] (initializations+=Value initializations+=Value*)?)
+	 */
+	protected void sequence_Event(EObject context, Event semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     value=FLOAT
 	 */
 	protected void sequence_FloatValue(EObject context, FloatValue semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, AspectLangPackage.Literals.FLOAT_VALUE__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AspectLangPackage.Literals.FLOAT_VALUE__VALUE));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getFloatValueAccess().getValueFLOATTerminalRuleCall_0(), semanticObject.getValue());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -311,14 +334,7 @@ public class AspectLangSemanticSequencer extends AnnotationsSemanticSequencer {
 	 *     value=INT
 	 */
 	protected void sequence_IntValue(EObject context, IntValue semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, AspectLangPackage.Literals.INT_VALUE__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AspectLangPackage.Literals.INT_VALUE__VALUE));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getIntValueAccess().getValueINTTerminalRuleCall_0(), semanticObject.getValue());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -352,9 +368,7 @@ public class AspectLangSemanticSequencer extends AnnotationsSemanticSequencer {
 	 *     (
 	 *         modifier=[MethodModifier|ID]? 
 	 *         returnType=[Type|ID]? 
-	 *         methodReference=[Method|ID] 
-	 *         parameterQueries+=ParameterQuery 
-	 *         parameterQueries+=ParameterQuery*
+	 *         (methodReference=[Method|ID] (parameterQueries+=ParameterQuery parameterQueries+=ParameterQuery*)?)?
 	 *     )
 	 */
 	protected void sequence_MethodQuery(EObject context, MethodQuery semanticObject) {
@@ -364,13 +378,7 @@ public class AspectLangSemanticSequencer extends AnnotationsSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (
-	 *         name=QualifiedName 
-	 *         metamodels+=RegisteredPackage* 
-	 *         imports+=Import* 
-	 *         sources+=ApplicationModel* 
-	 *         (advices+=Advice | pointcuts+=Pointcut | aspects+=Aspect)*
-	 *     )
+	 *     (name=QualifiedName imports+=Import* sources+=ApplicationModel* (advices+=Advice | pointcuts+=Pointcut | aspects+=Aspect)*)
 	 */
 	protected void sequence_Model(EObject context, Model semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -406,29 +414,28 @@ public class AspectLangSemanticSequencer extends AnnotationsSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (left=Value operator=Operator right=Value)
+	 *     (left=ParamCompare_ParamExpression_1_0 operator=LogicOperator right=Value)
 	 */
-	protected void sequence_ParamCompare(EObject context, ParamCompare semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, AspectLangPackage.Literals.PARAM_COMPARE__LEFT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AspectLangPackage.Literals.PARAM_COMPARE__LEFT));
-			if(transientValues.isValueTransient(semanticObject, AspectLangPackage.Literals.PARAM_COMPARE__OPERATOR) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AspectLangPackage.Literals.PARAM_COMPARE__OPERATOR));
-			if(transientValues.isValueTransient(semanticObject, AspectLangPackage.Literals.PARAM_COMPARE__RIGHT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AspectLangPackage.Literals.PARAM_COMPARE__RIGHT));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getParamCompareAccess().getLeftValueParserRuleCall_0_0(), semanticObject.getLeft());
-		feeder.accept(grammarAccess.getParamCompareAccess().getOperatorOperatorEnumRuleCall_1_0_0(), semanticObject.getOperator());
-		feeder.accept(grammarAccess.getParamCompareAccess().getRightValueParserRuleCall_1_1_0(), semanticObject.getRight());
-		feeder.finish();
+	protected void sequence_ParamCompare(EObject context, ParamExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     queries+=ParamCompare+
+	 *     (
+	 *         (left=ParamOperator_ParamExpression_1_0 logic=LogicOperator right=ParamCompare) | 
+	 *         (left=ParamCompare_ParamExpression_1_0 operator=LogicOperator right=Value)
+	 *     )
+	 */
+	protected void sequence_ParamCompare_ParamOperator(EObject context, ParamExpression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     queries+=ParamOperator+
 	 */
 	protected void sequence_ParamQuery(EObject context, ParamQuery semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -456,7 +463,7 @@ public class AspectLangSemanticSequencer extends AnnotationsSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (modifier=[ParameterModifier|ID]? type=[Type|ID] parameter=[Parameter|ID])
+	 *     (modifier=[ParameterModifier|ID]? type=[Type|ID] parameter=[Parameter|ID]?)
 	 */
 	protected void sequence_ParameterQuery(EObject context, ParameterQuery semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -508,25 +515,6 @@ public class AspectLangSemanticSequencer extends AnnotationsSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=ID ePackage=[EPackage|STRING])
-	 */
-	protected void sequence_RegisteredPackage(EObject context, RegisteredPackage semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, AspectLangPackage.Literals.REGISTERED_PACKAGE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AspectLangPackage.Literals.REGISTERED_PACKAGE__NAME));
-			if(transientValues.isValueTransient(semanticObject, AspectLangPackage.Literals.REGISTERED_PACKAGE__EPACKAGE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AspectLangPackage.Literals.REGISTERED_PACKAGE__EPACKAGE));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getRegisteredPackageAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getRegisteredPackageAccess().getEPackageEPackageSTRINGTerminalRuleCall_2_0_1(), semanticObject.getEPackage());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
 	 *     reference=ID
 	 */
 	protected void sequence_RuntimeProperty(EObject context, RuntimeProperty semanticObject) {
@@ -546,14 +534,7 @@ public class AspectLangSemanticSequencer extends AnnotationsSemanticSequencer {
 	 *     value=STRING
 	 */
 	protected void sequence_StringValue(EObject context, StringValue semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, AspectLangPackage.Literals.STRING_VALUE__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AspectLangPackage.Literals.STRING_VALUE__VALUE));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getStringValueAccess().getValueSTRINGTerminalRuleCall_0(), semanticObject.getValue());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -568,9 +549,9 @@ public class AspectLangSemanticSequencer extends AnnotationsSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (probe=[Advice|QualifiedName] (parameterAssignments+=Value parameterAssignments+=Value*)?)
+	 *     (advice=[Advice|QualifiedName] (parameterAssignments+=Value parameterAssignments+=Value*)?)
 	 */
-	protected void sequence_UtilizeProbe(EObject context, UtilizeProbe semanticObject) {
+	protected void sequence_UtilizeAdvice(EObject context, UtilizeAdvice semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

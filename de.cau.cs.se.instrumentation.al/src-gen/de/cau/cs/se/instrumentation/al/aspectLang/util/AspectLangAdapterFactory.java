@@ -85,11 +85,6 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
         return createImportAdapter();
       }
       @Override
-      public Adapter caseRegisteredPackage(RegisteredPackage object)
-      {
-        return createRegisteredPackageAdapter();
-      }
-      @Override
       public Adapter caseApplicationModel(ApplicationModel object)
       {
         return createApplicationModelAdapter();
@@ -100,9 +95,9 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
         return createAspectAdapter();
       }
       @Override
-      public Adapter caseUtilizeProbe(UtilizeProbe object)
+      public Adapter caseUtilizeAdvice(UtilizeAdvice object)
       {
-        return createUtilizeProbeAdapter();
+        return createUtilizeAdviceAdapter();
       }
       @Override
       public Adapter caseAdvice(Advice object)
@@ -150,14 +145,9 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
         return createParamQueryAdapter();
       }
       @Override
-      public Adapter caseParamCompare(ParamCompare object)
+      public Adapter caseParamExpression(ParamExpression object)
       {
-        return createParamCompareAdapter();
-      }
-      @Override
-      public Adapter caseValue(Value object)
-      {
-        return createValueAdapter();
+        return createParamExpressionAdapter();
       }
       @Override
       public Adapter caseFloatValue(FloatValue object)
@@ -225,6 +215,11 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
         return createCollectorAdapter();
       }
       @Override
+      public Adapter caseEvent(Event object)
+      {
+        return createEventAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -277,21 +272,6 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.RegisteredPackage <em>Registered Package</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.RegisteredPackage
-   * @generated
-   */
-  public Adapter createRegisteredPackageAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel <em>Application Model</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -322,16 +302,16 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.UtilizeProbe <em>Utilize Probe</em>}'.
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.UtilizeAdvice <em>Utilize Advice</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.UtilizeProbe
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.UtilizeAdvice
    * @generated
    */
-  public Adapter createUtilizeProbeAdapter()
+  public Adapter createUtilizeAdviceAdapter()
   {
     return null;
   }
@@ -472,31 +452,16 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ParamCompare <em>Param Compare</em>}'.
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ParamExpression <em>Param Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ParamCompare
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.ParamExpression
    * @generated
    */
-  public Adapter createParamCompareAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Value <em>Value</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Value
-   * @generated
-   */
-  public Adapter createValueAdapter()
+  public Adapter createParamExpressionAdapter()
   {
     return null;
   }
@@ -692,6 +657,21 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createCollectorAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Event <em>Event</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.Event
+   * @generated
+   */
+  public Adapter createEventAdapter()
   {
     return null;
   }

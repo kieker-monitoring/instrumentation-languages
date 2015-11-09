@@ -32,8 +32,7 @@ import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.MethodQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.Node;
 import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut;
-import de.cau.cs.se.instrumentation.al.aspectLang.UtilizeProbe;
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
+import de.cau.cs.se.instrumentation.al.aspectLang.UtilizeAdvice;
 import java.io.StringWriter;
 import java.util.Arrays;
 import java.util.Collection;
@@ -130,9 +129,6 @@ public class AspectLangGenerator implements IGenerator {
       for (final Aspect aspect : aspects) {
         {
           final Element includeElement = doc.createElement("include");
-          Pointcut _query = aspect.getQuery();
-          String _computeAspectJQuery = this.computeAspectJQuery(_query);
-          includeElement.setAttribute("within", _computeAspectJQuery);
           weaverElement.appendChild(includeElement);
         }
       }
@@ -140,10 +136,10 @@ public class AspectLangGenerator implements IGenerator {
       aspectjElement.appendChild(aspectsElement);
       for (final Aspect aspect_1 : aspects) {
         {
-          EList<UtilizeProbe> _applyProbes = aspect_1.getApplyProbes();
-          final Consumer<UtilizeProbe> _function = (UtilizeProbe it) -> {
-            Advice _probe = it.getProbe();
-            EList<Collector> _collectors = _probe.getCollectors();
+          EList<UtilizeAdvice> _advices = aspect_1.getAdvices();
+          final Consumer<UtilizeAdvice> _function = (UtilizeAdvice it) -> {
+            Advice _advice = it.getAdvice();
+            EList<Collector> _collectors = _advice.getCollectors();
             final Function1<Collector, Boolean> _function_1 = (Collector it_1) -> {
               InsertionPoint _insertionPoint = it_1.getInsertionPoint();
               return Boolean.valueOf(Objects.equal(_insertionPoint, InsertionPoint.BEFORE));
@@ -151,11 +147,11 @@ public class AspectLangGenerator implements IGenerator {
             Iterable<Collector> _filter = IterableExtensions.<Collector>filter(_collectors, _function_1);
             this.createDataCollectorAspect(_filter, doc, aspectsElement);
           };
-          _applyProbes.forEach(_function);
-          EList<UtilizeProbe> _applyProbes_1 = aspect_1.getApplyProbes();
-          final Consumer<UtilizeProbe> _function_1 = (UtilizeProbe it) -> {
-            Advice _probe = it.getProbe();
-            EList<Collector> _collectors = _probe.getCollectors();
+          _advices.forEach(_function);
+          EList<UtilizeAdvice> _advices_1 = aspect_1.getAdvices();
+          final Consumer<UtilizeAdvice> _function_1 = (UtilizeAdvice it) -> {
+            Advice _advice = it.getAdvice();
+            EList<Collector> _collectors = _advice.getCollectors();
             final Function1<Collector, Boolean> _function_2 = (Collector it_1) -> {
               InsertionPoint _insertionPoint = it_1.getInsertionPoint();
               return Boolean.valueOf(Objects.equal(_insertionPoint, InsertionPoint.AFTER));
@@ -163,7 +159,7 @@ public class AspectLangGenerator implements IGenerator {
             Iterable<Collector> _filter = IterableExtensions.<Collector>filter(_collectors, _function_2);
             this.createDataCollectorAspect(_filter, doc, aspectsElement);
           };
-          _applyProbes_1.forEach(_function_1);
+          _advices_1.forEach(_function_1);
         }
       }
       final TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -190,14 +186,6 @@ public class AspectLangGenerator implements IGenerator {
    */
   public void createDataCollectorAspect(final Iterable<Collector> list, final Document doc, final Element parent) {
     final Element aspect = doc.createElement("aspect");
-    final Function1<Collector, String> _function = (Collector it) -> {
-      RecordType _type = it.getType();
-      return _type.getName();
-    };
-    Iterable<String> _map = IterableExtensions.<Collector, String>map(list, _function);
-    String _join = IterableExtensions.join(_map, ", ");
-    String _plus = ("record types are " + _join);
-    aspect.setAttribute("name", _plus);
     parent.appendChild(aspect);
   }
   

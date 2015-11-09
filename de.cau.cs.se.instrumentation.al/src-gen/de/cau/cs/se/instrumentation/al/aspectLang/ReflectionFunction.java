@@ -47,7 +47,7 @@ public enum ReflectionFunction implements Enumerator
    * @generated
    * @ordered
    */
-  CLASS(2, "CLASS", "class"),
+  CLASS(2, "CLASS", "classname"),
 
   /**
    * The '<em><b>RETURN TYPE</b></em>' literal object.
@@ -98,7 +98,7 @@ public enum ReflectionFunction implements Enumerator
    * </p>
    * <!-- end-user-doc -->
    * @see #CLASS
-   * @model literal="class"
+   * @model literal="classname"
    * @generated
    * @ordered
    */

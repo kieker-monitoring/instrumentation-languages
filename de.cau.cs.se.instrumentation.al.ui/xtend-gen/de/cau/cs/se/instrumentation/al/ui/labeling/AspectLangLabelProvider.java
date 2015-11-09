@@ -9,12 +9,10 @@ import de.cau.cs.se.instrumantation.model.structure.NamedElement;
 import de.cau.cs.se.instrumentation.al.aspectLang.Aspect;
 import de.cau.cs.se.instrumentation.al.aspectLang.Collector;
 import de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode;
-import de.cau.cs.se.instrumentation.al.aspectLang.InsertionPoint;
 import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut;
 import de.cau.cs.se.instrumentation.al.aspectLang.SubPathNode;
 import de.cau.cs.se.instrumentation.al.aspectLang.WildcardNode;
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
@@ -70,12 +68,7 @@ public class AspectLangLabelProvider extends DefaultEObjectLabelProvider {
     return "path";
   }
   
-  public String text(final Collector e) {
-    RecordType _type = e.getType();
-    String _name = _type.getName();
-    String _plus = (_name + " ");
-    InsertionPoint _insertionPoint = e.getInsertionPoint();
-    String _string = _insertionPoint.toString();
-    return (_plus + _string);
+  public Object text(final Collector e) {
+    return null;
   }
 }

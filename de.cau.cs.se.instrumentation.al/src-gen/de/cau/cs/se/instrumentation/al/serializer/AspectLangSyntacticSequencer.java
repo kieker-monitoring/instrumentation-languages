@@ -28,7 +28,7 @@ public class AspectLangSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected AbstractElementAlias match_KeyStringValueAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q;
 	protected AbstractElementAlias match_TagAnnotation___LeftParenthesisKeyword_2_0_RightParenthesisKeyword_2_2__q;
 	protected AbstractElementAlias match_TypedKeyStringValueAnnotation___LeftParenthesisKeyword_6_0_RightParenthesisKeyword_6_2__q;
-	protected AbstractElementAlias match_UtilizeProbe___LeftParenthesisKeyword_1_0_RightParenthesisKeyword_1_2__q;
+	protected AbstractElementAlias match_UtilizeAdvice___LeftParenthesisKeyword_1_0_RightParenthesisKeyword_1_2__q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
@@ -40,7 +40,7 @@ public class AspectLangSyntacticSequencer extends AbstractSyntacticSequencer {
 		match_KeyStringValueAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getKeyStringValueAnnotationAccess().getLeftParenthesisKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getKeyStringValueAnnotationAccess().getRightParenthesisKeyword_3_2()));
 		match_TagAnnotation___LeftParenthesisKeyword_2_0_RightParenthesisKeyword_2_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getTagAnnotationAccess().getLeftParenthesisKeyword_2_0()), new TokenAlias(false, false, grammarAccess.getTagAnnotationAccess().getRightParenthesisKeyword_2_2()));
 		match_TypedKeyStringValueAnnotation___LeftParenthesisKeyword_6_0_RightParenthesisKeyword_6_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getTypedKeyStringValueAnnotationAccess().getLeftParenthesisKeyword_6_0()), new TokenAlias(false, false, grammarAccess.getTypedKeyStringValueAnnotationAccess().getRightParenthesisKeyword_6_2()));
-		match_UtilizeProbe___LeftParenthesisKeyword_1_0_RightParenthesisKeyword_1_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getUtilizeProbeAccess().getLeftParenthesisKeyword_1_0()), new TokenAlias(false, false, grammarAccess.getUtilizeProbeAccess().getRightParenthesisKeyword_1_2()));
+		match_UtilizeAdvice___LeftParenthesisKeyword_1_0_RightParenthesisKeyword_1_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getUtilizeAdviceAccess().getLeftParenthesisKeyword_1_0()), new TokenAlias(false, false, grammarAccess.getUtilizeAdviceAccess().getRightParenthesisKeyword_1_2()));
 	}
 	
 	@Override
@@ -69,8 +69,8 @@ public class AspectLangSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_TagAnnotation___LeftParenthesisKeyword_2_0_RightParenthesisKeyword_2_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_TypedKeyStringValueAnnotation___LeftParenthesisKeyword_6_0_RightParenthesisKeyword_6_2__q.equals(syntax))
 				emit_TypedKeyStringValueAnnotation___LeftParenthesisKeyword_6_0_RightParenthesisKeyword_6_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_UtilizeProbe___LeftParenthesisKeyword_1_0_RightParenthesisKeyword_1_2__q.equals(syntax))
-				emit_UtilizeProbe___LeftParenthesisKeyword_1_0_RightParenthesisKeyword_1_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_UtilizeAdvice___LeftParenthesisKeyword_1_0_RightParenthesisKeyword_1_2__q.equals(syntax))
+				emit_UtilizeAdvice___LeftParenthesisKeyword_1_0_RightParenthesisKeyword_1_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -158,9 +158,9 @@ public class AspectLangSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     ('(' ')')?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     probe=[Advice|QualifiedName] (ambiguity) (rule end)
+	 *     advice=[Advice|QualifiedName] (ambiguity) (rule end)
 	 */
-	protected void emit_UtilizeProbe___LeftParenthesisKeyword_1_0_RightParenthesisKeyword_1_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_UtilizeAdvice___LeftParenthesisKeyword_1_0_RightParenthesisKeyword_1_2__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
