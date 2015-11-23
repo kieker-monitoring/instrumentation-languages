@@ -39,6 +39,7 @@ import org.eclipse.jdt.core.ICompilationUnit
 import org.eclipse.jdt.core.IPackageFragment
 import org.eclipse.jdt.core.IType
 import org.eclipse.jdt.core.JavaCore
+import org.eclipse.core.resources.IMarker
 
 /**
  * broadly based on org.spp.cocome.behavior.pcm.handler.PCMModelResource
@@ -155,36 +156,44 @@ public class JarModelResource extends ResourceImpl {
 		if (!this.isLoaded) {
 			val javaProject = JavaCore.create(project)
 			val iface = javaProject.findType("kieker.common.record.IMonitoringRecord")
-						
-			/** find all types which are related to IMonitoringRecord */
-			val hierarchy = iface.newTypeHierarchy(javaProject,null)
-			val types = hierarchy.allTypes.filter[
-				val name = it.fullyQualifiedName
-				!(name.equals("java.io.Serializable") ||
-					name.equals("java.lang.Comparable") ||
-					name.equals("java.lang.Object"))
-			]
 			
-			val models = new HashMap<String,Model>()
-			/** create a model for each package */	
-			types.forEach[type | if (models.get(type.packageFragment.elementName)==null)
-				models.put(type.packageFragment.elementName, type.createModel)
-			]
-			
-			val typeMap = new HashMap<IType,Type>()
-			/** create a type for each type. */
-			types.forEach[type | 
-				val modelType = type.createType
-				models.get(type.packageFragment.elementName).types.add(modelType)
-				typeMap.put(type, modelType)
-				modelTypes.add(modelType)
-			]
-			
-			/** link types. */
-			types.forEach[type | type.linkType(typeMap)]
-			
-			if(models.values != null) {
-				this.getContents().addAll(models.values)
+			if (iface != null) {		
+				/** find all types which are related to IMonitoringRecord */
+				val hierarchy = iface.newTypeHierarchy(javaProject,null)
+				val types = hierarchy.allTypes.filter[
+					val name = it.fullyQualifiedName
+					!(name.equals("java.io.Serializable") ||
+						name.equals("java.lang.Comparable") ||
+						name.equals("java.lang.Object"))
+				]
+				
+				val models = new HashMap<String,Model>()
+				/** create a model for each package */	
+				types.forEach[type | if (models.get(type.packageFragment.elementName)==null)
+					models.put(type.packageFragment.elementName, type.createModel)
+				]
+				
+				val typeMap = new HashMap<IType,Type>()
+				/** create a type for each type. */
+				types.forEach[type | 
+					val modelType = type.createType
+					models.get(type.packageFragment.elementName).types.add(modelType)
+					typeMap.put(type, modelType)
+					modelTypes.add(modelType)
+				]
+				
+				/** link types. */
+				types.forEach[type | type.linkType(typeMap)]
+				
+				if(models.values != null) {
+					this.getContents().addAll(models.values)
+				}
+			} else {
+				val m = project.createMarker(IMarker.PROBLEM)
+				m.setAttribute(IMarker.LINE_NUMBER, 0)
+				m.setAttribute(IMarker.MESSAGE, "The project does not contain the interface kieker.common.record.IMonitoringRecord")
+				m.setAttribute(IMarker.PRIORITY, IMarker.PRIORITY_LOW)
+				m.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_INFO)
 			}
 		}
 	}

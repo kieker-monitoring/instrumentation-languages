@@ -894,13 +894,13 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 */
 	private def CharSequence createLiteral(Literal literal) {
 		switch (literal) {
-			IntLiteral: '''«literal.value»«if (literal.getRequiredType.equals('long')) 'L'»'''
-			FloatLiteral: '''«literal.value»«if (literal.getRequiredType.equals('float')) 'f'»'''
+			IntLiteral: '''«literal.value»«if (literal.getRequiredType.name.equals('long')) 'L'»'''
+			FloatLiteral: '''«literal.value»«if (literal.getRequiredType.name.equals('float')) 'f'»'''
 			BooleanLiteral: '''«if (literal.value) 'true' else 'false'»'''
 			ConstantLiteral: '''«literal.value.name»'''
 			BuiltInValueLiteral case "KIEKER_VERSION".equals(literal.value): '''kieker.common.util.Version.getVERSION()'''
-			StringLiteral case literal.getRequiredType.equals('string'): '''"«literal.value»"'''
-			StringLiteral case literal.getRequiredType.equals('char'): '\'' + literal.value + '\''
+			StringLiteral case literal.getRequiredType.name.equals('string'): '''"«literal.value»"'''
+			StringLiteral case literal.getRequiredType.name.equals('char'): '\'' + literal.value + '\''
 			ArrayLiteral: '''{ «literal.literals.map[element | element.createLiteral].join(if (literal.literals.get(0) instanceof ArrayLiteral) ",\n" else ", ")» }'''
 			default: 'ERROR ' + literal.class.name
 		}	
@@ -909,10 +909,10 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	/**
 	 * Resolve the primitive type for the given literal.
 	 */
-	private def String getRequiredType(Literal literal) {
+	private def EClassifier getRequiredType(Literal literal) {
 		switch (literal.eContainer) {
-			Constant : (literal.eContainer as Constant).type.class_.name
-			Property : (literal.eContainer as Property).type.class_.name
+			Constant : (literal.eContainer as Constant).type.class_
+			Property : (literal.eContainer as Property).type.class_
 			Literal : (literal.eContainer as Literal).getRequiredType
 		}
 	}

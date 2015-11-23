@@ -2316,8 +2316,9 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         int _value = ((IntLiteral)literal).getValue();
         _builder.append(_value, "");
         String _xifexpression = null;
-        String _requiredType = this.getRequiredType(literal);
-        boolean _equals = _requiredType.equals("long");
+        EClassifier _requiredType = this.getRequiredType(literal);
+        String _name = _requiredType.getName();
+        boolean _equals = _name.equals("long");
         if (_equals) {
           _xifexpression = "L";
         }
@@ -2332,8 +2333,9 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         Float _value = ((FloatLiteral)literal).getValue();
         _builder.append(_value, "");
         String _xifexpression = null;
-        String _requiredType = this.getRequiredType(literal);
-        boolean _equals = _requiredType.equals("float");
+        EClassifier _requiredType = this.getRequiredType(literal);
+        String _name = _requiredType.getName();
+        boolean _equals = _name.equals("float");
         if (_equals) {
           _xifexpression = "f";
         }
@@ -2380,8 +2382,9 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     }
     if (!_matched) {
       if (literal instanceof StringLiteral) {
-        String _requiredType = this.getRequiredType(literal);
-        boolean _equals = _requiredType.equals("string");
+        EClassifier _requiredType = this.getRequiredType(literal);
+        String _name = _requiredType.getName();
+        boolean _equals = _name.equals("string");
         if (_equals) {
           _matched=true;
           StringConcatenation _builder = new StringConcatenation();
@@ -2395,8 +2398,9 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     }
     if (!_matched) {
       if (literal instanceof StringLiteral) {
-        String _requiredType = this.getRequiredType(literal);
-        boolean _equals = _requiredType.equals("char");
+        EClassifier _requiredType = this.getRequiredType(literal);
+        String _name = _requiredType.getName();
+        boolean _equals = _name.equals("char");
         if (_equals) {
           _matched=true;
           String _value = ((StringLiteral)literal).getValue();
@@ -2440,8 +2444,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   /**
    * Resolve the primitive type for the given literal.
    */
-  private String getRequiredType(final Literal literal) {
-    String _switchResult = null;
+  private EClassifier getRequiredType(final Literal literal) {
+    EClassifier _switchResult = null;
     EObject _eContainer = literal.eContainer();
     boolean _matched = false;
     if (!_matched) {
@@ -2449,8 +2453,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         _matched=true;
         EObject _eContainer_1 = literal.eContainer();
         Classifier _type = ((Constant) _eContainer_1).getType();
-        EClassifier _class_ = _type.getClass_();
-        _switchResult = _class_.getName();
+        _switchResult = _type.getClass_();
       }
     }
     if (!_matched) {
@@ -2458,8 +2461,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         _matched=true;
         EObject _eContainer_1 = literal.eContainer();
         Classifier _type = ((Property) _eContainer_1).getType();
-        EClassifier _class_ = _type.getClass_();
-        _switchResult = _class_.getName();
+        _switchResult = _type.getClass_();
       }
     }
     if (!_matched) {

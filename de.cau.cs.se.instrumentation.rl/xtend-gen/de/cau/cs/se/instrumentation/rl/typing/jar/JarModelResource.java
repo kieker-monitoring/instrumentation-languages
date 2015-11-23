@@ -38,6 +38,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
+import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
@@ -201,7 +202,7 @@ public class JarModelResource extends ResourceImpl {
   /**
    * Create an result model for a given ecore model.
    */
-  private synchronized boolean createModel() {
+  private synchronized Boolean createModel() {
     try {
       boolean _xifexpression = false;
       if ((!this.isLoaded)) {
@@ -209,75 +210,90 @@ public class JarModelResource extends ResourceImpl {
         {
           final IJavaProject javaProject = JavaCore.create(this.project);
           final IType iface = javaProject.findType("kieker.common.record.IMonitoringRecord");
-          final ITypeHierarchy hierarchy = iface.newTypeHierarchy(javaProject, null);
-          IType[] _allTypes = hierarchy.getAllTypes();
-          final Function1<IType, Boolean> _function = (IType it) -> {
+          boolean _xifexpression_1 = false;
+          boolean _notEquals = (!Objects.equal(iface, null));
+          if (_notEquals) {
             boolean _xblockexpression_1 = false;
             {
-              final String name = it.getFullyQualifiedName();
-              boolean _or = false;
-              boolean _or_1 = false;
-              boolean _equals = name.equals("java.io.Serializable");
-              if (_equals) {
-                _or_1 = true;
-              } else {
-                boolean _equals_1 = name.equals("java.lang.Comparable");
-                _or_1 = _equals_1;
+              final ITypeHierarchy hierarchy = iface.newTypeHierarchy(javaProject, null);
+              IType[] _allTypes = hierarchy.getAllTypes();
+              final Function1<IType, Boolean> _function = (IType it) -> {
+                boolean _xblockexpression_2 = false;
+                {
+                  final String name = it.getFullyQualifiedName();
+                  boolean _or = false;
+                  boolean _or_1 = false;
+                  boolean _equals = name.equals("java.io.Serializable");
+                  if (_equals) {
+                    _or_1 = true;
+                  } else {
+                    boolean _equals_1 = name.equals("java.lang.Comparable");
+                    _or_1 = _equals_1;
+                  }
+                  if (_or_1) {
+                    _or = true;
+                  } else {
+                    boolean _equals_2 = name.equals("java.lang.Object");
+                    _or = _equals_2;
+                  }
+                  _xblockexpression_2 = (!_or);
+                }
+                return Boolean.valueOf(_xblockexpression_2);
+              };
+              final Iterable<IType> types = IterableExtensions.<IType>filter(((Iterable<IType>)Conversions.doWrapArray(_allTypes)), _function);
+              final HashMap<String, Model> models = new HashMap<String, Model>();
+              final Consumer<IType> _function_1 = (IType type) -> {
+                IPackageFragment _packageFragment = type.getPackageFragment();
+                String _elementName = _packageFragment.getElementName();
+                Model _get = models.get(_elementName);
+                boolean _equals = Objects.equal(_get, null);
+                if (_equals) {
+                  IPackageFragment _packageFragment_1 = type.getPackageFragment();
+                  String _elementName_1 = _packageFragment_1.getElementName();
+                  Model _createModel = this.createModel(type);
+                  models.put(_elementName_1, _createModel);
+                }
+              };
+              types.forEach(_function_1);
+              final HashMap<IType, Type> typeMap = new HashMap<IType, Type>();
+              final Consumer<IType> _function_2 = (IType type) -> {
+                final Type modelType = this.createType(type);
+                IPackageFragment _packageFragment = type.getPackageFragment();
+                String _elementName = _packageFragment.getElementName();
+                Model _get = models.get(_elementName);
+                EList<Type> _types = _get.getTypes();
+                _types.add(modelType);
+                typeMap.put(type, modelType);
+                this.modelTypes.add(modelType);
+              };
+              types.forEach(_function_2);
+              final Consumer<IType> _function_3 = (IType type) -> {
+                this.linkType(type, typeMap);
+              };
+              types.forEach(_function_3);
+              boolean _xifexpression_2 = false;
+              Collection<Model> _values = models.values();
+              boolean _notEquals_1 = (!Objects.equal(_values, null));
+              if (_notEquals_1) {
+                EList<EObject> _contents = this.getContents();
+                Collection<Model> _values_1 = models.values();
+                _xifexpression_2 = _contents.addAll(_values_1);
               }
-              if (_or_1) {
-                _or = true;
-              } else {
-                boolean _equals_2 = name.equals("java.lang.Object");
-                _or = _equals_2;
-              }
-              _xblockexpression_1 = (!_or);
+              _xblockexpression_1 = _xifexpression_2;
             }
-            return Boolean.valueOf(_xblockexpression_1);
-          };
-          final Iterable<IType> types = IterableExtensions.<IType>filter(((Iterable<IType>)Conversions.doWrapArray(_allTypes)), _function);
-          final HashMap<String, Model> models = new HashMap<String, Model>();
-          final Consumer<IType> _function_1 = (IType type) -> {
-            IPackageFragment _packageFragment = type.getPackageFragment();
-            String _elementName = _packageFragment.getElementName();
-            Model _get = models.get(_elementName);
-            boolean _equals = Objects.equal(_get, null);
-            if (_equals) {
-              IPackageFragment _packageFragment_1 = type.getPackageFragment();
-              String _elementName_1 = _packageFragment_1.getElementName();
-              Model _createModel = this.createModel(type);
-              models.put(_elementName_1, _createModel);
-            }
-          };
-          types.forEach(_function_1);
-          final HashMap<IType, Type> typeMap = new HashMap<IType, Type>();
-          final Consumer<IType> _function_2 = (IType type) -> {
-            final Type modelType = this.createType(type);
-            IPackageFragment _packageFragment = type.getPackageFragment();
-            String _elementName = _packageFragment.getElementName();
-            Model _get = models.get(_elementName);
-            EList<Type> _types = _get.getTypes();
-            _types.add(modelType);
-            typeMap.put(type, modelType);
-            this.modelTypes.add(modelType);
-          };
-          types.forEach(_function_2);
-          final Consumer<IType> _function_3 = (IType type) -> {
-            this.linkType(type, typeMap);
-          };
-          types.forEach(_function_3);
-          boolean _xifexpression_1 = false;
-          Collection<Model> _values = models.values();
-          boolean _notEquals = (!Objects.equal(_values, null));
-          if (_notEquals) {
-            EList<EObject> _contents = this.getContents();
-            Collection<Model> _values_1 = models.values();
-            _xifexpression_1 = _contents.addAll(_values_1);
+            _xifexpression_1 = _xblockexpression_1;
+          } else {
+            final IMarker m = this.project.createMarker(IMarker.PROBLEM);
+            m.setAttribute(IMarker.LINE_NUMBER, 0);
+            m.setAttribute(IMarker.MESSAGE, "The project does not contain the interface kieker.common.record.IMonitoringRecord");
+            m.setAttribute(IMarker.PRIORITY, IMarker.PRIORITY_LOW);
+            m.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_INFO);
           }
           _xblockexpression = _xifexpression_1;
         }
         _xifexpression = _xblockexpression;
       }
-      return _xifexpression;
+      return Boolean.valueOf(_xifexpression);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
