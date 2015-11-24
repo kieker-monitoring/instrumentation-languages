@@ -23,17 +23,13 @@ import de.cau.cs.se.instrumantation.model.structure.MethodModifier;
 import de.cau.cs.se.instrumantation.model.structure.Parameter;
 import de.cau.cs.se.instrumantation.model.structure.Type;
 import de.cau.cs.se.instrumantation.model.structure.TypeReference;
-import de.cau.cs.se.instrumentation.al.aspectLang.Advice;
 import de.cau.cs.se.instrumentation.al.aspectLang.Aspect;
 import de.cau.cs.se.instrumentation.al.aspectLang.Collector;
 import de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode;
-import de.cau.cs.se.instrumentation.al.aspectLang.InsertionPoint;
 import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.MethodQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.Node;
 import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut;
-import de.cau.cs.se.instrumentation.al.aspectLang.UtilizeAdvice;
-import java.io.StringWriter;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
@@ -41,14 +37,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
@@ -56,7 +44,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
-import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
@@ -117,64 +104,23 @@ public class AspectLangGenerator implements IGenerator {
    * @param access file system access
    */
   public void createAspectJConfiguration(final Collection<Aspect> aspects, final IFileSystemAccess access) {
-    try {
-      final DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-      final DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-      final Document doc = docBuilder.newDocument();
-      final Element aspectjElement = doc.createElement("aspectj");
-      doc.appendChild(aspectjElement);
-      final Element weaverElement = doc.createElement("weaver");
-      weaverElement.setAttribute("options", "");
-      aspectjElement.appendChild(weaverElement);
-      for (final Aspect aspect : aspects) {
-        {
-          final Element includeElement = doc.createElement("include");
-          weaverElement.appendChild(includeElement);
-        }
-      }
-      final Element aspectsElement = doc.createElement("aspects");
-      aspectjElement.appendChild(aspectsElement);
-      for (final Aspect aspect_1 : aspects) {
-        {
-          EList<UtilizeAdvice> _advices = aspect_1.getAdvices();
-          final Consumer<UtilizeAdvice> _function = (UtilizeAdvice it) -> {
-            Advice _advice = it.getAdvice();
-            EList<Collector> _collectors = _advice.getCollectors();
-            final Function1<Collector, Boolean> _function_1 = (Collector it_1) -> {
-              InsertionPoint _insertionPoint = it_1.getInsertionPoint();
-              return Boolean.valueOf(Objects.equal(_insertionPoint, InsertionPoint.BEFORE));
-            };
-            Iterable<Collector> _filter = IterableExtensions.<Collector>filter(_collectors, _function_1);
-            this.createDataCollectorAspect(_filter, doc, aspectsElement);
-          };
-          _advices.forEach(_function);
-          EList<UtilizeAdvice> _advices_1 = aspect_1.getAdvices();
-          final Consumer<UtilizeAdvice> _function_1 = (UtilizeAdvice it) -> {
-            Advice _advice = it.getAdvice();
-            EList<Collector> _collectors = _advice.getCollectors();
-            final Function1<Collector, Boolean> _function_2 = (Collector it_1) -> {
-              InsertionPoint _insertionPoint = it_1.getInsertionPoint();
-              return Boolean.valueOf(Objects.equal(_insertionPoint, InsertionPoint.AFTER));
-            };
-            Iterable<Collector> _filter = IterableExtensions.<Collector>filter(_collectors, _function_2);
-            this.createDataCollectorAspect(_filter, doc, aspectsElement);
-          };
-          _advices_1.forEach(_function_1);
-        }
-      }
-      final TransformerFactory transformerFactory = TransformerFactory.newInstance();
-      final Transformer transformer = transformerFactory.newTransformer();
-      transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-      transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "3");
-      final StringWriter writer = new StringWriter();
-      DOMSource _dOMSource = new DOMSource(doc);
-      StreamResult _streamResult = new StreamResult(writer);
-      transformer.transform(_dOMSource, _streamResult);
-      String _string = writer.toString();
-      access.generateFile("aop.xml", _string);
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method advices is undefined for the type AspectLangGenerator"
+      + "\nThe method advice is undefined for the type AspectLangGenerator"
+      + "\nThe method insertionPoint is undefined for the type AspectLangGenerator"
+      + "\nThe method advices is undefined for the type AspectLangGenerator"
+      + "\nThe method advice is undefined for the type AspectLangGenerator"
+      + "\nThe method insertionPoint is undefined for the type AspectLangGenerator"
+      + "\nforEach cannot be resolved"
+      + "\ncollectors cannot be resolved"
+      + "\nfilter cannot be resolved"
+      + "\n== cannot be resolved"
+      + "\ncreateDataCollectorAspect cannot be resolved"
+      + "\nforEach cannot be resolved"
+      + "\ncollectors cannot be resolved"
+      + "\nfilter cannot be resolved"
+      + "\n== cannot be resolved"
+      + "\ncreateDataCollectorAspect cannot be resolved");
   }
   
   /**
