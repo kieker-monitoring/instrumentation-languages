@@ -29,7 +29,7 @@ import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
-import de.cau.cs.se.instrumentation.rl.typing.PrimitiveTypes;
+import de.cau.cs.se.instrumentation.rl.typing.BaseTypes;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -576,39 +576,39 @@ public class JarModelResource extends ResourceImpl {
     final Classifier classifier = this.rlFactory.createClassifier();
     switch (typeId) {
       case "B":
-        EDataType _eType = PrimitiveTypes.EBYTE.getEType();
+        EDataType _eType = BaseTypes.EBYTE.getEType();
         classifier.setClass(_eType);
         break;
       case "C":
-        EDataType _eType_1 = PrimitiveTypes.ECHAR.getEType();
+        EDataType _eType_1 = BaseTypes.ECHAR.getEType();
         classifier.setClass(_eType_1);
         break;
       case "D":
-        EDataType _eType_2 = PrimitiveTypes.EDOUBLE.getEType();
+        EDataType _eType_2 = BaseTypes.EDOUBLE.getEType();
         classifier.setClass(_eType_2);
         break;
       case "F":
-        EDataType _eType_3 = PrimitiveTypes.EFLOAT.getEType();
+        EDataType _eType_3 = BaseTypes.EFLOAT.getEType();
         classifier.setClass(_eType_3);
         break;
       case "I":
-        EDataType _eType_4 = PrimitiveTypes.EINT.getEType();
+        EDataType _eType_4 = BaseTypes.EINT.getEType();
         classifier.setClass(_eType_4);
         break;
       case "J":
-        EDataType _eType_5 = PrimitiveTypes.ELONG.getEType();
+        EDataType _eType_5 = BaseTypes.ELONG.getEType();
         classifier.setClass(_eType_5);
         break;
       case "S":
-        EDataType _eType_6 = PrimitiveTypes.ESHORT.getEType();
+        EDataType _eType_6 = BaseTypes.ESHORT.getEType();
         classifier.setClass(_eType_6);
         break;
       case "Z":
-        EDataType _eType_7 = PrimitiveTypes.EBOOLEAN.getEType();
+        EDataType _eType_7 = BaseTypes.EBOOLEAN.getEType();
         classifier.setClass(_eType_7);
         break;
       case "Ljava.lang.String;":
-        EDataType _eType_8 = PrimitiveTypes.ESTRING.getEType();
+        EDataType _eType_8 = BaseTypes.ESTRING.getEType();
         classifier.setClass(_eType_8);
         break;
     }

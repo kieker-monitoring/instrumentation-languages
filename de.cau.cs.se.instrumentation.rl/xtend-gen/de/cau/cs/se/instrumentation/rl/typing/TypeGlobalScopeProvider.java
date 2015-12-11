@@ -18,8 +18,8 @@ package de.cau.cs.se.instrumentation.rl.typing;
 import com.google.common.base.Objects;
 import com.google.common.base.Predicate;
 import com.google.inject.Inject;
+import de.cau.cs.se.instrumentation.rl.typing.BaseTypeScope;
 import de.cau.cs.se.instrumentation.rl.typing.ITypeProvider;
-import de.cau.cs.se.instrumentation.rl.typing.PrimitiveTypeScope;
 import de.cau.cs.se.instrumentation.rl.typing.TypeProviderFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
@@ -57,7 +57,7 @@ public class TypeGlobalScopeProvider extends DefaultGlobalScopeProvider {
         boolean _notEquals_1 = (!Objects.equal(resourceSet, null));
         if (_notEquals_1) {
           final ITypeProvider typeProvider = this.typeProviderFactory.getTypeProvider(resourceSet);
-          return new PrimitiveTypeScope(typeProvider, this.qualifiedNameConverter, filter);
+          return new BaseTypeScope(typeProvider, this.qualifiedNameConverter, filter);
         } else {
           throw new IllegalStateException("context must be contained in a resource set");
         }

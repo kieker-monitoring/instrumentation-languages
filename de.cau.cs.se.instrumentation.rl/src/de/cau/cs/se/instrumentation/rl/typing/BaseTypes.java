@@ -19,25 +19,17 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EcoreFactory;
 
 /**
- * The primitive types of the language for app development.
- * 
+ * The base types of the language for app development.
+ *
  * @author Reiner Jung - Initial contribution
- * 
+ *
  */
-public enum PrimitiveTypes {
-	ELONG("long"),
-	EINT("int"),
-	ESHORT("short"),
-	EBYTE("byte"),
-	EBOOLEAN("boolean"),
-	EFLOAT("float"),
-	EDOUBLE("double"),
-	ECHAR("char"),
-	ESTRING("string");
+public enum BaseTypes {
+	ELONG("long"), EINT("int"), ESHORT("short"), EBYTE("byte"), EBOOLEAN("boolean"), EFLOAT("float"), EDOUBLE("double"), ECHAR("char"), ESTRING("string");
 
 	private EDataType etype;
 
-	PrimitiveTypes(final String name) {
+	BaseTypes(final String name) {
 		this.etype = EcoreFactory.eINSTANCE.createEDataType();
 		this.etype.setName(name);
 	}

@@ -19,7 +19,6 @@ import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
 import de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral
 import de.cau.cs.se.instrumentation.rl.recordLang.Type
-import de.cau.cs.se.instrumentation.rl.typing.PrimitiveTypes
 import java.util.ArrayList
 import java.util.Collection
 import java.util.List
@@ -27,6 +26,7 @@ import org.eclipse.emf.ecore.EDataType
 import org.eclipse.xtext.validation.Check
 import org.eclipse.xtext.xbase.lib.Pair
 import de.cau.cs.se.instrumentation.rl.recordLang.BuiltInValueLiteral
+import de.cau.cs.se.instrumentation.rl.typing.BaseTypes
 
 /**
  * Custom validation rules. 
@@ -299,17 +299,17 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 	 */
 	def dispatch Classifier getType(StringLiteral literal) {
 		if (literal.value.length != 1) 
-			createPrimitiveClassifier(PrimitiveTypes.ESTRING.EType)
+			createPrimitiveClassifier(BaseTypes.ESTRING.getEType)
 		else
-			createPrimitiveClassifier(PrimitiveTypes.ECHAR.EType)
+			createPrimitiveClassifier(BaseTypes.ECHAR.getEType)
 	}
-	def dispatch Classifier getType(IntLiteral literal) { createPrimitiveClassifier(PrimitiveTypes.EINT.EType) }
-	def dispatch Classifier getType(FloatLiteral literal) { createPrimitiveClassifier(PrimitiveTypes.EFLOAT.EType) }
-	def dispatch Classifier getType(BooleanLiteral literal) { createPrimitiveClassifier(PrimitiveTypes.EBOOLEAN.EType) }
+	def dispatch Classifier getType(IntLiteral literal) { createPrimitiveClassifier(BaseTypes.EINT.getEType) }
+	def dispatch Classifier getType(FloatLiteral literal) { createPrimitiveClassifier(BaseTypes.EFLOAT.getEType) }
+	def dispatch Classifier getType(BooleanLiteral literal) { createPrimitiveClassifier(BaseTypes.EBOOLEAN.getEType) }
 	def dispatch Classifier getType(ConstantLiteral literal) { literal.value.type }
 	def dispatch Classifier getType(BuiltInValueLiteral literal) {
 		switch (literal.value) {
-			case "KIEKER_VERSION" :  createPrimitiveClassifier(PrimitiveTypes.ESTRING.EType)
+			case "KIEKER_VERSION" :  createPrimitiveClassifier(BaseTypes.ESTRING.getEType)
 			// add further built-in values here.
 		}
 	}

@@ -22,7 +22,6 @@ import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangFactory
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
 import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType
 import de.cau.cs.se.instrumentation.rl.recordLang.Type
-import de.cau.cs.se.instrumentation.rl.typing.PrimitiveTypes
 import java.io.IOException
 import java.io.InputStream
 import java.util.ArrayList
@@ -40,6 +39,7 @@ import org.eclipse.jdt.core.IPackageFragment
 import org.eclipse.jdt.core.IType
 import org.eclipse.jdt.core.JavaCore
 import org.eclipse.core.resources.IMarker
+import de.cau.cs.se.instrumentation.rl.typing.BaseTypes
 
 /**
  * broadly based on org.spp.cocome.behavior.pcm.handler.PCMModelResource
@@ -338,15 +338,15 @@ public class JarModelResource extends ResourceImpl {
 	private def Classifier createType(String typeId) {
 		val classifier = rlFactory.createClassifier
 		switch(typeId) {
-			case "B": classifier.^class = PrimitiveTypes.EBYTE.EType
-			case "C": classifier.^class = PrimitiveTypes.ECHAR.EType
-			case "D": classifier.^class = PrimitiveTypes.EDOUBLE.EType
-			case "F": classifier.^class = PrimitiveTypes.EFLOAT.EType
-			case "I": classifier.^class = PrimitiveTypes.EINT.EType
-			case "J": classifier.^class = PrimitiveTypes.ELONG.EType
-			case "S": classifier.^class = PrimitiveTypes.ESHORT.EType
-			case "Z": classifier.^class = PrimitiveTypes.EBOOLEAN.EType
-			case "Ljava.lang.String;": classifier.^class = PrimitiveTypes.ESTRING.EType
+			case "B": classifier.^class = BaseTypes.EBYTE.getEType
+			case "C": classifier.^class = BaseTypes.ECHAR.getEType
+			case "D": classifier.^class = BaseTypes.EDOUBLE.getEType
+			case "F": classifier.^class = BaseTypes.EFLOAT.getEType
+			case "I": classifier.^class = BaseTypes.EINT.getEType
+			case "J": classifier.^class = BaseTypes.ELONG.getEType
+			case "S": classifier.^class = BaseTypes.ESHORT.getEType
+			case "Z": classifier.^class = BaseTypes.EBOOLEAN.getEType
+			case "Ljava.lang.String;": classifier.^class = BaseTypes.ESTRING.getEType
 		}
 		// TODO support other complex types via the complex type mechanism
 		

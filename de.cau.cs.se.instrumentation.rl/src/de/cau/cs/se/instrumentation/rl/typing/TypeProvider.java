@@ -26,10 +26,10 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 /**
  * The type provider allows to retrieve a list of all primitive types and provides type name lookup.
- * 
+ *
  * @author Christian Schneider - Initial contribution
  * @author Reiner Jung - Cleanup and commentary
- * 
+ *
  */
 public class TypeProvider implements Resource.Factory, ITypeProvider {
 
@@ -47,7 +47,7 @@ public class TypeProvider implements Resource.Factory, ITypeProvider {
 
 	/**
 	 * Provides a list of all primitive types.
-	 * 
+	 *
 	 * @return Returns an iterable with all primitive types.
 	 */
 	public Iterable<EClassifier> getAllTypes() {
@@ -67,7 +67,7 @@ public class TypeProvider implements Resource.Factory, ITypeProvider {
 
 	/**
 	 * Find the type for a given name and return it.
-	 * 
+	 *
 	 * @param name
 	 *            The name of the type.
 	 * @return Returns the primitive type for a given type name, or null.
@@ -84,7 +84,7 @@ public class TypeProvider implements Resource.Factory, ITypeProvider {
 
 	/**
 	 * Create a type resource for a given URI and assign a PrimitiveMirror to it.
-	 * 
+	 *
 	 * @param uri
 	 *            The URI for the resource
 	 */

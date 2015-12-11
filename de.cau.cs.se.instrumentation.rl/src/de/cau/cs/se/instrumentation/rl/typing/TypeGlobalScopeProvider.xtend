@@ -49,7 +49,7 @@ class TypeGlobalScopeProvider extends DefaultGlobalScopeProvider {
         		val ResourceSet resourceSet = resource.getResourceSet()
     			if (resourceSet != null) {
         			val ITypeProvider typeProvider = typeProviderFactory.getTypeProvider(resourceSet)
-					return new PrimitiveTypeScope(typeProvider, qualifiedNameConverter, filter)
+					return new BaseTypeScope(typeProvider, qualifiedNameConverter, filter)
 				} else
     				throw new IllegalStateException("context must be contained in a resource set")
         	} else

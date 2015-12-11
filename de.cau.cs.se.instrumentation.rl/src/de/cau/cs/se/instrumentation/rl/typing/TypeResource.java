@@ -63,7 +63,7 @@ public class TypeResource extends ResourceImpl {
 			 * 
 			 * However, to circumvent this bug, the following code refills the content.
 			 */
-			for (final PrimitiveTypes primitiveType : PrimitiveTypes.values()) {
+			for (final BaseTypes primitiveType : BaseTypes.values()) {
 				this.getContents().add(primitiveType.getEType());
 			}
 		}
@@ -109,7 +109,7 @@ public class TypeResource extends ResourceImpl {
 	@Override
 	protected void doLoad(final InputStream inputStream, final Map<?, ?> options) throws IOException {
 		if (this.getURI() != null) {
-			for (final PrimitiveTypes primitiveType : PrimitiveTypes.values()) {
+			for (final BaseTypes primitiveType : BaseTypes.values()) {
 				this.getContents().add(primitiveType.getEType());
 			}
 		} else {

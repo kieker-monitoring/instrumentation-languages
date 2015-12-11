@@ -41,7 +41,7 @@ import com.google.common.collect.Lists;
  *
  * @author Christian Schneider
  */
-public class PrimitiveTypeScope extends AbstractScope {
+public class BaseTypeScope extends AbstractScope {
 
 	private final ITypeProvider typeProvider;
 
@@ -49,7 +49,7 @@ public class PrimitiveTypeScope extends AbstractScope {
 
 	private final Predicate<IEObjectDescription> filter;
 
-	public PrimitiveTypeScope(final ITypeProvider typeProvider,
+	public BaseTypeScope(final ITypeProvider typeProvider,
 			final IQualifiedNameConverter qualifiedNameConverter,
 			final Predicate<IEObjectDescription> filter) {
 		super(IScope.NULLSCOPE, false);

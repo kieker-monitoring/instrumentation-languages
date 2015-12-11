@@ -22,7 +22,7 @@ import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
-import de.cau.cs.se.instrumentation.rl.typing.PrimitiveTypes;
+import de.cau.cs.se.instrumentation.rl.typing.BaseTypes;
 import de.cau.cs.se.instrumentation.rl.validation.AbstractRecordLangValidator;
 import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation;
 import java.util.ArrayList;
@@ -705,27 +705,27 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
     int _length = _value.length();
     boolean _notEquals = (_length != 1);
     if (_notEquals) {
-      EDataType _eType = PrimitiveTypes.ESTRING.getEType();
+      EDataType _eType = BaseTypes.ESTRING.getEType();
       _xifexpression = this.createPrimitiveClassifier(_eType);
     } else {
-      EDataType _eType_1 = PrimitiveTypes.ECHAR.getEType();
+      EDataType _eType_1 = BaseTypes.ECHAR.getEType();
       _xifexpression = this.createPrimitiveClassifier(_eType_1);
     }
     return _xifexpression;
   }
   
   protected Classifier _getType(final IntLiteral literal) {
-    EDataType _eType = PrimitiveTypes.EINT.getEType();
+    EDataType _eType = BaseTypes.EINT.getEType();
     return this.createPrimitiveClassifier(_eType);
   }
   
   protected Classifier _getType(final FloatLiteral literal) {
-    EDataType _eType = PrimitiveTypes.EFLOAT.getEType();
+    EDataType _eType = BaseTypes.EFLOAT.getEType();
     return this.createPrimitiveClassifier(_eType);
   }
   
   protected Classifier _getType(final BooleanLiteral literal) {
-    EDataType _eType = PrimitiveTypes.EBOOLEAN.getEType();
+    EDataType _eType = BaseTypes.EBOOLEAN.getEType();
     return this.createPrimitiveClassifier(_eType);
   }
   
@@ -739,7 +739,7 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
     String _value = literal.getValue();
     switch (_value) {
       case "KIEKER_VERSION":
-        EDataType _eType = PrimitiveTypes.ESTRING.getEType();
+        EDataType _eType = BaseTypes.ESTRING.getEType();
         _switchResult = this.createPrimitiveClassifier(_eType);
         break;
     }
