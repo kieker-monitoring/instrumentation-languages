@@ -75,9 +75,9 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
     new AspectLangSwitch<Adapter>()
     {
       @Override
-      public Adapter caseModel(Model object)
+      public Adapter caseAspectModel(AspectModel object)
       {
-        return createModelAdapter();
+        return createAspectModelAdapter();
       }
       @Override
       public Adapter caseImport(Import object)
@@ -113,6 +113,11 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
       public Adapter casePointcut(Pointcut object)
       {
         return createPointcutAdapter();
+      }
+      @Override
+      public Adapter caseAnnotation(Annotation object)
+      {
+        return createAnnotationAdapter();
       }
       @Override
       public Adapter caseMethodQuery(MethodQuery object)
@@ -242,16 +247,16 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
 
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Model <em>Model</em>}'.
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.AspectModel <em>Aspect Model</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Model
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectModel
    * @generated
    */
-  public Adapter createModelAdapter()
+  public Adapter createAspectModelAdapter()
   {
     return null;
   }
@@ -357,6 +362,21 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createPointcutAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Annotation <em>Annotation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.Annotation
+   * @generated
+   */
+  public Adapter createAnnotationAdapter()
   {
     return null;
   }

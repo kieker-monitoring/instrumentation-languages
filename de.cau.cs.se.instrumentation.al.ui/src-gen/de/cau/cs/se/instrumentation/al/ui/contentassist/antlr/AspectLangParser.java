@@ -37,22 +37,19 @@ public class AspectLangParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
-					put(grammarAccess.getModelAccess().getAlternatives_4(), "rule__Model__Alternatives_4");
+					put(grammarAccess.getAspectModelAccess().getAlternatives_4(), "rule__AspectModel__Alternatives_4");
 					put(grammarAccess.getMethodQueryAccess().getAlternatives_3(), "rule__MethodQuery__Alternatives_3");
 					put(grammarAccess.getLocationQueryAccess().getAlternatives_1(), "rule__LocationQuery__Alternatives_1");
 					put(grammarAccess.getNodeAccess().getAlternatives_0(), "rule__Node__Alternatives_0");
 					put(grammarAccess.getValueAccess().getAlternatives(), "rule__Value__Alternatives");
 					put(grammarAccess.getParameterAccess().getAlternatives(), "rule__Parameter__Alternatives");
-					put(grammarAccess.getAnnotationAccess().getAlternatives(), "rule__Annotation__Alternatives");
-					put(grammarAccess.getValuedAnnotationAccess().getAlternatives(), "rule__ValuedAnnotation__Alternatives");
-					put(grammarAccess.getEStringAccess().getAlternatives(), "rule__EString__Alternatives");
 					put(grammarAccess.getQueryModifierAccess().getAlternatives(), "rule__QueryModifier__Alternatives");
 					put(grammarAccess.getLogicOperatorAccess().getAlternatives(), "rule__LogicOperator__Alternatives");
 					put(grammarAccess.getInternalFunctionAccess().getAlternatives(), "rule__InternalFunction__Alternatives");
 					put(grammarAccess.getReflectionFunctionAccess().getAlternatives(), "rule__ReflectionFunction__Alternatives");
 					put(grammarAccess.getOperatorAccess().getAlternatives(), "rule__Operator__Alternatives");
 					put(grammarAccess.getInsertionPointAccess().getAlternatives(), "rule__InsertionPoint__Alternatives");
-					put(grammarAccess.getModelAccess().getGroup(), "rule__Model__Group__0");
+					put(grammarAccess.getAspectModelAccess().getGroup(), "rule__AspectModel__Group__0");
 					put(grammarAccess.getImportAccess().getGroup(), "rule__Import__Group__0");
 					put(grammarAccess.getApplicationModelAccess().getGroup(), "rule__ApplicationModel__Group__0");
 					put(grammarAccess.getQualifiedNameAccess().getGroup(), "rule__QualifiedName__Group__0");
@@ -72,6 +69,7 @@ public class AspectLangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getParameterDeclarationAccess().getGroup(), "rule__ParameterDeclaration__Group__0");
 					put(grammarAccess.getPointcutAccess().getGroup(), "rule__Pointcut__Group__0");
 					put(grammarAccess.getPointcutAccess().getGroup_5(), "rule__Pointcut__Group_5__0");
+					put(grammarAccess.getAnnotationAccess().getGroup(), "rule__Annotation__Group__0");
 					put(grammarAccess.getMethodQueryAccess().getGroup(), "rule__MethodQuery__Group__0");
 					put(grammarAccess.getMethodQueryAccess().getGroup_3_0(), "rule__MethodQuery__Group_3_0__0");
 					put(grammarAccess.getMethodQueryAccess().getGroup_3_0_1(), "rule__MethodQuery__Group_3_0_1__0");
@@ -96,27 +94,12 @@ public class AspectLangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEventAccess().getGroup(), "rule__Event__Group__0");
 					put(grammarAccess.getEventAccess().getGroup_2(), "rule__Event__Group_2__0");
 					put(grammarAccess.getEventAccess().getGroup_2_1(), "rule__Event__Group_2_1__0");
-					put(grammarAccess.getTagAnnotationAccess().getGroup(), "rule__TagAnnotation__Group__0");
-					put(grammarAccess.getTagAnnotationAccess().getGroup_2(), "rule__TagAnnotation__Group_2__0");
-					put(grammarAccess.getKeyStringValueAnnotationAccess().getGroup(), "rule__KeyStringValueAnnotation__Group__0");
-					put(grammarAccess.getKeyStringValueAnnotationAccess().getGroup_3(), "rule__KeyStringValueAnnotation__Group_3__0");
-					put(grammarAccess.getTypedKeyStringValueAnnotationAccess().getGroup(), "rule__TypedKeyStringValueAnnotation__Group__0");
-					put(grammarAccess.getTypedKeyStringValueAnnotationAccess().getGroup_6(), "rule__TypedKeyStringValueAnnotation__Group_6__0");
-					put(grammarAccess.getKeyBooleanValueAnnotationAccess().getGroup(), "rule__KeyBooleanValueAnnotation__Group__0");
-					put(grammarAccess.getKeyBooleanValueAnnotationAccess().getGroup_3(), "rule__KeyBooleanValueAnnotation__Group_3__0");
-					put(grammarAccess.getKeyIntValueAnnotationAccess().getGroup(), "rule__KeyIntValueAnnotation__Group__0");
-					put(grammarAccess.getKeyIntValueAnnotationAccess().getGroup_3(), "rule__KeyIntValueAnnotation__Group_3__0");
-					put(grammarAccess.getKeyFloatValueAnnotationAccess().getGroup(), "rule__KeyFloatValueAnnotation__Group__0");
-					put(grammarAccess.getKeyFloatValueAnnotationAccess().getGroup_3(), "rule__KeyFloatValueAnnotation__Group_3__0");
-					put(grammarAccess.getImportAnnotationAccess().getGroup(), "rule__ImportAnnotation__Group__0");
-					put(grammarAccess.getExtendedIDAccess().getGroup(), "rule__ExtendedID__Group__0");
-					put(grammarAccess.getExtendedIDAccess().getGroup_1(), "rule__ExtendedID__Group_1__0");
-					put(grammarAccess.getModelAccess().getNameAssignment_1(), "rule__Model__NameAssignment_1");
-					put(grammarAccess.getModelAccess().getImportsAssignment_2(), "rule__Model__ImportsAssignment_2");
-					put(grammarAccess.getModelAccess().getSourcesAssignment_3(), "rule__Model__SourcesAssignment_3");
-					put(grammarAccess.getModelAccess().getAdvicesAssignment_4_0(), "rule__Model__AdvicesAssignment_4_0");
-					put(grammarAccess.getModelAccess().getPointcutsAssignment_4_1(), "rule__Model__PointcutsAssignment_4_1");
-					put(grammarAccess.getModelAccess().getAspectsAssignment_4_2(), "rule__Model__AspectsAssignment_4_2");
+					put(grammarAccess.getAspectModelAccess().getNameAssignment_1(), "rule__AspectModel__NameAssignment_1");
+					put(grammarAccess.getAspectModelAccess().getImportsAssignment_2(), "rule__AspectModel__ImportsAssignment_2");
+					put(grammarAccess.getAspectModelAccess().getSourcesAssignment_3(), "rule__AspectModel__SourcesAssignment_3");
+					put(grammarAccess.getAspectModelAccess().getAdvicesAssignment_4_0(), "rule__AspectModel__AdvicesAssignment_4_0");
+					put(grammarAccess.getAspectModelAccess().getPointcutsAssignment_4_1(), "rule__AspectModel__PointcutsAssignment_4_1");
+					put(grammarAccess.getAspectModelAccess().getAspectsAssignment_4_2(), "rule__AspectModel__AspectsAssignment_4_2");
 					put(grammarAccess.getImportAccess().getImportedNamespaceAssignment_1(), "rule__Import__ImportedNamespaceAssignment_1");
 					put(grammarAccess.getApplicationModelAccess().getHandlerAssignment_1(), "rule__ApplicationModel__HandlerAssignment_1");
 					put(grammarAccess.getApplicationModelAccess().getNameAssignment_3(), "rule__ApplicationModel__NameAssignment_3");
@@ -137,6 +120,8 @@ public class AspectLangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPointcutAccess().getNameAssignment_2(), "rule__Pointcut__NameAssignment_2");
 					put(grammarAccess.getPointcutAccess().getLocationAssignment_4(), "rule__Pointcut__LocationAssignment_4");
 					put(grammarAccess.getPointcutAccess().getMethodAssignment_5_1(), "rule__Pointcut__MethodAssignment_5_1");
+					put(grammarAccess.getAnnotationAccess().getNameAssignment_1(), "rule__Annotation__NameAssignment_1");
+					put(grammarAccess.getAnnotationAccess().getValueAssignment_2(), "rule__Annotation__ValueAssignment_2");
 					put(grammarAccess.getMethodQueryAccess().getModifierAssignment_1(), "rule__MethodQuery__ModifierAssignment_1");
 					put(grammarAccess.getMethodQueryAccess().getReturnTypeAssignment_2(), "rule__MethodQuery__ReturnTypeAssignment_2");
 					put(grammarAccess.getMethodQueryAccess().getMethodReferenceAssignment_3_0_0(), "rule__MethodQuery__MethodReferenceAssignment_3_0_0");
@@ -170,26 +155,6 @@ public class AspectLangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEventAccess().getTypeAssignment_0(), "rule__Event__TypeAssignment_0");
 					put(grammarAccess.getEventAccess().getInitializationsAssignment_2_0(), "rule__Event__InitializationsAssignment_2_0");
 					put(grammarAccess.getEventAccess().getInitializationsAssignment_2_1_1(), "rule__Event__InitializationsAssignment_2_1_1");
-					put(grammarAccess.getCommentAnnotationAccess().getValueAssignment(), "rule__CommentAnnotation__ValueAssignment");
-					put(grammarAccess.getTagAnnotationAccess().getNameAssignment_1(), "rule__TagAnnotation__NameAssignment_1");
-					put(grammarAccess.getTagAnnotationAccess().getAnnotationsAssignment_2_1(), "rule__TagAnnotation__AnnotationsAssignment_2_1");
-					put(grammarAccess.getKeyStringValueAnnotationAccess().getNameAssignment_1(), "rule__KeyStringValueAnnotation__NameAssignment_1");
-					put(grammarAccess.getKeyStringValueAnnotationAccess().getValueAssignment_2(), "rule__KeyStringValueAnnotation__ValueAssignment_2");
-					put(grammarAccess.getKeyStringValueAnnotationAccess().getAnnotationsAssignment_3_1(), "rule__KeyStringValueAnnotation__AnnotationsAssignment_3_1");
-					put(grammarAccess.getTypedKeyStringValueAnnotationAccess().getNameAssignment_1(), "rule__TypedKeyStringValueAnnotation__NameAssignment_1");
-					put(grammarAccess.getTypedKeyStringValueAnnotationAccess().getTypeAssignment_3(), "rule__TypedKeyStringValueAnnotation__TypeAssignment_3");
-					put(grammarAccess.getTypedKeyStringValueAnnotationAccess().getValueAssignment_5(), "rule__TypedKeyStringValueAnnotation__ValueAssignment_5");
-					put(grammarAccess.getTypedKeyStringValueAnnotationAccess().getAnnotationsAssignment_6_1(), "rule__TypedKeyStringValueAnnotation__AnnotationsAssignment_6_1");
-					put(grammarAccess.getKeyBooleanValueAnnotationAccess().getNameAssignment_1(), "rule__KeyBooleanValueAnnotation__NameAssignment_1");
-					put(grammarAccess.getKeyBooleanValueAnnotationAccess().getValueAssignment_2(), "rule__KeyBooleanValueAnnotation__ValueAssignment_2");
-					put(grammarAccess.getKeyBooleanValueAnnotationAccess().getAnnotationsAssignment_3_1(), "rule__KeyBooleanValueAnnotation__AnnotationsAssignment_3_1");
-					put(grammarAccess.getKeyIntValueAnnotationAccess().getNameAssignment_1(), "rule__KeyIntValueAnnotation__NameAssignment_1");
-					put(grammarAccess.getKeyIntValueAnnotationAccess().getValueAssignment_2(), "rule__KeyIntValueAnnotation__ValueAssignment_2");
-					put(grammarAccess.getKeyIntValueAnnotationAccess().getAnnotationsAssignment_3_1(), "rule__KeyIntValueAnnotation__AnnotationsAssignment_3_1");
-					put(grammarAccess.getKeyFloatValueAnnotationAccess().getNameAssignment_1(), "rule__KeyFloatValueAnnotation__NameAssignment_1");
-					put(grammarAccess.getKeyFloatValueAnnotationAccess().getValueAssignment_2(), "rule__KeyFloatValueAnnotation__ValueAssignment_2");
-					put(grammarAccess.getKeyFloatValueAnnotationAccess().getAnnotationsAssignment_3_1(), "rule__KeyFloatValueAnnotation__AnnotationsAssignment_3_1");
-					put(grammarAccess.getImportAnnotationAccess().getImportURIAssignment_1(), "rule__ImportAnnotation__ImportURIAssignment_1");
 				}
 			};
 		}
@@ -200,7 +165,7 @@ public class AspectLangParser extends AbstractContentAssistParser {
 	protected Collection<FollowElement> getFollowElements(AbstractInternalContentAssistParser parser) {
 		try {
 			de.cau.cs.se.instrumentation.al.ui.contentassist.antlr.internal.InternalAspectLangParser typedParser = (de.cau.cs.se.instrumentation.al.ui.contentassist.antlr.internal.InternalAspectLangParser) parser;
-			typedParser.entryRuleModel();
+			typedParser.entryRuleAspectModel();
 			return typedParser.getFollowElements();
 		} catch(RecognitionException ex) {
 			throw new RuntimeException(ex);

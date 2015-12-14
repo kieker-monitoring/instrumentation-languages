@@ -12,14 +12,14 @@ import org.eclipse.xtext.*;
 import org.eclipse.xtext.service.GrammarProvider;
 import org.eclipse.xtext.service.AbstractElementFinder.*;
 
-import de.cau.cs.kieler.core.annotations.text.services.AnnotationsGrammarAccess;
+import org.eclipse.xtext.common.services.TerminalsGrammarAccess;
 
 @Singleton
 public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	
 	
-	public class ModelElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Model");
+	public class AspectModelElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.AspectModel");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cPackageKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -36,16 +36,17 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cAspectsAssignment_4_2 = (Assignment)cAlternatives_4.eContents().get(2);
 		private final RuleCall cAspectsAspectParserRuleCall_4_2_0 = (RuleCall)cAspectsAssignment_4_2.eContents().get(0);
 		
-		//Model:
-		//	"package" name=QualifiedName imports+=Import* sources+=ApplicationModel* (advices+=Advice | pointcuts+=Pointcut |
-		//	aspects+=Aspect)*;
+		//AspectModel:
+		//	'package' name=QualifiedName
+		//	imports+=Import*
+		//	sources+=ApplicationModel* (advices+=Advice | pointcuts+=Pointcut | aspects+=Aspect)*;
 		@Override public ParserRule getRule() { return rule; }
 
-		//"package" name=QualifiedName imports+=Import* sources+=ApplicationModel* (advices+=Advice | pointcuts+=Pointcut |
+		//'package' name=QualifiedName imports+=Import* sources+=ApplicationModel* (advices+=Advice | pointcuts+=Pointcut |
 		//aspects+=Aspect)*
 		public Group getGroup() { return cGroup; }
 
-		//"package"
+		//'package'
 		public Keyword getPackageKeyword_0() { return cPackageKeyword_0; }
 
 		//name=QualifiedName
@@ -89,20 +90,20 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class ImportElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Import");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.Import");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cImportKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cImportedNamespaceAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_0 = (RuleCall)cImportedNamespaceAssignment_1.eContents().get(0);
 		
 		//Import:
-		//	"import" importedNamespace=QualifiedNameWithWildcard;
+		//	'import' importedNamespace=QualifiedNameWithWildcard;
 		@Override public ParserRule getRule() { return rule; }
 
-		//"import" importedNamespace=QualifiedNameWithWildcard
+		//'import' importedNamespace=QualifiedNameWithWildcard
 		public Group getGroup() { return cGroup; }
 
-		//"import"
+		//'import'
 		public Keyword getImportKeyword_0() { return cImportKeyword_0; }
 
 		//importedNamespace=QualifiedNameWithWildcard
@@ -113,7 +114,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class ApplicationModelElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ApplicationModel");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.ApplicationModel");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cUseKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cHandlerAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -125,13 +126,13 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cModelSTRINGTerminalRuleCall_4_0 = (RuleCall)cModelAssignment_4.eContents().get(0);
 		
 		//ApplicationModel:
-		//	"use" handler=ID "on" name=ID model=STRING;
+		//	'use' handler=ID 'on' name=ID model=STRING;
 		@Override public ParserRule getRule() { return rule; }
 
-		//"use" handler=ID "on" name=ID model=STRING
+		//'use' handler=ID 'on' name=ID model=STRING
 		public Group getGroup() { return cGroup; }
 
-		//"use"
+		//'use'
 		public Keyword getUseKeyword_0() { return cUseKeyword_0; }
 
 		//handler=ID
@@ -140,7 +141,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getHandlerIDTerminalRuleCall_1_0() { return cHandlerIDTerminalRuleCall_1_0; }
 
-		//"on"
+		//'on'
 		public Keyword getOnKeyword_2() { return cOnKeyword_2; }
 
 		//name=ID
@@ -157,7 +158,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class QualifiedNameElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "QualifiedName");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.QualifiedName");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final RuleCall cIDTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
@@ -165,19 +166,19 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cIDTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
 		
 		//QualifiedName:
-		//	ID ("." ID)*;
+		//	ID (=> '.' ID)*;
 		@Override public ParserRule getRule() { return rule; }
 
-		//ID ("." ID)*
+		//ID (=> '.' ID)*
 		public Group getGroup() { return cGroup; }
 
 		//ID
 		public RuleCall getIDTerminalRuleCall_0() { return cIDTerminalRuleCall_0; }
 
-		//(=> "." ID)*
+		//(=> '.' ID)*
 		public Group getGroup_1() { return cGroup_1; }
 
-		//=> "."
+		//=> '.'
 		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
 
 		//ID
@@ -185,7 +186,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class QualifiedNameWithWildcardElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "QualifiedNameWithWildcard");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.QualifiedNameWithWildcard");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final RuleCall cQualifiedNameParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
@@ -193,27 +194,27 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cAsteriskKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
 		
 		//QualifiedNameWithWildcard:
-		//	QualifiedName ("." "*")?;
+		//	QualifiedName ('.' '*')?;
 		@Override public ParserRule getRule() { return rule; }
 
-		//QualifiedName ("." "*")?
+		//QualifiedName ('.' '*')?
 		public Group getGroup() { return cGroup; }
 
 		//QualifiedName
 		public RuleCall getQualifiedNameParserRuleCall_0() { return cQualifiedNameParserRuleCall_0; }
 
-		//("." "*")?
+		//('.' '*')?
 		public Group getGroup_1() { return cGroup_1; }
 
-		//"."
+		//'.'
 		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
 
-		//"*"
+		//'*'
 		public Keyword getAsteriskKeyword_1_1() { return cAsteriskKeyword_1_1; }
 	}
 
 	public class AspectElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Aspect");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.Aspect");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cAspectKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cPointcutAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -230,13 +231,13 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//// define subgraph-pattern to locate structures in models
 		//// define selector for reference destination
 		//Aspect:
-		//	"aspect" pointcut=[Pointcut|QualifiedName] ":" advices+=UtilizeAdvice ("," advices+=UtilizeAdvice)*;
+		//	'aspect' pointcut=[Pointcut|QualifiedName] ':' advices+=UtilizeAdvice (',' advices+=UtilizeAdvice)*;
 		@Override public ParserRule getRule() { return rule; }
 
-		//"aspect" pointcut=[Pointcut|QualifiedName] ":" advices+=UtilizeAdvice ("," advices+=UtilizeAdvice)*
+		//'aspect' pointcut=[Pointcut|QualifiedName] ':' advices+=UtilizeAdvice (',' advices+=UtilizeAdvice)*
 		public Group getGroup() { return cGroup; }
 
-		//"aspect"
+		//'aspect'
 		public Keyword getAspectKeyword_0() { return cAspectKeyword_0; }
 
 		//pointcut=[Pointcut|QualifiedName]
@@ -248,7 +249,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//QualifiedName
 		public RuleCall getPointcutPointcutQualifiedNameParserRuleCall_1_0_1() { return cPointcutPointcutQualifiedNameParserRuleCall_1_0_1; }
 
-		//":"
+		//':'
 		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
 
 		//advices+=UtilizeAdvice
@@ -257,10 +258,10 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//UtilizeAdvice
 		public RuleCall getAdvicesUtilizeAdviceParserRuleCall_3_0() { return cAdvicesUtilizeAdviceParserRuleCall_3_0; }
 
-		//("," advices+=UtilizeAdvice)*
+		//(',' advices+=UtilizeAdvice)*
 		public Group getGroup_4() { return cGroup_4; }
 
-		//","
+		//','
 		public Keyword getCommaKeyword_4_0() { return cCommaKeyword_4_0; }
 
 		//advices+=UtilizeAdvice
@@ -271,7 +272,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class UtilizeAdviceElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "UtilizeAdvice");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.UtilizeAdvice");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cAdviceAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final CrossReference cAdviceAdviceCrossReference_0_0 = (CrossReference)cAdviceAssignment_0.eContents().get(0);
@@ -288,10 +289,10 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightParenthesisKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
 		
 		//UtilizeAdvice:
-		//	advice=[Advice|QualifiedName] ("(" (parameterAssignments+=Value ("," parameterAssignments+=Value)*)? ")")?;
+		//	advice=[Advice|QualifiedName] ('(' (parameterAssignments+=Value (',' parameterAssignments+=Value)*)? ')')?;
 		@Override public ParserRule getRule() { return rule; }
 
-		//advice=[Advice|QualifiedName] ("(" (parameterAssignments+=Value ("," parameterAssignments+=Value)*)? ")")?
+		//advice=[Advice|QualifiedName] ('(' (parameterAssignments+=Value (',' parameterAssignments+=Value)*)? ')')?
 		public Group getGroup() { return cGroup; }
 
 		//advice=[Advice|QualifiedName]
@@ -303,13 +304,13 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//QualifiedName
 		public RuleCall getAdviceAdviceQualifiedNameParserRuleCall_0_0_1() { return cAdviceAdviceQualifiedNameParserRuleCall_0_0_1; }
 
-		//("(" (parameterAssignments+=Value ("," parameterAssignments+=Value)*)? ")")?
+		//('(' (parameterAssignments+=Value (',' parameterAssignments+=Value)*)? ')')?
 		public Group getGroup_1() { return cGroup_1; }
 
-		//"("
+		//'('
 		public Keyword getLeftParenthesisKeyword_1_0() { return cLeftParenthesisKeyword_1_0; }
 
-		//(parameterAssignments+=Value ("," parameterAssignments+=Value)*)?
+		//(parameterAssignments+=Value (',' parameterAssignments+=Value)*)?
 		public Group getGroup_1_1() { return cGroup_1_1; }
 
 		//parameterAssignments+=Value
@@ -318,10 +319,10 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//Value
 		public RuleCall getParameterAssignmentsValueParserRuleCall_1_1_0_0() { return cParameterAssignmentsValueParserRuleCall_1_1_0_0; }
 
-		//("," parameterAssignments+=Value)*
+		//(',' parameterAssignments+=Value)*
 		public Group getGroup_1_1_1() { return cGroup_1_1_1; }
 
-		//","
+		//','
 		public Keyword getCommaKeyword_1_1_1_0() { return cCommaKeyword_1_1_1_0; }
 
 		//parameterAssignments+=Value
@@ -330,12 +331,12 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//Value
 		public RuleCall getParameterAssignmentsValueParserRuleCall_1_1_1_1_0() { return cParameterAssignmentsValueParserRuleCall_1_1_1_1_0; }
 
-		//")"
+		//')'
 		public Keyword getRightParenthesisKeyword_1_2() { return cRightParenthesisKeyword_1_2; }
 	}
 
 	public class AdviceElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Advice");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.Advice");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cAdviceKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -356,15 +357,17 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//Advice:
-		//	"advice" name=ID ("(" (parameterDeclarations+=ParameterDeclaration (","
-		//	parameterDeclarations+=ParameterDeclaration)*)? ")")? "{" collectors+=Collector* "}";
+		//	'advice' name=ID ('(' (parameterDeclarations+=ParameterDeclaration (','
+		//	parameterDeclarations+=ParameterDeclaration)*)? ')')? '{'
+		//	collectors+=Collector*
+		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 
-		//"advice" name=ID ("(" (parameterDeclarations+=ParameterDeclaration ("," parameterDeclarations+=ParameterDeclaration)*)?
-		//")")? "{" collectors+=Collector* "}"
+		//'advice' name=ID ('(' (parameterDeclarations+=ParameterDeclaration (',' parameterDeclarations+=ParameterDeclaration)*)?
+		//')')? '{' collectors+=Collector* '}'
 		public Group getGroup() { return cGroup; }
 
-		//"advice"
+		//'advice'
 		public Keyword getAdviceKeyword_0() { return cAdviceKeyword_0; }
 
 		//name=ID
@@ -373,13 +376,13 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//("(" (parameterDeclarations+=ParameterDeclaration ("," parameterDeclarations+=ParameterDeclaration)*)? ")")?
+		//('(' (parameterDeclarations+=ParameterDeclaration (',' parameterDeclarations+=ParameterDeclaration)*)? ')')?
 		public Group getGroup_2() { return cGroup_2; }
 
-		//"("
+		//'('
 		public Keyword getLeftParenthesisKeyword_2_0() { return cLeftParenthesisKeyword_2_0; }
 
-		//(parameterDeclarations+=ParameterDeclaration ("," parameterDeclarations+=ParameterDeclaration)*)?
+		//(parameterDeclarations+=ParameterDeclaration (',' parameterDeclarations+=ParameterDeclaration)*)?
 		public Group getGroup_2_1() { return cGroup_2_1; }
 
 		//parameterDeclarations+=ParameterDeclaration
@@ -388,10 +391,10 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//ParameterDeclaration
 		public RuleCall getParameterDeclarationsParameterDeclarationParserRuleCall_2_1_0_0() { return cParameterDeclarationsParameterDeclarationParserRuleCall_2_1_0_0; }
 
-		//("," parameterDeclarations+=ParameterDeclaration)*
+		//(',' parameterDeclarations+=ParameterDeclaration)*
 		public Group getGroup_2_1_1() { return cGroup_2_1_1; }
 
-		//","
+		//','
 		public Keyword getCommaKeyword_2_1_1_0() { return cCommaKeyword_2_1_1_0; }
 
 		//parameterDeclarations+=ParameterDeclaration
@@ -400,10 +403,10 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//ParameterDeclaration
 		public RuleCall getParameterDeclarationsParameterDeclarationParserRuleCall_2_1_1_1_0() { return cParameterDeclarationsParameterDeclarationParserRuleCall_2_1_1_1_0; }
 
-		//")"
+		//')'
 		public Keyword getRightParenthesisKeyword_2_2() { return cRightParenthesisKeyword_2_2; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 
 		//collectors+=Collector*
@@ -412,12 +415,12 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//Collector
 		public RuleCall getCollectorsCollectorParserRuleCall_4_0() { return cCollectorsCollectorParserRuleCall_4_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 	}
 
 	public class ParameterDeclarationElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ParameterDeclaration");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.ParameterDeclaration");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final Keyword cTypeTypeKeyword_0_0 = (Keyword)cTypeAssignment_0.eContents().get(0);
@@ -425,16 +428,16 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		
 		//ParameterDeclaration:
-		//	type="type" name=ID;
+		//	type='type' name=ID;
 		@Override public ParserRule getRule() { return rule; }
 
-		//type="type" name=ID
+		//type='type' name=ID
 		public Group getGroup() { return cGroup; }
 
-		//type="type"
+		//type='type'
 		public Assignment getTypeAssignment_0() { return cTypeAssignment_0; }
 
-		//"type"
+		//'type'
 		public Keyword getTypeTypeKeyword_0_0() { return cTypeTypeKeyword_0_0; }
 
 		//name=ID
@@ -445,7 +448,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class PointcutElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Pointcut");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.Pointcut");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cAnnotationAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cAnnotationAnnotationParserRuleCall_0_0 = (RuleCall)cAnnotationAssignment_0.eContents().get(0);
@@ -461,10 +464,12 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cMethodMethodQueryParserRuleCall_5_1_0 = (RuleCall)cMethodAssignment_5_1.eContents().get(0);
 		
 		//Pointcut:
-		//	annotation=Annotation? "pointcut" name=ID "class" location=LocationQuery ("operation" method=MethodQuery)?;
+		//	annotation=Annotation?
+		//	'pointcut' name=ID
+		//	'class' location=LocationQuery ('operation' method=MethodQuery)?;
 		@Override public ParserRule getRule() { return rule; }
 
-		//annotation=Annotation? "pointcut" name=ID "class" location=LocationQuery ("operation" method=MethodQuery)?
+		//annotation=Annotation? 'pointcut' name=ID 'class' location=LocationQuery ('operation' method=MethodQuery)?
 		public Group getGroup() { return cGroup; }
 
 		//annotation=Annotation?
@@ -473,7 +478,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//Annotation
 		public RuleCall getAnnotationAnnotationParserRuleCall_0_0() { return cAnnotationAnnotationParserRuleCall_0_0; }
 
-		//"pointcut"
+		//'pointcut'
 		public Keyword getPointcutKeyword_1() { return cPointcutKeyword_1; }
 
 		//name=ID
@@ -482,7 +487,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 
-		//"class"
+		//'class'
 		public Keyword getClassKeyword_3() { return cClassKeyword_3; }
 
 		//location=LocationQuery
@@ -491,10 +496,10 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//LocationQuery
 		public RuleCall getLocationLocationQueryParserRuleCall_4_0() { return cLocationLocationQueryParserRuleCall_4_0; }
 
-		//("operation" method=MethodQuery)?
+		//('operation' method=MethodQuery)?
 		public Group getGroup_5() { return cGroup_5; }
 
-		//"operation"
+		//'operation'
 		public Keyword getOperationKeyword_5_0() { return cOperationKeyword_5_0; }
 
 		//method=MethodQuery
@@ -504,8 +509,40 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getMethodMethodQueryParserRuleCall_5_1_0() { return cMethodMethodQueryParserRuleCall_5_1_0; }
 	}
 
+	public class AnnotationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.Annotation");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cCommercialAtKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cValueSTRINGTerminalRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
+		
+		//Annotation:
+		//	'@' name=ID value=STRING;
+		@Override public ParserRule getRule() { return rule; }
+
+		//'@' name=ID value=STRING
+		public Group getGroup() { return cGroup; }
+
+		//'@'
+		public Keyword getCommercialAtKeyword_0() { return cCommercialAtKeyword_0; }
+
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+
+		//value=STRING
+		public Assignment getValueAssignment_2() { return cValueAssignment_2; }
+
+		//STRING
+		public RuleCall getValueSTRINGTerminalRuleCall_2_0() { return cValueSTRINGTerminalRuleCall_2_0; }
+	}
+
 	public class MethodQueryElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MethodQuery");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.MethodQuery");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMethodQueryAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cModifierAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -531,12 +568,15 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cAsteriskKeyword_3_1 = (Keyword)cAlternatives_3.eContents().get(1);
 		
 		//MethodQuery:
-		//	{MethodQuery} modifier=[structure::MethodModifier]? returnType=[structure::Type]? (methodReference=[structure::Method]
-		//	("(" parameterQueries+=ParameterQuery ("," parameterQueries+=ParameterQuery)* ")")? | "*");
+		//	{MethodQuery} modifier=[structure::MethodModifier]?
+		//	returnType=[structure::Type]? (methodReference=[structure::Method] ('(' parameterQueries+=ParameterQuery (','
+		//	parameterQueries+=ParameterQuery)* ')')?
+		//	|
+		//	'*');
 		@Override public ParserRule getRule() { return rule; }
 
 		//{MethodQuery} modifier=[structure::MethodModifier]? returnType=[structure::Type]? (methodReference=[structure::Method]
-		//("(" parameterQueries+=ParameterQuery ("," parameterQueries+=ParameterQuery)* ")")? | "*")
+		//('(' parameterQueries+=ParameterQuery (',' parameterQueries+=ParameterQuery)* ')')? | '*')
 		public Group getGroup() { return cGroup; }
 
 		//{MethodQuery}
@@ -560,11 +600,11 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getReturnTypeTypeIDTerminalRuleCall_2_0_1() { return cReturnTypeTypeIDTerminalRuleCall_2_0_1; }
 
-		//methodReference=[structure::Method] ("(" parameterQueries+=ParameterQuery ("," parameterQueries+=ParameterQuery)* ")")?
-		//| "*"
+		//(methodReference=[structure::Method] ('(' parameterQueries+=ParameterQuery (',' parameterQueries+=ParameterQuery)* ')')?
+		//| '*')
 		public Alternatives getAlternatives_3() { return cAlternatives_3; }
 
-		//methodReference=[structure::Method] ("(" parameterQueries+=ParameterQuery ("," parameterQueries+=ParameterQuery)* ")")?
+		//methodReference=[structure::Method] ('(' parameterQueries+=ParameterQuery (',' parameterQueries+=ParameterQuery)* ')')?
 		public Group getGroup_3_0() { return cGroup_3_0; }
 
 		//methodReference=[structure::Method]
@@ -576,10 +616,10 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getMethodReferenceMethodIDTerminalRuleCall_3_0_0_0_1() { return cMethodReferenceMethodIDTerminalRuleCall_3_0_0_0_1; }
 
-		//("(" parameterQueries+=ParameterQuery ("," parameterQueries+=ParameterQuery)* ")")?
+		//('(' parameterQueries+=ParameterQuery (',' parameterQueries+=ParameterQuery)* ')')?
 		public Group getGroup_3_0_1() { return cGroup_3_0_1; }
 
-		//"("
+		//'('
 		public Keyword getLeftParenthesisKeyword_3_0_1_0() { return cLeftParenthesisKeyword_3_0_1_0; }
 
 		//parameterQueries+=ParameterQuery
@@ -588,10 +628,10 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//ParameterQuery
 		public RuleCall getParameterQueriesParameterQueryParserRuleCall_3_0_1_1_0() { return cParameterQueriesParameterQueryParserRuleCall_3_0_1_1_0; }
 
-		//("," parameterQueries+=ParameterQuery)*
+		//(',' parameterQueries+=ParameterQuery)*
 		public Group getGroup_3_0_1_2() { return cGroup_3_0_1_2; }
 
-		//","
+		//','
 		public Keyword getCommaKeyword_3_0_1_2_0() { return cCommaKeyword_3_0_1_2_0; }
 
 		//parameterQueries+=ParameterQuery
@@ -600,15 +640,15 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//ParameterQuery
 		public RuleCall getParameterQueriesParameterQueryParserRuleCall_3_0_1_2_1_0() { return cParameterQueriesParameterQueryParserRuleCall_3_0_1_2_1_0; }
 
-		//")"
+		//')'
 		public Keyword getRightParenthesisKeyword_3_0_1_3() { return cRightParenthesisKeyword_3_0_1_3; }
 
-		//"*"
+		//'*'
 		public Keyword getAsteriskKeyword_3_1() { return cAsteriskKeyword_3_1; }
 	}
 
 	public class ParameterQueryElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ParameterQuery");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.ParameterQuery");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cModifierAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final CrossReference cModifierParameterModifierCrossReference_0_0 = (CrossReference)cModifierAssignment_0.eContents().get(0);
@@ -621,7 +661,8 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cParameterParameterIDTerminalRuleCall_2_0_1 = (RuleCall)cParameterParameterCrossReference_2_0.eContents().get(1);
 		
 		//ParameterQuery:
-		//	modifier=[structure::ParameterModifier]? type=[structure::Type] parameter=[structure::Parameter]?;
+		//	modifier=[structure::ParameterModifier]?
+		//	type=[structure::Type] parameter=[structure::Parameter]?;
 		@Override public ParserRule getRule() { return rule; }
 
 		//modifier=[structure::ParameterModifier]? type=[structure::Type] parameter=[structure::Parameter]?
@@ -656,7 +697,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class LocationQueryElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "LocationQuery");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.LocationQuery");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cNodeAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cNodeNodeParserRuleCall_0_0 = (RuleCall)cNodeAssignment_0.eContents().get(0);
@@ -669,10 +710,10 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cCompositionCompositionQueryParserRuleCall_1_1_0 = (RuleCall)cCompositionAssignment_1_1.eContents().get(0);
 		
 		//LocationQuery:
-		//	node=Node ("." specialization=LocationQuery | composition=CompositionQuery)?;
+		//	node=Node ('.' specialization=LocationQuery | composition=CompositionQuery)?;
 		@Override public ParserRule getRule() { return rule; }
 
-		//node=Node ("." specialization=LocationQuery | composition=CompositionQuery)?
+		//node=Node ('.' specialization=LocationQuery | composition=CompositionQuery)?
 		public Group getGroup() { return cGroup; }
 
 		//node=Node
@@ -681,13 +722,13 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//Node
 		public RuleCall getNodeNodeParserRuleCall_0_0() { return cNodeNodeParserRuleCall_0_0; }
 
-		//("." specialization=LocationQuery | composition=CompositionQuery)?
+		//('.' specialization=LocationQuery | composition=CompositionQuery)?
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 
-		//"." specialization=LocationQuery
+		//'.' specialization=LocationQuery
 		public Group getGroup_1_0() { return cGroup_1_0; }
 
-		//"."
+		//'.'
 		public Keyword getFullStopKeyword_1_0_0() { return cFullStopKeyword_1_0_0; }
 
 		//specialization=LocationQuery
@@ -704,7 +745,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class CompositionQueryElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CompositionQuery");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.CompositionQuery");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cCompositionQueryAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cModifierAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -715,10 +756,10 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//CompositionQuery:
-		//	{CompositionQuery} modifier=QueryModifier? "{" subQueries+=LocationQuery* "}";
+		//	{CompositionQuery} modifier=QueryModifier? '{' subQueries+=LocationQuery* '}';
 		@Override public ParserRule getRule() { return rule; }
 
-		//{CompositionQuery} modifier=QueryModifier? "{" subQueries+=LocationQuery* "}"
+		//{CompositionQuery} modifier=QueryModifier? '{' subQueries+=LocationQuery* '}'
 		public Group getGroup() { return cGroup; }
 
 		//{CompositionQuery}
@@ -730,7 +771,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//QueryModifier
 		public RuleCall getModifierQueryModifierEnumRuleCall_1_0() { return cModifierQueryModifierEnumRuleCall_1_0; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 
 		//subQueries+=LocationQuery*
@@ -739,12 +780,12 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//LocationQuery
 		public RuleCall getSubQueriesLocationQueryParserRuleCall_3_0() { return cSubQueriesLocationQueryParserRuleCall_3_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 	}
 
 	public class NodeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Node");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.Node");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
 		private final RuleCall cSubPathNodeParserRuleCall_0_0 = (RuleCall)cAlternatives_0.eContents().get(0);
@@ -761,7 +802,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//(SubPathNode | WildcardNode | ParentNode | ContainerNode) parameter=ParamQuery?
 		public Group getGroup() { return cGroup; }
 
-		//SubPathNode | WildcardNode | ParentNode | ContainerNode
+		//(SubPathNode | WildcardNode | ParentNode | ContainerNode)
 		public Alternatives getAlternatives_0() { return cAlternatives_0; }
 
 		//SubPathNode
@@ -784,7 +825,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class ParamQueryElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ParamQuery");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.ParamQuery");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cLeftSquareBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cQueriesAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -792,13 +833,13 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightSquareBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
 		//ParamQuery:
-		//	"[" queries+=ParamOperator+ "]";
+		//	'[' queries+=ParamOperator+ ']';
 		@Override public ParserRule getRule() { return rule; }
 
-		//"[" queries+=ParamOperator+ "]"
+		//'[' queries+=ParamOperator+ ']'
 		public Group getGroup() { return cGroup; }
 
-		//"["
+		//'['
 		public Keyword getLeftSquareBracketKeyword_0() { return cLeftSquareBracketKeyword_0; }
 
 		//queries+=ParamOperator+
@@ -807,12 +848,12 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//ParamOperator
 		public RuleCall getQueriesParamOperatorParserRuleCall_1_0() { return cQueriesParamOperatorParserRuleCall_1_0; }
 
-		//"]"
+		//']'
 		public Keyword getRightSquareBracketKeyword_2() { return cRightSquareBracketKeyword_2; }
 	}
 
 	public class ParamOperatorElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ParamOperator");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.ParamOperator");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final RuleCall cParamCompareParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
@@ -822,8 +863,8 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
 		private final RuleCall cRightParamCompareParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
-		//ParamOperator returns ParamExpression:
-		//	ParamCompare ({ParamExpression.left=current} logic=LogicOperator right=ParamCompare)?;
+		//ParamOperator ParamExpression:
+		//	ParamCompare ({ParamExpression.left=current} logic=LogicOperator right=ParamCompare)?
 		@Override public ParserRule getRule() { return rule; }
 
 		//ParamCompare ({ParamExpression.left=current} logic=LogicOperator right=ParamCompare)?
@@ -852,7 +893,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class ParamCompareElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ParamCompare");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.ParamCompare");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final RuleCall cValueParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
@@ -862,8 +903,8 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
 		private final RuleCall cRightValueParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
-		//ParamCompare returns ParamExpression:
-		//	Value ({ParamExpression.left=current} operator=LogicOperator right=Value)?;
+		//ParamCompare ParamExpression:
+		//	Value ({ParamExpression.left=current} operator=LogicOperator right=Value)?
 		@Override public ParserRule getRule() { return rule; }
 
 		//Value ({ParamExpression.left=current} operator=LogicOperator right=Value)?
@@ -892,15 +933,15 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class ValueElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Value");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.Value");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cStringValueParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cIntValueParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cFloatValueParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cReferenceValueParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
-		//Value returns ParamExpression:
-		//	StringValue | IntValue | FloatValue | ReferenceValue;
+		//Value ParamExpression:
+		//	StringValue | IntValue | FloatValue | ReferenceValue
 		@Override public ParserRule getRule() { return rule; }
 
 		//StringValue | IntValue | FloatValue | ReferenceValue
@@ -920,7 +961,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class FloatValueElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FloatValue");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.FloatValue");
 		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
 		private final RuleCall cValueFLOATTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
 		
@@ -936,7 +977,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class IntValueElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "IntValue");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.IntValue");
 		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
 		private final RuleCall cValueINTTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
 		
@@ -952,7 +993,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class StringValueElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "StringValue");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.StringValue");
 		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
 		private final RuleCall cValueSTRINGTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
 		
@@ -968,7 +1009,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class ReferenceValueElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ReferenceValue");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.ReferenceValue");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cQueryAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cQueryLocationQueryParserRuleCall_0_0 = (RuleCall)cQueryAssignment_0.eContents().get(0);
@@ -996,7 +1037,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class ParameterElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Parameter");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.Parameter");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cRuntimePropertyParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cReflectionPropertyParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
@@ -1020,7 +1061,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class InternalFunctionPropertyElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "InternalFunctionProperty");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.InternalFunctionProperty");
 		private final Assignment cFunctionAssignment = (Assignment)rule.eContents().get(1);
 		private final RuleCall cFunctionInternalFunctionEnumRuleCall_0 = (RuleCall)cFunctionAssignment.eContents().get(0);
 		
@@ -1036,20 +1077,20 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class RuntimePropertyElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RuntimeProperty");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.RuntimeProperty");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cNumberSignKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cReferenceAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cReferenceIDTerminalRuleCall_1_0 = (RuleCall)cReferenceAssignment_1.eContents().get(0);
 		
 		//RuntimeProperty:
-		//	"#" reference=ID;
+		//	'#' reference=ID;
 		@Override public ParserRule getRule() { return rule; }
 
-		//"#" reference=ID
+		//'#' reference=ID
 		public Group getGroup() { return cGroup; }
 
-		//"#"
+		//'#'
 		public Keyword getNumberSignKeyword_0() { return cNumberSignKeyword_0; }
 
 		//reference=ID
@@ -1060,20 +1101,20 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class ReflectionPropertyElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ReflectionProperty");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.ReflectionProperty");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cDollarSignKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cFunctionAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cFunctionReflectionFunctionEnumRuleCall_1_0 = (RuleCall)cFunctionAssignment_1.eContents().get(0);
 		
 		//ReflectionProperty:
-		//	"$" function=ReflectionFunction;
+		//	'$' function=ReflectionFunction;
 		@Override public ParserRule getRule() { return rule; }
 
-		//"$" function=ReflectionFunction
+		//'$' function=ReflectionFunction
 		public Group getGroup() { return cGroup; }
 
-		//"$"
+		//'$'
 		public Keyword getDollarSignKeyword_0() { return cDollarSignKeyword_0; }
 
 		//function=ReflectionFunction
@@ -1084,7 +1125,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class ContainerNodeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ContainerNode");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.ContainerNode");
 		private final Assignment cContainerAssignment = (Assignment)rule.eContents().get(1);
 		private final CrossReference cContainerContainerCrossReference_0 = (CrossReference)cContainerAssignment.eContents().get(0);
 		private final RuleCall cContainerContainerIDTerminalRuleCall_0_1 = (RuleCall)cContainerContainerCrossReference_0.eContents().get(1);
@@ -1104,67 +1145,70 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class WildcardNodeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "WildcardNode");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.WildcardNode");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cWildcardNodeAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cAsteriskKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		
 		//WildcardNode:
-		//	{WildcardNode} "*";
+		//	{WildcardNode}
+		//	'*';
 		@Override public ParserRule getRule() { return rule; }
 
-		//{WildcardNode} "*"
+		//{WildcardNode} '*'
 		public Group getGroup() { return cGroup; }
 
 		//{WildcardNode}
 		public Action getWildcardNodeAction_0() { return cWildcardNodeAction_0; }
 
-		//"*"
+		//'*'
 		public Keyword getAsteriskKeyword_1() { return cAsteriskKeyword_1; }
 	}
 
 	public class SubPathNodeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SubPathNode");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.SubPathNode");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cSubPathNodeAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cAsteriskAsteriskKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		
 		//SubPathNode:
-		//	{SubPathNode} "**";
+		//	{SubPathNode}
+		//	'**';
 		@Override public ParserRule getRule() { return rule; }
 
-		//{SubPathNode} "**"
+		//{SubPathNode} '**'
 		public Group getGroup() { return cGroup; }
 
 		//{SubPathNode}
 		public Action getSubPathNodeAction_0() { return cSubPathNodeAction_0; }
 
-		//"**"
+		//'**'
 		public Keyword getAsteriskAsteriskKeyword_1() { return cAsteriskAsteriskKeyword_1; }
 	}
 
 	public class ParentNodeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ParentNode");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.ParentNode");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cParentNodeAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cLessThanSignLessThanSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		
 		//ParentNode:
-		//	{ParentNode} "<<";
+		//	{ParentNode}
+		//	'<<';
 		@Override public ParserRule getRule() { return rule; }
 
-		//{ParentNode} "<<"
+		//{ParentNode} '<<'
 		public Group getGroup() { return cGroup; }
 
 		//{ParentNode}
 		public Action getParentNodeAction_0() { return cParentNodeAction_0; }
 
-		//"<<"
+		//'<<'
 		public Keyword getLessThanSignLessThanSignKeyword_1() { return cLessThanSignLessThanSignKeyword_1; }
 	}
 
 	public class CollectorElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Collector");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.Collector");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cInsertionPointAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cInsertionPointInsertionPointEnumRuleCall_0_0 = (RuleCall)cInsertionPointAssignment_0.eContents().get(0);
@@ -1192,7 +1236,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class EventElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Event");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.Event");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final CrossReference cTypeRecordTypeCrossReference_0_0 = (CrossReference)cTypeAssignment_0.eContents().get(0);
@@ -1208,10 +1252,10 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//Event:
-		//	type=[irl::RecordType|QualifiedName] "(" (initializations+=Value ("," initializations+=Value)*)? ")";
+		//	type=[irl::RecordType|QualifiedName] '(' (initializations+=Value (',' initializations+=Value)*)? ')';
 		@Override public ParserRule getRule() { return rule; }
 
-		//type=[irl::RecordType|QualifiedName] "(" (initializations+=Value ("," initializations+=Value)*)? ")"
+		//type=[irl::RecordType|QualifiedName] '(' (initializations+=Value (',' initializations+=Value)*)? ')'
 		public Group getGroup() { return cGroup; }
 
 		//type=[irl::RecordType|QualifiedName]
@@ -1223,10 +1267,10 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//QualifiedName
 		public RuleCall getTypeRecordTypeQualifiedNameParserRuleCall_0_0_1() { return cTypeRecordTypeQualifiedNameParserRuleCall_0_0_1; }
 
-		//"("
+		//'('
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 
-		//(initializations+=Value ("," initializations+=Value)*)?
+		//(initializations+=Value (',' initializations+=Value)*)?
 		public Group getGroup_2() { return cGroup_2; }
 
 		//initializations+=Value
@@ -1235,10 +1279,10 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//Value
 		public RuleCall getInitializationsValueParserRuleCall_2_0_0() { return cInitializationsValueParserRuleCall_2_0_0; }
 
-		//("," initializations+=Value)*
+		//(',' initializations+=Value)*
 		public Group getGroup_2_1() { return cGroup_2_1; }
 
-		//","
+		//','
 		public Keyword getCommaKeyword_2_1_0() { return cCommaKeyword_2_1_0; }
 
 		//initializations+=Value
@@ -1247,13 +1291,13 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//Value
 		public RuleCall getInitializationsValueParserRuleCall_2_1_1_0() { return cInitializationsValueParserRuleCall_2_1_1_0; }
 
-		//")"
+		//')'
 		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
 	}
 	
 	
 	public class QueryModifierElements extends AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "QueryModifier");
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.QueryModifier");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final EnumLiteralDeclaration cINCLUDEEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
 		private final Keyword cINCLUDEIncludeKeyword_0_0 = (Keyword)cINCLUDEEnumLiteralDeclaration_0.eContents().get(0);
@@ -1261,27 +1305,28 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cEXCLUDEExcludeKeyword_1_0 = (Keyword)cEXCLUDEEnumLiteralDeclaration_1.eContents().get(0);
 		
 		//enum QueryModifier:
-		//	INCLUDE="include" | EXCLUDE="exclude";
+		//	INCLUDE='include' |
+		//	EXCLUDE='exclude';
 		public EnumRule getRule() { return rule; }
 
-		//INCLUDE="include" | EXCLUDE="exclude"
+		//INCLUDE='include' | EXCLUDE='exclude'
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//INCLUDE="include"
+		//INCLUDE='include'
 		public EnumLiteralDeclaration getINCLUDEEnumLiteralDeclaration_0() { return cINCLUDEEnumLiteralDeclaration_0; }
 
-		//"include"
+		//'include'
 		public Keyword getINCLUDEIncludeKeyword_0_0() { return cINCLUDEIncludeKeyword_0_0; }
 
-		//EXCLUDE="exclude"
+		//EXCLUDE='exclude'
 		public EnumLiteralDeclaration getEXCLUDEEnumLiteralDeclaration_1() { return cEXCLUDEEnumLiteralDeclaration_1; }
 
-		//"exclude"
+		//'exclude'
 		public Keyword getEXCLUDEExcludeKeyword_1_0() { return cEXCLUDEExcludeKeyword_1_0; }
 	}
 
 	public class LogicOperatorElements extends AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "LogicOperator");
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.LogicOperator");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final EnumLiteralDeclaration cANDEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
 		private final Keyword cANDAmpersandAmpersandKeyword_0_0 = (Keyword)cANDEnumLiteralDeclaration_0.eContents().get(0);
@@ -1289,27 +1334,28 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cORVerticalLineVerticalLineKeyword_1_0 = (Keyword)cOREnumLiteralDeclaration_1.eContents().get(0);
 		
 		//enum LogicOperator:
-		//	AND="&&" | OR="||";
+		//	AND='&&' |
+		//	OR='||';
 		public EnumRule getRule() { return rule; }
 
-		//AND="&&" | OR="||"
+		//AND='&&' | OR='||'
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//AND="&&"
+		//AND='&&'
 		public EnumLiteralDeclaration getANDEnumLiteralDeclaration_0() { return cANDEnumLiteralDeclaration_0; }
 
-		//"&&"
+		//'&&'
 		public Keyword getANDAmpersandAmpersandKeyword_0_0() { return cANDAmpersandAmpersandKeyword_0_0; }
 
-		//OR="||"
+		//OR='||'
 		public EnumLiteralDeclaration getOREnumLiteralDeclaration_1() { return cOREnumLiteralDeclaration_1; }
 
-		//"||"
+		//'||'
 		public Keyword getORVerticalLineVerticalLineKeyword_1_0() { return cORVerticalLineVerticalLineKeyword_1_0; }
 	}
 
 	public class InternalFunctionElements extends AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "InternalFunction");
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.InternalFunction");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final EnumLiteralDeclaration cTIMEEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
 		private final Keyword cTIMETimeKeyword_0_0 = (Keyword)cTIMEEnumLiteralDeclaration_0.eContents().get(0);
@@ -1319,33 +1365,35 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cORDER_INDEXOrderIndexKeyword_2_0 = (Keyword)cORDER_INDEXEnumLiteralDeclaration_2.eContents().get(0);
 		
 		//enum InternalFunction:
-		//	TIME="time" | TRACE_ID="traceId" | ORDER_INDEX="orderIndex";
+		//	TIME='time' |
+		//	TRACE_ID='traceId' |
+		//	ORDER_INDEX='orderIndex';
 		public EnumRule getRule() { return rule; }
 
-		//TIME="time" | TRACE_ID="traceId" | ORDER_INDEX="orderIndex"
+		//TIME='time' | TRACE_ID='traceId' | ORDER_INDEX='orderIndex'
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//TIME="time"
+		//TIME='time'
 		public EnumLiteralDeclaration getTIMEEnumLiteralDeclaration_0() { return cTIMEEnumLiteralDeclaration_0; }
 
-		//"time"
+		//'time'
 		public Keyword getTIMETimeKeyword_0_0() { return cTIMETimeKeyword_0_0; }
 
-		//TRACE_ID="traceId"
+		//TRACE_ID='traceId'
 		public EnumLiteralDeclaration getTRACE_IDEnumLiteralDeclaration_1() { return cTRACE_IDEnumLiteralDeclaration_1; }
 
-		//"traceId"
+		//'traceId'
 		public Keyword getTRACE_IDTraceIdKeyword_1_0() { return cTRACE_IDTraceIdKeyword_1_0; }
 
-		//ORDER_INDEX="orderIndex"
+		//ORDER_INDEX='orderIndex'
 		public EnumLiteralDeclaration getORDER_INDEXEnumLiteralDeclaration_2() { return cORDER_INDEXEnumLiteralDeclaration_2; }
 
-		//"orderIndex"
+		//'orderIndex'
 		public Keyword getORDER_INDEXOrderIndexKeyword_2_0() { return cORDER_INDEXOrderIndexKeyword_2_0; }
 	}
 
 	public class ReflectionFunctionElements extends AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "ReflectionFunction");
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.ReflectionFunction");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final EnumLiteralDeclaration cNAMEEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
 		private final Keyword cNAMENameKeyword_0_0 = (Keyword)cNAMEEnumLiteralDeclaration_0.eContents().get(0);
@@ -1357,39 +1405,42 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRETURN_TYPEReturnTypeKeyword_3_0 = (Keyword)cRETURN_TYPEEnumLiteralDeclaration_3.eContents().get(0);
 		
 		//enum ReflectionFunction:
-		//	NAME="name" | SIGNATURE="signature" | CLASS="classname" | RETURN_TYPE="return-type";
+		//	NAME='name' |
+		//	SIGNATURE='signature' |
+		//	CLASS='classname' |
+		//	RETURN_TYPE='return-type';
 		public EnumRule getRule() { return rule; }
 
-		//NAME="name" | SIGNATURE="signature" | CLASS="classname" | RETURN_TYPE="return-type"
+		//NAME='name' | SIGNATURE='signature' | CLASS='classname' | RETURN_TYPE='return-type'
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//NAME="name"
+		//NAME='name'
 		public EnumLiteralDeclaration getNAMEEnumLiteralDeclaration_0() { return cNAMEEnumLiteralDeclaration_0; }
 
-		//"name"
+		//'name'
 		public Keyword getNAMENameKeyword_0_0() { return cNAMENameKeyword_0_0; }
 
-		//SIGNATURE="signature"
+		//SIGNATURE='signature'
 		public EnumLiteralDeclaration getSIGNATUREEnumLiteralDeclaration_1() { return cSIGNATUREEnumLiteralDeclaration_1; }
 
-		//"signature"
+		//'signature'
 		public Keyword getSIGNATURESignatureKeyword_1_0() { return cSIGNATURESignatureKeyword_1_0; }
 
-		//CLASS="classname"
+		//CLASS='classname'
 		public EnumLiteralDeclaration getCLASSEnumLiteralDeclaration_2() { return cCLASSEnumLiteralDeclaration_2; }
 
-		//"classname"
+		//'classname'
 		public Keyword getCLASSClassnameKeyword_2_0() { return cCLASSClassnameKeyword_2_0; }
 
-		//RETURN_TYPE="return-type"
+		//RETURN_TYPE='return-type'
 		public EnumLiteralDeclaration getRETURN_TYPEEnumLiteralDeclaration_3() { return cRETURN_TYPEEnumLiteralDeclaration_3; }
 
-		//"return-type"
+		//'return-type'
 		public Keyword getRETURN_TYPEReturnTypeKeyword_3_0() { return cRETURN_TYPEReturnTypeKeyword_3_0; }
 	}
 
 	public class OperatorElements extends AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "Operator");
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.Operator");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final EnumLiteralDeclaration cEQEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
 		private final Keyword cEQEqualsSignKeyword_0_0 = (Keyword)cEQEnumLiteralDeclaration_0.eContents().get(0);
@@ -1407,57 +1458,63 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cLELessThanSignEqualsSignKeyword_6_0 = (Keyword)cLEEnumLiteralDeclaration_6.eContents().get(0);
 		
 		//enum Operator:
-		//	EQ="=" | LIKE="~" | NE="!=" | GR=">" | LW="<" | GE=">=" | LE="<=";
+		//	EQ='=' |
+		//	LIKE='~' |
+		//	NE='!=' |
+		//	GR='>' |
+		//	LW='<' |
+		//	GE='>=' |
+		//	LE='<=';
 		public EnumRule getRule() { return rule; }
 
-		//EQ="=" | LIKE="~" | NE="!=" | GR=">" | LW="<" | GE=">=" | LE="<="
+		//EQ='=' | LIKE='~' | NE='!=' | GR='>' | LW='<' | GE='>=' | LE='<='
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//EQ="="
+		//EQ='='
 		public EnumLiteralDeclaration getEQEnumLiteralDeclaration_0() { return cEQEnumLiteralDeclaration_0; }
 
-		//"="
+		//'='
 		public Keyword getEQEqualsSignKeyword_0_0() { return cEQEqualsSignKeyword_0_0; }
 
-		//LIKE="~"
+		//LIKE='~'
 		public EnumLiteralDeclaration getLIKEEnumLiteralDeclaration_1() { return cLIKEEnumLiteralDeclaration_1; }
 
-		//"~"
+		//'~'
 		public Keyword getLIKETildeKeyword_1_0() { return cLIKETildeKeyword_1_0; }
 
-		//NE="!="
+		//NE='!='
 		public EnumLiteralDeclaration getNEEnumLiteralDeclaration_2() { return cNEEnumLiteralDeclaration_2; }
 
-		//"!="
+		//'!='
 		public Keyword getNEExclamationMarkEqualsSignKeyword_2_0() { return cNEExclamationMarkEqualsSignKeyword_2_0; }
 
-		//GR=">"
+		//GR='>'
 		public EnumLiteralDeclaration getGREnumLiteralDeclaration_3() { return cGREnumLiteralDeclaration_3; }
 
-		//">"
+		//'>'
 		public Keyword getGRGreaterThanSignKeyword_3_0() { return cGRGreaterThanSignKeyword_3_0; }
 
-		//LW="<"
+		//LW='<'
 		public EnumLiteralDeclaration getLWEnumLiteralDeclaration_4() { return cLWEnumLiteralDeclaration_4; }
 
-		//"<"
+		//'<'
 		public Keyword getLWLessThanSignKeyword_4_0() { return cLWLessThanSignKeyword_4_0; }
 
-		//GE=">="
+		//GE='>='
 		public EnumLiteralDeclaration getGEEnumLiteralDeclaration_5() { return cGEEnumLiteralDeclaration_5; }
 
-		//">="
+		//'>='
 		public Keyword getGEGreaterThanSignEqualsSignKeyword_5_0() { return cGEGreaterThanSignEqualsSignKeyword_5_0; }
 
-		//LE="<="
+		//LE='<='
 		public EnumLiteralDeclaration getLEEnumLiteralDeclaration_6() { return cLEEnumLiteralDeclaration_6; }
 
-		//"<="
+		//'<='
 		public Keyword getLELessThanSignEqualsSignKeyword_6_0() { return cLELessThanSignEqualsSignKeyword_6_0; }
 	}
 
 	public class InsertionPointElements extends AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "InsertionPoint");
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.InsertionPoint");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final EnumLiteralDeclaration cBEFOREEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
 		private final Keyword cBEFOREBeforeKeyword_0_0 = (Keyword)cBEFOREEnumLiteralDeclaration_0.eContents().get(0);
@@ -1465,26 +1522,27 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cAFTERAfterKeyword_1_0 = (Keyword)cAFTEREnumLiteralDeclaration_1.eContents().get(0);
 		
 		//enum InsertionPoint:
-		//	BEFORE="before" | AFTER="after";
+		//	BEFORE='before' |
+		//	AFTER='after';
 		public EnumRule getRule() { return rule; }
 
-		//BEFORE="before" | AFTER="after"
+		//BEFORE='before' | AFTER='after'
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//BEFORE="before"
+		//BEFORE='before'
 		public EnumLiteralDeclaration getBEFOREEnumLiteralDeclaration_0() { return cBEFOREEnumLiteralDeclaration_0; }
 
-		//"before"
+		//'before'
 		public Keyword getBEFOREBeforeKeyword_0_0() { return cBEFOREBeforeKeyword_0_0; }
 
-		//AFTER="after"
+		//AFTER='after'
 		public EnumLiteralDeclaration getAFTEREnumLiteralDeclaration_1() { return cAFTEREnumLiteralDeclaration_1; }
 
-		//"after"
+		//'after'
 		public Keyword getAFTERAfterKeyword_1_0() { return cAFTERAfterKeyword_1_0; }
 	}
 	
-	private final ModelElements pModel;
+	private final AspectModelElements pAspectModel;
 	private final ImportElements pImport;
 	private final ApplicationModelElements pApplicationModel;
 	private final QualifiedNameElements pQualifiedName;
@@ -1494,15 +1552,16 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	private final AdviceElements pAdvice;
 	private final ParameterDeclarationElements pParameterDeclaration;
 	private final PointcutElements pPointcut;
+	private final AnnotationElements pAnnotation;
 	private final MethodQueryElements pMethodQuery;
 	private final ParameterQueryElements pParameterQuery;
 	private final LocationQueryElements pLocationQuery;
 	private final CompositionQueryElements pCompositionQuery;
-	private final QueryModifierElements unknownRuleQueryModifier;
+	private final QueryModifierElements eQueryModifier;
 	private final NodeElements pNode;
 	private final ParamQueryElements pParamQuery;
 	private final ParamOperatorElements pParamOperator;
-	private final LogicOperatorElements unknownRuleLogicOperator;
+	private final LogicOperatorElements eLogicOperator;
 	private final ParamCompareElements pParamCompare;
 	private final ValueElements pValue;
 	private final FloatValueElements pFloatValue;
@@ -1511,29 +1570,32 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	private final ReferenceValueElements pReferenceValue;
 	private final ParameterElements pParameter;
 	private final InternalFunctionPropertyElements pInternalFunctionProperty;
-	private final InternalFunctionElements unknownRuleInternalFunction;
+	private final InternalFunctionElements eInternalFunction;
 	private final RuntimePropertyElements pRuntimeProperty;
 	private final ReflectionPropertyElements pReflectionProperty;
-	private final ReflectionFunctionElements unknownRuleReflectionFunction;
-	private final OperatorElements unknownRuleOperator;
+	private final ReflectionFunctionElements eReflectionFunction;
+	private final OperatorElements eOperator;
 	private final ContainerNodeElements pContainerNode;
 	private final WildcardNodeElements pWildcardNode;
 	private final SubPathNodeElements pSubPathNode;
 	private final ParentNodeElements pParentNode;
 	private final CollectorElements pCollector;
 	private final EventElements pEvent;
-	private final InsertionPointElements unknownRuleInsertionPoint;
+	private final InsertionPointElements eInsertionPoint;
+	private final TerminalRule tFLOAT;
+	private final TerminalRule tNUMBER;
+	private final TerminalRule tINT;
 	
 	private final Grammar grammar;
 
-	private final AnnotationsGrammarAccess gaAnnotations;
+	private final TerminalsGrammarAccess gaTerminals;
 
 	@Inject
 	public AspectLangGrammarAccess(GrammarProvider grammarProvider,
-		AnnotationsGrammarAccess gaAnnotations) {
+		TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
-		this.gaAnnotations = gaAnnotations;
-		this.pModel = new ModelElements();
+		this.gaTerminals = gaTerminals;
+		this.pAspectModel = new AspectModelElements();
 		this.pImport = new ImportElements();
 		this.pApplicationModel = new ApplicationModelElements();
 		this.pQualifiedName = new QualifiedNameElements();
@@ -1543,15 +1605,16 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		this.pAdvice = new AdviceElements();
 		this.pParameterDeclaration = new ParameterDeclarationElements();
 		this.pPointcut = new PointcutElements();
+		this.pAnnotation = new AnnotationElements();
 		this.pMethodQuery = new MethodQueryElements();
 		this.pParameterQuery = new ParameterQueryElements();
 		this.pLocationQuery = new LocationQueryElements();
 		this.pCompositionQuery = new CompositionQueryElements();
-		this.unknownRuleQueryModifier = new QueryModifierElements();
+		this.eQueryModifier = new QueryModifierElements();
 		this.pNode = new NodeElements();
 		this.pParamQuery = new ParamQueryElements();
 		this.pParamOperator = new ParamOperatorElements();
-		this.unknownRuleLogicOperator = new LogicOperatorElements();
+		this.eLogicOperator = new LogicOperatorElements();
 		this.pParamCompare = new ParamCompareElements();
 		this.pValue = new ValueElements();
 		this.pFloatValue = new FloatValueElements();
@@ -1560,18 +1623,21 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		this.pReferenceValue = new ReferenceValueElements();
 		this.pParameter = new ParameterElements();
 		this.pInternalFunctionProperty = new InternalFunctionPropertyElements();
-		this.unknownRuleInternalFunction = new InternalFunctionElements();
+		this.eInternalFunction = new InternalFunctionElements();
 		this.pRuntimeProperty = new RuntimePropertyElements();
 		this.pReflectionProperty = new ReflectionPropertyElements();
-		this.unknownRuleReflectionFunction = new ReflectionFunctionElements();
-		this.unknownRuleOperator = new OperatorElements();
+		this.eReflectionFunction = new ReflectionFunctionElements();
+		this.eOperator = new OperatorElements();
 		this.pContainerNode = new ContainerNodeElements();
 		this.pWildcardNode = new WildcardNodeElements();
 		this.pSubPathNode = new SubPathNodeElements();
 		this.pParentNode = new ParentNodeElements();
 		this.pCollector = new CollectorElements();
 		this.pEvent = new EventElements();
-		this.unknownRuleInsertionPoint = new InsertionPointElements();
+		this.eInsertionPoint = new InsertionPointElements();
+		this.tFLOAT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.FLOAT");
+		this.tNUMBER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.NUMBER");
+		this.tINT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.INT");
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -1596,24 +1662,25 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 
-	public AnnotationsGrammarAccess getAnnotationsGrammarAccess() {
-		return gaAnnotations;
+	public TerminalsGrammarAccess getTerminalsGrammarAccess() {
+		return gaTerminals;
 	}
 
 	
-	//Model:
-	//	"package" name=QualifiedName imports+=Import* sources+=ApplicationModel* (advices+=Advice | pointcuts+=Pointcut |
-	//	aspects+=Aspect)*;
-	public ModelElements getModelAccess() {
-		return pModel;
+	//AspectModel:
+	//	'package' name=QualifiedName
+	//	imports+=Import*
+	//	sources+=ApplicationModel* (advices+=Advice | pointcuts+=Pointcut | aspects+=Aspect)*;
+	public AspectModelElements getAspectModelAccess() {
+		return pAspectModel;
 	}
 	
-	public ParserRule getModelRule() {
-		return getModelAccess().getRule();
+	public ParserRule getAspectModelRule() {
+		return getAspectModelAccess().getRule();
 	}
 
 	//Import:
-	//	"import" importedNamespace=QualifiedNameWithWildcard;
+	//	'import' importedNamespace=QualifiedNameWithWildcard;
 	public ImportElements getImportAccess() {
 		return pImport;
 	}
@@ -1623,7 +1690,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ApplicationModel:
-	//	"use" handler=ID "on" name=ID model=STRING;
+	//	'use' handler=ID 'on' name=ID model=STRING;
 	public ApplicationModelElements getApplicationModelAccess() {
 		return pApplicationModel;
 	}
@@ -1633,7 +1700,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//QualifiedName:
-	//	ID ("." ID)*;
+	//	ID (=> '.' ID)*;
 	public QualifiedNameElements getQualifiedNameAccess() {
 		return pQualifiedName;
 	}
@@ -1643,7 +1710,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//QualifiedNameWithWildcard:
-	//	QualifiedName ("." "*")?;
+	//	QualifiedName ('.' '*')?;
 	public QualifiedNameWithWildcardElements getQualifiedNameWithWildcardAccess() {
 		return pQualifiedNameWithWildcard;
 	}
@@ -1655,7 +1722,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	//// define subgraph-pattern to locate structures in models
 	//// define selector for reference destination
 	//Aspect:
-	//	"aspect" pointcut=[Pointcut|QualifiedName] ":" advices+=UtilizeAdvice ("," advices+=UtilizeAdvice)*;
+	//	'aspect' pointcut=[Pointcut|QualifiedName] ':' advices+=UtilizeAdvice (',' advices+=UtilizeAdvice)*;
 	public AspectElements getAspectAccess() {
 		return pAspect;
 	}
@@ -1665,7 +1732,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//UtilizeAdvice:
-	//	advice=[Advice|QualifiedName] ("(" (parameterAssignments+=Value ("," parameterAssignments+=Value)*)? ")")?;
+	//	advice=[Advice|QualifiedName] ('(' (parameterAssignments+=Value (',' parameterAssignments+=Value)*)? ')')?;
 	public UtilizeAdviceElements getUtilizeAdviceAccess() {
 		return pUtilizeAdvice;
 	}
@@ -1675,8 +1742,10 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Advice:
-	//	"advice" name=ID ("(" (parameterDeclarations+=ParameterDeclaration (","
-	//	parameterDeclarations+=ParameterDeclaration)*)? ")")? "{" collectors+=Collector* "}";
+	//	'advice' name=ID ('(' (parameterDeclarations+=ParameterDeclaration (','
+	//	parameterDeclarations+=ParameterDeclaration)*)? ')')? '{'
+	//	collectors+=Collector*
+	//	'}';
 	public AdviceElements getAdviceAccess() {
 		return pAdvice;
 	}
@@ -1686,7 +1755,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ParameterDeclaration:
-	//	type="type" name=ID;
+	//	type='type' name=ID;
 	public ParameterDeclarationElements getParameterDeclarationAccess() {
 		return pParameterDeclaration;
 	}
@@ -1696,7 +1765,9 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Pointcut:
-	//	annotation=Annotation? "pointcut" name=ID "class" location=LocationQuery ("operation" method=MethodQuery)?;
+	//	annotation=Annotation?
+	//	'pointcut' name=ID
+	//	'class' location=LocationQuery ('operation' method=MethodQuery)?;
 	public PointcutElements getPointcutAccess() {
 		return pPointcut;
 	}
@@ -1705,9 +1776,22 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		return getPointcutAccess().getRule();
 	}
 
+	//Annotation:
+	//	'@' name=ID value=STRING;
+	public AnnotationElements getAnnotationAccess() {
+		return pAnnotation;
+	}
+	
+	public ParserRule getAnnotationRule() {
+		return getAnnotationAccess().getRule();
+	}
+
 	//MethodQuery:
-	//	{MethodQuery} modifier=[structure::MethodModifier]? returnType=[structure::Type]? (methodReference=[structure::Method]
-	//	("(" parameterQueries+=ParameterQuery ("," parameterQueries+=ParameterQuery)* ")")? | "*");
+	//	{MethodQuery} modifier=[structure::MethodModifier]?
+	//	returnType=[structure::Type]? (methodReference=[structure::Method] ('(' parameterQueries+=ParameterQuery (','
+	//	parameterQueries+=ParameterQuery)* ')')?
+	//	|
+	//	'*');
 	public MethodQueryElements getMethodQueryAccess() {
 		return pMethodQuery;
 	}
@@ -1717,7 +1801,8 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ParameterQuery:
-	//	modifier=[structure::ParameterModifier]? type=[structure::Type] parameter=[structure::Parameter]?;
+	//	modifier=[structure::ParameterModifier]?
+	//	type=[structure::Type] parameter=[structure::Parameter]?;
 	public ParameterQueryElements getParameterQueryAccess() {
 		return pParameterQuery;
 	}
@@ -1727,7 +1812,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//LocationQuery:
-	//	node=Node ("." specialization=LocationQuery | composition=CompositionQuery)?;
+	//	node=Node ('.' specialization=LocationQuery | composition=CompositionQuery)?;
 	public LocationQueryElements getLocationQueryAccess() {
 		return pLocationQuery;
 	}
@@ -1737,7 +1822,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//CompositionQuery:
-	//	{CompositionQuery} modifier=QueryModifier? "{" subQueries+=LocationQuery* "}";
+	//	{CompositionQuery} modifier=QueryModifier? '{' subQueries+=LocationQuery* '}';
 	public CompositionQueryElements getCompositionQueryAccess() {
 		return pCompositionQuery;
 	}
@@ -1747,9 +1832,10 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//enum QueryModifier:
-	//	INCLUDE="include" | EXCLUDE="exclude";
+	//	INCLUDE='include' |
+	//	EXCLUDE='exclude';
 	public QueryModifierElements getQueryModifierAccess() {
-		return unknownRuleQueryModifier;
+		return eQueryModifier;
 	}
 	
 	public EnumRule getQueryModifierRule() {
@@ -1767,7 +1853,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ParamQuery:
-	//	"[" queries+=ParamOperator+ "]";
+	//	'[' queries+=ParamOperator+ ']';
 	public ParamQueryElements getParamQueryAccess() {
 		return pParamQuery;
 	}
@@ -1776,8 +1862,8 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		return getParamQueryAccess().getRule();
 	}
 
-	//ParamOperator returns ParamExpression:
-	//	ParamCompare ({ParamExpression.left=current} logic=LogicOperator right=ParamCompare)?;
+	//ParamOperator ParamExpression:
+	//	ParamCompare ({ParamExpression.left=current} logic=LogicOperator right=ParamCompare)?
 	public ParamOperatorElements getParamOperatorAccess() {
 		return pParamOperator;
 	}
@@ -1787,17 +1873,18 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//enum LogicOperator:
-	//	AND="&&" | OR="||";
+	//	AND='&&' |
+	//	OR='||';
 	public LogicOperatorElements getLogicOperatorAccess() {
-		return unknownRuleLogicOperator;
+		return eLogicOperator;
 	}
 	
 	public EnumRule getLogicOperatorRule() {
 		return getLogicOperatorAccess().getRule();
 	}
 
-	//ParamCompare returns ParamExpression:
-	//	Value ({ParamExpression.left=current} operator=LogicOperator right=Value)?;
+	//ParamCompare ParamExpression:
+	//	Value ({ParamExpression.left=current} operator=LogicOperator right=Value)?
 	public ParamCompareElements getParamCompareAccess() {
 		return pParamCompare;
 	}
@@ -1806,8 +1893,8 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		return getParamCompareAccess().getRule();
 	}
 
-	//Value returns ParamExpression:
-	//	StringValue | IntValue | FloatValue | ReferenceValue;
+	//Value ParamExpression:
+	//	StringValue | IntValue | FloatValue | ReferenceValue
 	public ValueElements getValueAccess() {
 		return pValue;
 	}
@@ -1877,9 +1964,11 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//enum InternalFunction:
-	//	TIME="time" | TRACE_ID="traceId" | ORDER_INDEX="orderIndex";
+	//	TIME='time' |
+	//	TRACE_ID='traceId' |
+	//	ORDER_INDEX='orderIndex';
 	public InternalFunctionElements getInternalFunctionAccess() {
-		return unknownRuleInternalFunction;
+		return eInternalFunction;
 	}
 	
 	public EnumRule getInternalFunctionRule() {
@@ -1887,7 +1976,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//RuntimeProperty:
-	//	"#" reference=ID;
+	//	'#' reference=ID;
 	public RuntimePropertyElements getRuntimePropertyAccess() {
 		return pRuntimeProperty;
 	}
@@ -1897,7 +1986,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ReflectionProperty:
-	//	"$" function=ReflectionFunction;
+	//	'$' function=ReflectionFunction;
 	public ReflectionPropertyElements getReflectionPropertyAccess() {
 		return pReflectionProperty;
 	}
@@ -1907,9 +1996,12 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//enum ReflectionFunction:
-	//	NAME="name" | SIGNATURE="signature" | CLASS="classname" | RETURN_TYPE="return-type";
+	//	NAME='name' |
+	//	SIGNATURE='signature' |
+	//	CLASS='classname' |
+	//	RETURN_TYPE='return-type';
 	public ReflectionFunctionElements getReflectionFunctionAccess() {
-		return unknownRuleReflectionFunction;
+		return eReflectionFunction;
 	}
 	
 	public EnumRule getReflectionFunctionRule() {
@@ -1917,9 +2009,15 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//enum Operator:
-	//	EQ="=" | LIKE="~" | NE="!=" | GR=">" | LW="<" | GE=">=" | LE="<=";
+	//	EQ='=' |
+	//	LIKE='~' |
+	//	NE='!=' |
+	//	GR='>' |
+	//	LW='<' |
+	//	GE='>=' |
+	//	LE='<=';
 	public OperatorElements getOperatorAccess() {
-		return unknownRuleOperator;
+		return eOperator;
 	}
 	
 	public EnumRule getOperatorRule() {
@@ -1937,7 +2035,8 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//WildcardNode:
-	//	{WildcardNode} "*";
+	//	{WildcardNode}
+	//	'*';
 	public WildcardNodeElements getWildcardNodeAccess() {
 		return pWildcardNode;
 	}
@@ -1947,7 +2046,8 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//SubPathNode:
-	//	{SubPathNode} "**";
+	//	{SubPathNode}
+	//	'**';
 	public SubPathNodeElements getSubPathNodeAccess() {
 		return pSubPathNode;
 	}
@@ -1957,7 +2057,8 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ParentNode:
-	//	{ParentNode} "<<";
+	//	{ParentNode}
+	//	'<<';
 	public ParentNodeElements getParentNodeAccess() {
 		return pParentNode;
 	}
@@ -1977,7 +2078,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Event:
-	//	type=[irl::RecordType|QualifiedName] "(" (initializations+=Value ("," initializations+=Value)*)? ")";
+	//	type=[irl::RecordType|QualifiedName] '(' (initializations+=Value (',' initializations+=Value)*)? ')';
 	public EventElements getEventAccess() {
 		return pEvent;
 	}
@@ -1987,228 +2088,68 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//enum InsertionPoint:
-	//	BEFORE="before" | AFTER="after";
+	//	BEFORE='before' |
+	//	AFTER='after';
 	public InsertionPointElements getInsertionPointAccess() {
-		return unknownRuleInsertionPoint;
+		return eInsertionPoint;
 	}
 	
 	public EnumRule getInsertionPointRule() {
 		return getInsertionPointAccess().getRule();
 	}
 
-	//// --------------------------
-	////
-	////   ANNOTATIONS
-	////
-	//// --------------------------
-	//Annotation:
-	//	CommentAnnotation | TagAnnotation | KeyStringValueAnnotation | TypedKeyStringValueAnnotation |
-	//	KeyBooleanValueAnnotation | KeyIntValueAnnotation | KeyFloatValueAnnotation;
-	public AnnotationsGrammarAccess.AnnotationElements getAnnotationAccess() {
-		return gaAnnotations.getAnnotationAccess();
-	}
-	
-	public ParserRule getAnnotationRule() {
-		return getAnnotationAccess().getRule();
-	}
-
-	//ValuedAnnotation returns Annotation:
-	//	CommentAnnotation | KeyStringValueAnnotation | TypedKeyStringValueAnnotation | KeyBooleanValueAnnotation |
-	//	KeyIntValueAnnotation | KeyFloatValueAnnotation;
-	public AnnotationsGrammarAccess.ValuedAnnotationElements getValuedAnnotationAccess() {
-		return gaAnnotations.getValuedAnnotationAccess();
-	}
-	
-	public ParserRule getValuedAnnotationRule() {
-		return getValuedAnnotationAccess().getRule();
-	}
-
-	//// e.g.: / ** semantic comment * /
-	//CommentAnnotation returns StringAnnotation:
-	//	value=COMMENT_ANNOTATION;
-	public AnnotationsGrammarAccess.CommentAnnotationElements getCommentAnnotationAccess() {
-		return gaAnnotations.getCommentAnnotationAccess();
-	}
-	
-	public ParserRule getCommentAnnotationRule() {
-		return getCommentAnnotationAccess().getRule();
-	}
-
-	//// e.g.: @HVlayout
-	//TagAnnotation returns Annotation:
-	//	"@" name=ExtendedID ("(" annotations+=Annotation* ")")?;
-	public AnnotationsGrammarAccess.TagAnnotationElements getTagAnnotationAccess() {
-		return gaAnnotations.getTagAnnotationAccess();
-	}
-	
-	public ParserRule getTagAnnotationRule() {
-		return getTagAnnotationAccess().getRule();
-	}
-
-	//// e.g.: @layouter dot;   
-	//KeyStringValueAnnotation returns StringAnnotation:
-	//	"@" name=ExtendedID value=EString ("(" annotations+=Annotation* ")")?;
-	public AnnotationsGrammarAccess.KeyStringValueAnnotationElements getKeyStringValueAnnotationAccess() {
-		return gaAnnotations.getKeyStringValueAnnotationAccess();
-	}
-	
-	public ParserRule getKeyStringValueAnnotationRule() {
-		return getKeyStringValueAnnotationAccess().getRule();
-	}
-
-	//// e.g.: @position[de.cau.cs.kieler.core.math.KVector] "(3,2)"
-	//TypedKeyStringValueAnnotation returns TypedStringAnnotation:
-	//	"@" name=ExtendedID "[" type=ExtendedID "]" value=EString ("(" annotations+=Annotation* ")")?;
-	public AnnotationsGrammarAccess.TypedKeyStringValueAnnotationElements getTypedKeyStringValueAnnotationAccess() {
-		return gaAnnotations.getTypedKeyStringValueAnnotationAccess();
-	}
-	
-	public ParserRule getTypedKeyStringValueAnnotationRule() {
-		return getTypedKeyStringValueAnnotationAccess().getRule();
-	}
-
-	//// e.g.: @visible true;
-	//KeyBooleanValueAnnotation returns BooleanAnnotation:
-	//	"@" name=ExtendedID value=BOOLEAN ("(" annotations+=Annotation* ")")?;
-	public AnnotationsGrammarAccess.KeyBooleanValueAnnotationElements getKeyBooleanValueAnnotationAccess() {
-		return gaAnnotations.getKeyBooleanValueAnnotationAccess();
-	}
-	
-	public ParserRule getKeyBooleanValueAnnotationRule() {
-		return getKeyBooleanValueAnnotationAccess().getRule();
-	}
-
-	//// e.g.: @minSpace 10;    
-	//KeyIntValueAnnotation returns IntAnnotation:
-	//	"@" name=ExtendedID value=INT ("(" annotations+=Annotation* ")")?;
-	public AnnotationsGrammarAccess.KeyIntValueAnnotationElements getKeyIntValueAnnotationAccess() {
-		return gaAnnotations.getKeyIntValueAnnotationAccess();
-	}
-	
-	public ParserRule getKeyIntValueAnnotationRule() {
-		return getKeyIntValueAnnotationAccess().getRule();
-	}
-
-	//// e.g.: @minSpace 10.0;    
-	//KeyFloatValueAnnotation returns FloatAnnotation:
-	//	"@" name=ExtendedID value=FLOAT ("(" annotations+=Annotation* ")")?;
-	public AnnotationsGrammarAccess.KeyFloatValueAnnotationElements getKeyFloatValueAnnotationAccess() {
-		return gaAnnotations.getKeyFloatValueAnnotationAccess();
-	}
-	
-	public ParserRule getKeyFloatValueAnnotationRule() {
-		return getKeyFloatValueAnnotationAccess().getRule();
-	}
-
-	//// needed for importing other resources
-	//ImportAnnotation:
-	//	"import" importURI=STRING;
-	public AnnotationsGrammarAccess.ImportAnnotationElements getImportAnnotationAccess() {
-		return gaAnnotations.getImportAnnotationAccess();
-	}
-	
-	public ParserRule getImportAnnotationRule() {
-		return getImportAnnotationAccess().getRule();
-	}
-
-	//// allow strings without quotes as they don'c contain spaces
-	//EString returns ecore::EString:
-	//	STRING | ID;
-	public AnnotationsGrammarAccess.EStringElements getEStringAccess() {
-		return gaAnnotations.getEStringAccess();
-	}
-	
-	public ParserRule getEStringRule() {
-		return getEStringAccess().getRule();
-	}
-
-	//ExtendedID returns ecore::EString:
-	//	ID ("." ID)*;
-	public AnnotationsGrammarAccess.ExtendedIDElements getExtendedIDAccess() {
-		return gaAnnotations.getExtendedIDAccess();
-	}
-	
-	public ParserRule getExtendedIDRule() {
-		return getExtendedIDAccess().getRule();
-	}
-
-	//// --------------------------
-	////
-	////  Terminals...
-	////
-	//// --------------------------
-	//// custom terminals
-	//// custom terminal rule introducing semantic comments
-	//terminal COMMENT_ANNOTATION:
-	//	"/ **"->"* /";
-	public TerminalRule getCOMMENT_ANNOTATIONRule() {
-		return gaAnnotations.getCOMMENT_ANNOTATIONRule();
-	} 
-
-	//// modified version of Terminals.ML_COMMENT as
-	//// COMMENT_ANNOTATION is not recognized correctly with original one 
-	//terminal ML_COMMENT:
-	//	"/ *" !"*"->"* /";
-	public TerminalRule getML_COMMENTRule() {
-		return gaAnnotations.getML_COMMENTRule();
-	} 
-
-	//// generic terminals
-	//terminal fragment NUMBER:
-	//	"0".."9";
-	public TerminalRule getNUMBERRule() {
-		return gaAnnotations.getNUMBERRule();
-	} 
-
-	//// redefine INT terminal to allow negative numbers
-	//terminal INT returns ecore::EInt:
-	//	"-"? NUMBER+;
-	public TerminalRule getINTRule() {
-		return gaAnnotations.getINTRule();
-	} 
-
-	//// make sure the Float rule does not shadow the INT rule
 	//terminal FLOAT returns ecore::EFloatObject:
-	//	"-"? NUMBER+ ("." NUMBER*) (("e" | "E") ("+" | "-")? NUMBER+)? "f"? | "-"? NUMBER+ "f";
+	//	NUMBER+ ('.' NUMBER*) (("e" | "E") ("+" | "-")? NUMBER+)? 'f'? | NUMBER+ 'f';
 	public TerminalRule getFLOATRule() {
-		return gaAnnotations.getFLOATRule();
+		return tFLOAT;
 	} 
 
-	//// introduce boolean values
-	//terminal BOOLEAN returns ecore::EBooleanObject:
-	//	"true" | "false";
-	public TerminalRule getBOOLEANRule() {
-		return gaAnnotations.getBOOLEANRule();
+	//terminal fragment NUMBER:
+	//	'0'..'9';
+	public TerminalRule getNUMBERRule() {
+		return tNUMBER;
 	} 
 
-	//// custom terminal rule for strings
-	//terminal STRING:
-	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"";
-	public TerminalRule getSTRINGRule() {
-		return gaAnnotations.getSTRINGRule();
+	//terminal INT returns ecore::EInt:
+	//	NUMBER+;
+	public TerminalRule getINTRule() {
+		return tINT;
 	} 
 
 	//terminal ID:
-	//	"^"? ("a".."z" | "A".."Z" | "_") ("a".."z" | "A".."Z" | "_" | "0".."9")*;
+	//	'^'? ('a'..'z' | 'A'..'Z' | '_') ('a'..'z' | 'A'..'Z' | '_' | '0'..'9')*;
 	public TerminalRule getIDRule() {
-		return gaAnnotations.getIDRule();
+		return gaTerminals.getIDRule();
+	} 
+
+	//terminal STRING:
+	//	'"' ('\\' . | !('\\' | '"'))* '"' |
+	//	"'" ('\\' . | !('\\' | "'"))* "'";
+	public TerminalRule getSTRINGRule() {
+		return gaTerminals.getSTRINGRule();
+	} 
+
+	//terminal ML_COMMENT:
+	//	'/ *'->'* /';
+	public TerminalRule getML_COMMENTRule() {
+		return gaTerminals.getML_COMMENTRule();
 	} 
 
 	//terminal SL_COMMENT:
-	//	"//" !("\n" | "\r")* ("\r"? "\n")?;
+	//	'//' !('\n' | '\r')* ('\r'? '\n')?;
 	public TerminalRule getSL_COMMENTRule() {
-		return gaAnnotations.getSL_COMMENTRule();
+		return gaTerminals.getSL_COMMENTRule();
 	} 
 
 	//terminal WS:
-	//	(" " | "\t" | "\r" | "\n")+;
+	//	' ' | '\t' | '\r' | '\n'+;
 	public TerminalRule getWSRule() {
-		return gaAnnotations.getWSRule();
+		return gaTerminals.getWSRule();
 	} 
 
 	//terminal ANY_OTHER:
 	//	.;
 	public TerminalRule getANY_OTHERRule() {
-		return gaAnnotations.getANY_OTHERRule();
+		return gaTerminals.getANY_OTHERRule();
 	} 
 }

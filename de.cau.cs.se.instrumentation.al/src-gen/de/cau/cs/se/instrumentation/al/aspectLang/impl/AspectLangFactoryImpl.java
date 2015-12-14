@@ -65,7 +65,7 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
   {
     switch (eClass.getClassifierID())
     {
-      case AspectLangPackage.MODEL: return createModel();
+      case AspectLangPackage.ASPECT_MODEL: return createAspectModel();
       case AspectLangPackage.IMPORT: return createImport();
       case AspectLangPackage.APPLICATION_MODEL: return createApplicationModel();
       case AspectLangPackage.ASPECT: return createAspect();
@@ -73,6 +73,7 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
       case AspectLangPackage.ADVICE: return createAdvice();
       case AspectLangPackage.PARAMETER_DECLARATION: return createParameterDeclaration();
       case AspectLangPackage.POINTCUT: return createPointcut();
+      case AspectLangPackage.ANNOTATION: return createAnnotation();
       case AspectLangPackage.METHOD_QUERY: return createMethodQuery();
       case AspectLangPackage.PARAMETER_QUERY: return createParameterQuery();
       case AspectLangPackage.LOCATION_QUERY: return createLocationQuery();
@@ -158,10 +159,10 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
    * <!-- end-user-doc -->
    * @generated
    */
-  public Model createModel()
+  public AspectModel createAspectModel()
   {
-    ModelImpl model = new ModelImpl();
-    return model;
+    AspectModelImpl aspectModel = new AspectModelImpl();
+    return aspectModel;
   }
 
   /**
@@ -239,6 +240,17 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
   {
     PointcutImpl pointcut = new PointcutImpl();
     return pointcut;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Annotation createAnnotation()
+  {
+    AnnotationImpl annotation = new AnnotationImpl();
+    return annotation;
   }
 
   /**

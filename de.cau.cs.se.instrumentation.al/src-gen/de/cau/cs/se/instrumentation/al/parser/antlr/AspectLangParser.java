@@ -25,7 +25,7 @@ public class AspectLangParser extends org.eclipse.xtext.parser.antlr.AbstractAnt
 	
 	@Override 
 	protected String getDefaultRuleName() {
-		return "Model";
+		return "AspectModel";
 	}
 	
 	public AspectLangGrammarAccess getGrammarAccess() {

@@ -13,7 +13,6 @@ public class AbstractAspectLangValidator extends org.eclipse.xtext.validation.Ab
 	protected List<EPackage> getEPackages() {
 	    List<EPackage> result = new ArrayList<EPackage>();
 	    result.add(de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage.eINSTANCE);
-	    result.add(EPackage.Registry.INSTANCE.getEPackage("http://kieler.cs.cau.de/annotations"));
 		return result;
 	}
 }

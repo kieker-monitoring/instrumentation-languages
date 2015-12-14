@@ -16,7 +16,7 @@
 package de.cau.cs.se.instrumentation.al.scoping;
 
 import com.google.common.base.Objects;
-import de.cau.cs.se.instrumentation.al.aspectLang.Model;
+import de.cau.cs.se.instrumentation.al.aspectLang.AspectModel;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -40,7 +40,7 @@ public class PackageContentScope implements IScope {
   /**
    * Main aspect model.
    */
-  private Model model;
+  private AspectModel model;
   
   /**
    * Resource set containing all resources of named in the model.
@@ -53,7 +53,7 @@ public class PackageContentScope implements IScope {
    * @param resourceSet the resource set
    * @param model the aspect model
    */
-  public PackageContentScope(final ResourceSet resourceSet, final Model model) {
+  public PackageContentScope(final ResourceSet resourceSet, final AspectModel model) {
     this.model = model;
     this.resourceSet = resourceSet;
   }

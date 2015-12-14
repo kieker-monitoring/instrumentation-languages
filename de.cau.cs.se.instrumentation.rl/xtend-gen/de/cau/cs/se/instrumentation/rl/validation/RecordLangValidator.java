@@ -354,7 +354,7 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
       } else {
         _xifexpression = "";
       }
-      String _plus = ("[" + ((Comparable<?>)_xifexpression));
+      String _plus = ("[" + _xifexpression);
       return (_plus + "]");
     };
     List<String> _map = ListExtensions.<ArraySize, String>map(_sizes, _function);

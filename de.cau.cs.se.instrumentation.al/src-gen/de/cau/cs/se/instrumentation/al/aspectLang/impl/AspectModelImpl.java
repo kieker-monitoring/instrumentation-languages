@@ -6,8 +6,8 @@ import de.cau.cs.se.instrumentation.al.aspectLang.Advice;
 import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel;
 import de.cau.cs.se.instrumentation.al.aspectLang.Aspect;
 import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
+import de.cau.cs.se.instrumentation.al.aspectLang.AspectModel;
 import de.cau.cs.se.instrumentation.al.aspectLang.Import;
-import de.cau.cs.se.instrumentation.al.aspectLang.Model;
 import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut;
 
 import java.util.Collection;
@@ -28,23 +28,23 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Model</b></em>'.
+ * An implementation of the model object '<em><b>Aspect Model</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ModelImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ModelImpl#getImports <em>Imports</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ModelImpl#getSources <em>Sources</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ModelImpl#getAdvices <em>Advices</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ModelImpl#getPointcuts <em>Pointcuts</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ModelImpl#getAspects <em>Aspects</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectModelImpl#getName <em>Name</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectModelImpl#getImports <em>Imports</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectModelImpl#getSources <em>Sources</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectModelImpl#getAdvices <em>Advices</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectModelImpl#getPointcuts <em>Pointcuts</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectModelImpl#getAspects <em>Aspects</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ModelImpl extends MinimalEObjectImpl.Container implements Model
+public class AspectModelImpl extends MinimalEObjectImpl.Container implements AspectModel
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -121,7 +121,7 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ModelImpl()
+  protected AspectModelImpl()
   {
     super();
   }
@@ -134,7 +134,7 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   @Override
   protected EClass eStaticClass()
   {
-    return AspectLangPackage.Literals.MODEL;
+    return AspectLangPackage.Literals.ASPECT_MODEL;
   }
 
   /**
@@ -157,7 +157,7 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.MODEL__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.ASPECT_MODEL__NAME, oldName, name));
   }
 
   /**
@@ -169,7 +169,7 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     if (imports == null)
     {
-      imports = new EObjectContainmentEList<Import>(Import.class, this, AspectLangPackage.MODEL__IMPORTS);
+      imports = new EObjectContainmentEList<Import>(Import.class, this, AspectLangPackage.ASPECT_MODEL__IMPORTS);
     }
     return imports;
   }
@@ -183,7 +183,7 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     if (sources == null)
     {
-      sources = new EObjectContainmentEList<ApplicationModel>(ApplicationModel.class, this, AspectLangPackage.MODEL__SOURCES);
+      sources = new EObjectContainmentEList<ApplicationModel>(ApplicationModel.class, this, AspectLangPackage.ASPECT_MODEL__SOURCES);
     }
     return sources;
   }
@@ -197,7 +197,7 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     if (advices == null)
     {
-      advices = new EObjectContainmentEList<Advice>(Advice.class, this, AspectLangPackage.MODEL__ADVICES);
+      advices = new EObjectContainmentEList<Advice>(Advice.class, this, AspectLangPackage.ASPECT_MODEL__ADVICES);
     }
     return advices;
   }
@@ -211,7 +211,7 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     if (pointcuts == null)
     {
-      pointcuts = new EObjectContainmentEList<Pointcut>(Pointcut.class, this, AspectLangPackage.MODEL__POINTCUTS);
+      pointcuts = new EObjectContainmentEList<Pointcut>(Pointcut.class, this, AspectLangPackage.ASPECT_MODEL__POINTCUTS);
     }
     return pointcuts;
   }
@@ -225,7 +225,7 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     if (aspects == null)
     {
-      aspects = new EObjectContainmentEList<Aspect>(Aspect.class, this, AspectLangPackage.MODEL__ASPECTS);
+      aspects = new EObjectContainmentEList<Aspect>(Aspect.class, this, AspectLangPackage.ASPECT_MODEL__ASPECTS);
     }
     return aspects;
   }
@@ -240,15 +240,15 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case AspectLangPackage.MODEL__IMPORTS:
+      case AspectLangPackage.ASPECT_MODEL__IMPORTS:
         return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
-      case AspectLangPackage.MODEL__SOURCES:
+      case AspectLangPackage.ASPECT_MODEL__SOURCES:
         return ((InternalEList<?>)getSources()).basicRemove(otherEnd, msgs);
-      case AspectLangPackage.MODEL__ADVICES:
+      case AspectLangPackage.ASPECT_MODEL__ADVICES:
         return ((InternalEList<?>)getAdvices()).basicRemove(otherEnd, msgs);
-      case AspectLangPackage.MODEL__POINTCUTS:
+      case AspectLangPackage.ASPECT_MODEL__POINTCUTS:
         return ((InternalEList<?>)getPointcuts()).basicRemove(otherEnd, msgs);
-      case AspectLangPackage.MODEL__ASPECTS:
+      case AspectLangPackage.ASPECT_MODEL__ASPECTS:
         return ((InternalEList<?>)getAspects()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -264,17 +264,17 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case AspectLangPackage.MODEL__NAME:
+      case AspectLangPackage.ASPECT_MODEL__NAME:
         return getName();
-      case AspectLangPackage.MODEL__IMPORTS:
+      case AspectLangPackage.ASPECT_MODEL__IMPORTS:
         return getImports();
-      case AspectLangPackage.MODEL__SOURCES:
+      case AspectLangPackage.ASPECT_MODEL__SOURCES:
         return getSources();
-      case AspectLangPackage.MODEL__ADVICES:
+      case AspectLangPackage.ASPECT_MODEL__ADVICES:
         return getAdvices();
-      case AspectLangPackage.MODEL__POINTCUTS:
+      case AspectLangPackage.ASPECT_MODEL__POINTCUTS:
         return getPointcuts();
-      case AspectLangPackage.MODEL__ASPECTS:
+      case AspectLangPackage.ASPECT_MODEL__ASPECTS:
         return getAspects();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -291,26 +291,26 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case AspectLangPackage.MODEL__NAME:
+      case AspectLangPackage.ASPECT_MODEL__NAME:
         setName((String)newValue);
         return;
-      case AspectLangPackage.MODEL__IMPORTS:
+      case AspectLangPackage.ASPECT_MODEL__IMPORTS:
         getImports().clear();
         getImports().addAll((Collection<? extends Import>)newValue);
         return;
-      case AspectLangPackage.MODEL__SOURCES:
+      case AspectLangPackage.ASPECT_MODEL__SOURCES:
         getSources().clear();
         getSources().addAll((Collection<? extends ApplicationModel>)newValue);
         return;
-      case AspectLangPackage.MODEL__ADVICES:
+      case AspectLangPackage.ASPECT_MODEL__ADVICES:
         getAdvices().clear();
         getAdvices().addAll((Collection<? extends Advice>)newValue);
         return;
-      case AspectLangPackage.MODEL__POINTCUTS:
+      case AspectLangPackage.ASPECT_MODEL__POINTCUTS:
         getPointcuts().clear();
         getPointcuts().addAll((Collection<? extends Pointcut>)newValue);
         return;
-      case AspectLangPackage.MODEL__ASPECTS:
+      case AspectLangPackage.ASPECT_MODEL__ASPECTS:
         getAspects().clear();
         getAspects().addAll((Collection<? extends Aspect>)newValue);
         return;
@@ -328,22 +328,22 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case AspectLangPackage.MODEL__NAME:
+      case AspectLangPackage.ASPECT_MODEL__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case AspectLangPackage.MODEL__IMPORTS:
+      case AspectLangPackage.ASPECT_MODEL__IMPORTS:
         getImports().clear();
         return;
-      case AspectLangPackage.MODEL__SOURCES:
+      case AspectLangPackage.ASPECT_MODEL__SOURCES:
         getSources().clear();
         return;
-      case AspectLangPackage.MODEL__ADVICES:
+      case AspectLangPackage.ASPECT_MODEL__ADVICES:
         getAdvices().clear();
         return;
-      case AspectLangPackage.MODEL__POINTCUTS:
+      case AspectLangPackage.ASPECT_MODEL__POINTCUTS:
         getPointcuts().clear();
         return;
-      case AspectLangPackage.MODEL__ASPECTS:
+      case AspectLangPackage.ASPECT_MODEL__ASPECTS:
         getAspects().clear();
         return;
     }
@@ -360,17 +360,17 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case AspectLangPackage.MODEL__NAME:
+      case AspectLangPackage.ASPECT_MODEL__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case AspectLangPackage.MODEL__IMPORTS:
+      case AspectLangPackage.ASPECT_MODEL__IMPORTS:
         return imports != null && !imports.isEmpty();
-      case AspectLangPackage.MODEL__SOURCES:
+      case AspectLangPackage.ASPECT_MODEL__SOURCES:
         return sources != null && !sources.isEmpty();
-      case AspectLangPackage.MODEL__ADVICES:
+      case AspectLangPackage.ASPECT_MODEL__ADVICES:
         return advices != null && !advices.isEmpty();
-      case AspectLangPackage.MODEL__POINTCUTS:
+      case AspectLangPackage.ASPECT_MODEL__POINTCUTS:
         return pointcuts != null && !pointcuts.isEmpty();
-      case AspectLangPackage.MODEL__ASPECTS:
+      case AspectLangPackage.ASPECT_MODEL__ASPECTS:
         return aspects != null && !aspects.isEmpty();
     }
     return super.eIsSet(featureID);
@@ -393,4 +393,4 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
     return result.toString();
   }
 
-} //ModelImpl
+} //AspectModelImpl

@@ -8,26 +8,26 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Model</b></em>'.
+ * A representation of the model object '<em><b>Aspect Model</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Model#getName <em>Name</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Model#getImports <em>Imports</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Model#getSources <em>Sources</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Model#getAdvices <em>Advices</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Model#getPointcuts <em>Pointcuts</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Model#getAspects <em>Aspects</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getName <em>Name</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getImports <em>Imports</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getSources <em>Sources</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getAdvices <em>Advices</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getPointcuts <em>Pointcuts</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getAspects <em>Aspects</em>}</li>
  * </ul>
  *
- * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getModel()
+ * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getAspectModel()
  * @model
  * @generated
  */
-public interface Model extends EObject
+public interface AspectModel extends EObject
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -39,14 +39,14 @@ public interface Model extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getModel_Name()
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getAspectModel_Name()
    * @model
    * @generated
    */
   String getName();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.Model#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Name</em>' attribute.
@@ -65,7 +65,7 @@ public interface Model extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Imports</em>' containment reference list.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getModel_Imports()
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getAspectModel_Imports()
    * @model containment="true"
    * @generated
    */
@@ -81,7 +81,7 @@ public interface Model extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Sources</em>' containment reference list.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getModel_Sources()
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getAspectModel_Sources()
    * @model containment="true"
    * @generated
    */
@@ -97,7 +97,7 @@ public interface Model extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Advices</em>' containment reference list.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getModel_Advices()
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getAspectModel_Advices()
    * @model containment="true"
    * @generated
    */
@@ -113,7 +113,7 @@ public interface Model extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Pointcuts</em>' containment reference list.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getModel_Pointcuts()
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getAspectModel_Pointcuts()
    * @model containment="true"
    * @generated
    */
@@ -129,10 +129,10 @@ public interface Model extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Aspects</em>' containment reference list.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getModel_Aspects()
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getAspectModel_Aspects()
    * @model containment="true"
    * @generated
    */
   EList<Aspect> getAspects();
 
-} // Model
+} // AspectModel

@@ -39,15 +39,13 @@
       <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//InsertionPoint/BEFORE"/>
       <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//InsertionPoint/AFTER"/>
     </genEnums>
-    <genClasses ecoreClass="AspectLang.ecore#//Model">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//Model/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Model/imports"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Model/sources"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Model/advices"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Model/pointcuts"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Model/aspects"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Model/metamodels"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Model/probes"/>
+    <genClasses ecoreClass="AspectLang.ecore#//AspectModel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//AspectModel/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//AspectModel/imports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//AspectModel/sources"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//AspectModel/advices"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//AspectModel/pointcuts"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//AspectModel/aspects"/>
     </genClasses>
     <genClasses ecoreClass="AspectLang.ecore#//Import">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//Import/importedNamespace"/>
@@ -86,6 +84,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//Pointcut/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Pointcut/location"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Pointcut/method"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//Annotation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//Annotation/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//Annotation/value"/>
     </genClasses>
     <genClasses ecoreClass="AspectLang.ecore#//MethodQuery">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AspectLang.ecore#//MethodQuery/modifier"/>
@@ -160,6 +162,16 @@
     <genClasses ecoreClass="AspectLang.ecore#//Event">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Event/type"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Event/initializations"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//Model">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//Model/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Model/imports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Model/sources"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Model/advices"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Model/pointcuts"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Model/aspects"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Model/metamodels"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Model/probes"/>
     </genClasses>
     <genClasses ecoreClass="AspectLang.ecore#//ParamOperator">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//ParamOperator/left"/>

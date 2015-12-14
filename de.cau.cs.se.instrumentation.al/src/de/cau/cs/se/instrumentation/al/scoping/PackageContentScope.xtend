@@ -24,7 +24,7 @@ import org.eclipse.xtext.scoping.IScope
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EClass
-import de.cau.cs.se.instrumentation.al.aspectLang.Model
+import de.cau.cs.se.instrumentation.al.aspectLang.AspectModel
 
 /**
  * 
@@ -34,7 +34,7 @@ import de.cau.cs.se.instrumentation.al.aspectLang.Model
 public class PackageContentScope implements IScope {
 	
 	/** Main aspect model. */
-	private Model model
+	private AspectModel model
 	/** Resource set containing all resources of named in the model. */
 	private ResourceSet resourceSet
 
@@ -44,7 +44,7 @@ public class PackageContentScope implements IScope {
 	 * @param resourceSet the resource set
 	 * @param model the aspect model
 	 */
-	new(ResourceSet resourceSet, Model model) {
+	new(ResourceSet resourceSet, AspectModel model) {
 		this.model = model
 		this.resourceSet = resourceSet
 	}

@@ -51,7 +51,7 @@ import de.cau.cs.se.instrumentation.al.services.AspectLangGrammarAccess;
     
     @Override
     protected String getFirstRuleName() {
-    	return "Model";	
+    	return "AspectModel";	
    	}
    	
    	@Override
@@ -70,38 +70,38 @@ import de.cau.cs.se.instrumentation.al.services.AspectLangGrammarAccess;
 
 
 
-// Entry rule entryRuleModel
-entryRuleModel returns [EObject current=null] 
+// Entry rule entryRuleAspectModel
+entryRuleAspectModel returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getModelRule()); }
-	 iv_ruleModel=ruleModel 
-	 { $current=$iv_ruleModel.current; } 
+	{ newCompositeNode(grammarAccess.getAspectModelRule()); }
+	 iv_ruleAspectModel=ruleAspectModel 
+	 { $current=$iv_ruleAspectModel.current; } 
 	 EOF 
 ;
 
-// Rule Model
-ruleModel returns [EObject current=null] 
+// Rule AspectModel
+ruleAspectModel returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
 (	otherlv_0='package' 
     {
-    	newLeafNode(otherlv_0, grammarAccess.getModelAccess().getPackageKeyword_0());
+    	newLeafNode(otherlv_0, grammarAccess.getAspectModelAccess().getPackageKeyword_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getModelAccess().getNameQualifiedNameParserRuleCall_1_0()); 
+	        newCompositeNode(grammarAccess.getAspectModelAccess().getNameQualifiedNameParserRuleCall_1_0()); 
 	    }
 		lv_name_1_0=ruleQualifiedName		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getModelRule());
+	            $current = createModelElementForParent(grammarAccess.getAspectModelRule());
 	        }
        		set(
        			$current, 
        			"name",
         		lv_name_1_0, 
-        		"QualifiedName");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.QualifiedName");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -109,17 +109,17 @@ ruleModel returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getModelAccess().getImportsImportParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getAspectModelAccess().getImportsImportParserRuleCall_2_0()); 
 	    }
 		lv_imports_2_0=ruleImport		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getModelRule());
+	            $current = createModelElementForParent(grammarAccess.getAspectModelRule());
 	        }
        		add(
        			$current, 
        			"imports",
         		lv_imports_2_0, 
-        		"Import");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.Import");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -127,17 +127,17 @@ ruleModel returns [EObject current=null]
 )*(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getModelAccess().getSourcesApplicationModelParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getAspectModelAccess().getSourcesApplicationModelParserRuleCall_3_0()); 
 	    }
 		lv_sources_3_0=ruleApplicationModel		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getModelRule());
+	            $current = createModelElementForParent(grammarAccess.getAspectModelRule());
 	        }
        		add(
        			$current, 
        			"sources",
         		lv_sources_3_0, 
-        		"ApplicationModel");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.ApplicationModel");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -145,17 +145,17 @@ ruleModel returns [EObject current=null]
 )*((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getModelAccess().getAdvicesAdviceParserRuleCall_4_0_0()); 
+	        newCompositeNode(grammarAccess.getAspectModelAccess().getAdvicesAdviceParserRuleCall_4_0_0()); 
 	    }
 		lv_advices_4_0=ruleAdvice		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getModelRule());
+	            $current = createModelElementForParent(grammarAccess.getAspectModelRule());
 	        }
        		add(
        			$current, 
        			"advices",
         		lv_advices_4_0, 
-        		"Advice");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.Advice");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -164,17 +164,17 @@ ruleModel returns [EObject current=null]
     |(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getModelAccess().getPointcutsPointcutParserRuleCall_4_1_0()); 
+	        newCompositeNode(grammarAccess.getAspectModelAccess().getPointcutsPointcutParserRuleCall_4_1_0()); 
 	    }
 		lv_pointcuts_5_0=rulePointcut		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getModelRule());
+	            $current = createModelElementForParent(grammarAccess.getAspectModelRule());
 	        }
        		add(
        			$current, 
        			"pointcuts",
         		lv_pointcuts_5_0, 
-        		"Pointcut");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.Pointcut");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -183,17 +183,17 @@ ruleModel returns [EObject current=null]
     |(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getModelAccess().getAspectsAspectParserRuleCall_4_2_0()); 
+	        newCompositeNode(grammarAccess.getAspectModelAccess().getAspectsAspectParserRuleCall_4_2_0()); 
 	    }
 		lv_aspects_6_0=ruleAspect		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getModelRule());
+	            $current = createModelElementForParent(grammarAccess.getAspectModelRule());
 	        }
        		add(
        			$current, 
        			"aspects",
         		lv_aspects_6_0, 
-        		"Aspect");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.Aspect");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -236,7 +236,7 @@ ruleImport returns [EObject current=null]
        			$current, 
        			"importedNamespace",
         		lv_importedNamespace_1_0, 
-        		"QualifiedNameWithWildcard");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.QualifiedNameWithWildcard");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -280,7 +280,7 @@ ruleApplicationModel returns [EObject current=null]
        			$current, 
        			"handler",
         		lv_handler_1_0, 
-        		"ID");
+        		"org.eclipse.xtext.common.Terminals.ID");
 	    }
 
 )
@@ -302,7 +302,7 @@ ruleApplicationModel returns [EObject current=null]
        			$current, 
        			"name",
         		lv_name_3_0, 
-        		"ID");
+        		"org.eclipse.xtext.common.Terminals.ID");
 	    }
 
 )
@@ -320,7 +320,7 @@ ruleApplicationModel returns [EObject current=null]
        			$current, 
        			"model",
         		lv_model_4_0, 
-        		"STRING");
+        		"org.eclipse.xtext.common.Terminals.STRING");
 	    }
 
 )
@@ -471,7 +471,7 @@ ruleAspect returns [EObject current=null]
        			$current, 
        			"advices",
         		lv_advices_3_0, 
-        		"UtilizeAdvice");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.UtilizeAdvice");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -493,7 +493,7 @@ ruleAspect returns [EObject current=null]
        			$current, 
        			"advices",
         		lv_advices_5_0, 
-        		"UtilizeAdvice");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.UtilizeAdvice");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -554,7 +554,7 @@ ruleUtilizeAdvice returns [EObject current=null]
        			$current, 
        			"parameterAssignments",
         		lv_parameterAssignments_2_0, 
-        		"Value");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.Value");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -576,7 +576,7 @@ ruleUtilizeAdvice returns [EObject current=null]
        			$current, 
        			"parameterAssignments",
         		lv_parameterAssignments_4_0, 
-        		"Value");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.Value");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -624,7 +624,7 @@ ruleAdvice returns [EObject current=null]
        			$current, 
        			"name",
         		lv_name_1_0, 
-        		"ID");
+        		"org.eclipse.xtext.common.Terminals.ID");
 	    }
 
 )
@@ -645,7 +645,7 @@ ruleAdvice returns [EObject current=null]
        			$current, 
        			"parameterDeclarations",
         		lv_parameterDeclarations_3_0, 
-        		"ParameterDeclaration");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.ParameterDeclaration");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -667,7 +667,7 @@ ruleAdvice returns [EObject current=null]
        			$current, 
        			"parameterDeclarations",
         		lv_parameterDeclarations_5_0, 
-        		"ParameterDeclaration");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.ParameterDeclaration");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -693,7 +693,7 @@ ruleAdvice returns [EObject current=null]
        			$current, 
        			"collectors",
         		lv_collectors_8_0, 
-        		"Collector");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.Collector");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -752,7 +752,7 @@ ruleParameterDeclaration returns [EObject current=null]
        			$current, 
        			"name",
         		lv_name_1_0, 
-        		"ID");
+        		"org.eclipse.xtext.common.Terminals.ID");
 	    }
 
 )
@@ -790,7 +790,7 @@ rulePointcut returns [EObject current=null]
        			$current, 
        			"annotation",
         		lv_annotation_0_0, 
-        		"Annotation");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.Annotation");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -813,7 +813,7 @@ rulePointcut returns [EObject current=null]
        			$current, 
        			"name",
         		lv_name_2_0, 
-        		"ID");
+        		"org.eclipse.xtext.common.Terminals.ID");
 	    }
 
 )
@@ -834,7 +834,7 @@ rulePointcut returns [EObject current=null]
        			$current, 
        			"location",
         		lv_location_4_0, 
-        		"LocationQuery");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.LocationQuery");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -856,12 +856,73 @@ rulePointcut returns [EObject current=null]
        			$current, 
        			"method",
         		lv_method_6_0, 
-        		"MethodQuery");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.MethodQuery");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
 ))?)
+;
+
+
+
+
+
+// Entry rule entryRuleAnnotation
+entryRuleAnnotation returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getAnnotationRule()); }
+	 iv_ruleAnnotation=ruleAnnotation 
+	 { $current=$iv_ruleAnnotation.current; } 
+	 EOF 
+;
+
+// Rule Annotation
+ruleAnnotation returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='@' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getAnnotationAccess().getCommercialAtKeyword_0());
+    }
+(
+(
+		lv_name_1_0=RULE_ID
+		{
+			newLeafNode(lv_name_1_0, grammarAccess.getAnnotationAccess().getNameIDTerminalRuleCall_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getAnnotationRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_1_0, 
+        		"org.eclipse.xtext.common.Terminals.ID");
+	    }
+
+)
+)(
+(
+		lv_value_2_0=RULE_STRING
+		{
+			newLeafNode(lv_value_2_0, grammarAccess.getAnnotationAccess().getValueSTRINGTerminalRuleCall_2_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getAnnotationRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"value",
+        		lv_value_2_0, 
+        		"org.eclipse.xtext.common.Terminals.STRING");
+	    }
+
+)
+))
 ;
 
 
@@ -956,7 +1017,7 @@ ruleMethodQuery returns [EObject current=null]
        			$current, 
        			"parameterQueries",
         		lv_parameterQueries_5_0, 
-        		"ParameterQuery");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.ParameterQuery");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -978,7 +1039,7 @@ ruleMethodQuery returns [EObject current=null]
        			$current, 
        			"parameterQueries",
         		lv_parameterQueries_7_0, 
-        		"ParameterQuery");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.ParameterQuery");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1095,7 +1156,7 @@ ruleLocationQuery returns [EObject current=null]
        			$current, 
        			"node",
         		lv_node_0_0, 
-        		"Node");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.Node");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1117,7 +1178,7 @@ ruleLocationQuery returns [EObject current=null]
        			$current, 
        			"specialization",
         		lv_specialization_2_0, 
-        		"LocationQuery");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.LocationQuery");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1136,7 +1197,7 @@ ruleLocationQuery returns [EObject current=null]
        			$current, 
        			"composition",
         		lv_composition_3_0, 
-        		"CompositionQuery");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.CompositionQuery");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1184,7 +1245,7 @@ ruleCompositionQuery returns [EObject current=null]
        			$current, 
        			"modifier",
         		lv_modifier_1_0, 
-        		"QueryModifier");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.QueryModifier");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1206,7 +1267,7 @@ ruleCompositionQuery returns [EObject current=null]
        			$current, 
        			"subQueries",
         		lv_subQueries_3_0, 
-        		"LocationQuery");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.LocationQuery");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1300,7 +1361,7 @@ ruleNode returns [EObject current=null]
        			$current, 
        			"parameter",
         		lv_parameter_4_0, 
-        		"ParamQuery");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.ParamQuery");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1343,7 +1404,7 @@ ruleParamQuery returns [EObject current=null]
        			$current, 
        			"queries",
         		lv_queries_1_0, 
-        		"ParamOperator");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.ParamOperator");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1407,7 +1468,7 @@ ruleParamOperator returns [EObject current=null]
        			$current, 
        			"logic",
         		lv_logic_2_0, 
-        		"LogicOperator");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.LogicOperator");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1425,7 +1486,7 @@ ruleParamOperator returns [EObject current=null]
        			$current, 
        			"right",
         		lv_right_3_0, 
-        		"ParamCompare");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.ParamCompare");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1485,7 +1546,7 @@ ruleParamCompare returns [EObject current=null]
        			$current, 
        			"operator",
         		lv_operator_2_0, 
-        		"LogicOperator");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.LogicOperator");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1503,7 +1564,7 @@ ruleParamCompare returns [EObject current=null]
        			$current, 
        			"right",
         		lv_right_3_0, 
-        		"Value");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.Value");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1615,7 +1676,7 @@ ruleFloatValue returns [EObject current=null]
        			$current, 
        			"value",
         		lv_value_0_0, 
-        		"FLOAT");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.FLOAT");
 	    }
 
 )
@@ -1654,7 +1715,7 @@ ruleIntValue returns [EObject current=null]
        			$current, 
        			"value",
         		lv_value_0_0, 
-        		"INT");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.INT");
 	    }
 
 )
@@ -1693,7 +1754,7 @@ ruleStringValue returns [EObject current=null]
        			$current, 
        			"value",
         		lv_value_0_0, 
-        		"STRING");
+        		"org.eclipse.xtext.common.Terminals.STRING");
 	    }
 
 )
@@ -1731,7 +1792,7 @@ ruleReferenceValue returns [EObject current=null]
        			$current, 
        			"query",
         		lv_query_0_0, 
-        		"LocationQuery");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.LocationQuery");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1749,7 +1810,7 @@ ruleReferenceValue returns [EObject current=null]
        			$current, 
        			"parameter",
         		lv_parameter_1_0, 
-        		"Parameter");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.Parameter");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1847,7 +1908,7 @@ ruleInternalFunctionProperty returns [EObject current=null]
        			$current, 
        			"function",
         		lv_function_0_0, 
-        		"InternalFunction");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.InternalFunction");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1891,7 +1952,7 @@ ruleRuntimeProperty returns [EObject current=null]
        			$current, 
        			"reference",
         		lv_reference_1_0, 
-        		"ID");
+        		"org.eclipse.xtext.common.Terminals.ID");
 	    }
 
 )
@@ -1933,7 +1994,7 @@ ruleReflectionProperty returns [EObject current=null]
        			$current, 
        			"function",
         		lv_function_1_0, 
-        		"ReflectionFunction");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.ReflectionFunction");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -2111,7 +2172,7 @@ ruleCollector returns [EObject current=null]
        			$current, 
        			"insertionPoint",
         		lv_insertionPoint_0_0, 
-        		"InsertionPoint");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.InsertionPoint");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -2129,7 +2190,7 @@ ruleCollector returns [EObject current=null]
        			$current, 
        			"events",
         		lv_events_1_0, 
-        		"Event");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.Event");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -2190,7 +2251,7 @@ ruleEvent returns [EObject current=null]
        			$current, 
        			"initializations",
         		lv_initializations_2_0, 
-        		"Value");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.Value");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -2212,7 +2273,7 @@ ruleEvent returns [EObject current=null]
        			$current, 
        			"initializations",
         		lv_initializations_4_0, 
-        		"Value");
+        		"de.cau.cs.se.instrumentation.al.AspectLang.Value");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -2223,767 +2284,6 @@ ruleEvent returns [EObject current=null]
     }
 )
 ;
-
-
-
-
-
-// Entry rule entryRuleAnnotation
-entryRuleAnnotation returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getAnnotationRule()); }
-	 iv_ruleAnnotation=ruleAnnotation 
-	 { $current=$iv_ruleAnnotation.current; } 
-	 EOF 
-;
-
-// Rule Annotation
-ruleAnnotation returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(
-	{ 
-	  /* */ 
-	}
-    { 
-        newCompositeNode(grammarAccess.getAnnotationAccess().getCommentAnnotationParserRuleCall_0()); 
-    }
-    this_CommentAnnotation_0=ruleCommentAnnotation
-    { 
-        $current = $this_CommentAnnotation_0.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-	{ 
-	  /* */ 
-	}
-    { 
-        newCompositeNode(grammarAccess.getAnnotationAccess().getTagAnnotationParserRuleCall_1()); 
-    }
-    this_TagAnnotation_1=ruleTagAnnotation
-    { 
-        $current = $this_TagAnnotation_1.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-	{ 
-	  /* */ 
-	}
-    { 
-        newCompositeNode(grammarAccess.getAnnotationAccess().getKeyStringValueAnnotationParserRuleCall_2()); 
-    }
-    this_KeyStringValueAnnotation_2=ruleKeyStringValueAnnotation
-    { 
-        $current = $this_KeyStringValueAnnotation_2.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-	{ 
-	  /* */ 
-	}
-    { 
-        newCompositeNode(grammarAccess.getAnnotationAccess().getTypedKeyStringValueAnnotationParserRuleCall_3()); 
-    }
-    this_TypedKeyStringValueAnnotation_3=ruleTypedKeyStringValueAnnotation
-    { 
-        $current = $this_TypedKeyStringValueAnnotation_3.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-	{ 
-	  /* */ 
-	}
-    { 
-        newCompositeNode(grammarAccess.getAnnotationAccess().getKeyBooleanValueAnnotationParserRuleCall_4()); 
-    }
-    this_KeyBooleanValueAnnotation_4=ruleKeyBooleanValueAnnotation
-    { 
-        $current = $this_KeyBooleanValueAnnotation_4.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-	{ 
-	  /* */ 
-	}
-    { 
-        newCompositeNode(grammarAccess.getAnnotationAccess().getKeyIntValueAnnotationParserRuleCall_5()); 
-    }
-    this_KeyIntValueAnnotation_5=ruleKeyIntValueAnnotation
-    { 
-        $current = $this_KeyIntValueAnnotation_5.current; 
-        afterParserOrEnumRuleCall();
-    }
-
-    |
-	{ 
-	  /* */ 
-	}
-    { 
-        newCompositeNode(grammarAccess.getAnnotationAccess().getKeyFloatValueAnnotationParserRuleCall_6()); 
-    }
-    this_KeyFloatValueAnnotation_6=ruleKeyFloatValueAnnotation
-    { 
-        $current = $this_KeyFloatValueAnnotation_6.current; 
-        afterParserOrEnumRuleCall();
-    }
-)
-;
-
-
-
-
-
-
-
-// Entry rule entryRuleCommentAnnotation
-entryRuleCommentAnnotation returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getCommentAnnotationRule()); }
-	 iv_ruleCommentAnnotation=ruleCommentAnnotation 
-	 { $current=$iv_ruleCommentAnnotation.current; } 
-	 EOF 
-;
-
-// Rule CommentAnnotation
-ruleCommentAnnotation returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(
-(
-		lv_value_0_0=RULE_COMMENT_ANNOTATION
-		{
-			newLeafNode(lv_value_0_0, grammarAccess.getCommentAnnotationAccess().getValueCOMMENT_ANNOTATIONTerminalRuleCall_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getCommentAnnotationRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"value",
-        		lv_value_0_0, 
-        		"COMMENT_ANNOTATION");
-	    }
-
-)
-)
-;
-
-
-
-
-
-// Entry rule entryRuleTagAnnotation
-entryRuleTagAnnotation returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getTagAnnotationRule()); }
-	 iv_ruleTagAnnotation=ruleTagAnnotation 
-	 { $current=$iv_ruleTagAnnotation.current; } 
-	 EOF 
-;
-
-// Rule TagAnnotation
-ruleTagAnnotation returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(	otherlv_0='@' 
-    {
-    	newLeafNode(otherlv_0, grammarAccess.getTagAnnotationAccess().getCommercialAtKeyword_0());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getTagAnnotationAccess().getNameExtendedIDParserRuleCall_1_0()); 
-	    }
-		lv_name_1_0=ruleExtendedID		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getTagAnnotationRule());
-	        }
-       		set(
-       			$current, 
-       			"name",
-        		lv_name_1_0, 
-        		"ExtendedID");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)(	otherlv_2='(' 
-    {
-    	newLeafNode(otherlv_2, grammarAccess.getTagAnnotationAccess().getLeftParenthesisKeyword_2_0());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getTagAnnotationAccess().getAnnotationsAnnotationParserRuleCall_2_1_0()); 
-	    }
-		lv_annotations_3_0=ruleAnnotation		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getTagAnnotationRule());
-	        }
-       		add(
-       			$current, 
-       			"annotations",
-        		lv_annotations_3_0, 
-        		"Annotation");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)*	otherlv_4=')' 
-    {
-    	newLeafNode(otherlv_4, grammarAccess.getTagAnnotationAccess().getRightParenthesisKeyword_2_2());
-    }
-)?)
-;
-
-
-
-
-
-// Entry rule entryRuleKeyStringValueAnnotation
-entryRuleKeyStringValueAnnotation returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getKeyStringValueAnnotationRule()); }
-	 iv_ruleKeyStringValueAnnotation=ruleKeyStringValueAnnotation 
-	 { $current=$iv_ruleKeyStringValueAnnotation.current; } 
-	 EOF 
-;
-
-// Rule KeyStringValueAnnotation
-ruleKeyStringValueAnnotation returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(	otherlv_0='@' 
-    {
-    	newLeafNode(otherlv_0, grammarAccess.getKeyStringValueAnnotationAccess().getCommercialAtKeyword_0());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getKeyStringValueAnnotationAccess().getNameExtendedIDParserRuleCall_1_0()); 
-	    }
-		lv_name_1_0=ruleExtendedID		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getKeyStringValueAnnotationRule());
-	        }
-       		set(
-       			$current, 
-       			"name",
-        		lv_name_1_0, 
-        		"ExtendedID");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getKeyStringValueAnnotationAccess().getValueEStringParserRuleCall_2_0()); 
-	    }
-		lv_value_2_0=ruleEString		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getKeyStringValueAnnotationRule());
-	        }
-       		set(
-       			$current, 
-       			"value",
-        		lv_value_2_0, 
-        		"EString");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)(	otherlv_3='(' 
-    {
-    	newLeafNode(otherlv_3, grammarAccess.getKeyStringValueAnnotationAccess().getLeftParenthesisKeyword_3_0());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getKeyStringValueAnnotationAccess().getAnnotationsAnnotationParserRuleCall_3_1_0()); 
-	    }
-		lv_annotations_4_0=ruleAnnotation		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getKeyStringValueAnnotationRule());
-	        }
-       		add(
-       			$current, 
-       			"annotations",
-        		lv_annotations_4_0, 
-        		"Annotation");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)*	otherlv_5=')' 
-    {
-    	newLeafNode(otherlv_5, grammarAccess.getKeyStringValueAnnotationAccess().getRightParenthesisKeyword_3_2());
-    }
-)?)
-;
-
-
-
-
-
-// Entry rule entryRuleTypedKeyStringValueAnnotation
-entryRuleTypedKeyStringValueAnnotation returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getTypedKeyStringValueAnnotationRule()); }
-	 iv_ruleTypedKeyStringValueAnnotation=ruleTypedKeyStringValueAnnotation 
-	 { $current=$iv_ruleTypedKeyStringValueAnnotation.current; } 
-	 EOF 
-;
-
-// Rule TypedKeyStringValueAnnotation
-ruleTypedKeyStringValueAnnotation returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(	otherlv_0='@' 
-    {
-    	newLeafNode(otherlv_0, grammarAccess.getTypedKeyStringValueAnnotationAccess().getCommercialAtKeyword_0());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getTypedKeyStringValueAnnotationAccess().getNameExtendedIDParserRuleCall_1_0()); 
-	    }
-		lv_name_1_0=ruleExtendedID		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getTypedKeyStringValueAnnotationRule());
-	        }
-       		set(
-       			$current, 
-       			"name",
-        		lv_name_1_0, 
-        		"ExtendedID");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)	otherlv_2='[' 
-    {
-    	newLeafNode(otherlv_2, grammarAccess.getTypedKeyStringValueAnnotationAccess().getLeftSquareBracketKeyword_2());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getTypedKeyStringValueAnnotationAccess().getTypeExtendedIDParserRuleCall_3_0()); 
-	    }
-		lv_type_3_0=ruleExtendedID		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getTypedKeyStringValueAnnotationRule());
-	        }
-       		set(
-       			$current, 
-       			"type",
-        		lv_type_3_0, 
-        		"ExtendedID");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)	otherlv_4=']' 
-    {
-    	newLeafNode(otherlv_4, grammarAccess.getTypedKeyStringValueAnnotationAccess().getRightSquareBracketKeyword_4());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getTypedKeyStringValueAnnotationAccess().getValueEStringParserRuleCall_5_0()); 
-	    }
-		lv_value_5_0=ruleEString		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getTypedKeyStringValueAnnotationRule());
-	        }
-       		set(
-       			$current, 
-       			"value",
-        		lv_value_5_0, 
-        		"EString");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)(	otherlv_6='(' 
-    {
-    	newLeafNode(otherlv_6, grammarAccess.getTypedKeyStringValueAnnotationAccess().getLeftParenthesisKeyword_6_0());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getTypedKeyStringValueAnnotationAccess().getAnnotationsAnnotationParserRuleCall_6_1_0()); 
-	    }
-		lv_annotations_7_0=ruleAnnotation		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getTypedKeyStringValueAnnotationRule());
-	        }
-       		add(
-       			$current, 
-       			"annotations",
-        		lv_annotations_7_0, 
-        		"Annotation");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)*	otherlv_8=')' 
-    {
-    	newLeafNode(otherlv_8, grammarAccess.getTypedKeyStringValueAnnotationAccess().getRightParenthesisKeyword_6_2());
-    }
-)?)
-;
-
-
-
-
-
-// Entry rule entryRuleKeyBooleanValueAnnotation
-entryRuleKeyBooleanValueAnnotation returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getKeyBooleanValueAnnotationRule()); }
-	 iv_ruleKeyBooleanValueAnnotation=ruleKeyBooleanValueAnnotation 
-	 { $current=$iv_ruleKeyBooleanValueAnnotation.current; } 
-	 EOF 
-;
-
-// Rule KeyBooleanValueAnnotation
-ruleKeyBooleanValueAnnotation returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(	otherlv_0='@' 
-    {
-    	newLeafNode(otherlv_0, grammarAccess.getKeyBooleanValueAnnotationAccess().getCommercialAtKeyword_0());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getKeyBooleanValueAnnotationAccess().getNameExtendedIDParserRuleCall_1_0()); 
-	    }
-		lv_name_1_0=ruleExtendedID		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getKeyBooleanValueAnnotationRule());
-	        }
-       		set(
-       			$current, 
-       			"name",
-        		lv_name_1_0, 
-        		"ExtendedID");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)(
-(
-		lv_value_2_0=RULE_BOOLEAN
-		{
-			newLeafNode(lv_value_2_0, grammarAccess.getKeyBooleanValueAnnotationAccess().getValueBOOLEANTerminalRuleCall_2_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getKeyBooleanValueAnnotationRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"value",
-        		lv_value_2_0, 
-        		"BOOLEAN");
-	    }
-
-)
-)(	otherlv_3='(' 
-    {
-    	newLeafNode(otherlv_3, grammarAccess.getKeyBooleanValueAnnotationAccess().getLeftParenthesisKeyword_3_0());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getKeyBooleanValueAnnotationAccess().getAnnotationsAnnotationParserRuleCall_3_1_0()); 
-	    }
-		lv_annotations_4_0=ruleAnnotation		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getKeyBooleanValueAnnotationRule());
-	        }
-       		add(
-       			$current, 
-       			"annotations",
-        		lv_annotations_4_0, 
-        		"Annotation");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)*	otherlv_5=')' 
-    {
-    	newLeafNode(otherlv_5, grammarAccess.getKeyBooleanValueAnnotationAccess().getRightParenthesisKeyword_3_2());
-    }
-)?)
-;
-
-
-
-
-
-// Entry rule entryRuleKeyIntValueAnnotation
-entryRuleKeyIntValueAnnotation returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getKeyIntValueAnnotationRule()); }
-	 iv_ruleKeyIntValueAnnotation=ruleKeyIntValueAnnotation 
-	 { $current=$iv_ruleKeyIntValueAnnotation.current; } 
-	 EOF 
-;
-
-// Rule KeyIntValueAnnotation
-ruleKeyIntValueAnnotation returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(	otherlv_0='@' 
-    {
-    	newLeafNode(otherlv_0, grammarAccess.getKeyIntValueAnnotationAccess().getCommercialAtKeyword_0());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getKeyIntValueAnnotationAccess().getNameExtendedIDParserRuleCall_1_0()); 
-	    }
-		lv_name_1_0=ruleExtendedID		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getKeyIntValueAnnotationRule());
-	        }
-       		set(
-       			$current, 
-       			"name",
-        		lv_name_1_0, 
-        		"ExtendedID");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)(
-(
-		lv_value_2_0=RULE_INT
-		{
-			newLeafNode(lv_value_2_0, grammarAccess.getKeyIntValueAnnotationAccess().getValueINTTerminalRuleCall_2_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getKeyIntValueAnnotationRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"value",
-        		lv_value_2_0, 
-        		"INT");
-	    }
-
-)
-)(	otherlv_3='(' 
-    {
-    	newLeafNode(otherlv_3, grammarAccess.getKeyIntValueAnnotationAccess().getLeftParenthesisKeyword_3_0());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getKeyIntValueAnnotationAccess().getAnnotationsAnnotationParserRuleCall_3_1_0()); 
-	    }
-		lv_annotations_4_0=ruleAnnotation		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getKeyIntValueAnnotationRule());
-	        }
-       		add(
-       			$current, 
-       			"annotations",
-        		lv_annotations_4_0, 
-        		"Annotation");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)*	otherlv_5=')' 
-    {
-    	newLeafNode(otherlv_5, grammarAccess.getKeyIntValueAnnotationAccess().getRightParenthesisKeyword_3_2());
-    }
-)?)
-;
-
-
-
-
-
-// Entry rule entryRuleKeyFloatValueAnnotation
-entryRuleKeyFloatValueAnnotation returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getKeyFloatValueAnnotationRule()); }
-	 iv_ruleKeyFloatValueAnnotation=ruleKeyFloatValueAnnotation 
-	 { $current=$iv_ruleKeyFloatValueAnnotation.current; } 
-	 EOF 
-;
-
-// Rule KeyFloatValueAnnotation
-ruleKeyFloatValueAnnotation returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(	otherlv_0='@' 
-    {
-    	newLeafNode(otherlv_0, grammarAccess.getKeyFloatValueAnnotationAccess().getCommercialAtKeyword_0());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getKeyFloatValueAnnotationAccess().getNameExtendedIDParserRuleCall_1_0()); 
-	    }
-		lv_name_1_0=ruleExtendedID		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getKeyFloatValueAnnotationRule());
-	        }
-       		set(
-       			$current, 
-       			"name",
-        		lv_name_1_0, 
-        		"ExtendedID");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)(
-(
-		lv_value_2_0=RULE_FLOAT
-		{
-			newLeafNode(lv_value_2_0, grammarAccess.getKeyFloatValueAnnotationAccess().getValueFLOATTerminalRuleCall_2_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getKeyFloatValueAnnotationRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"value",
-        		lv_value_2_0, 
-        		"FLOAT");
-	    }
-
-)
-)(	otherlv_3='(' 
-    {
-    	newLeafNode(otherlv_3, grammarAccess.getKeyFloatValueAnnotationAccess().getLeftParenthesisKeyword_3_0());
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getKeyFloatValueAnnotationAccess().getAnnotationsAnnotationParserRuleCall_3_1_0()); 
-	    }
-		lv_annotations_4_0=ruleAnnotation		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getKeyFloatValueAnnotationRule());
-	        }
-       		add(
-       			$current, 
-       			"annotations",
-        		lv_annotations_4_0, 
-        		"Annotation");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)*	otherlv_5=')' 
-    {
-    	newLeafNode(otherlv_5, grammarAccess.getKeyFloatValueAnnotationAccess().getRightParenthesisKeyword_3_2());
-    }
-)?)
-;
-
-
-
-
-
-
-
-// Entry rule entryRuleEString
-entryRuleEString returns [String current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getEStringRule()); } 
-	 iv_ruleEString=ruleEString 
-	 { $current=$iv_ruleEString.current.getText(); }  
-	 EOF 
-;
-
-// Rule EString
-ruleEString returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(    this_STRING_0=RULE_STRING    {
-		$current.merge(this_STRING_0);
-    }
-
-    { 
-    newLeafNode(this_STRING_0, grammarAccess.getEStringAccess().getSTRINGTerminalRuleCall_0()); 
-    }
-
-    |    this_ID_1=RULE_ID    {
-		$current.merge(this_ID_1);
-    }
-
-    { 
-    newLeafNode(this_ID_1, grammarAccess.getEStringAccess().getIDTerminalRuleCall_1()); 
-    }
-)
-    ;
-
-
-
-
-
-// Entry rule entryRuleExtendedID
-entryRuleExtendedID returns [String current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getExtendedIDRule()); } 
-	 iv_ruleExtendedID=ruleExtendedID 
-	 { $current=$iv_ruleExtendedID.current.getText(); }  
-	 EOF 
-;
-
-// Rule ExtendedID
-ruleExtendedID returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(    this_ID_0=RULE_ID    {
-		$current.merge(this_ID_0);
-    }
-
-    { 
-    newLeafNode(this_ID_0, grammarAccess.getExtendedIDAccess().getIDTerminalRuleCall_0()); 
-    }
-(
-	kw='.' 
-    {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getExtendedIDAccess().getFullStopKeyword_1_0()); 
-    }
-    this_ID_2=RULE_ID    {
-		$current.merge(this_ID_2);
-    }
-
-    { 
-    newLeafNode(this_ID_2, grammarAccess.getExtendedIDAccess().getIDTerminalRuleCall_1_1()); 
-    }
-)*)
-    ;
 
 
 
@@ -3104,21 +2404,17 @@ ruleInsertionPoint returns [Enumerator current=null]
 
 
 
-RULE_COMMENT_ANNOTATION : '/**' ( options {greedy=false;} : . )*'*/';
-
-RULE_ML_COMMENT : '/*' ~('*') ( options {greedy=false;} : . )*'*/';
+RULE_FLOAT : (RULE_NUMBER+ '.' RULE_NUMBER* (('e'|'E') ('+'|'-')? RULE_NUMBER+)? 'f'?|RULE_NUMBER+ 'f');
 
 fragment RULE_NUMBER : '0'..'9';
 
-RULE_INT : '-'? RULE_NUMBER+;
-
-RULE_FLOAT : ('-'? RULE_NUMBER+ '.' RULE_NUMBER* (('e'|'E') ('+'|'-')? RULE_NUMBER+)? 'f'?|'-'? RULE_NUMBER+ 'f');
-
-RULE_BOOLEAN : ('true'|'false');
-
-RULE_STRING : '"' ('\\' ('b'|'t'|'n'|'f'|'r'|'"'|'\''|'\\')|~(('\\'|'"')))* '"';
+RULE_INT : RULE_NUMBER+;
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
+
+RULE_STRING : ('"' ('\\' .|~(('\\'|'"')))* '"'|'\'' ('\\' .|~(('\\'|'\'')))* '\'');
+
+RULE_ML_COMMENT : '/*' ( options {greedy=false;} : . )*'*/';
 
 RULE_SL_COMMENT : '//' ~(('\n'|'\r'))* ('\r'? '\n')?;
 

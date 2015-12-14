@@ -2,8 +2,6 @@
  */
 package de.cau.cs.se.instrumentation.al.aspectLang;
 
-import de.cau.cs.kieler.core.annotations.Annotation;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**

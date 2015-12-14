@@ -72,10 +72,10 @@ public class AspectLangSwitch<T> extends Switch<T>
   {
     switch (classifierID)
     {
-      case AspectLangPackage.MODEL:
+      case AspectLangPackage.ASPECT_MODEL:
       {
-        Model model = (Model)theEObject;
-        T result = caseModel(model);
+        AspectModel aspectModel = (AspectModel)theEObject;
+        T result = caseAspectModel(aspectModel);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -125,6 +125,13 @@ public class AspectLangSwitch<T> extends Switch<T>
       {
         Pointcut pointcut = (Pointcut)theEObject;
         T result = casePointcut(pointcut);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AspectLangPackage.ANNOTATION:
+      {
+        Annotation annotation = (Annotation)theEObject;
+        T result = caseAnnotation(annotation);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -291,17 +298,17 @@ public class AspectLangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Model</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Aspect Model</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Model</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Aspect Model</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseModel(Model object)
+  public T caseAspectModel(AspectModel object)
   {
     return null;
   }
@@ -414,6 +421,22 @@ public class AspectLangSwitch<T> extends Switch<T>
    * @generated
    */
   public T casePointcut(Pointcut object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Annotation</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Annotation</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAnnotation(Annotation object)
   {
     return null;
   }

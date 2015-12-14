@@ -58,14 +58,14 @@ public interface AspectLangPackage extends EPackage
   AspectLangPackage eINSTANCE = de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl.init();
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ModelImpl <em>Model</em>}' class.
+   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectModelImpl <em>Aspect Model</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.ModelImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getModel()
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectModelImpl
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getAspectModel()
    * @generated
    */
-  int MODEL = 0;
+  int ASPECT_MODEL = 0;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -74,7 +74,7 @@ public interface AspectLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODEL__NAME = 0;
+  int ASPECT_MODEL__NAME = 0;
 
   /**
    * The feature id for the '<em><b>Imports</b></em>' containment reference list.
@@ -83,7 +83,7 @@ public interface AspectLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODEL__IMPORTS = 1;
+  int ASPECT_MODEL__IMPORTS = 1;
 
   /**
    * The feature id for the '<em><b>Sources</b></em>' containment reference list.
@@ -92,7 +92,7 @@ public interface AspectLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODEL__SOURCES = 2;
+  int ASPECT_MODEL__SOURCES = 2;
 
   /**
    * The feature id for the '<em><b>Advices</b></em>' containment reference list.
@@ -101,7 +101,7 @@ public interface AspectLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODEL__ADVICES = 3;
+  int ASPECT_MODEL__ADVICES = 3;
 
   /**
    * The feature id for the '<em><b>Pointcuts</b></em>' containment reference list.
@@ -110,7 +110,7 @@ public interface AspectLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODEL__POINTCUTS = 4;
+  int ASPECT_MODEL__POINTCUTS = 4;
 
   /**
    * The feature id for the '<em><b>Aspects</b></em>' containment reference list.
@@ -119,16 +119,16 @@ public interface AspectLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODEL__ASPECTS = 5;
+  int ASPECT_MODEL__ASPECTS = 5;
 
   /**
-   * The number of structural features of the '<em>Model</em>' class.
+   * The number of structural features of the '<em>Aspect Model</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL_FEATURE_COUNT = 6;
+  int ASPECT_MODEL_FEATURE_COUNT = 6;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ImportImpl <em>Import</em>}' class.
@@ -417,6 +417,43 @@ public interface AspectLangPackage extends EPackage
   int POINTCUT_FEATURE_COUNT = 4;
 
   /**
+   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AnnotationImpl <em>Annotation</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AnnotationImpl
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getAnnotation()
+   * @generated
+   */
+  int ANNOTATION = 8;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ANNOTATION__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ANNOTATION__VALUE = 1;
+
+  /**
+   * The number of structural features of the '<em>Annotation</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ANNOTATION_FEATURE_COUNT = 2;
+
+  /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.MethodQueryImpl <em>Method Query</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -424,7 +461,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getMethodQuery()
    * @generated
    */
-  int METHOD_QUERY = 8;
+  int METHOD_QUERY = 9;
 
   /**
    * The feature id for the '<em><b>Modifier</b></em>' reference.
@@ -479,7 +516,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getParameterQuery()
    * @generated
    */
-  int PARAMETER_QUERY = 9;
+  int PARAMETER_QUERY = 10;
 
   /**
    * The feature id for the '<em><b>Modifier</b></em>' reference.
@@ -525,7 +562,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getLocationQuery()
    * @generated
    */
-  int LOCATION_QUERY = 10;
+  int LOCATION_QUERY = 11;
 
   /**
    * The feature id for the '<em><b>Node</b></em>' containment reference.
@@ -571,7 +608,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getCompositionQuery()
    * @generated
    */
-  int COMPOSITION_QUERY = 11;
+  int COMPOSITION_QUERY = 12;
 
   /**
    * The feature id for the '<em><b>Modifier</b></em>' attribute.
@@ -608,7 +645,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getNode()
    * @generated
    */
-  int NODE = 12;
+  int NODE = 13;
 
   /**
    * The feature id for the '<em><b>Parameter</b></em>' containment reference.
@@ -636,7 +673,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getParamQuery()
    * @generated
    */
-  int PARAM_QUERY = 13;
+  int PARAM_QUERY = 14;
 
   /**
    * The feature id for the '<em><b>Queries</b></em>' containment reference list.
@@ -664,7 +701,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getParamExpression()
    * @generated
    */
-  int PARAM_EXPRESSION = 14;
+  int PARAM_EXPRESSION = 15;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -719,7 +756,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getFloatValue()
    * @generated
    */
-  int FLOAT_VALUE = 15;
+  int FLOAT_VALUE = 16;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -783,7 +820,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getIntValue()
    * @generated
    */
-  int INT_VALUE = 16;
+  int INT_VALUE = 17;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -847,7 +884,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getStringValue()
    * @generated
    */
-  int STRING_VALUE = 17;
+  int STRING_VALUE = 18;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -911,7 +948,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getReferenceValue()
    * @generated
    */
-  int REFERENCE_VALUE = 18;
+  int REFERENCE_VALUE = 19;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -984,7 +1021,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getParameter()
    * @generated
    */
-  int PARAMETER = 19;
+  int PARAMETER = 20;
 
   /**
    * The number of structural features of the '<em>Parameter</em>' class.
@@ -1003,7 +1040,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getInternalFunctionProperty()
    * @generated
    */
-  int INTERNAL_FUNCTION_PROPERTY = 20;
+  int INTERNAL_FUNCTION_PROPERTY = 21;
 
   /**
    * The feature id for the '<em><b>Function</b></em>' attribute.
@@ -1031,7 +1068,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getRuntimeProperty()
    * @generated
    */
-  int RUNTIME_PROPERTY = 21;
+  int RUNTIME_PROPERTY = 22;
 
   /**
    * The feature id for the '<em><b>Reference</b></em>' attribute.
@@ -1059,7 +1096,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getReflectionProperty()
    * @generated
    */
-  int REFLECTION_PROPERTY = 22;
+  int REFLECTION_PROPERTY = 23;
 
   /**
    * The feature id for the '<em><b>Function</b></em>' attribute.
@@ -1087,7 +1124,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getContainerNode()
    * @generated
    */
-  int CONTAINER_NODE = 23;
+  int CONTAINER_NODE = 24;
 
   /**
    * The feature id for the '<em><b>Parameter</b></em>' containment reference.
@@ -1124,7 +1161,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getWildcardNode()
    * @generated
    */
-  int WILDCARD_NODE = 24;
+  int WILDCARD_NODE = 25;
 
   /**
    * The feature id for the '<em><b>Parameter</b></em>' containment reference.
@@ -1152,7 +1189,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getSubPathNode()
    * @generated
    */
-  int SUB_PATH_NODE = 25;
+  int SUB_PATH_NODE = 26;
 
   /**
    * The feature id for the '<em><b>Parameter</b></em>' containment reference.
@@ -1180,7 +1217,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getParentNode()
    * @generated
    */
-  int PARENT_NODE = 26;
+  int PARENT_NODE = 27;
 
   /**
    * The feature id for the '<em><b>Parameter</b></em>' containment reference.
@@ -1208,7 +1245,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getCollector()
    * @generated
    */
-  int COLLECTOR = 27;
+  int COLLECTOR = 28;
 
   /**
    * The feature id for the '<em><b>Insertion Point</b></em>' attribute.
@@ -1245,7 +1282,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getEvent()
    * @generated
    */
-  int EVENT = 28;
+  int EVENT = 29;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' reference.
@@ -1282,7 +1319,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getQueryModifier()
    * @generated
    */
-  int QUERY_MODIFIER = 29;
+  int QUERY_MODIFIER = 30;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.LogicOperator <em>Logic Operator</em>}' enum.
@@ -1292,7 +1329,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getLogicOperator()
    * @generated
    */
-  int LOGIC_OPERATOR = 30;
+  int LOGIC_OPERATOR = 31;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.InternalFunction <em>Internal Function</em>}' enum.
@@ -1302,7 +1339,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getInternalFunction()
    * @generated
    */
-  int INTERNAL_FUNCTION = 31;
+  int INTERNAL_FUNCTION = 32;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.ReflectionFunction <em>Reflection Function</em>}' enum.
@@ -1312,7 +1349,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getReflectionFunction()
    * @generated
    */
-  int REFLECTION_FUNCTION = 32;
+  int REFLECTION_FUNCTION = 33;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.Operator <em>Operator</em>}' enum.
@@ -1322,7 +1359,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getOperator()
    * @generated
    */
-  int OPERATOR = 33;
+  int OPERATOR = 34;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.InsertionPoint <em>Insertion Point</em>}' enum.
@@ -1332,84 +1369,84 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getInsertionPoint()
    * @generated
    */
-  int INSERTION_POINT = 34;
+  int INSERTION_POINT = 35;
 
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Model <em>Model</em>}'.
+   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.AspectModel <em>Aspect Model</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Model</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Model
+   * @return the meta object for class '<em>Aspect Model</em>'.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectModel
    * @generated
    */
-  EClass getModel();
+  EClass getAspectModel();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.aspectLang.Model#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Model#getName()
-   * @see #getModel()
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getName()
+   * @see #getAspectModel()
    * @generated
    */
-  EAttribute getModel_Name();
+  EAttribute getAspectModel_Name();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.al.aspectLang.Model#getImports <em>Imports</em>}'.
+   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getImports <em>Imports</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Imports</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Model#getImports()
-   * @see #getModel()
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getImports()
+   * @see #getAspectModel()
    * @generated
    */
-  EReference getModel_Imports();
+  EReference getAspectModel_Imports();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.al.aspectLang.Model#getSources <em>Sources</em>}'.
+   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getSources <em>Sources</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Sources</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Model#getSources()
-   * @see #getModel()
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getSources()
+   * @see #getAspectModel()
    * @generated
    */
-  EReference getModel_Sources();
+  EReference getAspectModel_Sources();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.al.aspectLang.Model#getAdvices <em>Advices</em>}'.
+   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getAdvices <em>Advices</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Advices</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Model#getAdvices()
-   * @see #getModel()
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getAdvices()
+   * @see #getAspectModel()
    * @generated
    */
-  EReference getModel_Advices();
+  EReference getAspectModel_Advices();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.al.aspectLang.Model#getPointcuts <em>Pointcuts</em>}'.
+   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getPointcuts <em>Pointcuts</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Pointcuts</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Model#getPointcuts()
-   * @see #getModel()
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getPointcuts()
+   * @see #getAspectModel()
    * @generated
    */
-  EReference getModel_Pointcuts();
+  EReference getAspectModel_Pointcuts();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.al.aspectLang.Model#getAspects <em>Aspects</em>}'.
+   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getAspects <em>Aspects</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Aspects</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Model#getAspects()
-   * @see #getModel()
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getAspects()
+   * @see #getAspectModel()
    * @generated
    */
-  EReference getModel_Aspects();
+  EReference getAspectModel_Aspects();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Import <em>Import</em>}'.
@@ -1667,6 +1704,38 @@ public interface AspectLangPackage extends EPackage
    * @generated
    */
   EReference getPointcut_Method();
+
+  /**
+   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Annotation <em>Annotation</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Annotation</em>'.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.Annotation
+   * @generated
+   */
+  EClass getAnnotation();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.aspectLang.Annotation#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.Annotation#getName()
+   * @see #getAnnotation()
+   * @generated
+   */
+  EAttribute getAnnotation_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.aspectLang.Annotation#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.Annotation#getValue()
+   * @see #getAnnotation()
+   * @generated
+   */
+  EAttribute getAnnotation_Value();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.MethodQuery <em>Method Query</em>}'.
@@ -2303,14 +2372,14 @@ public interface AspectLangPackage extends EPackage
   interface Literals
   {
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ModelImpl <em>Model</em>}' class.
+     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectModelImpl <em>Aspect Model</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.ModelImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getModel()
+     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectModelImpl
+     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getAspectModel()
      * @generated
      */
-    EClass MODEL = eINSTANCE.getModel();
+    EClass ASPECT_MODEL = eINSTANCE.getAspectModel();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -2318,7 +2387,7 @@ public interface AspectLangPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute MODEL__NAME = eINSTANCE.getModel_Name();
+    EAttribute ASPECT_MODEL__NAME = eINSTANCE.getAspectModel_Name();
 
     /**
      * The meta object literal for the '<em><b>Imports</b></em>' containment reference list feature.
@@ -2326,7 +2395,7 @@ public interface AspectLangPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MODEL__IMPORTS = eINSTANCE.getModel_Imports();
+    EReference ASPECT_MODEL__IMPORTS = eINSTANCE.getAspectModel_Imports();
 
     /**
      * The meta object literal for the '<em><b>Sources</b></em>' containment reference list feature.
@@ -2334,7 +2403,7 @@ public interface AspectLangPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MODEL__SOURCES = eINSTANCE.getModel_Sources();
+    EReference ASPECT_MODEL__SOURCES = eINSTANCE.getAspectModel_Sources();
 
     /**
      * The meta object literal for the '<em><b>Advices</b></em>' containment reference list feature.
@@ -2342,7 +2411,7 @@ public interface AspectLangPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MODEL__ADVICES = eINSTANCE.getModel_Advices();
+    EReference ASPECT_MODEL__ADVICES = eINSTANCE.getAspectModel_Advices();
 
     /**
      * The meta object literal for the '<em><b>Pointcuts</b></em>' containment reference list feature.
@@ -2350,7 +2419,7 @@ public interface AspectLangPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MODEL__POINTCUTS = eINSTANCE.getModel_Pointcuts();
+    EReference ASPECT_MODEL__POINTCUTS = eINSTANCE.getAspectModel_Pointcuts();
 
     /**
      * The meta object literal for the '<em><b>Aspects</b></em>' containment reference list feature.
@@ -2358,7 +2427,7 @@ public interface AspectLangPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MODEL__ASPECTS = eINSTANCE.getModel_Aspects();
+    EReference ASPECT_MODEL__ASPECTS = eINSTANCE.getAspectModel_Aspects();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ImportImpl <em>Import</em>}' class.
@@ -2565,6 +2634,32 @@ public interface AspectLangPackage extends EPackage
      * @generated
      */
     EReference POINTCUT__METHOD = eINSTANCE.getPointcut_Method();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AnnotationImpl <em>Annotation</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AnnotationImpl
+     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getAnnotation()
+     * @generated
+     */
+    EClass ANNOTATION = eINSTANCE.getAnnotation();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ANNOTATION__NAME = eINSTANCE.getAnnotation_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ANNOTATION__VALUE = eINSTANCE.getAnnotation_Value();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.MethodQueryImpl <em>Method Query</em>}' class.

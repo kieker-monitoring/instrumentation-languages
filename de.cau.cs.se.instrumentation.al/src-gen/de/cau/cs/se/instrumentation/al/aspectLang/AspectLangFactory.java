@@ -23,13 +23,13 @@ public interface AspectLangFactory extends EFactory
   AspectLangFactory eINSTANCE = de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangFactoryImpl.init();
 
   /**
-   * Returns a new object of class '<em>Model</em>'.
+   * Returns a new object of class '<em>Aspect Model</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Model</em>'.
+   * @return a new object of class '<em>Aspect Model</em>'.
    * @generated
    */
-  Model createModel();
+  AspectModel createAspectModel();
 
   /**
    * Returns a new object of class '<em>Import</em>'.
@@ -93,6 +93,15 @@ public interface AspectLangFactory extends EFactory
    * @generated
    */
   Pointcut createPointcut();
+
+  /**
+   * Returns a new object of class '<em>Annotation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Annotation</em>'.
+   * @generated
+   */
+  Annotation createAnnotation();
 
   /**
    * Returns a new object of class '<em>Method Query</em>'.
