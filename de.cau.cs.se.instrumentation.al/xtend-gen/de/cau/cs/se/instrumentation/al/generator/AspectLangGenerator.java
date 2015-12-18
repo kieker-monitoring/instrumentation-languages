@@ -18,8 +18,8 @@ package de.cau.cs.se.instrumentation.al.generator;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterators;
 import de.cau.cs.se.instrumantation.model.structure.Container;
-import de.cau.cs.se.instrumantation.model.structure.Method;
-import de.cau.cs.se.instrumantation.model.structure.MethodModifier;
+import de.cau.cs.se.instrumantation.model.structure.Operation;
+import de.cau.cs.se.instrumantation.model.structure.OperationModifier;
 import de.cau.cs.se.instrumantation.model.structure.Parameter;
 import de.cau.cs.se.instrumantation.model.structure.Type;
 import de.cau.cs.se.instrumantation.model.structure.TypeReference;
@@ -29,8 +29,8 @@ import de.cau.cs.se.instrumentation.al.aspectLang.Collector;
 import de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode;
 import de.cau.cs.se.instrumentation.al.aspectLang.InsertionPoint;
 import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery;
-import de.cau.cs.se.instrumentation.al.aspectLang.MethodQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.Node;
+import de.cau.cs.se.instrumentation.al.aspectLang.OperationQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut;
 import de.cau.cs.se.instrumentation.al.aspectLang.UtilizeAdvice;
 import java.io.StringWriter;
@@ -198,18 +198,18 @@ public class AspectLangGenerator implements IGenerator {
     CharSequence _computeLocation = this.computeLocation(_location);
     _builder.append(_computeLocation, "");
     _builder.append(" ");
-    MethodQuery _method = pointcut.getMethod();
-    MethodModifier _modifier = _method.getModifier();
+    OperationQuery _operation = pointcut.getOperation();
+    OperationModifier _modifier = _operation.getModifier();
     CharSequence _computeModifier = this.computeModifier(_modifier);
     _builder.append(_computeModifier, "");
     _builder.append(" ");
     CharSequence _xifexpression = null;
-    MethodQuery _method_1 = pointcut.getMethod();
-    boolean _notEquals = (!Objects.equal(_method_1, null));
+    OperationQuery _operation_1 = pointcut.getOperation();
+    boolean _notEquals = (!Objects.equal(_operation_1, null));
     if (_notEquals) {
-      MethodQuery _method_2 = pointcut.getMethod();
-      Method _methodReference = _method_2.getMethodReference();
-      _xifexpression = this.computeMethod(_methodReference);
+      OperationQuery _operation_2 = pointcut.getOperation();
+      Operation _operationReference = _operation_2.getOperationReference();
+      _xifexpression = this.computeMethod(_operationReference);
     } else {
       _xifexpression = "*";
     }
@@ -248,7 +248,7 @@ public class AspectLangGenerator implements IGenerator {
     return _builder;
   }
   
-  public CharSequence computeModifier(final MethodModifier modifier) {
+  public CharSequence computeModifier(final OperationModifier modifier) {
     StringConcatenation _builder = new StringConcatenation();
     String _xifexpression = null;
     boolean _notEquals = (!Objects.equal(modifier, null));
@@ -261,12 +261,12 @@ public class AspectLangGenerator implements IGenerator {
     return _builder;
   }
   
-  public CharSequence computeMethod(final Method method) {
+  public CharSequence computeMethod(final Operation operation) {
     StringConcatenation _builder = new StringConcatenation();
-    String _name = method.getName();
+    String _name = operation.getName();
     _builder.append(_name, "");
     _builder.append(" (");
-    EList<Parameter> _parameters = method.getParameters();
+    EList<Parameter> _parameters = operation.getParameters();
     final Function1<Parameter, CharSequence> _function = (Parameter it) -> {
       return this.computeParameter(it);
     };

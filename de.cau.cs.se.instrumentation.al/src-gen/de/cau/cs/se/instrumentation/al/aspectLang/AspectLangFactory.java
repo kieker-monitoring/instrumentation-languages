@@ -77,13 +77,76 @@ public interface AspectLangFactory extends EFactory
   Advice createAdvice();
 
   /**
-   * Returns a new object of class '<em>Parameter Declaration</em>'.
+   * Returns a new object of class '<em>Advice Parameter Declaration</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Parameter Declaration</em>'.
+   * @return a new object of class '<em>Advice Parameter Declaration</em>'.
    * @generated
    */
-  ParameterDeclaration createParameterDeclaration();
+  AdviceParameterDeclaration createAdviceParameterDeclaration();
+
+  /**
+   * Returns a new object of class '<em>Collector</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Collector</em>'.
+   * @generated
+   */
+  Collector createCollector();
+
+  /**
+   * Returns a new object of class '<em>Event</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Event</em>'.
+   * @generated
+   */
+  Event createEvent();
+
+  /**
+   * Returns a new object of class '<em>Value</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Value</em>'.
+   * @generated
+   */
+  Value createValue();
+
+  /**
+   * Returns a new object of class '<em>Reference Value</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Reference Value</em>'.
+   * @generated
+   */
+  ReferenceValue createReferenceValue();
+
+  /**
+   * Returns a new object of class '<em>Property</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Property</em>'.
+   * @generated
+   */
+  Property createProperty();
+
+  /**
+   * Returns a new object of class '<em>Internal Function Property</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Internal Function Property</em>'.
+   * @generated
+   */
+  InternalFunctionProperty createInternalFunctionProperty();
+
+  /**
+   * Returns a new object of class '<em>Reflection Property</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Reflection Property</em>'.
+   * @generated
+   */
+  ReflectionProperty createReflectionProperty();
 
   /**
    * Returns a new object of class '<em>Pointcut</em>'.
@@ -104,24 +167,6 @@ public interface AspectLangFactory extends EFactory
   Annotation createAnnotation();
 
   /**
-   * Returns a new object of class '<em>Method Query</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Method Query</em>'.
-   * @generated
-   */
-  MethodQuery createMethodQuery();
-
-  /**
-   * Returns a new object of class '<em>Parameter Query</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Parameter Query</em>'.
-   * @generated
-   */
-  ParameterQuery createParameterQuery();
-
-  /**
    * Returns a new object of class '<em>Location Query</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -140,6 +185,24 @@ public interface AspectLangFactory extends EFactory
   CompositionQuery createCompositionQuery();
 
   /**
+   * Returns a new object of class '<em>Operation Query</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Operation Query</em>'.
+   * @generated
+   */
+  OperationQuery createOperationQuery();
+
+  /**
+   * Returns a new object of class '<em>Parameter Query</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Parameter Query</em>'.
+   * @generated
+   */
+  ParameterQuery createParameterQuery();
+
+  /**
    * Returns a new object of class '<em>Node</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -147,96 +210,6 @@ public interface AspectLangFactory extends EFactory
    * @generated
    */
   Node createNode();
-
-  /**
-   * Returns a new object of class '<em>Param Query</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Param Query</em>'.
-   * @generated
-   */
-  ParamQuery createParamQuery();
-
-  /**
-   * Returns a new object of class '<em>Param Expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Param Expression</em>'.
-   * @generated
-   */
-  ParamExpression createParamExpression();
-
-  /**
-   * Returns a new object of class '<em>Float Value</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Float Value</em>'.
-   * @generated
-   */
-  FloatValue createFloatValue();
-
-  /**
-   * Returns a new object of class '<em>Int Value</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Int Value</em>'.
-   * @generated
-   */
-  IntValue createIntValue();
-
-  /**
-   * Returns a new object of class '<em>String Value</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>String Value</em>'.
-   * @generated
-   */
-  StringValue createStringValue();
-
-  /**
-   * Returns a new object of class '<em>Reference Value</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Reference Value</em>'.
-   * @generated
-   */
-  ReferenceValue createReferenceValue();
-
-  /**
-   * Returns a new object of class '<em>Parameter</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Parameter</em>'.
-   * @generated
-   */
-  Parameter createParameter();
-
-  /**
-   * Returns a new object of class '<em>Internal Function Property</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Internal Function Property</em>'.
-   * @generated
-   */
-  InternalFunctionProperty createInternalFunctionProperty();
-
-  /**
-   * Returns a new object of class '<em>Runtime Property</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Runtime Property</em>'.
-   * @generated
-   */
-  RuntimeProperty createRuntimeProperty();
-
-  /**
-   * Returns a new object of class '<em>Reflection Property</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Reflection Property</em>'.
-   * @generated
-   */
-  ReflectionProperty createReflectionProperty();
 
   /**
    * Returns a new object of class '<em>Container Node</em>'.
@@ -275,22 +248,85 @@ public interface AspectLangFactory extends EFactory
   ParentNode createParentNode();
 
   /**
-   * Returns a new object of class '<em>Collector</em>'.
+   * Returns a new object of class '<em>Property Constraint Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Collector</em>'.
+   * @return a new object of class '<em>Property Constraint Expression</em>'.
    * @generated
    */
-  Collector createCollector();
+  PropertyConstraintExpression createPropertyConstraintExpression();
 
   /**
-   * Returns a new object of class '<em>Event</em>'.
+   * Returns a new object of class '<em>Constraint Element</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Event</em>'.
+   * @return a new object of class '<em>Constraint Element</em>'.
    * @generated
    */
-  Event createEvent();
+  ConstraintElement createConstraintElement();
+
+  /**
+   * Returns a new object of class '<em>Local Query</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Local Query</em>'.
+   * @generated
+   */
+  LocalQuery createLocalQuery();
+
+  /**
+   * Returns a new object of class '<em>Model Property</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Model Property</em>'.
+   * @generated
+   */
+  ModelProperty createModelProperty();
+
+  /**
+   * Returns a new object of class '<em>Typeof</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Typeof</em>'.
+   * @generated
+   */
+  Typeof createTypeof();
+
+  /**
+   * Returns a new object of class '<em>Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Literal</em>'.
+   * @generated
+   */
+  Literal createLiteral();
+
+  /**
+   * Returns a new object of class '<em>Float Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Float Literal</em>'.
+   * @generated
+   */
+  FloatLiteral createFloatLiteral();
+
+  /**
+   * Returns a new object of class '<em>Int Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Int Literal</em>'.
+   * @generated
+   */
+  IntLiteral createIntLiteral();
+
+  /**
+   * Returns a new object of class '<em>String Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>String Literal</em>'.
+   * @generated
+   */
+  StringLiteral createStringLiteral();
 
   /**
    * Returns the package supported by this factory.

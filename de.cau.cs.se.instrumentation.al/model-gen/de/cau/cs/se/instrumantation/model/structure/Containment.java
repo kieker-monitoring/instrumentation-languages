@@ -13,10 +13,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumantation.model.structure.Containment#getContents <em>Contents</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.cau.cs.se.instrumantation.model.structure.StructurePackage#getContainment()
  * @model interface="true" abstract="true"

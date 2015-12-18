@@ -80,8 +80,8 @@ public class StructureAdapterFactory extends AdapterFactoryImpl {
 				return createContainerAdapter();
 			}
 			@Override
-			public Adapter caseMethod(Method object) {
-				return createMethodAdapter();
+			public Adapter caseOperation(Operation object) {
+				return createOperationAdapter();
 			}
 			@Override
 			public Adapter caseParameterModifier(ParameterModifier object) {
@@ -96,12 +96,12 @@ public class StructureAdapterFactory extends AdapterFactoryImpl {
 				return createParameterAdapter();
 			}
 			@Override
-			public Adapter caseModel(Model object) {
-				return createModelAdapter();
+			public Adapter caseMappingModel(MappingModel object) {
+				return createMappingModelAdapter();
 			}
 			@Override
-			public Adapter caseMethodModifier(MethodModifier object) {
-				return createMethodModifierAdapter();
+			public Adapter caseOperationModifier(OperationModifier object) {
+				return createOperationModifierAdapter();
 			}
 			@Override
 			public Adapter caseContainerModifier(ContainerModifier object) {
@@ -114,6 +114,14 @@ public class StructureAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseTraceability(Traceability object) {
 				return createTraceabilityAdapter();
+			}
+			@Override
+			public Adapter caseAttribute(Attribute object) {
+				return createAttributeAdapter();
+			}
+			@Override
+			public Adapter caseFeature(Feature object) {
+				return createFeatureAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -178,16 +186,16 @@ public class StructureAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumantation.model.structure.Method <em>Method</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumantation.model.structure.Operation <em>Operation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.cau.cs.se.instrumantation.model.structure.Method
+	 * @see de.cau.cs.se.instrumantation.model.structure.Operation
 	 * @generated
 	 */
-	public Adapter createMethodAdapter() {
+	public Adapter createOperationAdapter() {
 		return null;
 	}
 
@@ -234,30 +242,30 @@ public class StructureAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumantation.model.structure.Model <em>Model</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumantation.model.structure.MappingModel <em>Mapping Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.cau.cs.se.instrumantation.model.structure.Model
+	 * @see de.cau.cs.se.instrumantation.model.structure.MappingModel
 	 * @generated
 	 */
-	public Adapter createModelAdapter() {
+	public Adapter createMappingModelAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumantation.model.structure.MethodModifier <em>Method Modifier</em>}'.
+	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumantation.model.structure.OperationModifier <em>Operation Modifier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.cau.cs.se.instrumantation.model.structure.MethodModifier
+	 * @see de.cau.cs.se.instrumantation.model.structure.OperationModifier
 	 * @generated
 	 */
-	public Adapter createMethodModifierAdapter() {
+	public Adapter createOperationModifierAdapter() {
 		return null;
 	}
 
@@ -300,6 +308,34 @@ public class StructureAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTraceabilityAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumantation.model.structure.Attribute <em>Attribute</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.cau.cs.se.instrumantation.model.structure.Attribute
+	 * @generated
+	 */
+	public Adapter createAttributeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumantation.model.structure.Feature <em>Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.cau.cs.se.instrumantation.model.structure.Feature
+	 * @generated
+	 */
+	public Adapter createFeatureAdapter() {
 		return null;
 	}
 

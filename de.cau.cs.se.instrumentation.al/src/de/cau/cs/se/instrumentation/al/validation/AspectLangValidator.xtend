@@ -14,7 +14,13 @@
  * limitations under the License.
  ***************************************************************************/
 package de.cau.cs.se.instrumentation.al.validation
-//import org.eclipse.xtext.validation.Check
+
+import org.eclipse.xtext.validation.Check
+import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel
+import org.eclipse.core.runtime.Platform
+import de.cau.cs.se.instrumentation.al.modelhandling.IModelMapper
+import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage
+import org.eclipse.core.runtime.CoreException
 
 /**
  * Custom validation rules. 
@@ -22,15 +28,30 @@ package de.cau.cs.se.instrumentation.al.validation
  * see http://www.eclipse.org/Xtext/documentation.html#validation
  */
 class AspectLangValidator extends AbstractAspectLangValidator {
+	
+	private static final String MODEL_MAPPER = "de.cau.cs.se.instrumentation.al.modelMapping"
 
-//  public static val INVALID_NAME = 'invalidName'
+	public static val INVALID_NAME = 'invalidName'
 
-//	@Check
-//	def checkGreetingStartsWithCapital(Greeting greeting) {
-//		if (!Character::isUpperCase(greeting.name.charAt(0))) {
-//			warning('Name should start with a capital', 
-//					MyDslPackage$Literals::GREETING__NAME,
-//					INVALID_NAME)
-//		}
-//	}
+	@Check
+	def checkApplicationModel(ApplicationModel model) {
+		val registry = Platform.getExtensionRegistry()
+		val config = registry.getConfigurationElementsFor(MODEL_MAPPER)
+  		try {
+  			val handlerPresent = config.exists[element |
+  				val ext = element.createExecutableExtension("class")
+  				if (ext instanceof IModelMapper) {
+	          		(ext as IModelMapper).name.equals(model.handler)
+	          	} else
+	          		false
+  			]
+  			if (!handlerPresent)
+	  			error('No model handler for ' + model.handler + ' registered.', 
+					AspectLangPackage$Literals::APPLICATION_MODEL__HANDLER,
+					INVALID_NAME)
+  		} catch (CoreException ex) {
+			System.out.println(ex.getMessage())
+		} 
+					    	
+	}
 }

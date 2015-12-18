@@ -2,40 +2,46 @@
  */
 package de.cau.cs.se.instrumantation.model.structure.impl;
 
-import de.cau.cs.se.instrumantation.model.structure.Method;
-import de.cau.cs.se.instrumantation.model.structure.MethodModifier;
+import de.cau.cs.se.instrumantation.model.structure.Operation;
+import de.cau.cs.se.instrumantation.model.structure.OperationModifier;
 import de.cau.cs.se.instrumantation.model.structure.Parameter;
 import de.cau.cs.se.instrumantation.model.structure.StructurePackage;
 import de.cau.cs.se.instrumantation.model.structure.Traceability;
 import de.cau.cs.se.instrumantation.model.structure.TypeReference;
+
 import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Method</b></em>'.
+ * An implementation of the model object '<em><b>Operation</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
- * <ul>
- *   <li>{@link de.cau.cs.se.instrumantation.model.structure.impl.MethodImpl#getPredecessor <em>Predecessor</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumantation.model.structure.impl.MethodImpl#getReturnType <em>Return Type</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumantation.model.structure.impl.MethodImpl#getParameters <em>Parameters</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumantation.model.structure.impl.MethodImpl#getModifier <em>Modifier</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link de.cau.cs.se.instrumantation.model.structure.impl.OperationImpl#getPredecessor <em>Predecessor</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumantation.model.structure.impl.OperationImpl#getReturnType <em>Return Type</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumantation.model.structure.impl.OperationImpl#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumantation.model.structure.impl.OperationImpl#getModifier <em>Modifier</em>}</li>
+ * </ul>
  *
  * @generated
  */
-public class MethodImpl extends NamedElementImpl implements Method {
+public class OperationImpl extends NamedElementImpl implements Operation {
 	/**
 	 * The cached value of the '{@link #getPredecessor() <em>Predecessor</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -74,14 +80,14 @@ public class MethodImpl extends NamedElementImpl implements Method {
 	 * @generated
 	 * @ordered
 	 */
-	protected MethodModifier modifier;
+	protected OperationModifier modifier;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected MethodImpl() {
+	protected OperationImpl() {
 		super();
 	}
 
@@ -92,7 +98,7 @@ public class MethodImpl extends NamedElementImpl implements Method {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return StructurePackage.Literals.METHOD;
+		return StructurePackage.Literals.OPERATION;
 	}
 
 	/**
@@ -106,7 +112,7 @@ public class MethodImpl extends NamedElementImpl implements Method {
 			predecessor = eResolveProxy(oldPredecessor);
 			if (predecessor != oldPredecessor) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, StructurePackage.METHOD__PREDECESSOR, oldPredecessor, predecessor));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, StructurePackage.OPERATION__PREDECESSOR, oldPredecessor, predecessor));
 			}
 		}
 		return predecessor;
@@ -130,7 +136,7 @@ public class MethodImpl extends NamedElementImpl implements Method {
 		EObject oldPredecessor = predecessor;
 		predecessor = newPredecessor;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.METHOD__PREDECESSOR, oldPredecessor, predecessor));
+			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.OPERATION__PREDECESSOR, oldPredecessor, predecessor));
 	}
 
 	/**
@@ -144,7 +150,7 @@ public class MethodImpl extends NamedElementImpl implements Method {
 			returnType = (TypeReference)eResolveProxy(oldReturnType);
 			if (returnType != oldReturnType) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, StructurePackage.METHOD__RETURN_TYPE, oldReturnType, returnType));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, StructurePackage.OPERATION__RETURN_TYPE, oldReturnType, returnType));
 			}
 		}
 		return returnType;
@@ -168,7 +174,7 @@ public class MethodImpl extends NamedElementImpl implements Method {
 		TypeReference oldReturnType = returnType;
 		returnType = newReturnType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.METHOD__RETURN_TYPE, oldReturnType, returnType));
+			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.OPERATION__RETURN_TYPE, oldReturnType, returnType));
 	}
 
 	/**
@@ -178,7 +184,7 @@ public class MethodImpl extends NamedElementImpl implements Method {
 	 */
 	public EList<Parameter> getParameters() {
 		if (parameters == null) {
-			parameters = new EObjectContainmentEList<Parameter>(Parameter.class, this, StructurePackage.METHOD__PARAMETERS);
+			parameters = new EObjectContainmentEList<Parameter>(Parameter.class, this, StructurePackage.OPERATION__PARAMETERS);
 		}
 		return parameters;
 	}
@@ -188,13 +194,13 @@ public class MethodImpl extends NamedElementImpl implements Method {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MethodModifier getModifier() {
+	public OperationModifier getModifier() {
 		if (modifier != null && modifier.eIsProxy()) {
 			InternalEObject oldModifier = (InternalEObject)modifier;
-			modifier = (MethodModifier)eResolveProxy(oldModifier);
+			modifier = (OperationModifier)eResolveProxy(oldModifier);
 			if (modifier != oldModifier) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, StructurePackage.METHOD__MODIFIER, oldModifier, modifier));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, StructurePackage.OPERATION__MODIFIER, oldModifier, modifier));
 			}
 		}
 		return modifier;
@@ -205,7 +211,7 @@ public class MethodImpl extends NamedElementImpl implements Method {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MethodModifier basicGetModifier() {
+	public OperationModifier basicGetModifier() {
 		return modifier;
 	}
 
@@ -214,11 +220,11 @@ public class MethodImpl extends NamedElementImpl implements Method {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setModifier(MethodModifier newModifier) {
-		MethodModifier oldModifier = modifier;
+	public void setModifier(OperationModifier newModifier) {
+		OperationModifier oldModifier = modifier;
 		modifier = newModifier;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.METHOD__MODIFIER, oldModifier, modifier));
+			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.OPERATION__MODIFIER, oldModifier, modifier));
 	}
 
 	/**
@@ -229,7 +235,7 @@ public class MethodImpl extends NamedElementImpl implements Method {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case StructurePackage.METHOD__PARAMETERS:
+			case StructurePackage.OPERATION__PARAMETERS:
 				return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -243,15 +249,15 @@ public class MethodImpl extends NamedElementImpl implements Method {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case StructurePackage.METHOD__PREDECESSOR:
+			case StructurePackage.OPERATION__PREDECESSOR:
 				if (resolve) return getPredecessor();
 				return basicGetPredecessor();
-			case StructurePackage.METHOD__RETURN_TYPE:
+			case StructurePackage.OPERATION__RETURN_TYPE:
 				if (resolve) return getReturnType();
 				return basicGetReturnType();
-			case StructurePackage.METHOD__PARAMETERS:
+			case StructurePackage.OPERATION__PARAMETERS:
 				return getParameters();
-			case StructurePackage.METHOD__MODIFIER:
+			case StructurePackage.OPERATION__MODIFIER:
 				if (resolve) return getModifier();
 				return basicGetModifier();
 		}
@@ -267,18 +273,18 @@ public class MethodImpl extends NamedElementImpl implements Method {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case StructurePackage.METHOD__PREDECESSOR:
+			case StructurePackage.OPERATION__PREDECESSOR:
 				setPredecessor((EObject)newValue);
 				return;
-			case StructurePackage.METHOD__RETURN_TYPE:
+			case StructurePackage.OPERATION__RETURN_TYPE:
 				setReturnType((TypeReference)newValue);
 				return;
-			case StructurePackage.METHOD__PARAMETERS:
+			case StructurePackage.OPERATION__PARAMETERS:
 				getParameters().clear();
 				getParameters().addAll((Collection<? extends Parameter>)newValue);
 				return;
-			case StructurePackage.METHOD__MODIFIER:
-				setModifier((MethodModifier)newValue);
+			case StructurePackage.OPERATION__MODIFIER:
+				setModifier((OperationModifier)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -292,17 +298,17 @@ public class MethodImpl extends NamedElementImpl implements Method {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case StructurePackage.METHOD__PREDECESSOR:
+			case StructurePackage.OPERATION__PREDECESSOR:
 				setPredecessor((EObject)null);
 				return;
-			case StructurePackage.METHOD__RETURN_TYPE:
+			case StructurePackage.OPERATION__RETURN_TYPE:
 				setReturnType((TypeReference)null);
 				return;
-			case StructurePackage.METHOD__PARAMETERS:
+			case StructurePackage.OPERATION__PARAMETERS:
 				getParameters().clear();
 				return;
-			case StructurePackage.METHOD__MODIFIER:
-				setModifier((MethodModifier)null);
+			case StructurePackage.OPERATION__MODIFIER:
+				setModifier((OperationModifier)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -316,13 +322,13 @@ public class MethodImpl extends NamedElementImpl implements Method {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case StructurePackage.METHOD__PREDECESSOR:
+			case StructurePackage.OPERATION__PREDECESSOR:
 				return predecessor != null;
-			case StructurePackage.METHOD__RETURN_TYPE:
+			case StructurePackage.OPERATION__RETURN_TYPE:
 				return returnType != null;
-			case StructurePackage.METHOD__PARAMETERS:
+			case StructurePackage.OPERATION__PARAMETERS:
 				return parameters != null && !parameters.isEmpty();
-			case StructurePackage.METHOD__MODIFIER:
+			case StructurePackage.OPERATION__MODIFIER:
 				return modifier != null;
 		}
 		return super.eIsSet(featureID);
@@ -337,7 +343,7 @@ public class MethodImpl extends NamedElementImpl implements Method {
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == Traceability.class) {
 			switch (derivedFeatureID) {
-				case StructurePackage.METHOD__PREDECESSOR: return StructurePackage.TRACEABILITY__PREDECESSOR;
+				case StructurePackage.OPERATION__PREDECESSOR: return StructurePackage.TRACEABILITY__PREDECESSOR;
 				default: return -1;
 			}
 		}
@@ -353,11 +359,11 @@ public class MethodImpl extends NamedElementImpl implements Method {
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == Traceability.class) {
 			switch (baseFeatureID) {
-				case StructurePackage.TRACEABILITY__PREDECESSOR: return StructurePackage.METHOD__PREDECESSOR;
+				case StructurePackage.TRACEABILITY__PREDECESSOR: return StructurePackage.OPERATION__PREDECESSOR;
 				default: return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
-} //MethodImpl
+} //OperationImpl

@@ -19,7 +19,7 @@ package de.cau.cs.se.instrumentation.al.aspectLang;
  * @model
  * @generated
  */
-public interface ReflectionProperty extends Parameter
+public interface ReflectionProperty extends Property
 {
   /**
    * Returns the value of the '<em><b>Function</b></em>' attribute.

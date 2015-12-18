@@ -160,16 +160,6 @@ public interface StructurePackage extends EPackage {
 	int CONTAINER = 2;
 
 	/**
-	 * The meta object id for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.MethodImpl <em>Method</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.cau.cs.se.instrumantation.model.structure.impl.MethodImpl
-	 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getMethod()
-	 * @generated
-	 */
-	int METHOD = 3;
-
-	/**
 	 * The meta object id for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.ParameterModifierImpl <em>Parameter Modifier</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -188,26 +178,6 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 */
 	int PARAMETER = 6;
-
-	/**
-	 * The meta object id for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.ModelImpl <em>Model</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.cau.cs.se.instrumantation.model.structure.impl.ModelImpl
-	 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getModel()
-	 * @generated
-	 */
-	int MODEL = 7;
-
-	/**
-	 * The meta object id for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.MethodModifierImpl <em>Method Modifier</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see de.cau.cs.se.instrumantation.model.structure.impl.MethodModifierImpl
-	 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getMethodModifier()
-	 * @generated
-	 */
-	int METHOD_MODIFIER = 8;
 
 	/**
 	 * The meta object id for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.ContainerModifierImpl <em>Container Modifier</em>}' class.
@@ -303,13 +273,14 @@ public interface StructurePackage extends EPackage {
 	int TYPE_REFERENCE_OPERATION_COUNT = TRACEABILITY_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The meta object id for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.OperationImpl <em>Operation</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see de.cau.cs.se.instrumantation.model.structure.impl.OperationImpl
+	 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getOperation()
 	 * @generated
-	 * @ordered
 	 */
-	int CONTAINER__NAME = NAMED_ELEMENT__NAME;
+	int OPERATION = 3;
 
 	/**
 	 * The feature id for the '<em><b>Contents</b></em>' containment reference list.
@@ -318,52 +289,34 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINER__CONTENTS = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int CONTAINMENT__CONTENTS = 0;
 
 	/**
-	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * The number of structural features of the '<em>Containment</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINER__PREDECESSOR = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int CONTAINMENT_FEATURE_COUNT = 1;
 
 	/**
-	 * The feature id for the '<em><b>Modifier</b></em>' reference.
+	 * The number of operations of the '<em>Containment</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINER__MODIFIER = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int CONTAINMENT_OPERATION_COUNT = 0;
 
 	/**
-	 * The feature id for the '<em><b>Methods</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Contents</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINER__METHODS = NAMED_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of structural features of the '<em>Container</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINER_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
-
-	/**
-	 * The number of operations of the '<em>Container</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINER_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+	int CONTAINER__CONTENTS = CONTAINMENT__CONTENTS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -372,7 +325,7 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int METHOD__NAME = NAMED_ELEMENT__NAME;
+	int CONTAINER__NAME = CONTAINMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
@@ -381,25 +334,7 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int METHOD__PREDECESSOR = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Return Type</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int METHOD__RETURN_TYPE = NAMED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int METHOD__PARAMETERS = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int CONTAINER__PREDECESSOR = CONTAINMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Modifier</b></em>' reference.
@@ -408,25 +343,115 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int METHOD__MODIFIER = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int CONTAINER__MODIFIER = CONTAINMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the '<em>Method</em>' class.
+	 * The feature id for the '<em><b>Operations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int METHOD_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
+	int CONTAINER__OPERATIONS = CONTAINMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of operations of the '<em>Method</em>' class.
+	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int METHOD_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+	int CONTAINER__ATTRIBUTES = CONTAINMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER__TYPE = CONTAINMENT_FEATURE_COUNT + 5;
+
+	/**
+	 * The number of structural features of the '<em>Container</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER_FEATURE_COUNT = CONTAINMENT_FEATURE_COUNT + 6;
+
+	/**
+	 * The number of operations of the '<em>Container</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER_OPERATION_COUNT = CONTAINMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__PREDECESSOR = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Return Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__RETURN_TYPE = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__PARAMETERS = NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Modifier</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__MODIFIER = NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Operation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of operations of the '<em>Operation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -519,31 +544,14 @@ public interface StructurePackage extends EPackage {
 	int PARAMETER_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Contents</b></em>' containment reference list.
+	 * The meta object id for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.MappingModelImpl <em>Mapping Model</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see de.cau.cs.se.instrumantation.model.structure.impl.MappingModelImpl
+	 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getMappingModel()
 	 * @generated
-	 * @ordered
 	 */
-	int CONTAINMENT__CONTENTS = 0;
-
-	/**
-	 * The number of structural features of the '<em>Containment</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINMENT_FEATURE_COUNT = 1;
-
-	/**
-	 * The number of operations of the '<em>Containment</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTAINMENT_OPERATION_COUNT = 0;
+	int MAPPING_MODEL = 7;
 
 	/**
 	 * The feature id for the '<em><b>Contents</b></em>' containment reference list.
@@ -552,7 +560,7 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL__CONTENTS = CONTAINMENT__CONTENTS;
+	int MAPPING_MODEL__CONTENTS = CONTAINMENT__CONTENTS;
 
 	/**
 	 * The feature id for the '<em><b>Types</b></em>' containment reference list.
@@ -561,25 +569,35 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL__TYPES = CONTAINMENT_FEATURE_COUNT + 0;
+	int MAPPING_MODEL__TYPES = CONTAINMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Model</em>' class.
+	 * The number of structural features of the '<em>Mapping Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_FEATURE_COUNT = CONTAINMENT_FEATURE_COUNT + 1;
+	int MAPPING_MODEL_FEATURE_COUNT = CONTAINMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Model</em>' class.
+	 * The number of operations of the '<em>Mapping Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_OPERATION_COUNT = CONTAINMENT_OPERATION_COUNT + 0;
+	int MAPPING_MODEL_OPERATION_COUNT = CONTAINMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.OperationModifierImpl <em>Operation Modifier</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.cau.cs.se.instrumantation.model.structure.impl.OperationModifierImpl
+	 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getOperationModifier()
+	 * @generated
+	 */
+	int OPERATION_MODIFIER = 8;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -588,7 +606,7 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int METHOD_MODIFIER__NAME = NAMED_ELEMENT__NAME;
+	int OPERATION_MODIFIER__NAME = NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
@@ -597,25 +615,25 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int METHOD_MODIFIER__PREDECESSOR = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int OPERATION_MODIFIER__PREDECESSOR = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Method Modifier</em>' class.
+	 * The number of structural features of the '<em>Operation Modifier</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int METHOD_MODIFIER_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int OPERATION_MODIFIER_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Method Modifier</em>' class.
+	 * The number of operations of the '<em>Operation Modifier</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int METHOD_MODIFIER_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+	int OPERATION_MODIFIER_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -652,6 +670,117 @@ public interface StructurePackage extends EPackage {
 	 * @ordered
 	 */
 	int CONTAINER_MODIFIER_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+
+	/**
+	 * The meta object id for the '{@link de.cau.cs.se.instrumantation.model.structure.Feature <em>Feature</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.cau.cs.se.instrumantation.model.structure.Feature
+	 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getFeature()
+	 * @generated
+	 */
+	int FEATURE = 13;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE__PREDECESSOR = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Feature</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Feature</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEATURE_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.AttributeImpl <em>Attribute</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.cau.cs.se.instrumantation.model.structure.impl.AttributeImpl
+	 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getAttribute()
+	 * @generated
+	 */
+	int ATTRIBUTE = 12;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTE__NAME = FEATURE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Predecessor</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTE__PREDECESSOR = FEATURE__PREDECESSOR;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTE__TYPE = FEATURE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTE__VALUE = FEATURE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Attribute</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTE_FEATURE_COUNT = FEATURE_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Attribute</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ATTRIBUTE_OPERATION_COUNT = FEATURE_OPERATION_COUNT + 0;
 
 
 	/**
@@ -707,58 +836,80 @@ public interface StructurePackage extends EPackage {
 	EReference getContainer_Modifier();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumantation.model.structure.Container#getMethods <em>Methods</em>}'.
+	 * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumantation.model.structure.Container#getOperations <em>Operations</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Methods</em>'.
-	 * @see de.cau.cs.se.instrumantation.model.structure.Container#getMethods()
+	 * @return the meta object for the containment reference list '<em>Operations</em>'.
+	 * @see de.cau.cs.se.instrumantation.model.structure.Container#getOperations()
 	 * @see #getContainer()
 	 * @generated
 	 */
-	EReference getContainer_Methods();
+	EReference getContainer_Operations();
 
 	/**
-	 * Returns the meta object for class '{@link de.cau.cs.se.instrumantation.model.structure.Method <em>Method</em>}'.
+	 * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumantation.model.structure.Container#getAttributes <em>Attributes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Method</em>'.
-	 * @see de.cau.cs.se.instrumantation.model.structure.Method
+	 * @return the meta object for the containment reference list '<em>Attributes</em>'.
+	 * @see de.cau.cs.se.instrumantation.model.structure.Container#getAttributes()
+	 * @see #getContainer()
 	 * @generated
 	 */
-	EClass getMethod();
+	EReference getContainer_Attributes();
 
 	/**
-	 * Returns the meta object for the reference '{@link de.cau.cs.se.instrumantation.model.structure.Method#getReturnType <em>Return Type</em>}'.
+	 * Returns the meta object for the reference '{@link de.cau.cs.se.instrumantation.model.structure.Container#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Type</em>'.
+	 * @see de.cau.cs.se.instrumantation.model.structure.Container#getType()
+	 * @see #getContainer()
+	 * @generated
+	 */
+	EReference getContainer_Type();
+
+	/**
+	 * Returns the meta object for class '{@link de.cau.cs.se.instrumantation.model.structure.Operation <em>Operation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Operation</em>'.
+	 * @see de.cau.cs.se.instrumantation.model.structure.Operation
+	 * @generated
+	 */
+	EClass getOperation();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.cau.cs.se.instrumantation.model.structure.Operation#getReturnType <em>Return Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Return Type</em>'.
-	 * @see de.cau.cs.se.instrumantation.model.structure.Method#getReturnType()
-	 * @see #getMethod()
+	 * @see de.cau.cs.se.instrumantation.model.structure.Operation#getReturnType()
+	 * @see #getOperation()
 	 * @generated
 	 */
-	EReference getMethod_ReturnType();
+	EReference getOperation_ReturnType();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumantation.model.structure.Method#getParameters <em>Parameters</em>}'.
+	 * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumantation.model.structure.Operation#getParameters <em>Parameters</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Parameters</em>'.
-	 * @see de.cau.cs.se.instrumantation.model.structure.Method#getParameters()
-	 * @see #getMethod()
+	 * @see de.cau.cs.se.instrumantation.model.structure.Operation#getParameters()
+	 * @see #getOperation()
 	 * @generated
 	 */
-	EReference getMethod_Parameters();
+	EReference getOperation_Parameters();
 
 	/**
-	 * Returns the meta object for the reference '{@link de.cau.cs.se.instrumantation.model.structure.Method#getModifier <em>Modifier</em>}'.
+	 * Returns the meta object for the reference '{@link de.cau.cs.se.instrumantation.model.structure.Operation#getModifier <em>Modifier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Modifier</em>'.
-	 * @see de.cau.cs.se.instrumantation.model.structure.Method#getModifier()
-	 * @see #getMethod()
+	 * @see de.cau.cs.se.instrumantation.model.structure.Operation#getModifier()
+	 * @see #getOperation()
 	 * @generated
 	 */
-	EReference getMethod_Modifier();
+	EReference getOperation_Modifier();
 
 	/**
 	 * Returns the meta object for class '{@link de.cau.cs.se.instrumantation.model.structure.ParameterModifier <em>Parameter Modifier</em>}'.
@@ -824,35 +975,35 @@ public interface StructurePackage extends EPackage {
 	EReference getParameter_Type();
 
 	/**
-	 * Returns the meta object for class '{@link de.cau.cs.se.instrumantation.model.structure.Model <em>Model</em>}'.
+	 * Returns the meta object for class '{@link de.cau.cs.se.instrumantation.model.structure.MappingModel <em>Mapping Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Model</em>'.
-	 * @see de.cau.cs.se.instrumantation.model.structure.Model
+	 * @return the meta object for class '<em>Mapping Model</em>'.
+	 * @see de.cau.cs.se.instrumantation.model.structure.MappingModel
 	 * @generated
 	 */
-	EClass getModel();
+	EClass getMappingModel();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumantation.model.structure.Model#getTypes <em>Types</em>}'.
+	 * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumantation.model.structure.MappingModel#getTypes <em>Types</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Types</em>'.
-	 * @see de.cau.cs.se.instrumantation.model.structure.Model#getTypes()
-	 * @see #getModel()
+	 * @see de.cau.cs.se.instrumantation.model.structure.MappingModel#getTypes()
+	 * @see #getMappingModel()
 	 * @generated
 	 */
-	EReference getModel_Types();
+	EReference getMappingModel_Types();
 
 	/**
-	 * Returns the meta object for class '{@link de.cau.cs.se.instrumantation.model.structure.MethodModifier <em>Method Modifier</em>}'.
+	 * Returns the meta object for class '{@link de.cau.cs.se.instrumantation.model.structure.OperationModifier <em>Operation Modifier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Method Modifier</em>'.
-	 * @see de.cau.cs.se.instrumantation.model.structure.MethodModifier
+	 * @return the meta object for class '<em>Operation Modifier</em>'.
+	 * @see de.cau.cs.se.instrumantation.model.structure.OperationModifier
 	 * @generated
 	 */
-	EClass getMethodModifier();
+	EClass getOperationModifier();
 
 	/**
 	 * Returns the meta object for class '{@link de.cau.cs.se.instrumantation.model.structure.ContainerModifier <em>Container Modifier</em>}'.
@@ -905,6 +1056,48 @@ public interface StructurePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTraceability_Predecessor();
+
+	/**
+	 * Returns the meta object for class '{@link de.cau.cs.se.instrumantation.model.structure.Attribute <em>Attribute</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Attribute</em>'.
+	 * @see de.cau.cs.se.instrumantation.model.structure.Attribute
+	 * @generated
+	 */
+	EClass getAttribute();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.cau.cs.se.instrumantation.model.structure.Attribute#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Type</em>'.
+	 * @see de.cau.cs.se.instrumantation.model.structure.Attribute#getType()
+	 * @see #getAttribute()
+	 * @generated
+	 */
+	EReference getAttribute_Type();
+
+	/**
+	 * Returns the meta object for the reference '{@link de.cau.cs.se.instrumantation.model.structure.Attribute#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Value</em>'.
+	 * @see de.cau.cs.se.instrumantation.model.structure.Attribute#getValue()
+	 * @see #getAttribute()
+	 * @generated
+	 */
+	EReference getAttribute_Value();
+
+	/**
+	 * Returns the meta object for class '{@link de.cau.cs.se.instrumantation.model.structure.Feature <em>Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Feature</em>'.
+	 * @see de.cau.cs.se.instrumantation.model.structure.Feature
+	 * @generated
+	 */
+	EClass getFeature();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -976,22 +1169,38 @@ public interface StructurePackage extends EPackage {
 		EReference CONTAINER__MODIFIER = eINSTANCE.getContainer_Modifier();
 
 		/**
-		 * The meta object literal for the '<em><b>Methods</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Operations</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONTAINER__METHODS = eINSTANCE.getContainer_Methods();
+		EReference CONTAINER__OPERATIONS = eINSTANCE.getContainer_Operations();
 
 		/**
-		 * The meta object literal for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.MethodImpl <em>Method</em>}' class.
+		 * The meta object literal for the '<em><b>Attributes</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.cau.cs.se.instrumantation.model.structure.impl.MethodImpl
-		 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getMethod()
 		 * @generated
 		 */
-		EClass METHOD = eINSTANCE.getMethod();
+		EReference CONTAINER__ATTRIBUTES = eINSTANCE.getContainer_Attributes();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONTAINER__TYPE = eINSTANCE.getContainer_Type();
+
+		/**
+		 * The meta object literal for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.OperationImpl <em>Operation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.cau.cs.se.instrumantation.model.structure.impl.OperationImpl
+		 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getOperation()
+		 * @generated
+		 */
+		EClass OPERATION = eINSTANCE.getOperation();
 
 		/**
 		 * The meta object literal for the '<em><b>Return Type</b></em>' reference feature.
@@ -999,7 +1208,7 @@ public interface StructurePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference METHOD__RETURN_TYPE = eINSTANCE.getMethod_ReturnType();
+		EReference OPERATION__RETURN_TYPE = eINSTANCE.getOperation_ReturnType();
 
 		/**
 		 * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
@@ -1007,7 +1216,7 @@ public interface StructurePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference METHOD__PARAMETERS = eINSTANCE.getMethod_Parameters();
+		EReference OPERATION__PARAMETERS = eINSTANCE.getOperation_Parameters();
 
 		/**
 		 * The meta object literal for the '<em><b>Modifier</b></em>' reference feature.
@@ -1015,7 +1224,7 @@ public interface StructurePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference METHOD__MODIFIER = eINSTANCE.getMethod_Modifier();
+		EReference OPERATION__MODIFIER = eINSTANCE.getOperation_Modifier();
 
 		/**
 		 * The meta object literal for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.ParameterModifierImpl <em>Parameter Modifier</em>}' class.
@@ -1072,14 +1281,14 @@ public interface StructurePackage extends EPackage {
 		EReference PARAMETER__TYPE = eINSTANCE.getParameter_Type();
 
 		/**
-		 * The meta object literal for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.ModelImpl <em>Model</em>}' class.
+		 * The meta object literal for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.MappingModelImpl <em>Mapping Model</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.cau.cs.se.instrumantation.model.structure.impl.ModelImpl
-		 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getModel()
+		 * @see de.cau.cs.se.instrumantation.model.structure.impl.MappingModelImpl
+		 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getMappingModel()
 		 * @generated
 		 */
-		EClass MODEL = eINSTANCE.getModel();
+		EClass MAPPING_MODEL = eINSTANCE.getMappingModel();
 
 		/**
 		 * The meta object literal for the '<em><b>Types</b></em>' containment reference list feature.
@@ -1087,17 +1296,17 @@ public interface StructurePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference MODEL__TYPES = eINSTANCE.getModel_Types();
+		EReference MAPPING_MODEL__TYPES = eINSTANCE.getMappingModel_Types();
 
 		/**
-		 * The meta object literal for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.MethodModifierImpl <em>Method Modifier</em>}' class.
+		 * The meta object literal for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.OperationModifierImpl <em>Operation Modifier</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.cau.cs.se.instrumantation.model.structure.impl.MethodModifierImpl
-		 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getMethodModifier()
+		 * @see de.cau.cs.se.instrumantation.model.structure.impl.OperationModifierImpl
+		 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getOperationModifier()
 		 * @generated
 		 */
-		EClass METHOD_MODIFIER = eINSTANCE.getMethodModifier();
+		EClass OPERATION_MODIFIER = eINSTANCE.getOperationModifier();
 
 		/**
 		 * The meta object literal for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.ContainerModifierImpl <em>Container Modifier</em>}' class.
@@ -1144,6 +1353,42 @@ public interface StructurePackage extends EPackage {
 		 * @generated
 		 */
 		EReference TRACEABILITY__PREDECESSOR = eINSTANCE.getTraceability_Predecessor();
+
+		/**
+		 * The meta object literal for the '{@link de.cau.cs.se.instrumantation.model.structure.impl.AttributeImpl <em>Attribute</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.cau.cs.se.instrumantation.model.structure.impl.AttributeImpl
+		 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getAttribute()
+		 * @generated
+		 */
+		EClass ATTRIBUTE = eINSTANCE.getAttribute();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ATTRIBUTE__TYPE = eINSTANCE.getAttribute_Type();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ATTRIBUTE__VALUE = eINSTANCE.getAttribute_Value();
+
+		/**
+		 * The meta object literal for the '{@link de.cau.cs.se.instrumantation.model.structure.Feature <em>Feature</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.cau.cs.se.instrumantation.model.structure.Feature
+		 * @see de.cau.cs.se.instrumantation.model.structure.impl.StructurePackageImpl#getFeature()
+		 * @generated
+		 */
+		EClass FEATURE = eINSTANCE.getFeature();
 
 	}
 

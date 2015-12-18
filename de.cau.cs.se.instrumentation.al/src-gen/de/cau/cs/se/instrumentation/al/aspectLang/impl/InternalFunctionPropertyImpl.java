@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class InternalFunctionPropertyImpl extends ParameterImpl implements InternalFunctionProperty
+public class InternalFunctionPropertyImpl extends PropertyImpl implements InternalFunctionProperty
 {
   /**
    * The default value of the '{@link #getFunction() <em>Function</em>}' attribute.

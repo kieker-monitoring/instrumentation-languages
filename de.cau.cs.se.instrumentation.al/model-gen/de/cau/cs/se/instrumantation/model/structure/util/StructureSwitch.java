@@ -47,7 +47,7 @@ public class StructureSwitch<T> extends Switch<T> {
 	 * Checks whether this is a switch for the given package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @parameter ePackage the package in question.
+	 * @param ePackage the package in question.
 	 * @return whether this is a switch for the given package.
 	 * @generated
 	 */
@@ -84,17 +84,18 @@ public class StructureSwitch<T> extends Switch<T> {
 			case StructurePackage.CONTAINER: {
 				Container container = (Container)theEObject;
 				T result = caseContainer(container);
-				if (result == null) result = caseNamedElement(container);
 				if (result == null) result = caseContainment(container);
+				if (result == null) result = caseFeature(container);
+				if (result == null) result = caseNamedElement(container);
 				if (result == null) result = caseTraceability(container);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case StructurePackage.METHOD: {
-				Method method = (Method)theEObject;
-				T result = caseMethod(method);
-				if (result == null) result = caseNamedElement(method);
-				if (result == null) result = caseTraceability(method);
+			case StructurePackage.OPERATION: {
+				Operation operation = (Operation)theEObject;
+				T result = caseOperation(operation);
+				if (result == null) result = caseNamedElement(operation);
+				if (result == null) result = caseTraceability(operation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -120,18 +121,18 @@ public class StructureSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case StructurePackage.MODEL: {
-				Model model = (Model)theEObject;
-				T result = caseModel(model);
-				if (result == null) result = caseContainment(model);
+			case StructurePackage.MAPPING_MODEL: {
+				MappingModel mappingModel = (MappingModel)theEObject;
+				T result = caseMappingModel(mappingModel);
+				if (result == null) result = caseContainment(mappingModel);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case StructurePackage.METHOD_MODIFIER: {
-				MethodModifier methodModifier = (MethodModifier)theEObject;
-				T result = caseMethodModifier(methodModifier);
-				if (result == null) result = caseNamedElement(methodModifier);
-				if (result == null) result = caseTraceability(methodModifier);
+			case StructurePackage.OPERATION_MODIFIER: {
+				OperationModifier operationModifier = (OperationModifier)theEObject;
+				T result = caseOperationModifier(operationModifier);
+				if (result == null) result = caseNamedElement(operationModifier);
+				if (result == null) result = caseTraceability(operationModifier);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -152,6 +153,23 @@ public class StructureSwitch<T> extends Switch<T> {
 			case StructurePackage.TRACEABILITY: {
 				Traceability traceability = (Traceability)theEObject;
 				T result = caseTraceability(traceability);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case StructurePackage.ATTRIBUTE: {
+				Attribute attribute = (Attribute)theEObject;
+				T result = caseAttribute(attribute);
+				if (result == null) result = caseFeature(attribute);
+				if (result == null) result = caseNamedElement(attribute);
+				if (result == null) result = caseTraceability(attribute);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case StructurePackage.FEATURE: {
+				Feature feature = (Feature)theEObject;
+				T result = caseFeature(feature);
+				if (result == null) result = caseNamedElement(feature);
+				if (result == null) result = caseTraceability(feature);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -205,17 +223,17 @@ public class StructureSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Method</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Operation</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Method</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Operation</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseMethod(Method object) {
+	public T caseOperation(Operation object) {
 		return null;
 	}
 
@@ -265,32 +283,32 @@ public class StructureSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Model</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Mapping Model</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Model</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Mapping Model</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseModel(Model object) {
+	public T caseMappingModel(MappingModel object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Method Modifier</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Operation Modifier</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Method Modifier</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Operation Modifier</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseMethodModifier(MethodModifier object) {
+	public T caseOperationModifier(OperationModifier object) {
 		return null;
 	}
 
@@ -336,6 +354,36 @@ public class StructureSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseTraceability(Traceability object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Attribute</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Attribute</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAttribute(Attribute object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Feature</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Feature</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFeature(Feature object) {
 		return null;
 	}
 

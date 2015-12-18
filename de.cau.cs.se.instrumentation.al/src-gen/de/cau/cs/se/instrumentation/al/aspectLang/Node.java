@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Node#getParameter <em>Parameter</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Node#getConstraint <em>Constraint</em>}</li>
  * </ul>
  *
  * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getNode()
@@ -23,29 +23,29 @@ import org.eclipse.emf.ecore.EObject;
 public interface Node extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Parameter</b></em>' containment reference.
+   * Returns the value of the '<em><b>Constraint</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Parameter</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Constraint</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Parameter</em>' containment reference.
-   * @see #setParameter(ParamQuery)
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getNode_Parameter()
+   * @return the value of the '<em>Constraint</em>' containment reference.
+   * @see #setConstraint(PropertyConstraintExpression)
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getNode_Constraint()
    * @model containment="true"
    * @generated
    */
-  ParamQuery getParameter();
+  PropertyConstraintExpression getConstraint();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.Node#getParameter <em>Parameter</em>}' containment reference.
+   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.Node#getConstraint <em>Constraint</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Parameter</em>' containment reference.
-   * @see #getParameter()
+   * @param value the new value of the '<em>Constraint</em>' containment reference.
+   * @see #getConstraint()
    * @generated
    */
-  void setParameter(ParamQuery value);
+  void setConstraint(PropertyConstraintExpression value);
 
 } // Node

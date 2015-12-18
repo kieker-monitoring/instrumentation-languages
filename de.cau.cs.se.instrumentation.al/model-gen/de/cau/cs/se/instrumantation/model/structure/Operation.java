@@ -6,23 +6,23 @@ import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Method</b></em>'.
+ * A representation of the model object '<em><b>Operation</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
- * <ul>
- *   <li>{@link de.cau.cs.se.instrumantation.model.structure.Method#getReturnType <em>Return Type</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumantation.model.structure.Method#getParameters <em>Parameters</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumantation.model.structure.Method#getModifier <em>Modifier</em>}</li>
- * </ul>
  * </p>
+ * <ul>
+ *   <li>{@link de.cau.cs.se.instrumantation.model.structure.Operation#getReturnType <em>Return Type</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumantation.model.structure.Operation#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumantation.model.structure.Operation#getModifier <em>Modifier</em>}</li>
+ * </ul>
  *
- * @see de.cau.cs.se.instrumantation.model.structure.StructurePackage#getMethod()
+ * @see de.cau.cs.se.instrumantation.model.structure.StructurePackage#getOperation()
  * @model
  * @generated
  */
-public interface Method extends NamedElement, Traceability {
+public interface Operation extends NamedElement, Traceability {
 	/**
 	 * Returns the value of the '<em><b>Return Type</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -33,14 +33,14 @@ public interface Method extends NamedElement, Traceability {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Return Type</em>' reference.
 	 * @see #setReturnType(TypeReference)
-	 * @see de.cau.cs.se.instrumantation.model.structure.StructurePackage#getMethod_ReturnType()
+	 * @see de.cau.cs.se.instrumantation.model.structure.StructurePackage#getOperation_ReturnType()
 	 * @model required="true"
 	 * @generated
 	 */
 	TypeReference getReturnType();
 
 	/**
-	 * Sets the value of the '{@link de.cau.cs.se.instrumantation.model.structure.Method#getReturnType <em>Return Type</em>}' reference.
+	 * Sets the value of the '{@link de.cau.cs.se.instrumantation.model.structure.Operation#getReturnType <em>Return Type</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Return Type</em>' reference.
@@ -59,7 +59,7 @@ public interface Method extends NamedElement, Traceability {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Parameters</em>' containment reference list.
-	 * @see de.cau.cs.se.instrumantation.model.structure.StructurePackage#getMethod_Parameters()
+	 * @see de.cau.cs.se.instrumantation.model.structure.StructurePackage#getOperation_Parameters()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -74,21 +74,21 @@ public interface Method extends NamedElement, Traceability {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Modifier</em>' reference.
-	 * @see #setModifier(MethodModifier)
-	 * @see de.cau.cs.se.instrumantation.model.structure.StructurePackage#getMethod_Modifier()
+	 * @see #setModifier(OperationModifier)
+	 * @see de.cau.cs.se.instrumantation.model.structure.StructurePackage#getOperation_Modifier()
 	 * @model required="true"
 	 * @generated
 	 */
-	MethodModifier getModifier();
+	OperationModifier getModifier();
 
 	/**
-	 * Sets the value of the '{@link de.cau.cs.se.instrumantation.model.structure.Method#getModifier <em>Modifier</em>}' reference.
+	 * Sets the value of the '{@link de.cau.cs.se.instrumantation.model.structure.Operation#getModifier <em>Modifier</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Modifier</em>' reference.
 	 * @see #getModifier()
 	 * @generated
 	 */
-	void setModifier(MethodModifier value);
+	void setModifier(OperationModifier value);
 
-} // Method
+} // Operation

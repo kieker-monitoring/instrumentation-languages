@@ -18,11 +18,11 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumantation.model.structure.impl.TypeReferenceImpl#getPredecessor <em>Predecessor</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumantation.model.structure.impl.TypeReferenceImpl#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

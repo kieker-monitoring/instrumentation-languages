@@ -49,13 +49,13 @@ public interface StructureFactory extends EFactory {
 	Container createContainer();
 
 	/**
-	 * Returns a new object of class '<em>Method</em>'.
+	 * Returns a new object of class '<em>Operation</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Method</em>'.
+	 * @return a new object of class '<em>Operation</em>'.
 	 * @generated
 	 */
-	Method createMethod();
+	Operation createOperation();
 
 	/**
 	 * Returns a new object of class '<em>Parameter Modifier</em>'.
@@ -85,22 +85,22 @@ public interface StructureFactory extends EFactory {
 	Parameter createParameter();
 
 	/**
-	 * Returns a new object of class '<em>Model</em>'.
+	 * Returns a new object of class '<em>Mapping Model</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Model</em>'.
+	 * @return a new object of class '<em>Mapping Model</em>'.
 	 * @generated
 	 */
-	Model createModel();
+	MappingModel createMappingModel();
 
 	/**
-	 * Returns a new object of class '<em>Method Modifier</em>'.
+	 * Returns a new object of class '<em>Operation Modifier</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Method Modifier</em>'.
+	 * @return a new object of class '<em>Operation Modifier</em>'.
 	 * @generated
 	 */
-	MethodModifier createMethodModifier();
+	OperationModifier createOperationModifier();
 
 	/**
 	 * Returns a new object of class '<em>Container Modifier</em>'.
@@ -110,6 +110,15 @@ public interface StructureFactory extends EFactory {
 	 * @generated
 	 */
 	ContainerModifier createContainerModifier();
+
+	/**
+	 * Returns a new object of class '<em>Attribute</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Attribute</em>'.
+	 * @generated
+	 */
+	Attribute createAttribute();
 
 	/**
 	 * Returns the package supported by this factory.

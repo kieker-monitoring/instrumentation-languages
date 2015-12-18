@@ -53,7 +53,7 @@ public interface UtilizeAdvice extends EObject
 
   /**
    * Returns the value of the '<em><b>Parameter Assignments</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.cs.se.instrumentation.al.aspectLang.ParamExpression}.
+   * The list contents are of type {@link de.cau.cs.se.instrumentation.al.aspectLang.Value}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Parameter Assignments</em>' containment reference list isn't clear,
@@ -65,6 +65,6 @@ public interface UtilizeAdvice extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<ParamExpression> getParameterAssignments();
+  EList<Value> getParameterAssignments();
 
 } // UtilizeAdvice

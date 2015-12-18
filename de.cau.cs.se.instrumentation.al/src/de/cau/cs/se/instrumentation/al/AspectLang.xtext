@@ -6,7 +6,6 @@ generate aspectLang "http://www.cau.de/cs/se/instrumentation/al/AspectLang"
 
 //import "http://kieler.cs.cau.de/annotations" as annotations
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
-// TODO fix this, in a stable setup, the nsURI should work
 import "http://www.cau.de/cs/se/instrumentation/rl/RecordLang" as irl
 // import "platform:/resource/de.cau.cs.se.instrumentation.rl/model/generated/RecordLang.ecore" as irl
 import "http://modelstructure.se.cs.cau.de/structure" as structure
@@ -26,16 +25,6 @@ ApplicationModel:
 	'use' handler=ID 'on' name=ID model=STRING 
 ;
 
-QualifiedName:
-  ID (=>'.' ID)*;
-
-QualifiedNameWithWildcard:
-	QualifiedName ('.' '*')?
-;
-
-// define subgraph-pattern to locate structures in models
-// define selector for reference destination
-
 Aspect:
 	'aspect' pointcut=[Pointcut|QualifiedName] ':' advices+=UtilizeAdvice (',' advices+=UtilizeAdvice)* 
 ;
@@ -45,43 +34,77 @@ UtilizeAdvice:
 	('(' (parameterAssignments+=Value (',' parameterAssignments+=Value)*)? ')')?
 ;
 
+/* ------------------------------- */
+/* advice                          */
+
 Advice:
-	'advice' name=ID ('(' (parameterDeclarations+=ParameterDeclaration (',' parameterDeclarations+=ParameterDeclaration)*)? ')')? '{'
+	'advice' name=ID ('(' (parameterDeclarations+=AdviceParameterDeclaration (',' parameterDeclarations+=AdviceParameterDeclaration)*)? ')')? '{'
 		collectors+=Collector*
 	'}'
 ;
 
-ParameterDeclaration:
+AdviceParameterDeclaration:
 	type='type' name=ID 
 ;
+
+Collector:
+	insertionPoint=InsertionPoint events+=Event+
+;
+
+Event:
+	type=[irl::RecordType|QualifiedName] '(' (initializations+=Value (',' initializations+=Value)*)? ')'
+;
+
+enum InsertionPoint: 
+	BEFORE = 'before' |
+	AFTER = 'after'
+;
+
+Value:
+	Literal | ReferenceValue
+;
+
+ReferenceValue:
+	(query=LocationQuery)? property=Property	
+;
+
+Property:
+	InternalFunctionProperty | ReflectionProperty
+;
+
+InternalFunctionProperty:
+	function=InternalFunction
+;
+
+enum InternalFunction:
+	TIME = 'time' |
+	TRACE_ID = 'traceId' |
+	ORDER_INDEX = 'orderIndex'
+;
+
+ReflectionProperty:
+	'$' function=ReflectionFunction
+;
+
+enum ReflectionFunction:
+	NAME = 'name' |
+	SIGNATURE = 'signature' |
+	CLASS ='classname' |
+	RETURN_TYPE = 'return-type'
+;
+
+/* ------------------------------- */
+/* pointcut                        */
 
 Pointcut:
 	(annotation=Annotation)?
 	'pointcut' name=ID
 	'class' location=LocationQuery 
-	('operation' method=MethodQuery)?
+	('operation' operation=OperationQuery)?
 ;
 
 Annotation:
 	'@' name=ID value=STRING  
-;
-
-MethodQuery: {MethodQuery}
-	modifier=[structure::MethodModifier|ID]?
-	returnType=[structure::Type|ID]? 
-	(
-		(
-			methodReference=[structure::Method|ID] 
-			('(' parameterQueries+=ParameterQuery (',' parameterQueries+=ParameterQuery)* ')')? 
-		) | 
-		'*'
-	)
-;
-
-ParameterQuery:
-	modifier=[structure::ParameterModifier|ID]?
-	type=[structure::Type|ID]
-	parameter=[structure::Parameter|ID]?
 ;
 
 LocationQuery:
@@ -97,84 +120,26 @@ enum QueryModifier:
 	EXCLUDE = 'exclude'
 ;
 
+OperationQuery: {OperationQuery}
+	modifier=[structure::OperationModifier|ID]?
+	returnType=[structure::Type|ID]? 
+	(
+		(
+			operationReference=[structure::Operation|ID] 
+			('(' parameterQueries+=ParameterQuery (',' parameterQueries+=ParameterQuery)* ')')? 
+		) | 
+		'*'
+	)
+;
+
+ParameterQuery: {ParameterQuery}
+	modifier=[structure::ParameterModifier|ID]?
+	(type=[structure::Type|ID]| '*')
+	parameter=[structure::Parameter|ID]?
+;
+
 Node:
-	(SubPathNode | WildcardNode | ParentNode | ContainerNode) (parameter=ParamQuery)?  
-;
-
-ParamQuery: 
-	'[' queries+=ParamOperator+ ']'
-;
-
-ParamOperator returns ParamExpression: 
-	ParamCompare ({ParamExpression.left=current} logic=LogicOperator right=ParamCompare)?
-;
-
-enum LogicOperator:
-	AND = '&&' |
-	OR = '||'
-;
-
-ParamCompare returns ParamExpression:
-	Value ({ParamExpression.left=current} operator=LogicOperator right=Value)?
-;
-
-Value returns ParamExpression:
-	StringValue | IntValue | FloatValue | ReferenceValue
-;
-
-FloatValue:
-	value=FLOAT
-;
-
-IntValue:
-	value=INT
-;
-
-StringValue:
-	value=STRING
-;
-
-ReferenceValue:
-	(query=LocationQuery)? parameter=Parameter
-;
-
-Parameter:
-	RuntimeProperty | ReflectionProperty | InternalFunctionProperty
-;
-
-InternalFunctionProperty:
-	function=InternalFunction
-;
-
-enum InternalFunction:
-	TIME = 'time' |
-	TRACE_ID = 'traceId' |
-	ORDER_INDEX = 'orderIndex'
-;
-
-RuntimeProperty:
-	'#' reference=ID
-;
-
-ReflectionProperty:
-	'$' function=ReflectionFunction
-;
-
-enum ReflectionFunction:
-	NAME = 'name' |
-	SIGNATURE = 'signature' |
-	CLASS ='classname' |
-	RETURN_TYPE = 'return-type'
-;
-
-enum Operator:
-	EQ = '=' |
-	LIKE = '~' |
-	NE = '!=' |
-	GR = '>' |
-	LW = '<' |
-	GE = '>=' |
-	LE = '<='
+	(SubPathNode | WildcardNode | ParentNode | ContainerNode) ('[' constraint=PropertyConstraint ']')?  
 ;
 
 ContainerNode:
@@ -190,20 +155,75 @@ SubPathNode: {SubPathNode}
 ;
 
 ParentNode: {ParentNode}
-	'<<'
+	'up'
 ;
 
-Collector:
-	insertionPoint=InsertionPoint events+=Event+
+PropertyConstraint returns PropertyConstraintExpression: 
+	PropertyConstraintCompare ({PropertyConstraintExpression.left=current} logic=LogicOperator right=PropertyConstraintCompare)?
 ;
 
-Event:
-	type=[irl::RecordType|QualifiedName] '(' (initializations+=Value (',' initializations+=Value)*)? ')'
+enum LogicOperator:
+	AND = '&&' |
+	OR = '||'
 ;
 
-enum InsertionPoint: 
-	BEFORE = 'before' |
-	AFTER = 'after'
+PropertyConstraintCompare returns PropertyConstraintExpression:
+	ConstraintElement ({PropertyConstraintExpression.left=current} compare=CompareOperator right=ConstraintElement)?
+;
+
+enum CompareOperator:
+	EQ = '=' |
+	LIKE = '~' |
+	NE = '!=' |
+	GR = '>' |
+	LW = '<' |
+	GE = '>=' |
+	LE = '<='
+;
+
+ConstraintElement:
+	Literal | LocalQuery
+;
+
+LocalQuery:
+	(locationQuery=LocationQuery)? (property=ModelProperty | typeof=Typeof)
+;
+
+ModelProperty:
+	 '#' reference=[structure::Feature|ID]
+;
+
+Typeof:
+	'istypeof' '(' reference=[structure::Type|ID] ')'
+;
+
+/* ------------------------------- */
+/* literals                        */
+
+Literal:
+	StringLiteral | IntLiteral | FloatLiteral
+;
+
+FloatLiteral:
+	value=FLOAT
+;
+
+IntLiteral:
+	value=INT
+;
+
+StringLiteral:
+	value=STRING
+;
+
+/* ------------------------------- */
+/* Terminals and literal rules     */
+
+QualifiedName:
+  ID (=>'.' ID)*;
+
+QualifiedNameWithWildcard:
+	QualifiedName ('.' '*')?
 ;
 
 // Float Terminal    

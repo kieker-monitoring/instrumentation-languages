@@ -4,8 +4,8 @@ package de.cau.cs.se.instrumentation.al.aspectLang.impl;
 
 import de.cau.cs.se.instrumentation.al.aspectLang.Advice;
 import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
-import de.cau.cs.se.instrumentation.al.aspectLang.ParamExpression;
 import de.cau.cs.se.instrumentation.al.aspectLang.UtilizeAdvice;
+import de.cau.cs.se.instrumentation.al.aspectLang.Value;
 
 import java.util.Collection;
 
@@ -57,7 +57,7 @@ public class UtilizeAdviceImpl extends MinimalEObjectImpl.Container implements U
    * @generated
    * @ordered
    */
-  protected EList<ParamExpression> parameterAssignments;
+  protected EList<Value> parameterAssignments;
 
   /**
    * <!-- begin-user-doc -->
@@ -128,11 +128,11 @@ public class UtilizeAdviceImpl extends MinimalEObjectImpl.Container implements U
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<ParamExpression> getParameterAssignments()
+  public EList<Value> getParameterAssignments()
   {
     if (parameterAssignments == null)
     {
-      parameterAssignments = new EObjectContainmentEList<ParamExpression>(ParamExpression.class, this, AspectLangPackage.UTILIZE_ADVICE__PARAMETER_ASSIGNMENTS);
+      parameterAssignments = new EObjectContainmentEList<Value>(Value.class, this, AspectLangPackage.UTILIZE_ADVICE__PARAMETER_ASSIGNMENTS);
     }
     return parameterAssignments;
   }
@@ -188,7 +188,7 @@ public class UtilizeAdviceImpl extends MinimalEObjectImpl.Container implements U
         return;
       case AspectLangPackage.UTILIZE_ADVICE__PARAMETER_ASSIGNMENTS:
         getParameterAssignments().clear();
-        getParameterAssignments().addAll((Collection<? extends ParamExpression>)newValue);
+        getParameterAssignments().addAll((Collection<? extends Value>)newValue);
         return;
     }
     super.eSet(featureID, newValue);

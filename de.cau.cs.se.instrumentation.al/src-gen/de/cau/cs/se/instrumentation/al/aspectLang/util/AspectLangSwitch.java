@@ -114,10 +114,62 @@ public class AspectLangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case AspectLangPackage.PARAMETER_DECLARATION:
+      case AspectLangPackage.ADVICE_PARAMETER_DECLARATION:
       {
-        ParameterDeclaration parameterDeclaration = (ParameterDeclaration)theEObject;
-        T result = caseParameterDeclaration(parameterDeclaration);
+        AdviceParameterDeclaration adviceParameterDeclaration = (AdviceParameterDeclaration)theEObject;
+        T result = caseAdviceParameterDeclaration(adviceParameterDeclaration);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AspectLangPackage.COLLECTOR:
+      {
+        Collector collector = (Collector)theEObject;
+        T result = caseCollector(collector);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AspectLangPackage.EVENT:
+      {
+        Event event = (Event)theEObject;
+        T result = caseEvent(event);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AspectLangPackage.VALUE:
+      {
+        Value value = (Value)theEObject;
+        T result = caseValue(value);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AspectLangPackage.REFERENCE_VALUE:
+      {
+        ReferenceValue referenceValue = (ReferenceValue)theEObject;
+        T result = caseReferenceValue(referenceValue);
+        if (result == null) result = caseValue(referenceValue);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AspectLangPackage.PROPERTY:
+      {
+        Property property = (Property)theEObject;
+        T result = caseProperty(property);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AspectLangPackage.INTERNAL_FUNCTION_PROPERTY:
+      {
+        InternalFunctionProperty internalFunctionProperty = (InternalFunctionProperty)theEObject;
+        T result = caseInternalFunctionProperty(internalFunctionProperty);
+        if (result == null) result = caseProperty(internalFunctionProperty);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AspectLangPackage.REFLECTION_PROPERTY:
+      {
+        ReflectionProperty reflectionProperty = (ReflectionProperty)theEObject;
+        T result = caseReflectionProperty(reflectionProperty);
+        if (result == null) result = caseProperty(reflectionProperty);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -135,20 +187,6 @@ public class AspectLangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case AspectLangPackage.METHOD_QUERY:
-      {
-        MethodQuery methodQuery = (MethodQuery)theEObject;
-        T result = caseMethodQuery(methodQuery);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case AspectLangPackage.PARAMETER_QUERY:
-      {
-        ParameterQuery parameterQuery = (ParameterQuery)theEObject;
-        T result = caseParameterQuery(parameterQuery);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case AspectLangPackage.LOCATION_QUERY:
       {
         LocationQuery locationQuery = (LocationQuery)theEObject;
@@ -163,87 +201,24 @@ public class AspectLangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case AspectLangPackage.OPERATION_QUERY:
+      {
+        OperationQuery operationQuery = (OperationQuery)theEObject;
+        T result = caseOperationQuery(operationQuery);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AspectLangPackage.PARAMETER_QUERY:
+      {
+        ParameterQuery parameterQuery = (ParameterQuery)theEObject;
+        T result = caseParameterQuery(parameterQuery);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case AspectLangPackage.NODE:
       {
         Node node = (Node)theEObject;
         T result = caseNode(node);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case AspectLangPackage.PARAM_QUERY:
-      {
-        ParamQuery paramQuery = (ParamQuery)theEObject;
-        T result = caseParamQuery(paramQuery);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case AspectLangPackage.PARAM_EXPRESSION:
-      {
-        ParamExpression paramExpression = (ParamExpression)theEObject;
-        T result = caseParamExpression(paramExpression);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case AspectLangPackage.FLOAT_VALUE:
-      {
-        FloatValue floatValue = (FloatValue)theEObject;
-        T result = caseFloatValue(floatValue);
-        if (result == null) result = caseParamExpression(floatValue);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case AspectLangPackage.INT_VALUE:
-      {
-        IntValue intValue = (IntValue)theEObject;
-        T result = caseIntValue(intValue);
-        if (result == null) result = caseParamExpression(intValue);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case AspectLangPackage.STRING_VALUE:
-      {
-        StringValue stringValue = (StringValue)theEObject;
-        T result = caseStringValue(stringValue);
-        if (result == null) result = caseParamExpression(stringValue);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case AspectLangPackage.REFERENCE_VALUE:
-      {
-        ReferenceValue referenceValue = (ReferenceValue)theEObject;
-        T result = caseReferenceValue(referenceValue);
-        if (result == null) result = caseParamExpression(referenceValue);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case AspectLangPackage.PARAMETER:
-      {
-        Parameter parameter = (Parameter)theEObject;
-        T result = caseParameter(parameter);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case AspectLangPackage.INTERNAL_FUNCTION_PROPERTY:
-      {
-        InternalFunctionProperty internalFunctionProperty = (InternalFunctionProperty)theEObject;
-        T result = caseInternalFunctionProperty(internalFunctionProperty);
-        if (result == null) result = caseParameter(internalFunctionProperty);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case AspectLangPackage.RUNTIME_PROPERTY:
-      {
-        RuntimeProperty runtimeProperty = (RuntimeProperty)theEObject;
-        T result = caseRuntimeProperty(runtimeProperty);
-        if (result == null) result = caseParameter(runtimeProperty);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case AspectLangPackage.REFLECTION_PROPERTY:
-      {
-        ReflectionProperty reflectionProperty = (ReflectionProperty)theEObject;
-        T result = caseReflectionProperty(reflectionProperty);
-        if (result == null) result = caseParameter(reflectionProperty);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -279,17 +254,84 @@ public class AspectLangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case AspectLangPackage.COLLECTOR:
+      case AspectLangPackage.PROPERTY_CONSTRAINT_EXPRESSION:
       {
-        Collector collector = (Collector)theEObject;
-        T result = caseCollector(collector);
+        PropertyConstraintExpression propertyConstraintExpression = (PropertyConstraintExpression)theEObject;
+        T result = casePropertyConstraintExpression(propertyConstraintExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case AspectLangPackage.EVENT:
+      case AspectLangPackage.CONSTRAINT_ELEMENT:
       {
-        Event event = (Event)theEObject;
-        T result = caseEvent(event);
+        ConstraintElement constraintElement = (ConstraintElement)theEObject;
+        T result = caseConstraintElement(constraintElement);
+        if (result == null) result = casePropertyConstraintExpression(constraintElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AspectLangPackage.LOCAL_QUERY:
+      {
+        LocalQuery localQuery = (LocalQuery)theEObject;
+        T result = caseLocalQuery(localQuery);
+        if (result == null) result = caseConstraintElement(localQuery);
+        if (result == null) result = casePropertyConstraintExpression(localQuery);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AspectLangPackage.MODEL_PROPERTY:
+      {
+        ModelProperty modelProperty = (ModelProperty)theEObject;
+        T result = caseModelProperty(modelProperty);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AspectLangPackage.TYPEOF:
+      {
+        Typeof typeof = (Typeof)theEObject;
+        T result = caseTypeof(typeof);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AspectLangPackage.LITERAL:
+      {
+        Literal literal = (Literal)theEObject;
+        T result = caseLiteral(literal);
+        if (result == null) result = caseValue(literal);
+        if (result == null) result = caseConstraintElement(literal);
+        if (result == null) result = casePropertyConstraintExpression(literal);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AspectLangPackage.FLOAT_LITERAL:
+      {
+        FloatLiteral floatLiteral = (FloatLiteral)theEObject;
+        T result = caseFloatLiteral(floatLiteral);
+        if (result == null) result = caseLiteral(floatLiteral);
+        if (result == null) result = caseValue(floatLiteral);
+        if (result == null) result = caseConstraintElement(floatLiteral);
+        if (result == null) result = casePropertyConstraintExpression(floatLiteral);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AspectLangPackage.INT_LITERAL:
+      {
+        IntLiteral intLiteral = (IntLiteral)theEObject;
+        T result = caseIntLiteral(intLiteral);
+        if (result == null) result = caseLiteral(intLiteral);
+        if (result == null) result = caseValue(intLiteral);
+        if (result == null) result = caseConstraintElement(intLiteral);
+        if (result == null) result = casePropertyConstraintExpression(intLiteral);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AspectLangPackage.STRING_LITERAL:
+      {
+        StringLiteral stringLiteral = (StringLiteral)theEObject;
+        T result = caseStringLiteral(stringLiteral);
+        if (result == null) result = caseLiteral(stringLiteral);
+        if (result == null) result = caseValue(stringLiteral);
+        if (result == null) result = caseConstraintElement(stringLiteral);
+        if (result == null) result = casePropertyConstraintExpression(stringLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -394,17 +436,129 @@ public class AspectLangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Parameter Declaration</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Advice Parameter Declaration</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Parameter Declaration</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Advice Parameter Declaration</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseParameterDeclaration(ParameterDeclaration object)
+  public T caseAdviceParameterDeclaration(AdviceParameterDeclaration object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Collector</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Collector</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCollector(Collector object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Event</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Event</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEvent(Event object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Value</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Value</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseValue(Value object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Reference Value</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Reference Value</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseReferenceValue(ReferenceValue object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Property</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Property</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseProperty(Property object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Internal Function Property</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Internal Function Property</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseInternalFunctionProperty(InternalFunctionProperty object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Reflection Property</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Reflection Property</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseReflectionProperty(ReflectionProperty object)
   {
     return null;
   }
@@ -442,38 +596,6 @@ public class AspectLangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Method Query</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Method Query</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseMethodQuery(MethodQuery object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Parameter Query</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Parameter Query</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseParameterQuery(ParameterQuery object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Location Query</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -506,6 +628,38 @@ public class AspectLangSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Operation Query</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Operation Query</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseOperationQuery(OperationQuery object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Parameter Query</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Parameter Query</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseParameterQuery(ParameterQuery object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Node</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -517,166 +671,6 @@ public class AspectLangSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseNode(Node object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Param Query</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Param Query</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseParamQuery(ParamQuery object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Param Expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Param Expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseParamExpression(ParamExpression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Float Value</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Float Value</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseFloatValue(FloatValue object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Int Value</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Int Value</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseIntValue(IntValue object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>String Value</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>String Value</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseStringValue(StringValue object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Reference Value</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Reference Value</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseReferenceValue(ReferenceValue object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Parameter</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Parameter</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseParameter(Parameter object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Internal Function Property</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Internal Function Property</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseInternalFunctionProperty(InternalFunctionProperty object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Runtime Property</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Runtime Property</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseRuntimeProperty(RuntimeProperty object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Reflection Property</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Reflection Property</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseReflectionProperty(ReflectionProperty object)
   {
     return null;
   }
@@ -746,33 +740,145 @@ public class AspectLangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Collector</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Property Constraint Expression</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Collector</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Property Constraint Expression</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseCollector(Collector object)
+  public T casePropertyConstraintExpression(PropertyConstraintExpression object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Event</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Constraint Element</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Event</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Constraint Element</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseEvent(Event object)
+  public T caseConstraintElement(ConstraintElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Local Query</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Local Query</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLocalQuery(LocalQuery object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Model Property</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Model Property</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseModelProperty(ModelProperty object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Typeof</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Typeof</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTypeof(Typeof object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLiteral(Literal object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Float Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Float Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFloatLiteral(FloatLiteral object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Int Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Int Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseIntLiteral(IntLiteral object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>String Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>String Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseStringLiteral(StringLiteral object)
   {
     return null;
   }

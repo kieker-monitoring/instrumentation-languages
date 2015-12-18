@@ -13,14 +13,14 @@ package de.cau.cs.se.instrumentation.al.aspectLang;
  * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.ReferenceValue#getQuery <em>Query</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.ReferenceValue#getParameter <em>Parameter</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.ReferenceValue#getProperty <em>Property</em>}</li>
  * </ul>
  *
  * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getReferenceValue()
  * @model
  * @generated
  */
-public interface ReferenceValue extends ParamExpression
+public interface ReferenceValue extends Value
 {
   /**
    * Returns the value of the '<em><b>Query</b></em>' containment reference.
@@ -49,29 +49,29 @@ public interface ReferenceValue extends ParamExpression
   void setQuery(LocationQuery value);
 
   /**
-   * Returns the value of the '<em><b>Parameter</b></em>' containment reference.
+   * Returns the value of the '<em><b>Property</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Parameter</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Property</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Parameter</em>' containment reference.
-   * @see #setParameter(Parameter)
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getReferenceValue_Parameter()
+   * @return the value of the '<em>Property</em>' containment reference.
+   * @see #setProperty(Property)
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getReferenceValue_Property()
    * @model containment="true"
    * @generated
    */
-  Parameter getParameter();
+  Property getProperty();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.ReferenceValue#getParameter <em>Parameter</em>}' containment reference.
+   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.ReferenceValue#getProperty <em>Property</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Parameter</em>' containment reference.
-   * @see #getParameter()
+   * @param value the new value of the '<em>Property</em>' containment reference.
+   * @see #getProperty()
    * @generated
    */
-  void setParameter(Parameter value);
+  void setProperty(Property value);
 
 } // ReferenceValue

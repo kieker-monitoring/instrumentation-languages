@@ -4,7 +4,7 @@ package de.cau.cs.se.instrumentation.al.aspectLang.impl;
 
 import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
 import de.cau.cs.se.instrumentation.al.aspectLang.Node;
-import de.cau.cs.se.instrumentation.al.aspectLang.ParamQuery;
+import de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraintExpression;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.NodeImpl#getParameter <em>Parameter</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.NodeImpl#getConstraint <em>Constraint</em>}</li>
  * </ul>
  *
  * @generated
@@ -31,14 +31,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class NodeImpl extends MinimalEObjectImpl.Container implements Node
 {
   /**
-   * The cached value of the '{@link #getParameter() <em>Parameter</em>}' containment reference.
+   * The cached value of the '{@link #getConstraint() <em>Constraint</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getParameter()
+   * @see #getConstraint()
    * @generated
    * @ordered
    */
-  protected ParamQuery parameter;
+  protected PropertyConstraintExpression constraint;
 
   /**
    * <!-- begin-user-doc -->
@@ -66,9 +66,9 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node
    * <!-- end-user-doc -->
    * @generated
    */
-  public ParamQuery getParameter()
+  public PropertyConstraintExpression getConstraint()
   {
-    return parameter;
+    return constraint;
   }
 
   /**
@@ -76,13 +76,13 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetParameter(ParamQuery newParameter, NotificationChain msgs)
+  public NotificationChain basicSetConstraint(PropertyConstraintExpression newConstraint, NotificationChain msgs)
   {
-    ParamQuery oldParameter = parameter;
-    parameter = newParameter;
+    PropertyConstraintExpression oldConstraint = constraint;
+    constraint = newConstraint;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AspectLangPackage.NODE__PARAMETER, oldParameter, newParameter);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AspectLangPackage.NODE__CONSTRAINT, oldConstraint, newConstraint);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -93,20 +93,20 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setParameter(ParamQuery newParameter)
+  public void setConstraint(PropertyConstraintExpression newConstraint)
   {
-    if (newParameter != parameter)
+    if (newConstraint != constraint)
     {
       NotificationChain msgs = null;
-      if (parameter != null)
-        msgs = ((InternalEObject)parameter).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AspectLangPackage.NODE__PARAMETER, null, msgs);
-      if (newParameter != null)
-        msgs = ((InternalEObject)newParameter).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AspectLangPackage.NODE__PARAMETER, null, msgs);
-      msgs = basicSetParameter(newParameter, msgs);
+      if (constraint != null)
+        msgs = ((InternalEObject)constraint).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AspectLangPackage.NODE__CONSTRAINT, null, msgs);
+      if (newConstraint != null)
+        msgs = ((InternalEObject)newConstraint).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AspectLangPackage.NODE__CONSTRAINT, null, msgs);
+      msgs = basicSetConstraint(newConstraint, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.NODE__PARAMETER, newParameter, newParameter));
+      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.NODE__CONSTRAINT, newConstraint, newConstraint));
   }
 
   /**
@@ -119,8 +119,8 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node
   {
     switch (featureID)
     {
-      case AspectLangPackage.NODE__PARAMETER:
-        return basicSetParameter(null, msgs);
+      case AspectLangPackage.NODE__CONSTRAINT:
+        return basicSetConstraint(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -135,8 +135,8 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node
   {
     switch (featureID)
     {
-      case AspectLangPackage.NODE__PARAMETER:
-        return getParameter();
+      case AspectLangPackage.NODE__CONSTRAINT:
+        return getConstraint();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -151,8 +151,8 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node
   {
     switch (featureID)
     {
-      case AspectLangPackage.NODE__PARAMETER:
-        setParameter((ParamQuery)newValue);
+      case AspectLangPackage.NODE__CONSTRAINT:
+        setConstraint((PropertyConstraintExpression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -168,8 +168,8 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node
   {
     switch (featureID)
     {
-      case AspectLangPackage.NODE__PARAMETER:
-        setParameter((ParamQuery)null);
+      case AspectLangPackage.NODE__CONSTRAINT:
+        setConstraint((PropertyConstraintExpression)null);
         return;
     }
     super.eUnset(featureID);
@@ -185,8 +185,8 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node
   {
     switch (featureID)
     {
-      case AspectLangPackage.NODE__PARAMETER:
-        return parameter != null;
+      case AspectLangPackage.NODE__CONSTRAINT:
+        return constraint != null;
     }
     return super.eIsSet(featureID);
   }

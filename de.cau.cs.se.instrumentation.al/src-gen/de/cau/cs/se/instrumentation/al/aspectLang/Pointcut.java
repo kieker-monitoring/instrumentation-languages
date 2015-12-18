@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Pointcut#getAnnotation <em>Annotation</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Pointcut#getName <em>Name</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Pointcut#getLocation <em>Location</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Pointcut#getMethod <em>Method</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Pointcut#getOperation <em>Operation</em>}</li>
  * </ul>
  *
  * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getPointcut()
@@ -104,29 +104,29 @@ public interface Pointcut extends EObject
   void setLocation(LocationQuery value);
 
   /**
-   * Returns the value of the '<em><b>Method</b></em>' containment reference.
+   * Returns the value of the '<em><b>Operation</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Method</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Operation</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Method</em>' containment reference.
-   * @see #setMethod(MethodQuery)
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getPointcut_Method()
+   * @return the value of the '<em>Operation</em>' containment reference.
+   * @see #setOperation(OperationQuery)
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getPointcut_Operation()
    * @model containment="true"
    * @generated
    */
-  MethodQuery getMethod();
+  OperationQuery getOperation();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.Pointcut#getMethod <em>Method</em>}' containment reference.
+   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.Pointcut#getOperation <em>Operation</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Method</em>' containment reference.
-   * @see #getMethod()
+   * @param value the new value of the '<em>Operation</em>' containment reference.
+   * @see #getOperation()
    * @generated
    */
-  void setMethod(MethodQuery value);
+  void setOperation(OperationQuery value);
 
 } // Pointcut

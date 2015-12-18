@@ -18,14 +18,14 @@ package de.cau.cs.se.instrumentation.al.scoping;
 import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import de.cau.cs.se.instrumantation.model.structure.Container;
-import de.cau.cs.se.instrumantation.model.structure.Method;
 import de.cau.cs.se.instrumantation.model.structure.NamedElement;
+import de.cau.cs.se.instrumantation.model.structure.Operation;
 import de.cau.cs.se.instrumantation.model.structure.Parameter;
 import de.cau.cs.se.instrumantation.model.structure.Type;
 import de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode;
 import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery;
-import de.cau.cs.se.instrumentation.al.aspectLang.MethodQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.Node;
+import de.cau.cs.se.instrumentation.al.aspectLang.OperationQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut;
 import de.cau.cs.se.instrumentation.al.modelhandling.ForeignModelTypeProviderFactory;
@@ -87,18 +87,18 @@ public class AspectLangScopeProvider extends AbstractDeclarativeScopeProvider {
     final Node node = this.leaveNode(_location);
     if ((node instanceof ContainerNode)) {
       Container _container = ((ContainerNode) node).getContainer();
-      EList<Method> _methods = _container.getMethods();
-      return Scopes.scopeFor(_methods);
+      EList<Operation> _operations = _container.getOperations();
+      return Scopes.scopeFor(_operations);
     } else {
       return IScope.NULLSCOPE;
     }
   }
   
-  public IScope scope_ParameterPattern_modifier(final ParameterQuery context, final EReference reference) {
+  public IScope scope_ParameterQuery_modifier(final ParameterQuery context, final EReference reference) {
     return IScope.NULLSCOPE;
   }
   
-  public IScope scope_ParameterPattern_type(final ParameterQuery context, final EReference reference) {
+  public IScope scope_ParameterQuery_type(final ParameterQuery context, final EReference reference) {
     Resource _eResource = context.eResource();
     ResourceSet _resourceSet = _eResource.getResourceSet();
     final IForeignModelTypeProvider typeProvider = this.typeProviderFactory.getTypeProvider(_resourceSet, null);
@@ -106,10 +106,10 @@ public class AspectLangScopeProvider extends AbstractDeclarativeScopeProvider {
     return Scopes.scopeFor(_allDataTyes);
   }
   
-  public IScope scope_ParameterPattern_parameter(final ParameterQuery context, final EReference reference) {
+  public IScope scope_ParameterQuery_parameter(final ParameterQuery context, final EReference reference) {
     EObject _eContainer = context.eContainer();
-    final Method method = ((MethodQuery) _eContainer).getMethodReference();
-    EList<Parameter> _parameters = method.getParameters();
+    final Operation operation = ((OperationQuery) _eContainer).getOperationReference();
+    EList<Parameter> _parameters = operation.getParameters();
     return Scopes.scopeFor(_parameters);
   }
   

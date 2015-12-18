@@ -10,11 +10,11 @@ package de.cau.cs.se.instrumantation.model.structure;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumantation.model.structure.Parameter#getModifier <em>Modifier</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumantation.model.structure.Parameter#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.cau.cs.se.instrumantation.model.structure.StructurePackage#getParameter()
  * @model

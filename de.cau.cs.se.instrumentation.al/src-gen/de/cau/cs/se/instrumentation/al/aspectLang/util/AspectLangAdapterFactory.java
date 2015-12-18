@@ -105,9 +105,44 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
         return createAdviceAdapter();
       }
       @Override
-      public Adapter caseParameterDeclaration(ParameterDeclaration object)
+      public Adapter caseAdviceParameterDeclaration(AdviceParameterDeclaration object)
       {
-        return createParameterDeclarationAdapter();
+        return createAdviceParameterDeclarationAdapter();
+      }
+      @Override
+      public Adapter caseCollector(Collector object)
+      {
+        return createCollectorAdapter();
+      }
+      @Override
+      public Adapter caseEvent(Event object)
+      {
+        return createEventAdapter();
+      }
+      @Override
+      public Adapter caseValue(Value object)
+      {
+        return createValueAdapter();
+      }
+      @Override
+      public Adapter caseReferenceValue(ReferenceValue object)
+      {
+        return createReferenceValueAdapter();
+      }
+      @Override
+      public Adapter caseProperty(Property object)
+      {
+        return createPropertyAdapter();
+      }
+      @Override
+      public Adapter caseInternalFunctionProperty(InternalFunctionProperty object)
+      {
+        return createInternalFunctionPropertyAdapter();
+      }
+      @Override
+      public Adapter caseReflectionProperty(ReflectionProperty object)
+      {
+        return createReflectionPropertyAdapter();
       }
       @Override
       public Adapter casePointcut(Pointcut object)
@@ -120,16 +155,6 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
         return createAnnotationAdapter();
       }
       @Override
-      public Adapter caseMethodQuery(MethodQuery object)
-      {
-        return createMethodQueryAdapter();
-      }
-      @Override
-      public Adapter caseParameterQuery(ParameterQuery object)
-      {
-        return createParameterQueryAdapter();
-      }
-      @Override
       public Adapter caseLocationQuery(LocationQuery object)
       {
         return createLocationQueryAdapter();
@@ -140,59 +165,19 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
         return createCompositionQueryAdapter();
       }
       @Override
+      public Adapter caseOperationQuery(OperationQuery object)
+      {
+        return createOperationQueryAdapter();
+      }
+      @Override
+      public Adapter caseParameterQuery(ParameterQuery object)
+      {
+        return createParameterQueryAdapter();
+      }
+      @Override
       public Adapter caseNode(Node object)
       {
         return createNodeAdapter();
-      }
-      @Override
-      public Adapter caseParamQuery(ParamQuery object)
-      {
-        return createParamQueryAdapter();
-      }
-      @Override
-      public Adapter caseParamExpression(ParamExpression object)
-      {
-        return createParamExpressionAdapter();
-      }
-      @Override
-      public Adapter caseFloatValue(FloatValue object)
-      {
-        return createFloatValueAdapter();
-      }
-      @Override
-      public Adapter caseIntValue(IntValue object)
-      {
-        return createIntValueAdapter();
-      }
-      @Override
-      public Adapter caseStringValue(StringValue object)
-      {
-        return createStringValueAdapter();
-      }
-      @Override
-      public Adapter caseReferenceValue(ReferenceValue object)
-      {
-        return createReferenceValueAdapter();
-      }
-      @Override
-      public Adapter caseParameter(Parameter object)
-      {
-        return createParameterAdapter();
-      }
-      @Override
-      public Adapter caseInternalFunctionProperty(InternalFunctionProperty object)
-      {
-        return createInternalFunctionPropertyAdapter();
-      }
-      @Override
-      public Adapter caseRuntimeProperty(RuntimeProperty object)
-      {
-        return createRuntimePropertyAdapter();
-      }
-      @Override
-      public Adapter caseReflectionProperty(ReflectionProperty object)
-      {
-        return createReflectionPropertyAdapter();
       }
       @Override
       public Adapter caseContainerNode(ContainerNode object)
@@ -215,14 +200,49 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
         return createParentNodeAdapter();
       }
       @Override
-      public Adapter caseCollector(Collector object)
+      public Adapter casePropertyConstraintExpression(PropertyConstraintExpression object)
       {
-        return createCollectorAdapter();
+        return createPropertyConstraintExpressionAdapter();
       }
       @Override
-      public Adapter caseEvent(Event object)
+      public Adapter caseConstraintElement(ConstraintElement object)
       {
-        return createEventAdapter();
+        return createConstraintElementAdapter();
+      }
+      @Override
+      public Adapter caseLocalQuery(LocalQuery object)
+      {
+        return createLocalQueryAdapter();
+      }
+      @Override
+      public Adapter caseModelProperty(ModelProperty object)
+      {
+        return createModelPropertyAdapter();
+      }
+      @Override
+      public Adapter caseTypeof(Typeof object)
+      {
+        return createTypeofAdapter();
+      }
+      @Override
+      public Adapter caseLiteral(Literal object)
+      {
+        return createLiteralAdapter();
+      }
+      @Override
+      public Adapter caseFloatLiteral(FloatLiteral object)
+      {
+        return createFloatLiteralAdapter();
+      }
+      @Override
+      public Adapter caseIntLiteral(IntLiteral object)
+      {
+        return createIntLiteralAdapter();
+      }
+      @Override
+      public Adapter caseStringLiteral(StringLiteral object)
+      {
+        return createStringLiteralAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -337,16 +357,121 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ParameterDeclaration <em>Parameter Declaration</em>}'.
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameterDeclaration <em>Advice Parameter Declaration</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ParameterDeclaration
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameterDeclaration
    * @generated
    */
-  public Adapter createParameterDeclarationAdapter()
+  public Adapter createAdviceParameterDeclarationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Collector <em>Collector</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.Collector
+   * @generated
+   */
+  public Adapter createCollectorAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Event <em>Event</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.Event
+   * @generated
+   */
+  public Adapter createEventAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Value <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.Value
+   * @generated
+   */
+  public Adapter createValueAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ReferenceValue <em>Reference Value</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.ReferenceValue
+   * @generated
+   */
+  public Adapter createReferenceValueAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Property <em>Property</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.Property
+   * @generated
+   */
+  public Adapter createPropertyAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.InternalFunctionProperty <em>Internal Function Property</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.InternalFunctionProperty
+   * @generated
+   */
+  public Adapter createInternalFunctionPropertyAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ReflectionProperty <em>Reflection Property</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.ReflectionProperty
+   * @generated
+   */
+  public Adapter createReflectionPropertyAdapter()
   {
     return null;
   }
@@ -382,36 +507,6 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.MethodQuery <em>Method Query</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.MethodQuery
-   * @generated
-   */
-  public Adapter createMethodQueryAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery <em>Parameter Query</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery
-   * @generated
-   */
-  public Adapter createParameterQueryAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery <em>Location Query</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -442,6 +537,36 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.OperationQuery <em>Operation Query</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.OperationQuery
+   * @generated
+   */
+  public Adapter createOperationQueryAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery <em>Parameter Query</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery
+   * @generated
+   */
+  public Adapter createParameterQueryAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Node <em>Node</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -452,156 +577,6 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createNodeAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ParamQuery <em>Param Query</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ParamQuery
-   * @generated
-   */
-  public Adapter createParamQueryAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ParamExpression <em>Param Expression</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ParamExpression
-   * @generated
-   */
-  public Adapter createParamExpressionAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.FloatValue <em>Float Value</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.FloatValue
-   * @generated
-   */
-  public Adapter createFloatValueAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.IntValue <em>Int Value</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.IntValue
-   * @generated
-   */
-  public Adapter createIntValueAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.StringValue <em>String Value</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.StringValue
-   * @generated
-   */
-  public Adapter createStringValueAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ReferenceValue <em>Reference Value</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ReferenceValue
-   * @generated
-   */
-  public Adapter createReferenceValueAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Parameter <em>Parameter</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Parameter
-   * @generated
-   */
-  public Adapter createParameterAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.InternalFunctionProperty <em>Internal Function Property</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.InternalFunctionProperty
-   * @generated
-   */
-  public Adapter createInternalFunctionPropertyAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.RuntimeProperty <em>Runtime Property</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.RuntimeProperty
-   * @generated
-   */
-  public Adapter createRuntimePropertyAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ReflectionProperty <em>Reflection Property</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ReflectionProperty
-   * @generated
-   */
-  public Adapter createReflectionPropertyAdapter()
   {
     return null;
   }
@@ -667,31 +642,136 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Collector <em>Collector</em>}'.
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraintExpression <em>Property Constraint Expression</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Collector
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraintExpression
    * @generated
    */
-  public Adapter createCollectorAdapter()
+  public Adapter createPropertyConstraintExpressionAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Event <em>Event</em>}'.
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ConstraintElement <em>Constraint Element</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Event
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.ConstraintElement
    * @generated
    */
-  public Adapter createEventAdapter()
+  public Adapter createConstraintElementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.LocalQuery <em>Local Query</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.LocalQuery
+   * @generated
+   */
+  public Adapter createLocalQueryAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ModelProperty <em>Model Property</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.ModelProperty
+   * @generated
+   */
+  public Adapter createModelPropertyAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Typeof <em>Typeof</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.Typeof
+   * @generated
+   */
+  public Adapter createTypeofAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Literal <em>Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.Literal
+   * @generated
+   */
+  public Adapter createLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.FloatLiteral <em>Float Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.FloatLiteral
+   * @generated
+   */
+  public Adapter createFloatLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.IntLiteral <em>Int Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.IntLiteral
+   * @generated
+   */
+  public Adapter createIntLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.StringLiteral <em>String Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.StringLiteral
+   * @generated
+   */
+  public Adapter createStringLiteralAdapter()
   {
     return null;
   }

@@ -23,12 +23,12 @@ import de.cau.cs.se.instrumentation.al.aspectLang.Node
 import de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode
 import de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery
 import de.cau.cs.se.instrumentation.al.modelhandling.ForeignModelTypeProviderFactory
-import de.cau.cs.se.instrumantation.model.structure.Method
+import de.cau.cs.se.instrumantation.model.structure.Operation
 
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.scoping.Scopes
-import de.cau.cs.se.instrumentation.al.aspectLang.MethodQuery
+import de.cau.cs.se.instrumentation.al.aspectLang.OperationQuery
 import de.cau.cs.se.instrumentation.rl.scoping.EPackageScope
 
 /**
@@ -65,25 +65,25 @@ class AspectLangScopeProvider extends org.eclipse.xtext.scoping.impl.AbstractDec
 	def IScope scope_Pointcut_method(Pointcut context, EReference reference) {
 		val Node node = context.location.leaveNode
 		if (node instanceof ContainerNode) {
-			return Scopes.scopeFor((node as ContainerNode).container.methods)
+			return Scopes.scopeFor((node as ContainerNode).container.operations)
 		} else {
 			return IScope.NULLSCOPE
 		}
 	}
 	
-	def IScope scope_ParameterPattern_modifier(ParameterQuery context, EReference reference) {
+	def IScope scope_ParameterQuery_modifier(ParameterQuery context, EReference reference) {
 		// TODO modifier lookup
 		return IScope.NULLSCOPE
 	}
 	
-	def IScope scope_ParameterPattern_type(ParameterQuery context, EReference reference) {
+	def IScope scope_ParameterQuery_type(ParameterQuery context, EReference reference) {
 		val typeProvider = typeProviderFactory.getTypeProvider(context.eResource.resourceSet, null)
 		return Scopes.scopeFor(typeProvider.allDataTyes)
 	}
 	
-	def IScope scope_ParameterPattern_parameter(ParameterQuery context, EReference reference) {
-		val Method method = (context.eContainer as MethodQuery).methodReference
-		return Scopes.scopeFor(method.parameters)
+	def IScope scope_ParameterQuery_parameter(ParameterQuery context, EReference reference) {
+		val Operation operation = (context.eContainer as OperationQuery).operationReference
+		return Scopes.scopeFor(operation.parameters)
 	}
 	
 	private def Node leaveNode(LocationQuery query) {

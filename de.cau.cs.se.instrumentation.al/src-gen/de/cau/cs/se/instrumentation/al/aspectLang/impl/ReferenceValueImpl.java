@@ -4,7 +4,7 @@ package de.cau.cs.se.instrumentation.al.aspectLang.impl;
 
 import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
 import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery;
-import de.cau.cs.se.instrumentation.al.aspectLang.Parameter;
+import de.cau.cs.se.instrumentation.al.aspectLang.Property;
 import de.cau.cs.se.instrumentation.al.aspectLang.ReferenceValue;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -24,12 +24,12 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ReferenceValueImpl#getQuery <em>Query</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ReferenceValueImpl#getParameter <em>Parameter</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ReferenceValueImpl#getProperty <em>Property</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ReferenceValueImpl extends ParamExpressionImpl implements ReferenceValue
+public class ReferenceValueImpl extends ValueImpl implements ReferenceValue
 {
   /**
    * The cached value of the '{@link #getQuery() <em>Query</em>}' containment reference.
@@ -42,14 +42,14 @@ public class ReferenceValueImpl extends ParamExpressionImpl implements Reference
   protected LocationQuery query;
 
   /**
-   * The cached value of the '{@link #getParameter() <em>Parameter</em>}' containment reference.
+   * The cached value of the '{@link #getProperty() <em>Property</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getParameter()
+   * @see #getProperty()
    * @generated
    * @ordered
    */
-  protected Parameter parameter;
+  protected Property property;
 
   /**
    * <!-- begin-user-doc -->
@@ -125,9 +125,9 @@ public class ReferenceValueImpl extends ParamExpressionImpl implements Reference
    * <!-- end-user-doc -->
    * @generated
    */
-  public Parameter getParameter()
+  public Property getProperty()
   {
-    return parameter;
+    return property;
   }
 
   /**
@@ -135,13 +135,13 @@ public class ReferenceValueImpl extends ParamExpressionImpl implements Reference
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetParameter(Parameter newParameter, NotificationChain msgs)
+  public NotificationChain basicSetProperty(Property newProperty, NotificationChain msgs)
   {
-    Parameter oldParameter = parameter;
-    parameter = newParameter;
+    Property oldProperty = property;
+    property = newProperty;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AspectLangPackage.REFERENCE_VALUE__PARAMETER, oldParameter, newParameter);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AspectLangPackage.REFERENCE_VALUE__PROPERTY, oldProperty, newProperty);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -152,20 +152,20 @@ public class ReferenceValueImpl extends ParamExpressionImpl implements Reference
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setParameter(Parameter newParameter)
+  public void setProperty(Property newProperty)
   {
-    if (newParameter != parameter)
+    if (newProperty != property)
     {
       NotificationChain msgs = null;
-      if (parameter != null)
-        msgs = ((InternalEObject)parameter).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AspectLangPackage.REFERENCE_VALUE__PARAMETER, null, msgs);
-      if (newParameter != null)
-        msgs = ((InternalEObject)newParameter).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AspectLangPackage.REFERENCE_VALUE__PARAMETER, null, msgs);
-      msgs = basicSetParameter(newParameter, msgs);
+      if (property != null)
+        msgs = ((InternalEObject)property).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AspectLangPackage.REFERENCE_VALUE__PROPERTY, null, msgs);
+      if (newProperty != null)
+        msgs = ((InternalEObject)newProperty).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AspectLangPackage.REFERENCE_VALUE__PROPERTY, null, msgs);
+      msgs = basicSetProperty(newProperty, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.REFERENCE_VALUE__PARAMETER, newParameter, newParameter));
+      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.REFERENCE_VALUE__PROPERTY, newProperty, newProperty));
   }
 
   /**
@@ -180,8 +180,8 @@ public class ReferenceValueImpl extends ParamExpressionImpl implements Reference
     {
       case AspectLangPackage.REFERENCE_VALUE__QUERY:
         return basicSetQuery(null, msgs);
-      case AspectLangPackage.REFERENCE_VALUE__PARAMETER:
-        return basicSetParameter(null, msgs);
+      case AspectLangPackage.REFERENCE_VALUE__PROPERTY:
+        return basicSetProperty(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -198,8 +198,8 @@ public class ReferenceValueImpl extends ParamExpressionImpl implements Reference
     {
       case AspectLangPackage.REFERENCE_VALUE__QUERY:
         return getQuery();
-      case AspectLangPackage.REFERENCE_VALUE__PARAMETER:
-        return getParameter();
+      case AspectLangPackage.REFERENCE_VALUE__PROPERTY:
+        return getProperty();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -217,8 +217,8 @@ public class ReferenceValueImpl extends ParamExpressionImpl implements Reference
       case AspectLangPackage.REFERENCE_VALUE__QUERY:
         setQuery((LocationQuery)newValue);
         return;
-      case AspectLangPackage.REFERENCE_VALUE__PARAMETER:
-        setParameter((Parameter)newValue);
+      case AspectLangPackage.REFERENCE_VALUE__PROPERTY:
+        setProperty((Property)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -237,8 +237,8 @@ public class ReferenceValueImpl extends ParamExpressionImpl implements Reference
       case AspectLangPackage.REFERENCE_VALUE__QUERY:
         setQuery((LocationQuery)null);
         return;
-      case AspectLangPackage.REFERENCE_VALUE__PARAMETER:
-        setParameter((Parameter)null);
+      case AspectLangPackage.REFERENCE_VALUE__PROPERTY:
+        setProperty((Property)null);
         return;
     }
     super.eUnset(featureID);
@@ -256,8 +256,8 @@ public class ReferenceValueImpl extends ParamExpressionImpl implements Reference
     {
       case AspectLangPackage.REFERENCE_VALUE__QUERY:
         return query != null;
-      case AspectLangPackage.REFERENCE_VALUE__PARAMETER:
-        return parameter != null;
+      case AspectLangPackage.REFERENCE_VALUE__PROPERTY:
+        return property != null;
     }
     return super.eIsSet(featureID);
   }

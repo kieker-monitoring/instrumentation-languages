@@ -11,10 +11,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumantation.model.structure.Traceability#getPredecessor <em>Predecessor</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.cau.cs.se.instrumantation.model.structure.StructurePackage#getTraceability()
  * @model interface="true" abstract="true"

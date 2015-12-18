@@ -27,8 +27,8 @@ import java.util.Map
 import java.util.HashMap
 import javax.xml.parsers.DocumentBuilderFactory
 import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut
-import de.cau.cs.se.instrumantation.model.structure.Method
-import de.cau.cs.se.instrumantation.model.structure.MethodModifier
+import de.cau.cs.se.instrumantation.model.structure.Operation
+import de.cau.cs.se.instrumantation.model.structure.OperationModifier
 import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery
 import de.cau.cs.se.instrumentation.al.aspectLang.Node
 import de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode
@@ -140,7 +140,7 @@ class AspectLangGenerator implements IGenerator {
 	/**
 	 * Compute the query for model nodes.
 	 */
-	def String computeAspectJQuery(Pointcut pointcut) '''«pointcut.location.computeLocation» «pointcut.method.modifier.computeModifier» «if (pointcut.method != null) pointcut.method.methodReference.computeMethod else '*'»'''
+	def String computeAspectJQuery(Pointcut pointcut) '''«pointcut.location.computeLocation» «pointcut.operation.modifier.computeModifier» «if (pointcut.operation != null) pointcut.operation.operationReference.computeMethod else '*'»'''
 	
 	def CharSequence computeLocation(LocationQuery query) '''«query.node.computeNode»«if (query.specialization != null) '.' + query.specialization.computeLocation»'''
 	
@@ -148,9 +148,9 @@ class AspectLangGenerator implements IGenerator {
 	def dispatch computeNode(Node node) '''#''' // illegal call
 	
 	// TODO this should produce the correct mapping of modifiers
-	def CharSequence computeModifier(MethodModifier modifier) '''«if (modifier != null) modifier.name else '*'»'''
+	def CharSequence computeModifier(OperationModifier modifier) '''«if (modifier != null) modifier.name else '*'»'''
 	
-	def CharSequence computeMethod(Method method) '''«method.name» («method.parameters.map[it.computeParameter].join(', ')»)'''
+	def CharSequence computeMethod(Operation operation) '''«operation.name» («operation.parameters.map[it.computeParameter].join(', ')»)'''
 	
 	// TODO this should produce the correct mapping of types and modifiers
 	def CharSequence computeParameter(Parameter parameter) '''«parameter.type.computeType» «parameter.name»'''

@@ -59,13 +59,14 @@ public class StructureFactoryImpl extends EFactoryImpl implements StructureFacto
 			case StructurePackage.TYPE: return createType();
 			case StructurePackage.TYPE_REFERENCE: return createTypeReference();
 			case StructurePackage.CONTAINER: return createContainer();
-			case StructurePackage.METHOD: return createMethod();
+			case StructurePackage.OPERATION: return createOperation();
 			case StructurePackage.PARAMETER_MODIFIER: return createParameterModifier();
 			case StructurePackage.NAMED_ELEMENT: return createNamedElement();
 			case StructurePackage.PARAMETER: return createParameter();
-			case StructurePackage.MODEL: return createModel();
-			case StructurePackage.METHOD_MODIFIER: return createMethodModifier();
+			case StructurePackage.MAPPING_MODEL: return createMappingModel();
+			case StructurePackage.OPERATION_MODIFIER: return createOperationModifier();
 			case StructurePackage.CONTAINER_MODIFIER: return createContainerModifier();
+			case StructurePackage.ATTRIBUTE: return createAttribute();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -106,9 +107,9 @@ public class StructureFactoryImpl extends EFactoryImpl implements StructureFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Method createMethod() {
-		MethodImpl method = new MethodImpl();
-		return method;
+	public Operation createOperation() {
+		OperationImpl operation = new OperationImpl();
+		return operation;
 	}
 
 	/**
@@ -146,9 +147,9 @@ public class StructureFactoryImpl extends EFactoryImpl implements StructureFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Model createModel() {
-		ModelImpl model = new ModelImpl();
-		return model;
+	public MappingModel createMappingModel() {
+		MappingModelImpl mappingModel = new MappingModelImpl();
+		return mappingModel;
 	}
 
 	/**
@@ -156,9 +157,9 @@ public class StructureFactoryImpl extends EFactoryImpl implements StructureFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MethodModifier createMethodModifier() {
-		MethodModifierImpl methodModifier = new MethodModifierImpl();
-		return methodModifier;
+	public OperationModifier createOperationModifier() {
+		OperationModifierImpl operationModifier = new OperationModifierImpl();
+		return operationModifier;
 	}
 
 	/**
@@ -169,6 +170,16 @@ public class StructureFactoryImpl extends EFactoryImpl implements StructureFacto
 	public ContainerModifier createContainerModifier() {
 		ContainerModifierImpl containerModifier = new ContainerModifierImpl();
 		return containerModifier;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Attribute createAttribute() {
+		AttributeImpl attribute = new AttributeImpl();
+		return attribute;
 	}
 
 	/**

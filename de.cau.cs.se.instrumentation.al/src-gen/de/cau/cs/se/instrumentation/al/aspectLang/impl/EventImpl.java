@@ -4,7 +4,7 @@ package de.cau.cs.se.instrumentation.al.aspectLang.impl;
 
 import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
 import de.cau.cs.se.instrumentation.al.aspectLang.Event;
-import de.cau.cs.se.instrumentation.al.aspectLang.ParamExpression;
+import de.cau.cs.se.instrumentation.al.aspectLang.Value;
 
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
 
@@ -58,7 +58,7 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
    * @generated
    * @ordered
    */
-  protected EList<ParamExpression> initializations;
+  protected EList<Value> initializations;
 
   /**
    * <!-- begin-user-doc -->
@@ -129,11 +129,11 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<ParamExpression> getInitializations()
+  public EList<Value> getInitializations()
   {
     if (initializations == null)
     {
-      initializations = new EObjectContainmentEList<ParamExpression>(ParamExpression.class, this, AspectLangPackage.EVENT__INITIALIZATIONS);
+      initializations = new EObjectContainmentEList<Value>(Value.class, this, AspectLangPackage.EVENT__INITIALIZATIONS);
     }
     return initializations;
   }
@@ -189,7 +189,7 @@ public class EventImpl extends MinimalEObjectImpl.Container implements Event
         return;
       case AspectLangPackage.EVENT__INITIALIZATIONS:
         getInitializations().clear();
-        getInitializations().addAll((Collection<? extends ParamExpression>)newValue);
+        getInitializations().addAll((Collection<? extends Value>)newValue);
         return;
     }
     super.eSet(featureID, newValue);

@@ -55,7 +55,7 @@ public interface Event extends EObject
 
   /**
    * Returns the value of the '<em><b>Initializations</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.cs.se.instrumentation.al.aspectLang.ParamExpression}.
+   * The list contents are of type {@link de.cau.cs.se.instrumentation.al.aspectLang.Value}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Initializations</em>' containment reference list isn't clear,
@@ -67,6 +67,6 @@ public interface Event extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<ParamExpression> getInitializations();
+  EList<Value> getInitializations();
 
 } // Event

@@ -10,10 +10,10 @@ package de.cau.cs.se.instrumantation.model.structure;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumantation.model.structure.TypeReference#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.cau.cs.se.instrumantation.model.structure.StructurePackage#getTypeReference()
  * @model

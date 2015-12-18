@@ -3,9 +3,9 @@
 package de.cau.cs.se.instrumentation.al.aspectLang.impl;
 
 import de.cau.cs.se.instrumentation.al.aspectLang.Advice;
+import de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameterDeclaration;
 import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
 import de.cau.cs.se.instrumentation.al.aspectLang.Collector;
-import de.cau.cs.se.instrumentation.al.aspectLang.ParameterDeclaration;
 
 import java.util.Collection;
 
@@ -68,7 +68,7 @@ public class AdviceImpl extends MinimalEObjectImpl.Container implements Advice
    * @generated
    * @ordered
    */
-  protected EList<ParameterDeclaration> parameterDeclarations;
+  protected EList<AdviceParameterDeclaration> parameterDeclarations;
 
   /**
    * The cached value of the '{@link #getCollectors() <em>Collectors</em>}' containment reference list.
@@ -129,11 +129,11 @@ public class AdviceImpl extends MinimalEObjectImpl.Container implements Advice
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<ParameterDeclaration> getParameterDeclarations()
+  public EList<AdviceParameterDeclaration> getParameterDeclarations()
   {
     if (parameterDeclarations == null)
     {
-      parameterDeclarations = new EObjectContainmentEList<ParameterDeclaration>(ParameterDeclaration.class, this, AspectLangPackage.ADVICE__PARAMETER_DECLARATIONS);
+      parameterDeclarations = new EObjectContainmentEList<AdviceParameterDeclaration>(AdviceParameterDeclaration.class, this, AspectLangPackage.ADVICE__PARAMETER_DECLARATIONS);
     }
     return parameterDeclarations;
   }
@@ -206,7 +206,7 @@ public class AdviceImpl extends MinimalEObjectImpl.Container implements Advice
         return;
       case AspectLangPackage.ADVICE__PARAMETER_DECLARATIONS:
         getParameterDeclarations().clear();
-        getParameterDeclarations().addAll((Collection<? extends ParameterDeclaration>)newValue);
+        getParameterDeclarations().addAll((Collection<? extends AdviceParameterDeclaration>)newValue);
         return;
       case AspectLangPackage.ADVICE__COLLECTORS:
         getCollectors().clear();

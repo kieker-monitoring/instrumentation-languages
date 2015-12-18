@@ -54,7 +54,7 @@ public interface Advice extends EObject
 
   /**
    * Returns the value of the '<em><b>Parameter Declarations</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.cs.se.instrumentation.al.aspectLang.ParameterDeclaration}.
+   * The list contents are of type {@link de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameterDeclaration}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Parameter Declarations</em>' containment reference list isn't clear,
@@ -66,7 +66,7 @@ public interface Advice extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<ParameterDeclaration> getParameterDeclarations();
+  EList<AdviceParameterDeclaration> getParameterDeclarations();
 
   /**
    * Returns the value of the '<em><b>Collectors</b></em>' containment reference list.

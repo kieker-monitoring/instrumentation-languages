@@ -17,10 +17,10 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumantation.model.structure.impl.ContainerModifierImpl#getPredecessor <em>Predecessor</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

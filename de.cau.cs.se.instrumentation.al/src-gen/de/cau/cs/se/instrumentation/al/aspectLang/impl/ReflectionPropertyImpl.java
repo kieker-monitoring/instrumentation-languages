@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class ReflectionPropertyImpl extends ParameterImpl implements ReflectionProperty
+public class ReflectionPropertyImpl extends PropertyImpl implements ReflectionProperty
 {
   /**
    * The default value of the '{@link #getFunction() <em>Function</em>}' attribute.

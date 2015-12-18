@@ -71,30 +71,34 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
       case AspectLangPackage.ASPECT: return createAspect();
       case AspectLangPackage.UTILIZE_ADVICE: return createUtilizeAdvice();
       case AspectLangPackage.ADVICE: return createAdvice();
-      case AspectLangPackage.PARAMETER_DECLARATION: return createParameterDeclaration();
+      case AspectLangPackage.ADVICE_PARAMETER_DECLARATION: return createAdviceParameterDeclaration();
+      case AspectLangPackage.COLLECTOR: return createCollector();
+      case AspectLangPackage.EVENT: return createEvent();
+      case AspectLangPackage.VALUE: return createValue();
+      case AspectLangPackage.REFERENCE_VALUE: return createReferenceValue();
+      case AspectLangPackage.PROPERTY: return createProperty();
+      case AspectLangPackage.INTERNAL_FUNCTION_PROPERTY: return createInternalFunctionProperty();
+      case AspectLangPackage.REFLECTION_PROPERTY: return createReflectionProperty();
       case AspectLangPackage.POINTCUT: return createPointcut();
       case AspectLangPackage.ANNOTATION: return createAnnotation();
-      case AspectLangPackage.METHOD_QUERY: return createMethodQuery();
-      case AspectLangPackage.PARAMETER_QUERY: return createParameterQuery();
       case AspectLangPackage.LOCATION_QUERY: return createLocationQuery();
       case AspectLangPackage.COMPOSITION_QUERY: return createCompositionQuery();
+      case AspectLangPackage.OPERATION_QUERY: return createOperationQuery();
+      case AspectLangPackage.PARAMETER_QUERY: return createParameterQuery();
       case AspectLangPackage.NODE: return createNode();
-      case AspectLangPackage.PARAM_QUERY: return createParamQuery();
-      case AspectLangPackage.PARAM_EXPRESSION: return createParamExpression();
-      case AspectLangPackage.FLOAT_VALUE: return createFloatValue();
-      case AspectLangPackage.INT_VALUE: return createIntValue();
-      case AspectLangPackage.STRING_VALUE: return createStringValue();
-      case AspectLangPackage.REFERENCE_VALUE: return createReferenceValue();
-      case AspectLangPackage.PARAMETER: return createParameter();
-      case AspectLangPackage.INTERNAL_FUNCTION_PROPERTY: return createInternalFunctionProperty();
-      case AspectLangPackage.RUNTIME_PROPERTY: return createRuntimeProperty();
-      case AspectLangPackage.REFLECTION_PROPERTY: return createReflectionProperty();
       case AspectLangPackage.CONTAINER_NODE: return createContainerNode();
       case AspectLangPackage.WILDCARD_NODE: return createWildcardNode();
       case AspectLangPackage.SUB_PATH_NODE: return createSubPathNode();
       case AspectLangPackage.PARENT_NODE: return createParentNode();
-      case AspectLangPackage.COLLECTOR: return createCollector();
-      case AspectLangPackage.EVENT: return createEvent();
+      case AspectLangPackage.PROPERTY_CONSTRAINT_EXPRESSION: return createPropertyConstraintExpression();
+      case AspectLangPackage.CONSTRAINT_ELEMENT: return createConstraintElement();
+      case AspectLangPackage.LOCAL_QUERY: return createLocalQuery();
+      case AspectLangPackage.MODEL_PROPERTY: return createModelProperty();
+      case AspectLangPackage.TYPEOF: return createTypeof();
+      case AspectLangPackage.LITERAL: return createLiteral();
+      case AspectLangPackage.FLOAT_LITERAL: return createFloatLiteral();
+      case AspectLangPackage.INT_LITERAL: return createIntLiteral();
+      case AspectLangPackage.STRING_LITERAL: return createStringLiteral();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -110,18 +114,18 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
   {
     switch (eDataType.getClassifierID())
     {
-      case AspectLangPackage.QUERY_MODIFIER:
-        return createQueryModifierFromString(eDataType, initialValue);
-      case AspectLangPackage.LOGIC_OPERATOR:
-        return createLogicOperatorFromString(eDataType, initialValue);
+      case AspectLangPackage.INSERTION_POINT:
+        return createInsertionPointFromString(eDataType, initialValue);
       case AspectLangPackage.INTERNAL_FUNCTION:
         return createInternalFunctionFromString(eDataType, initialValue);
       case AspectLangPackage.REFLECTION_FUNCTION:
         return createReflectionFunctionFromString(eDataType, initialValue);
-      case AspectLangPackage.OPERATOR:
-        return createOperatorFromString(eDataType, initialValue);
-      case AspectLangPackage.INSERTION_POINT:
-        return createInsertionPointFromString(eDataType, initialValue);
+      case AspectLangPackage.QUERY_MODIFIER:
+        return createQueryModifierFromString(eDataType, initialValue);
+      case AspectLangPackage.LOGIC_OPERATOR:
+        return createLogicOperatorFromString(eDataType, initialValue);
+      case AspectLangPackage.COMPARE_OPERATOR:
+        return createCompareOperatorFromString(eDataType, initialValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -137,18 +141,18 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
   {
     switch (eDataType.getClassifierID())
     {
-      case AspectLangPackage.QUERY_MODIFIER:
-        return convertQueryModifierToString(eDataType, instanceValue);
-      case AspectLangPackage.LOGIC_OPERATOR:
-        return convertLogicOperatorToString(eDataType, instanceValue);
+      case AspectLangPackage.INSERTION_POINT:
+        return convertInsertionPointToString(eDataType, instanceValue);
       case AspectLangPackage.INTERNAL_FUNCTION:
         return convertInternalFunctionToString(eDataType, instanceValue);
       case AspectLangPackage.REFLECTION_FUNCTION:
         return convertReflectionFunctionToString(eDataType, instanceValue);
-      case AspectLangPackage.OPERATOR:
-        return convertOperatorToString(eDataType, instanceValue);
-      case AspectLangPackage.INSERTION_POINT:
-        return convertInsertionPointToString(eDataType, instanceValue);
+      case AspectLangPackage.QUERY_MODIFIER:
+        return convertQueryModifierToString(eDataType, instanceValue);
+      case AspectLangPackage.LOGIC_OPERATOR:
+        return convertLogicOperatorToString(eDataType, instanceValue);
+      case AspectLangPackage.COMPARE_OPERATOR:
+        return convertCompareOperatorToString(eDataType, instanceValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -225,10 +229,87 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
    * <!-- end-user-doc -->
    * @generated
    */
-  public ParameterDeclaration createParameterDeclaration()
+  public AdviceParameterDeclaration createAdviceParameterDeclaration()
   {
-    ParameterDeclarationImpl parameterDeclaration = new ParameterDeclarationImpl();
-    return parameterDeclaration;
+    AdviceParameterDeclarationImpl adviceParameterDeclaration = new AdviceParameterDeclarationImpl();
+    return adviceParameterDeclaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Collector createCollector()
+  {
+    CollectorImpl collector = new CollectorImpl();
+    return collector;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Event createEvent()
+  {
+    EventImpl event = new EventImpl();
+    return event;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Value createValue()
+  {
+    ValueImpl value = new ValueImpl();
+    return value;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ReferenceValue createReferenceValue()
+  {
+    ReferenceValueImpl referenceValue = new ReferenceValueImpl();
+    return referenceValue;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Property createProperty()
+  {
+    PropertyImpl property = new PropertyImpl();
+    return property;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public InternalFunctionProperty createInternalFunctionProperty()
+  {
+    InternalFunctionPropertyImpl internalFunctionProperty = new InternalFunctionPropertyImpl();
+    return internalFunctionProperty;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ReflectionProperty createReflectionProperty()
+  {
+    ReflectionPropertyImpl reflectionProperty = new ReflectionPropertyImpl();
+    return reflectionProperty;
   }
 
   /**
@@ -258,28 +339,6 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
    * <!-- end-user-doc -->
    * @generated
    */
-  public MethodQuery createMethodQuery()
-  {
-    MethodQueryImpl methodQuery = new MethodQueryImpl();
-    return methodQuery;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ParameterQuery createParameterQuery()
-  {
-    ParameterQueryImpl parameterQuery = new ParameterQueryImpl();
-    return parameterQuery;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public LocationQuery createLocationQuery()
   {
     LocationQueryImpl locationQuery = new LocationQueryImpl();
@@ -302,120 +361,32 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
    * <!-- end-user-doc -->
    * @generated
    */
+  public OperationQuery createOperationQuery()
+  {
+    OperationQueryImpl operationQuery = new OperationQueryImpl();
+    return operationQuery;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ParameterQuery createParameterQuery()
+  {
+    ParameterQueryImpl parameterQuery = new ParameterQueryImpl();
+    return parameterQuery;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Node createNode()
   {
     NodeImpl node = new NodeImpl();
     return node;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ParamQuery createParamQuery()
-  {
-    ParamQueryImpl paramQuery = new ParamQueryImpl();
-    return paramQuery;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ParamExpression createParamExpression()
-  {
-    ParamExpressionImpl paramExpression = new ParamExpressionImpl();
-    return paramExpression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public FloatValue createFloatValue()
-  {
-    FloatValueImpl floatValue = new FloatValueImpl();
-    return floatValue;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public IntValue createIntValue()
-  {
-    IntValueImpl intValue = new IntValueImpl();
-    return intValue;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public StringValue createStringValue()
-  {
-    StringValueImpl stringValue = new StringValueImpl();
-    return stringValue;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ReferenceValue createReferenceValue()
-  {
-    ReferenceValueImpl referenceValue = new ReferenceValueImpl();
-    return referenceValue;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Parameter createParameter()
-  {
-    ParameterImpl parameter = new ParameterImpl();
-    return parameter;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public InternalFunctionProperty createInternalFunctionProperty()
-  {
-    InternalFunctionPropertyImpl internalFunctionProperty = new InternalFunctionPropertyImpl();
-    return internalFunctionProperty;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public RuntimeProperty createRuntimeProperty()
-  {
-    RuntimePropertyImpl runtimeProperty = new RuntimePropertyImpl();
-    return runtimeProperty;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ReflectionProperty createReflectionProperty()
-  {
-    ReflectionPropertyImpl reflectionProperty = new ReflectionPropertyImpl();
-    return reflectionProperty;
   }
 
   /**
@@ -467,10 +438,10 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
    * <!-- end-user-doc -->
    * @generated
    */
-  public Collector createCollector()
+  public PropertyConstraintExpression createPropertyConstraintExpression()
   {
-    CollectorImpl collector = new CollectorImpl();
-    return collector;
+    PropertyConstraintExpressionImpl propertyConstraintExpression = new PropertyConstraintExpressionImpl();
+    return propertyConstraintExpression;
   }
 
   /**
@@ -478,10 +449,10 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
    * <!-- end-user-doc -->
    * @generated
    */
-  public Event createEvent()
+  public ConstraintElement createConstraintElement()
   {
-    EventImpl event = new EventImpl();
-    return event;
+    ConstraintElementImpl constraintElement = new ConstraintElementImpl();
+    return constraintElement;
   }
 
   /**
@@ -489,9 +460,86 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
    * <!-- end-user-doc -->
    * @generated
    */
-  public QueryModifier createQueryModifierFromString(EDataType eDataType, String initialValue)
+  public LocalQuery createLocalQuery()
   {
-    QueryModifier result = QueryModifier.get(initialValue);
+    LocalQueryImpl localQuery = new LocalQueryImpl();
+    return localQuery;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ModelProperty createModelProperty()
+  {
+    ModelPropertyImpl modelProperty = new ModelPropertyImpl();
+    return modelProperty;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Typeof createTypeof()
+  {
+    TypeofImpl typeof = new TypeofImpl();
+    return typeof;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Literal createLiteral()
+  {
+    LiteralImpl literal = new LiteralImpl();
+    return literal;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public FloatLiteral createFloatLiteral()
+  {
+    FloatLiteralImpl floatLiteral = new FloatLiteralImpl();
+    return floatLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public IntLiteral createIntLiteral()
+  {
+    IntLiteralImpl intLiteral = new IntLiteralImpl();
+    return intLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public StringLiteral createStringLiteral()
+  {
+    StringLiteralImpl stringLiteral = new StringLiteralImpl();
+    return stringLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public InsertionPoint createInsertionPointFromString(EDataType eDataType, String initialValue)
+  {
+    InsertionPoint result = InsertionPoint.get(initialValue);
     if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
     return result;
   }
@@ -501,29 +549,7 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
    * <!-- end-user-doc -->
    * @generated
    */
-  public String convertQueryModifierToString(EDataType eDataType, Object instanceValue)
-  {
-    return instanceValue == null ? null : instanceValue.toString();
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public LogicOperator createLogicOperatorFromString(EDataType eDataType, String initialValue)
-  {
-    LogicOperator result = LogicOperator.get(initialValue);
-    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-    return result;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String convertLogicOperatorToString(EDataType eDataType, Object instanceValue)
+  public String convertInsertionPointToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }
@@ -577,9 +603,9 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
    * <!-- end-user-doc -->
    * @generated
    */
-  public Operator createOperatorFromString(EDataType eDataType, String initialValue)
+  public QueryModifier createQueryModifierFromString(EDataType eDataType, String initialValue)
   {
-    Operator result = Operator.get(initialValue);
+    QueryModifier result = QueryModifier.get(initialValue);
     if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
     return result;
   }
@@ -589,7 +615,7 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
    * <!-- end-user-doc -->
    * @generated
    */
-  public String convertOperatorToString(EDataType eDataType, Object instanceValue)
+  public String convertQueryModifierToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }
@@ -599,9 +625,9 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
    * <!-- end-user-doc -->
    * @generated
    */
-  public InsertionPoint createInsertionPointFromString(EDataType eDataType, String initialValue)
+  public LogicOperator createLogicOperatorFromString(EDataType eDataType, String initialValue)
   {
-    InsertionPoint result = InsertionPoint.get(initialValue);
+    LogicOperator result = LogicOperator.get(initialValue);
     if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
     return result;
   }
@@ -611,7 +637,29 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
    * <!-- end-user-doc -->
    * @generated
    */
-  public String convertInsertionPointToString(EDataType eDataType, Object instanceValue)
+  public String convertLogicOperatorToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CompareOperator createCompareOperatorFromString(EDataType eDataType, String initialValue)
+  {
+    CompareOperator result = CompareOperator.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertCompareOperatorToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }

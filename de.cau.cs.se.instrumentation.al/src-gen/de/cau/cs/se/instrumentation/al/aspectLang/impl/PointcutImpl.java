@@ -5,7 +5,7 @@ package de.cau.cs.se.instrumentation.al.aspectLang.impl;
 import de.cau.cs.se.instrumentation.al.aspectLang.Annotation;
 import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
 import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery;
-import de.cau.cs.se.instrumentation.al.aspectLang.MethodQuery;
+import de.cau.cs.se.instrumentation.al.aspectLang.OperationQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.PointcutImpl#getAnnotation <em>Annotation</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.PointcutImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.PointcutImpl#getLocation <em>Location</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.PointcutImpl#getMethod <em>Method</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.PointcutImpl#getOperation <em>Operation</em>}</li>
  * </ul>
  *
  * @generated
@@ -76,14 +76,14 @@ public class PointcutImpl extends MinimalEObjectImpl.Container implements Pointc
   protected LocationQuery location;
 
   /**
-   * The cached value of the '{@link #getMethod() <em>Method</em>}' containment reference.
+   * The cached value of the '{@link #getOperation() <em>Operation</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getMethod()
+   * @see #getOperation()
    * @generated
    * @ordered
    */
-  protected MethodQuery method;
+  protected OperationQuery operation;
 
   /**
    * <!-- begin-user-doc -->
@@ -230,9 +230,9 @@ public class PointcutImpl extends MinimalEObjectImpl.Container implements Pointc
    * <!-- end-user-doc -->
    * @generated
    */
-  public MethodQuery getMethod()
+  public OperationQuery getOperation()
   {
-    return method;
+    return operation;
   }
 
   /**
@@ -240,13 +240,13 @@ public class PointcutImpl extends MinimalEObjectImpl.Container implements Pointc
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetMethod(MethodQuery newMethod, NotificationChain msgs)
+  public NotificationChain basicSetOperation(OperationQuery newOperation, NotificationChain msgs)
   {
-    MethodQuery oldMethod = method;
-    method = newMethod;
+    OperationQuery oldOperation = operation;
+    operation = newOperation;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AspectLangPackage.POINTCUT__METHOD, oldMethod, newMethod);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AspectLangPackage.POINTCUT__OPERATION, oldOperation, newOperation);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -257,20 +257,20 @@ public class PointcutImpl extends MinimalEObjectImpl.Container implements Pointc
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setMethod(MethodQuery newMethod)
+  public void setOperation(OperationQuery newOperation)
   {
-    if (newMethod != method)
+    if (newOperation != operation)
     {
       NotificationChain msgs = null;
-      if (method != null)
-        msgs = ((InternalEObject)method).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AspectLangPackage.POINTCUT__METHOD, null, msgs);
-      if (newMethod != null)
-        msgs = ((InternalEObject)newMethod).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AspectLangPackage.POINTCUT__METHOD, null, msgs);
-      msgs = basicSetMethod(newMethod, msgs);
+      if (operation != null)
+        msgs = ((InternalEObject)operation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AspectLangPackage.POINTCUT__OPERATION, null, msgs);
+      if (newOperation != null)
+        msgs = ((InternalEObject)newOperation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AspectLangPackage.POINTCUT__OPERATION, null, msgs);
+      msgs = basicSetOperation(newOperation, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.POINTCUT__METHOD, newMethod, newMethod));
+      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.POINTCUT__OPERATION, newOperation, newOperation));
   }
 
   /**
@@ -287,8 +287,8 @@ public class PointcutImpl extends MinimalEObjectImpl.Container implements Pointc
         return basicSetAnnotation(null, msgs);
       case AspectLangPackage.POINTCUT__LOCATION:
         return basicSetLocation(null, msgs);
-      case AspectLangPackage.POINTCUT__METHOD:
-        return basicSetMethod(null, msgs);
+      case AspectLangPackage.POINTCUT__OPERATION:
+        return basicSetOperation(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -309,8 +309,8 @@ public class PointcutImpl extends MinimalEObjectImpl.Container implements Pointc
         return getName();
       case AspectLangPackage.POINTCUT__LOCATION:
         return getLocation();
-      case AspectLangPackage.POINTCUT__METHOD:
-        return getMethod();
+      case AspectLangPackage.POINTCUT__OPERATION:
+        return getOperation();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -334,8 +334,8 @@ public class PointcutImpl extends MinimalEObjectImpl.Container implements Pointc
       case AspectLangPackage.POINTCUT__LOCATION:
         setLocation((LocationQuery)newValue);
         return;
-      case AspectLangPackage.POINTCUT__METHOD:
-        setMethod((MethodQuery)newValue);
+      case AspectLangPackage.POINTCUT__OPERATION:
+        setOperation((OperationQuery)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -360,8 +360,8 @@ public class PointcutImpl extends MinimalEObjectImpl.Container implements Pointc
       case AspectLangPackage.POINTCUT__LOCATION:
         setLocation((LocationQuery)null);
         return;
-      case AspectLangPackage.POINTCUT__METHOD:
-        setMethod((MethodQuery)null);
+      case AspectLangPackage.POINTCUT__OPERATION:
+        setOperation((OperationQuery)null);
         return;
     }
     super.eUnset(featureID);
@@ -383,8 +383,8 @@ public class PointcutImpl extends MinimalEObjectImpl.Container implements Pointc
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case AspectLangPackage.POINTCUT__LOCATION:
         return location != null;
-      case AspectLangPackage.POINTCUT__METHOD:
-        return method != null;
+      case AspectLangPackage.POINTCUT__OPERATION:
+        return operation != null;
     }
     return super.eIsSet(featureID);
   }
