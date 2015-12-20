@@ -30,9 +30,9 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: de.cau.cs.se.instrumantation.model.structure,
- de.cau.cs.se.instrumantation.model.structure.impl,
- de.cau.cs.se.instrumantation.model.structure.util,
+Export-Package: de.cau.cs.se.instrumentation.al.mapping,
+ de.cau.cs.se.instrumentation.al.mapping.impl,
+ de.cau.cs.se.instrumentation.al.mapping.util,
  de.cau.cs.se.instrumentation.al,
  de.cau.cs.se.instrumentation.al.aspectLang,
  de.cau.cs.se.instrumentation.al.aspectLang.impl,
@@ -45,4 +45,7 @@ Export-Package: de.cau.cs.se.instrumantation.model.structure,
  de.cau.cs.se.instrumentation.al.scoping,
  de.cau.cs.se.instrumentation.al.serializer,
  de.cau.cs.se.instrumentation.al.services,
- de.cau.cs.se.instrumentation.al.validation
+ de.cau.cs.se.instrumentation.al.validation,
+ de.cau.cs.se.instrumentation.al.mapping,
+ de.cau.cs.se.instrumentation.al.mapping.impl,
+ de.cau.cs.se.instrumentation.al.mapping.util

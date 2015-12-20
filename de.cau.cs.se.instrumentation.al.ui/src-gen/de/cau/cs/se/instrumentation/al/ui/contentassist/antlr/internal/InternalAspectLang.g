@@ -6707,12 +6707,12 @@ rule__Typeof__ReferenceAssignment_2
     }
 :
 (
-{ before(grammarAccess.getTypeofAccess().getReferenceTypeCrossReference_2_0()); }
+{ before(grammarAccess.getTypeofAccess().getReferenceNamedTypeCrossReference_2_0()); }
 (
-{ before(grammarAccess.getTypeofAccess().getReferenceTypeIDTerminalRuleCall_2_0_1()); }
-	RULE_ID{ after(grammarAccess.getTypeofAccess().getReferenceTypeIDTerminalRuleCall_2_0_1()); }
+{ before(grammarAccess.getTypeofAccess().getReferenceNamedTypeIDTerminalRuleCall_2_0_1()); }
+	RULE_ID{ after(grammarAccess.getTypeofAccess().getReferenceNamedTypeIDTerminalRuleCall_2_0_1()); }
 )
-{ after(grammarAccess.getTypeofAccess().getReferenceTypeCrossReference_2_0()); }
+{ after(grammarAccess.getTypeofAccess().getReferenceNamedTypeCrossReference_2_0()); }
 )
 
 ;

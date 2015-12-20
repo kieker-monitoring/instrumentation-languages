@@ -2,10 +2,10 @@
  */
 package de.cau.cs.se.instrumentation.al.aspectLang.impl;
 
-import de.cau.cs.se.instrumantation.model.structure.Feature;
-
 import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
 import de.cau.cs.se.instrumentation.al.aspectLang.ModelProperty;
+
+import de.cau.cs.se.instrumentation.al.mapping.Feature;
 
 import org.eclipse.emf.common.notify.Notification;
 

@@ -1,7 +1,7 @@
 package de.cau.cs.se.instrumentation.al.modelhandling;
 
-import de.cau.cs.se.instrumantation.model.structure.MappingModel;
 import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel;
+import de.cau.cs.se.instrumentation.al.mapping.MappingModel;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
 @SuppressWarnings("all")

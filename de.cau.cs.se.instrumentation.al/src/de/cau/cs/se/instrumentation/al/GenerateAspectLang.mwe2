@@ -23,10 +23,10 @@ Workflow {
     	//registerGenModelFile = "platform:/resource/de.cau.cs.kieler.core.annotations/annotations.genmodel"
     	
     	registerGeneratedEPackage = "de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage"
-    	registerGeneratedEPackage = "de.cau.cs.se.instrumantation.model.structure.StructurePackage"
+    	registerGeneratedEPackage = "de.cau.cs.se.instrumentation.al.mapping.MappingPackage"
     	
         registerGenModelFile = "platform:/resource/de.cau.cs.se.instrumentation.rl/model/generated/RecordLang.genmodel"
-    	registerGenModelFile = "platform:/resource/de.cau.cs.se.instrumentation.al/model/ModelStructure.genmodel"
+    	registerGenModelFile = "platform:/resource/de.cau.cs.se.instrumentation.al/model/MappingModel.genmodel"
     }
     
     component = DirectoryCleaner {

@@ -1,17 +1,17 @@
 package de.cau.cs.se.instrumentation.al.handler.pcm;
 
 import com.google.common.base.Objects;
-import de.cau.cs.se.instrumantation.model.structure.Container;
-import de.cau.cs.se.instrumantation.model.structure.Containment;
-import de.cau.cs.se.instrumantation.model.structure.MappingModel;
-import de.cau.cs.se.instrumantation.model.structure.Operation;
-import de.cau.cs.se.instrumantation.model.structure.OperationModifier;
-import de.cau.cs.se.instrumantation.model.structure.Parameter;
-import de.cau.cs.se.instrumantation.model.structure.ParameterModifier;
-import de.cau.cs.se.instrumantation.model.structure.StructureFactory;
-import de.cau.cs.se.instrumantation.model.structure.Type;
-import de.cau.cs.se.instrumantation.model.structure.TypeReference;
 import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel;
+import de.cau.cs.se.instrumentation.al.mapping.Container;
+import de.cau.cs.se.instrumentation.al.mapping.Containment;
+import de.cau.cs.se.instrumentation.al.mapping.MappingFactory;
+import de.cau.cs.se.instrumentation.al.mapping.MappingModel;
+import de.cau.cs.se.instrumentation.al.mapping.NamedType;
+import de.cau.cs.se.instrumentation.al.mapping.Operation;
+import de.cau.cs.se.instrumentation.al.mapping.OperationModifier;
+import de.cau.cs.se.instrumentation.al.mapping.Parameter;
+import de.cau.cs.se.instrumentation.al.mapping.ParameterModifier;
+import de.cau.cs.se.instrumentation.al.mapping.TypeReference;
 import de.cau.cs.se.instrumentation.al.modelhandling.IModelMapper;
 import java.util.Collection;
 import java.util.HashMap;
@@ -37,7 +37,7 @@ public class PCMModelMapper implements IModelMapper {
   /**
    * hierarchy mapping model factory.
    */
-  private final StructureFactory structureFactory = StructureFactory.eINSTANCE;
+  private final MappingFactory mappingFactory = MappingFactory.eINSTANCE;
   
   private MappingModel result;
   
@@ -48,7 +48,7 @@ public class PCMModelMapper implements IModelMapper {
     String _model = input.getModel();
     URI _createPlatformResourceURI = URI.createPlatformResourceURI(_model, true);
     final Resource source = resourceSet.getResource(_createPlatformResourceURI, true);
-    MappingModel _createMappingModel = this.structureFactory.createMappingModel();
+    MappingModel _createMappingModel = this.mappingFactory.createMappingModel();
     this.result = _createMappingModel;
     this.determineInterfaces(source);
     this.determineContainerHierarchy(source);
@@ -114,7 +114,7 @@ public class PCMModelMapper implements IModelMapper {
           final EList<EObject> components = ((EList<EObject>) _feature);
           for (final EObject component : components) {
             {
-              final Container container = this.structureFactory.createContainer();
+              final Container container = this.mappingFactory.createContainer();
               Object _feature_1 = this.getFeature(component, "entityName");
               final String fullQualifiedName = ((String) _feature_1);
               final String[] names = fullQualifiedName.split("\\.");
@@ -150,7 +150,7 @@ public class PCMModelMapper implements IModelMapper {
       {
         Object _feature_1 = this.getFeature(providedInterface, "entityName");
         final String name = ((String) _feature_1);
-        final Container interfaze = this.structureFactory.createContainer();
+        final Container interfaze = this.mappingFactory.createContainer();
         final EObject interfazeDeclaration = this.interfaceMap.get(name);
         interfaze.setName(name);
         interfaze.setPredecessor(providedInterface);
@@ -183,11 +183,11 @@ public class PCMModelMapper implements IModelMapper {
    * @return returns an application model method declaration.
    */
   private Operation createOperation(final EObject signature) {
-    final Operation method = this.structureFactory.createOperation();
+    final Operation method = this.mappingFactory.createOperation();
     Object _feature = this.getFeature(signature, "entityName");
     method.setName(((String) _feature));
     method.setPredecessor(signature);
-    final OperationModifier modifier = this.structureFactory.createOperationModifier();
+    final OperationModifier modifier = this.mappingFactory.createOperationModifier();
     modifier.setName("public");
     method.setModifier(modifier);
     EObject _referenceFeature = this.getReferenceFeature(signature, "returnType__OperationSignature");
@@ -216,7 +216,7 @@ public class PCMModelMapper implements IModelMapper {
    * @return the application model parameter
    */
   private Parameter createParameter(final EObject object) {
-    final Parameter parameter = this.structureFactory.createParameter();
+    final Parameter parameter = this.mappingFactory.createParameter();
     Object _feature = this.getFeature(object, "parameterName");
     parameter.setName(((String) _feature));
     parameter.setPredecessor(object);
@@ -240,7 +240,7 @@ public class PCMModelMapper implements IModelMapper {
    * @return returns the application model type reference.
    */
   private TypeReference createTypeReference(final EObject object) {
-    final TypeReference typeReference = this.structureFactory.createTypeReference();
+    final TypeReference typeReference = this.mappingFactory.createTypeReference();
     typeReference.setPredecessor(object);
     EClass _eClass = object.eClass();
     boolean _notEquals = (!Objects.equal(_eClass, null));
@@ -254,21 +254,21 @@ public class PCMModelMapper implements IModelMapper {
         switch (_name_1) {
           case "CompositeDataType":
             Object _feature = this.getFeature(object, "entityName");
-            Type _findCompositeType = this.findCompositeType(((String) _feature));
+            NamedType _findCompositeType = this.findCompositeType(((String) _feature));
             typeReference.setType(_findCompositeType);
             break;
           case "PrimitiveDataType":
             Object _feature_1 = this.getFeature(object, "type");
-            Type _findPrimitiveType = this.findPrimitiveType(_feature_1);
+            NamedType _findPrimitiveType = this.findPrimitiveType(_feature_1);
             typeReference.setType(_findPrimitiveType);
             break;
         }
       } else {
-        Type _emptyType = this.emptyType();
+        NamedType _emptyType = this.emptyType();
         typeReference.setType(_emptyType);
       }
     } else {
-      Type _emptyType_1 = this.emptyType();
+      NamedType _emptyType_1 = this.emptyType();
       typeReference.setType(_emptyType_1);
     }
     return typeReference;
@@ -279,19 +279,19 @@ public class PCMModelMapper implements IModelMapper {
    * 
    * @return returns the empty type.
    */
-  private Type emptyType() {
-    EList<Type> _types = this.result.getTypes();
-    final Function1<Type, Boolean> _function = (Type it) -> {
+  private NamedType emptyType() {
+    EList<NamedType> _types = this.result.getTypes();
+    final Function1<NamedType, Boolean> _function = (NamedType it) -> {
       String _name = it.getName();
       return Boolean.valueOf(_name.equals("EMPTY"));
     };
-    Type type = IterableExtensions.<Type>findFirst(_types, _function);
+    NamedType type = IterableExtensions.<NamedType>findFirst(_types, _function);
     boolean _equals = Objects.equal(type, null);
     if (_equals) {
-      Type _createType = this.structureFactory.createType();
-      type = _createType;
+      NamedType _createNamedType = this.mappingFactory.createNamedType();
+      type = _createNamedType;
       type.setName("EMPTY");
-      EList<Type> _types_1 = this.result.getTypes();
+      EList<NamedType> _types_1 = this.result.getTypes();
       _types_1.add(type);
     }
     return type;
@@ -304,20 +304,20 @@ public class PCMModelMapper implements IModelMapper {
    * 
    * @return return a primitive type conforming to the PCM type.
    */
-  private Type findPrimitiveType(final Object object) {
+  private NamedType findPrimitiveType(final Object object) {
     final String typeName = object.toString();
-    EList<Type> _types = this.result.getTypes();
-    final Function1<Type, Boolean> _function = (Type it) -> {
+    EList<NamedType> _types = this.result.getTypes();
+    final Function1<NamedType, Boolean> _function = (NamedType it) -> {
       String _name = it.getName();
       return Boolean.valueOf(_name.equals(typeName));
     };
-    Type type = IterableExtensions.<Type>findFirst(_types, _function);
+    NamedType type = IterableExtensions.<NamedType>findFirst(_types, _function);
     boolean _equals = Objects.equal(type, null);
     if (_equals) {
-      Type _createType = this.structureFactory.createType();
-      type = _createType;
+      NamedType _createNamedType = this.mappingFactory.createNamedType();
+      type = _createNamedType;
       type.setName(typeName);
-      EList<Type> _types_1 = this.result.getTypes();
+      EList<NamedType> _types_1 = this.result.getTypes();
       _types_1.add(type);
     }
     return type;
@@ -328,26 +328,26 @@ public class PCMModelMapper implements IModelMapper {
    * 
    * @param name of the complex type.
    */
-  private Type findCompositeType(final String typeName) {
-    EList<Type> _types = this.result.getTypes();
-    final Function1<Type, Boolean> _function = (Type it) -> {
+  private NamedType findCompositeType(final String typeName) {
+    EList<NamedType> _types = this.result.getTypes();
+    final Function1<NamedType, Boolean> _function = (NamedType it) -> {
       String _name = it.getName();
       return Boolean.valueOf(_name.equals(typeName));
     };
-    Type type = IterableExtensions.<Type>findFirst(_types, _function);
+    NamedType type = IterableExtensions.<NamedType>findFirst(_types, _function);
     boolean _equals = Objects.equal(type, null);
     if (_equals) {
-      Type _createType = this.structureFactory.createType();
-      type = _createType;
+      NamedType _createNamedType = this.mappingFactory.createNamedType();
+      type = _createNamedType;
       type.setName(typeName);
-      EList<Type> _types_1 = this.result.getTypes();
+      EList<NamedType> _types_1 = this.result.getTypes();
       _types_1.add(type);
     }
     return type;
   }
   
   private ParameterModifier createParameterModifier(final Object object) {
-    final ParameterModifier modifier = this.structureFactory.createParameterModifier();
+    final ParameterModifier modifier = this.mappingFactory.createParameterModifier();
     return modifier;
   }
   
@@ -408,7 +408,7 @@ public class PCMModelMapper implements IModelMapper {
         List<String> _segments = _skipLast.getSegments();
         for (final String name : _segments) {
           {
-            final Container newContainer = this.structureFactory.createContainer();
+            final Container newContainer = this.mappingFactory.createContainer();
             newContainer.setName(name);
             EList<Container> _contents_1 = runningParent.getContents();
             _contents_1.add(newContainer);

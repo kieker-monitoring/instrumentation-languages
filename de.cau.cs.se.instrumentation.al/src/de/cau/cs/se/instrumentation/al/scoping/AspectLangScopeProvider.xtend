@@ -23,7 +23,7 @@ import de.cau.cs.se.instrumentation.al.aspectLang.Node
 import de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode
 import de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery
 import de.cau.cs.se.instrumentation.al.modelhandling.ForeignModelTypeProviderFactory
-import de.cau.cs.se.instrumantation.model.structure.Operation
+import de.cau.cs.se.instrumentation.al.mapping.Operation
 
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.xtext.scoping.IScope

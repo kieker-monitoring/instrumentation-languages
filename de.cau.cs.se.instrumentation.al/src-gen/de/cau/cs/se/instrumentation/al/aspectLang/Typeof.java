@@ -2,7 +2,7 @@
  */
 package de.cau.cs.se.instrumentation.al.aspectLang;
 
-import de.cau.cs.se.instrumantation.model.structure.Type;
+import de.cau.cs.se.instrumentation.al.mapping.NamedType;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -33,12 +33,12 @@ public interface Typeof extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Reference</em>' reference.
-   * @see #setReference(Type)
+   * @see #setReference(NamedType)
    * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getTypeof_Reference()
    * @model
    * @generated
    */
-  Type getReference();
+  NamedType getReference();
 
   /**
    * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.Typeof#getReference <em>Reference</em>}' reference.
@@ -48,6 +48,6 @@ public interface Typeof extends EObject
    * @see #getReference()
    * @generated
    */
-  void setReference(Type value);
+  void setReference(NamedType value);
 
 } // Typeof

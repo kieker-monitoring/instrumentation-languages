@@ -2,9 +2,9 @@
  */
 package de.cau.cs.se.instrumentation.al.aspectLang;
 
-import de.cau.cs.se.instrumantation.model.structure.Parameter;
-import de.cau.cs.se.instrumantation.model.structure.ParameterModifier;
-import de.cau.cs.se.instrumantation.model.structure.Type;
+import de.cau.cs.se.instrumentation.al.mapping.Parameter;
+import de.cau.cs.se.instrumentation.al.mapping.ParameterModifier;
+import de.cau.cs.se.instrumentation.al.mapping.Type;
 
 import org.eclipse.emf.ecore.EObject;
 

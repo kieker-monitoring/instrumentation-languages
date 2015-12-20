@@ -6,7 +6,7 @@ package de.cau.cs.se.instrumentation.al.ui.labeling
 import com.google.inject.Inject
 import de.cau.cs.se.instrumentation.al.aspectLang.Aspect
 import de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode
-import de.cau.cs.se.instrumantation.model.structure.NamedElement
+import de.cau.cs.se.instrumentation.al.mapping.NamedElement
 import de.cau.cs.se.instrumentation.al.aspectLang.WildcardNode
 import de.cau.cs.se.instrumentation.al.aspectLang.SubPathNode
 import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery

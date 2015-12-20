@@ -1,12 +1,12 @@
 package de.cau.cs.se.instrumentation.al.handler.pcm
 
-import de.cau.cs.se.instrumantation.model.structure.Container
-import de.cau.cs.se.instrumantation.model.structure.Containment
-import de.cau.cs.se.instrumantation.model.structure.MappingModel
-import de.cau.cs.se.instrumantation.model.structure.Operation
-import de.cau.cs.se.instrumantation.model.structure.Parameter
-import de.cau.cs.se.instrumantation.model.structure.ParameterModifier
-import de.cau.cs.se.instrumantation.model.structure.StructureFactory
+import de.cau.cs.se.instrumentation.al.mapping.Container
+import de.cau.cs.se.instrumentation.al.mapping.Containment
+import de.cau.cs.se.instrumentation.al.mapping.MappingModel
+import de.cau.cs.se.instrumentation.al.mapping.Operation
+import de.cau.cs.se.instrumentation.al.mapping.Parameter
+import de.cau.cs.se.instrumentation.al.mapping.ParameterModifier
+import de.cau.cs.se.instrumentation.al.mapping.MappingFactory
 import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel
 import de.cau.cs.se.instrumentation.al.modelhandling.IModelMapper
 import java.util.Collection
@@ -25,7 +25,7 @@ import org.eclipse.xtext.naming.QualifiedName
 class PCMModelMapper implements IModelMapper {
 	
 	/** hierarchy mapping model factory. */
-	private final StructureFactory structureFactory = StructureFactory.eINSTANCE
+	private final MappingFactory mappingFactory = MappingFactory.eINSTANCE
 	
 	private MappingModel result
 	
@@ -37,7 +37,7 @@ class PCMModelMapper implements IModelMapper {
 		val Resource source = resourceSet.getResource(URI::createPlatformResourceURI(input.getModel(), true), true)
 
 		// create main result model
-		this.result = this.structureFactory.createMappingModel()
+		this.result = this.mappingFactory.createMappingModel()
 		// determine all interfaces
 		determineInterfaces(source)
 		// compose container hierarchy
@@ -86,7 +86,7 @@ class PCMModelMapper implements IModelMapper {
 			if (object.eClass().getName().equals("Repository")) {
 				val components = object.getFeature("components__Repository") as EList<EObject>
 				for (EObject component : components) {
-					val container = this.structureFactory.createContainer()
+					val container = this.mappingFactory.createContainer()
 					val fullQualifiedName = component.getFeature("entityName") as String
 					val names = fullQualifiedName.split('\\.')
 					if (names.size == 0)
@@ -115,7 +115,7 @@ class PCMModelMapper implements IModelMapper {
 		val providedInterfaces = component.getFeature("providedRoles_InterfaceProvidingEntity") as EList<EObject>
 		for (EObject providedInterface : providedInterfaces) {
 			val name = providedInterface.getFeature("entityName") as String
-			val interfaze = this.structureFactory.createContainer()
+			val interfaze = this.mappingFactory.createContainer()
 			val interfazeDeclaration = this.interfaceMap.get(name)
 			interfaze.setName(name)
 			interfaze.setPredecessor(providedInterface)
@@ -140,10 +140,10 @@ class PCMModelMapper implements IModelMapper {
 	 * @return returns an application model method declaration.
 	 */
 	private def Operation createOperation(EObject signature) {
-		val method = this.structureFactory.createOperation()
+		val method = this.mappingFactory.createOperation()
 		method.setName(signature.getFeature("entityName") as String)
 		method.setPredecessor(signature)
-		val modifier = this.structureFactory.createOperationModifier()
+		val modifier = this.mappingFactory.createOperationModifier()
 		modifier.setName("public")
 		method.setModifier(modifier)
 		// returnType__OperationSignature
@@ -164,7 +164,7 @@ class PCMModelMapper implements IModelMapper {
 	 * @return the application model parameter
 	 */
 	private def Parameter createParameter(EObject object) {
-		val parameter = this.structureFactory.createParameter()
+		val parameter = this.mappingFactory.createParameter()
 		parameter.setName(object.getFeature("parameterName") as String)
 		parameter.setPredecessor(object)
 		parameter.setModifier(object.getFeature("modifier__Parameter").createParameterModifier)
@@ -181,7 +181,7 @@ class PCMModelMapper implements IModelMapper {
 	 * @return returns the application model type reference.
 	 */
 	private def createTypeReference(EObject object) {
-		val typeReference = this.structureFactory.createTypeReference()
+		val typeReference = this.mappingFactory.createTypeReference()
 		typeReference.setPredecessor(object)
 		if (object.eClass != null) {
 			if (object.eClass.name != null) {
@@ -206,7 +206,7 @@ class PCMModelMapper implements IModelMapper {
 	private def emptyType() {
 		var type = this.result.types.findFirst[it.name.equals("EMPTY")]
 		if (type == null) {
-			type = this.structureFactory.createType()
+			type = this.mappingFactory.createNamedType()
 			type.setName("EMPTY")
 			this.result.types.add(type)
 		}
@@ -225,7 +225,7 @@ class PCMModelMapper implements IModelMapper {
 		val typeName = object.toString
 		var type = this.result.types.findFirst[it.name.equals(typeName)]
 		if (type == null) {
-			type = this.structureFactory.createType()
+			type = this.mappingFactory.createNamedType()
 			type.setName(typeName)
 			this.result.types.add(type)
 		}
@@ -240,7 +240,7 @@ class PCMModelMapper implements IModelMapper {
 	private def findCompositeType(String typeName) {
 		var type = this.result.types.findFirst[it.name.equals(typeName)]
 		if (type == null) {
-			type = this.structureFactory.createType()
+			type = this.mappingFactory.createNamedType()
 			type.setName(typeName)
 			this.result.types.add(type)
 		}
@@ -248,7 +248,7 @@ class PCMModelMapper implements IModelMapper {
 	}
 	
 	private def ParameterModifier createParameterModifier(Object object) {
-		val modifier = this.structureFactory.createParameterModifier()
+		val modifier = this.mappingFactory.createParameterModifier()
 		return modifier
 	}
 	
@@ -296,7 +296,7 @@ class PCMModelMapper implements IModelMapper {
 			else { // no match found, create missing container
 				var runningParent = parent
 				for (String name : fullQualifiedName.skipLast(1).segments) {
-					val newContainer = this.structureFactory.createContainer()
+					val newContainer = this.mappingFactory.createContainer()
 					newContainer.setName(name)
 					runningParent.contents.add(newContainer)
 					runningParent = newContainer

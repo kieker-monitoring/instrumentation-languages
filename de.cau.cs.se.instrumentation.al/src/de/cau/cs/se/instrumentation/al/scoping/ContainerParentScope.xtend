@@ -20,9 +20,9 @@ import org.eclipse.xtext.naming.QualifiedName
 import org.eclipse.emf.ecore.EObject
 import de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode
 import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery
-import de.cau.cs.se.instrumantation.model.structure.Container
+import de.cau.cs.se.instrumentation.al.mapping.Container
 import org.eclipse.xtext.resource.EObjectDescription
-import de.cau.cs.se.instrumantation.model.structure.NamedElement
+import de.cau.cs.se.instrumentation.al.mapping.NamedElement
 
 /**
  * TODO why is this named ContainerParentScope

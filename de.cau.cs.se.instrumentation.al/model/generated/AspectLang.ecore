@@ -113,23 +113,23 @@
     <eLiterals name="EXCLUDE" value="1" literal="exclude"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OperationQuery">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="modifier" eType="ecore:EClass ../ModelStructure.ecore#//OperationModifier"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="returnType" eType="ecore:EClass ../ModelStructure.ecore#//Type"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="operationReference" eType="ecore:EClass ../ModelStructure.ecore#//Operation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="modifier" eType="ecore:EClass ../MappingModel.ecore#//OperationModifier"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="returnType" eType="ecore:EClass ../MappingModel.ecore#//Type"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operationReference" eType="ecore:EClass ../MappingModel.ecore#//Operation"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameterQueries" upperBound="-1"
         eType="#//ParameterQuery" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ParameterQuery">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="modifier" eType="ecore:EClass ../ModelStructure.ecore#//ParameterModifier"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass ../ModelStructure.ecore#//Type"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" eType="ecore:EClass ../ModelStructure.ecore#//Parameter"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="modifier" eType="ecore:EClass ../MappingModel.ecore#//ParameterModifier"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass ../MappingModel.ecore#//Type"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" eType="ecore:EClass ../MappingModel.ecore#//Parameter"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Node">
     <eStructuralFeatures xsi:type="ecore:EReference" name="constraint" eType="#//PropertyConstraintExpression"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ContainerNode" eSuperTypes="#//Node">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="container" eType="ecore:EClass ../ModelStructure.ecore#//Container"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="container" eType="ecore:EClass ../MappingModel.ecore#//Container"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WildcardNode" eSuperTypes="#//Node"/>
   <eClassifiers xsi:type="ecore:EClass" name="SubPathNode" eSuperTypes="#//Node"/>
@@ -165,10 +165,10 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModelProperty">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="ecore:EClass ../ModelStructure.ecore#//Feature"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="ecore:EClass ../MappingModel.ecore#//Feature"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Typeof">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="ecore:EClass ../ModelStructure.ecore#//Type"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="ecore:EClass ../MappingModel.ecore#//NamedType"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Literal" eSuperTypes="#//Value #//ConstraintElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="FloatLiteral" eSuperTypes="#//Literal">

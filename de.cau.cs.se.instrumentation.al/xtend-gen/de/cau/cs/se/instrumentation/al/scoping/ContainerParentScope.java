@@ -16,11 +16,11 @@
 package de.cau.cs.se.instrumentation.al.scoping;
 
 import com.google.common.base.Objects;
-import de.cau.cs.se.instrumantation.model.structure.Container;
-import de.cau.cs.se.instrumantation.model.structure.NamedElement;
 import de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode;
 import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.Node;
+import de.cau.cs.se.instrumentation.al.mapping.Container;
+import de.cau.cs.se.instrumentation.al.mapping.NamedElement;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.naming.QualifiedName;

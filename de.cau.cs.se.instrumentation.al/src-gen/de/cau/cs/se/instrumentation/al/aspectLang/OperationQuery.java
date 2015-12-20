@@ -2,9 +2,9 @@
  */
 package de.cau.cs.se.instrumentation.al.aspectLang;
 
-import de.cau.cs.se.instrumantation.model.structure.Operation;
-import de.cau.cs.se.instrumantation.model.structure.OperationModifier;
-import de.cau.cs.se.instrumantation.model.structure.Type;
+import de.cau.cs.se.instrumentation.al.mapping.Operation;
+import de.cau.cs.se.instrumentation.al.mapping.OperationModifier;
+import de.cau.cs.se.instrumentation.al.mapping.Type;
 
 import org.eclipse.emf.common.util.EList;
 

@@ -27,26 +27,26 @@ import java.util.Map
 import java.util.HashMap
 import javax.xml.parsers.DocumentBuilderFactory
 import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut
-import de.cau.cs.se.instrumantation.model.structure.Operation
-import de.cau.cs.se.instrumantation.model.structure.OperationModifier
+import de.cau.cs.se.instrumentation.al.mapping.Operation
+import de.cau.cs.se.instrumentation.al.mapping.OperationModifier
 import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery
 import de.cau.cs.se.instrumentation.al.aspectLang.Node
 import de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode
-import de.cau.cs.se.instrumantation.model.structure.Parameter
+import de.cau.cs.se.instrumentation.al.mapping.Parameter
 import javax.xml.transform.TransformerFactory
 import javax.xml.transform.dom.DOMSource
 import javax.xml.transform.stream.StreamResult
 import java.io.StringWriter
-import de.cau.cs.se.instrumantation.model.structure.TypeReference
+import de.cau.cs.se.instrumentation.al.mapping.TypeReference
 import de.cau.cs.se.instrumentation.al.aspectLang.Collector
 import org.w3c.dom.Element
 import org.w3c.dom.Document
 import de.cau.cs.se.instrumentation.al.aspectLang.InsertionPoint
 import javax.xml.transform.OutputKeys
-import de.cau.cs.se.instrumantation.model.structure.NamedType
-import de.cau.cs.se.instrumantation.model.structure.Type
-import de.cau.cs.se.instrumantation.model.structure.Container
-import de.cau.cs.se.instrumantation.model.structure.CollectionType
+import de.cau.cs.se.instrumentation.al.mapping.NamedType
+import de.cau.cs.se.instrumentation.al.mapping.Type
+import de.cau.cs.se.instrumentation.al.mapping.Container
+import de.cau.cs.se.instrumentation.al.mapping.CollectionType
 
 /**
  * Generates code from your model files on save.

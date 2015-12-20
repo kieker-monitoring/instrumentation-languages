@@ -34,12 +34,12 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
-import de.cau.cs.se.instrumantation.model.structure.NamedElement;
-import de.cau.cs.se.instrumantation.model.structure.StructureFactory;
+import de.cau.cs.se.instrumentation.al.mapping.MappingFactory;
+import de.cau.cs.se.instrumentation.al.mapping.NamedElement;
 
 /**
- * 
- * 
+ *
+ *
  * @author Reiner Jung
  */
 public class ForeignModelTypeScope extends AbstractScope {
@@ -60,7 +60,7 @@ public class ForeignModelTypeScope extends AbstractScope {
 	}
 
 	@Override
-	public IEObjectDescription getSingleElement(final QualifiedName name) { 
+	public IEObjectDescription getSingleElement(final QualifiedName name) {
 		final NamedElement type = this.typeProvider
 				.findTypeByName(this.qualifiedNameConverter.toString(name));
 		if (type == null) {
@@ -88,7 +88,8 @@ public class ForeignModelTypeScope extends AbstractScope {
 			final Set<IEObjectDescription> result = Collections.singleton(EObjectDescription
 					.create(this.qualifiedNameConverter
 							.toQualifiedName(((JvmIdentifiableElement) object)
-									.getQualifiedName()), object));
+									.getQualifiedName()),
+							object));
 			return this.filterResult(result);
 		}
 		return Collections.emptySet();
@@ -127,7 +128,7 @@ public class ForeignModelTypeScope extends AbstractScope {
 
 	protected InternalEObject createProxy(final String fullyQualifiedName) {
 		final URI uri = this.typeProvider.getTypeUriHelper().getFullURIForClass(fullyQualifiedName);
-		final InternalEObject proxy = (InternalEObject) StructureFactory.eINSTANCE.createContainer();
+		final InternalEObject proxy = (InternalEObject) MappingFactory.eINSTANCE.createContainer();
 		proxy.eSetProxyURI(uri);
 		return proxy;
 	}

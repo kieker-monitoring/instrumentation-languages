@@ -16,11 +16,11 @@
 package de.cau.cs.se.instrumentation.al.modelhandling;
 
 import com.google.common.base.Objects;
-import de.cau.cs.se.instrumantation.model.structure.Container;
-import de.cau.cs.se.instrumantation.model.structure.MappingModel;
-import de.cau.cs.se.instrumantation.model.structure.NamedElement;
-import de.cau.cs.se.instrumantation.model.structure.NamedType;
 import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel;
+import de.cau.cs.se.instrumentation.al.mapping.Container;
+import de.cau.cs.se.instrumentation.al.mapping.MappingModel;
+import de.cau.cs.se.instrumentation.al.mapping.NamedElement;
+import de.cau.cs.se.instrumentation.al.mapping.NamedType;
 import de.cau.cs.se.instrumentation.al.modelhandling.IModelMapper;
 import java.io.IOException;
 import java.io.InputStream;

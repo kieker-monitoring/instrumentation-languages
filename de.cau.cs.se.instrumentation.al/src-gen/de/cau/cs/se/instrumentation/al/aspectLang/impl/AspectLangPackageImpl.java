@@ -2,8 +2,6 @@
  */
 package de.cau.cs.se.instrumentation.al.aspectLang.impl;
 
-import de.cau.cs.se.instrumantation.model.structure.StructurePackage;
-
 import de.cau.cs.se.instrumentation.al.aspectLang.Advice;
 import de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameterDeclaration;
 import de.cau.cs.se.instrumentation.al.aspectLang.Annotation;
@@ -46,6 +44,8 @@ import de.cau.cs.se.instrumentation.al.aspectLang.Typeof;
 import de.cau.cs.se.instrumentation.al.aspectLang.UtilizeAdvice;
 import de.cau.cs.se.instrumentation.al.aspectLang.Value;
 import de.cau.cs.se.instrumentation.al.aspectLang.WildcardNode;
+
+import de.cau.cs.se.instrumentation.al.mapping.MappingPackage;
 
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
 
@@ -395,8 +395,8 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
     isInited = true;
 
     // Initialize simple dependencies
-    StructurePackage.eINSTANCE.eClass();
     RecordLangPackage.eINSTANCE.eClass();
+    MappingPackage.eINSTANCE.eClass();
 
     // Create package meta-data objects
     theAspectLangPackage.createPackageContents();
@@ -1596,7 +1596,7 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
     // Obtain other dependent packages
     EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
     RecordLangPackage theRecordLangPackage = (RecordLangPackage)EPackage.Registry.INSTANCE.getEPackage(RecordLangPackage.eNS_URI);
-    StructurePackage theStructurePackage = (StructurePackage)EPackage.Registry.INSTANCE.getEPackage(StructurePackage.eNS_URI);
+    MappingPackage theMappingPackage = (MappingPackage)EPackage.Registry.INSTANCE.getEPackage(MappingPackage.eNS_URI);
 
     // Create type parameters
 
@@ -1694,21 +1694,21 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
     initEReference(getCompositionQuery_SubQueries(), this.getLocationQuery(), null, "subQueries", null, 0, -1, CompositionQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(operationQueryEClass, OperationQuery.class, "OperationQuery", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getOperationQuery_Modifier(), theStructurePackage.getOperationModifier(), null, "modifier", null, 0, 1, OperationQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getOperationQuery_ReturnType(), theStructurePackage.getType(), null, "returnType", null, 0, 1, OperationQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getOperationQuery_OperationReference(), theStructurePackage.getOperation(), null, "operationReference", null, 0, 1, OperationQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getOperationQuery_Modifier(), theMappingPackage.getOperationModifier(), null, "modifier", null, 0, 1, OperationQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getOperationQuery_ReturnType(), theMappingPackage.getType(), null, "returnType", null, 0, 1, OperationQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getOperationQuery_OperationReference(), theMappingPackage.getOperation(), null, "operationReference", null, 0, 1, OperationQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOperationQuery_ParameterQueries(), this.getParameterQuery(), null, "parameterQueries", null, 0, -1, OperationQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(parameterQueryEClass, ParameterQuery.class, "ParameterQuery", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getParameterQuery_Modifier(), theStructurePackage.getParameterModifier(), null, "modifier", null, 0, 1, ParameterQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getParameterQuery_Type(), theStructurePackage.getType(), null, "type", null, 0, 1, ParameterQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getParameterQuery_Parameter(), theStructurePackage.getParameter(), null, "parameter", null, 0, 1, ParameterQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getParameterQuery_Modifier(), theMappingPackage.getParameterModifier(), null, "modifier", null, 0, 1, ParameterQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getParameterQuery_Type(), theMappingPackage.getType(), null, "type", null, 0, 1, ParameterQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getParameterQuery_Parameter(), theMappingPackage.getParameter(), null, "parameter", null, 0, 1, ParameterQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(nodeEClass, Node.class, "Node", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getNode_Constraint(), this.getPropertyConstraintExpression(), null, "constraint", null, 0, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(containerNodeEClass, ContainerNode.class, "ContainerNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getContainerNode_Container(), theStructurePackage.getContainer(), null, "container", null, 0, 1, ContainerNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getContainerNode_Container(), theMappingPackage.getContainer(), null, "container", null, 0, 1, ContainerNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(wildcardNodeEClass, WildcardNode.class, "WildcardNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1730,10 +1730,10 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
     initEReference(getLocalQuery_Typeof(), this.getTypeof(), null, "typeof", null, 0, 1, LocalQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(modelPropertyEClass, ModelProperty.class, "ModelProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getModelProperty_Reference(), theStructurePackage.getFeature(), null, "reference", null, 0, 1, ModelProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModelProperty_Reference(), theMappingPackage.getFeature(), null, "reference", null, 0, 1, ModelProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(typeofEClass, Typeof.class, "Typeof", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getTypeof_Reference(), theStructurePackage.getType(), null, "reference", null, 0, 1, Typeof.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTypeof_Reference(), theMappingPackage.getNamedType(), null, "reference", null, 0, 1, Typeof.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(literalEClass, Literal.class, "Literal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

@@ -2,7 +2,7 @@
  */
 package de.cau.cs.se.instrumentation.al.aspectLang;
 
-import de.cau.cs.se.instrumantation.model.structure.Feature;
+import de.cau.cs.se.instrumentation.al.mapping.Feature;
 
 import org.eclipse.emf.ecore.EObject;
 

@@ -6140,7 +6140,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             otherlv_2=(Token)match(input,RULE_ID,FOLLOW_35); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              		newLeafNode(otherlv_2, grammarAccess.getTypeofAccess().getReferenceTypeCrossReference_2_0()); 
+              		newLeafNode(otherlv_2, grammarAccess.getTypeofAccess().getReferenceNamedTypeCrossReference_2_0()); 
               	
             }
 

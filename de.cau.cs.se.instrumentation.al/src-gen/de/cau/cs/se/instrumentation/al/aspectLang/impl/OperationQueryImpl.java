@@ -2,13 +2,13 @@
  */
 package de.cau.cs.se.instrumentation.al.aspectLang.impl;
 
-import de.cau.cs.se.instrumantation.model.structure.Operation;
-import de.cau.cs.se.instrumantation.model.structure.OperationModifier;
-import de.cau.cs.se.instrumantation.model.structure.Type;
-
 import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
 import de.cau.cs.se.instrumentation.al.aspectLang.OperationQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery;
+
+import de.cau.cs.se.instrumentation.al.mapping.Operation;
+import de.cau.cs.se.instrumentation.al.mapping.OperationModifier;
+import de.cau.cs.se.instrumentation.al.mapping.Type;
 
 import java.util.Collection;
 

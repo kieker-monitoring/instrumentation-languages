@@ -17,8 +17,8 @@ package de.cau.cs.se.instrumentation.al.modelhandling;
 
 import org.eclipse.xtext.common.types.access.jdt.TypeURIHelper;
 
-import de.cau.cs.se.instrumantation.model.structure.NamedElement;
-import de.cau.cs.se.instrumantation.model.structure.NamedType;
+import de.cau.cs.se.instrumentation.al.mapping.NamedElement;
+import de.cau.cs.se.instrumentation.al.mapping.NamedType;
 
 /**
  * The type provider interface. It is used by the scoping and plays a role in the content assist.

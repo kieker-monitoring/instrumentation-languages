@@ -4,8 +4,6 @@
 package de.cau.cs.se.instrumentation.al.ui.labeling;
 
 import com.google.inject.Inject;
-import de.cau.cs.se.instrumantation.model.structure.Container;
-import de.cau.cs.se.instrumantation.model.structure.NamedElement;
 import de.cau.cs.se.instrumentation.al.aspectLang.Aspect;
 import de.cau.cs.se.instrumentation.al.aspectLang.Collector;
 import de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode;
@@ -13,6 +11,8 @@ import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut;
 import de.cau.cs.se.instrumentation.al.aspectLang.SubPathNode;
 import de.cau.cs.se.instrumentation.al.aspectLang.WildcardNode;
+import de.cau.cs.se.instrumentation.al.mapping.Container;
+import de.cau.cs.se.instrumentation.al.mapping.NamedElement;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;

@@ -2175,7 +2175,7 @@ ruleTypeof returns [EObject current=null]
         }
 	otherlv_2=RULE_ID
 	{
-		newLeafNode(otherlv_2, grammarAccess.getTypeofAccess().getReferenceTypeCrossReference_2_0()); 
+		newLeafNode(otherlv_2, grammarAccess.getTypeofAccess().getReferenceNamedTypeCrossReference_2_0()); 
 	}
 
 )

@@ -8,7 +8,7 @@ generate aspectLang "http://www.cau.de/cs/se/instrumentation/al/AspectLang"
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 import "http://www.cau.de/cs/se/instrumentation/rl/RecordLang" as irl
 // import "platform:/resource/de.cau.cs.se.instrumentation.rl/model/generated/RecordLang.ecore" as irl
-import "http://modelstructure.se.cs.cau.de/structure" as structure
+import "http://mappingmodel.tools.kieker/ial/mapping" as mapping
 
 AspectModel:
 	'package' name = QualifiedName
@@ -121,11 +121,11 @@ enum QueryModifier:
 ;
 
 OperationQuery: {OperationQuery}
-	modifier=[structure::OperationModifier|ID]?
-	returnType=[structure::Type|ID]? 
+	modifier=[mapping::OperationModifier|ID]?
+	returnType=[mapping::Type|ID]? // this must be fixed to support collections
 	(
 		(
-			operationReference=[structure::Operation|ID] 
+			operationReference=[mapping::Operation|ID] 
 			('(' parameterQueries+=ParameterQuery (',' parameterQueries+=ParameterQuery)* ')')? 
 		) | 
 		'*'
@@ -133,9 +133,9 @@ OperationQuery: {OperationQuery}
 ;
 
 ParameterQuery: {ParameterQuery}
-	modifier=[structure::ParameterModifier|ID]?
-	(type=[structure::Type|ID]| '*')
-	parameter=[structure::Parameter|ID]?
+	modifier=[mapping::ParameterModifier|ID]?
+	(type=[mapping::Type|ID]| '*') // this must be fixed for collections
+	parameter=[mapping::Parameter|ID]?
 ;
 
 Node:
@@ -143,7 +143,7 @@ Node:
 ;
 
 ContainerNode:
-	container=[structure::Container|ID]
+	container=[mapping::Container|ID]
 ;
 
 WildcardNode: {WildcardNode}
@@ -190,11 +190,11 @@ LocalQuery:
 ;
 
 ModelProperty:
-	 '#' reference=[structure::Feature|ID]
+	 '#' reference=[mapping::Feature|ID]
 ;
 
 Typeof:
-	'istypeof' '(' reference=[structure::Type|ID] ')'
+	'istypeof' '(' reference=[mapping::NamedType|ID] ')' // should be replaced with generate type reference rule
 ;
 
 /* ------------------------------- */

@@ -24,9 +24,9 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.util.Strings;
 
-import de.cau.cs.se.instrumantation.model.structure.NamedElement;
-import de.cau.cs.se.instrumantation.model.structure.NamedType;
 import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel;
+import de.cau.cs.se.instrumentation.al.mapping.NamedElement;
+import de.cau.cs.se.instrumentation.al.mapping.NamedType;
 
 /**
  * The type provider allows to retrieve a list of all primitive types and provides type name lookup.

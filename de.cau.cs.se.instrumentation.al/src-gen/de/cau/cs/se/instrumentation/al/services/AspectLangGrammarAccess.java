@@ -794,51 +794,51 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cAsteriskKeyword_3_1 = (Keyword)cAlternatives_3.eContents().get(1);
 		
 		//OperationQuery:
-		//	{OperationQuery} modifier=[structure::OperationModifier]?
-		//	returnType=[structure::Type]? (operationReference=[structure::Operation] ('(' parameterQueries+=ParameterQuery (','
+		//	{OperationQuery} modifier=[mapping::OperationModifier]?
+		//	returnType=[mapping::Type]? (operationReference=[mapping::Operation] ('(' parameterQueries+=ParameterQuery (','
 		//	parameterQueries+=ParameterQuery)* ')')?
 		//	|
 		//	'*');
 		@Override public ParserRule getRule() { return rule; }
 
-		//{OperationQuery} modifier=[structure::OperationModifier]? returnType=[structure::Type]?
-		//(operationReference=[structure::Operation] ('(' parameterQueries+=ParameterQuery (','
-		//parameterQueries+=ParameterQuery)* ')')? | '*')
+		//{OperationQuery} modifier=[mapping::OperationModifier]? returnType=[mapping::Type]?
+		//(operationReference=[mapping::Operation] ('(' parameterQueries+=ParameterQuery (',' parameterQueries+=ParameterQuery)*
+		//')')? | '*')
 		public Group getGroup() { return cGroup; }
 
 		//{OperationQuery}
 		public Action getOperationQueryAction_0() { return cOperationQueryAction_0; }
 
-		//modifier=[structure::OperationModifier]?
+		//modifier=[mapping::OperationModifier]?
 		public Assignment getModifierAssignment_1() { return cModifierAssignment_1; }
 
-		//[structure::OperationModifier]
+		//[mapping::OperationModifier]
 		public CrossReference getModifierOperationModifierCrossReference_1_0() { return cModifierOperationModifierCrossReference_1_0; }
 
 		//ID
 		public RuleCall getModifierOperationModifierIDTerminalRuleCall_1_0_1() { return cModifierOperationModifierIDTerminalRuleCall_1_0_1; }
 
-		//returnType=[structure::Type]?
+		//returnType=[mapping::Type]?
 		public Assignment getReturnTypeAssignment_2() { return cReturnTypeAssignment_2; }
 
-		//[structure::Type]
+		//[mapping::Type]
 		public CrossReference getReturnTypeTypeCrossReference_2_0() { return cReturnTypeTypeCrossReference_2_0; }
 
 		//ID
 		public RuleCall getReturnTypeTypeIDTerminalRuleCall_2_0_1() { return cReturnTypeTypeIDTerminalRuleCall_2_0_1; }
 
-		//(operationReference=[structure::Operation] ('(' parameterQueries+=ParameterQuery (',' parameterQueries+=ParameterQuery)*
+		//(operationReference=[mapping::Operation] ('(' parameterQueries+=ParameterQuery (',' parameterQueries+=ParameterQuery)*
 		//')')? | '*')
 		public Alternatives getAlternatives_3() { return cAlternatives_3; }
 
-		//operationReference=[structure::Operation] ('(' parameterQueries+=ParameterQuery (',' parameterQueries+=ParameterQuery)*
+		//operationReference=[mapping::Operation] ('(' parameterQueries+=ParameterQuery (',' parameterQueries+=ParameterQuery)*
 		//')')?
 		public Group getGroup_3_0() { return cGroup_3_0; }
 
-		//operationReference=[structure::Operation]
+		//operationReference=[mapping::Operation]
 		public Assignment getOperationReferenceAssignment_3_0_0() { return cOperationReferenceAssignment_3_0_0; }
 
-		//[structure::Operation]
+		//[mapping::Operation]
 		public CrossReference getOperationReferenceOperationCrossReference_3_0_0_0() { return cOperationReferenceOperationCrossReference_3_0_0_0; }
 
 		//ID
@@ -892,33 +892,31 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cParameterParameterIDTerminalRuleCall_3_0_1 = (RuleCall)cParameterParameterCrossReference_3_0.eContents().get(1);
 		
 		//ParameterQuery:
-		//	{ParameterQuery} modifier=[structure::ParameterModifier]? (type=[structure::Type] | '*')
-		//	parameter=[structure::Parameter]?;
+		//	{ParameterQuery} modifier=[mapping::ParameterModifier]? (type=[mapping::Type] | '*') parameter=[mapping::Parameter]?;
 		@Override public ParserRule getRule() { return rule; }
 
-		//{ParameterQuery} modifier=[structure::ParameterModifier]? (type=[structure::Type] | '*')
-		//parameter=[structure::Parameter]?
+		//{ParameterQuery} modifier=[mapping::ParameterModifier]? (type=[mapping::Type] | '*') parameter=[mapping::Parameter]?
 		public Group getGroup() { return cGroup; }
 
 		//{ParameterQuery}
 		public Action getParameterQueryAction_0() { return cParameterQueryAction_0; }
 
-		//modifier=[structure::ParameterModifier]?
+		//modifier=[mapping::ParameterModifier]?
 		public Assignment getModifierAssignment_1() { return cModifierAssignment_1; }
 
-		//[structure::ParameterModifier]
+		//[mapping::ParameterModifier]
 		public CrossReference getModifierParameterModifierCrossReference_1_0() { return cModifierParameterModifierCrossReference_1_0; }
 
 		//ID
 		public RuleCall getModifierParameterModifierIDTerminalRuleCall_1_0_1() { return cModifierParameterModifierIDTerminalRuleCall_1_0_1; }
 
-		//(type=[structure::Type] | '*')
+		//(type=[mapping::Type] | '*')
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 
-		//type=[structure::Type]
+		//type=[mapping::Type]
 		public Assignment getTypeAssignment_2_0() { return cTypeAssignment_2_0; }
 
-		//[structure::Type]
+		//[mapping::Type]
 		public CrossReference getTypeTypeCrossReference_2_0_0() { return cTypeTypeCrossReference_2_0_0; }
 
 		//ID
@@ -927,10 +925,11 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//'*'
 		public Keyword getAsteriskKeyword_2_1() { return cAsteriskKeyword_2_1; }
 
-		//parameter=[structure::Parameter]?
+		//// this must be fixed for collections
+		//parameter=[mapping::Parameter]?
 		public Assignment getParameterAssignment_3() { return cParameterAssignment_3; }
 
-		//[structure::Parameter]
+		//[mapping::Parameter]
 		public CrossReference getParameterParameterCrossReference_3_0() { return cParameterParameterCrossReference_3_0; }
 
 		//ID
@@ -996,13 +995,13 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cContainerContainerIDTerminalRuleCall_0_1 = (RuleCall)cContainerContainerCrossReference_0.eContents().get(1);
 		
 		//ContainerNode:
-		//	container=[structure::Container];
+		//	container=[mapping::Container];
 		@Override public ParserRule getRule() { return rule; }
 
-		//container=[structure::Container]
+		//container=[mapping::Container]
 		public Assignment getContainerAssignment() { return cContainerAssignment; }
 
-		//[structure::Container]
+		//[mapping::Container]
 		public CrossReference getContainerContainerCrossReference_0() { return cContainerContainerCrossReference_0; }
 
 		//ID
@@ -1223,19 +1222,19 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cReferenceFeatureIDTerminalRuleCall_1_0_1 = (RuleCall)cReferenceFeatureCrossReference_1_0.eContents().get(1);
 		
 		//ModelProperty:
-		//	'#' reference=[structure::Feature];
+		//	'#' reference=[mapping::Feature];
 		@Override public ParserRule getRule() { return rule; }
 
-		//'#' reference=[structure::Feature]
+		//'#' reference=[mapping::Feature]
 		public Group getGroup() { return cGroup; }
 
 		//'#'
 		public Keyword getNumberSignKeyword_0() { return cNumberSignKeyword_0; }
 
-		//reference=[structure::Feature]
+		//reference=[mapping::Feature]
 		public Assignment getReferenceAssignment_1() { return cReferenceAssignment_1; }
 
-		//[structure::Feature]
+		//[mapping::Feature]
 		public CrossReference getReferenceFeatureCrossReference_1_0() { return cReferenceFeatureCrossReference_1_0; }
 
 		//ID
@@ -1248,15 +1247,16 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cIstypeofKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cReferenceAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final CrossReference cReferenceTypeCrossReference_2_0 = (CrossReference)cReferenceAssignment_2.eContents().get(0);
-		private final RuleCall cReferenceTypeIDTerminalRuleCall_2_0_1 = (RuleCall)cReferenceTypeCrossReference_2_0.eContents().get(1);
+		private final CrossReference cReferenceNamedTypeCrossReference_2_0 = (CrossReference)cReferenceAssignment_2.eContents().get(0);
+		private final RuleCall cReferenceNamedTypeIDTerminalRuleCall_2_0_1 = (RuleCall)cReferenceNamedTypeCrossReference_2_0.eContents().get(1);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//Typeof:
-		//	'istypeof' '(' reference=[structure::Type] ')';
+		//	'istypeof' '(' reference=[mapping::NamedType] ')' // should be replaced with generate type reference rule
+		//;
 		@Override public ParserRule getRule() { return rule; }
 
-		//'istypeof' '(' reference=[structure::Type] ')'
+		//'istypeof' '(' reference=[mapping::NamedType] ')'
 		public Group getGroup() { return cGroup; }
 
 		//'istypeof'
@@ -1265,14 +1265,14 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//'('
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 
-		//reference=[structure::Type]
+		//reference=[mapping::NamedType]
 		public Assignment getReferenceAssignment_2() { return cReferenceAssignment_2; }
 
-		//[structure::Type]
-		public CrossReference getReferenceTypeCrossReference_2_0() { return cReferenceTypeCrossReference_2_0; }
+		//[mapping::NamedType]
+		public CrossReference getReferenceNamedTypeCrossReference_2_0() { return cReferenceNamedTypeCrossReference_2_0; }
 
 		//ID
-		public RuleCall getReferenceTypeIDTerminalRuleCall_2_0_1() { return cReferenceTypeIDTerminalRuleCall_2_0_1; }
+		public RuleCall getReferenceNamedTypeIDTerminalRuleCall_2_0_1() { return cReferenceNamedTypeIDTerminalRuleCall_2_0_1; }
 
 		//')'
 		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
@@ -2019,8 +2019,8 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//OperationQuery:
-	//	{OperationQuery} modifier=[structure::OperationModifier]?
-	//	returnType=[structure::Type]? (operationReference=[structure::Operation] ('(' parameterQueries+=ParameterQuery (','
+	//	{OperationQuery} modifier=[mapping::OperationModifier]?
+	//	returnType=[mapping::Type]? (operationReference=[mapping::Operation] ('(' parameterQueries+=ParameterQuery (','
 	//	parameterQueries+=ParameterQuery)* ')')?
 	//	|
 	//	'*');
@@ -2033,8 +2033,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ParameterQuery:
-	//	{ParameterQuery} modifier=[structure::ParameterModifier]? (type=[structure::Type] | '*')
-	//	parameter=[structure::Parameter]?;
+	//	{ParameterQuery} modifier=[mapping::ParameterModifier]? (type=[mapping::Type] | '*') parameter=[mapping::Parameter]?;
 	public ParameterQueryElements getParameterQueryAccess() {
 		return pParameterQuery;
 	}
@@ -2054,7 +2053,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ContainerNode:
-	//	container=[structure::Container];
+	//	container=[mapping::Container];
 	public ContainerNodeElements getContainerNodeAccess() {
 		return pContainerNode;
 	}
@@ -2165,7 +2164,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ModelProperty:
-	//	'#' reference=[structure::Feature];
+	//	'#' reference=[mapping::Feature];
 	public ModelPropertyElements getModelPropertyAccess() {
 		return pModelProperty;
 	}
@@ -2175,7 +2174,8 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Typeof:
-	//	'istypeof' '(' reference=[structure::Type] ')';
+	//	'istypeof' '(' reference=[mapping::NamedType] ')' // should be replaced with generate type reference rule
+	//;
 	public TypeofElements getTypeofAccess() {
 		return pTypeof;
 	}

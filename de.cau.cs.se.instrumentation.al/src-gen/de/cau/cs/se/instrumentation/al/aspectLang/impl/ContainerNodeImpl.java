@@ -35,7 +35,7 @@ public class ContainerNodeImpl extends NodeImpl implements ContainerNode
    * @generated
    * @ordered
    */
-  protected de.cau.cs.se.instrumantation.model.structure.Container container;
+  protected de.cau.cs.se.instrumentation.al.mapping.Container container;
 
   /**
    * <!-- begin-user-doc -->
@@ -63,12 +63,12 @@ public class ContainerNodeImpl extends NodeImpl implements ContainerNode
    * <!-- end-user-doc -->
    * @generated
    */
-  public de.cau.cs.se.instrumantation.model.structure.Container getContainer()
+  public de.cau.cs.se.instrumentation.al.mapping.Container getContainer()
   {
     if (container != null && container.eIsProxy())
     {
       InternalEObject oldContainer = (InternalEObject)container;
-      container = (de.cau.cs.se.instrumantation.model.structure.Container)eResolveProxy(oldContainer);
+      container = (de.cau.cs.se.instrumentation.al.mapping.Container)eResolveProxy(oldContainer);
       if (container != oldContainer)
       {
         if (eNotificationRequired())
@@ -83,7 +83,7 @@ public class ContainerNodeImpl extends NodeImpl implements ContainerNode
    * <!-- end-user-doc -->
    * @generated
    */
-  public de.cau.cs.se.instrumantation.model.structure.Container basicGetContainer()
+  public de.cau.cs.se.instrumentation.al.mapping.Container basicGetContainer()
   {
     return container;
   }
@@ -93,9 +93,9 @@ public class ContainerNodeImpl extends NodeImpl implements ContainerNode
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setContainer(de.cau.cs.se.instrumantation.model.structure.Container newContainer)
+  public void setContainer(de.cau.cs.se.instrumentation.al.mapping.Container newContainer)
   {
-    de.cau.cs.se.instrumantation.model.structure.Container oldContainer = container;
+    de.cau.cs.se.instrumentation.al.mapping.Container oldContainer = container;
     container = newContainer;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.CONTAINER_NODE__CONTAINER, oldContainer, container));
@@ -129,7 +129,7 @@ public class ContainerNodeImpl extends NodeImpl implements ContainerNode
     switch (featureID)
     {
       case AspectLangPackage.CONTAINER_NODE__CONTAINER:
-        setContainer((de.cau.cs.se.instrumantation.model.structure.Container)newValue);
+        setContainer((de.cau.cs.se.instrumentation.al.mapping.Container)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -146,7 +146,7 @@ public class ContainerNodeImpl extends NodeImpl implements ContainerNode
     switch (featureID)
     {
       case AspectLangPackage.CONTAINER_NODE__CONTAINER:
-        setContainer((de.cau.cs.se.instrumantation.model.structure.Container)null);
+        setContainer((de.cau.cs.se.instrumentation.al.mapping.Container)null);
         return;
     }
     super.eUnset(featureID);

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.cau.cs.se.instrumentation.al/model-gen" modelPluginID="de.cau.cs.se.instrumentation.al"
+    modelName="MappingModel" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>MappingModel.ecore</foreignModel>
+  <genPackages prefix="Mapping" basePackage="de.cau.cs.se.instrumentation.al" disposableProviderFactory="true"
+      ecorePackage="MappingModel.ecore#/">
+    <genClasses ecoreClass="MappingModel.ecore#//Type"/>
+    <genClasses ecoreClass="MappingModel.ecore#//CollectionType">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MappingModel.ecore#//CollectionType/elementType"/>
+    </genClasses>
+    <genClasses ecoreClass="MappingModel.ecore#//NamedType"/>
+    <genClasses ecoreClass="MappingModel.ecore#//TypeReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MappingModel.ecore#//TypeReference/type"/>
+    </genClasses>
+    <genClasses ecoreClass="MappingModel.ecore#//Container">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MappingModel.ecore#//Container/modifier"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MappingModel.ecore#//Container/operations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MappingModel.ecore#//Container/attributes"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MappingModel.ecore#//Container/references"/>
+    </genClasses>
+    <genClasses ecoreClass="MappingModel.ecore#//Operation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MappingModel.ecore#//Operation/returnType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MappingModel.ecore#//Operation/parameters"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MappingModel.ecore#//Operation/modifier"/>
+    </genClasses>
+    <genClasses ecoreClass="MappingModel.ecore#//ParameterModifier"/>
+    <genClasses ecoreClass="MappingModel.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MappingModel.ecore#//NamedElement/name"/>
+    </genClasses>
+    <genClasses ecoreClass="MappingModel.ecore#//Parameter">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MappingModel.ecore#//Parameter/modifier"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MappingModel.ecore#//Parameter/type"/>
+    </genClasses>
+    <genClasses ecoreClass="MappingModel.ecore#//MappingModel"/>
+    <genClasses ecoreClass="MappingModel.ecore#//OperationModifier"/>
+    <genClasses ecoreClass="MappingModel.ecore#//ContainerModifier"/>
+    <genClasses image="false" ecoreClass="MappingModel.ecore#//Containment">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MappingModel.ecore#//Containment/contents"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MappingModel.ecore#//Containment/types"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="MappingModel.ecore#//Traceability">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MappingModel.ecore#//Traceability/predecessor"/>
+    </genClasses>
+    <genClasses ecoreClass="MappingModel.ecore#//Attribute">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MappingModel.ecore#//Attribute/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MappingModel.ecore#//Attribute/value"/>
+    </genClasses>
+    <genClasses ecoreClass="MappingModel.ecore#//Reference">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MappingModel.ecore#//Reference/type"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="MappingModel.ecore#//Feature"/>
+  </genPackages>
+</genmodel:GenModel>

@@ -2,7 +2,7 @@
  */
 package de.cau.cs.se.instrumentation.al.aspectLang;
 
-import de.cau.cs.se.instrumantation.model.structure.Container;
+import de.cau.cs.se.instrumentation.al.mapping.Container;
 
 /**
  * <!-- begin-user-doc -->

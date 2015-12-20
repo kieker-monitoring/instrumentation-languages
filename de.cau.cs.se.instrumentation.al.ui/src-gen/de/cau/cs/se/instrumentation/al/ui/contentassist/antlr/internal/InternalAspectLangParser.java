@@ -19508,23 +19508,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
             // InternalAspectLang.g:6710:1: ( RULE_ID )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getTypeofAccess().getReferenceTypeCrossReference_2_0()); 
+               before(grammarAccess.getTypeofAccess().getReferenceNamedTypeCrossReference_2_0()); 
             }
             // InternalAspectLang.g:6711:1: ( RULE_ID )
             // InternalAspectLang.g:6712:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getTypeofAccess().getReferenceTypeIDTerminalRuleCall_2_0_1()); 
+               before(grammarAccess.getTypeofAccess().getReferenceNamedTypeIDTerminalRuleCall_2_0_1()); 
             }
             match(input,RULE_ID,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getTypeofAccess().getReferenceTypeIDTerminalRuleCall_2_0_1()); 
+               after(grammarAccess.getTypeofAccess().getReferenceNamedTypeIDTerminalRuleCall_2_0_1()); 
             }
 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getTypeofAccess().getReferenceTypeCrossReference_2_0()); 
+               after(grammarAccess.getTypeofAccess().getReferenceNamedTypeCrossReference_2_0()); 
             }
 
             }

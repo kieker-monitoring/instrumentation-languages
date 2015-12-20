@@ -2,10 +2,10 @@
  */
 package de.cau.cs.se.instrumentation.al.aspectLang.impl;
 
-import de.cau.cs.se.instrumantation.model.structure.Type;
-
 import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
 import de.cau.cs.se.instrumentation.al.aspectLang.Typeof;
+
+import de.cau.cs.se.instrumentation.al.mapping.NamedType;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -38,7 +38,7 @@ public class TypeofImpl extends MinimalEObjectImpl.Container implements Typeof
    * @generated
    * @ordered
    */
-  protected Type reference;
+  protected NamedType reference;
 
   /**
    * <!-- begin-user-doc -->
@@ -66,12 +66,12 @@ public class TypeofImpl extends MinimalEObjectImpl.Container implements Typeof
    * <!-- end-user-doc -->
    * @generated
    */
-  public Type getReference()
+  public NamedType getReference()
   {
     if (reference != null && reference.eIsProxy())
     {
       InternalEObject oldReference = (InternalEObject)reference;
-      reference = (Type)eResolveProxy(oldReference);
+      reference = (NamedType)eResolveProxy(oldReference);
       if (reference != oldReference)
       {
         if (eNotificationRequired())
@@ -86,7 +86,7 @@ public class TypeofImpl extends MinimalEObjectImpl.Container implements Typeof
    * <!-- end-user-doc -->
    * @generated
    */
-  public Type basicGetReference()
+  public NamedType basicGetReference()
   {
     return reference;
   }
@@ -96,9 +96,9 @@ public class TypeofImpl extends MinimalEObjectImpl.Container implements Typeof
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setReference(Type newReference)
+  public void setReference(NamedType newReference)
   {
-    Type oldReference = reference;
+    NamedType oldReference = reference;
     reference = newReference;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.TYPEOF__REFERENCE, oldReference, reference));
@@ -132,7 +132,7 @@ public class TypeofImpl extends MinimalEObjectImpl.Container implements Typeof
     switch (featureID)
     {
       case AspectLangPackage.TYPEOF__REFERENCE:
-        setReference((Type)newValue);
+        setReference((NamedType)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -149,7 +149,7 @@ public class TypeofImpl extends MinimalEObjectImpl.Container implements Typeof
     switch (featureID)
     {
       case AspectLangPackage.TYPEOF__REFERENCE:
-        setReference((Type)null);
+        setReference((NamedType)null);
         return;
     }
     super.eUnset(featureID);

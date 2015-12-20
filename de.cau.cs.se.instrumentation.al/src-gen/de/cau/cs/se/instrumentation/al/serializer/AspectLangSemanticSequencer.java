@@ -692,7 +692,7 @@ public class AspectLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 *     Typeof returns Typeof
 	 *
 	 * Constraint:
-	 *     reference=[Type|ID]
+	 *     reference=[NamedType|ID]
 	 */
 	protected void sequence_Typeof(ISerializationContext context, Typeof semanticObject) {
 		if (errorAcceptor != null) {
@@ -700,7 +700,7 @@ public class AspectLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AspectLangPackage.Literals.TYPEOF__REFERENCE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getTypeofAccess().getReferenceTypeIDTerminalRuleCall_2_0_1(), semanticObject.getReference());
+		feeder.accept(grammarAccess.getTypeofAccess().getReferenceNamedTypeIDTerminalRuleCall_2_0_1(), semanticObject.getReference());
 		feeder.finish();
 	}
 	
