@@ -17,7 +17,9 @@ package de.cau.cs.se.instrumentation.al.generator;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterators;
+import de.cau.cs.se.instrumantation.model.structure.CollectionType;
 import de.cau.cs.se.instrumantation.model.structure.Container;
+import de.cau.cs.se.instrumantation.model.structure.NamedType;
 import de.cau.cs.se.instrumantation.model.structure.Operation;
 import de.cau.cs.se.instrumantation.model.structure.OperationModifier;
 import de.cau.cs.se.instrumantation.model.structure.Parameter;
@@ -291,9 +293,35 @@ public class AspectLangGenerator implements IGenerator {
   public CharSequence computeType(final TypeReference reference) {
     StringConcatenation _builder = new StringConcatenation();
     Type _type = reference.getType();
-    String _name = _type.getName();
-    _builder.append(_name, "");
+    CharSequence _computeTypeName = this.computeTypeName(_type);
+    _builder.append(_computeTypeName, "");
     return _builder;
+  }
+  
+  private CharSequence computeTypeName(final Type type) {
+    String _switchResult = null;
+    boolean _matched = false;
+    if (!_matched) {
+      if (type instanceof NamedType) {
+        _matched=true;
+        _switchResult = ((NamedType)type).getName();
+      }
+    }
+    if (!_matched) {
+      if (type instanceof Container) {
+        _matched=true;
+        _switchResult = ((Container)type).getName();
+      }
+    }
+    if (!_matched) {
+      if (type instanceof CollectionType) {
+        _matched=true;
+        Type _elementType = ((CollectionType)type).getElementType();
+        CharSequence _computeTypeName = this.computeTypeName(_elementType);
+        _switchResult = (_computeTypeName + "[]");
+      }
+    }
+    return _switchResult;
   }
   
   /**

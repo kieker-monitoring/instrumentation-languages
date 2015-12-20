@@ -53,7 +53,7 @@ public class OperationImpl extends NamedElementImpl implements Operation {
 	protected EObject predecessor;
 
 	/**
-	 * The cached value of the '{@link #getReturnType() <em>Return Type</em>}' reference.
+	 * The cached value of the '{@link #getReturnType() <em>Return Type</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getReturnType()
@@ -145,14 +145,6 @@ public class OperationImpl extends NamedElementImpl implements Operation {
 	 * @generated
 	 */
 	public TypeReference getReturnType() {
-		if (returnType != null && returnType.eIsProxy()) {
-			InternalEObject oldReturnType = (InternalEObject)returnType;
-			returnType = (TypeReference)eResolveProxy(oldReturnType);
-			if (returnType != oldReturnType) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, StructurePackage.OPERATION__RETURN_TYPE, oldReturnType, returnType));
-			}
-		}
 		return returnType;
 	}
 
@@ -161,8 +153,14 @@ public class OperationImpl extends NamedElementImpl implements Operation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TypeReference basicGetReturnType() {
-		return returnType;
+	public NotificationChain basicSetReturnType(TypeReference newReturnType, NotificationChain msgs) {
+		TypeReference oldReturnType = returnType;
+		returnType = newReturnType;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, StructurePackage.OPERATION__RETURN_TYPE, oldReturnType, newReturnType);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -171,10 +169,17 @@ public class OperationImpl extends NamedElementImpl implements Operation {
 	 * @generated
 	 */
 	public void setReturnType(TypeReference newReturnType) {
-		TypeReference oldReturnType = returnType;
-		returnType = newReturnType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.OPERATION__RETURN_TYPE, oldReturnType, returnType));
+		if (newReturnType != returnType) {
+			NotificationChain msgs = null;
+			if (returnType != null)
+				msgs = ((InternalEObject)returnType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - StructurePackage.OPERATION__RETURN_TYPE, null, msgs);
+			if (newReturnType != null)
+				msgs = ((InternalEObject)newReturnType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - StructurePackage.OPERATION__RETURN_TYPE, null, msgs);
+			msgs = basicSetReturnType(newReturnType, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.OPERATION__RETURN_TYPE, newReturnType, newReturnType));
 	}
 
 	/**
@@ -235,6 +240,8 @@ public class OperationImpl extends NamedElementImpl implements Operation {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case StructurePackage.OPERATION__RETURN_TYPE:
+				return basicSetReturnType(null, msgs);
 			case StructurePackage.OPERATION__PARAMETERS:
 				return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
 		}
@@ -253,8 +260,7 @@ public class OperationImpl extends NamedElementImpl implements Operation {
 				if (resolve) return getPredecessor();
 				return basicGetPredecessor();
 			case StructurePackage.OPERATION__RETURN_TYPE:
-				if (resolve) return getReturnType();
-				return basicGetReturnType();
+				return getReturnType();
 			case StructurePackage.OPERATION__PARAMETERS:
 				return getParameters();
 			case StructurePackage.OPERATION__MODIFIER:

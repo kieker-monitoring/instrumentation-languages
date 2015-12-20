@@ -19,9 +19,9 @@ import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import de.cau.cs.se.instrumantation.model.structure.Container;
 import de.cau.cs.se.instrumantation.model.structure.NamedElement;
+import de.cau.cs.se.instrumantation.model.structure.NamedType;
 import de.cau.cs.se.instrumantation.model.structure.Operation;
 import de.cau.cs.se.instrumantation.model.structure.Parameter;
-import de.cau.cs.se.instrumantation.model.structure.Type;
 import de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode;
 import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.Node;
@@ -75,7 +75,7 @@ public class AspectLangScopeProvider extends AbstractDeclarativeScopeProvider {
       Resource _eResource = context.eResource();
       ResourceSet _resourceSet = _eResource.getResourceSet();
       final IForeignModelTypeProvider typeProvider = this.typeProviderFactory.getTypeProvider(_resourceSet, null);
-      Iterable<Type> _allDataTyes = typeProvider.getAllDataTyes();
+      Iterable<NamedType> _allDataTyes = typeProvider.getAllDataTyes();
       return Scopes.scopeFor(_allDataTyes);
     } else {
       return IScope.NULLSCOPE;
@@ -102,7 +102,7 @@ public class AspectLangScopeProvider extends AbstractDeclarativeScopeProvider {
     Resource _eResource = context.eResource();
     ResourceSet _resourceSet = _eResource.getResourceSet();
     final IForeignModelTypeProvider typeProvider = this.typeProviderFactory.getTypeProvider(_resourceSet, null);
-    Iterable<Type> _allDataTyes = typeProvider.getAllDataTyes();
+    Iterable<NamedType> _allDataTyes = typeProvider.getAllDataTyes();
     return Scopes.scopeFor(_allDataTyes);
   }
   

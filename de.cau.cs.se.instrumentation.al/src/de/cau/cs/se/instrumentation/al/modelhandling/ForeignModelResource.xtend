@@ -17,7 +17,6 @@ package de.cau.cs.se.instrumentation.al.modelhandling;
 
 import de.cau.cs.se.instrumantation.model.structure.MappingModel
 import de.cau.cs.se.instrumantation.model.structure.NamedElement
-import de.cau.cs.se.instrumantation.model.structure.Type
 import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel
 import java.io.IOException
 import java.io.InputStream
@@ -28,6 +27,7 @@ import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl
+import de.cau.cs.se.instrumantation.model.structure.NamedType
 
 /**
  * Simulates a real resource by mapping the a PCM model to our hierarchy model.
@@ -133,7 +133,7 @@ public class ForeignModelResource extends ResourceImpl {
 	/**
 	 * Helper routine to get a special part of the result model.
 	 */
-	def EList<Type> getAllDataTypes() {
+	def EList<NamedType> getAllDataTypes() {
 		return this.resultModel.types
 	}
 

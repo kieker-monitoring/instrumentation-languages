@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumantation.model.structure.Containment#getContents <em>Contents</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumantation.model.structure.Containment#getTypes <em>Types</em>}</li>
  * </ul>
  *
  * @see de.cau.cs.se.instrumantation.model.structure.StructurePackage#getContainment()
@@ -38,5 +39,21 @@ public interface Containment extends EObject {
 	 * @generated
 	 */
 	EList<Container> getContents();
+
+	/**
+	 * Returns the value of the '<em><b>Types</b></em>' containment reference list.
+	 * The list contents are of type {@link de.cau.cs.se.instrumantation.model.structure.NamedType}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Types</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Types</em>' containment reference list.
+	 * @see de.cau.cs.se.instrumantation.model.structure.StructurePackage#getContainment_Types()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<NamedType> getTypes();
 
 } // Containment

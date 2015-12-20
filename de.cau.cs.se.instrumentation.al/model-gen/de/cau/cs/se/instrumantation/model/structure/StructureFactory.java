@@ -31,6 +31,24 @@ public interface StructureFactory extends EFactory {
 	Type createType();
 
 	/**
+	 * Returns a new object of class '<em>Collection Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Collection Type</em>'.
+	 * @generated
+	 */
+	CollectionType createCollectionType();
+
+	/**
+	 * Returns a new object of class '<em>Named Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Named Type</em>'.
+	 * @generated
+	 */
+	NamedType createNamedType();
+
+	/**
 	 * Returns a new object of class '<em>Type Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -119,6 +137,15 @@ public interface StructureFactory extends EFactory {
 	 * @generated
 	 */
 	Attribute createAttribute();
+
+	/**
+	 * Returns a new object of class '<em>Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Reference</em>'.
+	 * @generated
+	 */
+	Reference createReference();
 
 	/**
 	 * Returns the package supported by this factory.

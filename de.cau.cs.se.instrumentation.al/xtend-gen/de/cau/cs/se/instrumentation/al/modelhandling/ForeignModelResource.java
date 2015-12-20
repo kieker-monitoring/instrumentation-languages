@@ -19,7 +19,7 @@ import com.google.common.base.Objects;
 import de.cau.cs.se.instrumantation.model.structure.Container;
 import de.cau.cs.se.instrumantation.model.structure.MappingModel;
 import de.cau.cs.se.instrumantation.model.structure.NamedElement;
-import de.cau.cs.se.instrumantation.model.structure.Type;
+import de.cau.cs.se.instrumantation.model.structure.NamedType;
 import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel;
 import de.cau.cs.se.instrumentation.al.modelhandling.IModelMapper;
 import java.io.IOException;
@@ -190,7 +190,7 @@ public class ForeignModelResource extends ResourceImpl {
   /**
    * Helper routine to get a special part of the result model.
    */
-  public EList<Type> getAllDataTypes() {
+  public EList<NamedType> getAllDataTypes() {
     return this.resultModel.getTypes();
   }
   

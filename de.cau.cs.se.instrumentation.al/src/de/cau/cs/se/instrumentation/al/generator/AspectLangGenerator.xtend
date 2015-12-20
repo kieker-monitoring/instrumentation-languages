@@ -43,6 +43,10 @@ import org.w3c.dom.Element
 import org.w3c.dom.Document
 import de.cau.cs.se.instrumentation.al.aspectLang.InsertionPoint
 import javax.xml.transform.OutputKeys
+import de.cau.cs.se.instrumantation.model.structure.NamedType
+import de.cau.cs.se.instrumantation.model.structure.Type
+import de.cau.cs.se.instrumantation.model.structure.Container
+import de.cau.cs.se.instrumantation.model.structure.CollectionType
 
 /**
  * Generates code from your model files on save.
@@ -155,7 +159,15 @@ class AspectLangGenerator implements IGenerator {
 	// TODO this should produce the correct mapping of types and modifiers
 	def CharSequence computeParameter(Parameter parameter) '''«parameter.type.computeType» «parameter.name»'''
 	
-	def CharSequence computeType(TypeReference reference) '''«reference.type.name»'''
+	def CharSequence computeType(TypeReference reference) '''«reference.type.computeTypeName»'''
+	
+	private def CharSequence computeTypeName(Type type) {
+		switch(type) {
+			NamedType: type.name
+			Container: type.name
+			CollectionType: type.elementType.computeTypeName + "[]" 	
+		}
+	}
 	
 	/**
 	 * Create Spring configuration for a given collection of aspects.

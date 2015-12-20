@@ -24,26 +24,26 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface Operation extends NamedElement, Traceability {
 	/**
-	 * Returns the value of the '<em><b>Return Type</b></em>' reference.
+	 * Returns the value of the '<em><b>Return Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Return Type</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Return Type</em>' reference.
+	 * @return the value of the '<em>Return Type</em>' containment reference.
 	 * @see #setReturnType(TypeReference)
 	 * @see de.cau.cs.se.instrumantation.model.structure.StructurePackage#getOperation_ReturnType()
-	 * @model required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	TypeReference getReturnType();
 
 	/**
-	 * Sets the value of the '{@link de.cau.cs.se.instrumantation.model.structure.Operation#getReturnType <em>Return Type</em>}' reference.
+	 * Sets the value of the '{@link de.cau.cs.se.instrumantation.model.structure.Operation#getReturnType <em>Return Type</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Return Type</em>' reference.
+	 * @param value the new value of the '<em>Return Type</em>' containment reference.
 	 * @see #getReturnType()
 	 * @generated
 	 */

@@ -57,6 +57,8 @@ public class StructureFactoryImpl extends EFactoryImpl implements StructureFacto
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case StructurePackage.TYPE: return createType();
+			case StructurePackage.COLLECTION_TYPE: return createCollectionType();
+			case StructurePackage.NAMED_TYPE: return createNamedType();
 			case StructurePackage.TYPE_REFERENCE: return createTypeReference();
 			case StructurePackage.CONTAINER: return createContainer();
 			case StructurePackage.OPERATION: return createOperation();
@@ -67,6 +69,7 @@ public class StructureFactoryImpl extends EFactoryImpl implements StructureFacto
 			case StructurePackage.OPERATION_MODIFIER: return createOperationModifier();
 			case StructurePackage.CONTAINER_MODIFIER: return createContainerModifier();
 			case StructurePackage.ATTRIBUTE: return createAttribute();
+			case StructurePackage.REFERENCE: return createReference();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -80,6 +83,26 @@ public class StructureFactoryImpl extends EFactoryImpl implements StructureFacto
 	public Type createType() {
 		TypeImpl type = new TypeImpl();
 		return type;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CollectionType createCollectionType() {
+		CollectionTypeImpl collectionType = new CollectionTypeImpl();
+		return collectionType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NamedType createNamedType() {
+		NamedTypeImpl namedType = new NamedTypeImpl();
+		return namedType;
 	}
 
 	/**
@@ -180,6 +203,16 @@ public class StructureFactoryImpl extends EFactoryImpl implements StructureFacto
 	public Attribute createAttribute() {
 		AttributeImpl attribute = new AttributeImpl();
 		return attribute;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Reference createReference() {
+		ReferenceImpl reference = new ReferenceImpl();
+		return reference;
 	}
 
 	/**

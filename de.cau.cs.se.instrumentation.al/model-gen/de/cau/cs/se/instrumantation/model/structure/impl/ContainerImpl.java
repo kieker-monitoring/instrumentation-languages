@@ -6,10 +6,12 @@ import de.cau.cs.se.instrumantation.model.structure.Attribute;
 import de.cau.cs.se.instrumantation.model.structure.ContainerModifier;
 import de.cau.cs.se.instrumantation.model.structure.Feature;
 import de.cau.cs.se.instrumantation.model.structure.NamedElement;
+import de.cau.cs.se.instrumantation.model.structure.NamedType;
 import de.cau.cs.se.instrumantation.model.structure.Operation;
+import de.cau.cs.se.instrumantation.model.structure.Reference;
 import de.cau.cs.se.instrumantation.model.structure.StructurePackage;
 import de.cau.cs.se.instrumantation.model.structure.Traceability;
-import de.cau.cs.se.instrumantation.model.structure.TypeReference;
+import de.cau.cs.se.instrumantation.model.structure.Type;
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -31,12 +33,13 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumantation.model.structure.impl.ContainerImpl#getContents <em>Contents</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumantation.model.structure.impl.ContainerImpl#getTypes <em>Types</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumantation.model.structure.impl.ContainerImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumantation.model.structure.impl.ContainerImpl#getPredecessor <em>Predecessor</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumantation.model.structure.impl.ContainerImpl#getModifier <em>Modifier</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumantation.model.structure.impl.ContainerImpl#getOperations <em>Operations</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumantation.model.structure.impl.ContainerImpl#getAttributes <em>Attributes</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumantation.model.structure.impl.ContainerImpl#getType <em>Type</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumantation.model.structure.impl.ContainerImpl#getReferences <em>References</em>}</li>
  * </ul>
  *
  * @generated
@@ -51,6 +54,16 @@ public class ContainerImpl extends MinimalEObjectImpl.Container implements de.ca
 	 * @ordered
 	 */
 	protected EList<de.cau.cs.se.instrumantation.model.structure.Container> contents;
+
+	/**
+	 * The cached value of the '{@link #getTypes() <em>Types</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTypes()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<NamedType> types;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -113,14 +126,14 @@ public class ContainerImpl extends MinimalEObjectImpl.Container implements de.ca
 	protected EList<Attribute> attributes;
 
 	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
+	 * The cached value of the '{@link #getReferences() <em>References</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getType()
+	 * @see #getReferences()
 	 * @generated
 	 * @ordered
 	 */
-	protected TypeReference type;
+	protected Reference references;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -151,6 +164,18 @@ public class ContainerImpl extends MinimalEObjectImpl.Container implements de.ca
 			contents = new EObjectContainmentEList<de.cau.cs.se.instrumantation.model.structure.Container>(de.cau.cs.se.instrumantation.model.structure.Container.class, this, StructurePackage.CONTAINER__CONTENTS);
 		}
 		return contents;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<NamedType> getTypes() {
+		if (types == null) {
+			types = new EObjectContainmentEList<NamedType>(NamedType.class, this, StructurePackage.CONTAINER__TYPES);
+		}
+		return types;
 	}
 
 	/**
@@ -279,16 +304,16 @@ public class ContainerImpl extends MinimalEObjectImpl.Container implements de.ca
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TypeReference getType() {
-		if (type != null && type.eIsProxy()) {
-			InternalEObject oldType = (InternalEObject)type;
-			type = (TypeReference)eResolveProxy(oldType);
-			if (type != oldType) {
+	public Reference getReferences() {
+		if (references != null && references.eIsProxy()) {
+			InternalEObject oldReferences = (InternalEObject)references;
+			references = (Reference)eResolveProxy(oldReferences);
+			if (references != oldReferences) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, StructurePackage.CONTAINER__TYPE, oldType, type));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, StructurePackage.CONTAINER__REFERENCES, oldReferences, references));
 			}
 		}
-		return type;
+		return references;
 	}
 
 	/**
@@ -296,8 +321,8 @@ public class ContainerImpl extends MinimalEObjectImpl.Container implements de.ca
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TypeReference basicGetType() {
-		return type;
+	public Reference basicGetReferences() {
+		return references;
 	}
 
 	/**
@@ -305,11 +330,11 @@ public class ContainerImpl extends MinimalEObjectImpl.Container implements de.ca
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setType(TypeReference newType) {
-		TypeReference oldType = type;
-		type = newType;
+	public void setReferences(Reference newReferences) {
+		Reference oldReferences = references;
+		references = newReferences;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.CONTAINER__TYPE, oldType, type));
+			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.CONTAINER__REFERENCES, oldReferences, references));
 	}
 
 	/**
@@ -322,6 +347,8 @@ public class ContainerImpl extends MinimalEObjectImpl.Container implements de.ca
 		switch (featureID) {
 			case StructurePackage.CONTAINER__CONTENTS:
 				return ((InternalEList<?>)getContents()).basicRemove(otherEnd, msgs);
+			case StructurePackage.CONTAINER__TYPES:
+				return ((InternalEList<?>)getTypes()).basicRemove(otherEnd, msgs);
 			case StructurePackage.CONTAINER__OPERATIONS:
 				return ((InternalEList<?>)getOperations()).basicRemove(otherEnd, msgs);
 			case StructurePackage.CONTAINER__ATTRIBUTES:
@@ -340,6 +367,8 @@ public class ContainerImpl extends MinimalEObjectImpl.Container implements de.ca
 		switch (featureID) {
 			case StructurePackage.CONTAINER__CONTENTS:
 				return getContents();
+			case StructurePackage.CONTAINER__TYPES:
+				return getTypes();
 			case StructurePackage.CONTAINER__NAME:
 				return getName();
 			case StructurePackage.CONTAINER__PREDECESSOR:
@@ -352,9 +381,9 @@ public class ContainerImpl extends MinimalEObjectImpl.Container implements de.ca
 				return getOperations();
 			case StructurePackage.CONTAINER__ATTRIBUTES:
 				return getAttributes();
-			case StructurePackage.CONTAINER__TYPE:
-				if (resolve) return getType();
-				return basicGetType();
+			case StructurePackage.CONTAINER__REFERENCES:
+				if (resolve) return getReferences();
+				return basicGetReferences();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -371,6 +400,10 @@ public class ContainerImpl extends MinimalEObjectImpl.Container implements de.ca
 			case StructurePackage.CONTAINER__CONTENTS:
 				getContents().clear();
 				getContents().addAll((Collection<? extends de.cau.cs.se.instrumantation.model.structure.Container>)newValue);
+				return;
+			case StructurePackage.CONTAINER__TYPES:
+				getTypes().clear();
+				getTypes().addAll((Collection<? extends NamedType>)newValue);
 				return;
 			case StructurePackage.CONTAINER__NAME:
 				setName((String)newValue);
@@ -389,8 +422,8 @@ public class ContainerImpl extends MinimalEObjectImpl.Container implements de.ca
 				getAttributes().clear();
 				getAttributes().addAll((Collection<? extends Attribute>)newValue);
 				return;
-			case StructurePackage.CONTAINER__TYPE:
-				setType((TypeReference)newValue);
+			case StructurePackage.CONTAINER__REFERENCES:
+				setReferences((Reference)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -407,6 +440,9 @@ public class ContainerImpl extends MinimalEObjectImpl.Container implements de.ca
 			case StructurePackage.CONTAINER__CONTENTS:
 				getContents().clear();
 				return;
+			case StructurePackage.CONTAINER__TYPES:
+				getTypes().clear();
+				return;
 			case StructurePackage.CONTAINER__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -422,8 +458,8 @@ public class ContainerImpl extends MinimalEObjectImpl.Container implements de.ca
 			case StructurePackage.CONTAINER__ATTRIBUTES:
 				getAttributes().clear();
 				return;
-			case StructurePackage.CONTAINER__TYPE:
-				setType((TypeReference)null);
+			case StructurePackage.CONTAINER__REFERENCES:
+				setReferences((Reference)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -439,6 +475,8 @@ public class ContainerImpl extends MinimalEObjectImpl.Container implements de.ca
 		switch (featureID) {
 			case StructurePackage.CONTAINER__CONTENTS:
 				return contents != null && !contents.isEmpty();
+			case StructurePackage.CONTAINER__TYPES:
+				return types != null && !types.isEmpty();
 			case StructurePackage.CONTAINER__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case StructurePackage.CONTAINER__PREDECESSOR:
@@ -449,8 +487,8 @@ public class ContainerImpl extends MinimalEObjectImpl.Container implements de.ca
 				return operations != null && !operations.isEmpty();
 			case StructurePackage.CONTAINER__ATTRIBUTES:
 				return attributes != null && !attributes.isEmpty();
-			case StructurePackage.CONTAINER__TYPE:
-				return type != null;
+			case StructurePackage.CONTAINER__REFERENCES:
+				return references != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -479,6 +517,11 @@ public class ContainerImpl extends MinimalEObjectImpl.Container implements de.ca
 				default: return -1;
 			}
 		}
+		if (baseClass == Type.class) {
+			switch (derivedFeatureID) {
+				default: return -1;
+			}
+		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
 	}
 
@@ -502,6 +545,11 @@ public class ContainerImpl extends MinimalEObjectImpl.Container implements de.ca
 			}
 		}
 		if (baseClass == Feature.class) {
+			switch (baseFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == Type.class) {
 			switch (baseFeatureID) {
 				default: return -1;
 			}

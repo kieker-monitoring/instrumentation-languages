@@ -15,13 +15,15 @@
  ***************************************************************************/
 package de.cau.cs.se.instrumentation.al.modelhandling;
 
+import org.eclipse.xtext.common.types.access.jdt.TypeURIHelper;
+
 import de.cau.cs.se.instrumantation.model.structure.NamedElement;
-import de.cau.cs.se.instrumantation.model.structure.Type;
+import de.cau.cs.se.instrumantation.model.structure.NamedType;
 
 /**
  * The type provider interface. It is used by the scoping and plays a role in the content assist.
  * the interface provides a method to get all types
- * 
+ *
  * @author Christian Schneider - Initial contribution (derived from
  *         org.eclipse.xtext.common.types.access.IJvmTypeProvider)
  * @author Reiner Jung - Cleanups and commentary
@@ -30,18 +32,19 @@ public interface IForeignModelTypeProvider {
 
 	/**
 	 * Provides a collection of all supported primitive types (helpful for content assist).
-	 * 
+	 *
 	 * @author chsch
-	 * 
+	 *
 	 * @return Collection of types
 	 */
 	Iterable<NamedElement> getAllTypes();
 
 	/**
 	 * Find a type by its fully qualified name, which is for primitive types their normal name.
-	 * 
-	 * @param name of the searched type
-	 * 
+	 *
+	 * @param name
+	 *            of the searched type
+	 *
 	 * @return the found {@link Type} or null if no such type could be found.
 	 */
 	NamedElement findTypeByName(String name);
@@ -49,11 +52,11 @@ public interface IForeignModelTypeProvider {
 	/**
 	 * Introduced analogously to {@link org.eclipse.xtext.common.types.access.jdt.IJdtTypeProvider
 	 * IJdtTypeProvider#getTypeUriHelper()}.
-	 * 
+	 *
 	 * @return the used {@link TypeURIHelper}
 	 */
 	ForeignModelTypeURIHelper getTypeUriHelper();
 
-	Iterable<Type> getAllDataTyes();
+	Iterable<NamedType> getAllDataTyes();
 
 }

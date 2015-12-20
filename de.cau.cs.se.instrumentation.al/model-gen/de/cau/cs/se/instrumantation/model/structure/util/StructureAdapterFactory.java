@@ -72,6 +72,14 @@ public class StructureAdapterFactory extends AdapterFactoryImpl {
 				return createTypeAdapter();
 			}
 			@Override
+			public Adapter caseCollectionType(CollectionType object) {
+				return createCollectionTypeAdapter();
+			}
+			@Override
+			public Adapter caseNamedType(NamedType object) {
+				return createNamedTypeAdapter();
+			}
+			@Override
 			public Adapter caseTypeReference(TypeReference object) {
 				return createTypeReferenceAdapter();
 			}
@@ -120,6 +128,10 @@ public class StructureAdapterFactory extends AdapterFactoryImpl {
 				return createAttributeAdapter();
 			}
 			@Override
+			public Adapter caseReference(Reference object) {
+				return createReferenceAdapter();
+			}
+			@Override
 			public Adapter caseFeature(Feature object) {
 				return createFeatureAdapter();
 			}
@@ -154,6 +166,34 @@ public class StructureAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTypeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumantation.model.structure.CollectionType <em>Collection Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.cau.cs.se.instrumantation.model.structure.CollectionType
+	 * @generated
+	 */
+	public Adapter createCollectionTypeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumantation.model.structure.NamedType <em>Named Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.cau.cs.se.instrumantation.model.structure.NamedType
+	 * @generated
+	 */
+	public Adapter createNamedTypeAdapter() {
 		return null;
 	}
 
@@ -322,6 +362,20 @@ public class StructureAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAttributeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumantation.model.structure.Reference <em>Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see de.cau.cs.se.instrumantation.model.structure.Reference
+	 * @generated
+	 */
+	public Adapter createReferenceAdapter() {
 		return null;
 	}
 

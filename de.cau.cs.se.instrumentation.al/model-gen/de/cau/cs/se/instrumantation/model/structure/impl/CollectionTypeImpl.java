@@ -2,45 +2,47 @@
  */
 package de.cau.cs.se.instrumantation.model.structure.impl;
 
+import de.cau.cs.se.instrumantation.model.structure.CollectionType;
 import de.cau.cs.se.instrumantation.model.structure.StructurePackage;
 import de.cau.cs.se.instrumantation.model.structure.Type;
+
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Type</b></em>'.
+ * An implementation of the model object '<em><b>Collection Type</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumantation.model.structure.impl.TypeImpl#getPredecessor <em>Predecessor</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumantation.model.structure.impl.CollectionTypeImpl#getElementType <em>Element Type</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class TypeImpl extends MinimalEObjectImpl.Container implements Type {
+public class CollectionTypeImpl extends TypeImpl implements CollectionType {
 	/**
-	 * The cached value of the '{@link #getPredecessor() <em>Predecessor</em>}' reference.
+	 * The cached value of the '{@link #getElementType() <em>Element Type</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPredecessor()
+	 * @see #getElementType()
 	 * @generated
 	 * @ordered
 	 */
-	protected EObject predecessor;
+	protected Type elementType;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected TypeImpl() {
+	protected CollectionTypeImpl() {
 		super();
 	}
 
@@ -51,7 +53,7 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return StructurePackage.Literals.TYPE;
+		return StructurePackage.Literals.COLLECTION_TYPE;
 	}
 
 	/**
@@ -59,16 +61,16 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EObject getPredecessor() {
-		if (predecessor != null && predecessor.eIsProxy()) {
-			InternalEObject oldPredecessor = (InternalEObject)predecessor;
-			predecessor = eResolveProxy(oldPredecessor);
-			if (predecessor != oldPredecessor) {
+	public Type getElementType() {
+		if (elementType != null && elementType.eIsProxy()) {
+			InternalEObject oldElementType = (InternalEObject)elementType;
+			elementType = (Type)eResolveProxy(oldElementType);
+			if (elementType != oldElementType) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, StructurePackage.TYPE__PREDECESSOR, oldPredecessor, predecessor));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, StructurePackage.COLLECTION_TYPE__ELEMENT_TYPE, oldElementType, elementType));
 			}
 		}
-		return predecessor;
+		return elementType;
 	}
 
 	/**
@@ -76,8 +78,8 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EObject basicGetPredecessor() {
-		return predecessor;
+	public Type basicGetElementType() {
+		return elementType;
 	}
 
 	/**
@@ -85,11 +87,11 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPredecessor(EObject newPredecessor) {
-		EObject oldPredecessor = predecessor;
-		predecessor = newPredecessor;
+	public void setElementType(Type newElementType) {
+		Type oldElementType = elementType;
+		elementType = newElementType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.TYPE__PREDECESSOR, oldPredecessor, predecessor));
+			eNotify(new ENotificationImpl(this, Notification.SET, StructurePackage.COLLECTION_TYPE__ELEMENT_TYPE, oldElementType, elementType));
 	}
 
 	/**
@@ -100,9 +102,9 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case StructurePackage.TYPE__PREDECESSOR:
-				if (resolve) return getPredecessor();
-				return basicGetPredecessor();
+			case StructurePackage.COLLECTION_TYPE__ELEMENT_TYPE:
+				if (resolve) return getElementType();
+				return basicGetElementType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -115,8 +117,8 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case StructurePackage.TYPE__PREDECESSOR:
-				setPredecessor((EObject)newValue);
+			case StructurePackage.COLLECTION_TYPE__ELEMENT_TYPE:
+				setElementType((Type)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -130,8 +132,8 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case StructurePackage.TYPE__PREDECESSOR:
-				setPredecessor((EObject)null);
+			case StructurePackage.COLLECTION_TYPE__ELEMENT_TYPE:
+				setElementType((Type)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -145,10 +147,10 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case StructurePackage.TYPE__PREDECESSOR:
-				return predecessor != null;
+			case StructurePackage.COLLECTION_TYPE__ELEMENT_TYPE:
+				return elementType != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //TypeImpl
+} //CollectionTypeImpl

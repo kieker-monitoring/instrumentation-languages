@@ -25,15 +25,15 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.util.Strings;
 
 import de.cau.cs.se.instrumantation.model.structure.NamedElement;
-import de.cau.cs.se.instrumantation.model.structure.Type;
+import de.cau.cs.se.instrumantation.model.structure.NamedType;
 import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel;
 
 /**
  * The type provider allows to retrieve a list of all primitive types and provides type name lookup.
- * 
+ *
  * @author Christian Schneider - Initial contribution
  * @author Reiner Jung - Cleanup and commentary
- * 
+ *
  */
 public class ForeignModelTypeProvider implements Resource.Factory, IForeignModelTypeProvider {
 
@@ -45,7 +45,7 @@ public class ForeignModelTypeProvider implements Resource.Factory, IForeignModel
 
 	/**
 	 * Construct the type provider.
-	 * 
+	 *
 	 * @param resourceSet
 	 *            context resource set
 	 * @param model
@@ -59,7 +59,7 @@ public class ForeignModelTypeProvider implements Resource.Factory, IForeignModel
 
 	/**
 	 * Provides a list of all primitive types.
-	 * 
+	 *
 	 * @return Returns an iterable with all primitive types.
 	 */
 	// @Override
@@ -81,7 +81,7 @@ public class ForeignModelTypeProvider implements Resource.Factory, IForeignModel
 
 	/**
 	 * Find the type for a given name and return it.
-	 * 
+	 *
 	 * @param name
 	 *            The name of the type.
 	 * @return Returns the primitive type for a given type name, or null.
@@ -99,7 +99,7 @@ public class ForeignModelTypeProvider implements Resource.Factory, IForeignModel
 
 	/**
 	 * Create a type resource for a given URI and assign a PrimitiveMirror to it.
-	 * 
+	 *
 	 * @param uri
 	 *            The URI for the resource
 	 */
@@ -114,7 +114,7 @@ public class ForeignModelTypeProvider implements Resource.Factory, IForeignModel
 		return this.typeUriHelper;
 	}
 
-	public Iterable<Type> getAllDataTyes() {
+	public Iterable<NamedType> getAllDataTyes() {
 		final Resource resource = this.resourceSet.getResource(
 				URI.createURI(ForeignModelTypeURIHelper.PROTOCOL + ":" + ForeignModelTypeURIHelper.ELEMENTS), true);
 		return ((ForeignModelResource) resource).getAllDataTypes();

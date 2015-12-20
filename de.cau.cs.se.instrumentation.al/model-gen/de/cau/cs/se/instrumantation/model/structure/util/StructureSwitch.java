@@ -69,8 +69,24 @@ public class StructureSwitch<T> extends Switch<T> {
 			case StructurePackage.TYPE: {
 				Type type = (Type)theEObject;
 				T result = caseType(type);
-				if (result == null) result = caseNamedElement(type);
 				if (result == null) result = caseTraceability(type);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case StructurePackage.COLLECTION_TYPE: {
+				CollectionType collectionType = (CollectionType)theEObject;
+				T result = caseCollectionType(collectionType);
+				if (result == null) result = caseType(collectionType);
+				if (result == null) result = caseTraceability(collectionType);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case StructurePackage.NAMED_TYPE: {
+				NamedType namedType = (NamedType)theEObject;
+				T result = caseNamedType(namedType);
+				if (result == null) result = caseType(namedType);
+				if (result == null) result = caseNamedElement(namedType);
+				if (result == null) result = caseTraceability(namedType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -86,6 +102,7 @@ public class StructureSwitch<T> extends Switch<T> {
 				T result = caseContainer(container);
 				if (result == null) result = caseContainment(container);
 				if (result == null) result = caseFeature(container);
+				if (result == null) result = caseType(container);
 				if (result == null) result = caseNamedElement(container);
 				if (result == null) result = caseTraceability(container);
 				if (result == null) result = defaultCase(theEObject);
@@ -165,6 +182,15 @@ public class StructureSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case StructurePackage.REFERENCE: {
+				Reference reference = (Reference)theEObject;
+				T result = caseReference(reference);
+				if (result == null) result = caseFeature(reference);
+				if (result == null) result = caseNamedElement(reference);
+				if (result == null) result = caseTraceability(reference);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case StructurePackage.FEATURE: {
 				Feature feature = (Feature)theEObject;
 				T result = caseFeature(feature);
@@ -189,6 +215,36 @@ public class StructureSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseType(Type object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Collection Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Collection Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCollectionType(CollectionType object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Named Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Named Type</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNamedType(NamedType object) {
 		return null;
 	}
 
@@ -369,6 +425,21 @@ public class StructureSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseAttribute(Attribute object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Reference</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseReference(Reference object) {
 		return null;
 	}
 

@@ -3,9 +3,8 @@
 package de.cau.cs.se.instrumantation.model.structure.impl;
 
 import de.cau.cs.se.instrumantation.model.structure.MappingModel;
+import de.cau.cs.se.instrumantation.model.structure.NamedType;
 import de.cau.cs.se.instrumantation.model.structure.StructurePackage;
-import de.cau.cs.se.instrumantation.model.structure.Type;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -53,7 +52,7 @@ public class MappingModelImpl extends MinimalEObjectImpl.Container implements Ma
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Type> types;
+	protected EList<NamedType> types;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -91,9 +90,9 @@ public class MappingModelImpl extends MinimalEObjectImpl.Container implements Ma
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Type> getTypes() {
+	public EList<NamedType> getTypes() {
 		if (types == null) {
-			types = new EObjectContainmentEList<Type>(Type.class, this, StructurePackage.MAPPING_MODEL__TYPES);
+			types = new EObjectContainmentEList<NamedType>(NamedType.class, this, StructurePackage.MAPPING_MODEL__TYPES);
 		}
 		return types;
 	}
@@ -145,7 +144,7 @@ public class MappingModelImpl extends MinimalEObjectImpl.Container implements Ma
 				return;
 			case StructurePackage.MAPPING_MODEL__TYPES:
 				getTypes().clear();
-				getTypes().addAll((Collection<? extends Type>)newValue);
+				getTypes().addAll((Collection<? extends NamedType>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

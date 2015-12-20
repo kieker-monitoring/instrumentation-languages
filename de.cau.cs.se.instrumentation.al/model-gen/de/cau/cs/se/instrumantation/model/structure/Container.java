@@ -16,14 +16,14 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link de.cau.cs.se.instrumantation.model.structure.Container#getModifier <em>Modifier</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumantation.model.structure.Container#getOperations <em>Operations</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumantation.model.structure.Container#getAttributes <em>Attributes</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumantation.model.structure.Container#getType <em>Type</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumantation.model.structure.Container#getReferences <em>References</em>}</li>
  * </ul>
  *
  * @see de.cau.cs.se.instrumantation.model.structure.StructurePackage#getContainer()
  * @model
  * @generated
  */
-public interface Container extends Containment, Feature {
+public interface Container extends Containment, Feature, Type {
 	/**
 	 * Returns the value of the '<em><b>Modifier</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -83,29 +83,29 @@ public interface Container extends Containment, Feature {
 	EList<Attribute> getAttributes();
 
 	/**
-	 * Returns the value of the '<em><b>Type</b></em>' reference.
+	 * Returns the value of the '<em><b>References</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Type</em>' reference isn't clear,
+	 * If the meaning of the '<em>References</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Type</em>' reference.
-	 * @see #setType(TypeReference)
-	 * @see de.cau.cs.se.instrumantation.model.structure.StructurePackage#getContainer_Type()
+	 * @return the value of the '<em>References</em>' reference.
+	 * @see #setReferences(Reference)
+	 * @see de.cau.cs.se.instrumantation.model.structure.StructurePackage#getContainer_References()
 	 * @model
 	 * @generated
 	 */
-	TypeReference getType();
+	Reference getReferences();
 
 	/**
-	 * Sets the value of the '{@link de.cau.cs.se.instrumantation.model.structure.Container#getType <em>Type</em>}' reference.
+	 * Sets the value of the '{@link de.cau.cs.se.instrumantation.model.structure.Container#getReferences <em>References</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Type</em>' reference.
-	 * @see #getType()
+	 * @param value the new value of the '<em>References</em>' reference.
+	 * @see #getReferences()
 	 * @generated
 	 */
-	void setType(TypeReference value);
+	void setReferences(Reference value);
 
 } // Container
