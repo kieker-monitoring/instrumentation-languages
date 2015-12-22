@@ -30,6 +30,7 @@ import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.scoping.Scopes
 import de.cau.cs.se.instrumentation.al.aspectLang.OperationQuery
 import de.cau.cs.se.instrumentation.rl.scoping.EPackageScope
+import de.cau.cs.se.instrumentation.al.mapping.Container
 
 /**
  * This class contains custom scoping description.
@@ -65,7 +66,11 @@ class AspectLangScopeProvider extends org.eclipse.xtext.scoping.impl.AbstractDec
 	def IScope scope_Pointcut_method(Pointcut context, EReference reference) {
 		val Node node = context.location.leaveNode
 		if (node instanceof ContainerNode) {
-			return Scopes.scopeFor((node as ContainerNode).container.operations)
+			val container = (node as ContainerNode).container
+			if (container instanceof Container)
+				return Scopes.scopeFor(container.operations)
+			else
+				return IScope.NULLSCOPE
 		} else {
 			return IScope.NULLSCOPE
 		}

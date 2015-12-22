@@ -5,10 +5,10 @@ package de.cau.cs.se.instrumentation.al.aspectLang.impl;
 import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
 import de.cau.cs.se.instrumentation.al.aspectLang.OperationQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery;
+import de.cau.cs.se.instrumentation.al.aspectLang.TypeReference;
 
 import de.cau.cs.se.instrumentation.al.mapping.Operation;
 import de.cau.cs.se.instrumentation.al.mapping.OperationModifier;
-import de.cau.cs.se.instrumentation.al.mapping.Type;
 
 import java.util.Collection;
 
@@ -55,14 +55,14 @@ public class OperationQueryImpl extends MinimalEObjectImpl.Container implements 
   protected OperationModifier modifier;
 
   /**
-   * The cached value of the '{@link #getReturnType() <em>Return Type</em>}' reference.
+   * The cached value of the '{@link #getReturnType() <em>Return Type</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getReturnType()
    * @generated
    * @ordered
    */
-  protected Type returnType;
+  protected TypeReference returnType;
 
   /**
    * The cached value of the '{@link #getOperationReference() <em>Operation Reference</em>}' reference.
@@ -153,27 +153,7 @@ public class OperationQueryImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public Type getReturnType()
-  {
-    if (returnType != null && returnType.eIsProxy())
-    {
-      InternalEObject oldReturnType = (InternalEObject)returnType;
-      returnType = (Type)eResolveProxy(oldReturnType);
-      if (returnType != oldReturnType)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, AspectLangPackage.OPERATION_QUERY__RETURN_TYPE, oldReturnType, returnType));
-      }
-    }
-    return returnType;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Type basicGetReturnType()
+  public TypeReference getReturnType()
   {
     return returnType;
   }
@@ -183,12 +163,37 @@ public class OperationQueryImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setReturnType(Type newReturnType)
+  public NotificationChain basicSetReturnType(TypeReference newReturnType, NotificationChain msgs)
   {
-    Type oldReturnType = returnType;
+    TypeReference oldReturnType = returnType;
     returnType = newReturnType;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.OPERATION_QUERY__RETURN_TYPE, oldReturnType, returnType));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AspectLangPackage.OPERATION_QUERY__RETURN_TYPE, oldReturnType, newReturnType);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setReturnType(TypeReference newReturnType)
+  {
+    if (newReturnType != returnType)
+    {
+      NotificationChain msgs = null;
+      if (returnType != null)
+        msgs = ((InternalEObject)returnType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AspectLangPackage.OPERATION_QUERY__RETURN_TYPE, null, msgs);
+      if (newReturnType != null)
+        msgs = ((InternalEObject)newReturnType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AspectLangPackage.OPERATION_QUERY__RETURN_TYPE, null, msgs);
+      msgs = basicSetReturnType(newReturnType, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.OPERATION_QUERY__RETURN_TYPE, newReturnType, newReturnType));
   }
 
   /**
@@ -258,6 +263,8 @@ public class OperationQueryImpl extends MinimalEObjectImpl.Container implements 
   {
     switch (featureID)
     {
+      case AspectLangPackage.OPERATION_QUERY__RETURN_TYPE:
+        return basicSetReturnType(null, msgs);
       case AspectLangPackage.OPERATION_QUERY__PARAMETER_QUERIES:
         return ((InternalEList<?>)getParameterQueries()).basicRemove(otherEnd, msgs);
     }
@@ -278,8 +285,7 @@ public class OperationQueryImpl extends MinimalEObjectImpl.Container implements 
         if (resolve) return getModifier();
         return basicGetModifier();
       case AspectLangPackage.OPERATION_QUERY__RETURN_TYPE:
-        if (resolve) return getReturnType();
-        return basicGetReturnType();
+        return getReturnType();
       case AspectLangPackage.OPERATION_QUERY__OPERATION_REFERENCE:
         if (resolve) return getOperationReference();
         return basicGetOperationReference();
@@ -304,7 +310,7 @@ public class OperationQueryImpl extends MinimalEObjectImpl.Container implements 
         setModifier((OperationModifier)newValue);
         return;
       case AspectLangPackage.OPERATION_QUERY__RETURN_TYPE:
-        setReturnType((Type)newValue);
+        setReturnType((TypeReference)newValue);
         return;
       case AspectLangPackage.OPERATION_QUERY__OPERATION_REFERENCE:
         setOperationReference((Operation)newValue);
@@ -331,7 +337,7 @@ public class OperationQueryImpl extends MinimalEObjectImpl.Container implements 
         setModifier((OperationModifier)null);
         return;
       case AspectLangPackage.OPERATION_QUERY__RETURN_TYPE:
-        setReturnType((Type)null);
+        setReturnType((TypeReference)null);
         return;
       case AspectLangPackage.OPERATION_QUERY__OPERATION_REFERENCE:
         setOperationReference((Operation)null);

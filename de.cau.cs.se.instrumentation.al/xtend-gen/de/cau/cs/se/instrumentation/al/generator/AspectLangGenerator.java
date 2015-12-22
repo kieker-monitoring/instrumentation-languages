@@ -29,6 +29,7 @@ import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut;
 import de.cau.cs.se.instrumentation.al.aspectLang.UtilizeAdvice;
 import de.cau.cs.se.instrumentation.al.mapping.CollectionType;
 import de.cau.cs.se.instrumentation.al.mapping.Container;
+import de.cau.cs.se.instrumentation.al.mapping.Feature;
 import de.cau.cs.se.instrumentation.al.mapping.NamedType;
 import de.cau.cs.se.instrumentation.al.mapping.Operation;
 import de.cau.cs.se.instrumentation.al.mapping.OperationModifier;
@@ -238,7 +239,7 @@ public class AspectLangGenerator implements IGenerator {
   
   protected CharSequence _computeNode(final ContainerNode node) {
     StringConcatenation _builder = new StringConcatenation();
-    Container _container = node.getContainer();
+    Feature _container = node.getContainer();
     String _name = _container.getName();
     _builder.append(_name, "");
     return _builder;

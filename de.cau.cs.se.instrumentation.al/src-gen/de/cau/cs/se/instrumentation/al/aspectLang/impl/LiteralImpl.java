@@ -7,7 +7,8 @@ import de.cau.cs.se.instrumentation.al.aspectLang.CompareOperator;
 import de.cau.cs.se.instrumentation.al.aspectLang.ConstraintElement;
 import de.cau.cs.se.instrumentation.al.aspectLang.Literal;
 import de.cau.cs.se.instrumentation.al.aspectLang.LogicOperator;
-import de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraintExpression;
+import de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraint;
+import de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraintCompare;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -43,7 +44,7 @@ public class LiteralImpl extends ValueImpl implements Literal
    * @generated
    * @ordered
    */
-  protected PropertyConstraintExpression left;
+  protected PropertyConstraintCompare left;
 
   /**
    * The default value of the '{@link #getLogic() <em>Logic</em>}' attribute.
@@ -73,7 +74,7 @@ public class LiteralImpl extends ValueImpl implements Literal
    * @generated
    * @ordered
    */
-  protected PropertyConstraintExpression right;
+  protected PropertyConstraintCompare right;
 
   /**
    * The default value of the '{@link #getCompare() <em>Compare</em>}' attribute.
@@ -121,7 +122,7 @@ public class LiteralImpl extends ValueImpl implements Literal
    * <!-- end-user-doc -->
    * @generated
    */
-  public PropertyConstraintExpression getLeft()
+  public PropertyConstraintCompare getLeft()
   {
     return left;
   }
@@ -131,9 +132,9 @@ public class LiteralImpl extends ValueImpl implements Literal
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetLeft(PropertyConstraintExpression newLeft, NotificationChain msgs)
+  public NotificationChain basicSetLeft(PropertyConstraintCompare newLeft, NotificationChain msgs)
   {
-    PropertyConstraintExpression oldLeft = left;
+    PropertyConstraintCompare oldLeft = left;
     left = newLeft;
     if (eNotificationRequired())
     {
@@ -148,7 +149,7 @@ public class LiteralImpl extends ValueImpl implements Literal
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setLeft(PropertyConstraintExpression newLeft)
+  public void setLeft(PropertyConstraintCompare newLeft)
   {
     if (newLeft != left)
     {
@@ -192,7 +193,7 @@ public class LiteralImpl extends ValueImpl implements Literal
    * <!-- end-user-doc -->
    * @generated
    */
-  public PropertyConstraintExpression getRight()
+  public PropertyConstraintCompare getRight()
   {
     return right;
   }
@@ -202,9 +203,9 @@ public class LiteralImpl extends ValueImpl implements Literal
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetRight(PropertyConstraintExpression newRight, NotificationChain msgs)
+  public NotificationChain basicSetRight(PropertyConstraintCompare newRight, NotificationChain msgs)
   {
-    PropertyConstraintExpression oldRight = right;
+    PropertyConstraintCompare oldRight = right;
     right = newRight;
     if (eNotificationRequired())
     {
@@ -219,7 +220,7 @@ public class LiteralImpl extends ValueImpl implements Literal
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRight(PropertyConstraintExpression newRight)
+  public void setRight(PropertyConstraintCompare newRight)
   {
     if (newRight != right)
     {
@@ -309,13 +310,13 @@ public class LiteralImpl extends ValueImpl implements Literal
     switch (featureID)
     {
       case AspectLangPackage.LITERAL__LEFT:
-        setLeft((PropertyConstraintExpression)newValue);
+        setLeft((PropertyConstraintCompare)newValue);
         return;
       case AspectLangPackage.LITERAL__LOGIC:
         setLogic((LogicOperator)newValue);
         return;
       case AspectLangPackage.LITERAL__RIGHT:
-        setRight((PropertyConstraintExpression)newValue);
+        setRight((PropertyConstraintCompare)newValue);
         return;
       case AspectLangPackage.LITERAL__COMPARE:
         setCompare((CompareOperator)newValue);
@@ -335,13 +336,13 @@ public class LiteralImpl extends ValueImpl implements Literal
     switch (featureID)
     {
       case AspectLangPackage.LITERAL__LEFT:
-        setLeft((PropertyConstraintExpression)null);
+        setLeft((PropertyConstraintCompare)null);
         return;
       case AspectLangPackage.LITERAL__LOGIC:
         setLogic(LOGIC_EDEFAULT);
         return;
       case AspectLangPackage.LITERAL__RIGHT:
-        setRight((PropertyConstraintExpression)null);
+        setRight((PropertyConstraintCompare)null);
         return;
       case AspectLangPackage.LITERAL__COMPARE:
         setCompare(COMPARE_EDEFAULT);
@@ -380,14 +381,21 @@ public class LiteralImpl extends ValueImpl implements Literal
   @Override
   public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
   {
-    if (baseClass == PropertyConstraintExpression.class)
+    if (baseClass == PropertyConstraint.class)
     {
       switch (derivedFeatureID)
       {
-        case AspectLangPackage.LITERAL__LEFT: return AspectLangPackage.PROPERTY_CONSTRAINT_EXPRESSION__LEFT;
-        case AspectLangPackage.LITERAL__LOGIC: return AspectLangPackage.PROPERTY_CONSTRAINT_EXPRESSION__LOGIC;
-        case AspectLangPackage.LITERAL__RIGHT: return AspectLangPackage.PROPERTY_CONSTRAINT_EXPRESSION__RIGHT;
-        case AspectLangPackage.LITERAL__COMPARE: return AspectLangPackage.PROPERTY_CONSTRAINT_EXPRESSION__COMPARE;
+        case AspectLangPackage.LITERAL__LEFT: return AspectLangPackage.PROPERTY_CONSTRAINT__LEFT;
+        case AspectLangPackage.LITERAL__LOGIC: return AspectLangPackage.PROPERTY_CONSTRAINT__LOGIC;
+        case AspectLangPackage.LITERAL__RIGHT: return AspectLangPackage.PROPERTY_CONSTRAINT__RIGHT;
+        default: return -1;
+      }
+    }
+    if (baseClass == PropertyConstraintCompare.class)
+    {
+      switch (derivedFeatureID)
+      {
+        case AspectLangPackage.LITERAL__COMPARE: return AspectLangPackage.PROPERTY_CONSTRAINT_COMPARE__COMPARE;
         default: return -1;
       }
     }
@@ -409,14 +417,21 @@ public class LiteralImpl extends ValueImpl implements Literal
   @Override
   public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
   {
-    if (baseClass == PropertyConstraintExpression.class)
+    if (baseClass == PropertyConstraint.class)
     {
       switch (baseFeatureID)
       {
-        case AspectLangPackage.PROPERTY_CONSTRAINT_EXPRESSION__LEFT: return AspectLangPackage.LITERAL__LEFT;
-        case AspectLangPackage.PROPERTY_CONSTRAINT_EXPRESSION__LOGIC: return AspectLangPackage.LITERAL__LOGIC;
-        case AspectLangPackage.PROPERTY_CONSTRAINT_EXPRESSION__RIGHT: return AspectLangPackage.LITERAL__RIGHT;
-        case AspectLangPackage.PROPERTY_CONSTRAINT_EXPRESSION__COMPARE: return AspectLangPackage.LITERAL__COMPARE;
+        case AspectLangPackage.PROPERTY_CONSTRAINT__LEFT: return AspectLangPackage.LITERAL__LEFT;
+        case AspectLangPackage.PROPERTY_CONSTRAINT__LOGIC: return AspectLangPackage.LITERAL__LOGIC;
+        case AspectLangPackage.PROPERTY_CONSTRAINT__RIGHT: return AspectLangPackage.LITERAL__RIGHT;
+        default: return -1;
+      }
+    }
+    if (baseClass == PropertyConstraintCompare.class)
+    {
+      switch (baseFeatureID)
+      {
+        case AspectLangPackage.PROPERTY_CONSTRAINT_COMPARE__COMPARE: return AspectLangPackage.LITERAL__COMPARE;
         default: return -1;
       }
     }

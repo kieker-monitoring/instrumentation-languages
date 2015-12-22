@@ -2,7 +2,7 @@
  */
 package de.cau.cs.se.instrumentation.al.aspectLang;
 
-import de.cau.cs.se.instrumentation.al.mapping.Container;
+import de.cau.cs.se.instrumentation.al.mapping.Feature;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,12 +31,12 @@ public interface ContainerNode extends Node
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Container</em>' reference.
-   * @see #setContainer(Container)
+   * @see #setContainer(Feature)
    * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getContainerNode_Container()
    * @model
    * @generated
    */
-  Container getContainer();
+  Feature getContainer();
 
   /**
    * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode#getContainer <em>Container</em>}' reference.
@@ -46,6 +46,6 @@ public interface ContainerNode extends Node
    * @see #getContainer()
    * @generated
    */
-  void setContainer(Container value);
+  void setContainer(Feature value);
 
 } // ContainerNode

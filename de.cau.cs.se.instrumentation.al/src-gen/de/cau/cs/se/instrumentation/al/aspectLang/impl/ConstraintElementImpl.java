@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class ConstraintElementImpl extends PropertyConstraintExpressionImpl implements ConstraintElement
+public class ConstraintElementImpl extends PropertyConstraintCompareImpl implements ConstraintElement
 {
   /**
    * <!-- begin-user-doc -->

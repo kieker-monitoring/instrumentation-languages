@@ -4,12 +4,13 @@ package de.cau.cs.se.instrumentation.al.aspectLang.impl;
 
 import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
 import de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery;
+import de.cau.cs.se.instrumentation.al.aspectLang.TypeReference;
 
 import de.cau.cs.se.instrumentation.al.mapping.Parameter;
 import de.cau.cs.se.instrumentation.al.mapping.ParameterModifier;
-import de.cau.cs.se.instrumentation.al.mapping.Type;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -45,14 +46,14 @@ public class ParameterQueryImpl extends MinimalEObjectImpl.Container implements 
   protected ParameterModifier modifier;
 
   /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' reference.
+   * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getType()
    * @generated
    * @ordered
    */
-  protected Type type;
+  protected TypeReference type;
 
   /**
    * The cached value of the '{@link #getParameter() <em>Parameter</em>}' reference.
@@ -133,27 +134,7 @@ public class ParameterQueryImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public Type getType()
-  {
-    if (type != null && type.eIsProxy())
-    {
-      InternalEObject oldType = (InternalEObject)type;
-      type = (Type)eResolveProxy(oldType);
-      if (type != oldType)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, AspectLangPackage.PARAMETER_QUERY__TYPE, oldType, type));
-      }
-    }
-    return type;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Type basicGetType()
+  public TypeReference getType()
   {
     return type;
   }
@@ -163,12 +144,37 @@ public class ParameterQueryImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setType(Type newType)
+  public NotificationChain basicSetType(TypeReference newType, NotificationChain msgs)
   {
-    Type oldType = type;
+    TypeReference oldType = type;
     type = newType;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.PARAMETER_QUERY__TYPE, oldType, type));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AspectLangPackage.PARAMETER_QUERY__TYPE, oldType, newType);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setType(TypeReference newType)
+  {
+    if (newType != type)
+    {
+      NotificationChain msgs = null;
+      if (type != null)
+        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AspectLangPackage.PARAMETER_QUERY__TYPE, null, msgs);
+      if (newType != null)
+        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AspectLangPackage.PARAMETER_QUERY__TYPE, null, msgs);
+      msgs = basicSetType(newType, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.PARAMETER_QUERY__TYPE, newType, newType));
   }
 
   /**
@@ -220,6 +226,22 @@ public class ParameterQueryImpl extends MinimalEObjectImpl.Container implements 
    * @generated
    */
   @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case AspectLangPackage.PARAMETER_QUERY__TYPE:
+        return basicSetType(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
@@ -228,8 +250,7 @@ public class ParameterQueryImpl extends MinimalEObjectImpl.Container implements 
         if (resolve) return getModifier();
         return basicGetModifier();
       case AspectLangPackage.PARAMETER_QUERY__TYPE:
-        if (resolve) return getType();
-        return basicGetType();
+        return getType();
       case AspectLangPackage.PARAMETER_QUERY__PARAMETER:
         if (resolve) return getParameter();
         return basicGetParameter();
@@ -251,7 +272,7 @@ public class ParameterQueryImpl extends MinimalEObjectImpl.Container implements 
         setModifier((ParameterModifier)newValue);
         return;
       case AspectLangPackage.PARAMETER_QUERY__TYPE:
-        setType((Type)newValue);
+        setType((TypeReference)newValue);
         return;
       case AspectLangPackage.PARAMETER_QUERY__PARAMETER:
         setParameter((Parameter)newValue);
@@ -274,7 +295,7 @@ public class ParameterQueryImpl extends MinimalEObjectImpl.Container implements 
         setModifier((ParameterModifier)null);
         return;
       case AspectLangPackage.PARAMETER_QUERY__TYPE:
-        setType((Type)null);
+        setType((TypeReference)null);
         return;
       case AspectLangPackage.PARAMETER_QUERY__PARAMETER:
         setParameter((Parameter)null);

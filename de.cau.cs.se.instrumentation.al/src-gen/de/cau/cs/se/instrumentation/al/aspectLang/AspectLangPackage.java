@@ -335,7 +335,7 @@ public interface AspectLangPackage extends EPackage
   int ADVICE_PARAMETER_DECLARATION = 6;
 
   /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * The feature id for the '<em><b>Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -527,7 +527,7 @@ public interface AspectLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INTERNAL_FUNCTION_PROPERTY__FUNCTION = PROPERTY_FEATURE_COUNT + 0;
+  int INTERNAL_FUNCTION_PROPERTY__FUNCTION = VALUE_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Internal Function Property</em>' class.
@@ -536,7 +536,7 @@ public interface AspectLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INTERNAL_FUNCTION_PROPERTY_FEATURE_COUNT = PROPERTY_FEATURE_COUNT + 1;
+  int INTERNAL_FUNCTION_PROPERTY_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ReflectionPropertyImpl <em>Reflection Property</em>}' class.
@@ -567,6 +567,62 @@ public interface AspectLangPackage extends EPackage
   int REFLECTION_PROPERTY_FEATURE_COUNT = PROPERTY_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.RuntimePropertyImpl <em>Runtime Property</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.RuntimePropertyImpl
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getRuntimeProperty()
+   * @generated
+   */
+  int RUNTIME_PROPERTY = 14;
+
+  /**
+   * The number of structural features of the '<em>Runtime Property</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RUNTIME_PROPERTY_FEATURE_COUNT = PROPERTY_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AdviceParameterImpl <em>Advice Parameter</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AdviceParameterImpl
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getAdviceParameter()
+   * @generated
+   */
+  int ADVICE_PARAMETER = 15;
+
+  /**
+   * The feature id for the '<em><b>Declaration</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADVICE_PARAMETER__DECLARATION = VALUE_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Collection</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADVICE_PARAMETER__COLLECTION = VALUE_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Advice Parameter</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADVICE_PARAMETER_FEATURE_COUNT = VALUE_FEATURE_COUNT + 2;
+
+  /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.PointcutImpl <em>Pointcut</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -574,7 +630,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getPointcut()
    * @generated
    */
-  int POINTCUT = 14;
+  int POINTCUT = 16;
 
   /**
    * The feature id for the '<em><b>Annotation</b></em>' containment reference.
@@ -595,13 +651,22 @@ public interface AspectLangPackage extends EPackage
   int POINTCUT__NAME = 1;
 
   /**
+   * The feature id for the '<em><b>Model</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POINTCUT__MODEL = 2;
+
+  /**
    * The feature id for the '<em><b>Location</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int POINTCUT__LOCATION = 2;
+  int POINTCUT__LOCATION = 3;
 
   /**
    * The feature id for the '<em><b>Operation</b></em>' containment reference.
@@ -610,7 +675,7 @@ public interface AspectLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POINTCUT__OPERATION = 3;
+  int POINTCUT__OPERATION = 4;
 
   /**
    * The number of structural features of the '<em>Pointcut</em>' class.
@@ -619,7 +684,7 @@ public interface AspectLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POINTCUT_FEATURE_COUNT = 4;
+  int POINTCUT_FEATURE_COUNT = 5;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AnnotationImpl <em>Annotation</em>}' class.
@@ -629,7 +694,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getAnnotation()
    * @generated
    */
-  int ANNOTATION = 15;
+  int ANNOTATION = 17;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -666,7 +731,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getLocationQuery()
    * @generated
    */
-  int LOCATION_QUERY = 16;
+  int LOCATION_QUERY = 18;
 
   /**
    * The feature id for the '<em><b>Node</b></em>' containment reference.
@@ -712,7 +777,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getCompositionQuery()
    * @generated
    */
-  int COMPOSITION_QUERY = 17;
+  int COMPOSITION_QUERY = 19;
 
   /**
    * The feature id for the '<em><b>Modifier</b></em>' attribute.
@@ -749,7 +814,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getOperationQuery()
    * @generated
    */
-  int OPERATION_QUERY = 18;
+  int OPERATION_QUERY = 20;
 
   /**
    * The feature id for the '<em><b>Modifier</b></em>' reference.
@@ -761,7 +826,7 @@ public interface AspectLangPackage extends EPackage
   int OPERATION_QUERY__MODIFIER = 0;
 
   /**
-   * The feature id for the '<em><b>Return Type</b></em>' reference.
+   * The feature id for the '<em><b>Return Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -804,7 +869,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getParameterQuery()
    * @generated
    */
-  int PARAMETER_QUERY = 19;
+  int PARAMETER_QUERY = 21;
 
   /**
    * The feature id for the '<em><b>Modifier</b></em>' reference.
@@ -816,7 +881,7 @@ public interface AspectLangPackage extends EPackage
   int PARAMETER_QUERY__MODIFIER = 0;
 
   /**
-   * The feature id for the '<em><b>Type</b></em>' reference.
+   * The feature id for the '<em><b>Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -850,7 +915,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getNode()
    * @generated
    */
-  int NODE = 20;
+  int NODE = 22;
 
   /**
    * The feature id for the '<em><b>Constraint</b></em>' containment reference.
@@ -878,7 +943,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getContainerNode()
    * @generated
    */
-  int CONTAINER_NODE = 21;
+  int CONTAINER_NODE = 23;
 
   /**
    * The feature id for the '<em><b>Constraint</b></em>' containment reference.
@@ -915,7 +980,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getWildcardNode()
    * @generated
    */
-  int WILDCARD_NODE = 22;
+  int WILDCARD_NODE = 24;
 
   /**
    * The feature id for the '<em><b>Constraint</b></em>' containment reference.
@@ -943,7 +1008,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getSubPathNode()
    * @generated
    */
-  int SUB_PATH_NODE = 23;
+  int SUB_PATH_NODE = 25;
 
   /**
    * The feature id for the '<em><b>Constraint</b></em>' containment reference.
@@ -971,7 +1036,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getParentNode()
    * @generated
    */
-  int PARENT_NODE = 24;
+  int PARENT_NODE = 26;
 
   /**
    * The feature id for the '<em><b>Constraint</b></em>' containment reference.
@@ -992,14 +1057,14 @@ public interface AspectLangPackage extends EPackage
   int PARENT_NODE_FEATURE_COUNT = NODE_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.PropertyConstraintExpressionImpl <em>Property Constraint Expression</em>}' class.
+   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.PropertyConstraintImpl <em>Property Constraint</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.PropertyConstraintExpressionImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getPropertyConstraintExpression()
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.PropertyConstraintImpl
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getPropertyConstraint()
    * @generated
    */
-  int PROPERTY_CONSTRAINT_EXPRESSION = 25;
+  int PROPERTY_CONSTRAINT = 27;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1008,7 +1073,7 @@ public interface AspectLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY_CONSTRAINT_EXPRESSION__LEFT = 0;
+  int PROPERTY_CONSTRAINT__LEFT = 0;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' attribute.
@@ -1017,7 +1082,7 @@ public interface AspectLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY_CONSTRAINT_EXPRESSION__LOGIC = 1;
+  int PROPERTY_CONSTRAINT__LOGIC = 1;
 
   /**
    * The feature id for the '<em><b>Right</b></em>' containment reference.
@@ -1026,7 +1091,53 @@ public interface AspectLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY_CONSTRAINT_EXPRESSION__RIGHT = 2;
+  int PROPERTY_CONSTRAINT__RIGHT = 2;
+
+  /**
+   * The number of structural features of the '<em>Property Constraint</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROPERTY_CONSTRAINT_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.PropertyConstraintCompareImpl <em>Property Constraint Compare</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.PropertyConstraintCompareImpl
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getPropertyConstraintCompare()
+   * @generated
+   */
+  int PROPERTY_CONSTRAINT_COMPARE = 28;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROPERTY_CONSTRAINT_COMPARE__LEFT = PROPERTY_CONSTRAINT__LEFT;
+
+  /**
+   * The feature id for the '<em><b>Logic</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROPERTY_CONSTRAINT_COMPARE__LOGIC = PROPERTY_CONSTRAINT__LOGIC;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROPERTY_CONSTRAINT_COMPARE__RIGHT = PROPERTY_CONSTRAINT__RIGHT;
 
   /**
    * The feature id for the '<em><b>Compare</b></em>' attribute.
@@ -1035,16 +1146,16 @@ public interface AspectLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY_CONSTRAINT_EXPRESSION__COMPARE = 3;
+  int PROPERTY_CONSTRAINT_COMPARE__COMPARE = PROPERTY_CONSTRAINT_FEATURE_COUNT + 0;
 
   /**
-   * The number of structural features of the '<em>Property Constraint Expression</em>' class.
+   * The number of structural features of the '<em>Property Constraint Compare</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROPERTY_CONSTRAINT_EXPRESSION_FEATURE_COUNT = 4;
+  int PROPERTY_CONSTRAINT_COMPARE_FEATURE_COUNT = PROPERTY_CONSTRAINT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ConstraintElementImpl <em>Constraint Element</em>}' class.
@@ -1054,7 +1165,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getConstraintElement()
    * @generated
    */
-  int CONSTRAINT_ELEMENT = 26;
+  int CONSTRAINT_ELEMENT = 29;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1063,7 +1174,7 @@ public interface AspectLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONSTRAINT_ELEMENT__LEFT = PROPERTY_CONSTRAINT_EXPRESSION__LEFT;
+  int CONSTRAINT_ELEMENT__LEFT = PROPERTY_CONSTRAINT_COMPARE__LEFT;
 
   /**
    * The feature id for the '<em><b>Logic</b></em>' attribute.
@@ -1072,7 +1183,7 @@ public interface AspectLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONSTRAINT_ELEMENT__LOGIC = PROPERTY_CONSTRAINT_EXPRESSION__LOGIC;
+  int CONSTRAINT_ELEMENT__LOGIC = PROPERTY_CONSTRAINT_COMPARE__LOGIC;
 
   /**
    * The feature id for the '<em><b>Right</b></em>' containment reference.
@@ -1081,7 +1192,7 @@ public interface AspectLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONSTRAINT_ELEMENT__RIGHT = PROPERTY_CONSTRAINT_EXPRESSION__RIGHT;
+  int CONSTRAINT_ELEMENT__RIGHT = PROPERTY_CONSTRAINT_COMPARE__RIGHT;
 
   /**
    * The feature id for the '<em><b>Compare</b></em>' attribute.
@@ -1090,7 +1201,7 @@ public interface AspectLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONSTRAINT_ELEMENT__COMPARE = PROPERTY_CONSTRAINT_EXPRESSION__COMPARE;
+  int CONSTRAINT_ELEMENT__COMPARE = PROPERTY_CONSTRAINT_COMPARE__COMPARE;
 
   /**
    * The number of structural features of the '<em>Constraint Element</em>' class.
@@ -1099,7 +1210,7 @@ public interface AspectLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONSTRAINT_ELEMENT_FEATURE_COUNT = PROPERTY_CONSTRAINT_EXPRESSION_FEATURE_COUNT + 0;
+  int CONSTRAINT_ELEMENT_FEATURE_COUNT = PROPERTY_CONSTRAINT_COMPARE_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.LocalQueryImpl <em>Local Query</em>}' class.
@@ -1109,7 +1220,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getLocalQuery()
    * @generated
    */
-  int LOCAL_QUERY = 27;
+  int LOCAL_QUERY = 30;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1191,7 +1302,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getModelProperty()
    * @generated
    */
-  int MODEL_PROPERTY = 28;
+  int MODEL_PROPERTY = 31;
 
   /**
    * The feature id for the '<em><b>Reference</b></em>' reference.
@@ -1219,10 +1330,10 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getTypeof()
    * @generated
    */
-  int TYPEOF = 29;
+  int TYPEOF = 32;
 
   /**
-   * The feature id for the '<em><b>Reference</b></em>' reference.
+   * The feature id for the '<em><b>Reference</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1247,7 +1358,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getLiteral()
    * @generated
    */
-  int LITERAL = 30;
+  int LITERAL = 33;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1302,7 +1413,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getFloatLiteral()
    * @generated
    */
-  int FLOAT_LITERAL = 31;
+  int FLOAT_LITERAL = 34;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1366,7 +1477,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getIntLiteral()
    * @generated
    */
-  int INT_LITERAL = 32;
+  int INT_LITERAL = 35;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1430,7 +1541,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getStringLiteral()
    * @generated
    */
-  int STRING_LITERAL = 33;
+  int STRING_LITERAL = 36;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1487,6 +1598,52 @@ public interface AspectLangPackage extends EPackage
   int STRING_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.TypeReferenceImpl <em>Type Reference</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.TypeReferenceImpl
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getTypeReference()
+   * @generated
+   */
+  int TYPE_REFERENCE = 37;
+
+  /**
+   * The feature id for the '<em><b>Context</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPE_REFERENCE__CONTEXT = 0;
+
+  /**
+   * The feature id for the '<em><b>Reference</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPE_REFERENCE__REFERENCE = 1;
+
+  /**
+   * The feature id for the '<em><b>Collection</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPE_REFERENCE__COLLECTION = 2;
+
+  /**
+   * The number of structural features of the '<em>Type Reference</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPE_REFERENCE_FEATURE_COUNT = 3;
+
+  /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.InsertionPoint <em>Insertion Point</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1494,7 +1651,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getInsertionPoint()
    * @generated
    */
-  int INSERTION_POINT = 34;
+  int INSERTION_POINT = 38;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.InternalFunction <em>Internal Function</em>}' enum.
@@ -1504,7 +1661,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getInternalFunction()
    * @generated
    */
-  int INTERNAL_FUNCTION = 35;
+  int INTERNAL_FUNCTION = 39;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.ReflectionFunction <em>Reflection Function</em>}' enum.
@@ -1514,7 +1671,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getReflectionFunction()
    * @generated
    */
-  int REFLECTION_FUNCTION = 36;
+  int REFLECTION_FUNCTION = 40;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.QueryModifier <em>Query Modifier</em>}' enum.
@@ -1524,7 +1681,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getQueryModifier()
    * @generated
    */
-  int QUERY_MODIFIER = 37;
+  int QUERY_MODIFIER = 41;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.LogicOperator <em>Logic Operator</em>}' enum.
@@ -1534,7 +1691,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getLogicOperator()
    * @generated
    */
-  int LOGIC_OPERATOR = 38;
+  int LOGIC_OPERATOR = 42;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.CompareOperator <em>Compare Operator</em>}' enum.
@@ -1544,7 +1701,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getCompareOperator()
    * @generated
    */
-  int COMPARE_OPERATOR = 39;
+  int COMPARE_OPERATOR = 43;
 
 
   /**
@@ -1805,15 +1962,15 @@ public interface AspectLangPackage extends EPackage
   EClass getAdviceParameterDeclaration();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameterDeclaration#getType <em>Type</em>}'.
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameterDeclaration#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Type</em>'.
+   * @return the meta object for the containment reference '<em>Type</em>'.
    * @see de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameterDeclaration#getType()
    * @see #getAdviceParameterDeclaration()
    * @generated
    */
-  EAttribute getAdviceParameterDeclaration_Type();
+  EReference getAdviceParameterDeclaration_Type();
 
   /**
    * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameterDeclaration#getName <em>Name</em>}'.
@@ -1985,6 +2142,48 @@ public interface AspectLangPackage extends EPackage
   EAttribute getReflectionProperty_Function();
 
   /**
+   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.RuntimeProperty <em>Runtime Property</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Runtime Property</em>'.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.RuntimeProperty
+   * @generated
+   */
+  EClass getRuntimeProperty();
+
+  /**
+   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameter <em>Advice Parameter</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Advice Parameter</em>'.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameter
+   * @generated
+   */
+  EClass getAdviceParameter();
+
+  /**
+   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameter#getDeclaration <em>Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Declaration</em>'.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameter#getDeclaration()
+   * @see #getAdviceParameter()
+   * @generated
+   */
+  EReference getAdviceParameter_Declaration();
+
+  /**
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameter#getCollection <em>Collection</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Collection</em>'.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameter#getCollection()
+   * @see #getAdviceParameter()
+   * @generated
+   */
+  EReference getAdviceParameter_Collection();
+
+  /**
    * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Pointcut <em>Pointcut</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2015,6 +2214,17 @@ public interface AspectLangPackage extends EPackage
    * @generated
    */
   EAttribute getPointcut_Name();
+
+  /**
+   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.Pointcut#getModel <em>Model</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Model</em>'.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.Pointcut#getModel()
+   * @see #getPointcut()
+   * @generated
+   */
+  EReference getPointcut_Model();
 
   /**
    * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.Pointcut#getLocation <em>Location</em>}'.
@@ -2167,10 +2377,10 @@ public interface AspectLangPackage extends EPackage
   EReference getOperationQuery_Modifier();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.OperationQuery#getReturnType <em>Return Type</em>}'.
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.OperationQuery#getReturnType <em>Return Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Return Type</em>'.
+   * @return the meta object for the containment reference '<em>Return Type</em>'.
    * @see de.cau.cs.se.instrumentation.al.aspectLang.OperationQuery#getReturnType()
    * @see #getOperationQuery()
    * @generated
@@ -2221,10 +2431,10 @@ public interface AspectLangPackage extends EPackage
   EReference getParameterQuery_Modifier();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery#getType <em>Type</em>}'.
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Type</em>'.
+   * @return the meta object for the containment reference '<em>Type</em>'.
    * @see de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery#getType()
    * @see #getParameterQuery()
    * @generated
@@ -2315,58 +2525,68 @@ public interface AspectLangPackage extends EPackage
   EClass getParentNode();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraintExpression <em>Property Constraint Expression</em>}'.
+   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraint <em>Property Constraint</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Property Constraint Expression</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraintExpression
+   * @return the meta object for class '<em>Property Constraint</em>'.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraint
    * @generated
    */
-  EClass getPropertyConstraintExpression();
+  EClass getPropertyConstraint();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraintExpression#getLeft <em>Left</em>}'.
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraint#getLeft <em>Left</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Left</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraintExpression#getLeft()
-   * @see #getPropertyConstraintExpression()
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraint#getLeft()
+   * @see #getPropertyConstraint()
    * @generated
    */
-  EReference getPropertyConstraintExpression_Left();
+  EReference getPropertyConstraint_Left();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraintExpression#getLogic <em>Logic</em>}'.
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraint#getLogic <em>Logic</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Logic</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraintExpression#getLogic()
-   * @see #getPropertyConstraintExpression()
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraint#getLogic()
+   * @see #getPropertyConstraint()
    * @generated
    */
-  EAttribute getPropertyConstraintExpression_Logic();
+  EAttribute getPropertyConstraint_Logic();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraintExpression#getRight <em>Right</em>}'.
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraint#getRight <em>Right</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Right</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraintExpression#getRight()
-   * @see #getPropertyConstraintExpression()
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraint#getRight()
+   * @see #getPropertyConstraint()
    * @generated
    */
-  EReference getPropertyConstraintExpression_Right();
+  EReference getPropertyConstraint_Right();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraintExpression#getCompare <em>Compare</em>}'.
+   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraintCompare <em>Property Constraint Compare</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Property Constraint Compare</em>'.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraintCompare
+   * @generated
+   */
+  EClass getPropertyConstraintCompare();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraintCompare#getCompare <em>Compare</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Compare</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraintExpression#getCompare()
-   * @see #getPropertyConstraintExpression()
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraintCompare#getCompare()
+   * @see #getPropertyConstraintCompare()
    * @generated
    */
-  EAttribute getPropertyConstraintExpression_Compare();
+  EAttribute getPropertyConstraintCompare_Compare();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ConstraintElement <em>Constraint Element</em>}'.
@@ -2453,10 +2673,10 @@ public interface AspectLangPackage extends EPackage
   EClass getTypeof();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.Typeof#getReference <em>Reference</em>}'.
+   * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.Typeof#getReference <em>Reference</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Reference</em>'.
+   * @return the meta object for the containment reference '<em>Reference</em>'.
    * @see de.cau.cs.se.instrumentation.al.aspectLang.Typeof#getReference()
    * @see #getTypeof()
    * @generated
@@ -2535,6 +2755,49 @@ public interface AspectLangPackage extends EPackage
    * @generated
    */
   EAttribute getStringLiteral_Value();
+
+  /**
+   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.TypeReference <em>Type Reference</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Type Reference</em>'.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.TypeReference
+   * @generated
+   */
+  EClass getTypeReference();
+
+  /**
+   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.TypeReference#getContext <em>Context</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Context</em>'.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.TypeReference#getContext()
+   * @see #getTypeReference()
+   * @generated
+   */
+  EReference getTypeReference_Context();
+
+  /**
+   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.TypeReference#getReference <em>Reference</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Reference</em>'.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.TypeReference#getReference()
+   * @see #getTypeReference()
+   * @generated
+   */
+  EReference getTypeReference_Reference();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.aspectLang.TypeReference#isCollection <em>Collection</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Collection</em>'.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.TypeReference#isCollection()
+   * @see #getTypeReference()
+   * @generated
+   */
+  EAttribute getTypeReference_Collection();
 
   /**
    * Returns the meta object for enum '{@link de.cau.cs.se.instrumentation.al.aspectLang.InsertionPoint <em>Insertion Point</em>}'.
@@ -2826,12 +3089,12 @@ public interface AspectLangPackage extends EPackage
     EClass ADVICE_PARAMETER_DECLARATION = eINSTANCE.getAdviceParameterDeclaration();
 
     /**
-     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ADVICE_PARAMETER_DECLARATION__TYPE = eINSTANCE.getAdviceParameterDeclaration_Type();
+    EReference ADVICE_PARAMETER_DECLARATION__TYPE = eINSTANCE.getAdviceParameterDeclaration_Type();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -2976,6 +3239,42 @@ public interface AspectLangPackage extends EPackage
     EAttribute REFLECTION_PROPERTY__FUNCTION = eINSTANCE.getReflectionProperty_Function();
 
     /**
+     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.RuntimePropertyImpl <em>Runtime Property</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.RuntimePropertyImpl
+     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getRuntimeProperty()
+     * @generated
+     */
+    EClass RUNTIME_PROPERTY = eINSTANCE.getRuntimeProperty();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AdviceParameterImpl <em>Advice Parameter</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AdviceParameterImpl
+     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getAdviceParameter()
+     * @generated
+     */
+    EClass ADVICE_PARAMETER = eINSTANCE.getAdviceParameter();
+
+    /**
+     * The meta object literal for the '<em><b>Declaration</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ADVICE_PARAMETER__DECLARATION = eINSTANCE.getAdviceParameter_Declaration();
+
+    /**
+     * The meta object literal for the '<em><b>Collection</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ADVICE_PARAMETER__COLLECTION = eINSTANCE.getAdviceParameter_Collection();
+
+    /**
      * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.PointcutImpl <em>Pointcut</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3000,6 +3299,14 @@ public interface AspectLangPackage extends EPackage
      * @generated
      */
     EAttribute POINTCUT__NAME = eINSTANCE.getPointcut_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Model</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference POINTCUT__MODEL = eINSTANCE.getPointcut_Model();
 
     /**
      * The meta object literal for the '<em><b>Location</b></em>' containment reference feature.
@@ -3122,7 +3429,7 @@ public interface AspectLangPackage extends EPackage
     EReference OPERATION_QUERY__MODIFIER = eINSTANCE.getOperationQuery_Modifier();
 
     /**
-     * The meta object literal for the '<em><b>Return Type</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Return Type</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3164,7 +3471,7 @@ public interface AspectLangPackage extends EPackage
     EReference PARAMETER_QUERY__MODIFIER = eINSTANCE.getParameterQuery_Modifier();
 
     /**
-     * The meta object literal for the '<em><b>Type</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3246,14 +3553,14 @@ public interface AspectLangPackage extends EPackage
     EClass PARENT_NODE = eINSTANCE.getParentNode();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.PropertyConstraintExpressionImpl <em>Property Constraint Expression</em>}' class.
+     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.PropertyConstraintImpl <em>Property Constraint</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.PropertyConstraintExpressionImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getPropertyConstraintExpression()
+     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.PropertyConstraintImpl
+     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getPropertyConstraint()
      * @generated
      */
-    EClass PROPERTY_CONSTRAINT_EXPRESSION = eINSTANCE.getPropertyConstraintExpression();
+    EClass PROPERTY_CONSTRAINT = eINSTANCE.getPropertyConstraint();
 
     /**
      * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
@@ -3261,7 +3568,7 @@ public interface AspectLangPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PROPERTY_CONSTRAINT_EXPRESSION__LEFT = eINSTANCE.getPropertyConstraintExpression_Left();
+    EReference PROPERTY_CONSTRAINT__LEFT = eINSTANCE.getPropertyConstraint_Left();
 
     /**
      * The meta object literal for the '<em><b>Logic</b></em>' attribute feature.
@@ -3269,7 +3576,7 @@ public interface AspectLangPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PROPERTY_CONSTRAINT_EXPRESSION__LOGIC = eINSTANCE.getPropertyConstraintExpression_Logic();
+    EAttribute PROPERTY_CONSTRAINT__LOGIC = eINSTANCE.getPropertyConstraint_Logic();
 
     /**
      * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
@@ -3277,7 +3584,17 @@ public interface AspectLangPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PROPERTY_CONSTRAINT_EXPRESSION__RIGHT = eINSTANCE.getPropertyConstraintExpression_Right();
+    EReference PROPERTY_CONSTRAINT__RIGHT = eINSTANCE.getPropertyConstraint_Right();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.PropertyConstraintCompareImpl <em>Property Constraint Compare</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.PropertyConstraintCompareImpl
+     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getPropertyConstraintCompare()
+     * @generated
+     */
+    EClass PROPERTY_CONSTRAINT_COMPARE = eINSTANCE.getPropertyConstraintCompare();
 
     /**
      * The meta object literal for the '<em><b>Compare</b></em>' attribute feature.
@@ -3285,7 +3602,7 @@ public interface AspectLangPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PROPERTY_CONSTRAINT_EXPRESSION__COMPARE = eINSTANCE.getPropertyConstraintExpression_Compare();
+    EAttribute PROPERTY_CONSTRAINT_COMPARE__COMPARE = eINSTANCE.getPropertyConstraintCompare_Compare();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ConstraintElementImpl <em>Constraint Element</em>}' class.
@@ -3360,7 +3677,7 @@ public interface AspectLangPackage extends EPackage
     EClass TYPEOF = eINSTANCE.getTypeof();
 
     /**
-     * The meta object literal for the '<em><b>Reference</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Reference</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3430,6 +3747,40 @@ public interface AspectLangPackage extends EPackage
      * @generated
      */
     EAttribute STRING_LITERAL__VALUE = eINSTANCE.getStringLiteral_Value();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.TypeReferenceImpl <em>Type Reference</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.TypeReferenceImpl
+     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getTypeReference()
+     * @generated
+     */
+    EClass TYPE_REFERENCE = eINSTANCE.getTypeReference();
+
+    /**
+     * The meta object literal for the '<em><b>Context</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TYPE_REFERENCE__CONTEXT = eINSTANCE.getTypeReference_Context();
+
+    /**
+     * The meta object literal for the '<em><b>Reference</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TYPE_REFERENCE__REFERENCE = eINSTANCE.getTypeReference_Reference();
+
+    /**
+     * The meta object literal for the '<em><b>Collection</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TYPE_REFERENCE__COLLECTION = eINSTANCE.getTypeReference_Collection();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.InsertionPoint <em>Insertion Point</em>}' enum.

@@ -41,7 +41,8 @@
         eType="#//Collector" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AdviceParameterDeclaration">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//TypeReference"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Collector">
@@ -66,7 +67,7 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Property"/>
-  <eClassifiers xsi:type="ecore:EClass" name="InternalFunctionProperty" eSuperTypes="#//Property">
+  <eClassifiers xsi:type="ecore:EClass" name="InternalFunctionProperty" eSuperTypes="#//Value">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="function" eType="#//InternalFunction"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="InternalFunction">
@@ -77,16 +78,23 @@
   <eClassifiers xsi:type="ecore:EClass" name="ReflectionProperty" eSuperTypes="#//Property">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="function" eType="#//ReflectionFunction"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RuntimeProperty" eSuperTypes="#//Property"/>
   <eClassifiers xsi:type="ecore:EEnum" name="ReflectionFunction">
     <eLiterals name="NAME" literal="name"/>
     <eLiterals name="SIGNATURE" value="1" literal="signature"/>
     <eLiterals name="CLASS" value="2" literal="classname"/>
     <eLiterals name="RETURN_TYPE" value="3" literal="return-type"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AdviceParameter" eSuperTypes="#//Value">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="declaration" eType="#//AdviceParameterDeclaration"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="collection" eType="#//Value"
+        containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Pointcut">
     <eStructuralFeatures xsi:type="ecore:EReference" name="annotation" eType="#//Annotation"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="model" eType="#//ApplicationModel"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="location" eType="#//LocationQuery"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="operation" eType="#//OperationQuery"
@@ -114,37 +122,41 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OperationQuery">
     <eStructuralFeatures xsi:type="ecore:EReference" name="modifier" eType="ecore:EClass ../MappingModel.ecore#//OperationModifier"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="returnType" eType="ecore:EClass ../MappingModel.ecore#//Type"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="returnType" eType="#//TypeReference"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="operationReference" eType="ecore:EClass ../MappingModel.ecore#//Operation"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameterQueries" upperBound="-1"
         eType="#//ParameterQuery" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ParameterQuery">
     <eStructuralFeatures xsi:type="ecore:EReference" name="modifier" eType="ecore:EClass ../MappingModel.ecore#//ParameterModifier"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass ../MappingModel.ecore#//Type"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//TypeReference"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" eType="ecore:EClass ../MappingModel.ecore#//Parameter"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Node">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="constraint" eType="#//PropertyConstraintExpression"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="constraint" eType="#//PropertyConstraint"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ContainerNode" eSuperTypes="#//Node">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="container" eType="ecore:EClass ../MappingModel.ecore#//Container"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="container" eType="ecore:EClass ../MappingModel.ecore#//Feature"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WildcardNode" eSuperTypes="#//Node"/>
   <eClassifiers xsi:type="ecore:EClass" name="SubPathNode" eSuperTypes="#//Node"/>
   <eClassifiers xsi:type="ecore:EClass" name="ParentNode" eSuperTypes="#//Node"/>
-  <eClassifiers xsi:type="ecore:EClass" name="PropertyConstraintExpression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//PropertyConstraintExpression"
+  <eClassifiers xsi:type="ecore:EClass" name="PropertyConstraint">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//PropertyConstraintCompare"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="logic" eType="#//LogicOperator"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//PropertyConstraintExpression"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//PropertyConstraintCompare"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="compare" eType="#//CompareOperator"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="LogicOperator">
     <eLiterals name="AND" literal="&amp;&amp;"/>
     <eLiterals name="OR" value="1" literal="||"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertyConstraintCompare" eSuperTypes="#//PropertyConstraint">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="compare" eType="#//CompareOperator"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="CompareOperator">
     <eLiterals name="EQ" literal="="/>
@@ -155,7 +167,7 @@
     <eLiterals name="GE" value="5" literal=">="/>
     <eLiterals name="LE" value="6" literal="&lt;="/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ConstraintElement" eSuperTypes="#//PropertyConstraintExpression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ConstraintElement" eSuperTypes="#//PropertyConstraintCompare"/>
   <eClassifiers xsi:type="ecore:EClass" name="LocalQuery" eSuperTypes="#//ConstraintElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="locationQuery" eType="#//LocationQuery"
         containment="true"/>
@@ -168,7 +180,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="ecore:EClass ../MappingModel.ecore#//Feature"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Typeof">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="ecore:EClass ../MappingModel.ecore#//NamedType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="#//TypeReference"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Literal" eSuperTypes="#//Value #//ConstraintElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="FloatLiteral" eSuperTypes="#//Literal">
@@ -179,5 +192,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StringLiteral" eSuperTypes="#//Literal">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TypeReference">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="context" eType="#//ApplicationModel"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="ecore:EClass ../MappingModel.ecore#//NamedType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="collection" eType="ecore:EDataType platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
   </eClassifiers>
 </ecore:EPackage>

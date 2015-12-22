@@ -79,6 +79,8 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
       case AspectLangPackage.PROPERTY: return createProperty();
       case AspectLangPackage.INTERNAL_FUNCTION_PROPERTY: return createInternalFunctionProperty();
       case AspectLangPackage.REFLECTION_PROPERTY: return createReflectionProperty();
+      case AspectLangPackage.RUNTIME_PROPERTY: return createRuntimeProperty();
+      case AspectLangPackage.ADVICE_PARAMETER: return createAdviceParameter();
       case AspectLangPackage.POINTCUT: return createPointcut();
       case AspectLangPackage.ANNOTATION: return createAnnotation();
       case AspectLangPackage.LOCATION_QUERY: return createLocationQuery();
@@ -90,7 +92,8 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
       case AspectLangPackage.WILDCARD_NODE: return createWildcardNode();
       case AspectLangPackage.SUB_PATH_NODE: return createSubPathNode();
       case AspectLangPackage.PARENT_NODE: return createParentNode();
-      case AspectLangPackage.PROPERTY_CONSTRAINT_EXPRESSION: return createPropertyConstraintExpression();
+      case AspectLangPackage.PROPERTY_CONSTRAINT: return createPropertyConstraint();
+      case AspectLangPackage.PROPERTY_CONSTRAINT_COMPARE: return createPropertyConstraintCompare();
       case AspectLangPackage.CONSTRAINT_ELEMENT: return createConstraintElement();
       case AspectLangPackage.LOCAL_QUERY: return createLocalQuery();
       case AspectLangPackage.MODEL_PROPERTY: return createModelProperty();
@@ -99,6 +102,7 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
       case AspectLangPackage.FLOAT_LITERAL: return createFloatLiteral();
       case AspectLangPackage.INT_LITERAL: return createIntLiteral();
       case AspectLangPackage.STRING_LITERAL: return createStringLiteral();
+      case AspectLangPackage.TYPE_REFERENCE: return createTypeReference();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -317,6 +321,28 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
    * <!-- end-user-doc -->
    * @generated
    */
+  public RuntimeProperty createRuntimeProperty()
+  {
+    RuntimePropertyImpl runtimeProperty = new RuntimePropertyImpl();
+    return runtimeProperty;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AdviceParameter createAdviceParameter()
+  {
+    AdviceParameterImpl adviceParameter = new AdviceParameterImpl();
+    return adviceParameter;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Pointcut createPointcut()
   {
     PointcutImpl pointcut = new PointcutImpl();
@@ -438,10 +464,21 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
    * <!-- end-user-doc -->
    * @generated
    */
-  public PropertyConstraintExpression createPropertyConstraintExpression()
+  public PropertyConstraint createPropertyConstraint()
   {
-    PropertyConstraintExpressionImpl propertyConstraintExpression = new PropertyConstraintExpressionImpl();
-    return propertyConstraintExpression;
+    PropertyConstraintImpl propertyConstraint = new PropertyConstraintImpl();
+    return propertyConstraint;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PropertyConstraintCompare createPropertyConstraintCompare()
+  {
+    PropertyConstraintCompareImpl propertyConstraintCompare = new PropertyConstraintCompareImpl();
+    return propertyConstraintCompare;
   }
 
   /**
@@ -530,6 +567,17 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
   {
     StringLiteralImpl stringLiteral = new StringLiteralImpl();
     return stringLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TypeReference createTypeReference()
+  {
+    TypeReferenceImpl typeReference = new TypeReferenceImpl();
+    return typeReference;
   }
 
   /**

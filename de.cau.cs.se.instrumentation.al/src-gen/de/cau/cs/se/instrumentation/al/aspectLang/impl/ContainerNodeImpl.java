@@ -5,6 +5,8 @@ package de.cau.cs.se.instrumentation.al.aspectLang.impl;
 import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
 import de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode;
 
+import de.cau.cs.se.instrumentation.al.mapping.Feature;
+
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -35,7 +37,7 @@ public class ContainerNodeImpl extends NodeImpl implements ContainerNode
    * @generated
    * @ordered
    */
-  protected de.cau.cs.se.instrumentation.al.mapping.Container container;
+  protected Feature container;
 
   /**
    * <!-- begin-user-doc -->
@@ -63,12 +65,12 @@ public class ContainerNodeImpl extends NodeImpl implements ContainerNode
    * <!-- end-user-doc -->
    * @generated
    */
-  public de.cau.cs.se.instrumentation.al.mapping.Container getContainer()
+  public Feature getContainer()
   {
     if (container != null && container.eIsProxy())
     {
       InternalEObject oldContainer = (InternalEObject)container;
-      container = (de.cau.cs.se.instrumentation.al.mapping.Container)eResolveProxy(oldContainer);
+      container = (Feature)eResolveProxy(oldContainer);
       if (container != oldContainer)
       {
         if (eNotificationRequired())
@@ -83,7 +85,7 @@ public class ContainerNodeImpl extends NodeImpl implements ContainerNode
    * <!-- end-user-doc -->
    * @generated
    */
-  public de.cau.cs.se.instrumentation.al.mapping.Container basicGetContainer()
+  public Feature basicGetContainer()
   {
     return container;
   }
@@ -93,9 +95,9 @@ public class ContainerNodeImpl extends NodeImpl implements ContainerNode
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setContainer(de.cau.cs.se.instrumentation.al.mapping.Container newContainer)
+  public void setContainer(Feature newContainer)
   {
-    de.cau.cs.se.instrumentation.al.mapping.Container oldContainer = container;
+    Feature oldContainer = container;
     container = newContainer;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.CONTAINER_NODE__CONTAINER, oldContainer, container));
@@ -129,7 +131,7 @@ public class ContainerNodeImpl extends NodeImpl implements ContainerNode
     switch (featureID)
     {
       case AspectLangPackage.CONTAINER_NODE__CONTAINER:
-        setContainer((de.cau.cs.se.instrumentation.al.mapping.Container)newValue);
+        setContainer((Feature)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -146,7 +148,7 @@ public class ContainerNodeImpl extends NodeImpl implements ContainerNode
     switch (featureID)
     {
       case AspectLangPackage.CONTAINER_NODE__CONTAINER:
-        setContainer((de.cau.cs.se.instrumentation.al.mapping.Container)null);
+        setContainer((Feature)null);
         return;
     }
     super.eUnset(featureID);

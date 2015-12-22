@@ -31,12 +31,12 @@ public interface Node extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Constraint</em>' containment reference.
-   * @see #setConstraint(PropertyConstraintExpression)
+   * @see #setConstraint(PropertyConstraint)
    * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getNode_Constraint()
    * @model containment="true"
    * @generated
    */
-  PropertyConstraintExpression getConstraint();
+  PropertyConstraint getConstraint();
 
   /**
    * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.Node#getConstraint <em>Constraint</em>}' containment reference.
@@ -46,6 +46,6 @@ public interface Node extends EObject
    * @see #getConstraint()
    * @generated
    */
-  void setConstraint(PropertyConstraintExpression value);
+  void setConstraint(PropertyConstraint value);
 
 } // Node

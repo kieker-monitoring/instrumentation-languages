@@ -161,7 +161,7 @@ public class AspectLangSwitch<T> extends Switch<T>
       {
         InternalFunctionProperty internalFunctionProperty = (InternalFunctionProperty)theEObject;
         T result = caseInternalFunctionProperty(internalFunctionProperty);
-        if (result == null) result = caseProperty(internalFunctionProperty);
+        if (result == null) result = caseValue(internalFunctionProperty);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -170,6 +170,22 @@ public class AspectLangSwitch<T> extends Switch<T>
         ReflectionProperty reflectionProperty = (ReflectionProperty)theEObject;
         T result = caseReflectionProperty(reflectionProperty);
         if (result == null) result = caseProperty(reflectionProperty);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AspectLangPackage.RUNTIME_PROPERTY:
+      {
+        RuntimeProperty runtimeProperty = (RuntimeProperty)theEObject;
+        T result = caseRuntimeProperty(runtimeProperty);
+        if (result == null) result = caseProperty(runtimeProperty);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AspectLangPackage.ADVICE_PARAMETER:
+      {
+        AdviceParameter adviceParameter = (AdviceParameter)theEObject;
+        T result = caseAdviceParameter(adviceParameter);
+        if (result == null) result = caseValue(adviceParameter);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -254,10 +270,18 @@ public class AspectLangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case AspectLangPackage.PROPERTY_CONSTRAINT_EXPRESSION:
+      case AspectLangPackage.PROPERTY_CONSTRAINT:
       {
-        PropertyConstraintExpression propertyConstraintExpression = (PropertyConstraintExpression)theEObject;
-        T result = casePropertyConstraintExpression(propertyConstraintExpression);
+        PropertyConstraint propertyConstraint = (PropertyConstraint)theEObject;
+        T result = casePropertyConstraint(propertyConstraint);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AspectLangPackage.PROPERTY_CONSTRAINT_COMPARE:
+      {
+        PropertyConstraintCompare propertyConstraintCompare = (PropertyConstraintCompare)theEObject;
+        T result = casePropertyConstraintCompare(propertyConstraintCompare);
+        if (result == null) result = casePropertyConstraint(propertyConstraintCompare);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -265,7 +289,8 @@ public class AspectLangSwitch<T> extends Switch<T>
       {
         ConstraintElement constraintElement = (ConstraintElement)theEObject;
         T result = caseConstraintElement(constraintElement);
-        if (result == null) result = casePropertyConstraintExpression(constraintElement);
+        if (result == null) result = casePropertyConstraintCompare(constraintElement);
+        if (result == null) result = casePropertyConstraint(constraintElement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -274,7 +299,8 @@ public class AspectLangSwitch<T> extends Switch<T>
         LocalQuery localQuery = (LocalQuery)theEObject;
         T result = caseLocalQuery(localQuery);
         if (result == null) result = caseConstraintElement(localQuery);
-        if (result == null) result = casePropertyConstraintExpression(localQuery);
+        if (result == null) result = casePropertyConstraintCompare(localQuery);
+        if (result == null) result = casePropertyConstraint(localQuery);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -298,7 +324,8 @@ public class AspectLangSwitch<T> extends Switch<T>
         T result = caseLiteral(literal);
         if (result == null) result = caseValue(literal);
         if (result == null) result = caseConstraintElement(literal);
-        if (result == null) result = casePropertyConstraintExpression(literal);
+        if (result == null) result = casePropertyConstraintCompare(literal);
+        if (result == null) result = casePropertyConstraint(literal);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -309,7 +336,8 @@ public class AspectLangSwitch<T> extends Switch<T>
         if (result == null) result = caseLiteral(floatLiteral);
         if (result == null) result = caseValue(floatLiteral);
         if (result == null) result = caseConstraintElement(floatLiteral);
-        if (result == null) result = casePropertyConstraintExpression(floatLiteral);
+        if (result == null) result = casePropertyConstraintCompare(floatLiteral);
+        if (result == null) result = casePropertyConstraint(floatLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -320,7 +348,8 @@ public class AspectLangSwitch<T> extends Switch<T>
         if (result == null) result = caseLiteral(intLiteral);
         if (result == null) result = caseValue(intLiteral);
         if (result == null) result = caseConstraintElement(intLiteral);
-        if (result == null) result = casePropertyConstraintExpression(intLiteral);
+        if (result == null) result = casePropertyConstraintCompare(intLiteral);
+        if (result == null) result = casePropertyConstraint(intLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -331,7 +360,15 @@ public class AspectLangSwitch<T> extends Switch<T>
         if (result == null) result = caseLiteral(stringLiteral);
         if (result == null) result = caseValue(stringLiteral);
         if (result == null) result = caseConstraintElement(stringLiteral);
-        if (result == null) result = casePropertyConstraintExpression(stringLiteral);
+        if (result == null) result = casePropertyConstraintCompare(stringLiteral);
+        if (result == null) result = casePropertyConstraint(stringLiteral);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AspectLangPackage.TYPE_REFERENCE:
+      {
+        TypeReference typeReference = (TypeReference)theEObject;
+        T result = caseTypeReference(typeReference);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -564,6 +601,38 @@ public class AspectLangSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Runtime Property</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Runtime Property</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRuntimeProperty(RuntimeProperty object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Advice Parameter</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Advice Parameter</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAdviceParameter(AdviceParameter object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Pointcut</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -740,17 +809,33 @@ public class AspectLangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Property Constraint Expression</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Property Constraint</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Property Constraint Expression</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Property Constraint</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T casePropertyConstraintExpression(PropertyConstraintExpression object)
+  public T casePropertyConstraint(PropertyConstraint object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Property Constraint Compare</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Property Constraint Compare</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePropertyConstraintCompare(PropertyConstraintCompare object)
   {
     return null;
   }
@@ -879,6 +964,22 @@ public class AspectLangSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseStringLiteral(StringLiteral object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Type Reference</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Type Reference</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTypeReference(TypeReference object)
   {
     return null;
   }

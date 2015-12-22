@@ -5,6 +5,7 @@ package de.cau.cs.se.instrumentation.al.serializer;
 
 import com.google.inject.Inject;
 import de.cau.cs.se.instrumentation.al.aspectLang.Advice;
+import de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameter;
 import de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameterDeclaration;
 import de.cau.cs.se.instrumentation.al.aspectLang.Annotation;
 import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel;
@@ -26,11 +27,14 @@ import de.cau.cs.se.instrumentation.al.aspectLang.OperationQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.ParentNode;
 import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut;
-import de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraintExpression;
+import de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraint;
+import de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraintCompare;
 import de.cau.cs.se.instrumentation.al.aspectLang.ReferenceValue;
 import de.cau.cs.se.instrumentation.al.aspectLang.ReflectionProperty;
+import de.cau.cs.se.instrumentation.al.aspectLang.RuntimeProperty;
 import de.cau.cs.se.instrumentation.al.aspectLang.StringLiteral;
 import de.cau.cs.se.instrumentation.al.aspectLang.SubPathNode;
+import de.cau.cs.se.instrumentation.al.aspectLang.TypeReference;
 import de.cau.cs.se.instrumentation.al.aspectLang.Typeof;
 import de.cau.cs.se.instrumentation.al.aspectLang.UtilizeAdvice;
 import de.cau.cs.se.instrumentation.al.aspectLang.WildcardNode;
@@ -62,6 +66,9 @@ public class AspectLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 			switch (semanticObject.eClass().getClassifierID()) {
 			case AspectLangPackage.ADVICE:
 				sequence_Advice(context, (Advice) semanticObject); 
+				return; 
+			case AspectLangPackage.ADVICE_PARAMETER:
+				sequence_AdviceParameter(context, (AdviceParameter) semanticObject); 
 				return; 
 			case AspectLangPackage.ADVICE_PARAMETER_DECLARATION:
 				sequence_AdviceParameterDeclaration(context, (AdviceParameterDeclaration) semanticObject); 
@@ -137,22 +144,20 @@ public class AspectLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 			case AspectLangPackage.POINTCUT:
 				sequence_Pointcut(context, (Pointcut) semanticObject); 
 				return; 
-			case AspectLangPackage.PROPERTY_CONSTRAINT_EXPRESSION:
-				if (action == grammarAccess.getPropertyConstraintAccess().getPropertyConstraintExpressionLeftAction_1_0()
-						|| rule == grammarAccess.getPropertyConstraintCompareRule()) {
-					sequence_PropertyConstraintCompare(context, (PropertyConstraintExpression) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getPropertyConstraintRule()) {
-					sequence_PropertyConstraint_PropertyConstraintCompare(context, (PropertyConstraintExpression) semanticObject); 
-					return; 
-				}
-				else break;
+			case AspectLangPackage.PROPERTY_CONSTRAINT:
+				sequence_PropertyConstraint(context, (PropertyConstraint) semanticObject); 
+				return; 
+			case AspectLangPackage.PROPERTY_CONSTRAINT_COMPARE:
+				sequence_PropertyConstraintCompare(context, (PropertyConstraintCompare) semanticObject); 
+				return; 
 			case AspectLangPackage.REFERENCE_VALUE:
 				sequence_ReferenceValue(context, (ReferenceValue) semanticObject); 
 				return; 
 			case AspectLangPackage.REFLECTION_PROPERTY:
 				sequence_ReflectionProperty(context, (ReflectionProperty) semanticObject); 
+				return; 
+			case AspectLangPackage.RUNTIME_PROPERTY:
+				sequence_RuntimeProperty(context, (RuntimeProperty) semanticObject); 
 				return; 
 			case AspectLangPackage.STRING_LITERAL:
 				sequence_StringLiteral(context, (StringLiteral) semanticObject); 
@@ -167,6 +172,9 @@ public class AspectLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 					return; 
 				}
 				else break;
+			case AspectLangPackage.TYPE_REFERENCE:
+				sequence_TypeReference(context, (TypeReference) semanticObject); 
+				return; 
 			case AspectLangPackage.TYPEOF:
 				sequence_Typeof(context, (Typeof) semanticObject); 
 				return; 
@@ -193,7 +201,7 @@ public class AspectLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 *     AdviceParameterDeclaration returns AdviceParameterDeclaration
 	 *
 	 * Constraint:
-	 *     (type='type' name=ID)
+	 *     (type=TypeReference name=ID)
 	 */
 	protected void sequence_AdviceParameterDeclaration(ISerializationContext context, AdviceParameterDeclaration semanticObject) {
 		if (errorAcceptor != null) {
@@ -203,9 +211,22 @@ public class AspectLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AspectLangPackage.Literals.ADVICE_PARAMETER_DECLARATION__NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAdviceParameterDeclarationAccess().getTypeTypeKeyword_0_0(), semanticObject.getType());
+		feeder.accept(grammarAccess.getAdviceParameterDeclarationAccess().getTypeTypeReferenceParserRuleCall_0_0(), semanticObject.getType());
 		feeder.accept(grammarAccess.getAdviceParameterDeclarationAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Value returns AdviceParameter
+	 *     AdviceParameter returns AdviceParameter
+	 *
+	 * Constraint:
+	 *     (declaration=[AdviceParameterDeclaration|ID] collection=Value?)
+	 */
+	protected void sequence_AdviceParameter(ISerializationContext context, AdviceParameter semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -319,7 +340,7 @@ public class AspectLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 *     ContainerNode returns ContainerNode
 	 *
 	 * Constraint:
-	 *     container=[Container|ID]
+	 *     container=[Feature|ID]
 	 */
 	protected void sequence_ContainerNode(ISerializationContext context, ContainerNode semanticObject) {
 		if (errorAcceptor != null) {
@@ -327,7 +348,7 @@ public class AspectLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AspectLangPackage.Literals.CONTAINER_NODE__CONTAINER));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getContainerNodeAccess().getContainerContainerIDTerminalRuleCall_0_1(), semanticObject.getContainer());
+		feeder.accept(grammarAccess.getContainerNodeAccess().getContainerFeatureIDTerminalRuleCall_0_1(), semanticObject.getContainer());
 		feeder.finish();
 	}
 	
@@ -337,7 +358,7 @@ public class AspectLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 *     Node returns ContainerNode
 	 *
 	 * Constraint:
-	 *     (container=[Container|ID] constraint=PropertyConstraint?)
+	 *     (container=[Feature|ID] constraint=PropertyConstraint?)
 	 */
 	protected void sequence_ContainerNode_Node(ISerializationContext context, ContainerNode semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -360,9 +381,9 @@ public class AspectLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 * Contexts:
 	 *     Value returns FloatLiteral
 	 *     PropertyConstraint returns FloatLiteral
-	 *     PropertyConstraint.PropertyConstraintExpression_1_0 returns FloatLiteral
+	 *     PropertyConstraint.PropertyConstraint_1_0 returns FloatLiteral
 	 *     PropertyConstraintCompare returns FloatLiteral
-	 *     PropertyConstraintCompare.PropertyConstraintExpression_1_0 returns FloatLiteral
+	 *     PropertyConstraintCompare.PropertyConstraintCompare_1_0 returns FloatLiteral
 	 *     ConstraintElement returns FloatLiteral
 	 *     Literal returns FloatLiteral
 	 *     FloatLiteral returns FloatLiteral
@@ -403,9 +424,9 @@ public class AspectLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 * Contexts:
 	 *     Value returns IntLiteral
 	 *     PropertyConstraint returns IntLiteral
-	 *     PropertyConstraint.PropertyConstraintExpression_1_0 returns IntLiteral
+	 *     PropertyConstraint.PropertyConstraint_1_0 returns IntLiteral
 	 *     PropertyConstraintCompare returns IntLiteral
-	 *     PropertyConstraintCompare.PropertyConstraintExpression_1_0 returns IntLiteral
+	 *     PropertyConstraintCompare.PropertyConstraintCompare_1_0 returns IntLiteral
 	 *     ConstraintElement returns IntLiteral
 	 *     Literal returns IntLiteral
 	 *     IntLiteral returns IntLiteral
@@ -426,7 +447,7 @@ public class AspectLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 	
 	/**
 	 * Contexts:
-	 *     Property returns InternalFunctionProperty
+	 *     Value returns InternalFunctionProperty
 	 *     InternalFunctionProperty returns InternalFunctionProperty
 	 *
 	 * Constraint:
@@ -446,9 +467,9 @@ public class AspectLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 	/**
 	 * Contexts:
 	 *     PropertyConstraint returns LocalQuery
-	 *     PropertyConstraint.PropertyConstraintExpression_1_0 returns LocalQuery
+	 *     PropertyConstraint.PropertyConstraint_1_0 returns LocalQuery
 	 *     PropertyConstraintCompare returns LocalQuery
-	 *     PropertyConstraintCompare.PropertyConstraintExpression_1_0 returns LocalQuery
+	 *     PropertyConstraintCompare.PropertyConstraintCompare_1_0 returns LocalQuery
 	 *     ConstraintElement returns LocalQuery
 	 *     LocalQuery returns LocalQuery
 	 *
@@ -533,7 +554,7 @@ public class AspectLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 * Constraint:
 	 *     (
 	 *         modifier=[OperationModifier|ID]? 
-	 *         returnType=[Type|ID]? 
+	 *         returnType=TypeReference? 
 	 *         (operationReference=[Operation|ID] (parameterQueries+=ParameterQuery parameterQueries+=ParameterQuery*)?)?
 	 *     )
 	 */
@@ -547,7 +568,7 @@ public class AspectLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 *     ParameterQuery returns ParameterQuery
 	 *
 	 * Constraint:
-	 *     (modifier=[ParameterModifier|ID]? type=[Type|ID]? parameter=[Parameter|ID]?)
+	 *     (modifier=[ParameterModifier|ID]? type=TypeReference? parameter=[Parameter|ID]?)
 	 */
 	protected void sequence_ParameterQuery(ISerializationContext context, ParameterQuery semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -571,7 +592,7 @@ public class AspectLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 *     Pointcut returns Pointcut
 	 *
 	 * Constraint:
-	 *     (annotation=Annotation? name=ID location=LocationQuery operation=OperationQuery?)
+	 *     (annotation=Annotation? name=ID model=[ApplicationModel|ID] location=LocationQuery operation=OperationQuery?)
 	 */
 	protected void sequence_Pointcut(ISerializationContext context, Pointcut semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -580,23 +601,24 @@ public class AspectLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 	
 	/**
 	 * Contexts:
-	 *     PropertyConstraint.PropertyConstraintExpression_1_0 returns PropertyConstraintExpression
-	 *     PropertyConstraintCompare returns PropertyConstraintExpression
+	 *     PropertyConstraint returns PropertyConstraintCompare
+	 *     PropertyConstraint.PropertyConstraint_1_0 returns PropertyConstraintCompare
+	 *     PropertyConstraintCompare returns PropertyConstraintCompare
 	 *
 	 * Constraint:
-	 *     (left=PropertyConstraintCompare_PropertyConstraintExpression_1_0 compare=CompareOperator right=ConstraintElement)
+	 *     (left=PropertyConstraintCompare_PropertyConstraintCompare_1_0 compare=CompareOperator right=ConstraintElement)
 	 */
-	protected void sequence_PropertyConstraintCompare(ISerializationContext context, PropertyConstraintExpression semanticObject) {
+	protected void sequence_PropertyConstraintCompare(ISerializationContext context, PropertyConstraintCompare semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, AspectLangPackage.Literals.PROPERTY_CONSTRAINT_EXPRESSION__LEFT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AspectLangPackage.Literals.PROPERTY_CONSTRAINT_EXPRESSION__LEFT));
-			if (transientValues.isValueTransient(semanticObject, AspectLangPackage.Literals.PROPERTY_CONSTRAINT_EXPRESSION__COMPARE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AspectLangPackage.Literals.PROPERTY_CONSTRAINT_EXPRESSION__COMPARE));
-			if (transientValues.isValueTransient(semanticObject, AspectLangPackage.Literals.PROPERTY_CONSTRAINT_EXPRESSION__RIGHT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AspectLangPackage.Literals.PROPERTY_CONSTRAINT_EXPRESSION__RIGHT));
+			if (transientValues.isValueTransient(semanticObject, AspectLangPackage.Literals.PROPERTY_CONSTRAINT__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AspectLangPackage.Literals.PROPERTY_CONSTRAINT__LEFT));
+			if (transientValues.isValueTransient(semanticObject, AspectLangPackage.Literals.PROPERTY_CONSTRAINT_COMPARE__COMPARE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AspectLangPackage.Literals.PROPERTY_CONSTRAINT_COMPARE__COMPARE));
+			if (transientValues.isValueTransient(semanticObject, AspectLangPackage.Literals.PROPERTY_CONSTRAINT__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AspectLangPackage.Literals.PROPERTY_CONSTRAINT__RIGHT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getPropertyConstraintCompareAccess().getPropertyConstraintExpressionLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getPropertyConstraintCompareAccess().getPropertyConstraintCompareLeftAction_1_0(), semanticObject.getLeft());
 		feeder.accept(grammarAccess.getPropertyConstraintCompareAccess().getCompareCompareOperatorEnumRuleCall_1_1_0(), semanticObject.getCompare());
 		feeder.accept(grammarAccess.getPropertyConstraintCompareAccess().getRightConstraintElementParserRuleCall_1_2_0(), semanticObject.getRight());
 		feeder.finish();
@@ -605,16 +627,25 @@ public class AspectLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 	
 	/**
 	 * Contexts:
-	 *     PropertyConstraint returns PropertyConstraintExpression
+	 *     PropertyConstraint returns PropertyConstraint
 	 *
 	 * Constraint:
-	 *     (
-	 *         (left=PropertyConstraint_PropertyConstraintExpression_1_0 logic=LogicOperator right=PropertyConstraintCompare) | 
-	 *         (left=PropertyConstraintCompare_PropertyConstraintExpression_1_0 compare=CompareOperator right=ConstraintElement)
-	 *     )
+	 *     (left=PropertyConstraint_PropertyConstraint_1_0 logic=LogicOperator right=PropertyConstraintCompare)
 	 */
-	protected void sequence_PropertyConstraint_PropertyConstraintCompare(ISerializationContext context, PropertyConstraintExpression semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+	protected void sequence_PropertyConstraint(ISerializationContext context, PropertyConstraint semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AspectLangPackage.Literals.PROPERTY_CONSTRAINT__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AspectLangPackage.Literals.PROPERTY_CONSTRAINT__LEFT));
+			if (transientValues.isValueTransient(semanticObject, AspectLangPackage.Literals.PROPERTY_CONSTRAINT__LOGIC) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AspectLangPackage.Literals.PROPERTY_CONSTRAINT__LOGIC));
+			if (transientValues.isValueTransient(semanticObject, AspectLangPackage.Literals.PROPERTY_CONSTRAINT__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AspectLangPackage.Literals.PROPERTY_CONSTRAINT__RIGHT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getPropertyConstraintAccess().getPropertyConstraintLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getPropertyConstraintAccess().getLogicLogicOperatorEnumRuleCall_1_1_0(), semanticObject.getLogic());
+		feeder.accept(grammarAccess.getPropertyConstraintAccess().getRightPropertyConstraintCompareParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.finish();
 	}
 	
 	
@@ -652,11 +683,24 @@ public class AspectLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 	
 	/**
 	 * Contexts:
+	 *     Property returns RuntimeProperty
+	 *     RuntimeProperty returns RuntimeProperty
+	 *
+	 * Constraint:
+	 *     {RuntimeProperty}
+	 */
+	protected void sequence_RuntimeProperty(ISerializationContext context, RuntimeProperty semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Value returns StringLiteral
 	 *     PropertyConstraint returns StringLiteral
-	 *     PropertyConstraint.PropertyConstraintExpression_1_0 returns StringLiteral
+	 *     PropertyConstraint.PropertyConstraint_1_0 returns StringLiteral
 	 *     PropertyConstraintCompare returns StringLiteral
-	 *     PropertyConstraintCompare.PropertyConstraintExpression_1_0 returns StringLiteral
+	 *     PropertyConstraintCompare.PropertyConstraintCompare_1_0 returns StringLiteral
 	 *     ConstraintElement returns StringLiteral
 	 *     Literal returns StringLiteral
 	 *     StringLiteral returns StringLiteral
@@ -689,10 +733,22 @@ public class AspectLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 	
 	/**
 	 * Contexts:
+	 *     TypeReference returns TypeReference
+	 *
+	 * Constraint:
+	 *     (context=[ApplicationModel|ID] reference=[NamedType|ID] collection?='[]'?)
+	 */
+	protected void sequence_TypeReference(ISerializationContext context, TypeReference semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Typeof returns Typeof
 	 *
 	 * Constraint:
-	 *     reference=[NamedType|ID]
+	 *     reference=TypeReference
 	 */
 	protected void sequence_Typeof(ISerializationContext context, Typeof semanticObject) {
 		if (errorAcceptor != null) {
@@ -700,7 +756,7 @@ public class AspectLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AspectLangPackage.Literals.TYPEOF__REFERENCE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getTypeofAccess().getReferenceNamedTypeIDTerminalRuleCall_2_0_1(), semanticObject.getReference());
+		feeder.accept(grammarAccess.getTypeofAccess().getReferenceTypeReferenceParserRuleCall_2_0(), semanticObject.getReference());
 		feeder.finish();
 	}
 	

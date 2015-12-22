@@ -66,11 +66,14 @@ class ContainerParentScope implements IScope {
 		if (parent.node == node) { 
 			parent = (parent.eContainer as LocationQuery)
 		}
-		val Container container = (parent.node as ContainerNode).container
-		val element = container.contents.findFirst[it.name.equals(name.lastSegment)]
-		if (element != null)
-			return EObjectDescription.create(name, element)
-		else
+		val feature = (parent.node as ContainerNode).container
+		if (feature instanceof Container) {
+			val element = feature.contents.findFirst[it.name.equals(name.lastSegment)]
+			if (element != null)
+				return EObjectDescription.create(name, element)
+			else
+				return null
+		} else
 			return null
 	}
 		

@@ -44,7 +44,7 @@ Advice:
 ;
 
 AdviceParameterDeclaration:
-	type='type' name=ID 
+	type=TypeReference name=ID 
 ;
 
 Collector:
@@ -60,16 +60,14 @@ enum InsertionPoint:
 	AFTER = 'after'
 ;
 
-Value:
-	Literal | ReferenceValue
-;
+Value: Literal | ReferenceValue | InternalFunctionProperty | AdviceParameter ;
 
 ReferenceValue:
 	(query=LocationQuery)? property=Property	
 ;
 
-Property:
-	InternalFunctionProperty | ReflectionProperty
+Property: 
+	RuntimeProperty | ReflectionProperty
 ;
 
 InternalFunctionProperty:
@@ -82,9 +80,11 @@ enum InternalFunction:
 	ORDER_INDEX = 'orderIndex'
 ;
 
-ReflectionProperty:
+ReflectionProperty: 
 	'$' function=ReflectionFunction
 ;
+
+RuntimeProperty: {RuntimeProperty} '#' ;
 
 enum ReflectionFunction:
 	NAME = 'name' |
@@ -93,13 +93,17 @@ enum ReflectionFunction:
 	RETURN_TYPE = 'return-type'
 ;
 
+AdviceParameter:
+	declaration=[AdviceParameterDeclaration|ID] ('[' collection=Value ']')?
+;
+
 /* ------------------------------- */
 /* pointcut                        */
 
 Pointcut:
 	(annotation=Annotation)?
 	'pointcut' name=ID
-	'class' location=LocationQuery 
+	'class' model=[ApplicationModel|ID] '.' location=LocationQuery 
 	('operation' operation=OperationQuery)?
 ;
 
@@ -122,7 +126,7 @@ enum QueryModifier:
 
 OperationQuery: {OperationQuery}
 	modifier=[mapping::OperationModifier|ID]?
-	returnType=[mapping::Type|ID]? // this must be fixed to support collections
+	returnType=TypeReference? 
 	(
 		(
 			operationReference=[mapping::Operation|ID] 
@@ -134,7 +138,7 @@ OperationQuery: {OperationQuery}
 
 ParameterQuery: {ParameterQuery}
 	modifier=[mapping::ParameterModifier|ID]?
-	(type=[mapping::Type|ID]| '*') // this must be fixed for collections
+	(type=TypeReference | '*') 
 	parameter=[mapping::Parameter|ID]?
 ;
 
@@ -143,7 +147,7 @@ Node:
 ;
 
 ContainerNode:
-	container=[mapping::Container|ID]
+	container=[mapping::Feature|ID]
 ;
 
 WildcardNode: {WildcardNode}
@@ -158,8 +162,8 @@ ParentNode: {ParentNode}
 	'up'
 ;
 
-PropertyConstraint returns PropertyConstraintExpression: 
-	PropertyConstraintCompare ({PropertyConstraintExpression.left=current} logic=LogicOperator right=PropertyConstraintCompare)?
+PropertyConstraint: 
+	PropertyConstraintCompare ({PropertyConstraint.left=current} logic=LogicOperator right=PropertyConstraintCompare)?
 ;
 
 enum LogicOperator:
@@ -167,8 +171,8 @@ enum LogicOperator:
 	OR = '||'
 ;
 
-PropertyConstraintCompare returns PropertyConstraintExpression:
-	ConstraintElement ({PropertyConstraintExpression.left=current} compare=CompareOperator right=ConstraintElement)?
+PropertyConstraintCompare:
+	ConstraintElement ({PropertyConstraintCompare.left=current} compare=CompareOperator right=ConstraintElement)?
 ;
 
 enum CompareOperator:
@@ -194,7 +198,7 @@ ModelProperty:
 ;
 
 Typeof:
-	'istypeof' '(' reference=[mapping::NamedType|ID] ')' // should be replaced with generate type reference rule
+	'istypeof' '(' reference=TypeReference ')' 
 ;
 
 /* ------------------------------- */
@@ -214,6 +218,10 @@ IntLiteral:
 
 StringLiteral:
 	value=STRING
+;
+
+TypeReference:
+	context=[ApplicationModel|ID] '.' reference=[mapping::NamedType|ID] (collection?='[]')?
 ;
 
 /* ------------------------------- */

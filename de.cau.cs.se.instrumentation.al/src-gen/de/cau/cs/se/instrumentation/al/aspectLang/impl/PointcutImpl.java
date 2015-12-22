@@ -3,6 +3,7 @@
 package de.cau.cs.se.instrumentation.al.aspectLang.impl;
 
 import de.cau.cs.se.instrumentation.al.aspectLang.Annotation;
+import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel;
 import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
 import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.OperationQuery;
@@ -27,6 +28,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.PointcutImpl#getAnnotation <em>Annotation</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.PointcutImpl#getName <em>Name</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.PointcutImpl#getModel <em>Model</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.PointcutImpl#getLocation <em>Location</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.PointcutImpl#getOperation <em>Operation</em>}</li>
  * </ul>
@@ -64,6 +66,16 @@ public class PointcutImpl extends MinimalEObjectImpl.Container implements Pointc
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getModel() <em>Model</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getModel()
+   * @generated
+   * @ordered
+   */
+  protected ApplicationModel model;
 
   /**
    * The cached value of the '{@link #getLocation() <em>Location</em>}' containment reference.
@@ -175,6 +187,49 @@ public class PointcutImpl extends MinimalEObjectImpl.Container implements Pointc
     name = newName;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.POINTCUT__NAME, oldName, name));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ApplicationModel getModel()
+  {
+    if (model != null && model.eIsProxy())
+    {
+      InternalEObject oldModel = (InternalEObject)model;
+      model = (ApplicationModel)eResolveProxy(oldModel);
+      if (model != oldModel)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, AspectLangPackage.POINTCUT__MODEL, oldModel, model));
+      }
+    }
+    return model;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ApplicationModel basicGetModel()
+  {
+    return model;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setModel(ApplicationModel newModel)
+  {
+    ApplicationModel oldModel = model;
+    model = newModel;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.POINTCUT__MODEL, oldModel, model));
   }
 
   /**
@@ -307,6 +362,9 @@ public class PointcutImpl extends MinimalEObjectImpl.Container implements Pointc
         return getAnnotation();
       case AspectLangPackage.POINTCUT__NAME:
         return getName();
+      case AspectLangPackage.POINTCUT__MODEL:
+        if (resolve) return getModel();
+        return basicGetModel();
       case AspectLangPackage.POINTCUT__LOCATION:
         return getLocation();
       case AspectLangPackage.POINTCUT__OPERATION:
@@ -330,6 +388,9 @@ public class PointcutImpl extends MinimalEObjectImpl.Container implements Pointc
         return;
       case AspectLangPackage.POINTCUT__NAME:
         setName((String)newValue);
+        return;
+      case AspectLangPackage.POINTCUT__MODEL:
+        setModel((ApplicationModel)newValue);
         return;
       case AspectLangPackage.POINTCUT__LOCATION:
         setLocation((LocationQuery)newValue);
@@ -357,6 +418,9 @@ public class PointcutImpl extends MinimalEObjectImpl.Container implements Pointc
       case AspectLangPackage.POINTCUT__NAME:
         setName(NAME_EDEFAULT);
         return;
+      case AspectLangPackage.POINTCUT__MODEL:
+        setModel((ApplicationModel)null);
+        return;
       case AspectLangPackage.POINTCUT__LOCATION:
         setLocation((LocationQuery)null);
         return;
@@ -381,6 +445,8 @@ public class PointcutImpl extends MinimalEObjectImpl.Container implements Pointc
         return annotation != null;
       case AspectLangPackage.POINTCUT__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case AspectLangPackage.POINTCUT__MODEL:
+        return model != null;
       case AspectLangPackage.POINTCUT__LOCATION:
         return location != null;
       case AspectLangPackage.POINTCUT__OPERATION:

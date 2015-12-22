@@ -3,11 +3,11 @@
 package de.cau.cs.se.instrumentation.al.aspectLang.impl;
 
 import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
+import de.cau.cs.se.instrumentation.al.aspectLang.TypeReference;
 import de.cau.cs.se.instrumentation.al.aspectLang.Typeof;
 
-import de.cau.cs.se.instrumentation.al.mapping.NamedType;
-
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -31,14 +31,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class TypeofImpl extends MinimalEObjectImpl.Container implements Typeof
 {
   /**
-   * The cached value of the '{@link #getReference() <em>Reference</em>}' reference.
+   * The cached value of the '{@link #getReference() <em>Reference</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getReference()
    * @generated
    * @ordered
    */
-  protected NamedType reference;
+  protected TypeReference reference;
 
   /**
    * <!-- begin-user-doc -->
@@ -66,27 +66,7 @@ public class TypeofImpl extends MinimalEObjectImpl.Container implements Typeof
    * <!-- end-user-doc -->
    * @generated
    */
-  public NamedType getReference()
-  {
-    if (reference != null && reference.eIsProxy())
-    {
-      InternalEObject oldReference = (InternalEObject)reference;
-      reference = (NamedType)eResolveProxy(oldReference);
-      if (reference != oldReference)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, AspectLangPackage.TYPEOF__REFERENCE, oldReference, reference));
-      }
-    }
-    return reference;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NamedType basicGetReference()
+  public TypeReference getReference()
   {
     return reference;
   }
@@ -96,12 +76,53 @@ public class TypeofImpl extends MinimalEObjectImpl.Container implements Typeof
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setReference(NamedType newReference)
+  public NotificationChain basicSetReference(TypeReference newReference, NotificationChain msgs)
   {
-    NamedType oldReference = reference;
+    TypeReference oldReference = reference;
     reference = newReference;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.TYPEOF__REFERENCE, oldReference, reference));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AspectLangPackage.TYPEOF__REFERENCE, oldReference, newReference);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setReference(TypeReference newReference)
+  {
+    if (newReference != reference)
+    {
+      NotificationChain msgs = null;
+      if (reference != null)
+        msgs = ((InternalEObject)reference).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AspectLangPackage.TYPEOF__REFERENCE, null, msgs);
+      if (newReference != null)
+        msgs = ((InternalEObject)newReference).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AspectLangPackage.TYPEOF__REFERENCE, null, msgs);
+      msgs = basicSetReference(newReference, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.TYPEOF__REFERENCE, newReference, newReference));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case AspectLangPackage.TYPEOF__REFERENCE:
+        return basicSetReference(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -115,8 +136,7 @@ public class TypeofImpl extends MinimalEObjectImpl.Container implements Typeof
     switch (featureID)
     {
       case AspectLangPackage.TYPEOF__REFERENCE:
-        if (resolve) return getReference();
-        return basicGetReference();
+        return getReference();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -132,7 +152,7 @@ public class TypeofImpl extends MinimalEObjectImpl.Container implements Typeof
     switch (featureID)
     {
       case AspectLangPackage.TYPEOF__REFERENCE:
-        setReference((NamedType)newValue);
+        setReference((TypeReference)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -149,7 +169,7 @@ public class TypeofImpl extends MinimalEObjectImpl.Container implements Typeof
     switch (featureID)
     {
       case AspectLangPackage.TYPEOF__REFERENCE:
-        setReference((NamedType)null);
+        setReference((TypeReference)null);
         return;
     }
     super.eUnset(featureID);

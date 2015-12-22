@@ -145,6 +145,16 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
         return createReflectionPropertyAdapter();
       }
       @Override
+      public Adapter caseRuntimeProperty(RuntimeProperty object)
+      {
+        return createRuntimePropertyAdapter();
+      }
+      @Override
+      public Adapter caseAdviceParameter(AdviceParameter object)
+      {
+        return createAdviceParameterAdapter();
+      }
+      @Override
       public Adapter casePointcut(Pointcut object)
       {
         return createPointcutAdapter();
@@ -200,9 +210,14 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
         return createParentNodeAdapter();
       }
       @Override
-      public Adapter casePropertyConstraintExpression(PropertyConstraintExpression object)
+      public Adapter casePropertyConstraint(PropertyConstraint object)
       {
-        return createPropertyConstraintExpressionAdapter();
+        return createPropertyConstraintAdapter();
+      }
+      @Override
+      public Adapter casePropertyConstraintCompare(PropertyConstraintCompare object)
+      {
+        return createPropertyConstraintCompareAdapter();
       }
       @Override
       public Adapter caseConstraintElement(ConstraintElement object)
@@ -243,6 +258,11 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
       public Adapter caseStringLiteral(StringLiteral object)
       {
         return createStringLiteralAdapter();
+      }
+      @Override
+      public Adapter caseTypeReference(TypeReference object)
+      {
+        return createTypeReferenceAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -477,6 +497,36 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.RuntimeProperty <em>Runtime Property</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.RuntimeProperty
+   * @generated
+   */
+  public Adapter createRuntimePropertyAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameter <em>Advice Parameter</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameter
+   * @generated
+   */
+  public Adapter createAdviceParameterAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Pointcut <em>Pointcut</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -642,16 +692,31 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraintExpression <em>Property Constraint Expression</em>}'.
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraint <em>Property Constraint</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraintExpression
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraint
    * @generated
    */
-  public Adapter createPropertyConstraintExpressionAdapter()
+  public Adapter createPropertyConstraintAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraintCompare <em>Property Constraint Compare</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraintCompare
+   * @generated
+   */
+  public Adapter createPropertyConstraintCompareAdapter()
   {
     return null;
   }
@@ -772,6 +837,21 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createStringLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.TypeReference <em>Type Reference</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.TypeReference
+   * @generated
+   */
+  public Adapter createTypeReferenceAdapter()
   {
     return null;
   }

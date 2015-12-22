@@ -13,6 +13,6 @@ package de.cau.cs.se.instrumentation.al.aspectLang;
  * @model
  * @generated
  */
-public interface ConstraintElement extends PropertyConstraintExpression
+public interface ConstraintElement extends PropertyConstraintCompare
 {
 } // ConstraintElement

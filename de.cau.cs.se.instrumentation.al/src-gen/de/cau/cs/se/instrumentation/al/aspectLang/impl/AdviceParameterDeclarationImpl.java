@@ -4,10 +4,13 @@ package de.cau.cs.se.instrumentation.al.aspectLang.impl;
 
 import de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameterDeclaration;
 import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
+import de.cau.cs.se.instrumentation.al.aspectLang.TypeReference;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -29,24 +32,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class AdviceParameterDeclarationImpl extends MinimalEObjectImpl.Container implements AdviceParameterDeclaration
 {
   /**
-   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
+   * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getType()
    * @generated
    * @ordered
    */
-  protected static final String TYPE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getType()
-   * @generated
-   * @ordered
-   */
-  protected String type = TYPE_EDEFAULT;
+  protected TypeReference type;
 
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -94,7 +87,7 @@ public class AdviceParameterDeclarationImpl extends MinimalEObjectImpl.Container
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getType()
+  public TypeReference getType()
   {
     return type;
   }
@@ -104,12 +97,37 @@ public class AdviceParameterDeclarationImpl extends MinimalEObjectImpl.Container
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setType(String newType)
+  public NotificationChain basicSetType(TypeReference newType, NotificationChain msgs)
   {
-    String oldType = type;
+    TypeReference oldType = type;
     type = newType;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.ADVICE_PARAMETER_DECLARATION__TYPE, oldType, type));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AspectLangPackage.ADVICE_PARAMETER_DECLARATION__TYPE, oldType, newType);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setType(TypeReference newType)
+  {
+    if (newType != type)
+    {
+      NotificationChain msgs = null;
+      if (type != null)
+        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AspectLangPackage.ADVICE_PARAMETER_DECLARATION__TYPE, null, msgs);
+      if (newType != null)
+        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AspectLangPackage.ADVICE_PARAMETER_DECLARATION__TYPE, null, msgs);
+      msgs = basicSetType(newType, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.ADVICE_PARAMETER_DECLARATION__TYPE, newType, newType));
   }
 
   /**
@@ -141,6 +159,22 @@ public class AdviceParameterDeclarationImpl extends MinimalEObjectImpl.Container
    * @generated
    */
   @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case AspectLangPackage.ADVICE_PARAMETER_DECLARATION__TYPE:
+        return basicSetType(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
@@ -164,7 +198,7 @@ public class AdviceParameterDeclarationImpl extends MinimalEObjectImpl.Container
     switch (featureID)
     {
       case AspectLangPackage.ADVICE_PARAMETER_DECLARATION__TYPE:
-        setType((String)newValue);
+        setType((TypeReference)newValue);
         return;
       case AspectLangPackage.ADVICE_PARAMETER_DECLARATION__NAME:
         setName((String)newValue);
@@ -184,7 +218,7 @@ public class AdviceParameterDeclarationImpl extends MinimalEObjectImpl.Container
     switch (featureID)
     {
       case AspectLangPackage.ADVICE_PARAMETER_DECLARATION__TYPE:
-        setType(TYPE_EDEFAULT);
+        setType((TypeReference)null);
         return;
       case AspectLangPackage.ADVICE_PARAMETER_DECLARATION__NAME:
         setName(NAME_EDEFAULT);
@@ -204,7 +238,7 @@ public class AdviceParameterDeclarationImpl extends MinimalEObjectImpl.Container
     switch (featureID)
     {
       case AspectLangPackage.ADVICE_PARAMETER_DECLARATION__TYPE:
-        return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
+        return type != null;
       case AspectLangPackage.ADVICE_PARAMETER_DECLARATION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
@@ -222,9 +256,7 @@ public class AdviceParameterDeclarationImpl extends MinimalEObjectImpl.Container
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (type: ");
-    result.append(type);
-    result.append(", name: ");
+    result.append(" (name: ");
     result.append(name);
     result.append(')');
     return result.toString();

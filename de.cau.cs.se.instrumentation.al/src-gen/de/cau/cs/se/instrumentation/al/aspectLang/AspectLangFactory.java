@@ -149,6 +149,24 @@ public interface AspectLangFactory extends EFactory
   ReflectionProperty createReflectionProperty();
 
   /**
+   * Returns a new object of class '<em>Runtime Property</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Runtime Property</em>'.
+   * @generated
+   */
+  RuntimeProperty createRuntimeProperty();
+
+  /**
+   * Returns a new object of class '<em>Advice Parameter</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Advice Parameter</em>'.
+   * @generated
+   */
+  AdviceParameter createAdviceParameter();
+
+  /**
    * Returns a new object of class '<em>Pointcut</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -248,13 +266,22 @@ public interface AspectLangFactory extends EFactory
   ParentNode createParentNode();
 
   /**
-   * Returns a new object of class '<em>Property Constraint Expression</em>'.
+   * Returns a new object of class '<em>Property Constraint</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Property Constraint Expression</em>'.
+   * @return a new object of class '<em>Property Constraint</em>'.
    * @generated
    */
-  PropertyConstraintExpression createPropertyConstraintExpression();
+  PropertyConstraint createPropertyConstraint();
+
+  /**
+   * Returns a new object of class '<em>Property Constraint Compare</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Property Constraint Compare</em>'.
+   * @generated
+   */
+  PropertyConstraintCompare createPropertyConstraintCompare();
 
   /**
    * Returns a new object of class '<em>Constraint Element</em>'.
@@ -327,6 +354,15 @@ public interface AspectLangFactory extends EFactory
    * @generated
    */
   StringLiteral createStringLiteral();
+
+  /**
+   * Returns a new object of class '<em>Type Reference</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Type Reference</em>'.
+   * @generated
+   */
+  TypeReference createTypeReference();
 
   /**
    * Returns the package supported by this factory.

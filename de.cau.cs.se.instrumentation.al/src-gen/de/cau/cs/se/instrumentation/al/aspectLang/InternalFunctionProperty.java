@@ -19,7 +19,7 @@ package de.cau.cs.se.instrumentation.al.aspectLang;
  * @model
  * @generated
  */
-public interface InternalFunctionProperty extends Property
+public interface InternalFunctionProperty extends Value
 {
   /**
    * Returns the value of the '<em><b>Function</b></em>' attribute.

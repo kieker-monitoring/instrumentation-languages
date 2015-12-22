@@ -365,22 +365,22 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.AdviceParameterDeclaration");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final Keyword cTypeTypeKeyword_0_0 = (Keyword)cTypeAssignment_0.eContents().get(0);
+		private final RuleCall cTypeTypeReferenceParserRuleCall_0_0 = (RuleCall)cTypeAssignment_0.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		
 		//AdviceParameterDeclaration:
-		//	type='type' name=ID;
+		//	type=TypeReference name=ID;
 		@Override public ParserRule getRule() { return rule; }
 
-		//type='type' name=ID
+		//type=TypeReference name=ID
 		public Group getGroup() { return cGroup; }
 
-		//type='type'
+		//type=TypeReference
 		public Assignment getTypeAssignment_0() { return cTypeAssignment_0; }
 
-		//'type'
-		public Keyword getTypeTypeKeyword_0_0() { return cTypeTypeKeyword_0_0; }
+		//TypeReference
+		public RuleCall getTypeTypeReferenceParserRuleCall_0_0() { return cTypeTypeReferenceParserRuleCall_0_0; }
 
 		//name=ID
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -482,12 +482,14 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cLiteralParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cReferenceValueParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cInternalFunctionPropertyParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cAdviceParameterParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//Value:
-		//	Literal | ReferenceValue;
+		//	Literal | ReferenceValue | InternalFunctionProperty | AdviceParameter;
 		@Override public ParserRule getRule() { return rule; }
 
-		//Literal | ReferenceValue
+		//Literal | ReferenceValue | InternalFunctionProperty | AdviceParameter
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//Literal
@@ -495,6 +497,12 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 
 		//ReferenceValue
 		public RuleCall getReferenceValueParserRuleCall_1() { return cReferenceValueParserRuleCall_1; }
+
+		//InternalFunctionProperty
+		public RuleCall getInternalFunctionPropertyParserRuleCall_2() { return cInternalFunctionPropertyParserRuleCall_2; }
+
+		//AdviceParameter
+		public RuleCall getAdviceParameterParserRuleCall_3() { return cAdviceParameterParserRuleCall_3; }
 	}
 
 	public class ReferenceValueElements extends AbstractParserRuleElementFinder {
@@ -528,18 +536,18 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	public class PropertyElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.Property");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cInternalFunctionPropertyParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cRuntimePropertyParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cReflectionPropertyParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//Property:
-		//	InternalFunctionProperty | ReflectionProperty;
+		//	RuntimeProperty | ReflectionProperty;
 		@Override public ParserRule getRule() { return rule; }
 
-		//InternalFunctionProperty | ReflectionProperty
+		//RuntimeProperty | ReflectionProperty
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//InternalFunctionProperty
-		public RuleCall getInternalFunctionPropertyParserRuleCall_0() { return cInternalFunctionPropertyParserRuleCall_0; }
+		//RuntimeProperty
+		public RuleCall getRuntimePropertyParserRuleCall_0() { return cRuntimePropertyParserRuleCall_0; }
 
 		//ReflectionProperty
 		public RuleCall getReflectionPropertyParserRuleCall_1() { return cReflectionPropertyParserRuleCall_1; }
@@ -585,6 +593,70 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getFunctionReflectionFunctionEnumRuleCall_1_0() { return cFunctionReflectionFunctionEnumRuleCall_1_0; }
 	}
 
+	public class RuntimePropertyElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.RuntimeProperty");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cRuntimePropertyAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cNumberSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		
+		//RuntimeProperty:
+		//	{RuntimeProperty} '#';
+		@Override public ParserRule getRule() { return rule; }
+
+		//{RuntimeProperty} '#'
+		public Group getGroup() { return cGroup; }
+
+		//{RuntimeProperty}
+		public Action getRuntimePropertyAction_0() { return cRuntimePropertyAction_0; }
+
+		//'#'
+		public Keyword getNumberSignKeyword_1() { return cNumberSignKeyword_1; }
+	}
+
+	public class AdviceParameterElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.AdviceParameter");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cDeclarationAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final CrossReference cDeclarationAdviceParameterDeclarationCrossReference_0_0 = (CrossReference)cDeclarationAssignment_0.eContents().get(0);
+		private final RuleCall cDeclarationAdviceParameterDeclarationIDTerminalRuleCall_0_0_1 = (RuleCall)cDeclarationAdviceParameterDeclarationCrossReference_0_0.eContents().get(1);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cLeftSquareBracketKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cCollectionAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cCollectionValueParserRuleCall_1_1_0 = (RuleCall)cCollectionAssignment_1_1.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
+		
+		//AdviceParameter:
+		//	declaration=[AdviceParameterDeclaration] ('[' collection=Value ']')?;
+		@Override public ParserRule getRule() { return rule; }
+
+		//declaration=[AdviceParameterDeclaration] ('[' collection=Value ']')?
+		public Group getGroup() { return cGroup; }
+
+		//declaration=[AdviceParameterDeclaration]
+		public Assignment getDeclarationAssignment_0() { return cDeclarationAssignment_0; }
+
+		//[AdviceParameterDeclaration]
+		public CrossReference getDeclarationAdviceParameterDeclarationCrossReference_0_0() { return cDeclarationAdviceParameterDeclarationCrossReference_0_0; }
+
+		//ID
+		public RuleCall getDeclarationAdviceParameterDeclarationIDTerminalRuleCall_0_0_1() { return cDeclarationAdviceParameterDeclarationIDTerminalRuleCall_0_0_1; }
+
+		//('[' collection=Value ']')?
+		public Group getGroup_1() { return cGroup_1; }
+
+		//'['
+		public Keyword getLeftSquareBracketKeyword_1_0() { return cLeftSquareBracketKeyword_1_0; }
+
+		//collection=Value
+		public Assignment getCollectionAssignment_1_1() { return cCollectionAssignment_1_1; }
+
+		//Value
+		public RuleCall getCollectionValueParserRuleCall_1_1_0() { return cCollectionValueParserRuleCall_1_1_0; }
+
+		//']'
+		public Keyword getRightSquareBracketKeyword_1_2() { return cRightSquareBracketKeyword_1_2; }
+	}
+
 	public class PointcutElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.Pointcut");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -594,20 +666,25 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		private final Keyword cClassKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cLocationAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cLocationLocationQueryParserRuleCall_4_0 = (RuleCall)cLocationAssignment_4.eContents().get(0);
-		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
-		private final Keyword cOperationKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
-		private final Assignment cOperationAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
-		private final RuleCall cOperationOperationQueryParserRuleCall_5_1_0 = (RuleCall)cOperationAssignment_5_1.eContents().get(0);
+		private final Assignment cModelAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final CrossReference cModelApplicationModelCrossReference_4_0 = (CrossReference)cModelAssignment_4.eContents().get(0);
+		private final RuleCall cModelApplicationModelIDTerminalRuleCall_4_0_1 = (RuleCall)cModelApplicationModelCrossReference_4_0.eContents().get(1);
+		private final Keyword cFullStopKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cLocationAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cLocationLocationQueryParserRuleCall_6_0 = (RuleCall)cLocationAssignment_6.eContents().get(0);
+		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
+		private final Keyword cOperationKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
+		private final Assignment cOperationAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
+		private final RuleCall cOperationOperationQueryParserRuleCall_7_1_0 = (RuleCall)cOperationAssignment_7_1.eContents().get(0);
 		
 		/// * ------------------------------- * / / * pointcut                        * / Pointcut:
 		//	annotation=Annotation?
 		//	'pointcut' name=ID
-		//	'class' location=LocationQuery ('operation' operation=OperationQuery)?;
+		//	'class' model=[ApplicationModel] '.' location=LocationQuery ('operation' operation=OperationQuery)?;
 		@Override public ParserRule getRule() { return rule; }
 
-		//annotation=Annotation? 'pointcut' name=ID 'class' location=LocationQuery ('operation' operation=OperationQuery)?
+		//annotation=Annotation? 'pointcut' name=ID 'class' model=[ApplicationModel] '.' location=LocationQuery ('operation'
+		//operation=OperationQuery)?
 		public Group getGroup() { return cGroup; }
 
 		//annotation=Annotation?
@@ -628,23 +705,35 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//'class'
 		public Keyword getClassKeyword_3() { return cClassKeyword_3; }
 
+		//model=[ApplicationModel]
+		public Assignment getModelAssignment_4() { return cModelAssignment_4; }
+
+		//[ApplicationModel]
+		public CrossReference getModelApplicationModelCrossReference_4_0() { return cModelApplicationModelCrossReference_4_0; }
+
+		//ID
+		public RuleCall getModelApplicationModelIDTerminalRuleCall_4_0_1() { return cModelApplicationModelIDTerminalRuleCall_4_0_1; }
+
+		//'.'
+		public Keyword getFullStopKeyword_5() { return cFullStopKeyword_5; }
+
 		//location=LocationQuery
-		public Assignment getLocationAssignment_4() { return cLocationAssignment_4; }
+		public Assignment getLocationAssignment_6() { return cLocationAssignment_6; }
 
 		//LocationQuery
-		public RuleCall getLocationLocationQueryParserRuleCall_4_0() { return cLocationLocationQueryParserRuleCall_4_0; }
+		public RuleCall getLocationLocationQueryParserRuleCall_6_0() { return cLocationLocationQueryParserRuleCall_6_0; }
 
 		//('operation' operation=OperationQuery)?
-		public Group getGroup_5() { return cGroup_5; }
+		public Group getGroup_7() { return cGroup_7; }
 
 		//'operation'
-		public Keyword getOperationKeyword_5_0() { return cOperationKeyword_5_0; }
+		public Keyword getOperationKeyword_7_0() { return cOperationKeyword_7_0; }
 
 		//operation=OperationQuery
-		public Assignment getOperationAssignment_5_1() { return cOperationAssignment_5_1; }
+		public Assignment getOperationAssignment_7_1() { return cOperationAssignment_7_1; }
 
 		//OperationQuery
-		public RuleCall getOperationOperationQueryParserRuleCall_5_1_0() { return cOperationOperationQueryParserRuleCall_5_1_0; }
+		public RuleCall getOperationOperationQueryParserRuleCall_7_1_0() { return cOperationOperationQueryParserRuleCall_7_1_0; }
 	}
 
 	public class AnnotationElements extends AbstractParserRuleElementFinder {
@@ -775,8 +864,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final CrossReference cModifierOperationModifierCrossReference_1_0 = (CrossReference)cModifierAssignment_1.eContents().get(0);
 		private final RuleCall cModifierOperationModifierIDTerminalRuleCall_1_0_1 = (RuleCall)cModifierOperationModifierCrossReference_1_0.eContents().get(1);
 		private final Assignment cReturnTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final CrossReference cReturnTypeTypeCrossReference_2_0 = (CrossReference)cReturnTypeAssignment_2.eContents().get(0);
-		private final RuleCall cReturnTypeTypeIDTerminalRuleCall_2_0_1 = (RuleCall)cReturnTypeTypeCrossReference_2_0.eContents().get(1);
+		private final RuleCall cReturnTypeTypeReferenceParserRuleCall_2_0 = (RuleCall)cReturnTypeAssignment_2.eContents().get(0);
 		private final Alternatives cAlternatives_3 = (Alternatives)cGroup.eContents().get(3);
 		private final Group cGroup_3_0 = (Group)cAlternatives_3.eContents().get(0);
 		private final Assignment cOperationReferenceAssignment_3_0_0 = (Assignment)cGroup_3_0.eContents().get(0);
@@ -795,13 +883,13 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//OperationQuery:
 		//	{OperationQuery} modifier=[mapping::OperationModifier]?
-		//	returnType=[mapping::Type]? (operationReference=[mapping::Operation] ('(' parameterQueries+=ParameterQuery (','
+		//	returnType=TypeReference? (operationReference=[mapping::Operation] ('(' parameterQueries+=ParameterQuery (','
 		//	parameterQueries+=ParameterQuery)* ')')?
 		//	|
 		//	'*');
 		@Override public ParserRule getRule() { return rule; }
 
-		//{OperationQuery} modifier=[mapping::OperationModifier]? returnType=[mapping::Type]?
+		//{OperationQuery} modifier=[mapping::OperationModifier]? returnType=TypeReference?
 		//(operationReference=[mapping::Operation] ('(' parameterQueries+=ParameterQuery (',' parameterQueries+=ParameterQuery)*
 		//')')? | '*')
 		public Group getGroup() { return cGroup; }
@@ -818,14 +906,11 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getModifierOperationModifierIDTerminalRuleCall_1_0_1() { return cModifierOperationModifierIDTerminalRuleCall_1_0_1; }
 
-		//returnType=[mapping::Type]?
+		//returnType=TypeReference?
 		public Assignment getReturnTypeAssignment_2() { return cReturnTypeAssignment_2; }
 
-		//[mapping::Type]
-		public CrossReference getReturnTypeTypeCrossReference_2_0() { return cReturnTypeTypeCrossReference_2_0; }
-
-		//ID
-		public RuleCall getReturnTypeTypeIDTerminalRuleCall_2_0_1() { return cReturnTypeTypeIDTerminalRuleCall_2_0_1; }
+		//TypeReference
+		public RuleCall getReturnTypeTypeReferenceParserRuleCall_2_0() { return cReturnTypeTypeReferenceParserRuleCall_2_0; }
 
 		//(operationReference=[mapping::Operation] ('(' parameterQueries+=ParameterQuery (',' parameterQueries+=ParameterQuery)*
 		//')')? | '*')
@@ -884,18 +969,17 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cModifierParameterModifierIDTerminalRuleCall_1_0_1 = (RuleCall)cModifierParameterModifierCrossReference_1_0.eContents().get(1);
 		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
 		private final Assignment cTypeAssignment_2_0 = (Assignment)cAlternatives_2.eContents().get(0);
-		private final CrossReference cTypeTypeCrossReference_2_0_0 = (CrossReference)cTypeAssignment_2_0.eContents().get(0);
-		private final RuleCall cTypeTypeIDTerminalRuleCall_2_0_0_1 = (RuleCall)cTypeTypeCrossReference_2_0_0.eContents().get(1);
+		private final RuleCall cTypeTypeReferenceParserRuleCall_2_0_0 = (RuleCall)cTypeAssignment_2_0.eContents().get(0);
 		private final Keyword cAsteriskKeyword_2_1 = (Keyword)cAlternatives_2.eContents().get(1);
 		private final Assignment cParameterAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final CrossReference cParameterParameterCrossReference_3_0 = (CrossReference)cParameterAssignment_3.eContents().get(0);
 		private final RuleCall cParameterParameterIDTerminalRuleCall_3_0_1 = (RuleCall)cParameterParameterCrossReference_3_0.eContents().get(1);
 		
 		//ParameterQuery:
-		//	{ParameterQuery} modifier=[mapping::ParameterModifier]? (type=[mapping::Type] | '*') parameter=[mapping::Parameter]?;
+		//	{ParameterQuery} modifier=[mapping::ParameterModifier]? (type=TypeReference | '*') parameter=[mapping::Parameter]?;
 		@Override public ParserRule getRule() { return rule; }
 
-		//{ParameterQuery} modifier=[mapping::ParameterModifier]? (type=[mapping::Type] | '*') parameter=[mapping::Parameter]?
+		//{ParameterQuery} modifier=[mapping::ParameterModifier]? (type=TypeReference | '*') parameter=[mapping::Parameter]?
 		public Group getGroup() { return cGroup; }
 
 		//{ParameterQuery}
@@ -910,22 +994,18 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getModifierParameterModifierIDTerminalRuleCall_1_0_1() { return cModifierParameterModifierIDTerminalRuleCall_1_0_1; }
 
-		//(type=[mapping::Type] | '*')
+		//(type=TypeReference | '*')
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 
-		//type=[mapping::Type]
+		//type=TypeReference
 		public Assignment getTypeAssignment_2_0() { return cTypeAssignment_2_0; }
 
-		//[mapping::Type]
-		public CrossReference getTypeTypeCrossReference_2_0_0() { return cTypeTypeCrossReference_2_0_0; }
-
-		//ID
-		public RuleCall getTypeTypeIDTerminalRuleCall_2_0_0_1() { return cTypeTypeIDTerminalRuleCall_2_0_0_1; }
+		//TypeReference
+		public RuleCall getTypeTypeReferenceParserRuleCall_2_0_0() { return cTypeTypeReferenceParserRuleCall_2_0_0; }
 
 		//'*'
 		public Keyword getAsteriskKeyword_2_1() { return cAsteriskKeyword_2_1; }
 
-		//// this must be fixed for collections
 		//parameter=[mapping::Parameter]?
 		public Assignment getParameterAssignment_3() { return cParameterAssignment_3; }
 
@@ -991,21 +1071,21 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	public class ContainerNodeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.ContainerNode");
 		private final Assignment cContainerAssignment = (Assignment)rule.eContents().get(1);
-		private final CrossReference cContainerContainerCrossReference_0 = (CrossReference)cContainerAssignment.eContents().get(0);
-		private final RuleCall cContainerContainerIDTerminalRuleCall_0_1 = (RuleCall)cContainerContainerCrossReference_0.eContents().get(1);
+		private final CrossReference cContainerFeatureCrossReference_0 = (CrossReference)cContainerAssignment.eContents().get(0);
+		private final RuleCall cContainerFeatureIDTerminalRuleCall_0_1 = (RuleCall)cContainerFeatureCrossReference_0.eContents().get(1);
 		
 		//ContainerNode:
-		//	container=[mapping::Container];
+		//	container=[mapping::Feature];
 		@Override public ParserRule getRule() { return rule; }
 
-		//container=[mapping::Container]
+		//container=[mapping::Feature]
 		public Assignment getContainerAssignment() { return cContainerAssignment; }
 
-		//[mapping::Container]
-		public CrossReference getContainerContainerCrossReference_0() { return cContainerContainerCrossReference_0; }
+		//[mapping::Feature]
+		public CrossReference getContainerFeatureCrossReference_0() { return cContainerFeatureCrossReference_0; }
 
 		//ID
-		public RuleCall getContainerContainerIDTerminalRuleCall_0_1() { return cContainerContainerIDTerminalRuleCall_0_1; }
+		public RuleCall getContainerFeatureIDTerminalRuleCall_0_1() { return cContainerFeatureIDTerminalRuleCall_0_1; }
 	}
 
 	public class WildcardNodeElements extends AbstractParserRuleElementFinder {
@@ -1076,29 +1156,27 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final RuleCall cPropertyConstraintCompareParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Action cPropertyConstraintExpressionLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Action cPropertyConstraintLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
 		private final Assignment cLogicAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final RuleCall cLogicLogicOperatorEnumRuleCall_1_1_0 = (RuleCall)cLogicAssignment_1_1.eContents().get(0);
 		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
 		private final RuleCall cRightPropertyConstraintCompareParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
-		//PropertyConstraint PropertyConstraintExpression:
-		//	PropertyConstraintCompare ({PropertyConstraintExpression.left=current} logic=LogicOperator
-		//	right=PropertyConstraintCompare)?
+		//PropertyConstraint:
+		//	PropertyConstraintCompare ({PropertyConstraint.left=current} logic=LogicOperator right=PropertyConstraintCompare)?;
 		@Override public ParserRule getRule() { return rule; }
 
-		//PropertyConstraintCompare ({PropertyConstraintExpression.left=current} logic=LogicOperator
-		//right=PropertyConstraintCompare)?
+		//PropertyConstraintCompare ({PropertyConstraint.left=current} logic=LogicOperator right=PropertyConstraintCompare)?
 		public Group getGroup() { return cGroup; }
 
 		//PropertyConstraintCompare
 		public RuleCall getPropertyConstraintCompareParserRuleCall_0() { return cPropertyConstraintCompareParserRuleCall_0; }
 
-		//({PropertyConstraintExpression.left=current} logic=LogicOperator right=PropertyConstraintCompare)?
+		//({PropertyConstraint.left=current} logic=LogicOperator right=PropertyConstraintCompare)?
 		public Group getGroup_1() { return cGroup_1; }
 
-		//{PropertyConstraintExpression.left=current}
-		public Action getPropertyConstraintExpressionLeftAction_1_0() { return cPropertyConstraintExpressionLeftAction_1_0; }
+		//{PropertyConstraint.left=current}
+		public Action getPropertyConstraintLeftAction_1_0() { return cPropertyConstraintLeftAction_1_0; }
 
 		//logic=LogicOperator
 		public Assignment getLogicAssignment_1_1() { return cLogicAssignment_1_1; }
@@ -1118,27 +1196,27 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final RuleCall cConstraintElementParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Action cPropertyConstraintExpressionLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Action cPropertyConstraintCompareLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
 		private final Assignment cCompareAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final RuleCall cCompareCompareOperatorEnumRuleCall_1_1_0 = (RuleCall)cCompareAssignment_1_1.eContents().get(0);
 		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
 		private final RuleCall cRightConstraintElementParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
-		//PropertyConstraintCompare PropertyConstraintExpression:
-		//	ConstraintElement ({PropertyConstraintExpression.left=current} compare=CompareOperator right=ConstraintElement)?
+		//PropertyConstraintCompare:
+		//	ConstraintElement ({PropertyConstraintCompare.left=current} compare=CompareOperator right=ConstraintElement)?;
 		@Override public ParserRule getRule() { return rule; }
 
-		//ConstraintElement ({PropertyConstraintExpression.left=current} compare=CompareOperator right=ConstraintElement)?
+		//ConstraintElement ({PropertyConstraintCompare.left=current} compare=CompareOperator right=ConstraintElement)?
 		public Group getGroup() { return cGroup; }
 
 		//ConstraintElement
 		public RuleCall getConstraintElementParserRuleCall_0() { return cConstraintElementParserRuleCall_0; }
 
-		//({PropertyConstraintExpression.left=current} compare=CompareOperator right=ConstraintElement)?
+		//({PropertyConstraintCompare.left=current} compare=CompareOperator right=ConstraintElement)?
 		public Group getGroup_1() { return cGroup_1; }
 
-		//{PropertyConstraintExpression.left=current}
-		public Action getPropertyConstraintExpressionLeftAction_1_0() { return cPropertyConstraintExpressionLeftAction_1_0; }
+		//{PropertyConstraintCompare.left=current}
+		public Action getPropertyConstraintCompareLeftAction_1_0() { return cPropertyConstraintCompareLeftAction_1_0; }
 
 		//compare=CompareOperator
 		public Assignment getCompareAssignment_1_1() { return cCompareAssignment_1_1; }
@@ -1247,16 +1325,14 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cIstypeofKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cReferenceAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final CrossReference cReferenceNamedTypeCrossReference_2_0 = (CrossReference)cReferenceAssignment_2.eContents().get(0);
-		private final RuleCall cReferenceNamedTypeIDTerminalRuleCall_2_0_1 = (RuleCall)cReferenceNamedTypeCrossReference_2_0.eContents().get(1);
+		private final RuleCall cReferenceTypeReferenceParserRuleCall_2_0 = (RuleCall)cReferenceAssignment_2.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//Typeof:
-		//	'istypeof' '(' reference=[mapping::NamedType] ')' // should be replaced with generate type reference rule
-		//;
+		//	'istypeof' '(' reference=TypeReference ')';
 		@Override public ParserRule getRule() { return rule; }
 
-		//'istypeof' '(' reference=[mapping::NamedType] ')'
+		//'istypeof' '(' reference=TypeReference ')'
 		public Group getGroup() { return cGroup; }
 
 		//'istypeof'
@@ -1265,14 +1341,11 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		//'('
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 
-		//reference=[mapping::NamedType]
+		//reference=TypeReference
 		public Assignment getReferenceAssignment_2() { return cReferenceAssignment_2; }
 
-		//[mapping::NamedType]
-		public CrossReference getReferenceNamedTypeCrossReference_2_0() { return cReferenceNamedTypeCrossReference_2_0; }
-
-		//ID
-		public RuleCall getReferenceNamedTypeIDTerminalRuleCall_2_0_1() { return cReferenceNamedTypeIDTerminalRuleCall_2_0_1; }
+		//TypeReference
+		public RuleCall getReferenceTypeReferenceParserRuleCall_2_0() { return cReferenceTypeReferenceParserRuleCall_2_0; }
 
 		//')'
 		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
@@ -1348,6 +1421,54 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 
 		//STRING
 		public RuleCall getValueSTRINGTerminalRuleCall_0() { return cValueSTRINGTerminalRuleCall_0; }
+	}
+
+	public class TypeReferenceElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.TypeReference");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cContextAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final CrossReference cContextApplicationModelCrossReference_0_0 = (CrossReference)cContextAssignment_0.eContents().get(0);
+		private final RuleCall cContextApplicationModelIDTerminalRuleCall_0_0_1 = (RuleCall)cContextApplicationModelCrossReference_0_0.eContents().get(1);
+		private final Keyword cFullStopKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cReferenceAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cReferenceNamedTypeCrossReference_2_0 = (CrossReference)cReferenceAssignment_2.eContents().get(0);
+		private final RuleCall cReferenceNamedTypeIDTerminalRuleCall_2_0_1 = (RuleCall)cReferenceNamedTypeCrossReference_2_0.eContents().get(1);
+		private final Assignment cCollectionAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final Keyword cCollectionLeftSquareBracketRightSquareBracketKeyword_3_0 = (Keyword)cCollectionAssignment_3.eContents().get(0);
+		
+		//TypeReference:
+		//	context=[ApplicationModel] '.' reference=[mapping::NamedType] collection?='[]'?;
+		@Override public ParserRule getRule() { return rule; }
+
+		//context=[ApplicationModel] '.' reference=[mapping::NamedType] collection?='[]'?
+		public Group getGroup() { return cGroup; }
+
+		//context=[ApplicationModel]
+		public Assignment getContextAssignment_0() { return cContextAssignment_0; }
+
+		//[ApplicationModel]
+		public CrossReference getContextApplicationModelCrossReference_0_0() { return cContextApplicationModelCrossReference_0_0; }
+
+		//ID
+		public RuleCall getContextApplicationModelIDTerminalRuleCall_0_0_1() { return cContextApplicationModelIDTerminalRuleCall_0_0_1; }
+
+		//'.'
+		public Keyword getFullStopKeyword_1() { return cFullStopKeyword_1; }
+
+		//reference=[mapping::NamedType]
+		public Assignment getReferenceAssignment_2() { return cReferenceAssignment_2; }
+
+		//[mapping::NamedType]
+		public CrossReference getReferenceNamedTypeCrossReference_2_0() { return cReferenceNamedTypeCrossReference_2_0; }
+
+		//ID
+		public RuleCall getReferenceNamedTypeIDTerminalRuleCall_2_0_1() { return cReferenceNamedTypeIDTerminalRuleCall_2_0_1; }
+
+		//collection?='[]'?
+		public Assignment getCollectionAssignment_3() { return cCollectionAssignment_3; }
+
+		//'[]'
+		public Keyword getCollectionLeftSquareBracketRightSquareBracketKeyword_3_0() { return cCollectionLeftSquareBracketRightSquareBracketKeyword_3_0; }
 	}
 
 	public class QualifiedNameElements extends AbstractParserRuleElementFinder {
@@ -1669,7 +1790,9 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	private final InternalFunctionPropertyElements pInternalFunctionProperty;
 	private final InternalFunctionElements eInternalFunction;
 	private final ReflectionPropertyElements pReflectionProperty;
+	private final RuntimePropertyElements pRuntimeProperty;
 	private final ReflectionFunctionElements eReflectionFunction;
+	private final AdviceParameterElements pAdviceParameter;
 	private final PointcutElements pPointcut;
 	private final AnnotationElements pAnnotation;
 	private final LocationQueryElements pLocationQuery;
@@ -1694,6 +1817,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	private final FloatLiteralElements pFloatLiteral;
 	private final IntLiteralElements pIntLiteral;
 	private final StringLiteralElements pStringLiteral;
+	private final TypeReferenceElements pTypeReference;
 	private final QualifiedNameElements pQualifiedName;
 	private final QualifiedNameWithWildcardElements pQualifiedNameWithWildcard;
 	private final TerminalRule tFLOAT;
@@ -1725,7 +1849,9 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		this.pInternalFunctionProperty = new InternalFunctionPropertyElements();
 		this.eInternalFunction = new InternalFunctionElements();
 		this.pReflectionProperty = new ReflectionPropertyElements();
+		this.pRuntimeProperty = new RuntimePropertyElements();
 		this.eReflectionFunction = new ReflectionFunctionElements();
+		this.pAdviceParameter = new AdviceParameterElements();
 		this.pPointcut = new PointcutElements();
 		this.pAnnotation = new AnnotationElements();
 		this.pLocationQuery = new LocationQueryElements();
@@ -1750,6 +1876,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		this.pFloatLiteral = new FloatLiteralElements();
 		this.pIntLiteral = new IntLiteralElements();
 		this.pStringLiteral = new StringLiteralElements();
+		this.pTypeReference = new TypeReferenceElements();
 		this.pQualifiedName = new QualifiedNameElements();
 		this.pQualifiedNameWithWildcard = new QualifiedNameWithWildcardElements();
 		this.tFLOAT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.FLOAT");
@@ -1850,7 +1977,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//AdviceParameterDeclaration:
-	//	type='type' name=ID;
+	//	type=TypeReference name=ID;
 	public AdviceParameterDeclarationElements getAdviceParameterDeclarationAccess() {
 		return pAdviceParameterDeclaration;
 	}
@@ -1891,7 +2018,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Value:
-	//	Literal | ReferenceValue;
+	//	Literal | ReferenceValue | InternalFunctionProperty | AdviceParameter;
 	public ValueElements getValueAccess() {
 		return pValue;
 	}
@@ -1911,7 +2038,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Property:
-	//	InternalFunctionProperty | ReflectionProperty;
+	//	RuntimeProperty | ReflectionProperty;
 	public PropertyElements getPropertyAccess() {
 		return pProperty;
 	}
@@ -1952,6 +2079,16 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		return getReflectionPropertyAccess().getRule();
 	}
 
+	//RuntimeProperty:
+	//	{RuntimeProperty} '#';
+	public RuntimePropertyElements getRuntimePropertyAccess() {
+		return pRuntimeProperty;
+	}
+	
+	public ParserRule getRuntimePropertyRule() {
+		return getRuntimePropertyAccess().getRule();
+	}
+
 	//enum ReflectionFunction:
 	//	NAME='name' |
 	//	SIGNATURE='signature' |
@@ -1965,10 +2102,20 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		return getReflectionFunctionAccess().getRule();
 	}
 
+	//AdviceParameter:
+	//	declaration=[AdviceParameterDeclaration] ('[' collection=Value ']')?;
+	public AdviceParameterElements getAdviceParameterAccess() {
+		return pAdviceParameter;
+	}
+	
+	public ParserRule getAdviceParameterRule() {
+		return getAdviceParameterAccess().getRule();
+	}
+
 	/// * ------------------------------- * / / * pointcut                        * / Pointcut:
 	//	annotation=Annotation?
 	//	'pointcut' name=ID
-	//	'class' location=LocationQuery ('operation' operation=OperationQuery)?;
+	//	'class' model=[ApplicationModel] '.' location=LocationQuery ('operation' operation=OperationQuery)?;
 	public PointcutElements getPointcutAccess() {
 		return pPointcut;
 	}
@@ -2020,7 +2167,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 
 	//OperationQuery:
 	//	{OperationQuery} modifier=[mapping::OperationModifier]?
-	//	returnType=[mapping::Type]? (operationReference=[mapping::Operation] ('(' parameterQueries+=ParameterQuery (','
+	//	returnType=TypeReference? (operationReference=[mapping::Operation] ('(' parameterQueries+=ParameterQuery (','
 	//	parameterQueries+=ParameterQuery)* ')')?
 	//	|
 	//	'*');
@@ -2033,7 +2180,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ParameterQuery:
-	//	{ParameterQuery} modifier=[mapping::ParameterModifier]? (type=[mapping::Type] | '*') parameter=[mapping::Parameter]?;
+	//	{ParameterQuery} modifier=[mapping::ParameterModifier]? (type=TypeReference | '*') parameter=[mapping::Parameter]?;
 	public ParameterQueryElements getParameterQueryAccess() {
 		return pParameterQuery;
 	}
@@ -2053,7 +2200,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//ContainerNode:
-	//	container=[mapping::Container];
+	//	container=[mapping::Feature];
 	public ContainerNodeElements getContainerNodeAccess() {
 		return pContainerNode;
 	}
@@ -2095,9 +2242,8 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		return getParentNodeAccess().getRule();
 	}
 
-	//PropertyConstraint PropertyConstraintExpression:
-	//	PropertyConstraintCompare ({PropertyConstraintExpression.left=current} logic=LogicOperator
-	//	right=PropertyConstraintCompare)?
+	//PropertyConstraint:
+	//	PropertyConstraintCompare ({PropertyConstraint.left=current} logic=LogicOperator right=PropertyConstraintCompare)?;
 	public PropertyConstraintElements getPropertyConstraintAccess() {
 		return pPropertyConstraint;
 	}
@@ -2117,8 +2263,8 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		return getLogicOperatorAccess().getRule();
 	}
 
-	//PropertyConstraintCompare PropertyConstraintExpression:
-	//	ConstraintElement ({PropertyConstraintExpression.left=current} compare=CompareOperator right=ConstraintElement)?
+	//PropertyConstraintCompare:
+	//	ConstraintElement ({PropertyConstraintCompare.left=current} compare=CompareOperator right=ConstraintElement)?;
 	public PropertyConstraintCompareElements getPropertyConstraintCompareAccess() {
 		return pPropertyConstraintCompare;
 	}
@@ -2174,8 +2320,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Typeof:
-	//	'istypeof' '(' reference=[mapping::NamedType] ')' // should be replaced with generate type reference rule
-	//;
+	//	'istypeof' '(' reference=TypeReference ')';
 	public TypeofElements getTypeofAccess() {
 		return pTypeof;
 	}
@@ -2222,6 +2367,16 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getStringLiteralRule() {
 		return getStringLiteralAccess().getRule();
+	}
+
+	//TypeReference:
+	//	context=[ApplicationModel] '.' reference=[mapping::NamedType] collection?='[]'?;
+	public TypeReferenceElements getTypeReferenceAccess() {
+		return pTypeReference;
+	}
+	
+	public ParserRule getTypeReferenceRule() {
+		return getTypeReferenceAccess().getRule();
 	}
 
 	/// * ------------------------------- * / / * Terminals and literal rules     * / QualifiedName:

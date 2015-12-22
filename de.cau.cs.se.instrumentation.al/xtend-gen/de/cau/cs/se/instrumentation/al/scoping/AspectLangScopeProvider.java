@@ -24,6 +24,7 @@ import de.cau.cs.se.instrumentation.al.aspectLang.OperationQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut;
 import de.cau.cs.se.instrumentation.al.mapping.Container;
+import de.cau.cs.se.instrumentation.al.mapping.Feature;
 import de.cau.cs.se.instrumentation.al.mapping.NamedElement;
 import de.cau.cs.se.instrumentation.al.mapping.NamedType;
 import de.cau.cs.se.instrumentation.al.mapping.Operation;
@@ -86,9 +87,13 @@ public class AspectLangScopeProvider extends AbstractDeclarativeScopeProvider {
     LocationQuery _location = context.getLocation();
     final Node node = this.leaveNode(_location);
     if ((node instanceof ContainerNode)) {
-      Container _container = ((ContainerNode) node).getContainer();
-      EList<Operation> _operations = _container.getOperations();
-      return Scopes.scopeFor(_operations);
+      final Feature container = ((ContainerNode) node).getContainer();
+      if ((container instanceof Container)) {
+        EList<Operation> _operations = ((Container)container).getOperations();
+        return Scopes.scopeFor(_operations);
+      } else {
+        return IScope.NULLSCOPE;
+      }
     } else {
       return IScope.NULLSCOPE;
     }

@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Pointcut#getAnnotation <em>Annotation</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Pointcut#getName <em>Name</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Pointcut#getModel <em>Model</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Pointcut#getLocation <em>Location</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Pointcut#getOperation <em>Operation</em>}</li>
  * </ul>
@@ -76,6 +77,32 @@ public interface Pointcut extends EObject
    * @generated
    */
   void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Model</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Model</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Model</em>' reference.
+   * @see #setModel(ApplicationModel)
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getPointcut_Model()
+   * @model
+   * @generated
+   */
+  ApplicationModel getModel();
+
+  /**
+   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.Pointcut#getModel <em>Model</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Model</em>' reference.
+   * @see #getModel()
+   * @generated
+   */
+  void setModel(ApplicationModel value);
 
   /**
    * Returns the value of the '<em><b>Location</b></em>' containment reference.

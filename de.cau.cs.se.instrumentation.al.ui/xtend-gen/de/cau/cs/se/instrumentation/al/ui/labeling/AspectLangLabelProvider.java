@@ -11,7 +11,7 @@ import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut;
 import de.cau.cs.se.instrumentation.al.aspectLang.SubPathNode;
 import de.cau.cs.se.instrumentation.al.aspectLang.WildcardNode;
-import de.cau.cs.se.instrumentation.al.mapping.Container;
+import de.cau.cs.se.instrumentation.al.mapping.Feature;
 import de.cau.cs.se.instrumentation.al.mapping.NamedElement;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -35,15 +35,15 @@ public class AspectLangLabelProvider extends DefaultEObjectLabelProvider {
   
   public CharSequence text(final ContainerNode e) {
     CharSequence _xifexpression = null;
-    Container _container = e.getContainer();
+    Feature _container = e.getContainer();
     if ((_container instanceof NamedElement)) {
-      Container _container_1 = e.getContainer();
+      Feature _container_1 = e.getContainer();
       _xifexpression = ((NamedElement) _container_1).getName();
     } else {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("Container is of type ");
-      Container _container_2 = e.getContainer();
-      Class<? extends Container> _class = _container_2.getClass();
+      Feature _container_2 = e.getContainer();
+      Class<? extends Feature> _class = _container_2.getClass();
       String _name = _class.getName();
       _builder.append(_name, "");
       _xifexpression = _builder;

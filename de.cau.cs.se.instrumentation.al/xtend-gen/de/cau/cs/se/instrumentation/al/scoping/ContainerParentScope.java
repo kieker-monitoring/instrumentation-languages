@@ -20,6 +20,7 @@ import de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode;
 import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.Node;
 import de.cau.cs.se.instrumentation.al.mapping.Container;
+import de.cau.cs.se.instrumentation.al.mapping.Feature;
 import de.cau.cs.se.instrumentation.al.mapping.NamedElement;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -81,17 +82,21 @@ public class ContainerParentScope implements IScope {
       parent = ((LocationQuery) _eContainer_1);
     }
     Node _node_1 = parent.getNode();
-    final Container container = ((ContainerNode) _node_1).getContainer();
-    EList<Container> _contents = container.getContents();
-    final Function1<Container, Boolean> _function = (Container it) -> {
-      String _name = it.getName();
-      String _lastSegment = name.getLastSegment();
-      return Boolean.valueOf(_name.equals(_lastSegment));
-    };
-    final Container element = IterableExtensions.<Container>findFirst(_contents, _function);
-    boolean _notEquals = (!Objects.equal(element, null));
-    if (_notEquals) {
-      return EObjectDescription.create(name, element);
+    final Feature feature = ((ContainerNode) _node_1).getContainer();
+    if ((feature instanceof Container)) {
+      EList<Container> _contents = ((Container)feature).getContents();
+      final Function1<Container, Boolean> _function = (Container it) -> {
+        String _name = it.getName();
+        String _lastSegment = name.getLastSegment();
+        return Boolean.valueOf(_name.equals(_lastSegment));
+      };
+      final Container element = IterableExtensions.<Container>findFirst(_contents, _function);
+      boolean _notEquals = (!Objects.equal(element, null));
+      if (_notEquals) {
+        return EObjectDescription.create(name, element);
+      } else {
+        return null;
+      }
     } else {
       return null;
     }

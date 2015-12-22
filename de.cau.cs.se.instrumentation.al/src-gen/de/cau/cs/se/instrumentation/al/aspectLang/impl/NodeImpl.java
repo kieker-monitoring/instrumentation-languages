@@ -4,7 +4,7 @@ package de.cau.cs.se.instrumentation.al.aspectLang.impl;
 
 import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
 import de.cau.cs.se.instrumentation.al.aspectLang.Node;
-import de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraintExpression;
+import de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraint;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -38,7 +38,7 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node
    * @generated
    * @ordered
    */
-  protected PropertyConstraintExpression constraint;
+  protected PropertyConstraint constraint;
 
   /**
    * <!-- begin-user-doc -->
@@ -66,7 +66,7 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node
    * <!-- end-user-doc -->
    * @generated
    */
-  public PropertyConstraintExpression getConstraint()
+  public PropertyConstraint getConstraint()
   {
     return constraint;
   }
@@ -76,9 +76,9 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetConstraint(PropertyConstraintExpression newConstraint, NotificationChain msgs)
+  public NotificationChain basicSetConstraint(PropertyConstraint newConstraint, NotificationChain msgs)
   {
-    PropertyConstraintExpression oldConstraint = constraint;
+    PropertyConstraint oldConstraint = constraint;
     constraint = newConstraint;
     if (eNotificationRequired())
     {
@@ -93,7 +93,7 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setConstraint(PropertyConstraintExpression newConstraint)
+  public void setConstraint(PropertyConstraint newConstraint)
   {
     if (newConstraint != constraint)
     {
@@ -152,7 +152,7 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node
     switch (featureID)
     {
       case AspectLangPackage.NODE__CONSTRAINT:
-        setConstraint((PropertyConstraintExpression)newValue);
+        setConstraint((PropertyConstraint)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -169,7 +169,7 @@ public class NodeImpl extends MinimalEObjectImpl.Container implements Node
     switch (featureID)
     {
       case AspectLangPackage.NODE__CONSTRAINT:
-        setConstraint((PropertyConstraintExpression)null);
+        setConstraint((PropertyConstraint)null);
         return;
     }
     super.eUnset(featureID);
