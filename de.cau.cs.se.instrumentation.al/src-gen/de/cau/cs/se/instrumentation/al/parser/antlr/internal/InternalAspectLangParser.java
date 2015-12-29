@@ -23,7 +23,7 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalAspectLangParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_FLOAT", "RULE_INT", "RULE_NUMBER", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'package'", "'import'", "'use'", "'on'", "'aspect'", "':'", "','", "'('", "')'", "'advice'", "'{'", "'}'", "'$'", "'#'", "'['", "']'", "'pointcut'", "'class'", "'.'", "'operation'", "'@'", "'technology'", "'*'", "'**'", "'up'", "'istypeof'", "'[]'", "'before'", "'after'", "'time'", "'traceId'", "'orderIndex'", "'name'", "'signature'", "'classname'", "'return-type'", "'javaee'", "'servlet'", "'spring'", "'aspectj'", "'include'", "'exclude'", "'&&'", "'||'", "'='", "'~'", "'!='", "'>'", "'<'", "'>='", "'<='"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_FLOAT", "RULE_INT", "RULE_NUMBER", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'package'", "'import'", "'use'", "'on'", "'aspect'", "':'", "','", "'('", "')'", "'advice'", "'{'", "'}'", "'$'", "'#'", "'['", "']'", "'pointcut'", "'class'", "'.'", "'operation'", "'@'", "'technology'", "'*'", "'**'", "'up'", "'istypeof'", "'[]'", "'before'", "'after'", "'exception'", "'time'", "'traceId'", "'orderIndex'", "'name'", "'signature'", "'classname'", "'return-type'", "'javaee'", "'servlet'", "'spring'", "'aspectj'", "'include'", "'exclude'", "'&&'", "'||'", "'='", "'~'", "'!='", "'>'", "'<'", "'>='", "'<='"
     };
     public static final int T__50=50;
     public static final int T__19=19;
@@ -58,6 +58,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
     public static final int T__62=62;
     public static final int T__63=63;
     public static final int T__20=20;
+    public static final int T__64=64;
     public static final int T__21=21;
     public static final int RULE_STRING=5;
     public static final int RULE_SL_COMMENT=10;
@@ -1183,7 +1184,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     int alt6=2;
                     int LA6_0 = input.LA(1);
 
-                    if ( ((LA6_0>=RULE_ID && LA6_0<=RULE_INT)||(LA6_0>=25 && LA6_0<=26)||(LA6_0>=35 && LA6_0<=37)||(LA6_0>=42 && LA6_0<=44)) ) {
+                    if ( ((LA6_0>=RULE_ID && LA6_0<=RULE_INT)||(LA6_0>=25 && LA6_0<=26)||(LA6_0>=35 && LA6_0<=37)||(LA6_0>=43 && LA6_0<=45)) ) {
                         alt6=1;
                     }
                     switch (alt6) {
@@ -1592,7 +1593,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                 int alt11=2;
                 int LA11_0 = input.LA(1);
 
-                if ( ((LA11_0>=40 && LA11_0<=41)) ) {
+                if ( ((LA11_0>=40 && LA11_0<=42)) ) {
                     alt11=1;
                 }
 
@@ -2098,7 +2099,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             int alt14=2;
             int LA14_0 = input.LA(1);
 
-            if ( ((LA14_0>=RULE_ID && LA14_0<=RULE_INT)||(LA14_0>=25 && LA14_0<=26)||(LA14_0>=35 && LA14_0<=37)||(LA14_0>=42 && LA14_0<=44)) ) {
+            if ( ((LA14_0>=RULE_ID && LA14_0<=RULE_INT)||(LA14_0>=25 && LA14_0<=26)||(LA14_0>=35 && LA14_0<=37)||(LA14_0>=43 && LA14_0<=45)) ) {
                 alt14=1;
             }
             switch (alt14) {
@@ -3860,7 +3861,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             if ( (LA21_0==31) ) {
                 alt21=1;
             }
-            else if ( (LA21_0==23||(LA21_0>=53 && LA21_0<=54)) ) {
+            else if ( (LA21_0==23||(LA21_0>=54 && LA21_0<=55)) ) {
                 alt21=2;
             }
             switch (alt21) {
@@ -4066,7 +4067,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             int alt22=2;
             int LA22_0 = input.LA(1);
 
-            if ( ((LA22_0>=53 && LA22_0<=54)) ) {
+            if ( ((LA22_0>=54 && LA22_0<=55)) ) {
                 alt22=1;
             }
             switch (alt22) {
@@ -5651,7 +5652,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             int alt34=2;
             int LA34_0 = input.LA(1);
 
-            if ( ((LA34_0>=55 && LA34_0<=56)) ) {
+            if ( ((LA34_0>=56 && LA34_0<=57)) ) {
                 alt34=1;
             }
             switch (alt34) {
@@ -5860,7 +5861,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             int alt35=2;
             int LA35_0 = input.LA(1);
 
-            if ( ((LA35_0>=57 && LA35_0<=63)) ) {
+            if ( ((LA35_0>=58 && LA35_0<=64)) ) {
                 alt35=1;
             }
             switch (alt35) {
@@ -7570,35 +7571,45 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleInsertionPoint"
-    // InternalAspectLang.g:2700:1: ruleInsertionPoint returns [Enumerator current=null] : ( (enumLiteral_0= 'before' ) | (enumLiteral_1= 'after' ) ) ;
+    // InternalAspectLang.g:2700:1: ruleInsertionPoint returns [Enumerator current=null] : ( (enumLiteral_0= 'before' ) | (enumLiteral_1= 'after' ) | (enumLiteral_2= 'exception' ) ) ;
     public final Enumerator ruleInsertionPoint() throws RecognitionException {
         Enumerator current = null;
 
         Token enumLiteral_0=null;
         Token enumLiteral_1=null;
+        Token enumLiteral_2=null;
 
          enterRule(); 
         try {
-            // InternalAspectLang.g:2702:28: ( ( (enumLiteral_0= 'before' ) | (enumLiteral_1= 'after' ) ) )
-            // InternalAspectLang.g:2703:1: ( (enumLiteral_0= 'before' ) | (enumLiteral_1= 'after' ) )
+            // InternalAspectLang.g:2702:28: ( ( (enumLiteral_0= 'before' ) | (enumLiteral_1= 'after' ) | (enumLiteral_2= 'exception' ) ) )
+            // InternalAspectLang.g:2703:1: ( (enumLiteral_0= 'before' ) | (enumLiteral_1= 'after' ) | (enumLiteral_2= 'exception' ) )
             {
-            // InternalAspectLang.g:2703:1: ( (enumLiteral_0= 'before' ) | (enumLiteral_1= 'after' ) )
-            int alt43=2;
-            int LA43_0 = input.LA(1);
-
-            if ( (LA43_0==40) ) {
+            // InternalAspectLang.g:2703:1: ( (enumLiteral_0= 'before' ) | (enumLiteral_1= 'after' ) | (enumLiteral_2= 'exception' ) )
+            int alt43=3;
+            switch ( input.LA(1) ) {
+            case 40:
+                {
                 alt43=1;
-            }
-            else if ( (LA43_0==41) ) {
+                }
+                break;
+            case 41:
+                {
                 alt43=2;
-            }
-            else {
+                }
+                break;
+            case 42:
+                {
+                alt43=3;
+                }
+                break;
+            default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
                     new NoViableAltException("", 43, 0, input);
 
                 throw nvae;
             }
+
             switch (alt43) {
                 case 1 :
                     // InternalAspectLang.g:2703:2: (enumLiteral_0= 'before' )
@@ -7638,6 +7649,25 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
                     }
                     break;
+                case 3 :
+                    // InternalAspectLang.g:2715:6: (enumLiteral_2= 'exception' )
+                    {
+                    // InternalAspectLang.g:2715:6: (enumLiteral_2= 'exception' )
+                    // InternalAspectLang.g:2715:8: enumLiteral_2= 'exception'
+                    {
+                    enumLiteral_2=(Token)match(input,42,FOLLOW_2); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current = grammarAccess.getInsertionPointAccess().getAFTER_EXCEPTIONEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+                              newLeafNode(enumLiteral_2, grammarAccess.getInsertionPointAccess().getAFTER_EXCEPTIONEnumLiteralDeclaration_2()); 
+                          
+                    }
+
+                    }
+
+
+                    }
+                    break;
 
             }
 
@@ -7661,7 +7691,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleInternalFunction"
-    // InternalAspectLang.g:2719:1: ruleInternalFunction returns [Enumerator current=null] : ( (enumLiteral_0= 'time' ) | (enumLiteral_1= 'traceId' ) | (enumLiteral_2= 'orderIndex' ) ) ;
+    // InternalAspectLang.g:2725:1: ruleInternalFunction returns [Enumerator current=null] : ( (enumLiteral_0= 'time' ) | (enumLiteral_1= 'traceId' ) | (enumLiteral_2= 'orderIndex' ) ) ;
     public final Enumerator ruleInternalFunction() throws RecognitionException {
         Enumerator current = null;
 
@@ -7671,23 +7701,23 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // InternalAspectLang.g:2721:28: ( ( (enumLiteral_0= 'time' ) | (enumLiteral_1= 'traceId' ) | (enumLiteral_2= 'orderIndex' ) ) )
-            // InternalAspectLang.g:2722:1: ( (enumLiteral_0= 'time' ) | (enumLiteral_1= 'traceId' ) | (enumLiteral_2= 'orderIndex' ) )
+            // InternalAspectLang.g:2727:28: ( ( (enumLiteral_0= 'time' ) | (enumLiteral_1= 'traceId' ) | (enumLiteral_2= 'orderIndex' ) ) )
+            // InternalAspectLang.g:2728:1: ( (enumLiteral_0= 'time' ) | (enumLiteral_1= 'traceId' ) | (enumLiteral_2= 'orderIndex' ) )
             {
-            // InternalAspectLang.g:2722:1: ( (enumLiteral_0= 'time' ) | (enumLiteral_1= 'traceId' ) | (enumLiteral_2= 'orderIndex' ) )
+            // InternalAspectLang.g:2728:1: ( (enumLiteral_0= 'time' ) | (enumLiteral_1= 'traceId' ) | (enumLiteral_2= 'orderIndex' ) )
             int alt44=3;
             switch ( input.LA(1) ) {
-            case 42:
+            case 43:
                 {
                 alt44=1;
                 }
                 break;
-            case 43:
+            case 44:
                 {
                 alt44=2;
                 }
                 break;
-            case 44:
+            case 45:
                 {
                 alt44=3;
                 }
@@ -7702,12 +7732,12 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
             switch (alt44) {
                 case 1 :
-                    // InternalAspectLang.g:2722:2: (enumLiteral_0= 'time' )
+                    // InternalAspectLang.g:2728:2: (enumLiteral_0= 'time' )
                     {
-                    // InternalAspectLang.g:2722:2: (enumLiteral_0= 'time' )
-                    // InternalAspectLang.g:2722:4: enumLiteral_0= 'time'
+                    // InternalAspectLang.g:2728:2: (enumLiteral_0= 'time' )
+                    // InternalAspectLang.g:2728:4: enumLiteral_0= 'time'
                     {
-                    enumLiteral_0=(Token)match(input,42,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_0=(Token)match(input,43,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getInternalFunctionAccess().getTIMEEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
@@ -7721,12 +7751,12 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalAspectLang.g:2728:6: (enumLiteral_1= 'traceId' )
+                    // InternalAspectLang.g:2734:6: (enumLiteral_1= 'traceId' )
                     {
-                    // InternalAspectLang.g:2728:6: (enumLiteral_1= 'traceId' )
-                    // InternalAspectLang.g:2728:8: enumLiteral_1= 'traceId'
+                    // InternalAspectLang.g:2734:6: (enumLiteral_1= 'traceId' )
+                    // InternalAspectLang.g:2734:8: enumLiteral_1= 'traceId'
                     {
-                    enumLiteral_1=(Token)match(input,43,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_1=(Token)match(input,44,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getInternalFunctionAccess().getTRACE_IDEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
@@ -7740,12 +7770,12 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalAspectLang.g:2734:6: (enumLiteral_2= 'orderIndex' )
+                    // InternalAspectLang.g:2740:6: (enumLiteral_2= 'orderIndex' )
                     {
-                    // InternalAspectLang.g:2734:6: (enumLiteral_2= 'orderIndex' )
-                    // InternalAspectLang.g:2734:8: enumLiteral_2= 'orderIndex'
+                    // InternalAspectLang.g:2740:6: (enumLiteral_2= 'orderIndex' )
+                    // InternalAspectLang.g:2740:8: enumLiteral_2= 'orderIndex'
                     {
-                    enumLiteral_2=(Token)match(input,44,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_2=(Token)match(input,45,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getInternalFunctionAccess().getORDER_INDEXEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
@@ -7781,7 +7811,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleReflectionFunction"
-    // InternalAspectLang.g:2744:1: ruleReflectionFunction returns [Enumerator current=null] : ( (enumLiteral_0= 'name' ) | (enumLiteral_1= 'signature' ) | (enumLiteral_2= 'classname' ) | (enumLiteral_3= 'return-type' ) ) ;
+    // InternalAspectLang.g:2750:1: ruleReflectionFunction returns [Enumerator current=null] : ( (enumLiteral_0= 'name' ) | (enumLiteral_1= 'signature' ) | (enumLiteral_2= 'classname' ) | (enumLiteral_3= 'return-type' ) ) ;
     public final Enumerator ruleReflectionFunction() throws RecognitionException {
         Enumerator current = null;
 
@@ -7792,28 +7822,28 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // InternalAspectLang.g:2746:28: ( ( (enumLiteral_0= 'name' ) | (enumLiteral_1= 'signature' ) | (enumLiteral_2= 'classname' ) | (enumLiteral_3= 'return-type' ) ) )
-            // InternalAspectLang.g:2747:1: ( (enumLiteral_0= 'name' ) | (enumLiteral_1= 'signature' ) | (enumLiteral_2= 'classname' ) | (enumLiteral_3= 'return-type' ) )
+            // InternalAspectLang.g:2752:28: ( ( (enumLiteral_0= 'name' ) | (enumLiteral_1= 'signature' ) | (enumLiteral_2= 'classname' ) | (enumLiteral_3= 'return-type' ) ) )
+            // InternalAspectLang.g:2753:1: ( (enumLiteral_0= 'name' ) | (enumLiteral_1= 'signature' ) | (enumLiteral_2= 'classname' ) | (enumLiteral_3= 'return-type' ) )
             {
-            // InternalAspectLang.g:2747:1: ( (enumLiteral_0= 'name' ) | (enumLiteral_1= 'signature' ) | (enumLiteral_2= 'classname' ) | (enumLiteral_3= 'return-type' ) )
+            // InternalAspectLang.g:2753:1: ( (enumLiteral_0= 'name' ) | (enumLiteral_1= 'signature' ) | (enumLiteral_2= 'classname' ) | (enumLiteral_3= 'return-type' ) )
             int alt45=4;
             switch ( input.LA(1) ) {
-            case 45:
+            case 46:
                 {
                 alt45=1;
                 }
                 break;
-            case 46:
+            case 47:
                 {
                 alt45=2;
                 }
                 break;
-            case 47:
+            case 48:
                 {
                 alt45=3;
                 }
                 break;
-            case 48:
+            case 49:
                 {
                 alt45=4;
                 }
@@ -7828,12 +7858,12 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
             switch (alt45) {
                 case 1 :
-                    // InternalAspectLang.g:2747:2: (enumLiteral_0= 'name' )
+                    // InternalAspectLang.g:2753:2: (enumLiteral_0= 'name' )
                     {
-                    // InternalAspectLang.g:2747:2: (enumLiteral_0= 'name' )
-                    // InternalAspectLang.g:2747:4: enumLiteral_0= 'name'
+                    // InternalAspectLang.g:2753:2: (enumLiteral_0= 'name' )
+                    // InternalAspectLang.g:2753:4: enumLiteral_0= 'name'
                     {
-                    enumLiteral_0=(Token)match(input,45,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_0=(Token)match(input,46,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getReflectionFunctionAccess().getNAMEEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
@@ -7847,12 +7877,12 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalAspectLang.g:2753:6: (enumLiteral_1= 'signature' )
+                    // InternalAspectLang.g:2759:6: (enumLiteral_1= 'signature' )
                     {
-                    // InternalAspectLang.g:2753:6: (enumLiteral_1= 'signature' )
-                    // InternalAspectLang.g:2753:8: enumLiteral_1= 'signature'
+                    // InternalAspectLang.g:2759:6: (enumLiteral_1= 'signature' )
+                    // InternalAspectLang.g:2759:8: enumLiteral_1= 'signature'
                     {
-                    enumLiteral_1=(Token)match(input,46,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_1=(Token)match(input,47,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getReflectionFunctionAccess().getSIGNATUREEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
@@ -7866,12 +7896,12 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalAspectLang.g:2759:6: (enumLiteral_2= 'classname' )
+                    // InternalAspectLang.g:2765:6: (enumLiteral_2= 'classname' )
                     {
-                    // InternalAspectLang.g:2759:6: (enumLiteral_2= 'classname' )
-                    // InternalAspectLang.g:2759:8: enumLiteral_2= 'classname'
+                    // InternalAspectLang.g:2765:6: (enumLiteral_2= 'classname' )
+                    // InternalAspectLang.g:2765:8: enumLiteral_2= 'classname'
                     {
-                    enumLiteral_2=(Token)match(input,47,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_2=(Token)match(input,48,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getReflectionFunctionAccess().getCLASSEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
@@ -7885,12 +7915,12 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalAspectLang.g:2765:6: (enumLiteral_3= 'return-type' )
+                    // InternalAspectLang.g:2771:6: (enumLiteral_3= 'return-type' )
                     {
-                    // InternalAspectLang.g:2765:6: (enumLiteral_3= 'return-type' )
-                    // InternalAspectLang.g:2765:8: enumLiteral_3= 'return-type'
+                    // InternalAspectLang.g:2771:6: (enumLiteral_3= 'return-type' )
+                    // InternalAspectLang.g:2771:8: enumLiteral_3= 'return-type'
                     {
-                    enumLiteral_3=(Token)match(input,48,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_3=(Token)match(input,49,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getReflectionFunctionAccess().getRETURN_TYPEEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
@@ -7926,7 +7956,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTechnology"
-    // InternalAspectLang.g:2775:1: ruleTechnology returns [Enumerator current=null] : ( (enumLiteral_0= 'javaee' ) | (enumLiteral_1= 'servlet' ) | (enumLiteral_2= 'spring' ) | (enumLiteral_3= 'aspectj' ) ) ;
+    // InternalAspectLang.g:2781:1: ruleTechnology returns [Enumerator current=null] : ( (enumLiteral_0= 'javaee' ) | (enumLiteral_1= 'servlet' ) | (enumLiteral_2= 'spring' ) | (enumLiteral_3= 'aspectj' ) ) ;
     public final Enumerator ruleTechnology() throws RecognitionException {
         Enumerator current = null;
 
@@ -7937,28 +7967,28 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // InternalAspectLang.g:2777:28: ( ( (enumLiteral_0= 'javaee' ) | (enumLiteral_1= 'servlet' ) | (enumLiteral_2= 'spring' ) | (enumLiteral_3= 'aspectj' ) ) )
-            // InternalAspectLang.g:2778:1: ( (enumLiteral_0= 'javaee' ) | (enumLiteral_1= 'servlet' ) | (enumLiteral_2= 'spring' ) | (enumLiteral_3= 'aspectj' ) )
+            // InternalAspectLang.g:2783:28: ( ( (enumLiteral_0= 'javaee' ) | (enumLiteral_1= 'servlet' ) | (enumLiteral_2= 'spring' ) | (enumLiteral_3= 'aspectj' ) ) )
+            // InternalAspectLang.g:2784:1: ( (enumLiteral_0= 'javaee' ) | (enumLiteral_1= 'servlet' ) | (enumLiteral_2= 'spring' ) | (enumLiteral_3= 'aspectj' ) )
             {
-            // InternalAspectLang.g:2778:1: ( (enumLiteral_0= 'javaee' ) | (enumLiteral_1= 'servlet' ) | (enumLiteral_2= 'spring' ) | (enumLiteral_3= 'aspectj' ) )
+            // InternalAspectLang.g:2784:1: ( (enumLiteral_0= 'javaee' ) | (enumLiteral_1= 'servlet' ) | (enumLiteral_2= 'spring' ) | (enumLiteral_3= 'aspectj' ) )
             int alt46=4;
             switch ( input.LA(1) ) {
-            case 49:
+            case 50:
                 {
                 alt46=1;
                 }
                 break;
-            case 50:
+            case 51:
                 {
                 alt46=2;
                 }
                 break;
-            case 51:
+            case 52:
                 {
                 alt46=3;
                 }
                 break;
-            case 52:
+            case 53:
                 {
                 alt46=4;
                 }
@@ -7973,12 +8003,12 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
             switch (alt46) {
                 case 1 :
-                    // InternalAspectLang.g:2778:2: (enumLiteral_0= 'javaee' )
+                    // InternalAspectLang.g:2784:2: (enumLiteral_0= 'javaee' )
                     {
-                    // InternalAspectLang.g:2778:2: (enumLiteral_0= 'javaee' )
-                    // InternalAspectLang.g:2778:4: enumLiteral_0= 'javaee'
+                    // InternalAspectLang.g:2784:2: (enumLiteral_0= 'javaee' )
+                    // InternalAspectLang.g:2784:4: enumLiteral_0= 'javaee'
                     {
-                    enumLiteral_0=(Token)match(input,49,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_0=(Token)match(input,50,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getTechnologyAccess().getJAVA_EEEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
@@ -7992,12 +8022,12 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalAspectLang.g:2784:6: (enumLiteral_1= 'servlet' )
+                    // InternalAspectLang.g:2790:6: (enumLiteral_1= 'servlet' )
                     {
-                    // InternalAspectLang.g:2784:6: (enumLiteral_1= 'servlet' )
-                    // InternalAspectLang.g:2784:8: enumLiteral_1= 'servlet'
+                    // InternalAspectLang.g:2790:6: (enumLiteral_1= 'servlet' )
+                    // InternalAspectLang.g:2790:8: enumLiteral_1= 'servlet'
                     {
-                    enumLiteral_1=(Token)match(input,50,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_1=(Token)match(input,51,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getTechnologyAccess().getSERVLETEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
@@ -8011,12 +8041,12 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalAspectLang.g:2790:6: (enumLiteral_2= 'spring' )
+                    // InternalAspectLang.g:2796:6: (enumLiteral_2= 'spring' )
                     {
-                    // InternalAspectLang.g:2790:6: (enumLiteral_2= 'spring' )
-                    // InternalAspectLang.g:2790:8: enumLiteral_2= 'spring'
+                    // InternalAspectLang.g:2796:6: (enumLiteral_2= 'spring' )
+                    // InternalAspectLang.g:2796:8: enumLiteral_2= 'spring'
                     {
-                    enumLiteral_2=(Token)match(input,51,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_2=(Token)match(input,52,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getTechnologyAccess().getSPRINGEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
@@ -8030,12 +8060,12 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalAspectLang.g:2796:6: (enumLiteral_3= 'aspectj' )
+                    // InternalAspectLang.g:2802:6: (enumLiteral_3= 'aspectj' )
                     {
-                    // InternalAspectLang.g:2796:6: (enumLiteral_3= 'aspectj' )
-                    // InternalAspectLang.g:2796:8: enumLiteral_3= 'aspectj'
+                    // InternalAspectLang.g:2802:6: (enumLiteral_3= 'aspectj' )
+                    // InternalAspectLang.g:2802:8: enumLiteral_3= 'aspectj'
                     {
-                    enumLiteral_3=(Token)match(input,52,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_3=(Token)match(input,53,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getTechnologyAccess().getASPECT_JEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
@@ -8071,7 +8101,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleQueryModifier"
-    // InternalAspectLang.g:2806:1: ruleQueryModifier returns [Enumerator current=null] : ( (enumLiteral_0= 'include' ) | (enumLiteral_1= 'exclude' ) ) ;
+    // InternalAspectLang.g:2812:1: ruleQueryModifier returns [Enumerator current=null] : ( (enumLiteral_0= 'include' ) | (enumLiteral_1= 'exclude' ) ) ;
     public final Enumerator ruleQueryModifier() throws RecognitionException {
         Enumerator current = null;
 
@@ -8080,17 +8110,17 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // InternalAspectLang.g:2808:28: ( ( (enumLiteral_0= 'include' ) | (enumLiteral_1= 'exclude' ) ) )
-            // InternalAspectLang.g:2809:1: ( (enumLiteral_0= 'include' ) | (enumLiteral_1= 'exclude' ) )
+            // InternalAspectLang.g:2814:28: ( ( (enumLiteral_0= 'include' ) | (enumLiteral_1= 'exclude' ) ) )
+            // InternalAspectLang.g:2815:1: ( (enumLiteral_0= 'include' ) | (enumLiteral_1= 'exclude' ) )
             {
-            // InternalAspectLang.g:2809:1: ( (enumLiteral_0= 'include' ) | (enumLiteral_1= 'exclude' ) )
+            // InternalAspectLang.g:2815:1: ( (enumLiteral_0= 'include' ) | (enumLiteral_1= 'exclude' ) )
             int alt47=2;
             int LA47_0 = input.LA(1);
 
-            if ( (LA47_0==53) ) {
+            if ( (LA47_0==54) ) {
                 alt47=1;
             }
-            else if ( (LA47_0==54) ) {
+            else if ( (LA47_0==55) ) {
                 alt47=2;
             }
             else {
@@ -8102,12 +8132,12 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             }
             switch (alt47) {
                 case 1 :
-                    // InternalAspectLang.g:2809:2: (enumLiteral_0= 'include' )
+                    // InternalAspectLang.g:2815:2: (enumLiteral_0= 'include' )
                     {
-                    // InternalAspectLang.g:2809:2: (enumLiteral_0= 'include' )
-                    // InternalAspectLang.g:2809:4: enumLiteral_0= 'include'
+                    // InternalAspectLang.g:2815:2: (enumLiteral_0= 'include' )
+                    // InternalAspectLang.g:2815:4: enumLiteral_0= 'include'
                     {
-                    enumLiteral_0=(Token)match(input,53,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_0=(Token)match(input,54,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getQueryModifierAccess().getINCLUDEEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
@@ -8121,12 +8151,12 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalAspectLang.g:2815:6: (enumLiteral_1= 'exclude' )
+                    // InternalAspectLang.g:2821:6: (enumLiteral_1= 'exclude' )
                     {
-                    // InternalAspectLang.g:2815:6: (enumLiteral_1= 'exclude' )
-                    // InternalAspectLang.g:2815:8: enumLiteral_1= 'exclude'
+                    // InternalAspectLang.g:2821:6: (enumLiteral_1= 'exclude' )
+                    // InternalAspectLang.g:2821:8: enumLiteral_1= 'exclude'
                     {
-                    enumLiteral_1=(Token)match(input,54,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_1=(Token)match(input,55,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getQueryModifierAccess().getEXCLUDEEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
@@ -8162,7 +8192,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLogicOperator"
-    // InternalAspectLang.g:2825:1: ruleLogicOperator returns [Enumerator current=null] : ( (enumLiteral_0= '&&' ) | (enumLiteral_1= '||' ) ) ;
+    // InternalAspectLang.g:2831:1: ruleLogicOperator returns [Enumerator current=null] : ( (enumLiteral_0= '&&' ) | (enumLiteral_1= '||' ) ) ;
     public final Enumerator ruleLogicOperator() throws RecognitionException {
         Enumerator current = null;
 
@@ -8171,17 +8201,17 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // InternalAspectLang.g:2827:28: ( ( (enumLiteral_0= '&&' ) | (enumLiteral_1= '||' ) ) )
-            // InternalAspectLang.g:2828:1: ( (enumLiteral_0= '&&' ) | (enumLiteral_1= '||' ) )
+            // InternalAspectLang.g:2833:28: ( ( (enumLiteral_0= '&&' ) | (enumLiteral_1= '||' ) ) )
+            // InternalAspectLang.g:2834:1: ( (enumLiteral_0= '&&' ) | (enumLiteral_1= '||' ) )
             {
-            // InternalAspectLang.g:2828:1: ( (enumLiteral_0= '&&' ) | (enumLiteral_1= '||' ) )
+            // InternalAspectLang.g:2834:1: ( (enumLiteral_0= '&&' ) | (enumLiteral_1= '||' ) )
             int alt48=2;
             int LA48_0 = input.LA(1);
 
-            if ( (LA48_0==55) ) {
+            if ( (LA48_0==56) ) {
                 alt48=1;
             }
-            else if ( (LA48_0==56) ) {
+            else if ( (LA48_0==57) ) {
                 alt48=2;
             }
             else {
@@ -8193,12 +8223,12 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             }
             switch (alt48) {
                 case 1 :
-                    // InternalAspectLang.g:2828:2: (enumLiteral_0= '&&' )
+                    // InternalAspectLang.g:2834:2: (enumLiteral_0= '&&' )
                     {
-                    // InternalAspectLang.g:2828:2: (enumLiteral_0= '&&' )
-                    // InternalAspectLang.g:2828:4: enumLiteral_0= '&&'
+                    // InternalAspectLang.g:2834:2: (enumLiteral_0= '&&' )
+                    // InternalAspectLang.g:2834:4: enumLiteral_0= '&&'
                     {
-                    enumLiteral_0=(Token)match(input,55,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_0=(Token)match(input,56,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getLogicOperatorAccess().getANDEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
@@ -8212,12 +8242,12 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalAspectLang.g:2834:6: (enumLiteral_1= '||' )
+                    // InternalAspectLang.g:2840:6: (enumLiteral_1= '||' )
                     {
-                    // InternalAspectLang.g:2834:6: (enumLiteral_1= '||' )
-                    // InternalAspectLang.g:2834:8: enumLiteral_1= '||'
+                    // InternalAspectLang.g:2840:6: (enumLiteral_1= '||' )
+                    // InternalAspectLang.g:2840:8: enumLiteral_1= '||'
                     {
-                    enumLiteral_1=(Token)match(input,56,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_1=(Token)match(input,57,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getLogicOperatorAccess().getOREnumLiteralDeclaration_1().getEnumLiteral().getInstance();
@@ -8253,7 +8283,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCompareOperator"
-    // InternalAspectLang.g:2844:1: ruleCompareOperator returns [Enumerator current=null] : ( (enumLiteral_0= '=' ) | (enumLiteral_1= '~' ) | (enumLiteral_2= '!=' ) | (enumLiteral_3= '>' ) | (enumLiteral_4= '<' ) | (enumLiteral_5= '>=' ) | (enumLiteral_6= '<=' ) ) ;
+    // InternalAspectLang.g:2850:1: ruleCompareOperator returns [Enumerator current=null] : ( (enumLiteral_0= '=' ) | (enumLiteral_1= '~' ) | (enumLiteral_2= '!=' ) | (enumLiteral_3= '>' ) | (enumLiteral_4= '<' ) | (enumLiteral_5= '>=' ) | (enumLiteral_6= '<=' ) ) ;
     public final Enumerator ruleCompareOperator() throws RecognitionException {
         Enumerator current = null;
 
@@ -8267,43 +8297,43 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
          enterRule(); 
         try {
-            // InternalAspectLang.g:2846:28: ( ( (enumLiteral_0= '=' ) | (enumLiteral_1= '~' ) | (enumLiteral_2= '!=' ) | (enumLiteral_3= '>' ) | (enumLiteral_4= '<' ) | (enumLiteral_5= '>=' ) | (enumLiteral_6= '<=' ) ) )
-            // InternalAspectLang.g:2847:1: ( (enumLiteral_0= '=' ) | (enumLiteral_1= '~' ) | (enumLiteral_2= '!=' ) | (enumLiteral_3= '>' ) | (enumLiteral_4= '<' ) | (enumLiteral_5= '>=' ) | (enumLiteral_6= '<=' ) )
+            // InternalAspectLang.g:2852:28: ( ( (enumLiteral_0= '=' ) | (enumLiteral_1= '~' ) | (enumLiteral_2= '!=' ) | (enumLiteral_3= '>' ) | (enumLiteral_4= '<' ) | (enumLiteral_5= '>=' ) | (enumLiteral_6= '<=' ) ) )
+            // InternalAspectLang.g:2853:1: ( (enumLiteral_0= '=' ) | (enumLiteral_1= '~' ) | (enumLiteral_2= '!=' ) | (enumLiteral_3= '>' ) | (enumLiteral_4= '<' ) | (enumLiteral_5= '>=' ) | (enumLiteral_6= '<=' ) )
             {
-            // InternalAspectLang.g:2847:1: ( (enumLiteral_0= '=' ) | (enumLiteral_1= '~' ) | (enumLiteral_2= '!=' ) | (enumLiteral_3= '>' ) | (enumLiteral_4= '<' ) | (enumLiteral_5= '>=' ) | (enumLiteral_6= '<=' ) )
+            // InternalAspectLang.g:2853:1: ( (enumLiteral_0= '=' ) | (enumLiteral_1= '~' ) | (enumLiteral_2= '!=' ) | (enumLiteral_3= '>' ) | (enumLiteral_4= '<' ) | (enumLiteral_5= '>=' ) | (enumLiteral_6= '<=' ) )
             int alt49=7;
             switch ( input.LA(1) ) {
-            case 57:
+            case 58:
                 {
                 alt49=1;
                 }
                 break;
-            case 58:
+            case 59:
                 {
                 alt49=2;
                 }
                 break;
-            case 59:
+            case 60:
                 {
                 alt49=3;
                 }
                 break;
-            case 60:
+            case 61:
                 {
                 alt49=4;
                 }
                 break;
-            case 61:
+            case 62:
                 {
                 alt49=5;
                 }
                 break;
-            case 62:
+            case 63:
                 {
                 alt49=6;
                 }
                 break;
-            case 63:
+            case 64:
                 {
                 alt49=7;
                 }
@@ -8318,12 +8348,12 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
 
             switch (alt49) {
                 case 1 :
-                    // InternalAspectLang.g:2847:2: (enumLiteral_0= '=' )
+                    // InternalAspectLang.g:2853:2: (enumLiteral_0= '=' )
                     {
-                    // InternalAspectLang.g:2847:2: (enumLiteral_0= '=' )
-                    // InternalAspectLang.g:2847:4: enumLiteral_0= '='
+                    // InternalAspectLang.g:2853:2: (enumLiteral_0= '=' )
+                    // InternalAspectLang.g:2853:4: enumLiteral_0= '='
                     {
-                    enumLiteral_0=(Token)match(input,57,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_0=(Token)match(input,58,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getCompareOperatorAccess().getEQEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
@@ -8337,12 +8367,12 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalAspectLang.g:2853:6: (enumLiteral_1= '~' )
+                    // InternalAspectLang.g:2859:6: (enumLiteral_1= '~' )
                     {
-                    // InternalAspectLang.g:2853:6: (enumLiteral_1= '~' )
-                    // InternalAspectLang.g:2853:8: enumLiteral_1= '~'
+                    // InternalAspectLang.g:2859:6: (enumLiteral_1= '~' )
+                    // InternalAspectLang.g:2859:8: enumLiteral_1= '~'
                     {
-                    enumLiteral_1=(Token)match(input,58,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_1=(Token)match(input,59,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getCompareOperatorAccess().getLIKEEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
@@ -8356,12 +8386,12 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalAspectLang.g:2859:6: (enumLiteral_2= '!=' )
+                    // InternalAspectLang.g:2865:6: (enumLiteral_2= '!=' )
                     {
-                    // InternalAspectLang.g:2859:6: (enumLiteral_2= '!=' )
-                    // InternalAspectLang.g:2859:8: enumLiteral_2= '!='
+                    // InternalAspectLang.g:2865:6: (enumLiteral_2= '!=' )
+                    // InternalAspectLang.g:2865:8: enumLiteral_2= '!='
                     {
-                    enumLiteral_2=(Token)match(input,59,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_2=(Token)match(input,60,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getCompareOperatorAccess().getNEEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
@@ -8375,12 +8405,12 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalAspectLang.g:2865:6: (enumLiteral_3= '>' )
+                    // InternalAspectLang.g:2871:6: (enumLiteral_3= '>' )
                     {
-                    // InternalAspectLang.g:2865:6: (enumLiteral_3= '>' )
-                    // InternalAspectLang.g:2865:8: enumLiteral_3= '>'
+                    // InternalAspectLang.g:2871:6: (enumLiteral_3= '>' )
+                    // InternalAspectLang.g:2871:8: enumLiteral_3= '>'
                     {
-                    enumLiteral_3=(Token)match(input,60,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_3=(Token)match(input,61,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getCompareOperatorAccess().getGREnumLiteralDeclaration_3().getEnumLiteral().getInstance();
@@ -8394,12 +8424,12 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // InternalAspectLang.g:2871:6: (enumLiteral_4= '<' )
+                    // InternalAspectLang.g:2877:6: (enumLiteral_4= '<' )
                     {
-                    // InternalAspectLang.g:2871:6: (enumLiteral_4= '<' )
-                    // InternalAspectLang.g:2871:8: enumLiteral_4= '<'
+                    // InternalAspectLang.g:2877:6: (enumLiteral_4= '<' )
+                    // InternalAspectLang.g:2877:8: enumLiteral_4= '<'
                     {
-                    enumLiteral_4=(Token)match(input,61,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_4=(Token)match(input,62,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getCompareOperatorAccess().getLWEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
@@ -8413,12 +8443,12 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // InternalAspectLang.g:2877:6: (enumLiteral_5= '>=' )
+                    // InternalAspectLang.g:2883:6: (enumLiteral_5= '>=' )
                     {
-                    // InternalAspectLang.g:2877:6: (enumLiteral_5= '>=' )
-                    // InternalAspectLang.g:2877:8: enumLiteral_5= '>='
+                    // InternalAspectLang.g:2883:6: (enumLiteral_5= '>=' )
+                    // InternalAspectLang.g:2883:8: enumLiteral_5= '>='
                     {
-                    enumLiteral_5=(Token)match(input,62,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_5=(Token)match(input,63,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getCompareOperatorAccess().getGEEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
@@ -8432,12 +8462,12 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // InternalAspectLang.g:2883:6: (enumLiteral_6= '<=' )
+                    // InternalAspectLang.g:2889:6: (enumLiteral_6= '<=' )
                     {
-                    // InternalAspectLang.g:2883:6: (enumLiteral_6= '<=' )
-                    // InternalAspectLang.g:2883:8: enumLiteral_6= '<='
+                    // InternalAspectLang.g:2889:6: (enumLiteral_6= '<=' )
+                    // InternalAspectLang.g:2889:8: enumLiteral_6= '<='
                     {
-                    enumLiteral_6=(Token)match(input,63,FOLLOW_2); if (state.failed) return current;
+                    enumLiteral_6=(Token)match(input,64,FOLLOW_2); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current = grammarAccess.getCompareOperatorAccess().getLEEnumLiteralDeclaration_6().getEnumLiteral().getInstance();
@@ -8515,11 +8545,11 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
     protected DFA15 dfa15 = new DFA15(this);
     static final String dfa_1s = "\16\uffff";
     static final String dfa_2s = "\1\4\6\uffff\1\0\6\uffff";
-    static final String dfa_3s = "\1\54\6\uffff\1\0\6\uffff";
+    static final String dfa_3s = "\1\55\6\uffff\1\0\6\uffff";
     static final String dfa_4s = "\1\uffff\1\1\2\uffff\1\2\5\uffff\1\3\2\uffff\1\4";
     static final String dfa_5s = "\7\uffff\1\0\6\uffff}>";
     static final String[] dfa_6s = {
-            "\1\7\3\1\21\uffff\2\4\10\uffff\3\4\4\uffff\3\12",
+            "\1\7\3\1\21\uffff\2\4\10\uffff\3\4\5\uffff\3\12",
             "",
             "",
             "",
@@ -8598,17 +8628,17 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000040000L});
     public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000080002L});
     public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000100002L});
-    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x00001C38062000F0L});
+    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x00003838062000F0L});
     public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000280000L});
-    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x00001C38060000F0L});
+    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x00003838060000F0L});
     public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000000900000L});
     public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000000200010L});
     public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000030001000000L});
+    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000070001000000L});
     public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000000000012L});
     public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000000100000L});
     public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000003806000010L});
-    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0001E00000000000L});
+    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0003C00000000000L});
     public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000008000002L});
     public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000010000000L});
     public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000020000000L});
@@ -8618,13 +8648,13 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000000100000002L});
     public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0000000800000010L});
     public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x001E000000000000L});
+    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x003C000000000000L});
     public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0000000000080000L});
-    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0060000080800002L});
+    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x00C0000080800002L});
     public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0000003801000010L});
     public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x00000078040000F0L});
-    public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x0180000000000002L});
-    public static final BitSet FOLLOW_38 = new BitSet(new long[]{0xFE00000000000002L});
+    public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x0300000000000002L});
+    public static final BitSet FOLLOW_38 = new BitSet(new long[]{0xFC00000000000002L,0x0000000000000001L});
     public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x0000000000200000L});
     public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x0000008000000002L});
     public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x0000000080000002L});

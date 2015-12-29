@@ -2711,6 +2711,12 @@ ruleInsertionPoint returns [Enumerator current=null]
         $current = grammarAccess.getInsertionPointAccess().getAFTEREnumLiteralDeclaration_1().getEnumLiteral().getInstance();
         newLeafNode(enumLiteral_1, grammarAccess.getInsertionPointAccess().getAFTEREnumLiteralDeclaration_1()); 
     }
+)
+    |(	enumLiteral_2='exception' 
+	{
+        $current = grammarAccess.getInsertionPointAccess().getAFTER_EXCEPTIONEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_2, grammarAccess.getInsertionPointAccess().getAFTER_EXCEPTIONEnumLiteralDeclaration_2()); 
+    }
 ));
 
 

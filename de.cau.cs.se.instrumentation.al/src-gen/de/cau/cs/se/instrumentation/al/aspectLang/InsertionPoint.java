@@ -37,7 +37,17 @@ public enum InsertionPoint implements Enumerator
    * @generated
    * @ordered
    */
-  AFTER(1, "AFTER", "after");
+  AFTER(1, "AFTER", "after"),
+
+  /**
+   * The '<em><b>AFTER EXCEPTION</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #AFTER_EXCEPTION_VALUE
+   * @generated
+   * @ordered
+   */
+  AFTER_EXCEPTION(2, "AFTER_EXCEPTION", "exception");
 
   /**
    * The '<em><b>BEFORE</b></em>' literal value.
@@ -70,6 +80,21 @@ public enum InsertionPoint implements Enumerator
   public static final int AFTER_VALUE = 1;
 
   /**
+   * The '<em><b>AFTER EXCEPTION</b></em>' literal value.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of '<em><b>AFTER EXCEPTION</b></em>' literal object isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @see #AFTER_EXCEPTION
+   * @model literal="exception"
+   * @generated
+   * @ordered
+   */
+  public static final int AFTER_EXCEPTION_VALUE = 2;
+
+  /**
    * An array of all the '<em><b>Insertion Point</b></em>' enumerators.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -80,6 +105,7 @@ public enum InsertionPoint implements Enumerator
     {
       BEFORE,
       AFTER,
+      AFTER_EXCEPTION,
     };
 
   /**
@@ -146,6 +172,7 @@ public enum InsertionPoint implements Enumerator
     {
       case BEFORE_VALUE: return BEFORE;
       case AFTER_VALUE: return AFTER;
+      case AFTER_EXCEPTION_VALUE: return AFTER_EXCEPTION;
     }
     return null;
   }

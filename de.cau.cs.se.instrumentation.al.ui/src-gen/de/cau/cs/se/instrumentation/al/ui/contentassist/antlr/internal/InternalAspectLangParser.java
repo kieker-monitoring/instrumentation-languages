@@ -23,7 +23,7 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalAspectLangParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_FLOAT", "RULE_INT", "RULE_NUMBER", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'*'", "'before'", "'after'", "'time'", "'traceId'", "'orderIndex'", "'name'", "'signature'", "'classname'", "'return-type'", "'javaee'", "'servlet'", "'spring'", "'aspectj'", "'include'", "'exclude'", "'&&'", "'||'", "'='", "'~'", "'!='", "'>'", "'<'", "'>='", "'<='", "'package'", "'import'", "'use'", "'on'", "'aspect'", "':'", "','", "'('", "')'", "'advice'", "'{'", "'}'", "'$'", "'#'", "'['", "']'", "'pointcut'", "'class'", "'.'", "'operation'", "'@'", "'**'", "'up'", "'istypeof'", "'technology'", "'[]'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_FLOAT", "RULE_INT", "RULE_NUMBER", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'*'", "'before'", "'after'", "'exception'", "'time'", "'traceId'", "'orderIndex'", "'name'", "'signature'", "'classname'", "'return-type'", "'javaee'", "'servlet'", "'spring'", "'aspectj'", "'include'", "'exclude'", "'&&'", "'||'", "'='", "'~'", "'!='", "'>'", "'<'", "'>='", "'<='", "'package'", "'import'", "'use'", "'on'", "'aspect'", "':'", "','", "'('", "')'", "'advice'", "'{'", "'}'", "'$'", "'#'", "'['", "']'", "'pointcut'", "'class'", "'.'", "'operation'", "'@'", "'**'", "'up'", "'istypeof'", "'technology'", "'[]'"
     };
     public static final int T__50=50;
     public static final int T__19=19;
@@ -58,6 +58,7 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
     public static final int T__62=62;
     public static final int T__63=63;
     public static final int T__20=20;
+    public static final int T__64=64;
     public static final int T__21=21;
     public static final int RULE_STRING=5;
     public static final int RULE_SL_COMMENT=10;
@@ -3891,18 +3892,18 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
             // InternalAspectLang.g:1318:1: ( ( ( rule__AspectModel__AdvicesAssignment_4_0 ) ) | ( ( rule__AspectModel__PointcutsAssignment_4_1 ) ) | ( ( rule__AspectModel__AspectsAssignment_4_2 ) ) )
             int alt1=3;
             switch ( input.LA(1) ) {
-            case 47:
+            case 48:
                 {
                 alt1=1;
                 }
                 break;
-            case 54:
-            case 58:
+            case 55:
+            case 59:
                 {
                 alt1=2;
                 }
                 break;
-            case 42:
+            case 43:
                 {
                 alt1=3;
                 }
@@ -4151,10 +4152,10 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
             int alt3=2;
             int LA3_0 = input.LA(1);
 
-            if ( (LA3_0==51) ) {
+            if ( (LA3_0==52) ) {
                 alt3=1;
             }
-            else if ( (LA3_0==50) ) {
+            else if ( (LA3_0==51) ) {
                 alt3=2;
             }
             else {
@@ -4239,10 +4240,10 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
             int alt4=2;
             int LA4_0 = input.LA(1);
 
-            if ( (LA4_0==56) ) {
+            if ( (LA4_0==57) ) {
                 alt4=1;
             }
-            else if ( ((LA4_0>=27 && LA4_0<=28)||LA4_0==48) ) {
+            else if ( ((LA4_0>=28 && LA4_0<=29)||LA4_0==49) ) {
                 alt4=2;
             }
             else {
@@ -4518,7 +4519,7 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
             // InternalAspectLang.g:1472:1: ( ( ruleSubPathNode ) | ( ruleWildcardNode ) | ( ruleParentNode ) | ( ruleContainerNode ) )
             int alt7=4;
             switch ( input.LA(1) ) {
-            case 59:
+            case 60:
                 {
                 alt7=1;
                 }
@@ -4528,7 +4529,7 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
                 alt7=2;
                 }
                 break;
-            case 60:
+            case 61:
                 {
                 alt7=3;
                 }
@@ -4670,7 +4671,7 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
             if ( ((LA8_0>=RULE_STRING && LA8_0<=RULE_INT)) ) {
                 alt8=1;
             }
-            else if ( (LA8_0==RULE_ID||LA8_0==13||LA8_0==51||(LA8_0>=59 && LA8_0<=61)) ) {
+            else if ( (LA8_0==RULE_ID||LA8_0==13||LA8_0==52||(LA8_0>=60 && LA8_0<=62)) ) {
                 alt8=2;
             }
             else {
@@ -4755,10 +4756,10 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
             int alt9=2;
             int LA9_0 = input.LA(1);
 
-            if ( (LA9_0==51) ) {
+            if ( (LA9_0==52) ) {
                 alt9=1;
             }
-            else if ( (LA9_0==61) ) {
+            else if ( (LA9_0==62) ) {
                 alt9=2;
             }
             else {
@@ -4965,29 +4966,38 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__InsertionPoint__Alternatives"
-    // InternalAspectLang.g:1574:1: rule__InsertionPoint__Alternatives : ( ( ( 'before' ) ) | ( ( 'after' ) ) );
+    // InternalAspectLang.g:1574:1: rule__InsertionPoint__Alternatives : ( ( ( 'before' ) ) | ( ( 'after' ) ) | ( ( 'exception' ) ) );
     public final void rule__InsertionPoint__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:1578:1: ( ( ( 'before' ) ) | ( ( 'after' ) ) )
-            int alt11=2;
-            int LA11_0 = input.LA(1);
-
-            if ( (LA11_0==14) ) {
+            // InternalAspectLang.g:1578:1: ( ( ( 'before' ) ) | ( ( 'after' ) ) | ( ( 'exception' ) ) )
+            int alt11=3;
+            switch ( input.LA(1) ) {
+            case 14:
+                {
                 alt11=1;
-            }
-            else if ( (LA11_0==15) ) {
+                }
+                break;
+            case 15:
+                {
                 alt11=2;
-            }
-            else {
+                }
+                break;
+            case 16:
+                {
+                alt11=3;
+                }
+                break;
+            default:
                 if (state.backtracking>0) {state.failed=true; return ;}
                 NoViableAltException nvae =
                     new NoViableAltException("", 11, 0, input);
 
                 throw nvae;
             }
+
             switch (alt11) {
                 case 1 :
                     // InternalAspectLang.g:1579:1: ( ( 'before' ) )
@@ -5039,6 +5049,31 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
                     }
                     break;
+                case 3 :
+                    // InternalAspectLang.g:1593:6: ( ( 'exception' ) )
+                    {
+                    // InternalAspectLang.g:1593:6: ( ( 'exception' ) )
+                    // InternalAspectLang.g:1594:1: ( 'exception' )
+                    {
+                    if ( state.backtracking==0 ) {
+                       before(grammarAccess.getInsertionPointAccess().getAFTER_EXCEPTIONEnumLiteralDeclaration_2()); 
+                    }
+                    // InternalAspectLang.g:1595:1: ( 'exception' )
+                    // InternalAspectLang.g:1595:3: 'exception'
+                    {
+                    match(input,16,FOLLOW_2); if (state.failed) return ;
+
+                    }
+
+                    if ( state.backtracking==0 ) {
+                       after(grammarAccess.getInsertionPointAccess().getAFTER_EXCEPTIONEnumLiteralDeclaration_2()); 
+                    }
+
+                    }
+
+
+                    }
+                    break;
 
             }
         }
@@ -5057,26 +5092,26 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__InternalFunction__Alternatives"
-    // InternalAspectLang.g:1598:1: rule__InternalFunction__Alternatives : ( ( ( 'time' ) ) | ( ( 'traceId' ) ) | ( ( 'orderIndex' ) ) );
+    // InternalAspectLang.g:1605:1: rule__InternalFunction__Alternatives : ( ( ( 'time' ) ) | ( ( 'traceId' ) ) | ( ( 'orderIndex' ) ) );
     public final void rule__InternalFunction__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:1602:1: ( ( ( 'time' ) ) | ( ( 'traceId' ) ) | ( ( 'orderIndex' ) ) )
+            // InternalAspectLang.g:1609:1: ( ( ( 'time' ) ) | ( ( 'traceId' ) ) | ( ( 'orderIndex' ) ) )
             int alt12=3;
             switch ( input.LA(1) ) {
-            case 16:
+            case 17:
                 {
                 alt12=1;
                 }
                 break;
-            case 17:
+            case 18:
                 {
                 alt12=2;
                 }
                 break;
-            case 18:
+            case 19:
                 {
                 alt12=3;
                 }
@@ -5091,18 +5126,18 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
             switch (alt12) {
                 case 1 :
-                    // InternalAspectLang.g:1603:1: ( ( 'time' ) )
+                    // InternalAspectLang.g:1610:1: ( ( 'time' ) )
                     {
-                    // InternalAspectLang.g:1603:1: ( ( 'time' ) )
-                    // InternalAspectLang.g:1604:1: ( 'time' )
+                    // InternalAspectLang.g:1610:1: ( ( 'time' ) )
+                    // InternalAspectLang.g:1611:1: ( 'time' )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getInternalFunctionAccess().getTIMEEnumLiteralDeclaration_0()); 
                     }
-                    // InternalAspectLang.g:1605:1: ( 'time' )
-                    // InternalAspectLang.g:1605:3: 'time'
+                    // InternalAspectLang.g:1612:1: ( 'time' )
+                    // InternalAspectLang.g:1612:3: 'time'
                     {
-                    match(input,16,FOLLOW_2); if (state.failed) return ;
+                    match(input,17,FOLLOW_2); if (state.failed) return ;
 
                     }
 
@@ -5116,18 +5151,18 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
                     }
                     break;
                 case 2 :
-                    // InternalAspectLang.g:1610:6: ( ( 'traceId' ) )
+                    // InternalAspectLang.g:1617:6: ( ( 'traceId' ) )
                     {
-                    // InternalAspectLang.g:1610:6: ( ( 'traceId' ) )
-                    // InternalAspectLang.g:1611:1: ( 'traceId' )
+                    // InternalAspectLang.g:1617:6: ( ( 'traceId' ) )
+                    // InternalAspectLang.g:1618:1: ( 'traceId' )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getInternalFunctionAccess().getTRACE_IDEnumLiteralDeclaration_1()); 
                     }
-                    // InternalAspectLang.g:1612:1: ( 'traceId' )
-                    // InternalAspectLang.g:1612:3: 'traceId'
+                    // InternalAspectLang.g:1619:1: ( 'traceId' )
+                    // InternalAspectLang.g:1619:3: 'traceId'
                     {
-                    match(input,17,FOLLOW_2); if (state.failed) return ;
+                    match(input,18,FOLLOW_2); if (state.failed) return ;
 
                     }
 
@@ -5141,18 +5176,18 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
                     }
                     break;
                 case 3 :
-                    // InternalAspectLang.g:1617:6: ( ( 'orderIndex' ) )
+                    // InternalAspectLang.g:1624:6: ( ( 'orderIndex' ) )
                     {
-                    // InternalAspectLang.g:1617:6: ( ( 'orderIndex' ) )
-                    // InternalAspectLang.g:1618:1: ( 'orderIndex' )
+                    // InternalAspectLang.g:1624:6: ( ( 'orderIndex' ) )
+                    // InternalAspectLang.g:1625:1: ( 'orderIndex' )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getInternalFunctionAccess().getORDER_INDEXEnumLiteralDeclaration_2()); 
                     }
-                    // InternalAspectLang.g:1619:1: ( 'orderIndex' )
-                    // InternalAspectLang.g:1619:3: 'orderIndex'
+                    // InternalAspectLang.g:1626:1: ( 'orderIndex' )
+                    // InternalAspectLang.g:1626:3: 'orderIndex'
                     {
-                    match(input,18,FOLLOW_2); if (state.failed) return ;
+                    match(input,19,FOLLOW_2); if (state.failed) return ;
 
                     }
 
@@ -5183,31 +5218,31 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ReflectionFunction__Alternatives"
-    // InternalAspectLang.g:1629:1: rule__ReflectionFunction__Alternatives : ( ( ( 'name' ) ) | ( ( 'signature' ) ) | ( ( 'classname' ) ) | ( ( 'return-type' ) ) );
+    // InternalAspectLang.g:1636:1: rule__ReflectionFunction__Alternatives : ( ( ( 'name' ) ) | ( ( 'signature' ) ) | ( ( 'classname' ) ) | ( ( 'return-type' ) ) );
     public final void rule__ReflectionFunction__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:1633:1: ( ( ( 'name' ) ) | ( ( 'signature' ) ) | ( ( 'classname' ) ) | ( ( 'return-type' ) ) )
+            // InternalAspectLang.g:1640:1: ( ( ( 'name' ) ) | ( ( 'signature' ) ) | ( ( 'classname' ) ) | ( ( 'return-type' ) ) )
             int alt13=4;
             switch ( input.LA(1) ) {
-            case 19:
+            case 20:
                 {
                 alt13=1;
                 }
                 break;
-            case 20:
+            case 21:
                 {
                 alt13=2;
                 }
                 break;
-            case 21:
+            case 22:
                 {
                 alt13=3;
                 }
                 break;
-            case 22:
+            case 23:
                 {
                 alt13=4;
                 }
@@ -5222,18 +5257,18 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
             switch (alt13) {
                 case 1 :
-                    // InternalAspectLang.g:1634:1: ( ( 'name' ) )
+                    // InternalAspectLang.g:1641:1: ( ( 'name' ) )
                     {
-                    // InternalAspectLang.g:1634:1: ( ( 'name' ) )
-                    // InternalAspectLang.g:1635:1: ( 'name' )
+                    // InternalAspectLang.g:1641:1: ( ( 'name' ) )
+                    // InternalAspectLang.g:1642:1: ( 'name' )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getReflectionFunctionAccess().getNAMEEnumLiteralDeclaration_0()); 
                     }
-                    // InternalAspectLang.g:1636:1: ( 'name' )
-                    // InternalAspectLang.g:1636:3: 'name'
+                    // InternalAspectLang.g:1643:1: ( 'name' )
+                    // InternalAspectLang.g:1643:3: 'name'
                     {
-                    match(input,19,FOLLOW_2); if (state.failed) return ;
+                    match(input,20,FOLLOW_2); if (state.failed) return ;
 
                     }
 
@@ -5247,18 +5282,18 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
                     }
                     break;
                 case 2 :
-                    // InternalAspectLang.g:1641:6: ( ( 'signature' ) )
+                    // InternalAspectLang.g:1648:6: ( ( 'signature' ) )
                     {
-                    // InternalAspectLang.g:1641:6: ( ( 'signature' ) )
-                    // InternalAspectLang.g:1642:1: ( 'signature' )
+                    // InternalAspectLang.g:1648:6: ( ( 'signature' ) )
+                    // InternalAspectLang.g:1649:1: ( 'signature' )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getReflectionFunctionAccess().getSIGNATUREEnumLiteralDeclaration_1()); 
                     }
-                    // InternalAspectLang.g:1643:1: ( 'signature' )
-                    // InternalAspectLang.g:1643:3: 'signature'
+                    // InternalAspectLang.g:1650:1: ( 'signature' )
+                    // InternalAspectLang.g:1650:3: 'signature'
                     {
-                    match(input,20,FOLLOW_2); if (state.failed) return ;
+                    match(input,21,FOLLOW_2); if (state.failed) return ;
 
                     }
 
@@ -5272,18 +5307,18 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
                     }
                     break;
                 case 3 :
-                    // InternalAspectLang.g:1648:6: ( ( 'classname' ) )
+                    // InternalAspectLang.g:1655:6: ( ( 'classname' ) )
                     {
-                    // InternalAspectLang.g:1648:6: ( ( 'classname' ) )
-                    // InternalAspectLang.g:1649:1: ( 'classname' )
+                    // InternalAspectLang.g:1655:6: ( ( 'classname' ) )
+                    // InternalAspectLang.g:1656:1: ( 'classname' )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getReflectionFunctionAccess().getCLASSEnumLiteralDeclaration_2()); 
                     }
-                    // InternalAspectLang.g:1650:1: ( 'classname' )
-                    // InternalAspectLang.g:1650:3: 'classname'
+                    // InternalAspectLang.g:1657:1: ( 'classname' )
+                    // InternalAspectLang.g:1657:3: 'classname'
                     {
-                    match(input,21,FOLLOW_2); if (state.failed) return ;
+                    match(input,22,FOLLOW_2); if (state.failed) return ;
 
                     }
 
@@ -5297,18 +5332,18 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
                     }
                     break;
                 case 4 :
-                    // InternalAspectLang.g:1655:6: ( ( 'return-type' ) )
+                    // InternalAspectLang.g:1662:6: ( ( 'return-type' ) )
                     {
-                    // InternalAspectLang.g:1655:6: ( ( 'return-type' ) )
-                    // InternalAspectLang.g:1656:1: ( 'return-type' )
+                    // InternalAspectLang.g:1662:6: ( ( 'return-type' ) )
+                    // InternalAspectLang.g:1663:1: ( 'return-type' )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getReflectionFunctionAccess().getRETURN_TYPEEnumLiteralDeclaration_3()); 
                     }
-                    // InternalAspectLang.g:1657:1: ( 'return-type' )
-                    // InternalAspectLang.g:1657:3: 'return-type'
+                    // InternalAspectLang.g:1664:1: ( 'return-type' )
+                    // InternalAspectLang.g:1664:3: 'return-type'
                     {
-                    match(input,22,FOLLOW_2); if (state.failed) return ;
+                    match(input,23,FOLLOW_2); if (state.failed) return ;
 
                     }
 
@@ -5339,31 +5374,31 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Technology__Alternatives"
-    // InternalAspectLang.g:1667:1: rule__Technology__Alternatives : ( ( ( 'javaee' ) ) | ( ( 'servlet' ) ) | ( ( 'spring' ) ) | ( ( 'aspectj' ) ) );
+    // InternalAspectLang.g:1674:1: rule__Technology__Alternatives : ( ( ( 'javaee' ) ) | ( ( 'servlet' ) ) | ( ( 'spring' ) ) | ( ( 'aspectj' ) ) );
     public final void rule__Technology__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:1671:1: ( ( ( 'javaee' ) ) | ( ( 'servlet' ) ) | ( ( 'spring' ) ) | ( ( 'aspectj' ) ) )
+            // InternalAspectLang.g:1678:1: ( ( ( 'javaee' ) ) | ( ( 'servlet' ) ) | ( ( 'spring' ) ) | ( ( 'aspectj' ) ) )
             int alt14=4;
             switch ( input.LA(1) ) {
-            case 23:
+            case 24:
                 {
                 alt14=1;
                 }
                 break;
-            case 24:
+            case 25:
                 {
                 alt14=2;
                 }
                 break;
-            case 25:
+            case 26:
                 {
                 alt14=3;
                 }
                 break;
-            case 26:
+            case 27:
                 {
                 alt14=4;
                 }
@@ -5378,18 +5413,18 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
             switch (alt14) {
                 case 1 :
-                    // InternalAspectLang.g:1672:1: ( ( 'javaee' ) )
+                    // InternalAspectLang.g:1679:1: ( ( 'javaee' ) )
                     {
-                    // InternalAspectLang.g:1672:1: ( ( 'javaee' ) )
-                    // InternalAspectLang.g:1673:1: ( 'javaee' )
+                    // InternalAspectLang.g:1679:1: ( ( 'javaee' ) )
+                    // InternalAspectLang.g:1680:1: ( 'javaee' )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getTechnologyAccess().getJAVA_EEEnumLiteralDeclaration_0()); 
                     }
-                    // InternalAspectLang.g:1674:1: ( 'javaee' )
-                    // InternalAspectLang.g:1674:3: 'javaee'
+                    // InternalAspectLang.g:1681:1: ( 'javaee' )
+                    // InternalAspectLang.g:1681:3: 'javaee'
                     {
-                    match(input,23,FOLLOW_2); if (state.failed) return ;
+                    match(input,24,FOLLOW_2); if (state.failed) return ;
 
                     }
 
@@ -5403,18 +5438,18 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
                     }
                     break;
                 case 2 :
-                    // InternalAspectLang.g:1679:6: ( ( 'servlet' ) )
+                    // InternalAspectLang.g:1686:6: ( ( 'servlet' ) )
                     {
-                    // InternalAspectLang.g:1679:6: ( ( 'servlet' ) )
-                    // InternalAspectLang.g:1680:1: ( 'servlet' )
+                    // InternalAspectLang.g:1686:6: ( ( 'servlet' ) )
+                    // InternalAspectLang.g:1687:1: ( 'servlet' )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getTechnologyAccess().getSERVLETEnumLiteralDeclaration_1()); 
                     }
-                    // InternalAspectLang.g:1681:1: ( 'servlet' )
-                    // InternalAspectLang.g:1681:3: 'servlet'
+                    // InternalAspectLang.g:1688:1: ( 'servlet' )
+                    // InternalAspectLang.g:1688:3: 'servlet'
                     {
-                    match(input,24,FOLLOW_2); if (state.failed) return ;
+                    match(input,25,FOLLOW_2); if (state.failed) return ;
 
                     }
 
@@ -5428,18 +5463,18 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
                     }
                     break;
                 case 3 :
-                    // InternalAspectLang.g:1686:6: ( ( 'spring' ) )
+                    // InternalAspectLang.g:1693:6: ( ( 'spring' ) )
                     {
-                    // InternalAspectLang.g:1686:6: ( ( 'spring' ) )
-                    // InternalAspectLang.g:1687:1: ( 'spring' )
+                    // InternalAspectLang.g:1693:6: ( ( 'spring' ) )
+                    // InternalAspectLang.g:1694:1: ( 'spring' )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getTechnologyAccess().getSPRINGEnumLiteralDeclaration_2()); 
                     }
-                    // InternalAspectLang.g:1688:1: ( 'spring' )
-                    // InternalAspectLang.g:1688:3: 'spring'
+                    // InternalAspectLang.g:1695:1: ( 'spring' )
+                    // InternalAspectLang.g:1695:3: 'spring'
                     {
-                    match(input,25,FOLLOW_2); if (state.failed) return ;
+                    match(input,26,FOLLOW_2); if (state.failed) return ;
 
                     }
 
@@ -5453,18 +5488,18 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
                     }
                     break;
                 case 4 :
-                    // InternalAspectLang.g:1693:6: ( ( 'aspectj' ) )
+                    // InternalAspectLang.g:1700:6: ( ( 'aspectj' ) )
                     {
-                    // InternalAspectLang.g:1693:6: ( ( 'aspectj' ) )
-                    // InternalAspectLang.g:1694:1: ( 'aspectj' )
+                    // InternalAspectLang.g:1700:6: ( ( 'aspectj' ) )
+                    // InternalAspectLang.g:1701:1: ( 'aspectj' )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getTechnologyAccess().getASPECT_JEnumLiteralDeclaration_3()); 
                     }
-                    // InternalAspectLang.g:1695:1: ( 'aspectj' )
-                    // InternalAspectLang.g:1695:3: 'aspectj'
+                    // InternalAspectLang.g:1702:1: ( 'aspectj' )
+                    // InternalAspectLang.g:1702:3: 'aspectj'
                     {
-                    match(input,26,FOLLOW_2); if (state.failed) return ;
+                    match(input,27,FOLLOW_2); if (state.failed) return ;
 
                     }
 
@@ -5495,20 +5530,20 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__QueryModifier__Alternatives"
-    // InternalAspectLang.g:1705:1: rule__QueryModifier__Alternatives : ( ( ( 'include' ) ) | ( ( 'exclude' ) ) );
+    // InternalAspectLang.g:1712:1: rule__QueryModifier__Alternatives : ( ( ( 'include' ) ) | ( ( 'exclude' ) ) );
     public final void rule__QueryModifier__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:1709:1: ( ( ( 'include' ) ) | ( ( 'exclude' ) ) )
+            // InternalAspectLang.g:1716:1: ( ( ( 'include' ) ) | ( ( 'exclude' ) ) )
             int alt15=2;
             int LA15_0 = input.LA(1);
 
-            if ( (LA15_0==27) ) {
+            if ( (LA15_0==28) ) {
                 alt15=1;
             }
-            else if ( (LA15_0==28) ) {
+            else if ( (LA15_0==29) ) {
                 alt15=2;
             }
             else {
@@ -5520,18 +5555,18 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
             }
             switch (alt15) {
                 case 1 :
-                    // InternalAspectLang.g:1710:1: ( ( 'include' ) )
+                    // InternalAspectLang.g:1717:1: ( ( 'include' ) )
                     {
-                    // InternalAspectLang.g:1710:1: ( ( 'include' ) )
-                    // InternalAspectLang.g:1711:1: ( 'include' )
+                    // InternalAspectLang.g:1717:1: ( ( 'include' ) )
+                    // InternalAspectLang.g:1718:1: ( 'include' )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getQueryModifierAccess().getINCLUDEEnumLiteralDeclaration_0()); 
                     }
-                    // InternalAspectLang.g:1712:1: ( 'include' )
-                    // InternalAspectLang.g:1712:3: 'include'
+                    // InternalAspectLang.g:1719:1: ( 'include' )
+                    // InternalAspectLang.g:1719:3: 'include'
                     {
-                    match(input,27,FOLLOW_2); if (state.failed) return ;
+                    match(input,28,FOLLOW_2); if (state.failed) return ;
 
                     }
 
@@ -5545,18 +5580,18 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
                     }
                     break;
                 case 2 :
-                    // InternalAspectLang.g:1717:6: ( ( 'exclude' ) )
+                    // InternalAspectLang.g:1724:6: ( ( 'exclude' ) )
                     {
-                    // InternalAspectLang.g:1717:6: ( ( 'exclude' ) )
-                    // InternalAspectLang.g:1718:1: ( 'exclude' )
+                    // InternalAspectLang.g:1724:6: ( ( 'exclude' ) )
+                    // InternalAspectLang.g:1725:1: ( 'exclude' )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getQueryModifierAccess().getEXCLUDEEnumLiteralDeclaration_1()); 
                     }
-                    // InternalAspectLang.g:1719:1: ( 'exclude' )
-                    // InternalAspectLang.g:1719:3: 'exclude'
+                    // InternalAspectLang.g:1726:1: ( 'exclude' )
+                    // InternalAspectLang.g:1726:3: 'exclude'
                     {
-                    match(input,28,FOLLOW_2); if (state.failed) return ;
+                    match(input,29,FOLLOW_2); if (state.failed) return ;
 
                     }
 
@@ -5587,20 +5622,20 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__LogicOperator__Alternatives"
-    // InternalAspectLang.g:1729:1: rule__LogicOperator__Alternatives : ( ( ( '&&' ) ) | ( ( '||' ) ) );
+    // InternalAspectLang.g:1736:1: rule__LogicOperator__Alternatives : ( ( ( '&&' ) ) | ( ( '||' ) ) );
     public final void rule__LogicOperator__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:1733:1: ( ( ( '&&' ) ) | ( ( '||' ) ) )
+            // InternalAspectLang.g:1740:1: ( ( ( '&&' ) ) | ( ( '||' ) ) )
             int alt16=2;
             int LA16_0 = input.LA(1);
 
-            if ( (LA16_0==29) ) {
+            if ( (LA16_0==30) ) {
                 alt16=1;
             }
-            else if ( (LA16_0==30) ) {
+            else if ( (LA16_0==31) ) {
                 alt16=2;
             }
             else {
@@ -5612,18 +5647,18 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
             }
             switch (alt16) {
                 case 1 :
-                    // InternalAspectLang.g:1734:1: ( ( '&&' ) )
+                    // InternalAspectLang.g:1741:1: ( ( '&&' ) )
                     {
-                    // InternalAspectLang.g:1734:1: ( ( '&&' ) )
-                    // InternalAspectLang.g:1735:1: ( '&&' )
+                    // InternalAspectLang.g:1741:1: ( ( '&&' ) )
+                    // InternalAspectLang.g:1742:1: ( '&&' )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getLogicOperatorAccess().getANDEnumLiteralDeclaration_0()); 
                     }
-                    // InternalAspectLang.g:1736:1: ( '&&' )
-                    // InternalAspectLang.g:1736:3: '&&'
+                    // InternalAspectLang.g:1743:1: ( '&&' )
+                    // InternalAspectLang.g:1743:3: '&&'
                     {
-                    match(input,29,FOLLOW_2); if (state.failed) return ;
+                    match(input,30,FOLLOW_2); if (state.failed) return ;
 
                     }
 
@@ -5637,18 +5672,18 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
                     }
                     break;
                 case 2 :
-                    // InternalAspectLang.g:1741:6: ( ( '||' ) )
+                    // InternalAspectLang.g:1748:6: ( ( '||' ) )
                     {
-                    // InternalAspectLang.g:1741:6: ( ( '||' ) )
-                    // InternalAspectLang.g:1742:1: ( '||' )
+                    // InternalAspectLang.g:1748:6: ( ( '||' ) )
+                    // InternalAspectLang.g:1749:1: ( '||' )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getLogicOperatorAccess().getOREnumLiteralDeclaration_1()); 
                     }
-                    // InternalAspectLang.g:1743:1: ( '||' )
-                    // InternalAspectLang.g:1743:3: '||'
+                    // InternalAspectLang.g:1750:1: ( '||' )
+                    // InternalAspectLang.g:1750:3: '||'
                     {
-                    match(input,30,FOLLOW_2); if (state.failed) return ;
+                    match(input,31,FOLLOW_2); if (state.failed) return ;
 
                     }
 
@@ -5679,46 +5714,46 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__CompareOperator__Alternatives"
-    // InternalAspectLang.g:1753:1: rule__CompareOperator__Alternatives : ( ( ( '=' ) ) | ( ( '~' ) ) | ( ( '!=' ) ) | ( ( '>' ) ) | ( ( '<' ) ) | ( ( '>=' ) ) | ( ( '<=' ) ) );
+    // InternalAspectLang.g:1760:1: rule__CompareOperator__Alternatives : ( ( ( '=' ) ) | ( ( '~' ) ) | ( ( '!=' ) ) | ( ( '>' ) ) | ( ( '<' ) ) | ( ( '>=' ) ) | ( ( '<=' ) ) );
     public final void rule__CompareOperator__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:1757:1: ( ( ( '=' ) ) | ( ( '~' ) ) | ( ( '!=' ) ) | ( ( '>' ) ) | ( ( '<' ) ) | ( ( '>=' ) ) | ( ( '<=' ) ) )
+            // InternalAspectLang.g:1764:1: ( ( ( '=' ) ) | ( ( '~' ) ) | ( ( '!=' ) ) | ( ( '>' ) ) | ( ( '<' ) ) | ( ( '>=' ) ) | ( ( '<=' ) ) )
             int alt17=7;
             switch ( input.LA(1) ) {
-            case 31:
+            case 32:
                 {
                 alt17=1;
                 }
                 break;
-            case 32:
+            case 33:
                 {
                 alt17=2;
                 }
                 break;
-            case 33:
+            case 34:
                 {
                 alt17=3;
                 }
                 break;
-            case 34:
+            case 35:
                 {
                 alt17=4;
                 }
                 break;
-            case 35:
+            case 36:
                 {
                 alt17=5;
                 }
                 break;
-            case 36:
+            case 37:
                 {
                 alt17=6;
                 }
                 break;
-            case 37:
+            case 38:
                 {
                 alt17=7;
                 }
@@ -5733,18 +5768,18 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
             switch (alt17) {
                 case 1 :
-                    // InternalAspectLang.g:1758:1: ( ( '=' ) )
+                    // InternalAspectLang.g:1765:1: ( ( '=' ) )
                     {
-                    // InternalAspectLang.g:1758:1: ( ( '=' ) )
-                    // InternalAspectLang.g:1759:1: ( '=' )
+                    // InternalAspectLang.g:1765:1: ( ( '=' ) )
+                    // InternalAspectLang.g:1766:1: ( '=' )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getCompareOperatorAccess().getEQEnumLiteralDeclaration_0()); 
                     }
-                    // InternalAspectLang.g:1760:1: ( '=' )
-                    // InternalAspectLang.g:1760:3: '='
+                    // InternalAspectLang.g:1767:1: ( '=' )
+                    // InternalAspectLang.g:1767:3: '='
                     {
-                    match(input,31,FOLLOW_2); if (state.failed) return ;
+                    match(input,32,FOLLOW_2); if (state.failed) return ;
 
                     }
 
@@ -5758,18 +5793,18 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
                     }
                     break;
                 case 2 :
-                    // InternalAspectLang.g:1765:6: ( ( '~' ) )
+                    // InternalAspectLang.g:1772:6: ( ( '~' ) )
                     {
-                    // InternalAspectLang.g:1765:6: ( ( '~' ) )
-                    // InternalAspectLang.g:1766:1: ( '~' )
+                    // InternalAspectLang.g:1772:6: ( ( '~' ) )
+                    // InternalAspectLang.g:1773:1: ( '~' )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getCompareOperatorAccess().getLIKEEnumLiteralDeclaration_1()); 
                     }
-                    // InternalAspectLang.g:1767:1: ( '~' )
-                    // InternalAspectLang.g:1767:3: '~'
+                    // InternalAspectLang.g:1774:1: ( '~' )
+                    // InternalAspectLang.g:1774:3: '~'
                     {
-                    match(input,32,FOLLOW_2); if (state.failed) return ;
+                    match(input,33,FOLLOW_2); if (state.failed) return ;
 
                     }
 
@@ -5783,18 +5818,18 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
                     }
                     break;
                 case 3 :
-                    // InternalAspectLang.g:1772:6: ( ( '!=' ) )
+                    // InternalAspectLang.g:1779:6: ( ( '!=' ) )
                     {
-                    // InternalAspectLang.g:1772:6: ( ( '!=' ) )
-                    // InternalAspectLang.g:1773:1: ( '!=' )
+                    // InternalAspectLang.g:1779:6: ( ( '!=' ) )
+                    // InternalAspectLang.g:1780:1: ( '!=' )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getCompareOperatorAccess().getNEEnumLiteralDeclaration_2()); 
                     }
-                    // InternalAspectLang.g:1774:1: ( '!=' )
-                    // InternalAspectLang.g:1774:3: '!='
+                    // InternalAspectLang.g:1781:1: ( '!=' )
+                    // InternalAspectLang.g:1781:3: '!='
                     {
-                    match(input,33,FOLLOW_2); if (state.failed) return ;
+                    match(input,34,FOLLOW_2); if (state.failed) return ;
 
                     }
 
@@ -5808,18 +5843,18 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
                     }
                     break;
                 case 4 :
-                    // InternalAspectLang.g:1779:6: ( ( '>' ) )
+                    // InternalAspectLang.g:1786:6: ( ( '>' ) )
                     {
-                    // InternalAspectLang.g:1779:6: ( ( '>' ) )
-                    // InternalAspectLang.g:1780:1: ( '>' )
+                    // InternalAspectLang.g:1786:6: ( ( '>' ) )
+                    // InternalAspectLang.g:1787:1: ( '>' )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getCompareOperatorAccess().getGREnumLiteralDeclaration_3()); 
                     }
-                    // InternalAspectLang.g:1781:1: ( '>' )
-                    // InternalAspectLang.g:1781:3: '>'
+                    // InternalAspectLang.g:1788:1: ( '>' )
+                    // InternalAspectLang.g:1788:3: '>'
                     {
-                    match(input,34,FOLLOW_2); if (state.failed) return ;
+                    match(input,35,FOLLOW_2); if (state.failed) return ;
 
                     }
 
@@ -5833,18 +5868,18 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
                     }
                     break;
                 case 5 :
-                    // InternalAspectLang.g:1786:6: ( ( '<' ) )
+                    // InternalAspectLang.g:1793:6: ( ( '<' ) )
                     {
-                    // InternalAspectLang.g:1786:6: ( ( '<' ) )
-                    // InternalAspectLang.g:1787:1: ( '<' )
+                    // InternalAspectLang.g:1793:6: ( ( '<' ) )
+                    // InternalAspectLang.g:1794:1: ( '<' )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getCompareOperatorAccess().getLWEnumLiteralDeclaration_4()); 
                     }
-                    // InternalAspectLang.g:1788:1: ( '<' )
-                    // InternalAspectLang.g:1788:3: '<'
+                    // InternalAspectLang.g:1795:1: ( '<' )
+                    // InternalAspectLang.g:1795:3: '<'
                     {
-                    match(input,35,FOLLOW_2); if (state.failed) return ;
+                    match(input,36,FOLLOW_2); if (state.failed) return ;
 
                     }
 
@@ -5858,18 +5893,18 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
                     }
                     break;
                 case 6 :
-                    // InternalAspectLang.g:1793:6: ( ( '>=' ) )
+                    // InternalAspectLang.g:1800:6: ( ( '>=' ) )
                     {
-                    // InternalAspectLang.g:1793:6: ( ( '>=' ) )
-                    // InternalAspectLang.g:1794:1: ( '>=' )
+                    // InternalAspectLang.g:1800:6: ( ( '>=' ) )
+                    // InternalAspectLang.g:1801:1: ( '>=' )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getCompareOperatorAccess().getGEEnumLiteralDeclaration_5()); 
                     }
-                    // InternalAspectLang.g:1795:1: ( '>=' )
-                    // InternalAspectLang.g:1795:3: '>='
+                    // InternalAspectLang.g:1802:1: ( '>=' )
+                    // InternalAspectLang.g:1802:3: '>='
                     {
-                    match(input,36,FOLLOW_2); if (state.failed) return ;
+                    match(input,37,FOLLOW_2); if (state.failed) return ;
 
                     }
 
@@ -5883,18 +5918,18 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
                     }
                     break;
                 case 7 :
-                    // InternalAspectLang.g:1800:6: ( ( '<=' ) )
+                    // InternalAspectLang.g:1807:6: ( ( '<=' ) )
                     {
-                    // InternalAspectLang.g:1800:6: ( ( '<=' ) )
-                    // InternalAspectLang.g:1801:1: ( '<=' )
+                    // InternalAspectLang.g:1807:6: ( ( '<=' ) )
+                    // InternalAspectLang.g:1808:1: ( '<=' )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getCompareOperatorAccess().getLEEnumLiteralDeclaration_6()); 
                     }
-                    // InternalAspectLang.g:1802:1: ( '<=' )
-                    // InternalAspectLang.g:1802:3: '<='
+                    // InternalAspectLang.g:1809:1: ( '<=' )
+                    // InternalAspectLang.g:1809:3: '<='
                     {
-                    match(input,37,FOLLOW_2); if (state.failed) return ;
+                    match(input,38,FOLLOW_2); if (state.failed) return ;
 
                     }
 
@@ -5925,14 +5960,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__AspectModel__Group__0"
-    // InternalAspectLang.g:1814:1: rule__AspectModel__Group__0 : rule__AspectModel__Group__0__Impl rule__AspectModel__Group__1 ;
+    // InternalAspectLang.g:1821:1: rule__AspectModel__Group__0 : rule__AspectModel__Group__0__Impl rule__AspectModel__Group__1 ;
     public final void rule__AspectModel__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:1818:1: ( rule__AspectModel__Group__0__Impl rule__AspectModel__Group__1 )
-            // InternalAspectLang.g:1819:2: rule__AspectModel__Group__0__Impl rule__AspectModel__Group__1
+            // InternalAspectLang.g:1825:1: ( rule__AspectModel__Group__0__Impl rule__AspectModel__Group__1 )
+            // InternalAspectLang.g:1826:2: rule__AspectModel__Group__0__Impl rule__AspectModel__Group__1
             {
             pushFollow(FOLLOW_3);
             rule__AspectModel__Group__0__Impl();
@@ -5963,22 +5998,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__AspectModel__Group__0__Impl"
-    // InternalAspectLang.g:1826:1: rule__AspectModel__Group__0__Impl : ( 'package' ) ;
+    // InternalAspectLang.g:1833:1: rule__AspectModel__Group__0__Impl : ( 'package' ) ;
     public final void rule__AspectModel__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:1830:1: ( ( 'package' ) )
-            // InternalAspectLang.g:1831:1: ( 'package' )
+            // InternalAspectLang.g:1837:1: ( ( 'package' ) )
+            // InternalAspectLang.g:1838:1: ( 'package' )
             {
-            // InternalAspectLang.g:1831:1: ( 'package' )
-            // InternalAspectLang.g:1832:1: 'package'
+            // InternalAspectLang.g:1838:1: ( 'package' )
+            // InternalAspectLang.g:1839:1: 'package'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAspectModelAccess().getPackageKeyword_0()); 
             }
-            match(input,38,FOLLOW_2); if (state.failed) return ;
+            match(input,39,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getAspectModelAccess().getPackageKeyword_0()); 
             }
@@ -6004,14 +6039,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__AspectModel__Group__1"
-    // InternalAspectLang.g:1845:1: rule__AspectModel__Group__1 : rule__AspectModel__Group__1__Impl rule__AspectModel__Group__2 ;
+    // InternalAspectLang.g:1852:1: rule__AspectModel__Group__1 : rule__AspectModel__Group__1__Impl rule__AspectModel__Group__2 ;
     public final void rule__AspectModel__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:1849:1: ( rule__AspectModel__Group__1__Impl rule__AspectModel__Group__2 )
-            // InternalAspectLang.g:1850:2: rule__AspectModel__Group__1__Impl rule__AspectModel__Group__2
+            // InternalAspectLang.g:1856:1: ( rule__AspectModel__Group__1__Impl rule__AspectModel__Group__2 )
+            // InternalAspectLang.g:1857:2: rule__AspectModel__Group__1__Impl rule__AspectModel__Group__2
             {
             pushFollow(FOLLOW_4);
             rule__AspectModel__Group__1__Impl();
@@ -6042,23 +6077,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__AspectModel__Group__1__Impl"
-    // InternalAspectLang.g:1857:1: rule__AspectModel__Group__1__Impl : ( ( rule__AspectModel__NameAssignment_1 ) ) ;
+    // InternalAspectLang.g:1864:1: rule__AspectModel__Group__1__Impl : ( ( rule__AspectModel__NameAssignment_1 ) ) ;
     public final void rule__AspectModel__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:1861:1: ( ( ( rule__AspectModel__NameAssignment_1 ) ) )
-            // InternalAspectLang.g:1862:1: ( ( rule__AspectModel__NameAssignment_1 ) )
+            // InternalAspectLang.g:1868:1: ( ( ( rule__AspectModel__NameAssignment_1 ) ) )
+            // InternalAspectLang.g:1869:1: ( ( rule__AspectModel__NameAssignment_1 ) )
             {
-            // InternalAspectLang.g:1862:1: ( ( rule__AspectModel__NameAssignment_1 ) )
-            // InternalAspectLang.g:1863:1: ( rule__AspectModel__NameAssignment_1 )
+            // InternalAspectLang.g:1869:1: ( ( rule__AspectModel__NameAssignment_1 ) )
+            // InternalAspectLang.g:1870:1: ( rule__AspectModel__NameAssignment_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAspectModelAccess().getNameAssignment_1()); 
             }
-            // InternalAspectLang.g:1864:1: ( rule__AspectModel__NameAssignment_1 )
-            // InternalAspectLang.g:1864:2: rule__AspectModel__NameAssignment_1
+            // InternalAspectLang.g:1871:1: ( rule__AspectModel__NameAssignment_1 )
+            // InternalAspectLang.g:1871:2: rule__AspectModel__NameAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__AspectModel__NameAssignment_1();
@@ -6093,14 +6128,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__AspectModel__Group__2"
-    // InternalAspectLang.g:1874:1: rule__AspectModel__Group__2 : rule__AspectModel__Group__2__Impl rule__AspectModel__Group__3 ;
+    // InternalAspectLang.g:1881:1: rule__AspectModel__Group__2 : rule__AspectModel__Group__2__Impl rule__AspectModel__Group__3 ;
     public final void rule__AspectModel__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:1878:1: ( rule__AspectModel__Group__2__Impl rule__AspectModel__Group__3 )
-            // InternalAspectLang.g:1879:2: rule__AspectModel__Group__2__Impl rule__AspectModel__Group__3
+            // InternalAspectLang.g:1885:1: ( rule__AspectModel__Group__2__Impl rule__AspectModel__Group__3 )
+            // InternalAspectLang.g:1886:2: rule__AspectModel__Group__2__Impl rule__AspectModel__Group__3
             {
             pushFollow(FOLLOW_4);
             rule__AspectModel__Group__2__Impl();
@@ -6131,35 +6166,35 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__AspectModel__Group__2__Impl"
-    // InternalAspectLang.g:1886:1: rule__AspectModel__Group__2__Impl : ( ( rule__AspectModel__ImportsAssignment_2 )* ) ;
+    // InternalAspectLang.g:1893:1: rule__AspectModel__Group__2__Impl : ( ( rule__AspectModel__ImportsAssignment_2 )* ) ;
     public final void rule__AspectModel__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:1890:1: ( ( ( rule__AspectModel__ImportsAssignment_2 )* ) )
-            // InternalAspectLang.g:1891:1: ( ( rule__AspectModel__ImportsAssignment_2 )* )
+            // InternalAspectLang.g:1897:1: ( ( ( rule__AspectModel__ImportsAssignment_2 )* ) )
+            // InternalAspectLang.g:1898:1: ( ( rule__AspectModel__ImportsAssignment_2 )* )
             {
-            // InternalAspectLang.g:1891:1: ( ( rule__AspectModel__ImportsAssignment_2 )* )
-            // InternalAspectLang.g:1892:1: ( rule__AspectModel__ImportsAssignment_2 )*
+            // InternalAspectLang.g:1898:1: ( ( rule__AspectModel__ImportsAssignment_2 )* )
+            // InternalAspectLang.g:1899:1: ( rule__AspectModel__ImportsAssignment_2 )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAspectModelAccess().getImportsAssignment_2()); 
             }
-            // InternalAspectLang.g:1893:1: ( rule__AspectModel__ImportsAssignment_2 )*
+            // InternalAspectLang.g:1900:1: ( rule__AspectModel__ImportsAssignment_2 )*
             loop18:
             do {
                 int alt18=2;
                 int LA18_0 = input.LA(1);
 
-                if ( (LA18_0==39) ) {
+                if ( (LA18_0==40) ) {
                     alt18=1;
                 }
 
 
                 switch (alt18) {
             	case 1 :
-            	    // InternalAspectLang.g:1893:2: rule__AspectModel__ImportsAssignment_2
+            	    // InternalAspectLang.g:1900:2: rule__AspectModel__ImportsAssignment_2
             	    {
             	    pushFollow(FOLLOW_5);
             	    rule__AspectModel__ImportsAssignment_2();
@@ -6200,14 +6235,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__AspectModel__Group__3"
-    // InternalAspectLang.g:1903:1: rule__AspectModel__Group__3 : rule__AspectModel__Group__3__Impl rule__AspectModel__Group__4 ;
+    // InternalAspectLang.g:1910:1: rule__AspectModel__Group__3 : rule__AspectModel__Group__3__Impl rule__AspectModel__Group__4 ;
     public final void rule__AspectModel__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:1907:1: ( rule__AspectModel__Group__3__Impl rule__AspectModel__Group__4 )
-            // InternalAspectLang.g:1908:2: rule__AspectModel__Group__3__Impl rule__AspectModel__Group__4
+            // InternalAspectLang.g:1914:1: ( rule__AspectModel__Group__3__Impl rule__AspectModel__Group__4 )
+            // InternalAspectLang.g:1915:2: rule__AspectModel__Group__3__Impl rule__AspectModel__Group__4
             {
             pushFollow(FOLLOW_4);
             rule__AspectModel__Group__3__Impl();
@@ -6238,35 +6273,35 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__AspectModel__Group__3__Impl"
-    // InternalAspectLang.g:1915:1: rule__AspectModel__Group__3__Impl : ( ( rule__AspectModel__SourcesAssignment_3 )* ) ;
+    // InternalAspectLang.g:1922:1: rule__AspectModel__Group__3__Impl : ( ( rule__AspectModel__SourcesAssignment_3 )* ) ;
     public final void rule__AspectModel__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:1919:1: ( ( ( rule__AspectModel__SourcesAssignment_3 )* ) )
-            // InternalAspectLang.g:1920:1: ( ( rule__AspectModel__SourcesAssignment_3 )* )
+            // InternalAspectLang.g:1926:1: ( ( ( rule__AspectModel__SourcesAssignment_3 )* ) )
+            // InternalAspectLang.g:1927:1: ( ( rule__AspectModel__SourcesAssignment_3 )* )
             {
-            // InternalAspectLang.g:1920:1: ( ( rule__AspectModel__SourcesAssignment_3 )* )
-            // InternalAspectLang.g:1921:1: ( rule__AspectModel__SourcesAssignment_3 )*
+            // InternalAspectLang.g:1927:1: ( ( rule__AspectModel__SourcesAssignment_3 )* )
+            // InternalAspectLang.g:1928:1: ( rule__AspectModel__SourcesAssignment_3 )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAspectModelAccess().getSourcesAssignment_3()); 
             }
-            // InternalAspectLang.g:1922:1: ( rule__AspectModel__SourcesAssignment_3 )*
+            // InternalAspectLang.g:1929:1: ( rule__AspectModel__SourcesAssignment_3 )*
             loop19:
             do {
                 int alt19=2;
                 int LA19_0 = input.LA(1);
 
-                if ( (LA19_0==40) ) {
+                if ( (LA19_0==41) ) {
                     alt19=1;
                 }
 
 
                 switch (alt19) {
             	case 1 :
-            	    // InternalAspectLang.g:1922:2: rule__AspectModel__SourcesAssignment_3
+            	    // InternalAspectLang.g:1929:2: rule__AspectModel__SourcesAssignment_3
             	    {
             	    pushFollow(FOLLOW_6);
             	    rule__AspectModel__SourcesAssignment_3();
@@ -6307,14 +6342,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__AspectModel__Group__4"
-    // InternalAspectLang.g:1932:1: rule__AspectModel__Group__4 : rule__AspectModel__Group__4__Impl ;
+    // InternalAspectLang.g:1939:1: rule__AspectModel__Group__4 : rule__AspectModel__Group__4__Impl ;
     public final void rule__AspectModel__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:1936:1: ( rule__AspectModel__Group__4__Impl )
-            // InternalAspectLang.g:1937:2: rule__AspectModel__Group__4__Impl
+            // InternalAspectLang.g:1943:1: ( rule__AspectModel__Group__4__Impl )
+            // InternalAspectLang.g:1944:2: rule__AspectModel__Group__4__Impl
             {
             pushFollow(FOLLOW_2);
             rule__AspectModel__Group__4__Impl();
@@ -6340,35 +6375,35 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__AspectModel__Group__4__Impl"
-    // InternalAspectLang.g:1943:1: rule__AspectModel__Group__4__Impl : ( ( rule__AspectModel__Alternatives_4 )* ) ;
+    // InternalAspectLang.g:1950:1: rule__AspectModel__Group__4__Impl : ( ( rule__AspectModel__Alternatives_4 )* ) ;
     public final void rule__AspectModel__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:1947:1: ( ( ( rule__AspectModel__Alternatives_4 )* ) )
-            // InternalAspectLang.g:1948:1: ( ( rule__AspectModel__Alternatives_4 )* )
+            // InternalAspectLang.g:1954:1: ( ( ( rule__AspectModel__Alternatives_4 )* ) )
+            // InternalAspectLang.g:1955:1: ( ( rule__AspectModel__Alternatives_4 )* )
             {
-            // InternalAspectLang.g:1948:1: ( ( rule__AspectModel__Alternatives_4 )* )
-            // InternalAspectLang.g:1949:1: ( rule__AspectModel__Alternatives_4 )*
+            // InternalAspectLang.g:1955:1: ( ( rule__AspectModel__Alternatives_4 )* )
+            // InternalAspectLang.g:1956:1: ( rule__AspectModel__Alternatives_4 )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAspectModelAccess().getAlternatives_4()); 
             }
-            // InternalAspectLang.g:1950:1: ( rule__AspectModel__Alternatives_4 )*
+            // InternalAspectLang.g:1957:1: ( rule__AspectModel__Alternatives_4 )*
             loop20:
             do {
                 int alt20=2;
                 int LA20_0 = input.LA(1);
 
-                if ( (LA20_0==42||LA20_0==47||LA20_0==54||LA20_0==58) ) {
+                if ( (LA20_0==43||LA20_0==48||LA20_0==55||LA20_0==59) ) {
                     alt20=1;
                 }
 
 
                 switch (alt20) {
             	case 1 :
-            	    // InternalAspectLang.g:1950:2: rule__AspectModel__Alternatives_4
+            	    // InternalAspectLang.g:1957:2: rule__AspectModel__Alternatives_4
             	    {
             	    pushFollow(FOLLOW_7);
             	    rule__AspectModel__Alternatives_4();
@@ -6409,14 +6444,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Import__Group__0"
-    // InternalAspectLang.g:1970:1: rule__Import__Group__0 : rule__Import__Group__0__Impl rule__Import__Group__1 ;
+    // InternalAspectLang.g:1977:1: rule__Import__Group__0 : rule__Import__Group__0__Impl rule__Import__Group__1 ;
     public final void rule__Import__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:1974:1: ( rule__Import__Group__0__Impl rule__Import__Group__1 )
-            // InternalAspectLang.g:1975:2: rule__Import__Group__0__Impl rule__Import__Group__1
+            // InternalAspectLang.g:1981:1: ( rule__Import__Group__0__Impl rule__Import__Group__1 )
+            // InternalAspectLang.g:1982:2: rule__Import__Group__0__Impl rule__Import__Group__1
             {
             pushFollow(FOLLOW_3);
             rule__Import__Group__0__Impl();
@@ -6447,22 +6482,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Import__Group__0__Impl"
-    // InternalAspectLang.g:1982:1: rule__Import__Group__0__Impl : ( 'import' ) ;
+    // InternalAspectLang.g:1989:1: rule__Import__Group__0__Impl : ( 'import' ) ;
     public final void rule__Import__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:1986:1: ( ( 'import' ) )
-            // InternalAspectLang.g:1987:1: ( 'import' )
+            // InternalAspectLang.g:1993:1: ( ( 'import' ) )
+            // InternalAspectLang.g:1994:1: ( 'import' )
             {
-            // InternalAspectLang.g:1987:1: ( 'import' )
-            // InternalAspectLang.g:1988:1: 'import'
+            // InternalAspectLang.g:1994:1: ( 'import' )
+            // InternalAspectLang.g:1995:1: 'import'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getImportAccess().getImportKeyword_0()); 
             }
-            match(input,39,FOLLOW_2); if (state.failed) return ;
+            match(input,40,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getImportAccess().getImportKeyword_0()); 
             }
@@ -6488,14 +6523,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Import__Group__1"
-    // InternalAspectLang.g:2001:1: rule__Import__Group__1 : rule__Import__Group__1__Impl ;
+    // InternalAspectLang.g:2008:1: rule__Import__Group__1 : rule__Import__Group__1__Impl ;
     public final void rule__Import__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2005:1: ( rule__Import__Group__1__Impl )
-            // InternalAspectLang.g:2006:2: rule__Import__Group__1__Impl
+            // InternalAspectLang.g:2012:1: ( rule__Import__Group__1__Impl )
+            // InternalAspectLang.g:2013:2: rule__Import__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Import__Group__1__Impl();
@@ -6521,23 +6556,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Import__Group__1__Impl"
-    // InternalAspectLang.g:2012:1: rule__Import__Group__1__Impl : ( ( rule__Import__ImportedNamespaceAssignment_1 ) ) ;
+    // InternalAspectLang.g:2019:1: rule__Import__Group__1__Impl : ( ( rule__Import__ImportedNamespaceAssignment_1 ) ) ;
     public final void rule__Import__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2016:1: ( ( ( rule__Import__ImportedNamespaceAssignment_1 ) ) )
-            // InternalAspectLang.g:2017:1: ( ( rule__Import__ImportedNamespaceAssignment_1 ) )
+            // InternalAspectLang.g:2023:1: ( ( ( rule__Import__ImportedNamespaceAssignment_1 ) ) )
+            // InternalAspectLang.g:2024:1: ( ( rule__Import__ImportedNamespaceAssignment_1 ) )
             {
-            // InternalAspectLang.g:2017:1: ( ( rule__Import__ImportedNamespaceAssignment_1 ) )
-            // InternalAspectLang.g:2018:1: ( rule__Import__ImportedNamespaceAssignment_1 )
+            // InternalAspectLang.g:2024:1: ( ( rule__Import__ImportedNamespaceAssignment_1 ) )
+            // InternalAspectLang.g:2025:1: ( rule__Import__ImportedNamespaceAssignment_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getImportAccess().getImportedNamespaceAssignment_1()); 
             }
-            // InternalAspectLang.g:2019:1: ( rule__Import__ImportedNamespaceAssignment_1 )
-            // InternalAspectLang.g:2019:2: rule__Import__ImportedNamespaceAssignment_1
+            // InternalAspectLang.g:2026:1: ( rule__Import__ImportedNamespaceAssignment_1 )
+            // InternalAspectLang.g:2026:2: rule__Import__ImportedNamespaceAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__Import__ImportedNamespaceAssignment_1();
@@ -6572,14 +6607,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ApplicationModel__Group__0"
-    // InternalAspectLang.g:2033:1: rule__ApplicationModel__Group__0 : rule__ApplicationModel__Group__0__Impl rule__ApplicationModel__Group__1 ;
+    // InternalAspectLang.g:2040:1: rule__ApplicationModel__Group__0 : rule__ApplicationModel__Group__0__Impl rule__ApplicationModel__Group__1 ;
     public final void rule__ApplicationModel__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2037:1: ( rule__ApplicationModel__Group__0__Impl rule__ApplicationModel__Group__1 )
-            // InternalAspectLang.g:2038:2: rule__ApplicationModel__Group__0__Impl rule__ApplicationModel__Group__1
+            // InternalAspectLang.g:2044:1: ( rule__ApplicationModel__Group__0__Impl rule__ApplicationModel__Group__1 )
+            // InternalAspectLang.g:2045:2: rule__ApplicationModel__Group__0__Impl rule__ApplicationModel__Group__1
             {
             pushFollow(FOLLOW_3);
             rule__ApplicationModel__Group__0__Impl();
@@ -6610,22 +6645,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ApplicationModel__Group__0__Impl"
-    // InternalAspectLang.g:2045:1: rule__ApplicationModel__Group__0__Impl : ( 'use' ) ;
+    // InternalAspectLang.g:2052:1: rule__ApplicationModel__Group__0__Impl : ( 'use' ) ;
     public final void rule__ApplicationModel__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2049:1: ( ( 'use' ) )
-            // InternalAspectLang.g:2050:1: ( 'use' )
+            // InternalAspectLang.g:2056:1: ( ( 'use' ) )
+            // InternalAspectLang.g:2057:1: ( 'use' )
             {
-            // InternalAspectLang.g:2050:1: ( 'use' )
-            // InternalAspectLang.g:2051:1: 'use'
+            // InternalAspectLang.g:2057:1: ( 'use' )
+            // InternalAspectLang.g:2058:1: 'use'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getApplicationModelAccess().getUseKeyword_0()); 
             }
-            match(input,40,FOLLOW_2); if (state.failed) return ;
+            match(input,41,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getApplicationModelAccess().getUseKeyword_0()); 
             }
@@ -6651,14 +6686,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ApplicationModel__Group__1"
-    // InternalAspectLang.g:2064:1: rule__ApplicationModel__Group__1 : rule__ApplicationModel__Group__1__Impl rule__ApplicationModel__Group__2 ;
+    // InternalAspectLang.g:2071:1: rule__ApplicationModel__Group__1 : rule__ApplicationModel__Group__1__Impl rule__ApplicationModel__Group__2 ;
     public final void rule__ApplicationModel__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2068:1: ( rule__ApplicationModel__Group__1__Impl rule__ApplicationModel__Group__2 )
-            // InternalAspectLang.g:2069:2: rule__ApplicationModel__Group__1__Impl rule__ApplicationModel__Group__2
+            // InternalAspectLang.g:2075:1: ( rule__ApplicationModel__Group__1__Impl rule__ApplicationModel__Group__2 )
+            // InternalAspectLang.g:2076:2: rule__ApplicationModel__Group__1__Impl rule__ApplicationModel__Group__2
             {
             pushFollow(FOLLOW_8);
             rule__ApplicationModel__Group__1__Impl();
@@ -6689,23 +6724,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ApplicationModel__Group__1__Impl"
-    // InternalAspectLang.g:2076:1: rule__ApplicationModel__Group__1__Impl : ( ( rule__ApplicationModel__HandlerAssignment_1 ) ) ;
+    // InternalAspectLang.g:2083:1: rule__ApplicationModel__Group__1__Impl : ( ( rule__ApplicationModel__HandlerAssignment_1 ) ) ;
     public final void rule__ApplicationModel__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2080:1: ( ( ( rule__ApplicationModel__HandlerAssignment_1 ) ) )
-            // InternalAspectLang.g:2081:1: ( ( rule__ApplicationModel__HandlerAssignment_1 ) )
+            // InternalAspectLang.g:2087:1: ( ( ( rule__ApplicationModel__HandlerAssignment_1 ) ) )
+            // InternalAspectLang.g:2088:1: ( ( rule__ApplicationModel__HandlerAssignment_1 ) )
             {
-            // InternalAspectLang.g:2081:1: ( ( rule__ApplicationModel__HandlerAssignment_1 ) )
-            // InternalAspectLang.g:2082:1: ( rule__ApplicationModel__HandlerAssignment_1 )
+            // InternalAspectLang.g:2088:1: ( ( rule__ApplicationModel__HandlerAssignment_1 ) )
+            // InternalAspectLang.g:2089:1: ( rule__ApplicationModel__HandlerAssignment_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getApplicationModelAccess().getHandlerAssignment_1()); 
             }
-            // InternalAspectLang.g:2083:1: ( rule__ApplicationModel__HandlerAssignment_1 )
-            // InternalAspectLang.g:2083:2: rule__ApplicationModel__HandlerAssignment_1
+            // InternalAspectLang.g:2090:1: ( rule__ApplicationModel__HandlerAssignment_1 )
+            // InternalAspectLang.g:2090:2: rule__ApplicationModel__HandlerAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__ApplicationModel__HandlerAssignment_1();
@@ -6740,14 +6775,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ApplicationModel__Group__2"
-    // InternalAspectLang.g:2093:1: rule__ApplicationModel__Group__2 : rule__ApplicationModel__Group__2__Impl rule__ApplicationModel__Group__3 ;
+    // InternalAspectLang.g:2100:1: rule__ApplicationModel__Group__2 : rule__ApplicationModel__Group__2__Impl rule__ApplicationModel__Group__3 ;
     public final void rule__ApplicationModel__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2097:1: ( rule__ApplicationModel__Group__2__Impl rule__ApplicationModel__Group__3 )
-            // InternalAspectLang.g:2098:2: rule__ApplicationModel__Group__2__Impl rule__ApplicationModel__Group__3
+            // InternalAspectLang.g:2104:1: ( rule__ApplicationModel__Group__2__Impl rule__ApplicationModel__Group__3 )
+            // InternalAspectLang.g:2105:2: rule__ApplicationModel__Group__2__Impl rule__ApplicationModel__Group__3
             {
             pushFollow(FOLLOW_3);
             rule__ApplicationModel__Group__2__Impl();
@@ -6778,22 +6813,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ApplicationModel__Group__2__Impl"
-    // InternalAspectLang.g:2105:1: rule__ApplicationModel__Group__2__Impl : ( 'on' ) ;
+    // InternalAspectLang.g:2112:1: rule__ApplicationModel__Group__2__Impl : ( 'on' ) ;
     public final void rule__ApplicationModel__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2109:1: ( ( 'on' ) )
-            // InternalAspectLang.g:2110:1: ( 'on' )
+            // InternalAspectLang.g:2116:1: ( ( 'on' ) )
+            // InternalAspectLang.g:2117:1: ( 'on' )
             {
-            // InternalAspectLang.g:2110:1: ( 'on' )
-            // InternalAspectLang.g:2111:1: 'on'
+            // InternalAspectLang.g:2117:1: ( 'on' )
+            // InternalAspectLang.g:2118:1: 'on'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getApplicationModelAccess().getOnKeyword_2()); 
             }
-            match(input,41,FOLLOW_2); if (state.failed) return ;
+            match(input,42,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getApplicationModelAccess().getOnKeyword_2()); 
             }
@@ -6819,14 +6854,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ApplicationModel__Group__3"
-    // InternalAspectLang.g:2124:1: rule__ApplicationModel__Group__3 : rule__ApplicationModel__Group__3__Impl rule__ApplicationModel__Group__4 ;
+    // InternalAspectLang.g:2131:1: rule__ApplicationModel__Group__3 : rule__ApplicationModel__Group__3__Impl rule__ApplicationModel__Group__4 ;
     public final void rule__ApplicationModel__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2128:1: ( rule__ApplicationModel__Group__3__Impl rule__ApplicationModel__Group__4 )
-            // InternalAspectLang.g:2129:2: rule__ApplicationModel__Group__3__Impl rule__ApplicationModel__Group__4
+            // InternalAspectLang.g:2135:1: ( rule__ApplicationModel__Group__3__Impl rule__ApplicationModel__Group__4 )
+            // InternalAspectLang.g:2136:2: rule__ApplicationModel__Group__3__Impl rule__ApplicationModel__Group__4
             {
             pushFollow(FOLLOW_9);
             rule__ApplicationModel__Group__3__Impl();
@@ -6857,23 +6892,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ApplicationModel__Group__3__Impl"
-    // InternalAspectLang.g:2136:1: rule__ApplicationModel__Group__3__Impl : ( ( rule__ApplicationModel__NameAssignment_3 ) ) ;
+    // InternalAspectLang.g:2143:1: rule__ApplicationModel__Group__3__Impl : ( ( rule__ApplicationModel__NameAssignment_3 ) ) ;
     public final void rule__ApplicationModel__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2140:1: ( ( ( rule__ApplicationModel__NameAssignment_3 ) ) )
-            // InternalAspectLang.g:2141:1: ( ( rule__ApplicationModel__NameAssignment_3 ) )
+            // InternalAspectLang.g:2147:1: ( ( ( rule__ApplicationModel__NameAssignment_3 ) ) )
+            // InternalAspectLang.g:2148:1: ( ( rule__ApplicationModel__NameAssignment_3 ) )
             {
-            // InternalAspectLang.g:2141:1: ( ( rule__ApplicationModel__NameAssignment_3 ) )
-            // InternalAspectLang.g:2142:1: ( rule__ApplicationModel__NameAssignment_3 )
+            // InternalAspectLang.g:2148:1: ( ( rule__ApplicationModel__NameAssignment_3 ) )
+            // InternalAspectLang.g:2149:1: ( rule__ApplicationModel__NameAssignment_3 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getApplicationModelAccess().getNameAssignment_3()); 
             }
-            // InternalAspectLang.g:2143:1: ( rule__ApplicationModel__NameAssignment_3 )
-            // InternalAspectLang.g:2143:2: rule__ApplicationModel__NameAssignment_3
+            // InternalAspectLang.g:2150:1: ( rule__ApplicationModel__NameAssignment_3 )
+            // InternalAspectLang.g:2150:2: rule__ApplicationModel__NameAssignment_3
             {
             pushFollow(FOLLOW_2);
             rule__ApplicationModel__NameAssignment_3();
@@ -6908,14 +6943,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ApplicationModel__Group__4"
-    // InternalAspectLang.g:2153:1: rule__ApplicationModel__Group__4 : rule__ApplicationModel__Group__4__Impl ;
+    // InternalAspectLang.g:2160:1: rule__ApplicationModel__Group__4 : rule__ApplicationModel__Group__4__Impl ;
     public final void rule__ApplicationModel__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2157:1: ( rule__ApplicationModel__Group__4__Impl )
-            // InternalAspectLang.g:2158:2: rule__ApplicationModel__Group__4__Impl
+            // InternalAspectLang.g:2164:1: ( rule__ApplicationModel__Group__4__Impl )
+            // InternalAspectLang.g:2165:2: rule__ApplicationModel__Group__4__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ApplicationModel__Group__4__Impl();
@@ -6941,23 +6976,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ApplicationModel__Group__4__Impl"
-    // InternalAspectLang.g:2164:1: rule__ApplicationModel__Group__4__Impl : ( ( rule__ApplicationModel__ModelAssignment_4 ) ) ;
+    // InternalAspectLang.g:2171:1: rule__ApplicationModel__Group__4__Impl : ( ( rule__ApplicationModel__ModelAssignment_4 ) ) ;
     public final void rule__ApplicationModel__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2168:1: ( ( ( rule__ApplicationModel__ModelAssignment_4 ) ) )
-            // InternalAspectLang.g:2169:1: ( ( rule__ApplicationModel__ModelAssignment_4 ) )
+            // InternalAspectLang.g:2175:1: ( ( ( rule__ApplicationModel__ModelAssignment_4 ) ) )
+            // InternalAspectLang.g:2176:1: ( ( rule__ApplicationModel__ModelAssignment_4 ) )
             {
-            // InternalAspectLang.g:2169:1: ( ( rule__ApplicationModel__ModelAssignment_4 ) )
-            // InternalAspectLang.g:2170:1: ( rule__ApplicationModel__ModelAssignment_4 )
+            // InternalAspectLang.g:2176:1: ( ( rule__ApplicationModel__ModelAssignment_4 ) )
+            // InternalAspectLang.g:2177:1: ( rule__ApplicationModel__ModelAssignment_4 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getApplicationModelAccess().getModelAssignment_4()); 
             }
-            // InternalAspectLang.g:2171:1: ( rule__ApplicationModel__ModelAssignment_4 )
-            // InternalAspectLang.g:2171:2: rule__ApplicationModel__ModelAssignment_4
+            // InternalAspectLang.g:2178:1: ( rule__ApplicationModel__ModelAssignment_4 )
+            // InternalAspectLang.g:2178:2: rule__ApplicationModel__ModelAssignment_4
             {
             pushFollow(FOLLOW_2);
             rule__ApplicationModel__ModelAssignment_4();
@@ -6992,14 +7027,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Aspect__Group__0"
-    // InternalAspectLang.g:2191:1: rule__Aspect__Group__0 : rule__Aspect__Group__0__Impl rule__Aspect__Group__1 ;
+    // InternalAspectLang.g:2198:1: rule__Aspect__Group__0 : rule__Aspect__Group__0__Impl rule__Aspect__Group__1 ;
     public final void rule__Aspect__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2195:1: ( rule__Aspect__Group__0__Impl rule__Aspect__Group__1 )
-            // InternalAspectLang.g:2196:2: rule__Aspect__Group__0__Impl rule__Aspect__Group__1
+            // InternalAspectLang.g:2202:1: ( rule__Aspect__Group__0__Impl rule__Aspect__Group__1 )
+            // InternalAspectLang.g:2203:2: rule__Aspect__Group__0__Impl rule__Aspect__Group__1
             {
             pushFollow(FOLLOW_3);
             rule__Aspect__Group__0__Impl();
@@ -7030,22 +7065,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Aspect__Group__0__Impl"
-    // InternalAspectLang.g:2203:1: rule__Aspect__Group__0__Impl : ( 'aspect' ) ;
+    // InternalAspectLang.g:2210:1: rule__Aspect__Group__0__Impl : ( 'aspect' ) ;
     public final void rule__Aspect__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2207:1: ( ( 'aspect' ) )
-            // InternalAspectLang.g:2208:1: ( 'aspect' )
+            // InternalAspectLang.g:2214:1: ( ( 'aspect' ) )
+            // InternalAspectLang.g:2215:1: ( 'aspect' )
             {
-            // InternalAspectLang.g:2208:1: ( 'aspect' )
-            // InternalAspectLang.g:2209:1: 'aspect'
+            // InternalAspectLang.g:2215:1: ( 'aspect' )
+            // InternalAspectLang.g:2216:1: 'aspect'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAspectAccess().getAspectKeyword_0()); 
             }
-            match(input,42,FOLLOW_2); if (state.failed) return ;
+            match(input,43,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getAspectAccess().getAspectKeyword_0()); 
             }
@@ -7071,14 +7106,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Aspect__Group__1"
-    // InternalAspectLang.g:2222:1: rule__Aspect__Group__1 : rule__Aspect__Group__1__Impl rule__Aspect__Group__2 ;
+    // InternalAspectLang.g:2229:1: rule__Aspect__Group__1 : rule__Aspect__Group__1__Impl rule__Aspect__Group__2 ;
     public final void rule__Aspect__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2226:1: ( rule__Aspect__Group__1__Impl rule__Aspect__Group__2 )
-            // InternalAspectLang.g:2227:2: rule__Aspect__Group__1__Impl rule__Aspect__Group__2
+            // InternalAspectLang.g:2233:1: ( rule__Aspect__Group__1__Impl rule__Aspect__Group__2 )
+            // InternalAspectLang.g:2234:2: rule__Aspect__Group__1__Impl rule__Aspect__Group__2
             {
             pushFollow(FOLLOW_10);
             rule__Aspect__Group__1__Impl();
@@ -7109,23 +7144,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Aspect__Group__1__Impl"
-    // InternalAspectLang.g:2234:1: rule__Aspect__Group__1__Impl : ( ( rule__Aspect__PointcutAssignment_1 ) ) ;
+    // InternalAspectLang.g:2241:1: rule__Aspect__Group__1__Impl : ( ( rule__Aspect__PointcutAssignment_1 ) ) ;
     public final void rule__Aspect__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2238:1: ( ( ( rule__Aspect__PointcutAssignment_1 ) ) )
-            // InternalAspectLang.g:2239:1: ( ( rule__Aspect__PointcutAssignment_1 ) )
+            // InternalAspectLang.g:2245:1: ( ( ( rule__Aspect__PointcutAssignment_1 ) ) )
+            // InternalAspectLang.g:2246:1: ( ( rule__Aspect__PointcutAssignment_1 ) )
             {
-            // InternalAspectLang.g:2239:1: ( ( rule__Aspect__PointcutAssignment_1 ) )
-            // InternalAspectLang.g:2240:1: ( rule__Aspect__PointcutAssignment_1 )
+            // InternalAspectLang.g:2246:1: ( ( rule__Aspect__PointcutAssignment_1 ) )
+            // InternalAspectLang.g:2247:1: ( rule__Aspect__PointcutAssignment_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAspectAccess().getPointcutAssignment_1()); 
             }
-            // InternalAspectLang.g:2241:1: ( rule__Aspect__PointcutAssignment_1 )
-            // InternalAspectLang.g:2241:2: rule__Aspect__PointcutAssignment_1
+            // InternalAspectLang.g:2248:1: ( rule__Aspect__PointcutAssignment_1 )
+            // InternalAspectLang.g:2248:2: rule__Aspect__PointcutAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__Aspect__PointcutAssignment_1();
@@ -7160,14 +7195,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Aspect__Group__2"
-    // InternalAspectLang.g:2251:1: rule__Aspect__Group__2 : rule__Aspect__Group__2__Impl rule__Aspect__Group__3 ;
+    // InternalAspectLang.g:2258:1: rule__Aspect__Group__2 : rule__Aspect__Group__2__Impl rule__Aspect__Group__3 ;
     public final void rule__Aspect__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2255:1: ( rule__Aspect__Group__2__Impl rule__Aspect__Group__3 )
-            // InternalAspectLang.g:2256:2: rule__Aspect__Group__2__Impl rule__Aspect__Group__3
+            // InternalAspectLang.g:2262:1: ( rule__Aspect__Group__2__Impl rule__Aspect__Group__3 )
+            // InternalAspectLang.g:2263:2: rule__Aspect__Group__2__Impl rule__Aspect__Group__3
             {
             pushFollow(FOLLOW_3);
             rule__Aspect__Group__2__Impl();
@@ -7198,22 +7233,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Aspect__Group__2__Impl"
-    // InternalAspectLang.g:2263:1: rule__Aspect__Group__2__Impl : ( ':' ) ;
+    // InternalAspectLang.g:2270:1: rule__Aspect__Group__2__Impl : ( ':' ) ;
     public final void rule__Aspect__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2267:1: ( ( ':' ) )
-            // InternalAspectLang.g:2268:1: ( ':' )
+            // InternalAspectLang.g:2274:1: ( ( ':' ) )
+            // InternalAspectLang.g:2275:1: ( ':' )
             {
-            // InternalAspectLang.g:2268:1: ( ':' )
-            // InternalAspectLang.g:2269:1: ':'
+            // InternalAspectLang.g:2275:1: ( ':' )
+            // InternalAspectLang.g:2276:1: ':'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAspectAccess().getColonKeyword_2()); 
             }
-            match(input,43,FOLLOW_2); if (state.failed) return ;
+            match(input,44,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getAspectAccess().getColonKeyword_2()); 
             }
@@ -7239,14 +7274,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Aspect__Group__3"
-    // InternalAspectLang.g:2282:1: rule__Aspect__Group__3 : rule__Aspect__Group__3__Impl rule__Aspect__Group__4 ;
+    // InternalAspectLang.g:2289:1: rule__Aspect__Group__3 : rule__Aspect__Group__3__Impl rule__Aspect__Group__4 ;
     public final void rule__Aspect__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2286:1: ( rule__Aspect__Group__3__Impl rule__Aspect__Group__4 )
-            // InternalAspectLang.g:2287:2: rule__Aspect__Group__3__Impl rule__Aspect__Group__4
+            // InternalAspectLang.g:2293:1: ( rule__Aspect__Group__3__Impl rule__Aspect__Group__4 )
+            // InternalAspectLang.g:2294:2: rule__Aspect__Group__3__Impl rule__Aspect__Group__4
             {
             pushFollow(FOLLOW_11);
             rule__Aspect__Group__3__Impl();
@@ -7277,23 +7312,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Aspect__Group__3__Impl"
-    // InternalAspectLang.g:2294:1: rule__Aspect__Group__3__Impl : ( ( rule__Aspect__AdvicesAssignment_3 ) ) ;
+    // InternalAspectLang.g:2301:1: rule__Aspect__Group__3__Impl : ( ( rule__Aspect__AdvicesAssignment_3 ) ) ;
     public final void rule__Aspect__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2298:1: ( ( ( rule__Aspect__AdvicesAssignment_3 ) ) )
-            // InternalAspectLang.g:2299:1: ( ( rule__Aspect__AdvicesAssignment_3 ) )
+            // InternalAspectLang.g:2305:1: ( ( ( rule__Aspect__AdvicesAssignment_3 ) ) )
+            // InternalAspectLang.g:2306:1: ( ( rule__Aspect__AdvicesAssignment_3 ) )
             {
-            // InternalAspectLang.g:2299:1: ( ( rule__Aspect__AdvicesAssignment_3 ) )
-            // InternalAspectLang.g:2300:1: ( rule__Aspect__AdvicesAssignment_3 )
+            // InternalAspectLang.g:2306:1: ( ( rule__Aspect__AdvicesAssignment_3 ) )
+            // InternalAspectLang.g:2307:1: ( rule__Aspect__AdvicesAssignment_3 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAspectAccess().getAdvicesAssignment_3()); 
             }
-            // InternalAspectLang.g:2301:1: ( rule__Aspect__AdvicesAssignment_3 )
-            // InternalAspectLang.g:2301:2: rule__Aspect__AdvicesAssignment_3
+            // InternalAspectLang.g:2308:1: ( rule__Aspect__AdvicesAssignment_3 )
+            // InternalAspectLang.g:2308:2: rule__Aspect__AdvicesAssignment_3
             {
             pushFollow(FOLLOW_2);
             rule__Aspect__AdvicesAssignment_3();
@@ -7328,14 +7363,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Aspect__Group__4"
-    // InternalAspectLang.g:2311:1: rule__Aspect__Group__4 : rule__Aspect__Group__4__Impl ;
+    // InternalAspectLang.g:2318:1: rule__Aspect__Group__4 : rule__Aspect__Group__4__Impl ;
     public final void rule__Aspect__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2315:1: ( rule__Aspect__Group__4__Impl )
-            // InternalAspectLang.g:2316:2: rule__Aspect__Group__4__Impl
+            // InternalAspectLang.g:2322:1: ( rule__Aspect__Group__4__Impl )
+            // InternalAspectLang.g:2323:2: rule__Aspect__Group__4__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Aspect__Group__4__Impl();
@@ -7361,35 +7396,35 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Aspect__Group__4__Impl"
-    // InternalAspectLang.g:2322:1: rule__Aspect__Group__4__Impl : ( ( rule__Aspect__Group_4__0 )* ) ;
+    // InternalAspectLang.g:2329:1: rule__Aspect__Group__4__Impl : ( ( rule__Aspect__Group_4__0 )* ) ;
     public final void rule__Aspect__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2326:1: ( ( ( rule__Aspect__Group_4__0 )* ) )
-            // InternalAspectLang.g:2327:1: ( ( rule__Aspect__Group_4__0 )* )
+            // InternalAspectLang.g:2333:1: ( ( ( rule__Aspect__Group_4__0 )* ) )
+            // InternalAspectLang.g:2334:1: ( ( rule__Aspect__Group_4__0 )* )
             {
-            // InternalAspectLang.g:2327:1: ( ( rule__Aspect__Group_4__0 )* )
-            // InternalAspectLang.g:2328:1: ( rule__Aspect__Group_4__0 )*
+            // InternalAspectLang.g:2334:1: ( ( rule__Aspect__Group_4__0 )* )
+            // InternalAspectLang.g:2335:1: ( rule__Aspect__Group_4__0 )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAspectAccess().getGroup_4()); 
             }
-            // InternalAspectLang.g:2329:1: ( rule__Aspect__Group_4__0 )*
+            // InternalAspectLang.g:2336:1: ( rule__Aspect__Group_4__0 )*
             loop21:
             do {
                 int alt21=2;
                 int LA21_0 = input.LA(1);
 
-                if ( (LA21_0==44) ) {
+                if ( (LA21_0==45) ) {
                     alt21=1;
                 }
 
 
                 switch (alt21) {
             	case 1 :
-            	    // InternalAspectLang.g:2329:2: rule__Aspect__Group_4__0
+            	    // InternalAspectLang.g:2336:2: rule__Aspect__Group_4__0
             	    {
             	    pushFollow(FOLLOW_12);
             	    rule__Aspect__Group_4__0();
@@ -7430,14 +7465,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Aspect__Group_4__0"
-    // InternalAspectLang.g:2349:1: rule__Aspect__Group_4__0 : rule__Aspect__Group_4__0__Impl rule__Aspect__Group_4__1 ;
+    // InternalAspectLang.g:2356:1: rule__Aspect__Group_4__0 : rule__Aspect__Group_4__0__Impl rule__Aspect__Group_4__1 ;
     public final void rule__Aspect__Group_4__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2353:1: ( rule__Aspect__Group_4__0__Impl rule__Aspect__Group_4__1 )
-            // InternalAspectLang.g:2354:2: rule__Aspect__Group_4__0__Impl rule__Aspect__Group_4__1
+            // InternalAspectLang.g:2360:1: ( rule__Aspect__Group_4__0__Impl rule__Aspect__Group_4__1 )
+            // InternalAspectLang.g:2361:2: rule__Aspect__Group_4__0__Impl rule__Aspect__Group_4__1
             {
             pushFollow(FOLLOW_3);
             rule__Aspect__Group_4__0__Impl();
@@ -7468,22 +7503,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Aspect__Group_4__0__Impl"
-    // InternalAspectLang.g:2361:1: rule__Aspect__Group_4__0__Impl : ( ',' ) ;
+    // InternalAspectLang.g:2368:1: rule__Aspect__Group_4__0__Impl : ( ',' ) ;
     public final void rule__Aspect__Group_4__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2365:1: ( ( ',' ) )
-            // InternalAspectLang.g:2366:1: ( ',' )
+            // InternalAspectLang.g:2372:1: ( ( ',' ) )
+            // InternalAspectLang.g:2373:1: ( ',' )
             {
-            // InternalAspectLang.g:2366:1: ( ',' )
-            // InternalAspectLang.g:2367:1: ','
+            // InternalAspectLang.g:2373:1: ( ',' )
+            // InternalAspectLang.g:2374:1: ','
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAspectAccess().getCommaKeyword_4_0()); 
             }
-            match(input,44,FOLLOW_2); if (state.failed) return ;
+            match(input,45,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getAspectAccess().getCommaKeyword_4_0()); 
             }
@@ -7509,14 +7544,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Aspect__Group_4__1"
-    // InternalAspectLang.g:2380:1: rule__Aspect__Group_4__1 : rule__Aspect__Group_4__1__Impl ;
+    // InternalAspectLang.g:2387:1: rule__Aspect__Group_4__1 : rule__Aspect__Group_4__1__Impl ;
     public final void rule__Aspect__Group_4__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2384:1: ( rule__Aspect__Group_4__1__Impl )
-            // InternalAspectLang.g:2385:2: rule__Aspect__Group_4__1__Impl
+            // InternalAspectLang.g:2391:1: ( rule__Aspect__Group_4__1__Impl )
+            // InternalAspectLang.g:2392:2: rule__Aspect__Group_4__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Aspect__Group_4__1__Impl();
@@ -7542,23 +7577,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Aspect__Group_4__1__Impl"
-    // InternalAspectLang.g:2391:1: rule__Aspect__Group_4__1__Impl : ( ( rule__Aspect__AdvicesAssignment_4_1 ) ) ;
+    // InternalAspectLang.g:2398:1: rule__Aspect__Group_4__1__Impl : ( ( rule__Aspect__AdvicesAssignment_4_1 ) ) ;
     public final void rule__Aspect__Group_4__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2395:1: ( ( ( rule__Aspect__AdvicesAssignment_4_1 ) ) )
-            // InternalAspectLang.g:2396:1: ( ( rule__Aspect__AdvicesAssignment_4_1 ) )
+            // InternalAspectLang.g:2402:1: ( ( ( rule__Aspect__AdvicesAssignment_4_1 ) ) )
+            // InternalAspectLang.g:2403:1: ( ( rule__Aspect__AdvicesAssignment_4_1 ) )
             {
-            // InternalAspectLang.g:2396:1: ( ( rule__Aspect__AdvicesAssignment_4_1 ) )
-            // InternalAspectLang.g:2397:1: ( rule__Aspect__AdvicesAssignment_4_1 )
+            // InternalAspectLang.g:2403:1: ( ( rule__Aspect__AdvicesAssignment_4_1 ) )
+            // InternalAspectLang.g:2404:1: ( rule__Aspect__AdvicesAssignment_4_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAspectAccess().getAdvicesAssignment_4_1()); 
             }
-            // InternalAspectLang.g:2398:1: ( rule__Aspect__AdvicesAssignment_4_1 )
-            // InternalAspectLang.g:2398:2: rule__Aspect__AdvicesAssignment_4_1
+            // InternalAspectLang.g:2405:1: ( rule__Aspect__AdvicesAssignment_4_1 )
+            // InternalAspectLang.g:2405:2: rule__Aspect__AdvicesAssignment_4_1
             {
             pushFollow(FOLLOW_2);
             rule__Aspect__AdvicesAssignment_4_1();
@@ -7593,14 +7628,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__UtilizeAdvice__Group__0"
-    // InternalAspectLang.g:2412:1: rule__UtilizeAdvice__Group__0 : rule__UtilizeAdvice__Group__0__Impl rule__UtilizeAdvice__Group__1 ;
+    // InternalAspectLang.g:2419:1: rule__UtilizeAdvice__Group__0 : rule__UtilizeAdvice__Group__0__Impl rule__UtilizeAdvice__Group__1 ;
     public final void rule__UtilizeAdvice__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2416:1: ( rule__UtilizeAdvice__Group__0__Impl rule__UtilizeAdvice__Group__1 )
-            // InternalAspectLang.g:2417:2: rule__UtilizeAdvice__Group__0__Impl rule__UtilizeAdvice__Group__1
+            // InternalAspectLang.g:2423:1: ( rule__UtilizeAdvice__Group__0__Impl rule__UtilizeAdvice__Group__1 )
+            // InternalAspectLang.g:2424:2: rule__UtilizeAdvice__Group__0__Impl rule__UtilizeAdvice__Group__1
             {
             pushFollow(FOLLOW_13);
             rule__UtilizeAdvice__Group__0__Impl();
@@ -7631,23 +7666,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__UtilizeAdvice__Group__0__Impl"
-    // InternalAspectLang.g:2424:1: rule__UtilizeAdvice__Group__0__Impl : ( ( rule__UtilizeAdvice__AdviceAssignment_0 ) ) ;
+    // InternalAspectLang.g:2431:1: rule__UtilizeAdvice__Group__0__Impl : ( ( rule__UtilizeAdvice__AdviceAssignment_0 ) ) ;
     public final void rule__UtilizeAdvice__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2428:1: ( ( ( rule__UtilizeAdvice__AdviceAssignment_0 ) ) )
-            // InternalAspectLang.g:2429:1: ( ( rule__UtilizeAdvice__AdviceAssignment_0 ) )
+            // InternalAspectLang.g:2435:1: ( ( ( rule__UtilizeAdvice__AdviceAssignment_0 ) ) )
+            // InternalAspectLang.g:2436:1: ( ( rule__UtilizeAdvice__AdviceAssignment_0 ) )
             {
-            // InternalAspectLang.g:2429:1: ( ( rule__UtilizeAdvice__AdviceAssignment_0 ) )
-            // InternalAspectLang.g:2430:1: ( rule__UtilizeAdvice__AdviceAssignment_0 )
+            // InternalAspectLang.g:2436:1: ( ( rule__UtilizeAdvice__AdviceAssignment_0 ) )
+            // InternalAspectLang.g:2437:1: ( rule__UtilizeAdvice__AdviceAssignment_0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getUtilizeAdviceAccess().getAdviceAssignment_0()); 
             }
-            // InternalAspectLang.g:2431:1: ( rule__UtilizeAdvice__AdviceAssignment_0 )
-            // InternalAspectLang.g:2431:2: rule__UtilizeAdvice__AdviceAssignment_0
+            // InternalAspectLang.g:2438:1: ( rule__UtilizeAdvice__AdviceAssignment_0 )
+            // InternalAspectLang.g:2438:2: rule__UtilizeAdvice__AdviceAssignment_0
             {
             pushFollow(FOLLOW_2);
             rule__UtilizeAdvice__AdviceAssignment_0();
@@ -7682,14 +7717,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__UtilizeAdvice__Group__1"
-    // InternalAspectLang.g:2441:1: rule__UtilizeAdvice__Group__1 : rule__UtilizeAdvice__Group__1__Impl ;
+    // InternalAspectLang.g:2448:1: rule__UtilizeAdvice__Group__1 : rule__UtilizeAdvice__Group__1__Impl ;
     public final void rule__UtilizeAdvice__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2445:1: ( rule__UtilizeAdvice__Group__1__Impl )
-            // InternalAspectLang.g:2446:2: rule__UtilizeAdvice__Group__1__Impl
+            // InternalAspectLang.g:2452:1: ( rule__UtilizeAdvice__Group__1__Impl )
+            // InternalAspectLang.g:2453:2: rule__UtilizeAdvice__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__UtilizeAdvice__Group__1__Impl();
@@ -7715,31 +7750,31 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__UtilizeAdvice__Group__1__Impl"
-    // InternalAspectLang.g:2452:1: rule__UtilizeAdvice__Group__1__Impl : ( ( rule__UtilizeAdvice__Group_1__0 )? ) ;
+    // InternalAspectLang.g:2459:1: rule__UtilizeAdvice__Group__1__Impl : ( ( rule__UtilizeAdvice__Group_1__0 )? ) ;
     public final void rule__UtilizeAdvice__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2456:1: ( ( ( rule__UtilizeAdvice__Group_1__0 )? ) )
-            // InternalAspectLang.g:2457:1: ( ( rule__UtilizeAdvice__Group_1__0 )? )
+            // InternalAspectLang.g:2463:1: ( ( ( rule__UtilizeAdvice__Group_1__0 )? ) )
+            // InternalAspectLang.g:2464:1: ( ( rule__UtilizeAdvice__Group_1__0 )? )
             {
-            // InternalAspectLang.g:2457:1: ( ( rule__UtilizeAdvice__Group_1__0 )? )
-            // InternalAspectLang.g:2458:1: ( rule__UtilizeAdvice__Group_1__0 )?
+            // InternalAspectLang.g:2464:1: ( ( rule__UtilizeAdvice__Group_1__0 )? )
+            // InternalAspectLang.g:2465:1: ( rule__UtilizeAdvice__Group_1__0 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getUtilizeAdviceAccess().getGroup_1()); 
             }
-            // InternalAspectLang.g:2459:1: ( rule__UtilizeAdvice__Group_1__0 )?
+            // InternalAspectLang.g:2466:1: ( rule__UtilizeAdvice__Group_1__0 )?
             int alt22=2;
             int LA22_0 = input.LA(1);
 
-            if ( (LA22_0==45) ) {
+            if ( (LA22_0==46) ) {
                 alt22=1;
             }
             switch (alt22) {
                 case 1 :
-                    // InternalAspectLang.g:2459:2: rule__UtilizeAdvice__Group_1__0
+                    // InternalAspectLang.g:2466:2: rule__UtilizeAdvice__Group_1__0
                     {
                     pushFollow(FOLLOW_2);
                     rule__UtilizeAdvice__Group_1__0();
@@ -7777,14 +7812,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__UtilizeAdvice__Group_1__0"
-    // InternalAspectLang.g:2473:1: rule__UtilizeAdvice__Group_1__0 : rule__UtilizeAdvice__Group_1__0__Impl rule__UtilizeAdvice__Group_1__1 ;
+    // InternalAspectLang.g:2480:1: rule__UtilizeAdvice__Group_1__0 : rule__UtilizeAdvice__Group_1__0__Impl rule__UtilizeAdvice__Group_1__1 ;
     public final void rule__UtilizeAdvice__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2477:1: ( rule__UtilizeAdvice__Group_1__0__Impl rule__UtilizeAdvice__Group_1__1 )
-            // InternalAspectLang.g:2478:2: rule__UtilizeAdvice__Group_1__0__Impl rule__UtilizeAdvice__Group_1__1
+            // InternalAspectLang.g:2484:1: ( rule__UtilizeAdvice__Group_1__0__Impl rule__UtilizeAdvice__Group_1__1 )
+            // InternalAspectLang.g:2485:2: rule__UtilizeAdvice__Group_1__0__Impl rule__UtilizeAdvice__Group_1__1
             {
             pushFollow(FOLLOW_14);
             rule__UtilizeAdvice__Group_1__0__Impl();
@@ -7815,22 +7850,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__UtilizeAdvice__Group_1__0__Impl"
-    // InternalAspectLang.g:2485:1: rule__UtilizeAdvice__Group_1__0__Impl : ( '(' ) ;
+    // InternalAspectLang.g:2492:1: rule__UtilizeAdvice__Group_1__0__Impl : ( '(' ) ;
     public final void rule__UtilizeAdvice__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2489:1: ( ( '(' ) )
-            // InternalAspectLang.g:2490:1: ( '(' )
+            // InternalAspectLang.g:2496:1: ( ( '(' ) )
+            // InternalAspectLang.g:2497:1: ( '(' )
             {
-            // InternalAspectLang.g:2490:1: ( '(' )
-            // InternalAspectLang.g:2491:1: '('
+            // InternalAspectLang.g:2497:1: ( '(' )
+            // InternalAspectLang.g:2498:1: '('
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getUtilizeAdviceAccess().getLeftParenthesisKeyword_1_0()); 
             }
-            match(input,45,FOLLOW_2); if (state.failed) return ;
+            match(input,46,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getUtilizeAdviceAccess().getLeftParenthesisKeyword_1_0()); 
             }
@@ -7856,14 +7891,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__UtilizeAdvice__Group_1__1"
-    // InternalAspectLang.g:2504:1: rule__UtilizeAdvice__Group_1__1 : rule__UtilizeAdvice__Group_1__1__Impl rule__UtilizeAdvice__Group_1__2 ;
+    // InternalAspectLang.g:2511:1: rule__UtilizeAdvice__Group_1__1 : rule__UtilizeAdvice__Group_1__1__Impl rule__UtilizeAdvice__Group_1__2 ;
     public final void rule__UtilizeAdvice__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2508:1: ( rule__UtilizeAdvice__Group_1__1__Impl rule__UtilizeAdvice__Group_1__2 )
-            // InternalAspectLang.g:2509:2: rule__UtilizeAdvice__Group_1__1__Impl rule__UtilizeAdvice__Group_1__2
+            // InternalAspectLang.g:2515:1: ( rule__UtilizeAdvice__Group_1__1__Impl rule__UtilizeAdvice__Group_1__2 )
+            // InternalAspectLang.g:2516:2: rule__UtilizeAdvice__Group_1__1__Impl rule__UtilizeAdvice__Group_1__2
             {
             pushFollow(FOLLOW_14);
             rule__UtilizeAdvice__Group_1__1__Impl();
@@ -7894,31 +7929,31 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__UtilizeAdvice__Group_1__1__Impl"
-    // InternalAspectLang.g:2516:1: rule__UtilizeAdvice__Group_1__1__Impl : ( ( rule__UtilizeAdvice__Group_1_1__0 )? ) ;
+    // InternalAspectLang.g:2523:1: rule__UtilizeAdvice__Group_1__1__Impl : ( ( rule__UtilizeAdvice__Group_1_1__0 )? ) ;
     public final void rule__UtilizeAdvice__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2520:1: ( ( ( rule__UtilizeAdvice__Group_1_1__0 )? ) )
-            // InternalAspectLang.g:2521:1: ( ( rule__UtilizeAdvice__Group_1_1__0 )? )
+            // InternalAspectLang.g:2527:1: ( ( ( rule__UtilizeAdvice__Group_1_1__0 )? ) )
+            // InternalAspectLang.g:2528:1: ( ( rule__UtilizeAdvice__Group_1_1__0 )? )
             {
-            // InternalAspectLang.g:2521:1: ( ( rule__UtilizeAdvice__Group_1_1__0 )? )
-            // InternalAspectLang.g:2522:1: ( rule__UtilizeAdvice__Group_1_1__0 )?
+            // InternalAspectLang.g:2528:1: ( ( rule__UtilizeAdvice__Group_1_1__0 )? )
+            // InternalAspectLang.g:2529:1: ( rule__UtilizeAdvice__Group_1_1__0 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getUtilizeAdviceAccess().getGroup_1_1()); 
             }
-            // InternalAspectLang.g:2523:1: ( rule__UtilizeAdvice__Group_1_1__0 )?
+            // InternalAspectLang.g:2530:1: ( rule__UtilizeAdvice__Group_1_1__0 )?
             int alt23=2;
             int LA23_0 = input.LA(1);
 
-            if ( ((LA23_0>=RULE_ID && LA23_0<=RULE_INT)||LA23_0==13||(LA23_0>=16 && LA23_0<=18)||(LA23_0>=50 && LA23_0<=51)||(LA23_0>=59 && LA23_0<=60)) ) {
+            if ( ((LA23_0>=RULE_ID && LA23_0<=RULE_INT)||LA23_0==13||(LA23_0>=17 && LA23_0<=19)||(LA23_0>=51 && LA23_0<=52)||(LA23_0>=60 && LA23_0<=61)) ) {
                 alt23=1;
             }
             switch (alt23) {
                 case 1 :
-                    // InternalAspectLang.g:2523:2: rule__UtilizeAdvice__Group_1_1__0
+                    // InternalAspectLang.g:2530:2: rule__UtilizeAdvice__Group_1_1__0
                     {
                     pushFollow(FOLLOW_2);
                     rule__UtilizeAdvice__Group_1_1__0();
@@ -7956,14 +7991,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__UtilizeAdvice__Group_1__2"
-    // InternalAspectLang.g:2533:1: rule__UtilizeAdvice__Group_1__2 : rule__UtilizeAdvice__Group_1__2__Impl ;
+    // InternalAspectLang.g:2540:1: rule__UtilizeAdvice__Group_1__2 : rule__UtilizeAdvice__Group_1__2__Impl ;
     public final void rule__UtilizeAdvice__Group_1__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2537:1: ( rule__UtilizeAdvice__Group_1__2__Impl )
-            // InternalAspectLang.g:2538:2: rule__UtilizeAdvice__Group_1__2__Impl
+            // InternalAspectLang.g:2544:1: ( rule__UtilizeAdvice__Group_1__2__Impl )
+            // InternalAspectLang.g:2545:2: rule__UtilizeAdvice__Group_1__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__UtilizeAdvice__Group_1__2__Impl();
@@ -7989,22 +8024,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__UtilizeAdvice__Group_1__2__Impl"
-    // InternalAspectLang.g:2544:1: rule__UtilizeAdvice__Group_1__2__Impl : ( ')' ) ;
+    // InternalAspectLang.g:2551:1: rule__UtilizeAdvice__Group_1__2__Impl : ( ')' ) ;
     public final void rule__UtilizeAdvice__Group_1__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2548:1: ( ( ')' ) )
-            // InternalAspectLang.g:2549:1: ( ')' )
+            // InternalAspectLang.g:2555:1: ( ( ')' ) )
+            // InternalAspectLang.g:2556:1: ( ')' )
             {
-            // InternalAspectLang.g:2549:1: ( ')' )
-            // InternalAspectLang.g:2550:1: ')'
+            // InternalAspectLang.g:2556:1: ( ')' )
+            // InternalAspectLang.g:2557:1: ')'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getUtilizeAdviceAccess().getRightParenthesisKeyword_1_2()); 
             }
-            match(input,46,FOLLOW_2); if (state.failed) return ;
+            match(input,47,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getUtilizeAdviceAccess().getRightParenthesisKeyword_1_2()); 
             }
@@ -8030,14 +8065,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__UtilizeAdvice__Group_1_1__0"
-    // InternalAspectLang.g:2569:1: rule__UtilizeAdvice__Group_1_1__0 : rule__UtilizeAdvice__Group_1_1__0__Impl rule__UtilizeAdvice__Group_1_1__1 ;
+    // InternalAspectLang.g:2576:1: rule__UtilizeAdvice__Group_1_1__0 : rule__UtilizeAdvice__Group_1_1__0__Impl rule__UtilizeAdvice__Group_1_1__1 ;
     public final void rule__UtilizeAdvice__Group_1_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2573:1: ( rule__UtilizeAdvice__Group_1_1__0__Impl rule__UtilizeAdvice__Group_1_1__1 )
-            // InternalAspectLang.g:2574:2: rule__UtilizeAdvice__Group_1_1__0__Impl rule__UtilizeAdvice__Group_1_1__1
+            // InternalAspectLang.g:2580:1: ( rule__UtilizeAdvice__Group_1_1__0__Impl rule__UtilizeAdvice__Group_1_1__1 )
+            // InternalAspectLang.g:2581:2: rule__UtilizeAdvice__Group_1_1__0__Impl rule__UtilizeAdvice__Group_1_1__1
             {
             pushFollow(FOLLOW_11);
             rule__UtilizeAdvice__Group_1_1__0__Impl();
@@ -8068,23 +8103,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__UtilizeAdvice__Group_1_1__0__Impl"
-    // InternalAspectLang.g:2581:1: rule__UtilizeAdvice__Group_1_1__0__Impl : ( ( rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_0 ) ) ;
+    // InternalAspectLang.g:2588:1: rule__UtilizeAdvice__Group_1_1__0__Impl : ( ( rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_0 ) ) ;
     public final void rule__UtilizeAdvice__Group_1_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2585:1: ( ( ( rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_0 ) ) )
-            // InternalAspectLang.g:2586:1: ( ( rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_0 ) )
+            // InternalAspectLang.g:2592:1: ( ( ( rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_0 ) ) )
+            // InternalAspectLang.g:2593:1: ( ( rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_0 ) )
             {
-            // InternalAspectLang.g:2586:1: ( ( rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_0 ) )
-            // InternalAspectLang.g:2587:1: ( rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_0 )
+            // InternalAspectLang.g:2593:1: ( ( rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_0 ) )
+            // InternalAspectLang.g:2594:1: ( rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getUtilizeAdviceAccess().getParameterAssignmentsAssignment_1_1_0()); 
             }
-            // InternalAspectLang.g:2588:1: ( rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_0 )
-            // InternalAspectLang.g:2588:2: rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_0
+            // InternalAspectLang.g:2595:1: ( rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_0 )
+            // InternalAspectLang.g:2595:2: rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_0
             {
             pushFollow(FOLLOW_2);
             rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_0();
@@ -8119,14 +8154,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__UtilizeAdvice__Group_1_1__1"
-    // InternalAspectLang.g:2598:1: rule__UtilizeAdvice__Group_1_1__1 : rule__UtilizeAdvice__Group_1_1__1__Impl ;
+    // InternalAspectLang.g:2605:1: rule__UtilizeAdvice__Group_1_1__1 : rule__UtilizeAdvice__Group_1_1__1__Impl ;
     public final void rule__UtilizeAdvice__Group_1_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2602:1: ( rule__UtilizeAdvice__Group_1_1__1__Impl )
-            // InternalAspectLang.g:2603:2: rule__UtilizeAdvice__Group_1_1__1__Impl
+            // InternalAspectLang.g:2609:1: ( rule__UtilizeAdvice__Group_1_1__1__Impl )
+            // InternalAspectLang.g:2610:2: rule__UtilizeAdvice__Group_1_1__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__UtilizeAdvice__Group_1_1__1__Impl();
@@ -8152,35 +8187,35 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__UtilizeAdvice__Group_1_1__1__Impl"
-    // InternalAspectLang.g:2609:1: rule__UtilizeAdvice__Group_1_1__1__Impl : ( ( rule__UtilizeAdvice__Group_1_1_1__0 )* ) ;
+    // InternalAspectLang.g:2616:1: rule__UtilizeAdvice__Group_1_1__1__Impl : ( ( rule__UtilizeAdvice__Group_1_1_1__0 )* ) ;
     public final void rule__UtilizeAdvice__Group_1_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2613:1: ( ( ( rule__UtilizeAdvice__Group_1_1_1__0 )* ) )
-            // InternalAspectLang.g:2614:1: ( ( rule__UtilizeAdvice__Group_1_1_1__0 )* )
+            // InternalAspectLang.g:2620:1: ( ( ( rule__UtilizeAdvice__Group_1_1_1__0 )* ) )
+            // InternalAspectLang.g:2621:1: ( ( rule__UtilizeAdvice__Group_1_1_1__0 )* )
             {
-            // InternalAspectLang.g:2614:1: ( ( rule__UtilizeAdvice__Group_1_1_1__0 )* )
-            // InternalAspectLang.g:2615:1: ( rule__UtilizeAdvice__Group_1_1_1__0 )*
+            // InternalAspectLang.g:2621:1: ( ( rule__UtilizeAdvice__Group_1_1_1__0 )* )
+            // InternalAspectLang.g:2622:1: ( rule__UtilizeAdvice__Group_1_1_1__0 )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getUtilizeAdviceAccess().getGroup_1_1_1()); 
             }
-            // InternalAspectLang.g:2616:1: ( rule__UtilizeAdvice__Group_1_1_1__0 )*
+            // InternalAspectLang.g:2623:1: ( rule__UtilizeAdvice__Group_1_1_1__0 )*
             loop24:
             do {
                 int alt24=2;
                 int LA24_0 = input.LA(1);
 
-                if ( (LA24_0==44) ) {
+                if ( (LA24_0==45) ) {
                     alt24=1;
                 }
 
 
                 switch (alt24) {
             	case 1 :
-            	    // InternalAspectLang.g:2616:2: rule__UtilizeAdvice__Group_1_1_1__0
+            	    // InternalAspectLang.g:2623:2: rule__UtilizeAdvice__Group_1_1_1__0
             	    {
             	    pushFollow(FOLLOW_12);
             	    rule__UtilizeAdvice__Group_1_1_1__0();
@@ -8221,14 +8256,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__UtilizeAdvice__Group_1_1_1__0"
-    // InternalAspectLang.g:2630:1: rule__UtilizeAdvice__Group_1_1_1__0 : rule__UtilizeAdvice__Group_1_1_1__0__Impl rule__UtilizeAdvice__Group_1_1_1__1 ;
+    // InternalAspectLang.g:2637:1: rule__UtilizeAdvice__Group_1_1_1__0 : rule__UtilizeAdvice__Group_1_1_1__0__Impl rule__UtilizeAdvice__Group_1_1_1__1 ;
     public final void rule__UtilizeAdvice__Group_1_1_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2634:1: ( rule__UtilizeAdvice__Group_1_1_1__0__Impl rule__UtilizeAdvice__Group_1_1_1__1 )
-            // InternalAspectLang.g:2635:2: rule__UtilizeAdvice__Group_1_1_1__0__Impl rule__UtilizeAdvice__Group_1_1_1__1
+            // InternalAspectLang.g:2641:1: ( rule__UtilizeAdvice__Group_1_1_1__0__Impl rule__UtilizeAdvice__Group_1_1_1__1 )
+            // InternalAspectLang.g:2642:2: rule__UtilizeAdvice__Group_1_1_1__0__Impl rule__UtilizeAdvice__Group_1_1_1__1
             {
             pushFollow(FOLLOW_15);
             rule__UtilizeAdvice__Group_1_1_1__0__Impl();
@@ -8259,22 +8294,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__UtilizeAdvice__Group_1_1_1__0__Impl"
-    // InternalAspectLang.g:2642:1: rule__UtilizeAdvice__Group_1_1_1__0__Impl : ( ',' ) ;
+    // InternalAspectLang.g:2649:1: rule__UtilizeAdvice__Group_1_1_1__0__Impl : ( ',' ) ;
     public final void rule__UtilizeAdvice__Group_1_1_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2646:1: ( ( ',' ) )
-            // InternalAspectLang.g:2647:1: ( ',' )
+            // InternalAspectLang.g:2653:1: ( ( ',' ) )
+            // InternalAspectLang.g:2654:1: ( ',' )
             {
-            // InternalAspectLang.g:2647:1: ( ',' )
-            // InternalAspectLang.g:2648:1: ','
+            // InternalAspectLang.g:2654:1: ( ',' )
+            // InternalAspectLang.g:2655:1: ','
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getUtilizeAdviceAccess().getCommaKeyword_1_1_1_0()); 
             }
-            match(input,44,FOLLOW_2); if (state.failed) return ;
+            match(input,45,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getUtilizeAdviceAccess().getCommaKeyword_1_1_1_0()); 
             }
@@ -8300,14 +8335,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__UtilizeAdvice__Group_1_1_1__1"
-    // InternalAspectLang.g:2661:1: rule__UtilizeAdvice__Group_1_1_1__1 : rule__UtilizeAdvice__Group_1_1_1__1__Impl ;
+    // InternalAspectLang.g:2668:1: rule__UtilizeAdvice__Group_1_1_1__1 : rule__UtilizeAdvice__Group_1_1_1__1__Impl ;
     public final void rule__UtilizeAdvice__Group_1_1_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2665:1: ( rule__UtilizeAdvice__Group_1_1_1__1__Impl )
-            // InternalAspectLang.g:2666:2: rule__UtilizeAdvice__Group_1_1_1__1__Impl
+            // InternalAspectLang.g:2672:1: ( rule__UtilizeAdvice__Group_1_1_1__1__Impl )
+            // InternalAspectLang.g:2673:2: rule__UtilizeAdvice__Group_1_1_1__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__UtilizeAdvice__Group_1_1_1__1__Impl();
@@ -8333,23 +8368,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__UtilizeAdvice__Group_1_1_1__1__Impl"
-    // InternalAspectLang.g:2672:1: rule__UtilizeAdvice__Group_1_1_1__1__Impl : ( ( rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_1_1 ) ) ;
+    // InternalAspectLang.g:2679:1: rule__UtilizeAdvice__Group_1_1_1__1__Impl : ( ( rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_1_1 ) ) ;
     public final void rule__UtilizeAdvice__Group_1_1_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2676:1: ( ( ( rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_1_1 ) ) )
-            // InternalAspectLang.g:2677:1: ( ( rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_1_1 ) )
+            // InternalAspectLang.g:2683:1: ( ( ( rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_1_1 ) ) )
+            // InternalAspectLang.g:2684:1: ( ( rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_1_1 ) )
             {
-            // InternalAspectLang.g:2677:1: ( ( rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_1_1 ) )
-            // InternalAspectLang.g:2678:1: ( rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_1_1 )
+            // InternalAspectLang.g:2684:1: ( ( rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_1_1 ) )
+            // InternalAspectLang.g:2685:1: ( rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_1_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getUtilizeAdviceAccess().getParameterAssignmentsAssignment_1_1_1_1()); 
             }
-            // InternalAspectLang.g:2679:1: ( rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_1_1 )
-            // InternalAspectLang.g:2679:2: rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_1_1
+            // InternalAspectLang.g:2686:1: ( rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_1_1 )
+            // InternalAspectLang.g:2686:2: rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_1_1
             {
             pushFollow(FOLLOW_2);
             rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_1_1();
@@ -8384,14 +8419,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Advice__Group__0"
-    // InternalAspectLang.g:2693:1: rule__Advice__Group__0 : rule__Advice__Group__0__Impl rule__Advice__Group__1 ;
+    // InternalAspectLang.g:2700:1: rule__Advice__Group__0 : rule__Advice__Group__0__Impl rule__Advice__Group__1 ;
     public final void rule__Advice__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2697:1: ( rule__Advice__Group__0__Impl rule__Advice__Group__1 )
-            // InternalAspectLang.g:2698:2: rule__Advice__Group__0__Impl rule__Advice__Group__1
+            // InternalAspectLang.g:2704:1: ( rule__Advice__Group__0__Impl rule__Advice__Group__1 )
+            // InternalAspectLang.g:2705:2: rule__Advice__Group__0__Impl rule__Advice__Group__1
             {
             pushFollow(FOLLOW_3);
             rule__Advice__Group__0__Impl();
@@ -8422,22 +8457,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Advice__Group__0__Impl"
-    // InternalAspectLang.g:2705:1: rule__Advice__Group__0__Impl : ( 'advice' ) ;
+    // InternalAspectLang.g:2712:1: rule__Advice__Group__0__Impl : ( 'advice' ) ;
     public final void rule__Advice__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2709:1: ( ( 'advice' ) )
-            // InternalAspectLang.g:2710:1: ( 'advice' )
+            // InternalAspectLang.g:2716:1: ( ( 'advice' ) )
+            // InternalAspectLang.g:2717:1: ( 'advice' )
             {
-            // InternalAspectLang.g:2710:1: ( 'advice' )
-            // InternalAspectLang.g:2711:1: 'advice'
+            // InternalAspectLang.g:2717:1: ( 'advice' )
+            // InternalAspectLang.g:2718:1: 'advice'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdviceAccess().getAdviceKeyword_0()); 
             }
-            match(input,47,FOLLOW_2); if (state.failed) return ;
+            match(input,48,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getAdviceAccess().getAdviceKeyword_0()); 
             }
@@ -8463,14 +8498,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Advice__Group__1"
-    // InternalAspectLang.g:2724:1: rule__Advice__Group__1 : rule__Advice__Group__1__Impl rule__Advice__Group__2 ;
+    // InternalAspectLang.g:2731:1: rule__Advice__Group__1 : rule__Advice__Group__1__Impl rule__Advice__Group__2 ;
     public final void rule__Advice__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2728:1: ( rule__Advice__Group__1__Impl rule__Advice__Group__2 )
-            // InternalAspectLang.g:2729:2: rule__Advice__Group__1__Impl rule__Advice__Group__2
+            // InternalAspectLang.g:2735:1: ( rule__Advice__Group__1__Impl rule__Advice__Group__2 )
+            // InternalAspectLang.g:2736:2: rule__Advice__Group__1__Impl rule__Advice__Group__2
             {
             pushFollow(FOLLOW_16);
             rule__Advice__Group__1__Impl();
@@ -8501,23 +8536,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Advice__Group__1__Impl"
-    // InternalAspectLang.g:2736:1: rule__Advice__Group__1__Impl : ( ( rule__Advice__NameAssignment_1 ) ) ;
+    // InternalAspectLang.g:2743:1: rule__Advice__Group__1__Impl : ( ( rule__Advice__NameAssignment_1 ) ) ;
     public final void rule__Advice__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2740:1: ( ( ( rule__Advice__NameAssignment_1 ) ) )
-            // InternalAspectLang.g:2741:1: ( ( rule__Advice__NameAssignment_1 ) )
+            // InternalAspectLang.g:2747:1: ( ( ( rule__Advice__NameAssignment_1 ) ) )
+            // InternalAspectLang.g:2748:1: ( ( rule__Advice__NameAssignment_1 ) )
             {
-            // InternalAspectLang.g:2741:1: ( ( rule__Advice__NameAssignment_1 ) )
-            // InternalAspectLang.g:2742:1: ( rule__Advice__NameAssignment_1 )
+            // InternalAspectLang.g:2748:1: ( ( rule__Advice__NameAssignment_1 ) )
+            // InternalAspectLang.g:2749:1: ( rule__Advice__NameAssignment_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdviceAccess().getNameAssignment_1()); 
             }
-            // InternalAspectLang.g:2743:1: ( rule__Advice__NameAssignment_1 )
-            // InternalAspectLang.g:2743:2: rule__Advice__NameAssignment_1
+            // InternalAspectLang.g:2750:1: ( rule__Advice__NameAssignment_1 )
+            // InternalAspectLang.g:2750:2: rule__Advice__NameAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__Advice__NameAssignment_1();
@@ -8552,14 +8587,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Advice__Group__2"
-    // InternalAspectLang.g:2753:1: rule__Advice__Group__2 : rule__Advice__Group__2__Impl rule__Advice__Group__3 ;
+    // InternalAspectLang.g:2760:1: rule__Advice__Group__2 : rule__Advice__Group__2__Impl rule__Advice__Group__3 ;
     public final void rule__Advice__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2757:1: ( rule__Advice__Group__2__Impl rule__Advice__Group__3 )
-            // InternalAspectLang.g:2758:2: rule__Advice__Group__2__Impl rule__Advice__Group__3
+            // InternalAspectLang.g:2764:1: ( rule__Advice__Group__2__Impl rule__Advice__Group__3 )
+            // InternalAspectLang.g:2765:2: rule__Advice__Group__2__Impl rule__Advice__Group__3
             {
             pushFollow(FOLLOW_16);
             rule__Advice__Group__2__Impl();
@@ -8590,31 +8625,31 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Advice__Group__2__Impl"
-    // InternalAspectLang.g:2765:1: rule__Advice__Group__2__Impl : ( ( rule__Advice__Group_2__0 )? ) ;
+    // InternalAspectLang.g:2772:1: rule__Advice__Group__2__Impl : ( ( rule__Advice__Group_2__0 )? ) ;
     public final void rule__Advice__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2769:1: ( ( ( rule__Advice__Group_2__0 )? ) )
-            // InternalAspectLang.g:2770:1: ( ( rule__Advice__Group_2__0 )? )
+            // InternalAspectLang.g:2776:1: ( ( ( rule__Advice__Group_2__0 )? ) )
+            // InternalAspectLang.g:2777:1: ( ( rule__Advice__Group_2__0 )? )
             {
-            // InternalAspectLang.g:2770:1: ( ( rule__Advice__Group_2__0 )? )
-            // InternalAspectLang.g:2771:1: ( rule__Advice__Group_2__0 )?
+            // InternalAspectLang.g:2777:1: ( ( rule__Advice__Group_2__0 )? )
+            // InternalAspectLang.g:2778:1: ( rule__Advice__Group_2__0 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdviceAccess().getGroup_2()); 
             }
-            // InternalAspectLang.g:2772:1: ( rule__Advice__Group_2__0 )?
+            // InternalAspectLang.g:2779:1: ( rule__Advice__Group_2__0 )?
             int alt25=2;
             int LA25_0 = input.LA(1);
 
-            if ( (LA25_0==45) ) {
+            if ( (LA25_0==46) ) {
                 alt25=1;
             }
             switch (alt25) {
                 case 1 :
-                    // InternalAspectLang.g:2772:2: rule__Advice__Group_2__0
+                    // InternalAspectLang.g:2779:2: rule__Advice__Group_2__0
                     {
                     pushFollow(FOLLOW_2);
                     rule__Advice__Group_2__0();
@@ -8652,14 +8687,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Advice__Group__3"
-    // InternalAspectLang.g:2782:1: rule__Advice__Group__3 : rule__Advice__Group__3__Impl rule__Advice__Group__4 ;
+    // InternalAspectLang.g:2789:1: rule__Advice__Group__3 : rule__Advice__Group__3__Impl rule__Advice__Group__4 ;
     public final void rule__Advice__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2786:1: ( rule__Advice__Group__3__Impl rule__Advice__Group__4 )
-            // InternalAspectLang.g:2787:2: rule__Advice__Group__3__Impl rule__Advice__Group__4
+            // InternalAspectLang.g:2793:1: ( rule__Advice__Group__3__Impl rule__Advice__Group__4 )
+            // InternalAspectLang.g:2794:2: rule__Advice__Group__3__Impl rule__Advice__Group__4
             {
             pushFollow(FOLLOW_17);
             rule__Advice__Group__3__Impl();
@@ -8690,22 +8725,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Advice__Group__3__Impl"
-    // InternalAspectLang.g:2794:1: rule__Advice__Group__3__Impl : ( '{' ) ;
+    // InternalAspectLang.g:2801:1: rule__Advice__Group__3__Impl : ( '{' ) ;
     public final void rule__Advice__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2798:1: ( ( '{' ) )
-            // InternalAspectLang.g:2799:1: ( '{' )
+            // InternalAspectLang.g:2805:1: ( ( '{' ) )
+            // InternalAspectLang.g:2806:1: ( '{' )
             {
-            // InternalAspectLang.g:2799:1: ( '{' )
-            // InternalAspectLang.g:2800:1: '{'
+            // InternalAspectLang.g:2806:1: ( '{' )
+            // InternalAspectLang.g:2807:1: '{'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdviceAccess().getLeftCurlyBracketKeyword_3()); 
             }
-            match(input,48,FOLLOW_2); if (state.failed) return ;
+            match(input,49,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getAdviceAccess().getLeftCurlyBracketKeyword_3()); 
             }
@@ -8731,14 +8766,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Advice__Group__4"
-    // InternalAspectLang.g:2813:1: rule__Advice__Group__4 : rule__Advice__Group__4__Impl rule__Advice__Group__5 ;
+    // InternalAspectLang.g:2820:1: rule__Advice__Group__4 : rule__Advice__Group__4__Impl rule__Advice__Group__5 ;
     public final void rule__Advice__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2817:1: ( rule__Advice__Group__4__Impl rule__Advice__Group__5 )
-            // InternalAspectLang.g:2818:2: rule__Advice__Group__4__Impl rule__Advice__Group__5
+            // InternalAspectLang.g:2824:1: ( rule__Advice__Group__4__Impl rule__Advice__Group__5 )
+            // InternalAspectLang.g:2825:2: rule__Advice__Group__4__Impl rule__Advice__Group__5
             {
             pushFollow(FOLLOW_17);
             rule__Advice__Group__4__Impl();
@@ -8769,35 +8804,35 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Advice__Group__4__Impl"
-    // InternalAspectLang.g:2825:1: rule__Advice__Group__4__Impl : ( ( rule__Advice__CollectorsAssignment_4 )* ) ;
+    // InternalAspectLang.g:2832:1: rule__Advice__Group__4__Impl : ( ( rule__Advice__CollectorsAssignment_4 )* ) ;
     public final void rule__Advice__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2829:1: ( ( ( rule__Advice__CollectorsAssignment_4 )* ) )
-            // InternalAspectLang.g:2830:1: ( ( rule__Advice__CollectorsAssignment_4 )* )
+            // InternalAspectLang.g:2836:1: ( ( ( rule__Advice__CollectorsAssignment_4 )* ) )
+            // InternalAspectLang.g:2837:1: ( ( rule__Advice__CollectorsAssignment_4 )* )
             {
-            // InternalAspectLang.g:2830:1: ( ( rule__Advice__CollectorsAssignment_4 )* )
-            // InternalAspectLang.g:2831:1: ( rule__Advice__CollectorsAssignment_4 )*
+            // InternalAspectLang.g:2837:1: ( ( rule__Advice__CollectorsAssignment_4 )* )
+            // InternalAspectLang.g:2838:1: ( rule__Advice__CollectorsAssignment_4 )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdviceAccess().getCollectorsAssignment_4()); 
             }
-            // InternalAspectLang.g:2832:1: ( rule__Advice__CollectorsAssignment_4 )*
+            // InternalAspectLang.g:2839:1: ( rule__Advice__CollectorsAssignment_4 )*
             loop26:
             do {
                 int alt26=2;
                 int LA26_0 = input.LA(1);
 
-                if ( ((LA26_0>=14 && LA26_0<=15)) ) {
+                if ( ((LA26_0>=14 && LA26_0<=16)) ) {
                     alt26=1;
                 }
 
 
                 switch (alt26) {
             	case 1 :
-            	    // InternalAspectLang.g:2832:2: rule__Advice__CollectorsAssignment_4
+            	    // InternalAspectLang.g:2839:2: rule__Advice__CollectorsAssignment_4
             	    {
             	    pushFollow(FOLLOW_18);
             	    rule__Advice__CollectorsAssignment_4();
@@ -8838,14 +8873,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Advice__Group__5"
-    // InternalAspectLang.g:2842:1: rule__Advice__Group__5 : rule__Advice__Group__5__Impl ;
+    // InternalAspectLang.g:2849:1: rule__Advice__Group__5 : rule__Advice__Group__5__Impl ;
     public final void rule__Advice__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2846:1: ( rule__Advice__Group__5__Impl )
-            // InternalAspectLang.g:2847:2: rule__Advice__Group__5__Impl
+            // InternalAspectLang.g:2853:1: ( rule__Advice__Group__5__Impl )
+            // InternalAspectLang.g:2854:2: rule__Advice__Group__5__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Advice__Group__5__Impl();
@@ -8871,22 +8906,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Advice__Group__5__Impl"
-    // InternalAspectLang.g:2853:1: rule__Advice__Group__5__Impl : ( '}' ) ;
+    // InternalAspectLang.g:2860:1: rule__Advice__Group__5__Impl : ( '}' ) ;
     public final void rule__Advice__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2857:1: ( ( '}' ) )
-            // InternalAspectLang.g:2858:1: ( '}' )
+            // InternalAspectLang.g:2864:1: ( ( '}' ) )
+            // InternalAspectLang.g:2865:1: ( '}' )
             {
-            // InternalAspectLang.g:2858:1: ( '}' )
-            // InternalAspectLang.g:2859:1: '}'
+            // InternalAspectLang.g:2865:1: ( '}' )
+            // InternalAspectLang.g:2866:1: '}'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdviceAccess().getRightCurlyBracketKeyword_5()); 
             }
-            match(input,49,FOLLOW_2); if (state.failed) return ;
+            match(input,50,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getAdviceAccess().getRightCurlyBracketKeyword_5()); 
             }
@@ -8912,14 +8947,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Advice__Group_2__0"
-    // InternalAspectLang.g:2884:1: rule__Advice__Group_2__0 : rule__Advice__Group_2__0__Impl rule__Advice__Group_2__1 ;
+    // InternalAspectLang.g:2891:1: rule__Advice__Group_2__0 : rule__Advice__Group_2__0__Impl rule__Advice__Group_2__1 ;
     public final void rule__Advice__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2888:1: ( rule__Advice__Group_2__0__Impl rule__Advice__Group_2__1 )
-            // InternalAspectLang.g:2889:2: rule__Advice__Group_2__0__Impl rule__Advice__Group_2__1
+            // InternalAspectLang.g:2895:1: ( rule__Advice__Group_2__0__Impl rule__Advice__Group_2__1 )
+            // InternalAspectLang.g:2896:2: rule__Advice__Group_2__0__Impl rule__Advice__Group_2__1
             {
             pushFollow(FOLLOW_19);
             rule__Advice__Group_2__0__Impl();
@@ -8950,22 +8985,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Advice__Group_2__0__Impl"
-    // InternalAspectLang.g:2896:1: rule__Advice__Group_2__0__Impl : ( '(' ) ;
+    // InternalAspectLang.g:2903:1: rule__Advice__Group_2__0__Impl : ( '(' ) ;
     public final void rule__Advice__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2900:1: ( ( '(' ) )
-            // InternalAspectLang.g:2901:1: ( '(' )
+            // InternalAspectLang.g:2907:1: ( ( '(' ) )
+            // InternalAspectLang.g:2908:1: ( '(' )
             {
-            // InternalAspectLang.g:2901:1: ( '(' )
-            // InternalAspectLang.g:2902:1: '('
+            // InternalAspectLang.g:2908:1: ( '(' )
+            // InternalAspectLang.g:2909:1: '('
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdviceAccess().getLeftParenthesisKeyword_2_0()); 
             }
-            match(input,45,FOLLOW_2); if (state.failed) return ;
+            match(input,46,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getAdviceAccess().getLeftParenthesisKeyword_2_0()); 
             }
@@ -8991,14 +9026,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Advice__Group_2__1"
-    // InternalAspectLang.g:2915:1: rule__Advice__Group_2__1 : rule__Advice__Group_2__1__Impl rule__Advice__Group_2__2 ;
+    // InternalAspectLang.g:2922:1: rule__Advice__Group_2__1 : rule__Advice__Group_2__1__Impl rule__Advice__Group_2__2 ;
     public final void rule__Advice__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2919:1: ( rule__Advice__Group_2__1__Impl rule__Advice__Group_2__2 )
-            // InternalAspectLang.g:2920:2: rule__Advice__Group_2__1__Impl rule__Advice__Group_2__2
+            // InternalAspectLang.g:2926:1: ( rule__Advice__Group_2__1__Impl rule__Advice__Group_2__2 )
+            // InternalAspectLang.g:2927:2: rule__Advice__Group_2__1__Impl rule__Advice__Group_2__2
             {
             pushFollow(FOLLOW_19);
             rule__Advice__Group_2__1__Impl();
@@ -9029,22 +9064,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Advice__Group_2__1__Impl"
-    // InternalAspectLang.g:2927:1: rule__Advice__Group_2__1__Impl : ( ( rule__Advice__Group_2_1__0 )? ) ;
+    // InternalAspectLang.g:2934:1: rule__Advice__Group_2__1__Impl : ( ( rule__Advice__Group_2_1__0 )? ) ;
     public final void rule__Advice__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2931:1: ( ( ( rule__Advice__Group_2_1__0 )? ) )
-            // InternalAspectLang.g:2932:1: ( ( rule__Advice__Group_2_1__0 )? )
+            // InternalAspectLang.g:2938:1: ( ( ( rule__Advice__Group_2_1__0 )? ) )
+            // InternalAspectLang.g:2939:1: ( ( rule__Advice__Group_2_1__0 )? )
             {
-            // InternalAspectLang.g:2932:1: ( ( rule__Advice__Group_2_1__0 )? )
-            // InternalAspectLang.g:2933:1: ( rule__Advice__Group_2_1__0 )?
+            // InternalAspectLang.g:2939:1: ( ( rule__Advice__Group_2_1__0 )? )
+            // InternalAspectLang.g:2940:1: ( rule__Advice__Group_2_1__0 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdviceAccess().getGroup_2_1()); 
             }
-            // InternalAspectLang.g:2934:1: ( rule__Advice__Group_2_1__0 )?
+            // InternalAspectLang.g:2941:1: ( rule__Advice__Group_2_1__0 )?
             int alt27=2;
             int LA27_0 = input.LA(1);
 
@@ -9053,7 +9088,7 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
             }
             switch (alt27) {
                 case 1 :
-                    // InternalAspectLang.g:2934:2: rule__Advice__Group_2_1__0
+                    // InternalAspectLang.g:2941:2: rule__Advice__Group_2_1__0
                     {
                     pushFollow(FOLLOW_2);
                     rule__Advice__Group_2_1__0();
@@ -9091,14 +9126,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Advice__Group_2__2"
-    // InternalAspectLang.g:2944:1: rule__Advice__Group_2__2 : rule__Advice__Group_2__2__Impl ;
+    // InternalAspectLang.g:2951:1: rule__Advice__Group_2__2 : rule__Advice__Group_2__2__Impl ;
     public final void rule__Advice__Group_2__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2948:1: ( rule__Advice__Group_2__2__Impl )
-            // InternalAspectLang.g:2949:2: rule__Advice__Group_2__2__Impl
+            // InternalAspectLang.g:2955:1: ( rule__Advice__Group_2__2__Impl )
+            // InternalAspectLang.g:2956:2: rule__Advice__Group_2__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Advice__Group_2__2__Impl();
@@ -9124,22 +9159,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Advice__Group_2__2__Impl"
-    // InternalAspectLang.g:2955:1: rule__Advice__Group_2__2__Impl : ( ')' ) ;
+    // InternalAspectLang.g:2962:1: rule__Advice__Group_2__2__Impl : ( ')' ) ;
     public final void rule__Advice__Group_2__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2959:1: ( ( ')' ) )
-            // InternalAspectLang.g:2960:1: ( ')' )
+            // InternalAspectLang.g:2966:1: ( ( ')' ) )
+            // InternalAspectLang.g:2967:1: ( ')' )
             {
-            // InternalAspectLang.g:2960:1: ( ')' )
-            // InternalAspectLang.g:2961:1: ')'
+            // InternalAspectLang.g:2967:1: ( ')' )
+            // InternalAspectLang.g:2968:1: ')'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdviceAccess().getRightParenthesisKeyword_2_2()); 
             }
-            match(input,46,FOLLOW_2); if (state.failed) return ;
+            match(input,47,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getAdviceAccess().getRightParenthesisKeyword_2_2()); 
             }
@@ -9165,14 +9200,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Advice__Group_2_1__0"
-    // InternalAspectLang.g:2980:1: rule__Advice__Group_2_1__0 : rule__Advice__Group_2_1__0__Impl rule__Advice__Group_2_1__1 ;
+    // InternalAspectLang.g:2987:1: rule__Advice__Group_2_1__0 : rule__Advice__Group_2_1__0__Impl rule__Advice__Group_2_1__1 ;
     public final void rule__Advice__Group_2_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2984:1: ( rule__Advice__Group_2_1__0__Impl rule__Advice__Group_2_1__1 )
-            // InternalAspectLang.g:2985:2: rule__Advice__Group_2_1__0__Impl rule__Advice__Group_2_1__1
+            // InternalAspectLang.g:2991:1: ( rule__Advice__Group_2_1__0__Impl rule__Advice__Group_2_1__1 )
+            // InternalAspectLang.g:2992:2: rule__Advice__Group_2_1__0__Impl rule__Advice__Group_2_1__1
             {
             pushFollow(FOLLOW_11);
             rule__Advice__Group_2_1__0__Impl();
@@ -9203,23 +9238,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Advice__Group_2_1__0__Impl"
-    // InternalAspectLang.g:2992:1: rule__Advice__Group_2_1__0__Impl : ( ( rule__Advice__ParameterDeclarationsAssignment_2_1_0 ) ) ;
+    // InternalAspectLang.g:2999:1: rule__Advice__Group_2_1__0__Impl : ( ( rule__Advice__ParameterDeclarationsAssignment_2_1_0 ) ) ;
     public final void rule__Advice__Group_2_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:2996:1: ( ( ( rule__Advice__ParameterDeclarationsAssignment_2_1_0 ) ) )
-            // InternalAspectLang.g:2997:1: ( ( rule__Advice__ParameterDeclarationsAssignment_2_1_0 ) )
+            // InternalAspectLang.g:3003:1: ( ( ( rule__Advice__ParameterDeclarationsAssignment_2_1_0 ) ) )
+            // InternalAspectLang.g:3004:1: ( ( rule__Advice__ParameterDeclarationsAssignment_2_1_0 ) )
             {
-            // InternalAspectLang.g:2997:1: ( ( rule__Advice__ParameterDeclarationsAssignment_2_1_0 ) )
-            // InternalAspectLang.g:2998:1: ( rule__Advice__ParameterDeclarationsAssignment_2_1_0 )
+            // InternalAspectLang.g:3004:1: ( ( rule__Advice__ParameterDeclarationsAssignment_2_1_0 ) )
+            // InternalAspectLang.g:3005:1: ( rule__Advice__ParameterDeclarationsAssignment_2_1_0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdviceAccess().getParameterDeclarationsAssignment_2_1_0()); 
             }
-            // InternalAspectLang.g:2999:1: ( rule__Advice__ParameterDeclarationsAssignment_2_1_0 )
-            // InternalAspectLang.g:2999:2: rule__Advice__ParameterDeclarationsAssignment_2_1_0
+            // InternalAspectLang.g:3006:1: ( rule__Advice__ParameterDeclarationsAssignment_2_1_0 )
+            // InternalAspectLang.g:3006:2: rule__Advice__ParameterDeclarationsAssignment_2_1_0
             {
             pushFollow(FOLLOW_2);
             rule__Advice__ParameterDeclarationsAssignment_2_1_0();
@@ -9254,14 +9289,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Advice__Group_2_1__1"
-    // InternalAspectLang.g:3009:1: rule__Advice__Group_2_1__1 : rule__Advice__Group_2_1__1__Impl ;
+    // InternalAspectLang.g:3016:1: rule__Advice__Group_2_1__1 : rule__Advice__Group_2_1__1__Impl ;
     public final void rule__Advice__Group_2_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3013:1: ( rule__Advice__Group_2_1__1__Impl )
-            // InternalAspectLang.g:3014:2: rule__Advice__Group_2_1__1__Impl
+            // InternalAspectLang.g:3020:1: ( rule__Advice__Group_2_1__1__Impl )
+            // InternalAspectLang.g:3021:2: rule__Advice__Group_2_1__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Advice__Group_2_1__1__Impl();
@@ -9287,35 +9322,35 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Advice__Group_2_1__1__Impl"
-    // InternalAspectLang.g:3020:1: rule__Advice__Group_2_1__1__Impl : ( ( rule__Advice__Group_2_1_1__0 )* ) ;
+    // InternalAspectLang.g:3027:1: rule__Advice__Group_2_1__1__Impl : ( ( rule__Advice__Group_2_1_1__0 )* ) ;
     public final void rule__Advice__Group_2_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3024:1: ( ( ( rule__Advice__Group_2_1_1__0 )* ) )
-            // InternalAspectLang.g:3025:1: ( ( rule__Advice__Group_2_1_1__0 )* )
+            // InternalAspectLang.g:3031:1: ( ( ( rule__Advice__Group_2_1_1__0 )* ) )
+            // InternalAspectLang.g:3032:1: ( ( rule__Advice__Group_2_1_1__0 )* )
             {
-            // InternalAspectLang.g:3025:1: ( ( rule__Advice__Group_2_1_1__0 )* )
-            // InternalAspectLang.g:3026:1: ( rule__Advice__Group_2_1_1__0 )*
+            // InternalAspectLang.g:3032:1: ( ( rule__Advice__Group_2_1_1__0 )* )
+            // InternalAspectLang.g:3033:1: ( rule__Advice__Group_2_1_1__0 )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdviceAccess().getGroup_2_1_1()); 
             }
-            // InternalAspectLang.g:3027:1: ( rule__Advice__Group_2_1_1__0 )*
+            // InternalAspectLang.g:3034:1: ( rule__Advice__Group_2_1_1__0 )*
             loop28:
             do {
                 int alt28=2;
                 int LA28_0 = input.LA(1);
 
-                if ( (LA28_0==44) ) {
+                if ( (LA28_0==45) ) {
                     alt28=1;
                 }
 
 
                 switch (alt28) {
             	case 1 :
-            	    // InternalAspectLang.g:3027:2: rule__Advice__Group_2_1_1__0
+            	    // InternalAspectLang.g:3034:2: rule__Advice__Group_2_1_1__0
             	    {
             	    pushFollow(FOLLOW_12);
             	    rule__Advice__Group_2_1_1__0();
@@ -9356,14 +9391,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Advice__Group_2_1_1__0"
-    // InternalAspectLang.g:3041:1: rule__Advice__Group_2_1_1__0 : rule__Advice__Group_2_1_1__0__Impl rule__Advice__Group_2_1_1__1 ;
+    // InternalAspectLang.g:3048:1: rule__Advice__Group_2_1_1__0 : rule__Advice__Group_2_1_1__0__Impl rule__Advice__Group_2_1_1__1 ;
     public final void rule__Advice__Group_2_1_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3045:1: ( rule__Advice__Group_2_1_1__0__Impl rule__Advice__Group_2_1_1__1 )
-            // InternalAspectLang.g:3046:2: rule__Advice__Group_2_1_1__0__Impl rule__Advice__Group_2_1_1__1
+            // InternalAspectLang.g:3052:1: ( rule__Advice__Group_2_1_1__0__Impl rule__Advice__Group_2_1_1__1 )
+            // InternalAspectLang.g:3053:2: rule__Advice__Group_2_1_1__0__Impl rule__Advice__Group_2_1_1__1
             {
             pushFollow(FOLLOW_3);
             rule__Advice__Group_2_1_1__0__Impl();
@@ -9394,22 +9429,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Advice__Group_2_1_1__0__Impl"
-    // InternalAspectLang.g:3053:1: rule__Advice__Group_2_1_1__0__Impl : ( ',' ) ;
+    // InternalAspectLang.g:3060:1: rule__Advice__Group_2_1_1__0__Impl : ( ',' ) ;
     public final void rule__Advice__Group_2_1_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3057:1: ( ( ',' ) )
-            // InternalAspectLang.g:3058:1: ( ',' )
+            // InternalAspectLang.g:3064:1: ( ( ',' ) )
+            // InternalAspectLang.g:3065:1: ( ',' )
             {
-            // InternalAspectLang.g:3058:1: ( ',' )
-            // InternalAspectLang.g:3059:1: ','
+            // InternalAspectLang.g:3065:1: ( ',' )
+            // InternalAspectLang.g:3066:1: ','
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdviceAccess().getCommaKeyword_2_1_1_0()); 
             }
-            match(input,44,FOLLOW_2); if (state.failed) return ;
+            match(input,45,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getAdviceAccess().getCommaKeyword_2_1_1_0()); 
             }
@@ -9435,14 +9470,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Advice__Group_2_1_1__1"
-    // InternalAspectLang.g:3072:1: rule__Advice__Group_2_1_1__1 : rule__Advice__Group_2_1_1__1__Impl ;
+    // InternalAspectLang.g:3079:1: rule__Advice__Group_2_1_1__1 : rule__Advice__Group_2_1_1__1__Impl ;
     public final void rule__Advice__Group_2_1_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3076:1: ( rule__Advice__Group_2_1_1__1__Impl )
-            // InternalAspectLang.g:3077:2: rule__Advice__Group_2_1_1__1__Impl
+            // InternalAspectLang.g:3083:1: ( rule__Advice__Group_2_1_1__1__Impl )
+            // InternalAspectLang.g:3084:2: rule__Advice__Group_2_1_1__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Advice__Group_2_1_1__1__Impl();
@@ -9468,23 +9503,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Advice__Group_2_1_1__1__Impl"
-    // InternalAspectLang.g:3083:1: rule__Advice__Group_2_1_1__1__Impl : ( ( rule__Advice__ParameterDeclarationsAssignment_2_1_1_1 ) ) ;
+    // InternalAspectLang.g:3090:1: rule__Advice__Group_2_1_1__1__Impl : ( ( rule__Advice__ParameterDeclarationsAssignment_2_1_1_1 ) ) ;
     public final void rule__Advice__Group_2_1_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3087:1: ( ( ( rule__Advice__ParameterDeclarationsAssignment_2_1_1_1 ) ) )
-            // InternalAspectLang.g:3088:1: ( ( rule__Advice__ParameterDeclarationsAssignment_2_1_1_1 ) )
+            // InternalAspectLang.g:3094:1: ( ( ( rule__Advice__ParameterDeclarationsAssignment_2_1_1_1 ) ) )
+            // InternalAspectLang.g:3095:1: ( ( rule__Advice__ParameterDeclarationsAssignment_2_1_1_1 ) )
             {
-            // InternalAspectLang.g:3088:1: ( ( rule__Advice__ParameterDeclarationsAssignment_2_1_1_1 ) )
-            // InternalAspectLang.g:3089:1: ( rule__Advice__ParameterDeclarationsAssignment_2_1_1_1 )
+            // InternalAspectLang.g:3095:1: ( ( rule__Advice__ParameterDeclarationsAssignment_2_1_1_1 ) )
+            // InternalAspectLang.g:3096:1: ( rule__Advice__ParameterDeclarationsAssignment_2_1_1_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdviceAccess().getParameterDeclarationsAssignment_2_1_1_1()); 
             }
-            // InternalAspectLang.g:3090:1: ( rule__Advice__ParameterDeclarationsAssignment_2_1_1_1 )
-            // InternalAspectLang.g:3090:2: rule__Advice__ParameterDeclarationsAssignment_2_1_1_1
+            // InternalAspectLang.g:3097:1: ( rule__Advice__ParameterDeclarationsAssignment_2_1_1_1 )
+            // InternalAspectLang.g:3097:2: rule__Advice__ParameterDeclarationsAssignment_2_1_1_1
             {
             pushFollow(FOLLOW_2);
             rule__Advice__ParameterDeclarationsAssignment_2_1_1_1();
@@ -9519,14 +9554,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__AdviceParameterDeclaration__Group__0"
-    // InternalAspectLang.g:3104:1: rule__AdviceParameterDeclaration__Group__0 : rule__AdviceParameterDeclaration__Group__0__Impl rule__AdviceParameterDeclaration__Group__1 ;
+    // InternalAspectLang.g:3111:1: rule__AdviceParameterDeclaration__Group__0 : rule__AdviceParameterDeclaration__Group__0__Impl rule__AdviceParameterDeclaration__Group__1 ;
     public final void rule__AdviceParameterDeclaration__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3108:1: ( rule__AdviceParameterDeclaration__Group__0__Impl rule__AdviceParameterDeclaration__Group__1 )
-            // InternalAspectLang.g:3109:2: rule__AdviceParameterDeclaration__Group__0__Impl rule__AdviceParameterDeclaration__Group__1
+            // InternalAspectLang.g:3115:1: ( rule__AdviceParameterDeclaration__Group__0__Impl rule__AdviceParameterDeclaration__Group__1 )
+            // InternalAspectLang.g:3116:2: rule__AdviceParameterDeclaration__Group__0__Impl rule__AdviceParameterDeclaration__Group__1
             {
             pushFollow(FOLLOW_3);
             rule__AdviceParameterDeclaration__Group__0__Impl();
@@ -9557,23 +9592,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__AdviceParameterDeclaration__Group__0__Impl"
-    // InternalAspectLang.g:3116:1: rule__AdviceParameterDeclaration__Group__0__Impl : ( ( rule__AdviceParameterDeclaration__TypeAssignment_0 ) ) ;
+    // InternalAspectLang.g:3123:1: rule__AdviceParameterDeclaration__Group__0__Impl : ( ( rule__AdviceParameterDeclaration__TypeAssignment_0 ) ) ;
     public final void rule__AdviceParameterDeclaration__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3120:1: ( ( ( rule__AdviceParameterDeclaration__TypeAssignment_0 ) ) )
-            // InternalAspectLang.g:3121:1: ( ( rule__AdviceParameterDeclaration__TypeAssignment_0 ) )
+            // InternalAspectLang.g:3127:1: ( ( ( rule__AdviceParameterDeclaration__TypeAssignment_0 ) ) )
+            // InternalAspectLang.g:3128:1: ( ( rule__AdviceParameterDeclaration__TypeAssignment_0 ) )
             {
-            // InternalAspectLang.g:3121:1: ( ( rule__AdviceParameterDeclaration__TypeAssignment_0 ) )
-            // InternalAspectLang.g:3122:1: ( rule__AdviceParameterDeclaration__TypeAssignment_0 )
+            // InternalAspectLang.g:3128:1: ( ( rule__AdviceParameterDeclaration__TypeAssignment_0 ) )
+            // InternalAspectLang.g:3129:1: ( rule__AdviceParameterDeclaration__TypeAssignment_0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdviceParameterDeclarationAccess().getTypeAssignment_0()); 
             }
-            // InternalAspectLang.g:3123:1: ( rule__AdviceParameterDeclaration__TypeAssignment_0 )
-            // InternalAspectLang.g:3123:2: rule__AdviceParameterDeclaration__TypeAssignment_0
+            // InternalAspectLang.g:3130:1: ( rule__AdviceParameterDeclaration__TypeAssignment_0 )
+            // InternalAspectLang.g:3130:2: rule__AdviceParameterDeclaration__TypeAssignment_0
             {
             pushFollow(FOLLOW_2);
             rule__AdviceParameterDeclaration__TypeAssignment_0();
@@ -9608,14 +9643,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__AdviceParameterDeclaration__Group__1"
-    // InternalAspectLang.g:3133:1: rule__AdviceParameterDeclaration__Group__1 : rule__AdviceParameterDeclaration__Group__1__Impl ;
+    // InternalAspectLang.g:3140:1: rule__AdviceParameterDeclaration__Group__1 : rule__AdviceParameterDeclaration__Group__1__Impl ;
     public final void rule__AdviceParameterDeclaration__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3137:1: ( rule__AdviceParameterDeclaration__Group__1__Impl )
-            // InternalAspectLang.g:3138:2: rule__AdviceParameterDeclaration__Group__1__Impl
+            // InternalAspectLang.g:3144:1: ( rule__AdviceParameterDeclaration__Group__1__Impl )
+            // InternalAspectLang.g:3145:2: rule__AdviceParameterDeclaration__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__AdviceParameterDeclaration__Group__1__Impl();
@@ -9641,23 +9676,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__AdviceParameterDeclaration__Group__1__Impl"
-    // InternalAspectLang.g:3144:1: rule__AdviceParameterDeclaration__Group__1__Impl : ( ( rule__AdviceParameterDeclaration__NameAssignment_1 ) ) ;
+    // InternalAspectLang.g:3151:1: rule__AdviceParameterDeclaration__Group__1__Impl : ( ( rule__AdviceParameterDeclaration__NameAssignment_1 ) ) ;
     public final void rule__AdviceParameterDeclaration__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3148:1: ( ( ( rule__AdviceParameterDeclaration__NameAssignment_1 ) ) )
-            // InternalAspectLang.g:3149:1: ( ( rule__AdviceParameterDeclaration__NameAssignment_1 ) )
+            // InternalAspectLang.g:3155:1: ( ( ( rule__AdviceParameterDeclaration__NameAssignment_1 ) ) )
+            // InternalAspectLang.g:3156:1: ( ( rule__AdviceParameterDeclaration__NameAssignment_1 ) )
             {
-            // InternalAspectLang.g:3149:1: ( ( rule__AdviceParameterDeclaration__NameAssignment_1 ) )
-            // InternalAspectLang.g:3150:1: ( rule__AdviceParameterDeclaration__NameAssignment_1 )
+            // InternalAspectLang.g:3156:1: ( ( rule__AdviceParameterDeclaration__NameAssignment_1 ) )
+            // InternalAspectLang.g:3157:1: ( rule__AdviceParameterDeclaration__NameAssignment_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdviceParameterDeclarationAccess().getNameAssignment_1()); 
             }
-            // InternalAspectLang.g:3151:1: ( rule__AdviceParameterDeclaration__NameAssignment_1 )
-            // InternalAspectLang.g:3151:2: rule__AdviceParameterDeclaration__NameAssignment_1
+            // InternalAspectLang.g:3158:1: ( rule__AdviceParameterDeclaration__NameAssignment_1 )
+            // InternalAspectLang.g:3158:2: rule__AdviceParameterDeclaration__NameAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__AdviceParameterDeclaration__NameAssignment_1();
@@ -9692,14 +9727,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Collector__Group__0"
-    // InternalAspectLang.g:3165:1: rule__Collector__Group__0 : rule__Collector__Group__0__Impl rule__Collector__Group__1 ;
+    // InternalAspectLang.g:3172:1: rule__Collector__Group__0 : rule__Collector__Group__0__Impl rule__Collector__Group__1 ;
     public final void rule__Collector__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3169:1: ( rule__Collector__Group__0__Impl rule__Collector__Group__1 )
-            // InternalAspectLang.g:3170:2: rule__Collector__Group__0__Impl rule__Collector__Group__1
+            // InternalAspectLang.g:3176:1: ( rule__Collector__Group__0__Impl rule__Collector__Group__1 )
+            // InternalAspectLang.g:3177:2: rule__Collector__Group__0__Impl rule__Collector__Group__1
             {
             pushFollow(FOLLOW_3);
             rule__Collector__Group__0__Impl();
@@ -9730,23 +9765,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Collector__Group__0__Impl"
-    // InternalAspectLang.g:3177:1: rule__Collector__Group__0__Impl : ( ( rule__Collector__InsertionPointAssignment_0 ) ) ;
+    // InternalAspectLang.g:3184:1: rule__Collector__Group__0__Impl : ( ( rule__Collector__InsertionPointAssignment_0 ) ) ;
     public final void rule__Collector__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3181:1: ( ( ( rule__Collector__InsertionPointAssignment_0 ) ) )
-            // InternalAspectLang.g:3182:1: ( ( rule__Collector__InsertionPointAssignment_0 ) )
+            // InternalAspectLang.g:3188:1: ( ( ( rule__Collector__InsertionPointAssignment_0 ) ) )
+            // InternalAspectLang.g:3189:1: ( ( rule__Collector__InsertionPointAssignment_0 ) )
             {
-            // InternalAspectLang.g:3182:1: ( ( rule__Collector__InsertionPointAssignment_0 ) )
-            // InternalAspectLang.g:3183:1: ( rule__Collector__InsertionPointAssignment_0 )
+            // InternalAspectLang.g:3189:1: ( ( rule__Collector__InsertionPointAssignment_0 ) )
+            // InternalAspectLang.g:3190:1: ( rule__Collector__InsertionPointAssignment_0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCollectorAccess().getInsertionPointAssignment_0()); 
             }
-            // InternalAspectLang.g:3184:1: ( rule__Collector__InsertionPointAssignment_0 )
-            // InternalAspectLang.g:3184:2: rule__Collector__InsertionPointAssignment_0
+            // InternalAspectLang.g:3191:1: ( rule__Collector__InsertionPointAssignment_0 )
+            // InternalAspectLang.g:3191:2: rule__Collector__InsertionPointAssignment_0
             {
             pushFollow(FOLLOW_2);
             rule__Collector__InsertionPointAssignment_0();
@@ -9781,14 +9816,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Collector__Group__1"
-    // InternalAspectLang.g:3194:1: rule__Collector__Group__1 : rule__Collector__Group__1__Impl ;
+    // InternalAspectLang.g:3201:1: rule__Collector__Group__1 : rule__Collector__Group__1__Impl ;
     public final void rule__Collector__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3198:1: ( rule__Collector__Group__1__Impl )
-            // InternalAspectLang.g:3199:2: rule__Collector__Group__1__Impl
+            // InternalAspectLang.g:3205:1: ( rule__Collector__Group__1__Impl )
+            // InternalAspectLang.g:3206:2: rule__Collector__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Collector__Group__1__Impl();
@@ -9814,26 +9849,26 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Collector__Group__1__Impl"
-    // InternalAspectLang.g:3205:1: rule__Collector__Group__1__Impl : ( ( ( rule__Collector__EventsAssignment_1 ) ) ( ( rule__Collector__EventsAssignment_1 )* ) ) ;
+    // InternalAspectLang.g:3212:1: rule__Collector__Group__1__Impl : ( ( ( rule__Collector__EventsAssignment_1 ) ) ( ( rule__Collector__EventsAssignment_1 )* ) ) ;
     public final void rule__Collector__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3209:1: ( ( ( ( rule__Collector__EventsAssignment_1 ) ) ( ( rule__Collector__EventsAssignment_1 )* ) ) )
-            // InternalAspectLang.g:3210:1: ( ( ( rule__Collector__EventsAssignment_1 ) ) ( ( rule__Collector__EventsAssignment_1 )* ) )
+            // InternalAspectLang.g:3216:1: ( ( ( ( rule__Collector__EventsAssignment_1 ) ) ( ( rule__Collector__EventsAssignment_1 )* ) ) )
+            // InternalAspectLang.g:3217:1: ( ( ( rule__Collector__EventsAssignment_1 ) ) ( ( rule__Collector__EventsAssignment_1 )* ) )
             {
-            // InternalAspectLang.g:3210:1: ( ( ( rule__Collector__EventsAssignment_1 ) ) ( ( rule__Collector__EventsAssignment_1 )* ) )
-            // InternalAspectLang.g:3211:1: ( ( rule__Collector__EventsAssignment_1 ) ) ( ( rule__Collector__EventsAssignment_1 )* )
+            // InternalAspectLang.g:3217:1: ( ( ( rule__Collector__EventsAssignment_1 ) ) ( ( rule__Collector__EventsAssignment_1 )* ) )
+            // InternalAspectLang.g:3218:1: ( ( rule__Collector__EventsAssignment_1 ) ) ( ( rule__Collector__EventsAssignment_1 )* )
             {
-            // InternalAspectLang.g:3211:1: ( ( rule__Collector__EventsAssignment_1 ) )
-            // InternalAspectLang.g:3212:1: ( rule__Collector__EventsAssignment_1 )
+            // InternalAspectLang.g:3218:1: ( ( rule__Collector__EventsAssignment_1 ) )
+            // InternalAspectLang.g:3219:1: ( rule__Collector__EventsAssignment_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCollectorAccess().getEventsAssignment_1()); 
             }
-            // InternalAspectLang.g:3213:1: ( rule__Collector__EventsAssignment_1 )
-            // InternalAspectLang.g:3213:2: rule__Collector__EventsAssignment_1
+            // InternalAspectLang.g:3220:1: ( rule__Collector__EventsAssignment_1 )
+            // InternalAspectLang.g:3220:2: rule__Collector__EventsAssignment_1
             {
             pushFollow(FOLLOW_20);
             rule__Collector__EventsAssignment_1();
@@ -9849,13 +9884,13 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
             }
 
-            // InternalAspectLang.g:3216:1: ( ( rule__Collector__EventsAssignment_1 )* )
-            // InternalAspectLang.g:3217:1: ( rule__Collector__EventsAssignment_1 )*
+            // InternalAspectLang.g:3223:1: ( ( rule__Collector__EventsAssignment_1 )* )
+            // InternalAspectLang.g:3224:1: ( rule__Collector__EventsAssignment_1 )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCollectorAccess().getEventsAssignment_1()); 
             }
-            // InternalAspectLang.g:3218:1: ( rule__Collector__EventsAssignment_1 )*
+            // InternalAspectLang.g:3225:1: ( rule__Collector__EventsAssignment_1 )*
             loop29:
             do {
                 int alt29=2;
@@ -9868,7 +9903,7 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
                 switch (alt29) {
             	case 1 :
-            	    // InternalAspectLang.g:3218:2: rule__Collector__EventsAssignment_1
+            	    // InternalAspectLang.g:3225:2: rule__Collector__EventsAssignment_1
             	    {
             	    pushFollow(FOLLOW_20);
             	    rule__Collector__EventsAssignment_1();
@@ -9912,14 +9947,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Event__Group__0"
-    // InternalAspectLang.g:3233:1: rule__Event__Group__0 : rule__Event__Group__0__Impl rule__Event__Group__1 ;
+    // InternalAspectLang.g:3240:1: rule__Event__Group__0 : rule__Event__Group__0__Impl rule__Event__Group__1 ;
     public final void rule__Event__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3237:1: ( rule__Event__Group__0__Impl rule__Event__Group__1 )
-            // InternalAspectLang.g:3238:2: rule__Event__Group__0__Impl rule__Event__Group__1
+            // InternalAspectLang.g:3244:1: ( rule__Event__Group__0__Impl rule__Event__Group__1 )
+            // InternalAspectLang.g:3245:2: rule__Event__Group__0__Impl rule__Event__Group__1
             {
             pushFollow(FOLLOW_13);
             rule__Event__Group__0__Impl();
@@ -9950,23 +9985,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Event__Group__0__Impl"
-    // InternalAspectLang.g:3245:1: rule__Event__Group__0__Impl : ( ( rule__Event__TypeAssignment_0 ) ) ;
+    // InternalAspectLang.g:3252:1: rule__Event__Group__0__Impl : ( ( rule__Event__TypeAssignment_0 ) ) ;
     public final void rule__Event__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3249:1: ( ( ( rule__Event__TypeAssignment_0 ) ) )
-            // InternalAspectLang.g:3250:1: ( ( rule__Event__TypeAssignment_0 ) )
+            // InternalAspectLang.g:3256:1: ( ( ( rule__Event__TypeAssignment_0 ) ) )
+            // InternalAspectLang.g:3257:1: ( ( rule__Event__TypeAssignment_0 ) )
             {
-            // InternalAspectLang.g:3250:1: ( ( rule__Event__TypeAssignment_0 ) )
-            // InternalAspectLang.g:3251:1: ( rule__Event__TypeAssignment_0 )
+            // InternalAspectLang.g:3257:1: ( ( rule__Event__TypeAssignment_0 ) )
+            // InternalAspectLang.g:3258:1: ( rule__Event__TypeAssignment_0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getEventAccess().getTypeAssignment_0()); 
             }
-            // InternalAspectLang.g:3252:1: ( rule__Event__TypeAssignment_0 )
-            // InternalAspectLang.g:3252:2: rule__Event__TypeAssignment_0
+            // InternalAspectLang.g:3259:1: ( rule__Event__TypeAssignment_0 )
+            // InternalAspectLang.g:3259:2: rule__Event__TypeAssignment_0
             {
             pushFollow(FOLLOW_2);
             rule__Event__TypeAssignment_0();
@@ -10001,14 +10036,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Event__Group__1"
-    // InternalAspectLang.g:3262:1: rule__Event__Group__1 : rule__Event__Group__1__Impl rule__Event__Group__2 ;
+    // InternalAspectLang.g:3269:1: rule__Event__Group__1 : rule__Event__Group__1__Impl rule__Event__Group__2 ;
     public final void rule__Event__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3266:1: ( rule__Event__Group__1__Impl rule__Event__Group__2 )
-            // InternalAspectLang.g:3267:2: rule__Event__Group__1__Impl rule__Event__Group__2
+            // InternalAspectLang.g:3273:1: ( rule__Event__Group__1__Impl rule__Event__Group__2 )
+            // InternalAspectLang.g:3274:2: rule__Event__Group__1__Impl rule__Event__Group__2
             {
             pushFollow(FOLLOW_14);
             rule__Event__Group__1__Impl();
@@ -10039,22 +10074,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Event__Group__1__Impl"
-    // InternalAspectLang.g:3274:1: rule__Event__Group__1__Impl : ( '(' ) ;
+    // InternalAspectLang.g:3281:1: rule__Event__Group__1__Impl : ( '(' ) ;
     public final void rule__Event__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3278:1: ( ( '(' ) )
-            // InternalAspectLang.g:3279:1: ( '(' )
+            // InternalAspectLang.g:3285:1: ( ( '(' ) )
+            // InternalAspectLang.g:3286:1: ( '(' )
             {
-            // InternalAspectLang.g:3279:1: ( '(' )
-            // InternalAspectLang.g:3280:1: '('
+            // InternalAspectLang.g:3286:1: ( '(' )
+            // InternalAspectLang.g:3287:1: '('
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getEventAccess().getLeftParenthesisKeyword_1()); 
             }
-            match(input,45,FOLLOW_2); if (state.failed) return ;
+            match(input,46,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getEventAccess().getLeftParenthesisKeyword_1()); 
             }
@@ -10080,14 +10115,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Event__Group__2"
-    // InternalAspectLang.g:3293:1: rule__Event__Group__2 : rule__Event__Group__2__Impl rule__Event__Group__3 ;
+    // InternalAspectLang.g:3300:1: rule__Event__Group__2 : rule__Event__Group__2__Impl rule__Event__Group__3 ;
     public final void rule__Event__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3297:1: ( rule__Event__Group__2__Impl rule__Event__Group__3 )
-            // InternalAspectLang.g:3298:2: rule__Event__Group__2__Impl rule__Event__Group__3
+            // InternalAspectLang.g:3304:1: ( rule__Event__Group__2__Impl rule__Event__Group__3 )
+            // InternalAspectLang.g:3305:2: rule__Event__Group__2__Impl rule__Event__Group__3
             {
             pushFollow(FOLLOW_14);
             rule__Event__Group__2__Impl();
@@ -10118,31 +10153,31 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Event__Group__2__Impl"
-    // InternalAspectLang.g:3305:1: rule__Event__Group__2__Impl : ( ( rule__Event__Group_2__0 )? ) ;
+    // InternalAspectLang.g:3312:1: rule__Event__Group__2__Impl : ( ( rule__Event__Group_2__0 )? ) ;
     public final void rule__Event__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3309:1: ( ( ( rule__Event__Group_2__0 )? ) )
-            // InternalAspectLang.g:3310:1: ( ( rule__Event__Group_2__0 )? )
+            // InternalAspectLang.g:3316:1: ( ( ( rule__Event__Group_2__0 )? ) )
+            // InternalAspectLang.g:3317:1: ( ( rule__Event__Group_2__0 )? )
             {
-            // InternalAspectLang.g:3310:1: ( ( rule__Event__Group_2__0 )? )
-            // InternalAspectLang.g:3311:1: ( rule__Event__Group_2__0 )?
+            // InternalAspectLang.g:3317:1: ( ( rule__Event__Group_2__0 )? )
+            // InternalAspectLang.g:3318:1: ( rule__Event__Group_2__0 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getEventAccess().getGroup_2()); 
             }
-            // InternalAspectLang.g:3312:1: ( rule__Event__Group_2__0 )?
+            // InternalAspectLang.g:3319:1: ( rule__Event__Group_2__0 )?
             int alt30=2;
             int LA30_0 = input.LA(1);
 
-            if ( ((LA30_0>=RULE_ID && LA30_0<=RULE_INT)||LA30_0==13||(LA30_0>=16 && LA30_0<=18)||(LA30_0>=50 && LA30_0<=51)||(LA30_0>=59 && LA30_0<=60)) ) {
+            if ( ((LA30_0>=RULE_ID && LA30_0<=RULE_INT)||LA30_0==13||(LA30_0>=17 && LA30_0<=19)||(LA30_0>=51 && LA30_0<=52)||(LA30_0>=60 && LA30_0<=61)) ) {
                 alt30=1;
             }
             switch (alt30) {
                 case 1 :
-                    // InternalAspectLang.g:3312:2: rule__Event__Group_2__0
+                    // InternalAspectLang.g:3319:2: rule__Event__Group_2__0
                     {
                     pushFollow(FOLLOW_2);
                     rule__Event__Group_2__0();
@@ -10180,14 +10215,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Event__Group__3"
-    // InternalAspectLang.g:3322:1: rule__Event__Group__3 : rule__Event__Group__3__Impl ;
+    // InternalAspectLang.g:3329:1: rule__Event__Group__3 : rule__Event__Group__3__Impl ;
     public final void rule__Event__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3326:1: ( rule__Event__Group__3__Impl )
-            // InternalAspectLang.g:3327:2: rule__Event__Group__3__Impl
+            // InternalAspectLang.g:3333:1: ( rule__Event__Group__3__Impl )
+            // InternalAspectLang.g:3334:2: rule__Event__Group__3__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Event__Group__3__Impl();
@@ -10213,22 +10248,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Event__Group__3__Impl"
-    // InternalAspectLang.g:3333:1: rule__Event__Group__3__Impl : ( ')' ) ;
+    // InternalAspectLang.g:3340:1: rule__Event__Group__3__Impl : ( ')' ) ;
     public final void rule__Event__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3337:1: ( ( ')' ) )
-            // InternalAspectLang.g:3338:1: ( ')' )
+            // InternalAspectLang.g:3344:1: ( ( ')' ) )
+            // InternalAspectLang.g:3345:1: ( ')' )
             {
-            // InternalAspectLang.g:3338:1: ( ')' )
-            // InternalAspectLang.g:3339:1: ')'
+            // InternalAspectLang.g:3345:1: ( ')' )
+            // InternalAspectLang.g:3346:1: ')'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getEventAccess().getRightParenthesisKeyword_3()); 
             }
-            match(input,46,FOLLOW_2); if (state.failed) return ;
+            match(input,47,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getEventAccess().getRightParenthesisKeyword_3()); 
             }
@@ -10254,14 +10289,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Event__Group_2__0"
-    // InternalAspectLang.g:3360:1: rule__Event__Group_2__0 : rule__Event__Group_2__0__Impl rule__Event__Group_2__1 ;
+    // InternalAspectLang.g:3367:1: rule__Event__Group_2__0 : rule__Event__Group_2__0__Impl rule__Event__Group_2__1 ;
     public final void rule__Event__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3364:1: ( rule__Event__Group_2__0__Impl rule__Event__Group_2__1 )
-            // InternalAspectLang.g:3365:2: rule__Event__Group_2__0__Impl rule__Event__Group_2__1
+            // InternalAspectLang.g:3371:1: ( rule__Event__Group_2__0__Impl rule__Event__Group_2__1 )
+            // InternalAspectLang.g:3372:2: rule__Event__Group_2__0__Impl rule__Event__Group_2__1
             {
             pushFollow(FOLLOW_11);
             rule__Event__Group_2__0__Impl();
@@ -10292,23 +10327,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Event__Group_2__0__Impl"
-    // InternalAspectLang.g:3372:1: rule__Event__Group_2__0__Impl : ( ( rule__Event__InitializationsAssignment_2_0 ) ) ;
+    // InternalAspectLang.g:3379:1: rule__Event__Group_2__0__Impl : ( ( rule__Event__InitializationsAssignment_2_0 ) ) ;
     public final void rule__Event__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3376:1: ( ( ( rule__Event__InitializationsAssignment_2_0 ) ) )
-            // InternalAspectLang.g:3377:1: ( ( rule__Event__InitializationsAssignment_2_0 ) )
+            // InternalAspectLang.g:3383:1: ( ( ( rule__Event__InitializationsAssignment_2_0 ) ) )
+            // InternalAspectLang.g:3384:1: ( ( rule__Event__InitializationsAssignment_2_0 ) )
             {
-            // InternalAspectLang.g:3377:1: ( ( rule__Event__InitializationsAssignment_2_0 ) )
-            // InternalAspectLang.g:3378:1: ( rule__Event__InitializationsAssignment_2_0 )
+            // InternalAspectLang.g:3384:1: ( ( rule__Event__InitializationsAssignment_2_0 ) )
+            // InternalAspectLang.g:3385:1: ( rule__Event__InitializationsAssignment_2_0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getEventAccess().getInitializationsAssignment_2_0()); 
             }
-            // InternalAspectLang.g:3379:1: ( rule__Event__InitializationsAssignment_2_0 )
-            // InternalAspectLang.g:3379:2: rule__Event__InitializationsAssignment_2_0
+            // InternalAspectLang.g:3386:1: ( rule__Event__InitializationsAssignment_2_0 )
+            // InternalAspectLang.g:3386:2: rule__Event__InitializationsAssignment_2_0
             {
             pushFollow(FOLLOW_2);
             rule__Event__InitializationsAssignment_2_0();
@@ -10343,14 +10378,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Event__Group_2__1"
-    // InternalAspectLang.g:3389:1: rule__Event__Group_2__1 : rule__Event__Group_2__1__Impl ;
+    // InternalAspectLang.g:3396:1: rule__Event__Group_2__1 : rule__Event__Group_2__1__Impl ;
     public final void rule__Event__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3393:1: ( rule__Event__Group_2__1__Impl )
-            // InternalAspectLang.g:3394:2: rule__Event__Group_2__1__Impl
+            // InternalAspectLang.g:3400:1: ( rule__Event__Group_2__1__Impl )
+            // InternalAspectLang.g:3401:2: rule__Event__Group_2__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Event__Group_2__1__Impl();
@@ -10376,35 +10411,35 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Event__Group_2__1__Impl"
-    // InternalAspectLang.g:3400:1: rule__Event__Group_2__1__Impl : ( ( rule__Event__Group_2_1__0 )* ) ;
+    // InternalAspectLang.g:3407:1: rule__Event__Group_2__1__Impl : ( ( rule__Event__Group_2_1__0 )* ) ;
     public final void rule__Event__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3404:1: ( ( ( rule__Event__Group_2_1__0 )* ) )
-            // InternalAspectLang.g:3405:1: ( ( rule__Event__Group_2_1__0 )* )
+            // InternalAspectLang.g:3411:1: ( ( ( rule__Event__Group_2_1__0 )* ) )
+            // InternalAspectLang.g:3412:1: ( ( rule__Event__Group_2_1__0 )* )
             {
-            // InternalAspectLang.g:3405:1: ( ( rule__Event__Group_2_1__0 )* )
-            // InternalAspectLang.g:3406:1: ( rule__Event__Group_2_1__0 )*
+            // InternalAspectLang.g:3412:1: ( ( rule__Event__Group_2_1__0 )* )
+            // InternalAspectLang.g:3413:1: ( rule__Event__Group_2_1__0 )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getEventAccess().getGroup_2_1()); 
             }
-            // InternalAspectLang.g:3407:1: ( rule__Event__Group_2_1__0 )*
+            // InternalAspectLang.g:3414:1: ( rule__Event__Group_2_1__0 )*
             loop31:
             do {
                 int alt31=2;
                 int LA31_0 = input.LA(1);
 
-                if ( (LA31_0==44) ) {
+                if ( (LA31_0==45) ) {
                     alt31=1;
                 }
 
 
                 switch (alt31) {
             	case 1 :
-            	    // InternalAspectLang.g:3407:2: rule__Event__Group_2_1__0
+            	    // InternalAspectLang.g:3414:2: rule__Event__Group_2_1__0
             	    {
             	    pushFollow(FOLLOW_12);
             	    rule__Event__Group_2_1__0();
@@ -10445,14 +10480,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Event__Group_2_1__0"
-    // InternalAspectLang.g:3421:1: rule__Event__Group_2_1__0 : rule__Event__Group_2_1__0__Impl rule__Event__Group_2_1__1 ;
+    // InternalAspectLang.g:3428:1: rule__Event__Group_2_1__0 : rule__Event__Group_2_1__0__Impl rule__Event__Group_2_1__1 ;
     public final void rule__Event__Group_2_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3425:1: ( rule__Event__Group_2_1__0__Impl rule__Event__Group_2_1__1 )
-            // InternalAspectLang.g:3426:2: rule__Event__Group_2_1__0__Impl rule__Event__Group_2_1__1
+            // InternalAspectLang.g:3432:1: ( rule__Event__Group_2_1__0__Impl rule__Event__Group_2_1__1 )
+            // InternalAspectLang.g:3433:2: rule__Event__Group_2_1__0__Impl rule__Event__Group_2_1__1
             {
             pushFollow(FOLLOW_15);
             rule__Event__Group_2_1__0__Impl();
@@ -10483,22 +10518,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Event__Group_2_1__0__Impl"
-    // InternalAspectLang.g:3433:1: rule__Event__Group_2_1__0__Impl : ( ',' ) ;
+    // InternalAspectLang.g:3440:1: rule__Event__Group_2_1__0__Impl : ( ',' ) ;
     public final void rule__Event__Group_2_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3437:1: ( ( ',' ) )
-            // InternalAspectLang.g:3438:1: ( ',' )
+            // InternalAspectLang.g:3444:1: ( ( ',' ) )
+            // InternalAspectLang.g:3445:1: ( ',' )
             {
-            // InternalAspectLang.g:3438:1: ( ',' )
-            // InternalAspectLang.g:3439:1: ','
+            // InternalAspectLang.g:3445:1: ( ',' )
+            // InternalAspectLang.g:3446:1: ','
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getEventAccess().getCommaKeyword_2_1_0()); 
             }
-            match(input,44,FOLLOW_2); if (state.failed) return ;
+            match(input,45,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getEventAccess().getCommaKeyword_2_1_0()); 
             }
@@ -10524,14 +10559,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Event__Group_2_1__1"
-    // InternalAspectLang.g:3452:1: rule__Event__Group_2_1__1 : rule__Event__Group_2_1__1__Impl ;
+    // InternalAspectLang.g:3459:1: rule__Event__Group_2_1__1 : rule__Event__Group_2_1__1__Impl ;
     public final void rule__Event__Group_2_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3456:1: ( rule__Event__Group_2_1__1__Impl )
-            // InternalAspectLang.g:3457:2: rule__Event__Group_2_1__1__Impl
+            // InternalAspectLang.g:3463:1: ( rule__Event__Group_2_1__1__Impl )
+            // InternalAspectLang.g:3464:2: rule__Event__Group_2_1__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Event__Group_2_1__1__Impl();
@@ -10557,23 +10592,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Event__Group_2_1__1__Impl"
-    // InternalAspectLang.g:3463:1: rule__Event__Group_2_1__1__Impl : ( ( rule__Event__InitializationsAssignment_2_1_1 ) ) ;
+    // InternalAspectLang.g:3470:1: rule__Event__Group_2_1__1__Impl : ( ( rule__Event__InitializationsAssignment_2_1_1 ) ) ;
     public final void rule__Event__Group_2_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3467:1: ( ( ( rule__Event__InitializationsAssignment_2_1_1 ) ) )
-            // InternalAspectLang.g:3468:1: ( ( rule__Event__InitializationsAssignment_2_1_1 ) )
+            // InternalAspectLang.g:3474:1: ( ( ( rule__Event__InitializationsAssignment_2_1_1 ) ) )
+            // InternalAspectLang.g:3475:1: ( ( rule__Event__InitializationsAssignment_2_1_1 ) )
             {
-            // InternalAspectLang.g:3468:1: ( ( rule__Event__InitializationsAssignment_2_1_1 ) )
-            // InternalAspectLang.g:3469:1: ( rule__Event__InitializationsAssignment_2_1_1 )
+            // InternalAspectLang.g:3475:1: ( ( rule__Event__InitializationsAssignment_2_1_1 ) )
+            // InternalAspectLang.g:3476:1: ( rule__Event__InitializationsAssignment_2_1_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getEventAccess().getInitializationsAssignment_2_1_1()); 
             }
-            // InternalAspectLang.g:3470:1: ( rule__Event__InitializationsAssignment_2_1_1 )
-            // InternalAspectLang.g:3470:2: rule__Event__InitializationsAssignment_2_1_1
+            // InternalAspectLang.g:3477:1: ( rule__Event__InitializationsAssignment_2_1_1 )
+            // InternalAspectLang.g:3477:2: rule__Event__InitializationsAssignment_2_1_1
             {
             pushFollow(FOLLOW_2);
             rule__Event__InitializationsAssignment_2_1_1();
@@ -10608,14 +10643,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ReferenceValue__Group__0"
-    // InternalAspectLang.g:3484:1: rule__ReferenceValue__Group__0 : rule__ReferenceValue__Group__0__Impl rule__ReferenceValue__Group__1 ;
+    // InternalAspectLang.g:3491:1: rule__ReferenceValue__Group__0 : rule__ReferenceValue__Group__0__Impl rule__ReferenceValue__Group__1 ;
     public final void rule__ReferenceValue__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3488:1: ( rule__ReferenceValue__Group__0__Impl rule__ReferenceValue__Group__1 )
-            // InternalAspectLang.g:3489:2: rule__ReferenceValue__Group__0__Impl rule__ReferenceValue__Group__1
+            // InternalAspectLang.g:3495:1: ( rule__ReferenceValue__Group__0__Impl rule__ReferenceValue__Group__1 )
+            // InternalAspectLang.g:3496:2: rule__ReferenceValue__Group__0__Impl rule__ReferenceValue__Group__1
             {
             pushFollow(FOLLOW_21);
             rule__ReferenceValue__Group__0__Impl();
@@ -10646,31 +10681,31 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ReferenceValue__Group__0__Impl"
-    // InternalAspectLang.g:3496:1: rule__ReferenceValue__Group__0__Impl : ( ( rule__ReferenceValue__QueryAssignment_0 )? ) ;
+    // InternalAspectLang.g:3503:1: rule__ReferenceValue__Group__0__Impl : ( ( rule__ReferenceValue__QueryAssignment_0 )? ) ;
     public final void rule__ReferenceValue__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3500:1: ( ( ( rule__ReferenceValue__QueryAssignment_0 )? ) )
-            // InternalAspectLang.g:3501:1: ( ( rule__ReferenceValue__QueryAssignment_0 )? )
+            // InternalAspectLang.g:3507:1: ( ( ( rule__ReferenceValue__QueryAssignment_0 )? ) )
+            // InternalAspectLang.g:3508:1: ( ( rule__ReferenceValue__QueryAssignment_0 )? )
             {
-            // InternalAspectLang.g:3501:1: ( ( rule__ReferenceValue__QueryAssignment_0 )? )
-            // InternalAspectLang.g:3502:1: ( rule__ReferenceValue__QueryAssignment_0 )?
+            // InternalAspectLang.g:3508:1: ( ( rule__ReferenceValue__QueryAssignment_0 )? )
+            // InternalAspectLang.g:3509:1: ( rule__ReferenceValue__QueryAssignment_0 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getReferenceValueAccess().getQueryAssignment_0()); 
             }
-            // InternalAspectLang.g:3503:1: ( rule__ReferenceValue__QueryAssignment_0 )?
+            // InternalAspectLang.g:3510:1: ( rule__ReferenceValue__QueryAssignment_0 )?
             int alt32=2;
             int LA32_0 = input.LA(1);
 
-            if ( (LA32_0==RULE_ID||LA32_0==13||(LA32_0>=59 && LA32_0<=60)) ) {
+            if ( (LA32_0==RULE_ID||LA32_0==13||(LA32_0>=60 && LA32_0<=61)) ) {
                 alt32=1;
             }
             switch (alt32) {
                 case 1 :
-                    // InternalAspectLang.g:3503:2: rule__ReferenceValue__QueryAssignment_0
+                    // InternalAspectLang.g:3510:2: rule__ReferenceValue__QueryAssignment_0
                     {
                     pushFollow(FOLLOW_2);
                     rule__ReferenceValue__QueryAssignment_0();
@@ -10708,14 +10743,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ReferenceValue__Group__1"
-    // InternalAspectLang.g:3513:1: rule__ReferenceValue__Group__1 : rule__ReferenceValue__Group__1__Impl ;
+    // InternalAspectLang.g:3520:1: rule__ReferenceValue__Group__1 : rule__ReferenceValue__Group__1__Impl ;
     public final void rule__ReferenceValue__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3517:1: ( rule__ReferenceValue__Group__1__Impl )
-            // InternalAspectLang.g:3518:2: rule__ReferenceValue__Group__1__Impl
+            // InternalAspectLang.g:3524:1: ( rule__ReferenceValue__Group__1__Impl )
+            // InternalAspectLang.g:3525:2: rule__ReferenceValue__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ReferenceValue__Group__1__Impl();
@@ -10741,23 +10776,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ReferenceValue__Group__1__Impl"
-    // InternalAspectLang.g:3524:1: rule__ReferenceValue__Group__1__Impl : ( ( rule__ReferenceValue__PropertyAssignment_1 ) ) ;
+    // InternalAspectLang.g:3531:1: rule__ReferenceValue__Group__1__Impl : ( ( rule__ReferenceValue__PropertyAssignment_1 ) ) ;
     public final void rule__ReferenceValue__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3528:1: ( ( ( rule__ReferenceValue__PropertyAssignment_1 ) ) )
-            // InternalAspectLang.g:3529:1: ( ( rule__ReferenceValue__PropertyAssignment_1 ) )
+            // InternalAspectLang.g:3535:1: ( ( ( rule__ReferenceValue__PropertyAssignment_1 ) ) )
+            // InternalAspectLang.g:3536:1: ( ( rule__ReferenceValue__PropertyAssignment_1 ) )
             {
-            // InternalAspectLang.g:3529:1: ( ( rule__ReferenceValue__PropertyAssignment_1 ) )
-            // InternalAspectLang.g:3530:1: ( rule__ReferenceValue__PropertyAssignment_1 )
+            // InternalAspectLang.g:3536:1: ( ( rule__ReferenceValue__PropertyAssignment_1 ) )
+            // InternalAspectLang.g:3537:1: ( rule__ReferenceValue__PropertyAssignment_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getReferenceValueAccess().getPropertyAssignment_1()); 
             }
-            // InternalAspectLang.g:3531:1: ( rule__ReferenceValue__PropertyAssignment_1 )
-            // InternalAspectLang.g:3531:2: rule__ReferenceValue__PropertyAssignment_1
+            // InternalAspectLang.g:3538:1: ( rule__ReferenceValue__PropertyAssignment_1 )
+            // InternalAspectLang.g:3538:2: rule__ReferenceValue__PropertyAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__ReferenceValue__PropertyAssignment_1();
@@ -10792,14 +10827,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ReflectionProperty__Group__0"
-    // InternalAspectLang.g:3545:1: rule__ReflectionProperty__Group__0 : rule__ReflectionProperty__Group__0__Impl rule__ReflectionProperty__Group__1 ;
+    // InternalAspectLang.g:3552:1: rule__ReflectionProperty__Group__0 : rule__ReflectionProperty__Group__0__Impl rule__ReflectionProperty__Group__1 ;
     public final void rule__ReflectionProperty__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3549:1: ( rule__ReflectionProperty__Group__0__Impl rule__ReflectionProperty__Group__1 )
-            // InternalAspectLang.g:3550:2: rule__ReflectionProperty__Group__0__Impl rule__ReflectionProperty__Group__1
+            // InternalAspectLang.g:3556:1: ( rule__ReflectionProperty__Group__0__Impl rule__ReflectionProperty__Group__1 )
+            // InternalAspectLang.g:3557:2: rule__ReflectionProperty__Group__0__Impl rule__ReflectionProperty__Group__1
             {
             pushFollow(FOLLOW_22);
             rule__ReflectionProperty__Group__0__Impl();
@@ -10830,22 +10865,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ReflectionProperty__Group__0__Impl"
-    // InternalAspectLang.g:3557:1: rule__ReflectionProperty__Group__0__Impl : ( '$' ) ;
+    // InternalAspectLang.g:3564:1: rule__ReflectionProperty__Group__0__Impl : ( '$' ) ;
     public final void rule__ReflectionProperty__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3561:1: ( ( '$' ) )
-            // InternalAspectLang.g:3562:1: ( '$' )
+            // InternalAspectLang.g:3568:1: ( ( '$' ) )
+            // InternalAspectLang.g:3569:1: ( '$' )
             {
-            // InternalAspectLang.g:3562:1: ( '$' )
-            // InternalAspectLang.g:3563:1: '$'
+            // InternalAspectLang.g:3569:1: ( '$' )
+            // InternalAspectLang.g:3570:1: '$'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getReflectionPropertyAccess().getDollarSignKeyword_0()); 
             }
-            match(input,50,FOLLOW_2); if (state.failed) return ;
+            match(input,51,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getReflectionPropertyAccess().getDollarSignKeyword_0()); 
             }
@@ -10871,14 +10906,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ReflectionProperty__Group__1"
-    // InternalAspectLang.g:3576:1: rule__ReflectionProperty__Group__1 : rule__ReflectionProperty__Group__1__Impl ;
+    // InternalAspectLang.g:3583:1: rule__ReflectionProperty__Group__1 : rule__ReflectionProperty__Group__1__Impl ;
     public final void rule__ReflectionProperty__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3580:1: ( rule__ReflectionProperty__Group__1__Impl )
-            // InternalAspectLang.g:3581:2: rule__ReflectionProperty__Group__1__Impl
+            // InternalAspectLang.g:3587:1: ( rule__ReflectionProperty__Group__1__Impl )
+            // InternalAspectLang.g:3588:2: rule__ReflectionProperty__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ReflectionProperty__Group__1__Impl();
@@ -10904,23 +10939,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ReflectionProperty__Group__1__Impl"
-    // InternalAspectLang.g:3587:1: rule__ReflectionProperty__Group__1__Impl : ( ( rule__ReflectionProperty__FunctionAssignment_1 ) ) ;
+    // InternalAspectLang.g:3594:1: rule__ReflectionProperty__Group__1__Impl : ( ( rule__ReflectionProperty__FunctionAssignment_1 ) ) ;
     public final void rule__ReflectionProperty__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3591:1: ( ( ( rule__ReflectionProperty__FunctionAssignment_1 ) ) )
-            // InternalAspectLang.g:3592:1: ( ( rule__ReflectionProperty__FunctionAssignment_1 ) )
+            // InternalAspectLang.g:3598:1: ( ( ( rule__ReflectionProperty__FunctionAssignment_1 ) ) )
+            // InternalAspectLang.g:3599:1: ( ( rule__ReflectionProperty__FunctionAssignment_1 ) )
             {
-            // InternalAspectLang.g:3592:1: ( ( rule__ReflectionProperty__FunctionAssignment_1 ) )
-            // InternalAspectLang.g:3593:1: ( rule__ReflectionProperty__FunctionAssignment_1 )
+            // InternalAspectLang.g:3599:1: ( ( rule__ReflectionProperty__FunctionAssignment_1 ) )
+            // InternalAspectLang.g:3600:1: ( rule__ReflectionProperty__FunctionAssignment_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getReflectionPropertyAccess().getFunctionAssignment_1()); 
             }
-            // InternalAspectLang.g:3594:1: ( rule__ReflectionProperty__FunctionAssignment_1 )
-            // InternalAspectLang.g:3594:2: rule__ReflectionProperty__FunctionAssignment_1
+            // InternalAspectLang.g:3601:1: ( rule__ReflectionProperty__FunctionAssignment_1 )
+            // InternalAspectLang.g:3601:2: rule__ReflectionProperty__FunctionAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__ReflectionProperty__FunctionAssignment_1();
@@ -10955,14 +10990,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RuntimeProperty__Group__0"
-    // InternalAspectLang.g:3608:1: rule__RuntimeProperty__Group__0 : rule__RuntimeProperty__Group__0__Impl rule__RuntimeProperty__Group__1 ;
+    // InternalAspectLang.g:3615:1: rule__RuntimeProperty__Group__0 : rule__RuntimeProperty__Group__0__Impl rule__RuntimeProperty__Group__1 ;
     public final void rule__RuntimeProperty__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3612:1: ( rule__RuntimeProperty__Group__0__Impl rule__RuntimeProperty__Group__1 )
-            // InternalAspectLang.g:3613:2: rule__RuntimeProperty__Group__0__Impl rule__RuntimeProperty__Group__1
+            // InternalAspectLang.g:3619:1: ( rule__RuntimeProperty__Group__0__Impl rule__RuntimeProperty__Group__1 )
+            // InternalAspectLang.g:3620:2: rule__RuntimeProperty__Group__0__Impl rule__RuntimeProperty__Group__1
             {
             pushFollow(FOLLOW_23);
             rule__RuntimeProperty__Group__0__Impl();
@@ -10993,23 +11028,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RuntimeProperty__Group__0__Impl"
-    // InternalAspectLang.g:3620:1: rule__RuntimeProperty__Group__0__Impl : ( () ) ;
+    // InternalAspectLang.g:3627:1: rule__RuntimeProperty__Group__0__Impl : ( () ) ;
     public final void rule__RuntimeProperty__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3624:1: ( ( () ) )
-            // InternalAspectLang.g:3625:1: ( () )
+            // InternalAspectLang.g:3631:1: ( ( () ) )
+            // InternalAspectLang.g:3632:1: ( () )
             {
-            // InternalAspectLang.g:3625:1: ( () )
-            // InternalAspectLang.g:3626:1: ()
+            // InternalAspectLang.g:3632:1: ( () )
+            // InternalAspectLang.g:3633:1: ()
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRuntimePropertyAccess().getRuntimePropertyAction_0()); 
             }
-            // InternalAspectLang.g:3627:1: ()
-            // InternalAspectLang.g:3629:1: 
+            // InternalAspectLang.g:3634:1: ()
+            // InternalAspectLang.g:3636:1: 
             {
             }
 
@@ -11034,14 +11069,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RuntimeProperty__Group__1"
-    // InternalAspectLang.g:3639:1: rule__RuntimeProperty__Group__1 : rule__RuntimeProperty__Group__1__Impl ;
+    // InternalAspectLang.g:3646:1: rule__RuntimeProperty__Group__1 : rule__RuntimeProperty__Group__1__Impl ;
     public final void rule__RuntimeProperty__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3643:1: ( rule__RuntimeProperty__Group__1__Impl )
-            // InternalAspectLang.g:3644:2: rule__RuntimeProperty__Group__1__Impl
+            // InternalAspectLang.g:3650:1: ( rule__RuntimeProperty__Group__1__Impl )
+            // InternalAspectLang.g:3651:2: rule__RuntimeProperty__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__RuntimeProperty__Group__1__Impl();
@@ -11067,22 +11102,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RuntimeProperty__Group__1__Impl"
-    // InternalAspectLang.g:3650:1: rule__RuntimeProperty__Group__1__Impl : ( '#' ) ;
+    // InternalAspectLang.g:3657:1: rule__RuntimeProperty__Group__1__Impl : ( '#' ) ;
     public final void rule__RuntimeProperty__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3654:1: ( ( '#' ) )
-            // InternalAspectLang.g:3655:1: ( '#' )
+            // InternalAspectLang.g:3661:1: ( ( '#' ) )
+            // InternalAspectLang.g:3662:1: ( '#' )
             {
-            // InternalAspectLang.g:3655:1: ( '#' )
-            // InternalAspectLang.g:3656:1: '#'
+            // InternalAspectLang.g:3662:1: ( '#' )
+            // InternalAspectLang.g:3663:1: '#'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRuntimePropertyAccess().getNumberSignKeyword_1()); 
             }
-            match(input,51,FOLLOW_2); if (state.failed) return ;
+            match(input,52,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getRuntimePropertyAccess().getNumberSignKeyword_1()); 
             }
@@ -11108,14 +11143,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__AdviceParameter__Group__0"
-    // InternalAspectLang.g:3673:1: rule__AdviceParameter__Group__0 : rule__AdviceParameter__Group__0__Impl rule__AdviceParameter__Group__1 ;
+    // InternalAspectLang.g:3680:1: rule__AdviceParameter__Group__0 : rule__AdviceParameter__Group__0__Impl rule__AdviceParameter__Group__1 ;
     public final void rule__AdviceParameter__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3677:1: ( rule__AdviceParameter__Group__0__Impl rule__AdviceParameter__Group__1 )
-            // InternalAspectLang.g:3678:2: rule__AdviceParameter__Group__0__Impl rule__AdviceParameter__Group__1
+            // InternalAspectLang.g:3684:1: ( rule__AdviceParameter__Group__0__Impl rule__AdviceParameter__Group__1 )
+            // InternalAspectLang.g:3685:2: rule__AdviceParameter__Group__0__Impl rule__AdviceParameter__Group__1
             {
             pushFollow(FOLLOW_24);
             rule__AdviceParameter__Group__0__Impl();
@@ -11146,23 +11181,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__AdviceParameter__Group__0__Impl"
-    // InternalAspectLang.g:3685:1: rule__AdviceParameter__Group__0__Impl : ( ( rule__AdviceParameter__DeclarationAssignment_0 ) ) ;
+    // InternalAspectLang.g:3692:1: rule__AdviceParameter__Group__0__Impl : ( ( rule__AdviceParameter__DeclarationAssignment_0 ) ) ;
     public final void rule__AdviceParameter__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3689:1: ( ( ( rule__AdviceParameter__DeclarationAssignment_0 ) ) )
-            // InternalAspectLang.g:3690:1: ( ( rule__AdviceParameter__DeclarationAssignment_0 ) )
+            // InternalAspectLang.g:3696:1: ( ( ( rule__AdviceParameter__DeclarationAssignment_0 ) ) )
+            // InternalAspectLang.g:3697:1: ( ( rule__AdviceParameter__DeclarationAssignment_0 ) )
             {
-            // InternalAspectLang.g:3690:1: ( ( rule__AdviceParameter__DeclarationAssignment_0 ) )
-            // InternalAspectLang.g:3691:1: ( rule__AdviceParameter__DeclarationAssignment_0 )
+            // InternalAspectLang.g:3697:1: ( ( rule__AdviceParameter__DeclarationAssignment_0 ) )
+            // InternalAspectLang.g:3698:1: ( rule__AdviceParameter__DeclarationAssignment_0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdviceParameterAccess().getDeclarationAssignment_0()); 
             }
-            // InternalAspectLang.g:3692:1: ( rule__AdviceParameter__DeclarationAssignment_0 )
-            // InternalAspectLang.g:3692:2: rule__AdviceParameter__DeclarationAssignment_0
+            // InternalAspectLang.g:3699:1: ( rule__AdviceParameter__DeclarationAssignment_0 )
+            // InternalAspectLang.g:3699:2: rule__AdviceParameter__DeclarationAssignment_0
             {
             pushFollow(FOLLOW_2);
             rule__AdviceParameter__DeclarationAssignment_0();
@@ -11197,14 +11232,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__AdviceParameter__Group__1"
-    // InternalAspectLang.g:3702:1: rule__AdviceParameter__Group__1 : rule__AdviceParameter__Group__1__Impl ;
+    // InternalAspectLang.g:3709:1: rule__AdviceParameter__Group__1 : rule__AdviceParameter__Group__1__Impl ;
     public final void rule__AdviceParameter__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3706:1: ( rule__AdviceParameter__Group__1__Impl )
-            // InternalAspectLang.g:3707:2: rule__AdviceParameter__Group__1__Impl
+            // InternalAspectLang.g:3713:1: ( rule__AdviceParameter__Group__1__Impl )
+            // InternalAspectLang.g:3714:2: rule__AdviceParameter__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__AdviceParameter__Group__1__Impl();
@@ -11230,31 +11265,31 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__AdviceParameter__Group__1__Impl"
-    // InternalAspectLang.g:3713:1: rule__AdviceParameter__Group__1__Impl : ( ( rule__AdviceParameter__Group_1__0 )? ) ;
+    // InternalAspectLang.g:3720:1: rule__AdviceParameter__Group__1__Impl : ( ( rule__AdviceParameter__Group_1__0 )? ) ;
     public final void rule__AdviceParameter__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3717:1: ( ( ( rule__AdviceParameter__Group_1__0 )? ) )
-            // InternalAspectLang.g:3718:1: ( ( rule__AdviceParameter__Group_1__0 )? )
+            // InternalAspectLang.g:3724:1: ( ( ( rule__AdviceParameter__Group_1__0 )? ) )
+            // InternalAspectLang.g:3725:1: ( ( rule__AdviceParameter__Group_1__0 )? )
             {
-            // InternalAspectLang.g:3718:1: ( ( rule__AdviceParameter__Group_1__0 )? )
-            // InternalAspectLang.g:3719:1: ( rule__AdviceParameter__Group_1__0 )?
+            // InternalAspectLang.g:3725:1: ( ( rule__AdviceParameter__Group_1__0 )? )
+            // InternalAspectLang.g:3726:1: ( rule__AdviceParameter__Group_1__0 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdviceParameterAccess().getGroup_1()); 
             }
-            // InternalAspectLang.g:3720:1: ( rule__AdviceParameter__Group_1__0 )?
+            // InternalAspectLang.g:3727:1: ( rule__AdviceParameter__Group_1__0 )?
             int alt33=2;
             int LA33_0 = input.LA(1);
 
-            if ( (LA33_0==52) ) {
+            if ( (LA33_0==53) ) {
                 alt33=1;
             }
             switch (alt33) {
                 case 1 :
-                    // InternalAspectLang.g:3720:2: rule__AdviceParameter__Group_1__0
+                    // InternalAspectLang.g:3727:2: rule__AdviceParameter__Group_1__0
                     {
                     pushFollow(FOLLOW_2);
                     rule__AdviceParameter__Group_1__0();
@@ -11292,14 +11327,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__AdviceParameter__Group_1__0"
-    // InternalAspectLang.g:3734:1: rule__AdviceParameter__Group_1__0 : rule__AdviceParameter__Group_1__0__Impl rule__AdviceParameter__Group_1__1 ;
+    // InternalAspectLang.g:3741:1: rule__AdviceParameter__Group_1__0 : rule__AdviceParameter__Group_1__0__Impl rule__AdviceParameter__Group_1__1 ;
     public final void rule__AdviceParameter__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3738:1: ( rule__AdviceParameter__Group_1__0__Impl rule__AdviceParameter__Group_1__1 )
-            // InternalAspectLang.g:3739:2: rule__AdviceParameter__Group_1__0__Impl rule__AdviceParameter__Group_1__1
+            // InternalAspectLang.g:3745:1: ( rule__AdviceParameter__Group_1__0__Impl rule__AdviceParameter__Group_1__1 )
+            // InternalAspectLang.g:3746:2: rule__AdviceParameter__Group_1__0__Impl rule__AdviceParameter__Group_1__1
             {
             pushFollow(FOLLOW_15);
             rule__AdviceParameter__Group_1__0__Impl();
@@ -11330,22 +11365,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__AdviceParameter__Group_1__0__Impl"
-    // InternalAspectLang.g:3746:1: rule__AdviceParameter__Group_1__0__Impl : ( '[' ) ;
+    // InternalAspectLang.g:3753:1: rule__AdviceParameter__Group_1__0__Impl : ( '[' ) ;
     public final void rule__AdviceParameter__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3750:1: ( ( '[' ) )
-            // InternalAspectLang.g:3751:1: ( '[' )
+            // InternalAspectLang.g:3757:1: ( ( '[' ) )
+            // InternalAspectLang.g:3758:1: ( '[' )
             {
-            // InternalAspectLang.g:3751:1: ( '[' )
-            // InternalAspectLang.g:3752:1: '['
+            // InternalAspectLang.g:3758:1: ( '[' )
+            // InternalAspectLang.g:3759:1: '['
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdviceParameterAccess().getLeftSquareBracketKeyword_1_0()); 
             }
-            match(input,52,FOLLOW_2); if (state.failed) return ;
+            match(input,53,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getAdviceParameterAccess().getLeftSquareBracketKeyword_1_0()); 
             }
@@ -11371,14 +11406,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__AdviceParameter__Group_1__1"
-    // InternalAspectLang.g:3765:1: rule__AdviceParameter__Group_1__1 : rule__AdviceParameter__Group_1__1__Impl rule__AdviceParameter__Group_1__2 ;
+    // InternalAspectLang.g:3772:1: rule__AdviceParameter__Group_1__1 : rule__AdviceParameter__Group_1__1__Impl rule__AdviceParameter__Group_1__2 ;
     public final void rule__AdviceParameter__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3769:1: ( rule__AdviceParameter__Group_1__1__Impl rule__AdviceParameter__Group_1__2 )
-            // InternalAspectLang.g:3770:2: rule__AdviceParameter__Group_1__1__Impl rule__AdviceParameter__Group_1__2
+            // InternalAspectLang.g:3776:1: ( rule__AdviceParameter__Group_1__1__Impl rule__AdviceParameter__Group_1__2 )
+            // InternalAspectLang.g:3777:2: rule__AdviceParameter__Group_1__1__Impl rule__AdviceParameter__Group_1__2
             {
             pushFollow(FOLLOW_25);
             rule__AdviceParameter__Group_1__1__Impl();
@@ -11409,23 +11444,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__AdviceParameter__Group_1__1__Impl"
-    // InternalAspectLang.g:3777:1: rule__AdviceParameter__Group_1__1__Impl : ( ( rule__AdviceParameter__CollectionAssignment_1_1 ) ) ;
+    // InternalAspectLang.g:3784:1: rule__AdviceParameter__Group_1__1__Impl : ( ( rule__AdviceParameter__CollectionAssignment_1_1 ) ) ;
     public final void rule__AdviceParameter__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3781:1: ( ( ( rule__AdviceParameter__CollectionAssignment_1_1 ) ) )
-            // InternalAspectLang.g:3782:1: ( ( rule__AdviceParameter__CollectionAssignment_1_1 ) )
+            // InternalAspectLang.g:3788:1: ( ( ( rule__AdviceParameter__CollectionAssignment_1_1 ) ) )
+            // InternalAspectLang.g:3789:1: ( ( rule__AdviceParameter__CollectionAssignment_1_1 ) )
             {
-            // InternalAspectLang.g:3782:1: ( ( rule__AdviceParameter__CollectionAssignment_1_1 ) )
-            // InternalAspectLang.g:3783:1: ( rule__AdviceParameter__CollectionAssignment_1_1 )
+            // InternalAspectLang.g:3789:1: ( ( rule__AdviceParameter__CollectionAssignment_1_1 ) )
+            // InternalAspectLang.g:3790:1: ( rule__AdviceParameter__CollectionAssignment_1_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdviceParameterAccess().getCollectionAssignment_1_1()); 
             }
-            // InternalAspectLang.g:3784:1: ( rule__AdviceParameter__CollectionAssignment_1_1 )
-            // InternalAspectLang.g:3784:2: rule__AdviceParameter__CollectionAssignment_1_1
+            // InternalAspectLang.g:3791:1: ( rule__AdviceParameter__CollectionAssignment_1_1 )
+            // InternalAspectLang.g:3791:2: rule__AdviceParameter__CollectionAssignment_1_1
             {
             pushFollow(FOLLOW_2);
             rule__AdviceParameter__CollectionAssignment_1_1();
@@ -11460,14 +11495,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__AdviceParameter__Group_1__2"
-    // InternalAspectLang.g:3794:1: rule__AdviceParameter__Group_1__2 : rule__AdviceParameter__Group_1__2__Impl ;
+    // InternalAspectLang.g:3801:1: rule__AdviceParameter__Group_1__2 : rule__AdviceParameter__Group_1__2__Impl ;
     public final void rule__AdviceParameter__Group_1__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3798:1: ( rule__AdviceParameter__Group_1__2__Impl )
-            // InternalAspectLang.g:3799:2: rule__AdviceParameter__Group_1__2__Impl
+            // InternalAspectLang.g:3805:1: ( rule__AdviceParameter__Group_1__2__Impl )
+            // InternalAspectLang.g:3806:2: rule__AdviceParameter__Group_1__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__AdviceParameter__Group_1__2__Impl();
@@ -11493,22 +11528,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__AdviceParameter__Group_1__2__Impl"
-    // InternalAspectLang.g:3805:1: rule__AdviceParameter__Group_1__2__Impl : ( ']' ) ;
+    // InternalAspectLang.g:3812:1: rule__AdviceParameter__Group_1__2__Impl : ( ']' ) ;
     public final void rule__AdviceParameter__Group_1__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3809:1: ( ( ']' ) )
-            // InternalAspectLang.g:3810:1: ( ']' )
+            // InternalAspectLang.g:3816:1: ( ( ']' ) )
+            // InternalAspectLang.g:3817:1: ( ']' )
             {
-            // InternalAspectLang.g:3810:1: ( ']' )
-            // InternalAspectLang.g:3811:1: ']'
+            // InternalAspectLang.g:3817:1: ( ']' )
+            // InternalAspectLang.g:3818:1: ']'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdviceParameterAccess().getRightSquareBracketKeyword_1_2()); 
             }
-            match(input,53,FOLLOW_2); if (state.failed) return ;
+            match(input,54,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getAdviceParameterAccess().getRightSquareBracketKeyword_1_2()); 
             }
@@ -11534,14 +11569,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Pointcut__Group__0"
-    // InternalAspectLang.g:3830:1: rule__Pointcut__Group__0 : rule__Pointcut__Group__0__Impl rule__Pointcut__Group__1 ;
+    // InternalAspectLang.g:3837:1: rule__Pointcut__Group__0 : rule__Pointcut__Group__0__Impl rule__Pointcut__Group__1 ;
     public final void rule__Pointcut__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3834:1: ( rule__Pointcut__Group__0__Impl rule__Pointcut__Group__1 )
-            // InternalAspectLang.g:3835:2: rule__Pointcut__Group__0__Impl rule__Pointcut__Group__1
+            // InternalAspectLang.g:3841:1: ( rule__Pointcut__Group__0__Impl rule__Pointcut__Group__1 )
+            // InternalAspectLang.g:3842:2: rule__Pointcut__Group__0__Impl rule__Pointcut__Group__1
             {
             pushFollow(FOLLOW_26);
             rule__Pointcut__Group__0__Impl();
@@ -11572,31 +11607,31 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Pointcut__Group__0__Impl"
-    // InternalAspectLang.g:3842:1: rule__Pointcut__Group__0__Impl : ( ( rule__Pointcut__AnnotationAssignment_0 )? ) ;
+    // InternalAspectLang.g:3849:1: rule__Pointcut__Group__0__Impl : ( ( rule__Pointcut__AnnotationAssignment_0 )? ) ;
     public final void rule__Pointcut__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3846:1: ( ( ( rule__Pointcut__AnnotationAssignment_0 )? ) )
-            // InternalAspectLang.g:3847:1: ( ( rule__Pointcut__AnnotationAssignment_0 )? )
+            // InternalAspectLang.g:3853:1: ( ( ( rule__Pointcut__AnnotationAssignment_0 )? ) )
+            // InternalAspectLang.g:3854:1: ( ( rule__Pointcut__AnnotationAssignment_0 )? )
             {
-            // InternalAspectLang.g:3847:1: ( ( rule__Pointcut__AnnotationAssignment_0 )? )
-            // InternalAspectLang.g:3848:1: ( rule__Pointcut__AnnotationAssignment_0 )?
+            // InternalAspectLang.g:3854:1: ( ( rule__Pointcut__AnnotationAssignment_0 )? )
+            // InternalAspectLang.g:3855:1: ( rule__Pointcut__AnnotationAssignment_0 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPointcutAccess().getAnnotationAssignment_0()); 
             }
-            // InternalAspectLang.g:3849:1: ( rule__Pointcut__AnnotationAssignment_0 )?
+            // InternalAspectLang.g:3856:1: ( rule__Pointcut__AnnotationAssignment_0 )?
             int alt34=2;
             int LA34_0 = input.LA(1);
 
-            if ( (LA34_0==58) ) {
+            if ( (LA34_0==59) ) {
                 alt34=1;
             }
             switch (alt34) {
                 case 1 :
-                    // InternalAspectLang.g:3849:2: rule__Pointcut__AnnotationAssignment_0
+                    // InternalAspectLang.g:3856:2: rule__Pointcut__AnnotationAssignment_0
                     {
                     pushFollow(FOLLOW_2);
                     rule__Pointcut__AnnotationAssignment_0();
@@ -11634,14 +11669,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Pointcut__Group__1"
-    // InternalAspectLang.g:3859:1: rule__Pointcut__Group__1 : rule__Pointcut__Group__1__Impl rule__Pointcut__Group__2 ;
+    // InternalAspectLang.g:3866:1: rule__Pointcut__Group__1 : rule__Pointcut__Group__1__Impl rule__Pointcut__Group__2 ;
     public final void rule__Pointcut__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3863:1: ( rule__Pointcut__Group__1__Impl rule__Pointcut__Group__2 )
-            // InternalAspectLang.g:3864:2: rule__Pointcut__Group__1__Impl rule__Pointcut__Group__2
+            // InternalAspectLang.g:3870:1: ( rule__Pointcut__Group__1__Impl rule__Pointcut__Group__2 )
+            // InternalAspectLang.g:3871:2: rule__Pointcut__Group__1__Impl rule__Pointcut__Group__2
             {
             pushFollow(FOLLOW_3);
             rule__Pointcut__Group__1__Impl();
@@ -11672,22 +11707,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Pointcut__Group__1__Impl"
-    // InternalAspectLang.g:3871:1: rule__Pointcut__Group__1__Impl : ( 'pointcut' ) ;
+    // InternalAspectLang.g:3878:1: rule__Pointcut__Group__1__Impl : ( 'pointcut' ) ;
     public final void rule__Pointcut__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3875:1: ( ( 'pointcut' ) )
-            // InternalAspectLang.g:3876:1: ( 'pointcut' )
+            // InternalAspectLang.g:3882:1: ( ( 'pointcut' ) )
+            // InternalAspectLang.g:3883:1: ( 'pointcut' )
             {
-            // InternalAspectLang.g:3876:1: ( 'pointcut' )
-            // InternalAspectLang.g:3877:1: 'pointcut'
+            // InternalAspectLang.g:3883:1: ( 'pointcut' )
+            // InternalAspectLang.g:3884:1: 'pointcut'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPointcutAccess().getPointcutKeyword_1()); 
             }
-            match(input,54,FOLLOW_2); if (state.failed) return ;
+            match(input,55,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getPointcutAccess().getPointcutKeyword_1()); 
             }
@@ -11713,14 +11748,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Pointcut__Group__2"
-    // InternalAspectLang.g:3890:1: rule__Pointcut__Group__2 : rule__Pointcut__Group__2__Impl rule__Pointcut__Group__3 ;
+    // InternalAspectLang.g:3897:1: rule__Pointcut__Group__2 : rule__Pointcut__Group__2__Impl rule__Pointcut__Group__3 ;
     public final void rule__Pointcut__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3894:1: ( rule__Pointcut__Group__2__Impl rule__Pointcut__Group__3 )
-            // InternalAspectLang.g:3895:2: rule__Pointcut__Group__2__Impl rule__Pointcut__Group__3
+            // InternalAspectLang.g:3901:1: ( rule__Pointcut__Group__2__Impl rule__Pointcut__Group__3 )
+            // InternalAspectLang.g:3902:2: rule__Pointcut__Group__2__Impl rule__Pointcut__Group__3
             {
             pushFollow(FOLLOW_27);
             rule__Pointcut__Group__2__Impl();
@@ -11751,23 +11786,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Pointcut__Group__2__Impl"
-    // InternalAspectLang.g:3902:1: rule__Pointcut__Group__2__Impl : ( ( rule__Pointcut__NameAssignment_2 ) ) ;
+    // InternalAspectLang.g:3909:1: rule__Pointcut__Group__2__Impl : ( ( rule__Pointcut__NameAssignment_2 ) ) ;
     public final void rule__Pointcut__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3906:1: ( ( ( rule__Pointcut__NameAssignment_2 ) ) )
-            // InternalAspectLang.g:3907:1: ( ( rule__Pointcut__NameAssignment_2 ) )
+            // InternalAspectLang.g:3913:1: ( ( ( rule__Pointcut__NameAssignment_2 ) ) )
+            // InternalAspectLang.g:3914:1: ( ( rule__Pointcut__NameAssignment_2 ) )
             {
-            // InternalAspectLang.g:3907:1: ( ( rule__Pointcut__NameAssignment_2 ) )
-            // InternalAspectLang.g:3908:1: ( rule__Pointcut__NameAssignment_2 )
+            // InternalAspectLang.g:3914:1: ( ( rule__Pointcut__NameAssignment_2 ) )
+            // InternalAspectLang.g:3915:1: ( rule__Pointcut__NameAssignment_2 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPointcutAccess().getNameAssignment_2()); 
             }
-            // InternalAspectLang.g:3909:1: ( rule__Pointcut__NameAssignment_2 )
-            // InternalAspectLang.g:3909:2: rule__Pointcut__NameAssignment_2
+            // InternalAspectLang.g:3916:1: ( rule__Pointcut__NameAssignment_2 )
+            // InternalAspectLang.g:3916:2: rule__Pointcut__NameAssignment_2
             {
             pushFollow(FOLLOW_2);
             rule__Pointcut__NameAssignment_2();
@@ -11802,14 +11837,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Pointcut__Group__3"
-    // InternalAspectLang.g:3919:1: rule__Pointcut__Group__3 : rule__Pointcut__Group__3__Impl rule__Pointcut__Group__4 ;
+    // InternalAspectLang.g:3926:1: rule__Pointcut__Group__3 : rule__Pointcut__Group__3__Impl rule__Pointcut__Group__4 ;
     public final void rule__Pointcut__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3923:1: ( rule__Pointcut__Group__3__Impl rule__Pointcut__Group__4 )
-            // InternalAspectLang.g:3924:2: rule__Pointcut__Group__3__Impl rule__Pointcut__Group__4
+            // InternalAspectLang.g:3930:1: ( rule__Pointcut__Group__3__Impl rule__Pointcut__Group__4 )
+            // InternalAspectLang.g:3931:2: rule__Pointcut__Group__3__Impl rule__Pointcut__Group__4
             {
             pushFollow(FOLLOW_3);
             rule__Pointcut__Group__3__Impl();
@@ -11840,22 +11875,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Pointcut__Group__3__Impl"
-    // InternalAspectLang.g:3931:1: rule__Pointcut__Group__3__Impl : ( 'class' ) ;
+    // InternalAspectLang.g:3938:1: rule__Pointcut__Group__3__Impl : ( 'class' ) ;
     public final void rule__Pointcut__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3935:1: ( ( 'class' ) )
-            // InternalAspectLang.g:3936:1: ( 'class' )
+            // InternalAspectLang.g:3942:1: ( ( 'class' ) )
+            // InternalAspectLang.g:3943:1: ( 'class' )
             {
-            // InternalAspectLang.g:3936:1: ( 'class' )
-            // InternalAspectLang.g:3937:1: 'class'
+            // InternalAspectLang.g:3943:1: ( 'class' )
+            // InternalAspectLang.g:3944:1: 'class'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPointcutAccess().getClassKeyword_3()); 
             }
-            match(input,55,FOLLOW_2); if (state.failed) return ;
+            match(input,56,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getPointcutAccess().getClassKeyword_3()); 
             }
@@ -11881,14 +11916,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Pointcut__Group__4"
-    // InternalAspectLang.g:3950:1: rule__Pointcut__Group__4 : rule__Pointcut__Group__4__Impl rule__Pointcut__Group__5 ;
+    // InternalAspectLang.g:3957:1: rule__Pointcut__Group__4 : rule__Pointcut__Group__4__Impl rule__Pointcut__Group__5 ;
     public final void rule__Pointcut__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3954:1: ( rule__Pointcut__Group__4__Impl rule__Pointcut__Group__5 )
-            // InternalAspectLang.g:3955:2: rule__Pointcut__Group__4__Impl rule__Pointcut__Group__5
+            // InternalAspectLang.g:3961:1: ( rule__Pointcut__Group__4__Impl rule__Pointcut__Group__5 )
+            // InternalAspectLang.g:3962:2: rule__Pointcut__Group__4__Impl rule__Pointcut__Group__5
             {
             pushFollow(FOLLOW_28);
             rule__Pointcut__Group__4__Impl();
@@ -11919,23 +11954,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Pointcut__Group__4__Impl"
-    // InternalAspectLang.g:3962:1: rule__Pointcut__Group__4__Impl : ( ( rule__Pointcut__ModelAssignment_4 ) ) ;
+    // InternalAspectLang.g:3969:1: rule__Pointcut__Group__4__Impl : ( ( rule__Pointcut__ModelAssignment_4 ) ) ;
     public final void rule__Pointcut__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3966:1: ( ( ( rule__Pointcut__ModelAssignment_4 ) ) )
-            // InternalAspectLang.g:3967:1: ( ( rule__Pointcut__ModelAssignment_4 ) )
+            // InternalAspectLang.g:3973:1: ( ( ( rule__Pointcut__ModelAssignment_4 ) ) )
+            // InternalAspectLang.g:3974:1: ( ( rule__Pointcut__ModelAssignment_4 ) )
             {
-            // InternalAspectLang.g:3967:1: ( ( rule__Pointcut__ModelAssignment_4 ) )
-            // InternalAspectLang.g:3968:1: ( rule__Pointcut__ModelAssignment_4 )
+            // InternalAspectLang.g:3974:1: ( ( rule__Pointcut__ModelAssignment_4 ) )
+            // InternalAspectLang.g:3975:1: ( rule__Pointcut__ModelAssignment_4 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPointcutAccess().getModelAssignment_4()); 
             }
-            // InternalAspectLang.g:3969:1: ( rule__Pointcut__ModelAssignment_4 )
-            // InternalAspectLang.g:3969:2: rule__Pointcut__ModelAssignment_4
+            // InternalAspectLang.g:3976:1: ( rule__Pointcut__ModelAssignment_4 )
+            // InternalAspectLang.g:3976:2: rule__Pointcut__ModelAssignment_4
             {
             pushFollow(FOLLOW_2);
             rule__Pointcut__ModelAssignment_4();
@@ -11970,14 +12005,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Pointcut__Group__5"
-    // InternalAspectLang.g:3979:1: rule__Pointcut__Group__5 : rule__Pointcut__Group__5__Impl rule__Pointcut__Group__6 ;
+    // InternalAspectLang.g:3986:1: rule__Pointcut__Group__5 : rule__Pointcut__Group__5__Impl rule__Pointcut__Group__6 ;
     public final void rule__Pointcut__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3983:1: ( rule__Pointcut__Group__5__Impl rule__Pointcut__Group__6 )
-            // InternalAspectLang.g:3984:2: rule__Pointcut__Group__5__Impl rule__Pointcut__Group__6
+            // InternalAspectLang.g:3990:1: ( rule__Pointcut__Group__5__Impl rule__Pointcut__Group__6 )
+            // InternalAspectLang.g:3991:2: rule__Pointcut__Group__5__Impl rule__Pointcut__Group__6
             {
             pushFollow(FOLLOW_29);
             rule__Pointcut__Group__5__Impl();
@@ -12008,22 +12043,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Pointcut__Group__5__Impl"
-    // InternalAspectLang.g:3991:1: rule__Pointcut__Group__5__Impl : ( '.' ) ;
+    // InternalAspectLang.g:3998:1: rule__Pointcut__Group__5__Impl : ( '.' ) ;
     public final void rule__Pointcut__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:3995:1: ( ( '.' ) )
-            // InternalAspectLang.g:3996:1: ( '.' )
+            // InternalAspectLang.g:4002:1: ( ( '.' ) )
+            // InternalAspectLang.g:4003:1: ( '.' )
             {
-            // InternalAspectLang.g:3996:1: ( '.' )
-            // InternalAspectLang.g:3997:1: '.'
+            // InternalAspectLang.g:4003:1: ( '.' )
+            // InternalAspectLang.g:4004:1: '.'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPointcutAccess().getFullStopKeyword_5()); 
             }
-            match(input,56,FOLLOW_2); if (state.failed) return ;
+            match(input,57,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getPointcutAccess().getFullStopKeyword_5()); 
             }
@@ -12049,14 +12084,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Pointcut__Group__6"
-    // InternalAspectLang.g:4010:1: rule__Pointcut__Group__6 : rule__Pointcut__Group__6__Impl rule__Pointcut__Group__7 ;
+    // InternalAspectLang.g:4017:1: rule__Pointcut__Group__6 : rule__Pointcut__Group__6__Impl rule__Pointcut__Group__7 ;
     public final void rule__Pointcut__Group__6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4014:1: ( rule__Pointcut__Group__6__Impl rule__Pointcut__Group__7 )
-            // InternalAspectLang.g:4015:2: rule__Pointcut__Group__6__Impl rule__Pointcut__Group__7
+            // InternalAspectLang.g:4021:1: ( rule__Pointcut__Group__6__Impl rule__Pointcut__Group__7 )
+            // InternalAspectLang.g:4022:2: rule__Pointcut__Group__6__Impl rule__Pointcut__Group__7
             {
             pushFollow(FOLLOW_30);
             rule__Pointcut__Group__6__Impl();
@@ -12087,23 +12122,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Pointcut__Group__6__Impl"
-    // InternalAspectLang.g:4022:1: rule__Pointcut__Group__6__Impl : ( ( rule__Pointcut__LocationAssignment_6 ) ) ;
+    // InternalAspectLang.g:4029:1: rule__Pointcut__Group__6__Impl : ( ( rule__Pointcut__LocationAssignment_6 ) ) ;
     public final void rule__Pointcut__Group__6__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4026:1: ( ( ( rule__Pointcut__LocationAssignment_6 ) ) )
-            // InternalAspectLang.g:4027:1: ( ( rule__Pointcut__LocationAssignment_6 ) )
+            // InternalAspectLang.g:4033:1: ( ( ( rule__Pointcut__LocationAssignment_6 ) ) )
+            // InternalAspectLang.g:4034:1: ( ( rule__Pointcut__LocationAssignment_6 ) )
             {
-            // InternalAspectLang.g:4027:1: ( ( rule__Pointcut__LocationAssignment_6 ) )
-            // InternalAspectLang.g:4028:1: ( rule__Pointcut__LocationAssignment_6 )
+            // InternalAspectLang.g:4034:1: ( ( rule__Pointcut__LocationAssignment_6 ) )
+            // InternalAspectLang.g:4035:1: ( rule__Pointcut__LocationAssignment_6 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPointcutAccess().getLocationAssignment_6()); 
             }
-            // InternalAspectLang.g:4029:1: ( rule__Pointcut__LocationAssignment_6 )
-            // InternalAspectLang.g:4029:2: rule__Pointcut__LocationAssignment_6
+            // InternalAspectLang.g:4036:1: ( rule__Pointcut__LocationAssignment_6 )
+            // InternalAspectLang.g:4036:2: rule__Pointcut__LocationAssignment_6
             {
             pushFollow(FOLLOW_2);
             rule__Pointcut__LocationAssignment_6();
@@ -12138,14 +12173,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Pointcut__Group__7"
-    // InternalAspectLang.g:4039:1: rule__Pointcut__Group__7 : rule__Pointcut__Group__7__Impl ;
+    // InternalAspectLang.g:4046:1: rule__Pointcut__Group__7 : rule__Pointcut__Group__7__Impl ;
     public final void rule__Pointcut__Group__7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4043:1: ( rule__Pointcut__Group__7__Impl )
-            // InternalAspectLang.g:4044:2: rule__Pointcut__Group__7__Impl
+            // InternalAspectLang.g:4050:1: ( rule__Pointcut__Group__7__Impl )
+            // InternalAspectLang.g:4051:2: rule__Pointcut__Group__7__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Pointcut__Group__7__Impl();
@@ -12171,31 +12206,31 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Pointcut__Group__7__Impl"
-    // InternalAspectLang.g:4050:1: rule__Pointcut__Group__7__Impl : ( ( rule__Pointcut__Group_7__0 )? ) ;
+    // InternalAspectLang.g:4057:1: rule__Pointcut__Group__7__Impl : ( ( rule__Pointcut__Group_7__0 )? ) ;
     public final void rule__Pointcut__Group__7__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4054:1: ( ( ( rule__Pointcut__Group_7__0 )? ) )
-            // InternalAspectLang.g:4055:1: ( ( rule__Pointcut__Group_7__0 )? )
+            // InternalAspectLang.g:4061:1: ( ( ( rule__Pointcut__Group_7__0 )? ) )
+            // InternalAspectLang.g:4062:1: ( ( rule__Pointcut__Group_7__0 )? )
             {
-            // InternalAspectLang.g:4055:1: ( ( rule__Pointcut__Group_7__0 )? )
-            // InternalAspectLang.g:4056:1: ( rule__Pointcut__Group_7__0 )?
+            // InternalAspectLang.g:4062:1: ( ( rule__Pointcut__Group_7__0 )? )
+            // InternalAspectLang.g:4063:1: ( rule__Pointcut__Group_7__0 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPointcutAccess().getGroup_7()); 
             }
-            // InternalAspectLang.g:4057:1: ( rule__Pointcut__Group_7__0 )?
+            // InternalAspectLang.g:4064:1: ( rule__Pointcut__Group_7__0 )?
             int alt35=2;
             int LA35_0 = input.LA(1);
 
-            if ( (LA35_0==57) ) {
+            if ( (LA35_0==58) ) {
                 alt35=1;
             }
             switch (alt35) {
                 case 1 :
-                    // InternalAspectLang.g:4057:2: rule__Pointcut__Group_7__0
+                    // InternalAspectLang.g:4064:2: rule__Pointcut__Group_7__0
                     {
                     pushFollow(FOLLOW_2);
                     rule__Pointcut__Group_7__0();
@@ -12233,14 +12268,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Pointcut__Group_7__0"
-    // InternalAspectLang.g:4083:1: rule__Pointcut__Group_7__0 : rule__Pointcut__Group_7__0__Impl rule__Pointcut__Group_7__1 ;
+    // InternalAspectLang.g:4090:1: rule__Pointcut__Group_7__0 : rule__Pointcut__Group_7__0__Impl rule__Pointcut__Group_7__1 ;
     public final void rule__Pointcut__Group_7__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4087:1: ( rule__Pointcut__Group_7__0__Impl rule__Pointcut__Group_7__1 )
-            // InternalAspectLang.g:4088:2: rule__Pointcut__Group_7__0__Impl rule__Pointcut__Group_7__1
+            // InternalAspectLang.g:4094:1: ( rule__Pointcut__Group_7__0__Impl rule__Pointcut__Group_7__1 )
+            // InternalAspectLang.g:4095:2: rule__Pointcut__Group_7__0__Impl rule__Pointcut__Group_7__1
             {
             pushFollow(FOLLOW_31);
             rule__Pointcut__Group_7__0__Impl();
@@ -12271,22 +12306,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Pointcut__Group_7__0__Impl"
-    // InternalAspectLang.g:4095:1: rule__Pointcut__Group_7__0__Impl : ( 'operation' ) ;
+    // InternalAspectLang.g:4102:1: rule__Pointcut__Group_7__0__Impl : ( 'operation' ) ;
     public final void rule__Pointcut__Group_7__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4099:1: ( ( 'operation' ) )
-            // InternalAspectLang.g:4100:1: ( 'operation' )
+            // InternalAspectLang.g:4106:1: ( ( 'operation' ) )
+            // InternalAspectLang.g:4107:1: ( 'operation' )
             {
-            // InternalAspectLang.g:4100:1: ( 'operation' )
-            // InternalAspectLang.g:4101:1: 'operation'
+            // InternalAspectLang.g:4107:1: ( 'operation' )
+            // InternalAspectLang.g:4108:1: 'operation'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPointcutAccess().getOperationKeyword_7_0()); 
             }
-            match(input,57,FOLLOW_2); if (state.failed) return ;
+            match(input,58,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getPointcutAccess().getOperationKeyword_7_0()); 
             }
@@ -12312,14 +12347,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Pointcut__Group_7__1"
-    // InternalAspectLang.g:4114:1: rule__Pointcut__Group_7__1 : rule__Pointcut__Group_7__1__Impl ;
+    // InternalAspectLang.g:4121:1: rule__Pointcut__Group_7__1 : rule__Pointcut__Group_7__1__Impl ;
     public final void rule__Pointcut__Group_7__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4118:1: ( rule__Pointcut__Group_7__1__Impl )
-            // InternalAspectLang.g:4119:2: rule__Pointcut__Group_7__1__Impl
+            // InternalAspectLang.g:4125:1: ( rule__Pointcut__Group_7__1__Impl )
+            // InternalAspectLang.g:4126:2: rule__Pointcut__Group_7__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Pointcut__Group_7__1__Impl();
@@ -12345,23 +12380,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Pointcut__Group_7__1__Impl"
-    // InternalAspectLang.g:4125:1: rule__Pointcut__Group_7__1__Impl : ( ( rule__Pointcut__OperationAssignment_7_1 ) ) ;
+    // InternalAspectLang.g:4132:1: rule__Pointcut__Group_7__1__Impl : ( ( rule__Pointcut__OperationAssignment_7_1 ) ) ;
     public final void rule__Pointcut__Group_7__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4129:1: ( ( ( rule__Pointcut__OperationAssignment_7_1 ) ) )
-            // InternalAspectLang.g:4130:1: ( ( rule__Pointcut__OperationAssignment_7_1 ) )
+            // InternalAspectLang.g:4136:1: ( ( ( rule__Pointcut__OperationAssignment_7_1 ) ) )
+            // InternalAspectLang.g:4137:1: ( ( rule__Pointcut__OperationAssignment_7_1 ) )
             {
-            // InternalAspectLang.g:4130:1: ( ( rule__Pointcut__OperationAssignment_7_1 ) )
-            // InternalAspectLang.g:4131:1: ( rule__Pointcut__OperationAssignment_7_1 )
+            // InternalAspectLang.g:4137:1: ( ( rule__Pointcut__OperationAssignment_7_1 ) )
+            // InternalAspectLang.g:4138:1: ( rule__Pointcut__OperationAssignment_7_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPointcutAccess().getOperationAssignment_7_1()); 
             }
-            // InternalAspectLang.g:4132:1: ( rule__Pointcut__OperationAssignment_7_1 )
-            // InternalAspectLang.g:4132:2: rule__Pointcut__OperationAssignment_7_1
+            // InternalAspectLang.g:4139:1: ( rule__Pointcut__OperationAssignment_7_1 )
+            // InternalAspectLang.g:4139:2: rule__Pointcut__OperationAssignment_7_1
             {
             pushFollow(FOLLOW_2);
             rule__Pointcut__OperationAssignment_7_1();
@@ -12396,14 +12431,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Annotation__Group__0"
-    // InternalAspectLang.g:4146:1: rule__Annotation__Group__0 : rule__Annotation__Group__0__Impl rule__Annotation__Group__1 ;
+    // InternalAspectLang.g:4153:1: rule__Annotation__Group__0 : rule__Annotation__Group__0__Impl rule__Annotation__Group__1 ;
     public final void rule__Annotation__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4150:1: ( rule__Annotation__Group__0__Impl rule__Annotation__Group__1 )
-            // InternalAspectLang.g:4151:2: rule__Annotation__Group__0__Impl rule__Annotation__Group__1
+            // InternalAspectLang.g:4157:1: ( rule__Annotation__Group__0__Impl rule__Annotation__Group__1 )
+            // InternalAspectLang.g:4158:2: rule__Annotation__Group__0__Impl rule__Annotation__Group__1
             {
             pushFollow(FOLLOW_32);
             rule__Annotation__Group__0__Impl();
@@ -12434,22 +12469,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Annotation__Group__0__Impl"
-    // InternalAspectLang.g:4158:1: rule__Annotation__Group__0__Impl : ( '@' ) ;
+    // InternalAspectLang.g:4165:1: rule__Annotation__Group__0__Impl : ( '@' ) ;
     public final void rule__Annotation__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4162:1: ( ( '@' ) )
-            // InternalAspectLang.g:4163:1: ( '@' )
+            // InternalAspectLang.g:4169:1: ( ( '@' ) )
+            // InternalAspectLang.g:4170:1: ( '@' )
             {
-            // InternalAspectLang.g:4163:1: ( '@' )
-            // InternalAspectLang.g:4164:1: '@'
+            // InternalAspectLang.g:4170:1: ( '@' )
+            // InternalAspectLang.g:4171:1: '@'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAnnotationAccess().getCommercialAtKeyword_0()); 
             }
-            match(input,58,FOLLOW_2); if (state.failed) return ;
+            match(input,59,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getAnnotationAccess().getCommercialAtKeyword_0()); 
             }
@@ -12475,14 +12510,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Annotation__Group__1"
-    // InternalAspectLang.g:4177:1: rule__Annotation__Group__1 : rule__Annotation__Group__1__Impl rule__Annotation__Group__2 ;
+    // InternalAspectLang.g:4184:1: rule__Annotation__Group__1 : rule__Annotation__Group__1__Impl rule__Annotation__Group__2 ;
     public final void rule__Annotation__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4181:1: ( rule__Annotation__Group__1__Impl rule__Annotation__Group__2 )
-            // InternalAspectLang.g:4182:2: rule__Annotation__Group__1__Impl rule__Annotation__Group__2
+            // InternalAspectLang.g:4188:1: ( rule__Annotation__Group__1__Impl rule__Annotation__Group__2 )
+            // InternalAspectLang.g:4189:2: rule__Annotation__Group__1__Impl rule__Annotation__Group__2
             {
             pushFollow(FOLLOW_33);
             rule__Annotation__Group__1__Impl();
@@ -12513,23 +12548,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Annotation__Group__1__Impl"
-    // InternalAspectLang.g:4189:1: rule__Annotation__Group__1__Impl : ( ( rule__Annotation__NameAssignment_1 ) ) ;
+    // InternalAspectLang.g:4196:1: rule__Annotation__Group__1__Impl : ( ( rule__Annotation__NameAssignment_1 ) ) ;
     public final void rule__Annotation__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4193:1: ( ( ( rule__Annotation__NameAssignment_1 ) ) )
-            // InternalAspectLang.g:4194:1: ( ( rule__Annotation__NameAssignment_1 ) )
+            // InternalAspectLang.g:4200:1: ( ( ( rule__Annotation__NameAssignment_1 ) ) )
+            // InternalAspectLang.g:4201:1: ( ( rule__Annotation__NameAssignment_1 ) )
             {
-            // InternalAspectLang.g:4194:1: ( ( rule__Annotation__NameAssignment_1 ) )
-            // InternalAspectLang.g:4195:1: ( rule__Annotation__NameAssignment_1 )
+            // InternalAspectLang.g:4201:1: ( ( rule__Annotation__NameAssignment_1 ) )
+            // InternalAspectLang.g:4202:1: ( rule__Annotation__NameAssignment_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAnnotationAccess().getNameAssignment_1()); 
             }
-            // InternalAspectLang.g:4196:1: ( rule__Annotation__NameAssignment_1 )
-            // InternalAspectLang.g:4196:2: rule__Annotation__NameAssignment_1
+            // InternalAspectLang.g:4203:1: ( rule__Annotation__NameAssignment_1 )
+            // InternalAspectLang.g:4203:2: rule__Annotation__NameAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__Annotation__NameAssignment_1();
@@ -12564,14 +12599,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Annotation__Group__2"
-    // InternalAspectLang.g:4206:1: rule__Annotation__Group__2 : rule__Annotation__Group__2__Impl rule__Annotation__Group__3 ;
+    // InternalAspectLang.g:4213:1: rule__Annotation__Group__2 : rule__Annotation__Group__2__Impl rule__Annotation__Group__3 ;
     public final void rule__Annotation__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4210:1: ( rule__Annotation__Group__2__Impl rule__Annotation__Group__3 )
-            // InternalAspectLang.g:4211:2: rule__Annotation__Group__2__Impl rule__Annotation__Group__3
+            // InternalAspectLang.g:4217:1: ( rule__Annotation__Group__2__Impl rule__Annotation__Group__3 )
+            // InternalAspectLang.g:4218:2: rule__Annotation__Group__2__Impl rule__Annotation__Group__3
             {
             pushFollow(FOLLOW_11);
             rule__Annotation__Group__2__Impl();
@@ -12602,23 +12637,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Annotation__Group__2__Impl"
-    // InternalAspectLang.g:4218:1: rule__Annotation__Group__2__Impl : ( ( rule__Annotation__TechnologiesAssignment_2 ) ) ;
+    // InternalAspectLang.g:4225:1: rule__Annotation__Group__2__Impl : ( ( rule__Annotation__TechnologiesAssignment_2 ) ) ;
     public final void rule__Annotation__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4222:1: ( ( ( rule__Annotation__TechnologiesAssignment_2 ) ) )
-            // InternalAspectLang.g:4223:1: ( ( rule__Annotation__TechnologiesAssignment_2 ) )
+            // InternalAspectLang.g:4229:1: ( ( ( rule__Annotation__TechnologiesAssignment_2 ) ) )
+            // InternalAspectLang.g:4230:1: ( ( rule__Annotation__TechnologiesAssignment_2 ) )
             {
-            // InternalAspectLang.g:4223:1: ( ( rule__Annotation__TechnologiesAssignment_2 ) )
-            // InternalAspectLang.g:4224:1: ( rule__Annotation__TechnologiesAssignment_2 )
+            // InternalAspectLang.g:4230:1: ( ( rule__Annotation__TechnologiesAssignment_2 ) )
+            // InternalAspectLang.g:4231:1: ( rule__Annotation__TechnologiesAssignment_2 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAnnotationAccess().getTechnologiesAssignment_2()); 
             }
-            // InternalAspectLang.g:4225:1: ( rule__Annotation__TechnologiesAssignment_2 )
-            // InternalAspectLang.g:4225:2: rule__Annotation__TechnologiesAssignment_2
+            // InternalAspectLang.g:4232:1: ( rule__Annotation__TechnologiesAssignment_2 )
+            // InternalAspectLang.g:4232:2: rule__Annotation__TechnologiesAssignment_2
             {
             pushFollow(FOLLOW_2);
             rule__Annotation__TechnologiesAssignment_2();
@@ -12653,14 +12688,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Annotation__Group__3"
-    // InternalAspectLang.g:4235:1: rule__Annotation__Group__3 : rule__Annotation__Group__3__Impl ;
+    // InternalAspectLang.g:4242:1: rule__Annotation__Group__3 : rule__Annotation__Group__3__Impl ;
     public final void rule__Annotation__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4239:1: ( rule__Annotation__Group__3__Impl )
-            // InternalAspectLang.g:4240:2: rule__Annotation__Group__3__Impl
+            // InternalAspectLang.g:4246:1: ( rule__Annotation__Group__3__Impl )
+            // InternalAspectLang.g:4247:2: rule__Annotation__Group__3__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Annotation__Group__3__Impl();
@@ -12686,23 +12721,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Annotation__Group__3__Impl"
-    // InternalAspectLang.g:4246:1: rule__Annotation__Group__3__Impl : ( ( rule__Annotation__Group_3__0 ) ) ;
+    // InternalAspectLang.g:4253:1: rule__Annotation__Group__3__Impl : ( ( rule__Annotation__Group_3__0 ) ) ;
     public final void rule__Annotation__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4250:1: ( ( ( rule__Annotation__Group_3__0 ) ) )
-            // InternalAspectLang.g:4251:1: ( ( rule__Annotation__Group_3__0 ) )
+            // InternalAspectLang.g:4257:1: ( ( ( rule__Annotation__Group_3__0 ) ) )
+            // InternalAspectLang.g:4258:1: ( ( rule__Annotation__Group_3__0 ) )
             {
-            // InternalAspectLang.g:4251:1: ( ( rule__Annotation__Group_3__0 ) )
-            // InternalAspectLang.g:4252:1: ( rule__Annotation__Group_3__0 )
+            // InternalAspectLang.g:4258:1: ( ( rule__Annotation__Group_3__0 ) )
+            // InternalAspectLang.g:4259:1: ( rule__Annotation__Group_3__0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAnnotationAccess().getGroup_3()); 
             }
-            // InternalAspectLang.g:4253:1: ( rule__Annotation__Group_3__0 )
-            // InternalAspectLang.g:4253:2: rule__Annotation__Group_3__0
+            // InternalAspectLang.g:4260:1: ( rule__Annotation__Group_3__0 )
+            // InternalAspectLang.g:4260:2: rule__Annotation__Group_3__0
             {
             pushFollow(FOLLOW_2);
             rule__Annotation__Group_3__0();
@@ -12737,14 +12772,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Annotation__Group_3__0"
-    // InternalAspectLang.g:4271:1: rule__Annotation__Group_3__0 : rule__Annotation__Group_3__0__Impl rule__Annotation__Group_3__1 ;
+    // InternalAspectLang.g:4278:1: rule__Annotation__Group_3__0 : rule__Annotation__Group_3__0__Impl rule__Annotation__Group_3__1 ;
     public final void rule__Annotation__Group_3__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4275:1: ( rule__Annotation__Group_3__0__Impl rule__Annotation__Group_3__1 )
-            // InternalAspectLang.g:4276:2: rule__Annotation__Group_3__0__Impl rule__Annotation__Group_3__1
+            // InternalAspectLang.g:4282:1: ( rule__Annotation__Group_3__0__Impl rule__Annotation__Group_3__1 )
+            // InternalAspectLang.g:4283:2: rule__Annotation__Group_3__0__Impl rule__Annotation__Group_3__1
             {
             pushFollow(FOLLOW_33);
             rule__Annotation__Group_3__0__Impl();
@@ -12775,22 +12810,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Annotation__Group_3__0__Impl"
-    // InternalAspectLang.g:4283:1: rule__Annotation__Group_3__0__Impl : ( ',' ) ;
+    // InternalAspectLang.g:4290:1: rule__Annotation__Group_3__0__Impl : ( ',' ) ;
     public final void rule__Annotation__Group_3__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4287:1: ( ( ',' ) )
-            // InternalAspectLang.g:4288:1: ( ',' )
+            // InternalAspectLang.g:4294:1: ( ( ',' ) )
+            // InternalAspectLang.g:4295:1: ( ',' )
             {
-            // InternalAspectLang.g:4288:1: ( ',' )
-            // InternalAspectLang.g:4289:1: ','
+            // InternalAspectLang.g:4295:1: ( ',' )
+            // InternalAspectLang.g:4296:1: ','
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAnnotationAccess().getCommaKeyword_3_0()); 
             }
-            match(input,44,FOLLOW_2); if (state.failed) return ;
+            match(input,45,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getAnnotationAccess().getCommaKeyword_3_0()); 
             }
@@ -12816,14 +12851,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Annotation__Group_3__1"
-    // InternalAspectLang.g:4302:1: rule__Annotation__Group_3__1 : rule__Annotation__Group_3__1__Impl ;
+    // InternalAspectLang.g:4309:1: rule__Annotation__Group_3__1 : rule__Annotation__Group_3__1__Impl ;
     public final void rule__Annotation__Group_3__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4306:1: ( rule__Annotation__Group_3__1__Impl )
-            // InternalAspectLang.g:4307:2: rule__Annotation__Group_3__1__Impl
+            // InternalAspectLang.g:4313:1: ( rule__Annotation__Group_3__1__Impl )
+            // InternalAspectLang.g:4314:2: rule__Annotation__Group_3__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Annotation__Group_3__1__Impl();
@@ -12849,23 +12884,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Annotation__Group_3__1__Impl"
-    // InternalAspectLang.g:4313:1: rule__Annotation__Group_3__1__Impl : ( ( rule__Annotation__TechnologiesAssignment_3_1 ) ) ;
+    // InternalAspectLang.g:4320:1: rule__Annotation__Group_3__1__Impl : ( ( rule__Annotation__TechnologiesAssignment_3_1 ) ) ;
     public final void rule__Annotation__Group_3__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4317:1: ( ( ( rule__Annotation__TechnologiesAssignment_3_1 ) ) )
-            // InternalAspectLang.g:4318:1: ( ( rule__Annotation__TechnologiesAssignment_3_1 ) )
+            // InternalAspectLang.g:4324:1: ( ( ( rule__Annotation__TechnologiesAssignment_3_1 ) ) )
+            // InternalAspectLang.g:4325:1: ( ( rule__Annotation__TechnologiesAssignment_3_1 ) )
             {
-            // InternalAspectLang.g:4318:1: ( ( rule__Annotation__TechnologiesAssignment_3_1 ) )
-            // InternalAspectLang.g:4319:1: ( rule__Annotation__TechnologiesAssignment_3_1 )
+            // InternalAspectLang.g:4325:1: ( ( rule__Annotation__TechnologiesAssignment_3_1 ) )
+            // InternalAspectLang.g:4326:1: ( rule__Annotation__TechnologiesAssignment_3_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAnnotationAccess().getTechnologiesAssignment_3_1()); 
             }
-            // InternalAspectLang.g:4320:1: ( rule__Annotation__TechnologiesAssignment_3_1 )
-            // InternalAspectLang.g:4320:2: rule__Annotation__TechnologiesAssignment_3_1
+            // InternalAspectLang.g:4327:1: ( rule__Annotation__TechnologiesAssignment_3_1 )
+            // InternalAspectLang.g:4327:2: rule__Annotation__TechnologiesAssignment_3_1
             {
             pushFollow(FOLLOW_2);
             rule__Annotation__TechnologiesAssignment_3_1();
@@ -12900,14 +12935,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__LocationQuery__Group__0"
-    // InternalAspectLang.g:4334:1: rule__LocationQuery__Group__0 : rule__LocationQuery__Group__0__Impl rule__LocationQuery__Group__1 ;
+    // InternalAspectLang.g:4341:1: rule__LocationQuery__Group__0 : rule__LocationQuery__Group__0__Impl rule__LocationQuery__Group__1 ;
     public final void rule__LocationQuery__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4338:1: ( rule__LocationQuery__Group__0__Impl rule__LocationQuery__Group__1 )
-            // InternalAspectLang.g:4339:2: rule__LocationQuery__Group__0__Impl rule__LocationQuery__Group__1
+            // InternalAspectLang.g:4345:1: ( rule__LocationQuery__Group__0__Impl rule__LocationQuery__Group__1 )
+            // InternalAspectLang.g:4346:2: rule__LocationQuery__Group__0__Impl rule__LocationQuery__Group__1
             {
             pushFollow(FOLLOW_34);
             rule__LocationQuery__Group__0__Impl();
@@ -12938,23 +12973,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__LocationQuery__Group__0__Impl"
-    // InternalAspectLang.g:4346:1: rule__LocationQuery__Group__0__Impl : ( ( rule__LocationQuery__NodeAssignment_0 ) ) ;
+    // InternalAspectLang.g:4353:1: rule__LocationQuery__Group__0__Impl : ( ( rule__LocationQuery__NodeAssignment_0 ) ) ;
     public final void rule__LocationQuery__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4350:1: ( ( ( rule__LocationQuery__NodeAssignment_0 ) ) )
-            // InternalAspectLang.g:4351:1: ( ( rule__LocationQuery__NodeAssignment_0 ) )
+            // InternalAspectLang.g:4357:1: ( ( ( rule__LocationQuery__NodeAssignment_0 ) ) )
+            // InternalAspectLang.g:4358:1: ( ( rule__LocationQuery__NodeAssignment_0 ) )
             {
-            // InternalAspectLang.g:4351:1: ( ( rule__LocationQuery__NodeAssignment_0 ) )
-            // InternalAspectLang.g:4352:1: ( rule__LocationQuery__NodeAssignment_0 )
+            // InternalAspectLang.g:4358:1: ( ( rule__LocationQuery__NodeAssignment_0 ) )
+            // InternalAspectLang.g:4359:1: ( rule__LocationQuery__NodeAssignment_0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLocationQueryAccess().getNodeAssignment_0()); 
             }
-            // InternalAspectLang.g:4353:1: ( rule__LocationQuery__NodeAssignment_0 )
-            // InternalAspectLang.g:4353:2: rule__LocationQuery__NodeAssignment_0
+            // InternalAspectLang.g:4360:1: ( rule__LocationQuery__NodeAssignment_0 )
+            // InternalAspectLang.g:4360:2: rule__LocationQuery__NodeAssignment_0
             {
             pushFollow(FOLLOW_2);
             rule__LocationQuery__NodeAssignment_0();
@@ -12989,14 +13024,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__LocationQuery__Group__1"
-    // InternalAspectLang.g:4363:1: rule__LocationQuery__Group__1 : rule__LocationQuery__Group__1__Impl ;
+    // InternalAspectLang.g:4370:1: rule__LocationQuery__Group__1 : rule__LocationQuery__Group__1__Impl ;
     public final void rule__LocationQuery__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4367:1: ( rule__LocationQuery__Group__1__Impl )
-            // InternalAspectLang.g:4368:2: rule__LocationQuery__Group__1__Impl
+            // InternalAspectLang.g:4374:1: ( rule__LocationQuery__Group__1__Impl )
+            // InternalAspectLang.g:4375:2: rule__LocationQuery__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__LocationQuery__Group__1__Impl();
@@ -13022,31 +13057,31 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__LocationQuery__Group__1__Impl"
-    // InternalAspectLang.g:4374:1: rule__LocationQuery__Group__1__Impl : ( ( rule__LocationQuery__Alternatives_1 )? ) ;
+    // InternalAspectLang.g:4381:1: rule__LocationQuery__Group__1__Impl : ( ( rule__LocationQuery__Alternatives_1 )? ) ;
     public final void rule__LocationQuery__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4378:1: ( ( ( rule__LocationQuery__Alternatives_1 )? ) )
-            // InternalAspectLang.g:4379:1: ( ( rule__LocationQuery__Alternatives_1 )? )
+            // InternalAspectLang.g:4385:1: ( ( ( rule__LocationQuery__Alternatives_1 )? ) )
+            // InternalAspectLang.g:4386:1: ( ( rule__LocationQuery__Alternatives_1 )? )
             {
-            // InternalAspectLang.g:4379:1: ( ( rule__LocationQuery__Alternatives_1 )? )
-            // InternalAspectLang.g:4380:1: ( rule__LocationQuery__Alternatives_1 )?
+            // InternalAspectLang.g:4386:1: ( ( rule__LocationQuery__Alternatives_1 )? )
+            // InternalAspectLang.g:4387:1: ( rule__LocationQuery__Alternatives_1 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLocationQueryAccess().getAlternatives_1()); 
             }
-            // InternalAspectLang.g:4381:1: ( rule__LocationQuery__Alternatives_1 )?
+            // InternalAspectLang.g:4388:1: ( rule__LocationQuery__Alternatives_1 )?
             int alt36=2;
             int LA36_0 = input.LA(1);
 
-            if ( ((LA36_0>=27 && LA36_0<=28)||LA36_0==48||LA36_0==56) ) {
+            if ( ((LA36_0>=28 && LA36_0<=29)||LA36_0==49||LA36_0==57) ) {
                 alt36=1;
             }
             switch (alt36) {
                 case 1 :
-                    // InternalAspectLang.g:4381:2: rule__LocationQuery__Alternatives_1
+                    // InternalAspectLang.g:4388:2: rule__LocationQuery__Alternatives_1
                     {
                     pushFollow(FOLLOW_2);
                     rule__LocationQuery__Alternatives_1();
@@ -13084,14 +13119,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__LocationQuery__Group_1_0__0"
-    // InternalAspectLang.g:4395:1: rule__LocationQuery__Group_1_0__0 : rule__LocationQuery__Group_1_0__0__Impl rule__LocationQuery__Group_1_0__1 ;
+    // InternalAspectLang.g:4402:1: rule__LocationQuery__Group_1_0__0 : rule__LocationQuery__Group_1_0__0__Impl rule__LocationQuery__Group_1_0__1 ;
     public final void rule__LocationQuery__Group_1_0__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4399:1: ( rule__LocationQuery__Group_1_0__0__Impl rule__LocationQuery__Group_1_0__1 )
-            // InternalAspectLang.g:4400:2: rule__LocationQuery__Group_1_0__0__Impl rule__LocationQuery__Group_1_0__1
+            // InternalAspectLang.g:4406:1: ( rule__LocationQuery__Group_1_0__0__Impl rule__LocationQuery__Group_1_0__1 )
+            // InternalAspectLang.g:4407:2: rule__LocationQuery__Group_1_0__0__Impl rule__LocationQuery__Group_1_0__1
             {
             pushFollow(FOLLOW_29);
             rule__LocationQuery__Group_1_0__0__Impl();
@@ -13122,22 +13157,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__LocationQuery__Group_1_0__0__Impl"
-    // InternalAspectLang.g:4407:1: rule__LocationQuery__Group_1_0__0__Impl : ( '.' ) ;
+    // InternalAspectLang.g:4414:1: rule__LocationQuery__Group_1_0__0__Impl : ( '.' ) ;
     public final void rule__LocationQuery__Group_1_0__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4411:1: ( ( '.' ) )
-            // InternalAspectLang.g:4412:1: ( '.' )
+            // InternalAspectLang.g:4418:1: ( ( '.' ) )
+            // InternalAspectLang.g:4419:1: ( '.' )
             {
-            // InternalAspectLang.g:4412:1: ( '.' )
-            // InternalAspectLang.g:4413:1: '.'
+            // InternalAspectLang.g:4419:1: ( '.' )
+            // InternalAspectLang.g:4420:1: '.'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLocationQueryAccess().getFullStopKeyword_1_0_0()); 
             }
-            match(input,56,FOLLOW_2); if (state.failed) return ;
+            match(input,57,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getLocationQueryAccess().getFullStopKeyword_1_0_0()); 
             }
@@ -13163,14 +13198,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__LocationQuery__Group_1_0__1"
-    // InternalAspectLang.g:4426:1: rule__LocationQuery__Group_1_0__1 : rule__LocationQuery__Group_1_0__1__Impl ;
+    // InternalAspectLang.g:4433:1: rule__LocationQuery__Group_1_0__1 : rule__LocationQuery__Group_1_0__1__Impl ;
     public final void rule__LocationQuery__Group_1_0__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4430:1: ( rule__LocationQuery__Group_1_0__1__Impl )
-            // InternalAspectLang.g:4431:2: rule__LocationQuery__Group_1_0__1__Impl
+            // InternalAspectLang.g:4437:1: ( rule__LocationQuery__Group_1_0__1__Impl )
+            // InternalAspectLang.g:4438:2: rule__LocationQuery__Group_1_0__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__LocationQuery__Group_1_0__1__Impl();
@@ -13196,23 +13231,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__LocationQuery__Group_1_0__1__Impl"
-    // InternalAspectLang.g:4437:1: rule__LocationQuery__Group_1_0__1__Impl : ( ( rule__LocationQuery__SpecializationAssignment_1_0_1 ) ) ;
+    // InternalAspectLang.g:4444:1: rule__LocationQuery__Group_1_0__1__Impl : ( ( rule__LocationQuery__SpecializationAssignment_1_0_1 ) ) ;
     public final void rule__LocationQuery__Group_1_0__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4441:1: ( ( ( rule__LocationQuery__SpecializationAssignment_1_0_1 ) ) )
-            // InternalAspectLang.g:4442:1: ( ( rule__LocationQuery__SpecializationAssignment_1_0_1 ) )
+            // InternalAspectLang.g:4448:1: ( ( ( rule__LocationQuery__SpecializationAssignment_1_0_1 ) ) )
+            // InternalAspectLang.g:4449:1: ( ( rule__LocationQuery__SpecializationAssignment_1_0_1 ) )
             {
-            // InternalAspectLang.g:4442:1: ( ( rule__LocationQuery__SpecializationAssignment_1_0_1 ) )
-            // InternalAspectLang.g:4443:1: ( rule__LocationQuery__SpecializationAssignment_1_0_1 )
+            // InternalAspectLang.g:4449:1: ( ( rule__LocationQuery__SpecializationAssignment_1_0_1 ) )
+            // InternalAspectLang.g:4450:1: ( rule__LocationQuery__SpecializationAssignment_1_0_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLocationQueryAccess().getSpecializationAssignment_1_0_1()); 
             }
-            // InternalAspectLang.g:4444:1: ( rule__LocationQuery__SpecializationAssignment_1_0_1 )
-            // InternalAspectLang.g:4444:2: rule__LocationQuery__SpecializationAssignment_1_0_1
+            // InternalAspectLang.g:4451:1: ( rule__LocationQuery__SpecializationAssignment_1_0_1 )
+            // InternalAspectLang.g:4451:2: rule__LocationQuery__SpecializationAssignment_1_0_1
             {
             pushFollow(FOLLOW_2);
             rule__LocationQuery__SpecializationAssignment_1_0_1();
@@ -13247,14 +13282,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__CompositionQuery__Group__0"
-    // InternalAspectLang.g:4458:1: rule__CompositionQuery__Group__0 : rule__CompositionQuery__Group__0__Impl rule__CompositionQuery__Group__1 ;
+    // InternalAspectLang.g:4465:1: rule__CompositionQuery__Group__0 : rule__CompositionQuery__Group__0__Impl rule__CompositionQuery__Group__1 ;
     public final void rule__CompositionQuery__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4462:1: ( rule__CompositionQuery__Group__0__Impl rule__CompositionQuery__Group__1 )
-            // InternalAspectLang.g:4463:2: rule__CompositionQuery__Group__0__Impl rule__CompositionQuery__Group__1
+            // InternalAspectLang.g:4469:1: ( rule__CompositionQuery__Group__0__Impl rule__CompositionQuery__Group__1 )
+            // InternalAspectLang.g:4470:2: rule__CompositionQuery__Group__0__Impl rule__CompositionQuery__Group__1
             {
             pushFollow(FOLLOW_34);
             rule__CompositionQuery__Group__0__Impl();
@@ -13285,23 +13320,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__CompositionQuery__Group__0__Impl"
-    // InternalAspectLang.g:4470:1: rule__CompositionQuery__Group__0__Impl : ( () ) ;
+    // InternalAspectLang.g:4477:1: rule__CompositionQuery__Group__0__Impl : ( () ) ;
     public final void rule__CompositionQuery__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4474:1: ( ( () ) )
-            // InternalAspectLang.g:4475:1: ( () )
+            // InternalAspectLang.g:4481:1: ( ( () ) )
+            // InternalAspectLang.g:4482:1: ( () )
             {
-            // InternalAspectLang.g:4475:1: ( () )
-            // InternalAspectLang.g:4476:1: ()
+            // InternalAspectLang.g:4482:1: ( () )
+            // InternalAspectLang.g:4483:1: ()
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCompositionQueryAccess().getCompositionQueryAction_0()); 
             }
-            // InternalAspectLang.g:4477:1: ()
-            // InternalAspectLang.g:4479:1: 
+            // InternalAspectLang.g:4484:1: ()
+            // InternalAspectLang.g:4486:1: 
             {
             }
 
@@ -13326,14 +13361,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__CompositionQuery__Group__1"
-    // InternalAspectLang.g:4489:1: rule__CompositionQuery__Group__1 : rule__CompositionQuery__Group__1__Impl rule__CompositionQuery__Group__2 ;
+    // InternalAspectLang.g:4496:1: rule__CompositionQuery__Group__1 : rule__CompositionQuery__Group__1__Impl rule__CompositionQuery__Group__2 ;
     public final void rule__CompositionQuery__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4493:1: ( rule__CompositionQuery__Group__1__Impl rule__CompositionQuery__Group__2 )
-            // InternalAspectLang.g:4494:2: rule__CompositionQuery__Group__1__Impl rule__CompositionQuery__Group__2
+            // InternalAspectLang.g:4500:1: ( rule__CompositionQuery__Group__1__Impl rule__CompositionQuery__Group__2 )
+            // InternalAspectLang.g:4501:2: rule__CompositionQuery__Group__1__Impl rule__CompositionQuery__Group__2
             {
             pushFollow(FOLLOW_34);
             rule__CompositionQuery__Group__1__Impl();
@@ -13364,31 +13399,31 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__CompositionQuery__Group__1__Impl"
-    // InternalAspectLang.g:4501:1: rule__CompositionQuery__Group__1__Impl : ( ( rule__CompositionQuery__ModifierAssignment_1 )? ) ;
+    // InternalAspectLang.g:4508:1: rule__CompositionQuery__Group__1__Impl : ( ( rule__CompositionQuery__ModifierAssignment_1 )? ) ;
     public final void rule__CompositionQuery__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4505:1: ( ( ( rule__CompositionQuery__ModifierAssignment_1 )? ) )
-            // InternalAspectLang.g:4506:1: ( ( rule__CompositionQuery__ModifierAssignment_1 )? )
+            // InternalAspectLang.g:4512:1: ( ( ( rule__CompositionQuery__ModifierAssignment_1 )? ) )
+            // InternalAspectLang.g:4513:1: ( ( rule__CompositionQuery__ModifierAssignment_1 )? )
             {
-            // InternalAspectLang.g:4506:1: ( ( rule__CompositionQuery__ModifierAssignment_1 )? )
-            // InternalAspectLang.g:4507:1: ( rule__CompositionQuery__ModifierAssignment_1 )?
+            // InternalAspectLang.g:4513:1: ( ( rule__CompositionQuery__ModifierAssignment_1 )? )
+            // InternalAspectLang.g:4514:1: ( rule__CompositionQuery__ModifierAssignment_1 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCompositionQueryAccess().getModifierAssignment_1()); 
             }
-            // InternalAspectLang.g:4508:1: ( rule__CompositionQuery__ModifierAssignment_1 )?
+            // InternalAspectLang.g:4515:1: ( rule__CompositionQuery__ModifierAssignment_1 )?
             int alt37=2;
             int LA37_0 = input.LA(1);
 
-            if ( ((LA37_0>=27 && LA37_0<=28)) ) {
+            if ( ((LA37_0>=28 && LA37_0<=29)) ) {
                 alt37=1;
             }
             switch (alt37) {
                 case 1 :
-                    // InternalAspectLang.g:4508:2: rule__CompositionQuery__ModifierAssignment_1
+                    // InternalAspectLang.g:4515:2: rule__CompositionQuery__ModifierAssignment_1
                     {
                     pushFollow(FOLLOW_2);
                     rule__CompositionQuery__ModifierAssignment_1();
@@ -13426,14 +13461,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__CompositionQuery__Group__2"
-    // InternalAspectLang.g:4518:1: rule__CompositionQuery__Group__2 : rule__CompositionQuery__Group__2__Impl rule__CompositionQuery__Group__3 ;
+    // InternalAspectLang.g:4525:1: rule__CompositionQuery__Group__2 : rule__CompositionQuery__Group__2__Impl rule__CompositionQuery__Group__3 ;
     public final void rule__CompositionQuery__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4522:1: ( rule__CompositionQuery__Group__2__Impl rule__CompositionQuery__Group__3 )
-            // InternalAspectLang.g:4523:2: rule__CompositionQuery__Group__2__Impl rule__CompositionQuery__Group__3
+            // InternalAspectLang.g:4529:1: ( rule__CompositionQuery__Group__2__Impl rule__CompositionQuery__Group__3 )
+            // InternalAspectLang.g:4530:2: rule__CompositionQuery__Group__2__Impl rule__CompositionQuery__Group__3
             {
             pushFollow(FOLLOW_35);
             rule__CompositionQuery__Group__2__Impl();
@@ -13464,22 +13499,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__CompositionQuery__Group__2__Impl"
-    // InternalAspectLang.g:4530:1: rule__CompositionQuery__Group__2__Impl : ( '{' ) ;
+    // InternalAspectLang.g:4537:1: rule__CompositionQuery__Group__2__Impl : ( '{' ) ;
     public final void rule__CompositionQuery__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4534:1: ( ( '{' ) )
-            // InternalAspectLang.g:4535:1: ( '{' )
+            // InternalAspectLang.g:4541:1: ( ( '{' ) )
+            // InternalAspectLang.g:4542:1: ( '{' )
             {
-            // InternalAspectLang.g:4535:1: ( '{' )
-            // InternalAspectLang.g:4536:1: '{'
+            // InternalAspectLang.g:4542:1: ( '{' )
+            // InternalAspectLang.g:4543:1: '{'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCompositionQueryAccess().getLeftCurlyBracketKeyword_2()); 
             }
-            match(input,48,FOLLOW_2); if (state.failed) return ;
+            match(input,49,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCompositionQueryAccess().getLeftCurlyBracketKeyword_2()); 
             }
@@ -13505,14 +13540,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__CompositionQuery__Group__3"
-    // InternalAspectLang.g:4549:1: rule__CompositionQuery__Group__3 : rule__CompositionQuery__Group__3__Impl rule__CompositionQuery__Group__4 ;
+    // InternalAspectLang.g:4556:1: rule__CompositionQuery__Group__3 : rule__CompositionQuery__Group__3__Impl rule__CompositionQuery__Group__4 ;
     public final void rule__CompositionQuery__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4553:1: ( rule__CompositionQuery__Group__3__Impl rule__CompositionQuery__Group__4 )
-            // InternalAspectLang.g:4554:2: rule__CompositionQuery__Group__3__Impl rule__CompositionQuery__Group__4
+            // InternalAspectLang.g:4560:1: ( rule__CompositionQuery__Group__3__Impl rule__CompositionQuery__Group__4 )
+            // InternalAspectLang.g:4561:2: rule__CompositionQuery__Group__3__Impl rule__CompositionQuery__Group__4
             {
             pushFollow(FOLLOW_35);
             rule__CompositionQuery__Group__3__Impl();
@@ -13543,35 +13578,35 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__CompositionQuery__Group__3__Impl"
-    // InternalAspectLang.g:4561:1: rule__CompositionQuery__Group__3__Impl : ( ( rule__CompositionQuery__SubQueriesAssignment_3 )* ) ;
+    // InternalAspectLang.g:4568:1: rule__CompositionQuery__Group__3__Impl : ( ( rule__CompositionQuery__SubQueriesAssignment_3 )* ) ;
     public final void rule__CompositionQuery__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4565:1: ( ( ( rule__CompositionQuery__SubQueriesAssignment_3 )* ) )
-            // InternalAspectLang.g:4566:1: ( ( rule__CompositionQuery__SubQueriesAssignment_3 )* )
+            // InternalAspectLang.g:4572:1: ( ( ( rule__CompositionQuery__SubQueriesAssignment_3 )* ) )
+            // InternalAspectLang.g:4573:1: ( ( rule__CompositionQuery__SubQueriesAssignment_3 )* )
             {
-            // InternalAspectLang.g:4566:1: ( ( rule__CompositionQuery__SubQueriesAssignment_3 )* )
-            // InternalAspectLang.g:4567:1: ( rule__CompositionQuery__SubQueriesAssignment_3 )*
+            // InternalAspectLang.g:4573:1: ( ( rule__CompositionQuery__SubQueriesAssignment_3 )* )
+            // InternalAspectLang.g:4574:1: ( rule__CompositionQuery__SubQueriesAssignment_3 )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCompositionQueryAccess().getSubQueriesAssignment_3()); 
             }
-            // InternalAspectLang.g:4568:1: ( rule__CompositionQuery__SubQueriesAssignment_3 )*
+            // InternalAspectLang.g:4575:1: ( rule__CompositionQuery__SubQueriesAssignment_3 )*
             loop38:
             do {
                 int alt38=2;
                 int LA38_0 = input.LA(1);
 
-                if ( (LA38_0==RULE_ID||LA38_0==13||(LA38_0>=59 && LA38_0<=60)) ) {
+                if ( (LA38_0==RULE_ID||LA38_0==13||(LA38_0>=60 && LA38_0<=61)) ) {
                     alt38=1;
                 }
 
 
                 switch (alt38) {
             	case 1 :
-            	    // InternalAspectLang.g:4568:2: rule__CompositionQuery__SubQueriesAssignment_3
+            	    // InternalAspectLang.g:4575:2: rule__CompositionQuery__SubQueriesAssignment_3
             	    {
             	    pushFollow(FOLLOW_36);
             	    rule__CompositionQuery__SubQueriesAssignment_3();
@@ -13612,14 +13647,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__CompositionQuery__Group__4"
-    // InternalAspectLang.g:4578:1: rule__CompositionQuery__Group__4 : rule__CompositionQuery__Group__4__Impl ;
+    // InternalAspectLang.g:4585:1: rule__CompositionQuery__Group__4 : rule__CompositionQuery__Group__4__Impl ;
     public final void rule__CompositionQuery__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4582:1: ( rule__CompositionQuery__Group__4__Impl )
-            // InternalAspectLang.g:4583:2: rule__CompositionQuery__Group__4__Impl
+            // InternalAspectLang.g:4589:1: ( rule__CompositionQuery__Group__4__Impl )
+            // InternalAspectLang.g:4590:2: rule__CompositionQuery__Group__4__Impl
             {
             pushFollow(FOLLOW_2);
             rule__CompositionQuery__Group__4__Impl();
@@ -13645,22 +13680,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__CompositionQuery__Group__4__Impl"
-    // InternalAspectLang.g:4589:1: rule__CompositionQuery__Group__4__Impl : ( '}' ) ;
+    // InternalAspectLang.g:4596:1: rule__CompositionQuery__Group__4__Impl : ( '}' ) ;
     public final void rule__CompositionQuery__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4593:1: ( ( '}' ) )
-            // InternalAspectLang.g:4594:1: ( '}' )
+            // InternalAspectLang.g:4600:1: ( ( '}' ) )
+            // InternalAspectLang.g:4601:1: ( '}' )
             {
-            // InternalAspectLang.g:4594:1: ( '}' )
-            // InternalAspectLang.g:4595:1: '}'
+            // InternalAspectLang.g:4601:1: ( '}' )
+            // InternalAspectLang.g:4602:1: '}'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCompositionQueryAccess().getRightCurlyBracketKeyword_4()); 
             }
-            match(input,49,FOLLOW_2); if (state.failed) return ;
+            match(input,50,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getCompositionQueryAccess().getRightCurlyBracketKeyword_4()); 
             }
@@ -13686,14 +13721,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__OperationQuery__Group__0"
-    // InternalAspectLang.g:4618:1: rule__OperationQuery__Group__0 : rule__OperationQuery__Group__0__Impl rule__OperationQuery__Group__1 ;
+    // InternalAspectLang.g:4625:1: rule__OperationQuery__Group__0 : rule__OperationQuery__Group__0__Impl rule__OperationQuery__Group__1 ;
     public final void rule__OperationQuery__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4622:1: ( rule__OperationQuery__Group__0__Impl rule__OperationQuery__Group__1 )
-            // InternalAspectLang.g:4623:2: rule__OperationQuery__Group__0__Impl rule__OperationQuery__Group__1
+            // InternalAspectLang.g:4629:1: ( rule__OperationQuery__Group__0__Impl rule__OperationQuery__Group__1 )
+            // InternalAspectLang.g:4630:2: rule__OperationQuery__Group__0__Impl rule__OperationQuery__Group__1
             {
             pushFollow(FOLLOW_31);
             rule__OperationQuery__Group__0__Impl();
@@ -13724,23 +13759,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__OperationQuery__Group__0__Impl"
-    // InternalAspectLang.g:4630:1: rule__OperationQuery__Group__0__Impl : ( () ) ;
+    // InternalAspectLang.g:4637:1: rule__OperationQuery__Group__0__Impl : ( () ) ;
     public final void rule__OperationQuery__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4634:1: ( ( () ) )
-            // InternalAspectLang.g:4635:1: ( () )
+            // InternalAspectLang.g:4641:1: ( ( () ) )
+            // InternalAspectLang.g:4642:1: ( () )
             {
-            // InternalAspectLang.g:4635:1: ( () )
-            // InternalAspectLang.g:4636:1: ()
+            // InternalAspectLang.g:4642:1: ( () )
+            // InternalAspectLang.g:4643:1: ()
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getOperationQueryAccess().getOperationQueryAction_0()); 
             }
-            // InternalAspectLang.g:4637:1: ()
-            // InternalAspectLang.g:4639:1: 
+            // InternalAspectLang.g:4644:1: ()
+            // InternalAspectLang.g:4646:1: 
             {
             }
 
@@ -13765,14 +13800,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__OperationQuery__Group__1"
-    // InternalAspectLang.g:4649:1: rule__OperationQuery__Group__1 : rule__OperationQuery__Group__1__Impl rule__OperationQuery__Group__2 ;
+    // InternalAspectLang.g:4656:1: rule__OperationQuery__Group__1 : rule__OperationQuery__Group__1__Impl rule__OperationQuery__Group__2 ;
     public final void rule__OperationQuery__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4653:1: ( rule__OperationQuery__Group__1__Impl rule__OperationQuery__Group__2 )
-            // InternalAspectLang.g:4654:2: rule__OperationQuery__Group__1__Impl rule__OperationQuery__Group__2
+            // InternalAspectLang.g:4660:1: ( rule__OperationQuery__Group__1__Impl rule__OperationQuery__Group__2 )
+            // InternalAspectLang.g:4661:2: rule__OperationQuery__Group__1__Impl rule__OperationQuery__Group__2
             {
             pushFollow(FOLLOW_31);
             rule__OperationQuery__Group__1__Impl();
@@ -13803,22 +13838,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__OperationQuery__Group__1__Impl"
-    // InternalAspectLang.g:4661:1: rule__OperationQuery__Group__1__Impl : ( ( rule__OperationQuery__ModifierAssignment_1 )? ) ;
+    // InternalAspectLang.g:4668:1: rule__OperationQuery__Group__1__Impl : ( ( rule__OperationQuery__ModifierAssignment_1 )? ) ;
     public final void rule__OperationQuery__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4665:1: ( ( ( rule__OperationQuery__ModifierAssignment_1 )? ) )
-            // InternalAspectLang.g:4666:1: ( ( rule__OperationQuery__ModifierAssignment_1 )? )
+            // InternalAspectLang.g:4672:1: ( ( ( rule__OperationQuery__ModifierAssignment_1 )? ) )
+            // InternalAspectLang.g:4673:1: ( ( rule__OperationQuery__ModifierAssignment_1 )? )
             {
-            // InternalAspectLang.g:4666:1: ( ( rule__OperationQuery__ModifierAssignment_1 )? )
-            // InternalAspectLang.g:4667:1: ( rule__OperationQuery__ModifierAssignment_1 )?
+            // InternalAspectLang.g:4673:1: ( ( rule__OperationQuery__ModifierAssignment_1 )? )
+            // InternalAspectLang.g:4674:1: ( rule__OperationQuery__ModifierAssignment_1 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getOperationQueryAccess().getModifierAssignment_1()); 
             }
-            // InternalAspectLang.g:4668:1: ( rule__OperationQuery__ModifierAssignment_1 )?
+            // InternalAspectLang.g:4675:1: ( rule__OperationQuery__ModifierAssignment_1 )?
             int alt39=2;
             int LA39_0 = input.LA(1);
 
@@ -13831,7 +13866,7 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
             }
             switch (alt39) {
                 case 1 :
-                    // InternalAspectLang.g:4668:2: rule__OperationQuery__ModifierAssignment_1
+                    // InternalAspectLang.g:4675:2: rule__OperationQuery__ModifierAssignment_1
                     {
                     pushFollow(FOLLOW_2);
                     rule__OperationQuery__ModifierAssignment_1();
@@ -13869,14 +13904,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__OperationQuery__Group__2"
-    // InternalAspectLang.g:4678:1: rule__OperationQuery__Group__2 : rule__OperationQuery__Group__2__Impl rule__OperationQuery__Group__3 ;
+    // InternalAspectLang.g:4685:1: rule__OperationQuery__Group__2 : rule__OperationQuery__Group__2__Impl rule__OperationQuery__Group__3 ;
     public final void rule__OperationQuery__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4682:1: ( rule__OperationQuery__Group__2__Impl rule__OperationQuery__Group__3 )
-            // InternalAspectLang.g:4683:2: rule__OperationQuery__Group__2__Impl rule__OperationQuery__Group__3
+            // InternalAspectLang.g:4689:1: ( rule__OperationQuery__Group__2__Impl rule__OperationQuery__Group__3 )
+            // InternalAspectLang.g:4690:2: rule__OperationQuery__Group__2__Impl rule__OperationQuery__Group__3
             {
             pushFollow(FOLLOW_31);
             rule__OperationQuery__Group__2__Impl();
@@ -13907,35 +13942,35 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__OperationQuery__Group__2__Impl"
-    // InternalAspectLang.g:4690:1: rule__OperationQuery__Group__2__Impl : ( ( rule__OperationQuery__ReturnTypeAssignment_2 )? ) ;
+    // InternalAspectLang.g:4697:1: rule__OperationQuery__Group__2__Impl : ( ( rule__OperationQuery__ReturnTypeAssignment_2 )? ) ;
     public final void rule__OperationQuery__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4694:1: ( ( ( rule__OperationQuery__ReturnTypeAssignment_2 )? ) )
-            // InternalAspectLang.g:4695:1: ( ( rule__OperationQuery__ReturnTypeAssignment_2 )? )
+            // InternalAspectLang.g:4701:1: ( ( ( rule__OperationQuery__ReturnTypeAssignment_2 )? ) )
+            // InternalAspectLang.g:4702:1: ( ( rule__OperationQuery__ReturnTypeAssignment_2 )? )
             {
-            // InternalAspectLang.g:4695:1: ( ( rule__OperationQuery__ReturnTypeAssignment_2 )? )
-            // InternalAspectLang.g:4696:1: ( rule__OperationQuery__ReturnTypeAssignment_2 )?
+            // InternalAspectLang.g:4702:1: ( ( rule__OperationQuery__ReturnTypeAssignment_2 )? )
+            // InternalAspectLang.g:4703:1: ( rule__OperationQuery__ReturnTypeAssignment_2 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getOperationQueryAccess().getReturnTypeAssignment_2()); 
             }
-            // InternalAspectLang.g:4697:1: ( rule__OperationQuery__ReturnTypeAssignment_2 )?
+            // InternalAspectLang.g:4704:1: ( rule__OperationQuery__ReturnTypeAssignment_2 )?
             int alt40=2;
             int LA40_0 = input.LA(1);
 
             if ( (LA40_0==RULE_ID) ) {
                 int LA40_1 = input.LA(2);
 
-                if ( (LA40_1==56) ) {
+                if ( (LA40_1==57) ) {
                     alt40=1;
                 }
             }
             switch (alt40) {
                 case 1 :
-                    // InternalAspectLang.g:4697:2: rule__OperationQuery__ReturnTypeAssignment_2
+                    // InternalAspectLang.g:4704:2: rule__OperationQuery__ReturnTypeAssignment_2
                     {
                     pushFollow(FOLLOW_2);
                     rule__OperationQuery__ReturnTypeAssignment_2();
@@ -13973,14 +14008,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__OperationQuery__Group__3"
-    // InternalAspectLang.g:4707:1: rule__OperationQuery__Group__3 : rule__OperationQuery__Group__3__Impl ;
+    // InternalAspectLang.g:4714:1: rule__OperationQuery__Group__3 : rule__OperationQuery__Group__3__Impl ;
     public final void rule__OperationQuery__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4711:1: ( rule__OperationQuery__Group__3__Impl )
-            // InternalAspectLang.g:4712:2: rule__OperationQuery__Group__3__Impl
+            // InternalAspectLang.g:4718:1: ( rule__OperationQuery__Group__3__Impl )
+            // InternalAspectLang.g:4719:2: rule__OperationQuery__Group__3__Impl
             {
             pushFollow(FOLLOW_2);
             rule__OperationQuery__Group__3__Impl();
@@ -14006,23 +14041,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__OperationQuery__Group__3__Impl"
-    // InternalAspectLang.g:4718:1: rule__OperationQuery__Group__3__Impl : ( ( rule__OperationQuery__Alternatives_3 ) ) ;
+    // InternalAspectLang.g:4725:1: rule__OperationQuery__Group__3__Impl : ( ( rule__OperationQuery__Alternatives_3 ) ) ;
     public final void rule__OperationQuery__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4722:1: ( ( ( rule__OperationQuery__Alternatives_3 ) ) )
-            // InternalAspectLang.g:4723:1: ( ( rule__OperationQuery__Alternatives_3 ) )
+            // InternalAspectLang.g:4729:1: ( ( ( rule__OperationQuery__Alternatives_3 ) ) )
+            // InternalAspectLang.g:4730:1: ( ( rule__OperationQuery__Alternatives_3 ) )
             {
-            // InternalAspectLang.g:4723:1: ( ( rule__OperationQuery__Alternatives_3 ) )
-            // InternalAspectLang.g:4724:1: ( rule__OperationQuery__Alternatives_3 )
+            // InternalAspectLang.g:4730:1: ( ( rule__OperationQuery__Alternatives_3 ) )
+            // InternalAspectLang.g:4731:1: ( rule__OperationQuery__Alternatives_3 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getOperationQueryAccess().getAlternatives_3()); 
             }
-            // InternalAspectLang.g:4725:1: ( rule__OperationQuery__Alternatives_3 )
-            // InternalAspectLang.g:4725:2: rule__OperationQuery__Alternatives_3
+            // InternalAspectLang.g:4732:1: ( rule__OperationQuery__Alternatives_3 )
+            // InternalAspectLang.g:4732:2: rule__OperationQuery__Alternatives_3
             {
             pushFollow(FOLLOW_2);
             rule__OperationQuery__Alternatives_3();
@@ -14057,14 +14092,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__OperationQuery__Group_3_0__0"
-    // InternalAspectLang.g:4743:1: rule__OperationQuery__Group_3_0__0 : rule__OperationQuery__Group_3_0__0__Impl rule__OperationQuery__Group_3_0__1 ;
+    // InternalAspectLang.g:4750:1: rule__OperationQuery__Group_3_0__0 : rule__OperationQuery__Group_3_0__0__Impl rule__OperationQuery__Group_3_0__1 ;
     public final void rule__OperationQuery__Group_3_0__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4747:1: ( rule__OperationQuery__Group_3_0__0__Impl rule__OperationQuery__Group_3_0__1 )
-            // InternalAspectLang.g:4748:2: rule__OperationQuery__Group_3_0__0__Impl rule__OperationQuery__Group_3_0__1
+            // InternalAspectLang.g:4754:1: ( rule__OperationQuery__Group_3_0__0__Impl rule__OperationQuery__Group_3_0__1 )
+            // InternalAspectLang.g:4755:2: rule__OperationQuery__Group_3_0__0__Impl rule__OperationQuery__Group_3_0__1
             {
             pushFollow(FOLLOW_13);
             rule__OperationQuery__Group_3_0__0__Impl();
@@ -14095,23 +14130,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__OperationQuery__Group_3_0__0__Impl"
-    // InternalAspectLang.g:4755:1: rule__OperationQuery__Group_3_0__0__Impl : ( ( rule__OperationQuery__OperationReferenceAssignment_3_0_0 ) ) ;
+    // InternalAspectLang.g:4762:1: rule__OperationQuery__Group_3_0__0__Impl : ( ( rule__OperationQuery__OperationReferenceAssignment_3_0_0 ) ) ;
     public final void rule__OperationQuery__Group_3_0__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4759:1: ( ( ( rule__OperationQuery__OperationReferenceAssignment_3_0_0 ) ) )
-            // InternalAspectLang.g:4760:1: ( ( rule__OperationQuery__OperationReferenceAssignment_3_0_0 ) )
+            // InternalAspectLang.g:4766:1: ( ( ( rule__OperationQuery__OperationReferenceAssignment_3_0_0 ) ) )
+            // InternalAspectLang.g:4767:1: ( ( rule__OperationQuery__OperationReferenceAssignment_3_0_0 ) )
             {
-            // InternalAspectLang.g:4760:1: ( ( rule__OperationQuery__OperationReferenceAssignment_3_0_0 ) )
-            // InternalAspectLang.g:4761:1: ( rule__OperationQuery__OperationReferenceAssignment_3_0_0 )
+            // InternalAspectLang.g:4767:1: ( ( rule__OperationQuery__OperationReferenceAssignment_3_0_0 ) )
+            // InternalAspectLang.g:4768:1: ( rule__OperationQuery__OperationReferenceAssignment_3_0_0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getOperationQueryAccess().getOperationReferenceAssignment_3_0_0()); 
             }
-            // InternalAspectLang.g:4762:1: ( rule__OperationQuery__OperationReferenceAssignment_3_0_0 )
-            // InternalAspectLang.g:4762:2: rule__OperationQuery__OperationReferenceAssignment_3_0_0
+            // InternalAspectLang.g:4769:1: ( rule__OperationQuery__OperationReferenceAssignment_3_0_0 )
+            // InternalAspectLang.g:4769:2: rule__OperationQuery__OperationReferenceAssignment_3_0_0
             {
             pushFollow(FOLLOW_2);
             rule__OperationQuery__OperationReferenceAssignment_3_0_0();
@@ -14146,14 +14181,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__OperationQuery__Group_3_0__1"
-    // InternalAspectLang.g:4772:1: rule__OperationQuery__Group_3_0__1 : rule__OperationQuery__Group_3_0__1__Impl ;
+    // InternalAspectLang.g:4779:1: rule__OperationQuery__Group_3_0__1 : rule__OperationQuery__Group_3_0__1__Impl ;
     public final void rule__OperationQuery__Group_3_0__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4776:1: ( rule__OperationQuery__Group_3_0__1__Impl )
-            // InternalAspectLang.g:4777:2: rule__OperationQuery__Group_3_0__1__Impl
+            // InternalAspectLang.g:4783:1: ( rule__OperationQuery__Group_3_0__1__Impl )
+            // InternalAspectLang.g:4784:2: rule__OperationQuery__Group_3_0__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__OperationQuery__Group_3_0__1__Impl();
@@ -14179,31 +14214,31 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__OperationQuery__Group_3_0__1__Impl"
-    // InternalAspectLang.g:4783:1: rule__OperationQuery__Group_3_0__1__Impl : ( ( rule__OperationQuery__Group_3_0_1__0 )? ) ;
+    // InternalAspectLang.g:4790:1: rule__OperationQuery__Group_3_0__1__Impl : ( ( rule__OperationQuery__Group_3_0_1__0 )? ) ;
     public final void rule__OperationQuery__Group_3_0__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4787:1: ( ( ( rule__OperationQuery__Group_3_0_1__0 )? ) )
-            // InternalAspectLang.g:4788:1: ( ( rule__OperationQuery__Group_3_0_1__0 )? )
+            // InternalAspectLang.g:4794:1: ( ( ( rule__OperationQuery__Group_3_0_1__0 )? ) )
+            // InternalAspectLang.g:4795:1: ( ( rule__OperationQuery__Group_3_0_1__0 )? )
             {
-            // InternalAspectLang.g:4788:1: ( ( rule__OperationQuery__Group_3_0_1__0 )? )
-            // InternalAspectLang.g:4789:1: ( rule__OperationQuery__Group_3_0_1__0 )?
+            // InternalAspectLang.g:4795:1: ( ( rule__OperationQuery__Group_3_0_1__0 )? )
+            // InternalAspectLang.g:4796:1: ( rule__OperationQuery__Group_3_0_1__0 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getOperationQueryAccess().getGroup_3_0_1()); 
             }
-            // InternalAspectLang.g:4790:1: ( rule__OperationQuery__Group_3_0_1__0 )?
+            // InternalAspectLang.g:4797:1: ( rule__OperationQuery__Group_3_0_1__0 )?
             int alt41=2;
             int LA41_0 = input.LA(1);
 
-            if ( (LA41_0==45) ) {
+            if ( (LA41_0==46) ) {
                 alt41=1;
             }
             switch (alt41) {
                 case 1 :
-                    // InternalAspectLang.g:4790:2: rule__OperationQuery__Group_3_0_1__0
+                    // InternalAspectLang.g:4797:2: rule__OperationQuery__Group_3_0_1__0
                     {
                     pushFollow(FOLLOW_2);
                     rule__OperationQuery__Group_3_0_1__0();
@@ -14241,14 +14276,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__OperationQuery__Group_3_0_1__0"
-    // InternalAspectLang.g:4804:1: rule__OperationQuery__Group_3_0_1__0 : rule__OperationQuery__Group_3_0_1__0__Impl rule__OperationQuery__Group_3_0_1__1 ;
+    // InternalAspectLang.g:4811:1: rule__OperationQuery__Group_3_0_1__0 : rule__OperationQuery__Group_3_0_1__0__Impl rule__OperationQuery__Group_3_0_1__1 ;
     public final void rule__OperationQuery__Group_3_0_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4808:1: ( rule__OperationQuery__Group_3_0_1__0__Impl rule__OperationQuery__Group_3_0_1__1 )
-            // InternalAspectLang.g:4809:2: rule__OperationQuery__Group_3_0_1__0__Impl rule__OperationQuery__Group_3_0_1__1
+            // InternalAspectLang.g:4815:1: ( rule__OperationQuery__Group_3_0_1__0__Impl rule__OperationQuery__Group_3_0_1__1 )
+            // InternalAspectLang.g:4816:2: rule__OperationQuery__Group_3_0_1__0__Impl rule__OperationQuery__Group_3_0_1__1
             {
             pushFollow(FOLLOW_31);
             rule__OperationQuery__Group_3_0_1__0__Impl();
@@ -14279,22 +14314,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__OperationQuery__Group_3_0_1__0__Impl"
-    // InternalAspectLang.g:4816:1: rule__OperationQuery__Group_3_0_1__0__Impl : ( '(' ) ;
+    // InternalAspectLang.g:4823:1: rule__OperationQuery__Group_3_0_1__0__Impl : ( '(' ) ;
     public final void rule__OperationQuery__Group_3_0_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4820:1: ( ( '(' ) )
-            // InternalAspectLang.g:4821:1: ( '(' )
+            // InternalAspectLang.g:4827:1: ( ( '(' ) )
+            // InternalAspectLang.g:4828:1: ( '(' )
             {
-            // InternalAspectLang.g:4821:1: ( '(' )
-            // InternalAspectLang.g:4822:1: '('
+            // InternalAspectLang.g:4828:1: ( '(' )
+            // InternalAspectLang.g:4829:1: '('
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getOperationQueryAccess().getLeftParenthesisKeyword_3_0_1_0()); 
             }
-            match(input,45,FOLLOW_2); if (state.failed) return ;
+            match(input,46,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getOperationQueryAccess().getLeftParenthesisKeyword_3_0_1_0()); 
             }
@@ -14320,14 +14355,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__OperationQuery__Group_3_0_1__1"
-    // InternalAspectLang.g:4835:1: rule__OperationQuery__Group_3_0_1__1 : rule__OperationQuery__Group_3_0_1__1__Impl rule__OperationQuery__Group_3_0_1__2 ;
+    // InternalAspectLang.g:4842:1: rule__OperationQuery__Group_3_0_1__1 : rule__OperationQuery__Group_3_0_1__1__Impl rule__OperationQuery__Group_3_0_1__2 ;
     public final void rule__OperationQuery__Group_3_0_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4839:1: ( rule__OperationQuery__Group_3_0_1__1__Impl rule__OperationQuery__Group_3_0_1__2 )
-            // InternalAspectLang.g:4840:2: rule__OperationQuery__Group_3_0_1__1__Impl rule__OperationQuery__Group_3_0_1__2
+            // InternalAspectLang.g:4846:1: ( rule__OperationQuery__Group_3_0_1__1__Impl rule__OperationQuery__Group_3_0_1__2 )
+            // InternalAspectLang.g:4847:2: rule__OperationQuery__Group_3_0_1__1__Impl rule__OperationQuery__Group_3_0_1__2
             {
             pushFollow(FOLLOW_37);
             rule__OperationQuery__Group_3_0_1__1__Impl();
@@ -14358,23 +14393,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__OperationQuery__Group_3_0_1__1__Impl"
-    // InternalAspectLang.g:4847:1: rule__OperationQuery__Group_3_0_1__1__Impl : ( ( rule__OperationQuery__ParameterQueriesAssignment_3_0_1_1 ) ) ;
+    // InternalAspectLang.g:4854:1: rule__OperationQuery__Group_3_0_1__1__Impl : ( ( rule__OperationQuery__ParameterQueriesAssignment_3_0_1_1 ) ) ;
     public final void rule__OperationQuery__Group_3_0_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4851:1: ( ( ( rule__OperationQuery__ParameterQueriesAssignment_3_0_1_1 ) ) )
-            // InternalAspectLang.g:4852:1: ( ( rule__OperationQuery__ParameterQueriesAssignment_3_0_1_1 ) )
+            // InternalAspectLang.g:4858:1: ( ( ( rule__OperationQuery__ParameterQueriesAssignment_3_0_1_1 ) ) )
+            // InternalAspectLang.g:4859:1: ( ( rule__OperationQuery__ParameterQueriesAssignment_3_0_1_1 ) )
             {
-            // InternalAspectLang.g:4852:1: ( ( rule__OperationQuery__ParameterQueriesAssignment_3_0_1_1 ) )
-            // InternalAspectLang.g:4853:1: ( rule__OperationQuery__ParameterQueriesAssignment_3_0_1_1 )
+            // InternalAspectLang.g:4859:1: ( ( rule__OperationQuery__ParameterQueriesAssignment_3_0_1_1 ) )
+            // InternalAspectLang.g:4860:1: ( rule__OperationQuery__ParameterQueriesAssignment_3_0_1_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getOperationQueryAccess().getParameterQueriesAssignment_3_0_1_1()); 
             }
-            // InternalAspectLang.g:4854:1: ( rule__OperationQuery__ParameterQueriesAssignment_3_0_1_1 )
-            // InternalAspectLang.g:4854:2: rule__OperationQuery__ParameterQueriesAssignment_3_0_1_1
+            // InternalAspectLang.g:4861:1: ( rule__OperationQuery__ParameterQueriesAssignment_3_0_1_1 )
+            // InternalAspectLang.g:4861:2: rule__OperationQuery__ParameterQueriesAssignment_3_0_1_1
             {
             pushFollow(FOLLOW_2);
             rule__OperationQuery__ParameterQueriesAssignment_3_0_1_1();
@@ -14409,14 +14444,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__OperationQuery__Group_3_0_1__2"
-    // InternalAspectLang.g:4864:1: rule__OperationQuery__Group_3_0_1__2 : rule__OperationQuery__Group_3_0_1__2__Impl rule__OperationQuery__Group_3_0_1__3 ;
+    // InternalAspectLang.g:4871:1: rule__OperationQuery__Group_3_0_1__2 : rule__OperationQuery__Group_3_0_1__2__Impl rule__OperationQuery__Group_3_0_1__3 ;
     public final void rule__OperationQuery__Group_3_0_1__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4868:1: ( rule__OperationQuery__Group_3_0_1__2__Impl rule__OperationQuery__Group_3_0_1__3 )
-            // InternalAspectLang.g:4869:2: rule__OperationQuery__Group_3_0_1__2__Impl rule__OperationQuery__Group_3_0_1__3
+            // InternalAspectLang.g:4875:1: ( rule__OperationQuery__Group_3_0_1__2__Impl rule__OperationQuery__Group_3_0_1__3 )
+            // InternalAspectLang.g:4876:2: rule__OperationQuery__Group_3_0_1__2__Impl rule__OperationQuery__Group_3_0_1__3
             {
             pushFollow(FOLLOW_37);
             rule__OperationQuery__Group_3_0_1__2__Impl();
@@ -14447,35 +14482,35 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__OperationQuery__Group_3_0_1__2__Impl"
-    // InternalAspectLang.g:4876:1: rule__OperationQuery__Group_3_0_1__2__Impl : ( ( rule__OperationQuery__Group_3_0_1_2__0 )* ) ;
+    // InternalAspectLang.g:4883:1: rule__OperationQuery__Group_3_0_1__2__Impl : ( ( rule__OperationQuery__Group_3_0_1_2__0 )* ) ;
     public final void rule__OperationQuery__Group_3_0_1__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4880:1: ( ( ( rule__OperationQuery__Group_3_0_1_2__0 )* ) )
-            // InternalAspectLang.g:4881:1: ( ( rule__OperationQuery__Group_3_0_1_2__0 )* )
+            // InternalAspectLang.g:4887:1: ( ( ( rule__OperationQuery__Group_3_0_1_2__0 )* ) )
+            // InternalAspectLang.g:4888:1: ( ( rule__OperationQuery__Group_3_0_1_2__0 )* )
             {
-            // InternalAspectLang.g:4881:1: ( ( rule__OperationQuery__Group_3_0_1_2__0 )* )
-            // InternalAspectLang.g:4882:1: ( rule__OperationQuery__Group_3_0_1_2__0 )*
+            // InternalAspectLang.g:4888:1: ( ( rule__OperationQuery__Group_3_0_1_2__0 )* )
+            // InternalAspectLang.g:4889:1: ( rule__OperationQuery__Group_3_0_1_2__0 )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getOperationQueryAccess().getGroup_3_0_1_2()); 
             }
-            // InternalAspectLang.g:4883:1: ( rule__OperationQuery__Group_3_0_1_2__0 )*
+            // InternalAspectLang.g:4890:1: ( rule__OperationQuery__Group_3_0_1_2__0 )*
             loop42:
             do {
                 int alt42=2;
                 int LA42_0 = input.LA(1);
 
-                if ( (LA42_0==44) ) {
+                if ( (LA42_0==45) ) {
                     alt42=1;
                 }
 
 
                 switch (alt42) {
             	case 1 :
-            	    // InternalAspectLang.g:4883:2: rule__OperationQuery__Group_3_0_1_2__0
+            	    // InternalAspectLang.g:4890:2: rule__OperationQuery__Group_3_0_1_2__0
             	    {
             	    pushFollow(FOLLOW_12);
             	    rule__OperationQuery__Group_3_0_1_2__0();
@@ -14516,14 +14551,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__OperationQuery__Group_3_0_1__3"
-    // InternalAspectLang.g:4893:1: rule__OperationQuery__Group_3_0_1__3 : rule__OperationQuery__Group_3_0_1__3__Impl ;
+    // InternalAspectLang.g:4900:1: rule__OperationQuery__Group_3_0_1__3 : rule__OperationQuery__Group_3_0_1__3__Impl ;
     public final void rule__OperationQuery__Group_3_0_1__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4897:1: ( rule__OperationQuery__Group_3_0_1__3__Impl )
-            // InternalAspectLang.g:4898:2: rule__OperationQuery__Group_3_0_1__3__Impl
+            // InternalAspectLang.g:4904:1: ( rule__OperationQuery__Group_3_0_1__3__Impl )
+            // InternalAspectLang.g:4905:2: rule__OperationQuery__Group_3_0_1__3__Impl
             {
             pushFollow(FOLLOW_2);
             rule__OperationQuery__Group_3_0_1__3__Impl();
@@ -14549,22 +14584,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__OperationQuery__Group_3_0_1__3__Impl"
-    // InternalAspectLang.g:4904:1: rule__OperationQuery__Group_3_0_1__3__Impl : ( ')' ) ;
+    // InternalAspectLang.g:4911:1: rule__OperationQuery__Group_3_0_1__3__Impl : ( ')' ) ;
     public final void rule__OperationQuery__Group_3_0_1__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4908:1: ( ( ')' ) )
-            // InternalAspectLang.g:4909:1: ( ')' )
+            // InternalAspectLang.g:4915:1: ( ( ')' ) )
+            // InternalAspectLang.g:4916:1: ( ')' )
             {
-            // InternalAspectLang.g:4909:1: ( ')' )
-            // InternalAspectLang.g:4910:1: ')'
+            // InternalAspectLang.g:4916:1: ( ')' )
+            // InternalAspectLang.g:4917:1: ')'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getOperationQueryAccess().getRightParenthesisKeyword_3_0_1_3()); 
             }
-            match(input,46,FOLLOW_2); if (state.failed) return ;
+            match(input,47,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getOperationQueryAccess().getRightParenthesisKeyword_3_0_1_3()); 
             }
@@ -14590,14 +14625,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__OperationQuery__Group_3_0_1_2__0"
-    // InternalAspectLang.g:4931:1: rule__OperationQuery__Group_3_0_1_2__0 : rule__OperationQuery__Group_3_0_1_2__0__Impl rule__OperationQuery__Group_3_0_1_2__1 ;
+    // InternalAspectLang.g:4938:1: rule__OperationQuery__Group_3_0_1_2__0 : rule__OperationQuery__Group_3_0_1_2__0__Impl rule__OperationQuery__Group_3_0_1_2__1 ;
     public final void rule__OperationQuery__Group_3_0_1_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4935:1: ( rule__OperationQuery__Group_3_0_1_2__0__Impl rule__OperationQuery__Group_3_0_1_2__1 )
-            // InternalAspectLang.g:4936:2: rule__OperationQuery__Group_3_0_1_2__0__Impl rule__OperationQuery__Group_3_0_1_2__1
+            // InternalAspectLang.g:4942:1: ( rule__OperationQuery__Group_3_0_1_2__0__Impl rule__OperationQuery__Group_3_0_1_2__1 )
+            // InternalAspectLang.g:4943:2: rule__OperationQuery__Group_3_0_1_2__0__Impl rule__OperationQuery__Group_3_0_1_2__1
             {
             pushFollow(FOLLOW_31);
             rule__OperationQuery__Group_3_0_1_2__0__Impl();
@@ -14628,22 +14663,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__OperationQuery__Group_3_0_1_2__0__Impl"
-    // InternalAspectLang.g:4943:1: rule__OperationQuery__Group_3_0_1_2__0__Impl : ( ',' ) ;
+    // InternalAspectLang.g:4950:1: rule__OperationQuery__Group_3_0_1_2__0__Impl : ( ',' ) ;
     public final void rule__OperationQuery__Group_3_0_1_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4947:1: ( ( ',' ) )
-            // InternalAspectLang.g:4948:1: ( ',' )
+            // InternalAspectLang.g:4954:1: ( ( ',' ) )
+            // InternalAspectLang.g:4955:1: ( ',' )
             {
-            // InternalAspectLang.g:4948:1: ( ',' )
-            // InternalAspectLang.g:4949:1: ','
+            // InternalAspectLang.g:4955:1: ( ',' )
+            // InternalAspectLang.g:4956:1: ','
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getOperationQueryAccess().getCommaKeyword_3_0_1_2_0()); 
             }
-            match(input,44,FOLLOW_2); if (state.failed) return ;
+            match(input,45,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getOperationQueryAccess().getCommaKeyword_3_0_1_2_0()); 
             }
@@ -14669,14 +14704,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__OperationQuery__Group_3_0_1_2__1"
-    // InternalAspectLang.g:4962:1: rule__OperationQuery__Group_3_0_1_2__1 : rule__OperationQuery__Group_3_0_1_2__1__Impl ;
+    // InternalAspectLang.g:4969:1: rule__OperationQuery__Group_3_0_1_2__1 : rule__OperationQuery__Group_3_0_1_2__1__Impl ;
     public final void rule__OperationQuery__Group_3_0_1_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4966:1: ( rule__OperationQuery__Group_3_0_1_2__1__Impl )
-            // InternalAspectLang.g:4967:2: rule__OperationQuery__Group_3_0_1_2__1__Impl
+            // InternalAspectLang.g:4973:1: ( rule__OperationQuery__Group_3_0_1_2__1__Impl )
+            // InternalAspectLang.g:4974:2: rule__OperationQuery__Group_3_0_1_2__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__OperationQuery__Group_3_0_1_2__1__Impl();
@@ -14702,23 +14737,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__OperationQuery__Group_3_0_1_2__1__Impl"
-    // InternalAspectLang.g:4973:1: rule__OperationQuery__Group_3_0_1_2__1__Impl : ( ( rule__OperationQuery__ParameterQueriesAssignment_3_0_1_2_1 ) ) ;
+    // InternalAspectLang.g:4980:1: rule__OperationQuery__Group_3_0_1_2__1__Impl : ( ( rule__OperationQuery__ParameterQueriesAssignment_3_0_1_2_1 ) ) ;
     public final void rule__OperationQuery__Group_3_0_1_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4977:1: ( ( ( rule__OperationQuery__ParameterQueriesAssignment_3_0_1_2_1 ) ) )
-            // InternalAspectLang.g:4978:1: ( ( rule__OperationQuery__ParameterQueriesAssignment_3_0_1_2_1 ) )
+            // InternalAspectLang.g:4984:1: ( ( ( rule__OperationQuery__ParameterQueriesAssignment_3_0_1_2_1 ) ) )
+            // InternalAspectLang.g:4985:1: ( ( rule__OperationQuery__ParameterQueriesAssignment_3_0_1_2_1 ) )
             {
-            // InternalAspectLang.g:4978:1: ( ( rule__OperationQuery__ParameterQueriesAssignment_3_0_1_2_1 ) )
-            // InternalAspectLang.g:4979:1: ( rule__OperationQuery__ParameterQueriesAssignment_3_0_1_2_1 )
+            // InternalAspectLang.g:4985:1: ( ( rule__OperationQuery__ParameterQueriesAssignment_3_0_1_2_1 ) )
+            // InternalAspectLang.g:4986:1: ( rule__OperationQuery__ParameterQueriesAssignment_3_0_1_2_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getOperationQueryAccess().getParameterQueriesAssignment_3_0_1_2_1()); 
             }
-            // InternalAspectLang.g:4980:1: ( rule__OperationQuery__ParameterQueriesAssignment_3_0_1_2_1 )
-            // InternalAspectLang.g:4980:2: rule__OperationQuery__ParameterQueriesAssignment_3_0_1_2_1
+            // InternalAspectLang.g:4987:1: ( rule__OperationQuery__ParameterQueriesAssignment_3_0_1_2_1 )
+            // InternalAspectLang.g:4987:2: rule__OperationQuery__ParameterQueriesAssignment_3_0_1_2_1
             {
             pushFollow(FOLLOW_2);
             rule__OperationQuery__ParameterQueriesAssignment_3_0_1_2_1();
@@ -14753,14 +14788,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ParameterQuery__Group__0"
-    // InternalAspectLang.g:4994:1: rule__ParameterQuery__Group__0 : rule__ParameterQuery__Group__0__Impl rule__ParameterQuery__Group__1 ;
+    // InternalAspectLang.g:5001:1: rule__ParameterQuery__Group__0 : rule__ParameterQuery__Group__0__Impl rule__ParameterQuery__Group__1 ;
     public final void rule__ParameterQuery__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:4998:1: ( rule__ParameterQuery__Group__0__Impl rule__ParameterQuery__Group__1 )
-            // InternalAspectLang.g:4999:2: rule__ParameterQuery__Group__0__Impl rule__ParameterQuery__Group__1
+            // InternalAspectLang.g:5005:1: ( rule__ParameterQuery__Group__0__Impl rule__ParameterQuery__Group__1 )
+            // InternalAspectLang.g:5006:2: rule__ParameterQuery__Group__0__Impl rule__ParameterQuery__Group__1
             {
             pushFollow(FOLLOW_31);
             rule__ParameterQuery__Group__0__Impl();
@@ -14791,23 +14826,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ParameterQuery__Group__0__Impl"
-    // InternalAspectLang.g:5006:1: rule__ParameterQuery__Group__0__Impl : ( () ) ;
+    // InternalAspectLang.g:5013:1: rule__ParameterQuery__Group__0__Impl : ( () ) ;
     public final void rule__ParameterQuery__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5010:1: ( ( () ) )
-            // InternalAspectLang.g:5011:1: ( () )
+            // InternalAspectLang.g:5017:1: ( ( () ) )
+            // InternalAspectLang.g:5018:1: ( () )
             {
-            // InternalAspectLang.g:5011:1: ( () )
-            // InternalAspectLang.g:5012:1: ()
+            // InternalAspectLang.g:5018:1: ( () )
+            // InternalAspectLang.g:5019:1: ()
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getParameterQueryAccess().getParameterQueryAction_0()); 
             }
-            // InternalAspectLang.g:5013:1: ()
-            // InternalAspectLang.g:5015:1: 
+            // InternalAspectLang.g:5020:1: ()
+            // InternalAspectLang.g:5022:1: 
             {
             }
 
@@ -14832,14 +14867,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ParameterQuery__Group__1"
-    // InternalAspectLang.g:5025:1: rule__ParameterQuery__Group__1 : rule__ParameterQuery__Group__1__Impl rule__ParameterQuery__Group__2 ;
+    // InternalAspectLang.g:5032:1: rule__ParameterQuery__Group__1 : rule__ParameterQuery__Group__1__Impl rule__ParameterQuery__Group__2 ;
     public final void rule__ParameterQuery__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5029:1: ( rule__ParameterQuery__Group__1__Impl rule__ParameterQuery__Group__2 )
-            // InternalAspectLang.g:5030:2: rule__ParameterQuery__Group__1__Impl rule__ParameterQuery__Group__2
+            // InternalAspectLang.g:5036:1: ( rule__ParameterQuery__Group__1__Impl rule__ParameterQuery__Group__2 )
+            // InternalAspectLang.g:5037:2: rule__ParameterQuery__Group__1__Impl rule__ParameterQuery__Group__2
             {
             pushFollow(FOLLOW_31);
             rule__ParameterQuery__Group__1__Impl();
@@ -14870,22 +14905,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ParameterQuery__Group__1__Impl"
-    // InternalAspectLang.g:5037:1: rule__ParameterQuery__Group__1__Impl : ( ( rule__ParameterQuery__ModifierAssignment_1 )? ) ;
+    // InternalAspectLang.g:5044:1: rule__ParameterQuery__Group__1__Impl : ( ( rule__ParameterQuery__ModifierAssignment_1 )? ) ;
     public final void rule__ParameterQuery__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5041:1: ( ( ( rule__ParameterQuery__ModifierAssignment_1 )? ) )
-            // InternalAspectLang.g:5042:1: ( ( rule__ParameterQuery__ModifierAssignment_1 )? )
+            // InternalAspectLang.g:5048:1: ( ( ( rule__ParameterQuery__ModifierAssignment_1 )? ) )
+            // InternalAspectLang.g:5049:1: ( ( rule__ParameterQuery__ModifierAssignment_1 )? )
             {
-            // InternalAspectLang.g:5042:1: ( ( rule__ParameterQuery__ModifierAssignment_1 )? )
-            // InternalAspectLang.g:5043:1: ( rule__ParameterQuery__ModifierAssignment_1 )?
+            // InternalAspectLang.g:5049:1: ( ( rule__ParameterQuery__ModifierAssignment_1 )? )
+            // InternalAspectLang.g:5050:1: ( rule__ParameterQuery__ModifierAssignment_1 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getParameterQueryAccess().getModifierAssignment_1()); 
             }
-            // InternalAspectLang.g:5044:1: ( rule__ParameterQuery__ModifierAssignment_1 )?
+            // InternalAspectLang.g:5051:1: ( rule__ParameterQuery__ModifierAssignment_1 )?
             int alt43=2;
             int LA43_0 = input.LA(1);
 
@@ -14898,7 +14933,7 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
             }
             switch (alt43) {
                 case 1 :
-                    // InternalAspectLang.g:5044:2: rule__ParameterQuery__ModifierAssignment_1
+                    // InternalAspectLang.g:5051:2: rule__ParameterQuery__ModifierAssignment_1
                     {
                     pushFollow(FOLLOW_2);
                     rule__ParameterQuery__ModifierAssignment_1();
@@ -14936,14 +14971,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ParameterQuery__Group__2"
-    // InternalAspectLang.g:5054:1: rule__ParameterQuery__Group__2 : rule__ParameterQuery__Group__2__Impl rule__ParameterQuery__Group__3 ;
+    // InternalAspectLang.g:5061:1: rule__ParameterQuery__Group__2 : rule__ParameterQuery__Group__2__Impl rule__ParameterQuery__Group__3 ;
     public final void rule__ParameterQuery__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5058:1: ( rule__ParameterQuery__Group__2__Impl rule__ParameterQuery__Group__3 )
-            // InternalAspectLang.g:5059:2: rule__ParameterQuery__Group__2__Impl rule__ParameterQuery__Group__3
+            // InternalAspectLang.g:5065:1: ( rule__ParameterQuery__Group__2__Impl rule__ParameterQuery__Group__3 )
+            // InternalAspectLang.g:5066:2: rule__ParameterQuery__Group__2__Impl rule__ParameterQuery__Group__3
             {
             pushFollow(FOLLOW_3);
             rule__ParameterQuery__Group__2__Impl();
@@ -14974,23 +15009,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ParameterQuery__Group__2__Impl"
-    // InternalAspectLang.g:5066:1: rule__ParameterQuery__Group__2__Impl : ( ( rule__ParameterQuery__Alternatives_2 ) ) ;
+    // InternalAspectLang.g:5073:1: rule__ParameterQuery__Group__2__Impl : ( ( rule__ParameterQuery__Alternatives_2 ) ) ;
     public final void rule__ParameterQuery__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5070:1: ( ( ( rule__ParameterQuery__Alternatives_2 ) ) )
-            // InternalAspectLang.g:5071:1: ( ( rule__ParameterQuery__Alternatives_2 ) )
+            // InternalAspectLang.g:5077:1: ( ( ( rule__ParameterQuery__Alternatives_2 ) ) )
+            // InternalAspectLang.g:5078:1: ( ( rule__ParameterQuery__Alternatives_2 ) )
             {
-            // InternalAspectLang.g:5071:1: ( ( rule__ParameterQuery__Alternatives_2 ) )
-            // InternalAspectLang.g:5072:1: ( rule__ParameterQuery__Alternatives_2 )
+            // InternalAspectLang.g:5078:1: ( ( rule__ParameterQuery__Alternatives_2 ) )
+            // InternalAspectLang.g:5079:1: ( rule__ParameterQuery__Alternatives_2 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getParameterQueryAccess().getAlternatives_2()); 
             }
-            // InternalAspectLang.g:5073:1: ( rule__ParameterQuery__Alternatives_2 )
-            // InternalAspectLang.g:5073:2: rule__ParameterQuery__Alternatives_2
+            // InternalAspectLang.g:5080:1: ( rule__ParameterQuery__Alternatives_2 )
+            // InternalAspectLang.g:5080:2: rule__ParameterQuery__Alternatives_2
             {
             pushFollow(FOLLOW_2);
             rule__ParameterQuery__Alternatives_2();
@@ -15025,14 +15060,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ParameterQuery__Group__3"
-    // InternalAspectLang.g:5083:1: rule__ParameterQuery__Group__3 : rule__ParameterQuery__Group__3__Impl ;
+    // InternalAspectLang.g:5090:1: rule__ParameterQuery__Group__3 : rule__ParameterQuery__Group__3__Impl ;
     public final void rule__ParameterQuery__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5087:1: ( rule__ParameterQuery__Group__3__Impl )
-            // InternalAspectLang.g:5088:2: rule__ParameterQuery__Group__3__Impl
+            // InternalAspectLang.g:5094:1: ( rule__ParameterQuery__Group__3__Impl )
+            // InternalAspectLang.g:5095:2: rule__ParameterQuery__Group__3__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ParameterQuery__Group__3__Impl();
@@ -15058,22 +15093,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ParameterQuery__Group__3__Impl"
-    // InternalAspectLang.g:5094:1: rule__ParameterQuery__Group__3__Impl : ( ( rule__ParameterQuery__ParameterAssignment_3 )? ) ;
+    // InternalAspectLang.g:5101:1: rule__ParameterQuery__Group__3__Impl : ( ( rule__ParameterQuery__ParameterAssignment_3 )? ) ;
     public final void rule__ParameterQuery__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5098:1: ( ( ( rule__ParameterQuery__ParameterAssignment_3 )? ) )
-            // InternalAspectLang.g:5099:1: ( ( rule__ParameterQuery__ParameterAssignment_3 )? )
+            // InternalAspectLang.g:5105:1: ( ( ( rule__ParameterQuery__ParameterAssignment_3 )? ) )
+            // InternalAspectLang.g:5106:1: ( ( rule__ParameterQuery__ParameterAssignment_3 )? )
             {
-            // InternalAspectLang.g:5099:1: ( ( rule__ParameterQuery__ParameterAssignment_3 )? )
-            // InternalAspectLang.g:5100:1: ( rule__ParameterQuery__ParameterAssignment_3 )?
+            // InternalAspectLang.g:5106:1: ( ( rule__ParameterQuery__ParameterAssignment_3 )? )
+            // InternalAspectLang.g:5107:1: ( rule__ParameterQuery__ParameterAssignment_3 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getParameterQueryAccess().getParameterAssignment_3()); 
             }
-            // InternalAspectLang.g:5101:1: ( rule__ParameterQuery__ParameterAssignment_3 )?
+            // InternalAspectLang.g:5108:1: ( rule__ParameterQuery__ParameterAssignment_3 )?
             int alt44=2;
             int LA44_0 = input.LA(1);
 
@@ -15082,7 +15117,7 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
             }
             switch (alt44) {
                 case 1 :
-                    // InternalAspectLang.g:5101:2: rule__ParameterQuery__ParameterAssignment_3
+                    // InternalAspectLang.g:5108:2: rule__ParameterQuery__ParameterAssignment_3
                     {
                     pushFollow(FOLLOW_2);
                     rule__ParameterQuery__ParameterAssignment_3();
@@ -15120,14 +15155,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Node__Group__0"
-    // InternalAspectLang.g:5119:1: rule__Node__Group__0 : rule__Node__Group__0__Impl rule__Node__Group__1 ;
+    // InternalAspectLang.g:5126:1: rule__Node__Group__0 : rule__Node__Group__0__Impl rule__Node__Group__1 ;
     public final void rule__Node__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5123:1: ( rule__Node__Group__0__Impl rule__Node__Group__1 )
-            // InternalAspectLang.g:5124:2: rule__Node__Group__0__Impl rule__Node__Group__1
+            // InternalAspectLang.g:5130:1: ( rule__Node__Group__0__Impl rule__Node__Group__1 )
+            // InternalAspectLang.g:5131:2: rule__Node__Group__0__Impl rule__Node__Group__1
             {
             pushFollow(FOLLOW_24);
             rule__Node__Group__0__Impl();
@@ -15158,23 +15193,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Node__Group__0__Impl"
-    // InternalAspectLang.g:5131:1: rule__Node__Group__0__Impl : ( ( rule__Node__Alternatives_0 ) ) ;
+    // InternalAspectLang.g:5138:1: rule__Node__Group__0__Impl : ( ( rule__Node__Alternatives_0 ) ) ;
     public final void rule__Node__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5135:1: ( ( ( rule__Node__Alternatives_0 ) ) )
-            // InternalAspectLang.g:5136:1: ( ( rule__Node__Alternatives_0 ) )
+            // InternalAspectLang.g:5142:1: ( ( ( rule__Node__Alternatives_0 ) ) )
+            // InternalAspectLang.g:5143:1: ( ( rule__Node__Alternatives_0 ) )
             {
-            // InternalAspectLang.g:5136:1: ( ( rule__Node__Alternatives_0 ) )
-            // InternalAspectLang.g:5137:1: ( rule__Node__Alternatives_0 )
+            // InternalAspectLang.g:5143:1: ( ( rule__Node__Alternatives_0 ) )
+            // InternalAspectLang.g:5144:1: ( rule__Node__Alternatives_0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getNodeAccess().getAlternatives_0()); 
             }
-            // InternalAspectLang.g:5138:1: ( rule__Node__Alternatives_0 )
-            // InternalAspectLang.g:5138:2: rule__Node__Alternatives_0
+            // InternalAspectLang.g:5145:1: ( rule__Node__Alternatives_0 )
+            // InternalAspectLang.g:5145:2: rule__Node__Alternatives_0
             {
             pushFollow(FOLLOW_2);
             rule__Node__Alternatives_0();
@@ -15209,14 +15244,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Node__Group__1"
-    // InternalAspectLang.g:5148:1: rule__Node__Group__1 : rule__Node__Group__1__Impl ;
+    // InternalAspectLang.g:5155:1: rule__Node__Group__1 : rule__Node__Group__1__Impl ;
     public final void rule__Node__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5152:1: ( rule__Node__Group__1__Impl )
-            // InternalAspectLang.g:5153:2: rule__Node__Group__1__Impl
+            // InternalAspectLang.g:5159:1: ( rule__Node__Group__1__Impl )
+            // InternalAspectLang.g:5160:2: rule__Node__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Node__Group__1__Impl();
@@ -15242,31 +15277,31 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Node__Group__1__Impl"
-    // InternalAspectLang.g:5159:1: rule__Node__Group__1__Impl : ( ( rule__Node__Group_1__0 )? ) ;
+    // InternalAspectLang.g:5166:1: rule__Node__Group__1__Impl : ( ( rule__Node__Group_1__0 )? ) ;
     public final void rule__Node__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5163:1: ( ( ( rule__Node__Group_1__0 )? ) )
-            // InternalAspectLang.g:5164:1: ( ( rule__Node__Group_1__0 )? )
+            // InternalAspectLang.g:5170:1: ( ( ( rule__Node__Group_1__0 )? ) )
+            // InternalAspectLang.g:5171:1: ( ( rule__Node__Group_1__0 )? )
             {
-            // InternalAspectLang.g:5164:1: ( ( rule__Node__Group_1__0 )? )
-            // InternalAspectLang.g:5165:1: ( rule__Node__Group_1__0 )?
+            // InternalAspectLang.g:5171:1: ( ( rule__Node__Group_1__0 )? )
+            // InternalAspectLang.g:5172:1: ( rule__Node__Group_1__0 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getNodeAccess().getGroup_1()); 
             }
-            // InternalAspectLang.g:5166:1: ( rule__Node__Group_1__0 )?
+            // InternalAspectLang.g:5173:1: ( rule__Node__Group_1__0 )?
             int alt45=2;
             int LA45_0 = input.LA(1);
 
-            if ( (LA45_0==52) ) {
+            if ( (LA45_0==53) ) {
                 alt45=1;
             }
             switch (alt45) {
                 case 1 :
-                    // InternalAspectLang.g:5166:2: rule__Node__Group_1__0
+                    // InternalAspectLang.g:5173:2: rule__Node__Group_1__0
                     {
                     pushFollow(FOLLOW_2);
                     rule__Node__Group_1__0();
@@ -15304,14 +15339,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Node__Group_1__0"
-    // InternalAspectLang.g:5180:1: rule__Node__Group_1__0 : rule__Node__Group_1__0__Impl rule__Node__Group_1__1 ;
+    // InternalAspectLang.g:5187:1: rule__Node__Group_1__0 : rule__Node__Group_1__0__Impl rule__Node__Group_1__1 ;
     public final void rule__Node__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5184:1: ( rule__Node__Group_1__0__Impl rule__Node__Group_1__1 )
-            // InternalAspectLang.g:5185:2: rule__Node__Group_1__0__Impl rule__Node__Group_1__1
+            // InternalAspectLang.g:5191:1: ( rule__Node__Group_1__0__Impl rule__Node__Group_1__1 )
+            // InternalAspectLang.g:5192:2: rule__Node__Group_1__0__Impl rule__Node__Group_1__1
             {
             pushFollow(FOLLOW_38);
             rule__Node__Group_1__0__Impl();
@@ -15342,22 +15377,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Node__Group_1__0__Impl"
-    // InternalAspectLang.g:5192:1: rule__Node__Group_1__0__Impl : ( '[' ) ;
+    // InternalAspectLang.g:5199:1: rule__Node__Group_1__0__Impl : ( '[' ) ;
     public final void rule__Node__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5196:1: ( ( '[' ) )
-            // InternalAspectLang.g:5197:1: ( '[' )
+            // InternalAspectLang.g:5203:1: ( ( '[' ) )
+            // InternalAspectLang.g:5204:1: ( '[' )
             {
-            // InternalAspectLang.g:5197:1: ( '[' )
-            // InternalAspectLang.g:5198:1: '['
+            // InternalAspectLang.g:5204:1: ( '[' )
+            // InternalAspectLang.g:5205:1: '['
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getNodeAccess().getLeftSquareBracketKeyword_1_0()); 
             }
-            match(input,52,FOLLOW_2); if (state.failed) return ;
+            match(input,53,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getNodeAccess().getLeftSquareBracketKeyword_1_0()); 
             }
@@ -15383,14 +15418,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Node__Group_1__1"
-    // InternalAspectLang.g:5211:1: rule__Node__Group_1__1 : rule__Node__Group_1__1__Impl rule__Node__Group_1__2 ;
+    // InternalAspectLang.g:5218:1: rule__Node__Group_1__1 : rule__Node__Group_1__1__Impl rule__Node__Group_1__2 ;
     public final void rule__Node__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5215:1: ( rule__Node__Group_1__1__Impl rule__Node__Group_1__2 )
-            // InternalAspectLang.g:5216:2: rule__Node__Group_1__1__Impl rule__Node__Group_1__2
+            // InternalAspectLang.g:5222:1: ( rule__Node__Group_1__1__Impl rule__Node__Group_1__2 )
+            // InternalAspectLang.g:5223:2: rule__Node__Group_1__1__Impl rule__Node__Group_1__2
             {
             pushFollow(FOLLOW_25);
             rule__Node__Group_1__1__Impl();
@@ -15421,23 +15456,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Node__Group_1__1__Impl"
-    // InternalAspectLang.g:5223:1: rule__Node__Group_1__1__Impl : ( ( rule__Node__ConstraintAssignment_1_1 ) ) ;
+    // InternalAspectLang.g:5230:1: rule__Node__Group_1__1__Impl : ( ( rule__Node__ConstraintAssignment_1_1 ) ) ;
     public final void rule__Node__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5227:1: ( ( ( rule__Node__ConstraintAssignment_1_1 ) ) )
-            // InternalAspectLang.g:5228:1: ( ( rule__Node__ConstraintAssignment_1_1 ) )
+            // InternalAspectLang.g:5234:1: ( ( ( rule__Node__ConstraintAssignment_1_1 ) ) )
+            // InternalAspectLang.g:5235:1: ( ( rule__Node__ConstraintAssignment_1_1 ) )
             {
-            // InternalAspectLang.g:5228:1: ( ( rule__Node__ConstraintAssignment_1_1 ) )
-            // InternalAspectLang.g:5229:1: ( rule__Node__ConstraintAssignment_1_1 )
+            // InternalAspectLang.g:5235:1: ( ( rule__Node__ConstraintAssignment_1_1 ) )
+            // InternalAspectLang.g:5236:1: ( rule__Node__ConstraintAssignment_1_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getNodeAccess().getConstraintAssignment_1_1()); 
             }
-            // InternalAspectLang.g:5230:1: ( rule__Node__ConstraintAssignment_1_1 )
-            // InternalAspectLang.g:5230:2: rule__Node__ConstraintAssignment_1_1
+            // InternalAspectLang.g:5237:1: ( rule__Node__ConstraintAssignment_1_1 )
+            // InternalAspectLang.g:5237:2: rule__Node__ConstraintAssignment_1_1
             {
             pushFollow(FOLLOW_2);
             rule__Node__ConstraintAssignment_1_1();
@@ -15472,14 +15507,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Node__Group_1__2"
-    // InternalAspectLang.g:5240:1: rule__Node__Group_1__2 : rule__Node__Group_1__2__Impl ;
+    // InternalAspectLang.g:5247:1: rule__Node__Group_1__2 : rule__Node__Group_1__2__Impl ;
     public final void rule__Node__Group_1__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5244:1: ( rule__Node__Group_1__2__Impl )
-            // InternalAspectLang.g:5245:2: rule__Node__Group_1__2__Impl
+            // InternalAspectLang.g:5251:1: ( rule__Node__Group_1__2__Impl )
+            // InternalAspectLang.g:5252:2: rule__Node__Group_1__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Node__Group_1__2__Impl();
@@ -15505,22 +15540,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Node__Group_1__2__Impl"
-    // InternalAspectLang.g:5251:1: rule__Node__Group_1__2__Impl : ( ']' ) ;
+    // InternalAspectLang.g:5258:1: rule__Node__Group_1__2__Impl : ( ']' ) ;
     public final void rule__Node__Group_1__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5255:1: ( ( ']' ) )
-            // InternalAspectLang.g:5256:1: ( ']' )
+            // InternalAspectLang.g:5262:1: ( ( ']' ) )
+            // InternalAspectLang.g:5263:1: ( ']' )
             {
-            // InternalAspectLang.g:5256:1: ( ']' )
-            // InternalAspectLang.g:5257:1: ']'
+            // InternalAspectLang.g:5263:1: ( ']' )
+            // InternalAspectLang.g:5264:1: ']'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getNodeAccess().getRightSquareBracketKeyword_1_2()); 
             }
-            match(input,53,FOLLOW_2); if (state.failed) return ;
+            match(input,54,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getNodeAccess().getRightSquareBracketKeyword_1_2()); 
             }
@@ -15546,14 +15581,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__WildcardNode__Group__0"
-    // InternalAspectLang.g:5276:1: rule__WildcardNode__Group__0 : rule__WildcardNode__Group__0__Impl rule__WildcardNode__Group__1 ;
+    // InternalAspectLang.g:5283:1: rule__WildcardNode__Group__0 : rule__WildcardNode__Group__0__Impl rule__WildcardNode__Group__1 ;
     public final void rule__WildcardNode__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5280:1: ( rule__WildcardNode__Group__0__Impl rule__WildcardNode__Group__1 )
-            // InternalAspectLang.g:5281:2: rule__WildcardNode__Group__0__Impl rule__WildcardNode__Group__1
+            // InternalAspectLang.g:5287:1: ( rule__WildcardNode__Group__0__Impl rule__WildcardNode__Group__1 )
+            // InternalAspectLang.g:5288:2: rule__WildcardNode__Group__0__Impl rule__WildcardNode__Group__1
             {
             pushFollow(FOLLOW_39);
             rule__WildcardNode__Group__0__Impl();
@@ -15584,23 +15619,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__WildcardNode__Group__0__Impl"
-    // InternalAspectLang.g:5288:1: rule__WildcardNode__Group__0__Impl : ( () ) ;
+    // InternalAspectLang.g:5295:1: rule__WildcardNode__Group__0__Impl : ( () ) ;
     public final void rule__WildcardNode__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5292:1: ( ( () ) )
-            // InternalAspectLang.g:5293:1: ( () )
+            // InternalAspectLang.g:5299:1: ( ( () ) )
+            // InternalAspectLang.g:5300:1: ( () )
             {
-            // InternalAspectLang.g:5293:1: ( () )
-            // InternalAspectLang.g:5294:1: ()
+            // InternalAspectLang.g:5300:1: ( () )
+            // InternalAspectLang.g:5301:1: ()
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getWildcardNodeAccess().getWildcardNodeAction_0()); 
             }
-            // InternalAspectLang.g:5295:1: ()
-            // InternalAspectLang.g:5297:1: 
+            // InternalAspectLang.g:5302:1: ()
+            // InternalAspectLang.g:5304:1: 
             {
             }
 
@@ -15625,14 +15660,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__WildcardNode__Group__1"
-    // InternalAspectLang.g:5307:1: rule__WildcardNode__Group__1 : rule__WildcardNode__Group__1__Impl ;
+    // InternalAspectLang.g:5314:1: rule__WildcardNode__Group__1 : rule__WildcardNode__Group__1__Impl ;
     public final void rule__WildcardNode__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5311:1: ( rule__WildcardNode__Group__1__Impl )
-            // InternalAspectLang.g:5312:2: rule__WildcardNode__Group__1__Impl
+            // InternalAspectLang.g:5318:1: ( rule__WildcardNode__Group__1__Impl )
+            // InternalAspectLang.g:5319:2: rule__WildcardNode__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__WildcardNode__Group__1__Impl();
@@ -15658,17 +15693,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__WildcardNode__Group__1__Impl"
-    // InternalAspectLang.g:5318:1: rule__WildcardNode__Group__1__Impl : ( '*' ) ;
+    // InternalAspectLang.g:5325:1: rule__WildcardNode__Group__1__Impl : ( '*' ) ;
     public final void rule__WildcardNode__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5322:1: ( ( '*' ) )
-            // InternalAspectLang.g:5323:1: ( '*' )
+            // InternalAspectLang.g:5329:1: ( ( '*' ) )
+            // InternalAspectLang.g:5330:1: ( '*' )
             {
-            // InternalAspectLang.g:5323:1: ( '*' )
-            // InternalAspectLang.g:5324:1: '*'
+            // InternalAspectLang.g:5330:1: ( '*' )
+            // InternalAspectLang.g:5331:1: '*'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getWildcardNodeAccess().getAsteriskKeyword_1()); 
@@ -15699,14 +15734,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__SubPathNode__Group__0"
-    // InternalAspectLang.g:5341:1: rule__SubPathNode__Group__0 : rule__SubPathNode__Group__0__Impl rule__SubPathNode__Group__1 ;
+    // InternalAspectLang.g:5348:1: rule__SubPathNode__Group__0 : rule__SubPathNode__Group__0__Impl rule__SubPathNode__Group__1 ;
     public final void rule__SubPathNode__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5345:1: ( rule__SubPathNode__Group__0__Impl rule__SubPathNode__Group__1 )
-            // InternalAspectLang.g:5346:2: rule__SubPathNode__Group__0__Impl rule__SubPathNode__Group__1
+            // InternalAspectLang.g:5352:1: ( rule__SubPathNode__Group__0__Impl rule__SubPathNode__Group__1 )
+            // InternalAspectLang.g:5353:2: rule__SubPathNode__Group__0__Impl rule__SubPathNode__Group__1
             {
             pushFollow(FOLLOW_40);
             rule__SubPathNode__Group__0__Impl();
@@ -15737,23 +15772,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__SubPathNode__Group__0__Impl"
-    // InternalAspectLang.g:5353:1: rule__SubPathNode__Group__0__Impl : ( () ) ;
+    // InternalAspectLang.g:5360:1: rule__SubPathNode__Group__0__Impl : ( () ) ;
     public final void rule__SubPathNode__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5357:1: ( ( () ) )
-            // InternalAspectLang.g:5358:1: ( () )
+            // InternalAspectLang.g:5364:1: ( ( () ) )
+            // InternalAspectLang.g:5365:1: ( () )
             {
-            // InternalAspectLang.g:5358:1: ( () )
-            // InternalAspectLang.g:5359:1: ()
+            // InternalAspectLang.g:5365:1: ( () )
+            // InternalAspectLang.g:5366:1: ()
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getSubPathNodeAccess().getSubPathNodeAction_0()); 
             }
-            // InternalAspectLang.g:5360:1: ()
-            // InternalAspectLang.g:5362:1: 
+            // InternalAspectLang.g:5367:1: ()
+            // InternalAspectLang.g:5369:1: 
             {
             }
 
@@ -15778,14 +15813,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__SubPathNode__Group__1"
-    // InternalAspectLang.g:5372:1: rule__SubPathNode__Group__1 : rule__SubPathNode__Group__1__Impl ;
+    // InternalAspectLang.g:5379:1: rule__SubPathNode__Group__1 : rule__SubPathNode__Group__1__Impl ;
     public final void rule__SubPathNode__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5376:1: ( rule__SubPathNode__Group__1__Impl )
-            // InternalAspectLang.g:5377:2: rule__SubPathNode__Group__1__Impl
+            // InternalAspectLang.g:5383:1: ( rule__SubPathNode__Group__1__Impl )
+            // InternalAspectLang.g:5384:2: rule__SubPathNode__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__SubPathNode__Group__1__Impl();
@@ -15811,22 +15846,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__SubPathNode__Group__1__Impl"
-    // InternalAspectLang.g:5383:1: rule__SubPathNode__Group__1__Impl : ( '**' ) ;
+    // InternalAspectLang.g:5390:1: rule__SubPathNode__Group__1__Impl : ( '**' ) ;
     public final void rule__SubPathNode__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5387:1: ( ( '**' ) )
-            // InternalAspectLang.g:5388:1: ( '**' )
+            // InternalAspectLang.g:5394:1: ( ( '**' ) )
+            // InternalAspectLang.g:5395:1: ( '**' )
             {
-            // InternalAspectLang.g:5388:1: ( '**' )
-            // InternalAspectLang.g:5389:1: '**'
+            // InternalAspectLang.g:5395:1: ( '**' )
+            // InternalAspectLang.g:5396:1: '**'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getSubPathNodeAccess().getAsteriskAsteriskKeyword_1()); 
             }
-            match(input,59,FOLLOW_2); if (state.failed) return ;
+            match(input,60,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getSubPathNodeAccess().getAsteriskAsteriskKeyword_1()); 
             }
@@ -15852,14 +15887,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ParentNode__Group__0"
-    // InternalAspectLang.g:5406:1: rule__ParentNode__Group__0 : rule__ParentNode__Group__0__Impl rule__ParentNode__Group__1 ;
+    // InternalAspectLang.g:5413:1: rule__ParentNode__Group__0 : rule__ParentNode__Group__0__Impl rule__ParentNode__Group__1 ;
     public final void rule__ParentNode__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5410:1: ( rule__ParentNode__Group__0__Impl rule__ParentNode__Group__1 )
-            // InternalAspectLang.g:5411:2: rule__ParentNode__Group__0__Impl rule__ParentNode__Group__1
+            // InternalAspectLang.g:5417:1: ( rule__ParentNode__Group__0__Impl rule__ParentNode__Group__1 )
+            // InternalAspectLang.g:5418:2: rule__ParentNode__Group__0__Impl rule__ParentNode__Group__1
             {
             pushFollow(FOLLOW_41);
             rule__ParentNode__Group__0__Impl();
@@ -15890,23 +15925,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ParentNode__Group__0__Impl"
-    // InternalAspectLang.g:5418:1: rule__ParentNode__Group__0__Impl : ( () ) ;
+    // InternalAspectLang.g:5425:1: rule__ParentNode__Group__0__Impl : ( () ) ;
     public final void rule__ParentNode__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5422:1: ( ( () ) )
-            // InternalAspectLang.g:5423:1: ( () )
+            // InternalAspectLang.g:5429:1: ( ( () ) )
+            // InternalAspectLang.g:5430:1: ( () )
             {
-            // InternalAspectLang.g:5423:1: ( () )
-            // InternalAspectLang.g:5424:1: ()
+            // InternalAspectLang.g:5430:1: ( () )
+            // InternalAspectLang.g:5431:1: ()
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getParentNodeAccess().getParentNodeAction_0()); 
             }
-            // InternalAspectLang.g:5425:1: ()
-            // InternalAspectLang.g:5427:1: 
+            // InternalAspectLang.g:5432:1: ()
+            // InternalAspectLang.g:5434:1: 
             {
             }
 
@@ -15931,14 +15966,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ParentNode__Group__1"
-    // InternalAspectLang.g:5437:1: rule__ParentNode__Group__1 : rule__ParentNode__Group__1__Impl ;
+    // InternalAspectLang.g:5444:1: rule__ParentNode__Group__1 : rule__ParentNode__Group__1__Impl ;
     public final void rule__ParentNode__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5441:1: ( rule__ParentNode__Group__1__Impl )
-            // InternalAspectLang.g:5442:2: rule__ParentNode__Group__1__Impl
+            // InternalAspectLang.g:5448:1: ( rule__ParentNode__Group__1__Impl )
+            // InternalAspectLang.g:5449:2: rule__ParentNode__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ParentNode__Group__1__Impl();
@@ -15964,22 +15999,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ParentNode__Group__1__Impl"
-    // InternalAspectLang.g:5448:1: rule__ParentNode__Group__1__Impl : ( 'up' ) ;
+    // InternalAspectLang.g:5455:1: rule__ParentNode__Group__1__Impl : ( 'up' ) ;
     public final void rule__ParentNode__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5452:1: ( ( 'up' ) )
-            // InternalAspectLang.g:5453:1: ( 'up' )
+            // InternalAspectLang.g:5459:1: ( ( 'up' ) )
+            // InternalAspectLang.g:5460:1: ( 'up' )
             {
-            // InternalAspectLang.g:5453:1: ( 'up' )
-            // InternalAspectLang.g:5454:1: 'up'
+            // InternalAspectLang.g:5460:1: ( 'up' )
+            // InternalAspectLang.g:5461:1: 'up'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getParentNodeAccess().getUpKeyword_1()); 
             }
-            match(input,60,FOLLOW_2); if (state.failed) return ;
+            match(input,61,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getParentNodeAccess().getUpKeyword_1()); 
             }
@@ -16005,14 +16040,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__PropertyConstraint__Group__0"
-    // InternalAspectLang.g:5471:1: rule__PropertyConstraint__Group__0 : rule__PropertyConstraint__Group__0__Impl rule__PropertyConstraint__Group__1 ;
+    // InternalAspectLang.g:5478:1: rule__PropertyConstraint__Group__0 : rule__PropertyConstraint__Group__0__Impl rule__PropertyConstraint__Group__1 ;
     public final void rule__PropertyConstraint__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5475:1: ( rule__PropertyConstraint__Group__0__Impl rule__PropertyConstraint__Group__1 )
-            // InternalAspectLang.g:5476:2: rule__PropertyConstraint__Group__0__Impl rule__PropertyConstraint__Group__1
+            // InternalAspectLang.g:5482:1: ( rule__PropertyConstraint__Group__0__Impl rule__PropertyConstraint__Group__1 )
+            // InternalAspectLang.g:5483:2: rule__PropertyConstraint__Group__0__Impl rule__PropertyConstraint__Group__1
             {
             pushFollow(FOLLOW_42);
             rule__PropertyConstraint__Group__0__Impl();
@@ -16043,17 +16078,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__PropertyConstraint__Group__0__Impl"
-    // InternalAspectLang.g:5483:1: rule__PropertyConstraint__Group__0__Impl : ( rulePropertyConstraintCompare ) ;
+    // InternalAspectLang.g:5490:1: rule__PropertyConstraint__Group__0__Impl : ( rulePropertyConstraintCompare ) ;
     public final void rule__PropertyConstraint__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5487:1: ( ( rulePropertyConstraintCompare ) )
-            // InternalAspectLang.g:5488:1: ( rulePropertyConstraintCompare )
+            // InternalAspectLang.g:5494:1: ( ( rulePropertyConstraintCompare ) )
+            // InternalAspectLang.g:5495:1: ( rulePropertyConstraintCompare )
             {
-            // InternalAspectLang.g:5488:1: ( rulePropertyConstraintCompare )
-            // InternalAspectLang.g:5489:1: rulePropertyConstraintCompare
+            // InternalAspectLang.g:5495:1: ( rulePropertyConstraintCompare )
+            // InternalAspectLang.g:5496:1: rulePropertyConstraintCompare
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyConstraintAccess().getPropertyConstraintCompareParserRuleCall_0()); 
@@ -16088,14 +16123,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__PropertyConstraint__Group__1"
-    // InternalAspectLang.g:5500:1: rule__PropertyConstraint__Group__1 : rule__PropertyConstraint__Group__1__Impl ;
+    // InternalAspectLang.g:5507:1: rule__PropertyConstraint__Group__1 : rule__PropertyConstraint__Group__1__Impl ;
     public final void rule__PropertyConstraint__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5504:1: ( rule__PropertyConstraint__Group__1__Impl )
-            // InternalAspectLang.g:5505:2: rule__PropertyConstraint__Group__1__Impl
+            // InternalAspectLang.g:5511:1: ( rule__PropertyConstraint__Group__1__Impl )
+            // InternalAspectLang.g:5512:2: rule__PropertyConstraint__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__PropertyConstraint__Group__1__Impl();
@@ -16121,31 +16156,31 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__PropertyConstraint__Group__1__Impl"
-    // InternalAspectLang.g:5511:1: rule__PropertyConstraint__Group__1__Impl : ( ( rule__PropertyConstraint__Group_1__0 )? ) ;
+    // InternalAspectLang.g:5518:1: rule__PropertyConstraint__Group__1__Impl : ( ( rule__PropertyConstraint__Group_1__0 )? ) ;
     public final void rule__PropertyConstraint__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5515:1: ( ( ( rule__PropertyConstraint__Group_1__0 )? ) )
-            // InternalAspectLang.g:5516:1: ( ( rule__PropertyConstraint__Group_1__0 )? )
+            // InternalAspectLang.g:5522:1: ( ( ( rule__PropertyConstraint__Group_1__0 )? ) )
+            // InternalAspectLang.g:5523:1: ( ( rule__PropertyConstraint__Group_1__0 )? )
             {
-            // InternalAspectLang.g:5516:1: ( ( rule__PropertyConstraint__Group_1__0 )? )
-            // InternalAspectLang.g:5517:1: ( rule__PropertyConstraint__Group_1__0 )?
+            // InternalAspectLang.g:5523:1: ( ( rule__PropertyConstraint__Group_1__0 )? )
+            // InternalAspectLang.g:5524:1: ( rule__PropertyConstraint__Group_1__0 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyConstraintAccess().getGroup_1()); 
             }
-            // InternalAspectLang.g:5518:1: ( rule__PropertyConstraint__Group_1__0 )?
+            // InternalAspectLang.g:5525:1: ( rule__PropertyConstraint__Group_1__0 )?
             int alt46=2;
             int LA46_0 = input.LA(1);
 
-            if ( ((LA46_0>=29 && LA46_0<=30)) ) {
+            if ( ((LA46_0>=30 && LA46_0<=31)) ) {
                 alt46=1;
             }
             switch (alt46) {
                 case 1 :
-                    // InternalAspectLang.g:5518:2: rule__PropertyConstraint__Group_1__0
+                    // InternalAspectLang.g:5525:2: rule__PropertyConstraint__Group_1__0
                     {
                     pushFollow(FOLLOW_2);
                     rule__PropertyConstraint__Group_1__0();
@@ -16183,14 +16218,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__PropertyConstraint__Group_1__0"
-    // InternalAspectLang.g:5532:1: rule__PropertyConstraint__Group_1__0 : rule__PropertyConstraint__Group_1__0__Impl rule__PropertyConstraint__Group_1__1 ;
+    // InternalAspectLang.g:5539:1: rule__PropertyConstraint__Group_1__0 : rule__PropertyConstraint__Group_1__0__Impl rule__PropertyConstraint__Group_1__1 ;
     public final void rule__PropertyConstraint__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5536:1: ( rule__PropertyConstraint__Group_1__0__Impl rule__PropertyConstraint__Group_1__1 )
-            // InternalAspectLang.g:5537:2: rule__PropertyConstraint__Group_1__0__Impl rule__PropertyConstraint__Group_1__1
+            // InternalAspectLang.g:5543:1: ( rule__PropertyConstraint__Group_1__0__Impl rule__PropertyConstraint__Group_1__1 )
+            // InternalAspectLang.g:5544:2: rule__PropertyConstraint__Group_1__0__Impl rule__PropertyConstraint__Group_1__1
             {
             pushFollow(FOLLOW_42);
             rule__PropertyConstraint__Group_1__0__Impl();
@@ -16221,23 +16256,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__PropertyConstraint__Group_1__0__Impl"
-    // InternalAspectLang.g:5544:1: rule__PropertyConstraint__Group_1__0__Impl : ( () ) ;
+    // InternalAspectLang.g:5551:1: rule__PropertyConstraint__Group_1__0__Impl : ( () ) ;
     public final void rule__PropertyConstraint__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5548:1: ( ( () ) )
-            // InternalAspectLang.g:5549:1: ( () )
+            // InternalAspectLang.g:5555:1: ( ( () ) )
+            // InternalAspectLang.g:5556:1: ( () )
             {
-            // InternalAspectLang.g:5549:1: ( () )
-            // InternalAspectLang.g:5550:1: ()
+            // InternalAspectLang.g:5556:1: ( () )
+            // InternalAspectLang.g:5557:1: ()
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyConstraintAccess().getPropertyConstraintLeftAction_1_0()); 
             }
-            // InternalAspectLang.g:5551:1: ()
-            // InternalAspectLang.g:5553:1: 
+            // InternalAspectLang.g:5558:1: ()
+            // InternalAspectLang.g:5560:1: 
             {
             }
 
@@ -16262,14 +16297,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__PropertyConstraint__Group_1__1"
-    // InternalAspectLang.g:5563:1: rule__PropertyConstraint__Group_1__1 : rule__PropertyConstraint__Group_1__1__Impl rule__PropertyConstraint__Group_1__2 ;
+    // InternalAspectLang.g:5570:1: rule__PropertyConstraint__Group_1__1 : rule__PropertyConstraint__Group_1__1__Impl rule__PropertyConstraint__Group_1__2 ;
     public final void rule__PropertyConstraint__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5567:1: ( rule__PropertyConstraint__Group_1__1__Impl rule__PropertyConstraint__Group_1__2 )
-            // InternalAspectLang.g:5568:2: rule__PropertyConstraint__Group_1__1__Impl rule__PropertyConstraint__Group_1__2
+            // InternalAspectLang.g:5574:1: ( rule__PropertyConstraint__Group_1__1__Impl rule__PropertyConstraint__Group_1__2 )
+            // InternalAspectLang.g:5575:2: rule__PropertyConstraint__Group_1__1__Impl rule__PropertyConstraint__Group_1__2
             {
             pushFollow(FOLLOW_38);
             rule__PropertyConstraint__Group_1__1__Impl();
@@ -16300,23 +16335,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__PropertyConstraint__Group_1__1__Impl"
-    // InternalAspectLang.g:5575:1: rule__PropertyConstraint__Group_1__1__Impl : ( ( rule__PropertyConstraint__LogicAssignment_1_1 ) ) ;
+    // InternalAspectLang.g:5582:1: rule__PropertyConstraint__Group_1__1__Impl : ( ( rule__PropertyConstraint__LogicAssignment_1_1 ) ) ;
     public final void rule__PropertyConstraint__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5579:1: ( ( ( rule__PropertyConstraint__LogicAssignment_1_1 ) ) )
-            // InternalAspectLang.g:5580:1: ( ( rule__PropertyConstraint__LogicAssignment_1_1 ) )
+            // InternalAspectLang.g:5586:1: ( ( ( rule__PropertyConstraint__LogicAssignment_1_1 ) ) )
+            // InternalAspectLang.g:5587:1: ( ( rule__PropertyConstraint__LogicAssignment_1_1 ) )
             {
-            // InternalAspectLang.g:5580:1: ( ( rule__PropertyConstraint__LogicAssignment_1_1 ) )
-            // InternalAspectLang.g:5581:1: ( rule__PropertyConstraint__LogicAssignment_1_1 )
+            // InternalAspectLang.g:5587:1: ( ( rule__PropertyConstraint__LogicAssignment_1_1 ) )
+            // InternalAspectLang.g:5588:1: ( rule__PropertyConstraint__LogicAssignment_1_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyConstraintAccess().getLogicAssignment_1_1()); 
             }
-            // InternalAspectLang.g:5582:1: ( rule__PropertyConstraint__LogicAssignment_1_1 )
-            // InternalAspectLang.g:5582:2: rule__PropertyConstraint__LogicAssignment_1_1
+            // InternalAspectLang.g:5589:1: ( rule__PropertyConstraint__LogicAssignment_1_1 )
+            // InternalAspectLang.g:5589:2: rule__PropertyConstraint__LogicAssignment_1_1
             {
             pushFollow(FOLLOW_2);
             rule__PropertyConstraint__LogicAssignment_1_1();
@@ -16351,14 +16386,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__PropertyConstraint__Group_1__2"
-    // InternalAspectLang.g:5592:1: rule__PropertyConstraint__Group_1__2 : rule__PropertyConstraint__Group_1__2__Impl ;
+    // InternalAspectLang.g:5599:1: rule__PropertyConstraint__Group_1__2 : rule__PropertyConstraint__Group_1__2__Impl ;
     public final void rule__PropertyConstraint__Group_1__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5596:1: ( rule__PropertyConstraint__Group_1__2__Impl )
-            // InternalAspectLang.g:5597:2: rule__PropertyConstraint__Group_1__2__Impl
+            // InternalAspectLang.g:5603:1: ( rule__PropertyConstraint__Group_1__2__Impl )
+            // InternalAspectLang.g:5604:2: rule__PropertyConstraint__Group_1__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__PropertyConstraint__Group_1__2__Impl();
@@ -16384,23 +16419,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__PropertyConstraint__Group_1__2__Impl"
-    // InternalAspectLang.g:5603:1: rule__PropertyConstraint__Group_1__2__Impl : ( ( rule__PropertyConstraint__RightAssignment_1_2 ) ) ;
+    // InternalAspectLang.g:5610:1: rule__PropertyConstraint__Group_1__2__Impl : ( ( rule__PropertyConstraint__RightAssignment_1_2 ) ) ;
     public final void rule__PropertyConstraint__Group_1__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5607:1: ( ( ( rule__PropertyConstraint__RightAssignment_1_2 ) ) )
-            // InternalAspectLang.g:5608:1: ( ( rule__PropertyConstraint__RightAssignment_1_2 ) )
+            // InternalAspectLang.g:5614:1: ( ( ( rule__PropertyConstraint__RightAssignment_1_2 ) ) )
+            // InternalAspectLang.g:5615:1: ( ( rule__PropertyConstraint__RightAssignment_1_2 ) )
             {
-            // InternalAspectLang.g:5608:1: ( ( rule__PropertyConstraint__RightAssignment_1_2 ) )
-            // InternalAspectLang.g:5609:1: ( rule__PropertyConstraint__RightAssignment_1_2 )
+            // InternalAspectLang.g:5615:1: ( ( rule__PropertyConstraint__RightAssignment_1_2 ) )
+            // InternalAspectLang.g:5616:1: ( rule__PropertyConstraint__RightAssignment_1_2 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyConstraintAccess().getRightAssignment_1_2()); 
             }
-            // InternalAspectLang.g:5610:1: ( rule__PropertyConstraint__RightAssignment_1_2 )
-            // InternalAspectLang.g:5610:2: rule__PropertyConstraint__RightAssignment_1_2
+            // InternalAspectLang.g:5617:1: ( rule__PropertyConstraint__RightAssignment_1_2 )
+            // InternalAspectLang.g:5617:2: rule__PropertyConstraint__RightAssignment_1_2
             {
             pushFollow(FOLLOW_2);
             rule__PropertyConstraint__RightAssignment_1_2();
@@ -16435,14 +16470,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__PropertyConstraintCompare__Group__0"
-    // InternalAspectLang.g:5626:1: rule__PropertyConstraintCompare__Group__0 : rule__PropertyConstraintCompare__Group__0__Impl rule__PropertyConstraintCompare__Group__1 ;
+    // InternalAspectLang.g:5633:1: rule__PropertyConstraintCompare__Group__0 : rule__PropertyConstraintCompare__Group__0__Impl rule__PropertyConstraintCompare__Group__1 ;
     public final void rule__PropertyConstraintCompare__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5630:1: ( rule__PropertyConstraintCompare__Group__0__Impl rule__PropertyConstraintCompare__Group__1 )
-            // InternalAspectLang.g:5631:2: rule__PropertyConstraintCompare__Group__0__Impl rule__PropertyConstraintCompare__Group__1
+            // InternalAspectLang.g:5637:1: ( rule__PropertyConstraintCompare__Group__0__Impl rule__PropertyConstraintCompare__Group__1 )
+            // InternalAspectLang.g:5638:2: rule__PropertyConstraintCompare__Group__0__Impl rule__PropertyConstraintCompare__Group__1
             {
             pushFollow(FOLLOW_43);
             rule__PropertyConstraintCompare__Group__0__Impl();
@@ -16473,17 +16508,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__PropertyConstraintCompare__Group__0__Impl"
-    // InternalAspectLang.g:5638:1: rule__PropertyConstraintCompare__Group__0__Impl : ( ruleConstraintElement ) ;
+    // InternalAspectLang.g:5645:1: rule__PropertyConstraintCompare__Group__0__Impl : ( ruleConstraintElement ) ;
     public final void rule__PropertyConstraintCompare__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5642:1: ( ( ruleConstraintElement ) )
-            // InternalAspectLang.g:5643:1: ( ruleConstraintElement )
+            // InternalAspectLang.g:5649:1: ( ( ruleConstraintElement ) )
+            // InternalAspectLang.g:5650:1: ( ruleConstraintElement )
             {
-            // InternalAspectLang.g:5643:1: ( ruleConstraintElement )
-            // InternalAspectLang.g:5644:1: ruleConstraintElement
+            // InternalAspectLang.g:5650:1: ( ruleConstraintElement )
+            // InternalAspectLang.g:5651:1: ruleConstraintElement
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyConstraintCompareAccess().getConstraintElementParserRuleCall_0()); 
@@ -16518,14 +16553,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__PropertyConstraintCompare__Group__1"
-    // InternalAspectLang.g:5655:1: rule__PropertyConstraintCompare__Group__1 : rule__PropertyConstraintCompare__Group__1__Impl ;
+    // InternalAspectLang.g:5662:1: rule__PropertyConstraintCompare__Group__1 : rule__PropertyConstraintCompare__Group__1__Impl ;
     public final void rule__PropertyConstraintCompare__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5659:1: ( rule__PropertyConstraintCompare__Group__1__Impl )
-            // InternalAspectLang.g:5660:2: rule__PropertyConstraintCompare__Group__1__Impl
+            // InternalAspectLang.g:5666:1: ( rule__PropertyConstraintCompare__Group__1__Impl )
+            // InternalAspectLang.g:5667:2: rule__PropertyConstraintCompare__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__PropertyConstraintCompare__Group__1__Impl();
@@ -16551,31 +16586,31 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__PropertyConstraintCompare__Group__1__Impl"
-    // InternalAspectLang.g:5666:1: rule__PropertyConstraintCompare__Group__1__Impl : ( ( rule__PropertyConstraintCompare__Group_1__0 )? ) ;
+    // InternalAspectLang.g:5673:1: rule__PropertyConstraintCompare__Group__1__Impl : ( ( rule__PropertyConstraintCompare__Group_1__0 )? ) ;
     public final void rule__PropertyConstraintCompare__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5670:1: ( ( ( rule__PropertyConstraintCompare__Group_1__0 )? ) )
-            // InternalAspectLang.g:5671:1: ( ( rule__PropertyConstraintCompare__Group_1__0 )? )
+            // InternalAspectLang.g:5677:1: ( ( ( rule__PropertyConstraintCompare__Group_1__0 )? ) )
+            // InternalAspectLang.g:5678:1: ( ( rule__PropertyConstraintCompare__Group_1__0 )? )
             {
-            // InternalAspectLang.g:5671:1: ( ( rule__PropertyConstraintCompare__Group_1__0 )? )
-            // InternalAspectLang.g:5672:1: ( rule__PropertyConstraintCompare__Group_1__0 )?
+            // InternalAspectLang.g:5678:1: ( ( rule__PropertyConstraintCompare__Group_1__0 )? )
+            // InternalAspectLang.g:5679:1: ( rule__PropertyConstraintCompare__Group_1__0 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyConstraintCompareAccess().getGroup_1()); 
             }
-            // InternalAspectLang.g:5673:1: ( rule__PropertyConstraintCompare__Group_1__0 )?
+            // InternalAspectLang.g:5680:1: ( rule__PropertyConstraintCompare__Group_1__0 )?
             int alt47=2;
             int LA47_0 = input.LA(1);
 
-            if ( ((LA47_0>=31 && LA47_0<=37)) ) {
+            if ( ((LA47_0>=32 && LA47_0<=38)) ) {
                 alt47=1;
             }
             switch (alt47) {
                 case 1 :
-                    // InternalAspectLang.g:5673:2: rule__PropertyConstraintCompare__Group_1__0
+                    // InternalAspectLang.g:5680:2: rule__PropertyConstraintCompare__Group_1__0
                     {
                     pushFollow(FOLLOW_2);
                     rule__PropertyConstraintCompare__Group_1__0();
@@ -16613,14 +16648,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__PropertyConstraintCompare__Group_1__0"
-    // InternalAspectLang.g:5687:1: rule__PropertyConstraintCompare__Group_1__0 : rule__PropertyConstraintCompare__Group_1__0__Impl rule__PropertyConstraintCompare__Group_1__1 ;
+    // InternalAspectLang.g:5694:1: rule__PropertyConstraintCompare__Group_1__0 : rule__PropertyConstraintCompare__Group_1__0__Impl rule__PropertyConstraintCompare__Group_1__1 ;
     public final void rule__PropertyConstraintCompare__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5691:1: ( rule__PropertyConstraintCompare__Group_1__0__Impl rule__PropertyConstraintCompare__Group_1__1 )
-            // InternalAspectLang.g:5692:2: rule__PropertyConstraintCompare__Group_1__0__Impl rule__PropertyConstraintCompare__Group_1__1
+            // InternalAspectLang.g:5698:1: ( rule__PropertyConstraintCompare__Group_1__0__Impl rule__PropertyConstraintCompare__Group_1__1 )
+            // InternalAspectLang.g:5699:2: rule__PropertyConstraintCompare__Group_1__0__Impl rule__PropertyConstraintCompare__Group_1__1
             {
             pushFollow(FOLLOW_43);
             rule__PropertyConstraintCompare__Group_1__0__Impl();
@@ -16651,23 +16686,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__PropertyConstraintCompare__Group_1__0__Impl"
-    // InternalAspectLang.g:5699:1: rule__PropertyConstraintCompare__Group_1__0__Impl : ( () ) ;
+    // InternalAspectLang.g:5706:1: rule__PropertyConstraintCompare__Group_1__0__Impl : ( () ) ;
     public final void rule__PropertyConstraintCompare__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5703:1: ( ( () ) )
-            // InternalAspectLang.g:5704:1: ( () )
+            // InternalAspectLang.g:5710:1: ( ( () ) )
+            // InternalAspectLang.g:5711:1: ( () )
             {
-            // InternalAspectLang.g:5704:1: ( () )
-            // InternalAspectLang.g:5705:1: ()
+            // InternalAspectLang.g:5711:1: ( () )
+            // InternalAspectLang.g:5712:1: ()
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyConstraintCompareAccess().getPropertyConstraintCompareLeftAction_1_0()); 
             }
-            // InternalAspectLang.g:5706:1: ()
-            // InternalAspectLang.g:5708:1: 
+            // InternalAspectLang.g:5713:1: ()
+            // InternalAspectLang.g:5715:1: 
             {
             }
 
@@ -16692,14 +16727,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__PropertyConstraintCompare__Group_1__1"
-    // InternalAspectLang.g:5718:1: rule__PropertyConstraintCompare__Group_1__1 : rule__PropertyConstraintCompare__Group_1__1__Impl rule__PropertyConstraintCompare__Group_1__2 ;
+    // InternalAspectLang.g:5725:1: rule__PropertyConstraintCompare__Group_1__1 : rule__PropertyConstraintCompare__Group_1__1__Impl rule__PropertyConstraintCompare__Group_1__2 ;
     public final void rule__PropertyConstraintCompare__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5722:1: ( rule__PropertyConstraintCompare__Group_1__1__Impl rule__PropertyConstraintCompare__Group_1__2 )
-            // InternalAspectLang.g:5723:2: rule__PropertyConstraintCompare__Group_1__1__Impl rule__PropertyConstraintCompare__Group_1__2
+            // InternalAspectLang.g:5729:1: ( rule__PropertyConstraintCompare__Group_1__1__Impl rule__PropertyConstraintCompare__Group_1__2 )
+            // InternalAspectLang.g:5730:2: rule__PropertyConstraintCompare__Group_1__1__Impl rule__PropertyConstraintCompare__Group_1__2
             {
             pushFollow(FOLLOW_38);
             rule__PropertyConstraintCompare__Group_1__1__Impl();
@@ -16730,23 +16765,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__PropertyConstraintCompare__Group_1__1__Impl"
-    // InternalAspectLang.g:5730:1: rule__PropertyConstraintCompare__Group_1__1__Impl : ( ( rule__PropertyConstraintCompare__CompareAssignment_1_1 ) ) ;
+    // InternalAspectLang.g:5737:1: rule__PropertyConstraintCompare__Group_1__1__Impl : ( ( rule__PropertyConstraintCompare__CompareAssignment_1_1 ) ) ;
     public final void rule__PropertyConstraintCompare__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5734:1: ( ( ( rule__PropertyConstraintCompare__CompareAssignment_1_1 ) ) )
-            // InternalAspectLang.g:5735:1: ( ( rule__PropertyConstraintCompare__CompareAssignment_1_1 ) )
+            // InternalAspectLang.g:5741:1: ( ( ( rule__PropertyConstraintCompare__CompareAssignment_1_1 ) ) )
+            // InternalAspectLang.g:5742:1: ( ( rule__PropertyConstraintCompare__CompareAssignment_1_1 ) )
             {
-            // InternalAspectLang.g:5735:1: ( ( rule__PropertyConstraintCompare__CompareAssignment_1_1 ) )
-            // InternalAspectLang.g:5736:1: ( rule__PropertyConstraintCompare__CompareAssignment_1_1 )
+            // InternalAspectLang.g:5742:1: ( ( rule__PropertyConstraintCompare__CompareAssignment_1_1 ) )
+            // InternalAspectLang.g:5743:1: ( rule__PropertyConstraintCompare__CompareAssignment_1_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyConstraintCompareAccess().getCompareAssignment_1_1()); 
             }
-            // InternalAspectLang.g:5737:1: ( rule__PropertyConstraintCompare__CompareAssignment_1_1 )
-            // InternalAspectLang.g:5737:2: rule__PropertyConstraintCompare__CompareAssignment_1_1
+            // InternalAspectLang.g:5744:1: ( rule__PropertyConstraintCompare__CompareAssignment_1_1 )
+            // InternalAspectLang.g:5744:2: rule__PropertyConstraintCompare__CompareAssignment_1_1
             {
             pushFollow(FOLLOW_2);
             rule__PropertyConstraintCompare__CompareAssignment_1_1();
@@ -16781,14 +16816,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__PropertyConstraintCompare__Group_1__2"
-    // InternalAspectLang.g:5747:1: rule__PropertyConstraintCompare__Group_1__2 : rule__PropertyConstraintCompare__Group_1__2__Impl ;
+    // InternalAspectLang.g:5754:1: rule__PropertyConstraintCompare__Group_1__2 : rule__PropertyConstraintCompare__Group_1__2__Impl ;
     public final void rule__PropertyConstraintCompare__Group_1__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5751:1: ( rule__PropertyConstraintCompare__Group_1__2__Impl )
-            // InternalAspectLang.g:5752:2: rule__PropertyConstraintCompare__Group_1__2__Impl
+            // InternalAspectLang.g:5758:1: ( rule__PropertyConstraintCompare__Group_1__2__Impl )
+            // InternalAspectLang.g:5759:2: rule__PropertyConstraintCompare__Group_1__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__PropertyConstraintCompare__Group_1__2__Impl();
@@ -16814,23 +16849,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__PropertyConstraintCompare__Group_1__2__Impl"
-    // InternalAspectLang.g:5758:1: rule__PropertyConstraintCompare__Group_1__2__Impl : ( ( rule__PropertyConstraintCompare__RightAssignment_1_2 ) ) ;
+    // InternalAspectLang.g:5765:1: rule__PropertyConstraintCompare__Group_1__2__Impl : ( ( rule__PropertyConstraintCompare__RightAssignment_1_2 ) ) ;
     public final void rule__PropertyConstraintCompare__Group_1__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5762:1: ( ( ( rule__PropertyConstraintCompare__RightAssignment_1_2 ) ) )
-            // InternalAspectLang.g:5763:1: ( ( rule__PropertyConstraintCompare__RightAssignment_1_2 ) )
+            // InternalAspectLang.g:5769:1: ( ( ( rule__PropertyConstraintCompare__RightAssignment_1_2 ) ) )
+            // InternalAspectLang.g:5770:1: ( ( rule__PropertyConstraintCompare__RightAssignment_1_2 ) )
             {
-            // InternalAspectLang.g:5763:1: ( ( rule__PropertyConstraintCompare__RightAssignment_1_2 ) )
-            // InternalAspectLang.g:5764:1: ( rule__PropertyConstraintCompare__RightAssignment_1_2 )
+            // InternalAspectLang.g:5770:1: ( ( rule__PropertyConstraintCompare__RightAssignment_1_2 ) )
+            // InternalAspectLang.g:5771:1: ( rule__PropertyConstraintCompare__RightAssignment_1_2 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyConstraintCompareAccess().getRightAssignment_1_2()); 
             }
-            // InternalAspectLang.g:5765:1: ( rule__PropertyConstraintCompare__RightAssignment_1_2 )
-            // InternalAspectLang.g:5765:2: rule__PropertyConstraintCompare__RightAssignment_1_2
+            // InternalAspectLang.g:5772:1: ( rule__PropertyConstraintCompare__RightAssignment_1_2 )
+            // InternalAspectLang.g:5772:2: rule__PropertyConstraintCompare__RightAssignment_1_2
             {
             pushFollow(FOLLOW_2);
             rule__PropertyConstraintCompare__RightAssignment_1_2();
@@ -16865,14 +16900,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__LocalQuery__Group__0"
-    // InternalAspectLang.g:5781:1: rule__LocalQuery__Group__0 : rule__LocalQuery__Group__0__Impl rule__LocalQuery__Group__1 ;
+    // InternalAspectLang.g:5788:1: rule__LocalQuery__Group__0 : rule__LocalQuery__Group__0__Impl rule__LocalQuery__Group__1 ;
     public final void rule__LocalQuery__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5785:1: ( rule__LocalQuery__Group__0__Impl rule__LocalQuery__Group__1 )
-            // InternalAspectLang.g:5786:2: rule__LocalQuery__Group__0__Impl rule__LocalQuery__Group__1
+            // InternalAspectLang.g:5792:1: ( rule__LocalQuery__Group__0__Impl rule__LocalQuery__Group__1 )
+            // InternalAspectLang.g:5793:2: rule__LocalQuery__Group__0__Impl rule__LocalQuery__Group__1
             {
             pushFollow(FOLLOW_38);
             rule__LocalQuery__Group__0__Impl();
@@ -16903,31 +16938,31 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__LocalQuery__Group__0__Impl"
-    // InternalAspectLang.g:5793:1: rule__LocalQuery__Group__0__Impl : ( ( rule__LocalQuery__LocationQueryAssignment_0 )? ) ;
+    // InternalAspectLang.g:5800:1: rule__LocalQuery__Group__0__Impl : ( ( rule__LocalQuery__LocationQueryAssignment_0 )? ) ;
     public final void rule__LocalQuery__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5797:1: ( ( ( rule__LocalQuery__LocationQueryAssignment_0 )? ) )
-            // InternalAspectLang.g:5798:1: ( ( rule__LocalQuery__LocationQueryAssignment_0 )? )
+            // InternalAspectLang.g:5804:1: ( ( ( rule__LocalQuery__LocationQueryAssignment_0 )? ) )
+            // InternalAspectLang.g:5805:1: ( ( rule__LocalQuery__LocationQueryAssignment_0 )? )
             {
-            // InternalAspectLang.g:5798:1: ( ( rule__LocalQuery__LocationQueryAssignment_0 )? )
-            // InternalAspectLang.g:5799:1: ( rule__LocalQuery__LocationQueryAssignment_0 )?
+            // InternalAspectLang.g:5805:1: ( ( rule__LocalQuery__LocationQueryAssignment_0 )? )
+            // InternalAspectLang.g:5806:1: ( rule__LocalQuery__LocationQueryAssignment_0 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLocalQueryAccess().getLocationQueryAssignment_0()); 
             }
-            // InternalAspectLang.g:5800:1: ( rule__LocalQuery__LocationQueryAssignment_0 )?
+            // InternalAspectLang.g:5807:1: ( rule__LocalQuery__LocationQueryAssignment_0 )?
             int alt48=2;
             int LA48_0 = input.LA(1);
 
-            if ( (LA48_0==RULE_ID||LA48_0==13||(LA48_0>=59 && LA48_0<=60)) ) {
+            if ( (LA48_0==RULE_ID||LA48_0==13||(LA48_0>=60 && LA48_0<=61)) ) {
                 alt48=1;
             }
             switch (alt48) {
                 case 1 :
-                    // InternalAspectLang.g:5800:2: rule__LocalQuery__LocationQueryAssignment_0
+                    // InternalAspectLang.g:5807:2: rule__LocalQuery__LocationQueryAssignment_0
                     {
                     pushFollow(FOLLOW_2);
                     rule__LocalQuery__LocationQueryAssignment_0();
@@ -16965,14 +17000,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__LocalQuery__Group__1"
-    // InternalAspectLang.g:5810:1: rule__LocalQuery__Group__1 : rule__LocalQuery__Group__1__Impl ;
+    // InternalAspectLang.g:5817:1: rule__LocalQuery__Group__1 : rule__LocalQuery__Group__1__Impl ;
     public final void rule__LocalQuery__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5814:1: ( rule__LocalQuery__Group__1__Impl )
-            // InternalAspectLang.g:5815:2: rule__LocalQuery__Group__1__Impl
+            // InternalAspectLang.g:5821:1: ( rule__LocalQuery__Group__1__Impl )
+            // InternalAspectLang.g:5822:2: rule__LocalQuery__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__LocalQuery__Group__1__Impl();
@@ -16998,23 +17033,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__LocalQuery__Group__1__Impl"
-    // InternalAspectLang.g:5821:1: rule__LocalQuery__Group__1__Impl : ( ( rule__LocalQuery__Alternatives_1 ) ) ;
+    // InternalAspectLang.g:5828:1: rule__LocalQuery__Group__1__Impl : ( ( rule__LocalQuery__Alternatives_1 ) ) ;
     public final void rule__LocalQuery__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5825:1: ( ( ( rule__LocalQuery__Alternatives_1 ) ) )
-            // InternalAspectLang.g:5826:1: ( ( rule__LocalQuery__Alternatives_1 ) )
+            // InternalAspectLang.g:5832:1: ( ( ( rule__LocalQuery__Alternatives_1 ) ) )
+            // InternalAspectLang.g:5833:1: ( ( rule__LocalQuery__Alternatives_1 ) )
             {
-            // InternalAspectLang.g:5826:1: ( ( rule__LocalQuery__Alternatives_1 ) )
-            // InternalAspectLang.g:5827:1: ( rule__LocalQuery__Alternatives_1 )
+            // InternalAspectLang.g:5833:1: ( ( rule__LocalQuery__Alternatives_1 ) )
+            // InternalAspectLang.g:5834:1: ( rule__LocalQuery__Alternatives_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLocalQueryAccess().getAlternatives_1()); 
             }
-            // InternalAspectLang.g:5828:1: ( rule__LocalQuery__Alternatives_1 )
-            // InternalAspectLang.g:5828:2: rule__LocalQuery__Alternatives_1
+            // InternalAspectLang.g:5835:1: ( rule__LocalQuery__Alternatives_1 )
+            // InternalAspectLang.g:5835:2: rule__LocalQuery__Alternatives_1
             {
             pushFollow(FOLLOW_2);
             rule__LocalQuery__Alternatives_1();
@@ -17049,14 +17084,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ModelProperty__Group__0"
-    // InternalAspectLang.g:5842:1: rule__ModelProperty__Group__0 : rule__ModelProperty__Group__0__Impl rule__ModelProperty__Group__1 ;
+    // InternalAspectLang.g:5849:1: rule__ModelProperty__Group__0 : rule__ModelProperty__Group__0__Impl rule__ModelProperty__Group__1 ;
     public final void rule__ModelProperty__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5846:1: ( rule__ModelProperty__Group__0__Impl rule__ModelProperty__Group__1 )
-            // InternalAspectLang.g:5847:2: rule__ModelProperty__Group__0__Impl rule__ModelProperty__Group__1
+            // InternalAspectLang.g:5853:1: ( rule__ModelProperty__Group__0__Impl rule__ModelProperty__Group__1 )
+            // InternalAspectLang.g:5854:2: rule__ModelProperty__Group__0__Impl rule__ModelProperty__Group__1
             {
             pushFollow(FOLLOW_3);
             rule__ModelProperty__Group__0__Impl();
@@ -17087,22 +17122,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ModelProperty__Group__0__Impl"
-    // InternalAspectLang.g:5854:1: rule__ModelProperty__Group__0__Impl : ( '#' ) ;
+    // InternalAspectLang.g:5861:1: rule__ModelProperty__Group__0__Impl : ( '#' ) ;
     public final void rule__ModelProperty__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5858:1: ( ( '#' ) )
-            // InternalAspectLang.g:5859:1: ( '#' )
+            // InternalAspectLang.g:5865:1: ( ( '#' ) )
+            // InternalAspectLang.g:5866:1: ( '#' )
             {
-            // InternalAspectLang.g:5859:1: ( '#' )
-            // InternalAspectLang.g:5860:1: '#'
+            // InternalAspectLang.g:5866:1: ( '#' )
+            // InternalAspectLang.g:5867:1: '#'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getModelPropertyAccess().getNumberSignKeyword_0()); 
             }
-            match(input,51,FOLLOW_2); if (state.failed) return ;
+            match(input,52,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getModelPropertyAccess().getNumberSignKeyword_0()); 
             }
@@ -17128,14 +17163,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ModelProperty__Group__1"
-    // InternalAspectLang.g:5873:1: rule__ModelProperty__Group__1 : rule__ModelProperty__Group__1__Impl ;
+    // InternalAspectLang.g:5880:1: rule__ModelProperty__Group__1 : rule__ModelProperty__Group__1__Impl ;
     public final void rule__ModelProperty__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5877:1: ( rule__ModelProperty__Group__1__Impl )
-            // InternalAspectLang.g:5878:2: rule__ModelProperty__Group__1__Impl
+            // InternalAspectLang.g:5884:1: ( rule__ModelProperty__Group__1__Impl )
+            // InternalAspectLang.g:5885:2: rule__ModelProperty__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ModelProperty__Group__1__Impl();
@@ -17161,23 +17196,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ModelProperty__Group__1__Impl"
-    // InternalAspectLang.g:5884:1: rule__ModelProperty__Group__1__Impl : ( ( rule__ModelProperty__ReferenceAssignment_1 ) ) ;
+    // InternalAspectLang.g:5891:1: rule__ModelProperty__Group__1__Impl : ( ( rule__ModelProperty__ReferenceAssignment_1 ) ) ;
     public final void rule__ModelProperty__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5888:1: ( ( ( rule__ModelProperty__ReferenceAssignment_1 ) ) )
-            // InternalAspectLang.g:5889:1: ( ( rule__ModelProperty__ReferenceAssignment_1 ) )
+            // InternalAspectLang.g:5895:1: ( ( ( rule__ModelProperty__ReferenceAssignment_1 ) ) )
+            // InternalAspectLang.g:5896:1: ( ( rule__ModelProperty__ReferenceAssignment_1 ) )
             {
-            // InternalAspectLang.g:5889:1: ( ( rule__ModelProperty__ReferenceAssignment_1 ) )
-            // InternalAspectLang.g:5890:1: ( rule__ModelProperty__ReferenceAssignment_1 )
+            // InternalAspectLang.g:5896:1: ( ( rule__ModelProperty__ReferenceAssignment_1 ) )
+            // InternalAspectLang.g:5897:1: ( rule__ModelProperty__ReferenceAssignment_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getModelPropertyAccess().getReferenceAssignment_1()); 
             }
-            // InternalAspectLang.g:5891:1: ( rule__ModelProperty__ReferenceAssignment_1 )
-            // InternalAspectLang.g:5891:2: rule__ModelProperty__ReferenceAssignment_1
+            // InternalAspectLang.g:5898:1: ( rule__ModelProperty__ReferenceAssignment_1 )
+            // InternalAspectLang.g:5898:2: rule__ModelProperty__ReferenceAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__ModelProperty__ReferenceAssignment_1();
@@ -17212,14 +17247,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Typeof__Group__0"
-    // InternalAspectLang.g:5905:1: rule__Typeof__Group__0 : rule__Typeof__Group__0__Impl rule__Typeof__Group__1 ;
+    // InternalAspectLang.g:5912:1: rule__Typeof__Group__0 : rule__Typeof__Group__0__Impl rule__Typeof__Group__1 ;
     public final void rule__Typeof__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5909:1: ( rule__Typeof__Group__0__Impl rule__Typeof__Group__1 )
-            // InternalAspectLang.g:5910:2: rule__Typeof__Group__0__Impl rule__Typeof__Group__1
+            // InternalAspectLang.g:5916:1: ( rule__Typeof__Group__0__Impl rule__Typeof__Group__1 )
+            // InternalAspectLang.g:5917:2: rule__Typeof__Group__0__Impl rule__Typeof__Group__1
             {
             pushFollow(FOLLOW_13);
             rule__Typeof__Group__0__Impl();
@@ -17250,22 +17285,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Typeof__Group__0__Impl"
-    // InternalAspectLang.g:5917:1: rule__Typeof__Group__0__Impl : ( 'istypeof' ) ;
+    // InternalAspectLang.g:5924:1: rule__Typeof__Group__0__Impl : ( 'istypeof' ) ;
     public final void rule__Typeof__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5921:1: ( ( 'istypeof' ) )
-            // InternalAspectLang.g:5922:1: ( 'istypeof' )
+            // InternalAspectLang.g:5928:1: ( ( 'istypeof' ) )
+            // InternalAspectLang.g:5929:1: ( 'istypeof' )
             {
-            // InternalAspectLang.g:5922:1: ( 'istypeof' )
-            // InternalAspectLang.g:5923:1: 'istypeof'
+            // InternalAspectLang.g:5929:1: ( 'istypeof' )
+            // InternalAspectLang.g:5930:1: 'istypeof'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeofAccess().getIstypeofKeyword_0()); 
             }
-            match(input,61,FOLLOW_2); if (state.failed) return ;
+            match(input,62,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getTypeofAccess().getIstypeofKeyword_0()); 
             }
@@ -17291,14 +17326,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Typeof__Group__1"
-    // InternalAspectLang.g:5936:1: rule__Typeof__Group__1 : rule__Typeof__Group__1__Impl rule__Typeof__Group__2 ;
+    // InternalAspectLang.g:5943:1: rule__Typeof__Group__1 : rule__Typeof__Group__1__Impl rule__Typeof__Group__2 ;
     public final void rule__Typeof__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5940:1: ( rule__Typeof__Group__1__Impl rule__Typeof__Group__2 )
-            // InternalAspectLang.g:5941:2: rule__Typeof__Group__1__Impl rule__Typeof__Group__2
+            // InternalAspectLang.g:5947:1: ( rule__Typeof__Group__1__Impl rule__Typeof__Group__2 )
+            // InternalAspectLang.g:5948:2: rule__Typeof__Group__1__Impl rule__Typeof__Group__2
             {
             pushFollow(FOLLOW_3);
             rule__Typeof__Group__1__Impl();
@@ -17329,22 +17364,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Typeof__Group__1__Impl"
-    // InternalAspectLang.g:5948:1: rule__Typeof__Group__1__Impl : ( '(' ) ;
+    // InternalAspectLang.g:5955:1: rule__Typeof__Group__1__Impl : ( '(' ) ;
     public final void rule__Typeof__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5952:1: ( ( '(' ) )
-            // InternalAspectLang.g:5953:1: ( '(' )
+            // InternalAspectLang.g:5959:1: ( ( '(' ) )
+            // InternalAspectLang.g:5960:1: ( '(' )
             {
-            // InternalAspectLang.g:5953:1: ( '(' )
-            // InternalAspectLang.g:5954:1: '('
+            // InternalAspectLang.g:5960:1: ( '(' )
+            // InternalAspectLang.g:5961:1: '('
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeofAccess().getLeftParenthesisKeyword_1()); 
             }
-            match(input,45,FOLLOW_2); if (state.failed) return ;
+            match(input,46,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getTypeofAccess().getLeftParenthesisKeyword_1()); 
             }
@@ -17370,14 +17405,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Typeof__Group__2"
-    // InternalAspectLang.g:5967:1: rule__Typeof__Group__2 : rule__Typeof__Group__2__Impl rule__Typeof__Group__3 ;
+    // InternalAspectLang.g:5974:1: rule__Typeof__Group__2 : rule__Typeof__Group__2__Impl rule__Typeof__Group__3 ;
     public final void rule__Typeof__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5971:1: ( rule__Typeof__Group__2__Impl rule__Typeof__Group__3 )
-            // InternalAspectLang.g:5972:2: rule__Typeof__Group__2__Impl rule__Typeof__Group__3
+            // InternalAspectLang.g:5978:1: ( rule__Typeof__Group__2__Impl rule__Typeof__Group__3 )
+            // InternalAspectLang.g:5979:2: rule__Typeof__Group__2__Impl rule__Typeof__Group__3
             {
             pushFollow(FOLLOW_44);
             rule__Typeof__Group__2__Impl();
@@ -17408,23 +17443,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Typeof__Group__2__Impl"
-    // InternalAspectLang.g:5979:1: rule__Typeof__Group__2__Impl : ( ( rule__Typeof__ReferenceAssignment_2 ) ) ;
+    // InternalAspectLang.g:5986:1: rule__Typeof__Group__2__Impl : ( ( rule__Typeof__ReferenceAssignment_2 ) ) ;
     public final void rule__Typeof__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:5983:1: ( ( ( rule__Typeof__ReferenceAssignment_2 ) ) )
-            // InternalAspectLang.g:5984:1: ( ( rule__Typeof__ReferenceAssignment_2 ) )
+            // InternalAspectLang.g:5990:1: ( ( ( rule__Typeof__ReferenceAssignment_2 ) ) )
+            // InternalAspectLang.g:5991:1: ( ( rule__Typeof__ReferenceAssignment_2 ) )
             {
-            // InternalAspectLang.g:5984:1: ( ( rule__Typeof__ReferenceAssignment_2 ) )
-            // InternalAspectLang.g:5985:1: ( rule__Typeof__ReferenceAssignment_2 )
+            // InternalAspectLang.g:5991:1: ( ( rule__Typeof__ReferenceAssignment_2 ) )
+            // InternalAspectLang.g:5992:1: ( rule__Typeof__ReferenceAssignment_2 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeofAccess().getReferenceAssignment_2()); 
             }
-            // InternalAspectLang.g:5986:1: ( rule__Typeof__ReferenceAssignment_2 )
-            // InternalAspectLang.g:5986:2: rule__Typeof__ReferenceAssignment_2
+            // InternalAspectLang.g:5993:1: ( rule__Typeof__ReferenceAssignment_2 )
+            // InternalAspectLang.g:5993:2: rule__Typeof__ReferenceAssignment_2
             {
             pushFollow(FOLLOW_2);
             rule__Typeof__ReferenceAssignment_2();
@@ -17459,14 +17494,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Typeof__Group__3"
-    // InternalAspectLang.g:5996:1: rule__Typeof__Group__3 : rule__Typeof__Group__3__Impl ;
+    // InternalAspectLang.g:6003:1: rule__Typeof__Group__3 : rule__Typeof__Group__3__Impl ;
     public final void rule__Typeof__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6000:1: ( rule__Typeof__Group__3__Impl )
-            // InternalAspectLang.g:6001:2: rule__Typeof__Group__3__Impl
+            // InternalAspectLang.g:6007:1: ( rule__Typeof__Group__3__Impl )
+            // InternalAspectLang.g:6008:2: rule__Typeof__Group__3__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Typeof__Group__3__Impl();
@@ -17492,22 +17527,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Typeof__Group__3__Impl"
-    // InternalAspectLang.g:6007:1: rule__Typeof__Group__3__Impl : ( ')' ) ;
+    // InternalAspectLang.g:6014:1: rule__Typeof__Group__3__Impl : ( ')' ) ;
     public final void rule__Typeof__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6011:1: ( ( ')' ) )
-            // InternalAspectLang.g:6012:1: ( ')' )
+            // InternalAspectLang.g:6018:1: ( ( ')' ) )
+            // InternalAspectLang.g:6019:1: ( ')' )
             {
-            // InternalAspectLang.g:6012:1: ( ')' )
-            // InternalAspectLang.g:6013:1: ')'
+            // InternalAspectLang.g:6019:1: ( ')' )
+            // InternalAspectLang.g:6020:1: ')'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeofAccess().getRightParenthesisKeyword_3()); 
             }
-            match(input,46,FOLLOW_2); if (state.failed) return ;
+            match(input,47,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getTypeofAccess().getRightParenthesisKeyword_3()); 
             }
@@ -17533,14 +17568,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TypeReference__Group__0"
-    // InternalAspectLang.g:6034:1: rule__TypeReference__Group__0 : rule__TypeReference__Group__0__Impl rule__TypeReference__Group__1 ;
+    // InternalAspectLang.g:6041:1: rule__TypeReference__Group__0 : rule__TypeReference__Group__0__Impl rule__TypeReference__Group__1 ;
     public final void rule__TypeReference__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6038:1: ( rule__TypeReference__Group__0__Impl rule__TypeReference__Group__1 )
-            // InternalAspectLang.g:6039:2: rule__TypeReference__Group__0__Impl rule__TypeReference__Group__1
+            // InternalAspectLang.g:6045:1: ( rule__TypeReference__Group__0__Impl rule__TypeReference__Group__1 )
+            // InternalAspectLang.g:6046:2: rule__TypeReference__Group__0__Impl rule__TypeReference__Group__1
             {
             pushFollow(FOLLOW_28);
             rule__TypeReference__Group__0__Impl();
@@ -17571,23 +17606,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TypeReference__Group__0__Impl"
-    // InternalAspectLang.g:6046:1: rule__TypeReference__Group__0__Impl : ( ( rule__TypeReference__ContextAssignment_0 ) ) ;
+    // InternalAspectLang.g:6053:1: rule__TypeReference__Group__0__Impl : ( ( rule__TypeReference__ContextAssignment_0 ) ) ;
     public final void rule__TypeReference__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6050:1: ( ( ( rule__TypeReference__ContextAssignment_0 ) ) )
-            // InternalAspectLang.g:6051:1: ( ( rule__TypeReference__ContextAssignment_0 ) )
+            // InternalAspectLang.g:6057:1: ( ( ( rule__TypeReference__ContextAssignment_0 ) ) )
+            // InternalAspectLang.g:6058:1: ( ( rule__TypeReference__ContextAssignment_0 ) )
             {
-            // InternalAspectLang.g:6051:1: ( ( rule__TypeReference__ContextAssignment_0 ) )
-            // InternalAspectLang.g:6052:1: ( rule__TypeReference__ContextAssignment_0 )
+            // InternalAspectLang.g:6058:1: ( ( rule__TypeReference__ContextAssignment_0 ) )
+            // InternalAspectLang.g:6059:1: ( rule__TypeReference__ContextAssignment_0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeReferenceAccess().getContextAssignment_0()); 
             }
-            // InternalAspectLang.g:6053:1: ( rule__TypeReference__ContextAssignment_0 )
-            // InternalAspectLang.g:6053:2: rule__TypeReference__ContextAssignment_0
+            // InternalAspectLang.g:6060:1: ( rule__TypeReference__ContextAssignment_0 )
+            // InternalAspectLang.g:6060:2: rule__TypeReference__ContextAssignment_0
             {
             pushFollow(FOLLOW_2);
             rule__TypeReference__ContextAssignment_0();
@@ -17622,14 +17657,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TypeReference__Group__1"
-    // InternalAspectLang.g:6063:1: rule__TypeReference__Group__1 : rule__TypeReference__Group__1__Impl rule__TypeReference__Group__2 ;
+    // InternalAspectLang.g:6070:1: rule__TypeReference__Group__1 : rule__TypeReference__Group__1__Impl rule__TypeReference__Group__2 ;
     public final void rule__TypeReference__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6067:1: ( rule__TypeReference__Group__1__Impl rule__TypeReference__Group__2 )
-            // InternalAspectLang.g:6068:2: rule__TypeReference__Group__1__Impl rule__TypeReference__Group__2
+            // InternalAspectLang.g:6074:1: ( rule__TypeReference__Group__1__Impl rule__TypeReference__Group__2 )
+            // InternalAspectLang.g:6075:2: rule__TypeReference__Group__1__Impl rule__TypeReference__Group__2
             {
             pushFollow(FOLLOW_3);
             rule__TypeReference__Group__1__Impl();
@@ -17660,22 +17695,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TypeReference__Group__1__Impl"
-    // InternalAspectLang.g:6075:1: rule__TypeReference__Group__1__Impl : ( '.' ) ;
+    // InternalAspectLang.g:6082:1: rule__TypeReference__Group__1__Impl : ( '.' ) ;
     public final void rule__TypeReference__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6079:1: ( ( '.' ) )
-            // InternalAspectLang.g:6080:1: ( '.' )
+            // InternalAspectLang.g:6086:1: ( ( '.' ) )
+            // InternalAspectLang.g:6087:1: ( '.' )
             {
-            // InternalAspectLang.g:6080:1: ( '.' )
-            // InternalAspectLang.g:6081:1: '.'
+            // InternalAspectLang.g:6087:1: ( '.' )
+            // InternalAspectLang.g:6088:1: '.'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeReferenceAccess().getFullStopKeyword_1()); 
             }
-            match(input,56,FOLLOW_2); if (state.failed) return ;
+            match(input,57,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getTypeReferenceAccess().getFullStopKeyword_1()); 
             }
@@ -17701,14 +17736,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TypeReference__Group__2"
-    // InternalAspectLang.g:6094:1: rule__TypeReference__Group__2 : rule__TypeReference__Group__2__Impl rule__TypeReference__Group__3 ;
+    // InternalAspectLang.g:6101:1: rule__TypeReference__Group__2 : rule__TypeReference__Group__2__Impl rule__TypeReference__Group__3 ;
     public final void rule__TypeReference__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6098:1: ( rule__TypeReference__Group__2__Impl rule__TypeReference__Group__3 )
-            // InternalAspectLang.g:6099:2: rule__TypeReference__Group__2__Impl rule__TypeReference__Group__3
+            // InternalAspectLang.g:6105:1: ( rule__TypeReference__Group__2__Impl rule__TypeReference__Group__3 )
+            // InternalAspectLang.g:6106:2: rule__TypeReference__Group__2__Impl rule__TypeReference__Group__3
             {
             pushFollow(FOLLOW_45);
             rule__TypeReference__Group__2__Impl();
@@ -17739,23 +17774,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TypeReference__Group__2__Impl"
-    // InternalAspectLang.g:6106:1: rule__TypeReference__Group__2__Impl : ( ( rule__TypeReference__ReferenceAssignment_2 ) ) ;
+    // InternalAspectLang.g:6113:1: rule__TypeReference__Group__2__Impl : ( ( rule__TypeReference__ReferenceAssignment_2 ) ) ;
     public final void rule__TypeReference__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6110:1: ( ( ( rule__TypeReference__ReferenceAssignment_2 ) ) )
-            // InternalAspectLang.g:6111:1: ( ( rule__TypeReference__ReferenceAssignment_2 ) )
+            // InternalAspectLang.g:6117:1: ( ( ( rule__TypeReference__ReferenceAssignment_2 ) ) )
+            // InternalAspectLang.g:6118:1: ( ( rule__TypeReference__ReferenceAssignment_2 ) )
             {
-            // InternalAspectLang.g:6111:1: ( ( rule__TypeReference__ReferenceAssignment_2 ) )
-            // InternalAspectLang.g:6112:1: ( rule__TypeReference__ReferenceAssignment_2 )
+            // InternalAspectLang.g:6118:1: ( ( rule__TypeReference__ReferenceAssignment_2 ) )
+            // InternalAspectLang.g:6119:1: ( rule__TypeReference__ReferenceAssignment_2 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeReferenceAccess().getReferenceAssignment_2()); 
             }
-            // InternalAspectLang.g:6113:1: ( rule__TypeReference__ReferenceAssignment_2 )
-            // InternalAspectLang.g:6113:2: rule__TypeReference__ReferenceAssignment_2
+            // InternalAspectLang.g:6120:1: ( rule__TypeReference__ReferenceAssignment_2 )
+            // InternalAspectLang.g:6120:2: rule__TypeReference__ReferenceAssignment_2
             {
             pushFollow(FOLLOW_2);
             rule__TypeReference__ReferenceAssignment_2();
@@ -17790,14 +17825,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TypeReference__Group__3"
-    // InternalAspectLang.g:6123:1: rule__TypeReference__Group__3 : rule__TypeReference__Group__3__Impl ;
+    // InternalAspectLang.g:6130:1: rule__TypeReference__Group__3 : rule__TypeReference__Group__3__Impl ;
     public final void rule__TypeReference__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6127:1: ( rule__TypeReference__Group__3__Impl )
-            // InternalAspectLang.g:6128:2: rule__TypeReference__Group__3__Impl
+            // InternalAspectLang.g:6134:1: ( rule__TypeReference__Group__3__Impl )
+            // InternalAspectLang.g:6135:2: rule__TypeReference__Group__3__Impl
             {
             pushFollow(FOLLOW_2);
             rule__TypeReference__Group__3__Impl();
@@ -17823,31 +17858,31 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TypeReference__Group__3__Impl"
-    // InternalAspectLang.g:6134:1: rule__TypeReference__Group__3__Impl : ( ( rule__TypeReference__CollectionAssignment_3 )? ) ;
+    // InternalAspectLang.g:6141:1: rule__TypeReference__Group__3__Impl : ( ( rule__TypeReference__CollectionAssignment_3 )? ) ;
     public final void rule__TypeReference__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6138:1: ( ( ( rule__TypeReference__CollectionAssignment_3 )? ) )
-            // InternalAspectLang.g:6139:1: ( ( rule__TypeReference__CollectionAssignment_3 )? )
+            // InternalAspectLang.g:6145:1: ( ( ( rule__TypeReference__CollectionAssignment_3 )? ) )
+            // InternalAspectLang.g:6146:1: ( ( rule__TypeReference__CollectionAssignment_3 )? )
             {
-            // InternalAspectLang.g:6139:1: ( ( rule__TypeReference__CollectionAssignment_3 )? )
-            // InternalAspectLang.g:6140:1: ( rule__TypeReference__CollectionAssignment_3 )?
+            // InternalAspectLang.g:6146:1: ( ( rule__TypeReference__CollectionAssignment_3 )? )
+            // InternalAspectLang.g:6147:1: ( rule__TypeReference__CollectionAssignment_3 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeReferenceAccess().getCollectionAssignment_3()); 
             }
-            // InternalAspectLang.g:6141:1: ( rule__TypeReference__CollectionAssignment_3 )?
+            // InternalAspectLang.g:6148:1: ( rule__TypeReference__CollectionAssignment_3 )?
             int alt49=2;
             int LA49_0 = input.LA(1);
 
-            if ( (LA49_0==63) ) {
+            if ( (LA49_0==64) ) {
                 alt49=1;
             }
             switch (alt49) {
                 case 1 :
-                    // InternalAspectLang.g:6141:2: rule__TypeReference__CollectionAssignment_3
+                    // InternalAspectLang.g:6148:2: rule__TypeReference__CollectionAssignment_3
                     {
                     pushFollow(FOLLOW_2);
                     rule__TypeReference__CollectionAssignment_3();
@@ -17885,14 +17920,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__QualifiedName__Group__0"
-    // InternalAspectLang.g:6159:1: rule__QualifiedName__Group__0 : rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1 ;
+    // InternalAspectLang.g:6166:1: rule__QualifiedName__Group__0 : rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1 ;
     public final void rule__QualifiedName__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6163:1: ( rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1 )
-            // InternalAspectLang.g:6164:2: rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1
+            // InternalAspectLang.g:6170:1: ( rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1 )
+            // InternalAspectLang.g:6171:2: rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1
             {
             pushFollow(FOLLOW_28);
             rule__QualifiedName__Group__0__Impl();
@@ -17923,17 +17958,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__QualifiedName__Group__0__Impl"
-    // InternalAspectLang.g:6171:1: rule__QualifiedName__Group__0__Impl : ( RULE_ID ) ;
+    // InternalAspectLang.g:6178:1: rule__QualifiedName__Group__0__Impl : ( RULE_ID ) ;
     public final void rule__QualifiedName__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6175:1: ( ( RULE_ID ) )
-            // InternalAspectLang.g:6176:1: ( RULE_ID )
+            // InternalAspectLang.g:6182:1: ( ( RULE_ID ) )
+            // InternalAspectLang.g:6183:1: ( RULE_ID )
             {
-            // InternalAspectLang.g:6176:1: ( RULE_ID )
-            // InternalAspectLang.g:6177:1: RULE_ID
+            // InternalAspectLang.g:6183:1: ( RULE_ID )
+            // InternalAspectLang.g:6184:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_0()); 
@@ -17964,14 +17999,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__QualifiedName__Group__1"
-    // InternalAspectLang.g:6188:1: rule__QualifiedName__Group__1 : rule__QualifiedName__Group__1__Impl ;
+    // InternalAspectLang.g:6195:1: rule__QualifiedName__Group__1 : rule__QualifiedName__Group__1__Impl ;
     public final void rule__QualifiedName__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6192:1: ( rule__QualifiedName__Group__1__Impl )
-            // InternalAspectLang.g:6193:2: rule__QualifiedName__Group__1__Impl
+            // InternalAspectLang.g:6199:1: ( rule__QualifiedName__Group__1__Impl )
+            // InternalAspectLang.g:6200:2: rule__QualifiedName__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__QualifiedName__Group__1__Impl();
@@ -17997,28 +18032,28 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__QualifiedName__Group__1__Impl"
-    // InternalAspectLang.g:6199:1: rule__QualifiedName__Group__1__Impl : ( ( rule__QualifiedName__Group_1__0 )* ) ;
+    // InternalAspectLang.g:6206:1: rule__QualifiedName__Group__1__Impl : ( ( rule__QualifiedName__Group_1__0 )* ) ;
     public final void rule__QualifiedName__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6203:1: ( ( ( rule__QualifiedName__Group_1__0 )* ) )
-            // InternalAspectLang.g:6204:1: ( ( rule__QualifiedName__Group_1__0 )* )
+            // InternalAspectLang.g:6210:1: ( ( ( rule__QualifiedName__Group_1__0 )* ) )
+            // InternalAspectLang.g:6211:1: ( ( rule__QualifiedName__Group_1__0 )* )
             {
-            // InternalAspectLang.g:6204:1: ( ( rule__QualifiedName__Group_1__0 )* )
-            // InternalAspectLang.g:6205:1: ( rule__QualifiedName__Group_1__0 )*
+            // InternalAspectLang.g:6211:1: ( ( rule__QualifiedName__Group_1__0 )* )
+            // InternalAspectLang.g:6212:1: ( rule__QualifiedName__Group_1__0 )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getQualifiedNameAccess().getGroup_1()); 
             }
-            // InternalAspectLang.g:6206:1: ( rule__QualifiedName__Group_1__0 )*
+            // InternalAspectLang.g:6213:1: ( rule__QualifiedName__Group_1__0 )*
             loop50:
             do {
                 int alt50=2;
                 int LA50_0 = input.LA(1);
 
-                if ( (LA50_0==56) ) {
+                if ( (LA50_0==57) ) {
                     int LA50_2 = input.LA(2);
 
                     if ( (LA50_2==RULE_ID) ) {
@@ -18031,7 +18066,7 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
                 switch (alt50) {
             	case 1 :
-            	    // InternalAspectLang.g:6206:2: rule__QualifiedName__Group_1__0
+            	    // InternalAspectLang.g:6213:2: rule__QualifiedName__Group_1__0
             	    {
             	    pushFollow(FOLLOW_46);
             	    rule__QualifiedName__Group_1__0();
@@ -18072,14 +18107,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__QualifiedName__Group_1__0"
-    // InternalAspectLang.g:6220:1: rule__QualifiedName__Group_1__0 : rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1 ;
+    // InternalAspectLang.g:6227:1: rule__QualifiedName__Group_1__0 : rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1 ;
     public final void rule__QualifiedName__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6224:1: ( rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1 )
-            // InternalAspectLang.g:6225:2: rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1
+            // InternalAspectLang.g:6231:1: ( rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1 )
+            // InternalAspectLang.g:6232:2: rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1
             {
             pushFollow(FOLLOW_3);
             rule__QualifiedName__Group_1__0__Impl();
@@ -18110,25 +18145,25 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__QualifiedName__Group_1__0__Impl"
-    // InternalAspectLang.g:6232:1: rule__QualifiedName__Group_1__0__Impl : ( ( '.' ) ) ;
+    // InternalAspectLang.g:6239:1: rule__QualifiedName__Group_1__0__Impl : ( ( '.' ) ) ;
     public final void rule__QualifiedName__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6236:1: ( ( ( '.' ) ) )
-            // InternalAspectLang.g:6237:1: ( ( '.' ) )
+            // InternalAspectLang.g:6243:1: ( ( ( '.' ) ) )
+            // InternalAspectLang.g:6244:1: ( ( '.' ) )
             {
-            // InternalAspectLang.g:6237:1: ( ( '.' ) )
-            // InternalAspectLang.g:6238:1: ( '.' )
+            // InternalAspectLang.g:6244:1: ( ( '.' ) )
+            // InternalAspectLang.g:6245:1: ( '.' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getQualifiedNameAccess().getFullStopKeyword_1_0()); 
             }
-            // InternalAspectLang.g:6239:1: ( '.' )
-            // InternalAspectLang.g:6240:2: '.'
+            // InternalAspectLang.g:6246:1: ( '.' )
+            // InternalAspectLang.g:6247:2: '.'
             {
-            match(input,56,FOLLOW_2); if (state.failed) return ;
+            match(input,57,FOLLOW_2); if (state.failed) return ;
 
             }
 
@@ -18157,14 +18192,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__QualifiedName__Group_1__1"
-    // InternalAspectLang.g:6251:1: rule__QualifiedName__Group_1__1 : rule__QualifiedName__Group_1__1__Impl ;
+    // InternalAspectLang.g:6258:1: rule__QualifiedName__Group_1__1 : rule__QualifiedName__Group_1__1__Impl ;
     public final void rule__QualifiedName__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6255:1: ( rule__QualifiedName__Group_1__1__Impl )
-            // InternalAspectLang.g:6256:2: rule__QualifiedName__Group_1__1__Impl
+            // InternalAspectLang.g:6262:1: ( rule__QualifiedName__Group_1__1__Impl )
+            // InternalAspectLang.g:6263:2: rule__QualifiedName__Group_1__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__QualifiedName__Group_1__1__Impl();
@@ -18190,17 +18225,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__QualifiedName__Group_1__1__Impl"
-    // InternalAspectLang.g:6262:1: rule__QualifiedName__Group_1__1__Impl : ( RULE_ID ) ;
+    // InternalAspectLang.g:6269:1: rule__QualifiedName__Group_1__1__Impl : ( RULE_ID ) ;
     public final void rule__QualifiedName__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6266:1: ( ( RULE_ID ) )
-            // InternalAspectLang.g:6267:1: ( RULE_ID )
+            // InternalAspectLang.g:6273:1: ( ( RULE_ID ) )
+            // InternalAspectLang.g:6274:1: ( RULE_ID )
             {
-            // InternalAspectLang.g:6267:1: ( RULE_ID )
-            // InternalAspectLang.g:6268:1: RULE_ID
+            // InternalAspectLang.g:6274:1: ( RULE_ID )
+            // InternalAspectLang.g:6275:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_1_1()); 
@@ -18231,14 +18266,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__QualifiedNameWithWildcard__Group__0"
-    // InternalAspectLang.g:6283:1: rule__QualifiedNameWithWildcard__Group__0 : rule__QualifiedNameWithWildcard__Group__0__Impl rule__QualifiedNameWithWildcard__Group__1 ;
+    // InternalAspectLang.g:6290:1: rule__QualifiedNameWithWildcard__Group__0 : rule__QualifiedNameWithWildcard__Group__0__Impl rule__QualifiedNameWithWildcard__Group__1 ;
     public final void rule__QualifiedNameWithWildcard__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6287:1: ( rule__QualifiedNameWithWildcard__Group__0__Impl rule__QualifiedNameWithWildcard__Group__1 )
-            // InternalAspectLang.g:6288:2: rule__QualifiedNameWithWildcard__Group__0__Impl rule__QualifiedNameWithWildcard__Group__1
+            // InternalAspectLang.g:6294:1: ( rule__QualifiedNameWithWildcard__Group__0__Impl rule__QualifiedNameWithWildcard__Group__1 )
+            // InternalAspectLang.g:6295:2: rule__QualifiedNameWithWildcard__Group__0__Impl rule__QualifiedNameWithWildcard__Group__1
             {
             pushFollow(FOLLOW_28);
             rule__QualifiedNameWithWildcard__Group__0__Impl();
@@ -18269,17 +18304,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__QualifiedNameWithWildcard__Group__0__Impl"
-    // InternalAspectLang.g:6295:1: rule__QualifiedNameWithWildcard__Group__0__Impl : ( ruleQualifiedName ) ;
+    // InternalAspectLang.g:6302:1: rule__QualifiedNameWithWildcard__Group__0__Impl : ( ruleQualifiedName ) ;
     public final void rule__QualifiedNameWithWildcard__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6299:1: ( ( ruleQualifiedName ) )
-            // InternalAspectLang.g:6300:1: ( ruleQualifiedName )
+            // InternalAspectLang.g:6306:1: ( ( ruleQualifiedName ) )
+            // InternalAspectLang.g:6307:1: ( ruleQualifiedName )
             {
-            // InternalAspectLang.g:6300:1: ( ruleQualifiedName )
-            // InternalAspectLang.g:6301:1: ruleQualifiedName
+            // InternalAspectLang.g:6307:1: ( ruleQualifiedName )
+            // InternalAspectLang.g:6308:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getQualifiedNameWithWildcardAccess().getQualifiedNameParserRuleCall_0()); 
@@ -18314,14 +18349,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__QualifiedNameWithWildcard__Group__1"
-    // InternalAspectLang.g:6312:1: rule__QualifiedNameWithWildcard__Group__1 : rule__QualifiedNameWithWildcard__Group__1__Impl ;
+    // InternalAspectLang.g:6319:1: rule__QualifiedNameWithWildcard__Group__1 : rule__QualifiedNameWithWildcard__Group__1__Impl ;
     public final void rule__QualifiedNameWithWildcard__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6316:1: ( rule__QualifiedNameWithWildcard__Group__1__Impl )
-            // InternalAspectLang.g:6317:2: rule__QualifiedNameWithWildcard__Group__1__Impl
+            // InternalAspectLang.g:6323:1: ( rule__QualifiedNameWithWildcard__Group__1__Impl )
+            // InternalAspectLang.g:6324:2: rule__QualifiedNameWithWildcard__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__QualifiedNameWithWildcard__Group__1__Impl();
@@ -18347,31 +18382,31 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__QualifiedNameWithWildcard__Group__1__Impl"
-    // InternalAspectLang.g:6323:1: rule__QualifiedNameWithWildcard__Group__1__Impl : ( ( rule__QualifiedNameWithWildcard__Group_1__0 )? ) ;
+    // InternalAspectLang.g:6330:1: rule__QualifiedNameWithWildcard__Group__1__Impl : ( ( rule__QualifiedNameWithWildcard__Group_1__0 )? ) ;
     public final void rule__QualifiedNameWithWildcard__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6327:1: ( ( ( rule__QualifiedNameWithWildcard__Group_1__0 )? ) )
-            // InternalAspectLang.g:6328:1: ( ( rule__QualifiedNameWithWildcard__Group_1__0 )? )
+            // InternalAspectLang.g:6334:1: ( ( ( rule__QualifiedNameWithWildcard__Group_1__0 )? ) )
+            // InternalAspectLang.g:6335:1: ( ( rule__QualifiedNameWithWildcard__Group_1__0 )? )
             {
-            // InternalAspectLang.g:6328:1: ( ( rule__QualifiedNameWithWildcard__Group_1__0 )? )
-            // InternalAspectLang.g:6329:1: ( rule__QualifiedNameWithWildcard__Group_1__0 )?
+            // InternalAspectLang.g:6335:1: ( ( rule__QualifiedNameWithWildcard__Group_1__0 )? )
+            // InternalAspectLang.g:6336:1: ( rule__QualifiedNameWithWildcard__Group_1__0 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getQualifiedNameWithWildcardAccess().getGroup_1()); 
             }
-            // InternalAspectLang.g:6330:1: ( rule__QualifiedNameWithWildcard__Group_1__0 )?
+            // InternalAspectLang.g:6337:1: ( rule__QualifiedNameWithWildcard__Group_1__0 )?
             int alt51=2;
             int LA51_0 = input.LA(1);
 
-            if ( (LA51_0==56) ) {
+            if ( (LA51_0==57) ) {
                 alt51=1;
             }
             switch (alt51) {
                 case 1 :
-                    // InternalAspectLang.g:6330:2: rule__QualifiedNameWithWildcard__Group_1__0
+                    // InternalAspectLang.g:6337:2: rule__QualifiedNameWithWildcard__Group_1__0
                     {
                     pushFollow(FOLLOW_2);
                     rule__QualifiedNameWithWildcard__Group_1__0();
@@ -18409,14 +18444,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__QualifiedNameWithWildcard__Group_1__0"
-    // InternalAspectLang.g:6344:1: rule__QualifiedNameWithWildcard__Group_1__0 : rule__QualifiedNameWithWildcard__Group_1__0__Impl rule__QualifiedNameWithWildcard__Group_1__1 ;
+    // InternalAspectLang.g:6351:1: rule__QualifiedNameWithWildcard__Group_1__0 : rule__QualifiedNameWithWildcard__Group_1__0__Impl rule__QualifiedNameWithWildcard__Group_1__1 ;
     public final void rule__QualifiedNameWithWildcard__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6348:1: ( rule__QualifiedNameWithWildcard__Group_1__0__Impl rule__QualifiedNameWithWildcard__Group_1__1 )
-            // InternalAspectLang.g:6349:2: rule__QualifiedNameWithWildcard__Group_1__0__Impl rule__QualifiedNameWithWildcard__Group_1__1
+            // InternalAspectLang.g:6355:1: ( rule__QualifiedNameWithWildcard__Group_1__0__Impl rule__QualifiedNameWithWildcard__Group_1__1 )
+            // InternalAspectLang.g:6356:2: rule__QualifiedNameWithWildcard__Group_1__0__Impl rule__QualifiedNameWithWildcard__Group_1__1
             {
             pushFollow(FOLLOW_39);
             rule__QualifiedNameWithWildcard__Group_1__0__Impl();
@@ -18447,22 +18482,22 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__QualifiedNameWithWildcard__Group_1__0__Impl"
-    // InternalAspectLang.g:6356:1: rule__QualifiedNameWithWildcard__Group_1__0__Impl : ( '.' ) ;
+    // InternalAspectLang.g:6363:1: rule__QualifiedNameWithWildcard__Group_1__0__Impl : ( '.' ) ;
     public final void rule__QualifiedNameWithWildcard__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6360:1: ( ( '.' ) )
-            // InternalAspectLang.g:6361:1: ( '.' )
+            // InternalAspectLang.g:6367:1: ( ( '.' ) )
+            // InternalAspectLang.g:6368:1: ( '.' )
             {
-            // InternalAspectLang.g:6361:1: ( '.' )
-            // InternalAspectLang.g:6362:1: '.'
+            // InternalAspectLang.g:6368:1: ( '.' )
+            // InternalAspectLang.g:6369:1: '.'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getQualifiedNameWithWildcardAccess().getFullStopKeyword_1_0()); 
             }
-            match(input,56,FOLLOW_2); if (state.failed) return ;
+            match(input,57,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getQualifiedNameWithWildcardAccess().getFullStopKeyword_1_0()); 
             }
@@ -18488,14 +18523,14 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__QualifiedNameWithWildcard__Group_1__1"
-    // InternalAspectLang.g:6375:1: rule__QualifiedNameWithWildcard__Group_1__1 : rule__QualifiedNameWithWildcard__Group_1__1__Impl ;
+    // InternalAspectLang.g:6382:1: rule__QualifiedNameWithWildcard__Group_1__1 : rule__QualifiedNameWithWildcard__Group_1__1__Impl ;
     public final void rule__QualifiedNameWithWildcard__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6379:1: ( rule__QualifiedNameWithWildcard__Group_1__1__Impl )
-            // InternalAspectLang.g:6380:2: rule__QualifiedNameWithWildcard__Group_1__1__Impl
+            // InternalAspectLang.g:6386:1: ( rule__QualifiedNameWithWildcard__Group_1__1__Impl )
+            // InternalAspectLang.g:6387:2: rule__QualifiedNameWithWildcard__Group_1__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__QualifiedNameWithWildcard__Group_1__1__Impl();
@@ -18521,17 +18556,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__QualifiedNameWithWildcard__Group_1__1__Impl"
-    // InternalAspectLang.g:6386:1: rule__QualifiedNameWithWildcard__Group_1__1__Impl : ( '*' ) ;
+    // InternalAspectLang.g:6393:1: rule__QualifiedNameWithWildcard__Group_1__1__Impl : ( '*' ) ;
     public final void rule__QualifiedNameWithWildcard__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6390:1: ( ( '*' ) )
-            // InternalAspectLang.g:6391:1: ( '*' )
+            // InternalAspectLang.g:6397:1: ( ( '*' ) )
+            // InternalAspectLang.g:6398:1: ( '*' )
             {
-            // InternalAspectLang.g:6391:1: ( '*' )
-            // InternalAspectLang.g:6392:1: '*'
+            // InternalAspectLang.g:6398:1: ( '*' )
+            // InternalAspectLang.g:6399:1: '*'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getQualifiedNameWithWildcardAccess().getAsteriskKeyword_1_1()); 
@@ -18562,17 +18597,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__AspectModel__NameAssignment_1"
-    // InternalAspectLang.g:6410:1: rule__AspectModel__NameAssignment_1 : ( ruleQualifiedName ) ;
+    // InternalAspectLang.g:6417:1: rule__AspectModel__NameAssignment_1 : ( ruleQualifiedName ) ;
     public final void rule__AspectModel__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6414:1: ( ( ruleQualifiedName ) )
-            // InternalAspectLang.g:6415:1: ( ruleQualifiedName )
+            // InternalAspectLang.g:6421:1: ( ( ruleQualifiedName ) )
+            // InternalAspectLang.g:6422:1: ( ruleQualifiedName )
             {
-            // InternalAspectLang.g:6415:1: ( ruleQualifiedName )
-            // InternalAspectLang.g:6416:1: ruleQualifiedName
+            // InternalAspectLang.g:6422:1: ( ruleQualifiedName )
+            // InternalAspectLang.g:6423:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAspectModelAccess().getNameQualifiedNameParserRuleCall_1_0()); 
@@ -18607,17 +18642,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__AspectModel__ImportsAssignment_2"
-    // InternalAspectLang.g:6425:1: rule__AspectModel__ImportsAssignment_2 : ( ruleImport ) ;
+    // InternalAspectLang.g:6432:1: rule__AspectModel__ImportsAssignment_2 : ( ruleImport ) ;
     public final void rule__AspectModel__ImportsAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6429:1: ( ( ruleImport ) )
-            // InternalAspectLang.g:6430:1: ( ruleImport )
+            // InternalAspectLang.g:6436:1: ( ( ruleImport ) )
+            // InternalAspectLang.g:6437:1: ( ruleImport )
             {
-            // InternalAspectLang.g:6430:1: ( ruleImport )
-            // InternalAspectLang.g:6431:1: ruleImport
+            // InternalAspectLang.g:6437:1: ( ruleImport )
+            // InternalAspectLang.g:6438:1: ruleImport
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAspectModelAccess().getImportsImportParserRuleCall_2_0()); 
@@ -18652,17 +18687,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__AspectModel__SourcesAssignment_3"
-    // InternalAspectLang.g:6440:1: rule__AspectModel__SourcesAssignment_3 : ( ruleApplicationModel ) ;
+    // InternalAspectLang.g:6447:1: rule__AspectModel__SourcesAssignment_3 : ( ruleApplicationModel ) ;
     public final void rule__AspectModel__SourcesAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6444:1: ( ( ruleApplicationModel ) )
-            // InternalAspectLang.g:6445:1: ( ruleApplicationModel )
+            // InternalAspectLang.g:6451:1: ( ( ruleApplicationModel ) )
+            // InternalAspectLang.g:6452:1: ( ruleApplicationModel )
             {
-            // InternalAspectLang.g:6445:1: ( ruleApplicationModel )
-            // InternalAspectLang.g:6446:1: ruleApplicationModel
+            // InternalAspectLang.g:6452:1: ( ruleApplicationModel )
+            // InternalAspectLang.g:6453:1: ruleApplicationModel
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAspectModelAccess().getSourcesApplicationModelParserRuleCall_3_0()); 
@@ -18697,17 +18732,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__AspectModel__AdvicesAssignment_4_0"
-    // InternalAspectLang.g:6455:1: rule__AspectModel__AdvicesAssignment_4_0 : ( ruleAdvice ) ;
+    // InternalAspectLang.g:6462:1: rule__AspectModel__AdvicesAssignment_4_0 : ( ruleAdvice ) ;
     public final void rule__AspectModel__AdvicesAssignment_4_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6459:1: ( ( ruleAdvice ) )
-            // InternalAspectLang.g:6460:1: ( ruleAdvice )
+            // InternalAspectLang.g:6466:1: ( ( ruleAdvice ) )
+            // InternalAspectLang.g:6467:1: ( ruleAdvice )
             {
-            // InternalAspectLang.g:6460:1: ( ruleAdvice )
-            // InternalAspectLang.g:6461:1: ruleAdvice
+            // InternalAspectLang.g:6467:1: ( ruleAdvice )
+            // InternalAspectLang.g:6468:1: ruleAdvice
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAspectModelAccess().getAdvicesAdviceParserRuleCall_4_0_0()); 
@@ -18742,17 +18777,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__AspectModel__PointcutsAssignment_4_1"
-    // InternalAspectLang.g:6470:1: rule__AspectModel__PointcutsAssignment_4_1 : ( rulePointcut ) ;
+    // InternalAspectLang.g:6477:1: rule__AspectModel__PointcutsAssignment_4_1 : ( rulePointcut ) ;
     public final void rule__AspectModel__PointcutsAssignment_4_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6474:1: ( ( rulePointcut ) )
-            // InternalAspectLang.g:6475:1: ( rulePointcut )
+            // InternalAspectLang.g:6481:1: ( ( rulePointcut ) )
+            // InternalAspectLang.g:6482:1: ( rulePointcut )
             {
-            // InternalAspectLang.g:6475:1: ( rulePointcut )
-            // InternalAspectLang.g:6476:1: rulePointcut
+            // InternalAspectLang.g:6482:1: ( rulePointcut )
+            // InternalAspectLang.g:6483:1: rulePointcut
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAspectModelAccess().getPointcutsPointcutParserRuleCall_4_1_0()); 
@@ -18787,17 +18822,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__AspectModel__AspectsAssignment_4_2"
-    // InternalAspectLang.g:6485:1: rule__AspectModel__AspectsAssignment_4_2 : ( ruleAspect ) ;
+    // InternalAspectLang.g:6492:1: rule__AspectModel__AspectsAssignment_4_2 : ( ruleAspect ) ;
     public final void rule__AspectModel__AspectsAssignment_4_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6489:1: ( ( ruleAspect ) )
-            // InternalAspectLang.g:6490:1: ( ruleAspect )
+            // InternalAspectLang.g:6496:1: ( ( ruleAspect ) )
+            // InternalAspectLang.g:6497:1: ( ruleAspect )
             {
-            // InternalAspectLang.g:6490:1: ( ruleAspect )
-            // InternalAspectLang.g:6491:1: ruleAspect
+            // InternalAspectLang.g:6497:1: ( ruleAspect )
+            // InternalAspectLang.g:6498:1: ruleAspect
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAspectModelAccess().getAspectsAspectParserRuleCall_4_2_0()); 
@@ -18832,17 +18867,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Import__ImportedNamespaceAssignment_1"
-    // InternalAspectLang.g:6500:1: rule__Import__ImportedNamespaceAssignment_1 : ( ruleQualifiedNameWithWildcard ) ;
+    // InternalAspectLang.g:6507:1: rule__Import__ImportedNamespaceAssignment_1 : ( ruleQualifiedNameWithWildcard ) ;
     public final void rule__Import__ImportedNamespaceAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6504:1: ( ( ruleQualifiedNameWithWildcard ) )
-            // InternalAspectLang.g:6505:1: ( ruleQualifiedNameWithWildcard )
+            // InternalAspectLang.g:6511:1: ( ( ruleQualifiedNameWithWildcard ) )
+            // InternalAspectLang.g:6512:1: ( ruleQualifiedNameWithWildcard )
             {
-            // InternalAspectLang.g:6505:1: ( ruleQualifiedNameWithWildcard )
-            // InternalAspectLang.g:6506:1: ruleQualifiedNameWithWildcard
+            // InternalAspectLang.g:6512:1: ( ruleQualifiedNameWithWildcard )
+            // InternalAspectLang.g:6513:1: ruleQualifiedNameWithWildcard
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getImportAccess().getImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_0()); 
@@ -18877,17 +18912,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ApplicationModel__HandlerAssignment_1"
-    // InternalAspectLang.g:6515:1: rule__ApplicationModel__HandlerAssignment_1 : ( RULE_ID ) ;
+    // InternalAspectLang.g:6522:1: rule__ApplicationModel__HandlerAssignment_1 : ( RULE_ID ) ;
     public final void rule__ApplicationModel__HandlerAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6519:1: ( ( RULE_ID ) )
-            // InternalAspectLang.g:6520:1: ( RULE_ID )
+            // InternalAspectLang.g:6526:1: ( ( RULE_ID ) )
+            // InternalAspectLang.g:6527:1: ( RULE_ID )
             {
-            // InternalAspectLang.g:6520:1: ( RULE_ID )
-            // InternalAspectLang.g:6521:1: RULE_ID
+            // InternalAspectLang.g:6527:1: ( RULE_ID )
+            // InternalAspectLang.g:6528:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getApplicationModelAccess().getHandlerIDTerminalRuleCall_1_0()); 
@@ -18918,17 +18953,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ApplicationModel__NameAssignment_3"
-    // InternalAspectLang.g:6530:1: rule__ApplicationModel__NameAssignment_3 : ( RULE_ID ) ;
+    // InternalAspectLang.g:6537:1: rule__ApplicationModel__NameAssignment_3 : ( RULE_ID ) ;
     public final void rule__ApplicationModel__NameAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6534:1: ( ( RULE_ID ) )
-            // InternalAspectLang.g:6535:1: ( RULE_ID )
+            // InternalAspectLang.g:6541:1: ( ( RULE_ID ) )
+            // InternalAspectLang.g:6542:1: ( RULE_ID )
             {
-            // InternalAspectLang.g:6535:1: ( RULE_ID )
-            // InternalAspectLang.g:6536:1: RULE_ID
+            // InternalAspectLang.g:6542:1: ( RULE_ID )
+            // InternalAspectLang.g:6543:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getApplicationModelAccess().getNameIDTerminalRuleCall_3_0()); 
@@ -18959,17 +18994,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ApplicationModel__ModelAssignment_4"
-    // InternalAspectLang.g:6545:1: rule__ApplicationModel__ModelAssignment_4 : ( RULE_STRING ) ;
+    // InternalAspectLang.g:6552:1: rule__ApplicationModel__ModelAssignment_4 : ( RULE_STRING ) ;
     public final void rule__ApplicationModel__ModelAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6549:1: ( ( RULE_STRING ) )
-            // InternalAspectLang.g:6550:1: ( RULE_STRING )
+            // InternalAspectLang.g:6556:1: ( ( RULE_STRING ) )
+            // InternalAspectLang.g:6557:1: ( RULE_STRING )
             {
-            // InternalAspectLang.g:6550:1: ( RULE_STRING )
-            // InternalAspectLang.g:6551:1: RULE_STRING
+            // InternalAspectLang.g:6557:1: ( RULE_STRING )
+            // InternalAspectLang.g:6558:1: RULE_STRING
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getApplicationModelAccess().getModelSTRINGTerminalRuleCall_4_0()); 
@@ -19000,23 +19035,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Aspect__PointcutAssignment_1"
-    // InternalAspectLang.g:6560:1: rule__Aspect__PointcutAssignment_1 : ( ( ruleQualifiedName ) ) ;
+    // InternalAspectLang.g:6567:1: rule__Aspect__PointcutAssignment_1 : ( ( ruleQualifiedName ) ) ;
     public final void rule__Aspect__PointcutAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6564:1: ( ( ( ruleQualifiedName ) ) )
-            // InternalAspectLang.g:6565:1: ( ( ruleQualifiedName ) )
+            // InternalAspectLang.g:6571:1: ( ( ( ruleQualifiedName ) ) )
+            // InternalAspectLang.g:6572:1: ( ( ruleQualifiedName ) )
             {
-            // InternalAspectLang.g:6565:1: ( ( ruleQualifiedName ) )
-            // InternalAspectLang.g:6566:1: ( ruleQualifiedName )
+            // InternalAspectLang.g:6572:1: ( ( ruleQualifiedName ) )
+            // InternalAspectLang.g:6573:1: ( ruleQualifiedName )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAspectAccess().getPointcutPointcutCrossReference_1_0()); 
             }
-            // InternalAspectLang.g:6567:1: ( ruleQualifiedName )
-            // InternalAspectLang.g:6568:1: ruleQualifiedName
+            // InternalAspectLang.g:6574:1: ( ruleQualifiedName )
+            // InternalAspectLang.g:6575:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAspectAccess().getPointcutPointcutQualifiedNameParserRuleCall_1_0_1()); 
@@ -19057,17 +19092,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Aspect__AdvicesAssignment_3"
-    // InternalAspectLang.g:6579:1: rule__Aspect__AdvicesAssignment_3 : ( ruleUtilizeAdvice ) ;
+    // InternalAspectLang.g:6586:1: rule__Aspect__AdvicesAssignment_3 : ( ruleUtilizeAdvice ) ;
     public final void rule__Aspect__AdvicesAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6583:1: ( ( ruleUtilizeAdvice ) )
-            // InternalAspectLang.g:6584:1: ( ruleUtilizeAdvice )
+            // InternalAspectLang.g:6590:1: ( ( ruleUtilizeAdvice ) )
+            // InternalAspectLang.g:6591:1: ( ruleUtilizeAdvice )
             {
-            // InternalAspectLang.g:6584:1: ( ruleUtilizeAdvice )
-            // InternalAspectLang.g:6585:1: ruleUtilizeAdvice
+            // InternalAspectLang.g:6591:1: ( ruleUtilizeAdvice )
+            // InternalAspectLang.g:6592:1: ruleUtilizeAdvice
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAspectAccess().getAdvicesUtilizeAdviceParserRuleCall_3_0()); 
@@ -19102,17 +19137,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Aspect__AdvicesAssignment_4_1"
-    // InternalAspectLang.g:6594:1: rule__Aspect__AdvicesAssignment_4_1 : ( ruleUtilizeAdvice ) ;
+    // InternalAspectLang.g:6601:1: rule__Aspect__AdvicesAssignment_4_1 : ( ruleUtilizeAdvice ) ;
     public final void rule__Aspect__AdvicesAssignment_4_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6598:1: ( ( ruleUtilizeAdvice ) )
-            // InternalAspectLang.g:6599:1: ( ruleUtilizeAdvice )
+            // InternalAspectLang.g:6605:1: ( ( ruleUtilizeAdvice ) )
+            // InternalAspectLang.g:6606:1: ( ruleUtilizeAdvice )
             {
-            // InternalAspectLang.g:6599:1: ( ruleUtilizeAdvice )
-            // InternalAspectLang.g:6600:1: ruleUtilizeAdvice
+            // InternalAspectLang.g:6606:1: ( ruleUtilizeAdvice )
+            // InternalAspectLang.g:6607:1: ruleUtilizeAdvice
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAspectAccess().getAdvicesUtilizeAdviceParserRuleCall_4_1_0()); 
@@ -19147,23 +19182,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__UtilizeAdvice__AdviceAssignment_0"
-    // InternalAspectLang.g:6609:1: rule__UtilizeAdvice__AdviceAssignment_0 : ( ( ruleQualifiedName ) ) ;
+    // InternalAspectLang.g:6616:1: rule__UtilizeAdvice__AdviceAssignment_0 : ( ( ruleQualifiedName ) ) ;
     public final void rule__UtilizeAdvice__AdviceAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6613:1: ( ( ( ruleQualifiedName ) ) )
-            // InternalAspectLang.g:6614:1: ( ( ruleQualifiedName ) )
+            // InternalAspectLang.g:6620:1: ( ( ( ruleQualifiedName ) ) )
+            // InternalAspectLang.g:6621:1: ( ( ruleQualifiedName ) )
             {
-            // InternalAspectLang.g:6614:1: ( ( ruleQualifiedName ) )
-            // InternalAspectLang.g:6615:1: ( ruleQualifiedName )
+            // InternalAspectLang.g:6621:1: ( ( ruleQualifiedName ) )
+            // InternalAspectLang.g:6622:1: ( ruleQualifiedName )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getUtilizeAdviceAccess().getAdviceAdviceCrossReference_0_0()); 
             }
-            // InternalAspectLang.g:6616:1: ( ruleQualifiedName )
-            // InternalAspectLang.g:6617:1: ruleQualifiedName
+            // InternalAspectLang.g:6623:1: ( ruleQualifiedName )
+            // InternalAspectLang.g:6624:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getUtilizeAdviceAccess().getAdviceAdviceQualifiedNameParserRuleCall_0_0_1()); 
@@ -19204,17 +19239,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_0"
-    // InternalAspectLang.g:6628:1: rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_0 : ( ruleValue ) ;
+    // InternalAspectLang.g:6635:1: rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_0 : ( ruleValue ) ;
     public final void rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6632:1: ( ( ruleValue ) )
-            // InternalAspectLang.g:6633:1: ( ruleValue )
+            // InternalAspectLang.g:6639:1: ( ( ruleValue ) )
+            // InternalAspectLang.g:6640:1: ( ruleValue )
             {
-            // InternalAspectLang.g:6633:1: ( ruleValue )
-            // InternalAspectLang.g:6634:1: ruleValue
+            // InternalAspectLang.g:6640:1: ( ruleValue )
+            // InternalAspectLang.g:6641:1: ruleValue
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getUtilizeAdviceAccess().getParameterAssignmentsValueParserRuleCall_1_1_0_0()); 
@@ -19249,17 +19284,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_1_1"
-    // InternalAspectLang.g:6643:1: rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_1_1 : ( ruleValue ) ;
+    // InternalAspectLang.g:6650:1: rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_1_1 : ( ruleValue ) ;
     public final void rule__UtilizeAdvice__ParameterAssignmentsAssignment_1_1_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6647:1: ( ( ruleValue ) )
-            // InternalAspectLang.g:6648:1: ( ruleValue )
+            // InternalAspectLang.g:6654:1: ( ( ruleValue ) )
+            // InternalAspectLang.g:6655:1: ( ruleValue )
             {
-            // InternalAspectLang.g:6648:1: ( ruleValue )
-            // InternalAspectLang.g:6649:1: ruleValue
+            // InternalAspectLang.g:6655:1: ( ruleValue )
+            // InternalAspectLang.g:6656:1: ruleValue
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getUtilizeAdviceAccess().getParameterAssignmentsValueParserRuleCall_1_1_1_1_0()); 
@@ -19294,17 +19329,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Advice__NameAssignment_1"
-    // InternalAspectLang.g:6658:1: rule__Advice__NameAssignment_1 : ( RULE_ID ) ;
+    // InternalAspectLang.g:6665:1: rule__Advice__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__Advice__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6662:1: ( ( RULE_ID ) )
-            // InternalAspectLang.g:6663:1: ( RULE_ID )
+            // InternalAspectLang.g:6669:1: ( ( RULE_ID ) )
+            // InternalAspectLang.g:6670:1: ( RULE_ID )
             {
-            // InternalAspectLang.g:6663:1: ( RULE_ID )
-            // InternalAspectLang.g:6664:1: RULE_ID
+            // InternalAspectLang.g:6670:1: ( RULE_ID )
+            // InternalAspectLang.g:6671:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdviceAccess().getNameIDTerminalRuleCall_1_0()); 
@@ -19335,17 +19370,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Advice__ParameterDeclarationsAssignment_2_1_0"
-    // InternalAspectLang.g:6673:1: rule__Advice__ParameterDeclarationsAssignment_2_1_0 : ( ruleAdviceParameterDeclaration ) ;
+    // InternalAspectLang.g:6680:1: rule__Advice__ParameterDeclarationsAssignment_2_1_0 : ( ruleAdviceParameterDeclaration ) ;
     public final void rule__Advice__ParameterDeclarationsAssignment_2_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6677:1: ( ( ruleAdviceParameterDeclaration ) )
-            // InternalAspectLang.g:6678:1: ( ruleAdviceParameterDeclaration )
+            // InternalAspectLang.g:6684:1: ( ( ruleAdviceParameterDeclaration ) )
+            // InternalAspectLang.g:6685:1: ( ruleAdviceParameterDeclaration )
             {
-            // InternalAspectLang.g:6678:1: ( ruleAdviceParameterDeclaration )
-            // InternalAspectLang.g:6679:1: ruleAdviceParameterDeclaration
+            // InternalAspectLang.g:6685:1: ( ruleAdviceParameterDeclaration )
+            // InternalAspectLang.g:6686:1: ruleAdviceParameterDeclaration
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdviceAccess().getParameterDeclarationsAdviceParameterDeclarationParserRuleCall_2_1_0_0()); 
@@ -19380,17 +19415,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Advice__ParameterDeclarationsAssignment_2_1_1_1"
-    // InternalAspectLang.g:6688:1: rule__Advice__ParameterDeclarationsAssignment_2_1_1_1 : ( ruleAdviceParameterDeclaration ) ;
+    // InternalAspectLang.g:6695:1: rule__Advice__ParameterDeclarationsAssignment_2_1_1_1 : ( ruleAdviceParameterDeclaration ) ;
     public final void rule__Advice__ParameterDeclarationsAssignment_2_1_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6692:1: ( ( ruleAdviceParameterDeclaration ) )
-            // InternalAspectLang.g:6693:1: ( ruleAdviceParameterDeclaration )
+            // InternalAspectLang.g:6699:1: ( ( ruleAdviceParameterDeclaration ) )
+            // InternalAspectLang.g:6700:1: ( ruleAdviceParameterDeclaration )
             {
-            // InternalAspectLang.g:6693:1: ( ruleAdviceParameterDeclaration )
-            // InternalAspectLang.g:6694:1: ruleAdviceParameterDeclaration
+            // InternalAspectLang.g:6700:1: ( ruleAdviceParameterDeclaration )
+            // InternalAspectLang.g:6701:1: ruleAdviceParameterDeclaration
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdviceAccess().getParameterDeclarationsAdviceParameterDeclarationParserRuleCall_2_1_1_1_0()); 
@@ -19425,17 +19460,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Advice__CollectorsAssignment_4"
-    // InternalAspectLang.g:6703:1: rule__Advice__CollectorsAssignment_4 : ( ruleCollector ) ;
+    // InternalAspectLang.g:6710:1: rule__Advice__CollectorsAssignment_4 : ( ruleCollector ) ;
     public final void rule__Advice__CollectorsAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6707:1: ( ( ruleCollector ) )
-            // InternalAspectLang.g:6708:1: ( ruleCollector )
+            // InternalAspectLang.g:6714:1: ( ( ruleCollector ) )
+            // InternalAspectLang.g:6715:1: ( ruleCollector )
             {
-            // InternalAspectLang.g:6708:1: ( ruleCollector )
-            // InternalAspectLang.g:6709:1: ruleCollector
+            // InternalAspectLang.g:6715:1: ( ruleCollector )
+            // InternalAspectLang.g:6716:1: ruleCollector
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdviceAccess().getCollectorsCollectorParserRuleCall_4_0()); 
@@ -19470,17 +19505,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__AdviceParameterDeclaration__TypeAssignment_0"
-    // InternalAspectLang.g:6718:1: rule__AdviceParameterDeclaration__TypeAssignment_0 : ( ruleTypeReference ) ;
+    // InternalAspectLang.g:6725:1: rule__AdviceParameterDeclaration__TypeAssignment_0 : ( ruleTypeReference ) ;
     public final void rule__AdviceParameterDeclaration__TypeAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6722:1: ( ( ruleTypeReference ) )
-            // InternalAspectLang.g:6723:1: ( ruleTypeReference )
+            // InternalAspectLang.g:6729:1: ( ( ruleTypeReference ) )
+            // InternalAspectLang.g:6730:1: ( ruleTypeReference )
             {
-            // InternalAspectLang.g:6723:1: ( ruleTypeReference )
-            // InternalAspectLang.g:6724:1: ruleTypeReference
+            // InternalAspectLang.g:6730:1: ( ruleTypeReference )
+            // InternalAspectLang.g:6731:1: ruleTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdviceParameterDeclarationAccess().getTypeTypeReferenceParserRuleCall_0_0()); 
@@ -19515,17 +19550,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__AdviceParameterDeclaration__NameAssignment_1"
-    // InternalAspectLang.g:6733:1: rule__AdviceParameterDeclaration__NameAssignment_1 : ( RULE_ID ) ;
+    // InternalAspectLang.g:6740:1: rule__AdviceParameterDeclaration__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__AdviceParameterDeclaration__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6737:1: ( ( RULE_ID ) )
-            // InternalAspectLang.g:6738:1: ( RULE_ID )
+            // InternalAspectLang.g:6744:1: ( ( RULE_ID ) )
+            // InternalAspectLang.g:6745:1: ( RULE_ID )
             {
-            // InternalAspectLang.g:6738:1: ( RULE_ID )
-            // InternalAspectLang.g:6739:1: RULE_ID
+            // InternalAspectLang.g:6745:1: ( RULE_ID )
+            // InternalAspectLang.g:6746:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdviceParameterDeclarationAccess().getNameIDTerminalRuleCall_1_0()); 
@@ -19556,17 +19591,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Collector__InsertionPointAssignment_0"
-    // InternalAspectLang.g:6748:1: rule__Collector__InsertionPointAssignment_0 : ( ruleInsertionPoint ) ;
+    // InternalAspectLang.g:6755:1: rule__Collector__InsertionPointAssignment_0 : ( ruleInsertionPoint ) ;
     public final void rule__Collector__InsertionPointAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6752:1: ( ( ruleInsertionPoint ) )
-            // InternalAspectLang.g:6753:1: ( ruleInsertionPoint )
+            // InternalAspectLang.g:6759:1: ( ( ruleInsertionPoint ) )
+            // InternalAspectLang.g:6760:1: ( ruleInsertionPoint )
             {
-            // InternalAspectLang.g:6753:1: ( ruleInsertionPoint )
-            // InternalAspectLang.g:6754:1: ruleInsertionPoint
+            // InternalAspectLang.g:6760:1: ( ruleInsertionPoint )
+            // InternalAspectLang.g:6761:1: ruleInsertionPoint
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCollectorAccess().getInsertionPointInsertionPointEnumRuleCall_0_0()); 
@@ -19601,17 +19636,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Collector__EventsAssignment_1"
-    // InternalAspectLang.g:6763:1: rule__Collector__EventsAssignment_1 : ( ruleEvent ) ;
+    // InternalAspectLang.g:6770:1: rule__Collector__EventsAssignment_1 : ( ruleEvent ) ;
     public final void rule__Collector__EventsAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6767:1: ( ( ruleEvent ) )
-            // InternalAspectLang.g:6768:1: ( ruleEvent )
+            // InternalAspectLang.g:6774:1: ( ( ruleEvent ) )
+            // InternalAspectLang.g:6775:1: ( ruleEvent )
             {
-            // InternalAspectLang.g:6768:1: ( ruleEvent )
-            // InternalAspectLang.g:6769:1: ruleEvent
+            // InternalAspectLang.g:6775:1: ( ruleEvent )
+            // InternalAspectLang.g:6776:1: ruleEvent
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCollectorAccess().getEventsEventParserRuleCall_1_0()); 
@@ -19646,23 +19681,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Event__TypeAssignment_0"
-    // InternalAspectLang.g:6778:1: rule__Event__TypeAssignment_0 : ( ( ruleQualifiedName ) ) ;
+    // InternalAspectLang.g:6785:1: rule__Event__TypeAssignment_0 : ( ( ruleQualifiedName ) ) ;
     public final void rule__Event__TypeAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6782:1: ( ( ( ruleQualifiedName ) ) )
-            // InternalAspectLang.g:6783:1: ( ( ruleQualifiedName ) )
+            // InternalAspectLang.g:6789:1: ( ( ( ruleQualifiedName ) ) )
+            // InternalAspectLang.g:6790:1: ( ( ruleQualifiedName ) )
             {
-            // InternalAspectLang.g:6783:1: ( ( ruleQualifiedName ) )
-            // InternalAspectLang.g:6784:1: ( ruleQualifiedName )
+            // InternalAspectLang.g:6790:1: ( ( ruleQualifiedName ) )
+            // InternalAspectLang.g:6791:1: ( ruleQualifiedName )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getEventAccess().getTypeRecordTypeCrossReference_0_0()); 
             }
-            // InternalAspectLang.g:6785:1: ( ruleQualifiedName )
-            // InternalAspectLang.g:6786:1: ruleQualifiedName
+            // InternalAspectLang.g:6792:1: ( ruleQualifiedName )
+            // InternalAspectLang.g:6793:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getEventAccess().getTypeRecordTypeQualifiedNameParserRuleCall_0_0_1()); 
@@ -19703,17 +19738,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Event__InitializationsAssignment_2_0"
-    // InternalAspectLang.g:6797:1: rule__Event__InitializationsAssignment_2_0 : ( ruleValue ) ;
+    // InternalAspectLang.g:6804:1: rule__Event__InitializationsAssignment_2_0 : ( ruleValue ) ;
     public final void rule__Event__InitializationsAssignment_2_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6801:1: ( ( ruleValue ) )
-            // InternalAspectLang.g:6802:1: ( ruleValue )
+            // InternalAspectLang.g:6808:1: ( ( ruleValue ) )
+            // InternalAspectLang.g:6809:1: ( ruleValue )
             {
-            // InternalAspectLang.g:6802:1: ( ruleValue )
-            // InternalAspectLang.g:6803:1: ruleValue
+            // InternalAspectLang.g:6809:1: ( ruleValue )
+            // InternalAspectLang.g:6810:1: ruleValue
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getEventAccess().getInitializationsValueParserRuleCall_2_0_0()); 
@@ -19748,17 +19783,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Event__InitializationsAssignment_2_1_1"
-    // InternalAspectLang.g:6812:1: rule__Event__InitializationsAssignment_2_1_1 : ( ruleValue ) ;
+    // InternalAspectLang.g:6819:1: rule__Event__InitializationsAssignment_2_1_1 : ( ruleValue ) ;
     public final void rule__Event__InitializationsAssignment_2_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6816:1: ( ( ruleValue ) )
-            // InternalAspectLang.g:6817:1: ( ruleValue )
+            // InternalAspectLang.g:6823:1: ( ( ruleValue ) )
+            // InternalAspectLang.g:6824:1: ( ruleValue )
             {
-            // InternalAspectLang.g:6817:1: ( ruleValue )
-            // InternalAspectLang.g:6818:1: ruleValue
+            // InternalAspectLang.g:6824:1: ( ruleValue )
+            // InternalAspectLang.g:6825:1: ruleValue
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getEventAccess().getInitializationsValueParserRuleCall_2_1_1_0()); 
@@ -19793,17 +19828,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ReferenceValue__QueryAssignment_0"
-    // InternalAspectLang.g:6827:1: rule__ReferenceValue__QueryAssignment_0 : ( ruleLocationQuery ) ;
+    // InternalAspectLang.g:6834:1: rule__ReferenceValue__QueryAssignment_0 : ( ruleLocationQuery ) ;
     public final void rule__ReferenceValue__QueryAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6831:1: ( ( ruleLocationQuery ) )
-            // InternalAspectLang.g:6832:1: ( ruleLocationQuery )
+            // InternalAspectLang.g:6838:1: ( ( ruleLocationQuery ) )
+            // InternalAspectLang.g:6839:1: ( ruleLocationQuery )
             {
-            // InternalAspectLang.g:6832:1: ( ruleLocationQuery )
-            // InternalAspectLang.g:6833:1: ruleLocationQuery
+            // InternalAspectLang.g:6839:1: ( ruleLocationQuery )
+            // InternalAspectLang.g:6840:1: ruleLocationQuery
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getReferenceValueAccess().getQueryLocationQueryParserRuleCall_0_0()); 
@@ -19838,17 +19873,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ReferenceValue__PropertyAssignment_1"
-    // InternalAspectLang.g:6842:1: rule__ReferenceValue__PropertyAssignment_1 : ( ruleProperty ) ;
+    // InternalAspectLang.g:6849:1: rule__ReferenceValue__PropertyAssignment_1 : ( ruleProperty ) ;
     public final void rule__ReferenceValue__PropertyAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6846:1: ( ( ruleProperty ) )
-            // InternalAspectLang.g:6847:1: ( ruleProperty )
+            // InternalAspectLang.g:6853:1: ( ( ruleProperty ) )
+            // InternalAspectLang.g:6854:1: ( ruleProperty )
             {
-            // InternalAspectLang.g:6847:1: ( ruleProperty )
-            // InternalAspectLang.g:6848:1: ruleProperty
+            // InternalAspectLang.g:6854:1: ( ruleProperty )
+            // InternalAspectLang.g:6855:1: ruleProperty
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getReferenceValueAccess().getPropertyPropertyParserRuleCall_1_0()); 
@@ -19883,17 +19918,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__InternalFunctionProperty__FunctionAssignment"
-    // InternalAspectLang.g:6857:1: rule__InternalFunctionProperty__FunctionAssignment : ( ruleInternalFunction ) ;
+    // InternalAspectLang.g:6864:1: rule__InternalFunctionProperty__FunctionAssignment : ( ruleInternalFunction ) ;
     public final void rule__InternalFunctionProperty__FunctionAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6861:1: ( ( ruleInternalFunction ) )
-            // InternalAspectLang.g:6862:1: ( ruleInternalFunction )
+            // InternalAspectLang.g:6868:1: ( ( ruleInternalFunction ) )
+            // InternalAspectLang.g:6869:1: ( ruleInternalFunction )
             {
-            // InternalAspectLang.g:6862:1: ( ruleInternalFunction )
-            // InternalAspectLang.g:6863:1: ruleInternalFunction
+            // InternalAspectLang.g:6869:1: ( ruleInternalFunction )
+            // InternalAspectLang.g:6870:1: ruleInternalFunction
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getInternalFunctionPropertyAccess().getFunctionInternalFunctionEnumRuleCall_0()); 
@@ -19928,17 +19963,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ReflectionProperty__FunctionAssignment_1"
-    // InternalAspectLang.g:6872:1: rule__ReflectionProperty__FunctionAssignment_1 : ( ruleReflectionFunction ) ;
+    // InternalAspectLang.g:6879:1: rule__ReflectionProperty__FunctionAssignment_1 : ( ruleReflectionFunction ) ;
     public final void rule__ReflectionProperty__FunctionAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6876:1: ( ( ruleReflectionFunction ) )
-            // InternalAspectLang.g:6877:1: ( ruleReflectionFunction )
+            // InternalAspectLang.g:6883:1: ( ( ruleReflectionFunction ) )
+            // InternalAspectLang.g:6884:1: ( ruleReflectionFunction )
             {
-            // InternalAspectLang.g:6877:1: ( ruleReflectionFunction )
-            // InternalAspectLang.g:6878:1: ruleReflectionFunction
+            // InternalAspectLang.g:6884:1: ( ruleReflectionFunction )
+            // InternalAspectLang.g:6885:1: ruleReflectionFunction
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getReflectionPropertyAccess().getFunctionReflectionFunctionEnumRuleCall_1_0()); 
@@ -19973,23 +20008,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__AdviceParameter__DeclarationAssignment_0"
-    // InternalAspectLang.g:6887:1: rule__AdviceParameter__DeclarationAssignment_0 : ( ( RULE_ID ) ) ;
+    // InternalAspectLang.g:6894:1: rule__AdviceParameter__DeclarationAssignment_0 : ( ( RULE_ID ) ) ;
     public final void rule__AdviceParameter__DeclarationAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6891:1: ( ( ( RULE_ID ) ) )
-            // InternalAspectLang.g:6892:1: ( ( RULE_ID ) )
+            // InternalAspectLang.g:6898:1: ( ( ( RULE_ID ) ) )
+            // InternalAspectLang.g:6899:1: ( ( RULE_ID ) )
             {
-            // InternalAspectLang.g:6892:1: ( ( RULE_ID ) )
-            // InternalAspectLang.g:6893:1: ( RULE_ID )
+            // InternalAspectLang.g:6899:1: ( ( RULE_ID ) )
+            // InternalAspectLang.g:6900:1: ( RULE_ID )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdviceParameterAccess().getDeclarationAdviceParameterDeclarationCrossReference_0_0()); 
             }
-            // InternalAspectLang.g:6894:1: ( RULE_ID )
-            // InternalAspectLang.g:6895:1: RULE_ID
+            // InternalAspectLang.g:6901:1: ( RULE_ID )
+            // InternalAspectLang.g:6902:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdviceParameterAccess().getDeclarationAdviceParameterDeclarationIDTerminalRuleCall_0_0_1()); 
@@ -20026,17 +20061,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__AdviceParameter__CollectionAssignment_1_1"
-    // InternalAspectLang.g:6906:1: rule__AdviceParameter__CollectionAssignment_1_1 : ( ruleValue ) ;
+    // InternalAspectLang.g:6913:1: rule__AdviceParameter__CollectionAssignment_1_1 : ( ruleValue ) ;
     public final void rule__AdviceParameter__CollectionAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6910:1: ( ( ruleValue ) )
-            // InternalAspectLang.g:6911:1: ( ruleValue )
+            // InternalAspectLang.g:6917:1: ( ( ruleValue ) )
+            // InternalAspectLang.g:6918:1: ( ruleValue )
             {
-            // InternalAspectLang.g:6911:1: ( ruleValue )
-            // InternalAspectLang.g:6912:1: ruleValue
+            // InternalAspectLang.g:6918:1: ( ruleValue )
+            // InternalAspectLang.g:6919:1: ruleValue
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAdviceParameterAccess().getCollectionValueParserRuleCall_1_1_0()); 
@@ -20071,17 +20106,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Pointcut__AnnotationAssignment_0"
-    // InternalAspectLang.g:6921:1: rule__Pointcut__AnnotationAssignment_0 : ( ruleAnnotation ) ;
+    // InternalAspectLang.g:6928:1: rule__Pointcut__AnnotationAssignment_0 : ( ruleAnnotation ) ;
     public final void rule__Pointcut__AnnotationAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6925:1: ( ( ruleAnnotation ) )
-            // InternalAspectLang.g:6926:1: ( ruleAnnotation )
+            // InternalAspectLang.g:6932:1: ( ( ruleAnnotation ) )
+            // InternalAspectLang.g:6933:1: ( ruleAnnotation )
             {
-            // InternalAspectLang.g:6926:1: ( ruleAnnotation )
-            // InternalAspectLang.g:6927:1: ruleAnnotation
+            // InternalAspectLang.g:6933:1: ( ruleAnnotation )
+            // InternalAspectLang.g:6934:1: ruleAnnotation
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPointcutAccess().getAnnotationAnnotationParserRuleCall_0_0()); 
@@ -20116,17 +20151,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Pointcut__NameAssignment_2"
-    // InternalAspectLang.g:6936:1: rule__Pointcut__NameAssignment_2 : ( RULE_ID ) ;
+    // InternalAspectLang.g:6943:1: rule__Pointcut__NameAssignment_2 : ( RULE_ID ) ;
     public final void rule__Pointcut__NameAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6940:1: ( ( RULE_ID ) )
-            // InternalAspectLang.g:6941:1: ( RULE_ID )
+            // InternalAspectLang.g:6947:1: ( ( RULE_ID ) )
+            // InternalAspectLang.g:6948:1: ( RULE_ID )
             {
-            // InternalAspectLang.g:6941:1: ( RULE_ID )
-            // InternalAspectLang.g:6942:1: RULE_ID
+            // InternalAspectLang.g:6948:1: ( RULE_ID )
+            // InternalAspectLang.g:6949:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPointcutAccess().getNameIDTerminalRuleCall_2_0()); 
@@ -20157,23 +20192,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Pointcut__ModelAssignment_4"
-    // InternalAspectLang.g:6951:1: rule__Pointcut__ModelAssignment_4 : ( ( RULE_ID ) ) ;
+    // InternalAspectLang.g:6958:1: rule__Pointcut__ModelAssignment_4 : ( ( RULE_ID ) ) ;
     public final void rule__Pointcut__ModelAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6955:1: ( ( ( RULE_ID ) ) )
-            // InternalAspectLang.g:6956:1: ( ( RULE_ID ) )
+            // InternalAspectLang.g:6962:1: ( ( ( RULE_ID ) ) )
+            // InternalAspectLang.g:6963:1: ( ( RULE_ID ) )
             {
-            // InternalAspectLang.g:6956:1: ( ( RULE_ID ) )
-            // InternalAspectLang.g:6957:1: ( RULE_ID )
+            // InternalAspectLang.g:6963:1: ( ( RULE_ID ) )
+            // InternalAspectLang.g:6964:1: ( RULE_ID )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPointcutAccess().getModelApplicationModelCrossReference_4_0()); 
             }
-            // InternalAspectLang.g:6958:1: ( RULE_ID )
-            // InternalAspectLang.g:6959:1: RULE_ID
+            // InternalAspectLang.g:6965:1: ( RULE_ID )
+            // InternalAspectLang.g:6966:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPointcutAccess().getModelApplicationModelIDTerminalRuleCall_4_0_1()); 
@@ -20210,17 +20245,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Pointcut__LocationAssignment_6"
-    // InternalAspectLang.g:6970:1: rule__Pointcut__LocationAssignment_6 : ( ruleLocationQuery ) ;
+    // InternalAspectLang.g:6977:1: rule__Pointcut__LocationAssignment_6 : ( ruleLocationQuery ) ;
     public final void rule__Pointcut__LocationAssignment_6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6974:1: ( ( ruleLocationQuery ) )
-            // InternalAspectLang.g:6975:1: ( ruleLocationQuery )
+            // InternalAspectLang.g:6981:1: ( ( ruleLocationQuery ) )
+            // InternalAspectLang.g:6982:1: ( ruleLocationQuery )
             {
-            // InternalAspectLang.g:6975:1: ( ruleLocationQuery )
-            // InternalAspectLang.g:6976:1: ruleLocationQuery
+            // InternalAspectLang.g:6982:1: ( ruleLocationQuery )
+            // InternalAspectLang.g:6983:1: ruleLocationQuery
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPointcutAccess().getLocationLocationQueryParserRuleCall_6_0()); 
@@ -20255,17 +20290,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Pointcut__OperationAssignment_7_1"
-    // InternalAspectLang.g:6985:1: rule__Pointcut__OperationAssignment_7_1 : ( ruleOperationQuery ) ;
+    // InternalAspectLang.g:6992:1: rule__Pointcut__OperationAssignment_7_1 : ( ruleOperationQuery ) ;
     public final void rule__Pointcut__OperationAssignment_7_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:6989:1: ( ( ruleOperationQuery ) )
-            // InternalAspectLang.g:6990:1: ( ruleOperationQuery )
+            // InternalAspectLang.g:6996:1: ( ( ruleOperationQuery ) )
+            // InternalAspectLang.g:6997:1: ( ruleOperationQuery )
             {
-            // InternalAspectLang.g:6990:1: ( ruleOperationQuery )
-            // InternalAspectLang.g:6991:1: ruleOperationQuery
+            // InternalAspectLang.g:6997:1: ( ruleOperationQuery )
+            // InternalAspectLang.g:6998:1: ruleOperationQuery
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPointcutAccess().getOperationOperationQueryParserRuleCall_7_1_0()); 
@@ -20300,28 +20335,28 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Annotation__NameAssignment_1"
-    // InternalAspectLang.g:7000:1: rule__Annotation__NameAssignment_1 : ( ( 'technology' ) ) ;
+    // InternalAspectLang.g:7007:1: rule__Annotation__NameAssignment_1 : ( ( 'technology' ) ) ;
     public final void rule__Annotation__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:7004:1: ( ( ( 'technology' ) ) )
-            // InternalAspectLang.g:7005:1: ( ( 'technology' ) )
+            // InternalAspectLang.g:7011:1: ( ( ( 'technology' ) ) )
+            // InternalAspectLang.g:7012:1: ( ( 'technology' ) )
             {
-            // InternalAspectLang.g:7005:1: ( ( 'technology' ) )
-            // InternalAspectLang.g:7006:1: ( 'technology' )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getAnnotationAccess().getNameTechnologyKeyword_1_0()); 
-            }
-            // InternalAspectLang.g:7007:1: ( 'technology' )
-            // InternalAspectLang.g:7008:1: 'technology'
+            // InternalAspectLang.g:7012:1: ( ( 'technology' ) )
+            // InternalAspectLang.g:7013:1: ( 'technology' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAnnotationAccess().getNameTechnologyKeyword_1_0()); 
             }
-            match(input,62,FOLLOW_2); if (state.failed) return ;
+            // InternalAspectLang.g:7014:1: ( 'technology' )
+            // InternalAspectLang.g:7015:1: 'technology'
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getAnnotationAccess().getNameTechnologyKeyword_1_0()); 
+            }
+            match(input,63,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getAnnotationAccess().getNameTechnologyKeyword_1_0()); 
             }
@@ -20353,17 +20388,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Annotation__TechnologiesAssignment_2"
-    // InternalAspectLang.g:7023:1: rule__Annotation__TechnologiesAssignment_2 : ( ruleTechnology ) ;
+    // InternalAspectLang.g:7030:1: rule__Annotation__TechnologiesAssignment_2 : ( ruleTechnology ) ;
     public final void rule__Annotation__TechnologiesAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:7027:1: ( ( ruleTechnology ) )
-            // InternalAspectLang.g:7028:1: ( ruleTechnology )
+            // InternalAspectLang.g:7034:1: ( ( ruleTechnology ) )
+            // InternalAspectLang.g:7035:1: ( ruleTechnology )
             {
-            // InternalAspectLang.g:7028:1: ( ruleTechnology )
-            // InternalAspectLang.g:7029:1: ruleTechnology
+            // InternalAspectLang.g:7035:1: ( ruleTechnology )
+            // InternalAspectLang.g:7036:1: ruleTechnology
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAnnotationAccess().getTechnologiesTechnologyEnumRuleCall_2_0()); 
@@ -20398,17 +20433,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Annotation__TechnologiesAssignment_3_1"
-    // InternalAspectLang.g:7038:1: rule__Annotation__TechnologiesAssignment_3_1 : ( ruleTechnology ) ;
+    // InternalAspectLang.g:7045:1: rule__Annotation__TechnologiesAssignment_3_1 : ( ruleTechnology ) ;
     public final void rule__Annotation__TechnologiesAssignment_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:7042:1: ( ( ruleTechnology ) )
-            // InternalAspectLang.g:7043:1: ( ruleTechnology )
+            // InternalAspectLang.g:7049:1: ( ( ruleTechnology ) )
+            // InternalAspectLang.g:7050:1: ( ruleTechnology )
             {
-            // InternalAspectLang.g:7043:1: ( ruleTechnology )
-            // InternalAspectLang.g:7044:1: ruleTechnology
+            // InternalAspectLang.g:7050:1: ( ruleTechnology )
+            // InternalAspectLang.g:7051:1: ruleTechnology
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getAnnotationAccess().getTechnologiesTechnologyEnumRuleCall_3_1_0()); 
@@ -20443,17 +20478,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__LocationQuery__NodeAssignment_0"
-    // InternalAspectLang.g:7053:1: rule__LocationQuery__NodeAssignment_0 : ( ruleNode ) ;
+    // InternalAspectLang.g:7060:1: rule__LocationQuery__NodeAssignment_0 : ( ruleNode ) ;
     public final void rule__LocationQuery__NodeAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:7057:1: ( ( ruleNode ) )
-            // InternalAspectLang.g:7058:1: ( ruleNode )
+            // InternalAspectLang.g:7064:1: ( ( ruleNode ) )
+            // InternalAspectLang.g:7065:1: ( ruleNode )
             {
-            // InternalAspectLang.g:7058:1: ( ruleNode )
-            // InternalAspectLang.g:7059:1: ruleNode
+            // InternalAspectLang.g:7065:1: ( ruleNode )
+            // InternalAspectLang.g:7066:1: ruleNode
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLocationQueryAccess().getNodeNodeParserRuleCall_0_0()); 
@@ -20488,17 +20523,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__LocationQuery__SpecializationAssignment_1_0_1"
-    // InternalAspectLang.g:7068:1: rule__LocationQuery__SpecializationAssignment_1_0_1 : ( ruleLocationQuery ) ;
+    // InternalAspectLang.g:7075:1: rule__LocationQuery__SpecializationAssignment_1_0_1 : ( ruleLocationQuery ) ;
     public final void rule__LocationQuery__SpecializationAssignment_1_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:7072:1: ( ( ruleLocationQuery ) )
-            // InternalAspectLang.g:7073:1: ( ruleLocationQuery )
+            // InternalAspectLang.g:7079:1: ( ( ruleLocationQuery ) )
+            // InternalAspectLang.g:7080:1: ( ruleLocationQuery )
             {
-            // InternalAspectLang.g:7073:1: ( ruleLocationQuery )
-            // InternalAspectLang.g:7074:1: ruleLocationQuery
+            // InternalAspectLang.g:7080:1: ( ruleLocationQuery )
+            // InternalAspectLang.g:7081:1: ruleLocationQuery
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLocationQueryAccess().getSpecializationLocationQueryParserRuleCall_1_0_1_0()); 
@@ -20533,17 +20568,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__LocationQuery__CompositionAssignment_1_1"
-    // InternalAspectLang.g:7083:1: rule__LocationQuery__CompositionAssignment_1_1 : ( ruleCompositionQuery ) ;
+    // InternalAspectLang.g:7090:1: rule__LocationQuery__CompositionAssignment_1_1 : ( ruleCompositionQuery ) ;
     public final void rule__LocationQuery__CompositionAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:7087:1: ( ( ruleCompositionQuery ) )
-            // InternalAspectLang.g:7088:1: ( ruleCompositionQuery )
+            // InternalAspectLang.g:7094:1: ( ( ruleCompositionQuery ) )
+            // InternalAspectLang.g:7095:1: ( ruleCompositionQuery )
             {
-            // InternalAspectLang.g:7088:1: ( ruleCompositionQuery )
-            // InternalAspectLang.g:7089:1: ruleCompositionQuery
+            // InternalAspectLang.g:7095:1: ( ruleCompositionQuery )
+            // InternalAspectLang.g:7096:1: ruleCompositionQuery
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLocationQueryAccess().getCompositionCompositionQueryParserRuleCall_1_1_0()); 
@@ -20578,17 +20613,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__CompositionQuery__ModifierAssignment_1"
-    // InternalAspectLang.g:7098:1: rule__CompositionQuery__ModifierAssignment_1 : ( ruleQueryModifier ) ;
+    // InternalAspectLang.g:7105:1: rule__CompositionQuery__ModifierAssignment_1 : ( ruleQueryModifier ) ;
     public final void rule__CompositionQuery__ModifierAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:7102:1: ( ( ruleQueryModifier ) )
-            // InternalAspectLang.g:7103:1: ( ruleQueryModifier )
+            // InternalAspectLang.g:7109:1: ( ( ruleQueryModifier ) )
+            // InternalAspectLang.g:7110:1: ( ruleQueryModifier )
             {
-            // InternalAspectLang.g:7103:1: ( ruleQueryModifier )
-            // InternalAspectLang.g:7104:1: ruleQueryModifier
+            // InternalAspectLang.g:7110:1: ( ruleQueryModifier )
+            // InternalAspectLang.g:7111:1: ruleQueryModifier
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCompositionQueryAccess().getModifierQueryModifierEnumRuleCall_1_0()); 
@@ -20623,17 +20658,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__CompositionQuery__SubQueriesAssignment_3"
-    // InternalAspectLang.g:7113:1: rule__CompositionQuery__SubQueriesAssignment_3 : ( ruleLocationQuery ) ;
+    // InternalAspectLang.g:7120:1: rule__CompositionQuery__SubQueriesAssignment_3 : ( ruleLocationQuery ) ;
     public final void rule__CompositionQuery__SubQueriesAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:7117:1: ( ( ruleLocationQuery ) )
-            // InternalAspectLang.g:7118:1: ( ruleLocationQuery )
+            // InternalAspectLang.g:7124:1: ( ( ruleLocationQuery ) )
+            // InternalAspectLang.g:7125:1: ( ruleLocationQuery )
             {
-            // InternalAspectLang.g:7118:1: ( ruleLocationQuery )
-            // InternalAspectLang.g:7119:1: ruleLocationQuery
+            // InternalAspectLang.g:7125:1: ( ruleLocationQuery )
+            // InternalAspectLang.g:7126:1: ruleLocationQuery
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getCompositionQueryAccess().getSubQueriesLocationQueryParserRuleCall_3_0()); 
@@ -20668,23 +20703,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__OperationQuery__ModifierAssignment_1"
-    // InternalAspectLang.g:7128:1: rule__OperationQuery__ModifierAssignment_1 : ( ( RULE_ID ) ) ;
+    // InternalAspectLang.g:7135:1: rule__OperationQuery__ModifierAssignment_1 : ( ( RULE_ID ) ) ;
     public final void rule__OperationQuery__ModifierAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:7132:1: ( ( ( RULE_ID ) ) )
-            // InternalAspectLang.g:7133:1: ( ( RULE_ID ) )
+            // InternalAspectLang.g:7139:1: ( ( ( RULE_ID ) ) )
+            // InternalAspectLang.g:7140:1: ( ( RULE_ID ) )
             {
-            // InternalAspectLang.g:7133:1: ( ( RULE_ID ) )
-            // InternalAspectLang.g:7134:1: ( RULE_ID )
+            // InternalAspectLang.g:7140:1: ( ( RULE_ID ) )
+            // InternalAspectLang.g:7141:1: ( RULE_ID )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getOperationQueryAccess().getModifierOperationModifierCrossReference_1_0()); 
             }
-            // InternalAspectLang.g:7135:1: ( RULE_ID )
-            // InternalAspectLang.g:7136:1: RULE_ID
+            // InternalAspectLang.g:7142:1: ( RULE_ID )
+            // InternalAspectLang.g:7143:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getOperationQueryAccess().getModifierOperationModifierIDTerminalRuleCall_1_0_1()); 
@@ -20721,17 +20756,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__OperationQuery__ReturnTypeAssignment_2"
-    // InternalAspectLang.g:7147:1: rule__OperationQuery__ReturnTypeAssignment_2 : ( ruleTypeReference ) ;
+    // InternalAspectLang.g:7154:1: rule__OperationQuery__ReturnTypeAssignment_2 : ( ruleTypeReference ) ;
     public final void rule__OperationQuery__ReturnTypeAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:7151:1: ( ( ruleTypeReference ) )
-            // InternalAspectLang.g:7152:1: ( ruleTypeReference )
+            // InternalAspectLang.g:7158:1: ( ( ruleTypeReference ) )
+            // InternalAspectLang.g:7159:1: ( ruleTypeReference )
             {
-            // InternalAspectLang.g:7152:1: ( ruleTypeReference )
-            // InternalAspectLang.g:7153:1: ruleTypeReference
+            // InternalAspectLang.g:7159:1: ( ruleTypeReference )
+            // InternalAspectLang.g:7160:1: ruleTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getOperationQueryAccess().getReturnTypeTypeReferenceParserRuleCall_2_0()); 
@@ -20766,23 +20801,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__OperationQuery__OperationReferenceAssignment_3_0_0"
-    // InternalAspectLang.g:7162:1: rule__OperationQuery__OperationReferenceAssignment_3_0_0 : ( ( RULE_ID ) ) ;
+    // InternalAspectLang.g:7169:1: rule__OperationQuery__OperationReferenceAssignment_3_0_0 : ( ( RULE_ID ) ) ;
     public final void rule__OperationQuery__OperationReferenceAssignment_3_0_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:7166:1: ( ( ( RULE_ID ) ) )
-            // InternalAspectLang.g:7167:1: ( ( RULE_ID ) )
+            // InternalAspectLang.g:7173:1: ( ( ( RULE_ID ) ) )
+            // InternalAspectLang.g:7174:1: ( ( RULE_ID ) )
             {
-            // InternalAspectLang.g:7167:1: ( ( RULE_ID ) )
-            // InternalAspectLang.g:7168:1: ( RULE_ID )
+            // InternalAspectLang.g:7174:1: ( ( RULE_ID ) )
+            // InternalAspectLang.g:7175:1: ( RULE_ID )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getOperationQueryAccess().getOperationReferenceOperationCrossReference_3_0_0_0()); 
             }
-            // InternalAspectLang.g:7169:1: ( RULE_ID )
-            // InternalAspectLang.g:7170:1: RULE_ID
+            // InternalAspectLang.g:7176:1: ( RULE_ID )
+            // InternalAspectLang.g:7177:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getOperationQueryAccess().getOperationReferenceOperationIDTerminalRuleCall_3_0_0_0_1()); 
@@ -20819,17 +20854,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__OperationQuery__ParameterQueriesAssignment_3_0_1_1"
-    // InternalAspectLang.g:7181:1: rule__OperationQuery__ParameterQueriesAssignment_3_0_1_1 : ( ruleParameterQuery ) ;
+    // InternalAspectLang.g:7188:1: rule__OperationQuery__ParameterQueriesAssignment_3_0_1_1 : ( ruleParameterQuery ) ;
     public final void rule__OperationQuery__ParameterQueriesAssignment_3_0_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:7185:1: ( ( ruleParameterQuery ) )
-            // InternalAspectLang.g:7186:1: ( ruleParameterQuery )
+            // InternalAspectLang.g:7192:1: ( ( ruleParameterQuery ) )
+            // InternalAspectLang.g:7193:1: ( ruleParameterQuery )
             {
-            // InternalAspectLang.g:7186:1: ( ruleParameterQuery )
-            // InternalAspectLang.g:7187:1: ruleParameterQuery
+            // InternalAspectLang.g:7193:1: ( ruleParameterQuery )
+            // InternalAspectLang.g:7194:1: ruleParameterQuery
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getOperationQueryAccess().getParameterQueriesParameterQueryParserRuleCall_3_0_1_1_0()); 
@@ -20864,17 +20899,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__OperationQuery__ParameterQueriesAssignment_3_0_1_2_1"
-    // InternalAspectLang.g:7196:1: rule__OperationQuery__ParameterQueriesAssignment_3_0_1_2_1 : ( ruleParameterQuery ) ;
+    // InternalAspectLang.g:7203:1: rule__OperationQuery__ParameterQueriesAssignment_3_0_1_2_1 : ( ruleParameterQuery ) ;
     public final void rule__OperationQuery__ParameterQueriesAssignment_3_0_1_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:7200:1: ( ( ruleParameterQuery ) )
-            // InternalAspectLang.g:7201:1: ( ruleParameterQuery )
+            // InternalAspectLang.g:7207:1: ( ( ruleParameterQuery ) )
+            // InternalAspectLang.g:7208:1: ( ruleParameterQuery )
             {
-            // InternalAspectLang.g:7201:1: ( ruleParameterQuery )
-            // InternalAspectLang.g:7202:1: ruleParameterQuery
+            // InternalAspectLang.g:7208:1: ( ruleParameterQuery )
+            // InternalAspectLang.g:7209:1: ruleParameterQuery
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getOperationQueryAccess().getParameterQueriesParameterQueryParserRuleCall_3_0_1_2_1_0()); 
@@ -20909,23 +20944,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ParameterQuery__ModifierAssignment_1"
-    // InternalAspectLang.g:7211:1: rule__ParameterQuery__ModifierAssignment_1 : ( ( RULE_ID ) ) ;
+    // InternalAspectLang.g:7218:1: rule__ParameterQuery__ModifierAssignment_1 : ( ( RULE_ID ) ) ;
     public final void rule__ParameterQuery__ModifierAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:7215:1: ( ( ( RULE_ID ) ) )
-            // InternalAspectLang.g:7216:1: ( ( RULE_ID ) )
+            // InternalAspectLang.g:7222:1: ( ( ( RULE_ID ) ) )
+            // InternalAspectLang.g:7223:1: ( ( RULE_ID ) )
             {
-            // InternalAspectLang.g:7216:1: ( ( RULE_ID ) )
-            // InternalAspectLang.g:7217:1: ( RULE_ID )
+            // InternalAspectLang.g:7223:1: ( ( RULE_ID ) )
+            // InternalAspectLang.g:7224:1: ( RULE_ID )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getParameterQueryAccess().getModifierParameterModifierCrossReference_1_0()); 
             }
-            // InternalAspectLang.g:7218:1: ( RULE_ID )
-            // InternalAspectLang.g:7219:1: RULE_ID
+            // InternalAspectLang.g:7225:1: ( RULE_ID )
+            // InternalAspectLang.g:7226:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getParameterQueryAccess().getModifierParameterModifierIDTerminalRuleCall_1_0_1()); 
@@ -20962,17 +20997,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ParameterQuery__TypeAssignment_2_0"
-    // InternalAspectLang.g:7230:1: rule__ParameterQuery__TypeAssignment_2_0 : ( ruleTypeReference ) ;
+    // InternalAspectLang.g:7237:1: rule__ParameterQuery__TypeAssignment_2_0 : ( ruleTypeReference ) ;
     public final void rule__ParameterQuery__TypeAssignment_2_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:7234:1: ( ( ruleTypeReference ) )
-            // InternalAspectLang.g:7235:1: ( ruleTypeReference )
+            // InternalAspectLang.g:7241:1: ( ( ruleTypeReference ) )
+            // InternalAspectLang.g:7242:1: ( ruleTypeReference )
             {
-            // InternalAspectLang.g:7235:1: ( ruleTypeReference )
-            // InternalAspectLang.g:7236:1: ruleTypeReference
+            // InternalAspectLang.g:7242:1: ( ruleTypeReference )
+            // InternalAspectLang.g:7243:1: ruleTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getParameterQueryAccess().getTypeTypeReferenceParserRuleCall_2_0_0()); 
@@ -21007,23 +21042,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ParameterQuery__ParameterAssignment_3"
-    // InternalAspectLang.g:7245:1: rule__ParameterQuery__ParameterAssignment_3 : ( ( RULE_ID ) ) ;
+    // InternalAspectLang.g:7252:1: rule__ParameterQuery__ParameterAssignment_3 : ( ( RULE_ID ) ) ;
     public final void rule__ParameterQuery__ParameterAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:7249:1: ( ( ( RULE_ID ) ) )
-            // InternalAspectLang.g:7250:1: ( ( RULE_ID ) )
+            // InternalAspectLang.g:7256:1: ( ( ( RULE_ID ) ) )
+            // InternalAspectLang.g:7257:1: ( ( RULE_ID ) )
             {
-            // InternalAspectLang.g:7250:1: ( ( RULE_ID ) )
-            // InternalAspectLang.g:7251:1: ( RULE_ID )
+            // InternalAspectLang.g:7257:1: ( ( RULE_ID ) )
+            // InternalAspectLang.g:7258:1: ( RULE_ID )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getParameterQueryAccess().getParameterParameterCrossReference_3_0()); 
             }
-            // InternalAspectLang.g:7252:1: ( RULE_ID )
-            // InternalAspectLang.g:7253:1: RULE_ID
+            // InternalAspectLang.g:7259:1: ( RULE_ID )
+            // InternalAspectLang.g:7260:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getParameterQueryAccess().getParameterParameterIDTerminalRuleCall_3_0_1()); 
@@ -21060,17 +21095,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Node__ConstraintAssignment_1_1"
-    // InternalAspectLang.g:7264:1: rule__Node__ConstraintAssignment_1_1 : ( rulePropertyConstraint ) ;
+    // InternalAspectLang.g:7271:1: rule__Node__ConstraintAssignment_1_1 : ( rulePropertyConstraint ) ;
     public final void rule__Node__ConstraintAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:7268:1: ( ( rulePropertyConstraint ) )
-            // InternalAspectLang.g:7269:1: ( rulePropertyConstraint )
+            // InternalAspectLang.g:7275:1: ( ( rulePropertyConstraint ) )
+            // InternalAspectLang.g:7276:1: ( rulePropertyConstraint )
             {
-            // InternalAspectLang.g:7269:1: ( rulePropertyConstraint )
-            // InternalAspectLang.g:7270:1: rulePropertyConstraint
+            // InternalAspectLang.g:7276:1: ( rulePropertyConstraint )
+            // InternalAspectLang.g:7277:1: rulePropertyConstraint
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getNodeAccess().getConstraintPropertyConstraintParserRuleCall_1_1_0()); 
@@ -21105,23 +21140,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ContainerNode__ContainerAssignment"
-    // InternalAspectLang.g:7279:1: rule__ContainerNode__ContainerAssignment : ( ( RULE_ID ) ) ;
+    // InternalAspectLang.g:7286:1: rule__ContainerNode__ContainerAssignment : ( ( RULE_ID ) ) ;
     public final void rule__ContainerNode__ContainerAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:7283:1: ( ( ( RULE_ID ) ) )
-            // InternalAspectLang.g:7284:1: ( ( RULE_ID ) )
+            // InternalAspectLang.g:7290:1: ( ( ( RULE_ID ) ) )
+            // InternalAspectLang.g:7291:1: ( ( RULE_ID ) )
             {
-            // InternalAspectLang.g:7284:1: ( ( RULE_ID ) )
-            // InternalAspectLang.g:7285:1: ( RULE_ID )
+            // InternalAspectLang.g:7291:1: ( ( RULE_ID ) )
+            // InternalAspectLang.g:7292:1: ( RULE_ID )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getContainerNodeAccess().getContainerFeatureCrossReference_0()); 
             }
-            // InternalAspectLang.g:7286:1: ( RULE_ID )
-            // InternalAspectLang.g:7287:1: RULE_ID
+            // InternalAspectLang.g:7293:1: ( RULE_ID )
+            // InternalAspectLang.g:7294:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getContainerNodeAccess().getContainerFeatureIDTerminalRuleCall_0_1()); 
@@ -21158,17 +21193,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__PropertyConstraint__LogicAssignment_1_1"
-    // InternalAspectLang.g:7298:1: rule__PropertyConstraint__LogicAssignment_1_1 : ( ruleLogicOperator ) ;
+    // InternalAspectLang.g:7305:1: rule__PropertyConstraint__LogicAssignment_1_1 : ( ruleLogicOperator ) ;
     public final void rule__PropertyConstraint__LogicAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:7302:1: ( ( ruleLogicOperator ) )
-            // InternalAspectLang.g:7303:1: ( ruleLogicOperator )
+            // InternalAspectLang.g:7309:1: ( ( ruleLogicOperator ) )
+            // InternalAspectLang.g:7310:1: ( ruleLogicOperator )
             {
-            // InternalAspectLang.g:7303:1: ( ruleLogicOperator )
-            // InternalAspectLang.g:7304:1: ruleLogicOperator
+            // InternalAspectLang.g:7310:1: ( ruleLogicOperator )
+            // InternalAspectLang.g:7311:1: ruleLogicOperator
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyConstraintAccess().getLogicLogicOperatorEnumRuleCall_1_1_0()); 
@@ -21203,17 +21238,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__PropertyConstraint__RightAssignment_1_2"
-    // InternalAspectLang.g:7313:1: rule__PropertyConstraint__RightAssignment_1_2 : ( rulePropertyConstraintCompare ) ;
+    // InternalAspectLang.g:7320:1: rule__PropertyConstraint__RightAssignment_1_2 : ( rulePropertyConstraintCompare ) ;
     public final void rule__PropertyConstraint__RightAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:7317:1: ( ( rulePropertyConstraintCompare ) )
-            // InternalAspectLang.g:7318:1: ( rulePropertyConstraintCompare )
+            // InternalAspectLang.g:7324:1: ( ( rulePropertyConstraintCompare ) )
+            // InternalAspectLang.g:7325:1: ( rulePropertyConstraintCompare )
             {
-            // InternalAspectLang.g:7318:1: ( rulePropertyConstraintCompare )
-            // InternalAspectLang.g:7319:1: rulePropertyConstraintCompare
+            // InternalAspectLang.g:7325:1: ( rulePropertyConstraintCompare )
+            // InternalAspectLang.g:7326:1: rulePropertyConstraintCompare
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyConstraintAccess().getRightPropertyConstraintCompareParserRuleCall_1_2_0()); 
@@ -21248,17 +21283,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__PropertyConstraintCompare__CompareAssignment_1_1"
-    // InternalAspectLang.g:7328:1: rule__PropertyConstraintCompare__CompareAssignment_1_1 : ( ruleCompareOperator ) ;
+    // InternalAspectLang.g:7335:1: rule__PropertyConstraintCompare__CompareAssignment_1_1 : ( ruleCompareOperator ) ;
     public final void rule__PropertyConstraintCompare__CompareAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:7332:1: ( ( ruleCompareOperator ) )
-            // InternalAspectLang.g:7333:1: ( ruleCompareOperator )
+            // InternalAspectLang.g:7339:1: ( ( ruleCompareOperator ) )
+            // InternalAspectLang.g:7340:1: ( ruleCompareOperator )
             {
-            // InternalAspectLang.g:7333:1: ( ruleCompareOperator )
-            // InternalAspectLang.g:7334:1: ruleCompareOperator
+            // InternalAspectLang.g:7340:1: ( ruleCompareOperator )
+            // InternalAspectLang.g:7341:1: ruleCompareOperator
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyConstraintCompareAccess().getCompareCompareOperatorEnumRuleCall_1_1_0()); 
@@ -21293,17 +21328,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__PropertyConstraintCompare__RightAssignment_1_2"
-    // InternalAspectLang.g:7343:1: rule__PropertyConstraintCompare__RightAssignment_1_2 : ( ruleConstraintElement ) ;
+    // InternalAspectLang.g:7350:1: rule__PropertyConstraintCompare__RightAssignment_1_2 : ( ruleConstraintElement ) ;
     public final void rule__PropertyConstraintCompare__RightAssignment_1_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:7347:1: ( ( ruleConstraintElement ) )
-            // InternalAspectLang.g:7348:1: ( ruleConstraintElement )
+            // InternalAspectLang.g:7354:1: ( ( ruleConstraintElement ) )
+            // InternalAspectLang.g:7355:1: ( ruleConstraintElement )
             {
-            // InternalAspectLang.g:7348:1: ( ruleConstraintElement )
-            // InternalAspectLang.g:7349:1: ruleConstraintElement
+            // InternalAspectLang.g:7355:1: ( ruleConstraintElement )
+            // InternalAspectLang.g:7356:1: ruleConstraintElement
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyConstraintCompareAccess().getRightConstraintElementParserRuleCall_1_2_0()); 
@@ -21338,17 +21373,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__LocalQuery__LocationQueryAssignment_0"
-    // InternalAspectLang.g:7358:1: rule__LocalQuery__LocationQueryAssignment_0 : ( ruleLocationQuery ) ;
+    // InternalAspectLang.g:7365:1: rule__LocalQuery__LocationQueryAssignment_0 : ( ruleLocationQuery ) ;
     public final void rule__LocalQuery__LocationQueryAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:7362:1: ( ( ruleLocationQuery ) )
-            // InternalAspectLang.g:7363:1: ( ruleLocationQuery )
+            // InternalAspectLang.g:7369:1: ( ( ruleLocationQuery ) )
+            // InternalAspectLang.g:7370:1: ( ruleLocationQuery )
             {
-            // InternalAspectLang.g:7363:1: ( ruleLocationQuery )
-            // InternalAspectLang.g:7364:1: ruleLocationQuery
+            // InternalAspectLang.g:7370:1: ( ruleLocationQuery )
+            // InternalAspectLang.g:7371:1: ruleLocationQuery
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLocalQueryAccess().getLocationQueryLocationQueryParserRuleCall_0_0()); 
@@ -21383,17 +21418,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__LocalQuery__PropertyAssignment_1_0"
-    // InternalAspectLang.g:7373:1: rule__LocalQuery__PropertyAssignment_1_0 : ( ruleModelProperty ) ;
+    // InternalAspectLang.g:7380:1: rule__LocalQuery__PropertyAssignment_1_0 : ( ruleModelProperty ) ;
     public final void rule__LocalQuery__PropertyAssignment_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:7377:1: ( ( ruleModelProperty ) )
-            // InternalAspectLang.g:7378:1: ( ruleModelProperty )
+            // InternalAspectLang.g:7384:1: ( ( ruleModelProperty ) )
+            // InternalAspectLang.g:7385:1: ( ruleModelProperty )
             {
-            // InternalAspectLang.g:7378:1: ( ruleModelProperty )
-            // InternalAspectLang.g:7379:1: ruleModelProperty
+            // InternalAspectLang.g:7385:1: ( ruleModelProperty )
+            // InternalAspectLang.g:7386:1: ruleModelProperty
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLocalQueryAccess().getPropertyModelPropertyParserRuleCall_1_0_0()); 
@@ -21428,17 +21463,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__LocalQuery__TypeofAssignment_1_1"
-    // InternalAspectLang.g:7388:1: rule__LocalQuery__TypeofAssignment_1_1 : ( ruleTypeof ) ;
+    // InternalAspectLang.g:7395:1: rule__LocalQuery__TypeofAssignment_1_1 : ( ruleTypeof ) ;
     public final void rule__LocalQuery__TypeofAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:7392:1: ( ( ruleTypeof ) )
-            // InternalAspectLang.g:7393:1: ( ruleTypeof )
+            // InternalAspectLang.g:7399:1: ( ( ruleTypeof ) )
+            // InternalAspectLang.g:7400:1: ( ruleTypeof )
             {
-            // InternalAspectLang.g:7393:1: ( ruleTypeof )
-            // InternalAspectLang.g:7394:1: ruleTypeof
+            // InternalAspectLang.g:7400:1: ( ruleTypeof )
+            // InternalAspectLang.g:7401:1: ruleTypeof
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLocalQueryAccess().getTypeofTypeofParserRuleCall_1_1_0()); 
@@ -21473,23 +21508,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ModelProperty__ReferenceAssignment_1"
-    // InternalAspectLang.g:7403:1: rule__ModelProperty__ReferenceAssignment_1 : ( ( RULE_ID ) ) ;
+    // InternalAspectLang.g:7410:1: rule__ModelProperty__ReferenceAssignment_1 : ( ( RULE_ID ) ) ;
     public final void rule__ModelProperty__ReferenceAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:7407:1: ( ( ( RULE_ID ) ) )
-            // InternalAspectLang.g:7408:1: ( ( RULE_ID ) )
+            // InternalAspectLang.g:7414:1: ( ( ( RULE_ID ) ) )
+            // InternalAspectLang.g:7415:1: ( ( RULE_ID ) )
             {
-            // InternalAspectLang.g:7408:1: ( ( RULE_ID ) )
-            // InternalAspectLang.g:7409:1: ( RULE_ID )
+            // InternalAspectLang.g:7415:1: ( ( RULE_ID ) )
+            // InternalAspectLang.g:7416:1: ( RULE_ID )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getModelPropertyAccess().getReferenceFeatureCrossReference_1_0()); 
             }
-            // InternalAspectLang.g:7410:1: ( RULE_ID )
-            // InternalAspectLang.g:7411:1: RULE_ID
+            // InternalAspectLang.g:7417:1: ( RULE_ID )
+            // InternalAspectLang.g:7418:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getModelPropertyAccess().getReferenceFeatureIDTerminalRuleCall_1_0_1()); 
@@ -21526,17 +21561,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Typeof__ReferenceAssignment_2"
-    // InternalAspectLang.g:7422:1: rule__Typeof__ReferenceAssignment_2 : ( ruleTypeReference ) ;
+    // InternalAspectLang.g:7429:1: rule__Typeof__ReferenceAssignment_2 : ( ruleTypeReference ) ;
     public final void rule__Typeof__ReferenceAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:7426:1: ( ( ruleTypeReference ) )
-            // InternalAspectLang.g:7427:1: ( ruleTypeReference )
+            // InternalAspectLang.g:7433:1: ( ( ruleTypeReference ) )
+            // InternalAspectLang.g:7434:1: ( ruleTypeReference )
             {
-            // InternalAspectLang.g:7427:1: ( ruleTypeReference )
-            // InternalAspectLang.g:7428:1: ruleTypeReference
+            // InternalAspectLang.g:7434:1: ( ruleTypeReference )
+            // InternalAspectLang.g:7435:1: ruleTypeReference
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeofAccess().getReferenceTypeReferenceParserRuleCall_2_0()); 
@@ -21571,17 +21606,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__FloatLiteral__ValueAssignment"
-    // InternalAspectLang.g:7437:1: rule__FloatLiteral__ValueAssignment : ( RULE_FLOAT ) ;
+    // InternalAspectLang.g:7444:1: rule__FloatLiteral__ValueAssignment : ( RULE_FLOAT ) ;
     public final void rule__FloatLiteral__ValueAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:7441:1: ( ( RULE_FLOAT ) )
-            // InternalAspectLang.g:7442:1: ( RULE_FLOAT )
+            // InternalAspectLang.g:7448:1: ( ( RULE_FLOAT ) )
+            // InternalAspectLang.g:7449:1: ( RULE_FLOAT )
             {
-            // InternalAspectLang.g:7442:1: ( RULE_FLOAT )
-            // InternalAspectLang.g:7443:1: RULE_FLOAT
+            // InternalAspectLang.g:7449:1: ( RULE_FLOAT )
+            // InternalAspectLang.g:7450:1: RULE_FLOAT
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getFloatLiteralAccess().getValueFLOATTerminalRuleCall_0()); 
@@ -21612,17 +21647,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__IntLiteral__ValueAssignment"
-    // InternalAspectLang.g:7452:1: rule__IntLiteral__ValueAssignment : ( RULE_INT ) ;
+    // InternalAspectLang.g:7459:1: rule__IntLiteral__ValueAssignment : ( RULE_INT ) ;
     public final void rule__IntLiteral__ValueAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:7456:1: ( ( RULE_INT ) )
-            // InternalAspectLang.g:7457:1: ( RULE_INT )
+            // InternalAspectLang.g:7463:1: ( ( RULE_INT ) )
+            // InternalAspectLang.g:7464:1: ( RULE_INT )
             {
-            // InternalAspectLang.g:7457:1: ( RULE_INT )
-            // InternalAspectLang.g:7458:1: RULE_INT
+            // InternalAspectLang.g:7464:1: ( RULE_INT )
+            // InternalAspectLang.g:7465:1: RULE_INT
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getIntLiteralAccess().getValueINTTerminalRuleCall_0()); 
@@ -21653,17 +21688,17 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__StringLiteral__ValueAssignment"
-    // InternalAspectLang.g:7467:1: rule__StringLiteral__ValueAssignment : ( RULE_STRING ) ;
+    // InternalAspectLang.g:7474:1: rule__StringLiteral__ValueAssignment : ( RULE_STRING ) ;
     public final void rule__StringLiteral__ValueAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:7471:1: ( ( RULE_STRING ) )
-            // InternalAspectLang.g:7472:1: ( RULE_STRING )
+            // InternalAspectLang.g:7478:1: ( ( RULE_STRING ) )
+            // InternalAspectLang.g:7479:1: ( RULE_STRING )
             {
-            // InternalAspectLang.g:7472:1: ( RULE_STRING )
-            // InternalAspectLang.g:7473:1: RULE_STRING
+            // InternalAspectLang.g:7479:1: ( RULE_STRING )
+            // InternalAspectLang.g:7480:1: RULE_STRING
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getStringLiteralAccess().getValueSTRINGTerminalRuleCall_0()); 
@@ -21694,23 +21729,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TypeReference__ContextAssignment_0"
-    // InternalAspectLang.g:7482:1: rule__TypeReference__ContextAssignment_0 : ( ( RULE_ID ) ) ;
+    // InternalAspectLang.g:7489:1: rule__TypeReference__ContextAssignment_0 : ( ( RULE_ID ) ) ;
     public final void rule__TypeReference__ContextAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:7486:1: ( ( ( RULE_ID ) ) )
-            // InternalAspectLang.g:7487:1: ( ( RULE_ID ) )
+            // InternalAspectLang.g:7493:1: ( ( ( RULE_ID ) ) )
+            // InternalAspectLang.g:7494:1: ( ( RULE_ID ) )
             {
-            // InternalAspectLang.g:7487:1: ( ( RULE_ID ) )
-            // InternalAspectLang.g:7488:1: ( RULE_ID )
+            // InternalAspectLang.g:7494:1: ( ( RULE_ID ) )
+            // InternalAspectLang.g:7495:1: ( RULE_ID )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeReferenceAccess().getContextApplicationModelCrossReference_0_0()); 
             }
-            // InternalAspectLang.g:7489:1: ( RULE_ID )
-            // InternalAspectLang.g:7490:1: RULE_ID
+            // InternalAspectLang.g:7496:1: ( RULE_ID )
+            // InternalAspectLang.g:7497:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeReferenceAccess().getContextApplicationModelIDTerminalRuleCall_0_0_1()); 
@@ -21747,23 +21782,23 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TypeReference__ReferenceAssignment_2"
-    // InternalAspectLang.g:7501:1: rule__TypeReference__ReferenceAssignment_2 : ( ( RULE_ID ) ) ;
+    // InternalAspectLang.g:7508:1: rule__TypeReference__ReferenceAssignment_2 : ( ( RULE_ID ) ) ;
     public final void rule__TypeReference__ReferenceAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:7505:1: ( ( ( RULE_ID ) ) )
-            // InternalAspectLang.g:7506:1: ( ( RULE_ID ) )
+            // InternalAspectLang.g:7512:1: ( ( ( RULE_ID ) ) )
+            // InternalAspectLang.g:7513:1: ( ( RULE_ID ) )
             {
-            // InternalAspectLang.g:7506:1: ( ( RULE_ID ) )
-            // InternalAspectLang.g:7507:1: ( RULE_ID )
+            // InternalAspectLang.g:7513:1: ( ( RULE_ID ) )
+            // InternalAspectLang.g:7514:1: ( RULE_ID )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeReferenceAccess().getReferenceNamedTypeCrossReference_2_0()); 
             }
-            // InternalAspectLang.g:7508:1: ( RULE_ID )
-            // InternalAspectLang.g:7509:1: RULE_ID
+            // InternalAspectLang.g:7515:1: ( RULE_ID )
+            // InternalAspectLang.g:7516:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeReferenceAccess().getReferenceNamedTypeIDTerminalRuleCall_2_0_1()); 
@@ -21800,28 +21835,28 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TypeReference__CollectionAssignment_3"
-    // InternalAspectLang.g:7520:1: rule__TypeReference__CollectionAssignment_3 : ( ( '[]' ) ) ;
+    // InternalAspectLang.g:7527:1: rule__TypeReference__CollectionAssignment_3 : ( ( '[]' ) ) ;
     public final void rule__TypeReference__CollectionAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // InternalAspectLang.g:7524:1: ( ( ( '[]' ) ) )
-            // InternalAspectLang.g:7525:1: ( ( '[]' ) )
+            // InternalAspectLang.g:7531:1: ( ( ( '[]' ) ) )
+            // InternalAspectLang.g:7532:1: ( ( '[]' ) )
             {
-            // InternalAspectLang.g:7525:1: ( ( '[]' ) )
-            // InternalAspectLang.g:7526:1: ( '[]' )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getTypeReferenceAccess().getCollectionLeftSquareBracketRightSquareBracketKeyword_3_0()); 
-            }
-            // InternalAspectLang.g:7527:1: ( '[]' )
-            // InternalAspectLang.g:7528:1: '[]'
+            // InternalAspectLang.g:7532:1: ( ( '[]' ) )
+            // InternalAspectLang.g:7533:1: ( '[]' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTypeReferenceAccess().getCollectionLeftSquareBracketRightSquareBracketKeyword_3_0()); 
             }
-            match(input,63,FOLLOW_2); if (state.failed) return ;
+            // InternalAspectLang.g:7534:1: ( '[]' )
+            // InternalAspectLang.g:7535:1: '[]'
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getTypeReferenceAccess().getCollectionLeftSquareBracketRightSquareBracketKeyword_3_0()); 
+            }
+            match(input,64,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getTypeReferenceAccess().getCollectionLeftSquareBracketRightSquareBracketKeyword_3_0()); 
             }
@@ -21896,11 +21931,11 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
     protected DFA2 dfa2 = new DFA2(this);
     static final String dfa_1s = "\16\uffff";
     static final String dfa_2s = "\1\4\6\uffff\1\0\6\uffff";
-    static final String dfa_3s = "\1\74\6\uffff\1\0\6\uffff";
+    static final String dfa_3s = "\1\75\6\uffff\1\0\6\uffff";
     static final String dfa_4s = "\1\uffff\1\1\2\uffff\1\2\5\uffff\1\3\2\uffff\1\4";
     static final String dfa_5s = "\7\uffff\1\0\6\uffff}>";
     static final String[] dfa_6s = {
-            "\1\7\3\1\5\uffff\1\4\2\uffff\3\12\37\uffff\2\4\7\uffff\2\4",
+            "\1\7\3\1\5\uffff\1\4\3\uffff\3\12\37\uffff\2\4\7\uffff\2\4",
             "",
             "",
             "",
@@ -21971,48 +22006,48 @@ public class InternalAspectLangParser extends AbstractInternalContentAssistParse
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0440858000000000L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000008000000002L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000010000000002L});
-    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0440840000000002L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000020000000000L});
+    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x08810B0000000000L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000010000000002L});
+    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000020000000002L});
+    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0881080000000002L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000040000000000L});
     public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000080000000000L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000100000000000L});
-    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000100000000002L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000200000000000L});
-    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x180C4000000720F0L});
-    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x180C0000000720F0L});
-    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0001200000000000L});
-    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x000200000000C000L});
-    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x000000000000C002L});
-    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000400000000010L});
+    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000100000000000L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000200000000000L});
+    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000200000000002L});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000400000000000L});
+    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x30188000000E20F0L});
+    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x30180000000E20F0L});
+    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0002400000000000L});
+    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x000400000001C000L});
+    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x000000000001C002L});
+    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000800000000010L});
     public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x180C000000002010L});
-    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000000780000L});
-    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0008000000000000L});
-    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0010000000000000L});
-    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0020000000000000L});
-    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0440000000000000L});
-    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0080000000000000L});
-    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0100000000000000L});
-    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x1800000000002010L});
-    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0200000000000000L});
+    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x3018000000002010L});
+    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000000F00000L});
+    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0010000000000000L});
+    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0020000000000000L});
+    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0040000000000000L});
+    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0880000000000000L});
+    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0100000000000000L});
+    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0200000000000000L});
+    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x3000000000002010L});
+    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0400000000000000L});
     public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000000000002010L});
-    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x4000000000000000L});
-    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0000000007800000L});
-    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0101000018000000L});
-    public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x1802000000002010L});
-    public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x1800000000002012L});
-    public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x0000500000000000L});
-    public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x38080000000020F0L});
+    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x8000000000000000L});
+    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x000000000F000000L});
+    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0202000030000000L});
+    public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x3004000000002010L});
+    public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x3000000000002012L});
+    public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x0000A00000000000L});
+    public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x70100000000020F0L});
     public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x0800000000000000L});
-    public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x1000000000000000L});
-    public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x0000000060000000L});
-    public static final BitSet FOLLOW_43 = new BitSet(new long[]{0x0000003F80000000L});
-    public static final BitSet FOLLOW_44 = new BitSet(new long[]{0x0000400000000000L});
-    public static final BitSet FOLLOW_45 = new BitSet(new long[]{0x8000000000000000L});
-    public static final BitSet FOLLOW_46 = new BitSet(new long[]{0x0100000000000002L});
+    public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x1000000000000000L});
+    public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x2000000000000000L});
+    public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x00000000C0000000L});
+    public static final BitSet FOLLOW_43 = new BitSet(new long[]{0x0000007F00000000L});
+    public static final BitSet FOLLOW_44 = new BitSet(new long[]{0x0000800000000000L});
+    public static final BitSet FOLLOW_45 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_46 = new BitSet(new long[]{0x0200000000000002L});
 
 }

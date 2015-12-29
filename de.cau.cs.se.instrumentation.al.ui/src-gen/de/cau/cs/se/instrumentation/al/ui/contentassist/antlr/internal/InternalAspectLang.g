@@ -1590,6 +1590,13 @@ rule__InsertionPoint__Alternatives
 { after(grammarAccess.getInsertionPointAccess().getAFTEREnumLiteralDeclaration_1()); }
 )
 
+    |(
+{ before(grammarAccess.getInsertionPointAccess().getAFTER_EXCEPTIONEnumLiteralDeclaration_2()); }
+(	'exception' 
+)
+{ after(grammarAccess.getInsertionPointAccess().getAFTER_EXCEPTIONEnumLiteralDeclaration_2()); }
+)
+
 ;
 finally {
 	restoreStackSize(stackSize);

@@ -1932,6 +1932,7 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
     initEEnum(insertionPointEEnum, InsertionPoint.class, "InsertionPoint");
     addEEnumLiteral(insertionPointEEnum, InsertionPoint.BEFORE);
     addEEnumLiteral(insertionPointEEnum, InsertionPoint.AFTER);
+    addEEnumLiteral(insertionPointEEnum, InsertionPoint.AFTER_EXCEPTION);
 
     initEEnum(internalFunctionEEnum, InternalFunction.class, "InternalFunction");
     addEEnumLiteral(internalFunctionEEnum, InternalFunction.TIME);

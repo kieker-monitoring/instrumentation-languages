@@ -10,6 +10,7 @@
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="AspectLang.ecore#//InsertionPoint">
       <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//InsertionPoint/BEFORE"/>
       <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//InsertionPoint/AFTER"/>
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//InsertionPoint/AFTER_EXCEPTION"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="AspectLang.ecore#//InternalFunction">
       <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//InternalFunction/TIME"/>

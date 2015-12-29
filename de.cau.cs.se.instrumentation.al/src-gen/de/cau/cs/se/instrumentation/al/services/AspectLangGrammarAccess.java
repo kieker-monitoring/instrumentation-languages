@@ -1551,13 +1551,16 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cBEFOREBeforeKeyword_0_0 = (Keyword)cBEFOREEnumLiteralDeclaration_0.eContents().get(0);
 		private final EnumLiteralDeclaration cAFTEREnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
 		private final Keyword cAFTERAfterKeyword_1_0 = (Keyword)cAFTEREnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cAFTER_EXCEPTIONEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cAFTER_EXCEPTIONExceptionKeyword_2_0 = (Keyword)cAFTER_EXCEPTIONEnumLiteralDeclaration_2.eContents().get(0);
 		
 		//enum InsertionPoint:
 		//	BEFORE='before' |
-		//	AFTER='after';
+		//	AFTER='after' |
+		//	AFTER_EXCEPTION='exception';
 		public EnumRule getRule() { return rule; }
 
-		//BEFORE='before' | AFTER='after'
+		//BEFORE='before' | AFTER='after' | AFTER_EXCEPTION='exception'
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//BEFORE='before'
@@ -1571,6 +1574,12 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 
 		//'after'
 		public Keyword getAFTERAfterKeyword_1_0() { return cAFTERAfterKeyword_1_0; }
+
+		//AFTER_EXCEPTION='exception'
+		public EnumLiteralDeclaration getAFTER_EXCEPTIONEnumLiteralDeclaration_2() { return cAFTER_EXCEPTIONEnumLiteralDeclaration_2; }
+
+		//'exception'
+		public Keyword getAFTER_EXCEPTIONExceptionKeyword_2_0() { return cAFTER_EXCEPTIONExceptionKeyword_2_0; }
 	}
 
 	public class InternalFunctionElements extends AbstractEnumRuleElementFinder {
@@ -2073,7 +2082,8 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 
 	//enum InsertionPoint:
 	//	BEFORE='before' |
-	//	AFTER='after';
+	//	AFTER='after' |
+	//	AFTER_EXCEPTION='exception';
 	public InsertionPointElements getInsertionPointAccess() {
 		return eInsertionPoint;
 	}

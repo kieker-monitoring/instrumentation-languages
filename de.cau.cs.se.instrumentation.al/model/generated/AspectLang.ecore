@@ -58,6 +58,7 @@
   <eClassifiers xsi:type="ecore:EEnum" name="InsertionPoint">
     <eLiterals name="BEFORE" literal="before"/>
     <eLiterals name="AFTER" value="1" literal="after"/>
+    <eLiterals name="AFTER_EXCEPTION" value="2" literal="exception"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Value"/>
   <eClassifiers xsi:type="ecore:EClass" name="ReferenceValue" eSuperTypes="#//Value">

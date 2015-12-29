@@ -6,7 +6,7 @@ import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut
 class SpringPointcutGenerator implements IGenerator<Pointcut,CharSequence> {
 	
 	override generate(Pointcut input) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		'''MISSING'''
 	}
 	
 }

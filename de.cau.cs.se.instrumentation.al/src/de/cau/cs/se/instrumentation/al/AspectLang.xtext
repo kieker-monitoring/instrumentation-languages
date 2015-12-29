@@ -57,7 +57,8 @@ Event:
 
 enum InsertionPoint: 
 	BEFORE = 'before' |
-	AFTER = 'after'
+	AFTER = 'after' |
+	AFTER_EXCEPTION = 'exception'
 ;
 
 Value: Literal | ReferenceValue | InternalFunctionProperty | AdviceParameter ;

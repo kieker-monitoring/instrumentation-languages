@@ -38,6 +38,9 @@ import javax.xml.transform.TransformerFactory
 import javax.xml.transform.OutputKeys
 import javax.xml.transform.stream.StreamResult
 import org.w3c.dom.Document
+import de.cau.cs.se.instrumentation.al.aspectLang.AspectModel
+import de.cau.cs.se.instrumentation.al.aspectLang.UtilizeAdvice
+import java.io.File
 
 /**
  * Generates code from your model files on save.
@@ -76,36 +79,10 @@ class AspectLangGenerator implements IGenerator {
 			case ASPECT_J: createAspectJConfiguration(value,fsa)
 			case JAVA_EE : createJ2EEConfiguration(value,fsa)
 			case SPRING : createSpringConfiguration(value,fsa)
-			case SERVLET: createServeletConfiguration(value,fsa)
+			case SERVLET: createServletConfiguration(value,fsa)
 		}]
 	}
-		
-	/**
-	 * Helper function to create a map of aspects and the aspect technology annotation.
-	 * 
-	 * @param map the map of all aspect technologies and its corresponding aspects.
-	 * @param aspect a new aspect to be added to the map.
-	 */
-	private def void discoverAspectTechnology(Map<Technology, Collection<Aspect>> map, Aspect aspect) {
-		if (aspect.pointcut?.annotation.name.equals("technology")) {
-			aspect.pointcut.annotation.technologies.forEach[map.addAndRegisterAspectTechnology(it,aspect)]
-		} else {
-			this.mappers.forEach[
-				if (aspect.pointcut.model.handler.equals(it.name))
-					it.targetTechnologies.forEach[map.addAndRegisterAspectTechnology(it,aspect)]
-			]
-		}
-	}
-	
-	private def void addAndRegisterAspectTechnology(Map<Technology, Collection<Aspect>> map, Technology technology, Aspect aspect) {
-		var list = map.get(technology)
-		if (list == null) {
-			list = new ArrayList<Aspect>()
-			map.put(technology,list)
-		}
-		list.add(aspect)
-	}
-	
+			
 	/**
 	 * Create AspectJ configuration (aop.xml) for a given collection of aspects.
 	 * 
@@ -119,11 +96,11 @@ class AspectLangGenerator implements IGenerator {
 		val adviceGenerator = new AspectJAdviceGenerator()
 		aspects.forEach[
 			it.advices.forEach[advice |
-				access.generateFile(advice.advice.name + ".java", adviceGenerator.generate(advice.advice))
+				access.generateFile("aspectj" + File.separator + advice.packagePathName + advice.advice.name + "Advice.java", adviceGenerator.generate(advice.advice))
 			]
 		]
 	}
-	
+		
 	/**
 	 * Create Spring configuration for a given collection of aspects.
 	 * 
@@ -134,7 +111,7 @@ class AspectLangGenerator implements IGenerator {
 		val adviceGenerator = new SpringAdviceGenerator()
 		aspects.forEach[
 			it.advices.forEach[advice |
-				access.generateFile(advice.advice.name + ".java", adviceGenerator.generate(advice.advice))
+				access.generateFile("spring" + File.separator + advice.packagePathName + advice.advice.name + "Interceptor.java", adviceGenerator.generate(advice.advice))
 			]
 		]
 	}
@@ -149,20 +126,34 @@ class AspectLangGenerator implements IGenerator {
 		val adviceGenerator = new JavaEEAdviceGenerator()
 		aspects.forEach[
 			it.advices.forEach[advice |
-				access.generateFile(advice.advice.name + ".java", adviceGenerator.generate(advice.advice))
+				access.generateFile("j2ee" + File.separator + advice.packagePathName + advice.advice.name + "Interceptor.java", adviceGenerator.generate(advice.advice))
 			]
 		]
 	}
 
-	private def createServeletConfiguration(Collection<Aspect> aspects, IFileSystemAccess access) {
+	/**
+	 * Create Servlet configuration for a given collection of aspects.
+	 * 
+	 * @param aspects collection of aspects for AspectJ
+	 * @param access file system access
+	 */
+	private def createServletConfiguration(Collection<Aspect> aspects, IFileSystemAccess access) {
 		val adviceGenerator = new ServletAdviceGenerator()
 		aspects.forEach[
 			it.advices.forEach[advice |
-				access.generateFile(advice.advice.name + ".java", adviceGenerator.generate(advice.advice))
+				access.generateFile("servlet" + File.separator +advice.packagePathName + advice.advice.name + "Filter.java", adviceGenerator.generate(advice.advice))
 			]
 		]
 	}
 	
+	/**
+	 * Serialize a given XML document model into a file vial the 
+	 * Xtext file system access handler.
+	 * 
+	 * @param filename name of the XML file including extension and relative path
+	 * @param access the file system access handler of the Xtext framework
+	 * @param document the document model to be serialized. 
+	 */
 	private def storeXMLModel(String filename, IFileSystemAccess access, Document document) {
 		val transformerFactory = TransformerFactory.newInstance()
 		val transformer = transformerFactory.newTransformer()
@@ -173,5 +164,54 @@ class AspectLangGenerator implements IGenerator {
 		
 		transformer.transform(new DOMSource(document), new StreamResult(writer))
 		access.generateFile(filename,writer.toString)
+	}
+	
+	/**
+	 * Helper function to create a map of aspects and the aspect technology annotation.
+	 * This method first tries to find the technology information in the aspect model by
+	 * testing for annotations and then calls the mapper for help if this does not succeed.
+	 * 
+	 * @param map the map of all aspect technologies and its corresponding aspects.
+	 * @param aspect a new aspect to be added to the map.
+	 */
+	private def void discoverAspectTechnology(Map<Technology, Collection<Aspect>> map, Aspect aspect) {
+		if (aspect.pointcut.annotation != null) {
+			if (aspect.pointcut.annotation.name.equals("technology"))
+				aspect.pointcut.annotation.technologies.forEach[map.addAndRegisterAspectTechnology(it,aspect)]
+		} else
+			discoverAspectTechnologyByModelMapper(map, aspect)
+	}
+	
+	/**
+	 * Helper function to create a map of aspects and the aspect technology annotation.
+	 * This method defines the mapping based on a rudimentary information from the model handler.
+	 * 
+	 * @param map the map of all aspect technologies and its corresponding aspects.
+	 * @param aspect a new aspect to be added to the map.
+	 */
+	private def void discoverAspectTechnologyByModelMapper(Map<Technology, Collection<Aspect>> map, Aspect aspect) {
+		this.mappers.forEach[
+			if (aspect.pointcut.model.handler.equals(it.name))
+				it.targetTechnologies.forEach[map.addAndRegisterAspectTechnology(it,aspect)]
+		]
+	}
+	
+	/**
+	 * Map builder: add an aspect to an technology.
+	 */
+	private def void addAndRegisterAspectTechnology(Map<Technology, Collection<Aspect>> map, Technology technology, Aspect aspect) {
+		var list = map.get(technology)
+		if (list == null) {
+			list = new ArrayList<Aspect>()
+			map.put(technology,list)
+		}
+		list.add(aspect)
+	}
+	
+	/**
+	 * create the name for an advice.
+	 */
+	private def String getPackagePathName(UtilizeAdvice advice) {
+		(advice.eContainer.eContainer as AspectModel).name.replace('\\.',File.separator) + File.separator
 	}
 }
