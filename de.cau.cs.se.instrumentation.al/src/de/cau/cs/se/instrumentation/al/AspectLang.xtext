@@ -108,7 +108,14 @@ Pointcut:
 ;
 
 Annotation:
-	'@' name=ID value=STRING  
+	'@' name='technology' technologies+=Technology (',' technologies+=Technology) 
+;
+
+enum Technology:
+	JAVA_EE = 'javaee' |
+	SERVLET = 'servlet' |
+	SPRING = 'spring' |
+	ASPECT_J = 'aspectj'
 ;
 
 LocationQuery:

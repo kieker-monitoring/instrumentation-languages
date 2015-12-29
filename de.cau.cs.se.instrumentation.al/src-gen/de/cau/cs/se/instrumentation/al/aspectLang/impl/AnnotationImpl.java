@@ -4,13 +4,20 @@ package de.cau.cs.se.instrumentation.al.aspectLang.impl;
 
 import de.cau.cs.se.instrumentation.al.aspectLang.Annotation;
 import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
+import de.cau.cs.se.instrumentation.al.aspectLang.Technology;
+
+import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.util.EDataTypeEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +28,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AnnotationImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AnnotationImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AnnotationImpl#getTechnologies <em>Technologies</em>}</li>
  * </ul>
  *
  * @generated
@@ -49,24 +56,14 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * The cached value of the '{@link #getTechnologies() <em>Technologies</em>}' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValue()
+   * @see #getTechnologies()
    * @generated
    * @ordered
    */
-  protected static final String VALUE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getValue()
-   * @generated
-   * @ordered
-   */
-  protected String value = VALUE_EDEFAULT;
+  protected EList<Technology> technologies;
 
   /**
    * <!-- begin-user-doc -->
@@ -117,22 +114,13 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getValue()
+  public EList<Technology> getTechnologies()
   {
-    return value;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setValue(String newValue)
-  {
-    String oldValue = value;
-    value = newValue;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.ANNOTATION__VALUE, oldValue, value));
+    if (technologies == null)
+    {
+      technologies = new EDataTypeEList<Technology>(Technology.class, this, AspectLangPackage.ANNOTATION__TECHNOLOGIES);
+    }
+    return technologies;
   }
 
   /**
@@ -147,8 +135,8 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
     {
       case AspectLangPackage.ANNOTATION__NAME:
         return getName();
-      case AspectLangPackage.ANNOTATION__VALUE:
-        return getValue();
+      case AspectLangPackage.ANNOTATION__TECHNOLOGIES:
+        return getTechnologies();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -158,6 +146,7 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -166,8 +155,9 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
       case AspectLangPackage.ANNOTATION__NAME:
         setName((String)newValue);
         return;
-      case AspectLangPackage.ANNOTATION__VALUE:
-        setValue((String)newValue);
+      case AspectLangPackage.ANNOTATION__TECHNOLOGIES:
+        getTechnologies().clear();
+        getTechnologies().addAll((Collection<? extends Technology>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -186,8 +176,8 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
       case AspectLangPackage.ANNOTATION__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case AspectLangPackage.ANNOTATION__VALUE:
-        setValue(VALUE_EDEFAULT);
+      case AspectLangPackage.ANNOTATION__TECHNOLOGIES:
+        getTechnologies().clear();
         return;
     }
     super.eUnset(featureID);
@@ -205,8 +195,8 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
     {
       case AspectLangPackage.ANNOTATION__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case AspectLangPackage.ANNOTATION__VALUE:
-        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+      case AspectLangPackage.ANNOTATION__TECHNOLOGIES:
+        return technologies != null && !technologies.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -224,8 +214,8 @@ public class AnnotationImpl extends MinimalEObjectImpl.Container implements Anno
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
-    result.append(", value: ");
-    result.append(value);
+    result.append(", technologies: ");
+    result.append(technologies);
     result.append(')');
     return result.toString();
   }

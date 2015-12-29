@@ -706,13 +706,13 @@ public interface AspectLangPackage extends EPackage
   int ANNOTATION__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * The feature id for the '<em><b>Technologies</b></em>' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ANNOTATION__VALUE = 1;
+  int ANNOTATION__TECHNOLOGIES = 1;
 
   /**
    * The number of structural features of the '<em>Annotation</em>' class.
@@ -1674,6 +1674,16 @@ public interface AspectLangPackage extends EPackage
   int REFLECTION_FUNCTION = 40;
 
   /**
+   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.Technology <em>Technology</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.Technology
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getTechnology()
+   * @generated
+   */
+  int TECHNOLOGY = 41;
+
+  /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.QueryModifier <em>Query Modifier</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1681,7 +1691,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getQueryModifier()
    * @generated
    */
-  int QUERY_MODIFIER = 41;
+  int QUERY_MODIFIER = 42;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.LogicOperator <em>Logic Operator</em>}' enum.
@@ -1691,7 +1701,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getLogicOperator()
    * @generated
    */
-  int LOGIC_OPERATOR = 42;
+  int LOGIC_OPERATOR = 43;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.CompareOperator <em>Compare Operator</em>}' enum.
@@ -1701,7 +1711,7 @@ public interface AspectLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getCompareOperator()
    * @generated
    */
-  int COMPARE_OPERATOR = 43;
+  int COMPARE_OPERATOR = 44;
 
 
   /**
@@ -2270,15 +2280,15 @@ public interface AspectLangPackage extends EPackage
   EAttribute getAnnotation_Name();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.aspectLang.Annotation#getValue <em>Value</em>}'.
+   * Returns the meta object for the attribute list '{@link de.cau.cs.se.instrumentation.al.aspectLang.Annotation#getTechnologies <em>Technologies</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Annotation#getValue()
+   * @return the meta object for the attribute list '<em>Technologies</em>'.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.Annotation#getTechnologies()
    * @see #getAnnotation()
    * @generated
    */
-  EAttribute getAnnotation_Value();
+  EAttribute getAnnotation_Technologies();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery <em>Location Query</em>}'.
@@ -2830,6 +2840,16 @@ public interface AspectLangPackage extends EPackage
   EEnum getReflectionFunction();
 
   /**
+   * Returns the meta object for enum '{@link de.cau.cs.se.instrumentation.al.aspectLang.Technology <em>Technology</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Technology</em>'.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.Technology
+   * @generated
+   */
+  EEnum getTechnology();
+
+  /**
    * Returns the meta object for enum '{@link de.cau.cs.se.instrumentation.al.aspectLang.QueryModifier <em>Query Modifier</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3343,12 +3363,12 @@ public interface AspectLangPackage extends EPackage
     EAttribute ANNOTATION__NAME = eINSTANCE.getAnnotation_Name();
 
     /**
-     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Technologies</b></em>' attribute list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ANNOTATION__VALUE = eINSTANCE.getAnnotation_Value();
+    EAttribute ANNOTATION__TECHNOLOGIES = eINSTANCE.getAnnotation_Technologies();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.LocationQueryImpl <em>Location Query</em>}' class.
@@ -3811,6 +3831,16 @@ public interface AspectLangPackage extends EPackage
      * @generated
      */
     EEnum REFLECTION_FUNCTION = eINSTANCE.getReflectionFunction();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.Technology <em>Technology</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.instrumentation.al.aspectLang.Technology
+     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getTechnology()
+     * @generated
+     */
+    EEnum TECHNOLOGY = eINSTANCE.getTechnology();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.QueryModifier <em>Query Modifier</em>}' enum.

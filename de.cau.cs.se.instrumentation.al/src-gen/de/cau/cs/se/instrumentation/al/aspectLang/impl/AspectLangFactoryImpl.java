@@ -124,6 +124,8 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
         return createInternalFunctionFromString(eDataType, initialValue);
       case AspectLangPackage.REFLECTION_FUNCTION:
         return createReflectionFunctionFromString(eDataType, initialValue);
+      case AspectLangPackage.TECHNOLOGY:
+        return createTechnologyFromString(eDataType, initialValue);
       case AspectLangPackage.QUERY_MODIFIER:
         return createQueryModifierFromString(eDataType, initialValue);
       case AspectLangPackage.LOGIC_OPERATOR:
@@ -151,6 +153,8 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
         return convertInternalFunctionToString(eDataType, instanceValue);
       case AspectLangPackage.REFLECTION_FUNCTION:
         return convertReflectionFunctionToString(eDataType, instanceValue);
+      case AspectLangPackage.TECHNOLOGY:
+        return convertTechnologyToString(eDataType, instanceValue);
       case AspectLangPackage.QUERY_MODIFIER:
         return convertQueryModifierToString(eDataType, instanceValue);
       case AspectLangPackage.LOGIC_OPERATOR:
@@ -642,6 +646,28 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
    * @generated
    */
   public String convertReflectionFunctionToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Technology createTechnologyFromString(EDataType eDataType, String initialValue)
+  {
+    Technology result = Technology.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertTechnologyToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }

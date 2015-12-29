@@ -21,6 +21,8 @@ import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.xtext.naming.QualifiedName
+import java.util.ArrayList
+import de.cau.cs.se.instrumentation.al.aspectLang.Technology
 
 class PCMModelMapper implements IModelMapper {
 	
@@ -49,6 +51,10 @@ class PCMModelMapper implements IModelMapper {
 	
 	override name() {
 		return "pcm"
+	}
+	
+	override targetTechnologies() {
+		return #{ Technology.ASPECT_J, Technology.SERVLET, Technology.JAVA_EE }
 	}
 	
 	/**
@@ -314,7 +320,6 @@ class PCMModelMapper implements IModelMapper {
 			parent.contents.add(entity)
 		} else
 			System::out.println("Double container declaration")
-	}
-	
+	}	
 	
 }

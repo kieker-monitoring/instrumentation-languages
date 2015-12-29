@@ -247,19 +247,10 @@ public class AspectLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 *     Annotation returns Annotation
 	 *
 	 * Constraint:
-	 *     (name=ID value=STRING)
+	 *     (name='technology' technologies+=Technology technologies+=Technology)
 	 */
 	protected void sequence_Annotation(ISerializationContext context, Annotation semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, AspectLangPackage.Literals.ANNOTATION__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AspectLangPackage.Literals.ANNOTATION__NAME));
-			if (transientValues.isValueTransient(semanticObject, AspectLangPackage.Literals.ANNOTATION__VALUE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AspectLangPackage.Literals.ANNOTATION__VALUE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAnnotationAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getAnnotationAccess().getValueSTRINGTerminalRuleCall_2_0(), semanticObject.getValue());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

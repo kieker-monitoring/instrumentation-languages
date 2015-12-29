@@ -15,38 +15,29 @@
  ***************************************************************************/
 package de.cau.cs.se.instrumentation.al.generator
 
-import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.xtext.generator.IGenerator
-import org.eclipse.xtext.generator.IFileSystemAccess
-
-
-
 import de.cau.cs.se.instrumentation.al.aspectLang.Aspect
+import de.cau.cs.se.instrumentation.al.aspectLang.Technology
+import de.cau.cs.se.instrumentation.al.generator.aspectj.AspectJPointcutGenerator
+import java.util.ArrayList
 import java.util.Collection
-import java.util.Map
 import java.util.HashMap
-import javax.xml.parsers.DocumentBuilderFactory
-import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut
-import de.cau.cs.se.instrumentation.al.mapping.Operation
-import de.cau.cs.se.instrumentation.al.mapping.OperationModifier
-import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery
-import de.cau.cs.se.instrumentation.al.aspectLang.Node
-import de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode
-import de.cau.cs.se.instrumentation.al.mapping.Parameter
-import javax.xml.transform.TransformerFactory
-import javax.xml.transform.dom.DOMSource
-import javax.xml.transform.stream.StreamResult
+import java.util.Map
+import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.xtext.generator.IFileSystemAccess
+import org.eclipse.xtext.generator.IGenerator
+import de.cau.cs.se.instrumentation.al.generator.aspectj.AspectJAdviceGenerator
+import de.cau.cs.se.instrumentation.al.generator.servlet.ServletAdviceGenerator
+import de.cau.cs.se.instrumentation.al.generator.javaee.JavaEEAdviceGenerator
+import de.cau.cs.se.instrumentation.al.generator.spring.SpringAdviceGenerator
+import org.eclipse.core.runtime.Platform
+import de.cau.cs.se.instrumentation.al.modelhandling.IModelMapper
+import org.eclipse.core.runtime.CoreException
 import java.io.StringWriter
-import de.cau.cs.se.instrumentation.al.mapping.TypeReference
-import de.cau.cs.se.instrumentation.al.aspectLang.Collector
-import org.w3c.dom.Element
-import org.w3c.dom.Document
-import de.cau.cs.se.instrumentation.al.aspectLang.InsertionPoint
+import javax.xml.transform.dom.DOMSource
+import javax.xml.transform.TransformerFactory
 import javax.xml.transform.OutputKeys
-import de.cau.cs.se.instrumentation.al.mapping.NamedType
-import de.cau.cs.se.instrumentation.al.mapping.Type
-import de.cau.cs.se.instrumentation.al.mapping.Container
-import de.cau.cs.se.instrumentation.al.mapping.CollectionType
+import javax.xml.transform.stream.StreamResult
+import org.w3c.dom.Document
 
 /**
  * Generates code from your model files on save.
@@ -55,33 +46,64 @@ import de.cau.cs.se.instrumentation.al.mapping.CollectionType
  */
 class AspectLangGenerator implements IGenerator {
 	
-	val Map<String,Collection<Aspect>> aspectMap = new HashMap<String,Collection<Aspect>>()
+	private static final String MODEL_MAPPER = "de.cau.cs.se.instrumentation.al.modelMapping"
+	
+	val Map<Technology,Collection<Aspect>> aspectTechnologyMap = new HashMap<Technology,Collection<Aspect>>()
+	
+	val Collection<IModelMapper> mappers = new ArrayList<IModelMapper>()
+	
+	new () {
+		val registry = Platform.getExtensionRegistry()
+  		val config = registry.getConfigurationElementsFor(MODEL_MAPPER)
+	  	try {
+			config.forEach[element |
+	  			val ext = element.createExecutableExtension("class")
+	  			if (ext instanceof IModelMapper) {
+	  				this.mappers.add((ext as IModelMapper))
+	  			}
+	  		]
+	  	} catch (CoreException ex) {
+		   	System.out.println(ex.getMessage())
+		}	
+	}
 	
 	/**
 	 * Central generation function.
 	 */
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		resource.allContents.filter(typeof(Aspect)).forEach[aspectMap.addAspect(it)]
-		aspectMap.forEach[key, value | switch(key) {
-			case 'AspectJ': createAspectJConfiguration(value,fsa)
-			case 'J2EE' : createJ2EEConfiguration(value,fsa)
-			case 'Spring' : createSpringConfiguration(value,fsa)
+		resource.allContents.filter(typeof(Aspect)).forEach[aspectTechnologyMap.discoverAspectTechnology(it)]
+		aspectTechnologyMap.forEach[key, value | switch(key) {
+			case ASPECT_J: createAspectJConfiguration(value,fsa)
+			case JAVA_EE : createJ2EEConfiguration(value,fsa)
+			case SPRING : createSpringConfiguration(value,fsa)
+			case SERVLET: createServeletConfiguration(value,fsa)
 		}]
 	}
-	
+		
 	/**
 	 * Helper function to create a map of aspects and the aspect technology annotation.
 	 * 
 	 * @param map the map of all aspect technologies and its corresponding aspects.
 	 * @param aspect a new aspect to be added to the map.
 	 */
-	def void addAspect(Map<String, Collection<Aspect>> map, Aspect aspect) {
-	/* 	var list = map.get(aspect?.annotation?.name)
+	private def void discoverAspectTechnology(Map<Technology, Collection<Aspect>> map, Aspect aspect) {
+		if (aspect.pointcut?.annotation.name.equals("technology")) {
+			aspect.pointcut.annotation.technologies.forEach[map.addAndRegisterAspectTechnology(it,aspect)]
+		} else {
+			this.mappers.forEach[
+				if (aspect.pointcut.model.handler.equals(it.name))
+					it.targetTechnologies.forEach[map.addAndRegisterAspectTechnology(it,aspect)]
+			]
+		}
+	}
+	
+	private def void addAndRegisterAspectTechnology(Map<Technology, Collection<Aspect>> map, Technology technology, Aspect aspect) {
+		var list = map.get(technology)
 		if (list == null) {
 			list = new ArrayList<Aspect>()
-			map.put(aspect?.annotation?.name,list)
+			map.put(technology,list)
 		}
-		list.add(aspect) */
+		list.add(aspect)
 	}
 	
 	/**
@@ -91,82 +113,15 @@ class AspectLangGenerator implements IGenerator {
 	 * @param access file system access
 	 */
 	def createAspectJConfiguration(Collection<Aspect> aspects, IFileSystemAccess access) {
-		val docFactory = DocumentBuilderFactory.newInstance()
-		val docBuilder = docFactory.newDocumentBuilder()
-		val doc = docBuilder.newDocument()
-		
-		val aspectjElement = doc.createElement("aspectj")
-		doc.appendChild(aspectjElement)
-		
-		val weaverElement = doc.createElement("weaver")
-		weaverElement.setAttribute("options","")
-		aspectjElement.appendChild(weaverElement)
-		
-		for (Aspect aspect : aspects) {
-			val includeElement = doc.createElement("include")
-			// includeElement.setAttribute("within", aspect.query.computeAspectJQuery)
-			weaverElement.appendChild(includeElement)
-		} 
-		
-		val aspectsElement = doc.createElement("aspects")
-		aspectjElement.appendChild(aspectsElement)
-		for (Aspect aspect : aspects) {
-			aspect.advices.forEach[it.advice.collectors.filter[it.insertionPoint == InsertionPoint.^BEFORE].createDataCollectorAspect(doc, aspectsElement)]
-			aspect.advices.forEach[it.advice.collectors.filter[it.insertionPoint == InsertionPoint.^AFTER].createDataCollectorAspect(doc, aspectsElement)]
-		}
-		
-		// writing stuff
-		val transformerFactory = TransformerFactory.newInstance()
-		val transformer = transformerFactory.newTransformer()
-		transformer.setOutputProperty(OutputKeys.INDENT, "yes")
-		transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "3")
-		
-		val writer = new StringWriter()
-		
-		transformer.transform(new DOMSource(doc), new StreamResult(writer))
-		
-		access.generateFile('aop.xml',writer.toString)
-	}
-	
-	/**
-	 * Create an aop.xml aspect for a data collector probe.
-	 * 
-	 * @param list list of collectors
-	 * @param doc the document
-	 * @param parent the parent node of the aspect
-	 */
-	def void createDataCollectorAspect(Iterable<Collector> list, Document doc, Element parent) {
-		val aspect = doc.createElement("aspect")
-		//aspect.setAttribute("name","record types are " + list.map[it.type.name].join(', '))
-		parent.appendChild(aspect)
-	}
-	
-	/**
-	 * Compute the query for model nodes.
-	 */
-	def String computeAspectJQuery(Pointcut pointcut) '''«pointcut.location.computeLocation» «pointcut.operation.modifier.computeModifier» «if (pointcut.operation != null) pointcut.operation.operationReference.computeMethod else '*'»'''
-	
-	def CharSequence computeLocation(LocationQuery query) '''«query.node.computeNode»«if (query.specialization != null) '.' + query.specialization.computeLocation»'''
-	
-	def dispatch computeNode(ContainerNode node) '''«node.container.name»'''
-	def dispatch computeNode(Node node) '''#''' // illegal call
-	
-	// TODO this should produce the correct mapping of modifiers
-	def CharSequence computeModifier(OperationModifier modifier) '''«if (modifier != null) modifier.name else '*'»'''
-	
-	def CharSequence computeMethod(Operation operation) '''«operation.name» («operation.parameters.map[it.computeParameter].join(', ')»)'''
-	
-	// TODO this should produce the correct mapping of types and modifiers
-	def CharSequence computeParameter(Parameter parameter) '''«parameter.type.computeType» «parameter.name»'''
-	
-	def CharSequence computeType(TypeReference reference) '''«reference.type.computeTypeName»'''
-	
-	private def CharSequence computeTypeName(Type type) {
-		switch(type) {
-			NamedType: type.name
-			Container: type.name
-			CollectionType: type.elementType.computeTypeName + "[]" 	
-		}
+		val aspectGenerator = new AspectJPointcutGenerator()
+		storeXMLModel('aop.xml', access, aspectGenerator.generate(aspects))
+				
+		val adviceGenerator = new AspectJAdviceGenerator()
+		aspects.forEach[
+			it.advices.forEach[advice |
+				access.generateFile(advice.advice.name + ".java", adviceGenerator.generate(advice.advice))
+			]
+		]
 	}
 	
 	/**
@@ -175,8 +130,13 @@ class AspectLangGenerator implements IGenerator {
 	 * @param aspects collection of aspects for AspectJ
 	 * @param access file system access
 	 */
-	def createSpringConfiguration(Collection<Aspect> aspects, IFileSystemAccess access) {
-		"TODO: auto-generated method stub"
+	private def createSpringConfiguration(Collection<Aspect> aspects, IFileSystemAccess access) {
+		val adviceGenerator = new SpringAdviceGenerator()
+		aspects.forEach[
+			it.advices.forEach[advice |
+				access.generateFile(advice.advice.name + ".java", adviceGenerator.generate(advice.advice))
+			]
+		]
 	}
 	
 	/**
@@ -185,9 +145,33 @@ class AspectLangGenerator implements IGenerator {
 	 * @param aspects collection of aspects for AspectJ
 	 * @param access file system access
 	 */
-	def createJ2EEConfiguration(Collection<Aspect> aspects, IFileSystemAccess access) {
-		"TODO: auto-generated method stub"
+	private def createJ2EEConfiguration(Collection<Aspect> aspects, IFileSystemAccess access) {
+		val adviceGenerator = new JavaEEAdviceGenerator()
+		aspects.forEach[
+			it.advices.forEach[advice |
+				access.generateFile(advice.advice.name + ".java", adviceGenerator.generate(advice.advice))
+			]
+		]
 	}
 
+	private def createServeletConfiguration(Collection<Aspect> aspects, IFileSystemAccess access) {
+		val adviceGenerator = new ServletAdviceGenerator()
+		aspects.forEach[
+			it.advices.forEach[advice |
+				access.generateFile(advice.advice.name + ".java", adviceGenerator.generate(advice.advice))
+			]
+		]
+	}
 	
+	private def storeXMLModel(String filename, IFileSystemAccess access, Document document) {
+		val transformerFactory = TransformerFactory.newInstance()
+		val transformer = transformerFactory.newTransformer()
+		transformer.setOutputProperty(OutputKeys.INDENT, "yes")
+		transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "3")
+		
+		val writer = new StringWriter()
+		
+		transformer.transform(new DOMSource(document), new StreamResult(writer))
+		access.generateFile(filename,writer.toString)
+	}
 }

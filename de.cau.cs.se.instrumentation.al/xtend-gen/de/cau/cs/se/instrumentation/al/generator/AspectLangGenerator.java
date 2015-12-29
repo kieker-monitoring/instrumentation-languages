@@ -18,26 +18,20 @@ package de.cau.cs.se.instrumentation.al.generator;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterators;
 import de.cau.cs.se.instrumentation.al.aspectLang.Advice;
+import de.cau.cs.se.instrumentation.al.aspectLang.Annotation;
+import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel;
 import de.cau.cs.se.instrumentation.al.aspectLang.Aspect;
-import de.cau.cs.se.instrumentation.al.aspectLang.Collector;
-import de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode;
-import de.cau.cs.se.instrumentation.al.aspectLang.InsertionPoint;
-import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery;
-import de.cau.cs.se.instrumentation.al.aspectLang.Node;
-import de.cau.cs.se.instrumentation.al.aspectLang.OperationQuery;
 import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut;
+import de.cau.cs.se.instrumentation.al.aspectLang.Technology;
 import de.cau.cs.se.instrumentation.al.aspectLang.UtilizeAdvice;
-import de.cau.cs.se.instrumentation.al.mapping.CollectionType;
-import de.cau.cs.se.instrumentation.al.mapping.Container;
-import de.cau.cs.se.instrumentation.al.mapping.Feature;
-import de.cau.cs.se.instrumentation.al.mapping.NamedType;
-import de.cau.cs.se.instrumentation.al.mapping.Operation;
-import de.cau.cs.se.instrumentation.al.mapping.OperationModifier;
-import de.cau.cs.se.instrumentation.al.mapping.Parameter;
-import de.cau.cs.se.instrumentation.al.mapping.Type;
-import de.cau.cs.se.instrumentation.al.mapping.TypeReference;
+import de.cau.cs.se.instrumentation.al.generator.aspectj.AspectJAdviceGenerator;
+import de.cau.cs.se.instrumentation.al.generator.aspectj.AspectJPointcutGenerator;
+import de.cau.cs.se.instrumentation.al.generator.javaee.JavaEEAdviceGenerator;
+import de.cau.cs.se.instrumentation.al.generator.servlet.ServletAdviceGenerator;
+import de.cau.cs.se.instrumentation.al.generator.spring.SpringAdviceGenerator;
+import de.cau.cs.se.instrumentation.al.modelhandling.IModelMapper;
 import java.io.StringWriter;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -45,28 +39,26 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IExtensionRegistry;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
+import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
-import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 
 /**
  * Generates code from your model files on save.
@@ -75,7 +67,37 @@ import org.w3c.dom.Element;
  */
 @SuppressWarnings("all")
 public class AspectLangGenerator implements IGenerator {
-  private final Map<String, Collection<Aspect>> aspectMap = new HashMap<String, Collection<Aspect>>();
+  private final static String MODEL_MAPPER = "de.cau.cs.se.instrumentation.al.modelMapping";
+  
+  private final Map<Technology, Collection<Aspect>> aspectTechnologyMap = new HashMap<Technology, Collection<Aspect>>();
+  
+  private final Collection<IModelMapper> mappers = new ArrayList<IModelMapper>();
+  
+  public AspectLangGenerator() {
+    final IExtensionRegistry registry = Platform.getExtensionRegistry();
+    final IConfigurationElement[] config = registry.getConfigurationElementsFor(AspectLangGenerator.MODEL_MAPPER);
+    try {
+      final Consumer<IConfigurationElement> _function = (IConfigurationElement element) -> {
+        try {
+          final Object ext = element.createExecutableExtension("class");
+          if ((ext instanceof IModelMapper)) {
+            this.mappers.add(((IModelMapper) ext));
+          }
+        } catch (Throwable _e) {
+          throw Exceptions.sneakyThrow(_e);
+        }
+      };
+      ((List<IConfigurationElement>)Conversions.doWrapArray(config)).forEach(_function);
+    } catch (final Throwable _t) {
+      if (_t instanceof CoreException) {
+        final CoreException ex = (CoreException)_t;
+        String _message = ex.getMessage();
+        System.out.println(_message);
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
+    }
+  }
   
   /**
    * Central generation function.
@@ -85,23 +107,30 @@ public class AspectLangGenerator implements IGenerator {
     TreeIterator<EObject> _allContents = resource.getAllContents();
     Iterator<Aspect> _filter = Iterators.<Aspect>filter(_allContents, Aspect.class);
     final Procedure1<Aspect> _function = (Aspect it) -> {
-      this.addAspect(this.aspectMap, it);
+      this.discoverAspectTechnology(this.aspectTechnologyMap, it);
     };
     IteratorExtensions.<Aspect>forEach(_filter, _function);
-    final BiConsumer<String, Collection<Aspect>> _function_1 = (String key, Collection<Aspect> value) -> {
-      switch (key) {
-        case "AspectJ":
-          this.createAspectJConfiguration(value, fsa);
-          break;
-        case "J2EE":
-          this.createJ2EEConfiguration(value, fsa);
-          break;
-        case "Spring":
-          this.createSpringConfiguration(value, fsa);
-          break;
+    final BiConsumer<Technology, Collection<Aspect>> _function_1 = (Technology key, Collection<Aspect> value) -> {
+      if (key != null) {
+        switch (key) {
+          case ASPECT_J:
+            this.createAspectJConfiguration(value, fsa);
+            break;
+          case JAVA_EE:
+            this.createJ2EEConfiguration(value, fsa);
+            break;
+          case SPRING:
+            this.createSpringConfiguration(value, fsa);
+            break;
+          case SERVLET:
+            this.createServeletConfiguration(value, fsa);
+            break;
+          default:
+            break;
+        }
       }
     };
-    this.aspectMap.forEach(_function_1);
+    this.aspectTechnologyMap.forEach(_function_1);
   }
   
   /**
@@ -110,7 +139,50 @@ public class AspectLangGenerator implements IGenerator {
    * @param map the map of all aspect technologies and its corresponding aspects.
    * @param aspect a new aspect to be added to the map.
    */
-  public void addAspect(final Map<String, Collection<Aspect>> map, final Aspect aspect) {
+  private void discoverAspectTechnology(final Map<Technology, Collection<Aspect>> map, final Aspect aspect) {
+    Pointcut _pointcut = aspect.getPointcut();
+    Annotation _annotation = null;
+    if (_pointcut!=null) {
+      _annotation=_pointcut.getAnnotation();
+    }
+    String _name = _annotation.getName();
+    boolean _equals = _name.equals("technology");
+    if (_equals) {
+      Pointcut _pointcut_1 = aspect.getPointcut();
+      Annotation _annotation_1 = _pointcut_1.getAnnotation();
+      EList<Technology> _technologies = _annotation_1.getTechnologies();
+      final Consumer<Technology> _function = (Technology it) -> {
+        this.addAndRegisterAspectTechnology(map, it, aspect);
+      };
+      _technologies.forEach(_function);
+    } else {
+      final Consumer<IModelMapper> _function_1 = (IModelMapper it) -> {
+        Pointcut _pointcut_2 = aspect.getPointcut();
+        ApplicationModel _model = _pointcut_2.getModel();
+        String _handler = _model.getHandler();
+        String _name_1 = it.name();
+        boolean _equals_1 = _handler.equals(_name_1);
+        if (_equals_1) {
+          Collection<Technology> _targetTechnologies = it.targetTechnologies();
+          final Consumer<Technology> _function_2 = (Technology it_1) -> {
+            this.addAndRegisterAspectTechnology(map, it_1, aspect);
+          };
+          _targetTechnologies.forEach(_function_2);
+        }
+      };
+      this.mappers.forEach(_function_1);
+    }
+  }
+  
+  private void addAndRegisterAspectTechnology(final Map<Technology, Collection<Aspect>> map, final Technology technology, final Aspect aspect) {
+    Collection<Aspect> list = map.get(technology);
+    boolean _equals = Objects.equal(list, null);
+    if (_equals) {
+      ArrayList<Aspect> _arrayList = new ArrayList<Aspect>();
+      list = _arrayList;
+      map.put(technology, list);
+    }
+    list.add(aspect);
   }
   
   /**
@@ -120,209 +192,23 @@ public class AspectLangGenerator implements IGenerator {
    * @param access file system access
    */
   public void createAspectJConfiguration(final Collection<Aspect> aspects, final IFileSystemAccess access) {
-    try {
-      final DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-      final DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-      final Document doc = docBuilder.newDocument();
-      final Element aspectjElement = doc.createElement("aspectj");
-      doc.appendChild(aspectjElement);
-      final Element weaverElement = doc.createElement("weaver");
-      weaverElement.setAttribute("options", "");
-      aspectjElement.appendChild(weaverElement);
-      for (final Aspect aspect : aspects) {
-        {
-          final Element includeElement = doc.createElement("include");
-          weaverElement.appendChild(includeElement);
-        }
-      }
-      final Element aspectsElement = doc.createElement("aspects");
-      aspectjElement.appendChild(aspectsElement);
-      for (final Aspect aspect_1 : aspects) {
-        {
-          EList<UtilizeAdvice> _advices = aspect_1.getAdvices();
-          final Consumer<UtilizeAdvice> _function = (UtilizeAdvice it) -> {
-            Advice _advice = it.getAdvice();
-            EList<Collector> _collectors = _advice.getCollectors();
-            final Function1<Collector, Boolean> _function_1 = (Collector it_1) -> {
-              InsertionPoint _insertionPoint = it_1.getInsertionPoint();
-              return Boolean.valueOf(Objects.equal(_insertionPoint, InsertionPoint.BEFORE));
-            };
-            Iterable<Collector> _filter = IterableExtensions.<Collector>filter(_collectors, _function_1);
-            this.createDataCollectorAspect(_filter, doc, aspectsElement);
-          };
-          _advices.forEach(_function);
-          EList<UtilizeAdvice> _advices_1 = aspect_1.getAdvices();
-          final Consumer<UtilizeAdvice> _function_1 = (UtilizeAdvice it) -> {
-            Advice _advice = it.getAdvice();
-            EList<Collector> _collectors = _advice.getCollectors();
-            final Function1<Collector, Boolean> _function_2 = (Collector it_1) -> {
-              InsertionPoint _insertionPoint = it_1.getInsertionPoint();
-              return Boolean.valueOf(Objects.equal(_insertionPoint, InsertionPoint.AFTER));
-            };
-            Iterable<Collector> _filter = IterableExtensions.<Collector>filter(_collectors, _function_2);
-            this.createDataCollectorAspect(_filter, doc, aspectsElement);
-          };
-          _advices_1.forEach(_function_1);
-        }
-      }
-      final TransformerFactory transformerFactory = TransformerFactory.newInstance();
-      final Transformer transformer = transformerFactory.newTransformer();
-      transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-      transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "3");
-      final StringWriter writer = new StringWriter();
-      DOMSource _dOMSource = new DOMSource(doc);
-      StreamResult _streamResult = new StreamResult(writer);
-      transformer.transform(_dOMSource, _streamResult);
-      String _string = writer.toString();
-      access.generateFile("aop.xml", _string);
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
-  }
-  
-  /**
-   * Create an aop.xml aspect for a data collector probe.
-   * 
-   * @param list list of collectors
-   * @param doc the document
-   * @param parent the parent node of the aspect
-   */
-  public void createDataCollectorAspect(final Iterable<Collector> list, final Document doc, final Element parent) {
-    final Element aspect = doc.createElement("aspect");
-    parent.appendChild(aspect);
-  }
-  
-  /**
-   * Compute the query for model nodes.
-   */
-  public String computeAspectJQuery(final Pointcut pointcut) {
-    StringConcatenation _builder = new StringConcatenation();
-    LocationQuery _location = pointcut.getLocation();
-    CharSequence _computeLocation = this.computeLocation(_location);
-    _builder.append(_computeLocation, "");
-    _builder.append(" ");
-    OperationQuery _operation = pointcut.getOperation();
-    OperationModifier _modifier = _operation.getModifier();
-    CharSequence _computeModifier = this.computeModifier(_modifier);
-    _builder.append(_computeModifier, "");
-    _builder.append(" ");
-    CharSequence _xifexpression = null;
-    OperationQuery _operation_1 = pointcut.getOperation();
-    boolean _notEquals = (!Objects.equal(_operation_1, null));
-    if (_notEquals) {
-      OperationQuery _operation_2 = pointcut.getOperation();
-      Operation _operationReference = _operation_2.getOperationReference();
-      _xifexpression = this.computeMethod(_operationReference);
-    } else {
-      _xifexpression = "*";
-    }
-    _builder.append(_xifexpression, "");
-    return _builder.toString();
-  }
-  
-  public CharSequence computeLocation(final LocationQuery query) {
-    StringConcatenation _builder = new StringConcatenation();
-    Node _node = query.getNode();
-    CharSequence _computeNode = this.computeNode(_node);
-    _builder.append(_computeNode, "");
-    String _xifexpression = null;
-    LocationQuery _specialization = query.getSpecialization();
-    boolean _notEquals = (!Objects.equal(_specialization, null));
-    if (_notEquals) {
-      LocationQuery _specialization_1 = query.getSpecialization();
-      CharSequence _computeLocation = this.computeLocation(_specialization_1);
-      _xifexpression = ("." + _computeLocation);
-    }
-    _builder.append(_xifexpression, "");
-    return _builder;
-  }
-  
-  protected CharSequence _computeNode(final ContainerNode node) {
-    StringConcatenation _builder = new StringConcatenation();
-    Feature _container = node.getContainer();
-    String _name = _container.getName();
-    _builder.append(_name, "");
-    return _builder;
-  }
-  
-  protected CharSequence _computeNode(final Node node) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("#");
-    return _builder;
-  }
-  
-  public CharSequence computeModifier(final OperationModifier modifier) {
-    StringConcatenation _builder = new StringConcatenation();
-    String _xifexpression = null;
-    boolean _notEquals = (!Objects.equal(modifier, null));
-    if (_notEquals) {
-      _xifexpression = modifier.getName();
-    } else {
-      _xifexpression = "*";
-    }
-    _builder.append(_xifexpression, "");
-    return _builder;
-  }
-  
-  public CharSequence computeMethod(final Operation operation) {
-    StringConcatenation _builder = new StringConcatenation();
-    String _name = operation.getName();
-    _builder.append(_name, "");
-    _builder.append(" (");
-    EList<Parameter> _parameters = operation.getParameters();
-    final Function1<Parameter, CharSequence> _function = (Parameter it) -> {
-      return this.computeParameter(it);
+    final AspectJPointcutGenerator aspectGenerator = new AspectJPointcutGenerator();
+    Document _generate = aspectGenerator.generate(aspects);
+    this.storeXMLModel("aop.xml", access, _generate);
+    final AspectJAdviceGenerator adviceGenerator = new AspectJAdviceGenerator();
+    final Consumer<Aspect> _function = (Aspect it) -> {
+      EList<UtilizeAdvice> _advices = it.getAdvices();
+      final Consumer<UtilizeAdvice> _function_1 = (UtilizeAdvice advice) -> {
+        Advice _advice = advice.getAdvice();
+        String _name = _advice.getName();
+        String _plus = (_name + ".java");
+        Advice _advice_1 = advice.getAdvice();
+        CharSequence _generate_1 = adviceGenerator.generate(_advice_1);
+        access.generateFile(_plus, _generate_1);
+      };
+      _advices.forEach(_function_1);
     };
-    List<CharSequence> _map = ListExtensions.<Parameter, CharSequence>map(_parameters, _function);
-    String _join = IterableExtensions.join(_map, ", ");
-    _builder.append(_join, "");
-    _builder.append(")");
-    return _builder;
-  }
-  
-  public CharSequence computeParameter(final Parameter parameter) {
-    StringConcatenation _builder = new StringConcatenation();
-    TypeReference _type = parameter.getType();
-    CharSequence _computeType = this.computeType(_type);
-    _builder.append(_computeType, "");
-    _builder.append(" ");
-    String _name = parameter.getName();
-    _builder.append(_name, "");
-    return _builder;
-  }
-  
-  public CharSequence computeType(final TypeReference reference) {
-    StringConcatenation _builder = new StringConcatenation();
-    Type _type = reference.getType();
-    CharSequence _computeTypeName = this.computeTypeName(_type);
-    _builder.append(_computeTypeName, "");
-    return _builder;
-  }
-  
-  private CharSequence computeTypeName(final Type type) {
-    String _switchResult = null;
-    boolean _matched = false;
-    if (!_matched) {
-      if (type instanceof NamedType) {
-        _matched=true;
-        _switchResult = ((NamedType)type).getName();
-      }
-    }
-    if (!_matched) {
-      if (type instanceof Container) {
-        _matched=true;
-        _switchResult = ((Container)type).getName();
-      }
-    }
-    if (!_matched) {
-      if (type instanceof CollectionType) {
-        _matched=true;
-        Type _elementType = ((CollectionType)type).getElementType();
-        CharSequence _computeTypeName = this.computeTypeName(_elementType);
-        _switchResult = (_computeTypeName + "[]");
-      }
-    }
-    return _switchResult;
+    aspects.forEach(_function);
   }
   
   /**
@@ -331,8 +217,21 @@ public class AspectLangGenerator implements IGenerator {
    * @param aspects collection of aspects for AspectJ
    * @param access file system access
    */
-  public String createSpringConfiguration(final Collection<Aspect> aspects, final IFileSystemAccess access) {
-    return "TODO: auto-generated method stub";
+  private void createSpringConfiguration(final Collection<Aspect> aspects, final IFileSystemAccess access) {
+    final SpringAdviceGenerator adviceGenerator = new SpringAdviceGenerator();
+    final Consumer<Aspect> _function = (Aspect it) -> {
+      EList<UtilizeAdvice> _advices = it.getAdvices();
+      final Consumer<UtilizeAdvice> _function_1 = (UtilizeAdvice advice) -> {
+        Advice _advice = advice.getAdvice();
+        String _name = _advice.getName();
+        String _plus = (_name + ".java");
+        Advice _advice_1 = advice.getAdvice();
+        CharSequence _generate = adviceGenerator.generate(_advice_1);
+        access.generateFile(_plus, _generate);
+      };
+      _advices.forEach(_function_1);
+    };
+    aspects.forEach(_function);
   }
   
   /**
@@ -341,18 +240,54 @@ public class AspectLangGenerator implements IGenerator {
    * @param aspects collection of aspects for AspectJ
    * @param access file system access
    */
-  public String createJ2EEConfiguration(final Collection<Aspect> aspects, final IFileSystemAccess access) {
-    return "TODO: auto-generated method stub";
+  private void createJ2EEConfiguration(final Collection<Aspect> aspects, final IFileSystemAccess access) {
+    final JavaEEAdviceGenerator adviceGenerator = new JavaEEAdviceGenerator();
+    final Consumer<Aspect> _function = (Aspect it) -> {
+      EList<UtilizeAdvice> _advices = it.getAdvices();
+      final Consumer<UtilizeAdvice> _function_1 = (UtilizeAdvice advice) -> {
+        Advice _advice = advice.getAdvice();
+        String _name = _advice.getName();
+        String _plus = (_name + ".java");
+        Advice _advice_1 = advice.getAdvice();
+        CharSequence _generate = adviceGenerator.generate(_advice_1);
+        access.generateFile(_plus, _generate);
+      };
+      _advices.forEach(_function_1);
+    };
+    aspects.forEach(_function);
   }
   
-  public CharSequence computeNode(final Node node) {
-    if (node instanceof ContainerNode) {
-      return _computeNode((ContainerNode)node);
-    } else if (node != null) {
-      return _computeNode(node);
-    } else {
-      throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(node).toString());
+  private void createServeletConfiguration(final Collection<Aspect> aspects, final IFileSystemAccess access) {
+    final ServletAdviceGenerator adviceGenerator = new ServletAdviceGenerator();
+    final Consumer<Aspect> _function = (Aspect it) -> {
+      EList<UtilizeAdvice> _advices = it.getAdvices();
+      final Consumer<UtilizeAdvice> _function_1 = (UtilizeAdvice advice) -> {
+        Advice _advice = advice.getAdvice();
+        String _name = _advice.getName();
+        String _plus = (_name + ".java");
+        Advice _advice_1 = advice.getAdvice();
+        CharSequence _generate = adviceGenerator.generate(_advice_1);
+        access.generateFile(_plus, _generate);
+      };
+      _advices.forEach(_function_1);
+    };
+    aspects.forEach(_function);
+  }
+  
+  private void storeXMLModel(final String filename, final IFileSystemAccess access, final Document document) {
+    try {
+      final TransformerFactory transformerFactory = TransformerFactory.newInstance();
+      final Transformer transformer = transformerFactory.newTransformer();
+      transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+      transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "3");
+      final StringWriter writer = new StringWriter();
+      DOMSource _dOMSource = new DOMSource(document);
+      StreamResult _streamResult = new StreamResult(writer);
+      transformer.transform(_dOMSource, _streamResult);
+      String _string = writer.toString();
+      access.generateFile(filename, _string);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
     }
   }
 }

@@ -2,6 +2,7 @@ package de.cau.cs.se.instrumentation.al.handler.pcm;
 
 import com.google.common.base.Objects;
 import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel;
+import de.cau.cs.se.instrumentation.al.aspectLang.Technology;
 import de.cau.cs.se.instrumentation.al.mapping.Container;
 import de.cau.cs.se.instrumentation.al.mapping.Containment;
 import de.cau.cs.se.instrumentation.al.mapping.MappingFactory;
@@ -14,6 +15,7 @@ import de.cau.cs.se.instrumentation.al.mapping.ParameterModifier;
 import de.cau.cs.se.instrumentation.al.mapping.TypeReference;
 import de.cau.cs.se.instrumentation.al.modelhandling.IModelMapper;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -28,6 +30,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.naming.QualifiedName;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -58,6 +61,11 @@ public class PCMModelMapper implements IModelMapper {
   @Override
   public String name() {
     return "pcm";
+  }
+  
+  @Override
+  public Collection<Technology> targetTechnologies() {
+    return Collections.<Technology>unmodifiableSet(CollectionLiterals.<Technology>newHashSet(Technology.ASPECT_J, Technology.SERVLET, Technology.JAVA_EE));
   }
   
   /**

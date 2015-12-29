@@ -22,6 +22,12 @@
       <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//ReflectionFunction/CLASS"/>
       <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//ReflectionFunction/RETURN_TYPE"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="AspectLang.ecore#//Technology">
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//Technology/JAVA_EE"/>
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//Technology/SERVLET"/>
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//Technology/SPRING"/>
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//Technology/ASPECT_J"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="AspectLang.ecore#//QueryModifier">
       <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//QueryModifier/INCLUDE"/>
       <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//QueryModifier/EXCLUDE"/>
@@ -128,6 +134,7 @@
     </genClasses>
     <genClasses ecoreClass="AspectLang.ecore#//Annotation">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//Annotation/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//Annotation/technologies"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//Annotation/value"/>
     </genClasses>
     <genClasses ecoreClass="AspectLang.ecore#//LocationQuery">

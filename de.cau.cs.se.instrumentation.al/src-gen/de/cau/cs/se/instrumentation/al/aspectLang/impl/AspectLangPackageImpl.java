@@ -43,6 +43,7 @@ import de.cau.cs.se.instrumentation.al.aspectLang.ReflectionProperty;
 import de.cau.cs.se.instrumentation.al.aspectLang.RuntimeProperty;
 import de.cau.cs.se.instrumentation.al.aspectLang.StringLiteral;
 import de.cau.cs.se.instrumentation.al.aspectLang.SubPathNode;
+import de.cau.cs.se.instrumentation.al.aspectLang.Technology;
 import de.cau.cs.se.instrumentation.al.aspectLang.TypeReference;
 import de.cau.cs.se.instrumentation.al.aspectLang.Typeof;
 import de.cau.cs.se.instrumentation.al.aspectLang.UtilizeAdvice;
@@ -356,6 +357,13 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * @generated
    */
   private EEnum reflectionFunctionEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum technologyEEnum = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -980,7 +988,7 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAnnotation_Value()
+  public EAttribute getAnnotation_Technologies()
   {
     return (EAttribute)annotationEClass.getEStructuralFeatures().get(1);
   }
@@ -1510,6 +1518,16 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
+  public EEnum getTechnology()
+  {
+    return technologyEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EEnum getQueryModifier()
   {
     return queryModifierEEnum;
@@ -1635,7 +1653,7 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
 
     annotationEClass = createEClass(ANNOTATION);
     createEAttribute(annotationEClass, ANNOTATION__NAME);
-    createEAttribute(annotationEClass, ANNOTATION__VALUE);
+    createEAttribute(annotationEClass, ANNOTATION__TECHNOLOGIES);
 
     locationQueryEClass = createEClass(LOCATION_QUERY);
     createEReference(locationQueryEClass, LOCATION_QUERY__NODE);
@@ -1710,6 +1728,7 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
     insertionPointEEnum = createEEnum(INSERTION_POINT);
     internalFunctionEEnum = createEEnum(INTERNAL_FUNCTION);
     reflectionFunctionEEnum = createEEnum(REFLECTION_FUNCTION);
+    technologyEEnum = createEEnum(TECHNOLOGY);
     queryModifierEEnum = createEEnum(QUERY_MODIFIER);
     logicOperatorEEnum = createEEnum(LOGIC_OPERATOR);
     compareOperatorEEnum = createEEnum(COMPARE_OPERATOR);
@@ -1838,7 +1857,7 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
 
     initEClass(annotationEClass, Annotation.class, "Annotation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getAnnotation_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Annotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAnnotation_Value(), theEcorePackage.getEString(), "value", null, 0, 1, Annotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAnnotation_Technologies(), this.getTechnology(), "technologies", null, 0, -1, Annotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(locationQueryEClass, LocationQuery.class, "LocationQuery", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getLocationQuery_Node(), this.getNode(), null, "node", null, 0, 1, LocationQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1924,6 +1943,12 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
     addEEnumLiteral(reflectionFunctionEEnum, ReflectionFunction.SIGNATURE);
     addEEnumLiteral(reflectionFunctionEEnum, ReflectionFunction.CLASS);
     addEEnumLiteral(reflectionFunctionEEnum, ReflectionFunction.RETURN_TYPE);
+
+    initEEnum(technologyEEnum, Technology.class, "Technology");
+    addEEnumLiteral(technologyEEnum, Technology.JAVA_EE);
+    addEEnumLiteral(technologyEEnum, Technology.SERVLET);
+    addEEnumLiteral(technologyEEnum, Technology.SPRING);
+    addEEnumLiteral(technologyEEnum, Technology.ASPECT_J);
 
     initEEnum(queryModifierEEnum, QueryModifier.class, "QueryModifier");
     addEEnumLiteral(queryModifierEEnum, QueryModifier.INCLUDE);

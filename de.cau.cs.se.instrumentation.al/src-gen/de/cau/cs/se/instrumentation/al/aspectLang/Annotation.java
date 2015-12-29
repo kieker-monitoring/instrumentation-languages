@@ -2,6 +2,8 @@
  */
 package de.cau.cs.se.instrumentation.al.aspectLang;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -14,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Annotation#getName <em>Name</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Annotation#getValue <em>Value</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Annotation#getTechnologies <em>Technologies</em>}</li>
  * </ul>
  *
  * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getAnnotation()
@@ -50,29 +52,21 @@ public interface Annotation extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Value</b></em>' attribute.
+   * Returns the value of the '<em><b>Technologies</b></em>' attribute list.
+   * The list contents are of type {@link de.cau.cs.se.instrumentation.al.aspectLang.Technology}.
+   * The literals are from the enumeration {@link de.cau.cs.se.instrumentation.al.aspectLang.Technology}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Value</em>' attribute isn't clear,
+   * If the meaning of the '<em>Technologies</em>' attribute list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Value</em>' attribute.
-   * @see #setValue(String)
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getAnnotation_Value()
-   * @model
+   * @return the value of the '<em>Technologies</em>' attribute list.
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.Technology
+   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getAnnotation_Technologies()
+   * @model unique="false"
    * @generated
    */
-  String getValue();
-
-  /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.Annotation#getValue <em>Value</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Value</em>' attribute.
-   * @see #getValue()
-   * @generated
-   */
-  void setValue(String value);
+  EList<Technology> getTechnologies();
 
 } // Annotation

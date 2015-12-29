@@ -1322,41 +1322,60 @@ ruleAnnotation returns [EObject current=null]
     }
 (
 (
-		lv_name_1_0=RULE_ID
-		{
-			newLeafNode(lv_name_1_0, grammarAccess.getAnnotationAccess().getNameIDTerminalRuleCall_1_0()); 
-		}
-		{
+		lv_name_1_0=	'technology' 
+    {
+        newLeafNode(lv_name_1_0, grammarAccess.getAnnotationAccess().getNameTechnologyKeyword_1_0());
+    }
+ 
+	    {
 	        if ($current==null) {
 	            $current = createModelElement(grammarAccess.getAnnotationRule());
 	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"name",
-        		lv_name_1_0, 
-        		"org.eclipse.xtext.common.Terminals.ID");
+       		setWithLastConsumed($current, "name", lv_name_1_0, "technology");
 	    }
 
 )
 )(
 (
-		lv_value_2_0=RULE_STRING
-		{
-			newLeafNode(lv_value_2_0, grammarAccess.getAnnotationAccess().getValueSTRINGTerminalRuleCall_2_0()); 
-		}
-		{
+		{ 
+	        newCompositeNode(grammarAccess.getAnnotationAccess().getTechnologiesTechnologyEnumRuleCall_2_0()); 
+	    }
+		lv_technologies_2_0=ruleTechnology		{
 	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getAnnotationRule());
+	            $current = createModelElementForParent(grammarAccess.getAnnotationRule());
 	        }
-       		setWithLastConsumed(
+       		add(
        			$current, 
-       			"value",
-        		lv_value_2_0, 
-        		"org.eclipse.xtext.common.Terminals.STRING");
+       			"technologies",
+        		lv_technologies_2_0, 
+        		"de.cau.cs.se.instrumentation.al.AspectLang.Technology");
+	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))
+)(	otherlv_3=',' 
+    {
+    	newLeafNode(otherlv_3, grammarAccess.getAnnotationAccess().getCommaKeyword_3_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getAnnotationAccess().getTechnologiesTechnologyEnumRuleCall_3_1_0()); 
+	    }
+		lv_technologies_4_0=ruleTechnology		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getAnnotationRule());
+	        }
+       		add(
+       			$current, 
+       			"technologies",
+        		lv_technologies_4_0, 
+        		"de.cau.cs.se.instrumentation.al.AspectLang.Technology");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)))
 ;
 
 
@@ -2747,6 +2766,37 @@ ruleReflectionFunction returns [Enumerator current=null]
 	{
         $current = grammarAccess.getReflectionFunctionAccess().getRETURN_TYPEEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
         newLeafNode(enumLiteral_3, grammarAccess.getReflectionFunctionAccess().getRETURN_TYPEEnumLiteralDeclaration_3()); 
+    }
+));
+
+
+
+// Rule Technology
+ruleTechnology returns [Enumerator current=null] 
+    @init { enterRule(); }
+    @after { leaveRule(); }:
+((	enumLiteral_0='javaee' 
+	{
+        $current = grammarAccess.getTechnologyAccess().getJAVA_EEEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_0, grammarAccess.getTechnologyAccess().getJAVA_EEEnumLiteralDeclaration_0()); 
+    }
+)
+    |(	enumLiteral_1='servlet' 
+	{
+        $current = grammarAccess.getTechnologyAccess().getSERVLETEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_1, grammarAccess.getTechnologyAccess().getSERVLETEnumLiteralDeclaration_1()); 
+    }
+)
+    |(	enumLiteral_2='spring' 
+	{
+        $current = grammarAccess.getTechnologyAccess().getSPRINGEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_2, grammarAccess.getTechnologyAccess().getSPRINGEnumLiteralDeclaration_2()); 
+    }
+)
+    |(	enumLiteral_3='aspectj' 
+	{
+        $current = grammarAccess.getTechnologyAccess().getASPECT_JEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_3, grammarAccess.getTechnologyAccess().getASPECT_JEnumLiteralDeclaration_3()); 
     }
 ));
 

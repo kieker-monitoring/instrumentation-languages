@@ -741,31 +741,47 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cCommercialAtKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cValueSTRINGTerminalRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
+		private final Keyword cNameTechnologyKeyword_1_0 = (Keyword)cNameAssignment_1.eContents().get(0);
+		private final Assignment cTechnologiesAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cTechnologiesTechnologyEnumRuleCall_2_0 = (RuleCall)cTechnologiesAssignment_2.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cCommaKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cTechnologiesAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cTechnologiesTechnologyEnumRuleCall_3_1_0 = (RuleCall)cTechnologiesAssignment_3_1.eContents().get(0);
 		
 		//Annotation:
-		//	'@' name=ID value=STRING;
+		//	'@' name='technology' technologies+=Technology (',' technologies+=Technology);
 		@Override public ParserRule getRule() { return rule; }
 
-		//'@' name=ID value=STRING
+		//'@' name='technology' technologies+=Technology (',' technologies+=Technology)
 		public Group getGroup() { return cGroup; }
 
 		//'@'
 		public Keyword getCommercialAtKeyword_0() { return cCommercialAtKeyword_0; }
 
-		//name=ID
+		//name='technology'
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		//'technology'
+		public Keyword getNameTechnologyKeyword_1_0() { return cNameTechnologyKeyword_1_0; }
 
-		//value=STRING
-		public Assignment getValueAssignment_2() { return cValueAssignment_2; }
+		//technologies+=Technology
+		public Assignment getTechnologiesAssignment_2() { return cTechnologiesAssignment_2; }
 
-		//STRING
-		public RuleCall getValueSTRINGTerminalRuleCall_2_0() { return cValueSTRINGTerminalRuleCall_2_0; }
+		//Technology
+		public RuleCall getTechnologiesTechnologyEnumRuleCall_2_0() { return cTechnologiesTechnologyEnumRuleCall_2_0; }
+
+		//(',' technologies+=Technology)
+		public Group getGroup_3() { return cGroup_3; }
+
+		//','
+		public Keyword getCommaKeyword_3_0() { return cCommaKeyword_3_0; }
+
+		//technologies+=Technology
+		public Assignment getTechnologiesAssignment_3_1() { return cTechnologiesAssignment_3_1; }
+
+		//Technology
+		public RuleCall getTechnologiesTechnologyEnumRuleCall_3_1_0() { return cTechnologiesTechnologyEnumRuleCall_3_1_0; }
 	}
 
 	public class LocationQueryElements extends AbstractParserRuleElementFinder {
@@ -1642,6 +1658,53 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		public Keyword getRETURN_TYPEReturnTypeKeyword_3_0() { return cRETURN_TYPEReturnTypeKeyword_3_0; }
 	}
 
+	public class TechnologyElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.Technology");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cJAVA_EEEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cJAVA_EEJavaeeKeyword_0_0 = (Keyword)cJAVA_EEEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cSERVLETEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cSERVLETServletKeyword_1_0 = (Keyword)cSERVLETEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cSPRINGEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cSPRINGSpringKeyword_2_0 = (Keyword)cSPRINGEnumLiteralDeclaration_2.eContents().get(0);
+		private final EnumLiteralDeclaration cASPECT_JEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
+		private final Keyword cASPECT_JAspectjKeyword_3_0 = (Keyword)cASPECT_JEnumLiteralDeclaration_3.eContents().get(0);
+		
+		//enum Technology:
+		//	JAVA_EE='javaee' |
+		//	SERVLET='servlet' |
+		//	SPRING='spring' |
+		//	ASPECT_J='aspectj';
+		public EnumRule getRule() { return rule; }
+
+		//JAVA_EE='javaee' | SERVLET='servlet' | SPRING='spring' | ASPECT_J='aspectj'
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//JAVA_EE='javaee'
+		public EnumLiteralDeclaration getJAVA_EEEnumLiteralDeclaration_0() { return cJAVA_EEEnumLiteralDeclaration_0; }
+
+		//'javaee'
+		public Keyword getJAVA_EEJavaeeKeyword_0_0() { return cJAVA_EEJavaeeKeyword_0_0; }
+
+		//SERVLET='servlet'
+		public EnumLiteralDeclaration getSERVLETEnumLiteralDeclaration_1() { return cSERVLETEnumLiteralDeclaration_1; }
+
+		//'servlet'
+		public Keyword getSERVLETServletKeyword_1_0() { return cSERVLETServletKeyword_1_0; }
+
+		//SPRING='spring'
+		public EnumLiteralDeclaration getSPRINGEnumLiteralDeclaration_2() { return cSPRINGEnumLiteralDeclaration_2; }
+
+		//'spring'
+		public Keyword getSPRINGSpringKeyword_2_0() { return cSPRINGSpringKeyword_2_0; }
+
+		//ASPECT_J='aspectj'
+		public EnumLiteralDeclaration getASPECT_JEnumLiteralDeclaration_3() { return cASPECT_JEnumLiteralDeclaration_3; }
+
+		//'aspectj'
+		public Keyword getASPECT_JAspectjKeyword_3_0() { return cASPECT_JAspectjKeyword_3_0; }
+	}
+
 	public class QueryModifierElements extends AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "de.cau.cs.se.instrumentation.al.AspectLang.QueryModifier");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -1795,6 +1858,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	private final AdviceParameterElements pAdviceParameter;
 	private final PointcutElements pPointcut;
 	private final AnnotationElements pAnnotation;
+	private final TechnologyElements eTechnology;
 	private final LocationQueryElements pLocationQuery;
 	private final CompositionQueryElements pCompositionQuery;
 	private final QueryModifierElements eQueryModifier;
@@ -1854,6 +1918,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		this.pAdviceParameter = new AdviceParameterElements();
 		this.pPointcut = new PointcutElements();
 		this.pAnnotation = new AnnotationElements();
+		this.eTechnology = new TechnologyElements();
 		this.pLocationQuery = new LocationQueryElements();
 		this.pCompositionQuery = new CompositionQueryElements();
 		this.eQueryModifier = new QueryModifierElements();
@@ -2125,13 +2190,26 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Annotation:
-	//	'@' name=ID value=STRING;
+	//	'@' name='technology' technologies+=Technology (',' technologies+=Technology);
 	public AnnotationElements getAnnotationAccess() {
 		return pAnnotation;
 	}
 	
 	public ParserRule getAnnotationRule() {
 		return getAnnotationAccess().getRule();
+	}
+
+	//enum Technology:
+	//	JAVA_EE='javaee' |
+	//	SERVLET='servlet' |
+	//	SPRING='spring' |
+	//	ASPECT_J='aspectj';
+	public TechnologyElements getTechnologyAccess() {
+		return eTechnology;
+	}
+	
+	public EnumRule getTechnologyRule() {
+		return getTechnologyAccess().getRule();
 	}
 
 	//LocationQuery:
