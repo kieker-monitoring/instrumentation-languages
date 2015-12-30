@@ -24,6 +24,14 @@ import de.cau.cs.se.instrumentation.al.aspectLang.Property
 import de.cau.cs.se.instrumentation.al.aspectLang.InsertionPoint
 import de.cau.cs.se.instrumentation.al.aspectLang.TypeReference
 
+import static extension de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation.*
+import static extension de.cau.cs.se.instrumentation.rl.generator.java.IRL2JavaTypeMappingExtensions.*
+
+import java.util.Collection
+import java.util.HashMap
+import java.util.Map
+import de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameterDeclaration
+
 /**
  * TODO Class name should be improved.
  */
@@ -86,12 +94,39 @@ class CommonJavaTemplates {
 		final long traceId = trace.getTraceId();
 	'''
 	
+	/**
+	 * Create data collection code based on event parameter assignments.
+	 */
+	static def CharSequence createDataCollection(Iterable<Collector> collectors, Map<AdviceParameterDeclaration, Value> parameterAssignments) {
+		val Map<CharSequence,CharSequence> data = new HashMap<CharSequence,CharSequence>()
+		collectors.forEach[it.events.forEach[it.createData(data, parameterAssignments)]]
+		
+		return data.values.join('\n')
+	}
+	
+	/**
+	 * Create data initialization for data collection.
+	 */
+	static def Map<CharSequence,CharSequence> createData(Event event, Map<CharSequence,CharSequence> data,  Map<AdviceParameterDeclaration, Value> parameterAssignments) {
+		event.type.collectAllDataProperties.forEach[property, i |
+			val value = event.initializations.get(i)
+			val valueText = value.createValue(parameterAssignments)
+			if (!data.keySet.exists[it.toString.equals(valueText.toString)])
+				data.put(valueText, '''final «property.type.class_.createPrimitiveTypeName» «property.createValueName» = «valueText»;''')
+		]
+		return data
+	}
+		
 	static def CharSequence createEvent(Event event) '''
-		CTRLINST.newMonitoringRecord(new «event.type.name»(«event.initializations.map[it.createInitialization].join(', ')»));
+		CTRLINST.newMonitoringRecord(new «event.type.name»(«event.type.collectAllDataProperties.map[it.createValueName].join(', ')»));
 	'''
 	
+	private static def CharSequence createValueName(de.cau.cs.se.instrumentation.rl.recordLang.Property property) {
+		"collect" + property.name.toFirstUpper
+	}
+	
 	// TODO this prototype must be extended to support parameters and reference values
-	private static def CharSequence createInitialization(Value value) {
+	private static def CharSequence createValue(Value value, Map<AdviceParameterDeclaration, Value> parameterAssignments) {
 		switch(value) {
 			StringLiteral: '''"«value.value»"'''
 			IntLiteral: value.value.toString
@@ -102,7 +137,9 @@ class CommonJavaTemplates {
 				case TRACE_ID: '''trace.getTraceId()'''
 				case ORDER_INDEX: '''trace.getNextOrderId()'''
 			}
-			AdviceParameter: '''""'''
+			AdviceParameter: {
+				parameterAssignments.get(value.declaration).createValue(parameterAssignments)
+			}
 			default:
 				throw new InternalErrorException("Illegal value type " + value.class.name)
 		}

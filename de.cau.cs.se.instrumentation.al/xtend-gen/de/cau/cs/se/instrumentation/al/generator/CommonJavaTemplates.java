@@ -3,6 +3,7 @@ package de.cau.cs.se.instrumentation.al.generator;
 import com.google.common.base.Objects;
 import de.cau.cs.se.instrumentation.al.aspectLang.Advice;
 import de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameter;
+import de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameterDeclaration;
 import de.cau.cs.se.instrumentation.al.aspectLang.AspectModel;
 import de.cau.cs.se.instrumentation.al.aspectLang.Collector;
 import de.cau.cs.se.instrumentation.al.aspectLang.Event;
@@ -13,7 +14,6 @@ import de.cau.cs.se.instrumentation.al.aspectLang.InternalFunction;
 import de.cau.cs.se.instrumentation.al.aspectLang.InternalFunctionProperty;
 import de.cau.cs.se.instrumentation.al.aspectLang.Literal;
 import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery;
-import de.cau.cs.se.instrumentation.al.aspectLang.Property;
 import de.cau.cs.se.instrumentation.al.aspectLang.ReferenceValue;
 import de.cau.cs.se.instrumentation.al.aspectLang.ReflectionFunction;
 import de.cau.cs.se.instrumentation.al.aspectLang.ReflectionProperty;
@@ -23,18 +23,29 @@ import de.cau.cs.se.instrumentation.al.aspectLang.TypeReference;
 import de.cau.cs.se.instrumentation.al.aspectLang.Value;
 import de.cau.cs.se.instrumentation.al.mapping.NamedType;
 import de.cau.cs.se.instrumentation.rl.generator.InternalErrorException;
+import de.cau.cs.se.instrumentation.rl.generator.java.IRL2JavaTypeMappingExtensions;
+import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.Model;
+import de.cau.cs.se.instrumentation.rl.recordLang.Property;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
+import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure2;
+import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 /**
  * TODO Class name should be improved.
@@ -180,6 +191,61 @@ public class CommonJavaTemplates {
     return _builder;
   }
   
+  /**
+   * Create data collection code based on event parameter assignments.
+   */
+  public static CharSequence createDataCollection(final Iterable<Collector> collectors, final Map<AdviceParameterDeclaration, Value> parameterAssignments) {
+    final Map<CharSequence, CharSequence> data = new HashMap<CharSequence, CharSequence>();
+    final Consumer<Collector> _function = (Collector it) -> {
+      EList<Event> _events = it.getEvents();
+      final Consumer<Event> _function_1 = (Event it_1) -> {
+        CommonJavaTemplates.createData(it_1, data, parameterAssignments);
+      };
+      _events.forEach(_function_1);
+    };
+    collectors.forEach(_function);
+    Collection<CharSequence> _values = data.values();
+    return IterableExtensions.join(_values, "\n");
+  }
+  
+  /**
+   * Create data initialization for data collection.
+   */
+  public static Map<CharSequence, CharSequence> createData(final Event event, final Map<CharSequence, CharSequence> data, final Map<AdviceParameterDeclaration, Value> parameterAssignments) {
+    RecordType _type = event.getType();
+    List<Property> _collectAllDataProperties = PropertyEvaluation.collectAllDataProperties(_type);
+    final Procedure2<Property, Integer> _function = (Property property, Integer i) -> {
+      EList<Value> _initializations = event.getInitializations();
+      final Value value = _initializations.get((i).intValue());
+      final CharSequence valueText = CommonJavaTemplates.createValue(value, parameterAssignments);
+      Set<CharSequence> _keySet = data.keySet();
+      final Function1<CharSequence, Boolean> _function_1 = (CharSequence it) -> {
+        String _string = it.toString();
+        String _string_1 = valueText.toString();
+        return Boolean.valueOf(_string.equals(_string_1));
+      };
+      boolean _exists = IterableExtensions.<CharSequence>exists(_keySet, _function_1);
+      boolean _not = (!_exists);
+      if (_not) {
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("final ");
+        Classifier _type_1 = property.getType();
+        EClassifier _class_ = _type_1.getClass_();
+        String _createPrimitiveTypeName = IRL2JavaTypeMappingExtensions.createPrimitiveTypeName(_class_);
+        _builder.append(_createPrimitiveTypeName, "");
+        _builder.append(" ");
+        CharSequence _createValueName = CommonJavaTemplates.createValueName(property);
+        _builder.append(_createValueName, "");
+        _builder.append(" = ");
+        _builder.append(valueText, "");
+        _builder.append(";");
+        data.put(valueText, _builder);
+      }
+    };
+    IterableExtensions.<Property>forEach(_collectAllDataProperties, _function);
+    return data;
+  }
+  
   public static CharSequence createEvent(final Event event) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("CTRLINST.newMonitoringRecord(new ");
@@ -187,11 +253,12 @@ public class CommonJavaTemplates {
     String _name = _type.getName();
     _builder.append(_name, "");
     _builder.append("(");
-    EList<Value> _initializations = event.getInitializations();
-    final Function1<Value, CharSequence> _function = (Value it) -> {
-      return CommonJavaTemplates.createInitialization(it);
+    RecordType _type_1 = event.getType();
+    List<Property> _collectAllDataProperties = PropertyEvaluation.collectAllDataProperties(_type_1);
+    final Function1<Property, CharSequence> _function = (Property it) -> {
+      return CommonJavaTemplates.createValueName(it);
     };
-    List<CharSequence> _map = ListExtensions.<Value, CharSequence>map(_initializations, _function);
+    List<CharSequence> _map = ListExtensions.<Property, CharSequence>map(_collectAllDataProperties, _function);
     String _join = IterableExtensions.join(_map, ", ");
     _builder.append(_join, "");
     _builder.append("));");
@@ -199,7 +266,13 @@ public class CommonJavaTemplates {
     return _builder;
   }
   
-  private static CharSequence createInitialization(final Value value) {
+  private static CharSequence createValueName(final Property property) {
+    String _name = property.getName();
+    String _firstUpper = StringExtensions.toFirstUpper(_name);
+    return ("collect" + _firstUpper);
+  }
+  
+  private static CharSequence createValue(final Value value, final Map<AdviceParameterDeclaration, Value> parameterAssignments) {
     try {
       CharSequence _switchResult = null;
       boolean _matched = false;
@@ -236,7 +309,7 @@ public class CommonJavaTemplates {
           LocationQuery _query = ((ReferenceValue)value).getQuery();
           boolean _equals = Objects.equal(_query, null);
           if (_equals) {
-            Property _property = ((ReferenceValue)value).getProperty();
+            de.cau.cs.se.instrumentation.al.aspectLang.Property _property = ((ReferenceValue)value).getProperty();
             _xifexpression = CommonJavaTemplates.createLocalProperty(_property);
           } else {
             _xifexpression = "MISSING";
@@ -277,9 +350,9 @@ public class CommonJavaTemplates {
       if (!_matched) {
         if (value instanceof AdviceParameter) {
           _matched=true;
-          StringConcatenation _builder = new StringConcatenation();
-          _builder.append("\"\"");
-          _switchResult = _builder;
+          AdviceParameterDeclaration _declaration = ((AdviceParameter)value).getDeclaration();
+          Value _get = parameterAssignments.get(_declaration);
+          _switchResult = CommonJavaTemplates.createValue(_get, parameterAssignments);
         }
       }
       if (!_matched) {
@@ -294,7 +367,7 @@ public class CommonJavaTemplates {
     }
   }
   
-  private static CharSequence createLocalProperty(final Property property) {
+  private static CharSequence createLocalProperty(final de.cau.cs.se.instrumentation.al.aspectLang.Property property) {
     CharSequence _switchResult = null;
     boolean _matched = false;
     if (!_matched) {

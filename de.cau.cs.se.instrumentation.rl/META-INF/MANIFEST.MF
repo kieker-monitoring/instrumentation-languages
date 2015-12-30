@@ -30,6 +30,8 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: de.cau.cs.se.instrumentation.rl,
  de.cau.cs.se.instrumentation.rl.formatting,
  de.cau.cs.se.instrumentation.rl.generator,
+ de.cau.cs.se.instrumentation.rl.generator.c,
+ de.cau.cs.se.instrumentation.rl.generator.java,
  de.cau.cs.se.instrumentation.rl.ouput.config,
  de.cau.cs.se.instrumentation.rl.parser.antlr,
  de.cau.cs.se.instrumentation.rl.parser.antlr.internal,

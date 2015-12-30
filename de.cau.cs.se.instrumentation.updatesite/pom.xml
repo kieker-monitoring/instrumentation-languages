@@ -18,8 +18,8 @@
 	<properties>
 		<!-- Relative path to the repo being uploaded -->
 		<repo.path>${project.build.directory}/repository/</repo.path>
-		<updatesite.path>file:///srv/vhosts/default/htdocs/eus/mdm/snapshot/</updatesite.path>
-		<!-- <updatesite.path>file:///home/rju/eus/snapshot/</updatesite.path> -->
+		<!--  <updatesite.path>file:///srv/vhosts/default/htdocs/eus/mdm/snapshot/</updatesite.path> -->
+		<updatesite.path>file:///home/rju/eus/snapshot/</updatesite.path>
 	</properties>
 
 	<build>
@@ -77,17 +77,26 @@
 			<plugin>
 				<artifactId>maven-clean-plugin</artifactId>
 				<version>3.0.0</version>
-				<configuration>
-					<filesets>
-						<fileset>
-							<directory>${updatesite.path}</directory>
-							<includes>
-								<include>**</include>
-							</includes>
-							<followSymlinks>false</followSymlinks>
-						</fileset>
-					</filesets>
-				</configuration>
+				<executions>
+					<execution>
+						<id>cleanup</id>
+						<phase>install</phase>
+						<goals>
+							<goal>upload</goal>
+						</goals>
+						<configuration>
+							<filesets>
+								<fileset>
+									<directory>${updatesite.path}</directory>
+									<includes>
+										<include>**</include>
+									</includes>
+									<followSymlinks>false</followSymlinks>
+								</fileset>
+							</filesets>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 

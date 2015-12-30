@@ -7,82 +7,73 @@ import de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameterDeclaration;
 import de.cau.cs.se.instrumentation.al.aspectLang.Collector;
 import de.cau.cs.se.instrumentation.al.aspectLang.Event;
 import de.cau.cs.se.instrumentation.al.aspectLang.InsertionPoint;
-import de.cau.cs.se.instrumentation.al.aspectLang.TypeReference;
+import de.cau.cs.se.instrumentation.al.aspectLang.UtilizeAdvice;
+import de.cau.cs.se.instrumentation.al.aspectLang.Value;
 import de.cau.cs.se.instrumentation.al.generator.CommonJavaTemplates;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure2;
 
 @SuppressWarnings("all")
-public class AspectJAdviceGenerator implements IGenerator<Advice, CharSequence> {
+public class AspectJAdviceGenerator implements IGenerator<UtilizeAdvice, CharSequence> {
+  private int index;
+  
   @Override
-  public CharSequence generate(final Advice input) {
+  public CharSequence generate(final UtilizeAdvice input) {
     CharSequence _xblockexpression = null;
     {
-      final boolean traceAPI = CommonJavaTemplates.isTraceAPIUsed(input);
+      Advice _advice = input.getAdvice();
+      final boolean traceAPI = CommonJavaTemplates.isTraceAPIUsed(_advice);
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("\t\t");
       _builder.append("package ");
-      String _packageName = CommonJavaTemplates.getPackageName(input);
-      _builder.append(_packageName, "\t\t");
+      Advice _advice_1 = input.getAdvice();
+      String _packageName = CommonJavaTemplates.getPackageName(_advice_1);
+      _builder.append(_packageName, "");
       _builder.append(";");
       _builder.newLineIfNotEmpty();
-      _builder.append("\t\t");
       _builder.newLine();
-      _builder.append("\t\t");
       _builder.append("import org.aspectj.lang.JoinPoint.EnclosingStaticPart;");
       _builder.newLine();
-      _builder.append("\t\t");
       _builder.append("import org.aspectj.lang.ProceedingJoinPoint;");
       _builder.newLine();
-      _builder.append("\t\t");
       _builder.append("import org.aspectj.lang.Signature;");
       _builder.newLine();
-      _builder.append("\t\t");
       _builder.append("import org.aspectj.lang.annotation.After;");
       _builder.newLine();
-      _builder.append("\t\t");
       _builder.append("import org.aspectj.lang.annotation.Aspect;");
       _builder.newLine();
-      _builder.append("\t\t");
       _builder.append("import org.aspectj.lang.annotation.Before;");
       _builder.newLine();
-      _builder.append("\t\t");
       _builder.append("import org.aspectj.lang.annotation.Pointcut;");
       _builder.newLine();
-      _builder.append("\t\t");
       _builder.newLine();
-      _builder.append("\t\t");
       _builder.append("import kieker.monitoring.core.controller.IMonitoringController;");
       _builder.newLine();
-      _builder.append("\t\t");
       _builder.append("import kieker.monitoring.core.controller.MonitoringController;");
       _builder.newLine();
-      _builder.append("\t\t");
       {
         if (traceAPI) {
           _builder.append("import kieker.monitoring.core.registry.TraceRegistry;");
         }
       }
       _builder.newLineIfNotEmpty();
-      _builder.append("\t\t");
       _builder.append("import kieker.monitoring.probe.aspectj.AbstractAspectJProbe;");
       _builder.newLine();
-      _builder.append("\t\t");
       _builder.append("import kieker.monitoring.timer.ITimeSource;");
       _builder.newLine();
-      _builder.append("\t\t");
       _builder.newLine();
-      _builder.append("\t\t");
-      EList<Collector> _collectors = input.getCollectors();
+      Advice _advice_2 = input.getAdvice();
+      EList<Collector> _collectors = _advice_2.getCollectors();
       String _createRecordInputs = CommonJavaTemplates.createRecordInputs(_collectors);
-      _builder.append(_createRecordInputs, "\t\t");
+      _builder.append(_createRecordInputs, "");
       _builder.newLineIfNotEmpty();
-      _builder.append("\t\t");
       {
         if (traceAPI) {
           _builder.append("import kieker.common.record.flow.trace.TraceMetadata;");
@@ -90,22 +81,23 @@ public class AspectJAdviceGenerator implements IGenerator<Advice, CharSequence> 
       }
       _builder.newLineIfNotEmpty();
       _builder.newLine();
-      _builder.append("\t\t");
       _builder.append("@Aspect");
       _builder.newLine();
-      _builder.append("\t\t");
-      _builder.append("public abstract class ");
-      String _name = input.getName();
-      _builder.append(_name, "\t\t");
-      _builder.append("Advice extends AbstractAspectJProbe {");
+      _builder.append("public abstract class Abstract");
+      Advice _advice_3 = input.getAdvice();
+      String _name = _advice_3.getName();
+      _builder.append(_name, "");
+      _builder.append("Advice");
+      _builder.append(this.index, "");
+      _builder.append(" extends AbstractAspectJProbe {");
       _builder.newLineIfNotEmpty();
-      _builder.append("\t\t\t");
+      _builder.append("\t");
       _builder.append("private static final IMonitoringController CTRLINST = MonitoringController.getInstance();");
       _builder.newLine();
-      _builder.append("\t\t\t");
+      _builder.append("\t");
       _builder.append("private static final ITimeSource TIMESOURCE = CTRLINST.getTimeSource();");
       _builder.newLine();
-      _builder.append("\t\t\t");
+      _builder.append("\t");
       {
         if (traceAPI) {
           _builder.append("private static final TraceRegistry TRACEREGISTRY = TraceRegistry.INSTANCE;");
@@ -113,18 +105,17 @@ public class AspectJAdviceGenerator implements IGenerator<Advice, CharSequence> 
       }
       _builder.newLineIfNotEmpty();
       _builder.newLine();
-      _builder.append("\t\t\t");
+      _builder.append("\t");
       _builder.append("@Pointcut");
       _builder.newLine();
-      _builder.append("\t\t\t");
+      _builder.append("\t");
       _builder.append("public abstract void operation();");
       _builder.newLine();
       _builder.newLine();
-      _builder.append("\t\t\t");
+      _builder.append("\t");
       String _createAdviceMethods = this.createAdviceMethods(input, traceAPI);
-      _builder.append(_createAdviceMethods, "\t\t\t");
+      _builder.append(_createAdviceMethods, "\t");
       _builder.newLineIfNotEmpty();
-      _builder.append("\t\t");
       _builder.append("}");
       _builder.newLine();
       _xblockexpression = _builder;
@@ -132,12 +123,17 @@ public class AspectJAdviceGenerator implements IGenerator<Advice, CharSequence> 
     return _xblockexpression;
   }
   
-  private String createAdviceMethods(final Advice advice, final boolean traceAPI) {
+  public int setIndex(final int index) {
+    return this.index = index;
+  }
+  
+  private String createAdviceMethods(final UtilizeAdvice advice, final boolean traceAPI) {
     InsertionPoint[] _values = InsertionPoint.values();
     final Function1<InsertionPoint, CharSequence> _function = (InsertionPoint insertionPoint) -> {
       CharSequence _xblockexpression = null;
       {
-        EList<Collector> _collectors = advice.getCollectors();
+        Advice _advice = advice.getAdvice();
+        EList<Collector> _collectors = _advice.getCollectors();
         final Function1<Collector, Boolean> _function_1 = (Collector it) -> {
           InsertionPoint _insertionPoint = it.getInsertionPoint();
           return Boolean.valueOf(Objects.equal(_insertionPoint, insertionPoint));
@@ -211,49 +207,42 @@ public class AspectJAdviceGenerator implements IGenerator<Advice, CharSequence> 
     return _switchResult;
   }
   
-  private CharSequence createAdviceMethods(final Advice advice, final Iterable<Collector> collectors, final boolean traceAPI, final InsertionPoint insertion) {
-    StringConcatenation _builder = new StringConcatenation();
-    String _dynamicMethodName = this.getDynamicMethodName(insertion);
-    EList<AdviceParameterDeclaration> _parameterDeclarations = advice.getParameterDeclarations();
-    final Function1<AdviceParameterDeclaration, String> _function = (AdviceParameterDeclaration it) -> {
-      TypeReference _type = it.getType();
-      String _createTypeReference = CommonJavaTemplates.createTypeReference(_type);
-      String _plus = (_createTypeReference + " ");
-      String _name = it.getName();
-      return (_plus + _name);
-    };
-    List<String> _map = ListExtensions.<AdviceParameterDeclaration, String>map(_parameterDeclarations, _function);
-    String _join = IterableExtensions.join(_map, ", ");
-    String _annotationName = this.getAnnotationName(insertion);
-    CharSequence _createAdviceMethod = this.createAdviceMethod(collectors, traceAPI, _dynamicMethodName, 
-      "Object thisObject, ProceedingJoinPoint thisJoinPoint", _join, 
-      "thisJoinPoint", _annotationName, 
-      "this(thisObject)");
-    _builder.append(_createAdviceMethod, "");
-    _builder.newLineIfNotEmpty();
-    _builder.newLine();
-    String _staticMethodName = this.getStaticMethodName(insertion);
-    EList<AdviceParameterDeclaration> _parameterDeclarations_1 = advice.getParameterDeclarations();
-    final Function1<AdviceParameterDeclaration, String> _function_1 = (AdviceParameterDeclaration it) -> {
-      TypeReference _type = it.getType();
-      String _createTypeReference = CommonJavaTemplates.createTypeReference(_type);
-      String _plus = (_createTypeReference + " ");
-      String _name = it.getName();
-      return (_plus + _name);
-    };
-    List<String> _map_1 = ListExtensions.<AdviceParameterDeclaration, String>map(_parameterDeclarations_1, _function_1);
-    String _join_1 = IterableExtensions.join(_map_1, ", ");
-    String _annotationName_1 = this.getAnnotationName(insertion);
-    CharSequence _createAdviceMethod_1 = this.createAdviceMethod(collectors, traceAPI, _staticMethodName, 
-      "ProceedingJoinPoint thisJoinPoint", _join_1, 
-      "thisJoinPoint", _annotationName_1, 
-      "!this(java.lang.Object)");
-    _builder.append(_createAdviceMethod_1, "");
-    _builder.newLineIfNotEmpty();
-    return _builder;
+  private CharSequence createAdviceMethods(final UtilizeAdvice advice, final Iterable<Collector> collectors, final boolean traceAPI, final InsertionPoint insertion) {
+    CharSequence _xblockexpression = null;
+    {
+      final HashMap<AdviceParameterDeclaration, Value> parameterAssignments = new HashMap<AdviceParameterDeclaration, Value>();
+      Advice _advice = advice.getAdvice();
+      EList<AdviceParameterDeclaration> _parameterDeclarations = _advice.getParameterDeclarations();
+      final Procedure2<AdviceParameterDeclaration, Integer> _function = (AdviceParameterDeclaration declaration, Integer index) -> {
+        EList<Value> _parameterAssignments = advice.getParameterAssignments();
+        Value _get = _parameterAssignments.get((index).intValue());
+        parameterAssignments.put(declaration, _get);
+      };
+      IterableExtensions.<AdviceParameterDeclaration>forEach(_parameterDeclarations, _function);
+      StringConcatenation _builder = new StringConcatenation();
+      String _dynamicMethodName = this.getDynamicMethodName(insertion);
+      String _annotationName = this.getAnnotationName(insertion);
+      CharSequence _createAdviceMethod = this.createAdviceMethod(collectors, traceAPI, _dynamicMethodName, 
+        "Object thisObject, ProceedingJoinPoint thisJoinPoint", parameterAssignments, 
+        "thisJoinPoint", _annotationName, 
+        "this(thisObject)");
+      _builder.append(_createAdviceMethod, "");
+      _builder.newLineIfNotEmpty();
+      _builder.newLine();
+      String _staticMethodName = this.getStaticMethodName(insertion);
+      String _annotationName_1 = this.getAnnotationName(insertion);
+      CharSequence _createAdviceMethod_1 = this.createAdviceMethod(collectors, traceAPI, _staticMethodName, 
+        "ProceedingJoinPoint thisJoinPoint", parameterAssignments, 
+        "thisJoinPoint", _annotationName_1, 
+        "!this(java.lang.Object)");
+      _builder.append(_createAdviceMethod_1, "");
+      _builder.newLineIfNotEmpty();
+      _xblockexpression = _builder;
+    }
+    return _xblockexpression;
   }
   
-  private CharSequence createAdviceMethod(final Iterable<Collector> collectors, final boolean traceAPI, final String methodName, final String parameters, final String adviceParameters, final String joinPointParameterName, final String annotation, final String pointcut) {
+  private CharSequence createAdviceMethod(final Iterable<Collector> collectors, final boolean traceAPI, final String methodName, final String parameters, final Map<AdviceParameterDeclaration, Value> parameterAssignments, final String joinPointParameterName, final String annotation, final String pointcut) {
     CharSequence _xifexpression = null;
     boolean _isEmpty = IterableExtensions.isEmpty(collectors);
     if (_isEmpty) {
@@ -271,23 +260,19 @@ public class AspectJAdviceGenerator implements IGenerator<Advice, CharSequence> 
       _builder_1.append(methodName, "");
       _builder_1.append("(");
       _builder_1.append(parameters, "");
-      String _xifexpression_1 = null;
-      boolean _isEmpty_1 = adviceParameters.isEmpty();
-      boolean _not = (!_isEmpty_1);
-      if (_not) {
-        _xifexpression_1 = adviceParameters;
-      }
-      _builder_1.append(_xifexpression_1, "");
       _builder_1.append(") {");
       _builder_1.newLineIfNotEmpty();
       _builder_1.append("\t");
       _builder_1.append("if (CTRLINST.isMonitoringEnabled()) {");
       _builder_1.newLine();
       _builder_1.append("\t\t");
-      _builder_1.append("final String signatureString = this.signatureToLongString(");
+      _builder_1.append("final Signature signature = ");
       _builder_1.append(joinPointParameterName, "\t\t");
-      _builder_1.append(".getSignature());");
+      _builder_1.append(".getSignature();");
       _builder_1.newLineIfNotEmpty();
+      _builder_1.append("\t\t");
+      _builder_1.append("final String signatureString = this.signatureToLongString(signature);");
+      _builder_1.newLine();
       _builder_1.append("\t\t");
       _builder_1.append("if (CTRLINST.isProbeActivated(signatureString)) {");
       _builder_1.newLine();
@@ -297,11 +282,15 @@ public class AspectJAdviceGenerator implements IGenerator<Advice, CharSequence> 
       _builder_1.append("// common fields");
       _builder_1.newLine();
       _builder_1.append("\t\t\t");
-      CharSequence _xifexpression_2 = null;
+      CharSequence _xifexpression_1 = null;
       if (traceAPI) {
-        _xifexpression_2 = CommonJavaTemplates.createTraceId();
+        _xifexpression_1 = CommonJavaTemplates.createTraceId();
       }
-      _builder_1.append(_xifexpression_2, "\t\t\t");
+      _builder_1.append(_xifexpression_1, "\t\t\t");
+      _builder_1.newLineIfNotEmpty();
+      _builder_1.append("\t\t\t");
+      CharSequence _createDataCollection = CommonJavaTemplates.createDataCollection(collectors, parameterAssignments);
+      _builder_1.append(_createDataCollection, "\t\t\t");
       _builder_1.newLineIfNotEmpty();
       _builder_1.append("\t\t\t");
       _builder_1.newLine();

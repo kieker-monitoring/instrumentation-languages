@@ -41,6 +41,8 @@ import org.w3c.dom.Document
 import de.cau.cs.se.instrumentation.al.aspectLang.AspectModel
 import de.cau.cs.se.instrumentation.al.aspectLang.UtilizeAdvice
 import java.io.File
+import de.cau.cs.se.instrumentation.al.aspectLang.Advice
+import java.util.List
 
 /**
  * Generates code from your model files on save.
@@ -89,18 +91,25 @@ class AspectLangGenerator implements IGenerator {
 	 * @param aspects collection of aspects for AspectJ
 	 * @param access file system access
 	 */
-	def createAspectJConfiguration(Collection<Aspect> aspects, IFileSystemAccess access) {
+	private def createAspectJConfiguration(Collection<Aspect> aspects, IFileSystemAccess access) {
 		val aspectGenerator = new AspectJPointcutGenerator()
 		storeXMLModel('aop.xml', access, aspectGenerator.generate(aspects))
 				
 		val adviceGenerator = new AspectJAdviceGenerator()
-		aspects.forEach[
-			it.advices.forEach[advice |
-				access.generateFile("aspectj" + File.separator + advice.packagePathName + advice.advice.name + "Advice.java", adviceGenerator.generate(advice.advice))
+		val utilizationAdviceMap = aspects.createUtilizationMap()
+		
+		utilizationAdviceMap.forEach[advice, utilizedAdvices |
+			utilizedAdvices.forEach[utilizedAdviced, i|
+				adviceGenerator.setIndex(i)
+				access.generateFile(utilizedAdviced.aspectJAbstractAdviceName(i), 
+					adviceGenerator.generate(utilizedAdviced)
+				)
 			]
 		]
 	}
 		
+	private def String aspectJAbstractAdviceName(UtilizeAdvice advice, int i) '''aspectj«File.separator»«advice.advice.packagePathName»Abstract«advice.advice.name»Advice«i».java'''
+			
 	/**
 	 * Create Spring configuration for a given collection of aspects.
 	 * 
@@ -109,12 +118,15 @@ class AspectLangGenerator implements IGenerator {
 	 */
 	private def createSpringConfiguration(Collection<Aspect> aspects, IFileSystemAccess access) {
 		val adviceGenerator = new SpringAdviceGenerator()
-		aspects.forEach[
-			it.advices.forEach[advice |
-				access.generateFile("spring" + File.separator + advice.packagePathName + advice.advice.name + "Interceptor.java", adviceGenerator.generate(advice.advice))
-			]
+		
+		val utilizationAdviceMap = aspects.createUtilizationMap()
+		
+		utilizationAdviceMap.forEach[advice, utilizedAdvices |
+			access.generateFile(advice.aspectSpringAdviceName, adviceGenerator.generate(advice))
 		]
 	}
+	
+	private def String aspectSpringAdviceName(Advice advice) '''spring«File.separator»«advice.packagePathName»«advice.name»Interceptor.java'''
 	
 	/**
 	 * Create J2EE configuration for a given collection of aspects.
@@ -124,13 +136,16 @@ class AspectLangGenerator implements IGenerator {
 	 */
 	private def createJ2EEConfiguration(Collection<Aspect> aspects, IFileSystemAccess access) {
 		val adviceGenerator = new JavaEEAdviceGenerator()
-		aspects.forEach[
-			it.advices.forEach[advice |
-				access.generateFile("j2ee" + File.separator + advice.packagePathName + advice.advice.name + "Interceptor.java", adviceGenerator.generate(advice.advice))
-			]
+		
+		val utilizationAdviceMap = aspects.createUtilizationMap()
+		
+		utilizationAdviceMap.forEach[advice, utilizedAdvices |
+			access.generateFile(advice.aspectJ2EEAdviceName, adviceGenerator.generate(advice))
 		]
 	}
-
+	
+	private def String aspectJ2EEAdviceName(Advice advice) '''j2ee«File.separator»«advice.packagePathName»«advice.name»Interceptor.java'''
+	
 	/**
 	 * Create Servlet configuration for a given collection of aspects.
 	 * 
@@ -139,12 +154,16 @@ class AspectLangGenerator implements IGenerator {
 	 */
 	private def createServletConfiguration(Collection<Aspect> aspects, IFileSystemAccess access) {
 		val adviceGenerator = new ServletAdviceGenerator()
-		aspects.forEach[
-			it.advices.forEach[advice |
-				access.generateFile("servlet" + File.separator +advice.packagePathName + advice.advice.name + "Filter.java", adviceGenerator.generate(advice.advice))
-			]
+		
+		val utilizationAdviceMap = aspects.createUtilizationMap()
+		
+		utilizationAdviceMap.forEach[advice, utilizedAdvices |
+			access.generateFile(advice.aspectServletAdviceName, adviceGenerator.generate(advice))
 		]
 	}
+	
+	private def String aspectServletAdviceName(Advice advice) '''servlet«File.separator»«advice.packagePathName»«advice.name»Filter.java'''
+	
 	
 	/**
 	 * Serialize a given XML document model into a file vial the 
@@ -211,7 +230,30 @@ class AspectLangGenerator implements IGenerator {
 	/**
 	 * create the name for an advice.
 	 */
-	private def String getPackagePathName(UtilizeAdvice advice) {
-		(advice.eContainer.eContainer as AspectModel).name.replace('\\.',File.separator) + File.separator
+	private def String getPackagePathName(Advice advice) {
+		(advice.eContainer as AspectModel).name.replace('\\.',File.separator) + File.separator
+	}
+	
+	/**
+	 * Create a map for advices and their instantiation/utilization.
+	 * 
+	 * @param aspects collection of aspects containing advices.
+	 * 
+	 * @return map of advices and list of utilizations.
+	 */
+	private def createUtilizationMap(Collection<Aspect> aspects) {
+		val utilizationAdviceMap = new HashMap<Advice,List<UtilizeAdvice>>()
+		aspects.forEach[
+			it.advices.forEach[advice |
+				var adviceList = utilizationAdviceMap.get(advice.advice)
+				if (adviceList == null) {
+					adviceList = new ArrayList<UtilizeAdvice>()
+					utilizationAdviceMap.put(advice.advice, adviceList)
+				}
+				adviceList.add(advice)
+			]
+		]
+		
+		return utilizationAdviceMap
 	}
 }

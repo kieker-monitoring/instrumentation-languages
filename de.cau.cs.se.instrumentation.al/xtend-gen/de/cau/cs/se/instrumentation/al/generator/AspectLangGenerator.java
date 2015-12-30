@@ -54,12 +54,15 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure2;
 import org.w3c.dom.Document;
 
 /**
@@ -141,27 +144,39 @@ public class AspectLangGenerator implements IGenerator {
    * @param aspects collection of aspects for AspectJ
    * @param access file system access
    */
-  public void createAspectJConfiguration(final Collection<Aspect> aspects, final IFileSystemAccess access) {
+  private void createAspectJConfiguration(final Collection<Aspect> aspects, final IFileSystemAccess access) {
     final AspectJPointcutGenerator aspectGenerator = new AspectJPointcutGenerator();
     Document _generate = aspectGenerator.generate(aspects);
     this.storeXMLModel("aop.xml", access, _generate);
     final AspectJAdviceGenerator adviceGenerator = new AspectJAdviceGenerator();
-    final Consumer<Aspect> _function = (Aspect it) -> {
-      EList<UtilizeAdvice> _advices = it.getAdvices();
-      final Consumer<UtilizeAdvice> _function_1 = (UtilizeAdvice advice) -> {
-        String _packagePathName = this.getPackagePathName(advice);
-        String _plus = (("aspectj" + File.separator) + _packagePathName);
-        Advice _advice = advice.getAdvice();
-        String _name = _advice.getName();
-        String _plus_1 = (_plus + _name);
-        String _plus_2 = (_plus_1 + "Advice.java");
-        Advice _advice_1 = advice.getAdvice();
-        CharSequence _generate_1 = adviceGenerator.generate(_advice_1);
-        access.generateFile(_plus_2, _generate_1);
+    final HashMap<Advice, List<UtilizeAdvice>> utilizationAdviceMap = this.createUtilizationMap(aspects);
+    final BiConsumer<Advice, List<UtilizeAdvice>> _function = (Advice advice, List<UtilizeAdvice> utilizedAdvices) -> {
+      final Procedure2<UtilizeAdvice, Integer> _function_1 = (UtilizeAdvice utilizedAdviced, Integer i) -> {
+        adviceGenerator.setIndex((i).intValue());
+        String _aspectJAbstractAdviceName = this.aspectJAbstractAdviceName(utilizedAdviced, (i).intValue());
+        CharSequence _generate_1 = adviceGenerator.generate(utilizedAdviced);
+        access.generateFile(_aspectJAbstractAdviceName, _generate_1);
       };
-      _advices.forEach(_function_1);
+      IterableExtensions.<UtilizeAdvice>forEach(utilizedAdvices, _function_1);
     };
-    aspects.forEach(_function);
+    utilizationAdviceMap.forEach(_function);
+  }
+  
+  private String aspectJAbstractAdviceName(final UtilizeAdvice advice, final int i) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("aspectj");
+    _builder.append(File.separator, "");
+    Advice _advice = advice.getAdvice();
+    String _packagePathName = this.getPackagePathName(_advice);
+    _builder.append(_packagePathName, "");
+    _builder.append("Abstract");
+    Advice _advice_1 = advice.getAdvice();
+    String _name = _advice_1.getName();
+    _builder.append(_name, "");
+    _builder.append("Advice");
+    _builder.append(i, "");
+    _builder.append(".java");
+    return _builder.toString();
   }
   
   /**
@@ -172,22 +187,25 @@ public class AspectLangGenerator implements IGenerator {
    */
   private void createSpringConfiguration(final Collection<Aspect> aspects, final IFileSystemAccess access) {
     final SpringAdviceGenerator adviceGenerator = new SpringAdviceGenerator();
-    final Consumer<Aspect> _function = (Aspect it) -> {
-      EList<UtilizeAdvice> _advices = it.getAdvices();
-      final Consumer<UtilizeAdvice> _function_1 = (UtilizeAdvice advice) -> {
-        String _packagePathName = this.getPackagePathName(advice);
-        String _plus = (("spring" + File.separator) + _packagePathName);
-        Advice _advice = advice.getAdvice();
-        String _name = _advice.getName();
-        String _plus_1 = (_plus + _name);
-        String _plus_2 = (_plus_1 + "Interceptor.java");
-        Advice _advice_1 = advice.getAdvice();
-        CharSequence _generate = adviceGenerator.generate(_advice_1);
-        access.generateFile(_plus_2, _generate);
-      };
-      _advices.forEach(_function_1);
+    final HashMap<Advice, List<UtilizeAdvice>> utilizationAdviceMap = this.createUtilizationMap(aspects);
+    final BiConsumer<Advice, List<UtilizeAdvice>> _function = (Advice advice, List<UtilizeAdvice> utilizedAdvices) -> {
+      String _aspectSpringAdviceName = this.aspectSpringAdviceName(advice);
+      CharSequence _generate = adviceGenerator.generate(advice);
+      access.generateFile(_aspectSpringAdviceName, _generate);
     };
-    aspects.forEach(_function);
+    utilizationAdviceMap.forEach(_function);
+  }
+  
+  private String aspectSpringAdviceName(final Advice advice) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("spring");
+    _builder.append(File.separator, "");
+    String _packagePathName = this.getPackagePathName(advice);
+    _builder.append(_packagePathName, "");
+    String _name = advice.getName();
+    _builder.append(_name, "");
+    _builder.append("Interceptor.java");
+    return _builder.toString();
   }
   
   /**
@@ -198,22 +216,25 @@ public class AspectLangGenerator implements IGenerator {
    */
   private void createJ2EEConfiguration(final Collection<Aspect> aspects, final IFileSystemAccess access) {
     final JavaEEAdviceGenerator adviceGenerator = new JavaEEAdviceGenerator();
-    final Consumer<Aspect> _function = (Aspect it) -> {
-      EList<UtilizeAdvice> _advices = it.getAdvices();
-      final Consumer<UtilizeAdvice> _function_1 = (UtilizeAdvice advice) -> {
-        String _packagePathName = this.getPackagePathName(advice);
-        String _plus = (("j2ee" + File.separator) + _packagePathName);
-        Advice _advice = advice.getAdvice();
-        String _name = _advice.getName();
-        String _plus_1 = (_plus + _name);
-        String _plus_2 = (_plus_1 + "Interceptor.java");
-        Advice _advice_1 = advice.getAdvice();
-        CharSequence _generate = adviceGenerator.generate(_advice_1);
-        access.generateFile(_plus_2, _generate);
-      };
-      _advices.forEach(_function_1);
+    final HashMap<Advice, List<UtilizeAdvice>> utilizationAdviceMap = this.createUtilizationMap(aspects);
+    final BiConsumer<Advice, List<UtilizeAdvice>> _function = (Advice advice, List<UtilizeAdvice> utilizedAdvices) -> {
+      String _aspectJ2EEAdviceName = this.aspectJ2EEAdviceName(advice);
+      CharSequence _generate = adviceGenerator.generate(advice);
+      access.generateFile(_aspectJ2EEAdviceName, _generate);
     };
-    aspects.forEach(_function);
+    utilizationAdviceMap.forEach(_function);
+  }
+  
+  private String aspectJ2EEAdviceName(final Advice advice) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("j2ee");
+    _builder.append(File.separator, "");
+    String _packagePathName = this.getPackagePathName(advice);
+    _builder.append(_packagePathName, "");
+    String _name = advice.getName();
+    _builder.append(_name, "");
+    _builder.append("Interceptor.java");
+    return _builder.toString();
   }
   
   /**
@@ -224,22 +245,25 @@ public class AspectLangGenerator implements IGenerator {
    */
   private void createServletConfiguration(final Collection<Aspect> aspects, final IFileSystemAccess access) {
     final ServletAdviceGenerator adviceGenerator = new ServletAdviceGenerator();
-    final Consumer<Aspect> _function = (Aspect it) -> {
-      EList<UtilizeAdvice> _advices = it.getAdvices();
-      final Consumer<UtilizeAdvice> _function_1 = (UtilizeAdvice advice) -> {
-        String _packagePathName = this.getPackagePathName(advice);
-        String _plus = (("servlet" + File.separator) + _packagePathName);
-        Advice _advice = advice.getAdvice();
-        String _name = _advice.getName();
-        String _plus_1 = (_plus + _name);
-        String _plus_2 = (_plus_1 + "Filter.java");
-        Advice _advice_1 = advice.getAdvice();
-        CharSequence _generate = adviceGenerator.generate(_advice_1);
-        access.generateFile(_plus_2, _generate);
-      };
-      _advices.forEach(_function_1);
+    final HashMap<Advice, List<UtilizeAdvice>> utilizationAdviceMap = this.createUtilizationMap(aspects);
+    final BiConsumer<Advice, List<UtilizeAdvice>> _function = (Advice advice, List<UtilizeAdvice> utilizedAdvices) -> {
+      String _aspectServletAdviceName = this.aspectServletAdviceName(advice);
+      CharSequence _generate = adviceGenerator.generate(advice);
+      access.generateFile(_aspectServletAdviceName, _generate);
     };
-    aspects.forEach(_function);
+    utilizationAdviceMap.forEach(_function);
+  }
+  
+  private String aspectServletAdviceName(final Advice advice) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("servlet");
+    _builder.append(File.separator, "");
+    String _packagePathName = this.getPackagePathName(advice);
+    _builder.append(_packagePathName, "");
+    String _name = advice.getName();
+    _builder.append(_name, "");
+    _builder.append("Filter.java");
+    return _builder.toString();
   }
   
   /**
@@ -340,11 +364,39 @@ public class AspectLangGenerator implements IGenerator {
   /**
    * create the name for an advice.
    */
-  private String getPackagePathName(final UtilizeAdvice advice) {
+  private String getPackagePathName(final Advice advice) {
     EObject _eContainer = advice.eContainer();
-    EObject _eContainer_1 = _eContainer.eContainer();
-    String _name = ((AspectModel) _eContainer_1).getName();
+    String _name = ((AspectModel) _eContainer).getName();
     String _replace = _name.replace("\\.", File.separator);
     return (_replace + File.separator);
+  }
+  
+  /**
+   * Create a map for advices and their instantiation/utilization.
+   * 
+   * @param aspects collection of aspects containing advices.
+   * 
+   * @return map of advices and list of utilizations.
+   */
+  private HashMap<Advice, List<UtilizeAdvice>> createUtilizationMap(final Collection<Aspect> aspects) {
+    final HashMap<Advice, List<UtilizeAdvice>> utilizationAdviceMap = new HashMap<Advice, List<UtilizeAdvice>>();
+    final Consumer<Aspect> _function = (Aspect it) -> {
+      EList<UtilizeAdvice> _advices = it.getAdvices();
+      final Consumer<UtilizeAdvice> _function_1 = (UtilizeAdvice advice) -> {
+        Advice _advice = advice.getAdvice();
+        List<UtilizeAdvice> adviceList = utilizationAdviceMap.get(_advice);
+        boolean _equals = Objects.equal(adviceList, null);
+        if (_equals) {
+          ArrayList<UtilizeAdvice> _arrayList = new ArrayList<UtilizeAdvice>();
+          adviceList = _arrayList;
+          Advice _advice_1 = advice.getAdvice();
+          utilizationAdviceMap.put(_advice_1, adviceList);
+        }
+        adviceList.add(advice);
+      };
+      _advices.forEach(_function_1);
+    };
+    aspects.forEach(_function);
+    return utilizationAdviceMap;
   }
 }
