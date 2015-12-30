@@ -32,6 +32,7 @@
 		<module>../de.cau.cs.se.instrumentation.al.ui</module>
 		<module>../de.cau.cs.se.instrumentation.al.tests</module>
 		<module>../de.cau.cs.se.instrumentation.al.sdk</module>
+		<module>../de.cau.cs.se.instrumentation.al.handler.pcm</module>
 		<module>../de.cau.cs.se.instrumentation.rl</module>
 		<module>../de.cau.cs.se.instrumentation.rl.ui</module>
 		<module>../de.cau.cs.se.instrumentation.rl.tests</module>
