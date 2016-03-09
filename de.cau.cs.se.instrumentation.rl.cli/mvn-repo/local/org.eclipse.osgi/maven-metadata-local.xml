@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>local</groupId>
+  <artifactId>org.eclipse.osgi</artifactId>
+  <versioning>
+    <release>3.10.101.v20150820-1432</release>
+    <versions>
+      <version>3.10.101.v20150820-1432</version>
+    </versions>
+    <lastUpdated>20160218165044</lastUpdated>
+  </versioning>
+</metadata>
