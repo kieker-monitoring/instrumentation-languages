@@ -1,6 +1,7 @@
 package de.cau.cs.se.instrumentation.rl.generator.java;
 
-import org.eclipse.emf.ecore.EClassifier
+import de.cau.cs.se.instrumentation.rl.generator.InternalErrorException
+import de.cau.cs.se.instrumentation.rl.recordLang.BaseType
 
 class IRL2JavaTypeMappingExtensions {
 
@@ -14,7 +15,7 @@ class IRL2JavaTypeMappingExtensions {
 	 * @return 
 	 * 		the Java type name of the given <code>classifier</code>
 	 */
-	def static createPrimitiveTypeName(EClassifier classifier) {
+	def static createPrimitiveTypeName(BaseType classifier) {
 		switch (classifier.name) {
 			case 'int': 'int'
 			case 'long': 'long'
@@ -25,14 +26,14 @@ class IRL2JavaTypeMappingExtensions {
 			case 'byte': 'byte'
 			case 'string': 'String'
 			case 'boolean': 'boolean'
-			default: classifier.name
+			default: throw new InternalErrorException("Base type " + classifier.name + " is not a defined mapping type.")
 		}
 	}
 
 	/**
 	 * Determine the right Java string for a given system type.
 	 */
-	def static createPrimitiveWrapperTypeName(EClassifier classifier) {
+	def static createPrimitiveWrapperTypeName(BaseType classifier) {
 		switch (classifier.name) {
 			case 'int': 'Integer'
 			case 'long': 'Long'
@@ -43,7 +44,7 @@ class IRL2JavaTypeMappingExtensions {
 			case 'byte': 'Byte'
 			case 'string': 'String'
 			case 'boolean': 'Boolean'
-			default: classifier.name
+			default: throw new InternalErrorException("Base type " + classifier.name + " is not a defined mapping type.")
 		}
 	}
 }

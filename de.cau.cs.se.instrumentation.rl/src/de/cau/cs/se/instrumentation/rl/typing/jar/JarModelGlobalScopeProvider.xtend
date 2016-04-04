@@ -17,7 +17,7 @@ package de.cau.cs.se.instrumentation.rl.typing.jar;
 
 import com.google.common.base.Predicate
 import com.google.inject.Inject
-import de.cau.cs.se.instrumentation.rl.typing.TypeGlobalScopeProvider
+import de.cau.cs.se.instrumentation.rl.typing.BaseTypeGlobalScopeProvider
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.ecore.EcorePackage.Literals
@@ -29,8 +29,10 @@ import org.eclipse.xtext.resource.IEObjectDescription
 import org.eclipse.xtext.scoping.IScope
 import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.core.runtime.Path
+import de.cau.cs.se.instrumentation.rl.typing.ITypeProvider
+import de.cau.cs.se.instrumentation.rl.recordLang.BaseType
 
-class JarModelGlobalScopeProvider extends TypeGlobalScopeProvider {
+class JarModelGlobalScopeProvider extends BaseTypeGlobalScopeProvider {
 	
 	@Inject
 	private IQualifiedNameConverter qualifiedNameConverter;
@@ -38,7 +40,7 @@ class JarModelGlobalScopeProvider extends TypeGlobalScopeProvider {
 	override IScope getParentTypeScope(Resource resource, EReference reference,
             Predicate<IEObjectDescription> filter, EClass referenceType) {
         // check whether the reference type is a type of any kind 
-        if (EcoreUtil2::isAssignableFrom(Literals::ECLASSIFIER, referenceType)) {
+        if (referenceType.name.equals(BaseType.simpleName)) {
         	super.getParentTypeScope(resource, reference, filter, referenceType)
         } else if (EcoreUtil2::isAssignableFrom(Literals::EPACKAGE, referenceType)) {
         	return IScope.NULLSCOPE
@@ -50,7 +52,7 @@ class JarModelGlobalScopeProvider extends TypeGlobalScopeProvider {
         		val project = root.getFile(new Path(uri)).project
     
     			if (resourceSet != null) {
-        			val IJarModelTypeProvider typeProvider = JarModelTypeProviderFactory.getTypeProvider(project, resourceSet)
+        			val ITypeProvider typeProvider = JarModelTypeProviderFactory.getTypeProvider(project, resourceSet)
 					return new JarModelTypeScope(typeProvider, qualifiedNameConverter, filter)
 				} else
     				throw new IllegalStateException("context must be contained in a resource set") 

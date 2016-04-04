@@ -7,9 +7,11 @@ import de.cau.cs.se.instrumentation.rl.generator.java.IRL2JavaTypeMappingExtensi
 import de.cau.cs.se.instrumentation.rl.generator.java.record.ComputeUID;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize;
+import de.cau.cs.se.instrumentation.rl.recordLang.BaseType;
 import de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.BuiltInValueLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
+import de.cau.cs.se.instrumentation.rl.recordLang.ComplexType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Constant;
 import de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.FloatLiteral;
@@ -30,7 +32,6 @@ import java.util.List;
 import java.util.function.Consumer;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
@@ -377,8 +378,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
           _or = true;
         } else {
           Classifier _findType = PropertyEvaluation.findType(it);
-          EClassifier _class_ = _findType.getClass_();
-          String _name_2 = _class_.getName();
+          BaseType _type = _findType.getType();
+          String _name_2 = _type.getName();
           boolean _equals_4 = _name_2.equals("string");
           _or = _equals_4;
         }
@@ -715,8 +716,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
             {
               final Classifier classifier = PropertyEvaluation.findType(it);
               String _xifexpression_9 = null;
-              EClassifier _class_ = classifier.getClass_();
-              String _name_6 = _class_.getName();
+              BaseType _type = classifier.getType();
+              String _name_6 = _type.getName();
               boolean _equals_6 = Objects.equal(_name_6, "string");
               if (_equals_6) {
                 StringConcatenation _builder_1 = new StringConcatenation();
@@ -917,8 +918,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         {
           final Classifier classifier = PropertyEvaluation.findType(it);
           final CharSequence getterName = this.buildPropertyReadAccessorName(it, classifier);
-          EClassifier _class_ = classifier.getClass_();
-          final String typeName = _class_.getName();
+          BaseType _type = classifier.getType();
+          final String typeName = _type.getName();
           String _switchResult = null;
           switch (typeName) {
             case "string":
@@ -1002,8 +1003,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     try {
       String _switchResult = null;
       Classifier _findType = PropertyEvaluation.findType(property);
-      EClassifier _class_ = _findType.getClass_();
-      String _name = _class_.getName();
+      BaseType _type = _findType.getType();
+      String _name = _type.getName();
       switch (_name) {
         case "string":
           _switchResult = "TYPE_SIZE_STRING";
@@ -1034,8 +1035,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
           break;
         default:
           Classifier _findType_1 = PropertyEvaluation.findType(property);
-          EClassifier _class__1 = _findType_1.getClass_();
-          String _name_1 = _class__1.getName();
+          BaseType _type_1 = _findType_1.getType();
+          String _name_1 = _type_1.getName();
           String _plus = (_name_1 + "is not a valid type name");
           throw new InternalErrorException(_plus);
       }
@@ -1212,8 +1213,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.append(_protectKeywords, "");
       _builder.append(" = ");
       Classifier _findType_1 = PropertyEvaluation.findType(property);
-      EClassifier _class_ = _findType_1.getClass_();
-      CharSequence _createPropertyPrimitiveTypeDeserialization = this.createPropertyPrimitiveTypeDeserialization(_class_);
+      BaseType _type = _findType_1.getType();
+      CharSequence _createPropertyPrimitiveTypeDeserialization = this.createPropertyPrimitiveTypeDeserialization(_type);
       _builder.append(_createPropertyPrimitiveTypeDeserialization, "");
       _builder.append(";");
       _xifexpression = _builder;
@@ -1231,8 +1232,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     int _size = _sizes.size();
     boolean _greaterThan = (_size > 0);
     if (_greaterThan) {
-      EClassifier _class_ = classifier.getClass_();
-      String _createPrimitiveTypeName = IRL2JavaTypeMappingExtensions.createPrimitiveTypeName(_class_);
+      BaseType _type = classifier.getType();
+      String _createPrimitiveTypeName = IRL2JavaTypeMappingExtensions.createPrimitiveTypeName(_type);
       EList<ArraySize> _sizes_1 = classifier.getSizes();
       final Function1<ArraySize, CharSequence> _function = (ArraySize size) -> {
         EList<ArraySize> _sizes_2 = classifier.getSizes();
@@ -1243,8 +1244,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       String _join = IterableExtensions.join(_map);
       _xifexpression = (_createPrimitiveTypeName + _join);
     } else {
-      EClassifier _class__1 = classifier.getClass_();
-      _xifexpression = IRL2JavaTypeMappingExtensions.createPrimitiveTypeName(_class__1);
+      BaseType _type_1 = classifier.getType();
+      _xifexpression = IRL2JavaTypeMappingExtensions.createPrimitiveTypeName(_type_1);
     }
     return _xifexpression;
   }
@@ -1330,8 +1331,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     _builder.append(_determineArrayAccessCode, "");
     _builder.append(" = ");
     Classifier _findType = PropertyEvaluation.findType(property);
-    EClassifier _class_ = _findType.getClass_();
-    CharSequence _createPropertyPrimitiveTypeDeserialization = this.createPropertyPrimitiveTypeDeserialization(_class_);
+    BaseType _type = _findType.getType();
+    CharSequence _createPropertyPrimitiveTypeDeserialization = this.createPropertyPrimitiveTypeDeserialization(_type);
     _builder.append(_createPropertyPrimitiveTypeDeserialization, "");
     _builder.append(";");
     return _builder.toString();
@@ -1360,7 +1361,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   /**
    * Create code to get values from the input buffer.
    */
-  private CharSequence createPropertyPrimitiveTypeDeserialization(final EClassifier classifier) {
+  private CharSequence createPropertyPrimitiveTypeDeserialization(final BaseType classifier) {
     CharSequence _switchResult = null;
     String _name = classifier.getName();
     switch (_name) {
@@ -1541,8 +1542,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       CharSequence _buildPropertyReadAccessorName = this.buildPropertyReadAccessorName(property, classifier);
       final String getterName = ("this." + _buildPropertyReadAccessorName);
       CharSequence _switchResult = null;
-      EClassifier _class_ = classifier.getClass_();
-      String _name = _class_.getName();
+      BaseType _type = classifier.getType();
+      String _name = _type.getName();
       switch (_name) {
         case "string":
           StringConcatenation _builder = new StringConcatenation();
@@ -1690,8 +1691,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   private CharSequence createGetterName(final Property property) {
     CharSequence _xifexpression = null;
     Classifier _findType = PropertyEvaluation.findType(property);
-    EClassifier _class_ = _findType.getClass_();
-    String _name = _class_.getName();
+    BaseType _type = _findType.getType();
+    String _name = _type.getName();
     boolean _equals = _name.equals("boolean");
     if (_equals) {
       StringConcatenation _builder = new StringConcatenation();
@@ -1796,8 +1797,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   private CharSequence createPropertyAssignment(final Property property) {
     CharSequence _xifexpression = null;
     Classifier _findType = PropertyEvaluation.findType(property);
-    EClassifier _class_ = _findType.getClass_();
-    String _name = _class_.getName();
+    BaseType _type = _findType.getType();
+    String _name = _type.getName();
     boolean _equals = "string".equals(_name);
     if (_equals) {
       StringConcatenation _builder = new StringConcatenation();
@@ -2026,7 +2027,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       boolean _notEquals_2 = (!Objects.equal(_parents, null));
       if (_notEquals_2) {
         EList<TemplateType> _parents_1 = type.getParents();
-        for (final Type t : _parents_1) {
+        for (final ComplexType t : _parents_1) {
           {
             final CharSequence result_1 = this.computeFullQualifiedPropertyName(property, t);
             boolean _notEquals_3 = (!Objects.equal(result_1, null));
@@ -2051,7 +2052,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    * @returns
    * 		the FQ property name
    */
-  private CharSequence computeFullQualifiedPropertyName(final Property property, final Type type) {
+  private CharSequence computeFullQualifiedPropertyName(final Property property, final ComplexType type) {
     EList<Property> _properties = type.getProperties();
     boolean _contains = _properties.contains(property);
     if (_contains) {
@@ -2064,7 +2065,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       boolean _notEquals = (!Objects.equal(_parents, null));
       if (_notEquals) {
         EList<TemplateType> _parents_1 = type.getParents();
-        for (final Type t : _parents_1) {
+        for (final ComplexType t : _parents_1) {
           {
             final CharSequence result2 = this.computeFullQualifiedPropertyName(property, t);
             boolean _notEquals_1 = (!Objects.equal(result2, null));
@@ -2164,8 +2165,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     if (_greaterThan) {
       _xifexpression = this.createArrayTypeName(classifier);
     } else {
-      EClassifier _class_ = classifier.getClass_();
-      _xifexpression = IRL2JavaTypeMappingExtensions.createPrimitiveTypeName(_class_);
+      BaseType _type = classifier.getType();
+      _xifexpression = IRL2JavaTypeMappingExtensions.createPrimitiveTypeName(_type);
     }
     return _xifexpression;
   }
@@ -2186,8 +2187,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     if (_greaterThan) {
       _xifexpression = this.createArrayTypeName(classifier);
     } else {
-      EClassifier _class_ = classifier.getClass_();
-      _xifexpression = IRL2JavaTypeMappingExtensions.createPrimitiveWrapperTypeName(_class_);
+      BaseType _type = classifier.getType();
+      _xifexpression = IRL2JavaTypeMappingExtensions.createPrimitiveWrapperTypeName(_type);
     }
     return _xifexpression;
   }
@@ -2203,8 +2204,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   private String createArrayTypeName(final Classifier classifier) {
     String _xblockexpression = null;
     {
-      EClassifier _class_ = classifier.getClass_();
-      final String primitiveTypeName = IRL2JavaTypeMappingExtensions.createPrimitiveTypeName(_class_);
+      BaseType _type = classifier.getType();
+      final String primitiveTypeName = IRL2JavaTypeMappingExtensions.createPrimitiveTypeName(_type);
       EList<ArraySize> _sizes = classifier.getSizes();
       final Function1<ArraySize, String> _function = (ArraySize size) -> {
         StringConcatenation _builder = new StringConcatenation();
@@ -2316,7 +2317,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         int _value = ((IntLiteral)literal).getValue();
         _builder.append(_value, "");
         String _xifexpression = null;
-        EClassifier _requiredType = this.getRequiredType(literal);
+        BaseType _requiredType = this.getRequiredType(literal);
         String _name = _requiredType.getName();
         boolean _equals = _name.equals("long");
         if (_equals) {
@@ -2333,7 +2334,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         Float _value = ((FloatLiteral)literal).getValue();
         _builder.append(_value, "");
         String _xifexpression = null;
-        EClassifier _requiredType = this.getRequiredType(literal);
+        BaseType _requiredType = this.getRequiredType(literal);
         String _name = _requiredType.getName();
         boolean _equals = _name.equals("float");
         if (_equals) {
@@ -2382,7 +2383,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     }
     if (!_matched) {
       if (literal instanceof StringLiteral) {
-        EClassifier _requiredType = this.getRequiredType(literal);
+        BaseType _requiredType = this.getRequiredType(literal);
         String _name = _requiredType.getName();
         boolean _equals = _name.equals("string");
         if (_equals) {
@@ -2398,7 +2399,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     }
     if (!_matched) {
       if (literal instanceof StringLiteral) {
-        EClassifier _requiredType = this.getRequiredType(literal);
+        BaseType _requiredType = this.getRequiredType(literal);
         String _name = _requiredType.getName();
         boolean _equals = _name.equals("char");
         if (_equals) {
@@ -2444,8 +2445,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   /**
    * Resolve the primitive type for the given literal.
    */
-  private EClassifier getRequiredType(final Literal literal) {
-    EClassifier _switchResult = null;
+  private BaseType getRequiredType(final Literal literal) {
+    BaseType _switchResult = null;
     EObject _eContainer = literal.eContainer();
     boolean _matched = false;
     if (!_matched) {
@@ -2453,7 +2454,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         _matched=true;
         EObject _eContainer_1 = literal.eContainer();
         Classifier _type = ((Constant) _eContainer_1).getType();
-        _switchResult = _type.getClass_();
+        _switchResult = _type.getType();
       }
     }
     if (!_matched) {
@@ -2461,7 +2462,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         _matched=true;
         EObject _eContainer_1 = literal.eContainer();
         Classifier _type = ((Property) _eContainer_1).getType();
-        _switchResult = _type.getClass_();
+        _switchResult = _type.getType();
       }
     }
     if (!_matched) {

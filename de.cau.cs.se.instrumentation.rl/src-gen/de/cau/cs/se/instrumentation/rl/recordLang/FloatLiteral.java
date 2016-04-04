@@ -10,10 +10,10 @@ package de.cau.cs.se.instrumentation.rl.recordLang;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.FloatLiteral#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getFloatLiteral()
  * @model

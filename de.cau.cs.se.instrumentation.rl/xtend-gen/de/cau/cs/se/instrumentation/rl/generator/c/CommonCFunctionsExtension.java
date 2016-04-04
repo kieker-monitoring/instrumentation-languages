@@ -1,13 +1,15 @@
 package de.cau.cs.se.instrumentation.rl.generator.c;
 
+import de.cau.cs.se.instrumentation.rl.generator.InternalErrorException;
+import de.cau.cs.se.instrumentation.rl.recordLang.BaseType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.Model;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 
 /**
  * @author Reiner Jung
@@ -48,42 +50,48 @@ public class CommonCFunctionsExtension {
    * @returns a C type name
    */
   public static String createTypeName(final Classifier classifier) {
-    String _switchResult = null;
-    EClassifier _class_ = classifier.getClass_();
-    String _name = _class_.getName();
-    switch (_name) {
-      case "key":
-        _switchResult = "const char*";
-        break;
-      case "string":
-        _switchResult = "const char*";
-        break;
-      case "byte":
-        _switchResult = "char";
-        break;
-      case "short":
-        _switchResult = "short";
-        break;
-      case "int":
-        _switchResult = "long";
-        break;
-      case "long":
-        _switchResult = "long long";
-        break;
-      case "float":
-        _switchResult = "float";
-        break;
-      case "double":
-        _switchResult = "double";
-        break;
-      case "boolean":
-        _switchResult = "char";
-        break;
-      default:
-        EClassifier _class__1 = classifier.getClass_();
-        _switchResult = _class__1.getName();
-        break;
+    try {
+      String _switchResult = null;
+      BaseType _type = classifier.getType();
+      String _name = _type.getName();
+      switch (_name) {
+        case "key":
+          _switchResult = "const char*";
+          break;
+        case "string":
+          _switchResult = "const char*";
+          break;
+        case "byte":
+          _switchResult = "char";
+          break;
+        case "short":
+          _switchResult = "short";
+          break;
+        case "int":
+          _switchResult = "long";
+          break;
+        case "long":
+          _switchResult = "long long";
+          break;
+        case "float":
+          _switchResult = "float";
+          break;
+        case "double":
+          _switchResult = "double";
+          break;
+        case "boolean":
+          _switchResult = "char";
+          break;
+        default:
+          BaseType _type_1 = classifier.getType();
+          String _name_1 = _type_1.getName();
+          String _plus = ("Type " + _name_1);
+          String _plus_1 = (_plus + " is not supported.");
+          throw new InternalErrorException(_plus_1);
+      }
+      return _switchResult;
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
     }
-    return _switchResult;
   }
 }

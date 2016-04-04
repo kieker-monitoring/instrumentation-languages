@@ -3,6 +3,7 @@ package de.cau.cs.se.instrumentation.rl.generator.java.junit;
 import com.google.common.base.Objects;
 import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator;
 import de.cau.cs.se.instrumentation.rl.generator.java.IRL2JavaTypeMappingExtensions;
+import de.cau.cs.se.instrumentation.rl.recordLang.BaseType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.Constant;
 import de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral;
@@ -20,7 +21,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -577,8 +577,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     _builder.append(index, "");
     _builder.append("] of type ");
     Classifier _type = property.getType();
-    EClassifier _class_ = _type.getClass_();
-    String _createPrimitiveWrapperTypeName = IRL2JavaTypeMappingExtensions.createPrimitiveWrapperTypeName(_class_);
+    BaseType _type_1 = _type.getType();
+    String _createPrimitiveWrapperTypeName = IRL2JavaTypeMappingExtensions.createPrimitiveWrapperTypeName(_type_1);
     _builder.append(_createPrimitiveWrapperTypeName, "");
     _builder.append(" must be not null.\", values[");
     _builder.append(index, "");
@@ -615,15 +615,15 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     {
       boolean _or = false;
       Classifier _type = property.getType();
-      EClassifier _class_ = _type.getClass_();
-      String _name = _class_.getName();
+      BaseType _type_1 = _type.getType();
+      String _name = _type_1.getName();
       boolean _equals = Objects.equal(_name, "float");
       if (_equals) {
         _or = true;
       } else {
-        Classifier _type_1 = property.getType();
-        EClassifier _class__1 = _type_1.getClass_();
-        String _name_1 = _class__1.getName();
+        Classifier _type_2 = property.getType();
+        BaseType _type_3 = _type_2.getType();
+        String _name_1 = _type_3.getName();
         boolean _equals_1 = Objects.equal(_name_1, "double");
         _or = _equals_1;
       }
@@ -638,18 +638,18 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         String _castToPrimitiveType_1 = this.getCastToPrimitiveType(property);
         _builder.append(_castToPrimitiveType_1, "\t");
         _builder.append(" (");
-        Classifier _type_2 = property.getType();
-        EClassifier _class__2 = _type_2.getClass_();
-        String _createPrimitiveWrapperTypeName = IRL2JavaTypeMappingExtensions.createPrimitiveWrapperTypeName(_class__2);
+        Classifier _type_4 = property.getType();
+        BaseType _type_5 = _type_4.getType();
+        String _createPrimitiveWrapperTypeName = IRL2JavaTypeMappingExtensions.createPrimitiveWrapperTypeName(_type_5);
         _builder.append(_createPrimitiveWrapperTypeName, "\t");
         _builder.append(")values[");
         _builder.append(index, "\t");
         _builder.append("], 0.0000001");
         _builder.newLineIfNotEmpty();
       } else {
-        Classifier _type_3 = property.getType();
-        EClassifier _class__3 = _type_3.getClass_();
-        String _name_2 = _class__3.getName();
+        Classifier _type_6 = property.getType();
+        BaseType _type_7 = _type_6.getType();
+        String _name_2 = _type_7.getName();
         boolean _equals_2 = Objects.equal(_name_2, "string");
         if (_equals_2) {
           _builder.append("\t");
@@ -735,15 +735,15 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    */
   private String getCastToPrimitiveType(final Property property) {
     Classifier _type = property.getType();
-    EClassifier _class_ = _type.getClass_();
-    String _name = _class_.getName();
+    BaseType _type_1 = _type.getType();
+    String _name = _type_1.getName();
     boolean _equals = "string".equals(_name);
     if (_equals) {
       return "";
     } else {
-      Classifier _type_1 = property.getType();
-      EClassifier _class__1 = _type_1.getClass_();
-      String _name_1 = _class__1.getName();
+      Classifier _type_2 = property.getType();
+      BaseType _type_3 = _type_2.getType();
+      String _name_1 = _type_3.getName();
       String _plus = ("(" + _name_1);
       return (_plus + ")");
     }
@@ -769,15 +769,15 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         {
           boolean _or = false;
           Classifier _type = property.getType();
-          EClassifier _class_ = _type.getClass_();
-          String _name_2 = _class_.getName();
+          BaseType _type_1 = _type.getType();
+          String _name_2 = _type_1.getName();
           boolean _equals = Objects.equal(_name_2, "float");
           if (_equals) {
             _or = true;
           } else {
-            Classifier _type_1 = property.getType();
-            EClassifier _class__1 = _type_1.getClass_();
-            String _name_3 = _class__1.getName();
+            Classifier _type_2 = property.getType();
+            BaseType _type_3 = _type_2.getType();
+            String _name_3 = _type_3.getName();
             boolean _equals_1 = Objects.equal(_name_3, "double");
             _or = _equals_1;
           }
@@ -795,9 +795,9 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
             _builder.append("(), 0.0000001);");
             _builder.newLineIfNotEmpty();
           } else {
-            Classifier _type_2 = property.getType();
-            EClassifier _class__2 = _type_2.getClass_();
-            String _name_5 = _class__2.getName();
+            Classifier _type_4 = property.getType();
+            BaseType _type_5 = _type_4.getType();
+            String _name_5 = _type_5.getName();
             boolean _equals_2 = Objects.equal(_name_5, "boolean");
             if (_equals_2) {
               CharSequence _createPropertyValueSet_1 = this.createPropertyValueSet(property);
@@ -809,9 +809,9 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
               _builder.append("()));");
               _builder.newLineIfNotEmpty();
             } else {
-              Classifier _type_3 = property.getType();
-              EClassifier _class__3 = _type_3.getClass_();
-              String _name_7 = _class__3.getName();
+              Classifier _type_6 = property.getType();
+              BaseType _type_7 = _type_6.getType();
+              String _name_7 = _type_7.getName();
               boolean _equals_3 = Objects.equal(_name_7, "string");
               if (_equals_3) {
                 CharSequence _createPropertyValueSet_2 = this.createPropertyValueSet(property);
@@ -871,15 +871,15 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     _builder.append(index, "");
     _builder.append("].getClass().getCanonicalName() + \" does not match the desired type ");
     Classifier _type = property.getType();
-    EClassifier _class_ = _type.getClass_();
-    String _createPrimitiveWrapperTypeName = IRL2JavaTypeMappingExtensions.createPrimitiveWrapperTypeName(_class_);
+    BaseType _type_1 = _type.getType();
+    String _createPrimitiveWrapperTypeName = IRL2JavaTypeMappingExtensions.createPrimitiveWrapperTypeName(_type_1);
     _builder.append(_createPrimitiveWrapperTypeName, "");
     _builder.append("\", values[");
     _builder.append(index, "");
     _builder.append("] instanceof ");
-    Classifier _type_1 = property.getType();
-    EClassifier _class__1 = _type_1.getClass_();
-    String _createPrimitiveWrapperTypeName_1 = IRL2JavaTypeMappingExtensions.createPrimitiveWrapperTypeName(_class__1);
+    Classifier _type_2 = property.getType();
+    BaseType _type_3 = _type_2.getType();
+    String _createPrimitiveWrapperTypeName_1 = IRL2JavaTypeMappingExtensions.createPrimitiveWrapperTypeName(_type_3);
     _builder.append(_createPrimitiveWrapperTypeName_1, "");
     _builder.append(");");
     _builder.newLineIfNotEmpty();
@@ -892,14 +892,14 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   private CharSequence createPropertyValueSet(final Property property) {
     StringConcatenation _builder = new StringConcatenation();
     Classifier _type = property.getType();
-    EClassifier _class_ = _type.getClass_();
-    String _name = _class_.getName();
+    BaseType _type_1 = _type.getType();
+    String _name = _type_1.getName();
     String _upperCase = _name.toUpperCase();
     _builder.append(_upperCase, "");
     _builder.append("_VALUES.get(i % ");
-    Classifier _type_1 = property.getType();
-    EClassifier _class__1 = _type_1.getClass_();
-    String _name_1 = _class__1.getName();
+    Classifier _type_2 = property.getType();
+    BaseType _type_3 = _type_2.getType();
+    String _name_1 = _type_3.getName();
     String _upperCase_1 = _name_1.toUpperCase();
     _builder.append(_upperCase_1, "");
     _builder.append("_VALUES.size())");

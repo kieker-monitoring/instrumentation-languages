@@ -36,6 +36,7 @@ import com.google.common.collect.Lists;
 
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangFactory;
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
+import de.cau.cs.se.instrumentation.rl.typing.ITypeProvider;
 
 /**
  *
@@ -43,13 +44,13 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Type;
  */
 public class JarModelTypeScope extends AbstractScope {
 
-	private final IJarModelTypeProvider typeProvider;
+	private final ITypeProvider typeProvider;
 
 	private final IQualifiedNameConverter qualifiedNameConverter;
 
 	private final Predicate<IEObjectDescription> filter;
 
-	protected JarModelTypeScope(final IJarModelTypeProvider typeProvider,
+	protected JarModelTypeScope(final ITypeProvider typeProvider,
 			final IQualifiedNameConverter qualifiedNameConverter,
 			final Predicate<IEObjectDescription> filter) {
 		super(IScope.NULLSCOPE, false);
@@ -126,6 +127,7 @@ public class JarModelTypeScope extends AbstractScope {
 	}
 
 	private InternalEObject createProxy(final String fullyQualifiedName) {
+		System.out.println("createProxy " + fullyQualifiedName);
 		final URI uri = JarModelTypeURIHelper.getFullURIForClass(fullyQualifiedName);
 		// TODO fix this: could be component or interface or method?
 		final InternalEObject proxy = (InternalEObject) RecordLangFactory.eINSTANCE.createModel();

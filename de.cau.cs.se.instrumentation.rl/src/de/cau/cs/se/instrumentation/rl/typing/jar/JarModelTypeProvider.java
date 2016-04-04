@@ -15,15 +15,15 @@
  ***************************************************************************/
 package de.cau.cs.se.instrumentation.rl.typing.jar;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
 import org.eclipse.core.resources.IProject;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.util.Strings;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
+import de.cau.cs.se.instrumentation.rl.typing.ITypeProvider;
 
 /**
  * The type provider allows to retrieve a list of all primitive types and provides type name lookup.
@@ -31,11 +31,11 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Type;
  * broadly based on org.spp.cocome.behavior.pcm.handler.PCMModelTypeProvider
  *
  */
-public class JarModelTypeProvider implements Resource.Factory, IJarModelTypeProvider {
+public class JarModelTypeProvider implements Resource.Factory, ITypeProvider {
 
 	private final IProject project;
 
-	private JarModelResource resource;
+	private final ResourceSet resourceSet;
 
 	/**
 	 * Construct the type provider.
@@ -45,9 +45,9 @@ public class JarModelTypeProvider implements Resource.Factory, IJarModelTypeProv
 	 * @param model
 	 *            the application model
 	 */
-	public JarModelTypeProvider(final IProject project) {
+	public JarModelTypeProvider(final IProject project, final ResourceSet resourceSet) {
+		this.resourceSet = resourceSet;
 		this.project = project;
-		this.resource = null;
 	}
 
 	/**
@@ -56,11 +56,9 @@ public class JarModelTypeProvider implements Resource.Factory, IJarModelTypeProv
 	 * @return Returns an iterable with all primitive types.
 	 */
 	public Iterable<Type> getAllTypes() {
-		if (this.resource != null) {
-			return this.resource.getAllTypes();
-		} else {
-			return new ArrayList<Type>();
-		}
+		return IterableExtensions.map(
+				this.resourceSet.getResource(JarModelTypeURIHelper.createResourceURI(), true).getContents(),
+				p -> (Type) p);
 	}
 
 	/**
@@ -75,11 +73,10 @@ public class JarModelTypeProvider implements Resource.Factory, IJarModelTypeProv
 			throw new IllegalArgumentException("Internal error: Empty type name.");
 		}
 
-		if (this.resource != null) {
-			return (Type) this.resource.getEObject(name);
-		} else {
-			return (Type) this.createResource(JarModelTypeURIHelper.createResourceURI()).getEObject(name);
-		}
+		final URI resourceURI = JarModelTypeURIHelper.createResourceURI();
+		final JarModelResource resource = (JarModelResource) this.resourceSet.getResource(resourceURI, true);
+
+		return (Type) resource.getEObject(name);
 	}
 
 	/**
@@ -89,20 +86,7 @@ public class JarModelTypeProvider implements Resource.Factory, IJarModelTypeProv
 	 *            The URI for the resource
 	 */
 	public JarModelResource createResource(final URI uri) {
-		synchronized (this.project) {
-			if (this.resource == null) {
-				this.resource = new JarModelResource(uri, this.project);
-				if (!this.resource.isLoaded()) {
-					try {
-						this.resource.load(null);
-					} catch (final IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}
-			}
-			return this.resource;
-		}
+		return new JarModelResource(uri, this.project);
 	}
 
 }

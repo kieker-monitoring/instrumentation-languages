@@ -10,17 +10,17 @@ package de.cau.cs.se.instrumentation.rl.recordLang;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.RecordType#isAbstract <em>Abstract</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.RecordType#getParent <em>Parent</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getRecordType()
  * @model
  * @generated
  */
-public interface RecordType extends Type
+public interface RecordType extends ComplexType
 {
   /**
    * Returns the value of the '<em><b>Abstract</b></em>' attribute.

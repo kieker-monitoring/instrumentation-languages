@@ -18,6 +18,7 @@ package de.cau.cs.se.instrumentation.rl.ui.labeling;
 import com.google.inject.Inject;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize;
+import de.cau.cs.se.instrumentation.rl.recordLang.BaseType;
 import de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.Constant;
@@ -30,7 +31,6 @@ import de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -87,8 +87,8 @@ public class RecordLangLabelProvider extends DefaultEObjectLabelProvider {
   }
   
   public String text(final Classifier e) {
-    EClassifier _class_ = e.getClass_();
-    String _name = _class_.getName();
+    BaseType _type = e.getType();
+    String _name = _type.getName();
     EList<ArraySize> _sizes = e.getSizes();
     final Function1<ArraySize, String> _function = (ArraySize it) -> {
       Object _xifexpression = null;

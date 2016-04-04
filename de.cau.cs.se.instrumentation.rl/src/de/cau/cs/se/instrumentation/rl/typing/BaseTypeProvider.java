@@ -16,13 +16,12 @@
 package de.cau.cs.se.instrumentation.rl.typing;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.util.Strings;
-import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+
+import de.cau.cs.se.instrumentation.rl.recordLang.Type;
 
 /**
  * The type provider allows to retrieve a list of all primitive types and provides type name lookup.
@@ -31,18 +30,15 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
  * @author Reiner Jung - Cleanup and commentary
  *
  */
-public class TypeProvider implements Resource.Factory, ITypeProvider {
-
-	private final EcoreTypeURIHelper typeUriHelper;
+public class BaseTypeProvider implements Resource.Factory, ITypeProvider {
 
 	private final ResourceSet resourceSet;
 
 	/**
 	 * @param resourceSet
 	 */
-	public TypeProvider(final ResourceSet resourceSet) {
+	public BaseTypeProvider(final ResourceSet resourceSet) {
 		this.resourceSet = resourceSet;
-		this.typeUriHelper = new EcoreTypeURIHelper();
 	}
 
 	/**
@@ -50,19 +46,14 @@ public class TypeProvider implements Resource.Factory, ITypeProvider {
 	 *
 	 * @return Returns an iterable with all primitive types.
 	 */
-	public Iterable<EClassifier> getAllTypes() {
+	public Iterable<Type> getAllTypes() {
 		/*
 		 * Get the (already created) types from the helper resource and cast the list to a list of
 		 * types.
 		 */
 		return IterableExtensions.map(
-				this.resourceSet.getResource(
-						this.typeUriHelper.createResourceURI(), true).getContents(),
-				new Function1<EObject, EClassifier>() {
-					public EClassifier apply(final EObject p) {
-						return (EClassifier) p;
-					}
-				});
+				this.resourceSet.getResource(BaseTypeURIHelper.createResourceURI(), true).getContents(),
+				p -> (Type) p);
 	}
 
 	/**
@@ -72,14 +63,14 @@ public class TypeProvider implements Resource.Factory, ITypeProvider {
 	 *            The name of the type.
 	 * @return Returns the primitive type for a given type name, or null.
 	 */
-	public EClassifier findTypeByName(final String name) {
+	public Type findTypeByName(final String name) {
 		if (Strings.isEmpty(name)) {
 			throw new IllegalArgumentException("Internal error: Empty type name.");
 		}
-		final URI resourceURI = this.typeUriHelper.createResourceURI();
-		final TypeResource resource = (TypeResource) this.resourceSet.getResource(resourceURI, true);
+		final URI resourceURI = BaseTypeURIHelper.createResourceURI();
+		final BaseTypeResource resource = (BaseTypeResource) this.resourceSet.getResource(resourceURI, true);
 
-		return (EClassifier) resource.getEObject(name);
+		return (Type) resource.getEObject(name);
 	}
 
 	/**
@@ -89,16 +80,8 @@ public class TypeProvider implements Resource.Factory, ITypeProvider {
 	 *            The URI for the resource
 	 */
 	// @Override
-	public TypeResource createResource(final URI uri) {
-		return new TypeResource(uri);
-	}
-
-	/**
-	 * @returns Returns the URI helper for the type system.
-	 */
-	// @Override
-	public EcoreTypeURIHelper getTypeUriHelper() {
-		return this.typeUriHelper;
+	public BaseTypeResource createResource(final URI uri) {
+		return new BaseTypeResource(uri);
 	}
 
 }

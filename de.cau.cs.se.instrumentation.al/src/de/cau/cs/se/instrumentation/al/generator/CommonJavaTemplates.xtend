@@ -112,7 +112,7 @@ class CommonJavaTemplates {
 			val value = event.initializations.get(i)
 			val valueText = value.createValue(parameterAssignments)
 			if (!data.keySet.exists[it.toString.equals(valueText.toString)])
-				data.put(valueText, '''final «property.type.class_.createPrimitiveTypeName» «property.createValueName» = «valueText»;''')
+				data.put(valueText, '''final «property.type.type.createPrimitiveTypeName» «property.createValueName» = «valueText»;''')
 		]
 		return data
 	}

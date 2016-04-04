@@ -18,8 +18,9 @@ package de.cau.cs.se.instrumentation.rl.typing.jar;
 import com.google.common.base.Objects;
 import com.google.common.base.Predicate;
 import com.google.inject.Inject;
-import de.cau.cs.se.instrumentation.rl.typing.TypeGlobalScopeProvider;
-import de.cau.cs.se.instrumentation.rl.typing.jar.IJarModelTypeProvider;
+import de.cau.cs.se.instrumentation.rl.recordLang.BaseType;
+import de.cau.cs.se.instrumentation.rl.typing.BaseTypeGlobalScopeProvider;
+import de.cau.cs.se.instrumentation.rl.typing.ITypeProvider;
 import de.cau.cs.se.instrumentation.rl.typing.jar.JarModelTypeProviderFactory;
 import de.cau.cs.se.instrumentation.rl.typing.jar.JarModelTypeScope;
 import org.eclipse.core.resources.IFile;
@@ -40,19 +41,21 @@ import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 
 @SuppressWarnings("all")
-public class JarModelGlobalScopeProvider extends TypeGlobalScopeProvider {
+public class JarModelGlobalScopeProvider extends BaseTypeGlobalScopeProvider {
   @Inject
   private IQualifiedNameConverter qualifiedNameConverter;
   
   @Override
   public IScope getParentTypeScope(final Resource resource, final EReference reference, final Predicate<IEObjectDescription> filter, final EClass referenceType) {
     IScope _xifexpression = null;
-    boolean _isAssignableFrom = EcoreUtil2.isAssignableFrom(EcorePackage.Literals.ECLASSIFIER, referenceType);
-    if (_isAssignableFrom) {
+    String _name = referenceType.getName();
+    String _simpleName = BaseType.class.getSimpleName();
+    boolean _equals = _name.equals(_simpleName);
+    if (_equals) {
       _xifexpression = super.getParentTypeScope(resource, reference, filter, referenceType);
     } else {
-      boolean _isAssignableFrom_1 = EcoreUtil2.isAssignableFrom(EcorePackage.Literals.EPACKAGE, referenceType);
-      if (_isAssignableFrom_1) {
+      boolean _isAssignableFrom = EcoreUtil2.isAssignableFrom(EcorePackage.Literals.EPACKAGE, referenceType);
+      if (_isAssignableFrom) {
         return IScope.NULLSCOPE;
       } else {
         boolean _notEquals = (!Objects.equal(resource, null));
@@ -68,7 +71,7 @@ public class JarModelGlobalScopeProvider extends TypeGlobalScopeProvider {
           final IProject project = _file.getProject();
           boolean _notEquals_1 = (!Objects.equal(resourceSet, null));
           if (_notEquals_1) {
-            final IJarModelTypeProvider typeProvider = JarModelTypeProviderFactory.getTypeProvider(project, resourceSet);
+            final ITypeProvider typeProvider = JarModelTypeProviderFactory.getTypeProvider(project, resourceSet);
             return new JarModelTypeScope(typeProvider, this.qualifiedNameConverter, filter);
           } else {
             throw new IllegalStateException("context must be contained in a resource set");

@@ -55,7 +55,7 @@ class RecordLangLabelProvider extends org.eclipse.xtext.ui.label.DefaultEObjectL
 	}
 	
 	def text(de.cau.cs.se.instrumentation.rl.recordLang.Classifier e) {
-		e.class_.name + e.sizes.map['[' + (if (it.size != 0) it.size else '') + ']'].join
+		e.type.name + e.sizes.map['[' + (if (it.size != 0) it.size else '') + ']'].join
 	}
 	
 	def image(de.cau.cs.se.instrumentation.rl.recordLang.Property e) {

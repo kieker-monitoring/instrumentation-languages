@@ -115,7 +115,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * 
 	 */
 	private def serializerSuffix(Classifier classifier) {
-		switch (classifier.class_.name) {
+		switch (classifier.type.name) {
 			case 'string' : 'string'
 			case 'byte' : 'int8'
 			case 'short' : 'int16'
@@ -125,7 +125,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 			case 'double' : 'double'
 			case 'char' : 'int16'
 			case 'boolean' : 'boolean'
-			default : classifier.class_.name
+			default : classifier.type.name
 		}
 	}
 		

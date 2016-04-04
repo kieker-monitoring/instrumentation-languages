@@ -2,28 +2,7 @@
  */
 package de.cau.cs.se.instrumentation.rl.recordLang.impl;
 
-import de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral;
-import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize;
-import de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral;
-import de.cau.cs.se.instrumentation.rl.recordLang.BuiltInValueLiteral;
-import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
-import de.cau.cs.se.instrumentation.rl.recordLang.Constant;
-import de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral;
-import de.cau.cs.se.instrumentation.rl.recordLang.FloatLiteral;
-import de.cau.cs.se.instrumentation.rl.recordLang.ForeignKey;
-import de.cau.cs.se.instrumentation.rl.recordLang.Import;
-import de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral;
-import de.cau.cs.se.instrumentation.rl.recordLang.Literal;
-import de.cau.cs.se.instrumentation.rl.recordLang.Model;
-import de.cau.cs.se.instrumentation.rl.recordLang.Property;
-import de.cau.cs.se.instrumentation.rl.recordLang.PropertyModifier;
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangFactory;
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
-import de.cau.cs.se.instrumentation.rl.recordLang.ReferenceProperty;
-import de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral;
-import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType;
-import de.cau.cs.se.instrumentation.rl.recordLang.Type;
+import de.cau.cs.se.instrumentation.rl.recordLang.*;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -88,8 +67,9 @@ public class RecordLangFactoryImpl extends EFactoryImpl implements RecordLangFac
     {
       case RecordLangPackage.MODEL: return createModel();
       case RecordLangPackage.IMPORT: return createImport();
-      case RecordLangPackage.PACKAGE: return createPackage();
       case RecordLangPackage.TYPE: return createType();
+      case RecordLangPackage.BASE_TYPE: return createBaseType();
+      case RecordLangPackage.COMPLEX_TYPE: return createComplexType();
       case RecordLangPackage.TEMPLATE_TYPE: return createTemplateType();
       case RecordLangPackage.RECORD_TYPE: return createRecordType();
       case RecordLangPackage.CONSTANT: return createConstant();
@@ -97,7 +77,6 @@ public class RecordLangFactoryImpl extends EFactoryImpl implements RecordLangFac
       case RecordLangPackage.FOREIGN_KEY: return createForeignKey();
       case RecordLangPackage.CLASSIFIER: return createClassifier();
       case RecordLangPackage.ARRAY_SIZE: return createArraySize();
-      case RecordLangPackage.REFERENCE_PROPERTY: return createReferenceProperty();
       case RecordLangPackage.LITERAL: return createLiteral();
       case RecordLangPackage.ARRAY_LITERAL: return createArrayLiteral();
       case RecordLangPackage.STRING_LITERAL: return createStringLiteral();
@@ -172,10 +151,10 @@ public class RecordLangFactoryImpl extends EFactoryImpl implements RecordLangFac
    * <!-- end-user-doc -->
    * @generated
    */
-  public de.cau.cs.se.instrumentation.rl.recordLang.Package createPackage()
+  public Type createType()
   {
-    PackageImpl package_ = new PackageImpl();
-    return package_;
+    TypeImpl type = new TypeImpl();
+    return type;
   }
 
   /**
@@ -183,10 +162,21 @@ public class RecordLangFactoryImpl extends EFactoryImpl implements RecordLangFac
    * <!-- end-user-doc -->
    * @generated
    */
-  public Type createType()
+  public BaseType createBaseType()
   {
-    TypeImpl type = new TypeImpl();
-    return type;
+    BaseTypeImpl baseType = new BaseTypeImpl();
+    return baseType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ComplexType createComplexType()
+  {
+    ComplexTypeImpl complexType = new ComplexTypeImpl();
+    return complexType;
   }
 
   /**
@@ -264,17 +254,6 @@ public class RecordLangFactoryImpl extends EFactoryImpl implements RecordLangFac
   {
     ArraySizeImpl arraySize = new ArraySizeImpl();
     return arraySize;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ReferenceProperty createReferenceProperty()
-  {
-    ReferencePropertyImpl referenceProperty = new ReferencePropertyImpl();
-    return referenceProperty;
   }
 
   /**

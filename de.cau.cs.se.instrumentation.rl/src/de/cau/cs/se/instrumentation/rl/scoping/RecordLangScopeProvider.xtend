@@ -3,12 +3,9 @@
  */
 package de.cau.cs.se.instrumentation.rl.scoping
 
-import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
+import de.cau.cs.se.instrumentation.rl.recordLang.ComplexType
 import de.cau.cs.se.instrumentation.rl.recordLang.ForeignKey
-import de.cau.cs.se.instrumentation.rl.recordLang.Package
 import de.cau.cs.se.instrumentation.rl.recordLang.Property
-import de.cau.cs.se.instrumentation.rl.recordLang.ReferenceProperty
-import de.cau.cs.se.instrumentation.rl.recordLang.Type
 import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation
 import java.util.Collection
 import java.util.List
@@ -32,20 +29,6 @@ import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider
 class RecordLangScopeProvider extends AbstractDeclarativeScopeProvider {
 
 	/**
-	 * Find scope for the package property in the Package rule.
-	 * 
-	 * @param context
-	 *            The Package-object of the resulting model.
-	 * @param reference
-	 *            The EReference-reference object of the AST.
-	 * @return The scope for the package attribute.
-	 */
-	def IScope scope_Package_package(Package context, EReference reference) {
-		val IScope result = new EPackageScope(context.eResource().getResourceSet())
-		return result
-	}
-
-	/**
 	 * Define scope for foreign key reference.
 	 */
 	def IScope scope_ForeignKey_propertyRef(ForeignKey key, EReference reference) {
@@ -56,48 +39,9 @@ class RecordLangScopeProvider extends AbstractDeclarativeScopeProvider {
 	 * Build a scope containing all properties.
 	 */
 	def IScope scope_Property_referTo(Property property, EReference reference) {
-		return Scopes::scopeFor(PropertyEvaluation::collectAllProperties(property.eContainer() as Type))
+		return Scopes::scopeFor(PropertyEvaluation::collectAllProperties(property.eContainer() as ComplexType))
 	}
-			
-	/**
-	 * 
-	 * @param classifier
-	 * @param reference
-	 * @return
-	 */
-	def IScope scope_Classifier_class(Classifier context, EReference reference) {
-		return Scopes::scopeFor(EcoreUtil2::getAllContentsOfType(
-				context.getPackage().getPackage(), typeof(EClassifier)))
-	}
-
-	/**
-	 * 
-	 */
-	def IScope scope_ReferenceProperty_ref(ReferenceProperty property, EReference reference) {
-		// Check if the parent is a property or a nested property reference.
-		switch property.eContainer() {
-			// For properties you can directly access the EClassifier via getClass_.
-			Property : return Scopes::scopeFor(getAllExternalProperties((property.eContainer() as Property).type.class_, typeof(EStructuralFeature)))
-			/*
-			 * If the present property is nested in another property, then the type for the parent
-			 * property can be found in the structural feature, which is located in the ref
-			 * attribute of the parent.
-			 */
-			ReferenceProperty : {
-				val parent = (property.eContainer() as ReferenceProperty).ref
-				// Also, only EReferences refer to classes and can therefore have properties
-				if (parent instanceof EReference) {
-					return Scopes::scopeFor(getAllExternalProperties((parent as EReference).getEReferenceType(),typeof(EStructuralFeature)))
-				} else {
-					// Attributes as such do not have properties.
-					return null
-				}
-			}
-			// illegal type
-			default: return null
-		}
-	}
-		
+					
 	/**
 	 * Internal function to collect all properties of a imported classifier.
 	 */

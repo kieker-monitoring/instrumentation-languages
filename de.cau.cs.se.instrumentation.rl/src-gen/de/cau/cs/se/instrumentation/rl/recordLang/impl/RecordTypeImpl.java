@@ -18,15 +18,15 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordTypeImpl#isAbstract <em>Abstract</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordTypeImpl#getParent <em>Parent</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class RecordTypeImpl extends TypeImpl implements RecordType
+public class RecordTypeImpl extends ComplexTypeImpl implements RecordType
 {
   /**
    * The default value of the '{@link #isAbstract() <em>Abstract</em>}' attribute.

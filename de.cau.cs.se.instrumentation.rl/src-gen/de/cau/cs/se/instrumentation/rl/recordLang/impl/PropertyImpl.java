@@ -8,7 +8,6 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Literal;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
 import de.cau.cs.se.instrumentation.rl.recordLang.PropertyModifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
-import de.cau.cs.se.instrumentation.rl.recordLang.ReferenceProperty;
 
 import java.util.Collection;
 
@@ -24,8 +23,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EDataTypeEList;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,16 +30,15 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.PropertyImpl#getModifiers <em>Modifiers</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.PropertyImpl#getForeignKey <em>Foreign Key</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.PropertyImpl#getType <em>Type</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.PropertyImpl#getReferTo <em>Refer To</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.PropertyImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.PropertyImpl#getProperties <em>Properties</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.PropertyImpl#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -107,16 +103,6 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getProperties()
-   * @generated
-   * @ordered
-   */
-  protected EList<ReferenceProperty> properties;
 
   /**
    * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
@@ -330,20 +316,6 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<ReferenceProperty> getProperties()
-  {
-    if (properties == null)
-    {
-      properties = new EObjectContainmentEList<ReferenceProperty>(ReferenceProperty.class, this, RecordLangPackage.PROPERTY__PROPERTIES);
-    }
-    return properties;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public Literal getValue()
   {
     return value;
@@ -401,8 +373,6 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
         return basicSetForeignKey(null, msgs);
       case RecordLangPackage.PROPERTY__TYPE:
         return basicSetType(null, msgs);
-      case RecordLangPackage.PROPERTY__PROPERTIES:
-        return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
       case RecordLangPackage.PROPERTY__VALUE:
         return basicSetValue(null, msgs);
     }
@@ -430,8 +400,6 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
         return basicGetReferTo();
       case RecordLangPackage.PROPERTY__NAME:
         return getName();
-      case RecordLangPackage.PROPERTY__PROPERTIES:
-        return getProperties();
       case RecordLangPackage.PROPERTY__VALUE:
         return getValue();
     }
@@ -465,10 +433,6 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
       case RecordLangPackage.PROPERTY__NAME:
         setName((String)newValue);
         return;
-      case RecordLangPackage.PROPERTY__PROPERTIES:
-        getProperties().clear();
-        getProperties().addAll((Collection<? extends ReferenceProperty>)newValue);
-        return;
       case RecordLangPackage.PROPERTY__VALUE:
         setValue((Literal)newValue);
         return;
@@ -501,9 +465,6 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
       case RecordLangPackage.PROPERTY__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case RecordLangPackage.PROPERTY__PROPERTIES:
-        getProperties().clear();
-        return;
       case RecordLangPackage.PROPERTY__VALUE:
         setValue((Literal)null);
         return;
@@ -531,8 +492,6 @@ public class PropertyImpl extends MinimalEObjectImpl.Container implements Proper
         return referTo != null;
       case RecordLangPackage.PROPERTY__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case RecordLangPackage.PROPERTY__PROPERTIES:
-        return properties != null && !properties.isEmpty();
       case RecordLangPackage.PROPERTY__VALUE:
         return value != null;
     }

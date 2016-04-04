@@ -110,9 +110,9 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * Most likely this routine is never used, as perl sucks in typing.
 	 */
 	def createTypeName(Classifier classifier) {
-		switch (classifier.class_.name) {
+		switch (classifier.type.name) {
 			case 'string' : 'String'
-			default : classifier.class_.name
+			default : classifier.type.name
 		}
 	}
 	

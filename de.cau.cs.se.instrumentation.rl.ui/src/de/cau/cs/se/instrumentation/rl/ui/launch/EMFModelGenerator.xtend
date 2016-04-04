@@ -327,7 +327,7 @@ class EMFModelGenerator {
 		var Classifier type = null
 		if (property.type != null) {
 			attribute.setDerived(false)
-			if (property.type.class_ != null) {
+			if (property.type.type != null) {
 				type = property.type		
 			}
 		} else { // property is derived
@@ -338,7 +338,7 @@ class EMFModelGenerator {
 			type = originalProperty.type
 		}
 		
-		attribute.setEType(type.class_.name.mapToEMFLiteral)
+		attribute.setEType(type.type.name.mapToEMFLiteral)
 		if (type.sizes != null) {
 			if (!type.sizes.empty) {
 				val size = type.sizes.get(0).size

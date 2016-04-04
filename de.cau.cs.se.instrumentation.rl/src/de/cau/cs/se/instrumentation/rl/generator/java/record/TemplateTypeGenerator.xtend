@@ -92,7 +92,7 @@ class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
 	 * @returns the resulting getter as a CharSequence
 	 */
 	private def createPropertyGetter(Property property) '''
-	public «PropertyEvaluation::findType(property).class_.createPrimitiveTypeName» «property.createGetterName»() ;
+	public «PropertyEvaluation::findType(property).type.createPrimitiveTypeName» «property.createGetterName»() ;
 		
 	'''
 	

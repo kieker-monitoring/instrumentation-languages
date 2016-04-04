@@ -26,8 +26,8 @@ import java.util.Collection;
 import java.util.Comparator;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EcoreFactory;
 
+import de.cau.cs.se.instrumentation.rl.recordLang.BaseType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangFactory;
@@ -62,7 +62,7 @@ public final class ComputeUID {
 					sbuf.append('[');
 				}
 			}
-			final String name = type.getClass_().getName();
+			final String name = type.getType().getName();
 			if ("int".equals(name)) {
 				sbuf.append('I');
 			} else if ("byte".equals(name)) {
@@ -174,14 +174,15 @@ public final class ComputeUID {
 
 			final Classifier[] paramListGeneric = new Classifier[1];
 			final RecordLangFactory factory = RecordLangFactory.eINSTANCE;
-			final EcoreFactory ecore = EcoreFactory.eINSTANCE;
 			paramListGeneric[0] = factory.createClassifier();
-			paramListGeneric[0].setClass(ecore.createEObject().eClass());
+			final BaseType objectType = factory.createBaseType();
+			objectType.setName("Object");
+			paramListGeneric[0].setType(objectType);
 
 			final Classifier[] paramListGenericAbstract = new Classifier[2];
 			paramListGenericAbstract[0] = paramListGeneric[0];
 			paramListGenericAbstract[1] = factory.createClassifier();
-			paramListGenericAbstract[1].setClass(ecore.createEClass().eClass());
+			paramListGenericAbstract[1].setType(objectType);
 			paramListGenericAbstract[1].getSizes().add(factory.createArraySize()); // unbound array
 
 			final Classifier[] paramListFromBuffer = new Classifier[2];

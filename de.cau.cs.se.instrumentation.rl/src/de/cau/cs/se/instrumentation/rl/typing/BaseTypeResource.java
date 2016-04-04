@@ -20,32 +20,27 @@ import java.io.InputStream;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
+
+import de.cau.cs.se.instrumentation.rl.recordLang.BaseType;
+import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
 
 /**
  * Simulates a real resource for primitive types.
- * 
+ *
  * @author Sebastian Zarnekow - Initial contribution and API
  * @author Reiner Jung - Adaptation for a general type approach; rewrite 2013
  */
-public class TypeResource extends ResourceImpl {
-
-	/**
-	 * Construct the type resource without an URI.
-	 */
-	public TypeResource() {
-		super();
-	}
+public class BaseTypeResource extends ResourceImpl {
 
 	/**
 	 * Construct the type resource with an URI.
-	 * 
-	 * @param uri the URI of the fake resource
+	 *
+	 * @param uri
+	 *            the URI of the fake resource
 	 */
-	public TypeResource(final URI uri) {
+	public BaseTypeResource(final URI uri) {
 		super(uri);
 	}
 
@@ -60,11 +55,11 @@ public class TypeResource extends ResourceImpl {
 			 * old is accessed again. Then the contents of the resource is gone. Debugging
 			 * did not provide signification insight in what and where the contents is emptied
 			 * or replaced.
-			 * 
+			 *
 			 * However, to circumvent this bug, the following code refills the content.
 			 */
 			for (final BaseTypes primitiveType : BaseTypes.values()) {
-				this.getContents().add(primitiveType.getEType());
+				this.getContents().add(primitiveType.getType());
 			}
 		}
 		for (final EObject obj : this.getContents()) {
@@ -77,8 +72,8 @@ public class TypeResource extends ResourceImpl {
 
 	@Override
 	public String getURIFragment(final EObject eObject) {
-		if (EcorePackage.eINSTANCE.getEDataType().isInstance(eObject)) {
-			return ((EDataType) eObject).getName();
+		if (RecordLangPackage.eINSTANCE.getBaseType().isInstance(eObject)) {
+			return ((BaseType) eObject).getName();
 		} else {
 			return super.getURIFragment(eObject);
 		}
@@ -99,18 +94,21 @@ public class TypeResource extends ResourceImpl {
 	/**
 	 * This routine is called from ResourceImpl load after the load method above is triggered.
 	 * It initializes the primitive type mirror.
-	 * 
+	 *
 	 * The input stream is always empty in this context and the options are ignored.
-	 * 
-	 * @param inputStream the field is ignored, as this resource is an in memory resource.
-	 * @param options ignored field, as the resource is an in memory resource.
-	 * @throws IOException when the URI is malformed.
+	 *
+	 * @param inputStream
+	 *            the field is ignored, as this resource is an in memory resource.
+	 * @param options
+	 *            ignored field, as the resource is an in memory resource.
+	 * @throws IOException
+	 *             when the URI is malformed.
 	 */
 	@Override
 	protected void doLoad(final InputStream inputStream, final Map<?, ?> options) throws IOException {
 		if (this.getURI() != null) {
 			for (final BaseTypes primitiveType : BaseTypes.values()) {
-				this.getContents().add(primitiveType.getEType());
+				this.getContents().add(primitiveType.getType());
 			}
 		} else {
 			try {

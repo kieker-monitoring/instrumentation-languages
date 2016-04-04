@@ -178,7 +178,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	}
 	
 	private def CharSequence createValueExistAssertion(Property property, Integer index) '''
-		Assert.assertNotNull("Array value [«index»] of type «property.type.class_.createPrimitiveWrapperTypeName» must be not null.", values[«index»]); 
+		Assert.assertNotNull("Array value [«index»] of type «property.type.type.createPrimitiveWrapperTypeName» must be not null.", values[«index»]); 
 	'''
 	
 	/**
@@ -194,9 +194,9 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	
 	private def createValueAssertion(Property property, Integer index) '''
 		Assert.assertEquals("Array value [«index»] " + values[«index»] + " does not match the desired value " + «property.createPropertyValueSet»,
-			«IF property.type.class_.name == 'float' || property.type.class_.name == 'double'»
-				«property.getCastToPrimitiveType» «createPropertyValueSet(property)», «property.getCastToPrimitiveType» («property.type.class_.createPrimitiveWrapperTypeName»)values[«index»], 0.0000001
-			«ELSEIF property.type.class_.name == 'string'»
+			«IF property.type.type.name == 'float' || property.type.type.name == 'double'»
+				«property.getCastToPrimitiveType» «createPropertyValueSet(property)», «property.getCastToPrimitiveType» («property.type.type.createPrimitiveWrapperTypeName»)values[«index»], 0.0000001
+			«ELSEIF property.type.type.name == 'string'»
 				«property.createPropertyValueSet» == null?"«property.createConstantValue»":«property.createPropertyValueSet», values[«index»]
 			«ELSE»
 				«property.createPropertyValueSet», values[«index»]
@@ -228,10 +228,10 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * the type is not of type string.
 	 */
 	private def getCastToPrimitiveType(Property property) {
-		if ('string'.equals(property.type.class_.name)) {
+		if ('string'.equals(property.type.type.name)) {
 			return ""
 		} else {
-			return '(' + property.type.class_.name + ')'			
+			return '(' + property.type.type.name + ')'			
 		}
 	}
 	
@@ -243,11 +243,11 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 */
 	private def createAllGetterValueAssertions(Collection<Property> properties, RecordType type) '''
 		«FOR property : properties»
-			Assert.assertEquals("«type.name».«property.name» values are not equal.", «IF property.type.class_.name == 'float' || property.type.class_.name == 'double'»
+			Assert.assertEquals("«type.name».«property.name» values are not equal.", «IF property.type.type.name == 'float' || property.type.type.name == 'double'»
 				«property.getCastToPrimitiveType» «property.createPropertyValueSet», record.get«property.name.toFirstUpper»(), 0.0000001);
-			«ELSEIF property.type.class_.name == 'boolean'»
+			«ELSEIF property.type.type.name == 'boolean'»
 				«property.createPropertyValueSet», Boolean.valueOf(record.is«property.name.toFirstUpper»()));
-			«ELSEIF property.type.class_.name == 'string'»
+			«ELSEIF property.type.type.name == 'string'»
 				«property.createPropertyValueSet» == null?"«property.createConstantValue»":«property.createPropertyValueSet», record.get«property.name.toFirstUpper»());
 			«ELSE»
 				«property.getCastToPrimitiveType» «property.createPropertyValueSet», record.get«property.name.toFirstUpper»());
@@ -267,13 +267,13 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	}
 	
 	private def createTypeAssertion(Property property, Integer index) '''
-		Assert.assertTrue("Type of array value [«index»] " + values[«index»].getClass().getCanonicalName() + " does not match the desired type «property.type.class_.createPrimitiveWrapperTypeName»", values[«index»] instanceof «property.type.class_.createPrimitiveWrapperTypeName»);
+		Assert.assertTrue("Type of array value [«index»] " + values[«index»].getClass().getCanonicalName() + " does not match the desired type «property.type.type.createPrimitiveWrapperTypeName»", values[«index»] instanceof «property.type.type.createPrimitiveWrapperTypeName»);
 	'''
 
 	/**
 	 * Produce a type conform value for input. This only works for primitive types.
 	 */
-	private def createPropertyValueSet(Property property) '''«property.type.class_.name.toUpperCase»_VALUES.get(i % «property.type.class_.name.toUpperCase»_VALUES.size())'''
+	private def createPropertyValueSet(Property property) '''«property.type.type.name.toUpperCase»_VALUES.get(i % «property.type.type.name.toUpperCase»_VALUES.size())'''
 	
 	
 	/**

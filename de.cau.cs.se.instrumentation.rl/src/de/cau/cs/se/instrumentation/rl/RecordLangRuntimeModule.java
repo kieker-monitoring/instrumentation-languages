@@ -21,7 +21,7 @@ import com.google.inject.Binder;
 import com.google.inject.Singleton;
 
 import de.cau.cs.se.instrumentation.rl.ouput.config.RecordLangOutputConfigurationProvider;
-import de.cau.cs.se.instrumentation.rl.typing.TypeGlobalScopeProvider;
+import de.cau.cs.se.instrumentation.rl.typing.BaseTypeGlobalScopeProvider;
 import de.cau.cs.se.instrumentation.rl.typing.jar.JarModelGlobalScopeProvider;
 
 /**
@@ -39,8 +39,11 @@ public class RecordLangRuntimeModule extends de.cau.cs.se.instrumentation.rl.Abs
 	 */
 	@Override
 	public Class<? extends org.eclipse.xtext.scoping.IGlobalScopeProvider> bindIGlobalScopeProvider() {
-		return JarModelGlobalScopeProvider.class;
-		// return TypeGlobalScopeProvider.class;
+		if (true) {
+			return JarModelGlobalScopeProvider.class;
+		} else {
+			return BaseTypeGlobalScopeProvider.class;
+		}
 	}
 
 	/**

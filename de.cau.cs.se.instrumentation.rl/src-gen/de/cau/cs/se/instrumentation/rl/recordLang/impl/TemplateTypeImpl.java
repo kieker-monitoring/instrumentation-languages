@@ -11,12 +11,10 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Template Type</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
-public class TemplateTypeImpl extends TypeImpl implements TemplateType
+public class TemplateTypeImpl extends ComplexTypeImpl implements TemplateType
 {
   /**
    * <!-- begin-user-doc -->

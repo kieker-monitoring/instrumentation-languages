@@ -20,9 +20,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.xtext.common.types.JvmIdentifiableElement;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
@@ -35,6 +33,9 @@ import org.eclipse.xtext.scoping.impl.AbstractScope;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+
+import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangFactory;
+import de.cau.cs.se.instrumentation.rl.recordLang.Type;
 
 /**
  *
@@ -60,7 +61,7 @@ public class BaseTypeScope extends AbstractScope {
 
 	@Override
 	public IEObjectDescription getSingleElement(final QualifiedName name) {
-		final EClassifier type = this.typeProvider
+		final Type type = this.typeProvider
 				.findTypeByName(this.qualifiedNameConverter.toString(name));
 		if (type == null) {
 			return null;
@@ -87,7 +88,8 @@ public class BaseTypeScope extends AbstractScope {
 			final Set<IEObjectDescription> result = Collections.singleton(EObjectDescription
 					.create(this.qualifiedNameConverter
 							.toQualifiedName(((JvmIdentifiableElement) object)
-									.getQualifiedName()), object));
+									.getQualifiedName()),
+							object));
 			return this.filterResult(result);
 		}
 		return Collections.emptySet();
@@ -109,7 +111,7 @@ public class BaseTypeScope extends AbstractScope {
 	protected Iterable<IEObjectDescription> internalGetAllElements() {
 		final List<IEObjectDescription> types = Lists.newArrayList();
 
-		for (final EClassifier t : this.typeProvider.getAllTypes()) {
+		for (final Type t : this.typeProvider.getAllTypes()) {
 			types.add(this.createScopedElement(t.getName()));
 		}
 
@@ -125,9 +127,8 @@ public class BaseTypeScope extends AbstractScope {
 	}
 
 	protected InternalEObject createProxy(final String fullyQualifiedName) {
-		final URI uri = this.typeProvider.getTypeUriHelper().getFullURIForClass(
-				fullyQualifiedName);
-		final InternalEObject proxy = (InternalEObject) EcoreFactory.eINSTANCE.createEDataType();
+		final URI uri = BaseTypeURIHelper.getFullURIForClass(fullyQualifiedName);
+		final InternalEObject proxy = (InternalEObject) RecordLangFactory.eINSTANCE.createBaseType();
 		proxy.eSetProxyURI(uri);
 		return proxy;
 	}

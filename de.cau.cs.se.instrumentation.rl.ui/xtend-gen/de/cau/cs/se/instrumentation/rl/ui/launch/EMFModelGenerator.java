@@ -19,6 +19,7 @@ import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize;
+import de.cau.cs.se.instrumentation.rl.recordLang.BaseType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.Model;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
@@ -538,11 +539,11 @@ public class EMFModelGenerator {
     if (_notEquals) {
       attribute.setDerived(false);
       Classifier _type_1 = property.getType();
-      EClassifier _class_ = _type_1.getClass_();
-      boolean _notEquals_1 = (!Objects.equal(_class_, null));
+      BaseType _type_2 = _type_1.getType();
+      boolean _notEquals_1 = (!Objects.equal(_type_2, null));
       if (_notEquals_1) {
-        Classifier _type_2 = property.getType();
-        type = _type_2;
+        Classifier _type_3 = property.getType();
+        type = _type_3;
       }
     } else {
       attribute.setDerived(true);
@@ -551,11 +552,11 @@ public class EMFModelGenerator {
         Property _referTo = originalProperty.getReferTo();
         originalProperty = _referTo;
       }
-      Classifier _type_3 = originalProperty.getType();
-      type = _type_3;
+      Classifier _type_4 = originalProperty.getType();
+      type = _type_4;
     }
-    EClassifier _class__1 = type.getClass_();
-    String _name_1 = _class__1.getName();
+    BaseType _type_5 = type.getType();
+    String _name_1 = _type_5.getName();
     EDataType _mapToEMFLiteral = this.getMapToEMFLiteral(_name_1);
     attribute.setEType(_mapToEMFLiteral);
     EList<ArraySize> _sizes = type.getSizes();

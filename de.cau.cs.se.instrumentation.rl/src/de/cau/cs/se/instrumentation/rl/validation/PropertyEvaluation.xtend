@@ -148,7 +148,7 @@ class PropertyEvaluation {
 	 */
 	def static boolean containsProperty (List<Property> list, Property item) {
 		for (Property p : list) {
-			if (p.name.equals(item.name) && (p.findType.class_.name.equals(item.findType.class_.name)))
+			if (p.name.equals(item.name) && (p.findType.type.name.equals(item.findType.type.name)))
 				return true
 		}
 		return false
@@ -191,7 +191,7 @@ class PropertyEvaluation {
 	 * 		the serialization size of the property
 	 */
 	def static private int getSize(Property property) {
-		switch (PropertyEvaluation::findType(property).class_.name) {
+		switch (PropertyEvaluation::findType(property).type.name) {
 			case 'string' : 4
 			case 'byte' : 1
 			case 'short' : 2
@@ -201,7 +201,7 @@ class PropertyEvaluation {
 			case 'double' : 8
 			case 'char' : 2
 			case 'boolean' : 1
-			default: throw new InternalErrorException(PropertyEvaluation::findType(property).class_.name + 'is not a valid type name')
+			default: throw new InternalErrorException(PropertyEvaluation::findType(property).type.name + 'is not a valid type name')
 		}
 	}
 		

@@ -23,7 +23,7 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalRecordLangParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_FLOAT", "RULE_BOOLEAN", "RULE_NUMBER", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'transient'", "'auto-increment'", "'package'", "'import'", "'use'", "'template'", "'@author'", "'@since'", "':'", "','", "'{'", "'}'", "'entity'", "'extends'", "'const'", "'='", "'alias'", "'as'", "'grouped'", "'by'", "'.'", "'['", "']'", "'*'", "'abstract'", "'KIEKER_VERSION'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_FLOAT", "RULE_BOOLEAN", "RULE_NUMBER", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'transient'", "'auto-increment'", "'package'", "'import'", "'template'", "'@author'", "'@since'", "':'", "','", "'{'", "'}'", "'entity'", "'extends'", "'const'", "'='", "'alias'", "'as'", "'grouped'", "'by'", "'.'", "'['", "']'", "'*'", "'abstract'", "'KIEKER_VERSION'"
     };
     public static final int RULE_BOOLEAN=8;
     public static final int RULE_STRING=5;
@@ -34,7 +34,6 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
     public static final int T__16=16;
     public static final int T__38=38;
     public static final int T__17=17;
-    public static final int T__39=39;
     public static final int T__18=18;
     public static final int T__33=33;
     public static final int T__34=34;
@@ -77,7 +76,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         
 
     public String[] getTokenNames() { return InternalRecordLangParser.tokenNames; }
-    public String getGrammarFileName() { return "../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g"; }
+    public String getGrammarFileName() { return "InternalRecordLang.g"; }
 
 
      
@@ -101,16 +100,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "entryRuleModel"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:61:1: entryRuleModel : ruleModel EOF ;
+    // InternalRecordLang.g:61:1: entryRuleModel : ruleModel EOF ;
     public final void entryRuleModel() throws RecognitionException {
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:62:1: ( ruleModel EOF )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:63:1: ruleModel EOF
+            // InternalRecordLang.g:62:1: ( ruleModel EOF )
+            // InternalRecordLang.g:63:1: ruleModel EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getModelRule()); 
             }
-            pushFollow(FOLLOW_ruleModel_in_entryRuleModel67);
+            pushFollow(FOLLOW_1);
             ruleModel();
 
             state._fsp--;
@@ -118,7 +117,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                after(grammarAccess.getModelRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleModel74); if (state.failed) return ;
+            match(input,EOF,FOLLOW_2); if (state.failed) return ;
 
             }
 
@@ -135,25 +134,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "ruleModel"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:70:1: ruleModel : ( ( rule__Model__Group__0 ) ) ;
+    // InternalRecordLang.g:70:1: ruleModel : ( ( rule__Model__Group__0 ) ) ;
     public final void ruleModel() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:74:2: ( ( ( rule__Model__Group__0 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:75:1: ( ( rule__Model__Group__0 ) )
+            // InternalRecordLang.g:74:2: ( ( ( rule__Model__Group__0 ) ) )
+            // InternalRecordLang.g:75:1: ( ( rule__Model__Group__0 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:75:1: ( ( rule__Model__Group__0 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:76:1: ( rule__Model__Group__0 )
+            // InternalRecordLang.g:75:1: ( ( rule__Model__Group__0 ) )
+            // InternalRecordLang.g:76:1: ( rule__Model__Group__0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getModelAccess().getGroup()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:77:1: ( rule__Model__Group__0 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:77:2: rule__Model__Group__0
+            // InternalRecordLang.g:77:1: ( rule__Model__Group__0 )
+            // InternalRecordLang.g:77:2: rule__Model__Group__0
             {
-            pushFollow(FOLLOW_rule__Model__Group__0_in_ruleModel100);
+            pushFollow(FOLLOW_2);
             rule__Model__Group__0();
 
             state._fsp--;
@@ -186,16 +185,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "entryRuleImport"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:89:1: entryRuleImport : ruleImport EOF ;
+    // InternalRecordLang.g:89:1: entryRuleImport : ruleImport EOF ;
     public final void entryRuleImport() throws RecognitionException {
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:90:1: ( ruleImport EOF )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:91:1: ruleImport EOF
+            // InternalRecordLang.g:90:1: ( ruleImport EOF )
+            // InternalRecordLang.g:91:1: ruleImport EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getImportRule()); 
             }
-            pushFollow(FOLLOW_ruleImport_in_entryRuleImport127);
+            pushFollow(FOLLOW_1);
             ruleImport();
 
             state._fsp--;
@@ -203,7 +202,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                after(grammarAccess.getImportRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleImport134); if (state.failed) return ;
+            match(input,EOF,FOLLOW_2); if (state.failed) return ;
 
             }
 
@@ -220,25 +219,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "ruleImport"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:98:1: ruleImport : ( ( rule__Import__Group__0 ) ) ;
+    // InternalRecordLang.g:98:1: ruleImport : ( ( rule__Import__Group__0 ) ) ;
     public final void ruleImport() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:102:2: ( ( ( rule__Import__Group__0 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:103:1: ( ( rule__Import__Group__0 ) )
+            // InternalRecordLang.g:102:2: ( ( ( rule__Import__Group__0 ) ) )
+            // InternalRecordLang.g:103:1: ( ( rule__Import__Group__0 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:103:1: ( ( rule__Import__Group__0 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:104:1: ( rule__Import__Group__0 )
+            // InternalRecordLang.g:103:1: ( ( rule__Import__Group__0 ) )
+            // InternalRecordLang.g:104:1: ( rule__Import__Group__0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getImportAccess().getGroup()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:105:1: ( rule__Import__Group__0 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:105:2: rule__Import__Group__0
+            // InternalRecordLang.g:105:1: ( rule__Import__Group__0 )
+            // InternalRecordLang.g:105:2: rule__Import__Group__0
             {
-            pushFollow(FOLLOW_rule__Import__Group__0_in_ruleImport160);
+            pushFollow(FOLLOW_2);
             rule__Import__Group__0();
 
             state._fsp--;
@@ -270,25 +269,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
     // $ANTLR end "ruleImport"
 
 
-    // $ANTLR start "entryRulePackage"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:117:1: entryRulePackage : rulePackage EOF ;
-    public final void entryRulePackage() throws RecognitionException {
+    // $ANTLR start "entryRuleBaseType"
+    // InternalRecordLang.g:119:1: entryRuleBaseType : ruleBaseType EOF ;
+    public final void entryRuleBaseType() throws RecognitionException {
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:118:1: ( rulePackage EOF )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:119:1: rulePackage EOF
+            // InternalRecordLang.g:120:1: ( ruleBaseType EOF )
+            // InternalRecordLang.g:121:1: ruleBaseType EOF
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPackageRule()); 
+               before(grammarAccess.getBaseTypeRule()); 
             }
-            pushFollow(FOLLOW_rulePackage_in_entryRulePackage187);
-            rulePackage();
+            pushFollow(FOLLOW_1);
+            ruleBaseType();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPackageRule()); 
+               after(grammarAccess.getBaseTypeRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRulePackage194); if (state.failed) return ;
+            match(input,EOF,FOLLOW_2); if (state.failed) return ;
 
             }
 
@@ -301,30 +300,30 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "entryRulePackage"
+    // $ANTLR end "entryRuleBaseType"
 
 
-    // $ANTLR start "rulePackage"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:126:1: rulePackage : ( ( rule__Package__Group__0 ) ) ;
-    public final void rulePackage() throws RecognitionException {
+    // $ANTLR start "ruleBaseType"
+    // InternalRecordLang.g:128:1: ruleBaseType : ( ( rule__BaseType__NameAssignment ) ) ;
+    public final void ruleBaseType() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:130:2: ( ( ( rule__Package__Group__0 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:131:1: ( ( rule__Package__Group__0 ) )
+            // InternalRecordLang.g:132:2: ( ( ( rule__BaseType__NameAssignment ) ) )
+            // InternalRecordLang.g:133:1: ( ( rule__BaseType__NameAssignment ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:131:1: ( ( rule__Package__Group__0 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:132:1: ( rule__Package__Group__0 )
+            // InternalRecordLang.g:133:1: ( ( rule__BaseType__NameAssignment ) )
+            // InternalRecordLang.g:134:1: ( rule__BaseType__NameAssignment )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPackageAccess().getGroup()); 
+               before(grammarAccess.getBaseTypeAccess().getNameAssignment()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:133:1: ( rule__Package__Group__0 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:133:2: rule__Package__Group__0
+            // InternalRecordLang.g:135:1: ( rule__BaseType__NameAssignment )
+            // InternalRecordLang.g:135:2: rule__BaseType__NameAssignment
             {
-            pushFollow(FOLLOW_rule__Package__Group__0_in_rulePackage220);
-            rule__Package__Group__0();
+            pushFollow(FOLLOW_2);
+            rule__BaseType__NameAssignment();
 
             state._fsp--;
             if (state.failed) return ;
@@ -332,7 +331,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPackageAccess().getGroup()); 
+               after(grammarAccess.getBaseTypeAccess().getNameAssignment()); 
             }
 
             }
@@ -352,28 +351,28 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rulePackage"
+    // $ANTLR end "ruleBaseType"
 
 
-    // $ANTLR start "entryRuleType"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:145:1: entryRuleType : ruleType EOF ;
-    public final void entryRuleType() throws RecognitionException {
+    // $ANTLR start "entryRuleComplexType"
+    // InternalRecordLang.g:147:1: entryRuleComplexType : ruleComplexType EOF ;
+    public final void entryRuleComplexType() throws RecognitionException {
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:146:1: ( ruleType EOF )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:147:1: ruleType EOF
+            // InternalRecordLang.g:148:1: ( ruleComplexType EOF )
+            // InternalRecordLang.g:149:1: ruleComplexType EOF
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getTypeRule()); 
+               before(grammarAccess.getComplexTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleType_in_entryRuleType247);
-            ruleType();
+            pushFollow(FOLLOW_1);
+            ruleComplexType();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getTypeRule()); 
+               after(grammarAccess.getComplexTypeRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleType254); if (state.failed) return ;
+            match(input,EOF,FOLLOW_2); if (state.failed) return ;
 
             }
 
@@ -386,30 +385,30 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "entryRuleType"
+    // $ANTLR end "entryRuleComplexType"
 
 
-    // $ANTLR start "ruleType"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:154:1: ruleType : ( ( rule__Type__Alternatives ) ) ;
-    public final void ruleType() throws RecognitionException {
+    // $ANTLR start "ruleComplexType"
+    // InternalRecordLang.g:156:1: ruleComplexType : ( ( rule__ComplexType__Alternatives ) ) ;
+    public final void ruleComplexType() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:158:2: ( ( ( rule__Type__Alternatives ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:159:1: ( ( rule__Type__Alternatives ) )
+            // InternalRecordLang.g:160:2: ( ( ( rule__ComplexType__Alternatives ) ) )
+            // InternalRecordLang.g:161:1: ( ( rule__ComplexType__Alternatives ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:159:1: ( ( rule__Type__Alternatives ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:160:1: ( rule__Type__Alternatives )
+            // InternalRecordLang.g:161:1: ( ( rule__ComplexType__Alternatives ) )
+            // InternalRecordLang.g:162:1: ( rule__ComplexType__Alternatives )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getTypeAccess().getAlternatives()); 
+               before(grammarAccess.getComplexTypeAccess().getAlternatives()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:161:1: ( rule__Type__Alternatives )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:161:2: rule__Type__Alternatives
+            // InternalRecordLang.g:163:1: ( rule__ComplexType__Alternatives )
+            // InternalRecordLang.g:163:2: rule__ComplexType__Alternatives
             {
-            pushFollow(FOLLOW_rule__Type__Alternatives_in_ruleType280);
-            rule__Type__Alternatives();
+            pushFollow(FOLLOW_2);
+            rule__ComplexType__Alternatives();
 
             state._fsp--;
             if (state.failed) return ;
@@ -417,7 +416,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getTypeAccess().getAlternatives()); 
+               after(grammarAccess.getComplexTypeAccess().getAlternatives()); 
             }
 
             }
@@ -437,20 +436,20 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "ruleType"
+    // $ANTLR end "ruleComplexType"
 
 
     // $ANTLR start "entryRuleTemplateType"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:173:1: entryRuleTemplateType : ruleTemplateType EOF ;
+    // InternalRecordLang.g:175:1: entryRuleTemplateType : ruleTemplateType EOF ;
     public final void entryRuleTemplateType() throws RecognitionException {
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:174:1: ( ruleTemplateType EOF )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:175:1: ruleTemplateType EOF
+            // InternalRecordLang.g:176:1: ( ruleTemplateType EOF )
+            // InternalRecordLang.g:177:1: ruleTemplateType EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTemplateTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleTemplateType_in_entryRuleTemplateType307);
+            pushFollow(FOLLOW_1);
             ruleTemplateType();
 
             state._fsp--;
@@ -458,7 +457,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                after(grammarAccess.getTemplateTypeRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleTemplateType314); if (state.failed) return ;
+            match(input,EOF,FOLLOW_2); if (state.failed) return ;
 
             }
 
@@ -475,25 +474,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "ruleTemplateType"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:182:1: ruleTemplateType : ( ( rule__TemplateType__Group__0 ) ) ;
+    // InternalRecordLang.g:184:1: ruleTemplateType : ( ( rule__TemplateType__Group__0 ) ) ;
     public final void ruleTemplateType() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:186:2: ( ( ( rule__TemplateType__Group__0 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:187:1: ( ( rule__TemplateType__Group__0 ) )
+            // InternalRecordLang.g:188:2: ( ( ( rule__TemplateType__Group__0 ) ) )
+            // InternalRecordLang.g:189:1: ( ( rule__TemplateType__Group__0 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:187:1: ( ( rule__TemplateType__Group__0 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:188:1: ( rule__TemplateType__Group__0 )
+            // InternalRecordLang.g:189:1: ( ( rule__TemplateType__Group__0 ) )
+            // InternalRecordLang.g:190:1: ( rule__TemplateType__Group__0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTemplateTypeAccess().getGroup()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:189:1: ( rule__TemplateType__Group__0 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:189:2: rule__TemplateType__Group__0
+            // InternalRecordLang.g:191:1: ( rule__TemplateType__Group__0 )
+            // InternalRecordLang.g:191:2: rule__TemplateType__Group__0
             {
-            pushFollow(FOLLOW_rule__TemplateType__Group__0_in_ruleTemplateType340);
+            pushFollow(FOLLOW_2);
             rule__TemplateType__Group__0();
 
             state._fsp--;
@@ -526,16 +525,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "entryRuleRecordType"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:201:1: entryRuleRecordType : ruleRecordType EOF ;
+    // InternalRecordLang.g:203:1: entryRuleRecordType : ruleRecordType EOF ;
     public final void entryRuleRecordType() throws RecognitionException {
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:202:1: ( ruleRecordType EOF )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:203:1: ruleRecordType EOF
+            // InternalRecordLang.g:204:1: ( ruleRecordType EOF )
+            // InternalRecordLang.g:205:1: ruleRecordType EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleRecordType_in_entryRuleRecordType367);
+            pushFollow(FOLLOW_1);
             ruleRecordType();
 
             state._fsp--;
@@ -543,7 +542,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                after(grammarAccess.getRecordTypeRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleRecordType374); if (state.failed) return ;
+            match(input,EOF,FOLLOW_2); if (state.failed) return ;
 
             }
 
@@ -560,25 +559,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "ruleRecordType"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:210:1: ruleRecordType : ( ( rule__RecordType__Group__0 ) ) ;
+    // InternalRecordLang.g:212:1: ruleRecordType : ( ( rule__RecordType__Group__0 ) ) ;
     public final void ruleRecordType() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:214:2: ( ( ( rule__RecordType__Group__0 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:215:1: ( ( rule__RecordType__Group__0 ) )
+            // InternalRecordLang.g:216:2: ( ( ( rule__RecordType__Group__0 ) ) )
+            // InternalRecordLang.g:217:1: ( ( rule__RecordType__Group__0 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:215:1: ( ( rule__RecordType__Group__0 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:216:1: ( rule__RecordType__Group__0 )
+            // InternalRecordLang.g:217:1: ( ( rule__RecordType__Group__0 ) )
+            // InternalRecordLang.g:218:1: ( rule__RecordType__Group__0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeAccess().getGroup()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:217:1: ( rule__RecordType__Group__0 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:217:2: rule__RecordType__Group__0
+            // InternalRecordLang.g:219:1: ( rule__RecordType__Group__0 )
+            // InternalRecordLang.g:219:2: rule__RecordType__Group__0
             {
-            pushFollow(FOLLOW_rule__RecordType__Group__0_in_ruleRecordType400);
+            pushFollow(FOLLOW_2);
             rule__RecordType__Group__0();
 
             state._fsp--;
@@ -611,16 +610,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "entryRuleConstant"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:229:1: entryRuleConstant : ruleConstant EOF ;
+    // InternalRecordLang.g:231:1: entryRuleConstant : ruleConstant EOF ;
     public final void entryRuleConstant() throws RecognitionException {
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:230:1: ( ruleConstant EOF )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:231:1: ruleConstant EOF
+            // InternalRecordLang.g:232:1: ( ruleConstant EOF )
+            // InternalRecordLang.g:233:1: ruleConstant EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getConstantRule()); 
             }
-            pushFollow(FOLLOW_ruleConstant_in_entryRuleConstant427);
+            pushFollow(FOLLOW_1);
             ruleConstant();
 
             state._fsp--;
@@ -628,7 +627,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                after(grammarAccess.getConstantRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleConstant434); if (state.failed) return ;
+            match(input,EOF,FOLLOW_2); if (state.failed) return ;
 
             }
 
@@ -645,25 +644,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "ruleConstant"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:238:1: ruleConstant : ( ( rule__Constant__Group__0 ) ) ;
+    // InternalRecordLang.g:240:1: ruleConstant : ( ( rule__Constant__Group__0 ) ) ;
     public final void ruleConstant() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:242:2: ( ( ( rule__Constant__Group__0 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:243:1: ( ( rule__Constant__Group__0 ) )
+            // InternalRecordLang.g:244:2: ( ( ( rule__Constant__Group__0 ) ) )
+            // InternalRecordLang.g:245:1: ( ( rule__Constant__Group__0 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:243:1: ( ( rule__Constant__Group__0 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:244:1: ( rule__Constant__Group__0 )
+            // InternalRecordLang.g:245:1: ( ( rule__Constant__Group__0 ) )
+            // InternalRecordLang.g:246:1: ( rule__Constant__Group__0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getConstantAccess().getGroup()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:245:1: ( rule__Constant__Group__0 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:245:2: rule__Constant__Group__0
+            // InternalRecordLang.g:247:1: ( rule__Constant__Group__0 )
+            // InternalRecordLang.g:247:2: rule__Constant__Group__0
             {
-            pushFollow(FOLLOW_rule__Constant__Group__0_in_ruleConstant460);
+            pushFollow(FOLLOW_2);
             rule__Constant__Group__0();
 
             state._fsp--;
@@ -696,16 +695,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "entryRuleProperty"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:257:1: entryRuleProperty : ruleProperty EOF ;
+    // InternalRecordLang.g:259:1: entryRuleProperty : ruleProperty EOF ;
     public final void entryRuleProperty() throws RecognitionException {
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:258:1: ( ruleProperty EOF )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:259:1: ruleProperty EOF
+            // InternalRecordLang.g:260:1: ( ruleProperty EOF )
+            // InternalRecordLang.g:261:1: ruleProperty EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyRule()); 
             }
-            pushFollow(FOLLOW_ruleProperty_in_entryRuleProperty487);
+            pushFollow(FOLLOW_1);
             ruleProperty();
 
             state._fsp--;
@@ -713,7 +712,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                after(grammarAccess.getPropertyRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleProperty494); if (state.failed) return ;
+            match(input,EOF,FOLLOW_2); if (state.failed) return ;
 
             }
 
@@ -730,25 +729,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "ruleProperty"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:266:1: ruleProperty : ( ( rule__Property__Group__0 ) ) ;
+    // InternalRecordLang.g:268:1: ruleProperty : ( ( rule__Property__Group__0 ) ) ;
     public final void ruleProperty() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:270:2: ( ( ( rule__Property__Group__0 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:271:1: ( ( rule__Property__Group__0 ) )
+            // InternalRecordLang.g:272:2: ( ( ( rule__Property__Group__0 ) ) )
+            // InternalRecordLang.g:273:1: ( ( rule__Property__Group__0 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:271:1: ( ( rule__Property__Group__0 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:272:1: ( rule__Property__Group__0 )
+            // InternalRecordLang.g:273:1: ( ( rule__Property__Group__0 ) )
+            // InternalRecordLang.g:274:1: ( rule__Property__Group__0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyAccess().getGroup()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:273:1: ( rule__Property__Group__0 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:273:2: rule__Property__Group__0
+            // InternalRecordLang.g:275:1: ( rule__Property__Group__0 )
+            // InternalRecordLang.g:275:2: rule__Property__Group__0
             {
-            pushFollow(FOLLOW_rule__Property__Group__0_in_ruleProperty520);
+            pushFollow(FOLLOW_2);
             rule__Property__Group__0();
 
             state._fsp--;
@@ -781,16 +780,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "entryRuleForeignKey"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:285:1: entryRuleForeignKey : ruleForeignKey EOF ;
+    // InternalRecordLang.g:287:1: entryRuleForeignKey : ruleForeignKey EOF ;
     public final void entryRuleForeignKey() throws RecognitionException {
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:286:1: ( ruleForeignKey EOF )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:287:1: ruleForeignKey EOF
+            // InternalRecordLang.g:288:1: ( ruleForeignKey EOF )
+            // InternalRecordLang.g:289:1: ruleForeignKey EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getForeignKeyRule()); 
             }
-            pushFollow(FOLLOW_ruleForeignKey_in_entryRuleForeignKey547);
+            pushFollow(FOLLOW_1);
             ruleForeignKey();
 
             state._fsp--;
@@ -798,7 +797,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                after(grammarAccess.getForeignKeyRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleForeignKey554); if (state.failed) return ;
+            match(input,EOF,FOLLOW_2); if (state.failed) return ;
 
             }
 
@@ -815,25 +814,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "ruleForeignKey"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:294:1: ruleForeignKey : ( ( rule__ForeignKey__Group__0 ) ) ;
+    // InternalRecordLang.g:296:1: ruleForeignKey : ( ( rule__ForeignKey__Group__0 ) ) ;
     public final void ruleForeignKey() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:298:2: ( ( ( rule__ForeignKey__Group__0 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:299:1: ( ( rule__ForeignKey__Group__0 ) )
+            // InternalRecordLang.g:300:2: ( ( ( rule__ForeignKey__Group__0 ) ) )
+            // InternalRecordLang.g:301:1: ( ( rule__ForeignKey__Group__0 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:299:1: ( ( rule__ForeignKey__Group__0 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:300:1: ( rule__ForeignKey__Group__0 )
+            // InternalRecordLang.g:301:1: ( ( rule__ForeignKey__Group__0 ) )
+            // InternalRecordLang.g:302:1: ( rule__ForeignKey__Group__0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getForeignKeyAccess().getGroup()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:301:1: ( rule__ForeignKey__Group__0 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:301:2: rule__ForeignKey__Group__0
+            // InternalRecordLang.g:303:1: ( rule__ForeignKey__Group__0 )
+            // InternalRecordLang.g:303:2: rule__ForeignKey__Group__0
             {
-            pushFollow(FOLLOW_rule__ForeignKey__Group__0_in_ruleForeignKey580);
+            pushFollow(FOLLOW_2);
             rule__ForeignKey__Group__0();
 
             state._fsp--;
@@ -866,16 +865,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "entryRuleClassifier"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:313:1: entryRuleClassifier : ruleClassifier EOF ;
+    // InternalRecordLang.g:315:1: entryRuleClassifier : ruleClassifier EOF ;
     public final void entryRuleClassifier() throws RecognitionException {
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:314:1: ( ruleClassifier EOF )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:315:1: ruleClassifier EOF
+            // InternalRecordLang.g:316:1: ( ruleClassifier EOF )
+            // InternalRecordLang.g:317:1: ruleClassifier EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getClassifierRule()); 
             }
-            pushFollow(FOLLOW_ruleClassifier_in_entryRuleClassifier607);
+            pushFollow(FOLLOW_1);
             ruleClassifier();
 
             state._fsp--;
@@ -883,7 +882,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                after(grammarAccess.getClassifierRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleClassifier614); if (state.failed) return ;
+            match(input,EOF,FOLLOW_2); if (state.failed) return ;
 
             }
 
@@ -900,25 +899,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "ruleClassifier"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:322:1: ruleClassifier : ( ( rule__Classifier__Group__0 ) ) ;
+    // InternalRecordLang.g:324:1: ruleClassifier : ( ( rule__Classifier__Group__0 ) ) ;
     public final void ruleClassifier() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:326:2: ( ( ( rule__Classifier__Group__0 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:327:1: ( ( rule__Classifier__Group__0 ) )
+            // InternalRecordLang.g:328:2: ( ( ( rule__Classifier__Group__0 ) ) )
+            // InternalRecordLang.g:329:1: ( ( rule__Classifier__Group__0 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:327:1: ( ( rule__Classifier__Group__0 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:328:1: ( rule__Classifier__Group__0 )
+            // InternalRecordLang.g:329:1: ( ( rule__Classifier__Group__0 ) )
+            // InternalRecordLang.g:330:1: ( rule__Classifier__Group__0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getClassifierAccess().getGroup()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:329:1: ( rule__Classifier__Group__0 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:329:2: rule__Classifier__Group__0
+            // InternalRecordLang.g:331:1: ( rule__Classifier__Group__0 )
+            // InternalRecordLang.g:331:2: rule__Classifier__Group__0
             {
-            pushFollow(FOLLOW_rule__Classifier__Group__0_in_ruleClassifier640);
+            pushFollow(FOLLOW_2);
             rule__Classifier__Group__0();
 
             state._fsp--;
@@ -951,16 +950,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "entryRuleArraySize"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:341:1: entryRuleArraySize : ruleArraySize EOF ;
+    // InternalRecordLang.g:343:1: entryRuleArraySize : ruleArraySize EOF ;
     public final void entryRuleArraySize() throws RecognitionException {
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:342:1: ( ruleArraySize EOF )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:343:1: ruleArraySize EOF
+            // InternalRecordLang.g:344:1: ( ruleArraySize EOF )
+            // InternalRecordLang.g:345:1: ruleArraySize EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getArraySizeRule()); 
             }
-            pushFollow(FOLLOW_ruleArraySize_in_entryRuleArraySize667);
+            pushFollow(FOLLOW_1);
             ruleArraySize();
 
             state._fsp--;
@@ -968,7 +967,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                after(grammarAccess.getArraySizeRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleArraySize674); if (state.failed) return ;
+            match(input,EOF,FOLLOW_2); if (state.failed) return ;
 
             }
 
@@ -985,25 +984,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "ruleArraySize"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:350:1: ruleArraySize : ( ( rule__ArraySize__Group__0 ) ) ;
+    // InternalRecordLang.g:352:1: ruleArraySize : ( ( rule__ArraySize__Group__0 ) ) ;
     public final void ruleArraySize() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:354:2: ( ( ( rule__ArraySize__Group__0 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:355:1: ( ( rule__ArraySize__Group__0 ) )
+            // InternalRecordLang.g:356:2: ( ( ( rule__ArraySize__Group__0 ) ) )
+            // InternalRecordLang.g:357:1: ( ( rule__ArraySize__Group__0 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:355:1: ( ( rule__ArraySize__Group__0 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:356:1: ( rule__ArraySize__Group__0 )
+            // InternalRecordLang.g:357:1: ( ( rule__ArraySize__Group__0 ) )
+            // InternalRecordLang.g:358:1: ( rule__ArraySize__Group__0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getArraySizeAccess().getGroup()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:357:1: ( rule__ArraySize__Group__0 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:357:2: rule__ArraySize__Group__0
+            // InternalRecordLang.g:359:1: ( rule__ArraySize__Group__0 )
+            // InternalRecordLang.g:359:2: rule__ArraySize__Group__0
             {
-            pushFollow(FOLLOW_rule__ArraySize__Group__0_in_ruleArraySize700);
+            pushFollow(FOLLOW_2);
             rule__ArraySize__Group__0();
 
             state._fsp--;
@@ -1035,102 +1034,17 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
     // $ANTLR end "ruleArraySize"
 
 
-    // $ANTLR start "entryRuleReferenceProperty"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:369:1: entryRuleReferenceProperty : ruleReferenceProperty EOF ;
-    public final void entryRuleReferenceProperty() throws RecognitionException {
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:370:1: ( ruleReferenceProperty EOF )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:371:1: ruleReferenceProperty EOF
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getReferencePropertyRule()); 
-            }
-            pushFollow(FOLLOW_ruleReferenceProperty_in_entryRuleReferenceProperty727);
-            ruleReferenceProperty();
-
-            state._fsp--;
-            if (state.failed) return ;
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getReferencePropertyRule()); 
-            }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleReferenceProperty734); if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-        }
-        return ;
-    }
-    // $ANTLR end "entryRuleReferenceProperty"
-
-
-    // $ANTLR start "ruleReferenceProperty"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:378:1: ruleReferenceProperty : ( ( rule__ReferenceProperty__Group__0 ) ) ;
-    public final void ruleReferenceProperty() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:382:2: ( ( ( rule__ReferenceProperty__Group__0 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:383:1: ( ( rule__ReferenceProperty__Group__0 ) )
-            {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:383:1: ( ( rule__ReferenceProperty__Group__0 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:384:1: ( rule__ReferenceProperty__Group__0 )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getReferencePropertyAccess().getGroup()); 
-            }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:385:1: ( rule__ReferenceProperty__Group__0 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:385:2: rule__ReferenceProperty__Group__0
-            {
-            pushFollow(FOLLOW_rule__ReferenceProperty__Group__0_in_ruleReferenceProperty760);
-            rule__ReferenceProperty__Group__0();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getReferencePropertyAccess().getGroup()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "ruleReferenceProperty"
-
-
     // $ANTLR start "entryRuleLiteral"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:397:1: entryRuleLiteral : ruleLiteral EOF ;
+    // InternalRecordLang.g:371:1: entryRuleLiteral : ruleLiteral EOF ;
     public final void entryRuleLiteral() throws RecognitionException {
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:398:1: ( ruleLiteral EOF )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:399:1: ruleLiteral EOF
+            // InternalRecordLang.g:372:1: ( ruleLiteral EOF )
+            // InternalRecordLang.g:373:1: ruleLiteral EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleLiteral_in_entryRuleLiteral787);
+            pushFollow(FOLLOW_1);
             ruleLiteral();
 
             state._fsp--;
@@ -1138,7 +1052,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                after(grammarAccess.getLiteralRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleLiteral794); if (state.failed) return ;
+            match(input,EOF,FOLLOW_2); if (state.failed) return ;
 
             }
 
@@ -1155,25 +1069,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "ruleLiteral"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:406:1: ruleLiteral : ( ( rule__Literal__Alternatives ) ) ;
+    // InternalRecordLang.g:380:1: ruleLiteral : ( ( rule__Literal__Alternatives ) ) ;
     public final void ruleLiteral() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:410:2: ( ( ( rule__Literal__Alternatives ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:411:1: ( ( rule__Literal__Alternatives ) )
+            // InternalRecordLang.g:384:2: ( ( ( rule__Literal__Alternatives ) ) )
+            // InternalRecordLang.g:385:1: ( ( rule__Literal__Alternatives ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:411:1: ( ( rule__Literal__Alternatives ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:412:1: ( rule__Literal__Alternatives )
+            // InternalRecordLang.g:385:1: ( ( rule__Literal__Alternatives ) )
+            // InternalRecordLang.g:386:1: ( rule__Literal__Alternatives )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getLiteralAccess().getAlternatives()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:413:1: ( rule__Literal__Alternatives )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:413:2: rule__Literal__Alternatives
+            // InternalRecordLang.g:387:1: ( rule__Literal__Alternatives )
+            // InternalRecordLang.g:387:2: rule__Literal__Alternatives
             {
-            pushFollow(FOLLOW_rule__Literal__Alternatives_in_ruleLiteral820);
+            pushFollow(FOLLOW_2);
             rule__Literal__Alternatives();
 
             state._fsp--;
@@ -1206,16 +1120,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "entryRuleArrayLiteral"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:425:1: entryRuleArrayLiteral : ruleArrayLiteral EOF ;
+    // InternalRecordLang.g:399:1: entryRuleArrayLiteral : ruleArrayLiteral EOF ;
     public final void entryRuleArrayLiteral() throws RecognitionException {
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:426:1: ( ruleArrayLiteral EOF )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:427:1: ruleArrayLiteral EOF
+            // InternalRecordLang.g:400:1: ( ruleArrayLiteral EOF )
+            // InternalRecordLang.g:401:1: ruleArrayLiteral EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getArrayLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleArrayLiteral_in_entryRuleArrayLiteral847);
+            pushFollow(FOLLOW_1);
             ruleArrayLiteral();
 
             state._fsp--;
@@ -1223,7 +1137,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                after(grammarAccess.getArrayLiteralRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleArrayLiteral854); if (state.failed) return ;
+            match(input,EOF,FOLLOW_2); if (state.failed) return ;
 
             }
 
@@ -1240,25 +1154,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "ruleArrayLiteral"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:434:1: ruleArrayLiteral : ( ( rule__ArrayLiteral__Group__0 ) ) ;
+    // InternalRecordLang.g:408:1: ruleArrayLiteral : ( ( rule__ArrayLiteral__Group__0 ) ) ;
     public final void ruleArrayLiteral() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:438:2: ( ( ( rule__ArrayLiteral__Group__0 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:439:1: ( ( rule__ArrayLiteral__Group__0 ) )
+            // InternalRecordLang.g:412:2: ( ( ( rule__ArrayLiteral__Group__0 ) ) )
+            // InternalRecordLang.g:413:1: ( ( rule__ArrayLiteral__Group__0 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:439:1: ( ( rule__ArrayLiteral__Group__0 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:440:1: ( rule__ArrayLiteral__Group__0 )
+            // InternalRecordLang.g:413:1: ( ( rule__ArrayLiteral__Group__0 ) )
+            // InternalRecordLang.g:414:1: ( rule__ArrayLiteral__Group__0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getArrayLiteralAccess().getGroup()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:441:1: ( rule__ArrayLiteral__Group__0 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:441:2: rule__ArrayLiteral__Group__0
+            // InternalRecordLang.g:415:1: ( rule__ArrayLiteral__Group__0 )
+            // InternalRecordLang.g:415:2: rule__ArrayLiteral__Group__0
             {
-            pushFollow(FOLLOW_rule__ArrayLiteral__Group__0_in_ruleArrayLiteral880);
+            pushFollow(FOLLOW_2);
             rule__ArrayLiteral__Group__0();
 
             state._fsp--;
@@ -1291,16 +1205,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "entryRuleStringLiteral"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:453:1: entryRuleStringLiteral : ruleStringLiteral EOF ;
+    // InternalRecordLang.g:427:1: entryRuleStringLiteral : ruleStringLiteral EOF ;
     public final void entryRuleStringLiteral() throws RecognitionException {
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:454:1: ( ruleStringLiteral EOF )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:455:1: ruleStringLiteral EOF
+            // InternalRecordLang.g:428:1: ( ruleStringLiteral EOF )
+            // InternalRecordLang.g:429:1: ruleStringLiteral EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getStringLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleStringLiteral_in_entryRuleStringLiteral907);
+            pushFollow(FOLLOW_1);
             ruleStringLiteral();
 
             state._fsp--;
@@ -1308,7 +1222,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                after(grammarAccess.getStringLiteralRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleStringLiteral914); if (state.failed) return ;
+            match(input,EOF,FOLLOW_2); if (state.failed) return ;
 
             }
 
@@ -1325,25 +1239,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "ruleStringLiteral"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:462:1: ruleStringLiteral : ( ( rule__StringLiteral__ValueAssignment ) ) ;
+    // InternalRecordLang.g:436:1: ruleStringLiteral : ( ( rule__StringLiteral__ValueAssignment ) ) ;
     public final void ruleStringLiteral() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:466:2: ( ( ( rule__StringLiteral__ValueAssignment ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:467:1: ( ( rule__StringLiteral__ValueAssignment ) )
+            // InternalRecordLang.g:440:2: ( ( ( rule__StringLiteral__ValueAssignment ) ) )
+            // InternalRecordLang.g:441:1: ( ( rule__StringLiteral__ValueAssignment ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:467:1: ( ( rule__StringLiteral__ValueAssignment ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:468:1: ( rule__StringLiteral__ValueAssignment )
+            // InternalRecordLang.g:441:1: ( ( rule__StringLiteral__ValueAssignment ) )
+            // InternalRecordLang.g:442:1: ( rule__StringLiteral__ValueAssignment )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getStringLiteralAccess().getValueAssignment()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:469:1: ( rule__StringLiteral__ValueAssignment )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:469:2: rule__StringLiteral__ValueAssignment
+            // InternalRecordLang.g:443:1: ( rule__StringLiteral__ValueAssignment )
+            // InternalRecordLang.g:443:2: rule__StringLiteral__ValueAssignment
             {
-            pushFollow(FOLLOW_rule__StringLiteral__ValueAssignment_in_ruleStringLiteral940);
+            pushFollow(FOLLOW_2);
             rule__StringLiteral__ValueAssignment();
 
             state._fsp--;
@@ -1376,16 +1290,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "entryRuleIntLiteral"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:481:1: entryRuleIntLiteral : ruleIntLiteral EOF ;
+    // InternalRecordLang.g:455:1: entryRuleIntLiteral : ruleIntLiteral EOF ;
     public final void entryRuleIntLiteral() throws RecognitionException {
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:482:1: ( ruleIntLiteral EOF )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:483:1: ruleIntLiteral EOF
+            // InternalRecordLang.g:456:1: ( ruleIntLiteral EOF )
+            // InternalRecordLang.g:457:1: ruleIntLiteral EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getIntLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleIntLiteral_in_entryRuleIntLiteral967);
+            pushFollow(FOLLOW_1);
             ruleIntLiteral();
 
             state._fsp--;
@@ -1393,7 +1307,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                after(grammarAccess.getIntLiteralRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleIntLiteral974); if (state.failed) return ;
+            match(input,EOF,FOLLOW_2); if (state.failed) return ;
 
             }
 
@@ -1410,25 +1324,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "ruleIntLiteral"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:490:1: ruleIntLiteral : ( ( rule__IntLiteral__ValueAssignment ) ) ;
+    // InternalRecordLang.g:464:1: ruleIntLiteral : ( ( rule__IntLiteral__ValueAssignment ) ) ;
     public final void ruleIntLiteral() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:494:2: ( ( ( rule__IntLiteral__ValueAssignment ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:495:1: ( ( rule__IntLiteral__ValueAssignment ) )
+            // InternalRecordLang.g:468:2: ( ( ( rule__IntLiteral__ValueAssignment ) ) )
+            // InternalRecordLang.g:469:1: ( ( rule__IntLiteral__ValueAssignment ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:495:1: ( ( rule__IntLiteral__ValueAssignment ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:496:1: ( rule__IntLiteral__ValueAssignment )
+            // InternalRecordLang.g:469:1: ( ( rule__IntLiteral__ValueAssignment ) )
+            // InternalRecordLang.g:470:1: ( rule__IntLiteral__ValueAssignment )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getIntLiteralAccess().getValueAssignment()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:497:1: ( rule__IntLiteral__ValueAssignment )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:497:2: rule__IntLiteral__ValueAssignment
+            // InternalRecordLang.g:471:1: ( rule__IntLiteral__ValueAssignment )
+            // InternalRecordLang.g:471:2: rule__IntLiteral__ValueAssignment
             {
-            pushFollow(FOLLOW_rule__IntLiteral__ValueAssignment_in_ruleIntLiteral1000);
+            pushFollow(FOLLOW_2);
             rule__IntLiteral__ValueAssignment();
 
             state._fsp--;
@@ -1461,16 +1375,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "entryRuleFloatLiteral"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:509:1: entryRuleFloatLiteral : ruleFloatLiteral EOF ;
+    // InternalRecordLang.g:483:1: entryRuleFloatLiteral : ruleFloatLiteral EOF ;
     public final void entryRuleFloatLiteral() throws RecognitionException {
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:510:1: ( ruleFloatLiteral EOF )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:511:1: ruleFloatLiteral EOF
+            // InternalRecordLang.g:484:1: ( ruleFloatLiteral EOF )
+            // InternalRecordLang.g:485:1: ruleFloatLiteral EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getFloatLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleFloatLiteral_in_entryRuleFloatLiteral1027);
+            pushFollow(FOLLOW_1);
             ruleFloatLiteral();
 
             state._fsp--;
@@ -1478,7 +1392,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                after(grammarAccess.getFloatLiteralRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFloatLiteral1034); if (state.failed) return ;
+            match(input,EOF,FOLLOW_2); if (state.failed) return ;
 
             }
 
@@ -1495,25 +1409,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "ruleFloatLiteral"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:518:1: ruleFloatLiteral : ( ( rule__FloatLiteral__ValueAssignment ) ) ;
+    // InternalRecordLang.g:492:1: ruleFloatLiteral : ( ( rule__FloatLiteral__ValueAssignment ) ) ;
     public final void ruleFloatLiteral() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:522:2: ( ( ( rule__FloatLiteral__ValueAssignment ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:523:1: ( ( rule__FloatLiteral__ValueAssignment ) )
+            // InternalRecordLang.g:496:2: ( ( ( rule__FloatLiteral__ValueAssignment ) ) )
+            // InternalRecordLang.g:497:1: ( ( rule__FloatLiteral__ValueAssignment ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:523:1: ( ( rule__FloatLiteral__ValueAssignment ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:524:1: ( rule__FloatLiteral__ValueAssignment )
+            // InternalRecordLang.g:497:1: ( ( rule__FloatLiteral__ValueAssignment ) )
+            // InternalRecordLang.g:498:1: ( rule__FloatLiteral__ValueAssignment )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getFloatLiteralAccess().getValueAssignment()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:525:1: ( rule__FloatLiteral__ValueAssignment )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:525:2: rule__FloatLiteral__ValueAssignment
+            // InternalRecordLang.g:499:1: ( rule__FloatLiteral__ValueAssignment )
+            // InternalRecordLang.g:499:2: rule__FloatLiteral__ValueAssignment
             {
-            pushFollow(FOLLOW_rule__FloatLiteral__ValueAssignment_in_ruleFloatLiteral1060);
+            pushFollow(FOLLOW_2);
             rule__FloatLiteral__ValueAssignment();
 
             state._fsp--;
@@ -1546,16 +1460,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "entryRuleBooleanLiteral"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:537:1: entryRuleBooleanLiteral : ruleBooleanLiteral EOF ;
+    // InternalRecordLang.g:511:1: entryRuleBooleanLiteral : ruleBooleanLiteral EOF ;
     public final void entryRuleBooleanLiteral() throws RecognitionException {
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:538:1: ( ruleBooleanLiteral EOF )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:539:1: ruleBooleanLiteral EOF
+            // InternalRecordLang.g:512:1: ( ruleBooleanLiteral EOF )
+            // InternalRecordLang.g:513:1: ruleBooleanLiteral EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getBooleanLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleBooleanLiteral_in_entryRuleBooleanLiteral1087);
+            pushFollow(FOLLOW_1);
             ruleBooleanLiteral();
 
             state._fsp--;
@@ -1563,7 +1477,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                after(grammarAccess.getBooleanLiteralRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleBooleanLiteral1094); if (state.failed) return ;
+            match(input,EOF,FOLLOW_2); if (state.failed) return ;
 
             }
 
@@ -1580,25 +1494,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "ruleBooleanLiteral"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:546:1: ruleBooleanLiteral : ( ( rule__BooleanLiteral__ValueAssignment ) ) ;
+    // InternalRecordLang.g:520:1: ruleBooleanLiteral : ( ( rule__BooleanLiteral__ValueAssignment ) ) ;
     public final void ruleBooleanLiteral() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:550:2: ( ( ( rule__BooleanLiteral__ValueAssignment ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:551:1: ( ( rule__BooleanLiteral__ValueAssignment ) )
+            // InternalRecordLang.g:524:2: ( ( ( rule__BooleanLiteral__ValueAssignment ) ) )
+            // InternalRecordLang.g:525:1: ( ( rule__BooleanLiteral__ValueAssignment ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:551:1: ( ( rule__BooleanLiteral__ValueAssignment ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:552:1: ( rule__BooleanLiteral__ValueAssignment )
+            // InternalRecordLang.g:525:1: ( ( rule__BooleanLiteral__ValueAssignment ) )
+            // InternalRecordLang.g:526:1: ( rule__BooleanLiteral__ValueAssignment )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getBooleanLiteralAccess().getValueAssignment()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:553:1: ( rule__BooleanLiteral__ValueAssignment )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:553:2: rule__BooleanLiteral__ValueAssignment
+            // InternalRecordLang.g:527:1: ( rule__BooleanLiteral__ValueAssignment )
+            // InternalRecordLang.g:527:2: rule__BooleanLiteral__ValueAssignment
             {
-            pushFollow(FOLLOW_rule__BooleanLiteral__ValueAssignment_in_ruleBooleanLiteral1120);
+            pushFollow(FOLLOW_2);
             rule__BooleanLiteral__ValueAssignment();
 
             state._fsp--;
@@ -1631,16 +1545,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "entryRuleConstantLiteral"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:565:1: entryRuleConstantLiteral : ruleConstantLiteral EOF ;
+    // InternalRecordLang.g:539:1: entryRuleConstantLiteral : ruleConstantLiteral EOF ;
     public final void entryRuleConstantLiteral() throws RecognitionException {
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:566:1: ( ruleConstantLiteral EOF )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:567:1: ruleConstantLiteral EOF
+            // InternalRecordLang.g:540:1: ( ruleConstantLiteral EOF )
+            // InternalRecordLang.g:541:1: ruleConstantLiteral EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getConstantLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleConstantLiteral_in_entryRuleConstantLiteral1147);
+            pushFollow(FOLLOW_1);
             ruleConstantLiteral();
 
             state._fsp--;
@@ -1648,7 +1562,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                after(grammarAccess.getConstantLiteralRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleConstantLiteral1154); if (state.failed) return ;
+            match(input,EOF,FOLLOW_2); if (state.failed) return ;
 
             }
 
@@ -1665,25 +1579,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "ruleConstantLiteral"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:574:1: ruleConstantLiteral : ( ( rule__ConstantLiteral__ValueAssignment ) ) ;
+    // InternalRecordLang.g:548:1: ruleConstantLiteral : ( ( rule__ConstantLiteral__ValueAssignment ) ) ;
     public final void ruleConstantLiteral() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:578:2: ( ( ( rule__ConstantLiteral__ValueAssignment ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:579:1: ( ( rule__ConstantLiteral__ValueAssignment ) )
+            // InternalRecordLang.g:552:2: ( ( ( rule__ConstantLiteral__ValueAssignment ) ) )
+            // InternalRecordLang.g:553:1: ( ( rule__ConstantLiteral__ValueAssignment ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:579:1: ( ( rule__ConstantLiteral__ValueAssignment ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:580:1: ( rule__ConstantLiteral__ValueAssignment )
+            // InternalRecordLang.g:553:1: ( ( rule__ConstantLiteral__ValueAssignment ) )
+            // InternalRecordLang.g:554:1: ( rule__ConstantLiteral__ValueAssignment )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getConstantLiteralAccess().getValueAssignment()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:581:1: ( rule__ConstantLiteral__ValueAssignment )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:581:2: rule__ConstantLiteral__ValueAssignment
+            // InternalRecordLang.g:555:1: ( rule__ConstantLiteral__ValueAssignment )
+            // InternalRecordLang.g:555:2: rule__ConstantLiteral__ValueAssignment
             {
-            pushFollow(FOLLOW_rule__ConstantLiteral__ValueAssignment_in_ruleConstantLiteral1180);
+            pushFollow(FOLLOW_2);
             rule__ConstantLiteral__ValueAssignment();
 
             state._fsp--;
@@ -1716,16 +1630,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "entryRuleBuiltInValueLiteral"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:593:1: entryRuleBuiltInValueLiteral : ruleBuiltInValueLiteral EOF ;
+    // InternalRecordLang.g:567:1: entryRuleBuiltInValueLiteral : ruleBuiltInValueLiteral EOF ;
     public final void entryRuleBuiltInValueLiteral() throws RecognitionException {
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:594:1: ( ruleBuiltInValueLiteral EOF )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:595:1: ruleBuiltInValueLiteral EOF
+            // InternalRecordLang.g:568:1: ( ruleBuiltInValueLiteral EOF )
+            // InternalRecordLang.g:569:1: ruleBuiltInValueLiteral EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getBuiltInValueLiteralRule()); 
             }
-            pushFollow(FOLLOW_ruleBuiltInValueLiteral_in_entryRuleBuiltInValueLiteral1207);
+            pushFollow(FOLLOW_1);
             ruleBuiltInValueLiteral();
 
             state._fsp--;
@@ -1733,7 +1647,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                after(grammarAccess.getBuiltInValueLiteralRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleBuiltInValueLiteral1214); if (state.failed) return ;
+            match(input,EOF,FOLLOW_2); if (state.failed) return ;
 
             }
 
@@ -1750,25 +1664,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "ruleBuiltInValueLiteral"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:602:1: ruleBuiltInValueLiteral : ( ( rule__BuiltInValueLiteral__Group__0 ) ) ;
+    // InternalRecordLang.g:576:1: ruleBuiltInValueLiteral : ( ( rule__BuiltInValueLiteral__Group__0 ) ) ;
     public final void ruleBuiltInValueLiteral() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:606:2: ( ( ( rule__BuiltInValueLiteral__Group__0 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:607:1: ( ( rule__BuiltInValueLiteral__Group__0 ) )
+            // InternalRecordLang.g:580:2: ( ( ( rule__BuiltInValueLiteral__Group__0 ) ) )
+            // InternalRecordLang.g:581:1: ( ( rule__BuiltInValueLiteral__Group__0 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:607:1: ( ( rule__BuiltInValueLiteral__Group__0 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:608:1: ( rule__BuiltInValueLiteral__Group__0 )
+            // InternalRecordLang.g:581:1: ( ( rule__BuiltInValueLiteral__Group__0 ) )
+            // InternalRecordLang.g:582:1: ( rule__BuiltInValueLiteral__Group__0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getBuiltInValueLiteralAccess().getGroup()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:609:1: ( rule__BuiltInValueLiteral__Group__0 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:609:2: rule__BuiltInValueLiteral__Group__0
+            // InternalRecordLang.g:583:1: ( rule__BuiltInValueLiteral__Group__0 )
+            // InternalRecordLang.g:583:2: rule__BuiltInValueLiteral__Group__0
             {
-            pushFollow(FOLLOW_rule__BuiltInValueLiteral__Group__0_in_ruleBuiltInValueLiteral1240);
+            pushFollow(FOLLOW_2);
             rule__BuiltInValueLiteral__Group__0();
 
             state._fsp--;
@@ -1801,16 +1715,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "entryRuleQualifiedName"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:621:1: entryRuleQualifiedName : ruleQualifiedName EOF ;
+    // InternalRecordLang.g:595:1: entryRuleQualifiedName : ruleQualifiedName EOF ;
     public final void entryRuleQualifiedName() throws RecognitionException {
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:622:1: ( ruleQualifiedName EOF )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:623:1: ruleQualifiedName EOF
+            // InternalRecordLang.g:596:1: ( ruleQualifiedName EOF )
+            // InternalRecordLang.g:597:1: ruleQualifiedName EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getQualifiedNameRule()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName1267);
+            pushFollow(FOLLOW_1);
             ruleQualifiedName();
 
             state._fsp--;
@@ -1818,7 +1732,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                after(grammarAccess.getQualifiedNameRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleQualifiedName1274); if (state.failed) return ;
+            match(input,EOF,FOLLOW_2); if (state.failed) return ;
 
             }
 
@@ -1835,25 +1749,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "ruleQualifiedName"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:630:1: ruleQualifiedName : ( ( rule__QualifiedName__Group__0 ) ) ;
+    // InternalRecordLang.g:604:1: ruleQualifiedName : ( ( rule__QualifiedName__Group__0 ) ) ;
     public final void ruleQualifiedName() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:634:2: ( ( ( rule__QualifiedName__Group__0 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:635:1: ( ( rule__QualifiedName__Group__0 ) )
+            // InternalRecordLang.g:608:2: ( ( ( rule__QualifiedName__Group__0 ) ) )
+            // InternalRecordLang.g:609:1: ( ( rule__QualifiedName__Group__0 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:635:1: ( ( rule__QualifiedName__Group__0 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:636:1: ( rule__QualifiedName__Group__0 )
+            // InternalRecordLang.g:609:1: ( ( rule__QualifiedName__Group__0 ) )
+            // InternalRecordLang.g:610:1: ( rule__QualifiedName__Group__0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getQualifiedNameAccess().getGroup()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:637:1: ( rule__QualifiedName__Group__0 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:637:2: rule__QualifiedName__Group__0
+            // InternalRecordLang.g:611:1: ( rule__QualifiedName__Group__0 )
+            // InternalRecordLang.g:611:2: rule__QualifiedName__Group__0
             {
-            pushFollow(FOLLOW_rule__QualifiedName__Group__0_in_ruleQualifiedName1300);
+            pushFollow(FOLLOW_2);
             rule__QualifiedName__Group__0();
 
             state._fsp--;
@@ -1886,16 +1800,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "entryRuleQualifiedNameWithWildcard"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:649:1: entryRuleQualifiedNameWithWildcard : ruleQualifiedNameWithWildcard EOF ;
+    // InternalRecordLang.g:623:1: entryRuleQualifiedNameWithWildcard : ruleQualifiedNameWithWildcard EOF ;
     public final void entryRuleQualifiedNameWithWildcard() throws RecognitionException {
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:650:1: ( ruleQualifiedNameWithWildcard EOF )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:651:1: ruleQualifiedNameWithWildcard EOF
+            // InternalRecordLang.g:624:1: ( ruleQualifiedNameWithWildcard EOF )
+            // InternalRecordLang.g:625:1: ruleQualifiedNameWithWildcard EOF
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getQualifiedNameWithWildcardRule()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedNameWithWildcard_in_entryRuleQualifiedNameWithWildcard1327);
+            pushFollow(FOLLOW_1);
             ruleQualifiedNameWithWildcard();
 
             state._fsp--;
@@ -1903,7 +1817,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             if ( state.backtracking==0 ) {
                after(grammarAccess.getQualifiedNameWithWildcardRule()); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleQualifiedNameWithWildcard1334); if (state.failed) return ;
+            match(input,EOF,FOLLOW_2); if (state.failed) return ;
 
             }
 
@@ -1920,25 +1834,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "ruleQualifiedNameWithWildcard"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:658:1: ruleQualifiedNameWithWildcard : ( ( rule__QualifiedNameWithWildcard__Group__0 ) ) ;
+    // InternalRecordLang.g:632:1: ruleQualifiedNameWithWildcard : ( ( rule__QualifiedNameWithWildcard__Group__0 ) ) ;
     public final void ruleQualifiedNameWithWildcard() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:662:2: ( ( ( rule__QualifiedNameWithWildcard__Group__0 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:663:1: ( ( rule__QualifiedNameWithWildcard__Group__0 ) )
+            // InternalRecordLang.g:636:2: ( ( ( rule__QualifiedNameWithWildcard__Group__0 ) ) )
+            // InternalRecordLang.g:637:1: ( ( rule__QualifiedNameWithWildcard__Group__0 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:663:1: ( ( rule__QualifiedNameWithWildcard__Group__0 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:664:1: ( rule__QualifiedNameWithWildcard__Group__0 )
+            // InternalRecordLang.g:637:1: ( ( rule__QualifiedNameWithWildcard__Group__0 ) )
+            // InternalRecordLang.g:638:1: ( rule__QualifiedNameWithWildcard__Group__0 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getQualifiedNameWithWildcardAccess().getGroup()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:665:1: ( rule__QualifiedNameWithWildcard__Group__0 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:665:2: rule__QualifiedNameWithWildcard__Group__0
+            // InternalRecordLang.g:639:1: ( rule__QualifiedNameWithWildcard__Group__0 )
+            // InternalRecordLang.g:639:2: rule__QualifiedNameWithWildcard__Group__0
             {
-            pushFollow(FOLLOW_rule__QualifiedNameWithWildcard__Group__0_in_ruleQualifiedNameWithWildcard1360);
+            pushFollow(FOLLOW_2);
             rule__QualifiedNameWithWildcard__Group__0();
 
             state._fsp--;
@@ -1971,25 +1885,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rulePropertyModifier"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:678:1: rulePropertyModifier : ( ( rule__PropertyModifier__Alternatives ) ) ;
+    // InternalRecordLang.g:652:1: rulePropertyModifier : ( ( rule__PropertyModifier__Alternatives ) ) ;
     public final void rulePropertyModifier() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:682:1: ( ( ( rule__PropertyModifier__Alternatives ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:683:1: ( ( rule__PropertyModifier__Alternatives ) )
+            // InternalRecordLang.g:656:1: ( ( ( rule__PropertyModifier__Alternatives ) ) )
+            // InternalRecordLang.g:657:1: ( ( rule__PropertyModifier__Alternatives ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:683:1: ( ( rule__PropertyModifier__Alternatives ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:684:1: ( rule__PropertyModifier__Alternatives )
+            // InternalRecordLang.g:657:1: ( ( rule__PropertyModifier__Alternatives ) )
+            // InternalRecordLang.g:658:1: ( rule__PropertyModifier__Alternatives )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyModifierAccess().getAlternatives()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:685:1: ( rule__PropertyModifier__Alternatives )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:685:2: rule__PropertyModifier__Alternatives
+            // InternalRecordLang.g:659:1: ( rule__PropertyModifier__Alternatives )
+            // InternalRecordLang.g:659:2: rule__PropertyModifier__Alternatives
             {
-            pushFollow(FOLLOW_rule__PropertyModifier__Alternatives_in_rulePropertyModifier1397);
+            pushFollow(FOLLOW_2);
             rule__PropertyModifier__Alternatives();
 
             state._fsp--;
@@ -2021,33 +1935,33 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
     // $ANTLR end "rulePropertyModifier"
 
 
-    // $ANTLR start "rule__Type__Alternatives"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:696:1: rule__Type__Alternatives : ( ( ruleRecordType ) | ( ruleTemplateType ) );
-    public final void rule__Type__Alternatives() throws RecognitionException {
+    // $ANTLR start "rule__ComplexType__Alternatives"
+    // InternalRecordLang.g:671:1: rule__ComplexType__Alternatives : ( ( ruleRecordType ) | ( ruleTemplateType ) );
+    public final void rule__ComplexType__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:700:1: ( ( ruleRecordType ) | ( ruleTemplateType ) )
+            // InternalRecordLang.g:675:1: ( ( ruleRecordType ) | ( ruleTemplateType ) )
             int alt1=2;
             switch ( input.LA(1) ) {
-            case 20:
+            case 19:
                 {
                 int LA1_1 = input.LA(2);
 
                 if ( (LA1_1==RULE_STRING) ) {
                     switch ( input.LA(3) ) {
-                    case 21:
+                    case 20:
                         {
                         int LA1_2 = input.LA(4);
 
                         if ( (LA1_2==RULE_STRING) ) {
                             int LA1_6 = input.LA(5);
 
-                            if ( (LA1_6==26||LA1_6==38) ) {
+                            if ( (LA1_6==25||LA1_6==37) ) {
                                 alt1=1;
                             }
-                            else if ( (LA1_6==19) ) {
+                            else if ( (LA1_6==18) ) {
                                 alt1=2;
                             }
                             else {
@@ -2067,15 +1981,15 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
                         }
                         }
                         break;
-                    case 26:
-                    case 38:
-                        {
-                        alt1=1;
-                        }
-                        break;
-                    case 19:
+                    case 18:
                         {
                         alt1=2;
+                        }
+                        break;
+                    case 25:
+                    case 37:
+                        {
+                        alt1=1;
                         }
                         break;
                     default:
@@ -2096,17 +2010,17 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
                 }
                 }
                 break;
-            case 21:
+            case 20:
                 {
                 int LA1_2 = input.LA(2);
 
                 if ( (LA1_2==RULE_STRING) ) {
                     int LA1_6 = input.LA(3);
 
-                    if ( (LA1_6==26||LA1_6==38) ) {
+                    if ( (LA1_6==25||LA1_6==37) ) {
                         alt1=1;
                     }
-                    else if ( (LA1_6==19) ) {
+                    else if ( (LA1_6==18) ) {
                         alt1=2;
                     }
                     else {
@@ -2126,13 +2040,13 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
                 }
                 }
                 break;
-            case 26:
-            case 38:
+            case 25:
+            case 37:
                 {
                 alt1=1;
                 }
                 break;
-            case 19:
+            case 18:
                 {
                 alt1=2;
                 }
@@ -2147,21 +2061,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
             switch (alt1) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:701:1: ( ruleRecordType )
+                    // InternalRecordLang.g:676:1: ( ruleRecordType )
                     {
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:701:1: ( ruleRecordType )
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:702:1: ruleRecordType
+                    // InternalRecordLang.g:676:1: ( ruleRecordType )
+                    // InternalRecordLang.g:677:1: ruleRecordType
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getTypeAccess().getRecordTypeParserRuleCall_0()); 
+                       before(grammarAccess.getComplexTypeAccess().getRecordTypeParserRuleCall_0()); 
                     }
-                    pushFollow(FOLLOW_ruleRecordType_in_rule__Type__Alternatives1432);
+                    pushFollow(FOLLOW_2);
                     ruleRecordType();
 
                     state._fsp--;
                     if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getTypeAccess().getRecordTypeParserRuleCall_0()); 
+                       after(grammarAccess.getComplexTypeAccess().getRecordTypeParserRuleCall_0()); 
                     }
 
                     }
@@ -2170,21 +2084,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:707:6: ( ruleTemplateType )
+                    // InternalRecordLang.g:682:6: ( ruleTemplateType )
                     {
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:707:6: ( ruleTemplateType )
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:708:1: ruleTemplateType
+                    // InternalRecordLang.g:682:6: ( ruleTemplateType )
+                    // InternalRecordLang.g:683:1: ruleTemplateType
                     {
                     if ( state.backtracking==0 ) {
-                       before(grammarAccess.getTypeAccess().getTemplateTypeParserRuleCall_1()); 
+                       before(grammarAccess.getComplexTypeAccess().getTemplateTypeParserRuleCall_1()); 
                     }
-                    pushFollow(FOLLOW_ruleTemplateType_in_rule__Type__Alternatives1449);
+                    pushFollow(FOLLOW_2);
                     ruleTemplateType();
 
                     state._fsp--;
                     if (state.failed) return ;
                     if ( state.backtracking==0 ) {
-                       after(grammarAccess.getTypeAccess().getTemplateTypeParserRuleCall_1()); 
+                       after(grammarAccess.getComplexTypeAccess().getTemplateTypeParserRuleCall_1()); 
                     }
 
                     }
@@ -2206,24 +2120,24 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__Type__Alternatives"
+    // $ANTLR end "rule__ComplexType__Alternatives"
 
 
     // $ANTLR start "rule__TemplateType__Alternatives_5_1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:718:1: rule__TemplateType__Alternatives_5_1 : ( ( ( rule__TemplateType__PropertiesAssignment_5_1_0 ) ) | ( ( rule__TemplateType__ConstantsAssignment_5_1_1 ) ) );
+    // InternalRecordLang.g:693:1: rule__TemplateType__Alternatives_5_1 : ( ( ( rule__TemplateType__PropertiesAssignment_5_1_0 ) ) | ( ( rule__TemplateType__ConstantsAssignment_5_1_1 ) ) );
     public final void rule__TemplateType__Alternatives_5_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:722:1: ( ( ( rule__TemplateType__PropertiesAssignment_5_1_0 ) ) | ( ( rule__TemplateType__ConstantsAssignment_5_1_1 ) ) )
+            // InternalRecordLang.g:697:1: ( ( ( rule__TemplateType__PropertiesAssignment_5_1_0 ) ) | ( ( rule__TemplateType__ConstantsAssignment_5_1_1 ) ) )
             int alt2=2;
             int LA2_0 = input.LA(1);
 
-            if ( (LA2_0==RULE_ID||(LA2_0>=14 && LA2_0<=15)||LA2_0==30||LA2_0==32) ) {
+            if ( (LA2_0==RULE_ID||(LA2_0>=14 && LA2_0<=15)||LA2_0==29||LA2_0==31) ) {
                 alt2=1;
             }
-            else if ( (LA2_0==28) ) {
+            else if ( (LA2_0==27) ) {
                 alt2=2;
             }
             else {
@@ -2235,18 +2149,18 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             }
             switch (alt2) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:723:1: ( ( rule__TemplateType__PropertiesAssignment_5_1_0 ) )
+                    // InternalRecordLang.g:698:1: ( ( rule__TemplateType__PropertiesAssignment_5_1_0 ) )
                     {
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:723:1: ( ( rule__TemplateType__PropertiesAssignment_5_1_0 ) )
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:724:1: ( rule__TemplateType__PropertiesAssignment_5_1_0 )
+                    // InternalRecordLang.g:698:1: ( ( rule__TemplateType__PropertiesAssignment_5_1_0 ) )
+                    // InternalRecordLang.g:699:1: ( rule__TemplateType__PropertiesAssignment_5_1_0 )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getTemplateTypeAccess().getPropertiesAssignment_5_1_0()); 
                     }
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:725:1: ( rule__TemplateType__PropertiesAssignment_5_1_0 )
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:725:2: rule__TemplateType__PropertiesAssignment_5_1_0
+                    // InternalRecordLang.g:700:1: ( rule__TemplateType__PropertiesAssignment_5_1_0 )
+                    // InternalRecordLang.g:700:2: rule__TemplateType__PropertiesAssignment_5_1_0
                     {
-                    pushFollow(FOLLOW_rule__TemplateType__PropertiesAssignment_5_1_0_in_rule__TemplateType__Alternatives_5_11481);
+                    pushFollow(FOLLOW_2);
                     rule__TemplateType__PropertiesAssignment_5_1_0();
 
                     state._fsp--;
@@ -2264,18 +2178,18 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:729:6: ( ( rule__TemplateType__ConstantsAssignment_5_1_1 ) )
+                    // InternalRecordLang.g:704:6: ( ( rule__TemplateType__ConstantsAssignment_5_1_1 ) )
                     {
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:729:6: ( ( rule__TemplateType__ConstantsAssignment_5_1_1 ) )
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:730:1: ( rule__TemplateType__ConstantsAssignment_5_1_1 )
+                    // InternalRecordLang.g:704:6: ( ( rule__TemplateType__ConstantsAssignment_5_1_1 ) )
+                    // InternalRecordLang.g:705:1: ( rule__TemplateType__ConstantsAssignment_5_1_1 )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getTemplateTypeAccess().getConstantsAssignment_5_1_1()); 
                     }
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:731:1: ( rule__TemplateType__ConstantsAssignment_5_1_1 )
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:731:2: rule__TemplateType__ConstantsAssignment_5_1_1
+                    // InternalRecordLang.g:706:1: ( rule__TemplateType__ConstantsAssignment_5_1_1 )
+                    // InternalRecordLang.g:706:2: rule__TemplateType__ConstantsAssignment_5_1_1
                     {
-                    pushFollow(FOLLOW_rule__TemplateType__ConstantsAssignment_5_1_1_in_rule__TemplateType__Alternatives_5_11499);
+                    pushFollow(FOLLOW_2);
                     rule__TemplateType__ConstantsAssignment_5_1_1();
 
                     state._fsp--;
@@ -2310,20 +2224,20 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Alternatives_7_1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:740:1: rule__RecordType__Alternatives_7_1 : ( ( ( rule__RecordType__PropertiesAssignment_7_1_0 ) ) | ( ( rule__RecordType__ConstantsAssignment_7_1_1 ) ) );
+    // InternalRecordLang.g:715:1: rule__RecordType__Alternatives_7_1 : ( ( ( rule__RecordType__PropertiesAssignment_7_1_0 ) ) | ( ( rule__RecordType__ConstantsAssignment_7_1_1 ) ) );
     public final void rule__RecordType__Alternatives_7_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:744:1: ( ( ( rule__RecordType__PropertiesAssignment_7_1_0 ) ) | ( ( rule__RecordType__ConstantsAssignment_7_1_1 ) ) )
+            // InternalRecordLang.g:719:1: ( ( ( rule__RecordType__PropertiesAssignment_7_1_0 ) ) | ( ( rule__RecordType__ConstantsAssignment_7_1_1 ) ) )
             int alt3=2;
             int LA3_0 = input.LA(1);
 
-            if ( (LA3_0==RULE_ID||(LA3_0>=14 && LA3_0<=15)||LA3_0==30||LA3_0==32) ) {
+            if ( (LA3_0==RULE_ID||(LA3_0>=14 && LA3_0<=15)||LA3_0==29||LA3_0==31) ) {
                 alt3=1;
             }
-            else if ( (LA3_0==28) ) {
+            else if ( (LA3_0==27) ) {
                 alt3=2;
             }
             else {
@@ -2335,18 +2249,18 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             }
             switch (alt3) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:745:1: ( ( rule__RecordType__PropertiesAssignment_7_1_0 ) )
+                    // InternalRecordLang.g:720:1: ( ( rule__RecordType__PropertiesAssignment_7_1_0 ) )
                     {
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:745:1: ( ( rule__RecordType__PropertiesAssignment_7_1_0 ) )
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:746:1: ( rule__RecordType__PropertiesAssignment_7_1_0 )
+                    // InternalRecordLang.g:720:1: ( ( rule__RecordType__PropertiesAssignment_7_1_0 ) )
+                    // InternalRecordLang.g:721:1: ( rule__RecordType__PropertiesAssignment_7_1_0 )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getRecordTypeAccess().getPropertiesAssignment_7_1_0()); 
                     }
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:747:1: ( rule__RecordType__PropertiesAssignment_7_1_0 )
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:747:2: rule__RecordType__PropertiesAssignment_7_1_0
+                    // InternalRecordLang.g:722:1: ( rule__RecordType__PropertiesAssignment_7_1_0 )
+                    // InternalRecordLang.g:722:2: rule__RecordType__PropertiesAssignment_7_1_0
                     {
-                    pushFollow(FOLLOW_rule__RecordType__PropertiesAssignment_7_1_0_in_rule__RecordType__Alternatives_7_11532);
+                    pushFollow(FOLLOW_2);
                     rule__RecordType__PropertiesAssignment_7_1_0();
 
                     state._fsp--;
@@ -2364,18 +2278,18 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:751:6: ( ( rule__RecordType__ConstantsAssignment_7_1_1 ) )
+                    // InternalRecordLang.g:726:6: ( ( rule__RecordType__ConstantsAssignment_7_1_1 ) )
                     {
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:751:6: ( ( rule__RecordType__ConstantsAssignment_7_1_1 ) )
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:752:1: ( rule__RecordType__ConstantsAssignment_7_1_1 )
+                    // InternalRecordLang.g:726:6: ( ( rule__RecordType__ConstantsAssignment_7_1_1 ) )
+                    // InternalRecordLang.g:727:1: ( rule__RecordType__ConstantsAssignment_7_1_1 )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getRecordTypeAccess().getConstantsAssignment_7_1_1()); 
                     }
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:753:1: ( rule__RecordType__ConstantsAssignment_7_1_1 )
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:753:2: rule__RecordType__ConstantsAssignment_7_1_1
+                    // InternalRecordLang.g:728:1: ( rule__RecordType__ConstantsAssignment_7_1_1 )
+                    // InternalRecordLang.g:728:2: rule__RecordType__ConstantsAssignment_7_1_1
                     {
-                    pushFollow(FOLLOW_rule__RecordType__ConstantsAssignment_7_1_1_in_rule__RecordType__Alternatives_7_11550);
+                    pushFollow(FOLLOW_2);
                     rule__RecordType__ConstantsAssignment_7_1_1();
 
                     state._fsp--;
@@ -2410,20 +2324,20 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Property__Alternatives_2"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:762:1: rule__Property__Alternatives_2 : ( ( ( rule__Property__TypeAssignment_2_0 ) ) | ( ( rule__Property__Group_2_1__0 ) ) );
+    // InternalRecordLang.g:737:1: rule__Property__Alternatives_2 : ( ( ( rule__Property__TypeAssignment_2_0 ) ) | ( ( rule__Property__Group_2_1__0 ) ) );
     public final void rule__Property__Alternatives_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:766:1: ( ( ( rule__Property__TypeAssignment_2_0 ) ) | ( ( rule__Property__Group_2_1__0 ) ) )
+            // InternalRecordLang.g:741:1: ( ( ( rule__Property__TypeAssignment_2_0 ) ) | ( ( rule__Property__Group_2_1__0 ) ) )
             int alt4=2;
             int LA4_0 = input.LA(1);
 
             if ( (LA4_0==RULE_ID) ) {
                 alt4=1;
             }
-            else if ( (LA4_0==30) ) {
+            else if ( (LA4_0==29) ) {
                 alt4=2;
             }
             else {
@@ -2435,18 +2349,18 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             }
             switch (alt4) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:767:1: ( ( rule__Property__TypeAssignment_2_0 ) )
+                    // InternalRecordLang.g:742:1: ( ( rule__Property__TypeAssignment_2_0 ) )
                     {
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:767:1: ( ( rule__Property__TypeAssignment_2_0 ) )
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:768:1: ( rule__Property__TypeAssignment_2_0 )
+                    // InternalRecordLang.g:742:1: ( ( rule__Property__TypeAssignment_2_0 ) )
+                    // InternalRecordLang.g:743:1: ( rule__Property__TypeAssignment_2_0 )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getPropertyAccess().getTypeAssignment_2_0()); 
                     }
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:769:1: ( rule__Property__TypeAssignment_2_0 )
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:769:2: rule__Property__TypeAssignment_2_0
+                    // InternalRecordLang.g:744:1: ( rule__Property__TypeAssignment_2_0 )
+                    // InternalRecordLang.g:744:2: rule__Property__TypeAssignment_2_0
                     {
-                    pushFollow(FOLLOW_rule__Property__TypeAssignment_2_0_in_rule__Property__Alternatives_21583);
+                    pushFollow(FOLLOW_2);
                     rule__Property__TypeAssignment_2_0();
 
                     state._fsp--;
@@ -2464,18 +2378,18 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:773:6: ( ( rule__Property__Group_2_1__0 ) )
+                    // InternalRecordLang.g:748:6: ( ( rule__Property__Group_2_1__0 ) )
                     {
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:773:6: ( ( rule__Property__Group_2_1__0 ) )
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:774:1: ( rule__Property__Group_2_1__0 )
+                    // InternalRecordLang.g:748:6: ( ( rule__Property__Group_2_1__0 ) )
+                    // InternalRecordLang.g:749:1: ( rule__Property__Group_2_1__0 )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getPropertyAccess().getGroup_2_1()); 
                     }
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:775:1: ( rule__Property__Group_2_1__0 )
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:775:2: rule__Property__Group_2_1__0
+                    // InternalRecordLang.g:750:1: ( rule__Property__Group_2_1__0 )
+                    // InternalRecordLang.g:750:2: rule__Property__Group_2_1__0
                     {
-                    pushFollow(FOLLOW_rule__Property__Group_2_1__0_in_rule__Property__Alternatives_21601);
+                    pushFollow(FOLLOW_2);
                     rule__Property__Group_2_1__0();
 
                     state._fsp--;
@@ -2509,170 +2423,70 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
     // $ANTLR end "rule__Property__Alternatives_2"
 
 
-    // $ANTLR start "rule__Property__Alternatives_4"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:784:1: rule__Property__Alternatives_4 : ( ( ( rule__Property__Group_4_0__0 ) ) | ( ( rule__Property__Group_4_1__0 ) ) );
-    public final void rule__Property__Alternatives_4() throws RecognitionException {
+    // $ANTLR start "rule__Literal__Alternatives"
+    // InternalRecordLang.g:759:1: rule__Literal__Alternatives : ( ( ruleStringLiteral ) | ( ruleIntLiteral ) | ( ruleFloatLiteral ) | ( ruleBooleanLiteral ) | ( ruleConstantLiteral ) | ( ruleArrayLiteral ) | ( ruleBuiltInValueLiteral ) );
+    public final void rule__Literal__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:788:1: ( ( ( rule__Property__Group_4_0__0 ) ) | ( ( rule__Property__Group_4_1__0 ) ) )
-            int alt5=2;
-            int LA5_0 = input.LA(1);
-
-            if ( (LA5_0==24) ) {
+            // InternalRecordLang.g:763:1: ( ( ruleStringLiteral ) | ( ruleIntLiteral ) | ( ruleFloatLiteral ) | ( ruleBooleanLiteral ) | ( ruleConstantLiteral ) | ( ruleArrayLiteral ) | ( ruleBuiltInValueLiteral ) )
+            int alt5=7;
+            switch ( input.LA(1) ) {
+            case RULE_STRING:
+                {
                 alt5=1;
-            }
-            else if ( (LA5_0==29) ) {
+                }
+                break;
+            case RULE_INT:
+                {
                 alt5=2;
-            }
-            else {
+                }
+                break;
+            case RULE_FLOAT:
+                {
+                alt5=3;
+                }
+                break;
+            case RULE_BOOLEAN:
+                {
+                alt5=4;
+                }
+                break;
+            case RULE_ID:
+                {
+                alt5=5;
+                }
+                break;
+            case 23:
+                {
+                alt5=6;
+                }
+                break;
+            case 38:
+                {
+                alt5=7;
+                }
+                break;
+            default:
                 if (state.backtracking>0) {state.failed=true; return ;}
                 NoViableAltException nvae =
                     new NoViableAltException("", 5, 0, input);
 
                 throw nvae;
             }
+
             switch (alt5) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:789:1: ( ( rule__Property__Group_4_0__0 ) )
+                    // InternalRecordLang.g:764:1: ( ruleStringLiteral )
                     {
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:789:1: ( ( rule__Property__Group_4_0__0 ) )
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:790:1: ( rule__Property__Group_4_0__0 )
-                    {
-                    if ( state.backtracking==0 ) {
-                       before(grammarAccess.getPropertyAccess().getGroup_4_0()); 
-                    }
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:791:1: ( rule__Property__Group_4_0__0 )
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:791:2: rule__Property__Group_4_0__0
-                    {
-                    pushFollow(FOLLOW_rule__Property__Group_4_0__0_in_rule__Property__Alternatives_41634);
-                    rule__Property__Group_4_0__0();
-
-                    state._fsp--;
-                    if (state.failed) return ;
-
-                    }
-
-                    if ( state.backtracking==0 ) {
-                       after(grammarAccess.getPropertyAccess().getGroup_4_0()); 
-                    }
-
-                    }
-
-
-                    }
-                    break;
-                case 2 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:795:6: ( ( rule__Property__Group_4_1__0 ) )
-                    {
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:795:6: ( ( rule__Property__Group_4_1__0 ) )
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:796:1: ( rule__Property__Group_4_1__0 )
-                    {
-                    if ( state.backtracking==0 ) {
-                       before(grammarAccess.getPropertyAccess().getGroup_4_1()); 
-                    }
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:797:1: ( rule__Property__Group_4_1__0 )
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:797:2: rule__Property__Group_4_1__0
-                    {
-                    pushFollow(FOLLOW_rule__Property__Group_4_1__0_in_rule__Property__Alternatives_41652);
-                    rule__Property__Group_4_1__0();
-
-                    state._fsp--;
-                    if (state.failed) return ;
-
-                    }
-
-                    if ( state.backtracking==0 ) {
-                       after(grammarAccess.getPropertyAccess().getGroup_4_1()); 
-                    }
-
-                    }
-
-
-                    }
-                    break;
-
-            }
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Property__Alternatives_4"
-
-
-    // $ANTLR start "rule__Literal__Alternatives"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:806:1: rule__Literal__Alternatives : ( ( ruleStringLiteral ) | ( ruleIntLiteral ) | ( ruleFloatLiteral ) | ( ruleBooleanLiteral ) | ( ruleConstantLiteral ) | ( ruleArrayLiteral ) | ( ruleBuiltInValueLiteral ) );
-    public final void rule__Literal__Alternatives() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:810:1: ( ( ruleStringLiteral ) | ( ruleIntLiteral ) | ( ruleFloatLiteral ) | ( ruleBooleanLiteral ) | ( ruleConstantLiteral ) | ( ruleArrayLiteral ) | ( ruleBuiltInValueLiteral ) )
-            int alt6=7;
-            switch ( input.LA(1) ) {
-            case RULE_STRING:
-                {
-                alt6=1;
-                }
-                break;
-            case RULE_INT:
-                {
-                alt6=2;
-                }
-                break;
-            case RULE_FLOAT:
-                {
-                alt6=3;
-                }
-                break;
-            case RULE_BOOLEAN:
-                {
-                alt6=4;
-                }
-                break;
-            case RULE_ID:
-                {
-                alt6=5;
-                }
-                break;
-            case 24:
-                {
-                alt6=6;
-                }
-                break;
-            case 39:
-                {
-                alt6=7;
-                }
-                break;
-            default:
-                if (state.backtracking>0) {state.failed=true; return ;}
-                NoViableAltException nvae =
-                    new NoViableAltException("", 6, 0, input);
-
-                throw nvae;
-            }
-
-            switch (alt6) {
-                case 1 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:811:1: ( ruleStringLiteral )
-                    {
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:811:1: ( ruleStringLiteral )
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:812:1: ruleStringLiteral
+                    // InternalRecordLang.g:764:1: ( ruleStringLiteral )
+                    // InternalRecordLang.g:765:1: ruleStringLiteral
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getLiteralAccess().getStringLiteralParserRuleCall_0()); 
                     }
-                    pushFollow(FOLLOW_ruleStringLiteral_in_rule__Literal__Alternatives1685);
+                    pushFollow(FOLLOW_2);
                     ruleStringLiteral();
 
                     state._fsp--;
@@ -2687,15 +2501,15 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:817:6: ( ruleIntLiteral )
+                    // InternalRecordLang.g:770:6: ( ruleIntLiteral )
                     {
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:817:6: ( ruleIntLiteral )
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:818:1: ruleIntLiteral
+                    // InternalRecordLang.g:770:6: ( ruleIntLiteral )
+                    // InternalRecordLang.g:771:1: ruleIntLiteral
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getLiteralAccess().getIntLiteralParserRuleCall_1()); 
                     }
-                    pushFollow(FOLLOW_ruleIntLiteral_in_rule__Literal__Alternatives1702);
+                    pushFollow(FOLLOW_2);
                     ruleIntLiteral();
 
                     state._fsp--;
@@ -2710,15 +2524,15 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
                     }
                     break;
                 case 3 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:823:6: ( ruleFloatLiteral )
+                    // InternalRecordLang.g:776:6: ( ruleFloatLiteral )
                     {
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:823:6: ( ruleFloatLiteral )
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:824:1: ruleFloatLiteral
+                    // InternalRecordLang.g:776:6: ( ruleFloatLiteral )
+                    // InternalRecordLang.g:777:1: ruleFloatLiteral
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getLiteralAccess().getFloatLiteralParserRuleCall_2()); 
                     }
-                    pushFollow(FOLLOW_ruleFloatLiteral_in_rule__Literal__Alternatives1719);
+                    pushFollow(FOLLOW_2);
                     ruleFloatLiteral();
 
                     state._fsp--;
@@ -2733,15 +2547,15 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
                     }
                     break;
                 case 4 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:829:6: ( ruleBooleanLiteral )
+                    // InternalRecordLang.g:782:6: ( ruleBooleanLiteral )
                     {
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:829:6: ( ruleBooleanLiteral )
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:830:1: ruleBooleanLiteral
+                    // InternalRecordLang.g:782:6: ( ruleBooleanLiteral )
+                    // InternalRecordLang.g:783:1: ruleBooleanLiteral
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getLiteralAccess().getBooleanLiteralParserRuleCall_3()); 
                     }
-                    pushFollow(FOLLOW_ruleBooleanLiteral_in_rule__Literal__Alternatives1736);
+                    pushFollow(FOLLOW_2);
                     ruleBooleanLiteral();
 
                     state._fsp--;
@@ -2756,15 +2570,15 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
                     }
                     break;
                 case 5 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:835:6: ( ruleConstantLiteral )
+                    // InternalRecordLang.g:788:6: ( ruleConstantLiteral )
                     {
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:835:6: ( ruleConstantLiteral )
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:836:1: ruleConstantLiteral
+                    // InternalRecordLang.g:788:6: ( ruleConstantLiteral )
+                    // InternalRecordLang.g:789:1: ruleConstantLiteral
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getLiteralAccess().getConstantLiteralParserRuleCall_4()); 
                     }
-                    pushFollow(FOLLOW_ruleConstantLiteral_in_rule__Literal__Alternatives1753);
+                    pushFollow(FOLLOW_2);
                     ruleConstantLiteral();
 
                     state._fsp--;
@@ -2779,15 +2593,15 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
                     }
                     break;
                 case 6 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:841:6: ( ruleArrayLiteral )
+                    // InternalRecordLang.g:794:6: ( ruleArrayLiteral )
                     {
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:841:6: ( ruleArrayLiteral )
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:842:1: ruleArrayLiteral
+                    // InternalRecordLang.g:794:6: ( ruleArrayLiteral )
+                    // InternalRecordLang.g:795:1: ruleArrayLiteral
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getLiteralAccess().getArrayLiteralParserRuleCall_5()); 
                     }
-                    pushFollow(FOLLOW_ruleArrayLiteral_in_rule__Literal__Alternatives1770);
+                    pushFollow(FOLLOW_2);
                     ruleArrayLiteral();
 
                     state._fsp--;
@@ -2802,15 +2616,15 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
                     }
                     break;
                 case 7 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:847:6: ( ruleBuiltInValueLiteral )
+                    // InternalRecordLang.g:800:6: ( ruleBuiltInValueLiteral )
                     {
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:847:6: ( ruleBuiltInValueLiteral )
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:848:1: ruleBuiltInValueLiteral
+                    // InternalRecordLang.g:800:6: ( ruleBuiltInValueLiteral )
+                    // InternalRecordLang.g:801:1: ruleBuiltInValueLiteral
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getLiteralAccess().getBuiltInValueLiteralParserRuleCall_6()); 
                     }
-                    pushFollow(FOLLOW_ruleBuiltInValueLiteral_in_rule__Literal__Alternatives1787);
+                    pushFollow(FOLLOW_2);
                     ruleBuiltInValueLiteral();
 
                     state._fsp--;
@@ -2842,43 +2656,43 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__PropertyModifier__Alternatives"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:858:1: rule__PropertyModifier__Alternatives : ( ( ( 'transient' ) ) | ( ( 'auto-increment' ) ) );
+    // InternalRecordLang.g:811:1: rule__PropertyModifier__Alternatives : ( ( ( 'transient' ) ) | ( ( 'auto-increment' ) ) );
     public final void rule__PropertyModifier__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:862:1: ( ( ( 'transient' ) ) | ( ( 'auto-increment' ) ) )
-            int alt7=2;
-            int LA7_0 = input.LA(1);
+            // InternalRecordLang.g:815:1: ( ( ( 'transient' ) ) | ( ( 'auto-increment' ) ) )
+            int alt6=2;
+            int LA6_0 = input.LA(1);
 
-            if ( (LA7_0==14) ) {
-                alt7=1;
+            if ( (LA6_0==14) ) {
+                alt6=1;
             }
-            else if ( (LA7_0==15) ) {
-                alt7=2;
+            else if ( (LA6_0==15) ) {
+                alt6=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return ;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 7, 0, input);
+                    new NoViableAltException("", 6, 0, input);
 
                 throw nvae;
             }
-            switch (alt7) {
+            switch (alt6) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:863:1: ( ( 'transient' ) )
+                    // InternalRecordLang.g:816:1: ( ( 'transient' ) )
                     {
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:863:1: ( ( 'transient' ) )
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:864:1: ( 'transient' )
+                    // InternalRecordLang.g:816:1: ( ( 'transient' ) )
+                    // InternalRecordLang.g:817:1: ( 'transient' )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getPropertyModifierAccess().getTRANSIENTEnumLiteralDeclaration_0()); 
                     }
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:865:1: ( 'transient' )
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:865:3: 'transient'
+                    // InternalRecordLang.g:818:1: ( 'transient' )
+                    // InternalRecordLang.g:818:3: 'transient'
                     {
-                    match(input,14,FOLLOW_14_in_rule__PropertyModifier__Alternatives1820); if (state.failed) return ;
+                    match(input,14,FOLLOW_2); if (state.failed) return ;
 
                     }
 
@@ -2892,18 +2706,18 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
                     }
                     break;
                 case 2 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:870:6: ( ( 'auto-increment' ) )
+                    // InternalRecordLang.g:823:6: ( ( 'auto-increment' ) )
                     {
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:870:6: ( ( 'auto-increment' ) )
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:871:1: ( 'auto-increment' )
+                    // InternalRecordLang.g:823:6: ( ( 'auto-increment' ) )
+                    // InternalRecordLang.g:824:1: ( 'auto-increment' )
                     {
                     if ( state.backtracking==0 ) {
                        before(grammarAccess.getPropertyModifierAccess().getINCREMENTEnumLiteralDeclaration_1()); 
                     }
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:872:1: ( 'auto-increment' )
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:872:3: 'auto-increment'
+                    // InternalRecordLang.g:825:1: ( 'auto-increment' )
+                    // InternalRecordLang.g:825:3: 'auto-increment'
                     {
-                    match(input,15,FOLLOW_15_in_rule__PropertyModifier__Alternatives1841); if (state.failed) return ;
+                    match(input,15,FOLLOW_2); if (state.failed) return ;
 
                     }
 
@@ -2934,21 +2748,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Model__Group__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:884:1: rule__Model__Group__0 : rule__Model__Group__0__Impl rule__Model__Group__1 ;
+    // InternalRecordLang.g:837:1: rule__Model__Group__0 : rule__Model__Group__0__Impl rule__Model__Group__1 ;
     public final void rule__Model__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:888:1: ( rule__Model__Group__0__Impl rule__Model__Group__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:889:2: rule__Model__Group__0__Impl rule__Model__Group__1
+            // InternalRecordLang.g:841:1: ( rule__Model__Group__0__Impl rule__Model__Group__1 )
+            // InternalRecordLang.g:842:2: rule__Model__Group__0__Impl rule__Model__Group__1
             {
-            pushFollow(FOLLOW_rule__Model__Group__0__Impl_in_rule__Model__Group__01874);
+            pushFollow(FOLLOW_3);
             rule__Model__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Model__Group__1_in_rule__Model__Group__01877);
+            pushFollow(FOLLOW_2);
             rule__Model__Group__1();
 
             state._fsp--;
@@ -2972,22 +2786,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Model__Group__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:896:1: rule__Model__Group__0__Impl : ( 'package' ) ;
+    // InternalRecordLang.g:849:1: rule__Model__Group__0__Impl : ( 'package' ) ;
     public final void rule__Model__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:900:1: ( ( 'package' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:901:1: ( 'package' )
+            // InternalRecordLang.g:853:1: ( ( 'package' ) )
+            // InternalRecordLang.g:854:1: ( 'package' )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:901:1: ( 'package' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:902:1: 'package'
+            // InternalRecordLang.g:854:1: ( 'package' )
+            // InternalRecordLang.g:855:1: 'package'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getModelAccess().getPackageKeyword_0()); 
             }
-            match(input,16,FOLLOW_16_in_rule__Model__Group__0__Impl1905); if (state.failed) return ;
+            match(input,16,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getModelAccess().getPackageKeyword_0()); 
             }
@@ -3013,21 +2827,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Model__Group__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:915:1: rule__Model__Group__1 : rule__Model__Group__1__Impl rule__Model__Group__2 ;
+    // InternalRecordLang.g:868:1: rule__Model__Group__1 : rule__Model__Group__1__Impl rule__Model__Group__2 ;
     public final void rule__Model__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:919:1: ( rule__Model__Group__1__Impl rule__Model__Group__2 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:920:2: rule__Model__Group__1__Impl rule__Model__Group__2
+            // InternalRecordLang.g:872:1: ( rule__Model__Group__1__Impl rule__Model__Group__2 )
+            // InternalRecordLang.g:873:2: rule__Model__Group__1__Impl rule__Model__Group__2
             {
-            pushFollow(FOLLOW_rule__Model__Group__1__Impl_in_rule__Model__Group__11936);
+            pushFollow(FOLLOW_4);
             rule__Model__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Model__Group__2_in_rule__Model__Group__11939);
+            pushFollow(FOLLOW_2);
             rule__Model__Group__2();
 
             state._fsp--;
@@ -3051,25 +2865,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Model__Group__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:927:1: rule__Model__Group__1__Impl : ( ( rule__Model__NameAssignment_1 ) ) ;
+    // InternalRecordLang.g:880:1: rule__Model__Group__1__Impl : ( ( rule__Model__NameAssignment_1 ) ) ;
     public final void rule__Model__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:931:1: ( ( ( rule__Model__NameAssignment_1 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:932:1: ( ( rule__Model__NameAssignment_1 ) )
+            // InternalRecordLang.g:884:1: ( ( ( rule__Model__NameAssignment_1 ) ) )
+            // InternalRecordLang.g:885:1: ( ( rule__Model__NameAssignment_1 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:932:1: ( ( rule__Model__NameAssignment_1 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:933:1: ( rule__Model__NameAssignment_1 )
+            // InternalRecordLang.g:885:1: ( ( rule__Model__NameAssignment_1 ) )
+            // InternalRecordLang.g:886:1: ( rule__Model__NameAssignment_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getModelAccess().getNameAssignment_1()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:934:1: ( rule__Model__NameAssignment_1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:934:2: rule__Model__NameAssignment_1
+            // InternalRecordLang.g:887:1: ( rule__Model__NameAssignment_1 )
+            // InternalRecordLang.g:887:2: rule__Model__NameAssignment_1
             {
-            pushFollow(FOLLOW_rule__Model__NameAssignment_1_in_rule__Model__Group__1__Impl1966);
+            pushFollow(FOLLOW_2);
             rule__Model__NameAssignment_1();
 
             state._fsp--;
@@ -3102,21 +2916,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Model__Group__2"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:944:1: rule__Model__Group__2 : rule__Model__Group__2__Impl rule__Model__Group__3 ;
+    // InternalRecordLang.g:897:1: rule__Model__Group__2 : rule__Model__Group__2__Impl rule__Model__Group__3 ;
     public final void rule__Model__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:948:1: ( rule__Model__Group__2__Impl rule__Model__Group__3 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:949:2: rule__Model__Group__2__Impl rule__Model__Group__3
+            // InternalRecordLang.g:901:1: ( rule__Model__Group__2__Impl rule__Model__Group__3 )
+            // InternalRecordLang.g:902:2: rule__Model__Group__2__Impl rule__Model__Group__3
             {
-            pushFollow(FOLLOW_rule__Model__Group__2__Impl_in_rule__Model__Group__21996);
+            pushFollow(FOLLOW_4);
             rule__Model__Group__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Model__Group__3_in_rule__Model__Group__21999);
+            pushFollow(FOLLOW_2);
             rule__Model__Group__3();
 
             state._fsp--;
@@ -3140,38 +2954,38 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Model__Group__2__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:956:1: rule__Model__Group__2__Impl : ( ( rule__Model__PackagesAssignment_2 )* ) ;
+    // InternalRecordLang.g:909:1: rule__Model__Group__2__Impl : ( ( rule__Model__ImportsAssignment_2 )* ) ;
     public final void rule__Model__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:960:1: ( ( ( rule__Model__PackagesAssignment_2 )* ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:961:1: ( ( rule__Model__PackagesAssignment_2 )* )
+            // InternalRecordLang.g:913:1: ( ( ( rule__Model__ImportsAssignment_2 )* ) )
+            // InternalRecordLang.g:914:1: ( ( rule__Model__ImportsAssignment_2 )* )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:961:1: ( ( rule__Model__PackagesAssignment_2 )* )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:962:1: ( rule__Model__PackagesAssignment_2 )*
+            // InternalRecordLang.g:914:1: ( ( rule__Model__ImportsAssignment_2 )* )
+            // InternalRecordLang.g:915:1: ( rule__Model__ImportsAssignment_2 )*
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getModelAccess().getPackagesAssignment_2()); 
+               before(grammarAccess.getModelAccess().getImportsAssignment_2()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:963:1: ( rule__Model__PackagesAssignment_2 )*
-            loop8:
+            // InternalRecordLang.g:916:1: ( rule__Model__ImportsAssignment_2 )*
+            loop7:
             do {
-                int alt8=2;
-                int LA8_0 = input.LA(1);
+                int alt7=2;
+                int LA7_0 = input.LA(1);
 
-                if ( (LA8_0==18) ) {
-                    alt8=1;
+                if ( (LA7_0==17) ) {
+                    alt7=1;
                 }
 
 
-                switch (alt8) {
+                switch (alt7) {
             	case 1 :
-            	    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:963:2: rule__Model__PackagesAssignment_2
+            	    // InternalRecordLang.g:916:2: rule__Model__ImportsAssignment_2
             	    {
-            	    pushFollow(FOLLOW_rule__Model__PackagesAssignment_2_in_rule__Model__Group__2__Impl2026);
-            	    rule__Model__PackagesAssignment_2();
+            	    pushFollow(FOLLOW_5);
+            	    rule__Model__ImportsAssignment_2();
 
             	    state._fsp--;
             	    if (state.failed) return ;
@@ -3180,12 +2994,12 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             	    break;
 
             	default :
-            	    break loop8;
+            	    break loop7;
                 }
             } while (true);
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getModelAccess().getPackagesAssignment_2()); 
+               after(grammarAccess.getModelAccess().getImportsAssignment_2()); 
             }
 
             }
@@ -3209,22 +3023,17 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Model__Group__3"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:973:1: rule__Model__Group__3 : rule__Model__Group__3__Impl rule__Model__Group__4 ;
+    // InternalRecordLang.g:926:1: rule__Model__Group__3 : rule__Model__Group__3__Impl ;
     public final void rule__Model__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:977:1: ( rule__Model__Group__3__Impl rule__Model__Group__4 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:978:2: rule__Model__Group__3__Impl rule__Model__Group__4
+            // InternalRecordLang.g:930:1: ( rule__Model__Group__3__Impl )
+            // InternalRecordLang.g:931:2: rule__Model__Group__3__Impl
             {
-            pushFollow(FOLLOW_rule__Model__Group__3__Impl_in_rule__Model__Group__32057);
+            pushFollow(FOLLOW_2);
             rule__Model__Group__3__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Model__Group__4_in_rule__Model__Group__32060);
-            rule__Model__Group__4();
 
             state._fsp--;
             if (state.failed) return ;
@@ -3247,38 +3056,38 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Model__Group__3__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:985:1: rule__Model__Group__3__Impl : ( ( rule__Model__ImportsAssignment_3 )* ) ;
+    // InternalRecordLang.g:937:1: rule__Model__Group__3__Impl : ( ( rule__Model__TypesAssignment_3 )* ) ;
     public final void rule__Model__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:989:1: ( ( ( rule__Model__ImportsAssignment_3 )* ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:990:1: ( ( rule__Model__ImportsAssignment_3 )* )
+            // InternalRecordLang.g:941:1: ( ( ( rule__Model__TypesAssignment_3 )* ) )
+            // InternalRecordLang.g:942:1: ( ( rule__Model__TypesAssignment_3 )* )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:990:1: ( ( rule__Model__ImportsAssignment_3 )* )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:991:1: ( rule__Model__ImportsAssignment_3 )*
+            // InternalRecordLang.g:942:1: ( ( rule__Model__TypesAssignment_3 )* )
+            // InternalRecordLang.g:943:1: ( rule__Model__TypesAssignment_3 )*
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getModelAccess().getImportsAssignment_3()); 
+               before(grammarAccess.getModelAccess().getTypesAssignment_3()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:992:1: ( rule__Model__ImportsAssignment_3 )*
-            loop9:
+            // InternalRecordLang.g:944:1: ( rule__Model__TypesAssignment_3 )*
+            loop8:
             do {
-                int alt9=2;
-                int LA9_0 = input.LA(1);
+                int alt8=2;
+                int LA8_0 = input.LA(1);
 
-                if ( (LA9_0==17) ) {
-                    alt9=1;
+                if ( ((LA8_0>=18 && LA8_0<=20)||LA8_0==25||LA8_0==37) ) {
+                    alt8=1;
                 }
 
 
-                switch (alt9) {
+                switch (alt8) {
             	case 1 :
-            	    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:992:2: rule__Model__ImportsAssignment_3
+            	    // InternalRecordLang.g:944:2: rule__Model__TypesAssignment_3
             	    {
-            	    pushFollow(FOLLOW_rule__Model__ImportsAssignment_3_in_rule__Model__Group__3__Impl2087);
-            	    rule__Model__ImportsAssignment_3();
+            	    pushFollow(FOLLOW_6);
+            	    rule__Model__TypesAssignment_3();
 
             	    state._fsp--;
             	    if (state.failed) return ;
@@ -3287,12 +3096,12 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             	    break;
 
             	default :
-            	    break loop9;
+            	    break loop8;
                 }
             } while (true);
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getModelAccess().getImportsAssignment_3()); 
+               after(grammarAccess.getModelAccess().getTypesAssignment_3()); 
             }
 
             }
@@ -3315,124 +3124,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
     // $ANTLR end "rule__Model__Group__3__Impl"
 
 
-    // $ANTLR start "rule__Model__Group__4"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1002:1: rule__Model__Group__4 : rule__Model__Group__4__Impl ;
-    public final void rule__Model__Group__4() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1006:1: ( rule__Model__Group__4__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1007:2: rule__Model__Group__4__Impl
-            {
-            pushFollow(FOLLOW_rule__Model__Group__4__Impl_in_rule__Model__Group__42118);
-            rule__Model__Group__4__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Model__Group__4"
-
-
-    // $ANTLR start "rule__Model__Group__4__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1013:1: rule__Model__Group__4__Impl : ( ( rule__Model__TypesAssignment_4 )* ) ;
-    public final void rule__Model__Group__4__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1017:1: ( ( ( rule__Model__TypesAssignment_4 )* ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1018:1: ( ( rule__Model__TypesAssignment_4 )* )
-            {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1018:1: ( ( rule__Model__TypesAssignment_4 )* )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1019:1: ( rule__Model__TypesAssignment_4 )*
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getModelAccess().getTypesAssignment_4()); 
-            }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1020:1: ( rule__Model__TypesAssignment_4 )*
-            loop10:
-            do {
-                int alt10=2;
-                int LA10_0 = input.LA(1);
-
-                if ( ((LA10_0>=19 && LA10_0<=21)||LA10_0==26||LA10_0==38) ) {
-                    alt10=1;
-                }
-
-
-                switch (alt10) {
-            	case 1 :
-            	    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1020:2: rule__Model__TypesAssignment_4
-            	    {
-            	    pushFollow(FOLLOW_rule__Model__TypesAssignment_4_in_rule__Model__Group__4__Impl2145);
-            	    rule__Model__TypesAssignment_4();
-
-            	    state._fsp--;
-            	    if (state.failed) return ;
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop10;
-                }
-            } while (true);
-
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getModelAccess().getTypesAssignment_4()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Model__Group__4__Impl"
-
-
     // $ANTLR start "rule__Import__Group__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1040:1: rule__Import__Group__0 : rule__Import__Group__0__Impl rule__Import__Group__1 ;
+    // InternalRecordLang.g:962:1: rule__Import__Group__0 : rule__Import__Group__0__Impl rule__Import__Group__1 ;
     public final void rule__Import__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1044:1: ( rule__Import__Group__0__Impl rule__Import__Group__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1045:2: rule__Import__Group__0__Impl rule__Import__Group__1
+            // InternalRecordLang.g:966:1: ( rule__Import__Group__0__Impl rule__Import__Group__1 )
+            // InternalRecordLang.g:967:2: rule__Import__Group__0__Impl rule__Import__Group__1
             {
-            pushFollow(FOLLOW_rule__Import__Group__0__Impl_in_rule__Import__Group__02186);
+            pushFollow(FOLLOW_3);
             rule__Import__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Import__Group__1_in_rule__Import__Group__02189);
+            pushFollow(FOLLOW_2);
             rule__Import__Group__1();
 
             state._fsp--;
@@ -3456,22 +3163,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Import__Group__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1052:1: rule__Import__Group__0__Impl : ( 'import' ) ;
+    // InternalRecordLang.g:974:1: rule__Import__Group__0__Impl : ( 'import' ) ;
     public final void rule__Import__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1056:1: ( ( 'import' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1057:1: ( 'import' )
+            // InternalRecordLang.g:978:1: ( ( 'import' ) )
+            // InternalRecordLang.g:979:1: ( 'import' )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1057:1: ( 'import' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1058:1: 'import'
+            // InternalRecordLang.g:979:1: ( 'import' )
+            // InternalRecordLang.g:980:1: 'import'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getImportAccess().getImportKeyword_0()); 
             }
-            match(input,17,FOLLOW_17_in_rule__Import__Group__0__Impl2217); if (state.failed) return ;
+            match(input,17,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getImportAccess().getImportKeyword_0()); 
             }
@@ -3497,16 +3204,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Import__Group__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1071:1: rule__Import__Group__1 : rule__Import__Group__1__Impl ;
+    // InternalRecordLang.g:993:1: rule__Import__Group__1 : rule__Import__Group__1__Impl ;
     public final void rule__Import__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1075:1: ( rule__Import__Group__1__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1076:2: rule__Import__Group__1__Impl
+            // InternalRecordLang.g:997:1: ( rule__Import__Group__1__Impl )
+            // InternalRecordLang.g:998:2: rule__Import__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__Import__Group__1__Impl_in_rule__Import__Group__12248);
+            pushFollow(FOLLOW_2);
             rule__Import__Group__1__Impl();
 
             state._fsp--;
@@ -3530,25 +3237,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Import__Group__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1082:1: rule__Import__Group__1__Impl : ( ( rule__Import__ImportedNamespaceAssignment_1 ) ) ;
+    // InternalRecordLang.g:1004:1: rule__Import__Group__1__Impl : ( ( rule__Import__ImportedNamespaceAssignment_1 ) ) ;
     public final void rule__Import__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1086:1: ( ( ( rule__Import__ImportedNamespaceAssignment_1 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1087:1: ( ( rule__Import__ImportedNamespaceAssignment_1 ) )
+            // InternalRecordLang.g:1008:1: ( ( ( rule__Import__ImportedNamespaceAssignment_1 ) ) )
+            // InternalRecordLang.g:1009:1: ( ( rule__Import__ImportedNamespaceAssignment_1 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1087:1: ( ( rule__Import__ImportedNamespaceAssignment_1 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1088:1: ( rule__Import__ImportedNamespaceAssignment_1 )
+            // InternalRecordLang.g:1009:1: ( ( rule__Import__ImportedNamespaceAssignment_1 ) )
+            // InternalRecordLang.g:1010:1: ( rule__Import__ImportedNamespaceAssignment_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getImportAccess().getImportedNamespaceAssignment_1()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1089:1: ( rule__Import__ImportedNamespaceAssignment_1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1089:2: rule__Import__ImportedNamespaceAssignment_1
+            // InternalRecordLang.g:1011:1: ( rule__Import__ImportedNamespaceAssignment_1 )
+            // InternalRecordLang.g:1011:2: rule__Import__ImportedNamespaceAssignment_1
             {
-            pushFollow(FOLLOW_rule__Import__ImportedNamespaceAssignment_1_in_rule__Import__Group__1__Impl2275);
+            pushFollow(FOLLOW_2);
             rule__Import__ImportedNamespaceAssignment_1();
 
             state._fsp--;
@@ -3580,274 +3287,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
     // $ANTLR end "rule__Import__Group__1__Impl"
 
 
-    // $ANTLR start "rule__Package__Group__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1103:1: rule__Package__Group__0 : rule__Package__Group__0__Impl rule__Package__Group__1 ;
-    public final void rule__Package__Group__0() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1107:1: ( rule__Package__Group__0__Impl rule__Package__Group__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1108:2: rule__Package__Group__0__Impl rule__Package__Group__1
-            {
-            pushFollow(FOLLOW_rule__Package__Group__0__Impl_in_rule__Package__Group__02309);
-            rule__Package__Group__0__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Package__Group__1_in_rule__Package__Group__02312);
-            rule__Package__Group__1();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Package__Group__0"
-
-
-    // $ANTLR start "rule__Package__Group__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1115:1: rule__Package__Group__0__Impl : ( 'use' ) ;
-    public final void rule__Package__Group__0__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1119:1: ( ( 'use' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1120:1: ( 'use' )
-            {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1120:1: ( 'use' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1121:1: 'use'
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getPackageAccess().getUseKeyword_0()); 
-            }
-            match(input,18,FOLLOW_18_in_rule__Package__Group__0__Impl2340); if (state.failed) return ;
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getPackageAccess().getUseKeyword_0()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Package__Group__0__Impl"
-
-
-    // $ANTLR start "rule__Package__Group__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1134:1: rule__Package__Group__1 : rule__Package__Group__1__Impl rule__Package__Group__2 ;
-    public final void rule__Package__Group__1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1138:1: ( rule__Package__Group__1__Impl rule__Package__Group__2 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1139:2: rule__Package__Group__1__Impl rule__Package__Group__2
-            {
-            pushFollow(FOLLOW_rule__Package__Group__1__Impl_in_rule__Package__Group__12371);
-            rule__Package__Group__1__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Package__Group__2_in_rule__Package__Group__12374);
-            rule__Package__Group__2();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Package__Group__1"
-
-
-    // $ANTLR start "rule__Package__Group__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1146:1: rule__Package__Group__1__Impl : ( ( rule__Package__NameAssignment_1 ) ) ;
-    public final void rule__Package__Group__1__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1150:1: ( ( ( rule__Package__NameAssignment_1 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1151:1: ( ( rule__Package__NameAssignment_1 ) )
-            {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1151:1: ( ( rule__Package__NameAssignment_1 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1152:1: ( rule__Package__NameAssignment_1 )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getPackageAccess().getNameAssignment_1()); 
-            }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1153:1: ( rule__Package__NameAssignment_1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1153:2: rule__Package__NameAssignment_1
-            {
-            pushFollow(FOLLOW_rule__Package__NameAssignment_1_in_rule__Package__Group__1__Impl2401);
-            rule__Package__NameAssignment_1();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getPackageAccess().getNameAssignment_1()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Package__Group__1__Impl"
-
-
-    // $ANTLR start "rule__Package__Group__2"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1163:1: rule__Package__Group__2 : rule__Package__Group__2__Impl ;
-    public final void rule__Package__Group__2() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1167:1: ( rule__Package__Group__2__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1168:2: rule__Package__Group__2__Impl
-            {
-            pushFollow(FOLLOW_rule__Package__Group__2__Impl_in_rule__Package__Group__22431);
-            rule__Package__Group__2__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Package__Group__2"
-
-
-    // $ANTLR start "rule__Package__Group__2__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1174:1: rule__Package__Group__2__Impl : ( ( rule__Package__PackageAssignment_2 ) ) ;
-    public final void rule__Package__Group__2__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1178:1: ( ( ( rule__Package__PackageAssignment_2 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1179:1: ( ( rule__Package__PackageAssignment_2 ) )
-            {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1179:1: ( ( rule__Package__PackageAssignment_2 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1180:1: ( rule__Package__PackageAssignment_2 )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getPackageAccess().getPackageAssignment_2()); 
-            }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1181:1: ( rule__Package__PackageAssignment_2 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1181:2: rule__Package__PackageAssignment_2
-            {
-            pushFollow(FOLLOW_rule__Package__PackageAssignment_2_in_rule__Package__Group__2__Impl2458);
-            rule__Package__PackageAssignment_2();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getPackageAccess().getPackageAssignment_2()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Package__Group__2__Impl"
-
-
     // $ANTLR start "rule__TemplateType__Group__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1197:1: rule__TemplateType__Group__0 : rule__TemplateType__Group__0__Impl rule__TemplateType__Group__1 ;
+    // InternalRecordLang.g:1025:1: rule__TemplateType__Group__0 : rule__TemplateType__Group__0__Impl rule__TemplateType__Group__1 ;
     public final void rule__TemplateType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1201:1: ( rule__TemplateType__Group__0__Impl rule__TemplateType__Group__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1202:2: rule__TemplateType__Group__0__Impl rule__TemplateType__Group__1
+            // InternalRecordLang.g:1029:1: ( rule__TemplateType__Group__0__Impl rule__TemplateType__Group__1 )
+            // InternalRecordLang.g:1030:2: rule__TemplateType__Group__0__Impl rule__TemplateType__Group__1
             {
-            pushFollow(FOLLOW_rule__TemplateType__Group__0__Impl_in_rule__TemplateType__Group__02494);
+            pushFollow(FOLLOW_7);
             rule__TemplateType__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__TemplateType__Group__1_in_rule__TemplateType__Group__02497);
+            pushFollow(FOLLOW_2);
             rule__TemplateType__Group__1();
 
             state._fsp--;
@@ -3871,33 +3326,33 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__Group__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1209:1: rule__TemplateType__Group__0__Impl : ( ( rule__TemplateType__Group_0__0 )? ) ;
+    // InternalRecordLang.g:1037:1: rule__TemplateType__Group__0__Impl : ( ( rule__TemplateType__Group_0__0 )? ) ;
     public final void rule__TemplateType__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1213:1: ( ( ( rule__TemplateType__Group_0__0 )? ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1214:1: ( ( rule__TemplateType__Group_0__0 )? )
+            // InternalRecordLang.g:1041:1: ( ( ( rule__TemplateType__Group_0__0 )? ) )
+            // InternalRecordLang.g:1042:1: ( ( rule__TemplateType__Group_0__0 )? )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1214:1: ( ( rule__TemplateType__Group_0__0 )? )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1215:1: ( rule__TemplateType__Group_0__0 )?
+            // InternalRecordLang.g:1042:1: ( ( rule__TemplateType__Group_0__0 )? )
+            // InternalRecordLang.g:1043:1: ( rule__TemplateType__Group_0__0 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTemplateTypeAccess().getGroup_0()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1216:1: ( rule__TemplateType__Group_0__0 )?
-            int alt11=2;
-            int LA11_0 = input.LA(1);
+            // InternalRecordLang.g:1044:1: ( rule__TemplateType__Group_0__0 )?
+            int alt9=2;
+            int LA9_0 = input.LA(1);
 
-            if ( (LA11_0==20) ) {
-                alt11=1;
+            if ( (LA9_0==19) ) {
+                alt9=1;
             }
-            switch (alt11) {
+            switch (alt9) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1216:2: rule__TemplateType__Group_0__0
+                    // InternalRecordLang.g:1044:2: rule__TemplateType__Group_0__0
                     {
-                    pushFollow(FOLLOW_rule__TemplateType__Group_0__0_in_rule__TemplateType__Group__0__Impl2524);
+                    pushFollow(FOLLOW_2);
                     rule__TemplateType__Group_0__0();
 
                     state._fsp--;
@@ -3933,21 +3388,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__Group__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1226:1: rule__TemplateType__Group__1 : rule__TemplateType__Group__1__Impl rule__TemplateType__Group__2 ;
+    // InternalRecordLang.g:1054:1: rule__TemplateType__Group__1 : rule__TemplateType__Group__1__Impl rule__TemplateType__Group__2 ;
     public final void rule__TemplateType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1230:1: ( rule__TemplateType__Group__1__Impl rule__TemplateType__Group__2 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1231:2: rule__TemplateType__Group__1__Impl rule__TemplateType__Group__2
+            // InternalRecordLang.g:1058:1: ( rule__TemplateType__Group__1__Impl rule__TemplateType__Group__2 )
+            // InternalRecordLang.g:1059:2: rule__TemplateType__Group__1__Impl rule__TemplateType__Group__2
             {
-            pushFollow(FOLLOW_rule__TemplateType__Group__1__Impl_in_rule__TemplateType__Group__12555);
+            pushFollow(FOLLOW_7);
             rule__TemplateType__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__TemplateType__Group__2_in_rule__TemplateType__Group__12558);
+            pushFollow(FOLLOW_2);
             rule__TemplateType__Group__2();
 
             state._fsp--;
@@ -3971,33 +3426,33 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__Group__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1238:1: rule__TemplateType__Group__1__Impl : ( ( rule__TemplateType__Group_1__0 )? ) ;
+    // InternalRecordLang.g:1066:1: rule__TemplateType__Group__1__Impl : ( ( rule__TemplateType__Group_1__0 )? ) ;
     public final void rule__TemplateType__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1242:1: ( ( ( rule__TemplateType__Group_1__0 )? ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1243:1: ( ( rule__TemplateType__Group_1__0 )? )
+            // InternalRecordLang.g:1070:1: ( ( ( rule__TemplateType__Group_1__0 )? ) )
+            // InternalRecordLang.g:1071:1: ( ( rule__TemplateType__Group_1__0 )? )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1243:1: ( ( rule__TemplateType__Group_1__0 )? )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1244:1: ( rule__TemplateType__Group_1__0 )?
+            // InternalRecordLang.g:1071:1: ( ( rule__TemplateType__Group_1__0 )? )
+            // InternalRecordLang.g:1072:1: ( rule__TemplateType__Group_1__0 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTemplateTypeAccess().getGroup_1()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1245:1: ( rule__TemplateType__Group_1__0 )?
-            int alt12=2;
-            int LA12_0 = input.LA(1);
+            // InternalRecordLang.g:1073:1: ( rule__TemplateType__Group_1__0 )?
+            int alt10=2;
+            int LA10_0 = input.LA(1);
 
-            if ( (LA12_0==21) ) {
-                alt12=1;
+            if ( (LA10_0==20) ) {
+                alt10=1;
             }
-            switch (alt12) {
+            switch (alt10) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1245:2: rule__TemplateType__Group_1__0
+                    // InternalRecordLang.g:1073:2: rule__TemplateType__Group_1__0
                     {
-                    pushFollow(FOLLOW_rule__TemplateType__Group_1__0_in_rule__TemplateType__Group__1__Impl2585);
+                    pushFollow(FOLLOW_2);
                     rule__TemplateType__Group_1__0();
 
                     state._fsp--;
@@ -4033,21 +3488,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__Group__2"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1255:1: rule__TemplateType__Group__2 : rule__TemplateType__Group__2__Impl rule__TemplateType__Group__3 ;
+    // InternalRecordLang.g:1083:1: rule__TemplateType__Group__2 : rule__TemplateType__Group__2__Impl rule__TemplateType__Group__3 ;
     public final void rule__TemplateType__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1259:1: ( rule__TemplateType__Group__2__Impl rule__TemplateType__Group__3 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1260:2: rule__TemplateType__Group__2__Impl rule__TemplateType__Group__3
+            // InternalRecordLang.g:1087:1: ( rule__TemplateType__Group__2__Impl rule__TemplateType__Group__3 )
+            // InternalRecordLang.g:1088:2: rule__TemplateType__Group__2__Impl rule__TemplateType__Group__3
             {
-            pushFollow(FOLLOW_rule__TemplateType__Group__2__Impl_in_rule__TemplateType__Group__22616);
+            pushFollow(FOLLOW_3);
             rule__TemplateType__Group__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__TemplateType__Group__3_in_rule__TemplateType__Group__22619);
+            pushFollow(FOLLOW_2);
             rule__TemplateType__Group__3();
 
             state._fsp--;
@@ -4071,22 +3526,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__Group__2__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1267:1: rule__TemplateType__Group__2__Impl : ( 'template' ) ;
+    // InternalRecordLang.g:1095:1: rule__TemplateType__Group__2__Impl : ( 'template' ) ;
     public final void rule__TemplateType__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1271:1: ( ( 'template' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1272:1: ( 'template' )
+            // InternalRecordLang.g:1099:1: ( ( 'template' ) )
+            // InternalRecordLang.g:1100:1: ( 'template' )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1272:1: ( 'template' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1273:1: 'template'
+            // InternalRecordLang.g:1100:1: ( 'template' )
+            // InternalRecordLang.g:1101:1: 'template'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTemplateTypeAccess().getTemplateKeyword_2()); 
             }
-            match(input,19,FOLLOW_19_in_rule__TemplateType__Group__2__Impl2647); if (state.failed) return ;
+            match(input,18,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getTemplateTypeAccess().getTemplateKeyword_2()); 
             }
@@ -4112,21 +3567,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__Group__3"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1286:1: rule__TemplateType__Group__3 : rule__TemplateType__Group__3__Impl rule__TemplateType__Group__4 ;
+    // InternalRecordLang.g:1114:1: rule__TemplateType__Group__3 : rule__TemplateType__Group__3__Impl rule__TemplateType__Group__4 ;
     public final void rule__TemplateType__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1290:1: ( rule__TemplateType__Group__3__Impl rule__TemplateType__Group__4 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1291:2: rule__TemplateType__Group__3__Impl rule__TemplateType__Group__4
+            // InternalRecordLang.g:1118:1: ( rule__TemplateType__Group__3__Impl rule__TemplateType__Group__4 )
+            // InternalRecordLang.g:1119:2: rule__TemplateType__Group__3__Impl rule__TemplateType__Group__4
             {
-            pushFollow(FOLLOW_rule__TemplateType__Group__3__Impl_in_rule__TemplateType__Group__32678);
+            pushFollow(FOLLOW_8);
             rule__TemplateType__Group__3__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__TemplateType__Group__4_in_rule__TemplateType__Group__32681);
+            pushFollow(FOLLOW_2);
             rule__TemplateType__Group__4();
 
             state._fsp--;
@@ -4150,25 +3605,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__Group__3__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1298:1: rule__TemplateType__Group__3__Impl : ( ( rule__TemplateType__NameAssignment_3 ) ) ;
+    // InternalRecordLang.g:1126:1: rule__TemplateType__Group__3__Impl : ( ( rule__TemplateType__NameAssignment_3 ) ) ;
     public final void rule__TemplateType__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1302:1: ( ( ( rule__TemplateType__NameAssignment_3 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1303:1: ( ( rule__TemplateType__NameAssignment_3 ) )
+            // InternalRecordLang.g:1130:1: ( ( ( rule__TemplateType__NameAssignment_3 ) ) )
+            // InternalRecordLang.g:1131:1: ( ( rule__TemplateType__NameAssignment_3 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1303:1: ( ( rule__TemplateType__NameAssignment_3 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1304:1: ( rule__TemplateType__NameAssignment_3 )
+            // InternalRecordLang.g:1131:1: ( ( rule__TemplateType__NameAssignment_3 ) )
+            // InternalRecordLang.g:1132:1: ( rule__TemplateType__NameAssignment_3 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTemplateTypeAccess().getNameAssignment_3()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1305:1: ( rule__TemplateType__NameAssignment_3 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1305:2: rule__TemplateType__NameAssignment_3
+            // InternalRecordLang.g:1133:1: ( rule__TemplateType__NameAssignment_3 )
+            // InternalRecordLang.g:1133:2: rule__TemplateType__NameAssignment_3
             {
-            pushFollow(FOLLOW_rule__TemplateType__NameAssignment_3_in_rule__TemplateType__Group__3__Impl2708);
+            pushFollow(FOLLOW_2);
             rule__TemplateType__NameAssignment_3();
 
             state._fsp--;
@@ -4201,21 +3656,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__Group__4"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1315:1: rule__TemplateType__Group__4 : rule__TemplateType__Group__4__Impl rule__TemplateType__Group__5 ;
+    // InternalRecordLang.g:1143:1: rule__TemplateType__Group__4 : rule__TemplateType__Group__4__Impl rule__TemplateType__Group__5 ;
     public final void rule__TemplateType__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1319:1: ( rule__TemplateType__Group__4__Impl rule__TemplateType__Group__5 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1320:2: rule__TemplateType__Group__4__Impl rule__TemplateType__Group__5
+            // InternalRecordLang.g:1147:1: ( rule__TemplateType__Group__4__Impl rule__TemplateType__Group__5 )
+            // InternalRecordLang.g:1148:2: rule__TemplateType__Group__4__Impl rule__TemplateType__Group__5
             {
-            pushFollow(FOLLOW_rule__TemplateType__Group__4__Impl_in_rule__TemplateType__Group__42738);
+            pushFollow(FOLLOW_8);
             rule__TemplateType__Group__4__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__TemplateType__Group__5_in_rule__TemplateType__Group__42741);
+            pushFollow(FOLLOW_2);
             rule__TemplateType__Group__5();
 
             state._fsp--;
@@ -4239,33 +3694,33 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__Group__4__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1327:1: rule__TemplateType__Group__4__Impl : ( ( rule__TemplateType__Group_4__0 )? ) ;
+    // InternalRecordLang.g:1155:1: rule__TemplateType__Group__4__Impl : ( ( rule__TemplateType__Group_4__0 )? ) ;
     public final void rule__TemplateType__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1331:1: ( ( ( rule__TemplateType__Group_4__0 )? ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1332:1: ( ( rule__TemplateType__Group_4__0 )? )
+            // InternalRecordLang.g:1159:1: ( ( ( rule__TemplateType__Group_4__0 )? ) )
+            // InternalRecordLang.g:1160:1: ( ( rule__TemplateType__Group_4__0 )? )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1332:1: ( ( rule__TemplateType__Group_4__0 )? )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1333:1: ( rule__TemplateType__Group_4__0 )?
+            // InternalRecordLang.g:1160:1: ( ( rule__TemplateType__Group_4__0 )? )
+            // InternalRecordLang.g:1161:1: ( rule__TemplateType__Group_4__0 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTemplateTypeAccess().getGroup_4()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1334:1: ( rule__TemplateType__Group_4__0 )?
-            int alt13=2;
-            int LA13_0 = input.LA(1);
+            // InternalRecordLang.g:1162:1: ( rule__TemplateType__Group_4__0 )?
+            int alt11=2;
+            int LA11_0 = input.LA(1);
 
-            if ( (LA13_0==22) ) {
-                alt13=1;
+            if ( (LA11_0==21) ) {
+                alt11=1;
             }
-            switch (alt13) {
+            switch (alt11) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1334:2: rule__TemplateType__Group_4__0
+                    // InternalRecordLang.g:1162:2: rule__TemplateType__Group_4__0
                     {
-                    pushFollow(FOLLOW_rule__TemplateType__Group_4__0_in_rule__TemplateType__Group__4__Impl2768);
+                    pushFollow(FOLLOW_2);
                     rule__TemplateType__Group_4__0();
 
                     state._fsp--;
@@ -4301,16 +3756,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__Group__5"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1344:1: rule__TemplateType__Group__5 : rule__TemplateType__Group__5__Impl ;
+    // InternalRecordLang.g:1172:1: rule__TemplateType__Group__5 : rule__TemplateType__Group__5__Impl ;
     public final void rule__TemplateType__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1348:1: ( rule__TemplateType__Group__5__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1349:2: rule__TemplateType__Group__5__Impl
+            // InternalRecordLang.g:1176:1: ( rule__TemplateType__Group__5__Impl )
+            // InternalRecordLang.g:1177:2: rule__TemplateType__Group__5__Impl
             {
-            pushFollow(FOLLOW_rule__TemplateType__Group__5__Impl_in_rule__TemplateType__Group__52799);
+            pushFollow(FOLLOW_2);
             rule__TemplateType__Group__5__Impl();
 
             state._fsp--;
@@ -4334,33 +3789,33 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__Group__5__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1355:1: rule__TemplateType__Group__5__Impl : ( ( rule__TemplateType__Group_5__0 )? ) ;
+    // InternalRecordLang.g:1183:1: rule__TemplateType__Group__5__Impl : ( ( rule__TemplateType__Group_5__0 )? ) ;
     public final void rule__TemplateType__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1359:1: ( ( ( rule__TemplateType__Group_5__0 )? ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1360:1: ( ( rule__TemplateType__Group_5__0 )? )
+            // InternalRecordLang.g:1187:1: ( ( ( rule__TemplateType__Group_5__0 )? ) )
+            // InternalRecordLang.g:1188:1: ( ( rule__TemplateType__Group_5__0 )? )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1360:1: ( ( rule__TemplateType__Group_5__0 )? )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1361:1: ( rule__TemplateType__Group_5__0 )?
+            // InternalRecordLang.g:1188:1: ( ( rule__TemplateType__Group_5__0 )? )
+            // InternalRecordLang.g:1189:1: ( rule__TemplateType__Group_5__0 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTemplateTypeAccess().getGroup_5()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1362:1: ( rule__TemplateType__Group_5__0 )?
-            int alt14=2;
-            int LA14_0 = input.LA(1);
+            // InternalRecordLang.g:1190:1: ( rule__TemplateType__Group_5__0 )?
+            int alt12=2;
+            int LA12_0 = input.LA(1);
 
-            if ( (LA14_0==24) ) {
-                alt14=1;
+            if ( (LA12_0==23) ) {
+                alt12=1;
             }
-            switch (alt14) {
+            switch (alt12) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1362:2: rule__TemplateType__Group_5__0
+                    // InternalRecordLang.g:1190:2: rule__TemplateType__Group_5__0
                     {
-                    pushFollow(FOLLOW_rule__TemplateType__Group_5__0_in_rule__TemplateType__Group__5__Impl2826);
+                    pushFollow(FOLLOW_2);
                     rule__TemplateType__Group_5__0();
 
                     state._fsp--;
@@ -4396,21 +3851,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__Group_0__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1384:1: rule__TemplateType__Group_0__0 : rule__TemplateType__Group_0__0__Impl rule__TemplateType__Group_0__1 ;
+    // InternalRecordLang.g:1212:1: rule__TemplateType__Group_0__0 : rule__TemplateType__Group_0__0__Impl rule__TemplateType__Group_0__1 ;
     public final void rule__TemplateType__Group_0__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1388:1: ( rule__TemplateType__Group_0__0__Impl rule__TemplateType__Group_0__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1389:2: rule__TemplateType__Group_0__0__Impl rule__TemplateType__Group_0__1
+            // InternalRecordLang.g:1216:1: ( rule__TemplateType__Group_0__0__Impl rule__TemplateType__Group_0__1 )
+            // InternalRecordLang.g:1217:2: rule__TemplateType__Group_0__0__Impl rule__TemplateType__Group_0__1
             {
-            pushFollow(FOLLOW_rule__TemplateType__Group_0__0__Impl_in_rule__TemplateType__Group_0__02869);
+            pushFollow(FOLLOW_9);
             rule__TemplateType__Group_0__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__TemplateType__Group_0__1_in_rule__TemplateType__Group_0__02872);
+            pushFollow(FOLLOW_2);
             rule__TemplateType__Group_0__1();
 
             state._fsp--;
@@ -4434,22 +3889,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__Group_0__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1396:1: rule__TemplateType__Group_0__0__Impl : ( '@author' ) ;
+    // InternalRecordLang.g:1224:1: rule__TemplateType__Group_0__0__Impl : ( '@author' ) ;
     public final void rule__TemplateType__Group_0__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1400:1: ( ( '@author' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1401:1: ( '@author' )
+            // InternalRecordLang.g:1228:1: ( ( '@author' ) )
+            // InternalRecordLang.g:1229:1: ( '@author' )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1401:1: ( '@author' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1402:1: '@author'
+            // InternalRecordLang.g:1229:1: ( '@author' )
+            // InternalRecordLang.g:1230:1: '@author'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTemplateTypeAccess().getAuthorKeyword_0_0()); 
             }
-            match(input,20,FOLLOW_20_in_rule__TemplateType__Group_0__0__Impl2900); if (state.failed) return ;
+            match(input,19,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getTemplateTypeAccess().getAuthorKeyword_0_0()); 
             }
@@ -4475,16 +3930,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__Group_0__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1415:1: rule__TemplateType__Group_0__1 : rule__TemplateType__Group_0__1__Impl ;
+    // InternalRecordLang.g:1243:1: rule__TemplateType__Group_0__1 : rule__TemplateType__Group_0__1__Impl ;
     public final void rule__TemplateType__Group_0__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1419:1: ( rule__TemplateType__Group_0__1__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1420:2: rule__TemplateType__Group_0__1__Impl
+            // InternalRecordLang.g:1247:1: ( rule__TemplateType__Group_0__1__Impl )
+            // InternalRecordLang.g:1248:2: rule__TemplateType__Group_0__1__Impl
             {
-            pushFollow(FOLLOW_rule__TemplateType__Group_0__1__Impl_in_rule__TemplateType__Group_0__12931);
+            pushFollow(FOLLOW_2);
             rule__TemplateType__Group_0__1__Impl();
 
             state._fsp--;
@@ -4508,25 +3963,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__Group_0__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1426:1: rule__TemplateType__Group_0__1__Impl : ( ( rule__TemplateType__AuthorAssignment_0_1 ) ) ;
+    // InternalRecordLang.g:1254:1: rule__TemplateType__Group_0__1__Impl : ( ( rule__TemplateType__AuthorAssignment_0_1 ) ) ;
     public final void rule__TemplateType__Group_0__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1430:1: ( ( ( rule__TemplateType__AuthorAssignment_0_1 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1431:1: ( ( rule__TemplateType__AuthorAssignment_0_1 ) )
+            // InternalRecordLang.g:1258:1: ( ( ( rule__TemplateType__AuthorAssignment_0_1 ) ) )
+            // InternalRecordLang.g:1259:1: ( ( rule__TemplateType__AuthorAssignment_0_1 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1431:1: ( ( rule__TemplateType__AuthorAssignment_0_1 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1432:1: ( rule__TemplateType__AuthorAssignment_0_1 )
+            // InternalRecordLang.g:1259:1: ( ( rule__TemplateType__AuthorAssignment_0_1 ) )
+            // InternalRecordLang.g:1260:1: ( rule__TemplateType__AuthorAssignment_0_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTemplateTypeAccess().getAuthorAssignment_0_1()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1433:1: ( rule__TemplateType__AuthorAssignment_0_1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1433:2: rule__TemplateType__AuthorAssignment_0_1
+            // InternalRecordLang.g:1261:1: ( rule__TemplateType__AuthorAssignment_0_1 )
+            // InternalRecordLang.g:1261:2: rule__TemplateType__AuthorAssignment_0_1
             {
-            pushFollow(FOLLOW_rule__TemplateType__AuthorAssignment_0_1_in_rule__TemplateType__Group_0__1__Impl2958);
+            pushFollow(FOLLOW_2);
             rule__TemplateType__AuthorAssignment_0_1();
 
             state._fsp--;
@@ -4559,21 +4014,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__Group_1__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1447:1: rule__TemplateType__Group_1__0 : rule__TemplateType__Group_1__0__Impl rule__TemplateType__Group_1__1 ;
+    // InternalRecordLang.g:1275:1: rule__TemplateType__Group_1__0 : rule__TemplateType__Group_1__0__Impl rule__TemplateType__Group_1__1 ;
     public final void rule__TemplateType__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1451:1: ( rule__TemplateType__Group_1__0__Impl rule__TemplateType__Group_1__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1452:2: rule__TemplateType__Group_1__0__Impl rule__TemplateType__Group_1__1
+            // InternalRecordLang.g:1279:1: ( rule__TemplateType__Group_1__0__Impl rule__TemplateType__Group_1__1 )
+            // InternalRecordLang.g:1280:2: rule__TemplateType__Group_1__0__Impl rule__TemplateType__Group_1__1
             {
-            pushFollow(FOLLOW_rule__TemplateType__Group_1__0__Impl_in_rule__TemplateType__Group_1__02992);
+            pushFollow(FOLLOW_9);
             rule__TemplateType__Group_1__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__TemplateType__Group_1__1_in_rule__TemplateType__Group_1__02995);
+            pushFollow(FOLLOW_2);
             rule__TemplateType__Group_1__1();
 
             state._fsp--;
@@ -4597,22 +4052,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__Group_1__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1459:1: rule__TemplateType__Group_1__0__Impl : ( '@since' ) ;
+    // InternalRecordLang.g:1287:1: rule__TemplateType__Group_1__0__Impl : ( '@since' ) ;
     public final void rule__TemplateType__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1463:1: ( ( '@since' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1464:1: ( '@since' )
+            // InternalRecordLang.g:1291:1: ( ( '@since' ) )
+            // InternalRecordLang.g:1292:1: ( '@since' )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1464:1: ( '@since' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1465:1: '@since'
+            // InternalRecordLang.g:1292:1: ( '@since' )
+            // InternalRecordLang.g:1293:1: '@since'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTemplateTypeAccess().getSinceKeyword_1_0()); 
             }
-            match(input,21,FOLLOW_21_in_rule__TemplateType__Group_1__0__Impl3023); if (state.failed) return ;
+            match(input,20,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getTemplateTypeAccess().getSinceKeyword_1_0()); 
             }
@@ -4638,16 +4093,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__Group_1__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1478:1: rule__TemplateType__Group_1__1 : rule__TemplateType__Group_1__1__Impl ;
+    // InternalRecordLang.g:1306:1: rule__TemplateType__Group_1__1 : rule__TemplateType__Group_1__1__Impl ;
     public final void rule__TemplateType__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1482:1: ( rule__TemplateType__Group_1__1__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1483:2: rule__TemplateType__Group_1__1__Impl
+            // InternalRecordLang.g:1310:1: ( rule__TemplateType__Group_1__1__Impl )
+            // InternalRecordLang.g:1311:2: rule__TemplateType__Group_1__1__Impl
             {
-            pushFollow(FOLLOW_rule__TemplateType__Group_1__1__Impl_in_rule__TemplateType__Group_1__13054);
+            pushFollow(FOLLOW_2);
             rule__TemplateType__Group_1__1__Impl();
 
             state._fsp--;
@@ -4671,25 +4126,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__Group_1__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1489:1: rule__TemplateType__Group_1__1__Impl : ( ( rule__TemplateType__SinceAssignment_1_1 ) ) ;
+    // InternalRecordLang.g:1317:1: rule__TemplateType__Group_1__1__Impl : ( ( rule__TemplateType__SinceAssignment_1_1 ) ) ;
     public final void rule__TemplateType__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1493:1: ( ( ( rule__TemplateType__SinceAssignment_1_1 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1494:1: ( ( rule__TemplateType__SinceAssignment_1_1 ) )
+            // InternalRecordLang.g:1321:1: ( ( ( rule__TemplateType__SinceAssignment_1_1 ) ) )
+            // InternalRecordLang.g:1322:1: ( ( rule__TemplateType__SinceAssignment_1_1 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1494:1: ( ( rule__TemplateType__SinceAssignment_1_1 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1495:1: ( rule__TemplateType__SinceAssignment_1_1 )
+            // InternalRecordLang.g:1322:1: ( ( rule__TemplateType__SinceAssignment_1_1 ) )
+            // InternalRecordLang.g:1323:1: ( rule__TemplateType__SinceAssignment_1_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTemplateTypeAccess().getSinceAssignment_1_1()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1496:1: ( rule__TemplateType__SinceAssignment_1_1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1496:2: rule__TemplateType__SinceAssignment_1_1
+            // InternalRecordLang.g:1324:1: ( rule__TemplateType__SinceAssignment_1_1 )
+            // InternalRecordLang.g:1324:2: rule__TemplateType__SinceAssignment_1_1
             {
-            pushFollow(FOLLOW_rule__TemplateType__SinceAssignment_1_1_in_rule__TemplateType__Group_1__1__Impl3081);
+            pushFollow(FOLLOW_2);
             rule__TemplateType__SinceAssignment_1_1();
 
             state._fsp--;
@@ -4722,21 +4177,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__Group_4__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1510:1: rule__TemplateType__Group_4__0 : rule__TemplateType__Group_4__0__Impl rule__TemplateType__Group_4__1 ;
+    // InternalRecordLang.g:1338:1: rule__TemplateType__Group_4__0 : rule__TemplateType__Group_4__0__Impl rule__TemplateType__Group_4__1 ;
     public final void rule__TemplateType__Group_4__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1514:1: ( rule__TemplateType__Group_4__0__Impl rule__TemplateType__Group_4__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1515:2: rule__TemplateType__Group_4__0__Impl rule__TemplateType__Group_4__1
+            // InternalRecordLang.g:1342:1: ( rule__TemplateType__Group_4__0__Impl rule__TemplateType__Group_4__1 )
+            // InternalRecordLang.g:1343:2: rule__TemplateType__Group_4__0__Impl rule__TemplateType__Group_4__1
             {
-            pushFollow(FOLLOW_rule__TemplateType__Group_4__0__Impl_in_rule__TemplateType__Group_4__03115);
+            pushFollow(FOLLOW_3);
             rule__TemplateType__Group_4__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__TemplateType__Group_4__1_in_rule__TemplateType__Group_4__03118);
+            pushFollow(FOLLOW_2);
             rule__TemplateType__Group_4__1();
 
             state._fsp--;
@@ -4760,22 +4215,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__Group_4__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1522:1: rule__TemplateType__Group_4__0__Impl : ( ':' ) ;
+    // InternalRecordLang.g:1350:1: rule__TemplateType__Group_4__0__Impl : ( ':' ) ;
     public final void rule__TemplateType__Group_4__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1526:1: ( ( ':' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1527:1: ( ':' )
+            // InternalRecordLang.g:1354:1: ( ( ':' ) )
+            // InternalRecordLang.g:1355:1: ( ':' )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1527:1: ( ':' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1528:1: ':'
+            // InternalRecordLang.g:1355:1: ( ':' )
+            // InternalRecordLang.g:1356:1: ':'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTemplateTypeAccess().getColonKeyword_4_0()); 
             }
-            match(input,22,FOLLOW_22_in_rule__TemplateType__Group_4__0__Impl3146); if (state.failed) return ;
+            match(input,21,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getTemplateTypeAccess().getColonKeyword_4_0()); 
             }
@@ -4801,21 +4256,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__Group_4__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1541:1: rule__TemplateType__Group_4__1 : rule__TemplateType__Group_4__1__Impl rule__TemplateType__Group_4__2 ;
+    // InternalRecordLang.g:1369:1: rule__TemplateType__Group_4__1 : rule__TemplateType__Group_4__1__Impl rule__TemplateType__Group_4__2 ;
     public final void rule__TemplateType__Group_4__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1545:1: ( rule__TemplateType__Group_4__1__Impl rule__TemplateType__Group_4__2 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1546:2: rule__TemplateType__Group_4__1__Impl rule__TemplateType__Group_4__2
+            // InternalRecordLang.g:1373:1: ( rule__TemplateType__Group_4__1__Impl rule__TemplateType__Group_4__2 )
+            // InternalRecordLang.g:1374:2: rule__TemplateType__Group_4__1__Impl rule__TemplateType__Group_4__2
             {
-            pushFollow(FOLLOW_rule__TemplateType__Group_4__1__Impl_in_rule__TemplateType__Group_4__13177);
+            pushFollow(FOLLOW_10);
             rule__TemplateType__Group_4__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__TemplateType__Group_4__2_in_rule__TemplateType__Group_4__13180);
+            pushFollow(FOLLOW_2);
             rule__TemplateType__Group_4__2();
 
             state._fsp--;
@@ -4839,25 +4294,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__Group_4__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1553:1: rule__TemplateType__Group_4__1__Impl : ( ( rule__TemplateType__ParentsAssignment_4_1 ) ) ;
+    // InternalRecordLang.g:1381:1: rule__TemplateType__Group_4__1__Impl : ( ( rule__TemplateType__ParentsAssignment_4_1 ) ) ;
     public final void rule__TemplateType__Group_4__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1557:1: ( ( ( rule__TemplateType__ParentsAssignment_4_1 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1558:1: ( ( rule__TemplateType__ParentsAssignment_4_1 ) )
+            // InternalRecordLang.g:1385:1: ( ( ( rule__TemplateType__ParentsAssignment_4_1 ) ) )
+            // InternalRecordLang.g:1386:1: ( ( rule__TemplateType__ParentsAssignment_4_1 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1558:1: ( ( rule__TemplateType__ParentsAssignment_4_1 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1559:1: ( rule__TemplateType__ParentsAssignment_4_1 )
+            // InternalRecordLang.g:1386:1: ( ( rule__TemplateType__ParentsAssignment_4_1 ) )
+            // InternalRecordLang.g:1387:1: ( rule__TemplateType__ParentsAssignment_4_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTemplateTypeAccess().getParentsAssignment_4_1()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1560:1: ( rule__TemplateType__ParentsAssignment_4_1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1560:2: rule__TemplateType__ParentsAssignment_4_1
+            // InternalRecordLang.g:1388:1: ( rule__TemplateType__ParentsAssignment_4_1 )
+            // InternalRecordLang.g:1388:2: rule__TemplateType__ParentsAssignment_4_1
             {
-            pushFollow(FOLLOW_rule__TemplateType__ParentsAssignment_4_1_in_rule__TemplateType__Group_4__1__Impl3207);
+            pushFollow(FOLLOW_2);
             rule__TemplateType__ParentsAssignment_4_1();
 
             state._fsp--;
@@ -4890,16 +4345,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__Group_4__2"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1570:1: rule__TemplateType__Group_4__2 : rule__TemplateType__Group_4__2__Impl ;
+    // InternalRecordLang.g:1398:1: rule__TemplateType__Group_4__2 : rule__TemplateType__Group_4__2__Impl ;
     public final void rule__TemplateType__Group_4__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1574:1: ( rule__TemplateType__Group_4__2__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1575:2: rule__TemplateType__Group_4__2__Impl
+            // InternalRecordLang.g:1402:1: ( rule__TemplateType__Group_4__2__Impl )
+            // InternalRecordLang.g:1403:2: rule__TemplateType__Group_4__2__Impl
             {
-            pushFollow(FOLLOW_rule__TemplateType__Group_4__2__Impl_in_rule__TemplateType__Group_4__23237);
+            pushFollow(FOLLOW_2);
             rule__TemplateType__Group_4__2__Impl();
 
             state._fsp--;
@@ -4923,37 +4378,37 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__Group_4__2__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1581:1: rule__TemplateType__Group_4__2__Impl : ( ( rule__TemplateType__Group_4_2__0 )* ) ;
+    // InternalRecordLang.g:1409:1: rule__TemplateType__Group_4__2__Impl : ( ( rule__TemplateType__Group_4_2__0 )* ) ;
     public final void rule__TemplateType__Group_4__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1585:1: ( ( ( rule__TemplateType__Group_4_2__0 )* ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1586:1: ( ( rule__TemplateType__Group_4_2__0 )* )
+            // InternalRecordLang.g:1413:1: ( ( ( rule__TemplateType__Group_4_2__0 )* ) )
+            // InternalRecordLang.g:1414:1: ( ( rule__TemplateType__Group_4_2__0 )* )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1586:1: ( ( rule__TemplateType__Group_4_2__0 )* )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1587:1: ( rule__TemplateType__Group_4_2__0 )*
+            // InternalRecordLang.g:1414:1: ( ( rule__TemplateType__Group_4_2__0 )* )
+            // InternalRecordLang.g:1415:1: ( rule__TemplateType__Group_4_2__0 )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTemplateTypeAccess().getGroup_4_2()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1588:1: ( rule__TemplateType__Group_4_2__0 )*
-            loop15:
+            // InternalRecordLang.g:1416:1: ( rule__TemplateType__Group_4_2__0 )*
+            loop13:
             do {
-                int alt15=2;
-                int LA15_0 = input.LA(1);
+                int alt13=2;
+                int LA13_0 = input.LA(1);
 
-                if ( (LA15_0==23) ) {
-                    alt15=1;
+                if ( (LA13_0==22) ) {
+                    alt13=1;
                 }
 
 
-                switch (alt15) {
+                switch (alt13) {
             	case 1 :
-            	    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1588:2: rule__TemplateType__Group_4_2__0
+            	    // InternalRecordLang.g:1416:2: rule__TemplateType__Group_4_2__0
             	    {
-            	    pushFollow(FOLLOW_rule__TemplateType__Group_4_2__0_in_rule__TemplateType__Group_4__2__Impl3264);
+            	    pushFollow(FOLLOW_11);
             	    rule__TemplateType__Group_4_2__0();
 
             	    state._fsp--;
@@ -4963,7 +4418,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             	    break;
 
             	default :
-            	    break loop15;
+            	    break loop13;
                 }
             } while (true);
 
@@ -4992,21 +4447,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__Group_4_2__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1604:1: rule__TemplateType__Group_4_2__0 : rule__TemplateType__Group_4_2__0__Impl rule__TemplateType__Group_4_2__1 ;
+    // InternalRecordLang.g:1432:1: rule__TemplateType__Group_4_2__0 : rule__TemplateType__Group_4_2__0__Impl rule__TemplateType__Group_4_2__1 ;
     public final void rule__TemplateType__Group_4_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1608:1: ( rule__TemplateType__Group_4_2__0__Impl rule__TemplateType__Group_4_2__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1609:2: rule__TemplateType__Group_4_2__0__Impl rule__TemplateType__Group_4_2__1
+            // InternalRecordLang.g:1436:1: ( rule__TemplateType__Group_4_2__0__Impl rule__TemplateType__Group_4_2__1 )
+            // InternalRecordLang.g:1437:2: rule__TemplateType__Group_4_2__0__Impl rule__TemplateType__Group_4_2__1
             {
-            pushFollow(FOLLOW_rule__TemplateType__Group_4_2__0__Impl_in_rule__TemplateType__Group_4_2__03301);
+            pushFollow(FOLLOW_3);
             rule__TemplateType__Group_4_2__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__TemplateType__Group_4_2__1_in_rule__TemplateType__Group_4_2__03304);
+            pushFollow(FOLLOW_2);
             rule__TemplateType__Group_4_2__1();
 
             state._fsp--;
@@ -5030,22 +4485,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__Group_4_2__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1616:1: rule__TemplateType__Group_4_2__0__Impl : ( ',' ) ;
+    // InternalRecordLang.g:1444:1: rule__TemplateType__Group_4_2__0__Impl : ( ',' ) ;
     public final void rule__TemplateType__Group_4_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1620:1: ( ( ',' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1621:1: ( ',' )
+            // InternalRecordLang.g:1448:1: ( ( ',' ) )
+            // InternalRecordLang.g:1449:1: ( ',' )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1621:1: ( ',' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1622:1: ','
+            // InternalRecordLang.g:1449:1: ( ',' )
+            // InternalRecordLang.g:1450:1: ','
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTemplateTypeAccess().getCommaKeyword_4_2_0()); 
             }
-            match(input,23,FOLLOW_23_in_rule__TemplateType__Group_4_2__0__Impl3332); if (state.failed) return ;
+            match(input,22,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getTemplateTypeAccess().getCommaKeyword_4_2_0()); 
             }
@@ -5071,16 +4526,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__Group_4_2__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1635:1: rule__TemplateType__Group_4_2__1 : rule__TemplateType__Group_4_2__1__Impl ;
+    // InternalRecordLang.g:1463:1: rule__TemplateType__Group_4_2__1 : rule__TemplateType__Group_4_2__1__Impl ;
     public final void rule__TemplateType__Group_4_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1639:1: ( rule__TemplateType__Group_4_2__1__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1640:2: rule__TemplateType__Group_4_2__1__Impl
+            // InternalRecordLang.g:1467:1: ( rule__TemplateType__Group_4_2__1__Impl )
+            // InternalRecordLang.g:1468:2: rule__TemplateType__Group_4_2__1__Impl
             {
-            pushFollow(FOLLOW_rule__TemplateType__Group_4_2__1__Impl_in_rule__TemplateType__Group_4_2__13363);
+            pushFollow(FOLLOW_2);
             rule__TemplateType__Group_4_2__1__Impl();
 
             state._fsp--;
@@ -5104,25 +4559,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__Group_4_2__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1646:1: rule__TemplateType__Group_4_2__1__Impl : ( ( rule__TemplateType__ParentsAssignment_4_2_1 ) ) ;
+    // InternalRecordLang.g:1474:1: rule__TemplateType__Group_4_2__1__Impl : ( ( rule__TemplateType__ParentsAssignment_4_2_1 ) ) ;
     public final void rule__TemplateType__Group_4_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1650:1: ( ( ( rule__TemplateType__ParentsAssignment_4_2_1 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1651:1: ( ( rule__TemplateType__ParentsAssignment_4_2_1 ) )
+            // InternalRecordLang.g:1478:1: ( ( ( rule__TemplateType__ParentsAssignment_4_2_1 ) ) )
+            // InternalRecordLang.g:1479:1: ( ( rule__TemplateType__ParentsAssignment_4_2_1 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1651:1: ( ( rule__TemplateType__ParentsAssignment_4_2_1 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1652:1: ( rule__TemplateType__ParentsAssignment_4_2_1 )
+            // InternalRecordLang.g:1479:1: ( ( rule__TemplateType__ParentsAssignment_4_2_1 ) )
+            // InternalRecordLang.g:1480:1: ( rule__TemplateType__ParentsAssignment_4_2_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTemplateTypeAccess().getParentsAssignment_4_2_1()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1653:1: ( rule__TemplateType__ParentsAssignment_4_2_1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1653:2: rule__TemplateType__ParentsAssignment_4_2_1
+            // InternalRecordLang.g:1481:1: ( rule__TemplateType__ParentsAssignment_4_2_1 )
+            // InternalRecordLang.g:1481:2: rule__TemplateType__ParentsAssignment_4_2_1
             {
-            pushFollow(FOLLOW_rule__TemplateType__ParentsAssignment_4_2_1_in_rule__TemplateType__Group_4_2__1__Impl3390);
+            pushFollow(FOLLOW_2);
             rule__TemplateType__ParentsAssignment_4_2_1();
 
             state._fsp--;
@@ -5155,21 +4610,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__Group_5__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1667:1: rule__TemplateType__Group_5__0 : rule__TemplateType__Group_5__0__Impl rule__TemplateType__Group_5__1 ;
+    // InternalRecordLang.g:1495:1: rule__TemplateType__Group_5__0 : rule__TemplateType__Group_5__0__Impl rule__TemplateType__Group_5__1 ;
     public final void rule__TemplateType__Group_5__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1671:1: ( rule__TemplateType__Group_5__0__Impl rule__TemplateType__Group_5__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1672:2: rule__TemplateType__Group_5__0__Impl rule__TemplateType__Group_5__1
+            // InternalRecordLang.g:1499:1: ( rule__TemplateType__Group_5__0__Impl rule__TemplateType__Group_5__1 )
+            // InternalRecordLang.g:1500:2: rule__TemplateType__Group_5__0__Impl rule__TemplateType__Group_5__1
             {
-            pushFollow(FOLLOW_rule__TemplateType__Group_5__0__Impl_in_rule__TemplateType__Group_5__03424);
+            pushFollow(FOLLOW_12);
             rule__TemplateType__Group_5__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__TemplateType__Group_5__1_in_rule__TemplateType__Group_5__03427);
+            pushFollow(FOLLOW_2);
             rule__TemplateType__Group_5__1();
 
             state._fsp--;
@@ -5193,22 +4648,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__Group_5__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1679:1: rule__TemplateType__Group_5__0__Impl : ( '{' ) ;
+    // InternalRecordLang.g:1507:1: rule__TemplateType__Group_5__0__Impl : ( '{' ) ;
     public final void rule__TemplateType__Group_5__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1683:1: ( ( '{' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1684:1: ( '{' )
+            // InternalRecordLang.g:1511:1: ( ( '{' ) )
+            // InternalRecordLang.g:1512:1: ( '{' )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1684:1: ( '{' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1685:1: '{'
+            // InternalRecordLang.g:1512:1: ( '{' )
+            // InternalRecordLang.g:1513:1: '{'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTemplateTypeAccess().getLeftCurlyBracketKeyword_5_0()); 
             }
-            match(input,24,FOLLOW_24_in_rule__TemplateType__Group_5__0__Impl3455); if (state.failed) return ;
+            match(input,23,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getTemplateTypeAccess().getLeftCurlyBracketKeyword_5_0()); 
             }
@@ -5234,21 +4689,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__Group_5__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1698:1: rule__TemplateType__Group_5__1 : rule__TemplateType__Group_5__1__Impl rule__TemplateType__Group_5__2 ;
+    // InternalRecordLang.g:1526:1: rule__TemplateType__Group_5__1 : rule__TemplateType__Group_5__1__Impl rule__TemplateType__Group_5__2 ;
     public final void rule__TemplateType__Group_5__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1702:1: ( rule__TemplateType__Group_5__1__Impl rule__TemplateType__Group_5__2 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1703:2: rule__TemplateType__Group_5__1__Impl rule__TemplateType__Group_5__2
+            // InternalRecordLang.g:1530:1: ( rule__TemplateType__Group_5__1__Impl rule__TemplateType__Group_5__2 )
+            // InternalRecordLang.g:1531:2: rule__TemplateType__Group_5__1__Impl rule__TemplateType__Group_5__2
             {
-            pushFollow(FOLLOW_rule__TemplateType__Group_5__1__Impl_in_rule__TemplateType__Group_5__13486);
+            pushFollow(FOLLOW_12);
             rule__TemplateType__Group_5__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__TemplateType__Group_5__2_in_rule__TemplateType__Group_5__13489);
+            pushFollow(FOLLOW_2);
             rule__TemplateType__Group_5__2();
 
             state._fsp--;
@@ -5272,37 +4727,37 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__Group_5__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1710:1: rule__TemplateType__Group_5__1__Impl : ( ( rule__TemplateType__Alternatives_5_1 )* ) ;
+    // InternalRecordLang.g:1538:1: rule__TemplateType__Group_5__1__Impl : ( ( rule__TemplateType__Alternatives_5_1 )* ) ;
     public final void rule__TemplateType__Group_5__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1714:1: ( ( ( rule__TemplateType__Alternatives_5_1 )* ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1715:1: ( ( rule__TemplateType__Alternatives_5_1 )* )
+            // InternalRecordLang.g:1542:1: ( ( ( rule__TemplateType__Alternatives_5_1 )* ) )
+            // InternalRecordLang.g:1543:1: ( ( rule__TemplateType__Alternatives_5_1 )* )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1715:1: ( ( rule__TemplateType__Alternatives_5_1 )* )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1716:1: ( rule__TemplateType__Alternatives_5_1 )*
+            // InternalRecordLang.g:1543:1: ( ( rule__TemplateType__Alternatives_5_1 )* )
+            // InternalRecordLang.g:1544:1: ( rule__TemplateType__Alternatives_5_1 )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTemplateTypeAccess().getAlternatives_5_1()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1717:1: ( rule__TemplateType__Alternatives_5_1 )*
-            loop16:
+            // InternalRecordLang.g:1545:1: ( rule__TemplateType__Alternatives_5_1 )*
+            loop14:
             do {
-                int alt16=2;
-                int LA16_0 = input.LA(1);
+                int alt14=2;
+                int LA14_0 = input.LA(1);
 
-                if ( (LA16_0==RULE_ID||(LA16_0>=14 && LA16_0<=15)||LA16_0==28||LA16_0==30||LA16_0==32) ) {
-                    alt16=1;
+                if ( (LA14_0==RULE_ID||(LA14_0>=14 && LA14_0<=15)||LA14_0==27||LA14_0==29||LA14_0==31) ) {
+                    alt14=1;
                 }
 
 
-                switch (alt16) {
+                switch (alt14) {
             	case 1 :
-            	    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1717:2: rule__TemplateType__Alternatives_5_1
+            	    // InternalRecordLang.g:1545:2: rule__TemplateType__Alternatives_5_1
             	    {
-            	    pushFollow(FOLLOW_rule__TemplateType__Alternatives_5_1_in_rule__TemplateType__Group_5__1__Impl3516);
+            	    pushFollow(FOLLOW_13);
             	    rule__TemplateType__Alternatives_5_1();
 
             	    state._fsp--;
@@ -5312,7 +4767,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             	    break;
 
             	default :
-            	    break loop16;
+            	    break loop14;
                 }
             } while (true);
 
@@ -5341,16 +4796,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__Group_5__2"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1727:1: rule__TemplateType__Group_5__2 : rule__TemplateType__Group_5__2__Impl ;
+    // InternalRecordLang.g:1555:1: rule__TemplateType__Group_5__2 : rule__TemplateType__Group_5__2__Impl ;
     public final void rule__TemplateType__Group_5__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1731:1: ( rule__TemplateType__Group_5__2__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1732:2: rule__TemplateType__Group_5__2__Impl
+            // InternalRecordLang.g:1559:1: ( rule__TemplateType__Group_5__2__Impl )
+            // InternalRecordLang.g:1560:2: rule__TemplateType__Group_5__2__Impl
             {
-            pushFollow(FOLLOW_rule__TemplateType__Group_5__2__Impl_in_rule__TemplateType__Group_5__23547);
+            pushFollow(FOLLOW_2);
             rule__TemplateType__Group_5__2__Impl();
 
             state._fsp--;
@@ -5374,22 +4829,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__Group_5__2__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1738:1: rule__TemplateType__Group_5__2__Impl : ( '}' ) ;
+    // InternalRecordLang.g:1566:1: rule__TemplateType__Group_5__2__Impl : ( '}' ) ;
     public final void rule__TemplateType__Group_5__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1742:1: ( ( '}' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1743:1: ( '}' )
+            // InternalRecordLang.g:1570:1: ( ( '}' ) )
+            // InternalRecordLang.g:1571:1: ( '}' )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1743:1: ( '}' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1744:1: '}'
+            // InternalRecordLang.g:1571:1: ( '}' )
+            // InternalRecordLang.g:1572:1: '}'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTemplateTypeAccess().getRightCurlyBracketKeyword_5_2()); 
             }
-            match(input,25,FOLLOW_25_in_rule__TemplateType__Group_5__2__Impl3575); if (state.failed) return ;
+            match(input,24,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getTemplateTypeAccess().getRightCurlyBracketKeyword_5_2()); 
             }
@@ -5415,21 +4870,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1763:1: rule__RecordType__Group__0 : rule__RecordType__Group__0__Impl rule__RecordType__Group__1 ;
+    // InternalRecordLang.g:1591:1: rule__RecordType__Group__0 : rule__RecordType__Group__0__Impl rule__RecordType__Group__1 ;
     public final void rule__RecordType__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1767:1: ( rule__RecordType__Group__0__Impl rule__RecordType__Group__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1768:2: rule__RecordType__Group__0__Impl rule__RecordType__Group__1
+            // InternalRecordLang.g:1595:1: ( rule__RecordType__Group__0__Impl rule__RecordType__Group__1 )
+            // InternalRecordLang.g:1596:2: rule__RecordType__Group__0__Impl rule__RecordType__Group__1
             {
-            pushFollow(FOLLOW_rule__RecordType__Group__0__Impl_in_rule__RecordType__Group__03612);
+            pushFollow(FOLLOW_14);
             rule__RecordType__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__RecordType__Group__1_in_rule__RecordType__Group__03615);
+            pushFollow(FOLLOW_2);
             rule__RecordType__Group__1();
 
             state._fsp--;
@@ -5453,33 +4908,33 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1775:1: rule__RecordType__Group__0__Impl : ( ( rule__RecordType__Group_0__0 )? ) ;
+    // InternalRecordLang.g:1603:1: rule__RecordType__Group__0__Impl : ( ( rule__RecordType__Group_0__0 )? ) ;
     public final void rule__RecordType__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1779:1: ( ( ( rule__RecordType__Group_0__0 )? ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1780:1: ( ( rule__RecordType__Group_0__0 )? )
+            // InternalRecordLang.g:1607:1: ( ( ( rule__RecordType__Group_0__0 )? ) )
+            // InternalRecordLang.g:1608:1: ( ( rule__RecordType__Group_0__0 )? )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1780:1: ( ( rule__RecordType__Group_0__0 )? )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1781:1: ( rule__RecordType__Group_0__0 )?
+            // InternalRecordLang.g:1608:1: ( ( rule__RecordType__Group_0__0 )? )
+            // InternalRecordLang.g:1609:1: ( rule__RecordType__Group_0__0 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeAccess().getGroup_0()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1782:1: ( rule__RecordType__Group_0__0 )?
-            int alt17=2;
-            int LA17_0 = input.LA(1);
+            // InternalRecordLang.g:1610:1: ( rule__RecordType__Group_0__0 )?
+            int alt15=2;
+            int LA15_0 = input.LA(1);
 
-            if ( (LA17_0==20) ) {
-                alt17=1;
+            if ( (LA15_0==19) ) {
+                alt15=1;
             }
-            switch (alt17) {
+            switch (alt15) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1782:2: rule__RecordType__Group_0__0
+                    // InternalRecordLang.g:1610:2: rule__RecordType__Group_0__0
                     {
-                    pushFollow(FOLLOW_rule__RecordType__Group_0__0_in_rule__RecordType__Group__0__Impl3642);
+                    pushFollow(FOLLOW_2);
                     rule__RecordType__Group_0__0();
 
                     state._fsp--;
@@ -5515,21 +4970,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1792:1: rule__RecordType__Group__1 : rule__RecordType__Group__1__Impl rule__RecordType__Group__2 ;
+    // InternalRecordLang.g:1620:1: rule__RecordType__Group__1 : rule__RecordType__Group__1__Impl rule__RecordType__Group__2 ;
     public final void rule__RecordType__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1796:1: ( rule__RecordType__Group__1__Impl rule__RecordType__Group__2 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1797:2: rule__RecordType__Group__1__Impl rule__RecordType__Group__2
+            // InternalRecordLang.g:1624:1: ( rule__RecordType__Group__1__Impl rule__RecordType__Group__2 )
+            // InternalRecordLang.g:1625:2: rule__RecordType__Group__1__Impl rule__RecordType__Group__2
             {
-            pushFollow(FOLLOW_rule__RecordType__Group__1__Impl_in_rule__RecordType__Group__13673);
+            pushFollow(FOLLOW_14);
             rule__RecordType__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__RecordType__Group__2_in_rule__RecordType__Group__13676);
+            pushFollow(FOLLOW_2);
             rule__RecordType__Group__2();
 
             state._fsp--;
@@ -5553,33 +5008,33 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1804:1: rule__RecordType__Group__1__Impl : ( ( rule__RecordType__Group_1__0 )? ) ;
+    // InternalRecordLang.g:1632:1: rule__RecordType__Group__1__Impl : ( ( rule__RecordType__Group_1__0 )? ) ;
     public final void rule__RecordType__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1808:1: ( ( ( rule__RecordType__Group_1__0 )? ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1809:1: ( ( rule__RecordType__Group_1__0 )? )
+            // InternalRecordLang.g:1636:1: ( ( ( rule__RecordType__Group_1__0 )? ) )
+            // InternalRecordLang.g:1637:1: ( ( rule__RecordType__Group_1__0 )? )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1809:1: ( ( rule__RecordType__Group_1__0 )? )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1810:1: ( rule__RecordType__Group_1__0 )?
+            // InternalRecordLang.g:1637:1: ( ( rule__RecordType__Group_1__0 )? )
+            // InternalRecordLang.g:1638:1: ( rule__RecordType__Group_1__0 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeAccess().getGroup_1()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1811:1: ( rule__RecordType__Group_1__0 )?
-            int alt18=2;
-            int LA18_0 = input.LA(1);
+            // InternalRecordLang.g:1639:1: ( rule__RecordType__Group_1__0 )?
+            int alt16=2;
+            int LA16_0 = input.LA(1);
 
-            if ( (LA18_0==21) ) {
-                alt18=1;
+            if ( (LA16_0==20) ) {
+                alt16=1;
             }
-            switch (alt18) {
+            switch (alt16) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1811:2: rule__RecordType__Group_1__0
+                    // InternalRecordLang.g:1639:2: rule__RecordType__Group_1__0
                     {
-                    pushFollow(FOLLOW_rule__RecordType__Group_1__0_in_rule__RecordType__Group__1__Impl3703);
+                    pushFollow(FOLLOW_2);
                     rule__RecordType__Group_1__0();
 
                     state._fsp--;
@@ -5615,21 +5070,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group__2"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1821:1: rule__RecordType__Group__2 : rule__RecordType__Group__2__Impl rule__RecordType__Group__3 ;
+    // InternalRecordLang.g:1649:1: rule__RecordType__Group__2 : rule__RecordType__Group__2__Impl rule__RecordType__Group__3 ;
     public final void rule__RecordType__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1825:1: ( rule__RecordType__Group__2__Impl rule__RecordType__Group__3 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1826:2: rule__RecordType__Group__2__Impl rule__RecordType__Group__3
+            // InternalRecordLang.g:1653:1: ( rule__RecordType__Group__2__Impl rule__RecordType__Group__3 )
+            // InternalRecordLang.g:1654:2: rule__RecordType__Group__2__Impl rule__RecordType__Group__3
             {
-            pushFollow(FOLLOW_rule__RecordType__Group__2__Impl_in_rule__RecordType__Group__23734);
+            pushFollow(FOLLOW_14);
             rule__RecordType__Group__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__RecordType__Group__3_in_rule__RecordType__Group__23737);
+            pushFollow(FOLLOW_2);
             rule__RecordType__Group__3();
 
             state._fsp--;
@@ -5653,33 +5108,33 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group__2__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1833:1: rule__RecordType__Group__2__Impl : ( ( rule__RecordType__AbstractAssignment_2 )? ) ;
+    // InternalRecordLang.g:1661:1: rule__RecordType__Group__2__Impl : ( ( rule__RecordType__AbstractAssignment_2 )? ) ;
     public final void rule__RecordType__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1837:1: ( ( ( rule__RecordType__AbstractAssignment_2 )? ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1838:1: ( ( rule__RecordType__AbstractAssignment_2 )? )
+            // InternalRecordLang.g:1665:1: ( ( ( rule__RecordType__AbstractAssignment_2 )? ) )
+            // InternalRecordLang.g:1666:1: ( ( rule__RecordType__AbstractAssignment_2 )? )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1838:1: ( ( rule__RecordType__AbstractAssignment_2 )? )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1839:1: ( rule__RecordType__AbstractAssignment_2 )?
+            // InternalRecordLang.g:1666:1: ( ( rule__RecordType__AbstractAssignment_2 )? )
+            // InternalRecordLang.g:1667:1: ( rule__RecordType__AbstractAssignment_2 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeAccess().getAbstractAssignment_2()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1840:1: ( rule__RecordType__AbstractAssignment_2 )?
-            int alt19=2;
-            int LA19_0 = input.LA(1);
+            // InternalRecordLang.g:1668:1: ( rule__RecordType__AbstractAssignment_2 )?
+            int alt17=2;
+            int LA17_0 = input.LA(1);
 
-            if ( (LA19_0==38) ) {
-                alt19=1;
+            if ( (LA17_0==37) ) {
+                alt17=1;
             }
-            switch (alt19) {
+            switch (alt17) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1840:2: rule__RecordType__AbstractAssignment_2
+                    // InternalRecordLang.g:1668:2: rule__RecordType__AbstractAssignment_2
                     {
-                    pushFollow(FOLLOW_rule__RecordType__AbstractAssignment_2_in_rule__RecordType__Group__2__Impl3764);
+                    pushFollow(FOLLOW_2);
                     rule__RecordType__AbstractAssignment_2();
 
                     state._fsp--;
@@ -5715,21 +5170,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group__3"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1850:1: rule__RecordType__Group__3 : rule__RecordType__Group__3__Impl rule__RecordType__Group__4 ;
+    // InternalRecordLang.g:1678:1: rule__RecordType__Group__3 : rule__RecordType__Group__3__Impl rule__RecordType__Group__4 ;
     public final void rule__RecordType__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1854:1: ( rule__RecordType__Group__3__Impl rule__RecordType__Group__4 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1855:2: rule__RecordType__Group__3__Impl rule__RecordType__Group__4
+            // InternalRecordLang.g:1682:1: ( rule__RecordType__Group__3__Impl rule__RecordType__Group__4 )
+            // InternalRecordLang.g:1683:2: rule__RecordType__Group__3__Impl rule__RecordType__Group__4
             {
-            pushFollow(FOLLOW_rule__RecordType__Group__3__Impl_in_rule__RecordType__Group__33795);
+            pushFollow(FOLLOW_3);
             rule__RecordType__Group__3__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__RecordType__Group__4_in_rule__RecordType__Group__33798);
+            pushFollow(FOLLOW_2);
             rule__RecordType__Group__4();
 
             state._fsp--;
@@ -5753,22 +5208,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group__3__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1862:1: rule__RecordType__Group__3__Impl : ( 'entity' ) ;
+    // InternalRecordLang.g:1690:1: rule__RecordType__Group__3__Impl : ( 'entity' ) ;
     public final void rule__RecordType__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1866:1: ( ( 'entity' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1867:1: ( 'entity' )
+            // InternalRecordLang.g:1694:1: ( ( 'entity' ) )
+            // InternalRecordLang.g:1695:1: ( 'entity' )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1867:1: ( 'entity' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1868:1: 'entity'
+            // InternalRecordLang.g:1695:1: ( 'entity' )
+            // InternalRecordLang.g:1696:1: 'entity'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeAccess().getEntityKeyword_3()); 
             }
-            match(input,26,FOLLOW_26_in_rule__RecordType__Group__3__Impl3826); if (state.failed) return ;
+            match(input,25,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getRecordTypeAccess().getEntityKeyword_3()); 
             }
@@ -5794,21 +5249,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group__4"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1881:1: rule__RecordType__Group__4 : rule__RecordType__Group__4__Impl rule__RecordType__Group__5 ;
+    // InternalRecordLang.g:1709:1: rule__RecordType__Group__4 : rule__RecordType__Group__4__Impl rule__RecordType__Group__5 ;
     public final void rule__RecordType__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1885:1: ( rule__RecordType__Group__4__Impl rule__RecordType__Group__5 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1886:2: rule__RecordType__Group__4__Impl rule__RecordType__Group__5
+            // InternalRecordLang.g:1713:1: ( rule__RecordType__Group__4__Impl rule__RecordType__Group__5 )
+            // InternalRecordLang.g:1714:2: rule__RecordType__Group__4__Impl rule__RecordType__Group__5
             {
-            pushFollow(FOLLOW_rule__RecordType__Group__4__Impl_in_rule__RecordType__Group__43857);
+            pushFollow(FOLLOW_15);
             rule__RecordType__Group__4__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__RecordType__Group__5_in_rule__RecordType__Group__43860);
+            pushFollow(FOLLOW_2);
             rule__RecordType__Group__5();
 
             state._fsp--;
@@ -5832,25 +5287,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group__4__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1893:1: rule__RecordType__Group__4__Impl : ( ( rule__RecordType__NameAssignment_4 ) ) ;
+    // InternalRecordLang.g:1721:1: rule__RecordType__Group__4__Impl : ( ( rule__RecordType__NameAssignment_4 ) ) ;
     public final void rule__RecordType__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1897:1: ( ( ( rule__RecordType__NameAssignment_4 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1898:1: ( ( rule__RecordType__NameAssignment_4 ) )
+            // InternalRecordLang.g:1725:1: ( ( ( rule__RecordType__NameAssignment_4 ) ) )
+            // InternalRecordLang.g:1726:1: ( ( rule__RecordType__NameAssignment_4 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1898:1: ( ( rule__RecordType__NameAssignment_4 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1899:1: ( rule__RecordType__NameAssignment_4 )
+            // InternalRecordLang.g:1726:1: ( ( rule__RecordType__NameAssignment_4 ) )
+            // InternalRecordLang.g:1727:1: ( rule__RecordType__NameAssignment_4 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeAccess().getNameAssignment_4()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1900:1: ( rule__RecordType__NameAssignment_4 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1900:2: rule__RecordType__NameAssignment_4
+            // InternalRecordLang.g:1728:1: ( rule__RecordType__NameAssignment_4 )
+            // InternalRecordLang.g:1728:2: rule__RecordType__NameAssignment_4
             {
-            pushFollow(FOLLOW_rule__RecordType__NameAssignment_4_in_rule__RecordType__Group__4__Impl3887);
+            pushFollow(FOLLOW_2);
             rule__RecordType__NameAssignment_4();
 
             state._fsp--;
@@ -5883,21 +5338,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group__5"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1910:1: rule__RecordType__Group__5 : rule__RecordType__Group__5__Impl rule__RecordType__Group__6 ;
+    // InternalRecordLang.g:1738:1: rule__RecordType__Group__5 : rule__RecordType__Group__5__Impl rule__RecordType__Group__6 ;
     public final void rule__RecordType__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1914:1: ( rule__RecordType__Group__5__Impl rule__RecordType__Group__6 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1915:2: rule__RecordType__Group__5__Impl rule__RecordType__Group__6
+            // InternalRecordLang.g:1742:1: ( rule__RecordType__Group__5__Impl rule__RecordType__Group__6 )
+            // InternalRecordLang.g:1743:2: rule__RecordType__Group__5__Impl rule__RecordType__Group__6
             {
-            pushFollow(FOLLOW_rule__RecordType__Group__5__Impl_in_rule__RecordType__Group__53917);
+            pushFollow(FOLLOW_15);
             rule__RecordType__Group__5__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__RecordType__Group__6_in_rule__RecordType__Group__53920);
+            pushFollow(FOLLOW_2);
             rule__RecordType__Group__6();
 
             state._fsp--;
@@ -5921,33 +5376,33 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group__5__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1922:1: rule__RecordType__Group__5__Impl : ( ( rule__RecordType__Group_5__0 )? ) ;
+    // InternalRecordLang.g:1750:1: rule__RecordType__Group__5__Impl : ( ( rule__RecordType__Group_5__0 )? ) ;
     public final void rule__RecordType__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1926:1: ( ( ( rule__RecordType__Group_5__0 )? ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1927:1: ( ( rule__RecordType__Group_5__0 )? )
+            // InternalRecordLang.g:1754:1: ( ( ( rule__RecordType__Group_5__0 )? ) )
+            // InternalRecordLang.g:1755:1: ( ( rule__RecordType__Group_5__0 )? )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1927:1: ( ( rule__RecordType__Group_5__0 )? )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1928:1: ( rule__RecordType__Group_5__0 )?
+            // InternalRecordLang.g:1755:1: ( ( rule__RecordType__Group_5__0 )? )
+            // InternalRecordLang.g:1756:1: ( rule__RecordType__Group_5__0 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeAccess().getGroup_5()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1929:1: ( rule__RecordType__Group_5__0 )?
-            int alt20=2;
-            int LA20_0 = input.LA(1);
+            // InternalRecordLang.g:1757:1: ( rule__RecordType__Group_5__0 )?
+            int alt18=2;
+            int LA18_0 = input.LA(1);
 
-            if ( (LA20_0==27) ) {
-                alt20=1;
+            if ( (LA18_0==26) ) {
+                alt18=1;
             }
-            switch (alt20) {
+            switch (alt18) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1929:2: rule__RecordType__Group_5__0
+                    // InternalRecordLang.g:1757:2: rule__RecordType__Group_5__0
                     {
-                    pushFollow(FOLLOW_rule__RecordType__Group_5__0_in_rule__RecordType__Group__5__Impl3947);
+                    pushFollow(FOLLOW_2);
                     rule__RecordType__Group_5__0();
 
                     state._fsp--;
@@ -5983,21 +5438,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group__6"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1939:1: rule__RecordType__Group__6 : rule__RecordType__Group__6__Impl rule__RecordType__Group__7 ;
+    // InternalRecordLang.g:1767:1: rule__RecordType__Group__6 : rule__RecordType__Group__6__Impl rule__RecordType__Group__7 ;
     public final void rule__RecordType__Group__6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1943:1: ( rule__RecordType__Group__6__Impl rule__RecordType__Group__7 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1944:2: rule__RecordType__Group__6__Impl rule__RecordType__Group__7
+            // InternalRecordLang.g:1771:1: ( rule__RecordType__Group__6__Impl rule__RecordType__Group__7 )
+            // InternalRecordLang.g:1772:2: rule__RecordType__Group__6__Impl rule__RecordType__Group__7
             {
-            pushFollow(FOLLOW_rule__RecordType__Group__6__Impl_in_rule__RecordType__Group__63978);
+            pushFollow(FOLLOW_15);
             rule__RecordType__Group__6__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__RecordType__Group__7_in_rule__RecordType__Group__63981);
+            pushFollow(FOLLOW_2);
             rule__RecordType__Group__7();
 
             state._fsp--;
@@ -6021,33 +5476,33 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group__6__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1951:1: rule__RecordType__Group__6__Impl : ( ( rule__RecordType__Group_6__0 )? ) ;
+    // InternalRecordLang.g:1779:1: rule__RecordType__Group__6__Impl : ( ( rule__RecordType__Group_6__0 )? ) ;
     public final void rule__RecordType__Group__6__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1955:1: ( ( ( rule__RecordType__Group_6__0 )? ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1956:1: ( ( rule__RecordType__Group_6__0 )? )
+            // InternalRecordLang.g:1783:1: ( ( ( rule__RecordType__Group_6__0 )? ) )
+            // InternalRecordLang.g:1784:1: ( ( rule__RecordType__Group_6__0 )? )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1956:1: ( ( rule__RecordType__Group_6__0 )? )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1957:1: ( rule__RecordType__Group_6__0 )?
+            // InternalRecordLang.g:1784:1: ( ( rule__RecordType__Group_6__0 )? )
+            // InternalRecordLang.g:1785:1: ( rule__RecordType__Group_6__0 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeAccess().getGroup_6()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1958:1: ( rule__RecordType__Group_6__0 )?
-            int alt21=2;
-            int LA21_0 = input.LA(1);
+            // InternalRecordLang.g:1786:1: ( rule__RecordType__Group_6__0 )?
+            int alt19=2;
+            int LA19_0 = input.LA(1);
 
-            if ( (LA21_0==22) ) {
-                alt21=1;
+            if ( (LA19_0==21) ) {
+                alt19=1;
             }
-            switch (alt21) {
+            switch (alt19) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1958:2: rule__RecordType__Group_6__0
+                    // InternalRecordLang.g:1786:2: rule__RecordType__Group_6__0
                     {
-                    pushFollow(FOLLOW_rule__RecordType__Group_6__0_in_rule__RecordType__Group__6__Impl4008);
+                    pushFollow(FOLLOW_2);
                     rule__RecordType__Group_6__0();
 
                     state._fsp--;
@@ -6083,16 +5538,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group__7"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1968:1: rule__RecordType__Group__7 : rule__RecordType__Group__7__Impl ;
+    // InternalRecordLang.g:1796:1: rule__RecordType__Group__7 : rule__RecordType__Group__7__Impl ;
     public final void rule__RecordType__Group__7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1972:1: ( rule__RecordType__Group__7__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1973:2: rule__RecordType__Group__7__Impl
+            // InternalRecordLang.g:1800:1: ( rule__RecordType__Group__7__Impl )
+            // InternalRecordLang.g:1801:2: rule__RecordType__Group__7__Impl
             {
-            pushFollow(FOLLOW_rule__RecordType__Group__7__Impl_in_rule__RecordType__Group__74039);
+            pushFollow(FOLLOW_2);
             rule__RecordType__Group__7__Impl();
 
             state._fsp--;
@@ -6116,33 +5571,33 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group__7__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1979:1: rule__RecordType__Group__7__Impl : ( ( rule__RecordType__Group_7__0 )? ) ;
+    // InternalRecordLang.g:1807:1: rule__RecordType__Group__7__Impl : ( ( rule__RecordType__Group_7__0 )? ) ;
     public final void rule__RecordType__Group__7__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1983:1: ( ( ( rule__RecordType__Group_7__0 )? ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1984:1: ( ( rule__RecordType__Group_7__0 )? )
+            // InternalRecordLang.g:1811:1: ( ( ( rule__RecordType__Group_7__0 )? ) )
+            // InternalRecordLang.g:1812:1: ( ( rule__RecordType__Group_7__0 )? )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1984:1: ( ( rule__RecordType__Group_7__0 )? )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1985:1: ( rule__RecordType__Group_7__0 )?
+            // InternalRecordLang.g:1812:1: ( ( rule__RecordType__Group_7__0 )? )
+            // InternalRecordLang.g:1813:1: ( rule__RecordType__Group_7__0 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeAccess().getGroup_7()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1986:1: ( rule__RecordType__Group_7__0 )?
-            int alt22=2;
-            int LA22_0 = input.LA(1);
+            // InternalRecordLang.g:1814:1: ( rule__RecordType__Group_7__0 )?
+            int alt20=2;
+            int LA20_0 = input.LA(1);
 
-            if ( (LA22_0==24) ) {
-                alt22=1;
+            if ( (LA20_0==23) ) {
+                alt20=1;
             }
-            switch (alt22) {
+            switch (alt20) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:1986:2: rule__RecordType__Group_7__0
+                    // InternalRecordLang.g:1814:2: rule__RecordType__Group_7__0
                     {
-                    pushFollow(FOLLOW_rule__RecordType__Group_7__0_in_rule__RecordType__Group__7__Impl4066);
+                    pushFollow(FOLLOW_2);
                     rule__RecordType__Group_7__0();
 
                     state._fsp--;
@@ -6178,21 +5633,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group_0__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2012:1: rule__RecordType__Group_0__0 : rule__RecordType__Group_0__0__Impl rule__RecordType__Group_0__1 ;
+    // InternalRecordLang.g:1840:1: rule__RecordType__Group_0__0 : rule__RecordType__Group_0__0__Impl rule__RecordType__Group_0__1 ;
     public final void rule__RecordType__Group_0__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2016:1: ( rule__RecordType__Group_0__0__Impl rule__RecordType__Group_0__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2017:2: rule__RecordType__Group_0__0__Impl rule__RecordType__Group_0__1
+            // InternalRecordLang.g:1844:1: ( rule__RecordType__Group_0__0__Impl rule__RecordType__Group_0__1 )
+            // InternalRecordLang.g:1845:2: rule__RecordType__Group_0__0__Impl rule__RecordType__Group_0__1
             {
-            pushFollow(FOLLOW_rule__RecordType__Group_0__0__Impl_in_rule__RecordType__Group_0__04113);
+            pushFollow(FOLLOW_9);
             rule__RecordType__Group_0__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__RecordType__Group_0__1_in_rule__RecordType__Group_0__04116);
+            pushFollow(FOLLOW_2);
             rule__RecordType__Group_0__1();
 
             state._fsp--;
@@ -6216,22 +5671,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group_0__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2024:1: rule__RecordType__Group_0__0__Impl : ( '@author' ) ;
+    // InternalRecordLang.g:1852:1: rule__RecordType__Group_0__0__Impl : ( '@author' ) ;
     public final void rule__RecordType__Group_0__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2028:1: ( ( '@author' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2029:1: ( '@author' )
+            // InternalRecordLang.g:1856:1: ( ( '@author' ) )
+            // InternalRecordLang.g:1857:1: ( '@author' )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2029:1: ( '@author' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2030:1: '@author'
+            // InternalRecordLang.g:1857:1: ( '@author' )
+            // InternalRecordLang.g:1858:1: '@author'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeAccess().getAuthorKeyword_0_0()); 
             }
-            match(input,20,FOLLOW_20_in_rule__RecordType__Group_0__0__Impl4144); if (state.failed) return ;
+            match(input,19,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getRecordTypeAccess().getAuthorKeyword_0_0()); 
             }
@@ -6257,16 +5712,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group_0__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2043:1: rule__RecordType__Group_0__1 : rule__RecordType__Group_0__1__Impl ;
+    // InternalRecordLang.g:1871:1: rule__RecordType__Group_0__1 : rule__RecordType__Group_0__1__Impl ;
     public final void rule__RecordType__Group_0__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2047:1: ( rule__RecordType__Group_0__1__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2048:2: rule__RecordType__Group_0__1__Impl
+            // InternalRecordLang.g:1875:1: ( rule__RecordType__Group_0__1__Impl )
+            // InternalRecordLang.g:1876:2: rule__RecordType__Group_0__1__Impl
             {
-            pushFollow(FOLLOW_rule__RecordType__Group_0__1__Impl_in_rule__RecordType__Group_0__14175);
+            pushFollow(FOLLOW_2);
             rule__RecordType__Group_0__1__Impl();
 
             state._fsp--;
@@ -6290,25 +5745,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group_0__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2054:1: rule__RecordType__Group_0__1__Impl : ( ( rule__RecordType__AuthorAssignment_0_1 ) ) ;
+    // InternalRecordLang.g:1882:1: rule__RecordType__Group_0__1__Impl : ( ( rule__RecordType__AuthorAssignment_0_1 ) ) ;
     public final void rule__RecordType__Group_0__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2058:1: ( ( ( rule__RecordType__AuthorAssignment_0_1 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2059:1: ( ( rule__RecordType__AuthorAssignment_0_1 ) )
+            // InternalRecordLang.g:1886:1: ( ( ( rule__RecordType__AuthorAssignment_0_1 ) ) )
+            // InternalRecordLang.g:1887:1: ( ( rule__RecordType__AuthorAssignment_0_1 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2059:1: ( ( rule__RecordType__AuthorAssignment_0_1 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2060:1: ( rule__RecordType__AuthorAssignment_0_1 )
+            // InternalRecordLang.g:1887:1: ( ( rule__RecordType__AuthorAssignment_0_1 ) )
+            // InternalRecordLang.g:1888:1: ( rule__RecordType__AuthorAssignment_0_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeAccess().getAuthorAssignment_0_1()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2061:1: ( rule__RecordType__AuthorAssignment_0_1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2061:2: rule__RecordType__AuthorAssignment_0_1
+            // InternalRecordLang.g:1889:1: ( rule__RecordType__AuthorAssignment_0_1 )
+            // InternalRecordLang.g:1889:2: rule__RecordType__AuthorAssignment_0_1
             {
-            pushFollow(FOLLOW_rule__RecordType__AuthorAssignment_0_1_in_rule__RecordType__Group_0__1__Impl4202);
+            pushFollow(FOLLOW_2);
             rule__RecordType__AuthorAssignment_0_1();
 
             state._fsp--;
@@ -6341,21 +5796,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group_1__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2075:1: rule__RecordType__Group_1__0 : rule__RecordType__Group_1__0__Impl rule__RecordType__Group_1__1 ;
+    // InternalRecordLang.g:1903:1: rule__RecordType__Group_1__0 : rule__RecordType__Group_1__0__Impl rule__RecordType__Group_1__1 ;
     public final void rule__RecordType__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2079:1: ( rule__RecordType__Group_1__0__Impl rule__RecordType__Group_1__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2080:2: rule__RecordType__Group_1__0__Impl rule__RecordType__Group_1__1
+            // InternalRecordLang.g:1907:1: ( rule__RecordType__Group_1__0__Impl rule__RecordType__Group_1__1 )
+            // InternalRecordLang.g:1908:2: rule__RecordType__Group_1__0__Impl rule__RecordType__Group_1__1
             {
-            pushFollow(FOLLOW_rule__RecordType__Group_1__0__Impl_in_rule__RecordType__Group_1__04236);
+            pushFollow(FOLLOW_9);
             rule__RecordType__Group_1__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__RecordType__Group_1__1_in_rule__RecordType__Group_1__04239);
+            pushFollow(FOLLOW_2);
             rule__RecordType__Group_1__1();
 
             state._fsp--;
@@ -6379,22 +5834,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group_1__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2087:1: rule__RecordType__Group_1__0__Impl : ( '@since' ) ;
+    // InternalRecordLang.g:1915:1: rule__RecordType__Group_1__0__Impl : ( '@since' ) ;
     public final void rule__RecordType__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2091:1: ( ( '@since' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2092:1: ( '@since' )
+            // InternalRecordLang.g:1919:1: ( ( '@since' ) )
+            // InternalRecordLang.g:1920:1: ( '@since' )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2092:1: ( '@since' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2093:1: '@since'
+            // InternalRecordLang.g:1920:1: ( '@since' )
+            // InternalRecordLang.g:1921:1: '@since'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeAccess().getSinceKeyword_1_0()); 
             }
-            match(input,21,FOLLOW_21_in_rule__RecordType__Group_1__0__Impl4267); if (state.failed) return ;
+            match(input,20,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getRecordTypeAccess().getSinceKeyword_1_0()); 
             }
@@ -6420,16 +5875,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group_1__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2106:1: rule__RecordType__Group_1__1 : rule__RecordType__Group_1__1__Impl ;
+    // InternalRecordLang.g:1934:1: rule__RecordType__Group_1__1 : rule__RecordType__Group_1__1__Impl ;
     public final void rule__RecordType__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2110:1: ( rule__RecordType__Group_1__1__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2111:2: rule__RecordType__Group_1__1__Impl
+            // InternalRecordLang.g:1938:1: ( rule__RecordType__Group_1__1__Impl )
+            // InternalRecordLang.g:1939:2: rule__RecordType__Group_1__1__Impl
             {
-            pushFollow(FOLLOW_rule__RecordType__Group_1__1__Impl_in_rule__RecordType__Group_1__14298);
+            pushFollow(FOLLOW_2);
             rule__RecordType__Group_1__1__Impl();
 
             state._fsp--;
@@ -6453,25 +5908,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group_1__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2117:1: rule__RecordType__Group_1__1__Impl : ( ( rule__RecordType__SinceAssignment_1_1 ) ) ;
+    // InternalRecordLang.g:1945:1: rule__RecordType__Group_1__1__Impl : ( ( rule__RecordType__SinceAssignment_1_1 ) ) ;
     public final void rule__RecordType__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2121:1: ( ( ( rule__RecordType__SinceAssignment_1_1 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2122:1: ( ( rule__RecordType__SinceAssignment_1_1 ) )
+            // InternalRecordLang.g:1949:1: ( ( ( rule__RecordType__SinceAssignment_1_1 ) ) )
+            // InternalRecordLang.g:1950:1: ( ( rule__RecordType__SinceAssignment_1_1 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2122:1: ( ( rule__RecordType__SinceAssignment_1_1 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2123:1: ( rule__RecordType__SinceAssignment_1_1 )
+            // InternalRecordLang.g:1950:1: ( ( rule__RecordType__SinceAssignment_1_1 ) )
+            // InternalRecordLang.g:1951:1: ( rule__RecordType__SinceAssignment_1_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeAccess().getSinceAssignment_1_1()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2124:1: ( rule__RecordType__SinceAssignment_1_1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2124:2: rule__RecordType__SinceAssignment_1_1
+            // InternalRecordLang.g:1952:1: ( rule__RecordType__SinceAssignment_1_1 )
+            // InternalRecordLang.g:1952:2: rule__RecordType__SinceAssignment_1_1
             {
-            pushFollow(FOLLOW_rule__RecordType__SinceAssignment_1_1_in_rule__RecordType__Group_1__1__Impl4325);
+            pushFollow(FOLLOW_2);
             rule__RecordType__SinceAssignment_1_1();
 
             state._fsp--;
@@ -6504,21 +5959,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group_5__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2138:1: rule__RecordType__Group_5__0 : rule__RecordType__Group_5__0__Impl rule__RecordType__Group_5__1 ;
+    // InternalRecordLang.g:1966:1: rule__RecordType__Group_5__0 : rule__RecordType__Group_5__0__Impl rule__RecordType__Group_5__1 ;
     public final void rule__RecordType__Group_5__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2142:1: ( rule__RecordType__Group_5__0__Impl rule__RecordType__Group_5__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2143:2: rule__RecordType__Group_5__0__Impl rule__RecordType__Group_5__1
+            // InternalRecordLang.g:1970:1: ( rule__RecordType__Group_5__0__Impl rule__RecordType__Group_5__1 )
+            // InternalRecordLang.g:1971:2: rule__RecordType__Group_5__0__Impl rule__RecordType__Group_5__1
             {
-            pushFollow(FOLLOW_rule__RecordType__Group_5__0__Impl_in_rule__RecordType__Group_5__04359);
+            pushFollow(FOLLOW_3);
             rule__RecordType__Group_5__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__RecordType__Group_5__1_in_rule__RecordType__Group_5__04362);
+            pushFollow(FOLLOW_2);
             rule__RecordType__Group_5__1();
 
             state._fsp--;
@@ -6542,22 +5997,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group_5__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2150:1: rule__RecordType__Group_5__0__Impl : ( 'extends' ) ;
+    // InternalRecordLang.g:1978:1: rule__RecordType__Group_5__0__Impl : ( 'extends' ) ;
     public final void rule__RecordType__Group_5__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2154:1: ( ( 'extends' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2155:1: ( 'extends' )
+            // InternalRecordLang.g:1982:1: ( ( 'extends' ) )
+            // InternalRecordLang.g:1983:1: ( 'extends' )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2155:1: ( 'extends' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2156:1: 'extends'
+            // InternalRecordLang.g:1983:1: ( 'extends' )
+            // InternalRecordLang.g:1984:1: 'extends'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeAccess().getExtendsKeyword_5_0()); 
             }
-            match(input,27,FOLLOW_27_in_rule__RecordType__Group_5__0__Impl4390); if (state.failed) return ;
+            match(input,26,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getRecordTypeAccess().getExtendsKeyword_5_0()); 
             }
@@ -6583,16 +6038,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group_5__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2169:1: rule__RecordType__Group_5__1 : rule__RecordType__Group_5__1__Impl ;
+    // InternalRecordLang.g:1997:1: rule__RecordType__Group_5__1 : rule__RecordType__Group_5__1__Impl ;
     public final void rule__RecordType__Group_5__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2173:1: ( rule__RecordType__Group_5__1__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2174:2: rule__RecordType__Group_5__1__Impl
+            // InternalRecordLang.g:2001:1: ( rule__RecordType__Group_5__1__Impl )
+            // InternalRecordLang.g:2002:2: rule__RecordType__Group_5__1__Impl
             {
-            pushFollow(FOLLOW_rule__RecordType__Group_5__1__Impl_in_rule__RecordType__Group_5__14421);
+            pushFollow(FOLLOW_2);
             rule__RecordType__Group_5__1__Impl();
 
             state._fsp--;
@@ -6616,25 +6071,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group_5__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2180:1: rule__RecordType__Group_5__1__Impl : ( ( rule__RecordType__ParentAssignment_5_1 ) ) ;
+    // InternalRecordLang.g:2008:1: rule__RecordType__Group_5__1__Impl : ( ( rule__RecordType__ParentAssignment_5_1 ) ) ;
     public final void rule__RecordType__Group_5__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2184:1: ( ( ( rule__RecordType__ParentAssignment_5_1 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2185:1: ( ( rule__RecordType__ParentAssignment_5_1 ) )
+            // InternalRecordLang.g:2012:1: ( ( ( rule__RecordType__ParentAssignment_5_1 ) ) )
+            // InternalRecordLang.g:2013:1: ( ( rule__RecordType__ParentAssignment_5_1 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2185:1: ( ( rule__RecordType__ParentAssignment_5_1 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2186:1: ( rule__RecordType__ParentAssignment_5_1 )
+            // InternalRecordLang.g:2013:1: ( ( rule__RecordType__ParentAssignment_5_1 ) )
+            // InternalRecordLang.g:2014:1: ( rule__RecordType__ParentAssignment_5_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeAccess().getParentAssignment_5_1()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2187:1: ( rule__RecordType__ParentAssignment_5_1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2187:2: rule__RecordType__ParentAssignment_5_1
+            // InternalRecordLang.g:2015:1: ( rule__RecordType__ParentAssignment_5_1 )
+            // InternalRecordLang.g:2015:2: rule__RecordType__ParentAssignment_5_1
             {
-            pushFollow(FOLLOW_rule__RecordType__ParentAssignment_5_1_in_rule__RecordType__Group_5__1__Impl4448);
+            pushFollow(FOLLOW_2);
             rule__RecordType__ParentAssignment_5_1();
 
             state._fsp--;
@@ -6667,21 +6122,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group_6__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2201:1: rule__RecordType__Group_6__0 : rule__RecordType__Group_6__0__Impl rule__RecordType__Group_6__1 ;
+    // InternalRecordLang.g:2029:1: rule__RecordType__Group_6__0 : rule__RecordType__Group_6__0__Impl rule__RecordType__Group_6__1 ;
     public final void rule__RecordType__Group_6__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2205:1: ( rule__RecordType__Group_6__0__Impl rule__RecordType__Group_6__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2206:2: rule__RecordType__Group_6__0__Impl rule__RecordType__Group_6__1
+            // InternalRecordLang.g:2033:1: ( rule__RecordType__Group_6__0__Impl rule__RecordType__Group_6__1 )
+            // InternalRecordLang.g:2034:2: rule__RecordType__Group_6__0__Impl rule__RecordType__Group_6__1
             {
-            pushFollow(FOLLOW_rule__RecordType__Group_6__0__Impl_in_rule__RecordType__Group_6__04482);
+            pushFollow(FOLLOW_3);
             rule__RecordType__Group_6__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__RecordType__Group_6__1_in_rule__RecordType__Group_6__04485);
+            pushFollow(FOLLOW_2);
             rule__RecordType__Group_6__1();
 
             state._fsp--;
@@ -6705,22 +6160,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group_6__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2213:1: rule__RecordType__Group_6__0__Impl : ( ':' ) ;
+    // InternalRecordLang.g:2041:1: rule__RecordType__Group_6__0__Impl : ( ':' ) ;
     public final void rule__RecordType__Group_6__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2217:1: ( ( ':' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2218:1: ( ':' )
+            // InternalRecordLang.g:2045:1: ( ( ':' ) )
+            // InternalRecordLang.g:2046:1: ( ':' )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2218:1: ( ':' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2219:1: ':'
+            // InternalRecordLang.g:2046:1: ( ':' )
+            // InternalRecordLang.g:2047:1: ':'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeAccess().getColonKeyword_6_0()); 
             }
-            match(input,22,FOLLOW_22_in_rule__RecordType__Group_6__0__Impl4513); if (state.failed) return ;
+            match(input,21,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getRecordTypeAccess().getColonKeyword_6_0()); 
             }
@@ -6746,21 +6201,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group_6__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2232:1: rule__RecordType__Group_6__1 : rule__RecordType__Group_6__1__Impl rule__RecordType__Group_6__2 ;
+    // InternalRecordLang.g:2060:1: rule__RecordType__Group_6__1 : rule__RecordType__Group_6__1__Impl rule__RecordType__Group_6__2 ;
     public final void rule__RecordType__Group_6__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2236:1: ( rule__RecordType__Group_6__1__Impl rule__RecordType__Group_6__2 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2237:2: rule__RecordType__Group_6__1__Impl rule__RecordType__Group_6__2
+            // InternalRecordLang.g:2064:1: ( rule__RecordType__Group_6__1__Impl rule__RecordType__Group_6__2 )
+            // InternalRecordLang.g:2065:2: rule__RecordType__Group_6__1__Impl rule__RecordType__Group_6__2
             {
-            pushFollow(FOLLOW_rule__RecordType__Group_6__1__Impl_in_rule__RecordType__Group_6__14544);
+            pushFollow(FOLLOW_10);
             rule__RecordType__Group_6__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__RecordType__Group_6__2_in_rule__RecordType__Group_6__14547);
+            pushFollow(FOLLOW_2);
             rule__RecordType__Group_6__2();
 
             state._fsp--;
@@ -6784,25 +6239,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group_6__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2244:1: rule__RecordType__Group_6__1__Impl : ( ( rule__RecordType__ParentsAssignment_6_1 ) ) ;
+    // InternalRecordLang.g:2072:1: rule__RecordType__Group_6__1__Impl : ( ( rule__RecordType__ParentsAssignment_6_1 ) ) ;
     public final void rule__RecordType__Group_6__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2248:1: ( ( ( rule__RecordType__ParentsAssignment_6_1 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2249:1: ( ( rule__RecordType__ParentsAssignment_6_1 ) )
+            // InternalRecordLang.g:2076:1: ( ( ( rule__RecordType__ParentsAssignment_6_1 ) ) )
+            // InternalRecordLang.g:2077:1: ( ( rule__RecordType__ParentsAssignment_6_1 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2249:1: ( ( rule__RecordType__ParentsAssignment_6_1 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2250:1: ( rule__RecordType__ParentsAssignment_6_1 )
+            // InternalRecordLang.g:2077:1: ( ( rule__RecordType__ParentsAssignment_6_1 ) )
+            // InternalRecordLang.g:2078:1: ( rule__RecordType__ParentsAssignment_6_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeAccess().getParentsAssignment_6_1()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2251:1: ( rule__RecordType__ParentsAssignment_6_1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2251:2: rule__RecordType__ParentsAssignment_6_1
+            // InternalRecordLang.g:2079:1: ( rule__RecordType__ParentsAssignment_6_1 )
+            // InternalRecordLang.g:2079:2: rule__RecordType__ParentsAssignment_6_1
             {
-            pushFollow(FOLLOW_rule__RecordType__ParentsAssignment_6_1_in_rule__RecordType__Group_6__1__Impl4574);
+            pushFollow(FOLLOW_2);
             rule__RecordType__ParentsAssignment_6_1();
 
             state._fsp--;
@@ -6835,16 +6290,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group_6__2"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2261:1: rule__RecordType__Group_6__2 : rule__RecordType__Group_6__2__Impl ;
+    // InternalRecordLang.g:2089:1: rule__RecordType__Group_6__2 : rule__RecordType__Group_6__2__Impl ;
     public final void rule__RecordType__Group_6__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2265:1: ( rule__RecordType__Group_6__2__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2266:2: rule__RecordType__Group_6__2__Impl
+            // InternalRecordLang.g:2093:1: ( rule__RecordType__Group_6__2__Impl )
+            // InternalRecordLang.g:2094:2: rule__RecordType__Group_6__2__Impl
             {
-            pushFollow(FOLLOW_rule__RecordType__Group_6__2__Impl_in_rule__RecordType__Group_6__24604);
+            pushFollow(FOLLOW_2);
             rule__RecordType__Group_6__2__Impl();
 
             state._fsp--;
@@ -6868,37 +6323,37 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group_6__2__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2272:1: rule__RecordType__Group_6__2__Impl : ( ( rule__RecordType__Group_6_2__0 )* ) ;
+    // InternalRecordLang.g:2100:1: rule__RecordType__Group_6__2__Impl : ( ( rule__RecordType__Group_6_2__0 )* ) ;
     public final void rule__RecordType__Group_6__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2276:1: ( ( ( rule__RecordType__Group_6_2__0 )* ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2277:1: ( ( rule__RecordType__Group_6_2__0 )* )
+            // InternalRecordLang.g:2104:1: ( ( ( rule__RecordType__Group_6_2__0 )* ) )
+            // InternalRecordLang.g:2105:1: ( ( rule__RecordType__Group_6_2__0 )* )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2277:1: ( ( rule__RecordType__Group_6_2__0 )* )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2278:1: ( rule__RecordType__Group_6_2__0 )*
+            // InternalRecordLang.g:2105:1: ( ( rule__RecordType__Group_6_2__0 )* )
+            // InternalRecordLang.g:2106:1: ( rule__RecordType__Group_6_2__0 )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeAccess().getGroup_6_2()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2279:1: ( rule__RecordType__Group_6_2__0 )*
-            loop23:
+            // InternalRecordLang.g:2107:1: ( rule__RecordType__Group_6_2__0 )*
+            loop21:
             do {
-                int alt23=2;
-                int LA23_0 = input.LA(1);
+                int alt21=2;
+                int LA21_0 = input.LA(1);
 
-                if ( (LA23_0==23) ) {
-                    alt23=1;
+                if ( (LA21_0==22) ) {
+                    alt21=1;
                 }
 
 
-                switch (alt23) {
+                switch (alt21) {
             	case 1 :
-            	    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2279:2: rule__RecordType__Group_6_2__0
+            	    // InternalRecordLang.g:2107:2: rule__RecordType__Group_6_2__0
             	    {
-            	    pushFollow(FOLLOW_rule__RecordType__Group_6_2__0_in_rule__RecordType__Group_6__2__Impl4631);
+            	    pushFollow(FOLLOW_11);
             	    rule__RecordType__Group_6_2__0();
 
             	    state._fsp--;
@@ -6908,7 +6363,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             	    break;
 
             	default :
-            	    break loop23;
+            	    break loop21;
                 }
             } while (true);
 
@@ -6937,21 +6392,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group_6_2__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2295:1: rule__RecordType__Group_6_2__0 : rule__RecordType__Group_6_2__0__Impl rule__RecordType__Group_6_2__1 ;
+    // InternalRecordLang.g:2123:1: rule__RecordType__Group_6_2__0 : rule__RecordType__Group_6_2__0__Impl rule__RecordType__Group_6_2__1 ;
     public final void rule__RecordType__Group_6_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2299:1: ( rule__RecordType__Group_6_2__0__Impl rule__RecordType__Group_6_2__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2300:2: rule__RecordType__Group_6_2__0__Impl rule__RecordType__Group_6_2__1
+            // InternalRecordLang.g:2127:1: ( rule__RecordType__Group_6_2__0__Impl rule__RecordType__Group_6_2__1 )
+            // InternalRecordLang.g:2128:2: rule__RecordType__Group_6_2__0__Impl rule__RecordType__Group_6_2__1
             {
-            pushFollow(FOLLOW_rule__RecordType__Group_6_2__0__Impl_in_rule__RecordType__Group_6_2__04668);
+            pushFollow(FOLLOW_3);
             rule__RecordType__Group_6_2__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__RecordType__Group_6_2__1_in_rule__RecordType__Group_6_2__04671);
+            pushFollow(FOLLOW_2);
             rule__RecordType__Group_6_2__1();
 
             state._fsp--;
@@ -6975,22 +6430,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group_6_2__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2307:1: rule__RecordType__Group_6_2__0__Impl : ( ',' ) ;
+    // InternalRecordLang.g:2135:1: rule__RecordType__Group_6_2__0__Impl : ( ',' ) ;
     public final void rule__RecordType__Group_6_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2311:1: ( ( ',' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2312:1: ( ',' )
+            // InternalRecordLang.g:2139:1: ( ( ',' ) )
+            // InternalRecordLang.g:2140:1: ( ',' )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2312:1: ( ',' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2313:1: ','
+            // InternalRecordLang.g:2140:1: ( ',' )
+            // InternalRecordLang.g:2141:1: ','
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeAccess().getCommaKeyword_6_2_0()); 
             }
-            match(input,23,FOLLOW_23_in_rule__RecordType__Group_6_2__0__Impl4699); if (state.failed) return ;
+            match(input,22,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getRecordTypeAccess().getCommaKeyword_6_2_0()); 
             }
@@ -7016,16 +6471,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group_6_2__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2326:1: rule__RecordType__Group_6_2__1 : rule__RecordType__Group_6_2__1__Impl ;
+    // InternalRecordLang.g:2154:1: rule__RecordType__Group_6_2__1 : rule__RecordType__Group_6_2__1__Impl ;
     public final void rule__RecordType__Group_6_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2330:1: ( rule__RecordType__Group_6_2__1__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2331:2: rule__RecordType__Group_6_2__1__Impl
+            // InternalRecordLang.g:2158:1: ( rule__RecordType__Group_6_2__1__Impl )
+            // InternalRecordLang.g:2159:2: rule__RecordType__Group_6_2__1__Impl
             {
-            pushFollow(FOLLOW_rule__RecordType__Group_6_2__1__Impl_in_rule__RecordType__Group_6_2__14730);
+            pushFollow(FOLLOW_2);
             rule__RecordType__Group_6_2__1__Impl();
 
             state._fsp--;
@@ -7049,25 +6504,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group_6_2__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2337:1: rule__RecordType__Group_6_2__1__Impl : ( ( rule__RecordType__ParentsAssignment_6_2_1 ) ) ;
+    // InternalRecordLang.g:2165:1: rule__RecordType__Group_6_2__1__Impl : ( ( rule__RecordType__ParentsAssignment_6_2_1 ) ) ;
     public final void rule__RecordType__Group_6_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2341:1: ( ( ( rule__RecordType__ParentsAssignment_6_2_1 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2342:1: ( ( rule__RecordType__ParentsAssignment_6_2_1 ) )
+            // InternalRecordLang.g:2169:1: ( ( ( rule__RecordType__ParentsAssignment_6_2_1 ) ) )
+            // InternalRecordLang.g:2170:1: ( ( rule__RecordType__ParentsAssignment_6_2_1 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2342:1: ( ( rule__RecordType__ParentsAssignment_6_2_1 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2343:1: ( rule__RecordType__ParentsAssignment_6_2_1 )
+            // InternalRecordLang.g:2170:1: ( ( rule__RecordType__ParentsAssignment_6_2_1 ) )
+            // InternalRecordLang.g:2171:1: ( rule__RecordType__ParentsAssignment_6_2_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeAccess().getParentsAssignment_6_2_1()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2344:1: ( rule__RecordType__ParentsAssignment_6_2_1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2344:2: rule__RecordType__ParentsAssignment_6_2_1
+            // InternalRecordLang.g:2172:1: ( rule__RecordType__ParentsAssignment_6_2_1 )
+            // InternalRecordLang.g:2172:2: rule__RecordType__ParentsAssignment_6_2_1
             {
-            pushFollow(FOLLOW_rule__RecordType__ParentsAssignment_6_2_1_in_rule__RecordType__Group_6_2__1__Impl4757);
+            pushFollow(FOLLOW_2);
             rule__RecordType__ParentsAssignment_6_2_1();
 
             state._fsp--;
@@ -7100,21 +6555,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group_7__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2358:1: rule__RecordType__Group_7__0 : rule__RecordType__Group_7__0__Impl rule__RecordType__Group_7__1 ;
+    // InternalRecordLang.g:2186:1: rule__RecordType__Group_7__0 : rule__RecordType__Group_7__0__Impl rule__RecordType__Group_7__1 ;
     public final void rule__RecordType__Group_7__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2362:1: ( rule__RecordType__Group_7__0__Impl rule__RecordType__Group_7__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2363:2: rule__RecordType__Group_7__0__Impl rule__RecordType__Group_7__1
+            // InternalRecordLang.g:2190:1: ( rule__RecordType__Group_7__0__Impl rule__RecordType__Group_7__1 )
+            // InternalRecordLang.g:2191:2: rule__RecordType__Group_7__0__Impl rule__RecordType__Group_7__1
             {
-            pushFollow(FOLLOW_rule__RecordType__Group_7__0__Impl_in_rule__RecordType__Group_7__04791);
+            pushFollow(FOLLOW_12);
             rule__RecordType__Group_7__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__RecordType__Group_7__1_in_rule__RecordType__Group_7__04794);
+            pushFollow(FOLLOW_2);
             rule__RecordType__Group_7__1();
 
             state._fsp--;
@@ -7138,22 +6593,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group_7__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2370:1: rule__RecordType__Group_7__0__Impl : ( '{' ) ;
+    // InternalRecordLang.g:2198:1: rule__RecordType__Group_7__0__Impl : ( '{' ) ;
     public final void rule__RecordType__Group_7__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2374:1: ( ( '{' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2375:1: ( '{' )
+            // InternalRecordLang.g:2202:1: ( ( '{' ) )
+            // InternalRecordLang.g:2203:1: ( '{' )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2375:1: ( '{' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2376:1: '{'
+            // InternalRecordLang.g:2203:1: ( '{' )
+            // InternalRecordLang.g:2204:1: '{'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeAccess().getLeftCurlyBracketKeyword_7_0()); 
             }
-            match(input,24,FOLLOW_24_in_rule__RecordType__Group_7__0__Impl4822); if (state.failed) return ;
+            match(input,23,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getRecordTypeAccess().getLeftCurlyBracketKeyword_7_0()); 
             }
@@ -7179,21 +6634,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group_7__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2389:1: rule__RecordType__Group_7__1 : rule__RecordType__Group_7__1__Impl rule__RecordType__Group_7__2 ;
+    // InternalRecordLang.g:2217:1: rule__RecordType__Group_7__1 : rule__RecordType__Group_7__1__Impl rule__RecordType__Group_7__2 ;
     public final void rule__RecordType__Group_7__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2393:1: ( rule__RecordType__Group_7__1__Impl rule__RecordType__Group_7__2 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2394:2: rule__RecordType__Group_7__1__Impl rule__RecordType__Group_7__2
+            // InternalRecordLang.g:2221:1: ( rule__RecordType__Group_7__1__Impl rule__RecordType__Group_7__2 )
+            // InternalRecordLang.g:2222:2: rule__RecordType__Group_7__1__Impl rule__RecordType__Group_7__2
             {
-            pushFollow(FOLLOW_rule__RecordType__Group_7__1__Impl_in_rule__RecordType__Group_7__14853);
+            pushFollow(FOLLOW_12);
             rule__RecordType__Group_7__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__RecordType__Group_7__2_in_rule__RecordType__Group_7__14856);
+            pushFollow(FOLLOW_2);
             rule__RecordType__Group_7__2();
 
             state._fsp--;
@@ -7217,37 +6672,37 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group_7__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2401:1: rule__RecordType__Group_7__1__Impl : ( ( rule__RecordType__Alternatives_7_1 )* ) ;
+    // InternalRecordLang.g:2229:1: rule__RecordType__Group_7__1__Impl : ( ( rule__RecordType__Alternatives_7_1 )* ) ;
     public final void rule__RecordType__Group_7__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2405:1: ( ( ( rule__RecordType__Alternatives_7_1 )* ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2406:1: ( ( rule__RecordType__Alternatives_7_1 )* )
+            // InternalRecordLang.g:2233:1: ( ( ( rule__RecordType__Alternatives_7_1 )* ) )
+            // InternalRecordLang.g:2234:1: ( ( rule__RecordType__Alternatives_7_1 )* )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2406:1: ( ( rule__RecordType__Alternatives_7_1 )* )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2407:1: ( rule__RecordType__Alternatives_7_1 )*
+            // InternalRecordLang.g:2234:1: ( ( rule__RecordType__Alternatives_7_1 )* )
+            // InternalRecordLang.g:2235:1: ( rule__RecordType__Alternatives_7_1 )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeAccess().getAlternatives_7_1()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2408:1: ( rule__RecordType__Alternatives_7_1 )*
-            loop24:
+            // InternalRecordLang.g:2236:1: ( rule__RecordType__Alternatives_7_1 )*
+            loop22:
             do {
-                int alt24=2;
-                int LA24_0 = input.LA(1);
+                int alt22=2;
+                int LA22_0 = input.LA(1);
 
-                if ( (LA24_0==RULE_ID||(LA24_0>=14 && LA24_0<=15)||LA24_0==28||LA24_0==30||LA24_0==32) ) {
-                    alt24=1;
+                if ( (LA22_0==RULE_ID||(LA22_0>=14 && LA22_0<=15)||LA22_0==27||LA22_0==29||LA22_0==31) ) {
+                    alt22=1;
                 }
 
 
-                switch (alt24) {
+                switch (alt22) {
             	case 1 :
-            	    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2408:2: rule__RecordType__Alternatives_7_1
+            	    // InternalRecordLang.g:2236:2: rule__RecordType__Alternatives_7_1
             	    {
-            	    pushFollow(FOLLOW_rule__RecordType__Alternatives_7_1_in_rule__RecordType__Group_7__1__Impl4883);
+            	    pushFollow(FOLLOW_13);
             	    rule__RecordType__Alternatives_7_1();
 
             	    state._fsp--;
@@ -7257,7 +6712,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             	    break;
 
             	default :
-            	    break loop24;
+            	    break loop22;
                 }
             } while (true);
 
@@ -7286,16 +6741,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group_7__2"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2418:1: rule__RecordType__Group_7__2 : rule__RecordType__Group_7__2__Impl ;
+    // InternalRecordLang.g:2246:1: rule__RecordType__Group_7__2 : rule__RecordType__Group_7__2__Impl ;
     public final void rule__RecordType__Group_7__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2422:1: ( rule__RecordType__Group_7__2__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2423:2: rule__RecordType__Group_7__2__Impl
+            // InternalRecordLang.g:2250:1: ( rule__RecordType__Group_7__2__Impl )
+            // InternalRecordLang.g:2251:2: rule__RecordType__Group_7__2__Impl
             {
-            pushFollow(FOLLOW_rule__RecordType__Group_7__2__Impl_in_rule__RecordType__Group_7__24914);
+            pushFollow(FOLLOW_2);
             rule__RecordType__Group_7__2__Impl();
 
             state._fsp--;
@@ -7319,22 +6774,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__Group_7__2__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2429:1: rule__RecordType__Group_7__2__Impl : ( '}' ) ;
+    // InternalRecordLang.g:2257:1: rule__RecordType__Group_7__2__Impl : ( '}' ) ;
     public final void rule__RecordType__Group_7__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2433:1: ( ( '}' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2434:1: ( '}' )
+            // InternalRecordLang.g:2261:1: ( ( '}' ) )
+            // InternalRecordLang.g:2262:1: ( '}' )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2434:1: ( '}' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2435:1: '}'
+            // InternalRecordLang.g:2262:1: ( '}' )
+            // InternalRecordLang.g:2263:1: '}'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeAccess().getRightCurlyBracketKeyword_7_2()); 
             }
-            match(input,25,FOLLOW_25_in_rule__RecordType__Group_7__2__Impl4942); if (state.failed) return ;
+            match(input,24,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getRecordTypeAccess().getRightCurlyBracketKeyword_7_2()); 
             }
@@ -7360,21 +6815,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Constant__Group__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2454:1: rule__Constant__Group__0 : rule__Constant__Group__0__Impl rule__Constant__Group__1 ;
+    // InternalRecordLang.g:2282:1: rule__Constant__Group__0 : rule__Constant__Group__0__Impl rule__Constant__Group__1 ;
     public final void rule__Constant__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2458:1: ( rule__Constant__Group__0__Impl rule__Constant__Group__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2459:2: rule__Constant__Group__0__Impl rule__Constant__Group__1
+            // InternalRecordLang.g:2286:1: ( rule__Constant__Group__0__Impl rule__Constant__Group__1 )
+            // InternalRecordLang.g:2287:2: rule__Constant__Group__0__Impl rule__Constant__Group__1
             {
-            pushFollow(FOLLOW_rule__Constant__Group__0__Impl_in_rule__Constant__Group__04979);
+            pushFollow(FOLLOW_3);
             rule__Constant__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Constant__Group__1_in_rule__Constant__Group__04982);
+            pushFollow(FOLLOW_2);
             rule__Constant__Group__1();
 
             state._fsp--;
@@ -7398,22 +6853,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Constant__Group__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2466:1: rule__Constant__Group__0__Impl : ( 'const' ) ;
+    // InternalRecordLang.g:2294:1: rule__Constant__Group__0__Impl : ( 'const' ) ;
     public final void rule__Constant__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2470:1: ( ( 'const' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2471:1: ( 'const' )
+            // InternalRecordLang.g:2298:1: ( ( 'const' ) )
+            // InternalRecordLang.g:2299:1: ( 'const' )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2471:1: ( 'const' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2472:1: 'const'
+            // InternalRecordLang.g:2299:1: ( 'const' )
+            // InternalRecordLang.g:2300:1: 'const'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getConstantAccess().getConstKeyword_0()); 
             }
-            match(input,28,FOLLOW_28_in_rule__Constant__Group__0__Impl5010); if (state.failed) return ;
+            match(input,27,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getConstantAccess().getConstKeyword_0()); 
             }
@@ -7439,21 +6894,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Constant__Group__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2485:1: rule__Constant__Group__1 : rule__Constant__Group__1__Impl rule__Constant__Group__2 ;
+    // InternalRecordLang.g:2313:1: rule__Constant__Group__1 : rule__Constant__Group__1__Impl rule__Constant__Group__2 ;
     public final void rule__Constant__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2489:1: ( rule__Constant__Group__1__Impl rule__Constant__Group__2 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2490:2: rule__Constant__Group__1__Impl rule__Constant__Group__2
+            // InternalRecordLang.g:2317:1: ( rule__Constant__Group__1__Impl rule__Constant__Group__2 )
+            // InternalRecordLang.g:2318:2: rule__Constant__Group__1__Impl rule__Constant__Group__2
             {
-            pushFollow(FOLLOW_rule__Constant__Group__1__Impl_in_rule__Constant__Group__15041);
+            pushFollow(FOLLOW_3);
             rule__Constant__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Constant__Group__2_in_rule__Constant__Group__15044);
+            pushFollow(FOLLOW_2);
             rule__Constant__Group__2();
 
             state._fsp--;
@@ -7477,25 +6932,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Constant__Group__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2497:1: rule__Constant__Group__1__Impl : ( ( rule__Constant__TypeAssignment_1 ) ) ;
+    // InternalRecordLang.g:2325:1: rule__Constant__Group__1__Impl : ( ( rule__Constant__TypeAssignment_1 ) ) ;
     public final void rule__Constant__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2501:1: ( ( ( rule__Constant__TypeAssignment_1 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2502:1: ( ( rule__Constant__TypeAssignment_1 ) )
+            // InternalRecordLang.g:2329:1: ( ( ( rule__Constant__TypeAssignment_1 ) ) )
+            // InternalRecordLang.g:2330:1: ( ( rule__Constant__TypeAssignment_1 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2502:1: ( ( rule__Constant__TypeAssignment_1 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2503:1: ( rule__Constant__TypeAssignment_1 )
+            // InternalRecordLang.g:2330:1: ( ( rule__Constant__TypeAssignment_1 ) )
+            // InternalRecordLang.g:2331:1: ( rule__Constant__TypeAssignment_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getConstantAccess().getTypeAssignment_1()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2504:1: ( rule__Constant__TypeAssignment_1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2504:2: rule__Constant__TypeAssignment_1
+            // InternalRecordLang.g:2332:1: ( rule__Constant__TypeAssignment_1 )
+            // InternalRecordLang.g:2332:2: rule__Constant__TypeAssignment_1
             {
-            pushFollow(FOLLOW_rule__Constant__TypeAssignment_1_in_rule__Constant__Group__1__Impl5071);
+            pushFollow(FOLLOW_2);
             rule__Constant__TypeAssignment_1();
 
             state._fsp--;
@@ -7528,21 +6983,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Constant__Group__2"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2514:1: rule__Constant__Group__2 : rule__Constant__Group__2__Impl rule__Constant__Group__3 ;
+    // InternalRecordLang.g:2342:1: rule__Constant__Group__2 : rule__Constant__Group__2__Impl rule__Constant__Group__3 ;
     public final void rule__Constant__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2518:1: ( rule__Constant__Group__2__Impl rule__Constant__Group__3 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2519:2: rule__Constant__Group__2__Impl rule__Constant__Group__3
+            // InternalRecordLang.g:2346:1: ( rule__Constant__Group__2__Impl rule__Constant__Group__3 )
+            // InternalRecordLang.g:2347:2: rule__Constant__Group__2__Impl rule__Constant__Group__3
             {
-            pushFollow(FOLLOW_rule__Constant__Group__2__Impl_in_rule__Constant__Group__25101);
+            pushFollow(FOLLOW_16);
             rule__Constant__Group__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Constant__Group__3_in_rule__Constant__Group__25104);
+            pushFollow(FOLLOW_2);
             rule__Constant__Group__3();
 
             state._fsp--;
@@ -7566,25 +7021,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Constant__Group__2__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2526:1: rule__Constant__Group__2__Impl : ( ( rule__Constant__NameAssignment_2 ) ) ;
+    // InternalRecordLang.g:2354:1: rule__Constant__Group__2__Impl : ( ( rule__Constant__NameAssignment_2 ) ) ;
     public final void rule__Constant__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2530:1: ( ( ( rule__Constant__NameAssignment_2 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2531:1: ( ( rule__Constant__NameAssignment_2 ) )
+            // InternalRecordLang.g:2358:1: ( ( ( rule__Constant__NameAssignment_2 ) ) )
+            // InternalRecordLang.g:2359:1: ( ( rule__Constant__NameAssignment_2 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2531:1: ( ( rule__Constant__NameAssignment_2 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2532:1: ( rule__Constant__NameAssignment_2 )
+            // InternalRecordLang.g:2359:1: ( ( rule__Constant__NameAssignment_2 ) )
+            // InternalRecordLang.g:2360:1: ( rule__Constant__NameAssignment_2 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getConstantAccess().getNameAssignment_2()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2533:1: ( rule__Constant__NameAssignment_2 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2533:2: rule__Constant__NameAssignment_2
+            // InternalRecordLang.g:2361:1: ( rule__Constant__NameAssignment_2 )
+            // InternalRecordLang.g:2361:2: rule__Constant__NameAssignment_2
             {
-            pushFollow(FOLLOW_rule__Constant__NameAssignment_2_in_rule__Constant__Group__2__Impl5131);
+            pushFollow(FOLLOW_2);
             rule__Constant__NameAssignment_2();
 
             state._fsp--;
@@ -7617,21 +7072,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Constant__Group__3"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2543:1: rule__Constant__Group__3 : rule__Constant__Group__3__Impl rule__Constant__Group__4 ;
+    // InternalRecordLang.g:2371:1: rule__Constant__Group__3 : rule__Constant__Group__3__Impl rule__Constant__Group__4 ;
     public final void rule__Constant__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2547:1: ( rule__Constant__Group__3__Impl rule__Constant__Group__4 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2548:2: rule__Constant__Group__3__Impl rule__Constant__Group__4
+            // InternalRecordLang.g:2375:1: ( rule__Constant__Group__3__Impl rule__Constant__Group__4 )
+            // InternalRecordLang.g:2376:2: rule__Constant__Group__3__Impl rule__Constant__Group__4
             {
-            pushFollow(FOLLOW_rule__Constant__Group__3__Impl_in_rule__Constant__Group__35161);
+            pushFollow(FOLLOW_17);
             rule__Constant__Group__3__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Constant__Group__4_in_rule__Constant__Group__35164);
+            pushFollow(FOLLOW_2);
             rule__Constant__Group__4();
 
             state._fsp--;
@@ -7655,22 +7110,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Constant__Group__3__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2555:1: rule__Constant__Group__3__Impl : ( '=' ) ;
+    // InternalRecordLang.g:2383:1: rule__Constant__Group__3__Impl : ( '=' ) ;
     public final void rule__Constant__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2559:1: ( ( '=' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2560:1: ( '=' )
+            // InternalRecordLang.g:2387:1: ( ( '=' ) )
+            // InternalRecordLang.g:2388:1: ( '=' )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2560:1: ( '=' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2561:1: '='
+            // InternalRecordLang.g:2388:1: ( '=' )
+            // InternalRecordLang.g:2389:1: '='
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getConstantAccess().getEqualsSignKeyword_3()); 
             }
-            match(input,29,FOLLOW_29_in_rule__Constant__Group__3__Impl5192); if (state.failed) return ;
+            match(input,28,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getConstantAccess().getEqualsSignKeyword_3()); 
             }
@@ -7696,16 +7151,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Constant__Group__4"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2574:1: rule__Constant__Group__4 : rule__Constant__Group__4__Impl ;
+    // InternalRecordLang.g:2402:1: rule__Constant__Group__4 : rule__Constant__Group__4__Impl ;
     public final void rule__Constant__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2578:1: ( rule__Constant__Group__4__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2579:2: rule__Constant__Group__4__Impl
+            // InternalRecordLang.g:2406:1: ( rule__Constant__Group__4__Impl )
+            // InternalRecordLang.g:2407:2: rule__Constant__Group__4__Impl
             {
-            pushFollow(FOLLOW_rule__Constant__Group__4__Impl_in_rule__Constant__Group__45223);
+            pushFollow(FOLLOW_2);
             rule__Constant__Group__4__Impl();
 
             state._fsp--;
@@ -7729,25 +7184,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Constant__Group__4__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2585:1: rule__Constant__Group__4__Impl : ( ( rule__Constant__ValueAssignment_4 ) ) ;
+    // InternalRecordLang.g:2413:1: rule__Constant__Group__4__Impl : ( ( rule__Constant__ValueAssignment_4 ) ) ;
     public final void rule__Constant__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2589:1: ( ( ( rule__Constant__ValueAssignment_4 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2590:1: ( ( rule__Constant__ValueAssignment_4 ) )
+            // InternalRecordLang.g:2417:1: ( ( ( rule__Constant__ValueAssignment_4 ) ) )
+            // InternalRecordLang.g:2418:1: ( ( rule__Constant__ValueAssignment_4 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2590:1: ( ( rule__Constant__ValueAssignment_4 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2591:1: ( rule__Constant__ValueAssignment_4 )
+            // InternalRecordLang.g:2418:1: ( ( rule__Constant__ValueAssignment_4 ) )
+            // InternalRecordLang.g:2419:1: ( rule__Constant__ValueAssignment_4 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getConstantAccess().getValueAssignment_4()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2592:1: ( rule__Constant__ValueAssignment_4 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2592:2: rule__Constant__ValueAssignment_4
+            // InternalRecordLang.g:2420:1: ( rule__Constant__ValueAssignment_4 )
+            // InternalRecordLang.g:2420:2: rule__Constant__ValueAssignment_4
             {
-            pushFollow(FOLLOW_rule__Constant__ValueAssignment_4_in_rule__Constant__Group__4__Impl5250);
+            pushFollow(FOLLOW_2);
             rule__Constant__ValueAssignment_4();
 
             state._fsp--;
@@ -7780,21 +7235,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Property__Group__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2612:1: rule__Property__Group__0 : rule__Property__Group__0__Impl rule__Property__Group__1 ;
+    // InternalRecordLang.g:2440:1: rule__Property__Group__0 : rule__Property__Group__0__Impl rule__Property__Group__1 ;
     public final void rule__Property__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2616:1: ( rule__Property__Group__0__Impl rule__Property__Group__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2617:2: rule__Property__Group__0__Impl rule__Property__Group__1
+            // InternalRecordLang.g:2444:1: ( rule__Property__Group__0__Impl rule__Property__Group__1 )
+            // InternalRecordLang.g:2445:2: rule__Property__Group__0__Impl rule__Property__Group__1
             {
-            pushFollow(FOLLOW_rule__Property__Group__0__Impl_in_rule__Property__Group__05290);
+            pushFollow(FOLLOW_18);
             rule__Property__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Property__Group__1_in_rule__Property__Group__05293);
+            pushFollow(FOLLOW_2);
             rule__Property__Group__1();
 
             state._fsp--;
@@ -7818,37 +7273,37 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Property__Group__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2624:1: rule__Property__Group__0__Impl : ( ( rule__Property__ModifiersAssignment_0 )* ) ;
+    // InternalRecordLang.g:2452:1: rule__Property__Group__0__Impl : ( ( rule__Property__ModifiersAssignment_0 )* ) ;
     public final void rule__Property__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2628:1: ( ( ( rule__Property__ModifiersAssignment_0 )* ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2629:1: ( ( rule__Property__ModifiersAssignment_0 )* )
+            // InternalRecordLang.g:2456:1: ( ( ( rule__Property__ModifiersAssignment_0 )* ) )
+            // InternalRecordLang.g:2457:1: ( ( rule__Property__ModifiersAssignment_0 )* )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2629:1: ( ( rule__Property__ModifiersAssignment_0 )* )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2630:1: ( rule__Property__ModifiersAssignment_0 )*
+            // InternalRecordLang.g:2457:1: ( ( rule__Property__ModifiersAssignment_0 )* )
+            // InternalRecordLang.g:2458:1: ( rule__Property__ModifiersAssignment_0 )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyAccess().getModifiersAssignment_0()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2631:1: ( rule__Property__ModifiersAssignment_0 )*
-            loop25:
+            // InternalRecordLang.g:2459:1: ( rule__Property__ModifiersAssignment_0 )*
+            loop23:
             do {
-                int alt25=2;
-                int LA25_0 = input.LA(1);
+                int alt23=2;
+                int LA23_0 = input.LA(1);
 
-                if ( ((LA25_0>=14 && LA25_0<=15)) ) {
-                    alt25=1;
+                if ( ((LA23_0>=14 && LA23_0<=15)) ) {
+                    alt23=1;
                 }
 
 
-                switch (alt25) {
+                switch (alt23) {
             	case 1 :
-            	    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2631:2: rule__Property__ModifiersAssignment_0
+            	    // InternalRecordLang.g:2459:2: rule__Property__ModifiersAssignment_0
             	    {
-            	    pushFollow(FOLLOW_rule__Property__ModifiersAssignment_0_in_rule__Property__Group__0__Impl5320);
+            	    pushFollow(FOLLOW_19);
             	    rule__Property__ModifiersAssignment_0();
 
             	    state._fsp--;
@@ -7858,7 +7313,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             	    break;
 
             	default :
-            	    break loop25;
+            	    break loop23;
                 }
             } while (true);
 
@@ -7887,21 +7342,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Property__Group__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2641:1: rule__Property__Group__1 : rule__Property__Group__1__Impl rule__Property__Group__2 ;
+    // InternalRecordLang.g:2469:1: rule__Property__Group__1 : rule__Property__Group__1__Impl rule__Property__Group__2 ;
     public final void rule__Property__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2645:1: ( rule__Property__Group__1__Impl rule__Property__Group__2 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2646:2: rule__Property__Group__1__Impl rule__Property__Group__2
+            // InternalRecordLang.g:2473:1: ( rule__Property__Group__1__Impl rule__Property__Group__2 )
+            // InternalRecordLang.g:2474:2: rule__Property__Group__1__Impl rule__Property__Group__2
             {
-            pushFollow(FOLLOW_rule__Property__Group__1__Impl_in_rule__Property__Group__15351);
+            pushFollow(FOLLOW_18);
             rule__Property__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Property__Group__2_in_rule__Property__Group__15354);
+            pushFollow(FOLLOW_2);
             rule__Property__Group__2();
 
             state._fsp--;
@@ -7925,33 +7380,33 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Property__Group__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2653:1: rule__Property__Group__1__Impl : ( ( rule__Property__ForeignKeyAssignment_1 )? ) ;
+    // InternalRecordLang.g:2481:1: rule__Property__Group__1__Impl : ( ( rule__Property__ForeignKeyAssignment_1 )? ) ;
     public final void rule__Property__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2657:1: ( ( ( rule__Property__ForeignKeyAssignment_1 )? ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2658:1: ( ( rule__Property__ForeignKeyAssignment_1 )? )
+            // InternalRecordLang.g:2485:1: ( ( ( rule__Property__ForeignKeyAssignment_1 )? ) )
+            // InternalRecordLang.g:2486:1: ( ( rule__Property__ForeignKeyAssignment_1 )? )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2658:1: ( ( rule__Property__ForeignKeyAssignment_1 )? )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2659:1: ( rule__Property__ForeignKeyAssignment_1 )?
+            // InternalRecordLang.g:2486:1: ( ( rule__Property__ForeignKeyAssignment_1 )? )
+            // InternalRecordLang.g:2487:1: ( rule__Property__ForeignKeyAssignment_1 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyAccess().getForeignKeyAssignment_1()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2660:1: ( rule__Property__ForeignKeyAssignment_1 )?
-            int alt26=2;
-            int LA26_0 = input.LA(1);
+            // InternalRecordLang.g:2488:1: ( rule__Property__ForeignKeyAssignment_1 )?
+            int alt24=2;
+            int LA24_0 = input.LA(1);
 
-            if ( (LA26_0==32) ) {
-                alt26=1;
+            if ( (LA24_0==31) ) {
+                alt24=1;
             }
-            switch (alt26) {
+            switch (alt24) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2660:2: rule__Property__ForeignKeyAssignment_1
+                    // InternalRecordLang.g:2488:2: rule__Property__ForeignKeyAssignment_1
                     {
-                    pushFollow(FOLLOW_rule__Property__ForeignKeyAssignment_1_in_rule__Property__Group__1__Impl5381);
+                    pushFollow(FOLLOW_2);
                     rule__Property__ForeignKeyAssignment_1();
 
                     state._fsp--;
@@ -7987,21 +7442,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Property__Group__2"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2670:1: rule__Property__Group__2 : rule__Property__Group__2__Impl rule__Property__Group__3 ;
+    // InternalRecordLang.g:2498:1: rule__Property__Group__2 : rule__Property__Group__2__Impl rule__Property__Group__3 ;
     public final void rule__Property__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2674:1: ( rule__Property__Group__2__Impl rule__Property__Group__3 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2675:2: rule__Property__Group__2__Impl rule__Property__Group__3
+            // InternalRecordLang.g:2502:1: ( rule__Property__Group__2__Impl rule__Property__Group__3 )
+            // InternalRecordLang.g:2503:2: rule__Property__Group__2__Impl rule__Property__Group__3
             {
-            pushFollow(FOLLOW_rule__Property__Group__2__Impl_in_rule__Property__Group__25412);
+            pushFollow(FOLLOW_3);
             rule__Property__Group__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Property__Group__3_in_rule__Property__Group__25415);
+            pushFollow(FOLLOW_2);
             rule__Property__Group__3();
 
             state._fsp--;
@@ -8025,25 +7480,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Property__Group__2__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2682:1: rule__Property__Group__2__Impl : ( ( rule__Property__Alternatives_2 ) ) ;
+    // InternalRecordLang.g:2510:1: rule__Property__Group__2__Impl : ( ( rule__Property__Alternatives_2 ) ) ;
     public final void rule__Property__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2686:1: ( ( ( rule__Property__Alternatives_2 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2687:1: ( ( rule__Property__Alternatives_2 ) )
+            // InternalRecordLang.g:2514:1: ( ( ( rule__Property__Alternatives_2 ) ) )
+            // InternalRecordLang.g:2515:1: ( ( rule__Property__Alternatives_2 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2687:1: ( ( rule__Property__Alternatives_2 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2688:1: ( rule__Property__Alternatives_2 )
+            // InternalRecordLang.g:2515:1: ( ( rule__Property__Alternatives_2 ) )
+            // InternalRecordLang.g:2516:1: ( rule__Property__Alternatives_2 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyAccess().getAlternatives_2()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2689:1: ( rule__Property__Alternatives_2 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2689:2: rule__Property__Alternatives_2
+            // InternalRecordLang.g:2517:1: ( rule__Property__Alternatives_2 )
+            // InternalRecordLang.g:2517:2: rule__Property__Alternatives_2
             {
-            pushFollow(FOLLOW_rule__Property__Alternatives_2_in_rule__Property__Group__2__Impl5442);
+            pushFollow(FOLLOW_2);
             rule__Property__Alternatives_2();
 
             state._fsp--;
@@ -8076,21 +7531,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Property__Group__3"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2699:1: rule__Property__Group__3 : rule__Property__Group__3__Impl rule__Property__Group__4 ;
+    // InternalRecordLang.g:2527:1: rule__Property__Group__3 : rule__Property__Group__3__Impl rule__Property__Group__4 ;
     public final void rule__Property__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2703:1: ( rule__Property__Group__3__Impl rule__Property__Group__4 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2704:2: rule__Property__Group__3__Impl rule__Property__Group__4
+            // InternalRecordLang.g:2531:1: ( rule__Property__Group__3__Impl rule__Property__Group__4 )
+            // InternalRecordLang.g:2532:2: rule__Property__Group__3__Impl rule__Property__Group__4
             {
-            pushFollow(FOLLOW_rule__Property__Group__3__Impl_in_rule__Property__Group__35472);
+            pushFollow(FOLLOW_16);
             rule__Property__Group__3__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Property__Group__4_in_rule__Property__Group__35475);
+            pushFollow(FOLLOW_2);
             rule__Property__Group__4();
 
             state._fsp--;
@@ -8114,25 +7569,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Property__Group__3__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2711:1: rule__Property__Group__3__Impl : ( ( rule__Property__NameAssignment_3 ) ) ;
+    // InternalRecordLang.g:2539:1: rule__Property__Group__3__Impl : ( ( rule__Property__NameAssignment_3 ) ) ;
     public final void rule__Property__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2715:1: ( ( ( rule__Property__NameAssignment_3 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2716:1: ( ( rule__Property__NameAssignment_3 ) )
+            // InternalRecordLang.g:2543:1: ( ( ( rule__Property__NameAssignment_3 ) ) )
+            // InternalRecordLang.g:2544:1: ( ( rule__Property__NameAssignment_3 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2716:1: ( ( rule__Property__NameAssignment_3 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2717:1: ( rule__Property__NameAssignment_3 )
+            // InternalRecordLang.g:2544:1: ( ( rule__Property__NameAssignment_3 ) )
+            // InternalRecordLang.g:2545:1: ( rule__Property__NameAssignment_3 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyAccess().getNameAssignment_3()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2718:1: ( rule__Property__NameAssignment_3 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2718:2: rule__Property__NameAssignment_3
+            // InternalRecordLang.g:2546:1: ( rule__Property__NameAssignment_3 )
+            // InternalRecordLang.g:2546:2: rule__Property__NameAssignment_3
             {
-            pushFollow(FOLLOW_rule__Property__NameAssignment_3_in_rule__Property__Group__3__Impl5502);
+            pushFollow(FOLLOW_2);
             rule__Property__NameAssignment_3();
 
             state._fsp--;
@@ -8165,16 +7620,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Property__Group__4"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2728:1: rule__Property__Group__4 : rule__Property__Group__4__Impl ;
+    // InternalRecordLang.g:2556:1: rule__Property__Group__4 : rule__Property__Group__4__Impl ;
     public final void rule__Property__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2732:1: ( rule__Property__Group__4__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2733:2: rule__Property__Group__4__Impl
+            // InternalRecordLang.g:2560:1: ( rule__Property__Group__4__Impl )
+            // InternalRecordLang.g:2561:2: rule__Property__Group__4__Impl
             {
-            pushFollow(FOLLOW_rule__Property__Group__4__Impl_in_rule__Property__Group__45532);
+            pushFollow(FOLLOW_2);
             rule__Property__Group__4__Impl();
 
             state._fsp--;
@@ -8198,34 +7653,34 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Property__Group__4__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2739:1: rule__Property__Group__4__Impl : ( ( rule__Property__Alternatives_4 )? ) ;
+    // InternalRecordLang.g:2567:1: rule__Property__Group__4__Impl : ( ( rule__Property__Group_4__0 )? ) ;
     public final void rule__Property__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2743:1: ( ( ( rule__Property__Alternatives_4 )? ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2744:1: ( ( rule__Property__Alternatives_4 )? )
+            // InternalRecordLang.g:2571:1: ( ( ( rule__Property__Group_4__0 )? ) )
+            // InternalRecordLang.g:2572:1: ( ( rule__Property__Group_4__0 )? )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2744:1: ( ( rule__Property__Alternatives_4 )? )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2745:1: ( rule__Property__Alternatives_4 )?
+            // InternalRecordLang.g:2572:1: ( ( rule__Property__Group_4__0 )? )
+            // InternalRecordLang.g:2573:1: ( rule__Property__Group_4__0 )?
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPropertyAccess().getAlternatives_4()); 
+               before(grammarAccess.getPropertyAccess().getGroup_4()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2746:1: ( rule__Property__Alternatives_4 )?
-            int alt27=2;
-            int LA27_0 = input.LA(1);
+            // InternalRecordLang.g:2574:1: ( rule__Property__Group_4__0 )?
+            int alt25=2;
+            int LA25_0 = input.LA(1);
 
-            if ( (LA27_0==24||LA27_0==29) ) {
-                alt27=1;
+            if ( (LA25_0==28) ) {
+                alt25=1;
             }
-            switch (alt27) {
+            switch (alt25) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2746:2: rule__Property__Alternatives_4
+                    // InternalRecordLang.g:2574:2: rule__Property__Group_4__0
                     {
-                    pushFollow(FOLLOW_rule__Property__Alternatives_4_in_rule__Property__Group__4__Impl5559);
-                    rule__Property__Alternatives_4();
+                    pushFollow(FOLLOW_2);
+                    rule__Property__Group_4__0();
 
                     state._fsp--;
                     if (state.failed) return ;
@@ -8236,7 +7691,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPropertyAccess().getAlternatives_4()); 
+               after(grammarAccess.getPropertyAccess().getGroup_4()); 
             }
 
             }
@@ -8260,21 +7715,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Property__Group_2_1__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2766:1: rule__Property__Group_2_1__0 : rule__Property__Group_2_1__0__Impl rule__Property__Group_2_1__1 ;
+    // InternalRecordLang.g:2594:1: rule__Property__Group_2_1__0 : rule__Property__Group_2_1__0__Impl rule__Property__Group_2_1__1 ;
     public final void rule__Property__Group_2_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2770:1: ( rule__Property__Group_2_1__0__Impl rule__Property__Group_2_1__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2771:2: rule__Property__Group_2_1__0__Impl rule__Property__Group_2_1__1
+            // InternalRecordLang.g:2598:1: ( rule__Property__Group_2_1__0__Impl rule__Property__Group_2_1__1 )
+            // InternalRecordLang.g:2599:2: rule__Property__Group_2_1__0__Impl rule__Property__Group_2_1__1
             {
-            pushFollow(FOLLOW_rule__Property__Group_2_1__0__Impl_in_rule__Property__Group_2_1__05600);
+            pushFollow(FOLLOW_3);
             rule__Property__Group_2_1__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Property__Group_2_1__1_in_rule__Property__Group_2_1__05603);
+            pushFollow(FOLLOW_2);
             rule__Property__Group_2_1__1();
 
             state._fsp--;
@@ -8298,22 +7753,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Property__Group_2_1__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2778:1: rule__Property__Group_2_1__0__Impl : ( 'alias' ) ;
+    // InternalRecordLang.g:2606:1: rule__Property__Group_2_1__0__Impl : ( 'alias' ) ;
     public final void rule__Property__Group_2_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2782:1: ( ( 'alias' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2783:1: ( 'alias' )
+            // InternalRecordLang.g:2610:1: ( ( 'alias' ) )
+            // InternalRecordLang.g:2611:1: ( 'alias' )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2783:1: ( 'alias' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2784:1: 'alias'
+            // InternalRecordLang.g:2611:1: ( 'alias' )
+            // InternalRecordLang.g:2612:1: 'alias'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyAccess().getAliasKeyword_2_1_0()); 
             }
-            match(input,30,FOLLOW_30_in_rule__Property__Group_2_1__0__Impl5631); if (state.failed) return ;
+            match(input,29,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getPropertyAccess().getAliasKeyword_2_1_0()); 
             }
@@ -8339,21 +7794,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Property__Group_2_1__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2797:1: rule__Property__Group_2_1__1 : rule__Property__Group_2_1__1__Impl rule__Property__Group_2_1__2 ;
+    // InternalRecordLang.g:2625:1: rule__Property__Group_2_1__1 : rule__Property__Group_2_1__1__Impl rule__Property__Group_2_1__2 ;
     public final void rule__Property__Group_2_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2801:1: ( rule__Property__Group_2_1__1__Impl rule__Property__Group_2_1__2 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2802:2: rule__Property__Group_2_1__1__Impl rule__Property__Group_2_1__2
+            // InternalRecordLang.g:2629:1: ( rule__Property__Group_2_1__1__Impl rule__Property__Group_2_1__2 )
+            // InternalRecordLang.g:2630:2: rule__Property__Group_2_1__1__Impl rule__Property__Group_2_1__2
             {
-            pushFollow(FOLLOW_rule__Property__Group_2_1__1__Impl_in_rule__Property__Group_2_1__15662);
+            pushFollow(FOLLOW_20);
             rule__Property__Group_2_1__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Property__Group_2_1__2_in_rule__Property__Group_2_1__15665);
+            pushFollow(FOLLOW_2);
             rule__Property__Group_2_1__2();
 
             state._fsp--;
@@ -8377,25 +7832,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Property__Group_2_1__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2809:1: rule__Property__Group_2_1__1__Impl : ( ( rule__Property__ReferToAssignment_2_1_1 ) ) ;
+    // InternalRecordLang.g:2637:1: rule__Property__Group_2_1__1__Impl : ( ( rule__Property__ReferToAssignment_2_1_1 ) ) ;
     public final void rule__Property__Group_2_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2813:1: ( ( ( rule__Property__ReferToAssignment_2_1_1 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2814:1: ( ( rule__Property__ReferToAssignment_2_1_1 ) )
+            // InternalRecordLang.g:2641:1: ( ( ( rule__Property__ReferToAssignment_2_1_1 ) ) )
+            // InternalRecordLang.g:2642:1: ( ( rule__Property__ReferToAssignment_2_1_1 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2814:1: ( ( rule__Property__ReferToAssignment_2_1_1 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2815:1: ( rule__Property__ReferToAssignment_2_1_1 )
+            // InternalRecordLang.g:2642:1: ( ( rule__Property__ReferToAssignment_2_1_1 ) )
+            // InternalRecordLang.g:2643:1: ( rule__Property__ReferToAssignment_2_1_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyAccess().getReferToAssignment_2_1_1()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2816:1: ( rule__Property__ReferToAssignment_2_1_1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2816:2: rule__Property__ReferToAssignment_2_1_1
+            // InternalRecordLang.g:2644:1: ( rule__Property__ReferToAssignment_2_1_1 )
+            // InternalRecordLang.g:2644:2: rule__Property__ReferToAssignment_2_1_1
             {
-            pushFollow(FOLLOW_rule__Property__ReferToAssignment_2_1_1_in_rule__Property__Group_2_1__1__Impl5692);
+            pushFollow(FOLLOW_2);
             rule__Property__ReferToAssignment_2_1_1();
 
             state._fsp--;
@@ -8428,16 +7883,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Property__Group_2_1__2"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2826:1: rule__Property__Group_2_1__2 : rule__Property__Group_2_1__2__Impl ;
+    // InternalRecordLang.g:2654:1: rule__Property__Group_2_1__2 : rule__Property__Group_2_1__2__Impl ;
     public final void rule__Property__Group_2_1__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2830:1: ( rule__Property__Group_2_1__2__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2831:2: rule__Property__Group_2_1__2__Impl
+            // InternalRecordLang.g:2658:1: ( rule__Property__Group_2_1__2__Impl )
+            // InternalRecordLang.g:2659:2: rule__Property__Group_2_1__2__Impl
             {
-            pushFollow(FOLLOW_rule__Property__Group_2_1__2__Impl_in_rule__Property__Group_2_1__25722);
+            pushFollow(FOLLOW_2);
             rule__Property__Group_2_1__2__Impl();
 
             state._fsp--;
@@ -8461,22 +7916,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Property__Group_2_1__2__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2837:1: rule__Property__Group_2_1__2__Impl : ( 'as' ) ;
+    // InternalRecordLang.g:2665:1: rule__Property__Group_2_1__2__Impl : ( 'as' ) ;
     public final void rule__Property__Group_2_1__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2841:1: ( ( 'as' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2842:1: ( 'as' )
+            // InternalRecordLang.g:2669:1: ( ( 'as' ) )
+            // InternalRecordLang.g:2670:1: ( 'as' )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2842:1: ( 'as' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2843:1: 'as'
+            // InternalRecordLang.g:2670:1: ( 'as' )
+            // InternalRecordLang.g:2671:1: 'as'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyAccess().getAsKeyword_2_1_2()); 
             }
-            match(input,31,FOLLOW_31_in_rule__Property__Group_2_1__2__Impl5750); if (state.failed) return ;
+            match(input,30,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getPropertyAccess().getAsKeyword_2_1_2()); 
             }
@@ -8501,102 +7956,23 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
     // $ANTLR end "rule__Property__Group_2_1__2__Impl"
 
 
-    // $ANTLR start "rule__Property__Group_4_0__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2862:1: rule__Property__Group_4_0__0 : rule__Property__Group_4_0__0__Impl rule__Property__Group_4_0__1 ;
-    public final void rule__Property__Group_4_0__0() throws RecognitionException {
+    // $ANTLR start "rule__Property__Group_4__0"
+    // InternalRecordLang.g:2690:1: rule__Property__Group_4__0 : rule__Property__Group_4__0__Impl rule__Property__Group_4__1 ;
+    public final void rule__Property__Group_4__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2866:1: ( rule__Property__Group_4_0__0__Impl rule__Property__Group_4_0__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2867:2: rule__Property__Group_4_0__0__Impl rule__Property__Group_4_0__1
+            // InternalRecordLang.g:2694:1: ( rule__Property__Group_4__0__Impl rule__Property__Group_4__1 )
+            // InternalRecordLang.g:2695:2: rule__Property__Group_4__0__Impl rule__Property__Group_4__1
             {
-            pushFollow(FOLLOW_rule__Property__Group_4_0__0__Impl_in_rule__Property__Group_4_0__05787);
-            rule__Property__Group_4_0__0__Impl();
+            pushFollow(FOLLOW_17);
+            rule__Property__Group_4__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Property__Group_4_0__1_in_rule__Property__Group_4_0__05790);
-            rule__Property__Group_4_0__1();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Property__Group_4_0__0"
-
-
-    // $ANTLR start "rule__Property__Group_4_0__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2874:1: rule__Property__Group_4_0__0__Impl : ( '{' ) ;
-    public final void rule__Property__Group_4_0__0__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2878:1: ( ( '{' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2879:1: ( '{' )
-            {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2879:1: ( '{' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2880:1: '{'
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getPropertyAccess().getLeftCurlyBracketKeyword_4_0_0()); 
-            }
-            match(input,24,FOLLOW_24_in_rule__Property__Group_4_0__0__Impl5818); if (state.failed) return ;
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getPropertyAccess().getLeftCurlyBracketKeyword_4_0_0()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Property__Group_4_0__0__Impl"
-
-
-    // $ANTLR start "rule__Property__Group_4_0__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2893:1: rule__Property__Group_4_0__1 : rule__Property__Group_4_0__1__Impl rule__Property__Group_4_0__2 ;
-    public final void rule__Property__Group_4_0__1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2897:1: ( rule__Property__Group_4_0__1__Impl rule__Property__Group_4_0__2 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2898:2: rule__Property__Group_4_0__1__Impl rule__Property__Group_4_0__2
-            {
-            pushFollow(FOLLOW_rule__Property__Group_4_0__1__Impl_in_rule__Property__Group_4_0__15849);
-            rule__Property__Group_4_0__1__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Property__Group_4_0__2_in_rule__Property__Group_4_0__15852);
-            rule__Property__Group_4_0__2();
+            pushFollow(FOLLOW_2);
+            rule__Property__Group_4__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -8615,56 +7991,28 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__Property__Group_4_0__1"
+    // $ANTLR end "rule__Property__Group_4__0"
 
 
-    // $ANTLR start "rule__Property__Group_4_0__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2905:1: rule__Property__Group_4_0__1__Impl : ( ( rule__Property__PropertiesAssignment_4_0_1 )* ) ;
-    public final void rule__Property__Group_4_0__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__Property__Group_4__0__Impl"
+    // InternalRecordLang.g:2702:1: rule__Property__Group_4__0__Impl : ( '=' ) ;
+    public final void rule__Property__Group_4__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2909:1: ( ( ( rule__Property__PropertiesAssignment_4_0_1 )* ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2910:1: ( ( rule__Property__PropertiesAssignment_4_0_1 )* )
+            // InternalRecordLang.g:2706:1: ( ( '=' ) )
+            // InternalRecordLang.g:2707:1: ( '=' )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2910:1: ( ( rule__Property__PropertiesAssignment_4_0_1 )* )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2911:1: ( rule__Property__PropertiesAssignment_4_0_1 )*
+            // InternalRecordLang.g:2707:1: ( '=' )
+            // InternalRecordLang.g:2708:1: '='
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPropertyAccess().getPropertiesAssignment_4_0_1()); 
+               before(grammarAccess.getPropertyAccess().getEqualsSignKeyword_4_0()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2912:1: ( rule__Property__PropertiesAssignment_4_0_1 )*
-            loop28:
-            do {
-                int alt28=2;
-                int LA28_0 = input.LA(1);
-
-                if ( (LA28_0==RULE_ID) ) {
-                    alt28=1;
-                }
-
-
-                switch (alt28) {
-            	case 1 :
-            	    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2912:2: rule__Property__PropertiesAssignment_4_0_1
-            	    {
-            	    pushFollow(FOLLOW_rule__Property__PropertiesAssignment_4_0_1_in_rule__Property__Group_4_0__1__Impl5879);
-            	    rule__Property__PropertiesAssignment_4_0_1();
-
-            	    state._fsp--;
-            	    if (state.failed) return ;
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop28;
-                }
-            } while (true);
-
+            match(input,28,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPropertyAccess().getPropertiesAssignment_4_0_1()); 
+               after(grammarAccess.getPropertyAccess().getEqualsSignKeyword_4_0()); 
             }
 
             }
@@ -8684,21 +8032,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__Property__Group_4_0__1__Impl"
+    // $ANTLR end "rule__Property__Group_4__0__Impl"
 
 
-    // $ANTLR start "rule__Property__Group_4_0__2"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2922:1: rule__Property__Group_4_0__2 : rule__Property__Group_4_0__2__Impl ;
-    public final void rule__Property__Group_4_0__2() throws RecognitionException {
+    // $ANTLR start "rule__Property__Group_4__1"
+    // InternalRecordLang.g:2721:1: rule__Property__Group_4__1 : rule__Property__Group_4__1__Impl ;
+    public final void rule__Property__Group_4__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2926:1: ( rule__Property__Group_4_0__2__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2927:2: rule__Property__Group_4_0__2__Impl
+            // InternalRecordLang.g:2725:1: ( rule__Property__Group_4__1__Impl )
+            // InternalRecordLang.g:2726:2: rule__Property__Group_4__1__Impl
             {
-            pushFollow(FOLLOW_rule__Property__Group_4_0__2__Impl_in_rule__Property__Group_4_0__25910);
-            rule__Property__Group_4_0__2__Impl();
+            pushFollow(FOLLOW_2);
+            rule__Property__Group_4__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
@@ -8717,183 +8065,30 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__Property__Group_4_0__2"
+    // $ANTLR end "rule__Property__Group_4__1"
 
 
-    // $ANTLR start "rule__Property__Group_4_0__2__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2933:1: rule__Property__Group_4_0__2__Impl : ( '}' ) ;
-    public final void rule__Property__Group_4_0__2__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2937:1: ( ( '}' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2938:1: ( '}' )
-            {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2938:1: ( '}' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2939:1: '}'
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getPropertyAccess().getRightCurlyBracketKeyword_4_0_2()); 
-            }
-            match(input,25,FOLLOW_25_in_rule__Property__Group_4_0__2__Impl5938); if (state.failed) return ;
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getPropertyAccess().getRightCurlyBracketKeyword_4_0_2()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Property__Group_4_0__2__Impl"
-
-
-    // $ANTLR start "rule__Property__Group_4_1__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2958:1: rule__Property__Group_4_1__0 : rule__Property__Group_4_1__0__Impl rule__Property__Group_4_1__1 ;
-    public final void rule__Property__Group_4_1__0() throws RecognitionException {
+    // $ANTLR start "rule__Property__Group_4__1__Impl"
+    // InternalRecordLang.g:2732:1: rule__Property__Group_4__1__Impl : ( ( rule__Property__ValueAssignment_4_1 ) ) ;
+    public final void rule__Property__Group_4__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2962:1: ( rule__Property__Group_4_1__0__Impl rule__Property__Group_4_1__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2963:2: rule__Property__Group_4_1__0__Impl rule__Property__Group_4_1__1
+            // InternalRecordLang.g:2736:1: ( ( ( rule__Property__ValueAssignment_4_1 ) ) )
+            // InternalRecordLang.g:2737:1: ( ( rule__Property__ValueAssignment_4_1 ) )
             {
-            pushFollow(FOLLOW_rule__Property__Group_4_1__0__Impl_in_rule__Property__Group_4_1__05975);
-            rule__Property__Group_4_1__0__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Property__Group_4_1__1_in_rule__Property__Group_4_1__05978);
-            rule__Property__Group_4_1__1();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Property__Group_4_1__0"
-
-
-    // $ANTLR start "rule__Property__Group_4_1__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2970:1: rule__Property__Group_4_1__0__Impl : ( '=' ) ;
-    public final void rule__Property__Group_4_1__0__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2974:1: ( ( '=' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2975:1: ( '=' )
-            {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2975:1: ( '=' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2976:1: '='
+            // InternalRecordLang.g:2737:1: ( ( rule__Property__ValueAssignment_4_1 ) )
+            // InternalRecordLang.g:2738:1: ( rule__Property__ValueAssignment_4_1 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPropertyAccess().getEqualsSignKeyword_4_1_0()); 
+               before(grammarAccess.getPropertyAccess().getValueAssignment_4_1()); 
             }
-            match(input,29,FOLLOW_29_in_rule__Property__Group_4_1__0__Impl6006); if (state.failed) return ;
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getPropertyAccess().getEqualsSignKeyword_4_1_0()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Property__Group_4_1__0__Impl"
-
-
-    // $ANTLR start "rule__Property__Group_4_1__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2989:1: rule__Property__Group_4_1__1 : rule__Property__Group_4_1__1__Impl ;
-    public final void rule__Property__Group_4_1__1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2993:1: ( rule__Property__Group_4_1__1__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:2994:2: rule__Property__Group_4_1__1__Impl
+            // InternalRecordLang.g:2739:1: ( rule__Property__ValueAssignment_4_1 )
+            // InternalRecordLang.g:2739:2: rule__Property__ValueAssignment_4_1
             {
-            pushFollow(FOLLOW_rule__Property__Group_4_1__1__Impl_in_rule__Property__Group_4_1__16037);
-            rule__Property__Group_4_1__1__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Property__Group_4_1__1"
-
-
-    // $ANTLR start "rule__Property__Group_4_1__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3000:1: rule__Property__Group_4_1__1__Impl : ( ( rule__Property__ValueAssignment_4_1_1 ) ) ;
-    public final void rule__Property__Group_4_1__1__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3004:1: ( ( ( rule__Property__ValueAssignment_4_1_1 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3005:1: ( ( rule__Property__ValueAssignment_4_1_1 ) )
-            {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3005:1: ( ( rule__Property__ValueAssignment_4_1_1 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3006:1: ( rule__Property__ValueAssignment_4_1_1 )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getPropertyAccess().getValueAssignment_4_1_1()); 
-            }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3007:1: ( rule__Property__ValueAssignment_4_1_1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3007:2: rule__Property__ValueAssignment_4_1_1
-            {
-            pushFollow(FOLLOW_rule__Property__ValueAssignment_4_1_1_in_rule__Property__Group_4_1__1__Impl6064);
-            rule__Property__ValueAssignment_4_1_1();
+            pushFollow(FOLLOW_2);
+            rule__Property__ValueAssignment_4_1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -8901,7 +8096,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPropertyAccess().getValueAssignment_4_1_1()); 
+               after(grammarAccess.getPropertyAccess().getValueAssignment_4_1()); 
             }
 
             }
@@ -8921,25 +8116,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__Property__Group_4_1__1__Impl"
+    // $ANTLR end "rule__Property__Group_4__1__Impl"
 
 
     // $ANTLR start "rule__ForeignKey__Group__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3021:1: rule__ForeignKey__Group__0 : rule__ForeignKey__Group__0__Impl rule__ForeignKey__Group__1 ;
+    // InternalRecordLang.g:2753:1: rule__ForeignKey__Group__0 : rule__ForeignKey__Group__0__Impl rule__ForeignKey__Group__1 ;
     public final void rule__ForeignKey__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3025:1: ( rule__ForeignKey__Group__0__Impl rule__ForeignKey__Group__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3026:2: rule__ForeignKey__Group__0__Impl rule__ForeignKey__Group__1
+            // InternalRecordLang.g:2757:1: ( rule__ForeignKey__Group__0__Impl rule__ForeignKey__Group__1 )
+            // InternalRecordLang.g:2758:2: rule__ForeignKey__Group__0__Impl rule__ForeignKey__Group__1
             {
-            pushFollow(FOLLOW_rule__ForeignKey__Group__0__Impl_in_rule__ForeignKey__Group__06098);
+            pushFollow(FOLLOW_21);
             rule__ForeignKey__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__ForeignKey__Group__1_in_rule__ForeignKey__Group__06101);
+            pushFollow(FOLLOW_2);
             rule__ForeignKey__Group__1();
 
             state._fsp--;
@@ -8963,22 +8158,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ForeignKey__Group__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3033:1: rule__ForeignKey__Group__0__Impl : ( 'grouped' ) ;
+    // InternalRecordLang.g:2765:1: rule__ForeignKey__Group__0__Impl : ( 'grouped' ) ;
     public final void rule__ForeignKey__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3037:1: ( ( 'grouped' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3038:1: ( 'grouped' )
+            // InternalRecordLang.g:2769:1: ( ( 'grouped' ) )
+            // InternalRecordLang.g:2770:1: ( 'grouped' )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3038:1: ( 'grouped' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3039:1: 'grouped'
+            // InternalRecordLang.g:2770:1: ( 'grouped' )
+            // InternalRecordLang.g:2771:1: 'grouped'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getForeignKeyAccess().getGroupedKeyword_0()); 
             }
-            match(input,32,FOLLOW_32_in_rule__ForeignKey__Group__0__Impl6129); if (state.failed) return ;
+            match(input,31,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getForeignKeyAccess().getGroupedKeyword_0()); 
             }
@@ -9004,21 +8199,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ForeignKey__Group__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3052:1: rule__ForeignKey__Group__1 : rule__ForeignKey__Group__1__Impl rule__ForeignKey__Group__2 ;
+    // InternalRecordLang.g:2784:1: rule__ForeignKey__Group__1 : rule__ForeignKey__Group__1__Impl rule__ForeignKey__Group__2 ;
     public final void rule__ForeignKey__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3056:1: ( rule__ForeignKey__Group__1__Impl rule__ForeignKey__Group__2 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3057:2: rule__ForeignKey__Group__1__Impl rule__ForeignKey__Group__2
+            // InternalRecordLang.g:2788:1: ( rule__ForeignKey__Group__1__Impl rule__ForeignKey__Group__2 )
+            // InternalRecordLang.g:2789:2: rule__ForeignKey__Group__1__Impl rule__ForeignKey__Group__2
             {
-            pushFollow(FOLLOW_rule__ForeignKey__Group__1__Impl_in_rule__ForeignKey__Group__16160);
+            pushFollow(FOLLOW_3);
             rule__ForeignKey__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__ForeignKey__Group__2_in_rule__ForeignKey__Group__16163);
+            pushFollow(FOLLOW_2);
             rule__ForeignKey__Group__2();
 
             state._fsp--;
@@ -9042,22 +8237,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ForeignKey__Group__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3064:1: rule__ForeignKey__Group__1__Impl : ( 'by' ) ;
+    // InternalRecordLang.g:2796:1: rule__ForeignKey__Group__1__Impl : ( 'by' ) ;
     public final void rule__ForeignKey__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3068:1: ( ( 'by' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3069:1: ( 'by' )
+            // InternalRecordLang.g:2800:1: ( ( 'by' ) )
+            // InternalRecordLang.g:2801:1: ( 'by' )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3069:1: ( 'by' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3070:1: 'by'
+            // InternalRecordLang.g:2801:1: ( 'by' )
+            // InternalRecordLang.g:2802:1: 'by'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getForeignKeyAccess().getByKeyword_1()); 
             }
-            match(input,33,FOLLOW_33_in_rule__ForeignKey__Group__1__Impl6191); if (state.failed) return ;
+            match(input,32,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getForeignKeyAccess().getByKeyword_1()); 
             }
@@ -9083,21 +8278,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ForeignKey__Group__2"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3083:1: rule__ForeignKey__Group__2 : rule__ForeignKey__Group__2__Impl rule__ForeignKey__Group__3 ;
+    // InternalRecordLang.g:2815:1: rule__ForeignKey__Group__2 : rule__ForeignKey__Group__2__Impl rule__ForeignKey__Group__3 ;
     public final void rule__ForeignKey__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3087:1: ( rule__ForeignKey__Group__2__Impl rule__ForeignKey__Group__3 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3088:2: rule__ForeignKey__Group__2__Impl rule__ForeignKey__Group__3
+            // InternalRecordLang.g:2819:1: ( rule__ForeignKey__Group__2__Impl rule__ForeignKey__Group__3 )
+            // InternalRecordLang.g:2820:2: rule__ForeignKey__Group__2__Impl rule__ForeignKey__Group__3
             {
-            pushFollow(FOLLOW_rule__ForeignKey__Group__2__Impl_in_rule__ForeignKey__Group__26222);
+            pushFollow(FOLLOW_22);
             rule__ForeignKey__Group__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__ForeignKey__Group__3_in_rule__ForeignKey__Group__26225);
+            pushFollow(FOLLOW_2);
             rule__ForeignKey__Group__3();
 
             state._fsp--;
@@ -9121,25 +8316,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ForeignKey__Group__2__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3095:1: rule__ForeignKey__Group__2__Impl : ( ( rule__ForeignKey__RecordTypeAssignment_2 ) ) ;
+    // InternalRecordLang.g:2827:1: rule__ForeignKey__Group__2__Impl : ( ( rule__ForeignKey__RecordTypeAssignment_2 ) ) ;
     public final void rule__ForeignKey__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3099:1: ( ( ( rule__ForeignKey__RecordTypeAssignment_2 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3100:1: ( ( rule__ForeignKey__RecordTypeAssignment_2 ) )
+            // InternalRecordLang.g:2831:1: ( ( ( rule__ForeignKey__RecordTypeAssignment_2 ) ) )
+            // InternalRecordLang.g:2832:1: ( ( rule__ForeignKey__RecordTypeAssignment_2 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3100:1: ( ( rule__ForeignKey__RecordTypeAssignment_2 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3101:1: ( rule__ForeignKey__RecordTypeAssignment_2 )
+            // InternalRecordLang.g:2832:1: ( ( rule__ForeignKey__RecordTypeAssignment_2 ) )
+            // InternalRecordLang.g:2833:1: ( rule__ForeignKey__RecordTypeAssignment_2 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getForeignKeyAccess().getRecordTypeAssignment_2()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3102:1: ( rule__ForeignKey__RecordTypeAssignment_2 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3102:2: rule__ForeignKey__RecordTypeAssignment_2
+            // InternalRecordLang.g:2834:1: ( rule__ForeignKey__RecordTypeAssignment_2 )
+            // InternalRecordLang.g:2834:2: rule__ForeignKey__RecordTypeAssignment_2
             {
-            pushFollow(FOLLOW_rule__ForeignKey__RecordTypeAssignment_2_in_rule__ForeignKey__Group__2__Impl6252);
+            pushFollow(FOLLOW_2);
             rule__ForeignKey__RecordTypeAssignment_2();
 
             state._fsp--;
@@ -9172,21 +8367,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ForeignKey__Group__3"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3112:1: rule__ForeignKey__Group__3 : rule__ForeignKey__Group__3__Impl rule__ForeignKey__Group__4 ;
+    // InternalRecordLang.g:2844:1: rule__ForeignKey__Group__3 : rule__ForeignKey__Group__3__Impl rule__ForeignKey__Group__4 ;
     public final void rule__ForeignKey__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3116:1: ( rule__ForeignKey__Group__3__Impl rule__ForeignKey__Group__4 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3117:2: rule__ForeignKey__Group__3__Impl rule__ForeignKey__Group__4
+            // InternalRecordLang.g:2848:1: ( rule__ForeignKey__Group__3__Impl rule__ForeignKey__Group__4 )
+            // InternalRecordLang.g:2849:2: rule__ForeignKey__Group__3__Impl rule__ForeignKey__Group__4
             {
-            pushFollow(FOLLOW_rule__ForeignKey__Group__3__Impl_in_rule__ForeignKey__Group__36282);
+            pushFollow(FOLLOW_3);
             rule__ForeignKey__Group__3__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__ForeignKey__Group__4_in_rule__ForeignKey__Group__36285);
+            pushFollow(FOLLOW_2);
             rule__ForeignKey__Group__4();
 
             state._fsp--;
@@ -9210,22 +8405,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ForeignKey__Group__3__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3124:1: rule__ForeignKey__Group__3__Impl : ( '.' ) ;
+    // InternalRecordLang.g:2856:1: rule__ForeignKey__Group__3__Impl : ( '.' ) ;
     public final void rule__ForeignKey__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3128:1: ( ( '.' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3129:1: ( '.' )
+            // InternalRecordLang.g:2860:1: ( ( '.' ) )
+            // InternalRecordLang.g:2861:1: ( '.' )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3129:1: ( '.' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3130:1: '.'
+            // InternalRecordLang.g:2861:1: ( '.' )
+            // InternalRecordLang.g:2862:1: '.'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getForeignKeyAccess().getFullStopKeyword_3()); 
             }
-            match(input,34,FOLLOW_34_in_rule__ForeignKey__Group__3__Impl6313); if (state.failed) return ;
+            match(input,33,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getForeignKeyAccess().getFullStopKeyword_3()); 
             }
@@ -9251,16 +8446,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ForeignKey__Group__4"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3143:1: rule__ForeignKey__Group__4 : rule__ForeignKey__Group__4__Impl ;
+    // InternalRecordLang.g:2875:1: rule__ForeignKey__Group__4 : rule__ForeignKey__Group__4__Impl ;
     public final void rule__ForeignKey__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3147:1: ( rule__ForeignKey__Group__4__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3148:2: rule__ForeignKey__Group__4__Impl
+            // InternalRecordLang.g:2879:1: ( rule__ForeignKey__Group__4__Impl )
+            // InternalRecordLang.g:2880:2: rule__ForeignKey__Group__4__Impl
             {
-            pushFollow(FOLLOW_rule__ForeignKey__Group__4__Impl_in_rule__ForeignKey__Group__46344);
+            pushFollow(FOLLOW_2);
             rule__ForeignKey__Group__4__Impl();
 
             state._fsp--;
@@ -9284,25 +8479,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ForeignKey__Group__4__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3154:1: rule__ForeignKey__Group__4__Impl : ( ( rule__ForeignKey__PropertyRefAssignment_4 ) ) ;
+    // InternalRecordLang.g:2886:1: rule__ForeignKey__Group__4__Impl : ( ( rule__ForeignKey__PropertyRefAssignment_4 ) ) ;
     public final void rule__ForeignKey__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3158:1: ( ( ( rule__ForeignKey__PropertyRefAssignment_4 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3159:1: ( ( rule__ForeignKey__PropertyRefAssignment_4 ) )
+            // InternalRecordLang.g:2890:1: ( ( ( rule__ForeignKey__PropertyRefAssignment_4 ) ) )
+            // InternalRecordLang.g:2891:1: ( ( rule__ForeignKey__PropertyRefAssignment_4 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3159:1: ( ( rule__ForeignKey__PropertyRefAssignment_4 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3160:1: ( rule__ForeignKey__PropertyRefAssignment_4 )
+            // InternalRecordLang.g:2891:1: ( ( rule__ForeignKey__PropertyRefAssignment_4 ) )
+            // InternalRecordLang.g:2892:1: ( rule__ForeignKey__PropertyRefAssignment_4 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getForeignKeyAccess().getPropertyRefAssignment_4()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3161:1: ( rule__ForeignKey__PropertyRefAssignment_4 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3161:2: rule__ForeignKey__PropertyRefAssignment_4
+            // InternalRecordLang.g:2893:1: ( rule__ForeignKey__PropertyRefAssignment_4 )
+            // InternalRecordLang.g:2893:2: rule__ForeignKey__PropertyRefAssignment_4
             {
-            pushFollow(FOLLOW_rule__ForeignKey__PropertyRefAssignment_4_in_rule__ForeignKey__Group__4__Impl6371);
+            pushFollow(FOLLOW_2);
             rule__ForeignKey__PropertyRefAssignment_4();
 
             state._fsp--;
@@ -9335,21 +8530,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Classifier__Group__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3181:1: rule__Classifier__Group__0 : rule__Classifier__Group__0__Impl rule__Classifier__Group__1 ;
+    // InternalRecordLang.g:2913:1: rule__Classifier__Group__0 : rule__Classifier__Group__0__Impl rule__Classifier__Group__1 ;
     public final void rule__Classifier__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3185:1: ( rule__Classifier__Group__0__Impl rule__Classifier__Group__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3186:2: rule__Classifier__Group__0__Impl rule__Classifier__Group__1
+            // InternalRecordLang.g:2917:1: ( rule__Classifier__Group__0__Impl rule__Classifier__Group__1 )
+            // InternalRecordLang.g:2918:2: rule__Classifier__Group__0__Impl rule__Classifier__Group__1
             {
-            pushFollow(FOLLOW_rule__Classifier__Group__0__Impl_in_rule__Classifier__Group__06411);
+            pushFollow(FOLLOW_23);
             rule__Classifier__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Classifier__Group__1_in_rule__Classifier__Group__06414);
+            pushFollow(FOLLOW_2);
             rule__Classifier__Group__1();
 
             state._fsp--;
@@ -9373,49 +8568,34 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Classifier__Group__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3193:1: rule__Classifier__Group__0__Impl : ( ( rule__Classifier__Group_0__0 )? ) ;
+    // InternalRecordLang.g:2925:1: rule__Classifier__Group__0__Impl : ( ( rule__Classifier__TypeAssignment_0 ) ) ;
     public final void rule__Classifier__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3197:1: ( ( ( rule__Classifier__Group_0__0 )? ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3198:1: ( ( rule__Classifier__Group_0__0 )? )
+            // InternalRecordLang.g:2929:1: ( ( ( rule__Classifier__TypeAssignment_0 ) ) )
+            // InternalRecordLang.g:2930:1: ( ( rule__Classifier__TypeAssignment_0 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3198:1: ( ( rule__Classifier__Group_0__0 )? )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3199:1: ( rule__Classifier__Group_0__0 )?
+            // InternalRecordLang.g:2930:1: ( ( rule__Classifier__TypeAssignment_0 ) )
+            // InternalRecordLang.g:2931:1: ( rule__Classifier__TypeAssignment_0 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getClassifierAccess().getGroup_0()); 
+               before(grammarAccess.getClassifierAccess().getTypeAssignment_0()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3200:1: ( rule__Classifier__Group_0__0 )?
-            int alt29=2;
-            int LA29_0 = input.LA(1);
+            // InternalRecordLang.g:2932:1: ( rule__Classifier__TypeAssignment_0 )
+            // InternalRecordLang.g:2932:2: rule__Classifier__TypeAssignment_0
+            {
+            pushFollow(FOLLOW_2);
+            rule__Classifier__TypeAssignment_0();
 
-            if ( (LA29_0==RULE_ID) ) {
-                int LA29_1 = input.LA(2);
-
-                if ( (LA29_1==34) ) {
-                    alt29=1;
-                }
-            }
-            switch (alt29) {
-                case 1 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3200:2: rule__Classifier__Group_0__0
-                    {
-                    pushFollow(FOLLOW_rule__Classifier__Group_0__0_in_rule__Classifier__Group__0__Impl6441);
-                    rule__Classifier__Group_0__0();
-
-                    state._fsp--;
-                    if (state.failed) return ;
-
-                    }
-                    break;
+            state._fsp--;
+            if (state.failed) return ;
 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getClassifierAccess().getGroup_0()); 
+               after(grammarAccess.getClassifierAccess().getTypeAssignment_0()); 
             }
 
             }
@@ -9439,22 +8619,17 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Classifier__Group__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3210:1: rule__Classifier__Group__1 : rule__Classifier__Group__1__Impl rule__Classifier__Group__2 ;
+    // InternalRecordLang.g:2942:1: rule__Classifier__Group__1 : rule__Classifier__Group__1__Impl ;
     public final void rule__Classifier__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3214:1: ( rule__Classifier__Group__1__Impl rule__Classifier__Group__2 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3215:2: rule__Classifier__Group__1__Impl rule__Classifier__Group__2
+            // InternalRecordLang.g:2946:1: ( rule__Classifier__Group__1__Impl )
+            // InternalRecordLang.g:2947:2: rule__Classifier__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__Classifier__Group__1__Impl_in_rule__Classifier__Group__16472);
+            pushFollow(FOLLOW_2);
             rule__Classifier__Group__1__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Classifier__Group__2_in_rule__Classifier__Group__16475);
-            rule__Classifier__Group__2();
 
             state._fsp--;
             if (state.failed) return ;
@@ -9477,34 +8652,52 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Classifier__Group__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3222:1: rule__Classifier__Group__1__Impl : ( ( rule__Classifier__ClassAssignment_1 ) ) ;
+    // InternalRecordLang.g:2953:1: rule__Classifier__Group__1__Impl : ( ( rule__Classifier__SizesAssignment_1 )* ) ;
     public final void rule__Classifier__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3226:1: ( ( ( rule__Classifier__ClassAssignment_1 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3227:1: ( ( rule__Classifier__ClassAssignment_1 ) )
+            // InternalRecordLang.g:2957:1: ( ( ( rule__Classifier__SizesAssignment_1 )* ) )
+            // InternalRecordLang.g:2958:1: ( ( rule__Classifier__SizesAssignment_1 )* )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3227:1: ( ( rule__Classifier__ClassAssignment_1 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3228:1: ( rule__Classifier__ClassAssignment_1 )
+            // InternalRecordLang.g:2958:1: ( ( rule__Classifier__SizesAssignment_1 )* )
+            // InternalRecordLang.g:2959:1: ( rule__Classifier__SizesAssignment_1 )*
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getClassifierAccess().getClassAssignment_1()); 
+               before(grammarAccess.getClassifierAccess().getSizesAssignment_1()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3229:1: ( rule__Classifier__ClassAssignment_1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3229:2: rule__Classifier__ClassAssignment_1
-            {
-            pushFollow(FOLLOW_rule__Classifier__ClassAssignment_1_in_rule__Classifier__Group__1__Impl6502);
-            rule__Classifier__ClassAssignment_1();
+            // InternalRecordLang.g:2960:1: ( rule__Classifier__SizesAssignment_1 )*
+            loop26:
+            do {
+                int alt26=2;
+                int LA26_0 = input.LA(1);
 
-            state._fsp--;
-            if (state.failed) return ;
+                if ( (LA26_0==34) ) {
+                    alt26=1;
+                }
 
-            }
+
+                switch (alt26) {
+            	case 1 :
+            	    // InternalRecordLang.g:2960:2: rule__Classifier__SizesAssignment_1
+            	    {
+            	    pushFollow(FOLLOW_24);
+            	    rule__Classifier__SizesAssignment_1();
+
+            	    state._fsp--;
+            	    if (state.failed) return ;
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop26;
+                }
+            } while (true);
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getClassifierAccess().getClassAssignment_1()); 
+               after(grammarAccess.getClassifierAccess().getSizesAssignment_1()); 
             }
 
             }
@@ -9527,287 +8720,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
     // $ANTLR end "rule__Classifier__Group__1__Impl"
 
 
-    // $ANTLR start "rule__Classifier__Group__2"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3239:1: rule__Classifier__Group__2 : rule__Classifier__Group__2__Impl ;
-    public final void rule__Classifier__Group__2() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3243:1: ( rule__Classifier__Group__2__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3244:2: rule__Classifier__Group__2__Impl
-            {
-            pushFollow(FOLLOW_rule__Classifier__Group__2__Impl_in_rule__Classifier__Group__26532);
-            rule__Classifier__Group__2__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Classifier__Group__2"
-
-
-    // $ANTLR start "rule__Classifier__Group__2__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3250:1: rule__Classifier__Group__2__Impl : ( ( rule__Classifier__SizesAssignment_2 )* ) ;
-    public final void rule__Classifier__Group__2__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3254:1: ( ( ( rule__Classifier__SizesAssignment_2 )* ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3255:1: ( ( rule__Classifier__SizesAssignment_2 )* )
-            {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3255:1: ( ( rule__Classifier__SizesAssignment_2 )* )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3256:1: ( rule__Classifier__SizesAssignment_2 )*
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getClassifierAccess().getSizesAssignment_2()); 
-            }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3257:1: ( rule__Classifier__SizesAssignment_2 )*
-            loop30:
-            do {
-                int alt30=2;
-                int LA30_0 = input.LA(1);
-
-                if ( (LA30_0==35) ) {
-                    alt30=1;
-                }
-
-
-                switch (alt30) {
-            	case 1 :
-            	    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3257:2: rule__Classifier__SizesAssignment_2
-            	    {
-            	    pushFollow(FOLLOW_rule__Classifier__SizesAssignment_2_in_rule__Classifier__Group__2__Impl6559);
-            	    rule__Classifier__SizesAssignment_2();
-
-            	    state._fsp--;
-            	    if (state.failed) return ;
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop30;
-                }
-            } while (true);
-
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getClassifierAccess().getSizesAssignment_2()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Classifier__Group__2__Impl"
-
-
-    // $ANTLR start "rule__Classifier__Group_0__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3273:1: rule__Classifier__Group_0__0 : rule__Classifier__Group_0__0__Impl rule__Classifier__Group_0__1 ;
-    public final void rule__Classifier__Group_0__0() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3277:1: ( rule__Classifier__Group_0__0__Impl rule__Classifier__Group_0__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3278:2: rule__Classifier__Group_0__0__Impl rule__Classifier__Group_0__1
-            {
-            pushFollow(FOLLOW_rule__Classifier__Group_0__0__Impl_in_rule__Classifier__Group_0__06596);
-            rule__Classifier__Group_0__0__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-            pushFollow(FOLLOW_rule__Classifier__Group_0__1_in_rule__Classifier__Group_0__06599);
-            rule__Classifier__Group_0__1();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Classifier__Group_0__0"
-
-
-    // $ANTLR start "rule__Classifier__Group_0__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3285:1: rule__Classifier__Group_0__0__Impl : ( ( rule__Classifier__PackageAssignment_0_0 ) ) ;
-    public final void rule__Classifier__Group_0__0__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3289:1: ( ( ( rule__Classifier__PackageAssignment_0_0 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3290:1: ( ( rule__Classifier__PackageAssignment_0_0 ) )
-            {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3290:1: ( ( rule__Classifier__PackageAssignment_0_0 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3291:1: ( rule__Classifier__PackageAssignment_0_0 )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getClassifierAccess().getPackageAssignment_0_0()); 
-            }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3292:1: ( rule__Classifier__PackageAssignment_0_0 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3292:2: rule__Classifier__PackageAssignment_0_0
-            {
-            pushFollow(FOLLOW_rule__Classifier__PackageAssignment_0_0_in_rule__Classifier__Group_0__0__Impl6626);
-            rule__Classifier__PackageAssignment_0_0();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getClassifierAccess().getPackageAssignment_0_0()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Classifier__Group_0__0__Impl"
-
-
-    // $ANTLR start "rule__Classifier__Group_0__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3302:1: rule__Classifier__Group_0__1 : rule__Classifier__Group_0__1__Impl ;
-    public final void rule__Classifier__Group_0__1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3306:1: ( rule__Classifier__Group_0__1__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3307:2: rule__Classifier__Group_0__1__Impl
-            {
-            pushFollow(FOLLOW_rule__Classifier__Group_0__1__Impl_in_rule__Classifier__Group_0__16656);
-            rule__Classifier__Group_0__1__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Classifier__Group_0__1"
-
-
-    // $ANTLR start "rule__Classifier__Group_0__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3313:1: rule__Classifier__Group_0__1__Impl : ( '.' ) ;
-    public final void rule__Classifier__Group_0__1__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3317:1: ( ( '.' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3318:1: ( '.' )
-            {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3318:1: ( '.' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3319:1: '.'
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getClassifierAccess().getFullStopKeyword_0_1()); 
-            }
-            match(input,34,FOLLOW_34_in_rule__Classifier__Group_0__1__Impl6684); if (state.failed) return ;
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getClassifierAccess().getFullStopKeyword_0_1()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Classifier__Group_0__1__Impl"
-
-
     // $ANTLR start "rule__ArraySize__Group__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3336:1: rule__ArraySize__Group__0 : rule__ArraySize__Group__0__Impl rule__ArraySize__Group__1 ;
+    // InternalRecordLang.g:2974:1: rule__ArraySize__Group__0 : rule__ArraySize__Group__0__Impl rule__ArraySize__Group__1 ;
     public final void rule__ArraySize__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3340:1: ( rule__ArraySize__Group__0__Impl rule__ArraySize__Group__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3341:2: rule__ArraySize__Group__0__Impl rule__ArraySize__Group__1
+            // InternalRecordLang.g:2978:1: ( rule__ArraySize__Group__0__Impl rule__ArraySize__Group__1 )
+            // InternalRecordLang.g:2979:2: rule__ArraySize__Group__0__Impl rule__ArraySize__Group__1
             {
-            pushFollow(FOLLOW_rule__ArraySize__Group__0__Impl_in_rule__ArraySize__Group__06719);
+            pushFollow(FOLLOW_23);
             rule__ArraySize__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__ArraySize__Group__1_in_rule__ArraySize__Group__06722);
+            pushFollow(FOLLOW_2);
             rule__ArraySize__Group__1();
 
             state._fsp--;
@@ -9831,23 +8759,23 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ArraySize__Group__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3348:1: rule__ArraySize__Group__0__Impl : ( () ) ;
+    // InternalRecordLang.g:2986:1: rule__ArraySize__Group__0__Impl : ( () ) ;
     public final void rule__ArraySize__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3352:1: ( ( () ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3353:1: ( () )
+            // InternalRecordLang.g:2990:1: ( ( () ) )
+            // InternalRecordLang.g:2991:1: ( () )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3353:1: ( () )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3354:1: ()
+            // InternalRecordLang.g:2991:1: ( () )
+            // InternalRecordLang.g:2992:1: ()
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getArraySizeAccess().getArraySizeAction_0()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3355:1: ()
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3357:1: 
+            // InternalRecordLang.g:2993:1: ()
+            // InternalRecordLang.g:2995:1: 
             {
             }
 
@@ -9872,21 +8800,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ArraySize__Group__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3367:1: rule__ArraySize__Group__1 : rule__ArraySize__Group__1__Impl rule__ArraySize__Group__2 ;
+    // InternalRecordLang.g:3005:1: rule__ArraySize__Group__1 : rule__ArraySize__Group__1__Impl rule__ArraySize__Group__2 ;
     public final void rule__ArraySize__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3371:1: ( rule__ArraySize__Group__1__Impl rule__ArraySize__Group__2 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3372:2: rule__ArraySize__Group__1__Impl rule__ArraySize__Group__2
+            // InternalRecordLang.g:3009:1: ( rule__ArraySize__Group__1__Impl rule__ArraySize__Group__2 )
+            // InternalRecordLang.g:3010:2: rule__ArraySize__Group__1__Impl rule__ArraySize__Group__2
             {
-            pushFollow(FOLLOW_rule__ArraySize__Group__1__Impl_in_rule__ArraySize__Group__16780);
+            pushFollow(FOLLOW_25);
             rule__ArraySize__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__ArraySize__Group__2_in_rule__ArraySize__Group__16783);
+            pushFollow(FOLLOW_2);
             rule__ArraySize__Group__2();
 
             state._fsp--;
@@ -9910,22 +8838,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ArraySize__Group__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3379:1: rule__ArraySize__Group__1__Impl : ( '[' ) ;
+    // InternalRecordLang.g:3017:1: rule__ArraySize__Group__1__Impl : ( '[' ) ;
     public final void rule__ArraySize__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3383:1: ( ( '[' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3384:1: ( '[' )
+            // InternalRecordLang.g:3021:1: ( ( '[' ) )
+            // InternalRecordLang.g:3022:1: ( '[' )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3384:1: ( '[' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3385:1: '['
+            // InternalRecordLang.g:3022:1: ( '[' )
+            // InternalRecordLang.g:3023:1: '['
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getArraySizeAccess().getLeftSquareBracketKeyword_1()); 
             }
-            match(input,35,FOLLOW_35_in_rule__ArraySize__Group__1__Impl6811); if (state.failed) return ;
+            match(input,34,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getArraySizeAccess().getLeftSquareBracketKeyword_1()); 
             }
@@ -9951,21 +8879,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ArraySize__Group__2"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3398:1: rule__ArraySize__Group__2 : rule__ArraySize__Group__2__Impl rule__ArraySize__Group__3 ;
+    // InternalRecordLang.g:3036:1: rule__ArraySize__Group__2 : rule__ArraySize__Group__2__Impl rule__ArraySize__Group__3 ;
     public final void rule__ArraySize__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3402:1: ( rule__ArraySize__Group__2__Impl rule__ArraySize__Group__3 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3403:2: rule__ArraySize__Group__2__Impl rule__ArraySize__Group__3
+            // InternalRecordLang.g:3040:1: ( rule__ArraySize__Group__2__Impl rule__ArraySize__Group__3 )
+            // InternalRecordLang.g:3041:2: rule__ArraySize__Group__2__Impl rule__ArraySize__Group__3
             {
-            pushFollow(FOLLOW_rule__ArraySize__Group__2__Impl_in_rule__ArraySize__Group__26842);
+            pushFollow(FOLLOW_25);
             rule__ArraySize__Group__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__ArraySize__Group__3_in_rule__ArraySize__Group__26845);
+            pushFollow(FOLLOW_2);
             rule__ArraySize__Group__3();
 
             state._fsp--;
@@ -9989,33 +8917,33 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ArraySize__Group__2__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3410:1: rule__ArraySize__Group__2__Impl : ( ( rule__ArraySize__SizeAssignment_2 )? ) ;
+    // InternalRecordLang.g:3048:1: rule__ArraySize__Group__2__Impl : ( ( rule__ArraySize__SizeAssignment_2 )? ) ;
     public final void rule__ArraySize__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3414:1: ( ( ( rule__ArraySize__SizeAssignment_2 )? ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3415:1: ( ( rule__ArraySize__SizeAssignment_2 )? )
+            // InternalRecordLang.g:3052:1: ( ( ( rule__ArraySize__SizeAssignment_2 )? ) )
+            // InternalRecordLang.g:3053:1: ( ( rule__ArraySize__SizeAssignment_2 )? )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3415:1: ( ( rule__ArraySize__SizeAssignment_2 )? )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3416:1: ( rule__ArraySize__SizeAssignment_2 )?
+            // InternalRecordLang.g:3053:1: ( ( rule__ArraySize__SizeAssignment_2 )? )
+            // InternalRecordLang.g:3054:1: ( rule__ArraySize__SizeAssignment_2 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getArraySizeAccess().getSizeAssignment_2()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3417:1: ( rule__ArraySize__SizeAssignment_2 )?
-            int alt31=2;
-            int LA31_0 = input.LA(1);
+            // InternalRecordLang.g:3055:1: ( rule__ArraySize__SizeAssignment_2 )?
+            int alt27=2;
+            int LA27_0 = input.LA(1);
 
-            if ( (LA31_0==RULE_INT) ) {
-                alt31=1;
+            if ( (LA27_0==RULE_INT) ) {
+                alt27=1;
             }
-            switch (alt31) {
+            switch (alt27) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3417:2: rule__ArraySize__SizeAssignment_2
+                    // InternalRecordLang.g:3055:2: rule__ArraySize__SizeAssignment_2
                     {
-                    pushFollow(FOLLOW_rule__ArraySize__SizeAssignment_2_in_rule__ArraySize__Group__2__Impl6872);
+                    pushFollow(FOLLOW_2);
                     rule__ArraySize__SizeAssignment_2();
 
                     state._fsp--;
@@ -10051,16 +8979,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ArraySize__Group__3"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3427:1: rule__ArraySize__Group__3 : rule__ArraySize__Group__3__Impl ;
+    // InternalRecordLang.g:3065:1: rule__ArraySize__Group__3 : rule__ArraySize__Group__3__Impl ;
     public final void rule__ArraySize__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3431:1: ( rule__ArraySize__Group__3__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3432:2: rule__ArraySize__Group__3__Impl
+            // InternalRecordLang.g:3069:1: ( rule__ArraySize__Group__3__Impl )
+            // InternalRecordLang.g:3070:2: rule__ArraySize__Group__3__Impl
             {
-            pushFollow(FOLLOW_rule__ArraySize__Group__3__Impl_in_rule__ArraySize__Group__36903);
+            pushFollow(FOLLOW_2);
             rule__ArraySize__Group__3__Impl();
 
             state._fsp--;
@@ -10084,22 +9012,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ArraySize__Group__3__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3438:1: rule__ArraySize__Group__3__Impl : ( ']' ) ;
+    // InternalRecordLang.g:3076:1: rule__ArraySize__Group__3__Impl : ( ']' ) ;
     public final void rule__ArraySize__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3442:1: ( ( ']' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3443:1: ( ']' )
+            // InternalRecordLang.g:3080:1: ( ( ']' ) )
+            // InternalRecordLang.g:3081:1: ( ']' )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3443:1: ( ']' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3444:1: ']'
+            // InternalRecordLang.g:3081:1: ( ']' )
+            // InternalRecordLang.g:3082:1: ']'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getArraySizeAccess().getRightSquareBracketKeyword_3()); 
             }
-            match(input,36,FOLLOW_36_in_rule__ArraySize__Group__3__Impl6931); if (state.failed) return ;
+            match(input,35,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getArraySizeAccess().getRightSquareBracketKeyword_3()); 
             }
@@ -10124,371 +9052,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
     // $ANTLR end "rule__ArraySize__Group__3__Impl"
 
 
-    // $ANTLR start "rule__ReferenceProperty__Group__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3465:1: rule__ReferenceProperty__Group__0 : rule__ReferenceProperty__Group__0__Impl rule__ReferenceProperty__Group__1 ;
-    public final void rule__ReferenceProperty__Group__0() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3469:1: ( rule__ReferenceProperty__Group__0__Impl rule__ReferenceProperty__Group__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3470:2: rule__ReferenceProperty__Group__0__Impl rule__ReferenceProperty__Group__1
-            {
-            pushFollow(FOLLOW_rule__ReferenceProperty__Group__0__Impl_in_rule__ReferenceProperty__Group__06970);
-            rule__ReferenceProperty__Group__0__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-            pushFollow(FOLLOW_rule__ReferenceProperty__Group__1_in_rule__ReferenceProperty__Group__06973);
-            rule__ReferenceProperty__Group__1();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__ReferenceProperty__Group__0"
-
-
-    // $ANTLR start "rule__ReferenceProperty__Group__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3477:1: rule__ReferenceProperty__Group__0__Impl : ( ( rule__ReferenceProperty__RefAssignment_0 ) ) ;
-    public final void rule__ReferenceProperty__Group__0__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3481:1: ( ( ( rule__ReferenceProperty__RefAssignment_0 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3482:1: ( ( rule__ReferenceProperty__RefAssignment_0 ) )
-            {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3482:1: ( ( rule__ReferenceProperty__RefAssignment_0 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3483:1: ( rule__ReferenceProperty__RefAssignment_0 )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getReferencePropertyAccess().getRefAssignment_0()); 
-            }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3484:1: ( rule__ReferenceProperty__RefAssignment_0 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3484:2: rule__ReferenceProperty__RefAssignment_0
-            {
-            pushFollow(FOLLOW_rule__ReferenceProperty__RefAssignment_0_in_rule__ReferenceProperty__Group__0__Impl7000);
-            rule__ReferenceProperty__RefAssignment_0();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getReferencePropertyAccess().getRefAssignment_0()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__ReferenceProperty__Group__0__Impl"
-
-
-    // $ANTLR start "rule__ReferenceProperty__Group__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3494:1: rule__ReferenceProperty__Group__1 : rule__ReferenceProperty__Group__1__Impl rule__ReferenceProperty__Group__2 ;
-    public final void rule__ReferenceProperty__Group__1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3498:1: ( rule__ReferenceProperty__Group__1__Impl rule__ReferenceProperty__Group__2 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3499:2: rule__ReferenceProperty__Group__1__Impl rule__ReferenceProperty__Group__2
-            {
-            pushFollow(FOLLOW_rule__ReferenceProperty__Group__1__Impl_in_rule__ReferenceProperty__Group__17030);
-            rule__ReferenceProperty__Group__1__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-            pushFollow(FOLLOW_rule__ReferenceProperty__Group__2_in_rule__ReferenceProperty__Group__17033);
-            rule__ReferenceProperty__Group__2();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__ReferenceProperty__Group__1"
-
-
-    // $ANTLR start "rule__ReferenceProperty__Group__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3506:1: rule__ReferenceProperty__Group__1__Impl : ( '{' ) ;
-    public final void rule__ReferenceProperty__Group__1__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3510:1: ( ( '{' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3511:1: ( '{' )
-            {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3511:1: ( '{' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3512:1: '{'
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getReferencePropertyAccess().getLeftCurlyBracketKeyword_1()); 
-            }
-            match(input,24,FOLLOW_24_in_rule__ReferenceProperty__Group__1__Impl7061); if (state.failed) return ;
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getReferencePropertyAccess().getLeftCurlyBracketKeyword_1()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__ReferenceProperty__Group__1__Impl"
-
-
-    // $ANTLR start "rule__ReferenceProperty__Group__2"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3525:1: rule__ReferenceProperty__Group__2 : rule__ReferenceProperty__Group__2__Impl rule__ReferenceProperty__Group__3 ;
-    public final void rule__ReferenceProperty__Group__2() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3529:1: ( rule__ReferenceProperty__Group__2__Impl rule__ReferenceProperty__Group__3 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3530:2: rule__ReferenceProperty__Group__2__Impl rule__ReferenceProperty__Group__3
-            {
-            pushFollow(FOLLOW_rule__ReferenceProperty__Group__2__Impl_in_rule__ReferenceProperty__Group__27092);
-            rule__ReferenceProperty__Group__2__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-            pushFollow(FOLLOW_rule__ReferenceProperty__Group__3_in_rule__ReferenceProperty__Group__27095);
-            rule__ReferenceProperty__Group__3();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__ReferenceProperty__Group__2"
-
-
-    // $ANTLR start "rule__ReferenceProperty__Group__2__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3537:1: rule__ReferenceProperty__Group__2__Impl : ( ( rule__ReferenceProperty__PropertiesAssignment_2 )* ) ;
-    public final void rule__ReferenceProperty__Group__2__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3541:1: ( ( ( rule__ReferenceProperty__PropertiesAssignment_2 )* ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3542:1: ( ( rule__ReferenceProperty__PropertiesAssignment_2 )* )
-            {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3542:1: ( ( rule__ReferenceProperty__PropertiesAssignment_2 )* )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3543:1: ( rule__ReferenceProperty__PropertiesAssignment_2 )*
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getReferencePropertyAccess().getPropertiesAssignment_2()); 
-            }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3544:1: ( rule__ReferenceProperty__PropertiesAssignment_2 )*
-            loop32:
-            do {
-                int alt32=2;
-                int LA32_0 = input.LA(1);
-
-                if ( (LA32_0==RULE_ID) ) {
-                    alt32=1;
-                }
-
-
-                switch (alt32) {
-            	case 1 :
-            	    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3544:2: rule__ReferenceProperty__PropertiesAssignment_2
-            	    {
-            	    pushFollow(FOLLOW_rule__ReferenceProperty__PropertiesAssignment_2_in_rule__ReferenceProperty__Group__2__Impl7122);
-            	    rule__ReferenceProperty__PropertiesAssignment_2();
-
-            	    state._fsp--;
-            	    if (state.failed) return ;
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop32;
-                }
-            } while (true);
-
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getReferencePropertyAccess().getPropertiesAssignment_2()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__ReferenceProperty__Group__2__Impl"
-
-
-    // $ANTLR start "rule__ReferenceProperty__Group__3"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3554:1: rule__ReferenceProperty__Group__3 : rule__ReferenceProperty__Group__3__Impl ;
-    public final void rule__ReferenceProperty__Group__3() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3558:1: ( rule__ReferenceProperty__Group__3__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3559:2: rule__ReferenceProperty__Group__3__Impl
-            {
-            pushFollow(FOLLOW_rule__ReferenceProperty__Group__3__Impl_in_rule__ReferenceProperty__Group__37153);
-            rule__ReferenceProperty__Group__3__Impl();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__ReferenceProperty__Group__3"
-
-
-    // $ANTLR start "rule__ReferenceProperty__Group__3__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3565:1: rule__ReferenceProperty__Group__3__Impl : ( '}' ) ;
-    public final void rule__ReferenceProperty__Group__3__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3569:1: ( ( '}' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3570:1: ( '}' )
-            {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3570:1: ( '}' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3571:1: '}'
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getReferencePropertyAccess().getRightCurlyBracketKeyword_3()); 
-            }
-            match(input,25,FOLLOW_25_in_rule__ReferenceProperty__Group__3__Impl7181); if (state.failed) return ;
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getReferencePropertyAccess().getRightCurlyBracketKeyword_3()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__ReferenceProperty__Group__3__Impl"
-
-
     // $ANTLR start "rule__ArrayLiteral__Group__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3592:1: rule__ArrayLiteral__Group__0 : rule__ArrayLiteral__Group__0__Impl rule__ArrayLiteral__Group__1 ;
+    // InternalRecordLang.g:3103:1: rule__ArrayLiteral__Group__0 : rule__ArrayLiteral__Group__0__Impl rule__ArrayLiteral__Group__1 ;
     public final void rule__ArrayLiteral__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3596:1: ( rule__ArrayLiteral__Group__0__Impl rule__ArrayLiteral__Group__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3597:2: rule__ArrayLiteral__Group__0__Impl rule__ArrayLiteral__Group__1
+            // InternalRecordLang.g:3107:1: ( rule__ArrayLiteral__Group__0__Impl rule__ArrayLiteral__Group__1 )
+            // InternalRecordLang.g:3108:2: rule__ArrayLiteral__Group__0__Impl rule__ArrayLiteral__Group__1
             {
-            pushFollow(FOLLOW_rule__ArrayLiteral__Group__0__Impl_in_rule__ArrayLiteral__Group__07220);
+            pushFollow(FOLLOW_17);
             rule__ArrayLiteral__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__ArrayLiteral__Group__1_in_rule__ArrayLiteral__Group__07223);
+            pushFollow(FOLLOW_2);
             rule__ArrayLiteral__Group__1();
 
             state._fsp--;
@@ -10512,22 +9091,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ArrayLiteral__Group__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3604:1: rule__ArrayLiteral__Group__0__Impl : ( '{' ) ;
+    // InternalRecordLang.g:3115:1: rule__ArrayLiteral__Group__0__Impl : ( '{' ) ;
     public final void rule__ArrayLiteral__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3608:1: ( ( '{' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3609:1: ( '{' )
+            // InternalRecordLang.g:3119:1: ( ( '{' ) )
+            // InternalRecordLang.g:3120:1: ( '{' )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3609:1: ( '{' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3610:1: '{'
+            // InternalRecordLang.g:3120:1: ( '{' )
+            // InternalRecordLang.g:3121:1: '{'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getArrayLiteralAccess().getLeftCurlyBracketKeyword_0()); 
             }
-            match(input,24,FOLLOW_24_in_rule__ArrayLiteral__Group__0__Impl7251); if (state.failed) return ;
+            match(input,23,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getArrayLiteralAccess().getLeftCurlyBracketKeyword_0()); 
             }
@@ -10553,21 +9132,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ArrayLiteral__Group__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3623:1: rule__ArrayLiteral__Group__1 : rule__ArrayLiteral__Group__1__Impl rule__ArrayLiteral__Group__2 ;
+    // InternalRecordLang.g:3134:1: rule__ArrayLiteral__Group__1 : rule__ArrayLiteral__Group__1__Impl rule__ArrayLiteral__Group__2 ;
     public final void rule__ArrayLiteral__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3627:1: ( rule__ArrayLiteral__Group__1__Impl rule__ArrayLiteral__Group__2 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3628:2: rule__ArrayLiteral__Group__1__Impl rule__ArrayLiteral__Group__2
+            // InternalRecordLang.g:3138:1: ( rule__ArrayLiteral__Group__1__Impl rule__ArrayLiteral__Group__2 )
+            // InternalRecordLang.g:3139:2: rule__ArrayLiteral__Group__1__Impl rule__ArrayLiteral__Group__2
             {
-            pushFollow(FOLLOW_rule__ArrayLiteral__Group__1__Impl_in_rule__ArrayLiteral__Group__17282);
+            pushFollow(FOLLOW_26);
             rule__ArrayLiteral__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__ArrayLiteral__Group__2_in_rule__ArrayLiteral__Group__17285);
+            pushFollow(FOLLOW_2);
             rule__ArrayLiteral__Group__2();
 
             state._fsp--;
@@ -10591,25 +9170,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ArrayLiteral__Group__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3635:1: rule__ArrayLiteral__Group__1__Impl : ( ( rule__ArrayLiteral__LiteralsAssignment_1 ) ) ;
+    // InternalRecordLang.g:3146:1: rule__ArrayLiteral__Group__1__Impl : ( ( rule__ArrayLiteral__LiteralsAssignment_1 ) ) ;
     public final void rule__ArrayLiteral__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3639:1: ( ( ( rule__ArrayLiteral__LiteralsAssignment_1 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3640:1: ( ( rule__ArrayLiteral__LiteralsAssignment_1 ) )
+            // InternalRecordLang.g:3150:1: ( ( ( rule__ArrayLiteral__LiteralsAssignment_1 ) ) )
+            // InternalRecordLang.g:3151:1: ( ( rule__ArrayLiteral__LiteralsAssignment_1 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3640:1: ( ( rule__ArrayLiteral__LiteralsAssignment_1 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3641:1: ( rule__ArrayLiteral__LiteralsAssignment_1 )
+            // InternalRecordLang.g:3151:1: ( ( rule__ArrayLiteral__LiteralsAssignment_1 ) )
+            // InternalRecordLang.g:3152:1: ( rule__ArrayLiteral__LiteralsAssignment_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getArrayLiteralAccess().getLiteralsAssignment_1()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3642:1: ( rule__ArrayLiteral__LiteralsAssignment_1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3642:2: rule__ArrayLiteral__LiteralsAssignment_1
+            // InternalRecordLang.g:3153:1: ( rule__ArrayLiteral__LiteralsAssignment_1 )
+            // InternalRecordLang.g:3153:2: rule__ArrayLiteral__LiteralsAssignment_1
             {
-            pushFollow(FOLLOW_rule__ArrayLiteral__LiteralsAssignment_1_in_rule__ArrayLiteral__Group__1__Impl7312);
+            pushFollow(FOLLOW_2);
             rule__ArrayLiteral__LiteralsAssignment_1();
 
             state._fsp--;
@@ -10642,21 +9221,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ArrayLiteral__Group__2"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3652:1: rule__ArrayLiteral__Group__2 : rule__ArrayLiteral__Group__2__Impl rule__ArrayLiteral__Group__3 ;
+    // InternalRecordLang.g:3163:1: rule__ArrayLiteral__Group__2 : rule__ArrayLiteral__Group__2__Impl rule__ArrayLiteral__Group__3 ;
     public final void rule__ArrayLiteral__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3656:1: ( rule__ArrayLiteral__Group__2__Impl rule__ArrayLiteral__Group__3 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3657:2: rule__ArrayLiteral__Group__2__Impl rule__ArrayLiteral__Group__3
+            // InternalRecordLang.g:3167:1: ( rule__ArrayLiteral__Group__2__Impl rule__ArrayLiteral__Group__3 )
+            // InternalRecordLang.g:3168:2: rule__ArrayLiteral__Group__2__Impl rule__ArrayLiteral__Group__3
             {
-            pushFollow(FOLLOW_rule__ArrayLiteral__Group__2__Impl_in_rule__ArrayLiteral__Group__27342);
+            pushFollow(FOLLOW_26);
             rule__ArrayLiteral__Group__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__ArrayLiteral__Group__3_in_rule__ArrayLiteral__Group__27345);
+            pushFollow(FOLLOW_2);
             rule__ArrayLiteral__Group__3();
 
             state._fsp--;
@@ -10680,37 +9259,37 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ArrayLiteral__Group__2__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3664:1: rule__ArrayLiteral__Group__2__Impl : ( ( rule__ArrayLiteral__Group_2__0 )* ) ;
+    // InternalRecordLang.g:3175:1: rule__ArrayLiteral__Group__2__Impl : ( ( rule__ArrayLiteral__Group_2__0 )* ) ;
     public final void rule__ArrayLiteral__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3668:1: ( ( ( rule__ArrayLiteral__Group_2__0 )* ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3669:1: ( ( rule__ArrayLiteral__Group_2__0 )* )
+            // InternalRecordLang.g:3179:1: ( ( ( rule__ArrayLiteral__Group_2__0 )* ) )
+            // InternalRecordLang.g:3180:1: ( ( rule__ArrayLiteral__Group_2__0 )* )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3669:1: ( ( rule__ArrayLiteral__Group_2__0 )* )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3670:1: ( rule__ArrayLiteral__Group_2__0 )*
+            // InternalRecordLang.g:3180:1: ( ( rule__ArrayLiteral__Group_2__0 )* )
+            // InternalRecordLang.g:3181:1: ( rule__ArrayLiteral__Group_2__0 )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getArrayLiteralAccess().getGroup_2()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3671:1: ( rule__ArrayLiteral__Group_2__0 )*
-            loop33:
+            // InternalRecordLang.g:3182:1: ( rule__ArrayLiteral__Group_2__0 )*
+            loop28:
             do {
-                int alt33=2;
-                int LA33_0 = input.LA(1);
+                int alt28=2;
+                int LA28_0 = input.LA(1);
 
-                if ( (LA33_0==23) ) {
-                    alt33=1;
+                if ( (LA28_0==22) ) {
+                    alt28=1;
                 }
 
 
-                switch (alt33) {
+                switch (alt28) {
             	case 1 :
-            	    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3671:2: rule__ArrayLiteral__Group_2__0
+            	    // InternalRecordLang.g:3182:2: rule__ArrayLiteral__Group_2__0
             	    {
-            	    pushFollow(FOLLOW_rule__ArrayLiteral__Group_2__0_in_rule__ArrayLiteral__Group__2__Impl7372);
+            	    pushFollow(FOLLOW_11);
             	    rule__ArrayLiteral__Group_2__0();
 
             	    state._fsp--;
@@ -10720,7 +9299,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             	    break;
 
             	default :
-            	    break loop33;
+            	    break loop28;
                 }
             } while (true);
 
@@ -10749,16 +9328,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ArrayLiteral__Group__3"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3681:1: rule__ArrayLiteral__Group__3 : rule__ArrayLiteral__Group__3__Impl ;
+    // InternalRecordLang.g:3192:1: rule__ArrayLiteral__Group__3 : rule__ArrayLiteral__Group__3__Impl ;
     public final void rule__ArrayLiteral__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3685:1: ( rule__ArrayLiteral__Group__3__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3686:2: rule__ArrayLiteral__Group__3__Impl
+            // InternalRecordLang.g:3196:1: ( rule__ArrayLiteral__Group__3__Impl )
+            // InternalRecordLang.g:3197:2: rule__ArrayLiteral__Group__3__Impl
             {
-            pushFollow(FOLLOW_rule__ArrayLiteral__Group__3__Impl_in_rule__ArrayLiteral__Group__37403);
+            pushFollow(FOLLOW_2);
             rule__ArrayLiteral__Group__3__Impl();
 
             state._fsp--;
@@ -10782,22 +9361,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ArrayLiteral__Group__3__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3692:1: rule__ArrayLiteral__Group__3__Impl : ( '}' ) ;
+    // InternalRecordLang.g:3203:1: rule__ArrayLiteral__Group__3__Impl : ( '}' ) ;
     public final void rule__ArrayLiteral__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3696:1: ( ( '}' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3697:1: ( '}' )
+            // InternalRecordLang.g:3207:1: ( ( '}' ) )
+            // InternalRecordLang.g:3208:1: ( '}' )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3697:1: ( '}' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3698:1: '}'
+            // InternalRecordLang.g:3208:1: ( '}' )
+            // InternalRecordLang.g:3209:1: '}'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getArrayLiteralAccess().getRightCurlyBracketKeyword_3()); 
             }
-            match(input,25,FOLLOW_25_in_rule__ArrayLiteral__Group__3__Impl7431); if (state.failed) return ;
+            match(input,24,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getArrayLiteralAccess().getRightCurlyBracketKeyword_3()); 
             }
@@ -10823,21 +9402,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ArrayLiteral__Group_2__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3719:1: rule__ArrayLiteral__Group_2__0 : rule__ArrayLiteral__Group_2__0__Impl rule__ArrayLiteral__Group_2__1 ;
+    // InternalRecordLang.g:3230:1: rule__ArrayLiteral__Group_2__0 : rule__ArrayLiteral__Group_2__0__Impl rule__ArrayLiteral__Group_2__1 ;
     public final void rule__ArrayLiteral__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3723:1: ( rule__ArrayLiteral__Group_2__0__Impl rule__ArrayLiteral__Group_2__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3724:2: rule__ArrayLiteral__Group_2__0__Impl rule__ArrayLiteral__Group_2__1
+            // InternalRecordLang.g:3234:1: ( rule__ArrayLiteral__Group_2__0__Impl rule__ArrayLiteral__Group_2__1 )
+            // InternalRecordLang.g:3235:2: rule__ArrayLiteral__Group_2__0__Impl rule__ArrayLiteral__Group_2__1
             {
-            pushFollow(FOLLOW_rule__ArrayLiteral__Group_2__0__Impl_in_rule__ArrayLiteral__Group_2__07470);
+            pushFollow(FOLLOW_17);
             rule__ArrayLiteral__Group_2__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__ArrayLiteral__Group_2__1_in_rule__ArrayLiteral__Group_2__07473);
+            pushFollow(FOLLOW_2);
             rule__ArrayLiteral__Group_2__1();
 
             state._fsp--;
@@ -10861,22 +9440,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ArrayLiteral__Group_2__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3731:1: rule__ArrayLiteral__Group_2__0__Impl : ( ',' ) ;
+    // InternalRecordLang.g:3242:1: rule__ArrayLiteral__Group_2__0__Impl : ( ',' ) ;
     public final void rule__ArrayLiteral__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3735:1: ( ( ',' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3736:1: ( ',' )
+            // InternalRecordLang.g:3246:1: ( ( ',' ) )
+            // InternalRecordLang.g:3247:1: ( ',' )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3736:1: ( ',' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3737:1: ','
+            // InternalRecordLang.g:3247:1: ( ',' )
+            // InternalRecordLang.g:3248:1: ','
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getArrayLiteralAccess().getCommaKeyword_2_0()); 
             }
-            match(input,23,FOLLOW_23_in_rule__ArrayLiteral__Group_2__0__Impl7501); if (state.failed) return ;
+            match(input,22,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getArrayLiteralAccess().getCommaKeyword_2_0()); 
             }
@@ -10902,16 +9481,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ArrayLiteral__Group_2__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3750:1: rule__ArrayLiteral__Group_2__1 : rule__ArrayLiteral__Group_2__1__Impl ;
+    // InternalRecordLang.g:3261:1: rule__ArrayLiteral__Group_2__1 : rule__ArrayLiteral__Group_2__1__Impl ;
     public final void rule__ArrayLiteral__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3754:1: ( rule__ArrayLiteral__Group_2__1__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3755:2: rule__ArrayLiteral__Group_2__1__Impl
+            // InternalRecordLang.g:3265:1: ( rule__ArrayLiteral__Group_2__1__Impl )
+            // InternalRecordLang.g:3266:2: rule__ArrayLiteral__Group_2__1__Impl
             {
-            pushFollow(FOLLOW_rule__ArrayLiteral__Group_2__1__Impl_in_rule__ArrayLiteral__Group_2__17532);
+            pushFollow(FOLLOW_2);
             rule__ArrayLiteral__Group_2__1__Impl();
 
             state._fsp--;
@@ -10935,25 +9514,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ArrayLiteral__Group_2__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3761:1: rule__ArrayLiteral__Group_2__1__Impl : ( ( rule__ArrayLiteral__LiteralsAssignment_2_1 ) ) ;
+    // InternalRecordLang.g:3272:1: rule__ArrayLiteral__Group_2__1__Impl : ( ( rule__ArrayLiteral__LiteralsAssignment_2_1 ) ) ;
     public final void rule__ArrayLiteral__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3765:1: ( ( ( rule__ArrayLiteral__LiteralsAssignment_2_1 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3766:1: ( ( rule__ArrayLiteral__LiteralsAssignment_2_1 ) )
+            // InternalRecordLang.g:3276:1: ( ( ( rule__ArrayLiteral__LiteralsAssignment_2_1 ) ) )
+            // InternalRecordLang.g:3277:1: ( ( rule__ArrayLiteral__LiteralsAssignment_2_1 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3766:1: ( ( rule__ArrayLiteral__LiteralsAssignment_2_1 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3767:1: ( rule__ArrayLiteral__LiteralsAssignment_2_1 )
+            // InternalRecordLang.g:3277:1: ( ( rule__ArrayLiteral__LiteralsAssignment_2_1 ) )
+            // InternalRecordLang.g:3278:1: ( rule__ArrayLiteral__LiteralsAssignment_2_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getArrayLiteralAccess().getLiteralsAssignment_2_1()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3768:1: ( rule__ArrayLiteral__LiteralsAssignment_2_1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3768:2: rule__ArrayLiteral__LiteralsAssignment_2_1
+            // InternalRecordLang.g:3279:1: ( rule__ArrayLiteral__LiteralsAssignment_2_1 )
+            // InternalRecordLang.g:3279:2: rule__ArrayLiteral__LiteralsAssignment_2_1
             {
-            pushFollow(FOLLOW_rule__ArrayLiteral__LiteralsAssignment_2_1_in_rule__ArrayLiteral__Group_2__1__Impl7559);
+            pushFollow(FOLLOW_2);
             rule__ArrayLiteral__LiteralsAssignment_2_1();
 
             state._fsp--;
@@ -10986,21 +9565,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__BuiltInValueLiteral__Group__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3782:1: rule__BuiltInValueLiteral__Group__0 : rule__BuiltInValueLiteral__Group__0__Impl rule__BuiltInValueLiteral__Group__1 ;
+    // InternalRecordLang.g:3293:1: rule__BuiltInValueLiteral__Group__0 : rule__BuiltInValueLiteral__Group__0__Impl rule__BuiltInValueLiteral__Group__1 ;
     public final void rule__BuiltInValueLiteral__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3786:1: ( rule__BuiltInValueLiteral__Group__0__Impl rule__BuiltInValueLiteral__Group__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3787:2: rule__BuiltInValueLiteral__Group__0__Impl rule__BuiltInValueLiteral__Group__1
+            // InternalRecordLang.g:3297:1: ( rule__BuiltInValueLiteral__Group__0__Impl rule__BuiltInValueLiteral__Group__1 )
+            // InternalRecordLang.g:3298:2: rule__BuiltInValueLiteral__Group__0__Impl rule__BuiltInValueLiteral__Group__1
             {
-            pushFollow(FOLLOW_rule__BuiltInValueLiteral__Group__0__Impl_in_rule__BuiltInValueLiteral__Group__07593);
+            pushFollow(FOLLOW_17);
             rule__BuiltInValueLiteral__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__BuiltInValueLiteral__Group__1_in_rule__BuiltInValueLiteral__Group__07596);
+            pushFollow(FOLLOW_2);
             rule__BuiltInValueLiteral__Group__1();
 
             state._fsp--;
@@ -11024,23 +9603,23 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__BuiltInValueLiteral__Group__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3794:1: rule__BuiltInValueLiteral__Group__0__Impl : ( () ) ;
+    // InternalRecordLang.g:3305:1: rule__BuiltInValueLiteral__Group__0__Impl : ( () ) ;
     public final void rule__BuiltInValueLiteral__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3798:1: ( ( () ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3799:1: ( () )
+            // InternalRecordLang.g:3309:1: ( ( () ) )
+            // InternalRecordLang.g:3310:1: ( () )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3799:1: ( () )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3800:1: ()
+            // InternalRecordLang.g:3310:1: ( () )
+            // InternalRecordLang.g:3311:1: ()
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getBuiltInValueLiteralAccess().getBuiltInValueLiteralAction_0()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3801:1: ()
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3803:1: 
+            // InternalRecordLang.g:3312:1: ()
+            // InternalRecordLang.g:3314:1: 
             {
             }
 
@@ -11065,16 +9644,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__BuiltInValueLiteral__Group__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3813:1: rule__BuiltInValueLiteral__Group__1 : rule__BuiltInValueLiteral__Group__1__Impl ;
+    // InternalRecordLang.g:3324:1: rule__BuiltInValueLiteral__Group__1 : rule__BuiltInValueLiteral__Group__1__Impl ;
     public final void rule__BuiltInValueLiteral__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3817:1: ( rule__BuiltInValueLiteral__Group__1__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3818:2: rule__BuiltInValueLiteral__Group__1__Impl
+            // InternalRecordLang.g:3328:1: ( rule__BuiltInValueLiteral__Group__1__Impl )
+            // InternalRecordLang.g:3329:2: rule__BuiltInValueLiteral__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__BuiltInValueLiteral__Group__1__Impl_in_rule__BuiltInValueLiteral__Group__17654);
+            pushFollow(FOLLOW_2);
             rule__BuiltInValueLiteral__Group__1__Impl();
 
             state._fsp--;
@@ -11098,25 +9677,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__BuiltInValueLiteral__Group__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3824:1: rule__BuiltInValueLiteral__Group__1__Impl : ( ( rule__BuiltInValueLiteral__ValueAssignment_1 ) ) ;
+    // InternalRecordLang.g:3335:1: rule__BuiltInValueLiteral__Group__1__Impl : ( ( rule__BuiltInValueLiteral__ValueAssignment_1 ) ) ;
     public final void rule__BuiltInValueLiteral__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3828:1: ( ( ( rule__BuiltInValueLiteral__ValueAssignment_1 ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3829:1: ( ( rule__BuiltInValueLiteral__ValueAssignment_1 ) )
+            // InternalRecordLang.g:3339:1: ( ( ( rule__BuiltInValueLiteral__ValueAssignment_1 ) ) )
+            // InternalRecordLang.g:3340:1: ( ( rule__BuiltInValueLiteral__ValueAssignment_1 ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3829:1: ( ( rule__BuiltInValueLiteral__ValueAssignment_1 ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3830:1: ( rule__BuiltInValueLiteral__ValueAssignment_1 )
+            // InternalRecordLang.g:3340:1: ( ( rule__BuiltInValueLiteral__ValueAssignment_1 ) )
+            // InternalRecordLang.g:3341:1: ( rule__BuiltInValueLiteral__ValueAssignment_1 )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getBuiltInValueLiteralAccess().getValueAssignment_1()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3831:1: ( rule__BuiltInValueLiteral__ValueAssignment_1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3831:2: rule__BuiltInValueLiteral__ValueAssignment_1
+            // InternalRecordLang.g:3342:1: ( rule__BuiltInValueLiteral__ValueAssignment_1 )
+            // InternalRecordLang.g:3342:2: rule__BuiltInValueLiteral__ValueAssignment_1
             {
-            pushFollow(FOLLOW_rule__BuiltInValueLiteral__ValueAssignment_1_in_rule__BuiltInValueLiteral__Group__1__Impl7681);
+            pushFollow(FOLLOW_2);
             rule__BuiltInValueLiteral__ValueAssignment_1();
 
             state._fsp--;
@@ -11149,21 +9728,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__QualifiedName__Group__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3845:1: rule__QualifiedName__Group__0 : rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1 ;
+    // InternalRecordLang.g:3356:1: rule__QualifiedName__Group__0 : rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1 ;
     public final void rule__QualifiedName__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3849:1: ( rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3850:2: rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1
+            // InternalRecordLang.g:3360:1: ( rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1 )
+            // InternalRecordLang.g:3361:2: rule__QualifiedName__Group__0__Impl rule__QualifiedName__Group__1
             {
-            pushFollow(FOLLOW_rule__QualifiedName__Group__0__Impl_in_rule__QualifiedName__Group__07715);
+            pushFollow(FOLLOW_22);
             rule__QualifiedName__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__QualifiedName__Group__1_in_rule__QualifiedName__Group__07718);
+            pushFollow(FOLLOW_2);
             rule__QualifiedName__Group__1();
 
             state._fsp--;
@@ -11187,22 +9766,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__QualifiedName__Group__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3857:1: rule__QualifiedName__Group__0__Impl : ( RULE_ID ) ;
+    // InternalRecordLang.g:3368:1: rule__QualifiedName__Group__0__Impl : ( RULE_ID ) ;
     public final void rule__QualifiedName__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3861:1: ( ( RULE_ID ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3862:1: ( RULE_ID )
+            // InternalRecordLang.g:3372:1: ( ( RULE_ID ) )
+            // InternalRecordLang.g:3373:1: ( RULE_ID )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3862:1: ( RULE_ID )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3863:1: RULE_ID
+            // InternalRecordLang.g:3373:1: ( RULE_ID )
+            // InternalRecordLang.g:3374:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_0()); 
             }
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__QualifiedName__Group__0__Impl7745); if (state.failed) return ;
+            match(input,RULE_ID,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_0()); 
             }
@@ -11228,16 +9807,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__QualifiedName__Group__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3874:1: rule__QualifiedName__Group__1 : rule__QualifiedName__Group__1__Impl ;
+    // InternalRecordLang.g:3385:1: rule__QualifiedName__Group__1 : rule__QualifiedName__Group__1__Impl ;
     public final void rule__QualifiedName__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3878:1: ( rule__QualifiedName__Group__1__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3879:2: rule__QualifiedName__Group__1__Impl
+            // InternalRecordLang.g:3389:1: ( rule__QualifiedName__Group__1__Impl )
+            // InternalRecordLang.g:3390:2: rule__QualifiedName__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__QualifiedName__Group__1__Impl_in_rule__QualifiedName__Group__17774);
+            pushFollow(FOLLOW_2);
             rule__QualifiedName__Group__1__Impl();
 
             state._fsp--;
@@ -11261,43 +9840,43 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__QualifiedName__Group__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3885:1: rule__QualifiedName__Group__1__Impl : ( ( rule__QualifiedName__Group_1__0 )* ) ;
+    // InternalRecordLang.g:3396:1: rule__QualifiedName__Group__1__Impl : ( ( rule__QualifiedName__Group_1__0 )* ) ;
     public final void rule__QualifiedName__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3889:1: ( ( ( rule__QualifiedName__Group_1__0 )* ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3890:1: ( ( rule__QualifiedName__Group_1__0 )* )
+            // InternalRecordLang.g:3400:1: ( ( ( rule__QualifiedName__Group_1__0 )* ) )
+            // InternalRecordLang.g:3401:1: ( ( rule__QualifiedName__Group_1__0 )* )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3890:1: ( ( rule__QualifiedName__Group_1__0 )* )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3891:1: ( rule__QualifiedName__Group_1__0 )*
+            // InternalRecordLang.g:3401:1: ( ( rule__QualifiedName__Group_1__0 )* )
+            // InternalRecordLang.g:3402:1: ( rule__QualifiedName__Group_1__0 )*
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getQualifiedNameAccess().getGroup_1()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3892:1: ( rule__QualifiedName__Group_1__0 )*
-            loop34:
+            // InternalRecordLang.g:3403:1: ( rule__QualifiedName__Group_1__0 )*
+            loop29:
             do {
-                int alt34=2;
-                int LA34_0 = input.LA(1);
+                int alt29=2;
+                int LA29_0 = input.LA(1);
 
-                if ( (LA34_0==34) ) {
-                    int LA34_2 = input.LA(2);
+                if ( (LA29_0==33) ) {
+                    int LA29_2 = input.LA(2);
 
-                    if ( (LA34_2==RULE_ID) ) {
-                        alt34=1;
+                    if ( (LA29_2==RULE_ID) ) {
+                        alt29=1;
                     }
 
 
                 }
 
 
-                switch (alt34) {
+                switch (alt29) {
             	case 1 :
-            	    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3892:2: rule__QualifiedName__Group_1__0
+            	    // InternalRecordLang.g:3403:2: rule__QualifiedName__Group_1__0
             	    {
-            	    pushFollow(FOLLOW_rule__QualifiedName__Group_1__0_in_rule__QualifiedName__Group__1__Impl7801);
+            	    pushFollow(FOLLOW_27);
             	    rule__QualifiedName__Group_1__0();
 
             	    state._fsp--;
@@ -11307,7 +9886,7 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
             	    break;
 
             	default :
-            	    break loop34;
+            	    break loop29;
                 }
             } while (true);
 
@@ -11336,21 +9915,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__QualifiedName__Group_1__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3906:1: rule__QualifiedName__Group_1__0 : rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1 ;
+    // InternalRecordLang.g:3417:1: rule__QualifiedName__Group_1__0 : rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1 ;
     public final void rule__QualifiedName__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3910:1: ( rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3911:2: rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1
+            // InternalRecordLang.g:3421:1: ( rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1 )
+            // InternalRecordLang.g:3422:2: rule__QualifiedName__Group_1__0__Impl rule__QualifiedName__Group_1__1
             {
-            pushFollow(FOLLOW_rule__QualifiedName__Group_1__0__Impl_in_rule__QualifiedName__Group_1__07836);
+            pushFollow(FOLLOW_3);
             rule__QualifiedName__Group_1__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__QualifiedName__Group_1__1_in_rule__QualifiedName__Group_1__07839);
+            pushFollow(FOLLOW_2);
             rule__QualifiedName__Group_1__1();
 
             state._fsp--;
@@ -11374,25 +9953,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__QualifiedName__Group_1__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3918:1: rule__QualifiedName__Group_1__0__Impl : ( ( '.' ) ) ;
+    // InternalRecordLang.g:3429:1: rule__QualifiedName__Group_1__0__Impl : ( ( '.' ) ) ;
     public final void rule__QualifiedName__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3922:1: ( ( ( '.' ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3923:1: ( ( '.' ) )
+            // InternalRecordLang.g:3433:1: ( ( ( '.' ) ) )
+            // InternalRecordLang.g:3434:1: ( ( '.' ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3923:1: ( ( '.' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3924:1: ( '.' )
+            // InternalRecordLang.g:3434:1: ( ( '.' ) )
+            // InternalRecordLang.g:3435:1: ( '.' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getQualifiedNameAccess().getFullStopKeyword_1_0()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3925:1: ( '.' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3926:2: '.'
+            // InternalRecordLang.g:3436:1: ( '.' )
+            // InternalRecordLang.g:3437:2: '.'
             {
-            match(input,34,FOLLOW_34_in_rule__QualifiedName__Group_1__0__Impl7868); if (state.failed) return ;
+            match(input,33,FOLLOW_2); if (state.failed) return ;
 
             }
 
@@ -11421,16 +10000,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__QualifiedName__Group_1__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3937:1: rule__QualifiedName__Group_1__1 : rule__QualifiedName__Group_1__1__Impl ;
+    // InternalRecordLang.g:3448:1: rule__QualifiedName__Group_1__1 : rule__QualifiedName__Group_1__1__Impl ;
     public final void rule__QualifiedName__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3941:1: ( rule__QualifiedName__Group_1__1__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3942:2: rule__QualifiedName__Group_1__1__Impl
+            // InternalRecordLang.g:3452:1: ( rule__QualifiedName__Group_1__1__Impl )
+            // InternalRecordLang.g:3453:2: rule__QualifiedName__Group_1__1__Impl
             {
-            pushFollow(FOLLOW_rule__QualifiedName__Group_1__1__Impl_in_rule__QualifiedName__Group_1__17900);
+            pushFollow(FOLLOW_2);
             rule__QualifiedName__Group_1__1__Impl();
 
             state._fsp--;
@@ -11454,22 +10033,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__QualifiedName__Group_1__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3948:1: rule__QualifiedName__Group_1__1__Impl : ( RULE_ID ) ;
+    // InternalRecordLang.g:3459:1: rule__QualifiedName__Group_1__1__Impl : ( RULE_ID ) ;
     public final void rule__QualifiedName__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3952:1: ( ( RULE_ID ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3953:1: ( RULE_ID )
+            // InternalRecordLang.g:3463:1: ( ( RULE_ID ) )
+            // InternalRecordLang.g:3464:1: ( RULE_ID )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3953:1: ( RULE_ID )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3954:1: RULE_ID
+            // InternalRecordLang.g:3464:1: ( RULE_ID )
+            // InternalRecordLang.g:3465:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_1_1()); 
             }
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__QualifiedName__Group_1__1__Impl7927); if (state.failed) return ;
+            match(input,RULE_ID,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_1_1()); 
             }
@@ -11495,21 +10074,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__QualifiedNameWithWildcard__Group__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3969:1: rule__QualifiedNameWithWildcard__Group__0 : rule__QualifiedNameWithWildcard__Group__0__Impl rule__QualifiedNameWithWildcard__Group__1 ;
+    // InternalRecordLang.g:3480:1: rule__QualifiedNameWithWildcard__Group__0 : rule__QualifiedNameWithWildcard__Group__0__Impl rule__QualifiedNameWithWildcard__Group__1 ;
     public final void rule__QualifiedNameWithWildcard__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3973:1: ( rule__QualifiedNameWithWildcard__Group__0__Impl rule__QualifiedNameWithWildcard__Group__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3974:2: rule__QualifiedNameWithWildcard__Group__0__Impl rule__QualifiedNameWithWildcard__Group__1
+            // InternalRecordLang.g:3484:1: ( rule__QualifiedNameWithWildcard__Group__0__Impl rule__QualifiedNameWithWildcard__Group__1 )
+            // InternalRecordLang.g:3485:2: rule__QualifiedNameWithWildcard__Group__0__Impl rule__QualifiedNameWithWildcard__Group__1
             {
-            pushFollow(FOLLOW_rule__QualifiedNameWithWildcard__Group__0__Impl_in_rule__QualifiedNameWithWildcard__Group__07960);
+            pushFollow(FOLLOW_22);
             rule__QualifiedNameWithWildcard__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__QualifiedNameWithWildcard__Group__1_in_rule__QualifiedNameWithWildcard__Group__07963);
+            pushFollow(FOLLOW_2);
             rule__QualifiedNameWithWildcard__Group__1();
 
             state._fsp--;
@@ -11533,22 +10112,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__QualifiedNameWithWildcard__Group__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3981:1: rule__QualifiedNameWithWildcard__Group__0__Impl : ( ruleQualifiedName ) ;
+    // InternalRecordLang.g:3492:1: rule__QualifiedNameWithWildcard__Group__0__Impl : ( ruleQualifiedName ) ;
     public final void rule__QualifiedNameWithWildcard__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3985:1: ( ( ruleQualifiedName ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3986:1: ( ruleQualifiedName )
+            // InternalRecordLang.g:3496:1: ( ( ruleQualifiedName ) )
+            // InternalRecordLang.g:3497:1: ( ruleQualifiedName )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3986:1: ( ruleQualifiedName )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3987:1: ruleQualifiedName
+            // InternalRecordLang.g:3497:1: ( ruleQualifiedName )
+            // InternalRecordLang.g:3498:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getQualifiedNameWithWildcardAccess().getQualifiedNameParserRuleCall_0()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_rule__QualifiedNameWithWildcard__Group__0__Impl7990);
+            pushFollow(FOLLOW_2);
             ruleQualifiedName();
 
             state._fsp--;
@@ -11578,16 +10157,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__QualifiedNameWithWildcard__Group__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:3998:1: rule__QualifiedNameWithWildcard__Group__1 : rule__QualifiedNameWithWildcard__Group__1__Impl ;
+    // InternalRecordLang.g:3509:1: rule__QualifiedNameWithWildcard__Group__1 : rule__QualifiedNameWithWildcard__Group__1__Impl ;
     public final void rule__QualifiedNameWithWildcard__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4002:1: ( rule__QualifiedNameWithWildcard__Group__1__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4003:2: rule__QualifiedNameWithWildcard__Group__1__Impl
+            // InternalRecordLang.g:3513:1: ( rule__QualifiedNameWithWildcard__Group__1__Impl )
+            // InternalRecordLang.g:3514:2: rule__QualifiedNameWithWildcard__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__QualifiedNameWithWildcard__Group__1__Impl_in_rule__QualifiedNameWithWildcard__Group__18019);
+            pushFollow(FOLLOW_2);
             rule__QualifiedNameWithWildcard__Group__1__Impl();
 
             state._fsp--;
@@ -11611,33 +10190,33 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__QualifiedNameWithWildcard__Group__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4009:1: rule__QualifiedNameWithWildcard__Group__1__Impl : ( ( rule__QualifiedNameWithWildcard__Group_1__0 )? ) ;
+    // InternalRecordLang.g:3520:1: rule__QualifiedNameWithWildcard__Group__1__Impl : ( ( rule__QualifiedNameWithWildcard__Group_1__0 )? ) ;
     public final void rule__QualifiedNameWithWildcard__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4013:1: ( ( ( rule__QualifiedNameWithWildcard__Group_1__0 )? ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4014:1: ( ( rule__QualifiedNameWithWildcard__Group_1__0 )? )
+            // InternalRecordLang.g:3524:1: ( ( ( rule__QualifiedNameWithWildcard__Group_1__0 )? ) )
+            // InternalRecordLang.g:3525:1: ( ( rule__QualifiedNameWithWildcard__Group_1__0 )? )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4014:1: ( ( rule__QualifiedNameWithWildcard__Group_1__0 )? )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4015:1: ( rule__QualifiedNameWithWildcard__Group_1__0 )?
+            // InternalRecordLang.g:3525:1: ( ( rule__QualifiedNameWithWildcard__Group_1__0 )? )
+            // InternalRecordLang.g:3526:1: ( rule__QualifiedNameWithWildcard__Group_1__0 )?
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getQualifiedNameWithWildcardAccess().getGroup_1()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4016:1: ( rule__QualifiedNameWithWildcard__Group_1__0 )?
-            int alt35=2;
-            int LA35_0 = input.LA(1);
+            // InternalRecordLang.g:3527:1: ( rule__QualifiedNameWithWildcard__Group_1__0 )?
+            int alt30=2;
+            int LA30_0 = input.LA(1);
 
-            if ( (LA35_0==34) ) {
-                alt35=1;
+            if ( (LA30_0==33) ) {
+                alt30=1;
             }
-            switch (alt35) {
+            switch (alt30) {
                 case 1 :
-                    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4016:2: rule__QualifiedNameWithWildcard__Group_1__0
+                    // InternalRecordLang.g:3527:2: rule__QualifiedNameWithWildcard__Group_1__0
                     {
-                    pushFollow(FOLLOW_rule__QualifiedNameWithWildcard__Group_1__0_in_rule__QualifiedNameWithWildcard__Group__1__Impl8046);
+                    pushFollow(FOLLOW_2);
                     rule__QualifiedNameWithWildcard__Group_1__0();
 
                     state._fsp--;
@@ -11673,21 +10252,21 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__QualifiedNameWithWildcard__Group_1__0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4030:1: rule__QualifiedNameWithWildcard__Group_1__0 : rule__QualifiedNameWithWildcard__Group_1__0__Impl rule__QualifiedNameWithWildcard__Group_1__1 ;
+    // InternalRecordLang.g:3541:1: rule__QualifiedNameWithWildcard__Group_1__0 : rule__QualifiedNameWithWildcard__Group_1__0__Impl rule__QualifiedNameWithWildcard__Group_1__1 ;
     public final void rule__QualifiedNameWithWildcard__Group_1__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4034:1: ( rule__QualifiedNameWithWildcard__Group_1__0__Impl rule__QualifiedNameWithWildcard__Group_1__1 )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4035:2: rule__QualifiedNameWithWildcard__Group_1__0__Impl rule__QualifiedNameWithWildcard__Group_1__1
+            // InternalRecordLang.g:3545:1: ( rule__QualifiedNameWithWildcard__Group_1__0__Impl rule__QualifiedNameWithWildcard__Group_1__1 )
+            // InternalRecordLang.g:3546:2: rule__QualifiedNameWithWildcard__Group_1__0__Impl rule__QualifiedNameWithWildcard__Group_1__1
             {
-            pushFollow(FOLLOW_rule__QualifiedNameWithWildcard__Group_1__0__Impl_in_rule__QualifiedNameWithWildcard__Group_1__08081);
+            pushFollow(FOLLOW_28);
             rule__QualifiedNameWithWildcard__Group_1__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
-            pushFollow(FOLLOW_rule__QualifiedNameWithWildcard__Group_1__1_in_rule__QualifiedNameWithWildcard__Group_1__08084);
+            pushFollow(FOLLOW_2);
             rule__QualifiedNameWithWildcard__Group_1__1();
 
             state._fsp--;
@@ -11711,22 +10290,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__QualifiedNameWithWildcard__Group_1__0__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4042:1: rule__QualifiedNameWithWildcard__Group_1__0__Impl : ( '.' ) ;
+    // InternalRecordLang.g:3553:1: rule__QualifiedNameWithWildcard__Group_1__0__Impl : ( '.' ) ;
     public final void rule__QualifiedNameWithWildcard__Group_1__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4046:1: ( ( '.' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4047:1: ( '.' )
+            // InternalRecordLang.g:3557:1: ( ( '.' ) )
+            // InternalRecordLang.g:3558:1: ( '.' )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4047:1: ( '.' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4048:1: '.'
+            // InternalRecordLang.g:3558:1: ( '.' )
+            // InternalRecordLang.g:3559:1: '.'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getQualifiedNameWithWildcardAccess().getFullStopKeyword_1_0()); 
             }
-            match(input,34,FOLLOW_34_in_rule__QualifiedNameWithWildcard__Group_1__0__Impl8112); if (state.failed) return ;
+            match(input,33,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getQualifiedNameWithWildcardAccess().getFullStopKeyword_1_0()); 
             }
@@ -11752,16 +10331,16 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__QualifiedNameWithWildcard__Group_1__1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4061:1: rule__QualifiedNameWithWildcard__Group_1__1 : rule__QualifiedNameWithWildcard__Group_1__1__Impl ;
+    // InternalRecordLang.g:3572:1: rule__QualifiedNameWithWildcard__Group_1__1 : rule__QualifiedNameWithWildcard__Group_1__1__Impl ;
     public final void rule__QualifiedNameWithWildcard__Group_1__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4065:1: ( rule__QualifiedNameWithWildcard__Group_1__1__Impl )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4066:2: rule__QualifiedNameWithWildcard__Group_1__1__Impl
+            // InternalRecordLang.g:3576:1: ( rule__QualifiedNameWithWildcard__Group_1__1__Impl )
+            // InternalRecordLang.g:3577:2: rule__QualifiedNameWithWildcard__Group_1__1__Impl
             {
-            pushFollow(FOLLOW_rule__QualifiedNameWithWildcard__Group_1__1__Impl_in_rule__QualifiedNameWithWildcard__Group_1__18143);
+            pushFollow(FOLLOW_2);
             rule__QualifiedNameWithWildcard__Group_1__1__Impl();
 
             state._fsp--;
@@ -11785,22 +10364,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__QualifiedNameWithWildcard__Group_1__1__Impl"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4072:1: rule__QualifiedNameWithWildcard__Group_1__1__Impl : ( '*' ) ;
+    // InternalRecordLang.g:3583:1: rule__QualifiedNameWithWildcard__Group_1__1__Impl : ( '*' ) ;
     public final void rule__QualifiedNameWithWildcard__Group_1__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4076:1: ( ( '*' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4077:1: ( '*' )
+            // InternalRecordLang.g:3587:1: ( ( '*' ) )
+            // InternalRecordLang.g:3588:1: ( '*' )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4077:1: ( '*' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4078:1: '*'
+            // InternalRecordLang.g:3588:1: ( '*' )
+            // InternalRecordLang.g:3589:1: '*'
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getQualifiedNameWithWildcardAccess().getAsteriskKeyword_1_1()); 
             }
-            match(input,37,FOLLOW_37_in_rule__QualifiedNameWithWildcard__Group_1__1__Impl8171); if (state.failed) return ;
+            match(input,36,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getQualifiedNameWithWildcardAccess().getAsteriskKeyword_1_1()); 
             }
@@ -11826,22 +10405,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Model__NameAssignment_1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4096:1: rule__Model__NameAssignment_1 : ( ruleQualifiedName ) ;
+    // InternalRecordLang.g:3607:1: rule__Model__NameAssignment_1 : ( ruleQualifiedName ) ;
     public final void rule__Model__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4100:1: ( ( ruleQualifiedName ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4101:1: ( ruleQualifiedName )
+            // InternalRecordLang.g:3611:1: ( ( ruleQualifiedName ) )
+            // InternalRecordLang.g:3612:1: ( ruleQualifiedName )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4101:1: ( ruleQualifiedName )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4102:1: ruleQualifiedName
+            // InternalRecordLang.g:3612:1: ( ruleQualifiedName )
+            // InternalRecordLang.g:3613:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getModelAccess().getNameQualifiedNameParserRuleCall_1_0()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_rule__Model__NameAssignment_18211);
+            pushFollow(FOLLOW_2);
             ruleQualifiedName();
 
             state._fsp--;
@@ -11870,74 +10449,29 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
     // $ANTLR end "rule__Model__NameAssignment_1"
 
 
-    // $ANTLR start "rule__Model__PackagesAssignment_2"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4111:1: rule__Model__PackagesAssignment_2 : ( rulePackage ) ;
-    public final void rule__Model__PackagesAssignment_2() throws RecognitionException {
+    // $ANTLR start "rule__Model__ImportsAssignment_2"
+    // InternalRecordLang.g:3622:1: rule__Model__ImportsAssignment_2 : ( ruleImport ) ;
+    public final void rule__Model__ImportsAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4115:1: ( ( rulePackage ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4116:1: ( rulePackage )
+            // InternalRecordLang.g:3626:1: ( ( ruleImport ) )
+            // InternalRecordLang.g:3627:1: ( ruleImport )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4116:1: ( rulePackage )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4117:1: rulePackage
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getModelAccess().getPackagesPackageParserRuleCall_2_0()); 
-            }
-            pushFollow(FOLLOW_rulePackage_in_rule__Model__PackagesAssignment_28242);
-            rulePackage();
-
-            state._fsp--;
-            if (state.failed) return ;
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getModelAccess().getPackagesPackageParserRuleCall_2_0()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Model__PackagesAssignment_2"
-
-
-    // $ANTLR start "rule__Model__ImportsAssignment_3"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4126:1: rule__Model__ImportsAssignment_3 : ( ruleImport ) ;
-    public final void rule__Model__ImportsAssignment_3() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4130:1: ( ( ruleImport ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4131:1: ( ruleImport )
-            {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4131:1: ( ruleImport )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4132:1: ruleImport
+            // InternalRecordLang.g:3627:1: ( ruleImport )
+            // InternalRecordLang.g:3628:1: ruleImport
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getModelAccess().getImportsImportParserRuleCall_3_0()); 
+               before(grammarAccess.getModelAccess().getImportsImportParserRuleCall_2_0()); 
             }
-            pushFollow(FOLLOW_ruleImport_in_rule__Model__ImportsAssignment_38273);
+            pushFollow(FOLLOW_2);
             ruleImport();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getModelAccess().getImportsImportParserRuleCall_3_0()); 
+               after(grammarAccess.getModelAccess().getImportsImportParserRuleCall_2_0()); 
             }
 
             }
@@ -11957,32 +10491,32 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__Model__ImportsAssignment_3"
+    // $ANTLR end "rule__Model__ImportsAssignment_2"
 
 
-    // $ANTLR start "rule__Model__TypesAssignment_4"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4141:1: rule__Model__TypesAssignment_4 : ( ruleType ) ;
-    public final void rule__Model__TypesAssignment_4() throws RecognitionException {
+    // $ANTLR start "rule__Model__TypesAssignment_3"
+    // InternalRecordLang.g:3637:1: rule__Model__TypesAssignment_3 : ( ruleComplexType ) ;
+    public final void rule__Model__TypesAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4145:1: ( ( ruleType ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4146:1: ( ruleType )
+            // InternalRecordLang.g:3641:1: ( ( ruleComplexType ) )
+            // InternalRecordLang.g:3642:1: ( ruleComplexType )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4146:1: ( ruleType )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4147:1: ruleType
+            // InternalRecordLang.g:3642:1: ( ruleComplexType )
+            // InternalRecordLang.g:3643:1: ruleComplexType
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getModelAccess().getTypesTypeParserRuleCall_4_0()); 
+               before(grammarAccess.getModelAccess().getTypesComplexTypeParserRuleCall_3_0()); 
             }
-            pushFollow(FOLLOW_ruleType_in_rule__Model__TypesAssignment_48304);
-            ruleType();
+            pushFollow(FOLLOW_2);
+            ruleComplexType();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getModelAccess().getTypesTypeParserRuleCall_4_0()); 
+               after(grammarAccess.getModelAccess().getTypesComplexTypeParserRuleCall_3_0()); 
             }
 
             }
@@ -12002,26 +10536,26 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__Model__TypesAssignment_4"
+    // $ANTLR end "rule__Model__TypesAssignment_3"
 
 
     // $ANTLR start "rule__Import__ImportedNamespaceAssignment_1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4156:1: rule__Import__ImportedNamespaceAssignment_1 : ( ruleQualifiedNameWithWildcard ) ;
+    // InternalRecordLang.g:3652:1: rule__Import__ImportedNamespaceAssignment_1 : ( ruleQualifiedNameWithWildcard ) ;
     public final void rule__Import__ImportedNamespaceAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4160:1: ( ( ruleQualifiedNameWithWildcard ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4161:1: ( ruleQualifiedNameWithWildcard )
+            // InternalRecordLang.g:3656:1: ( ( ruleQualifiedNameWithWildcard ) )
+            // InternalRecordLang.g:3657:1: ( ruleQualifiedNameWithWildcard )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4161:1: ( ruleQualifiedNameWithWildcard )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4162:1: ruleQualifiedNameWithWildcard
+            // InternalRecordLang.g:3657:1: ( ruleQualifiedNameWithWildcard )
+            // InternalRecordLang.g:3658:1: ruleQualifiedNameWithWildcard
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getImportAccess().getImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_0()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedNameWithWildcard_in_rule__Import__ImportedNamespaceAssignment_18335);
+            pushFollow(FOLLOW_2);
             ruleQualifiedNameWithWildcard();
 
             state._fsp--;
@@ -12050,25 +10584,25 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
     // $ANTLR end "rule__Import__ImportedNamespaceAssignment_1"
 
 
-    // $ANTLR start "rule__Package__NameAssignment_1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4171:1: rule__Package__NameAssignment_1 : ( RULE_ID ) ;
-    public final void rule__Package__NameAssignment_1() throws RecognitionException {
+    // $ANTLR start "rule__BaseType__NameAssignment"
+    // InternalRecordLang.g:3667:1: rule__BaseType__NameAssignment : ( RULE_ID ) ;
+    public final void rule__BaseType__NameAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4175:1: ( ( RULE_ID ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4176:1: ( RULE_ID )
+            // InternalRecordLang.g:3671:1: ( ( RULE_ID ) )
+            // InternalRecordLang.g:3672:1: ( RULE_ID )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4176:1: ( RULE_ID )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4177:1: RULE_ID
+            // InternalRecordLang.g:3672:1: ( RULE_ID )
+            // InternalRecordLang.g:3673:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPackageAccess().getNameIDTerminalRuleCall_1_0()); 
+               before(grammarAccess.getBaseTypeAccess().getNameIDTerminalRuleCall_0()); 
             }
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Package__NameAssignment_18366); if (state.failed) return ;
+            match(input,RULE_ID,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPackageAccess().getNameIDTerminalRuleCall_1_0()); 
+               after(grammarAccess.getBaseTypeAccess().getNameIDTerminalRuleCall_0()); 
             }
 
             }
@@ -12088,79 +10622,26 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__Package__NameAssignment_1"
-
-
-    // $ANTLR start "rule__Package__PackageAssignment_2"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4186:1: rule__Package__PackageAssignment_2 : ( ( RULE_STRING ) ) ;
-    public final void rule__Package__PackageAssignment_2() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4190:1: ( ( ( RULE_STRING ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4191:1: ( ( RULE_STRING ) )
-            {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4191:1: ( ( RULE_STRING ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4192:1: ( RULE_STRING )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getPackageAccess().getPackageEPackageCrossReference_2_0()); 
-            }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4193:1: ( RULE_STRING )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4194:1: RULE_STRING
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getPackageAccess().getPackageEPackageSTRINGTerminalRuleCall_2_0_1()); 
-            }
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Package__PackageAssignment_28401); if (state.failed) return ;
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getPackageAccess().getPackageEPackageSTRINGTerminalRuleCall_2_0_1()); 
-            }
-
-            }
-
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getPackageAccess().getPackageEPackageCrossReference_2_0()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Package__PackageAssignment_2"
+    // $ANTLR end "rule__BaseType__NameAssignment"
 
 
     // $ANTLR start "rule__TemplateType__AuthorAssignment_0_1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4205:1: rule__TemplateType__AuthorAssignment_0_1 : ( RULE_STRING ) ;
+    // InternalRecordLang.g:3682:1: rule__TemplateType__AuthorAssignment_0_1 : ( RULE_STRING ) ;
     public final void rule__TemplateType__AuthorAssignment_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4209:1: ( ( RULE_STRING ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4210:1: ( RULE_STRING )
+            // InternalRecordLang.g:3686:1: ( ( RULE_STRING ) )
+            // InternalRecordLang.g:3687:1: ( RULE_STRING )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4210:1: ( RULE_STRING )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4211:1: RULE_STRING
+            // InternalRecordLang.g:3687:1: ( RULE_STRING )
+            // InternalRecordLang.g:3688:1: RULE_STRING
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTemplateTypeAccess().getAuthorSTRINGTerminalRuleCall_0_1_0()); 
             }
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__TemplateType__AuthorAssignment_0_18436); if (state.failed) return ;
+            match(input,RULE_STRING,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getTemplateTypeAccess().getAuthorSTRINGTerminalRuleCall_0_1_0()); 
             }
@@ -12186,22 +10667,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__SinceAssignment_1_1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4220:1: rule__TemplateType__SinceAssignment_1_1 : ( RULE_STRING ) ;
+    // InternalRecordLang.g:3697:1: rule__TemplateType__SinceAssignment_1_1 : ( RULE_STRING ) ;
     public final void rule__TemplateType__SinceAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4224:1: ( ( RULE_STRING ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4225:1: ( RULE_STRING )
+            // InternalRecordLang.g:3701:1: ( ( RULE_STRING ) )
+            // InternalRecordLang.g:3702:1: ( RULE_STRING )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4225:1: ( RULE_STRING )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4226:1: RULE_STRING
+            // InternalRecordLang.g:3702:1: ( RULE_STRING )
+            // InternalRecordLang.g:3703:1: RULE_STRING
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTemplateTypeAccess().getSinceSTRINGTerminalRuleCall_1_1_0()); 
             }
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__TemplateType__SinceAssignment_1_18467); if (state.failed) return ;
+            match(input,RULE_STRING,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getTemplateTypeAccess().getSinceSTRINGTerminalRuleCall_1_1_0()); 
             }
@@ -12227,22 +10708,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__NameAssignment_3"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4235:1: rule__TemplateType__NameAssignment_3 : ( RULE_ID ) ;
+    // InternalRecordLang.g:3712:1: rule__TemplateType__NameAssignment_3 : ( RULE_ID ) ;
     public final void rule__TemplateType__NameAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4239:1: ( ( RULE_ID ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4240:1: ( RULE_ID )
+            // InternalRecordLang.g:3716:1: ( ( RULE_ID ) )
+            // InternalRecordLang.g:3717:1: ( RULE_ID )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4240:1: ( RULE_ID )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4241:1: RULE_ID
+            // InternalRecordLang.g:3717:1: ( RULE_ID )
+            // InternalRecordLang.g:3718:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTemplateTypeAccess().getNameIDTerminalRuleCall_3_0()); 
             }
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__TemplateType__NameAssignment_38498); if (state.failed) return ;
+            match(input,RULE_ID,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getTemplateTypeAccess().getNameIDTerminalRuleCall_3_0()); 
             }
@@ -12268,28 +10749,28 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__ParentsAssignment_4_1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4250:1: rule__TemplateType__ParentsAssignment_4_1 : ( ( ruleQualifiedName ) ) ;
+    // InternalRecordLang.g:3727:1: rule__TemplateType__ParentsAssignment_4_1 : ( ( ruleQualifiedName ) ) ;
     public final void rule__TemplateType__ParentsAssignment_4_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4254:1: ( ( ( ruleQualifiedName ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4255:1: ( ( ruleQualifiedName ) )
+            // InternalRecordLang.g:3731:1: ( ( ( ruleQualifiedName ) ) )
+            // InternalRecordLang.g:3732:1: ( ( ruleQualifiedName ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4255:1: ( ( ruleQualifiedName ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4256:1: ( ruleQualifiedName )
+            // InternalRecordLang.g:3732:1: ( ( ruleQualifiedName ) )
+            // InternalRecordLang.g:3733:1: ( ruleQualifiedName )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTemplateTypeAccess().getParentsTemplateTypeCrossReference_4_1_0()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4257:1: ( ruleQualifiedName )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4258:1: ruleQualifiedName
+            // InternalRecordLang.g:3734:1: ( ruleQualifiedName )
+            // InternalRecordLang.g:3735:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTemplateTypeAccess().getParentsTemplateTypeQualifiedNameParserRuleCall_4_1_0_1()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_rule__TemplateType__ParentsAssignment_4_18533);
+            pushFollow(FOLLOW_2);
             ruleQualifiedName();
 
             state._fsp--;
@@ -12325,28 +10806,28 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__ParentsAssignment_4_2_1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4269:1: rule__TemplateType__ParentsAssignment_4_2_1 : ( ( ruleQualifiedName ) ) ;
+    // InternalRecordLang.g:3746:1: rule__TemplateType__ParentsAssignment_4_2_1 : ( ( ruleQualifiedName ) ) ;
     public final void rule__TemplateType__ParentsAssignment_4_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4273:1: ( ( ( ruleQualifiedName ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4274:1: ( ( ruleQualifiedName ) )
+            // InternalRecordLang.g:3750:1: ( ( ( ruleQualifiedName ) ) )
+            // InternalRecordLang.g:3751:1: ( ( ruleQualifiedName ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4274:1: ( ( ruleQualifiedName ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4275:1: ( ruleQualifiedName )
+            // InternalRecordLang.g:3751:1: ( ( ruleQualifiedName ) )
+            // InternalRecordLang.g:3752:1: ( ruleQualifiedName )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTemplateTypeAccess().getParentsTemplateTypeCrossReference_4_2_1_0()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4276:1: ( ruleQualifiedName )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4277:1: ruleQualifiedName
+            // InternalRecordLang.g:3753:1: ( ruleQualifiedName )
+            // InternalRecordLang.g:3754:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTemplateTypeAccess().getParentsTemplateTypeQualifiedNameParserRuleCall_4_2_1_0_1()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_rule__TemplateType__ParentsAssignment_4_2_18572);
+            pushFollow(FOLLOW_2);
             ruleQualifiedName();
 
             state._fsp--;
@@ -12382,22 +10863,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__PropertiesAssignment_5_1_0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4288:1: rule__TemplateType__PropertiesAssignment_5_1_0 : ( ruleProperty ) ;
+    // InternalRecordLang.g:3765:1: rule__TemplateType__PropertiesAssignment_5_1_0 : ( ruleProperty ) ;
     public final void rule__TemplateType__PropertiesAssignment_5_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4292:1: ( ( ruleProperty ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4293:1: ( ruleProperty )
+            // InternalRecordLang.g:3769:1: ( ( ruleProperty ) )
+            // InternalRecordLang.g:3770:1: ( ruleProperty )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4293:1: ( ruleProperty )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4294:1: ruleProperty
+            // InternalRecordLang.g:3770:1: ( ruleProperty )
+            // InternalRecordLang.g:3771:1: ruleProperty
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTemplateTypeAccess().getPropertiesPropertyParserRuleCall_5_1_0_0()); 
             }
-            pushFollow(FOLLOW_ruleProperty_in_rule__TemplateType__PropertiesAssignment_5_1_08607);
+            pushFollow(FOLLOW_2);
             ruleProperty();
 
             state._fsp--;
@@ -12427,22 +10908,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__TemplateType__ConstantsAssignment_5_1_1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4303:1: rule__TemplateType__ConstantsAssignment_5_1_1 : ( ruleConstant ) ;
+    // InternalRecordLang.g:3780:1: rule__TemplateType__ConstantsAssignment_5_1_1 : ( ruleConstant ) ;
     public final void rule__TemplateType__ConstantsAssignment_5_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4307:1: ( ( ruleConstant ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4308:1: ( ruleConstant )
+            // InternalRecordLang.g:3784:1: ( ( ruleConstant ) )
+            // InternalRecordLang.g:3785:1: ( ruleConstant )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4308:1: ( ruleConstant )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4309:1: ruleConstant
+            // InternalRecordLang.g:3785:1: ( ruleConstant )
+            // InternalRecordLang.g:3786:1: ruleConstant
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getTemplateTypeAccess().getConstantsConstantParserRuleCall_5_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleConstant_in_rule__TemplateType__ConstantsAssignment_5_1_18638);
+            pushFollow(FOLLOW_2);
             ruleConstant();
 
             state._fsp--;
@@ -12472,22 +10953,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__AuthorAssignment_0_1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4318:1: rule__RecordType__AuthorAssignment_0_1 : ( RULE_STRING ) ;
+    // InternalRecordLang.g:3795:1: rule__RecordType__AuthorAssignment_0_1 : ( RULE_STRING ) ;
     public final void rule__RecordType__AuthorAssignment_0_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4322:1: ( ( RULE_STRING ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4323:1: ( RULE_STRING )
+            // InternalRecordLang.g:3799:1: ( ( RULE_STRING ) )
+            // InternalRecordLang.g:3800:1: ( RULE_STRING )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4323:1: ( RULE_STRING )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4324:1: RULE_STRING
+            // InternalRecordLang.g:3800:1: ( RULE_STRING )
+            // InternalRecordLang.g:3801:1: RULE_STRING
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeAccess().getAuthorSTRINGTerminalRuleCall_0_1_0()); 
             }
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__RecordType__AuthorAssignment_0_18669); if (state.failed) return ;
+            match(input,RULE_STRING,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getRecordTypeAccess().getAuthorSTRINGTerminalRuleCall_0_1_0()); 
             }
@@ -12513,22 +10994,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__SinceAssignment_1_1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4333:1: rule__RecordType__SinceAssignment_1_1 : ( RULE_STRING ) ;
+    // InternalRecordLang.g:3810:1: rule__RecordType__SinceAssignment_1_1 : ( RULE_STRING ) ;
     public final void rule__RecordType__SinceAssignment_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4337:1: ( ( RULE_STRING ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4338:1: ( RULE_STRING )
+            // InternalRecordLang.g:3814:1: ( ( RULE_STRING ) )
+            // InternalRecordLang.g:3815:1: ( RULE_STRING )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4338:1: ( RULE_STRING )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4339:1: RULE_STRING
+            // InternalRecordLang.g:3815:1: ( RULE_STRING )
+            // InternalRecordLang.g:3816:1: RULE_STRING
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeAccess().getSinceSTRINGTerminalRuleCall_1_1_0()); 
             }
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__RecordType__SinceAssignment_1_18700); if (state.failed) return ;
+            match(input,RULE_STRING,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getRecordTypeAccess().getSinceSTRINGTerminalRuleCall_1_1_0()); 
             }
@@ -12554,28 +11035,28 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__AbstractAssignment_2"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4348:1: rule__RecordType__AbstractAssignment_2 : ( ( 'abstract' ) ) ;
+    // InternalRecordLang.g:3825:1: rule__RecordType__AbstractAssignment_2 : ( ( 'abstract' ) ) ;
     public final void rule__RecordType__AbstractAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4352:1: ( ( ( 'abstract' ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4353:1: ( ( 'abstract' ) )
+            // InternalRecordLang.g:3829:1: ( ( ( 'abstract' ) ) )
+            // InternalRecordLang.g:3830:1: ( ( 'abstract' ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4353:1: ( ( 'abstract' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4354:1: ( 'abstract' )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getRecordTypeAccess().getAbstractAbstractKeyword_2_0()); 
-            }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4355:1: ( 'abstract' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4356:1: 'abstract'
+            // InternalRecordLang.g:3830:1: ( ( 'abstract' ) )
+            // InternalRecordLang.g:3831:1: ( 'abstract' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeAccess().getAbstractAbstractKeyword_2_0()); 
             }
-            match(input,38,FOLLOW_38_in_rule__RecordType__AbstractAssignment_28736); if (state.failed) return ;
+            // InternalRecordLang.g:3832:1: ( 'abstract' )
+            // InternalRecordLang.g:3833:1: 'abstract'
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getRecordTypeAccess().getAbstractAbstractKeyword_2_0()); 
+            }
+            match(input,37,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getRecordTypeAccess().getAbstractAbstractKeyword_2_0()); 
             }
@@ -12607,22 +11088,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__NameAssignment_4"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4371:1: rule__RecordType__NameAssignment_4 : ( RULE_ID ) ;
+    // InternalRecordLang.g:3848:1: rule__RecordType__NameAssignment_4 : ( RULE_ID ) ;
     public final void rule__RecordType__NameAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4375:1: ( ( RULE_ID ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4376:1: ( RULE_ID )
+            // InternalRecordLang.g:3852:1: ( ( RULE_ID ) )
+            // InternalRecordLang.g:3853:1: ( RULE_ID )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4376:1: ( RULE_ID )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4377:1: RULE_ID
+            // InternalRecordLang.g:3853:1: ( RULE_ID )
+            // InternalRecordLang.g:3854:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeAccess().getNameIDTerminalRuleCall_4_0()); 
             }
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__RecordType__NameAssignment_48775); if (state.failed) return ;
+            match(input,RULE_ID,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getRecordTypeAccess().getNameIDTerminalRuleCall_4_0()); 
             }
@@ -12648,28 +11129,28 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__ParentAssignment_5_1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4386:1: rule__RecordType__ParentAssignment_5_1 : ( ( ruleQualifiedName ) ) ;
+    // InternalRecordLang.g:3863:1: rule__RecordType__ParentAssignment_5_1 : ( ( ruleQualifiedName ) ) ;
     public final void rule__RecordType__ParentAssignment_5_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4390:1: ( ( ( ruleQualifiedName ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4391:1: ( ( ruleQualifiedName ) )
+            // InternalRecordLang.g:3867:1: ( ( ( ruleQualifiedName ) ) )
+            // InternalRecordLang.g:3868:1: ( ( ruleQualifiedName ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4391:1: ( ( ruleQualifiedName ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4392:1: ( ruleQualifiedName )
+            // InternalRecordLang.g:3868:1: ( ( ruleQualifiedName ) )
+            // InternalRecordLang.g:3869:1: ( ruleQualifiedName )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeAccess().getParentRecordTypeCrossReference_5_1_0()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4393:1: ( ruleQualifiedName )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4394:1: ruleQualifiedName
+            // InternalRecordLang.g:3870:1: ( ruleQualifiedName )
+            // InternalRecordLang.g:3871:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeAccess().getParentRecordTypeQualifiedNameParserRuleCall_5_1_0_1()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_rule__RecordType__ParentAssignment_5_18810);
+            pushFollow(FOLLOW_2);
             ruleQualifiedName();
 
             state._fsp--;
@@ -12705,28 +11186,28 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__ParentsAssignment_6_1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4405:1: rule__RecordType__ParentsAssignment_6_1 : ( ( ruleQualifiedName ) ) ;
+    // InternalRecordLang.g:3882:1: rule__RecordType__ParentsAssignment_6_1 : ( ( ruleQualifiedName ) ) ;
     public final void rule__RecordType__ParentsAssignment_6_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4409:1: ( ( ( ruleQualifiedName ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4410:1: ( ( ruleQualifiedName ) )
+            // InternalRecordLang.g:3886:1: ( ( ( ruleQualifiedName ) ) )
+            // InternalRecordLang.g:3887:1: ( ( ruleQualifiedName ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4410:1: ( ( ruleQualifiedName ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4411:1: ( ruleQualifiedName )
+            // InternalRecordLang.g:3887:1: ( ( ruleQualifiedName ) )
+            // InternalRecordLang.g:3888:1: ( ruleQualifiedName )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeAccess().getParentsTemplateTypeCrossReference_6_1_0()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4412:1: ( ruleQualifiedName )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4413:1: ruleQualifiedName
+            // InternalRecordLang.g:3889:1: ( ruleQualifiedName )
+            // InternalRecordLang.g:3890:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeAccess().getParentsTemplateTypeQualifiedNameParserRuleCall_6_1_0_1()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_rule__RecordType__ParentsAssignment_6_18849);
+            pushFollow(FOLLOW_2);
             ruleQualifiedName();
 
             state._fsp--;
@@ -12762,28 +11243,28 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__ParentsAssignment_6_2_1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4424:1: rule__RecordType__ParentsAssignment_6_2_1 : ( ( ruleQualifiedName ) ) ;
+    // InternalRecordLang.g:3901:1: rule__RecordType__ParentsAssignment_6_2_1 : ( ( ruleQualifiedName ) ) ;
     public final void rule__RecordType__ParentsAssignment_6_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4428:1: ( ( ( ruleQualifiedName ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4429:1: ( ( ruleQualifiedName ) )
+            // InternalRecordLang.g:3905:1: ( ( ( ruleQualifiedName ) ) )
+            // InternalRecordLang.g:3906:1: ( ( ruleQualifiedName ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4429:1: ( ( ruleQualifiedName ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4430:1: ( ruleQualifiedName )
+            // InternalRecordLang.g:3906:1: ( ( ruleQualifiedName ) )
+            // InternalRecordLang.g:3907:1: ( ruleQualifiedName )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeAccess().getParentsTemplateTypeCrossReference_6_2_1_0()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4431:1: ( ruleQualifiedName )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4432:1: ruleQualifiedName
+            // InternalRecordLang.g:3908:1: ( ruleQualifiedName )
+            // InternalRecordLang.g:3909:1: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeAccess().getParentsTemplateTypeQualifiedNameParserRuleCall_6_2_1_0_1()); 
             }
-            pushFollow(FOLLOW_ruleQualifiedName_in_rule__RecordType__ParentsAssignment_6_2_18888);
+            pushFollow(FOLLOW_2);
             ruleQualifiedName();
 
             state._fsp--;
@@ -12819,22 +11300,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__PropertiesAssignment_7_1_0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4443:1: rule__RecordType__PropertiesAssignment_7_1_0 : ( ruleProperty ) ;
+    // InternalRecordLang.g:3920:1: rule__RecordType__PropertiesAssignment_7_1_0 : ( ruleProperty ) ;
     public final void rule__RecordType__PropertiesAssignment_7_1_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4447:1: ( ( ruleProperty ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4448:1: ( ruleProperty )
+            // InternalRecordLang.g:3924:1: ( ( ruleProperty ) )
+            // InternalRecordLang.g:3925:1: ( ruleProperty )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4448:1: ( ruleProperty )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4449:1: ruleProperty
+            // InternalRecordLang.g:3925:1: ( ruleProperty )
+            // InternalRecordLang.g:3926:1: ruleProperty
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeAccess().getPropertiesPropertyParserRuleCall_7_1_0_0()); 
             }
-            pushFollow(FOLLOW_ruleProperty_in_rule__RecordType__PropertiesAssignment_7_1_08923);
+            pushFollow(FOLLOW_2);
             ruleProperty();
 
             state._fsp--;
@@ -12864,22 +11345,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__RecordType__ConstantsAssignment_7_1_1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4458:1: rule__RecordType__ConstantsAssignment_7_1_1 : ( ruleConstant ) ;
+    // InternalRecordLang.g:3935:1: rule__RecordType__ConstantsAssignment_7_1_1 : ( ruleConstant ) ;
     public final void rule__RecordType__ConstantsAssignment_7_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4462:1: ( ( ruleConstant ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4463:1: ( ruleConstant )
+            // InternalRecordLang.g:3939:1: ( ( ruleConstant ) )
+            // InternalRecordLang.g:3940:1: ( ruleConstant )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4463:1: ( ruleConstant )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4464:1: ruleConstant
+            // InternalRecordLang.g:3940:1: ( ruleConstant )
+            // InternalRecordLang.g:3941:1: ruleConstant
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getRecordTypeAccess().getConstantsConstantParserRuleCall_7_1_1_0()); 
             }
-            pushFollow(FOLLOW_ruleConstant_in_rule__RecordType__ConstantsAssignment_7_1_18954);
+            pushFollow(FOLLOW_2);
             ruleConstant();
 
             state._fsp--;
@@ -12909,22 +11390,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Constant__TypeAssignment_1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4473:1: rule__Constant__TypeAssignment_1 : ( ruleClassifier ) ;
+    // InternalRecordLang.g:3950:1: rule__Constant__TypeAssignment_1 : ( ruleClassifier ) ;
     public final void rule__Constant__TypeAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4477:1: ( ( ruleClassifier ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4478:1: ( ruleClassifier )
+            // InternalRecordLang.g:3954:1: ( ( ruleClassifier ) )
+            // InternalRecordLang.g:3955:1: ( ruleClassifier )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4478:1: ( ruleClassifier )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4479:1: ruleClassifier
+            // InternalRecordLang.g:3955:1: ( ruleClassifier )
+            // InternalRecordLang.g:3956:1: ruleClassifier
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getConstantAccess().getTypeClassifierParserRuleCall_1_0()); 
             }
-            pushFollow(FOLLOW_ruleClassifier_in_rule__Constant__TypeAssignment_18985);
+            pushFollow(FOLLOW_2);
             ruleClassifier();
 
             state._fsp--;
@@ -12954,22 +11435,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Constant__NameAssignment_2"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4488:1: rule__Constant__NameAssignment_2 : ( RULE_ID ) ;
+    // InternalRecordLang.g:3965:1: rule__Constant__NameAssignment_2 : ( RULE_ID ) ;
     public final void rule__Constant__NameAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4492:1: ( ( RULE_ID ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4493:1: ( RULE_ID )
+            // InternalRecordLang.g:3969:1: ( ( RULE_ID ) )
+            // InternalRecordLang.g:3970:1: ( RULE_ID )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4493:1: ( RULE_ID )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4494:1: RULE_ID
+            // InternalRecordLang.g:3970:1: ( RULE_ID )
+            // InternalRecordLang.g:3971:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getConstantAccess().getNameIDTerminalRuleCall_2_0()); 
             }
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Constant__NameAssignment_29016); if (state.failed) return ;
+            match(input,RULE_ID,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getConstantAccess().getNameIDTerminalRuleCall_2_0()); 
             }
@@ -12995,22 +11476,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Constant__ValueAssignment_4"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4503:1: rule__Constant__ValueAssignment_4 : ( ruleLiteral ) ;
+    // InternalRecordLang.g:3980:1: rule__Constant__ValueAssignment_4 : ( ruleLiteral ) ;
     public final void rule__Constant__ValueAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4507:1: ( ( ruleLiteral ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4508:1: ( ruleLiteral )
+            // InternalRecordLang.g:3984:1: ( ( ruleLiteral ) )
+            // InternalRecordLang.g:3985:1: ( ruleLiteral )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4508:1: ( ruleLiteral )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4509:1: ruleLiteral
+            // InternalRecordLang.g:3985:1: ( ruleLiteral )
+            // InternalRecordLang.g:3986:1: ruleLiteral
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getConstantAccess().getValueLiteralParserRuleCall_4_0()); 
             }
-            pushFollow(FOLLOW_ruleLiteral_in_rule__Constant__ValueAssignment_49047);
+            pushFollow(FOLLOW_2);
             ruleLiteral();
 
             state._fsp--;
@@ -13040,22 +11521,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Property__ModifiersAssignment_0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4518:1: rule__Property__ModifiersAssignment_0 : ( rulePropertyModifier ) ;
+    // InternalRecordLang.g:3995:1: rule__Property__ModifiersAssignment_0 : ( rulePropertyModifier ) ;
     public final void rule__Property__ModifiersAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4522:1: ( ( rulePropertyModifier ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4523:1: ( rulePropertyModifier )
+            // InternalRecordLang.g:3999:1: ( ( rulePropertyModifier ) )
+            // InternalRecordLang.g:4000:1: ( rulePropertyModifier )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4523:1: ( rulePropertyModifier )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4524:1: rulePropertyModifier
+            // InternalRecordLang.g:4000:1: ( rulePropertyModifier )
+            // InternalRecordLang.g:4001:1: rulePropertyModifier
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyAccess().getModifiersPropertyModifierEnumRuleCall_0_0()); 
             }
-            pushFollow(FOLLOW_rulePropertyModifier_in_rule__Property__ModifiersAssignment_09078);
+            pushFollow(FOLLOW_2);
             rulePropertyModifier();
 
             state._fsp--;
@@ -13085,22 +11566,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Property__ForeignKeyAssignment_1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4533:1: rule__Property__ForeignKeyAssignment_1 : ( ruleForeignKey ) ;
+    // InternalRecordLang.g:4010:1: rule__Property__ForeignKeyAssignment_1 : ( ruleForeignKey ) ;
     public final void rule__Property__ForeignKeyAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4537:1: ( ( ruleForeignKey ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4538:1: ( ruleForeignKey )
+            // InternalRecordLang.g:4014:1: ( ( ruleForeignKey ) )
+            // InternalRecordLang.g:4015:1: ( ruleForeignKey )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4538:1: ( ruleForeignKey )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4539:1: ruleForeignKey
+            // InternalRecordLang.g:4015:1: ( ruleForeignKey )
+            // InternalRecordLang.g:4016:1: ruleForeignKey
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyAccess().getForeignKeyForeignKeyParserRuleCall_1_0()); 
             }
-            pushFollow(FOLLOW_ruleForeignKey_in_rule__Property__ForeignKeyAssignment_19109);
+            pushFollow(FOLLOW_2);
             ruleForeignKey();
 
             state._fsp--;
@@ -13130,22 +11611,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Property__TypeAssignment_2_0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4548:1: rule__Property__TypeAssignment_2_0 : ( ruleClassifier ) ;
+    // InternalRecordLang.g:4025:1: rule__Property__TypeAssignment_2_0 : ( ruleClassifier ) ;
     public final void rule__Property__TypeAssignment_2_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4552:1: ( ( ruleClassifier ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4553:1: ( ruleClassifier )
+            // InternalRecordLang.g:4029:1: ( ( ruleClassifier ) )
+            // InternalRecordLang.g:4030:1: ( ruleClassifier )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4553:1: ( ruleClassifier )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4554:1: ruleClassifier
+            // InternalRecordLang.g:4030:1: ( ruleClassifier )
+            // InternalRecordLang.g:4031:1: ruleClassifier
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyAccess().getTypeClassifierParserRuleCall_2_0_0()); 
             }
-            pushFollow(FOLLOW_ruleClassifier_in_rule__Property__TypeAssignment_2_09140);
+            pushFollow(FOLLOW_2);
             ruleClassifier();
 
             state._fsp--;
@@ -13175,28 +11656,28 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Property__ReferToAssignment_2_1_1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4563:1: rule__Property__ReferToAssignment_2_1_1 : ( ( RULE_ID ) ) ;
+    // InternalRecordLang.g:4040:1: rule__Property__ReferToAssignment_2_1_1 : ( ( RULE_ID ) ) ;
     public final void rule__Property__ReferToAssignment_2_1_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4567:1: ( ( ( RULE_ID ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4568:1: ( ( RULE_ID ) )
+            // InternalRecordLang.g:4044:1: ( ( ( RULE_ID ) ) )
+            // InternalRecordLang.g:4045:1: ( ( RULE_ID ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4568:1: ( ( RULE_ID ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4569:1: ( RULE_ID )
+            // InternalRecordLang.g:4045:1: ( ( RULE_ID ) )
+            // InternalRecordLang.g:4046:1: ( RULE_ID )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyAccess().getReferToPropertyCrossReference_2_1_1_0()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4570:1: ( RULE_ID )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4571:1: RULE_ID
+            // InternalRecordLang.g:4047:1: ( RULE_ID )
+            // InternalRecordLang.g:4048:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyAccess().getReferToPropertyIDTerminalRuleCall_2_1_1_0_1()); 
             }
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Property__ReferToAssignment_2_1_19175); if (state.failed) return ;
+            match(input,RULE_ID,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getPropertyAccess().getReferToPropertyIDTerminalRuleCall_2_1_1_0_1()); 
             }
@@ -13228,22 +11709,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__Property__NameAssignment_3"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4582:1: rule__Property__NameAssignment_3 : ( RULE_ID ) ;
+    // InternalRecordLang.g:4059:1: rule__Property__NameAssignment_3 : ( RULE_ID ) ;
     public final void rule__Property__NameAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4586:1: ( ( RULE_ID ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4587:1: ( RULE_ID )
+            // InternalRecordLang.g:4063:1: ( ( RULE_ID ) )
+            // InternalRecordLang.g:4064:1: ( RULE_ID )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4587:1: ( RULE_ID )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4588:1: RULE_ID
+            // InternalRecordLang.g:4064:1: ( RULE_ID )
+            // InternalRecordLang.g:4065:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getPropertyAccess().getNameIDTerminalRuleCall_3_0()); 
             }
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Property__NameAssignment_39210); if (state.failed) return ;
+            match(input,RULE_ID,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getPropertyAccess().getNameIDTerminalRuleCall_3_0()); 
             }
@@ -13268,74 +11749,29 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
     // $ANTLR end "rule__Property__NameAssignment_3"
 
 
-    // $ANTLR start "rule__Property__PropertiesAssignment_4_0_1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4597:1: rule__Property__PropertiesAssignment_4_0_1 : ( ruleReferenceProperty ) ;
-    public final void rule__Property__PropertiesAssignment_4_0_1() throws RecognitionException {
+    // $ANTLR start "rule__Property__ValueAssignment_4_1"
+    // InternalRecordLang.g:4074:1: rule__Property__ValueAssignment_4_1 : ( ruleLiteral ) ;
+    public final void rule__Property__ValueAssignment_4_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4601:1: ( ( ruleReferenceProperty ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4602:1: ( ruleReferenceProperty )
+            // InternalRecordLang.g:4078:1: ( ( ruleLiteral ) )
+            // InternalRecordLang.g:4079:1: ( ruleLiteral )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4602:1: ( ruleReferenceProperty )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4603:1: ruleReferenceProperty
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getPropertyAccess().getPropertiesReferencePropertyParserRuleCall_4_0_1_0()); 
-            }
-            pushFollow(FOLLOW_ruleReferenceProperty_in_rule__Property__PropertiesAssignment_4_0_19241);
-            ruleReferenceProperty();
-
-            state._fsp--;
-            if (state.failed) return ;
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getPropertyAccess().getPropertiesReferencePropertyParserRuleCall_4_0_1_0()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Property__PropertiesAssignment_4_0_1"
-
-
-    // $ANTLR start "rule__Property__ValueAssignment_4_1_1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4612:1: rule__Property__ValueAssignment_4_1_1 : ( ruleLiteral ) ;
-    public final void rule__Property__ValueAssignment_4_1_1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4616:1: ( ( ruleLiteral ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4617:1: ( ruleLiteral )
-            {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4617:1: ( ruleLiteral )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4618:1: ruleLiteral
+            // InternalRecordLang.g:4079:1: ( ruleLiteral )
+            // InternalRecordLang.g:4080:1: ruleLiteral
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getPropertyAccess().getValueLiteralParserRuleCall_4_1_1_0()); 
+               before(grammarAccess.getPropertyAccess().getValueLiteralParserRuleCall_4_1_0()); 
             }
-            pushFollow(FOLLOW_ruleLiteral_in_rule__Property__ValueAssignment_4_1_19272);
+            pushFollow(FOLLOW_2);
             ruleLiteral();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getPropertyAccess().getValueLiteralParserRuleCall_4_1_1_0()); 
+               after(grammarAccess.getPropertyAccess().getValueLiteralParserRuleCall_4_1_0()); 
             }
 
             }
@@ -13355,32 +11791,32 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__Property__ValueAssignment_4_1_1"
+    // $ANTLR end "rule__Property__ValueAssignment_4_1"
 
 
     // $ANTLR start "rule__ForeignKey__RecordTypeAssignment_2"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4627:1: rule__ForeignKey__RecordTypeAssignment_2 : ( ( RULE_ID ) ) ;
+    // InternalRecordLang.g:4089:1: rule__ForeignKey__RecordTypeAssignment_2 : ( ( RULE_ID ) ) ;
     public final void rule__ForeignKey__RecordTypeAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4631:1: ( ( ( RULE_ID ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4632:1: ( ( RULE_ID ) )
+            // InternalRecordLang.g:4093:1: ( ( ( RULE_ID ) ) )
+            // InternalRecordLang.g:4094:1: ( ( RULE_ID ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4632:1: ( ( RULE_ID ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4633:1: ( RULE_ID )
+            // InternalRecordLang.g:4094:1: ( ( RULE_ID ) )
+            // InternalRecordLang.g:4095:1: ( RULE_ID )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getForeignKeyAccess().getRecordTypeRecordTypeCrossReference_2_0()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4634:1: ( RULE_ID )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4635:1: RULE_ID
+            // InternalRecordLang.g:4096:1: ( RULE_ID )
+            // InternalRecordLang.g:4097:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getForeignKeyAccess().getRecordTypeRecordTypeIDTerminalRuleCall_2_0_1()); 
             }
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__ForeignKey__RecordTypeAssignment_29307); if (state.failed) return ;
+            match(input,RULE_ID,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getForeignKeyAccess().getRecordTypeRecordTypeIDTerminalRuleCall_2_0_1()); 
             }
@@ -13412,28 +11848,28 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ForeignKey__PropertyRefAssignment_4"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4646:1: rule__ForeignKey__PropertyRefAssignment_4 : ( ( RULE_ID ) ) ;
+    // InternalRecordLang.g:4108:1: rule__ForeignKey__PropertyRefAssignment_4 : ( ( RULE_ID ) ) ;
     public final void rule__ForeignKey__PropertyRefAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4650:1: ( ( ( RULE_ID ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4651:1: ( ( RULE_ID ) )
+            // InternalRecordLang.g:4112:1: ( ( ( RULE_ID ) ) )
+            // InternalRecordLang.g:4113:1: ( ( RULE_ID ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4651:1: ( ( RULE_ID ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4652:1: ( RULE_ID )
+            // InternalRecordLang.g:4113:1: ( ( RULE_ID ) )
+            // InternalRecordLang.g:4114:1: ( RULE_ID )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getForeignKeyAccess().getPropertyRefPropertyCrossReference_4_0()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4653:1: ( RULE_ID )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4654:1: RULE_ID
+            // InternalRecordLang.g:4115:1: ( RULE_ID )
+            // InternalRecordLang.g:4116:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getForeignKeyAccess().getPropertyRefPropertyIDTerminalRuleCall_4_0_1()); 
             }
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__ForeignKey__PropertyRefAssignment_49346); if (state.failed) return ;
+            match(input,RULE_ID,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getForeignKeyAccess().getPropertyRefPropertyIDTerminalRuleCall_4_0_1()); 
             }
@@ -13464,37 +11900,37 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
     // $ANTLR end "rule__ForeignKey__PropertyRefAssignment_4"
 
 
-    // $ANTLR start "rule__Classifier__PackageAssignment_0_0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4665:1: rule__Classifier__PackageAssignment_0_0 : ( ( RULE_ID ) ) ;
-    public final void rule__Classifier__PackageAssignment_0_0() throws RecognitionException {
+    // $ANTLR start "rule__Classifier__TypeAssignment_0"
+    // InternalRecordLang.g:4127:1: rule__Classifier__TypeAssignment_0 : ( ( RULE_ID ) ) ;
+    public final void rule__Classifier__TypeAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4669:1: ( ( ( RULE_ID ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4670:1: ( ( RULE_ID ) )
+            // InternalRecordLang.g:4131:1: ( ( ( RULE_ID ) ) )
+            // InternalRecordLang.g:4132:1: ( ( RULE_ID ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4670:1: ( ( RULE_ID ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4671:1: ( RULE_ID )
+            // InternalRecordLang.g:4132:1: ( ( RULE_ID ) )
+            // InternalRecordLang.g:4133:1: ( RULE_ID )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getClassifierAccess().getPackagePackageCrossReference_0_0_0()); 
+               before(grammarAccess.getClassifierAccess().getTypeBaseTypeCrossReference_0_0()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4672:1: ( RULE_ID )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4673:1: RULE_ID
+            // InternalRecordLang.g:4134:1: ( RULE_ID )
+            // InternalRecordLang.g:4135:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getClassifierAccess().getPackagePackageIDTerminalRuleCall_0_0_0_1()); 
+               before(grammarAccess.getClassifierAccess().getTypeBaseTypeIDTerminalRuleCall_0_0_1()); 
             }
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Classifier__PackageAssignment_0_09385); if (state.failed) return ;
+            match(input,RULE_ID,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getClassifierAccess().getPackagePackageIDTerminalRuleCall_0_0_0_1()); 
+               after(grammarAccess.getClassifierAccess().getTypeBaseTypeIDTerminalRuleCall_0_0_1()); 
             }
 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getClassifierAccess().getPackagePackageCrossReference_0_0_0()); 
+               after(grammarAccess.getClassifierAccess().getTypeBaseTypeCrossReference_0_0()); 
             }
 
             }
@@ -13514,85 +11950,32 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__Classifier__PackageAssignment_0_0"
+    // $ANTLR end "rule__Classifier__TypeAssignment_0"
 
 
-    // $ANTLR start "rule__Classifier__ClassAssignment_1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4684:1: rule__Classifier__ClassAssignment_1 : ( ( RULE_ID ) ) ;
-    public final void rule__Classifier__ClassAssignment_1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4688:1: ( ( ( RULE_ID ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4689:1: ( ( RULE_ID ) )
-            {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4689:1: ( ( RULE_ID ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4690:1: ( RULE_ID )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getClassifierAccess().getClassEClassifierCrossReference_1_0()); 
-            }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4691:1: ( RULE_ID )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4692:1: RULE_ID
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getClassifierAccess().getClassEClassifierIDTerminalRuleCall_1_0_1()); 
-            }
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Classifier__ClassAssignment_19424); if (state.failed) return ;
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getClassifierAccess().getClassEClassifierIDTerminalRuleCall_1_0_1()); 
-            }
-
-            }
-
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getClassifierAccess().getClassEClassifierCrossReference_1_0()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Classifier__ClassAssignment_1"
-
-
-    // $ANTLR start "rule__Classifier__SizesAssignment_2"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4703:1: rule__Classifier__SizesAssignment_2 : ( ruleArraySize ) ;
-    public final void rule__Classifier__SizesAssignment_2() throws RecognitionException {
+    // $ANTLR start "rule__Classifier__SizesAssignment_1"
+    // InternalRecordLang.g:4146:1: rule__Classifier__SizesAssignment_1 : ( ruleArraySize ) ;
+    public final void rule__Classifier__SizesAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4707:1: ( ( ruleArraySize ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4708:1: ( ruleArraySize )
+            // InternalRecordLang.g:4150:1: ( ( ruleArraySize ) )
+            // InternalRecordLang.g:4151:1: ( ruleArraySize )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4708:1: ( ruleArraySize )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4709:1: ruleArraySize
+            // InternalRecordLang.g:4151:1: ( ruleArraySize )
+            // InternalRecordLang.g:4152:1: ruleArraySize
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getClassifierAccess().getSizesArraySizeParserRuleCall_2_0()); 
+               before(grammarAccess.getClassifierAccess().getSizesArraySizeParserRuleCall_1_0()); 
             }
-            pushFollow(FOLLOW_ruleArraySize_in_rule__Classifier__SizesAssignment_29459);
+            pushFollow(FOLLOW_2);
             ruleArraySize();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getClassifierAccess().getSizesArraySizeParserRuleCall_2_0()); 
+               after(grammarAccess.getClassifierAccess().getSizesArraySizeParserRuleCall_1_0()); 
             }
 
             }
@@ -13612,26 +11995,26 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
         }
         return ;
     }
-    // $ANTLR end "rule__Classifier__SizesAssignment_2"
+    // $ANTLR end "rule__Classifier__SizesAssignment_1"
 
 
     // $ANTLR start "rule__ArraySize__SizeAssignment_2"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4718:1: rule__ArraySize__SizeAssignment_2 : ( RULE_INT ) ;
+    // InternalRecordLang.g:4161:1: rule__ArraySize__SizeAssignment_2 : ( RULE_INT ) ;
     public final void rule__ArraySize__SizeAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4722:1: ( ( RULE_INT ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4723:1: ( RULE_INT )
+            // InternalRecordLang.g:4165:1: ( ( RULE_INT ) )
+            // InternalRecordLang.g:4166:1: ( RULE_INT )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4723:1: ( RULE_INT )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4724:1: RULE_INT
+            // InternalRecordLang.g:4166:1: ( RULE_INT )
+            // InternalRecordLang.g:4167:1: RULE_INT
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getArraySizeAccess().getSizeINTTerminalRuleCall_2_0()); 
             }
-            match(input,RULE_INT,FOLLOW_RULE_INT_in_rule__ArraySize__SizeAssignment_29490); if (state.failed) return ;
+            match(input,RULE_INT,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getArraySizeAccess().getSizeINTTerminalRuleCall_2_0()); 
             }
@@ -13656,121 +12039,23 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
     // $ANTLR end "rule__ArraySize__SizeAssignment_2"
 
 
-    // $ANTLR start "rule__ReferenceProperty__RefAssignment_0"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4733:1: rule__ReferenceProperty__RefAssignment_0 : ( ( RULE_ID ) ) ;
-    public final void rule__ReferenceProperty__RefAssignment_0() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4737:1: ( ( ( RULE_ID ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4738:1: ( ( RULE_ID ) )
-            {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4738:1: ( ( RULE_ID ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4739:1: ( RULE_ID )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getReferencePropertyAccess().getRefEStructuralFeatureCrossReference_0_0()); 
-            }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4740:1: ( RULE_ID )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4741:1: RULE_ID
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getReferencePropertyAccess().getRefEStructuralFeatureIDTerminalRuleCall_0_0_1()); 
-            }
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__ReferenceProperty__RefAssignment_09525); if (state.failed) return ;
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getReferencePropertyAccess().getRefEStructuralFeatureIDTerminalRuleCall_0_0_1()); 
-            }
-
-            }
-
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getReferencePropertyAccess().getRefEStructuralFeatureCrossReference_0_0()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__ReferenceProperty__RefAssignment_0"
-
-
-    // $ANTLR start "rule__ReferenceProperty__PropertiesAssignment_2"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4752:1: rule__ReferenceProperty__PropertiesAssignment_2 : ( ruleReferenceProperty ) ;
-    public final void rule__ReferenceProperty__PropertiesAssignment_2() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4756:1: ( ( ruleReferenceProperty ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4757:1: ( ruleReferenceProperty )
-            {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4757:1: ( ruleReferenceProperty )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4758:1: ruleReferenceProperty
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getReferencePropertyAccess().getPropertiesReferencePropertyParserRuleCall_2_0()); 
-            }
-            pushFollow(FOLLOW_ruleReferenceProperty_in_rule__ReferenceProperty__PropertiesAssignment_29560);
-            ruleReferenceProperty();
-
-            state._fsp--;
-            if (state.failed) return ;
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getReferencePropertyAccess().getPropertiesReferencePropertyParserRuleCall_2_0()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__ReferenceProperty__PropertiesAssignment_2"
-
-
     // $ANTLR start "rule__ArrayLiteral__LiteralsAssignment_1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4767:1: rule__ArrayLiteral__LiteralsAssignment_1 : ( ruleLiteral ) ;
+    // InternalRecordLang.g:4176:1: rule__ArrayLiteral__LiteralsAssignment_1 : ( ruleLiteral ) ;
     public final void rule__ArrayLiteral__LiteralsAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4771:1: ( ( ruleLiteral ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4772:1: ( ruleLiteral )
+            // InternalRecordLang.g:4180:1: ( ( ruleLiteral ) )
+            // InternalRecordLang.g:4181:1: ( ruleLiteral )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4772:1: ( ruleLiteral )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4773:1: ruleLiteral
+            // InternalRecordLang.g:4181:1: ( ruleLiteral )
+            // InternalRecordLang.g:4182:1: ruleLiteral
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getArrayLiteralAccess().getLiteralsLiteralParserRuleCall_1_0()); 
             }
-            pushFollow(FOLLOW_ruleLiteral_in_rule__ArrayLiteral__LiteralsAssignment_19591);
+            pushFollow(FOLLOW_2);
             ruleLiteral();
 
             state._fsp--;
@@ -13800,22 +12085,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ArrayLiteral__LiteralsAssignment_2_1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4782:1: rule__ArrayLiteral__LiteralsAssignment_2_1 : ( ruleLiteral ) ;
+    // InternalRecordLang.g:4191:1: rule__ArrayLiteral__LiteralsAssignment_2_1 : ( ruleLiteral ) ;
     public final void rule__ArrayLiteral__LiteralsAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4786:1: ( ( ruleLiteral ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4787:1: ( ruleLiteral )
+            // InternalRecordLang.g:4195:1: ( ( ruleLiteral ) )
+            // InternalRecordLang.g:4196:1: ( ruleLiteral )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4787:1: ( ruleLiteral )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4788:1: ruleLiteral
+            // InternalRecordLang.g:4196:1: ( ruleLiteral )
+            // InternalRecordLang.g:4197:1: ruleLiteral
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getArrayLiteralAccess().getLiteralsLiteralParserRuleCall_2_1_0()); 
             }
-            pushFollow(FOLLOW_ruleLiteral_in_rule__ArrayLiteral__LiteralsAssignment_2_19622);
+            pushFollow(FOLLOW_2);
             ruleLiteral();
 
             state._fsp--;
@@ -13845,22 +12130,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__StringLiteral__ValueAssignment"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4797:1: rule__StringLiteral__ValueAssignment : ( RULE_STRING ) ;
+    // InternalRecordLang.g:4206:1: rule__StringLiteral__ValueAssignment : ( RULE_STRING ) ;
     public final void rule__StringLiteral__ValueAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4801:1: ( ( RULE_STRING ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4802:1: ( RULE_STRING )
+            // InternalRecordLang.g:4210:1: ( ( RULE_STRING ) )
+            // InternalRecordLang.g:4211:1: ( RULE_STRING )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4802:1: ( RULE_STRING )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4803:1: RULE_STRING
+            // InternalRecordLang.g:4211:1: ( RULE_STRING )
+            // InternalRecordLang.g:4212:1: RULE_STRING
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getStringLiteralAccess().getValueSTRINGTerminalRuleCall_0()); 
             }
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__StringLiteral__ValueAssignment9653); if (state.failed) return ;
+            match(input,RULE_STRING,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getStringLiteralAccess().getValueSTRINGTerminalRuleCall_0()); 
             }
@@ -13886,22 +12171,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__IntLiteral__ValueAssignment"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4812:1: rule__IntLiteral__ValueAssignment : ( RULE_INT ) ;
+    // InternalRecordLang.g:4221:1: rule__IntLiteral__ValueAssignment : ( RULE_INT ) ;
     public final void rule__IntLiteral__ValueAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4816:1: ( ( RULE_INT ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4817:1: ( RULE_INT )
+            // InternalRecordLang.g:4225:1: ( ( RULE_INT ) )
+            // InternalRecordLang.g:4226:1: ( RULE_INT )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4817:1: ( RULE_INT )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4818:1: RULE_INT
+            // InternalRecordLang.g:4226:1: ( RULE_INT )
+            // InternalRecordLang.g:4227:1: RULE_INT
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getIntLiteralAccess().getValueINTTerminalRuleCall_0()); 
             }
-            match(input,RULE_INT,FOLLOW_RULE_INT_in_rule__IntLiteral__ValueAssignment9684); if (state.failed) return ;
+            match(input,RULE_INT,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getIntLiteralAccess().getValueINTTerminalRuleCall_0()); 
             }
@@ -13927,22 +12212,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__FloatLiteral__ValueAssignment"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4827:1: rule__FloatLiteral__ValueAssignment : ( RULE_FLOAT ) ;
+    // InternalRecordLang.g:4236:1: rule__FloatLiteral__ValueAssignment : ( RULE_FLOAT ) ;
     public final void rule__FloatLiteral__ValueAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4831:1: ( ( RULE_FLOAT ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4832:1: ( RULE_FLOAT )
+            // InternalRecordLang.g:4240:1: ( ( RULE_FLOAT ) )
+            // InternalRecordLang.g:4241:1: ( RULE_FLOAT )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4832:1: ( RULE_FLOAT )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4833:1: RULE_FLOAT
+            // InternalRecordLang.g:4241:1: ( RULE_FLOAT )
+            // InternalRecordLang.g:4242:1: RULE_FLOAT
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getFloatLiteralAccess().getValueFLOATTerminalRuleCall_0()); 
             }
-            match(input,RULE_FLOAT,FOLLOW_RULE_FLOAT_in_rule__FloatLiteral__ValueAssignment9715); if (state.failed) return ;
+            match(input,RULE_FLOAT,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getFloatLiteralAccess().getValueFLOATTerminalRuleCall_0()); 
             }
@@ -13968,22 +12253,22 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__BooleanLiteral__ValueAssignment"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4842:1: rule__BooleanLiteral__ValueAssignment : ( RULE_BOOLEAN ) ;
+    // InternalRecordLang.g:4251:1: rule__BooleanLiteral__ValueAssignment : ( RULE_BOOLEAN ) ;
     public final void rule__BooleanLiteral__ValueAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4846:1: ( ( RULE_BOOLEAN ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4847:1: ( RULE_BOOLEAN )
+            // InternalRecordLang.g:4255:1: ( ( RULE_BOOLEAN ) )
+            // InternalRecordLang.g:4256:1: ( RULE_BOOLEAN )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4847:1: ( RULE_BOOLEAN )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4848:1: RULE_BOOLEAN
+            // InternalRecordLang.g:4256:1: ( RULE_BOOLEAN )
+            // InternalRecordLang.g:4257:1: RULE_BOOLEAN
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getBooleanLiteralAccess().getValueBOOLEANTerminalRuleCall_0()); 
             }
-            match(input,RULE_BOOLEAN,FOLLOW_RULE_BOOLEAN_in_rule__BooleanLiteral__ValueAssignment9746); if (state.failed) return ;
+            match(input,RULE_BOOLEAN,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getBooleanLiteralAccess().getValueBOOLEANTerminalRuleCall_0()); 
             }
@@ -14009,28 +12294,28 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__ConstantLiteral__ValueAssignment"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4857:1: rule__ConstantLiteral__ValueAssignment : ( ( RULE_ID ) ) ;
+    // InternalRecordLang.g:4266:1: rule__ConstantLiteral__ValueAssignment : ( ( RULE_ID ) ) ;
     public final void rule__ConstantLiteral__ValueAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4861:1: ( ( ( RULE_ID ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4862:1: ( ( RULE_ID ) )
+            // InternalRecordLang.g:4270:1: ( ( ( RULE_ID ) ) )
+            // InternalRecordLang.g:4271:1: ( ( RULE_ID ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4862:1: ( ( RULE_ID ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4863:1: ( RULE_ID )
+            // InternalRecordLang.g:4271:1: ( ( RULE_ID ) )
+            // InternalRecordLang.g:4272:1: ( RULE_ID )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getConstantLiteralAccess().getValueConstantCrossReference_0()); 
             }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4864:1: ( RULE_ID )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4865:1: RULE_ID
+            // InternalRecordLang.g:4273:1: ( RULE_ID )
+            // InternalRecordLang.g:4274:1: RULE_ID
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getConstantLiteralAccess().getValueConstantIDTerminalRuleCall_0_1()); 
             }
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__ConstantLiteral__ValueAssignment9781); if (state.failed) return ;
+            match(input,RULE_ID,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getConstantLiteralAccess().getValueConstantIDTerminalRuleCall_0_1()); 
             }
@@ -14062,28 +12347,28 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
 
     // $ANTLR start "rule__BuiltInValueLiteral__ValueAssignment_1"
-    // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4876:1: rule__BuiltInValueLiteral__ValueAssignment_1 : ( ( 'KIEKER_VERSION' ) ) ;
+    // InternalRecordLang.g:4285:1: rule__BuiltInValueLiteral__ValueAssignment_1 : ( ( 'KIEKER_VERSION' ) ) ;
     public final void rule__BuiltInValueLiteral__ValueAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4880:1: ( ( ( 'KIEKER_VERSION' ) ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4881:1: ( ( 'KIEKER_VERSION' ) )
+            // InternalRecordLang.g:4289:1: ( ( ( 'KIEKER_VERSION' ) ) )
+            // InternalRecordLang.g:4290:1: ( ( 'KIEKER_VERSION' ) )
             {
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4881:1: ( ( 'KIEKER_VERSION' ) )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4882:1: ( 'KIEKER_VERSION' )
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getBuiltInValueLiteralAccess().getValueKIEKER_VERSIONKeyword_1_0()); 
-            }
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4883:1: ( 'KIEKER_VERSION' )
-            // ../de.cau.cs.se.instrumentation.rl.ui/src-gen/de/cau/cs/se/instrumentation/rl/ui/contentassist/antlr/internal/InternalRecordLang.g:4884:1: 'KIEKER_VERSION'
+            // InternalRecordLang.g:4290:1: ( ( 'KIEKER_VERSION' ) )
+            // InternalRecordLang.g:4291:1: ( 'KIEKER_VERSION' )
             {
             if ( state.backtracking==0 ) {
                before(grammarAccess.getBuiltInValueLiteralAccess().getValueKIEKER_VERSIONKeyword_1_0()); 
             }
-            match(input,39,FOLLOW_39_in_rule__BuiltInValueLiteral__ValueAssignment_19821); if (state.failed) return ;
+            // InternalRecordLang.g:4292:1: ( 'KIEKER_VERSION' )
+            // InternalRecordLang.g:4293:1: 'KIEKER_VERSION'
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getBuiltInValueLiteralAccess().getValueKIEKER_VERSIONKeyword_1_0()); 
+            }
+            match(input,38,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
                after(grammarAccess.getBuiltInValueLiteralAccess().getValueKIEKER_VERSIONKeyword_1_0()); 
             }
@@ -14118,411 +12403,33 @@ public class InternalRecordLangParser extends AbstractInternalContentAssistParse
 
  
 
-    public static final BitSet FOLLOW_ruleModel_in_entryRuleModel67 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleModel74 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Model__Group__0_in_ruleModel100 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleImport_in_entryRuleImport127 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleImport134 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Import__Group__0_in_ruleImport160 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePackage_in_entryRulePackage187 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRulePackage194 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Package__Group__0_in_rulePackage220 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleType_in_entryRuleType247 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleType254 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Type__Alternatives_in_ruleType280 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTemplateType_in_entryRuleTemplateType307 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleTemplateType314 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group__0_in_ruleTemplateType340 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRecordType_in_entryRuleRecordType367 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleRecordType374 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__Group__0_in_ruleRecordType400 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConstant_in_entryRuleConstant427 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleConstant434 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Constant__Group__0_in_ruleConstant460 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleProperty_in_entryRuleProperty487 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleProperty494 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Property__Group__0_in_ruleProperty520 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleForeignKey_in_entryRuleForeignKey547 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleForeignKey554 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ForeignKey__Group__0_in_ruleForeignKey580 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleClassifier_in_entryRuleClassifier607 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleClassifier614 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Classifier__Group__0_in_ruleClassifier640 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleArraySize_in_entryRuleArraySize667 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleArraySize674 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ArraySize__Group__0_in_ruleArraySize700 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleReferenceProperty_in_entryRuleReferenceProperty727 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleReferenceProperty734 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ReferenceProperty__Group__0_in_ruleReferenceProperty760 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLiteral_in_entryRuleLiteral787 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleLiteral794 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Literal__Alternatives_in_ruleLiteral820 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleArrayLiteral_in_entryRuleArrayLiteral847 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleArrayLiteral854 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ArrayLiteral__Group__0_in_ruleArrayLiteral880 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleStringLiteral_in_entryRuleStringLiteral907 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleStringLiteral914 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__StringLiteral__ValueAssignment_in_ruleStringLiteral940 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntLiteral_in_entryRuleIntLiteral967 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleIntLiteral974 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__IntLiteral__ValueAssignment_in_ruleIntLiteral1000 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFloatLiteral_in_entryRuleFloatLiteral1027 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFloatLiteral1034 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FloatLiteral__ValueAssignment_in_ruleFloatLiteral1060 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBooleanLiteral_in_entryRuleBooleanLiteral1087 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleBooleanLiteral1094 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__BooleanLiteral__ValueAssignment_in_ruleBooleanLiteral1120 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConstantLiteral_in_entryRuleConstantLiteral1147 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleConstantLiteral1154 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ConstantLiteral__ValueAssignment_in_ruleConstantLiteral1180 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBuiltInValueLiteral_in_entryRuleBuiltInValueLiteral1207 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleBuiltInValueLiteral1214 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__BuiltInValueLiteral__Group__0_in_ruleBuiltInValueLiteral1240 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_entryRuleQualifiedName1267 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedName1274 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group__0_in_ruleQualifiedName1300 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedNameWithWildcard_in_entryRuleQualifiedNameWithWildcard1327 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleQualifiedNameWithWildcard1334 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QualifiedNameWithWildcard__Group__0_in_ruleQualifiedNameWithWildcard1360 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__PropertyModifier__Alternatives_in_rulePropertyModifier1397 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRecordType_in_rule__Type__Alternatives1432 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTemplateType_in_rule__Type__Alternatives1449 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TemplateType__PropertiesAssignment_5_1_0_in_rule__TemplateType__Alternatives_5_11481 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TemplateType__ConstantsAssignment_5_1_1_in_rule__TemplateType__Alternatives_5_11499 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__PropertiesAssignment_7_1_0_in_rule__RecordType__Alternatives_7_11532 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__ConstantsAssignment_7_1_1_in_rule__RecordType__Alternatives_7_11550 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Property__TypeAssignment_2_0_in_rule__Property__Alternatives_21583 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Property__Group_2_1__0_in_rule__Property__Alternatives_21601 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Property__Group_4_0__0_in_rule__Property__Alternatives_41634 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Property__Group_4_1__0_in_rule__Property__Alternatives_41652 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleStringLiteral_in_rule__Literal__Alternatives1685 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntLiteral_in_rule__Literal__Alternatives1702 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFloatLiteral_in_rule__Literal__Alternatives1719 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBooleanLiteral_in_rule__Literal__Alternatives1736 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConstantLiteral_in_rule__Literal__Alternatives1753 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleArrayLiteral_in_rule__Literal__Alternatives1770 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBuiltInValueLiteral_in_rule__Literal__Alternatives1787 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_14_in_rule__PropertyModifier__Alternatives1820 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_15_in_rule__PropertyModifier__Alternatives1841 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Model__Group__0__Impl_in_rule__Model__Group__01874 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Model__Group__1_in_rule__Model__Group__01877 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_16_in_rule__Model__Group__0__Impl1905 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Model__Group__1__Impl_in_rule__Model__Group__11936 = new BitSet(new long[]{0x00000040043E0000L});
-    public static final BitSet FOLLOW_rule__Model__Group__2_in_rule__Model__Group__11939 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Model__NameAssignment_1_in_rule__Model__Group__1__Impl1966 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Model__Group__2__Impl_in_rule__Model__Group__21996 = new BitSet(new long[]{0x00000040043E0000L});
-    public static final BitSet FOLLOW_rule__Model__Group__3_in_rule__Model__Group__21999 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Model__PackagesAssignment_2_in_rule__Model__Group__2__Impl2026 = new BitSet(new long[]{0x0000000000040002L});
-    public static final BitSet FOLLOW_rule__Model__Group__3__Impl_in_rule__Model__Group__32057 = new BitSet(new long[]{0x00000040043E0000L});
-    public static final BitSet FOLLOW_rule__Model__Group__4_in_rule__Model__Group__32060 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Model__ImportsAssignment_3_in_rule__Model__Group__3__Impl2087 = new BitSet(new long[]{0x0000000000020002L});
-    public static final BitSet FOLLOW_rule__Model__Group__4__Impl_in_rule__Model__Group__42118 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Model__TypesAssignment_4_in_rule__Model__Group__4__Impl2145 = new BitSet(new long[]{0x0000004004380002L});
-    public static final BitSet FOLLOW_rule__Import__Group__0__Impl_in_rule__Import__Group__02186 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Import__Group__1_in_rule__Import__Group__02189 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_17_in_rule__Import__Group__0__Impl2217 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Import__Group__1__Impl_in_rule__Import__Group__12248 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Import__ImportedNamespaceAssignment_1_in_rule__Import__Group__1__Impl2275 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Package__Group__0__Impl_in_rule__Package__Group__02309 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Package__Group__1_in_rule__Package__Group__02312 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_18_in_rule__Package__Group__0__Impl2340 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Package__Group__1__Impl_in_rule__Package__Group__12371 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_rule__Package__Group__2_in_rule__Package__Group__12374 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Package__NameAssignment_1_in_rule__Package__Group__1__Impl2401 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Package__Group__2__Impl_in_rule__Package__Group__22431 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Package__PackageAssignment_2_in_rule__Package__Group__2__Impl2458 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group__0__Impl_in_rule__TemplateType__Group__02494 = new BitSet(new long[]{0x0000004004380000L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group__1_in_rule__TemplateType__Group__02497 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group_0__0_in_rule__TemplateType__Group__0__Impl2524 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group__1__Impl_in_rule__TemplateType__Group__12555 = new BitSet(new long[]{0x0000004004380000L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group__2_in_rule__TemplateType__Group__12558 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group_1__0_in_rule__TemplateType__Group__1__Impl2585 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group__2__Impl_in_rule__TemplateType__Group__22616 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group__3_in_rule__TemplateType__Group__22619 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_19_in_rule__TemplateType__Group__2__Impl2647 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group__3__Impl_in_rule__TemplateType__Group__32678 = new BitSet(new long[]{0x0000000001400000L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group__4_in_rule__TemplateType__Group__32681 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TemplateType__NameAssignment_3_in_rule__TemplateType__Group__3__Impl2708 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group__4__Impl_in_rule__TemplateType__Group__42738 = new BitSet(new long[]{0x0000000001400000L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group__5_in_rule__TemplateType__Group__42741 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group_4__0_in_rule__TemplateType__Group__4__Impl2768 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group__5__Impl_in_rule__TemplateType__Group__52799 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group_5__0_in_rule__TemplateType__Group__5__Impl2826 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group_0__0__Impl_in_rule__TemplateType__Group_0__02869 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group_0__1_in_rule__TemplateType__Group_0__02872 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_20_in_rule__TemplateType__Group_0__0__Impl2900 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group_0__1__Impl_in_rule__TemplateType__Group_0__12931 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TemplateType__AuthorAssignment_0_1_in_rule__TemplateType__Group_0__1__Impl2958 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group_1__0__Impl_in_rule__TemplateType__Group_1__02992 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group_1__1_in_rule__TemplateType__Group_1__02995 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_21_in_rule__TemplateType__Group_1__0__Impl3023 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group_1__1__Impl_in_rule__TemplateType__Group_1__13054 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TemplateType__SinceAssignment_1_1_in_rule__TemplateType__Group_1__1__Impl3081 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group_4__0__Impl_in_rule__TemplateType__Group_4__03115 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group_4__1_in_rule__TemplateType__Group_4__03118 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_22_in_rule__TemplateType__Group_4__0__Impl3146 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group_4__1__Impl_in_rule__TemplateType__Group_4__13177 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group_4__2_in_rule__TemplateType__Group_4__13180 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TemplateType__ParentsAssignment_4_1_in_rule__TemplateType__Group_4__1__Impl3207 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group_4__2__Impl_in_rule__TemplateType__Group_4__23237 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group_4_2__0_in_rule__TemplateType__Group_4__2__Impl3264 = new BitSet(new long[]{0x0000000000800002L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group_4_2__0__Impl_in_rule__TemplateType__Group_4_2__03301 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group_4_2__1_in_rule__TemplateType__Group_4_2__03304 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_23_in_rule__TemplateType__Group_4_2__0__Impl3332 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group_4_2__1__Impl_in_rule__TemplateType__Group_4_2__13363 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TemplateType__ParentsAssignment_4_2_1_in_rule__TemplateType__Group_4_2__1__Impl3390 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group_5__0__Impl_in_rule__TemplateType__Group_5__03424 = new BitSet(new long[]{0x000000015200C010L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group_5__1_in_rule__TemplateType__Group_5__03427 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_24_in_rule__TemplateType__Group_5__0__Impl3455 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group_5__1__Impl_in_rule__TemplateType__Group_5__13486 = new BitSet(new long[]{0x000000015200C010L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group_5__2_in_rule__TemplateType__Group_5__13489 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__TemplateType__Alternatives_5_1_in_rule__TemplateType__Group_5__1__Impl3516 = new BitSet(new long[]{0x000000015000C012L});
-    public static final BitSet FOLLOW_rule__TemplateType__Group_5__2__Impl_in_rule__TemplateType__Group_5__23547 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_25_in_rule__TemplateType__Group_5__2__Impl3575 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__Group__0__Impl_in_rule__RecordType__Group__03612 = new BitSet(new long[]{0x0000004004300000L});
-    public static final BitSet FOLLOW_rule__RecordType__Group__1_in_rule__RecordType__Group__03615 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__Group_0__0_in_rule__RecordType__Group__0__Impl3642 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__Group__1__Impl_in_rule__RecordType__Group__13673 = new BitSet(new long[]{0x0000004004300000L});
-    public static final BitSet FOLLOW_rule__RecordType__Group__2_in_rule__RecordType__Group__13676 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__Group_1__0_in_rule__RecordType__Group__1__Impl3703 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__Group__2__Impl_in_rule__RecordType__Group__23734 = new BitSet(new long[]{0x0000004004300000L});
-    public static final BitSet FOLLOW_rule__RecordType__Group__3_in_rule__RecordType__Group__23737 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__AbstractAssignment_2_in_rule__RecordType__Group__2__Impl3764 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__Group__3__Impl_in_rule__RecordType__Group__33795 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__RecordType__Group__4_in_rule__RecordType__Group__33798 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_26_in_rule__RecordType__Group__3__Impl3826 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__Group__4__Impl_in_rule__RecordType__Group__43857 = new BitSet(new long[]{0x0000000009400000L});
-    public static final BitSet FOLLOW_rule__RecordType__Group__5_in_rule__RecordType__Group__43860 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__NameAssignment_4_in_rule__RecordType__Group__4__Impl3887 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__Group__5__Impl_in_rule__RecordType__Group__53917 = new BitSet(new long[]{0x0000000009400000L});
-    public static final BitSet FOLLOW_rule__RecordType__Group__6_in_rule__RecordType__Group__53920 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__Group_5__0_in_rule__RecordType__Group__5__Impl3947 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__Group__6__Impl_in_rule__RecordType__Group__63978 = new BitSet(new long[]{0x0000000009400000L});
-    public static final BitSet FOLLOW_rule__RecordType__Group__7_in_rule__RecordType__Group__63981 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__Group_6__0_in_rule__RecordType__Group__6__Impl4008 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__Group__7__Impl_in_rule__RecordType__Group__74039 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__Group_7__0_in_rule__RecordType__Group__7__Impl4066 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__Group_0__0__Impl_in_rule__RecordType__Group_0__04113 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_rule__RecordType__Group_0__1_in_rule__RecordType__Group_0__04116 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_20_in_rule__RecordType__Group_0__0__Impl4144 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__Group_0__1__Impl_in_rule__RecordType__Group_0__14175 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__AuthorAssignment_0_1_in_rule__RecordType__Group_0__1__Impl4202 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__Group_1__0__Impl_in_rule__RecordType__Group_1__04236 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_rule__RecordType__Group_1__1_in_rule__RecordType__Group_1__04239 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_21_in_rule__RecordType__Group_1__0__Impl4267 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__Group_1__1__Impl_in_rule__RecordType__Group_1__14298 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__SinceAssignment_1_1_in_rule__RecordType__Group_1__1__Impl4325 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__Group_5__0__Impl_in_rule__RecordType__Group_5__04359 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__RecordType__Group_5__1_in_rule__RecordType__Group_5__04362 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_27_in_rule__RecordType__Group_5__0__Impl4390 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__Group_5__1__Impl_in_rule__RecordType__Group_5__14421 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__ParentAssignment_5_1_in_rule__RecordType__Group_5__1__Impl4448 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__Group_6__0__Impl_in_rule__RecordType__Group_6__04482 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__RecordType__Group_6__1_in_rule__RecordType__Group_6__04485 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_22_in_rule__RecordType__Group_6__0__Impl4513 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__Group_6__1__Impl_in_rule__RecordType__Group_6__14544 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_rule__RecordType__Group_6__2_in_rule__RecordType__Group_6__14547 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__ParentsAssignment_6_1_in_rule__RecordType__Group_6__1__Impl4574 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__Group_6__2__Impl_in_rule__RecordType__Group_6__24604 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__Group_6_2__0_in_rule__RecordType__Group_6__2__Impl4631 = new BitSet(new long[]{0x0000000000800002L});
-    public static final BitSet FOLLOW_rule__RecordType__Group_6_2__0__Impl_in_rule__RecordType__Group_6_2__04668 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__RecordType__Group_6_2__1_in_rule__RecordType__Group_6_2__04671 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_23_in_rule__RecordType__Group_6_2__0__Impl4699 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__Group_6_2__1__Impl_in_rule__RecordType__Group_6_2__14730 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__ParentsAssignment_6_2_1_in_rule__RecordType__Group_6_2__1__Impl4757 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__Group_7__0__Impl_in_rule__RecordType__Group_7__04791 = new BitSet(new long[]{0x000000015200C010L});
-    public static final BitSet FOLLOW_rule__RecordType__Group_7__1_in_rule__RecordType__Group_7__04794 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_24_in_rule__RecordType__Group_7__0__Impl4822 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__Group_7__1__Impl_in_rule__RecordType__Group_7__14853 = new BitSet(new long[]{0x000000015200C010L});
-    public static final BitSet FOLLOW_rule__RecordType__Group_7__2_in_rule__RecordType__Group_7__14856 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RecordType__Alternatives_7_1_in_rule__RecordType__Group_7__1__Impl4883 = new BitSet(new long[]{0x000000015000C012L});
-    public static final BitSet FOLLOW_rule__RecordType__Group_7__2__Impl_in_rule__RecordType__Group_7__24914 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_25_in_rule__RecordType__Group_7__2__Impl4942 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Constant__Group__0__Impl_in_rule__Constant__Group__04979 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Constant__Group__1_in_rule__Constant__Group__04982 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_28_in_rule__Constant__Group__0__Impl5010 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Constant__Group__1__Impl_in_rule__Constant__Group__15041 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Constant__Group__2_in_rule__Constant__Group__15044 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Constant__TypeAssignment_1_in_rule__Constant__Group__1__Impl5071 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Constant__Group__2__Impl_in_rule__Constant__Group__25101 = new BitSet(new long[]{0x0000000020000000L});
-    public static final BitSet FOLLOW_rule__Constant__Group__3_in_rule__Constant__Group__25104 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Constant__NameAssignment_2_in_rule__Constant__Group__2__Impl5131 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Constant__Group__3__Impl_in_rule__Constant__Group__35161 = new BitSet(new long[]{0x00000080010001F0L});
-    public static final BitSet FOLLOW_rule__Constant__Group__4_in_rule__Constant__Group__35164 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_29_in_rule__Constant__Group__3__Impl5192 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Constant__Group__4__Impl_in_rule__Constant__Group__45223 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Constant__ValueAssignment_4_in_rule__Constant__Group__4__Impl5250 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Property__Group__0__Impl_in_rule__Property__Group__05290 = new BitSet(new long[]{0x000000014000C010L});
-    public static final BitSet FOLLOW_rule__Property__Group__1_in_rule__Property__Group__05293 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Property__ModifiersAssignment_0_in_rule__Property__Group__0__Impl5320 = new BitSet(new long[]{0x000000000000C002L});
-    public static final BitSet FOLLOW_rule__Property__Group__1__Impl_in_rule__Property__Group__15351 = new BitSet(new long[]{0x000000014000C010L});
-    public static final BitSet FOLLOW_rule__Property__Group__2_in_rule__Property__Group__15354 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Property__ForeignKeyAssignment_1_in_rule__Property__Group__1__Impl5381 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Property__Group__2__Impl_in_rule__Property__Group__25412 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Property__Group__3_in_rule__Property__Group__25415 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Property__Alternatives_2_in_rule__Property__Group__2__Impl5442 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Property__Group__3__Impl_in_rule__Property__Group__35472 = new BitSet(new long[]{0x0000000021000000L});
-    public static final BitSet FOLLOW_rule__Property__Group__4_in_rule__Property__Group__35475 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Property__NameAssignment_3_in_rule__Property__Group__3__Impl5502 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Property__Group__4__Impl_in_rule__Property__Group__45532 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Property__Alternatives_4_in_rule__Property__Group__4__Impl5559 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Property__Group_2_1__0__Impl_in_rule__Property__Group_2_1__05600 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Property__Group_2_1__1_in_rule__Property__Group_2_1__05603 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_30_in_rule__Property__Group_2_1__0__Impl5631 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Property__Group_2_1__1__Impl_in_rule__Property__Group_2_1__15662 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_rule__Property__Group_2_1__2_in_rule__Property__Group_2_1__15665 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Property__ReferToAssignment_2_1_1_in_rule__Property__Group_2_1__1__Impl5692 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Property__Group_2_1__2__Impl_in_rule__Property__Group_2_1__25722 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_31_in_rule__Property__Group_2_1__2__Impl5750 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Property__Group_4_0__0__Impl_in_rule__Property__Group_4_0__05787 = new BitSet(new long[]{0x0000000002000010L});
-    public static final BitSet FOLLOW_rule__Property__Group_4_0__1_in_rule__Property__Group_4_0__05790 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_24_in_rule__Property__Group_4_0__0__Impl5818 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Property__Group_4_0__1__Impl_in_rule__Property__Group_4_0__15849 = new BitSet(new long[]{0x0000000002000010L});
-    public static final BitSet FOLLOW_rule__Property__Group_4_0__2_in_rule__Property__Group_4_0__15852 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Property__PropertiesAssignment_4_0_1_in_rule__Property__Group_4_0__1__Impl5879 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_rule__Property__Group_4_0__2__Impl_in_rule__Property__Group_4_0__25910 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_25_in_rule__Property__Group_4_0__2__Impl5938 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Property__Group_4_1__0__Impl_in_rule__Property__Group_4_1__05975 = new BitSet(new long[]{0x00000080010001F0L});
-    public static final BitSet FOLLOW_rule__Property__Group_4_1__1_in_rule__Property__Group_4_1__05978 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_29_in_rule__Property__Group_4_1__0__Impl6006 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Property__Group_4_1__1__Impl_in_rule__Property__Group_4_1__16037 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Property__ValueAssignment_4_1_1_in_rule__Property__Group_4_1__1__Impl6064 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ForeignKey__Group__0__Impl_in_rule__ForeignKey__Group__06098 = new BitSet(new long[]{0x0000000200000000L});
-    public static final BitSet FOLLOW_rule__ForeignKey__Group__1_in_rule__ForeignKey__Group__06101 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_32_in_rule__ForeignKey__Group__0__Impl6129 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ForeignKey__Group__1__Impl_in_rule__ForeignKey__Group__16160 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__ForeignKey__Group__2_in_rule__ForeignKey__Group__16163 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_33_in_rule__ForeignKey__Group__1__Impl6191 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ForeignKey__Group__2__Impl_in_rule__ForeignKey__Group__26222 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_rule__ForeignKey__Group__3_in_rule__ForeignKey__Group__26225 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ForeignKey__RecordTypeAssignment_2_in_rule__ForeignKey__Group__2__Impl6252 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ForeignKey__Group__3__Impl_in_rule__ForeignKey__Group__36282 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__ForeignKey__Group__4_in_rule__ForeignKey__Group__36285 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_34_in_rule__ForeignKey__Group__3__Impl6313 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ForeignKey__Group__4__Impl_in_rule__ForeignKey__Group__46344 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ForeignKey__PropertyRefAssignment_4_in_rule__ForeignKey__Group__4__Impl6371 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Classifier__Group__0__Impl_in_rule__Classifier__Group__06411 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Classifier__Group__1_in_rule__Classifier__Group__06414 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Classifier__Group_0__0_in_rule__Classifier__Group__0__Impl6441 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Classifier__Group__1__Impl_in_rule__Classifier__Group__16472 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_rule__Classifier__Group__2_in_rule__Classifier__Group__16475 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Classifier__ClassAssignment_1_in_rule__Classifier__Group__1__Impl6502 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Classifier__Group__2__Impl_in_rule__Classifier__Group__26532 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Classifier__SizesAssignment_2_in_rule__Classifier__Group__2__Impl6559 = new BitSet(new long[]{0x0000000800000002L});
-    public static final BitSet FOLLOW_rule__Classifier__Group_0__0__Impl_in_rule__Classifier__Group_0__06596 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_rule__Classifier__Group_0__1_in_rule__Classifier__Group_0__06599 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Classifier__PackageAssignment_0_0_in_rule__Classifier__Group_0__0__Impl6626 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Classifier__Group_0__1__Impl_in_rule__Classifier__Group_0__16656 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_34_in_rule__Classifier__Group_0__1__Impl6684 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ArraySize__Group__0__Impl_in_rule__ArraySize__Group__06719 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_rule__ArraySize__Group__1_in_rule__ArraySize__Group__06722 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ArraySize__Group__1__Impl_in_rule__ArraySize__Group__16780 = new BitSet(new long[]{0x0000001000000040L});
-    public static final BitSet FOLLOW_rule__ArraySize__Group__2_in_rule__ArraySize__Group__16783 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_35_in_rule__ArraySize__Group__1__Impl6811 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ArraySize__Group__2__Impl_in_rule__ArraySize__Group__26842 = new BitSet(new long[]{0x0000001000000040L});
-    public static final BitSet FOLLOW_rule__ArraySize__Group__3_in_rule__ArraySize__Group__26845 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ArraySize__SizeAssignment_2_in_rule__ArraySize__Group__2__Impl6872 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ArraySize__Group__3__Impl_in_rule__ArraySize__Group__36903 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_36_in_rule__ArraySize__Group__3__Impl6931 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ReferenceProperty__Group__0__Impl_in_rule__ReferenceProperty__Group__06970 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_rule__ReferenceProperty__Group__1_in_rule__ReferenceProperty__Group__06973 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ReferenceProperty__RefAssignment_0_in_rule__ReferenceProperty__Group__0__Impl7000 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ReferenceProperty__Group__1__Impl_in_rule__ReferenceProperty__Group__17030 = new BitSet(new long[]{0x0000000002000010L});
-    public static final BitSet FOLLOW_rule__ReferenceProperty__Group__2_in_rule__ReferenceProperty__Group__17033 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_24_in_rule__ReferenceProperty__Group__1__Impl7061 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ReferenceProperty__Group__2__Impl_in_rule__ReferenceProperty__Group__27092 = new BitSet(new long[]{0x0000000002000010L});
-    public static final BitSet FOLLOW_rule__ReferenceProperty__Group__3_in_rule__ReferenceProperty__Group__27095 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ReferenceProperty__PropertiesAssignment_2_in_rule__ReferenceProperty__Group__2__Impl7122 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_rule__ReferenceProperty__Group__3__Impl_in_rule__ReferenceProperty__Group__37153 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_25_in_rule__ReferenceProperty__Group__3__Impl7181 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ArrayLiteral__Group__0__Impl_in_rule__ArrayLiteral__Group__07220 = new BitSet(new long[]{0x00000080010001F0L});
-    public static final BitSet FOLLOW_rule__ArrayLiteral__Group__1_in_rule__ArrayLiteral__Group__07223 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_24_in_rule__ArrayLiteral__Group__0__Impl7251 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ArrayLiteral__Group__1__Impl_in_rule__ArrayLiteral__Group__17282 = new BitSet(new long[]{0x0000000002800000L});
-    public static final BitSet FOLLOW_rule__ArrayLiteral__Group__2_in_rule__ArrayLiteral__Group__17285 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ArrayLiteral__LiteralsAssignment_1_in_rule__ArrayLiteral__Group__1__Impl7312 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ArrayLiteral__Group__2__Impl_in_rule__ArrayLiteral__Group__27342 = new BitSet(new long[]{0x0000000002800000L});
-    public static final BitSet FOLLOW_rule__ArrayLiteral__Group__3_in_rule__ArrayLiteral__Group__27345 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ArrayLiteral__Group_2__0_in_rule__ArrayLiteral__Group__2__Impl7372 = new BitSet(new long[]{0x0000000000800002L});
-    public static final BitSet FOLLOW_rule__ArrayLiteral__Group__3__Impl_in_rule__ArrayLiteral__Group__37403 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_25_in_rule__ArrayLiteral__Group__3__Impl7431 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ArrayLiteral__Group_2__0__Impl_in_rule__ArrayLiteral__Group_2__07470 = new BitSet(new long[]{0x00000080010001F0L});
-    public static final BitSet FOLLOW_rule__ArrayLiteral__Group_2__1_in_rule__ArrayLiteral__Group_2__07473 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_23_in_rule__ArrayLiteral__Group_2__0__Impl7501 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ArrayLiteral__Group_2__1__Impl_in_rule__ArrayLiteral__Group_2__17532 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__ArrayLiteral__LiteralsAssignment_2_1_in_rule__ArrayLiteral__Group_2__1__Impl7559 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__BuiltInValueLiteral__Group__0__Impl_in_rule__BuiltInValueLiteral__Group__07593 = new BitSet(new long[]{0x00000080010001F0L});
-    public static final BitSet FOLLOW_rule__BuiltInValueLiteral__Group__1_in_rule__BuiltInValueLiteral__Group__07596 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__BuiltInValueLiteral__Group__1__Impl_in_rule__BuiltInValueLiteral__Group__17654 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__BuiltInValueLiteral__ValueAssignment_1_in_rule__BuiltInValueLiteral__Group__1__Impl7681 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group__0__Impl_in_rule__QualifiedName__Group__07715 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group__1_in_rule__QualifiedName__Group__07718 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__QualifiedName__Group__0__Impl7745 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group__1__Impl_in_rule__QualifiedName__Group__17774 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__0_in_rule__QualifiedName__Group__1__Impl7801 = new BitSet(new long[]{0x0000000400000002L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__0__Impl_in_rule__QualifiedName__Group_1__07836 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__1_in_rule__QualifiedName__Group_1__07839 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_34_in_rule__QualifiedName__Group_1__0__Impl7868 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QualifiedName__Group_1__1__Impl_in_rule__QualifiedName__Group_1__17900 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__QualifiedName__Group_1__1__Impl7927 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QualifiedNameWithWildcard__Group__0__Impl_in_rule__QualifiedNameWithWildcard__Group__07960 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_rule__QualifiedNameWithWildcard__Group__1_in_rule__QualifiedNameWithWildcard__Group__07963 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__QualifiedNameWithWildcard__Group__0__Impl7990 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QualifiedNameWithWildcard__Group__1__Impl_in_rule__QualifiedNameWithWildcard__Group__18019 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QualifiedNameWithWildcard__Group_1__0_in_rule__QualifiedNameWithWildcard__Group__1__Impl8046 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QualifiedNameWithWildcard__Group_1__0__Impl_in_rule__QualifiedNameWithWildcard__Group_1__08081 = new BitSet(new long[]{0x0000002000000000L});
-    public static final BitSet FOLLOW_rule__QualifiedNameWithWildcard__Group_1__1_in_rule__QualifiedNameWithWildcard__Group_1__08084 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_34_in_rule__QualifiedNameWithWildcard__Group_1__0__Impl8112 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__QualifiedNameWithWildcard__Group_1__1__Impl_in_rule__QualifiedNameWithWildcard__Group_1__18143 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_37_in_rule__QualifiedNameWithWildcard__Group_1__1__Impl8171 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__Model__NameAssignment_18211 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePackage_in_rule__Model__PackagesAssignment_28242 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleImport_in_rule__Model__ImportsAssignment_38273 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleType_in_rule__Model__TypesAssignment_48304 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedNameWithWildcard_in_rule__Import__ImportedNamespaceAssignment_18335 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__Package__NameAssignment_18366 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__Package__PackageAssignment_28401 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__TemplateType__AuthorAssignment_0_18436 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__TemplateType__SinceAssignment_1_18467 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__TemplateType__NameAssignment_38498 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__TemplateType__ParentsAssignment_4_18533 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__TemplateType__ParentsAssignment_4_2_18572 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleProperty_in_rule__TemplateType__PropertiesAssignment_5_1_08607 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConstant_in_rule__TemplateType__ConstantsAssignment_5_1_18638 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__RecordType__AuthorAssignment_0_18669 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__RecordType__SinceAssignment_1_18700 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_38_in_rule__RecordType__AbstractAssignment_28736 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__RecordType__NameAssignment_48775 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__RecordType__ParentAssignment_5_18810 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__RecordType__ParentsAssignment_6_18849 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleQualifiedName_in_rule__RecordType__ParentsAssignment_6_2_18888 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleProperty_in_rule__RecordType__PropertiesAssignment_7_1_08923 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConstant_in_rule__RecordType__ConstantsAssignment_7_1_18954 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleClassifier_in_rule__Constant__TypeAssignment_18985 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__Constant__NameAssignment_29016 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLiteral_in_rule__Constant__ValueAssignment_49047 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePropertyModifier_in_rule__Property__ModifiersAssignment_09078 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleForeignKey_in_rule__Property__ForeignKeyAssignment_19109 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleClassifier_in_rule__Property__TypeAssignment_2_09140 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__Property__ReferToAssignment_2_1_19175 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__Property__NameAssignment_39210 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleReferenceProperty_in_rule__Property__PropertiesAssignment_4_0_19241 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLiteral_in_rule__Property__ValueAssignment_4_1_19272 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__ForeignKey__RecordTypeAssignment_29307 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__ForeignKey__PropertyRefAssignment_49346 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__Classifier__PackageAssignment_0_09385 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__Classifier__ClassAssignment_19424 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleArraySize_in_rule__Classifier__SizesAssignment_29459 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_INT_in_rule__ArraySize__SizeAssignment_29490 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__ReferenceProperty__RefAssignment_09525 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleReferenceProperty_in_rule__ReferenceProperty__PropertiesAssignment_29560 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLiteral_in_rule__ArrayLiteral__LiteralsAssignment_19591 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLiteral_in_rule__ArrayLiteral__LiteralsAssignment_2_19622 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__StringLiteral__ValueAssignment9653 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_INT_in_rule__IntLiteral__ValueAssignment9684 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_FLOAT_in_rule__FloatLiteral__ValueAssignment9715 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_BOOLEAN_in_rule__BooleanLiteral__ValueAssignment9746 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__ConstantLiteral__ValueAssignment9781 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_39_in_rule__BuiltInValueLiteral__ValueAssignment_19821 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x00000020021E0000L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000020002L});
+    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x00000020021C0002L});
+    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x00000020021C0000L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000A00000L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000400000L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000400002L});
+    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x00000000A900C010L});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x00000000A800C012L});
+    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000002002180000L});
+    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000004A00000L});
+    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000010000000L});
+    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x00000040008001F0L});
+    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x00000000A000C010L});
+    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x000000000000C002L});
+    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000040000000L});
+    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000100000000L});
+    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000200000000L});
+    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000400000002L});
+    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000800000040L});
+    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000000001400000L});
+    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000000200000002L});
+    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000001000000000L});
 
 }

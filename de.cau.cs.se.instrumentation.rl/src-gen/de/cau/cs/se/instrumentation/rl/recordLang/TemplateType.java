@@ -13,6 +13,6 @@ package de.cau.cs.se.instrumentation.rl.recordLang;
  * @model
  * @generated
  */
-public interface TemplateType extends Type
+public interface TemplateType extends ComplexType
 {
 } // TemplateType

@@ -2,26 +2,7 @@
  */
 package de.cau.cs.se.instrumentation.rl.recordLang.util;
 
-import de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral;
-import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize;
-import de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral;
-import de.cau.cs.se.instrumentation.rl.recordLang.BuiltInValueLiteral;
-import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
-import de.cau.cs.se.instrumentation.rl.recordLang.Constant;
-import de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral;
-import de.cau.cs.se.instrumentation.rl.recordLang.FloatLiteral;
-import de.cau.cs.se.instrumentation.rl.recordLang.ForeignKey;
-import de.cau.cs.se.instrumentation.rl.recordLang.Import;
-import de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral;
-import de.cau.cs.se.instrumentation.rl.recordLang.Literal;
-import de.cau.cs.se.instrumentation.rl.recordLang.Model;
-import de.cau.cs.se.instrumentation.rl.recordLang.Property;
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
-import de.cau.cs.se.instrumentation.rl.recordLang.ReferenceProperty;
-import de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral;
-import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType;
-import de.cau.cs.se.instrumentation.rl.recordLang.Type;
+import de.cau.cs.se.instrumentation.rl.recordLang.*;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -69,7 +50,7 @@ public class RecordLangSwitch<T> extends Switch<T>
    * Checks whether this is a switch for the given package.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @parameter ePackage the package in question.
+   * @param ePackage the package in question.
    * @return whether this is a switch for the given package.
    * @generated
    */
@@ -105,13 +86,6 @@ public class RecordLangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case RecordLangPackage.PACKAGE:
-      {
-        de.cau.cs.se.instrumentation.rl.recordLang.Package package_ = (de.cau.cs.se.instrumentation.rl.recordLang.Package)theEObject;
-        T result = casePackage(package_);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case RecordLangPackage.TYPE:
       {
         Type type = (Type)theEObject;
@@ -119,10 +93,27 @@ public class RecordLangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case RecordLangPackage.BASE_TYPE:
+      {
+        BaseType baseType = (BaseType)theEObject;
+        T result = caseBaseType(baseType);
+        if (result == null) result = caseType(baseType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RecordLangPackage.COMPLEX_TYPE:
+      {
+        ComplexType complexType = (ComplexType)theEObject;
+        T result = caseComplexType(complexType);
+        if (result == null) result = caseType(complexType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case RecordLangPackage.TEMPLATE_TYPE:
       {
         TemplateType templateType = (TemplateType)theEObject;
         T result = caseTemplateType(templateType);
+        if (result == null) result = caseComplexType(templateType);
         if (result == null) result = caseType(templateType);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -131,6 +122,7 @@ public class RecordLangSwitch<T> extends Switch<T>
       {
         RecordType recordType = (RecordType)theEObject;
         T result = caseRecordType(recordType);
+        if (result == null) result = caseComplexType(recordType);
         if (result == null) result = caseType(recordType);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -167,13 +159,6 @@ public class RecordLangSwitch<T> extends Switch<T>
       {
         ArraySize arraySize = (ArraySize)theEObject;
         T result = caseArraySize(arraySize);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case RecordLangPackage.REFERENCE_PROPERTY:
-      {
-        ReferenceProperty referenceProperty = (ReferenceProperty)theEObject;
-        T result = caseReferenceProperty(referenceProperty);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -277,22 +262,6 @@ public class RecordLangSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Package</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Package</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T casePackage(de.cau.cs.se.instrumentation.rl.recordLang.Package object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Type</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -304,6 +273,38 @@ public class RecordLangSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseType(Type object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Base Type</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Base Type</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseBaseType(BaseType object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Complex Type</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Complex Type</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseComplexType(ComplexType object)
   {
     return null;
   }
@@ -416,22 +417,6 @@ public class RecordLangSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseArraySize(ArraySize object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Reference Property</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Reference Property</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseReferenceProperty(ReferenceProperty object)
   {
     return null;
   }

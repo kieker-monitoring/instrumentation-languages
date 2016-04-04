@@ -22,11 +22,12 @@ import de.cau.cs.se.instrumentation.rl.recordLang.Type
 import java.util.ArrayList
 import java.util.Collection
 import java.util.List
-import org.eclipse.emf.ecore.EDataType
 import org.eclipse.xtext.validation.Check
 import org.eclipse.xtext.xbase.lib.Pair
 import de.cau.cs.se.instrumentation.rl.recordLang.BuiltInValueLiteral
 import de.cau.cs.se.instrumentation.rl.typing.BaseTypes
+import de.cau.cs.se.instrumentation.rl.recordLang.ComplexType
+import de.cau.cs.se.instrumentation.rl.recordLang.BaseType
 
 /**
  * Custom validation rules. 
@@ -67,8 +68,8 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 	@Check
 	def checkPropertyDeclaration(Property property) {
 		if (property.eContainer instanceof Type) {
-			if (PropertyEvaluation::collectAllProperties(property.eContainer as Type).exists[p | p.name.equals(property.name) && p != property]) {
-				val Property otherProperty = PropertyEvaluation::collectAllProperties(property.eContainer as Type).findFirst[p | p.name.equals(property.name) && p != property]
+			if (PropertyEvaluation::collectAllProperties(property.eContainer as ComplexType).exists[p | p.name.equals(property.name) && p != property]) {
+				val Property otherProperty = PropertyEvaluation::collectAllProperties(property.eContainer as ComplexType).findFirst[p | p.name.equals(property.name) && p != property]
 				//if (!typeAndPackageIdentical(otherProperty.type,property.type))
 					error('Property has been defined in ' + (otherProperty.eContainer as Type).name + '. Cannot be declared again.', 
 						RecordLangPackage$Literals::PROPERTY__NAME,
@@ -90,7 +91,7 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 			duplicates.forEach[entry | // if (!typeAndPackageIdentical(entry.key.type,entry.value.type))
 				error('Multiple property inheritance form ' + entry.key.name + 
 						' inherited from ' + (entry.key.eContainer as Type).name + ' and ' + (entry.value.eContainer as Type).name, 
-						RecordLangPackage$Literals::TYPE__PARENTS,
+						RecordLangPackage$Literals::COMPLEX_TYPE__PARENTS,
 						INVALID_NAME)
 			]
 		}
@@ -108,7 +109,7 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 			duplicates.forEach[entry | // if (!typeAndPackageIdentical(entry.key.type,entry.value.type))
 				error('Multiple property inheritance from ' + entry.key.name + 
 						' inherited from ' + (entry.key.eContainer as Type).name + ' and ' + (entry.value.eContainer as Type).name, 
-						RecordLangPackage$Literals::TYPE__PARENTS,
+						RecordLangPackage$Literals::COMPLEX_TYPE__PARENTS,
 						INVALID_NAME)
 			]
 		}
@@ -161,15 +162,15 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 	 * 
 	 * @param classifier the classifier where the FQN is computed for
 	 */
-	def String createFQNTypeName(Classifier classifier) {
-		classifier.class_.name + classifier.sizes.map['[' + (if (it.size != 0) it.size else '') + ']'].join
+	private def String createFQNTypeName(Classifier classifier) {
+		classifier.type.name + classifier.sizes.map['[' + (if (it.size != 0) it.size else '') + ']'].join
 	}
 	
 	/**
 	 * Check if types are a exact match.
 	 */
-	def typeEquality(Classifier left, Classifier right) {
-		if (left.class_.name.equals(right.class_.name)) {
+	private def typeEquality(Classifier left, Classifier right) {
+		if (left.type.name.equals(right.type.name)) {
 			if (left.sizes.size == right.sizes.size) {
 				var i=0
 				while (i<left.sizes.size) {
@@ -185,22 +186,14 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 	/**
 	 * Compare two types for a type match in a value assignment.
 	 */
-	def compareTypesInAssignment(Classifier left, Classifier right, Literal literal) {
-		if (left.package != null && right.package != null) {
-			if (left.package.package.nsURI.equals(right.package.package.nsURI)) 
-				return compareClassifierTypesInAssignment(left,right,literal)
-			else
-				return false
-		} else if (left.package == null && right.package == null) {
-			return compareClassifierTypesInAssignment(left,right,literal)
-		} else
-			return false	
+	private def compareTypesInAssignment(Classifier left, Classifier right, Literal literal) {
+		return compareClassifierTypesInAssignment(left,right,literal)	
 	}
 	
 	/**
 	 * Check if types match in an assignment.
 	 */
-	def compareClassifierTypesInAssignment(Classifier left, Classifier right, Literal literal) {
+	private def compareClassifierTypesInAssignment(Classifier left, Classifier right, Literal literal) {
 		if (compareClassifierTypeEquvalenceSet(left,right,literal)) {
 			if (left.sizes.size == right.sizes.size) {
 				var i=0
@@ -221,8 +214,8 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 	 * Check if the left and the right type are compatible. First check if they are identical. If
 	 * not use checkTypeEquivalenceSet to check for compatible types. This is required for constants values.
 	 */
-	def compareClassifierTypeEquvalenceSet(Classifier left, Classifier right, Literal literal) {
-		if (left.class_.name.equals(right.class_.name))
+	private def compareClassifierTypeEquvalenceSet(Classifier left, Classifier right, Literal literal) {
+		if (left.type.name.equals(right.type.name))
 			true
 		else 
 			checkTypeEquivalenceSet(left,right,literal)
@@ -231,17 +224,17 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 	/**
 	 * Check if types match.
 	 */
-	def checkTypeEquivalenceSet(Classifier left, Classifier right, Literal literal) {
-		if (left.class_.name.equals('double')) {
-				if (right.class_.name.equals('float')) {
+	private def checkTypeEquivalenceSet(Classifier left, Classifier right, Literal literal) {
+		if (left.type.name.equals('double')) {
+				if (right.type.name.equals('float')) {
 					if (literal instanceof FloatLiteral)
 						true
 					else if (literal instanceof ArrayLiteral)
 						checkAllLiteralsArtOfType(FloatLiteral,literal as ArrayLiteral)
 				} else
 					false
-			} else if (left.class_.name.equals('long')) {
-				if (right.class_.name.equals('int')) {
+			} else if (left.type.name.equals('long')) {
+				if (right.type.name.equals('int')) {
 					if (literal instanceof IntLiteral)
 						if (((literal as IntLiteral).value >= Long.MIN_VALUE) && 
 							((literal as IntLiteral).value <= Long.MAX_VALUE))
@@ -252,8 +245,8 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 						checkAllLiteralsArtOfType(IntLiteral,literal as ArrayLiteral)
 				} else
 					false
-			} else if (left.class_.name.equals('byte')) {
-				if (right.class_.name.equals('int')) {
+			} else if (left.type.name.equals('byte')) {
+				if (right.type.name.equals('int')) {
 					if (literal instanceof IntLiteral)
 						if (((literal as IntLiteral).value >= Byte.MIN_VALUE) && 
 							((literal as IntLiteral).value <= Byte.MAX_VALUE))
@@ -264,8 +257,8 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 						checkAllLiteralsArtOfType(IntLiteral,literal as ArrayLiteral)
 				} else
 					false
-			} else if (left.class_.name.equals('short')) {
-				if (right.class_.name.equals('int')) {
+			} else if (left.type.name.equals('short')) {
+				if (right.type.name.equals('int')) {
 					if (literal instanceof IntLiteral)
 						if (((literal as IntLiteral).value >= Short.MIN_VALUE) && 
 							((literal as IntLiteral).value <= Short.MAX_VALUE))
@@ -285,7 +278,7 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 	/**
 	 * Check in depth if all elements match the specific type.
 	 */
-	def boolean checkAllLiteralsArtOfType(Class<? extends Literal> type, ArrayLiteral literal) {
+	private def boolean checkAllLiteralsArtOfType(Class<? extends Literal> type, ArrayLiteral literal) {
 		literal.literals.forall[element |
 			if (element instanceof ArrayLiteral) 
 				checkAllLiteralsArtOfType(type, element as ArrayLiteral)
@@ -297,23 +290,23 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 	/**
 	 * Compute the classifier for a literal.
 	 */
-	def dispatch Classifier getType(StringLiteral literal) {
+	private def dispatch Classifier getType(StringLiteral literal) {
 		if (literal.value.length != 1) 
-			createPrimitiveClassifier(BaseTypes.ESTRING.getEType)
+			createPrimitiveClassifier(BaseTypes.STRING.getType)
 		else
-			createPrimitiveClassifier(BaseTypes.ECHAR.getEType)
+			createPrimitiveClassifier(BaseTypes.CHAR.getType)
 	}
-	def dispatch Classifier getType(IntLiteral literal) { createPrimitiveClassifier(BaseTypes.EINT.getEType) }
-	def dispatch Classifier getType(FloatLiteral literal) { createPrimitiveClassifier(BaseTypes.EFLOAT.getEType) }
-	def dispatch Classifier getType(BooleanLiteral literal) { createPrimitiveClassifier(BaseTypes.EBOOLEAN.getEType) }
-	def dispatch Classifier getType(ConstantLiteral literal) { literal.value.type }
-	def dispatch Classifier getType(BuiltInValueLiteral literal) {
+	private def dispatch Classifier getType(IntLiteral literal) { createPrimitiveClassifier(BaseTypes.INT.getType) }
+	private def dispatch Classifier getType(FloatLiteral literal) { createPrimitiveClassifier(BaseTypes.FLOAT.getType) }
+	private def dispatch Classifier getType(BooleanLiteral literal) { createPrimitiveClassifier(BaseTypes.BOOLEAN.getType) }
+	private def dispatch Classifier getType(ConstantLiteral literal) { literal.value.type }
+	private def dispatch Classifier getType(BuiltInValueLiteral literal) {
 		switch (literal.value) {
-			case "KIEKER_VERSION" :  createPrimitiveClassifier(BaseTypes.ESTRING.getEType)
+			case "KIEKER_VERSION" :  createPrimitiveClassifier(BaseTypes.STRING.getType)
 			// add further built-in values here.
 		}
 	}
-	def dispatch Classifier getType(ArrayLiteral literal) {
+	private def dispatch Classifier getType(ArrayLiteral literal) {
 		val classifier = getType(literal.literals.get(0))
 		val size = RecordLangFactory::eINSTANCE.createArraySize
 		size.setSize(literal.literals.size)
@@ -321,54 +314,19 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 		return classifier		
 	}
 		
-	def dispatch Classifier getType(Literal literal) {
+	private def dispatch Classifier getType(Literal literal) {
 		throw new InternalErrorException('Unhandled literal type')
 	}
 	
-	def createPrimitiveClassifier(EDataType type) {
+	private def createPrimitiveClassifier(BaseType type) {
 		val classifier = RecordLangFactory::eINSTANCE.createClassifier()
-		classifier.setClass(type)
+		classifier.setType(type)
 		return classifier
 	}
 	
 	/* -- service routines -- */
-	
-	/**
-	 * Compare types of a property for equality including package name.
-	 */
-	def boolean typeAndPackageIdentical(Classifier left, Classifier right) {
-		if (left.package != null) {
-			if (right.package != null) {
-				if (left.package.equals(right.package)) {
-					return typeIdentical(left,right)
-				} else
-					return false
-			} else
-				return false
-		} else {
-			return typeIdentical(left,right)
-		}
-	}
-	
-	/**
-	 * Compare types of a property for equality.
-	 */
-	def boolean typeIdentical(Classifier left, Classifier right) {
-		if (left.class.equals(right.class)) {
-			if (left.sizes.size == right.sizes.size) {
-				var i = 0
-				while (i<left.sizes.size) {
-					if (left.sizes.get(i).size != right.sizes.get(i).size)
-						return false
-				}
-				return true
-			} else
-				return false
-		} else
-			return false
-	}
-	
-	def Pair<Property, Property> findDuplicate(Property property, Collection<Property> properties) {
+		
+	private def Pair<Property, Property> findDuplicate(Property property, Collection<Property> properties) {
 		val Property second = properties.findFirst[p | property.name.equals(p.name) && p != property]
 		return new Pair(property,second)
 	}

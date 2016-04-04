@@ -16,8 +16,10 @@
 package de.cau.cs.se.instrumentation.rl.typing.jar;
 
 import com.google.common.base.Objects;
+import de.cau.cs.se.instrumentation.rl.recordLang.BaseType;
 import de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
+import de.cau.cs.se.instrumentation.rl.recordLang.ComplexType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Constant;
 import de.cau.cs.se.instrumentation.rl.recordLang.FloatLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral;
@@ -42,7 +44,6 @@ import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.jdt.core.Flags;
@@ -102,8 +103,8 @@ public class JarModelResource extends ResourceImpl {
       EList<EObject> _contents_1 = this.getContents();
       for (final EObject object : _contents_1) {
         if ((object instanceof Model)) {
-          final EList<Type> types = ((Model) object).getTypes();
-          final Function1<Type, Boolean> _function = (Type type) -> {
+          final EList<ComplexType> types = ((Model) object).getTypes();
+          final Function1<ComplexType, Boolean> _function = (ComplexType type) -> {
             boolean _or = false;
             String _name = type.getName();
             boolean _endsWith = _name.endsWith(("." + uriFragment));
@@ -116,7 +117,7 @@ public class JarModelResource extends ResourceImpl {
             }
             return Boolean.valueOf(_or);
           };
-          final Type result = IterableExtensions.<Type>findFirst(types, _function);
+          final ComplexType result = IterableExtensions.<ComplexType>findFirst(types, _function);
           boolean _notEquals = (!Objects.equal(result, null));
           if (_notEquals) {
             return result;
@@ -255,13 +256,13 @@ public class JarModelResource extends ResourceImpl {
                 }
               };
               types.forEach(_function_1);
-              final HashMap<IType, Type> typeMap = new HashMap<IType, Type>();
+              final HashMap<IType, ComplexType> typeMap = new HashMap<IType, ComplexType>();
               final Consumer<IType> _function_2 = (IType type) -> {
-                final Type modelType = this.createType(type);
+                final ComplexType modelType = this.createType(type);
                 IPackageFragment _packageFragment = type.getPackageFragment();
                 String _elementName = _packageFragment.getElementName();
                 Model _get = models.get(_elementName);
-                EList<Type> _types = _get.getTypes();
+                EList<ComplexType> _types = _get.getTypes();
                 _types.add(modelType);
                 typeMap.put(type, modelType);
                 this.modelTypes.add(modelType);
@@ -302,9 +303,9 @@ public class JarModelResource extends ResourceImpl {
   /**
    * Link types.
    */
-  private void linkType(final IType type, final Map<IType, Type> typeMap) {
+  private void linkType(final IType type, final Map<IType, ComplexType> typeMap) {
     try {
-      final Type modelType = typeMap.get(type);
+      final ComplexType modelType = typeMap.get(type);
       boolean _matched = false;
       if (!_matched) {
         if (modelType instanceof TemplateType) {
@@ -312,7 +313,7 @@ public class JarModelResource extends ResourceImpl {
           final ITypeHierarchy hierarchy = type.newSupertypeHierarchy(null);
           IType[] _superInterfaces = hierarchy.getSuperInterfaces(type);
           final Consumer<IType> _function = (IType iface) -> {
-            final Type template = typeMap.get(iface);
+            final ComplexType template = typeMap.get(iface);
             boolean _notEquals = (!Objects.equal(template, null));
             if (_notEquals) {
               EList<TemplateType> _parents = ((TemplateType)modelType).getParents();
@@ -328,7 +329,7 @@ public class JarModelResource extends ResourceImpl {
           final ITypeHierarchy hierarchy = type.newSupertypeHierarchy(null);
           IType[] _superInterfaces = hierarchy.getSuperInterfaces(type);
           final Consumer<IType> _function = (IType iface) -> {
-            final Type template = typeMap.get(iface);
+            final ComplexType template = typeMap.get(iface);
             boolean _notEquals = (!Objects.equal(template, null));
             if (_notEquals) {
               EList<TemplateType> _parents = ((RecordType)modelType).getParents();
@@ -339,7 +340,7 @@ public class JarModelResource extends ResourceImpl {
           final IType superType = hierarchy.getSuperclass(type);
           boolean _notEquals = (!Objects.equal(superType, null));
           if (_notEquals) {
-            Type _get = typeMap.get(superType);
+            ComplexType _get = typeMap.get(superType);
             ((RecordType)modelType).setParent(((RecordType) _get));
           }
         }
@@ -357,9 +358,9 @@ public class JarModelResource extends ResourceImpl {
     return model;
   }
   
-  private Type createType(final IType type) {
+  private ComplexType createType(final IType type) {
     try {
-      Type _xifexpression = null;
+      ComplexType _xifexpression = null;
       boolean _isInterface = type.isInterface();
       if (_isInterface) {
         _xifexpression = this.createTemplateType(type);
@@ -372,7 +373,7 @@ public class JarModelResource extends ResourceImpl {
     }
   }
   
-  private Type createRecordType(final IType type) {
+  private ComplexType createRecordType(final IType type) {
     final RecordType result = this.rlFactory.createRecordType();
     String _elementName = type.getElementName();
     result.setName(_elementName);
@@ -380,7 +381,7 @@ public class JarModelResource extends ResourceImpl {
     return result;
   }
   
-  private Type createTemplateType(final IType type) {
+  private ComplexType createTemplateType(final IType type) {
     final TemplateType result = this.rlFactory.createTemplateType();
     String _elementName = type.getElementName();
     result.setName(_elementName);
@@ -388,7 +389,7 @@ public class JarModelResource extends ResourceImpl {
     return result;
   }
   
-  public void createAttributes(final Type result, final IType type) {
+  public void createAttributes(final ComplexType result, final IType type) {
     try {
       IField[] _fields = type.getFields();
       final Consumer<IField> _function = (IField field) -> {
@@ -576,40 +577,40 @@ public class JarModelResource extends ResourceImpl {
     final Classifier classifier = this.rlFactory.createClassifier();
     switch (typeId) {
       case "B":
-        EDataType _eType = BaseTypes.EBYTE.getEType();
-        classifier.setClass(_eType);
+        BaseType _type = BaseTypes.BYTE.getType();
+        classifier.setType(_type);
         break;
       case "C":
-        EDataType _eType_1 = BaseTypes.ECHAR.getEType();
-        classifier.setClass(_eType_1);
+        BaseType _type_1 = BaseTypes.CHAR.getType();
+        classifier.setType(_type_1);
         break;
       case "D":
-        EDataType _eType_2 = BaseTypes.EDOUBLE.getEType();
-        classifier.setClass(_eType_2);
+        BaseType _type_2 = BaseTypes.DOUBLE.getType();
+        classifier.setType(_type_2);
         break;
       case "F":
-        EDataType _eType_3 = BaseTypes.EFLOAT.getEType();
-        classifier.setClass(_eType_3);
+        BaseType _type_3 = BaseTypes.FLOAT.getType();
+        classifier.setType(_type_3);
         break;
       case "I":
-        EDataType _eType_4 = BaseTypes.EINT.getEType();
-        classifier.setClass(_eType_4);
+        BaseType _type_4 = BaseTypes.INT.getType();
+        classifier.setType(_type_4);
         break;
       case "J":
-        EDataType _eType_5 = BaseTypes.ELONG.getEType();
-        classifier.setClass(_eType_5);
+        BaseType _type_5 = BaseTypes.LONG.getType();
+        classifier.setType(_type_5);
         break;
       case "S":
-        EDataType _eType_6 = BaseTypes.ESHORT.getEType();
-        classifier.setClass(_eType_6);
+        BaseType _type_6 = BaseTypes.SHORT.getType();
+        classifier.setType(_type_6);
         break;
       case "Z":
-        EDataType _eType_7 = BaseTypes.EBOOLEAN.getEType();
-        classifier.setClass(_eType_7);
+        BaseType _type_7 = BaseTypes.BOOLEAN.getType();
+        classifier.setType(_type_7);
         break;
       case "Ljava.lang.String;":
-        EDataType _eType_8 = BaseTypes.ESTRING.getEType();
-        classifier.setClass(_eType_8);
+        BaseType _type_8 = BaseTypes.STRING.getType();
+        classifier.setType(_type_8);
         break;
     }
     return classifier;

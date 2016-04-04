@@ -3,17 +3,17 @@ package de.cau.cs.se.instrumentation.rl.validation;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import de.cau.cs.se.instrumentation.rl.generator.InternalErrorException;
+import de.cau.cs.se.instrumentation.rl.recordLang.BaseType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
+import de.cau.cs.se.instrumentation.rl.recordLang.ComplexType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
 import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType;
-import de.cau.cs.se.instrumentation.rl.recordLang.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.Functions.Function2;
@@ -207,11 +207,11 @@ public class PropertyEvaluation {
         _and = false;
       } else {
         Classifier _findType = PropertyEvaluation.findType(p);
-        EClassifier _class_ = _findType.getClass_();
-        String _name_2 = _class_.getName();
+        BaseType _type = _findType.getType();
+        String _name_2 = _type.getName();
         Classifier _findType_1 = PropertyEvaluation.findType(item);
-        EClassifier _class__1 = _findType_1.getClass_();
-        String _name_3 = _class__1.getName();
+        BaseType _type_1 = _findType_1.getType();
+        String _name_3 = _type_1.getName();
         boolean _equals_1 = _name_2.equals(_name_3);
         _and = _equals_1;
       }
@@ -270,8 +270,8 @@ public class PropertyEvaluation {
     try {
       int _switchResult = (int) 0;
       Classifier _findType = PropertyEvaluation.findType(property);
-      EClassifier _class_ = _findType.getClass_();
-      String _name = _class_.getName();
+      BaseType _type = _findType.getType();
+      String _name = _type.getName();
       switch (_name) {
         case "string":
           _switchResult = 4;
@@ -302,8 +302,8 @@ public class PropertyEvaluation {
           break;
         default:
           Classifier _findType_1 = PropertyEvaluation.findType(property);
-          EClassifier _class__1 = _findType_1.getClass_();
-          String _name_1 = _class__1.getName();
+          BaseType _type_1 = _findType_1.getType();
+          String _name_1 = _type_1.getName();
           String _plus = (_name_1 + "is not a valid type name");
           throw new InternalErrorException(_plus);
       }
@@ -313,7 +313,7 @@ public class PropertyEvaluation {
     }
   }
   
-  public static List<Property> collectAllDataProperties(final Type type) {
+  public static List<Property> collectAllDataProperties(final ComplexType type) {
     if (type instanceof RecordType) {
       return _collectAllDataProperties((RecordType)type);
     } else if (type instanceof TemplateType) {
@@ -324,7 +324,7 @@ public class PropertyEvaluation {
     }
   }
   
-  public static List<Property> collectAllProperties(final Type type) {
+  public static List<Property> collectAllProperties(final ComplexType type) {
     if (type instanceof RecordType) {
       return _collectAllProperties((RecordType)type);
     } else if (type instanceof TemplateType) {
@@ -335,7 +335,7 @@ public class PropertyEvaluation {
     }
   }
   
-  public static List<Property> collectAllTemplateProperties(final Type type) {
+  public static List<Property> collectAllTemplateProperties(final ComplexType type) {
     if (type instanceof RecordType) {
       return _collectAllTemplateProperties((RecordType)type);
     } else if (type instanceof TemplateType) {

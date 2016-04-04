@@ -2,10 +2,10 @@
  */
 package de.cau.cs.se.instrumentation.rl.recordLang.impl;
 
+import de.cau.cs.se.instrumentation.rl.recordLang.ComplexType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Import;
 import de.cau.cs.se.instrumentation.rl.recordLang.Model;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
-import de.cau.cs.se.instrumentation.rl.recordLang.Type;
 
 import java.util.Collection;
 
@@ -29,13 +29,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ModelImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ModelImpl#getPackages <em>Packages</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ModelImpl#getImports <em>Imports</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ModelImpl#getTypes <em>Types</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -62,16 +61,6 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getPackages() <em>Packages</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getPackages()
-   * @generated
-   * @ordered
-   */
-  protected EList<de.cau.cs.se.instrumentation.rl.recordLang.Package> packages;
-
-  /**
    * The cached value of the '{@link #getImports() <em>Imports</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -89,7 +78,7 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * @generated
    * @ordered
    */
-  protected EList<Type> types;
+  protected EList<ComplexType> types;
 
   /**
    * <!-- begin-user-doc -->
@@ -140,20 +129,6 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<de.cau.cs.se.instrumentation.rl.recordLang.Package> getPackages()
-  {
-    if (packages == null)
-    {
-      packages = new EObjectContainmentEList<de.cau.cs.se.instrumentation.rl.recordLang.Package>(de.cau.cs.se.instrumentation.rl.recordLang.Package.class, this, RecordLangPackage.MODEL__PACKAGES);
-    }
-    return packages;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EList<Import> getImports()
   {
     if (imports == null)
@@ -168,11 +143,11 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Type> getTypes()
+  public EList<ComplexType> getTypes()
   {
     if (types == null)
     {
-      types = new EObjectContainmentEList<Type>(Type.class, this, RecordLangPackage.MODEL__TYPES);
+      types = new EObjectContainmentEList<ComplexType>(ComplexType.class, this, RecordLangPackage.MODEL__TYPES);
     }
     return types;
   }
@@ -187,8 +162,6 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
   {
     switch (featureID)
     {
-      case RecordLangPackage.MODEL__PACKAGES:
-        return ((InternalEList<?>)getPackages()).basicRemove(otherEnd, msgs);
       case RecordLangPackage.MODEL__IMPORTS:
         return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
       case RecordLangPackage.MODEL__TYPES:
@@ -209,8 +182,6 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
     {
       case RecordLangPackage.MODEL__NAME:
         return getName();
-      case RecordLangPackage.MODEL__PACKAGES:
-        return getPackages();
       case RecordLangPackage.MODEL__IMPORTS:
         return getImports();
       case RecordLangPackage.MODEL__TYPES:
@@ -233,17 +204,13 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
       case RecordLangPackage.MODEL__NAME:
         setName((String)newValue);
         return;
-      case RecordLangPackage.MODEL__PACKAGES:
-        getPackages().clear();
-        getPackages().addAll((Collection<? extends de.cau.cs.se.instrumentation.rl.recordLang.Package>)newValue);
-        return;
       case RecordLangPackage.MODEL__IMPORTS:
         getImports().clear();
         getImports().addAll((Collection<? extends Import>)newValue);
         return;
       case RecordLangPackage.MODEL__TYPES:
         getTypes().clear();
-        getTypes().addAll((Collection<? extends Type>)newValue);
+        getTypes().addAll((Collection<? extends ComplexType>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -261,9 +228,6 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
     {
       case RecordLangPackage.MODEL__NAME:
         setName(NAME_EDEFAULT);
-        return;
-      case RecordLangPackage.MODEL__PACKAGES:
-        getPackages().clear();
         return;
       case RecordLangPackage.MODEL__IMPORTS:
         getImports().clear();
@@ -287,8 +251,6 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
     {
       case RecordLangPackage.MODEL__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case RecordLangPackage.MODEL__PACKAGES:
-        return packages != null && !packages.isEmpty();
       case RecordLangPackage.MODEL__IMPORTS:
         return imports != null && !imports.isEmpty();
       case RecordLangPackage.MODEL__TYPES:

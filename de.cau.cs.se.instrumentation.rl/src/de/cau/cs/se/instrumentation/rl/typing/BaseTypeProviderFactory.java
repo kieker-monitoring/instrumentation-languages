@@ -26,13 +26,13 @@ import com.google.inject.Inject;
  *         org.eclipse.xtext.common.types.access.jdt.JdtTypeProviderFactory
  * @author Reiner Jung - commentary and cleanups
  */
-public class TypeProviderFactory {
+public class BaseTypeProviderFactory {
 
 	/**
 	 * Dummy constructor comment.
 	 */
 	@Inject
-	public TypeProviderFactory() {}
+	public BaseTypeProviderFactory() {}
 
 	/**
 	 * Create a new type provider or fetch the already created type provider for the primitive
@@ -45,7 +45,7 @@ public class TypeProviderFactory {
 	public ITypeProvider getTypeProvider(final ResourceSet resourceSet) {
 		if (resourceSet != null) {
 			final Object o = resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
-					.get(EcoreTypeURIHelper.PROTOCOL);
+					.get(BaseTypeURIHelper.PROTOCOL);
 			if (o != null) {
 				if (!(o instanceof ITypeProvider)) {
 					// TODO something went terribly wrong, to be save create a new type provider
@@ -69,9 +69,9 @@ public class TypeProviderFactory {
 	 * @return Returns the new type provider.
 	 */
 	private ITypeProvider createTypeProvider(final ResourceSet resourceSet) {
-		final ITypeProvider typeProvider = new TypeProvider(resourceSet);
+		final ITypeProvider typeProvider = new BaseTypeProvider(resourceSet);
 		resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
-				.put(EcoreTypeURIHelper.PROTOCOL, typeProvider);
+				.put(BaseTypeURIHelper.PROTOCOL, typeProvider);
 		return typeProvider;
 
 	}

@@ -15,23 +15,21 @@
  ***************************************************************************/
 package de.cau.cs.se.instrumentation.rl.typing
 
+import com.google.common.base.Predicate
+import com.google.inject.Inject
+import de.cau.cs.se.instrumentation.rl.recordLang.BaseType
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EReference
-import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.ResourceSet
-import org.eclipse.xtext.EcoreUtil2
-import org.eclipse.xtext.naming.IQualifiedNameConverter;
-import org.eclipse.xtext.scoping.IScope;
-import org.eclipse.xtext.scoping.impl.DefaultGlobalScopeProvider;
-
-import com.google.common.base.Predicate;
-import com.google.inject.Inject;
-import org.eclipse.emf.ecore.EcorePackage$Literals
+import org.eclipse.xtext.naming.IQualifiedNameConverter
 import org.eclipse.xtext.resource.IEObjectDescription
+import org.eclipse.xtext.scoping.IScope
+import org.eclipse.xtext.scoping.impl.DefaultGlobalScopeProvider
 
-class TypeGlobalScopeProvider extends DefaultGlobalScopeProvider {
+class BaseTypeGlobalScopeProvider extends DefaultGlobalScopeProvider {
 	@Inject
-	private TypeProviderFactory typeProviderFactory;
+	private BaseTypeProviderFactory typeProviderFactory;
 
 	@Inject
 	private IQualifiedNameConverter qualifiedNameConverter;
@@ -44,7 +42,7 @@ class TypeGlobalScopeProvider extends DefaultGlobalScopeProvider {
     def IScope getParentTypeScope(Resource resource, EReference reference,
             Predicate<IEObjectDescription> filter, EClass referenceType) {
         // check whether the reference type is a type of any kind 
-        if (EcoreUtil2::isAssignableFrom(Literals::ECLASSIFIER, referenceType)) {
+        if (referenceType.name.equals(BaseType.simpleName)) {
         	if (resource != null) {
         		val ResourceSet resourceSet = resource.getResourceSet()
     			if (resourceSet != null) {

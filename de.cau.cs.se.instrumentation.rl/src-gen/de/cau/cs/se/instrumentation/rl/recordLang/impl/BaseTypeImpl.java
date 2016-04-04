@@ -2,28 +2,26 @@
  */
 package de.cau.cs.se.instrumentation.rl.recordLang.impl;
 
-import de.cau.cs.se.instrumentation.rl.recordLang.Literal;
+import de.cau.cs.se.instrumentation.rl.recordLang.BaseType;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Literal</b></em>'.
+ * An implementation of the model object '<em><b>Base Type</b></em>'.
  * <!-- end-user-doc -->
  *
  * @generated
  */
-public class LiteralImpl extends MinimalEObjectImpl.Container implements Literal
+public class BaseTypeImpl extends TypeImpl implements BaseType
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected LiteralImpl()
+  protected BaseTypeImpl()
   {
     super();
   }
@@ -36,7 +34,7 @@ public class LiteralImpl extends MinimalEObjectImpl.Container implements Literal
   @Override
   protected EClass eStaticClass()
   {
-    return RecordLangPackage.Literals.LITERAL;
+    return RecordLangPackage.Literals.BASE_TYPE;
   }
 
-} //LiteralImpl
+} //BaseTypeImpl

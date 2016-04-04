@@ -7,9 +7,11 @@ import com.google.common.base.Objects;
 import de.cau.cs.se.instrumentation.rl.generator.InternalErrorException;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize;
+import de.cau.cs.se.instrumentation.rl.recordLang.BaseType;
 import de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.BuiltInValueLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
+import de.cau.cs.se.instrumentation.rl.recordLang.ComplexType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Constant;
 import de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.FloatLiteral;
@@ -31,10 +33,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -90,7 +89,7 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
     EObject _eContainer = property.eContainer();
     if ((_eContainer instanceof Type)) {
       EObject _eContainer_1 = property.eContainer();
-      List<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(((Type) _eContainer_1));
+      List<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(((ComplexType) _eContainer_1));
       final Function1<Property, Boolean> _function = (Property p) -> {
         boolean _and = false;
         String _name = p.getName();
@@ -107,7 +106,7 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
       boolean _exists = IterableExtensions.<Property>exists(_collectAllProperties, _function);
       if (_exists) {
         EObject _eContainer_2 = property.eContainer();
-        List<Property> _collectAllProperties_1 = PropertyEvaluation.collectAllProperties(((Type) _eContainer_2));
+        List<Property> _collectAllProperties_1 = PropertyEvaluation.collectAllProperties(((ComplexType) _eContainer_2));
         final Function1<Property, Boolean> _function_1 = (Property p) -> {
           boolean _and = false;
           String _name = p.getName();
@@ -179,7 +178,7 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
         String _name_2 = ((Type) _eContainer_1).getName();
         String _plus_4 = (_plus_3 + _name_2);
         this.error(_plus_4, 
-          RecordLangPackage.Literals.TYPE__PARENTS, 
+          RecordLangPackage.Literals.COMPLEX_TYPE__PARENTS, 
           RecordLangValidator.INVALID_NAME);
       };
       duplicates.forEach(_function_2);
@@ -232,7 +231,7 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
         String _name_2 = ((Type) _eContainer_1).getName();
         String _plus_4 = (_plus_3 + _name_2);
         this.error(_plus_4, 
-          RecordLangPackage.Literals.TYPE__PARENTS, 
+          RecordLangPackage.Literals.COMPLEX_TYPE__PARENTS, 
           RecordLangValidator.INVALID_NAME);
       };
       duplicates.forEach(_function_2);
@@ -341,9 +340,9 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
    * 
    * @param classifier the classifier where the FQN is computed for
    */
-  public String createFQNTypeName(final Classifier classifier) {
-    EClassifier _class_ = classifier.getClass_();
-    String _name = _class_.getName();
+  private String createFQNTypeName(final Classifier classifier) {
+    BaseType _type = classifier.getType();
+    String _name = _type.getName();
     EList<ArraySize> _sizes = classifier.getSizes();
     final Function1<ArraySize, String> _function = (ArraySize it) -> {
       Object _xifexpression = null;
@@ -365,11 +364,11 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
   /**
    * Check if types are a exact match.
    */
-  public boolean typeEquality(final Classifier left, final Classifier right) {
-    EClassifier _class_ = left.getClass_();
-    String _name = _class_.getName();
-    EClassifier _class__1 = right.getClass_();
-    String _name_1 = _class__1.getName();
+  private boolean typeEquality(final Classifier left, final Classifier right) {
+    BaseType _type = left.getType();
+    String _name = _type.getName();
+    BaseType _type_1 = right.getType();
+    String _name_1 = _type_1.getName();
     boolean _equals = _name.equals(_name_1);
     if (_equals) {
       EList<ArraySize> _sizes = left.getSizes();
@@ -403,53 +402,14 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
   /**
    * Compare two types for a type match in a value assignment.
    */
-  public boolean compareTypesInAssignment(final Classifier left, final Classifier right, final Literal literal) {
-    boolean _and = false;
-    de.cau.cs.se.instrumentation.rl.recordLang.Package _package = left.getPackage();
-    boolean _notEquals = (!Objects.equal(_package, null));
-    if (!_notEquals) {
-      _and = false;
-    } else {
-      de.cau.cs.se.instrumentation.rl.recordLang.Package _package_1 = right.getPackage();
-      boolean _notEquals_1 = (!Objects.equal(_package_1, null));
-      _and = _notEquals_1;
-    }
-    if (_and) {
-      de.cau.cs.se.instrumentation.rl.recordLang.Package _package_2 = left.getPackage();
-      EPackage _package_3 = _package_2.getPackage();
-      String _nsURI = _package_3.getNsURI();
-      de.cau.cs.se.instrumentation.rl.recordLang.Package _package_4 = right.getPackage();
-      EPackage _package_5 = _package_4.getPackage();
-      String _nsURI_1 = _package_5.getNsURI();
-      boolean _equals = _nsURI.equals(_nsURI_1);
-      if (_equals) {
-        return this.compareClassifierTypesInAssignment(left, right, literal);
-      } else {
-        return false;
-      }
-    } else {
-      boolean _and_1 = false;
-      de.cau.cs.se.instrumentation.rl.recordLang.Package _package_6 = left.getPackage();
-      boolean _equals_1 = Objects.equal(_package_6, null);
-      if (!_equals_1) {
-        _and_1 = false;
-      } else {
-        de.cau.cs.se.instrumentation.rl.recordLang.Package _package_7 = right.getPackage();
-        boolean _equals_2 = Objects.equal(_package_7, null);
-        _and_1 = _equals_2;
-      }
-      if (_and_1) {
-        return this.compareClassifierTypesInAssignment(left, right, literal);
-      } else {
-        return false;
-      }
-    }
+  private boolean compareTypesInAssignment(final Classifier left, final Classifier right, final Literal literal) {
+    return this.compareClassifierTypesInAssignment(left, right, literal);
   }
   
   /**
    * Check if types match in an assignment.
    */
-  public boolean compareClassifierTypesInAssignment(final Classifier left, final Classifier right, final Literal literal) {
+  private boolean compareClassifierTypesInAssignment(final Classifier left, final Classifier right, final Literal literal) {
     boolean _compareClassifierTypeEquvalenceSet = this.compareClassifierTypeEquvalenceSet(left, right, literal);
     if (_compareClassifierTypeEquvalenceSet) {
       EList<ArraySize> _sizes = left.getSizes();
@@ -497,12 +457,12 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
    * Check if the left and the right type are compatible. First check if they are identical. If
    * not use checkTypeEquivalenceSet to check for compatible types. This is required for constants values.
    */
-  public boolean compareClassifierTypeEquvalenceSet(final Classifier left, final Classifier right, final Literal literal) {
+  private boolean compareClassifierTypeEquvalenceSet(final Classifier left, final Classifier right, final Literal literal) {
     boolean _xifexpression = false;
-    EClassifier _class_ = left.getClass_();
-    String _name = _class_.getName();
-    EClassifier _class__1 = right.getClass_();
-    String _name_1 = _class__1.getName();
+    BaseType _type = left.getType();
+    String _name = _type.getName();
+    BaseType _type_1 = right.getType();
+    String _name_1 = _type_1.getName();
     boolean _equals = _name.equals(_name_1);
     if (_equals) {
       _xifexpression = true;
@@ -515,15 +475,15 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
   /**
    * Check if types match.
    */
-  public boolean checkTypeEquivalenceSet(final Classifier left, final Classifier right, final Literal literal) {
+  private boolean checkTypeEquivalenceSet(final Classifier left, final Classifier right, final Literal literal) {
     boolean _xifexpression = false;
-    EClassifier _class_ = left.getClass_();
-    String _name = _class_.getName();
+    BaseType _type = left.getType();
+    String _name = _type.getName();
     boolean _equals = _name.equals("double");
     if (_equals) {
       boolean _xifexpression_1 = false;
-      EClassifier _class__1 = right.getClass_();
-      String _name_1 = _class__1.getName();
+      BaseType _type_1 = right.getType();
+      String _name_1 = _type_1.getName();
       boolean _equals_1 = _name_1.equals("float");
       if (_equals_1) {
         boolean _xifexpression_2 = false;
@@ -543,13 +503,13 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
       _xifexpression = _xifexpression_1;
     } else {
       boolean _xifexpression_4 = false;
-      EClassifier _class__2 = left.getClass_();
-      String _name_2 = _class__2.getName();
+      BaseType _type_2 = left.getType();
+      String _name_2 = _type_2.getName();
       boolean _equals_2 = _name_2.equals("long");
       if (_equals_2) {
         boolean _xifexpression_5 = false;
-        EClassifier _class__3 = right.getClass_();
-        String _name_3 = _class__3.getName();
+        BaseType _type_3 = right.getType();
+        String _name_3 = _type_3.getName();
         boolean _equals_3 = _name_3.equals("int");
         if (_equals_3) {
           boolean _xifexpression_6 = false;
@@ -585,13 +545,13 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
         _xifexpression_4 = _xifexpression_5;
       } else {
         boolean _xifexpression_9 = false;
-        EClassifier _class__4 = left.getClass_();
-        String _name_4 = _class__4.getName();
+        BaseType _type_4 = left.getType();
+        String _name_4 = _type_4.getName();
         boolean _equals_4 = _name_4.equals("byte");
         if (_equals_4) {
           boolean _xifexpression_10 = false;
-          EClassifier _class__5 = right.getClass_();
-          String _name_5 = _class__5.getName();
+          BaseType _type_5 = right.getType();
+          String _name_5 = _type_5.getName();
           boolean _equals_5 = _name_5.equals("int");
           if (_equals_5) {
             boolean _xifexpression_11 = false;
@@ -627,13 +587,13 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
           _xifexpression_9 = _xifexpression_10;
         } else {
           boolean _xifexpression_14 = false;
-          EClassifier _class__6 = left.getClass_();
-          String _name_6 = _class__6.getName();
+          BaseType _type_6 = left.getType();
+          String _name_6 = _type_6.getName();
           boolean _equals_6 = _name_6.equals("short");
           if (_equals_6) {
             boolean _xifexpression_15 = false;
-            EClassifier _class__7 = right.getClass_();
-            String _name_7 = _class__7.getName();
+            BaseType _type_7 = right.getType();
+            String _name_7 = _type_7.getName();
             boolean _equals_7 = _name_7.equals("int");
             if (_equals_7) {
               boolean _xifexpression_16 = false;
@@ -682,7 +642,7 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
   /**
    * Check in depth if all elements match the specific type.
    */
-  public boolean checkAllLiteralsArtOfType(final Class<? extends Literal> type, final ArrayLiteral literal) {
+  private boolean checkAllLiteralsArtOfType(final Class<? extends Literal> type, final ArrayLiteral literal) {
     EList<Literal> _literals = literal.getLiterals();
     final Function1<Literal, Boolean> _function = (Literal element) -> {
       boolean _xifexpression = false;
@@ -699,54 +659,54 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
   /**
    * Compute the classifier for a literal.
    */
-  protected Classifier _getType(final StringLiteral literal) {
+  private Classifier _getType(final StringLiteral literal) {
     Classifier _xifexpression = null;
     String _value = literal.getValue();
     int _length = _value.length();
     boolean _notEquals = (_length != 1);
     if (_notEquals) {
-      EDataType _eType = BaseTypes.ESTRING.getEType();
-      _xifexpression = this.createPrimitiveClassifier(_eType);
+      BaseType _type = BaseTypes.STRING.getType();
+      _xifexpression = this.createPrimitiveClassifier(_type);
     } else {
-      EDataType _eType_1 = BaseTypes.ECHAR.getEType();
-      _xifexpression = this.createPrimitiveClassifier(_eType_1);
+      BaseType _type_1 = BaseTypes.CHAR.getType();
+      _xifexpression = this.createPrimitiveClassifier(_type_1);
     }
     return _xifexpression;
   }
   
-  protected Classifier _getType(final IntLiteral literal) {
-    EDataType _eType = BaseTypes.EINT.getEType();
-    return this.createPrimitiveClassifier(_eType);
+  private Classifier _getType(final IntLiteral literal) {
+    BaseType _type = BaseTypes.INT.getType();
+    return this.createPrimitiveClassifier(_type);
   }
   
-  protected Classifier _getType(final FloatLiteral literal) {
-    EDataType _eType = BaseTypes.EFLOAT.getEType();
-    return this.createPrimitiveClassifier(_eType);
+  private Classifier _getType(final FloatLiteral literal) {
+    BaseType _type = BaseTypes.FLOAT.getType();
+    return this.createPrimitiveClassifier(_type);
   }
   
-  protected Classifier _getType(final BooleanLiteral literal) {
-    EDataType _eType = BaseTypes.EBOOLEAN.getEType();
-    return this.createPrimitiveClassifier(_eType);
+  private Classifier _getType(final BooleanLiteral literal) {
+    BaseType _type = BaseTypes.BOOLEAN.getType();
+    return this.createPrimitiveClassifier(_type);
   }
   
-  protected Classifier _getType(final ConstantLiteral literal) {
+  private Classifier _getType(final ConstantLiteral literal) {
     Constant _value = literal.getValue();
     return _value.getType();
   }
   
-  protected Classifier _getType(final BuiltInValueLiteral literal) {
+  private Classifier _getType(final BuiltInValueLiteral literal) {
     Classifier _switchResult = null;
     String _value = literal.getValue();
     switch (_value) {
       case "KIEKER_VERSION":
-        EDataType _eType = BaseTypes.ESTRING.getEType();
-        _switchResult = this.createPrimitiveClassifier(_eType);
+        BaseType _type = BaseTypes.STRING.getType();
+        _switchResult = this.createPrimitiveClassifier(_type);
         break;
     }
     return _switchResult;
   }
   
-  protected Classifier _getType(final ArrayLiteral literal) {
+  private Classifier _getType(final ArrayLiteral literal) {
     EList<Literal> _literals = literal.getLiterals();
     Literal _get = _literals.get(0);
     final Classifier classifier = this.getType(_get);
@@ -759,7 +719,7 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
     return classifier;
   }
   
-  protected Classifier _getType(final Literal literal) {
+  private Classifier _getType(final Literal literal) {
     try {
       throw new InternalErrorException("Unhandled literal type");
     } catch (Throwable _e) {
@@ -767,75 +727,16 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
     }
   }
   
-  public Classifier createPrimitiveClassifier(final EDataType type) {
+  private Classifier createPrimitiveClassifier(final BaseType type) {
     final Classifier classifier = RecordLangFactory.eINSTANCE.createClassifier();
-    classifier.setClass(type);
+    classifier.setType(type);
     return classifier;
   }
   
   /**
-   * Compare types of a property for equality including package name.
+   * -- service routines --
    */
-  public boolean typeAndPackageIdentical(final Classifier left, final Classifier right) {
-    de.cau.cs.se.instrumentation.rl.recordLang.Package _package = left.getPackage();
-    boolean _notEquals = (!Objects.equal(_package, null));
-    if (_notEquals) {
-      de.cau.cs.se.instrumentation.rl.recordLang.Package _package_1 = right.getPackage();
-      boolean _notEquals_1 = (!Objects.equal(_package_1, null));
-      if (_notEquals_1) {
-        de.cau.cs.se.instrumentation.rl.recordLang.Package _package_2 = left.getPackage();
-        de.cau.cs.se.instrumentation.rl.recordLang.Package _package_3 = right.getPackage();
-        boolean _equals = _package_2.equals(_package_3);
-        if (_equals) {
-          return this.typeIdentical(left, right);
-        } else {
-          return false;
-        }
-      } else {
-        return false;
-      }
-    } else {
-      return this.typeIdentical(left, right);
-    }
-  }
-  
-  /**
-   * Compare types of a property for equality.
-   */
-  public boolean typeIdentical(final Classifier left, final Classifier right) {
-    Class<? extends Classifier> _class = left.getClass();
-    Class<? extends Classifier> _class_1 = right.getClass();
-    boolean _equals = _class.equals(_class_1);
-    if (_equals) {
-      EList<ArraySize> _sizes = left.getSizes();
-      int _size = _sizes.size();
-      EList<ArraySize> _sizes_1 = right.getSizes();
-      int _size_1 = _sizes_1.size();
-      boolean _equals_1 = (_size == _size_1);
-      if (_equals_1) {
-        int i = 0;
-        while ((i < left.getSizes().size())) {
-          EList<ArraySize> _sizes_2 = left.getSizes();
-          ArraySize _get = _sizes_2.get(i);
-          int _size_2 = _get.getSize();
-          EList<ArraySize> _sizes_3 = right.getSizes();
-          ArraySize _get_1 = _sizes_3.get(i);
-          int _size_3 = _get_1.getSize();
-          boolean _notEquals = (_size_2 != _size_3);
-          if (_notEquals) {
-            return false;
-          }
-        }
-        return true;
-      } else {
-        return false;
-      }
-    } else {
-      return false;
-    }
-  }
-  
-  public Pair<Property, Property> findDuplicate(final Property property, final Collection<Property> properties) {
+  private Pair<Property, Property> findDuplicate(final Property property, final Collection<Property> properties) {
     final Function1<Property, Boolean> _function = (Property p) -> {
       boolean _and = false;
       String _name = property.getName();
@@ -853,7 +754,7 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
     return new Pair<Property, Property>(property, second);
   }
   
-  public Classifier getType(final Literal literal) {
+  private Classifier getType(final Literal literal) {
     if (literal instanceof ArrayLiteral) {
       return _getType((ArrayLiteral)literal);
     } else if (literal instanceof BooleanLiteral) {

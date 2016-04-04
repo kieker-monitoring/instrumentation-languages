@@ -40,6 +40,7 @@ import org.eclipse.jdt.core.IType
 import org.eclipse.jdt.core.JavaCore
 import org.eclipse.core.resources.IMarker
 import de.cau.cs.se.instrumentation.rl.typing.BaseTypes
+import de.cau.cs.se.instrumentation.rl.recordLang.ComplexType
 
 /**
  * broadly based on org.spp.cocome.behavior.pcm.handler.PCMModelResource
@@ -173,7 +174,7 @@ public class JarModelResource extends ResourceImpl {
 					models.put(type.packageFragment.elementName, type.createModel)
 				]
 				
-				val typeMap = new HashMap<IType,Type>()
+				val typeMap = new HashMap<IType,ComplexType>()
 				/** create a type for each type. */
 				types.forEach[type | 
 					val modelType = type.createType
@@ -201,7 +202,7 @@ public class JarModelResource extends ResourceImpl {
 	/**
 	 * Link types.
 	 */
-	private def void linkType(IType type, Map<IType, Type> typeMap) {
+	private def void linkType(IType type, Map<IType, ComplexType> typeMap) {
 		val modelType = typeMap.get(type)
 		switch(modelType) {
 			TemplateType: {
@@ -234,14 +235,14 @@ public class JarModelResource extends ResourceImpl {
 		return model
 	}
 	
-	private def Type createType(IType type) {
+	private def ComplexType createType(IType type) {
 		if (type.isInterface)
 			type.createTemplateType
 		else
 			type.createRecordType
 	}
 	
-	private def Type createRecordType(IType type) {
+	private def ComplexType createRecordType(IType type) {
 		val result = rlFactory.createRecordType
 		
 		result.name = type.elementName
@@ -250,7 +251,7 @@ public class JarModelResource extends ResourceImpl {
 		return result
 	}
 	
-	private def Type createTemplateType(IType type) {
+	private def ComplexType createTemplateType(IType type) {
 		val result = rlFactory.createTemplateType
 		
 		result.name = type.elementName
@@ -259,7 +260,7 @@ public class JarModelResource extends ResourceImpl {
 		return result
 	}
 	
-	def void createAttributes(Type result, IType type) {
+	def void createAttributes(ComplexType result, IType type) {
 		type.fields.forEach[field |	
 			if (Flags.isPublic(field.flags) && Flags.isStatic(field.flags) && Flags.isFinal(field.flags)) {
 				if (!field.elementName.startsWith("TYPE_SIZE") && 
@@ -338,15 +339,15 @@ public class JarModelResource extends ResourceImpl {
 	private def Classifier createType(String typeId) {
 		val classifier = rlFactory.createClassifier
 		switch(typeId) {
-			case "B": classifier.^class = BaseTypes.EBYTE.getEType
-			case "C": classifier.^class = BaseTypes.ECHAR.getEType
-			case "D": classifier.^class = BaseTypes.EDOUBLE.getEType
-			case "F": classifier.^class = BaseTypes.EFLOAT.getEType
-			case "I": classifier.^class = BaseTypes.EINT.getEType
-			case "J": classifier.^class = BaseTypes.ELONG.getEType
-			case "S": classifier.^class = BaseTypes.ESHORT.getEType
-			case "Z": classifier.^class = BaseTypes.EBOOLEAN.getEType
-			case "Ljava.lang.String;": classifier.^class = BaseTypes.ESTRING.getEType
+			case "B": classifier.type = BaseTypes.BYTE.getType
+			case "C": classifier.type = BaseTypes.CHAR.getType
+			case "D": classifier.type = BaseTypes.DOUBLE.getType
+			case "F": classifier.type = BaseTypes.FLOAT.getType
+			case "I": classifier.type = BaseTypes.INT.getType
+			case "J": classifier.type = BaseTypes.LONG.getType
+			case "S": classifier.type = BaseTypes.SHORT.getType
+			case "Z": classifier.type = BaseTypes.BOOLEAN.getType
+			case "Ljava.lang.String;": classifier.type = BaseTypes.STRING.getType
 		}
 		// TODO support other complex types via the complex type mechanism
 		

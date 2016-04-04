@@ -2,6 +2,7 @@ package de.cau.cs.se.instrumentation.rl.generator.c.main;
 
 import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator;
 import de.cau.cs.se.instrumentation.rl.generator.c.CommonCFunctionsExtension;
+import de.cau.cs.se.instrumentation.rl.recordLang.BaseType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.Model;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
@@ -11,7 +12,6 @@ import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation;
 import java.io.File;
 import java.util.Calendar;
 import java.util.List;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -273,8 +273,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   
   private String serializerSuffix(final Classifier classifier) {
     String _switchResult = null;
-    EClassifier _class_ = classifier.getClass_();
-    String _name = _class_.getName();
+    BaseType _type = classifier.getType();
+    String _name = _type.getName();
     switch (_name) {
       case "string":
         _switchResult = "string";
@@ -304,8 +304,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         _switchResult = "boolean";
         break;
       default:
-        EClassifier _class__1 = classifier.getClass_();
-        _switchResult = _class__1.getName();
+        BaseType _type_1 = classifier.getType();
+        _switchResult = _type_1.getName();
         break;
     }
     return _switchResult;

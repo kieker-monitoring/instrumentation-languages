@@ -11,11 +11,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.ForeignKey#getRecordType <em>Record Type</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.ForeignKey#getPropertyRef <em>Property Ref</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getForeignKey()
  * @model

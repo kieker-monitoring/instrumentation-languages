@@ -3,13 +3,10 @@
  */
 package de.cau.cs.se.instrumentation.rl.scoping;
 
-import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
+import de.cau.cs.se.instrumentation.rl.recordLang.ComplexType;
 import de.cau.cs.se.instrumentation.rl.recordLang.ForeignKey;
 import de.cau.cs.se.instrumentation.rl.recordLang.Property;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
-import de.cau.cs.se.instrumentation.rl.recordLang.ReferenceProperty;
-import de.cau.cs.se.instrumentation.rl.recordLang.Type;
-import de.cau.cs.se.instrumentation.rl.scoping.EPackageScope;
 import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation;
 import java.util.Collection;
 import java.util.List;
@@ -18,11 +15,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
@@ -37,22 +31,6 @@ import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 @SuppressWarnings("all")
 public class RecordLangScopeProvider extends AbstractDeclarativeScopeProvider {
   /**
-   * Find scope for the package property in the Package rule.
-   * 
-   * @param context
-   *            The Package-object of the resulting model.
-   * @param reference
-   *            The EReference-reference object of the AST.
-   * @return The scope for the package attribute.
-   */
-  public IScope scope_Package_package(final de.cau.cs.se.instrumentation.rl.recordLang.Package context, final EReference reference) {
-    Resource _eResource = context.eResource();
-    ResourceSet _resourceSet = _eResource.getResourceSet();
-    final IScope result = new EPackageScope(_resourceSet);
-    return result;
-  }
-  
-  /**
    * Define scope for foreign key reference.
    */
   public IScope scope_ForeignKey_propertyRef(final ForeignKey key, final EReference reference) {
@@ -66,50 +44,8 @@ public class RecordLangScopeProvider extends AbstractDeclarativeScopeProvider {
    */
   public IScope scope_Property_referTo(final Property property, final EReference reference) {
     EObject _eContainer = property.eContainer();
-    List<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(((Type) _eContainer));
+    List<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(((ComplexType) _eContainer));
     return Scopes.scopeFor(_collectAllProperties);
-  }
-  
-  /**
-   * @param classifier
-   * @param reference
-   * @return
-   */
-  public IScope scope_Classifier_class(final Classifier context, final EReference reference) {
-    de.cau.cs.se.instrumentation.rl.recordLang.Package _package = context.getPackage();
-    EPackage _package_1 = _package.getPackage();
-    List<EClassifier> _allContentsOfType = EcoreUtil2.<EClassifier>getAllContentsOfType(_package_1, EClassifier.class);
-    return Scopes.scopeFor(_allContentsOfType);
-  }
-  
-  public IScope scope_ReferenceProperty_ref(final ReferenceProperty property, final EReference reference) {
-    EObject _eContainer = property.eContainer();
-    boolean _matched = false;
-    if (!_matched) {
-      if (_eContainer instanceof Property) {
-        _matched=true;
-        EObject _eContainer_1 = property.eContainer();
-        Classifier _type = ((Property) _eContainer_1).getType();
-        EClassifier _class_ = _type.getClass_();
-        Collection<EStructuralFeature> _allExternalProperties = this.getAllExternalProperties(_class_, EStructuralFeature.class);
-        return Scopes.scopeFor(_allExternalProperties);
-      }
-    }
-    if (!_matched) {
-      if (_eContainer instanceof ReferenceProperty) {
-        _matched=true;
-        EObject _eContainer_1 = property.eContainer();
-        final EStructuralFeature parent = ((ReferenceProperty) _eContainer_1).getRef();
-        if ((parent instanceof EReference)) {
-          EClass _eReferenceType = ((EReference) parent).getEReferenceType();
-          Collection<EStructuralFeature> _allExternalProperties = this.getAllExternalProperties(_eReferenceType, EStructuralFeature.class);
-          return Scopes.scopeFor(_allExternalProperties);
-        } else {
-          return null;
-        }
-      }
-    }
-    return null;
   }
   
   /**

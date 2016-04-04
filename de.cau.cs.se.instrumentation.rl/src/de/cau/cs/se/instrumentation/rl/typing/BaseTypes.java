@@ -15,8 +15,8 @@
  ***************************************************************************/
 package de.cau.cs.se.instrumentation.rl.typing;
 
-import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EcoreFactory;
+import de.cau.cs.se.instrumentation.rl.recordLang.BaseType;
+import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangFactory;
 
 /**
  * The base types of the language for app development.
@@ -25,16 +25,16 @@ import org.eclipse.emf.ecore.EcoreFactory;
  *
  */
 public enum BaseTypes {
-	ELONG("long"), EINT("int"), ESHORT("short"), EBYTE("byte"), EBOOLEAN("boolean"), EFLOAT("float"), EDOUBLE("double"), ECHAR("char"), ESTRING("string");
+	LONG, INT, SHORT, BYTE, BOOLEAN, FLOAT, DOUBLE, CHAR, STRING;
 
-	private EDataType etype;
+	private BaseType type;
 
-	BaseTypes(final String name) {
-		this.etype = EcoreFactory.eINSTANCE.createEDataType();
-		this.etype.setName(name);
+	BaseTypes() {
+		this.type = RecordLangFactory.eINSTANCE.createBaseType();
+		this.type.setName(this.name().toLowerCase());
 	}
 
-	public EDataType getEType() {
-		return this.etype;
+	public BaseType getType() {
+		return this.type;
 	}
 }

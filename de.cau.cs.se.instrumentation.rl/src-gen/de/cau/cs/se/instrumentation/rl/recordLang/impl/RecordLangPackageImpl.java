@@ -4,9 +4,11 @@ package de.cau.cs.se.instrumentation.rl.recordLang.impl;
 
 import de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize;
+import de.cau.cs.se.instrumentation.rl.recordLang.BaseType;
 import de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.BuiltInValueLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
+import de.cau.cs.se.instrumentation.rl.recordLang.ComplexType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Constant;
 import de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.FloatLiteral;
@@ -20,7 +22,6 @@ import de.cau.cs.se.instrumentation.rl.recordLang.PropertyModifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangFactory;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
-import de.cau.cs.se.instrumentation.rl.recordLang.ReferenceProperty;
 import de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral;
 import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Type;
@@ -61,14 +62,21 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass packageEClass = null;
+  private EClass typeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass typeEClass = null;
+  private EClass baseTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass complexTypeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -118,13 +126,6 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
    * @generated
    */
   private EClass arraySizeEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass referencePropertyEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -280,7 +281,7 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModel_Packages()
+  public EReference getModel_Imports()
   {
     return (EReference)modelEClass.getEStructuralFeatures().get(1);
   }
@@ -290,19 +291,9 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModel_Imports()
-  {
-    return (EReference)modelEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getModel_Types()
   {
-    return (EReference)modelEClass.getEStructuralFeatures().get(3);
+    return (EReference)modelEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -330,36 +321,6 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getPackage()
-  {
-    return packageEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getPackage_Name()
-  {
-    return (EAttribute)packageEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getPackage_Package()
-  {
-    return (EReference)packageEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getType()
   {
     return typeEClass;
@@ -370,7 +331,7 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getType_Author()
+  public EAttribute getType_Name()
   {
     return (EAttribute)typeEClass.getEStructuralFeatures().get(0);
   }
@@ -380,9 +341,9 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getType_Since()
+  public EClass getBaseType()
   {
-    return (EAttribute)typeEClass.getEStructuralFeatures().get(1);
+    return baseTypeEClass;
   }
 
   /**
@@ -390,9 +351,9 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getType_Name()
+  public EClass getComplexType()
   {
-    return (EAttribute)typeEClass.getEStructuralFeatures().get(2);
+    return complexTypeEClass;
   }
 
   /**
@@ -400,9 +361,9 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getType_Parents()
+  public EAttribute getComplexType_Author()
   {
-    return (EReference)typeEClass.getEStructuralFeatures().get(3);
+    return (EAttribute)complexTypeEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -410,9 +371,9 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getType_Properties()
+  public EAttribute getComplexType_Since()
   {
-    return (EReference)typeEClass.getEStructuralFeatures().get(4);
+    return (EAttribute)complexTypeEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -420,9 +381,29 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getType_Constants()
+  public EReference getComplexType_Parents()
   {
-    return (EReference)typeEClass.getEStructuralFeatures().get(5);
+    return (EReference)complexTypeEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getComplexType_Properties()
+  {
+    return (EReference)complexTypeEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getComplexType_Constants()
+  {
+    return (EReference)complexTypeEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -570,19 +551,9 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getProperty_Properties()
-  {
-    return (EReference)propertyEClass.getEStructuralFeatures().get(5);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getProperty_Value()
   {
-    return (EReference)propertyEClass.getEStructuralFeatures().get(6);
+    return (EReference)propertyEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -630,7 +601,7 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getClassifier_Package()
+  public EReference getClassifier_Type()
   {
     return (EReference)classifierEClass.getEStructuralFeatures().get(0);
   }
@@ -640,19 +611,9 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getClassifier_Class()
-  {
-    return (EReference)classifierEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getClassifier_Sizes()
   {
-    return (EReference)classifierEClass.getEStructuralFeatures().get(2);
+    return (EReference)classifierEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -673,36 +634,6 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
   public EAttribute getArraySize_Size()
   {
     return (EAttribute)arraySizeEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getReferenceProperty()
-  {
-    return referencePropertyEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getReferenceProperty_Ref()
-  {
-    return (EReference)referencePropertyEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getReferenceProperty_Properties()
-  {
-    return (EReference)referencePropertyEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -897,24 +828,23 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
     // Create classes and their features
     modelEClass = createEClass(MODEL);
     createEAttribute(modelEClass, MODEL__NAME);
-    createEReference(modelEClass, MODEL__PACKAGES);
     createEReference(modelEClass, MODEL__IMPORTS);
     createEReference(modelEClass, MODEL__TYPES);
 
     importEClass = createEClass(IMPORT);
     createEAttribute(importEClass, IMPORT__IMPORTED_NAMESPACE);
 
-    packageEClass = createEClass(PACKAGE);
-    createEAttribute(packageEClass, PACKAGE__NAME);
-    createEReference(packageEClass, PACKAGE__PACKAGE);
-
     typeEClass = createEClass(TYPE);
-    createEAttribute(typeEClass, TYPE__AUTHOR);
-    createEAttribute(typeEClass, TYPE__SINCE);
     createEAttribute(typeEClass, TYPE__NAME);
-    createEReference(typeEClass, TYPE__PARENTS);
-    createEReference(typeEClass, TYPE__PROPERTIES);
-    createEReference(typeEClass, TYPE__CONSTANTS);
+
+    baseTypeEClass = createEClass(BASE_TYPE);
+
+    complexTypeEClass = createEClass(COMPLEX_TYPE);
+    createEAttribute(complexTypeEClass, COMPLEX_TYPE__AUTHOR);
+    createEAttribute(complexTypeEClass, COMPLEX_TYPE__SINCE);
+    createEReference(complexTypeEClass, COMPLEX_TYPE__PARENTS);
+    createEReference(complexTypeEClass, COMPLEX_TYPE__PROPERTIES);
+    createEReference(complexTypeEClass, COMPLEX_TYPE__CONSTANTS);
 
     templateTypeEClass = createEClass(TEMPLATE_TYPE);
 
@@ -933,7 +863,6 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
     createEReference(propertyEClass, PROPERTY__TYPE);
     createEReference(propertyEClass, PROPERTY__REFER_TO);
     createEAttribute(propertyEClass, PROPERTY__NAME);
-    createEReference(propertyEClass, PROPERTY__PROPERTIES);
     createEReference(propertyEClass, PROPERTY__VALUE);
 
     foreignKeyEClass = createEClass(FOREIGN_KEY);
@@ -941,16 +870,11 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
     createEReference(foreignKeyEClass, FOREIGN_KEY__PROPERTY_REF);
 
     classifierEClass = createEClass(CLASSIFIER);
-    createEReference(classifierEClass, CLASSIFIER__PACKAGE);
-    createEReference(classifierEClass, CLASSIFIER__CLASS);
+    createEReference(classifierEClass, CLASSIFIER__TYPE);
     createEReference(classifierEClass, CLASSIFIER__SIZES);
 
     arraySizeEClass = createEClass(ARRAY_SIZE);
     createEAttribute(arraySizeEClass, ARRAY_SIZE__SIZE);
-
-    referencePropertyEClass = createEClass(REFERENCE_PROPERTY);
-    createEReference(referencePropertyEClass, REFERENCE_PROPERTY__REF);
-    createEReference(referencePropertyEClass, REFERENCE_PROPERTY__PROPERTIES);
 
     literalEClass = createEClass(LITERAL);
 
@@ -1011,8 +935,10 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    templateTypeEClass.getESuperTypes().add(this.getType());
-    recordTypeEClass.getESuperTypes().add(this.getType());
+    baseTypeEClass.getESuperTypes().add(this.getType());
+    complexTypeEClass.getESuperTypes().add(this.getType());
+    templateTypeEClass.getESuperTypes().add(this.getComplexType());
+    recordTypeEClass.getESuperTypes().add(this.getComplexType());
     arrayLiteralEClass.getESuperTypes().add(this.getLiteral());
     stringLiteralEClass.getESuperTypes().add(this.getLiteral());
     intLiteralEClass.getESuperTypes().add(this.getLiteral());
@@ -1024,24 +950,23 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getModel_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getModel_Packages(), this.getPackage(), null, "packages", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Imports(), this.getImport(), null, "imports", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getModel_Types(), this.getType(), null, "types", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModel_Types(), this.getComplexType(), null, "types", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getImport_ImportedNamespace(), theEcorePackage.getEString(), "importedNamespace", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(packageEClass, de.cau.cs.se.instrumentation.rl.recordLang.Package.class, "Package", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getPackage_Name(), theEcorePackage.getEString(), "name", null, 0, 1, de.cau.cs.se.instrumentation.rl.recordLang.Package.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getPackage_Package(), theEcorePackage.getEPackage(), null, "package", null, 0, 1, de.cau.cs.se.instrumentation.rl.recordLang.Package.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(typeEClass, Type.class, "Type", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getType_Author(), theEcorePackage.getEString(), "author", null, 0, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getType_Since(), theEcorePackage.getEString(), "since", null, 0, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getType_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getType_Parents(), this.getTemplateType(), null, "parents", null, 0, -1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getType_Properties(), this.getProperty(), null, "properties", null, 0, -1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getType_Constants(), this.getConstant(), null, "constants", null, 0, -1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(baseTypeEClass, BaseType.class, "BaseType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(complexTypeEClass, ComplexType.class, "ComplexType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getComplexType_Author(), theEcorePackage.getEString(), "author", null, 0, 1, ComplexType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getComplexType_Since(), theEcorePackage.getEString(), "since", null, 0, 1, ComplexType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getComplexType_Parents(), this.getTemplateType(), null, "parents", null, 0, -1, ComplexType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getComplexType_Properties(), this.getProperty(), null, "properties", null, 0, -1, ComplexType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getComplexType_Constants(), this.getConstant(), null, "constants", null, 0, -1, ComplexType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(templateTypeEClass, TemplateType.class, "TemplateType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1060,7 +985,6 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
     initEReference(getProperty_Type(), this.getClassifier(), null, "type", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProperty_ReferTo(), this.getProperty(), null, "referTo", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getProperty_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getProperty_Properties(), this.getReferenceProperty(), null, "properties", null, 0, -1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getProperty_Value(), this.getLiteral(), null, "value", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(foreignKeyEClass, ForeignKey.class, "ForeignKey", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1068,16 +992,11 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
     initEReference(getForeignKey_PropertyRef(), this.getProperty(), null, "propertyRef", null, 0, 1, ForeignKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(classifierEClass, Classifier.class, "Classifier", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getClassifier_Package(), this.getPackage(), null, "package", null, 0, 1, Classifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getClassifier_Class(), theEcorePackage.getEClassifier(), null, "class", null, 0, 1, Classifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getClassifier_Type(), this.getBaseType(), null, "type", null, 0, 1, Classifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getClassifier_Sizes(), this.getArraySize(), null, "sizes", null, 0, -1, Classifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(arraySizeEClass, ArraySize.class, "ArraySize", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getArraySize_Size(), theEcorePackage.getEInt(), "size", null, 0, 1, ArraySize.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(referencePropertyEClass, ReferenceProperty.class, "ReferenceProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getReferenceProperty_Ref(), theEcorePackage.getEStructuralFeature(), null, "ref", null, 0, 1, ReferenceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getReferenceProperty_Properties(), this.getReferenceProperty(), null, "properties", null, 0, -1, ReferenceProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(literalEClass, Literal.class, "Literal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

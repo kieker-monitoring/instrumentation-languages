@@ -4,6 +4,7 @@ import java.util.regex.Pattern
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
 import de.cau.cs.se.instrumentation.rl.recordLang.Model
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
+import de.cau.cs.se.instrumentation.rl.generator.InternalErrorException
 
 /**
  * @author Reiner Jung
@@ -33,7 +34,7 @@ class CommonCFunctionsExtension {
 	 * @returns a C type name
 	 */
 	def static createTypeName(Classifier classifier) {
-		switch (classifier.class_.name) {
+		switch (classifier.type.name) {
 			case 'key' : 'const char*'
 			case 'string' : 'const char*'
 			case 'byte' : 'char'
@@ -43,7 +44,7 @@ class CommonCFunctionsExtension {
 			case 'float' : 'float'
 			case 'double' : 'double'
 			case 'boolean' : 'char'
-			default : classifier.class_.name
+			default : throw new InternalErrorException("Type " + classifier.type.name + " is not supported.")
 		}
 		
 	}

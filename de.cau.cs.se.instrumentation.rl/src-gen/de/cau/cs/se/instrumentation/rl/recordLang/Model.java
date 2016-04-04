@@ -13,13 +13,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.Model#getName <em>Name</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.Model#getPackages <em>Packages</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.Model#getImports <em>Imports</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.Model#getTypes <em>Types</em>}</li>
  * </ul>
- * </p>
  *
  * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getModel()
  * @model
@@ -54,22 +53,6 @@ public interface Model extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Packages</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.cs.se.instrumentation.rl.recordLang.Package}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Packages</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Packages</em>' containment reference list.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getModel_Packages()
-   * @model containment="true"
-   * @generated
-   */
-  EList<de.cau.cs.se.instrumentation.rl.recordLang.Package> getPackages();
-
-  /**
    * Returns the value of the '<em><b>Imports</b></em>' containment reference list.
    * The list contents are of type {@link de.cau.cs.se.instrumentation.rl.recordLang.Import}.
    * <!-- begin-user-doc -->
@@ -87,7 +70,7 @@ public interface Model extends EObject
 
   /**
    * Returns the value of the '<em><b>Types</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.cs.se.instrumentation.rl.recordLang.Type}.
+   * The list contents are of type {@link de.cau.cs.se.instrumentation.rl.recordLang.ComplexType}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Types</em>' containment reference list isn't clear,
@@ -99,6 +82,6 @@ public interface Model extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<Type> getTypes();
+  EList<ComplexType> getTypes();
 
 } // Model

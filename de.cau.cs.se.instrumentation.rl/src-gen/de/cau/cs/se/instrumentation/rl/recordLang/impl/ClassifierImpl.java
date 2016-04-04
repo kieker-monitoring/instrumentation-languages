@@ -3,6 +3,7 @@
 package de.cau.cs.se.instrumentation.rl.recordLang.impl;
 
 import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize;
+import de.cau.cs.se.instrumentation.rl.recordLang.BaseType;
 import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
 import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
 
@@ -14,7 +15,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -29,36 +29,25 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ClassifierImpl#getPackage <em>Package</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ClassifierImpl#getClass_ <em>Class</em>}</li>
+ *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ClassifierImpl#getType <em>Type</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ClassifierImpl#getSizes <em>Sizes</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
 public class ClassifierImpl extends MinimalEObjectImpl.Container implements Classifier
 {
   /**
-   * The cached value of the '{@link #getPackage() <em>Package</em>}' reference.
+   * The cached value of the '{@link #getType() <em>Type</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getPackage()
+   * @see #getType()
    * @generated
    * @ordered
    */
-  protected de.cau.cs.se.instrumentation.rl.recordLang.Package package_;
-
-  /**
-   * The cached value of the '{@link #getClass_() <em>Class</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getClass_()
-   * @generated
-   * @ordered
-   */
-  protected EClassifier class_;
+  protected BaseType type;
 
   /**
    * The cached value of the '{@link #getSizes() <em>Sizes</em>}' containment reference list.
@@ -96,19 +85,19 @@ public class ClassifierImpl extends MinimalEObjectImpl.Container implements Clas
    * <!-- end-user-doc -->
    * @generated
    */
-  public de.cau.cs.se.instrumentation.rl.recordLang.Package getPackage()
+  public BaseType getType()
   {
-    if (package_ != null && package_.eIsProxy())
+    if (type != null && type.eIsProxy())
     {
-      InternalEObject oldPackage = (InternalEObject)package_;
-      package_ = (de.cau.cs.se.instrumentation.rl.recordLang.Package)eResolveProxy(oldPackage);
-      if (package_ != oldPackage)
+      InternalEObject oldType = (InternalEObject)type;
+      type = (BaseType)eResolveProxy(oldType);
+      if (type != oldType)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, RecordLangPackage.CLASSIFIER__PACKAGE, oldPackage, package_));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, RecordLangPackage.CLASSIFIER__TYPE, oldType, type));
       }
     }
-    return package_;
+    return type;
   }
 
   /**
@@ -116,9 +105,9 @@ public class ClassifierImpl extends MinimalEObjectImpl.Container implements Clas
    * <!-- end-user-doc -->
    * @generated
    */
-  public de.cau.cs.se.instrumentation.rl.recordLang.Package basicGetPackage()
+  public BaseType basicGetType()
   {
-    return package_;
+    return type;
   }
 
   /**
@@ -126,55 +115,12 @@ public class ClassifierImpl extends MinimalEObjectImpl.Container implements Clas
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setPackage(de.cau.cs.se.instrumentation.rl.recordLang.Package newPackage)
+  public void setType(BaseType newType)
   {
-    de.cau.cs.se.instrumentation.rl.recordLang.Package oldPackage = package_;
-    package_ = newPackage;
+    BaseType oldType = type;
+    type = newType;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RecordLangPackage.CLASSIFIER__PACKAGE, oldPackage, package_));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClassifier getClass_()
-  {
-    if (class_ != null && class_.eIsProxy())
-    {
-      InternalEObject oldClass = (InternalEObject)class_;
-      class_ = (EClassifier)eResolveProxy(oldClass);
-      if (class_ != oldClass)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, RecordLangPackage.CLASSIFIER__CLASS, oldClass, class_));
-      }
-    }
-    return class_;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClassifier basicGetClass()
-  {
-    return class_;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setClass(EClassifier newClass)
-  {
-    EClassifier oldClass = class_;
-    class_ = newClass;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, RecordLangPackage.CLASSIFIER__CLASS, oldClass, class_));
+      eNotify(new ENotificationImpl(this, Notification.SET, RecordLangPackage.CLASSIFIER__TYPE, oldType, type));
   }
 
   /**
@@ -217,12 +163,9 @@ public class ClassifierImpl extends MinimalEObjectImpl.Container implements Clas
   {
     switch (featureID)
     {
-      case RecordLangPackage.CLASSIFIER__PACKAGE:
-        if (resolve) return getPackage();
-        return basicGetPackage();
-      case RecordLangPackage.CLASSIFIER__CLASS:
-        if (resolve) return getClass_();
-        return basicGetClass();
+      case RecordLangPackage.CLASSIFIER__TYPE:
+        if (resolve) return getType();
+        return basicGetType();
       case RecordLangPackage.CLASSIFIER__SIZES:
         return getSizes();
     }
@@ -240,11 +183,8 @@ public class ClassifierImpl extends MinimalEObjectImpl.Container implements Clas
   {
     switch (featureID)
     {
-      case RecordLangPackage.CLASSIFIER__PACKAGE:
-        setPackage((de.cau.cs.se.instrumentation.rl.recordLang.Package)newValue);
-        return;
-      case RecordLangPackage.CLASSIFIER__CLASS:
-        setClass((EClassifier)newValue);
+      case RecordLangPackage.CLASSIFIER__TYPE:
+        setType((BaseType)newValue);
         return;
       case RecordLangPackage.CLASSIFIER__SIZES:
         getSizes().clear();
@@ -264,11 +204,8 @@ public class ClassifierImpl extends MinimalEObjectImpl.Container implements Clas
   {
     switch (featureID)
     {
-      case RecordLangPackage.CLASSIFIER__PACKAGE:
-        setPackage((de.cau.cs.se.instrumentation.rl.recordLang.Package)null);
-        return;
-      case RecordLangPackage.CLASSIFIER__CLASS:
-        setClass((EClassifier)null);
+      case RecordLangPackage.CLASSIFIER__TYPE:
+        setType((BaseType)null);
         return;
       case RecordLangPackage.CLASSIFIER__SIZES:
         getSizes().clear();
@@ -287,10 +224,8 @@ public class ClassifierImpl extends MinimalEObjectImpl.Container implements Clas
   {
     switch (featureID)
     {
-      case RecordLangPackage.CLASSIFIER__PACKAGE:
-        return package_ != null;
-      case RecordLangPackage.CLASSIFIER__CLASS:
-        return class_ != null;
+      case RecordLangPackage.CLASSIFIER__TYPE:
+        return type != null;
       case RecordLangPackage.CLASSIFIER__SIZES:
         return sizes != null && !sizes.isEmpty();
     }

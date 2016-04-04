@@ -2,26 +2,7 @@
  */
 package de.cau.cs.se.instrumentation.rl.recordLang.util;
 
-import de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral;
-import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize;
-import de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral;
-import de.cau.cs.se.instrumentation.rl.recordLang.BuiltInValueLiteral;
-import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
-import de.cau.cs.se.instrumentation.rl.recordLang.Constant;
-import de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral;
-import de.cau.cs.se.instrumentation.rl.recordLang.FloatLiteral;
-import de.cau.cs.se.instrumentation.rl.recordLang.ForeignKey;
-import de.cau.cs.se.instrumentation.rl.recordLang.Import;
-import de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral;
-import de.cau.cs.se.instrumentation.rl.recordLang.Literal;
-import de.cau.cs.se.instrumentation.rl.recordLang.Model;
-import de.cau.cs.se.instrumentation.rl.recordLang.Property;
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
-import de.cau.cs.se.instrumentation.rl.recordLang.ReferenceProperty;
-import de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral;
-import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType;
-import de.cau.cs.se.instrumentation.rl.recordLang.Type;
+import de.cau.cs.se.instrumentation.rl.recordLang.*;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -104,14 +85,19 @@ public class RecordLangAdapterFactory extends AdapterFactoryImpl
         return createImportAdapter();
       }
       @Override
-      public Adapter casePackage(de.cau.cs.se.instrumentation.rl.recordLang.Package object)
-      {
-        return createPackageAdapter();
-      }
-      @Override
       public Adapter caseType(Type object)
       {
         return createTypeAdapter();
+      }
+      @Override
+      public Adapter caseBaseType(BaseType object)
+      {
+        return createBaseTypeAdapter();
+      }
+      @Override
+      public Adapter caseComplexType(ComplexType object)
+      {
+        return createComplexTypeAdapter();
       }
       @Override
       public Adapter caseTemplateType(TemplateType object)
@@ -147,11 +133,6 @@ public class RecordLangAdapterFactory extends AdapterFactoryImpl
       public Adapter caseArraySize(ArraySize object)
       {
         return createArraySizeAdapter();
-      }
-      @Override
-      public Adapter caseReferenceProperty(ReferenceProperty object)
-      {
-        return createReferencePropertyAdapter();
       }
       @Override
       public Adapter caseLiteral(Literal object)
@@ -246,21 +227,6 @@ public class RecordLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.rl.recordLang.Package <em>Package</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Package
-   * @generated
-   */
-  public Adapter createPackageAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.rl.recordLang.Type <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -271,6 +237,36 @@ public class RecordLangAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createTypeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.rl.recordLang.BaseType <em>Base Type</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.BaseType
+   * @generated
+   */
+  public Adapter createBaseTypeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.rl.recordLang.ComplexType <em>Complex Type</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.ComplexType
+   * @generated
+   */
+  public Adapter createComplexTypeAdapter()
   {
     return null;
   }
@@ -376,21 +372,6 @@ public class RecordLangAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createArraySizeAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.rl.recordLang.ReferenceProperty <em>Reference Property</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.ReferenceProperty
-   * @generated
-   */
-  public Adapter createReferencePropertyAdapter()
   {
     return null;
   }

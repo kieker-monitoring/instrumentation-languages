@@ -21,11 +21,11 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ForeignKeyImpl#getRecordType <em>Record Type</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ForeignKeyImpl#getPropertyRef <em>Property Ref</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

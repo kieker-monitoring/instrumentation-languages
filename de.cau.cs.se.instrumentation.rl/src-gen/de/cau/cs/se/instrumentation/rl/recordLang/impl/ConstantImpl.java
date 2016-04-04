@@ -22,12 +22,12 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ConstantImpl#getType <em>Type</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ConstantImpl#getName <em>Name</em>}</li>
  *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ConstantImpl#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

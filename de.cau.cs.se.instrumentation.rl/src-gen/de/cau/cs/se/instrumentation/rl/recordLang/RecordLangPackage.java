@@ -77,22 +77,13 @@ public interface RecordLangPackage extends EPackage
   int MODEL__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Packages</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MODEL__PACKAGES = 1;
-
-  /**
    * The feature id for the '<em><b>Imports</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL__IMPORTS = 2;
+  int MODEL__IMPORTS = 1;
 
   /**
    * The feature id for the '<em><b>Types</b></em>' containment reference list.
@@ -101,7 +92,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODEL__TYPES = 3;
+  int MODEL__TYPES = 2;
 
   /**
    * The number of structural features of the '<em>Model</em>' class.
@@ -110,7 +101,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODEL_FEATURE_COUNT = 4;
+  int MODEL_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ImportImpl <em>Import</em>}' class.
@@ -141,43 +132,6 @@ public interface RecordLangPackage extends EPackage
   int IMPORT_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.PackageImpl <em>Package</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.PackageImpl
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getPackage()
-   * @generated
-   */
-  int PACKAGE = 2;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PACKAGE__NAME = 0;
-
-  /**
-   * The feature id for the '<em><b>Package</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PACKAGE__PACKAGE = 1;
-
-  /**
-   * The number of structural features of the '<em>Package</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PACKAGE_FEATURE_COUNT = 2;
-
-  /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.TypeImpl <em>Type</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -185,25 +139,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getType()
    * @generated
    */
-  int TYPE = 3;
-
-  /**
-   * The feature id for the '<em><b>Author</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TYPE__AUTHOR = 0;
-
-  /**
-   * The feature id for the '<em><b>Since</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TYPE__SINCE = 1;
+  int TYPE = 2;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -212,34 +148,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TYPE__NAME = 2;
-
-  /**
-   * The feature id for the '<em><b>Parents</b></em>' reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TYPE__PARENTS = 3;
-
-  /**
-   * The feature id for the '<em><b>Properties</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TYPE__PROPERTIES = 4;
-
-  /**
-   * The feature id for the '<em><b>Constants</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TYPE__CONSTANTS = 5;
+  int TYPE__NAME = 0;
 
   /**
    * The number of structural features of the '<em>Type</em>' class.
@@ -248,7 +157,108 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TYPE_FEATURE_COUNT = 6;
+  int TYPE_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.BaseTypeImpl <em>Base Type</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.BaseTypeImpl
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getBaseType()
+   * @generated
+   */
+  int BASE_TYPE = 3;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BASE_TYPE__NAME = TYPE__NAME;
+
+  /**
+   * The number of structural features of the '<em>Base Type</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BASE_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ComplexTypeImpl <em>Complex Type</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.ComplexTypeImpl
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getComplexType()
+   * @generated
+   */
+  int COMPLEX_TYPE = 4;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPLEX_TYPE__NAME = TYPE__NAME;
+
+  /**
+   * The feature id for the '<em><b>Author</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPLEX_TYPE__AUTHOR = TYPE_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Since</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPLEX_TYPE__SINCE = TYPE_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Parents</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPLEX_TYPE__PARENTS = TYPE_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPLEX_TYPE__PROPERTIES = TYPE_FEATURE_COUNT + 3;
+
+  /**
+   * The feature id for the '<em><b>Constants</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPLEX_TYPE__CONSTANTS = TYPE_FEATURE_COUNT + 4;
+
+  /**
+   * The number of structural features of the '<em>Complex Type</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMPLEX_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 5;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.TemplateTypeImpl <em>Template Type</em>}' class.
@@ -258,25 +268,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getTemplateType()
    * @generated
    */
-  int TEMPLATE_TYPE = 4;
-
-  /**
-   * The feature id for the '<em><b>Author</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TEMPLATE_TYPE__AUTHOR = TYPE__AUTHOR;
-
-  /**
-   * The feature id for the '<em><b>Since</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TEMPLATE_TYPE__SINCE = TYPE__SINCE;
+  int TEMPLATE_TYPE = 5;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -285,7 +277,25 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEMPLATE_TYPE__NAME = TYPE__NAME;
+  int TEMPLATE_TYPE__NAME = COMPLEX_TYPE__NAME;
+
+  /**
+   * The feature id for the '<em><b>Author</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TEMPLATE_TYPE__AUTHOR = COMPLEX_TYPE__AUTHOR;
+
+  /**
+   * The feature id for the '<em><b>Since</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TEMPLATE_TYPE__SINCE = COMPLEX_TYPE__SINCE;
 
   /**
    * The feature id for the '<em><b>Parents</b></em>' reference list.
@@ -294,7 +304,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEMPLATE_TYPE__PARENTS = TYPE__PARENTS;
+  int TEMPLATE_TYPE__PARENTS = COMPLEX_TYPE__PARENTS;
 
   /**
    * The feature id for the '<em><b>Properties</b></em>' containment reference list.
@@ -303,7 +313,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEMPLATE_TYPE__PROPERTIES = TYPE__PROPERTIES;
+  int TEMPLATE_TYPE__PROPERTIES = COMPLEX_TYPE__PROPERTIES;
 
   /**
    * The feature id for the '<em><b>Constants</b></em>' containment reference list.
@@ -312,7 +322,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEMPLATE_TYPE__CONSTANTS = TYPE__CONSTANTS;
+  int TEMPLATE_TYPE__CONSTANTS = COMPLEX_TYPE__CONSTANTS;
 
   /**
    * The number of structural features of the '<em>Template Type</em>' class.
@@ -321,7 +331,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TEMPLATE_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 0;
+  int TEMPLATE_TYPE_FEATURE_COUNT = COMPLEX_TYPE_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordTypeImpl <em>Record Type</em>}' class.
@@ -331,25 +341,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getRecordType()
    * @generated
    */
-  int RECORD_TYPE = 5;
-
-  /**
-   * The feature id for the '<em><b>Author</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RECORD_TYPE__AUTHOR = TYPE__AUTHOR;
-
-  /**
-   * The feature id for the '<em><b>Since</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RECORD_TYPE__SINCE = TYPE__SINCE;
+  int RECORD_TYPE = 6;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -358,7 +350,25 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RECORD_TYPE__NAME = TYPE__NAME;
+  int RECORD_TYPE__NAME = COMPLEX_TYPE__NAME;
+
+  /**
+   * The feature id for the '<em><b>Author</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RECORD_TYPE__AUTHOR = COMPLEX_TYPE__AUTHOR;
+
+  /**
+   * The feature id for the '<em><b>Since</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RECORD_TYPE__SINCE = COMPLEX_TYPE__SINCE;
 
   /**
    * The feature id for the '<em><b>Parents</b></em>' reference list.
@@ -367,7 +377,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RECORD_TYPE__PARENTS = TYPE__PARENTS;
+  int RECORD_TYPE__PARENTS = COMPLEX_TYPE__PARENTS;
 
   /**
    * The feature id for the '<em><b>Properties</b></em>' containment reference list.
@@ -376,7 +386,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RECORD_TYPE__PROPERTIES = TYPE__PROPERTIES;
+  int RECORD_TYPE__PROPERTIES = COMPLEX_TYPE__PROPERTIES;
 
   /**
    * The feature id for the '<em><b>Constants</b></em>' containment reference list.
@@ -385,7 +395,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RECORD_TYPE__CONSTANTS = TYPE__CONSTANTS;
+  int RECORD_TYPE__CONSTANTS = COMPLEX_TYPE__CONSTANTS;
 
   /**
    * The feature id for the '<em><b>Abstract</b></em>' attribute.
@@ -394,7 +404,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RECORD_TYPE__ABSTRACT = TYPE_FEATURE_COUNT + 0;
+  int RECORD_TYPE__ABSTRACT = COMPLEX_TYPE_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Parent</b></em>' reference.
@@ -403,7 +413,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RECORD_TYPE__PARENT = TYPE_FEATURE_COUNT + 1;
+  int RECORD_TYPE__PARENT = COMPLEX_TYPE_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Record Type</em>' class.
@@ -412,7 +422,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int RECORD_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 2;
+  int RECORD_TYPE_FEATURE_COUNT = COMPLEX_TYPE_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ConstantImpl <em>Constant</em>}' class.
@@ -422,7 +432,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getConstant()
    * @generated
    */
-  int CONSTANT = 6;
+  int CONSTANT = 7;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -468,7 +478,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getProperty()
    * @generated
    */
-  int PROPERTY = 7;
+  int PROPERTY = 8;
 
   /**
    * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
@@ -516,22 +526,13 @@ public interface RecordLangPackage extends EPackage
   int PROPERTY__NAME = 4;
 
   /**
-   * The feature id for the '<em><b>Properties</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PROPERTY__PROPERTIES = 5;
-
-  /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROPERTY__VALUE = 6;
+  int PROPERTY__VALUE = 5;
 
   /**
    * The number of structural features of the '<em>Property</em>' class.
@@ -540,7 +541,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int PROPERTY_FEATURE_COUNT = 7;
+  int PROPERTY_FEATURE_COUNT = 6;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ForeignKeyImpl <em>Foreign Key</em>}' class.
@@ -550,7 +551,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getForeignKey()
    * @generated
    */
-  int FOREIGN_KEY = 8;
+  int FOREIGN_KEY = 9;
 
   /**
    * The feature id for the '<em><b>Record Type</b></em>' reference.
@@ -587,25 +588,16 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getClassifier()
    * @generated
    */
-  int CLASSIFIER = 9;
+  int CLASSIFIER = 10;
 
   /**
-   * The feature id for the '<em><b>Package</b></em>' reference.
+   * The feature id for the '<em><b>Type</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CLASSIFIER__PACKAGE = 0;
-
-  /**
-   * The feature id for the '<em><b>Class</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CLASSIFIER__CLASS = 1;
+  int CLASSIFIER__TYPE = 0;
 
   /**
    * The feature id for the '<em><b>Sizes</b></em>' containment reference list.
@@ -614,7 +606,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLASSIFIER__SIZES = 2;
+  int CLASSIFIER__SIZES = 1;
 
   /**
    * The number of structural features of the '<em>Classifier</em>' class.
@@ -623,7 +615,7 @@ public interface RecordLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLASSIFIER_FEATURE_COUNT = 3;
+  int CLASSIFIER_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ArraySizeImpl <em>Array Size</em>}' class.
@@ -633,7 +625,7 @@ public interface RecordLangPackage extends EPackage
    * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getArraySize()
    * @generated
    */
-  int ARRAY_SIZE = 10;
+  int ARRAY_SIZE = 11;
 
   /**
    * The feature id for the '<em><b>Size</b></em>' attribute.
@@ -652,43 +644,6 @@ public interface RecordLangPackage extends EPackage
    * @ordered
    */
   int ARRAY_SIZE_FEATURE_COUNT = 1;
-
-  /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ReferencePropertyImpl <em>Reference Property</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.ReferencePropertyImpl
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getReferenceProperty()
-   * @generated
-   */
-  int REFERENCE_PROPERTY = 11;
-
-  /**
-   * The feature id for the '<em><b>Ref</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int REFERENCE_PROPERTY__REF = 0;
-
-  /**
-   * The feature id for the '<em><b>Properties</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int REFERENCE_PROPERTY__PROPERTIES = 1;
-
-  /**
-   * The number of structural features of the '<em>Reference Property</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int REFERENCE_PROPERTY_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.LiteralImpl <em>Literal</em>}' class.
@@ -938,17 +893,6 @@ public interface RecordLangPackage extends EPackage
   EAttribute getModel_Name();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.rl.recordLang.Model#getPackages <em>Packages</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Packages</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Model#getPackages()
-   * @see #getModel()
-   * @generated
-   */
-  EReference getModel_Packages();
-
-  /**
    * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.rl.recordLang.Model#getImports <em>Imports</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -992,38 +936,6 @@ public interface RecordLangPackage extends EPackage
   EAttribute getImport_ImportedNamespace();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.Package <em>Package</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Package</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Package
-   * @generated
-   */
-  EClass getPackage();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.rl.recordLang.Package#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Package#getName()
-   * @see #getPackage()
-   * @generated
-   */
-  EAttribute getPackage_Name();
-
-  /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.rl.recordLang.Package#getPackage <em>Package</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Package</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Package#getPackage()
-   * @see #getPackage()
-   * @generated
-   */
-  EReference getPackage_Package();
-
-  /**
    * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.Type <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1032,28 +944,6 @@ public interface RecordLangPackage extends EPackage
    * @generated
    */
   EClass getType();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.rl.recordLang.Type#getAuthor <em>Author</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Author</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Type#getAuthor()
-   * @see #getType()
-   * @generated
-   */
-  EAttribute getType_Author();
-
-  /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.rl.recordLang.Type#getSince <em>Since</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Since</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Type#getSince()
-   * @see #getType()
-   * @generated
-   */
-  EAttribute getType_Since();
 
   /**
    * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.rl.recordLang.Type#getName <em>Name</em>}'.
@@ -1067,37 +957,79 @@ public interface RecordLangPackage extends EPackage
   EAttribute getType_Name();
 
   /**
-   * Returns the meta object for the reference list '{@link de.cau.cs.se.instrumentation.rl.recordLang.Type#getParents <em>Parents</em>}'.
+   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.BaseType <em>Base Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Base Type</em>'.
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.BaseType
+   * @generated
+   */
+  EClass getBaseType();
+
+  /**
+   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.ComplexType <em>Complex Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Complex Type</em>'.
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.ComplexType
+   * @generated
+   */
+  EClass getComplexType();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.rl.recordLang.ComplexType#getAuthor <em>Author</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Author</em>'.
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.ComplexType#getAuthor()
+   * @see #getComplexType()
+   * @generated
+   */
+  EAttribute getComplexType_Author();
+
+  /**
+   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.rl.recordLang.ComplexType#getSince <em>Since</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Since</em>'.
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.ComplexType#getSince()
+   * @see #getComplexType()
+   * @generated
+   */
+  EAttribute getComplexType_Since();
+
+  /**
+   * Returns the meta object for the reference list '{@link de.cau.cs.se.instrumentation.rl.recordLang.ComplexType#getParents <em>Parents</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference list '<em>Parents</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Type#getParents()
-   * @see #getType()
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.ComplexType#getParents()
+   * @see #getComplexType()
    * @generated
    */
-  EReference getType_Parents();
+  EReference getComplexType_Parents();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.rl.recordLang.Type#getProperties <em>Properties</em>}'.
+   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.rl.recordLang.ComplexType#getProperties <em>Properties</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Properties</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Type#getProperties()
-   * @see #getType()
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.ComplexType#getProperties()
+   * @see #getComplexType()
    * @generated
    */
-  EReference getType_Properties();
+  EReference getComplexType_Properties();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.rl.recordLang.Type#getConstants <em>Constants</em>}'.
+   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.rl.recordLang.ComplexType#getConstants <em>Constants</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Constants</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Type#getConstants()
-   * @see #getType()
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.ComplexType#getConstants()
+   * @see #getComplexType()
    * @generated
    */
-  EReference getType_Constants();
+  EReference getComplexType_Constants();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.TemplateType <em>Template Type</em>}'.
@@ -1250,17 +1182,6 @@ public interface RecordLangPackage extends EPackage
   EAttribute getProperty_Name();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.rl.recordLang.Property#getProperties <em>Properties</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Properties</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Property#getProperties()
-   * @see #getProperty()
-   * @generated
-   */
-  EReference getProperty_Properties();
-
-  /**
    * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.rl.recordLang.Property#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1314,26 +1235,15 @@ public interface RecordLangPackage extends EPackage
   EClass getClassifier();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.rl.recordLang.Classifier#getPackage <em>Package</em>}'.
+   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.rl.recordLang.Classifier#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Package</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Classifier#getPackage()
+   * @return the meta object for the reference '<em>Type</em>'.
+   * @see de.cau.cs.se.instrumentation.rl.recordLang.Classifier#getType()
    * @see #getClassifier()
    * @generated
    */
-  EReference getClassifier_Package();
-
-  /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.rl.recordLang.Classifier#getClass_ <em>Class</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Class</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Classifier#getClass_()
-   * @see #getClassifier()
-   * @generated
-   */
-  EReference getClassifier_Class();
+  EReference getClassifier_Type();
 
   /**
    * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.rl.recordLang.Classifier#getSizes <em>Sizes</em>}'.
@@ -1366,38 +1276,6 @@ public interface RecordLangPackage extends EPackage
    * @generated
    */
   EAttribute getArraySize_Size();
-
-  /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.ReferenceProperty <em>Reference Property</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Reference Property</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.ReferenceProperty
-   * @generated
-   */
-  EClass getReferenceProperty();
-
-  /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.rl.recordLang.ReferenceProperty#getRef <em>Ref</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Ref</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.ReferenceProperty#getRef()
-   * @see #getReferenceProperty()
-   * @generated
-   */
-  EReference getReferenceProperty_Ref();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.rl.recordLang.ReferenceProperty#getProperties <em>Properties</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Properties</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.ReferenceProperty#getProperties()
-   * @see #getReferenceProperty()
-   * @generated
-   */
-  EReference getReferenceProperty_Properties();
 
   /**
    * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.Literal <em>Literal</em>}'.
@@ -1608,14 +1486,6 @@ public interface RecordLangPackage extends EPackage
     EAttribute MODEL__NAME = eINSTANCE.getModel_Name();
 
     /**
-     * The meta object literal for the '<em><b>Packages</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference MODEL__PACKAGES = eINSTANCE.getModel_Packages();
-
-    /**
      * The meta object literal for the '<em><b>Imports</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1650,32 +1520,6 @@ public interface RecordLangPackage extends EPackage
     EAttribute IMPORT__IMPORTED_NAMESPACE = eINSTANCE.getImport_ImportedNamespace();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.PackageImpl <em>Package</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.PackageImpl
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getPackage()
-     * @generated
-     */
-    EClass PACKAGE = eINSTANCE.getPackage();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute PACKAGE__NAME = eINSTANCE.getPackage_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Package</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference PACKAGE__PACKAGE = eINSTANCE.getPackage_Package();
-
-    /**
      * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.TypeImpl <em>Type</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1686,22 +1530,6 @@ public interface RecordLangPackage extends EPackage
     EClass TYPE = eINSTANCE.getType();
 
     /**
-     * The meta object literal for the '<em><b>Author</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute TYPE__AUTHOR = eINSTANCE.getType_Author();
-
-    /**
-     * The meta object literal for the '<em><b>Since</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute TYPE__SINCE = eINSTANCE.getType_Since();
-
-    /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1710,12 +1538,48 @@ public interface RecordLangPackage extends EPackage
     EAttribute TYPE__NAME = eINSTANCE.getType_Name();
 
     /**
+     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.BaseTypeImpl <em>Base Type</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.BaseTypeImpl
+     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getBaseType()
+     * @generated
+     */
+    EClass BASE_TYPE = eINSTANCE.getBaseType();
+
+    /**
+     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ComplexTypeImpl <em>Complex Type</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.ComplexTypeImpl
+     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getComplexType()
+     * @generated
+     */
+    EClass COMPLEX_TYPE = eINSTANCE.getComplexType();
+
+    /**
+     * The meta object literal for the '<em><b>Author</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COMPLEX_TYPE__AUTHOR = eINSTANCE.getComplexType_Author();
+
+    /**
+     * The meta object literal for the '<em><b>Since</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COMPLEX_TYPE__SINCE = eINSTANCE.getComplexType_Since();
+
+    /**
      * The meta object literal for the '<em><b>Parents</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference TYPE__PARENTS = eINSTANCE.getType_Parents();
+    EReference COMPLEX_TYPE__PARENTS = eINSTANCE.getComplexType_Parents();
 
     /**
      * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.
@@ -1723,7 +1587,7 @@ public interface RecordLangPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference TYPE__PROPERTIES = eINSTANCE.getType_Properties();
+    EReference COMPLEX_TYPE__PROPERTIES = eINSTANCE.getComplexType_Properties();
 
     /**
      * The meta object literal for the '<em><b>Constants</b></em>' containment reference list feature.
@@ -1731,7 +1595,7 @@ public interface RecordLangPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference TYPE__CONSTANTS = eINSTANCE.getType_Constants();
+    EReference COMPLEX_TYPE__CONSTANTS = eINSTANCE.getComplexType_Constants();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.TemplateTypeImpl <em>Template Type</em>}' class.
@@ -1854,14 +1718,6 @@ public interface RecordLangPackage extends EPackage
     EAttribute PROPERTY__NAME = eINSTANCE.getProperty_Name();
 
     /**
-     * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference PROPERTY__PROPERTIES = eINSTANCE.getProperty_Properties();
-
-    /**
      * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1906,20 +1762,12 @@ public interface RecordLangPackage extends EPackage
     EClass CLASSIFIER = eINSTANCE.getClassifier();
 
     /**
-     * The meta object literal for the '<em><b>Package</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Type</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CLASSIFIER__PACKAGE = eINSTANCE.getClassifier_Package();
-
-    /**
-     * The meta object literal for the '<em><b>Class</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CLASSIFIER__CLASS = eINSTANCE.getClassifier_Class();
+    EReference CLASSIFIER__TYPE = eINSTANCE.getClassifier_Type();
 
     /**
      * The meta object literal for the '<em><b>Sizes</b></em>' containment reference list feature.
@@ -1946,32 +1794,6 @@ public interface RecordLangPackage extends EPackage
      * @generated
      */
     EAttribute ARRAY_SIZE__SIZE = eINSTANCE.getArraySize_Size();
-
-    /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ReferencePropertyImpl <em>Reference Property</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.ReferencePropertyImpl
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getReferenceProperty()
-     * @generated
-     */
-    EClass REFERENCE_PROPERTY = eINSTANCE.getReferenceProperty();
-
-    /**
-     * The meta object literal for the '<em><b>Ref</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference REFERENCE_PROPERTY__REF = eINSTANCE.getReferenceProperty_Ref();
-
-    /**
-     * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference REFERENCE_PROPERTY__PROPERTIES = eINSTANCE.getReferenceProperty_Properties();
 
     /**
      * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.LiteralImpl <em>Literal</em>}' class.
