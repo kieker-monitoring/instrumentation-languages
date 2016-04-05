@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang;
+package kieker.tools.al.aspectLang;
 
 
 /**
@@ -12,10 +12,10 @@ package de.cau.cs.se.instrumentation.al.aspectLang;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.StringLiteral#getValue <em>Value</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.StringLiteral#getValue <em>Value</em>}</li>
  * </ul>
  *
- * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getStringLiteral()
+ * @see kieker.tools.al.aspectLang.AspectLangPackage#getStringLiteral()
  * @model
  * @generated
  */
@@ -31,14 +31,14 @@ public interface StringLiteral extends Literal
    * <!-- end-user-doc -->
    * @return the value of the '<em>Value</em>' attribute.
    * @see #setValue(String)
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getStringLiteral_Value()
+   * @see kieker.tools.al.aspectLang.AspectLangPackage#getStringLiteral_Value()
    * @model
    * @generated
    */
   String getValue();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.StringLiteral#getValue <em>Value</em>}' attribute.
+   * Sets the value of the '{@link kieker.tools.al.aspectLang.StringLiteral#getValue <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Value</em>' attribute.

@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang;
+package kieker.tools.al.aspectLang;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EReference;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangFactory
+ * @see kieker.tools.al.aspectLang.AspectLangFactory
  * @model kind="package"
  * @generated
  */
@@ -55,14 +55,14 @@ public interface AspectLangPackage extends EPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  AspectLangPackage eINSTANCE = de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl.init();
+  AspectLangPackage eINSTANCE = kieker.tools.al.aspectLang.impl.AspectLangPackageImpl.init();
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectModelImpl <em>Aspect Model</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.AspectModelImpl <em>Aspect Model</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectModelImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getAspectModel()
+   * @see kieker.tools.al.aspectLang.impl.AspectModelImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getAspectModel()
    * @generated
    */
   int ASPECT_MODEL = 0;
@@ -131,11 +131,11 @@ public interface AspectLangPackage extends EPackage
   int ASPECT_MODEL_FEATURE_COUNT = 6;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ImportImpl <em>Import</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.ImportImpl <em>Import</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.ImportImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getImport()
+   * @see kieker.tools.al.aspectLang.impl.ImportImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getImport()
    * @generated
    */
   int IMPORT = 1;
@@ -159,11 +159,11 @@ public interface AspectLangPackage extends EPackage
   int IMPORT_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ApplicationModelImpl <em>Application Model</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.ApplicationModelImpl <em>Application Model</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.ApplicationModelImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getApplicationModel()
+   * @see kieker.tools.al.aspectLang.impl.ApplicationModelImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getApplicationModel()
    * @generated
    */
   int APPLICATION_MODEL = 2;
@@ -205,11 +205,11 @@ public interface AspectLangPackage extends EPackage
   int APPLICATION_MODEL_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectImpl <em>Aspect</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.AspectImpl <em>Aspect</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getAspect()
+   * @see kieker.tools.al.aspectLang.impl.AspectImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getAspect()
    * @generated
    */
   int ASPECT = 3;
@@ -242,11 +242,11 @@ public interface AspectLangPackage extends EPackage
   int ASPECT_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.UtilizeAdviceImpl <em>Utilize Advice</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.UtilizeAdviceImpl <em>Utilize Advice</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.UtilizeAdviceImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getUtilizeAdvice()
+   * @see kieker.tools.al.aspectLang.impl.UtilizeAdviceImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getUtilizeAdvice()
    * @generated
    */
   int UTILIZE_ADVICE = 4;
@@ -279,11 +279,11 @@ public interface AspectLangPackage extends EPackage
   int UTILIZE_ADVICE_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AdviceImpl <em>Advice</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.AdviceImpl <em>Advice</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AdviceImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getAdvice()
+   * @see kieker.tools.al.aspectLang.impl.AdviceImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getAdvice()
    * @generated
    */
   int ADVICE = 5;
@@ -325,11 +325,11 @@ public interface AspectLangPackage extends EPackage
   int ADVICE_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AdviceParameterDeclarationImpl <em>Advice Parameter Declaration</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.AdviceParameterDeclarationImpl <em>Advice Parameter Declaration</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AdviceParameterDeclarationImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getAdviceParameterDeclaration()
+   * @see kieker.tools.al.aspectLang.impl.AdviceParameterDeclarationImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getAdviceParameterDeclaration()
    * @generated
    */
   int ADVICE_PARAMETER_DECLARATION = 6;
@@ -362,11 +362,11 @@ public interface AspectLangPackage extends EPackage
   int ADVICE_PARAMETER_DECLARATION_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.CollectorImpl <em>Collector</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.CollectorImpl <em>Collector</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.CollectorImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getCollector()
+   * @see kieker.tools.al.aspectLang.impl.CollectorImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getCollector()
    * @generated
    */
   int COLLECTOR = 7;
@@ -399,11 +399,11 @@ public interface AspectLangPackage extends EPackage
   int COLLECTOR_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.EventImpl <em>Event</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.EventImpl <em>Event</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.EventImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getEvent()
+   * @see kieker.tools.al.aspectLang.impl.EventImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getEvent()
    * @generated
    */
   int EVENT = 8;
@@ -436,11 +436,11 @@ public interface AspectLangPackage extends EPackage
   int EVENT_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ValueImpl <em>Value</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.ValueImpl <em>Value</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.ValueImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getValue()
+   * @see kieker.tools.al.aspectLang.impl.ValueImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getValue()
    * @generated
    */
   int VALUE = 9;
@@ -455,11 +455,11 @@ public interface AspectLangPackage extends EPackage
   int VALUE_FEATURE_COUNT = 0;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ReferenceValueImpl <em>Reference Value</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.ReferenceValueImpl <em>Reference Value</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.ReferenceValueImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getReferenceValue()
+   * @see kieker.tools.al.aspectLang.impl.ReferenceValueImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getReferenceValue()
    * @generated
    */
   int REFERENCE_VALUE = 10;
@@ -492,11 +492,11 @@ public interface AspectLangPackage extends EPackage
   int REFERENCE_VALUE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 2;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.PropertyImpl <em>Property</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.PropertyImpl <em>Property</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.PropertyImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getProperty()
+   * @see kieker.tools.al.aspectLang.impl.PropertyImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getProperty()
    * @generated
    */
   int PROPERTY = 11;
@@ -511,11 +511,11 @@ public interface AspectLangPackage extends EPackage
   int PROPERTY_FEATURE_COUNT = 0;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.InternalFunctionPropertyImpl <em>Internal Function Property</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.InternalFunctionPropertyImpl <em>Internal Function Property</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.InternalFunctionPropertyImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getInternalFunctionProperty()
+   * @see kieker.tools.al.aspectLang.impl.InternalFunctionPropertyImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getInternalFunctionProperty()
    * @generated
    */
   int INTERNAL_FUNCTION_PROPERTY = 12;
@@ -539,11 +539,11 @@ public interface AspectLangPackage extends EPackage
   int INTERNAL_FUNCTION_PROPERTY_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ReflectionPropertyImpl <em>Reflection Property</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.ReflectionPropertyImpl <em>Reflection Property</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.ReflectionPropertyImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getReflectionProperty()
+   * @see kieker.tools.al.aspectLang.impl.ReflectionPropertyImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getReflectionProperty()
    * @generated
    */
   int REFLECTION_PROPERTY = 13;
@@ -567,11 +567,11 @@ public interface AspectLangPackage extends EPackage
   int REFLECTION_PROPERTY_FEATURE_COUNT = PROPERTY_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.RuntimePropertyImpl <em>Runtime Property</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.RuntimePropertyImpl <em>Runtime Property</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.RuntimePropertyImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getRuntimeProperty()
+   * @see kieker.tools.al.aspectLang.impl.RuntimePropertyImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getRuntimeProperty()
    * @generated
    */
   int RUNTIME_PROPERTY = 14;
@@ -586,11 +586,11 @@ public interface AspectLangPackage extends EPackage
   int RUNTIME_PROPERTY_FEATURE_COUNT = PROPERTY_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AdviceParameterImpl <em>Advice Parameter</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.AdviceParameterImpl <em>Advice Parameter</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AdviceParameterImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getAdviceParameter()
+   * @see kieker.tools.al.aspectLang.impl.AdviceParameterImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getAdviceParameter()
    * @generated
    */
   int ADVICE_PARAMETER = 15;
@@ -623,11 +623,11 @@ public interface AspectLangPackage extends EPackage
   int ADVICE_PARAMETER_FEATURE_COUNT = VALUE_FEATURE_COUNT + 2;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.PointcutImpl <em>Pointcut</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.PointcutImpl <em>Pointcut</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.PointcutImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getPointcut()
+   * @see kieker.tools.al.aspectLang.impl.PointcutImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getPointcut()
    * @generated
    */
   int POINTCUT = 16;
@@ -687,11 +687,11 @@ public interface AspectLangPackage extends EPackage
   int POINTCUT_FEATURE_COUNT = 5;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AnnotationImpl <em>Annotation</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.AnnotationImpl <em>Annotation</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AnnotationImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getAnnotation()
+   * @see kieker.tools.al.aspectLang.impl.AnnotationImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getAnnotation()
    * @generated
    */
   int ANNOTATION = 17;
@@ -724,11 +724,11 @@ public interface AspectLangPackage extends EPackage
   int ANNOTATION_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.LocationQueryImpl <em>Location Query</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.LocationQueryImpl <em>Location Query</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.LocationQueryImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getLocationQuery()
+   * @see kieker.tools.al.aspectLang.impl.LocationQueryImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getLocationQuery()
    * @generated
    */
   int LOCATION_QUERY = 18;
@@ -770,11 +770,11 @@ public interface AspectLangPackage extends EPackage
   int LOCATION_QUERY_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.CompositionQueryImpl <em>Composition Query</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.CompositionQueryImpl <em>Composition Query</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.CompositionQueryImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getCompositionQuery()
+   * @see kieker.tools.al.aspectLang.impl.CompositionQueryImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getCompositionQuery()
    * @generated
    */
   int COMPOSITION_QUERY = 19;
@@ -807,11 +807,11 @@ public interface AspectLangPackage extends EPackage
   int COMPOSITION_QUERY_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.OperationQueryImpl <em>Operation Query</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.OperationQueryImpl <em>Operation Query</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.OperationQueryImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getOperationQuery()
+   * @see kieker.tools.al.aspectLang.impl.OperationQueryImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getOperationQuery()
    * @generated
    */
   int OPERATION_QUERY = 20;
@@ -862,11 +862,11 @@ public interface AspectLangPackage extends EPackage
   int OPERATION_QUERY_FEATURE_COUNT = 4;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ParameterQueryImpl <em>Parameter Query</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.ParameterQueryImpl <em>Parameter Query</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.ParameterQueryImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getParameterQuery()
+   * @see kieker.tools.al.aspectLang.impl.ParameterQueryImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getParameterQuery()
    * @generated
    */
   int PARAMETER_QUERY = 21;
@@ -908,11 +908,11 @@ public interface AspectLangPackage extends EPackage
   int PARAMETER_QUERY_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.NodeImpl <em>Node</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.NodeImpl <em>Node</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.NodeImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getNode()
+   * @see kieker.tools.al.aspectLang.impl.NodeImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getNode()
    * @generated
    */
   int NODE = 22;
@@ -936,11 +936,11 @@ public interface AspectLangPackage extends EPackage
   int NODE_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ContainerNodeImpl <em>Container Node</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.ContainerNodeImpl <em>Container Node</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.ContainerNodeImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getContainerNode()
+   * @see kieker.tools.al.aspectLang.impl.ContainerNodeImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getContainerNode()
    * @generated
    */
   int CONTAINER_NODE = 23;
@@ -973,11 +973,11 @@ public interface AspectLangPackage extends EPackage
   int CONTAINER_NODE_FEATURE_COUNT = NODE_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.WildcardNodeImpl <em>Wildcard Node</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.WildcardNodeImpl <em>Wildcard Node</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.WildcardNodeImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getWildcardNode()
+   * @see kieker.tools.al.aspectLang.impl.WildcardNodeImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getWildcardNode()
    * @generated
    */
   int WILDCARD_NODE = 24;
@@ -1001,11 +1001,11 @@ public interface AspectLangPackage extends EPackage
   int WILDCARD_NODE_FEATURE_COUNT = NODE_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.SubPathNodeImpl <em>Sub Path Node</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.SubPathNodeImpl <em>Sub Path Node</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.SubPathNodeImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getSubPathNode()
+   * @see kieker.tools.al.aspectLang.impl.SubPathNodeImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getSubPathNode()
    * @generated
    */
   int SUB_PATH_NODE = 25;
@@ -1029,11 +1029,11 @@ public interface AspectLangPackage extends EPackage
   int SUB_PATH_NODE_FEATURE_COUNT = NODE_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ParentNodeImpl <em>Parent Node</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.ParentNodeImpl <em>Parent Node</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.ParentNodeImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getParentNode()
+   * @see kieker.tools.al.aspectLang.impl.ParentNodeImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getParentNode()
    * @generated
    */
   int PARENT_NODE = 26;
@@ -1057,11 +1057,11 @@ public interface AspectLangPackage extends EPackage
   int PARENT_NODE_FEATURE_COUNT = NODE_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.PropertyConstraintImpl <em>Property Constraint</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.PropertyConstraintImpl <em>Property Constraint</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.PropertyConstraintImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getPropertyConstraint()
+   * @see kieker.tools.al.aspectLang.impl.PropertyConstraintImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getPropertyConstraint()
    * @generated
    */
   int PROPERTY_CONSTRAINT = 27;
@@ -1103,11 +1103,11 @@ public interface AspectLangPackage extends EPackage
   int PROPERTY_CONSTRAINT_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.PropertyConstraintCompareImpl <em>Property Constraint Compare</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.PropertyConstraintCompareImpl <em>Property Constraint Compare</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.PropertyConstraintCompareImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getPropertyConstraintCompare()
+   * @see kieker.tools.al.aspectLang.impl.PropertyConstraintCompareImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getPropertyConstraintCompare()
    * @generated
    */
   int PROPERTY_CONSTRAINT_COMPARE = 28;
@@ -1158,11 +1158,11 @@ public interface AspectLangPackage extends EPackage
   int PROPERTY_CONSTRAINT_COMPARE_FEATURE_COUNT = PROPERTY_CONSTRAINT_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ConstraintElementImpl <em>Constraint Element</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.ConstraintElementImpl <em>Constraint Element</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.ConstraintElementImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getConstraintElement()
+   * @see kieker.tools.al.aspectLang.impl.ConstraintElementImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getConstraintElement()
    * @generated
    */
   int CONSTRAINT_ELEMENT = 29;
@@ -1213,11 +1213,11 @@ public interface AspectLangPackage extends EPackage
   int CONSTRAINT_ELEMENT_FEATURE_COUNT = PROPERTY_CONSTRAINT_COMPARE_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.LocalQueryImpl <em>Local Query</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.LocalQueryImpl <em>Local Query</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.LocalQueryImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getLocalQuery()
+   * @see kieker.tools.al.aspectLang.impl.LocalQueryImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getLocalQuery()
    * @generated
    */
   int LOCAL_QUERY = 30;
@@ -1295,11 +1295,11 @@ public interface AspectLangPackage extends EPackage
   int LOCAL_QUERY_FEATURE_COUNT = CONSTRAINT_ELEMENT_FEATURE_COUNT + 3;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ModelPropertyImpl <em>Model Property</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.ModelPropertyImpl <em>Model Property</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.ModelPropertyImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getModelProperty()
+   * @see kieker.tools.al.aspectLang.impl.ModelPropertyImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getModelProperty()
    * @generated
    */
   int MODEL_PROPERTY = 31;
@@ -1323,11 +1323,11 @@ public interface AspectLangPackage extends EPackage
   int MODEL_PROPERTY_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.TypeofImpl <em>Typeof</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.TypeofImpl <em>Typeof</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.TypeofImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getTypeof()
+   * @see kieker.tools.al.aspectLang.impl.TypeofImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getTypeof()
    * @generated
    */
   int TYPEOF = 32;
@@ -1351,11 +1351,11 @@ public interface AspectLangPackage extends EPackage
   int TYPEOF_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.LiteralImpl <em>Literal</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.LiteralImpl <em>Literal</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.LiteralImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getLiteral()
+   * @see kieker.tools.al.aspectLang.impl.LiteralImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getLiteral()
    * @generated
    */
   int LITERAL = 33;
@@ -1406,11 +1406,11 @@ public interface AspectLangPackage extends EPackage
   int LITERAL_FEATURE_COUNT = VALUE_FEATURE_COUNT + 4;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.FloatLiteralImpl <em>Float Literal</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.FloatLiteralImpl <em>Float Literal</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.FloatLiteralImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getFloatLiteral()
+   * @see kieker.tools.al.aspectLang.impl.FloatLiteralImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getFloatLiteral()
    * @generated
    */
   int FLOAT_LITERAL = 34;
@@ -1470,11 +1470,11 @@ public interface AspectLangPackage extends EPackage
   int FLOAT_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.IntLiteralImpl <em>Int Literal</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.IntLiteralImpl <em>Int Literal</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.IntLiteralImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getIntLiteral()
+   * @see kieker.tools.al.aspectLang.impl.IntLiteralImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getIntLiteral()
    * @generated
    */
   int INT_LITERAL = 35;
@@ -1534,11 +1534,11 @@ public interface AspectLangPackage extends EPackage
   int INT_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.StringLiteralImpl <em>String Literal</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.StringLiteralImpl <em>String Literal</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.StringLiteralImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getStringLiteral()
+   * @see kieker.tools.al.aspectLang.impl.StringLiteralImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getStringLiteral()
    * @generated
    */
   int STRING_LITERAL = 36;
@@ -1598,11 +1598,11 @@ public interface AspectLangPackage extends EPackage
   int STRING_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.TypeReferenceImpl <em>Type Reference</em>}' class.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.impl.TypeReferenceImpl <em>Type Reference</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.TypeReferenceImpl
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getTypeReference()
+   * @see kieker.tools.al.aspectLang.impl.TypeReferenceImpl
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getTypeReference()
    * @generated
    */
   int TYPE_REFERENCE = 37;
@@ -1644,1237 +1644,1237 @@ public interface AspectLangPackage extends EPackage
   int TYPE_REFERENCE_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.InsertionPoint <em>Insertion Point</em>}' enum.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.InsertionPoint <em>Insertion Point</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.InsertionPoint
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getInsertionPoint()
+   * @see kieker.tools.al.aspectLang.InsertionPoint
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getInsertionPoint()
    * @generated
    */
   int INSERTION_POINT = 38;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.InternalFunction <em>Internal Function</em>}' enum.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.InternalFunction <em>Internal Function</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.InternalFunction
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getInternalFunction()
+   * @see kieker.tools.al.aspectLang.InternalFunction
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getInternalFunction()
    * @generated
    */
   int INTERNAL_FUNCTION = 39;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.ReflectionFunction <em>Reflection Function</em>}' enum.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.ReflectionFunction <em>Reflection Function</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ReflectionFunction
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getReflectionFunction()
+   * @see kieker.tools.al.aspectLang.ReflectionFunction
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getReflectionFunction()
    * @generated
    */
   int REFLECTION_FUNCTION = 40;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.Technology <em>Technology</em>}' enum.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.Technology <em>Technology</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Technology
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getTechnology()
+   * @see kieker.tools.al.aspectLang.Technology
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getTechnology()
    * @generated
    */
   int TECHNOLOGY = 41;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.QueryModifier <em>Query Modifier</em>}' enum.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.QueryModifier <em>Query Modifier</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.QueryModifier
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getQueryModifier()
+   * @see kieker.tools.al.aspectLang.QueryModifier
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getQueryModifier()
    * @generated
    */
   int QUERY_MODIFIER = 42;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.LogicOperator <em>Logic Operator</em>}' enum.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.LogicOperator <em>Logic Operator</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.LogicOperator
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getLogicOperator()
+   * @see kieker.tools.al.aspectLang.LogicOperator
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getLogicOperator()
    * @generated
    */
   int LOGIC_OPERATOR = 43;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.CompareOperator <em>Compare Operator</em>}' enum.
+   * The meta object id for the '{@link kieker.tools.al.aspectLang.CompareOperator <em>Compare Operator</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.CompareOperator
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getCompareOperator()
+   * @see kieker.tools.al.aspectLang.CompareOperator
+   * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getCompareOperator()
    * @generated
    */
   int COMPARE_OPERATOR = 44;
 
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.AspectModel <em>Aspect Model</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.AspectModel <em>Aspect Model</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Aspect Model</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectModel
+   * @see kieker.tools.al.aspectLang.AspectModel
    * @generated
    */
   EClass getAspectModel();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link kieker.tools.al.aspectLang.AspectModel#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getName()
+   * @see kieker.tools.al.aspectLang.AspectModel#getName()
    * @see #getAspectModel()
    * @generated
    */
   EAttribute getAspectModel_Name();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getImports <em>Imports</em>}'.
+   * Returns the meta object for the containment reference list '{@link kieker.tools.al.aspectLang.AspectModel#getImports <em>Imports</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Imports</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getImports()
+   * @see kieker.tools.al.aspectLang.AspectModel#getImports()
    * @see #getAspectModel()
    * @generated
    */
   EReference getAspectModel_Imports();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getSources <em>Sources</em>}'.
+   * Returns the meta object for the containment reference list '{@link kieker.tools.al.aspectLang.AspectModel#getSources <em>Sources</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Sources</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getSources()
+   * @see kieker.tools.al.aspectLang.AspectModel#getSources()
    * @see #getAspectModel()
    * @generated
    */
   EReference getAspectModel_Sources();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getAdvices <em>Advices</em>}'.
+   * Returns the meta object for the containment reference list '{@link kieker.tools.al.aspectLang.AspectModel#getAdvices <em>Advices</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Advices</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getAdvices()
+   * @see kieker.tools.al.aspectLang.AspectModel#getAdvices()
    * @see #getAspectModel()
    * @generated
    */
   EReference getAspectModel_Advices();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getPointcuts <em>Pointcuts</em>}'.
+   * Returns the meta object for the containment reference list '{@link kieker.tools.al.aspectLang.AspectModel#getPointcuts <em>Pointcuts</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Pointcuts</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getPointcuts()
+   * @see kieker.tools.al.aspectLang.AspectModel#getPointcuts()
    * @see #getAspectModel()
    * @generated
    */
   EReference getAspectModel_Pointcuts();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getAspects <em>Aspects</em>}'.
+   * Returns the meta object for the containment reference list '{@link kieker.tools.al.aspectLang.AspectModel#getAspects <em>Aspects</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Aspects</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getAspects()
+   * @see kieker.tools.al.aspectLang.AspectModel#getAspects()
    * @see #getAspectModel()
    * @generated
    */
   EReference getAspectModel_Aspects();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Import <em>Import</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.Import <em>Import</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Import</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Import
+   * @see kieker.tools.al.aspectLang.Import
    * @generated
    */
   EClass getImport();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.aspectLang.Import#getImportedNamespace <em>Imported Namespace</em>}'.
+   * Returns the meta object for the attribute '{@link kieker.tools.al.aspectLang.Import#getImportedNamespace <em>Imported Namespace</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Imported Namespace</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Import#getImportedNamespace()
+   * @see kieker.tools.al.aspectLang.Import#getImportedNamespace()
    * @see #getImport()
    * @generated
    */
   EAttribute getImport_ImportedNamespace();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel <em>Application Model</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.ApplicationModel <em>Application Model</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Application Model</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel
+   * @see kieker.tools.al.aspectLang.ApplicationModel
    * @generated
    */
   EClass getApplicationModel();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel#getHandler <em>Handler</em>}'.
+   * Returns the meta object for the attribute '{@link kieker.tools.al.aspectLang.ApplicationModel#getHandler <em>Handler</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Handler</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel#getHandler()
+   * @see kieker.tools.al.aspectLang.ApplicationModel#getHandler()
    * @see #getApplicationModel()
    * @generated
    */
   EAttribute getApplicationModel_Handler();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link kieker.tools.al.aspectLang.ApplicationModel#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel#getName()
+   * @see kieker.tools.al.aspectLang.ApplicationModel#getName()
    * @see #getApplicationModel()
    * @generated
    */
   EAttribute getApplicationModel_Name();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel#getModel <em>Model</em>}'.
+   * Returns the meta object for the attribute '{@link kieker.tools.al.aspectLang.ApplicationModel#getModel <em>Model</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Model</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel#getModel()
+   * @see kieker.tools.al.aspectLang.ApplicationModel#getModel()
    * @see #getApplicationModel()
    * @generated
    */
   EAttribute getApplicationModel_Model();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Aspect <em>Aspect</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.Aspect <em>Aspect</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Aspect</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Aspect
+   * @see kieker.tools.al.aspectLang.Aspect
    * @generated
    */
   EClass getAspect();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.Aspect#getPointcut <em>Pointcut</em>}'.
+   * Returns the meta object for the reference '{@link kieker.tools.al.aspectLang.Aspect#getPointcut <em>Pointcut</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Pointcut</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Aspect#getPointcut()
+   * @see kieker.tools.al.aspectLang.Aspect#getPointcut()
    * @see #getAspect()
    * @generated
    */
   EReference getAspect_Pointcut();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.al.aspectLang.Aspect#getAdvices <em>Advices</em>}'.
+   * Returns the meta object for the containment reference list '{@link kieker.tools.al.aspectLang.Aspect#getAdvices <em>Advices</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Advices</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Aspect#getAdvices()
+   * @see kieker.tools.al.aspectLang.Aspect#getAdvices()
    * @see #getAspect()
    * @generated
    */
   EReference getAspect_Advices();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.UtilizeAdvice <em>Utilize Advice</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.UtilizeAdvice <em>Utilize Advice</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Utilize Advice</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.UtilizeAdvice
+   * @see kieker.tools.al.aspectLang.UtilizeAdvice
    * @generated
    */
   EClass getUtilizeAdvice();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.UtilizeAdvice#getAdvice <em>Advice</em>}'.
+   * Returns the meta object for the reference '{@link kieker.tools.al.aspectLang.UtilizeAdvice#getAdvice <em>Advice</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Advice</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.UtilizeAdvice#getAdvice()
+   * @see kieker.tools.al.aspectLang.UtilizeAdvice#getAdvice()
    * @see #getUtilizeAdvice()
    * @generated
    */
   EReference getUtilizeAdvice_Advice();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.al.aspectLang.UtilizeAdvice#getParameterAssignments <em>Parameter Assignments</em>}'.
+   * Returns the meta object for the containment reference list '{@link kieker.tools.al.aspectLang.UtilizeAdvice#getParameterAssignments <em>Parameter Assignments</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Parameter Assignments</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.UtilizeAdvice#getParameterAssignments()
+   * @see kieker.tools.al.aspectLang.UtilizeAdvice#getParameterAssignments()
    * @see #getUtilizeAdvice()
    * @generated
    */
   EReference getUtilizeAdvice_ParameterAssignments();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Advice <em>Advice</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.Advice <em>Advice</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Advice</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Advice
+   * @see kieker.tools.al.aspectLang.Advice
    * @generated
    */
   EClass getAdvice();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.aspectLang.Advice#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link kieker.tools.al.aspectLang.Advice#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Advice#getName()
+   * @see kieker.tools.al.aspectLang.Advice#getName()
    * @see #getAdvice()
    * @generated
    */
   EAttribute getAdvice_Name();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.al.aspectLang.Advice#getParameterDeclarations <em>Parameter Declarations</em>}'.
+   * Returns the meta object for the containment reference list '{@link kieker.tools.al.aspectLang.Advice#getParameterDeclarations <em>Parameter Declarations</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Parameter Declarations</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Advice#getParameterDeclarations()
+   * @see kieker.tools.al.aspectLang.Advice#getParameterDeclarations()
    * @see #getAdvice()
    * @generated
    */
   EReference getAdvice_ParameterDeclarations();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.al.aspectLang.Advice#getCollectors <em>Collectors</em>}'.
+   * Returns the meta object for the containment reference list '{@link kieker.tools.al.aspectLang.Advice#getCollectors <em>Collectors</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Collectors</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Advice#getCollectors()
+   * @see kieker.tools.al.aspectLang.Advice#getCollectors()
    * @see #getAdvice()
    * @generated
    */
   EReference getAdvice_Collectors();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameterDeclaration <em>Advice Parameter Declaration</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.AdviceParameterDeclaration <em>Advice Parameter Declaration</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Advice Parameter Declaration</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameterDeclaration
+   * @see kieker.tools.al.aspectLang.AdviceParameterDeclaration
    * @generated
    */
   EClass getAdviceParameterDeclaration();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameterDeclaration#getType <em>Type</em>}'.
+   * Returns the meta object for the containment reference '{@link kieker.tools.al.aspectLang.AdviceParameterDeclaration#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Type</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameterDeclaration#getType()
+   * @see kieker.tools.al.aspectLang.AdviceParameterDeclaration#getType()
    * @see #getAdviceParameterDeclaration()
    * @generated
    */
   EReference getAdviceParameterDeclaration_Type();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameterDeclaration#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link kieker.tools.al.aspectLang.AdviceParameterDeclaration#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameterDeclaration#getName()
+   * @see kieker.tools.al.aspectLang.AdviceParameterDeclaration#getName()
    * @see #getAdviceParameterDeclaration()
    * @generated
    */
   EAttribute getAdviceParameterDeclaration_Name();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Collector <em>Collector</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.Collector <em>Collector</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Collector</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Collector
+   * @see kieker.tools.al.aspectLang.Collector
    * @generated
    */
   EClass getCollector();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.aspectLang.Collector#getInsertionPoint <em>Insertion Point</em>}'.
+   * Returns the meta object for the attribute '{@link kieker.tools.al.aspectLang.Collector#getInsertionPoint <em>Insertion Point</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Insertion Point</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Collector#getInsertionPoint()
+   * @see kieker.tools.al.aspectLang.Collector#getInsertionPoint()
    * @see #getCollector()
    * @generated
    */
   EAttribute getCollector_InsertionPoint();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.al.aspectLang.Collector#getEvents <em>Events</em>}'.
+   * Returns the meta object for the containment reference list '{@link kieker.tools.al.aspectLang.Collector#getEvents <em>Events</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Events</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Collector#getEvents()
+   * @see kieker.tools.al.aspectLang.Collector#getEvents()
    * @see #getCollector()
    * @generated
    */
   EReference getCollector_Events();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Event <em>Event</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.Event <em>Event</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Event</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Event
+   * @see kieker.tools.al.aspectLang.Event
    * @generated
    */
   EClass getEvent();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.Event#getType <em>Type</em>}'.
+   * Returns the meta object for the reference '{@link kieker.tools.al.aspectLang.Event#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Type</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Event#getType()
+   * @see kieker.tools.al.aspectLang.Event#getType()
    * @see #getEvent()
    * @generated
    */
   EReference getEvent_Type();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.al.aspectLang.Event#getInitializations <em>Initializations</em>}'.
+   * Returns the meta object for the containment reference list '{@link kieker.tools.al.aspectLang.Event#getInitializations <em>Initializations</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Initializations</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Event#getInitializations()
+   * @see kieker.tools.al.aspectLang.Event#getInitializations()
    * @see #getEvent()
    * @generated
    */
   EReference getEvent_Initializations();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Value <em>Value</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.Value <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Value</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Value
+   * @see kieker.tools.al.aspectLang.Value
    * @generated
    */
   EClass getValue();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ReferenceValue <em>Reference Value</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.ReferenceValue <em>Reference Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Reference Value</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ReferenceValue
+   * @see kieker.tools.al.aspectLang.ReferenceValue
    * @generated
    */
   EClass getReferenceValue();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.ReferenceValue#getQuery <em>Query</em>}'.
+   * Returns the meta object for the containment reference '{@link kieker.tools.al.aspectLang.ReferenceValue#getQuery <em>Query</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Query</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ReferenceValue#getQuery()
+   * @see kieker.tools.al.aspectLang.ReferenceValue#getQuery()
    * @see #getReferenceValue()
    * @generated
    */
   EReference getReferenceValue_Query();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.ReferenceValue#getProperty <em>Property</em>}'.
+   * Returns the meta object for the containment reference '{@link kieker.tools.al.aspectLang.ReferenceValue#getProperty <em>Property</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Property</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ReferenceValue#getProperty()
+   * @see kieker.tools.al.aspectLang.ReferenceValue#getProperty()
    * @see #getReferenceValue()
    * @generated
    */
   EReference getReferenceValue_Property();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Property <em>Property</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.Property <em>Property</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Property</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Property
+   * @see kieker.tools.al.aspectLang.Property
    * @generated
    */
   EClass getProperty();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.InternalFunctionProperty <em>Internal Function Property</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.InternalFunctionProperty <em>Internal Function Property</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Internal Function Property</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.InternalFunctionProperty
+   * @see kieker.tools.al.aspectLang.InternalFunctionProperty
    * @generated
    */
   EClass getInternalFunctionProperty();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.aspectLang.InternalFunctionProperty#getFunction <em>Function</em>}'.
+   * Returns the meta object for the attribute '{@link kieker.tools.al.aspectLang.InternalFunctionProperty#getFunction <em>Function</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Function</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.InternalFunctionProperty#getFunction()
+   * @see kieker.tools.al.aspectLang.InternalFunctionProperty#getFunction()
    * @see #getInternalFunctionProperty()
    * @generated
    */
   EAttribute getInternalFunctionProperty_Function();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ReflectionProperty <em>Reflection Property</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.ReflectionProperty <em>Reflection Property</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Reflection Property</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ReflectionProperty
+   * @see kieker.tools.al.aspectLang.ReflectionProperty
    * @generated
    */
   EClass getReflectionProperty();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.aspectLang.ReflectionProperty#getFunction <em>Function</em>}'.
+   * Returns the meta object for the attribute '{@link kieker.tools.al.aspectLang.ReflectionProperty#getFunction <em>Function</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Function</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ReflectionProperty#getFunction()
+   * @see kieker.tools.al.aspectLang.ReflectionProperty#getFunction()
    * @see #getReflectionProperty()
    * @generated
    */
   EAttribute getReflectionProperty_Function();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.RuntimeProperty <em>Runtime Property</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.RuntimeProperty <em>Runtime Property</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Runtime Property</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.RuntimeProperty
+   * @see kieker.tools.al.aspectLang.RuntimeProperty
    * @generated
    */
   EClass getRuntimeProperty();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameter <em>Advice Parameter</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.AdviceParameter <em>Advice Parameter</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Advice Parameter</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameter
+   * @see kieker.tools.al.aspectLang.AdviceParameter
    * @generated
    */
   EClass getAdviceParameter();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameter#getDeclaration <em>Declaration</em>}'.
+   * Returns the meta object for the reference '{@link kieker.tools.al.aspectLang.AdviceParameter#getDeclaration <em>Declaration</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Declaration</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameter#getDeclaration()
+   * @see kieker.tools.al.aspectLang.AdviceParameter#getDeclaration()
    * @see #getAdviceParameter()
    * @generated
    */
   EReference getAdviceParameter_Declaration();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameter#getCollection <em>Collection</em>}'.
+   * Returns the meta object for the containment reference '{@link kieker.tools.al.aspectLang.AdviceParameter#getCollection <em>Collection</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Collection</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameter#getCollection()
+   * @see kieker.tools.al.aspectLang.AdviceParameter#getCollection()
    * @see #getAdviceParameter()
    * @generated
    */
   EReference getAdviceParameter_Collection();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Pointcut <em>Pointcut</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.Pointcut <em>Pointcut</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Pointcut</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Pointcut
+   * @see kieker.tools.al.aspectLang.Pointcut
    * @generated
    */
   EClass getPointcut();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.Pointcut#getAnnotation <em>Annotation</em>}'.
+   * Returns the meta object for the containment reference '{@link kieker.tools.al.aspectLang.Pointcut#getAnnotation <em>Annotation</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Annotation</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Pointcut#getAnnotation()
+   * @see kieker.tools.al.aspectLang.Pointcut#getAnnotation()
    * @see #getPointcut()
    * @generated
    */
   EReference getPointcut_Annotation();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.aspectLang.Pointcut#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link kieker.tools.al.aspectLang.Pointcut#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Pointcut#getName()
+   * @see kieker.tools.al.aspectLang.Pointcut#getName()
    * @see #getPointcut()
    * @generated
    */
   EAttribute getPointcut_Name();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.Pointcut#getModel <em>Model</em>}'.
+   * Returns the meta object for the reference '{@link kieker.tools.al.aspectLang.Pointcut#getModel <em>Model</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Model</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Pointcut#getModel()
+   * @see kieker.tools.al.aspectLang.Pointcut#getModel()
    * @see #getPointcut()
    * @generated
    */
   EReference getPointcut_Model();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.Pointcut#getLocation <em>Location</em>}'.
+   * Returns the meta object for the containment reference '{@link kieker.tools.al.aspectLang.Pointcut#getLocation <em>Location</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Location</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Pointcut#getLocation()
+   * @see kieker.tools.al.aspectLang.Pointcut#getLocation()
    * @see #getPointcut()
    * @generated
    */
   EReference getPointcut_Location();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.Pointcut#getOperation <em>Operation</em>}'.
+   * Returns the meta object for the containment reference '{@link kieker.tools.al.aspectLang.Pointcut#getOperation <em>Operation</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Operation</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Pointcut#getOperation()
+   * @see kieker.tools.al.aspectLang.Pointcut#getOperation()
    * @see #getPointcut()
    * @generated
    */
   EReference getPointcut_Operation();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Annotation <em>Annotation</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.Annotation <em>Annotation</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Annotation</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Annotation
+   * @see kieker.tools.al.aspectLang.Annotation
    * @generated
    */
   EClass getAnnotation();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.aspectLang.Annotation#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link kieker.tools.al.aspectLang.Annotation#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Annotation#getName()
+   * @see kieker.tools.al.aspectLang.Annotation#getName()
    * @see #getAnnotation()
    * @generated
    */
   EAttribute getAnnotation_Name();
 
   /**
-   * Returns the meta object for the attribute list '{@link de.cau.cs.se.instrumentation.al.aspectLang.Annotation#getTechnologies <em>Technologies</em>}'.
+   * Returns the meta object for the attribute list '{@link kieker.tools.al.aspectLang.Annotation#getTechnologies <em>Technologies</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Technologies</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Annotation#getTechnologies()
+   * @see kieker.tools.al.aspectLang.Annotation#getTechnologies()
    * @see #getAnnotation()
    * @generated
    */
   EAttribute getAnnotation_Technologies();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery <em>Location Query</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.LocationQuery <em>Location Query</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Location Query</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery
+   * @see kieker.tools.al.aspectLang.LocationQuery
    * @generated
    */
   EClass getLocationQuery();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery#getNode <em>Node</em>}'.
+   * Returns the meta object for the containment reference '{@link kieker.tools.al.aspectLang.LocationQuery#getNode <em>Node</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Node</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery#getNode()
+   * @see kieker.tools.al.aspectLang.LocationQuery#getNode()
    * @see #getLocationQuery()
    * @generated
    */
   EReference getLocationQuery_Node();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery#getSpecialization <em>Specialization</em>}'.
+   * Returns the meta object for the containment reference '{@link kieker.tools.al.aspectLang.LocationQuery#getSpecialization <em>Specialization</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Specialization</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery#getSpecialization()
+   * @see kieker.tools.al.aspectLang.LocationQuery#getSpecialization()
    * @see #getLocationQuery()
    * @generated
    */
   EReference getLocationQuery_Specialization();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery#getComposition <em>Composition</em>}'.
+   * Returns the meta object for the containment reference '{@link kieker.tools.al.aspectLang.LocationQuery#getComposition <em>Composition</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Composition</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery#getComposition()
+   * @see kieker.tools.al.aspectLang.LocationQuery#getComposition()
    * @see #getLocationQuery()
    * @generated
    */
   EReference getLocationQuery_Composition();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.CompositionQuery <em>Composition Query</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.CompositionQuery <em>Composition Query</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Composition Query</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.CompositionQuery
+   * @see kieker.tools.al.aspectLang.CompositionQuery
    * @generated
    */
   EClass getCompositionQuery();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.aspectLang.CompositionQuery#getModifier <em>Modifier</em>}'.
+   * Returns the meta object for the attribute '{@link kieker.tools.al.aspectLang.CompositionQuery#getModifier <em>Modifier</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Modifier</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.CompositionQuery#getModifier()
+   * @see kieker.tools.al.aspectLang.CompositionQuery#getModifier()
    * @see #getCompositionQuery()
    * @generated
    */
   EAttribute getCompositionQuery_Modifier();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.al.aspectLang.CompositionQuery#getSubQueries <em>Sub Queries</em>}'.
+   * Returns the meta object for the containment reference list '{@link kieker.tools.al.aspectLang.CompositionQuery#getSubQueries <em>Sub Queries</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Sub Queries</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.CompositionQuery#getSubQueries()
+   * @see kieker.tools.al.aspectLang.CompositionQuery#getSubQueries()
    * @see #getCompositionQuery()
    * @generated
    */
   EReference getCompositionQuery_SubQueries();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.OperationQuery <em>Operation Query</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.OperationQuery <em>Operation Query</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Operation Query</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.OperationQuery
+   * @see kieker.tools.al.aspectLang.OperationQuery
    * @generated
    */
   EClass getOperationQuery();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.OperationQuery#getModifier <em>Modifier</em>}'.
+   * Returns the meta object for the reference '{@link kieker.tools.al.aspectLang.OperationQuery#getModifier <em>Modifier</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Modifier</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.OperationQuery#getModifier()
+   * @see kieker.tools.al.aspectLang.OperationQuery#getModifier()
    * @see #getOperationQuery()
    * @generated
    */
   EReference getOperationQuery_Modifier();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.OperationQuery#getReturnType <em>Return Type</em>}'.
+   * Returns the meta object for the containment reference '{@link kieker.tools.al.aspectLang.OperationQuery#getReturnType <em>Return Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Return Type</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.OperationQuery#getReturnType()
+   * @see kieker.tools.al.aspectLang.OperationQuery#getReturnType()
    * @see #getOperationQuery()
    * @generated
    */
   EReference getOperationQuery_ReturnType();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.OperationQuery#getOperationReference <em>Operation Reference</em>}'.
+   * Returns the meta object for the reference '{@link kieker.tools.al.aspectLang.OperationQuery#getOperationReference <em>Operation Reference</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Operation Reference</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.OperationQuery#getOperationReference()
+   * @see kieker.tools.al.aspectLang.OperationQuery#getOperationReference()
    * @see #getOperationQuery()
    * @generated
    */
   EReference getOperationQuery_OperationReference();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.al.aspectLang.OperationQuery#getParameterQueries <em>Parameter Queries</em>}'.
+   * Returns the meta object for the containment reference list '{@link kieker.tools.al.aspectLang.OperationQuery#getParameterQueries <em>Parameter Queries</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Parameter Queries</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.OperationQuery#getParameterQueries()
+   * @see kieker.tools.al.aspectLang.OperationQuery#getParameterQueries()
    * @see #getOperationQuery()
    * @generated
    */
   EReference getOperationQuery_ParameterQueries();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery <em>Parameter Query</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.ParameterQuery <em>Parameter Query</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Parameter Query</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery
+   * @see kieker.tools.al.aspectLang.ParameterQuery
    * @generated
    */
   EClass getParameterQuery();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery#getModifier <em>Modifier</em>}'.
+   * Returns the meta object for the reference '{@link kieker.tools.al.aspectLang.ParameterQuery#getModifier <em>Modifier</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Modifier</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery#getModifier()
+   * @see kieker.tools.al.aspectLang.ParameterQuery#getModifier()
    * @see #getParameterQuery()
    * @generated
    */
   EReference getParameterQuery_Modifier();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery#getType <em>Type</em>}'.
+   * Returns the meta object for the containment reference '{@link kieker.tools.al.aspectLang.ParameterQuery#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Type</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery#getType()
+   * @see kieker.tools.al.aspectLang.ParameterQuery#getType()
    * @see #getParameterQuery()
    * @generated
    */
   EReference getParameterQuery_Type();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery#getParameter <em>Parameter</em>}'.
+   * Returns the meta object for the reference '{@link kieker.tools.al.aspectLang.ParameterQuery#getParameter <em>Parameter</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Parameter</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery#getParameter()
+   * @see kieker.tools.al.aspectLang.ParameterQuery#getParameter()
    * @see #getParameterQuery()
    * @generated
    */
   EReference getParameterQuery_Parameter();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Node <em>Node</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.Node <em>Node</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Node</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Node
+   * @see kieker.tools.al.aspectLang.Node
    * @generated
    */
   EClass getNode();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.Node#getConstraint <em>Constraint</em>}'.
+   * Returns the meta object for the containment reference '{@link kieker.tools.al.aspectLang.Node#getConstraint <em>Constraint</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Constraint</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Node#getConstraint()
+   * @see kieker.tools.al.aspectLang.Node#getConstraint()
    * @see #getNode()
    * @generated
    */
   EReference getNode_Constraint();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode <em>Container Node</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.ContainerNode <em>Container Node</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Container Node</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode
+   * @see kieker.tools.al.aspectLang.ContainerNode
    * @generated
    */
   EClass getContainerNode();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode#getContainer <em>Container</em>}'.
+   * Returns the meta object for the reference '{@link kieker.tools.al.aspectLang.ContainerNode#getContainer <em>Container</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Container</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode#getContainer()
+   * @see kieker.tools.al.aspectLang.ContainerNode#getContainer()
    * @see #getContainerNode()
    * @generated
    */
   EReference getContainerNode_Container();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.WildcardNode <em>Wildcard Node</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.WildcardNode <em>Wildcard Node</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Wildcard Node</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.WildcardNode
+   * @see kieker.tools.al.aspectLang.WildcardNode
    * @generated
    */
   EClass getWildcardNode();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.SubPathNode <em>Sub Path Node</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.SubPathNode <em>Sub Path Node</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Sub Path Node</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.SubPathNode
+   * @see kieker.tools.al.aspectLang.SubPathNode
    * @generated
    */
   EClass getSubPathNode();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ParentNode <em>Parent Node</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.ParentNode <em>Parent Node</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Parent Node</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ParentNode
+   * @see kieker.tools.al.aspectLang.ParentNode
    * @generated
    */
   EClass getParentNode();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraint <em>Property Constraint</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.PropertyConstraint <em>Property Constraint</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Property Constraint</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraint
+   * @see kieker.tools.al.aspectLang.PropertyConstraint
    * @generated
    */
   EClass getPropertyConstraint();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraint#getLeft <em>Left</em>}'.
+   * Returns the meta object for the containment reference '{@link kieker.tools.al.aspectLang.PropertyConstraint#getLeft <em>Left</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Left</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraint#getLeft()
+   * @see kieker.tools.al.aspectLang.PropertyConstraint#getLeft()
    * @see #getPropertyConstraint()
    * @generated
    */
   EReference getPropertyConstraint_Left();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraint#getLogic <em>Logic</em>}'.
+   * Returns the meta object for the attribute '{@link kieker.tools.al.aspectLang.PropertyConstraint#getLogic <em>Logic</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Logic</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraint#getLogic()
+   * @see kieker.tools.al.aspectLang.PropertyConstraint#getLogic()
    * @see #getPropertyConstraint()
    * @generated
    */
   EAttribute getPropertyConstraint_Logic();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraint#getRight <em>Right</em>}'.
+   * Returns the meta object for the containment reference '{@link kieker.tools.al.aspectLang.PropertyConstraint#getRight <em>Right</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Right</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraint#getRight()
+   * @see kieker.tools.al.aspectLang.PropertyConstraint#getRight()
    * @see #getPropertyConstraint()
    * @generated
    */
   EReference getPropertyConstraint_Right();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraintCompare <em>Property Constraint Compare</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.PropertyConstraintCompare <em>Property Constraint Compare</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Property Constraint Compare</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraintCompare
+   * @see kieker.tools.al.aspectLang.PropertyConstraintCompare
    * @generated
    */
   EClass getPropertyConstraintCompare();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraintCompare#getCompare <em>Compare</em>}'.
+   * Returns the meta object for the attribute '{@link kieker.tools.al.aspectLang.PropertyConstraintCompare#getCompare <em>Compare</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Compare</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraintCompare#getCompare()
+   * @see kieker.tools.al.aspectLang.PropertyConstraintCompare#getCompare()
    * @see #getPropertyConstraintCompare()
    * @generated
    */
   EAttribute getPropertyConstraintCompare_Compare();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ConstraintElement <em>Constraint Element</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.ConstraintElement <em>Constraint Element</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Constraint Element</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ConstraintElement
+   * @see kieker.tools.al.aspectLang.ConstraintElement
    * @generated
    */
   EClass getConstraintElement();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.LocalQuery <em>Local Query</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.LocalQuery <em>Local Query</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Local Query</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.LocalQuery
+   * @see kieker.tools.al.aspectLang.LocalQuery
    * @generated
    */
   EClass getLocalQuery();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.LocalQuery#getLocationQuery <em>Location Query</em>}'.
+   * Returns the meta object for the containment reference '{@link kieker.tools.al.aspectLang.LocalQuery#getLocationQuery <em>Location Query</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Location Query</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.LocalQuery#getLocationQuery()
+   * @see kieker.tools.al.aspectLang.LocalQuery#getLocationQuery()
    * @see #getLocalQuery()
    * @generated
    */
   EReference getLocalQuery_LocationQuery();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.LocalQuery#getProperty <em>Property</em>}'.
+   * Returns the meta object for the containment reference '{@link kieker.tools.al.aspectLang.LocalQuery#getProperty <em>Property</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Property</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.LocalQuery#getProperty()
+   * @see kieker.tools.al.aspectLang.LocalQuery#getProperty()
    * @see #getLocalQuery()
    * @generated
    */
   EReference getLocalQuery_Property();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.LocalQuery#getTypeof <em>Typeof</em>}'.
+   * Returns the meta object for the containment reference '{@link kieker.tools.al.aspectLang.LocalQuery#getTypeof <em>Typeof</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Typeof</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.LocalQuery#getTypeof()
+   * @see kieker.tools.al.aspectLang.LocalQuery#getTypeof()
    * @see #getLocalQuery()
    * @generated
    */
   EReference getLocalQuery_Typeof();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ModelProperty <em>Model Property</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.ModelProperty <em>Model Property</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Model Property</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ModelProperty
+   * @see kieker.tools.al.aspectLang.ModelProperty
    * @generated
    */
   EClass getModelProperty();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.ModelProperty#getReference <em>Reference</em>}'.
+   * Returns the meta object for the reference '{@link kieker.tools.al.aspectLang.ModelProperty#getReference <em>Reference</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Reference</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ModelProperty#getReference()
+   * @see kieker.tools.al.aspectLang.ModelProperty#getReference()
    * @see #getModelProperty()
    * @generated
    */
   EReference getModelProperty_Reference();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Typeof <em>Typeof</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.Typeof <em>Typeof</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Typeof</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Typeof
+   * @see kieker.tools.al.aspectLang.Typeof
    * @generated
    */
   EClass getTypeof();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.Typeof#getReference <em>Reference</em>}'.
+   * Returns the meta object for the containment reference '{@link kieker.tools.al.aspectLang.Typeof#getReference <em>Reference</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Reference</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Typeof#getReference()
+   * @see kieker.tools.al.aspectLang.Typeof#getReference()
    * @see #getTypeof()
    * @generated
    */
   EReference getTypeof_Reference();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Literal <em>Literal</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.Literal <em>Literal</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Literal</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Literal
+   * @see kieker.tools.al.aspectLang.Literal
    * @generated
    */
   EClass getLiteral();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.FloatLiteral <em>Float Literal</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.FloatLiteral <em>Float Literal</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Float Literal</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.FloatLiteral
+   * @see kieker.tools.al.aspectLang.FloatLiteral
    * @generated
    */
   EClass getFloatLiteral();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.aspectLang.FloatLiteral#getValue <em>Value</em>}'.
+   * Returns the meta object for the attribute '{@link kieker.tools.al.aspectLang.FloatLiteral#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Value</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.FloatLiteral#getValue()
+   * @see kieker.tools.al.aspectLang.FloatLiteral#getValue()
    * @see #getFloatLiteral()
    * @generated
    */
   EAttribute getFloatLiteral_Value();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.IntLiteral <em>Int Literal</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.IntLiteral <em>Int Literal</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Int Literal</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.IntLiteral
+   * @see kieker.tools.al.aspectLang.IntLiteral
    * @generated
    */
   EClass getIntLiteral();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.aspectLang.IntLiteral#getValue <em>Value</em>}'.
+   * Returns the meta object for the attribute '{@link kieker.tools.al.aspectLang.IntLiteral#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Value</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.IntLiteral#getValue()
+   * @see kieker.tools.al.aspectLang.IntLiteral#getValue()
    * @see #getIntLiteral()
    * @generated
    */
   EAttribute getIntLiteral_Value();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.StringLiteral <em>String Literal</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.StringLiteral <em>String Literal</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>String Literal</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.StringLiteral
+   * @see kieker.tools.al.aspectLang.StringLiteral
    * @generated
    */
   EClass getStringLiteral();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.aspectLang.StringLiteral#getValue <em>Value</em>}'.
+   * Returns the meta object for the attribute '{@link kieker.tools.al.aspectLang.StringLiteral#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Value</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.StringLiteral#getValue()
+   * @see kieker.tools.al.aspectLang.StringLiteral#getValue()
    * @see #getStringLiteral()
    * @generated
    */
   EAttribute getStringLiteral_Value();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.aspectLang.TypeReference <em>Type Reference</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.al.aspectLang.TypeReference <em>Type Reference</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Type Reference</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.TypeReference
+   * @see kieker.tools.al.aspectLang.TypeReference
    * @generated
    */
   EClass getTypeReference();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.TypeReference#getContext <em>Context</em>}'.
+   * Returns the meta object for the reference '{@link kieker.tools.al.aspectLang.TypeReference#getContext <em>Context</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Context</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.TypeReference#getContext()
+   * @see kieker.tools.al.aspectLang.TypeReference#getContext()
    * @see #getTypeReference()
    * @generated
    */
   EReference getTypeReference_Context();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.al.aspectLang.TypeReference#getReference <em>Reference</em>}'.
+   * Returns the meta object for the reference '{@link kieker.tools.al.aspectLang.TypeReference#getReference <em>Reference</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Reference</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.TypeReference#getReference()
+   * @see kieker.tools.al.aspectLang.TypeReference#getReference()
    * @see #getTypeReference()
    * @generated
    */
   EReference getTypeReference_Reference();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.aspectLang.TypeReference#isCollection <em>Collection</em>}'.
+   * Returns the meta object for the attribute '{@link kieker.tools.al.aspectLang.TypeReference#isCollection <em>Collection</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Collection</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.TypeReference#isCollection()
+   * @see kieker.tools.al.aspectLang.TypeReference#isCollection()
    * @see #getTypeReference()
    * @generated
    */
   EAttribute getTypeReference_Collection();
 
   /**
-   * Returns the meta object for enum '{@link de.cau.cs.se.instrumentation.al.aspectLang.InsertionPoint <em>Insertion Point</em>}'.
+   * Returns the meta object for enum '{@link kieker.tools.al.aspectLang.InsertionPoint <em>Insertion Point</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for enum '<em>Insertion Point</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.InsertionPoint
+   * @see kieker.tools.al.aspectLang.InsertionPoint
    * @generated
    */
   EEnum getInsertionPoint();
 
   /**
-   * Returns the meta object for enum '{@link de.cau.cs.se.instrumentation.al.aspectLang.InternalFunction <em>Internal Function</em>}'.
+   * Returns the meta object for enum '{@link kieker.tools.al.aspectLang.InternalFunction <em>Internal Function</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for enum '<em>Internal Function</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.InternalFunction
+   * @see kieker.tools.al.aspectLang.InternalFunction
    * @generated
    */
   EEnum getInternalFunction();
 
   /**
-   * Returns the meta object for enum '{@link de.cau.cs.se.instrumentation.al.aspectLang.ReflectionFunction <em>Reflection Function</em>}'.
+   * Returns the meta object for enum '{@link kieker.tools.al.aspectLang.ReflectionFunction <em>Reflection Function</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for enum '<em>Reflection Function</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ReflectionFunction
+   * @see kieker.tools.al.aspectLang.ReflectionFunction
    * @generated
    */
   EEnum getReflectionFunction();
 
   /**
-   * Returns the meta object for enum '{@link de.cau.cs.se.instrumentation.al.aspectLang.Technology <em>Technology</em>}'.
+   * Returns the meta object for enum '{@link kieker.tools.al.aspectLang.Technology <em>Technology</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for enum '<em>Technology</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Technology
+   * @see kieker.tools.al.aspectLang.Technology
    * @generated
    */
   EEnum getTechnology();
 
   /**
-   * Returns the meta object for enum '{@link de.cau.cs.se.instrumentation.al.aspectLang.QueryModifier <em>Query Modifier</em>}'.
+   * Returns the meta object for enum '{@link kieker.tools.al.aspectLang.QueryModifier <em>Query Modifier</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for enum '<em>Query Modifier</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.QueryModifier
+   * @see kieker.tools.al.aspectLang.QueryModifier
    * @generated
    */
   EEnum getQueryModifier();
 
   /**
-   * Returns the meta object for enum '{@link de.cau.cs.se.instrumentation.al.aspectLang.LogicOperator <em>Logic Operator</em>}'.
+   * Returns the meta object for enum '{@link kieker.tools.al.aspectLang.LogicOperator <em>Logic Operator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for enum '<em>Logic Operator</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.LogicOperator
+   * @see kieker.tools.al.aspectLang.LogicOperator
    * @generated
    */
   EEnum getLogicOperator();
 
   /**
-   * Returns the meta object for enum '{@link de.cau.cs.se.instrumentation.al.aspectLang.CompareOperator <em>Compare Operator</em>}'.
+   * Returns the meta object for enum '{@link kieker.tools.al.aspectLang.CompareOperator <em>Compare Operator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for enum '<em>Compare Operator</em>'.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.CompareOperator
+   * @see kieker.tools.al.aspectLang.CompareOperator
    * @generated
    */
   EEnum getCompareOperator();
@@ -2903,11 +2903,11 @@ public interface AspectLangPackage extends EPackage
   interface Literals
   {
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectModelImpl <em>Aspect Model</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.AspectModelImpl <em>Aspect Model</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectModelImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getAspectModel()
+     * @see kieker.tools.al.aspectLang.impl.AspectModelImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getAspectModel()
      * @generated
      */
     EClass ASPECT_MODEL = eINSTANCE.getAspectModel();
@@ -2961,11 +2961,11 @@ public interface AspectLangPackage extends EPackage
     EReference ASPECT_MODEL__ASPECTS = eINSTANCE.getAspectModel_Aspects();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ImportImpl <em>Import</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.ImportImpl <em>Import</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.ImportImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getImport()
+     * @see kieker.tools.al.aspectLang.impl.ImportImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getImport()
      * @generated
      */
     EClass IMPORT = eINSTANCE.getImport();
@@ -2979,11 +2979,11 @@ public interface AspectLangPackage extends EPackage
     EAttribute IMPORT__IMPORTED_NAMESPACE = eINSTANCE.getImport_ImportedNamespace();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ApplicationModelImpl <em>Application Model</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.ApplicationModelImpl <em>Application Model</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.ApplicationModelImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getApplicationModel()
+     * @see kieker.tools.al.aspectLang.impl.ApplicationModelImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getApplicationModel()
      * @generated
      */
     EClass APPLICATION_MODEL = eINSTANCE.getApplicationModel();
@@ -3013,11 +3013,11 @@ public interface AspectLangPackage extends EPackage
     EAttribute APPLICATION_MODEL__MODEL = eINSTANCE.getApplicationModel_Model();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectImpl <em>Aspect</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.AspectImpl <em>Aspect</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getAspect()
+     * @see kieker.tools.al.aspectLang.impl.AspectImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getAspect()
      * @generated
      */
     EClass ASPECT = eINSTANCE.getAspect();
@@ -3039,11 +3039,11 @@ public interface AspectLangPackage extends EPackage
     EReference ASPECT__ADVICES = eINSTANCE.getAspect_Advices();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.UtilizeAdviceImpl <em>Utilize Advice</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.UtilizeAdviceImpl <em>Utilize Advice</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.UtilizeAdviceImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getUtilizeAdvice()
+     * @see kieker.tools.al.aspectLang.impl.UtilizeAdviceImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getUtilizeAdvice()
      * @generated
      */
     EClass UTILIZE_ADVICE = eINSTANCE.getUtilizeAdvice();
@@ -3065,11 +3065,11 @@ public interface AspectLangPackage extends EPackage
     EReference UTILIZE_ADVICE__PARAMETER_ASSIGNMENTS = eINSTANCE.getUtilizeAdvice_ParameterAssignments();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AdviceImpl <em>Advice</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.AdviceImpl <em>Advice</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AdviceImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getAdvice()
+     * @see kieker.tools.al.aspectLang.impl.AdviceImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getAdvice()
      * @generated
      */
     EClass ADVICE = eINSTANCE.getAdvice();
@@ -3099,11 +3099,11 @@ public interface AspectLangPackage extends EPackage
     EReference ADVICE__COLLECTORS = eINSTANCE.getAdvice_Collectors();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AdviceParameterDeclarationImpl <em>Advice Parameter Declaration</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.AdviceParameterDeclarationImpl <em>Advice Parameter Declaration</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AdviceParameterDeclarationImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getAdviceParameterDeclaration()
+     * @see kieker.tools.al.aspectLang.impl.AdviceParameterDeclarationImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getAdviceParameterDeclaration()
      * @generated
      */
     EClass ADVICE_PARAMETER_DECLARATION = eINSTANCE.getAdviceParameterDeclaration();
@@ -3125,11 +3125,11 @@ public interface AspectLangPackage extends EPackage
     EAttribute ADVICE_PARAMETER_DECLARATION__NAME = eINSTANCE.getAdviceParameterDeclaration_Name();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.CollectorImpl <em>Collector</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.CollectorImpl <em>Collector</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.CollectorImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getCollector()
+     * @see kieker.tools.al.aspectLang.impl.CollectorImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getCollector()
      * @generated
      */
     EClass COLLECTOR = eINSTANCE.getCollector();
@@ -3151,11 +3151,11 @@ public interface AspectLangPackage extends EPackage
     EReference COLLECTOR__EVENTS = eINSTANCE.getCollector_Events();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.EventImpl <em>Event</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.EventImpl <em>Event</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.EventImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getEvent()
+     * @see kieker.tools.al.aspectLang.impl.EventImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getEvent()
      * @generated
      */
     EClass EVENT = eINSTANCE.getEvent();
@@ -3177,21 +3177,21 @@ public interface AspectLangPackage extends EPackage
     EReference EVENT__INITIALIZATIONS = eINSTANCE.getEvent_Initializations();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ValueImpl <em>Value</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.ValueImpl <em>Value</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.ValueImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getValue()
+     * @see kieker.tools.al.aspectLang.impl.ValueImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getValue()
      * @generated
      */
     EClass VALUE = eINSTANCE.getValue();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ReferenceValueImpl <em>Reference Value</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.ReferenceValueImpl <em>Reference Value</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.ReferenceValueImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getReferenceValue()
+     * @see kieker.tools.al.aspectLang.impl.ReferenceValueImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getReferenceValue()
      * @generated
      */
     EClass REFERENCE_VALUE = eINSTANCE.getReferenceValue();
@@ -3213,21 +3213,21 @@ public interface AspectLangPackage extends EPackage
     EReference REFERENCE_VALUE__PROPERTY = eINSTANCE.getReferenceValue_Property();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.PropertyImpl <em>Property</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.PropertyImpl <em>Property</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.PropertyImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getProperty()
+     * @see kieker.tools.al.aspectLang.impl.PropertyImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getProperty()
      * @generated
      */
     EClass PROPERTY = eINSTANCE.getProperty();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.InternalFunctionPropertyImpl <em>Internal Function Property</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.InternalFunctionPropertyImpl <em>Internal Function Property</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.InternalFunctionPropertyImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getInternalFunctionProperty()
+     * @see kieker.tools.al.aspectLang.impl.InternalFunctionPropertyImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getInternalFunctionProperty()
      * @generated
      */
     EClass INTERNAL_FUNCTION_PROPERTY = eINSTANCE.getInternalFunctionProperty();
@@ -3241,11 +3241,11 @@ public interface AspectLangPackage extends EPackage
     EAttribute INTERNAL_FUNCTION_PROPERTY__FUNCTION = eINSTANCE.getInternalFunctionProperty_Function();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ReflectionPropertyImpl <em>Reflection Property</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.ReflectionPropertyImpl <em>Reflection Property</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.ReflectionPropertyImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getReflectionProperty()
+     * @see kieker.tools.al.aspectLang.impl.ReflectionPropertyImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getReflectionProperty()
      * @generated
      */
     EClass REFLECTION_PROPERTY = eINSTANCE.getReflectionProperty();
@@ -3259,21 +3259,21 @@ public interface AspectLangPackage extends EPackage
     EAttribute REFLECTION_PROPERTY__FUNCTION = eINSTANCE.getReflectionProperty_Function();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.RuntimePropertyImpl <em>Runtime Property</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.RuntimePropertyImpl <em>Runtime Property</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.RuntimePropertyImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getRuntimeProperty()
+     * @see kieker.tools.al.aspectLang.impl.RuntimePropertyImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getRuntimeProperty()
      * @generated
      */
     EClass RUNTIME_PROPERTY = eINSTANCE.getRuntimeProperty();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AdviceParameterImpl <em>Advice Parameter</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.AdviceParameterImpl <em>Advice Parameter</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AdviceParameterImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getAdviceParameter()
+     * @see kieker.tools.al.aspectLang.impl.AdviceParameterImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getAdviceParameter()
      * @generated
      */
     EClass ADVICE_PARAMETER = eINSTANCE.getAdviceParameter();
@@ -3295,11 +3295,11 @@ public interface AspectLangPackage extends EPackage
     EReference ADVICE_PARAMETER__COLLECTION = eINSTANCE.getAdviceParameter_Collection();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.PointcutImpl <em>Pointcut</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.PointcutImpl <em>Pointcut</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.PointcutImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getPointcut()
+     * @see kieker.tools.al.aspectLang.impl.PointcutImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getPointcut()
      * @generated
      */
     EClass POINTCUT = eINSTANCE.getPointcut();
@@ -3345,11 +3345,11 @@ public interface AspectLangPackage extends EPackage
     EReference POINTCUT__OPERATION = eINSTANCE.getPointcut_Operation();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AnnotationImpl <em>Annotation</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.AnnotationImpl <em>Annotation</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AnnotationImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getAnnotation()
+     * @see kieker.tools.al.aspectLang.impl.AnnotationImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getAnnotation()
      * @generated
      */
     EClass ANNOTATION = eINSTANCE.getAnnotation();
@@ -3371,11 +3371,11 @@ public interface AspectLangPackage extends EPackage
     EAttribute ANNOTATION__TECHNOLOGIES = eINSTANCE.getAnnotation_Technologies();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.LocationQueryImpl <em>Location Query</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.LocationQueryImpl <em>Location Query</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.LocationQueryImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getLocationQuery()
+     * @see kieker.tools.al.aspectLang.impl.LocationQueryImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getLocationQuery()
      * @generated
      */
     EClass LOCATION_QUERY = eINSTANCE.getLocationQuery();
@@ -3405,11 +3405,11 @@ public interface AspectLangPackage extends EPackage
     EReference LOCATION_QUERY__COMPOSITION = eINSTANCE.getLocationQuery_Composition();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.CompositionQueryImpl <em>Composition Query</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.CompositionQueryImpl <em>Composition Query</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.CompositionQueryImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getCompositionQuery()
+     * @see kieker.tools.al.aspectLang.impl.CompositionQueryImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getCompositionQuery()
      * @generated
      */
     EClass COMPOSITION_QUERY = eINSTANCE.getCompositionQuery();
@@ -3431,11 +3431,11 @@ public interface AspectLangPackage extends EPackage
     EReference COMPOSITION_QUERY__SUB_QUERIES = eINSTANCE.getCompositionQuery_SubQueries();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.OperationQueryImpl <em>Operation Query</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.OperationQueryImpl <em>Operation Query</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.OperationQueryImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getOperationQuery()
+     * @see kieker.tools.al.aspectLang.impl.OperationQueryImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getOperationQuery()
      * @generated
      */
     EClass OPERATION_QUERY = eINSTANCE.getOperationQuery();
@@ -3473,11 +3473,11 @@ public interface AspectLangPackage extends EPackage
     EReference OPERATION_QUERY__PARAMETER_QUERIES = eINSTANCE.getOperationQuery_ParameterQueries();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ParameterQueryImpl <em>Parameter Query</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.ParameterQueryImpl <em>Parameter Query</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.ParameterQueryImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getParameterQuery()
+     * @see kieker.tools.al.aspectLang.impl.ParameterQueryImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getParameterQuery()
      * @generated
      */
     EClass PARAMETER_QUERY = eINSTANCE.getParameterQuery();
@@ -3507,11 +3507,11 @@ public interface AspectLangPackage extends EPackage
     EReference PARAMETER_QUERY__PARAMETER = eINSTANCE.getParameterQuery_Parameter();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.NodeImpl <em>Node</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.NodeImpl <em>Node</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.NodeImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getNode()
+     * @see kieker.tools.al.aspectLang.impl.NodeImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getNode()
      * @generated
      */
     EClass NODE = eINSTANCE.getNode();
@@ -3525,11 +3525,11 @@ public interface AspectLangPackage extends EPackage
     EReference NODE__CONSTRAINT = eINSTANCE.getNode_Constraint();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ContainerNodeImpl <em>Container Node</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.ContainerNodeImpl <em>Container Node</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.ContainerNodeImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getContainerNode()
+     * @see kieker.tools.al.aspectLang.impl.ContainerNodeImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getContainerNode()
      * @generated
      */
     EClass CONTAINER_NODE = eINSTANCE.getContainerNode();
@@ -3543,41 +3543,41 @@ public interface AspectLangPackage extends EPackage
     EReference CONTAINER_NODE__CONTAINER = eINSTANCE.getContainerNode_Container();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.WildcardNodeImpl <em>Wildcard Node</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.WildcardNodeImpl <em>Wildcard Node</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.WildcardNodeImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getWildcardNode()
+     * @see kieker.tools.al.aspectLang.impl.WildcardNodeImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getWildcardNode()
      * @generated
      */
     EClass WILDCARD_NODE = eINSTANCE.getWildcardNode();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.SubPathNodeImpl <em>Sub Path Node</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.SubPathNodeImpl <em>Sub Path Node</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.SubPathNodeImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getSubPathNode()
+     * @see kieker.tools.al.aspectLang.impl.SubPathNodeImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getSubPathNode()
      * @generated
      */
     EClass SUB_PATH_NODE = eINSTANCE.getSubPathNode();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ParentNodeImpl <em>Parent Node</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.ParentNodeImpl <em>Parent Node</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.ParentNodeImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getParentNode()
+     * @see kieker.tools.al.aspectLang.impl.ParentNodeImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getParentNode()
      * @generated
      */
     EClass PARENT_NODE = eINSTANCE.getParentNode();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.PropertyConstraintImpl <em>Property Constraint</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.PropertyConstraintImpl <em>Property Constraint</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.PropertyConstraintImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getPropertyConstraint()
+     * @see kieker.tools.al.aspectLang.impl.PropertyConstraintImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getPropertyConstraint()
      * @generated
      */
     EClass PROPERTY_CONSTRAINT = eINSTANCE.getPropertyConstraint();
@@ -3607,11 +3607,11 @@ public interface AspectLangPackage extends EPackage
     EReference PROPERTY_CONSTRAINT__RIGHT = eINSTANCE.getPropertyConstraint_Right();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.PropertyConstraintCompareImpl <em>Property Constraint Compare</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.PropertyConstraintCompareImpl <em>Property Constraint Compare</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.PropertyConstraintCompareImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getPropertyConstraintCompare()
+     * @see kieker.tools.al.aspectLang.impl.PropertyConstraintCompareImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getPropertyConstraintCompare()
      * @generated
      */
     EClass PROPERTY_CONSTRAINT_COMPARE = eINSTANCE.getPropertyConstraintCompare();
@@ -3625,21 +3625,21 @@ public interface AspectLangPackage extends EPackage
     EAttribute PROPERTY_CONSTRAINT_COMPARE__COMPARE = eINSTANCE.getPropertyConstraintCompare_Compare();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ConstraintElementImpl <em>Constraint Element</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.ConstraintElementImpl <em>Constraint Element</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.ConstraintElementImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getConstraintElement()
+     * @see kieker.tools.al.aspectLang.impl.ConstraintElementImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getConstraintElement()
      * @generated
      */
     EClass CONSTRAINT_ELEMENT = eINSTANCE.getConstraintElement();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.LocalQueryImpl <em>Local Query</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.LocalQueryImpl <em>Local Query</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.LocalQueryImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getLocalQuery()
+     * @see kieker.tools.al.aspectLang.impl.LocalQueryImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getLocalQuery()
      * @generated
      */
     EClass LOCAL_QUERY = eINSTANCE.getLocalQuery();
@@ -3669,11 +3669,11 @@ public interface AspectLangPackage extends EPackage
     EReference LOCAL_QUERY__TYPEOF = eINSTANCE.getLocalQuery_Typeof();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ModelPropertyImpl <em>Model Property</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.ModelPropertyImpl <em>Model Property</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.ModelPropertyImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getModelProperty()
+     * @see kieker.tools.al.aspectLang.impl.ModelPropertyImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getModelProperty()
      * @generated
      */
     EClass MODEL_PROPERTY = eINSTANCE.getModelProperty();
@@ -3687,11 +3687,11 @@ public interface AspectLangPackage extends EPackage
     EReference MODEL_PROPERTY__REFERENCE = eINSTANCE.getModelProperty_Reference();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.TypeofImpl <em>Typeof</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.TypeofImpl <em>Typeof</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.TypeofImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getTypeof()
+     * @see kieker.tools.al.aspectLang.impl.TypeofImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getTypeof()
      * @generated
      */
     EClass TYPEOF = eINSTANCE.getTypeof();
@@ -3705,21 +3705,21 @@ public interface AspectLangPackage extends EPackage
     EReference TYPEOF__REFERENCE = eINSTANCE.getTypeof_Reference();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.LiteralImpl <em>Literal</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.LiteralImpl <em>Literal</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.LiteralImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getLiteral()
+     * @see kieker.tools.al.aspectLang.impl.LiteralImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getLiteral()
      * @generated
      */
     EClass LITERAL = eINSTANCE.getLiteral();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.FloatLiteralImpl <em>Float Literal</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.FloatLiteralImpl <em>Float Literal</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.FloatLiteralImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getFloatLiteral()
+     * @see kieker.tools.al.aspectLang.impl.FloatLiteralImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getFloatLiteral()
      * @generated
      */
     EClass FLOAT_LITERAL = eINSTANCE.getFloatLiteral();
@@ -3733,11 +3733,11 @@ public interface AspectLangPackage extends EPackage
     EAttribute FLOAT_LITERAL__VALUE = eINSTANCE.getFloatLiteral_Value();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.IntLiteralImpl <em>Int Literal</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.IntLiteralImpl <em>Int Literal</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.IntLiteralImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getIntLiteral()
+     * @see kieker.tools.al.aspectLang.impl.IntLiteralImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getIntLiteral()
      * @generated
      */
     EClass INT_LITERAL = eINSTANCE.getIntLiteral();
@@ -3751,11 +3751,11 @@ public interface AspectLangPackage extends EPackage
     EAttribute INT_LITERAL__VALUE = eINSTANCE.getIntLiteral_Value();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.StringLiteralImpl <em>String Literal</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.StringLiteralImpl <em>String Literal</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.StringLiteralImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getStringLiteral()
+     * @see kieker.tools.al.aspectLang.impl.StringLiteralImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getStringLiteral()
      * @generated
      */
     EClass STRING_LITERAL = eINSTANCE.getStringLiteral();
@@ -3769,11 +3769,11 @@ public interface AspectLangPackage extends EPackage
     EAttribute STRING_LITERAL__VALUE = eINSTANCE.getStringLiteral_Value();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.TypeReferenceImpl <em>Type Reference</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.impl.TypeReferenceImpl <em>Type Reference</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.TypeReferenceImpl
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getTypeReference()
+     * @see kieker.tools.al.aspectLang.impl.TypeReferenceImpl
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getTypeReference()
      * @generated
      */
     EClass TYPE_REFERENCE = eINSTANCE.getTypeReference();
@@ -3803,71 +3803,71 @@ public interface AspectLangPackage extends EPackage
     EAttribute TYPE_REFERENCE__COLLECTION = eINSTANCE.getTypeReference_Collection();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.InsertionPoint <em>Insertion Point</em>}' enum.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.InsertionPoint <em>Insertion Point</em>}' enum.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.InsertionPoint
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getInsertionPoint()
+     * @see kieker.tools.al.aspectLang.InsertionPoint
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getInsertionPoint()
      * @generated
      */
     EEnum INSERTION_POINT = eINSTANCE.getInsertionPoint();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.InternalFunction <em>Internal Function</em>}' enum.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.InternalFunction <em>Internal Function</em>}' enum.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.InternalFunction
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getInternalFunction()
+     * @see kieker.tools.al.aspectLang.InternalFunction
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getInternalFunction()
      * @generated
      */
     EEnum INTERNAL_FUNCTION = eINSTANCE.getInternalFunction();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.ReflectionFunction <em>Reflection Function</em>}' enum.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.ReflectionFunction <em>Reflection Function</em>}' enum.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.ReflectionFunction
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getReflectionFunction()
+     * @see kieker.tools.al.aspectLang.ReflectionFunction
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getReflectionFunction()
      * @generated
      */
     EEnum REFLECTION_FUNCTION = eINSTANCE.getReflectionFunction();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.Technology <em>Technology</em>}' enum.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.Technology <em>Technology</em>}' enum.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.Technology
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getTechnology()
+     * @see kieker.tools.al.aspectLang.Technology
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getTechnology()
      * @generated
      */
     EEnum TECHNOLOGY = eINSTANCE.getTechnology();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.QueryModifier <em>Query Modifier</em>}' enum.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.QueryModifier <em>Query Modifier</em>}' enum.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.QueryModifier
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getQueryModifier()
+     * @see kieker.tools.al.aspectLang.QueryModifier
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getQueryModifier()
      * @generated
      */
     EEnum QUERY_MODIFIER = eINSTANCE.getQueryModifier();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.LogicOperator <em>Logic Operator</em>}' enum.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.LogicOperator <em>Logic Operator</em>}' enum.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.LogicOperator
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getLogicOperator()
+     * @see kieker.tools.al.aspectLang.LogicOperator
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getLogicOperator()
      * @generated
      */
     EEnum LOGIC_OPERATOR = eINSTANCE.getLogicOperator();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.aspectLang.CompareOperator <em>Compare Operator</em>}' enum.
+     * The meta object literal for the '{@link kieker.tools.al.aspectLang.CompareOperator <em>Compare Operator</em>}' enum.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.CompareOperator
-     * @see de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangPackageImpl#getCompareOperator()
+     * @see kieker.tools.al.aspectLang.CompareOperator
+     * @see kieker.tools.al.aspectLang.impl.AspectLangPackageImpl#getCompareOperator()
      * @generated
      */
     EEnum COMPARE_OPERATOR = eINSTANCE.getCompareOperator();

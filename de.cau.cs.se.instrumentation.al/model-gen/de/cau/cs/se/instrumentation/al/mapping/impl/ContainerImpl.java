@@ -1,17 +1,17 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.mapping.impl;
+package kieker.tools.al.mapping.impl;
 
-import de.cau.cs.se.instrumentation.al.mapping.Attribute;
-import de.cau.cs.se.instrumentation.al.mapping.ContainerModifier;
-import de.cau.cs.se.instrumentation.al.mapping.Feature;
-import de.cau.cs.se.instrumentation.al.mapping.MappingPackage;
-import de.cau.cs.se.instrumentation.al.mapping.NamedElement;
-import de.cau.cs.se.instrumentation.al.mapping.NamedType;
-import de.cau.cs.se.instrumentation.al.mapping.Operation;
-import de.cau.cs.se.instrumentation.al.mapping.Reference;
-import de.cau.cs.se.instrumentation.al.mapping.Traceability;
-import de.cau.cs.se.instrumentation.al.mapping.Type;
+import kieker.tools.al.mapping.Attribute;
+import kieker.tools.al.mapping.ContainerModifier;
+import kieker.tools.al.mapping.Feature;
+import kieker.tools.al.mapping.MappingPackage;
+import kieker.tools.al.mapping.NamedElement;
+import kieker.tools.al.mapping.NamedType;
+import kieker.tools.al.mapping.Operation;
+import kieker.tools.al.mapping.Reference;
+import kieker.tools.al.mapping.Traceability;
+import kieker.tools.al.mapping.Type;
 
 import java.util.Collection;
 
@@ -38,19 +38,19 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.mapping.impl.ContainerImpl#getContents <em>Contents</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.mapping.impl.ContainerImpl#getTypes <em>Types</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.mapping.impl.ContainerImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.mapping.impl.ContainerImpl#getPredecessor <em>Predecessor</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.mapping.impl.ContainerImpl#getModifier <em>Modifier</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.mapping.impl.ContainerImpl#getOperations <em>Operations</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.mapping.impl.ContainerImpl#getAttributes <em>Attributes</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.mapping.impl.ContainerImpl#getReferences <em>References</em>}</li>
+ *   <li>{@link kieker.tools.al.mapping.impl.ContainerImpl#getContents <em>Contents</em>}</li>
+ *   <li>{@link kieker.tools.al.mapping.impl.ContainerImpl#getTypes <em>Types</em>}</li>
+ *   <li>{@link kieker.tools.al.mapping.impl.ContainerImpl#getName <em>Name</em>}</li>
+ *   <li>{@link kieker.tools.al.mapping.impl.ContainerImpl#getPredecessor <em>Predecessor</em>}</li>
+ *   <li>{@link kieker.tools.al.mapping.impl.ContainerImpl#getModifier <em>Modifier</em>}</li>
+ *   <li>{@link kieker.tools.al.mapping.impl.ContainerImpl#getOperations <em>Operations</em>}</li>
+ *   <li>{@link kieker.tools.al.mapping.impl.ContainerImpl#getAttributes <em>Attributes</em>}</li>
+ *   <li>{@link kieker.tools.al.mapping.impl.ContainerImpl#getReferences <em>References</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ContainerImpl extends MinimalEObjectImpl.Container implements de.cau.cs.se.instrumentation.al.mapping.Container {
+public class ContainerImpl extends MinimalEObjectImpl.Container implements kieker.tools.al.mapping.Container {
 	/**
 	 * The cached value of the '{@link #getContents() <em>Contents</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -59,7 +59,7 @@ public class ContainerImpl extends MinimalEObjectImpl.Container implements de.ca
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<de.cau.cs.se.instrumentation.al.mapping.Container> contents;
+	protected EList<kieker.tools.al.mapping.Container> contents;
 
 	/**
 	 * The cached value of the '{@link #getTypes() <em>Types</em>}' containment reference list.
@@ -165,9 +165,9 @@ public class ContainerImpl extends MinimalEObjectImpl.Container implements de.ca
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<de.cau.cs.se.instrumentation.al.mapping.Container> getContents() {
+	public EList<kieker.tools.al.mapping.Container> getContents() {
 		if (contents == null) {
-			contents = new EObjectContainmentEList<de.cau.cs.se.instrumentation.al.mapping.Container>(de.cau.cs.se.instrumentation.al.mapping.Container.class, this, MappingPackage.CONTAINER__CONTENTS);
+			contents = new EObjectContainmentEList<kieker.tools.al.mapping.Container>(kieker.tools.al.mapping.Container.class, this, MappingPackage.CONTAINER__CONTENTS);
 		}
 		return contents;
 	}
@@ -405,7 +405,7 @@ public class ContainerImpl extends MinimalEObjectImpl.Container implements de.ca
 		switch (featureID) {
 			case MappingPackage.CONTAINER__CONTENTS:
 				getContents().clear();
-				getContents().addAll((Collection<? extends de.cau.cs.se.instrumentation.al.mapping.Container>)newValue);
+				getContents().addAll((Collection<? extends kieker.tools.al.mapping.Container>)newValue);
 				return;
 			case MappingPackage.CONTAINER__TYPES:
 				getTypes().clear();

@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.rl.recordLang;
+package kieker.tools.rl.recordLang;
 
 
 /**
@@ -12,10 +12,10 @@ package de.cau.cs.se.instrumentation.rl.recordLang;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral#getValue <em>Value</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.ConstantLiteral#getValue <em>Value</em>}</li>
  * </ul>
  *
- * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getConstantLiteral()
+ * @see kieker.tools.rl.recordLang.RecordLangPackage#getConstantLiteral()
  * @model
  * @generated
  */
@@ -31,14 +31,14 @@ public interface ConstantLiteral extends Literal
    * <!-- end-user-doc -->
    * @return the value of the '<em>Value</em>' reference.
    * @see #setValue(Constant)
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getConstantLiteral_Value()
+   * @see kieker.tools.rl.recordLang.RecordLangPackage#getConstantLiteral_Value()
    * @model
    * @generated
    */
   Constant getValue();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral#getValue <em>Value</em>}' reference.
+   * Sets the value of the '{@link kieker.tools.rl.recordLang.ConstantLiteral#getValue <em>Value</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Value</em>' reference.

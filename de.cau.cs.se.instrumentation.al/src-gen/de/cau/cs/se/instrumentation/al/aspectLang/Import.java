@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang;
+package kieker.tools.al.aspectLang;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -13,10 +13,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Import#getImportedNamespace <em>Imported Namespace</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.Import#getImportedNamespace <em>Imported Namespace</em>}</li>
  * </ul>
  *
- * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getImport()
+ * @see kieker.tools.al.aspectLang.AspectLangPackage#getImport()
  * @model
  * @generated
  */
@@ -32,14 +32,14 @@ public interface Import extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Imported Namespace</em>' attribute.
    * @see #setImportedNamespace(String)
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getImport_ImportedNamespace()
+   * @see kieker.tools.al.aspectLang.AspectLangPackage#getImport_ImportedNamespace()
    * @model
    * @generated
    */
   String getImportedNamespace();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.Import#getImportedNamespace <em>Imported Namespace</em>}' attribute.
+   * Sets the value of the '{@link kieker.tools.al.aspectLang.Import#getImportedNamespace <em>Imported Namespace</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Imported Namespace</em>' attribute.

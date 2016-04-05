@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.al.modelhandling
+package kieker.tools.al.modelhandling
 
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EReference
@@ -28,7 +28,7 @@ import com.google.common.base.Predicate;
 import com.google.inject.Inject;
 import org.eclipse.emf.ecore.EcorePackage$Literals
 import org.eclipse.xtext.resource.IEObjectDescription
-import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel
+import kieker.tools.al.aspectLang.ApplicationModel
 
 class ForeignModelGlobalScopeProvider extends DefaultGlobalScopeProvider {
 	@Inject

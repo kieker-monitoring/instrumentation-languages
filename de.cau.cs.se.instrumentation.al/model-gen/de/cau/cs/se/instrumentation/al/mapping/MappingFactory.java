@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.mapping;
+package kieker.tools.al.mapping;
 
 import org.eclipse.emf.ecore.EFactory;
 
@@ -9,7 +9,7 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see de.cau.cs.se.instrumentation.al.mapping.MappingPackage
+ * @see kieker.tools.al.mapping.MappingPackage
  * @generated
  */
 public interface MappingFactory extends EFactory {
@@ -19,7 +19,7 @@ public interface MappingFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	MappingFactory eINSTANCE = de.cau.cs.se.instrumentation.al.mapping.impl.MappingFactoryImpl.init();
+	MappingFactory eINSTANCE = kieker.tools.al.mapping.impl.MappingFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Type</em>'.

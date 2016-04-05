@@ -1,13 +1,13 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.mapping.impl;
+package kieker.tools.al.mapping.impl;
 
-import de.cau.cs.se.instrumentation.al.mapping.MappingPackage;
-import de.cau.cs.se.instrumentation.al.mapping.Operation;
-import de.cau.cs.se.instrumentation.al.mapping.OperationModifier;
-import de.cau.cs.se.instrumentation.al.mapping.Parameter;
-import de.cau.cs.se.instrumentation.al.mapping.Traceability;
-import de.cau.cs.se.instrumentation.al.mapping.TypeReference;
+import kieker.tools.al.mapping.MappingPackage;
+import kieker.tools.al.mapping.Operation;
+import kieker.tools.al.mapping.OperationModifier;
+import kieker.tools.al.mapping.Parameter;
+import kieker.tools.al.mapping.Traceability;
+import kieker.tools.al.mapping.TypeReference;
 
 import java.util.Collection;
 
@@ -33,10 +33,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.mapping.impl.OperationImpl#getPredecessor <em>Predecessor</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.mapping.impl.OperationImpl#getReturnType <em>Return Type</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.mapping.impl.OperationImpl#getParameters <em>Parameters</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.mapping.impl.OperationImpl#getModifier <em>Modifier</em>}</li>
+ *   <li>{@link kieker.tools.al.mapping.impl.OperationImpl#getPredecessor <em>Predecessor</em>}</li>
+ *   <li>{@link kieker.tools.al.mapping.impl.OperationImpl#getReturnType <em>Return Type</em>}</li>
+ *   <li>{@link kieker.tools.al.mapping.impl.OperationImpl#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link kieker.tools.al.mapping.impl.OperationImpl#getModifier <em>Modifier</em>}</li>
  * </ul>
  *
  * @generated

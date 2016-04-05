@@ -1,12 +1,12 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: de.cau.cs.se.instrumentation.al.tests
+Bundle-Name: kieker.tools.al.tests
 Bundle-Vendor: My Company
 Bundle-Version: 1.2.0.qualifier
-Bundle-SymbolicName: de.cau.cs.se.instrumentation.al.tests; singleton:=true
+Bundle-SymbolicName: kieker.tools.al.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: de.cau.cs.se.instrumentation.al,
- de.cau.cs.se.instrumentation.al.ui,
+Require-Bundle: kieker.tools.al,
+ kieker.tools.al.ui,
  org.eclipse.core.runtime,
  org.eclipse.xtext.junit4,
  org.eclipse.ui.workbench;resolution:=optional,
@@ -21,4 +21,4 @@ Import-Package: org.apache.log4j,
  org.junit.runners;version="4.5.0",
  org.junit.runners.model;version="4.5.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: de.cau.cs.se.instrumentation.al
+Export-Package: kieker.tools.al

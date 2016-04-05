@@ -1,9 +1,9 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang.impl;
+package kieker.tools.al.aspectLang.impl;
 
-import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
-import de.cau.cs.se.instrumentation.al.aspectLang.IntLiteral;
+import kieker.tools.al.aspectLang.AspectLangPackage;
+import kieker.tools.al.aspectLang.IntLiteral;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.IntLiteralImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.IntLiteralImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated

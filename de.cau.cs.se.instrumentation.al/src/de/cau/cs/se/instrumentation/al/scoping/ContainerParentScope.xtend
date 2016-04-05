@@ -13,16 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.al.scoping
+package kieker.tools.al.scoping
 
 import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.naming.QualifiedName
 import org.eclipse.emf.ecore.EObject
-import de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode
-import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery
-import de.cau.cs.se.instrumentation.al.mapping.Container
+import kieker.tools.al.aspectLang.ContainerNode
+import kieker.tools.al.aspectLang.LocationQuery
+import kieker.tools.al.mapping.Container
 import org.eclipse.xtext.resource.EObjectDescription
-import de.cau.cs.se.instrumentation.al.mapping.NamedElement
+import kieker.tools.al.mapping.NamedElement
 
 /**
  * TODO why is this named ContainerParentScope

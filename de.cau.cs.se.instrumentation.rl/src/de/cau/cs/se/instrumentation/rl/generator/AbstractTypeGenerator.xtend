@@ -1,6 +1,6 @@
-package de.cau.cs.se.instrumentation.rl.generator
+package kieker.tools.rl.generator
 
-import de.cau.cs.se.instrumentation.rl.recordLang.Type
+import kieker.tools.rl.recordLang.Type
 
 abstract class AbstractTypeGenerator {
 	

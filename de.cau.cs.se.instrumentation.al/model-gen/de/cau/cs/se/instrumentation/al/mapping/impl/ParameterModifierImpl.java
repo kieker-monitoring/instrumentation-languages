@@ -1,10 +1,10 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.mapping.impl;
+package kieker.tools.al.mapping.impl;
 
-import de.cau.cs.se.instrumentation.al.mapping.MappingPackage;
-import de.cau.cs.se.instrumentation.al.mapping.ParameterModifier;
-import de.cau.cs.se.instrumentation.al.mapping.Traceability;
+import kieker.tools.al.mapping.MappingPackage;
+import kieker.tools.al.mapping.ParameterModifier;
+import kieker.tools.al.mapping.Traceability;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.mapping.impl.ParameterModifierImpl#getPredecessor <em>Predecessor</em>}</li>
+ *   <li>{@link kieker.tools.al.mapping.impl.ParameterModifierImpl#getPredecessor <em>Predecessor</em>}</li>
  * </ul>
  *
  * @generated

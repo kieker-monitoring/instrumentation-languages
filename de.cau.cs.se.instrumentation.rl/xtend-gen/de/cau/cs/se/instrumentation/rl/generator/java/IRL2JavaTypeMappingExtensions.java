@@ -1,7 +1,7 @@
-package de.cau.cs.se.instrumentation.rl.generator.java;
+package kieker.tools.rl.generator.java;
 
-import de.cau.cs.se.instrumentation.rl.generator.InternalErrorException;
-import de.cau.cs.se.instrumentation.rl.recordLang.BaseType;
+import kieker.tools.rl.generator.InternalErrorException;
+import kieker.tools.rl.recordLang.BaseType;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 
 @SuppressWarnings("all")

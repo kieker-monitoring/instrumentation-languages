@@ -1,36 +1,36 @@
-package de.cau.cs.se.instrumentation.al.generator
+package kieker.tools.al.generator
 
 import org.eclipse.emf.common.util.EList
-import de.cau.cs.se.instrumentation.al.aspectLang.Collector
+import kieker.tools.al.aspectLang.Collector
 import java.util.ArrayList
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
+import kieker.tools.rl.recordLang.RecordType
 import java.util.List
-import de.cau.cs.se.instrumentation.rl.recordLang.Model
-import de.cau.cs.se.instrumentation.al.aspectLang.AspectModel
-import de.cau.cs.se.instrumentation.al.aspectLang.Advice
-import de.cau.cs.se.instrumentation.al.aspectLang.Value
-import de.cau.cs.se.instrumentation.al.aspectLang.Literal
-import de.cau.cs.se.instrumentation.al.aspectLang.ReferenceValue
-import de.cau.cs.se.instrumentation.al.aspectLang.InternalFunctionProperty
-import de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameter
-import de.cau.cs.se.instrumentation.al.aspectLang.Event
-import de.cau.cs.se.instrumentation.al.aspectLang.StringLiteral
-import de.cau.cs.se.instrumentation.al.aspectLang.IntLiteral
-import de.cau.cs.se.instrumentation.al.aspectLang.FloatLiteral
-import de.cau.cs.se.instrumentation.rl.generator.InternalErrorException
-import de.cau.cs.se.instrumentation.al.aspectLang.ReflectionProperty
-import de.cau.cs.se.instrumentation.al.aspectLang.RuntimeProperty
-import de.cau.cs.se.instrumentation.al.aspectLang.Property
-import de.cau.cs.se.instrumentation.al.aspectLang.InsertionPoint
-import de.cau.cs.se.instrumentation.al.aspectLang.TypeReference
+import kieker.tools.rl.recordLang.Model
+import kieker.tools.al.aspectLang.AspectModel
+import kieker.tools.al.aspectLang.Advice
+import kieker.tools.al.aspectLang.Value
+import kieker.tools.al.aspectLang.Literal
+import kieker.tools.al.aspectLang.ReferenceValue
+import kieker.tools.al.aspectLang.InternalFunctionProperty
+import kieker.tools.al.aspectLang.AdviceParameter
+import kieker.tools.al.aspectLang.Event
+import kieker.tools.al.aspectLang.StringLiteral
+import kieker.tools.al.aspectLang.IntLiteral
+import kieker.tools.al.aspectLang.FloatLiteral
+import kieker.tools.rl.generator.InternalErrorException
+import kieker.tools.al.aspectLang.ReflectionProperty
+import kieker.tools.al.aspectLang.RuntimeProperty
+import kieker.tools.al.aspectLang.Property
+import kieker.tools.al.aspectLang.InsertionPoint
+import kieker.tools.al.aspectLang.TypeReference
 
-import static extension de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation.*
-import static extension de.cau.cs.se.instrumentation.rl.generator.java.IRL2JavaTypeMappingExtensions.*
+import static extension kieker.tools.rl.validation.PropertyEvaluation.*
+import static extension kieker.tools.rl.generator.java.IRL2JavaTypeMappingExtensions.*
 
 import java.util.Collection
 import java.util.HashMap
 import java.util.Map
-import de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameterDeclaration
+import kieker.tools.al.aspectLang.AdviceParameterDeclaration
 
 /**
  * TODO Class name should be improved.
@@ -121,7 +121,7 @@ class CommonJavaTemplates {
 		CTRLINST.newMonitoringRecord(new «event.type.name»(«event.type.collectAllDataProperties.map[it.createValueName].join(', ')»));
 	'''
 	
-	private static def CharSequence createValueName(de.cau.cs.se.instrumentation.rl.recordLang.Property property) {
+	private static def CharSequence createValueName(kieker.tools.rl.recordLang.Property property) {
 		"collect" + property.name.toFirstUpper
 	}
 	

@@ -1,11 +1,11 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang.impl;
+package kieker.tools.al.aspectLang.impl;
 
-import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
-import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery;
-import de.cau.cs.se.instrumentation.al.aspectLang.Property;
-import de.cau.cs.se.instrumentation.al.aspectLang.ReferenceValue;
+import kieker.tools.al.aspectLang.AspectLangPackage;
+import kieker.tools.al.aspectLang.LocationQuery;
+import kieker.tools.al.aspectLang.Property;
+import kieker.tools.al.aspectLang.ReferenceValue;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -23,8 +23,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ReferenceValueImpl#getQuery <em>Query</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ReferenceValueImpl#getProperty <em>Property</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.ReferenceValueImpl#getQuery <em>Query</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.ReferenceValueImpl#getProperty <em>Property</em>}</li>
  * </ul>
  *
  * @generated

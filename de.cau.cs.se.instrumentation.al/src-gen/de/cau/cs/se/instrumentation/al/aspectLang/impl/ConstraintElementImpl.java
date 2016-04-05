@@ -1,9 +1,9 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang.impl;
+package kieker.tools.al.aspectLang.impl;
 
-import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
-import de.cau.cs.se.instrumentation.al.aspectLang.ConstraintElement;
+import kieker.tools.al.aspectLang.AspectLangPackage;
+import kieker.tools.al.aspectLang.ConstraintElement;
 
 import org.eclipse.emf.ecore.EClass;
 

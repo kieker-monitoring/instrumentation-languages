@@ -1,4 +1,4 @@
-package de.cau.cs.se.instrumentation.al.handler.pcm;
+package kieker.tools.al.handler.pcm;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;

@@ -1,11 +1,11 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang.impl;
+package kieker.tools.al.aspectLang.impl;
 
-import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
-import de.cau.cs.se.instrumentation.al.aspectLang.LogicOperator;
-import de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraint;
-import de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraintCompare;
+import kieker.tools.al.aspectLang.AspectLangPackage;
+import kieker.tools.al.aspectLang.LogicOperator;
+import kieker.tools.al.aspectLang.PropertyConstraint;
+import kieker.tools.al.aspectLang.PropertyConstraintCompare;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -24,9 +24,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.PropertyConstraintImpl#getLeft <em>Left</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.PropertyConstraintImpl#getLogic <em>Logic</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.PropertyConstraintImpl#getRight <em>Right</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.PropertyConstraintImpl#getLeft <em>Left</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.PropertyConstraintImpl#getLogic <em>Logic</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.PropertyConstraintImpl#getRight <em>Right</em>}</li>
  * </ul>
  *
  * @generated

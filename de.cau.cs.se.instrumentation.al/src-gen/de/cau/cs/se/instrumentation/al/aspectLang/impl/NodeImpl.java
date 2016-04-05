@@ -1,10 +1,10 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang.impl;
+package kieker.tools.al.aspectLang.impl;
 
-import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
-import de.cau.cs.se.instrumentation.al.aspectLang.Node;
-import de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraint;
+import kieker.tools.al.aspectLang.AspectLangPackage;
+import kieker.tools.al.aspectLang.Node;
+import kieker.tools.al.aspectLang.PropertyConstraint;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.NodeImpl#getConstraint <em>Constraint</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.NodeImpl#getConstraint <em>Constraint</em>}</li>
  * </ul>
  *
  * @generated

@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.rl.recordLang;
+package kieker.tools.rl.recordLang;
 
 
 /**
@@ -12,10 +12,10 @@ package de.cau.cs.se.instrumentation.rl.recordLang;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.BuiltInValueLiteral#getValue <em>Value</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.BuiltInValueLiteral#getValue <em>Value</em>}</li>
  * </ul>
  *
- * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getBuiltInValueLiteral()
+ * @see kieker.tools.rl.recordLang.RecordLangPackage#getBuiltInValueLiteral()
  * @model
  * @generated
  */
@@ -31,14 +31,14 @@ public interface BuiltInValueLiteral extends Literal
    * <!-- end-user-doc -->
    * @return the value of the '<em>Value</em>' attribute.
    * @see #setValue(String)
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getBuiltInValueLiteral_Value()
+   * @see kieker.tools.rl.recordLang.RecordLangPackage#getBuiltInValueLiteral_Value()
    * @model
    * @generated
    */
   String getValue();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.rl.recordLang.BuiltInValueLiteral#getValue <em>Value</em>}' attribute.
+   * Sets the value of the '{@link kieker.tools.rl.recordLang.BuiltInValueLiteral#getValue <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Value</em>' attribute.

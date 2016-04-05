@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang;
+package kieker.tools.al.aspectLang;
 
 
 /**
@@ -12,10 +12,10 @@ package de.cau.cs.se.instrumentation.al.aspectLang;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.InternalFunctionProperty#getFunction <em>Function</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.InternalFunctionProperty#getFunction <em>Function</em>}</li>
  * </ul>
  *
- * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getInternalFunctionProperty()
+ * @see kieker.tools.al.aspectLang.AspectLangPackage#getInternalFunctionProperty()
  * @model
  * @generated
  */
@@ -23,7 +23,7 @@ public interface InternalFunctionProperty extends Value
 {
   /**
    * Returns the value of the '<em><b>Function</b></em>' attribute.
-   * The literals are from the enumeration {@link de.cau.cs.se.instrumentation.al.aspectLang.InternalFunction}.
+   * The literals are from the enumeration {@link kieker.tools.al.aspectLang.InternalFunction}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Function</em>' attribute isn't clear,
@@ -31,20 +31,20 @@ public interface InternalFunctionProperty extends Value
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Function</em>' attribute.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.InternalFunction
+   * @see kieker.tools.al.aspectLang.InternalFunction
    * @see #setFunction(InternalFunction)
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getInternalFunctionProperty_Function()
+   * @see kieker.tools.al.aspectLang.AspectLangPackage#getInternalFunctionProperty_Function()
    * @model
    * @generated
    */
   InternalFunction getFunction();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.InternalFunctionProperty#getFunction <em>Function</em>}' attribute.
+   * Sets the value of the '{@link kieker.tools.al.aspectLang.InternalFunctionProperty#getFunction <em>Function</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Function</em>' attribute.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.InternalFunction
+   * @see kieker.tools.al.aspectLang.InternalFunction
    * @see #getFunction()
    * @generated
    */

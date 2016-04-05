@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.rl.generator
+package kieker.tools.rl.generator
 
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
-import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType
-import de.cau.cs.se.instrumentation.rl.preferences.TargetsPreferences
+import kieker.tools.rl.recordLang.RecordType
+import kieker.tools.rl.recordLang.TemplateType
+import kieker.tools.rl.preferences.TargetsPreferences
 
 /**
  * Generates one single files per record for java, c, and perl. 

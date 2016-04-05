@@ -1,12 +1,12 @@
 /**
  */
-package de.cau.cs.se.instrumentation.rl.recordLang.impl;
+package kieker.tools.rl.recordLang.impl;
 
-import de.cau.cs.se.instrumentation.rl.recordLang.ComplexType;
-import de.cau.cs.se.instrumentation.rl.recordLang.Constant;
-import de.cau.cs.se.instrumentation.rl.recordLang.Property;
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
-import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType;
+import kieker.tools.rl.recordLang.ComplexType;
+import kieker.tools.rl.recordLang.Constant;
+import kieker.tools.rl.recordLang.Property;
+import kieker.tools.rl.recordLang.RecordLangPackage;
+import kieker.tools.rl.recordLang.TemplateType;
 
 import java.util.Collection;
 
@@ -32,11 +32,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ComplexTypeImpl#getAuthor <em>Author</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ComplexTypeImpl#getSince <em>Since</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ComplexTypeImpl#getParents <em>Parents</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ComplexTypeImpl#getProperties <em>Properties</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ComplexTypeImpl#getConstants <em>Constants</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.impl.ComplexTypeImpl#getAuthor <em>Author</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.impl.ComplexTypeImpl#getSince <em>Since</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.impl.ComplexTypeImpl#getParents <em>Parents</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.impl.ComplexTypeImpl#getProperties <em>Properties</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.impl.ComplexTypeImpl#getConstants <em>Constants</em>}</li>
  * </ul>
  *
  * @generated

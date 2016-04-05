@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang;
+package kieker.tools.al.aspectLang;
 
 
 /**
@@ -9,7 +9,7 @@ package de.cau.cs.se.instrumentation.al.aspectLang;
  * <!-- end-user-doc -->
  *
  *
- * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getLiteral()
+ * @see kieker.tools.al.aspectLang.AspectLangPackage#getLiteral()
  * @model
  * @generated
  */

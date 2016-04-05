@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.rl.ui;
+package kieker.tools.rl.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
@@ -24,7 +24,7 @@ import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculato
  * 
  * @author Reiner Jung
  */
-public class RecordLangUiModule extends de.cau.cs.se.instrumentation.rl.ui.AbstractRecordLangUiModule {
+public class RecordLangUiModule extends kieker.tools.rl.ui.AbstractRecordLangUiModule {
 
 	/**
 	 * Generic UI constructor.

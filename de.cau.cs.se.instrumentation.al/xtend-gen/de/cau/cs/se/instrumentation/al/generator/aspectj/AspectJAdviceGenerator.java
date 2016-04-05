@@ -1,15 +1,15 @@
-package de.cau.cs.se.instrumentation.al.generator.aspectj;
+package kieker.tools.al.generator.aspectj;
 
 import com.google.common.base.Objects;
 import de.cau.cs.se.geco.architecture.framework.IGenerator;
-import de.cau.cs.se.instrumentation.al.aspectLang.Advice;
-import de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameterDeclaration;
-import de.cau.cs.se.instrumentation.al.aspectLang.Collector;
-import de.cau.cs.se.instrumentation.al.aspectLang.Event;
-import de.cau.cs.se.instrumentation.al.aspectLang.InsertionPoint;
-import de.cau.cs.se.instrumentation.al.aspectLang.UtilizeAdvice;
-import de.cau.cs.se.instrumentation.al.aspectLang.Value;
-import de.cau.cs.se.instrumentation.al.generator.CommonJavaTemplates;
+import kieker.tools.al.aspectLang.Advice;
+import kieker.tools.al.aspectLang.AdviceParameterDeclaration;
+import kieker.tools.al.aspectLang.Collector;
+import kieker.tools.al.aspectLang.Event;
+import kieker.tools.al.aspectLang.InsertionPoint;
+import kieker.tools.al.aspectLang.UtilizeAdvice;
+import kieker.tools.al.aspectLang.Value;
+import kieker.tools.al.generator.CommonJavaTemplates;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

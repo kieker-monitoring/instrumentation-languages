@@ -13,25 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.cau.cs.se.instrumentation.rl.typing.jar;
+package kieker.tools.rl.typing.jar;
 
 import com.google.common.base.Objects;
-import de.cau.cs.se.instrumentation.rl.recordLang.BaseType;
-import de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral;
-import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
-import de.cau.cs.se.instrumentation.rl.recordLang.ComplexType;
-import de.cau.cs.se.instrumentation.rl.recordLang.Constant;
-import de.cau.cs.se.instrumentation.rl.recordLang.FloatLiteral;
-import de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral;
-import de.cau.cs.se.instrumentation.rl.recordLang.Literal;
-import de.cau.cs.se.instrumentation.rl.recordLang.Model;
-import de.cau.cs.se.instrumentation.rl.recordLang.Property;
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangFactory;
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
-import de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral;
-import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType;
-import de.cau.cs.se.instrumentation.rl.recordLang.Type;
-import de.cau.cs.se.instrumentation.rl.typing.BaseTypes;
+import kieker.tools.rl.recordLang.BaseType;
+import kieker.tools.rl.recordLang.BooleanLiteral;
+import kieker.tools.rl.recordLang.Classifier;
+import kieker.tools.rl.recordLang.ComplexType;
+import kieker.tools.rl.recordLang.Constant;
+import kieker.tools.rl.recordLang.FloatLiteral;
+import kieker.tools.rl.recordLang.IntLiteral;
+import kieker.tools.rl.recordLang.Literal;
+import kieker.tools.rl.recordLang.Model;
+import kieker.tools.rl.recordLang.Property;
+import kieker.tools.rl.recordLang.RecordLangFactory;
+import kieker.tools.rl.recordLang.RecordType;
+import kieker.tools.rl.recordLang.StringLiteral;
+import kieker.tools.rl.recordLang.TemplateType;
+import kieker.tools.rl.recordLang.Type;
+import kieker.tools.rl.typing.BaseTypes;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;

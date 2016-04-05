@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.cau.cs.se.instrumentation.rl.generator;
+package kieker.tools.rl.generator;
 
 import com.google.common.collect.Iterators;
-import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator;
-import de.cau.cs.se.instrumentation.rl.generator.AbstractTemplateTypeGenerator;
-import de.cau.cs.se.instrumentation.rl.generator.GeneratorConfiguration;
-import de.cau.cs.se.instrumentation.rl.preferences.TargetsPreferences;
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
-import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType;
+import kieker.tools.rl.generator.AbstractRecordTypeGenerator;
+import kieker.tools.rl.generator.AbstractTemplateTypeGenerator;
+import kieker.tools.rl.generator.GeneratorConfiguration;
+import kieker.tools.rl.preferences.TargetsPreferences;
+import kieker.tools.rl.recordLang.RecordType;
+import kieker.tools.rl.recordLang.TemplateType;
 import java.lang.reflect.Constructor;
 import java.util.Iterator;
 import org.eclipse.emf.common.util.TreeIterator;

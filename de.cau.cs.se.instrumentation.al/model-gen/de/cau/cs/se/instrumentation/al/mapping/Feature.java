@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.mapping;
+package kieker.tools.al.mapping;
 
 
 /**
@@ -9,7 +9,7 @@ package de.cau.cs.se.instrumentation.al.mapping;
  * <!-- end-user-doc -->
  *
  *
- * @see de.cau.cs.se.instrumentation.al.mapping.MappingPackage#getFeature()
+ * @see kieker.tools.al.mapping.MappingPackage#getFeature()
  * @model interface="true" abstract="true"
  * @generated
  */

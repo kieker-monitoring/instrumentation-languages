@@ -51,7 +51,7 @@
         eType="#//Event" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Event">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/resource/de.cau.cs.se.instrumentation.rl/model/generated/RecordLang.ecore#//RecordType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/resource/kieker.tools.rl/model/generated/RecordLang.ecore#//RecordType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="initializations" upperBound="-1"
         eType="#//Value" containment="true"/>
   </eClassifiers>

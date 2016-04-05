@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.cau.cs.se.instrumentation.rl.ui.outline;
+package kieker.tools.rl.ui.outline;
 
-import de.cau.cs.se.instrumentation.rl.recordLang.Constant;
-import de.cau.cs.se.instrumentation.rl.recordLang.Property;
+import kieker.tools.rl.recordLang.Constant;
+import kieker.tools.rl.recordLang.Property;
 import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider;
 
 /**

@@ -1,9 +1,9 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang.impl;
+package kieker.tools.al.aspectLang.impl;
 
-import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel;
-import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
+import kieker.tools.al.aspectLang.ApplicationModel;
+import kieker.tools.al.aspectLang.AspectLangPackage;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -20,9 +20,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ApplicationModelImpl#getHandler <em>Handler</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ApplicationModelImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ApplicationModelImpl#getModel <em>Model</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.ApplicationModelImpl#getHandler <em>Handler</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.ApplicationModelImpl#getName <em>Name</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.ApplicationModelImpl#getModel <em>Model</em>}</li>
  * </ul>
  *
  * @generated

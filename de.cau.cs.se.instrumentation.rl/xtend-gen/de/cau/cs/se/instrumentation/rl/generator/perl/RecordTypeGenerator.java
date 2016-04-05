@@ -1,13 +1,13 @@
-package de.cau.cs.se.instrumentation.rl.generator.perl;
+package kieker.tools.rl.generator.perl;
 
-import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator;
-import de.cau.cs.se.instrumentation.rl.recordLang.BaseType;
-import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
-import de.cau.cs.se.instrumentation.rl.recordLang.Model;
-import de.cau.cs.se.instrumentation.rl.recordLang.Property;
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
-import de.cau.cs.se.instrumentation.rl.recordLang.Type;
-import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation;
+import kieker.tools.rl.generator.AbstractRecordTypeGenerator;
+import kieker.tools.rl.recordLang.BaseType;
+import kieker.tools.rl.recordLang.Classifier;
+import kieker.tools.rl.recordLang.Model;
+import kieker.tools.rl.recordLang.Property;
+import kieker.tools.rl.recordLang.RecordType;
+import kieker.tools.rl.recordLang.Type;
+import kieker.tools.rl.validation.PropertyEvaluation;
 import java.io.File;
 import java.util.Calendar;
 import java.util.Collection;

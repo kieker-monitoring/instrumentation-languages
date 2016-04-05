@@ -1,10 +1,10 @@
-package de.cau.cs.se.instrumentation.al.modelhandling
+package kieker.tools.al.modelhandling
 
-import de.cau.cs.se.instrumentation.al.mapping.MappingModel
-import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel
+import kieker.tools.al.mapping.MappingModel
+import kieker.tools.al.aspectLang.ApplicationModel
 import org.eclipse.emf.ecore.resource.ResourceSet
 import java.util.Collection
-import de.cau.cs.se.instrumentation.al.aspectLang.Technology
+import kieker.tools.al.aspectLang.Technology
 
 interface IModelMapper {
 	/**

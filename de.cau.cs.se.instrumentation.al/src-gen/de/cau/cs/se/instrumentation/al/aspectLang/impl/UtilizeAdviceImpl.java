@@ -1,11 +1,11 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang.impl;
+package kieker.tools.al.aspectLang.impl;
 
-import de.cau.cs.se.instrumentation.al.aspectLang.Advice;
-import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
-import de.cau.cs.se.instrumentation.al.aspectLang.UtilizeAdvice;
-import de.cau.cs.se.instrumentation.al.aspectLang.Value;
+import kieker.tools.al.aspectLang.Advice;
+import kieker.tools.al.aspectLang.AspectLangPackage;
+import kieker.tools.al.aspectLang.UtilizeAdvice;
+import kieker.tools.al.aspectLang.Value;
 
 import java.util.Collection;
 
@@ -31,8 +31,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.UtilizeAdviceImpl#getAdvice <em>Advice</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.UtilizeAdviceImpl#getParameterAssignments <em>Parameter Assignments</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.UtilizeAdviceImpl#getAdvice <em>Advice</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.UtilizeAdviceImpl#getParameterAssignments <em>Parameter Assignments</em>}</li>
  * </ul>
  *
  * @generated

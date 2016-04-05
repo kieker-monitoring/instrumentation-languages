@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.cau.cs.se.instrumentation.al.scoping;
+package kieker.tools.al.scoping;
 
 import com.google.common.base.Objects;
-import de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode;
-import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery;
-import de.cau.cs.se.instrumentation.al.aspectLang.Node;
-import de.cau.cs.se.instrumentation.al.mapping.Container;
-import de.cau.cs.se.instrumentation.al.mapping.Feature;
-import de.cau.cs.se.instrumentation.al.mapping.NamedElement;
+import kieker.tools.al.aspectLang.ContainerNode;
+import kieker.tools.al.aspectLang.LocationQuery;
+import kieker.tools.al.aspectLang.Node;
+import kieker.tools.al.mapping.Container;
+import kieker.tools.al.mapping.Feature;
+import kieker.tools.al.mapping.NamedElement;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.naming.QualifiedName;

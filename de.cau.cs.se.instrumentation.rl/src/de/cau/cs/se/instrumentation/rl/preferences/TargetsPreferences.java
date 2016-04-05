@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.rl.preferences;
+package kieker.tools.rl.preferences;
 
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.InstanceScope;
@@ -27,7 +27,7 @@ import org.eclipse.core.runtime.preferences.InstanceScope;
 public final class TargetsPreferences {
 
 	/** Node id for the preference store. */
-	public static final String PLUGIN_ID = "de.cau.cs.se.instrumentation.rl";
+	public static final String PLUGIN_ID = "kieker.tools.rl";
 	/** Constant prefix for generator activation. */
 	public static final String GENERATOR_ACTIVE = TargetsPreferences.class + ".generator.";
 	/** Constant for author name in generators. */

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.rl.typing;
+package kieker.tools.rl.typing;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,8 +23,8 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 
-import de.cau.cs.se.instrumentation.rl.recordLang.BaseType;
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
+import kieker.tools.rl.recordLang.BaseType;
+import kieker.tools.rl.recordLang.RecordLangPackage;
 
 /**
  * Simulates a real resource for primitive types.

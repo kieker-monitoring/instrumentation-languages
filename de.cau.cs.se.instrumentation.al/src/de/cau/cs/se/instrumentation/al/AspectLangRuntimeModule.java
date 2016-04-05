@@ -13,18 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.al;
+package kieker.tools.al;
 
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 
-import de.cau.cs.se.instrumentation.al.modelhandling.ForeignModelGlobalScopeProvider;
+import kieker.tools.al.modelhandling.ForeignModelGlobalScopeProvider;
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  * 
  * @author Reiner Jung
  */
-public class AspectLangRuntimeModule extends de.cau.cs.se.instrumentation.al.AbstractAspectLangRuntimeModule { // NOCS -- constructor not required
+public class AspectLangRuntimeModule extends kieker.tools.al.AbstractAspectLangRuntimeModule { // NOCS -- constructor not required
 	/**
 	 * {@inheritDoc}<br>
 	 * This extension registers the custom {@link ForeignModelGlobalScopeProvider} that realizes e.g. the

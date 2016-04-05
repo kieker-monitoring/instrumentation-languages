@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.rl.recordLang;
+package kieker.tools.rl.recordLang;
 
 
 /**
@@ -12,11 +12,11 @@ package de.cau.cs.se.instrumentation.rl.recordLang;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.RecordType#isAbstract <em>Abstract</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.RecordType#getParent <em>Parent</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.RecordType#isAbstract <em>Abstract</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.RecordType#getParent <em>Parent</em>}</li>
  * </ul>
  *
- * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getRecordType()
+ * @see kieker.tools.rl.recordLang.RecordLangPackage#getRecordType()
  * @model
  * @generated
  */
@@ -32,14 +32,14 @@ public interface RecordType extends ComplexType
    * <!-- end-user-doc -->
    * @return the value of the '<em>Abstract</em>' attribute.
    * @see #setAbstract(boolean)
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getRecordType_Abstract()
+   * @see kieker.tools.rl.recordLang.RecordLangPackage#getRecordType_Abstract()
    * @model
    * @generated
    */
   boolean isAbstract();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.rl.recordLang.RecordType#isAbstract <em>Abstract</em>}' attribute.
+   * Sets the value of the '{@link kieker.tools.rl.recordLang.RecordType#isAbstract <em>Abstract</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Abstract</em>' attribute.
@@ -58,14 +58,14 @@ public interface RecordType extends ComplexType
    * <!-- end-user-doc -->
    * @return the value of the '<em>Parent</em>' reference.
    * @see #setParent(RecordType)
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getRecordType_Parent()
+   * @see kieker.tools.rl.recordLang.RecordLangPackage#getRecordType_Parent()
    * @model
    * @generated
    */
   RecordType getParent();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.rl.recordLang.RecordType#getParent <em>Parent</em>}' reference.
+   * Sets the value of the '{@link kieker.tools.rl.recordLang.RecordType#getParent <em>Parent</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Parent</em>' reference.

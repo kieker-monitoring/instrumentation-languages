@@ -1,8 +1,8 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang;
+package kieker.tools.al.aspectLang;
 
-import de.cau.cs.se.instrumentation.al.mapping.Feature;
+import kieker.tools.al.mapping.Feature;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,10 +13,10 @@ import de.cau.cs.se.instrumentation.al.mapping.Feature;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode#getContainer <em>Container</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.ContainerNode#getContainer <em>Container</em>}</li>
  * </ul>
  *
- * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getContainerNode()
+ * @see kieker.tools.al.aspectLang.AspectLangPackage#getContainerNode()
  * @model
  * @generated
  */
@@ -32,14 +32,14 @@ public interface ContainerNode extends Node
    * <!-- end-user-doc -->
    * @return the value of the '<em>Container</em>' reference.
    * @see #setContainer(Feature)
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getContainerNode_Container()
+   * @see kieker.tools.al.aspectLang.AspectLangPackage#getContainerNode_Container()
    * @model
    * @generated
    */
   Feature getContainer();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode#getContainer <em>Container</em>}' reference.
+   * Sets the value of the '{@link kieker.tools.al.aspectLang.ContainerNode#getContainer <em>Container</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Container</em>' reference.

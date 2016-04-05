@@ -1,9 +1,9 @@
 /**
  */
-package de.cau.cs.se.instrumentation.rl.recordLang.impl;
+package kieker.tools.rl.recordLang.impl;
 
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
+import kieker.tools.rl.recordLang.RecordLangPackage;
+import kieker.tools.rl.recordLang.RecordType;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -20,8 +20,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordTypeImpl#isAbstract <em>Abstract</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordTypeImpl#getParent <em>Parent</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.impl.RecordTypeImpl#isAbstract <em>Abstract</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.impl.RecordTypeImpl#getParent <em>Parent</em>}</li>
  * </ul>
  *
  * @generated

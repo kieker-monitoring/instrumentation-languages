@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.rl.ui;
+package kieker.tools.rl.ui;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.RGB;

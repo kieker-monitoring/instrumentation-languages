@@ -1,13 +1,13 @@
 /**
  */
-package de.cau.cs.se.instrumentation.rl.recordLang.impl;
+package kieker.tools.rl.recordLang.impl;
 
-import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
-import de.cau.cs.se.instrumentation.rl.recordLang.ForeignKey;
-import de.cau.cs.se.instrumentation.rl.recordLang.Literal;
-import de.cau.cs.se.instrumentation.rl.recordLang.Property;
-import de.cau.cs.se.instrumentation.rl.recordLang.PropertyModifier;
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
+import kieker.tools.rl.recordLang.Classifier;
+import kieker.tools.rl.recordLang.ForeignKey;
+import kieker.tools.rl.recordLang.Literal;
+import kieker.tools.rl.recordLang.Property;
+import kieker.tools.rl.recordLang.PropertyModifier;
+import kieker.tools.rl.recordLang.RecordLangPackage;
 
 import java.util.Collection;
 
@@ -32,12 +32,12 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.PropertyImpl#getModifiers <em>Modifiers</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.PropertyImpl#getForeignKey <em>Foreign Key</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.PropertyImpl#getType <em>Type</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.PropertyImpl#getReferTo <em>Refer To</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.PropertyImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.PropertyImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.impl.PropertyImpl#getModifiers <em>Modifiers</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.impl.PropertyImpl#getForeignKey <em>Foreign Key</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.impl.PropertyImpl#getType <em>Type</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.impl.PropertyImpl#getReferTo <em>Refer To</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.impl.PropertyImpl#getName <em>Name</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.impl.PropertyImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated

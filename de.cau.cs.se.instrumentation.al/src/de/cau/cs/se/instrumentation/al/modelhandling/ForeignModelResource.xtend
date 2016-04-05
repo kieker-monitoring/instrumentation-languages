@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.al.modelhandling;
+package kieker.tools.al.modelhandling;
 
-import de.cau.cs.se.instrumentation.al.mapping.MappingModel
-import de.cau.cs.se.instrumentation.al.mapping.NamedElement
-import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel
+import kieker.tools.al.mapping.MappingModel
+import kieker.tools.al.mapping.NamedElement
+import kieker.tools.al.aspectLang.ApplicationModel
 import java.io.IOException
 import java.io.InputStream
 import java.util.Map
@@ -27,7 +27,7 @@ import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl
-import de.cau.cs.se.instrumentation.al.mapping.NamedType
+import kieker.tools.al.mapping.NamedType
 
 /**
  * Simulates a real resource by mapping the a PCM model to our hierarchy model.
@@ -36,7 +36,7 @@ import de.cau.cs.se.instrumentation.al.mapping.NamedType
  */
 public class ForeignModelResource extends ResourceImpl {
 	
-	private static final String MODEL_MAPPER = "de.cau.cs.se.instrumentation.al.modelMapping"
+	private static final String MODEL_MAPPER = "kieker.tools.al.modelMapping"
 
 	/** Model of the application to be instrumented. */
 	private final ApplicationModel applicationModel

@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.rl.typing.jar;
+package kieker.tools.rl.typing.jar;
 
 import com.google.common.base.Predicate
 import com.google.inject.Inject
-import de.cau.cs.se.instrumentation.rl.typing.BaseTypeGlobalScopeProvider
+import kieker.tools.rl.typing.BaseTypeGlobalScopeProvider
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.ecore.EcorePackage.Literals
@@ -29,8 +29,8 @@ import org.eclipse.xtext.resource.IEObjectDescription
 import org.eclipse.xtext.scoping.IScope
 import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.core.runtime.Path
-import de.cau.cs.se.instrumentation.rl.typing.ITypeProvider
-import de.cau.cs.se.instrumentation.rl.recordLang.BaseType
+import kieker.tools.rl.typing.ITypeProvider
+import kieker.tools.rl.recordLang.BaseType
 
 class JarModelGlobalScopeProvider extends BaseTypeGlobalScopeProvider {
 	

@@ -1,8 +1,8 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.mapping.impl;
+package kieker.tools.al.mapping.impl;
 
-import de.cau.cs.se.instrumentation.al.mapping.*;
+import kieker.tools.al.mapping.*;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -120,7 +120,7 @@ public class MappingFactoryImpl extends EFactoryImpl implements MappingFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public de.cau.cs.se.instrumentation.al.mapping.Container createContainer() {
+	public kieker.tools.al.mapping.Container createContainer() {
 		ContainerImpl container = new ContainerImpl();
 		return container;
 	}

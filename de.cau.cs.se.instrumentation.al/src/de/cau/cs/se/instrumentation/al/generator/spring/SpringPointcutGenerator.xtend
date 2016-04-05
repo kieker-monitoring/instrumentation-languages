@@ -1,7 +1,7 @@
-package de.cau.cs.se.instrumentation.al.generator.spring
+package kieker.tools.al.generator.spring
 
 import de.cau.cs.se.geco.architecture.framework.IGenerator
-import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut
+import kieker.tools.al.aspectLang.Pointcut
 
 class SpringPointcutGenerator implements IGenerator<Pointcut,CharSequence> {
 	

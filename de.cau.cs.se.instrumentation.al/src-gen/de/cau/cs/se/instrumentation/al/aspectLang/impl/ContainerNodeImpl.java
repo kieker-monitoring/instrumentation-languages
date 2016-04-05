@@ -1,11 +1,11 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang.impl;
+package kieker.tools.al.aspectLang.impl;
 
-import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
-import de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode;
+import kieker.tools.al.aspectLang.AspectLangPackage;
+import kieker.tools.al.aspectLang.ContainerNode;
 
-import de.cau.cs.se.instrumentation.al.mapping.Feature;
+import kieker.tools.al.mapping.Feature;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ContainerNodeImpl#getContainer <em>Container</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.ContainerNodeImpl#getContainer <em>Container</em>}</li>
  * </ul>
  *
  * @generated

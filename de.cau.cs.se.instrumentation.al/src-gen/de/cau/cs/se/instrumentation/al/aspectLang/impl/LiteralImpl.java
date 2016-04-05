@@ -1,14 +1,14 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang.impl;
+package kieker.tools.al.aspectLang.impl;
 
-import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
-import de.cau.cs.se.instrumentation.al.aspectLang.CompareOperator;
-import de.cau.cs.se.instrumentation.al.aspectLang.ConstraintElement;
-import de.cau.cs.se.instrumentation.al.aspectLang.Literal;
-import de.cau.cs.se.instrumentation.al.aspectLang.LogicOperator;
-import de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraint;
-import de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraintCompare;
+import kieker.tools.al.aspectLang.AspectLangPackage;
+import kieker.tools.al.aspectLang.CompareOperator;
+import kieker.tools.al.aspectLang.ConstraintElement;
+import kieker.tools.al.aspectLang.Literal;
+import kieker.tools.al.aspectLang.LogicOperator;
+import kieker.tools.al.aspectLang.PropertyConstraint;
+import kieker.tools.al.aspectLang.PropertyConstraintCompare;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -26,10 +26,10 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.LiteralImpl#getLeft <em>Left</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.LiteralImpl#getLogic <em>Logic</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.LiteralImpl#getRight <em>Right</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.LiteralImpl#getCompare <em>Compare</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.LiteralImpl#getLeft <em>Left</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.LiteralImpl#getLogic <em>Logic</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.LiteralImpl#getRight <em>Right</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.LiteralImpl#getCompare <em>Compare</em>}</li>
  * </ul>
  *
  * @generated

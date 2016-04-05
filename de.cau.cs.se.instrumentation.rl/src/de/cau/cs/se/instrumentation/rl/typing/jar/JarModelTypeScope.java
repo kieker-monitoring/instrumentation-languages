@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.rl.typing.jar;
+package kieker.tools.rl.typing.jar;
 
 import java.util.Collections;
 import java.util.List;
@@ -34,9 +34,9 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangFactory;
-import de.cau.cs.se.instrumentation.rl.recordLang.Type;
-import de.cau.cs.se.instrumentation.rl.typing.ITypeProvider;
+import kieker.tools.rl.recordLang.RecordLangFactory;
+import kieker.tools.rl.recordLang.Type;
+import kieker.tools.rl.typing.ITypeProvider;
 
 /**
  *

@@ -1,9 +1,9 @@
 /**
  */
-package de.cau.cs.se.instrumentation.rl.recordLang.impl;
+package kieker.tools.rl.recordLang.impl;
 
-import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize;
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
+import kieker.tools.rl.recordLang.ArraySize;
+import kieker.tools.rl.recordLang.RecordLangPackage;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ArraySizeImpl#getSize <em>Size</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.impl.ArraySizeImpl#getSize <em>Size</em>}</li>
  * </ul>
  *
  * @generated

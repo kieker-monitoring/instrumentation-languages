@@ -1,4 +1,4 @@
-package de.cau.cs.se.instrumentation.rl.parser.antlr.internal; 
+package kieker.tools.rl.parser.antlr.internal; 
 
 import org.eclipse.xtext.*;
 import org.eclipse.xtext.parser.*;
@@ -10,7 +10,7 @@ import org.eclipse.xtext.parser.antlr.AbstractInternalAntlrParser;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
 import org.eclipse.xtext.parser.antlr.AntlrDatatypeRuleToken;
-import de.cau.cs.se.instrumentation.rl.services.RecordLangGrammarAccess;
+import kieker.tools.rl.services.RecordLangGrammarAccess;
 
 
 
@@ -193,7 +193,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                      			current, 
                      			"name",
                       		lv_name_1_0, 
-                      		"de.cau.cs.se.instrumentation.rl.RecordLang.QualifiedName");
+                      		"kieker.tools.rl.RecordLang.QualifiedName");
               	        afterParserOrEnumRuleCall();
               	    
             }
@@ -240,7 +240,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
             	             			current, 
             	             			"imports",
             	              		lv_imports_2_0, 
-            	              		"de.cau.cs.se.instrumentation.rl.RecordLang.Import");
+            	              		"kieker.tools.rl.RecordLang.Import");
             	      	        afterParserOrEnumRuleCall();
             	      	    
             	    }
@@ -293,7 +293,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
             	             			current, 
             	             			"types",
             	              		lv_types_3_0, 
-            	              		"de.cau.cs.se.instrumentation.rl.RecordLang.ComplexType");
+            	              		"kieker.tools.rl.RecordLang.ComplexType");
             	      	        afterParserOrEnumRuleCall();
             	      	    
             	    }
@@ -420,7 +420,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                      			current, 
                      			"importedNamespace",
                       		lv_importedNamespace_1_0, 
-                      		"de.cau.cs.se.instrumentation.rl.RecordLang.QualifiedNameWithWildcard");
+                      		"kieker.tools.rl.RecordLang.QualifiedNameWithWildcard");
               	        afterParserOrEnumRuleCall();
               	    
             }
@@ -1186,7 +1186,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                     	             			current, 
                     	             			"properties",
                     	              		lv_properties_11_0, 
-                    	              		"de.cau.cs.se.instrumentation.rl.RecordLang.Property");
+                    	              		"kieker.tools.rl.RecordLang.Property");
                     	      	        afterParserOrEnumRuleCall();
                     	      	    
                     	    }
@@ -1227,7 +1227,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                     	             			current, 
                     	             			"constants",
                     	              		lv_constants_12_0, 
-                    	              		"de.cau.cs.se.instrumentation.rl.RecordLang.Constant");
+                    	              		"kieker.tools.rl.RecordLang.Constant");
                     	      	        afterParserOrEnumRuleCall();
                     	      	    
                     	    }
@@ -1768,7 +1768,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                     	             			current, 
                     	             			"properties",
                     	              		lv_properties_14_0, 
-                    	              		"de.cau.cs.se.instrumentation.rl.RecordLang.Property");
+                    	              		"kieker.tools.rl.RecordLang.Property");
                     	      	        afterParserOrEnumRuleCall();
                     	      	    
                     	    }
@@ -1809,7 +1809,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                     	             			current, 
                     	             			"constants",
                     	              		lv_constants_15_0, 
-                    	              		"de.cau.cs.se.instrumentation.rl.RecordLang.Constant");
+                    	              		"kieker.tools.rl.RecordLang.Constant");
                     	      	        afterParserOrEnumRuleCall();
                     	      	    
                     	    }
@@ -1955,7 +1955,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                      			current, 
                      			"type",
                       		lv_type_1_0, 
-                      		"de.cau.cs.se.instrumentation.rl.RecordLang.Classifier");
+                      		"kieker.tools.rl.RecordLang.Classifier");
               	        afterParserOrEnumRuleCall();
               	    
             }
@@ -2026,7 +2026,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                      			current, 
                      			"value",
                       		lv_value_4_0, 
-                      		"de.cau.cs.se.instrumentation.rl.RecordLang.Literal");
+                      		"kieker.tools.rl.RecordLang.Literal");
               	        afterParserOrEnumRuleCall();
               	    
             }
@@ -2163,7 +2163,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
             	             			current, 
             	             			"modifiers",
             	              		lv_modifiers_0_0, 
-            	              		"de.cau.cs.se.instrumentation.rl.RecordLang.PropertyModifier");
+            	              		"kieker.tools.rl.RecordLang.PropertyModifier");
             	      	        afterParserOrEnumRuleCall();
             	      	    
             	    }
@@ -2212,7 +2212,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"foreignKey",
                               		lv_foreignKey_1_0, 
-                              		"de.cau.cs.se.instrumentation.rl.RecordLang.ForeignKey");
+                              		"kieker.tools.rl.RecordLang.ForeignKey");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -2271,7 +2271,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"type",
                               		lv_type_2_0, 
-                              		"de.cau.cs.se.instrumentation.rl.RecordLang.Classifier");
+                              		"kieker.tools.rl.RecordLang.Classifier");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -2408,7 +2408,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"value",
                               		lv_value_8_0, 
-                              		"de.cau.cs.se.instrumentation.rl.RecordLang.Literal");
+                              		"kieker.tools.rl.RecordLang.Literal");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -2716,7 +2716,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
             	             			current, 
             	             			"sizes",
             	              		lv_sizes_1_0, 
-            	              		"de.cau.cs.se.instrumentation.rl.RecordLang.ArraySize");
+            	              		"kieker.tools.rl.RecordLang.ArraySize");
             	      	        afterParserOrEnumRuleCall();
             	      	    
             	    }
@@ -2860,7 +2860,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"size",
                               		lv_size_2_0, 
-                              		"de.cau.cs.se.instrumentation.rl.RecordLang.INT");
+                              		"kieker.tools.rl.RecordLang.INT");
                       	    
                     }
 
@@ -3282,7 +3282,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                      			current, 
                      			"literals",
                       		lv_literals_1_0, 
-                      		"de.cau.cs.se.instrumentation.rl.RecordLang.Literal");
+                      		"kieker.tools.rl.RecordLang.Literal");
               	        afterParserOrEnumRuleCall();
               	    
             }
@@ -3338,7 +3338,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
             	             			current, 
             	             			"literals",
             	              		lv_literals_3_0, 
-            	              		"de.cau.cs.se.instrumentation.rl.RecordLang.Literal");
+            	              		"kieker.tools.rl.RecordLang.Literal");
             	      	        afterParserOrEnumRuleCall();
             	      	    
             	    }
@@ -3561,7 +3561,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                      			current, 
                      			"value",
                       		lv_value_0_0, 
-                      		"de.cau.cs.se.instrumentation.rl.RecordLang.INT");
+                      		"kieker.tools.rl.RecordLang.INT");
               	    
             }
 
@@ -3663,7 +3663,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                      			current, 
                      			"value",
                       		lv_value_0_0, 
-                      		"de.cau.cs.se.instrumentation.rl.RecordLang.FLOAT");
+                      		"kieker.tools.rl.RecordLang.FLOAT");
               	    
             }
 
@@ -3765,7 +3765,7 @@ public class InternalRecordLangParser extends AbstractInternalAntlrParser {
                      			current, 
                      			"value",
                       		lv_value_0_0, 
-                      		"de.cau.cs.se.instrumentation.rl.RecordLang.BOOLEAN");
+                      		"kieker.tools.rl.RecordLang.BOOLEAN");
               	    
             }
 

@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.rl.recordLang;
+package kieker.tools.rl.recordLang;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -15,12 +15,12 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.Model#getName <em>Name</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.Model#getImports <em>Imports</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.Model#getTypes <em>Types</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.Model#getName <em>Name</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.Model#getImports <em>Imports</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.Model#getTypes <em>Types</em>}</li>
  * </ul>
  *
- * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getModel()
+ * @see kieker.tools.rl.recordLang.RecordLangPackage#getModel()
  * @model
  * @generated
  */
@@ -36,14 +36,14 @@ public interface Model extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getModel_Name()
+   * @see kieker.tools.rl.recordLang.RecordLangPackage#getModel_Name()
    * @model
    * @generated
    */
   String getName();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.rl.recordLang.Model#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link kieker.tools.rl.recordLang.Model#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Name</em>' attribute.
@@ -54,7 +54,7 @@ public interface Model extends EObject
 
   /**
    * Returns the value of the '<em><b>Imports</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.cs.se.instrumentation.rl.recordLang.Import}.
+   * The list contents are of type {@link kieker.tools.rl.recordLang.Import}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Imports</em>' containment reference list isn't clear,
@@ -62,7 +62,7 @@ public interface Model extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Imports</em>' containment reference list.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getModel_Imports()
+   * @see kieker.tools.rl.recordLang.RecordLangPackage#getModel_Imports()
    * @model containment="true"
    * @generated
    */
@@ -70,7 +70,7 @@ public interface Model extends EObject
 
   /**
    * Returns the value of the '<em><b>Types</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.cs.se.instrumentation.rl.recordLang.ComplexType}.
+   * The list contents are of type {@link kieker.tools.rl.recordLang.ComplexType}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Types</em>' containment reference list isn't clear,
@@ -78,7 +78,7 @@ public interface Model extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Types</em>' containment reference list.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getModel_Types()
+   * @see kieker.tools.rl.recordLang.RecordLangPackage#getModel_Types()
    * @model containment="true"
    * @generated
    */

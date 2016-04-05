@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang;
+package kieker.tools.al.aspectLang;
 
 
 /**
@@ -12,11 +12,11 @@ package de.cau.cs.se.instrumentation.al.aspectLang;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.ReferenceValue#getQuery <em>Query</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.ReferenceValue#getProperty <em>Property</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.ReferenceValue#getQuery <em>Query</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.ReferenceValue#getProperty <em>Property</em>}</li>
  * </ul>
  *
- * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getReferenceValue()
+ * @see kieker.tools.al.aspectLang.AspectLangPackage#getReferenceValue()
  * @model
  * @generated
  */
@@ -32,14 +32,14 @@ public interface ReferenceValue extends Value
    * <!-- end-user-doc -->
    * @return the value of the '<em>Query</em>' containment reference.
    * @see #setQuery(LocationQuery)
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getReferenceValue_Query()
+   * @see kieker.tools.al.aspectLang.AspectLangPackage#getReferenceValue_Query()
    * @model containment="true"
    * @generated
    */
   LocationQuery getQuery();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.ReferenceValue#getQuery <em>Query</em>}' containment reference.
+   * Sets the value of the '{@link kieker.tools.al.aspectLang.ReferenceValue#getQuery <em>Query</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Query</em>' containment reference.
@@ -58,14 +58,14 @@ public interface ReferenceValue extends Value
    * <!-- end-user-doc -->
    * @return the value of the '<em>Property</em>' containment reference.
    * @see #setProperty(Property)
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getReferenceValue_Property()
+   * @see kieker.tools.al.aspectLang.AspectLangPackage#getReferenceValue_Property()
    * @model containment="true"
    * @generated
    */
   Property getProperty();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.ReferenceValue#getProperty <em>Property</em>}' containment reference.
+   * Sets the value of the '{@link kieker.tools.al.aspectLang.ReferenceValue#getProperty <em>Property</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Property</em>' containment reference.

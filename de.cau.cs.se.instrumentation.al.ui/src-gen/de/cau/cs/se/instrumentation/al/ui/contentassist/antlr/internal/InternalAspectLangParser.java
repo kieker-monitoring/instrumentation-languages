@@ -1,4 +1,4 @@
-package de.cau.cs.se.instrumentation.al.ui.contentassist.antlr.internal; 
+package kieker.tools.al.ui.contentassist.antlr.internal; 
 
 import java.io.InputStream;
 import org.eclipse.xtext.*;
@@ -10,7 +10,7 @@ import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.internal.AbstractInternalContentAssistParser;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.internal.DFA;
-import de.cau.cs.se.instrumentation.al.services.AspectLangGrammarAccess;
+import kieker.tools.al.services.AspectLangGrammarAccess;
 
 
 

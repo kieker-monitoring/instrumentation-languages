@@ -1,12 +1,12 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang.impl;
+package kieker.tools.al.aspectLang.impl;
 
-import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel;
-import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
-import de.cau.cs.se.instrumentation.al.aspectLang.TypeReference;
+import kieker.tools.al.aspectLang.ApplicationModel;
+import kieker.tools.al.aspectLang.AspectLangPackage;
+import kieker.tools.al.aspectLang.TypeReference;
 
-import de.cau.cs.se.instrumentation.al.mapping.NamedType;
+import kieker.tools.al.mapping.NamedType;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -24,9 +24,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.TypeReferenceImpl#getContext <em>Context</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.TypeReferenceImpl#getReference <em>Reference</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.TypeReferenceImpl#isCollection <em>Collection</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.TypeReferenceImpl#getContext <em>Context</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.TypeReferenceImpl#getReference <em>Reference</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.TypeReferenceImpl#isCollection <em>Collection</em>}</li>
  * </ul>
  *
  * @generated

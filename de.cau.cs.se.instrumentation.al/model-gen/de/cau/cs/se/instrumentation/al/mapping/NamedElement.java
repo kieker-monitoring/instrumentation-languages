@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.mapping;
+package kieker.tools.al.mapping;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -13,10 +13,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.mapping.NamedElement#getName <em>Name</em>}</li>
+ *   <li>{@link kieker.tools.al.mapping.NamedElement#getName <em>Name</em>}</li>
  * </ul>
  *
- * @see de.cau.cs.se.instrumentation.al.mapping.MappingPackage#getNamedElement()
+ * @see kieker.tools.al.mapping.MappingPackage#getNamedElement()
  * @model
  * @generated
  */
@@ -31,14 +31,14 @@ public interface NamedElement extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see de.cau.cs.se.instrumentation.al.mapping.MappingPackage#getNamedElement_Name()
+	 * @see kieker.tools.al.mapping.MappingPackage#getNamedElement_Name()
 	 * @model required="true"
 	 * @generated
 	 */
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.mapping.NamedElement#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link kieker.tools.al.mapping.NamedElement#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.

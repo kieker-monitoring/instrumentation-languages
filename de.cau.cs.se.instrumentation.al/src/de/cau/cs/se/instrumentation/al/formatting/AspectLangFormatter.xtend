@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.al.formatting
+package kieker.tools.al.formatting
 
 import org.eclipse.xtext.formatting.impl.AbstractDeclarativeFormatter
 import org.eclipse.xtext.formatting.impl.FormattingConfig
 // import com.google.inject.Inject;
-// import de.cau.cs.se.instrumentation.al.services.AspectLangGrammarAccess
+// import kieker.tools.al.services.AspectLangGrammarAccess
 
 /**
  * This class contains custom formatting description.

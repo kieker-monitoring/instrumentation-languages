@@ -1,14 +1,14 @@
-package de.cau.cs.se.instrumentation.al.handler.pcm
+package kieker.tools.al.handler.pcm
 
-import de.cau.cs.se.instrumentation.al.mapping.Container
-import de.cau.cs.se.instrumentation.al.mapping.Containment
-import de.cau.cs.se.instrumentation.al.mapping.MappingModel
-import de.cau.cs.se.instrumentation.al.mapping.Operation
-import de.cau.cs.se.instrumentation.al.mapping.Parameter
-import de.cau.cs.se.instrumentation.al.mapping.ParameterModifier
-import de.cau.cs.se.instrumentation.al.mapping.MappingFactory
-import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel
-import de.cau.cs.se.instrumentation.al.modelhandling.IModelMapper
+import kieker.tools.al.mapping.Container
+import kieker.tools.al.mapping.Containment
+import kieker.tools.al.mapping.MappingModel
+import kieker.tools.al.mapping.Operation
+import kieker.tools.al.mapping.Parameter
+import kieker.tools.al.mapping.ParameterModifier
+import kieker.tools.al.mapping.MappingFactory
+import kieker.tools.al.aspectLang.ApplicationModel
+import kieker.tools.al.modelhandling.IModelMapper
 import java.util.Collection
 import java.util.HashMap
 import java.util.Iterator
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.xtext.naming.QualifiedName
 import java.util.ArrayList
-import de.cau.cs.se.instrumentation.al.aspectLang.Technology
+import kieker.tools.al.aspectLang.Technology
 
 class PCMModelMapper implements IModelMapper {
 	

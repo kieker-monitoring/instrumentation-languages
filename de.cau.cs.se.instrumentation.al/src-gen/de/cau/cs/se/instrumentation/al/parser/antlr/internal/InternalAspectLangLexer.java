@@ -1,4 +1,4 @@
-package de.cau.cs.se.instrumentation.al.parser.antlr.internal;
+package kieker.tools.al.parser.antlr.internal;
 
 // Hack: Use our own Lexer superclass by means of import. 
 // Currently there is no other way to specify the superclass for the lexer.

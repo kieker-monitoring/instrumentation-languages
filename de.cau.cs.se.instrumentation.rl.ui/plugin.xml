@@ -6,48 +6,48 @@
     <extension
             point="org.eclipse.ui.editors">
         <editor
-            class="de.cau.cs.se.instrumentation.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+            class="kieker.tools.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
             contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
             default="true"
             extensions="irl"
-            id="de.cau.cs.se.instrumentation.rl.RecordLang"
+            id="kieker.tools.rl.RecordLang"
             name="Kieker IRL Editor">
         </editor>
     </extension>
     <extension
         point="org.eclipse.ui.handlers">
         <handler
-            class="de.cau.cs.se.instrumentation.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
+            class="kieker.tools.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
             commandId="org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclaration">
             <activeWhen>
                 <reference
-                    definitionId="de.cau.cs.se.instrumentation.rl.RecordLang.Editor.opened">
+                    definitionId="kieker.tools.rl.RecordLang.Editor.opened">
                 </reference>
             </activeWhen>
         </handler>
         <handler
-            class="de.cau.cs.se.instrumentation.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
-            commandId="de.cau.cs.se.instrumentation.rl.RecordLang.validate">
+            class="kieker.tools.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
+            commandId="kieker.tools.rl.RecordLang.validate">
          <activeWhen>
             <reference
-                    definitionId="de.cau.cs.se.instrumentation.rl.RecordLang.Editor.opened">
+                    definitionId="kieker.tools.rl.RecordLang.Editor.opened">
             </reference>
          </activeWhen>
       	</handler>
       	<!-- copy qualified name -->
         <handler
-            class="de.cau.cs.se.instrumentation.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
+            class="kieker.tools.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
             commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName">
             <activeWhen>
-				<reference definitionId="de.cau.cs.se.instrumentation.rl.RecordLang.Editor.opened" />
+				<reference definitionId="kieker.tools.rl.RecordLang.Editor.opened" />
             </activeWhen>
         </handler>
         <handler
-            class="de.cau.cs.se.instrumentation.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedNameHandler"
+            class="kieker.tools.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedNameHandler"
             commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName">
             <activeWhen>
             	<and>
-            		<reference definitionId="de.cau.cs.se.instrumentation.rl.RecordLang.XtextEditor.opened" />
+            		<reference definitionId="kieker.tools.rl.RecordLang.XtextEditor.opened" />
 	                <iterate>
 						<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
 					</iterate>
@@ -56,22 +56,22 @@
         </handler>
     </extension>
     <extension point="org.eclipse.core.expressions.definitions">
-        <definition id="de.cau.cs.se.instrumentation.rl.RecordLang.Editor.opened">
+        <definition id="kieker.tools.rl.RecordLang.Editor.opened">
             <and>
                 <reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
                 <with variable="activeEditor">
                     <test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName" 
-                        value="de.cau.cs.se.instrumentation.rl.RecordLang" 
+                        value="kieker.tools.rl.RecordLang" 
                         forcePluginActivation="true"/>
                 </with>        
             </and>
         </definition>
-        <definition id="de.cau.cs.se.instrumentation.rl.RecordLang.XtextEditor.opened">
+        <definition id="kieker.tools.rl.RecordLang.XtextEditor.opened">
             <and>
                 <reference definitionId="isXtextEditorActive"/>
                 <with variable="activeEditor">
                     <test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName" 
-                        value="de.cau.cs.se.instrumentation.rl.RecordLang" 
+                        value="kieker.tools.rl.RecordLang" 
                         forcePluginActivation="true"/>
                 </with>        
             </and>
@@ -80,33 +80,33 @@
     <extension
             point="org.eclipse.ui.preferencePages">
         <page
-            class="de.cau.cs.se.instrumentation.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-            id="de.cau.cs.se.instrumentation.rl.RecordLang"
+            class="kieker.tools.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+            id="kieker.tools.rl.RecordLang"
             name="Kieker IRL">
-            <keywordReference id="de.cau.cs.se.instrumentation.rl.ui.keyword_RecordLang"/>
+            <keywordReference id="kieker.tools.rl.ui.keyword_RecordLang"/>
         </page>
         <page
-            category="de.cau.cs.se.instrumentation.rl.RecordLang"
-            class="de.cau.cs.se.instrumentation.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
-            id="de.cau.cs.se.instrumentation.rl.RecordLang.coloring"
+            category="kieker.tools.rl.RecordLang"
+            class="kieker.tools.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
+            id="kieker.tools.rl.RecordLang.coloring"
             name="Syntax Coloring">
-            <keywordReference id="de.cau.cs.se.instrumentation.rl.ui.keyword_RecordLang"/>
+            <keywordReference id="kieker.tools.rl.ui.keyword_RecordLang"/>
         </page>
         <page
-            category="de.cau.cs.se.instrumentation.rl.RecordLang"
-            class="de.cau.cs.se.instrumentation.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
-            id="de.cau.cs.se.instrumentation.rl.RecordLang.templates"
+            category="kieker.tools.rl.RecordLang"
+            class="kieker.tools.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
+            id="kieker.tools.rl.RecordLang.templates"
             name="Templates">
-            <keywordReference id="de.cau.cs.se.instrumentation.rl.ui.keyword_RecordLang"/>
+            <keywordReference id="kieker.tools.rl.ui.keyword_RecordLang"/>
         </page>
     </extension>
     <extension
             point="org.eclipse.ui.propertyPages">
         <page
-            class="de.cau.cs.se.instrumentation.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-            id="de.cau.cs.se.instrumentation.rl.RecordLang"
+            class="kieker.tools.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+            id="kieker.tools.rl.RecordLang"
             name="Kieker IRL">
-            <keywordReference id="de.cau.cs.se.instrumentation.rl.ui.keyword_RecordLang"/>
+            <keywordReference id="kieker.tools.rl.ui.keyword_RecordLang"/>
             <enabledWhen>
 	            <adapt type="org.eclipse.core.resources.IProject"/>
 			</enabledWhen>
@@ -116,14 +116,14 @@
     <extension
         point="org.eclipse.ui.keywords">
         <keyword
-            id="de.cau.cs.se.instrumentation.rl.ui.keyword_RecordLang"
+            id="kieker.tools.rl.ui.keyword_RecordLang"
             label="Kieker IRL"/>
     </extension>
     <extension
          point="org.eclipse.ui.commands">
       <command
             description="Trigger expensive validation"
-            id="de.cau.cs.se.instrumentation.rl.RecordLang.validate"
+            id="kieker.tools.rl.RecordLang.validate"
             name="Validate">
       </command>
       <!-- copy qualified name -->
@@ -144,12 +144,12 @@
         <menuContribution
             locationURI="popup:#TextEditorContext?after=group.edit">
              <command
-                 commandId="de.cau.cs.se.instrumentation.rl.RecordLang.validate"
+                 commandId="kieker.tools.rl.RecordLang.validate"
                  style="push"
                  tooltip="Trigger expensive validation">
             <visibleWhen checkEnabled="false">
                 <reference
-                    definitionId="de.cau.cs.se.instrumentation.rl.RecordLang.Editor.opened">
+                    definitionId="kieker.tools.rl.RecordLang.Editor.opened">
                 </reference>
             </visibleWhen>
          </command>  
@@ -159,7 +159,7 @@
          	<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName" 
          		style="push" tooltip="Copy Qualified Name">
             	<visibleWhen checkEnabled="false">
-                	<reference definitionId="de.cau.cs.se.instrumentation.rl.RecordLang.Editor.opened" />
+                	<reference definitionId="kieker.tools.rl.RecordLang.Editor.opened" />
             	</visibleWhen>
          	</command>  
          </menuContribution>
@@ -167,7 +167,7 @@
          	<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
             	style="push" tooltip="Copy Qualified Name">
             	<visibleWhen checkEnabled="false">
-                	<reference definitionId="de.cau.cs.se.instrumentation.rl.RecordLang.Editor.opened" />
+                	<reference definitionId="kieker.tools.rl.RecordLang.Editor.opened" />
             	</visibleWhen>
          	</command>  
          </menuContribution>
@@ -176,7 +176,7 @@
 				style="push" tooltip="Copy Qualified Name">
          		<visibleWhen checkEnabled="false">
 	            	<and>
-	            		<reference definitionId="de.cau.cs.se.instrumentation.rl.RecordLang.XtextEditor.opened" />
+	            		<reference definitionId="kieker.tools.rl.RecordLang.XtextEditor.opened" />
 						<iterate>
 							<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
 						</iterate>
@@ -189,7 +189,7 @@
 		<menuContribution locationURI="popup:#TextEditorContext?endof=group.find">
 			<command commandId="org.eclipse.xtext.ui.editor.FindReferences">
 				<visibleWhen checkEnabled="false">
-                	<reference definitionId="de.cau.cs.se.instrumentation.rl.RecordLang.Editor.opened">
+                	<reference definitionId="kieker.tools.rl.RecordLang.Editor.opened">
                 	</reference>
             	</visibleWhen>
 			</command>
@@ -197,11 +197,11 @@
 	</extension>
 	<extension point="org.eclipse.ui.handlers">
 	    <handler
-            class="de.cau.cs.se.instrumentation.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
+            class="kieker.tools.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
             commandId="org.eclipse.xtext.ui.editor.FindReferences">
             <activeWhen>
                 <reference
-                    definitionId="de.cau.cs.se.instrumentation.rl.RecordLang.Editor.opened">
+                    definitionId="kieker.tools.rl.RecordLang.Editor.opened">
                 </reference>
             </activeWhen>
         </handler>
@@ -212,19 +212,19 @@
 	<extension
 		point="org.eclipse.emf.ecore.extension_parser">
 		<parser
-			class="de.cau.cs.se.instrumentation.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
+			class="kieker.tools.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
 			type="irl">
 		</parser>
 	</extension>
 	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
         <resourceServiceProvider
-            class="de.cau.cs.se.instrumentation.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
+            class="kieker.tools.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
             uriExtension="irl">
         </resourceServiceProvider>
     </extension>
 
 
-	<!-- marker definitions for de.cau.cs.se.instrumentation.rl.RecordLang -->
+	<!-- marker definitions for kieker.tools.rl.RecordLang -->
 	<extension
 	        id="recordlang.check.fast"
 	        name="Kieker IRL Problem"
@@ -250,34 +250,34 @@
    <extension
          point="org.eclipse.xtext.builder.participant">
       <participant
-            class="de.cau.cs.se.instrumentation.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant">
+            class="kieker.tools.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant">
       </participant>
    </extension>
    <extension
             point="org.eclipse.ui.preferencePages">
         <page
-            category="de.cau.cs.se.instrumentation.rl.RecordLang"
-            class="de.cau.cs.se.instrumentation.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-            id="de.cau.cs.se.instrumentation.rl.RecordLang.compiler.preferencePage"
+            category="kieker.tools.rl.RecordLang"
+            class="kieker.tools.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+            id="kieker.tools.rl.RecordLang.compiler.preferencePage"
             name="Compiler">
-            <keywordReference id="de.cau.cs.se.instrumentation.rl.ui.keyword_RecordLang"/>
+            <keywordReference id="kieker.tools.rl.ui.keyword_RecordLang"/>
         </page>
 		<page
-            category="de.cau.cs.se.instrumentation.rl.RecordLang"
-            class="de.cau.cs.se.instrumentation.rl.ui.preferences.TargetsPreferencePage"
-            id="de.cau.cs.se.instrumentation.rl.ui.preferences.TargetsPreferencePage"
+            category="kieker.tools.rl.RecordLang"
+            class="kieker.tools.rl.ui.preferences.TargetsPreferencePage"
+            id="kieker.tools.rl.ui.preferences.TargetsPreferencePage"
             name="Targets">
-            <keywordReference id="de.cau.cs.se.instrumentation.rl.ui.keyword_RecordLang"/>
+            <keywordReference id="kieker.tools.rl.ui.keyword_RecordLang"/>
         </page>
     </extension>
     <extension
             point="org.eclipse.ui.propertyPages">
         <page
-            category="de.cau.cs.se.instrumentation.rl.RecordLang"
-            class="de.cau.cs.se.instrumentation.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-            id="de.cau.cs.se.instrumentation.rl.RecordLang.compiler.propertyPage"
+            category="kieker.tools.rl.RecordLang"
+            class="kieker.tools.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+            id="kieker.tools.rl.RecordLang.compiler.propertyPage"
             name="Compiler">
-            <keywordReference id="de.cau.cs.se.instrumentation.rl.ui.keyword_RecordLang"/>
+            <keywordReference id="kieker.tools.rl.ui.keyword_RecordLang"/>
             <enabledWhen>
 	            <adapt type="org.eclipse.core.resources.IProject"/>
 			</enabledWhen>
@@ -289,11 +289,11 @@
 	<extension
 		point="org.eclipse.ui.handlers">
 		<handler 
-			class="de.cau.cs.se.instrumentation.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
+			class="kieker.tools.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
 			commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline">
 			<activeWhen>
 				<reference
-					definitionId="de.cau.cs.se.instrumentation.rl.RecordLang.Editor.opened">
+					definitionId="kieker.tools.rl.RecordLang.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -313,33 +313,33 @@
 				style="push"
 				tooltip="Open Quick Outline">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="de.cau.cs.se.instrumentation.rl.RecordLang.Editor.opened"/>
+					<reference definitionId="kieker.tools.rl.RecordLang.Editor.opened"/>
 				</visibleWhen>
 			</command>
 		</menuContribution>
 	</extension>
-    <!-- quickfix marker resolution generator for de.cau.cs.se.instrumentation.rl.RecordLang -->
+    <!-- quickfix marker resolution generator for kieker.tools.rl.RecordLang -->
     <extension
             point="org.eclipse.ui.ide.markerResolution">
         <markerResolutionGenerator
-            class="de.cau.cs.se.instrumentation.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="de.cau.cs.se.instrumentation.rl.ui.recordlang.check.fast">
+            class="kieker.tools.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+            markerType="kieker.tools.rl.ui.recordlang.check.fast">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">
             </attribute>
         </markerResolutionGenerator>
         <markerResolutionGenerator
-            class="de.cau.cs.se.instrumentation.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="de.cau.cs.se.instrumentation.rl.ui.recordlang.check.normal">
+            class="kieker.tools.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+            markerType="kieker.tools.rl.ui.recordlang.check.normal">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">
             </attribute>
         </markerResolutionGenerator>
         <markerResolutionGenerator
-            class="de.cau.cs.se.instrumentation.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="de.cau.cs.se.instrumentation.rl.ui.recordlang.check.expensive">
+            class="kieker.tools.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+            markerType="kieker.tools.rl.ui.recordlang.check.expensive">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">
@@ -349,11 +349,11 @@
    	<!-- Rename Refactoring -->
 	<extension point="org.eclipse.ui.handlers">
 		<handler 
-			class="de.cau.cs.se.instrumentation.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
+			class="kieker.tools.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
 			commandId="org.eclipse.xtext.ui.refactoring.RenameElement">
 			<activeWhen>
 				<reference
-					definitionId="de.cau.cs.se.instrumentation.rl.RecordLang.Editor.opened">
+					definitionId="kieker.tools.rl.RecordLang.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -365,7 +365,7 @@
                style="push">
             <visibleWhen checkEnabled="false">
                <reference
-                     definitionId="de.cau.cs.se.instrumentation.rl.RecordLang.Editor.opened">
+                     definitionId="kieker.tools.rl.RecordLang.Editor.opened">
                </reference>
             </visibleWhen>
          </command>
@@ -373,37 +373,37 @@
    </extension>
    <extension point="org.eclipse.ui.preferencePages">
 	    <page
-	        category="de.cau.cs.se.instrumentation.rl.RecordLang"
-	        class="de.cau.cs.se.instrumentation.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
-	        id="de.cau.cs.se.instrumentation.rl.RecordLang.refactoring"
+	        category="kieker.tools.rl.RecordLang"
+	        class="kieker.tools.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
+	        id="kieker.tools.rl.RecordLang.refactoring"
 	        name="Refactoring">
-	        <keywordReference id="de.cau.cs.se.instrumentation.rl.ui.keyword_RecordLang"/>
+	        <keywordReference id="kieker.tools.rl.ui.keyword_RecordLang"/>
 	    </page>
 	</extension>
 
   <extension point="org.eclipse.compare.contentViewers">
-    <viewer id="de.cau.cs.se.instrumentation.rl.RecordLang.compare.contentViewers"
-            class="de.cau.cs.se.instrumentation.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+    <viewer id="kieker.tools.rl.RecordLang.compare.contentViewers"
+            class="kieker.tools.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
             extensions="irl">
     </viewer>
   </extension>
   <extension point="org.eclipse.compare.contentMergeViewers">
-    <viewer id="de.cau.cs.se.instrumentation.rl.RecordLang.compare.contentMergeViewers"
-            class="de.cau.cs.se.instrumentation.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+    <viewer id="kieker.tools.rl.RecordLang.compare.contentMergeViewers"
+            class="kieker.tools.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
             extensions="irl" label="Kieker IRL Compare">
      </viewer>
   </extension>
   <extension point="org.eclipse.ui.editors.documentProviders">
-    <provider id="de.cau.cs.se.instrumentation.rl.RecordLang.editors.documentProviders"
-            class="de.cau.cs.se.instrumentation.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
+    <provider id="kieker.tools.rl.RecordLang.editors.documentProviders"
+            class="kieker.tools.rl.ui.RecordLangExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
             extensions="irl">
     </provider>
   </extension>
   <extension
         point="org.eclipse.debug.core.launchConfigurationTypes">
      <launchConfigurationType
-           delegate="de.cau.cs.se.instrumentation.rl.ui.launch.EMFLaunchConfigurationDelegate"
-           id="de.cau.cs.se.instrumentation.rl.ui.launchConfigurationType"
+           delegate="kieker.tools.rl.ui.launch.EMFLaunchConfigurationDelegate"
+           id="kieker.tools.rl.ui.launchConfigurationType"
            modes="run"
            name="Compile EMF"
            public="true">
@@ -412,17 +412,17 @@
   <extension
         point="org.eclipse.debug.ui.launchConfigurationTypeImages">
      <launchConfigurationTypeImage
-           configTypeID="de.cau.cs.se.instrumentation.rl.ui.launchConfigurationType"
+           configTypeID="kieker.tools.rl.ui.launchConfigurationType"
            icon="icons/EcoreModelFile.png"
-           id="de.cau.cs.se.instrumentation.rl.ui.launchConfigurationTypeImage">
+           id="kieker.tools.rl.ui.launchConfigurationTypeImage">
      </launchConfigurationTypeImage>
   </extension>
   <extension
         point="org.eclipse.debug.ui.launchConfigurationTabGroups">
      <launchConfigurationTabGroup
-           class="de.cau.cs.se.instrumentation.rl.ui.launch.EMFLaunchConfigurationTabGroup"
-           id="de.cau.cs.se.instrumentation.rl.ui.launchConfigurationTabGroup"
-           type="de.cau.cs.se.instrumentation.rl.ui.launchConfigurationType">
+           class="kieker.tools.rl.ui.launch.EMFLaunchConfigurationTabGroup"
+           id="kieker.tools.rl.ui.launchConfigurationTabGroup"
+           type="kieker.tools.rl.ui.launchConfigurationType">
         <launchMode
               mode="run">
         </launchMode>
@@ -431,32 +431,32 @@
   <extension
         point="org.eclipse.core.runtime.preferences">
      <initializer
-           class="de.cau.cs.se.instrumentation.rl.preferences.TargetsPreferenceInitializer">
+           class="kieker.tools.rl.preferences.TargetsPreferenceInitializer">
      </initializer>
   </extension>
   <extension
         point="org.eclipse.ui.newWizards">
      <category
-           id="de.cau.cs.se.instrumentation.rl.ui"
+           id="kieker.tools.rl.ui"
            name="Kieker">
      </category>
      <wizard
-           category="de.cau.cs.se.instrumentation.rl.ui"
-           class="de.cau.cs.se.instrumentation.rl.ui.wizards.RecordLangNewWizard"
+           category="kieker.tools.rl.ui"
+           class="kieker.tools.rl.ui.wizards.RecordLangNewWizard"
            icon="icons/kieker-irl-wizard.png"
-           id="de.cau.cs.se.instrumentation.rl.ui.wizards.RecordLangNewWizard"
+           id="kieker.tools.rl.ui.wizards.RecordLangNewWizard"
            name="IRL File">
      </wizard>
   </extension>
   <extension
         point="org.eclipse.ui.propertyPages">
      <page
-           category="de.cau.cs.se.instrumentation.rl.RecordLang"
-           class="de.cau.cs.se.instrumentation.rl.ui.preferences.TargetsPreferencePage"
-           id="de.cau.cs.se.instrumentation.rl.ui.preferences.TargetsPropertyPage"
+           category="kieker.tools.rl.RecordLang"
+           class="kieker.tools.rl.ui.preferences.TargetsPreferencePage"
+           id="kieker.tools.rl.ui.preferences.TargetsPropertyPage"
            name="Targets">
         <keywordReference
-              id="de.cau.cs.se.instrumentation.rl.ui.keyword_RecordLang">
+              id="kieker.tools.rl.ui.keyword_RecordLang">
         </keywordReference>
         <enabledWhen>
            <adapt

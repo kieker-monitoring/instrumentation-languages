@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.rl.preferences;
+package kieker.tools.rl.preferences;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -21,8 +21,8 @@ import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.core.runtime.preferences.DefaultScope;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 
-import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator;
-import de.cau.cs.se.instrumentation.rl.generator.GeneratorConfiguration;
+import kieker.tools.rl.generator.AbstractRecordTypeGenerator;
+import kieker.tools.rl.generator.GeneratorConfiguration;
 
 /**
  * @author Reiner Jung

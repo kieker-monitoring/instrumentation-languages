@@ -1,8 +1,8 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang.util;
+package kieker.tools.al.aspectLang.util;
 
-import de.cau.cs.se.instrumentation.al.aspectLang.*;
+import kieker.tools.al.aspectLang.*;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage
+ * @see kieker.tools.al.aspectLang.AspectLangPackage
  * @generated
  */
 public class AspectLangAdapterFactory extends AdapterFactoryImpl
@@ -287,13 +287,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
 
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.AspectModel <em>Aspect Model</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.AspectModel <em>Aspect Model</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectModel
+   * @see kieker.tools.al.aspectLang.AspectModel
    * @generated
    */
   public Adapter createAspectModelAdapter()
@@ -302,13 +302,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Import <em>Import</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.Import <em>Import</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Import
+   * @see kieker.tools.al.aspectLang.Import
    * @generated
    */
   public Adapter createImportAdapter()
@@ -317,13 +317,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel <em>Application Model</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.ApplicationModel <em>Application Model</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel
+   * @see kieker.tools.al.aspectLang.ApplicationModel
    * @generated
    */
   public Adapter createApplicationModelAdapter()
@@ -332,13 +332,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Aspect <em>Aspect</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.Aspect <em>Aspect</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Aspect
+   * @see kieker.tools.al.aspectLang.Aspect
    * @generated
    */
   public Adapter createAspectAdapter()
@@ -347,13 +347,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.UtilizeAdvice <em>Utilize Advice</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.UtilizeAdvice <em>Utilize Advice</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.UtilizeAdvice
+   * @see kieker.tools.al.aspectLang.UtilizeAdvice
    * @generated
    */
   public Adapter createUtilizeAdviceAdapter()
@@ -362,13 +362,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Advice <em>Advice</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.Advice <em>Advice</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Advice
+   * @see kieker.tools.al.aspectLang.Advice
    * @generated
    */
   public Adapter createAdviceAdapter()
@@ -377,13 +377,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameterDeclaration <em>Advice Parameter Declaration</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.AdviceParameterDeclaration <em>Advice Parameter Declaration</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameterDeclaration
+   * @see kieker.tools.al.aspectLang.AdviceParameterDeclaration
    * @generated
    */
   public Adapter createAdviceParameterDeclarationAdapter()
@@ -392,13 +392,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Collector <em>Collector</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.Collector <em>Collector</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Collector
+   * @see kieker.tools.al.aspectLang.Collector
    * @generated
    */
   public Adapter createCollectorAdapter()
@@ -407,13 +407,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Event <em>Event</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.Event <em>Event</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Event
+   * @see kieker.tools.al.aspectLang.Event
    * @generated
    */
   public Adapter createEventAdapter()
@@ -422,13 +422,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Value <em>Value</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.Value <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Value
+   * @see kieker.tools.al.aspectLang.Value
    * @generated
    */
   public Adapter createValueAdapter()
@@ -437,13 +437,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ReferenceValue <em>Reference Value</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.ReferenceValue <em>Reference Value</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ReferenceValue
+   * @see kieker.tools.al.aspectLang.ReferenceValue
    * @generated
    */
   public Adapter createReferenceValueAdapter()
@@ -452,13 +452,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Property <em>Property</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.Property <em>Property</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Property
+   * @see kieker.tools.al.aspectLang.Property
    * @generated
    */
   public Adapter createPropertyAdapter()
@@ -467,13 +467,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.InternalFunctionProperty <em>Internal Function Property</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.InternalFunctionProperty <em>Internal Function Property</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.InternalFunctionProperty
+   * @see kieker.tools.al.aspectLang.InternalFunctionProperty
    * @generated
    */
   public Adapter createInternalFunctionPropertyAdapter()
@@ -482,13 +482,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ReflectionProperty <em>Reflection Property</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.ReflectionProperty <em>Reflection Property</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ReflectionProperty
+   * @see kieker.tools.al.aspectLang.ReflectionProperty
    * @generated
    */
   public Adapter createReflectionPropertyAdapter()
@@ -497,13 +497,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.RuntimeProperty <em>Runtime Property</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.RuntimeProperty <em>Runtime Property</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.RuntimeProperty
+   * @see kieker.tools.al.aspectLang.RuntimeProperty
    * @generated
    */
   public Adapter createRuntimePropertyAdapter()
@@ -512,13 +512,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameter <em>Advice Parameter</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.AdviceParameter <em>Advice Parameter</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameter
+   * @see kieker.tools.al.aspectLang.AdviceParameter
    * @generated
    */
   public Adapter createAdviceParameterAdapter()
@@ -527,13 +527,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Pointcut <em>Pointcut</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.Pointcut <em>Pointcut</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Pointcut
+   * @see kieker.tools.al.aspectLang.Pointcut
    * @generated
    */
   public Adapter createPointcutAdapter()
@@ -542,13 +542,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Annotation <em>Annotation</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.Annotation <em>Annotation</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Annotation
+   * @see kieker.tools.al.aspectLang.Annotation
    * @generated
    */
   public Adapter createAnnotationAdapter()
@@ -557,13 +557,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery <em>Location Query</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.LocationQuery <em>Location Query</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery
+   * @see kieker.tools.al.aspectLang.LocationQuery
    * @generated
    */
   public Adapter createLocationQueryAdapter()
@@ -572,13 +572,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.CompositionQuery <em>Composition Query</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.CompositionQuery <em>Composition Query</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.CompositionQuery
+   * @see kieker.tools.al.aspectLang.CompositionQuery
    * @generated
    */
   public Adapter createCompositionQueryAdapter()
@@ -587,13 +587,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.OperationQuery <em>Operation Query</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.OperationQuery <em>Operation Query</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.OperationQuery
+   * @see kieker.tools.al.aspectLang.OperationQuery
    * @generated
    */
   public Adapter createOperationQueryAdapter()
@@ -602,13 +602,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery <em>Parameter Query</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.ParameterQuery <em>Parameter Query</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery
+   * @see kieker.tools.al.aspectLang.ParameterQuery
    * @generated
    */
   public Adapter createParameterQueryAdapter()
@@ -617,13 +617,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Node <em>Node</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.Node <em>Node</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Node
+   * @see kieker.tools.al.aspectLang.Node
    * @generated
    */
   public Adapter createNodeAdapter()
@@ -632,13 +632,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode <em>Container Node</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.ContainerNode <em>Container Node</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode
+   * @see kieker.tools.al.aspectLang.ContainerNode
    * @generated
    */
   public Adapter createContainerNodeAdapter()
@@ -647,13 +647,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.WildcardNode <em>Wildcard Node</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.WildcardNode <em>Wildcard Node</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.WildcardNode
+   * @see kieker.tools.al.aspectLang.WildcardNode
    * @generated
    */
   public Adapter createWildcardNodeAdapter()
@@ -662,13 +662,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.SubPathNode <em>Sub Path Node</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.SubPathNode <em>Sub Path Node</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.SubPathNode
+   * @see kieker.tools.al.aspectLang.SubPathNode
    * @generated
    */
   public Adapter createSubPathNodeAdapter()
@@ -677,13 +677,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ParentNode <em>Parent Node</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.ParentNode <em>Parent Node</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ParentNode
+   * @see kieker.tools.al.aspectLang.ParentNode
    * @generated
    */
   public Adapter createParentNodeAdapter()
@@ -692,13 +692,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraint <em>Property Constraint</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.PropertyConstraint <em>Property Constraint</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraint
+   * @see kieker.tools.al.aspectLang.PropertyConstraint
    * @generated
    */
   public Adapter createPropertyConstraintAdapter()
@@ -707,13 +707,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraintCompare <em>Property Constraint Compare</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.PropertyConstraintCompare <em>Property Constraint Compare</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraintCompare
+   * @see kieker.tools.al.aspectLang.PropertyConstraintCompare
    * @generated
    */
   public Adapter createPropertyConstraintCompareAdapter()
@@ -722,13 +722,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ConstraintElement <em>Constraint Element</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.ConstraintElement <em>Constraint Element</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ConstraintElement
+   * @see kieker.tools.al.aspectLang.ConstraintElement
    * @generated
    */
   public Adapter createConstraintElementAdapter()
@@ -737,13 +737,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.LocalQuery <em>Local Query</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.LocalQuery <em>Local Query</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.LocalQuery
+   * @see kieker.tools.al.aspectLang.LocalQuery
    * @generated
    */
   public Adapter createLocalQueryAdapter()
@@ -752,13 +752,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.ModelProperty <em>Model Property</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.ModelProperty <em>Model Property</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.ModelProperty
+   * @see kieker.tools.al.aspectLang.ModelProperty
    * @generated
    */
   public Adapter createModelPropertyAdapter()
@@ -767,13 +767,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Typeof <em>Typeof</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.Typeof <em>Typeof</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Typeof
+   * @see kieker.tools.al.aspectLang.Typeof
    * @generated
    */
   public Adapter createTypeofAdapter()
@@ -782,13 +782,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.Literal <em>Literal</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.Literal <em>Literal</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.Literal
+   * @see kieker.tools.al.aspectLang.Literal
    * @generated
    */
   public Adapter createLiteralAdapter()
@@ -797,13 +797,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.FloatLiteral <em>Float Literal</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.FloatLiteral <em>Float Literal</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.FloatLiteral
+   * @see kieker.tools.al.aspectLang.FloatLiteral
    * @generated
    */
   public Adapter createFloatLiteralAdapter()
@@ -812,13 +812,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.IntLiteral <em>Int Literal</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.IntLiteral <em>Int Literal</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.IntLiteral
+   * @see kieker.tools.al.aspectLang.IntLiteral
    * @generated
    */
   public Adapter createIntLiteralAdapter()
@@ -827,13 +827,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.StringLiteral <em>String Literal</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.StringLiteral <em>String Literal</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.StringLiteral
+   * @see kieker.tools.al.aspectLang.StringLiteral
    * @generated
    */
   public Adapter createStringLiteralAdapter()
@@ -842,13 +842,13 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.aspectLang.TypeReference <em>Type Reference</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.al.aspectLang.TypeReference <em>Type Reference</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.TypeReference
+   * @see kieker.tools.al.aspectLang.TypeReference
    * @generated
    */
   public Adapter createTypeReferenceAdapter()

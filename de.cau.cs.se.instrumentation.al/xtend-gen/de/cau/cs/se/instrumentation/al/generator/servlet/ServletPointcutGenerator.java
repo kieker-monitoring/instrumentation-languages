@@ -1,7 +1,7 @@
-package de.cau.cs.se.instrumentation.al.generator.servlet;
+package kieker.tools.al.generator.servlet;
 
 import de.cau.cs.se.geco.architecture.framework.IGenerator;
-import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut;
+import kieker.tools.al.aspectLang.Pointcut;
 import org.eclipse.xtend2.lib.StringConcatenation;
 
 @SuppressWarnings("all")

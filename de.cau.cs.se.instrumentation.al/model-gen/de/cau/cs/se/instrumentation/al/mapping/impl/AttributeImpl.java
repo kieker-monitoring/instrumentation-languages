@@ -1,11 +1,11 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.mapping.impl;
+package kieker.tools.al.mapping.impl;
 
-import de.cau.cs.se.instrumentation.al.mapping.Attribute;
-import de.cau.cs.se.instrumentation.al.mapping.MappingPackage;
-import de.cau.cs.se.instrumentation.al.mapping.Traceability;
-import de.cau.cs.se.instrumentation.al.mapping.TypeReference;
+import kieker.tools.al.mapping.Attribute;
+import kieker.tools.al.mapping.MappingPackage;
+import kieker.tools.al.mapping.Traceability;
+import kieker.tools.al.mapping.TypeReference;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -24,9 +24,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.mapping.impl.AttributeImpl#getPredecessor <em>Predecessor</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.mapping.impl.AttributeImpl#getType <em>Type</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.mapping.impl.AttributeImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link kieker.tools.al.mapping.impl.AttributeImpl#getPredecessor <em>Predecessor</em>}</li>
+ *   <li>{@link kieker.tools.al.mapping.impl.AttributeImpl#getType <em>Type</em>}</li>
+ *   <li>{@link kieker.tools.al.mapping.impl.AttributeImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated

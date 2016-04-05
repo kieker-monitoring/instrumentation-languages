@@ -1,12 +1,12 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang.impl;
+package kieker.tools.al.aspectLang.impl;
 
-import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
-import de.cau.cs.se.instrumentation.al.aspectLang.Event;
-import de.cau.cs.se.instrumentation.al.aspectLang.Value;
+import kieker.tools.al.aspectLang.AspectLangPackage;
+import kieker.tools.al.aspectLang.Event;
+import kieker.tools.al.aspectLang.Value;
 
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
+import kieker.tools.rl.recordLang.RecordType;
 
 import java.util.Collection;
 
@@ -32,8 +32,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.EventImpl#getType <em>Type</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.EventImpl#getInitializations <em>Initializations</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.EventImpl#getType <em>Type</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.EventImpl#getInitializations <em>Initializations</em>}</li>
  * </ul>
  *
  * @generated

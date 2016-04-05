@@ -1,58 +1,58 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang.impl;
+package kieker.tools.al.aspectLang.impl;
 
-import de.cau.cs.se.instrumentation.al.aspectLang.Advice;
-import de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameter;
-import de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameterDeclaration;
-import de.cau.cs.se.instrumentation.al.aspectLang.Annotation;
-import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel;
-import de.cau.cs.se.instrumentation.al.aspectLang.Aspect;
-import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangFactory;
-import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
-import de.cau.cs.se.instrumentation.al.aspectLang.AspectModel;
-import de.cau.cs.se.instrumentation.al.aspectLang.Collector;
-import de.cau.cs.se.instrumentation.al.aspectLang.CompareOperator;
-import de.cau.cs.se.instrumentation.al.aspectLang.CompositionQuery;
-import de.cau.cs.se.instrumentation.al.aspectLang.ConstraintElement;
-import de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode;
-import de.cau.cs.se.instrumentation.al.aspectLang.Event;
-import de.cau.cs.se.instrumentation.al.aspectLang.FloatLiteral;
-import de.cau.cs.se.instrumentation.al.aspectLang.Import;
-import de.cau.cs.se.instrumentation.al.aspectLang.InsertionPoint;
-import de.cau.cs.se.instrumentation.al.aspectLang.IntLiteral;
-import de.cau.cs.se.instrumentation.al.aspectLang.InternalFunction;
-import de.cau.cs.se.instrumentation.al.aspectLang.InternalFunctionProperty;
-import de.cau.cs.se.instrumentation.al.aspectLang.Literal;
-import de.cau.cs.se.instrumentation.al.aspectLang.LocalQuery;
-import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery;
-import de.cau.cs.se.instrumentation.al.aspectLang.LogicOperator;
-import de.cau.cs.se.instrumentation.al.aspectLang.ModelProperty;
-import de.cau.cs.se.instrumentation.al.aspectLang.Node;
-import de.cau.cs.se.instrumentation.al.aspectLang.OperationQuery;
-import de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery;
-import de.cau.cs.se.instrumentation.al.aspectLang.ParentNode;
-import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut;
-import de.cau.cs.se.instrumentation.al.aspectLang.Property;
-import de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraint;
-import de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraintCompare;
-import de.cau.cs.se.instrumentation.al.aspectLang.QueryModifier;
-import de.cau.cs.se.instrumentation.al.aspectLang.ReferenceValue;
-import de.cau.cs.se.instrumentation.al.aspectLang.ReflectionFunction;
-import de.cau.cs.se.instrumentation.al.aspectLang.ReflectionProperty;
-import de.cau.cs.se.instrumentation.al.aspectLang.RuntimeProperty;
-import de.cau.cs.se.instrumentation.al.aspectLang.StringLiteral;
-import de.cau.cs.se.instrumentation.al.aspectLang.SubPathNode;
-import de.cau.cs.se.instrumentation.al.aspectLang.Technology;
-import de.cau.cs.se.instrumentation.al.aspectLang.TypeReference;
-import de.cau.cs.se.instrumentation.al.aspectLang.Typeof;
-import de.cau.cs.se.instrumentation.al.aspectLang.UtilizeAdvice;
-import de.cau.cs.se.instrumentation.al.aspectLang.Value;
-import de.cau.cs.se.instrumentation.al.aspectLang.WildcardNode;
+import kieker.tools.al.aspectLang.Advice;
+import kieker.tools.al.aspectLang.AdviceParameter;
+import kieker.tools.al.aspectLang.AdviceParameterDeclaration;
+import kieker.tools.al.aspectLang.Annotation;
+import kieker.tools.al.aspectLang.ApplicationModel;
+import kieker.tools.al.aspectLang.Aspect;
+import kieker.tools.al.aspectLang.AspectLangFactory;
+import kieker.tools.al.aspectLang.AspectLangPackage;
+import kieker.tools.al.aspectLang.AspectModel;
+import kieker.tools.al.aspectLang.Collector;
+import kieker.tools.al.aspectLang.CompareOperator;
+import kieker.tools.al.aspectLang.CompositionQuery;
+import kieker.tools.al.aspectLang.ConstraintElement;
+import kieker.tools.al.aspectLang.ContainerNode;
+import kieker.tools.al.aspectLang.Event;
+import kieker.tools.al.aspectLang.FloatLiteral;
+import kieker.tools.al.aspectLang.Import;
+import kieker.tools.al.aspectLang.InsertionPoint;
+import kieker.tools.al.aspectLang.IntLiteral;
+import kieker.tools.al.aspectLang.InternalFunction;
+import kieker.tools.al.aspectLang.InternalFunctionProperty;
+import kieker.tools.al.aspectLang.Literal;
+import kieker.tools.al.aspectLang.LocalQuery;
+import kieker.tools.al.aspectLang.LocationQuery;
+import kieker.tools.al.aspectLang.LogicOperator;
+import kieker.tools.al.aspectLang.ModelProperty;
+import kieker.tools.al.aspectLang.Node;
+import kieker.tools.al.aspectLang.OperationQuery;
+import kieker.tools.al.aspectLang.ParameterQuery;
+import kieker.tools.al.aspectLang.ParentNode;
+import kieker.tools.al.aspectLang.Pointcut;
+import kieker.tools.al.aspectLang.Property;
+import kieker.tools.al.aspectLang.PropertyConstraint;
+import kieker.tools.al.aspectLang.PropertyConstraintCompare;
+import kieker.tools.al.aspectLang.QueryModifier;
+import kieker.tools.al.aspectLang.ReferenceValue;
+import kieker.tools.al.aspectLang.ReflectionFunction;
+import kieker.tools.al.aspectLang.ReflectionProperty;
+import kieker.tools.al.aspectLang.RuntimeProperty;
+import kieker.tools.al.aspectLang.StringLiteral;
+import kieker.tools.al.aspectLang.SubPathNode;
+import kieker.tools.al.aspectLang.Technology;
+import kieker.tools.al.aspectLang.TypeReference;
+import kieker.tools.al.aspectLang.Typeof;
+import kieker.tools.al.aspectLang.UtilizeAdvice;
+import kieker.tools.al.aspectLang.Value;
+import kieker.tools.al.aspectLang.WildcardNode;
 
-import de.cau.cs.se.instrumentation.al.mapping.MappingPackage;
+import kieker.tools.al.mapping.MappingPackage;
 
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
+import kieker.tools.rl.recordLang.RecordLangPackage;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -397,7 +397,7 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see org.eclipse.emf.ecore.EPackage.Registry
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#eNS_URI
+   * @see kieker.tools.al.aspectLang.AspectLangPackage#eNS_URI
    * @see #init()
    * @generated
    */

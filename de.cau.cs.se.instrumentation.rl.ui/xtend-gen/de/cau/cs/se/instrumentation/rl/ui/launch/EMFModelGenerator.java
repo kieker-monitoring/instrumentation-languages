@@ -13,19 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.cau.cs.se.instrumentation.rl.ui.launch;
+package kieker.tools.rl.ui.launch;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
-import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize;
-import de.cau.cs.se.instrumentation.rl.recordLang.BaseType;
-import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
-import de.cau.cs.se.instrumentation.rl.recordLang.Model;
-import de.cau.cs.se.instrumentation.rl.recordLang.Property;
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
-import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType;
-import de.cau.cs.se.instrumentation.rl.recordLang.Type;
+import kieker.tools.rl.recordLang.ArraySize;
+import kieker.tools.rl.recordLang.BaseType;
+import kieker.tools.rl.recordLang.Classifier;
+import kieker.tools.rl.recordLang.Model;
+import kieker.tools.rl.recordLang.Property;
+import kieker.tools.rl.recordLang.RecordType;
+import kieker.tools.rl.recordLang.TemplateType;
+import kieker.tools.rl.recordLang.Type;
 import java.util.Iterator;
 import java.util.function.Consumer;
 import org.eclipse.core.resources.IFile;

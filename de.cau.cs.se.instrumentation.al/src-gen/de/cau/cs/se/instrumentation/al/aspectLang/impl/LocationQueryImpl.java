@@ -1,11 +1,11 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang.impl;
+package kieker.tools.al.aspectLang.impl;
 
-import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
-import de.cau.cs.se.instrumentation.al.aspectLang.CompositionQuery;
-import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery;
-import de.cau.cs.se.instrumentation.al.aspectLang.Node;
+import kieker.tools.al.aspectLang.AspectLangPackage;
+import kieker.tools.al.aspectLang.CompositionQuery;
+import kieker.tools.al.aspectLang.LocationQuery;
+import kieker.tools.al.aspectLang.Node;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -24,9 +24,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.LocationQueryImpl#getNode <em>Node</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.LocationQueryImpl#getSpecialization <em>Specialization</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.LocationQueryImpl#getComposition <em>Composition</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.LocationQueryImpl#getNode <em>Node</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.LocationQueryImpl#getSpecialization <em>Specialization</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.LocationQueryImpl#getComposition <em>Composition</em>}</li>
  * </ul>
  *
  * @generated

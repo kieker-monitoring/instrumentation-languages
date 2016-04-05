@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.rl.recordLang;
+package kieker.tools.rl.recordLang;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -13,10 +13,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.Type#getName <em>Name</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.Type#getName <em>Name</em>}</li>
  * </ul>
  *
- * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getType()
+ * @see kieker.tools.rl.recordLang.RecordLangPackage#getType()
  * @model
  * @generated
  */
@@ -32,14 +32,14 @@ public interface Type extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getType_Name()
+   * @see kieker.tools.rl.recordLang.RecordLangPackage#getType_Name()
    * @model
    * @generated
    */
   String getName();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.rl.recordLang.Type#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link kieker.tools.rl.recordLang.Type#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Name</em>' attribute.

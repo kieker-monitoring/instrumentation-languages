@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/de.cau.cs.se.instrumentation.al.sdk_1.2.0.qualifier.jar" id="de.cau.cs.se.instrumentation.al.sdk" version="1.2.0.qualifier">
-      <category name="de.cau.cs.se.instrumentation"/>
+   <feature url="features/kieker.tools.al.sdk_1.2.0.qualifier.jar" id="kieker.tools.al.sdk" version="1.2.0.qualifier">
+      <category name="kieker.tools"/>
    </feature>
-   <feature url="features/de.cau.cs.se.instrumentation.rl.sdk_1.2.0.qualifier.jar" id="de.cau.cs.se.instrumentation.rl.sdk" version="1.2.0.qualifier">
-      <category name="de.cau.cs.se.instrumentation"/>
+   <feature url="features/kieker.tools.rl.sdk_1.2.0.qualifier.jar" id="kieker.tools.rl.sdk" version="1.2.0.qualifier">
+      <category name="kieker.tools"/>
    </feature>
-   <category-def name="de.cau.cs.se.instrumentation" label="Instrumentation Languages"/>
+   <category-def name="kieker.tools" label="Instrumentation Languages"/>
 </site>

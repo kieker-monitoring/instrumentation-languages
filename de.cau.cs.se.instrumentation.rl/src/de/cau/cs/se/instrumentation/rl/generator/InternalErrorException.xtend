@@ -1,4 +1,4 @@
-package de.cau.cs.se.instrumentation.rl.generator
+package kieker.tools.rl.generator
 
 import java.lang.Exception
 

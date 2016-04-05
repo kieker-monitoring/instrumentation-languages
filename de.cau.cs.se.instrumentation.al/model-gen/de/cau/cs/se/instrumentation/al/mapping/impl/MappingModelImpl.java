@@ -1,10 +1,10 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.mapping.impl;
+package kieker.tools.al.mapping.impl;
 
-import de.cau.cs.se.instrumentation.al.mapping.MappingModel;
-import de.cau.cs.se.instrumentation.al.mapping.MappingPackage;
-import de.cau.cs.se.instrumentation.al.mapping.NamedType;
+import kieker.tools.al.mapping.MappingModel;
+import kieker.tools.al.mapping.MappingPackage;
+import kieker.tools.al.mapping.NamedType;
 
 import java.util.Collection;
 
@@ -28,8 +28,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.mapping.impl.MappingModelImpl#getContents <em>Contents</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.mapping.impl.MappingModelImpl#getTypes <em>Types</em>}</li>
+ *   <li>{@link kieker.tools.al.mapping.impl.MappingModelImpl#getContents <em>Contents</em>}</li>
+ *   <li>{@link kieker.tools.al.mapping.impl.MappingModelImpl#getTypes <em>Types</em>}</li>
  * </ul>
  *
  * @generated
@@ -43,7 +43,7 @@ public class MappingModelImpl extends MinimalEObjectImpl.Container implements Ma
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<de.cau.cs.se.instrumentation.al.mapping.Container> contents;
+	protected EList<kieker.tools.al.mapping.Container> contents;
 
 	/**
 	 * The cached value of the '{@link #getTypes() <em>Types</em>}' containment reference list.
@@ -79,9 +79,9 @@ public class MappingModelImpl extends MinimalEObjectImpl.Container implements Ma
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<de.cau.cs.se.instrumentation.al.mapping.Container> getContents() {
+	public EList<kieker.tools.al.mapping.Container> getContents() {
 		if (contents == null) {
-			contents = new EObjectContainmentEList<de.cau.cs.se.instrumentation.al.mapping.Container>(de.cau.cs.se.instrumentation.al.mapping.Container.class, this, MappingPackage.MAPPING_MODEL__CONTENTS);
+			contents = new EObjectContainmentEList<kieker.tools.al.mapping.Container>(kieker.tools.al.mapping.Container.class, this, MappingPackage.MAPPING_MODEL__CONTENTS);
 		}
 		return contents;
 	}
@@ -141,7 +141,7 @@ public class MappingModelImpl extends MinimalEObjectImpl.Container implements Ma
 		switch (featureID) {
 			case MappingPackage.MAPPING_MODEL__CONTENTS:
 				getContents().clear();
-				getContents().addAll((Collection<? extends de.cau.cs.se.instrumentation.al.mapping.Container>)newValue);
+				getContents().addAll((Collection<? extends kieker.tools.al.mapping.Container>)newValue);
 				return;
 			case MappingPackage.MAPPING_MODEL__TYPES:
 				getTypes().clear();

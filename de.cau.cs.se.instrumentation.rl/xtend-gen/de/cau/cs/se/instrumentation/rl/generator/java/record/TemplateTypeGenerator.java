@@ -1,15 +1,15 @@
-package de.cau.cs.se.instrumentation.rl.generator.java.record;
+package kieker.tools.rl.generator.java.record;
 
 import com.google.common.base.Objects;
-import de.cau.cs.se.instrumentation.rl.generator.AbstractTemplateTypeGenerator;
-import de.cau.cs.se.instrumentation.rl.generator.java.IRL2JavaTypeMappingExtensions;
-import de.cau.cs.se.instrumentation.rl.recordLang.BaseType;
-import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
-import de.cau.cs.se.instrumentation.rl.recordLang.Model;
-import de.cau.cs.se.instrumentation.rl.recordLang.Property;
-import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType;
-import de.cau.cs.se.instrumentation.rl.recordLang.Type;
-import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation;
+import kieker.tools.rl.generator.AbstractTemplateTypeGenerator;
+import kieker.tools.rl.generator.java.IRL2JavaTypeMappingExtensions;
+import kieker.tools.rl.recordLang.BaseType;
+import kieker.tools.rl.recordLang.Classifier;
+import kieker.tools.rl.recordLang.Model;
+import kieker.tools.rl.recordLang.Property;
+import kieker.tools.rl.recordLang.TemplateType;
+import kieker.tools.rl.recordLang.Type;
+import kieker.tools.rl.validation.PropertyEvaluation;
 import java.io.File;
 import java.util.Calendar;
 import java.util.List;

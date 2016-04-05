@@ -9,7 +9,7 @@ options {
 }
 
 @lexer::header {
-package de.cau.cs.se.instrumentation.rl.parser.antlr.internal;
+package kieker.tools.rl.parser.antlr.internal;
 
 // Hack: Use our own Lexer superclass by means of import. 
 // Currently there is no other way to specify the superclass for the lexer.
@@ -17,7 +17,7 @@ import org.eclipse.xtext.parser.antlr.Lexer;
 }
 
 @parser::header {
-package de.cau.cs.se.instrumentation.rl.parser.antlr.internal; 
+package kieker.tools.rl.parser.antlr.internal; 
 
 import org.eclipse.xtext.*;
 import org.eclipse.xtext.parser.*;
@@ -29,7 +29,7 @@ import org.eclipse.xtext.parser.antlr.AbstractInternalAntlrParser;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
 import org.eclipse.xtext.parser.antlr.AntlrDatatypeRuleToken;
-import de.cau.cs.se.instrumentation.rl.services.RecordLangGrammarAccess;
+import kieker.tools.rl.services.RecordLangGrammarAccess;
 
 }
 
@@ -95,7 +95,7 @@ ruleModel returns [EObject current=null]
        			$current, 
        			"name",
         		lv_name_1_0, 
-        		"de.cau.cs.se.instrumentation.rl.RecordLang.QualifiedName");
+        		"kieker.tools.rl.RecordLang.QualifiedName");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -113,7 +113,7 @@ ruleModel returns [EObject current=null]
        			$current, 
        			"imports",
         		lv_imports_2_0, 
-        		"de.cau.cs.se.instrumentation.rl.RecordLang.Import");
+        		"kieker.tools.rl.RecordLang.Import");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -131,7 +131,7 @@ ruleModel returns [EObject current=null]
        			$current, 
        			"types",
         		lv_types_3_0, 
-        		"de.cau.cs.se.instrumentation.rl.RecordLang.ComplexType");
+        		"kieker.tools.rl.RecordLang.ComplexType");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -174,7 +174,7 @@ ruleImport returns [EObject current=null]
        			$current, 
        			"importedNamespace",
         		lv_importedNamespace_1_0, 
-        		"de.cau.cs.se.instrumentation.rl.RecordLang.QualifiedNameWithWildcard");
+        		"kieker.tools.rl.RecordLang.QualifiedNameWithWildcard");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -402,7 +402,7 @@ ruleTemplateType returns [EObject current=null]
        			$current, 
        			"properties",
         		lv_properties_11_0, 
-        		"de.cau.cs.se.instrumentation.rl.RecordLang.Property");
+        		"kieker.tools.rl.RecordLang.Property");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -421,7 +421,7 @@ ruleTemplateType returns [EObject current=null]
        			$current, 
        			"constants",
         		lv_constants_12_0, 
-        		"de.cau.cs.se.instrumentation.rl.RecordLang.Constant");
+        		"kieker.tools.rl.RecordLang.Constant");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -606,7 +606,7 @@ ruleRecordType returns [EObject current=null]
        			$current, 
        			"properties",
         		lv_properties_14_0, 
-        		"de.cau.cs.se.instrumentation.rl.RecordLang.Property");
+        		"kieker.tools.rl.RecordLang.Property");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -625,7 +625,7 @@ ruleRecordType returns [EObject current=null]
        			$current, 
        			"constants",
         		lv_constants_15_0, 
-        		"de.cau.cs.se.instrumentation.rl.RecordLang.Constant");
+        		"kieker.tools.rl.RecordLang.Constant");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -672,7 +672,7 @@ ruleConstant returns [EObject current=null]
        			$current, 
        			"type",
         		lv_type_1_0, 
-        		"de.cau.cs.se.instrumentation.rl.RecordLang.Classifier");
+        		"kieker.tools.rl.RecordLang.Classifier");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -712,7 +712,7 @@ ruleConstant returns [EObject current=null]
        			$current, 
        			"value",
         		lv_value_4_0, 
-        		"de.cau.cs.se.instrumentation.rl.RecordLang.Literal");
+        		"kieker.tools.rl.RecordLang.Literal");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -751,7 +751,7 @@ ruleProperty returns [EObject current=null]
        			$current, 
        			"modifiers",
         		lv_modifiers_0_0, 
-        		"de.cau.cs.se.instrumentation.rl.RecordLang.PropertyModifier");
+        		"kieker.tools.rl.RecordLang.PropertyModifier");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -769,7 +769,7 @@ ruleProperty returns [EObject current=null]
        			$current, 
        			"foreignKey",
         		lv_foreignKey_1_0, 
-        		"de.cau.cs.se.instrumentation.rl.RecordLang.ForeignKey");
+        		"kieker.tools.rl.RecordLang.ForeignKey");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -787,7 +787,7 @@ ruleProperty returns [EObject current=null]
        			$current, 
        			"type",
         		lv_type_2_0, 
-        		"de.cau.cs.se.instrumentation.rl.RecordLang.Classifier");
+        		"kieker.tools.rl.RecordLang.Classifier");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -849,7 +849,7 @@ ruleProperty returns [EObject current=null]
        			$current, 
        			"value",
         		lv_value_8_0, 
-        		"de.cau.cs.se.instrumentation.rl.RecordLang.Literal");
+        		"kieker.tools.rl.RecordLang.Literal");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -960,7 +960,7 @@ ruleClassifier returns [EObject current=null]
        			$current, 
        			"sizes",
         		lv_sizes_1_0, 
-        		"de.cau.cs.se.instrumentation.rl.RecordLang.ArraySize");
+        		"kieker.tools.rl.RecordLang.ArraySize");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1010,7 +1010,7 @@ ruleArraySize returns [EObject current=null]
        			$current, 
        			"size",
         		lv_size_2_0, 
-        		"de.cau.cs.se.instrumentation.rl.RecordLang.INT");
+        		"kieker.tools.rl.RecordLang.INT");
 	    }
 
 )
@@ -1146,7 +1146,7 @@ ruleArrayLiteral returns [EObject current=null]
        			$current, 
        			"literals",
         		lv_literals_1_0, 
-        		"de.cau.cs.se.instrumentation.rl.RecordLang.Literal");
+        		"kieker.tools.rl.RecordLang.Literal");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1168,7 +1168,7 @@ ruleArrayLiteral returns [EObject current=null]
        			$current, 
        			"literals",
         		lv_literals_3_0, 
-        		"de.cau.cs.se.instrumentation.rl.RecordLang.Literal");
+        		"kieker.tools.rl.RecordLang.Literal");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1251,7 +1251,7 @@ ruleIntLiteral returns [EObject current=null]
        			$current, 
        			"value",
         		lv_value_0_0, 
-        		"de.cau.cs.se.instrumentation.rl.RecordLang.INT");
+        		"kieker.tools.rl.RecordLang.INT");
 	    }
 
 )
@@ -1290,7 +1290,7 @@ ruleFloatLiteral returns [EObject current=null]
        			$current, 
        			"value",
         		lv_value_0_0, 
-        		"de.cau.cs.se.instrumentation.rl.RecordLang.FLOAT");
+        		"kieker.tools.rl.RecordLang.FLOAT");
 	    }
 
 )
@@ -1329,7 +1329,7 @@ ruleBooleanLiteral returns [EObject current=null]
        			$current, 
        			"value",
         		lv_value_0_0, 
-        		"de.cau.cs.se.instrumentation.rl.RecordLang.BOOLEAN");
+        		"kieker.tools.rl.RecordLang.BOOLEAN");
 	    }
 
 )

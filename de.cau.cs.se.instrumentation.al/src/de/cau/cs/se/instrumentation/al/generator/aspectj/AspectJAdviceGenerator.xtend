@@ -1,16 +1,16 @@
-package de.cau.cs.se.instrumentation.al.generator.aspectj
+package kieker.tools.al.generator.aspectj
 
 import de.cau.cs.se.geco.architecture.framework.IGenerator
-import de.cau.cs.se.instrumentation.al.aspectLang.Advice
-import de.cau.cs.se.instrumentation.al.aspectLang.Collector
-import de.cau.cs.se.instrumentation.al.aspectLang.InsertionPoint
+import kieker.tools.al.aspectLang.Advice
+import kieker.tools.al.aspectLang.Collector
+import kieker.tools.al.aspectLang.InsertionPoint
 
-import static extension de.cau.cs.se.instrumentation.al.generator.CommonJavaTemplates.*
-import de.cau.cs.se.instrumentation.al.aspectLang.UtilizeAdvice
-import de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameterDeclaration
+import static extension kieker.tools.al.generator.CommonJavaTemplates.*
+import kieker.tools.al.aspectLang.UtilizeAdvice
+import kieker.tools.al.aspectLang.AdviceParameterDeclaration
 import java.util.HashMap
 import java.util.Map
-import de.cau.cs.se.instrumentation.al.aspectLang.Value
+import kieker.tools.al.aspectLang.Value
 
 class AspectJAdviceGenerator implements IGenerator<UtilizeAdvice, CharSequence> {
 	

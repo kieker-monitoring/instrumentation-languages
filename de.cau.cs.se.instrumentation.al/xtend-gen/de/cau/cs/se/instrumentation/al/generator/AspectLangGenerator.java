@@ -13,24 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.cau.cs.se.instrumentation.al.generator;
+package kieker.tools.al.generator;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterators;
-import de.cau.cs.se.instrumentation.al.aspectLang.Advice;
-import de.cau.cs.se.instrumentation.al.aspectLang.Annotation;
-import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel;
-import de.cau.cs.se.instrumentation.al.aspectLang.Aspect;
-import de.cau.cs.se.instrumentation.al.aspectLang.AspectModel;
-import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut;
-import de.cau.cs.se.instrumentation.al.aspectLang.Technology;
-import de.cau.cs.se.instrumentation.al.aspectLang.UtilizeAdvice;
-import de.cau.cs.se.instrumentation.al.generator.aspectj.AspectJAdviceGenerator;
-import de.cau.cs.se.instrumentation.al.generator.aspectj.AspectJPointcutGenerator;
-import de.cau.cs.se.instrumentation.al.generator.javaee.JavaEEAdviceGenerator;
-import de.cau.cs.se.instrumentation.al.generator.servlet.ServletAdviceGenerator;
-import de.cau.cs.se.instrumentation.al.generator.spring.SpringAdviceGenerator;
-import de.cau.cs.se.instrumentation.al.modelhandling.IModelMapper;
+import kieker.tools.al.aspectLang.Advice;
+import kieker.tools.al.aspectLang.Annotation;
+import kieker.tools.al.aspectLang.ApplicationModel;
+import kieker.tools.al.aspectLang.Aspect;
+import kieker.tools.al.aspectLang.AspectModel;
+import kieker.tools.al.aspectLang.Pointcut;
+import kieker.tools.al.aspectLang.Technology;
+import kieker.tools.al.aspectLang.UtilizeAdvice;
+import kieker.tools.al.generator.aspectj.AspectJAdviceGenerator;
+import kieker.tools.al.generator.aspectj.AspectJPointcutGenerator;
+import kieker.tools.al.generator.javaee.JavaEEAdviceGenerator;
+import kieker.tools.al.generator.servlet.ServletAdviceGenerator;
+import kieker.tools.al.generator.spring.SpringAdviceGenerator;
+import kieker.tools.al.modelhandling.IModelMapper;
 import java.io.File;
 import java.io.StringWriter;
 import java.util.ArrayList;
@@ -72,7 +72,7 @@ import org.w3c.dom.Document;
  */
 @SuppressWarnings("all")
 public class AspectLangGenerator implements IGenerator {
-  private final static String MODEL_MAPPER = "de.cau.cs.se.instrumentation.al.modelMapping";
+  private final static String MODEL_MAPPER = "kieker.tools.al.modelMapping";
   
   private final Map<Technology, Collection<Aspect>> aspectTechnologyMap = new HashMap<Technology, Collection<Aspect>>();
   

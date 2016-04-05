@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.al.modelhandling;
+package kieker.tools.al.modelhandling;
 
 import java.util.Collections;
 import java.util.List;
@@ -34,8 +34,8 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
-import de.cau.cs.se.instrumentation.al.mapping.MappingFactory;
-import de.cau.cs.se.instrumentation.al.mapping.NamedElement;
+import kieker.tools.al.mapping.MappingFactory;
+import kieker.tools.al.mapping.NamedElement;
 
 /**
  *

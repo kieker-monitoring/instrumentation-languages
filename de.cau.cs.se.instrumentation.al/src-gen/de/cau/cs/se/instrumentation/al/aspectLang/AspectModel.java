@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang;
+package kieker.tools.al.aspectLang;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -15,15 +15,15 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getName <em>Name</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getImports <em>Imports</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getSources <em>Sources</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getAdvices <em>Advices</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getPointcuts <em>Pointcuts</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getAspects <em>Aspects</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.AspectModel#getName <em>Name</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.AspectModel#getImports <em>Imports</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.AspectModel#getSources <em>Sources</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.AspectModel#getAdvices <em>Advices</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.AspectModel#getPointcuts <em>Pointcuts</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.AspectModel#getAspects <em>Aspects</em>}</li>
  * </ul>
  *
- * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getAspectModel()
+ * @see kieker.tools.al.aspectLang.AspectLangPackage#getAspectModel()
  * @model
  * @generated
  */
@@ -39,14 +39,14 @@ public interface AspectModel extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getAspectModel_Name()
+   * @see kieker.tools.al.aspectLang.AspectLangPackage#getAspectModel_Name()
    * @model
    * @generated
    */
   String getName();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.AspectModel#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link kieker.tools.al.aspectLang.AspectModel#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Name</em>' attribute.
@@ -57,7 +57,7 @@ public interface AspectModel extends EObject
 
   /**
    * Returns the value of the '<em><b>Imports</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.cs.se.instrumentation.al.aspectLang.Import}.
+   * The list contents are of type {@link kieker.tools.al.aspectLang.Import}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Imports</em>' containment reference list isn't clear,
@@ -65,7 +65,7 @@ public interface AspectModel extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Imports</em>' containment reference list.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getAspectModel_Imports()
+   * @see kieker.tools.al.aspectLang.AspectLangPackage#getAspectModel_Imports()
    * @model containment="true"
    * @generated
    */
@@ -73,7 +73,7 @@ public interface AspectModel extends EObject
 
   /**
    * Returns the value of the '<em><b>Sources</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel}.
+   * The list contents are of type {@link kieker.tools.al.aspectLang.ApplicationModel}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Sources</em>' containment reference list isn't clear,
@@ -81,7 +81,7 @@ public interface AspectModel extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Sources</em>' containment reference list.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getAspectModel_Sources()
+   * @see kieker.tools.al.aspectLang.AspectLangPackage#getAspectModel_Sources()
    * @model containment="true"
    * @generated
    */
@@ -89,7 +89,7 @@ public interface AspectModel extends EObject
 
   /**
    * Returns the value of the '<em><b>Advices</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.cs.se.instrumentation.al.aspectLang.Advice}.
+   * The list contents are of type {@link kieker.tools.al.aspectLang.Advice}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Advices</em>' containment reference list isn't clear,
@@ -97,7 +97,7 @@ public interface AspectModel extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Advices</em>' containment reference list.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getAspectModel_Advices()
+   * @see kieker.tools.al.aspectLang.AspectLangPackage#getAspectModel_Advices()
    * @model containment="true"
    * @generated
    */
@@ -105,7 +105,7 @@ public interface AspectModel extends EObject
 
   /**
    * Returns the value of the '<em><b>Pointcuts</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.cs.se.instrumentation.al.aspectLang.Pointcut}.
+   * The list contents are of type {@link kieker.tools.al.aspectLang.Pointcut}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Pointcuts</em>' containment reference list isn't clear,
@@ -113,7 +113,7 @@ public interface AspectModel extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Pointcuts</em>' containment reference list.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getAspectModel_Pointcuts()
+   * @see kieker.tools.al.aspectLang.AspectLangPackage#getAspectModel_Pointcuts()
    * @model containment="true"
    * @generated
    */
@@ -121,7 +121,7 @@ public interface AspectModel extends EObject
 
   /**
    * Returns the value of the '<em><b>Aspects</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.cs.se.instrumentation.al.aspectLang.Aspect}.
+   * The list contents are of type {@link kieker.tools.al.aspectLang.Aspect}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Aspects</em>' containment reference list isn't clear,
@@ -129,7 +129,7 @@ public interface AspectModel extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Aspects</em>' containment reference list.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getAspectModel_Aspects()
+   * @see kieker.tools.al.aspectLang.AspectLangPackage#getAspectModel_Aspects()
    * @model containment="true"
    * @generated
    */

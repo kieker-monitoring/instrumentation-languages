@@ -13,16 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.cau.cs.se.instrumentation.al.modelhandling;
+package kieker.tools.al.modelhandling;
 
 import com.google.common.base.Objects;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
 import com.google.inject.Inject;
-import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel;
-import de.cau.cs.se.instrumentation.al.modelhandling.ForeignModelTypeProviderFactory;
-import de.cau.cs.se.instrumentation.al.modelhandling.ForeignModelTypeScope;
-import de.cau.cs.se.instrumentation.al.modelhandling.IForeignModelTypeProvider;
+import kieker.tools.al.aspectLang.ApplicationModel;
+import kieker.tools.al.modelhandling.ForeignModelTypeProviderFactory;
+import kieker.tools.al.modelhandling.ForeignModelTypeScope;
+import kieker.tools.al.modelhandling.IForeignModelTypeProvider;
 import java.util.Iterator;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;

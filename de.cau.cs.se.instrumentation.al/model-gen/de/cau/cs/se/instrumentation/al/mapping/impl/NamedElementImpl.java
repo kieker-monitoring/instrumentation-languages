@@ -1,9 +1,9 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.mapping.impl;
+package kieker.tools.al.mapping.impl;
 
-import de.cau.cs.se.instrumentation.al.mapping.MappingPackage;
-import de.cau.cs.se.instrumentation.al.mapping.NamedElement;
+import kieker.tools.al.mapping.MappingPackage;
+import kieker.tools.al.mapping.NamedElement;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.mapping.impl.NamedElementImpl#getName <em>Name</em>}</li>
+ *   <li>{@link kieker.tools.al.mapping.impl.NamedElementImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated

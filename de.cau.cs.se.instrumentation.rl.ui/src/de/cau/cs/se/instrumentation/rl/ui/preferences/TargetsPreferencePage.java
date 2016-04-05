@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.rl.ui.preferences;
+package kieker.tools.rl.ui.preferences;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -25,9 +25,9 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
 
-import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator;
-import de.cau.cs.se.instrumentation.rl.generator.GeneratorConfiguration;
-import de.cau.cs.se.instrumentation.rl.preferences.TargetsPreferences;
+import kieker.tools.rl.generator.AbstractRecordTypeGenerator;
+import kieker.tools.rl.generator.GeneratorConfiguration;
+import kieker.tools.rl.preferences.TargetsPreferences;
 
 // http://www.vogella.com/tutorials/EclipsePreferences/article.html
 
@@ -94,7 +94,7 @@ public class TargetsPreferencePage extends AbstractFieldEditorOverlayPage implem
 	 */
 	@Override
 	protected String getPageId() {
-		return "de.cau.cs.se.instrumentation.rl.ui.preferences.TargetsPreferencePage";
+		return "kieker.tools.rl.ui.preferences.TargetsPreferencePage";
 	}
 
 }

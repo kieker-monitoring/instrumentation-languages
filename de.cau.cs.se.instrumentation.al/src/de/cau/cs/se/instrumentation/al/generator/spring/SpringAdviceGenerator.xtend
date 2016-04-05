@@ -1,9 +1,9 @@
-package de.cau.cs.se.instrumentation.al.generator.spring
+package kieker.tools.al.generator.spring
 
 import de.cau.cs.se.geco.architecture.framework.IGenerator
-import de.cau.cs.se.instrumentation.al.aspectLang.Advice
+import kieker.tools.al.aspectLang.Advice
 
-import static extension de.cau.cs.se.instrumentation.al.generator.CommonJavaTemplates.*
+import static extension kieker.tools.al.generator.CommonJavaTemplates.*
 
 class SpringAdviceGenerator implements IGenerator<Advice, CharSequence> {
 	

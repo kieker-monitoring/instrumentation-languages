@@ -1,26 +1,26 @@
-package de.cau.cs.se.instrumentation.rl.generator.java.record
+package kieker.tools.rl.generator.java.record
 
-import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator
-import de.cau.cs.se.instrumentation.rl.generator.InternalErrorException
-import de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral
-import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize
-import de.cau.cs.se.instrumentation.rl.recordLang.BaseType
-import de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral
-import de.cau.cs.se.instrumentation.rl.recordLang.BuiltInValueLiteral
-import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
-import de.cau.cs.se.instrumentation.rl.recordLang.ComplexType
-import de.cau.cs.se.instrumentation.rl.recordLang.Constant
-import de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral
-import de.cau.cs.se.instrumentation.rl.recordLang.FloatLiteral
-import de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral
-import de.cau.cs.se.instrumentation.rl.recordLang.Literal
-import de.cau.cs.se.instrumentation.rl.recordLang.Model
-import de.cau.cs.se.instrumentation.rl.recordLang.Property
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
-import de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral
-import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType
-import de.cau.cs.se.instrumentation.rl.recordLang.Type
-import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation
+import kieker.tools.rl.generator.AbstractRecordTypeGenerator
+import kieker.tools.rl.generator.InternalErrorException
+import kieker.tools.rl.recordLang.ArrayLiteral
+import kieker.tools.rl.recordLang.ArraySize
+import kieker.tools.rl.recordLang.BaseType
+import kieker.tools.rl.recordLang.BooleanLiteral
+import kieker.tools.rl.recordLang.BuiltInValueLiteral
+import kieker.tools.rl.recordLang.Classifier
+import kieker.tools.rl.recordLang.ComplexType
+import kieker.tools.rl.recordLang.Constant
+import kieker.tools.rl.recordLang.ConstantLiteral
+import kieker.tools.rl.recordLang.FloatLiteral
+import kieker.tools.rl.recordLang.IntLiteral
+import kieker.tools.rl.recordLang.Literal
+import kieker.tools.rl.recordLang.Model
+import kieker.tools.rl.recordLang.Property
+import kieker.tools.rl.recordLang.RecordType
+import kieker.tools.rl.recordLang.StringLiteral
+import kieker.tools.rl.recordLang.TemplateType
+import kieker.tools.rl.recordLang.Type
+import kieker.tools.rl.validation.PropertyEvaluation
 import java.io.File
 import java.util.ArrayList
 import java.util.Calendar
@@ -28,7 +28,7 @@ import java.util.List
 import org.eclipse.emf.common.util.BasicEList
 import org.eclipse.emf.common.util.EList
 
-import static extension de.cau.cs.se.instrumentation.rl.generator.java.IRL2JavaTypeMappingExtensions.*
+import static extension kieker.tools.rl.generator.java.IRL2JavaTypeMappingExtensions.*
 
 class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 

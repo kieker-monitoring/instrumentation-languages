@@ -1,11 +1,11 @@
-package de.cau.cs.se.instrumentation.rl.validation
+package kieker.tools.rl.validation
 
-import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType
-import de.cau.cs.se.instrumentation.rl.recordLang.Property
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
+import kieker.tools.rl.recordLang.TemplateType
+import kieker.tools.rl.recordLang.Property
+import kieker.tools.rl.recordLang.RecordType
 import java.util.ArrayList
-import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
-import de.cau.cs.se.instrumentation.rl.generator.InternalErrorException
+import kieker.tools.rl.recordLang.Classifier
+import kieker.tools.rl.generator.InternalErrorException
 import java.util.List
 
 class PropertyEvaluation {

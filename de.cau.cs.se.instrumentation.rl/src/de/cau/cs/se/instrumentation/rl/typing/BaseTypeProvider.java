@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.rl.typing;
+package kieker.tools.rl.typing;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.util.Strings;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
-import de.cau.cs.se.instrumentation.rl.recordLang.Type;
+import kieker.tools.rl.recordLang.Type;
 
 /**
  * The type provider allows to retrieve a list of all primitive types and provides type name lookup.

@@ -1,7 +1,7 @@
-package de.cau.cs.se.instrumentation.rl.generator
+package kieker.tools.rl.generator
 
-import de.cau.cs.se.instrumentation.rl.generator.AbstractTypeGenerator
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
+import kieker.tools.rl.generator.AbstractTypeGenerator
+import kieker.tools.rl.recordLang.RecordType
 
 abstract class AbstractRecordTypeGenerator extends AbstractTypeGenerator {
 		

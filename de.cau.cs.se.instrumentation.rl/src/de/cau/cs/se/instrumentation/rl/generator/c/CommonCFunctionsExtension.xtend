@@ -1,10 +1,10 @@
-package de.cau.cs.se.instrumentation.rl.generator.c
+package kieker.tools.rl.generator.c
 
 import java.util.regex.Pattern
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
-import de.cau.cs.se.instrumentation.rl.recordLang.Model
-import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
-import de.cau.cs.se.instrumentation.rl.generator.InternalErrorException
+import kieker.tools.rl.recordLang.RecordType
+import kieker.tools.rl.recordLang.Model
+import kieker.tools.rl.recordLang.Classifier
+import kieker.tools.rl.generator.InternalErrorException
 
 /**
  * @author Reiner Jung

@@ -1,11 +1,11 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang.impl;
+package kieker.tools.al.aspectLang.impl;
 
-import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
-import de.cau.cs.se.instrumentation.al.aspectLang.CompositionQuery;
-import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery;
-import de.cau.cs.se.instrumentation.al.aspectLang.QueryModifier;
+import kieker.tools.al.aspectLang.AspectLangPackage;
+import kieker.tools.al.aspectLang.CompositionQuery;
+import kieker.tools.al.aspectLang.LocationQuery;
+import kieker.tools.al.aspectLang.QueryModifier;
 
 import java.util.Collection;
 
@@ -31,8 +31,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.CompositionQueryImpl#getModifier <em>Modifier</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.CompositionQueryImpl#getSubQueries <em>Sub Queries</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.CompositionQueryImpl#getModifier <em>Modifier</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.CompositionQueryImpl#getSubQueries <em>Sub Queries</em>}</li>
  * </ul>
  *
  * @generated

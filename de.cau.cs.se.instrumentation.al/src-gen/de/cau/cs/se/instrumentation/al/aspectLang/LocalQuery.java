@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang;
+package kieker.tools.al.aspectLang;
 
 
 /**
@@ -12,12 +12,12 @@ package de.cau.cs.se.instrumentation.al.aspectLang;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.LocalQuery#getLocationQuery <em>Location Query</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.LocalQuery#getProperty <em>Property</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.LocalQuery#getTypeof <em>Typeof</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.LocalQuery#getLocationQuery <em>Location Query</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.LocalQuery#getProperty <em>Property</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.LocalQuery#getTypeof <em>Typeof</em>}</li>
  * </ul>
  *
- * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getLocalQuery()
+ * @see kieker.tools.al.aspectLang.AspectLangPackage#getLocalQuery()
  * @model
  * @generated
  */
@@ -33,14 +33,14 @@ public interface LocalQuery extends ConstraintElement
    * <!-- end-user-doc -->
    * @return the value of the '<em>Location Query</em>' containment reference.
    * @see #setLocationQuery(LocationQuery)
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getLocalQuery_LocationQuery()
+   * @see kieker.tools.al.aspectLang.AspectLangPackage#getLocalQuery_LocationQuery()
    * @model containment="true"
    * @generated
    */
   LocationQuery getLocationQuery();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.LocalQuery#getLocationQuery <em>Location Query</em>}' containment reference.
+   * Sets the value of the '{@link kieker.tools.al.aspectLang.LocalQuery#getLocationQuery <em>Location Query</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Location Query</em>' containment reference.
@@ -59,14 +59,14 @@ public interface LocalQuery extends ConstraintElement
    * <!-- end-user-doc -->
    * @return the value of the '<em>Property</em>' containment reference.
    * @see #setProperty(ModelProperty)
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getLocalQuery_Property()
+   * @see kieker.tools.al.aspectLang.AspectLangPackage#getLocalQuery_Property()
    * @model containment="true"
    * @generated
    */
   ModelProperty getProperty();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.LocalQuery#getProperty <em>Property</em>}' containment reference.
+   * Sets the value of the '{@link kieker.tools.al.aspectLang.LocalQuery#getProperty <em>Property</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Property</em>' containment reference.
@@ -85,14 +85,14 @@ public interface LocalQuery extends ConstraintElement
    * <!-- end-user-doc -->
    * @return the value of the '<em>Typeof</em>' containment reference.
    * @see #setTypeof(Typeof)
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getLocalQuery_Typeof()
+   * @see kieker.tools.al.aspectLang.AspectLangPackage#getLocalQuery_Typeof()
    * @model containment="true"
    * @generated
    */
   Typeof getTypeof();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.LocalQuery#getTypeof <em>Typeof</em>}' containment reference.
+   * Sets the value of the '{@link kieker.tools.al.aspectLang.LocalQuery#getTypeof <em>Typeof</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Typeof</em>' containment reference.

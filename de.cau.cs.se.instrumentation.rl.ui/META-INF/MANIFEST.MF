@@ -1,11 +1,11 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: de.cau.cs.se.instrumentation.rl.ui
+Bundle-Name: kieker.tools.rl.ui
 Bundle-Vendor: Software Engineering Group, Kiel University
 Bundle-Version: 1.2.0.qualifier
-Bundle-SymbolicName: de.cau.cs.se.instrumentation.rl.ui; singleton:=true
+Bundle-SymbolicName: kieker.tools.rl.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: de.cau.cs.se.instrumentation.rl;visibility:=reexport,
+Require-Bundle: kieker.tools.rl;visibility:=reexport,
  org.eclipse.xtext.ui,
  org.eclipse.ui.editors;bundle-version="3.5.0",
  org.eclipse.ui.ide;bundle-version="3.5.0",
@@ -27,10 +27,10 @@ Require-Bundle: de.cau.cs.se.instrumentation.rl;visibility:=reexport,
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: de.cau.cs.se.instrumentation.rl.ui,
- de.cau.cs.se.instrumentation.rl.ui.contentassist,
- de.cau.cs.se.instrumentation.rl.ui.contentassist.antlr,
- de.cau.cs.se.instrumentation.rl.ui.contentassist.antlr.internal,
- de.cau.cs.se.instrumentation.rl.ui.internal,
- de.cau.cs.se.instrumentation.rl.ui.quickfix
-Bundle-Activator: de.cau.cs.se.instrumentation.rl.ui.internal.RecordLangActivator
+Export-Package: kieker.tools.rl.ui,
+ kieker.tools.rl.ui.contentassist,
+ kieker.tools.rl.ui.contentassist.antlr,
+ kieker.tools.rl.ui.contentassist.antlr.internal,
+ kieker.tools.rl.ui.internal,
+ kieker.tools.rl.ui.quickfix
+Bundle-Activator: kieker.tools.rl.ui.internal.RecordLangActivator

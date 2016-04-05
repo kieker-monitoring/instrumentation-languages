@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
 Bundle-Version: 1.2.0.qualifier
-Bundle-SymbolicName: de.cau.cs.se.instrumentation.rl; singleton:=true
+Bundle-SymbolicName: kieker.tools.rl; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.xtext.xbase;resolution:=optional;visibility:=reexport,
@@ -27,19 +27,19 @@ Import-Package: org.apache.log4j,
  org.eclipse.xtext.common.types.access.jdt,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: de.cau.cs.se.instrumentation.rl,
- de.cau.cs.se.instrumentation.rl.formatting,
- de.cau.cs.se.instrumentation.rl.generator,
- de.cau.cs.se.instrumentation.rl.generator.c,
- de.cau.cs.se.instrumentation.rl.generator.java,
- de.cau.cs.se.instrumentation.rl.ouput.config,
- de.cau.cs.se.instrumentation.rl.parser.antlr,
- de.cau.cs.se.instrumentation.rl.parser.antlr.internal,
- de.cau.cs.se.instrumentation.rl.preferences,
- de.cau.cs.se.instrumentation.rl.recordLang,
- de.cau.cs.se.instrumentation.rl.recordLang.impl,
- de.cau.cs.se.instrumentation.rl.recordLang.util,
- de.cau.cs.se.instrumentation.rl.scoping,
- de.cau.cs.se.instrumentation.rl.serializer,
- de.cau.cs.se.instrumentation.rl.services,
- de.cau.cs.se.instrumentation.rl.validation
+Export-Package: kieker.tools.rl,
+ kieker.tools.rl.formatting,
+ kieker.tools.rl.generator,
+ kieker.tools.rl.generator.c,
+ kieker.tools.rl.generator.java,
+ kieker.tools.rl.ouput.config,
+ kieker.tools.rl.parser.antlr,
+ kieker.tools.rl.parser.antlr.internal,
+ kieker.tools.rl.preferences,
+ kieker.tools.rl.recordLang,
+ kieker.tools.rl.recordLang.impl,
+ kieker.tools.rl.recordLang.util,
+ kieker.tools.rl.scoping,
+ kieker.tools.rl.serializer,
+ kieker.tools.rl.services,
+ kieker.tools.rl.validation

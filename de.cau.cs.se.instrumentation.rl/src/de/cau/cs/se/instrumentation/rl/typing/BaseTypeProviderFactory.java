@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.rl.typing;
+package kieker.tools.rl.typing;
 
 import org.eclipse.emf.ecore.resource.ResourceSet;
 

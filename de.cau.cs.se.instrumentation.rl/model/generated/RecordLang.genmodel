@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.cau.cs.se.instrumentation.rl/src-gen" editDirectory="/de.cau.cs.se.instrumentation.rl.edit/src"
-    editorDirectory="/de.cau.cs.se.instrumentation.rl.editor/src" modelPluginID="de.cau.cs.se.instrumentation.rl"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/kieker.tools.rl/src-gen" editDirectory="/kieker.tools.rl.edit/src"
+    editorDirectory="/kieker.tools.rl.editor/src" modelPluginID="kieker.tools.rl"
     forceOverwrite="true" modelName="RecordLang" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
-    complianceLevel="5.0" copyrightFields="false" editPluginID="de.cau.cs.se.instrumentation.rl.edit"
-    editorPluginID="de.cau.cs.se.instrumentation.rl.editor" runtimeVersion="2.9" usedGenPackages="platform:/resource/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
-  <genPackages prefix="RecordLang" basePackage="de.cau.cs.se.instrumentation.rl" disposableProviderFactory="true"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="kieker.tools.rl.edit"
+    editorPluginID="kieker.tools.rl.editor" runtimeVersion="2.9" usedGenPackages="platform:/resource/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+  <genPackages prefix="RecordLang" basePackage="kieker.tools.rl" disposableProviderFactory="true"
       fileExtensions="irl" ecorePackage="RecordLang.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="RecordLang.ecore#//PropertyModifier">
       <genEnumLiterals ecoreEnumLiteral="RecordLang.ecore#//PropertyModifier/TRANSIENT"/>

@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.rl.recordLang;
+package kieker.tools.rl.recordLang;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -13,12 +13,12 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.Constant#getType <em>Type</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.Constant#getName <em>Name</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.Constant#getValue <em>Value</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.Constant#getType <em>Type</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.Constant#getName <em>Name</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.Constant#getValue <em>Value</em>}</li>
  * </ul>
  *
- * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getConstant()
+ * @see kieker.tools.rl.recordLang.RecordLangPackage#getConstant()
  * @model
  * @generated
  */
@@ -34,14 +34,14 @@ public interface Constant extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Type</em>' containment reference.
    * @see #setType(Classifier)
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getConstant_Type()
+   * @see kieker.tools.rl.recordLang.RecordLangPackage#getConstant_Type()
    * @model containment="true"
    * @generated
    */
   Classifier getType();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.rl.recordLang.Constant#getType <em>Type</em>}' containment reference.
+   * Sets the value of the '{@link kieker.tools.rl.recordLang.Constant#getType <em>Type</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Type</em>' containment reference.
@@ -60,14 +60,14 @@ public interface Constant extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getConstant_Name()
+   * @see kieker.tools.rl.recordLang.RecordLangPackage#getConstant_Name()
    * @model
    * @generated
    */
   String getName();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.rl.recordLang.Constant#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link kieker.tools.rl.recordLang.Constant#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Name</em>' attribute.
@@ -86,14 +86,14 @@ public interface Constant extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Value</em>' containment reference.
    * @see #setValue(Literal)
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getConstant_Value()
+   * @see kieker.tools.rl.recordLang.RecordLangPackage#getConstant_Value()
    * @model containment="true"
    * @generated
    */
   Literal getValue();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.rl.recordLang.Constant#getValue <em>Value</em>}' containment reference.
+   * Sets the value of the '{@link kieker.tools.rl.recordLang.Constant#getValue <em>Value</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Value</em>' containment reference.

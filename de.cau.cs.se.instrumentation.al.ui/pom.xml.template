@@ -3,13 +3,13 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <relativePath>../de.cau.cs.se.instrumentation.releng/pom.xml</relativePath>
-    <groupId>de.cau.cs.se.instrumentation</groupId>
+    <relativePath>../kieker.tools.releng/pom.xml</relativePath>
+    <groupId>kieker.tools</groupId>
     <artifactId>parent</artifactId>
     <version>#VERSION#</version>
   </parent>
 
-  <artifactId>de.cau.cs.se.instrumentation.al.ui</artifactId>
+  <artifactId>kieker.tools.al.ui</artifactId>
   <packaging>eclipse-plugin</packaging>
 
   <name>Instrumentation Aspect Language User Interface</name>

@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.rl.recordLang;
+package kieker.tools.rl.recordLang;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -13,10 +13,10 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral#getLiterals <em>Literals</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.ArrayLiteral#getLiterals <em>Literals</em>}</li>
  * </ul>
  *
- * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getArrayLiteral()
+ * @see kieker.tools.rl.recordLang.RecordLangPackage#getArrayLiteral()
  * @model
  * @generated
  */
@@ -24,7 +24,7 @@ public interface ArrayLiteral extends Literal
 {
   /**
    * Returns the value of the '<em><b>Literals</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.cs.se.instrumentation.rl.recordLang.Literal}.
+   * The list contents are of type {@link kieker.tools.rl.recordLang.Literal}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Literals</em>' containment reference list isn't clear,
@@ -32,7 +32,7 @@ public interface ArrayLiteral extends Literal
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Literals</em>' containment reference list.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getArrayLiteral_Literals()
+   * @see kieker.tools.rl.recordLang.RecordLangPackage#getArrayLiteral_Literals()
    * @model containment="true"
    * @generated
    */

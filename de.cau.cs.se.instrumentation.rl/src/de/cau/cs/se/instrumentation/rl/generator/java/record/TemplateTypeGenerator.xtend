@@ -1,16 +1,16 @@
-package de.cau.cs.se.instrumentation.rl.generator.java.record
+package kieker.tools.rl.generator.java.record
 
-import de.cau.cs.se.instrumentation.rl.recordLang.Type
-import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType
-import de.cau.cs.se.instrumentation.rl.recordLang.Property
-import de.cau.cs.se.instrumentation.rl.recordLang.Model
+import kieker.tools.rl.recordLang.Type
+import kieker.tools.rl.recordLang.TemplateType
+import kieker.tools.rl.recordLang.Property
+import kieker.tools.rl.recordLang.Model
 import java.io.File
 import org.eclipse.emf.common.util.EList
-import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation
-import de.cau.cs.se.instrumentation.rl.generator.AbstractTemplateTypeGenerator
+import kieker.tools.rl.validation.PropertyEvaluation
+import kieker.tools.rl.generator.AbstractTemplateTypeGenerator
 import java.util.Calendar
 
-import static extension de.cau.cs.se.instrumentation.rl.generator.java.IRL2JavaTypeMappingExtensions.*
+import static extension kieker.tools.rl.generator.java.IRL2JavaTypeMappingExtensions.*
 
 class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
 

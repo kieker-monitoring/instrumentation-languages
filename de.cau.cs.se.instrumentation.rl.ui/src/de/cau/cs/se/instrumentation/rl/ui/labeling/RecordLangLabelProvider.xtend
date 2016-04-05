@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.rl.ui.labeling
+package kieker.tools.rl.ui.labeling
 
 import com.google.inject.Inject
 
@@ -30,51 +30,51 @@ class RecordLangLabelProvider extends org.eclipse.xtext.ui.label.DefaultEObjectL
 	}
 
 	// Labels and icons can be computed like this:
-	def text(de.cau.cs.se.instrumentation.rl.recordLang.Property e) {
+	def text(kieker.tools.rl.recordLang.Property e) {
 		e.name + ' : ' + e.type.text
 	}
 	
-	def text(de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral e) {
+	def text(kieker.tools.rl.recordLang.StringLiteral e) {
 		'\'' + e.value + '\''
 	}
 	
-	def text(de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral e) {
+	def text(kieker.tools.rl.recordLang.IntLiteral e) {
 		e.value
 	}
 	
-	def text(de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral e) {
+	def text(kieker.tools.rl.recordLang.ArrayLiteral e) {
 		'array'
 	}
 	
-	def text(de.cau.cs.se.instrumentation.rl.recordLang.FloatLiteral e) {
+	def text(kieker.tools.rl.recordLang.FloatLiteral e) {
 		e.value
 	}
 	
-	def text(de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral e) {
+	def text(kieker.tools.rl.recordLang.BooleanLiteral e) {
 		if (e.value) 'true' else 'false'
 	}
 	
-	def text(de.cau.cs.se.instrumentation.rl.recordLang.Classifier e) {
+	def text(kieker.tools.rl.recordLang.Classifier e) {
 		e.type.name + e.sizes.map['[' + (if (it.size != 0) it.size else '') + ']'].join
 	}
 	
-	def image(de.cau.cs.se.instrumentation.rl.recordLang.Property e) {
+	def image(kieker.tools.rl.recordLang.Property e) {
 		'property.gif'
 	}
 	
-	def image(de.cau.cs.se.instrumentation.rl.recordLang.Constant e) {
+	def image(kieker.tools.rl.recordLang.Constant e) {
 		'constant.gif'
 	}
 	
-	def image(de.cau.cs.se.instrumentation.rl.recordLang.RecordType e) {
+	def image(kieker.tools.rl.recordLang.RecordType e) {
 		'record.png'
 	}
 	
-	def image(de.cau.cs.se.instrumentation.rl.recordLang.TemplateType e) {
+	def image(kieker.tools.rl.recordLang.TemplateType e) {
 		'template.png'
 	}
 	
-	def image(de.cau.cs.se.instrumentation.rl.recordLang.Model e) {
+	def image(kieker.tools.rl.recordLang.Model e) {
 		'package.gif'
 	}
 	

@@ -1,4 +1,4 @@
-grammar de.cau.cs.se.instrumentation.rl.RecordLang with org.eclipse.xtext.common.Terminals
+grammar kieker.tools.rl.RecordLang with org.eclipse.xtext.common.Terminals
 
 generate recordLang "http://www.cau.de/cs/se/instrumentation/rl/RecordLang"
 

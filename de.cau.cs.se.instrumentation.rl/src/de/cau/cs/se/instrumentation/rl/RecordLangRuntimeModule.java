@@ -13,22 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.rl;
+package kieker.tools.rl;
 
 import org.eclipse.xtext.generator.IOutputConfigurationProvider;
 
 import com.google.inject.Binder;
 import com.google.inject.Singleton;
 
-import de.cau.cs.se.instrumentation.rl.ouput.config.RecordLangOutputConfigurationProvider;
-import de.cau.cs.se.instrumentation.rl.typing.jar.JarModelGlobalScopeProvider;
+import kieker.tools.rl.ouput.config.RecordLangOutputConfigurationProvider;
+import kieker.tools.rl.typing.jar.JarModelGlobalScopeProvider;
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  *
  * @author Reiner Jung
  */
-public class RecordLangRuntimeModule extends de.cau.cs.se.instrumentation.rl.AbstractRecordLangRuntimeModule { // NOCS
+public class RecordLangRuntimeModule extends kieker.tools.rl.AbstractRecordLangRuntimeModule { // NOCS
 
 	/**
 	 * {@inheritDoc}<br>

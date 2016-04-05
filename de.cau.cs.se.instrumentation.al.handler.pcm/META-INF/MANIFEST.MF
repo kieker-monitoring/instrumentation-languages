@@ -1,11 +1,11 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: PCM Model Mapper
-Bundle-SymbolicName: de.cau.cs.se.instrumentation.al.handler.pcm;singleton:=true
+Bundle-SymbolicName: kieker.tools.al.handler.pcm;singleton:=true
 Bundle-Version: 1.2.0.qualifier
-Bundle-Activator: de.cau.cs.se.instrumentation.al.handler.pcm.Activator
+Bundle-Activator: kieker.tools.al.handler.pcm.Activator
 Require-Bundle: org.eclipse.core.runtime,
- de.cau.cs.se.instrumentation.al;bundle-version="1.2.0",
+ kieker.tools.al;bundle-version="1.2.0",
  org.palladiosimulator.pcm;bundle-version="4.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy

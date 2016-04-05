@@ -13,23 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.al.scoping
+package kieker.tools.al.scoping
 
 import com.google.inject.Inject
 
-import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut
-import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery
-import de.cau.cs.se.instrumentation.al.aspectLang.Node
-import de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode
-import de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery
-import de.cau.cs.se.instrumentation.al.modelhandling.ForeignModelTypeProviderFactory
-import de.cau.cs.se.instrumentation.al.mapping.Operation
+import kieker.tools.al.aspectLang.Pointcut
+import kieker.tools.al.aspectLang.LocationQuery
+import kieker.tools.al.aspectLang.Node
+import kieker.tools.al.aspectLang.ContainerNode
+import kieker.tools.al.aspectLang.ParameterQuery
+import kieker.tools.al.modelhandling.ForeignModelTypeProviderFactory
+import kieker.tools.al.mapping.Operation
 
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.scoping.Scopes
-import de.cau.cs.se.instrumentation.al.aspectLang.OperationQuery
-import de.cau.cs.se.instrumentation.al.mapping.Container
+import kieker.tools.al.aspectLang.OperationQuery
+import kieker.tools.al.mapping.Container
 
 /**
  * This class contains custom scoping description.

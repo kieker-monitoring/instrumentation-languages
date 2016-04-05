@@ -13,16 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.cau.cs.se.instrumentation.rl.typing.jar;
+package kieker.tools.rl.typing.jar;
 
 import com.google.common.base.Objects;
 import com.google.common.base.Predicate;
 import com.google.inject.Inject;
-import de.cau.cs.se.instrumentation.rl.recordLang.BaseType;
-import de.cau.cs.se.instrumentation.rl.typing.BaseTypeGlobalScopeProvider;
-import de.cau.cs.se.instrumentation.rl.typing.ITypeProvider;
-import de.cau.cs.se.instrumentation.rl.typing.jar.JarModelTypeProviderFactory;
-import de.cau.cs.se.instrumentation.rl.typing.jar.JarModelTypeScope;
+import kieker.tools.rl.recordLang.BaseType;
+import kieker.tools.rl.typing.BaseTypeGlobalScopeProvider;
+import kieker.tools.rl.typing.ITypeProvider;
+import kieker.tools.rl.typing.jar.JarModelTypeProviderFactory;
+import kieker.tools.rl.typing.jar.JarModelTypeScope;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspace;

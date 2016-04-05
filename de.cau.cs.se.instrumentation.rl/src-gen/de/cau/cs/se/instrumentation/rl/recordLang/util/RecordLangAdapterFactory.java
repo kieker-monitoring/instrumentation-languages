@@ -1,8 +1,8 @@
 /**
  */
-package de.cau.cs.se.instrumentation.rl.recordLang.util;
+package kieker.tools.rl.recordLang.util;
 
-import de.cau.cs.se.instrumentation.rl.recordLang.*;
+import kieker.tools.rl.recordLang.*;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage
+ * @see kieker.tools.rl.recordLang.RecordLangPackage
  * @generated
  */
 public class RecordLangAdapterFactory extends AdapterFactoryImpl
@@ -197,13 +197,13 @@ public class RecordLangAdapterFactory extends AdapterFactoryImpl
 
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.rl.recordLang.Model <em>Model</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.rl.recordLang.Model <em>Model</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Model
+   * @see kieker.tools.rl.recordLang.Model
    * @generated
    */
   public Adapter createModelAdapter()
@@ -212,13 +212,13 @@ public class RecordLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.rl.recordLang.Import <em>Import</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.rl.recordLang.Import <em>Import</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Import
+   * @see kieker.tools.rl.recordLang.Import
    * @generated
    */
   public Adapter createImportAdapter()
@@ -227,13 +227,13 @@ public class RecordLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.rl.recordLang.Type <em>Type</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.rl.recordLang.Type <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Type
+   * @see kieker.tools.rl.recordLang.Type
    * @generated
    */
   public Adapter createTypeAdapter()
@@ -242,13 +242,13 @@ public class RecordLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.rl.recordLang.BaseType <em>Base Type</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.rl.recordLang.BaseType <em>Base Type</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.BaseType
+   * @see kieker.tools.rl.recordLang.BaseType
    * @generated
    */
   public Adapter createBaseTypeAdapter()
@@ -257,13 +257,13 @@ public class RecordLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.rl.recordLang.ComplexType <em>Complex Type</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.rl.recordLang.ComplexType <em>Complex Type</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.ComplexType
+   * @see kieker.tools.rl.recordLang.ComplexType
    * @generated
    */
   public Adapter createComplexTypeAdapter()
@@ -272,13 +272,13 @@ public class RecordLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.rl.recordLang.TemplateType <em>Template Type</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.rl.recordLang.TemplateType <em>Template Type</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.TemplateType
+   * @see kieker.tools.rl.recordLang.TemplateType
    * @generated
    */
   public Adapter createTemplateTypeAdapter()
@@ -287,13 +287,13 @@ public class RecordLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.rl.recordLang.RecordType <em>Record Type</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.rl.recordLang.RecordType <em>Record Type</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordType
+   * @see kieker.tools.rl.recordLang.RecordType
    * @generated
    */
   public Adapter createRecordTypeAdapter()
@@ -302,13 +302,13 @@ public class RecordLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.rl.recordLang.Constant <em>Constant</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.rl.recordLang.Constant <em>Constant</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Constant
+   * @see kieker.tools.rl.recordLang.Constant
    * @generated
    */
   public Adapter createConstantAdapter()
@@ -317,13 +317,13 @@ public class RecordLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.rl.recordLang.Property <em>Property</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.rl.recordLang.Property <em>Property</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Property
+   * @see kieker.tools.rl.recordLang.Property
    * @generated
    */
   public Adapter createPropertyAdapter()
@@ -332,13 +332,13 @@ public class RecordLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.rl.recordLang.ForeignKey <em>Foreign Key</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.rl.recordLang.ForeignKey <em>Foreign Key</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.ForeignKey
+   * @see kieker.tools.rl.recordLang.ForeignKey
    * @generated
    */
   public Adapter createForeignKeyAdapter()
@@ -347,13 +347,13 @@ public class RecordLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.rl.recordLang.Classifier <em>Classifier</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.rl.recordLang.Classifier <em>Classifier</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Classifier
+   * @see kieker.tools.rl.recordLang.Classifier
    * @generated
    */
   public Adapter createClassifierAdapter()
@@ -362,13 +362,13 @@ public class RecordLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.rl.recordLang.ArraySize <em>Array Size</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.rl.recordLang.ArraySize <em>Array Size</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.ArraySize
+   * @see kieker.tools.rl.recordLang.ArraySize
    * @generated
    */
   public Adapter createArraySizeAdapter()
@@ -377,13 +377,13 @@ public class RecordLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.rl.recordLang.Literal <em>Literal</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.rl.recordLang.Literal <em>Literal</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Literal
+   * @see kieker.tools.rl.recordLang.Literal
    * @generated
    */
   public Adapter createLiteralAdapter()
@@ -392,13 +392,13 @@ public class RecordLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral <em>Array Literal</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.rl.recordLang.ArrayLiteral <em>Array Literal</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral
+   * @see kieker.tools.rl.recordLang.ArrayLiteral
    * @generated
    */
   public Adapter createArrayLiteralAdapter()
@@ -407,13 +407,13 @@ public class RecordLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral <em>String Literal</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.rl.recordLang.StringLiteral <em>String Literal</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral
+   * @see kieker.tools.rl.recordLang.StringLiteral
    * @generated
    */
   public Adapter createStringLiteralAdapter()
@@ -422,13 +422,13 @@ public class RecordLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral <em>Int Literal</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.rl.recordLang.IntLiteral <em>Int Literal</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral
+   * @see kieker.tools.rl.recordLang.IntLiteral
    * @generated
    */
   public Adapter createIntLiteralAdapter()
@@ -437,13 +437,13 @@ public class RecordLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.rl.recordLang.FloatLiteral <em>Float Literal</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.rl.recordLang.FloatLiteral <em>Float Literal</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.FloatLiteral
+   * @see kieker.tools.rl.recordLang.FloatLiteral
    * @generated
    */
   public Adapter createFloatLiteralAdapter()
@@ -452,13 +452,13 @@ public class RecordLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral <em>Boolean Literal</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.rl.recordLang.BooleanLiteral <em>Boolean Literal</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral
+   * @see kieker.tools.rl.recordLang.BooleanLiteral
    * @generated
    */
   public Adapter createBooleanLiteralAdapter()
@@ -467,13 +467,13 @@ public class RecordLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral <em>Constant Literal</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.rl.recordLang.ConstantLiteral <em>Constant Literal</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral
+   * @see kieker.tools.rl.recordLang.ConstantLiteral
    * @generated
    */
   public Adapter createConstantLiteralAdapter()
@@ -482,13 +482,13 @@ public class RecordLangAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.rl.recordLang.BuiltInValueLiteral <em>Built In Value Literal</em>}'.
+   * Creates a new adapter for an object of class '{@link kieker.tools.rl.recordLang.BuiltInValueLiteral <em>Built In Value Literal</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.BuiltInValueLiteral
+   * @see kieker.tools.rl.recordLang.BuiltInValueLiteral
    * @generated
    */
   public Adapter createBuiltInValueLiteralAdapter()

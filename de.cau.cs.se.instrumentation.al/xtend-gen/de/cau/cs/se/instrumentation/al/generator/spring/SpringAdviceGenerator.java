@@ -1,9 +1,9 @@
-package de.cau.cs.se.instrumentation.al.generator.spring;
+package kieker.tools.al.generator.spring;
 
 import de.cau.cs.se.geco.architecture.framework.IGenerator;
-import de.cau.cs.se.instrumentation.al.aspectLang.Advice;
-import de.cau.cs.se.instrumentation.al.aspectLang.Collector;
-import de.cau.cs.se.instrumentation.al.generator.CommonJavaTemplates;
+import kieker.tools.al.aspectLang.Advice;
+import kieker.tools.al.aspectLang.Collector;
+import kieker.tools.al.generator.CommonJavaTemplates;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 

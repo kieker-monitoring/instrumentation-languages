@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.al.modelhandling;
+package kieker.tools.al.modelhandling;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -24,9 +24,9 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.util.Strings;
 
-import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel;
-import de.cau.cs.se.instrumentation.al.mapping.NamedElement;
-import de.cau.cs.se.instrumentation.al.mapping.NamedType;
+import kieker.tools.al.aspectLang.ApplicationModel;
+import kieker.tools.al.mapping.NamedElement;
+import kieker.tools.al.mapping.NamedType;
 
 /**
  * The type provider allows to retrieve a list of all primitive types and provides type name lookup.

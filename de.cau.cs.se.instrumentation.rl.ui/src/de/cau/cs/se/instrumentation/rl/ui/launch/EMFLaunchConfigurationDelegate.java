@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.rl.ui.launch;
+package kieker.tools.rl.ui.launch;
 
 import java.io.File;
 import java.io.IOException;

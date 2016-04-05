@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.rl.recordLang;
+package kieker.tools.rl.recordLang;
 
 
 /**
@@ -9,7 +9,7 @@ package de.cau.cs.se.instrumentation.rl.recordLang;
  * <!-- end-user-doc -->
  *
  *
- * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getTemplateType()
+ * @see kieker.tools.rl.recordLang.RecordLangPackage#getTemplateType()
  * @model
  * @generated
  */

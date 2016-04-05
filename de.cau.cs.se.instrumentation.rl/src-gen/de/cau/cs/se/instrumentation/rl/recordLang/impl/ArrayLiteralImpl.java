@@ -1,10 +1,10 @@
 /**
  */
-package de.cau.cs.se.instrumentation.rl.recordLang.impl;
+package kieker.tools.rl.recordLang.impl;
 
-import de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral;
-import de.cau.cs.se.instrumentation.rl.recordLang.Literal;
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
+import kieker.tools.rl.recordLang.ArrayLiteral;
+import kieker.tools.rl.recordLang.Literal;
+import kieker.tools.rl.recordLang.RecordLangPackage;
 
 import java.util.Collection;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ArrayLiteralImpl#getLiterals <em>Literals</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.impl.ArrayLiteralImpl#getLiterals <em>Literals</em>}</li>
  * </ul>
  *
  * @generated

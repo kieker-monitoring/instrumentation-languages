@@ -1,11 +1,11 @@
 /**
  */
-package de.cau.cs.se.instrumentation.rl.recordLang.impl;
+package kieker.tools.rl.recordLang.impl;
 
-import de.cau.cs.se.instrumentation.rl.recordLang.ComplexType;
-import de.cau.cs.se.instrumentation.rl.recordLang.Import;
-import de.cau.cs.se.instrumentation.rl.recordLang.Model;
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
+import kieker.tools.rl.recordLang.ComplexType;
+import kieker.tools.rl.recordLang.Import;
+import kieker.tools.rl.recordLang.Model;
+import kieker.tools.rl.recordLang.RecordLangPackage;
 
 import java.util.Collection;
 
@@ -31,9 +31,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ModelImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ModelImpl#getImports <em>Imports</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ModelImpl#getTypes <em>Types</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.impl.ModelImpl#getName <em>Name</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.impl.ModelImpl#getImports <em>Imports</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.impl.ModelImpl#getTypes <em>Types</em>}</li>
  * </ul>
  *
  * @generated

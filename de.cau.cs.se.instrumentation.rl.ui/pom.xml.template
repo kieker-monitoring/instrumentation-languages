@@ -4,13 +4,13 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <relativePath>../de.cau.cs.se.instrumentation.releng/pom.xml</relativePath>
-    <groupId>de.cau.cs.se.instrumentation</groupId>
+    <relativePath>../kieker.tools.releng/pom.xml</relativePath>
+    <groupId>kieker.tools</groupId>
     <artifactId>parent</artifactId>
     <version>#VERSION#</version>
   </parent>
 
-  <artifactId>de.cau.cs.se.instrumentation.rl.ui</artifactId>
+  <artifactId>kieker.tools.rl.ui</artifactId>
   <packaging>eclipse-plugin</packaging>
 
   <name>Instrumentation Record Language User Interface</name>

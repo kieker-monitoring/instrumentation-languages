@@ -1,4 +1,4 @@
-module de.cau.cs.se.instrumentation.rl.GenerateRecordLang
+module kieker.tools.rl.GenerateRecordLang
 
 import org.eclipse.emf.mwe.utils.*
 import org.eclipse.xtext.generator.*
@@ -6,7 +6,7 @@ import org.eclipse.xtext.ui.generator.*
 
 var grammarURI = "classpath:/de/cau/cs/se/instrumentation/rl/RecordLang.xtext"
 var fileExtensions = "irl"
-var projectName = "de.cau.cs.se.instrumentation.rl"
+var projectName = "kieker.tools.rl"
 var runtimeProject = "../${projectName}"
 var generateXtendStub = true
 var encoding = "UTF-8"

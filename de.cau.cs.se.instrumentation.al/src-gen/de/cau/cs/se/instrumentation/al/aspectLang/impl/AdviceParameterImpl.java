@@ -1,11 +1,11 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang.impl;
+package kieker.tools.al.aspectLang.impl;
 
-import de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameter;
-import de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameterDeclaration;
-import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
-import de.cau.cs.se.instrumentation.al.aspectLang.Value;
+import kieker.tools.al.aspectLang.AdviceParameter;
+import kieker.tools.al.aspectLang.AdviceParameterDeclaration;
+import kieker.tools.al.aspectLang.AspectLangPackage;
+import kieker.tools.al.aspectLang.Value;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -23,8 +23,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AdviceParameterImpl#getDeclaration <em>Declaration</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AdviceParameterImpl#getCollection <em>Collection</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.AdviceParameterImpl#getDeclaration <em>Declaration</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.AdviceParameterImpl#getCollection <em>Collection</em>}</li>
  * </ul>
  *
  * @generated

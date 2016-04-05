@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.rl.recordLang;
+package kieker.tools.rl.recordLang;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -13,14 +13,14 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.ComplexType#getAuthor <em>Author</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.ComplexType#getSince <em>Since</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.ComplexType#getParents <em>Parents</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.ComplexType#getProperties <em>Properties</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.ComplexType#getConstants <em>Constants</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.ComplexType#getAuthor <em>Author</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.ComplexType#getSince <em>Since</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.ComplexType#getParents <em>Parents</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.ComplexType#getProperties <em>Properties</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.ComplexType#getConstants <em>Constants</em>}</li>
  * </ul>
  *
- * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getComplexType()
+ * @see kieker.tools.rl.recordLang.RecordLangPackage#getComplexType()
  * @model
  * @generated
  */
@@ -36,14 +36,14 @@ public interface ComplexType extends Type
    * <!-- end-user-doc -->
    * @return the value of the '<em>Author</em>' attribute.
    * @see #setAuthor(String)
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getComplexType_Author()
+   * @see kieker.tools.rl.recordLang.RecordLangPackage#getComplexType_Author()
    * @model
    * @generated
    */
   String getAuthor();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.rl.recordLang.ComplexType#getAuthor <em>Author</em>}' attribute.
+   * Sets the value of the '{@link kieker.tools.rl.recordLang.ComplexType#getAuthor <em>Author</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Author</em>' attribute.
@@ -62,14 +62,14 @@ public interface ComplexType extends Type
    * <!-- end-user-doc -->
    * @return the value of the '<em>Since</em>' attribute.
    * @see #setSince(String)
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getComplexType_Since()
+   * @see kieker.tools.rl.recordLang.RecordLangPackage#getComplexType_Since()
    * @model
    * @generated
    */
   String getSince();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.rl.recordLang.ComplexType#getSince <em>Since</em>}' attribute.
+   * Sets the value of the '{@link kieker.tools.rl.recordLang.ComplexType#getSince <em>Since</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Since</em>' attribute.
@@ -80,7 +80,7 @@ public interface ComplexType extends Type
 
   /**
    * Returns the value of the '<em><b>Parents</b></em>' reference list.
-   * The list contents are of type {@link de.cau.cs.se.instrumentation.rl.recordLang.TemplateType}.
+   * The list contents are of type {@link kieker.tools.rl.recordLang.TemplateType}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Parents</em>' reference list isn't clear,
@@ -88,7 +88,7 @@ public interface ComplexType extends Type
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Parents</em>' reference list.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getComplexType_Parents()
+   * @see kieker.tools.rl.recordLang.RecordLangPackage#getComplexType_Parents()
    * @model
    * @generated
    */
@@ -96,7 +96,7 @@ public interface ComplexType extends Type
 
   /**
    * Returns the value of the '<em><b>Properties</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.cs.se.instrumentation.rl.recordLang.Property}.
+   * The list contents are of type {@link kieker.tools.rl.recordLang.Property}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Properties</em>' containment reference list isn't clear,
@@ -104,7 +104,7 @@ public interface ComplexType extends Type
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Properties</em>' containment reference list.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getComplexType_Properties()
+   * @see kieker.tools.rl.recordLang.RecordLangPackage#getComplexType_Properties()
    * @model containment="true"
    * @generated
    */
@@ -112,7 +112,7 @@ public interface ComplexType extends Type
 
   /**
    * Returns the value of the '<em><b>Constants</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.cs.se.instrumentation.rl.recordLang.Constant}.
+   * The list contents are of type {@link kieker.tools.rl.recordLang.Constant}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Constants</em>' containment reference list isn't clear,
@@ -120,7 +120,7 @@ public interface ComplexType extends Type
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Constants</em>' containment reference list.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getComplexType_Constants()
+   * @see kieker.tools.rl.recordLang.RecordLangPackage#getComplexType_Constants()
    * @model containment="true"
    * @generated
    */

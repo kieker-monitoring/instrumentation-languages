@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang;
+package kieker.tools.al.aspectLang;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -13,12 +13,12 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraint#getLeft <em>Left</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraint#getLogic <em>Logic</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraint#getRight <em>Right</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.PropertyConstraint#getLeft <em>Left</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.PropertyConstraint#getLogic <em>Logic</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.PropertyConstraint#getRight <em>Right</em>}</li>
  * </ul>
  *
- * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getPropertyConstraint()
+ * @see kieker.tools.al.aspectLang.AspectLangPackage#getPropertyConstraint()
  * @model
  * @generated
  */
@@ -34,14 +34,14 @@ public interface PropertyConstraint extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Left</em>' containment reference.
    * @see #setLeft(PropertyConstraintCompare)
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getPropertyConstraint_Left()
+   * @see kieker.tools.al.aspectLang.AspectLangPackage#getPropertyConstraint_Left()
    * @model containment="true"
    * @generated
    */
   PropertyConstraintCompare getLeft();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraint#getLeft <em>Left</em>}' containment reference.
+   * Sets the value of the '{@link kieker.tools.al.aspectLang.PropertyConstraint#getLeft <em>Left</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Left</em>' containment reference.
@@ -52,7 +52,7 @@ public interface PropertyConstraint extends EObject
 
   /**
    * Returns the value of the '<em><b>Logic</b></em>' attribute.
-   * The literals are from the enumeration {@link de.cau.cs.se.instrumentation.al.aspectLang.LogicOperator}.
+   * The literals are from the enumeration {@link kieker.tools.al.aspectLang.LogicOperator}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Logic</em>' attribute isn't clear,
@@ -60,20 +60,20 @@ public interface PropertyConstraint extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Logic</em>' attribute.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.LogicOperator
+   * @see kieker.tools.al.aspectLang.LogicOperator
    * @see #setLogic(LogicOperator)
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getPropertyConstraint_Logic()
+   * @see kieker.tools.al.aspectLang.AspectLangPackage#getPropertyConstraint_Logic()
    * @model
    * @generated
    */
   LogicOperator getLogic();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraint#getLogic <em>Logic</em>}' attribute.
+   * Sets the value of the '{@link kieker.tools.al.aspectLang.PropertyConstraint#getLogic <em>Logic</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Logic</em>' attribute.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.LogicOperator
+   * @see kieker.tools.al.aspectLang.LogicOperator
    * @see #getLogic()
    * @generated
    */
@@ -89,14 +89,14 @@ public interface PropertyConstraint extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Right</em>' containment reference.
    * @see #setRight(PropertyConstraintCompare)
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getPropertyConstraint_Right()
+   * @see kieker.tools.al.aspectLang.AspectLangPackage#getPropertyConstraint_Right()
    * @model containment="true"
    * @generated
    */
   PropertyConstraintCompare getRight();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.PropertyConstraint#getRight <em>Right</em>}' containment reference.
+   * Sets the value of the '{@link kieker.tools.al.aspectLang.PropertyConstraint#getRight <em>Right</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Right</em>' containment reference.

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.al.scoping
+package kieker.tools.al.scoping
 
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.resource.ResourceSet
@@ -24,7 +24,7 @@ import org.eclipse.xtext.scoping.IScope
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EClass
-import de.cau.cs.se.instrumentation.al.aspectLang.AspectModel
+import kieker.tools.al.aspectLang.AspectModel
 
 /**
  * 

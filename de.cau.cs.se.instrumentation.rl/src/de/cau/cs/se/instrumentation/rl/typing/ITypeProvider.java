@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.rl.typing;
+package kieker.tools.rl.typing;
 
-import de.cau.cs.se.instrumentation.rl.recordLang.Type;
+import kieker.tools.rl.recordLang.Type;
 
 /**
  * The type provider interface. It is used by the scoping and plays a role in the content assist.

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/de.cau.cs.se.instrumentation.al/model-gen" modelPluginID="de.cau.cs.se.instrumentation.al"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/kieker.tools.al/model-gen" modelPluginID="kieker.tools.al"
     modelName="MappingModel" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
     operationReflection="true" importOrganizing="true">
   <foreignModel>MappingModel.ecore</foreignModel>
-  <genPackages prefix="Mapping" basePackage="de.cau.cs.se.instrumentation.al" disposableProviderFactory="true"
+  <genPackages prefix="Mapping" basePackage="kieker.tools.al" disposableProviderFactory="true"
       ecorePackage="MappingModel.ecore#/">
     <genClasses ecoreClass="MappingModel.ecore#//Type"/>
     <genClasses ecoreClass="MappingModel.ecore#//CollectionType">

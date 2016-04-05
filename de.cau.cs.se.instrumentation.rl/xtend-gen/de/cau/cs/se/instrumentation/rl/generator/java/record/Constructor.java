@@ -1,7 +1,7 @@
-package de.cau.cs.se.instrumentation.rl.generator.java.record;
+package kieker.tools.rl.generator.java.record;
 
-import de.cau.cs.se.instrumentation.rl.generator.java.record.EVisibility;
-import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
+import kieker.tools.rl.generator.java.record.EVisibility;
+import kieker.tools.rl.recordLang.Classifier;
 
 @SuppressWarnings("all")
 public class Constructor {

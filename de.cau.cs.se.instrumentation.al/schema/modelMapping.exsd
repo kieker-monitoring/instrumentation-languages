@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="de.cau.cs.se.instrumentation.al" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="kieker.tools.al" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appInfo>
-         <meta.schema plugin="de.cau.cs.se.instrumentation.al" id="modelMapping" name="Model Mapping"/>
+         <meta.schema plugin="kieker.tools.al" id="modelMapping" name="Model Mapping"/>
       </appInfo>
       <documentation>
          The extension point allows to register various model mappers for different languages and metamodels.

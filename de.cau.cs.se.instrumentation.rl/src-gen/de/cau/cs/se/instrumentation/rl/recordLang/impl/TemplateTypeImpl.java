@@ -1,9 +1,9 @@
 /**
  */
-package de.cau.cs.se.instrumentation.rl.recordLang.impl;
+package kieker.tools.rl.recordLang.impl;
 
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
-import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType;
+import kieker.tools.rl.recordLang.RecordLangPackage;
+import kieker.tools.rl.recordLang.TemplateType;
 
 import org.eclipse.emf.ecore.EClass;
 

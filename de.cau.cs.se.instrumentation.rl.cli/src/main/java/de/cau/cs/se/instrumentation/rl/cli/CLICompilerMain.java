@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.rl.cli;
+package kieker.tools.rl.cli;
 
 import org.apache.commons.cli.BasicParser;
 import org.apache.commons.cli.CommandLine;

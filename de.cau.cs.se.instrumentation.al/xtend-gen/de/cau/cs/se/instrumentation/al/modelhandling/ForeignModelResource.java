@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.cau.cs.se.instrumentation.al.modelhandling;
+package kieker.tools.al.modelhandling;
 
 import com.google.common.base.Objects;
-import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel;
-import de.cau.cs.se.instrumentation.al.mapping.Container;
-import de.cau.cs.se.instrumentation.al.mapping.MappingModel;
-import de.cau.cs.se.instrumentation.al.mapping.NamedElement;
-import de.cau.cs.se.instrumentation.al.mapping.NamedType;
-import de.cau.cs.se.instrumentation.al.modelhandling.IModelMapper;
+import kieker.tools.al.aspectLang.ApplicationModel;
+import kieker.tools.al.mapping.Container;
+import kieker.tools.al.mapping.MappingModel;
+import kieker.tools.al.mapping.NamedElement;
+import kieker.tools.al.mapping.NamedType;
+import kieker.tools.al.modelhandling.IModelMapper;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -48,7 +48,7 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
  */
 @SuppressWarnings("all")
 public class ForeignModelResource extends ResourceImpl {
-  private final static String MODEL_MAPPER = "de.cau.cs.se.instrumentation.al.modelMapping";
+  private final static String MODEL_MAPPER = "kieker.tools.al.modelMapping";
   
   /**
    * Model of the application to be instrumented.

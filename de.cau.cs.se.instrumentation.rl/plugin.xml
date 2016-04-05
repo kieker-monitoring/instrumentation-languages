@@ -6,14 +6,14 @@
   <extension point="org.eclipse.emf.ecore.generated_package">
     <package 
        uri = "http://www.cau.de/cs/se/instrumentation/rl/RecordLang" 
-       class = "de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage"
+       class = "kieker.tools.rl.recordLang.RecordLangPackage"
        genModel = "model/generated/RecordLang.genmodel" /> 
 	
   </extension>
   <extension
         point="org.eclipse.core.runtime.preferences">
      <initializer
-           class="de.cau.cs.se.instrumentation.rl.preferences.TargetsPreferenceInitializer">
+           class="kieker.tools.rl.preferences.TargetsPreferenceInitializer">
      </initializer>
   </extension>
 

@@ -13,27 +13,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.rl.ui.launch
+package kieker.tools.rl.ui.launch
 
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.core.resources.IFile
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.ResourceSet
-import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
+import kieker.tools.rl.recordLang.TemplateType
+import kieker.tools.rl.recordLang.RecordType
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EcoreFactory
-import de.cau.cs.se.instrumentation.rl.recordLang.Model
-import de.cau.cs.se.instrumentation.rl.recordLang.Type
+import kieker.tools.rl.recordLang.Model
+import kieker.tools.rl.recordLang.Type
 import org.eclipse.emf.ecore.EAttribute
-import de.cau.cs.se.instrumentation.rl.recordLang.Property
+import kieker.tools.rl.recordLang.Property
 import org.eclipse.emf.ecore.EcorePackage
 import org.eclipse.emf.ecore.EDataType
 import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.EStructuralFeature
-import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
+import kieker.tools.rl.recordLang.Classifier
 
 /**
  * Provides an example generator for EMF models out of IRL specification.

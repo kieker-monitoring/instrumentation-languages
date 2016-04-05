@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="de.cau.cs.se.instrumentation.al.sdk"
+      id="kieker.tools.al.sdk"
       label="Kieker IAL Feature"
       version="1.2.0.qualifier">
 
    <plugin
-         id="de.cau.cs.se.instrumentation.al"
+         id="kieker.tools.al"
          download-size="0"
          install-size="0"
          version="1.2.0.qualifier"
          unpack="false"/>
 
    <plugin
-         id="de.cau.cs.se.instrumentation.al.handler.pcm"
+         id="kieker.tools.al.handler.pcm"
          download-size="0"
          install-size="0"
          version="1.2.0.qualifier"
          unpack="false"/>
 
    <plugin
-         id="de.cau.cs.se.instrumentation.al.ui"
+         id="kieker.tools.al.ui"
          download-size="0"
          install-size="0"
          version="1.2.0.qualifier"

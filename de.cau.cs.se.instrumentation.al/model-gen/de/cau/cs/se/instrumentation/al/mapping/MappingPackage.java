@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.mapping;
+package kieker.tools.al.mapping;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EReference;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see de.cau.cs.se.instrumentation.al.mapping.MappingFactory
+ * @see kieker.tools.al.mapping.MappingFactory
  * @model kind="package"
  * @generated
  */
@@ -54,14 +54,14 @@ public interface MappingPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	MappingPackage eINSTANCE = de.cau.cs.se.instrumentation.al.mapping.impl.MappingPackageImpl.init();
+	MappingPackage eINSTANCE = kieker.tools.al.mapping.impl.MappingPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.mapping.Traceability <em>Traceability</em>}' class.
+	 * The meta object id for the '{@link kieker.tools.al.mapping.Traceability <em>Traceability</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Traceability
-	 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingPackageImpl#getTraceability()
+	 * @see kieker.tools.al.mapping.Traceability
+	 * @see kieker.tools.al.mapping.impl.MappingPackageImpl#getTraceability()
 	 * @generated
 	 */
 	int TRACEABILITY = 13;
@@ -94,11 +94,11 @@ public interface MappingPackage extends EPackage {
 	int TRACEABILITY_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.mapping.impl.TypeImpl <em>Type</em>}' class.
+	 * The meta object id for the '{@link kieker.tools.al.mapping.impl.TypeImpl <em>Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.cau.cs.se.instrumentation.al.mapping.impl.TypeImpl
-	 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingPackageImpl#getType()
+	 * @see kieker.tools.al.mapping.impl.TypeImpl
+	 * @see kieker.tools.al.mapping.impl.MappingPackageImpl#getType()
 	 * @generated
 	 */
 	int TYPE = 0;
@@ -131,11 +131,11 @@ public interface MappingPackage extends EPackage {
 	int TYPE_OPERATION_COUNT = TRACEABILITY_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.mapping.impl.CollectionTypeImpl <em>Collection Type</em>}' class.
+	 * The meta object id for the '{@link kieker.tools.al.mapping.impl.CollectionTypeImpl <em>Collection Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.cau.cs.se.instrumentation.al.mapping.impl.CollectionTypeImpl
-	 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingPackageImpl#getCollectionType()
+	 * @see kieker.tools.al.mapping.impl.CollectionTypeImpl
+	 * @see kieker.tools.al.mapping.impl.MappingPackageImpl#getCollectionType()
 	 * @generated
 	 */
 	int COLLECTION_TYPE = 1;
@@ -177,11 +177,11 @@ public interface MappingPackage extends EPackage {
 	int COLLECTION_TYPE_OPERATION_COUNT = TYPE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.mapping.impl.NamedTypeImpl <em>Named Type</em>}' class.
+	 * The meta object id for the '{@link kieker.tools.al.mapping.impl.NamedTypeImpl <em>Named Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.cau.cs.se.instrumentation.al.mapping.impl.NamedTypeImpl
-	 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingPackageImpl#getNamedType()
+	 * @see kieker.tools.al.mapping.impl.NamedTypeImpl
+	 * @see kieker.tools.al.mapping.impl.MappingPackageImpl#getNamedType()
 	 * @generated
 	 */
 	int NAMED_TYPE = 2;
@@ -223,11 +223,11 @@ public interface MappingPackage extends EPackage {
 	int NAMED_TYPE_OPERATION_COUNT = TYPE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.mapping.impl.TypeReferenceImpl <em>Type Reference</em>}' class.
+	 * The meta object id for the '{@link kieker.tools.al.mapping.impl.TypeReferenceImpl <em>Type Reference</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.cau.cs.se.instrumentation.al.mapping.impl.TypeReferenceImpl
-	 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingPackageImpl#getTypeReference()
+	 * @see kieker.tools.al.mapping.impl.TypeReferenceImpl
+	 * @see kieker.tools.al.mapping.impl.MappingPackageImpl#getTypeReference()
 	 * @generated
 	 */
 	int TYPE_REFERENCE = 3;
@@ -269,11 +269,11 @@ public interface MappingPackage extends EPackage {
 	int TYPE_REFERENCE_OPERATION_COUNT = TRACEABILITY_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.mapping.Containment <em>Containment</em>}' class.
+	 * The meta object id for the '{@link kieker.tools.al.mapping.Containment <em>Containment</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Containment
-	 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingPackageImpl#getContainment()
+	 * @see kieker.tools.al.mapping.Containment
+	 * @see kieker.tools.al.mapping.impl.MappingPackageImpl#getContainment()
 	 * @generated
 	 */
 	int CONTAINMENT = 12;
@@ -315,11 +315,11 @@ public interface MappingPackage extends EPackage {
 	int CONTAINMENT_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.mapping.impl.ContainerImpl <em>Container</em>}' class.
+	 * The meta object id for the '{@link kieker.tools.al.mapping.impl.ContainerImpl <em>Container</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.cau.cs.se.instrumentation.al.mapping.impl.ContainerImpl
-	 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingPackageImpl#getContainer()
+	 * @see kieker.tools.al.mapping.impl.ContainerImpl
+	 * @see kieker.tools.al.mapping.impl.MappingPackageImpl#getContainer()
 	 * @generated
 	 */
 	int CONTAINER = 4;
@@ -415,11 +415,11 @@ public interface MappingPackage extends EPackage {
 	int CONTAINER_OPERATION_COUNT = CONTAINMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.mapping.impl.NamedElementImpl <em>Named Element</em>}' class.
+	 * The meta object id for the '{@link kieker.tools.al.mapping.impl.NamedElementImpl <em>Named Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.cau.cs.se.instrumentation.al.mapping.impl.NamedElementImpl
-	 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingPackageImpl#getNamedElement()
+	 * @see kieker.tools.al.mapping.impl.NamedElementImpl
+	 * @see kieker.tools.al.mapping.impl.MappingPackageImpl#getNamedElement()
 	 * @generated
 	 */
 	int NAMED_ELEMENT = 7;
@@ -452,11 +452,11 @@ public interface MappingPackage extends EPackage {
 	int NAMED_ELEMENT_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.mapping.impl.OperationImpl <em>Operation</em>}' class.
+	 * The meta object id for the '{@link kieker.tools.al.mapping.impl.OperationImpl <em>Operation</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.cau.cs.se.instrumentation.al.mapping.impl.OperationImpl
-	 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingPackageImpl#getOperation()
+	 * @see kieker.tools.al.mapping.impl.OperationImpl
+	 * @see kieker.tools.al.mapping.impl.MappingPackageImpl#getOperation()
 	 * @generated
 	 */
 	int OPERATION = 5;
@@ -525,11 +525,11 @@ public interface MappingPackage extends EPackage {
 	int OPERATION_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.mapping.impl.ParameterModifierImpl <em>Parameter Modifier</em>}' class.
+	 * The meta object id for the '{@link kieker.tools.al.mapping.impl.ParameterModifierImpl <em>Parameter Modifier</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.cau.cs.se.instrumentation.al.mapping.impl.ParameterModifierImpl
-	 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingPackageImpl#getParameterModifier()
+	 * @see kieker.tools.al.mapping.impl.ParameterModifierImpl
+	 * @see kieker.tools.al.mapping.impl.MappingPackageImpl#getParameterModifier()
 	 * @generated
 	 */
 	int PARAMETER_MODIFIER = 6;
@@ -571,11 +571,11 @@ public interface MappingPackage extends EPackage {
 	int PARAMETER_MODIFIER_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.mapping.impl.ParameterImpl <em>Parameter</em>}' class.
+	 * The meta object id for the '{@link kieker.tools.al.mapping.impl.ParameterImpl <em>Parameter</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.cau.cs.se.instrumentation.al.mapping.impl.ParameterImpl
-	 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingPackageImpl#getParameter()
+	 * @see kieker.tools.al.mapping.impl.ParameterImpl
+	 * @see kieker.tools.al.mapping.impl.MappingPackageImpl#getParameter()
 	 * @generated
 	 */
 	int PARAMETER = 8;
@@ -635,11 +635,11 @@ public interface MappingPackage extends EPackage {
 	int PARAMETER_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.mapping.impl.MappingModelImpl <em>Model</em>}' class.
+	 * The meta object id for the '{@link kieker.tools.al.mapping.impl.MappingModelImpl <em>Model</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingModelImpl
-	 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingPackageImpl#getMappingModel()
+	 * @see kieker.tools.al.mapping.impl.MappingModelImpl
+	 * @see kieker.tools.al.mapping.impl.MappingPackageImpl#getMappingModel()
 	 * @generated
 	 */
 	int MAPPING_MODEL = 9;
@@ -681,11 +681,11 @@ public interface MappingPackage extends EPackage {
 	int MAPPING_MODEL_OPERATION_COUNT = CONTAINMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.mapping.impl.OperationModifierImpl <em>Operation Modifier</em>}' class.
+	 * The meta object id for the '{@link kieker.tools.al.mapping.impl.OperationModifierImpl <em>Operation Modifier</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.cau.cs.se.instrumentation.al.mapping.impl.OperationModifierImpl
-	 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingPackageImpl#getOperationModifier()
+	 * @see kieker.tools.al.mapping.impl.OperationModifierImpl
+	 * @see kieker.tools.al.mapping.impl.MappingPackageImpl#getOperationModifier()
 	 * @generated
 	 */
 	int OPERATION_MODIFIER = 10;
@@ -727,11 +727,11 @@ public interface MappingPackage extends EPackage {
 	int OPERATION_MODIFIER_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.mapping.impl.ContainerModifierImpl <em>Container Modifier</em>}' class.
+	 * The meta object id for the '{@link kieker.tools.al.mapping.impl.ContainerModifierImpl <em>Container Modifier</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.cau.cs.se.instrumentation.al.mapping.impl.ContainerModifierImpl
-	 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingPackageImpl#getContainerModifier()
+	 * @see kieker.tools.al.mapping.impl.ContainerModifierImpl
+	 * @see kieker.tools.al.mapping.impl.MappingPackageImpl#getContainerModifier()
 	 * @generated
 	 */
 	int CONTAINER_MODIFIER = 11;
@@ -773,11 +773,11 @@ public interface MappingPackage extends EPackage {
 	int CONTAINER_MODIFIER_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.mapping.Feature <em>Feature</em>}' class.
+	 * The meta object id for the '{@link kieker.tools.al.mapping.Feature <em>Feature</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Feature
-	 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingPackageImpl#getFeature()
+	 * @see kieker.tools.al.mapping.Feature
+	 * @see kieker.tools.al.mapping.impl.MappingPackageImpl#getFeature()
 	 * @generated
 	 */
 	int FEATURE = 16;
@@ -819,11 +819,11 @@ public interface MappingPackage extends EPackage {
 	int FEATURE_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.mapping.impl.AttributeImpl <em>Attribute</em>}' class.
+	 * The meta object id for the '{@link kieker.tools.al.mapping.impl.AttributeImpl <em>Attribute</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.cau.cs.se.instrumentation.al.mapping.impl.AttributeImpl
-	 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingPackageImpl#getAttribute()
+	 * @see kieker.tools.al.mapping.impl.AttributeImpl
+	 * @see kieker.tools.al.mapping.impl.MappingPackageImpl#getAttribute()
 	 * @generated
 	 */
 	int ATTRIBUTE = 14;
@@ -883,11 +883,11 @@ public interface MappingPackage extends EPackage {
 	int ATTRIBUTE_OPERATION_COUNT = FEATURE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link de.cau.cs.se.instrumentation.al.mapping.impl.ReferenceImpl <em>Reference</em>}' class.
+	 * The meta object id for the '{@link kieker.tools.al.mapping.impl.ReferenceImpl <em>Reference</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see de.cau.cs.se.instrumentation.al.mapping.impl.ReferenceImpl
-	 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingPackageImpl#getReference()
+	 * @see kieker.tools.al.mapping.impl.ReferenceImpl
+	 * @see kieker.tools.al.mapping.impl.MappingPackageImpl#getReference()
 	 * @generated
 	 */
 	int REFERENCE = 15;
@@ -939,369 +939,369 @@ public interface MappingPackage extends EPackage {
 
 
 	/**
-	 * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.mapping.Type <em>Type</em>}'.
+	 * Returns the meta object for class '{@link kieker.tools.al.mapping.Type <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Type</em>'.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Type
+	 * @see kieker.tools.al.mapping.Type
 	 * @generated
 	 */
 	EClass getType();
 
 	/**
-	 * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.mapping.CollectionType <em>Collection Type</em>}'.
+	 * Returns the meta object for class '{@link kieker.tools.al.mapping.CollectionType <em>Collection Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Collection Type</em>'.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.CollectionType
+	 * @see kieker.tools.al.mapping.CollectionType
 	 * @generated
 	 */
 	EClass getCollectionType();
 
 	/**
-	 * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.al.mapping.CollectionType#getElementType <em>Element Type</em>}'.
+	 * Returns the meta object for the reference '{@link kieker.tools.al.mapping.CollectionType#getElementType <em>Element Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Element Type</em>'.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.CollectionType#getElementType()
+	 * @see kieker.tools.al.mapping.CollectionType#getElementType()
 	 * @see #getCollectionType()
 	 * @generated
 	 */
 	EReference getCollectionType_ElementType();
 
 	/**
-	 * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.mapping.NamedType <em>Named Type</em>}'.
+	 * Returns the meta object for class '{@link kieker.tools.al.mapping.NamedType <em>Named Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Named Type</em>'.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.NamedType
+	 * @see kieker.tools.al.mapping.NamedType
 	 * @generated
 	 */
 	EClass getNamedType();
 
 	/**
-	 * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.mapping.TypeReference <em>Type Reference</em>}'.
+	 * Returns the meta object for class '{@link kieker.tools.al.mapping.TypeReference <em>Type Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Type Reference</em>'.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.TypeReference
+	 * @see kieker.tools.al.mapping.TypeReference
 	 * @generated
 	 */
 	EClass getTypeReference();
 
 	/**
-	 * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.al.mapping.TypeReference#getType <em>Type</em>}'.
+	 * Returns the meta object for the reference '{@link kieker.tools.al.mapping.TypeReference#getType <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Type</em>'.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.TypeReference#getType()
+	 * @see kieker.tools.al.mapping.TypeReference#getType()
 	 * @see #getTypeReference()
 	 * @generated
 	 */
 	EReference getTypeReference_Type();
 
 	/**
-	 * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.mapping.Container <em>Container</em>}'.
+	 * Returns the meta object for class '{@link kieker.tools.al.mapping.Container <em>Container</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Container</em>'.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Container
+	 * @see kieker.tools.al.mapping.Container
 	 * @generated
 	 */
 	EClass getContainer();
 
 	/**
-	 * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.al.mapping.Container#getModifier <em>Modifier</em>}'.
+	 * Returns the meta object for the reference '{@link kieker.tools.al.mapping.Container#getModifier <em>Modifier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Modifier</em>'.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Container#getModifier()
+	 * @see kieker.tools.al.mapping.Container#getModifier()
 	 * @see #getContainer()
 	 * @generated
 	 */
 	EReference getContainer_Modifier();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.al.mapping.Container#getOperations <em>Operations</em>}'.
+	 * Returns the meta object for the containment reference list '{@link kieker.tools.al.mapping.Container#getOperations <em>Operations</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Operations</em>'.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Container#getOperations()
+	 * @see kieker.tools.al.mapping.Container#getOperations()
 	 * @see #getContainer()
 	 * @generated
 	 */
 	EReference getContainer_Operations();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.al.mapping.Container#getAttributes <em>Attributes</em>}'.
+	 * Returns the meta object for the containment reference list '{@link kieker.tools.al.mapping.Container#getAttributes <em>Attributes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Attributes</em>'.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Container#getAttributes()
+	 * @see kieker.tools.al.mapping.Container#getAttributes()
 	 * @see #getContainer()
 	 * @generated
 	 */
 	EReference getContainer_Attributes();
 
 	/**
-	 * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.al.mapping.Container#getReferences <em>References</em>}'.
+	 * Returns the meta object for the reference '{@link kieker.tools.al.mapping.Container#getReferences <em>References</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>References</em>'.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Container#getReferences()
+	 * @see kieker.tools.al.mapping.Container#getReferences()
 	 * @see #getContainer()
 	 * @generated
 	 */
 	EReference getContainer_References();
 
 	/**
-	 * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.mapping.Operation <em>Operation</em>}'.
+	 * Returns the meta object for class '{@link kieker.tools.al.mapping.Operation <em>Operation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Operation</em>'.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Operation
+	 * @see kieker.tools.al.mapping.Operation
 	 * @generated
 	 */
 	EClass getOperation();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.al.mapping.Operation#getReturnType <em>Return Type</em>}'.
+	 * Returns the meta object for the containment reference '{@link kieker.tools.al.mapping.Operation#getReturnType <em>Return Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Return Type</em>'.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Operation#getReturnType()
+	 * @see kieker.tools.al.mapping.Operation#getReturnType()
 	 * @see #getOperation()
 	 * @generated
 	 */
 	EReference getOperation_ReturnType();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.al.mapping.Operation#getParameters <em>Parameters</em>}'.
+	 * Returns the meta object for the containment reference list '{@link kieker.tools.al.mapping.Operation#getParameters <em>Parameters</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Parameters</em>'.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Operation#getParameters()
+	 * @see kieker.tools.al.mapping.Operation#getParameters()
 	 * @see #getOperation()
 	 * @generated
 	 */
 	EReference getOperation_Parameters();
 
 	/**
-	 * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.al.mapping.Operation#getModifier <em>Modifier</em>}'.
+	 * Returns the meta object for the reference '{@link kieker.tools.al.mapping.Operation#getModifier <em>Modifier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Modifier</em>'.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Operation#getModifier()
+	 * @see kieker.tools.al.mapping.Operation#getModifier()
 	 * @see #getOperation()
 	 * @generated
 	 */
 	EReference getOperation_Modifier();
 
 	/**
-	 * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.mapping.ParameterModifier <em>Parameter Modifier</em>}'.
+	 * Returns the meta object for class '{@link kieker.tools.al.mapping.ParameterModifier <em>Parameter Modifier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Parameter Modifier</em>'.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.ParameterModifier
+	 * @see kieker.tools.al.mapping.ParameterModifier
 	 * @generated
 	 */
 	EClass getParameterModifier();
 
 	/**
-	 * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.mapping.NamedElement <em>Named Element</em>}'.
+	 * Returns the meta object for class '{@link kieker.tools.al.mapping.NamedElement <em>Named Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Named Element</em>'.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.NamedElement
+	 * @see kieker.tools.al.mapping.NamedElement
 	 * @generated
 	 */
 	EClass getNamedElement();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.al.mapping.NamedElement#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link kieker.tools.al.mapping.NamedElement#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.NamedElement#getName()
+	 * @see kieker.tools.al.mapping.NamedElement#getName()
 	 * @see #getNamedElement()
 	 * @generated
 	 */
 	EAttribute getNamedElement_Name();
 
 	/**
-	 * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.mapping.Parameter <em>Parameter</em>}'.
+	 * Returns the meta object for class '{@link kieker.tools.al.mapping.Parameter <em>Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Parameter</em>'.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Parameter
+	 * @see kieker.tools.al.mapping.Parameter
 	 * @generated
 	 */
 	EClass getParameter();
 
 	/**
-	 * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.al.mapping.Parameter#getModifier <em>Modifier</em>}'.
+	 * Returns the meta object for the reference '{@link kieker.tools.al.mapping.Parameter#getModifier <em>Modifier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Modifier</em>'.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Parameter#getModifier()
+	 * @see kieker.tools.al.mapping.Parameter#getModifier()
 	 * @see #getParameter()
 	 * @generated
 	 */
 	EReference getParameter_Modifier();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.al.mapping.Parameter#getType <em>Type</em>}'.
+	 * Returns the meta object for the containment reference '{@link kieker.tools.al.mapping.Parameter#getType <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Type</em>'.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Parameter#getType()
+	 * @see kieker.tools.al.mapping.Parameter#getType()
 	 * @see #getParameter()
 	 * @generated
 	 */
 	EReference getParameter_Type();
 
 	/**
-	 * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.mapping.MappingModel <em>Model</em>}'.
+	 * Returns the meta object for class '{@link kieker.tools.al.mapping.MappingModel <em>Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Model</em>'.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.MappingModel
+	 * @see kieker.tools.al.mapping.MappingModel
 	 * @generated
 	 */
 	EClass getMappingModel();
 
 	/**
-	 * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.mapping.OperationModifier <em>Operation Modifier</em>}'.
+	 * Returns the meta object for class '{@link kieker.tools.al.mapping.OperationModifier <em>Operation Modifier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Operation Modifier</em>'.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.OperationModifier
+	 * @see kieker.tools.al.mapping.OperationModifier
 	 * @generated
 	 */
 	EClass getOperationModifier();
 
 	/**
-	 * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.mapping.ContainerModifier <em>Container Modifier</em>}'.
+	 * Returns the meta object for class '{@link kieker.tools.al.mapping.ContainerModifier <em>Container Modifier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Container Modifier</em>'.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.ContainerModifier
+	 * @see kieker.tools.al.mapping.ContainerModifier
 	 * @generated
 	 */
 	EClass getContainerModifier();
 
 	/**
-	 * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.mapping.Containment <em>Containment</em>}'.
+	 * Returns the meta object for class '{@link kieker.tools.al.mapping.Containment <em>Containment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Containment</em>'.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Containment
+	 * @see kieker.tools.al.mapping.Containment
 	 * @generated
 	 */
 	EClass getContainment();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.al.mapping.Containment#getContents <em>Contents</em>}'.
+	 * Returns the meta object for the containment reference list '{@link kieker.tools.al.mapping.Containment#getContents <em>Contents</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Contents</em>'.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Containment#getContents()
+	 * @see kieker.tools.al.mapping.Containment#getContents()
 	 * @see #getContainment()
 	 * @generated
 	 */
 	EReference getContainment_Contents();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.al.mapping.Containment#getTypes <em>Types</em>}'.
+	 * Returns the meta object for the containment reference list '{@link kieker.tools.al.mapping.Containment#getTypes <em>Types</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Types</em>'.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Containment#getTypes()
+	 * @see kieker.tools.al.mapping.Containment#getTypes()
 	 * @see #getContainment()
 	 * @generated
 	 */
 	EReference getContainment_Types();
 
 	/**
-	 * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.mapping.Traceability <em>Traceability</em>}'.
+	 * Returns the meta object for class '{@link kieker.tools.al.mapping.Traceability <em>Traceability</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Traceability</em>'.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Traceability
+	 * @see kieker.tools.al.mapping.Traceability
 	 * @generated
 	 */
 	EClass getTraceability();
 
 	/**
-	 * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.al.mapping.Traceability#getPredecessor <em>Predecessor</em>}'.
+	 * Returns the meta object for the reference '{@link kieker.tools.al.mapping.Traceability#getPredecessor <em>Predecessor</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Predecessor</em>'.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Traceability#getPredecessor()
+	 * @see kieker.tools.al.mapping.Traceability#getPredecessor()
 	 * @see #getTraceability()
 	 * @generated
 	 */
 	EReference getTraceability_Predecessor();
 
 	/**
-	 * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.mapping.Attribute <em>Attribute</em>}'.
+	 * Returns the meta object for class '{@link kieker.tools.al.mapping.Attribute <em>Attribute</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Attribute</em>'.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Attribute
+	 * @see kieker.tools.al.mapping.Attribute
 	 * @generated
 	 */
 	EClass getAttribute();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.al.mapping.Attribute#getType <em>Type</em>}'.
+	 * Returns the meta object for the containment reference '{@link kieker.tools.al.mapping.Attribute#getType <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Type</em>'.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Attribute#getType()
+	 * @see kieker.tools.al.mapping.Attribute#getType()
 	 * @see #getAttribute()
 	 * @generated
 	 */
 	EReference getAttribute_Type();
 
 	/**
-	 * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.al.mapping.Attribute#getValue <em>Value</em>}'.
+	 * Returns the meta object for the reference '{@link kieker.tools.al.mapping.Attribute#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Value</em>'.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Attribute#getValue()
+	 * @see kieker.tools.al.mapping.Attribute#getValue()
 	 * @see #getAttribute()
 	 * @generated
 	 */
 	EReference getAttribute_Value();
 
 	/**
-	 * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.mapping.Reference <em>Reference</em>}'.
+	 * Returns the meta object for class '{@link kieker.tools.al.mapping.Reference <em>Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Reference</em>'.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Reference
+	 * @see kieker.tools.al.mapping.Reference
 	 * @generated
 	 */
 	EClass getReference();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.al.mapping.Reference#getType <em>Type</em>}'.
+	 * Returns the meta object for the containment reference '{@link kieker.tools.al.mapping.Reference#getType <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Type</em>'.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Reference#getType()
+	 * @see kieker.tools.al.mapping.Reference#getType()
 	 * @see #getReference()
 	 * @generated
 	 */
 	EReference getReference_Type();
 
 	/**
-	 * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.al.mapping.Feature <em>Feature</em>}'.
+	 * Returns the meta object for class '{@link kieker.tools.al.mapping.Feature <em>Feature</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Feature</em>'.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Feature
+	 * @see kieker.tools.al.mapping.Feature
 	 * @generated
 	 */
 	EClass getFeature();
@@ -1330,21 +1330,21 @@ public interface MappingPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.mapping.impl.TypeImpl <em>Type</em>}' class.
+		 * The meta object literal for the '{@link kieker.tools.al.mapping.impl.TypeImpl <em>Type</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.cau.cs.se.instrumentation.al.mapping.impl.TypeImpl
-		 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingPackageImpl#getType()
+		 * @see kieker.tools.al.mapping.impl.TypeImpl
+		 * @see kieker.tools.al.mapping.impl.MappingPackageImpl#getType()
 		 * @generated
 		 */
 		EClass TYPE = eINSTANCE.getType();
 
 		/**
-		 * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.mapping.impl.CollectionTypeImpl <em>Collection Type</em>}' class.
+		 * The meta object literal for the '{@link kieker.tools.al.mapping.impl.CollectionTypeImpl <em>Collection Type</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.cau.cs.se.instrumentation.al.mapping.impl.CollectionTypeImpl
-		 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingPackageImpl#getCollectionType()
+		 * @see kieker.tools.al.mapping.impl.CollectionTypeImpl
+		 * @see kieker.tools.al.mapping.impl.MappingPackageImpl#getCollectionType()
 		 * @generated
 		 */
 		EClass COLLECTION_TYPE = eINSTANCE.getCollectionType();
@@ -1358,21 +1358,21 @@ public interface MappingPackage extends EPackage {
 		EReference COLLECTION_TYPE__ELEMENT_TYPE = eINSTANCE.getCollectionType_ElementType();
 
 		/**
-		 * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.mapping.impl.NamedTypeImpl <em>Named Type</em>}' class.
+		 * The meta object literal for the '{@link kieker.tools.al.mapping.impl.NamedTypeImpl <em>Named Type</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.cau.cs.se.instrumentation.al.mapping.impl.NamedTypeImpl
-		 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingPackageImpl#getNamedType()
+		 * @see kieker.tools.al.mapping.impl.NamedTypeImpl
+		 * @see kieker.tools.al.mapping.impl.MappingPackageImpl#getNamedType()
 		 * @generated
 		 */
 		EClass NAMED_TYPE = eINSTANCE.getNamedType();
 
 		/**
-		 * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.mapping.impl.TypeReferenceImpl <em>Type Reference</em>}' class.
+		 * The meta object literal for the '{@link kieker.tools.al.mapping.impl.TypeReferenceImpl <em>Type Reference</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.cau.cs.se.instrumentation.al.mapping.impl.TypeReferenceImpl
-		 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingPackageImpl#getTypeReference()
+		 * @see kieker.tools.al.mapping.impl.TypeReferenceImpl
+		 * @see kieker.tools.al.mapping.impl.MappingPackageImpl#getTypeReference()
 		 * @generated
 		 */
 		EClass TYPE_REFERENCE = eINSTANCE.getTypeReference();
@@ -1386,11 +1386,11 @@ public interface MappingPackage extends EPackage {
 		EReference TYPE_REFERENCE__TYPE = eINSTANCE.getTypeReference_Type();
 
 		/**
-		 * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.mapping.impl.ContainerImpl <em>Container</em>}' class.
+		 * The meta object literal for the '{@link kieker.tools.al.mapping.impl.ContainerImpl <em>Container</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.cau.cs.se.instrumentation.al.mapping.impl.ContainerImpl
-		 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingPackageImpl#getContainer()
+		 * @see kieker.tools.al.mapping.impl.ContainerImpl
+		 * @see kieker.tools.al.mapping.impl.MappingPackageImpl#getContainer()
 		 * @generated
 		 */
 		EClass CONTAINER = eINSTANCE.getContainer();
@@ -1428,11 +1428,11 @@ public interface MappingPackage extends EPackage {
 		EReference CONTAINER__REFERENCES = eINSTANCE.getContainer_References();
 
 		/**
-		 * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.mapping.impl.OperationImpl <em>Operation</em>}' class.
+		 * The meta object literal for the '{@link kieker.tools.al.mapping.impl.OperationImpl <em>Operation</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.cau.cs.se.instrumentation.al.mapping.impl.OperationImpl
-		 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingPackageImpl#getOperation()
+		 * @see kieker.tools.al.mapping.impl.OperationImpl
+		 * @see kieker.tools.al.mapping.impl.MappingPackageImpl#getOperation()
 		 * @generated
 		 */
 		EClass OPERATION = eINSTANCE.getOperation();
@@ -1462,21 +1462,21 @@ public interface MappingPackage extends EPackage {
 		EReference OPERATION__MODIFIER = eINSTANCE.getOperation_Modifier();
 
 		/**
-		 * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.mapping.impl.ParameterModifierImpl <em>Parameter Modifier</em>}' class.
+		 * The meta object literal for the '{@link kieker.tools.al.mapping.impl.ParameterModifierImpl <em>Parameter Modifier</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.cau.cs.se.instrumentation.al.mapping.impl.ParameterModifierImpl
-		 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingPackageImpl#getParameterModifier()
+		 * @see kieker.tools.al.mapping.impl.ParameterModifierImpl
+		 * @see kieker.tools.al.mapping.impl.MappingPackageImpl#getParameterModifier()
 		 * @generated
 		 */
 		EClass PARAMETER_MODIFIER = eINSTANCE.getParameterModifier();
 
 		/**
-		 * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.mapping.impl.NamedElementImpl <em>Named Element</em>}' class.
+		 * The meta object literal for the '{@link kieker.tools.al.mapping.impl.NamedElementImpl <em>Named Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.cau.cs.se.instrumentation.al.mapping.impl.NamedElementImpl
-		 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingPackageImpl#getNamedElement()
+		 * @see kieker.tools.al.mapping.impl.NamedElementImpl
+		 * @see kieker.tools.al.mapping.impl.MappingPackageImpl#getNamedElement()
 		 * @generated
 		 */
 		EClass NAMED_ELEMENT = eINSTANCE.getNamedElement();
@@ -1490,11 +1490,11 @@ public interface MappingPackage extends EPackage {
 		EAttribute NAMED_ELEMENT__NAME = eINSTANCE.getNamedElement_Name();
 
 		/**
-		 * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.mapping.impl.ParameterImpl <em>Parameter</em>}' class.
+		 * The meta object literal for the '{@link kieker.tools.al.mapping.impl.ParameterImpl <em>Parameter</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.cau.cs.se.instrumentation.al.mapping.impl.ParameterImpl
-		 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingPackageImpl#getParameter()
+		 * @see kieker.tools.al.mapping.impl.ParameterImpl
+		 * @see kieker.tools.al.mapping.impl.MappingPackageImpl#getParameter()
 		 * @generated
 		 */
 		EClass PARAMETER = eINSTANCE.getParameter();
@@ -1516,41 +1516,41 @@ public interface MappingPackage extends EPackage {
 		EReference PARAMETER__TYPE = eINSTANCE.getParameter_Type();
 
 		/**
-		 * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.mapping.impl.MappingModelImpl <em>Model</em>}' class.
+		 * The meta object literal for the '{@link kieker.tools.al.mapping.impl.MappingModelImpl <em>Model</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingModelImpl
-		 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingPackageImpl#getMappingModel()
+		 * @see kieker.tools.al.mapping.impl.MappingModelImpl
+		 * @see kieker.tools.al.mapping.impl.MappingPackageImpl#getMappingModel()
 		 * @generated
 		 */
 		EClass MAPPING_MODEL = eINSTANCE.getMappingModel();
 
 		/**
-		 * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.mapping.impl.OperationModifierImpl <em>Operation Modifier</em>}' class.
+		 * The meta object literal for the '{@link kieker.tools.al.mapping.impl.OperationModifierImpl <em>Operation Modifier</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.cau.cs.se.instrumentation.al.mapping.impl.OperationModifierImpl
-		 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingPackageImpl#getOperationModifier()
+		 * @see kieker.tools.al.mapping.impl.OperationModifierImpl
+		 * @see kieker.tools.al.mapping.impl.MappingPackageImpl#getOperationModifier()
 		 * @generated
 		 */
 		EClass OPERATION_MODIFIER = eINSTANCE.getOperationModifier();
 
 		/**
-		 * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.mapping.impl.ContainerModifierImpl <em>Container Modifier</em>}' class.
+		 * The meta object literal for the '{@link kieker.tools.al.mapping.impl.ContainerModifierImpl <em>Container Modifier</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.cau.cs.se.instrumentation.al.mapping.impl.ContainerModifierImpl
-		 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingPackageImpl#getContainerModifier()
+		 * @see kieker.tools.al.mapping.impl.ContainerModifierImpl
+		 * @see kieker.tools.al.mapping.impl.MappingPackageImpl#getContainerModifier()
 		 * @generated
 		 */
 		EClass CONTAINER_MODIFIER = eINSTANCE.getContainerModifier();
 
 		/**
-		 * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.mapping.Containment <em>Containment</em>}' class.
+		 * The meta object literal for the '{@link kieker.tools.al.mapping.Containment <em>Containment</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.cau.cs.se.instrumentation.al.mapping.Containment
-		 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingPackageImpl#getContainment()
+		 * @see kieker.tools.al.mapping.Containment
+		 * @see kieker.tools.al.mapping.impl.MappingPackageImpl#getContainment()
 		 * @generated
 		 */
 		EClass CONTAINMENT = eINSTANCE.getContainment();
@@ -1572,11 +1572,11 @@ public interface MappingPackage extends EPackage {
 		EReference CONTAINMENT__TYPES = eINSTANCE.getContainment_Types();
 
 		/**
-		 * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.mapping.Traceability <em>Traceability</em>}' class.
+		 * The meta object literal for the '{@link kieker.tools.al.mapping.Traceability <em>Traceability</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.cau.cs.se.instrumentation.al.mapping.Traceability
-		 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingPackageImpl#getTraceability()
+		 * @see kieker.tools.al.mapping.Traceability
+		 * @see kieker.tools.al.mapping.impl.MappingPackageImpl#getTraceability()
 		 * @generated
 		 */
 		EClass TRACEABILITY = eINSTANCE.getTraceability();
@@ -1590,11 +1590,11 @@ public interface MappingPackage extends EPackage {
 		EReference TRACEABILITY__PREDECESSOR = eINSTANCE.getTraceability_Predecessor();
 
 		/**
-		 * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.mapping.impl.AttributeImpl <em>Attribute</em>}' class.
+		 * The meta object literal for the '{@link kieker.tools.al.mapping.impl.AttributeImpl <em>Attribute</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.cau.cs.se.instrumentation.al.mapping.impl.AttributeImpl
-		 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingPackageImpl#getAttribute()
+		 * @see kieker.tools.al.mapping.impl.AttributeImpl
+		 * @see kieker.tools.al.mapping.impl.MappingPackageImpl#getAttribute()
 		 * @generated
 		 */
 		EClass ATTRIBUTE = eINSTANCE.getAttribute();
@@ -1616,11 +1616,11 @@ public interface MappingPackage extends EPackage {
 		EReference ATTRIBUTE__VALUE = eINSTANCE.getAttribute_Value();
 
 		/**
-		 * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.mapping.impl.ReferenceImpl <em>Reference</em>}' class.
+		 * The meta object literal for the '{@link kieker.tools.al.mapping.impl.ReferenceImpl <em>Reference</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.cau.cs.se.instrumentation.al.mapping.impl.ReferenceImpl
-		 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingPackageImpl#getReference()
+		 * @see kieker.tools.al.mapping.impl.ReferenceImpl
+		 * @see kieker.tools.al.mapping.impl.MappingPackageImpl#getReference()
 		 * @generated
 		 */
 		EClass REFERENCE = eINSTANCE.getReference();
@@ -1634,11 +1634,11 @@ public interface MappingPackage extends EPackage {
 		EReference REFERENCE__TYPE = eINSTANCE.getReference_Type();
 
 		/**
-		 * The meta object literal for the '{@link de.cau.cs.se.instrumentation.al.mapping.Feature <em>Feature</em>}' class.
+		 * The meta object literal for the '{@link kieker.tools.al.mapping.Feature <em>Feature</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see de.cau.cs.se.instrumentation.al.mapping.Feature
-		 * @see de.cau.cs.se.instrumentation.al.mapping.impl.MappingPackageImpl#getFeature()
+		 * @see kieker.tools.al.mapping.Feature
+		 * @see kieker.tools.al.mapping.impl.MappingPackageImpl#getFeature()
 		 * @generated
 		 */
 		EClass FEATURE = eINSTANCE.getFeature();

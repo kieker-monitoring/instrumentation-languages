@@ -1,6 +1,6 @@
-package de.cau.cs.se.instrumentation.rl.generator.java.record
+package kieker.tools.rl.generator.java.record
 
-import de.cau.cs.se.instrumentation.rl.recordLang.Classifier
+import kieker.tools.rl.recordLang.Classifier
 
 class Constructor {
 	private String name

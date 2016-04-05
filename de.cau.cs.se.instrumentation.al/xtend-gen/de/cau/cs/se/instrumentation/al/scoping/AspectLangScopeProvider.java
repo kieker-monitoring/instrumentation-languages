@@ -13,25 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.cau.cs.se.instrumentation.al.scoping;
+package kieker.tools.al.scoping;
 
 import com.google.common.base.Objects;
 import com.google.inject.Inject;
-import de.cau.cs.se.instrumentation.al.aspectLang.ContainerNode;
-import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery;
-import de.cau.cs.se.instrumentation.al.aspectLang.Node;
-import de.cau.cs.se.instrumentation.al.aspectLang.OperationQuery;
-import de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery;
-import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut;
-import de.cau.cs.se.instrumentation.al.mapping.Container;
-import de.cau.cs.se.instrumentation.al.mapping.Feature;
-import de.cau.cs.se.instrumentation.al.mapping.NamedElement;
-import de.cau.cs.se.instrumentation.al.mapping.NamedType;
-import de.cau.cs.se.instrumentation.al.mapping.Operation;
-import de.cau.cs.se.instrumentation.al.mapping.Parameter;
-import de.cau.cs.se.instrumentation.al.modelhandling.ForeignModelTypeProviderFactory;
-import de.cau.cs.se.instrumentation.al.modelhandling.IForeignModelTypeProvider;
-import de.cau.cs.se.instrumentation.al.scoping.ContainerParentScope;
+import kieker.tools.al.aspectLang.ContainerNode;
+import kieker.tools.al.aspectLang.LocationQuery;
+import kieker.tools.al.aspectLang.Node;
+import kieker.tools.al.aspectLang.OperationQuery;
+import kieker.tools.al.aspectLang.ParameterQuery;
+import kieker.tools.al.aspectLang.Pointcut;
+import kieker.tools.al.mapping.Container;
+import kieker.tools.al.mapping.Feature;
+import kieker.tools.al.mapping.NamedElement;
+import kieker.tools.al.mapping.NamedType;
+import kieker.tools.al.mapping.Operation;
+import kieker.tools.al.mapping.Parameter;
+import kieker.tools.al.modelhandling.ForeignModelTypeProviderFactory;
+import kieker.tools.al.modelhandling.IForeignModelTypeProvider;
+import kieker.tools.al.scoping.ContainerParentScope;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;

@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.rl.recordLang;
+package kieker.tools.rl.recordLang;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EReference;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangFactory
+ * @see kieker.tools.rl.recordLang.RecordLangFactory
  * @model kind="package"
  * @generated
  */
@@ -55,14 +55,14 @@ public interface RecordLangPackage extends EPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  RecordLangPackage eINSTANCE = de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl.init();
+  RecordLangPackage eINSTANCE = kieker.tools.rl.recordLang.impl.RecordLangPackageImpl.init();
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ModelImpl <em>Model</em>}' class.
+   * The meta object id for the '{@link kieker.tools.rl.recordLang.impl.ModelImpl <em>Model</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.ModelImpl
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getModel()
+   * @see kieker.tools.rl.recordLang.impl.ModelImpl
+   * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getModel()
    * @generated
    */
   int MODEL = 0;
@@ -104,11 +104,11 @@ public interface RecordLangPackage extends EPackage
   int MODEL_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ImportImpl <em>Import</em>}' class.
+   * The meta object id for the '{@link kieker.tools.rl.recordLang.impl.ImportImpl <em>Import</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.ImportImpl
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getImport()
+   * @see kieker.tools.rl.recordLang.impl.ImportImpl
+   * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getImport()
    * @generated
    */
   int IMPORT = 1;
@@ -132,11 +132,11 @@ public interface RecordLangPackage extends EPackage
   int IMPORT_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.TypeImpl <em>Type</em>}' class.
+   * The meta object id for the '{@link kieker.tools.rl.recordLang.impl.TypeImpl <em>Type</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.TypeImpl
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getType()
+   * @see kieker.tools.rl.recordLang.impl.TypeImpl
+   * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getType()
    * @generated
    */
   int TYPE = 2;
@@ -160,11 +160,11 @@ public interface RecordLangPackage extends EPackage
   int TYPE_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.BaseTypeImpl <em>Base Type</em>}' class.
+   * The meta object id for the '{@link kieker.tools.rl.recordLang.impl.BaseTypeImpl <em>Base Type</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.BaseTypeImpl
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getBaseType()
+   * @see kieker.tools.rl.recordLang.impl.BaseTypeImpl
+   * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getBaseType()
    * @generated
    */
   int BASE_TYPE = 3;
@@ -188,11 +188,11 @@ public interface RecordLangPackage extends EPackage
   int BASE_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ComplexTypeImpl <em>Complex Type</em>}' class.
+   * The meta object id for the '{@link kieker.tools.rl.recordLang.impl.ComplexTypeImpl <em>Complex Type</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.ComplexTypeImpl
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getComplexType()
+   * @see kieker.tools.rl.recordLang.impl.ComplexTypeImpl
+   * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getComplexType()
    * @generated
    */
   int COMPLEX_TYPE = 4;
@@ -261,11 +261,11 @@ public interface RecordLangPackage extends EPackage
   int COMPLEX_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 5;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.TemplateTypeImpl <em>Template Type</em>}' class.
+   * The meta object id for the '{@link kieker.tools.rl.recordLang.impl.TemplateTypeImpl <em>Template Type</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.TemplateTypeImpl
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getTemplateType()
+   * @see kieker.tools.rl.recordLang.impl.TemplateTypeImpl
+   * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getTemplateType()
    * @generated
    */
   int TEMPLATE_TYPE = 5;
@@ -334,11 +334,11 @@ public interface RecordLangPackage extends EPackage
   int TEMPLATE_TYPE_FEATURE_COUNT = COMPLEX_TYPE_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordTypeImpl <em>Record Type</em>}' class.
+   * The meta object id for the '{@link kieker.tools.rl.recordLang.impl.RecordTypeImpl <em>Record Type</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordTypeImpl
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getRecordType()
+   * @see kieker.tools.rl.recordLang.impl.RecordTypeImpl
+   * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getRecordType()
    * @generated
    */
   int RECORD_TYPE = 6;
@@ -425,11 +425,11 @@ public interface RecordLangPackage extends EPackage
   int RECORD_TYPE_FEATURE_COUNT = COMPLEX_TYPE_FEATURE_COUNT + 2;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ConstantImpl <em>Constant</em>}' class.
+   * The meta object id for the '{@link kieker.tools.rl.recordLang.impl.ConstantImpl <em>Constant</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.ConstantImpl
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getConstant()
+   * @see kieker.tools.rl.recordLang.impl.ConstantImpl
+   * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getConstant()
    * @generated
    */
   int CONSTANT = 7;
@@ -471,11 +471,11 @@ public interface RecordLangPackage extends EPackage
   int CONSTANT_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.PropertyImpl <em>Property</em>}' class.
+   * The meta object id for the '{@link kieker.tools.rl.recordLang.impl.PropertyImpl <em>Property</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.PropertyImpl
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getProperty()
+   * @see kieker.tools.rl.recordLang.impl.PropertyImpl
+   * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getProperty()
    * @generated
    */
   int PROPERTY = 8;
@@ -544,11 +544,11 @@ public interface RecordLangPackage extends EPackage
   int PROPERTY_FEATURE_COUNT = 6;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ForeignKeyImpl <em>Foreign Key</em>}' class.
+   * The meta object id for the '{@link kieker.tools.rl.recordLang.impl.ForeignKeyImpl <em>Foreign Key</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.ForeignKeyImpl
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getForeignKey()
+   * @see kieker.tools.rl.recordLang.impl.ForeignKeyImpl
+   * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getForeignKey()
    * @generated
    */
   int FOREIGN_KEY = 9;
@@ -581,11 +581,11 @@ public interface RecordLangPackage extends EPackage
   int FOREIGN_KEY_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ClassifierImpl <em>Classifier</em>}' class.
+   * The meta object id for the '{@link kieker.tools.rl.recordLang.impl.ClassifierImpl <em>Classifier</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.ClassifierImpl
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getClassifier()
+   * @see kieker.tools.rl.recordLang.impl.ClassifierImpl
+   * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getClassifier()
    * @generated
    */
   int CLASSIFIER = 10;
@@ -618,11 +618,11 @@ public interface RecordLangPackage extends EPackage
   int CLASSIFIER_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ArraySizeImpl <em>Array Size</em>}' class.
+   * The meta object id for the '{@link kieker.tools.rl.recordLang.impl.ArraySizeImpl <em>Array Size</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.ArraySizeImpl
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getArraySize()
+   * @see kieker.tools.rl.recordLang.impl.ArraySizeImpl
+   * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getArraySize()
    * @generated
    */
   int ARRAY_SIZE = 11;
@@ -646,11 +646,11 @@ public interface RecordLangPackage extends EPackage
   int ARRAY_SIZE_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.LiteralImpl <em>Literal</em>}' class.
+   * The meta object id for the '{@link kieker.tools.rl.recordLang.impl.LiteralImpl <em>Literal</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.LiteralImpl
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getLiteral()
+   * @see kieker.tools.rl.recordLang.impl.LiteralImpl
+   * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getLiteral()
    * @generated
    */
   int LITERAL = 12;
@@ -665,11 +665,11 @@ public interface RecordLangPackage extends EPackage
   int LITERAL_FEATURE_COUNT = 0;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ArrayLiteralImpl <em>Array Literal</em>}' class.
+   * The meta object id for the '{@link kieker.tools.rl.recordLang.impl.ArrayLiteralImpl <em>Array Literal</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.ArrayLiteralImpl
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getArrayLiteral()
+   * @see kieker.tools.rl.recordLang.impl.ArrayLiteralImpl
+   * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getArrayLiteral()
    * @generated
    */
   int ARRAY_LITERAL = 13;
@@ -693,11 +693,11 @@ public interface RecordLangPackage extends EPackage
   int ARRAY_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.StringLiteralImpl <em>String Literal</em>}' class.
+   * The meta object id for the '{@link kieker.tools.rl.recordLang.impl.StringLiteralImpl <em>String Literal</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.StringLiteralImpl
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getStringLiteral()
+   * @see kieker.tools.rl.recordLang.impl.StringLiteralImpl
+   * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getStringLiteral()
    * @generated
    */
   int STRING_LITERAL = 14;
@@ -721,11 +721,11 @@ public interface RecordLangPackage extends EPackage
   int STRING_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.IntLiteralImpl <em>Int Literal</em>}' class.
+   * The meta object id for the '{@link kieker.tools.rl.recordLang.impl.IntLiteralImpl <em>Int Literal</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.IntLiteralImpl
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getIntLiteral()
+   * @see kieker.tools.rl.recordLang.impl.IntLiteralImpl
+   * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getIntLiteral()
    * @generated
    */
   int INT_LITERAL = 15;
@@ -749,11 +749,11 @@ public interface RecordLangPackage extends EPackage
   int INT_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.FloatLiteralImpl <em>Float Literal</em>}' class.
+   * The meta object id for the '{@link kieker.tools.rl.recordLang.impl.FloatLiteralImpl <em>Float Literal</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.FloatLiteralImpl
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getFloatLiteral()
+   * @see kieker.tools.rl.recordLang.impl.FloatLiteralImpl
+   * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getFloatLiteral()
    * @generated
    */
   int FLOAT_LITERAL = 16;
@@ -777,11 +777,11 @@ public interface RecordLangPackage extends EPackage
   int FLOAT_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.BooleanLiteralImpl <em>Boolean Literal</em>}' class.
+   * The meta object id for the '{@link kieker.tools.rl.recordLang.impl.BooleanLiteralImpl <em>Boolean Literal</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.BooleanLiteralImpl
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getBooleanLiteral()
+   * @see kieker.tools.rl.recordLang.impl.BooleanLiteralImpl
+   * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getBooleanLiteral()
    * @generated
    */
   int BOOLEAN_LITERAL = 17;
@@ -805,11 +805,11 @@ public interface RecordLangPackage extends EPackage
   int BOOLEAN_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ConstantLiteralImpl <em>Constant Literal</em>}' class.
+   * The meta object id for the '{@link kieker.tools.rl.recordLang.impl.ConstantLiteralImpl <em>Constant Literal</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.ConstantLiteralImpl
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getConstantLiteral()
+   * @see kieker.tools.rl.recordLang.impl.ConstantLiteralImpl
+   * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getConstantLiteral()
    * @generated
    */
   int CONSTANT_LITERAL = 18;
@@ -833,11 +833,11 @@ public interface RecordLangPackage extends EPackage
   int CONSTANT_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.BuiltInValueLiteralImpl <em>Built In Value Literal</em>}' class.
+   * The meta object id for the '{@link kieker.tools.rl.recordLang.impl.BuiltInValueLiteralImpl <em>Built In Value Literal</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.BuiltInValueLiteralImpl
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getBuiltInValueLiteral()
+   * @see kieker.tools.rl.recordLang.impl.BuiltInValueLiteralImpl
+   * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getBuiltInValueLiteral()
    * @generated
    */
   int BUILT_IN_VALUE_LITERAL = 19;
@@ -861,585 +861,585 @@ public interface RecordLangPackage extends EPackage
   int BUILT_IN_VALUE_LITERAL_FEATURE_COUNT = LITERAL_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.PropertyModifier <em>Property Modifier</em>}' enum.
+   * The meta object id for the '{@link kieker.tools.rl.recordLang.PropertyModifier <em>Property Modifier</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.PropertyModifier
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getPropertyModifier()
+   * @see kieker.tools.rl.recordLang.PropertyModifier
+   * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getPropertyModifier()
    * @generated
    */
   int PROPERTY_MODIFIER = 20;
 
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.Model <em>Model</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.rl.recordLang.Model <em>Model</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Model</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Model
+   * @see kieker.tools.rl.recordLang.Model
    * @generated
    */
   EClass getModel();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.rl.recordLang.Model#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link kieker.tools.rl.recordLang.Model#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Model#getName()
+   * @see kieker.tools.rl.recordLang.Model#getName()
    * @see #getModel()
    * @generated
    */
   EAttribute getModel_Name();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.rl.recordLang.Model#getImports <em>Imports</em>}'.
+   * Returns the meta object for the containment reference list '{@link kieker.tools.rl.recordLang.Model#getImports <em>Imports</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Imports</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Model#getImports()
+   * @see kieker.tools.rl.recordLang.Model#getImports()
    * @see #getModel()
    * @generated
    */
   EReference getModel_Imports();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.rl.recordLang.Model#getTypes <em>Types</em>}'.
+   * Returns the meta object for the containment reference list '{@link kieker.tools.rl.recordLang.Model#getTypes <em>Types</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Types</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Model#getTypes()
+   * @see kieker.tools.rl.recordLang.Model#getTypes()
    * @see #getModel()
    * @generated
    */
   EReference getModel_Types();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.Import <em>Import</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.rl.recordLang.Import <em>Import</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Import</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Import
+   * @see kieker.tools.rl.recordLang.Import
    * @generated
    */
   EClass getImport();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.rl.recordLang.Import#getImportedNamespace <em>Imported Namespace</em>}'.
+   * Returns the meta object for the attribute '{@link kieker.tools.rl.recordLang.Import#getImportedNamespace <em>Imported Namespace</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Imported Namespace</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Import#getImportedNamespace()
+   * @see kieker.tools.rl.recordLang.Import#getImportedNamespace()
    * @see #getImport()
    * @generated
    */
   EAttribute getImport_ImportedNamespace();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.Type <em>Type</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.rl.recordLang.Type <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Type</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Type
+   * @see kieker.tools.rl.recordLang.Type
    * @generated
    */
   EClass getType();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.rl.recordLang.Type#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link kieker.tools.rl.recordLang.Type#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Type#getName()
+   * @see kieker.tools.rl.recordLang.Type#getName()
    * @see #getType()
    * @generated
    */
   EAttribute getType_Name();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.BaseType <em>Base Type</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.rl.recordLang.BaseType <em>Base Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Base Type</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.BaseType
+   * @see kieker.tools.rl.recordLang.BaseType
    * @generated
    */
   EClass getBaseType();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.ComplexType <em>Complex Type</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.rl.recordLang.ComplexType <em>Complex Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Complex Type</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.ComplexType
+   * @see kieker.tools.rl.recordLang.ComplexType
    * @generated
    */
   EClass getComplexType();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.rl.recordLang.ComplexType#getAuthor <em>Author</em>}'.
+   * Returns the meta object for the attribute '{@link kieker.tools.rl.recordLang.ComplexType#getAuthor <em>Author</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Author</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.ComplexType#getAuthor()
+   * @see kieker.tools.rl.recordLang.ComplexType#getAuthor()
    * @see #getComplexType()
    * @generated
    */
   EAttribute getComplexType_Author();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.rl.recordLang.ComplexType#getSince <em>Since</em>}'.
+   * Returns the meta object for the attribute '{@link kieker.tools.rl.recordLang.ComplexType#getSince <em>Since</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Since</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.ComplexType#getSince()
+   * @see kieker.tools.rl.recordLang.ComplexType#getSince()
    * @see #getComplexType()
    * @generated
    */
   EAttribute getComplexType_Since();
 
   /**
-   * Returns the meta object for the reference list '{@link de.cau.cs.se.instrumentation.rl.recordLang.ComplexType#getParents <em>Parents</em>}'.
+   * Returns the meta object for the reference list '{@link kieker.tools.rl.recordLang.ComplexType#getParents <em>Parents</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference list '<em>Parents</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.ComplexType#getParents()
+   * @see kieker.tools.rl.recordLang.ComplexType#getParents()
    * @see #getComplexType()
    * @generated
    */
   EReference getComplexType_Parents();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.rl.recordLang.ComplexType#getProperties <em>Properties</em>}'.
+   * Returns the meta object for the containment reference list '{@link kieker.tools.rl.recordLang.ComplexType#getProperties <em>Properties</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Properties</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.ComplexType#getProperties()
+   * @see kieker.tools.rl.recordLang.ComplexType#getProperties()
    * @see #getComplexType()
    * @generated
    */
   EReference getComplexType_Properties();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.rl.recordLang.ComplexType#getConstants <em>Constants</em>}'.
+   * Returns the meta object for the containment reference list '{@link kieker.tools.rl.recordLang.ComplexType#getConstants <em>Constants</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Constants</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.ComplexType#getConstants()
+   * @see kieker.tools.rl.recordLang.ComplexType#getConstants()
    * @see #getComplexType()
    * @generated
    */
   EReference getComplexType_Constants();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.TemplateType <em>Template Type</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.rl.recordLang.TemplateType <em>Template Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Template Type</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.TemplateType
+   * @see kieker.tools.rl.recordLang.TemplateType
    * @generated
    */
   EClass getTemplateType();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.RecordType <em>Record Type</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.rl.recordLang.RecordType <em>Record Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Record Type</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordType
+   * @see kieker.tools.rl.recordLang.RecordType
    * @generated
    */
   EClass getRecordType();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.rl.recordLang.RecordType#isAbstract <em>Abstract</em>}'.
+   * Returns the meta object for the attribute '{@link kieker.tools.rl.recordLang.RecordType#isAbstract <em>Abstract</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Abstract</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordType#isAbstract()
+   * @see kieker.tools.rl.recordLang.RecordType#isAbstract()
    * @see #getRecordType()
    * @generated
    */
   EAttribute getRecordType_Abstract();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.rl.recordLang.RecordType#getParent <em>Parent</em>}'.
+   * Returns the meta object for the reference '{@link kieker.tools.rl.recordLang.RecordType#getParent <em>Parent</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Parent</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordType#getParent()
+   * @see kieker.tools.rl.recordLang.RecordType#getParent()
    * @see #getRecordType()
    * @generated
    */
   EReference getRecordType_Parent();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.Constant <em>Constant</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.rl.recordLang.Constant <em>Constant</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Constant</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Constant
+   * @see kieker.tools.rl.recordLang.Constant
    * @generated
    */
   EClass getConstant();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.rl.recordLang.Constant#getType <em>Type</em>}'.
+   * Returns the meta object for the containment reference '{@link kieker.tools.rl.recordLang.Constant#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Type</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Constant#getType()
+   * @see kieker.tools.rl.recordLang.Constant#getType()
    * @see #getConstant()
    * @generated
    */
   EReference getConstant_Type();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.rl.recordLang.Constant#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link kieker.tools.rl.recordLang.Constant#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Constant#getName()
+   * @see kieker.tools.rl.recordLang.Constant#getName()
    * @see #getConstant()
    * @generated
    */
   EAttribute getConstant_Name();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.rl.recordLang.Constant#getValue <em>Value</em>}'.
+   * Returns the meta object for the containment reference '{@link kieker.tools.rl.recordLang.Constant#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Value</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Constant#getValue()
+   * @see kieker.tools.rl.recordLang.Constant#getValue()
    * @see #getConstant()
    * @generated
    */
   EReference getConstant_Value();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.Property <em>Property</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.rl.recordLang.Property <em>Property</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Property</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Property
+   * @see kieker.tools.rl.recordLang.Property
    * @generated
    */
   EClass getProperty();
 
   /**
-   * Returns the meta object for the attribute list '{@link de.cau.cs.se.instrumentation.rl.recordLang.Property#getModifiers <em>Modifiers</em>}'.
+   * Returns the meta object for the attribute list '{@link kieker.tools.rl.recordLang.Property#getModifiers <em>Modifiers</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Modifiers</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Property#getModifiers()
+   * @see kieker.tools.rl.recordLang.Property#getModifiers()
    * @see #getProperty()
    * @generated
    */
   EAttribute getProperty_Modifiers();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.rl.recordLang.Property#getForeignKey <em>Foreign Key</em>}'.
+   * Returns the meta object for the containment reference '{@link kieker.tools.rl.recordLang.Property#getForeignKey <em>Foreign Key</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Foreign Key</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Property#getForeignKey()
+   * @see kieker.tools.rl.recordLang.Property#getForeignKey()
    * @see #getProperty()
    * @generated
    */
   EReference getProperty_ForeignKey();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.rl.recordLang.Property#getType <em>Type</em>}'.
+   * Returns the meta object for the containment reference '{@link kieker.tools.rl.recordLang.Property#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Type</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Property#getType()
+   * @see kieker.tools.rl.recordLang.Property#getType()
    * @see #getProperty()
    * @generated
    */
   EReference getProperty_Type();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.rl.recordLang.Property#getReferTo <em>Refer To</em>}'.
+   * Returns the meta object for the reference '{@link kieker.tools.rl.recordLang.Property#getReferTo <em>Refer To</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Refer To</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Property#getReferTo()
+   * @see kieker.tools.rl.recordLang.Property#getReferTo()
    * @see #getProperty()
    * @generated
    */
   EReference getProperty_ReferTo();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.rl.recordLang.Property#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link kieker.tools.rl.recordLang.Property#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Property#getName()
+   * @see kieker.tools.rl.recordLang.Property#getName()
    * @see #getProperty()
    * @generated
    */
   EAttribute getProperty_Name();
 
   /**
-   * Returns the meta object for the containment reference '{@link de.cau.cs.se.instrumentation.rl.recordLang.Property#getValue <em>Value</em>}'.
+   * Returns the meta object for the containment reference '{@link kieker.tools.rl.recordLang.Property#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Value</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Property#getValue()
+   * @see kieker.tools.rl.recordLang.Property#getValue()
    * @see #getProperty()
    * @generated
    */
   EReference getProperty_Value();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.ForeignKey <em>Foreign Key</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.rl.recordLang.ForeignKey <em>Foreign Key</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Foreign Key</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.ForeignKey
+   * @see kieker.tools.rl.recordLang.ForeignKey
    * @generated
    */
   EClass getForeignKey();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.rl.recordLang.ForeignKey#getRecordType <em>Record Type</em>}'.
+   * Returns the meta object for the reference '{@link kieker.tools.rl.recordLang.ForeignKey#getRecordType <em>Record Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Record Type</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.ForeignKey#getRecordType()
+   * @see kieker.tools.rl.recordLang.ForeignKey#getRecordType()
    * @see #getForeignKey()
    * @generated
    */
   EReference getForeignKey_RecordType();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.rl.recordLang.ForeignKey#getPropertyRef <em>Property Ref</em>}'.
+   * Returns the meta object for the reference '{@link kieker.tools.rl.recordLang.ForeignKey#getPropertyRef <em>Property Ref</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Property Ref</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.ForeignKey#getPropertyRef()
+   * @see kieker.tools.rl.recordLang.ForeignKey#getPropertyRef()
    * @see #getForeignKey()
    * @generated
    */
   EReference getForeignKey_PropertyRef();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.Classifier <em>Classifier</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.rl.recordLang.Classifier <em>Classifier</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Classifier</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Classifier
+   * @see kieker.tools.rl.recordLang.Classifier
    * @generated
    */
   EClass getClassifier();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.rl.recordLang.Classifier#getType <em>Type</em>}'.
+   * Returns the meta object for the reference '{@link kieker.tools.rl.recordLang.Classifier#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Type</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Classifier#getType()
+   * @see kieker.tools.rl.recordLang.Classifier#getType()
    * @see #getClassifier()
    * @generated
    */
   EReference getClassifier_Type();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.rl.recordLang.Classifier#getSizes <em>Sizes</em>}'.
+   * Returns the meta object for the containment reference list '{@link kieker.tools.rl.recordLang.Classifier#getSizes <em>Sizes</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Sizes</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Classifier#getSizes()
+   * @see kieker.tools.rl.recordLang.Classifier#getSizes()
    * @see #getClassifier()
    * @generated
    */
   EReference getClassifier_Sizes();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.ArraySize <em>Array Size</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.rl.recordLang.ArraySize <em>Array Size</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Array Size</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.ArraySize
+   * @see kieker.tools.rl.recordLang.ArraySize
    * @generated
    */
   EClass getArraySize();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.rl.recordLang.ArraySize#getSize <em>Size</em>}'.
+   * Returns the meta object for the attribute '{@link kieker.tools.rl.recordLang.ArraySize#getSize <em>Size</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Size</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.ArraySize#getSize()
+   * @see kieker.tools.rl.recordLang.ArraySize#getSize()
    * @see #getArraySize()
    * @generated
    */
   EAttribute getArraySize_Size();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.Literal <em>Literal</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.rl.recordLang.Literal <em>Literal</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Literal</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.Literal
+   * @see kieker.tools.rl.recordLang.Literal
    * @generated
    */
   EClass getLiteral();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral <em>Array Literal</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.rl.recordLang.ArrayLiteral <em>Array Literal</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Array Literal</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral
+   * @see kieker.tools.rl.recordLang.ArrayLiteral
    * @generated
    */
   EClass getArrayLiteral();
 
   /**
-   * Returns the meta object for the containment reference list '{@link de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral#getLiterals <em>Literals</em>}'.
+   * Returns the meta object for the containment reference list '{@link kieker.tools.rl.recordLang.ArrayLiteral#getLiterals <em>Literals</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Literals</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.ArrayLiteral#getLiterals()
+   * @see kieker.tools.rl.recordLang.ArrayLiteral#getLiterals()
    * @see #getArrayLiteral()
    * @generated
    */
   EReference getArrayLiteral_Literals();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral <em>String Literal</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.rl.recordLang.StringLiteral <em>String Literal</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>String Literal</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral
+   * @see kieker.tools.rl.recordLang.StringLiteral
    * @generated
    */
   EClass getStringLiteral();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral#getValue <em>Value</em>}'.
+   * Returns the meta object for the attribute '{@link kieker.tools.rl.recordLang.StringLiteral#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Value</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral#getValue()
+   * @see kieker.tools.rl.recordLang.StringLiteral#getValue()
    * @see #getStringLiteral()
    * @generated
    */
   EAttribute getStringLiteral_Value();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral <em>Int Literal</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.rl.recordLang.IntLiteral <em>Int Literal</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Int Literal</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral
+   * @see kieker.tools.rl.recordLang.IntLiteral
    * @generated
    */
   EClass getIntLiteral();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral#getValue <em>Value</em>}'.
+   * Returns the meta object for the attribute '{@link kieker.tools.rl.recordLang.IntLiteral#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Value</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral#getValue()
+   * @see kieker.tools.rl.recordLang.IntLiteral#getValue()
    * @see #getIntLiteral()
    * @generated
    */
   EAttribute getIntLiteral_Value();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.FloatLiteral <em>Float Literal</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.rl.recordLang.FloatLiteral <em>Float Literal</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Float Literal</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.FloatLiteral
+   * @see kieker.tools.rl.recordLang.FloatLiteral
    * @generated
    */
   EClass getFloatLiteral();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.rl.recordLang.FloatLiteral#getValue <em>Value</em>}'.
+   * Returns the meta object for the attribute '{@link kieker.tools.rl.recordLang.FloatLiteral#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Value</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.FloatLiteral#getValue()
+   * @see kieker.tools.rl.recordLang.FloatLiteral#getValue()
    * @see #getFloatLiteral()
    * @generated
    */
   EAttribute getFloatLiteral_Value();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral <em>Boolean Literal</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.rl.recordLang.BooleanLiteral <em>Boolean Literal</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Boolean Literal</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral
+   * @see kieker.tools.rl.recordLang.BooleanLiteral
    * @generated
    */
   EClass getBooleanLiteral();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral#getValue <em>Value</em>}'.
+   * Returns the meta object for the attribute '{@link kieker.tools.rl.recordLang.BooleanLiteral#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Value</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.BooleanLiteral#getValue()
+   * @see kieker.tools.rl.recordLang.BooleanLiteral#getValue()
    * @see #getBooleanLiteral()
    * @generated
    */
   EAttribute getBooleanLiteral_Value();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral <em>Constant Literal</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.rl.recordLang.ConstantLiteral <em>Constant Literal</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Constant Literal</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral
+   * @see kieker.tools.rl.recordLang.ConstantLiteral
    * @generated
    */
   EClass getConstantLiteral();
 
   /**
-   * Returns the meta object for the reference '{@link de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral#getValue <em>Value</em>}'.
+   * Returns the meta object for the reference '{@link kieker.tools.rl.recordLang.ConstantLiteral#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Value</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral#getValue()
+   * @see kieker.tools.rl.recordLang.ConstantLiteral#getValue()
    * @see #getConstantLiteral()
    * @generated
    */
   EReference getConstantLiteral_Value();
 
   /**
-   * Returns the meta object for class '{@link de.cau.cs.se.instrumentation.rl.recordLang.BuiltInValueLiteral <em>Built In Value Literal</em>}'.
+   * Returns the meta object for class '{@link kieker.tools.rl.recordLang.BuiltInValueLiteral <em>Built In Value Literal</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Built In Value Literal</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.BuiltInValueLiteral
+   * @see kieker.tools.rl.recordLang.BuiltInValueLiteral
    * @generated
    */
   EClass getBuiltInValueLiteral();
 
   /**
-   * Returns the meta object for the attribute '{@link de.cau.cs.se.instrumentation.rl.recordLang.BuiltInValueLiteral#getValue <em>Value</em>}'.
+   * Returns the meta object for the attribute '{@link kieker.tools.rl.recordLang.BuiltInValueLiteral#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Value</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.BuiltInValueLiteral#getValue()
+   * @see kieker.tools.rl.recordLang.BuiltInValueLiteral#getValue()
    * @see #getBuiltInValueLiteral()
    * @generated
    */
   EAttribute getBuiltInValueLiteral_Value();
 
   /**
-   * Returns the meta object for enum '{@link de.cau.cs.se.instrumentation.rl.recordLang.PropertyModifier <em>Property Modifier</em>}'.
+   * Returns the meta object for enum '{@link kieker.tools.rl.recordLang.PropertyModifier <em>Property Modifier</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for enum '<em>Property Modifier</em>'.
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.PropertyModifier
+   * @see kieker.tools.rl.recordLang.PropertyModifier
    * @generated
    */
   EEnum getPropertyModifier();
@@ -1468,11 +1468,11 @@ public interface RecordLangPackage extends EPackage
   interface Literals
   {
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ModelImpl <em>Model</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.rl.recordLang.impl.ModelImpl <em>Model</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.ModelImpl
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getModel()
+     * @see kieker.tools.rl.recordLang.impl.ModelImpl
+     * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getModel()
      * @generated
      */
     EClass MODEL = eINSTANCE.getModel();
@@ -1502,11 +1502,11 @@ public interface RecordLangPackage extends EPackage
     EReference MODEL__TYPES = eINSTANCE.getModel_Types();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ImportImpl <em>Import</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.rl.recordLang.impl.ImportImpl <em>Import</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.ImportImpl
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getImport()
+     * @see kieker.tools.rl.recordLang.impl.ImportImpl
+     * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getImport()
      * @generated
      */
     EClass IMPORT = eINSTANCE.getImport();
@@ -1520,11 +1520,11 @@ public interface RecordLangPackage extends EPackage
     EAttribute IMPORT__IMPORTED_NAMESPACE = eINSTANCE.getImport_ImportedNamespace();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.TypeImpl <em>Type</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.rl.recordLang.impl.TypeImpl <em>Type</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.TypeImpl
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getType()
+     * @see kieker.tools.rl.recordLang.impl.TypeImpl
+     * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getType()
      * @generated
      */
     EClass TYPE = eINSTANCE.getType();
@@ -1538,21 +1538,21 @@ public interface RecordLangPackage extends EPackage
     EAttribute TYPE__NAME = eINSTANCE.getType_Name();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.BaseTypeImpl <em>Base Type</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.rl.recordLang.impl.BaseTypeImpl <em>Base Type</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.BaseTypeImpl
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getBaseType()
+     * @see kieker.tools.rl.recordLang.impl.BaseTypeImpl
+     * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getBaseType()
      * @generated
      */
     EClass BASE_TYPE = eINSTANCE.getBaseType();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ComplexTypeImpl <em>Complex Type</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.rl.recordLang.impl.ComplexTypeImpl <em>Complex Type</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.ComplexTypeImpl
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getComplexType()
+     * @see kieker.tools.rl.recordLang.impl.ComplexTypeImpl
+     * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getComplexType()
      * @generated
      */
     EClass COMPLEX_TYPE = eINSTANCE.getComplexType();
@@ -1598,21 +1598,21 @@ public interface RecordLangPackage extends EPackage
     EReference COMPLEX_TYPE__CONSTANTS = eINSTANCE.getComplexType_Constants();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.TemplateTypeImpl <em>Template Type</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.rl.recordLang.impl.TemplateTypeImpl <em>Template Type</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.TemplateTypeImpl
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getTemplateType()
+     * @see kieker.tools.rl.recordLang.impl.TemplateTypeImpl
+     * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getTemplateType()
      * @generated
      */
     EClass TEMPLATE_TYPE = eINSTANCE.getTemplateType();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordTypeImpl <em>Record Type</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.rl.recordLang.impl.RecordTypeImpl <em>Record Type</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordTypeImpl
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getRecordType()
+     * @see kieker.tools.rl.recordLang.impl.RecordTypeImpl
+     * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getRecordType()
      * @generated
      */
     EClass RECORD_TYPE = eINSTANCE.getRecordType();
@@ -1634,11 +1634,11 @@ public interface RecordLangPackage extends EPackage
     EReference RECORD_TYPE__PARENT = eINSTANCE.getRecordType_Parent();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ConstantImpl <em>Constant</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.rl.recordLang.impl.ConstantImpl <em>Constant</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.ConstantImpl
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getConstant()
+     * @see kieker.tools.rl.recordLang.impl.ConstantImpl
+     * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getConstant()
      * @generated
      */
     EClass CONSTANT = eINSTANCE.getConstant();
@@ -1668,11 +1668,11 @@ public interface RecordLangPackage extends EPackage
     EReference CONSTANT__VALUE = eINSTANCE.getConstant_Value();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.PropertyImpl <em>Property</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.rl.recordLang.impl.PropertyImpl <em>Property</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.PropertyImpl
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getProperty()
+     * @see kieker.tools.rl.recordLang.impl.PropertyImpl
+     * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getProperty()
      * @generated
      */
     EClass PROPERTY = eINSTANCE.getProperty();
@@ -1726,11 +1726,11 @@ public interface RecordLangPackage extends EPackage
     EReference PROPERTY__VALUE = eINSTANCE.getProperty_Value();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ForeignKeyImpl <em>Foreign Key</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.rl.recordLang.impl.ForeignKeyImpl <em>Foreign Key</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.ForeignKeyImpl
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getForeignKey()
+     * @see kieker.tools.rl.recordLang.impl.ForeignKeyImpl
+     * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getForeignKey()
      * @generated
      */
     EClass FOREIGN_KEY = eINSTANCE.getForeignKey();
@@ -1752,11 +1752,11 @@ public interface RecordLangPackage extends EPackage
     EReference FOREIGN_KEY__PROPERTY_REF = eINSTANCE.getForeignKey_PropertyRef();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ClassifierImpl <em>Classifier</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.rl.recordLang.impl.ClassifierImpl <em>Classifier</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.ClassifierImpl
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getClassifier()
+     * @see kieker.tools.rl.recordLang.impl.ClassifierImpl
+     * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getClassifier()
      * @generated
      */
     EClass CLASSIFIER = eINSTANCE.getClassifier();
@@ -1778,11 +1778,11 @@ public interface RecordLangPackage extends EPackage
     EReference CLASSIFIER__SIZES = eINSTANCE.getClassifier_Sizes();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ArraySizeImpl <em>Array Size</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.rl.recordLang.impl.ArraySizeImpl <em>Array Size</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.ArraySizeImpl
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getArraySize()
+     * @see kieker.tools.rl.recordLang.impl.ArraySizeImpl
+     * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getArraySize()
      * @generated
      */
     EClass ARRAY_SIZE = eINSTANCE.getArraySize();
@@ -1796,21 +1796,21 @@ public interface RecordLangPackage extends EPackage
     EAttribute ARRAY_SIZE__SIZE = eINSTANCE.getArraySize_Size();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.LiteralImpl <em>Literal</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.rl.recordLang.impl.LiteralImpl <em>Literal</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.LiteralImpl
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getLiteral()
+     * @see kieker.tools.rl.recordLang.impl.LiteralImpl
+     * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getLiteral()
      * @generated
      */
     EClass LITERAL = eINSTANCE.getLiteral();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ArrayLiteralImpl <em>Array Literal</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.rl.recordLang.impl.ArrayLiteralImpl <em>Array Literal</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.ArrayLiteralImpl
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getArrayLiteral()
+     * @see kieker.tools.rl.recordLang.impl.ArrayLiteralImpl
+     * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getArrayLiteral()
      * @generated
      */
     EClass ARRAY_LITERAL = eINSTANCE.getArrayLiteral();
@@ -1824,11 +1824,11 @@ public interface RecordLangPackage extends EPackage
     EReference ARRAY_LITERAL__LITERALS = eINSTANCE.getArrayLiteral_Literals();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.StringLiteralImpl <em>String Literal</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.rl.recordLang.impl.StringLiteralImpl <em>String Literal</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.StringLiteralImpl
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getStringLiteral()
+     * @see kieker.tools.rl.recordLang.impl.StringLiteralImpl
+     * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getStringLiteral()
      * @generated
      */
     EClass STRING_LITERAL = eINSTANCE.getStringLiteral();
@@ -1842,11 +1842,11 @@ public interface RecordLangPackage extends EPackage
     EAttribute STRING_LITERAL__VALUE = eINSTANCE.getStringLiteral_Value();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.IntLiteralImpl <em>Int Literal</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.rl.recordLang.impl.IntLiteralImpl <em>Int Literal</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.IntLiteralImpl
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getIntLiteral()
+     * @see kieker.tools.rl.recordLang.impl.IntLiteralImpl
+     * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getIntLiteral()
      * @generated
      */
     EClass INT_LITERAL = eINSTANCE.getIntLiteral();
@@ -1860,11 +1860,11 @@ public interface RecordLangPackage extends EPackage
     EAttribute INT_LITERAL__VALUE = eINSTANCE.getIntLiteral_Value();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.FloatLiteralImpl <em>Float Literal</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.rl.recordLang.impl.FloatLiteralImpl <em>Float Literal</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.FloatLiteralImpl
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getFloatLiteral()
+     * @see kieker.tools.rl.recordLang.impl.FloatLiteralImpl
+     * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getFloatLiteral()
      * @generated
      */
     EClass FLOAT_LITERAL = eINSTANCE.getFloatLiteral();
@@ -1878,11 +1878,11 @@ public interface RecordLangPackage extends EPackage
     EAttribute FLOAT_LITERAL__VALUE = eINSTANCE.getFloatLiteral_Value();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.BooleanLiteralImpl <em>Boolean Literal</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.rl.recordLang.impl.BooleanLiteralImpl <em>Boolean Literal</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.BooleanLiteralImpl
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getBooleanLiteral()
+     * @see kieker.tools.rl.recordLang.impl.BooleanLiteralImpl
+     * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getBooleanLiteral()
      * @generated
      */
     EClass BOOLEAN_LITERAL = eINSTANCE.getBooleanLiteral();
@@ -1896,11 +1896,11 @@ public interface RecordLangPackage extends EPackage
     EAttribute BOOLEAN_LITERAL__VALUE = eINSTANCE.getBooleanLiteral_Value();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ConstantLiteralImpl <em>Constant Literal</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.rl.recordLang.impl.ConstantLiteralImpl <em>Constant Literal</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.ConstantLiteralImpl
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getConstantLiteral()
+     * @see kieker.tools.rl.recordLang.impl.ConstantLiteralImpl
+     * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getConstantLiteral()
      * @generated
      */
     EClass CONSTANT_LITERAL = eINSTANCE.getConstantLiteral();
@@ -1914,11 +1914,11 @@ public interface RecordLangPackage extends EPackage
     EReference CONSTANT_LITERAL__VALUE = eINSTANCE.getConstantLiteral_Value();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.BuiltInValueLiteralImpl <em>Built In Value Literal</em>}' class.
+     * The meta object literal for the '{@link kieker.tools.rl.recordLang.impl.BuiltInValueLiteralImpl <em>Built In Value Literal</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.BuiltInValueLiteralImpl
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getBuiltInValueLiteral()
+     * @see kieker.tools.rl.recordLang.impl.BuiltInValueLiteralImpl
+     * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getBuiltInValueLiteral()
      * @generated
      */
     EClass BUILT_IN_VALUE_LITERAL = eINSTANCE.getBuiltInValueLiteral();
@@ -1932,11 +1932,11 @@ public interface RecordLangPackage extends EPackage
     EAttribute BUILT_IN_VALUE_LITERAL__VALUE = eINSTANCE.getBuiltInValueLiteral_Value();
 
     /**
-     * The meta object literal for the '{@link de.cau.cs.se.instrumentation.rl.recordLang.PropertyModifier <em>Property Modifier</em>}' enum.
+     * The meta object literal for the '{@link kieker.tools.rl.recordLang.PropertyModifier <em>Property Modifier</em>}' enum.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.PropertyModifier
-     * @see de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangPackageImpl#getPropertyModifier()
+     * @see kieker.tools.rl.recordLang.PropertyModifier
+     * @see kieker.tools.rl.recordLang.impl.RecordLangPackageImpl#getPropertyModifier()
      * @generated
      */
     EEnum PROPERTY_MODIFIER = eINSTANCE.getPropertyModifier();

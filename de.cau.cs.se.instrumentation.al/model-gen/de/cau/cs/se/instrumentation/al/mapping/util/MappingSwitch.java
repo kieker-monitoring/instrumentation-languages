@@ -1,8 +1,8 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.mapping.util;
+package kieker.tools.al.mapping.util;
 
-import de.cau.cs.se.instrumentation.al.mapping.*;
+import kieker.tools.al.mapping.*;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.util.Switch;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see de.cau.cs.se.instrumentation.al.mapping.MappingPackage
+ * @see kieker.tools.al.mapping.MappingPackage
  * @generated
  */
 public class MappingSwitch<T> extends Switch<T> {

@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.rl.typing.jar;
+package kieker.tools.rl.typing.jar;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
-import de.cau.cs.se.instrumentation.rl.typing.ITypeProvider;
+import kieker.tools.rl.typing.ITypeProvider;
 
 /**
  * The type provider factory controls the type provider, which is created by this class.

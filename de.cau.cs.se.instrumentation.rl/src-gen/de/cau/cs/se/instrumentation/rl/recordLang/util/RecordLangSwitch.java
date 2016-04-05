@@ -1,8 +1,8 @@
 /**
  */
-package de.cau.cs.se.instrumentation.rl.recordLang.util;
+package kieker.tools.rl.recordLang.util;
 
-import de.cau.cs.se.instrumentation.rl.recordLang.*;
+import kieker.tools.rl.recordLang.*;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.util.Switch;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage
+ * @see kieker.tools.rl.recordLang.RecordLangPackage
  * @generated
  */
 public class RecordLangSwitch<T> extends Switch<T>

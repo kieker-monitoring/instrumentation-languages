@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.rl.generator.java.record;
+package kieker.tools.rl.generator.java.record;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
@@ -27,13 +27,13 @@ import java.util.Comparator;
 
 import org.eclipse.emf.common.util.EList;
 
-import de.cau.cs.se.instrumentation.rl.recordLang.BaseType;
-import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
-import de.cau.cs.se.instrumentation.rl.recordLang.Property;
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangFactory;
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
-import de.cau.cs.se.instrumentation.rl.recordLang.TemplateType;
-import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation;
+import kieker.tools.rl.recordLang.BaseType;
+import kieker.tools.rl.recordLang.Classifier;
+import kieker.tools.rl.recordLang.Property;
+import kieker.tools.rl.recordLang.RecordLangFactory;
+import kieker.tools.rl.recordLang.RecordType;
+import kieker.tools.rl.recordLang.TemplateType;
+import kieker.tools.rl.validation.PropertyEvaluation;
 
 /**
  * Reconstructed (more or less) the algorithm behind the serializeVersionUID computation.

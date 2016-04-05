@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package de.cau.cs.se.instrumentation.al.scoping;
+package kieker.tools.al.scoping;
 
 import com.google.common.base.Objects;
-import de.cau.cs.se.instrumentation.al.aspectLang.AspectModel;
+import kieker.tools.al.aspectLang.AspectModel;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;

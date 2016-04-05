@@ -1,9 +1,9 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang;
+package kieker.tools.al.aspectLang;
 
-import de.cau.cs.se.instrumentation.al.mapping.Parameter;
-import de.cau.cs.se.instrumentation.al.mapping.ParameterModifier;
+import kieker.tools.al.mapping.Parameter;
+import kieker.tools.al.mapping.ParameterModifier;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -16,12 +16,12 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery#getModifier <em>Modifier</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery#getType <em>Type</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery#getParameter <em>Parameter</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.ParameterQuery#getModifier <em>Modifier</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.ParameterQuery#getType <em>Type</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.ParameterQuery#getParameter <em>Parameter</em>}</li>
  * </ul>
  *
- * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getParameterQuery()
+ * @see kieker.tools.al.aspectLang.AspectLangPackage#getParameterQuery()
  * @model
  * @generated
  */
@@ -37,14 +37,14 @@ public interface ParameterQuery extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Modifier</em>' reference.
    * @see #setModifier(ParameterModifier)
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getParameterQuery_Modifier()
+   * @see kieker.tools.al.aspectLang.AspectLangPackage#getParameterQuery_Modifier()
    * @model
    * @generated
    */
   ParameterModifier getModifier();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery#getModifier <em>Modifier</em>}' reference.
+   * Sets the value of the '{@link kieker.tools.al.aspectLang.ParameterQuery#getModifier <em>Modifier</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Modifier</em>' reference.
@@ -63,14 +63,14 @@ public interface ParameterQuery extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Type</em>' containment reference.
    * @see #setType(TypeReference)
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getParameterQuery_Type()
+   * @see kieker.tools.al.aspectLang.AspectLangPackage#getParameterQuery_Type()
    * @model containment="true"
    * @generated
    */
   TypeReference getType();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery#getType <em>Type</em>}' containment reference.
+   * Sets the value of the '{@link kieker.tools.al.aspectLang.ParameterQuery#getType <em>Type</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Type</em>' containment reference.
@@ -89,14 +89,14 @@ public interface ParameterQuery extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Parameter</em>' reference.
    * @see #setParameter(Parameter)
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getParameterQuery_Parameter()
+   * @see kieker.tools.al.aspectLang.AspectLangPackage#getParameterQuery_Parameter()
    * @model
    * @generated
    */
   Parameter getParameter();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery#getParameter <em>Parameter</em>}' reference.
+   * Sets the value of the '{@link kieker.tools.al.aspectLang.ParameterQuery#getParameter <em>Parameter</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Parameter</em>' reference.

@@ -1,14 +1,14 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang.impl;
+package kieker.tools.al.aspectLang.impl;
 
-import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
-import de.cau.cs.se.instrumentation.al.aspectLang.OperationQuery;
-import de.cau.cs.se.instrumentation.al.aspectLang.ParameterQuery;
-import de.cau.cs.se.instrumentation.al.aspectLang.TypeReference;
+import kieker.tools.al.aspectLang.AspectLangPackage;
+import kieker.tools.al.aspectLang.OperationQuery;
+import kieker.tools.al.aspectLang.ParameterQuery;
+import kieker.tools.al.aspectLang.TypeReference;
 
-import de.cau.cs.se.instrumentation.al.mapping.Operation;
-import de.cau.cs.se.instrumentation.al.mapping.OperationModifier;
+import kieker.tools.al.mapping.Operation;
+import kieker.tools.al.mapping.OperationModifier;
 
 import java.util.Collection;
 
@@ -34,10 +34,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.OperationQueryImpl#getModifier <em>Modifier</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.OperationQueryImpl#getReturnType <em>Return Type</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.OperationQueryImpl#getOperationReference <em>Operation Reference</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.OperationQueryImpl#getParameterQueries <em>Parameter Queries</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.OperationQueryImpl#getModifier <em>Modifier</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.OperationQueryImpl#getReturnType <em>Return Type</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.OperationQueryImpl#getOperationReference <em>Operation Reference</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.OperationQueryImpl#getParameterQueries <em>Parameter Queries</em>}</li>
  * </ul>
  *
  * @generated

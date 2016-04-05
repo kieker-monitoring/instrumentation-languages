@@ -13,9 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.rl.ui.contentassist
+package kieker.tools.rl.ui.contentassist
 
-import de.cau.cs.se.instrumentation.rl.ui.contentassist.AbstractRecordLangProposalProvider
+import kieker.tools.rl.ui.contentassist.AbstractRecordLangProposalProvider
 
 /**
  * see http://www.eclipse.org/Xtext/documentation/latest/xtext.html#contentAssist on how to customize content assistant

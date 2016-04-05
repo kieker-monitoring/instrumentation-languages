@@ -1,4 +1,4 @@
-package de.cau.cs.se.instrumentation.al.parser.antlr.internal; 
+package kieker.tools.al.parser.antlr.internal; 
 
 import org.eclipse.xtext.*;
 import org.eclipse.xtext.parser.*;
@@ -10,7 +10,7 @@ import org.eclipse.xtext.parser.antlr.AbstractInternalAntlrParser;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
 import org.eclipse.xtext.parser.antlr.AntlrDatatypeRuleToken;
-import de.cau.cs.se.instrumentation.al.services.AspectLangGrammarAccess;
+import kieker.tools.al.services.AspectLangGrammarAccess;
 
 
 
@@ -230,7 +230,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                      			current, 
                      			"name",
                       		lv_name_1_0, 
-                      		"de.cau.cs.se.instrumentation.al.AspectLang.QualifiedName");
+                      		"kieker.tools.al.AspectLang.QualifiedName");
               	        afterParserOrEnumRuleCall();
               	    
             }
@@ -277,7 +277,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             	             			current, 
             	             			"imports",
             	              		lv_imports_2_0, 
-            	              		"de.cau.cs.se.instrumentation.al.AspectLang.Import");
+            	              		"kieker.tools.al.AspectLang.Import");
             	      	        afterParserOrEnumRuleCall();
             	      	    
             	    }
@@ -330,7 +330,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             	             			current, 
             	             			"sources",
             	              		lv_sources_3_0, 
-            	              		"de.cau.cs.se.instrumentation.al.AspectLang.ApplicationModel");
+            	              		"kieker.tools.al.AspectLang.ApplicationModel");
             	      	        afterParserOrEnumRuleCall();
             	      	    
             	    }
@@ -399,7 +399,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             	             			current, 
             	             			"advices",
             	              		lv_advices_4_0, 
-            	              		"de.cau.cs.se.instrumentation.al.AspectLang.Advice");
+            	              		"kieker.tools.al.AspectLang.Advice");
             	      	        afterParserOrEnumRuleCall();
             	      	    
             	    }
@@ -440,7 +440,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             	             			current, 
             	             			"pointcuts",
             	              		lv_pointcuts_5_0, 
-            	              		"de.cau.cs.se.instrumentation.al.AspectLang.Pointcut");
+            	              		"kieker.tools.al.AspectLang.Pointcut");
             	      	        afterParserOrEnumRuleCall();
             	      	    
             	    }
@@ -481,7 +481,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             	             			current, 
             	             			"aspects",
             	              		lv_aspects_6_0, 
-            	              		"de.cau.cs.se.instrumentation.al.AspectLang.Aspect");
+            	              		"kieker.tools.al.AspectLang.Aspect");
             	      	        afterParserOrEnumRuleCall();
             	      	    
             	    }
@@ -611,7 +611,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                      			current, 
                      			"importedNamespace",
                       		lv_importedNamespace_1_0, 
-                      		"de.cau.cs.se.instrumentation.al.AspectLang.QualifiedNameWithWildcard");
+                      		"kieker.tools.al.AspectLang.QualifiedNameWithWildcard");
               	        afterParserOrEnumRuleCall();
               	    
             }
@@ -965,7 +965,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                      			current, 
                      			"advices",
                       		lv_advices_3_0, 
-                      		"de.cau.cs.se.instrumentation.al.AspectLang.UtilizeAdvice");
+                      		"kieker.tools.al.AspectLang.UtilizeAdvice");
               	        afterParserOrEnumRuleCall();
               	    
             }
@@ -1021,7 +1021,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             	             			current, 
             	             			"advices",
             	              		lv_advices_5_0, 
-            	              		"de.cau.cs.se.instrumentation.al.AspectLang.UtilizeAdvice");
+            	              		"kieker.tools.al.AspectLang.UtilizeAdvice");
             	      	        afterParserOrEnumRuleCall();
             	      	    
             	    }
@@ -1216,7 +1216,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                                      			current, 
                                      			"parameterAssignments",
                                       		lv_parameterAssignments_2_0, 
-                                      		"de.cau.cs.se.instrumentation.al.AspectLang.Value");
+                                      		"kieker.tools.al.AspectLang.Value");
                               	        afterParserOrEnumRuleCall();
                               	    
                             }
@@ -1272,7 +1272,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                             	             			current, 
                             	             			"parameterAssignments",
                             	              		lv_parameterAssignments_4_0, 
-                            	              		"de.cau.cs.se.instrumentation.al.AspectLang.Value");
+                            	              		"kieker.tools.al.AspectLang.Value");
                             	      	        afterParserOrEnumRuleCall();
                             	      	    
                             	    }
@@ -1488,7 +1488,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                                      			current, 
                                      			"parameterDeclarations",
                                       		lv_parameterDeclarations_3_0, 
-                                      		"de.cau.cs.se.instrumentation.al.AspectLang.AdviceParameterDeclaration");
+                                      		"kieker.tools.al.AspectLang.AdviceParameterDeclaration");
                               	        afterParserOrEnumRuleCall();
                               	    
                             }
@@ -1544,7 +1544,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                             	             			current, 
                             	             			"parameterDeclarations",
                             	              		lv_parameterDeclarations_5_0, 
-                            	              		"de.cau.cs.se.instrumentation.al.AspectLang.AdviceParameterDeclaration");
+                            	              		"kieker.tools.al.AspectLang.AdviceParameterDeclaration");
                             	      	        afterParserOrEnumRuleCall();
                             	      	    
                             	    }
@@ -1624,7 +1624,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             	             			current, 
             	             			"collectors",
             	              		lv_collectors_8_0, 
-            	              		"de.cau.cs.se.instrumentation.al.AspectLang.Collector");
+            	              		"kieker.tools.al.AspectLang.Collector");
             	      	        afterParserOrEnumRuleCall();
             	      	    
             	    }
@@ -1751,7 +1751,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                      			current, 
                      			"type",
                       		lv_type_0_0, 
-                      		"de.cau.cs.se.instrumentation.al.AspectLang.TypeReference");
+                      		"kieker.tools.al.AspectLang.TypeReference");
               	        afterParserOrEnumRuleCall();
               	    
             }
@@ -1897,7 +1897,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                      			current, 
                      			"insertionPoint",
                       		lv_insertionPoint_0_0, 
-                      		"de.cau.cs.se.instrumentation.al.AspectLang.InsertionPoint");
+                      		"kieker.tools.al.AspectLang.InsertionPoint");
               	        afterParserOrEnumRuleCall();
               	    
             }
@@ -1945,7 +1945,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             	             			current, 
             	             			"events",
             	              		lv_events_1_0, 
-            	              		"de.cau.cs.se.instrumentation.al.AspectLang.Event");
+            	              		"kieker.tools.al.AspectLang.Event");
             	      	        afterParserOrEnumRuleCall();
             	      	    
             	    }
@@ -2131,7 +2131,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"initializations",
                               		lv_initializations_2_0, 
-                              		"de.cau.cs.se.instrumentation.al.AspectLang.Value");
+                              		"kieker.tools.al.AspectLang.Value");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -2187,7 +2187,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                     	             			current, 
                     	             			"initializations",
                     	              		lv_initializations_4_0, 
-                    	              		"de.cau.cs.se.instrumentation.al.AspectLang.Value");
+                    	              		"kieker.tools.al.AspectLang.Value");
                     	      	        afterParserOrEnumRuleCall();
                     	      	    
                     	    }
@@ -2526,7 +2526,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"query",
                               		lv_query_0_0, 
-                              		"de.cau.cs.se.instrumentation.al.AspectLang.LocationQuery");
+                              		"kieker.tools.al.AspectLang.LocationQuery");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -2564,7 +2564,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                      			current, 
                      			"property",
                       		lv_property_1_0, 
-                      		"de.cau.cs.se.instrumentation.al.AspectLang.Property");
+                      		"kieker.tools.al.AspectLang.Property");
               	        afterParserOrEnumRuleCall();
               	    
             }
@@ -2825,7 +2825,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                      			current, 
                      			"function",
                       		lv_function_0_0, 
-                      		"de.cau.cs.se.instrumentation.al.AspectLang.InternalFunction");
+                      		"kieker.tools.al.AspectLang.InternalFunction");
               	        afterParserOrEnumRuleCall();
               	    
             }
@@ -2943,7 +2943,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                      			current, 
                      			"function",
                       		lv_function_1_0, 
-                      		"de.cau.cs.se.instrumentation.al.AspectLang.ReflectionFunction");
+                      		"kieker.tools.al.AspectLang.ReflectionFunction");
               	        afterParserOrEnumRuleCall();
               	    
             }
@@ -3209,7 +3209,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"collection",
                               		lv_collection_2_0, 
-                              		"de.cau.cs.se.instrumentation.al.AspectLang.Value");
+                              		"kieker.tools.al.AspectLang.Value");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -3353,7 +3353,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"annotation",
                               		lv_annotation_0_0, 
-                              		"de.cau.cs.se.instrumentation.al.AspectLang.Annotation");
+                              		"kieker.tools.al.AspectLang.Annotation");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -3469,7 +3469,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                      			current, 
                      			"location",
                       		lv_location_6_0, 
-                      		"de.cau.cs.se.instrumentation.al.AspectLang.LocationQuery");
+                      		"kieker.tools.al.AspectLang.LocationQuery");
               	        afterParserOrEnumRuleCall();
               	    
             }
@@ -3521,7 +3521,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"operation",
                               		lv_operation_8_0, 
-                              		"de.cau.cs.se.instrumentation.al.AspectLang.OperationQuery");
+                              		"kieker.tools.al.AspectLang.OperationQuery");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -3678,7 +3678,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                      			current, 
                      			"technologies",
                       		lv_technologies_2_0, 
-                      		"de.cau.cs.se.instrumentation.al.AspectLang.Technology");
+                      		"kieker.tools.al.AspectLang.Technology");
               	        afterParserOrEnumRuleCall();
               	    
             }
@@ -3722,7 +3722,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                      			current, 
                      			"technologies",
                       		lv_technologies_4_0, 
-                      		"de.cau.cs.se.instrumentation.al.AspectLang.Technology");
+                      		"kieker.tools.al.AspectLang.Technology");
               	        afterParserOrEnumRuleCall();
               	    
             }
@@ -3844,7 +3844,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                      			current, 
                      			"node",
                       		lv_node_0_0, 
-                      		"de.cau.cs.se.instrumentation.al.AspectLang.Node");
+                      		"kieker.tools.al.AspectLang.Node");
               	        afterParserOrEnumRuleCall();
               	    
             }
@@ -3902,7 +3902,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"specialization",
                               		lv_specialization_2_0, 
-                              		"de.cau.cs.se.instrumentation.al.AspectLang.LocationQuery");
+                              		"kieker.tools.al.AspectLang.LocationQuery");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -3946,7 +3946,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"composition",
                               		lv_composition_3_0, 
-                              		"de.cau.cs.se.instrumentation.al.AspectLang.CompositionQuery");
+                              		"kieker.tools.al.AspectLang.CompositionQuery");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -4096,7 +4096,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"modifier",
                               		lv_modifier_1_0, 
-                              		"de.cau.cs.se.instrumentation.al.AspectLang.QueryModifier");
+                              		"kieker.tools.al.AspectLang.QueryModifier");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -4152,7 +4152,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
             	             			current, 
             	             			"subQueries",
             	              		lv_subQueries_3_0, 
-            	              		"de.cau.cs.se.instrumentation.al.AspectLang.LocationQuery");
+            	              		"kieker.tools.al.AspectLang.LocationQuery");
             	      	        afterParserOrEnumRuleCall();
             	      	    
             	    }
@@ -4363,7 +4363,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"returnType",
                               		lv_returnType_2_0, 
-                              		"de.cau.cs.se.instrumentation.al.AspectLang.TypeReference");
+                              		"kieker.tools.al.AspectLang.TypeReference");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -4472,7 +4472,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                                      			current, 
                                      			"parameterQueries",
                                       		lv_parameterQueries_5_0, 
-                                      		"de.cau.cs.se.instrumentation.al.AspectLang.ParameterQuery");
+                                      		"kieker.tools.al.AspectLang.ParameterQuery");
                               	        afterParserOrEnumRuleCall();
                               	    
                             }
@@ -4528,7 +4528,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                             	             			current, 
                             	             			"parameterQueries",
                             	              		lv_parameterQueries_7_0, 
-                            	              		"de.cau.cs.se.instrumentation.al.AspectLang.ParameterQuery");
+                            	              		"kieker.tools.al.AspectLang.ParameterQuery");
                             	      	        afterParserOrEnumRuleCall();
                             	      	    
                             	    }
@@ -4771,7 +4771,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"type",
                               		lv_type_2_0, 
-                              		"de.cau.cs.se.instrumentation.al.AspectLang.TypeReference");
+                              		"kieker.tools.al.AspectLang.TypeReference");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -5114,7 +5114,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"constraint",
                               		lv_constraint_5_0, 
-                              		"de.cau.cs.se.instrumentation.al.AspectLang.PropertyConstraint");
+                              		"kieker.tools.al.AspectLang.PropertyConstraint");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -5702,7 +5702,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"logic",
                               		lv_logic_2_0, 
-                              		"de.cau.cs.se.instrumentation.al.AspectLang.LogicOperator");
+                              		"kieker.tools.al.AspectLang.LogicOperator");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -5737,7 +5737,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"right",
                               		lv_right_3_0, 
-                              		"de.cau.cs.se.instrumentation.al.AspectLang.PropertyConstraintCompare");
+                              		"kieker.tools.al.AspectLang.PropertyConstraintCompare");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -5911,7 +5911,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"compare",
                               		lv_compare_2_0, 
-                              		"de.cau.cs.se.instrumentation.al.AspectLang.CompareOperator");
+                              		"kieker.tools.al.AspectLang.CompareOperator");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -5946,7 +5946,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"right",
                               		lv_right_3_0, 
-                              		"de.cau.cs.se.instrumentation.al.AspectLang.ConstraintElement");
+                              		"kieker.tools.al.AspectLang.ConstraintElement");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -6228,7 +6228,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"locationQuery",
                               		lv_locationQuery_0_0, 
-                              		"de.cau.cs.se.instrumentation.al.AspectLang.LocationQuery");
+                              		"kieker.tools.al.AspectLang.LocationQuery");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -6287,7 +6287,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"property",
                               		lv_property_1_0, 
-                              		"de.cau.cs.se.instrumentation.al.AspectLang.ModelProperty");
+                              		"kieker.tools.al.AspectLang.ModelProperty");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -6328,7 +6328,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"typeof",
                               		lv_typeof_2_0, 
-                              		"de.cau.cs.se.instrumentation.al.AspectLang.Typeof");
+                              		"kieker.tools.al.AspectLang.Typeof");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -6578,7 +6578,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                      			current, 
                      			"reference",
                       		lv_reference_2_0, 
-                      		"de.cau.cs.se.instrumentation.al.AspectLang.TypeReference");
+                      		"kieker.tools.al.AspectLang.TypeReference");
               	        afterParserOrEnumRuleCall();
               	    
             }
@@ -6878,7 +6878,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                      			current, 
                      			"value",
                       		lv_value_0_0, 
-                      		"de.cau.cs.se.instrumentation.al.AspectLang.FLOAT");
+                      		"kieker.tools.al.AspectLang.FLOAT");
               	    
             }
 
@@ -6980,7 +6980,7 @@ public class InternalAspectLangParser extends AbstractInternalAntlrParser {
                      			current, 
                      			"value",
                       		lv_value_0_0, 
-                      		"de.cau.cs.se.instrumentation.al.AspectLang.INT");
+                      		"kieker.tools.al.AspectLang.INT");
               	    
             }
 

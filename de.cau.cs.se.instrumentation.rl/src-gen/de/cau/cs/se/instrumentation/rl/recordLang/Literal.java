@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.rl.recordLang;
+package kieker.tools.rl.recordLang;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- end-user-doc -->
  *
  *
- * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getLiteral()
+ * @see kieker.tools.rl.recordLang.RecordLangPackage#getLiteral()
  * @model
  * @generated
  */

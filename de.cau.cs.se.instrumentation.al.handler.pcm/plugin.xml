@@ -2,11 +2,11 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         id="de.cau.cs.se.instrumentation.al.handler.pcm.ModelMapper"
+         id="kieker.tools.al.handler.pcm.ModelMapper"
          name="PCM Model Mapper"
-         point="de.cau.cs.se.instrumentation.al.modelMapping">
+         point="kieker.tools.al.modelMapping">
       <mapper
-            class="de.cau.cs.se.instrumentation.al.handler.pcm.PCMModelMapper">
+            class="kieker.tools.al.handler.pcm.PCMModelMapper">
       </mapper>
    </extension>
 

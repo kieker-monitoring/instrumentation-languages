@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang;
+package kieker.tools.al.aspectLang;
 
 
 /**
@@ -12,11 +12,11 @@ package de.cau.cs.se.instrumentation.al.aspectLang;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameter#getDeclaration <em>Declaration</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameter#getCollection <em>Collection</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.AdviceParameter#getDeclaration <em>Declaration</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.AdviceParameter#getCollection <em>Collection</em>}</li>
  * </ul>
  *
- * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getAdviceParameter()
+ * @see kieker.tools.al.aspectLang.AspectLangPackage#getAdviceParameter()
  * @model
  * @generated
  */
@@ -32,14 +32,14 @@ public interface AdviceParameter extends Value
    * <!-- end-user-doc -->
    * @return the value of the '<em>Declaration</em>' reference.
    * @see #setDeclaration(AdviceParameterDeclaration)
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getAdviceParameter_Declaration()
+   * @see kieker.tools.al.aspectLang.AspectLangPackage#getAdviceParameter_Declaration()
    * @model
    * @generated
    */
   AdviceParameterDeclaration getDeclaration();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameter#getDeclaration <em>Declaration</em>}' reference.
+   * Sets the value of the '{@link kieker.tools.al.aspectLang.AdviceParameter#getDeclaration <em>Declaration</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Declaration</em>' reference.
@@ -58,14 +58,14 @@ public interface AdviceParameter extends Value
    * <!-- end-user-doc -->
    * @return the value of the '<em>Collection</em>' containment reference.
    * @see #setCollection(Value)
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getAdviceParameter_Collection()
+   * @see kieker.tools.al.aspectLang.AspectLangPackage#getAdviceParameter_Collection()
    * @model containment="true"
    * @generated
    */
   Value getCollection();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameter#getCollection <em>Collection</em>}' containment reference.
+   * Sets the value of the '{@link kieker.tools.al.aspectLang.AdviceParameter#getCollection <em>Collection</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Collection</em>' containment reference.

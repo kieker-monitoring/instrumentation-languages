@@ -1,13 +1,13 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang.impl;
+package kieker.tools.al.aspectLang.impl;
 
-import de.cau.cs.se.instrumentation.al.aspectLang.Annotation;
-import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel;
-import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
-import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery;
-import de.cau.cs.se.instrumentation.al.aspectLang.OperationQuery;
-import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut;
+import kieker.tools.al.aspectLang.Annotation;
+import kieker.tools.al.aspectLang.ApplicationModel;
+import kieker.tools.al.aspectLang.AspectLangPackage;
+import kieker.tools.al.aspectLang.LocationQuery;
+import kieker.tools.al.aspectLang.OperationQuery;
+import kieker.tools.al.aspectLang.Pointcut;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -26,11 +26,11 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.PointcutImpl#getAnnotation <em>Annotation</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.PointcutImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.PointcutImpl#getModel <em>Model</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.PointcutImpl#getLocation <em>Location</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.PointcutImpl#getOperation <em>Operation</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.PointcutImpl#getAnnotation <em>Annotation</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.PointcutImpl#getName <em>Name</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.PointcutImpl#getModel <em>Model</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.PointcutImpl#getLocation <em>Location</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.PointcutImpl#getOperation <em>Operation</em>}</li>
  * </ul>
  *
  * @generated

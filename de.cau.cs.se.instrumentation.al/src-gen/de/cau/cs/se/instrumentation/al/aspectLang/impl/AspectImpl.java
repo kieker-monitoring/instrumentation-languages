@@ -1,11 +1,11 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang.impl;
+package kieker.tools.al.aspectLang.impl;
 
-import de.cau.cs.se.instrumentation.al.aspectLang.Aspect;
-import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
-import de.cau.cs.se.instrumentation.al.aspectLang.Pointcut;
-import de.cau.cs.se.instrumentation.al.aspectLang.UtilizeAdvice;
+import kieker.tools.al.aspectLang.Aspect;
+import kieker.tools.al.aspectLang.AspectLangPackage;
+import kieker.tools.al.aspectLang.Pointcut;
+import kieker.tools.al.aspectLang.UtilizeAdvice;
 
 import java.util.Collection;
 
@@ -31,8 +31,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectImpl#getPointcut <em>Pointcut</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectImpl#getAdvices <em>Advices</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.AspectImpl#getPointcut <em>Pointcut</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.AspectImpl#getAdvices <em>Advices</em>}</li>
  * </ul>
  *
  * @generated

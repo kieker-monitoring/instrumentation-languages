@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.mapping;
+package kieker.tools.al.mapping;
 
 
 /**
@@ -12,10 +12,10 @@ package de.cau.cs.se.instrumentation.al.mapping;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.mapping.CollectionType#getElementType <em>Element Type</em>}</li>
+ *   <li>{@link kieker.tools.al.mapping.CollectionType#getElementType <em>Element Type</em>}</li>
  * </ul>
  *
- * @see de.cau.cs.se.instrumentation.al.mapping.MappingPackage#getCollectionType()
+ * @see kieker.tools.al.mapping.MappingPackage#getCollectionType()
  * @model
  * @generated
  */
@@ -30,14 +30,14 @@ public interface CollectionType extends Type {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Element Type</em>' reference.
 	 * @see #setElementType(Type)
-	 * @see de.cau.cs.se.instrumentation.al.mapping.MappingPackage#getCollectionType_ElementType()
+	 * @see kieker.tools.al.mapping.MappingPackage#getCollectionType_ElementType()
 	 * @model required="true"
 	 * @generated
 	 */
 	Type getElementType();
 
 	/**
-	 * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.mapping.CollectionType#getElementType <em>Element Type</em>}' reference.
+	 * Sets the value of the '{@link kieker.tools.al.mapping.CollectionType#getElementType <em>Element Type</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Element Type</em>' reference.

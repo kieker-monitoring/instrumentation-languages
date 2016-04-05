@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.rl.typing;
+package kieker.tools.rl.typing;
 
-import de.cau.cs.se.instrumentation.rl.recordLang.BaseType;
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangFactory;
+import kieker.tools.rl.recordLang.BaseType;
+import kieker.tools.rl.recordLang.RecordLangFactory;
 
 /**
  * The base types of the language for app development.

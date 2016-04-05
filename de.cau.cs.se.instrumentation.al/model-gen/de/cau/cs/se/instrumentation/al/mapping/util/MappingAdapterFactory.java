@@ -1,8 +1,8 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.mapping.util;
+package kieker.tools.al.mapping.util;
 
-import de.cau.cs.se.instrumentation.al.mapping.*;
+import kieker.tools.al.mapping.*;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see de.cau.cs.se.instrumentation.al.mapping.MappingPackage
+ * @see kieker.tools.al.mapping.MappingPackage
  * @generated
  */
 public class MappingAdapterFactory extends AdapterFactoryImpl {
@@ -156,13 +156,13 @@ public class MappingAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.mapping.Type <em>Type</em>}'.
+	 * Creates a new adapter for an object of class '{@link kieker.tools.al.mapping.Type <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Type
+	 * @see kieker.tools.al.mapping.Type
 	 * @generated
 	 */
 	public Adapter createTypeAdapter() {
@@ -170,13 +170,13 @@ public class MappingAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.mapping.CollectionType <em>Collection Type</em>}'.
+	 * Creates a new adapter for an object of class '{@link kieker.tools.al.mapping.CollectionType <em>Collection Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.CollectionType
+	 * @see kieker.tools.al.mapping.CollectionType
 	 * @generated
 	 */
 	public Adapter createCollectionTypeAdapter() {
@@ -184,13 +184,13 @@ public class MappingAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.mapping.NamedType <em>Named Type</em>}'.
+	 * Creates a new adapter for an object of class '{@link kieker.tools.al.mapping.NamedType <em>Named Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.NamedType
+	 * @see kieker.tools.al.mapping.NamedType
 	 * @generated
 	 */
 	public Adapter createNamedTypeAdapter() {
@@ -198,13 +198,13 @@ public class MappingAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.mapping.TypeReference <em>Type Reference</em>}'.
+	 * Creates a new adapter for an object of class '{@link kieker.tools.al.mapping.TypeReference <em>Type Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.TypeReference
+	 * @see kieker.tools.al.mapping.TypeReference
 	 * @generated
 	 */
 	public Adapter createTypeReferenceAdapter() {
@@ -212,13 +212,13 @@ public class MappingAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.mapping.Container <em>Container</em>}'.
+	 * Creates a new adapter for an object of class '{@link kieker.tools.al.mapping.Container <em>Container</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Container
+	 * @see kieker.tools.al.mapping.Container
 	 * @generated
 	 */
 	public Adapter createContainerAdapter() {
@@ -226,13 +226,13 @@ public class MappingAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.mapping.Operation <em>Operation</em>}'.
+	 * Creates a new adapter for an object of class '{@link kieker.tools.al.mapping.Operation <em>Operation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Operation
+	 * @see kieker.tools.al.mapping.Operation
 	 * @generated
 	 */
 	public Adapter createOperationAdapter() {
@@ -240,13 +240,13 @@ public class MappingAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.mapping.ParameterModifier <em>Parameter Modifier</em>}'.
+	 * Creates a new adapter for an object of class '{@link kieker.tools.al.mapping.ParameterModifier <em>Parameter Modifier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.ParameterModifier
+	 * @see kieker.tools.al.mapping.ParameterModifier
 	 * @generated
 	 */
 	public Adapter createParameterModifierAdapter() {
@@ -254,13 +254,13 @@ public class MappingAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.mapping.NamedElement <em>Named Element</em>}'.
+	 * Creates a new adapter for an object of class '{@link kieker.tools.al.mapping.NamedElement <em>Named Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.NamedElement
+	 * @see kieker.tools.al.mapping.NamedElement
 	 * @generated
 	 */
 	public Adapter createNamedElementAdapter() {
@@ -268,13 +268,13 @@ public class MappingAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.mapping.Parameter <em>Parameter</em>}'.
+	 * Creates a new adapter for an object of class '{@link kieker.tools.al.mapping.Parameter <em>Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Parameter
+	 * @see kieker.tools.al.mapping.Parameter
 	 * @generated
 	 */
 	public Adapter createParameterAdapter() {
@@ -282,13 +282,13 @@ public class MappingAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.mapping.MappingModel <em>Model</em>}'.
+	 * Creates a new adapter for an object of class '{@link kieker.tools.al.mapping.MappingModel <em>Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.MappingModel
+	 * @see kieker.tools.al.mapping.MappingModel
 	 * @generated
 	 */
 	public Adapter createMappingModelAdapter() {
@@ -296,13 +296,13 @@ public class MappingAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.mapping.OperationModifier <em>Operation Modifier</em>}'.
+	 * Creates a new adapter for an object of class '{@link kieker.tools.al.mapping.OperationModifier <em>Operation Modifier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.OperationModifier
+	 * @see kieker.tools.al.mapping.OperationModifier
 	 * @generated
 	 */
 	public Adapter createOperationModifierAdapter() {
@@ -310,13 +310,13 @@ public class MappingAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.mapping.ContainerModifier <em>Container Modifier</em>}'.
+	 * Creates a new adapter for an object of class '{@link kieker.tools.al.mapping.ContainerModifier <em>Container Modifier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.ContainerModifier
+	 * @see kieker.tools.al.mapping.ContainerModifier
 	 * @generated
 	 */
 	public Adapter createContainerModifierAdapter() {
@@ -324,13 +324,13 @@ public class MappingAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.mapping.Containment <em>Containment</em>}'.
+	 * Creates a new adapter for an object of class '{@link kieker.tools.al.mapping.Containment <em>Containment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Containment
+	 * @see kieker.tools.al.mapping.Containment
 	 * @generated
 	 */
 	public Adapter createContainmentAdapter() {
@@ -338,13 +338,13 @@ public class MappingAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.mapping.Traceability <em>Traceability</em>}'.
+	 * Creates a new adapter for an object of class '{@link kieker.tools.al.mapping.Traceability <em>Traceability</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Traceability
+	 * @see kieker.tools.al.mapping.Traceability
 	 * @generated
 	 */
 	public Adapter createTraceabilityAdapter() {
@@ -352,13 +352,13 @@ public class MappingAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.mapping.Attribute <em>Attribute</em>}'.
+	 * Creates a new adapter for an object of class '{@link kieker.tools.al.mapping.Attribute <em>Attribute</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Attribute
+	 * @see kieker.tools.al.mapping.Attribute
 	 * @generated
 	 */
 	public Adapter createAttributeAdapter() {
@@ -366,13 +366,13 @@ public class MappingAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.mapping.Reference <em>Reference</em>}'.
+	 * Creates a new adapter for an object of class '{@link kieker.tools.al.mapping.Reference <em>Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Reference
+	 * @see kieker.tools.al.mapping.Reference
 	 * @generated
 	 */
 	public Adapter createReferenceAdapter() {
@@ -380,13 +380,13 @@ public class MappingAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link de.cau.cs.se.instrumentation.al.mapping.Feature <em>Feature</em>}'.
+	 * Creates a new adapter for an object of class '{@link kieker.tools.al.mapping.Feature <em>Feature</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.Feature
+	 * @see kieker.tools.al.mapping.Feature
 	 * @generated
 	 */
 	public Adapter createFeatureAdapter() {

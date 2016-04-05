@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.rl.cli.test;
+package kieker.tools.rl.cli.test;
 
 import java.io.File;
 import java.util.Set;
@@ -22,8 +22,8 @@ import org.eclipse.xtext.generator.OutputConfiguration;
 import org.junit.Assert;
 import org.junit.Test;
 
-import de.cau.cs.se.instrumentation.rl.cli.DirectIOFileSystemAccess;
-import de.cau.cs.se.instrumentation.rl.ouput.config.RecordLangOutputConfigurationProvider;
+import kieker.tools.rl.cli.DirectIOFileSystemAccess;
+import kieker.tools.rl.ouput.config.RecordLangOutputConfigurationProvider;
 
 /**
  * Test class for the DirectIOFileSystemAccess class which is used to

@@ -1,15 +1,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>de.cau.cs.se.instrumentation.rl.cli</groupId>
-	<artifactId>de.cau.cs.se.instrumentation.rl.cli</artifactId>
+	<groupId>kieker.tools.rl.cli</groupId>
+	<artifactId>kieker.tools.rl.cli</artifactId>
 	<version>1.2.0-SNAPSHOT</version>
 	<name>Instrumentation Record Language Compiler</name>
 	<description>Code generator for Kieker's Instrumentation Record Language</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<checkstyle.config.location>../de.cau.cs.se.instrumentation.releng/cs-conf.xml</checkstyle.config.location>
+		<checkstyle.config.location>../kieker.tools.releng/cs-conf.xml</checkstyle.config.location>
 		<!-- variables -->
 		<eclipse-repo.url>http://download.eclipse.org/releases/mars</eclipse-repo.url>
 	</properties>
@@ -172,8 +172,8 @@
 			<version>2.9.1.v201512180746</version>
 		</dependency>
 		<dependency>
-			<groupId>de.cau.cs.se.instrumentation</groupId>
-			<artifactId>de.cau.cs.se.instrumentation.rl</artifactId>
+			<groupId>kieker.tools</groupId>
+			<artifactId>kieker.tools.rl</artifactId>
 			<version>1.2.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
@@ -208,7 +208,7 @@
 					<transformers>
 						<transformer
 							implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-							<mainClass>de.cau.cs.se.instrumentation.rl.cli.CLICompilerMain</mainClass>
+							<mainClass>kieker.tools.rl.cli.CLICompilerMain</mainClass>
 						</transformer>
 					</transformers>
 				</configuration>

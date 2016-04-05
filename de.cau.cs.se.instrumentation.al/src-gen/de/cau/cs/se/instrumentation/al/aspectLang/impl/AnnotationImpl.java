@@ -1,10 +1,10 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang.impl;
+package kieker.tools.al.aspectLang.impl;
 
-import de.cau.cs.se.instrumentation.al.aspectLang.Annotation;
-import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
-import de.cau.cs.se.instrumentation.al.aspectLang.Technology;
+import kieker.tools.al.aspectLang.Annotation;
+import kieker.tools.al.aspectLang.AspectLangPackage;
+import kieker.tools.al.aspectLang.Technology;
 
 import java.util.Collection;
 
@@ -27,8 +27,8 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AnnotationImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AnnotationImpl#getTechnologies <em>Technologies</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.AnnotationImpl#getName <em>Name</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.AnnotationImpl#getTechnologies <em>Technologies</em>}</li>
  * </ul>
  *
  * @generated

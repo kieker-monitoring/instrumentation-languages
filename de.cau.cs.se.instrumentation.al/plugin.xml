@@ -7,7 +7,7 @@
   <extension point="org.eclipse.emf.ecore.generated_package">
     <package 
        uri = "http://www.cau.de/cs/se/instrumentation/al/AspectLang" 
-       class = "de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage"
+       class = "kieker.tools.al.aspectLang.AspectLangPackage"
        genModel = "model/generated/AspectLang.genmodel" /> 
 	
   </extension>
@@ -16,7 +16,7 @@
       <!-- @generated ModelMapping -->
       <package
             uri="http://mappingmodel.tools.kieker/ial/mapping"
-            class="de.cau.cs.se.instrumentation.al.mapping.MappingPackage"
+            class="kieker.tools.al.mapping.MappingPackage"
             genModel="model/MappingModel.genmodel"/>
    </extension>
 

@@ -1,11 +1,11 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang.impl;
+package kieker.tools.al.aspectLang.impl;
 
-import de.cau.cs.se.instrumentation.al.aspectLang.Advice;
-import de.cau.cs.se.instrumentation.al.aspectLang.AdviceParameterDeclaration;
-import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
-import de.cau.cs.se.instrumentation.al.aspectLang.Collector;
+import kieker.tools.al.aspectLang.Advice;
+import kieker.tools.al.aspectLang.AdviceParameterDeclaration;
+import kieker.tools.al.aspectLang.AspectLangPackage;
+import kieker.tools.al.aspectLang.Collector;
 
 import java.util.Collection;
 
@@ -31,9 +31,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AdviceImpl#getName <em>Name</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AdviceImpl#getParameterDeclarations <em>Parameter Declarations</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.AdviceImpl#getCollectors <em>Collectors</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.AdviceImpl#getName <em>Name</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.AdviceImpl#getParameterDeclarations <em>Parameter Declarations</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.AdviceImpl#getCollectors <em>Collectors</em>}</li>
  * </ul>
  *
  * @generated

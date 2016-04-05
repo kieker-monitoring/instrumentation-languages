@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.al.generator
+package kieker.tools.al.generator
 
-import de.cau.cs.se.instrumentation.al.aspectLang.Aspect
-import de.cau.cs.se.instrumentation.al.aspectLang.Technology
-import de.cau.cs.se.instrumentation.al.generator.aspectj.AspectJPointcutGenerator
+import kieker.tools.al.aspectLang.Aspect
+import kieker.tools.al.aspectLang.Technology
+import kieker.tools.al.generator.aspectj.AspectJPointcutGenerator
 import java.util.ArrayList
 import java.util.Collection
 import java.util.HashMap
@@ -25,12 +25,12 @@ import java.util.Map
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
-import de.cau.cs.se.instrumentation.al.generator.aspectj.AspectJAdviceGenerator
-import de.cau.cs.se.instrumentation.al.generator.servlet.ServletAdviceGenerator
-import de.cau.cs.se.instrumentation.al.generator.javaee.JavaEEAdviceGenerator
-import de.cau.cs.se.instrumentation.al.generator.spring.SpringAdviceGenerator
+import kieker.tools.al.generator.aspectj.AspectJAdviceGenerator
+import kieker.tools.al.generator.servlet.ServletAdviceGenerator
+import kieker.tools.al.generator.javaee.JavaEEAdviceGenerator
+import kieker.tools.al.generator.spring.SpringAdviceGenerator
 import org.eclipse.core.runtime.Platform
-import de.cau.cs.se.instrumentation.al.modelhandling.IModelMapper
+import kieker.tools.al.modelhandling.IModelMapper
 import org.eclipse.core.runtime.CoreException
 import java.io.StringWriter
 import javax.xml.transform.dom.DOMSource
@@ -38,10 +38,10 @@ import javax.xml.transform.TransformerFactory
 import javax.xml.transform.OutputKeys
 import javax.xml.transform.stream.StreamResult
 import org.w3c.dom.Document
-import de.cau.cs.se.instrumentation.al.aspectLang.AspectModel
-import de.cau.cs.se.instrumentation.al.aspectLang.UtilizeAdvice
+import kieker.tools.al.aspectLang.AspectModel
+import kieker.tools.al.aspectLang.UtilizeAdvice
 import java.io.File
-import de.cau.cs.se.instrumentation.al.aspectLang.Advice
+import kieker.tools.al.aspectLang.Advice
 import java.util.List
 
 /**
@@ -51,7 +51,7 @@ import java.util.List
  */
 class AspectLangGenerator implements IGenerator {
 	
-	private static final String MODEL_MAPPER = "de.cau.cs.se.instrumentation.al.modelMapping"
+	private static final String MODEL_MAPPER = "kieker.tools.al.modelMapping"
 	
 	val Map<Technology,Collection<Aspect>> aspectTechnologyMap = new HashMap<Technology,Collection<Aspect>>()
 	

@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.al.modelhandling;
+package kieker.tools.al.modelhandling;
 
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import com.google.inject.Inject;
 
-import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel;
+import kieker.tools.al.aspectLang.ApplicationModel;
 
 /**
  * The type provider factory controls the type provider, which is created by this class.

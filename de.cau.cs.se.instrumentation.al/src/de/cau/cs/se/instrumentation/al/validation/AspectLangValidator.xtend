@@ -13,13 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.al.validation
+package kieker.tools.al.validation
 
 import org.eclipse.xtext.validation.Check
-import de.cau.cs.se.instrumentation.al.aspectLang.ApplicationModel
+import kieker.tools.al.aspectLang.ApplicationModel
 import org.eclipse.core.runtime.Platform
-import de.cau.cs.se.instrumentation.al.modelhandling.IModelMapper
-import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage
+import kieker.tools.al.modelhandling.IModelMapper
+import kieker.tools.al.aspectLang.AspectLangPackage
 import org.eclipse.core.runtime.CoreException
 
 /**
@@ -29,7 +29,7 @@ import org.eclipse.core.runtime.CoreException
  */
 class AspectLangValidator extends AbstractAspectLangValidator {
 	
-	private static final String MODEL_MAPPER = "de.cau.cs.se.instrumentation.al.modelMapping"
+	private static final String MODEL_MAPPER = "kieker.tools.al.modelMapping"
 
 	public static val INVALID_NAME = 'invalidName'
 

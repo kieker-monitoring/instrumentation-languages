@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.rl.cli;
+package kieker.tools.rl.cli;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
@@ -34,13 +34,13 @@ import com.google.inject.Injector;
 import kieker.common.logging.Log;
 import kieker.common.logging.LogFactory;
 
-import de.cau.cs.se.instrumentation.rl.RecordLangStandaloneSetup;
-import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator;
-import de.cau.cs.se.instrumentation.rl.generator.GeneratorConfiguration;
-import de.cau.cs.se.instrumentation.rl.generator.RecordLangGenerator;
-import de.cau.cs.se.instrumentation.rl.ouput.config.RecordLangOutputConfigurationProvider;
-import de.cau.cs.se.instrumentation.rl.preferences.TargetsPreferenceInitializer;
-import de.cau.cs.se.instrumentation.rl.preferences.TargetsPreferences;
+import kieker.tools.rl.RecordLangStandaloneSetup;
+import kieker.tools.rl.generator.AbstractRecordTypeGenerator;
+import kieker.tools.rl.generator.GeneratorConfiguration;
+import kieker.tools.rl.generator.RecordLangGenerator;
+import kieker.tools.rl.ouput.config.RecordLangOutputConfigurationProvider;
+import kieker.tools.rl.preferences.TargetsPreferenceInitializer;
+import kieker.tools.rl.preferences.TargetsPreferences;
 
 /**
  * Parser class.

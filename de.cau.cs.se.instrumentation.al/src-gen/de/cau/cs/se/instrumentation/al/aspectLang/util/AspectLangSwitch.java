@@ -1,8 +1,8 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang.util;
+package kieker.tools.al.aspectLang.util;
 
-import de.cau.cs.se.instrumentation.al.aspectLang.*;
+import kieker.tools.al.aspectLang.*;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.util.Switch;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage
+ * @see kieker.tools.al.aspectLang.AspectLangPackage
  * @generated
  */
 public class AspectLangSwitch<T> extends Switch<T>

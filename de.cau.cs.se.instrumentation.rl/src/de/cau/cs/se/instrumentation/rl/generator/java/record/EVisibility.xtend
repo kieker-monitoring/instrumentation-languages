@@ -1,4 +1,4 @@
-package de.cau.cs.se.instrumentation.rl.generator.java.record
+package kieker.tools.rl.generator.java.record
 
 enum EVisibility {
 	PUBLIC,

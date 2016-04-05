@@ -1,11 +1,11 @@
-package de.cau.cs.se.instrumentation.rl.generator.c.header;
+package kieker.tools.rl.generator.c.header;
 
-import de.cau.cs.se.instrumentation.rl.generator.c.CommonCFunctionsExtension;
-import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
-import de.cau.cs.se.instrumentation.rl.recordLang.Property;
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
-import de.cau.cs.se.instrumentation.rl.recordLang.Type;
-import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation;
+import kieker.tools.rl.generator.c.CommonCFunctionsExtension;
+import kieker.tools.rl.recordLang.Classifier;
+import kieker.tools.rl.recordLang.Property;
+import kieker.tools.rl.recordLang.RecordType;
+import kieker.tools.rl.recordLang.Type;
+import kieker.tools.rl.validation.PropertyEvaluation;
 import java.io.File;
 import java.util.Calendar;
 import java.util.List;
@@ -15,7 +15,7 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 
 @SuppressWarnings("all")
-public class RecordTypeGenerator extends de.cau.cs.se.instrumentation.rl.generator.c.main.RecordTypeGenerator {
+public class RecordTypeGenerator extends kieker.tools.rl.generator.c.main.RecordTypeGenerator {
   /**
    * Return the unique id.
    */

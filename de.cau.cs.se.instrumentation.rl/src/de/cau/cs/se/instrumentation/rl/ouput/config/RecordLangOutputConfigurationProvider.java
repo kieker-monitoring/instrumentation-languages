@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.rl.ouput.config;
+package kieker.tools.rl.ouput.config;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -21,7 +21,7 @@ import java.util.Set;
 import org.eclipse.xtext.generator.IOutputConfigurationProvider;
 import org.eclipse.xtext.generator.OutputConfiguration;
 
-import de.cau.cs.se.instrumentation.rl.generator.GeneratorConfiguration;
+import kieker.tools.rl.generator.GeneratorConfiguration;
 
 /**
  * Based on http://xtextcasts.org/episodes/15-output-configurations.

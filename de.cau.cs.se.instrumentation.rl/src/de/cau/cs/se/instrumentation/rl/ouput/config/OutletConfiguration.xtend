@@ -1,4 +1,4 @@
-package de.cau.cs.se.instrumentation.rl.ouput.config
+package kieker.tools.rl.ouput.config
 
 /**
  * Entity class for the outlet configuration.

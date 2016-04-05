@@ -1,11 +1,11 @@
 /**
  */
-package de.cau.cs.se.instrumentation.rl.recordLang.impl;
+package kieker.tools.rl.recordLang.impl;
 
-import de.cau.cs.se.instrumentation.rl.recordLang.ForeignKey;
-import de.cau.cs.se.instrumentation.rl.recordLang.Property;
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
+import kieker.tools.rl.recordLang.ForeignKey;
+import kieker.tools.rl.recordLang.Property;
+import kieker.tools.rl.recordLang.RecordLangPackage;
+import kieker.tools.rl.recordLang.RecordType;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -23,8 +23,8 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ForeignKeyImpl#getRecordType <em>Record Type</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ForeignKeyImpl#getPropertyRef <em>Property Ref</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.impl.ForeignKeyImpl#getRecordType <em>Record Type</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.impl.ForeignKeyImpl#getPropertyRef <em>Property Ref</em>}</li>
  * </ul>
  *
  * @generated

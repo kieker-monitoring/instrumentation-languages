@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang;
+package kieker.tools.al.aspectLang;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -13,12 +13,12 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery#getNode <em>Node</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery#getSpecialization <em>Specialization</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery#getComposition <em>Composition</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.LocationQuery#getNode <em>Node</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.LocationQuery#getSpecialization <em>Specialization</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.LocationQuery#getComposition <em>Composition</em>}</li>
  * </ul>
  *
- * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getLocationQuery()
+ * @see kieker.tools.al.aspectLang.AspectLangPackage#getLocationQuery()
  * @model
  * @generated
  */
@@ -34,14 +34,14 @@ public interface LocationQuery extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Node</em>' containment reference.
    * @see #setNode(Node)
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getLocationQuery_Node()
+   * @see kieker.tools.al.aspectLang.AspectLangPackage#getLocationQuery_Node()
    * @model containment="true"
    * @generated
    */
   Node getNode();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery#getNode <em>Node</em>}' containment reference.
+   * Sets the value of the '{@link kieker.tools.al.aspectLang.LocationQuery#getNode <em>Node</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Node</em>' containment reference.
@@ -60,14 +60,14 @@ public interface LocationQuery extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Specialization</em>' containment reference.
    * @see #setSpecialization(LocationQuery)
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getLocationQuery_Specialization()
+   * @see kieker.tools.al.aspectLang.AspectLangPackage#getLocationQuery_Specialization()
    * @model containment="true"
    * @generated
    */
   LocationQuery getSpecialization();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery#getSpecialization <em>Specialization</em>}' containment reference.
+   * Sets the value of the '{@link kieker.tools.al.aspectLang.LocationQuery#getSpecialization <em>Specialization</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Specialization</em>' containment reference.
@@ -86,14 +86,14 @@ public interface LocationQuery extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Composition</em>' containment reference.
    * @see #setComposition(CompositionQuery)
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getLocationQuery_Composition()
+   * @see kieker.tools.al.aspectLang.AspectLangPackage#getLocationQuery_Composition()
    * @model containment="true"
    * @generated
    */
   CompositionQuery getComposition();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery#getComposition <em>Composition</em>}' containment reference.
+   * Sets the value of the '{@link kieker.tools.al.aspectLang.LocationQuery#getComposition <em>Composition</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Composition</em>' containment reference.

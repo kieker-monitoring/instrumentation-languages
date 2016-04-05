@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang;
+package kieker.tools.al.aspectLang;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -13,10 +13,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Typeof#getReference <em>Reference</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.Typeof#getReference <em>Reference</em>}</li>
  * </ul>
  *
- * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getTypeof()
+ * @see kieker.tools.al.aspectLang.AspectLangPackage#getTypeof()
  * @model
  * @generated
  */
@@ -32,14 +32,14 @@ public interface Typeof extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Reference</em>' containment reference.
    * @see #setReference(TypeReference)
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getTypeof_Reference()
+   * @see kieker.tools.al.aspectLang.AspectLangPackage#getTypeof_Reference()
    * @model containment="true"
    * @generated
    */
   TypeReference getReference();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.Typeof#getReference <em>Reference</em>}' containment reference.
+   * Sets the value of the '{@link kieker.tools.al.aspectLang.Typeof#getReference <em>Reference</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Reference</em>' containment reference.

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package de.cau.cs.se.instrumentation.al.tests;
+package kieker.tools.al.tests;
 
 import org.junit.Assert;
 

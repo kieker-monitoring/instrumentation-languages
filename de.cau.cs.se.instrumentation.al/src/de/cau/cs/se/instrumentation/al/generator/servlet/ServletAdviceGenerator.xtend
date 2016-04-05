@@ -1,10 +1,10 @@
-package de.cau.cs.se.instrumentation.al.generator.servlet
+package kieker.tools.al.generator.servlet
 
 import de.cau.cs.se.geco.architecture.framework.IGenerator
-import de.cau.cs.se.instrumentation.al.aspectLang.Advice
+import kieker.tools.al.aspectLang.Advice
 
-import static extension de.cau.cs.se.instrumentation.al.generator.CommonJavaTemplates.*
-import de.cau.cs.se.instrumentation.al.aspectLang.InsertionPoint
+import static extension kieker.tools.al.generator.CommonJavaTemplates.*
+import kieker.tools.al.aspectLang.InsertionPoint
 
 class ServletAdviceGenerator implements IGenerator<Advice, CharSequence> {
 	

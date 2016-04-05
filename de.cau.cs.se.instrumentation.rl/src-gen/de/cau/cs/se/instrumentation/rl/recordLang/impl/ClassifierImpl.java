@@ -1,11 +1,11 @@
 /**
  */
-package de.cau.cs.se.instrumentation.rl.recordLang.impl;
+package kieker.tools.rl.recordLang.impl;
 
-import de.cau.cs.se.instrumentation.rl.recordLang.ArraySize;
-import de.cau.cs.se.instrumentation.rl.recordLang.BaseType;
-import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage;
+import kieker.tools.rl.recordLang.ArraySize;
+import kieker.tools.rl.recordLang.BaseType;
+import kieker.tools.rl.recordLang.Classifier;
+import kieker.tools.rl.recordLang.RecordLangPackage;
 
 import java.util.Collection;
 
@@ -31,8 +31,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ClassifierImpl#getType <em>Type</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.impl.ClassifierImpl#getSizes <em>Sizes</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.impl.ClassifierImpl#getType <em>Type</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.impl.ClassifierImpl#getSizes <em>Sizes</em>}</li>
  * </ul>
  *
  * @generated

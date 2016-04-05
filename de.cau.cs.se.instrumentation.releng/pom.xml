@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>de.cau.cs.se.instrumentation</groupId>
+	<groupId>kieker.tools</groupId>
 	<artifactId>parent</artifactId>
 	<version>1.2.0-SNAPSHOT</version>
 	<name>Instrumentation Languages Release Engineering</name>
@@ -28,17 +28,17 @@
 	</properties>
 
 	<modules>
-		<module>../de.cau.cs.se.instrumentation.al</module>
-		<module>../de.cau.cs.se.instrumentation.al.ui</module>
-		<module>../de.cau.cs.se.instrumentation.al.tests</module>
-		<module>../de.cau.cs.se.instrumentation.al.sdk</module>
-		<module>../de.cau.cs.se.instrumentation.al.handler.pcm</module>
-		<module>../de.cau.cs.se.instrumentation.rl</module>
-		<module>../de.cau.cs.se.instrumentation.rl.ui</module>
-		<module>../de.cau.cs.se.instrumentation.rl.tests</module>
-		<module>../de.cau.cs.se.instrumentation.rl.sdk</module>
-		<module>../de.cau.cs.se.instrumentation.updatesite</module>
-		<module>../de.cau.cs.se.instrumentation.rl.cli</module>
+		<module>../kieker.tools.al</module>
+		<module>../kieker.tools.al.ui</module>
+		<module>../kieker.tools.al.tests</module>
+		<module>../kieker.tools.al.sdk</module>
+		<module>../kieker.tools.al.handler.pcm</module>
+		<module>../kieker.tools.rl</module>
+		<module>../kieker.tools.rl.ui</module>
+		<module>../kieker.tools.rl.tests</module>
+		<module>../kieker.tools.rl.sdk</module>
+		<module>../kieker.tools.updatesite</module>
+		<module>../kieker.tools.rl.cli</module>
 	</modules>
 
 	<repositories>

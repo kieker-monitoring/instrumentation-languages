@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.rl.recordLang;
+package kieker.tools.rl.recordLang;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -13,7 +13,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Property Modifier</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getPropertyModifier()
+ * @see kieker.tools.rl.recordLang.RecordLangPackage#getPropertyModifier()
  * @model
  * @generated
  */

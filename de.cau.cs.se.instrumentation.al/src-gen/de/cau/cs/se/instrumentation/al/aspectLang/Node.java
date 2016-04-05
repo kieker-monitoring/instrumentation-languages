@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang;
+package kieker.tools.al.aspectLang;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -13,10 +13,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Node#getConstraint <em>Constraint</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.Node#getConstraint <em>Constraint</em>}</li>
  * </ul>
  *
- * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getNode()
+ * @see kieker.tools.al.aspectLang.AspectLangPackage#getNode()
  * @model
  * @generated
  */
@@ -32,14 +32,14 @@ public interface Node extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Constraint</em>' containment reference.
    * @see #setConstraint(PropertyConstraint)
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getNode_Constraint()
+   * @see kieker.tools.al.aspectLang.AspectLangPackage#getNode_Constraint()
    * @model containment="true"
    * @generated
    */
   PropertyConstraint getConstraint();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.Node#getConstraint <em>Constraint</em>}' containment reference.
+   * Sets the value of the '{@link kieker.tools.al.aspectLang.Node#getConstraint <em>Constraint</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Constraint</em>' containment reference.

@@ -1,25 +1,25 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.mapping.impl;
+package kieker.tools.al.mapping.impl;
 
-import de.cau.cs.se.instrumentation.al.mapping.Attribute;
-import de.cau.cs.se.instrumentation.al.mapping.CollectionType;
-import de.cau.cs.se.instrumentation.al.mapping.ContainerModifier;
-import de.cau.cs.se.instrumentation.al.mapping.Containment;
-import de.cau.cs.se.instrumentation.al.mapping.Feature;
-import de.cau.cs.se.instrumentation.al.mapping.MappingFactory;
-import de.cau.cs.se.instrumentation.al.mapping.MappingModel;
-import de.cau.cs.se.instrumentation.al.mapping.MappingPackage;
-import de.cau.cs.se.instrumentation.al.mapping.NamedElement;
-import de.cau.cs.se.instrumentation.al.mapping.NamedType;
-import de.cau.cs.se.instrumentation.al.mapping.Operation;
-import de.cau.cs.se.instrumentation.al.mapping.OperationModifier;
-import de.cau.cs.se.instrumentation.al.mapping.Parameter;
-import de.cau.cs.se.instrumentation.al.mapping.ParameterModifier;
-import de.cau.cs.se.instrumentation.al.mapping.Reference;
-import de.cau.cs.se.instrumentation.al.mapping.Traceability;
-import de.cau.cs.se.instrumentation.al.mapping.Type;
-import de.cau.cs.se.instrumentation.al.mapping.TypeReference;
+import kieker.tools.al.mapping.Attribute;
+import kieker.tools.al.mapping.CollectionType;
+import kieker.tools.al.mapping.ContainerModifier;
+import kieker.tools.al.mapping.Containment;
+import kieker.tools.al.mapping.Feature;
+import kieker.tools.al.mapping.MappingFactory;
+import kieker.tools.al.mapping.MappingModel;
+import kieker.tools.al.mapping.MappingPackage;
+import kieker.tools.al.mapping.NamedElement;
+import kieker.tools.al.mapping.NamedType;
+import kieker.tools.al.mapping.Operation;
+import kieker.tools.al.mapping.OperationModifier;
+import kieker.tools.al.mapping.Parameter;
+import kieker.tools.al.mapping.ParameterModifier;
+import kieker.tools.al.mapping.Reference;
+import kieker.tools.al.mapping.Traceability;
+import kieker.tools.al.mapping.Type;
+import kieker.tools.al.mapping.TypeReference;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -165,7 +165,7 @@ public class MappingPackageImpl extends EPackageImpl implements MappingPackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see de.cau.cs.se.instrumentation.al.mapping.MappingPackage#eNS_URI
+	 * @see kieker.tools.al.mapping.MappingPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
@@ -674,11 +674,11 @@ public class MappingPackageImpl extends EPackageImpl implements MappingPackage {
 		initEClass(typeReferenceEClass, TypeReference.class, "TypeReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTypeReference_Type(), this.getType(), null, "type", null, 1, 1, TypeReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(containerEClass, de.cau.cs.se.instrumentation.al.mapping.Container.class, "Container", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getContainer_Modifier(), this.getContainerModifier(), null, "modifier", null, 1, 1, de.cau.cs.se.instrumentation.al.mapping.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getContainer_Operations(), this.getOperation(), null, "operations", null, 0, -1, de.cau.cs.se.instrumentation.al.mapping.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getContainer_Attributes(), this.getAttribute(), null, "attributes", null, 0, -1, de.cau.cs.se.instrumentation.al.mapping.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getContainer_References(), this.getReference(), null, "references", null, 0, 1, de.cau.cs.se.instrumentation.al.mapping.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(containerEClass, kieker.tools.al.mapping.Container.class, "Container", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getContainer_Modifier(), this.getContainerModifier(), null, "modifier", null, 1, 1, kieker.tools.al.mapping.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getContainer_Operations(), this.getOperation(), null, "operations", null, 0, -1, kieker.tools.al.mapping.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getContainer_Attributes(), this.getAttribute(), null, "attributes", null, 0, -1, kieker.tools.al.mapping.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getContainer_References(), this.getReference(), null, "references", null, 0, 1, kieker.tools.al.mapping.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(operationEClass, Operation.class, "Operation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOperation_ReturnType(), this.getTypeReference(), null, "returnType", null, 1, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

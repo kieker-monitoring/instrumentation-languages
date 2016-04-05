@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang;
+package kieker.tools.al.aspectLang;
 
 import org.eclipse.emf.ecore.EFactory;
 
@@ -9,7 +9,7 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage
+ * @see kieker.tools.al.aspectLang.AspectLangPackage
  * @generated
  */
 public interface AspectLangFactory extends EFactory
@@ -20,7 +20,7 @@ public interface AspectLangFactory extends EFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  AspectLangFactory eINSTANCE = de.cau.cs.se.instrumentation.al.aspectLang.impl.AspectLangFactoryImpl.init();
+  AspectLangFactory eINSTANCE = kieker.tools.al.aspectLang.impl.AspectLangFactoryImpl.init();
 
   /**
    * Returns a new object of class '<em>Aspect Model</em>'.

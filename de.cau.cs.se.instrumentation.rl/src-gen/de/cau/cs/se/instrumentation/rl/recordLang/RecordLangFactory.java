@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.rl.recordLang;
+package kieker.tools.rl.recordLang;
 
 import org.eclipse.emf.ecore.EFactory;
 
@@ -9,7 +9,7 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage
+ * @see kieker.tools.rl.recordLang.RecordLangPackage
  * @generated
  */
 public interface RecordLangFactory extends EFactory
@@ -20,7 +20,7 @@ public interface RecordLangFactory extends EFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  RecordLangFactory eINSTANCE = de.cau.cs.se.instrumentation.rl.recordLang.impl.RecordLangFactoryImpl.init();
+  RecordLangFactory eINSTANCE = kieker.tools.rl.recordLang.impl.RecordLangFactoryImpl.init();
 
   /**
    * Returns a new object of class '<em>Model</em>'.

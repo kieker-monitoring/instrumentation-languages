@@ -1,12 +1,12 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang.impl;
+package kieker.tools.al.aspectLang.impl;
 
-import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
-import de.cau.cs.se.instrumentation.al.aspectLang.LocalQuery;
-import de.cau.cs.se.instrumentation.al.aspectLang.LocationQuery;
-import de.cau.cs.se.instrumentation.al.aspectLang.ModelProperty;
-import de.cau.cs.se.instrumentation.al.aspectLang.Typeof;
+import kieker.tools.al.aspectLang.AspectLangPackage;
+import kieker.tools.al.aspectLang.LocalQuery;
+import kieker.tools.al.aspectLang.LocationQuery;
+import kieker.tools.al.aspectLang.ModelProperty;
+import kieker.tools.al.aspectLang.Typeof;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -24,9 +24,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.LocalQueryImpl#getLocationQuery <em>Location Query</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.LocalQueryImpl#getProperty <em>Property</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.LocalQueryImpl#getTypeof <em>Typeof</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.LocalQueryImpl#getLocationQuery <em>Location Query</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.LocalQueryImpl#getProperty <em>Property</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.LocalQueryImpl#getTypeof <em>Typeof</em>}</li>
  * </ul>
  *
  * @generated

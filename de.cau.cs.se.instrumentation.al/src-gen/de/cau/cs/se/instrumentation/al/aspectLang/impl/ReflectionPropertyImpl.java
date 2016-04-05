@@ -1,10 +1,10 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang.impl;
+package kieker.tools.al.aspectLang.impl;
 
-import de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage;
-import de.cau.cs.se.instrumentation.al.aspectLang.ReflectionFunction;
-import de.cau.cs.se.instrumentation.al.aspectLang.ReflectionProperty;
+import kieker.tools.al.aspectLang.AspectLangPackage;
+import kieker.tools.al.aspectLang.ReflectionFunction;
+import kieker.tools.al.aspectLang.ReflectionProperty;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.impl.ReflectionPropertyImpl#getFunction <em>Function</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.impl.ReflectionPropertyImpl#getFunction <em>Function</em>}</li>
  * </ul>
  *
  * @generated

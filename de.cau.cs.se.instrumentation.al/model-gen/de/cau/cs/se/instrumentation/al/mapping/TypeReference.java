@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.mapping;
+package kieker.tools.al.mapping;
 
 
 /**
@@ -12,10 +12,10 @@ package de.cau.cs.se.instrumentation.al.mapping;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.mapping.TypeReference#getType <em>Type</em>}</li>
+ *   <li>{@link kieker.tools.al.mapping.TypeReference#getType <em>Type</em>}</li>
  * </ul>
  *
- * @see de.cau.cs.se.instrumentation.al.mapping.MappingPackage#getTypeReference()
+ * @see kieker.tools.al.mapping.MappingPackage#getTypeReference()
  * @model
  * @generated
  */
@@ -30,14 +30,14 @@ public interface TypeReference extends Traceability {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type</em>' reference.
 	 * @see #setType(Type)
-	 * @see de.cau.cs.se.instrumentation.al.mapping.MappingPackage#getTypeReference_Type()
+	 * @see kieker.tools.al.mapping.MappingPackage#getTypeReference_Type()
 	 * @model required="true"
 	 * @generated
 	 */
 	Type getType();
 
 	/**
-	 * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.mapping.TypeReference#getType <em>Type</em>}' reference.
+	 * Sets the value of the '{@link kieker.tools.al.mapping.TypeReference#getType <em>Type</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Type</em>' reference.

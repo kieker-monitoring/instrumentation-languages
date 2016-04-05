@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.rl.recordLang;
+package kieker.tools.rl.recordLang;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -13,10 +13,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.rl.recordLang.ArraySize#getSize <em>Size</em>}</li>
+ *   <li>{@link kieker.tools.rl.recordLang.ArraySize#getSize <em>Size</em>}</li>
  * </ul>
  *
- * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getArraySize()
+ * @see kieker.tools.rl.recordLang.RecordLangPackage#getArraySize()
  * @model
  * @generated
  */
@@ -32,14 +32,14 @@ public interface ArraySize extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Size</em>' attribute.
    * @see #setSize(int)
-   * @see de.cau.cs.se.instrumentation.rl.recordLang.RecordLangPackage#getArraySize_Size()
+   * @see kieker.tools.rl.recordLang.RecordLangPackage#getArraySize_Size()
    * @model
    * @generated
    */
   int getSize();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.rl.recordLang.ArraySize#getSize <em>Size</em>}' attribute.
+   * Sets the value of the '{@link kieker.tools.rl.recordLang.ArraySize#getSize <em>Size</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Size</em>' attribute.

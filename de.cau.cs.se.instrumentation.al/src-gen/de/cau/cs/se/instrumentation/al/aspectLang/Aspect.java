@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang;
+package kieker.tools.al.aspectLang;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -15,11 +15,11 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Aspect#getPointcut <em>Pointcut</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.aspectLang.Aspect#getAdvices <em>Advices</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.Aspect#getPointcut <em>Pointcut</em>}</li>
+ *   <li>{@link kieker.tools.al.aspectLang.Aspect#getAdvices <em>Advices</em>}</li>
  * </ul>
  *
- * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getAspect()
+ * @see kieker.tools.al.aspectLang.AspectLangPackage#getAspect()
  * @model
  * @generated
  */
@@ -35,14 +35,14 @@ public interface Aspect extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Pointcut</em>' reference.
    * @see #setPointcut(Pointcut)
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getAspect_Pointcut()
+   * @see kieker.tools.al.aspectLang.AspectLangPackage#getAspect_Pointcut()
    * @model
    * @generated
    */
   Pointcut getPointcut();
 
   /**
-   * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.aspectLang.Aspect#getPointcut <em>Pointcut</em>}' reference.
+   * Sets the value of the '{@link kieker.tools.al.aspectLang.Aspect#getPointcut <em>Pointcut</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Pointcut</em>' reference.
@@ -53,7 +53,7 @@ public interface Aspect extends EObject
 
   /**
    * Returns the value of the '<em><b>Advices</b></em>' containment reference list.
-   * The list contents are of type {@link de.cau.cs.se.instrumentation.al.aspectLang.UtilizeAdvice}.
+   * The list contents are of type {@link kieker.tools.al.aspectLang.UtilizeAdvice}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Advices</em>' containment reference list isn't clear,
@@ -61,7 +61,7 @@ public interface Aspect extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Advices</em>' containment reference list.
-   * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getAspect_Advices()
+   * @see kieker.tools.al.aspectLang.AspectLangPackage#getAspect_Advices()
    * @model containment="true"
    * @generated
    */

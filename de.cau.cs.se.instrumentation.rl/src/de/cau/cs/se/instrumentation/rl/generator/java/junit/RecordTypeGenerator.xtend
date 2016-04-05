@@ -1,23 +1,23 @@
-package de.cau.cs.se.instrumentation.rl.generator.java.junit
+package kieker.tools.rl.generator.java.junit
 
-import de.cau.cs.se.instrumentation.rl.generator.AbstractRecordTypeGenerator
-import de.cau.cs.se.instrumentation.rl.recordLang.ConstantLiteral
-import de.cau.cs.se.instrumentation.rl.recordLang.FloatLiteral
-import de.cau.cs.se.instrumentation.rl.recordLang.IntLiteral
-import de.cau.cs.se.instrumentation.rl.recordLang.Literal
-import de.cau.cs.se.instrumentation.rl.recordLang.Model
-import de.cau.cs.se.instrumentation.rl.recordLang.Property
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordType
-import de.cau.cs.se.instrumentation.rl.recordLang.StringLiteral
-import de.cau.cs.se.instrumentation.rl.recordLang.Type
-import de.cau.cs.se.instrumentation.rl.validation.PropertyEvaluation
+import kieker.tools.rl.generator.AbstractRecordTypeGenerator
+import kieker.tools.rl.recordLang.ConstantLiteral
+import kieker.tools.rl.recordLang.FloatLiteral
+import kieker.tools.rl.recordLang.IntLiteral
+import kieker.tools.rl.recordLang.Literal
+import kieker.tools.rl.recordLang.Model
+import kieker.tools.rl.recordLang.Property
+import kieker.tools.rl.recordLang.RecordType
+import kieker.tools.rl.recordLang.StringLiteral
+import kieker.tools.rl.recordLang.Type
+import kieker.tools.rl.validation.PropertyEvaluation
 import java.io.File
 import java.util.ArrayList
 import java.util.Calendar
 import java.util.Collection
 import java.util.List
 
-import static extension de.cau.cs.se.instrumentation.rl.generator.java.IRL2JavaTypeMappingExtensions.*
+import static extension kieker.tools.rl.generator.java.IRL2JavaTypeMappingExtensions.*
 
 class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	

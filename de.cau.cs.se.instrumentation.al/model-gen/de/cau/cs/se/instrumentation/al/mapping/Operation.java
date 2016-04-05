@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.mapping;
+package kieker.tools.al.mapping;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -13,12 +13,12 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link de.cau.cs.se.instrumentation.al.mapping.Operation#getReturnType <em>Return Type</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.mapping.Operation#getParameters <em>Parameters</em>}</li>
- *   <li>{@link de.cau.cs.se.instrumentation.al.mapping.Operation#getModifier <em>Modifier</em>}</li>
+ *   <li>{@link kieker.tools.al.mapping.Operation#getReturnType <em>Return Type</em>}</li>
+ *   <li>{@link kieker.tools.al.mapping.Operation#getParameters <em>Parameters</em>}</li>
+ *   <li>{@link kieker.tools.al.mapping.Operation#getModifier <em>Modifier</em>}</li>
  * </ul>
  *
- * @see de.cau.cs.se.instrumentation.al.mapping.MappingPackage#getOperation()
+ * @see kieker.tools.al.mapping.MappingPackage#getOperation()
  * @model
  * @generated
  */
@@ -33,14 +33,14 @@ public interface Operation extends NamedElement, Traceability {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Return Type</em>' containment reference.
 	 * @see #setReturnType(TypeReference)
-	 * @see de.cau.cs.se.instrumentation.al.mapping.MappingPackage#getOperation_ReturnType()
+	 * @see kieker.tools.al.mapping.MappingPackage#getOperation_ReturnType()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	TypeReference getReturnType();
 
 	/**
-	 * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.mapping.Operation#getReturnType <em>Return Type</em>}' containment reference.
+	 * Sets the value of the '{@link kieker.tools.al.mapping.Operation#getReturnType <em>Return Type</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Return Type</em>' containment reference.
@@ -51,7 +51,7 @@ public interface Operation extends NamedElement, Traceability {
 
 	/**
 	 * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
-	 * The list contents are of type {@link de.cau.cs.se.instrumentation.al.mapping.Parameter}.
+	 * The list contents are of type {@link kieker.tools.al.mapping.Parameter}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Parameters</em>' containment reference list isn't clear,
@@ -59,7 +59,7 @@ public interface Operation extends NamedElement, Traceability {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Parameters</em>' containment reference list.
-	 * @see de.cau.cs.se.instrumentation.al.mapping.MappingPackage#getOperation_Parameters()
+	 * @see kieker.tools.al.mapping.MappingPackage#getOperation_Parameters()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -75,14 +75,14 @@ public interface Operation extends NamedElement, Traceability {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Modifier</em>' reference.
 	 * @see #setModifier(OperationModifier)
-	 * @see de.cau.cs.se.instrumentation.al.mapping.MappingPackage#getOperation_Modifier()
+	 * @see kieker.tools.al.mapping.MappingPackage#getOperation_Modifier()
 	 * @model required="true"
 	 * @generated
 	 */
 	OperationModifier getModifier();
 
 	/**
-	 * Sets the value of the '{@link de.cau.cs.se.instrumentation.al.mapping.Operation#getModifier <em>Modifier</em>}' reference.
+	 * Sets the value of the '{@link kieker.tools.al.mapping.Operation#getModifier <em>Modifier</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Modifier</em>' reference.

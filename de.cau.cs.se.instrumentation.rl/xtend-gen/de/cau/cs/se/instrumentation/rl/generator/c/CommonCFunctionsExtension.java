@@ -1,10 +1,10 @@
-package de.cau.cs.se.instrumentation.rl.generator.c;
+package kieker.tools.rl.generator.c;
 
-import de.cau.cs.se.instrumentation.rl.generator.InternalErrorException;
-import de.cau.cs.se.instrumentation.rl.recordLang.BaseType;
-import de.cau.cs.se.instrumentation.rl.recordLang.Classifier;
-import de.cau.cs.se.instrumentation.rl.recordLang.Model;
-import de.cau.cs.se.instrumentation.rl.recordLang.RecordType;
+import kieker.tools.rl.generator.InternalErrorException;
+import kieker.tools.rl.recordLang.BaseType;
+import kieker.tools.rl.recordLang.Classifier;
+import kieker.tools.rl.recordLang.Model;
+import kieker.tools.rl.recordLang.RecordType;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.eclipse.emf.ecore.EObject;

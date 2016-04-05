@@ -1,6 +1,6 @@
 /**
  */
-package de.cau.cs.se.instrumentation.al.aspectLang;
+package kieker.tools.al.aspectLang;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- end-user-doc -->
  *
  *
- * @see de.cau.cs.se.instrumentation.al.aspectLang.AspectLangPackage#getValue()
+ * @see kieker.tools.al.aspectLang.AspectLangPackage#getValue()
  * @model
  * @generated
  */
