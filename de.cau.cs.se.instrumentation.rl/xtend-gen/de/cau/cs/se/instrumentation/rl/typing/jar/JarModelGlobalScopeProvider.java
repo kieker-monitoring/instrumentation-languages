@@ -39,6 +39,7 @@ import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 
 @SuppressWarnings("all")
 public class JarModelGlobalScopeProvider extends BaseTypeGlobalScopeProvider {
@@ -61,20 +62,30 @@ public class JarModelGlobalScopeProvider extends BaseTypeGlobalScopeProvider {
         boolean _notEquals = (!Objects.equal(resource, null));
         if (_notEquals) {
           final ResourceSet resourceSet = resource.getResourceSet();
-          IWorkspace _workspace = ResourcesPlugin.getWorkspace();
-          final IWorkspaceRoot root = _workspace.getRoot();
-          URI _uRI = resource.getURI();
-          String _string = _uRI.toString();
-          final String uri = _string.replaceFirst("platform:/resource", "");
-          Path _path = new Path(uri);
-          IFile _file = root.getFile(_path);
-          final IProject project = _file.getProject();
-          boolean _notEquals_1 = (!Objects.equal(resourceSet, null));
-          if (_notEquals_1) {
-            final ITypeProvider typeProvider = JarModelTypeProviderFactory.getTypeProvider(project, resourceSet);
-            return new JarModelTypeScope(typeProvider, this.qualifiedNameConverter, filter);
-          } else {
-            throw new IllegalStateException("context must be contained in a resource set");
+          try {
+            final IWorkspace workspace = ResourcesPlugin.getWorkspace();
+            final IWorkspaceRoot root = workspace.getRoot();
+            URI _uRI = resource.getURI();
+            String _string = _uRI.toString();
+            final String uri = _string.replaceFirst("platform:/resource", "");
+            Path _path = new Path(uri);
+            IFile _file = root.getFile(_path);
+            final IProject project = _file.getProject();
+            boolean _notEquals_1 = (!Objects.equal(resourceSet, null));
+            if (_notEquals_1) {
+              final ITypeProvider typeProvider = JarModelTypeProviderFactory.getTypeProvider(project, resourceSet);
+              return new JarModelTypeScope(typeProvider, this.qualifiedNameConverter, filter);
+            } else {
+              throw new IllegalStateException("context must be contained in a resource set");
+            }
+          } catch (final Throwable _t) {
+            if (_t instanceof IllegalStateException) {
+              final IllegalStateException e = (IllegalStateException)_t;
+              System.out.println("No workspace present");
+              return IScope.NULLSCOPE;
+            } else {
+              throw Exceptions.sneakyThrow(_t);
+            }
           }
         } else {
           throw new IllegalStateException("context must be contained in a resource");

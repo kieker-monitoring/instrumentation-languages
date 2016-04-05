@@ -47,15 +47,22 @@ class JarModelGlobalScopeProvider extends BaseTypeGlobalScopeProvider {
         } else {
         	if (resource != null) {
         		val ResourceSet resourceSet = resource.getResourceSet()
-        		val root = ResourcesPlugin.getWorkspace().getRoot()
-        		val uri = resource.URI.toString.replaceFirst("platform:/resource", "") 
-        		val project = root.getFile(new Path(uri)).project
-    
-    			if (resourceSet != null) {
-        			val ITypeProvider typeProvider = JarModelTypeProviderFactory.getTypeProvider(project, resourceSet)
-					return new JarModelTypeScope(typeProvider, qualifiedNameConverter, filter)
-				} else
-    				throw new IllegalStateException("context must be contained in a resource set") 
+        		try {
+        			val workspace = ResourcesPlugin.getWorkspace()
+        			val root = workspace.getRoot()
+	        		val uri = resource.URI.toString.replaceFirst("platform:/resource", "") 
+	        		val project = root.getFile(new Path(uri)).project
+	    
+	    			if (resourceSet != null) {
+	        			val ITypeProvider typeProvider = JarModelTypeProviderFactory.getTypeProvider(project, resourceSet)
+						return new JarModelTypeScope(typeProvider, qualifiedNameConverter, filter)
+					} else
+	    				throw new IllegalStateException("context must be contained in a resource set") 
+	        		
+        		} catch (java.lang.IllegalStateException e) {
+        			System.out.println("No workspace present")
+        			return IScope.NULLSCOPE
+        		}
         	} else
     			throw new IllegalStateException("context must be contained in a resource") 
         	
