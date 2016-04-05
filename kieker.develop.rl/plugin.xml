@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<plugin>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.cau.de/cs/se/instrumentation/rl/RecordLang" 
+       class = "kieker.develop.rl.recordLang.RecordLangPackage"
+       genModel = "model/generated/RecordLang.genmodel" /> 
+	
+  </extension>
+  <extension
+        point="org.eclipse.core.runtime.preferences">
+     <initializer
+           class="kieker.develop.rl.preferences.TargetsPreferenceInitializer">
+     </initializer>
+  </extension>
+
+
+
+</plugin>

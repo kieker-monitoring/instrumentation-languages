@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/kieker.develop.al/src-gen" editDirectory="/kieker.develop.al.edit/src"
+    editorDirectory="/kieker.develop.al.editor/src" modelPluginID="kieker.develop.al"
+    forceOverwrite="true" modelName="AspectLang" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="kieker.develop.al.edit"
+    editorPluginID="kieker.develop.al.editor" runtimeVersion="2.9" usedGenPackages="../ModelStructure.genmodel#//structure platform:/resource/kieker.develop.rl/src-gen/de/cau/cs/se/instrumentation/rl/RecordLang.genmodel#//recordLang platform:/resource/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore platform:/resource/de.cau.cs.kieler.core.annotations/model/annotations.genmodel#//annotations platform:/resource/de.cau.cs.kieler.core.annotations/annotations.genmodel#//annotations platform:/resource/kieker.develop.rl/model/generated/RecordLang.genmodel#//recordLang ../MappingModel.genmodel#//mapping">
+  <genPackages prefix="AspectLang" basePackage="kieker.develop.al" disposableProviderFactory="true"
+      fileExtensions="ial" ecorePackage="AspectLang.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="AspectLang.ecore#//InsertionPoint">
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//InsertionPoint/BEFORE"/>
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//InsertionPoint/AFTER"/>
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//InsertionPoint/AFTER_EXCEPTION"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="AspectLang.ecore#//InternalFunction">
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//InternalFunction/TIME"/>
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//InternalFunction/TRACE_ID"/>
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//InternalFunction/ORDER_INDEX"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="AspectLang.ecore#//ReflectionFunction">
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//ReflectionFunction/NAME"/>
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//ReflectionFunction/SIGNATURE"/>
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//ReflectionFunction/CLASS"/>
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//ReflectionFunction/RETURN_TYPE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="AspectLang.ecore#//Technology">
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//Technology/JAVA_EE"/>
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//Technology/SERVLET"/>
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//Technology/SPRING"/>
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//Technology/ASPECT_J"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="AspectLang.ecore#//QueryModifier">
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//QueryModifier/INCLUDE"/>
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//QueryModifier/EXCLUDE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="AspectLang.ecore#//LogicOperator">
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//LogicOperator/AND"/>
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//LogicOperator/OR"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="AspectLang.ecore#//CompareOperator">
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//CompareOperator/EQ"/>
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//CompareOperator/LIKE"/>
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//CompareOperator/NE"/>
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//CompareOperator/GR"/>
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//CompareOperator/LW"/>
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//CompareOperator/GE"/>
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//CompareOperator/LE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="AspectLang.ecore#//Operator">
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//Operator/EQ"/>
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//Operator/LIKE"/>
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//Operator/NE"/>
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//Operator/GR"/>
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//Operator/LW"/>
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//Operator/GE"/>
+      <genEnumLiterals ecoreEnumLiteral="AspectLang.ecore#//Operator/LE"/>
+    </genEnums>
+    <genClasses ecoreClass="AspectLang.ecore#//AspectModel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//AspectModel/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//AspectModel/imports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//AspectModel/sources"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//AspectModel/advices"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//AspectModel/pointcuts"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//AspectModel/aspects"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//Import">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//Import/importedNamespace"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//ApplicationModel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//ApplicationModel/handler"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//ApplicationModel/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//ApplicationModel/model"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AspectLang.ecore#//ApplicationModel/usePackages"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//Aspect">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Aspect/pointcut"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Aspect/advices"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Aspect/query"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Aspect/applyProbes"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Aspect/probes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Aspect/annotation"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Aspect/probe"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Aspect/collectors"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//UtilizeAdvice">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AspectLang.ecore#//UtilizeAdvice/advice"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//UtilizeAdvice/parameterAssignments"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//Advice">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//Advice/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Advice/parameterDeclarations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Advice/collectors"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//AdviceParameterDeclaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference AspectLang.ecore#//AdviceParameterDeclaration/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//AdviceParameterDeclaration/name"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//Collector">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//Collector/insertionPoint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Collector/events"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Collector/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Collector/initializations"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//Event">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Event/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Event/initializations"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//Value"/>
+    <genClasses ecoreClass="AspectLang.ecore#//ReferenceValue">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//ReferenceValue/query"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//ReferenceValue/property"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//ReferenceValue/parameter"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//Property"/>
+    <genClasses ecoreClass="AspectLang.ecore#//InternalFunctionProperty">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//InternalFunctionProperty/function"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//ReflectionProperty">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//ReflectionProperty/function"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//RuntimeProperty">
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference AspectLang.ecore#//RuntimeProperty/reference"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//AdviceParameter">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AspectLang.ecore#//AdviceParameter/declaration"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//AdviceParameter/collection"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//Pointcut">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Pointcut/annotation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//Pointcut/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Pointcut/model"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Pointcut/location"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Pointcut/operation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Pointcut/method"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//Annotation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//Annotation/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//Annotation/technologies"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//Annotation/value"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//LocationQuery">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//LocationQuery/node"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//LocationQuery/specialization"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//LocationQuery/composition"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//CompositionQuery">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//CompositionQuery/modifier"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//CompositionQuery/subQueries"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//OperationQuery">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AspectLang.ecore#//OperationQuery/modifier"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AspectLang.ecore#//OperationQuery/returnType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AspectLang.ecore#//OperationQuery/operationReference"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//OperationQuery/parameterQueries"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//ParameterQuery">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AspectLang.ecore#//ParameterQuery/modifier"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AspectLang.ecore#//ParameterQuery/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AspectLang.ecore#//ParameterQuery/parameter"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//Node">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Node/constraint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Node/costraint"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Node/parameter"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//ContainerNode">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AspectLang.ecore#//ContainerNode/container"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//WildcardNode"/>
+    <genClasses ecoreClass="AspectLang.ecore#//SubPathNode"/>
+    <genClasses ecoreClass="AspectLang.ecore#//ParentNode"/>
+    <genClasses ecoreClass="AspectLang.ecore#//PropertyConstraint">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//PropertyConstraint/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//PropertyConstraint/logic"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//PropertyConstraint/right"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//PropertyConstraint/query"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//PropertyConstraintCompare">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//PropertyConstraintCompare/compare"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//ConstraintElement"/>
+    <genClasses ecoreClass="AspectLang.ecore#//LocalQuery">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//LocalQuery/locationQuery"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//LocalQuery/property"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//LocalQuery/typeof"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//ModelProperty">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AspectLang.ecore#//ModelProperty/reference"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//Typeof">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Typeof/reference"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//Literal"/>
+    <genClasses ecoreClass="AspectLang.ecore#//FloatLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//FloatLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//IntLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//IntLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//StringLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//StringLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//TypeReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AspectLang.ecore#//TypeReference/context"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AspectLang.ecore#//TypeReference/reference"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//TypeReference/collection"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//PropertyConstraintExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//PropertyConstraintExpression/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//PropertyConstraintExpression/logic"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//PropertyConstraintExpression/right"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//PropertyConstraintExpression/compare"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//FloatValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//FloatValue/value"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//IntValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//IntValue/value"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//StringValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//StringValue/value"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//Parameter"/>
+    <genClasses ecoreClass="AspectLang.ecore#//ParameterExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//ParameterExpression/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//ParameterExpression/logic"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//ParameterExpression/right"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//ParameterExpression/compare"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//ParameterConstraint">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//ParameterConstraint/queries"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//MethodQuery">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AspectLang.ecore#//MethodQuery/modifier"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AspectLang.ecore#//MethodQuery/returnType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AspectLang.ecore#//MethodQuery/methodReference"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//MethodQuery/parameterQueries"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//MethodQuery/parameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//MethodQuery/parameter"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AspectLang.ecore#//MethodQuery/method"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//ParameterDeclaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//ParameterDeclaration/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//ParameterDeclaration/name"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//ParamQuery">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//ParamQuery/queries"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//ParamExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//ParamExpression/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//ParamExpression/logic"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//ParamExpression/right"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//ParamExpression/operator"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//Model">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//Model/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Model/imports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Model/sources"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Model/advices"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Model/pointcuts"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Model/aspects"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Model/metamodels"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Model/probes"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//ParamOperator">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//ParamOperator/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//ParamOperator/logic"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//ParamOperator/right"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//ParamCompare">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//ParamCompare/operator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//ParamLogicalOperator/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//ParamCompare/right"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//ParamLogicalOperator">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//ParamLogicalOperator/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//ParamLogicalOperator/logic"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//ParamLogicalOperator/right"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//ParamLogicalOperator/operator"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//RegisteredPackage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//RegisteredPackage/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AspectLang.ecore#//RegisteredPackage/ePackage"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//UtilizeProbe">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AspectLang.ecore#//UtilizeProbe/probe"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//UtilizeProbe/parameterAssignments"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//UtilizeProbe/parameters"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//ParameterPattern">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AspectLang.ecore#//ParameterPattern/modifier"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AspectLang.ecore#//ParameterPattern/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AspectLang.ecore#//ParameterPattern/parameter"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//Probe">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//Probe/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Probe/parameterDeclarations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Probe/collectors"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//Query">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Query/location"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Query/method"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Query/modifier"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Query/returnType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference AspectLang.ecore#//Query/parameter"/>
+    </genClasses>
+    <genClasses ecoreClass="AspectLang.ecore#//InternalFunctionValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute AspectLang.ecore#//InternalFunctionValue/function"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

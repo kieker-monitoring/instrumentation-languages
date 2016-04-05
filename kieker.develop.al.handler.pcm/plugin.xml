@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         id="kieker.develop.al.handler.pcm.ModelMapper"
+         name="PCM Model Mapper"
+         point="kieker.develop.al.modelMapping">
+      <mapper
+            class="kieker.develop.al.handler.pcm.PCMModelMapper">
+      </mapper>
+   </extension>
+
+</plugin>

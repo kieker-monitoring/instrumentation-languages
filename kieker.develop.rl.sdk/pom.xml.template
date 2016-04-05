@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <relativePath>../kieker.develop.releng/pom.xml</relativePath>
+    <groupId>kieker.develop</groupId>
+    <artifactId>parent</artifactId>
+    <version>#VERSION#</version>
+  </parent>
+
+  <artifactId>kieker.develop.rl.sdk</artifactId>
+  <packaging>eclipse-feature</packaging>
+
+  <name>Instrumentation Record Language Feature</name>
+</project>

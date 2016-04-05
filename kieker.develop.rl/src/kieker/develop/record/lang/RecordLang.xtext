@@ -1,0 +1,131 @@
+grammar kieker.develop.rl.RecordLang with org.eclipse.xtext.common.Terminals
+
+generate recordLang "http://www.cau.de/cs/se/instrumentation/rl/RecordLang"
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+Model:
+	'package' name = QualifiedName
+	(imports += Import)*
+	(types += ComplexType)*
+;
+
+Import:
+	'import' importedNamespace = QualifiedNameWithWildcard
+;
+
+/** the following two rules are used to create metamodel classes for the base type */
+Type:
+	ComplexType | BaseType
+;
+
+BaseType:
+	name=ID
+;
+
+ComplexType:
+	RecordType | TemplateType 
+;
+
+TemplateType:
+	('@author' author=STRING)?
+	('@since' since=STRING)?
+	'template' name=ID (':' parents+=[TemplateType|QualifiedName] (',' parents+=[TemplateType|QualifiedName])*)? 
+	('{'
+		(properties+=Property | constants+=Constant)*
+	'}')?
+;
+
+RecordType:
+	('@author' author=STRING)?
+	('@since' since=STRING)?
+	(abstract?='abstract')? 'entity' name=ID 
+	('extends' parent=[RecordType|QualifiedName])?
+	(':' parents+=[TemplateType|QualifiedName] (',' parents+=[TemplateType|QualifiedName])*)?  
+	('{'
+		(properties+=Property | constants+=Constant)*
+	'}')?
+;
+
+Constant:
+	'const' type=Classifier name=ID '=' value=Literal
+;
+
+Property:
+	(modifiers+=PropertyModifier)* (foreignKey=ForeignKey)? 
+	(type=Classifier | 'alias' referTo=[Property|ID] 'as') name=ID 
+	('=' value=Literal)?
+;
+
+ForeignKey:
+	'grouped' 'by' recordType=[RecordType|ID] '.' propertyRef=[Property|ID]
+;
+
+enum PropertyModifier:
+	TRANSIENT = 'transient' |
+	INCREMENT = 'auto-increment'
+;
+
+Classifier:
+	type=[BaseType|ID] (sizes+=ArraySize)*
+;
+
+ArraySize: {ArraySize}
+	'[' (size=INT)? ']' 
+;
+
+Literal:
+	StringLiteral | IntLiteral | FloatLiteral | BooleanLiteral | ConstantLiteral | ArrayLiteral | BuiltInValueLiteral
+;
+
+ArrayLiteral:
+	'{' literals+=Literal (',' literals+=Literal)* '}'
+;
+
+StringLiteral:
+	value=STRING
+;
+
+IntLiteral:
+	value=INT
+;
+
+FloatLiteral:
+	value=FLOAT
+;
+
+BooleanLiteral: 
+	value=BOOLEAN
+;
+
+ConstantLiteral:
+	value=[Constant|ID]
+;
+
+BuiltInValueLiteral: {BuiltInValueLiteral}
+	value='KIEKER_VERSION'
+;
+
+QualifiedName:
+  ID (=>'.' ID)*;
+
+QualifiedNameWithWildcard:
+	QualifiedName ('.' '*')?
+;
+
+// terminals
+terminal fragment NUMBER :
+    '0'..'9';
+   
+// redefine INT terminal to allow negative numbers
+terminal INT returns ecore::EInt:
+    '-'? NUMBER+;
+
+// make sure the Float rule does not shadow the INT rule
+terminal FLOAT returns ecore::EFloatObject :
+    '-'? NUMBER+ ('.' NUMBER*) (("e"|"E") ("+"|"-")? NUMBER+)? 'f'? |
+    '-'? NUMBER+ 'f';
+    
+// introduce boolean values
+terminal BOOLEAN returns ecore::EBooleanObject :
+    'true' | 'false';
