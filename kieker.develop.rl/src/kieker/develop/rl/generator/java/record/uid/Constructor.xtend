@@ -1,4 +1,4 @@
-package kieker.develop.rl.generator.java.record
+package kieker.develop.rl.generator.java.record.uid
 
 import kieker.develop.rl.recordLang.Classifier
 

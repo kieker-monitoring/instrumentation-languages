@@ -37,4 +37,8 @@ public enum BaseTypes {
 	public BaseType getType() {
 		return this.type;
 	}
+
+	public String getTypeName() {
+		return this.type.getName();
+	}
 }
