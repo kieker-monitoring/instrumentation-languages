@@ -6,5 +6,5 @@
    <feature url="features/kieker.develop.rl.sdk_1.2.0.qualifier.jar" id="kieker.develop.rl.sdk" version="1.2.0.qualifier">
       <category name="kieker.develop"/>
    </feature>
-   <category-def name="kieker.develop" label="Instrumentation Languages"/>
+   <category-def name="kieker.develop" label="Kieker Development Tools"/>
 </site>

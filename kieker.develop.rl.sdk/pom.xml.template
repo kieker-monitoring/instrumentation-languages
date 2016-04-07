@@ -12,5 +12,5 @@
   <artifactId>kieker.develop.rl.sdk</artifactId>
   <packaging>eclipse-feature</packaging>
 
-  <name>Instrumentation Record Language Feature</name>
+  <name>Kieker Record Language Feature</name>
 </project>

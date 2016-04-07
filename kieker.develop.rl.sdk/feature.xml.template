@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="kieker.develop.rl.sdk"
-      label="Kieker IRL SDK Feature"
+      label="Kieker IRL Feature"
       version="#VERSION#"
       provider-name="Software Engineering Group, Kiel University">
 

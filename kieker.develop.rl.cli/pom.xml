@@ -4,7 +4,7 @@
 	<groupId>kieker.develop.rl.cli</groupId>
 	<artifactId>kieker.develop.rl.cli</artifactId>
 	<version>1.2.0-SNAPSHOT</version>
-	<name>Instrumentation Record Language Compiler</name>
+	<name>Kieker Record Language CLI Compiler</name>
 	<description>Code generator for Kieker's Instrumentation Record Language</description>
 
 	<properties>

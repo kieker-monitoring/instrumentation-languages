@@ -12,7 +12,7 @@
 	<artifactId>kieker.develop.rl.tests</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
 
-	<name>Instrumentation Record Language Tests</name>
+	<name>Kieker Record Language Tests</name>
 
 	<build>
 		<plugins>

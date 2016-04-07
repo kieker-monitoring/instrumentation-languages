@@ -13,5 +13,5 @@
 	<artifactId>kieker.develop.rl</artifactId>
 	<packaging>eclipse-plugin</packaging>
 
-	<name>Instrumentation Record Language Core Services</name>
+	<name>Kieker Record Language Core Services</name>
 </project>

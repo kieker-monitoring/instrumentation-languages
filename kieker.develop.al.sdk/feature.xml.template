@@ -10,6 +10,13 @@
          install-size="0"
          version="#VERSION#"
          unpack="false"/>
+         
+   <plugin
+         id="kieker.develop.al.handler.pcm"
+         download-size="0"
+         install-size="0"
+         version="#VERSION#"
+         unpack="false"/>
 
    <plugin
          id="kieker.develop.al.ui"

@@ -13,5 +13,5 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
   <artifactId>kieker.develop.rl.ui</artifactId>
   <packaging>eclipse-plugin</packaging>
 
-  <name>Instrumentation Record Language User Interface</name>
+  <name>Kieker Record Language User Interface</name>
 </project>
