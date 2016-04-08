@@ -12,12 +12,12 @@
 	<artifactId>kieker.develop.updatesite</artifactId>
 	<packaging>eclipse-repository</packaging>
 
-	<name>Kieker Developer Tools Update Site</name>
+	<name>Kieker Development Tools - Update Site</name>
 
 	<properties>
 		<!-- Relative path to the repo being uploaded -->
 		<repo.path>${project.build.directory}/repository/</repo.path>
-		<updatesite.url>file:///srv/vhosts/default/htdocs/eus/mdm/#UPDATESITE#/</updatesite.url>
+		<updatesite.url>file:///srv/vhosts/eus/mdm/#UPDATESITE#/</updatesite.url>
 		<!-- <updatesite.url>file:///home/reiner/eus/snapshot/</updatesite.url> -->
 	</properties>
 

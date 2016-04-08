@@ -21,7 +21,6 @@ import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.xtext.naming.QualifiedName
-import java.util.ArrayList
 import kieker.develop.al.aspectLang.Technology
 
 class PCMModelMapper implements IModelMapper {
