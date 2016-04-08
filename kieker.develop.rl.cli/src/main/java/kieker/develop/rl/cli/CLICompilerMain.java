@@ -24,13 +24,13 @@ import org.apache.commons.cli.ParseException;
 
 import kieker.common.logging.Log;
 import kieker.common.logging.LogFactory;
-import kieker.develop.util.CLIHelpFormatter;
+import kieker.tools.util.CLIHelpFormatter;
 
 /**
  * Central class for the headless IRL compiler.
- * 
+ *
  * @author Reiner Jung
- * 
+ *
  */
 public final class CLICompilerMain {
 
@@ -88,7 +88,7 @@ public final class CLICompilerMain {
 	/**
 	 * Main method for the compiler, decoding parameter and execution
 	 * compilation.
-	 * 
+	 *
 	 * @param args
 	 *            command line arguments
 	 */
@@ -160,7 +160,7 @@ public final class CLICompilerMain {
 
 	/**
 	 * Compile the options for the CLI server.
-	 * 
+	 *
 	 * @return The composed options for the CLI server
 	 */
 	private static Options declareOptions() {
@@ -236,7 +236,7 @@ public final class CLICompilerMain {
 	/**
 	 * Print out the server usage and an additional message describing the cause
 	 * of the failure. Finally terminate the server.
-	 * 
+	 *
 	 * @param message
 	 *            the message to be printed
 	 * @param code
