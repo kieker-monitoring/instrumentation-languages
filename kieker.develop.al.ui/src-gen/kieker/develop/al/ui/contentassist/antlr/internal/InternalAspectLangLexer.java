@@ -1168,17 +1168,17 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = RULE_FLOAT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalAspectLang.g:7551:12: ( ( ( RULE_NUMBER )+ '.' ( RULE_NUMBER )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_NUMBER )+ )? ( 'f' )? | ( RULE_NUMBER )+ 'f' ) )
-            // InternalAspectLang.g:7551:14: ( ( RULE_NUMBER )+ '.' ( RULE_NUMBER )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_NUMBER )+ )? ( 'f' )? | ( RULE_NUMBER )+ 'f' )
+            // InternalAspectLang.g:7554:12: ( ( ( RULE_NUMBER )+ '.' ( RULE_NUMBER )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_NUMBER )+ )? ( 'f' )? | ( RULE_NUMBER )+ 'f' ) )
+            // InternalAspectLang.g:7554:14: ( ( RULE_NUMBER )+ '.' ( RULE_NUMBER )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_NUMBER )+ )? ( 'f' )? | ( RULE_NUMBER )+ 'f' )
             {
-            // InternalAspectLang.g:7551:14: ( ( RULE_NUMBER )+ '.' ( RULE_NUMBER )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_NUMBER )+ )? ( 'f' )? | ( RULE_NUMBER )+ 'f' )
+            // InternalAspectLang.g:7554:14: ( ( RULE_NUMBER )+ '.' ( RULE_NUMBER )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_NUMBER )+ )? ( 'f' )? | ( RULE_NUMBER )+ 'f' )
             int alt8=2;
             alt8 = dfa8.predict(input);
             switch (alt8) {
                 case 1 :
-                    // InternalAspectLang.g:7551:15: ( RULE_NUMBER )+ '.' ( RULE_NUMBER )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_NUMBER )+ )? ( 'f' )?
+                    // InternalAspectLang.g:7554:15: ( RULE_NUMBER )+ '.' ( RULE_NUMBER )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_NUMBER )+ )? ( 'f' )?
                     {
-                    // InternalAspectLang.g:7551:15: ( RULE_NUMBER )+
+                    // InternalAspectLang.g:7554:15: ( RULE_NUMBER )+
                     int cnt1=0;
                     loop1:
                     do {
@@ -1192,7 +1192,7 @@ public class InternalAspectLangLexer extends Lexer {
 
                         switch (alt1) {
                     	case 1 :
-                    	    // InternalAspectLang.g:7551:15: RULE_NUMBER
+                    	    // InternalAspectLang.g:7554:15: RULE_NUMBER
                     	    {
                     	    mRULE_NUMBER(); 
 
@@ -1209,7 +1209,7 @@ public class InternalAspectLangLexer extends Lexer {
                     } while (true);
 
                     match('.'); 
-                    // InternalAspectLang.g:7551:32: ( RULE_NUMBER )*
+                    // InternalAspectLang.g:7554:32: ( RULE_NUMBER )*
                     loop2:
                     do {
                         int alt2=2;
@@ -1222,7 +1222,7 @@ public class InternalAspectLangLexer extends Lexer {
 
                         switch (alt2) {
                     	case 1 :
-                    	    // InternalAspectLang.g:7551:32: RULE_NUMBER
+                    	    // InternalAspectLang.g:7554:32: RULE_NUMBER
                     	    {
                     	    mRULE_NUMBER(); 
 
@@ -1234,7 +1234,7 @@ public class InternalAspectLangLexer extends Lexer {
                         }
                     } while (true);
 
-                    // InternalAspectLang.g:7551:45: ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_NUMBER )+ )?
+                    // InternalAspectLang.g:7554:45: ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_NUMBER )+ )?
                     int alt5=2;
                     int LA5_0 = input.LA(1);
 
@@ -1243,7 +1243,7 @@ public class InternalAspectLangLexer extends Lexer {
                     }
                     switch (alt5) {
                         case 1 :
-                            // InternalAspectLang.g:7551:46: ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_NUMBER )+
+                            // InternalAspectLang.g:7554:46: ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_NUMBER )+
                             {
                             if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                                 input.consume();
@@ -1254,7 +1254,7 @@ public class InternalAspectLangLexer extends Lexer {
                                 recover(mse);
                                 throw mse;}
 
-                            // InternalAspectLang.g:7551:56: ( '+' | '-' )?
+                            // InternalAspectLang.g:7554:56: ( '+' | '-' )?
                             int alt3=2;
                             int LA3_0 = input.LA(1);
 
@@ -1280,7 +1280,7 @@ public class InternalAspectLangLexer extends Lexer {
 
                             }
 
-                            // InternalAspectLang.g:7551:67: ( RULE_NUMBER )+
+                            // InternalAspectLang.g:7554:67: ( RULE_NUMBER )+
                             int cnt4=0;
                             loop4:
                             do {
@@ -1294,7 +1294,7 @@ public class InternalAspectLangLexer extends Lexer {
 
                                 switch (alt4) {
                             	case 1 :
-                            	    // InternalAspectLang.g:7551:67: RULE_NUMBER
+                            	    // InternalAspectLang.g:7554:67: RULE_NUMBER
                             	    {
                             	    mRULE_NUMBER(); 
 
@@ -1316,7 +1316,7 @@ public class InternalAspectLangLexer extends Lexer {
 
                     }
 
-                    // InternalAspectLang.g:7551:82: ( 'f' )?
+                    // InternalAspectLang.g:7554:82: ( 'f' )?
                     int alt6=2;
                     int LA6_0 = input.LA(1);
 
@@ -1325,7 +1325,7 @@ public class InternalAspectLangLexer extends Lexer {
                     }
                     switch (alt6) {
                         case 1 :
-                            // InternalAspectLang.g:7551:82: 'f'
+                            // InternalAspectLang.g:7554:82: 'f'
                             {
                             match('f'); 
 
@@ -1338,9 +1338,9 @@ public class InternalAspectLangLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalAspectLang.g:7551:87: ( RULE_NUMBER )+ 'f'
+                    // InternalAspectLang.g:7554:87: ( RULE_NUMBER )+ 'f'
                     {
-                    // InternalAspectLang.g:7551:87: ( RULE_NUMBER )+
+                    // InternalAspectLang.g:7554:87: ( RULE_NUMBER )+
                     int cnt7=0;
                     loop7:
                     do {
@@ -1354,7 +1354,7 @@ public class InternalAspectLangLexer extends Lexer {
 
                         switch (alt7) {
                     	case 1 :
-                    	    // InternalAspectLang.g:7551:87: RULE_NUMBER
+                    	    // InternalAspectLang.g:7554:87: RULE_NUMBER
                     	    {
                     	    mRULE_NUMBER(); 
 
@@ -1391,8 +1391,8 @@ public class InternalAspectLangLexer extends Lexer {
     // $ANTLR start "RULE_NUMBER"
     public final void mRULE_NUMBER() throws RecognitionException {
         try {
-            // InternalAspectLang.g:7553:22: ( '0' .. '9' )
-            // InternalAspectLang.g:7553:24: '0' .. '9'
+            // InternalAspectLang.g:7556:22: ( '0' .. '9' )
+            // InternalAspectLang.g:7556:24: '0' .. '9'
             {
             matchRange('0','9'); 
 
@@ -1409,10 +1409,10 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalAspectLang.g:7555:10: ( ( RULE_NUMBER )+ )
-            // InternalAspectLang.g:7555:12: ( RULE_NUMBER )+
+            // InternalAspectLang.g:7558:10: ( ( RULE_NUMBER )+ )
+            // InternalAspectLang.g:7558:12: ( RULE_NUMBER )+
             {
-            // InternalAspectLang.g:7555:12: ( RULE_NUMBER )+
+            // InternalAspectLang.g:7558:12: ( RULE_NUMBER )+
             int cnt9=0;
             loop9:
             do {
@@ -1426,7 +1426,7 @@ public class InternalAspectLangLexer extends Lexer {
 
                 switch (alt9) {
             	case 1 :
-            	    // InternalAspectLang.g:7555:12: RULE_NUMBER
+            	    // InternalAspectLang.g:7558:12: RULE_NUMBER
             	    {
             	    mRULE_NUMBER(); 
 
@@ -1458,10 +1458,10 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalAspectLang.g:7557:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // InternalAspectLang.g:7557:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalAspectLang.g:7560:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // InternalAspectLang.g:7560:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // InternalAspectLang.g:7557:11: ( '^' )?
+            // InternalAspectLang.g:7560:11: ( '^' )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -1470,7 +1470,7 @@ public class InternalAspectLangLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // InternalAspectLang.g:7557:11: '^'
+                    // InternalAspectLang.g:7560:11: '^'
                     {
                     match('^'); 
 
@@ -1488,7 +1488,7 @@ public class InternalAspectLangLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // InternalAspectLang.g:7557:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalAspectLang.g:7560:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop11:
             do {
                 int alt11=2;
@@ -1537,10 +1537,10 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalAspectLang.g:7559:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // InternalAspectLang.g:7559:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalAspectLang.g:7562:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // InternalAspectLang.g:7562:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // InternalAspectLang.g:7559:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalAspectLang.g:7562:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt14=2;
             int LA14_0 = input.LA(1);
 
@@ -1558,10 +1558,10 @@ public class InternalAspectLangLexer extends Lexer {
             }
             switch (alt14) {
                 case 1 :
-                    // InternalAspectLang.g:7559:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // InternalAspectLang.g:7562:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // InternalAspectLang.g:7559:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // InternalAspectLang.g:7562:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop12:
                     do {
                         int alt12=3;
@@ -1577,7 +1577,7 @@ public class InternalAspectLangLexer extends Lexer {
 
                         switch (alt12) {
                     	case 1 :
-                    	    // InternalAspectLang.g:7559:21: '\\\\' .
+                    	    // InternalAspectLang.g:7562:21: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -1585,7 +1585,7 @@ public class InternalAspectLangLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalAspectLang.g:7559:28: ~ ( ( '\\\\' | '\"' ) )
+                    	    // InternalAspectLang.g:7562:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1610,10 +1610,10 @@ public class InternalAspectLangLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalAspectLang.g:7559:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // InternalAspectLang.g:7562:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // InternalAspectLang.g:7559:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // InternalAspectLang.g:7562:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop13:
                     do {
                         int alt13=3;
@@ -1629,7 +1629,7 @@ public class InternalAspectLangLexer extends Lexer {
 
                         switch (alt13) {
                     	case 1 :
-                    	    // InternalAspectLang.g:7559:54: '\\\\' .
+                    	    // InternalAspectLang.g:7562:54: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -1637,7 +1637,7 @@ public class InternalAspectLangLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalAspectLang.g:7559:61: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // InternalAspectLang.g:7562:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1680,12 +1680,12 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalAspectLang.g:7561:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // InternalAspectLang.g:7561:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // InternalAspectLang.g:7564:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // InternalAspectLang.g:7564:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // InternalAspectLang.g:7561:24: ( options {greedy=false; } : . )*
+            // InternalAspectLang.g:7564:24: ( options {greedy=false; } : . )*
             loop15:
             do {
                 int alt15=2;
@@ -1710,7 +1710,7 @@ public class InternalAspectLangLexer extends Lexer {
 
                 switch (alt15) {
             	case 1 :
-            	    // InternalAspectLang.g:7561:52: .
+            	    // InternalAspectLang.g:7564:52: .
             	    {
             	    matchAny(); 
 
@@ -1740,12 +1740,12 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalAspectLang.g:7563:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // InternalAspectLang.g:7563:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // InternalAspectLang.g:7566:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // InternalAspectLang.g:7566:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // InternalAspectLang.g:7563:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // InternalAspectLang.g:7566:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop16:
             do {
                 int alt16=2;
@@ -1758,7 +1758,7 @@ public class InternalAspectLangLexer extends Lexer {
 
                 switch (alt16) {
             	case 1 :
-            	    // InternalAspectLang.g:7563:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // InternalAspectLang.g:7566:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -1778,7 +1778,7 @@ public class InternalAspectLangLexer extends Lexer {
                 }
             } while (true);
 
-            // InternalAspectLang.g:7563:40: ( ( '\\r' )? '\\n' )?
+            // InternalAspectLang.g:7566:40: ( ( '\\r' )? '\\n' )?
             int alt18=2;
             int LA18_0 = input.LA(1);
 
@@ -1787,9 +1787,9 @@ public class InternalAspectLangLexer extends Lexer {
             }
             switch (alt18) {
                 case 1 :
-                    // InternalAspectLang.g:7563:41: ( '\\r' )? '\\n'
+                    // InternalAspectLang.g:7566:41: ( '\\r' )? '\\n'
                     {
-                    // InternalAspectLang.g:7563:41: ( '\\r' )?
+                    // InternalAspectLang.g:7566:41: ( '\\r' )?
                     int alt17=2;
                     int LA17_0 = input.LA(1);
 
@@ -1798,7 +1798,7 @@ public class InternalAspectLangLexer extends Lexer {
                     }
                     switch (alt17) {
                         case 1 :
-                            // InternalAspectLang.g:7563:41: '\\r'
+                            // InternalAspectLang.g:7566:41: '\\r'
                             {
                             match('\r'); 
 
@@ -1830,10 +1830,10 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalAspectLang.g:7565:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // InternalAspectLang.g:7565:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalAspectLang.g:7568:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // InternalAspectLang.g:7568:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // InternalAspectLang.g:7565:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalAspectLang.g:7568:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt19=0;
             loop19:
             do {
@@ -1887,8 +1887,8 @@ public class InternalAspectLangLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalAspectLang.g:7567:16: ( . )
-            // InternalAspectLang.g:7567:18: .
+            // InternalAspectLang.g:7570:16: ( . )
+            // InternalAspectLang.g:7570:18: .
             {
             matchAny(); 
 
@@ -2384,7 +2384,7 @@ public class InternalAspectLangLexer extends Lexer {
             this.transition = DFA8_transition;
         }
         public String getDescription() {
-            return "7551:14: ( ( RULE_NUMBER )+ '.' ( RULE_NUMBER )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_NUMBER )+ )? ( 'f' )? | ( RULE_NUMBER )+ 'f' )";
+            return "7554:14: ( ( RULE_NUMBER )+ '.' ( RULE_NUMBER )* ( ( 'e' | 'E' ) ( '+' | '-' )? ( RULE_NUMBER )+ )? ( 'f' )? | ( RULE_NUMBER )+ 'f' )";
         }
     }
     static final String DFA20_eotS =

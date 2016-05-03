@@ -119,12 +119,16 @@ enum Technology:
 	ASPECT_J = 'aspectj'
 ;
 
+Query:
+	LocationQuery | CompositionQuery
+;
+
 LocationQuery:
-	node=Node (('.' specialization=LocationQuery) | (composition=CompositionQuery))?
+	(modifier=QueryModifier)? node=Node (('.' specialization=LocationQuery) | (composition=CompositionQuery))?
 ;
 
 CompositionQuery: {CompositionQuery}
-	(modifier=QueryModifier)? '{' (subQueries += LocationQuery)* '}'	
+	'{' (subQueries += LocationQuery)* '}'	
 ;
 
 enum QueryModifier:

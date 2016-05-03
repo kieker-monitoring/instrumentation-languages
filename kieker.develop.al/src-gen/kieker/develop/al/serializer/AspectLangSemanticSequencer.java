@@ -316,10 +316,11 @@ public class AspectLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 	
 	/**
 	 * Contexts:
+	 *     Query returns CompositionQuery
 	 *     CompositionQuery returns CompositionQuery
 	 *
 	 * Constraint:
-	 *     (modifier=QueryModifier? subQueries+=LocationQuery*)
+	 *     subQueries+=LocationQuery*
 	 */
 	protected void sequence_CompositionQuery(ISerializationContext context, CompositionQuery semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -474,10 +475,11 @@ public class AspectLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 	
 	/**
 	 * Contexts:
+	 *     Query returns LocationQuery
 	 *     LocationQuery returns LocationQuery
 	 *
 	 * Constraint:
-	 *     (node=Node (specialization=LocationQuery | composition=CompositionQuery)?)
+	 *     (modifier=QueryModifier? node=Node (specialization=LocationQuery | composition=CompositionQuery)?)
 	 */
 	protected void sequence_LocationQuery(ISerializationContext context, LocationQuery semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

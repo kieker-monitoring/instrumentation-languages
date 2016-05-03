@@ -203,10 +203,18 @@ public class AspectLangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case AspectLangPackage.QUERY:
+      {
+        Query query = (Query)theEObject;
+        T result = caseQuery(query);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case AspectLangPackage.LOCATION_QUERY:
       {
         LocationQuery locationQuery = (LocationQuery)theEObject;
         T result = caseLocationQuery(locationQuery);
+        if (result == null) result = caseQuery(locationQuery);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -214,6 +222,7 @@ public class AspectLangSwitch<T> extends Switch<T>
       {
         CompositionQuery compositionQuery = (CompositionQuery)theEObject;
         T result = caseCompositionQuery(compositionQuery);
+        if (result == null) result = caseQuery(compositionQuery);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -660,6 +669,22 @@ public class AspectLangSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseAnnotation(Annotation object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Query</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Query</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseQuery(Query object)
   {
     return null;
   }

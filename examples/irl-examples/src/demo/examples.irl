@@ -15,7 +15,7 @@
  ***************************************************************************/
 package demo
 
-@author 'Reiner Jung'
+@author 'Reiner Jung' @since '1.5'
 entity ArrayExample {
 	int[10] staticArray
 	int[] dynamicArray6
@@ -23,16 +23,23 @@ entity ArrayExample {
 	string[][][6] stringMixed
 }
 
-entity EntryEvent {
+template Event {
 	long timestamp
+}
+
+template OperationSignature {
 	string signature
 }
+
+entity EntryEvent : Event, OperationSignature
+entity ExitEvent : Event, OperationSignature
 
 entity EntryBlaEvent extends ExitEvent {
 	string classSig
 } 
 
-entity ExitEvent {
-	long timestamp
-	string signature
-}
+
+
+
+
+

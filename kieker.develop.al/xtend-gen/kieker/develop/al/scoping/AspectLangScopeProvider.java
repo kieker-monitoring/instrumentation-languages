@@ -17,6 +17,8 @@ package kieker.develop.al.scoping;
 
 import com.google.common.base.Objects;
 import com.google.inject.Inject;
+import kieker.develop.al.aspectLang.ApplicationModel;
+import kieker.develop.al.aspectLang.CompositionQuery;
 import kieker.develop.al.aspectLang.ContainerNode;
 import kieker.develop.al.aspectLang.LocationQuery;
 import kieker.develop.al.aspectLang.Node;
@@ -31,7 +33,6 @@ import kieker.develop.al.mapping.Operation;
 import kieker.develop.al.mapping.Parameter;
 import kieker.develop.al.modelhandling.ForeignModelTypeProviderFactory;
 import kieker.develop.al.modelhandling.IForeignModelTypeProvider;
-import kieker.develop.al.scoping.ContainerParentScope;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -56,17 +57,63 @@ public class AspectLangScopeProvider extends AbstractDeclarativeScopeProvider {
   
   public IScope scope_ContainerNode_container(final ContainerNode context, final EReference reference) {
     EObject _eContainer = context.eContainer();
-    EObject _eContainer_1 = _eContainer.eContainer();
-    if ((_eContainer_1 instanceof LocationQuery)) {
-      Resource _eResource = context.eResource();
-      ResourceSet _resourceSet = _eResource.getResourceSet();
-      final IForeignModelTypeProvider typeProvider = this.typeProviderFactory.getTypeProvider(_resourceSet, null);
-      Iterable<NamedElement> _allTypes = typeProvider.getAllTypes();
-      final IScope result = new ContainerParentScope(_allTypes, context);
-      return result;
+    if ((_eContainer instanceof LocationQuery)) {
+      EObject _eContainer_1 = context.eContainer();
+      final EObject location = ((LocationQuery) _eContainer_1).eContainer();
+      boolean _matched = false;
+      if (!_matched) {
+        if (location instanceof CompositionQuery) {
+          _matched=true;
+          EObject _eContainer_2 = ((CompositionQuery)location).eContainer();
+          Node _node = ((LocationQuery) _eContainer_2).getNode();
+          return this.createLocationScope(_node);
+        }
+      }
+      if (!_matched) {
+        if (location instanceof LocationQuery) {
+          _matched=true;
+          Node _node = ((LocationQuery)location).getNode();
+          return this.createLocationScope(_node);
+        }
+      }
+      if (!_matched) {
+        if (location instanceof Pointcut) {
+          _matched=true;
+          ApplicationModel _model = ((Pointcut)location).getModel();
+          Resource _eResource = context.eResource();
+          ResourceSet _resourceSet = _eResource.getResourceSet();
+          return this.createModelScope(_model, _resourceSet);
+        }
+      }
+      return null;
     } else {
       return null;
     }
+  }
+  
+  private IScope createModelScope(final ApplicationModel model, final ResourceSet resourceSet) {
+    final IForeignModelTypeProvider typeProvider = this.typeProviderFactory.getTypeProvider(resourceSet, model);
+    Iterable<NamedElement> _allTypes = typeProvider.getAllTypes();
+    return Scopes.scopeFor(_allTypes);
+  }
+  
+  private IScope createLocationScope(final Node node) {
+    boolean _matched = false;
+    if (!_matched) {
+      if (node instanceof ContainerNode) {
+        _matched=true;
+        final Feature feature = ((ContainerNode)node).getContainer();
+        boolean _matched_1 = false;
+        if (!_matched_1) {
+          if (feature instanceof Container) {
+            _matched_1=true;
+            EList<Container> _contents = ((Container)feature).getContents();
+            return Scopes.scopeFor(_contents);
+          }
+        }
+      }
+    }
+    return null;
   }
   
   public IScope scope_Pointcut_returnType(final Pointcut context, final EReference reference) {

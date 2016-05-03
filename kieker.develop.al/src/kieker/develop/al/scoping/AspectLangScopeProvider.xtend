@@ -16,20 +16,22 @@
 package kieker.develop.al.scoping
 
 import com.google.inject.Inject
-
-import kieker.develop.al.aspectLang.Pointcut
+import kieker.develop.al.aspectLang.ApplicationModel
+import kieker.develop.al.aspectLang.CompositionQuery
+import kieker.develop.al.aspectLang.ContainerNode
 import kieker.develop.al.aspectLang.LocationQuery
 import kieker.develop.al.aspectLang.Node
-import kieker.develop.al.aspectLang.ContainerNode
+import kieker.develop.al.aspectLang.OperationQuery
 import kieker.develop.al.aspectLang.ParameterQuery
-import kieker.develop.al.modelhandling.ForeignModelTypeProviderFactory
+import kieker.develop.al.aspectLang.Pointcut
+import kieker.develop.al.mapping.Container
 import kieker.develop.al.mapping.Operation
-
+import kieker.develop.al.modelhandling.ForeignModelTypeProviderFactory
 import org.eclipse.emf.ecore.EReference
+import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.scoping.Scopes
-import kieker.develop.al.aspectLang.OperationQuery
-import kieker.develop.al.mapping.Container
+import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider
 
 /**
  * This class contains custom scoping description.
@@ -38,20 +40,45 @@ import kieker.develop.al.mapping.Container
  * on how and when to use it 
  *
  */
-class AspectLangScopeProvider extends org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider {
+class AspectLangScopeProvider extends AbstractDeclarativeScopeProvider {
 	
 	@Inject extension ForeignModelTypeProviderFactory typeProviderFactory
 	
 	def IScope scope_ContainerNode_container(ContainerNode context, EReference reference) {
-		if (context.eContainer.eContainer instanceof LocationQuery) {
-			val typeProvider = typeProviderFactory.getTypeProvider(context.eResource.resourceSet, null)
-			val IScope result = new ContainerParentScope(typeProvider.allTypes, context)   
-			return result
-		} else {
-			return null // null required here to cascade to default resolver
-		}
+		if (context.eContainer instanceof LocationQuery) {
+			val location = (context.eContainer as LocationQuery).eContainer
+			
+			switch(location) {
+				CompositionQuery: return (location.eContainer as LocationQuery).node.createLocationScope
+				LocationQuery: return location.node.createLocationScope
+				Pointcut: return location.model.createModelScope(context.eResource.resourceSet)
+				default: return null
+			}
+			
+		} else		
+			return null
 	}
-
+	
+	private def IScope createModelScope(ApplicationModel model, ResourceSet resourceSet) {
+		val typeProvider = typeProviderFactory.getTypeProvider(resourceSet, model)
+		return Scopes.scopeFor(typeProvider.allTypes)
+	}
+	
+	
+	private def IScope createLocationScope(Node node) {
+		switch(node) {
+			ContainerNode: {
+				val feature = node.container
+				switch(feature) {
+					Container: return Scopes.scopeFor(feature.contents)
+				}
+			}
+		}
+		
+		return null // null required here to cascade to default resolver
+		
+	}
+	
 	def IScope scope_Pointcut_returnType(Pointcut context, EReference reference) {
 		val Node node = context.location.leaveNode
 		if (node instanceof ContainerNode) {
@@ -74,7 +101,7 @@ class AspectLangScopeProvider extends org.eclipse.xtext.scoping.impl.AbstractDec
 			return IScope.NULLSCOPE
 		}
 	}
-	
+		
 	def IScope scope_ParameterQuery_modifier(ParameterQuery context, EReference reference) {
 		// TODO modifier lookup
 		return IScope.NULLSCOPE
@@ -89,6 +116,8 @@ class AspectLangScopeProvider extends org.eclipse.xtext.scoping.impl.AbstractDec
 		val Operation operation = (context.eContainer as OperationQuery).operationReference
 		return Scopes.scopeFor(operation.parameters)
 	}
+	
+
 	
 	private def Node leaveNode(LocationQuery query) {
 		if (query.specialization != null)

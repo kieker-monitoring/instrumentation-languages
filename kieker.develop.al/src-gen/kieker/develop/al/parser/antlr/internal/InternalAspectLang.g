@@ -1382,6 +1382,8 @@ ruleAnnotation returns [EObject current=null]
 
 
 
+
+
 // Entry rule entryRuleLocationQuery
 entryRuleLocationQuery returns [EObject current=null] 
 	:
@@ -1399,38 +1401,56 @@ ruleLocationQuery returns [EObject current=null]
 ((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getLocationQueryAccess().getNodeNodeParserRuleCall_0_0()); 
+	        newCompositeNode(grammarAccess.getLocationQueryAccess().getModifierQueryModifierEnumRuleCall_0_0()); 
 	    }
-		lv_node_0_0=ruleNode		{
+		lv_modifier_0_0=ruleQueryModifier		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getLocationQueryRule());
+	        }
+       		set(
+       			$current, 
+       			"modifier",
+        		lv_modifier_0_0, 
+        		"kieker.develop.al.AspectLang.QueryModifier");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)?(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getLocationQueryAccess().getNodeNodeParserRuleCall_1_0()); 
+	    }
+		lv_node_1_0=ruleNode		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getLocationQueryRule());
 	        }
        		set(
        			$current, 
        			"node",
-        		lv_node_0_0, 
+        		lv_node_1_0, 
         		"kieker.develop.al.AspectLang.Node");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)((	otherlv_1='.' 
+)((	otherlv_2='.' 
     {
-    	newLeafNode(otherlv_1, grammarAccess.getLocationQueryAccess().getFullStopKeyword_1_0_0());
+    	newLeafNode(otherlv_2, grammarAccess.getLocationQueryAccess().getFullStopKeyword_2_0_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getLocationQueryAccess().getSpecializationLocationQueryParserRuleCall_1_0_1_0()); 
+	        newCompositeNode(grammarAccess.getLocationQueryAccess().getSpecializationLocationQueryParserRuleCall_2_0_1_0()); 
 	    }
-		lv_specialization_2_0=ruleLocationQuery		{
+		lv_specialization_3_0=ruleLocationQuery		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getLocationQueryRule());
 	        }
        		set(
        			$current, 
        			"specialization",
-        		lv_specialization_2_0, 
+        		lv_specialization_3_0, 
         		"kieker.develop.al.AspectLang.LocationQuery");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -1440,16 +1460,16 @@ ruleLocationQuery returns [EObject current=null]
     |(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getLocationQueryAccess().getCompositionCompositionQueryParserRuleCall_1_1_0()); 
+	        newCompositeNode(grammarAccess.getLocationQueryAccess().getCompositionCompositionQueryParserRuleCall_2_1_0()); 
 	    }
-		lv_composition_3_0=ruleCompositionQuery		{
+		lv_composition_4_0=ruleCompositionQuery		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getLocationQueryRule());
 	        }
        		set(
        			$current, 
        			"composition",
-        		lv_composition_3_0, 
+        		lv_composition_4_0, 
         		"kieker.develop.al.AspectLang.CompositionQuery");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -1485,49 +1505,31 @@ ruleCompositionQuery returns [EObject current=null]
             grammarAccess.getCompositionQueryAccess().getCompositionQueryAction_0(),
             $current);
     }
-)(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getCompositionQueryAccess().getModifierQueryModifierEnumRuleCall_1_0()); 
-	    }
-		lv_modifier_1_0=ruleQueryModifier		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getCompositionQueryRule());
-	        }
-       		set(
-       			$current, 
-       			"modifier",
-        		lv_modifier_1_0, 
-        		"kieker.develop.al.AspectLang.QueryModifier");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)?	otherlv_2='{' 
+)	otherlv_1='{' 
     {
-    	newLeafNode(otherlv_2, grammarAccess.getCompositionQueryAccess().getLeftCurlyBracketKeyword_2());
+    	newLeafNode(otherlv_1, grammarAccess.getCompositionQueryAccess().getLeftCurlyBracketKeyword_1());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getCompositionQueryAccess().getSubQueriesLocationQueryParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getCompositionQueryAccess().getSubQueriesLocationQueryParserRuleCall_2_0()); 
 	    }
-		lv_subQueries_3_0=ruleLocationQuery		{
+		lv_subQueries_2_0=ruleLocationQuery		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getCompositionQueryRule());
 	        }
        		add(
        			$current, 
        			"subQueries",
-        		lv_subQueries_3_0, 
+        		lv_subQueries_2_0, 
         		"kieker.develop.al.AspectLang.LocationQuery");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)*	otherlv_4='}' 
+)*	otherlv_3='}' 
     {
-    	newLeafNode(otherlv_4, grammarAccess.getCompositionQueryAccess().getRightCurlyBracketKeyword_4());
+    	newLeafNode(otherlv_3, grammarAccess.getCompositionQueryAccess().getRightCurlyBracketKeyword_3());
     }
 )
 ;

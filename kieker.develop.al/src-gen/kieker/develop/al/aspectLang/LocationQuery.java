@@ -2,7 +2,6 @@
  */
 package kieker.develop.al.aspectLang;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,6 +12,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link kieker.develop.al.aspectLang.LocationQuery#getModifier <em>Modifier</em>}</li>
  *   <li>{@link kieker.develop.al.aspectLang.LocationQuery#getNode <em>Node</em>}</li>
  *   <li>{@link kieker.develop.al.aspectLang.LocationQuery#getSpecialization <em>Specialization</em>}</li>
  *   <li>{@link kieker.develop.al.aspectLang.LocationQuery#getComposition <em>Composition</em>}</li>
@@ -22,8 +22,37 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface LocationQuery extends EObject
+public interface LocationQuery extends Query
 {
+  /**
+   * Returns the value of the '<em><b>Modifier</b></em>' attribute.
+   * The literals are from the enumeration {@link kieker.develop.al.aspectLang.QueryModifier}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Modifier</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Modifier</em>' attribute.
+   * @see kieker.develop.al.aspectLang.QueryModifier
+   * @see #setModifier(QueryModifier)
+   * @see kieker.develop.al.aspectLang.AspectLangPackage#getLocationQuery_Modifier()
+   * @model
+   * @generated
+   */
+  QueryModifier getModifier();
+
+  /**
+   * Sets the value of the '{@link kieker.develop.al.aspectLang.LocationQuery#getModifier <em>Modifier</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Modifier</em>' attribute.
+   * @see kieker.develop.al.aspectLang.QueryModifier
+   * @see #getModifier()
+   * @generated
+   */
+  void setModifier(QueryModifier value);
+
   /**
    * Returns the value of the '<em><b>Node</b></em>' containment reference.
    * <!-- begin-user-doc -->

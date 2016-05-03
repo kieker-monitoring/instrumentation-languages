@@ -36,6 +36,7 @@ import kieker.develop.al.aspectLang.Pointcut;
 import kieker.develop.al.aspectLang.Property;
 import kieker.develop.al.aspectLang.PropertyConstraint;
 import kieker.develop.al.aspectLang.PropertyConstraintCompare;
+import kieker.develop.al.aspectLang.Query;
 import kieker.develop.al.aspectLang.QueryModifier;
 import kieker.develop.al.aspectLang.ReferenceValue;
 import kieker.develop.al.aspectLang.ReflectionFunction;
@@ -196,6 +197,13 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * @generated
    */
   private EClass annotationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass queryEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -998,6 +1006,16 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getQuery()
+  {
+    return queryEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getLocationQuery()
   {
     return locationQueryEClass;
@@ -1008,9 +1026,9 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getLocationQuery_Node()
+  public EAttribute getLocationQuery_Modifier()
   {
-    return (EReference)locationQueryEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)locationQueryEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1018,7 +1036,7 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getLocationQuery_Specialization()
+  public EReference getLocationQuery_Node()
   {
     return (EReference)locationQueryEClass.getEStructuralFeatures().get(1);
   }
@@ -1028,9 +1046,19 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getLocationQuery_Composition()
+  public EReference getLocationQuery_Specialization()
   {
     return (EReference)locationQueryEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getLocationQuery_Composition()
+  {
+    return (EReference)locationQueryEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -1048,19 +1076,9 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getCompositionQuery_Modifier()
-  {
-    return (EAttribute)compositionQueryEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getCompositionQuery_SubQueries()
   {
-    return (EReference)compositionQueryEClass.getEStructuralFeatures().get(1);
+    return (EReference)compositionQueryEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1655,13 +1673,15 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
     createEAttribute(annotationEClass, ANNOTATION__NAME);
     createEAttribute(annotationEClass, ANNOTATION__TECHNOLOGIES);
 
+    queryEClass = createEClass(QUERY);
+
     locationQueryEClass = createEClass(LOCATION_QUERY);
+    createEAttribute(locationQueryEClass, LOCATION_QUERY__MODIFIER);
     createEReference(locationQueryEClass, LOCATION_QUERY__NODE);
     createEReference(locationQueryEClass, LOCATION_QUERY__SPECIALIZATION);
     createEReference(locationQueryEClass, LOCATION_QUERY__COMPOSITION);
 
     compositionQueryEClass = createEClass(COMPOSITION_QUERY);
-    createEAttribute(compositionQueryEClass, COMPOSITION_QUERY__MODIFIER);
     createEReference(compositionQueryEClass, COMPOSITION_QUERY__SUB_QUERIES);
 
     operationQueryEClass = createEClass(OPERATION_QUERY);
@@ -1773,6 +1793,8 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
     reflectionPropertyEClass.getESuperTypes().add(this.getProperty());
     runtimePropertyEClass.getESuperTypes().add(this.getProperty());
     adviceParameterEClass.getESuperTypes().add(this.getValue());
+    locationQueryEClass.getESuperTypes().add(this.getQuery());
+    compositionQueryEClass.getESuperTypes().add(this.getQuery());
     containerNodeEClass.getESuperTypes().add(this.getNode());
     wildcardNodeEClass.getESuperTypes().add(this.getNode());
     subPathNodeEClass.getESuperTypes().add(this.getNode());
@@ -1859,13 +1881,15 @@ public class AspectLangPackageImpl extends EPackageImpl implements AspectLangPac
     initEAttribute(getAnnotation_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Annotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAnnotation_Technologies(), this.getTechnology(), "technologies", null, 0, -1, Annotation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(queryEClass, Query.class, "Query", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
     initEClass(locationQueryEClass, LocationQuery.class, "LocationQuery", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getLocationQuery_Modifier(), this.getQueryModifier(), "modifier", null, 0, 1, LocationQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLocationQuery_Node(), this.getNode(), null, "node", null, 0, 1, LocationQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLocationQuery_Specialization(), this.getLocationQuery(), null, "specialization", null, 0, 1, LocationQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getLocationQuery_Composition(), this.getCompositionQuery(), null, "composition", null, 0, 1, LocationQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(compositionQueryEClass, CompositionQuery.class, "CompositionQuery", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getCompositionQuery_Modifier(), this.getQueryModifier(), "modifier", null, 0, 1, CompositionQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCompositionQuery_SubQueries(), this.getLocationQuery(), null, "subQueries", null, 0, -1, CompositionQuery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(operationQueryEClass, OperationQuery.class, "OperationQuery", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

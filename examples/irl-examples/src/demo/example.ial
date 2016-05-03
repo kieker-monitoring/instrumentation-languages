@@ -14,4 +14,12 @@ advice EntryLogger () {
 
 pointcut point class cocome.TradingSystem.Inventory.Data.Persistence
 
+pointcut complex class cocome.TradingSystem.Inventory {  
+	Data.**
+	exclude Data.Persistence.** 
+}
+
+
 aspect point : EntryLogger
+
+aspect complex : EntryLogger

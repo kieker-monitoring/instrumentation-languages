@@ -5,19 +5,18 @@ import de.cau.cs.se.geco.architecture.framework.IGenerator;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import java.util.function.Consumer;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import kieker.develop.al.aspectLang.Advice;
+import kieker.develop.al.aspectLang.ApplicationModel;
 import kieker.develop.al.aspectLang.Aspect;
-import kieker.develop.al.aspectLang.Collector;
 import kieker.develop.al.aspectLang.ContainerNode;
-import kieker.develop.al.aspectLang.InsertionPoint;
 import kieker.develop.al.aspectLang.LocationQuery;
 import kieker.develop.al.aspectLang.Node;
 import kieker.develop.al.aspectLang.OperationQuery;
 import kieker.develop.al.aspectLang.Pointcut;
 import kieker.develop.al.aspectLang.UtilizeAdvice;
+import kieker.develop.al.generator.aspectj.NameResolver;
 import kieker.develop.al.mapping.CollectionType;
 import kieker.develop.al.mapping.Container;
 import kieker.develop.al.mapping.Feature;
@@ -30,77 +29,104 @@ import kieker.develop.al.mapping.TypeReference;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure2;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 @SuppressWarnings("all")
 public class AspectJPointcutGenerator implements IGenerator<Collection<Aspect>, Document> {
+  private final DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+  
+  private final DocumentBuilder docBuilder = new Function0<DocumentBuilder>() {
+    public DocumentBuilder apply() {
+      try {
+        DocumentBuilder _newDocumentBuilder = AspectJPointcutGenerator.this.docFactory.newDocumentBuilder();
+        return _newDocumentBuilder;
+      } catch (Throwable _e) {
+        throw Exceptions.sneakyThrow(_e);
+      }
+    }
+  }.apply();
+  
+  private final Document doc = this.docBuilder.newDocument();
+  
   @Override
   public Document generate(final Collection<Aspect> input) {
-    try {
-      final DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-      final DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-      final Document doc = docBuilder.newDocument();
-      final Element aspectjElement = doc.createElement("aspectj");
-      doc.appendChild(aspectjElement);
-      final Element weaverElement = doc.createElement("weaver");
-      weaverElement.setAttribute("options", "");
-      aspectjElement.appendChild(weaverElement);
-      for (final Aspect aspect : input) {
-        {
-          final Element includeElement = doc.createElement("include");
-          weaverElement.appendChild(includeElement);
-        }
+    final Element aspectjElement = this.doc.createElement("aspectj");
+    this.doc.appendChild(aspectjElement);
+    final Element weaverElement = this.doc.createElement("weaver");
+    weaverElement.setAttribute("options", "");
+    aspectjElement.appendChild(weaverElement);
+    for (final Aspect aspect : input) {
+      {
+        final Element includeElement = this.doc.createElement("include");
+        weaverElement.appendChild(includeElement);
       }
-      final Element aspectsElement = doc.createElement("aspects");
-      aspectjElement.appendChild(aspectsElement);
-      for (final Aspect aspect_1 : input) {
-        {
-          EList<UtilizeAdvice> _advices = aspect_1.getAdvices();
-          final Consumer<UtilizeAdvice> _function = (UtilizeAdvice it) -> {
-            Advice _advice = it.getAdvice();
-            EList<Collector> _collectors = _advice.getCollectors();
-            final Function1<Collector, Boolean> _function_1 = (Collector it_1) -> {
-              InsertionPoint _insertionPoint = it_1.getInsertionPoint();
-              return Boolean.valueOf(Objects.equal(_insertionPoint, InsertionPoint.BEFORE));
-            };
-            Iterable<Collector> _filter = IterableExtensions.<Collector>filter(_collectors, _function_1);
-            this.createDataCollectorAspect(_filter, doc, aspectsElement);
-          };
-          _advices.forEach(_function);
-          EList<UtilizeAdvice> _advices_1 = aspect_1.getAdvices();
-          final Consumer<UtilizeAdvice> _function_1 = (UtilizeAdvice it) -> {
-            Advice _advice = it.getAdvice();
-            EList<Collector> _collectors = _advice.getCollectors();
-            final Function1<Collector, Boolean> _function_2 = (Collector it_1) -> {
-              InsertionPoint _insertionPoint = it_1.getInsertionPoint();
-              return Boolean.valueOf(Objects.equal(_insertionPoint, InsertionPoint.AFTER));
-            };
-            Iterable<Collector> _filter = IterableExtensions.<Collector>filter(_collectors, _function_2);
-            this.createDataCollectorAspect(_filter, doc, aspectsElement);
-          };
-          _advices_1.forEach(_function_1);
-        }
-      }
-      return doc;
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
     }
+    final Element aspectsElement = this.doc.createElement("aspects");
+    aspectjElement.appendChild(aspectsElement);
+    for (final Aspect aspect_1 : input) {
+      EList<UtilizeAdvice> _advices = aspect_1.getAdvices();
+      final Procedure2<UtilizeAdvice, Integer> _function = (UtilizeAdvice advice, Integer i) -> {
+        Advice _advice = advice.getAdvice();
+        Element _createAspect = this.createAspect(aspectsElement, _advice, (i).intValue());
+        aspectsElement.appendChild(_createAspect);
+      };
+      IterableExtensions.<UtilizeAdvice>forEach(_advices, _function);
+    }
+    for (final Aspect aspect_2 : input) {
+      EList<UtilizeAdvice> _advices_1 = aspect_2.getAdvices();
+      final Procedure2<UtilizeAdvice, Integer> _function_1 = (UtilizeAdvice advice, Integer i) -> {
+        Advice _advice = advice.getAdvice();
+        final Element concreteAspect = this.createConcreteAspect(aspectsElement, _advice, (i).intValue());
+        Pointcut _pointcut = aspect_2.getPointcut();
+        Element _createPointcut = this.createPointcut(_pointcut);
+        concreteAspect.appendChild(_createPointcut);
+        aspectsElement.appendChild(concreteAspect);
+      };
+      IterableExtensions.<UtilizeAdvice>forEach(_advices_1, _function_1);
+    }
+    return this.doc;
   }
   
-  /**
-   * Create an aop.xml aspect for a data collector probe.
-   * 
-   * @param list list of collectors
-   * @param doc the document
-   * @param parent the parent node of the aspect
-   */
-  private void createDataCollectorAspect(final Iterable<Collector> list, final Document doc, final Element parent) {
-    final Element aspect = doc.createElement("aspect");
-    parent.appendChild(aspect);
+  private Element createPointcut(final Pointcut pointcut) {
+    final Element pNode = this.doc.createElement("pointcut");
+    String _name = pointcut.getName();
+    pNode.setAttribute("name", _name);
+    String _createExpression = this.createExpression(pointcut);
+    pNode.setAttribute("expression", _createExpression);
+    return pNode;
+  }
+  
+  private String createExpression(final Pointcut pointcut) {
+    StringConcatenation _builder = new StringConcatenation();
+    ApplicationModel _model = pointcut.getModel();
+    _builder.append(_model, "");
+    final String result = _builder.toString();
+    return result;
+  }
+  
+  private Element createAspect(final Element parent, final Advice advice, final int i) {
+    final Element aspect = this.doc.createElement("aspect");
+    CharSequence _adviceClassName = NameResolver.getAdviceClassName(advice, i);
+    String _string = _adviceClassName.toString();
+    aspect.setAttribute("name", _string);
+    return aspect;
+  }
+  
+  private Element createConcreteAspect(final Element parent, final Advice advice, final int i) {
+    final Element aspect = this.doc.createElement("concrete-aspect");
+    CharSequence _concreteAdviceClassName = NameResolver.getConcreteAdviceClassName(advice, i);
+    String _string = _concreteAdviceClassName.toString();
+    aspect.setAttribute("name", _string);
+    CharSequence _adviceClassName = NameResolver.getAdviceClassName(advice, i);
+    String _string_1 = _adviceClassName.toString();
+    aspect.setAttribute("extends", _string_1);
+    return aspect;
   }
   
   /**

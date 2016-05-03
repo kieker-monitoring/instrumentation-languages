@@ -83,6 +83,7 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
       case AspectLangPackage.ADVICE_PARAMETER: return createAdviceParameter();
       case AspectLangPackage.POINTCUT: return createPointcut();
       case AspectLangPackage.ANNOTATION: return createAnnotation();
+      case AspectLangPackage.QUERY: return createQuery();
       case AspectLangPackage.LOCATION_QUERY: return createLocationQuery();
       case AspectLangPackage.COMPOSITION_QUERY: return createCompositionQuery();
       case AspectLangPackage.OPERATION_QUERY: return createOperationQuery();
@@ -362,6 +363,17 @@ public class AspectLangFactoryImpl extends EFactoryImpl implements AspectLangFac
   {
     AnnotationImpl annotation = new AnnotationImpl();
     return annotation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Query createQuery()
+  {
+    QueryImpl query = new QueryImpl();
+    return query;
   }
 
   /**

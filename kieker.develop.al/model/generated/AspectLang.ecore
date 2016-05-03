@@ -112,15 +112,16 @@
     <eLiterals name="SPRING" value="2" literal="spring"/>
     <eLiterals name="ASPECT_J" value="3" literal="aspectj"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="LocationQuery">
+  <eClassifiers xsi:type="ecore:EClass" name="Query"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LocationQuery" eSuperTypes="#//Query">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modifier" eType="#//QueryModifier"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="node" eType="#//Node" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="specialization" eType="#//LocationQuery"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="composition" eType="#//CompositionQuery"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CompositionQuery">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="modifier" eType="#//QueryModifier"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CompositionQuery" eSuperTypes="#//Query">
     <eStructuralFeatures xsi:type="ecore:EReference" name="subQueries" upperBound="-1"
         eType="#//LocationQuery" containment="true"/>
   </eClassifiers>

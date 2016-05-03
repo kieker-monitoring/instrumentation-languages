@@ -784,92 +784,113 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getTechnologiesTechnologyEnumRuleCall_3_1_0() { return cTechnologiesTechnologyEnumRuleCall_3_1_0; }
 	}
 
+	public class QueryElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "kieker.develop.al.AspectLang.Query");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cLocationQueryParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cCompositionQueryParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//Query:
+		//	LocationQuery | CompositionQuery;
+		@Override public ParserRule getRule() { return rule; }
+
+		//LocationQuery | CompositionQuery
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//LocationQuery
+		public RuleCall getLocationQueryParserRuleCall_0() { return cLocationQueryParserRuleCall_0; }
+
+		//CompositionQuery
+		public RuleCall getCompositionQueryParserRuleCall_1() { return cCompositionQueryParserRuleCall_1; }
+	}
+
 	public class LocationQueryElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "kieker.develop.al.AspectLang.LocationQuery");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNodeAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNodeNodeParserRuleCall_0_0 = (RuleCall)cNodeAssignment_0.eContents().get(0);
-		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
-		private final Group cGroup_1_0 = (Group)cAlternatives_1.eContents().get(0);
-		private final Keyword cFullStopKeyword_1_0_0 = (Keyword)cGroup_1_0.eContents().get(0);
-		private final Assignment cSpecializationAssignment_1_0_1 = (Assignment)cGroup_1_0.eContents().get(1);
-		private final RuleCall cSpecializationLocationQueryParserRuleCall_1_0_1_0 = (RuleCall)cSpecializationAssignment_1_0_1.eContents().get(0);
-		private final Assignment cCompositionAssignment_1_1 = (Assignment)cAlternatives_1.eContents().get(1);
-		private final RuleCall cCompositionCompositionQueryParserRuleCall_1_1_0 = (RuleCall)cCompositionAssignment_1_1.eContents().get(0);
+		private final Assignment cModifierAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cModifierQueryModifierEnumRuleCall_0_0 = (RuleCall)cModifierAssignment_0.eContents().get(0);
+		private final Assignment cNodeAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNodeNodeParserRuleCall_1_0 = (RuleCall)cNodeAssignment_1.eContents().get(0);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Group cGroup_2_0 = (Group)cAlternatives_2.eContents().get(0);
+		private final Keyword cFullStopKeyword_2_0_0 = (Keyword)cGroup_2_0.eContents().get(0);
+		private final Assignment cSpecializationAssignment_2_0_1 = (Assignment)cGroup_2_0.eContents().get(1);
+		private final RuleCall cSpecializationLocationQueryParserRuleCall_2_0_1_0 = (RuleCall)cSpecializationAssignment_2_0_1.eContents().get(0);
+		private final Assignment cCompositionAssignment_2_1 = (Assignment)cAlternatives_2.eContents().get(1);
+		private final RuleCall cCompositionCompositionQueryParserRuleCall_2_1_0 = (RuleCall)cCompositionAssignment_2_1.eContents().get(0);
 		
 		//LocationQuery:
-		//	node=Node ('.' specialization=LocationQuery | composition=CompositionQuery)?;
+		//	modifier=QueryModifier? node=Node ('.' specialization=LocationQuery | composition=CompositionQuery)?;
 		@Override public ParserRule getRule() { return rule; }
 
-		//node=Node ('.' specialization=LocationQuery | composition=CompositionQuery)?
+		//modifier=QueryModifier? node=Node ('.' specialization=LocationQuery | composition=CompositionQuery)?
 		public Group getGroup() { return cGroup; }
 
+		//modifier=QueryModifier?
+		public Assignment getModifierAssignment_0() { return cModifierAssignment_0; }
+
+		//QueryModifier
+		public RuleCall getModifierQueryModifierEnumRuleCall_0_0() { return cModifierQueryModifierEnumRuleCall_0_0; }
+
 		//node=Node
-		public Assignment getNodeAssignment_0() { return cNodeAssignment_0; }
+		public Assignment getNodeAssignment_1() { return cNodeAssignment_1; }
 
 		//Node
-		public RuleCall getNodeNodeParserRuleCall_0_0() { return cNodeNodeParserRuleCall_0_0; }
+		public RuleCall getNodeNodeParserRuleCall_1_0() { return cNodeNodeParserRuleCall_1_0; }
 
 		//('.' specialization=LocationQuery | composition=CompositionQuery)?
-		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 
 		//'.' specialization=LocationQuery
-		public Group getGroup_1_0() { return cGroup_1_0; }
+		public Group getGroup_2_0() { return cGroup_2_0; }
 
 		//'.'
-		public Keyword getFullStopKeyword_1_0_0() { return cFullStopKeyword_1_0_0; }
+		public Keyword getFullStopKeyword_2_0_0() { return cFullStopKeyword_2_0_0; }
 
 		//specialization=LocationQuery
-		public Assignment getSpecializationAssignment_1_0_1() { return cSpecializationAssignment_1_0_1; }
+		public Assignment getSpecializationAssignment_2_0_1() { return cSpecializationAssignment_2_0_1; }
 
 		//LocationQuery
-		public RuleCall getSpecializationLocationQueryParserRuleCall_1_0_1_0() { return cSpecializationLocationQueryParserRuleCall_1_0_1_0; }
+		public RuleCall getSpecializationLocationQueryParserRuleCall_2_0_1_0() { return cSpecializationLocationQueryParserRuleCall_2_0_1_0; }
 
 		//composition=CompositionQuery
-		public Assignment getCompositionAssignment_1_1() { return cCompositionAssignment_1_1; }
+		public Assignment getCompositionAssignment_2_1() { return cCompositionAssignment_2_1; }
 
 		//CompositionQuery
-		public RuleCall getCompositionCompositionQueryParserRuleCall_1_1_0() { return cCompositionCompositionQueryParserRuleCall_1_1_0; }
+		public RuleCall getCompositionCompositionQueryParserRuleCall_2_1_0() { return cCompositionCompositionQueryParserRuleCall_2_1_0; }
 	}
 
 	public class CompositionQueryElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "kieker.develop.al.AspectLang.CompositionQuery");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cCompositionQueryAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cModifierAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cModifierQueryModifierEnumRuleCall_1_0 = (RuleCall)cModifierAssignment_1.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cSubQueriesAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cSubQueriesLocationQueryParserRuleCall_3_0 = (RuleCall)cSubQueriesAssignment_3.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cSubQueriesAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cSubQueriesLocationQueryParserRuleCall_2_0 = (RuleCall)cSubQueriesAssignment_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//CompositionQuery:
-		//	{CompositionQuery} modifier=QueryModifier? '{' subQueries+=LocationQuery* '}';
+		//	{CompositionQuery}
+		//	'{' subQueries+=LocationQuery* '}';
 		@Override public ParserRule getRule() { return rule; }
 
-		//{CompositionQuery} modifier=QueryModifier? '{' subQueries+=LocationQuery* '}'
+		//{CompositionQuery} '{' subQueries+=LocationQuery* '}'
 		public Group getGroup() { return cGroup; }
 
 		//{CompositionQuery}
 		public Action getCompositionQueryAction_0() { return cCompositionQueryAction_0; }
 
-		//modifier=QueryModifier?
-		public Assignment getModifierAssignment_1() { return cModifierAssignment_1; }
-
-		//QueryModifier
-		public RuleCall getModifierQueryModifierEnumRuleCall_1_0() { return cModifierQueryModifierEnumRuleCall_1_0; }
-
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
 
 		//subQueries+=LocationQuery*
-		public Assignment getSubQueriesAssignment_3() { return cSubQueriesAssignment_3; }
+		public Assignment getSubQueriesAssignment_2() { return cSubQueriesAssignment_2; }
 
 		//LocationQuery
-		public RuleCall getSubQueriesLocationQueryParserRuleCall_3_0() { return cSubQueriesLocationQueryParserRuleCall_3_0; }
+		public RuleCall getSubQueriesLocationQueryParserRuleCall_2_0() { return cSubQueriesLocationQueryParserRuleCall_2_0; }
 
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
 	}
 
 	public class OperationQueryElements extends AbstractParserRuleElementFinder {
@@ -1868,6 +1889,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	private final PointcutElements pPointcut;
 	private final AnnotationElements pAnnotation;
 	private final TechnologyElements eTechnology;
+	private final QueryElements pQuery;
 	private final LocationQueryElements pLocationQuery;
 	private final CompositionQueryElements pCompositionQuery;
 	private final QueryModifierElements eQueryModifier;
@@ -1928,6 +1950,7 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		this.pPointcut = new PointcutElements();
 		this.pAnnotation = new AnnotationElements();
 		this.eTechnology = new TechnologyElements();
+		this.pQuery = new QueryElements();
 		this.pLocationQuery = new LocationQueryElements();
 		this.pCompositionQuery = new CompositionQueryElements();
 		this.eQueryModifier = new QueryModifierElements();
@@ -2222,8 +2245,18 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 		return getTechnologyAccess().getRule();
 	}
 
+	//Query:
+	//	LocationQuery | CompositionQuery;
+	public QueryElements getQueryAccess() {
+		return pQuery;
+	}
+	
+	public ParserRule getQueryRule() {
+		return getQueryAccess().getRule();
+	}
+
 	//LocationQuery:
-	//	node=Node ('.' specialization=LocationQuery | composition=CompositionQuery)?;
+	//	modifier=QueryModifier? node=Node ('.' specialization=LocationQuery | composition=CompositionQuery)?;
 	public LocationQueryElements getLocationQueryAccess() {
 		return pLocationQuery;
 	}
@@ -2233,7 +2266,8 @@ public class AspectLangGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//CompositionQuery:
-	//	{CompositionQuery} modifier=QueryModifier? '{' subQueries+=LocationQuery* '}';
+	//	{CompositionQuery}
+	//	'{' subQueries+=LocationQuery* '}';
 	public CompositionQueryElements getCompositionQueryAccess() {
 		return pCompositionQuery;
 	}

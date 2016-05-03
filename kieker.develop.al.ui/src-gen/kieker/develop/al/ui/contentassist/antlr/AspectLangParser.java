@@ -40,7 +40,8 @@ public class AspectLangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getAspectModelAccess().getAlternatives_4(), "rule__AspectModel__Alternatives_4");
 					put(grammarAccess.getValueAccess().getAlternatives(), "rule__Value__Alternatives");
 					put(grammarAccess.getPropertyAccess().getAlternatives(), "rule__Property__Alternatives");
-					put(grammarAccess.getLocationQueryAccess().getAlternatives_1(), "rule__LocationQuery__Alternatives_1");
+					put(grammarAccess.getQueryAccess().getAlternatives(), "rule__Query__Alternatives");
+					put(grammarAccess.getLocationQueryAccess().getAlternatives_2(), "rule__LocationQuery__Alternatives_2");
 					put(grammarAccess.getOperationQueryAccess().getAlternatives_3(), "rule__OperationQuery__Alternatives_3");
 					put(grammarAccess.getParameterQueryAccess().getAlternatives_2(), "rule__ParameterQuery__Alternatives_2");
 					put(grammarAccess.getNodeAccess().getAlternatives_0(), "rule__Node__Alternatives_0");
@@ -82,7 +83,7 @@ public class AspectLangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getAnnotationAccess().getGroup(), "rule__Annotation__Group__0");
 					put(grammarAccess.getAnnotationAccess().getGroup_3(), "rule__Annotation__Group_3__0");
 					put(grammarAccess.getLocationQueryAccess().getGroup(), "rule__LocationQuery__Group__0");
-					put(grammarAccess.getLocationQueryAccess().getGroup_1_0(), "rule__LocationQuery__Group_1_0__0");
+					put(grammarAccess.getLocationQueryAccess().getGroup_2_0(), "rule__LocationQuery__Group_2_0__0");
 					put(grammarAccess.getCompositionQueryAccess().getGroup(), "rule__CompositionQuery__Group__0");
 					put(grammarAccess.getOperationQueryAccess().getGroup(), "rule__OperationQuery__Group__0");
 					put(grammarAccess.getOperationQueryAccess().getGroup_3_0(), "rule__OperationQuery__Group_3_0__0");
@@ -147,11 +148,11 @@ public class AspectLangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getAnnotationAccess().getNameAssignment_1(), "rule__Annotation__NameAssignment_1");
 					put(grammarAccess.getAnnotationAccess().getTechnologiesAssignment_2(), "rule__Annotation__TechnologiesAssignment_2");
 					put(grammarAccess.getAnnotationAccess().getTechnologiesAssignment_3_1(), "rule__Annotation__TechnologiesAssignment_3_1");
-					put(grammarAccess.getLocationQueryAccess().getNodeAssignment_0(), "rule__LocationQuery__NodeAssignment_0");
-					put(grammarAccess.getLocationQueryAccess().getSpecializationAssignment_1_0_1(), "rule__LocationQuery__SpecializationAssignment_1_0_1");
-					put(grammarAccess.getLocationQueryAccess().getCompositionAssignment_1_1(), "rule__LocationQuery__CompositionAssignment_1_1");
-					put(grammarAccess.getCompositionQueryAccess().getModifierAssignment_1(), "rule__CompositionQuery__ModifierAssignment_1");
-					put(grammarAccess.getCompositionQueryAccess().getSubQueriesAssignment_3(), "rule__CompositionQuery__SubQueriesAssignment_3");
+					put(grammarAccess.getLocationQueryAccess().getModifierAssignment_0(), "rule__LocationQuery__ModifierAssignment_0");
+					put(grammarAccess.getLocationQueryAccess().getNodeAssignment_1(), "rule__LocationQuery__NodeAssignment_1");
+					put(grammarAccess.getLocationQueryAccess().getSpecializationAssignment_2_0_1(), "rule__LocationQuery__SpecializationAssignment_2_0_1");
+					put(grammarAccess.getLocationQueryAccess().getCompositionAssignment_2_1(), "rule__LocationQuery__CompositionAssignment_2_1");
+					put(grammarAccess.getCompositionQueryAccess().getSubQueriesAssignment_2(), "rule__CompositionQuery__SubQueriesAssignment_2");
 					put(grammarAccess.getOperationQueryAccess().getModifierAssignment_1(), "rule__OperationQuery__ModifierAssignment_1");
 					put(grammarAccess.getOperationQueryAccess().getReturnTypeAssignment_2(), "rule__OperationQuery__ReturnTypeAssignment_2");
 					put(grammarAccess.getOperationQueryAccess().getOperationReferenceAssignment_3_0_0(), "rule__OperationQuery__OperationReferenceAssignment_3_0_0");

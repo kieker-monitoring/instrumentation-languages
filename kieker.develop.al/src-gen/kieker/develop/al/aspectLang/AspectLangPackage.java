@@ -724,6 +724,25 @@ public interface AspectLangPackage extends EPackage
   int ANNOTATION_FEATURE_COUNT = 2;
 
   /**
+   * The meta object id for the '{@link kieker.develop.al.aspectLang.impl.QueryImpl <em>Query</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see kieker.develop.al.aspectLang.impl.QueryImpl
+   * @see kieker.develop.al.aspectLang.impl.AspectLangPackageImpl#getQuery()
+   * @generated
+   */
+  int QUERY = 18;
+
+  /**
+   * The number of structural features of the '<em>Query</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int QUERY_FEATURE_COUNT = 0;
+
+  /**
    * The meta object id for the '{@link kieker.develop.al.aspectLang.impl.LocationQueryImpl <em>Location Query</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -731,7 +750,16 @@ public interface AspectLangPackage extends EPackage
    * @see kieker.develop.al.aspectLang.impl.AspectLangPackageImpl#getLocationQuery()
    * @generated
    */
-  int LOCATION_QUERY = 18;
+  int LOCATION_QUERY = 19;
+
+  /**
+   * The feature id for the '<em><b>Modifier</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int LOCATION_QUERY__MODIFIER = QUERY_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Node</b></em>' containment reference.
@@ -740,7 +768,7 @@ public interface AspectLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LOCATION_QUERY__NODE = 0;
+  int LOCATION_QUERY__NODE = QUERY_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Specialization</b></em>' containment reference.
@@ -749,7 +777,7 @@ public interface AspectLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LOCATION_QUERY__SPECIALIZATION = 1;
+  int LOCATION_QUERY__SPECIALIZATION = QUERY_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Composition</b></em>' containment reference.
@@ -758,7 +786,7 @@ public interface AspectLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LOCATION_QUERY__COMPOSITION = 2;
+  int LOCATION_QUERY__COMPOSITION = QUERY_FEATURE_COUNT + 3;
 
   /**
    * The number of structural features of the '<em>Location Query</em>' class.
@@ -767,7 +795,7 @@ public interface AspectLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int LOCATION_QUERY_FEATURE_COUNT = 3;
+  int LOCATION_QUERY_FEATURE_COUNT = QUERY_FEATURE_COUNT + 4;
 
   /**
    * The meta object id for the '{@link kieker.develop.al.aspectLang.impl.CompositionQueryImpl <em>Composition Query</em>}' class.
@@ -777,16 +805,7 @@ public interface AspectLangPackage extends EPackage
    * @see kieker.develop.al.aspectLang.impl.AspectLangPackageImpl#getCompositionQuery()
    * @generated
    */
-  int COMPOSITION_QUERY = 19;
-
-  /**
-   * The feature id for the '<em><b>Modifier</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMPOSITION_QUERY__MODIFIER = 0;
+  int COMPOSITION_QUERY = 20;
 
   /**
    * The feature id for the '<em><b>Sub Queries</b></em>' containment reference list.
@@ -795,7 +814,7 @@ public interface AspectLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMPOSITION_QUERY__SUB_QUERIES = 1;
+  int COMPOSITION_QUERY__SUB_QUERIES = QUERY_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Composition Query</em>' class.
@@ -804,7 +823,7 @@ public interface AspectLangPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMPOSITION_QUERY_FEATURE_COUNT = 2;
+  int COMPOSITION_QUERY_FEATURE_COUNT = QUERY_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link kieker.develop.al.aspectLang.impl.OperationQueryImpl <em>Operation Query</em>}' class.
@@ -814,7 +833,7 @@ public interface AspectLangPackage extends EPackage
    * @see kieker.develop.al.aspectLang.impl.AspectLangPackageImpl#getOperationQuery()
    * @generated
    */
-  int OPERATION_QUERY = 20;
+  int OPERATION_QUERY = 21;
 
   /**
    * The feature id for the '<em><b>Modifier</b></em>' reference.
@@ -869,7 +888,7 @@ public interface AspectLangPackage extends EPackage
    * @see kieker.develop.al.aspectLang.impl.AspectLangPackageImpl#getParameterQuery()
    * @generated
    */
-  int PARAMETER_QUERY = 21;
+  int PARAMETER_QUERY = 22;
 
   /**
    * The feature id for the '<em><b>Modifier</b></em>' reference.
@@ -915,7 +934,7 @@ public interface AspectLangPackage extends EPackage
    * @see kieker.develop.al.aspectLang.impl.AspectLangPackageImpl#getNode()
    * @generated
    */
-  int NODE = 22;
+  int NODE = 23;
 
   /**
    * The feature id for the '<em><b>Constraint</b></em>' containment reference.
@@ -943,7 +962,7 @@ public interface AspectLangPackage extends EPackage
    * @see kieker.develop.al.aspectLang.impl.AspectLangPackageImpl#getContainerNode()
    * @generated
    */
-  int CONTAINER_NODE = 23;
+  int CONTAINER_NODE = 24;
 
   /**
    * The feature id for the '<em><b>Constraint</b></em>' containment reference.
@@ -980,7 +999,7 @@ public interface AspectLangPackage extends EPackage
    * @see kieker.develop.al.aspectLang.impl.AspectLangPackageImpl#getWildcardNode()
    * @generated
    */
-  int WILDCARD_NODE = 24;
+  int WILDCARD_NODE = 25;
 
   /**
    * The feature id for the '<em><b>Constraint</b></em>' containment reference.
@@ -1008,7 +1027,7 @@ public interface AspectLangPackage extends EPackage
    * @see kieker.develop.al.aspectLang.impl.AspectLangPackageImpl#getSubPathNode()
    * @generated
    */
-  int SUB_PATH_NODE = 25;
+  int SUB_PATH_NODE = 26;
 
   /**
    * The feature id for the '<em><b>Constraint</b></em>' containment reference.
@@ -1036,7 +1055,7 @@ public interface AspectLangPackage extends EPackage
    * @see kieker.develop.al.aspectLang.impl.AspectLangPackageImpl#getParentNode()
    * @generated
    */
-  int PARENT_NODE = 26;
+  int PARENT_NODE = 27;
 
   /**
    * The feature id for the '<em><b>Constraint</b></em>' containment reference.
@@ -1064,7 +1083,7 @@ public interface AspectLangPackage extends EPackage
    * @see kieker.develop.al.aspectLang.impl.AspectLangPackageImpl#getPropertyConstraint()
    * @generated
    */
-  int PROPERTY_CONSTRAINT = 27;
+  int PROPERTY_CONSTRAINT = 28;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1110,7 +1129,7 @@ public interface AspectLangPackage extends EPackage
    * @see kieker.develop.al.aspectLang.impl.AspectLangPackageImpl#getPropertyConstraintCompare()
    * @generated
    */
-  int PROPERTY_CONSTRAINT_COMPARE = 28;
+  int PROPERTY_CONSTRAINT_COMPARE = 29;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1165,7 +1184,7 @@ public interface AspectLangPackage extends EPackage
    * @see kieker.develop.al.aspectLang.impl.AspectLangPackageImpl#getConstraintElement()
    * @generated
    */
-  int CONSTRAINT_ELEMENT = 29;
+  int CONSTRAINT_ELEMENT = 30;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1220,7 +1239,7 @@ public interface AspectLangPackage extends EPackage
    * @see kieker.develop.al.aspectLang.impl.AspectLangPackageImpl#getLocalQuery()
    * @generated
    */
-  int LOCAL_QUERY = 30;
+  int LOCAL_QUERY = 31;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1302,7 +1321,7 @@ public interface AspectLangPackage extends EPackage
    * @see kieker.develop.al.aspectLang.impl.AspectLangPackageImpl#getModelProperty()
    * @generated
    */
-  int MODEL_PROPERTY = 31;
+  int MODEL_PROPERTY = 32;
 
   /**
    * The feature id for the '<em><b>Reference</b></em>' reference.
@@ -1330,7 +1349,7 @@ public interface AspectLangPackage extends EPackage
    * @see kieker.develop.al.aspectLang.impl.AspectLangPackageImpl#getTypeof()
    * @generated
    */
-  int TYPEOF = 32;
+  int TYPEOF = 33;
 
   /**
    * The feature id for the '<em><b>Reference</b></em>' containment reference.
@@ -1358,7 +1377,7 @@ public interface AspectLangPackage extends EPackage
    * @see kieker.develop.al.aspectLang.impl.AspectLangPackageImpl#getLiteral()
    * @generated
    */
-  int LITERAL = 33;
+  int LITERAL = 34;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1413,7 +1432,7 @@ public interface AspectLangPackage extends EPackage
    * @see kieker.develop.al.aspectLang.impl.AspectLangPackageImpl#getFloatLiteral()
    * @generated
    */
-  int FLOAT_LITERAL = 34;
+  int FLOAT_LITERAL = 35;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1477,7 +1496,7 @@ public interface AspectLangPackage extends EPackage
    * @see kieker.develop.al.aspectLang.impl.AspectLangPackageImpl#getIntLiteral()
    * @generated
    */
-  int INT_LITERAL = 35;
+  int INT_LITERAL = 36;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1541,7 +1560,7 @@ public interface AspectLangPackage extends EPackage
    * @see kieker.develop.al.aspectLang.impl.AspectLangPackageImpl#getStringLiteral()
    * @generated
    */
-  int STRING_LITERAL = 36;
+  int STRING_LITERAL = 37;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1605,7 +1624,7 @@ public interface AspectLangPackage extends EPackage
    * @see kieker.develop.al.aspectLang.impl.AspectLangPackageImpl#getTypeReference()
    * @generated
    */
-  int TYPE_REFERENCE = 37;
+  int TYPE_REFERENCE = 38;
 
   /**
    * The feature id for the '<em><b>Context</b></em>' reference.
@@ -1651,7 +1670,7 @@ public interface AspectLangPackage extends EPackage
    * @see kieker.develop.al.aspectLang.impl.AspectLangPackageImpl#getInsertionPoint()
    * @generated
    */
-  int INSERTION_POINT = 38;
+  int INSERTION_POINT = 39;
 
   /**
    * The meta object id for the '{@link kieker.develop.al.aspectLang.InternalFunction <em>Internal Function</em>}' enum.
@@ -1661,7 +1680,7 @@ public interface AspectLangPackage extends EPackage
    * @see kieker.develop.al.aspectLang.impl.AspectLangPackageImpl#getInternalFunction()
    * @generated
    */
-  int INTERNAL_FUNCTION = 39;
+  int INTERNAL_FUNCTION = 40;
 
   /**
    * The meta object id for the '{@link kieker.develop.al.aspectLang.ReflectionFunction <em>Reflection Function</em>}' enum.
@@ -1671,7 +1690,7 @@ public interface AspectLangPackage extends EPackage
    * @see kieker.develop.al.aspectLang.impl.AspectLangPackageImpl#getReflectionFunction()
    * @generated
    */
-  int REFLECTION_FUNCTION = 40;
+  int REFLECTION_FUNCTION = 41;
 
   /**
    * The meta object id for the '{@link kieker.develop.al.aspectLang.Technology <em>Technology</em>}' enum.
@@ -1681,7 +1700,7 @@ public interface AspectLangPackage extends EPackage
    * @see kieker.develop.al.aspectLang.impl.AspectLangPackageImpl#getTechnology()
    * @generated
    */
-  int TECHNOLOGY = 41;
+  int TECHNOLOGY = 42;
 
   /**
    * The meta object id for the '{@link kieker.develop.al.aspectLang.QueryModifier <em>Query Modifier</em>}' enum.
@@ -1691,7 +1710,7 @@ public interface AspectLangPackage extends EPackage
    * @see kieker.develop.al.aspectLang.impl.AspectLangPackageImpl#getQueryModifier()
    * @generated
    */
-  int QUERY_MODIFIER = 42;
+  int QUERY_MODIFIER = 43;
 
   /**
    * The meta object id for the '{@link kieker.develop.al.aspectLang.LogicOperator <em>Logic Operator</em>}' enum.
@@ -1701,7 +1720,7 @@ public interface AspectLangPackage extends EPackage
    * @see kieker.develop.al.aspectLang.impl.AspectLangPackageImpl#getLogicOperator()
    * @generated
    */
-  int LOGIC_OPERATOR = 43;
+  int LOGIC_OPERATOR = 44;
 
   /**
    * The meta object id for the '{@link kieker.develop.al.aspectLang.CompareOperator <em>Compare Operator</em>}' enum.
@@ -1711,7 +1730,7 @@ public interface AspectLangPackage extends EPackage
    * @see kieker.develop.al.aspectLang.impl.AspectLangPackageImpl#getCompareOperator()
    * @generated
    */
-  int COMPARE_OPERATOR = 44;
+  int COMPARE_OPERATOR = 45;
 
 
   /**
@@ -2291,6 +2310,16 @@ public interface AspectLangPackage extends EPackage
   EAttribute getAnnotation_Technologies();
 
   /**
+   * Returns the meta object for class '{@link kieker.develop.al.aspectLang.Query <em>Query</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Query</em>'.
+   * @see kieker.develop.al.aspectLang.Query
+   * @generated
+   */
+  EClass getQuery();
+
+  /**
    * Returns the meta object for class '{@link kieker.develop.al.aspectLang.LocationQuery <em>Location Query</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2299,6 +2328,17 @@ public interface AspectLangPackage extends EPackage
    * @generated
    */
   EClass getLocationQuery();
+
+  /**
+   * Returns the meta object for the attribute '{@link kieker.develop.al.aspectLang.LocationQuery#getModifier <em>Modifier</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Modifier</em>'.
+   * @see kieker.develop.al.aspectLang.LocationQuery#getModifier()
+   * @see #getLocationQuery()
+   * @generated
+   */
+  EAttribute getLocationQuery_Modifier();
 
   /**
    * Returns the meta object for the containment reference '{@link kieker.develop.al.aspectLang.LocationQuery#getNode <em>Node</em>}'.
@@ -2342,17 +2382,6 @@ public interface AspectLangPackage extends EPackage
    * @generated
    */
   EClass getCompositionQuery();
-
-  /**
-   * Returns the meta object for the attribute '{@link kieker.develop.al.aspectLang.CompositionQuery#getModifier <em>Modifier</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Modifier</em>'.
-   * @see kieker.develop.al.aspectLang.CompositionQuery#getModifier()
-   * @see #getCompositionQuery()
-   * @generated
-   */
-  EAttribute getCompositionQuery_Modifier();
 
   /**
    * Returns the meta object for the containment reference list '{@link kieker.develop.al.aspectLang.CompositionQuery#getSubQueries <em>Sub Queries</em>}'.
@@ -3371,6 +3400,16 @@ public interface AspectLangPackage extends EPackage
     EAttribute ANNOTATION__TECHNOLOGIES = eINSTANCE.getAnnotation_Technologies();
 
     /**
+     * The meta object literal for the '{@link kieker.develop.al.aspectLang.impl.QueryImpl <em>Query</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see kieker.develop.al.aspectLang.impl.QueryImpl
+     * @see kieker.develop.al.aspectLang.impl.AspectLangPackageImpl#getQuery()
+     * @generated
+     */
+    EClass QUERY = eINSTANCE.getQuery();
+
+    /**
      * The meta object literal for the '{@link kieker.develop.al.aspectLang.impl.LocationQueryImpl <em>Location Query</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -3379,6 +3418,14 @@ public interface AspectLangPackage extends EPackage
      * @generated
      */
     EClass LOCATION_QUERY = eINSTANCE.getLocationQuery();
+
+    /**
+     * The meta object literal for the '<em><b>Modifier</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute LOCATION_QUERY__MODIFIER = eINSTANCE.getLocationQuery_Modifier();
 
     /**
      * The meta object literal for the '<em><b>Node</b></em>' containment reference feature.
@@ -3413,14 +3460,6 @@ public interface AspectLangPackage extends EPackage
      * @generated
      */
     EClass COMPOSITION_QUERY = eINSTANCE.getCompositionQuery();
-
-    /**
-     * The meta object literal for the '<em><b>Modifier</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute COMPOSITION_QUERY__MODIFIER = eINSTANCE.getCompositionQuery_Modifier();
 
     /**
      * The meta object literal for the '<em><b>Sub Queries</b></em>' containment reference list feature.

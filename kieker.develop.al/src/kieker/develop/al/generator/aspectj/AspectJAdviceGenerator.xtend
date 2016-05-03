@@ -10,6 +10,7 @@ import kieker.develop.al.aspectLang.UtilizeAdvice
 import kieker.develop.al.aspectLang.Value
 
 import static extension kieker.develop.al.generator.CommonJavaTemplates.*
+import static extension kieker.develop.al.generator.aspectj.NameResolver.*
 
 class AspectJAdviceGenerator implements IGenerator<UtilizeAdvice, CharSequence> {
 	
@@ -38,7 +39,7 @@ class AspectJAdviceGenerator implements IGenerator<UtilizeAdvice, CharSequence> 
 			«IF traceAPI»import kieker.common.record.flow.trace.TraceMetadata;«ENDIF»
 			
 			@Aspect
-			public abstract class Abstract«input.advice.name»Advice«index» extends AbstractAspectJProbe {
+			public abstract class «input.advice.getAdviceClassName(index)» extends AbstractAspectJProbe {
 				private static final IMonitoringController CTRLINST = MonitoringController.getInstance();
 				private static final ITimeSource TIMESOURCE = CTRLINST.getTimeSource();
 				«IF traceAPI»private static final TraceRegistry TRACEREGISTRY = TraceRegistry.INSTANCE;«ENDIF»

@@ -25,6 +25,8 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.util.Strings;
 
 import kieker.develop.al.aspectLang.ApplicationModel;
+import kieker.develop.al.mapping.Containment;
+import kieker.develop.al.mapping.MappingModel;
 import kieker.develop.al.mapping.NamedElement;
 import kieker.develop.al.mapping.NamedType;
 
@@ -72,8 +74,12 @@ public class ForeignModelTypeProvider implements Resource.Factory, IForeignModel
 				URI.createURI(ForeignModelTypeURIHelper.PROTOCOL + ":" + ForeignModelTypeURIHelper.ELEMENTS), true);
 		final Collection<NamedElement> result = new ArrayList<NamedElement>();
 		for (final EObject container : resource.getContents()) {
-			if (container instanceof NamedElement) {
-				result.add((NamedElement) container);
+			if (container instanceof MappingModel) {
+				for (final Containment type : ((MappingModel) container).getContents()) {
+					if (type instanceof NamedElement) {
+						result.add((NamedElement) type);
+					}
+				}
 			}
 		}
 		return result;

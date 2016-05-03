@@ -165,6 +165,11 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
         return createAnnotationAdapter();
       }
       @Override
+      public Adapter caseQuery(Query object)
+      {
+        return createQueryAdapter();
+      }
+      @Override
       public Adapter caseLocationQuery(LocationQuery object)
       {
         return createLocationQueryAdapter();
@@ -552,6 +557,21 @@ public class AspectLangAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createAnnotationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link kieker.develop.al.aspectLang.Query <em>Query</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see kieker.develop.al.aspectLang.Query
+   * @generated
+   */
+  public Adapter createQueryAdapter()
   {
     return null;
   }

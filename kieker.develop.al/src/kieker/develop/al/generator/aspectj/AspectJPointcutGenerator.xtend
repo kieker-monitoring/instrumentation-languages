@@ -1,10 +1,10 @@
 package kieker.develop.al.generator.aspectj
 
 import de.cau.cs.se.geco.architecture.framework.IGenerator
+import java.util.Collection
+import javax.xml.parsers.DocumentBuilderFactory
 import kieker.develop.al.aspectLang.Aspect
-import kieker.develop.al.aspectLang.Collector
 import kieker.develop.al.aspectLang.ContainerNode
-import kieker.develop.al.aspectLang.InsertionPoint
 import kieker.develop.al.aspectLang.LocationQuery
 import kieker.develop.al.aspectLang.Node
 import kieker.develop.al.aspectLang.Pointcut
@@ -16,18 +16,19 @@ import kieker.develop.al.mapping.OperationModifier
 import kieker.develop.al.mapping.Parameter
 import kieker.develop.al.mapping.Type
 import kieker.develop.al.mapping.TypeReference
-import java.util.Collection
-import javax.xml.parsers.DocumentBuilderFactory
 import org.w3c.dom.Document
 import org.w3c.dom.Element
 
+import static extension kieker.develop.al.generator.aspectj.NameResolver.*
+import kieker.develop.al.aspectLang.Advice
+
 class AspectJPointcutGenerator implements IGenerator<Collection<Aspect>,Document> {
 	
+	val docFactory = DocumentBuilderFactory.newInstance()
+	val docBuilder = docFactory.newDocumentBuilder()
+	val doc = docBuilder.newDocument()
+	
 	override generate(Collection<Aspect> input) {
-		val docFactory = DocumentBuilderFactory.newInstance()
-		val docBuilder = docFactory.newDocumentBuilder()
-		val doc = docBuilder.newDocument()
-		
 		val aspectjElement = doc.createElement("aspectj")
 		doc.appendChild(aspectjElement)
 		
@@ -44,25 +45,51 @@ class AspectJPointcutGenerator implements IGenerator<Collection<Aspect>,Document
 		val aspectsElement = doc.createElement("aspects")
 		aspectjElement.appendChild(aspectsElement)
 		for (Aspect aspect : input) {
-			aspect.advices.forEach[it.advice.collectors.filter[it.insertionPoint == InsertionPoint.^BEFORE].createDataCollectorAspect(doc, aspectsElement)]
-			aspect.advices.forEach[it.advice.collectors.filter[it.insertionPoint == InsertionPoint.^AFTER].createDataCollectorAspect(doc, aspectsElement)]
+			aspect.advices.forEach[advice,i | aspectsElement.appendChild(aspectsElement.createAspect(advice.advice, i))]
+		}
+		for (Aspect aspect : input) {
+			aspect.advices.forEach[advice,i | 
+				val concreteAspect = aspectsElement.createConcreteAspect(advice.advice, i)
+				concreteAspect.appendChild(aspect.pointcut.createPointcut)
+				aspectsElement.appendChild(concreteAspect)
+			]
 		}
 				
 		return doc
 	}
 	
-	/**
-	 * Create an aop.xml aspect for a data collector probe.
-	 * 
-	 * @param list list of collectors
-	 * @param doc the document
-	 * @param parent the parent node of the aspect
-	 */
-	private def void createDataCollectorAspect(Iterable<Collector> list, Document doc, Element parent) {
-		val aspect = doc.createElement("aspect")
-		//aspect.setAttribute("name","record types are " + list.map[it.type.name].join(', '))
-		parent.appendChild(aspect)
+	private def createPointcut(Pointcut pointcut) {
+		val pNode = doc.createElement("pointcut")
+		pNode.setAttribute("name", pointcut.name)
+		pNode.setAttribute("expression", pointcut.createExpression)
+		
+		return pNode
 	}
+	
+	private def createExpression(Pointcut pointcut) {
+		// flatten pointcut id patterns
+		
+		
+		val result = '''«pointcut.model»'''
+		
+		return result
+	}
+	
+	private def createAspect(Element parent, Advice advice, int i) {
+		val aspect = doc.createElement("aspect")
+		aspect.setAttribute("name", advice.getAdviceClassName(i).toString)
+		return aspect
+	}
+	
+	private def createConcreteAspect(Element parent, Advice advice, int i) {
+		val aspect = doc.createElement("concrete-aspect")
+		aspect.setAttribute("name", advice.getConcreteAdviceClassName(i).toString)
+		aspect.setAttribute("extends",  advice.getAdviceClassName(i).toString)
+										
+		return aspect
+	}
+	
+
 	
 	/**
 	 * Compute the query for model nodes.

@@ -6,6 +6,7 @@ import kieker.develop.al.aspectLang.AspectLangPackage;
 import kieker.develop.al.aspectLang.CompositionQuery;
 import kieker.develop.al.aspectLang.LocationQuery;
 import kieker.develop.al.aspectLang.Node;
+import kieker.develop.al.aspectLang.QueryModifier;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -14,7 +15,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link kieker.develop.al.aspectLang.impl.LocationQueryImpl#getModifier <em>Modifier</em>}</li>
  *   <li>{@link kieker.develop.al.aspectLang.impl.LocationQueryImpl#getNode <em>Node</em>}</li>
  *   <li>{@link kieker.develop.al.aspectLang.impl.LocationQueryImpl#getSpecialization <em>Specialization</em>}</li>
  *   <li>{@link kieker.develop.al.aspectLang.impl.LocationQueryImpl#getComposition <em>Composition</em>}</li>
@@ -31,8 +32,28 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public class LocationQueryImpl extends MinimalEObjectImpl.Container implements LocationQuery
+public class LocationQueryImpl extends QueryImpl implements LocationQuery
 {
+  /**
+   * The default value of the '{@link #getModifier() <em>Modifier</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getModifier()
+   * @generated
+   * @ordered
+   */
+  protected static final QueryModifier MODIFIER_EDEFAULT = QueryModifier.INCLUDE;
+
+  /**
+   * The cached value of the '{@link #getModifier() <em>Modifier</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getModifier()
+   * @generated
+   * @ordered
+   */
+  protected QueryModifier modifier = MODIFIER_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getNode() <em>Node</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -82,6 +103,29 @@ public class LocationQueryImpl extends MinimalEObjectImpl.Container implements L
   protected EClass eStaticClass()
   {
     return AspectLangPackage.Literals.LOCATION_QUERY;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public QueryModifier getModifier()
+  {
+    return modifier;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setModifier(QueryModifier newModifier)
+  {
+    QueryModifier oldModifier = modifier;
+    modifier = newModifier == null ? MODIFIER_EDEFAULT : newModifier;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, AspectLangPackage.LOCATION_QUERY__MODIFIER, oldModifier, modifier));
   }
 
   /**
@@ -258,6 +302,8 @@ public class LocationQueryImpl extends MinimalEObjectImpl.Container implements L
   {
     switch (featureID)
     {
+      case AspectLangPackage.LOCATION_QUERY__MODIFIER:
+        return getModifier();
       case AspectLangPackage.LOCATION_QUERY__NODE:
         return getNode();
       case AspectLangPackage.LOCATION_QUERY__SPECIALIZATION:
@@ -278,6 +324,9 @@ public class LocationQueryImpl extends MinimalEObjectImpl.Container implements L
   {
     switch (featureID)
     {
+      case AspectLangPackage.LOCATION_QUERY__MODIFIER:
+        setModifier((QueryModifier)newValue);
+        return;
       case AspectLangPackage.LOCATION_QUERY__NODE:
         setNode((Node)newValue);
         return;
@@ -301,6 +350,9 @@ public class LocationQueryImpl extends MinimalEObjectImpl.Container implements L
   {
     switch (featureID)
     {
+      case AspectLangPackage.LOCATION_QUERY__MODIFIER:
+        setModifier(MODIFIER_EDEFAULT);
+        return;
       case AspectLangPackage.LOCATION_QUERY__NODE:
         setNode((Node)null);
         return;
@@ -324,6 +376,8 @@ public class LocationQueryImpl extends MinimalEObjectImpl.Container implements L
   {
     switch (featureID)
     {
+      case AspectLangPackage.LOCATION_QUERY__MODIFIER:
+        return modifier != MODIFIER_EDEFAULT;
       case AspectLangPackage.LOCATION_QUERY__NODE:
         return node != null;
       case AspectLangPackage.LOCATION_QUERY__SPECIALIZATION:
@@ -332,6 +386,23 @@ public class LocationQueryImpl extends MinimalEObjectImpl.Container implements L
         return composition != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (modifier: ");
+    result.append(modifier);
+    result.append(')');
+    return result.toString();
   }
 
 } //LocationQueryImpl
