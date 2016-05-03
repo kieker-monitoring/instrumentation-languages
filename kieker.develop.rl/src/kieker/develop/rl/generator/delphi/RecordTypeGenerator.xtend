@@ -23,7 +23,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	
 	override getOutletType() '''delphi'''
 	
-	override createContent(RecordType type, String author, String version) {
+	override createContent(RecordType type, String author, String version, String headerComment) {
 		''''''
 	}
 	

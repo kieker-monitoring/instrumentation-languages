@@ -87,10 +87,22 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    * Create a perl based record for kieker
    */
   @Override
-  public CharSequence createContent(final RecordType type, final String author, final String version) {
+  public CharSequence createContent(final RecordType type, final String author, final String version, final String headerComment) {
     StringConcatenation _builder = new StringConcatenation();
+    {
+      boolean _equals = headerComment.equals("");
+      boolean _not = (!_equals);
+      if (_not) {
+        Calendar _instance = Calendar.getInstance();
+        int _get = _instance.get(Calendar.YEAR);
+        String _string = Integer.valueOf(_get).toString();
+        String _replace = headerComment.replace("THIS-YEAR", _string);
+        _builder.append(_replace, "");
+        _builder.newLineIfNotEmpty();
+      }
+    }
     _builder.append("use strict;");
-    _builder.newLine();
+    _builder.newLineIfNotEmpty();
     _builder.append("use warnings;");
     _builder.newLine();
     _builder.newLine();
@@ -195,9 +207,9 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     _builder.newLine();
     _builder.newLine();
     _builder.append("Copyright ");
-    Calendar _instance = Calendar.getInstance();
-    int _get = _instance.get(Calendar.YEAR);
-    _builder.append(_get, "");
+    Calendar _instance_1 = Calendar.getInstance();
+    int _get_1 = _instance_1.get(Calendar.YEAR);
+    _builder.append(_get_1, "");
     _builder.append(" Kieker Project (http://kieker-monitoring.net)");
     _builder.newLineIfNotEmpty();
     _builder.newLine();

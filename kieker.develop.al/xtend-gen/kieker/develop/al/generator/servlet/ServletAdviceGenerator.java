@@ -136,7 +136,7 @@ public class ServletAdviceGenerator implements IGenerator<Advice, CharSequence> 
       _builder.append("public ");
       String _name_3 = input.getName();
       _builder.append(_name_3, "\t");
-      _builder.append("() {");
+      _builder.append("Filter() {");
       _builder.newLineIfNotEmpty();
       _builder.append("\t\t");
       _builder.append("// nothing to be done here at the moment.");

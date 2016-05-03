@@ -7,9 +7,9 @@ import kieker.develop.rl.recordLang.BaseType;
 import kieker.develop.rl.recordLang.Classifier;
 import kieker.develop.rl.recordLang.Model;
 import kieker.develop.rl.recordLang.RecordType;
+import kieker.develop.rl.typing.BaseTypes;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.xbase.lib.Exceptions;
 
 /**
  * @author Reiner Jung
@@ -49,49 +49,43 @@ public class CommonCFunctionsExtension {
    * 
    * @returns a C type name
    */
-  public static String createTypeName(final Classifier classifier) {
-    try {
-      String _switchResult = null;
-      BaseType _type = classifier.getType();
-      String _name = _type.getName();
-      switch (_name) {
-        case "key":
+  public static String createTypeName(final Classifier classifier) throws InternalErrorException {
+    String _switchResult = null;
+    BaseType _type = classifier.getType();
+    BaseTypes _typeEnum = BaseTypes.getTypeEnum(_type);
+    if (_typeEnum != null) {
+      switch (_typeEnum) {
+        case STRING:
           _switchResult = "const char*";
           break;
-        case "string":
-          _switchResult = "const char*";
-          break;
-        case "byte":
+        case CHAR:
           _switchResult = "char";
           break;
-        case "short":
+        case SHORT:
           _switchResult = "short";
           break;
-        case "int":
+        case INT:
           _switchResult = "long";
           break;
-        case "long":
+        case LONG:
           _switchResult = "long long";
           break;
-        case "float":
+        case FLOAT:
           _switchResult = "float";
           break;
-        case "double":
+        case DOUBLE:
           _switchResult = "double";
           break;
-        case "boolean":
+        case BOOLEAN:
           _switchResult = "char";
           break;
+        case BYTE:
+          _switchResult = "unsigned char";
+          break;
         default:
-          BaseType _type_1 = classifier.getType();
-          String _name_1 = _type_1.getName();
-          String _plus = ("Type " + _name_1);
-          String _plus_1 = (_plus + " is not supported.");
-          throw new InternalErrorException(_plus_1);
+          break;
       }
-      return _switchResult;
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
     }
+    return _switchResult;
   }
 }

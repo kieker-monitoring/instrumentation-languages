@@ -43,9 +43,10 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	/**
 	 * Create a perl based record for kieker
 	 */
-	override createContent(RecordType type, String author, String version) {
+	override createContent(RecordType type, String author, String version, String headerComment) {
 		'''
-		use strict;
+		«IF (!headerComment.equals(""))»«headerComment.replace("THIS-YEAR", Calendar.getInstance().get(Calendar.YEAR).toString)»
+		«ENDIF»use strict;
 		use warnings;
 		
 		package «type.recordName»;

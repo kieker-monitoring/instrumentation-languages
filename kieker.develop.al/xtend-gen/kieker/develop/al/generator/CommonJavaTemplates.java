@@ -215,31 +215,35 @@ public class CommonJavaTemplates {
     RecordType _type = event.getType();
     List<Property> _collectAllDataProperties = PropertyEvaluation.collectAllDataProperties(_type);
     final Procedure2<Property, Integer> _function = (Property property, Integer i) -> {
-      EList<Value> _initializations = event.getInitializations();
-      final Value value = _initializations.get((i).intValue());
-      final CharSequence valueText = CommonJavaTemplates.createValue(value, parameterAssignments);
-      Set<CharSequence> _keySet = data.keySet();
-      final Function1<CharSequence, Boolean> _function_1 = (CharSequence it) -> {
-        String _string = it.toString();
-        String _string_1 = valueText.toString();
-        return Boolean.valueOf(_string.equals(_string_1));
-      };
-      boolean _exists = IterableExtensions.<CharSequence>exists(_keySet, _function_1);
-      boolean _not = (!_exists);
-      if (_not) {
-        StringConcatenation _builder = new StringConcatenation();
-        _builder.append("final ");
-        Classifier _type_1 = property.getType();
-        BaseType _type_2 = _type_1.getType();
-        String _createPrimitiveTypeName = IRL2JavaTypeMappingExtensions.createPrimitiveTypeName(_type_2);
-        _builder.append(_createPrimitiveTypeName, "");
-        _builder.append(" ");
-        CharSequence _createValueName = CommonJavaTemplates.createValueName(property);
-        _builder.append(_createValueName, "");
-        _builder.append(" = ");
-        _builder.append(valueText, "");
-        _builder.append(";");
-        data.put(valueText, _builder);
+      try {
+        EList<Value> _initializations = event.getInitializations();
+        final Value value = _initializations.get((i).intValue());
+        final CharSequence valueText = CommonJavaTemplates.createValue(value, parameterAssignments);
+        Set<CharSequence> _keySet = data.keySet();
+        final Function1<CharSequence, Boolean> _function_1 = (CharSequence it) -> {
+          String _string = it.toString();
+          String _string_1 = valueText.toString();
+          return Boolean.valueOf(_string.equals(_string_1));
+        };
+        boolean _exists = IterableExtensions.<CharSequence>exists(_keySet, _function_1);
+        boolean _not = (!_exists);
+        if (_not) {
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("final ");
+          Classifier _type_1 = property.getType();
+          BaseType _type_2 = _type_1.getType();
+          String _createPrimitiveTypeName = IRL2JavaTypeMappingExtensions.createPrimitiveTypeName(_type_2);
+          _builder.append(_createPrimitiveTypeName, "");
+          _builder.append(" ");
+          CharSequence _createValueName = CommonJavaTemplates.createValueName(property);
+          _builder.append(_createValueName, "");
+          _builder.append(" = ");
+          _builder.append(valueText, "");
+          _builder.append(";");
+          data.put(valueText, _builder);
+        }
+      } catch (Throwable _e) {
+        throw Exceptions.sneakyThrow(_e);
       }
     };
     IterableExtensions.<Property>forEach(_collectAllDataProperties, _function);

@@ -75,30 +75,15 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * @params version
 	 * 		generic kieker version for the record
 	 */
-	override createContent(RecordType type, String author, String version) {
+	override createContent(RecordType type, String author, String version, String headerComment) {
 		val serialUID = type.computeDefaultSUID + 'L'
 		val allDataProperties = PropertyEvaluation::collectAllDataProperties(type)
 		val allDeclarationProperties = collectAllDeclarationProperties(type)
 		val definedAuthor = if (type.author == null) author else type.author
 		val definedVersion = if (type.since == null) version else type.since
 		'''
-		/***************************************************************************
-		 * Copyright «Calendar.getInstance().get(Calendar.YEAR)» Kieker Project (http://kieker-monitoring.net)
-		 *
-		 * Licensed under the Apache License, Version 2.0 (the "License");
-		 * you may not use this file except in compliance with the License.
-		 * You may obtain a copy of the License at
-		 *
-		 *     http://www.apache.org/licenses/LICENSE-2.0
-		 *
-		 * Unless required by applicable law or agreed to in writing, software
-		 * distributed under the License is distributed on an "AS IS" BASIS,
-		 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-		 * See the License for the specific language governing permissions and
-		 * limitations under the License.
-		 ***************************************************************************/
-		
-		package «(type.eContainer as Model).name»;
+		«IF (!headerComment.equals(""))»«headerComment.replace("THIS-YEAR", Calendar.getInstance().get(Calendar.YEAR).toString)»
+		«ENDIF»package «(type.eContainer as Model).name»;
 		
 		«IF (!type.abstract)»import java.nio.BufferOverflowException;
 		«ENDIF»import java.nio.BufferUnderflowException;
@@ -292,8 +277,8 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * 
 	 * @returns result register access or null
 	 */
-	private def CharSequence createRegisterStringForProperty(Property property) {
-		if (property.type.type.name.equals(BaseTypes.STRING.typeName)) {
+	private def CharSequence createRegisterStringForProperty(Property property) throws InternalErrorException {
+		if (BaseTypes.getTypeEnum(property.type.type).equals(BaseTypes.STRING)) {
 			val simpleAction = '''stringRegistry.get(this.«createGetterValueExpression(property)»);'''
 			val type = property.findType
 			if (type.sizes.size > 0) {
@@ -322,7 +307,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 */
 	private def createEquals(Property property) {
 		val type = property.findType
-		val simpleTypeAction = createEquals(type.type.name, property.createGetterValueExpression)
+		val simpleTypeAction = createEquals(type.type, property.createGetterValueExpression)
 		if (type.sizes.size > 0) {
 			'''
 				// get array length
@@ -345,13 +330,13 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * @param typeName name of the type
 	 * @param getterExpression value access expresion
 	 */
-	private def CharSequence createEquals(String typeName, CharSequence getterExpression) {
-		switch (typeName) {
-			case BaseTypes.STRING.typeName: 
+	private def CharSequence createEquals(BaseType type, CharSequence getterExpression) throws InternalErrorException {
+		switch (BaseTypes.getTypeEnum(type)) {
+			case STRING: 
 				'''if (!this.«getterExpression».equals(castedRecord.«getterExpression»)) return false;'''
-			case BaseTypes.FLOAT.typeName: 
+			case FLOAT: 
 				'''if (isNotEqual(this.«getterExpression», castedRecord.«getterExpression»)) return false;'''
-			case BaseTypes.DOUBLE.typeName: 
+			case DOUBLE: 
 				'''if (isNotEqual(this.«getterExpression», castedRecord.«getterExpression»)) return false;'''
 			default: 
 				'''if (this.«getterExpression» != castedRecord.«getterExpression») return false;'''
@@ -367,18 +352,17 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * @returns
 	 * 		the serialization size of the property
 	 */
-	private def createSizeConstant(Property property, RecordType type) {
-		switch (PropertyEvaluation::findType(property).type.name) {
-			case BaseTypes.STRING.typeName : 'TYPE_SIZE_STRING'
-			case BaseTypes.BYTE.typeName : 'TYPE_SIZE_BYTE'
-			case BaseTypes.SHORT.typeName : 'TYPE_SIZE_SHORT'
-			case BaseTypes.INT.typeName : 'TYPE_SIZE_INT'
-			case BaseTypes.LONG.typeName : 'TYPE_SIZE_LONG'
-			case BaseTypes.FLOAT.typeName : 'TYPE_SIZE_FLOAT'
-			case BaseTypes.DOUBLE.typeName : 'TYPE_SIZE_DOUBLE'
-			case BaseTypes.CHAR.typeName : 'TYPE_SIZE_CHARACTER'
-			case BaseTypes.BOOLEAN.typeName : 'TYPE_SIZE_BOOLEAN'
-			default: throw new InternalErrorException(property.findType.type.name + ' is not a valid type name')
+	private def createSizeConstant(Property property, RecordType type) throws InternalErrorException {
+		switch (BaseTypes.getTypeEnum(property.findType.type)) {
+			case STRING : 'TYPE_SIZE_STRING'
+			case BYTE : 'TYPE_SIZE_BYTE'
+			case SHORT : 'TYPE_SIZE_SHORT'
+			case INT : 'TYPE_SIZE_INT'
+			case LONG : 'TYPE_SIZE_LONG'
+			case FLOAT : 'TYPE_SIZE_FLOAT'
+			case DOUBLE : 'TYPE_SIZE_DOUBLE'
+			case CHAR : 'TYPE_SIZE_CHARACTER'
+			case BOOLEAN : 'TYPE_SIZE_BOOLEAN'
 		} + ''' // «property.createPropertyFQN(type)»'''
 	}
 	
@@ -466,17 +450,17 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	/**
 	 * Create code to get values from the input buffer.
 	 */
-	private def createPropertyPrimitiveTypeDeserialization(BaseType classifier) {
-		switch (classifier.name) {
-			case BaseTypes.STRING.typeName : '''stringRegistry.get(buffer.getInt())'''
-			case BaseTypes.BYTE.typeName : '''buffer.get()'''
-			case BaseTypes.SHORT.typeName : '''buffer.getShort()'''
-			case BaseTypes.INT.typeName : '''buffer.getInt()'''
-			case BaseTypes.LONG.typeName : '''buffer.getLong()'''
-			case BaseTypes.FLOAT.typeName : '''buffer.getFloat()'''
-			case BaseTypes.DOUBLE.typeName : '''buffer.getDouble()'''
-			case BaseTypes.CHAR.typeName : '''buffer.getChar()'''
-			case BaseTypes.BOOLEAN.typeName : '''buffer.get()==1?true:false'''
+	private def createPropertyPrimitiveTypeDeserialization(BaseType classifier) throws InternalErrorException {
+		switch (BaseTypes.getTypeEnum(classifier)) {
+			case STRING : '''stringRegistry.get(buffer.getInt())'''
+			case BYTE : '''buffer.get()'''
+			case SHORT : '''buffer.getShort()'''
+			case INT : '''buffer.getInt()'''
+			case LONG : '''buffer.getLong()'''
+			case FLOAT : '''buffer.getFloat()'''
+			case DOUBLE : '''buffer.getDouble()'''
+			case CHAR : '''buffer.getChar()'''
+			case BOOLEAN : '''buffer.get()==1?true:false'''
 		}
 	}
 		
@@ -507,19 +491,18 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		}
 	}
 	
-	private def createValueStoreForSerialization(Property property) {
-		val classifier = PropertyEvaluation::findType(property)
+	private def createValueStoreForSerialization(Property property) throws InternalErrorException {
 		val getterName = "this." + createGetterValueExpression(property)
-		switch (classifier.type.name) {
-			case BaseTypes.STRING.typeName : '''buffer.putInt(stringRegistry.get(«getterName»));'''
-			case BaseTypes.BYTE.typeName : '''buffer.put((byte)«getterName»);'''
-			case BaseTypes.SHORT.typeName : '''buffer.putShort(«getterName»);'''
-			case BaseTypes.INT.typeName : '''buffer.putInt(«getterName»);'''
-			case BaseTypes.LONG.typeName : '''buffer.putLong(«getterName»);'''
-			case BaseTypes.FLOAT.typeName : '''buffer.putFloat(«getterName»);'''
-			case BaseTypes.DOUBLE.typeName : '''buffer.putDouble(«getterName»);'''
-			case BaseTypes.CHAR.typeName : '''buffer.putChar(«getterName»);'''
-			case BaseTypes.BOOLEAN.typeName : '''buffer.put((byte)(«getterName»?1:0));'''
+		switch (BaseTypes.getTypeEnum(property.findType.type)) {
+			case STRING : '''buffer.putInt(stringRegistry.get(«getterName»));'''
+			case BYTE : '''buffer.put((byte)«getterName»);'''
+			case SHORT : '''buffer.putShort(«getterName»);'''
+			case INT : '''buffer.putInt(«getterName»);'''
+			case LONG : '''buffer.putLong(«getterName»);'''
+			case FLOAT : '''buffer.putFloat(«getterName»);'''
+			case DOUBLE : '''buffer.putDouble(«getterName»);'''
+			case CHAR : '''buffer.putChar(«getterName»);'''
+			case BOOLEAN : '''buffer.put((byte)(«getterName»?1:0));'''
 		}
 	}
 	
@@ -534,7 +517,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * @returns the resulting getter as a CharSequence
 	 */
 	private def createPropertyGetter(Property property) '''
-		public final «PropertyEvaluation::findType(property).createTypeName» «property.createGetterName»() {
+		public final «property.findType.createTypeName» «property.createGetterName»() {
 			return this.«
 				if (property.referTo != null)
 					'''«property.referTo.createGetterName»()'''
@@ -585,9 +568,9 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * 
 	 * @returns one assignment
 	 */
-	private def createPropertyAssignment(Property property) {
+	private def createPropertyAssignment(Property property) throws InternalErrorException {
 		val type = property.findType
-		if (BaseTypes.STRING.name.equals(type.type.name) && 
+		if (BaseTypes.STRING.equals(BaseTypes.getTypeEnum(type.type)) && 
 			(type.sizes.size == 0)
 		) { // guarantee initialization is always not null in case of plain strings
 			'''this.«property.name.protectKeywords» = «property.name.protectKeywords» == null?«if (property.value != null) property.value.createConstantReference(property) else '""'»:«property.name.protectKeywords»;

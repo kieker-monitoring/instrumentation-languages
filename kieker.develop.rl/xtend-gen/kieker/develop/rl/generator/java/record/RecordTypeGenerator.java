@@ -119,7 +119,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    * 		generic kieker version for the record
    */
   @Override
-  public CharSequence createContent(final RecordType type, final String author, final String version) {
+  public CharSequence createContent(final RecordType type, final String author, final String version, final String headerComment) {
     CharSequence _xblockexpression = null;
     {
       long _computeDefaultSUID = ComputeUID.computeDefaultSUID(type);
@@ -145,55 +145,18 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       }
       final String definedVersion = _xifexpression_1;
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("/***************************************************************************");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* Copyright ");
-      Calendar _instance = Calendar.getInstance();
-      int _get = _instance.get(Calendar.YEAR);
-      _builder.append(_get, " ");
-      _builder.append(" Kieker Project (http://kieker-monitoring.net)");
-      _builder.newLineIfNotEmpty();
-      _builder.append(" ");
-      _builder.append("*");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* Licensed under the Apache License, Version 2.0 (the \"License\");");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* you may not use this file except in compliance with the License.");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* You may obtain a copy of the License at");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("*");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("*     http://www.apache.org/licenses/LICENSE-2.0");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("*");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* Unless required by applicable law or agreed to in writing, software");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* distributed under the License is distributed on an \"AS IS\" BASIS,");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* See the License for the specific language governing permissions and");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* limitations under the License.");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("***************************************************************************/");
-      _builder.newLine();
-      _builder.newLine();
+      {
+        boolean _equals_2 = headerComment.equals("");
+        boolean _not = (!_equals_2);
+        if (_not) {
+          Calendar _instance = Calendar.getInstance();
+          int _get = _instance.get(Calendar.YEAR);
+          String _string = Integer.valueOf(_get).toString();
+          String _replace = headerComment.replace("THIS-YEAR", _string);
+          _builder.append(_replace, "");
+          _builder.newLineIfNotEmpty();
+        }
+      }
       _builder.append("package ");
       EObject _eContainer = type.eContainer();
       String _name = ((Model) _eContainer).getName();
@@ -203,8 +166,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.newLine();
       {
         boolean _isAbstract = type.isAbstract();
-        boolean _not = (!_isAbstract);
-        if (_not) {
+        boolean _not_1 = (!_isAbstract);
+        if (_not_1) {
           _builder.append("import java.nio.BufferOverflowException;");
           _builder.newLineIfNotEmpty();
         }
@@ -216,8 +179,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.newLine();
       {
         RecordType _parent = type.getParent();
-        boolean _equals_2 = Objects.equal(_parent, null);
-        if (_equals_2) {
+        boolean _equals_3 = Objects.equal(_parent, null);
+        if (_equals_3) {
           _builder.append("import kieker.common.record.AbstractMonitoringRecord;");
           _builder.newLineIfNotEmpty();
           _builder.append("import kieker.common.record.IMonitoringRecord;");
@@ -296,20 +259,24 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.append("\t");
       {
         boolean _isAbstract_2 = type.isAbstract();
-        boolean _not_1 = (!_isAbstract_2);
-        if (_not_1) {
+        boolean _not_2 = (!_isAbstract_2);
+        if (_not_2) {
           _builder.append("/** Descriptive definition of the serialization size of the record. */");
           _builder.newLineIfNotEmpty();
           _builder.append("\t");
           _builder.append("public static final int SIZE = ");
           String _xifexpression_5 = null;
           int _size_1 = allDataProperties.size();
-          boolean _equals_3 = (_size_1 == 0);
-          if (_equals_3) {
+          boolean _equals_4 = (_size_1 == 0);
+          if (_equals_4) {
             _xifexpression_5 = "0";
           } else {
             final Function1<Property, String> _function_1 = (Property property) -> {
-              return this.createSizeConstant(property, type);
+              try {
+                return this.createSizeConstant(property, type);
+              } catch (Throwable _e) {
+                throw Exceptions.sneakyThrow(_e);
+              }
             };
             List<String> _map_1 = ListExtensions.<Property, String>map(allDataProperties, _function_1);
             _xifexpression_5 = IterableExtensions.join(_map_1, "\n\t\t + ");
@@ -331,8 +298,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.append("\t");
       {
         boolean _isAbstract_3 = type.isAbstract();
-        boolean _not_2 = (!_isAbstract_3);
-        if (_not_2) {
+        boolean _not_3 = (!_isAbstract_3);
+        if (_not_3) {
           _builder.append("public static final Class<?>[] TYPES = {");
           _builder.newLineIfNotEmpty();
           _builder.append("\t");
@@ -421,7 +388,11 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.newLineIfNotEmpty();
       _builder.append("\t\t");
       final Function1<Property, CharSequence> _function_5 = (Property property) -> {
-        return this.createPropertyAssignment(property);
+        try {
+          return this.createPropertyAssignment(property);
+        } catch (Throwable _e) {
+          throw Exceptions.sneakyThrow(_e);
+        }
       };
       List<CharSequence> _map_5 = ListExtensions.<Property, CharSequence>map(allDeclarationProperties, _function_5);
       String _join_3 = IterableExtensions.join(_map_5);
@@ -433,8 +404,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.newLine();
       {
         boolean _isAbstract_4 = type.isAbstract();
-        boolean _not_3 = (!_isAbstract_4);
-        if (_not_3) {
+        boolean _not_4 = (!_isAbstract_4);
+        if (_not_4) {
           _builder.append("\t");
           _builder.append("/**");
           _builder.newLine();
@@ -472,8 +443,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
           _builder.append("\t");
           {
             RecordType _parent_4 = type.getParent();
-            boolean _equals_4 = Objects.equal(_parent_4, null);
-            if (_equals_4) {
+            boolean _equals_5 = Objects.equal(_parent_4, null);
+            if (_equals_5) {
               _builder.append("AbstractMonitoringRecord.checkArray(values, TYPES);");
               _builder.newLineIfNotEmpty();
               _builder.append("\t");
@@ -538,8 +509,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.append("\t\t");
       {
         RecordType _parent_7 = type.getParent();
-        boolean _equals_5 = Objects.equal(_parent_7, null);
-        if (_equals_5) {
+        boolean _equals_6 = Objects.equal(_parent_7, null);
+        if (_equals_6) {
           _builder.append("AbstractMonitoringRecord.checkArray(values, valueTypes);");
           _builder.newLineIfNotEmpty();
           _builder.append("\t\t");
@@ -622,8 +593,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.newLine();
       {
         boolean _isAbstract_5 = type.isAbstract();
-        boolean _not_4 = (!_isAbstract_5);
-        if (_not_4) {
+        boolean _not_5 = (!_isAbstract_5);
+        if (_not_5) {
           _builder.append("\t");
           _builder.append("/**");
           _builder.newLine();
@@ -679,7 +650,11 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
           _builder.newLine();
           _builder.append("\t\t");
           final Function1<Property, CharSequence> _function_8 = (Property it) -> {
-            return this.createRegisterStringForProperty(it);
+            try {
+              return this.createRegisterStringForProperty(it);
+            } catch (Throwable _e) {
+              throw Exceptions.sneakyThrow(_e);
+            }
           };
           List<CharSequence> _map_8 = ListExtensions.<Property, CharSequence>map(allDataProperties, _function_8);
           Iterable<CharSequence> _filterNull = IterableExtensions.<CharSequence>filterNull(_map_8);
@@ -936,13 +911,12 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    * 
    * @returns result register access or null
    */
-  private CharSequence createRegisterStringForProperty(final Property property) {
+  private CharSequence createRegisterStringForProperty(final Property property) throws InternalErrorException {
     CharSequence _xifexpression = null;
     Classifier _type = property.getType();
     BaseType _type_1 = _type.getType();
-    String _name = _type_1.getName();
-    String _typeName = BaseTypes.STRING.getTypeName();
-    boolean _equals = _name.equals(_typeName);
+    BaseTypes _typeEnum = BaseTypes.getTypeEnum(_type_1);
+    boolean _equals = _typeEnum.equals(BaseTypes.STRING);
     if (_equals) {
       CharSequence _xblockexpression = null;
       {
@@ -969,15 +943,15 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
                 boolean _equals_1 = (_size_1 == 0);
                 if (_equals_1) {
                   _builder_1.append("int _");
-                  String _name_1 = property.getName();
-                  _builder_1.append(_name_1, "");
+                  String _name = property.getName();
+                  _builder_1.append(_name, "");
                   _builder_1.append("_size");
                   EList<ArraySize> _sizes_2 = type.getSizes();
                   int _indexOf = _sizes_2.indexOf(size);
                   _builder_1.append(_indexOf, "");
                   _builder_1.append(" = this.");
-                  String _name_2 = property.getName();
-                  _builder_1.append(_name_2, "");
+                  String _name_1 = property.getName();
+                  _builder_1.append(_name_1, "");
                   EList<ArraySize> _sizes_3 = type.getSizes();
                   int _indexOf_1 = _sizes_3.indexOf(size);
                   String _createCodeToDetermineArraySize = ValueAccessExpressionModule.createCodeToDetermineArraySize(_indexOf_1);
@@ -990,8 +964,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
           }
           Classifier _type_2 = property.getType();
           EList<ArraySize> _sizes_4 = _type_2.getSizes();
-          String _name_3 = property.getName();
-          CharSequence _createArrayAccessLoops = ValueAccessExpressionModule.createArrayAccessLoops(_sizes_4, 0, _name_3, simpleAction);
+          String _name_2 = property.getName();
+          CharSequence _createArrayAccessLoops = ValueAccessExpressionModule.createArrayAccessLoops(_sizes_4, 0, _name_2, simpleAction);
           _builder_1.append(_createArrayAccessLoops, "");
           _builder_1.newLineIfNotEmpty();
           _xifexpression_1 = _builder_1;
@@ -1015,79 +989,82 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    * @returns code snippet for the given property
    */
   private CharSequence createEquals(final Property property) {
-    CharSequence _xblockexpression = null;
-    {
-      final Classifier type = PropertyEvaluation.findType(property);
-      BaseType _type = type.getType();
-      String _name = _type.getName();
-      CharSequence _createGetterValueExpression = ValueAccessExpressionModule.createGetterValueExpression(property);
-      final CharSequence simpleTypeAction = this.createEquals(_name, _createGetterValueExpression);
-      CharSequence _xifexpression = null;
-      EList<ArraySize> _sizes = type.getSizes();
-      int _size = _sizes.size();
-      boolean _greaterThan = (_size > 0);
-      if (_greaterThan) {
-        StringConcatenation _builder = new StringConcatenation();
-        _builder.append("// get array length");
-        _builder.newLine();
-        {
-          EList<ArraySize> _sizes_1 = type.getSizes();
-          for(final ArraySize size : _sizes_1) {
-            {
-              int _size_1 = size.getSize();
-              boolean _equals = (_size_1 == 0);
-              if (_equals) {
-                _builder.append("int _");
-                String _name_1 = property.getName();
-                _builder.append(_name_1, "");
-                _builder.append("_size");
-                EList<ArraySize> _sizes_2 = type.getSizes();
-                int _indexOf = _sizes_2.indexOf(size);
-                _builder.append(_indexOf, "");
-                _builder.append(" = this.");
-                String _name_2 = property.getName();
-                _builder.append(_name_2, "");
-                EList<ArraySize> _sizes_3 = type.getSizes();
-                int _indexOf_1 = _sizes_3.indexOf(size);
-                String _createCodeToDetermineArraySize = ValueAccessExpressionModule.createCodeToDetermineArraySize(_indexOf_1);
-                _builder.append(_createCodeToDetermineArraySize, "");
-                _builder.append(".length;");
-                _builder.newLineIfNotEmpty();
-                _builder.append("if (_");
-                String _name_3 = property.getName();
-                _builder.append(_name_3, "");
-                _builder.append("_size");
-                EList<ArraySize> _sizes_4 = type.getSizes();
-                int _indexOf_2 = _sizes_4.indexOf(size);
-                _builder.append(_indexOf_2, "");
-                _builder.append(" != castedRecord.");
-                String _name_4 = property.getName();
-                _builder.append(_name_4, "");
-                EList<ArraySize> _sizes_5 = type.getSizes();
-                int _indexOf_3 = _sizes_5.indexOf(size);
-                String _createCodeToDetermineArraySize_1 = ValueAccessExpressionModule.createCodeToDetermineArraySize(_indexOf_3);
-                _builder.append(_createCodeToDetermineArraySize_1, "");
-                _builder.append(".length)");
-                _builder.newLineIfNotEmpty();
-                _builder.append("\t");
-                _builder.append("return false;");
-                _builder.newLine();
+    try {
+      CharSequence _xblockexpression = null;
+      {
+        final Classifier type = PropertyEvaluation.findType(property);
+        BaseType _type = type.getType();
+        CharSequence _createGetterValueExpression = ValueAccessExpressionModule.createGetterValueExpression(property);
+        final CharSequence simpleTypeAction = this.createEquals(_type, _createGetterValueExpression);
+        CharSequence _xifexpression = null;
+        EList<ArraySize> _sizes = type.getSizes();
+        int _size = _sizes.size();
+        boolean _greaterThan = (_size > 0);
+        if (_greaterThan) {
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("// get array length");
+          _builder.newLine();
+          {
+            EList<ArraySize> _sizes_1 = type.getSizes();
+            for(final ArraySize size : _sizes_1) {
+              {
+                int _size_1 = size.getSize();
+                boolean _equals = (_size_1 == 0);
+                if (_equals) {
+                  _builder.append("int _");
+                  String _name = property.getName();
+                  _builder.append(_name, "");
+                  _builder.append("_size");
+                  EList<ArraySize> _sizes_2 = type.getSizes();
+                  int _indexOf = _sizes_2.indexOf(size);
+                  _builder.append(_indexOf, "");
+                  _builder.append(" = this.");
+                  String _name_1 = property.getName();
+                  _builder.append(_name_1, "");
+                  EList<ArraySize> _sizes_3 = type.getSizes();
+                  int _indexOf_1 = _sizes_3.indexOf(size);
+                  String _createCodeToDetermineArraySize = ValueAccessExpressionModule.createCodeToDetermineArraySize(_indexOf_1);
+                  _builder.append(_createCodeToDetermineArraySize, "");
+                  _builder.append(".length;");
+                  _builder.newLineIfNotEmpty();
+                  _builder.append("if (_");
+                  String _name_2 = property.getName();
+                  _builder.append(_name_2, "");
+                  _builder.append("_size");
+                  EList<ArraySize> _sizes_4 = type.getSizes();
+                  int _indexOf_2 = _sizes_4.indexOf(size);
+                  _builder.append(_indexOf_2, "");
+                  _builder.append(" != castedRecord.");
+                  String _name_3 = property.getName();
+                  _builder.append(_name_3, "");
+                  EList<ArraySize> _sizes_5 = type.getSizes();
+                  int _indexOf_3 = _sizes_5.indexOf(size);
+                  String _createCodeToDetermineArraySize_1 = ValueAccessExpressionModule.createCodeToDetermineArraySize(_indexOf_3);
+                  _builder.append(_createCodeToDetermineArraySize_1, "");
+                  _builder.append(".length)");
+                  _builder.newLineIfNotEmpty();
+                  _builder.append("\t");
+                  _builder.append("return false;");
+                  _builder.newLine();
+                }
               }
             }
           }
+          EList<ArraySize> _sizes_6 = type.getSizes();
+          String _name_4 = property.getName();
+          CharSequence _createArrayAccessLoops = ValueAccessExpressionModule.createArrayAccessLoops(_sizes_6, 0, _name_4, simpleTypeAction);
+          _builder.append(_createArrayAccessLoops, "");
+          _builder.newLineIfNotEmpty();
+          _xifexpression = _builder;
+        } else {
+          _xifexpression = simpleTypeAction;
         }
-        EList<ArraySize> _sizes_6 = type.getSizes();
-        String _name_5 = property.getName();
-        CharSequence _createArrayAccessLoops = ValueAccessExpressionModule.createArrayAccessLoops(_sizes_6, 0, _name_5, simpleTypeAction);
-        _builder.append(_createArrayAccessLoops, "");
-        _builder.newLineIfNotEmpty();
-        _xifexpression = _builder;
-      } else {
-        _xifexpression = simpleTypeAction;
+        _xblockexpression = _xifexpression;
       }
-      _xblockexpression = _xifexpression;
+      return _xblockexpression;
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
     }
-    return _xblockexpression;
   }
   
   /**
@@ -1096,49 +1073,49 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    * @param typeName name of the type
    * @param getterExpression value access expresion
    */
-  private CharSequence createEquals(final String typeName, final CharSequence getterExpression) {
+  private CharSequence createEquals(final BaseType type, final CharSequence getterExpression) throws InternalErrorException {
     CharSequence _switchResult = null;
-    boolean _matched = false;
-    if (!_matched) {
-      String _typeName = BaseTypes.STRING.getTypeName();
-      if (Objects.equal(typeName, _typeName)) {
-        _matched=true;
-        StringConcatenation _builder = new StringConcatenation();
-        _builder.append("if (!this.");
-        _builder.append(getterExpression, "");
-        _builder.append(".equals(castedRecord.");
-        _builder.append(getterExpression, "");
-        _builder.append(")) return false;");
-        _switchResult = _builder;
+    BaseTypes _typeEnum = BaseTypes.getTypeEnum(type);
+    if (_typeEnum != null) {
+      switch (_typeEnum) {
+        case STRING:
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("if (!this.");
+          _builder.append(getterExpression, "");
+          _builder.append(".equals(castedRecord.");
+          _builder.append(getterExpression, "");
+          _builder.append(")) return false;");
+          _switchResult = _builder;
+          break;
+        case FLOAT:
+          StringConcatenation _builder_1 = new StringConcatenation();
+          _builder_1.append("if (isNotEqual(this.");
+          _builder_1.append(getterExpression, "");
+          _builder_1.append(", castedRecord.");
+          _builder_1.append(getterExpression, "");
+          _builder_1.append(")) return false;");
+          _switchResult = _builder_1;
+          break;
+        case DOUBLE:
+          StringConcatenation _builder_2 = new StringConcatenation();
+          _builder_2.append("if (isNotEqual(this.");
+          _builder_2.append(getterExpression, "");
+          _builder_2.append(", castedRecord.");
+          _builder_2.append(getterExpression, "");
+          _builder_2.append(")) return false;");
+          _switchResult = _builder_2;
+          break;
+        default:
+          StringConcatenation _builder_3 = new StringConcatenation();
+          _builder_3.append("if (this.");
+          _builder_3.append(getterExpression, "");
+          _builder_3.append(" != castedRecord.");
+          _builder_3.append(getterExpression, "");
+          _builder_3.append(") return false;");
+          _switchResult = _builder_3;
+          break;
       }
-    }
-    if (!_matched) {
-      String _typeName_1 = BaseTypes.FLOAT.getTypeName();
-      if (Objects.equal(typeName, _typeName_1)) {
-        _matched=true;
-        StringConcatenation _builder_1 = new StringConcatenation();
-        _builder_1.append("if (isNotEqual(this.");
-        _builder_1.append(getterExpression, "");
-        _builder_1.append(", castedRecord.");
-        _builder_1.append(getterExpression, "");
-        _builder_1.append(")) return false;");
-        _switchResult = _builder_1;
-      }
-    }
-    if (!_matched) {
-      String _typeName_2 = BaseTypes.DOUBLE.getTypeName();
-      if (Objects.equal(typeName, _typeName_2)) {
-        _matched=true;
-        StringConcatenation _builder_2 = new StringConcatenation();
-        _builder_2.append("if (isNotEqual(this.");
-        _builder_2.append(getterExpression, "");
-        _builder_2.append(", castedRecord.");
-        _builder_2.append(getterExpression, "");
-        _builder_2.append(")) return false;");
-        _switchResult = _builder_2;
-      }
-    }
-    if (!_matched) {
+    } else {
       StringConcatenation _builder_3 = new StringConcatenation();
       _builder_3.append("if (this.");
       _builder_3.append(getterExpression, "");
@@ -1159,92 +1136,50 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    * @returns
    * 		the serialization size of the property
    */
-  private String createSizeConstant(final Property property, final RecordType type) {
-    try {
-      String _switchResult = null;
-      Classifier _findType = PropertyEvaluation.findType(property);
-      BaseType _type = _findType.getType();
-      String _name = _type.getName();
-      boolean _matched = false;
-      if (!_matched) {
-        String _typeName = BaseTypes.STRING.getTypeName();
-        if (Objects.equal(_name, _typeName)) {
-          _matched=true;
+  private String createSizeConstant(final Property property, final RecordType type) throws InternalErrorException {
+    String _switchResult = null;
+    Classifier _findType = PropertyEvaluation.findType(property);
+    BaseType _type = _findType.getType();
+    BaseTypes _typeEnum = BaseTypes.getTypeEnum(_type);
+    if (_typeEnum != null) {
+      switch (_typeEnum) {
+        case STRING:
           _switchResult = "TYPE_SIZE_STRING";
-        }
-      }
-      if (!_matched) {
-        String _typeName_1 = BaseTypes.BYTE.getTypeName();
-        if (Objects.equal(_name, _typeName_1)) {
-          _matched=true;
+          break;
+        case BYTE:
           _switchResult = "TYPE_SIZE_BYTE";
-        }
-      }
-      if (!_matched) {
-        String _typeName_2 = BaseTypes.SHORT.getTypeName();
-        if (Objects.equal(_name, _typeName_2)) {
-          _matched=true;
+          break;
+        case SHORT:
           _switchResult = "TYPE_SIZE_SHORT";
-        }
-      }
-      if (!_matched) {
-        String _typeName_3 = BaseTypes.INT.getTypeName();
-        if (Objects.equal(_name, _typeName_3)) {
-          _matched=true;
+          break;
+        case INT:
           _switchResult = "TYPE_SIZE_INT";
-        }
-      }
-      if (!_matched) {
-        String _typeName_4 = BaseTypes.LONG.getTypeName();
-        if (Objects.equal(_name, _typeName_4)) {
-          _matched=true;
+          break;
+        case LONG:
           _switchResult = "TYPE_SIZE_LONG";
-        }
-      }
-      if (!_matched) {
-        String _typeName_5 = BaseTypes.FLOAT.getTypeName();
-        if (Objects.equal(_name, _typeName_5)) {
-          _matched=true;
+          break;
+        case FLOAT:
           _switchResult = "TYPE_SIZE_FLOAT";
-        }
-      }
-      if (!_matched) {
-        String _typeName_6 = BaseTypes.DOUBLE.getTypeName();
-        if (Objects.equal(_name, _typeName_6)) {
-          _matched=true;
+          break;
+        case DOUBLE:
           _switchResult = "TYPE_SIZE_DOUBLE";
-        }
-      }
-      if (!_matched) {
-        String _typeName_7 = BaseTypes.CHAR.getTypeName();
-        if (Objects.equal(_name, _typeName_7)) {
-          _matched=true;
+          break;
+        case CHAR:
           _switchResult = "TYPE_SIZE_CHARACTER";
-        }
-      }
-      if (!_matched) {
-        String _typeName_8 = BaseTypes.BOOLEAN.getTypeName();
-        if (Objects.equal(_name, _typeName_8)) {
-          _matched=true;
+          break;
+        case BOOLEAN:
           _switchResult = "TYPE_SIZE_BOOLEAN";
-        }
+          break;
+        default:
+          break;
       }
-      if (!_matched) {
-        Classifier _findType_1 = PropertyEvaluation.findType(property);
-        BaseType _type_1 = _findType_1.getType();
-        String _name_1 = _type_1.getName();
-        String _plus = (_name_1 + " is not a valid type name");
-        throw new InternalErrorException(_plus);
-      }
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append(" ");
-      _builder.append("// ");
-      CharSequence _createPropertyFQN = CommentModule.createPropertyFQN(property, type);
-      _builder.append(_createPropertyFQN, " ");
-      return (_switchResult + _builder);
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
     }
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append(" ");
+    _builder.append("// ");
+    CharSequence _createPropertyFQN = CommentModule.createPropertyFQN(property, type);
+    _builder.append(_createPropertyFQN, " ");
+    return (_switchResult + _builder);
   }
   
   /**
@@ -1317,69 +1252,73 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    * 		code to deserialize the given property
    */
   private CharSequence createPropertyBinaryDeserialization(final Property property) {
-    CharSequence _xblockexpression = null;
-    {
-      Classifier _findType = PropertyEvaluation.findType(property);
-      final EList<ArraySize> sizes = _findType.getSizes();
-      CharSequence _xifexpression = null;
-      int _size = sizes.size();
-      boolean _greaterThan = (_size > 0);
-      if (_greaterThan) {
-        StringConcatenation _builder = new StringConcatenation();
-        _builder.append("// load array sizes");
-        _builder.newLine();
-        {
-          for(final ArraySize size : sizes) {
-            {
-              int _size_1 = size.getSize();
-              boolean _equals = (_size_1 == 0);
-              if (_equals) {
-                _builder.append("int _");
-                String _name = property.getName();
-                _builder.append(_name, "");
-                _builder.append("_size");
-                int _indexOf = sizes.indexOf(size);
-                _builder.append(_indexOf, "");
-                _builder.append(" = buffer.getInt();");
-                _builder.newLineIfNotEmpty();
+    try {
+      CharSequence _xblockexpression = null;
+      {
+        Classifier _findType = PropertyEvaluation.findType(property);
+        final EList<ArraySize> sizes = _findType.getSizes();
+        CharSequence _xifexpression = null;
+        int _size = sizes.size();
+        boolean _greaterThan = (_size > 0);
+        if (_greaterThan) {
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("// load array sizes");
+          _builder.newLine();
+          {
+            for(final ArraySize size : sizes) {
+              {
+                int _size_1 = size.getSize();
+                boolean _equals = (_size_1 == 0);
+                if (_equals) {
+                  _builder.append("int _");
+                  String _name = property.getName();
+                  _builder.append(_name, "");
+                  _builder.append("_size");
+                  int _indexOf = sizes.indexOf(size);
+                  _builder.append(_indexOf, "");
+                  _builder.append(" = buffer.getInt();");
+                  _builder.newLineIfNotEmpty();
+                }
               }
             }
           }
+          _builder.append("this.");
+          String _name_1 = property.getName();
+          String _protectKeywords = NameResolver.protectKeywords(_name_1);
+          _builder.append(_protectKeywords, "");
+          _builder.append(" = new ");
+          Classifier _findType_1 = PropertyEvaluation.findType(property);
+          String _name_2 = property.getName();
+          CharSequence _createTypeInstantiationName = this.createTypeInstantiationName(_findType_1, _name_2);
+          _builder.append(_createTypeInstantiationName, "");
+          _builder.append(";");
+          _builder.newLineIfNotEmpty();
+          String _name_3 = property.getName();
+          String _createValueAssignmentForDeserialization = this.createValueAssignmentForDeserialization(sizes, property);
+          CharSequence _createArrayAccessLoops = ValueAccessExpressionModule.createArrayAccessLoops(sizes, 0, _name_3, _createValueAssignmentForDeserialization);
+          _builder.append(_createArrayAccessLoops, "");
+          _builder.newLineIfNotEmpty();
+          _xifexpression = _builder;
+        } else {
+          StringConcatenation _builder_1 = new StringConcatenation();
+          _builder_1.append("this.");
+          String _name_4 = property.getName();
+          String _protectKeywords_1 = NameResolver.protectKeywords(_name_4);
+          _builder_1.append(_protectKeywords_1, "");
+          _builder_1.append(" = ");
+          Classifier _findType_2 = PropertyEvaluation.findType(property);
+          BaseType _type = _findType_2.getType();
+          CharSequence _createPropertyPrimitiveTypeDeserialization = this.createPropertyPrimitiveTypeDeserialization(_type);
+          _builder_1.append(_createPropertyPrimitiveTypeDeserialization, "");
+          _builder_1.append(";");
+          _xifexpression = _builder_1;
         }
-        _builder.append("this.");
-        String _name_1 = property.getName();
-        String _protectKeywords = NameResolver.protectKeywords(_name_1);
-        _builder.append(_protectKeywords, "");
-        _builder.append(" = new ");
-        Classifier _findType_1 = PropertyEvaluation.findType(property);
-        String _name_2 = property.getName();
-        CharSequence _createTypeInstantiationName = this.createTypeInstantiationName(_findType_1, _name_2);
-        _builder.append(_createTypeInstantiationName, "");
-        _builder.append(";");
-        _builder.newLineIfNotEmpty();
-        String _name_3 = property.getName();
-        String _createValueAssignmentForDeserialization = this.createValueAssignmentForDeserialization(sizes, property);
-        CharSequence _createArrayAccessLoops = ValueAccessExpressionModule.createArrayAccessLoops(sizes, 0, _name_3, _createValueAssignmentForDeserialization);
-        _builder.append(_createArrayAccessLoops, "");
-        _builder.newLineIfNotEmpty();
-        _xifexpression = _builder;
-      } else {
-        StringConcatenation _builder_1 = new StringConcatenation();
-        _builder_1.append("this.");
-        String _name_4 = property.getName();
-        String _protectKeywords_1 = NameResolver.protectKeywords(_name_4);
-        _builder_1.append(_protectKeywords_1, "");
-        _builder_1.append(" = ");
-        Classifier _findType_2 = PropertyEvaluation.findType(property);
-        BaseType _type = _findType_2.getType();
-        CharSequence _createPropertyPrimitiveTypeDeserialization = this.createPropertyPrimitiveTypeDeserialization(_type);
-        _builder_1.append(_createPropertyPrimitiveTypeDeserialization, "");
-        _builder_1.append(";");
-        _xifexpression = _builder_1;
+        _xblockexpression = _xifexpression;
       }
-      _xblockexpression = _xifexpression;
+      return _xblockexpression;
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
     }
-    return _xblockexpression;
   }
   
   /**
@@ -1387,27 +1326,31 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    * For example property[2][_property_size1][6] or just property for simple fields
    */
   private CharSequence createTypeInstantiationName(final Classifier classifier, final String name) {
-    String _xifexpression = null;
-    EList<ArraySize> _sizes = classifier.getSizes();
-    int _size = _sizes.size();
-    boolean _greaterThan = (_size > 0);
-    if (_greaterThan) {
-      BaseType _type = classifier.getType();
-      String _createPrimitiveTypeName = IRL2JavaTypeMappingExtensions.createPrimitiveTypeName(_type);
-      EList<ArraySize> _sizes_1 = classifier.getSizes();
-      final Function1<ArraySize, CharSequence> _function = (ArraySize size) -> {
-        EList<ArraySize> _sizes_2 = classifier.getSizes();
-        int _indexOf = _sizes_2.indexOf(size);
-        return this.createArraySize(size, name, _indexOf);
-      };
-      List<CharSequence> _map = ListExtensions.<ArraySize, CharSequence>map(_sizes_1, _function);
-      String _join = IterableExtensions.join(_map);
-      _xifexpression = (_createPrimitiveTypeName + _join);
-    } else {
-      BaseType _type_1 = classifier.getType();
-      _xifexpression = IRL2JavaTypeMappingExtensions.createPrimitiveTypeName(_type_1);
+    try {
+      String _xifexpression = null;
+      EList<ArraySize> _sizes = classifier.getSizes();
+      int _size = _sizes.size();
+      boolean _greaterThan = (_size > 0);
+      if (_greaterThan) {
+        BaseType _type = classifier.getType();
+        String _createPrimitiveTypeName = IRL2JavaTypeMappingExtensions.createPrimitiveTypeName(_type);
+        EList<ArraySize> _sizes_1 = classifier.getSizes();
+        final Function1<ArraySize, CharSequence> _function = (ArraySize size) -> {
+          EList<ArraySize> _sizes_2 = classifier.getSizes();
+          int _indexOf = _sizes_2.indexOf(size);
+          return this.createArraySize(size, name, _indexOf);
+        };
+        List<CharSequence> _map = ListExtensions.<ArraySize, CharSequence>map(_sizes_1, _function);
+        String _join = IterableExtensions.join(_map);
+        _xifexpression = (_createPrimitiveTypeName + _join);
+      } else {
+        BaseType _type_1 = classifier.getType();
+        _xifexpression = IRL2JavaTypeMappingExtensions.createPrimitiveTypeName(_type_1);
+      }
+      return _xifexpression;
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
     }
-    return _xifexpression;
   }
   
   /**
@@ -1440,104 +1383,77 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    * Assignment for a primitive value
    */
   private String createValueAssignmentForDeserialization(final EList<ArraySize> sizes, final Property property) {
-    StringConcatenation _builder = new StringConcatenation();
-    CharSequence _createPropertyValueExpression = ValueAccessExpressionModule.createPropertyValueExpression(property);
-    _builder.append(_createPropertyValueExpression, "");
-    _builder.append(" = ");
-    Classifier _findType = PropertyEvaluation.findType(property);
-    BaseType _type = _findType.getType();
-    CharSequence _createPropertyPrimitiveTypeDeserialization = this.createPropertyPrimitiveTypeDeserialization(_type);
-    _builder.append(_createPropertyPrimitiveTypeDeserialization, "");
-    _builder.append(";");
-    return _builder.toString();
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      CharSequence _createPropertyValueExpression = ValueAccessExpressionModule.createPropertyValueExpression(property);
+      _builder.append(_createPropertyValueExpression, "");
+      _builder.append(" = ");
+      Classifier _findType = PropertyEvaluation.findType(property);
+      BaseType _type = _findType.getType();
+      CharSequence _createPropertyPrimitiveTypeDeserialization = this.createPropertyPrimitiveTypeDeserialization(_type);
+      _builder.append(_createPropertyPrimitiveTypeDeserialization, "");
+      _builder.append(";");
+      return _builder.toString();
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
   }
   
   /**
    * Create code to get values from the input buffer.
    */
-  private CharSequence createPropertyPrimitiveTypeDeserialization(final BaseType classifier) {
+  private CharSequence createPropertyPrimitiveTypeDeserialization(final BaseType classifier) throws InternalErrorException {
     CharSequence _switchResult = null;
-    String _name = classifier.getName();
-    boolean _matched = false;
-    if (!_matched) {
-      String _typeName = BaseTypes.STRING.getTypeName();
-      if (Objects.equal(_name, _typeName)) {
-        _matched=true;
-        StringConcatenation _builder = new StringConcatenation();
-        _builder.append("stringRegistry.get(buffer.getInt())");
-        _switchResult = _builder;
-      }
-    }
-    if (!_matched) {
-      String _typeName_1 = BaseTypes.BYTE.getTypeName();
-      if (Objects.equal(_name, _typeName_1)) {
-        _matched=true;
-        StringConcatenation _builder_1 = new StringConcatenation();
-        _builder_1.append("buffer.get()");
-        _switchResult = _builder_1;
-      }
-    }
-    if (!_matched) {
-      String _typeName_2 = BaseTypes.SHORT.getTypeName();
-      if (Objects.equal(_name, _typeName_2)) {
-        _matched=true;
-        StringConcatenation _builder_2 = new StringConcatenation();
-        _builder_2.append("buffer.getShort()");
-        _switchResult = _builder_2;
-      }
-    }
-    if (!_matched) {
-      String _typeName_3 = BaseTypes.INT.getTypeName();
-      if (Objects.equal(_name, _typeName_3)) {
-        _matched=true;
-        StringConcatenation _builder_3 = new StringConcatenation();
-        _builder_3.append("buffer.getInt()");
-        _switchResult = _builder_3;
-      }
-    }
-    if (!_matched) {
-      String _typeName_4 = BaseTypes.LONG.getTypeName();
-      if (Objects.equal(_name, _typeName_4)) {
-        _matched=true;
-        StringConcatenation _builder_4 = new StringConcatenation();
-        _builder_4.append("buffer.getLong()");
-        _switchResult = _builder_4;
-      }
-    }
-    if (!_matched) {
-      String _typeName_5 = BaseTypes.FLOAT.getTypeName();
-      if (Objects.equal(_name, _typeName_5)) {
-        _matched=true;
-        StringConcatenation _builder_5 = new StringConcatenation();
-        _builder_5.append("buffer.getFloat()");
-        _switchResult = _builder_5;
-      }
-    }
-    if (!_matched) {
-      String _typeName_6 = BaseTypes.DOUBLE.getTypeName();
-      if (Objects.equal(_name, _typeName_6)) {
-        _matched=true;
-        StringConcatenation _builder_6 = new StringConcatenation();
-        _builder_6.append("buffer.getDouble()");
-        _switchResult = _builder_6;
-      }
-    }
-    if (!_matched) {
-      String _typeName_7 = BaseTypes.CHAR.getTypeName();
-      if (Objects.equal(_name, _typeName_7)) {
-        _matched=true;
-        StringConcatenation _builder_7 = new StringConcatenation();
-        _builder_7.append("buffer.getChar()");
-        _switchResult = _builder_7;
-      }
-    }
-    if (!_matched) {
-      String _typeName_8 = BaseTypes.BOOLEAN.getTypeName();
-      if (Objects.equal(_name, _typeName_8)) {
-        _matched=true;
-        StringConcatenation _builder_8 = new StringConcatenation();
-        _builder_8.append("buffer.get()==1?true:false");
-        _switchResult = _builder_8;
+    BaseTypes _typeEnum = BaseTypes.getTypeEnum(classifier);
+    if (_typeEnum != null) {
+      switch (_typeEnum) {
+        case STRING:
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("stringRegistry.get(buffer.getInt())");
+          _switchResult = _builder;
+          break;
+        case BYTE:
+          StringConcatenation _builder_1 = new StringConcatenation();
+          _builder_1.append("buffer.get()");
+          _switchResult = _builder_1;
+          break;
+        case SHORT:
+          StringConcatenation _builder_2 = new StringConcatenation();
+          _builder_2.append("buffer.getShort()");
+          _switchResult = _builder_2;
+          break;
+        case INT:
+          StringConcatenation _builder_3 = new StringConcatenation();
+          _builder_3.append("buffer.getInt()");
+          _switchResult = _builder_3;
+          break;
+        case LONG:
+          StringConcatenation _builder_4 = new StringConcatenation();
+          _builder_4.append("buffer.getLong()");
+          _switchResult = _builder_4;
+          break;
+        case FLOAT:
+          StringConcatenation _builder_5 = new StringConcatenation();
+          _builder_5.append("buffer.getFloat()");
+          _switchResult = _builder_5;
+          break;
+        case DOUBLE:
+          StringConcatenation _builder_6 = new StringConcatenation();
+          _builder_6.append("buffer.getDouble()");
+          _switchResult = _builder_6;
+          break;
+        case CHAR:
+          StringConcatenation _builder_7 = new StringConcatenation();
+          _builder_7.append("buffer.getChar()");
+          _switchResult = _builder_7;
+          break;
+        case BOOLEAN:
+          StringConcatenation _builder_8 = new StringConcatenation();
+          _builder_8.append("buffer.get()==1?true:false");
+          _switchResult = _builder_8;
+          break;
+        default:
+          break;
       }
     }
     return _switchResult;
@@ -1553,171 +1469,144 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    * 		code to serialize the given property
    */
   private CharSequence createPropertyBinarySerialization(final Property property) {
-    CharSequence _xblockexpression = null;
-    {
-      Classifier _findType = PropertyEvaluation.findType(property);
-      final EList<ArraySize> sizes = _findType.getSizes();
-      CharSequence _xifexpression = null;
-      int _size = sizes.size();
-      boolean _greaterThan = (_size > 0);
-      if (_greaterThan) {
-        StringConcatenation _builder = new StringConcatenation();
-        _builder.append("// store array sizes");
-        _builder.newLine();
-        {
-          for(final ArraySize size : sizes) {
-            {
-              int _size_1 = size.getSize();
-              boolean _equals = (_size_1 == 0);
-              if (_equals) {
-                _builder.append("int _");
-                String _name = property.getName();
-                _builder.append(_name, "");
-                _builder.append("_size");
-                int _indexOf = sizes.indexOf(size);
-                _builder.append(_indexOf, "");
-                _builder.append(" = this.");
-                CharSequence _createGetterName = NameResolver.createGetterName(property);
-                _builder.append(_createGetterName, "");
-                _builder.append("()");
-                int _indexOf_1 = sizes.indexOf(size);
-                String _createCodeToDetermineArraySize = ValueAccessExpressionModule.createCodeToDetermineArraySize(_indexOf_1);
-                _builder.append(_createCodeToDetermineArraySize, "");
-                _builder.append(".length;");
-                _builder.newLineIfNotEmpty();
-                _builder.append("buffer.putInt(_");
-                String _name_1 = property.getName();
-                _builder.append(_name_1, "");
-                _builder.append("_size");
-                int _indexOf_2 = sizes.indexOf(size);
-                _builder.append(_indexOf_2, "");
-                _builder.append(");");
-                _builder.newLineIfNotEmpty();
+    try {
+      CharSequence _xblockexpression = null;
+      {
+        Classifier _findType = PropertyEvaluation.findType(property);
+        final EList<ArraySize> sizes = _findType.getSizes();
+        CharSequence _xifexpression = null;
+        int _size = sizes.size();
+        boolean _greaterThan = (_size > 0);
+        if (_greaterThan) {
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("// store array sizes");
+          _builder.newLine();
+          {
+            for(final ArraySize size : sizes) {
+              {
+                int _size_1 = size.getSize();
+                boolean _equals = (_size_1 == 0);
+                if (_equals) {
+                  _builder.append("int _");
+                  String _name = property.getName();
+                  _builder.append(_name, "");
+                  _builder.append("_size");
+                  int _indexOf = sizes.indexOf(size);
+                  _builder.append(_indexOf, "");
+                  _builder.append(" = this.");
+                  CharSequence _createGetterName = NameResolver.createGetterName(property);
+                  _builder.append(_createGetterName, "");
+                  _builder.append("()");
+                  int _indexOf_1 = sizes.indexOf(size);
+                  String _createCodeToDetermineArraySize = ValueAccessExpressionModule.createCodeToDetermineArraySize(_indexOf_1);
+                  _builder.append(_createCodeToDetermineArraySize, "");
+                  _builder.append(".length;");
+                  _builder.newLineIfNotEmpty();
+                  _builder.append("buffer.putInt(_");
+                  String _name_1 = property.getName();
+                  _builder.append(_name_1, "");
+                  _builder.append("_size");
+                  int _indexOf_2 = sizes.indexOf(size);
+                  _builder.append(_indexOf_2, "");
+                  _builder.append(");");
+                  _builder.newLineIfNotEmpty();
+                }
               }
             }
           }
+          String _name_2 = property.getName();
+          CharSequence _createValueStoreForSerialization = this.createValueStoreForSerialization(property);
+          CharSequence _createArrayAccessLoops = ValueAccessExpressionModule.createArrayAccessLoops(sizes, 0, _name_2, _createValueStoreForSerialization);
+          _builder.append(_createArrayAccessLoops, "");
+          _builder.newLineIfNotEmpty();
+          _xifexpression = _builder;
+        } else {
+          _xifexpression = this.createValueStoreForSerialization(property);
         }
-        String _name_2 = property.getName();
-        CharSequence _createValueStoreForSerialization = this.createValueStoreForSerialization(property);
-        CharSequence _createArrayAccessLoops = ValueAccessExpressionModule.createArrayAccessLoops(sizes, 0, _name_2, _createValueStoreForSerialization);
-        _builder.append(_createArrayAccessLoops, "");
-        _builder.newLineIfNotEmpty();
-        _xifexpression = _builder;
-      } else {
-        _xifexpression = this.createValueStoreForSerialization(property);
+        _xblockexpression = _xifexpression;
       }
-      _xblockexpression = _xifexpression;
+      return _xblockexpression;
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
     }
-    return _xblockexpression;
   }
   
-  private CharSequence createValueStoreForSerialization(final Property property) {
+  private CharSequence createValueStoreForSerialization(final Property property) throws InternalErrorException {
     CharSequence _xblockexpression = null;
     {
-      final Classifier classifier = PropertyEvaluation.findType(property);
       CharSequence _createGetterValueExpression = ValueAccessExpressionModule.createGetterValueExpression(property);
       final String getterName = ("this." + _createGetterValueExpression);
       CharSequence _switchResult = null;
-      BaseType _type = classifier.getType();
-      String _name = _type.getName();
-      boolean _matched = false;
-      if (!_matched) {
-        String _typeName = BaseTypes.STRING.getTypeName();
-        if (Objects.equal(_name, _typeName)) {
-          _matched=true;
-          StringConcatenation _builder = new StringConcatenation();
-          _builder.append("buffer.putInt(stringRegistry.get(");
-          _builder.append(getterName, "");
-          _builder.append("));");
-          _switchResult = _builder;
-        }
-      }
-      if (!_matched) {
-        String _typeName_1 = BaseTypes.BYTE.getTypeName();
-        if (Objects.equal(_name, _typeName_1)) {
-          _matched=true;
-          StringConcatenation _builder_1 = new StringConcatenation();
-          _builder_1.append("buffer.put((byte)");
-          _builder_1.append(getterName, "");
-          _builder_1.append(");");
-          _switchResult = _builder_1;
-        }
-      }
-      if (!_matched) {
-        String _typeName_2 = BaseTypes.SHORT.getTypeName();
-        if (Objects.equal(_name, _typeName_2)) {
-          _matched=true;
-          StringConcatenation _builder_2 = new StringConcatenation();
-          _builder_2.append("buffer.putShort(");
-          _builder_2.append(getterName, "");
-          _builder_2.append(");");
-          _switchResult = _builder_2;
-        }
-      }
-      if (!_matched) {
-        String _typeName_3 = BaseTypes.INT.getTypeName();
-        if (Objects.equal(_name, _typeName_3)) {
-          _matched=true;
-          StringConcatenation _builder_3 = new StringConcatenation();
-          _builder_3.append("buffer.putInt(");
-          _builder_3.append(getterName, "");
-          _builder_3.append(");");
-          _switchResult = _builder_3;
-        }
-      }
-      if (!_matched) {
-        String _typeName_4 = BaseTypes.LONG.getTypeName();
-        if (Objects.equal(_name, _typeName_4)) {
-          _matched=true;
-          StringConcatenation _builder_4 = new StringConcatenation();
-          _builder_4.append("buffer.putLong(");
-          _builder_4.append(getterName, "");
-          _builder_4.append(");");
-          _switchResult = _builder_4;
-        }
-      }
-      if (!_matched) {
-        String _typeName_5 = BaseTypes.FLOAT.getTypeName();
-        if (Objects.equal(_name, _typeName_5)) {
-          _matched=true;
-          StringConcatenation _builder_5 = new StringConcatenation();
-          _builder_5.append("buffer.putFloat(");
-          _builder_5.append(getterName, "");
-          _builder_5.append(");");
-          _switchResult = _builder_5;
-        }
-      }
-      if (!_matched) {
-        String _typeName_6 = BaseTypes.DOUBLE.getTypeName();
-        if (Objects.equal(_name, _typeName_6)) {
-          _matched=true;
-          StringConcatenation _builder_6 = new StringConcatenation();
-          _builder_6.append("buffer.putDouble(");
-          _builder_6.append(getterName, "");
-          _builder_6.append(");");
-          _switchResult = _builder_6;
-        }
-      }
-      if (!_matched) {
-        String _typeName_7 = BaseTypes.CHAR.getTypeName();
-        if (Objects.equal(_name, _typeName_7)) {
-          _matched=true;
-          StringConcatenation _builder_7 = new StringConcatenation();
-          _builder_7.append("buffer.putChar(");
-          _builder_7.append(getterName, "");
-          _builder_7.append(");");
-          _switchResult = _builder_7;
-        }
-      }
-      if (!_matched) {
-        String _typeName_8 = BaseTypes.BOOLEAN.getTypeName();
-        if (Objects.equal(_name, _typeName_8)) {
-          _matched=true;
-          StringConcatenation _builder_8 = new StringConcatenation();
-          _builder_8.append("buffer.put((byte)(");
-          _builder_8.append(getterName, "");
-          _builder_8.append("?1:0));");
-          _switchResult = _builder_8;
+      Classifier _findType = PropertyEvaluation.findType(property);
+      BaseType _type = _findType.getType();
+      BaseTypes _typeEnum = BaseTypes.getTypeEnum(_type);
+      if (_typeEnum != null) {
+        switch (_typeEnum) {
+          case STRING:
+            StringConcatenation _builder = new StringConcatenation();
+            _builder.append("buffer.putInt(stringRegistry.get(");
+            _builder.append(getterName, "");
+            _builder.append("));");
+            _switchResult = _builder;
+            break;
+          case BYTE:
+            StringConcatenation _builder_1 = new StringConcatenation();
+            _builder_1.append("buffer.put((byte)");
+            _builder_1.append(getterName, "");
+            _builder_1.append(");");
+            _switchResult = _builder_1;
+            break;
+          case SHORT:
+            StringConcatenation _builder_2 = new StringConcatenation();
+            _builder_2.append("buffer.putShort(");
+            _builder_2.append(getterName, "");
+            _builder_2.append(");");
+            _switchResult = _builder_2;
+            break;
+          case INT:
+            StringConcatenation _builder_3 = new StringConcatenation();
+            _builder_3.append("buffer.putInt(");
+            _builder_3.append(getterName, "");
+            _builder_3.append(");");
+            _switchResult = _builder_3;
+            break;
+          case LONG:
+            StringConcatenation _builder_4 = new StringConcatenation();
+            _builder_4.append("buffer.putLong(");
+            _builder_4.append(getterName, "");
+            _builder_4.append(");");
+            _switchResult = _builder_4;
+            break;
+          case FLOAT:
+            StringConcatenation _builder_5 = new StringConcatenation();
+            _builder_5.append("buffer.putFloat(");
+            _builder_5.append(getterName, "");
+            _builder_5.append(");");
+            _switchResult = _builder_5;
+            break;
+          case DOUBLE:
+            StringConcatenation _builder_6 = new StringConcatenation();
+            _builder_6.append("buffer.putDouble(");
+            _builder_6.append(getterName, "");
+            _builder_6.append(");");
+            _switchResult = _builder_6;
+            break;
+          case CHAR:
+            StringConcatenation _builder_7 = new StringConcatenation();
+            _builder_7.append("buffer.putChar(");
+            _builder_7.append(getterName, "");
+            _builder_7.append(");");
+            _switchResult = _builder_7;
+            break;
+          case BOOLEAN:
+            StringConcatenation _builder_8 = new StringConcatenation();
+            _builder_8.append("buffer.put((byte)(");
+            _builder_8.append(getterName, "");
+            _builder_8.append("?1:0));");
+            _switchResult = _builder_8;
+            break;
+          default:
+            break;
         }
       }
       _xblockexpression = _switchResult;
@@ -1827,16 +1716,15 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    * 
    * @returns one assignment
    */
-  private CharSequence createPropertyAssignment(final Property property) {
+  private CharSequence createPropertyAssignment(final Property property) throws InternalErrorException {
     CharSequence _xblockexpression = null;
     {
       final Classifier type = PropertyEvaluation.findType(property);
       CharSequence _xifexpression = null;
       boolean _and = false;
-      String _name = BaseTypes.STRING.name();
       BaseType _type = type.getType();
-      String _name_1 = _type.getName();
-      boolean _equals = _name.equals(_name_1);
+      BaseTypes _typeEnum = BaseTypes.getTypeEnum(_type);
+      boolean _equals = BaseTypes.STRING.equals(_typeEnum);
       if (!_equals) {
         _and = false;
       } else {
@@ -1848,12 +1736,12 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       if (_and) {
         StringConcatenation _builder = new StringConcatenation();
         _builder.append("this.");
-        String _name_2 = property.getName();
-        String _protectKeywords = NameResolver.protectKeywords(_name_2);
+        String _name = property.getName();
+        String _protectKeywords = NameResolver.protectKeywords(_name);
         _builder.append(_protectKeywords, "");
         _builder.append(" = ");
-        String _name_3 = property.getName();
-        String _protectKeywords_1 = NameResolver.protectKeywords(_name_3);
+        String _name_1 = property.getName();
+        String _protectKeywords_1 = NameResolver.protectKeywords(_name_1);
         _builder.append(_protectKeywords_1, "");
         _builder.append(" == null?");
         String _xifexpression_1 = null;
@@ -1867,8 +1755,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         }
         _builder.append(_xifexpression_1, "");
         _builder.append(":");
-        String _name_4 = property.getName();
-        String _protectKeywords_2 = NameResolver.protectKeywords(_name_4);
+        String _name_2 = property.getName();
+        String _protectKeywords_2 = NameResolver.protectKeywords(_name_2);
         _builder.append(_protectKeywords_2, "");
         _builder.append(";");
         _builder.newLineIfNotEmpty();
@@ -1876,12 +1764,12 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       } else {
         StringConcatenation _builder_1 = new StringConcatenation();
         _builder_1.append("this.");
-        String _name_5 = property.getName();
-        String _protectKeywords_3 = NameResolver.protectKeywords(_name_5);
+        String _name_3 = property.getName();
+        String _protectKeywords_3 = NameResolver.protectKeywords(_name_3);
         _builder_1.append(_protectKeywords_3, "");
         _builder_1.append(" = ");
-        String _name_6 = property.getName();
-        String _protectKeywords_4 = NameResolver.protectKeywords(_name_6);
+        String _name_4 = property.getName();
+        String _protectKeywords_4 = NameResolver.protectKeywords(_name_4);
         _builder_1.append(_protectKeywords_4, "");
         _builder_1.append(";");
         _builder_1.newLineIfNotEmpty();

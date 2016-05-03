@@ -14,6 +14,8 @@ public abstract class AbstractTemplateTypeGenerator extends AbstractTypeGenerato
    * 		generic author name for the record
    * @params version
    * 		generic kieker version for the record
+   * @param headerComment
+   *      comment inserted as header comment of the output
    */
-  public abstract CharSequence createContent(final TemplateType type, final String author, final String version);
+  public abstract CharSequence createContent(final TemplateType type, final String author, final String version, final String headerComment);
 }

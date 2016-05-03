@@ -18,12 +18,14 @@ public abstract class AbstractRecordTypeGenerator extends AbstractTypeGenerator 
   /**
    * Primary code generation template.
    * 
-   * @params type
+   * @param type
    * 		one record type to be used to create monitoring record
-   * @params author
+   * @param author
    * 		generic author name for the record
-   * @params version
+   * @param version
    * 		generic kieker version for the record
+   * @param headerComment
+   *      comment inserted as header comment of the output
    */
-  public abstract CharSequence createContent(final RecordType type, final String author, final String version);
+  public abstract CharSequence createContent(final RecordType type, final String author, final String version, final String headerComment);
 }

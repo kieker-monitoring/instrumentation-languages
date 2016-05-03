@@ -6,11 +6,12 @@ import kieker.develop.rl.recordLang.Property
 import kieker.develop.rl.recordLang.Model
 import java.io.File
 import org.eclipse.emf.common.util.EList
-import kieker.develop.rl.validation.PropertyEvaluation
 import kieker.develop.rl.generator.AbstractTemplateTypeGenerator
 import java.util.Calendar
 
 import static extension kieker.develop.rl.generator.java.IRL2JavaTypeMappingExtensions.*
+import static extension kieker.develop.rl.generator.java.record.NameResolver.*
+import static extension kieker.develop.rl.validation.PropertyEvaluation.*
 
 class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
 
@@ -34,27 +35,12 @@ class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
 	 */
 	override getFileName(Type type) '''«type.getDirectoryName»«File::separator»«type.name».java'''
 	
-	override createContent(TemplateType type, String author, String version) {
+	override createContent(TemplateType type, String author, String version, String headerComment) {
 		val definedAuthor = if (type.author == null) author else type.author
 		val definedVersion = if (type.since == null) version else type.since
 		'''
-		/***************************************************************************
-		 * Copyright «Calendar.getInstance().get(Calendar.YEAR)» Kieker Project (http://kieker-monitoring.net)
-		 *
-		 * Licensed under the Apache License, Version 2.0 (the "License");
-		 * you may not use this file except in compliance with the License.
-		 * You may obtain a copy of the License at
-		 *
-		 *     http://www.apache.org/licenses/LICENSE-2.0
-		 *
-		 * Unless required by applicable law or agreed to in writing, software
-		 * distributed under the License is distributed on an "AS IS" BASIS,
-		 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-		 * See the License for the specific language governing permissions and
-		 * limitations under the License.
-		 ***************************************************************************/
-		
-		package «(type.eContainer as Model).name»;
+		«IF (!headerComment.equals(""))»«headerComment.replace("THIS-YEAR", Calendar.getInstance().get(Calendar.YEAR).toString)»
+		«ENDIF»package «(type.eContainer as Model).name»;
 		
 		«type.parents.createImports(type)»
 		
@@ -92,23 +78,10 @@ class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
 	 * @returns the resulting getter as a CharSequence
 	 */
 	private def createPropertyGetter(Property property) '''
-	public «PropertyEvaluation::findType(property).type.createPrimitiveTypeName» «property.createGetterName»() ;
+		public «property.findType.type.createPrimitiveTypeName» «property.createGetterName»() ;
 		
 	'''
 	
-	/**
-	 * Returns the correct name for a getter following Java conventions.
-	 * 
-	 * @param property
-	 * 		a property of a record type
-	 * 
-	 * @returns the name of the getter of the property
-	 */
-	private def CharSequence createGetterName(Property property) {
-		if (PropertyEvaluation::findType(property).class.name.equals('boolean')) 
-			'''is«property.name.toFirstUpper»'''
-		else
-			'''get«property.name.toFirstUpper»'''
-	}
+
 				
 }

@@ -11,6 +11,8 @@ import kieker.develop.rl.validation.PropertyEvaluation
 
 import static extension kieker.develop.rl.generator.c.CommonCFunctionsExtension.*
 import java.util.Calendar
+import kieker.develop.rl.typing.BaseTypes
+import kieker.develop.rl.generator.InternalErrorException
 
 class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	
@@ -47,31 +49,19 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	/**
 	 * Primary code generation template.
 	 * 
-	 * @params type
+	 * @param type
 	 * 		one record type to be used to create monitoring record
-	 * @params author
+	 * @param author
 	 * 		generic author name for the record
-	 * @params version
+	 * @param version
 	 * 		generic kieker version for the record
+	 * @param headerComment
+	 *      comment placed as header of the file
 	 */
-	override createContent(RecordType type, String author, String version) {
+	override createContent(RecordType type, String author, String version, String headerComment) {
 		'''
-		/***************************************************************************
-		 * Copyright «Calendar.getInstance().get(Calendar.YEAR)» Kieker Project (http://kieker-monitoring.net)
-		 *
-		 * Licensed under the Apache License, Version 2.0 (the "License");
-		 * you may not use this file except in compliance with the License.
-		 * You may obtain a copy of the License at
-		 *
-		 *     http://www.apache.org/licenses/LICENSE-2.0
-		 *
-		 * Unless required by applicable law or agreed to in writing, software
-		 * distributed under the License is distributed on an "AS IS" BASIS,
-		 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-		 * See the License for the specific language governing permissions and
-		 * limitations under the License.
-		 ***************************************************************************/
-		#include <stdlib.h>
+		«IF (!headerComment.equals(""))»«headerComment.replace("THIS-YEAR", Calendar.getInstance().get(Calendar.YEAR).toString)»
+		«ENDIF»#include <stdlib.h>
 		#include <kieker.h>
 		#include "«type.getDirectoryName»/«type.packageName»_«type.name.cstyleName».h"
 
@@ -114,18 +104,17 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	/**
 	 * 
 	 */
-	private def serializerSuffix(Classifier classifier) {
-		switch (classifier.type.name) {
-			case 'string' : 'string'
-			case 'byte' : 'int8'
-			case 'short' : 'int16'
-			case 'int' : 'int32'
-			case 'long' : 'int64'
-			case 'float' : 'float'
-			case 'double' : 'double'
-			case 'char' : 'int16'
-			case 'boolean' : 'boolean'
-			default : classifier.type.name
+	private def serializerSuffix(Classifier classifier) throws InternalErrorException {
+		switch (BaseTypes.getTypeEnum(classifier.type)) {
+			case STRING : 'string'
+			case BYTE : 'int8'
+			case SHORT : 'int16'
+			case INT : 'int32'
+			case LONG : 'int64'
+			case FLOAT : 'float'
+			case DOUBLE : 'double'
+			case CHAR : 'int16'
+			case BOOLEAN : 'boolean'
 		}
 	}
 		

@@ -10,6 +10,7 @@ import kieker.develop.rl.recordLang.RecordType;
 import kieker.develop.rl.recordLang.Type;
 import kieker.develop.rl.validation.PropertyEvaluation;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
@@ -71,58 +72,22 @@ public class RecordTypeGenerator extends kieker.develop.rl.generator.c.main.Reco
    * 		generic kieker version for the record
    */
   @Override
-  public CharSequence createContent(final RecordType type, final String author, final String version) {
+  public CharSequence createContent(final RecordType type, final String author, final String version, final String headerComment) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("/***************************************************************************");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* Copyright ");
-    Calendar _instance = Calendar.getInstance();
-    int _get = _instance.get(Calendar.YEAR);
-    _builder.append(_get, " ");
-    _builder.append(" Kieker Project (http://kieker-monitoring.net)");
-    _builder.newLineIfNotEmpty();
-    _builder.append(" ");
-    _builder.append("*");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* Licensed under the Apache License, Version 2.0 (the \"License\");");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* you may not use this file except in compliance with the License.");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* You may obtain a copy of the License at");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("*");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("*     http://www.apache.org/licenses/LICENSE-2.0");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("*");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* Unless required by applicable law or agreed to in writing, software");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* distributed under the License is distributed on an \"AS IS\" BASIS,");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* See the License for the specific language governing permissions and");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* limitations under the License.");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("***************************************************************************/");
-    _builder.newLine();
+    {
+      boolean _equals = headerComment.equals("");
+      boolean _not = (!_equals);
+      if (_not) {
+        Calendar _instance = Calendar.getInstance();
+        int _get = _instance.get(Calendar.YEAR);
+        String _string = Integer.valueOf(_get).toString();
+        String _replace = headerComment.replace("THIS-YEAR", _string);
+        _builder.append(_replace, "");
+        _builder.newLineIfNotEmpty();
+      }
+    }
     _builder.append("#include <stdlib.h>");
-    _builder.newLine();
+    _builder.newLineIfNotEmpty();
     _builder.append("#include <kieker.h>");
     _builder.newLine();
     _builder.newLine();
@@ -175,16 +140,20 @@ public class RecordTypeGenerator extends kieker.develop.rl.generator.c.main.Reco
   }
   
   private CharSequence createPropertyDeclaration(final Property property) {
-    StringConcatenation _builder = new StringConcatenation();
-    Classifier _findType = PropertyEvaluation.findType(property);
-    String _createTypeName = CommonCFunctionsExtension.createTypeName(_findType);
-    _builder.append(_createTypeName, "");
-    _builder.append(" ");
-    String _name = property.getName();
-    _builder.append(_name, "");
-    _builder.append(";");
-    _builder.newLineIfNotEmpty();
-    return _builder;
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      Classifier _findType = PropertyEvaluation.findType(property);
+      String _createTypeName = CommonCFunctionsExtension.createTypeName(_findType);
+      _builder.append(_createTypeName, "");
+      _builder.append(" ");
+      String _name = property.getName();
+      _builder.append(_name, "");
+      _builder.append(";");
+      _builder.newLineIfNotEmpty();
+      return _builder;
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
   }
   
   /**

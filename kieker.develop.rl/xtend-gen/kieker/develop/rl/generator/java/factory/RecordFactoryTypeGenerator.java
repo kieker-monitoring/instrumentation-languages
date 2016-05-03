@@ -81,15 +81,15 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
   /**
    * Primary code generation template.
    * 
-   * @params type
+   * @param type
    * 		one record type to be used to create the corresponding monitoring record factory
-   * @params author
+   * @param author
    * 		generic author name for the record
-   * @params version
+   * @param version
    * 		generic kieker version for the record
    */
   @Override
-  public CharSequence createContent(final RecordType type, final String author, final String version) {
+  public CharSequence createContent(final RecordType type, final String author, final String version, final String headerComment) {
     CharSequence _xblockexpression = null;
     {
       String _xifexpression = null;
@@ -111,55 +111,18 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
       }
       final String definedVersion = _xifexpression_1;
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("/***************************************************************************");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* Copyright ");
-      Calendar _instance = Calendar.getInstance();
-      int _get = _instance.get(Calendar.YEAR);
-      _builder.append(_get, " ");
-      _builder.append(" Kieker Project (http://kieker-monitoring.net)");
-      _builder.newLineIfNotEmpty();
-      _builder.append(" ");
-      _builder.append("*");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* Licensed under the Apache License, Version 2.0 (the \"License\");");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* you may not use this file except in compliance with the License.");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* You may obtain a copy of the License at");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("*");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("*     http://www.apache.org/licenses/LICENSE-2.0");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("*");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* Unless required by applicable law or agreed to in writing, software");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* distributed under the License is distributed on an \"AS IS\" BASIS,");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* See the License for the specific language governing permissions and");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* limitations under the License.");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("***************************************************************************/");
-      _builder.newLine();
-      _builder.newLine();
+      {
+        boolean _equals_2 = headerComment.equals("");
+        boolean _not = (!_equals_2);
+        if (_not) {
+          Calendar _instance = Calendar.getInstance();
+          int _get = _instance.get(Calendar.YEAR);
+          String _string = Integer.valueOf(_get).toString();
+          String _replace = headerComment.replace("THIS-YEAR", _string);
+          _builder.append(_replace, "");
+          _builder.newLineIfNotEmpty();
+        }
+      }
       _builder.append("package ");
       EObject _eContainer = type.eContainer();
       String _name = ((Model) _eContainer).getName();

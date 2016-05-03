@@ -18,13 +18,15 @@ abstract class AbstractRecordTypeGenerator extends AbstractTypeGenerator {
 	/**
 	 * Primary code generation template.
 	 * 
-	 * @params type
+	 * @param type
 	 * 		one record type to be used to create monitoring record
-	 * @params author
+	 * @param author
 	 * 		generic author name for the record
-	 * @params version
+	 * @param version
 	 * 		generic kieker version for the record
+	 * @param headerComment
+	 *      comment inserted as header comment of the output 
 	 */
-	def abstract CharSequence createContent(RecordType type, String author, String version)
+	def abstract CharSequence createContent(RecordType type, String author, String version, String headerComment)
 	
 }

@@ -53,7 +53,7 @@ class ServletAdviceGenerator implements IGenerator<Advice, CharSequence> {
 				/**
 				 * Create an SessionAndTraceRegistrationFilter and initialize the filter operation signature.
 				 */
-				public «input.name»() {
+				public «input.name»Filter() {
 					// nothing to be done here at the moment.
 				}
 			

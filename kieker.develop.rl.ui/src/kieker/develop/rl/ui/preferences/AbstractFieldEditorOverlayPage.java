@@ -15,36 +15,37 @@
  ***************************************************************************/
 package kieker.develop.rl.ui.preferences;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.lang.reflect.InvocationTargetException;
 
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IResource;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.core.runtime.QualifiedName;
-import org.eclipse.jdt.core.IJavaElement;
-import org.eclipse.jdt.core.JavaModelException;
+import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.FieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.IPreferenceNode;
 import org.eclipse.jface.preference.IPreferencePage;
-import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferenceDialog;
 import org.eclipse.jface.preference.PreferenceManager;
 import org.eclipse.jface.preference.PreferenceNode;
+import org.eclipse.jface.preference.StringFieldEditor;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.Bullet;
 import org.eclipse.swt.custom.BusyIndicator;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.custom.LineStyleEvent;
+import org.eclipse.swt.custom.LineStyleListener;
+import org.eclipse.swt.custom.ST;
+import org.eclipse.swt.custom.StyleRange;
+import org.eclipse.swt.custom.StyledText;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.graphics.GlyphMetrics;
 import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Control;
-import org.eclipse.ui.IWorkbenchPropertyPage;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Label;
+
+import kieker.develop.rl.generator.AbstractRecordTypeGenerator;
+import kieker.develop.rl.generator.GeneratorConfiguration;
+import kieker.develop.rl.preferences.TargetsPreferences;
 
 /**
  * superclass for FieldEditorPreferencePage; can be used for preference pages and property pages.
@@ -54,34 +55,7 @@ import org.eclipse.ui.IWorkbenchPropertyPage;
  * @author Yannic Kropp
  *
  */
-public abstract class AbstractFieldEditorOverlayPage extends FieldEditorPreferencePage implements IWorkbenchPropertyPage {
-
-	/** Name of resource property for the selection of workbench or project settings. */
-	public static final String USEPROJECTSETTINGS = "useProjectSettings";
-
-	private static final String FALSE = "false";
-	private static final String TRUE = "true";
-
-	// Stores all created field editors
-	private final List<FieldEditor> editors = new ArrayList<FieldEditor>();
-
-	// Stores owning element of properties
-	private IAdaptable element;
-
-
-	// Additional buttons for property pages
-	private Button useWorkspaceSettingsButton;
-	private Button useProjectSettingsButton;
-	private Button configureButton;
-
-	// Overlay preference store for property pages
-	private IPreferenceStore overlayStore;
-
-	// The image descriptor of this pages title image
-	private ImageDescriptor image;
-
-	// Cache for page id
-	private String pageId;
+public abstract class AbstractFieldEditorOverlayPage extends FieldEditorPreferencePage {
 
 	/**
 	 * Constructor.
@@ -106,271 +80,8 @@ public abstract class AbstractFieldEditorOverlayPage extends FieldEditorPreferen
 	 * @param image - title image
 	 * @param style - layout style
 	 */
-	public AbstractFieldEditorOverlayPage(
-			final String title,
-			final ImageDescriptor image,
-			final int style) {
+	public AbstractFieldEditorOverlayPage(final String title, final ImageDescriptor image, final int style) {
 		super(title, image, style);
-		this.image = image;
-	}
-
-	/**
-	 * Returns the id of the current preference page as defined in plugin.xml
-	 * Subclasses must implement.
-	 *
-	 * @return - the qualifier
-	 */
-	protected abstract String getPageId();
-
-	/**
-	 * Receives the object that owns the properties shown in this property page.
-	 * @see org.eclipse.ui.IWorkbenchPropertyPage#setElement(org.eclipse.core.runtime.IAdaptable)
-	 */
-	public void setElement(final IAdaptable element) {
-		this.element = element;
-	}
-
-	/**
-	 * Delivers the object that owns the properties shown in this property page.
-	 * @see org.eclipse.ui.IWorkbenchPropertyPage#getElement()
-	 */
-	public IAdaptable getElement() {
-		return this.element;
-	}
-
-	/**
-	 * Returns true if this instance represents a property page
-	 * @return - true for property pages, false for preference pages
-	 */
-	public boolean isPropertyPage() {
-		return this.getElement() != null;
-	}
-
-	/**
-	 * We override the addField method. This allows us to store each field editor added by subclasses
-	 * in a list for later processing.
-	 *
-	 * @see org.eclipse.jface.preference.FieldEditorPreferencePage#addField(org.eclipse.jface.preference.FieldEditor)
-	 */
-	@Override
-	protected void addField(final FieldEditor editor) {
-		this.editors.add(editor);
-		super.addField(editor);
-	}
-
-	/**
-	 *  We override the createControl method.
-	 * In case of property pages we create a new PropertyStore as local preference store.
-	 * After all control have been create, we enable/disable these controls.
-	 *
-	 * @see org.eclipse.jface.preference.PreferencePage#createControl()
-	 */
-	@Override
-	public void createControl(final Composite parent) {
-		// Special treatment for property pages
-		if (this.isPropertyPage()) {
-			// Cache the page id
-			this.pageId = this.getPageId();
-			// Create an overlay preference store and fill it with properties
-			try {
-				this.overlayStore =
-						new PropertyStore(
-								this.getResource(),
-								super.getPreferenceStore(),
-								this.pageId);
-			} catch (final JavaModelException e) {
-				e.printStackTrace();
-			}
-			// Set overlay store as current preference store
-		}
-		super.createControl(parent);
-		// Update state of all subclass controls
-		if (this.isPropertyPage()) {
-			this.updateFieldEditors();
-		}
-	}
-
-	/**
-	 * We override the createContents method.
-	 * In case of property pages we insert two radio buttons at the top of the page.
-	 *
-	 * @see org.eclipse.jface.preference.PreferencePage#createContents(org.eclipse.swt.widgets.Composite)
-	 */
-	@Override
-	protected Control createContents(final Composite parent) {
-		if (this.isPropertyPage()) {
-			this.createSelectionGroup(parent);
-		}
-		return super.createContents(parent);
-	}
-
-	/**
-	 * Creates and initializes a selection group with two choice buttons and one push button.
-	 * @param parent - the parent composite
-	 */
-	private void createSelectionGroup(final Composite parent) {
-		final Composite comp = new Composite(parent, SWT.NONE);
-		final GridLayout layout = new GridLayout(2, false);
-		layout.marginHeight = 0;
-		layout.marginWidth = 0;
-		comp.setLayout(layout);
-		comp.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		final Composite radioGroup = new Composite(comp, SWT.NONE);
-		radioGroup.setLayout(new GridLayout());
-		radioGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		this.useWorkspaceSettingsButton = this.createRadioButton(radioGroup, "Use &workspace settings");
-		this.useProjectSettingsButton = this.createRadioButton(radioGroup, "Use pr&oject settings");
-		this.configureButton = new Button(comp, SWT.PUSH);
-		this.configureButton.setText("&Configure Workspace Settings ...");
-		this.configureButton.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(final SelectionEvent e) {
-				AbstractFieldEditorOverlayPage.this.configureWorkspaceSettings();
-			}
-		});
-		// Set workspace/project radio buttons
-		try {
-			final String use = this.getResource().getPersistentProperty(new QualifiedName(this.pageId, USEPROJECTSETTINGS));
-			if (TRUE.equals(use)) {
-				this.useProjectSettingsButton.setSelection(true);
-				this.configureButton.setEnabled(false);
-			} else {
-				this.useWorkspaceSettingsButton.setSelection(true);
-			}
-		} catch (final CoreException e) {
-			this.useWorkspaceSettingsButton.setSelection(true);
-		}
-	}
-
-	/**
-	 * Convenience method creating a radio button.
-	 * @param parent - the parent composite
-	 * @param label - the button label
-	 * @return - the new button
-	 */
-	private Button createRadioButton(final Composite parent, final String label) {
-		final Button button = new Button(parent, SWT.RADIO);
-		button.setText(label);
-		button.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(final SelectionEvent e) {
-				AbstractFieldEditorOverlayPage.this.configureButton.setEnabled(
-						button == AbstractFieldEditorOverlayPage.this.useWorkspaceSettingsButton);
-				AbstractFieldEditorOverlayPage.this.updateFieldEditors();
-			}
-		});
-		return button;
-	}
-
-	/**
-	 * Returns in case of property pages the overlay store, in case of preference pages the standard preference store.
-	 * @see org.eclipse.jface.preference.PreferencePage#getPreferenceStore()
-	 */
-	@Override
-	public IPreferenceStore getPreferenceStore() {
-		if (this.isPropertyPage()) {
-			return this.overlayStore;
-		}
-		return super.getPreferenceStore();
-	}
-
-	/*
-	 * Enables or disables the field editors and buttons of this page
-	 */
-	private void updateFieldEditors() {
-		// We iterate through all field editors
-		final boolean enabled = this.useProjectSettingsButton.getSelection();
-		this.updateFieldEditors(enabled);
-	}
-
-	/**
-	 * Enables or disables the field editors and buttons of this page
-	 * Subclasses may override.
-	 * @param enabled - true if enabled
-	 */
-	protected void updateFieldEditors(final boolean enabled) {
-		final Composite parent = this.getFieldEditorParent();
-		final Iterator<FieldEditor> it = this.editors.iterator();
-		while (it.hasNext()) {
-			it.next().setEnabled(enabled, parent);
-		}
-	}
-
-	/**
-	 * We override the performOk method. In case of property pages we copy the values in the
-	 * overlay store into the property values of the selected project.
-	 * We also save the state of the radio buttons.
-	 *
-	 * @see org.eclipse.jface.preference.IPreferencePage#performOk()
-	 */
-	@Override
-	public boolean performOk() {
-		final boolean result = super.performOk();
-		if (result && this.isPropertyPage()) {
-			// Save state of radiobuttons in project properties
-			try {
-				final String value = (this.useProjectSettingsButton.getSelection()) ? TRUE : FALSE; // NOCS
-				this.getResource().setPersistentProperty(
-						new QualifiedName(this.pageId, USEPROJECTSETTINGS),
-						value);
-			} catch (final CoreException e) {
-			}
-		}
-		return result;
-	}
-
-	/**
-	 * Determine the correct resource for a given IAdaptable.
-	 *
-	 * @return a resource for the IAdaptable or null is no mapping exists.
-	 * @throws JavaModelException
-	 */
-	private IResource getResource() throws JavaModelException {
-		if (this.element instanceof IJavaElement) {
-			return ((IJavaElement) this.element).getCorrespondingResource();
-		} else if (this.element instanceof IProject) {
-			return (IProject) this.element;
-		} else {
-			System.out.println("Element type is " + this.element.getClass().getCanonicalName());
-			return null;
-		}
-	}
-
-	/**
-	 * We override the performDefaults method. In case of property pages we
-	 * switch back to the workspace settings and disable the field editors.
-	 *
-	 * @see org.eclipse.jface.preference.PreferencePage#performDefaults()
-	 */
-	@Override
-	protected void performDefaults() {
-		if (this.isPropertyPage()) {
-			this.useWorkspaceSettingsButton.setSelection(true);
-			this.useProjectSettingsButton.setSelection(false);
-			this.configureButton.setEnabled(true);
-			this.updateFieldEditors();
-		}
-		super.performDefaults();
-	}
-
-	/**
-	 * Creates a new preferences page and opens it.
-	 * @see com.bdaum.SpellChecker.preferences.SpellCheckerPreferencePage#configureWorkspaceSettings()
-	 */
-	protected void configureWorkspaceSettings() {
-		try {
-			// create a new instance of the current class
-			final IPreferencePage page =
-					this.getClass().newInstance();
-			page.setTitle(this.getTitle());
-			page.setImageDescriptor(this.image);
-			// and show it
-			this.showPreferencePage(this.pageId, page);
-		} catch (final InstantiationException e) {
-			e.printStackTrace();
-		} catch (final IllegalAccessException e) {
-			e.printStackTrace();
-		}
 	}
 
 	/**
@@ -391,6 +102,120 @@ public abstract class AbstractFieldEditorOverlayPage extends FieldEditorPreferen
 				dialog.open();
 			}
 		});
+	}
+
+	@Override
+	protected void createFieldEditors() {
+		for (final Class<?> generatorClass : GeneratorConfiguration.RECORD_TYPE_GENERATORS) {
+			try {
+				final AbstractRecordTypeGenerator generator = (AbstractRecordTypeGenerator) generatorClass.getConstructor().newInstance();
+
+				this.addField(new BooleanFieldEditor(TargetsPreferences.GENERATOR_ACTIVE + generator.getId(),
+						generator.getDescription(), this.getFieldEditorParent()));
+				final FieldEditor commentFieldEditor = new FieldEditor(TargetsPreferences.GENERATOR_HEADER_COMMENT + generator.getId(),
+						"Header", this.getFieldEditorParent()) {
+
+					Composite top;
+					StyledText comment;
+
+					@Override
+					protected void adjustForNumColumns(final int numColumns) {
+						((GridData)this.top.getLayoutData()).horizontalSpan = numColumns;
+					}
+
+					@Override
+					protected void doFillIntoGrid(final Composite parent, final int numColumns) {
+						this.top = parent;
+
+						final GridData gd = new GridData(GridData.FILL_HORIZONTAL);
+						gd.horizontalSpan = numColumns;
+						this.top.setLayoutData(gd);
+
+						final Label label = this.getLabelControl(this.top);
+						final GridData labelData = new GridData();
+						labelData.horizontalSpan = numColumns;
+						label.setLayoutData(labelData);
+
+						this.comment = new StyledText(this.top, SWT.MULTI | SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
+						final GridData layoutData = new GridData(GridData.FILL_BOTH);
+						layoutData.heightHint = this.convertVerticalDLUsToPixels(parent, 50);
+						this.comment.setLayoutData(layoutData);
+
+						this.comment.addLineStyleListener(new LineStyleListener() {
+							@Override
+							public void lineGetStyle(final LineStyleEvent event) {
+								// Using ST.BULLET_NUMBER sometimes results in weird alignment.
+								//event.bulletIndex = styledText.getLineAtOffset(event.lineOffset);
+								final StyleRange styleRange = new StyleRange();
+								styleRange.foreground = Display.getCurrent().getSystemColor(SWT.COLOR_GRAY);
+								final int maxLine = comment.getLineCount();
+								final int bulletLength = Integer.toString(maxLine).length();
+								// Width of number character is half the height in monospaced font, add 1 character width for right padding.
+								final int bulletWidth = ((bulletLength + 1) * comment.getLineHeight()) / 2;
+								styleRange.metrics = new GlyphMetrics(0, 0, bulletWidth);
+								event.bullet = new Bullet(ST.BULLET_TEXT, styleRange);
+								// getLineAtOffset() returns a zero-based line index.
+								final int bulletLine = comment.getLineAtOffset(event.lineOffset) + 1;
+								event.bullet.text = String.format("%" + bulletLength + "s", bulletLine);
+							}
+						});
+						this.comment.addModifyListener(new ModifyListener() {
+							@Override
+							public void modifyText(final ModifyEvent e) {
+								// For line number redrawing.
+								comment.redraw();
+							}
+						});
+					}
+
+					@Override
+					protected void doLoad() {
+						final String comment = this.getPreferenceStore().getString(this.getPreferenceName());
+						if (comment != null) {
+							this.comment.setText(comment);
+						}
+					}
+
+					@Override
+					protected void doLoadDefault() {
+						final String comment = this.getPreferenceStore().getDefaultString(this.getPreferenceName());
+						if (comment != null) {
+							this.comment.setText(comment);
+						}
+					}
+
+					@Override
+					protected void doStore() {
+						this.getPreferenceStore().setValue(this.getPreferenceName(), this.comment.getText());
+					}
+
+					@Override
+					public int getNumberOfControls() {
+						return 1;
+					}
+
+				};
+				this.addField(commentFieldEditor);
+			} catch (final IllegalArgumentException e) {
+				e.printStackTrace();
+			} catch (final SecurityException e) {
+				e.printStackTrace();
+			} catch (final InstantiationException e) {
+				e.printStackTrace();
+			} catch (final IllegalAccessException e) {
+				e.printStackTrace();
+			} catch (final InvocationTargetException e) {
+				e.printStackTrace();
+			} catch (final NoSuchMethodException e) {
+				e.printStackTrace();
+			}
+		}
+
+		// SpacerFieldEditor spacer = new SpacerFieldEditor(getFieldEditorParent());
+		// addField(spacer);
+
+		this.addField(new StringFieldEditor(TargetsPreferences.AUTHOR_NAME, "Author", this.getFieldEditorParent()));
+		this.addField(new StringFieldEditor(TargetsPreferences.VERSION_ID, "Version", this.getFieldEditorParent()));
 	}
 
 }

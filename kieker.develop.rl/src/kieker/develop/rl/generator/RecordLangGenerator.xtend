@@ -21,6 +21,8 @@ import org.eclipse.xtext.generator.IFileSystemAccess
 import kieker.develop.rl.recordLang.RecordType
 import kieker.develop.rl.recordLang.TemplateType
 import kieker.develop.rl.preferences.TargetsPreferences
+import org.eclipse.core.runtime.preferences.IEclipsePreferences
+import org.osgi.service.prefs.Preferences
 
 /**
  * Generates one single files per record for java, c, and perl. 
@@ -30,17 +32,36 @@ class RecordLangGenerator implements IGenerator {
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		if (resource.URI.platformResource) {			
 			// list all generators to support RecordType
-
-			val version = TargetsPreferences.getVersionID()
-			val author = TargetsPreferences.getAuthorName()
+			val preferenceStore = TargetsPreferences.preferenceStore
 					
+			val project = resource.URI.segmentsList.get(1)
+			
+			val projectStore = preferenceStore.node(project)
+			
+			projectStore.v()
+																	
+			preferenceStore.runGenerators(resource, fsa)
+		}
+	}
+	
+	def void v(Preferences preferences) {
+		preferences.childrenNames.forEach[System.out.println(">> " + it)]
+	}
+	
+	
+	private def runGenerators(IEclipsePreferences preferenceStore, Resource resource, IFileSystemAccess fsa) {
+		val version = TargetsPreferences.getVersionID(preferenceStore)
+			val author = TargetsPreferences.getAuthorName(preferenceStore)
+								
 			/** Generator invocation for RecordTypes */																	
 			for (Class<?> generator : GeneratorConfiguration.RECORD_TYPE_GENERATORS) {
 				val cg = generator.getConstructor().newInstance() as AbstractRecordTypeGenerator
-				if (TargetsPreferences.isGeneratorActive(cg.id)) {
+				if (TargetsPreferences.isGeneratorActive(preferenceStore, cg.id)) {
 					resource.allContents.filter(typeof(RecordType)).forEach[type |
 						if (cg.supportsAbstractRecordType || (!cg.supportsAbstractRecordType && !type.abstract)) 
-							fsa.generateFile(cg.getFileName(type),	cg.outletType, cg.createContent(type,author,version))
+							fsa.generateFile(cg.getFileName(type),	cg.outletType, 
+								cg.createContent(type, author, version, TargetsPreferences.getHeaderComment(preferenceStore, cg.id))
+							)
 					]
 				}
 			}
@@ -48,14 +69,14 @@ class RecordLangGenerator implements IGenerator {
 			/** Generator invocation for TemplateTypes */
 			for (Class<?> generator : GeneratorConfiguration.TEMPLATE_TYPE_GENERATORS) {
 				val cg = generator.getConstructor().newInstance() as AbstractTemplateTypeGenerator
-				if (TargetsPreferences.isGeneratorActive(cg.id)) {
+				if (TargetsPreferences.isGeneratorActive(preferenceStore, cg.id)) {
 					resource.allContents.filter(typeof(TemplateType)).forEach[type | 
-						fsa.generateFile(cg.getFileName(type),	cg.outletType, cg.createContent(type,author,version))
+						fsa.generateFile(cg.getFileName(type),	cg.outletType, 
+							cg.createContent(type, author,version, TargetsPreferences.getHeaderComment(preferenceStore, cg.id))
+						)
 					]
 				}
 			}
-		}
 	}
-	
 
 }

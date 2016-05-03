@@ -5,6 +5,7 @@ import kieker.develop.rl.recordLang.RecordType
 import kieker.develop.rl.recordLang.Model
 import kieker.develop.rl.recordLang.Classifier
 import kieker.develop.rl.generator.InternalErrorException
+import kieker.develop.rl.typing.BaseTypes
 
 /**
  * @author Reiner Jung
@@ -33,18 +34,17 @@ class CommonCFunctionsExtension {
 	 * 
 	 * @returns a C type name
 	 */
-	def static createTypeName(Classifier classifier) {
-		switch (classifier.type.name) {
-			case 'key' : 'const char*'
-			case 'string' : 'const char*'
-			case 'byte' : 'char'
-			case 'short' : 'short'
-			case 'int' : 'long'
-			case 'long' : 'long long'
-			case 'float' : 'float'
-			case 'double' : 'double'
-			case 'boolean' : 'char'
-			default : throw new InternalErrorException("Type " + classifier.type.name + " is not supported.")
+	def static createTypeName(Classifier classifier) throws InternalErrorException {
+		switch (BaseTypes.getTypeEnum(classifier.type)) {
+			case STRING : 'const char*'
+			case CHAR : 'char'
+			case SHORT : 'short'
+			case INT : 'long'
+			case LONG : 'long long'
+			case FLOAT : 'float'
+			case DOUBLE : 'double'
+			case BOOLEAN : 'char'
+			case BYTE : 'unsigned char'
 		}
 		
 	}

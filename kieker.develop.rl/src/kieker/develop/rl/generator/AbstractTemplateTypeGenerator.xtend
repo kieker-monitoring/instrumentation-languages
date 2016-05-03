@@ -13,7 +13,9 @@ abstract class AbstractTemplateTypeGenerator extends AbstractTypeGenerator {
 	 * 		generic author name for the record
 	 * @params version
 	 * 		generic kieker version for the record
+	 * @param headerComment
+	 *      comment inserted as header comment of the output 
 	 */
-	def abstract CharSequence createContent(TemplateType type, String author, String version);
+	def abstract CharSequence createContent(TemplateType type, String author, String version, String headerComment);
 		
 }

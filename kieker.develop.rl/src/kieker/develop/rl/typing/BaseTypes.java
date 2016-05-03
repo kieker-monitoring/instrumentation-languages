@@ -15,6 +15,7 @@
  ***************************************************************************/
 package kieker.develop.rl.typing;
 
+import kieker.develop.rl.generator.InternalErrorException;
 import kieker.develop.rl.recordLang.BaseType;
 import kieker.develop.rl.recordLang.RecordLangFactory;
 
@@ -38,7 +39,12 @@ public enum BaseTypes {
 		return this.type;
 	}
 
-	public String getTypeName() {
-		return this.type.getName();
+	public static BaseTypes getTypeEnum(final BaseType type) throws InternalErrorException {
+		for (final BaseTypes result : BaseTypes.values()) {
+			if (result.name().toLowerCase().equals(type.getName())) {
+				return result;
+			}
+		}
+		throw new InternalErrorException("Type " + type.getName() + " is not a valid base type.");
 	}
 }

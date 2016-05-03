@@ -17,40 +17,38 @@ class IRL2JavaTypeMappingExtensions {
 	 * @return 
 	 * 		the Java type name of the given <code>classifier</code>
 	 */
-	static def createPrimitiveTypeName(BaseType classifier) {
-		switch (classifier.name) {
-			case BaseTypes.INT.typeName: 'int'
-			case BaseTypes.LONG.typeName: 'long'
-			case BaseTypes.SHORT.typeName: 'short'
-			case BaseTypes.DOUBLE.typeName: 'double'
-			case BaseTypes.FLOAT.typeName: 'float'
-			case BaseTypes.CHAR.typeName: 'char'
-			case BaseTypes.BYTE.typeName: 'byte'
-			case BaseTypes.STRING.typeName: 'String'
-			case BaseTypes.BOOLEAN.typeName: 'boolean'
-			default: throw new InternalErrorException("Base type " + classifier.name + " is not a defined mapping type.")
+	static def createPrimitiveTypeName(BaseType type) throws InternalErrorException {
+		switch (BaseTypes.getTypeEnum(type)) {
+			case INT: 'int'
+			case LONG: 'long'
+			case SHORT: 'short'
+			case DOUBLE: 'double'
+			case FLOAT: 'float'
+			case CHAR: 'char'
+			case BYTE: 'byte'
+			case STRING: 'String'
+			case BOOLEAN: 'boolean'
 		}
 	}
 
 	/**
 	 * Determine the right Java string for a given system type.
 	 */
-	static def createPrimitiveWrapperTypeName(BaseType classifier) {
-		switch (classifier.name) {
-			case BaseTypes.INT.typeName: 'Integer'
-			case BaseTypes.LONG.typeName: 'Long'
-			case BaseTypes.SHORT.typeName: 'Short'
-			case BaseTypes.DOUBLE.typeName: 'Double'
-			case BaseTypes.FLOAT.typeName: 'Float'
-			case BaseTypes.CHAR.typeName: 'Character'
-			case BaseTypes.BYTE.typeName: 'Byte'
-			case BaseTypes.STRING.typeName: 'String'
-			case BaseTypes.BOOLEAN.typeName: 'Boolean'
-			default: throw new InternalErrorException("Base type " + classifier.name + " is not a defined mapping type.")
+	static def createPrimitiveWrapperTypeName(BaseType type)  throws InternalErrorException {
+		switch (BaseTypes.getTypeEnum(type)) {
+			case INT: 'Integer'
+			case LONG: 'Long'
+			case SHORT: 'Short'
+			case DOUBLE: 'Double'
+			case FLOAT: 'Float'
+			case CHAR: 'Character'
+			case BYTE: 'Byte'
+			case STRING: 'String'
+			case BOOLEAN: 'Boolean'		
 		}
 	}
 	
-		/**
+	/**
 	 * Determine the right Java string for a given system type.
 	 * 
 	 * @param classifier

@@ -23,6 +23,7 @@ import kieker.develop.rl.recordLang.Type;
 import kieker.develop.rl.validation.PropertyEvaluation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
@@ -91,7 +92,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   }
   
   @Override
-  public CharSequence createContent(final RecordType type, final String author, final String version) {
+  public CharSequence createContent(final RecordType type, final String author, final String version, final String headerComment) {
     CharSequence _xblockexpression = null;
     {
       boolean _isAbstract = type.isAbstract();
@@ -100,55 +101,18 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       }
       final List<Property> allDataProperties = PropertyEvaluation.collectAllDataProperties(type);
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("/***************************************************************************");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* Copyright ");
-      Calendar _instance = Calendar.getInstance();
-      int _get = _instance.get(Calendar.YEAR);
-      _builder.append(_get, " ");
-      _builder.append(" Kieker Project (http://kieker-monitoring.net)");
-      _builder.newLineIfNotEmpty();
-      _builder.append(" ");
-      _builder.append("*");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* Licensed under the Apache License, Version 2.0 (the \"License\");");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* you may not use this file except in compliance with the License.");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* You may obtain a copy of the License at");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("*");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("*     http://www.apache.org/licenses/LICENSE-2.0");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("*");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* Unless required by applicable law or agreed to in writing, software");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* distributed under the License is distributed on an \"AS IS\" BASIS,");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* See the License for the specific language governing permissions and");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("* limitations under the License.");
-      _builder.newLine();
-      _builder.append(" ");
-      _builder.append("***************************************************************************/");
-      _builder.newLine();
-      _builder.newLine();
+      {
+        boolean _equals = headerComment.equals("");
+        boolean _not = (!_equals);
+        if (_not) {
+          Calendar _instance = Calendar.getInstance();
+          int _get = _instance.get(Calendar.YEAR);
+          String _string = Integer.valueOf(_get).toString();
+          String _replace = headerComment.replace("THIS-YEAR", _string);
+          _builder.append(_replace, "");
+          _builder.newLineIfNotEmpty();
+        }
+      }
       _builder.append("package ");
       EObject _eContainer = type.eContainer();
       String _name = ((Model) _eContainer).getName();
@@ -572,19 +536,23 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   }
   
   private CharSequence createValueExistAssertion(final Property property, final Integer index) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("Assert.assertNotNull(\"Array value [");
-    _builder.append(index, "");
-    _builder.append("] of type ");
-    Classifier _type = property.getType();
-    BaseType _type_1 = _type.getType();
-    String _createPrimitiveWrapperTypeName = IRL2JavaTypeMappingExtensions.createPrimitiveWrapperTypeName(_type_1);
-    _builder.append(_createPrimitiveWrapperTypeName, "");
-    _builder.append(" must be not null.\", values[");
-    _builder.append(index, "");
-    _builder.append("]); ");
-    _builder.newLineIfNotEmpty();
-    return _builder;
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("Assert.assertNotNull(\"Array value [");
+      _builder.append(index, "");
+      _builder.append("] of type ");
+      Classifier _type = property.getType();
+      BaseType _type_1 = _type.getType();
+      String _createPrimitiveWrapperTypeName = IRL2JavaTypeMappingExtensions.createPrimitiveWrapperTypeName(_type_1);
+      _builder.append(_createPrimitiveWrapperTypeName, "");
+      _builder.append(" must be not null.\", values[");
+      _builder.append(index, "");
+      _builder.append("]); ");
+      _builder.newLineIfNotEmpty();
+      return _builder;
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
   }
   
   /**
@@ -602,84 +570,88 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   }
   
   private CharSequence createValueAssertion(final Property property, final Integer index) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("Assert.assertEquals(\"Array value [");
-    _builder.append(index, "");
-    _builder.append("] \" + values[");
-    _builder.append(index, "");
-    _builder.append("] + \" does not match the desired value \" + ");
-    CharSequence _createPropertyValueSet = this.createPropertyValueSet(property);
-    _builder.append(_createPropertyValueSet, "");
-    _builder.append(",");
-    _builder.newLineIfNotEmpty();
-    {
-      boolean _or = false;
-      Classifier _type = property.getType();
-      BaseType _type_1 = _type.getType();
-      String _name = _type_1.getName();
-      boolean _equals = Objects.equal(_name, "float");
-      if (_equals) {
-        _or = true;
-      } else {
-        Classifier _type_2 = property.getType();
-        BaseType _type_3 = _type_2.getType();
-        String _name_1 = _type_3.getName();
-        boolean _equals_1 = Objects.equal(_name_1, "double");
-        _or = _equals_1;
-      }
-      if (_or) {
-        _builder.append("\t");
-        String _castToPrimitiveType = this.getCastToPrimitiveType(property);
-        _builder.append(_castToPrimitiveType, "\t");
-        _builder.append(" ");
-        CharSequence _createPropertyValueSet_1 = this.createPropertyValueSet(property);
-        _builder.append(_createPropertyValueSet_1, "\t");
-        _builder.append(", ");
-        String _castToPrimitiveType_1 = this.getCastToPrimitiveType(property);
-        _builder.append(_castToPrimitiveType_1, "\t");
-        _builder.append(" (");
-        Classifier _type_4 = property.getType();
-        BaseType _type_5 = _type_4.getType();
-        String _createPrimitiveWrapperTypeName = IRL2JavaTypeMappingExtensions.createPrimitiveWrapperTypeName(_type_5);
-        _builder.append(_createPrimitiveWrapperTypeName, "\t");
-        _builder.append(")values[");
-        _builder.append(index, "\t");
-        _builder.append("], 0.0000001");
-        _builder.newLineIfNotEmpty();
-      } else {
-        Classifier _type_6 = property.getType();
-        BaseType _type_7 = _type_6.getType();
-        String _name_2 = _type_7.getName();
-        boolean _equals_2 = Objects.equal(_name_2, "string");
-        if (_equals_2) {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("Assert.assertEquals(\"Array value [");
+      _builder.append(index, "");
+      _builder.append("] \" + values[");
+      _builder.append(index, "");
+      _builder.append("] + \" does not match the desired value \" + ");
+      CharSequence _createPropertyValueSet = this.createPropertyValueSet(property);
+      _builder.append(_createPropertyValueSet, "");
+      _builder.append(",");
+      _builder.newLineIfNotEmpty();
+      {
+        boolean _or = false;
+        Classifier _type = property.getType();
+        BaseType _type_1 = _type.getType();
+        String _name = _type_1.getName();
+        boolean _equals = Objects.equal(_name, "float");
+        if (_equals) {
+          _or = true;
+        } else {
+          Classifier _type_2 = property.getType();
+          BaseType _type_3 = _type_2.getType();
+          String _name_1 = _type_3.getName();
+          boolean _equals_1 = Objects.equal(_name_1, "double");
+          _or = _equals_1;
+        }
+        if (_or) {
           _builder.append("\t");
-          CharSequence _createPropertyValueSet_2 = this.createPropertyValueSet(property);
-          _builder.append(_createPropertyValueSet_2, "\t");
-          _builder.append(" == null?\"");
-          String _createConstantValue = this.createConstantValue(property);
-          _builder.append(_createConstantValue, "\t");
-          _builder.append("\":");
-          CharSequence _createPropertyValueSet_3 = this.createPropertyValueSet(property);
-          _builder.append(_createPropertyValueSet_3, "\t");
-          _builder.append(", values[");
+          String _castToPrimitiveType = this.getCastToPrimitiveType(property);
+          _builder.append(_castToPrimitiveType, "\t");
+          _builder.append(" ");
+          CharSequence _createPropertyValueSet_1 = this.createPropertyValueSet(property);
+          _builder.append(_createPropertyValueSet_1, "\t");
+          _builder.append(", ");
+          String _castToPrimitiveType_1 = this.getCastToPrimitiveType(property);
+          _builder.append(_castToPrimitiveType_1, "\t");
+          _builder.append(" (");
+          Classifier _type_4 = property.getType();
+          BaseType _type_5 = _type_4.getType();
+          String _createPrimitiveWrapperTypeName = IRL2JavaTypeMappingExtensions.createPrimitiveWrapperTypeName(_type_5);
+          _builder.append(_createPrimitiveWrapperTypeName, "\t");
+          _builder.append(")values[");
           _builder.append(index, "\t");
-          _builder.append("]");
+          _builder.append("], 0.0000001");
           _builder.newLineIfNotEmpty();
         } else {
-          _builder.append("\t");
-          CharSequence _createPropertyValueSet_4 = this.createPropertyValueSet(property);
-          _builder.append(_createPropertyValueSet_4, "\t");
-          _builder.append(", values[");
-          _builder.append(index, "\t");
-          _builder.append("]");
-          _builder.newLineIfNotEmpty();
-          _builder.append("\t\t");
+          Classifier _type_6 = property.getType();
+          BaseType _type_7 = _type_6.getType();
+          String _name_2 = _type_7.getName();
+          boolean _equals_2 = Objects.equal(_name_2, "string");
+          if (_equals_2) {
+            _builder.append("\t");
+            CharSequence _createPropertyValueSet_2 = this.createPropertyValueSet(property);
+            _builder.append(_createPropertyValueSet_2, "\t");
+            _builder.append(" == null?\"");
+            String _createConstantValue = this.createConstantValue(property);
+            _builder.append(_createConstantValue, "\t");
+            _builder.append("\":");
+            CharSequence _createPropertyValueSet_3 = this.createPropertyValueSet(property);
+            _builder.append(_createPropertyValueSet_3, "\t");
+            _builder.append(", values[");
+            _builder.append(index, "\t");
+            _builder.append("]");
+            _builder.newLineIfNotEmpty();
+          } else {
+            _builder.append("\t");
+            CharSequence _createPropertyValueSet_4 = this.createPropertyValueSet(property);
+            _builder.append(_createPropertyValueSet_4, "\t");
+            _builder.append(", values[");
+            _builder.append(index, "\t");
+            _builder.append("]");
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t\t");
+          }
         }
       }
+      _builder.append(");");
+      _builder.newLineIfNotEmpty();
+      return _builder;
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
     }
-    _builder.append(");");
-    _builder.newLineIfNotEmpty();
-    return _builder;
   }
   
   /**
@@ -864,26 +836,30 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   }
   
   private CharSequence createTypeAssertion(final Property property, final Integer index) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("Assert.assertTrue(\"Type of array value [");
-    _builder.append(index, "");
-    _builder.append("] \" + values[");
-    _builder.append(index, "");
-    _builder.append("].getClass().getCanonicalName() + \" does not match the desired type ");
-    Classifier _type = property.getType();
-    BaseType _type_1 = _type.getType();
-    String _createPrimitiveWrapperTypeName = IRL2JavaTypeMappingExtensions.createPrimitiveWrapperTypeName(_type_1);
-    _builder.append(_createPrimitiveWrapperTypeName, "");
-    _builder.append("\", values[");
-    _builder.append(index, "");
-    _builder.append("] instanceof ");
-    Classifier _type_2 = property.getType();
-    BaseType _type_3 = _type_2.getType();
-    String _createPrimitiveWrapperTypeName_1 = IRL2JavaTypeMappingExtensions.createPrimitiveWrapperTypeName(_type_3);
-    _builder.append(_createPrimitiveWrapperTypeName_1, "");
-    _builder.append(");");
-    _builder.newLineIfNotEmpty();
-    return _builder;
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("Assert.assertTrue(\"Type of array value [");
+      _builder.append(index, "");
+      _builder.append("] \" + values[");
+      _builder.append(index, "");
+      _builder.append("].getClass().getCanonicalName() + \" does not match the desired type ");
+      Classifier _type = property.getType();
+      BaseType _type_1 = _type.getType();
+      String _createPrimitiveWrapperTypeName = IRL2JavaTypeMappingExtensions.createPrimitiveWrapperTypeName(_type_1);
+      _builder.append(_createPrimitiveWrapperTypeName, "");
+      _builder.append("\", values[");
+      _builder.append(index, "");
+      _builder.append("] instanceof ");
+      Classifier _type_2 = property.getType();
+      BaseType _type_3 = _type_2.getType();
+      String _createPrimitiveWrapperTypeName_1 = IRL2JavaTypeMappingExtensions.createPrimitiveWrapperTypeName(_type_3);
+      _builder.append(_createPrimitiveWrapperTypeName_1, "");
+      _builder.append(");");
+      _builder.newLineIfNotEmpty();
+      return _builder;
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
   }
   
   /**

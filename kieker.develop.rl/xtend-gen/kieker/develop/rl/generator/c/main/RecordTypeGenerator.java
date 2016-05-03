@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.Calendar;
 import java.util.List;
 import kieker.develop.rl.generator.AbstractRecordTypeGenerator;
+import kieker.develop.rl.generator.InternalErrorException;
 import kieker.develop.rl.generator.c.CommonCFunctionsExtension;
 import kieker.develop.rl.recordLang.BaseType;
 import kieker.develop.rl.recordLang.Classifier;
@@ -11,9 +12,11 @@ import kieker.develop.rl.recordLang.Model;
 import kieker.develop.rl.recordLang.Property;
 import kieker.develop.rl.recordLang.RecordType;
 import kieker.develop.rl.recordLang.Type;
+import kieker.develop.rl.typing.BaseTypes;
 import kieker.develop.rl.validation.PropertyEvaluation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
@@ -90,66 +93,32 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   /**
    * Primary code generation template.
    * 
-   * @params type
+   * @param type
    * 		one record type to be used to create monitoring record
-   * @params author
+   * @param author
    * 		generic author name for the record
-   * @params version
+   * @param version
    * 		generic kieker version for the record
+   * @param headerComment
+   *      comment placed as header of the file
    */
   @Override
-  public CharSequence createContent(final RecordType type, final String author, final String version) {
+  public CharSequence createContent(final RecordType type, final String author, final String version, final String headerComment) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("/***************************************************************************");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* Copyright ");
-    Calendar _instance = Calendar.getInstance();
-    int _get = _instance.get(Calendar.YEAR);
-    _builder.append(_get, " ");
-    _builder.append(" Kieker Project (http://kieker-monitoring.net)");
-    _builder.newLineIfNotEmpty();
-    _builder.append(" ");
-    _builder.append("*");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* Licensed under the Apache License, Version 2.0 (the \"License\");");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* you may not use this file except in compliance with the License.");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* You may obtain a copy of the License at");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("*");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("*     http://www.apache.org/licenses/LICENSE-2.0");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("*");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* Unless required by applicable law or agreed to in writing, software");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* distributed under the License is distributed on an \"AS IS\" BASIS,");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* See the License for the specific language governing permissions and");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* limitations under the License.");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("***************************************************************************/");
-    _builder.newLine();
+    {
+      boolean _equals = headerComment.equals("");
+      boolean _not = (!_equals);
+      if (_not) {
+        Calendar _instance = Calendar.getInstance();
+        int _get = _instance.get(Calendar.YEAR);
+        String _string = Integer.valueOf(_get).toString();
+        String _replace = headerComment.replace("THIS-YEAR", _string);
+        _builder.append(_replace, "");
+        _builder.newLineIfNotEmpty();
+      }
+    }
     _builder.append("#include <stdlib.h>");
-    _builder.newLine();
+    _builder.newLineIfNotEmpty();
     _builder.append("#include <kieker.h>");
     _builder.newLine();
     _builder.append("#include \"");
@@ -258,55 +227,59 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   }
   
   private CharSequence createValueSerializer(final Property property) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("length += kieker_serialize_");
-    Classifier _findType = PropertyEvaluation.findType(property);
-    String _serializerSuffix = this.serializerSuffix(_findType);
-    _builder.append(_serializerSuffix, "");
-    _builder.append("(buffer,offset,");
-    String _name = property.getName();
-    _builder.append(_name, "");
-    _builder.append(");");
-    _builder.newLineIfNotEmpty();
-    return _builder;
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("length += kieker_serialize_");
+      Classifier _findType = PropertyEvaluation.findType(property);
+      String _serializerSuffix = this.serializerSuffix(_findType);
+      _builder.append(_serializerSuffix, "");
+      _builder.append("(buffer,offset,");
+      String _name = property.getName();
+      _builder.append(_name, "");
+      _builder.append(");");
+      _builder.newLineIfNotEmpty();
+      return _builder;
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
   }
   
-  private String serializerSuffix(final Classifier classifier) {
+  private String serializerSuffix(final Classifier classifier) throws InternalErrorException {
     String _switchResult = null;
     BaseType _type = classifier.getType();
-    String _name = _type.getName();
-    switch (_name) {
-      case "string":
-        _switchResult = "string";
-        break;
-      case "byte":
-        _switchResult = "int8";
-        break;
-      case "short":
-        _switchResult = "int16";
-        break;
-      case "int":
-        _switchResult = "int32";
-        break;
-      case "long":
-        _switchResult = "int64";
-        break;
-      case "float":
-        _switchResult = "float";
-        break;
-      case "double":
-        _switchResult = "double";
-        break;
-      case "char":
-        _switchResult = "int16";
-        break;
-      case "boolean":
-        _switchResult = "boolean";
-        break;
-      default:
-        BaseType _type_1 = classifier.getType();
-        _switchResult = _type_1.getName();
-        break;
+    BaseTypes _typeEnum = BaseTypes.getTypeEnum(_type);
+    if (_typeEnum != null) {
+      switch (_typeEnum) {
+        case STRING:
+          _switchResult = "string";
+          break;
+        case BYTE:
+          _switchResult = "int8";
+          break;
+        case SHORT:
+          _switchResult = "int16";
+          break;
+        case INT:
+          _switchResult = "int32";
+          break;
+        case LONG:
+          _switchResult = "int64";
+          break;
+        case FLOAT:
+          _switchResult = "float";
+          break;
+        case DOUBLE:
+          _switchResult = "double";
+          break;
+        case CHAR:
+          _switchResult = "int16";
+          break;
+        case BOOLEAN:
+          _switchResult = "boolean";
+          break;
+        default:
+          break;
+      }
     }
     return _switchResult;
   }

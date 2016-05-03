@@ -1,0 +1,17 @@
+package demo
+
+
+import demo.EntryEvent
+import demo.EntryBlaEvent
+import demo.ExitEvent
+
+use pcm on cocome "irl-examples/src/cocome.repository"
+
+advice EntryLogger () {
+	before EntryEvent(time, $signature) EntryBlaEvent(time, $signature, $classname)
+	after ExitEvent(time, $signature)
+}
+
+pointcut point class cocome.TradingSystem.Inventory.Data.Persistence
+
+aspect point : EntryLogger

@@ -15,18 +15,13 @@
  ***************************************************************************/
 package kieker.develop.rl.ui.preferences;
 
-import java.lang.reflect.InvocationTargetException;
-
 import org.eclipse.core.runtime.preferences.InstanceScope;
-import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.IPreferenceStore;
-import org.eclipse.jface.preference.StringFieldEditor;
+import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
 
-import kieker.develop.rl.generator.AbstractRecordTypeGenerator;
-import kieker.develop.rl.generator.GeneratorConfiguration;
 import kieker.develop.rl.preferences.TargetsPreferences;
 
 // http://www.vogella.com/tutorials/EclipsePreferences/article.html
@@ -41,6 +36,8 @@ import kieker.develop.rl.preferences.TargetsPreferences;
  */
 public class TargetsPreferencePage extends AbstractFieldEditorOverlayPage implements IWorkbenchPreferencePage {
 
+	public static String PAGE_ID = "kieker.develop.rl.ui.preferences.TargetsPreferencePage";
+
 	/**
 	 * Default constructor.
 	 */
@@ -51,34 +48,17 @@ public class TargetsPreferencePage extends AbstractFieldEditorOverlayPage implem
 		this.setDescription("Target and Output Configuration");
 	}
 
+	/**
+	 *  We override the createControl method.
+	 * In case of property pages we create a new PropertyStore as local preference store.
+	 * After all control have been create, we enable/disable these controls.
+	 *
+	 * @see org.eclipse.jface.preference.PreferencePage#createControl()
+	 */
 	@Override
-	public void createFieldEditors() {
-		for (final Class<?> generatorClass : GeneratorConfiguration.RECORD_TYPE_GENERATORS) {
-			try {
-				final AbstractRecordTypeGenerator generator = (AbstractRecordTypeGenerator) generatorClass.getConstructor().newInstance();
-
-				this.addField(new BooleanFieldEditor(TargetsPreferences.GENERATOR_ACTIVE + generator.getId(),
-						generator.getDescription(), this.getFieldEditorParent()));
-			} catch (final IllegalArgumentException e) {
-				e.printStackTrace();
-			} catch (final SecurityException e) {
-				e.printStackTrace();
-			} catch (final InstantiationException e) {
-				e.printStackTrace();
-			} catch (final IllegalAccessException e) {
-				e.printStackTrace();
-			} catch (final InvocationTargetException e) {
-				e.printStackTrace();
-			} catch (final NoSuchMethodException e) {
-				e.printStackTrace();
-			}
-		}
-
-		// SpacerFieldEditor spacer = new SpacerFieldEditor(getFieldEditorParent());
-		// addField(spacer);
-
-		this.addField(new StringFieldEditor(TargetsPreferences.AUTHOR_NAME, "Author", this.getFieldEditorParent()));
-		this.addField(new StringFieldEditor(TargetsPreferences.VERSION_ID, "Version", this.getFieldEditorParent()));
+	public void createControl(final Composite parent) {
+		// Special treatment for property pages
+		super.createControl(parent);
 	}
 
 	/**
@@ -87,14 +67,6 @@ public class TargetsPreferencePage extends AbstractFieldEditorOverlayPage implem
 	 * @param workbench the workbench
 	 */
 	public void init(final IWorkbench workbench) {
-	}
-
-	/**
-	 * returns the page identification specified in the preference page extension point
-	 */
-	@Override
-	protected String getPageId() {
-		return "kieker.develop.rl.ui.preferences.TargetsPreferencePage";
 	}
 
 }

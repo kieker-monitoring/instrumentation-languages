@@ -20,9 +20,9 @@ import org.eclipse.core.runtime.preferences.InstanceScope;
 
 /**
  * Utility class for preference constants.
- * 
+ *
  * @author Reiner Jung
- * 
+ *
  */
 public final class TargetsPreferences {
 
@@ -34,6 +34,8 @@ public final class TargetsPreferences {
 	public static final String AUTHOR_NAME = TargetsPreferences.class + ".author";
 	/** Constant for version id in generators. */
 	public static final String VERSION_ID = TargetsPreferences.class + ".version";
+	/** Header Comment. */
+	public static final String GENERATOR_HEADER_COMMENT = TargetsPreferences.class + ".comment.";
 	/** Default author. */
 	public static final String DEFAULT_AUTHOR = "Generic Kieker";
 	/** Default version. */
@@ -50,28 +52,36 @@ public final class TargetsPreferences {
 		return InstanceScope.INSTANCE.getNode(PLUGIN_ID);
 	}
 
-	public static String getAuthorName() {
-		return TargetsPreferences.getPreferenceStore().get(AUTHOR_NAME, DEFAULT_AUTHOR);
+	public static String getAuthorName(final IEclipsePreferences preferenceStore) {
+		return preferenceStore.get(AUTHOR_NAME, DEFAULT_AUTHOR);
 	}
 
-	public static void setAuthorName(final String author) {
-		TargetsPreferences.getPreferenceStore().put(AUTHOR_NAME, author);
+	public static void setAuthorName(final IEclipsePreferences preferenceStore, final String author) {
+		preferenceStore.put(AUTHOR_NAME, author);
 	}
 
-	public static String getVersionID() {
-		return TargetsPreferences.getPreferenceStore().get(VERSION_ID, DEFAULT_VERSION);
+	public static String getVersionID(final IEclipsePreferences preferenceStore) {
+		return preferenceStore.get(VERSION_ID, DEFAULT_VERSION);
 	}
 
-	public static void setVersionID(final String version) {
-		TargetsPreferences.getPreferenceStore().put(VERSION_ID, version);
+	public static void setVersionID(final IEclipsePreferences preferenceStore, final String version) {
+		preferenceStore.put(VERSION_ID, version);
 	}
 
-	public static boolean isGeneratorActive(final String id) {
-		return TargetsPreferences.getPreferenceStore().getBoolean(GENERATOR_ACTIVE + id, DEFAULT_GENERATOR_INACTIVE);
+	public static boolean isGeneratorActive(final IEclipsePreferences preferenceStore, final String id) {
+		return preferenceStore.getBoolean(GENERATOR_ACTIVE + id, DEFAULT_GENERATOR_INACTIVE);
 	}
 
-	public static void setGeneratorActive(final String id, final boolean active) {
-		TargetsPreferences.getPreferenceStore().putBoolean(GENERATOR_ACTIVE + id, active);
+	public static void setGeneratorActive(final IEclipsePreferences preferenceStore, final String id, final boolean active) {
+		preferenceStore.putBoolean(GENERATOR_ACTIVE + id, active);
+	}
+
+	public static String getHeaderComment(final IEclipsePreferences preferenceStore, final String id) {
+		return preferenceStore.get(GENERATOR_HEADER_COMMENT + id, "");
+	}
+
+	public static void setHeaderComment(final IEclipsePreferences preferenceStore, final String id, final String headerComment) {
+		preferenceStore.put(GENERATOR_HEADER_COMMENT + id, headerComment);
 	}
 
 }
