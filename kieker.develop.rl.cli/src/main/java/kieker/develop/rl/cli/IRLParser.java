@@ -19,6 +19,7 @@ import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -33,7 +34,6 @@ import com.google.inject.Injector;
 
 import kieker.common.logging.Log;
 import kieker.common.logging.LogFactory;
-
 import kieker.develop.rl.RecordLangStandaloneSetup;
 import kieker.develop.rl.generator.AbstractRecordTypeGenerator;
 import kieker.develop.rl.generator.GeneratorConfiguration;
@@ -122,16 +122,18 @@ public class IRLParser {
 
 				// setup generator preferences
 				new TargetsPreferenceInitializer().initializeDefaultPreferences();
-				TargetsPreferences.setAuthorName(author);
-				TargetsPreferences.setVersionID(version);
+				final IEclipsePreferences preferenceStore = TargetsPreferenceInitializer.getPreferenceStore();
+
+				TargetsPreferences.setAuthorName(preferenceStore, author);
+				TargetsPreferences.setVersionID(preferenceStore, version);
 				// setup language activation
 				for (final Class<?> generatorClass : GeneratorConfiguration.RECORD_TYPE_GENERATORS) {
 					try {
 						final AbstractRecordTypeGenerator generator = (AbstractRecordTypeGenerator) generatorClass.getConstructor().newInstance();
-						TargetsPreferences.setGeneratorActive(generator.getId(), false);
+						TargetsPreferences.setGeneratorActive(preferenceStore, generator.getId(), false);
 						for (final String selected : selectedLanguageTypes) {
 							if (selected.equals(generator.getId())) {
-								TargetsPreferences.setGeneratorActive(generator.getId(), true);
+								TargetsPreferences.setGeneratorActive(preferenceStore, generator.getId(), true);
 							}
 						}
 					} catch (final IllegalArgumentException e) {

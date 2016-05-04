@@ -20,4 +20,12 @@
             genModel="model/MappingModel.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated example -->
+      <package
+            uri="kieker.develop.al"
+            class="kieker.develop.al.AlPackage"
+            genModel="src/graphmodel/model/example.xcore"/>
+   </extension>
+
 </plugin>

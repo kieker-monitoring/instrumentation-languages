@@ -19,7 +19,6 @@ pointcut complex class cocome.TradingSystem.Inventory {
 	exclude Data.Persistence.** 
 }
 
-
 aspect point : EntryLogger
 
 aspect complex : EntryLogger
