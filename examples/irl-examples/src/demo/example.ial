@@ -1,6 +1,5 @@
 package demo
 
-
 import demo.EntryEvent
 import demo.EntryBlaEvent
 import demo.ExitEvent

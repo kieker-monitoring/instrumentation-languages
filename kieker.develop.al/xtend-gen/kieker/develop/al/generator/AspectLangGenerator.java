@@ -40,6 +40,7 @@ import kieker.develop.al.aspectLang.AspectModel;
 import kieker.develop.al.aspectLang.Pointcut;
 import kieker.develop.al.aspectLang.Technology;
 import kieker.develop.al.aspectLang.UtilizeAdvice;
+import kieker.develop.al.generator.CommonCollectionModule;
 import kieker.develop.al.generator.aspectj.AspectJAdviceGenerator;
 import kieker.develop.al.generator.aspectj.AspectJPointcutGenerator;
 import kieker.develop.al.generator.javaee.JavaEEAdviceGenerator;
@@ -149,7 +150,7 @@ public class AspectLangGenerator implements IGenerator {
     Document _generate = aspectGenerator.generate(aspects);
     this.storeXMLModel("aop.xml", access, _generate);
     final AspectJAdviceGenerator adviceGenerator = new AspectJAdviceGenerator();
-    final HashMap<Advice, List<UtilizeAdvice>> utilizationAdviceMap = this.createUtilizationMap(aspects);
+    final HashMap<Advice, List<UtilizeAdvice>> utilizationAdviceMap = CommonCollectionModule.createUtilizationMap(aspects);
     final BiConsumer<Advice, List<UtilizeAdvice>> _function = (Advice advice, List<UtilizeAdvice> utilizedAdvices) -> {
       final Procedure2<UtilizeAdvice, Integer> _function_1 = (UtilizeAdvice utilizedAdviced, Integer i) -> {
         adviceGenerator.setIndex((i).intValue());
@@ -187,7 +188,7 @@ public class AspectLangGenerator implements IGenerator {
    */
   private void createSpringConfiguration(final Collection<Aspect> aspects, final IFileSystemAccess access) {
     final SpringAdviceGenerator adviceGenerator = new SpringAdviceGenerator();
-    final HashMap<Advice, List<UtilizeAdvice>> utilizationAdviceMap = this.createUtilizationMap(aspects);
+    final HashMap<Advice, List<UtilizeAdvice>> utilizationAdviceMap = CommonCollectionModule.createUtilizationMap(aspects);
     final BiConsumer<Advice, List<UtilizeAdvice>> _function = (Advice advice, List<UtilizeAdvice> utilizedAdvices) -> {
       String _aspectSpringAdviceName = this.aspectSpringAdviceName(advice);
       CharSequence _generate = adviceGenerator.generate(advice);
@@ -216,7 +217,7 @@ public class AspectLangGenerator implements IGenerator {
    */
   private void createJ2EEConfiguration(final Collection<Aspect> aspects, final IFileSystemAccess access) {
     final JavaEEAdviceGenerator adviceGenerator = new JavaEEAdviceGenerator();
-    final HashMap<Advice, List<UtilizeAdvice>> utilizationAdviceMap = this.createUtilizationMap(aspects);
+    final HashMap<Advice, List<UtilizeAdvice>> utilizationAdviceMap = CommonCollectionModule.createUtilizationMap(aspects);
     final BiConsumer<Advice, List<UtilizeAdvice>> _function = (Advice advice, List<UtilizeAdvice> utilizedAdvices) -> {
       String _aspectJ2EEAdviceName = this.aspectJ2EEAdviceName(advice);
       CharSequence _generate = adviceGenerator.generate(advice);
@@ -245,7 +246,7 @@ public class AspectLangGenerator implements IGenerator {
    */
   private void createServletConfiguration(final Collection<Aspect> aspects, final IFileSystemAccess access) {
     final ServletAdviceGenerator adviceGenerator = new ServletAdviceGenerator();
-    final HashMap<Advice, List<UtilizeAdvice>> utilizationAdviceMap = this.createUtilizationMap(aspects);
+    final HashMap<Advice, List<UtilizeAdvice>> utilizationAdviceMap = CommonCollectionModule.createUtilizationMap(aspects);
     final BiConsumer<Advice, List<UtilizeAdvice>> _function = (Advice advice, List<UtilizeAdvice> utilizedAdvices) -> {
       String _aspectServletAdviceName = this.aspectServletAdviceName(advice);
       CharSequence _generate = adviceGenerator.generate(advice);
@@ -369,34 +370,5 @@ public class AspectLangGenerator implements IGenerator {
     String _name = ((AspectModel) _eContainer).getName();
     String _replace = _name.replace("\\.", File.separator);
     return (_replace + File.separator);
-  }
-  
-  /**
-   * Create a map for advices and their instantiation/utilization.
-   * 
-   * @param aspects collection of aspects containing advices.
-   * 
-   * @return map of advices and list of utilizations.
-   */
-  private HashMap<Advice, List<UtilizeAdvice>> createUtilizationMap(final Collection<Aspect> aspects) {
-    final HashMap<Advice, List<UtilizeAdvice>> utilizationAdviceMap = new HashMap<Advice, List<UtilizeAdvice>>();
-    final Consumer<Aspect> _function = (Aspect it) -> {
-      EList<UtilizeAdvice> _advices = it.getAdvices();
-      final Consumer<UtilizeAdvice> _function_1 = (UtilizeAdvice advice) -> {
-        Advice _advice = advice.getAdvice();
-        List<UtilizeAdvice> adviceList = utilizationAdviceMap.get(_advice);
-        boolean _equals = Objects.equal(adviceList, null);
-        if (_equals) {
-          ArrayList<UtilizeAdvice> _arrayList = new ArrayList<UtilizeAdvice>();
-          adviceList = _arrayList;
-          Advice _advice_1 = advice.getAdvice();
-          utilizationAdviceMap.put(_advice_1, adviceList);
-        }
-        adviceList.add(advice);
-      };
-      _advices.forEach(_function_1);
-    };
-    aspects.forEach(_function);
-    return utilizationAdviceMap;
   }
 }

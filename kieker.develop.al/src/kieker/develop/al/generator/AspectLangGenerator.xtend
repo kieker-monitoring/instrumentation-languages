@@ -15,34 +15,35 @@
  ***************************************************************************/
 package kieker.develop.al.generator
 
-import kieker.develop.al.aspectLang.Aspect
-import kieker.develop.al.aspectLang.Technology
-import kieker.develop.al.generator.aspectj.AspectJPointcutGenerator
+import java.io.File
+import java.io.StringWriter
 import java.util.ArrayList
 import java.util.Collection
 import java.util.HashMap
 import java.util.Map
+import javax.xml.transform.OutputKeys
+import javax.xml.transform.TransformerFactory
+import javax.xml.transform.dom.DOMSource
+import javax.xml.transform.stream.StreamResult
+import kieker.develop.al.aspectLang.Advice
+import kieker.develop.al.aspectLang.Aspect
+import kieker.develop.al.aspectLang.AspectModel
+import kieker.develop.al.aspectLang.Technology
+import kieker.develop.al.aspectLang.UtilizeAdvice
+import kieker.develop.al.generator.aspectj.AspectJAdviceGenerator
+import kieker.develop.al.generator.aspectj.AspectJPointcutGenerator
+import kieker.develop.al.generator.javaee.JavaEEAdviceGenerator
+import kieker.develop.al.generator.servlet.ServletAdviceGenerator
+import kieker.develop.al.generator.spring.SpringAdviceGenerator
+import kieker.develop.al.modelhandling.IModelMapper
+import org.eclipse.core.runtime.CoreException
+import org.eclipse.core.runtime.Platform
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
-import kieker.develop.al.generator.aspectj.AspectJAdviceGenerator
-import kieker.develop.al.generator.servlet.ServletAdviceGenerator
-import kieker.develop.al.generator.javaee.JavaEEAdviceGenerator
-import kieker.develop.al.generator.spring.SpringAdviceGenerator
-import org.eclipse.core.runtime.Platform
-import kieker.develop.al.modelhandling.IModelMapper
-import org.eclipse.core.runtime.CoreException
-import java.io.StringWriter
-import javax.xml.transform.dom.DOMSource
-import javax.xml.transform.TransformerFactory
-import javax.xml.transform.OutputKeys
-import javax.xml.transform.stream.StreamResult
 import org.w3c.dom.Document
-import kieker.develop.al.aspectLang.AspectModel
-import kieker.develop.al.aspectLang.UtilizeAdvice
-import java.io.File
-import kieker.develop.al.aspectLang.Advice
-import java.util.List
+
+import static extension kieker.develop.al.generator.CommonCollectionModule.*
 
 /**
  * Generates code from your model files on save.
@@ -234,26 +235,4 @@ class AspectLangGenerator implements IGenerator {
 		(advice.eContainer as AspectModel).name.replace('\\.',File.separator) + File.separator
 	}
 	
-	/**
-	 * Create a map for advices and their instantiation/utilization.
-	 * 
-	 * @param aspects collection of aspects containing advices.
-	 * 
-	 * @return map of advices and list of utilizations.
-	 */
-	private def createUtilizationMap(Collection<Aspect> aspects) {
-		val utilizationAdviceMap = new HashMap<Advice,List<UtilizeAdvice>>()
-		aspects.forEach[
-			it.advices.forEach[advice |
-				var adviceList = utilizationAdviceMap.get(advice.advice)
-				if (adviceList == null) {
-					adviceList = new ArrayList<UtilizeAdvice>()
-					utilizationAdviceMap.put(advice.advice, adviceList)
-				}
-				adviceList.add(advice)
-			]
-		]
-		
-		return utilizationAdviceMap
-	}
 }

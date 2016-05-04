@@ -1,18 +1,20 @@
 package kieker.develop.al.generator.aspectj;
 
 import de.cau.cs.se.geco.architecture.framework.IGenerator;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.function.Consumer;
+import java.util.HashMap;
+import java.util.List;
+import java.util.function.BiConsumer;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import kieker.develop.al.aspectLang.Advice;
 import kieker.develop.al.aspectLang.Aspect;
 import kieker.develop.al.aspectLang.Pointcut;
 import kieker.develop.al.aspectLang.UtilizeAdvice;
+import kieker.develop.al.generator.CommonCollectionModule;
 import kieker.develop.al.generator.aspectj.NameResolver;
 import kieker.develop.al.generator.aspectj.PointcutQueryModule;
-import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -48,44 +50,31 @@ public class AspectJPointcutGenerator implements IGenerator<Collection<Aspect>, 
     aspectjElement.appendChild(weaverElement);
     final Element aspectsElement = this.doc.createElement("aspects");
     aspectjElement.appendChild(aspectsElement);
-    final ArrayList<Advice> advices = new ArrayList<Advice>();
-    final Consumer<Aspect> _function = (Aspect it) -> {
-      EList<UtilizeAdvice> _advices = it.getAdvices();
-      final Consumer<UtilizeAdvice> _function_1 = (UtilizeAdvice it_1) -> {
-        Advice _advice = it_1.getAdvice();
-        this.addUnique(advices, _advice);
+    final HashMap<Advice, List<UtilizeAdvice>> utilizationMap = CommonCollectionModule.createUtilizationMap(input);
+    final BiConsumer<Advice, List<UtilizeAdvice>> _function = (Advice advice, List<UtilizeAdvice> utilizedAdvices) -> {
+      final Procedure2<UtilizeAdvice, Integer> _function_1 = (UtilizeAdvice utilizedAdviced, Integer i) -> {
+        Advice _advice = utilizedAdviced.getAdvice();
+        Element _createAspect = this.createAspect(aspectsElement, _advice, (i).intValue());
+        aspectsElement.appendChild(_createAspect);
       };
-      _advices.forEach(_function_1);
+      IterableExtensions.<UtilizeAdvice>forEach(utilizedAdvices, _function_1);
     };
-    input.forEach(_function);
-    final Procedure2<Advice, Integer> _function_1 = (Advice advice, Integer i) -> {
-      Element _createAspect = this.createAspect(aspectsElement, advice, (i).intValue());
-      aspectsElement.appendChild(_createAspect);
-    };
-    IterableExtensions.<Advice>forEach(advices, _function_1);
-    for (final Aspect aspect : input) {
-      EList<UtilizeAdvice> _advices = aspect.getAdvices();
-      final Procedure2<UtilizeAdvice, Integer> _function_2 = (UtilizeAdvice advice, Integer i) -> {
-        Advice _advice = advice.getAdvice();
+    utilizationMap.forEach(_function);
+    final BiConsumer<Advice, List<UtilizeAdvice>> _function_1 = (Advice advice, List<UtilizeAdvice> utilizedAdvices) -> {
+      final Procedure2<UtilizeAdvice, Integer> _function_2 = (UtilizeAdvice utilizedAdviced, Integer i) -> {
+        Advice _advice = utilizedAdviced.getAdvice();
         final Element concreteAspect = this.createConcreteAspect(aspectsElement, _advice, (i).intValue());
+        EObject _eContainer = utilizedAdviced.eContainer();
+        final Aspect aspect = ((Aspect) _eContainer);
         Pointcut _pointcut = aspect.getPointcut();
         Element _createPointcut = this.createPointcut(_pointcut);
         concreteAspect.appendChild(_createPointcut);
         aspectsElement.appendChild(concreteAspect);
       };
-      IterableExtensions.<UtilizeAdvice>forEach(_advices, _function_2);
-    }
+      IterableExtensions.<UtilizeAdvice>forEach(utilizedAdvices, _function_2);
+    };
+    utilizationMap.forEach(_function_1);
     return this.doc;
-  }
-  
-  private boolean addUnique(final ArrayList<Advice> advices, final Advice advice) {
-    boolean _xifexpression = false;
-    boolean _contains = advices.contains(advice);
-    boolean _not = (!_contains);
-    if (_not) {
-      _xifexpression = advices.add(advice);
-    }
-    return _xifexpression;
   }
   
   private Element createPointcut(final Pointcut pointcut) {

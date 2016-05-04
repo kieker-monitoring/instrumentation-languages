@@ -1,36 +1,34 @@
 package kieker.develop.al.generator
 
-import org.eclipse.emf.common.util.EList
-import kieker.develop.al.aspectLang.Collector
 import java.util.ArrayList
-import kieker.develop.rl.recordLang.RecordType
+import java.util.HashMap
 import java.util.List
-import kieker.develop.rl.recordLang.Model
-import kieker.develop.al.aspectLang.AspectModel
+import java.util.Map
 import kieker.develop.al.aspectLang.Advice
-import kieker.develop.al.aspectLang.Value
-import kieker.develop.al.aspectLang.Literal
-import kieker.develop.al.aspectLang.ReferenceValue
-import kieker.develop.al.aspectLang.InternalFunctionProperty
 import kieker.develop.al.aspectLang.AdviceParameter
+import kieker.develop.al.aspectLang.AdviceParameterDeclaration
+import kieker.develop.al.aspectLang.AspectModel
+import kieker.develop.al.aspectLang.Collector
 import kieker.develop.al.aspectLang.Event
-import kieker.develop.al.aspectLang.StringLiteral
-import kieker.develop.al.aspectLang.IntLiteral
 import kieker.develop.al.aspectLang.FloatLiteral
-import kieker.develop.rl.generator.InternalErrorException
+import kieker.develop.al.aspectLang.InsertionPoint
+import kieker.develop.al.aspectLang.IntLiteral
+import kieker.develop.al.aspectLang.InternalFunctionProperty
+import kieker.develop.al.aspectLang.Literal
+import kieker.develop.al.aspectLang.Property
+import kieker.develop.al.aspectLang.ReferenceValue
 import kieker.develop.al.aspectLang.ReflectionProperty
 import kieker.develop.al.aspectLang.RuntimeProperty
-import kieker.develop.al.aspectLang.Property
-import kieker.develop.al.aspectLang.InsertionPoint
+import kieker.develop.al.aspectLang.StringLiteral
 import kieker.develop.al.aspectLang.TypeReference
+import kieker.develop.al.aspectLang.Value
+import kieker.develop.rl.generator.InternalErrorException
+import kieker.develop.rl.recordLang.Model
+import kieker.develop.rl.recordLang.RecordType
+import org.eclipse.emf.common.util.EList
 
-import static extension kieker.develop.rl.validation.PropertyEvaluation.*
 import static extension kieker.develop.rl.generator.java.IRL2JavaTypeMappingExtensions.*
-
-import java.util.Collection
-import java.util.HashMap
-import java.util.Map
-import kieker.develop.al.aspectLang.AdviceParameterDeclaration
+import static extension kieker.develop.rl.validation.PropertyEvaluation.*
 
 /**
  * TODO Class name should be improved.

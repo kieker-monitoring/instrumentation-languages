@@ -9,9 +9,9 @@ import kieker.develop.al.aspectLang.Pointcut
 import org.w3c.dom.Document
 import org.w3c.dom.Element
 
+import static extension kieker.develop.al.generator.CommonCollectionModule.*
 import static extension kieker.develop.al.generator.aspectj.NameResolver.*
 import static extension kieker.develop.al.generator.aspectj.PointcutQueryModule.*
-import java.util.ArrayList
 
 class AspectJPointcutGenerator implements IGenerator<Collection<Aspect>,Document> {
 	
@@ -30,28 +30,27 @@ class AspectJPointcutGenerator implements IGenerator<Collection<Aspect>,Document
 				
 		val aspectsElement = doc.createElement("aspects")
 		aspectjElement.appendChild(aspectsElement)
-		val advices = new ArrayList<Advice>
-		input.forEach[it.advices.forEach[advices.addUnique(it.advice)]]
 		
-		advices.forEach[advice, i | aspectsElement.appendChild(aspectsElement.createAspect(advice, i))]
+		val utilizationMap = input.createUtilizationMap
 		
-		for (Aspect aspect : input) {
-			aspect.advices.forEach[advice,i | 
-				val concreteAspect = aspectsElement.createConcreteAspect(advice.advice, i)
+		utilizationMap.forEach[advice, utilizedAdvices |
+			utilizedAdvices.forEach[utilizedAdviced, i |
+				aspectsElement.appendChild(aspectsElement.createAspect(utilizedAdviced.advice, i))
+			]	
+		]
+			
+		utilizationMap.forEach[advice, utilizedAdvices |
+			utilizedAdvices.forEach[utilizedAdviced, i |
+				val concreteAspect = aspectsElement.createConcreteAspect(utilizedAdviced.advice, i)
+				val aspect = utilizedAdviced.eContainer as  Aspect
 				concreteAspect.appendChild(aspect.pointcut.createPointcut)
 				aspectsElement.appendChild(concreteAspect)
 			]
-		}
+		]
 				
 		return doc
 	}
 	
-	private def addUnique(ArrayList<Advice> advices, Advice advice) {
-		if (!advices.contains(advice))
-			advices.add(advice)
-	}
-	
-
 	private def createPointcut(Pointcut pointcut) {
 		val pNode = doc.createElement("pointcut")
 		pNode.setAttribute("name", pointcut.name)
