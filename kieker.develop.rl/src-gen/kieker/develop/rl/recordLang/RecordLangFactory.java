@@ -59,6 +59,33 @@ public interface RecordLangFactory extends EFactory
   BaseType createBaseType();
 
   /**
+   * Returns a new object of class '<em>Schema</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Schema</em>'.
+   * @generated
+   */
+  Schema createSchema();
+
+  /**
+   * Returns a new object of class '<em>Templates</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Templates</em>'.
+   * @generated
+   */
+  Templates createTemplates();
+
+  /**
+   * Returns a new object of class '<em>Root Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Root Type</em>'.
+   * @generated
+   */
+  RootType createRootType();
+
+  /**
    * Returns a new object of class '<em>Complex Type</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

@@ -38,6 +38,9 @@ public class RecordLangParser extends AbstractContentAssistParser {
 				private static final long serialVersionUID = 1L;
 				{
 					put(grammarAccess.getTypeAccess().getAlternatives(), "rule__Type__Alternatives");
+					put(grammarAccess.getSchemaAccess().getAlternatives_4(), "rule__Schema__Alternatives_4");
+					put(grammarAccess.getSchemaAccess().getAlternatives_5(), "rule__Schema__Alternatives_5");
+					put(grammarAccess.getSchemaAccess().getAlternatives_5_0_1(), "rule__Schema__Alternatives_5_0_1");
 					put(grammarAccess.getComplexTypeAccess().getAlternatives(), "rule__ComplexType__Alternatives");
 					put(grammarAccess.getTemplateTypeAccess().getAlternatives_5_1(), "rule__TemplateType__Alternatives_5_1");
 					put(grammarAccess.getRecordTypeAccess().getAlternatives_7_1(), "rule__RecordType__Alternatives_7_1");
@@ -46,6 +49,15 @@ public class RecordLangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPropertyModifierAccess().getAlternatives(), "rule__PropertyModifier__Alternatives");
 					put(grammarAccess.getModelAccess().getGroup(), "rule__Model__Group__0");
 					put(grammarAccess.getImportAccess().getGroup(), "rule__Import__Group__0");
+					put(grammarAccess.getSchemaAccess().getGroup(), "rule__Schema__Group__0");
+					put(grammarAccess.getSchemaAccess().getGroup_0(), "rule__Schema__Group_0__0");
+					put(grammarAccess.getSchemaAccess().getGroup_1(), "rule__Schema__Group_1__0");
+					put(grammarAccess.getSchemaAccess().getGroup_5_0(), "rule__Schema__Group_5_0__0");
+					put(grammarAccess.getSchemaAccess().getGroup_5_1(), "rule__Schema__Group_5_1__0");
+					put(grammarAccess.getSchemaAccess().getGroup_5_1_2(), "rule__Schema__Group_5_1_2__0");
+					put(grammarAccess.getTemplatesAccess().getGroup(), "rule__Templates__Group__0");
+					put(grammarAccess.getTemplatesAccess().getGroup_2(), "rule__Templates__Group_2__0");
+					put(grammarAccess.getRootTypeAccess().getGroup(), "rule__RootType__Group__0");
 					put(grammarAccess.getTemplateTypeAccess().getGroup(), "rule__TemplateType__Group__0");
 					put(grammarAccess.getTemplateTypeAccess().getGroup_0(), "rule__TemplateType__Group_0__0");
 					put(grammarAccess.getTemplateTypeAccess().getGroup_1(), "rule__TemplateType__Group_1__0");
@@ -76,8 +88,21 @@ public class RecordLangParser extends AbstractContentAssistParser {
 					put(grammarAccess.getModelAccess().getNameAssignment_1(), "rule__Model__NameAssignment_1");
 					put(grammarAccess.getModelAccess().getImportsAssignment_2(), "rule__Model__ImportsAssignment_2");
 					put(grammarAccess.getModelAccess().getTypesAssignment_3(), "rule__Model__TypesAssignment_3");
+					put(grammarAccess.getModelAccess().getSchemesAssignment_4(), "rule__Model__SchemesAssignment_4");
 					put(grammarAccess.getImportAccess().getImportedNamespaceAssignment_1(), "rule__Import__ImportedNamespaceAssignment_1");
 					put(grammarAccess.getBaseTypeAccess().getNameAssignment(), "rule__BaseType__NameAssignment");
+					put(grammarAccess.getSchemaAccess().getAuthorAssignment_0_1(), "rule__Schema__AuthorAssignment_0_1");
+					put(grammarAccess.getSchemaAccess().getSinceAssignment_1_1(), "rule__Schema__SinceAssignment_1_1");
+					put(grammarAccess.getSchemaAccess().getNameAssignment_3(), "rule__Schema__NameAssignment_3");
+					put(grammarAccess.getSchemaAccess().getTemplatesAssignment_4_0(), "rule__Schema__TemplatesAssignment_4_0");
+					put(grammarAccess.getSchemaAccess().getRootAssignment_4_1(), "rule__Schema__RootAssignment_4_1");
+					put(grammarAccess.getSchemaAccess().getPropertiesAssignment_5_0_1_0(), "rule__Schema__PropertiesAssignment_5_0_1_0");
+					put(grammarAccess.getSchemaAccess().getConstantsAssignment_5_0_1_1(), "rule__Schema__ConstantsAssignment_5_0_1_1");
+					put(grammarAccess.getSchemaAccess().getParentsAssignment_5_1_1(), "rule__Schema__ParentsAssignment_5_1_1");
+					put(grammarAccess.getSchemaAccess().getParentsAssignment_5_1_2_1(), "rule__Schema__ParentsAssignment_5_1_2_1");
+					put(grammarAccess.getTemplatesAccess().getTemplatesAssignment_1(), "rule__Templates__TemplatesAssignment_1");
+					put(grammarAccess.getTemplatesAccess().getTemplatesAssignment_2_1(), "rule__Templates__TemplatesAssignment_2_1");
+					put(grammarAccess.getRootTypeAccess().getRecordAssignment_1(), "rule__RootType__RecordAssignment_1");
 					put(grammarAccess.getTemplateTypeAccess().getAuthorAssignment_0_1(), "rule__TemplateType__AuthorAssignment_0_1");
 					put(grammarAccess.getTemplateTypeAccess().getSinceAssignment_1_1(), "rule__TemplateType__SinceAssignment_1_1");
 					put(grammarAccess.getTemplateTypeAccess().getNameAssignment_3(), "rule__TemplateType__NameAssignment_3");

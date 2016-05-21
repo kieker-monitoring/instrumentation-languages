@@ -95,6 +95,21 @@ public class RecordLangAdapterFactory extends AdapterFactoryImpl
         return createBaseTypeAdapter();
       }
       @Override
+      public Adapter caseSchema(Schema object)
+      {
+        return createSchemaAdapter();
+      }
+      @Override
+      public Adapter caseTemplates(Templates object)
+      {
+        return createTemplatesAdapter();
+      }
+      @Override
+      public Adapter caseRootType(RootType object)
+      {
+        return createRootTypeAdapter();
+      }
+      @Override
       public Adapter caseComplexType(ComplexType object)
       {
         return createComplexTypeAdapter();
@@ -252,6 +267,51 @@ public class RecordLangAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createBaseTypeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link kieker.develop.rl.recordLang.Schema <em>Schema</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see kieker.develop.rl.recordLang.Schema
+   * @generated
+   */
+  public Adapter createSchemaAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link kieker.develop.rl.recordLang.Templates <em>Templates</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see kieker.develop.rl.recordLang.Templates
+   * @generated
+   */
+  public Adapter createTemplatesAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link kieker.develop.rl.recordLang.RootType <em>Root Type</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see kieker.develop.rl.recordLang.RootType
+   * @generated
+   */
+  public Adapter createRootTypeAdapter()
   {
     return null;
   }

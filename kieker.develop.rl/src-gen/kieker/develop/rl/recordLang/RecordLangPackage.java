@@ -95,13 +95,22 @@ public interface RecordLangPackage extends EPackage
   int MODEL__TYPES = 2;
 
   /**
+   * The feature id for the '<em><b>Schemes</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODEL__SCHEMES = 3;
+
+  /**
    * The number of structural features of the '<em>Model</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL_FEATURE_COUNT = 3;
+  int MODEL_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link kieker.develop.rl.recordLang.impl.ImportImpl <em>Import</em>}' class.
@@ -188,6 +197,153 @@ public interface RecordLangPackage extends EPackage
   int BASE_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 0;
 
   /**
+   * The meta object id for the '{@link kieker.develop.rl.recordLang.impl.SchemaImpl <em>Schema</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see kieker.develop.rl.recordLang.impl.SchemaImpl
+   * @see kieker.develop.rl.recordLang.impl.RecordLangPackageImpl#getSchema()
+   * @generated
+   */
+  int SCHEMA = 4;
+
+  /**
+   * The feature id for the '<em><b>Author</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SCHEMA__AUTHOR = 0;
+
+  /**
+   * The feature id for the '<em><b>Since</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SCHEMA__SINCE = 1;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SCHEMA__NAME = 2;
+
+  /**
+   * The feature id for the '<em><b>Templates</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SCHEMA__TEMPLATES = 3;
+
+  /**
+   * The feature id for the '<em><b>Root</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SCHEMA__ROOT = 4;
+
+  /**
+   * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SCHEMA__PROPERTIES = 5;
+
+  /**
+   * The feature id for the '<em><b>Constants</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SCHEMA__CONSTANTS = 6;
+
+  /**
+   * The feature id for the '<em><b>Parents</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SCHEMA__PARENTS = 7;
+
+  /**
+   * The number of structural features of the '<em>Schema</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SCHEMA_FEATURE_COUNT = 8;
+
+  /**
+   * The meta object id for the '{@link kieker.develop.rl.recordLang.impl.TemplatesImpl <em>Templates</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see kieker.develop.rl.recordLang.impl.TemplatesImpl
+   * @see kieker.develop.rl.recordLang.impl.RecordLangPackageImpl#getTemplates()
+   * @generated
+   */
+  int TEMPLATES = 5;
+
+  /**
+   * The feature id for the '<em><b>Templates</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TEMPLATES__TEMPLATES = 0;
+
+  /**
+   * The number of structural features of the '<em>Templates</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TEMPLATES_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link kieker.develop.rl.recordLang.impl.RootTypeImpl <em>Root Type</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see kieker.develop.rl.recordLang.impl.RootTypeImpl
+   * @see kieker.develop.rl.recordLang.impl.RecordLangPackageImpl#getRootType()
+   * @generated
+   */
+  int ROOT_TYPE = 6;
+
+  /**
+   * The feature id for the '<em><b>Record</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ROOT_TYPE__RECORD = 0;
+
+  /**
+   * The number of structural features of the '<em>Root Type</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ROOT_TYPE_FEATURE_COUNT = 1;
+
+  /**
    * The meta object id for the '{@link kieker.develop.rl.recordLang.impl.ComplexTypeImpl <em>Complex Type</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -195,7 +351,7 @@ public interface RecordLangPackage extends EPackage
    * @see kieker.develop.rl.recordLang.impl.RecordLangPackageImpl#getComplexType()
    * @generated
    */
-  int COMPLEX_TYPE = 4;
+  int COMPLEX_TYPE = 7;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -268,7 +424,7 @@ public interface RecordLangPackage extends EPackage
    * @see kieker.develop.rl.recordLang.impl.RecordLangPackageImpl#getTemplateType()
    * @generated
    */
-  int TEMPLATE_TYPE = 5;
+  int TEMPLATE_TYPE = 8;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -341,7 +497,7 @@ public interface RecordLangPackage extends EPackage
    * @see kieker.develop.rl.recordLang.impl.RecordLangPackageImpl#getRecordType()
    * @generated
    */
-  int RECORD_TYPE = 6;
+  int RECORD_TYPE = 9;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -432,7 +588,7 @@ public interface RecordLangPackage extends EPackage
    * @see kieker.develop.rl.recordLang.impl.RecordLangPackageImpl#getConstant()
    * @generated
    */
-  int CONSTANT = 7;
+  int CONSTANT = 10;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -478,7 +634,7 @@ public interface RecordLangPackage extends EPackage
    * @see kieker.develop.rl.recordLang.impl.RecordLangPackageImpl#getProperty()
    * @generated
    */
-  int PROPERTY = 8;
+  int PROPERTY = 11;
 
   /**
    * The feature id for the '<em><b>Modifiers</b></em>' attribute list.
@@ -551,7 +707,7 @@ public interface RecordLangPackage extends EPackage
    * @see kieker.develop.rl.recordLang.impl.RecordLangPackageImpl#getForeignKey()
    * @generated
    */
-  int FOREIGN_KEY = 9;
+  int FOREIGN_KEY = 12;
 
   /**
    * The feature id for the '<em><b>Record Type</b></em>' reference.
@@ -588,7 +744,7 @@ public interface RecordLangPackage extends EPackage
    * @see kieker.develop.rl.recordLang.impl.RecordLangPackageImpl#getClassifier()
    * @generated
    */
-  int CLASSIFIER = 10;
+  int CLASSIFIER = 13;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' reference.
@@ -625,7 +781,7 @@ public interface RecordLangPackage extends EPackage
    * @see kieker.develop.rl.recordLang.impl.RecordLangPackageImpl#getArraySize()
    * @generated
    */
-  int ARRAY_SIZE = 11;
+  int ARRAY_SIZE = 14;
 
   /**
    * The feature id for the '<em><b>Size</b></em>' attribute.
@@ -653,7 +809,7 @@ public interface RecordLangPackage extends EPackage
    * @see kieker.develop.rl.recordLang.impl.RecordLangPackageImpl#getLiteral()
    * @generated
    */
-  int LITERAL = 12;
+  int LITERAL = 15;
 
   /**
    * The number of structural features of the '<em>Literal</em>' class.
@@ -672,7 +828,7 @@ public interface RecordLangPackage extends EPackage
    * @see kieker.develop.rl.recordLang.impl.RecordLangPackageImpl#getArrayLiteral()
    * @generated
    */
-  int ARRAY_LITERAL = 13;
+  int ARRAY_LITERAL = 16;
 
   /**
    * The feature id for the '<em><b>Literals</b></em>' containment reference list.
@@ -700,7 +856,7 @@ public interface RecordLangPackage extends EPackage
    * @see kieker.develop.rl.recordLang.impl.RecordLangPackageImpl#getStringLiteral()
    * @generated
    */
-  int STRING_LITERAL = 14;
+  int STRING_LITERAL = 17;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -728,7 +884,7 @@ public interface RecordLangPackage extends EPackage
    * @see kieker.develop.rl.recordLang.impl.RecordLangPackageImpl#getIntLiteral()
    * @generated
    */
-  int INT_LITERAL = 15;
+  int INT_LITERAL = 18;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -756,7 +912,7 @@ public interface RecordLangPackage extends EPackage
    * @see kieker.develop.rl.recordLang.impl.RecordLangPackageImpl#getFloatLiteral()
    * @generated
    */
-  int FLOAT_LITERAL = 16;
+  int FLOAT_LITERAL = 19;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -784,7 +940,7 @@ public interface RecordLangPackage extends EPackage
    * @see kieker.develop.rl.recordLang.impl.RecordLangPackageImpl#getBooleanLiteral()
    * @generated
    */
-  int BOOLEAN_LITERAL = 17;
+  int BOOLEAN_LITERAL = 20;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -812,7 +968,7 @@ public interface RecordLangPackage extends EPackage
    * @see kieker.develop.rl.recordLang.impl.RecordLangPackageImpl#getConstantLiteral()
    * @generated
    */
-  int CONSTANT_LITERAL = 18;
+  int CONSTANT_LITERAL = 21;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' reference.
@@ -840,7 +996,7 @@ public interface RecordLangPackage extends EPackage
    * @see kieker.develop.rl.recordLang.impl.RecordLangPackageImpl#getBuiltInValueLiteral()
    * @generated
    */
-  int BUILT_IN_VALUE_LITERAL = 19;
+  int BUILT_IN_VALUE_LITERAL = 22;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -868,7 +1024,7 @@ public interface RecordLangPackage extends EPackage
    * @see kieker.develop.rl.recordLang.impl.RecordLangPackageImpl#getPropertyModifier()
    * @generated
    */
-  int PROPERTY_MODIFIER = 20;
+  int PROPERTY_MODIFIER = 23;
 
 
   /**
@@ -913,6 +1069,17 @@ public interface RecordLangPackage extends EPackage
    * @generated
    */
   EReference getModel_Types();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link kieker.develop.rl.recordLang.Model#getSchemes <em>Schemes</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Schemes</em>'.
+   * @see kieker.develop.rl.recordLang.Model#getSchemes()
+   * @see #getModel()
+   * @generated
+   */
+  EReference getModel_Schemes();
 
   /**
    * Returns the meta object for class '{@link kieker.develop.rl.recordLang.Import <em>Import</em>}'.
@@ -965,6 +1132,146 @@ public interface RecordLangPackage extends EPackage
    * @generated
    */
   EClass getBaseType();
+
+  /**
+   * Returns the meta object for class '{@link kieker.develop.rl.recordLang.Schema <em>Schema</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Schema</em>'.
+   * @see kieker.develop.rl.recordLang.Schema
+   * @generated
+   */
+  EClass getSchema();
+
+  /**
+   * Returns the meta object for the attribute '{@link kieker.develop.rl.recordLang.Schema#getAuthor <em>Author</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Author</em>'.
+   * @see kieker.develop.rl.recordLang.Schema#getAuthor()
+   * @see #getSchema()
+   * @generated
+   */
+  EAttribute getSchema_Author();
+
+  /**
+   * Returns the meta object for the attribute '{@link kieker.develop.rl.recordLang.Schema#getSince <em>Since</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Since</em>'.
+   * @see kieker.develop.rl.recordLang.Schema#getSince()
+   * @see #getSchema()
+   * @generated
+   */
+  EAttribute getSchema_Since();
+
+  /**
+   * Returns the meta object for the attribute '{@link kieker.develop.rl.recordLang.Schema#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see kieker.develop.rl.recordLang.Schema#getName()
+   * @see #getSchema()
+   * @generated
+   */
+  EAttribute getSchema_Name();
+
+  /**
+   * Returns the meta object for the containment reference '{@link kieker.develop.rl.recordLang.Schema#getTemplates <em>Templates</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Templates</em>'.
+   * @see kieker.develop.rl.recordLang.Schema#getTemplates()
+   * @see #getSchema()
+   * @generated
+   */
+  EReference getSchema_Templates();
+
+  /**
+   * Returns the meta object for the containment reference '{@link kieker.develop.rl.recordLang.Schema#getRoot <em>Root</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Root</em>'.
+   * @see kieker.develop.rl.recordLang.Schema#getRoot()
+   * @see #getSchema()
+   * @generated
+   */
+  EReference getSchema_Root();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link kieker.develop.rl.recordLang.Schema#getProperties <em>Properties</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Properties</em>'.
+   * @see kieker.develop.rl.recordLang.Schema#getProperties()
+   * @see #getSchema()
+   * @generated
+   */
+  EReference getSchema_Properties();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link kieker.develop.rl.recordLang.Schema#getConstants <em>Constants</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Constants</em>'.
+   * @see kieker.develop.rl.recordLang.Schema#getConstants()
+   * @see #getSchema()
+   * @generated
+   */
+  EReference getSchema_Constants();
+
+  /**
+   * Returns the meta object for the reference list '{@link kieker.develop.rl.recordLang.Schema#getParents <em>Parents</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Parents</em>'.
+   * @see kieker.develop.rl.recordLang.Schema#getParents()
+   * @see #getSchema()
+   * @generated
+   */
+  EReference getSchema_Parents();
+
+  /**
+   * Returns the meta object for class '{@link kieker.develop.rl.recordLang.Templates <em>Templates</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Templates</em>'.
+   * @see kieker.develop.rl.recordLang.Templates
+   * @generated
+   */
+  EClass getTemplates();
+
+  /**
+   * Returns the meta object for the reference list '{@link kieker.develop.rl.recordLang.Templates#getTemplates <em>Templates</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Templates</em>'.
+   * @see kieker.develop.rl.recordLang.Templates#getTemplates()
+   * @see #getTemplates()
+   * @generated
+   */
+  EReference getTemplates_Templates();
+
+  /**
+   * Returns the meta object for class '{@link kieker.develop.rl.recordLang.RootType <em>Root Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Root Type</em>'.
+   * @see kieker.develop.rl.recordLang.RootType
+   * @generated
+   */
+  EClass getRootType();
+
+  /**
+   * Returns the meta object for the reference '{@link kieker.develop.rl.recordLang.RootType#getRecord <em>Record</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Record</em>'.
+   * @see kieker.develop.rl.recordLang.RootType#getRecord()
+   * @see #getRootType()
+   * @generated
+   */
+  EReference getRootType_Record();
 
   /**
    * Returns the meta object for class '{@link kieker.develop.rl.recordLang.ComplexType <em>Complex Type</em>}'.
@@ -1502,6 +1809,14 @@ public interface RecordLangPackage extends EPackage
     EReference MODEL__TYPES = eINSTANCE.getModel_Types();
 
     /**
+     * The meta object literal for the '<em><b>Schemes</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MODEL__SCHEMES = eINSTANCE.getModel_Schemes();
+
+    /**
      * The meta object literal for the '{@link kieker.develop.rl.recordLang.impl.ImportImpl <em>Import</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1546,6 +1861,116 @@ public interface RecordLangPackage extends EPackage
      * @generated
      */
     EClass BASE_TYPE = eINSTANCE.getBaseType();
+
+    /**
+     * The meta object literal for the '{@link kieker.develop.rl.recordLang.impl.SchemaImpl <em>Schema</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see kieker.develop.rl.recordLang.impl.SchemaImpl
+     * @see kieker.develop.rl.recordLang.impl.RecordLangPackageImpl#getSchema()
+     * @generated
+     */
+    EClass SCHEMA = eINSTANCE.getSchema();
+
+    /**
+     * The meta object literal for the '<em><b>Author</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SCHEMA__AUTHOR = eINSTANCE.getSchema_Author();
+
+    /**
+     * The meta object literal for the '<em><b>Since</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SCHEMA__SINCE = eINSTANCE.getSchema_Since();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SCHEMA__NAME = eINSTANCE.getSchema_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Templates</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SCHEMA__TEMPLATES = eINSTANCE.getSchema_Templates();
+
+    /**
+     * The meta object literal for the '<em><b>Root</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SCHEMA__ROOT = eINSTANCE.getSchema_Root();
+
+    /**
+     * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SCHEMA__PROPERTIES = eINSTANCE.getSchema_Properties();
+
+    /**
+     * The meta object literal for the '<em><b>Constants</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SCHEMA__CONSTANTS = eINSTANCE.getSchema_Constants();
+
+    /**
+     * The meta object literal for the '<em><b>Parents</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SCHEMA__PARENTS = eINSTANCE.getSchema_Parents();
+
+    /**
+     * The meta object literal for the '{@link kieker.develop.rl.recordLang.impl.TemplatesImpl <em>Templates</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see kieker.develop.rl.recordLang.impl.TemplatesImpl
+     * @see kieker.develop.rl.recordLang.impl.RecordLangPackageImpl#getTemplates()
+     * @generated
+     */
+    EClass TEMPLATES = eINSTANCE.getTemplates();
+
+    /**
+     * The meta object literal for the '<em><b>Templates</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TEMPLATES__TEMPLATES = eINSTANCE.getTemplates_Templates();
+
+    /**
+     * The meta object literal for the '{@link kieker.develop.rl.recordLang.impl.RootTypeImpl <em>Root Type</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see kieker.develop.rl.recordLang.impl.RootTypeImpl
+     * @see kieker.develop.rl.recordLang.impl.RecordLangPackageImpl#getRootType()
+     * @generated
+     */
+    EClass ROOT_TYPE = eINSTANCE.getRootType();
+
+    /**
+     * The meta object literal for the '<em><b>Record</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ROOT_TYPE__RECORD = eINSTANCE.getRootType_Record();
 
     /**
      * The meta object literal for the '{@link kieker.develop.rl.recordLang.impl.ComplexTypeImpl <em>Complex Type</em>}' class.

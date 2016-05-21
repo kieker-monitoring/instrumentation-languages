@@ -15,6 +15,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RecordLang.ecore#//Model/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Model/imports"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Model/types"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Model/schemes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Model/packages"/>
     </genClasses>
     <genClasses ecoreClass="RecordLang.ecore#//Import">
@@ -30,6 +31,22 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RecordLang.ecore#//Type/version"/>
     </genClasses>
     <genClasses ecoreClass="RecordLang.ecore#//BaseType"/>
+    <genClasses ecoreClass="RecordLang.ecore#//Schema">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RecordLang.ecore#//Schema/author"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RecordLang.ecore#//Schema/since"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RecordLang.ecore#//Schema/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Schema/templates"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Schema/root"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Schema/properties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Schema/constants"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Schema/parents"/>
+    </genClasses>
+    <genClasses ecoreClass="RecordLang.ecore#//Templates">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RecordLang.ecore#//Templates/templates"/>
+    </genClasses>
+    <genClasses ecoreClass="RecordLang.ecore#//RootType">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference RecordLang.ecore#//RootType/record"/>
+    </genClasses>
     <genClasses ecoreClass="RecordLang.ecore#//ComplexType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RecordLang.ecore#//ComplexType/author"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute RecordLang.ecore#//ComplexType/since"/>

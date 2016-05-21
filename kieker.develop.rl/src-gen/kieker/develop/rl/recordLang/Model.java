@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link kieker.develop.rl.recordLang.Model#getName <em>Name</em>}</li>
  *   <li>{@link kieker.develop.rl.recordLang.Model#getImports <em>Imports</em>}</li>
  *   <li>{@link kieker.develop.rl.recordLang.Model#getTypes <em>Types</em>}</li>
+ *   <li>{@link kieker.develop.rl.recordLang.Model#getSchemes <em>Schemes</em>}</li>
  * </ul>
  *
  * @see kieker.develop.rl.recordLang.RecordLangPackage#getModel()
@@ -83,5 +84,21 @@ public interface Model extends EObject
    * @generated
    */
   EList<ComplexType> getTypes();
+
+  /**
+   * Returns the value of the '<em><b>Schemes</b></em>' containment reference list.
+   * The list contents are of type {@link kieker.develop.rl.recordLang.Schema}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Schemes</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Schemes</em>' containment reference list.
+   * @see kieker.develop.rl.recordLang.RecordLangPackage#getModel_Schemes()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Schema> getSchemes();
 
 } // Model

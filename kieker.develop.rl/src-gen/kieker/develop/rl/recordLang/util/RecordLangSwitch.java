@@ -101,6 +101,27 @@ public class RecordLangSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case RecordLangPackage.SCHEMA:
+      {
+        Schema schema = (Schema)theEObject;
+        T result = caseSchema(schema);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RecordLangPackage.TEMPLATES:
+      {
+        Templates templates = (Templates)theEObject;
+        T result = caseTemplates(templates);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case RecordLangPackage.ROOT_TYPE:
+      {
+        RootType rootType = (RootType)theEObject;
+        T result = caseRootType(rootType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case RecordLangPackage.COMPLEX_TYPE:
       {
         ComplexType complexType = (ComplexType)theEObject;
@@ -289,6 +310,54 @@ public class RecordLangSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseBaseType(BaseType object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Schema</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Schema</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSchema(Schema object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Templates</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Templates</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseTemplates(Templates object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Root Type</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Root Type</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRootType(RootType object)
   {
     return null;
   }

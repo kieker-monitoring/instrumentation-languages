@@ -8,6 +8,7 @@ import kieker.develop.rl.recordLang.ComplexType;
 import kieker.develop.rl.recordLang.Import;
 import kieker.develop.rl.recordLang.Model;
 import kieker.develop.rl.recordLang.RecordLangPackage;
+import kieker.develop.rl.recordLang.Schema;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -34,6 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link kieker.develop.rl.recordLang.impl.ModelImpl#getName <em>Name</em>}</li>
  *   <li>{@link kieker.develop.rl.recordLang.impl.ModelImpl#getImports <em>Imports</em>}</li>
  *   <li>{@link kieker.develop.rl.recordLang.impl.ModelImpl#getTypes <em>Types</em>}</li>
+ *   <li>{@link kieker.develop.rl.recordLang.impl.ModelImpl#getSchemes <em>Schemes</em>}</li>
  * </ul>
  *
  * @generated
@@ -79,6 +81,16 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * @ordered
    */
   protected EList<ComplexType> types;
+
+  /**
+   * The cached value of the '{@link #getSchemes() <em>Schemes</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSchemes()
+   * @generated
+   * @ordered
+   */
+  protected EList<Schema> schemes;
 
   /**
    * <!-- begin-user-doc -->
@@ -157,6 +169,20 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<Schema> getSchemes()
+  {
+    if (schemes == null)
+    {
+      schemes = new EObjectContainmentEList<Schema>(Schema.class, this, RecordLangPackage.MODEL__SCHEMES);
+    }
+    return schemes;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -166,6 +192,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
       case RecordLangPackage.MODEL__TYPES:
         return ((InternalEList<?>)getTypes()).basicRemove(otherEnd, msgs);
+      case RecordLangPackage.MODEL__SCHEMES:
+        return ((InternalEList<?>)getSchemes()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -186,6 +214,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return getImports();
       case RecordLangPackage.MODEL__TYPES:
         return getTypes();
+      case RecordLangPackage.MODEL__SCHEMES:
+        return getSchemes();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -212,6 +242,10 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         getTypes().clear();
         getTypes().addAll((Collection<? extends ComplexType>)newValue);
         return;
+      case RecordLangPackage.MODEL__SCHEMES:
+        getSchemes().clear();
+        getSchemes().addAll((Collection<? extends Schema>)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -235,6 +269,9 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
       case RecordLangPackage.MODEL__TYPES:
         getTypes().clear();
         return;
+      case RecordLangPackage.MODEL__SCHEMES:
+        getSchemes().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -255,6 +292,8 @@ public class ModelImpl extends MinimalEObjectImpl.Container implements Model
         return imports != null && !imports.isEmpty();
       case RecordLangPackage.MODEL__TYPES:
         return types != null && !types.isEmpty();
+      case RecordLangPackage.MODEL__SCHEMES:
+        return schemes != null && !schemes.isEmpty();
     }
     return super.eIsSet(featureID);
   }

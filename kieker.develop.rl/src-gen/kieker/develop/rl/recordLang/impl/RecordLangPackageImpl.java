@@ -22,8 +22,11 @@ import kieker.develop.rl.recordLang.PropertyModifier;
 import kieker.develop.rl.recordLang.RecordLangFactory;
 import kieker.develop.rl.recordLang.RecordLangPackage;
 import kieker.develop.rl.recordLang.RecordType;
+import kieker.develop.rl.recordLang.RootType;
+import kieker.develop.rl.recordLang.Schema;
 import kieker.develop.rl.recordLang.StringLiteral;
 import kieker.develop.rl.recordLang.TemplateType;
+import kieker.develop.rl.recordLang.Templates;
 import kieker.develop.rl.recordLang.Type;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -70,6 +73,27 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
    * @generated
    */
   private EClass baseTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass schemaEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass templatesEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass rootTypeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -301,6 +325,16 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getModel_Schemes()
+  {
+    return (EReference)modelEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getImport()
   {
     return importEClass;
@@ -344,6 +378,136 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
   public EClass getBaseType()
   {
     return baseTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getSchema()
+  {
+    return schemaEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getSchema_Author()
+  {
+    return (EAttribute)schemaEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getSchema_Since()
+  {
+    return (EAttribute)schemaEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getSchema_Name()
+  {
+    return (EAttribute)schemaEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSchema_Templates()
+  {
+    return (EReference)schemaEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSchema_Root()
+  {
+    return (EReference)schemaEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSchema_Properties()
+  {
+    return (EReference)schemaEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSchema_Constants()
+  {
+    return (EReference)schemaEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSchema_Parents()
+  {
+    return (EReference)schemaEClass.getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getTemplates()
+  {
+    return templatesEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getTemplates_Templates()
+  {
+    return (EReference)templatesEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getRootType()
+  {
+    return rootTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getRootType_Record()
+  {
+    return (EReference)rootTypeEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -830,6 +994,7 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
     createEAttribute(modelEClass, MODEL__NAME);
     createEReference(modelEClass, MODEL__IMPORTS);
     createEReference(modelEClass, MODEL__TYPES);
+    createEReference(modelEClass, MODEL__SCHEMES);
 
     importEClass = createEClass(IMPORT);
     createEAttribute(importEClass, IMPORT__IMPORTED_NAMESPACE);
@@ -838,6 +1003,22 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
     createEAttribute(typeEClass, TYPE__NAME);
 
     baseTypeEClass = createEClass(BASE_TYPE);
+
+    schemaEClass = createEClass(SCHEMA);
+    createEAttribute(schemaEClass, SCHEMA__AUTHOR);
+    createEAttribute(schemaEClass, SCHEMA__SINCE);
+    createEAttribute(schemaEClass, SCHEMA__NAME);
+    createEReference(schemaEClass, SCHEMA__TEMPLATES);
+    createEReference(schemaEClass, SCHEMA__ROOT);
+    createEReference(schemaEClass, SCHEMA__PROPERTIES);
+    createEReference(schemaEClass, SCHEMA__CONSTANTS);
+    createEReference(schemaEClass, SCHEMA__PARENTS);
+
+    templatesEClass = createEClass(TEMPLATES);
+    createEReference(templatesEClass, TEMPLATES__TEMPLATES);
+
+    rootTypeEClass = createEClass(ROOT_TYPE);
+    createEReference(rootTypeEClass, ROOT_TYPE__RECORD);
 
     complexTypeEClass = createEClass(COMPLEX_TYPE);
     createEAttribute(complexTypeEClass, COMPLEX_TYPE__AUTHOR);
@@ -952,6 +1133,7 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
     initEAttribute(getModel_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Imports(), this.getImport(), null, "imports", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getModel_Types(), this.getComplexType(), null, "types", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModel_Schemes(), this.getSchema(), null, "schemes", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getImport_ImportedNamespace(), theEcorePackage.getEString(), "importedNamespace", null, 0, 1, Import.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -960,6 +1142,22 @@ public class RecordLangPackageImpl extends EPackageImpl implements RecordLangPac
     initEAttribute(getType_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(baseTypeEClass, BaseType.class, "BaseType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(schemaEClass, Schema.class, "Schema", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSchema_Author(), theEcorePackage.getEString(), "author", null, 0, 1, Schema.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSchema_Since(), theEcorePackage.getEString(), "since", null, 0, 1, Schema.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getSchema_Name(), theEcorePackage.getEString(), "name", null, 0, 1, Schema.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSchema_Templates(), this.getTemplates(), null, "templates", null, 0, 1, Schema.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSchema_Root(), this.getRootType(), null, "root", null, 0, 1, Schema.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSchema_Properties(), this.getProperty(), null, "properties", null, 0, -1, Schema.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSchema_Constants(), this.getConstant(), null, "constants", null, 0, -1, Schema.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getSchema_Parents(), this.getTemplateType(), null, "parents", null, 0, -1, Schema.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(templatesEClass, Templates.class, "Templates", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getTemplates_Templates(), this.getTemplateType(), null, "templates", null, 0, -1, Templates.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(rootTypeEClass, RootType.class, "RootType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getRootType_Record(), this.getRecordType(), null, "record", null, 0, 1, RootType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(complexTypeEClass, ComplexType.class, "ComplexType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getComplexType_Author(), theEcorePackage.getEString(), "author", null, 0, 1, ComplexType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

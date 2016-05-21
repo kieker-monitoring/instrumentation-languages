@@ -69,6 +69,9 @@ public class RecordLangFactoryImpl extends EFactoryImpl implements RecordLangFac
       case RecordLangPackage.IMPORT: return createImport();
       case RecordLangPackage.TYPE: return createType();
       case RecordLangPackage.BASE_TYPE: return createBaseType();
+      case RecordLangPackage.SCHEMA: return createSchema();
+      case RecordLangPackage.TEMPLATES: return createTemplates();
+      case RecordLangPackage.ROOT_TYPE: return createRootType();
       case RecordLangPackage.COMPLEX_TYPE: return createComplexType();
       case RecordLangPackage.TEMPLATE_TYPE: return createTemplateType();
       case RecordLangPackage.RECORD_TYPE: return createRecordType();
@@ -166,6 +169,39 @@ public class RecordLangFactoryImpl extends EFactoryImpl implements RecordLangFac
   {
     BaseTypeImpl baseType = new BaseTypeImpl();
     return baseType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Schema createSchema()
+  {
+    SchemaImpl schema = new SchemaImpl();
+    return schema;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Templates createTemplates()
+  {
+    TemplatesImpl templates = new TemplatesImpl();
+    return templates;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RootType createRootType()
+  {
+    RootTypeImpl rootType = new RootTypeImpl();
+    return rootType;
   }
 
   /**

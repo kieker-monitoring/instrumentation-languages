@@ -1,6 +1,5 @@
 package kieker.develop.al.generator.aspectj;
 
-import de.cau.cs.se.geco.architecture.framework.IGenerator;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -23,7 +22,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 @SuppressWarnings("all")
-public class AspectJPointcutGenerator implements IGenerator<Collection<Aspect>, Document> {
+public class AspectJPointcutGenerator /* implements IGenerator<Collection<Aspect>, Document>  */{
   private final DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
   
   private final DocumentBuilder docBuilder = new Function0<DocumentBuilder>() {

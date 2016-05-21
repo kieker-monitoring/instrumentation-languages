@@ -28,14 +28,17 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cImportsImportParserRuleCall_2_0 = (RuleCall)cImportsAssignment_2.eContents().get(0);
 		private final Assignment cTypesAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cTypesComplexTypeParserRuleCall_3_0 = (RuleCall)cTypesAssignment_3.eContents().get(0);
+		private final Assignment cSchemesAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cSchemesSchemaParserRuleCall_4_0 = (RuleCall)cSchemesAssignment_4.eContents().get(0);
 		
 		//Model:
 		//	'package' name=QualifiedName
 		//	imports+=Import*
-		//	types+=ComplexType*;
+		//	types+=ComplexType*
+		//	schemes+=Schema*;
 		@Override public ParserRule getRule() { return rule; }
 
-		//'package' name=QualifiedName imports+=Import* types+=ComplexType*
+		//'package' name=QualifiedName imports+=Import* types+=ComplexType* schemes+=Schema*
 		public Group getGroup() { return cGroup; }
 
 		//'package'
@@ -58,6 +61,12 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 
 		//ComplexType
 		public RuleCall getTypesComplexTypeParserRuleCall_3_0() { return cTypesComplexTypeParserRuleCall_3_0; }
+
+		//schemes+=Schema*
+		public Assignment getSchemesAssignment_4() { return cSchemesAssignment_4; }
+
+		//Schema
+		public RuleCall getSchemesSchemaParserRuleCall_4_0() { return cSchemesSchemaParserRuleCall_4_0; }
 	}
 
 	public class ImportElements extends AbstractParserRuleElementFinder {
@@ -118,6 +127,239 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_0() { return cNameIDTerminalRuleCall_0; }
+	}
+
+	public class SchemaElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "kieker.develop.rl.RecordLang.Schema");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
+		private final Keyword cAuthorKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final Assignment cAuthorAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final RuleCall cAuthorSTRINGTerminalRuleCall_0_1_0 = (RuleCall)cAuthorAssignment_0_1.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cSinceKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cSinceAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cSinceSTRINGTerminalRuleCall_1_1_0 = (RuleCall)cSinceAssignment_1_1.eContents().get(0);
+		private final Keyword cSchemaKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cNameIDTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
+		private final Alternatives cAlternatives_4 = (Alternatives)cGroup.eContents().get(4);
+		private final Assignment cTemplatesAssignment_4_0 = (Assignment)cAlternatives_4.eContents().get(0);
+		private final RuleCall cTemplatesTemplatesParserRuleCall_4_0_0 = (RuleCall)cTemplatesAssignment_4_0.eContents().get(0);
+		private final Assignment cRootAssignment_4_1 = (Assignment)cAlternatives_4.eContents().get(1);
+		private final RuleCall cRootRootTypeParserRuleCall_4_1_0 = (RuleCall)cRootAssignment_4_1.eContents().get(0);
+		private final Alternatives cAlternatives_5 = (Alternatives)cGroup.eContents().get(5);
+		private final Group cGroup_5_0 = (Group)cAlternatives_5.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_5_0_0 = (Keyword)cGroup_5_0.eContents().get(0);
+		private final Alternatives cAlternatives_5_0_1 = (Alternatives)cGroup_5_0.eContents().get(1);
+		private final Assignment cPropertiesAssignment_5_0_1_0 = (Assignment)cAlternatives_5_0_1.eContents().get(0);
+		private final RuleCall cPropertiesPropertyParserRuleCall_5_0_1_0_0 = (RuleCall)cPropertiesAssignment_5_0_1_0.eContents().get(0);
+		private final Assignment cConstantsAssignment_5_0_1_1 = (Assignment)cAlternatives_5_0_1.eContents().get(1);
+		private final RuleCall cConstantsConstantParserRuleCall_5_0_1_1_0 = (RuleCall)cConstantsAssignment_5_0_1_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_5_0_2 = (Keyword)cGroup_5_0.eContents().get(2);
+		private final Group cGroup_5_1 = (Group)cAlternatives_5.eContents().get(1);
+		private final Keyword cColonKeyword_5_1_0 = (Keyword)cGroup_5_1.eContents().get(0);
+		private final Assignment cParentsAssignment_5_1_1 = (Assignment)cGroup_5_1.eContents().get(1);
+		private final CrossReference cParentsTemplateTypeCrossReference_5_1_1_0 = (CrossReference)cParentsAssignment_5_1_1.eContents().get(0);
+		private final RuleCall cParentsTemplateTypeQualifiedNameParserRuleCall_5_1_1_0_1 = (RuleCall)cParentsTemplateTypeCrossReference_5_1_1_0.eContents().get(1);
+		private final Group cGroup_5_1_2 = (Group)cGroup_5_1.eContents().get(2);
+		private final Keyword cCommaKeyword_5_1_2_0 = (Keyword)cGroup_5_1_2.eContents().get(0);
+		private final Assignment cParentsAssignment_5_1_2_1 = (Assignment)cGroup_5_1_2.eContents().get(1);
+		private final CrossReference cParentsTemplateTypeCrossReference_5_1_2_1_0 = (CrossReference)cParentsAssignment_5_1_2_1.eContents().get(0);
+		private final RuleCall cParentsTemplateTypeQualifiedNameParserRuleCall_5_1_2_1_0_1 = (RuleCall)cParentsTemplateTypeCrossReference_5_1_2_1_0.eContents().get(1);
+		
+		//Schema:
+		//	('@author' author=STRING)? ('@since' since=STRING)?
+		//	'schema' name=ID (templates=Templates | root=RootType) ('{' (properties+=Property | constants+=Constant)* '}' | ':'
+		//	parents+=[TemplateType|QualifiedName] (',' parents+=[TemplateType|QualifiedName])*);
+		@Override public ParserRule getRule() { return rule; }
+
+		//('@author' author=STRING)? ('@since' since=STRING)? 'schema' name=ID (templates=Templates | root=RootType) ('{'
+		//(properties+=Property | constants+=Constant)* '}' | ':' parents+=[TemplateType|QualifiedName] (','
+		//parents+=[TemplateType|QualifiedName])*)
+		public Group getGroup() { return cGroup; }
+
+		//('@author' author=STRING)?
+		public Group getGroup_0() { return cGroup_0; }
+
+		//'@author'
+		public Keyword getAuthorKeyword_0_0() { return cAuthorKeyword_0_0; }
+
+		//author=STRING
+		public Assignment getAuthorAssignment_0_1() { return cAuthorAssignment_0_1; }
+
+		//STRING
+		public RuleCall getAuthorSTRINGTerminalRuleCall_0_1_0() { return cAuthorSTRINGTerminalRuleCall_0_1_0; }
+
+		//('@since' since=STRING)?
+		public Group getGroup_1() { return cGroup_1; }
+
+		//'@since'
+		public Keyword getSinceKeyword_1_0() { return cSinceKeyword_1_0; }
+
+		//since=STRING
+		public Assignment getSinceAssignment_1_1() { return cSinceAssignment_1_1; }
+
+		//STRING
+		public RuleCall getSinceSTRINGTerminalRuleCall_1_1_0() { return cSinceSTRINGTerminalRuleCall_1_1_0; }
+
+		//'schema'
+		public Keyword getSchemaKeyword_2() { return cSchemaKeyword_2; }
+
+		//name=ID
+		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_3_0() { return cNameIDTerminalRuleCall_3_0; }
+
+		//(templates=Templates | root=RootType)
+		public Alternatives getAlternatives_4() { return cAlternatives_4; }
+
+		//templates=Templates
+		public Assignment getTemplatesAssignment_4_0() { return cTemplatesAssignment_4_0; }
+
+		//Templates
+		public RuleCall getTemplatesTemplatesParserRuleCall_4_0_0() { return cTemplatesTemplatesParserRuleCall_4_0_0; }
+
+		//root=RootType
+		public Assignment getRootAssignment_4_1() { return cRootAssignment_4_1; }
+
+		//RootType
+		public RuleCall getRootRootTypeParserRuleCall_4_1_0() { return cRootRootTypeParserRuleCall_4_1_0; }
+
+		//('{' (properties+=Property | constants+=Constant)* '}' | ':' parents+=[TemplateType|QualifiedName] (','
+		//parents+=[TemplateType|QualifiedName])*)
+		public Alternatives getAlternatives_5() { return cAlternatives_5; }
+
+		//'{' (properties+=Property | constants+=Constant)* '}'
+		public Group getGroup_5_0() { return cGroup_5_0; }
+
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_5_0_0() { return cLeftCurlyBracketKeyword_5_0_0; }
+
+		//(properties+=Property | constants+=Constant)*
+		public Alternatives getAlternatives_5_0_1() { return cAlternatives_5_0_1; }
+
+		//properties+=Property
+		public Assignment getPropertiesAssignment_5_0_1_0() { return cPropertiesAssignment_5_0_1_0; }
+
+		//Property
+		public RuleCall getPropertiesPropertyParserRuleCall_5_0_1_0_0() { return cPropertiesPropertyParserRuleCall_5_0_1_0_0; }
+
+		//constants+=Constant
+		public Assignment getConstantsAssignment_5_0_1_1() { return cConstantsAssignment_5_0_1_1; }
+
+		//Constant
+		public RuleCall getConstantsConstantParserRuleCall_5_0_1_1_0() { return cConstantsConstantParserRuleCall_5_0_1_1_0; }
+
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_5_0_2() { return cRightCurlyBracketKeyword_5_0_2; }
+
+		//':' parents+=[TemplateType|QualifiedName] (',' parents+=[TemplateType|QualifiedName])*
+		public Group getGroup_5_1() { return cGroup_5_1; }
+
+		//':'
+		public Keyword getColonKeyword_5_1_0() { return cColonKeyword_5_1_0; }
+
+		//parents+=[TemplateType|QualifiedName]
+		public Assignment getParentsAssignment_5_1_1() { return cParentsAssignment_5_1_1; }
+
+		//[TemplateType|QualifiedName]
+		public CrossReference getParentsTemplateTypeCrossReference_5_1_1_0() { return cParentsTemplateTypeCrossReference_5_1_1_0; }
+
+		//QualifiedName
+		public RuleCall getParentsTemplateTypeQualifiedNameParserRuleCall_5_1_1_0_1() { return cParentsTemplateTypeQualifiedNameParserRuleCall_5_1_1_0_1; }
+
+		//(',' parents+=[TemplateType|QualifiedName])*
+		public Group getGroup_5_1_2() { return cGroup_5_1_2; }
+
+		//','
+		public Keyword getCommaKeyword_5_1_2_0() { return cCommaKeyword_5_1_2_0; }
+
+		//parents+=[TemplateType|QualifiedName]
+		public Assignment getParentsAssignment_5_1_2_1() { return cParentsAssignment_5_1_2_1; }
+
+		//[TemplateType|QualifiedName]
+		public CrossReference getParentsTemplateTypeCrossReference_5_1_2_1_0() { return cParentsTemplateTypeCrossReference_5_1_2_1_0; }
+
+		//QualifiedName
+		public RuleCall getParentsTemplateTypeQualifiedNameParserRuleCall_5_1_2_1_0_1() { return cParentsTemplateTypeQualifiedNameParserRuleCall_5_1_2_1_0_1; }
+	}
+
+	public class TemplatesElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "kieker.develop.rl.RecordLang.Templates");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cTemplatesKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cTemplatesAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cTemplatesTemplateTypeCrossReference_1_0 = (CrossReference)cTemplatesAssignment_1.eContents().get(0);
+		private final RuleCall cTemplatesTemplateTypeQualifiedNameParserRuleCall_1_0_1 = (RuleCall)cTemplatesTemplateTypeCrossReference_1_0.eContents().get(1);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cCommaKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cTemplatesAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final CrossReference cTemplatesTemplateTypeCrossReference_2_1_0 = (CrossReference)cTemplatesAssignment_2_1.eContents().get(0);
+		private final RuleCall cTemplatesTemplateTypeQualifiedNameParserRuleCall_2_1_0_1 = (RuleCall)cTemplatesTemplateTypeCrossReference_2_1_0.eContents().get(1);
+		
+		//Templates:
+		//	'templates' templates+=[TemplateType|QualifiedName] (',' templates+=[TemplateType|QualifiedName])*;
+		@Override public ParserRule getRule() { return rule; }
+
+		//'templates' templates+=[TemplateType|QualifiedName] (',' templates+=[TemplateType|QualifiedName])*
+		public Group getGroup() { return cGroup; }
+
+		//'templates'
+		public Keyword getTemplatesKeyword_0() { return cTemplatesKeyword_0; }
+
+		//templates+=[TemplateType|QualifiedName]
+		public Assignment getTemplatesAssignment_1() { return cTemplatesAssignment_1; }
+
+		//[TemplateType|QualifiedName]
+		public CrossReference getTemplatesTemplateTypeCrossReference_1_0() { return cTemplatesTemplateTypeCrossReference_1_0; }
+
+		//QualifiedName
+		public RuleCall getTemplatesTemplateTypeQualifiedNameParserRuleCall_1_0_1() { return cTemplatesTemplateTypeQualifiedNameParserRuleCall_1_0_1; }
+
+		//(',' templates+=[TemplateType|QualifiedName])*
+		public Group getGroup_2() { return cGroup_2; }
+
+		//','
+		public Keyword getCommaKeyword_2_0() { return cCommaKeyword_2_0; }
+
+		//templates+=[TemplateType|QualifiedName]
+		public Assignment getTemplatesAssignment_2_1() { return cTemplatesAssignment_2_1; }
+
+		//[TemplateType|QualifiedName]
+		public CrossReference getTemplatesTemplateTypeCrossReference_2_1_0() { return cTemplatesTemplateTypeCrossReference_2_1_0; }
+
+		//QualifiedName
+		public RuleCall getTemplatesTemplateTypeQualifiedNameParserRuleCall_2_1_0_1() { return cTemplatesTemplateTypeQualifiedNameParserRuleCall_2_1_0_1; }
+	}
+
+	public class RootTypeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "kieker.develop.rl.RecordLang.RootType");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cRootKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cRecordAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cRecordRecordTypeCrossReference_1_0 = (CrossReference)cRecordAssignment_1.eContents().get(0);
+		private final RuleCall cRecordRecordTypeQualifiedNameParserRuleCall_1_0_1 = (RuleCall)cRecordRecordTypeCrossReference_1_0.eContents().get(1);
+		
+		//RootType:
+		//	'root' record=[RecordType|QualifiedName];
+		@Override public ParserRule getRule() { return rule; }
+
+		//'root' record=[RecordType|QualifiedName]
+		public Group getGroup() { return cGroup; }
+
+		//'root'
+		public Keyword getRootKeyword_0() { return cRootKeyword_0; }
+
+		//record=[RecordType|QualifiedName]
+		public Assignment getRecordAssignment_1() { return cRecordAssignment_1; }
+
+		//[RecordType|QualifiedName]
+		public CrossReference getRecordRecordTypeCrossReference_1_0() { return cRecordRecordTypeCrossReference_1_0; }
+
+		//QualifiedName
+		public RuleCall getRecordRecordTypeQualifiedNameParserRuleCall_1_0_1() { return cRecordRecordTypeQualifiedNameParserRuleCall_1_0_1; }
 	}
 
 	public class ComplexTypeElements extends AbstractParserRuleElementFinder {
@@ -963,6 +1205,9 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	private final ImportElements pImport;
 	private final TypeElements pType;
 	private final BaseTypeElements pBaseType;
+	private final SchemaElements pSchema;
+	private final TemplatesElements pTemplates;
+	private final RootTypeElements pRootType;
 	private final ComplexTypeElements pComplexType;
 	private final TemplateTypeElements pTemplateType;
 	private final RecordTypeElements pRecordType;
@@ -1000,6 +1245,9 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 		this.pImport = new ImportElements();
 		this.pType = new TypeElements();
 		this.pBaseType = new BaseTypeElements();
+		this.pSchema = new SchemaElements();
+		this.pTemplates = new TemplatesElements();
+		this.pRootType = new RootTypeElements();
 		this.pComplexType = new ComplexTypeElements();
 		this.pTemplateType = new TemplateTypeElements();
 		this.pRecordType = new RecordTypeElements();
@@ -1055,7 +1303,8 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	//Model:
 	//	'package' name=QualifiedName
 	//	imports+=Import*
-	//	types+=ComplexType*;
+	//	types+=ComplexType*
+	//	schemes+=Schema*;
 	public ModelElements getModelAccess() {
 		return pModel;
 	}
@@ -1092,6 +1341,38 @@ public class RecordLangGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getBaseTypeRule() {
 		return getBaseTypeAccess().getRule();
+	}
+
+	//Schema:
+	//	('@author' author=STRING)? ('@since' since=STRING)?
+	//	'schema' name=ID (templates=Templates | root=RootType) ('{' (properties+=Property | constants+=Constant)* '}' | ':'
+	//	parents+=[TemplateType|QualifiedName] (',' parents+=[TemplateType|QualifiedName])*);
+	public SchemaElements getSchemaAccess() {
+		return pSchema;
+	}
+	
+	public ParserRule getSchemaRule() {
+		return getSchemaAccess().getRule();
+	}
+
+	//Templates:
+	//	'templates' templates+=[TemplateType|QualifiedName] (',' templates+=[TemplateType|QualifiedName])*;
+	public TemplatesElements getTemplatesAccess() {
+		return pTemplates;
+	}
+	
+	public ParserRule getTemplatesRule() {
+		return getTemplatesAccess().getRule();
+	}
+
+	//RootType:
+	//	'root' record=[RecordType|QualifiedName];
+	public RootTypeElements getRootTypeAccess() {
+		return pRootType;
+	}
+	
+	public ParserRule getRootTypeRule() {
+		return getRootTypeAccess().getRule();
 	}
 
 	//ComplexType:

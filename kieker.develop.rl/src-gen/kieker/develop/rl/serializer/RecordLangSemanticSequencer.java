@@ -21,8 +21,11 @@ import kieker.develop.rl.recordLang.Model;
 import kieker.develop.rl.recordLang.Property;
 import kieker.develop.rl.recordLang.RecordLangPackage;
 import kieker.develop.rl.recordLang.RecordType;
+import kieker.develop.rl.recordLang.RootType;
+import kieker.develop.rl.recordLang.Schema;
 import kieker.develop.rl.recordLang.StringLiteral;
 import kieker.develop.rl.recordLang.TemplateType;
+import kieker.develop.rl.recordLang.Templates;
 import kieker.develop.rl.services.RecordLangGrammarAccess;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -93,11 +96,20 @@ public class RecordLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 			case RecordLangPackage.RECORD_TYPE:
 				sequence_RecordType(context, (RecordType) semanticObject); 
 				return; 
+			case RecordLangPackage.ROOT_TYPE:
+				sequence_RootType(context, (RootType) semanticObject); 
+				return; 
+			case RecordLangPackage.SCHEMA:
+				sequence_Schema(context, (Schema) semanticObject); 
+				return; 
 			case RecordLangPackage.STRING_LITERAL:
 				sequence_StringLiteral(context, (StringLiteral) semanticObject); 
 				return; 
 			case RecordLangPackage.TEMPLATE_TYPE:
 				sequence_TemplateType(context, (TemplateType) semanticObject); 
+				return; 
+			case RecordLangPackage.TEMPLATES:
+				sequence_Templates(context, (Templates) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -323,7 +335,7 @@ public class RecordLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 *     Model returns Model
 	 *
 	 * Constraint:
-	 *     (name=QualifiedName imports+=Import* types+=ComplexType*)
+	 *     (name=QualifiedName imports+=Import* types+=ComplexType* schemes+=Schema*)
 	 */
 	protected void sequence_Model(ISerializationContext context, Model semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -366,6 +378,45 @@ public class RecordLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 	
 	/**
 	 * Contexts:
+	 *     RootType returns RootType
+	 *
+	 * Constraint:
+	 *     record=[RecordType|QualifiedName]
+	 */
+	protected void sequence_RootType(ISerializationContext context, RootType semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, RecordLangPackage.Literals.ROOT_TYPE__RECORD) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, RecordLangPackage.Literals.ROOT_TYPE__RECORD));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getRootTypeAccess().getRecordRecordTypeQualifiedNameParserRuleCall_1_0_1(), semanticObject.getRecord());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Schema returns Schema
+	 *
+	 * Constraint:
+	 *     (
+	 *         author=STRING? 
+	 *         since=STRING? 
+	 *         name=ID 
+	 *         (templates=Templates | root=RootType) 
+	 *         (
+	 *             (properties+=Property? (constants+=Constant? properties+=Property?)*) | 
+	 *             (parents+=[TemplateType|QualifiedName] parents+=[TemplateType|QualifiedName]*)
+	 *         )
+	 *     )
+	 */
+	protected void sequence_Schema(ISerializationContext context, Schema semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Literal returns StringLiteral
 	 *     StringLiteral returns StringLiteral
 	 *
@@ -399,6 +450,18 @@ public class RecordLangSemanticSequencer extends AbstractDelegatingSemanticSeque
 	 *     )
 	 */
 	protected void sequence_TemplateType(ISerializationContext context, TemplateType semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Templates returns Templates
+	 *
+	 * Constraint:
+	 *     (templates+=[TemplateType|QualifiedName] templates+=[TemplateType|QualifiedName]*)
+	 */
+	protected void sequence_Templates(ISerializationContext context, Templates semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
