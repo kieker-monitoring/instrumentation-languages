@@ -16,7 +16,6 @@ import kieker.develop.rl.recordLang.BaseType;
 import kieker.develop.rl.recordLang.BooleanLiteral;
 import kieker.develop.rl.recordLang.BuiltInValueLiteral;
 import kieker.develop.rl.recordLang.Classifier;
-import kieker.develop.rl.recordLang.ComplexType;
 import kieker.develop.rl.recordLang.Constant;
 import kieker.develop.rl.recordLang.ConstantLiteral;
 import kieker.develop.rl.recordLang.FloatLiteral;
@@ -30,8 +29,8 @@ import kieker.develop.rl.recordLang.StringLiteral;
 import kieker.develop.rl.recordLang.TemplateType;
 import kieker.develop.rl.recordLang.Type;
 import kieker.develop.rl.typing.BaseTypes;
+import kieker.develop.rl.typing.PropertyResolution;
 import kieker.develop.rl.validation.AbstractRecordLangValidator;
-import kieker.develop.rl.validation.PropertyEvaluation;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.validation.Check;
@@ -86,28 +85,13 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
    */
   @Check
   public void checkPropertyDeclaration(final Property property) {
-    EObject _eContainer = property.eContainer();
-    if ((_eContainer instanceof Type)) {
-      EObject _eContainer_1 = property.eContainer();
-      List<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(((ComplexType) _eContainer_1));
-      final Function1<Property, Boolean> _function = (Property p) -> {
-        boolean _and = false;
-        String _name = p.getName();
-        String _name_1 = property.getName();
-        boolean _equals = _name.equals(_name_1);
-        if (!_equals) {
-          _and = false;
-        } else {
-          boolean _notEquals = (!Objects.equal(p, property));
-          _and = _notEquals;
-        }
-        return Boolean.valueOf(_and);
-      };
-      boolean _exists = IterableExtensions.<Property>exists(_collectAllProperties, _function);
-      if (_exists) {
-        EObject _eContainer_2 = property.eContainer();
-        List<Property> _collectAllProperties_1 = PropertyEvaluation.collectAllProperties(((ComplexType) _eContainer_2));
-        final Function1<Property, Boolean> _function_1 = (Property p) -> {
+    final EObject type = property.eContainer();
+    boolean _matched = false;
+    if (!_matched) {
+      if (type instanceof RecordType) {
+        _matched=true;
+        final List<Property> properties = PropertyResolution.collectAllProperties(((RecordType)type));
+        final Function1<Property, Boolean> _function = (Property p) -> {
           boolean _and = false;
           String _name = p.getName();
           String _name_1 = property.getName();
@@ -120,14 +104,73 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
           }
           return Boolean.valueOf(_and);
         };
-        final Property otherProperty = IterableExtensions.<Property>findFirst(_collectAllProperties_1, _function_1);
-        EObject _eContainer_3 = otherProperty.eContainer();
-        String _name = ((Type) _eContainer_3).getName();
-        String _plus = ("Property has been defined in " + _name);
-        String _plus_1 = (_plus + ". Cannot be declared again.");
-        this.error(_plus_1, 
-          RecordLangPackage.Literals.PROPERTY__NAME, 
-          RecordLangValidator.INVALID_NAME);
+        boolean _exists = IterableExtensions.<Property>exists(properties, _function);
+        if (_exists) {
+          final Function1<Property, Boolean> _function_1 = (Property p) -> {
+            boolean _and = false;
+            String _name = p.getName();
+            String _name_1 = property.getName();
+            boolean _equals = _name.equals(_name_1);
+            if (!_equals) {
+              _and = false;
+            } else {
+              boolean _notEquals = (!Objects.equal(p, property));
+              _and = _notEquals;
+            }
+            return Boolean.valueOf(_and);
+          };
+          final Property otherProperty = IterableExtensions.<Property>findFirst(properties, _function_1);
+          EObject _eContainer = otherProperty.eContainer();
+          String _name = ((Type) _eContainer).getName();
+          String _plus = ("Property has been defined in " + _name);
+          String _plus_1 = (_plus + ". Cannot be declared again.");
+          this.error(_plus_1, 
+            RecordLangPackage.Literals.PROPERTY__NAME, 
+            RecordLangValidator.INVALID_NAME);
+        }
+      }
+    }
+    if (!_matched) {
+      if (type instanceof TemplateType) {
+        _matched=true;
+        final List<Property> properties = PropertyResolution.collectAllProperties(((TemplateType)type));
+        final Function1<Property, Boolean> _function = (Property p) -> {
+          boolean _and = false;
+          String _name = p.getName();
+          String _name_1 = property.getName();
+          boolean _equals = _name.equals(_name_1);
+          if (!_equals) {
+            _and = false;
+          } else {
+            boolean _notEquals = (!Objects.equal(p, property));
+            _and = _notEquals;
+          }
+          return Boolean.valueOf(_and);
+        };
+        boolean _exists = IterableExtensions.<Property>exists(properties, _function);
+        if (_exists) {
+          final Function1<Property, Boolean> _function_1 = (Property p) -> {
+            boolean _and = false;
+            String _name = p.getName();
+            String _name_1 = property.getName();
+            boolean _equals = _name.equals(_name_1);
+            if (!_equals) {
+              _and = false;
+            } else {
+              boolean _notEquals = (!Objects.equal(p, property));
+              _and = _notEquals;
+            }
+            return Boolean.valueOf(_and);
+          };
+          final Property otherProperty = IterableExtensions.<Property>findFirst(properties, _function_1);
+          EObject _eContainer = otherProperty.eContainer();
+          String _name = ((Type) _eContainer).getName();
+          String _plus = ("Property has been defined in " + _name);
+          String _plus_1 = (_plus + ". Cannot be declared again.");
+          this.error(_plus_1, 
+            RecordLangPackage.Literals.PROPERTY__NAME, 
+            RecordLangValidator.INVALID_NAME);
+        }
       }
     }
   }
@@ -137,7 +180,7 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
    */
   @Check
   public void checkRecordTypeComposition(final RecordType type) {
-    final Collection<Property> properties = PropertyEvaluation.collectAllProperties(type);
+    final Collection<Property> properties = PropertyResolution.collectAllProperties(type);
     final Function1<Property, Boolean> _function = (Property p) -> {
       final Function1<Property, Boolean> _function_1 = (Property pInner) -> {
         boolean _and = false;
@@ -190,7 +233,7 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
    */
   @Check
   public void checkPartialTypeComposition(final TemplateType type) {
-    final Collection<Property> properties = PropertyEvaluation.collectAllProperties(type);
+    final Collection<Property> properties = PropertyResolution.collectAllProperties(type);
     final Function1<Property, Boolean> _function = (Property p) -> {
       final Function1<Property, Boolean> _function_1 = (Property pInner) -> {
         boolean _and = false;

@@ -62,7 +62,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   }
   
   @Override
-  public CharSequence createContent(final RecordType type, final String author, final String version, final String headerComment) {
+  public CharSequence generate(final RecordType type) {
     StringConcatenation _builder = new StringConcatenation();
     return _builder;
   }

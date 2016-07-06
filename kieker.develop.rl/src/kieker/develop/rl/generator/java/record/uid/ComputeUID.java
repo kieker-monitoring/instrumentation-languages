@@ -33,7 +33,7 @@ import kieker.develop.rl.recordLang.Property;
 import kieker.develop.rl.recordLang.RecordLangFactory;
 import kieker.develop.rl.recordLang.RecordType;
 import kieker.develop.rl.recordLang.TemplateType;
-import kieker.develop.rl.validation.PropertyEvaluation;
+import kieker.develop.rl.typing.PropertyResolution;
 
 /**
  * Reconstructed (more or less) the algorithm behind the serializeVersionUID computation.
@@ -165,7 +165,7 @@ public final class ComputeUID {
 			// dout.writeUTF("()V");
 			// }
 
-			final Collection<Property> allProperties = PropertyEvaluation.collectAllDataProperties(type);
+			final Collection<Property> allProperties = PropertyResolution.collectAllDataProperties(type);
 			final Classifier[] paramListComplete = new Classifier[allProperties.size()];
 			int j = 0;
 			for (final Property property : allProperties) {

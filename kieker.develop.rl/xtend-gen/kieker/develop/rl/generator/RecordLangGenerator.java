@@ -17,6 +17,7 @@ package kieker.develop.rl.generator;
 
 import com.google.common.collect.Iterators;
 import java.lang.reflect.Constructor;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Consumer;
@@ -80,8 +81,17 @@ public class RecordLangGenerator implements IGenerator {
           Constructor<?> _constructor = generator.getConstructor();
           Object _newInstance = _constructor.newInstance();
           final AbstractRecordTypeGenerator cg = ((AbstractRecordTypeGenerator) _newInstance);
+          cg.setAuthor(author);
+          cg.setVersion(version);
           String _id = cg.getId();
-          boolean _isGeneratorActive = TargetsPreferences.isGeneratorActive(preferenceStore, _id);
+          String _headerComment = TargetsPreferences.getHeaderComment(preferenceStore, _id);
+          Calendar _instance = Calendar.getInstance();
+          int _get = _instance.get(Calendar.YEAR);
+          String _string = Integer.valueOf(_get).toString();
+          String _replace = _headerComment.replace("THIS-YEAR", _string);
+          cg.setHeader(_replace);
+          String _id_1 = cg.getId();
+          boolean _isGeneratorActive = TargetsPreferences.isGeneratorActive(preferenceStore, _id_1);
           if (_isGeneratorActive) {
             TreeIterator<EObject> _allContents = resource.getAllContents();
             Iterator<RecordType> _filter = Iterators.<RecordType>filter(_allContents, RecordType.class);
@@ -106,10 +116,8 @@ public class RecordLangGenerator implements IGenerator {
               if (_or) {
                 String _fileName = cg.getFileName(type);
                 String _outletType = cg.getOutletType();
-                String _id_1 = cg.getId();
-                String _headerComment = TargetsPreferences.getHeaderComment(preferenceStore, _id_1);
-                CharSequence _createContent = cg.createContent(type, author, version, _headerComment);
-                fsa.generateFile(_fileName, _outletType, _createContent);
+                CharSequence _generate = cg.generate(type);
+                fsa.generateFile(_fileName, _outletType, _generate);
               }
             };
             IteratorExtensions.<RecordType>forEach(_filter, _function);
@@ -121,18 +129,25 @@ public class RecordLangGenerator implements IGenerator {
           Constructor<?> _constructor = generator_1.getConstructor();
           Object _newInstance = _constructor.newInstance();
           final AbstractTemplateTypeGenerator cg = ((AbstractTemplateTypeGenerator) _newInstance);
+          cg.setAuthor(author);
+          cg.setVersion(version);
           String _id = cg.getId();
-          boolean _isGeneratorActive = TargetsPreferences.isGeneratorActive(preferenceStore, _id);
+          String _headerComment = TargetsPreferences.getHeaderComment(preferenceStore, _id);
+          Calendar _instance = Calendar.getInstance();
+          int _get = _instance.get(Calendar.YEAR);
+          String _string = Integer.valueOf(_get).toString();
+          String _replace = _headerComment.replace("THIS-YEAR", _string);
+          cg.setHeader(_replace);
+          String _id_1 = cg.getId();
+          boolean _isGeneratorActive = TargetsPreferences.isGeneratorActive(preferenceStore, _id_1);
           if (_isGeneratorActive) {
             TreeIterator<EObject> _allContents = resource.getAllContents();
             Iterator<TemplateType> _filter = Iterators.<TemplateType>filter(_allContents, TemplateType.class);
             final Procedure1<TemplateType> _function = (TemplateType type) -> {
               String _fileName = cg.getFileName(type);
               String _outletType = cg.getOutletType();
-              String _id_1 = cg.getId();
-              String _headerComment = TargetsPreferences.getHeaderComment(preferenceStore, _id_1);
-              CharSequence _createContent = cg.createContent(type, author, version, _headerComment);
-              fsa.generateFile(_fileName, _outletType, _createContent);
+              CharSequence _generate = cg.generate(type);
+              fsa.generateFile(_fileName, _outletType, _generate);
             };
             IteratorExtensions.<TemplateType>forEach(_filter, _function);
           }

@@ -1,5 +1,6 @@
 package kieker.develop.al.generator.javaee;
 
+import de.cau.cs.se.geco.architecture.framework.IGenerator;
 import kieker.develop.al.aspectLang.Advice;
 import kieker.develop.al.aspectLang.Collector;
 import kieker.develop.al.aspectLang.InsertionPoint;
@@ -8,7 +9,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 
 @SuppressWarnings("all")
-public class JavaEEAdviceGenerator /* implements IGenerator<Advice, CharSequence>  */{
+public class JavaEEAdviceGenerator implements IGenerator<Advice, CharSequence> {
   @Override
   public CharSequence generate(final Advice input) {
     CharSequence _xblockexpression = null;

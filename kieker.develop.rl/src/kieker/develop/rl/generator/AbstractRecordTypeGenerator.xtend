@@ -2,16 +2,18 @@ package kieker.develop.rl.generator
 
 import kieker.develop.rl.generator.AbstractTypeGenerator
 import kieker.develop.rl.recordLang.RecordType
+import de.cau.cs.se.geco.architecture.framework.IGenerator
 
-abstract class AbstractRecordTypeGenerator extends AbstractTypeGenerator {
+abstract class AbstractRecordTypeGenerator extends AbstractTypeGenerator 
+	implements IGenerator<RecordType, CharSequence> {
 		
 	/**
 	 * Return the description for the preference dialog of the generator.
-	 */	
+	 */		
 	def abstract String getDescription()
 	
 	/**
-	 * Returns if the generator also supports record types.
+	 * Returns if the generator also supports abstract record types.
 	 */
 	def abstract boolean supportsAbstractRecordType()
 	
@@ -27,6 +29,5 @@ abstract class AbstractRecordTypeGenerator extends AbstractTypeGenerator {
 	 * @param headerComment
 	 *      comment inserted as header comment of the output 
 	 */
-	def abstract CharSequence createContent(RecordType type, String author, String version, String headerComment)
-	
+	override abstract CharSequence generate(RecordType type)	
 }

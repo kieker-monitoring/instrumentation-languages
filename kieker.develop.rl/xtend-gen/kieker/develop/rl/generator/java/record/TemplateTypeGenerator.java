@@ -2,10 +2,9 @@ package kieker.develop.rl.generator.java.record;
 
 import com.google.common.base.Objects;
 import java.io.File;
-import java.util.Calendar;
 import java.util.List;
 import kieker.develop.rl.generator.AbstractTemplateTypeGenerator;
-import kieker.develop.rl.generator.java.IRL2JavaTypeMappingExtensions;
+import kieker.develop.rl.generator.java.JavaTypeMapping;
 import kieker.develop.rl.generator.java.record.NameResolver;
 import kieker.develop.rl.recordLang.BaseType;
 import kieker.develop.rl.recordLang.Classifier;
@@ -13,7 +12,7 @@ import kieker.develop.rl.recordLang.Model;
 import kieker.develop.rl.recordLang.Property;
 import kieker.develop.rl.recordLang.TemplateType;
 import kieker.develop.rl.recordLang.Type;
-import kieker.develop.rl.validation.PropertyEvaluation;
+import kieker.develop.rl.typing.TypeResolution;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -73,14 +72,14 @@ public class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
   }
   
   @Override
-  public CharSequence createContent(final TemplateType type, final String author, final String version, final String headerComment) {
+  public CharSequence generate(final TemplateType type) {
     CharSequence _xblockexpression = null;
     {
       String _xifexpression = null;
       String _author = type.getAuthor();
       boolean _equals = Objects.equal(_author, null);
       if (_equals) {
-        _xifexpression = author;
+        _xifexpression = this.getAuthor();
       } else {
         _xifexpression = type.getAuthor();
       }
@@ -89,24 +88,14 @@ public class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
       String _since = type.getSince();
       boolean _equals_1 = Objects.equal(_since, null);
       if (_equals_1) {
-        _xifexpression_1 = version;
+        _xifexpression_1 = this.getVersion();
       } else {
         _xifexpression_1 = type.getSince();
       }
       final String definedVersion = _xifexpression_1;
       StringConcatenation _builder = new StringConcatenation();
-      {
-        boolean _equals_2 = headerComment.equals("");
-        boolean _not = (!_equals_2);
-        if (_not) {
-          Calendar _instance = Calendar.getInstance();
-          int _get = _instance.get(Calendar.YEAR);
-          String _string = Integer.valueOf(_get).toString();
-          String _replace = headerComment.replace("THIS-YEAR", _string);
-          _builder.append(_replace, "");
-          _builder.newLineIfNotEmpty();
-        }
-      }
+      String _header = this.getHeader();
+      _builder.append(_header, "");
       _builder.append("package ");
       EObject _eContainer = type.eContainer();
       String _name = ((Model) _eContainer).getName();
@@ -254,9 +243,9 @@ public class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("public ");
-      Classifier _findType = PropertyEvaluation.findType(property);
+      Classifier _findType = TypeResolution.findType(property);
       BaseType _type = _findType.getType();
-      String _createPrimitiveTypeName = IRL2JavaTypeMappingExtensions.createPrimitiveTypeName(_type);
+      String _createPrimitiveTypeName = JavaTypeMapping.createPrimitiveTypeName(_type);
       _builder.append(_createPrimitiveTypeName, "");
       _builder.append(" ");
       CharSequence _createGetterName = NameResolver.createGetterName(property);

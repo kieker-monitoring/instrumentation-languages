@@ -1,17 +1,16 @@
 package kieker.develop.rl.generator.java.record
 
-import kieker.develop.rl.recordLang.Type
-import kieker.develop.rl.recordLang.TemplateType
-import kieker.develop.rl.recordLang.Property
-import kieker.develop.rl.recordLang.Model
 import java.io.File
-import org.eclipse.emf.common.util.EList
 import kieker.develop.rl.generator.AbstractTemplateTypeGenerator
-import java.util.Calendar
+import kieker.develop.rl.recordLang.Model
+import kieker.develop.rl.recordLang.Property
+import kieker.develop.rl.recordLang.TemplateType
+import kieker.develop.rl.recordLang.Type
+import org.eclipse.emf.common.util.EList
 
-import static extension kieker.develop.rl.generator.java.IRL2JavaTypeMappingExtensions.*
 import static extension kieker.develop.rl.generator.java.record.NameResolver.*
-import static extension kieker.develop.rl.validation.PropertyEvaluation.*
+import static extension kieker.develop.rl.typing.TypeResolution.*
+import static extension kieker.develop.rl.generator.java.JavaTypeMapping.*
 
 class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
 
@@ -35,12 +34,11 @@ class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
 	 */
 	override getFileName(Type type) '''«type.getDirectoryName»«File::separator»«type.name».java'''
 	
-	override createContent(TemplateType type, String author, String version, String headerComment) {
+	override generate(TemplateType type) {
 		val definedAuthor = if (type.author == null) author else type.author
 		val definedVersion = if (type.since == null) version else type.since
 		'''
-		«IF (!headerComment.equals(""))»«headerComment.replace("THIS-YEAR", Calendar.getInstance().get(Calendar.YEAR).toString)»
-		«ENDIF»package «(type.eContainer as Model).name»;
+		«header»package «(type.eContainer as Model).name»;
 		
 		«type.parents.createImports(type)»
 		

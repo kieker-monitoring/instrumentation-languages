@@ -44,17 +44,13 @@ class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
 	 * 
 	 * @param type
 	 * 		one record type to be used to create the corresponding monitoring record factory
-	 * @param author
-	 * 		generic author name for the record
-	 * @param version
-	 * 		generic kieker version for the record
 	 */
-	override createContent(RecordType type, String author, String version, String headerComment) {
+	override generate(RecordType type) {
 		val definedAuthor = if (type.author == null) author else type.author
 		val definedVersion = if (type.since == null) version else type.since
 
 		'''
-			«IF (!headerComment.equals(""))»«headerComment.replace("THIS-YEAR", Calendar.getInstance().get(Calendar.YEAR).toString)»
+			«IF (!header.equals(""))»«header.replace("THIS-YEAR", Calendar.getInstance().get(Calendar.YEAR).toString)»
 			«ENDIF»package «(type.eContainer as Model).name»;
 			
 			import java.nio.ByteBuffer;

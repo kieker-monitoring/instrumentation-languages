@@ -1,0 +1,34 @@
+kieker.develop.rl;size of observed system;24.0
+kieker.develop.rl;lines of code (LOC);5726.0
+kieker.develop.rl;cyclomatic complexity bucket 1;95.0
+kieker.develop.rl;cyclomatic complexity bucket 2;23.0
+kieker.develop.rl;cyclomatic complexity bucket 3;10.0
+kieker.develop.rl;cyclomatic complexity bucket 4;8.0
+kieker.develop.rl;cyclomatic complexity bucket 5;3.0
+kieker.develop.rl;cyclomatic complexity bucket 6;2.0
+kieker.develop.rl;cyclomatic complexity bucket 7;2.0
+kieker.develop.rl;cyclomatic complexity bucket 8;0.0
+kieker.develop.rl;cyclomatic complexity bucket 9;2.0
+kieker.develop.rl;cyclomatic complexity bucket 10;0.0
+kieker.develop.rl;cyclomatic complexity bucket 11;0.0
+kieker.develop.rl;cyclomatic complexity bucket 12;9.0
+kieker.develop.rl;cyclomatic complexity bucket 13;0.0
+kieker.develop.rl;cyclomatic complexity bucket 14;2.0
+kieker.develop.rl;cyclomatic complexity bucket 15;0.0
+kieker.develop.rl;cyclomatic complexity bucket 16;0.0
+kieker.develop.rl;cyclomatic complexity bucket 17;0.0
+kieker.develop.rl;cyclomatic complexity bucket 18;0.0
+kieker.develop.rl;cyclomatic complexity bucket 19;0.0
+kieker.develop.rl;cyclomatic complexity bucket 20;0.0
+kieker.develop.rl;cyclomatic complexity bucket 21;0.0
+kieker.develop.rl;cyclomatic complexity bucket 22;0.0
+kieker.develop.rl;cyclomatic complexity bucket 23;0.0
+kieker.develop.rl;cyclomatic complexity bucket 24;1.0
+kieker.develop.rl;cyclomatic complexity bucket 25;1.0
+kieker.develop.rl;number of modules;39.0
+kieker.develop.rl;number of nodes;229.0
+kieker.develop.rl;number of edges;638.0
+kieker.develop.rl;hypergraph size;1606.4810340148354
+kieker.develop.rl;hypergraph complexity;4725.835803977079
+kieker.develop.rl;inter module coupling;3974.5520429095295
+kieker.develop.rl;graph cohesion;0.011477559030983192

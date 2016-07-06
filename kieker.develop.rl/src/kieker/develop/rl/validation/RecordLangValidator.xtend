@@ -3,31 +3,31 @@
  */
 package kieker.develop.rl.validation
 
+import java.util.ArrayList
+import java.util.Collection
+import java.util.List
 import kieker.develop.rl.generator.InternalErrorException
 import kieker.develop.rl.recordLang.ArrayLiteral
+import kieker.develop.rl.recordLang.BaseType
 import kieker.develop.rl.recordLang.BooleanLiteral
+import kieker.develop.rl.recordLang.BuiltInValueLiteral
 import kieker.develop.rl.recordLang.Classifier
 import kieker.develop.rl.recordLang.Constant
 import kieker.develop.rl.recordLang.ConstantLiteral
 import kieker.develop.rl.recordLang.FloatLiteral
 import kieker.develop.rl.recordLang.IntLiteral
 import kieker.develop.rl.recordLang.Literal
-import kieker.develop.rl.recordLang.TemplateType
 import kieker.develop.rl.recordLang.Property
 import kieker.develop.rl.recordLang.RecordLangFactory
 import kieker.develop.rl.recordLang.RecordLangPackage
 import kieker.develop.rl.recordLang.RecordType
 import kieker.develop.rl.recordLang.StringLiteral
+import kieker.develop.rl.recordLang.TemplateType
 import kieker.develop.rl.recordLang.Type
-import java.util.ArrayList
-import java.util.Collection
-import java.util.List
-import org.eclipse.xtext.validation.Check
-import org.eclipse.xtext.xbase.lib.Pair
-import kieker.develop.rl.recordLang.BuiltInValueLiteral
 import kieker.develop.rl.typing.BaseTypes
-import kieker.develop.rl.recordLang.ComplexType
-import kieker.develop.rl.recordLang.BaseType
+import org.eclipse.xtext.validation.Check
+
+import static extension kieker.develop.rl.typing.PropertyResolution.*
 
 /**
  * Custom validation rules. 
@@ -51,7 +51,7 @@ class RecordLangValidator extends AbstractRecordLangValidator {
   			while (referredProperty.referTo != null) {
   				if (visitedProperties.contains(referredProperty)) { // cyclic definition
   					 error('Property alias ' + property.name + ' has a cyclic definition.', 
-						RecordLangPackage$Literals::PROPERTY__REFER_TO,
+						RecordLangPackage.Literals::PROPERTY__REFER_TO,
 						INVALID_NAME)
 					return
   				} 
@@ -67,13 +67,27 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 	 */
 	@Check
 	def checkPropertyDeclaration(Property property) {
-		if (property.eContainer instanceof Type) {
-			if (PropertyEvaluation::collectAllProperties(property.eContainer as ComplexType).exists[p | p.name.equals(property.name) && p != property]) {
-				val Property otherProperty = PropertyEvaluation::collectAllProperties(property.eContainer as ComplexType).findFirst[p | p.name.equals(property.name) && p != property]
-				//if (!typeAndPackageIdentical(otherProperty.type,property.type))
+		val type = property.eContainer
+		switch (type) {
+			RecordType: {
+				val properties = type.collectAllProperties
+				if (properties.exists[p | p.name.equals(property.name) && p != property]) {
+					val Property otherProperty = properties.findFirst[p | p.name.equals(property.name) && p != property]
+					//if (!typeAndPackageIdentical(otherProperty.type,property.type))
 					error('Property has been defined in ' + (otherProperty.eContainer as Type).name + '. Cannot be declared again.', 
-						RecordLangPackage$Literals::PROPERTY__NAME,
+						RecordLangPackage.Literals::PROPERTY__NAME,
 						INVALID_NAME)
+				}
+			}
+			TemplateType: {
+				val properties = type.collectAllProperties
+				if (properties.exists[p | p.name.equals(property.name) && p != property]) {
+					val Property otherProperty = properties.findFirst[p | p.name.equals(property.name) && p != property]
+					//if (!typeAndPackageIdentical(otherProperty.type,property.type))
+					error('Property has been defined in ' + (otherProperty.eContainer as Type).name + '. Cannot be declared again.', 
+						RecordLangPackage.Literals::PROPERTY__NAME,
+						INVALID_NAME)
+				}
 			}
 		}
 	}
@@ -84,14 +98,14 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 	 */
 	@Check
 	def checkRecordTypeComposition(RecordType type) {
-		val Collection<Property> properties = PropertyEvaluation::collectAllProperties(type)
+		val Collection<Property> properties = type.collectAllProperties
 		if (properties.exists[p | properties.exists[pInner | p.name.equals(pInner.name) && p != pInner]]) {
 			val Collection<Pair<Property,Property>> duplicates = new ArrayList<Pair<Property,Property>>()
 			properties.forEach[p | duplicates.add(p.findDuplicate(properties))]
 			duplicates.forEach[entry | // if (!typeAndPackageIdentical(entry.key.type,entry.value.type))
 				error('Multiple property inheritance form ' + entry.key.name + 
 						' inherited from ' + (entry.key.eContainer as Type).name + ' and ' + (entry.value.eContainer as Type).name, 
-						RecordLangPackage$Literals::COMPLEX_TYPE__PARENTS,
+						RecordLangPackage.Literals::COMPLEX_TYPE__PARENTS,
 						INVALID_NAME)
 			]
 		}
@@ -102,14 +116,14 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 	 */	
 	@Check
 	def checkPartialTypeComposition(TemplateType type) {
-		val Collection<Property> properties = PropertyEvaluation::collectAllProperties(type)
+		val Collection<Property> properties = type.collectAllProperties
 		if (properties.exists[p | properties.exists[pInner | p.name.equals(pInner.name) && p != pInner]]) {
 			val Collection<Pair<Property,Property>> duplicates = new ArrayList<Pair<Property,Property>>()
 			properties.forEach[p | duplicates.add(p.findDuplicate(properties))]
 			duplicates.forEach[entry | // if (!typeAndPackageIdentical(entry.key.type,entry.value.type))
 				error('Multiple property inheritance from ' + entry.key.name + 
 						' inherited from ' + (entry.key.eContainer as Type).name + ' and ' + (entry.value.eContainer as Type).name, 
-						RecordLangPackage$Literals::COMPLEX_TYPE__PARENTS,
+						RecordLangPackage.Literals::COMPLEX_TYPE__PARENTS,
 						INVALID_NAME)
 			]
 		}
@@ -123,7 +137,7 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 		if (constant.value != null) {
 			if (!compareTypesInAssignment(constant.type, constant.value.type, constant.value)) {
 				error('Constant type \'' + constant.type.createFQNTypeName + '\' does not match value type \'' + constant.value.type.createFQNTypeName + '\'.', 
-							RecordLangPackage$Literals::CONSTANT__TYPE,
+							RecordLangPackage.Literals::CONSTANT__TYPE,
 							INVALID_NAME)
 			}
 		}
@@ -137,7 +151,7 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 		if (property.value != null) {
 			if (!compareTypesInAssignment(property.type, property.value.type, property.value)) {
 				error('Property type \'' + property.type.createFQNTypeName + '\' does not match value type \'' + property.value.type.createFQNTypeName + '\'.', 
-							RecordLangPackage$Literals::PROPERTY__TYPE,
+							RecordLangPackage.Literals::PROPERTY__TYPE,
 							INVALID_NAME)
 			}
 		}
@@ -152,7 +166,7 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 			val type = literal.literals.get(0).type
 			if (!literal.literals.forall[element | typeEquality(element.type,type)]) {
 				error('Value types ' + literal.literals.map[it.type.createFQNTypeName].join(', ') + ' do not match', 
-							RecordLangPackage$Literals::ARRAY_LITERAL__LITERALS)
+							RecordLangPackage.Literals::ARRAY_LITERAL__LITERALS)
 			}
 		}
 	}

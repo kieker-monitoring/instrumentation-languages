@@ -15,10 +15,8 @@
  ***************************************************************************/
 package kieker.develop.rl.scoping
 
-import kieker.develop.rl.recordLang.ComplexType
 import kieker.develop.rl.recordLang.ForeignKey
 import kieker.develop.rl.recordLang.Property
-import kieker.develop.rl.validation.PropertyEvaluation
 import java.util.Collection
 import java.util.List
 import org.eclipse.emf.ecore.EClass
@@ -30,6 +28,10 @@ import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.scoping.Scopes
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider
+import kieker.develop.rl.recordLang.RecordType
+import kieker.develop.rl.recordLang.TemplateType
+
+import static extension kieker.develop.rl.typing.PropertyResolution.*
 
 /**
  * This class contains custom scoping description.
@@ -44,14 +46,18 @@ class RecordLangScopeProvider extends AbstractDeclarativeScopeProvider {
 	 * Define scope for foreign key reference.
 	 */
 	def IScope scope_ForeignKey_propertyRef(ForeignKey key, EReference reference) {
-		return Scopes::scopeFor(PropertyEvaluation::collectAllProperties(key.recordType))
+		return Scopes::scopeFor(key.recordType.collectAllProperties)
 	}
 	
 	/**
 	 * Build a scope containing all properties.
 	 */
 	def IScope scope_Property_referTo(Property property, EReference reference) {
-		return Scopes::scopeFor(PropertyEvaluation::collectAllProperties(property.eContainer() as ComplexType))
+		val type = property.eContainer()
+		switch(type) {
+			RecordType: return Scopes::scopeFor(type.collectAllProperties)
+			TemplateType: return Scopes::scopeFor(type.collectAllProperties)
+		}
 	}
 					
 	/**

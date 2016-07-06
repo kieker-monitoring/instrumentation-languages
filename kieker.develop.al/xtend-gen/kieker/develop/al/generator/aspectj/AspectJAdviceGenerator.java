@@ -1,6 +1,7 @@
 package kieker.develop.al.generator.aspectj;
 
 import com.google.common.base.Objects;
+import de.cau.cs.se.geco.architecture.framework.IGenerator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +23,7 @@ import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure2;
 
 @SuppressWarnings("all")
-public class AspectJAdviceGenerator /* implements IGenerator<UtilizeAdvice, CharSequence>  */{
+public class AspectJAdviceGenerator implements IGenerator<UtilizeAdvice, CharSequence> {
   private int index;
   
   @Override

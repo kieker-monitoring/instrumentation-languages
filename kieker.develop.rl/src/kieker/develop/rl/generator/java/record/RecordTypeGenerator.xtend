@@ -2,7 +2,6 @@ package kieker.develop.rl.generator.java.record
 
 import java.io.File
 import java.util.ArrayList
-import java.util.Calendar
 import java.util.List
 import kieker.develop.rl.generator.AbstractRecordTypeGenerator
 import kieker.develop.rl.generator.InternalErrorException
@@ -19,25 +18,24 @@ import kieker.develop.rl.recordLang.StringLiteral
 import kieker.develop.rl.recordLang.TemplateType
 import kieker.develop.rl.recordLang.Type
 import kieker.develop.rl.typing.BaseTypes
-import kieker.develop.rl.validation.PropertyEvaluation
 import org.eclipse.emf.common.util.BasicEList
 import org.eclipse.emf.common.util.EList
 
-import static extension kieker.develop.rl.generator.java.IRL2JavaTypeMappingExtensions.*
-import static extension kieker.develop.rl.generator.java.record.CommentModule.*
 import static extension kieker.develop.rl.generator.java.record.ConstantConstructionModule.*
 import static extension kieker.develop.rl.generator.java.record.NameResolver.*
 import static extension kieker.develop.rl.generator.java.record.PropertyConstructionModule.*
-import static extension kieker.develop.rl.generator.java.record.RecordTypePropertyResolutionModule.*
 import static extension kieker.develop.rl.generator.java.record.ValueAccessExpressionModule.*
 import static extension kieker.develop.rl.generator.java.record.uid.ComputeUID.*
-import static extension kieker.develop.rl.validation.PropertyEvaluation.*
+import static extension kieker.develop.rl.typing.TypeResolution.*
+import static extension kieker.develop.rl.generator.java.JavaTypeMapping.*
+import static extension kieker.develop.rl.typing.PropertyResolution.*
 
 class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 
 	/**
 	 * Return the unique id.
 	 */
+		
 	override getId() '''java'''
 	
 	/**
@@ -70,47 +68,30 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * 
 	 * @params type
 	 * 		one record type to be used to create monitoring record
-	 * @params author
-	 * 		generic author name for the record
-	 * @params version
-	 * 		generic kieker version for the record
 	 */
-	override createContent(RecordType type, String author, String version, String headerComment) {
-		val serialUID = type.computeDefaultSUID + 'L'
-		val allDataProperties = PropertyEvaluation::collectAllDataProperties(type)
-		val allDeclarationProperties = collectAllDeclarationProperties(type)
-		val definedAuthor = if (type.author == null) author else type.author
-		val definedVersion = if (type.since == null) version else type.since
-		'''
-		«IF (!headerComment.equals(""))»«headerComment.replace("THIS-YEAR", Calendar.getInstance().get(Calendar.YEAR).toString)»
-		«ENDIF»package «(type.eContainer as Model).name»;
-		
-		«IF (!type.abstract)»import java.nio.BufferOverflowException;
-		«ENDIF»import java.nio.BufferUnderflowException;
-		import java.nio.ByteBuffer;
+	override generate(RecordType type) {
+		val allDataProperties = type.collectAllDataProperties
+		val allDeclarationProperties = type.collectAllDeclarationProperties
 
-		«IF (type.parent == null)»import kieker.common.record.AbstractMonitoringRecord;
-		import kieker.common.record.IMonitoringRecord;
-		«ENDIF»import kieker.common.util.registry.IRegistry;
-		import kieker.common.util.Version;
+		'''
+		«header»package «(type.eContainer as Model).name»;
 		
-		«if (type.parent != null) type.createParentImport»
-		«if (type.parents != null && type.parents.size > 0) type.parents.map[i | i.createInterfaceImport].join»
+		«type.createImports»
 		
 		/**
-		 * @author «definedAuthor»
+		 * @author «if (type.author == null) author else type.author»
 		 * 
-		 * @since «definedVersion»
+		 * @since «if (type.since == null) version else type.since»
 		 */
 		public «if (type.abstract) 'abstract '»class «type.name» extends «type.createParent»«type.createImplements» {
+			private static final long serialVersionUID = «type.computeDefaultSUID»L;
+		
 			«IF (!type.abstract) »/** Descriptive definition of the serialization size of the record. */
 			public static final int SIZE = «if (allDataProperties.size == 0) '0' else allDataProperties.map[property | property.createSizeConstant(type)].join('\n\t\t + ')»
 			;
-			«ENDIF»
-			private static final long serialVersionUID = «serialUID»;
-			
-			«IF (!type.abstract) »public static final Class<?>[] TYPES = {
-				«allDataProperties.map[property | property.createPropertyType(type)].join»
+
+			public static final Class<?>[] TYPES = {
+				«allDataProperties.map[property | property.createPropertyTypeArrayEntry(type)].join»
 			};«ENDIF»
 			
 			/* user-defined constants */
@@ -119,59 +100,14 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 			«allDeclarationProperties.createDefaultConstants»
 			/* property declarations */
 			«allDeclarationProperties.createProperties»
+
+			«type.createParameterizedConstructor(allDataProperties, allDeclarationProperties)»
 		
-			/**
-			 * Creates a new instance of this class using the given parameters.
-			 * 
-			 «allDataProperties.createPropertyComments»
-			 */
-			public «type.name»(«allDataProperties.map[property | createPropertyParameter(property)].join(', ')») {
-				«if (type.parent!=null) 'super('+PropertyEvaluation::collectAllDataProperties(type.parent).map[name].join(', ')+');'»
-				«allDeclarationProperties.map[property | createPropertyAssignment(property)].join»
-			}
+			«if (!type.abstract) type.createArrayConstructor(allDeclarationProperties)»
 		
-			«IF (!type.abstract)»
-			/**
-			 * This constructor converts the given array into a record.
-			 * It is recommended to use the array which is the result of a call to {@link #toArray()}.
-			 * 
-			 * @param values
-			 *            The values for the record.
-			 */
-			public «type.name»(final Object[] values) { // NOPMD (direct store of values)
-				«IF (type.parent==null)»AbstractMonitoringRecord.checkArray(values, TYPES);
-				«ELSE»super(values, TYPES);
-				«ENDIF»«allDeclarationProperties.createPropertyGenericAssignments(if (type.parent!=null) PropertyEvaluation::collectAllDataProperties(type.parent).size else 0)»
-			}
-			«ENDIF»
-			
-			/**
-			 * This constructor uses the given array to initialize the fields of this record.
-			 * 
-			 * @param values
-			 *            The values for the record.
-			 * @param valueTypes
-			 *            The types of the elements in the first array.
-			 */
-			protected «type.name»(final Object[] values, final Class<?>[] valueTypes) { // NOPMD (values stored directly)
-				«IF (type.parent==null)»AbstractMonitoringRecord.checkArray(values, valueTypes);
-				«ELSE»super(values, valueTypes);
-				«ENDIF»«allDeclarationProperties.createPropertyGenericAssignments(if (type.parent!=null) PropertyEvaluation::collectAllDataProperties(type.parent).size else 0)»
-			}
+			«type.createArrayInitializeConstructor(allDeclarationProperties)»
 		
-			/**
-			 * This constructor converts the given array into a record.
-			 * 
-			 * @param buffer
-			 *            The bytes for the record.
-			 * 
-			 * @throws BufferUnderflowException
-			 *             if buffer not sufficient
-			 */
-			public «type.name»(final ByteBuffer buffer, final IRegistry<String> stringRegistry) throws BufferUnderflowException {
-				«IF (type.parent!=null)»super(buffer, stringRegistry);
-				«ENDIF»«allDeclarationProperties.map[property | createPropertyBinaryDeserialization(property)].join('\n')»
-			}
+			«type.createBufferReadConstructor(allDeclarationProperties)»
 		
 		«IF (!type.abstract)»
 			/**
@@ -253,10 +189,124 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 				return true;
 			}
 		
-			«type.collectAllGetterDeclarationProperties.map[property | createPropertyGetter(property)].join»
+			«type.createPropertyGetters»
 		}
 		'''
 	}
+	
+	/**
+	 * Create buffer initialization constructor.
+	 */
+	private def createBufferReadConstructor(RecordType type, List<Property> properties) '''
+		/**
+		 * This constructor converts the given array into a record.
+		 * 
+		 * @param buffer
+		 *            The bytes for the record.
+		 * 
+		 * @throws BufferUnderflowException
+		 *             if buffer not sufficient
+		 */
+		public «type.name»(final ByteBuffer buffer, final IRegistry<String> stringRegistry) throws BufferUnderflowException {
+			«IF (type.parent!=null)»super(buffer, stringRegistry);
+			«ENDIF»«properties.map[property | createPropertyBinaryDeserialization(property)].join('\n')»
+		}
+	'''
+	
+	/**
+	 * Create array initialization constructor.
+	 */
+	private def createArrayInitializeConstructor(RecordType type, List<Property> properties) '''
+		/**
+		 * This constructor uses the given array to initialize the fields of this record.
+		 * 
+		 * @param values
+		 *            The values for the record.
+		 * @param valueTypes
+		 *            The types of the elements in the first array.
+		 */
+		protected «type.name»(final Object[] values, final Class<?>[] valueTypes) { // NOPMD (values stored directly)
+			«IF (type.parent==null)»AbstractMonitoringRecord.checkArray(values, valueTypes);
+			«ELSE»super(values, valueTypes);
+			«ENDIF»«properties.createPropertyGenericAssignments(if (type.parent!=null) type.parent.collectAllDataProperties.size else 0)»
+		}
+	'''
+		
+	/**
+	 * Create the parameterized constructor.
+	 * 
+	 * @param type the record type
+	 * @param allDataProperties list of all data properties
+	 * @param allDeclarationProperties list of all properties which have been declared in this type 
+	 */
+	private def createParameterizedConstructor(RecordType type, 
+		List<Property> allDataProperties, List<Property> allDeclarationProperties
+	) '''
+		/**
+		 * Creates a new instance of this class using the given parameters.
+		 * 
+		 «allDataProperties.map[it.createName.createPropertyComment].join»
+		 */
+		public «type.name»(«allDataProperties.map[property | createPropertyParameter(property)].join(', ')») {
+			«if (type.parent!=null) 'super(' + type.parent.collectAllDataProperties.map[name].join(', ')+');'»
+			«allDeclarationProperties.map[property | createPropertyAssignment(property)].join»
+		}
+	'''
+	
+	/**
+	 * Create an arbitrary comment for a property of a monitoring record.
+	 * 
+	 * @param property
+	 * 		a property of the record type
+	 * 
+	 * @returns one comment
+	 */
+	private def createPropertyComment(String name) '''
+		* @param «name»
+		*            «name»
+	'''
+	
+	/**
+	 * Create the array constructor.
+	 * 
+	 * @param type the record type
+	 * @param allDeclarationProperties list of all properties which have been declared in this type
+	 */
+	private def createArrayConstructor(RecordType type, List<Property> allDeclarationProperties) '''
+		/**
+		 * This constructor converts the given array into a record.
+		 * It is recommended to use the array which is the result of a call to {@link #toArray()}.
+		 * 
+		 * @param values
+		 *            The values for the record.
+		 */
+		public «type.name»(final Object[] values) { // NOPMD (direct store of values)
+			«IF (type.parent==null)»AbstractMonitoringRecord.checkArray(values, TYPES);
+			«ELSE»super(values, TYPES);
+			«ENDIF»«allDeclarationProperties.createPropertyGenericAssignments(if (type.parent!=null)
+					type.parent.collectAllDataProperties.size else 0
+			)»
+		}
+	'''
+	
+		/**
+	 * Create all imports for the record.
+	 * 
+	 * @param type the record type
+	 */
+	private def createImports(RecordType type) '''
+		«IF (!type.abstract)»import java.nio.BufferOverflowException;
+		«ENDIF»import java.nio.BufferUnderflowException;
+		import java.nio.ByteBuffer;
+
+		«IF (type.parent == null)»import kieker.common.record.AbstractMonitoringRecord;
+		import kieker.common.record.IMonitoringRecord;
+		«ELSE»import «(type.parent.eContainer as Model).name».«type.parent.name»;
+		«ENDIF»import kieker.common.util.registry.IRegistry;
+		import kieker.common.util.Version;
+		
+		«if (type.parents != null && type.parents.size > 0) type.parents.map[i | i.createInterfaceImport].join»
+	'''
 	
 	/**
 	 * Create a list of imports for the given type.
@@ -265,19 +315,13 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	'''
 	
 	/**
-	 * Create import for the parent structure.
-	 */
-	private def createParentImport(RecordType type) '''import «(type.parent.eContainer as Model).name».«type.parent.name»;
-		'''
-	
-	/**
 	 * Create string registry access for the given property.
 	 * 
 	 * @param property 
 	 * 
 	 * @returns result register access or null
 	 */
-	private def CharSequence createRegisterStringForProperty(Property property) throws InternalErrorException {
+	private def CharSequence createRegisterStringForProperty(Property property) {
 		if (BaseTypes.getTypeEnum(property.type.type).equals(BaseTypes.STRING)) {
 			val simpleAction = '''stringRegistry.get(this.«createGetterValueExpression(property)»);'''
 			val type = property.findType
@@ -286,10 +330,10 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 					// get array length
 					«FOR size : type.sizes»
 						«IF (size.size == 0)»
-							int _«property.name»_size«type.sizes.indexOf(size)» = this.«property.name»«createCodeToDetermineArraySize(type.sizes.indexOf(size))».length;
+							int _«property.createName»_size«type.sizes.indexOf(size)» = this.«property.createName»«createCodeToDetermineArraySize(type.sizes.indexOf(size))».length;
 						«ENDIF»
 					«ENDFOR»
-					«property.type.sizes.createArrayAccessLoops(0, property.name, simpleAction)»
+					«property.type.sizes.createArrayAccessLoops(0, property.createName, simpleAction)»
 				'''
 			} else
 				simpleAction
@@ -313,12 +357,12 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 				// get array length
 				«FOR size : type.sizes»
 					«IF (size.size == 0)»
-						int _«property.name»_size«type.sizes.indexOf(size)» = this.«property.name»«createCodeToDetermineArraySize(type.sizes.indexOf(size))».length;
-						if (_«property.name»_size«type.sizes.indexOf(size)» != castedRecord.«property.name»«createCodeToDetermineArraySize(type.sizes.indexOf(size))».length)
+						int _«property.createName»_size«type.sizes.indexOf(size)» = this.«property.createName»«createCodeToDetermineArraySize(type.sizes.indexOf(size))».length;
+						if (_«property.createName»_size«type.sizes.indexOf(size)» != castedRecord.«property.createName»«createCodeToDetermineArraySize(type.sizes.indexOf(size))».length)
 							return false;
 					«ENDIF»
 				«ENDFOR»
-				«createArrayAccessLoops(type.sizes, 0, property.name, simpleTypeAction)»
+				«createArrayAccessLoops(type.sizes, 0, property.createName, simpleTypeAction)»
 			'''
 		} else
 			simpleTypeAction		
@@ -352,7 +396,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * @returns
 	 * 		the serialization size of the property
 	 */
-	private def createSizeConstant(Property property, RecordType type) throws InternalErrorException {
+	private def createSizeConstant(Property property, RecordType type) {
 		switch (BaseTypes.getTypeEnum(property.findType.type)) {
 			case STRING : 'TYPE_SIZE_STRING'
 			case BYTE : 'TYPE_SIZE_BYTE'
@@ -408,14 +452,14 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 				// load array sizes
 				«FOR size : sizes»
 					«IF (size.size == 0)»
-						int _«property.name»_size«sizes.indexOf(size)» = buffer.getInt();
+						int _«property.createName»_size«sizes.indexOf(size)» = buffer.getInt();
 					«ENDIF»
 				«ENDFOR»
-				this.«property.name.protectKeywords» = new «PropertyEvaluation::findType(property).createTypeInstantiationName(property.name)»;
-				«createArrayAccessLoops(sizes,0, property.name, createValueAssignmentForDeserialization(sizes,property))»
+				this.«property.createName» = new «property.findType.createTypeInstantiationName(property.createName)»;
+				«createArrayAccessLoops(sizes,0, property.createName, createValueAssignmentForDeserialization(sizes,property))»
 			'''
 		} else
-			'''this.«property.name.protectKeywords» = «PropertyEvaluation::findType(property).type.createPropertyPrimitiveTypeDeserialization»;'''
+			'''this.«property.createName» = «property.findType.type.createPropertyPrimitiveTypeDeserialization»;'''
 	}
 	
 	/**
@@ -444,13 +488,13 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * Assignment for a primitive value
 	 */
 	private def createValueAssignmentForDeserialization(EList<ArraySize> sizes, Property property) {
-		return '''«property.createPropertyValueExpression» = «PropertyEvaluation::findType(property).type.createPropertyPrimitiveTypeDeserialization»;'''
+		return '''«property.createPropertyValueExpression» = «property.findType.type.createPropertyPrimitiveTypeDeserialization»;'''
 	}
 	
 	/**
 	 * Create code to get values from the input buffer.
 	 */
-	private def createPropertyPrimitiveTypeDeserialization(BaseType classifier) throws InternalErrorException {
+	private def createPropertyPrimitiveTypeDeserialization(BaseType classifier) {
 		switch (BaseTypes.getTypeEnum(classifier)) {
 			case STRING : '''stringRegistry.get(buffer.getInt())'''
 			case BYTE : '''buffer.get()'''
@@ -480,18 +524,18 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 				// store array sizes
 				«FOR size : sizes»
 					«IF (size.size == 0)»
-						int _«property.name»_size«sizes.indexOf(size)» = this.«property.createGetterName»()«createCodeToDetermineArraySize(sizes.indexOf(size))».length;
-						buffer.putInt(_«property.name»_size«sizes.indexOf(size)»);
+						int _«property.createName»_size«sizes.indexOf(size)» = this.«property.createGetterName»()«createCodeToDetermineArraySize(sizes.indexOf(size))».length;
+						buffer.putInt(_«property.createName»_size«sizes.indexOf(size)»);
 					«ENDIF»
 				«ENDFOR»
-				«createArrayAccessLoops(sizes,0,property.name, createValueStoreForSerialization(property))»
+				«createArrayAccessLoops(sizes,0,property.createName, createValueStoreForSerialization(property))»
 			'''
 		} else {
 			createValueStoreForSerialization(property)
 		}
 	}
 	
-	private def createValueStoreForSerialization(Property property) throws InternalErrorException {
+	private def createValueStoreForSerialization(Property property) {
 		val getterName = "this." + createGetterValueExpression(property)
 		switch (BaseTypes.getTypeEnum(property.findType.type)) {
 			case STRING : '''buffer.putInt(stringRegistry.get(«getterName»));'''
@@ -507,26 +551,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	}
 	
 
-	
-	/**
-	 * Creates a getter for a given property.
-	 * 
-	 * @param property
-	 * 		a property of the record type
-	 * 
-	 * @returns the resulting getter as a CharSequence
-	 */
-	private def createPropertyGetter(Property property) '''
-		public final «property.findType.createTypeName» «property.createGetterName»() {
-			return this.«
-				if (property.referTo != null)
-					'''«property.referTo.createGetterName»()'''
-				else
-					property.name.protectKeywords»;
-		}
-		
-	'''
-			
+				
 	/**
 	 * Create all assignments for the generic constructor based on property name and an array.
 	 * 
@@ -555,7 +580,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * @returns one assignment
 	 */
 	private def String createPropertyGenericAssignment(Property property, int index) 
-	'''this.«property.name.protectKeywords» = («property.findType.createObjectTypeName») values[«index»];
+	'''this.«property.createName» = («property.findType.createObjectTypeName») values[«index»];
 	'''
 	
 	/**
@@ -570,21 +595,21 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 */
 	private def createPropertyAssignment(Property property) throws InternalErrorException {
 		val type = property.findType
-		if (BaseTypes.STRING.equals(BaseTypes.getTypeEnum(type.type)) && 
-			(type.sizes.size == 0)
+		if (BaseTypes.STRING == BaseTypes.getTypeEnum(type.type) && 
+			type.sizes.size == 0
 		) { // guarantee initialization is always not null in case of plain strings
-			'''this.«property.name.protectKeywords» = «property.name.protectKeywords» == null?«if (property.value != null) property.value.createConstantReference(property) else '""'»:«property.name.protectKeywords»;
+			'''this.«property.createName» = «property.createName» == null?«if (property.value != null) property.value.createConstantReference(property) else '""'»:«property.createName»;
 			'''
 		} else
-			'''this.«property.name.protectKeywords» = «property.name.protectKeywords»;
+			'''this.«property.createName» = «property.createName»;
 			'''
 	}
 	
 	private def createConstantReference(Literal literal, Property property) {
 		switch (literal) {
-			StringLiteral : property.name.createConstantName.protectKeywords
-			ConstantLiteral : literal.value.name
-			BuiltInValueLiteral : property.name.createConstantName.protectKeywords
+			StringLiteral : property.createConstantName 
+			ConstantLiteral : literal.createConstantLiteralName
+			BuiltInValueLiteral : property.createConstantName
 			default : throw new InternalErrorException("constant reference requested for " + literal.class + " which is not defined.")
 		}
 	}
@@ -598,7 +623,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * @returns one parameter for the given property
 	 */
 	private def createPropertyParameter(Property property) 
-		'''final «property.findType.createTypeName» «property.name.protectKeywords»'''
+		'''final «property.findType.createTypeName» «property.createName»'''
 	
 			
 	/**
@@ -609,7 +634,65 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * 
 	 * @returns one type entry 
 	 */
-	private def createPropertyType(Property property, RecordType type) 
+	private def createPropertyTypeArrayEntry(Property property, RecordType type) 
 		'''«property.findType.createTypeName».class, // «property.createPropertyFQN(type)»
 		'''
+		
+	
+	/**
+	 * Compute the fully qualified name of a property.
+	 * 
+	 * @param property
+	 * 		the property itself
+	 * @param type
+	 * 		the present RecordType
+	 * 
+	 * @returns
+	 * 		the FQ property name
+	 */
+	private def CharSequence createPropertyFQN(Property property, TemplateType type) {
+		if (type.properties.contains(property))
+			return type.name + '.' + property.name
+		else if (type.parents != null) {
+			for (TemplateType t : type.parents) {
+				val result2 = property.createPropertyFQN(t)
+				if (result2 != null)
+					return result2
+			}
+		}
+				
+		return null
+	}
+	
+	/**
+	 * Compute the full qualified name of a property.
+	 * 
+	 * @param property
+	 * 		the property itself
+	 * @param type
+	 * 		the present RecordType
+	 * 
+	 * @returns
+	 * 		the FQ property name
+	 */
+	private def CharSequence createPropertyFQN(Property property, RecordType type) {
+		if (type.properties.contains(property)) { 
+			return type.name + '.' + property.name
+		} else {
+			if (type.parent!=null) {
+				val result = property.createPropertyFQN(type.parent)
+				if (result != null)
+					return result
+			}
+			
+			if (type.parents != null) {
+				for (TemplateType t : type.parents) {
+					val result = property.createPropertyFQN(t)
+					if (result != null)
+						return result
+				}
+			}
+			return null
+		}
+	}
 }

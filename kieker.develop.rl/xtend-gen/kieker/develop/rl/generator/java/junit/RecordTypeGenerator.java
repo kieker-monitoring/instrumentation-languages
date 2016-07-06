@@ -3,11 +3,10 @@ package kieker.develop.rl.generator.java.junit;
 import com.google.common.base.Objects;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
 import kieker.develop.rl.generator.AbstractRecordTypeGenerator;
-import kieker.develop.rl.generator.java.IRL2JavaTypeMappingExtensions;
+import kieker.develop.rl.generator.java.JavaTypeMapping;
 import kieker.develop.rl.recordLang.BaseType;
 import kieker.develop.rl.recordLang.Classifier;
 import kieker.develop.rl.recordLang.Constant;
@@ -20,7 +19,7 @@ import kieker.develop.rl.recordLang.Property;
 import kieker.develop.rl.recordLang.RecordType;
 import kieker.develop.rl.recordLang.StringLiteral;
 import kieker.develop.rl.recordLang.Type;
-import kieker.develop.rl.validation.PropertyEvaluation;
+import kieker.develop.rl.typing.PropertyResolution;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Exceptions;
@@ -92,27 +91,17 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   }
   
   @Override
-  public CharSequence createContent(final RecordType type, final String author, final String version, final String headerComment) {
+  public CharSequence generate(final RecordType type) {
     CharSequence _xblockexpression = null;
     {
       boolean _isAbstract = type.isAbstract();
       if (_isAbstract) {
         return null;
       }
-      final List<Property> allDataProperties = PropertyEvaluation.collectAllDataProperties(type);
+      final List<Property> allDataProperties = PropertyResolution.collectAllDataProperties(type);
       StringConcatenation _builder = new StringConcatenation();
-      {
-        boolean _equals = headerComment.equals("");
-        boolean _not = (!_equals);
-        if (_not) {
-          Calendar _instance = Calendar.getInstance();
-          int _get = _instance.get(Calendar.YEAR);
-          String _string = Integer.valueOf(_get).toString();
-          String _replace = headerComment.replace("THIS-YEAR", _string);
-          _builder.append(_replace, "");
-          _builder.newLineIfNotEmpty();
-        }
-      }
+      String _header = this.getHeader();
+      _builder.append(_header, "");
       _builder.append("package ");
       EObject _eContainer = type.eContainer();
       String _name = ((Model) _eContainer).getName();
@@ -162,14 +151,30 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.newLine();
       _builder.append(" ");
       _builder.append("* @author ");
-      _builder.append(author, " ");
+      String _xifexpression = null;
+      String _author = type.getAuthor();
+      boolean _equals = Objects.equal(_author, null);
+      if (_equals) {
+        _xifexpression = this.getAuthor();
+      } else {
+        _xifexpression = type.getAuthor();
+      }
+      _builder.append(_xifexpression, " ");
       _builder.newLineIfNotEmpty();
       _builder.append(" ");
       _builder.append("* ");
       _builder.newLine();
       _builder.append(" ");
       _builder.append("* @since ");
-      _builder.append(version, " ");
+      String _xifexpression_1 = null;
+      String _since = type.getSince();
+      boolean _equals_1 = Objects.equal(_since, null);
+      if (_equals_1) {
+        _xifexpression_1 = this.getVersion();
+      } else {
+        _xifexpression_1 = type.getSince();
+      }
+      _builder.append(_xifexpression_1, " ");
       _builder.newLineIfNotEmpty();
       _builder.append(" ");
       _builder.append("*/");
@@ -543,7 +548,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.append("] of type ");
       Classifier _type = property.getType();
       BaseType _type_1 = _type.getType();
-      String _createPrimitiveWrapperTypeName = IRL2JavaTypeMappingExtensions.createPrimitiveWrapperTypeName(_type_1);
+      String _createPrimitiveWrapperTypeName = JavaTypeMapping.createPrimitiveWrapperTypeName(_type_1);
       _builder.append(_createPrimitiveWrapperTypeName, "");
       _builder.append(" must be not null.\", values[");
       _builder.append(index, "");
@@ -609,7 +614,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
           _builder.append(" (");
           Classifier _type_4 = property.getType();
           BaseType _type_5 = _type_4.getType();
-          String _createPrimitiveWrapperTypeName = IRL2JavaTypeMappingExtensions.createPrimitiveWrapperTypeName(_type_5);
+          String _createPrimitiveWrapperTypeName = JavaTypeMapping.createPrimitiveWrapperTypeName(_type_5);
           _builder.append(_createPrimitiveWrapperTypeName, "\t");
           _builder.append(")values[");
           _builder.append(index, "\t");
@@ -845,14 +850,14 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.append("].getClass().getCanonicalName() + \" does not match the desired type ");
       Classifier _type = property.getType();
       BaseType _type_1 = _type.getType();
-      String _createPrimitiveWrapperTypeName = IRL2JavaTypeMappingExtensions.createPrimitiveWrapperTypeName(_type_1);
+      String _createPrimitiveWrapperTypeName = JavaTypeMapping.createPrimitiveWrapperTypeName(_type_1);
       _builder.append(_createPrimitiveWrapperTypeName, "");
       _builder.append("\", values[");
       _builder.append(index, "");
       _builder.append("] instanceof ");
       Classifier _type_2 = property.getType();
       BaseType _type_3 = _type_2.getType();
-      String _createPrimitiveWrapperTypeName_1 = IRL2JavaTypeMappingExtensions.createPrimitiveWrapperTypeName(_type_3);
+      String _createPrimitiveWrapperTypeName_1 = JavaTypeMapping.createPrimitiveWrapperTypeName(_type_3);
       _builder.append(_createPrimitiveWrapperTypeName_1, "");
       _builder.append(");");
       _builder.newLineIfNotEmpty();

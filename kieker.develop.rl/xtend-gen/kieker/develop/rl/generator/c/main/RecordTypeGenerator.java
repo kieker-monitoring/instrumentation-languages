@@ -1,7 +1,7 @@
 package kieker.develop.rl.generator.c.main;
 
+import com.google.common.base.Objects;
 import java.io.File;
-import java.util.Calendar;
 import java.util.List;
 import kieker.develop.rl.generator.AbstractRecordTypeGenerator;
 import kieker.develop.rl.generator.InternalErrorException;
@@ -13,7 +13,8 @@ import kieker.develop.rl.recordLang.Property;
 import kieker.develop.rl.recordLang.RecordType;
 import kieker.develop.rl.recordLang.Type;
 import kieker.develop.rl.typing.BaseTypes;
-import kieker.develop.rl.validation.PropertyEvaluation;
+import kieker.develop.rl.typing.PropertyResolution;
+import kieker.develop.rl.typing.TypeResolution;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Exceptions;
@@ -103,54 +104,66 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
    *      comment placed as header of the file
    */
   @Override
-  public CharSequence createContent(final RecordType type, final String author, final String version, final String headerComment) {
-    StringConcatenation _builder = new StringConcatenation();
+  public CharSequence generate(final RecordType type) {
+    CharSequence _xblockexpression = null;
     {
-      boolean _equals = headerComment.equals("");
-      boolean _not = (!_equals);
-      if (_not) {
-        Calendar _instance = Calendar.getInstance();
-        int _get = _instance.get(Calendar.YEAR);
-        String _string = Integer.valueOf(_get).toString();
-        String _replace = headerComment.replace("THIS-YEAR", _string);
-        _builder.append(_replace, "");
-        _builder.newLineIfNotEmpty();
+      String _xifexpression = null;
+      String _author = type.getAuthor();
+      boolean _equals = Objects.equal(_author, null);
+      if (_equals) {
+        _xifexpression = this.getAuthor();
+      } else {
+        _xifexpression = type.getAuthor();
       }
+      final String definedAuthor = _xifexpression;
+      String _xifexpression_1 = null;
+      String _since = type.getSince();
+      boolean _equals_1 = Objects.equal(_since, null);
+      if (_equals_1) {
+        _xifexpression_1 = this.getVersion();
+      } else {
+        _xifexpression_1 = type.getSince();
+      }
+      final String definedVersion = _xifexpression_1;
+      StringConcatenation _builder = new StringConcatenation();
+      String _header = this.getHeader();
+      _builder.append(_header, "");
+      _builder.append("#include <stdlib.h>");
+      _builder.newLineIfNotEmpty();
+      _builder.append("#include <kieker.h>");
+      _builder.newLine();
+      _builder.append("#include \"");
+      CharSequence _directoryName = this.getDirectoryName(type);
+      _builder.append(_directoryName, "");
+      _builder.append("/");
+      CharSequence _packageName = CommonCFunctionsExtension.packageName(type);
+      _builder.append(_packageName, "");
+      _builder.append("_");
+      String _name = type.getName();
+      String _cstyleName = CommonCFunctionsExtension.cstyleName(_name);
+      _builder.append(_cstyleName, "");
+      _builder.append(".h\"");
+      _builder.newLineIfNotEmpty();
+      _builder.newLine();
+      _builder.append("/**");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.append("* Author: ");
+      _builder.append(definedAuthor, " ");
+      _builder.newLineIfNotEmpty();
+      _builder.append(" ");
+      _builder.append("* Version: ");
+      _builder.append(definedVersion, " ");
+      _builder.newLineIfNotEmpty();
+      _builder.append(" ");
+      _builder.append("*/");
+      _builder.newLine();
+      CharSequence _createSerializer = this.createSerializer(type);
+      _builder.append(_createSerializer, "");
+      _builder.newLineIfNotEmpty();
+      _xblockexpression = _builder;
     }
-    _builder.append("#include <stdlib.h>");
-    _builder.newLineIfNotEmpty();
-    _builder.append("#include <kieker.h>");
-    _builder.newLine();
-    _builder.append("#include \"");
-    CharSequence _directoryName = this.getDirectoryName(type);
-    _builder.append(_directoryName, "");
-    _builder.append("/");
-    CharSequence _packageName = CommonCFunctionsExtension.packageName(type);
-    _builder.append(_packageName, "");
-    _builder.append("_");
-    String _name = type.getName();
-    String _cstyleName = CommonCFunctionsExtension.cstyleName(_name);
-    _builder.append(_cstyleName, "");
-    _builder.append(".h\"");
-    _builder.newLineIfNotEmpty();
-    _builder.newLine();
-    _builder.append("/**");
-    _builder.newLine();
-    _builder.append(" ");
-    _builder.append("* Author: ");
-    _builder.append(author, " ");
-    _builder.newLineIfNotEmpty();
-    _builder.append(" ");
-    _builder.append("* Version: ");
-    _builder.append(version, " ");
-    _builder.newLineIfNotEmpty();
-    _builder.append(" ");
-    _builder.append("*/");
-    _builder.newLine();
-    CharSequence _createSerializer = this.createSerializer(type);
-    _builder.append(_createSerializer, "");
-    _builder.newLineIfNotEmpty();
-    return _builder;
+    return _xblockexpression;
   }
   
   /**
@@ -210,7 +223,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     _builder.append("int length = 0;");
     _builder.newLine();
     _builder.append("\t");
-    List<Property> _collectAllDataProperties = PropertyEvaluation.collectAllDataProperties(type);
+    List<Property> _collectAllDataProperties = PropertyResolution.collectAllDataProperties(type);
     final Function1<Property, CharSequence> _function = (Property it) -> {
       return this.createValueSerializer(it);
     };
@@ -230,7 +243,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("length += kieker_serialize_");
-      Classifier _findType = PropertyEvaluation.findType(property);
+      Classifier _findType = TypeResolution.findType(property);
       String _serializerSuffix = this.serializerSuffix(_findType);
       _builder.append(_serializerSuffix, "");
       _builder.append("(buffer,offset,");

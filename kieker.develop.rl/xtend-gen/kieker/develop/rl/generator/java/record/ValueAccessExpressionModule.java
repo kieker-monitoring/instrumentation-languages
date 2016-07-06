@@ -4,7 +4,7 @@ import kieker.develop.rl.generator.java.record.NameResolver;
 import kieker.develop.rl.recordLang.ArraySize;
 import kieker.develop.rl.recordLang.Classifier;
 import kieker.develop.rl.recordLang.Property;
-import kieker.develop.rl.validation.PropertyEvaluation;
+import kieker.develop.rl.typing.TypeResolution;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.ExclusiveRange;
@@ -89,7 +89,7 @@ public class ValueAccessExpressionModule {
     _builder.append("this.");
     String _name = property.getName();
     _builder.append(_name, "");
-    Classifier _findType = PropertyEvaluation.findType(property);
+    Classifier _findType = TypeResolution.findType(property);
     EList<ArraySize> _sizes = _findType.getSizes();
     CharSequence _createArrayValueAccessIndizies = ValueAccessExpressionModule.createArrayValueAccessIndizies(_sizes);
     _builder.append(_createArrayValueAccessIndizies, "");

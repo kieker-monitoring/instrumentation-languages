@@ -5,17 +5,20 @@ import kieker.develop.rl.generator.InternalErrorException;
 import kieker.develop.rl.recordLang.ArraySize;
 import kieker.develop.rl.recordLang.BaseType;
 import kieker.develop.rl.recordLang.Classifier;
+import kieker.develop.rl.recordLang.Property;
 import kieker.develop.rl.typing.BaseTypes;
+import kieker.develop.rl.typing.TypeResolution;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.Functions.Function2;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 
 @SuppressWarnings("all")
-public class IRL2JavaTypeMappingExtensions {
-  private IRL2JavaTypeMappingExtensions() {
+public class JavaTypeMapping {
+  private JavaTypeMapping() {
   }
   
   /**
@@ -120,10 +123,10 @@ public class IRL2JavaTypeMappingExtensions {
       int _size = _sizes.size();
       boolean _greaterThan = (_size > 0);
       if (_greaterThan) {
-        _xifexpression = IRL2JavaTypeMappingExtensions.createArrayTypeName(classifier);
+        _xifexpression = JavaTypeMapping.createArrayTypeName(classifier);
       } else {
         BaseType _type = classifier.getType();
-        _xifexpression = IRL2JavaTypeMappingExtensions.createPrimitiveTypeName(_type);
+        _xifexpression = JavaTypeMapping.createPrimitiveTypeName(_type);
       }
       return _xifexpression;
     } catch (Throwable _e) {
@@ -146,10 +149,10 @@ public class IRL2JavaTypeMappingExtensions {
       int _size = _sizes.size();
       boolean _greaterThan = (_size > 0);
       if (_greaterThan) {
-        _xifexpression = IRL2JavaTypeMappingExtensions.createArrayTypeName(classifier);
+        _xifexpression = JavaTypeMapping.createArrayTypeName(classifier);
       } else {
         BaseType _type = classifier.getType();
-        _xifexpression = IRL2JavaTypeMappingExtensions.createPrimitiveWrapperTypeName(_type);
+        _xifexpression = JavaTypeMapping.createPrimitiveWrapperTypeName(_type);
       }
       return _xifexpression;
     } catch (Throwable _e) {
@@ -170,7 +173,7 @@ public class IRL2JavaTypeMappingExtensions {
       String _xblockexpression = null;
       {
         BaseType _type = classifier.getType();
-        final String primitiveTypeName = IRL2JavaTypeMappingExtensions.createPrimitiveTypeName(_type);
+        final String primitiveTypeName = JavaTypeMapping.createPrimitiveTypeName(_type);
         EList<ArraySize> _sizes = classifier.getSizes();
         final Function1<ArraySize, String> _function = (ArraySize size) -> {
           StringConcatenation _builder = new StringConcatenation();
@@ -185,5 +188,76 @@ public class IRL2JavaTypeMappingExtensions {
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
+  }
+  
+  /**
+   * Determine the size of the resulting binary serialization.
+   * 
+   * @param allProperties
+   * 		all properties of a record type
+   * 
+   * @returns
+   * 		the computed value
+   */
+  public static int calculateSize(final Iterable<Property> list) {
+    final Function2<Integer, Property, Integer> _function = (Integer result, Property property) -> {
+      try {
+        int _size = JavaTypeMapping.getSize(property);
+        return Integer.valueOf(((result).intValue() + _size));
+      } catch (Throwable _e) {
+        throw Exceptions.sneakyThrow(_e);
+      }
+    };
+    return (int) IterableExtensions.<Property, Integer>fold(list, Integer.valueOf(0), _function);
+  }
+  
+  /**
+   * Determine the size of one type.
+   * 
+   * @param property
+   * 		property which serialization size is determined.
+   * 
+   * @returns
+   * 		the serialization size of the property
+   */
+  private static int getSize(final Property property) throws InternalErrorException {
+    int _switchResult = (int) 0;
+    Classifier _findType = TypeResolution.findType(property);
+    BaseType _type = _findType.getType();
+    BaseTypes _typeEnum = BaseTypes.getTypeEnum(_type);
+    if (_typeEnum != null) {
+      switch (_typeEnum) {
+        case STRING:
+          _switchResult = 4;
+          break;
+        case BYTE:
+          _switchResult = 1;
+          break;
+        case SHORT:
+          _switchResult = 2;
+          break;
+        case INT:
+          _switchResult = 4;
+          break;
+        case LONG:
+          _switchResult = 8;
+          break;
+        case FLOAT:
+          _switchResult = 4;
+          break;
+        case DOUBLE:
+          _switchResult = 8;
+          break;
+        case CHAR:
+          _switchResult = 2;
+          break;
+        case BOOLEAN:
+          _switchResult = 1;
+          break;
+        default:
+          break;
+      }
+    }
+    return _switchResult;
   }
 }

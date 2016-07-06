@@ -2,8 +2,10 @@ package kieker.develop.rl.generator
 
 import kieker.develop.rl.generator.AbstractTypeGenerator
 import kieker.develop.rl.recordLang.TemplateType
+import de.cau.cs.se.geco.architecture.framework.IGenerator
 
-abstract class AbstractTemplateTypeGenerator extends AbstractTypeGenerator {
+abstract class AbstractTemplateTypeGenerator extends AbstractTypeGenerator
+	implements IGenerator<TemplateType,CharSequence> {
 	/**
 	 * Primary code generation template.
 	 * 
@@ -16,6 +18,6 @@ abstract class AbstractTemplateTypeGenerator extends AbstractTypeGenerator {
 	 * @param headerComment
 	 *      comment inserted as header comment of the output 
 	 */
-	def abstract CharSequence createContent(TemplateType type, String author, String version, String headerComment);
+	override abstract CharSequence generate(TemplateType type)
 		
 }

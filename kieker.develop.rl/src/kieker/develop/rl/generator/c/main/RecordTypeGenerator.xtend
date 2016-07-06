@@ -1,18 +1,18 @@
 package kieker.develop.rl.generator.c.main
 
-import kieker.develop.rl.recordLang.Type
-import kieker.develop.rl.recordLang.RecordType
-import kieker.develop.rl.recordLang.Property
-import kieker.develop.rl.recordLang.Classifier
-import kieker.develop.rl.recordLang.Model
 import java.io.File
 import kieker.develop.rl.generator.AbstractRecordTypeGenerator
-import kieker.develop.rl.validation.PropertyEvaluation
+import kieker.develop.rl.generator.InternalErrorException
+import kieker.develop.rl.recordLang.Classifier
+import kieker.develop.rl.recordLang.Model
+import kieker.develop.rl.recordLang.Property
+import kieker.develop.rl.recordLang.RecordType
+import kieker.develop.rl.recordLang.Type
+import kieker.develop.rl.typing.BaseTypes
 
 import static extension kieker.develop.rl.generator.c.CommonCFunctionsExtension.*
-import java.util.Calendar
-import kieker.develop.rl.typing.BaseTypes
-import kieker.develop.rl.generator.InternalErrorException
+import static extension kieker.develop.rl.typing.TypeResolution.*
+import static extension kieker.develop.rl.typing.PropertyResolution.*
 
 class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	
@@ -58,16 +58,17 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * @param headerComment
 	 *      comment placed as header of the file
 	 */
-	override createContent(RecordType type, String author, String version, String headerComment) {
+	override generate(RecordType type) {
+		val definedAuthor = if (type.author == null) author else type.author
+		val definedVersion = if (type.since == null) version else type.since
 		'''
-		«IF (!headerComment.equals(""))»«headerComment.replace("THIS-YEAR", Calendar.getInstance().get(Calendar.YEAR).toString)»
-		«ENDIF»#include <stdlib.h>
+		«header»#include <stdlib.h>
 		#include <kieker.h>
 		#include "«type.getDirectoryName»/«type.packageName»_«type.name.cstyleName».h"
 
 		/**
-		 * Author: «author»
-		 * Version: «version»
+		 * Author: «definedAuthor»
+		 * Version: «definedVersion»
 		 */
 		«type.createSerializer»
 		'''
@@ -89,7 +90,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		 */
 		int «type.packageName»_«type.name.cstyleName»_serialize(char *buffer, const int id, const int offset, const «type.packageName»_«type.name.cstyleName» value) {
 			int length = 0;
-			«PropertyEvaluation::collectAllDataProperties(type).map[createValueSerializer].join»
+			«type.collectAllDataProperties.map[createValueSerializer].join»
 			return length;
 		}
 	'''
@@ -98,7 +99,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 * 
 	 */
 	private def createValueSerializer(Property property) '''
-		length += kieker_serialize_«PropertyEvaluation::findType(property).serializerSuffix»(buffer,offset,«property.name»);
+		length += kieker_serialize_«property.findType.serializerSuffix»(buffer,offset,«property.name»);
 	'''
 		
 	/**

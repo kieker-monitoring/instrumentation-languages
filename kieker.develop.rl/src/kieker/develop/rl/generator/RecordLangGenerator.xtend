@@ -23,6 +23,7 @@ import kieker.develop.rl.recordLang.TemplateType
 import kieker.develop.rl.preferences.TargetsPreferences
 import org.eclipse.core.runtime.preferences.IEclipsePreferences
 import org.osgi.service.prefs.Preferences
+import java.util.Calendar
 
 /**
  * Generates one single files per record for java, c, and perl. 
@@ -56,12 +57,16 @@ class RecordLangGenerator implements IGenerator {
 			/** Generator invocation for RecordTypes */																	
 			for (Class<?> generator : GeneratorConfiguration.RECORD_TYPE_GENERATORS) {
 				val cg = generator.getConstructor().newInstance() as AbstractRecordTypeGenerator
+				cg.author = author
+				cg.version = version
+				cg.header = TargetsPreferences.getHeaderComment(preferenceStore, cg.id).
+					replace("THIS-YEAR", Calendar.getInstance().get(Calendar.YEAR).toString)
+				
 				if (TargetsPreferences.isGeneratorActive(preferenceStore, cg.id)) {
 					resource.allContents.filter(typeof(RecordType)).forEach[type |
-						if (cg.supportsAbstractRecordType || (!cg.supportsAbstractRecordType && !type.abstract)) 
-							fsa.generateFile(cg.getFileName(type),	cg.outletType, 
-								cg.createContent(type, author, version, TargetsPreferences.getHeaderComment(preferenceStore, cg.id))
-							)
+						if (cg.supportsAbstractRecordType || (!cg.supportsAbstractRecordType && !type.abstract)) {
+							fsa.generateFile(cg.getFileName(type),	cg.outletType, cg.generate(type))	
+						}
 					]
 				}
 			}
@@ -69,11 +74,14 @@ class RecordLangGenerator implements IGenerator {
 			/** Generator invocation for TemplateTypes */
 			for (Class<?> generator : GeneratorConfiguration.TEMPLATE_TYPE_GENERATORS) {
 				val cg = generator.getConstructor().newInstance() as AbstractTemplateTypeGenerator
+				cg.author = author
+				cg.version = version
+				cg.header = TargetsPreferences.getHeaderComment(preferenceStore, cg.id).
+					replace("THIS-YEAR", Calendar.getInstance().get(Calendar.YEAR).toString)
+				
 				if (TargetsPreferences.isGeneratorActive(preferenceStore, cg.id)) {
 					resource.allContents.filter(typeof(TemplateType)).forEach[type | 
-						fsa.generateFile(cg.getFileName(type),	cg.outletType, 
-							cg.createContent(type, author,version, TargetsPreferences.getHeaderComment(preferenceStore, cg.id))
-						)
+						fsa.generateFile(cg.getFileName(type), cg.outletType, cg.generate(type))
 					]
 				}
 			}

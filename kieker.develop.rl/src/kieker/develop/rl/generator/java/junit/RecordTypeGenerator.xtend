@@ -1,5 +1,9 @@
 package kieker.develop.rl.generator.java.junit
 
+import java.io.File
+import java.util.ArrayList
+import java.util.Collection
+import java.util.List
 import kieker.develop.rl.generator.AbstractRecordTypeGenerator
 import kieker.develop.rl.recordLang.ConstantLiteral
 import kieker.develop.rl.recordLang.FloatLiteral
@@ -10,14 +14,9 @@ import kieker.develop.rl.recordLang.Property
 import kieker.develop.rl.recordLang.RecordType
 import kieker.develop.rl.recordLang.StringLiteral
 import kieker.develop.rl.recordLang.Type
-import kieker.develop.rl.validation.PropertyEvaluation
-import java.io.File
-import java.util.ArrayList
-import java.util.Calendar
-import java.util.Collection
-import java.util.List
 
-import static extension kieker.develop.rl.generator.java.IRL2JavaTypeMappingExtensions.*
+import static extension kieker.develop.rl.generator.java.JavaTypeMapping.*
+import static extension kieker.develop.rl.typing.PropertyResolution.*
 
 class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	
@@ -42,13 +41,12 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	
 	override getOutletType() '''junit'''
 	
-	override createContent(RecordType type, String author, String version, String headerComment) {
+	override generate(RecordType type) {
 		if (type.abstract)
 			return null
-		val allDataProperties = PropertyEvaluation::collectAllDataProperties(type)
+		val allDataProperties = type.collectAllDataProperties
 		'''
-		«IF (!headerComment.equals(""))»«headerComment.replace("THIS-YEAR", Calendar.getInstance().get(Calendar.YEAR).toString)»
-		«ENDIF»package «(type.eContainer as Model).name.createTestPackageName»;
+		«header»package «(type.eContainer as Model).name.createTestPackageName»;
 		
 		import java.nio.ByteBuffer;
 		
@@ -66,9 +64,9 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		 * Creates {@link OperationExecutionRecord}s via the available constructors and
 		 * checks the values passed values via getters.
 		 * 
-		 * @author «author»
+		 * @author «if (type.author == null) author else type.author»
 		 * 
-		 * @since «version»
+		 * @since «if (type.since == null) version else type.since»
 		 */
 		public class TestGenerated«type.name» extends AbstractGeneratedKiekerTest {
 		

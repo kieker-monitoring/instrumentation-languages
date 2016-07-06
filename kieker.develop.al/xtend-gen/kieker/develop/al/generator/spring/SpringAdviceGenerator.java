@@ -1,5 +1,6 @@
 package kieker.develop.al.generator.spring;
 
+import de.cau.cs.se.geco.architecture.framework.IGenerator;
 import kieker.develop.al.aspectLang.Advice;
 import kieker.develop.al.aspectLang.Collector;
 import kieker.develop.al.generator.CommonJavaTemplates;
@@ -7,7 +8,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 
 @SuppressWarnings("all")
-public class SpringAdviceGenerator /* implements IGenerator<Advice, CharSequence>  */{
+public class SpringAdviceGenerator implements IGenerator<Advice, CharSequence> {
   @Override
   public CharSequence generate(final Advice input) {
     StringConcatenation _builder = new StringConcatenation();

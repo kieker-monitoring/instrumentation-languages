@@ -2,15 +2,9 @@ package kieker.develop.rl.generator.java.record
 
 import java.util.List
 import kieker.develop.rl.recordLang.Property
-
-import static extension kieker.develop.rl.validation.PropertyEvaluation.*
-import static extension kieker.develop.rl.generator.java.IRL2JavaTypeMappingExtensions.*
-import static extension kieker.develop.rl.generator.java.record.NameResolver.*
-
 import kieker.develop.rl.typing.BaseTypes
 import kieker.develop.rl.recordLang.Constant
 import kieker.develop.rl.recordLang.Literal
-import kieker.develop.rl.recordLang.BaseType
 import kieker.develop.rl.recordLang.ArrayLiteral
 import kieker.develop.rl.recordLang.StringLiteral
 import kieker.develop.rl.recordLang.IntLiteral
@@ -19,6 +13,11 @@ import kieker.develop.rl.recordLang.BooleanLiteral
 import kieker.develop.rl.recordLang.ConstantLiteral
 import kieker.develop.rl.recordLang.BuiltInValueLiteral
 import kieker.develop.rl.recordLang.RecordType
+import kieker.develop.rl.generator.InternalErrorException
+
+import static extension kieker.develop.rl.generator.java.JavaTypeMapping.*
+import static extension kieker.develop.rl.generator.java.record.NameResolver.*
+import static extension kieker.develop.rl.typing.TypeResolution.*
 
 class ConstantConstructionModule {
 	
@@ -29,8 +28,9 @@ class ConstantConstructionModule {
 	 */
 	static def createDefaultConstants (List<Property> properties) {
 		properties.filter[
+			val type = it.findType
 			it.value != null || 
-			(it.findType.type.name.equals(BaseTypes.STRING.name) && it.findType.sizes.size == 0)
+			(BaseTypes.STRING == BaseTypes.getTypeEnum(type.type) && type.sizes.size == 0)
 		].map[property | createDefaultConstant(property)].join
 	}
 	
@@ -50,7 +50,7 @@ class ConstantConstructionModule {
 	 * @returns a constant declaration
 	 */
 	private static def createDefaultConstant(Constant constant) '''
-		public static final «constant.type.createTypeName» «constant.name.protectKeywords» = «constant.value.createLiteral»;
+		public static final «constant.type.createTypeName» «constant.createConstantName» = «constant.value.createLiteral»;
 	'''
 	
 	/**
@@ -62,35 +62,25 @@ class ConstantConstructionModule {
 	 * @returns a constant declaration
 	 */
 	private static def createDefaultConstant(Property property) '''
-		public static final «property.type.createTypeName» «property.name.createConstantName.protectKeywords» = «if (property.value==null) '""' else property.value.createLiteral»;
+		public static final «property.type.createTypeName» «property.createConstantName» = «if (property.value==null) '""' else property.value.createLiteral»;
 	'''
 
 			
 	/**
 	 * Literal mapping
 	 */
-	private static def CharSequence createLiteral(Literal literal) {
+	private static def CharSequence createLiteral(Literal literal) throws InternalErrorException {
 		switch (literal) {
-			IntLiteral: '''«literal.value»«if (literal.getRequiredType.name.equals('long')) 'L'»'''
-			FloatLiteral: '''«literal.value»«if (literal.getRequiredType.name.equals('float')) 'f'»'''
+			IntLiteral: '''«literal.value»«if (literal.isType(BaseTypes.LONG)) 'L'»'''
+			FloatLiteral: '''«literal.value»«if (literal.isType(BaseTypes.FLOAT)) 'f'»'''
 			BooleanLiteral: '''«if (literal.value) 'true' else 'false'»'''
 			ConstantLiteral: '''«literal.value.name»'''
 			BuiltInValueLiteral case "KIEKER_VERSION".equals(literal.value): '''kieker.common.util.Version.getVERSION()'''
-			StringLiteral case literal.getRequiredType.name.equals('string'): '''"«literal.value»"'''
-			StringLiteral case literal.getRequiredType.name.equals('char'): '\'' + literal.value + '\''
+			StringLiteral case literal.isType(BaseTypes.STRING): '''"«literal.value»"'''
+			StringLiteral case literal.isType(BaseTypes.CHAR): '\'' + literal.value + '\''
 			ArrayLiteral: '''{ «literal.literals.map[element | element.createLiteral].join(if (literal.literals.get(0) instanceof ArrayLiteral) ",\n" else ", ")» }'''
-			default: 'ERROR ' + literal.class.name
+			default: throw new InternalErrorException('Unknown literal type ' + literal.class.name)
 		}	
 	}
 		
-	/**
-	 * Resolve the primitive type for the given literal.
-	 */
-	private static def BaseType getRequiredType(Literal literal) {
-		switch (literal.eContainer) {
-			Constant : (literal.eContainer as Constant).type.type
-			Property : (literal.eContainer as Property).type.type
-			Literal : (literal.eContainer as Literal).getRequiredType
-		}
-	}
 }

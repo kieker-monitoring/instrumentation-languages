@@ -1,14 +1,15 @@
 package kieker.develop.rl.generator.c.header;
 
+import com.google.common.base.Objects;
 import java.io.File;
-import java.util.Calendar;
 import java.util.List;
 import kieker.develop.rl.generator.c.CommonCFunctionsExtension;
 import kieker.develop.rl.recordLang.Classifier;
 import kieker.develop.rl.recordLang.Property;
 import kieker.develop.rl.recordLang.RecordType;
 import kieker.develop.rl.recordLang.Type;
-import kieker.develop.rl.validation.PropertyEvaluation;
+import kieker.develop.rl.typing.PropertyResolution;
+import kieker.develop.rl.typing.TypeResolution;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -66,26 +67,12 @@ public class RecordTypeGenerator extends kieker.develop.rl.generator.c.main.Reco
    * 
    * @params type
    * 		one record type to be used to create monitoring record
-   * @params author
-   * 		generic author name for the record
-   * @params version
-   * 		generic kieker version for the record
    */
   @Override
-  public CharSequence createContent(final RecordType type, final String author, final String version, final String headerComment) {
+  public CharSequence generate(final RecordType type) {
     StringConcatenation _builder = new StringConcatenation();
-    {
-      boolean _equals = headerComment.equals("");
-      boolean _not = (!_equals);
-      if (_not) {
-        Calendar _instance = Calendar.getInstance();
-        int _get = _instance.get(Calendar.YEAR);
-        String _string = Integer.valueOf(_get).toString();
-        String _replace = headerComment.replace("THIS-YEAR", _string);
-        _builder.append(_replace, "");
-        _builder.newLineIfNotEmpty();
-      }
-    }
+    String _header = this.getHeader();
+    _builder.append(_header, "");
     _builder.append("#include <stdlib.h>");
     _builder.newLineIfNotEmpty();
     _builder.append("#include <kieker.h>");
@@ -95,11 +82,27 @@ public class RecordTypeGenerator extends kieker.develop.rl.generator.c.main.Reco
     _builder.newLine();
     _builder.append(" ");
     _builder.append("* Author: ");
-    _builder.append(author, " ");
+    String _xifexpression = null;
+    String _author = type.getAuthor();
+    boolean _equals = Objects.equal(_author, null);
+    if (_equals) {
+      _xifexpression = this.getAuthor();
+    } else {
+      _xifexpression = type.getAuthor();
+    }
+    _builder.append(_xifexpression, " ");
     _builder.newLineIfNotEmpty();
     _builder.append(" ");
     _builder.append("* Version: ");
-    _builder.append(version, " ");
+    String _xifexpression_1 = null;
+    String _since = type.getSince();
+    boolean _equals_1 = Objects.equal(_since, null);
+    if (_equals_1) {
+      _xifexpression_1 = this.getVersion();
+    } else {
+      _xifexpression_1 = type.getSince();
+    }
+    _builder.append(_xifexpression_1, " ");
     _builder.newLineIfNotEmpty();
     _builder.append(" ");
     _builder.append("*/");
@@ -119,7 +122,7 @@ public class RecordTypeGenerator extends kieker.develop.rl.generator.c.main.Reco
     _builder.append("typedef struct {");
     _builder.newLine();
     _builder.append("\t");
-    List<Property> _collectAllDataProperties = PropertyEvaluation.collectAllDataProperties(type);
+    List<Property> _collectAllDataProperties = PropertyResolution.collectAllDataProperties(type);
     final Function1<Property, CharSequence> _function = (Property it) -> {
       return this.createPropertyDeclaration(it);
     };
@@ -142,7 +145,7 @@ public class RecordTypeGenerator extends kieker.develop.rl.generator.c.main.Reco
   private CharSequence createPropertyDeclaration(final Property property) {
     try {
       StringConcatenation _builder = new StringConcatenation();
-      Classifier _findType = PropertyEvaluation.findType(property);
+      Classifier _findType = TypeResolution.findType(property);
       String _createTypeName = CommonCFunctionsExtension.createTypeName(_findType);
       _builder.append(_createTypeName, "");
       _builder.append(" ");

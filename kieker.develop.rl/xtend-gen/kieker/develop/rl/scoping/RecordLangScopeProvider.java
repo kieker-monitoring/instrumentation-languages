@@ -17,11 +17,11 @@ package kieker.develop.rl.scoping;
 
 import java.util.Collection;
 import java.util.List;
-import kieker.develop.rl.recordLang.ComplexType;
 import kieker.develop.rl.recordLang.ForeignKey;
 import kieker.develop.rl.recordLang.Property;
 import kieker.develop.rl.recordLang.RecordType;
-import kieker.develop.rl.validation.PropertyEvaluation;
+import kieker.develop.rl.recordLang.TemplateType;
+import kieker.develop.rl.typing.PropertyResolution;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -47,7 +47,7 @@ public class RecordLangScopeProvider extends AbstractDeclarativeScopeProvider {
    */
   public IScope scope_ForeignKey_propertyRef(final ForeignKey key, final EReference reference) {
     RecordType _recordType = key.getRecordType();
-    List<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(_recordType);
+    List<Property> _collectAllProperties = PropertyResolution.collectAllProperties(_recordType);
     return Scopes.scopeFor(_collectAllProperties);
   }
   
@@ -55,9 +55,23 @@ public class RecordLangScopeProvider extends AbstractDeclarativeScopeProvider {
    * Build a scope containing all properties.
    */
   public IScope scope_Property_referTo(final Property property, final EReference reference) {
-    EObject _eContainer = property.eContainer();
-    List<Property> _collectAllProperties = PropertyEvaluation.collectAllProperties(((ComplexType) _eContainer));
-    return Scopes.scopeFor(_collectAllProperties);
+    final EObject type = property.eContainer();
+    boolean _matched = false;
+    if (!_matched) {
+      if (type instanceof RecordType) {
+        _matched=true;
+        List<Property> _collectAllProperties = PropertyResolution.collectAllProperties(((RecordType)type));
+        return Scopes.scopeFor(_collectAllProperties);
+      }
+    }
+    if (!_matched) {
+      if (type instanceof TemplateType) {
+        _matched=true;
+        List<Property> _collectAllProperties = PropertyResolution.collectAllProperties(((TemplateType)type));
+        return Scopes.scopeFor(_collectAllProperties);
+      }
+    }
+    return null;
   }
   
   /**

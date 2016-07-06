@@ -5,7 +5,7 @@ import kieker.develop.rl.recordLang.ArraySize
 import kieker.develop.rl.recordLang.Property
 
 import static extension kieker.develop.rl.generator.java.record.NameResolver.*
-import static extension kieker.develop.rl.validation.PropertyEvaluation.*
+import static extension kieker.develop.rl.typing.TypeResolution.*
 
 class ValueAccessExpressionModule {
 	

@@ -6,7 +6,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.function.Consumer;
 import kieker.develop.al.aspectLang.Advice;
 import kieker.develop.al.aspectLang.AdviceParameter;
@@ -30,13 +29,9 @@ import kieker.develop.al.aspectLang.TypeReference;
 import kieker.develop.al.aspectLang.Value;
 import kieker.develop.al.mapping.NamedType;
 import kieker.develop.rl.generator.InternalErrorException;
-import kieker.develop.rl.generator.java.IRL2JavaTypeMappingExtensions;
-import kieker.develop.rl.recordLang.BaseType;
-import kieker.develop.rl.recordLang.Classifier;
 import kieker.develop.rl.recordLang.Model;
 import kieker.develop.rl.recordLang.Property;
 import kieker.develop.rl.recordLang.RecordType;
-import kieker.develop.rl.validation.PropertyEvaluation;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -44,7 +39,6 @@ import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
-import org.eclipse.xtext.xbase.lib.Procedures.Procedure2;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 /**
@@ -212,62 +206,22 @@ public class CommonJavaTemplates {
    * Create data initialization for data collection.
    */
   public static Map<CharSequence, CharSequence> createData(final Event event, final Map<CharSequence, CharSequence> data, final Map<AdviceParameterDeclaration, Value> parameterAssignments) {
-    RecordType _type = event.getType();
-    List<Property> _collectAllDataProperties = PropertyEvaluation.collectAllDataProperties(_type);
-    final Procedure2<Property, Integer> _function = (Property property, Integer i) -> {
-      try {
-        EList<Value> _initializations = event.getInitializations();
-        final Value value = _initializations.get((i).intValue());
-        final CharSequence valueText = CommonJavaTemplates.createValue(value, parameterAssignments);
-        Set<CharSequence> _keySet = data.keySet();
-        final Function1<CharSequence, Boolean> _function_1 = (CharSequence it) -> {
-          String _string = it.toString();
-          String _string_1 = valueText.toString();
-          return Boolean.valueOf(_string.equals(_string_1));
-        };
-        boolean _exists = IterableExtensions.<CharSequence>exists(_keySet, _function_1);
-        boolean _not = (!_exists);
-        if (_not) {
-          StringConcatenation _builder = new StringConcatenation();
-          _builder.append("final ");
-          Classifier _type_1 = property.getType();
-          BaseType _type_2 = _type_1.getType();
-          String _createPrimitiveTypeName = IRL2JavaTypeMappingExtensions.createPrimitiveTypeName(_type_2);
-          _builder.append(_createPrimitiveTypeName, "");
-          _builder.append(" ");
-          CharSequence _createValueName = CommonJavaTemplates.createValueName(property);
-          _builder.append(_createValueName, "");
-          _builder.append(" = ");
-          _builder.append(valueText, "");
-          _builder.append(";");
-          data.put(valueText, _builder);
-        }
-      } catch (Throwable _e) {
-        throw Exceptions.sneakyThrow(_e);
-      }
-    };
-    IterableExtensions.<Property>forEach(_collectAllDataProperties, _function);
-    return data;
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field collectAllDataProperties is undefined for the type RecordType"
+      + "\nThe method or field type is undefined for the type Object"
+      + "\nType mismatch: cannot convert from Object to Property"
+      + "\nThere is no context to infer the closure\'s argument types from. Consider typing the arguments or put the closures into a typed context."
+      + "\nforEach cannot be resolved"
+      + "\ntype cannot be resolved"
+      + "\ncreatePrimitiveTypeName cannot be resolved");
   }
   
   public static CharSequence createEvent(final Event event) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("CTRLINST.newMonitoringRecord(new ");
-    RecordType _type = event.getType();
-    String _name = _type.getName();
-    _builder.append(_name, "");
-    _builder.append("(");
-    RecordType _type_1 = event.getType();
-    List<Property> _collectAllDataProperties = PropertyEvaluation.collectAllDataProperties(_type_1);
-    final Function1<Property, CharSequence> _function = (Property it) -> {
-      return CommonJavaTemplates.createValueName(it);
-    };
-    List<CharSequence> _map = ListExtensions.<Property, CharSequence>map(_collectAllDataProperties, _function);
-    String _join = IterableExtensions.join(_map, ", ");
-    _builder.append(_join, "");
-    _builder.append("));");
-    _builder.newLineIfNotEmpty();
-    return _builder;
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field collectAllDataProperties is undefined for the type RecordType"
+      + "\nType mismatch: cannot convert from Object to Property"
+      + "\nmap cannot be resolved"
+      + "\njoin cannot be resolved");
   }
   
   private static CharSequence createValueName(final Property property) {

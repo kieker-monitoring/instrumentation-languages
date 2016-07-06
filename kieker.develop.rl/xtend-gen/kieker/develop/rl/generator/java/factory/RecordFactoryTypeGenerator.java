@@ -83,20 +83,16 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
    * 
    * @param type
    * 		one record type to be used to create the corresponding monitoring record factory
-   * @param author
-   * 		generic author name for the record
-   * @param version
-   * 		generic kieker version for the record
    */
   @Override
-  public CharSequence createContent(final RecordType type, final String author, final String version, final String headerComment) {
+  public CharSequence generate(final RecordType type) {
     CharSequence _xblockexpression = null;
     {
       String _xifexpression = null;
       String _author = type.getAuthor();
       boolean _equals = Objects.equal(_author, null);
       if (_equals) {
-        _xifexpression = author;
+        _xifexpression = this.getAuthor();
       } else {
         _xifexpression = type.getAuthor();
       }
@@ -105,20 +101,22 @@ public class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
       String _since = type.getSince();
       boolean _equals_1 = Objects.equal(_since, null);
       if (_equals_1) {
-        _xifexpression_1 = version;
+        _xifexpression_1 = this.getVersion();
       } else {
         _xifexpression_1 = type.getSince();
       }
       final String definedVersion = _xifexpression_1;
       StringConcatenation _builder = new StringConcatenation();
       {
-        boolean _equals_2 = headerComment.equals("");
+        String _header = this.getHeader();
+        boolean _equals_2 = _header.equals("");
         boolean _not = (!_equals_2);
         if (_not) {
+          String _header_1 = this.getHeader();
           Calendar _instance = Calendar.getInstance();
           int _get = _instance.get(Calendar.YEAR);
           String _string = Integer.valueOf(_get).toString();
-          String _replace = headerComment.replace("THIS-YEAR", _string);
+          String _replace = _header_1.replace("THIS-YEAR", _string);
           _builder.append(_replace, "");
           _builder.newLineIfNotEmpty();
         }

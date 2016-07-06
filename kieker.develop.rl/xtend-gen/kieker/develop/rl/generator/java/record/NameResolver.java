@@ -4,8 +4,10 @@ import java.util.Collections;
 import java.util.List;
 import kieker.develop.rl.recordLang.BaseType;
 import kieker.develop.rl.recordLang.Classifier;
+import kieker.develop.rl.recordLang.Constant;
+import kieker.develop.rl.recordLang.ConstantLiteral;
 import kieker.develop.rl.recordLang.Property;
-import kieker.develop.rl.validation.PropertyEvaluation;
+import kieker.develop.rl.typing.TypeResolution;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -24,7 +26,7 @@ public class NameResolver {
    */
   public static CharSequence createGetterName(final Property property) {
     CharSequence _xifexpression = null;
-    Classifier _findType = PropertyEvaluation.findType(property);
+    Classifier _findType = TypeResolution.findType(property);
     BaseType _type = _findType.getType();
     String _name = _type.getName();
     boolean _equals = _name.equals("boolean");
@@ -46,18 +48,36 @@ public class NameResolver {
     return _xifexpression;
   }
   
+  public static String createConstantLiteralName(final ConstantLiteral literal) {
+    Constant _value = literal.getValue();
+    String _name = _value.getName();
+    return NameResolver.protectKeywords(_name);
+  }
+  
+  public static String createConstantName(final Constant constant) {
+    String _name = constant.getName();
+    return NameResolver.protectKeywords(_name);
+  }
+  
   /**
    * create a constant name from a standard name camel case name.
    */
-  public static String createConstantName(final String name) {
-    String _replaceAll = name.replaceAll("([a-z])([A-Z])", "$1_$2");
-    return _replaceAll.toUpperCase();
+  public static String createConstantName(final Property property) {
+    String _name = property.getName();
+    String _replaceAll = _name.replaceAll("([a-z])([A-Z])", "$1_$2");
+    String _upperCase = _replaceAll.toUpperCase();
+    return NameResolver.protectKeywords(_upperCase);
+  }
+  
+  public static String createName(final Property property) {
+    String _name = property.getName();
+    return NameResolver.protectKeywords(_name);
   }
   
   /**
    * Check whether a given name is identical to a keyword of the target language and prepends an _.
    */
-  public static String protectKeywords(final String name) {
+  private static String protectKeywords(final String name) {
     String _xblockexpression = null;
     {
       final List<String> keywords = Collections.<String>unmodifiableList(CollectionLiterals.<String>newArrayList("interface", "class", "private", "protected", "public", "return", "final", "volatile", "if", "else", "for", "foreach"));

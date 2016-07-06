@@ -7,9 +7,10 @@ import kieker.develop.rl.recordLang.Model
 import kieker.develop.rl.recordLang.Property
 import java.io.File
 import kieker.develop.rl.generator.AbstractRecordTypeGenerator
-import kieker.develop.rl.validation.PropertyEvaluation
 import java.util.Collection
-import java.util.Calendar
+
+import static extension kieker.develop.rl.typing.PropertyResolution.*
+
 
 class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 
@@ -43,10 +44,11 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	/**
 	 * Create a perl based record for kieker
 	 */
-	override createContent(RecordType type, String author, String version, String headerComment) {
+	override generate(RecordType type) {
+		val definedAuthor = if (type.author == null) author else type.author
+		val definedVersion = if (type.since == null) version else type.since
 		'''
-		«IF (!headerComment.equals(""))»«headerComment.replace("THIS-YEAR", Calendar.getInstance().get(Calendar.YEAR).toString)»
-		«ENDIF»use strict;
+		use strict;
 		use warnings;
 		
 		package «type.recordName»;
@@ -57,26 +59,28 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		
 		=head1 SYNOPSIS
 		
-		 my $record = «type.recordName»->new(«PropertyEvaluation::collectAllDataProperties(type).createParameterCall»);
+		 my $record = «type.recordName»->new(«type.collectAllDataProperties.createParameterCall»);
 		 
 		 $writer->write($record->genoutput());
 		
 		=head1 DESCRIPTION
 		
-		Auto-generated structures. See the IRL code.
+		Auto-generated structures.
+		Author: «definedAuthor»
+		Since: «definedVersion»
 				
 		=head1 METHODS
 		
-		=head2 $record = «type.recordName»->new(«PropertyEvaluation::collectAllDataProperties(type).createParameterCall»);
+		=head2 $record = «type.recordName»->new(«type.collectAllDataProperties.createParameterCall»);
 		
 		Creates a new record with the given parameters.
 		
 		=cut
 		
 		sub new {
-		  my («PropertyEvaluation::collectAllDataProperties(type).createParameterCall») = @_;
+		  my («type.collectAllDataProperties.createParameterCall») = @_;
 		  my $this = {
-		    «PropertyEvaluation::collectAllDataProperties(type).map[createProperty].join(',\n')»
+		    «type.collectAllDataProperties.map[createProperty].join(',\n')»
 		  };
 		
 		  return bless($this,$type);
@@ -88,19 +92,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 						
 		=head1 COPYRIGHT and LICENCE
 		
-		Copyright «Calendar.getInstance().get(Calendar.YEAR)» Kieker Project (http://kieker-monitoring.net)
-		
-		Licensed under the Apache License, Version 2.0 (the "License"); 
-		you may not use this file except in compliance with the License.
-		You may obtain a copy of the License at
-		
-		http://www.apache.org/licenses/LICENSE-2.0
-		
-		Unless required by applicable law or agreed to in writing, software
-		distributed under the License is distributed on an "AS IS" BASIS,
-		WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-		See the License for the specific language governing permissions and
-		limitations under the License.
+		«header»
 		
 		=cut
 		'''

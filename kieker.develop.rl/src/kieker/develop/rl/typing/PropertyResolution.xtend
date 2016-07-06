@@ -1,15 +1,15 @@
-package kieker.develop.rl.validation
+package kieker.develop.rl.typing
 
-import kieker.develop.rl.recordLang.TemplateType
 import kieker.develop.rl.recordLang.Property
 import kieker.develop.rl.recordLang.RecordType
-import java.util.ArrayList
-import kieker.develop.rl.recordLang.Classifier
-import kieker.develop.rl.generator.InternalErrorException
 import java.util.List
+import java.util.ArrayList
+import kieker.develop.rl.recordLang.TemplateType
 
-class PropertyEvaluation {
-	
+import static extension kieker.develop.rl.typing.TypeResolution.*
+
+class PropertyResolution {
+		
 	/* -- data properties -- */
 	
 	/* used in code generation to determine the storage structure */
@@ -23,9 +23,9 @@ class PropertyEvaluation {
 	 * @returns
 	 * 		a complete list of all properties in a record
 	 */
-	dispatch static def List<Property> collectAllDataProperties(RecordType type) {
+	static def List<Property> collectAllDataProperties(RecordType type) {
 		val list = new ArrayList<Property>()
-		list.addAll(collectAllProperties(type).filter[property | (property.referTo == null)])
+		list.addAll(collectAllProperties(type).filter[it.referTo == null])
 		return list
 	}
 		
@@ -39,9 +39,9 @@ class PropertyEvaluation {
 	 * @returns
 	 * 		a complete list of all properties in a record
 	 */
-	dispatch static def List<Property> collectAllDataProperties(TemplateType type) {
+	static def List<Property> collectAllDataProperties(TemplateType type) {
 		val list = new ArrayList<Property>()
-		list.addAll(collectAllProperties(type).filter[property | (property.referTo == null)])
+		list.addAll(collectAllProperties(type).filter[it.referTo == null])
 		return list
 	}
 	
@@ -58,7 +58,7 @@ class PropertyEvaluation {
 	 * @returns
 	 * 		a complete list of all properties in a record
 	 */
-	dispatch static def List<Property> collectAllProperties(RecordType type) {
+	static def List<Property> collectAllProperties(RecordType type) {
 		val List<Property> result =
 			if (type.parent != null)
 				type.parent.collectAllProperties
@@ -80,7 +80,7 @@ class PropertyEvaluation {
 	 * @returns
 	 * 		a complete list of all properties in a record
 	 */
-	dispatch static def List<Property> collectAllProperties(TemplateType type) {
+	static def List<Property> collectAllProperties(TemplateType type) {
 		val List<Property> result = new ArrayList<Property>()
 		if (type.parents != null)
 			type.parents.forEach[iface | result.addAllUnique(iface.collectAllProperties)]
@@ -101,7 +101,7 @@ class PropertyEvaluation {
 	 * @returns
 	 * 		a complete list of all properties in a record
 	 */
-	dispatch static def List<Property> collectAllTemplateProperties(RecordType type) {
+	static def List<Property> collectAllTemplateProperties(RecordType type) {
 		if (type.parents != null) {
 			val List<Property> result = new ArrayList<Property>()
 			type.parents.forEach[iface | result.addAllUnique(iface.collectAllTemplateProperties)]
@@ -120,7 +120,7 @@ class PropertyEvaluation {
 	 * @returns
 	 * 		a complete list of all properties in a record
 	 */
-	dispatch static def List<Property> collectAllTemplateProperties(TemplateType type) {
+	static def List<Property> collectAllTemplateProperties(TemplateType type) {
 		val List<Property> result = new ArrayList<Property>()
 		if (type.parents!=null)
 			type.parents.forEach[iface | result.addAllUnique(iface.collectAllTemplateProperties)]
@@ -155,54 +155,67 @@ class PropertyEvaluation {
 	}
 	
 	/**
-	 * Determine the type of a property. Even if it is an alias.
+	 * Collect recursively a list of all properties which are defined in an template and
+	 * not inherited from predecessors.
 	 * 
-	 * @param property the property
+	 * @param type
+	 * 		a recordType
 	 * 
-	 * @param the type classifier
+	 * @returns
+	 * 		a complete list of all properties which require getters
 	 */
-	def static Classifier findType(Property property) {
-		if (property.type != null)
-			return property.type
+	static def List<Property> collectAllGetterDeclarationProperties(RecordType type) {
+		var List<Property> result = type.collectAllProperties
+		if (type.parent != null)
+			return result.removeAlreadyImplementedProperties(type.parent)
 		else
-			return property.referTo.findType
+			return result
 	}
 	
-		/**
-	 * Determine the size of the resulting binary serialization.
-	 * 
-	 * @param allProperties
-	 * 		all properties of a record type
-	 * 
-	 * @returns
-	 * 		the computed value
-	 */
-	 def static int calculateSize(Iterable<Property> list) {
-		list.fold(0)[result, property | result + property.size]
-	}
-		
+	
 	/**
-	 * Determine the size of one type.
+	 * Collect all properties which must be declared for this type. In total that are:
+	 * - properties declared by the type, which are not an alias.
+	 * - properties declared by any imported interface, which are not implemented in a parent type
+	 *   and which are not an alias.
 	 * 
-	 * @param property
-	 * 		property which serialization size is determined.
+	 * @param type
+	 * 		a recordType
 	 * 
 	 * @returns
-	 * 		the serialization size of the property
+	 * 		a complete list of all properties which require declaration
 	 */
-	def static private int getSize(Property property) {
-		switch (PropertyEvaluation::findType(property).type.name) {
-			case 'string' : 4
-			case 'byte' : 1
-			case 'short' : 2
-			case 'int' : 4
-			case 'long' : 8
-			case 'float' : 4
-			case 'double' : 8
-			case 'char' : 2
-			case 'boolean' : 1
-			default: throw new InternalErrorException(PropertyEvaluation::findType(property).type.name + 'is not a valid type name')
-		}
-	}
+	static def List<Property> collectAllDeclarationProperties(RecordType type) {
+		var List<Property> properties = new ArrayList<Property>() 
+		properties.addAll(type.collectAllTemplateProperties)
+		properties.addAll(type.properties)
 		
+		val List<Property> declarationProperties = new ArrayList<Property>()
+		properties.forEach[property | if (property.referTo == null) declarationProperties.add(property)]
+				
+		if (type.parent != null)
+			return declarationProperties.removeAlreadyImplementedProperties(type.parent)
+		else
+			return declarationProperties
+	}
+	
+	/**
+	 * Find properties implemented in a type and remove them from the list of properties.
+	 * 
+	 * @param type
+	 * 		the parent type of the type where the property list belongs to
+	 * 
+	 * @returns
+	 * 		the remaining list of properties
+	 */
+	private static def List<Property> removeAlreadyImplementedProperties(List<Property> list, RecordType parentType) {
+		val List<Property> allParentProperties = parentType.collectAllProperties
+		var result = list // necessary for the loop below. very ugly 
+		for (Property parentProperty : allParentProperties) {
+			val property = result.findFirst[it.name.equals(parentProperty.name)]
+			result.remove(property)
+		}
+				
+		return result
+	}	
 }

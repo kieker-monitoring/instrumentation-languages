@@ -1,10 +1,11 @@
 package kieker.develop.rl.generator;
 
+import de.cau.cs.se.geco.architecture.framework.IGenerator;
 import kieker.develop.rl.generator.AbstractTypeGenerator;
 import kieker.develop.rl.recordLang.TemplateType;
 
 @SuppressWarnings("all")
-public abstract class AbstractTemplateTypeGenerator extends AbstractTypeGenerator {
+public abstract class AbstractTemplateTypeGenerator extends AbstractTypeGenerator implements IGenerator<TemplateType, CharSequence> {
   /**
    * Primary code generation template.
    * 
@@ -17,5 +18,6 @@ public abstract class AbstractTemplateTypeGenerator extends AbstractTypeGenerato
    * @param headerComment
    *      comment inserted as header comment of the output
    */
-  public abstract CharSequence createContent(final TemplateType type, final String author, final String version, final String headerComment);
+  @Override
+  public abstract CharSequence generate(final TemplateType type);
 }
