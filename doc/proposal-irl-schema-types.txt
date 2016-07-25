@@ -1,0 +1,61 @@
+# Concept and Semantic Support for the Instrumentation Record Language
+
+Model-driven monitoring relies on a mechanism to specify the monitoring aspect in a technology independent way and a technology spanning method to specify monitoring events.
+The IRL allows to specify syntactic record structure, but is unable to specify semantical constraints, i.e., IRL record types allow to define properties with base and array types, but the used names for the properties do not posses a specific meaning in the language.
+Furthermore, the IRL allows to describe entity and template types which are transformed into Kieker record types.
+Template types allow to specify properties, which can be inherited by other entity and template types.
+The type system support multi-inheritance over template types. While this allows to reuse properties, it does not allow to reuse larger concepts spanning over multiple template types. 
+
+As a solution to the present limitations of the IRL we extend the IRL type system utilizing model types [Steel] and model concepts [De Lara?] as guiding themes to leverage the reuse of concepts in the IRL.
+Furthermore, we introduce semantics into the entity and template type declaration, following ideas of X [X].
+
+## Foundations
+
+Steel - Model Types [Steel 2007]
+
+- Set of object types
+- An object type is in MOF called a class
+
+Typically, the relation used for conformance of one object type to another is subtyping.
+Subtyping, as described briefly in Sect. 2, requires that the operations defined on two object types show covariance of their return types and contravariance of their parameter types.
+
+Simplification: If we consider each MOF property to be a pair of accessor/mutator (getter/setter) methods this means that subtyping for MOF classes requires invariance of property types.
+
+
+
+De Lara - Model Concepts
+
+X - X semantics for model concepts/model types
+
+## The IRL Type System
+
+## Concept Extension
+
+> Idea
+Combine one extension template E with a set of templates S =  {s_1, s_2} in a way that new combined types are created based on the E \over S = { E + s_1, E + s_2 ... }. Resulting types can either be templates identified by E:s_1 or entities, in which case an additional entity prefix name must be specified. These types can be addressed as P:s_1.
+
+
+## Semantic Extension
+
+> Idea
+The current IRL defines properties as a set of disjunct elements identified by their name and typed by a base or array type. However, the names have no further meaning. To improve on this issue, we allow to relate properties to semantics for two reasons. First, this supports the documentation of records. Second, it enables to ensure the use of certain properties in a specific way. However, for compatibility reasons, this information is not passed to the record implementations nor is it enforced to set the semantic constraints.
+
+Syntax:
+Property: type=TypeReference name=ID ('=' (constant=Constant | semantics=[Semantics|ID] ('(' parameters+=[Parameter|ID] (',' parameters+=[Parameter|ID])*')')?)?
+
+For Semantics there are a set of predefined names, like time, operation-signature, class-signature, signature, group-id, cpu-utilization etc.
+
+The Semantics are implemented in a third language, which provides templating.
+
+Semantics: name=ID '(' parameterDeclarations+=ParameterDeclaration (',' parameterDeclarations+=ParameterDeclaration)* template=Template
+
+ParameterDeclaration:
+	type=Type name=ID
+;
+
+Note: Maybe this approach is not the best, as it result in a cyclic dependency between RL and SMAP, but in case we move the typing system to SMAP, this would disappear
+
+## Related Work
+
+## Conclusion
+ 
