@@ -41,6 +41,7 @@ Export-Package: kieker.develop.rl,
  kieker.develop.rl.recordLang.impl,
  kieker.develop.rl.recordLang.util,
  kieker.develop.rl.scoping,
+ kieker.develop.rl.typing,
  kieker.develop.rl.serializer,
  kieker.develop.rl.services,
  kieker.develop.rl.validation
