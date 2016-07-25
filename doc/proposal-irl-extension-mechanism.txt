@@ -1,0 +1,7 @@
+# Advancing the extendability of the IRL generator infrastructure
+
+The current IRL generator design is already extensible, but adding new generator requires to add new code directly to the IRL language project. This is not always feasible and in larger contexts it can be problematic, as the generators must be integrated into other build systems.
+
+Therefore, we propose a plug-in interface which allows to bundle generator fragments for languages together with the necessary outlets.
+
+
