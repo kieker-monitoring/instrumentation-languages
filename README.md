@@ -15,7 +15,7 @@ Therefore, we developed the Instrumentation Record Language (IRL) which provides
 an technology independent definition for record structures. Based on the IRL
 generators produce code for various target languages including Java, C and Perl.
 
-The genrator API is also simple and easy to use. So it can be extended for other 
+The generator API is also simple and easy to use. So it can be extended for other 
 languages and other purposes. For example, tests for records can automatically be 
 generated.
 
