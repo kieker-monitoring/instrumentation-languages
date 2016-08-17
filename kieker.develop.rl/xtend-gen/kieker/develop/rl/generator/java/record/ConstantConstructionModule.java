@@ -6,8 +6,6 @@ import kieker.develop.rl.generator.InternalErrorException;
 import kieker.develop.rl.generator.java.JavaTypeMapping;
 import kieker.develop.rl.generator.java.record.NameResolver;
 import kieker.develop.rl.recordLang.ArrayLiteral;
-import kieker.develop.rl.recordLang.ArraySize;
-import kieker.develop.rl.recordLang.BaseType;
 import kieker.develop.rl.recordLang.BooleanLiteral;
 import kieker.develop.rl.recordLang.BuiltInValueLiteral;
 import kieker.develop.rl.recordLang.Classifier;
@@ -40,27 +38,7 @@ public class ConstantConstructionModule {
       boolean _xblockexpression = false;
       {
         final Classifier type = TypeResolution.findType(it);
-        boolean _or = false;
-        Literal _value = it.getValue();
-        boolean _notEquals = (!Objects.equal(_value, null));
-        if (_notEquals) {
-          _or = true;
-        } else {
-          boolean _and = false;
-          BaseType _type = type.getType();
-          BaseTypes _typeEnum = BaseTypes.getTypeEnum(_type);
-          boolean _equals = Objects.equal(BaseTypes.STRING, _typeEnum);
-          if (!_equals) {
-            _and = false;
-          } else {
-            EList<ArraySize> _sizes = type.getSizes();
-            int _size = _sizes.size();
-            boolean _equals_1 = (_size == 0);
-            _and = _equals_1;
-          }
-          _or = _and;
-        }
-        _xblockexpression = _or;
+        _xblockexpression = ((!Objects.equal(it.getValue(), null)) || (Objects.equal(BaseTypes.STRING, BaseTypes.getTypeEnum(type.getType())) && (type.getSizes().size() == 0)));
       }
       return Boolean.valueOf(_xblockexpression);
     };
@@ -157,20 +135,18 @@ public class ConstantConstructionModule {
   private static CharSequence createLiteral(final Literal literal) throws InternalErrorException {
     CharSequence _switchResult = null;
     boolean _matched = false;
-    if (!_matched) {
-      if (literal instanceof IntLiteral) {
-        _matched=true;
-        StringConcatenation _builder = new StringConcatenation();
-        int _value = ((IntLiteral)literal).getValue();
-        _builder.append(_value, "");
-        String _xifexpression = null;
-        boolean _isType = TypeResolution.isType(literal, BaseTypes.LONG);
-        if (_isType) {
-          _xifexpression = "L";
-        }
-        _builder.append(_xifexpression, "");
-        _switchResult = _builder;
+    if (literal instanceof IntLiteral) {
+      _matched=true;
+      StringConcatenation _builder = new StringConcatenation();
+      int _value = ((IntLiteral)literal).getValue();
+      _builder.append(_value, "");
+      String _xifexpression = null;
+      boolean _isType = TypeResolution.isType(literal, BaseTypes.LONG);
+      if (_isType) {
+        _xifexpression = "L";
       }
+      _builder.append(_xifexpression, "");
+      _switchResult = _builder;
     }
     if (!_matched) {
       if (literal instanceof FloatLiteral) {

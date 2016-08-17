@@ -57,12 +57,10 @@ public class RecordLangScopeProvider extends AbstractDeclarativeScopeProvider {
   public IScope scope_Property_referTo(final Property property, final EReference reference) {
     final EObject type = property.eContainer();
     boolean _matched = false;
-    if (!_matched) {
-      if (type instanceof RecordType) {
-        _matched=true;
-        List<Property> _collectAllProperties = PropertyResolution.collectAllProperties(((RecordType)type));
-        return Scopes.scopeFor(_collectAllProperties);
-      }
+    if (type instanceof RecordType) {
+      _matched=true;
+      List<Property> _collectAllProperties = PropertyResolution.collectAllProperties(((RecordType)type));
+      return Scopes.scopeFor(_collectAllProperties);
     }
     if (!_matched) {
       if (type instanceof TemplateType) {

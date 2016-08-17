@@ -160,16 +160,7 @@ public class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
   private CharSequence createImports(final EList<TemplateType> parents, final TemplateType type) {
     StringConcatenation _builder = new StringConcatenation();
     CharSequence _xifexpression = null;
-    boolean _and = false;
-    boolean _notEquals = (!Objects.equal(parents, null));
-    if (!_notEquals) {
-      _and = false;
-    } else {
-      int _size = parents.size();
-      boolean _greaterThan = (_size > 0);
-      _and = _greaterThan;
-    }
-    if (_and) {
+    if (((!Objects.equal(parents, null)) && (parents.size() > 0))) {
       final Function1<TemplateType, Boolean> _function = (TemplateType t) -> {
         return Boolean.valueOf(this.isInSamePackage(type, t));
       };
@@ -209,16 +200,7 @@ public class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
   private CharSequence createExtends(final EList<TemplateType> parents) {
     StringConcatenation _builder = new StringConcatenation();
     String _xifexpression = null;
-    boolean _and = false;
-    boolean _notEquals = (!Objects.equal(parents, null));
-    if (!_notEquals) {
-      _and = false;
-    } else {
-      int _size = parents.size();
-      boolean _greaterThan = (_size > 0);
-      _and = _greaterThan;
-    }
-    if (_and) {
+    if (((!Objects.equal(parents, null)) && (parents.size() > 0))) {
       final Function1<TemplateType, String> _function = (TemplateType t) -> {
         return t.getName();
       };

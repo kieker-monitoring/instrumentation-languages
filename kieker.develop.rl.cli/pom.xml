@@ -1,17 +1,21 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>kieker.develop.rl.cli</groupId>
+	<parent>
+		<groupId>kieker.develop</groupId>
+		<artifactId>kieker.develop.parent</artifactId>
+		<version>${project.version}</version>
+	</parent>
+
 	<artifactId>kieker.develop.rl.cli</artifactId>
-	<version>1.2.0-SNAPSHOT</version>
 	<name>Kieker Record Language CLI Compiler</name>
 	<description>Code generator for Kieker's Instrumentation Record Language</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<checkstyle.config.location>../kieker.develop.releng/cs-conf.xml</checkstyle.config.location>
+		<checkstyle.config.location>${basedir}/cs-conf.xml</checkstyle.config.location>
 		<!-- variables -->
-		<eclipse-repo.url>http://download.eclipse.org/releases/mars</eclipse-repo.url>
+		<eclipse-repo.url>http://download.eclipse.org/releases/neon</eclipse-repo.url>
 	</properties>
 
 	<repositories>

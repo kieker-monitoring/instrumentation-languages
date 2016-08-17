@@ -105,17 +105,8 @@ public class JarModelResource extends ResourceImpl {
         if ((object instanceof Model)) {
           final EList<ComplexType> types = ((Model) object).getTypes();
           final Function1<ComplexType, Boolean> _function = (ComplexType type) -> {
-            boolean _or = false;
-            String _name = type.getName();
-            boolean _endsWith = _name.endsWith(("." + uriFragment));
-            if (_endsWith) {
-              _or = true;
-            } else {
-              String _name_1 = type.getName();
-              boolean _equals = _name_1.equals(uriFragment);
-              _or = _equals;
-            }
-            return Boolean.valueOf(_or);
+            return Boolean.valueOf((type.getName().endsWith(("." + uriFragment)) || 
+              type.getName().equals(uriFragment)));
           };
           final ComplexType result = IterableExtensions.<ComplexType>findFirst(types, _function);
           boolean _notEquals = (!Objects.equal(result, null));
@@ -222,22 +213,9 @@ public class JarModelResource extends ResourceImpl {
                 boolean _xblockexpression_2 = false;
                 {
                   final String name = it.getFullyQualifiedName();
-                  boolean _or = false;
-                  boolean _or_1 = false;
-                  boolean _equals = name.equals("java.io.Serializable");
-                  if (_equals) {
-                    _or_1 = true;
-                  } else {
-                    boolean _equals_1 = name.equals("java.lang.Comparable");
-                    _or_1 = _equals_1;
-                  }
-                  if (_or_1) {
-                    _or = true;
-                  } else {
-                    boolean _equals_2 = name.equals("java.lang.Object");
-                    _or = _equals_2;
-                  }
-                  _xblockexpression_2 = (!_or);
+                  _xblockexpression_2 = (!((name.equals("java.io.Serializable") || 
+                    name.equals("java.lang.Comparable")) || 
+                    name.equals("java.lang.Object")));
                 }
                 return Boolean.valueOf(_xblockexpression_2);
               };
@@ -307,21 +285,19 @@ public class JarModelResource extends ResourceImpl {
     try {
       final ComplexType modelType = typeMap.get(type);
       boolean _matched = false;
-      if (!_matched) {
-        if (modelType instanceof TemplateType) {
-          _matched=true;
-          final ITypeHierarchy hierarchy = type.newSupertypeHierarchy(null);
-          IType[] _superInterfaces = hierarchy.getSuperInterfaces(type);
-          final Consumer<IType> _function = (IType iface) -> {
-            final ComplexType template = typeMap.get(iface);
-            boolean _notEquals = (!Objects.equal(template, null));
-            if (_notEquals) {
-              EList<TemplateType> _parents = ((TemplateType)modelType).getParents();
-              _parents.add(((TemplateType) template));
-            }
-          };
-          ((List<IType>)Conversions.doWrapArray(_superInterfaces)).forEach(_function);
-        }
+      if (modelType instanceof TemplateType) {
+        _matched=true;
+        final ITypeHierarchy hierarchy = type.newSupertypeHierarchy(null);
+        IType[] _superInterfaces = hierarchy.getSuperInterfaces(type);
+        final Consumer<IType> _function = (IType iface) -> {
+          final ComplexType template = typeMap.get(iface);
+          boolean _notEquals = (!Objects.equal(template, null));
+          if (_notEquals) {
+            EList<TemplateType> _parents = ((TemplateType)modelType).getParents();
+            _parents.add(((TemplateType) template));
+          }
+        };
+        ((List<IType>)Conversions.doWrapArray(_superInterfaces)).forEach(_function);
       }
       if (!_matched) {
         if (modelType instanceof RecordType) {
@@ -394,50 +370,13 @@ public class JarModelResource extends ResourceImpl {
       IField[] _fields = type.getFields();
       final Consumer<IField> _function = (IField field) -> {
         try {
-          boolean _and = false;
-          boolean _and_1 = false;
-          int _flags = field.getFlags();
-          boolean _isPublic = Flags.isPublic(_flags);
-          if (!_isPublic) {
-            _and_1 = false;
-          } else {
-            int _flags_1 = field.getFlags();
-            boolean _isStatic = Flags.isStatic(_flags_1);
-            _and_1 = _isStatic;
-          }
-          if (!_and_1) {
-            _and = false;
-          } else {
-            int _flags_2 = field.getFlags();
-            boolean _isFinal = Flags.isFinal(_flags_2);
-            _and = _isFinal;
-          }
-          if (_and) {
-            boolean _and_2 = false;
-            boolean _and_3 = false;
-            String _elementName = field.getElementName();
-            boolean _startsWith = _elementName.startsWith("TYPE_SIZE");
-            boolean _not = (!_startsWith);
-            if (!_not) {
-              _and_3 = false;
-            } else {
-              String _elementName_1 = field.getElementName();
-              boolean _equals = "TYPES".equals(_elementName_1);
-              boolean _not_1 = (!_equals);
-              _and_3 = _not_1;
-            }
-            if (!_and_3) {
-              _and_2 = false;
-            } else {
-              String _elementName_2 = field.getElementName();
-              boolean _startsWith_1 = _elementName_2.startsWith("CACHED_KIEKERRECORDS");
-              boolean _not_2 = (!_startsWith_1);
-              _and_2 = _not_2;
-            }
-            if (_and_2) {
+          if (((Flags.isPublic(field.getFlags()) && Flags.isStatic(field.getFlags())) && Flags.isFinal(field.getFlags()))) {
+            if ((((!field.getElementName().startsWith("TYPE_SIZE")) && 
+              (!"TYPES".equals(field.getElementName()))) && 
+              (!field.getElementName().startsWith("CACHED_KIEKERRECORDS")))) {
               final Constant constant = this.rlFactory.createConstant();
-              String _elementName_3 = field.getElementName();
-              constant.setName(_elementName_3);
+              String _elementName = field.getElementName();
+              constant.setName(_elementName);
               String _typeSignature = field.getTypeSignature();
               Classifier _createType = this.createType(_typeSignature);
               constant.setType(_createType);
@@ -448,29 +387,10 @@ public class JarModelResource extends ResourceImpl {
               _constants.add(constant);
             }
           } else {
-            boolean _and_4 = false;
-            boolean _and_5 = false;
-            int _flags_3 = field.getFlags();
-            boolean _isPrivate = Flags.isPrivate(_flags_3);
-            if (!_isPrivate) {
-              _and_5 = false;
-            } else {
-              int _flags_4 = field.getFlags();
-              boolean _isFinal_1 = Flags.isFinal(_flags_4);
-              _and_5 = _isFinal_1;
-            }
-            if (!_and_5) {
-              _and_4 = false;
-            } else {
-              int _flags_5 = field.getFlags();
-              boolean _isStatic_1 = Flags.isStatic(_flags_5);
-              boolean _not_3 = (!_isStatic_1);
-              _and_4 = _not_3;
-            }
-            if (_and_4) {
+            if (((Flags.isPrivate(field.getFlags()) && Flags.isFinal(field.getFlags())) && (!Flags.isStatic(field.getFlags())))) {
               final Property property = this.rlFactory.createProperty();
-              String _elementName_4 = field.getElementName();
-              property.setName(_elementName_4);
+              String _elementName_1 = field.getElementName();
+              property.setName(_elementName_1);
               String _typeSignature_1 = field.getTypeSignature();
               Classifier _createType_1 = this.createType(_typeSignature_1);
               property.setType(_createType_1);
@@ -491,13 +411,11 @@ public class JarModelResource extends ResourceImpl {
   private Literal createLiteral(final Object object) {
     Object _switchResult = null;
     boolean _matched = false;
-    if (!_matched) {
-      if (object instanceof Integer) {
-        _matched=true;
-        final IntLiteral result = this.rlFactory.createIntLiteral();
-        result.setValue(((Integer) object).intValue());
-        return result;
-      }
+    if (object instanceof Integer) {
+      _matched=true;
+      final IntLiteral result = this.rlFactory.createIntLiteral();
+      result.setValue(((Integer) object).intValue());
+      return result;
     }
     if (!_matched) {
       if (object instanceof Byte) {
@@ -626,15 +544,13 @@ public class JarModelResource extends ResourceImpl {
       final Consumer<IJavaElement> _function = (IJavaElement element) -> {
         try {
           boolean _matched = false;
-          if (!_matched) {
-            if (element instanceof IPackageFragment) {
-              _matched=true;
-              String _elementName = ((IPackageFragment)element).getElementName();
-              boolean _startsWith = _elementName.startsWith("kieker");
-              if (_startsWith) {
-                Collection<IType> _findAllTypes = this.findAllTypes(((IPackageFragment)element));
-                result.addAll(_findAllTypes);
-              }
+          if (element instanceof IPackageFragment) {
+            _matched=true;
+            String _elementName = ((IPackageFragment)element).getElementName();
+            boolean _startsWith = _elementName.startsWith("kieker");
+            if (_startsWith) {
+              Collection<IType> _findAllTypes = this.findAllTypes(((IPackageFragment)element));
+              result.addAll(_findAllTypes);
             }
           }
           if (!_matched) {

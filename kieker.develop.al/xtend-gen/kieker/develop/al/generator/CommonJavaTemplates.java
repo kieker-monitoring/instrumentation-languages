@@ -114,11 +114,9 @@ public class CommonJavaTemplates {
   private static boolean isTraceAPIUsed(final Value initialization) {
     boolean _switchResult = false;
     boolean _matched = false;
-    if (!_matched) {
-      if (initialization instanceof Literal) {
-        _matched=true;
-        _switchResult = false;
-      }
+    if (initialization instanceof Literal) {
+      _matched=true;
+      _switchResult = false;
     }
     if (!_matched) {
       if (initialization instanceof ReferenceValue) {
@@ -234,16 +232,14 @@ public class CommonJavaTemplates {
     try {
       CharSequence _switchResult = null;
       boolean _matched = false;
-      if (!_matched) {
-        if (value instanceof StringLiteral) {
-          _matched=true;
-          StringConcatenation _builder = new StringConcatenation();
-          _builder.append("\"");
-          String _value = ((StringLiteral)value).getValue();
-          _builder.append(_value, "");
-          _builder.append("\"");
-          _switchResult = _builder;
-        }
+      if (value instanceof StringLiteral) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("\"");
+        String _value = ((StringLiteral)value).getValue();
+        _builder.append(_value, "");
+        _builder.append("\"");
+        _switchResult = _builder;
       }
       if (!_matched) {
         if (value instanceof IntLiteral) {
@@ -328,11 +324,9 @@ public class CommonJavaTemplates {
   private static CharSequence createLocalProperty(final kieker.develop.al.aspectLang.Property property) {
     CharSequence _switchResult = null;
     boolean _matched = false;
-    if (!_matched) {
-      if (property instanceof ReflectionProperty) {
-        _matched=true;
-        _switchResult = CommonJavaTemplates.createLocalReflectionProperty(((ReflectionProperty)property));
-      }
+    if (property instanceof ReflectionProperty) {
+      _matched=true;
+      _switchResult = CommonJavaTemplates.createLocalReflectionProperty(((ReflectionProperty)property));
     }
     if (!_matched) {
       if (property instanceof RuntimeProperty) {

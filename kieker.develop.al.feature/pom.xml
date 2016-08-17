@@ -3,13 +3,12 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <relativePath>../kieker.develop.releng/pom.xml</relativePath>
     <groupId>kieker.develop</groupId>
-    <artifactId>parent</artifactId>
-    <version>1.2.0-SNAPSHOT</version>
+    <artifactId>kieker.develop.parent</artifactId>
+    <version>${project.version}</version>
   </parent>
 
-  <artifactId>kieker.develop.al.sdk</artifactId>
+  <artifactId>kieker.develop.al.feature</artifactId>
   <packaging>eclipse-feature</packaging>
 
   <name>Instrumentation Aspect Language Feature</name>

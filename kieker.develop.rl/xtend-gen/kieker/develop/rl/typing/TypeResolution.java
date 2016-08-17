@@ -19,13 +19,11 @@ public class TypeResolution {
     BaseType _switchResult = null;
     EObject _eContainer = literal.eContainer();
     boolean _matched = false;
-    if (!_matched) {
-      if (_eContainer instanceof Constant) {
-        _matched=true;
-        EObject _eContainer_1 = literal.eContainer();
-        Classifier _type = ((Constant) _eContainer_1).getType();
-        _switchResult = _type.getType();
-      }
+    if (_eContainer instanceof Constant) {
+      _matched=true;
+      EObject _eContainer_1 = literal.eContainer();
+      Classifier _type = ((Constant) _eContainer_1).getType();
+      _switchResult = _type.getType();
     }
     if (!_matched) {
       if (_eContainer instanceof Property) {

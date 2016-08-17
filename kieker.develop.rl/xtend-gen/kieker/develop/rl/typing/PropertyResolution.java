@@ -5,8 +5,6 @@ import com.google.common.collect.Iterables;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
-import kieker.develop.rl.recordLang.BaseType;
-import kieker.develop.rl.recordLang.Classifier;
 import kieker.develop.rl.recordLang.Property;
 import kieker.develop.rl.recordLang.RecordType;
 import kieker.develop.rl.recordLang.TemplateType;
@@ -195,23 +193,7 @@ public class PropertyResolution {
    */
   public static boolean containsProperty(final List<Property> list, final Property item) {
     for (final Property p : list) {
-      boolean _and = false;
-      String _name = p.getName();
-      String _name_1 = item.getName();
-      boolean _equals = _name.equals(_name_1);
-      if (!_equals) {
-        _and = false;
-      } else {
-        Classifier _findType = TypeResolution.findType(p);
-        BaseType _type = _findType.getType();
-        String _name_2 = _type.getName();
-        Classifier _findType_1 = TypeResolution.findType(item);
-        BaseType _type_1 = _findType_1.getType();
-        String _name_3 = _type_1.getName();
-        boolean _equals_1 = _name_2.equals(_name_3);
-        _and = _equals_1;
-      }
-      if (_and) {
+      if ((p.getName().equals(item.getName()) && TypeResolution.findType(p).getType().getName().equals(TypeResolution.findType(item).getType().getName()))) {
         return true;
       }
     }

@@ -199,14 +199,7 @@ public class ForeignModelResource extends ResourceImpl {
    */
   private synchronized boolean createModel() {
     boolean _xifexpression = false;
-    boolean _and = false;
-    boolean _notEquals = (!Objects.equal(this.applicationModel, null));
-    if (!_notEquals) {
-      _and = false;
-    } else {
-      _and = (!this.loading);
-    }
-    if (_and) {
+    if (((!Objects.equal(this.applicationModel, null)) && (!this.loading))) {
       boolean _xblockexpression = false;
       {
         this.loading = true;

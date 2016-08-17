@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>kieker.develop</groupId>
-	<artifactId>parent</artifactId>
+	<artifactId>kieker.develop.parent</artifactId>
 	<version>1.2.0-SNAPSHOT</version>
 	<name>Kieker Development Tools - Release Engineering</name>
 
@@ -28,17 +28,18 @@
 	</properties>
 
 	<modules>
-		<module>../kieker.develop.al</module>
-		<module>../kieker.develop.al.ui</module>
-		<module>../kieker.develop.al.tests</module>
-		<module>../kieker.develop.al.sdk</module>
-		<module>../kieker.develop.al.handler.pcm</module>
-		<module>../kieker.develop.rl</module>
-		<module>../kieker.develop.rl.ui</module>
-		<module>../kieker.develop.rl.tests</module>
-		<module>../kieker.develop.rl.sdk</module>
-		<module>../kieker.develop.updatesite</module>
-		<module>../kieker.develop.rl.cli</module>
+		<module>kieker.develop.al</module>
+		<module>kieker.develop.al.ui</module>
+		<module>kieker.develop.al.tests</module>
+		<module>kieker.develop.al.feature</module>
+		<module>kieker.develop.al.handler.pcm</module>
+		<module>kieker.develop.rl</module>
+		<module>kieker.develop.rl.ui</module>
+		<module>kieker.develop.rl.tests</module>
+		<module>kieker.develop.rl.feature</module>
+		<module>kieker.develop.repository</module>
+		<module>kieker.develop.target</module>
+		<module>kieker.develop.rl.cli</module>
 	</modules>
 
 	<repositories>

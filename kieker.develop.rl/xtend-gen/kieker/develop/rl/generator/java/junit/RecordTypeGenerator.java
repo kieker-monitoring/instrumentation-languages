@@ -587,21 +587,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       _builder.append(",");
       _builder.newLineIfNotEmpty();
       {
-        boolean _or = false;
-        Classifier _type = property.getType();
-        BaseType _type_1 = _type.getType();
-        String _name = _type_1.getName();
-        boolean _equals = Objects.equal(_name, "float");
-        if (_equals) {
-          _or = true;
-        } else {
-          Classifier _type_2 = property.getType();
-          BaseType _type_3 = _type_2.getType();
-          String _name_1 = _type_3.getName();
-          boolean _equals_1 = Objects.equal(_name_1, "double");
-          _or = _equals_1;
-        }
-        if (_or) {
+        if ((Objects.equal(property.getType().getType().getName(), "float") || Objects.equal(property.getType().getType().getName(), "double"))) {
           _builder.append("\t");
           String _castToPrimitiveType = this.getCastToPrimitiveType(property);
           _builder.append(_castToPrimitiveType, "\t");
@@ -612,20 +598,20 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
           String _castToPrimitiveType_1 = this.getCastToPrimitiveType(property);
           _builder.append(_castToPrimitiveType_1, "\t");
           _builder.append(" (");
-          Classifier _type_4 = property.getType();
-          BaseType _type_5 = _type_4.getType();
-          String _createPrimitiveWrapperTypeName = JavaTypeMapping.createPrimitiveWrapperTypeName(_type_5);
+          Classifier _type = property.getType();
+          BaseType _type_1 = _type.getType();
+          String _createPrimitiveWrapperTypeName = JavaTypeMapping.createPrimitiveWrapperTypeName(_type_1);
           _builder.append(_createPrimitiveWrapperTypeName, "\t");
           _builder.append(")values[");
           _builder.append(index, "\t");
           _builder.append("], 0.0000001");
           _builder.newLineIfNotEmpty();
         } else {
-          Classifier _type_6 = property.getType();
-          BaseType _type_7 = _type_6.getType();
-          String _name_2 = _type_7.getName();
-          boolean _equals_2 = Objects.equal(_name_2, "string");
-          if (_equals_2) {
+          Classifier _type_2 = property.getType();
+          BaseType _type_3 = _type_2.getType();
+          String _name = _type_3.getName();
+          boolean _equals = Objects.equal(_name, "string");
+          if (_equals) {
             _builder.append("\t");
             CharSequence _createPropertyValueSet_2 = this.createPropertyValueSet(property);
             _builder.append(_createPropertyValueSet_2, "\t");
@@ -675,11 +661,9 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   
   private String createConstantValue(final Literal value) {
     boolean _matched = false;
-    if (!_matched) {
-      if (value instanceof StringLiteral) {
-        _matched=true;
-        return ((StringLiteral) value).getValue();
-      }
+    if (value instanceof StringLiteral) {
+      _matched=true;
+      return ((StringLiteral) value).getValue();
     }
     if (!_matched) {
       if (value instanceof FloatLiteral) {
@@ -744,21 +728,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
         _builder.append(_name_1, "");
         _builder.append(" values are not equal.\", ");
         {
-          boolean _or = false;
-          Classifier _type = property.getType();
-          BaseType _type_1 = _type.getType();
-          String _name_2 = _type_1.getName();
-          boolean _equals = Objects.equal(_name_2, "float");
-          if (_equals) {
-            _or = true;
-          } else {
-            Classifier _type_2 = property.getType();
-            BaseType _type_3 = _type_2.getType();
-            String _name_3 = _type_3.getName();
-            boolean _equals_1 = Objects.equal(_name_3, "double");
-            _or = _equals_1;
-          }
-          if (_or) {
+          if ((Objects.equal(property.getType().getType().getName(), "float") || Objects.equal(property.getType().getType().getName(), "double"))) {
             _builder.newLineIfNotEmpty();
             String _castToPrimitiveType = this.getCastToPrimitiveType(property);
             _builder.append(_castToPrimitiveType, "");
@@ -766,31 +736,31 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
             CharSequence _createPropertyValueSet = this.createPropertyValueSet(property);
             _builder.append(_createPropertyValueSet, "");
             _builder.append(", record.get");
-            String _name_4 = property.getName();
-            String _firstUpper = StringExtensions.toFirstUpper(_name_4);
+            String _name_2 = property.getName();
+            String _firstUpper = StringExtensions.toFirstUpper(_name_2);
             _builder.append(_firstUpper, "");
             _builder.append("(), 0.0000001);");
             _builder.newLineIfNotEmpty();
           } else {
-            Classifier _type_4 = property.getType();
-            BaseType _type_5 = _type_4.getType();
-            String _name_5 = _type_5.getName();
-            boolean _equals_2 = Objects.equal(_name_5, "boolean");
-            if (_equals_2) {
+            Classifier _type = property.getType();
+            BaseType _type_1 = _type.getType();
+            String _name_3 = _type_1.getName();
+            boolean _equals = Objects.equal(_name_3, "boolean");
+            if (_equals) {
               CharSequence _createPropertyValueSet_1 = this.createPropertyValueSet(property);
               _builder.append(_createPropertyValueSet_1, "");
               _builder.append(", Boolean.valueOf(record.is");
-              String _name_6 = property.getName();
-              String _firstUpper_1 = StringExtensions.toFirstUpper(_name_6);
+              String _name_4 = property.getName();
+              String _firstUpper_1 = StringExtensions.toFirstUpper(_name_4);
               _builder.append(_firstUpper_1, "");
               _builder.append("()));");
               _builder.newLineIfNotEmpty();
             } else {
-              Classifier _type_6 = property.getType();
-              BaseType _type_7 = _type_6.getType();
-              String _name_7 = _type_7.getName();
-              boolean _equals_3 = Objects.equal(_name_7, "string");
-              if (_equals_3) {
+              Classifier _type_2 = property.getType();
+              BaseType _type_3 = _type_2.getType();
+              String _name_5 = _type_3.getName();
+              boolean _equals_1 = Objects.equal(_name_5, "string");
+              if (_equals_1) {
                 CharSequence _createPropertyValueSet_2 = this.createPropertyValueSet(property);
                 _builder.append(_createPropertyValueSet_2, "");
                 _builder.append(" == null?\"");
@@ -800,8 +770,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
                 CharSequence _createPropertyValueSet_3 = this.createPropertyValueSet(property);
                 _builder.append(_createPropertyValueSet_3, "");
                 _builder.append(", record.get");
-                String _name_8 = property.getName();
-                String _firstUpper_2 = StringExtensions.toFirstUpper(_name_8);
+                String _name_6 = property.getName();
+                String _firstUpper_2 = StringExtensions.toFirstUpper(_name_6);
                 _builder.append(_firstUpper_2, "");
                 _builder.append("());");
                 _builder.newLineIfNotEmpty();
@@ -812,8 +782,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
                 CharSequence _createPropertyValueSet_4 = this.createPropertyValueSet(property);
                 _builder.append(_createPropertyValueSet_4, "");
                 _builder.append(", record.get");
-                String _name_9 = property.getName();
-                String _firstUpper_3 = StringExtensions.toFirstUpper(_name_9);
+                String _name_7 = property.getName();
+                String _firstUpper_3 = StringExtensions.toFirstUpper(_name_7);
                 _builder.append(_firstUpper_3, "");
                 _builder.append("());");
                 _builder.newLineIfNotEmpty();

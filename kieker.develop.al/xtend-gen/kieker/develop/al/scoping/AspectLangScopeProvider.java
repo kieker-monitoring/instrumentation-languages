@@ -61,13 +61,11 @@ public class AspectLangScopeProvider extends AbstractDeclarativeScopeProvider {
       EObject _eContainer_1 = context.eContainer();
       final EObject location = ((LocationQuery) _eContainer_1).eContainer();
       boolean _matched = false;
-      if (!_matched) {
-        if (location instanceof CompositionQuery) {
-          _matched=true;
-          EObject _eContainer_2 = ((CompositionQuery)location).eContainer();
-          Node _node = ((LocationQuery) _eContainer_2).getNode();
-          return this.createLocationScope(_node);
-        }
+      if (location instanceof CompositionQuery) {
+        _matched=true;
+        EObject _eContainer_2 = ((CompositionQuery)location).eContainer();
+        Node _node = ((LocationQuery) _eContainer_2).getNode();
+        return this.createLocationScope(_node);
       }
       if (!_matched) {
         if (location instanceof LocationQuery) {
@@ -99,18 +97,14 @@ public class AspectLangScopeProvider extends AbstractDeclarativeScopeProvider {
   
   private IScope createLocationScope(final Node node) {
     boolean _matched = false;
-    if (!_matched) {
-      if (node instanceof ContainerNode) {
-        _matched=true;
-        final Feature feature = ((ContainerNode)node).getContainer();
-        boolean _matched_1 = false;
-        if (!_matched_1) {
-          if (feature instanceof Container) {
-            _matched_1=true;
-            EList<Container> _contents = ((Container)feature).getContents();
-            return Scopes.scopeFor(_contents);
-          }
-        }
+    if (node instanceof ContainerNode) {
+      _matched=true;
+      final Feature feature = ((ContainerNode)node).getContainer();
+      boolean _matched_1 = false;
+      if (feature instanceof Container) {
+        _matched_1=true;
+        EList<Container> _contents = ((Container)feature).getContents();
+        return Scopes.scopeFor(_contents);
       }
     }
     return null;

@@ -878,23 +878,12 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     _builder.newLine();
     _builder.newLine();
     String _xifexpression = null;
-    boolean _and = false;
-    EList<TemplateType> _parents = type.getParents();
-    boolean _notEquals = (!Objects.equal(_parents, null));
-    if (!_notEquals) {
-      _and = false;
-    } else {
-      EList<TemplateType> _parents_1 = type.getParents();
-      int _size = _parents_1.size();
-      boolean _greaterThan = (_size > 0);
-      _and = _greaterThan;
-    }
-    if (_and) {
-      EList<TemplateType> _parents_2 = type.getParents();
+    if (((!Objects.equal(type.getParents(), null)) && (type.getParents().size() > 0))) {
+      EList<TemplateType> _parents = type.getParents();
       final Function1<TemplateType, CharSequence> _function = (TemplateType i) -> {
         return this.createInterfaceImport(i);
       };
-      List<CharSequence> _map = ListExtensions.<TemplateType, CharSequence>map(_parents_2, _function);
+      List<CharSequence> _map = ListExtensions.<TemplateType, CharSequence>map(_parents, _function);
       _xifexpression = IterableExtensions.join(_map);
     }
     _builder.append(_xifexpression, "");
@@ -1224,28 +1213,17 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
       interfaces.add("IMonitoringRecord.Factory");
       interfaces.add("IMonitoringRecord.BinaryFactory");
     }
-    boolean _and = false;
-    EList<TemplateType> _parents = type.getParents();
-    boolean _notEquals = (!Objects.equal(_parents, null));
-    if (!_notEquals) {
-      _and = false;
-    } else {
-      EList<TemplateType> _parents_1 = type.getParents();
-      int _size = _parents_1.size();
-      boolean _greaterThan = (_size > 0);
-      _and = _greaterThan;
-    }
-    if (_and) {
-      EList<TemplateType> _parents_2 = type.getParents();
+    if (((!Objects.equal(type.getParents(), null)) && (type.getParents().size() > 0))) {
+      EList<TemplateType> _parents = type.getParents();
       final Function1<TemplateType, String> _function = (TemplateType iface) -> {
         return iface.getName();
       };
-      List<String> _map = ListExtensions.<TemplateType, String>map(_parents_2, _function);
+      List<String> _map = ListExtensions.<TemplateType, String>map(_parents, _function);
       interfaces.addAll(_map);
     }
-    int _size_1 = interfaces.size();
-    boolean _greaterThan_1 = (_size_1 > 0);
-    if (_greaterThan_1) {
+    int _size = interfaces.size();
+    boolean _greaterThan = (_size > 0);
+    if (_greaterThan) {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append(" ");
       _builder.append("implements ");
@@ -1677,19 +1655,8 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     {
       final Classifier type = TypeResolution.findType(property);
       CharSequence _xifexpression = null;
-      boolean _and = false;
-      BaseType _type = type.getType();
-      BaseTypes _typeEnum = BaseTypes.getTypeEnum(_type);
-      boolean _equals = Objects.equal(BaseTypes.STRING, _typeEnum);
-      if (!_equals) {
-        _and = false;
-      } else {
-        EList<ArraySize> _sizes = type.getSizes();
-        int _size = _sizes.size();
-        boolean _equals_1 = (_size == 0);
-        _and = _equals_1;
-      }
-      if (_and) {
+      if ((Objects.equal(BaseTypes.STRING, BaseTypes.getTypeEnum(type.getType())) && 
+        (type.getSizes().size() == 0))) {
         StringConcatenation _builder = new StringConcatenation();
         _builder.append("this.");
         String _createName = NameResolver.createName(property);
@@ -1735,11 +1702,9 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
     try {
       String _switchResult = null;
       boolean _matched = false;
-      if (!_matched) {
-        if (literal instanceof StringLiteral) {
-          _matched=true;
-          _switchResult = NameResolver.createConstantName(property);
-        }
+      if (literal instanceof StringLiteral) {
+        _matched=true;
+        _switchResult = NameResolver.createConstantName(property);
       }
       if (!_matched) {
         if (literal instanceof ConstantLiteral) {

@@ -90,12 +90,10 @@ public class PointcutQueryModule {
   private static CharSequence getRenderNode(final Node node) {
     CharSequence _switchResult = null;
     boolean _matched = false;
-    if (!_matched) {
-      if (node instanceof ContainerNode) {
-        _matched=true;
-        Feature _container = ((ContainerNode)node).getContainer();
-        _switchResult = _container.getName();
-      }
+    if (node instanceof ContainerNode) {
+      _matched=true;
+      Feature _container = ((ContainerNode)node).getContainer();
+      _switchResult = _container.getName();
     }
     if (!_matched) {
       if (node instanceof SubPathNode) {
@@ -133,13 +131,7 @@ public class PointcutQueryModule {
       _xifexpression = true;
     }
     final boolean childInclude = _xifexpression;
-    boolean _and = false;
-    if (!thisInclude) {
-      _and = false;
-    } else {
-      _and = childInclude;
-    }
-    if (_and) {
+    if ((thisInclude && childInclude)) {
       return true;
     } else {
       if (((!thisInclude) && (!childInclude))) {
@@ -222,14 +214,12 @@ public class PointcutQueryModule {
   
   private static Node duplicate(final Node node) {
     boolean _matched = false;
-    if (!_matched) {
-      if (node instanceof ContainerNode) {
-        _matched=true;
-        final ContainerNode result = AspectLangFactory.eINSTANCE.createContainerNode();
-        Feature _container = ((ContainerNode)node).getContainer();
-        result.setContainer(_container);
-        return result;
-      }
+    if (node instanceof ContainerNode) {
+      _matched=true;
+      final ContainerNode result = AspectLangFactory.eINSTANCE.createContainerNode();
+      Feature _container = ((ContainerNode)node).getContainer();
+      result.setContainer(_container);
+      return result;
     }
     if (!_matched) {
       if (node instanceof SubPathNode) {
