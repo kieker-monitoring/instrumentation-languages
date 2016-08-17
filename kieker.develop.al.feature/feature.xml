@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="kieker.develop.al.sdk"
+      id="kieker.develop.al.feature"
       label="Kieker IAL Feature"
       version="1.2.0.qualifier">
 

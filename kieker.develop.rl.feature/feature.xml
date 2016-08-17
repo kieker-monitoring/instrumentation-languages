@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="kieker.develop.rl.sdk"
+      id="kieker.develop.rl.feature"
       label="Kieker IRL Feature"
       version="1.2.0.qualifier"
       provider-name="Software Engineering Group, Kiel University">

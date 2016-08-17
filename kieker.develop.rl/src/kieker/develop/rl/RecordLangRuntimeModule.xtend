@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright 2013 Kieker Project (http://kieker-monitoring.net)
+ * Copyright 2016 Kieker Project (http://kieker-monitoring.net)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,41 +13,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package kieker.develop.rl;
+package kieker.develop.rl
 
-import org.eclipse.xtext.generator.IOutputConfigurationProvider;
-
-import com.google.inject.Binder;
-import com.google.inject.Singleton;
-
-import kieker.develop.rl.ouput.config.RecordLangOutputConfigurationProvider;
-import kieker.develop.rl.typing.jar.JarModelGlobalScopeProvider;
+import kieker.develop.rl.typing.jar.JarModelGlobalScopeProvider
+import com.google.inject.Binder
+import org.eclipse.xtext.generator.IOutputConfigurationProvider
+import kieker.develop.rl.ouput.config.RecordLangOutputConfigurationProvider
+import com.google.inject.Singleton
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
- *
- * @author Reiner Jung
  */
-public class RecordLangRuntimeModule extends kieker.develop.rl.AbstractRecordLangRuntimeModule { // NOCS
-
+class RecordLangRuntimeModule extends AbstractRecordLangRuntimeModule {
 	/**
 	 * {@inheritDoc}<br>
 	 * This extension registers the custom {@link TypeGlobalScopeProvider} that realizes e.g. the
 	 * correct linking of primitive data types. The implementation of that part is broadly transfered
 	 * from the JVMTypes binding.
 	 */
-	@Override
-	public Class<? extends org.eclipse.xtext.scoping.IGlobalScopeProvider> bindIGlobalScopeProvider() {
-		return JarModelGlobalScopeProvider.class;
+	override public Class<? extends org.eclipse.xtext.scoping.IGlobalScopeProvider> bindIGlobalScopeProvider() {
+		return JarModelGlobalScopeProvider
 	}
 
 	/**
 	 * Register my own output outlet provider. We need an outlet for each language.
 	 */
-	@Override
-	public void configure(final Binder binder) {
-		super.configure(binder);
-		binder.bind(IOutputConfigurationProvider.class).to(RecordLangOutputConfigurationProvider.class).in(Singleton.class);
+	override void configure(Binder binder) {
+		super.configure(binder)
+		binder.bind(IOutputConfigurationProvider).to(RecordLangOutputConfigurationProvider).in(Singleton)
 	}
-
 }

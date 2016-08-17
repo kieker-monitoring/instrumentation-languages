@@ -18,14 +18,12 @@ Require-Bundle: kieker.develop.al;visibility:=reexport,
  org.eclipse.compare,
  org.eclipse.ui.ide.application,
  kieker.develop.rl.ui,
- org.eclipse.xtext.xbase.lib
+ org.eclipse.xtext.xbase.lib,
+ org.eclipse.xtend.lib;resolution:=optional
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib,
  org.eclipse.xtend2.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: kieker.develop.al.ui.quickfix,
  kieker.develop.al.ui.contentassist,
- kieker.develop.al.ui.contentassist.antlr,
- kieker.develop.al.ui.internal,
- kieker.develop.al.ui.contentassist.antlr.internal
-Bundle-Activator: kieker.develop.al.ui.internal.AspectLangActivator
+ kieker.develop.al.ui.internal

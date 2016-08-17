@@ -28,7 +28,8 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional,
  org.eclipse.xtext.xbase.lib,
  org.eclipse.emf.ecore.xcore.lib,
- de.cau.cs.se.geco.architecture.framework;bundle-version="1.0.0"
+ de.cau.cs.se.geco.architecture.framework;bundle-version="1.0.0",
+ org.eclipse.xtend.lib
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
@@ -47,7 +48,5 @@ Export-Package: kieker.develop.al.mapping,
  kieker.develop.al.scoping,
  kieker.develop.al.serializer,
  kieker.develop.al.services,
- kieker.develop.al.validation,
- kieker.develop.al.mapping,
- kieker.develop.al.mapping.impl,
- kieker.develop.al.mapping.util
+ kieker.develop.al.validation
+

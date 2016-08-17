@@ -13,34 +13,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package kieker.develop.al;
+package kieker.develop.al
 
-import org.eclipse.xtext.naming.IQualifiedNameConverter;
+// import org.eclipse.xtext.naming.IQualifiedNameConverter
 
-import kieker.develop.al.modelhandling.ForeignModelGlobalScopeProvider;
+import kieker.develop.al.modelhandling.ForeignModelGlobalScopeProvider
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
- * 
- * @author Reiner Jung
  */
-public class AspectLangRuntimeModule extends kieker.develop.al.AbstractAspectLangRuntimeModule { // NOCS -- constructor not required
+class AspectLangRuntimeModule extends AbstractAspectLangRuntimeModule {
 	/**
 	 * {@inheritDoc}<br>
 	 * This extension registers the custom {@link ForeignModelGlobalScopeProvider} that realizes e.g. the
 	 * correct linking of primitive data types. The implementation of that part is broadly transfered
 	 * from the JVMTypes binding.
 	 */
-	@Override
-	public Class<? extends org.eclipse.xtext.scoping.IGlobalScopeProvider> bindIGlobalScopeProvider() {
-		return ForeignModelGlobalScopeProvider.class;
+	override Class<? extends org.eclipse.xtext.scoping.IGlobalScopeProvider> bindIGlobalScopeProvider() {
+		return ForeignModelGlobalScopeProvider
 	}
 	
-	/**
-	 * Use the XtextQualifiedNameConverter to support URIs??
-	 * @return
-	 */
-	public Class<? extends IQualifiedNameConverter> bindIQualifiedNameConverter() {
-		return IQualifiedNameConverter.DefaultImpl.class;
-	}
+//	/**
+//	 * Use the XtextQualifiedNameConverter to support URIs??
+//	 * @return
+//	 */
+//	override Class<? extends IQualifiedNameConverter> bindIQualifiedNameConverter() {
+//		return IQualifiedNameConverter.DefaultImpl
+//	}
 }

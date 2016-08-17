@@ -20,22 +20,25 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.Set;
 
-import org.eclipse.xtext.generator.IFileSystemAccess;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.OutputConfiguration;
+import org.eclipse.xtext.util.RuntimeIOException;
 
 import kieker.common.logging.Log;
 import kieker.common.logging.LogFactory;
 
 /**
  * File system access class used by the generator.
- * 
+ *
  * @author Reiner Jung
- * 
+ *
  */
-public class DirectIOFileSystemAccess implements IFileSystemAccess {
+public class DirectIOFileSystemAccess implements IFileSystemAccess2 {
 
 	/** Central logger for the compiler. */
 	private static final Log LOG = LogFactory.getLog(DirectIOFileSystemAccess.class);
@@ -46,7 +49,7 @@ public class DirectIOFileSystemAccess implements IFileSystemAccess {
 
 	/**
 	 * Constructor for the headless file system access.
-	 * 
+	 *
 	 * @param projectHostPath
 	 *            root path where the files are stored
 	 * @param configurations
@@ -58,7 +61,7 @@ public class DirectIOFileSystemAccess implements IFileSystemAccess {
 
 	/**
 	 * Store the given contents at a place inside the rootPath specified by the fileName.
-	 * 
+	 *
 	 * @param fileName
 	 *            relative file name and path
 	 * @param contents
@@ -70,7 +73,7 @@ public class DirectIOFileSystemAccess implements IFileSystemAccess {
 
 	/**
 	 * Store the given contents at a place inside the rootPath specified by the fileName.
-	 * 
+	 *
 	 * @param fileName
 	 *            relative file name and path
 	 * @param outputConfigurationName
@@ -105,7 +108,7 @@ public class DirectIOFileSystemAccess implements IFileSystemAccess {
 
 	/**
 	 * Find a output configuration based on its name.
-	 * 
+	 *
 	 * @param outputConfigurationName
 	 *            the output configuration name
 	 * @return either a valid output configuration or null if no such output configuration exist
@@ -121,7 +124,7 @@ public class DirectIOFileSystemAccess implements IFileSystemAccess {
 
 	/**
 	 * Delete the specified file from the root path.
-	 * 
+	 *
 	 * @param fileName
 	 *            file to be deleted
 	 */
@@ -131,6 +134,71 @@ public class DirectIOFileSystemAccess implements IFileSystemAccess {
 		if (file.exists()) {
 			file.delete();
 		}
+	}
+
+	@Override
+	public void deleteFile(final String fileName, final String outputConfigurationName) {
+		this.deleteFile(fileName);
+	}
+
+	@Override
+	public URI getURI(final String arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public URI getURI(final String arg0, final String arg1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void generateFile(final String fileName, final InputStream content) throws RuntimeIOException {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void generateFile(final String fileName, final String outputConfigurationName, final InputStream content) throws RuntimeIOException {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public InputStream readBinaryFile(final String arg0) throws RuntimeIOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public InputStream readBinaryFile(final String arg0, final String arg1) throws RuntimeIOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CharSequence readTextFile(final String arg0) throws RuntimeIOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public CharSequence readTextFile(final String arg0, final String arg1) throws RuntimeIOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isFile(final String arg0) throws RuntimeIOException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isFile(final String arg0, final String arg1) throws RuntimeIOException {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

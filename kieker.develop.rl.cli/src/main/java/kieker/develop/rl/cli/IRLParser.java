@@ -23,7 +23,7 @@ import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.xtext.generator.IFileSystemAccess;
+import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IOutputConfigurationProvider;
 import org.eclipse.xtext.generator.OutputConfiguration;
 import org.eclipse.xtext.resource.XtextResource;
@@ -264,9 +264,9 @@ public class IRLParser {
 
 		// invoke generator
 		final RecordLangGenerator generator = new RecordLangGenerator();
-		final IFileSystemAccess fsa = new DirectIOFileSystemAccess(this.projectHostPath, this.configurations);
+		final IFileSystemAccess2 fsa = new DirectIOFileSystemAccess(this.projectHostPath, this.configurations);
 
-		generator.doGenerate(resource, fsa);
+		generator.doGenerate(resource, fsa, null);
 	}
 
 }

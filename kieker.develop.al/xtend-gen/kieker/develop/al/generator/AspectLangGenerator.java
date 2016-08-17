@@ -56,8 +56,9 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.generator.IFileSystemAccess;
-import org.eclipse.xtext.generator.IGenerator;
+import org.eclipse.xtext.generator.IFileSystemAccess2;
+import org.eclipse.xtext.generator.IGenerator2;
+import org.eclipse.xtext.generator.IGeneratorContext;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -72,7 +73,7 @@ import org.w3c.dom.Document;
  * see http://www.eclipse.org/Xtext/documentation.html#TutorialCodeGeneration
  */
 @SuppressWarnings("all")
-public class AspectLangGenerator implements IGenerator {
+public class AspectLangGenerator implements IGenerator2 {
   private final static String MODEL_MAPPER = "kieker.develop.al.modelMapping";
   
   private final Map<Technology, Collection<Aspect>> aspectTechnologyMap = new HashMap<Technology, Collection<Aspect>>();
@@ -109,7 +110,7 @@ public class AspectLangGenerator implements IGenerator {
    * Central generation function.
    */
   @Override
-  public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
+  public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     TreeIterator<EObject> _allContents = resource.getAllContents();
     Iterator<Aspect> _filter = Iterators.<Aspect>filter(_allContents, Aspect.class);
     final Procedure1<Aspect> _function = (Aspect it) -> {
@@ -145,7 +146,7 @@ public class AspectLangGenerator implements IGenerator {
    * @param aspects collection of aspects for AspectJ
    * @param access file system access
    */
-  private void createAspectJConfiguration(final Collection<Aspect> aspects, final IFileSystemAccess access) {
+  private void createAspectJConfiguration(final Collection<Aspect> aspects, final IFileSystemAccess2 access) {
     final AspectJPointcutGenerator aspectGenerator = new AspectJPointcutGenerator();
     Document _generate = aspectGenerator.generate(aspects);
     this.storeXMLModel("aop.xml", access, _generate);
@@ -186,7 +187,7 @@ public class AspectLangGenerator implements IGenerator {
    * @param aspects collection of aspects for AspectJ
    * @param access file system access
    */
-  private void createSpringConfiguration(final Collection<Aspect> aspects, final IFileSystemAccess access) {
+  private void createSpringConfiguration(final Collection<Aspect> aspects, final IFileSystemAccess2 access) {
     final SpringAdviceGenerator adviceGenerator = new SpringAdviceGenerator();
     final HashMap<Advice, List<UtilizeAdvice>> utilizationAdviceMap = CommonCollectionModule.createUtilizationMap(aspects);
     final BiConsumer<Advice, List<UtilizeAdvice>> _function = (Advice advice, List<UtilizeAdvice> utilizedAdvices) -> {
@@ -215,7 +216,7 @@ public class AspectLangGenerator implements IGenerator {
    * @param aspects collection of aspects for AspectJ
    * @param access file system access
    */
-  private void createJ2EEConfiguration(final Collection<Aspect> aspects, final IFileSystemAccess access) {
+  private void createJ2EEConfiguration(final Collection<Aspect> aspects, final IFileSystemAccess2 access) {
     final JavaEEAdviceGenerator adviceGenerator = new JavaEEAdviceGenerator();
     final HashMap<Advice, List<UtilizeAdvice>> utilizationAdviceMap = CommonCollectionModule.createUtilizationMap(aspects);
     final BiConsumer<Advice, List<UtilizeAdvice>> _function = (Advice advice, List<UtilizeAdvice> utilizedAdvices) -> {
@@ -244,7 +245,7 @@ public class AspectLangGenerator implements IGenerator {
    * @param aspects collection of aspects for AspectJ
    * @param access file system access
    */
-  private void createServletConfiguration(final Collection<Aspect> aspects, final IFileSystemAccess access) {
+  private void createServletConfiguration(final Collection<Aspect> aspects, final IFileSystemAccess2 access) {
     final ServletAdviceGenerator adviceGenerator = new ServletAdviceGenerator();
     final HashMap<Advice, List<UtilizeAdvice>> utilizationAdviceMap = CommonCollectionModule.createUtilizationMap(aspects);
     final BiConsumer<Advice, List<UtilizeAdvice>> _function = (Advice advice, List<UtilizeAdvice> utilizedAdvices) -> {
@@ -275,7 +276,7 @@ public class AspectLangGenerator implements IGenerator {
    * @param access the file system access handler of the Xtext framework
    * @param document the document model to be serialized.
    */
-  private void storeXMLModel(final String filename, final IFileSystemAccess access, final Document document) {
+  private void storeXMLModel(final String filename, final IFileSystemAccess2 access, final Document document) {
     try {
       final TransformerFactory transformerFactory = TransformerFactory.newInstance();
       final Transformer transformer = transformerFactory.newTransformer();
@@ -370,5 +371,13 @@ public class AspectLangGenerator implements IGenerator {
     String _name = ((AspectModel) _eContainer).getName();
     String _replace = _name.replace("\\.", File.separator);
     return (_replace + File.separator);
+  }
+  
+  @Override
+  public void afterGenerate(final Resource input, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+  }
+  
+  @Override
+  public void beforeGenerate(final Resource input, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
   }
 }

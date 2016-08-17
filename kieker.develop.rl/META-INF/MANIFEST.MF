@@ -22,7 +22,8 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.equinox.preferences,
  org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional,
  org.eclipse.xtext.xbase.lib,
- de.cau.cs.se.geco.architecture.framework;bundle-version="1.0.0"
+ de.cau.cs.se.geco.architecture.framework;bundle-version="1.0.0",
+ org.eclipse.xtend.lib
 Import-Package: org.apache.log4j,
  org.eclipse.jdt.core,
  org.eclipse.xtext.common.types.access.jdt,
@@ -45,3 +46,4 @@ Export-Package: kieker.develop.rl,
  kieker.develop.rl.serializer,
  kieker.develop.rl.services,
  kieker.develop.rl.validation
+
