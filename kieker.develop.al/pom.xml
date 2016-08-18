@@ -13,7 +13,15 @@
 	<packaging>eclipse-plugin</packaging>
 
 	<name>Kieker Aspect Language Core Services</name>
-
+	
+	<dependencies>
+		<dependency>
+			<groupId>kieker.develop</groupId>
+			<artifactId>kieker.develop.rl</artifactId>
+			<version>1.2.0-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+	
 	<build>
 		<plugins>
 			<plugin>
@@ -76,7 +84,7 @@
 					<includePluginDependencies>true</includePluginDependencies>
 					<mainClass>org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher</mainClass>
 					<arguments>
-						<argument>/${project.basedir}/src/kieker/develop/rl/GenerateRecordLang.mwe2</argument>
+						<argument>/${project.basedir}/src/kieker/develop/al/GenerateAspectLang.mwe2</argument>
 						<argument>-p</argument>
 						<argument>rootPath=/${project.basedir}/..</argument>
 					</arguments>
@@ -84,6 +92,11 @@
 					<cleanupDaemonThreads>false</cleanupDaemonThreads><!-- see https://bugs.eclipse.org/bugs/show_bug.cgi?id=475098#c3 -->
 				</configuration>
 				<dependencies>
+					<dependency>
+						<groupId>kieker.develop</groupId>
+						<artifactId>kieker.develop.rl</artifactId>
+						<version>1.2.0-SNAPSHOT</version>
+					</dependency>
 					<dependency>
 						<groupId>org.eclipse.emf</groupId>
 						<artifactId>org.eclipse.emf.mwe2.launch</artifactId>

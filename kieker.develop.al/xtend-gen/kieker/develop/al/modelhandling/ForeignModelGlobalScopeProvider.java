@@ -15,16 +15,28 @@
  */
 package kieker.develop.al.modelhandling;
 
+import com.google.common.base.Objects;
 import com.google.common.base.Predicate;
+import com.google.common.collect.Iterators;
 import com.google.inject.Inject;
+import java.util.Iterator;
+import kieker.develop.al.aspectLang.ApplicationModel;
 import kieker.develop.al.modelhandling.ForeignModelTypeProviderFactory;
+import kieker.develop.al.modelhandling.ForeignModelTypeScope;
+import kieker.develop.al.modelhandling.IForeignModelTypeProvider;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.impl.DefaultGlobalScopeProvider;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 
 @SuppressWarnings("all")
 public class ForeignModelGlobalScopeProvider extends DefaultGlobalScopeProvider {
@@ -43,8 +55,26 @@ public class ForeignModelGlobalScopeProvider extends DefaultGlobalScopeProvider 
   }
   
   public IScope getParentTypeScope(final Resource resource, final EReference reference, final Predicate<IEObjectDescription> filter, final EClass referenceType) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nApplicationModel cannot be resolved to a type."
-      + "\nThe method getTypeProvider(ResourceSet, void) is undefined for the type ForeignModelTypeProviderFactory");
+    boolean _isAssignableFrom = EcoreUtil2.isAssignableFrom(EcorePackage.Literals.EOBJECT, referenceType);
+    if (_isAssignableFrom) {
+      boolean _notEquals = (!Objects.equal(resource, null));
+      if (_notEquals) {
+        final ResourceSet resourceSet = resource.getResourceSet();
+        boolean _notEquals_1 = (!Objects.equal(resourceSet, null));
+        if (_notEquals_1) {
+          TreeIterator<EObject> _allContents = resource.getAllContents();
+          Iterator<ApplicationModel> _filter = Iterators.<ApplicationModel>filter(_allContents, ApplicationModel.class);
+          ApplicationModel _head = IteratorExtensions.<ApplicationModel>head(_filter);
+          final IForeignModelTypeProvider typeProvider = this.typeProviderFactory.getTypeProvider(resourceSet, _head);
+          return new ForeignModelTypeScope(typeProvider, this.qualifiedNameConverter, filter);
+        } else {
+          throw new IllegalStateException("context must be contained in a resource set");
+        }
+      } else {
+        throw new IllegalStateException("context must be contained in a resource");
+      }
+    } else {
+      return IScope.NULLSCOPE;
+    }
   }
 }

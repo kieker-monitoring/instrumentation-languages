@@ -4,22 +4,34 @@
 package kieker.develop.al.tests;
 
 import com.google.inject.Inject;
+import kieker.develop.al.aspectLang.AspectModel;
+import kieker.develop.al.tests.AspectLangInjectorProvider;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
 import org.eclipse.xtext.junit4.util.ParseHelper;
+import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@RunWith(XtextRunner.class)/* 
-@InjectWith(/* name is null */) */
+@RunWith(XtextRunner.class)
+@InjectWith(AspectLangInjectorProvider.class)
 @SuppressWarnings("all")
 public class AspectLangParsingTest {
   @Inject
-  private /* ParseHelper<AspectModel> */Object parseHelper;
+  private ParseHelper<AspectModel> parseHelper;
   
   @Test
   public void loadModel() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field AspectLangParsingTest.parseHelper refers to the missing type AspectModel");
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("Hello Xtext!");
+      _builder.newLine();
+      final AspectModel result = this.parseHelper.parse(_builder);
+      Assert.assertNotNull(result);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
   }
 }

@@ -4,7 +4,17 @@
 package kieker.develop.al.ui.labeling;
 
 import com.google.inject.Inject;
+import kieker.develop.al.aspectLang.Aspect;
+import kieker.develop.al.aspectLang.Collector;
+import kieker.develop.al.aspectLang.ContainerNode;
+import kieker.develop.al.aspectLang.LocationQuery;
+import kieker.develop.al.aspectLang.Pointcut;
+import kieker.develop.al.aspectLang.SubPathNode;
+import kieker.develop.al.aspectLang.WildcardNode;
+import kieker.develop.al.mapping.Feature;
+import kieker.develop.al.mapping.NamedElement;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
 
 /**
@@ -19,37 +29,46 @@ public class AspectLangLabelProvider extends DefaultEObjectLabelProvider {
     super(delegate);
   }
   
-  public String text(final /* Aspect */Object e) {
+  public String text(final Aspect e) {
     return "aspect";
   }
   
-  public CharSequence text(final /* ContainerNode */Object e) {
-    throw new Error("Unresolved compilation problems:"
-      + "\ncontainer cannot be resolved"
-      + "\ncontainer cannot be resolved"
-      + "\ncontainer cannot be resolved"
-      + "\nclass cannot be resolved"
-      + "\nname cannot be resolved");
+  public CharSequence text(final ContainerNode e) {
+    CharSequence _xifexpression = null;
+    Feature _container = e.getContainer();
+    if ((_container instanceof NamedElement)) {
+      Feature _container_1 = e.getContainer();
+      _xifexpression = ((NamedElement) _container_1).getName();
+    } else {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("Container is of type ");
+      Feature _container_2 = e.getContainer();
+      Class<? extends Feature> _class = _container_2.getClass();
+      String _name = _class.getName();
+      _builder.append(_name, "");
+      _xifexpression = _builder;
+    }
+    return _xifexpression;
   }
   
-  public String text(final /* WildcardNode */Object e) {
+  public String text(final WildcardNode e) {
     return "*";
   }
   
-  public String text(final /* SubPathNode */Object e) {
+  public String text(final SubPathNode e) {
     return "**";
   }
   
-  public String text(final /* Pointcut */Object e) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nname cannot be resolved");
+  public String text(final Pointcut e) {
+    String _name = e.getName();
+    return ("pointcut" + _name);
   }
   
-  public String text(final /* LocationQuery */Object e) {
+  public String text(final LocationQuery e) {
     return "path";
   }
   
-  public Object text(final /* Collector */Object e) {
+  public Object text(final Collector e) {
     return null;
   }
 }
