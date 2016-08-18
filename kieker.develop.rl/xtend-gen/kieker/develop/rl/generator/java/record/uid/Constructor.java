@@ -1,7 +1,6 @@
 package kieker.develop.rl.generator.java.record.uid;
 
 import kieker.develop.rl.generator.java.record.uid.EVisibility;
-import kieker.develop.rl.recordLang.Classifier;
 
 @SuppressWarnings("all")
 public class Constructor {
@@ -9,12 +8,11 @@ public class Constructor {
   
   private EVisibility visibility;
   
-  private Classifier[] signature;
+  private Object/* type is 'null' */ signature;
   
-  public Constructor(final String name, final EVisibility visibility, final Classifier[] signature) {
-    this.name = name;
-    this.visibility = visibility;
-    this.signature = signature;
+  public Constructor(final String name, final EVisibility visibility, final Object/* type is 'null' */ signature) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe field Constructor.signature refers to the missing type Classifier");
   }
   
   public String getName() {
@@ -25,7 +23,8 @@ public class Constructor {
     return this.visibility;
   }
   
-  public Classifier[] getSignature() {
-    return this.signature;
+  public Object/* type is 'null' */ getSignature() {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe field Constructor.signature refers to the missing type Classifier");
   }
 }

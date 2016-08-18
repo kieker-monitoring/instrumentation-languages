@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: kieker.develop.al.ui.tests
 Bundle-SymbolicName: kieker.develop.al.ui.tests;singleton:=true
-Bundle-Version: 0.0.1.qualifier
+Bundle-Version: 1.2.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: kieker.develop.al.ui.tests

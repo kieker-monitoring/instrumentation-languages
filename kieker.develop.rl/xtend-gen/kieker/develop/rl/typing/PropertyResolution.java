@@ -1,17 +1,8 @@
 package kieker.develop.rl.typing;
 
-import com.google.common.base.Objects;
-import com.google.common.collect.Iterables;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
-import kieker.develop.rl.recordLang.Property;
-import kieker.develop.rl.recordLang.RecordType;
-import kieker.develop.rl.recordLang.TemplateType;
-import kieker.develop.rl.typing.TypeResolution;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtend.lib.Property;
 
 @SuppressWarnings("all")
 public class PropertyResolution {
@@ -24,16 +15,11 @@ public class PropertyResolution {
    * @returns
    * 		a complete list of all properties in a record
    */
-  public static List<Property> collectAllDataProperties(final RecordType type) {
-    final ArrayList<Property> list = new ArrayList<Property>();
-    List<Property> _collectAllProperties = PropertyResolution.collectAllProperties(type);
-    final Function1<Property, Boolean> _function = (Property it) -> {
-      Property _referTo = it.getReferTo();
-      return Boolean.valueOf(Objects.equal(_referTo, null));
-    };
-    Iterable<Property> _filter = IterableExtensions.<Property>filter(_collectAllProperties, _function);
-    Iterables.<Property>addAll(list, _filter);
-    return list;
+  public static List<Property> collectAllDataProperties(final /* RecordType */Object type) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field referTo is undefined for the type Property"
+      + "\nThe method collectAllProperties(RecordType) from the type PropertyResolution refers to the missing type RecordType"
+      + "\n== cannot be resolved");
   }
   
   /**
@@ -45,16 +31,11 @@ public class PropertyResolution {
    * @returns
    * 		a complete list of all properties in a record
    */
-  public static List<Property> collectAllDataProperties(final TemplateType type) {
-    final ArrayList<Property> list = new ArrayList<Property>();
-    List<Property> _collectAllProperties = PropertyResolution.collectAllProperties(type);
-    final Function1<Property, Boolean> _function = (Property it) -> {
-      Property _referTo = it.getReferTo();
-      return Boolean.valueOf(Objects.equal(_referTo, null));
-    };
-    Iterable<Property> _filter = IterableExtensions.<Property>filter(_collectAllProperties, _function);
-    Iterables.<Property>addAll(list, _filter);
-    return list;
+  public static List<Property> collectAllDataProperties(final /* TemplateType */Object type) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field referTo is undefined for the type Property"
+      + "\nThe method collectAllProperties(RecordType) from the type PropertyResolution refers to the missing type RecordType"
+      + "\n== cannot be resolved");
   }
   
   /**
@@ -66,29 +47,18 @@ public class PropertyResolution {
    * @returns
    * 		a complete list of all properties in a record
    */
-  public static List<Property> collectAllProperties(final RecordType type) {
-    List<Property> _xifexpression = null;
-    RecordType _parent = type.getParent();
-    boolean _notEquals = (!Objects.equal(_parent, null));
-    if (_notEquals) {
-      RecordType _parent_1 = type.getParent();
-      _xifexpression = PropertyResolution.collectAllProperties(_parent_1);
-    } else {
-      _xifexpression = new ArrayList<Property>();
-    }
-    final List<Property> result = _xifexpression;
-    EList<TemplateType> _parents = type.getParents();
-    boolean _notEquals_1 = (!Objects.equal(_parents, null));
-    if (_notEquals_1) {
-      EList<TemplateType> _parents_1 = type.getParents();
-      final Consumer<TemplateType> _function = (TemplateType it) -> {
-        List<Property> _collectAllProperties = PropertyResolution.collectAllProperties(it);
-        PropertyResolution.addAllUnique(result, _collectAllProperties);
-      };
-      _parents_1.forEach(_function);
-    }
-    EList<Property> _properties = type.getProperties();
-    return PropertyResolution.addAllUnique(result, _properties);
+  public static List<Property> collectAllProperties(final /* RecordType */Object type) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field collectAllProperties is undefined for the type Object"
+      + "\nparent cannot be resolved"
+      + "\n!= cannot be resolved"
+      + "\nparent cannot be resolved"
+      + "\ncollectAllProperties cannot be resolved"
+      + "\nparents cannot be resolved"
+      + "\n!= cannot be resolved"
+      + "\nparents cannot be resolved"
+      + "\nforEach cannot be resolved"
+      + "\nproperties cannot be resolved");
   }
   
   /**
@@ -100,20 +70,15 @@ public class PropertyResolution {
    * @returns
    * 		a complete list of all properties in a record
    */
-  public static List<Property> collectAllProperties(final TemplateType type) {
-    final List<Property> result = new ArrayList<Property>();
-    EList<TemplateType> _parents = type.getParents();
-    boolean _notEquals = (!Objects.equal(_parents, null));
-    if (_notEquals) {
-      EList<TemplateType> _parents_1 = type.getParents();
-      final Consumer<TemplateType> _function = (TemplateType iface) -> {
-        List<Property> _collectAllProperties = PropertyResolution.collectAllProperties(iface);
-        PropertyResolution.addAllUnique(result, _collectAllProperties);
-      };
-      _parents_1.forEach(_function);
-    }
-    EList<Property> _properties = type.getProperties();
-    return PropertyResolution.addAllUnique(result, _properties);
+  public static List<Property> collectAllProperties(final /* TemplateType */Object type) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field collectAllProperties is undefined for the type Object"
+      + "\nThere is no context to infer the closure\'s argument types from. Consider typing the arguments or put the closures into a typed context."
+      + "\nparents cannot be resolved"
+      + "\n!= cannot be resolved"
+      + "\nparents cannot be resolved"
+      + "\nforEach cannot be resolved"
+      + "\nproperties cannot be resolved");
   }
   
   /**
@@ -125,21 +90,14 @@ public class PropertyResolution {
    * @returns
    * 		a complete list of all properties in a record
    */
-  public static List<Property> collectAllTemplateProperties(final RecordType type) {
-    EList<TemplateType> _parents = type.getParents();
-    boolean _notEquals = (!Objects.equal(_parents, null));
-    if (_notEquals) {
-      final List<Property> result = new ArrayList<Property>();
-      EList<TemplateType> _parents_1 = type.getParents();
-      final Consumer<TemplateType> _function = (TemplateType iface) -> {
-        List<Property> _collectAllTemplateProperties = PropertyResolution.collectAllTemplateProperties(iface);
-        PropertyResolution.addAllUnique(result, _collectAllTemplateProperties);
-      };
-      _parents_1.forEach(_function);
-      return result;
-    } else {
-      return new ArrayList<Property>();
-    }
+  public static List<Property> collectAllTemplateProperties(final /* RecordType */Object type) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field collectAllTemplateProperties is undefined for the type Object"
+      + "\nThere is no context to infer the closure\'s argument types from. Consider typing the arguments or put the closures into a typed context."
+      + "\nparents cannot be resolved"
+      + "\n!= cannot be resolved"
+      + "\nparents cannot be resolved"
+      + "\nforEach cannot be resolved");
   }
   
   /**
@@ -151,20 +109,15 @@ public class PropertyResolution {
    * @returns
    * 		a complete list of all properties in a record
    */
-  public static List<Property> collectAllTemplateProperties(final TemplateType type) {
-    final List<Property> result = new ArrayList<Property>();
-    EList<TemplateType> _parents = type.getParents();
-    boolean _notEquals = (!Objects.equal(_parents, null));
-    if (_notEquals) {
-      EList<TemplateType> _parents_1 = type.getParents();
-      final Consumer<TemplateType> _function = (TemplateType iface) -> {
-        List<Property> _collectAllTemplateProperties = PropertyResolution.collectAllTemplateProperties(iface);
-        PropertyResolution.addAllUnique(result, _collectAllTemplateProperties);
-      };
-      _parents_1.forEach(_function);
-    }
-    EList<Property> _properties = type.getProperties();
-    return PropertyResolution.addAllUnique(result, _properties);
+  public static List<Property> collectAllTemplateProperties(final /* TemplateType */Object type) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field collectAllTemplateProperties is undefined for the type Object"
+      + "\nThere is no context to infer the closure\'s argument types from. Consider typing the arguments or put the closures into a typed context."
+      + "\nparents cannot be resolved"
+      + "\n!= cannot be resolved"
+      + "\nparents cannot be resolved"
+      + "\nforEach cannot be resolved"
+      + "\nproperties cannot be resolved");
   }
   
   /**
@@ -192,12 +145,18 @@ public class PropertyResolution {
    * 		true if a property of the same name and type already exists, else false
    */
   public static boolean containsProperty(final List<Property> list, final Property item) {
-    for (final Property p : list) {
-      if ((p.getName().equals(item.getName()) && TypeResolution.findType(p).getType().getName().equals(TypeResolution.findType(item).getType().getName()))) {
-        return true;
-      }
-    }
-    return false;
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field name is undefined for the type Property"
+      + "\nThe method or field name is undefined for the type Property"
+      + "\nThe method findType(Property) from the type TypeResolution refers to the missing type Classifier"
+      + "\nThe method findType(Property) from the type TypeResolution refers to the missing type Classifier"
+      + "\nequals cannot be resolved"
+      + "\n&& cannot be resolved"
+      + "\ntype cannot be resolved"
+      + "\nname cannot be resolved"
+      + "\nequals cannot be resolved"
+      + "\ntype cannot be resolved"
+      + "\nname cannot be resolved");
   }
   
   /**
@@ -210,16 +169,13 @@ public class PropertyResolution {
    * @returns
    * 		a complete list of all properties which require getters
    */
-  public static List<Property> collectAllGetterDeclarationProperties(final RecordType type) {
-    List<Property> result = PropertyResolution.collectAllProperties(type);
-    RecordType _parent = type.getParent();
-    boolean _notEquals = (!Objects.equal(_parent, null));
-    if (_notEquals) {
-      RecordType _parent_1 = type.getParent();
-      return PropertyResolution.removeAlreadyImplementedProperties(result, _parent_1);
-    } else {
-      return result;
-    }
+  public static List<Property> collectAllGetterDeclarationProperties(final /* RecordType */Object type) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method removeAlreadyImplementedProperties(List<Property>, RecordType) from the type PropertyResolution refers to the missing type RecordType"
+      + "\ncollectAllProperties cannot be resolved"
+      + "\nparent cannot be resolved"
+      + "\n!= cannot be resolved"
+      + "\nparent cannot be resolved");
   }
   
   /**
@@ -234,29 +190,16 @@ public class PropertyResolution {
    * @returns
    * 		a complete list of all properties which require declaration
    */
-  public static List<Property> collectAllDeclarationProperties(final RecordType type) {
-    List<Property> properties = new ArrayList<Property>();
-    List<Property> _collectAllTemplateProperties = PropertyResolution.collectAllTemplateProperties(type);
-    properties.addAll(_collectAllTemplateProperties);
-    EList<Property> _properties = type.getProperties();
-    properties.addAll(_properties);
-    final List<Property> declarationProperties = new ArrayList<Property>();
-    final Consumer<Property> _function = (Property property) -> {
-      Property _referTo = property.getReferTo();
-      boolean _equals = Objects.equal(_referTo, null);
-      if (_equals) {
-        declarationProperties.add(property);
-      }
-    };
-    properties.forEach(_function);
-    RecordType _parent = type.getParent();
-    boolean _notEquals = (!Objects.equal(_parent, null));
-    if (_notEquals) {
-      RecordType _parent_1 = type.getParent();
-      return PropertyResolution.removeAlreadyImplementedProperties(declarationProperties, _parent_1);
-    } else {
-      return declarationProperties;
-    }
+  public static List<Property> collectAllDeclarationProperties(final /* RecordType */Object type) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field referTo is undefined for the type Property"
+      + "\nThe method removeAlreadyImplementedProperties(List<Property>, RecordType) from the type PropertyResolution refers to the missing type RecordType"
+      + "\ncollectAllTemplateProperties cannot be resolved"
+      + "\nproperties cannot be resolved"
+      + "\n== cannot be resolved"
+      + "\nparent cannot be resolved"
+      + "\n!= cannot be resolved"
+      + "\nparent cannot be resolved");
   }
   
   /**
@@ -268,20 +211,11 @@ public class PropertyResolution {
    * @returns
    * 		the remaining list of properties
    */
-  private static List<Property> removeAlreadyImplementedProperties(final List<Property> list, final RecordType parentType) {
-    final List<Property> allParentProperties = PropertyResolution.collectAllProperties(parentType);
-    List<Property> result = list;
-    for (final Property parentProperty : allParentProperties) {
-      {
-        final Function1<Property, Boolean> _function = (Property it) -> {
-          String _name = it.getName();
-          String _name_1 = parentProperty.getName();
-          return Boolean.valueOf(_name.equals(_name_1));
-        };
-        final Property property = IterableExtensions.<Property>findFirst(result, _function);
-        result.remove(property);
-      }
-    }
-    return result;
+  private static List<Property> removeAlreadyImplementedProperties(final List<Property> list, final /* RecordType */Object parentType) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field name is undefined for the type Property"
+      + "\nThe method or field name is undefined for the type Property"
+      + "\ncollectAllProperties cannot be resolved"
+      + "\nequals cannot be resolved");
   }
 }

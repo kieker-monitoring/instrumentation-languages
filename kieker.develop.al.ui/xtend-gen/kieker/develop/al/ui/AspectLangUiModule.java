@@ -3,8 +3,6 @@
  */
 package kieker.develop.al.ui;
 
-import kieker.develop.al.ui.AbstractAspectLangUiModule;
-import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor;
 
 /**
@@ -12,8 +10,5 @@ import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor;
  */
 @FinalFieldsConstructor
 @SuppressWarnings("all")
-public class AspectLangUiModule extends AbstractAspectLangUiModule {
-  public AspectLangUiModule(final AbstractUIPlugin plugin) {
-    super(plugin);
-  }
+public class AspectLangUiModule /* implements AbstractAspectLangUiModule  */{
 }

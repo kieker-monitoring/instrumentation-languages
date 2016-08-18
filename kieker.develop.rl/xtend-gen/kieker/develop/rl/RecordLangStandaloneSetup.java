@@ -3,15 +3,13 @@
  */
 package kieker.develop.rl;
 
-import kieker.develop.rl.RecordLangStandaloneSetupGenerated;
-
 /**
  * Initialization support for running Xtext languages without Equinox extension registry.
  */
 @SuppressWarnings("all")
-public class RecordLangStandaloneSetup extends RecordLangStandaloneSetupGenerated {
+public class RecordLangStandaloneSetup /* implements RecordLangStandaloneSetupGenerated  */{
   public static void doSetup() {
-    RecordLangStandaloneSetup _recordLangStandaloneSetup = new RecordLangStandaloneSetup();
-    _recordLangStandaloneSetup.createInjectorAndDoEMFRegistration();
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method createInjectorAndDoEMFRegistration() is undefined for the type RecordLangStandaloneSetup");
   }
 }

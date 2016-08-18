@@ -1,7 +1,5 @@
 package kieker.develop.rl.generator;
 
-import kieker.develop.rl.recordLang.Type;
-
 @SuppressWarnings("all")
 public abstract class AbstractTypeGenerator {
   private String header;
@@ -21,13 +19,13 @@ public abstract class AbstractTypeGenerator {
    * @param type
    * 		the type model
    */
-  public abstract CharSequence getDirectoryName(final Type type);
+  public abstract CharSequence getDirectoryName(final /* Type */Object type);
   
   /**
    * Return the complete filename of the file type this generator produces in correct
    * language format for the given record.
    */
-  public abstract String getFileName(final Type type);
+  public abstract String getFileName(final /* Type */Object type);
   
   /**
    * Returns the outlet type for the generator.

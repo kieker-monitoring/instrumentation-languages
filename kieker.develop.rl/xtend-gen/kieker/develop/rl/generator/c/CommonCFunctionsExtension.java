@@ -3,13 +3,6 @@ package kieker.develop.rl.generator.c;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import kieker.develop.rl.generator.InternalErrorException;
-import kieker.develop.rl.recordLang.BaseType;
-import kieker.develop.rl.recordLang.Classifier;
-import kieker.develop.rl.recordLang.Model;
-import kieker.develop.rl.recordLang.RecordType;
-import kieker.develop.rl.typing.BaseTypes;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtend2.lib.StringConcatenation;
 
 /**
  * @author Reiner Jung
@@ -32,13 +25,12 @@ public class CommonCFunctionsExtension {
   /**
    * Compute the package name used as prefix for all functions.
    */
-  public static CharSequence packageName(final RecordType type) {
-    StringConcatenation _builder = new StringConcatenation();
-    EObject _eContainer = type.eContainer();
-    String _name = ((Model) _eContainer).getName();
-    String _replace = _name.replace(".", "_");
-    _builder.append(_replace, "");
-    return _builder;
+  public static CharSequence packageName(final /* RecordType */Object type) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nModel cannot be resolved to a type."
+      + "\neContainer cannot be resolved"
+      + "\nname cannot be resolved"
+      + "\nreplace cannot be resolved");
   }
   
   /**
@@ -49,43 +41,18 @@ public class CommonCFunctionsExtension {
    * 
    * @returns a C type name
    */
-  public static String createTypeName(final Classifier classifier) throws InternalErrorException {
-    String _switchResult = null;
-    BaseType _type = classifier.getType();
-    BaseTypes _typeEnum = BaseTypes.getTypeEnum(_type);
-    if (_typeEnum != null) {
-      switch (_typeEnum) {
-        case STRING:
-          _switchResult = "const char*";
-          break;
-        case CHAR:
-          _switchResult = "char";
-          break;
-        case SHORT:
-          _switchResult = "short";
-          break;
-        case INT:
-          _switchResult = "long";
-          break;
-        case LONG:
-          _switchResult = "long long";
-          break;
-        case FLOAT:
-          _switchResult = "float";
-          break;
-        case DOUBLE:
-          _switchResult = "double";
-          break;
-        case BOOLEAN:
-          _switchResult = "char";
-          break;
-        case BYTE:
-          _switchResult = "unsigned char";
-          break;
-        default:
-          break;
-      }
-    }
-    return _switchResult;
+  public static String createTypeName(final /* Classifier */Object classifier) throws InternalErrorException {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method getTypeEnum(Object) is undefined for the type Class<BaseTypes>"
+      + "\nThe method or field STRING is undefined"
+      + "\nThe method or field CHAR is undefined"
+      + "\nThe method or field SHORT is undefined"
+      + "\nThe method or field INT is undefined"
+      + "\nThe method or field LONG is undefined"
+      + "\nThe method or field FLOAT is undefined"
+      + "\nThe method or field DOUBLE is undefined"
+      + "\nThe method or field BOOLEAN is undefined"
+      + "\nThe method or field BYTE is undefined"
+      + "\ntype cannot be resolved");
   }
 }
