@@ -16,8 +16,26 @@
 package kieker.develop.rl.ui.labeling;
 
 import com.google.inject.Inject;
+import java.util.List;
+import kieker.develop.rl.recordLang.ArrayLiteral;
+import kieker.develop.rl.recordLang.ArraySize;
+import kieker.develop.rl.recordLang.BaseType;
+import kieker.develop.rl.recordLang.BooleanLiteral;
+import kieker.develop.rl.recordLang.Classifier;
+import kieker.develop.rl.recordLang.Constant;
+import kieker.develop.rl.recordLang.FloatLiteral;
+import kieker.develop.rl.recordLang.IntLiteral;
+import kieker.develop.rl.recordLang.Model;
+import kieker.develop.rl.recordLang.Property;
+import kieker.develop.rl.recordLang.RecordType;
+import kieker.develop.rl.recordLang.StringLiteral;
+import kieker.develop.rl.recordLang.TemplateType;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
 
 /**
  * Provides labels for a EObjects.
@@ -31,68 +49,81 @@ public class RecordLangLabelProvider extends DefaultEObjectLabelProvider {
     super(delegate);
   }
   
-  public Object text(final /* kieker.develop.rl.recordLang.Property */Object e) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nname cannot be resolved"
-      + "\n+ cannot be resolved"
-      + "\n+ cannot be resolved"
-      + "\ntype cannot be resolved"
-      + "\ntext cannot be resolved");
+  public String text(final Property e) {
+    String _name = e.getName();
+    String _plus = (_name + " : ");
+    Classifier _type = e.getType();
+    String _text = this.text(_type);
+    return (_plus + _text);
   }
   
-  public String text(final /* kieker.develop.rl.recordLang.StringLiteral */Object e) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nvalue cannot be resolved");
+  public String text(final StringLiteral e) {
+    String _value = e.getValue();
+    String _plus = ("\'" + _value);
+    return (_plus + "\'");
   }
   
-  public Object text(final /* kieker.develop.rl.recordLang.IntLiteral */Object e) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nvalue cannot be resolved");
+  public int text(final IntLiteral e) {
+    return e.getValue();
   }
   
-  public String text(final /* kieker.develop.rl.recordLang.ArrayLiteral */Object e) {
+  public String text(final ArrayLiteral e) {
     return "array";
   }
   
-  public Object text(final /* kieker.develop.rl.recordLang.FloatLiteral */Object e) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nvalue cannot be resolved");
+  public Float text(final FloatLiteral e) {
+    return e.getValue();
   }
   
-  public String text(final /* kieker.develop.rl.recordLang.BooleanLiteral */Object e) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nvalue cannot be resolved");
+  public String text(final BooleanLiteral e) {
+    String _xifexpression = null;
+    Boolean _value = e.getValue();
+    if ((_value).booleanValue()) {
+      _xifexpression = "true";
+    } else {
+      _xifexpression = "false";
+    }
+    return _xifexpression;
   }
   
-  public Object text(final /* kieker.develop.rl.recordLang.Classifier */Object e) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nType mismatch: cannot convert from Object to Iterable<?>"
-      + "\nType mismatch: cannot convert from Object to Iterable<?>"
-      + "\ntype cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\n+ cannot be resolved"
-      + "\nsizes cannot be resolved"
-      + "\nmap cannot be resolved"
-      + "\njoin cannot be resolved");
+  public String text(final Classifier e) {
+    BaseType _type = e.getType();
+    String _name = _type.getName();
+    EList<ArraySize> _sizes = e.getSizes();
+    final Function1<ArraySize, String> _function = (ArraySize it) -> {
+      Object _xifexpression = null;
+      int _size = it.getSize();
+      boolean _notEquals = (_size != 0);
+      if (_notEquals) {
+        _xifexpression = Integer.valueOf(it.getSize());
+      } else {
+        _xifexpression = "";
+      }
+      String _plus = ("[" + _xifexpression);
+      return (_plus + "]");
+    };
+    List<String> _map = ListExtensions.<ArraySize, String>map(_sizes, _function);
+    String _join = IterableExtensions.join(_map);
+    return (_name + _join);
   }
   
-  public String image(final /* kieker.develop.rl.recordLang.Property */Object e) {
+  public String image(final Property e) {
     return "property.gif";
   }
   
-  public String image(final /* kieker.develop.rl.recordLang.Constant */Object e) {
+  public String image(final Constant e) {
     return "constant.gif";
   }
   
-  public String image(final /* kieker.develop.rl.recordLang.RecordType */Object e) {
+  public String image(final RecordType e) {
     return "record.png";
   }
   
-  public String image(final /* kieker.develop.rl.recordLang.TemplateType */Object e) {
+  public String image(final TemplateType e) {
     return "template.png";
   }
   
-  public String image(final /* kieker.develop.rl.recordLang.Model */Object e) {
+  public String image(final Model e) {
     return "package.gif";
   }
 }

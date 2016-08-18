@@ -1,6 +1,11 @@
 package kieker.develop.rl.generator.delphi;
 
+import java.io.File;
 import kieker.develop.rl.generator.AbstractRecordTypeGenerator;
+import kieker.develop.rl.recordLang.Model;
+import kieker.develop.rl.recordLang.RecordType;
+import kieker.develop.rl.recordLang.Type;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
 
 @SuppressWarnings("all")
@@ -28,19 +33,25 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   }
   
   @Override
-  public CharSequence getDirectoryName(final /* Type */Object type) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nModel cannot be resolved to a type."
-      + "\neContainer cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nreplace cannot be resolved");
+  public CharSequence getDirectoryName(final Type type) {
+    StringConcatenation _builder = new StringConcatenation();
+    EObject _eContainer = type.eContainer();
+    String _name = ((Model) _eContainer).getName();
+    String _replace = _name.replace(".", File.separator);
+    _builder.append(_replace, "");
+    return _builder;
   }
   
   @Override
-  public String getFileName(final /* Type */Object type) {
-    throw new Error("Unresolved compilation problems:"
-      + "\ngetDirectoryName cannot be resolved"
-      + "\nname cannot be resolved");
+  public String getFileName(final Type type) {
+    StringConcatenation _builder = new StringConcatenation();
+    CharSequence _directoryName = this.getDirectoryName(type);
+    _builder.append(_directoryName, "");
+    _builder.append(File.separator, "");
+    String _name = type.getName();
+    _builder.append(_name, "");
+    _builder.append(".pas");
+    return _builder.toString();
   }
   
   @Override
@@ -51,7 +62,7 @@ public class RecordTypeGenerator extends AbstractRecordTypeGenerator {
   }
   
   @Override
-  public CharSequence generate(final /* RecordType */Object type) {
+  public CharSequence generate(final RecordType type) {
     StringConcatenation _builder = new StringConcatenation();
     return _builder;
   }

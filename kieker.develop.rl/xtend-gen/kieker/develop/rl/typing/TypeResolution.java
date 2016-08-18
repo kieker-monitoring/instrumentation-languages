@@ -1,37 +1,52 @@
 package kieker.develop.rl.typing;
 
+import com.google.common.base.Objects;
 import kieker.develop.rl.generator.InternalErrorException;
+import kieker.develop.rl.recordLang.BaseType;
+import kieker.develop.rl.recordLang.Classifier;
+import kieker.develop.rl.recordLang.Constant;
+import kieker.develop.rl.recordLang.Literal;
+import kieker.develop.rl.recordLang.Property;
 import kieker.develop.rl.typing.BaseTypes;
-import org.eclipse.xtend.lib.Property;
+import org.eclipse.emf.ecore.EObject;
 
 @SuppressWarnings("all")
 public class TypeResolution {
   /**
    * Resolve the primitive type for the given literal.
    */
-  public static /* BaseType */Object getRequiredType(final /* Literal */Object literal) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nConstant cannot be resolved to a type."
-      + "\nConstant cannot be resolved to a type."
-      + "\nLiteral cannot be resolved to a type."
-      + "\nLiteral cannot be resolved to a type."
-      + "\nThe method or field type is undefined for the type Property"
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\neContainer cannot be resolved"
-      + "\neContainer cannot be resolved"
-      + "\ntype cannot be resolved"
-      + "\ntype cannot be resolved"
-      + "\neContainer cannot be resolved"
-      + "\ntype cannot be resolved"
-      + "\neContainer cannot be resolved"
-      + "\ngetRequiredType cannot be resolved");
+  public static BaseType getRequiredType(final Literal literal) {
+    BaseType _switchResult = null;
+    EObject _eContainer = literal.eContainer();
+    boolean _matched = false;
+    if (_eContainer instanceof Constant) {
+      _matched=true;
+      EObject _eContainer_1 = literal.eContainer();
+      Classifier _type = ((Constant) _eContainer_1).getType();
+      _switchResult = _type.getType();
+    }
+    if (!_matched) {
+      if (_eContainer instanceof Property) {
+        _matched=true;
+        EObject _eContainer_1 = literal.eContainer();
+        Classifier _type = ((Property) _eContainer_1).getType();
+        _switchResult = _type.getType();
+      }
+    }
+    if (!_matched) {
+      if (_eContainer instanceof Literal) {
+        _matched=true;
+        EObject _eContainer_1 = literal.eContainer();
+        _switchResult = TypeResolution.getRequiredType(((Literal) _eContainer_1));
+      }
+    }
+    return _switchResult;
   }
   
-  public static boolean isType(final /* Literal */Object literal, final BaseTypes baseType) throws InternalErrorException {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method getTypeEnum(Object) is undefined for the type Class<BaseTypes>"
-      + "\ngetRequiredType cannot be resolved");
+  public static boolean isType(final Literal literal, final BaseTypes baseType) throws InternalErrorException {
+    BaseType _requiredType = TypeResolution.getRequiredType(literal);
+    BaseTypes _typeEnum = BaseTypes.getTypeEnum(_requiredType);
+    return baseType.equals(_typeEnum);
   }
   
   /**
@@ -41,12 +56,14 @@ public class TypeResolution {
    * 
    * @param the type classifier
    */
-  public static /* Classifier */Object findType(final Property property) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field type is undefined for the type Property"
-      + "\nThe method or field type is undefined for the type Property"
-      + "\nThe method or field referTo is undefined for the type Property"
-      + "\n!= cannot be resolved"
-      + "\nfindType cannot be resolved");
+  public static Classifier findType(final Property property) {
+    Classifier _type = property.getType();
+    boolean _notEquals = (!Objects.equal(_type, null));
+    if (_notEquals) {
+      return property.getType();
+    } else {
+      Property _referTo = property.getReferTo();
+      return TypeResolution.findType(_referTo);
+    }
   }
 }

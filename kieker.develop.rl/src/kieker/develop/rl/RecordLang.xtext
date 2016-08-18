@@ -17,7 +17,7 @@ Import:
 
 /** the following two rules are used to create metamodel classes for the base type */
 Type:
-	ComplexType | BaseType | ModelType
+	ComplexType | BaseType
 ;
 
 BaseType:

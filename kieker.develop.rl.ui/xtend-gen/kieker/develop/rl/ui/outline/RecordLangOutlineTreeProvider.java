@@ -15,7 +15,8 @@
  */
 package kieker.develop.rl.ui.outline;
 
-import org.eclipse.xtend.lib.Property;
+import kieker.develop.rl.recordLang.Constant;
+import kieker.develop.rl.recordLang.Property;
 import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider;
 
 /**
@@ -29,7 +30,7 @@ public class RecordLangOutlineTreeProvider extends DefaultOutlineTreeProvider {
     return true;
   }
   
-  public boolean _isLeaf(final /* Constant */Object feature) {
+  public boolean _isLeaf(final Constant feature) {
     return true;
   }
 }
