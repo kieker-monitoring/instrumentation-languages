@@ -124,7 +124,7 @@ Query:
 ;
 
 LocationQuery:
-	(modifier=QueryModifier)? node=Node (('.' specialization=LocationQuery) | (composition=CompositionQuery))?
+	modifier=QueryModifier node=Node (('.' specialization=LocationQuery) | (composition=CompositionQuery))?
 ;
 
 CompositionQuery: {CompositionQuery}
@@ -132,8 +132,8 @@ CompositionQuery: {CompositionQuery}
 ;
 
 enum QueryModifier:
-	INCLUDE = 'include' |
-	EXCLUDE = 'exclude'
+	INCLUDE = '+' |
+	EXCLUDE = '-'
 ;
 
 OperationQuery: {OperationQuery}

@@ -3,12 +3,10 @@
  */
 package kieker.develop.al.ui.contentassist;
 
-import kieker.develop.al.ui.contentassist.AbstractAspectLangProposalProvider;
-
 /**
  * See https://www.eclipse.org/Xtext/documentation/304_ide_concepts.html#content-assist
  * on how to customize the content assistant.
  */
 @SuppressWarnings("all")
-public class AspectLangProposalProvider extends AbstractAspectLangProposalProvider {
+public class AspectLangProposalProvider /* implements AbstractAspectLangProposalProvider  */{
 }

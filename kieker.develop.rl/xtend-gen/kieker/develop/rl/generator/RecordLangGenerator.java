@@ -33,7 +33,9 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.IFileSystemAccess;
-import org.eclipse.xtext.generator.IGenerator;
+import org.eclipse.xtext.generator.IFileSystemAccess2;
+import org.eclipse.xtext.generator.IGenerator2;
+import org.eclipse.xtext.generator.IGeneratorContext;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
@@ -44,9 +46,9 @@ import org.osgi.service.prefs.Preferences;
  * Generates one single files per record for java, c, and perl.
  */
 @SuppressWarnings("all")
-public class RecordLangGenerator implements IGenerator {
+public class RecordLangGenerator implements IGenerator2 {
   @Override
-  public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
+  public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     URI _uRI = resource.getURI();
     boolean _isPlatformResource = _uRI.isPlatformResource();
     if (_isPlatformResource) {
@@ -139,5 +141,13 @@ public class RecordLangGenerator implements IGenerator {
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
+  }
+  
+  @Override
+  public void afterGenerate(final Resource input, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+  }
+  
+  @Override
+  public void beforeGenerate(final Resource input, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
   }
 }

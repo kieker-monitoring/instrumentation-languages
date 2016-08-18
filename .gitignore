@@ -31,4 +31,6 @@ doc/kieker-workshop/images/kieker-data-bridge.pdf
 /**/kieker4c/**/Makefile
 **.xtendbin
 */.antlr-generator-3.2.0-patch.jar
-**/target/
+**/target/**
+**/src-gen/**
+

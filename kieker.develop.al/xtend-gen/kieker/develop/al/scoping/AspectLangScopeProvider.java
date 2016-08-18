@@ -15,31 +15,11 @@
  */
 package kieker.develop.al.scoping;
 
-import com.google.common.base.Objects;
 import com.google.inject.Inject;
-import kieker.develop.al.aspectLang.ApplicationModel;
-import kieker.develop.al.aspectLang.CompositionQuery;
-import kieker.develop.al.aspectLang.ContainerNode;
-import kieker.develop.al.aspectLang.LocationQuery;
-import kieker.develop.al.aspectLang.Node;
-import kieker.develop.al.aspectLang.OperationQuery;
-import kieker.develop.al.aspectLang.ParameterQuery;
-import kieker.develop.al.aspectLang.Pointcut;
-import kieker.develop.al.mapping.Container;
-import kieker.develop.al.mapping.Feature;
-import kieker.develop.al.mapping.NamedElement;
-import kieker.develop.al.mapping.NamedType;
-import kieker.develop.al.mapping.Operation;
-import kieker.develop.al.mapping.Parameter;
 import kieker.develop.al.modelhandling.ForeignModelTypeProviderFactory;
-import kieker.develop.al.modelhandling.IForeignModelTypeProvider;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.scoping.IScope;
-import org.eclipse.xtext.scoping.Scopes;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 import org.eclipse.xtext.xbase.lib.Extension;
 
@@ -55,120 +35,91 @@ public class AspectLangScopeProvider extends AbstractDeclarativeScopeProvider {
   @Extension
   private ForeignModelTypeProviderFactory typeProviderFactory;
   
-  public IScope scope_ContainerNode_container(final ContainerNode context, final EReference reference) {
-    EObject _eContainer = context.eContainer();
-    if ((_eContainer instanceof LocationQuery)) {
-      EObject _eContainer_1 = context.eContainer();
-      final EObject location = ((LocationQuery) _eContainer_1).eContainer();
-      boolean _matched = false;
-      if (location instanceof CompositionQuery) {
-        _matched=true;
-        EObject _eContainer_2 = ((CompositionQuery)location).eContainer();
-        Node _node = ((LocationQuery) _eContainer_2).getNode();
-        return this.createLocationScope(_node);
-      }
-      if (!_matched) {
-        if (location instanceof LocationQuery) {
-          _matched=true;
-          Node _node = ((LocationQuery)location).getNode();
-          return this.createLocationScope(_node);
-        }
-      }
-      if (!_matched) {
-        if (location instanceof Pointcut) {
-          _matched=true;
-          ApplicationModel _model = ((Pointcut)location).getModel();
-          Resource _eResource = context.eResource();
-          ResourceSet _resourceSet = _eResource.getResourceSet();
-          return this.createModelScope(_model, _resourceSet);
-        }
-      }
-      return null;
-    } else {
-      return null;
-    }
+  public IScope scope_ContainerNode_container(final /* ContainerNode */Object context, final EReference reference) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nLocationQuery cannot be resolved to a type."
+      + "\nLocationQuery cannot be resolved to a type."
+      + "\nCompositionQuery cannot be resolved to a type."
+      + "\nLocationQuery cannot be resolved to a type."
+      + "\nLocationQuery cannot be resolved to a type."
+      + "\nPointcut cannot be resolved to a type."
+      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
+      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
+      + "\neContainer cannot be resolved"
+      + "\neContainer cannot be resolved"
+      + "\neContainer cannot be resolved"
+      + "\neContainer cannot be resolved"
+      + "\nnode cannot be resolved"
+      + "\ncreateLocationScope cannot be resolved"
+      + "\nnode cannot be resolved"
+      + "\ncreateLocationScope cannot be resolved"
+      + "\nmodel cannot be resolved"
+      + "\ncreateModelScope cannot be resolved"
+      + "\neResource cannot be resolved"
+      + "\nresourceSet cannot be resolved");
   }
   
-  private IScope createModelScope(final ApplicationModel model, final ResourceSet resourceSet) {
-    final IForeignModelTypeProvider typeProvider = this.typeProviderFactory.getTypeProvider(resourceSet, model);
-    Iterable<NamedElement> _allTypes = typeProvider.getAllTypes();
-    return Scopes.scopeFor(_allTypes);
+  private IScope createModelScope(final /* ApplicationModel */Object model, final ResourceSet resourceSet) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method getTypeProvider(ResourceSet, ApplicationModel) is undefined for the type ForeignModelTypeProviderFactory"
+      + "\nallTypes cannot be resolved");
   }
   
-  private IScope createLocationScope(final Node node) {
-    boolean _matched = false;
-    if (node instanceof ContainerNode) {
-      _matched=true;
-      final Feature feature = ((ContainerNode)node).getContainer();
-      boolean _matched_1 = false;
-      if (feature instanceof Container) {
-        _matched_1=true;
-        EList<Container> _contents = ((Container)feature).getContents();
-        return Scopes.scopeFor(_contents);
-      }
-    }
-    return null;
+  private IScope createLocationScope(final /* Node */Object node) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nContainerNode cannot be resolved to a type."
+      + "\ncontainer cannot be resolved"
+      + "\ncontents cannot be resolved");
   }
   
-  public IScope scope_Pointcut_returnType(final Pointcut context, final EReference reference) {
-    LocationQuery _location = context.getLocation();
-    final Node node = this.leaveNode(_location);
-    if ((node instanceof ContainerNode)) {
-      Resource _eResource = context.eResource();
-      ResourceSet _resourceSet = _eResource.getResourceSet();
-      final IForeignModelTypeProvider typeProvider = this.typeProviderFactory.getTypeProvider(_resourceSet, null);
-      Iterable<NamedType> _allDataTyes = typeProvider.getAllDataTyes();
-      return Scopes.scopeFor(_allDataTyes);
-    } else {
-      return IScope.NULLSCOPE;
-    }
+  public IScope scope_Pointcut_returnType(final /* Pointcut */Object context, final EReference reference) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nNode cannot be resolved to a type."
+      + "\nContainerNode cannot be resolved to a type."
+      + "\nThe method getTypeProvider(Object, Object) is undefined for the type ForeignModelTypeProviderFactory"
+      + "\nlocation cannot be resolved"
+      + "\nleaveNode cannot be resolved"
+      + "\neResource cannot be resolved"
+      + "\nresourceSet cannot be resolved"
+      + "\nallDataTyes cannot be resolved");
   }
   
-  public IScope scope_Pointcut_method(final Pointcut context, final EReference reference) {
-    LocationQuery _location = context.getLocation();
-    final Node node = this.leaveNode(_location);
-    if ((node instanceof ContainerNode)) {
-      final Feature container = ((ContainerNode) node).getContainer();
-      if ((container instanceof Container)) {
-        EList<Operation> _operations = ((Container)container).getOperations();
-        return Scopes.scopeFor(_operations);
-      } else {
-        return IScope.NULLSCOPE;
-      }
-    } else {
-      return IScope.NULLSCOPE;
-    }
+  public IScope scope_Pointcut_method(final /* Pointcut */Object context, final EReference reference) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nNode cannot be resolved to a type."
+      + "\nContainerNode cannot be resolved to a type."
+      + "\nContainerNode cannot be resolved to a type."
+      + "\nlocation cannot be resolved"
+      + "\nleaveNode cannot be resolved"
+      + "\ncontainer cannot be resolved"
+      + "\noperations cannot be resolved");
   }
   
-  public IScope scope_ParameterQuery_modifier(final ParameterQuery context, final EReference reference) {
+  public IScope scope_ParameterQuery_modifier(final /* ParameterQuery */Object context, final EReference reference) {
     return IScope.NULLSCOPE;
   }
   
-  public IScope scope_ParameterQuery_type(final ParameterQuery context, final EReference reference) {
-    Resource _eResource = context.eResource();
-    ResourceSet _resourceSet = _eResource.getResourceSet();
-    final IForeignModelTypeProvider typeProvider = this.typeProviderFactory.getTypeProvider(_resourceSet, null);
-    Iterable<NamedType> _allDataTyes = typeProvider.getAllDataTyes();
-    return Scopes.scopeFor(_allDataTyes);
+  public IScope scope_ParameterQuery_type(final /* ParameterQuery */Object context, final EReference reference) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method getTypeProvider(Object, Object) is undefined for the type ForeignModelTypeProviderFactory"
+      + "\neResource cannot be resolved"
+      + "\nresourceSet cannot be resolved"
+      + "\nallDataTyes cannot be resolved");
   }
   
-  public IScope scope_ParameterQuery_parameter(final ParameterQuery context, final EReference reference) {
-    EObject _eContainer = context.eContainer();
-    final Operation operation = ((OperationQuery) _eContainer).getOperationReference();
-    EList<Parameter> _parameters = operation.getParameters();
-    return Scopes.scopeFor(_parameters);
+  public IScope scope_ParameterQuery_parameter(final /* ParameterQuery */Object context, final EReference reference) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nOperationQuery cannot be resolved to a type."
+      + "\neContainer cannot be resolved"
+      + "\noperationReference cannot be resolved");
   }
   
-  private Node leaveNode(final LocationQuery query) {
-    Node _xifexpression = null;
-    LocationQuery _specialization = query.getSpecialization();
-    boolean _notEquals = (!Objects.equal(_specialization, null));
-    if (_notEquals) {
-      LocationQuery _specialization_1 = query.getSpecialization();
-      _xifexpression = this.leaveNode(_specialization_1);
-    } else {
-      _xifexpression = query.getNode();
-    }
-    return _xifexpression;
+  private /* Node */Object leaveNode(final /* LocationQuery */Object query) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nspecialization cannot be resolved"
+      + "\n!= cannot be resolved"
+      + "\nspecialization cannot be resolved"
+      + "\nleaveNode cannot be resolved"
+      + "\nnode cannot be resolved");
   }
 }

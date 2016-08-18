@@ -39,18 +39,19 @@ import kieker.develop.al.modelhandling.IModelMapper
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.core.runtime.Platform
 import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.xtext.generator.IFileSystemAccess
-import org.eclipse.xtext.generator.IGenerator
+import org.eclipse.xtext.generator.IFileSystemAccess2
+import org.eclipse.xtext.generator.IGenerator2
 import org.w3c.dom.Document
 
 import static extension kieker.develop.al.generator.CommonCollectionModule.*
+import org.eclipse.xtext.generator.IGeneratorContext
 
 /**
  * Generates code from your model files on save.
  * 
  * see http://www.eclipse.org/Xtext/documentation.html#TutorialCodeGeneration
  */
-class AspectLangGenerator implements IGenerator {
+class AspectLangGenerator implements IGenerator2 {
 	
 	private static final String MODEL_MAPPER = "kieker.develop.al.modelMapping"
 	
@@ -76,7 +77,7 @@ class AspectLangGenerator implements IGenerator {
 	/**
 	 * Central generation function.
 	 */
-	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
+	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		resource.allContents.filter(typeof(Aspect)).forEach[aspectTechnologyMap.discoverAspectTechnology(it)]
 		aspectTechnologyMap.forEach[key, value | switch(key) {
 			case ASPECT_J: createAspectJConfiguration(value,fsa)
@@ -92,7 +93,7 @@ class AspectLangGenerator implements IGenerator {
 	 * @param aspects collection of aspects for AspectJ
 	 * @param access file system access
 	 */
-	private def createAspectJConfiguration(Collection<Aspect> aspects, IFileSystemAccess access) {
+	private def createAspectJConfiguration(Collection<Aspect> aspects, IFileSystemAccess2 access) {
 		val aspectGenerator = new AspectJPointcutGenerator()
 		storeXMLModel('aop.xml', access, aspectGenerator.generate(aspects))
 				
@@ -117,7 +118,7 @@ class AspectLangGenerator implements IGenerator {
 	 * @param aspects collection of aspects for AspectJ
 	 * @param access file system access
 	 */
-	private def createSpringConfiguration(Collection<Aspect> aspects, IFileSystemAccess access) {
+	private def createSpringConfiguration(Collection<Aspect> aspects, IFileSystemAccess2 access) {
 		val adviceGenerator = new SpringAdviceGenerator()
 		
 		val utilizationAdviceMap = aspects.createUtilizationMap()
@@ -135,7 +136,7 @@ class AspectLangGenerator implements IGenerator {
 	 * @param aspects collection of aspects for AspectJ
 	 * @param access file system access
 	 */
-	private def createJ2EEConfiguration(Collection<Aspect> aspects, IFileSystemAccess access) {
+	private def createJ2EEConfiguration(Collection<Aspect> aspects, IFileSystemAccess2 access) {
 		val adviceGenerator = new JavaEEAdviceGenerator()
 		
 		val utilizationAdviceMap = aspects.createUtilizationMap()
@@ -153,7 +154,7 @@ class AspectLangGenerator implements IGenerator {
 	 * @param aspects collection of aspects for AspectJ
 	 * @param access file system access
 	 */
-	private def createServletConfiguration(Collection<Aspect> aspects, IFileSystemAccess access) {
+	private def createServletConfiguration(Collection<Aspect> aspects, IFileSystemAccess2 access) {
 		val adviceGenerator = new ServletAdviceGenerator()
 		
 		val utilizationAdviceMap = aspects.createUtilizationMap()
@@ -174,7 +175,7 @@ class AspectLangGenerator implements IGenerator {
 	 * @param access the file system access handler of the Xtext framework
 	 * @param document the document model to be serialized. 
 	 */
-	private def storeXMLModel(String filename, IFileSystemAccess access, Document document) {
+	private def storeXMLModel(String filename, IFileSystemAccess2 access, Document document) {
 		val transformerFactory = TransformerFactory.newInstance()
 		val transformer = transformerFactory.newTransformer()
 		transformer.setOutputProperty(OutputKeys.INDENT, "yes")
@@ -233,6 +234,12 @@ class AspectLangGenerator implements IGenerator {
 	 */
 	private def String getPackagePathName(Advice advice) {
 		(advice.eContainer as AspectModel).name.replace('\\.',File.separator) + File.separator
+	}
+	
+	override afterGenerate(Resource input, IFileSystemAccess2 fsa, IGeneratorContext context) {
+	}
+	
+	override beforeGenerate(Resource input, IFileSystemAccess2 fsa, IGeneratorContext context) {
 	}
 	
 }

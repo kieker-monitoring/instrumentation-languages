@@ -35,3 +35,4 @@ Export-Package: kieker.develop.rl.ui,
  kieker.develop.rl.ui.contentassist,
  kieker.develop.rl.ui.internal,
  kieker.develop.rl.ui.quickfix
+Bundle-Activator: kieker.develop.rl.ui.internal.RlActivator

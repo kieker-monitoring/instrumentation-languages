@@ -16,7 +16,7 @@
 package kieker.develop.rl.generator
 
 import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.xtext.generator.IGenerator
+import org.eclipse.xtext.generator.IGenerator2
 import org.eclipse.xtext.generator.IFileSystemAccess
 import kieker.develop.rl.recordLang.RecordType
 import kieker.develop.rl.recordLang.TemplateType
@@ -24,13 +24,15 @@ import kieker.develop.rl.preferences.TargetsPreferences
 import org.eclipse.core.runtime.preferences.IEclipsePreferences
 import org.osgi.service.prefs.Preferences
 import java.util.Calendar
+import org.eclipse.xtext.generator.IFileSystemAccess2
+import org.eclipse.xtext.generator.IGeneratorContext
 
 /**
  * Generates one single files per record for java, c, and perl. 
  */
-class RecordLangGenerator implements IGenerator {
-									
-	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
+class RecordLangGenerator implements IGenerator2 {
+				
+	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		if (resource.URI.platformResource) {			
 			// list all generators to support RecordType
 			val preferenceStore = TargetsPreferences.preferenceStore
@@ -86,5 +88,12 @@ class RecordLangGenerator implements IGenerator {
 				}
 			}
 	}
-
+	
+	override afterGenerate(Resource input, IFileSystemAccess2 fsa, IGeneratorContext context) {
+		
+	}
+	
+	override beforeGenerate(Resource input, IFileSystemAccess2 fsa, IGeneratorContext context) {
+		
+	}
 }
