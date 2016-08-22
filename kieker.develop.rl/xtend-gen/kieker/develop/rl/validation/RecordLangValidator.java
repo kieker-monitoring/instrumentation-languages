@@ -3,41 +3,12 @@
  */
 package kieker.develop.rl.validation;
 
-import com.google.common.base.Objects;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
-import java.util.function.Consumer;
 import kieker.develop.rl.generator.InternalErrorException;
-import kieker.develop.rl.recordLang.ArrayLiteral;
-import kieker.develop.rl.recordLang.ArraySize;
-import kieker.develop.rl.recordLang.BaseType;
-import kieker.develop.rl.recordLang.BooleanLiteral;
-import kieker.develop.rl.recordLang.BuiltInValueLiteral;
-import kieker.develop.rl.recordLang.Classifier;
-import kieker.develop.rl.recordLang.Constant;
-import kieker.develop.rl.recordLang.ConstantLiteral;
-import kieker.develop.rl.recordLang.FloatLiteral;
-import kieker.develop.rl.recordLang.IntLiteral;
-import kieker.develop.rl.recordLang.Literal;
-import kieker.develop.rl.recordLang.Property;
-import kieker.develop.rl.recordLang.RecordLangFactory;
-import kieker.develop.rl.recordLang.RecordLangPackage;
-import kieker.develop.rl.recordLang.RecordType;
-import kieker.develop.rl.recordLang.StringLiteral;
-import kieker.develop.rl.recordLang.TemplateType;
-import kieker.develop.rl.recordLang.Type;
-import kieker.develop.rl.typing.BaseTypes;
-import kieker.develop.rl.typing.PropertyResolution;
-import kieker.develop.rl.validation.AbstractRecordLangValidator;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtend.lib.Property;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Pair;
 
 /**
@@ -46,7 +17,7 @@ import org.eclipse.xtext.xbase.lib.Pair;
  * see http://www.eclipse.org/Xtext/documentation.html#validation
  */
 @SuppressWarnings("all")
-public class RecordLangValidator extends AbstractRecordLangValidator {
+public class RecordLangValidator /* implements AbstractRecordLangValidator  */{
   public final static String INVALID_NAME = "invalidName";
   
   /**
@@ -54,266 +25,195 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
    */
   @Check
   public void checkCyclicAlias(final Property property) {
-    Property _referTo = property.getReferTo();
-    boolean _notEquals = (!Objects.equal(_referTo, null));
-    if (_notEquals) {
-      final List<Property> visitedProperties = new ArrayList<Property>();
-      visitedProperties.add(property);
-      Property referredProperty = property.getReferTo();
-      while ((!Objects.equal(referredProperty.getReferTo(), null))) {
-        {
-          boolean _contains = visitedProperties.contains(referredProperty);
-          if (_contains) {
-            String _name = property.getName();
-            String _plus = ("Property alias " + _name);
-            String _plus_1 = (_plus + " has a cyclic definition.");
-            this.error(_plus_1, 
-              RecordLangPackage.Literals.PROPERTY__REFER_TO, 
-              RecordLangValidator.INVALID_NAME);
-            return;
-          }
-          visitedProperties.add(referredProperty);
-          Property _referTo_1 = referredProperty.getReferTo();
-          referredProperty = _referTo_1;
-        }
-      }
-    }
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field referTo is undefined for the type Property"
+      + "\nThe method or field referTo is undefined for the type Property"
+      + "\nThe method error(String, Object, String) is undefined"
+      + "\nThe method or field name is undefined for the type Property"
+      + "\nThe method or field RecordLangPackage.Literals is undefined"
+      + "\n!= cannot be resolved"
+      + "\nreferTo cannot be resolved"
+      + "\n!= cannot be resolved"
+      + "\nLiterals cannot be resolved"
+      + "\nPROPERTY__REFER_TO cannot be resolved"
+      + "\nreferTo cannot be resolved");
   }
   
   /**
    * Check whether a property has been declared twice with different types.
    */
   @Check
-  public void checkPropertyDeclaration(final Property property) {
-    final EObject type = property.eContainer();
-    boolean _matched = false;
-    if (type instanceof RecordType) {
-      _matched=true;
-      final List<Property> properties = PropertyResolution.collectAllProperties(((RecordType)type));
-      final Function1<Property, Boolean> _function = (Property p) -> {
-        return Boolean.valueOf((p.getName().equals(property.getName()) && (!Objects.equal(p, property))));
-      };
-      boolean _exists = IterableExtensions.<Property>exists(properties, _function);
-      if (_exists) {
-        final Function1<Property, Boolean> _function_1 = (Property p) -> {
-          return Boolean.valueOf((p.getName().equals(property.getName()) && (!Objects.equal(p, property))));
-        };
-        final Property otherProperty = IterableExtensions.<Property>findFirst(properties, _function_1);
-        EObject _eContainer = otherProperty.eContainer();
-        String _name = ((Type) _eContainer).getName();
-        String _plus = ("Property has been defined in " + _name);
-        String _plus_1 = (_plus + ". Cannot be declared again.");
-        this.error(_plus_1, 
-          RecordLangPackage.Literals.PROPERTY__NAME, 
-          RecordLangValidator.INVALID_NAME);
-      }
-    }
-    if (!_matched) {
-      if (type instanceof TemplateType) {
-        _matched=true;
-        final List<Property> properties = PropertyResolution.collectAllProperties(((TemplateType)type));
-        final Function1<Property, Boolean> _function = (Property p) -> {
-          return Boolean.valueOf((p.getName().equals(property.getName()) && (!Objects.equal(p, property))));
-        };
-        boolean _exists = IterableExtensions.<Property>exists(properties, _function);
-        if (_exists) {
-          final Function1<Property, Boolean> _function_1 = (Property p) -> {
-            return Boolean.valueOf((p.getName().equals(property.getName()) && (!Objects.equal(p, property))));
-          };
-          final Property otherProperty = IterableExtensions.<Property>findFirst(properties, _function_1);
-          EObject _eContainer = otherProperty.eContainer();
-          String _name = ((Type) _eContainer).getName();
-          String _plus = ("Property has been defined in " + _name);
-          String _plus_1 = (_plus + ". Cannot be declared again.");
-          this.error(_plus_1, 
-            RecordLangPackage.Literals.PROPERTY__NAME, 
-            RecordLangValidator.INVALID_NAME);
-        }
-      }
-    }
+  public Object checkPropertyDeclaration(final Property property) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nRecordType cannot be resolved to a type."
+      + "\nType cannot be resolved to a type."
+      + "\nTemplateType cannot be resolved to a type."
+      + "\nType cannot be resolved to a type."
+      + "\nThe method or field eContainer is undefined for the type Property"
+      + "\nThe method or field name is undefined for the type Object"
+      + "\nThe method or field name is undefined for the type Property"
+      + "\nThe method or field name is undefined for the type Object"
+      + "\nThe method or field name is undefined for the type Property"
+      + "\nThe method error(String, Object, String) is undefined"
+      + "\nThe method or field eContainer is undefined for the type Property"
+      + "\nThe method or field RecordLangPackage.Literals is undefined"
+      + "\nThe method or field name is undefined for the type Object"
+      + "\nThe method or field name is undefined for the type Property"
+      + "\nThe method or field name is undefined for the type Object"
+      + "\nThe method or field name is undefined for the type Property"
+      + "\nThe method error(String, Object, String) is undefined"
+      + "\nThe method or field eContainer is undefined for the type Property"
+      + "\nThe method or field RecordLangPackage.Literals is undefined"
+      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
+      + "\nThere is no context to infer the closure\'s argument types from. Consider typing the arguments or put the closures into a typed context."
+      + "\nThere is no context to infer the closure\'s argument types from. Consider typing the arguments or put the closures into a typed context."
+      + "\nThere is no context to infer the closure\'s argument types from. Consider typing the arguments or put the closures into a typed context."
+      + "\nThere is no context to infer the closure\'s argument types from. Consider typing the arguments or put the closures into a typed context."
+      + "\ncollectAllProperties cannot be resolved"
+      + "\nexists cannot be resolved"
+      + "\nequals cannot be resolved"
+      + "\n&& cannot be resolved"
+      + "\nfindFirst cannot be resolved"
+      + "\nequals cannot be resolved"
+      + "\n&& cannot be resolved"
+      + "\nname cannot be resolved"
+      + "\nLiterals cannot be resolved"
+      + "\nPROPERTY__NAME cannot be resolved"
+      + "\ncollectAllProperties cannot be resolved"
+      + "\nexists cannot be resolved"
+      + "\nequals cannot be resolved"
+      + "\n&& cannot be resolved"
+      + "\nfindFirst cannot be resolved"
+      + "\nequals cannot be resolved"
+      + "\n&& cannot be resolved"
+      + "\nname cannot be resolved"
+      + "\nLiterals cannot be resolved"
+      + "\nPROPERTY__NAME cannot be resolved");
   }
   
   /**
    * Check a RecordType for multiple inheritance of the same property with different types.
    */
   @Check
-  public void checkRecordTypeComposition(final RecordType type) {
-    final Collection<Property> properties = PropertyResolution.collectAllProperties(type);
-    final Function1<Property, Boolean> _function = (Property p) -> {
-      final Function1<Property, Boolean> _function_1 = (Property pInner) -> {
-        return Boolean.valueOf((p.getName().equals(pInner.getName()) && (!Objects.equal(p, pInner))));
-      };
-      return Boolean.valueOf(IterableExtensions.<Property>exists(properties, _function_1));
-    };
-    boolean _exists = IterableExtensions.<Property>exists(properties, _function);
-    if (_exists) {
-      final Collection<Pair<Property, Property>> duplicates = new ArrayList<Pair<Property, Property>>();
-      final Consumer<Property> _function_1 = (Property p) -> {
-        Pair<Property, Property> _findDuplicate = this.findDuplicate(p, properties);
-        duplicates.add(_findDuplicate);
-      };
-      properties.forEach(_function_1);
-      final Consumer<Pair<Property, Property>> _function_2 = (Pair<Property, Property> entry) -> {
-        Property _key = entry.getKey();
-        String _name = _key.getName();
-        String _plus = ("Multiple property inheritance form " + _name);
-        String _plus_1 = (_plus + 
-          " inherited from ");
-        Property _key_1 = entry.getKey();
-        EObject _eContainer = _key_1.eContainer();
-        String _name_1 = ((Type) _eContainer).getName();
-        String _plus_2 = (_plus_1 + _name_1);
-        String _plus_3 = (_plus_2 + " and ");
-        Property _value = entry.getValue();
-        EObject _eContainer_1 = _value.eContainer();
-        String _name_2 = ((Type) _eContainer_1).getName();
-        String _plus_4 = (_plus_3 + _name_2);
-        this.error(_plus_4, 
-          RecordLangPackage.Literals.COMPLEX_TYPE__PARENTS, 
-          RecordLangValidator.INVALID_NAME);
-      };
-      duplicates.forEach(_function_2);
-    }
+  public void checkRecordTypeComposition(final /* RecordType */Object type) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nType cannot be resolved to a type."
+      + "\nType cannot be resolved to a type."
+      + "\nThe method or field name is undefined for the type Property"
+      + "\nThe method or field name is undefined for the type Property"
+      + "\nThe method error(String, Object, String) is undefined"
+      + "\nThe method or field name is undefined for the type Property"
+      + "\nThe method or field eContainer is undefined for the type Property"
+      + "\nThe method or field eContainer is undefined for the type Property"
+      + "\nThe method or field RecordLangPackage.Literals is undefined"
+      + "\ncollectAllProperties cannot be resolved"
+      + "\nequals cannot be resolved"
+      + "\n&& cannot be resolved"
+      + "\nname cannot be resolved"
+      + "\nname cannot be resolved"
+      + "\nLiterals cannot be resolved"
+      + "\nCOMPLEX_TYPE__PARENTS cannot be resolved");
   }
   
   /**
    * Check a PartialType for multiple inheritance of the same property with different types.
    */
   @Check
-  public void checkPartialTypeComposition(final TemplateType type) {
-    final Collection<Property> properties = PropertyResolution.collectAllProperties(type);
-    final Function1<Property, Boolean> _function = (Property p) -> {
-      final Function1<Property, Boolean> _function_1 = (Property pInner) -> {
-        return Boolean.valueOf((p.getName().equals(pInner.getName()) && (!Objects.equal(p, pInner))));
-      };
-      return Boolean.valueOf(IterableExtensions.<Property>exists(properties, _function_1));
-    };
-    boolean _exists = IterableExtensions.<Property>exists(properties, _function);
-    if (_exists) {
-      final Collection<Pair<Property, Property>> duplicates = new ArrayList<Pair<Property, Property>>();
-      final Consumer<Property> _function_1 = (Property p) -> {
-        Pair<Property, Property> _findDuplicate = this.findDuplicate(p, properties);
-        duplicates.add(_findDuplicate);
-      };
-      properties.forEach(_function_1);
-      final Consumer<Pair<Property, Property>> _function_2 = (Pair<Property, Property> entry) -> {
-        Property _key = entry.getKey();
-        String _name = _key.getName();
-        String _plus = ("Multiple property inheritance from " + _name);
-        String _plus_1 = (_plus + 
-          " inherited from ");
-        Property _key_1 = entry.getKey();
-        EObject _eContainer = _key_1.eContainer();
-        String _name_1 = ((Type) _eContainer).getName();
-        String _plus_2 = (_plus_1 + _name_1);
-        String _plus_3 = (_plus_2 + " and ");
-        Property _value = entry.getValue();
-        EObject _eContainer_1 = _value.eContainer();
-        String _name_2 = ((Type) _eContainer_1).getName();
-        String _plus_4 = (_plus_3 + _name_2);
-        this.error(_plus_4, 
-          RecordLangPackage.Literals.COMPLEX_TYPE__PARENTS, 
-          RecordLangValidator.INVALID_NAME);
-      };
-      duplicates.forEach(_function_2);
-    }
+  public void checkPartialTypeComposition(final /* TemplateType */Object type) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nType cannot be resolved to a type."
+      + "\nType cannot be resolved to a type."
+      + "\nThe method or field name is undefined for the type Property"
+      + "\nThe method or field name is undefined for the type Property"
+      + "\nThe method error(String, Object, String) is undefined"
+      + "\nThe method or field name is undefined for the type Property"
+      + "\nThe method or field eContainer is undefined for the type Property"
+      + "\nThe method or field eContainer is undefined for the type Property"
+      + "\nThe method or field RecordLangPackage.Literals is undefined"
+      + "\ncollectAllProperties cannot be resolved"
+      + "\nequals cannot be resolved"
+      + "\n&& cannot be resolved"
+      + "\nname cannot be resolved"
+      + "\nname cannot be resolved"
+      + "\nLiterals cannot be resolved"
+      + "\nCOMPLEX_TYPE__PARENTS cannot be resolved");
   }
   
   /**
    * Check it a given constant's type and the assigned value's type match.
    */
   @Check
-  public void checkConstantValueTyping(final Constant constant) {
-    Literal _value = constant.getValue();
-    boolean _notEquals = (!Objects.equal(_value, null));
-    if (_notEquals) {
-      Classifier _type = constant.getType();
-      Literal _value_1 = constant.getValue();
-      Classifier _type_1 = this.getType(_value_1);
-      Literal _value_2 = constant.getValue();
-      boolean _compareTypesInAssignment = this.compareTypesInAssignment(_type, _type_1, _value_2);
-      boolean _not = (!_compareTypesInAssignment);
-      if (_not) {
-        Classifier _type_2 = constant.getType();
-        String _createFQNTypeName = this.createFQNTypeName(_type_2);
-        String _plus = ("Constant type \'" + _createFQNTypeName);
-        String _plus_1 = (_plus + "\' does not match value type \'");
-        Literal _value_3 = constant.getValue();
-        Classifier _type_3 = this.getType(_value_3);
-        String _createFQNTypeName_1 = this.createFQNTypeName(_type_3);
-        String _plus_2 = (_plus_1 + _createFQNTypeName_1);
-        String _plus_3 = (_plus_2 + "\'.");
-        this.error(_plus_3, 
-          RecordLangPackage.Literals.CONSTANT__TYPE, 
-          RecordLangValidator.INVALID_NAME);
-      }
-    }
+  public Object checkConstantValueTyping(final /* Constant */Object constant) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method error(String, Object, String) is undefined"
+      + "\nThe method or field RecordLangPackage.Literals is undefined"
+      + "\nThe method compareTypesInAssignment(Classifier, Classifier, Literal) from the type RecordLangValidator refers to the missing type Classifier"
+      + "\nvalue cannot be resolved"
+      + "\n!= cannot be resolved"
+      + "\ntype cannot be resolved"
+      + "\nvalue cannot be resolved"
+      + "\ntype cannot be resolved"
+      + "\nvalue cannot be resolved"
+      + "\ntype cannot be resolved"
+      + "\ncreateFQNTypeName cannot be resolved"
+      + "\nvalue cannot be resolved"
+      + "\ntype cannot be resolved"
+      + "\ncreateFQNTypeName cannot be resolved"
+      + "\nLiterals cannot be resolved"
+      + "\nCONSTANT__TYPE cannot be resolved");
   }
   
   /**
    * Check it a given property's type and the assigned value's type match.
    */
   @Check
-  public void checkPropertyValueTyping(final Property property) {
-    Literal _value = property.getValue();
-    boolean _notEquals = (!Objects.equal(_value, null));
-    if (_notEquals) {
-      Classifier _type = property.getType();
-      Literal _value_1 = property.getValue();
-      Classifier _type_1 = this.getType(_value_1);
-      Literal _value_2 = property.getValue();
-      boolean _compareTypesInAssignment = this.compareTypesInAssignment(_type, _type_1, _value_2);
-      boolean _not = (!_compareTypesInAssignment);
-      if (_not) {
-        Classifier _type_2 = property.getType();
-        String _createFQNTypeName = this.createFQNTypeName(_type_2);
-        String _plus = ("Property type \'" + _createFQNTypeName);
-        String _plus_1 = (_plus + "\' does not match value type \'");
-        Literal _value_3 = property.getValue();
-        Classifier _type_3 = this.getType(_value_3);
-        String _createFQNTypeName_1 = this.createFQNTypeName(_type_3);
-        String _plus_2 = (_plus_1 + _createFQNTypeName_1);
-        String _plus_3 = (_plus_2 + "\'.");
-        this.error(_plus_3, 
-          RecordLangPackage.Literals.PROPERTY__TYPE, 
-          RecordLangValidator.INVALID_NAME);
-      }
-    }
+  public Object checkPropertyValueTyping(final Property property) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field value is undefined for the type Property"
+      + "\nThe method or field value is undefined for the type Property"
+      + "\nThe method or field value is undefined for the type Property"
+      + "\nThe method error(String, Object, String) is undefined"
+      + "\nThe method or field value is undefined for the type Property"
+      + "\nThe method or field RecordLangPackage.Literals is undefined"
+      + "\nThe method compareTypesInAssignment(Classifier, Classifier, Literal) from the type RecordLangValidator refers to the missing type Classifier"
+      + "\nThe method getType(StringLiteral) from the type RecordLangValidator refers to the missing type Classifier"
+      + "\nThe method getType(StringLiteral) from the type RecordLangValidator refers to the missing type Classifier"
+      + "\n!= cannot be resolved"
+      + "\ntype cannot be resolved"
+      + "\ncreateFQNTypeName cannot be resolved"
+      + "\ntype cannot be resolved"
+      + "\ncreateFQNTypeName cannot be resolved"
+      + "\nLiterals cannot be resolved"
+      + "\nPROPERTY__TYPE cannot be resolved");
   }
   
   /**
    * Check it a given type of one array element matches the other.
    */
   @Check
-  public void checkValueTyping(final ArrayLiteral literal) {
-    EList<Literal> _literals = literal.getLiterals();
-    int _size = _literals.size();
-    boolean _greaterThan = (_size > 0);
-    if (_greaterThan) {
-      EList<Literal> _literals_1 = literal.getLiterals();
-      Literal _get = _literals_1.get(0);
-      final Classifier type = this.getType(_get);
-      EList<Literal> _literals_2 = literal.getLiterals();
-      final Function1<Literal, Boolean> _function = (Literal element) -> {
-        Classifier _type = this.getType(element);
-        return Boolean.valueOf(this.typeEquality(_type, type));
-      };
-      boolean _forall = IterableExtensions.<Literal>forall(_literals_2, _function);
-      boolean _not = (!_forall);
-      if (_not) {
-        EList<Literal> _literals_3 = literal.getLiterals();
-        final Function1<Literal, String> _function_1 = (Literal it) -> {
-          Classifier _type = this.getType(it);
-          return this.createFQNTypeName(_type);
-        };
-        List<String> _map = ListExtensions.<Literal, String>map(_literals_3, _function_1);
-        String _join = IterableExtensions.join(_map, ", ");
-        String _plus = ("Value types " + _join);
-        String _plus_1 = (_plus + " do not match");
-        this.error(_plus_1, 
-          RecordLangPackage.Literals.ARRAY_LITERAL__LITERALS);
-      }
-    }
+  public Object checkValueTyping(final /* ArrayLiteral */Object literal) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method error(String, Object) is undefined"
+      + "\nThe method or field RecordLangPackage.Literals is undefined"
+      + "\nThere is no context to infer the closure\'s argument types from. Consider typing the arguments or put the closures into a typed context."
+      + "\nThe method typeEquality(Classifier, Classifier) from the type RecordLangValidator refers to the missing type Classifier"
+      + "\nThe method getType(StringLiteral) from the type RecordLangValidator refers to the missing type Classifier"
+      + "\nThe method getType(StringLiteral) from the type RecordLangValidator refers to the missing type Classifier"
+      + "\nliterals cannot be resolved"
+      + "\nsize cannot be resolved"
+      + "\n> cannot be resolved"
+      + "\nliterals cannot be resolved"
+      + "\nget cannot be resolved"
+      + "\ntype cannot be resolved"
+      + "\nliterals cannot be resolved"
+      + "\nforall cannot be resolved"
+      + "\n! cannot be resolved"
+      + "\nliterals cannot be resolved"
+      + "\nmap cannot be resolved"
+      + "\ncreateFQNTypeName cannot be resolved"
+      + "\njoin cannot be resolved"
+      + "\nLiterals cannot be resolved"
+      + "\nARRAY_LITERAL__LITERALS cannot be resolved");
   }
   
   /**
@@ -321,339 +221,243 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
    * 
    * @param classifier the classifier where the FQN is computed for
    */
-  private String createFQNTypeName(final Classifier classifier) {
-    BaseType _type = classifier.getType();
-    String _name = _type.getName();
-    EList<ArraySize> _sizes = classifier.getSizes();
-    final Function1<ArraySize, String> _function = (ArraySize it) -> {
-      Object _xifexpression = null;
-      int _size = it.getSize();
-      boolean _notEquals = (_size != 0);
-      if (_notEquals) {
-        _xifexpression = Integer.valueOf(it.getSize());
-      } else {
-        _xifexpression = "";
-      }
-      String _plus = ("[" + _xifexpression);
-      return (_plus + "]");
-    };
-    List<String> _map = ListExtensions.<ArraySize, String>map(_sizes, _function);
-    String _join = IterableExtensions.join(_map);
-    return (_name + _join);
+  private String createFQNTypeName(final /* Classifier */Object classifier) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nType mismatch: cannot convert from Object to Iterable<?>"
+      + "\nType mismatch: cannot convert from Object to Iterable<?>"
+      + "\ntype cannot be resolved"
+      + "\nname cannot be resolved"
+      + "\n+ cannot be resolved"
+      + "\nsizes cannot be resolved"
+      + "\nmap cannot be resolved"
+      + "\njoin cannot be resolved");
   }
   
   /**
    * Check if types are a exact match.
    */
-  private boolean typeEquality(final Classifier left, final Classifier right) {
-    BaseType _type = left.getType();
-    String _name = _type.getName();
-    BaseType _type_1 = right.getType();
-    String _name_1 = _type_1.getName();
-    boolean _equals = _name.equals(_name_1);
-    if (_equals) {
-      EList<ArraySize> _sizes = left.getSizes();
-      int _size = _sizes.size();
-      EList<ArraySize> _sizes_1 = right.getSizes();
-      int _size_1 = _sizes_1.size();
-      boolean _equals_1 = (_size == _size_1);
-      if (_equals_1) {
-        int i = 0;
-        while ((i < left.getSizes().size())) {
-          {
-            EList<ArraySize> _sizes_2 = left.getSizes();
-            ArraySize _get = _sizes_2.get(i);
-            int _size_2 = _get.getSize();
-            EList<ArraySize> _sizes_3 = right.getSizes();
-            ArraySize _get_1 = _sizes_3.get(i);
-            int _size_3 = _get_1.getSize();
-            boolean _notEquals = (_size_2 != _size_3);
-            if (_notEquals) {
-              return false;
-            }
-            i = (i + 1);
-          }
-        }
-        return true;
-      }
-    }
-    return false;
+  private boolean typeEquality(final /* Classifier */Object left, final /* Classifier */Object right) {
+    throw new Error("Unresolved compilation problems:"
+      + "\ntype cannot be resolved"
+      + "\nname cannot be resolved"
+      + "\nequals cannot be resolved"
+      + "\ntype cannot be resolved"
+      + "\nname cannot be resolved"
+      + "\nsizes cannot be resolved"
+      + "\nsize cannot be resolved"
+      + "\n== cannot be resolved"
+      + "\nsizes cannot be resolved"
+      + "\nsize cannot be resolved"
+      + "\nsizes cannot be resolved"
+      + "\nsize cannot be resolved"
+      + "\nsizes cannot be resolved"
+      + "\nget cannot be resolved"
+      + "\nsize cannot be resolved"
+      + "\n!= cannot be resolved"
+      + "\nsizes cannot be resolved"
+      + "\nget cannot be resolved"
+      + "\nsize cannot be resolved");
   }
   
   /**
    * Compare two types for a type match in a value assignment.
    */
-  private boolean compareTypesInAssignment(final Classifier left, final Classifier right, final Literal literal) {
-    return this.compareClassifierTypesInAssignment(left, right, literal);
+  private boolean compareTypesInAssignment(final /* Classifier */Object left, final /* Classifier */Object right, final /* Literal */Object literal) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method compareClassifierTypesInAssignment(Classifier, Classifier, Literal) from the type RecordLangValidator refers to the missing type Classifier");
   }
   
   /**
    * Check if types match in an assignment.
    */
-  private boolean compareClassifierTypesInAssignment(final Classifier left, final Classifier right, final Literal literal) {
-    boolean _compareClassifierTypeEquvalenceSet = this.compareClassifierTypeEquvalenceSet(left, right, literal);
-    if (_compareClassifierTypeEquvalenceSet) {
-      EList<ArraySize> _sizes = left.getSizes();
-      int _size = _sizes.size();
-      EList<ArraySize> _sizes_1 = right.getSizes();
-      int _size_1 = _sizes_1.size();
-      boolean _equals = (_size == _size_1);
-      if (_equals) {
-        int i = 0;
-        while ((i < left.getSizes().size())) {
-          {
-            if (((left.getSizes().get(i).getSize() != right.getSizes().get(i).getSize()) && (left.getSizes().get(i).getSize() != 0))) {
-              return false;
-            }
-            i = (i + 1);
-          }
-        }
-        return true;
-      } else {
-        return false;
-      }
-    } else {
-      return false;
-    }
+  private boolean compareClassifierTypesInAssignment(final /* Classifier */Object left, final /* Classifier */Object right, final /* Literal */Object literal) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method compareClassifierTypeEquvalenceSet(Classifier, Classifier, Literal) from the type RecordLangValidator refers to the missing type Classifier"
+      + "\nsizes cannot be resolved"
+      + "\nsize cannot be resolved"
+      + "\n== cannot be resolved"
+      + "\nsizes cannot be resolved"
+      + "\nsize cannot be resolved"
+      + "\nsizes cannot be resolved"
+      + "\nsize cannot be resolved"
+      + "\nsizes cannot be resolved"
+      + "\nget cannot be resolved"
+      + "\nsize cannot be resolved"
+      + "\n!= cannot be resolved"
+      + "\nsizes cannot be resolved"
+      + "\nget cannot be resolved"
+      + "\nsize cannot be resolved"
+      + "\n&& cannot be resolved"
+      + "\nsizes cannot be resolved"
+      + "\nget cannot be resolved"
+      + "\nsize cannot be resolved"
+      + "\n!= cannot be resolved");
   }
   
   /**
    * Check if the left and the right type are compatible. First check if they are identical. If
    * not use checkTypeEquivalenceSet to check for compatible types. This is required for constants values.
    */
-  private boolean compareClassifierTypeEquvalenceSet(final Classifier left, final Classifier right, final Literal literal) {
-    boolean _xifexpression = false;
-    BaseType _type = left.getType();
-    String _name = _type.getName();
-    BaseType _type_1 = right.getType();
-    String _name_1 = _type_1.getName();
-    boolean _equals = _name.equals(_name_1);
-    if (_equals) {
-      _xifexpression = true;
-    } else {
-      _xifexpression = this.checkTypeEquivalenceSet(left, right, literal);
-    }
-    return _xifexpression;
+  private boolean compareClassifierTypeEquvalenceSet(final /* Classifier */Object left, final /* Classifier */Object right, final /* Literal */Object literal) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method checkTypeEquivalenceSet(Classifier, Classifier, Literal) from the type RecordLangValidator refers to the missing type Classifier"
+      + "\ntype cannot be resolved"
+      + "\nname cannot be resolved"
+      + "\nequals cannot be resolved"
+      + "\ntype cannot be resolved"
+      + "\nname cannot be resolved");
   }
   
   /**
    * Check if types match.
    */
-  private boolean checkTypeEquivalenceSet(final Classifier left, final Classifier right, final Literal literal) {
-    boolean _xifexpression = false;
-    BaseType _type = left.getType();
-    String _name = _type.getName();
-    boolean _equals = _name.equals("double");
-    if (_equals) {
-      boolean _xifexpression_1 = false;
-      BaseType _type_1 = right.getType();
-      String _name_1 = _type_1.getName();
-      boolean _equals_1 = _name_1.equals("float");
-      if (_equals_1) {
-        boolean _xifexpression_2 = false;
-        if ((literal instanceof FloatLiteral)) {
-          _xifexpression_2 = true;
-        } else {
-          boolean _xifexpression_3 = false;
-          if ((literal instanceof ArrayLiteral)) {
-            _xifexpression_3 = this.checkAllLiteralsArtOfType(FloatLiteral.class, ((ArrayLiteral) literal));
-          }
-          _xifexpression_2 = _xifexpression_3;
-        }
-        _xifexpression_1 = _xifexpression_2;
-      } else {
-        _xifexpression_1 = false;
-      }
-      _xifexpression = _xifexpression_1;
-    } else {
-      boolean _xifexpression_4 = false;
-      BaseType _type_2 = left.getType();
-      String _name_2 = _type_2.getName();
-      boolean _equals_2 = _name_2.equals("long");
-      if (_equals_2) {
-        boolean _xifexpression_5 = false;
-        BaseType _type_3 = right.getType();
-        String _name_3 = _type_3.getName();
-        boolean _equals_3 = _name_3.equals("int");
-        if (_equals_3) {
-          boolean _xifexpression_6 = false;
-          if ((literal instanceof IntLiteral)) {
-            boolean _xifexpression_7 = false;
-            if (((((IntLiteral) literal).getValue() >= Long.MIN_VALUE) && (((IntLiteral) literal).getValue() <= Long.MAX_VALUE))) {
-              _xifexpression_7 = true;
-            } else {
-              _xifexpression_7 = false;
-            }
-            _xifexpression_6 = _xifexpression_7;
-          } else {
-            boolean _xifexpression_8 = false;
-            if ((literal instanceof ArrayLiteral)) {
-              _xifexpression_8 = this.checkAllLiteralsArtOfType(IntLiteral.class, ((ArrayLiteral) literal));
-            }
-            _xifexpression_6 = _xifexpression_8;
-          }
-          _xifexpression_5 = _xifexpression_6;
-        } else {
-          _xifexpression_5 = false;
-        }
-        _xifexpression_4 = _xifexpression_5;
-      } else {
-        boolean _xifexpression_9 = false;
-        BaseType _type_4 = left.getType();
-        String _name_4 = _type_4.getName();
-        boolean _equals_4 = _name_4.equals("byte");
-        if (_equals_4) {
-          boolean _xifexpression_10 = false;
-          BaseType _type_5 = right.getType();
-          String _name_5 = _type_5.getName();
-          boolean _equals_5 = _name_5.equals("int");
-          if (_equals_5) {
-            boolean _xifexpression_11 = false;
-            if ((literal instanceof IntLiteral)) {
-              boolean _xifexpression_12 = false;
-              if (((((IntLiteral) literal).getValue() >= Byte.MIN_VALUE) && (((IntLiteral) literal).getValue() <= Byte.MAX_VALUE))) {
-                _xifexpression_12 = true;
-              } else {
-                _xifexpression_12 = false;
-              }
-              _xifexpression_11 = _xifexpression_12;
-            } else {
-              boolean _xifexpression_13 = false;
-              if ((literal instanceof ArrayLiteral)) {
-                _xifexpression_13 = this.checkAllLiteralsArtOfType(IntLiteral.class, ((ArrayLiteral) literal));
-              }
-              _xifexpression_11 = _xifexpression_13;
-            }
-            _xifexpression_10 = _xifexpression_11;
-          } else {
-            _xifexpression_10 = false;
-          }
-          _xifexpression_9 = _xifexpression_10;
-        } else {
-          boolean _xifexpression_14 = false;
-          BaseType _type_6 = left.getType();
-          String _name_6 = _type_6.getName();
-          boolean _equals_6 = _name_6.equals("short");
-          if (_equals_6) {
-            boolean _xifexpression_15 = false;
-            BaseType _type_7 = right.getType();
-            String _name_7 = _type_7.getName();
-            boolean _equals_7 = _name_7.equals("int");
-            if (_equals_7) {
-              boolean _xifexpression_16 = false;
-              if ((literal instanceof IntLiteral)) {
-                boolean _xifexpression_17 = false;
-                if (((((IntLiteral) literal).getValue() >= Short.MIN_VALUE) && (((IntLiteral) literal).getValue() <= Short.MAX_VALUE))) {
-                  _xifexpression_17 = true;
-                } else {
-                  _xifexpression_17 = false;
-                }
-                _xifexpression_16 = _xifexpression_17;
-              } else {
-                boolean _xifexpression_18 = false;
-                if ((literal instanceof ArrayLiteral)) {
-                  _xifexpression_18 = this.checkAllLiteralsArtOfType(IntLiteral.class, ((ArrayLiteral) literal));
-                }
-                _xifexpression_16 = _xifexpression_18;
-              }
-              _xifexpression_15 = _xifexpression_16;
-            } else {
-              _xifexpression_15 = false;
-            }
-            _xifexpression_14 = _xifexpression_15;
-          } else {
-            _xifexpression_14 = false;
-          }
-          _xifexpression_9 = _xifexpression_14;
-        }
-        _xifexpression_4 = _xifexpression_9;
-      }
-      _xifexpression = _xifexpression_4;
-    }
-    return _xifexpression;
+  private boolean checkTypeEquivalenceSet(final /* Classifier */Object left, final /* Classifier */Object right, final /* Literal */Object literal) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nFloatLiteral cannot be resolved to a type."
+      + "\nArrayLiteral cannot be resolved to a type."
+      + "\nArrayLiteral cannot be resolved to a type."
+      + "\nIntLiteral cannot be resolved to a type."
+      + "\nIntLiteral cannot be resolved to a type."
+      + "\nIntLiteral cannot be resolved to a type."
+      + "\nArrayLiteral cannot be resolved to a type."
+      + "\nArrayLiteral cannot be resolved to a type."
+      + "\nIntLiteral cannot be resolved to a type."
+      + "\nIntLiteral cannot be resolved to a type."
+      + "\nIntLiteral cannot be resolved to a type."
+      + "\nArrayLiteral cannot be resolved to a type."
+      + "\nArrayLiteral cannot be resolved to a type."
+      + "\nIntLiteral cannot be resolved to a type."
+      + "\nIntLiteral cannot be resolved to a type."
+      + "\nIntLiteral cannot be resolved to a type."
+      + "\nArrayLiteral cannot be resolved to a type."
+      + "\nArrayLiteral cannot be resolved to a type."
+      + "\nThe method or field FloatLiteral is undefined"
+      + "\nThe method or field IntLiteral is undefined"
+      + "\nThe method or field IntLiteral is undefined"
+      + "\nThe method or field IntLiteral is undefined"
+      + "\nUnreachable code: The if condition can never match. It is already handled by a previous condition."
+      + "\nThe method checkAllLiteralsArtOfType(Class<? extends Literal>, ArrayLiteral) from the type RecordLangValidator refers to the missing type Literal"
+      + "\nUnreachable code: The if condition can never match. It is already handled by a previous condition."
+      + "\nThe method checkAllLiteralsArtOfType(Class<? extends Literal>, ArrayLiteral) from the type RecordLangValidator refers to the missing type Literal"
+      + "\nUnreachable code: The if condition can never match. It is already handled by a previous condition."
+      + "\nThe method checkAllLiteralsArtOfType(Class<? extends Literal>, ArrayLiteral) from the type RecordLangValidator refers to the missing type Literal"
+      + "\nUnreachable code: The if condition can never match. It is already handled by a previous condition."
+      + "\nThe method checkAllLiteralsArtOfType(Class<? extends Literal>, ArrayLiteral) from the type RecordLangValidator refers to the missing type Literal"
+      + "\ntype cannot be resolved"
+      + "\nname cannot be resolved"
+      + "\nequals cannot be resolved"
+      + "\ntype cannot be resolved"
+      + "\nname cannot be resolved"
+      + "\nequals cannot be resolved"
+      + "\ntype cannot be resolved"
+      + "\nname cannot be resolved"
+      + "\nequals cannot be resolved"
+      + "\ntype cannot be resolved"
+      + "\nname cannot be resolved"
+      + "\nequals cannot be resolved"
+      + "\nvalue cannot be resolved"
+      + "\n>= cannot be resolved"
+      + "\n&& cannot be resolved"
+      + "\nvalue cannot be resolved"
+      + "\n<= cannot be resolved"
+      + "\ntype cannot be resolved"
+      + "\nname cannot be resolved"
+      + "\nequals cannot be resolved"
+      + "\ntype cannot be resolved"
+      + "\nname cannot be resolved"
+      + "\nequals cannot be resolved"
+      + "\nvalue cannot be resolved"
+      + "\n>= cannot be resolved"
+      + "\n&& cannot be resolved"
+      + "\nvalue cannot be resolved"
+      + "\n<= cannot be resolved"
+      + "\ntype cannot be resolved"
+      + "\nname cannot be resolved"
+      + "\nequals cannot be resolved"
+      + "\ntype cannot be resolved"
+      + "\nname cannot be resolved"
+      + "\nequals cannot be resolved"
+      + "\nvalue cannot be resolved"
+      + "\n>= cannot be resolved"
+      + "\n&& cannot be resolved"
+      + "\nvalue cannot be resolved"
+      + "\n<= cannot be resolved");
   }
   
   /**
    * Check in depth if all elements match the specific type.
    */
-  private boolean checkAllLiteralsArtOfType(final Class<? extends Literal> type, final ArrayLiteral literal) {
-    EList<Literal> _literals = literal.getLiterals();
-    final Function1<Literal, Boolean> _function = (Literal element) -> {
-      boolean _xifexpression = false;
-      if ((element instanceof ArrayLiteral)) {
-        _xifexpression = this.checkAllLiteralsArtOfType(type, ((ArrayLiteral) element));
-      } else {
-        _xifexpression = type.isInstance(element);
-      }
-      return Boolean.valueOf(_xifexpression);
-    };
-    return IterableExtensions.<Literal>forall(_literals, _function);
+  private boolean checkAllLiteralsArtOfType(final /* Class<? extends Literal> */Object type, final /* ArrayLiteral */Object literal) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nArrayLiteral cannot be resolved to a type."
+      + "\nArrayLiteral cannot be resolved to a type."
+      + "\nThere is no context to infer the closure\'s argument types from. Consider typing the arguments or put the closures into a typed context."
+      + "\nThe method checkAllLiteralsArtOfType(Class<? extends Literal>, ArrayLiteral) from the type RecordLangValidator refers to the missing type Literal"
+      + "\nliterals cannot be resolved"
+      + "\nforall cannot be resolved");
   }
   
   /**
    * Compute the classifier for a literal.
    */
-  private Classifier _getType(final StringLiteral literal) {
-    Classifier _xifexpression = null;
-    String _value = literal.getValue();
-    int _length = _value.length();
-    boolean _notEquals = (_length != 1);
-    if (_notEquals) {
-      BaseType _type = BaseTypes.STRING.getType();
-      _xifexpression = this.createPrimitiveClassifier(_type);
-    } else {
-      BaseType _type_1 = BaseTypes.CHAR.getType();
-      _xifexpression = this.createPrimitiveClassifier(_type_1);
-    }
-    return _xifexpression;
+  private /* Classifier */Object _getType(final /* StringLiteral */Object literal) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method createPrimitiveClassifier(BaseType) from the type RecordLangValidator refers to the missing type Object"
+      + "\nThe method getType(StringLiteral) from the type RecordLangValidator refers to the missing type Classifier"
+      + "\nThe method createPrimitiveClassifier(BaseType) from the type RecordLangValidator refers to the missing type Object"
+      + "\nThe method getType(StringLiteral) from the type RecordLangValidator refers to the missing type Classifier"
+      + "\nvalue cannot be resolved"
+      + "\nlength cannot be resolved"
+      + "\n!= cannot be resolved");
   }
   
-  private Classifier _getType(final IntLiteral literal) {
-    BaseType _type = BaseTypes.INT.getType();
-    return this.createPrimitiveClassifier(_type);
+  private /* Classifier */Object _getType(final /* IntLiteral */Object literal) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method createPrimitiveClassifier(BaseType) from the type RecordLangValidator refers to the missing type Object"
+      + "\nThe method getType(StringLiteral) from the type RecordLangValidator refers to the missing type Classifier");
   }
   
-  private Classifier _getType(final FloatLiteral literal) {
-    BaseType _type = BaseTypes.FLOAT.getType();
-    return this.createPrimitiveClassifier(_type);
+  private /* Classifier */Object _getType(final /* FloatLiteral */Object literal) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method createPrimitiveClassifier(BaseType) from the type RecordLangValidator refers to the missing type Object"
+      + "\nThe method getType(StringLiteral) from the type RecordLangValidator refers to the missing type Classifier");
   }
   
-  private Classifier _getType(final BooleanLiteral literal) {
-    BaseType _type = BaseTypes.BOOLEAN.getType();
-    return this.createPrimitiveClassifier(_type);
+  private /* Classifier */Object _getType(final /* BooleanLiteral */Object literal) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method createPrimitiveClassifier(BaseType) from the type RecordLangValidator refers to the missing type Object"
+      + "\nThe method getType(StringLiteral) from the type RecordLangValidator refers to the missing type Classifier");
   }
   
-  private Classifier _getType(final ConstantLiteral literal) {
-    Constant _value = literal.getValue();
-    return _value.getType();
+  private /* Classifier */Object _getType(final /* ConstantLiteral */Object literal) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nvalue cannot be resolved"
+      + "\ntype cannot be resolved");
   }
   
-  private Classifier _getType(final BuiltInValueLiteral literal) {
-    Classifier _switchResult = null;
-    String _value = literal.getValue();
-    switch (_value) {
-      case "KIEKER_VERSION":
-        BaseType _type = BaseTypes.STRING.getType();
-        _switchResult = this.createPrimitiveClassifier(_type);
-        break;
-    }
-    return _switchResult;
+  private /* Classifier */Object _getType(final /* BuiltInValueLiteral */Object literal) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method createPrimitiveClassifier(BaseType) from the type RecordLangValidator refers to the missing type Object"
+      + "\nThe method getType(StringLiteral) from the type RecordLangValidator refers to the missing type Classifier"
+      + "\nvalue cannot be resolved");
   }
   
-  private Classifier _getType(final ArrayLiteral literal) {
-    EList<Literal> _literals = literal.getLiterals();
-    Literal _get = _literals.get(0);
-    final Classifier classifier = this.getType(_get);
-    final ArraySize size = RecordLangFactory.eINSTANCE.createArraySize();
-    EList<Literal> _literals_1 = literal.getLiterals();
-    int _size = _literals_1.size();
-    size.setSize(_size);
-    EList<ArraySize> _sizes = classifier.getSizes();
-    _sizes.add(0, size);
-    return classifier;
+  private /* Classifier */Object _getType(final /* ArrayLiteral */Object literal) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nRecordLangFactory.eINSTANCE cannot be resolved to a type."
+      + "\nThe method getType(StringLiteral) from the type RecordLangValidator refers to the missing type Classifier"
+      + "\nliterals cannot be resolved"
+      + "\nget cannot be resolved"
+      + "\neINSTANCE cannot be resolved"
+      + "\ncreateArraySize cannot be resolved"
+      + "\nsetSize cannot be resolved"
+      + "\nliterals cannot be resolved"
+      + "\nsize cannot be resolved"
+      + "\nsizes cannot be resolved"
+      + "\nadd cannot be resolved");
   }
   
-  private Classifier _getType(final Literal literal) {
+  private /* Classifier */Object _getType(final /* Literal */Object literal) {
     try {
       throw new InternalErrorException("Unhandled literal type");
     } catch (Throwable _e) {
@@ -661,43 +465,31 @@ public class RecordLangValidator extends AbstractRecordLangValidator {
     }
   }
   
-  private Classifier createPrimitiveClassifier(final BaseType type) {
-    final Classifier classifier = RecordLangFactory.eINSTANCE.createClassifier();
-    classifier.setType(type);
-    return classifier;
+  private Object createPrimitiveClassifier(final /* BaseType */Object type) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nRecordLangFactory cannot be resolved to a type."
+      + "\neINSTANCE cannot be resolved"
+      + "\ncreateClassifier cannot be resolved"
+      + "\nsetType cannot be resolved");
   }
   
   /**
    * -- service routines --
    */
   private Pair<Property, Property> findDuplicate(final Property property, final Collection<Property> properties) {
-    final Function1<Property, Boolean> _function = (Property p) -> {
-      return Boolean.valueOf((property.getName().equals(p.getName()) && (!Objects.equal(p, property))));
-    };
-    final Property second = IterableExtensions.<Property>findFirst(properties, _function);
-    return new Pair<Property, Property>(property, second);
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field name is undefined for the type Property"
+      + "\nThe method or field name is undefined for the type Property"
+      + "\nequals cannot be resolved"
+      + "\n&& cannot be resolved");
   }
   
-  private Classifier getType(final Literal literal) {
-    if (literal instanceof ArrayLiteral) {
-      return _getType((ArrayLiteral)literal);
-    } else if (literal instanceof BooleanLiteral) {
-      return _getType((BooleanLiteral)literal);
-    } else if (literal instanceof BuiltInValueLiteral) {
-      return _getType((BuiltInValueLiteral)literal);
-    } else if (literal instanceof ConstantLiteral) {
-      return _getType((ConstantLiteral)literal);
-    } else if (literal instanceof FloatLiteral) {
-      return _getType((FloatLiteral)literal);
-    } else if (literal instanceof IntLiteral) {
-      return _getType((IntLiteral)literal);
-    } else if (literal instanceof StringLiteral) {
-      return _getType((StringLiteral)literal);
-    } else if (literal != null) {
-      return _getType(literal);
-    } else {
-      throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(literal).toString());
+  private Classifier getType(final StringLiteral literal) {
+    if (literal != null) {
+      return _getType(literal); else {
+        throw new IllegalArgumentException("Unhandled parameter types: " +
+          Arrays.<Object>asList(literal).toString());
+      }
     }
   }
-}
+  

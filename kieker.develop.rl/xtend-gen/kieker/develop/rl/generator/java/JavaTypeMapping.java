@@ -1,20 +1,10 @@
 package kieker.develop.rl.generator.java;
 
-import java.util.List;
 import kieker.develop.rl.generator.InternalErrorException;
-import kieker.develop.rl.recordLang.ArraySize;
-import kieker.develop.rl.recordLang.BaseType;
-import kieker.develop.rl.recordLang.Classifier;
-import kieker.develop.rl.recordLang.Property;
-import kieker.develop.rl.typing.BaseTypes;
-import kieker.develop.rl.typing.TypeResolution;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtend.lib.Property;
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.Functions.Function2;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.ListExtensions;
 
 @SuppressWarnings("all")
 public class JavaTypeMapping {
@@ -27,85 +17,35 @@ public class JavaTypeMapping {
    * @return
    * 		the Java type name of the given <code>classifier</code>
    */
-  public static String createPrimitiveTypeName(final BaseType type) throws InternalErrorException {
-    String _switchResult = null;
-    BaseTypes _typeEnum = BaseTypes.getTypeEnum(type);
-    if (_typeEnum != null) {
-      switch (_typeEnum) {
-        case INT:
-          _switchResult = "int";
-          break;
-        case LONG:
-          _switchResult = "long";
-          break;
-        case SHORT:
-          _switchResult = "short";
-          break;
-        case DOUBLE:
-          _switchResult = "double";
-          break;
-        case FLOAT:
-          _switchResult = "float";
-          break;
-        case CHAR:
-          _switchResult = "char";
-          break;
-        case BYTE:
-          _switchResult = "byte";
-          break;
-        case STRING:
-          _switchResult = "String";
-          break;
-        case BOOLEAN:
-          _switchResult = "boolean";
-          break;
-        default:
-          break;
-      }
-    }
-    return _switchResult;
+  public static String createPrimitiveTypeName(final /* BaseType */Object type) throws InternalErrorException {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method getTypeEnum(BaseType) is undefined for the type Class<BaseTypes>"
+      + "\nThe method or field INT is undefined"
+      + "\nThe method or field LONG is undefined"
+      + "\nThe method or field SHORT is undefined"
+      + "\nThe method or field DOUBLE is undefined"
+      + "\nThe method or field FLOAT is undefined"
+      + "\nThe method or field CHAR is undefined"
+      + "\nThe method or field BYTE is undefined"
+      + "\nThe method or field STRING is undefined"
+      + "\nThe method or field BOOLEAN is undefined");
   }
   
   /**
    * Determine the right Java string for a given system type.
    */
-  public static String createPrimitiveWrapperTypeName(final BaseType type) throws InternalErrorException {
-    String _switchResult = null;
-    BaseTypes _typeEnum = BaseTypes.getTypeEnum(type);
-    if (_typeEnum != null) {
-      switch (_typeEnum) {
-        case INT:
-          _switchResult = "Integer";
-          break;
-        case LONG:
-          _switchResult = "Long";
-          break;
-        case SHORT:
-          _switchResult = "Short";
-          break;
-        case DOUBLE:
-          _switchResult = "Double";
-          break;
-        case FLOAT:
-          _switchResult = "Float";
-          break;
-        case CHAR:
-          _switchResult = "Character";
-          break;
-        case BYTE:
-          _switchResult = "Byte";
-          break;
-        case STRING:
-          _switchResult = "String";
-          break;
-        case BOOLEAN:
-          _switchResult = "Boolean";
-          break;
-        default:
-          break;
-      }
-    }
-    return _switchResult;
+  public static String createPrimitiveWrapperTypeName(final /* BaseType */Object type) throws InternalErrorException {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method getTypeEnum(BaseType) is undefined for the type Class<BaseTypes>"
+      + "\nThe method or field INT is undefined"
+      + "\nThe method or field LONG is undefined"
+      + "\nThe method or field SHORT is undefined"
+      + "\nThe method or field DOUBLE is undefined"
+      + "\nThe method or field FLOAT is undefined"
+      + "\nThe method or field CHAR is undefined"
+      + "\nThe method or field BYTE is undefined"
+      + "\nThe method or field STRING is undefined"
+      + "\nThe method or field BOOLEAN is undefined");
   }
   
   /**
@@ -116,22 +56,14 @@ public class JavaTypeMapping {
    * 
    * @returns a java type name
    */
-  public static String createTypeName(final Classifier classifier) {
-    try {
-      String _xifexpression = null;
-      EList<ArraySize> _sizes = classifier.getSizes();
-      int _size = _sizes.size();
-      boolean _greaterThan = (_size > 0);
-      if (_greaterThan) {
-        _xifexpression = JavaTypeMapping.createArrayTypeName(classifier);
-      } else {
-        BaseType _type = classifier.getType();
-        _xifexpression = JavaTypeMapping.createPrimitiveTypeName(_type);
-      }
-      return _xifexpression;
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
+  public static Object createTypeName(final /* Classifier */Object classifier) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nsizes cannot be resolved"
+      + "\nsize cannot be resolved"
+      + "\n> cannot be resolved"
+      + "\ncreateArrayTypeName cannot be resolved"
+      + "\ntype cannot be resolved"
+      + "\ncreatePrimitiveTypeName cannot be resolved");
   }
   
   /**
@@ -142,22 +74,14 @@ public class JavaTypeMapping {
    * 
    * @returns a java type name
    */
-  public static String createObjectTypeName(final Classifier classifier) {
-    try {
-      String _xifexpression = null;
-      EList<ArraySize> _sizes = classifier.getSizes();
-      int _size = _sizes.size();
-      boolean _greaterThan = (_size > 0);
-      if (_greaterThan) {
-        _xifexpression = JavaTypeMapping.createArrayTypeName(classifier);
-      } else {
-        BaseType _type = classifier.getType();
-        _xifexpression = JavaTypeMapping.createPrimitiveWrapperTypeName(_type);
-      }
-      return _xifexpression;
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
+  public static Object createObjectTypeName(final /* Classifier */Object classifier) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nsizes cannot be resolved"
+      + "\nsize cannot be resolved"
+      + "\n> cannot be resolved"
+      + "\ncreateArrayTypeName cannot be resolved"
+      + "\ntype cannot be resolved"
+      + "\ncreatePrimitiveWrapperTypeName cannot be resolved");
   }
   
   /**
@@ -168,26 +92,15 @@ public class JavaTypeMapping {
    * 
    * @returns a java type name
    */
-  public static String createArrayTypeName(final Classifier classifier) {
-    try {
-      String _xblockexpression = null;
-      {
-        BaseType _type = classifier.getType();
-        final String primitiveTypeName = JavaTypeMapping.createPrimitiveTypeName(_type);
-        EList<ArraySize> _sizes = classifier.getSizes();
-        final Function1<ArraySize, String> _function = (ArraySize size) -> {
-          StringConcatenation _builder = new StringConcatenation();
-          _builder.append("[]");
-          return _builder.toString();
-        };
-        List<String> _map = ListExtensions.<ArraySize, String>map(_sizes, _function);
-        final String arrayBrackets = IterableExtensions.join(_map);
-        _xblockexpression = (primitiveTypeName + arrayBrackets);
-      }
-      return _xblockexpression;
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
+  public static Object createArrayTypeName(final /* Classifier */Object classifier) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThere is no context to infer the closure\'s argument types from. Consider typing the arguments or put the closures into a typed context."
+      + "\ntype cannot be resolved"
+      + "\ncreatePrimitiveTypeName cannot be resolved"
+      + "\nsizes cannot be resolved"
+      + "\nmap cannot be resolved"
+      + "\njoin cannot be resolved"
+      + "\n+ cannot be resolved");
   }
   
   /**
@@ -221,43 +134,18 @@ public class JavaTypeMapping {
    * 		the serialization size of the property
    */
   private static int getSize(final Property property) throws InternalErrorException {
-    int _switchResult = (int) 0;
-    Classifier _findType = TypeResolution.findType(property);
-    BaseType _type = _findType.getType();
-    BaseTypes _typeEnum = BaseTypes.getTypeEnum(_type);
-    if (_typeEnum != null) {
-      switch (_typeEnum) {
-        case STRING:
-          _switchResult = 4;
-          break;
-        case BYTE:
-          _switchResult = 1;
-          break;
-        case SHORT:
-          _switchResult = 2;
-          break;
-        case INT:
-          _switchResult = 4;
-          break;
-        case LONG:
-          _switchResult = 8;
-          break;
-        case FLOAT:
-          _switchResult = 4;
-          break;
-        case DOUBLE:
-          _switchResult = 8;
-          break;
-        case CHAR:
-          _switchResult = 2;
-          break;
-        case BOOLEAN:
-          _switchResult = 1;
-          break;
-        default:
-          break;
-      }
-    }
-    return _switchResult;
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method getTypeEnum(Object) is undefined for the type Class<BaseTypes>"
+      + "\nThe method or field STRING is undefined"
+      + "\nThe method or field BYTE is undefined"
+      + "\nThe method or field SHORT is undefined"
+      + "\nThe method or field INT is undefined"
+      + "\nThe method or field LONG is undefined"
+      + "\nThe method or field FLOAT is undefined"
+      + "\nThe method or field DOUBLE is undefined"
+      + "\nThe method or field CHAR is undefined"
+      + "\nThe method or field BOOLEAN is undefined"
+      + "\nThe method findType(Property) from the type TypeResolution refers to the missing type Classifier"
+      + "\ntype cannot be resolved");
   }
 }

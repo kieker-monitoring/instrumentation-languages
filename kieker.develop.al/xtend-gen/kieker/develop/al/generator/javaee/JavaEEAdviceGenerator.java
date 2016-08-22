@@ -1,7 +1,5 @@
 package kieker.develop.al.generator.javaee;
 
-import de.cau.cs.se.geco.architecture.framework.IGenerator;
-
 @SuppressWarnings("all")
 public class JavaEEAdviceGenerator /* implements IGenerator<Advice, CharSequence>  */{
   @Override

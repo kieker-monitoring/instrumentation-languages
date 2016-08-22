@@ -1,7 +1,5 @@
 package kieker.develop.al.generator.spring;
 
-import de.cau.cs.se.geco.architecture.framework.IGenerator;
-
 @SuppressWarnings("all")
 public class SpringAdviceGenerator /* implements IGenerator<Advice, CharSequence>  */{
   @Override

@@ -2,11 +2,9 @@ package kieker.develop.al.generator;
 
 import java.util.List;
 import java.util.Map;
-import kieker.develop.rl.recordLang.Property;
-import kieker.develop.rl.recordLang.RecordType;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.xtend.lib.Property;
 import org.eclipse.xtend2.lib.StringConcatenation;
-import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 /**
  * TODO Class name should be improved.
@@ -28,12 +26,18 @@ public class CommonJavaTemplates {
    */
   public static String createRecordInputs(final /* EList<Collector> */Object collectors) {
     throw new Error("Unresolved compilation problems:"
+      + "\nRecordType cannot be resolved to a type."
+      + "\nModel cannot be resolved to a type."
       + "\nThe method or field events is undefined for the type Object"
       + "\nThe method or field type is undefined for the type Object"
-      + "\nforEach cannot be resolved");
+      + "\nThe method addUnique(List<RecordType>, RecordType) from the type CommonJavaTemplates refers to the missing type RecordType"
+      + "\nforEach cannot be resolved"
+      + "\neContainer cannot be resolved"
+      + "\nname cannot be resolved"
+      + "\nname cannot be resolved");
   }
   
-  private static void addUnique(final List<RecordType> list, final RecordType type) {
+  private static void addUnique(final /* List<RecordType> */Object list, final /* RecordType */Object type) {
     boolean _contains = list.contains(type);
     boolean _not = (!_contains);
     if (_not) {
@@ -110,7 +114,7 @@ public class CommonJavaTemplates {
   public static Map<CharSequence, CharSequence> createData(final /* Event */Object event, final Map<CharSequence, CharSequence> data, final /* Map<AdviceParameterDeclaration, Value> */Object parameterAssignments) {
     throw new Error("Unresolved compilation problems:"
       + "\nThe method or field type is undefined for the type Object"
-      + "\nType mismatch: cannot convert from Object to Property"
+      + "\nThe method or field createValueName is undefined for the type Object"
       + "\nThere is no context to infer the closure\'s argument types from. Consider typing the arguments or put the closures into a typed context."
       + "\ntype cannot be resolved"
       + "\ncollectAllDataProperties cannot be resolved"
@@ -125,7 +129,7 @@ public class CommonJavaTemplates {
   
   public static CharSequence createEvent(final /* Event */Object event) {
     throw new Error("Unresolved compilation problems:"
-      + "\nType mismatch: cannot convert from Object to Property"
+      + "\nThe method or field createValueName is undefined for the type Object"
       + "\ntype cannot be resolved"
       + "\nname cannot be resolved"
       + "\ntype cannot be resolved"
@@ -134,10 +138,10 @@ public class CommonJavaTemplates {
       + "\njoin cannot be resolved");
   }
   
-  private static CharSequence createValueName(final Property property) {
-    String _name = property.getName();
-    String _firstUpper = StringExtensions.toFirstUpper(_name);
-    return ("collect" + _firstUpper);
+  private static CharSequence createValueName(final /* kieker.develop.rl.recordLang.Property */Object property) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nname cannot be resolved"
+      + "\ntoFirstUpper cannot be resolved");
   }
   
   private static CharSequence createValue(final /* Value */Object value, final /* Map<AdviceParameterDeclaration, Value> */Object parameterAssignments) {
@@ -172,7 +176,7 @@ public class CommonJavaTemplates {
       + "\nname cannot be resolved");
   }
   
-  private static CharSequence createLocalProperty(final org.eclipse.xtend.lib.Property property) {
+  private static CharSequence createLocalProperty(final Property property) {
     throw new Error("Unresolved compilation problems:"
       + "\nReflectionProperty cannot be resolved to a type."
       + "\nRuntimeProperty cannot be resolved to a type."

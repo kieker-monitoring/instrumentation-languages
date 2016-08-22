@@ -1,6 +1,5 @@
 package kieker.develop.al.generator.servlet;
 
-import de.cau.cs.se.geco.architecture.framework.IGenerator;
 import org.eclipse.xtend2.lib.StringConcatenation;
 
 @SuppressWarnings("all")

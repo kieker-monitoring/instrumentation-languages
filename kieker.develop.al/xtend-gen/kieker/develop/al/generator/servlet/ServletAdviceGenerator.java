@@ -1,7 +1,5 @@
 package kieker.develop.al.generator.servlet;
 
-import de.cau.cs.se.geco.architecture.framework.IGenerator;
-
 @SuppressWarnings("all")
 public class ServletAdviceGenerator /* implements IGenerator<Advice, CharSequence>  */{
   @Override

@@ -1,6 +1,5 @@
 package kieker.develop.al.generator.aspectj;
 
-import de.cau.cs.se.geco.architecture.framework.IGenerator;
 import java.util.Collection;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;

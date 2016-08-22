@@ -27,18 +27,10 @@ BaseType:
 ModelType:
 	('@author' author=STRING)?
 	('@since' since=STRING)?
-	'model' name=ID (templates=Templates | root=RootType) (
+	'model' name=ID types+=[ComplexType|QualifiedName] (',' types+=[ComplexType|QualifiedName])* (
 		('{' (properties+=Property | constants+=Constant)* '}') | 
-		(':' parents+=[TemplateType|QualifiedName] (',' parents+=[TemplateType|QualifiedName])*)
+		(':' extensions+=[TemplateType|QualifiedName] (',' extensions+=[TemplateType|QualifiedName])*)
 	)
-;
-
-Templates:
-	'with' templates+=[TemplateType|QualifiedName] (',' templates+=[TemplateType|QualifiedName])*
-;
-
-RootType:
-	'root' record=[RecordType|QualifiedName]
 ;
 
 ComplexType:
