@@ -16,14 +16,20 @@
 package kieker.develop.rl;
 
 import com.google.inject.Binder;
+import com.google.inject.Singleton;
+import com.google.inject.binder.AnnotatedBindingBuilder;
+import com.google.inject.binder.ScopedBindingBuilder;
+import kieker.develop.rl.AbstractRecordLangRuntimeModule;
+import kieker.develop.rl.ouput.config.RecordLangOutputConfigurationProvider;
 import kieker.develop.rl.typing.jar.JarModelGlobalScopeProvider;
+import org.eclipse.xtext.generator.IOutputConfigurationProvider;
 import org.eclipse.xtext.scoping.IGlobalScopeProvider;
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 @SuppressWarnings("all")
-public class RecordLangRuntimeModule /* implements AbstractRecordLangRuntimeModule  */{
+public class RecordLangRuntimeModule extends AbstractRecordLangRuntimeModule {
   /**
    * {@inheritDoc}<br>
    * This extension registers the custom {@link TypeGlobalScopeProvider} that realizes e.g. the
@@ -40,8 +46,9 @@ public class RecordLangRuntimeModule /* implements AbstractRecordLangRuntimeModu
    */
   @Override
   public void configure(final Binder binder) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field super is undefined"
-      + "\nconfigure cannot be resolved");
+    super.configure(binder);
+    AnnotatedBindingBuilder<IOutputConfigurationProvider> _bind = binder.<IOutputConfigurationProvider>bind(IOutputConfigurationProvider.class);
+    ScopedBindingBuilder _to = _bind.to(RecordLangOutputConfigurationProvider.class);
+    _to.in(Singleton.class);
   }
 }

@@ -1,5 +1,6 @@
 package kieker.develop.al.generator.aspectj;
 
+import de.cau.cs.se.geco.architecture.framework.IGenerator;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +12,8 @@ import kieker.develop.al.aspectLang.Aspect;
 import kieker.develop.al.aspectLang.Pointcut;
 import kieker.develop.al.aspectLang.UtilizeAdvice;
 import kieker.develop.al.generator.CommonCollectionModule;
+import kieker.develop.al.generator.aspectj.NameResolver;
+import kieker.develop.al.generator.aspectj.PointcutQueryModule;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
@@ -75,21 +78,30 @@ public class AspectJPointcutGenerator implements IGenerator<Collection<Aspect>, 
   }
   
   private Element createPointcut(final Pointcut pointcut) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field createExpression is undefined for the type Pointcut");
+    final Element pNode = this.doc.createElement("pointcut");
+    String _name = pointcut.getName();
+    pNode.setAttribute("name", _name);
+    String _createExpression = PointcutQueryModule.createExpression(pointcut);
+    pNode.setAttribute("expression", _createExpression);
+    return pNode;
   }
   
   private Element createAspect(final Element parent, final Advice advice, final int i) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method getAdviceClassName(int) is undefined for the type Advice"
-      + "\ntoString cannot be resolved");
+    final Element aspect = this.doc.createElement("aspect");
+    CharSequence _adviceClassName = NameResolver.getAdviceClassName(advice, i);
+    String _string = _adviceClassName.toString();
+    aspect.setAttribute("name", _string);
+    return aspect;
   }
   
   private Element createConcreteAspect(final Element parent, final Advice advice, final int i) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method getConcreteAdviceClassName(int) is undefined for the type Advice"
-      + "\nThe method getAdviceClassName(int) is undefined for the type Advice"
-      + "\ntoString cannot be resolved"
-      + "\ntoString cannot be resolved");
+    final Element aspect = this.doc.createElement("concrete-aspect");
+    CharSequence _concreteAdviceClassName = NameResolver.getConcreteAdviceClassName(advice, i);
+    String _string = _concreteAdviceClassName.toString();
+    aspect.setAttribute("name", _string);
+    CharSequence _adviceClassName = NameResolver.getAdviceClassName(advice, i);
+    String _string_1 = _adviceClassName.toString();
+    aspect.setAttribute("extends", _string_1);
+    return aspect;
   }
 }

@@ -3,8 +3,10 @@
  */
 package kieker.develop.rl.ui;
 
+import kieker.develop.rl.ui.AbstractRecordLangUiModule;
 import kieker.develop.rl.ui.TypesHighlightingCalculator;
 import kieker.develop.rl.ui.TypesHighlightingConfiguration;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor;
 import org.eclipse.xtext.ide.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
@@ -14,7 +16,7 @@ import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
  */
 @FinalFieldsConstructor
 @SuppressWarnings("all")
-public class RecordLangUiModule /* implements AbstractRecordLangUiModule  */{
+public class RecordLangUiModule extends AbstractRecordLangUiModule {
   /**
    * Add highlighting calculator for types.
    * 
@@ -31,5 +33,9 @@ public class RecordLangUiModule /* implements AbstractRecordLangUiModule  */{
    */
   public Class<? extends IHighlightingConfiguration> bindIHighlightingConfiguration() {
     return TypesHighlightingConfiguration.class;
+  }
+  
+  public RecordLangUiModule(final AbstractUIPlugin plugin) {
+    super(plugin);
   }
 }

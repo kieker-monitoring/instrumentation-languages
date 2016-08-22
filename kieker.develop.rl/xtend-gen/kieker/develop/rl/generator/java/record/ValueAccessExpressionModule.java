@@ -1,7 +1,11 @@
 package kieker.develop.rl.generator.java.record;
 
+import kieker.develop.rl.generator.java.record.NameResolver;
+import kieker.develop.rl.recordLang.ArraySize;
+import kieker.develop.rl.recordLang.Classifier;
+import kieker.develop.rl.recordLang.Property;
+import kieker.develop.rl.typing.TypeResolution;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.xtend.lib.Property;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.ExclusiveRange;
 
@@ -15,12 +19,41 @@ public class ValueAccessExpressionModule {
    * @param propertyName the property of the associated array property
    * @param simpleTypeAction the action to be performed on non array level
    */
-  public static CharSequence createArrayAccessLoops(final /* EList<ArraySize> */Object sizes, final int depth, final String propertyName, final CharSequence simpleTypeAction) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method createArrayAccessLoops(EList<ArraySize>, int, String, CharSequence) from the type ValueAccessExpressionModule refers to the missing type ArraySize"
-      + "\nsize cannot be resolved"
-      + "\n> cannot be resolved"
-      + "\nsize cannot be resolved");
+  public static CharSequence createArrayAccessLoops(final EList<ArraySize> sizes, final int depth, final String propertyName, final CharSequence simpleTypeAction) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("for (int i");
+    _builder.append(depth, "");
+    _builder.append("=0;i");
+    _builder.append(depth, "");
+    _builder.append("<");
+    Object _xifexpression = null;
+    ArraySize _get = sizes.get(depth);
+    int _size = _get.getSize();
+    boolean _greaterThan = (_size > 0);
+    if (_greaterThan) {
+      ArraySize _get_1 = sizes.get(depth);
+      _xifexpression = Integer.valueOf(_get_1.getSize());
+    } else {
+      _xifexpression = ((("_" + propertyName) + "_size") + Integer.valueOf(depth));
+    }
+    _builder.append(_xifexpression, "");
+    _builder.append(";i");
+    _builder.append(depth, "");
+    _builder.append("++)");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    CharSequence _xifexpression_1 = null;
+    int _size_1 = sizes.size();
+    int _minus = (_size_1 - 1);
+    boolean _greaterThan_1 = (_minus > depth);
+    if (_greaterThan_1) {
+      _xifexpression_1 = ValueAccessExpressionModule.createArrayAccessLoops(sizes, (depth + 1), propertyName, simpleTypeAction);
+    } else {
+      _xifexpression_1 = simpleTypeAction;
+    }
+    _builder.append(_xifexpression_1, "\t");
+    _builder.newLineIfNotEmpty();
+    return _builder;
   }
   
   /**
@@ -30,10 +63,19 @@ public class ValueAccessExpressionModule {
    * @return get/is + "capitalized property name" + "()" + "array access code"
    */
   public static CharSequence createGetterValueExpression(final Property property) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field type is undefined for the type Property"
-      + "\nsizes cannot be resolved"
-      + "\ncreateArrayValueAccessIndizies cannot be resolved");
+    CharSequence _xblockexpression = null;
+    {
+      Classifier _type = property.getType();
+      final EList<ArraySize> sizes = _type.getSizes();
+      StringConcatenation _builder = new StringConcatenation();
+      CharSequence _createGetterName = NameResolver.createGetterName(property);
+      _builder.append(_createGetterName, "");
+      _builder.append("()");
+      CharSequence _createArrayValueAccessIndizies = ValueAccessExpressionModule.createArrayValueAccessIndizies(sizes);
+      _builder.append(_createArrayValueAccessIndizies, "");
+      _xblockexpression = _builder;
+    }
+    return _xblockexpression;
   }
   
   /**
@@ -43,11 +85,15 @@ public class ValueAccessExpressionModule {
    * @param property the property to be used in the expression
    */
   public static CharSequence createPropertyValueExpression(final Property property) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field name is undefined for the type Property"
-      + "\nThe method findType(Property) from the type TypeResolution refers to the missing type Classifier"
-      + "\nsizes cannot be resolved"
-      + "\ncreateArrayValueAccessIndizies cannot be resolved");
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("this.");
+    String _name = property.getName();
+    _builder.append(_name, "");
+    Classifier _findType = TypeResolution.findType(property);
+    EList<ArraySize> _sizes = _findType.getSizes();
+    CharSequence _createArrayValueAccessIndizies = ValueAccessExpressionModule.createArrayValueAccessIndizies(_sizes);
+    _builder.append(_createArrayValueAccessIndizies, "");
+    return _builder;
   }
   
   /**
@@ -57,7 +103,7 @@ public class ValueAccessExpressionModule {
    * 
    * @param sizes list of array size values representing the array dimensions.
    */
-  private static CharSequence createArrayValueAccessIndizies(final /* EList<ArraySize> */Object sizes) {
+  private static CharSequence createArrayValueAccessIndizies(final EList<ArraySize> sizes) {
     String result = "";
     int _size = sizes.size();
     ExclusiveRange _doubleDotLessThan = new ExclusiveRange(0, _size, true);

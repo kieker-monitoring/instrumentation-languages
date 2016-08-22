@@ -17,15 +17,21 @@ package kieker.develop.rl.scoping;
 
 import java.util.Collection;
 import java.util.List;
+import kieker.develop.rl.recordLang.ForeignKey;
+import kieker.develop.rl.recordLang.Property;
+import kieker.develop.rl.recordLang.RecordType;
+import kieker.develop.rl.recordLang.TemplateType;
+import kieker.develop.rl.typing.PropertyResolution;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EGenericType;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.xtend.lib.Property;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.scoping.IScope;
+import org.eclipse.xtext.scoping.Scopes;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
 
 /**
@@ -39,23 +45,31 @@ public class RecordLangScopeProvider extends AbstractDeclarativeScopeProvider {
   /**
    * Define scope for foreign key reference.
    */
-  public IScope scope_ForeignKey_propertyRef(final /* ForeignKey */Object key, final EReference reference) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nrecordType cannot be resolved"
-      + "\ncollectAllProperties cannot be resolved");
+  public IScope scope_ForeignKey_propertyRef(final ForeignKey key, final EReference reference) {
+    RecordType _recordType = key.getRecordType();
+    List<Property> _collectAllProperties = PropertyResolution.collectAllProperties(_recordType);
+    return Scopes.scopeFor(_collectAllProperties);
   }
   
   /**
    * Build a scope containing all properties.
    */
   public IScope scope_Property_referTo(final Property property, final EReference reference) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nRecordType cannot be resolved to a type."
-      + "\nTemplateType cannot be resolved to a type."
-      + "\nThe method eContainer() is undefined for the type Property"
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition."
-      + "\ncollectAllProperties cannot be resolved"
-      + "\ncollectAllProperties cannot be resolved");
+    final EObject type = property.eContainer();
+    boolean _matched = false;
+    if (type instanceof RecordType) {
+      _matched=true;
+      List<Property> _collectAllProperties = PropertyResolution.collectAllProperties(((RecordType)type));
+      return Scopes.scopeFor(_collectAllProperties);
+    }
+    if (!_matched) {
+      if (type instanceof TemplateType) {
+        _matched=true;
+        List<Property> _collectAllProperties = PropertyResolution.collectAllProperties(((TemplateType)type));
+        return Scopes.scopeFor(_collectAllProperties);
+      }
+    }
+    return null;
   }
   
   /**

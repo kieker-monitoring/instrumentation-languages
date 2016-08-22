@@ -15,10 +15,24 @@
  */
 package kieker.develop.rl.ui.launch;
 
+import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Iterators;
+import java.util.Iterator;
 import java.util.function.Consumer;
+import kieker.develop.rl.recordLang.ArraySize;
+import kieker.develop.rl.recordLang.BaseType;
+import kieker.develop.rl.recordLang.Classifier;
+import kieker.develop.rl.recordLang.Model;
+import kieker.develop.rl.recordLang.Property;
+import kieker.develop.rl.recordLang.RecordType;
+import kieker.develop.rl.recordLang.TemplateType;
+import kieker.develop.rl.recordLang.Type;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -31,10 +45,11 @@ import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.xtend.lib.Property;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 
 /**
  * Provides an example generator for EMF models out of IRL specification.
@@ -69,23 +84,62 @@ public class EMFModelGenerator {
    * @param destination the EMF model resource
    */
   public void doGenerate(final IFile file, final Resource destination) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nModel cannot be resolved to a type."
-      + "\nTemplateType cannot be resolved to a type."
-      + "\nModel cannot be resolved to a type."
-      + "\nRecordType cannot be resolved to a type."
-      + "\nModel cannot be resolved to a type."
-      + "\nTemplateType cannot be resolved to a type."
-      + "\nRecordType cannot be resolved to a type."
-      + "\nThe method or field eContainer is undefined for the type void"
-      + "\nThe method or field eContainer is undefined for the type void"
-      + "\nThe method composePackageHierarchy(Model, Resource) from the type EMFModelGenerator refers to the missing type Model"
-      + "\nThe method createInterface(TemplateType) from the type EMFModelGenerator refers to the missing type TemplateType"
-      + "\nThe method createClass(RecordType) from the type EMFModelGenerator refers to the missing type RecordType"
-      + "\nThe method composeInterface(TemplateType, Resource) from the type EMFModelGenerator refers to the missing type TemplateType"
-      + "\nThe method composeClass(RecordType, Resource) from the type EMFModelGenerator refers to the missing type RecordType"
-      + "\nname cannot be resolved"
-      + "\nname cannot be resolved");
+    IPath _fullPath = file.getFullPath();
+    String _portableString = _fullPath.toPortableString();
+    URI _createPlatformResourceURI = URI.createPlatformResourceURI(_portableString, true);
+    final Resource source = this.resourceSet.getResource(_createPlatformResourceURI, true);
+    String[] _split = EMFModelGenerator.KIEKER_ROOT_PACKAGE.split("\\.");
+    this.composePackageHierarchy(_split, destination);
+    String[] _split_1 = EMFModelGenerator.SERVICE_PACKAGE.split("\\.");
+    this.composePackageHierarchy(_split_1, destination);
+    TreeIterator<EObject> _allContents = source.getAllContents();
+    Iterator<Model> _filter = Iterators.<Model>filter(_allContents, Model.class);
+    final Procedure1<Model> _function = (Model type) -> {
+      this.composePackageHierarchy(type, destination);
+    };
+    IteratorExtensions.<Model>forEach(_filter, _function);
+    EClass _createAbstractRecordClass = this.createAbstractRecordClass();
+    this.insert(destination, _createAbstractRecordClass, EMFModelGenerator.KIEKER_ROOT_PACKAGE);
+    EPackage _findPackage = this.findPackage(destination, EMFModelGenerator.KIEKER_ROOT_PACKAGE);
+    EList<EClassifier> _eClassifiers = _findPackage.getEClassifiers();
+    final Function1<EClassifier, Boolean> _function_1 = (EClassifier it) -> {
+      String _name = it.getName();
+      return Boolean.valueOf(EMFModelGenerator.KIEKER_ROOT_RECORD.equals(_name));
+    };
+    EClassifier _findFirst = IterableExtensions.<EClassifier>findFirst(_eClassifiers, _function_1);
+    this.abstractRecordClass = ((EClass) _findFirst);
+    EClass _createContainmentClass = this.createContainmentClass();
+    this.insert(destination, _createContainmentClass, EMFModelGenerator.SERVICE_PACKAGE);
+    TreeIterator<EObject> _allContents_1 = source.getAllContents();
+    Iterator<TemplateType> _filter_1 = Iterators.<TemplateType>filter(_allContents_1, TemplateType.class);
+    final Procedure1<TemplateType> _function_2 = (TemplateType type) -> {
+      EClass _createInterface = this.createInterface(type);
+      EObject _eContainer = type.eContainer();
+      String _name = ((Model) _eContainer).getName();
+      this.insert(destination, _createInterface, _name);
+    };
+    IteratorExtensions.<TemplateType>forEach(_filter_1, _function_2);
+    TreeIterator<EObject> _allContents_2 = source.getAllContents();
+    Iterator<RecordType> _filter_2 = Iterators.<RecordType>filter(_allContents_2, RecordType.class);
+    final Procedure1<RecordType> _function_3 = (RecordType type) -> {
+      EClass _createClass = this.createClass(type);
+      EObject _eContainer = type.eContainer();
+      String _name = ((Model) _eContainer).getName();
+      this.insert(destination, _createClass, _name);
+    };
+    IteratorExtensions.<RecordType>forEach(_filter_2, _function_3);
+    TreeIterator<EObject> _allContents_3 = source.getAllContents();
+    Iterator<TemplateType> _filter_3 = Iterators.<TemplateType>filter(_allContents_3, TemplateType.class);
+    final Procedure1<TemplateType> _function_4 = (TemplateType type) -> {
+      this.composeInterface(type, destination);
+    };
+    IteratorExtensions.<TemplateType>forEach(_filter_3, _function_4);
+    TreeIterator<EObject> _allContents_4 = source.getAllContents();
+    Iterator<RecordType> _filter_4 = Iterators.<RecordType>filter(_allContents_4, RecordType.class);
+    final Procedure1<RecordType> _function_5 = (RecordType type) -> {
+      this.composeClass(type, destination);
+    };
+    IteratorExtensions.<RecordType>forEach(_filter_4, _function_5);
   }
   
   /**
@@ -126,10 +180,10 @@ public class EMFModelGenerator {
    * Check if a package hierarchy exists for the given model and if not
    * add one to the hierarchy. For all root packages add that to the resource
    */
-  public void composePackageHierarchy(final /* Model */Object model, final Resource resource) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nname cannot be resolved"
-      + "\nsplit cannot be resolved");
+  public void composePackageHierarchy(final Model model, final Resource resource) {
+    String _name = model.getName();
+    final String[] modelName = _name.split("\\.");
+    this.composePackageHierarchy(modelName, resource);
   }
   
   public void composePackageHierarchy(final String[] modelName, final Resource resource) {
@@ -281,87 +335,179 @@ public class EMFModelGenerator {
   /**
    * Search for a class in the resource specified by the record type.
    */
-  public EClass findResultClass(final /* Type */Object type, final Resource resource) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nModel cannot be resolved to a type."
-      + "\nModel cannot be resolved to a type."
-      + "\nname cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\n!= cannot be resolved"
-      + "\neContainer cannot be resolved"
-      + "\neContainer cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\neContainer cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nsplit cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nfindResultClass cannot be resolved"
-      + "\ntail cannot be resolved");
+  public EClass findResultClass(final Type type, final Resource resource) {
+    System.err.println(("findResultClass2: type " + type));
+    System.err.println(("findResultClass2:   resource " + resource));
+    String _name = type.getName();
+    String _plus = ("findResultClass2: name " + _name);
+    System.err.println(_plus);
+    String _name_1 = type.getName();
+    boolean _notEquals = (!Objects.equal(_name_1, null));
+    if (_notEquals) {
+      EObject _eContainer = type.eContainer();
+      String _plus_1 = ("findResultClass2: parent " + _eContainer);
+      System.err.println(_plus_1);
+      EObject _eContainer_1 = type.eContainer();
+      String _name_2 = ((Model) _eContainer_1).getName();
+      String _plus_2 = ("findResultClass2: parent name " + _name_2);
+      System.err.println(_plus_2);
+      EObject _eContainer_2 = type.eContainer();
+      String _name_3 = ((Model) _eContainer_2).getName();
+      final String[] packagePath = _name_3.split("\\.");
+      EList<EObject> _contents = resource.getContents();
+      Iterable<EPackage> _filter = Iterables.<EPackage>filter(_contents, EPackage.class);
+      final Function1<EPackage, Boolean> _function = (EPackage p) -> {
+        String _name_4 = p.getName();
+        Object _get = packagePath[0];
+        return Boolean.valueOf(_name_4.equals(_get));
+      };
+      final EPackage pkg = IterableExtensions.<EPackage>findFirst(_filter, _function);
+      Iterable<String> _tail = IterableExtensions.<String>tail(((Iterable<String>)Conversions.doWrapArray(packagePath)));
+      return this.findResultClass(type, pkg, _tail);
+    } else {
+      return null;
+    }
   }
   
-  public EClass findResultClass(final /* Type */Object type, final EPackage pkg, final Iterable<String> packagePath) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nname cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nfindResultClass cannot be resolved");
+  public EClass findResultClass(final Type type, final EPackage pkg, final Iterable<String> packagePath) {
+    boolean _isEmpty = IterableExtensions.isEmpty(packagePath);
+    if (_isEmpty) {
+      System.err.println(("findResultClass3: type " + type));
+      String _name = type.getName();
+      String _plus = ("findResultClass3: type name " + _name);
+      System.err.println(_plus);
+      System.err.println(("findResultClass3: package " + pkg));
+      EList<EClassifier> _eClassifiers = pkg.getEClassifiers();
+      String _plus_1 = ("findResultClass3: package classifiers " + _eClassifiers);
+      System.err.println(_plus_1);
+      EList<EClassifier> _eClassifiers_1 = pkg.getEClassifiers();
+      final Consumer<EClassifier> _function = (EClassifier clazz) -> {
+        System.err.println(("findResultClass3: clazz " + clazz));
+        String _name_1 = clazz.getName();
+        String _plus_2 = ("findResultClass3: clazz name " + _name_1);
+        System.err.println(_plus_2);
+      };
+      _eClassifiers_1.forEach(_function);
+      EList<EClassifier> _eClassifiers_2 = pkg.getEClassifiers();
+      final Function1<EClassifier, Boolean> _function_1 = (EClassifier clazz) -> {
+        String _name_1 = clazz.getName();
+        String _name_2 = type.getName();
+        return Boolean.valueOf(_name_1.equals(_name_2));
+      };
+      EClassifier _findFirst = IterableExtensions.<EClassifier>findFirst(_eClassifiers_2, _function_1);
+      return ((EClass) _findFirst);
+    } else {
+      EList<EPackage> _eSubpackages = pkg.getESubpackages();
+      final Function1<EPackage, Boolean> _function_2 = (EPackage p) -> {
+        String _name_1 = p.getName();
+        Object _get = ((Object[])Conversions.unwrapArray(packagePath, Object.class))[0];
+        return Boolean.valueOf(_name_1.equals(_get));
+      };
+      final EPackage subpkg = IterableExtensions.<EPackage>findFirst(_eSubpackages, _function_2);
+      boolean _equals = Objects.equal(subpkg, null);
+      if (_equals) {
+        return null;
+      } else {
+        Iterable<String> _tail = IterableExtensions.<String>tail(packagePath);
+        return this.findResultClass(type, subpkg, _tail);
+      }
+    }
   }
   
   /**
    * Compose an EMF interface for the given partial record type/template.
    */
-  public EClass createInterface(final /* TemplateType */Object type) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nname cannot be resolved");
+  public EClass createInterface(final TemplateType type) {
+    final EClass clazz = this.factory.createEClass();
+    String _name = type.getName();
+    clazz.setName(_name);
+    clazz.setInterface(true);
+    clazz.setAbstract(true);
+    return clazz;
   }
   
   /**
    * Compose an EMF class for the given record type.
    */
-  public EClass createClass(final /* RecordType */Object type) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nname cannot be resolved"
-      + "\nabstract cannot be resolved");
+  public EClass createClass(final RecordType type) {
+    final EClass clazz = this.factory.createEClass();
+    String _name = type.getName();
+    clazz.setName(_name);
+    boolean _isAbstract = type.isAbstract();
+    clazz.setAbstract(_isAbstract);
+    clazz.setInterface(false);
+    return clazz;
   }
   
   /**
    * Complete the interface construction with inheritance and attributes.
    */
-  public void composeInterface(final /* TemplateType */Object type, final Resource resource) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThere is no context to infer the closure\'s argument types from. Consider typing the arguments or put the closures into a typed context."
-      + "\nThe method findResultClass(Type, Resource) from the type EMFModelGenerator refers to the missing type Type"
-      + "\nThere is no context to infer the closure\'s argument types from. Consider typing the arguments or put the closures into a typed context."
-      + "\nfindResultClass cannot be resolved"
-      + "\nparents cannot be resolved"
-      + "\nempty cannot be resolved"
-      + "\n! cannot be resolved"
-      + "\nparents cannot be resolved"
-      + "\nforEach cannot be resolved"
-      + "\nproperties cannot be resolved"
-      + "\nforEach cannot be resolved");
+  public void composeInterface(final TemplateType type, final Resource resource) {
+    final EClass clazz = this.findResultClass(type, resource);
+    EList<TemplateType> _parents = type.getParents();
+    boolean _isEmpty = _parents.isEmpty();
+    boolean _not = (!_isEmpty);
+    if (_not) {
+      EList<TemplateType> _parents_1 = type.getParents();
+      final Consumer<TemplateType> _function = (TemplateType iface) -> {
+        EList<EClass> _eSuperTypes = clazz.getESuperTypes();
+        EClass _findResultClass = this.findResultClass(iface, resource);
+        _eSuperTypes.add(_findResultClass);
+      };
+      _parents_1.forEach(_function);
+    }
+    EList<Property> _properties = type.getProperties();
+    final Consumer<Property> _function_1 = (Property property) -> {
+      EList<EStructuralFeature> _eStructuralFeatures = clazz.getEStructuralFeatures();
+      EAttribute _composeProperty = this.composeProperty(property);
+      this.addUnique(_eStructuralFeatures, _composeProperty);
+    };
+    _properties.forEach(_function_1);
   }
   
   /**
    * Complete the class construction with inheritance and attributes.
    */
-  public void composeClass(final /* RecordType */Object type, final Resource resource) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThere is no context to infer the closure\'s argument types from. Consider typing the arguments or put the closures into a typed context."
-      + "\nThe method findResultClass(Type, Resource) from the type EMFModelGenerator refers to the missing type Type"
-      + "\nThere is no context to infer the closure\'s argument types from. Consider typing the arguments or put the closures into a typed context."
-      + "\nfindResultClass cannot be resolved"
-      + "\nparent cannot be resolved"
-      + "\n!= cannot be resolved"
-      + "\nparent cannot be resolved"
-      + "\nfindResultClass cannot be resolved"
-      + "\n!= cannot be resolved"
-      + "\nparents cannot be resolved"
-      + "\nempty cannot be resolved"
-      + "\n! cannot be resolved"
-      + "\nparents cannot be resolved"
-      + "\nforEach cannot be resolved"
-      + "\nproperties cannot be resolved"
-      + "\nforEach cannot be resolved");
+  public void composeClass(final RecordType type, final Resource resource) {
+    final EClass clazz = this.findResultClass(type, resource);
+    boolean _notEquals = (!Objects.equal(clazz, null));
+    if (_notEquals) {
+      RecordType _parent = type.getParent();
+      boolean _notEquals_1 = (!Objects.equal(_parent, null));
+      if (_notEquals_1) {
+        RecordType _parent_1 = type.getParent();
+        final EClass superType = this.findResultClass(_parent_1, resource);
+        boolean _notEquals_2 = (!Objects.equal(superType, null));
+        if (_notEquals_2) {
+          EList<EClass> _eSuperTypes = clazz.getESuperTypes();
+          _eSuperTypes.add(superType);
+        } else {
+          return;
+        }
+      } else {
+        EList<EClass> _eSuperTypes_1 = clazz.getESuperTypes();
+        _eSuperTypes_1.add(this.abstractRecordClass);
+      }
+      EList<TemplateType> _parents = type.getParents();
+      boolean _isEmpty = _parents.isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        EList<TemplateType> _parents_1 = type.getParents();
+        final Consumer<TemplateType> _function = (TemplateType iface) -> {
+          EList<EClass> _eSuperTypes_2 = clazz.getESuperTypes();
+          EClass _findResultClass = this.findResultClass(iface, resource);
+          _eSuperTypes_2.add(_findResultClass);
+        };
+        _parents_1.forEach(_function);
+      }
+      EList<Property> _properties = type.getProperties();
+      final Consumer<Property> _function_1 = (Property property) -> {
+        EList<EStructuralFeature> _eStructuralFeatures = clazz.getEStructuralFeatures();
+        EAttribute _composeProperty = this.composeProperty(property);
+        this.addUnique(_eStructuralFeatures, _composeProperty);
+      };
+      _properties.forEach(_function_1);
+    }
   }
   
   /**
@@ -384,31 +530,61 @@ public class EMFModelGenerator {
    * Create an EMF attribute for a given IRL property.
    */
   public EAttribute composeProperty(final Property property) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nClassifier cannot be resolved to a type."
-      + "\nThe method or field name is undefined for the type Property"
-      + "\nThe method or field type is undefined for the type Property"
-      + "\nThe method or field type is undefined for the type Property"
-      + "\nThe method or field type is undefined for the type Property"
-      + "\nThe method or field referTo is undefined for the type Property"
-      + "\nThe method or field referTo is undefined for the type Property"
-      + "\nThe method or field type is undefined for the type Property"
-      + "\n!= cannot be resolved"
-      + "\ntype cannot be resolved"
-      + "\n!= cannot be resolved"
-      + "\n!= cannot be resolved"
-      + "\ntype cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nmapToEMFLiteral cannot be resolved"
-      + "\nsizes cannot be resolved"
-      + "\n!= cannot be resolved"
-      + "\nsizes cannot be resolved"
-      + "\nempty cannot be resolved"
-      + "\n! cannot be resolved"
-      + "\nsizes cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\nsize cannot be resolved"
-      + "\n== cannot be resolved");
+    final EAttribute attribute = this.factory.createEAttribute();
+    String _name = property.getName();
+    attribute.setName(_name);
+    Classifier type = null;
+    Classifier _type = property.getType();
+    boolean _notEquals = (!Objects.equal(_type, null));
+    if (_notEquals) {
+      attribute.setDerived(false);
+      Classifier _type_1 = property.getType();
+      BaseType _type_2 = _type_1.getType();
+      boolean _notEquals_1 = (!Objects.equal(_type_2, null));
+      if (_notEquals_1) {
+        Classifier _type_3 = property.getType();
+        type = _type_3;
+      }
+    } else {
+      attribute.setDerived(true);
+      Property originalProperty = property;
+      while ((!Objects.equal(originalProperty.getReferTo(), null))) {
+        Property _referTo = originalProperty.getReferTo();
+        originalProperty = _referTo;
+      }
+      Classifier _type_4 = originalProperty.getType();
+      type = _type_4;
+    }
+    BaseType _type_5 = type.getType();
+    String _name_1 = _type_5.getName();
+    EDataType _mapToEMFLiteral = this.getMapToEMFLiteral(_name_1);
+    attribute.setEType(_mapToEMFLiteral);
+    EList<ArraySize> _sizes = type.getSizes();
+    boolean _notEquals_2 = (!Objects.equal(_sizes, null));
+    if (_notEquals_2) {
+      EList<ArraySize> _sizes_1 = type.getSizes();
+      boolean _isEmpty = _sizes_1.isEmpty();
+      boolean _not = (!_isEmpty);
+      if (_not) {
+        EList<ArraySize> _sizes_2 = type.getSizes();
+        ArraySize _get = _sizes_2.get(0);
+        final int size = _get.getSize();
+        if ((size == 0)) {
+          attribute.setLowerBound(0);
+          attribute.setUpperBound((-1));
+        } else {
+          attribute.setLowerBound(size);
+          attribute.setUpperBound(size);
+        }
+      } else {
+        attribute.setLowerBound(1);
+        attribute.setUpperBound(1);
+      }
+    } else {
+      attribute.setLowerBound(1);
+      attribute.setUpperBound(1);
+    }
+    return attribute;
   }
   
   public EDataType getMapToEMFLiteral(final String name) {

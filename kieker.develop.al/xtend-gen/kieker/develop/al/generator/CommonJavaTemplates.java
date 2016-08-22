@@ -6,9 +6,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.xtend.lib.Property;
-import org.eclipse.xtend2.lib.StringConcatenation;
 import java.util.Set;
 import java.util.function.Consumer;
 import kieker.develop.al.aspectLang.Advice;
@@ -50,7 +47,6 @@ import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure2;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 
-
 /**
  * TODO Class name should be improved.
  */
@@ -67,19 +63,6 @@ public class CommonJavaTemplates {
   /**
    * Create a code fragment containing all necessary record inputs.
    */
-<<<<<<< 9b3334702959dbc026d0e6620756cf2a876e5ecc
-  public static String createRecordInputs(final /* EList<Collector> */Object collectors) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nRecordType cannot be resolved to a type."
-      + "\nModel cannot be resolved to a type."
-      + "\nThe method or field events is undefined for the type Object"
-      + "\nThe method or field type is undefined for the type Object"
-      + "\nThe method addUnique(List<RecordType>, RecordType) from the type CommonJavaTemplates refers to the missing type RecordType"
-      + "\nforEach cannot be resolved"
-      + "\neContainer cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nname cannot be resolved");
-=======
   public static String createRecordInputs(final EList<Collector> collectors) {
     final ArrayList<RecordType> recordList = new ArrayList<RecordType>();
     final Consumer<Collector> _function = (Collector collector) -> {
@@ -105,10 +88,9 @@ public class CommonJavaTemplates {
     };
     List<String> _map = ListExtensions.<RecordType, String>map(recordList, _function_1);
     return IterableExtensions.join(_map, "\n");
->>>>>>> minor regen
   }
   
-  private static void addUnique(final /* List<RecordType> */Object list, final /* RecordType */Object type) {
+  private static void addUnique(final List<RecordType> list, final RecordType type) {
     boolean _contains = list.contains(type);
     boolean _not = (!_contains);
     if (_not) {
@@ -227,33 +209,6 @@ public class CommonJavaTemplates {
   /**
    * Create data initialization for data collection.
    */
-<<<<<<< 9b3334702959dbc026d0e6620756cf2a876e5ecc
-  public static Map<CharSequence, CharSequence> createData(final /* Event */Object event, final Map<CharSequence, CharSequence> data, final /* Map<AdviceParameterDeclaration, Value> */Object parameterAssignments) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field type is undefined for the type Object"
-      + "\nThe method or field createValueName is undefined for the type Object"
-      + "\nThere is no context to infer the closure\'s argument types from. Consider typing the arguments or put the closures into a typed context."
-      + "\ntype cannot be resolved"
-      + "\ncollectAllDataProperties cannot be resolved"
-      + "\nforEach cannot be resolved"
-      + "\ninitializations cannot be resolved"
-      + "\nget cannot be resolved"
-      + "\ncreateValue cannot be resolved"
-      + "\ntoString cannot be resolved"
-      + "\ntype cannot be resolved"
-      + "\ncreatePrimitiveTypeName cannot be resolved");
-  }
-  
-  public static CharSequence createEvent(final /* Event */Object event) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field createValueName is undefined for the type Object"
-      + "\ntype cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\ntype cannot be resolved"
-      + "\ncollectAllDataProperties cannot be resolved"
-      + "\nmap cannot be resolved"
-      + "\njoin cannot be resolved");
-=======
   public static Map<CharSequence, CharSequence> createData(final Event event, final Map<CharSequence, CharSequence> data, final Map<AdviceParameterDeclaration, Value> parameterAssignments) {
     RecordType _type = event.getType();
     List<Property> _collectAllDataProperties = PropertyResolution.collectAllDataProperties(_type);
@@ -311,13 +266,12 @@ public class CommonJavaTemplates {
     _builder.append("));");
     _builder.newLineIfNotEmpty();
     return _builder;
->>>>>>> minor regen
   }
   
-  private static CharSequence createValueName(final /* kieker.develop.rl.recordLang.Property */Object property) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nname cannot be resolved"
-      + "\ntoFirstUpper cannot be resolved");
+  private static CharSequence createValueName(final Property property) {
+    String _name = property.getName();
+    String _firstUpper = StringExtensions.toFirstUpper(_name);
+    return ("collect" + _firstUpper);
   }
   
   private static CharSequence createValue(final Value value, final Map<AdviceParameterDeclaration, Value> parameterAssignments) {
@@ -413,15 +367,6 @@ public class CommonJavaTemplates {
     }
   }
   
-<<<<<<< 9b3334702959dbc026d0e6620756cf2a876e5ecc
-  private static CharSequence createLocalProperty(final Property property) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nReflectionProperty cannot be resolved to a type."
-      + "\nRuntimeProperty cannot be resolved to a type."
-      + "\nThe method or field createLocalReflectionProperty is undefined for the type Property"
-      + "\nThe method or field createLocalRuntimeProperty is undefined for the type Property"
-      + "\nUnreachable code: The case can never match. It is already handled by a previous condition.");
-=======
   private static CharSequence createLocalProperty(final kieker.develop.al.aspectLang.Property property) {
     CharSequence _switchResult = null;
     boolean _matched = false;
@@ -436,7 +381,6 @@ public class CommonJavaTemplates {
       }
     }
     return _switchResult;
->>>>>>> minor regen
   }
   
   private static CharSequence createLocalReflectionProperty(final ReflectionProperty property) {

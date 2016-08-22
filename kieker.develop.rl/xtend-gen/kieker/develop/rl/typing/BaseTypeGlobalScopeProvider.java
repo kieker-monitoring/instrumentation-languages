@@ -15,12 +15,17 @@
  */
 package kieker.develop.rl.typing;
 
+import com.google.common.base.Objects;
 import com.google.common.base.Predicate;
 import com.google.inject.Inject;
+import kieker.develop.rl.recordLang.BaseType;
 import kieker.develop.rl.typing.BaseTypeProviderFactory;
+import kieker.develop.rl.typing.BaseTypeScope;
+import kieker.develop.rl.typing.ITypeProvider;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
@@ -43,8 +48,25 @@ public class BaseTypeGlobalScopeProvider extends DefaultGlobalScopeProvider {
   }
   
   public IScope getParentTypeScope(final Resource resource, final EReference reference, final Predicate<IEObjectDescription> filter, final EClass referenceType) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field BaseType is undefined"
-      + "\nsimpleName cannot be resolved");
+    String _name = referenceType.getName();
+    String _simpleName = BaseType.class.getSimpleName();
+    boolean _equals = _name.equals(_simpleName);
+    if (_equals) {
+      boolean _notEquals = (!Objects.equal(resource, null));
+      if (_notEquals) {
+        final ResourceSet resourceSet = resource.getResourceSet();
+        boolean _notEquals_1 = (!Objects.equal(resourceSet, null));
+        if (_notEquals_1) {
+          final ITypeProvider typeProvider = this.typeProviderFactory.getTypeProvider(resourceSet);
+          return new BaseTypeScope(typeProvider, this.qualifiedNameConverter, filter);
+        } else {
+          throw new IllegalStateException("context must be contained in a resource set");
+        }
+      } else {
+        throw new IllegalStateException("context must be contained in a resource");
+      }
+    } else {
+      return IScope.NULLSCOPE;
+    }
   }
 }

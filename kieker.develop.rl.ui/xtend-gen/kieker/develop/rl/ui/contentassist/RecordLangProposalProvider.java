@@ -15,9 +15,11 @@
  */
 package kieker.develop.rl.ui.contentassist;
 
+import kieker.develop.rl.ui.contentassist.AbstractRecordLangProposalProvider;
+
 /**
  * see http://www.eclipse.org/Xtext/documentation/latest/xtext.html#contentAssist on how to customize content assistant
  */
 @SuppressWarnings("all")
-public class RecordLangProposalProvider /* implements AbstractRecordLangProposalProvider  */{
+public class RecordLangProposalProvider extends AbstractRecordLangProposalProvider {
 }

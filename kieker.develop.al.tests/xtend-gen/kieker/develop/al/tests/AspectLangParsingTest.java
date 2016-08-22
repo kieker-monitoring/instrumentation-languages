@@ -5,6 +5,7 @@ package kieker.develop.al.tests;
 
 import com.google.inject.Inject;
 import kieker.develop.al.aspectLang.AspectModel;
+import kieker.develop.al.tests.AspectLangInjectorProvider;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
@@ -14,8 +15,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@RunWith(XtextRunner.class)/* 
-@InjectWith(/* name is null */) */
+@RunWith(XtextRunner.class)
+@InjectWith(AspectLangInjectorProvider.class)
 @SuppressWarnings("all")
 public class AspectLangParsingTest {
   @Inject

@@ -2,10 +2,17 @@ package kieker.develop.rl.generator.java.record;
 
 import java.util.Collections;
 import java.util.List;
-import org.eclipse.xtend.lib.Property;
+import kieker.develop.rl.recordLang.BaseType;
+import kieker.develop.rl.recordLang.Classifier;
+import kieker.develop.rl.recordLang.Constant;
+import kieker.develop.rl.recordLang.ConstantLiteral;
+import kieker.develop.rl.recordLang.Property;
+import kieker.develop.rl.typing.TypeResolution;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
 public class NameResolver {
@@ -18,45 +25,53 @@ public class NameResolver {
    * @returns the name of the getter of the property
    */
   public static CharSequence createGetterName(final Property property) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field name is undefined for the type Property"
-      + "\nThe method or field name is undefined for the type Property"
-      + "\nThe method findType(Property) from the type TypeResolution refers to the missing type Classifier"
-      + "\ntype cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nequals cannot be resolved"
-      + "\ntoFirstUpper cannot be resolved"
-      + "\ntoFirstUpper cannot be resolved");
+    CharSequence _xifexpression = null;
+    Classifier _findType = TypeResolution.findType(property);
+    BaseType _type = _findType.getType();
+    String _name = _type.getName();
+    boolean _equals = _name.equals("boolean");
+    if (_equals) {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("is");
+      String _name_1 = property.getName();
+      String _firstUpper = StringExtensions.toFirstUpper(_name_1);
+      _builder.append(_firstUpper, "");
+      _xifexpression = _builder;
+    } else {
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("get");
+      String _name_2 = property.getName();
+      String _firstUpper_1 = StringExtensions.toFirstUpper(_name_2);
+      _builder_1.append(_firstUpper_1, "");
+      _xifexpression = _builder_1;
+    }
+    return _xifexpression;
   }
   
-  public static Object createConstantLiteralName(final /* ConstantLiteral */Object literal) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nvalue cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nprotectKeywords cannot be resolved");
+  public static String createConstantLiteralName(final ConstantLiteral literal) {
+    Constant _value = literal.getValue();
+    String _name = _value.getName();
+    return NameResolver.protectKeywords(_name);
   }
   
-  public static Object createConstantName(final /* Constant */Object constant) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nname cannot be resolved"
-      + "\nprotectKeywords cannot be resolved");
+  public static String createConstantName(final Constant constant) {
+    String _name = constant.getName();
+    return NameResolver.protectKeywords(_name);
   }
   
   /**
    * create a constant name from a standard name camel case name.
    */
-  public static Object createConstantName(final Property property) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field name is undefined for the type Property"
-      + "\nreplaceAll cannot be resolved"
-      + "\ntoUpperCase cannot be resolved"
-      + "\nprotectKeywords cannot be resolved");
+  public static String createConstantName(final Property property) {
+    String _name = property.getName();
+    String _replaceAll = _name.replaceAll("([a-z])([A-Z])", "$1_$2");
+    String _upperCase = _replaceAll.toUpperCase();
+    return NameResolver.protectKeywords(_upperCase);
   }
   
-  public static Object createName(final Property property) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field name is undefined for the type Property"
-      + "\nprotectKeywords cannot be resolved");
+  public static String createName(final Property property) {
+    String _name = property.getName();
+    return NameResolver.protectKeywords(_name);
   }
   
   /**

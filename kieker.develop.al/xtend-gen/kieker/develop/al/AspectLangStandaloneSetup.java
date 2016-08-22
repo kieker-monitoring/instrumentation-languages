@@ -15,13 +15,15 @@
  */
 package kieker.develop.al;
 
+import kieker.develop.al.AspectLangStandaloneSetupGenerated;
+
 /**
  * Initialization support for running Xtext languages without Equinox extension registry.
  */
 @SuppressWarnings("all")
-public class AspectLangStandaloneSetup /* implements AspectLangStandaloneSetupGenerated  */{
+public class AspectLangStandaloneSetup extends AspectLangStandaloneSetupGenerated {
   public static void doSetup() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method createInjectorAndDoEMFRegistration() is undefined for the type AspectLangStandaloneSetup");
+    AspectLangStandaloneSetup _aspectLangStandaloneSetup = new AspectLangStandaloneSetup();
+    _aspectLangStandaloneSetup.createInjectorAndDoEMFRegistration();
   }
 }

@@ -43,6 +43,7 @@ import kieker.develop.al.aspectLang.UtilizeAdvice;
 import kieker.develop.al.generator.CommonCollectionModule;
 import kieker.develop.al.generator.aspectj.AspectJAdviceGenerator;
 import kieker.develop.al.generator.aspectj.AspectJPointcutGenerator;
+import kieker.develop.al.generator.javaee.JavaEEAdviceGenerator;
 import kieker.develop.al.generator.servlet.ServletAdviceGenerator;
 import kieker.develop.al.generator.spring.SpringAdviceGenerator;
 import kieker.develop.al.modelhandling.IModelMapper;
@@ -216,8 +217,14 @@ public class AspectLangGenerator implements IGenerator2 {
    * @param access file system access
    */
   private void createJ2EEConfiguration(final Collection<Aspect> aspects, final IFileSystemAccess2 access) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method generate(Object) from the type JavaEEAdviceGenerator refers to the missing type Object");
+    final JavaEEAdviceGenerator adviceGenerator = new JavaEEAdviceGenerator();
+    final HashMap<Advice, List<UtilizeAdvice>> utilizationAdviceMap = CommonCollectionModule.createUtilizationMap(aspects);
+    final BiConsumer<Advice, List<UtilizeAdvice>> _function = (Advice advice, List<UtilizeAdvice> utilizedAdvices) -> {
+      String _aspectJ2EEAdviceName = this.aspectJ2EEAdviceName(advice);
+      CharSequence _generate = adviceGenerator.generate(advice);
+      access.generateFile(_aspectJ2EEAdviceName, _generate);
+    };
+    utilizationAdviceMap.forEach(_function);
   }
   
   private String aspectJ2EEAdviceName(final Advice advice) {
