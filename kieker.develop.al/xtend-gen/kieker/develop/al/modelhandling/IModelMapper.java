@@ -1,6 +1,8 @@
 package kieker.develop.al.modelhandling;
 
 import java.util.Collection;
+import kieker.develop.al.aspectLang.ApplicationModel;
+import kieker.develop.al.aspectLang.Technology;
 import kieker.develop.al.mapping.MappingModel;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
@@ -14,7 +16,7 @@ public interface IModelMapper {
    * 
    * @returns a mapping model
    */
-  public abstract MappingModel loadModel(final /* ApplicationModel */Object model, final ResourceSet resourceSet);
+  public abstract MappingModel loadModel(final ApplicationModel model, final ResourceSet resourceSet);
   
   /**
    * Return the name of the extension to be used in the language.
@@ -25,5 +27,5 @@ public interface IModelMapper {
    * Returns a collection of technologies for the target level
    * of the transformation processing the application model.
    */
-  public abstract /* Collection<Technology> */Object targetTechnologies();
+  public abstract Collection<Technology> targetTechnologies();
 }

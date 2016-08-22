@@ -18,15 +18,25 @@ package kieker.develop.al.modelhandling;
 import com.google.common.base.Objects;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 import java.util.Map;
+import java.util.function.Consumer;
+import kieker.develop.al.aspectLang.ApplicationModel;
 import kieker.develop.al.mapping.Container;
 import kieker.develop.al.mapping.MappingModel;
 import kieker.develop.al.mapping.NamedElement;
 import kieker.develop.al.mapping.NamedType;
+import kieker.develop.al.modelhandling.IModelMapper;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IExtensionRegistry;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
+import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -43,7 +53,7 @@ public class ForeignModelResource extends ResourceImpl {
   /**
    * Model of the application to be instrumented.
    */
-  private final /* ApplicationModel */Object applicationModel;
+  private final ApplicationModel applicationModel;
   
   /**
    * Resulting hierarchy model.
@@ -61,9 +71,9 @@ public class ForeignModelResource extends ResourceImpl {
    * @param uri of the foreign model
    * @param applicationModel the application model
    */
-  public ForeignModelResource(final URI uri, final /* ApplicationModel */Object applicationModel) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field ForeignModelResource.applicationModel refers to the missing type ApplicationModel");
+  public ForeignModelResource(final URI uri, final ApplicationModel applicationModel) {
+    super(uri);
+    this.applicationModel = applicationModel;
   }
   
   /**
@@ -188,13 +198,48 @@ public class ForeignModelResource extends ResourceImpl {
    * Create an result model for a given ecore model.
    */
   private synchronized boolean createModel() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe field ForeignModelResource.applicationModel refers to the missing type ApplicationModel"
-      + "\nThe field ForeignModelResource.applicationModel refers to the missing type ApplicationModel"
-      + "\nThe method loadModel(ApplicationModel, ResourceSet) from the type IModelMapper refers to the missing type ApplicationModel"
-      + "\nThe field ForeignModelResource.applicationModel refers to the missing type ApplicationModel"
-      + "\n!= cannot be resolved"
-      + "\n&& cannot be resolved"
-      + "\nhandler cannot be resolved");
+    boolean _xifexpression = false;
+    if (((!Objects.equal(this.applicationModel, null)) && (!this.loading))) {
+      boolean _xblockexpression = false;
+      {
+        this.loading = true;
+        final IExtensionRegistry registry = Platform.getExtensionRegistry();
+        final IConfigurationElement[] config = registry.getConfigurationElementsFor(ForeignModelResource.MODEL_MAPPER);
+        try {
+          final Consumer<IConfigurationElement> _function = (IConfigurationElement element) -> {
+            try {
+              final Object ext = element.createExecutableExtension("class");
+              if ((ext instanceof IModelMapper)) {
+                final IModelMapper mapper = ((IModelMapper) ext);
+                String _name = mapper.name();
+                String _handler = this.applicationModel.getHandler();
+                boolean _equals = _name.equals(_handler);
+                if (_equals) {
+                  ResourceSet _resourceSet = this.getResourceSet();
+                  MappingModel _loadModel = mapper.loadModel(this.applicationModel, _resourceSet);
+                  this.resultModel = _loadModel;
+                }
+                EList<EObject> _contents = this.getContents();
+                _contents.add(this.resultModel);
+              }
+            } catch (Throwable _e) {
+              throw Exceptions.sneakyThrow(_e);
+            }
+          };
+          ((List<IConfigurationElement>)Conversions.doWrapArray(config)).forEach(_function);
+        } catch (final Throwable _t) {
+          if (_t instanceof CoreException) {
+            final CoreException ex = (CoreException)_t;
+            String _message = ex.getMessage();
+            System.out.println(_message);
+          } else {
+            throw Exceptions.sneakyThrow(_t);
+          }
+        }
+        _xblockexpression = this.loading = false;
+      }
+      _xifexpression = _xblockexpression;
+    }
+    return _xifexpression;
   }
 }

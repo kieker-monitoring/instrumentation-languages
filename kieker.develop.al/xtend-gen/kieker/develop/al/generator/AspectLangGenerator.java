@@ -15,28 +15,55 @@
  */
 package kieker.develop.al.generator;
 
+import com.google.common.base.Objects;
+import com.google.common.collect.Iterators;
+import java.io.File;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import kieker.develop.al.aspectLang.Advice;
+import kieker.develop.al.aspectLang.Annotation;
+import kieker.develop.al.aspectLang.ApplicationModel;
+import kieker.develop.al.aspectLang.Aspect;
+import kieker.develop.al.aspectLang.AspectModel;
+import kieker.develop.al.aspectLang.Pointcut;
+import kieker.develop.al.aspectLang.Technology;
+import kieker.develop.al.aspectLang.UtilizeAdvice;
+import kieker.develop.al.generator.CommonCollectionModule;
+import kieker.develop.al.generator.aspectj.AspectJAdviceGenerator;
+import kieker.develop.al.generator.aspectj.AspectJPointcutGenerator;
+import kieker.develop.al.generator.servlet.ServletAdviceGenerator;
+import kieker.develop.al.generator.spring.SpringAdviceGenerator;
 import kieker.develop.al.modelhandling.IModelMapper;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGenerator2;
 import org.eclipse.xtext.generator.IGeneratorContext;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure2;
 import org.w3c.dom.Document;
 
 /**
@@ -48,7 +75,7 @@ import org.w3c.dom.Document;
 public class AspectLangGenerator implements IGenerator2 {
   private final static String MODEL_MAPPER = "kieker.develop.al.modelMapping";
   
-  private final /* Map<Technology, Collection<Aspect>> */Object aspectTechnologyMap /* Skipped initializer because of errors */;
+  private final Map<Technology, Collection<Aspect>> aspectTechnologyMap = new HashMap<Technology, Collection<Aspect>>();
   
   private final Collection<IModelMapper> mappers = new ArrayList<IModelMapper>();
   
@@ -83,19 +110,33 @@ public class AspectLangGenerator implements IGenerator2 {
    */
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nAspect cannot be resolved to a type."
-      + "\nThe method or field ASPECT_J is undefined"
-      + "\nThe method or field JAVA_EE is undefined"
-      + "\nThe method or field SPRING is undefined"
-      + "\nThe method or field SERVLET is undefined"
-      + "\nThe method discoverAspectTechnology(Map<Technology, Collection<Aspect>>, Aspect) from the type AspectLangGenerator refers to the missing type Technology"
-      + "\nThe field AspectLangGenerator.aspectTechnologyMap refers to the missing type Technology"
-      + "\nThe field AspectLangGenerator.aspectTechnologyMap refers to the missing type Technology"
-      + "\nThe method createAspectJConfiguration(Collection<Aspect>, IFileSystemAccess2) from the type AspectLangGenerator refers to the missing type Aspect"
-      + "\nThe method createJ2EEConfiguration(Collection<Aspect>, IFileSystemAccess2) from the type AspectLangGenerator refers to the missing type Aspect"
-      + "\nThe method createSpringConfiguration(Collection<Aspect>, IFileSystemAccess2) from the type AspectLangGenerator refers to the missing type Aspect"
-      + "\nThe method createServletConfiguration(Collection<Aspect>, IFileSystemAccess2) from the type AspectLangGenerator refers to the missing type Aspect");
+    TreeIterator<EObject> _allContents = resource.getAllContents();
+    Iterator<Aspect> _filter = Iterators.<Aspect>filter(_allContents, Aspect.class);
+    final Procedure1<Aspect> _function = (Aspect it) -> {
+      this.discoverAspectTechnology(this.aspectTechnologyMap, it);
+    };
+    IteratorExtensions.<Aspect>forEach(_filter, _function);
+    final BiConsumer<Technology, Collection<Aspect>> _function_1 = (Technology key, Collection<Aspect> value) -> {
+      if (key != null) {
+        switch (key) {
+          case ASPECT_J:
+            this.createAspectJConfiguration(value, fsa);
+            break;
+          case JAVA_EE:
+            this.createJ2EEConfiguration(value, fsa);
+            break;
+          case SPRING:
+            this.createSpringConfiguration(value, fsa);
+            break;
+          case SERVLET:
+            this.createServletConfiguration(value, fsa);
+            break;
+          default:
+            break;
+        }
+      }
+    };
+    this.aspectTechnologyMap.forEach(_function_1);
   }
   
   /**
@@ -104,20 +145,39 @@ public class AspectLangGenerator implements IGenerator2 {
    * @param aspects collection of aspects for AspectJ
    * @param access file system access
    */
-  private void createAspectJConfiguration(final /* Collection<Aspect> */Object aspects, final IFileSystemAccess2 access) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method generate(Collection<Aspect>) from the type AspectJPointcutGenerator refers to the missing type Aspect"
-      + "\nThe method createUtilizationMap(Collection<Aspect>) from the type CommonCollectionModule refers to the missing type Advice"
-      + "\nThe method generate(UtilizeAdvice) from the type AspectJAdviceGenerator refers to the missing type UtilizeAdvice"
-      + "\naspectJAbstractAdviceName cannot be resolved");
+  private void createAspectJConfiguration(final Collection<Aspect> aspects, final IFileSystemAccess2 access) {
+    final AspectJPointcutGenerator aspectGenerator = new AspectJPointcutGenerator();
+    Document _generate = aspectGenerator.generate(aspects);
+    this.storeXMLModel("aop.xml", access, _generate);
+    final AspectJAdviceGenerator adviceGenerator = new AspectJAdviceGenerator();
+    final HashMap<Advice, List<UtilizeAdvice>> utilizationAdviceMap = CommonCollectionModule.createUtilizationMap(aspects);
+    final BiConsumer<Advice, List<UtilizeAdvice>> _function = (Advice advice, List<UtilizeAdvice> utilizedAdvices) -> {
+      final Procedure2<UtilizeAdvice, Integer> _function_1 = (UtilizeAdvice utilizedAdviced, Integer i) -> {
+        adviceGenerator.setIndex((i).intValue());
+        String _aspectJAbstractAdviceName = this.aspectJAbstractAdviceName(utilizedAdviced, (i).intValue());
+        CharSequence _generate_1 = adviceGenerator.generate(utilizedAdviced);
+        access.generateFile(_aspectJAbstractAdviceName, _generate_1);
+      };
+      IterableExtensions.<UtilizeAdvice>forEach(utilizedAdvices, _function_1);
+    };
+    utilizationAdviceMap.forEach(_function);
   }
   
-  private String aspectJAbstractAdviceName(final /* UtilizeAdvice */Object advice, final int i) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nadvice cannot be resolved"
-      + "\npackagePathName cannot be resolved"
-      + "\nadvice cannot be resolved"
-      + "\nname cannot be resolved");
+  private String aspectJAbstractAdviceName(final UtilizeAdvice advice, final int i) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("aspectj");
+    _builder.append(File.separator, "");
+    Advice _advice = advice.getAdvice();
+    String _packagePathName = this.getPackagePathName(_advice);
+    _builder.append(_packagePathName, "");
+    _builder.append("Abstract");
+    Advice _advice_1 = advice.getAdvice();
+    String _name = _advice_1.getName();
+    _builder.append(_name, "");
+    _builder.append("Advice");
+    _builder.append(i, "");
+    _builder.append(".java");
+    return _builder.toString();
   }
   
   /**
@@ -126,17 +186,27 @@ public class AspectLangGenerator implements IGenerator2 {
    * @param aspects collection of aspects for AspectJ
    * @param access file system access
    */
-  private void createSpringConfiguration(final /* Collection<Aspect> */Object aspects, final IFileSystemAccess2 access) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method createUtilizationMap(Collection<Aspect>) from the type CommonCollectionModule refers to the missing type Advice"
-      + "\nThe method aspectSpringAdviceName(Advice) from the type AspectLangGenerator refers to the missing type Advice"
-      + "\nThe method generate(Advice) from the type SpringAdviceGenerator refers to the missing type Advice");
+  private void createSpringConfiguration(final Collection<Aspect> aspects, final IFileSystemAccess2 access) {
+    final SpringAdviceGenerator adviceGenerator = new SpringAdviceGenerator();
+    final HashMap<Advice, List<UtilizeAdvice>> utilizationAdviceMap = CommonCollectionModule.createUtilizationMap(aspects);
+    final BiConsumer<Advice, List<UtilizeAdvice>> _function = (Advice advice, List<UtilizeAdvice> utilizedAdvices) -> {
+      String _aspectSpringAdviceName = this.aspectSpringAdviceName(advice);
+      CharSequence _generate = adviceGenerator.generate(advice);
+      access.generateFile(_aspectSpringAdviceName, _generate);
+    };
+    utilizationAdviceMap.forEach(_function);
   }
   
-  private String aspectSpringAdviceName(final /* Advice */Object advice) {
-    throw new Error("Unresolved compilation problems:"
-      + "\npackagePathName cannot be resolved"
-      + "\nname cannot be resolved");
+  private String aspectSpringAdviceName(final Advice advice) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("spring");
+    _builder.append(File.separator, "");
+    String _packagePathName = this.getPackagePathName(advice);
+    _builder.append(_packagePathName, "");
+    String _name = advice.getName();
+    _builder.append(_name, "");
+    _builder.append("Interceptor.java");
+    return _builder.toString();
   }
   
   /**
@@ -145,17 +215,21 @@ public class AspectLangGenerator implements IGenerator2 {
    * @param aspects collection of aspects for AspectJ
    * @param access file system access
    */
-  private void createJ2EEConfiguration(final /* Collection<Aspect> */Object aspects, final IFileSystemAccess2 access) {
+  private void createJ2EEConfiguration(final Collection<Aspect> aspects, final IFileSystemAccess2 access) {
     throw new Error("Unresolved compilation problems:"
-      + "\nThe method createUtilizationMap(Collection<Aspect>) from the type CommonCollectionModule refers to the missing type Advice"
-      + "\nThe method aspectJ2EEAdviceName(Advice) from the type AspectLangGenerator refers to the missing type Advice"
-      + "\nThe method generate(Advice) from the type JavaEEAdviceGenerator refers to the missing type Advice");
+      + "\nThe method generate(Object) from the type JavaEEAdviceGenerator refers to the missing type Object");
   }
   
-  private String aspectJ2EEAdviceName(final /* Advice */Object advice) {
-    throw new Error("Unresolved compilation problems:"
-      + "\npackagePathName cannot be resolved"
-      + "\nname cannot be resolved");
+  private String aspectJ2EEAdviceName(final Advice advice) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("j2ee");
+    _builder.append(File.separator, "");
+    String _packagePathName = this.getPackagePathName(advice);
+    _builder.append(_packagePathName, "");
+    String _name = advice.getName();
+    _builder.append(_name, "");
+    _builder.append("Interceptor.java");
+    return _builder.toString();
   }
   
   /**
@@ -164,17 +238,27 @@ public class AspectLangGenerator implements IGenerator2 {
    * @param aspects collection of aspects for AspectJ
    * @param access file system access
    */
-  private void createServletConfiguration(final /* Collection<Aspect> */Object aspects, final IFileSystemAccess2 access) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method createUtilizationMap(Collection<Aspect>) from the type CommonCollectionModule refers to the missing type Advice"
-      + "\nThe method aspectServletAdviceName(Advice) from the type AspectLangGenerator refers to the missing type Advice"
-      + "\nThe method generate(Advice) from the type ServletAdviceGenerator refers to the missing type Advice");
+  private void createServletConfiguration(final Collection<Aspect> aspects, final IFileSystemAccess2 access) {
+    final ServletAdviceGenerator adviceGenerator = new ServletAdviceGenerator();
+    final HashMap<Advice, List<UtilizeAdvice>> utilizationAdviceMap = CommonCollectionModule.createUtilizationMap(aspects);
+    final BiConsumer<Advice, List<UtilizeAdvice>> _function = (Advice advice, List<UtilizeAdvice> utilizedAdvices) -> {
+      String _aspectServletAdviceName = this.aspectServletAdviceName(advice);
+      CharSequence _generate = adviceGenerator.generate(advice);
+      access.generateFile(_aspectServletAdviceName, _generate);
+    };
+    utilizationAdviceMap.forEach(_function);
   }
   
-  private String aspectServletAdviceName(final /* Advice */Object advice) {
-    throw new Error("Unresolved compilation problems:"
-      + "\npackagePathName cannot be resolved"
-      + "\nname cannot be resolved");
+  private String aspectServletAdviceName(final Advice advice) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("servlet");
+    _builder.append(File.separator, "");
+    String _packagePathName = this.getPackagePathName(advice);
+    _builder.append(_packagePathName, "");
+    String _name = advice.getName();
+    _builder.append(_name, "");
+    _builder.append("Filter.java");
+    return _builder.toString();
   }
   
   /**
@@ -210,21 +294,27 @@ public class AspectLangGenerator implements IGenerator2 {
    * @param map the map of all aspect technologies and its corresponding aspects.
    * @param aspect a new aspect to be added to the map.
    */
-  private void discoverAspectTechnology(final /* Map<Technology, Collection<Aspect>> */Object map, final /* Aspect */Object aspect) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method addAndRegisterAspectTechnology(Map<Technology, Collection<Aspect>>, Technology, Aspect) from the type AspectLangGenerator refers to the missing type Technology"
-      + "\nThe method discoverAspectTechnologyByModelMapper(Map<Technology, Collection<Aspect>>, Aspect) from the type AspectLangGenerator refers to the missing type Technology"
-      + "\npointcut cannot be resolved"
-      + "\nannotation cannot be resolved"
-      + "\n!= cannot be resolved"
-      + "\npointcut cannot be resolved"
-      + "\nannotation cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nequals cannot be resolved"
-      + "\npointcut cannot be resolved"
-      + "\nannotation cannot be resolved"
-      + "\ntechnologies cannot be resolved"
-      + "\nforEach cannot be resolved");
+  private void discoverAspectTechnology(final Map<Technology, Collection<Aspect>> map, final Aspect aspect) {
+    Pointcut _pointcut = aspect.getPointcut();
+    Annotation _annotation = _pointcut.getAnnotation();
+    boolean _notEquals = (!Objects.equal(_annotation, null));
+    if (_notEquals) {
+      Pointcut _pointcut_1 = aspect.getPointcut();
+      Annotation _annotation_1 = _pointcut_1.getAnnotation();
+      String _name = _annotation_1.getName();
+      boolean _equals = _name.equals("technology");
+      if (_equals) {
+        Pointcut _pointcut_2 = aspect.getPointcut();
+        Annotation _annotation_2 = _pointcut_2.getAnnotation();
+        EList<Technology> _technologies = _annotation_2.getTechnologies();
+        final Consumer<Technology> _function = (Technology it) -> {
+          this.addAndRegisterAspectTechnology(map, it, aspect);
+        };
+        _technologies.forEach(_function);
+      }
+    } else {
+      this.discoverAspectTechnologyByModelMapper(map, aspect);
+    }
   }
   
   /**
@@ -234,34 +324,46 @@ public class AspectLangGenerator implements IGenerator2 {
    * @param map the map of all aspect technologies and its corresponding aspects.
    * @param aspect a new aspect to be added to the map.
    */
-  private void discoverAspectTechnologyByModelMapper(final /* Map<Technology, Collection<Aspect>> */Object map, final /* Aspect */Object aspect) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method targetTechnologies() from the type IModelMapper refers to the missing type Technology"
-      + "\nThe method addAndRegisterAspectTechnology(Map<Technology, Collection<Aspect>>, Technology, Aspect) from the type AspectLangGenerator refers to the missing type Technology"
-      + "\npointcut cannot be resolved"
-      + "\nmodel cannot be resolved"
-      + "\nhandler cannot be resolved"
-      + "\nequals cannot be resolved");
+  private void discoverAspectTechnologyByModelMapper(final Map<Technology, Collection<Aspect>> map, final Aspect aspect) {
+    final Consumer<IModelMapper> _function = (IModelMapper it) -> {
+      Pointcut _pointcut = aspect.getPointcut();
+      ApplicationModel _model = _pointcut.getModel();
+      String _handler = _model.getHandler();
+      String _name = it.name();
+      boolean _equals = _handler.equals(_name);
+      if (_equals) {
+        Collection<Technology> _targetTechnologies = it.targetTechnologies();
+        final Consumer<Technology> _function_1 = (Technology it_1) -> {
+          this.addAndRegisterAspectTechnology(map, it_1, aspect);
+        };
+        _targetTechnologies.forEach(_function_1);
+      }
+    };
+    this.mappers.forEach(_function);
   }
   
   /**
    * Map builder: add an aspect to an technology.
    */
-  private void addAndRegisterAspectTechnology(final /* Map<Technology, Collection<Aspect>> */Object map, final /* Technology */Object technology, final /* Aspect */Object aspect) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nAspect cannot be resolved to a type.");
+  private void addAndRegisterAspectTechnology(final Map<Technology, Collection<Aspect>> map, final Technology technology, final Aspect aspect) {
+    Collection<Aspect> list = map.get(technology);
+    boolean _equals = Objects.equal(list, null);
+    if (_equals) {
+      ArrayList<Aspect> _arrayList = new ArrayList<Aspect>();
+      list = _arrayList;
+      map.put(technology, list);
+    }
+    list.add(aspect);
   }
   
   /**
    * create the name for an advice.
    */
-  private String getPackagePathName(final /* Advice */Object advice) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nAspectModel cannot be resolved to a type."
-      + "\neContainer cannot be resolved"
-      + "\nname cannot be resolved"
-      + "\nreplace cannot be resolved"
-      + "\n+ cannot be resolved");
+  private String getPackagePathName(final Advice advice) {
+    EObject _eContainer = advice.eContainer();
+    String _name = ((AspectModel) _eContainer).getName();
+    String _replace = _name.replace("\\.", File.separator);
+    return (_replace + File.separator);
   }
   
   @Override
