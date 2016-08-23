@@ -57,8 +57,9 @@ public class JarModelTypeProvider implements Resource.Factory, ITypeProvider {
 	 */
 	public Iterable<Type> getAllTypes() {
 		return IterableExtensions.map(
-				this.resourceSet.getResource(JarModelTypeURIHelper.createResourceURI(), true).getContents(),
-				p -> (Type) p);
+				IterableExtensions.filter(this.resourceSet.getResource(JarModelTypeURIHelper.createResourceURI(), true).getContents(),
+						Type.class),
+				p -> p);
 	}
 
 	/**

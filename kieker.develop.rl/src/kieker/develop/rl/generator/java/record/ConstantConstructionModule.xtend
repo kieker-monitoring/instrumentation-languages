@@ -2,7 +2,7 @@ package kieker.develop.rl.generator.java.record
 
 import java.util.List
 import kieker.develop.rl.recordLang.Property
-import kieker.develop.rl.typing.BaseTypes
+import kieker.develop.rl.typing.base.BaseTypes
 import kieker.develop.rl.recordLang.Constant
 import kieker.develop.rl.recordLang.Literal
 import kieker.develop.rl.recordLang.ArrayLiteral

@@ -17,56 +17,68 @@ package kieker.develop.rl.typing.jar;
 
 import com.google.common.base.Predicate
 import com.google.inject.Inject
-import kieker.develop.rl.typing.BaseTypeGlobalScopeProvider
+import kieker.develop.rl.recordLang.RecordType
+import kieker.develop.rl.recordLang.TemplateType
+import kieker.develop.rl.typing.ITypeProvider
+import kieker.develop.rl.typing.base.BaseTypeGlobalScopeProvider
+import kieker.develop.rl.typing.semantics.AnnotationProviderFactory
+import kieker.develop.rl.typing.semantics.AnnotationScope
+import kieker.develop.semantics.annotations.Annotation
+import org.eclipse.core.resources.ResourcesPlugin
+import org.eclipse.core.runtime.Path
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EReference
-import org.eclipse.emf.ecore.EcorePackage.Literals
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.ResourceSet
-import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.naming.IQualifiedNameConverter
 import org.eclipse.xtext.resource.IEObjectDescription
 import org.eclipse.xtext.scoping.IScope
-import org.eclipse.core.resources.ResourcesPlugin
-import org.eclipse.core.runtime.Path
-import kieker.develop.rl.typing.ITypeProvider
-import kieker.develop.rl.recordLang.BaseType
 
 class JarModelGlobalScopeProvider extends BaseTypeGlobalScopeProvider {
+	
 	
 	@Inject
 	private IQualifiedNameConverter qualifiedNameConverter;
 
 	override IScope getParentTypeScope(Resource resource, EReference reference,
             Predicate<IEObjectDescription> filter, EClass referenceType) {
-        // check whether the reference type is a type of any kind 
-        if (referenceType.name.equals(BaseType.simpleName)) {
-        	super.getParentTypeScope(resource, reference, filter, referenceType)
-        } else if (EcoreUtil2::isAssignableFrom(Literals::EPACKAGE, referenceType)) {
-        	return IScope.NULLSCOPE
-        } else {
+        val scope = super.getParentTypeScope(resource, reference, filter, referenceType)
+        if (scope != IScope.NULLSCOPE) {
+        	return scope
+        } else if (referenceType.name.equals(Annotation.simpleName)) {
         	if (resource != null) {
         		val ResourceSet resourceSet = resource.getResourceSet()
-        		try {
-        			val workspace = ResourcesPlugin.getWorkspace()
-        			val root = workspace.getRoot()
-	        		val uri = resource.URI.toString.replaceFirst("platform:/resource", "") 
-	        		val project = root.getFile(new Path(uri)).project
-	    
-	    			if (resourceSet != null) {
+        		if (resourceSet != null) {
+        			val typeProvider = AnnotationProviderFactory.getTypeProvider(resourceSet)
+					return new AnnotationScope(typeProvider, qualifiedNameConverter, filter)
+        		} else
+	    			throw new IllegalStateException("context must be contained in a resource set") 
+        	} else
+    			throw new IllegalStateException("context must be contained in a resource") 
+        } else if (referenceType.name.equals(TemplateType.simpleName) 
+        	|| referenceType.name.equals(RecordType.simpleName)) {
+        	if (resource != null) {
+        		val ResourceSet resourceSet = resource.getResourceSet()
+        		if (resourceSet != null) {
+	        		try {
+	        			val workspace = ResourcesPlugin.getWorkspace()
+	        			val root = workspace.getRoot()
+		        		val uri = resource.URI.toString.replaceFirst("platform:/resource", "") 
+		        		val project = root.getFile(new Path(uri)).project
+		        		
 	        			val ITypeProvider typeProvider = JarModelTypeProviderFactory.getTypeProvider(project, resourceSet)
 						return new JarModelTypeScope(typeProvider, qualifiedNameConverter, filter)
-					} else
-	    				throw new IllegalStateException("context must be contained in a resource set") 
-	        		
-        		} catch (java.lang.IllegalStateException e) {
-        			System.out.println("No workspace present")
-        			return IScope.NULLSCOPE
-        		}
+	        		} catch (IllegalStateException e) {
+	        			System.out.println("No workspace present")
+	        			return IScope.NULLSCOPE
+	        		}
+        		} else
+	    			throw new IllegalStateException("context must be contained in a resource set") 
         	} else
     			throw new IllegalStateException("context must be contained in a resource") 
         	
-        }
+        } else
+        	return IScope.NULLSCOPE
         	
     }
 }

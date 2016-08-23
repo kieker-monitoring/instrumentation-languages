@@ -20,6 +20,8 @@ import com.google.inject.Binder
 import org.eclipse.xtext.generator.IOutputConfigurationProvider
 import kieker.develop.rl.ouput.config.RecordLangOutputConfigurationProvider
 import com.google.inject.Singleton
+import kieker.develop.rl.scoping.SemanticAnnotationHandler
+import kieker.develop.rl.scoping.ISemanticAnnotationHandler
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
@@ -41,5 +43,6 @@ class RecordLangRuntimeModule extends AbstractRecordLangRuntimeModule {
 	override void configure(Binder binder) {
 		super.configure(binder)
 		binder.bind(IOutputConfigurationProvider).to(RecordLangOutputConfigurationProvider).in(Singleton)
+		binder.bind(ISemanticAnnotationHandler).to(SemanticAnnotationHandler).in(Singleton)
 	}
 }

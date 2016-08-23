@@ -6,6 +6,7 @@ import kieker.develop.rl.recordLang.Constant
 import kieker.develop.rl.recordLang.Property
 import kieker.develop.rl.generator.InternalErrorException
 import kieker.develop.rl.recordLang.Classifier
+import kieker.develop.rl.typing.base.BaseTypes
 
 class TypeResolution {
 	

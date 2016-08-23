@@ -21,6 +21,8 @@ import com.google.inject.binder.AnnotatedBindingBuilder;
 import com.google.inject.binder.ScopedBindingBuilder;
 import kieker.develop.rl.AbstractRecordLangRuntimeModule;
 import kieker.develop.rl.ouput.config.RecordLangOutputConfigurationProvider;
+import kieker.develop.rl.scoping.ISemanticAnnotationHandler;
+import kieker.develop.rl.scoping.SemanticAnnotationHandler;
 import kieker.develop.rl.typing.jar.JarModelGlobalScopeProvider;
 import org.eclipse.xtext.generator.IOutputConfigurationProvider;
 import org.eclipse.xtext.scoping.IGlobalScopeProvider;
@@ -50,5 +52,8 @@ public class RecordLangRuntimeModule extends AbstractRecordLangRuntimeModule {
     AnnotatedBindingBuilder<IOutputConfigurationProvider> _bind = binder.<IOutputConfigurationProvider>bind(IOutputConfigurationProvider.class);
     ScopedBindingBuilder _to = _bind.to(RecordLangOutputConfigurationProvider.class);
     _to.in(Singleton.class);
+    AnnotatedBindingBuilder<ISemanticAnnotationHandler> _bind_1 = binder.<ISemanticAnnotationHandler>bind(ISemanticAnnotationHandler.class);
+    ScopedBindingBuilder _to_1 = _bind_1.to(SemanticAnnotationHandler.class);
+    _to_1.in(Singleton.class);
   }
 }

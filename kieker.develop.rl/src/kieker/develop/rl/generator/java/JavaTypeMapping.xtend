@@ -2,7 +2,7 @@ package kieker.develop.rl.generator.java;
 
 import kieker.develop.rl.generator.InternalErrorException
 import kieker.develop.rl.recordLang.BaseType
-import kieker.develop.rl.typing.BaseTypes
+import kieker.develop.rl.typing.base.BaseTypes
 import kieker.develop.rl.recordLang.Classifier
 import kieker.develop.rl.recordLang.Property
 

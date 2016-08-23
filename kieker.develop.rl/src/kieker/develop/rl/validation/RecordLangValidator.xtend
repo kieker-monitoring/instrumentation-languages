@@ -24,7 +24,7 @@ import kieker.develop.rl.recordLang.RecordType
 import kieker.develop.rl.recordLang.StringLiteral
 import kieker.develop.rl.recordLang.TemplateType
 import kieker.develop.rl.recordLang.Type
-import kieker.develop.rl.typing.BaseTypes
+import kieker.develop.rl.typing.base.BaseTypes
 import org.eclipse.xtext.validation.Check
 
 import static extension kieker.develop.rl.typing.PropertyResolution.*

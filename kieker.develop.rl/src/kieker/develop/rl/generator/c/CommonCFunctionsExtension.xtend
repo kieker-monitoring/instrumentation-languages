@@ -5,7 +5,7 @@ import kieker.develop.rl.recordLang.RecordType
 import kieker.develop.rl.recordLang.Model
 import kieker.develop.rl.recordLang.Classifier
 import kieker.develop.rl.generator.InternalErrorException
-import kieker.develop.rl.typing.BaseTypes
+import kieker.develop.rl.typing.base.BaseTypes
 
 /**
  * @author Reiner Jung

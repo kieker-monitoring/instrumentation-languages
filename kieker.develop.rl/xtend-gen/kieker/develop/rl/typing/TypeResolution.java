@@ -7,7 +7,7 @@ import kieker.develop.rl.recordLang.Classifier;
 import kieker.develop.rl.recordLang.Constant;
 import kieker.develop.rl.recordLang.Literal;
 import kieker.develop.rl.recordLang.Property;
-import kieker.develop.rl.typing.BaseTypes;
+import kieker.develop.rl.typing.base.BaseTypes;
 import org.eclipse.emf.ecore.EObject;
 
 @SuppressWarnings("all")

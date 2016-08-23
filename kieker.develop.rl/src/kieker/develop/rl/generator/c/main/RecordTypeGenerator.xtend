@@ -8,7 +8,7 @@ import kieker.develop.rl.recordLang.Model
 import kieker.develop.rl.recordLang.Property
 import kieker.develop.rl.recordLang.RecordType
 import kieker.develop.rl.recordLang.Type
-import kieker.develop.rl.typing.BaseTypes
+import kieker.develop.rl.typing.base.BaseTypes
 
 import static extension kieker.develop.rl.generator.c.CommonCFunctionsExtension.*
 import static extension kieker.develop.rl.typing.TypeResolution.*

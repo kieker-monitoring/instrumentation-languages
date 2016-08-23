@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="annotations" nsURI="http://www.kieker-monitoring.net/kieker/develop/semantic-annotations"
+    nsPrefix="annotations">
+  <eClassifiers xsi:type="ecore:EClass" name="Annotation" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="implementations" upperBound="-1"
+        eType="#//Implementation" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Implementation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="code" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="technology" lowerBound="1"
+        eType="#//Technology"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="language" lowerBound="1"
+        eType="#//TargetLanguage"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Semantics">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="annotations" upperBound="-1"
+        eType="#//Annotation" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="languages" upperBound="-1"
+        eType="#//TargetLanguage" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="technologies" upperBound="-1"
+        eType="#//Technology" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TargetLanguage" eSuperTypes="#//NamedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Technology" eSuperTypes="#//NamedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true" interface="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>

@@ -7,7 +7,7 @@ import kieker.develop.rl.recordLang.BaseType;
 import kieker.develop.rl.recordLang.Classifier;
 import kieker.develop.rl.recordLang.Model;
 import kieker.develop.rl.recordLang.RecordType;
-import kieker.develop.rl.typing.BaseTypes;
+import kieker.develop.rl.typing.base.BaseTypes;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
 

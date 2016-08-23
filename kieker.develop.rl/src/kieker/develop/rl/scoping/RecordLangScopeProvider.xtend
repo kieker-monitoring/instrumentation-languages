@@ -15,10 +15,12 @@
  ***************************************************************************/
 package kieker.develop.rl.scoping
 
-import kieker.develop.rl.recordLang.ForeignKey
-import kieker.develop.rl.recordLang.Property
 import java.util.Collection
 import java.util.List
+import kieker.develop.rl.recordLang.ForeignKey
+import kieker.develop.rl.recordLang.Property
+import kieker.develop.rl.recordLang.RecordType
+import kieker.develop.rl.recordLang.TemplateType
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EGenericType
@@ -28,8 +30,6 @@ import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.scoping.Scopes
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider
-import kieker.develop.rl.recordLang.RecordType
-import kieker.develop.rl.recordLang.TemplateType
 
 import static extension kieker.develop.rl.typing.PropertyResolution.*
 
@@ -41,7 +41,7 @@ import static extension kieker.develop.rl.typing.PropertyResolution.*
  *
  */
 class RecordLangScopeProvider extends AbstractDeclarativeScopeProvider {
-
+	
 	/**
 	 * Define scope for foreign key reference.
 	 */
@@ -73,5 +73,6 @@ class RecordLangScopeProvider extends AbstractDeclarativeScopeProvider {
 		}
 		return result
 	}
-
+	
 }
+

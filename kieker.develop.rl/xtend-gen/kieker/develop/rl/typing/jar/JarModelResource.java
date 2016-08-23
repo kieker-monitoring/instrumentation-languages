@@ -39,7 +39,7 @@ import kieker.develop.rl.recordLang.RecordType;
 import kieker.develop.rl.recordLang.StringLiteral;
 import kieker.develop.rl.recordLang.TemplateType;
 import kieker.develop.rl.recordLang.Type;
-import kieker.develop.rl.typing.BaseTypes;
+import kieker.develop.rl.typing.base.BaseTypes;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.emf.common.util.EList;

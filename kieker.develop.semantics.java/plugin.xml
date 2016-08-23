@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         id="java"
+         name="java"
+         point="kieker.develop.semantics.SemanticAnnotation">
+      <semantics
+            annotations="kieker.develop.semantics.java.SemanticAnnotations"></semantics>
+   </extension>
+
+</plugin>

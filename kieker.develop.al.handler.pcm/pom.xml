@@ -13,8 +13,7 @@
 	<artifactId>kieker.develop.al.handler.pcm</artifactId>
 	<packaging>eclipse-plugin</packaging>
 
-	<name>Instrumentation Aspect Language PCM Model Handler</name>
-
+	<name>Kieker Language PCM Model Handler</name>
 
 	<build>
 		<plugins>

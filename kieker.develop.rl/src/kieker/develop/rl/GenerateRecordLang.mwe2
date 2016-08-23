@@ -46,6 +46,8 @@ Workflow {
 			
 			fragment = types.TypesGeneratorFragment2 auto-inject {}
 			
+			referencedResource = "platform:/resource/kieker.develop.semantics/model/SemanticAnnotation.genmodel"
+			
 			serializer = {
 				generateStub = false
 			}
