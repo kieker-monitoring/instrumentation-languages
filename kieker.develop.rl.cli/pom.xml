@@ -22,10 +22,10 @@
 	</properties>
 
 	<repositories>
-		<repository>
-			<id>extra</id>
-			<url>file://${basedir}/mvn-repo</url>
-		</repository>
+<!-- 		<repository> -->
+<!-- 			<id>extra</id> -->
+<!-- 			<url>file://${basedir}/mvn-repo</url> -->
+<!-- 		</repository> -->
 	</repositories>
 
 	<dependencies>

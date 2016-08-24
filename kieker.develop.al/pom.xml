@@ -14,7 +14,7 @@
 	<packaging>eclipse-plugin</packaging>
 
 	<name>Kieker Aspect Language Core Services</name>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>kieker.develop</groupId>
@@ -22,50 +22,59 @@
 			<version>1.2.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
-	
+
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-clean-plugin</artifactId>
-				<version>3.0.0</version>
-				<configuration>
-					<filesets combine.children="append">
-						<fileset>
-							<directory>${basedir}/../kieker.develop.al/src-gen/</directory>
-							<includes>
-								<include>**/*</include>
-							</includes>
-						</fileset>
-						<fileset>
-							<directory>${basedir}/../kieker.develop.al.tests/src-gen/</directory>
-							<includes>
-								<include>**/*</include>
-							</includes>
-						</fileset>
-						<fileset>
-							<directory>${basedir}/../kieker.develop.al.ide/src-gen/</directory>
-							<includes>
-								<include>**/*</include>
-							</includes>
-						</fileset>
-						<fileset>
-							<directory>${basedir}/../kieker.develop.al.ui/src-gen/</directory>
-							<includes>
-								<include>**/*</include>
-							</includes>
-						</fileset>
-						<fileset>
-							<directory>${basedir}/../kieker.develop.al.ui.tests/src-gen/</directory>
-							<includes>
-								<include>**/*</include>
-							</includes>
-						</fileset>
-						<fileset>
-							<directory>${basedir}/model/generated/</directory>
-						</fileset>
-					</filesets>
-				</configuration>
+				<executions>
+					<execution>
+						<id>gen-clean</id>
+						<phase>clean</phase>
+						<configuration>
+							<filesets combine.children="append">
+								<fileset>
+									<directory>${basedir}/../kieker.develop.al/src-gen/</directory>
+									<includes>
+										<include>**/*</include>
+									</includes>
+								</fileset>
+								<fileset>
+									<directory>${basedir}/../kieker.develop.al.tests/src-gen/</directory>
+									<includes>
+										<include>**/*</include>
+									</includes>
+								</fileset>
+								<fileset>
+									<directory>${basedir}/../kieker.develop.al.ide/src-gen/</directory>
+									<includes>
+										<include>**/*</include>
+									</includes>
+								</fileset>
+								<fileset>
+									<directory>${basedir}/../kieker.develop.al.ui/src-gen/</directory>
+									<includes>
+										<include>**/*</include>
+									</includes>
+								</fileset>
+								<fileset>
+									<directory>${basedir}/../kieker.develop.al.ui.tests/src-gen/</directory>
+									<includes>
+										<include>**/*</include>
+									</includes>
+								</fileset>
+								<fileset>
+									<directory>${basedir}/model/generated/</directory>
+								</fileset>
+							</filesets>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.xtend</groupId>
+				<artifactId>xtend-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -121,11 +130,6 @@
 					</dependency>
 				</dependencies>
 			</plugin>
-			<plugin>
-				<groupId>org.eclipse.xtend</groupId>
-				<artifactId>xtend-maven-plugin</artifactId>
-				<version>2.10.0</version>
-			</plugin>
 		</plugins>
 		<pluginManagement>
 			<plugins>
@@ -138,15 +142,9 @@
 							<pluginExecutions>
 								<pluginExecution>
 									<pluginExecutionFilter>
-										<groupId>
-											org.codehaus.mojo
-										</groupId>
-										<artifactId>
-											exec-maven-plugin
-										</artifactId>
-										<versionRange>
-											[1.4.0,)
-										</versionRange>
+										<groupId>org.codehaus.mojo</groupId>
+										<artifactId>exec-maven-plugin</artifactId>
+										<versionRange>[1.4.0,)</versionRange>
 										<goals>
 											<goal>java</goal>
 										</goals>

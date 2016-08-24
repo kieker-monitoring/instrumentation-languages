@@ -27,6 +27,7 @@ import kieker.develop.rl.recordLang.Model
 import kieker.develop.rl.recordLang.RecordType
 import org.eclipse.emf.common.util.EList
 
+// TODO this should be somewhat moved to a common module with RL/AL???
 import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.generator.java.JavaTypeMapping.*
 
