@@ -41,6 +41,10 @@
 		<module>kieker.develop.al.feature</module>
 		<module>kieker.develop.al.handler.pcm</module>
 		<module>kieker.develop.rl</module>
+		<module>kieker.develop.rl.generator.java</module>
+		<module>kieker.develop.rl.generator.c</module>
+		<module>kieker.develop.rl.generator.delphi</module>
+		<module>kieker.develop.rl.generator.perl</module>
 		<module>kieker.develop.rl.ide</module>
 		<module>kieker.develop.rl.ui</module>
 		<module>kieker.develop.rl.tests</module>
@@ -48,7 +52,8 @@
 		<module>kieker.develop.repository</module>
 		<module>kieker.develop.target</module>
 		<module>kieker.develop.rl.cli</module>
-    <module>kieker.develop.semantics</module>
+		<module>kieker.develop.semantics</module>
+		<module>kieker.develop.semantics.java</module>
   </modules>
 	<build>
 		<plugins>

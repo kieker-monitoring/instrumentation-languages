@@ -18,6 +18,7 @@ package kieker.develop.rl.generator;
 import com.google.common.collect.Iterators;
 import java.lang.reflect.Constructor;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Consumer;
@@ -78,7 +79,8 @@ public class RecordLangGenerator implements IGenerator2 {
     try {
       final String version = TargetsPreferences.getVersionID(preferenceStore);
       final String author = TargetsPreferences.getAuthorName(preferenceStore);
-      for (final Class<?> generator : GeneratorConfiguration.RECORD_TYPE_GENERATORS) {
+      Collection<Class<? extends AbstractRecordTypeGenerator>> _recordTypeGenerators = GeneratorConfiguration.getRecordTypeGenerators();
+      for (final Class<?> generator : _recordTypeGenerators) {
         {
           Constructor<?> _constructor = generator.getConstructor();
           Object _newInstance = _constructor.newInstance();
@@ -109,7 +111,8 @@ public class RecordLangGenerator implements IGenerator2 {
           }
         }
       }
-      for (final Class<?> generator_1 : GeneratorConfiguration.TEMPLATE_TYPE_GENERATORS) {
+      Collection<Class<? extends AbstractTemplateTypeGenerator>> _templateTypeGenerators = GeneratorConfiguration.getTemplateTypeGenerators();
+      for (final Class<?> generator_1 : _templateTypeGenerators) {
         {
           Constructor<?> _constructor = generator_1.getConstructor();
           Object _newInstance = _constructor.newInstance();

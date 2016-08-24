@@ -57,7 +57,7 @@ class RecordLangGenerator implements IGenerator2 {
 			val author = TargetsPreferences.getAuthorName(preferenceStore)
 								
 			/** Generator invocation for RecordTypes */																	
-			for (Class<?> generator : GeneratorConfiguration.RECORD_TYPE_GENERATORS) {
+			for (Class<?> generator : GeneratorConfiguration.recordTypeGenerators) {
 				val cg = generator.getConstructor().newInstance() as AbstractRecordTypeGenerator
 				cg.author = author
 				cg.version = version
@@ -74,7 +74,7 @@ class RecordLangGenerator implements IGenerator2 {
 			}
 			
 			/** Generator invocation for TemplateTypes */
-			for (Class<?> generator : GeneratorConfiguration.TEMPLATE_TYPE_GENERATORS) {
+			for (Class<?> generator : GeneratorConfiguration.templateTypeGenerators) {
 				val cg = generator.getConstructor().newInstance() as AbstractTemplateTypeGenerator
 				cg.author = author
 				cg.version = version

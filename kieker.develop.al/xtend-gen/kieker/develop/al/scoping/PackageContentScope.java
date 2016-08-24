@@ -16,7 +16,6 @@
 package kieker.develop.al.scoping;
 
 import com.google.common.base.Objects;
-import kieker.develop.al.aspectLang.AspectModel;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -40,7 +39,7 @@ public class PackageContentScope implements IScope {
   /**
    * Main aspect model.
    */
-  private AspectModel model;
+  private /* AspectModel */Object model;
   
   /**
    * Resource set containing all resources of named in the model.
@@ -53,9 +52,9 @@ public class PackageContentScope implements IScope {
    * @param resourceSet the resource set
    * @param model the aspect model
    */
-  public PackageContentScope(final ResourceSet resourceSet, final AspectModel model) {
-    this.model = model;
-    this.resourceSet = resourceSet;
+  public PackageContentScope(final ResourceSet resourceSet, final /* AspectModel */Object model) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe field PackageContentScope.model refers to the missing type AspectModel");
   }
   
   /**

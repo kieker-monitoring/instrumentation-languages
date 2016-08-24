@@ -2,14 +2,11 @@ package kieker.develop.al.handler.pcm;
 
 import com.google.common.base.Objects;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
-import kieker.develop.al.aspectLang.ApplicationModel;
-import kieker.develop.al.aspectLang.Technology;
 import kieker.develop.al.mapping.Container;
 import kieker.develop.al.mapping.Containment;
 import kieker.develop.al.mapping.MappingFactory;
@@ -22,7 +19,6 @@ import kieker.develop.al.mapping.ParameterModifier;
 import kieker.develop.al.mapping.TypeReference;
 import kieker.develop.al.modelhandling.IModelMapper;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -30,7 +26,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.naming.QualifiedName;
-import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -47,15 +42,9 @@ public class PCMModelMapper implements IModelMapper {
   private Map<String, EObject> interfaceMap = new HashMap<String, EObject>();
   
   @Override
-  public MappingModel loadModel(final ApplicationModel input, final ResourceSet resourceSet) {
-    String _model = input.getModel();
-    URI _createPlatformResourceURI = URI.createPlatformResourceURI(_model, true);
-    final Resource source = resourceSet.getResource(_createPlatformResourceURI, true);
-    MappingModel _createMappingModel = this.mappingFactory.createMappingModel();
-    this.result = _createMappingModel;
-    this.determineInterfaces(source);
-    this.determineContainerHierarchy(source);
-    return this.result;
+  public MappingModel loadModel(final /* ApplicationModel */Object input, final ResourceSet resourceSet) {
+    throw new Error("Unresolved compilation problems:"
+      + "\ngetModel cannot be resolved");
   }
   
   @Override
@@ -64,8 +53,14 @@ public class PCMModelMapper implements IModelMapper {
   }
   
   @Override
-  public Collection<Technology> targetTechnologies() {
-    return Collections.<Technology>unmodifiableSet(CollectionLiterals.<Technology>newHashSet(Technology.ASPECT_J, Technology.SERVLET, Technology.JAVA_EE));
+  public /* Collection<Object> */Object targetTechnologies() {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field Technology is undefined"
+      + "\nThe method or field Technology is undefined"
+      + "\nThe method or field Technology is undefined"
+      + "\nASPECT_J cannot be resolved"
+      + "\nSERVLET cannot be resolved"
+      + "\nJAVA_EE cannot be resolved");
   }
   
   /**

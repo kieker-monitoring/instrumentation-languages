@@ -15,44 +15,29 @@
  ***************************************************************************/
 package kieker.develop.rl.generator;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.core.runtime.IExtensionRegistry;
+import org.eclipse.core.runtime.Platform;
+
 import kieker.develop.rl.ouput.config.OutletConfiguration;
 
 /**
  * Configuration and registration of IRL generators.
  * The class also contains functions for derived values based on the
  * configuration values.
- * 
+ *
  * @author Reiner Jung
- * 
+ *
  * @since 1.0
- * 
+ *
  */
 public final class GeneratorConfiguration {
-	/** list of all generators to support RecordType. */
-	public static final Class<?>[] RECORD_TYPE_GENERATORS = {
-		kieker.develop.rl.generator.c.main.RecordTypeGenerator.class,
-		kieker.develop.rl.generator.c.header.RecordTypeGenerator.class,
-		kieker.develop.rl.generator.java.record.RecordTypeGenerator.class,
-		kieker.develop.rl.generator.java.junit.RecordTypeGenerator.class,
-		kieker.develop.rl.generator.java.factory.RecordFactoryTypeGenerator.class,
-		kieker.develop.rl.generator.perl.RecordTypeGenerator.class,
-		kieker.develop.rl.generator.delphi.RecordTypeGenerator.class,
-	};
 
-	/** list of all generators to support TemplateType. */
-	public static final Class<?>[] TEMPLATE_TYPE_GENERATORS = {
-		kieker.develop.rl.generator.java.record.TemplateTypeGenerator.class,
-	};
-
-	/** list of all outlet configurations. */
-	public static final OutletConfiguration[] OUTLET_CONFIGURATIONS = {
-		new OutletConfiguration("java", "Java Output Folder", "./src-gen/java"),
-		new OutletConfiguration("java-factory", "Java Factory Output Folder", "./src-gen/java-factory"),
-		new OutletConfiguration("junit", "Junit Output Folder", "./test-gen/common"),
-		new OutletConfiguration("c", "C Output Folder", "./src-gen/c"),
-		new OutletConfiguration("perl", "Perl Output Folder", "./src-gen/perl"),
-		new OutletConfiguration("delphi", "Delphi Output Folder", "./src-gen/delphi"),
-	};
+	public static final String GENERATOR_PROVIDER = "kieker.develop.rl.generator.IRLGenerator";
 
 	/**
 	 * Empty default constructor.
@@ -60,4 +45,68 @@ public final class GeneratorConfiguration {
 	private GeneratorConfiguration() {
 		// utility class nothing to do here
 	}
+
+	public static Collection<Class<? extends AbstractRecordTypeGenerator>> getRecordTypeGenerators() {
+		final Collection<Class<? extends AbstractRecordTypeGenerator>> generators = new ArrayList<Class<? extends AbstractRecordTypeGenerator>>();
+
+		final IExtensionRegistry registry = Platform.getExtensionRegistry();
+		final IConfigurationElement[] config = registry.getConfigurationElementsFor(GENERATOR_PROVIDER);
+
+		for (final IConfigurationElement element : config) {
+			try {
+				final Object ext = element.createExecutableExtension("generator");
+				if (ext instanceof IGeneratorProvider) {
+					final IGeneratorProvider generatorProvider = (IGeneratorProvider) ext;
+					generators.addAll(generatorProvider.getRecordTypeGenerators());
+				}
+			} catch (final CoreException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return generators;
+	}
+
+	public static Collection<Class<? extends AbstractTemplateTypeGenerator>> getTemplateTypeGenerators() {
+		final Collection<Class<? extends AbstractTemplateTypeGenerator>> generators = new ArrayList<Class<? extends AbstractTemplateTypeGenerator>>();
+
+		final IExtensionRegistry registry = Platform.getExtensionRegistry();
+		final IConfigurationElement[] config = registry.getConfigurationElementsFor(GENERATOR_PROVIDER);
+
+		for (final IConfigurationElement element : config) {
+			try {
+				final Object ext = element.createExecutableExtension("generator");
+				if (ext instanceof IGeneratorProvider) {
+					final IGeneratorProvider generatorProvider = (IGeneratorProvider) ext;
+					generators.addAll(generatorProvider.getTemplateTypeGenerators());
+				}
+			} catch (final CoreException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return generators;
+	}
+
+	public static Collection<OutletConfiguration> getOutletConfigurations() {
+		final Collection<OutletConfiguration> outletConfigurations = new ArrayList<OutletConfiguration>();
+
+		final IExtensionRegistry registry = Platform.getExtensionRegistry();
+		final IConfigurationElement[] config = registry.getConfigurationElementsFor(GENERATOR_PROVIDER);
+
+		for (final IConfigurationElement element : config) {
+			try {
+				final Object ext = element.createExecutableExtension("generator");
+				if (ext instanceof IGeneratorProvider) {
+					final IGeneratorProvider generatorProvider = (IGeneratorProvider) ext;
+					outletConfigurations.addAll(generatorProvider.getOutletConfigurations());
+				}
+			} catch (final CoreException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return outletConfigurations;
+	}
+
 }

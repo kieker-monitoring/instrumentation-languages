@@ -15,7 +15,6 @@
  */
 package kieker.develop.al;
 
-import kieker.develop.al.AbstractAspectLangRuntimeModule;
 import kieker.develop.al.modelhandling.ForeignModelGlobalScopeProvider;
 import org.eclipse.xtext.scoping.IGlobalScopeProvider;
 
@@ -23,7 +22,7 @@ import org.eclipse.xtext.scoping.IGlobalScopeProvider;
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 @SuppressWarnings("all")
-public class AspectLangRuntimeModule extends AbstractAspectLangRuntimeModule {
+public class AspectLangRuntimeModule /* implements AbstractAspectLangRuntimeModule  */{
   /**
    * {@inheritDoc}<br>
    * This extension registers the custom {@link ForeignModelGlobalScopeProvider} that realizes e.g. the

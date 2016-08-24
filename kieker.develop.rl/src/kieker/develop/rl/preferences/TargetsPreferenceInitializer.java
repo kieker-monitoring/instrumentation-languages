@@ -26,7 +26,7 @@ import kieker.develop.rl.generator.GeneratorConfiguration;
 
 /**
  * @author Reiner Jung
- * 
+ *
  */
 public class TargetsPreferenceInitializer extends AbstractPreferenceInitializer {
 
@@ -39,17 +39,16 @@ public class TargetsPreferenceInitializer extends AbstractPreferenceInitializer 
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer#initializeDefaultPreferences()
 	 */
 	@Override
 	public void initializeDefaultPreferences() {
-		for (final Class<?> generatorClass : GeneratorConfiguration.RECORD_TYPE_GENERATORS) {
+		for (final Class<?> generatorClass : GeneratorConfiguration.getRecordTypeGenerators()) {
 			try {
 				final AbstractRecordTypeGenerator generator = (AbstractRecordTypeGenerator) generatorClass.getConstructor().newInstance();
-				TargetsPreferenceInitializer.getPreferenceStore().
-						putBoolean(TargetsPreferences.GENERATOR_ACTIVE + generator.getId(),
-								TargetsPreferences.DEFAULT_GENERATOR_INACTIVE);
+				TargetsPreferenceInitializer.getPreferenceStore().putBoolean(TargetsPreferences.GENERATOR_ACTIVE + generator.getId(),
+						TargetsPreferences.DEFAULT_GENERATOR_INACTIVE);
 			} catch (final IllegalArgumentException e) {
 				e.printStackTrace();
 			} catch (final SecurityException e) {
@@ -71,7 +70,7 @@ public class TargetsPreferenceInitializer extends AbstractPreferenceInitializer 
 
 	/**
 	 * Provide a default scope for the generator.
-	 * 
+	 *
 	 * @return return the default scope
 	 */
 	public static IEclipsePreferences getPreferenceStore() {

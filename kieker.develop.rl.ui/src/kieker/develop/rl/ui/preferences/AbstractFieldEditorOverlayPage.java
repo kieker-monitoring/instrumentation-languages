@@ -106,7 +106,7 @@ public abstract class AbstractFieldEditorOverlayPage extends FieldEditorPreferen
 
 	@Override
 	protected void createFieldEditors() {
-		for (final Class<?> generatorClass : GeneratorConfiguration.RECORD_TYPE_GENERATORS) {
+		for (final Class<?> generatorClass : GeneratorConfiguration.getRecordTypeGenerators()) {
 			try {
 				final AbstractRecordTypeGenerator generator = (AbstractRecordTypeGenerator) generatorClass.getConstructor().newInstance();
 
