@@ -36,5 +36,4 @@ doc/kieker-workshop/images/kieker-data-bridge.pdf
 **/.project
 **/.settings/**
 **/.classpath
-
-kieker.develop.rl/model/generated/**
+**/model/generated/**
