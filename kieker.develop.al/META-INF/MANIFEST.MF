@@ -32,7 +32,9 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  de.cau.cs.se.geco.architecture.framework;bundle-version="1.0.0",
  org.eclipse.xtend.lib,
  kieker.develop.semantics;bundle-version="1.2.0",
- org.eclipse.equinox.registry
+ org.eclipse.equinox.registry,
+ com.google.guava,
+ org.eclipse.xtend.lib.macro
 Import-Package: org.apache.log4j,
  org.eclipse.jdt.core,
  org.eclipse.xtext.common.types.access.jdt,

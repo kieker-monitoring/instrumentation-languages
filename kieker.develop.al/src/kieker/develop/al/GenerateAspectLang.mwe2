@@ -3,8 +3,6 @@ module kieker.develop.al.GenerateAspectLang
 import org.eclipse.xtext.generator.*
 import org.eclipse.xtext.ui.generator.*
 
-
-
 import org.eclipse.xtext.xtext.generator.*
 import org.eclipse.xtext.xtext.generator.model.project.*
 import org.eclipse.emf.mwe.utils.*
@@ -14,19 +12,43 @@ var rootPath = ".."
 Workflow {
 	bean = StandaloneSetup {
 		scanClassPath = true
-		platformUri = "${rootPath}/.."
+		platformUri = "."
 		//uriMap = {
 		//	from = "platform:/plugin/de.cau.cs.kieler.core.annotations/annotations.genmodel"
 		//	to = "platform:/resource/de.cau.cs.kieler.core.annotations/annotations.genmodel"
 		//}
 
-	  	//registerGeneratedEPackage = "de.cau.cs.kieler.core.annotations.AnnotationsPackage"
-	 	//registerGenModelFile = "platform:/resource/de.cau.cs.kieler.core.annotations/annotations.genmodel"
+		//registerGeneratedEPackage = "de.cau.cs.kieler.core.annotations.AnnotationsPackage"
+	        //registerGenModelFile = "platform:/resource/de.cau.cs.kieler.core.annotations/annotations.genmodel"
+
+		uriMap = {
+			from = "platform:/plugin/kieker.develop.al/model/MappingModel.genmodel"
+			to = "platform:/resource/kieker.develop.al/model/MappingModel.genmodel"
+		}
+
+		uriMap = {
+			from = "platform:/plugin/kieker.develop.al/model/MappingModel.ecore"
+			to = "platform:/resource/kieker.develop.al/model/MappingModel.ecore"
+		}
+
+		uriMap = {
+			from = "platform:/plugin/kieker.develop.rl/model/generated/RecordLang.genmodel"
+			to = "platform:/resource/kieker.develop.rl/model/generated/RecordLang.genmodel"
+		}
+
+		uriMap = {
+			from = "platform:/plugin/kieker.develop.rl/model/generated/RecordLang.ecore"
+			to = "platform:/resource/kieker.develop.rl/model/generated/RecordLang.ecore"
+		}
 	
-		registerGeneratedEPackage = "kieker.develop.rl.recordLang.RecordLangPackage"
-		registerGeneratedEPackage = "kieker.develop.al.mapping.MappingPackage"
+		//registerGeneratedEPackage = "kieker.develop.rl.recordLang.RecordLangPackage"
+		//registerGeneratedEPackage = "kieker.develop.al.mapping.MappingPackage"
+		
 		registerGenModelFile = "platform:/resource/kieker.develop.rl/model/generated/RecordLang.genmodel"
+		registerEcoreFile = "platform:/resource/kieker.develop.rl/model/generated/RecordLang.ecore"
+
 		registerGenModelFile = "platform:/resource/kieker.develop.al/model/MappingModel.genmodel"
+		registerEcoreFile = "platform:/resource/kieker.develop.al/model/MappingModel.ecore"
 	}
 
 	component = XtextGenerator {
@@ -65,8 +87,6 @@ Workflow {
 			validator = {
 				// composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
 			}
-			
-			
 			
 			referencedResource = "platform:/resource/kieker.develop.rl/model/generated/RecordLang.genmodel"
 			referencedResource = "platform:/resource/kieker.develop.al/model/MappingModel.genmodel"

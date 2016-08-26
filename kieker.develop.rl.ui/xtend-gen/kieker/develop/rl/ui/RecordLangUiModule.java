@@ -35,7 +35,7 @@ public class RecordLangUiModule extends AbstractRecordLangUiModule {
     return TypesHighlightingConfiguration.class;
   }
   
-  public RecordLangUiModule(final AbstractUIPlugin plugin) {
-    super(plugin);
+  public RecordLangUiModule(final AbstractUIPlugin arg0) {
+    super(arg0);
   }
 }

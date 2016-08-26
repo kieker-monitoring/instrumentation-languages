@@ -13,7 +13,7 @@ import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor;
 @FinalFieldsConstructor
 @SuppressWarnings("all")
 public class AspectLangUiModule extends AbstractAspectLangUiModule {
-  public AspectLangUiModule(final AbstractUIPlugin plugin) {
-    super(plugin);
+  public AspectLangUiModule(final AbstractUIPlugin arg0) {
+    super(arg0);
   }
 }

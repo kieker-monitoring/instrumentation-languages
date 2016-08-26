@@ -21,13 +21,6 @@
 		<eclipse-repo.url>http://download.eclipse.org/releases/neon</eclipse-repo.url>
 	</properties>
 
-	<repositories>
-<!-- 		<repository> -->
-<!-- 			<id>extra</id> -->
-<!-- 			<url>file://${basedir}/mvn-repo</url> -->
-<!-- 		</repository> -->
-	</repositories>
-
 	<dependencies>
 		<dependency>
 			<groupId>com.google.inject</groupId>
