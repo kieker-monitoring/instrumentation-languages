@@ -36,10 +36,11 @@ import kieker.develop.rl.preferences.TargetsPreferences;
  */
 public class TargetsPreferencePage extends AbstractFieldEditorOverlayPage implements IWorkbenchPreferencePage {
 
-	public static String PAGE_ID = "kieker.develop.rl.ui.preferences.TargetsPreferencePage";
+	/** page id constant. */
+	public static final String PAGE_ID = "kieker.develop.rl.ui.preferences.TargetsPreferencePage";
 
 	/**
-	 * Default constructor.
+	 * Initialize preference page.
 	 */
 	public TargetsPreferencePage() {
 		super(GRID);

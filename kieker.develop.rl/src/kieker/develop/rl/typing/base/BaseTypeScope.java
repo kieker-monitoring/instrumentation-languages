@@ -51,6 +51,16 @@ public class BaseTypeScope extends AbstractScope {
 
 	private final Predicate<IEObjectDescription> filter;
 
+	/**
+	 * Create base type scope.
+	 *
+	 * @param typeProvider
+	 *            provider for the base types
+	 * @param qualifiedNameConverter
+	 *            name converter
+	 * @param filter
+	 *            filter for the results
+	 */
 	public BaseTypeScope(final ITypeProvider typeProvider,
 			final IQualifiedNameConverter qualifiedNameConverter,
 			final Predicate<IEObjectDescription> filter) {
@@ -96,6 +106,13 @@ public class BaseTypeScope extends AbstractScope {
 		return Collections.emptySet();
 	}
 
+	/**
+	 * Filter result.
+	 *
+	 * @param unfiltered
+	 *            list of unfiltered results
+	 * @return Returns the filtered results
+	 */
 	protected Iterable<IEObjectDescription> filterResult(
 			final Iterable<IEObjectDescription> unfiltered) {
 		if (this.filter == null) {
@@ -109,6 +126,11 @@ public class BaseTypeScope extends AbstractScope {
 		return this.filterResult(this.internalGetAllElements());
 	}
 
+	/**
+	 * Get all types.
+	 *
+	 * @return Returns the list all types of the scope.
+	 */
 	protected Iterable<IEObjectDescription> internalGetAllElements() {
 		final List<IEObjectDescription> types = Lists.newArrayList();
 
@@ -119,6 +141,14 @@ public class BaseTypeScope extends AbstractScope {
 		return types;
 	}
 
+	/**
+	 * Create scoped element.
+	 *
+	 * @param fullyQualifiedName
+	 *            name of the element
+	 *
+	 * @return Returns the scoped element
+	 */
 	protected IEObjectDescription createScopedElement(final String fullyQualifiedName) {
 		final InternalEObject proxy = this.createProxy(fullyQualifiedName);
 		final IEObjectDescription eObjectDescription = EObjectDescription.create(
@@ -127,6 +157,13 @@ public class BaseTypeScope extends AbstractScope {
 		return eObjectDescription;
 	}
 
+	/**
+	 * Create a proxy element.
+	 *
+	 * @param fullyQualifiedName
+	 *            name of element
+	 * @return Returns the proxy element
+	 */
 	protected InternalEObject createProxy(final String fullyQualifiedName) {
 		final URI uri = BaseTypeURIHelper.getFullURIForClass(fullyQualifiedName);
 		final InternalEObject proxy = (InternalEObject) RecordLangFactory.eINSTANCE.createBaseType();

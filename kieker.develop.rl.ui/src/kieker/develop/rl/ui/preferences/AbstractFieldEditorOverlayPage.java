@@ -27,21 +27,7 @@ import org.eclipse.jface.preference.PreferenceManager;
 import org.eclipse.jface.preference.PreferenceNode;
 import org.eclipse.jface.preference.StringFieldEditor;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.custom.Bullet;
 import org.eclipse.swt.custom.BusyIndicator;
-import org.eclipse.swt.custom.LineStyleEvent;
-import org.eclipse.swt.custom.LineStyleListener;
-import org.eclipse.swt.custom.ST;
-import org.eclipse.swt.custom.StyleRange;
-import org.eclipse.swt.custom.StyledText;
-import org.eclipse.swt.events.ModifyEvent;
-import org.eclipse.swt.events.ModifyListener;
-import org.eclipse.swt.graphics.GlyphMetrics;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Label;
 
 import kieker.develop.rl.generator.AbstractRecordTypeGenerator;
 import kieker.develop.rl.generator.GeneratorConfiguration;
@@ -112,89 +98,9 @@ public abstract class AbstractFieldEditorOverlayPage extends FieldEditorPreferen
 
 				this.addField(new BooleanFieldEditor(TargetsPreferences.GENERATOR_ACTIVE + generator.getId(),
 						generator.getDescription(), this.getFieldEditorParent()));
-				final FieldEditor commentFieldEditor = new FieldEditor(TargetsPreferences.GENERATOR_HEADER_COMMENT + generator.getId(),
-						"Header", this.getFieldEditorParent()) {
-
-					Composite top;
-					StyledText comment;
-
-					@Override
-					protected void adjustForNumColumns(final int numColumns) {
-						((GridData)this.top.getLayoutData()).horizontalSpan = numColumns;
-					}
-
-					@Override
-					protected void doFillIntoGrid(final Composite parent, final int numColumns) {
-						this.top = parent;
-
-						final GridData gd = new GridData(GridData.FILL_HORIZONTAL);
-						gd.horizontalSpan = numColumns;
-						this.top.setLayoutData(gd);
-
-						final Label label = this.getLabelControl(this.top);
-						final GridData labelData = new GridData();
-						labelData.horizontalSpan = numColumns;
-						label.setLayoutData(labelData);
-
-						this.comment = new StyledText(this.top, SWT.MULTI | SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
-						final GridData layoutData = new GridData(GridData.FILL_BOTH);
-						layoutData.heightHint = this.convertVerticalDLUsToPixels(parent, 50);
-						this.comment.setLayoutData(layoutData);
-
-						this.comment.addLineStyleListener(new LineStyleListener() {
-							@Override
-							public void lineGetStyle(final LineStyleEvent event) {
-								// Using ST.BULLET_NUMBER sometimes results in weird alignment.
-								//event.bulletIndex = styledText.getLineAtOffset(event.lineOffset);
-								final StyleRange styleRange = new StyleRange();
-								styleRange.foreground = Display.getCurrent().getSystemColor(SWT.COLOR_GRAY);
-								final int maxLine = comment.getLineCount();
-								final int bulletLength = Integer.toString(maxLine).length();
-								// Width of number character is half the height in monospaced font, add 1 character width for right padding.
-								final int bulletWidth = ((bulletLength + 1) * comment.getLineHeight()) / 2;
-								styleRange.metrics = new GlyphMetrics(0, 0, bulletWidth);
-								event.bullet = new Bullet(ST.BULLET_TEXT, styleRange);
-								// getLineAtOffset() returns a zero-based line index.
-								final int bulletLine = comment.getLineAtOffset(event.lineOffset) + 1;
-								event.bullet.text = String.format("%" + bulletLength + "s", bulletLine);
-							}
-						});
-						this.comment.addModifyListener(new ModifyListener() {
-							@Override
-							public void modifyText(final ModifyEvent e) {
-								// For line number redrawing.
-								comment.redraw();
-							}
-						});
-					}
-
-					@Override
-					protected void doLoad() {
-						final String comment = this.getPreferenceStore().getString(this.getPreferenceName());
-						if (comment != null) {
-							this.comment.setText(comment);
-						}
-					}
-
-					@Override
-					protected void doLoadDefault() {
-						final String comment = this.getPreferenceStore().getDefaultString(this.getPreferenceName());
-						if (comment != null) {
-							this.comment.setText(comment);
-						}
-					}
-
-					@Override
-					protected void doStore() {
-						this.getPreferenceStore().setValue(this.getPreferenceName(), this.comment.getText());
-					}
-
-					@Override
-					public int getNumberOfControls() {
-						return 1;
-					}
-
-				};
+				final FieldEditor commentFieldEditor = new CommentFieldEditor(TargetsPreferences.GENERATOR_HEADER_COMMENT
+						+ generator.getId(),
+						"Header", this.getFieldEditorParent());
 				this.addField(commentFieldEditor);
 			} catch (final IllegalArgumentException e) {
 				e.printStackTrace();

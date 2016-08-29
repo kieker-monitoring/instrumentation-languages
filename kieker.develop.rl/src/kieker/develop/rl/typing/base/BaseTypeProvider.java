@@ -36,7 +36,10 @@ public class BaseTypeProvider implements Resource.Factory, ITypeProvider {
 	private final ResourceSet resourceSet;
 
 	/**
+	 * Create a base type provider.
+	 *
 	 * @param resourceSet
+	 *            the resource set where the base types will be stored to.
 	 */
 	public BaseTypeProvider(final ResourceSet resourceSet) {
 		this.resourceSet = resourceSet;
@@ -79,6 +82,7 @@ public class BaseTypeProvider implements Resource.Factory, ITypeProvider {
 	 *
 	 * @param uri
 	 *            The URI for the resource
+	 * @return returns a new base type resource
 	 */
 	// @Override
 	public BaseTypeResource createResource(final URI uri) {

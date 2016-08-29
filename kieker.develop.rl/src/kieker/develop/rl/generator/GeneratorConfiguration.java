@@ -37,6 +37,7 @@ import kieker.develop.rl.ouput.config.OutletConfiguration;
  */
 public final class GeneratorConfiguration {
 
+	/** interface name for IRLGenerator extension point. */
 	public static final String GENERATOR_PROVIDER = "kieker.develop.rl.generator.IRLGenerator";
 
 	/**
@@ -46,6 +47,11 @@ public final class GeneratorConfiguration {
 		// utility class nothing to do here
 	}
 
+	/**
+	 * Collect and return all generators which consume an event type as input.
+	 *
+	 * @return Returns a collection of generator classes for event types
+	 */
 	public static Collection<Class<? extends AbstractRecordTypeGenerator>> getRecordTypeGenerators() {
 		final Collection<Class<? extends AbstractRecordTypeGenerator>> generators = new ArrayList<Class<? extends AbstractRecordTypeGenerator>>();
 
@@ -60,13 +66,17 @@ public final class GeneratorConfiguration {
 					generators.addAll(generatorProvider.getRecordTypeGenerators());
 				}
 			} catch (final CoreException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		return generators;
 	}
 
+	/**
+	 * Collect and return all generators which consume a template type as input.
+	 *
+	 * @return Returns a collection of generator classes for template types
+	 */
 	public static Collection<Class<? extends AbstractTemplateTypeGenerator>> getTemplateTypeGenerators() {
 		final Collection<Class<? extends AbstractTemplateTypeGenerator>> generators = new ArrayList<Class<? extends AbstractTemplateTypeGenerator>>();
 
@@ -81,13 +91,17 @@ public final class GeneratorConfiguration {
 					generators.addAll(generatorProvider.getTemplateTypeGenerators());
 				}
 			} catch (final CoreException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		return generators;
 	}
 
+	/**
+	 * Collect all outlets provided by the different generator providers.
+	 *
+	 * @return Returns a collection of outlet configurations
+	 */
 	public static Collection<OutletConfiguration> getOutletConfigurations() {
 		final Collection<OutletConfiguration> outletConfigurations = new ArrayList<OutletConfiguration>();
 
@@ -102,7 +116,6 @@ public final class GeneratorConfiguration {
 					outletConfigurations.addAll(generatorProvider.getOutletConfigurations());
 				}
 			} catch (final CoreException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

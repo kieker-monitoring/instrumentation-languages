@@ -15,8 +15,6 @@
  ***************************************************************************/
 package kieker.develop.al.modelhandling;
 
-import org.eclipse.xtext.common.types.access.jdt.TypeURIHelper;
-
 import kieker.develop.al.mapping.NamedElement;
 import kieker.develop.al.mapping.NamedType;
 
@@ -57,6 +55,11 @@ public interface IForeignModelTypeProvider {
 	 */
 	ForeignModelTypeURIHelper getTypeUriHelper();
 
+	/**
+	 * Get all data types in a foreign model.
+	 *
+	 * @return Returns an iterable over all data types
+	 */
 	Iterable<NamedType> getAllDataTyes();
 
 }

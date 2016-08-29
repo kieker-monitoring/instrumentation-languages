@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Java
 Bundle-SymbolicName: kieker.develop.rl.generator.delphi;singleton:=true
 Bundle-Version: 1.2.0.qualifier
-Bundle-Activator: kieker.develop.rl.generator.java.Activator
+Bundle-Activator: kieker.develop.rl.generator.delphi.Activator
 Require-Bundle: org.eclipse.core.runtime,
  kieker.develop.rl,
  org.eclipse.xtend.lib,

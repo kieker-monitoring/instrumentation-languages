@@ -13,7 +13,7 @@
 	<artifactId>kieker.develop.semantics.java</artifactId>
 	<packaging>eclipse-plugin</packaging>
 
-	<name>Kieker Languages Annotation Semantics (JavA)</name>
+	<name>Kieker Languages Annotation Semantics (Java)</name>
 
 	<build>
 		<plugins>

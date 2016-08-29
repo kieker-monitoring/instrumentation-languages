@@ -71,7 +71,7 @@
 				<artifactId>maven-checkstyle-plugin</artifactId>
 				<version>2.15</version>
 				<configuration>
-					<linkXRef>false</linkXRef>
+					<linkXRef>true</linkXRef>
 					<propertyExpansion>basedir=${basedir}</propertyExpansion>
 				</configuration>
 			</plugin>

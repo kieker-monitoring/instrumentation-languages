@@ -25,19 +25,51 @@ import kieker.develop.rl.recordLang.RecordLangFactory;
  *
  */
 public enum BaseTypes {
-	LONG, INT, SHORT, BYTE, BOOLEAN, FLOAT, DOUBLE, CHAR, STRING;
+	/** long data type. */
+	LONG,
+	/** int data type. */
+	INT,
+	/** short data type. */
+	SHORT,
+	/** byte data type. */
+	BYTE,
+	/** boolean data type. */
+	BOOLEAN,
+	/** float data type. */
+	FLOAT,
+	/** double data type. */
+	DOUBLE,
+	/** char data type. */
+	CHAR,
+	/** string data type. */
+	STRING;
 
 	private BaseType type;
 
+	/**
+	 * Construct enumeration values.
+	 */
 	BaseTypes() {
 		this.type = RecordLangFactory.eINSTANCE.createBaseType();
 		this.type.setName(this.name().toLowerCase());
 	}
 
+	/**
+	 * Get the BaseType for the enumerated value.
+	 *
+	 * @return Returns the enumerated value
+	 */
 	public BaseType getType() {
 		return this.type;
 	}
 
+	/**
+	 * Find the enumerated value for a given BaseType.
+	 *
+	 * @param type
+	 *            the type to find
+	 * @return Returns the enumeration value
+	 */
 	public static BaseTypes getTypeEnum(final BaseType type) {
 		for (final BaseTypes result : BaseTypes.values()) {
 			if (result.name().toLowerCase().equals(type.getName())) {

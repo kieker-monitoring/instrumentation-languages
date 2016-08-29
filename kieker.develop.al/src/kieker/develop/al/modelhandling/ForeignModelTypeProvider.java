@@ -108,18 +108,27 @@ public class ForeignModelTypeProvider implements Resource.Factory, IForeignModel
 	 *
 	 * @param uri
 	 *            The URI for the resource
+	 *
+	 * @return a new foreign model resource
 	 */
 	public ForeignModelResource createResource(final URI uri) {
 		return new ForeignModelResource(uri, this.model);
 	}
 
 	/**
-	 * @returns Returns the URI helper for the type system.
+	 * Getter for URIHelper.
+	 *
+	 * @return Returns the URI helper for the type system.
 	 */
 	public ForeignModelTypeURIHelper getTypeUriHelper() {
 		return this.typeUriHelper;
 	}
 
+	/**
+	 * Collect all data types form the foreign model resource.
+	 *
+	 * @return an iterable of all datatypes.
+	 */
 	public Iterable<NamedType> getAllDataTyes() {
 		final Resource resource = this.resourceSet.getResource(
 				URI.createURI(ForeignModelTypeURIHelper.PROTOCOL + ":" + ForeignModelTypeURIHelper.ELEMENTS), true);

@@ -23,7 +23,7 @@ import kieker.develop.rl.typing.ITypeProvider;
 
 /**
  * The type provider factory controls the type provider, which is created by this class.
- * 
+ *
  * @author Christian Schneider - derived this class from
  *         org.eclipse.xtext.common.types.access.jdt.JdtTypeProviderFactory
  * @author Reiner Jung - commentary and cleanups
@@ -39,7 +39,7 @@ public class BaseTypeProviderFactory {
 	/**
 	 * Create a new type provider or fetch the already created type provider for the primitive
 	 * types.
-	 * 
+	 *
 	 * @param resourceSet
 	 *            The resource set associated with the type provider.
 	 * @return Returns the type provider for primitive types.
@@ -65,7 +65,7 @@ public class BaseTypeProviderFactory {
 
 	/**
 	 * Create a new type provider for primitive types and register it with the resource.
-	 * 
+	 *
 	 * @param resourceSet
 	 *            The resource set associated with the type provider.
 	 * @return Returns the new type provider.

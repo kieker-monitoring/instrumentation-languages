@@ -145,6 +145,7 @@ public final class ComputeUID {
 				fieldSigs[i] = new MemberSignature(fields.get(i));
 			}
 			Arrays.sort(fieldSigs, new Comparator<MemberSignature>() {
+				@Override
 				public int compare(final MemberSignature o1, final MemberSignature o2) {
 					return o1.name.compareTo(o2.name);
 				}
@@ -165,72 +166,20 @@ public final class ComputeUID {
 			// dout.writeUTF("()V");
 			// }
 
-			final Collection<Property> allProperties = PropertyResolution.collectAllDataProperties(type);
-			final Classifier[] paramListComplete = new Classifier[allProperties.size()];
-			int j = 0;
-			for (final Property property : allProperties) {
-				paramListComplete[j++] = property.getType();
-			}
+			final BaseType objectType = RecordLangFactory.eINSTANCE.createBaseType();
+			objectType.setName("Object");
 
 			final Classifier[] paramListGeneric = new Classifier[1];
-			final RecordLangFactory factory = RecordLangFactory.eINSTANCE;
-			paramListGeneric[0] = factory.createClassifier();
-			final BaseType objectType = factory.createBaseType();
-			objectType.setName("Object");
-			paramListGeneric[0].setType(objectType);
+			paramListGeneric[0] = ComputeUID.createClassifier(objectType);
 
 			final Classifier[] paramListGenericAbstract = new Classifier[2];
 			paramListGenericAbstract[0] = paramListGeneric[0];
-			paramListGenericAbstract[1] = factory.createClassifier();
-			paramListGenericAbstract[1].setType(objectType);
-			paramListGenericAbstract[1].getSizes().add(factory.createArraySize()); // unbound array
+			paramListGenericAbstract[1] = ComputeUID.createClassifier(objectType);
+			paramListGenericAbstract[1].getSizes().add(RecordLangFactory.eINSTANCE.createArraySize()); // unbound array
 
 			final Classifier[] paramListFromBuffer = new Classifier[2];
 
-			final Constructor[] cons = {
-				new Constructor(type.getName(), EVisibility.PUBLIC, paramListComplete), // (final long timestamp, final long traceId, final int orderIndex)
-				new Constructor(type.getName(), EVisibility.PUBLIC, paramListGeneric), // (final Object[] values) non abstract
-				new Constructor(type.getName(), EVisibility.PROTECTED, paramListGenericAbstract), // (final Object[] values, final Class<?>[] valueTypes)
-				new Constructor(type.getName(), EVisibility.PUBLIC, paramListFromBuffer), // (final ByteBuffer buffer, final IRegistry<String> stringRegistry) throws
-																							// BufferUnderflowException"
-			};
-			final MemberSignature[] consSigs = new MemberSignature[cons.length];
-			for (int i = 0; i < cons.length; i++) {
-				consSigs[i] = new MemberSignature(cons[i]);
-			}
-			Arrays.sort(consSigs, new Comparator<MemberSignature>() {
-				public int compare(final MemberSignature o1, final MemberSignature o2) {
-					return o1.signature.compareTo(o2.signature);
-				}
-			});
-			for (final MemberSignature sig : consSigs) {
-				final Constructor constructor = (Constructor) sig.member;
-				final int mods;
-				switch (constructor.getVisibility()) {
-				case PRIVATE:
-					mods = Modifier.PRIVATE;
-					break;
-				case PROTECTED:
-					mods = Modifier.PROTECTED;
-					break;
-				case PUBLIC:
-					mods = Modifier.PUBLIC;
-					break;
-				default:
-					mods = 0;
-					break;
-				}
-				// list of all modifiers
-				// (Modifier.PUBLIC | Modifier.PRIVATE | Modifier.PROTECTED |
-				// Modifier.STATIC | Modifier.FINAL |
-				// Modifier.SYNCHRONIZED | Modifier.NATIVE |
-				// Modifier.ABSTRACT | Modifier.STRICT);
-				if (constructor.getVisibility() != EVisibility.PRIVATE) {
-					dout.writeUTF("<init>");
-					dout.writeInt(mods);
-					dout.writeUTF(sig.signature.replace('/', '.'));
-				}
-			}
+			ComputeUID.createConstructorInfo(type, ComputeUID.createParameterList(type), paramListGeneric, paramListGenericAbstract, paramListFromBuffer, dout);
 
 			// TODO: this requires a rewrite
 			// Kieker API methods must be added here too.
@@ -241,6 +190,7 @@ public final class ComputeUID {
 				methodsArray[i] = methods.get(i);
 			}
 			Arrays.sort(methodsArray, new Comparator<Property>() {
+				@Override
 				public int compare(final Property o1, final Property o2) {
 					int comp = o1.getName().compareTo(o2.getName());
 					if (comp == 0) {
@@ -279,6 +229,101 @@ public final class ComputeUID {
 		} catch (final NoSuchAlgorithmException ex) {
 			throw new SecurityException(ex.getMessage());
 		}
+	}
+
+	/**
+	 * Create info for constructors.
+	 *
+	 * @param type
+	 *            the record type
+	 * @param paramListComplete
+	 *            constructor params with complete parameter list
+	 * @param paramListGeneric
+	 *            constructor params with generic parameter list
+	 * @param paramListGenericAbstract
+	 *            abstract constructor params with generic parameter list
+	 * @param paramListFromBuffer
+	 *            buffer based constructor
+	 * @param dout
+	 *            data stream
+	 * @throws IOException
+	 *             io exception
+	 */
+	private static void createConstructorInfo(final RecordType type,
+			final Classifier[] paramListComplete,
+			final Classifier[] paramListGeneric,
+			final Classifier[] paramListGenericAbstract,
+			final Classifier[] paramListFromBuffer,
+			final DataOutputStream dout) throws IOException {
+		final Constructor[] cons = {
+			new Constructor(type.getName(), EVisibility.PUBLIC, paramListComplete), // (final long timestamp, final long traceId, final int orderIndex)
+			new Constructor(type.getName(), EVisibility.PUBLIC, paramListGeneric), // (final Object[] values) non abstract
+			new Constructor(type.getName(), EVisibility.PROTECTED, paramListGenericAbstract), // (final Object[] values, final Class<?>[] valueTypes)
+			new Constructor(type.getName(), EVisibility.PUBLIC, paramListFromBuffer), // (final ByteBuffer buffer, final IRegistry<String> stringRegistry) throws
+																						// BufferUnderflowException"
+		};
+		final MemberSignature[] consSigs = new MemberSignature[cons.length];
+		for (int i = 0; i < cons.length; i++) {
+			consSigs[i] = new MemberSignature(cons[i]);
+		}
+		Arrays.sort(consSigs, new Comparator<MemberSignature>() {
+			@Override
+			public int compare(final MemberSignature o1, final MemberSignature o2) {
+				return o1.signature.compareTo(o2.signature);
+			}
+		});
+		for (final MemberSignature sig : consSigs) {
+			final Constructor constructor = (Constructor) sig.member;
+			final int mods;
+			switch (constructor.getVisibility()) {
+			case PRIVATE:
+				mods = Modifier.PRIVATE;
+				break;
+			case PROTECTED:
+				mods = Modifier.PROTECTED;
+				break;
+			case PUBLIC:
+				mods = Modifier.PUBLIC;
+				break;
+			default:
+				mods = 0;
+				break;
+			}
+			// list of all modifiers
+			// (Modifier.PUBLIC | Modifier.PRIVATE | Modifier.PROTECTED |
+			// Modifier.STATIC | Modifier.FINAL |
+			// Modifier.SYNCHRONIZED | Modifier.NATIVE |
+			// Modifier.ABSTRACT | Modifier.STRICT);
+			if (constructor.getVisibility() != EVisibility.PRIVATE) {
+				dout.writeUTF("<init>");
+				dout.writeInt(mods);
+				dout.writeUTF(sig.signature.replace('/', '.'));
+			}
+		}
+	}
+
+	/**
+	 * Create the parameter list based on a record type.
+	 *
+	 * @param type
+	 *            the record type
+	 * @return Returns the list of classifiers
+	 */
+	private static Classifier[] createParameterList(final RecordType type) {
+		final Collection<Property> allProperties = PropertyResolution.collectAllDataProperties(type);
+		final Classifier[] result = new Classifier[allProperties.size()];
+		int j = 0;
+		for (final Property property : allProperties) {
+			result[j++] = property.getType();
+		}
+		return result;
+	}
+
+	private static Classifier createClassifier(final BaseType objectType) {
+		final Classifier result = RecordLangFactory.eINSTANCE.createClassifier();
+		result.setType(objectType);
+
+		return result;
 	}
 
 	private static String firstToUpper(final String name) {

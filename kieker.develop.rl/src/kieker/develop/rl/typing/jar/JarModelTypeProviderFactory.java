@@ -24,8 +24,10 @@ import kieker.develop.rl.typing.ITypeProvider;
  * The type provider factory controls the type provider, which is created by this class.
  *
  * broadly based on org.spp.cocome.behavior.pcm.handler.PCMModelTypeProviderFactory
+ *
+ * @author Reiner Jung
  */
-public class JarModelTypeProviderFactory {
+public final class JarModelTypeProviderFactory {
 
 	/**
 	 * empty constructor.
@@ -38,11 +40,12 @@ public class JarModelTypeProviderFactory {
 	 *
 	 * @param resourceSet
 	 *            The resource set associated with the type provider
-	 * @param repository
-	 *            the application model
+	 * @param project
+	 *            the project where the jars are scanned
+	 *
 	 * @return Returns the type provider for primitive types.
 	 */
-	public synchronized static ITypeProvider getTypeProvider(final IProject project, final ResourceSet resourceSet) {
+	public static synchronized ITypeProvider getTypeProvider(final IProject project, final ResourceSet resourceSet) {
 		if (resourceSet != null) {
 			final Object object = resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
 					.get(JarModelTypeURIHelper.PROTOCOL);
