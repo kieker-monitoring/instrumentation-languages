@@ -26,6 +26,7 @@
     <property name="charset"        value=""/> JVM file.encoding property
     !-->
 
+
     <module name="SuppressionFilter">
     	<property name="file" value="${basedir}/suppressions.xml" />
     </module>

@@ -72,6 +72,7 @@
 				<version>2.15</version>
 				<configuration>
 					<linkXRef>false</linkXRef>
+					<propertyExpansion>basedir=${basedir}</propertyExpansion>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -107,6 +108,7 @@
 					<executions>
 						<execution>
 							<id>gen-clean</id>
+							<phase>clean</phase>
 							<goals>
 								<goal>clean</goal>
 							</goals>
