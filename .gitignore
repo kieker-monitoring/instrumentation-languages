@@ -37,3 +37,7 @@ doc/kieker-workshop/images/kieker-data-bridge.pdf
 **/.settings/**
 **/.classpath
 **/model/generated/**
+**/xtend-gen/**
+!**/xtend-gen/.gitignore
+
+
