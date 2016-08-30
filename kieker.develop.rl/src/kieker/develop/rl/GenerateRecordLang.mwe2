@@ -27,7 +27,7 @@ Workflow {
     	}
     	
     	uriMap = {
-    		from = "${rootPath}/kieker.develop.semantics/model/SemanticAnnotation.genmodel"
+    		from = "platform:/plugin/kieker.develop.semantics/model/SemanticAnnotation.genmodel"
     		to = "platform:/resource/kieker.develop.semantics/model/SemanticAnnotation.genmodel"
     	}
     	
@@ -66,7 +66,7 @@ Workflow {
 			
 			fragment = types.TypesGeneratorFragment2 auto-inject {}
 
-			referencedResource = "platform:/resource/kieker.develop.semantics/model/SemanticAnnotation.genmodel"
+			//referencedResource = "platform:/resource/kieker.develop.semantics/model/SemanticAnnotation.genmodel"
 
 			serializer = {
 				generateStub = false
