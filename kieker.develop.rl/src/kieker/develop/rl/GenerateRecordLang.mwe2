@@ -27,7 +27,7 @@ Workflow {
     	}
     	
     	uriMap = {
-    		from = "platform:/plugin/kieker.develop.semantics/model/SemanticAnnotation.genmodel"
+    		from = "${rootPath}/kieker.develop.semantics/model/SemanticAnnotation.genmodel"
     		to = "platform:/resource/kieker.develop.semantics/model/SemanticAnnotation.genmodel"
     	}
     	
