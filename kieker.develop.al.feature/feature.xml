@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="kieker.develop.al.feature"
+      label="Kieker IAL Feature"
+      version="1.2.0.qualifier">
+
+   <plugin
+         id="kieker.develop.al"
+         download-size="0"
+         install-size="0"
+         version="1.2.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="kieker.develop.al.handler.pcm"
+         download-size="0"
+         install-size="0"
+         version="1.2.0.qualifier"
+         unpack="false"/>
+
+   <plugin
+         id="kieker.develop.al.ui"
+         download-size="0"
+         install-size="0"
+         version="1.2.0.qualifier"
+         unpack="false"/>
+
+</feature>

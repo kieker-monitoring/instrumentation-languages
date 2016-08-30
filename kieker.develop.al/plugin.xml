@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.0"?>
+<?eclipse version="3.4"?>
 
 <plugin>
    <extension-point id="modelMapping" name="Model Mapping" schema="schema/modelMapping.exsd"/>
@@ -18,14 +18,6 @@
             uri="http://mappingmodel.tools.kieker/ial/mapping"
             class="kieker.develop.al.mapping.MappingPackage"
             genModel="model/MappingModel.genmodel"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated example -->
-      <package
-            uri="kieker.develop.al"
-            class="kieker.develop.al.AlPackage"
-            genModel="src/graphmodel/model/example.xcore"/>
    </extension>
 
 </plugin>

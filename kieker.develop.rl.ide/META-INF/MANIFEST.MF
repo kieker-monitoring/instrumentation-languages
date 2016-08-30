@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: kieker.develop.rl.ide
+Bundle-Vendor: Kieker
+Bundle-Version: 1.2.0.qualifier
+Bundle-SymbolicName: kieker.develop.rl.ide;singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: kieker.develop.rl,
+ org.eclipse.xtext.ide,
+ org.eclipse.xtext.xbase.ide
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: kieker.develop.rl.ide.contentassist.antlr,
+ kieker.develop.rl.ide.contentassist.antlr.internal
+

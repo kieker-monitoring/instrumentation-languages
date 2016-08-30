@@ -16,18 +16,19 @@
 package kieker.develop.rl.ui;
 
 import org.eclipse.xtext.Keyword;
+import org.eclipse.xtext.ide.editor.syntaxcoloring.IHighlightedPositionAcceptor;
+import org.eclipse.xtext.ide.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 import org.eclipse.xtext.nodemodel.BidiTreeIterator;
 import org.eclipse.xtext.nodemodel.ILeafNode;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.resource.XtextResource;
-import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
-import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
+import org.eclipse.xtext.util.CancelIndicator;
 
 import kieker.develop.rl.recordLang.Classifier;
 
 /**
  * @author Reiner Jung
- * 
+ *
  */
 public class TypesHighlightingCalculator implements ISemanticHighlightingCalculator {
 
@@ -35,19 +36,21 @@ public class TypesHighlightingCalculator implements ISemanticHighlightingCalcula
 	private static final String SINCE_TAG = "@since";
 
 	/**
-	 * 
+	 *
 	 */
 	public TypesHighlightingCalculator() {
 		// empty constructor
 	}
 
+
 	/**
 	 * Choose nodes for highlighting.
-	 * 
+	 *
 	 * @param resource the Xtext resource model
 	 * @param acceptor an expression function determining what to highlight
 	 */
-	public void provideHighlightingFor(final XtextResource resource, final IHighlightedPositionAcceptor acceptor) {
+	@Override
+	public void provideHighlightingFor(final XtextResource resource, final IHighlightedPositionAcceptor acceptor, final CancelIndicator arg2) {
 		if ((resource == null) || (resource.getParseResult() == null)) {
 			return;
 		}
@@ -73,7 +76,7 @@ public class TypesHighlightingCalculator implements ISemanticHighlightingCalcula
 	}
 
 	/**
-	 * 
+	 *
 	 * @param node
 	 * @param id
 	 * @param acceptor

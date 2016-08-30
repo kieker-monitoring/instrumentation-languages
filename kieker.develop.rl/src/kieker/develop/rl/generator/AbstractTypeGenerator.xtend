@@ -4,6 +4,10 @@ import kieker.develop.rl.recordLang.Type
 
 abstract class AbstractTypeGenerator {
 	
+	var String header
+	var String author
+	var String version
+	
 	/**
 	 * Return the unique id of the generator.
 	 */
@@ -27,5 +31,30 @@ abstract class AbstractTypeGenerator {
 	 * Returns the outlet type for the generator.
 	 */
 	def abstract String getOutletType()
+	
+	
+	def void setAuthor(String author) {
+		this.author = author
+	}
+	
+	def String getAuthor() {
+		return author
+	}
+	
+	def void setVersion (String version) {
+		this.version = version
+	}
+	
+	def String getVersion() {
+		return version
+	}
+	
+	def void setHeader (String header) {
+		this.header = header
+	}
+	
+	def String getHeader() {
+		return header
+	}
 				
 }

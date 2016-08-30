@@ -44,7 +44,7 @@ public class RecordLangOutputConfigurationProvider implements IOutputConfigurati
 	public Set<OutputConfiguration> getOutputConfigurations() {
 		final Set<OutputConfiguration> configurations = new HashSet<OutputConfiguration>();
 
-		for (final OutletConfiguration outlet : GeneratorConfiguration.OUTLET_CONFIGURATIONS) {
+		for (final OutletConfiguration outlet : GeneratorConfiguration.getOutletConfigurations()) {
 			configurations.add(this.createOutputConfiguration(outlet));
 		}
 

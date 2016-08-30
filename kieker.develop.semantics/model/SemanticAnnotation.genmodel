@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/kieker.develop.semantics/model-gen" modelPluginID="kieker.develop.semantics"
+    modelName="SemanticAnnotation" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>SemanticAnnotation.ecore</foreignModel>
+  <genPackages prefix="Annotations" basePackage="kieker.develop.semantics" disposableProviderFactory="true"
+      ecorePackage="SemanticAnnotation.ecore#/">
+    <genClasses ecoreClass="SemanticAnnotation.ecore#//Annotation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SemanticAnnotation.ecore#//Annotation/implementations"/>
+    </genClasses>
+    <genClasses ecoreClass="SemanticAnnotation.ecore#//Implementation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SemanticAnnotation.ecore#//Implementation/code"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SemanticAnnotation.ecore#//Implementation/technology"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SemanticAnnotation.ecore#//Implementation/language"/>
+    </genClasses>
+    <genClasses ecoreClass="SemanticAnnotation.ecore#//Semantics">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SemanticAnnotation.ecore#//Semantics/annotations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SemanticAnnotation.ecore#//Semantics/languages"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SemanticAnnotation.ecore#//Semantics/technologies"/>
+    </genClasses>
+    <genClasses ecoreClass="SemanticAnnotation.ecore#//TargetLanguage"/>
+    <genClasses ecoreClass="SemanticAnnotation.ecore#//Technology"/>
+    <genClasses image="false" ecoreClass="SemanticAnnotation.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SemanticAnnotation.ecore#//NamedElement/name"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

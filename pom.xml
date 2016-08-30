@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>kieker.develop</groupId>
+	<artifactId>kieker.develop.parent</artifactId>
+	<version>1.2.0-SNAPSHOT</version>
+
+	<packaging>pom</packaging>
+
+	<name>Kieker Development Tools</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<checkstyle.config.location>cs-conf.xml</checkstyle.config.location>
+		<tycho-version>0.25.0</tycho-version>
+		<tycho-extras-version>0.25.0</tycho-extras-version>
+		<xtext-version>2.10.0</xtext-version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+
+		<eclipse-repo.url>http://download.eclipse.org/releases/neon</eclipse-repo.url>
+		<kieler-repo.url>http://rtsys.informatik.uni-kiel.de/~kieler/updatesite/release_pragmatics_2016-07/</kieler-repo.url>
+		<elk-repo.url>http://download.eclipse.org/elk/updates/releases/0.1.0/</elk-repo.url>
+
+		<palladio-repo.url>https://sdqweb.ipd.kit.edu/eclipse/palladio/releases/latest</palladio-repo.url>
+		<probespec-repo.url>https://sdqweb.ipd.kit.edu/eclipse/probespec/releases/1.2</probespec-repo.url>
+		<palladio-fm-repo.url>https://sdqweb.ipd.kit.edu/eclipse/featuremodel/releases/latest</palladio-fm-repo.url>
+		<palladio-sf-repo.url>https://sdqweb.ipd.kit.edu/eclipse/sensorframework/releases/latest</palladio-sf-repo.url>
+		<palladio-wfe-repo.url>https://sdqweb.ipd.kit.edu/eclipse/workflowengine/releases/latest</palladio-wfe-repo.url>
+		<kit-common-repo.url>https://sdqweb.ipd.kit.edu/eclipse/commons/releases/latest</kit-common-repo.url>
+		<geco-repo.url>http://build.se.informatik.uni-kiel.de/eus/geco/snapshot/</geco-repo.url>
+		<xtext-repo.url>http://download.itemis.de/updates</xtext-repo.url>
+	</properties>
+
+	<modules>
+		<module>kieker.develop.al</module>
+		<module>kieker.develop.al.ide</module>
+		<module>kieker.develop.al.ui</module>
+		<module>kieker.develop.al.tests</module>
+		<module>kieker.develop.al.feature</module>
+		<module>kieker.develop.al.handler.pcm</module>
+		<module>kieker.develop.rl</module>
+		<module>kieker.develop.rl.generator.java</module>
+		<module>kieker.develop.rl.generator.c</module>
+		<module>kieker.develop.rl.generator.delphi</module>
+		<module>kieker.develop.rl.generator.perl</module>
+		<module>kieker.develop.rl.ide</module>
+		<module>kieker.develop.rl.ui</module>
+		<module>kieker.develop.rl.tests</module>
+		<module>kieker.develop.rl.feature</module>
+		<module>kieker.develop.repository</module>
+		<module>kieker.develop.target</module>
+		<!-- <module>kieker.develop.rl.cli</module> -->
+		<module>kieker.develop.semantics</module>
+		<module>kieker.develop.semantics.java</module>
+	</modules>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<extensions>true</extensions>
+			</plugin>
+			
+			<!-- ceckstyle plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>2.15</version>
+				<configuration>
+					<linkXRef>true</linkXRef>
+					<propertyExpansion>basedir=${basedir}</propertyExpansion>
+				</configuration>
+			</plugin>
+		</plugins>
+
+		<pluginManagement>
+			<!-- xtend-maven-plugin is in pluginManagement instead of in plugins so 
+				that it doesn't run before the exec-maven-plugin's *.mwe2 gen; this way we 
+				can list it after. -->
+			<plugins>
+				<plugin>
+					<groupId>org.eclipse.xtend</groupId>
+					<artifactId>xtend-maven-plugin</artifactId>
+					<version>2.10.0</version>
+					<executions>
+						<execution>
+							<phase>process-sources</phase>
+							<goals>
+								<goal>compile</goal>
+								<goal>xtend-install-debug-info</goal>
+								<goal>testCompile</goal>
+								<goal>xtend-test-install-debug-info</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<outputDirectory>${basedir}/xtend-gen</outputDirectory>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>3.0.0</version>
+					<executions>
+						<execution>
+							<id>gen-clean</id>
+							<phase>clean</phase>
+							<goals>
+								<goal>clean</goal>
+							</goals>
+							<configuration>
+								<filesets>
+									<fileset>
+										<directory>${basedir}/xtend-gen</directory>
+									</fileset>
+								</filesets>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>eclipse</id>
+			<url>${eclipse-repo.url}</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>elk</id>
+			<url>${elk-repo.url}</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>codehaus-snapshots</id>
+			<name>disable dead 'Codehaus Snapshots' repository, see https://bugs.eclipse.org/bugs/show_bug.cgi?id=481478</name>
+			<url>http://nexus.codehaus.org/snapshots/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>kieler</id>
+			<url>${kieler-repo.url}</url>
+			<layout>p2</layout>
+		</repository>
+
+		<repository>
+			<id>central</id>
+			<name>Maven Central</name>
+			<url>http://repo1.maven.org/maven2</url>
+		</repository>
+		<repository>
+			<id>geco</id>
+			<layout>p2</layout>
+			<url>${geco-repo.url}</url>
+		</repository>
+
+		<repository>
+			<id>xtext</id>
+			<layout>p2</layout>
+			<url>${xtext-repo.url}</url>
+		</repository>
+
+		<repository>
+			<id>probespec</id>
+			<layout>p2</layout>
+			<url>${probespec-repo.url}</url>
+		</repository>
+		<repository>
+			<id>palladio</id>
+			<layout>p2</layout>
+			<url>${palladio-repo.url}</url>
+		</repository>
+		<repository>
+			<id>palladioFeatureModel</id>
+			<layout>p2</layout>
+			<url>${palladio-fm-repo.url}</url>
+		</repository>
+		<repository>
+			<id>palladioSensorFramework</id>
+			<layout>p2</layout>
+			<url>${palladio-sf-repo.url}</url>
+		</repository>
+		<repository>
+			<id>palladioWorkflowEngine</id>
+			<layout>p2</layout>
+			<url>${palladio-wfe-repo.url}</url>
+		</repository>
+		<repository>
+			<id>kitCommons</id>
+			<layout>p2</layout>
+			<url>${kit-common-repo.url}</url>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>codehaus-snapshots</id>
+			<name>disable dead 'Codehaus Snapshots' repository, see https://bugs.eclipse.org/bugs/show_bug.cgi?id=481478</name>
+			<url>http://nexus.codehaus.org/snapshots/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>2.3</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>2.15</version>
+			</plugin>
+		</plugins>
+	</reporting>
+</project>

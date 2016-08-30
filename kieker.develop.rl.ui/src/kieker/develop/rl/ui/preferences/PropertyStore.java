@@ -40,6 +40,13 @@ public class PropertyStore extends PreferenceStore {
 	private final String pageId;
 	private boolean inserting = false;
 
+	/**
+	 * Property store constructor.
+	 *
+	 * @param resource resource context
+	 * @param workbenchStore store of the workbench
+	 * @param pageId page id where the store belong to
+	 */
 	public PropertyStore(
 			final IResource resource,
 			final IPreferenceStore workbenchStore,
@@ -48,8 +55,6 @@ public class PropertyStore extends PreferenceStore {
 		this.workbenchStore = workbenchStore;
 		this.pageId = pageId;
 	}
-
-	/*** Write modified values back to properties ***/
 
 	/* (non-Javadoc)
 	 * @see org.eclipse.jface.preference.IPersistentPreferenceStore#save()
@@ -82,9 +87,11 @@ public class PropertyStore extends PreferenceStore {
 	}
 
 	/**
-	 * Convenience method to set a property
+	 * Convenience method to set a property.
+	 *
 	 * @param name - the preference name
 	 * @param value - the property value or null to delete the property
+	 *
 	 * @throws CoreException
 	 */
 	private void setProperty(final String name, final String value) throws CoreException {
@@ -198,7 +205,9 @@ public class PropertyStore extends PreferenceStore {
 	}
 
 	/**
-	 * @param name
+	 * Insert value into the property store.
+	 *
+	 * @param name name of the property.
 	 */
 	private synchronized void insertValue(final String name) {
 		if (this.inserting) {
@@ -223,9 +232,10 @@ public class PropertyStore extends PreferenceStore {
 	}
 
 	/**
-	 * Convenience method to fetch a property
-	 * @param name - the preference name
-	 * @return - the property value
+	 * Convenience method to fetch a property.
+	 *
+	 * @param name the preference name
+	 * @return Returns the property value
 	 * @throws CoreException
 	 */
 	private String getProperty(final String name) throws CoreException {

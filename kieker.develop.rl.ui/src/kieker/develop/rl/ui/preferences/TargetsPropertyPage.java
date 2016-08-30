@@ -1,6 +1,18 @@
-/**
+/***************************************************************************
+ * Copyright 2016 Kieker Project (http://kieker-monitoring.net)
  *
- */
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ***************************************************************************/
 package kieker.develop.rl.ui.preferences;
 
 import java.util.ArrayList;
@@ -32,7 +44,7 @@ import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import kieker.develop.rl.preferences.TargetsPreferences;
 
 /**
- * @author rju
+ * @author Reiner Jung
  *
  */
 public class TargetsPropertyPage extends AbstractFieldEditorOverlayPage implements IWorkbenchPropertyPage {
@@ -41,31 +53,31 @@ public class TargetsPropertyPage extends AbstractFieldEditorOverlayPage implemen
 	/** Name of resource property for the selection of workbench or project settings. */
 	public static final String USEPROJECTSETTINGS = "useProjectSettings";
 
+	/** Cache for page id. */
+	public static final String PAGE_ID = "kieker.develop.rl.ui.preferences.TargetsPropertyPage";
+
 	private static final String FALSE = "false";
 	private static final String TRUE = "true";
 
 	/** The imageDescriptor descriptor of this pages title imageDescriptor. */
 	private ImageDescriptor imageDescriptor;
 
-	/** Cache for page id. */
-	private static String PAGE_ID = "kieker.develop.rl.ui.preferences.TargetsPropertyPage";
-
 	// Stores all created field editors
 	private final List<FieldEditor> editors = new ArrayList<FieldEditor>();
 
-	/** Stores owning element of properties */
+	/** Stores owning element of properties. */
 	private IAdaptable element;
 
-	/** Additional buttons for property pages */
+	/** Additional buttons for property pages. */
 	private Button useWorkspaceSettingsButton;
 	private Button useProjectSettingsButton;
 	private Button configureButton;
 
-	/** Overlay preference store for property pages */
+	/** Overlay preference store for property pages. */
 	private IPreferenceStore overlayStore;
 
 	/**
-	 * Default constructor.
+	 * Property page initialization.
 	 */
 	public TargetsPropertyPage() {
 		super(GRID);
@@ -75,7 +87,7 @@ public class TargetsPropertyPage extends AbstractFieldEditorOverlayPage implemen
 	}
 
 	/**
-	 * Constructor.
+	 * Configurable initialization constructor.
 	 * @param title - title string
 	 * @param imageDescriptor - title imageDescriptor
 	 * @param style - layout style
@@ -91,6 +103,8 @@ public class TargetsPropertyPage extends AbstractFieldEditorOverlayPage implemen
 	/**
 	 * Receives the object that owns the properties shown in this property page.
 	 * @see org.eclipse.ui.IWorkbenchPropertyPage#setElement(org.eclipse.core.runtime.IAdaptable)
+	 *
+	 * @param element the owner of the page
 	 */
 	public void setElement(final IAdaptable element) {
 		this.element = element;
@@ -99,6 +113,8 @@ public class TargetsPropertyPage extends AbstractFieldEditorOverlayPage implemen
 	/**
 	 * Delivers the object that owns the properties shown in this property page.
 	 * @see org.eclipse.ui.IWorkbenchPropertyPage#getElement()
+	 *
+	 * @return the owner of the page
 	 */
 	public IAdaptable getElement() {
 		return this.element;
@@ -203,7 +219,7 @@ public class TargetsPropertyPage extends AbstractFieldEditorOverlayPage implemen
 	}
 
 	/**
-	 * Enables or disables the field editors and buttons of this page
+	 * Enables or disables the field editors and buttons of this page.
 	 */
 	private void updateFieldEditors() {
 		// We iterate through all field editors
@@ -212,7 +228,7 @@ public class TargetsPropertyPage extends AbstractFieldEditorOverlayPage implemen
 	}
 
 	/**
-	 * Enables or disables the field editors and buttons of this page
+	 * Enables or disables the field editors and buttons of this page.
 	 * Subclasses may override.
 	 * @param enabled - true if enabled
 	 */

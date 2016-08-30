@@ -27,8 +27,9 @@ import kieker.develop.rl.recordLang.Model
 import kieker.develop.rl.recordLang.RecordType
 import org.eclipse.emf.common.util.EList
 
-import static extension kieker.develop.rl.generator.java.IRL2JavaTypeMappingExtensions.*
-import static extension kieker.develop.rl.validation.PropertyEvaluation.*
+// TODO this should be somewhat moved to a common module with RL/AL???
+import static extension kieker.develop.rl.typing.PropertyResolution.*
+import static extension kieker.develop.rl.generator.java.JavaTypeMapping.*
 
 /**
  * TODO Class name should be improved.

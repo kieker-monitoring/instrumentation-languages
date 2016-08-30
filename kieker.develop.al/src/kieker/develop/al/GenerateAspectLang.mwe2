@@ -1,137 +1,95 @@
 module kieker.develop.al.GenerateAspectLang
 
-import org.eclipse.emf.mwe.utils.*
 import org.eclipse.xtext.generator.*
 import org.eclipse.xtext.ui.generator.*
 
-var grammarURI = "classpath:/kieker/develop/al/AspectLang.xtext"
-var fileExtensions = "ial"
-var projectName = "kieker.develop.al"
-var runtimeProject = "../${projectName}"
-var generateXtendStub = true
+import org.eclipse.xtext.xtext.generator.*
+import org.eclipse.xtext.xtext.generator.model.project.*
+import org.eclipse.emf.mwe.utils.*
+
+var rootPath = ".."
 
 Workflow {
-    bean = StandaloneSetup {
-    	//uriMap = {
-    	//	from = "platform:/plugin/de.cau.cs.kieler.core.annotations/annotations.genmodel"
-    	//	to = "platform:/resource/de.cau.cs.kieler.core.annotations/annotations.genmodel"
-    	//}
-    	
-    	scanClassPath = true
-    	platformUri = "${runtimeProject}/.."
-    	//registerGeneratedEPackage = "de.cau.cs.kieler.core.annotations.AnnotationsPackage"
-    	//registerGenModelFile = "platform:/resource/de.cau.cs.kieler.core.annotations/annotations.genmodel"
-    	
-    	registerGeneratedEPackage = "kieker.develop.rl.recordLang.RecordLangPackage"
-    	registerGeneratedEPackage = "kieker.develop.al.mapping.MappingPackage"
-    	
-        registerGenModelFile = "platform:/resource/kieker.develop.rl/model/generated/RecordLang.genmodel"
-    	registerGenModelFile = "platform:/resource/kieker.develop.al/model/MappingModel.genmodel"
-    }
-    
-    component = DirectoryCleaner {
-    	directory = "${runtimeProject}/src-gen"
-    }
-    
-    component = DirectoryCleaner {
-    	directory = "${runtimeProject}.ui/src-gen"
-    }
-    
-    component = Generator {
-    	pathRtProject = runtimeProject
-    	pathUiProject = "${runtimeProject}.ui"
-    	pathTestProject = "${runtimeProject}.tests"
-    	projectNameRt = projectName
-    	projectNameUi = "${projectName}.ui"
-    	language = auto-inject {
-    		uri = grammarURI
-    		// Java API to access grammar elements (required by several other fragments)
-    		fragment = grammarAccess.GrammarAccessFragment auto-inject {}
-    
-    		// generates Java API for the generated EPackages
-    		fragment = ecore.EMFGeneratorFragment auto-inject {
-    		}
- 
-    		// serializer 2.0
-    		fragment = serializer.SerializerFragment auto-inject {
-    			generateStub = false
-    		}
-    
-    		// a custom ResourceFactory for use with EMF
-    		fragment = resourceFactory.ResourceFactoryFragment auto-inject {}
-    
-    		// The antlr parser generator fragment.
-    		fragment = parser.antlr.XtextAntlrGeneratorFragment auto-inject {
-    		  options = {
-    		      backtrack = true
-    		  }
-    		}
-    
-    		// Xtend-based API for validation
-    		fragment = validation.ValidatorFragment auto-inject {
-    			inheritImplementation = false // ignore validator form annotations
-    		//    composedCheck = "org.eclipse.xtext.validation.ImportUriValidator"
-    		//    composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
-    		}
-    
-    		// old scoping and exporting API
-    		// fragment = scoping.ImportURIScopingFragment auto-inject {}
-    		// fragment = exporting.SimpleNamesFragment auto-inject {}
-    
-    		// scoping and exporting API
-    		fragment = scoping.ImportNamespacesScopingFragment auto-inject {}
-    		fragment = exporting.QualifiedNamesFragment auto-inject {}
-    		fragment = builder.BuilderIntegrationFragment auto-inject {}
-    
-    		// generator API
-    		fragment = generator.GeneratorFragment auto-inject {}
-    
-    		// formatter API
-    		fragment = formatting.FormatterFragment auto-inject {}
-    
-    		// labeling API
-    		fragment = labeling.LabelProviderFragment auto-inject {}
-    
-    		// outline API
-    		fragment = outline.OutlineTreeProviderFragment auto-inject {}
-    		fragment = outline.QuickOutlineFragment auto-inject {}
-    
-    		// quickfix API
-    		fragment = quickfix.QuickfixProviderFragment auto-inject {}
-    
-    		// content assist API
-    		fragment = contentAssist.ContentAssistFragment auto-inject {}
-    
-    		// generates a more lightweight Antlr parser and lexer tailored for content assist
-    		fragment = parser.antlr.XtextAntlrUiGeneratorFragment auto-inject {
-    			options = {
-    		      backtrack = true
-    		  }
-    		}
-    
-    		// generates junit test support classes into Generator#pathTestProject
-    		fragment = junit.Junit4Fragment auto-inject {}
-    
-    		// project wizard (optional)
-    		// fragment = projectWizard.SimpleProjectWizardFragment auto-inject {
-    		//      generatorProjectName = "${projectName}"
-    		// }
-    
-    		// rename refactoring
-    		fragment = refactoring.RefactorElementNameFragment auto-inject {}
-    
-    		// provides the necessary bindings for java types integration
-    		fragment = types.TypesGeneratorFragment auto-inject {}
-    
-    		// generates the required bindings only if the grammar inherits from Xbase
-    		fragment = xbase.XbaseGeneratorFragment auto-inject {}
-    
-    		// provides a preference page for template proposals
-    		fragment = templates.CodetemplatesGeneratorFragment auto-inject {}
-    
-    		// provides a compare view
-    		fragment = compare.CompareFragment auto-inject {}
-    	}
-    }
-}
+	bean = StandaloneSetup {
+		scanClassPath = true
+		platformUri = "."
+		//uriMap = {
+		//	from = "platform:/plugin/de.cau.cs.kieler.core.annotations/annotations.genmodel"
+		//	to = "platform:/resource/de.cau.cs.kieler.core.annotations/annotations.genmodel"
+		//}
 
+		//registerGeneratedEPackage = "de.cau.cs.kieler.core.annotations.AnnotationsPackage"
+	        //registerGenModelFile = "platform:/resource/de.cau.cs.kieler.core.annotations/annotations.genmodel"
+
+		uriMap = {
+			from = "platform:/plugin/kieker.develop.al/model/MappingModel.genmodel"
+			to = "platform:/resource/kieker.develop.al/model/MappingModel.genmodel"
+		}
+
+		uriMap = {
+			from = "platform:/plugin/kieker.develop.al/model/MappingModel.ecore"
+			to = "platform:/resource/kieker.develop.al/model/MappingModel.ecore"
+		}
+
+		uriMap = {
+			from = "platform:/plugin/kieker.develop.rl/model/generated/RecordLang.genmodel"
+			to = "platform:/resource/kieker.develop.rl/model/generated/RecordLang.genmodel"
+		}
+
+		uriMap = {
+			from = "platform:/plugin/kieker.develop.rl/model/generated/RecordLang.ecore"
+			to = "platform:/resource/kieker.develop.rl/model/generated/RecordLang.ecore"
+		}
+	
+		//registerGeneratedEPackage = "kieker.develop.rl.recordLang.RecordLangPackage"
+		//registerGeneratedEPackage = "kieker.develop.al.mapping.MappingPackage"
+		
+		registerGenModelFile = "platform:/resource/kieker.develop.rl/model/generated/RecordLang.genmodel"
+		registerEcoreFile = "platform:/resource/kieker.develop.rl/model/generated/RecordLang.ecore"
+
+		registerGenModelFile = "platform:/resource/kieker.develop.al/model/MappingModel.genmodel"
+		registerEcoreFile = "platform:/resource/kieker.develop.al/model/MappingModel.ecore"
+	}
+
+	component = XtextGenerator {
+		configuration = {
+			project = StandardProjectConfig {
+				baseName = "kieker.develop.al"
+				rootPath = rootPath
+				runtimeTest = {
+					enabled = true
+				}
+				eclipsePlugin = {
+					enabled = true
+				}
+				eclipsePluginTest = {
+					enabled = true
+				}
+				createEclipseMetaData = true
+			}
+						
+			code = {
+				encoding = "UTF-8"
+				fileHeader = "/*\n * generated by Xtext \${version}\n */"
+			}
+		}
+		language = StandardLanguage {
+			name = "kieker.develop.al.AspectLang"
+			fileExtensions = "ial"
+			
+			fragment = types.TypesGeneratorFragment2 auto-inject {}
+			
+			fragment = exporting.QualifiedNamesFragment2 auto-inject {}
+			
+			serializer = {
+				generateStub = false
+			}
+			validator = {
+				// composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
+			}
+			
+			referencedResource = "platform:/resource/kieker.develop.rl/model/generated/RecordLang.genmodel"
+			referencedResource = "platform:/resource/kieker.develop.al/model/MappingModel.genmodel"
+		}
+	}
+}

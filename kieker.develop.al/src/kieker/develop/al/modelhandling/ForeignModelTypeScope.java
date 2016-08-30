@@ -38,7 +38,7 @@ import kieker.develop.al.mapping.MappingFactory;
 import kieker.develop.al.mapping.NamedElement;
 
 /**
- *
+ * Scope accessing foreign model types.
  *
  * @author Reiner Jung
  */
@@ -50,6 +50,16 @@ public class ForeignModelTypeScope extends AbstractScope {
 
 	private final Predicate<IEObjectDescription> filter;
 
+	/**
+	 * Instantiate a scope for foreign model types.
+	 *
+	 * @param typeProvider
+	 *            type provider for the foreign model
+	 * @param qualifiedNameConverter
+	 *            name converter for foreign model
+	 * @param filter
+	 *            predicate to filter content
+	 */
 	protected ForeignModelTypeScope(final IForeignModelTypeProvider typeProvider,
 			final IQualifiedNameConverter qualifiedNameConverter,
 			final Predicate<IEObjectDescription> filter) {
@@ -95,6 +105,13 @@ public class ForeignModelTypeScope extends AbstractScope {
 		return Collections.emptySet();
 	}
 
+	/**
+	 * Filter results based on the scope filter.
+	 *
+	 * @param unfiltered
+	 *            unfiltered results
+	 * @return the filtered result list
+	 */
 	protected Iterable<IEObjectDescription> filterResult(
 			final Iterable<IEObjectDescription> unfiltered) {
 		if (this.filter == null) {
@@ -108,6 +125,11 @@ public class ForeignModelTypeScope extends AbstractScope {
 		return this.filterResult(this.internalGetAllElements());
 	}
 
+	/**
+	 * Internal method to get all elements in the scope.
+	 *
+	 * @return Returns the elements in the scope
+	 */
 	protected Iterable<IEObjectDescription> internalGetAllElements() {
 		final List<IEObjectDescription> types = Lists.newArrayList();
 
@@ -118,6 +140,13 @@ public class ForeignModelTypeScope extends AbstractScope {
 		return types;
 	}
 
+	/**
+	 * Create a scoped proxy element.
+	 *
+	 * @param fullyQualifiedName
+	 *            name of the element
+	 * @return Returns an object description for a container element
+	 */
 	protected IEObjectDescription createScopedElement(final String fullyQualifiedName) {
 		final InternalEObject proxy = this.createProxy(fullyQualifiedName);
 		final IEObjectDescription eObjectDescription = EObjectDescription.create(
@@ -126,6 +155,13 @@ public class ForeignModelTypeScope extends AbstractScope {
 		return eObjectDescription;
 	}
 
+	/**
+	 * Create a proxy element for a fully qualified name.
+	 *
+	 * @param fullyQualifiedName
+	 *            the name of an container element
+	 * @return Returns a proxy element.
+	 */
 	protected InternalEObject createProxy(final String fullyQualifiedName) {
 		final URI uri = this.typeProvider.getTypeUriHelper().getFullURIForClass(fullyQualifiedName);
 		final InternalEObject proxy = (InternalEObject) MappingFactory.eINSTANCE.createContainer();

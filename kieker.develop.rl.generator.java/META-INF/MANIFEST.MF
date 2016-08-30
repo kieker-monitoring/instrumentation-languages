@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Java
+Bundle-SymbolicName: kieker.develop.rl.generator.java;singleton:=true
+Bundle-Version: 1.2.0.qualifier
+Bundle-Activator: kieker.develop.rl.generator.java.Activator
+Require-Bundle: org.eclipse.core.runtime,
+ kieker.develop.rl,
+ org.eclipse.xtend.lib,
+ de.cau.cs.se.geco.architecture.framework,
+ com.google.guava,
+ org.eclipse.xtext.xbase.lib,
+ org.eclipse.xtend.lib.macro
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Export-Package: kieker.develop.rl.generator.java
+

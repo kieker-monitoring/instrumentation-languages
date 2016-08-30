@@ -30,6 +30,8 @@ import kieker.develop.rl.typing.ITypeProvider;
  *
  * broadly based on org.spp.cocome.behavior.pcm.handler.PCMModelTypeProvider
  *
+ * @author Reiner Jung
+ *
  */
 public class JarModelTypeProvider implements Resource.Factory, ITypeProvider {
 
@@ -40,10 +42,10 @@ public class JarModelTypeProvider implements Resource.Factory, ITypeProvider {
 	/**
 	 * Construct the type provider.
 	 *
+	 * @param project
+	 *            the project which is used as basis for the jars
 	 * @param resourceSet
 	 *            context resource set
-	 * @param model
-	 *            the application model
 	 */
 	public JarModelTypeProvider(final IProject project, final ResourceSet resourceSet) {
 		this.resourceSet = resourceSet;
@@ -57,8 +59,9 @@ public class JarModelTypeProvider implements Resource.Factory, ITypeProvider {
 	 */
 	public Iterable<Type> getAllTypes() {
 		return IterableExtensions.map(
-				this.resourceSet.getResource(JarModelTypeURIHelper.createResourceURI(), true).getContents(),
-				p -> (Type) p);
+				IterableExtensions.filter(this.resourceSet.getResource(JarModelTypeURIHelper.createResourceURI(), true).getContents(),
+						Type.class),
+				p -> p);
 	}
 
 	/**
@@ -84,6 +87,7 @@ public class JarModelTypeProvider implements Resource.Factory, ITypeProvider {
 	 *
 	 * @param uri
 	 *            The URI for the resource
+	 * @return Returns a new jar model resource
 	 */
 	public JarModelResource createResource(final URI uri) {
 		return new JarModelResource(uri, this.project);

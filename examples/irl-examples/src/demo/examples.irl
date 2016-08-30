@@ -28,7 +28,7 @@ template Event {
 }
 
 template OperationSignature {
-	string signature
+	string signature : operationSignature
 }
 
 entity EntryEvent : Event, OperationSignature
@@ -36,7 +36,9 @@ entity ExitEvent : Event, OperationSignature
 
 entity EntryBlaEvent extends ExitEvent {
 	string classSig
-} 
+}
+
+entity TestEvent extends AbstractEvent : ITraceRecord
 
 
 

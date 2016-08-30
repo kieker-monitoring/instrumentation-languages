@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="kieker.develop.semantics.SemanticAnnotation" 
+   		name="SemanticAnnotation" schema="schema/kieker.develop.semantics.SemanticAnnotation.exsd"/>
+ 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated SemanticAnnotation -->
+      <package
+            uri="http://www.kieker-monitoring.net/kieker/develop/semantic-annotations"
+            class="kieker.develop.semantics.annotations.AnnotationsPackage"
+            genModel="model/SemanticAnnotation.genmodel"/>
+   </extension>
+
+</plugin>

@@ -39,8 +39,9 @@ import kieker.develop.rl.recordLang.Type;
 import kieker.develop.rl.typing.ITypeProvider;
 
 /**
+ * broadly based on org.spp.cocome.behavior.pcm.handler.PCMModelTypeScope.
  *
- * broadly based on org.spp.cocome.behavior.pcm.handler.PCMModelTypeScope
+ * @author Reiner Jung
  */
 public class JarModelTypeScope extends AbstractScope {
 
@@ -50,6 +51,16 @@ public class JarModelTypeScope extends AbstractScope {
 
 	private final Predicate<IEObjectDescription> filter;
 
+	/**
+	 * Create jar type scope.
+	 *
+	 * @param typeProvider
+	 *            provider for the base types
+	 * @param qualifiedNameConverter
+	 *            name converter
+	 * @param filter
+	 *            filter for the results
+	 */
 	protected JarModelTypeScope(final ITypeProvider typeProvider,
 			final IQualifiedNameConverter qualifiedNameConverter,
 			final Predicate<IEObjectDescription> filter) {
@@ -100,6 +111,13 @@ public class JarModelTypeScope extends AbstractScope {
 		return this.filterResult(this.internalGetAllElements());
 	}
 
+	/**
+	 * Filter result.
+	 *
+	 * @param unfiltered
+	 *            list of unfiltered results
+	 * @return Returns the filtered results
+	 */
 	private Iterable<IEObjectDescription> filterResult(
 			final Iterable<IEObjectDescription> unfiltered) {
 		if (this.filter == null) {
@@ -118,6 +136,14 @@ public class JarModelTypeScope extends AbstractScope {
 		return types;
 	}
 
+	/**
+	 * Create scoped element.
+	 *
+	 * @param fullyQualifiedName
+	 *            name of the element
+	 *
+	 * @return Returns the scoped element
+	 */
 	private IEObjectDescription createScopedElement(final String fullyQualifiedName) {
 		final InternalEObject proxy = this.createProxy(fullyQualifiedName);
 		final IEObjectDescription eObjectDescription = EObjectDescription.create(
@@ -126,10 +152,17 @@ public class JarModelTypeScope extends AbstractScope {
 		return eObjectDescription;
 	}
 
+	/**
+	 * Create a proxy element.
+	 *
+	 * @param fullyQualifiedName
+	 *            name of element
+	 * @return Returns the proxy element
+	 */
 	private InternalEObject createProxy(final String fullyQualifiedName) {
 		System.out.println("createProxy " + fullyQualifiedName);
 		final URI uri = JarModelTypeURIHelper.getFullURIForClass(fullyQualifiedName);
-		// TODO fix this: could be component or interface or method?
+		// TODO fix this could be component or interface or method?
 		final InternalEObject proxy = (InternalEObject) RecordLangFactory.eINSTANCE.createModel();
 		proxy.eSetProxyURI(uri);
 		return proxy;

@@ -52,34 +52,103 @@ public final class TargetsPreferences {
 		return InstanceScope.INSTANCE.getNode(PLUGIN_ID);
 	}
 
+	/**
+	 * Get the author name from the specified preference store.
+	 *
+	 * @param preferenceStore
+	 *            the preference store
+	 * @return Returns the default author name
+	 */
 	public static String getAuthorName(final IEclipsePreferences preferenceStore) {
 		return preferenceStore.get(AUTHOR_NAME, DEFAULT_AUTHOR);
 	}
 
+	/**
+	 * Store the author name in the specified preference store.
+	 *
+	 * @param preferenceStore
+	 *            the preference store
+	 * @param author
+	 *            the author name to be stored
+	 */
 	public static void setAuthorName(final IEclipsePreferences preferenceStore, final String author) {
 		preferenceStore.put(AUTHOR_NAME, author);
 	}
 
+	/**
+	 * Get the version id from the specified preference store.
+	 *
+	 * @param preferenceStore
+	 *            the preference store
+	 * @return Returns the default version ID
+	 */
 	public static String getVersionID(final IEclipsePreferences preferenceStore) {
 		return preferenceStore.get(VERSION_ID, DEFAULT_VERSION);
 	}
 
+	/**
+	 * Store the version id for the specified preference store.
+	 *
+	 * @param preferenceStore
+	 *            the preference store
+	 * @param version
+	 *            the version ID to be stored
+	 */
 	public static void setVersionID(final IEclipsePreferences preferenceStore, final String version) {
 		preferenceStore.put(VERSION_ID, version);
 	}
 
+	/**
+	 * Check if the generator is set active in the specified preference store.
+	 *
+	 * @param preferenceStore
+	 *            the preference store
+	 * @param id
+	 *            the generator id
+	 * @return Returns true if active
+	 */
 	public static boolean isGeneratorActive(final IEclipsePreferences preferenceStore, final String id) {
 		return preferenceStore.getBoolean(GENERATOR_ACTIVE + id, DEFAULT_GENERATOR_INACTIVE);
 	}
 
+	/**
+	 * Store the generator state to the specified preference store.
+	 *
+	 * @param preferenceStore
+	 *            the preference store
+	 * @param id
+	 *            the generator id
+	 * @param active
+	 *            the state of the generator
+	 */
 	public static void setGeneratorActive(final IEclipsePreferences preferenceStore, final String id, final boolean active) {
 		preferenceStore.putBoolean(GENERATOR_ACTIVE + id, active);
 	}
 
+	/**
+	 * Get the header comment from the specified preference store.
+	 *
+	 * @param preferenceStore
+	 *            the preference store
+	 * @param id
+	 *            the generator id
+	 * @return Returns the header comment
+	 */
 	public static String getHeaderComment(final IEclipsePreferences preferenceStore, final String id) {
 		return preferenceStore.get(GENERATOR_HEADER_COMMENT + id, "");
 	}
 
+	/**
+	 * Store the header comment in the specified preference store.
+	 *
+	 * @param preferenceStore
+	 *            the preference store
+	 * @param id
+	 *            the generator id
+	 *            the id of the generator
+	 * @param headerComment
+	 *            the header comment
+	 */
 	public static void setHeaderComment(final IEclipsePreferences preferenceStore, final String id, final String headerComment) {
 		preferenceStore.put(GENERATOR_HEADER_COMMENT + id, headerComment);
 	}
