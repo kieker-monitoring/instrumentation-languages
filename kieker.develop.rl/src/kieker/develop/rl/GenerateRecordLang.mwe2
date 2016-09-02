@@ -9,7 +9,10 @@ var rootPath = ".."
 Workflow {
 	bean = StandaloneSetup {
     	scanClassPath = true
-    	platformUri = "."
+    	projectMapping = {
+    		projectName = "kieker.develop.rl"
+    		path = "."
+    	}
     	
     	uriMap = {
     		from = "platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel"
@@ -22,19 +25,19 @@ Workflow {
     	}
     	
     	uriMap = {
-    		from = "platform:/plugin/kieker.develop.semantics/model/SemanticAnnotation.ecore"
+    		from = "file:/${rootPath}/kieker.develop.semantics/model/SemanticAnnotation.ecore"
     		to = "platform:/resource/kieker.develop.semantics/model/SemanticAnnotation.ecore"
     	}
     	
     	uriMap = {
-    		from = "platform:/plugin/kieker.develop.semantics/model/SemanticAnnotation.genmodel"
+    		from = "file:/${rootPath}/kieker.develop.semantics/model/SemanticAnnotation.genmodel"
     		to = "platform:/resource/kieker.develop.semantics/model/SemanticAnnotation.genmodel"
     	}
     	
     	registerGenModelFile = "platform:/resource/org.eclipse.emf.ecore/model/Ecore.genmodel"
     	registerEcoreFile = "platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore"
     	
-    	registerGenModelFile = "platform:/resource/kieker.develop.semantics/model/SemanticAnnotation.genmodel"
+    	registerGenModelFile = "platform:/resource/kieker.develop.semantiXcs/model/SemanticAnnotation.genmodel"
     	registerEcoreFile = "platform:/resource/kieker.develop.semantics/model/SemanticAnnotation.ecore"
 	}
 	
