@@ -26,25 +26,30 @@ Workflow {
     	}
     	
     	uriMap = {
-    		from = "file:/${rootPath}/kieker.develop.semantics/model/SemanticAnnotation.ecore"
-    		to = "platform:/resource/kieker.develop.semantics/model/SemanticAnnotation.ecore"
+    		from = "platform:/plugin/kieker.develop.semantics/model/SemanticAnnotation.ecore"
+    		to = "platform:/resource/kieker.develop.semantics/SemanticAnnotation.ecore"
     	}
     	
     	uriMap = {
-    		from = "file:/${rootPath}/kieker.develop.semantics/model/SemanticAnnotation.genmodel"
-    		to = "platform:/resource/kieker.develop.semantics/model/SemanticAnnotation.genmodel"
+    		from = "platform:/plugin/kieker.develop.semantics/model/SemanticAnnotation.genmodel"
+    		to = "platform:/resource/kieker.develop.semantics/SemanticAnnotation.genmodel"
     	}
     	
     	registerGenModelFile = "platform:/resource/org.eclipse.emf.ecore/model/Ecore.genmodel"
     	registerEcoreFile = "platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore"
     	
-    	registerGenModelFile = "platform:/resource/kieker.develop.semantiXcs/model/SemanticAnnotation.genmodel"
+    	registerGenModelFile = "platform:/resource/kieker.develop.semantics/model/SemanticAnnotation.genmodel"
     	registerEcoreFile = "platform:/resource/kieker.develop.semantics/model/SemanticAnnotation.ecore"
 	}
 	
 	component = XtextGenerator {
+		//standaloneSetup = XtextGeneratorStandaloneSetup {
+		//	scanClasspath = true
+		//}
 		configuration = {
 			project = StandardProjectConfig {
+				mavenLayout = true
+				
 				baseName = "kieker.develop.rl"
 				rootPath = rootPath
 				runtimeTest = {
