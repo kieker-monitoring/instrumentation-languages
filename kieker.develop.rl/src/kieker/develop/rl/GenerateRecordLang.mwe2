@@ -8,8 +8,9 @@ var rootPath = ".."
 
 Workflow {
 	bean = StandaloneSetup {
-    	scanClassPath = true
-    	projectMapping = {
+	scanClassPath = true
+
+	projectMapping = {
     		projectName = "kieker.develop.rl"
     		path = "."
     	}
@@ -69,7 +70,7 @@ Workflow {
 			
 			fragment = types.TypesGeneratorFragment2 auto-inject {}
 
-			//referencedResource = "platform:/resource/kieker.develop.semantics/model/SemanticAnnotation.genmodel"
+			referencedResource = "platform:/resource/kieker.develop.semantics/model/SemanticAnnotation.genmodel"
 
 			serializer = {
 				generateStub = false
