@@ -33,7 +33,6 @@ doc/kieker-workshop/images/kieker-data-bridge.pdf
 */.antlr-generator-3.2.0-patch.jar
 **/target/**
 **/src-gen/**
-**/.project
 **/.settings/**
 **/.classpath
 **/model/generated/**
