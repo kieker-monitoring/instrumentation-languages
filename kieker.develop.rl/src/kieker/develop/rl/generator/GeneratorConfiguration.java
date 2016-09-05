@@ -37,8 +37,10 @@ import kieker.develop.rl.ouput.config.OutletConfiguration;
  */
 public final class GeneratorConfiguration {
 
-	/** interface name for IRLGenerator extension point. */
-	public static final String GENERATOR_PROVIDER = "kieker.develop.rl.generator.IRLGenerator";
+	/** extension point name. */
+	public static final String GENERATOR_PROVIDER = "kieker.develop.rl.generator.provider";
+	/** extension point short name. */
+	public static final String SHORT_EXTENSION_NAME = "provider";
 
 	/**
 	 * Empty default constructor.
@@ -60,7 +62,7 @@ public final class GeneratorConfiguration {
 
 		for (final IConfigurationElement element : config) {
 			try {
-				final Object ext = element.createExecutableExtension("generator");
+				final Object ext = element.createExecutableExtension(SHORT_EXTENSION_NAME);
 				if (ext instanceof IGeneratorProvider) {
 					final IGeneratorProvider generatorProvider = (IGeneratorProvider) ext;
 					generators.addAll(generatorProvider.getRecordTypeGenerators());
@@ -85,7 +87,7 @@ public final class GeneratorConfiguration {
 
 		for (final IConfigurationElement element : config) {
 			try {
-				final Object ext = element.createExecutableExtension("generator");
+				final Object ext = element.createExecutableExtension(SHORT_EXTENSION_NAME);
 				if (ext instanceof IGeneratorProvider) {
 					final IGeneratorProvider generatorProvider = (IGeneratorProvider) ext;
 					generators.addAll(generatorProvider.getTemplateTypeGenerators());
@@ -106,11 +108,12 @@ public final class GeneratorConfiguration {
 		final Collection<OutletConfiguration> outletConfigurations = new ArrayList<OutletConfiguration>();
 
 		final IExtensionRegistry registry = Platform.getExtensionRegistry();
+
 		final IConfigurationElement[] config = registry.getConfigurationElementsFor(GENERATOR_PROVIDER);
 
 		for (final IConfigurationElement element : config) {
 			try {
-				final Object ext = element.createExecutableExtension("generator");
+				final Object ext = element.createExecutableExtension(SHORT_EXTENSION_NAME);
 				if (ext instanceof IGeneratorProvider) {
 					final IGeneratorProvider generatorProvider = (IGeneratorProvider) ext;
 					outletConfigurations.addAll(generatorProvider.getOutletConfigurations());
