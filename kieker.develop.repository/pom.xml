@@ -18,8 +18,6 @@
 	<properties>
 		<!-- Relative path to the repo being uploaded -->
 		<repo.path>${project.build.directory}/repository/</repo.path>
-		<updatesite.url>file:///srv/vhosts/eus/mdm/snapshot/</updatesite.url>
-<!-- 		<updatesite.url>file:///home/rju/eus/snapshot/</updatesite.url> -->
 	</properties>
 
 	<build>
@@ -53,7 +51,7 @@
 				<executions>
 					<execution>
 						<id>upload-repo</id>
-						<phase>deploy</phase>
+						<phase>package</phase>
 						<goals>
 							<goal>upload</goal>
 						</goals>
