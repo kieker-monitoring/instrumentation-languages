@@ -161,7 +161,7 @@ public class JarModelTypeScope extends AbstractScope {
 	 */
 	private InternalEObject createProxy(final String fullyQualifiedName) {
 		System.out.println("createProxy " + fullyQualifiedName);
-		final URI uri = JarModelTypeURIHelper.getFullURIForClass(fullyQualifiedName);
+		final URI uri = JarModelTypeProvider.getFullURIForClass(fullyQualifiedName);
 		// TODO fix this could be component or interface or method?
 		final InternalEObject proxy = (InternalEObject) RecordLangFactory.eINSTANCE.createModel();
 		proxy.eSetProxyURI(uri);

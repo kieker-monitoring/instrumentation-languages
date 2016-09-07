@@ -33,6 +33,11 @@ import kieker.develop.rl.typing.ITypeProvider;
  */
 public class BaseTypeProvider implements Resource.Factory, ITypeProvider {
 
+	/** Path to the internal resource. */
+	public static final String PRIMITIVES = "/Primitives"; //$NON-NLS-1$
+	/** Id for the internal resource. */
+	public static final String ID = "base"; //$NON-NLS-1$
+
 	private final ResourceSet resourceSet;
 
 	/**
@@ -50,13 +55,14 @@ public class BaseTypeProvider implements Resource.Factory, ITypeProvider {
 	 *
 	 * @return Returns an iterable with all primitive types.
 	 */
+	@Override
 	public Iterable<Type> getAllTypes() {
 		/*
 		 * Get the (already created) types from the helper resource and cast the list to a list of
 		 * types.
 		 */
 		return IterableExtensions.map(
-				this.resourceSet.getResource(BaseTypeURIHelper.createResourceURI(), true).getContents(),
+				this.resourceSet.getResource(BaseTypeProvider.createResourceURI(), true).getContents(),
 				p -> (Type) p);
 	}
 
@@ -67,12 +73,12 @@ public class BaseTypeProvider implements Resource.Factory, ITypeProvider {
 	 *            The name of the type.
 	 * @return Returns the primitive type for a given type name, or null.
 	 */
+	@Override
 	public Type findTypeByName(final String name) {
 		if (Strings.isEmpty(name)) {
 			throw new IllegalArgumentException("Internal error: Empty type name.");
 		}
-		final URI resourceURI = BaseTypeURIHelper.createResourceURI();
-		final BaseTypeResource resource = (BaseTypeResource) this.resourceSet.getResource(resourceURI, true);
+		final BaseTypeResource resource = (BaseTypeResource) this.resourceSet.getResource(BaseTypeProvider.createResourceURI(), true);
 
 		return (Type) resource.getEObject(name);
 	}
@@ -85,8 +91,35 @@ public class BaseTypeProvider implements Resource.Factory, ITypeProvider {
 	 * @return returns a new base type resource
 	 */
 	// @Override
+	@Override
 	public BaseTypeResource createResource(final URI uri) {
 		return new BaseTypeResource(uri);
+	}
+
+	/**
+	 * Build an URI for the internal resource.
+	 *
+	 * @return the URI
+	 */
+	public static URI createResourceURI() {
+		return URI.createURI(ID + ':' + PRIMITIVES);
+	}
+
+	/**
+	 * Construct a full URI for a class.
+	 *
+	 * @param fullQualifiedClassName
+	 *            the full qualified class name
+	 * @return a complete URI
+	 */
+	public static URI getFullURIForClass(final String fullQualifiedClassName) {
+		final StringBuilder uriBuilder = new StringBuilder(48);
+		uriBuilder.append(ID);
+		uriBuilder.append(':');
+		uriBuilder.append(PRIMITIVES).append(fullQualifiedClassName);
+		uriBuilder.append('#');
+		uriBuilder.append(fullQualifiedClassName);
+		return URI.createURI(uriBuilder.toString());
 	}
 
 }

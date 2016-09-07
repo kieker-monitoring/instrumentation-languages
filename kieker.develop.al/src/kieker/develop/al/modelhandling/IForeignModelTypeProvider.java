@@ -15,6 +15,8 @@
  ***************************************************************************/
 package kieker.develop.al.modelhandling;
 
+import org.eclipse.emf.common.util.URI;
+
 import kieker.develop.al.mapping.NamedElement;
 import kieker.develop.al.mapping.NamedType;
 
@@ -48,18 +50,19 @@ public interface IForeignModelTypeProvider {
 	NamedElement findTypeByName(String name);
 
 	/**
-	 * Introduced analogously to {@link org.eclipse.xtext.common.types.access.jdt.IJdtTypeProvider
-	 * IJdtTypeProvider#getTypeUriHelper()}.
-	 *
-	 * @return the used {@link TypeURIHelper}
-	 */
-	ForeignModelTypeURIHelper getTypeUriHelper();
-
-	/**
 	 * Get all data types in a foreign model.
 	 *
 	 * @return Returns an iterable over all data types
 	 */
 	Iterable<NamedType> getAllDataTyes();
+
+	/**
+	 * Construct a full URI for a class.
+	 *
+	 * @param fullQualifiedClassName
+	 *            the full qualified class name
+	 * @return a complete URI
+	 */
+	public URI getFullURIForClass(final String fullQualifiedClassName);
 
 }

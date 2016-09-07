@@ -165,7 +165,7 @@ public class BaseTypeScope extends AbstractScope {
 	 * @return Returns the proxy element
 	 */
 	protected InternalEObject createProxy(final String fullyQualifiedName) {
-		final URI uri = BaseTypeURIHelper.getFullURIForClass(fullyQualifiedName);
+		final URI uri = BaseTypeProvider.getFullURIForClass(fullyQualifiedName);
 		final InternalEObject proxy = (InternalEObject) RecordLangFactory.eINSTANCE.createBaseType();
 		proxy.eSetProxyURI(uri);
 		return proxy;

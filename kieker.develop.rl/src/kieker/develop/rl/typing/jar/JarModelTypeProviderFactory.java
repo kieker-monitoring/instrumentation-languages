@@ -18,6 +18,7 @@ package kieker.develop.rl.typing.jar;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
+import kieker.develop.rl.generator.InternalErrorException;
 import kieker.develop.rl.typing.ITypeProvider;
 
 /**
@@ -44,24 +45,24 @@ public final class JarModelTypeProviderFactory {
 	 *            the project where the jars are scanned
 	 *
 	 * @return Returns the type provider for primitive types.
+	 * @throws InternalErrorException
+	 *             when the application state is broken
 	 */
-	public static synchronized ITypeProvider getTypeProvider(final IProject project, final ResourceSet resourceSet) {
+	public static synchronized ITypeProvider getTypeProvider(final IProject project, final ResourceSet resourceSet) throws InternalErrorException {
 		if (resourceSet != null) {
 			final Object object = resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
-					.get(JarModelTypeURIHelper.PROTOCOL);
+					.get(JarModelTypeProvider.ID);
 			if (object != null) {
-				if (!(object instanceof ITypeProvider)) {
-					System.out.println("Type provider for " + JarModelTypeURIHelper.PROTOCOL + " is " + object);
-					// TODO something went terribly wrong, to be save create a new type provider
-					return JarModelTypeProviderFactory.createTypeProvider(project, resourceSet);
-				} else {
+				if (object instanceof ITypeProvider) {
 					return (ITypeProvider) object;
+				} else {
+					throw new InternalErrorException("Expected JarModelTypeProvider but found " + object);
 				}
 			} else {
 				return JarModelTypeProviderFactory.createTypeProvider(project, resourceSet);
 			}
 		} else {
-			throw new IllegalArgumentException("Cannot get type provide without a resourceSet.");
+			throw new InternalErrorException("Cannot get type provide without a resourceSet.");
 		}
 	}
 
@@ -77,7 +78,7 @@ public final class JarModelTypeProviderFactory {
 	private static ITypeProvider createTypeProvider(final IProject project, final ResourceSet resourceSet) {
 		final ITypeProvider typeProvider = new JarModelTypeProvider(project, resourceSet);
 		resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
-				.put(JarModelTypeURIHelper.PROTOCOL, typeProvider);
+				.put(JarModelTypeProvider.ID, typeProvider);
 		return typeProvider;
 	}
 

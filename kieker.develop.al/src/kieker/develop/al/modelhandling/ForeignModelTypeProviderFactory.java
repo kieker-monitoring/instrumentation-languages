@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import com.google.inject.Inject;
 
 import kieker.develop.al.aspectLang.ApplicationModel;
+import kieker.develop.rl.generator.InternalErrorException;
 
 /**
  * The type provider factory controls the type provider, which is created by this class.
@@ -45,23 +46,24 @@ public class ForeignModelTypeProviderFactory {
 	 * @param model
 	 *            the application model
 	 * @return Returns the type provider for primitive types.
+	 * @throws InternalErrorException
+	 *             when the application state is broken
 	 */
-	public IForeignModelTypeProvider getTypeProvider(final ResourceSet resourceSet, final ApplicationModel model) {
+	public IForeignModelTypeProvider getTypeProvider(final ResourceSet resourceSet, final ApplicationModel model) throws InternalErrorException {
 		if (resourceSet != null) {
-			final Object o = resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
-					.get(ForeignModelTypeURIHelper.PROTOCOL);
-			if (o != null) {
-				if (!(o instanceof IForeignModelTypeProvider)) {
-					// TODO something went terribly wrong, to be save create a new type provider
-					return this.createTypeProvider(resourceSet, model);
+			final Object object = resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
+					.get(ForeignModelTypeProvider.ID);
+			if (object != null) {
+				if (object instanceof IForeignModelTypeProvider) {
+					return (IForeignModelTypeProvider) object;
 				} else {
-					return (IForeignModelTypeProvider) o;
+					throw new InternalErrorException("Expected IForeignModelTypeProvider, but found " + object);
 				}
 			} else {
 				return this.createTypeProvider(resourceSet, model);
 			}
 		} else {
-			throw new IllegalArgumentException("Cannot get type provide without a resourceSet.");
+			throw new InternalErrorException("Cannot get type provide without a resourceSet.");
 		}
 	}
 
@@ -77,7 +79,7 @@ public class ForeignModelTypeProviderFactory {
 	private IForeignModelTypeProvider createTypeProvider(final ResourceSet resourceSet, final ApplicationModel model) {
 		final IForeignModelTypeProvider typeProvider = new ForeignModelTypeProvider(resourceSet, model);
 		resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
-				.put(ForeignModelTypeURIHelper.PROTOCOL, typeProvider);
+				.put(ForeignModelTypeProvider.ID, typeProvider);
 		return typeProvider;
 	}
 

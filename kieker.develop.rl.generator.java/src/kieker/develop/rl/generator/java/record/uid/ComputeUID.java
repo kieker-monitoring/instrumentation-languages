@@ -115,6 +115,7 @@ public final class ComputeUID {
 	 *
 	 * @param type
 	 *            record type
+	 * @return returns the computed UID of a record type conforming to Java UID standards
 	 */
 	public static long computeDefaultSUID(final RecordType type) {
 		try {

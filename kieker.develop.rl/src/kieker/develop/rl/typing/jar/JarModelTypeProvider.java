@@ -35,6 +35,13 @@ import kieker.develop.rl.typing.ITypeProvider;
  */
 public class JarModelTypeProvider implements Resource.Factory, ITypeProvider {
 
+	/** */
+	public static final String ELEMENTS = "/Elements"; //$NON-NLS-1$
+	/** */
+	public static final String ID = "autojar"; //$NON-NLS-1$
+	/** */
+	public static final String OBJECTS = "/Objects/"; //$NON-NLS-1$
+
 	private final IProject project;
 
 	private final ResourceSet resourceSet;
@@ -57,9 +64,10 @@ public class JarModelTypeProvider implements Resource.Factory, ITypeProvider {
 	 *
 	 * @return Returns an iterable with all primitive types.
 	 */
+	@Override
 	public Iterable<Type> getAllTypes() {
 		return IterableExtensions.map(
-				IterableExtensions.filter(this.resourceSet.getResource(JarModelTypeURIHelper.createResourceURI(), true).getContents(),
+				IterableExtensions.filter(this.resourceSet.getResource(JarModelTypeProvider.createResourceURI(), true).getContents(),
 						Type.class),
 				p -> p);
 	}
@@ -71,13 +79,13 @@ public class JarModelTypeProvider implements Resource.Factory, ITypeProvider {
 	 *            The name of the type.
 	 * @return Returns the primitive type for a given type name, or null.
 	 */
+	@Override
 	public Type findTypeByName(final String name) {
 		if (Strings.isEmpty(name)) {
 			throw new IllegalArgumentException("Internal error: Empty type name.");
 		}
 
-		final URI resourceURI = JarModelTypeURIHelper.createResourceURI();
-		final JarModelResource resource = (JarModelResource) this.resourceSet.getResource(resourceURI, true);
+		final JarModelResource resource = (JarModelResource) this.resourceSet.getResource(JarModelTypeProvider.createResourceURI(), true);
 
 		return (Type) resource.getEObject(name);
 	}
@@ -89,8 +97,35 @@ public class JarModelTypeProvider implements Resource.Factory, ITypeProvider {
 	 *            The URI for the resource
 	 * @return Returns a new jar model resource
 	 */
+	@Override
 	public JarModelResource createResource(final URI uri) {
 		return new JarModelResource(uri, this.project);
+	}
+
+	/**
+	 * Create the URI for the virtual resource.
+	 *
+	 * @return the URI
+	 */
+	private static URI createResourceURI() {
+		return URI.createURI(ID + ':' + ELEMENTS);
+	}
+
+	/**
+	 * Construct a full URI for a class.
+	 *
+	 * @param fullQualifiedClassName
+	 *            the full qualified class name
+	 * @return a complete URI
+	 */
+	public static URI getFullURIForClass(final String fullQualifiedClassName) {
+		final StringBuilder uriBuilder = new StringBuilder(48);
+		uriBuilder.append(ID);
+		uriBuilder.append(':');
+		uriBuilder.append(OBJECTS).append(fullQualifiedClassName);
+		uriBuilder.append('#');
+		uriBuilder.append(fullQualifiedClassName);
+		return URI.createURI(uriBuilder.toString());
 	}
 
 }

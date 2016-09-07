@@ -39,7 +39,12 @@ import kieker.develop.al.mapping.NamedType;
  */
 public class ForeignModelTypeProvider implements Resource.Factory, IForeignModelTypeProvider {
 
-	private final ForeignModelTypeURIHelper typeUriHelper;
+	/** */
+	public static final String ELEMENTS = "/Elements"; //$NON-NLS-1$
+	/** */
+	public static final String ID = "foreign"; //$NON-NLS-1$
+	/** */
+	public static final String OBJECTS = "/Objects/"; //$NON-NLS-1$
 
 	private final ResourceSet resourceSet;
 
@@ -55,7 +60,6 @@ public class ForeignModelTypeProvider implements Resource.Factory, IForeignModel
 	 */
 	public ForeignModelTypeProvider(final ResourceSet resourceSet, final ApplicationModel model) {
 		this.resourceSet = resourceSet;
-		this.typeUriHelper = new ForeignModelTypeURIHelper();
 		this.model = model;
 	}
 
@@ -65,13 +69,13 @@ public class ForeignModelTypeProvider implements Resource.Factory, IForeignModel
 	 * @return Returns an iterable with all primitive types.
 	 */
 	// @Override
+	@Override
 	public Iterable<NamedElement> getAllTypes() {
 		/*
 		 * Get the (already created) types from the helper resource and cast the list to a list of
 		 * types.
 		 */
-		final Resource resource = this.resourceSet.getResource(
-				URI.createURI(ForeignModelTypeURIHelper.PROTOCOL + ":" + ForeignModelTypeURIHelper.ELEMENTS), true);
+		final Resource resource = this.resourceSet.getResource(this.createResourceURI(), true);
 		final Collection<NamedElement> result = new ArrayList<NamedElement>();
 		for (final EObject container : resource.getContents()) {
 			if (container instanceof MappingModel) {
@@ -93,12 +97,12 @@ public class ForeignModelTypeProvider implements Resource.Factory, IForeignModel
 	 * @return Returns the primitive type for a given type name, or null.
 	 */
 	// @Override
+	@Override
 	public NamedElement findTypeByName(final String name) {
 		if (Strings.isEmpty(name)) {
 			throw new IllegalArgumentException("Internal error: Empty type name.");
 		}
-		final URI resourceURI = this.typeUriHelper.createResourceURI();
-		final ForeignModelResource resource = (ForeignModelResource) this.resourceSet.getResource(resourceURI, true);
+		final ForeignModelResource resource = (ForeignModelResource) this.resourceSet.getResource(this.createResourceURI(), true);
 
 		return (NamedElement) resource.getEObject(name);
 	}
@@ -111,17 +115,9 @@ public class ForeignModelTypeProvider implements Resource.Factory, IForeignModel
 	 *
 	 * @return a new foreign model resource
 	 */
+	@Override
 	public ForeignModelResource createResource(final URI uri) {
 		return new ForeignModelResource(uri, this.model);
-	}
-
-	/**
-	 * Getter for URIHelper.
-	 *
-	 * @return Returns the URI helper for the type system.
-	 */
-	public ForeignModelTypeURIHelper getTypeUriHelper() {
-		return this.typeUriHelper;
 	}
 
 	/**
@@ -129,10 +125,35 @@ public class ForeignModelTypeProvider implements Resource.Factory, IForeignModel
 	 *
 	 * @return an iterable of all datatypes.
 	 */
+	@Override
 	public Iterable<NamedType> getAllDataTyes() {
-		final Resource resource = this.resourceSet.getResource(
-				URI.createURI(ForeignModelTypeURIHelper.PROTOCOL + ":" + ForeignModelTypeURIHelper.ELEMENTS), true);
+		final Resource resource = this.resourceSet.getResource(this.createResourceURI(), true);
 		return ((ForeignModelResource) resource).getAllDataTypes();
 	}
 
+	/**
+	 * Create the URI for the virtual resource.
+	 *
+	 * @return the URI
+	 */
+	private URI createResourceURI() {
+		return URI.createURI(ID + ':' + ELEMENTS);
+	}
+
+	/**
+	 * Construct a full URI for a class.
+	 *
+	 * @param fullQualifiedClassName
+	 *            the full qualified class name
+	 * @return a complete URI
+	 */
+	public URI getFullURIForClass(final String fullQualifiedClassName) {
+		final StringBuilder uriBuilder = new StringBuilder(48);
+		uriBuilder.append(ID);
+		uriBuilder.append(':');
+		uriBuilder.append(OBJECTS).append(fullQualifiedClassName);
+		uriBuilder.append('#');
+		uriBuilder.append(fullQualifiedClassName);
+		return URI.createURI(uriBuilder.toString());
+	}
 }

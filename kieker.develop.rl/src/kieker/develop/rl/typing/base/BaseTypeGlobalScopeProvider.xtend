@@ -27,6 +27,7 @@ import org.eclipse.xtext.resource.IEObjectDescription
 import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.scoping.impl.DefaultGlobalScopeProvider
 import kieker.develop.rl.typing.ITypeProvider
+import kieker.develop.rl.generator.InternalErrorException
 
 class BaseTypeGlobalScopeProvider extends DefaultGlobalScopeProvider {
 	@Inject
@@ -41,7 +42,7 @@ class BaseTypeGlobalScopeProvider extends DefaultGlobalScopeProvider {
     }
 
     def IScope getParentTypeScope(Resource resource, EReference reference,
-            Predicate<IEObjectDescription> filter, EClass referenceType) {
+            Predicate<IEObjectDescription> filter, EClass referenceType) throws InternalErrorException {
         // check whether the reference type is a type of any kind 
         if (referenceType.name.equals(BaseType.simpleName)) {
         	if (resource != null) {
