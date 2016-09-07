@@ -1,10 +1,9 @@
 package kieker.develop.rl.generator.java.junit
 
-import java.io.File
 import java.util.ArrayList
 import java.util.Collection
 import java.util.List
-import kieker.develop.rl.generator.AbstractRecordTypeGenerator
+import kieker.develop.rl.generator.TypeInputModel
 import kieker.develop.rl.recordLang.ConstantLiteral
 import kieker.develop.rl.recordLang.FloatLiteral
 import kieker.develop.rl.recordLang.IntLiteral
@@ -13,47 +12,35 @@ import kieker.develop.rl.recordLang.Model
 import kieker.develop.rl.recordLang.Property
 import kieker.develop.rl.recordLang.RecordType
 import kieker.develop.rl.recordLang.StringLiteral
-import kieker.develop.rl.recordLang.Type
 
 import static extension kieker.develop.rl.generator.java.JavaTypeMapping.*
 import static extension kieker.develop.rl.typing.PropertyResolution.*
+import static extension kieker.develop.rl.generator.java.junit.NameResolver.*
+import kieker.develop.rl.generator.AbstractTypeGenerator
+import kieker.develop.rl.recordLang.Type
 
-class RecordTypeGenerator extends AbstractRecordTypeGenerator {
+class RecordTypeGenerator extends AbstractTypeGenerator<RecordType> {
 	
-	/**
-	 * Return the unique id.
-	 */
-	override getId() '''java.junit'''
-	
-	/**
-	 * Return the preferences activation description.
-	 */
-	override getDescription() '''JUnit tests for records'''
-	
-	/**
-	 * No junit test for abstract record types.
-	 */
-	override boolean supportsAbstractRecordType()  { false }
-	
-	override getDirectoryName(Type type) '''«(type.eContainer as Model).name.createTestPackageName.replace('.',File::separator)»'''
-
-	override getFileName(Type type) '''«type.getDirectoryName»«File::separator»TestGenerated«type.name».java'''
-	
-	override getOutletType() '''junit'''
-	
-	override generate(RecordType type) {
-		if (type.abstract)
-			return null
-		val allDataProperties = type.collectAllDataProperties
+	override accepts(Type type) {
+		if (type instanceof RecordType) {
+			!(type as RecordType).abstract
+		} else
+			false
+	}
+		
+	override generate(TypeInputModel<RecordType> input) {
+		val allDataProperties = input.type.collectAllDataProperties
+		val definedAuthor = if (input.type.author == null) input.author else input.type.author
+		val definedVersion = if (input.type.since == null) input.version else input.type.since
 		'''
-		«header»package «(type.eContainer as Model).name.createTestPackageName»;
+		«input.header»package «(input.type.eContainer as Model).name.createTestPackageName»;
 		
 		import java.nio.ByteBuffer;
 		
 		import org.junit.Assert;
 		import org.junit.Test;
 		
-		import «(type.eContainer as Model).name».«type.name»;
+		import «(input.type.eContainer as Model).name».«input.type.name»;
 		import kieker.common.util.registry.IRegistry;
 		import kieker.common.util.registry.Registry;
 		
@@ -64,27 +51,27 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		 * Creates {@link OperationExecutionRecord}s via the available constructors and
 		 * checks the values passed values via getters.
 		 * 
-		 * @author «if (type.author == null) author else type.author»
+		 * @author «definedAuthor»
 		 * 
-		 * @since «if (type.since == null) version else type.since»
+		 * @since «definedVersion»
 		 */
-		public class TestGenerated«type.name» extends AbstractGeneratedKiekerTest {
+		public class TestGenerated«input.type.name» extends AbstractGeneratedKiekerTest {
 		
-			public TestGenerated«type.name»() {
+			public TestGenerated«input.type.name»() {
 				// empty default constructor
 			}
 		
 			/**
-			 * Tests {@link «type.name»#Test«type.name»(String, String, long, long, long, String, int, int)}.
+			 * Tests {@link «input.type.name»#Test«input.type.name»(String, String, long, long, long, String, int, int)}.
 			 */
 			@Test
 			public void testToArray() { // NOPMD (assert missing)
 			for (int i=0;i<ARRAY_LENGTH;i++) {
 					// initialize
-					«type.name» record = new «type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
+					«input.type.name» record = new «input.type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
 					
 					// check values
-					«allDataProperties.createAllGetterValueAssertions(type)»
+					«allDataProperties.createAllGetterValueAssertions(input.type)»
 					
 					Object[] values = record.toArray();
 					
@@ -103,39 +90,39 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 			}
 			
 			/**
-			 * Tests {@link «type.name»#Test«type.name»(String, String, long, long, long, String, int, int)}.
+			 * Tests {@link «input.type.name»#Test«input.type.name»(String, String, long, long, long, String, int, int)}.
 			 */
 			@Test
 			public void testBuffer() { // NOPMD (assert missing)
 				for (int i=0;i<ARRAY_LENGTH;i++) {
 					// initialize
-					«type.name» record = new «type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
+					«input.type.name» record = new «input.type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
 					
 					// check values
-					«allDataProperties.createAllGetterValueAssertions(type)»
+					«allDataProperties.createAllGetterValueAssertions(input.type)»
 				}
 			}
 			
 			/**
-			 * Tests {@link «type.name»#Test«type.name»(String, String, long, long, long, String, int, int)}.
+			 * Tests {@link «input.type.name»#Test«input.type.name»(String, String, long, long, long, String, int, int)}.
 			 */
 			@Test
 			public void testParameterConstruction() { // NOPMD (assert missing)
 				for (int i=0;i<ARRAY_LENGTH;i++) {
 					// initialize
-					«type.name» record = new «type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
+					«input.type.name» record = new «input.type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
 					
 					// check values
-					«allDataProperties.createAllGetterValueAssertions(type)»
+					«allDataProperties.createAllGetterValueAssertions(input.type)»
 				}
 			}
 			
 			@Test
 			public void testEquality() {
 				int i = 0;
-				«type.name» oneRecord = new «type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
+				«input.type.name» oneRecord = new «input.type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
 				i = 0;
-				«type.name» copiedRecord = new «type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
+				«input.type.name» copiedRecord = new «input.type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
 				
 				Assert.assertEquals(oneRecord, copiedRecord);
 			}
@@ -143,9 +130,9 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 			@Test
 			public void testUnequality() {
 				int i = 0;
-				«type.name» oneRecord = new «type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
+				«input.type.name» oneRecord = new «input.type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
 				i = 1;
-				«type.name» anotherRecord = new «type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
+				«input.type.name» anotherRecord = new «input.type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
 				
 				Assert.assertNotEquals(oneRecord, anotherRecord);
 			}
@@ -258,18 +245,5 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	 */
 	private def createPropertyValueSet(Property property) '''«property.type.type.name.toUpperCase»_VALUES.get(i % «property.type.type.name.toUpperCase»_VALUES.size())'''
 	
-	
-	/**
-	 * Reconstruct the package name out of the record package name.
-	 * kieker.common.record -> kieker.test.common.junit.record
-	 * All other structures are converted by adding .junit to the package hierarchy
-	 */
-	private def createTestPackageName(String name) {
-		if (name.contains("kieker.common.record")) 
-			return name.replaceAll("kieker\\.common\\.record", "kieker.test.common.junit.record")
-		else
-			return name + ".junit"
-	}
-		
 		
 }

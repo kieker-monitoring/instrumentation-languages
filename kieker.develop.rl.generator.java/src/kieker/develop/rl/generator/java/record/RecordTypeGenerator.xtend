@@ -1,10 +1,9 @@
 package kieker.develop.rl.generator.java.record
 
-import java.io.File
 import java.util.ArrayList
 import java.util.List
-import kieker.develop.rl.generator.AbstractRecordTypeGenerator
 import kieker.develop.rl.generator.InternalErrorException
+import kieker.develop.rl.generator.TypeInputModel
 import kieker.develop.rl.recordLang.ArraySize
 import kieker.develop.rl.recordLang.BaseType
 import kieker.develop.rl.recordLang.BuiltInValueLiteral
@@ -16,100 +15,75 @@ import kieker.develop.rl.recordLang.Property
 import kieker.develop.rl.recordLang.RecordType
 import kieker.develop.rl.recordLang.StringLiteral
 import kieker.develop.rl.recordLang.TemplateType
-import kieker.develop.rl.recordLang.Type
 import kieker.develop.rl.typing.base.BaseTypes
 import org.eclipse.emf.common.util.BasicEList
 import org.eclipse.emf.common.util.EList
 
+import static extension kieker.develop.rl.generator.java.JavaTypeMapping.*
 import static extension kieker.develop.rl.generator.java.record.ConstantConstructionModule.*
 import static extension kieker.develop.rl.generator.java.record.NameResolver.*
 import static extension kieker.develop.rl.generator.java.record.PropertyConstructionModule.*
 import static extension kieker.develop.rl.generator.java.record.ValueAccessExpressionModule.*
 import static extension kieker.develop.rl.generator.java.record.uid.ComputeUID.*
-import static extension kieker.develop.rl.typing.TypeResolution.*
-import static extension kieker.develop.rl.generator.java.JavaTypeMapping.*
 import static extension kieker.develop.rl.typing.PropertyResolution.*
+import static extension kieker.develop.rl.typing.TypeResolution.*
+import kieker.develop.rl.generator.AbstractTypeGenerator
+import kieker.develop.rl.recordLang.Type
 
-class RecordTypeGenerator extends AbstractRecordTypeGenerator {
+class RecordTypeGenerator extends AbstractTypeGenerator<RecordType> {
 
-	/**
-	 * Return the unique id.
-	 */
+	override accepts(Type type) {
+		type instanceof RecordType
+	}
 		
-	override getId() '''java'''
-	
-	/**
-	 * Return the preferences activation description.
-	 */
-	override getDescription() '''Java record generator'''
-	
-	/**
-	 * Java requires abstract record types.
-	 */
-	override boolean supportsAbstractRecordType()  { true }
-	
-	/**
-	 * Define language/generation type, which is also used to define the outlet.
-	 */
-	override getOutletType() '''java'''
-	
-	/**
-	 * Compute the directory name for a record type.
-	 */
-	override getDirectoryName(Type type) '''«(type.eContainer as Model).name.replace('.',File::separator)»'''
-
-	/**
-	 * Compute file name.
-	 */
-	override getFileName(Type type) '''«type.getDirectoryName»«File::separator»«type.name».java'''
-	
 	/**
 	 * Primary code generation template.
 	 * 
 	 * @params type
 	 * 		one record type to be used to create monitoring record
 	 */
-	override generate(RecordType type) {
-		val allDataProperties = type.collectAllDataProperties
-		val allDeclarationProperties = type.collectAllDeclarationProperties
-
+	override generate(TypeInputModel<RecordType> input) {
+		val allDataProperties = input.type.collectAllDataProperties
+		val allDeclarationProperties = input.type.collectAllDeclarationProperties
+		val definedAuthor = if (input.type.author == null) input.author else input.type.author
+		val definedVersion = if (input.type.since == null) input.version else input.type.since
 		'''
-		«header»package «(type.eContainer as Model).name»;
+		«input.header»package «(input.type.eContainer as Model).name»;
 		
-		«type.createImports»
+		«input.type.createImports»
 		
 		/**
-		 * @author «if (type.author == null) author else type.author»
+		 * @author «definedAuthor»
 		 * 
-		 * @since «if (type.since == null) version else type.since»
+		 * @since «definedVersion»
 		 */
-		public «if (type.abstract) 'abstract '»class «type.name» extends «type.createParent»«type.createImplements» {
-			private static final long serialVersionUID = «type.computeDefaultSUID»L;
+		public «if (input.type.abstract) 'abstract '»class «input.type.name» extends «input.type.createParent»«input.type.createImplements» {
+			private static final long serialVersionUID = «input.type.computeDefaultSUID»L;
 		
-			«IF (!type.abstract) »/** Descriptive definition of the serialization size of the record. */
-			public static final int SIZE = «if (allDataProperties.size == 0) '0' else allDataProperties.map[property | property.createSizeConstant(type)].join('\n\t\t + ')»
+			«IF (!input.type.abstract) »/** Descriptive definition of the serialization size of the record. */
+			public static final int SIZE = «if (allDataProperties.size == 0) '0' else allDataProperties.map[property | property.createSizeConstant(input.type)].join('\n\t\t + ')»
 			;
 
 			public static final Class<?>[] TYPES = {
-				«allDataProperties.map[property | property.createPropertyTypeArrayEntry(type)].join»
+				«allDataProperties.map[property | property.createPropertyTypeArrayEntry(input.type)].join»
 			};«ENDIF»
 			
 			/* user-defined constants */
-			«type.createUserConstants»
+			«input.type.createUserConstants»
 			/* default constants */
 			«allDeclarationProperties.createDefaultConstants»
 			/* property declarations */
 			«allDeclarationProperties.createProperties»
 
-			«type.createParameterizedConstructor(allDataProperties, allDeclarationProperties)»
+			«input.type.createParameterizedConstructor(allDataProperties, allDeclarationProperties)»
 		
-			«if (!type.abstract) type.createArrayConstructor(allDeclarationProperties)»
+			«if (!input.type.abstract) input.type.createArrayConstructor(allDeclarationProperties)»
 		
-			«type.createArrayInitializeConstructor(allDeclarationProperties)»
+			«input.type.createArrayInitializeConstructor(allDeclarationProperties)»
 		
-			«type.createBufferReadConstructor(allDeclarationProperties)»
+			«input.type.createBufferReadConstructor(allDeclarationProperties)»
 		
-		«IF (!type.abstract)»
+		«IF (!input.type.abstract)»
 			/**
 			 * {@inheritDoc}
 			 */
@@ -183,13 +157,13 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 				if (obj == this) return true;
 				if (obj.getClass() != this.getClass()) return false;
 				
-				final «type.name» castedRecord = («type.name») obj;
+				final «input.type.name» castedRecord = («input.type.name») obj;
 				if (this.getLoggingTimestamp() != castedRecord.getLoggingTimestamp()) return false;
 				«allDataProperties.map[it.createEquals].join('\n')»
 				return true;
 			}
 		
-			«type.createPropertyGetters»
+			«input.type.createPropertyGetters»
 		}
 		'''
 	}

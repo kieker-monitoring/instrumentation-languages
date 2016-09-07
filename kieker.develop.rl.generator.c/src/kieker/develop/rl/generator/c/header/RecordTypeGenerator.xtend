@@ -1,71 +1,61 @@
 package kieker.develop.rl.generator.c.header
 
-import java.io.File
+import kieker.develop.rl.generator.TypeInputModel
 import kieker.develop.rl.recordLang.Property
 import kieker.develop.rl.recordLang.RecordType
-import kieker.develop.rl.recordLang.Type
 
 import static extension kieker.develop.rl.generator.c.CommonCFunctionsExtension.*
-import static extension kieker.develop.rl.typing.TypeResolution.*
 import static extension kieker.develop.rl.typing.PropertyResolution.*
+import static extension kieker.develop.rl.typing.TypeResolution.*
+import kieker.develop.rl.generator.AbstractTypeGenerator
+import kieker.develop.rl.recordLang.Type
 
-class RecordTypeGenerator extends kieker.develop.rl.generator.c.main.RecordTypeGenerator {
-
-	/**
-	 * Return the unique id.
-	 */
-	override getId() '''c.header'''
+class RecordTypeGenerator extends AbstractTypeGenerator<RecordType> {
 	
-	/**
-	 * Return the preferences activation description.
-	 */
-	override getDescription() '''C header file generator'''
-	
-	/**
-	 * No header for abstract record types.
-	 */
-	override boolean supportsAbstractRecordType()  { false }
-
-	/**
-	 * File name for c-header files.
-	 */	
-	override getFileName(Type type) '''«type.getDirectoryName»«File::separator»«type.name.cstyleName».h'''
 		
+	override accepts(Type type) {
+		if (type instanceof RecordType)
+			!(type as RecordType).abstract
+		else
+			false
+	}
+
 	/**
 	 * Primary code generation template.
 	 * 
 	 * @params type
 	 * 		one record type to be used to create monitoring record
 	 */
-	override generate(RecordType type) {
+	override generate(TypeInputModel<RecordType> input) {
 		'''
-		«header»#include <stdlib.h>
-		#include <kieker.h>
-		
-		/*
-		 * Author: «if (type.author == null) author else type.author»
-		 * Version: «if (type.since == null) version else type.since»
-		 */
-		«type.createStructure»
-		
-		«type.createSerializerDeclaration»
+			«input.header»#include <stdlib.h>
+			#include <kieker.h>
+			
+			/*
+			 * Author: «if (input.type.author == null) input.author else input.type.author»
+			 * Version: «if (input.type.since == null) input.version else input.type.since»
+			 */
+			«input.type.createStructure»
+			
+			«input.type.createSerializerDeclaration»
 		'''
 	}
-	
+
 	private def createStructure(RecordType type) '''
 		typedef struct {
 			«type.collectAllDataProperties.map[createPropertyDeclaration].join»
 		} «type.packageName»_«type.name.cstyleName»;
 	'''
-	
+
 	private def createPropertyDeclaration(Property property) '''
 		«property.findType.createTypeName» «property.name»;
 	'''
-		
+
 	/**
 	 * Generate the serializer for the given record type.
 	 */
-	private def createSerializerDeclaration(RecordType type) '''
+	private def createSerializerDeclaration(
+		RecordType type) '''
 		/*
 		 * Serialize an «type.name» and return the size of the written structure.
 		 *
@@ -78,6 +68,5 @@ class RecordTypeGenerator extends kieker.develop.rl.generator.c.main.RecordTypeG
 		 */
 		int «type.packageName»_«type.name.cstyleName»_serialize(char *buffer, const int id, const int offset, const «type.packageName»_«type.name.cstyleName» value);
 	'''
-		
 
 }

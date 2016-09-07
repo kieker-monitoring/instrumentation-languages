@@ -105,7 +105,7 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 			duplicates.forEach[entry | // if (!typeAndPackageIdentical(entry.key.type,entry.value.type))
 				error('Multiple property inheritance form ' + entry.key.name + 
 						' inherited from ' + (entry.key.eContainer as Type).name + ' and ' + (entry.value.eContainer as Type).name, 
-						RecordLangPackage.Literals::COMPLEX_TYPE__PARENTS,
+						RecordLangPackage.Literals::RECORD_TYPE__PARENTS,
 						INVALID_NAME)
 			]
 		}
@@ -123,7 +123,7 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 			duplicates.forEach[entry | // if (!typeAndPackageIdentical(entry.key.type,entry.value.type))
 				error('Multiple property inheritance from ' + entry.key.name + 
 						' inherited from ' + (entry.key.eContainer as Type).name + ' and ' + (entry.value.eContainer as Type).name, 
-						RecordLangPackage.Literals::COMPLEX_TYPE__PARENTS,
+						RecordLangPackage.Literals::TEMPLATE_TYPE__PARENTS,
 						INVALID_NAME)
 			]
 		}

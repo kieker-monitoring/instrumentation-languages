@@ -1,54 +1,38 @@
 package kieker.develop.rl.generator.java.record
 
-import java.io.File
-import kieker.develop.rl.generator.AbstractTemplateTypeGenerator
+import kieker.develop.rl.generator.AbstractTypeGenerator
+import kieker.develop.rl.generator.TypeInputModel
 import kieker.develop.rl.recordLang.Model
 import kieker.develop.rl.recordLang.Property
 import kieker.develop.rl.recordLang.TemplateType
-import kieker.develop.rl.recordLang.Type
 import org.eclipse.emf.common.util.EList
 
+import static extension kieker.develop.rl.generator.java.JavaTypeMapping.*
 import static extension kieker.develop.rl.generator.java.record.NameResolver.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
-import static extension kieker.develop.rl.generator.java.JavaTypeMapping.*
+import kieker.develop.rl.recordLang.Type
 
-class TemplateTypeGenerator extends AbstractTemplateTypeGenerator {
-
-	/**
-	 * Return the unique id.
-	 */
-	override getId() '''java'''
+class TemplateTypeGenerator extends AbstractTypeGenerator<TemplateType> {
 	
-	/**
-	 * Define language/generation type, which is also used to define the outlet.
-	 */
-	override getOutletType() '''java'''
+	override accepts(Type type) {
+		type instanceof TemplateType
+	}
 	
-	/**
-	 * Compute the directory name for a record type.
-	 */
-	override getDirectoryName(Type type) '''«(type.eContainer as Model).name.replace('.',File::separator)»'''
-		
-	/**
-	 * Compute file name.
-	 */
-	override getFileName(Type type) '''«type.getDirectoryName»«File::separator»«type.name».java'''
-	
-	override generate(TemplateType type) {
-		val definedAuthor = if (type.author == null) author else type.author
-		val definedVersion = if (type.since == null) version else type.since
+	override generate(TypeInputModel<TemplateType> input) {
+		val definedAuthor = if (input.type.author == null) input.author else input.type.author
+		val definedVersion = if (input.type.since == null) input.version else input.type.since
 		'''
-		«header»package «(type.eContainer as Model).name»;
+		«input.header»package «(input.type.eContainer as Model).name»;
 		
-		«type.parents.createImports(type)»
+		«input.type.parents.createImports(input.type)»
 		
 		/**
 		 * @author «definedAuthor»
 		 * 
 		 * @since «definedVersion»
 		 */
-		public interface «type.name» extends «type.parents.createExtends» {
-			«type.properties.map[property | createPropertyGetter(property)].join»
+		public interface «input.type.name» extends «input.type.parents.createExtends» {
+			«input.type.properties.map[property | createPropertyGetter(property)].join»
 		}
 		'''
 	}

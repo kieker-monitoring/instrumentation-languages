@@ -6,6 +6,8 @@ import kieker.develop.rl.recordLang.Model
 import kieker.develop.rl.recordLang.Classifier
 import kieker.develop.rl.generator.InternalErrorException
 import kieker.develop.rl.typing.base.BaseTypes
+import java.io.File
+import kieker.develop.rl.recordLang.Type
 
 /**
  * @author Reiner Jung
@@ -25,6 +27,8 @@ class CommonCFunctionsExtension {
 	 * Compute the package name used as prefix for all functions.
 	 */
 	def static packageName(RecordType type) '''«(type.eContainer as Model).name.replace('.','_')»'''
+	
+	def static directoryPathName(Type type) '''«(type.eContainer as Model).name.replace('.',File::separator)»'''
 	
 	/**
 	 * Determine the right C string for a given system type.

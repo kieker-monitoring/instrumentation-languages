@@ -1,43 +1,19 @@
 package kieker.develop.rl.generator.java.factory
 
-import kieker.develop.rl.generator.AbstractRecordTypeGenerator
+import kieker.develop.rl.generator.TypeInputModel
 import kieker.develop.rl.recordLang.Model
 import kieker.develop.rl.recordLang.RecordType
+import kieker.develop.rl.generator.AbstractTypeGenerator
 import kieker.develop.rl.recordLang.Type
-import java.io.File
-import java.util.Calendar
 
-class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
-
-	/**
-	 * Return the unique id.
-	 */
-	override getId() '''java.factory'''
+class RecordFactoryTypeGenerator extends AbstractTypeGenerator<RecordType> {
 	
-	/**
-	 * Return the preferences activation description.
-	 */
-	override getDescription() '''Java factory'''
-	
-	/**
-	 * No factory for abstract record types.
-	 */
-	override boolean supportsAbstractRecordType()  { false }
-
-	/**
-	 * Define language/generation type, which is also used to define the outlet.
-	 */
-	override getOutletType() '''java-factory'''
-
-	/**
-	 * Compute the directory name for a record type.
-	 */
-	override getDirectoryName(Type type) '''«(type.eContainer as Model).name.replace('.', File::separator)»'''
-
-	/**
-	 * Compute file name.
-	 */
-	override getFileName(Type type) '''«type.getDirectoryName»«File::separator»«type.name»Factory.java'''
+	override accepts(Type type) {
+		if (type instanceof RecordType) {
+			!(type as RecordType).abstract
+		} else
+			false
+	}
 
 	/**
 	 * Primary code generation template.
@@ -45,13 +21,12 @@ class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
 	 * @param type
 	 * 		one record type to be used to create the corresponding monitoring record factory
 	 */
-	override generate(RecordType type) {
-		val definedAuthor = if (type.author == null) author else type.author
-		val definedVersion = if (type.since == null) version else type.since
+	override generate(TypeInputModel<RecordType> input) {
+		val definedAuthor = if (input.type.author == null) input.author else input.type.author
+		val definedVersion = if (input.type.since == null) input.version else input.type.since
 
 		'''
-			«IF (!header.equals(""))»«header.replace("THIS-YEAR", Calendar.getInstance().get(Calendar.YEAR).toString)»
-			«ENDIF»package «(type.eContainer as Model).name»;
+			«input.header»package «(input.type.eContainer as Model).name»;
 			
 			import java.nio.ByteBuffer;
 
@@ -63,20 +38,20 @@ class RecordFactoryTypeGenerator extends AbstractRecordTypeGenerator {
 			 * 
 			 * @since «definedVersion»
 			 */
-			public final class «type.name»Factory implements IRecordFactory<«type.name»> {
+			public final class «input.type.name»Factory implements IRecordFactory<«input.type.name»> {
 				
 				@Override
-				public «type.name» create(final ByteBuffer buffer, final IRegistry<String> stringRegistry) {
-					return new «type.name»(buffer, stringRegistry);
+				public «input.type.name» create(final ByteBuffer buffer, final IRegistry<String> stringRegistry) {
+					return new «input.type.name»(buffer, stringRegistry);
 				}
 				
 				@Override
-				public «type.name» create(final Object[] values) {
-					return new «type.name»(values);
+				public «input.type.name» create(final Object[] values) {
+					return new «input.type.name»(values);
 				}
 				
 				public int getRecordSizeInBytes() {
-					return «type.name».SIZE;
+					return «input.type.name».SIZE;
 				}
 			}
 		'''

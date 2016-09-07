@@ -15,14 +15,12 @@
  ***************************************************************************/
 package kieker.develop.rl.preferences;
 
-import java.lang.reflect.InvocationTargetException;
-
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.core.runtime.preferences.DefaultScope;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 
-import kieker.develop.rl.generator.AbstractRecordTypeGenerator;
 import kieker.develop.rl.generator.GeneratorConfiguration;
+import kieker.develop.rl.ouput.config.AbstractOutletConfiguration;
 
 /**
  * @author Reiner Jung
@@ -44,24 +42,9 @@ public class TargetsPreferenceInitializer extends AbstractPreferenceInitializer 
 	 */
 	@Override
 	public void initializeDefaultPreferences() {
-		for (final Class<?> generatorClass : GeneratorConfiguration.getRecordTypeGenerators()) {
-			try {
-				final AbstractRecordTypeGenerator generator = (AbstractRecordTypeGenerator) generatorClass.getConstructor().newInstance();
-				TargetsPreferenceInitializer.getPreferenceStore().putBoolean(TargetsPreferences.GENERATOR_ACTIVE + generator.getId(),
-						TargetsPreferences.DEFAULT_GENERATOR_INACTIVE);
-			} catch (final IllegalArgumentException e) {
-				e.printStackTrace();
-			} catch (final SecurityException e) {
-				e.printStackTrace();
-			} catch (final InstantiationException e) {
-				e.printStackTrace();
-			} catch (final IllegalAccessException e) {
-				e.printStackTrace();
-			} catch (final InvocationTargetException e) {
-				e.printStackTrace();
-			} catch (final NoSuchMethodException e) {
-				e.printStackTrace();
-			}
+		for (final AbstractOutletConfiguration configuration : GeneratorConfiguration.getOutletConfigurations()) {
+			TargetsPreferenceInitializer.getPreferenceStore().putBoolean(TargetsPreferences.GENERATOR_ACTIVE + configuration.getName(),
+					TargetsPreferences.DEFAULT_GENERATOR_INACTIVE);
 		}
 
 		TargetsPreferenceInitializer.getPreferenceStore().put(TargetsPreferences.AUTHOR_NAME, TargetsPreferences.DEFAULT_AUTHOR);

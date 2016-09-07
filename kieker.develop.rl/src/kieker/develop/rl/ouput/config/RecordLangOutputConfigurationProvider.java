@@ -41,19 +41,20 @@ public class RecordLangOutputConfigurationProvider implements IOutputConfigurati
 	 *
 	 * @return set of outlet configurations
 	 */
+	@Override
 	public Set<OutputConfiguration> getOutputConfigurations() {
 		final Set<OutputConfiguration> configurations = new HashSet<OutputConfiguration>();
 
-		for (final OutletConfiguration outlet : GeneratorConfiguration.getOutletConfigurations()) {
+		for (final AbstractOutletConfiguration outlet : GeneratorConfiguration.getOutletConfigurations()) {
 			configurations.add(this.createOutputConfiguration(outlet));
 		}
 
 		return configurations;
 	}
 
-	private OutputConfiguration createOutputConfiguration(final OutletConfiguration outlet) {
+	private OutputConfiguration createOutputConfiguration(final AbstractOutletConfiguration outlet) {
 		final OutputConfiguration configuration = new OutputConfiguration(outlet.getName());
-		configuration.setDescription(outlet.getDescription());
+		configuration.setDescription(outlet.getDescription() + " output folder");
 		configuration.setOutputDirectory(outlet.getDirectory());
 		configuration.setCleanUpDerivedResources(true);
 		configuration.setOverrideExistingResources(true);

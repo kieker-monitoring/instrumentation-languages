@@ -1,76 +1,46 @@
 package kieker.develop.rl.generator.c.main
 
-import java.io.File
-import kieker.develop.rl.generator.AbstractRecordTypeGenerator
 import kieker.develop.rl.generator.InternalErrorException
+import kieker.develop.rl.generator.TypeInputModel
 import kieker.develop.rl.recordLang.Classifier
-import kieker.develop.rl.recordLang.Model
 import kieker.develop.rl.recordLang.Property
 import kieker.develop.rl.recordLang.RecordType
-import kieker.develop.rl.recordLang.Type
 import kieker.develop.rl.typing.base.BaseTypes
 
 import static extension kieker.develop.rl.generator.c.CommonCFunctionsExtension.*
-import static extension kieker.develop.rl.typing.TypeResolution.*
 import static extension kieker.develop.rl.typing.PropertyResolution.*
+import static extension kieker.develop.rl.typing.TypeResolution.*
+import kieker.develop.rl.generator.AbstractTypeGenerator
+import kieker.develop.rl.recordLang.Type
 
-class RecordTypeGenerator extends AbstractRecordTypeGenerator {
-	
-	/**
-	 * Return the unique id.
-	 */
-	override getId() '''c.main'''
-	
-	/**
-	 * Return the preferences activation description.
-	 */
-	override getDescription() '''C code generator'''
-	
-	/**
-	 * No serialization for abstract record types.
-	 */
-	override boolean supportsAbstractRecordType()  { false }
-	
-	/**
-	 * Compute the directory name for a record type.
-	 */
-	override getDirectoryName(Type type) '''«(type.eContainer as Model).name.replace('.',File::separator)»'''
+class RecordTypeGenerator extends AbstractTypeGenerator<RecordType> {
 
-	/**
-	 * compute the filename of a c file. 
- 	*/
-	override getFileName(Type type) '''«type.getDirectoryName»«File::separator»«type.name.cstyleName».c'''	
-	
-	/**
-	 * Return the language type name.
-	 */
-	override getOutletType() '''c'''
+	override accepts(Type type) {
+		if (type instanceof RecordType)
+			!(type as RecordType).abstract
+		else
+			false
+	}
 			
 	/**
 	 * Primary code generation template.
 	 * 
 	 * @param type
 	 * 		one record type to be used to create monitoring record
-	 * @param author
-	 * 		generic author name for the record
-	 * @param version
-	 * 		generic kieker version for the record
-	 * @param headerComment
-	 *      comment placed as header of the file
 	 */
-	override generate(RecordType type) {
-		val definedAuthor = if (type.author == null) author else type.author
-		val definedVersion = if (type.since == null) version else type.since
+	override generate(TypeInputModel<RecordType> input) {
+		val definedAuthor = if (input.type.author == null) input.author else input.type.author
+		val definedVersion = if (input.type.since == null) input.version else input.type.since
 		'''
-		«header»#include <stdlib.h>
+		«input.header»#include <stdlib.h>
 		#include <kieker.h>
-		#include "«type.getDirectoryName»/«type.packageName»_«type.name.cstyleName».h"
+		#include "«input.type.directoryPathName»/«input.type.name.cstyleName».h"
 
 		/**
 		 * Author: «definedAuthor»
 		 * Version: «definedVersion»
 		 */
-		«type.createSerializer»
+		«input.type.createSerializer»
 		'''
 	}
 	
@@ -90,7 +60,7 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 		 */
 		int «type.packageName»_«type.name.cstyleName»_serialize(char *buffer, const int id, const int offset, const «type.packageName»_«type.name.cstyleName» value) {
 			int length = 0;
-			«type.collectAllDataProperties.map[createValueSerializer].join»
+			«type.collectAllDataProperties.map[createValueSerializerInvocation].join»
 			return length;
 		}
 	'''
@@ -98,15 +68,15 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 	/**
 	 * 
 	 */
-	private def createValueSerializer(Property property) '''
-		length += kieker_serialize_«property.findType.serializerSuffix»(buffer,offset,«property.name»);
+	private def createValueSerializerInvocation(Property property) '''
+		length += «property.findType.valueSerializerName»(buffer,offset,«property.name»);
 	'''
 		
 	/**
 	 * 
 	 */
-	private def serializerSuffix(Classifier classifier) throws InternalErrorException {
-		switch (BaseTypes.getTypeEnum(classifier.type)) {
+	private def valueSerializerName(Classifier classifier) throws InternalErrorException {
+		'kieker_serialize_' + switch (BaseTypes.getTypeEnum(classifier.type)) {
 			case STRING : 'string'
 			case BYTE : 'int8'
 			case SHORT : 'int16'
@@ -118,5 +88,5 @@ class RecordTypeGenerator extends AbstractRecordTypeGenerator {
 			case BOOLEAN : 'boolean'
 		}
 	}
-		
+			
 }
