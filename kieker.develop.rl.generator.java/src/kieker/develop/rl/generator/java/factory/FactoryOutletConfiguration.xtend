@@ -11,7 +11,7 @@ class FactoryOutletConfiguration extends AbstractOutletConfiguration {
 		
 	new() {
 		super(FACTORY_OUTLET_ID, "Java factory", "./src-gen/java-factory")
-		generators += new RecordFactoryTypeGenerator
+		eventTypeGenerators += new EventTypeGenerator
 	}
 	
 	override outputFilePath(Type type) '''«type.outputDirectory»«File::separator»«type.name»Factory.java'''

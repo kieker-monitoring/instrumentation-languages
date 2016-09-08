@@ -2,12 +2,12 @@ package kieker.develop.rl.generator.delphi
 
 import kieker.develop.rl.generator.AbstractTypeGenerator
 import kieker.develop.rl.generator.TypeInputModel
-import kieker.develop.rl.recordLang.RecordType
+import kieker.develop.rl.recordLang.EventType
 import kieker.develop.rl.recordLang.Type
 
-class RecordTypeGenerator extends AbstractTypeGenerator<RecordType> {
+class EventTypeGenerator extends AbstractTypeGenerator<EventType> {
 		
-	override generate(TypeInputModel<RecordType> input) {
+	override generate(TypeInputModel<EventType> input) {
 		''''''
 	}
 	

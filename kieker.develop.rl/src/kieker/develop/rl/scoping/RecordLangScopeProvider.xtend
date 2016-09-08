@@ -19,7 +19,7 @@ import java.util.Collection
 import java.util.List
 import kieker.develop.rl.recordLang.ForeignKey
 import kieker.develop.rl.recordLang.Property
-import kieker.develop.rl.recordLang.RecordType
+import kieker.develop.rl.recordLang.EventType
 import kieker.develop.rl.recordLang.TemplateType
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EClassifier
@@ -46,7 +46,7 @@ class RecordLangScopeProvider extends AbstractDeclarativeScopeProvider {
 	 * Define scope for foreign key reference.
 	 */
 	def IScope scope_ForeignKey_propertyRef(ForeignKey key, EReference reference) {
-		return Scopes::scopeFor(key.recordType.collectAllProperties)
+		return Scopes::scopeFor(key.eventType.collectAllProperties)
 	}
 	
 	/**
@@ -55,7 +55,7 @@ class RecordLangScopeProvider extends AbstractDeclarativeScopeProvider {
 	def IScope scope_Property_referTo(Property property, EReference reference) {
 		val type = property.eContainer()
 		switch(type) {
-			RecordType: return Scopes::scopeFor(type.collectAllProperties)
+			EventType: return Scopes::scopeFor(type.collectAllProperties)
 			TemplateType: return Scopes::scopeFor(type.collectAllProperties)
 		}
 	}

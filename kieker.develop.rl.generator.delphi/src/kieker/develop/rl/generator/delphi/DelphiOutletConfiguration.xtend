@@ -11,7 +11,7 @@ class DelphiOutletConfiguration extends AbstractOutletConfiguration {
 	
 	new () {
 		super(DELFI_OUTLET_ID, "Delphi", "./src-gen/delphi")
-		this.generators += new kieker.develop.rl.generator.delphi.RecordTypeGenerator
+		this.eventTypeGenerators += new kieker.develop.rl.generator.delphi.EventTypeGenerator
 	}
 												
 	override outputDirectory(Type type) '''«(type.eContainer as Model).name.replace('.',File::separator)»'''

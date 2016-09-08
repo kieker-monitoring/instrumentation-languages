@@ -11,8 +11,8 @@ class JavaOutletConfiguration extends AbstractOutletConfiguration {
 		
 	new() {
 		super(JAVA_OUTLET_ID, "Java record", "./src-gen/java")
-		generators += new RecordTypeGenerator
-		generators += new TemplateTypeGenerator
+		eventTypeGenerators += new EventTypeGenerator
+		templateTypeGenerators += new TemplateTypeGenerator
 	}
 		
 	override outputFilePath(Type type) '''«type.outputDirectory»«File::separator»«type.name».java'''

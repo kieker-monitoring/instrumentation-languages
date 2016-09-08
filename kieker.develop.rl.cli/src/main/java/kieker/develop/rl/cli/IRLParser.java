@@ -35,7 +35,7 @@ import com.google.inject.Injector;
 import kieker.common.logging.Log;
 import kieker.common.logging.LogFactory;
 import kieker.develop.rl.RecordLangStandaloneSetup;
-import kieker.develop.rl.generator.AbstractRecordTypeGenerator;
+import kieker.develop.rl.generator.AbstractEventTypeGenerator;
 import kieker.develop.rl.generator.GeneratorConfiguration;
 import kieker.develop.rl.generator.RecordLangGenerator;
 import kieker.develop.rl.ouput.config.RecordLangOutputConfigurationProvider;
@@ -127,9 +127,9 @@ public class IRLParser {
 				TargetsPreferences.setAuthorName(preferenceStore, author);
 				TargetsPreferences.setVersionID(preferenceStore, version);
 				// setup language activation
-				for (final Class<?> generatorClass : GeneratorConfiguration.getRecordTypeGenerators()) {
+				for (final Class<?> generatorClass : GeneratorConfiguration.getEventTypeGenerators()) {
 					try {
-						final AbstractRecordTypeGenerator generator = (AbstractRecordTypeGenerator) generatorClass.getConstructor().newInstance();
+						final AbstractEventTypeGenerator generator = (AbstractEventTypeGenerator) generatorClass.getConstructor().newInstance();
 						TargetsPreferences.setGeneratorActive(preferenceStore, generator.getId(), false);
 						for (final String selected : selectedLanguageTypes) {
 							if (selected.equals(generator.getId())) {

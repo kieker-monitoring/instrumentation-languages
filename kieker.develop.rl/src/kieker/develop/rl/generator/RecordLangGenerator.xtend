@@ -20,15 +20,17 @@ import java.util.Calendar
 import kieker.develop.rl.ouput.config.AbstractOutletConfiguration
 import kieker.develop.rl.preferences.TargetsPreferences
 import kieker.develop.rl.recordLang.ModelSubType
-import kieker.develop.rl.recordLang.RecordType
+import kieker.develop.rl.recordLang.EventType
 import kieker.develop.rl.recordLang.TemplateType
-import kieker.develop.rl.recordLang.Type
 import org.eclipse.core.runtime.preferences.IEclipsePreferences
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGenerator2
 import org.eclipse.xtext.generator.IGeneratorContext
 import org.osgi.service.prefs.Preferences
+import java.util.Collection
+import kieker.develop.rl.recordLang.Type
+import kieker.develop.rl.generator.modeltypes.ModelSubTypeGenerator
 
 /**
  * Generates one single files per record for java, c, and perl. 
@@ -37,7 +39,7 @@ class RecordLangGenerator implements IGenerator2 {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		if (resource.URI.platformResource) {
-			// list all generators to support RecordType
+			// list all generators to support EventType
 			val preferenceStore = TargetsPreferences.preferenceStore
 
 			val project = resource.URI.segmentsList.get(1)
@@ -45,8 +47,10 @@ class RecordLangGenerator implements IGenerator2 {
 			val projectStore = preferenceStore.node(project)
 
 			projectStore.v()
-
-			preferenceStore.runGenerators(resource, fsa)
+			
+			val typeProvider = new TypeProvider(resource.resourceSet)
+			
+			resource.runGenerators(preferenceStore, typeProvider, fsa)
 		}
 	}
 
@@ -54,9 +58,21 @@ class RecordLangGenerator implements IGenerator2 {
 		preferences.childrenNames.forEach[System.out.println(">> " + it)]
 	}
 
-	private def runGenerators(IEclipsePreferences preferenceStore, Resource resource, IFileSystemAccess2 fsa) {
+	/**
+	 * Execute all generators for the IRL for the given resource.
+	 * 
+	 * @param preferenceStore contains all preferences used for the generation.
+	 * @param resource the resource containing the ComplexTypes
+	 * @param fsa provides the access to the file system
+	 */
+	private def runGenerators(Resource resource, IEclipsePreferences preferenceStore, TypeProvider typeProvider, IFileSystemAccess2 fsa) {
 		val version = TargetsPreferences.getVersionID(preferenceStore)
 		val author = TargetsPreferences.getAuthorName(preferenceStore)
+
+		val modelSubTypeGenerator = new ModelSubTypeGenerator()
+		modelSubTypeGenerator.author = author
+		modelSubTypeGenerator.version = version
+		modelSubTypeGenerator.typeProvider = typeProvider
 
 		for (AbstractOutletConfiguration configuration : GeneratorConfiguration.outletConfigurations) {
 			if (TargetsPreferences.isGeneratorActive(preferenceStore, configuration.name)) {
@@ -72,33 +88,62 @@ class RecordLangGenerator implements IGenerator2 {
 				} else
 					""
 				
-				val types = new ArrayList<Type>()
-								
-				resource.allContents.filter(typeof(ModelSubType))
-				
-				// TODO process model types.
-				
-				resource.allContents.filter(typeof(Type)).forEach[types += it]
-				
-				configuration.generators.forEach[generator |
-					types.filter[generator.accepts(it)].forEach[
-						val result = switch (it) {
-							RecordType : (generator as AbstractTypeGenerator<RecordType>).generate(new TypeInputModel<RecordType>(header, author, version, it))
-							TemplateType : (generator as AbstractTypeGenerator<TemplateType>).generate(new TypeInputModel<TemplateType>(header, author, version, it))
+				val eventTypes = new ArrayList<EventType>()
+				val templateTypes = new ArrayList<TemplateType>()
+							
+				/** generate event and template types for model sub types. */	
+				val modelSubTypes = resource.allContents.filter(typeof(ModelSubType))
+																
+				modelSubTypes.forEach[
+					modelSubTypeGenerator.generate(it).forEach[type |
+						switch(type) {
+							EventType: eventTypes.add(type)
+							TemplateType: templateTypes.add(type)
 						}
-						fsa.generateFile(configuration.outputFilePath(it), configuration.name, result)
 					]
 				]
+				
+				/** Add the other template and event types to their respective lists. */
+				resource.allContents.filter(typeof(EventType)).forEach[eventTypes += it]
+				resource.allContents.filter(typeof(TemplateType)).forEach[templateTypes += it]
+				
+				configuration.eventTypeGenerators.processTypes(eventTypes, configuration, fsa, header, author, version)
+				configuration.templateTypeGenerators.processTypes(templateTypes, configuration, fsa, header, author, version)
 			}
 		}
-
+	}
+	
+	/**
+	 * Iterate over all generators for all types and produce one output file.
+	 * 
+	 * @param generators list of generators
+	 * @param types list of types
+	 * @param configuration the present configuration
+	 * @param fsa the file system access handler
+	 * @param header comment used in the output
+	 * @param author default author used in the output
+	 * @param version default version used in the output
+	 */
+	private def <T extends Type> void processTypes(Collection<AbstractTypeGenerator<T>> generators, 
+		Collection<T> types,
+		AbstractOutletConfiguration configuration,
+		IFileSystemAccess2 fsa,
+		String header, String author, String version
+	) {
+		generators.forEach[generator |
+			types.filter[generator.accepts(it)].forEach[
+				val result = generator.generate(new TypeInputModel<T>(header, author, version, it))
+				fsa.generateFile(configuration.outputFilePath(it), configuration.name, result)
+			]
+		]
 	}
 
 
-
+	/** @{inheritDoc}. Defined to honor API. */
 	override afterGenerate(Resource input, IFileSystemAccess2 fsa, IGeneratorContext context) {
 	}
 
+	/** @{inheritDoc}. Defined to honor API. */
 	override beforeGenerate(Resource input, IFileSystemAccess2 fsa, IGeneratorContext context) {
 	}
 }

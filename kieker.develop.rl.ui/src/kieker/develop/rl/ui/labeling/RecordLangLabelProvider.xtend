@@ -66,7 +66,7 @@ class RecordLangLabelProvider extends org.eclipse.xtext.ui.label.DefaultEObjectL
 		'constant.gif'
 	}
 	
-	def image(kieker.develop.rl.recordLang.RecordType e) {
+	def image(kieker.develop.rl.recordLang.EventType e) {
 		'record.png'
 	}
 	

@@ -1,14 +1,25 @@
 package kieker.develop.rl.typing
 
 import kieker.develop.rl.recordLang.Property
-import kieker.develop.rl.recordLang.RecordType
+import kieker.develop.rl.recordLang.EventType
 import java.util.List
 import java.util.ArrayList
 import kieker.develop.rl.recordLang.TemplateType
 
 import static extension kieker.develop.rl.typing.TypeResolution.*
+import kieker.develop.rl.recordLang.PropertyModifier
 
 class PropertyResolution {
+	
+		
+	// TODO these should be used everywhere
+	static def isTransient(Property property) {
+		property.modifiers.exists[it == PropertyModifier.TRANSIENT]
+	}
+	
+	static def isIncrement(Property property) {
+		property.modifiers.exists[it == PropertyModifier.INCREMENT]
+	}
 		
 	/* -- data properties -- */
 	
@@ -23,7 +34,7 @@ class PropertyResolution {
 	 * @returns
 	 * 		a complete list of all properties in a record
 	 */
-	static def List<Property> collectAllDataProperties(RecordType type) {
+	static def List<Property> collectAllDataProperties(EventType type) {
 		val list = new ArrayList<Property>()
 		list.addAll(collectAllProperties(type).filter[it.referTo == null])
 		return list
@@ -58,15 +69,15 @@ class PropertyResolution {
 	 * @returns
 	 * 		a complete list of all properties in a record
 	 */
-	static def List<Property> collectAllProperties(RecordType type) {
+	static def List<Property> collectAllProperties(EventType type) {
 		val List<Property> result =
 			if (type.parent != null)
 				type.parent.collectAllProperties
 			else 
 				new ArrayList<Property>()
 		
-		if (type.parents != null) 
-			type.parents.forEach[result.addAllUnique(it.collectAllProperties)]
+		if (type.inherits != null) 
+			type.inherits.forEach[result.addAllUnique(it.collectAllProperties)]
 	
 		return result.addAllUnique(type.properties)
 	}
@@ -82,8 +93,8 @@ class PropertyResolution {
 	 */
 	static def List<Property> collectAllProperties(TemplateType type) {
 		val List<Property> result = new ArrayList<Property>()
-		if (type.parents != null)
-			type.parents.forEach[iface | result.addAllUnique(iface.collectAllProperties)]
+		if (type.inherits != null)
+			type.inherits.forEach[iface | result.addAllUnique(iface.collectAllProperties)]
 
 		return result.addAllUnique(type.properties)
 	}
@@ -101,10 +112,10 @@ class PropertyResolution {
 	 * @returns
 	 * 		a complete list of all properties in a record
 	 */
-	static def List<Property> collectAllTemplateProperties(RecordType type) {
-		if (type.parents != null) {
+	static def List<Property> collectAllTemplateProperties(EventType type) {
+		if (type.inherits != null) {
 			val List<Property> result = new ArrayList<Property>()
-			type.parents.forEach[iface | result.addAllUnique(iface.collectAllTemplateProperties)]
+			type.inherits.forEach[iface | result.addAllUnique(iface.collectAllTemplateProperties)]
 			return result
 		} else
 			return new ArrayList<Property>()
@@ -122,8 +133,8 @@ class PropertyResolution {
 	 */
 	static def List<Property> collectAllTemplateProperties(TemplateType type) {
 		val List<Property> result = new ArrayList<Property>()
-		if (type.parents!=null)
-			type.parents.forEach[iface | result.addAllUnique(iface.collectAllTemplateProperties)]
+		if (type.inherits!=null)
+			type.inherits.forEach[iface | result.addAllUnique(iface.collectAllTemplateProperties)]
 		return result.addAllUnique(type.properties)
 	}
 	
@@ -164,7 +175,7 @@ class PropertyResolution {
 	 * @returns
 	 * 		a complete list of all properties which require getters
 	 */
-	static def List<Property> collectAllGetterDeclarationProperties(RecordType type) {
+	static def List<Property> collectAllGetterDeclarationProperties(EventType type) {
 		var List<Property> result = type.collectAllProperties
 		if (type.parent != null)
 			return result.removeAlreadyImplementedProperties(type.parent)
@@ -185,7 +196,7 @@ class PropertyResolution {
 	 * @returns
 	 * 		a complete list of all properties which require declaration
 	 */
-	static def List<Property> collectAllDeclarationProperties(RecordType type) {
+	static def List<Property> collectAllDeclarationProperties(EventType type) {
 		var List<Property> properties = new ArrayList<Property>() 
 		properties.addAll(type.collectAllTemplateProperties)
 		properties.addAll(type.properties)
@@ -208,7 +219,7 @@ class PropertyResolution {
 	 * @returns
 	 * 		the remaining list of properties
 	 */
-	private static def List<Property> removeAlreadyImplementedProperties(List<Property> list, RecordType parentType) {
+	private static def List<Property> removeAlreadyImplementedProperties(List<Property> list, EventType parentType) {
 		val List<Property> allParentProperties = parentType.collectAllProperties
 		var result = list // necessary for the loop below. very ugly 
 		for (Property parentProperty : allParentProperties) {

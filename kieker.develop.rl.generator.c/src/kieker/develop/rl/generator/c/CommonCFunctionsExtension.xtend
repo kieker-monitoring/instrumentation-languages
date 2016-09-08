@@ -1,7 +1,7 @@
 package kieker.develop.rl.generator.c
 
 import java.util.regex.Pattern
-import kieker.develop.rl.recordLang.RecordType
+import kieker.develop.rl.recordLang.EventType
 import kieker.develop.rl.recordLang.Model
 import kieker.develop.rl.recordLang.Classifier
 import kieker.develop.rl.generator.InternalErrorException
@@ -26,7 +26,7 @@ class CommonCFunctionsExtension {
 	/**
 	 * Compute the package name used as prefix for all functions.
 	 */
-	def static packageName(RecordType type) '''«(type.eContainer as Model).name.replace('.','_')»'''
+	def static packageName(EventType type) '''«(type.eContainer as Model).name.replace('.','_')»'''
 	
 	def static directoryPathName(Type type) '''«(type.eContainer as Model).name.replace('.',File::separator)»'''
 	

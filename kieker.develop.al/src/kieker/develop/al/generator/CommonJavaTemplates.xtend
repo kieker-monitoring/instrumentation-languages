@@ -24,7 +24,7 @@ import kieker.develop.al.aspectLang.TypeReference
 import kieker.develop.al.aspectLang.Value
 import kieker.develop.rl.generator.InternalErrorException
 import kieker.develop.rl.recordLang.Model
-import kieker.develop.rl.recordLang.RecordType
+import kieker.develop.rl.recordLang.EventType
 import org.eclipse.emf.common.util.EList
 
 // TODO this should be somewhat moved to a common module with RL/AL???
@@ -47,14 +47,14 @@ class CommonJavaTemplates {
 	 * Create a code fragment containing all necessary record inputs.
 	 */
 	def static createRecordInputs(EList<Collector> collectors) {
-		val recordList = new ArrayList<RecordType>()
+		val recordList = new ArrayList<EventType>()
 		collectors.forEach[collector |
 			collector.events.forEach[recordList.addUnique(it.type)]
 		]
 		return recordList.map['''import «(it.eContainer as Model).name».«it.name»;'''].join('\n')
 	}
 	
-	private def static void addUnique(List<RecordType> list, RecordType type) {
+	private def static void addUnique(List<EventType> list, EventType type) {
 		if (!list.contains(type))
 			list.add(type)
 	}

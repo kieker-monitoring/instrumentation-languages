@@ -17,7 +17,7 @@ package kieker.develop.rl.typing.jar;
 
 import com.google.common.base.Predicate
 import com.google.inject.Inject
-import kieker.develop.rl.recordLang.RecordType
+import kieker.develop.rl.recordLang.EventType
 import kieker.develop.rl.recordLang.TemplateType
 import kieker.develop.rl.typing.ITypeProvider
 import kieker.develop.rl.typing.base.BaseTypeGlobalScopeProvider
@@ -56,7 +56,7 @@ class JarModelGlobalScopeProvider extends BaseTypeGlobalScopeProvider {
         	} else
     			throw new IllegalStateException("context must be contained in a resource") 
         } else if (referenceType.name.equals(TemplateType.simpleName) 
-        	|| referenceType.name.equals(RecordType.simpleName)) {
+        	|| referenceType.name.equals(EventType.simpleName)) {
         	if (resource != null) {
         		val ResourceSet resourceSet = resource.getResourceSet()
         		if (resourceSet != null) {

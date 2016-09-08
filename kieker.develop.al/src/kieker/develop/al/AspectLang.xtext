@@ -52,7 +52,7 @@ Collector:
 ;
 
 Event:
-	type=[irl::RecordType|QualifiedName] '(' (initializations+=Value (',' initializations+=Value)*)? ')'
+	type=[irl::EventType|QualifiedName] '(' (initializations+=Value (',' initializations+=Value)*)? ')'
 ;
 
 enum InsertionPoint: 

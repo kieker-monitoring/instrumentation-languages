@@ -13,7 +13,7 @@ class JUnitOutletConfiguration extends AbstractOutletConfiguration {
 		
 	new () {
 		super(JUNIT_OUTLET_ID, "JUnit test", "./test-gen/common")
-		generators += new RecordTypeGenerator
+		eventTypeGenerators += new EventTypeGenerator
 	}
 	
 	override outputFilePath(Type type) '''«type.outputDirectory»«File::separator»TestGenerated«type.name».java'''

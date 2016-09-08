@@ -19,7 +19,7 @@ import kieker.develop.rl.recordLang.Classifier
 import kieker.develop.rl.recordLang.Literal
 import kieker.develop.rl.recordLang.Model
 import kieker.develop.rl.recordLang.RecordLangFactory
-import kieker.develop.rl.recordLang.RecordType
+import kieker.develop.rl.recordLang.EventType
 import kieker.develop.rl.recordLang.TemplateType
 import kieker.develop.rl.recordLang.Type
 import java.io.IOException
@@ -210,20 +210,20 @@ public class JarModelResource extends ResourceImpl {
 				hierarchy.getSuperInterfaces(type).forEach[iface |
 					val template = typeMap.get(iface) 
 					if (template != null)
-						modelType.parents.add(template as TemplateType)
+						modelType.inherits.add(template as TemplateType)
 				]
 				
 			}
-			RecordType: {
+			EventType: {
 				val hierarchy = type.newSupertypeHierarchy(null)
 				hierarchy.getSuperInterfaces(type).forEach[iface |
 					val template = typeMap.get(iface) 
 					if (template != null)
-						modelType.parents.add(template as TemplateType)
+						modelType.inherits.add(template as TemplateType)
 				]
 				val superType = hierarchy.getSuperclass(type)
 				if (superType != null) {
-					modelType.parent = typeMap.get(superType) as RecordType
+					modelType.parent = typeMap.get(superType) as EventType
 				}
 			}
 		}
@@ -239,11 +239,11 @@ public class JarModelResource extends ResourceImpl {
 		if (type.isInterface)
 			type.createTemplateType
 		else
-			type.createRecordType
+			type.createEventType
 	}
 	
-	private def ComplexType createRecordType(IType type) {
-		val result = rlFactory.createRecordType
+	private def ComplexType createEventType(IType type) {
+		val result = rlFactory.createEventType
 		
 		result.name = type.elementName
 		result.createAttributes(type)

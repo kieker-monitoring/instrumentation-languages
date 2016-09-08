@@ -5,6 +5,8 @@ import kieker.develop.rl.recordLang.ConstantLiteral
 import kieker.develop.rl.recordLang.Constant
 
 import static extension kieker.develop.rl.typing.TypeResolution.*
+import kieker.develop.rl.recordLang.EventType
+import kieker.develop.rl.recordLang.TemplateType
 
 class NameResolver {
 	
@@ -39,7 +41,7 @@ class NameResolver {
 		return property.name.replaceAll("([a-z])([A-Z])", "$1_$2").toUpperCase.protectKeywords
 	}
 	
-	static def createName(Property property) {
+	static def createPropertyName(Property property) {
 		property.name.protectKeywords
 	}
 	
@@ -54,4 +56,60 @@ class NameResolver {
 			name
 	}
 
+		/**
+	 * Compute the full qualified name of a property.
+	 * 
+	 * @param property
+	 * 		the property itself
+	 * @param type
+	 * 		the present EventType
+	 * 
+	 * @returns
+	 * 		the FQ property name
+	 */
+	static def CharSequence createPropertyFQN(Property property, EventType type) {
+		if (type.properties.contains(property)) { 
+			return type.name + '.' + property.name
+		} else {
+			if (type.parent!=null) {
+				val result = property.createPropertyFQN(type.parent)
+				if (result != null)
+					return result
+			}
+			
+			if (type.inherits != null) {
+				for (TemplateType templateType : type.inherits) {
+					val result = property.createPropertyFQN(templateType)
+					if (result != null)
+						return result
+				}
+			}
+			return null
+		}
+	}
+	
+	/**
+	 * Compute the fully qualified name of a property.
+	 * 
+	 * @param property
+	 * 		the property itself
+	 * @param type
+	 * 		the present EventType
+	 * 
+	 * @returns
+	 * 		the FQ property name
+	 */
+	static def CharSequence createPropertyFQN(Property property, TemplateType type) {
+		if (type.properties.contains(property))
+			return type.name + '.' + property.name
+		else if (type.inherits != null) {
+			for (TemplateType templateType : type.inherits) {
+				val result = property.createPropertyFQN(templateType)
+				if (result != null)
+					return result
+			}
+		}
+				
+		return null
+	}
 }

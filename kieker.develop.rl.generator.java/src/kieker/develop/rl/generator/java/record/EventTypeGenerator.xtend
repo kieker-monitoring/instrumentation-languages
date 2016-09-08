@@ -1,0 +1,219 @@
+package kieker.develop.rl.generator.java.record
+
+import java.util.ArrayList
+import java.util.List
+import kieker.develop.rl.generator.AbstractTypeGenerator
+import kieker.develop.rl.generator.TypeInputModel
+import kieker.develop.rl.recordLang.EventType
+import kieker.develop.rl.recordLang.Model
+import kieker.develop.rl.recordLang.Property
+import kieker.develop.rl.recordLang.TemplateType
+import kieker.develop.rl.recordLang.Type
+import kieker.develop.rl.typing.base.BaseTypes
+
+import static kieker.develop.rl.generator.java.record.EqualsMethodTemplate.*
+import static kieker.develop.rl.generator.java.record.EventTypeAPITemplates.*
+
+import static extension kieker.develop.rl.generator.java.record.BinaryConstructorTemplate.*
+import static extension kieker.develop.rl.generator.java.record.ConstantConstructionModule.*
+import static extension kieker.develop.rl.generator.java.record.ConstructorTemplates.*
+import static extension kieker.develop.rl.generator.java.record.NameResolver.*
+import static extension kieker.develop.rl.generator.java.record.PropertyConstructionModule.*
+import static extension kieker.develop.rl.generator.java.record.uid.ComputeUID.*
+import static extension kieker.develop.rl.typing.PropertyResolution.*
+import static extension kieker.develop.rl.typing.TypeResolution.*
+import kieker.develop.rl.recordLang.PropertyModifier
+
+/**
+ * Generates a Java class for EventTypes.
+ * 
+ * @author Reiner Jung
+ * @author Christian Wulf
+ * @since 1.0
+ */
+class EventTypeGenerator extends AbstractTypeGenerator<EventType> {
+
+	override accepts(Type type) {
+		type instanceof EventType
+	}
+		
+	/**
+	 * Primary code generation function.
+	 * 
+	 * @params type
+	 * 		one record type to be used to create monitoring record
+	 */
+	override generate(TypeInputModel<EventType> input) {
+		val allDataProperties = input.type.collectAllDataProperties
+		val allDeclarationProperties = input.type.collectAllDeclarationProperties
+		val definedAuthor = if (input.type.author == null) input.author else input.type.author
+		val definedVersion = if (input.type.since == null) input.version else input.type.since
+		
+		createEvenTypeClass(input.type, allDataProperties, allDeclarationProperties, input.header, definedAuthor, definedVersion)
+	}
+	
+	/**
+	 * Central code generation template.
+	 * 
+	 * @param type the event type
+	 * @param allDataProperties all data properties of the Kieker event type
+	 * @param allDeclarationProperties all data properties which must be declared
+	 * 	in this event type (template inherited types and own types)
+	 * @param header the header comment
+	 * @param author the author of the EvenType
+	 * @param version the version of the first occurrence of the type
+	 * 
+	 * @return a Java class for a Kieker EventType
+	 */
+	private def createEvenTypeClass(EventType type, List<Property> allDataProperties, List<Property> allDeclarationProperties,
+		String header, String author, String version
+	) '''
+		«header»package «(type.eContainer as Model).name»;
+		
+		«type.createImports»
+		
+		/**
+		 * @author «author»
+		 * 
+		 * @since «version»
+		 */
+		public «if (type.abstract) 'abstract '»class «type.name» extends «type.createParent»«type.createImplements» {
+			private static final long serialVersionUID = «type.computeDefaultSUID»L;
+		
+			«if (!type.abstract) type.createEventTypeConstants(allDataProperties)»
+			
+			/** user-defined constants */
+			«type.createUserConstants»
+
+			/** default constants */
+			«allDeclarationProperties.createDefaultConstants»
+
+			/** property declarations */
+			«allDeclarationProperties.createPropertyDeclarations»
+
+			«type.createParameterizedConstructor(allDataProperties, allDeclarationProperties)»
+		
+			«if (!type.abstract) type.createArrayConstructor(allDeclarationProperties)»
+		
+			«type.createArrayInitializeConstructor(allDeclarationProperties)»
+		
+			«type.createBufferReadConstructor(allDeclarationProperties)»
+		
+			«if (!type.abstract) createActualAPI(allDataProperties)»
+		
+			«createDeprecatedAPI()»
+			
+			«createEquals(type.name, allDataProperties)»
+			
+			«type.createPropertyGetters»
+		}
+	'''
+	
+	/**
+	 * Create SIZE and TYPES constants for the EventType API.
+	 * 
+	 * @param type the EventType
+	 * @param properties all properties which are accessible in this type
+	 */
+	private def createEventTypeConstants(EventType type, List<Property> properties) '''
+		/** Descriptive definition of the serialization size of the record. */
+		public static final int SIZE = «if (properties.size == 0) 
+				'0'
+			else 
+				properties.createBinarySerializationSizeConstant(type)»
+		;
+	
+		public static final Class<?>[] TYPES = {
+			«properties.map[property | property.createPropertyTypeArrayEntry(type)].join»
+		};
+	'''
+	
+	/**
+	 * Create code listing a sequence of size constants each one representing the serialization
+	 * size in binary for the respective property.
+	 * 
+	 * @param properties the all properties of the type
+	 * @param type event type for the given type.
+	 */
+	private def createBinarySerializationSizeConstant(List<Property> properties, EventType type) {
+		properties.filter[!it.modifiers.exists[it == PropertyModifier.TRANSIENT]].map[property | 
+				property.createSizeConstant(type)
+			].join('\n\t\t + ')
+	}
+	
+	/**
+	 * Create all imports for the record.
+	 * 
+	 * @param type the record type
+	 */
+	private def createImports(EventType type) '''
+		«IF (!type.abstract)»import java.nio.BufferOverflowException;
+		«ENDIF»import java.nio.BufferUnderflowException;
+		import java.nio.ByteBuffer;
+
+		«IF (type.parent == null)»import kieker.common.record.AbstractMonitoringRecord;
+		import kieker.common.record.IMonitoringRecord;
+		«ELSE»import «(type.parent.eContainer as Model).name».«type.parent.name»;
+		«ENDIF»import kieker.common.util.registry.IRegistry;
+		import kieker.common.util.Version;
+		
+		«if (type.inherits != null && type.inherits.size > 0) type.inherits.map[i | i.createInterfaceImport].join»
+	'''
+	
+	/**
+	 * Create a list of imports for the given type.
+	 */	
+	private def createInterfaceImport(TemplateType type) '''
+		import «(type.eContainer as Model).name».«type.name»;
+	'''
+
+	/**
+	 * Find the size constant for the type of a property used to compute the serialization buffer size.
+	 * 
+	 * @param property
+	 * 		property which serialization size is determined
+	 * 
+	 * @returns
+	 * 		the serialization size of the property
+	 */
+	private def createSizeConstant(Property property, EventType type) {
+		switch (BaseTypes.getTypeEnum(property.findType.type)) {
+			case STRING : 'TYPE_SIZE_STRING'
+			case BYTE : 'TYPE_SIZE_BYTE'
+			case SHORT : 'TYPE_SIZE_SHORT'
+			case INT : 'TYPE_SIZE_INT'
+			case LONG : 'TYPE_SIZE_LONG'
+			case FLOAT : 'TYPE_SIZE_FLOAT'
+			case DOUBLE : 'TYPE_SIZE_DOUBLE'
+			case CHAR : 'TYPE_SIZE_CHARACTER'
+			case BOOLEAN : 'TYPE_SIZE_BOOLEAN'
+		} + ''' // «property.createPropertyFQN(type)»'''
+	}
+	
+	/**
+	 * Determine the name of the parent class.
+	 */
+	private def CharSequence createParent(EventType type) {
+		if (type.parent!=null) type.parent.name else 'AbstractMonitoringRecord'
+	}
+		
+	/**
+	 * Create the sequence of implements of the class and render the implements char sequence.
+	 */
+	private def CharSequence createImplements(EventType type) {
+		val List<CharSequence> interfaces = new ArrayList() 
+		if (type.parent == null) { // only add these interfaces for classes directly inheriting AbstractMonitoringRecord
+			interfaces.add('IMonitoringRecord.Factory')
+			interfaces.add('IMonitoringRecord.BinaryFactory')
+		}
+		if (type.inherits != null && type.inherits.size > 0) {
+			interfaces.addAll(type.inherits.map[iface | iface.name]);
+		}
+
+		if (interfaces.size > 0)
+			return ''' implements «interfaces.join(', ')»'''
+		else
+			return ' '
+	} 
+		
+}

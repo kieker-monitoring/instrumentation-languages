@@ -4,7 +4,7 @@ import kieker.develop.rl.generator.InternalErrorException
 import kieker.develop.rl.generator.TypeInputModel
 import kieker.develop.rl.recordLang.Classifier
 import kieker.develop.rl.recordLang.Property
-import kieker.develop.rl.recordLang.RecordType
+import kieker.develop.rl.recordLang.EventType
 import kieker.develop.rl.typing.base.BaseTypes
 
 import static extension kieker.develop.rl.generator.c.CommonCFunctionsExtension.*
@@ -13,11 +13,11 @@ import static extension kieker.develop.rl.typing.TypeResolution.*
 import kieker.develop.rl.generator.AbstractTypeGenerator
 import kieker.develop.rl.recordLang.Type
 
-class RecordTypeGenerator extends AbstractTypeGenerator<RecordType> {
+class EventTypeGenerator extends AbstractTypeGenerator<EventType> {
 
 	override accepts(Type type) {
-		if (type instanceof RecordType)
-			!(type as RecordType).abstract
+		if (type instanceof EventType)
+			!(type as EventType).abstract
 		else
 			false
 	}
@@ -28,7 +28,7 @@ class RecordTypeGenerator extends AbstractTypeGenerator<RecordType> {
 	 * @param type
 	 * 		one record type to be used to create monitoring record
 	 */
-	override generate(TypeInputModel<RecordType> input) {
+	override generate(TypeInputModel<EventType> input) {
 		val definedAuthor = if (input.type.author == null) input.author else input.type.author
 		val definedVersion = if (input.type.since == null) input.version else input.type.since
 		'''
@@ -47,7 +47,7 @@ class RecordTypeGenerator extends AbstractTypeGenerator<RecordType> {
 	/**
 	 * Generate the serializer for the given record type.
 	 */
-	private def createSerializer(RecordType type) '''
+	private def createSerializer(EventType type) '''
 		/*
 		 * Serialize an «type.name» and return the size of the written structure.
 		 *

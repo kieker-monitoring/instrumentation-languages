@@ -2,7 +2,7 @@ package kieker.develop.rl.generator.c.header
 
 import kieker.develop.rl.generator.TypeInputModel
 import kieker.develop.rl.recordLang.Property
-import kieker.develop.rl.recordLang.RecordType
+import kieker.develop.rl.recordLang.EventType
 
 import static extension kieker.develop.rl.generator.c.CommonCFunctionsExtension.*
 import static extension kieker.develop.rl.typing.PropertyResolution.*
@@ -10,12 +10,12 @@ import static extension kieker.develop.rl.typing.TypeResolution.*
 import kieker.develop.rl.generator.AbstractTypeGenerator
 import kieker.develop.rl.recordLang.Type
 
-class RecordTypeGenerator extends AbstractTypeGenerator<RecordType> {
+class EventTypeGenerator extends AbstractTypeGenerator<EventType> {
 	
 		
 	override accepts(Type type) {
-		if (type instanceof RecordType)
-			!(type as RecordType).abstract
+		if (type instanceof EventType)
+			!(type as EventType).abstract
 		else
 			false
 	}
@@ -26,7 +26,7 @@ class RecordTypeGenerator extends AbstractTypeGenerator<RecordType> {
 	 * @params type
 	 * 		one record type to be used to create monitoring record
 	 */
-	override generate(TypeInputModel<RecordType> input) {
+	override generate(TypeInputModel<EventType> input) {
 		'''
 			«input.header»#include <stdlib.h>
 			#include <kieker.h>
@@ -41,7 +41,7 @@ class RecordTypeGenerator extends AbstractTypeGenerator<RecordType> {
 		'''
 	}
 
-	private def createStructure(RecordType type) '''
+	private def createStructure(EventType type) '''
 		typedef struct {
 			«type.collectAllDataProperties.map[createPropertyDeclaration].join»
 		} «type.packageName»_«type.name.cstyleName»;
@@ -55,7 +55,7 @@ class RecordTypeGenerator extends AbstractTypeGenerator<RecordType> {
 	 * Generate the serializer for the given record type.
 	 */
 	private def createSerializerDeclaration(
-		RecordType type) '''
+		EventType type) '''
 		/*
 		 * Serialize an «type.name» and return the size of the written structure.
 		 *

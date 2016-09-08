@@ -10,7 +10,7 @@ import kieker.develop.rl.recordLang.IntLiteral
 import kieker.develop.rl.recordLang.Literal
 import kieker.develop.rl.recordLang.Model
 import kieker.develop.rl.recordLang.Property
-import kieker.develop.rl.recordLang.RecordType
+import kieker.develop.rl.recordLang.EventType
 import kieker.develop.rl.recordLang.StringLiteral
 
 import static extension kieker.develop.rl.generator.java.JavaTypeMapping.*
@@ -19,16 +19,16 @@ import static extension kieker.develop.rl.generator.java.junit.NameResolver.*
 import kieker.develop.rl.generator.AbstractTypeGenerator
 import kieker.develop.rl.recordLang.Type
 
-class RecordTypeGenerator extends AbstractTypeGenerator<RecordType> {
+class EventTypeGenerator extends AbstractTypeGenerator<EventType> {
 	
 	override accepts(Type type) {
-		if (type instanceof RecordType) {
-			!(type as RecordType).abstract
+		if (type instanceof EventType) {
+			!(type as EventType).abstract
 		} else
 			false
 	}
 		
-	override generate(TypeInputModel<RecordType> input) {
+	override generate(TypeInputModel<EventType> input) {
 		val allDataProperties = input.type.collectAllDataProperties
 		val definedAuthor = if (input.type.author == null) input.author else input.type.author
 		val definedVersion = if (input.type.since == null) input.version else input.type.since
@@ -209,9 +209,9 @@ class RecordTypeGenerator extends AbstractTypeGenerator<RecordType> {
 	 * Create assertions to test each return value from a getter of a record.
 	 * 
 	 * @param properties list of all data properties of a type
-	 * @param type the RecordType itself
+	 * @param type the EventType itself
 	 */
-	private def createAllGetterValueAssertions(Collection<Property> properties, RecordType type) '''
+	private def createAllGetterValueAssertions(Collection<Property> properties, EventType type) '''
 		«FOR property : properties»
 			Assert.assertEquals("«type.name».«property.name» values are not equal.", «IF property.type.type.name == 'float' || property.type.type.name == 'double'»
 				«property.getCastToPrimitiveType» «property.createPropertyValueSet», record.get«property.name.toFirstUpper»(), 0.0000001);

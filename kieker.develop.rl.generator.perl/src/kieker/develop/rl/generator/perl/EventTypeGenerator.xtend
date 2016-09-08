@@ -6,16 +6,16 @@ import kieker.develop.rl.generator.TypeInputModel
 import kieker.develop.rl.recordLang.Classifier
 import kieker.develop.rl.recordLang.Model
 import kieker.develop.rl.recordLang.Property
-import kieker.develop.rl.recordLang.RecordType
+import kieker.develop.rl.recordLang.EventType
 
 import static extension kieker.develop.rl.typing.PropertyResolution.*
 import kieker.develop.rl.recordLang.Type
 
-class RecordTypeGenerator extends AbstractTypeGenerator<RecordType> {
+class EventTypeGenerator extends AbstractTypeGenerator<EventType> {
 	
 	override accepts(Type type) {
-		if (type instanceof RecordType)
-			!(type as RecordType).abstract
+		if (type instanceof EventType)
+			!(type as EventType).abstract
 		else
 			false
 	}
@@ -23,7 +23,7 @@ class RecordTypeGenerator extends AbstractTypeGenerator<RecordType> {
 	/**
 	 * Create a perl based record for kieker
 	 */
-	override generate(TypeInputModel<RecordType> input) {
+	override generate(TypeInputModel<EventType> input) {
 		val definedAuthor = if (input.type.author == null) input.author else input.type.author
 		val definedVersion = if (input.type.since == null) input.version else input.type.since
 		'''
@@ -96,7 +96,7 @@ class RecordTypeGenerator extends AbstractTypeGenerator<RecordType> {
 	/**
 	 * Compute the absolute Perl package name, which is a FQN name of the record.
 	 */
-	def recordName(RecordType type) '''«(type.eContainer as Model).name.replace('.','::')»::«type.name»'''
+	def recordName(EventType type) '''«(type.eContainer as Model).name.replace('.','::')»::«type.name»'''
 		
 	/**
 	 * 

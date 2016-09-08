@@ -2,15 +2,15 @@ package kieker.develop.rl.generator.java.factory
 
 import kieker.develop.rl.generator.TypeInputModel
 import kieker.develop.rl.recordLang.Model
-import kieker.develop.rl.recordLang.RecordType
+import kieker.develop.rl.recordLang.EventType
 import kieker.develop.rl.generator.AbstractTypeGenerator
 import kieker.develop.rl.recordLang.Type
 
-class RecordFactoryTypeGenerator extends AbstractTypeGenerator<RecordType> {
+class EventTypeGenerator extends AbstractTypeGenerator<EventType> {
 	
 	override accepts(Type type) {
-		if (type instanceof RecordType) {
-			!(type as RecordType).abstract
+		if (type instanceof EventType) {
+			!(type as EventType).abstract
 		} else
 			false
 	}
@@ -21,7 +21,7 @@ class RecordFactoryTypeGenerator extends AbstractTypeGenerator<RecordType> {
 	 * @param type
 	 * 		one record type to be used to create the corresponding monitoring record factory
 	 */
-	override generate(TypeInputModel<RecordType> input) {
+	override generate(TypeInputModel<EventType> input) {
 		val definedAuthor = if (input.type.author == null) input.author else input.type.author
 		val definedVersion = if (input.type.since == null) input.version else input.type.since
 

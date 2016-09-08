@@ -24,14 +24,14 @@ class TemplateTypeGenerator extends AbstractTypeGenerator<TemplateType> {
 		'''
 		«input.header»package «(input.type.eContainer as Model).name»;
 		
-		«input.type.parents.createImports(input.type)»
+		«input.type.inherits.createImports(input.type)»
 		
 		/**
 		 * @author «definedAuthor»
 		 * 
 		 * @since «definedVersion»
 		 */
-		public interface «input.type.name» extends «input.type.parents.createExtends» {
+		public interface «input.type.name» extends «input.type.inherits.createExtends» {
 			«input.type.properties.map[property | createPropertyGetter(property)].join»
 		}
 		'''

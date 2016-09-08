@@ -31,6 +31,8 @@ ModelType:
 	'model' name=ID types+=[ComplexType|QualifiedName] (',' types+=[ComplexType|QualifiedName])* ;
 	
 ModelSubType:
+	('@author' author=STRING)?
+	('@since' since=STRING)?
 	'sub' name=ID modelType=[ModelType|QualifiedName] (
 		('{' (properties+=Property | constants+=Constant)* '}') | 
 		(':' extensions+=[TemplateType|QualifiedName] (',' extensions+=[TemplateType|QualifiedName])*)
@@ -38,25 +40,25 @@ ModelSubType:
 ;
 
 ComplexType:
-	RecordType | TemplateType | ModelSubType
+	EventType | TemplateType | ModelSubType
 ;
 
 TemplateType:
 	('@author' author=STRING)?
 	('@since' since=STRING)?
-	'template' name=ID (':' parents+=[TemplateType|QualifiedName] (',' parents+=[TemplateType|QualifiedName])*)? 
+	'template' name=ID (':' inherits+=[TemplateType|QualifiedName] (',' inherits+=[TemplateType|QualifiedName])*)? 
 	(
 		('{' (properties+=Property | constants+=Constant)* '}') |
 		(properties+=Property)
 	)?
 ;
 
-RecordType:
+EventType:
 	('@author' author=STRING)?
 	('@since' since=STRING)?
 	(abstract?='abstract')? 'entity' name=ID 
-	('extends' parent=[RecordType|QualifiedName])?
-	(':' parents+=[TemplateType|QualifiedName] (',' parents+=[TemplateType|QualifiedName])*)?  
+	('extends' parent=[EventType|QualifiedName])?
+	(':' inherits+=[TemplateType|QualifiedName] (',' inherits+=[TemplateType|QualifiedName])*)?  
 	('{'
 		(properties+=Property | constants+=Constant)*
 	'}')?
@@ -73,7 +75,7 @@ Property:
 ;
 
 ForeignKey:
-	'grouped' 'by' recordType=[RecordType|ID] '.' propertyRef=[Property|ID]
+	'grouped' 'by' eventType=[EventType|ID] '.' propertyRef=[Property|ID]
 ;
 
 enum PropertyModifier:

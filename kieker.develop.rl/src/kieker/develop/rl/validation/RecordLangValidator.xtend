@@ -20,7 +20,7 @@ import kieker.develop.rl.recordLang.Literal
 import kieker.develop.rl.recordLang.Property
 import kieker.develop.rl.recordLang.RecordLangFactory
 import kieker.develop.rl.recordLang.RecordLangPackage
-import kieker.develop.rl.recordLang.RecordType
+import kieker.develop.rl.recordLang.EventType
 import kieker.develop.rl.recordLang.StringLiteral
 import kieker.develop.rl.recordLang.TemplateType
 import kieker.develop.rl.recordLang.Type
@@ -69,7 +69,7 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 	def checkPropertyDeclaration(Property property) {
 		val type = property.eContainer
 		switch (type) {
-			RecordType: {
+			EventType: {
 				val properties = type.collectAllProperties
 				if (properties.exists[p | p.name.equals(property.name) && p != property]) {
 					val Property otherProperty = properties.findFirst[p | p.name.equals(property.name) && p != property]
@@ -94,10 +94,10 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 	
 
 	/** 
-	 * Check a RecordType for multiple inheritance of the same property with different types. 
+	 * Check a EventType for multiple inheritance of the same property with different types. 
 	 */
 	@Check
-	def checkRecordTypeComposition(RecordType type) {
+	def checkEventTypeComposition(EventType type) {
 		val Collection<Property> properties = type.collectAllProperties
 		if (properties.exists[p | properties.exists[pInner | p.name.equals(pInner.name) && p != pInner]]) {
 			val Collection<Pair<Property,Property>> duplicates = new ArrayList<Pair<Property,Property>>()
@@ -105,7 +105,7 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 			duplicates.forEach[entry | // if (!typeAndPackageIdentical(entry.key.type,entry.value.type))
 				error('Multiple property inheritance form ' + entry.key.name + 
 						' inherited from ' + (entry.key.eContainer as Type).name + ' and ' + (entry.value.eContainer as Type).name, 
-						RecordLangPackage.Literals::RECORD_TYPE__PARENTS,
+						RecordLangPackage.Literals::EVENT_TYPE__INHERITS,
 						INVALID_NAME)
 			]
 		}
@@ -123,7 +123,7 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 			duplicates.forEach[entry | // if (!typeAndPackageIdentical(entry.key.type,entry.value.type))
 				error('Multiple property inheritance from ' + entry.key.name + 
 						' inherited from ' + (entry.key.eContainer as Type).name + ' and ' + (entry.value.eContainer as Type).name, 
-						RecordLangPackage.Literals::TEMPLATE_TYPE__PARENTS,
+						RecordLangPackage.Literals::TEMPLATE_TYPE__INHERITS,
 						INVALID_NAME)
 			]
 		}

@@ -1,17 +1,15 @@
 package kieker.develop.rl.generator.perl
 
-import kieker.develop.rl.ouput.config.AbstractOutletConfiguration
-import kieker.develop.rl.recordLang.RecordType
-import kieker.develop.rl.recordLang.TemplateType
-import kieker.develop.rl.recordLang.Type
 import java.io.File
+import kieker.develop.rl.ouput.config.AbstractOutletConfiguration
 import kieker.develop.rl.recordLang.Model
+import kieker.develop.rl.recordLang.Type
 
 class PerlOutletConfiguration extends AbstractOutletConfiguration {
 	
 	new () {
 		super("perl", "Perl Output Folder", "./src-gen/perl")
-		generators += new RecordTypeGenerator
+		eventTypeGenerators += new EventTypeGenerator
 	}
 	
 	override outputFilePath(Type type) '''«type.outputDirectory»«File::separator»«type.name».pm'''

@@ -29,9 +29,9 @@ import org.eclipse.emf.common.util.EList;
 
 import kieker.develop.rl.recordLang.BaseType;
 import kieker.develop.rl.recordLang.Classifier;
+import kieker.develop.rl.recordLang.EventType;
 import kieker.develop.rl.recordLang.Property;
 import kieker.develop.rl.recordLang.RecordLangFactory;
-import kieker.develop.rl.recordLang.RecordType;
 import kieker.develop.rl.recordLang.TemplateType;
 import kieker.develop.rl.typing.PropertyResolution;
 
@@ -117,7 +117,7 @@ public final class ComputeUID {
 	 *            record type
 	 * @return returns the computed UID of a record type conforming to Java UID standards
 	 */
-	public static long computeDefaultSUID(final RecordType type) {
+	public static long computeDefaultSUID(final EventType type) {
 		try {
 			final ByteArrayOutputStream bout = new ByteArrayOutputStream();
 			final DataOutputStream dout = new DataOutputStream(bout);
@@ -129,7 +129,7 @@ public final class ComputeUID {
 
 			dout.writeInt(classMods);
 
-			final EList<TemplateType> interfaces = type.getParents();
+			final EList<TemplateType> interfaces = type.getInherits();
 			final String[] ifaceNames = new String[interfaces.size()];
 			for (int i = 0; i < interfaces.size(); i++) {
 				ifaceNames[i] = interfaces.get(i).getName();
@@ -250,7 +250,7 @@ public final class ComputeUID {
 	 * @throws IOException
 	 *             io exception
 	 */
-	private static void createConstructorInfo(final RecordType type,
+	private static void createConstructorInfo(final EventType type,
 			final Classifier[] paramListComplete,
 			final Classifier[] paramListGeneric,
 			final Classifier[] paramListGenericAbstract,
@@ -310,7 +310,7 @@ public final class ComputeUID {
 	 *            the record type
 	 * @return Returns the list of classifiers
 	 */
-	private static Classifier[] createParameterList(final RecordType type) {
+	private static Classifier[] createParameterList(final EventType type) {
 		final Collection<Property> allProperties = PropertyResolution.collectAllDataProperties(type);
 		final Classifier[] result = new Classifier[allProperties.size()];
 		int j = 0;

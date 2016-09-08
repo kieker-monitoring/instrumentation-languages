@@ -21,7 +21,7 @@ import org.eclipse.core.resources.IFile
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.ResourceSet
 import kieker.develop.rl.recordLang.TemplateType
-import kieker.develop.rl.recordLang.RecordType
+import kieker.develop.rl.recordLang.EventType
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EcoreFactory
@@ -83,12 +83,12 @@ class EMFModelGenerator {
 		// create classes and interfaces
 		source.allContents.filter(typeof(TemplateType)).
 			forEach[type | destination.insert(type.createInterface, (type.eContainer as Model).name)]
-		source.allContents.filter(typeof(RecordType)).
+		source.allContents.filter(typeof(EventType)).
 			forEach[type | destination.insert(type.createClass, (type.eContainer as Model).name)]
 
 		// complete declaration classes and interfaces
 		source.allContents.filter(typeof(TemplateType)).forEach[type | type.composeInterface(destination)]
-		source.allContents.filter(typeof(RecordType)).forEach[type | type.composeClass(destination)]
+		source.allContents.filter(typeof(EventType)).forEach[type | type.composeClass(destination)]
 	}
 		
 	/**
@@ -267,7 +267,7 @@ class EMFModelGenerator {
 	/**
 	 * Compose an EMF class for the given record type.
 	 */
-	def EClass createClass(RecordType type) {
+	def EClass createClass(EventType type) {
 		val EClass clazz = factory.createEClass()
 		clazz.setName(type.name)
 		clazz.setAbstract(type.abstract)
@@ -282,8 +282,8 @@ class EMFModelGenerator {
 	def void composeInterface(TemplateType type, Resource resource) {
 		val EClass clazz = type.findResultClass(resource)
 		
-		if (!type.parents.empty) {
-			type.parents.forEach[iface | clazz.ESuperTypes.add(iface.findResultClass(resource))]
+		if (!type.inherits.empty) {
+			type.inherits.forEach[iface | clazz.ESuperTypes.add(iface.findResultClass(resource))]
 		}
 		type.properties.forEach[property | clazz.getEStructuralFeatures.addUnique(property.composeProperty)]
 	}
@@ -291,7 +291,7 @@ class EMFModelGenerator {
 	/**
 	 * Complete the class construction with inheritance and attributes.
 	 */
-	def void composeClass(RecordType type, Resource resource) {
+	def void composeClass(EventType type, Resource resource) {
 		val EClass clazz = type.findResultClass(resource)
 		if (clazz != null) {
 			if (type.parent != null) {
@@ -303,8 +303,8 @@ class EMFModelGenerator {
 			} else {
 				clazz.ESuperTypes.add(abstractRecordClass)
 			}
-			if (!type.parents.empty) {
-				type.parents.forEach[iface | clazz.ESuperTypes.add(iface.findResultClass(resource))]
+			if (!type.inherits.empty) {
+				type.inherits.forEach[iface | clazz.ESuperTypes.add(iface.findResultClass(resource))]
 			}
 			type.properties.forEach[property | clazz.getEStructuralFeatures.addUnique(property.composeProperty)]
 		}

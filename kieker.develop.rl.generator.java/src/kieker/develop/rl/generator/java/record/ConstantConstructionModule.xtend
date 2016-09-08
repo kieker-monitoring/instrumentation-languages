@@ -12,7 +12,7 @@ import kieker.develop.rl.recordLang.FloatLiteral
 import kieker.develop.rl.recordLang.BooleanLiteral
 import kieker.develop.rl.recordLang.ConstantLiteral
 import kieker.develop.rl.recordLang.BuiltInValueLiteral
-import kieker.develop.rl.recordLang.RecordType
+import kieker.develop.rl.recordLang.EventType
 import kieker.develop.rl.generator.InternalErrorException
 
 import static extension kieker.develop.rl.generator.java.JavaTypeMapping.*
@@ -37,7 +37,7 @@ class ConstantConstructionModule {
 	/**
 	 * Create user specified constants.
 	 */
-	static def createUserConstants(RecordType type) {
+	static def createUserConstants(EventType type) {
 		type.constants.map[const | createDefaultConstant(const)].join
 	}
 	
