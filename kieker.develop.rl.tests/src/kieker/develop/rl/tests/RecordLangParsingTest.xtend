@@ -70,7 +70,7 @@ class RecordLangParsingTest{
 		Assert.assertNotNull("Parent reference is null", (entity2 as EventType).parent)
 		Assert.assertEquals("Wrong parent event type", entity1, (entity2 as EventType).parent)
 	}
-	
+		
 	/**
 	 * Test whether the given type is an EventType and the properties match.
 	 */
