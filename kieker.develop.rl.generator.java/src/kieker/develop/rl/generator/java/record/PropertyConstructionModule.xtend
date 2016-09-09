@@ -62,7 +62,7 @@ class PropertyConstructionModule {
 				if (property.referTo != null)
 					'''«property.referTo.createGetterName»()'''
 				else
-					property.createPropertyName»;
+					property.createPropertyName+if (property.isIncrement) '++' else ''»;
 		}	
 	'''
 	
