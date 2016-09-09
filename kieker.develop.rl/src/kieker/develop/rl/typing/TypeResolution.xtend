@@ -7,7 +7,18 @@ import kieker.develop.rl.recordLang.Property
 import kieker.develop.rl.generator.InternalErrorException
 import kieker.develop.rl.recordLang.Classifier
 import kieker.develop.rl.typing.base.BaseTypes
+import kieker.develop.rl.recordLang.ModelType
+import java.util.ArrayList
+import kieker.develop.rl.recordLang.ComplexType
+import kieker.develop.rl.recordLang.EventType
+import kieker.develop.rl.recordLang.TemplateType
 
+
+/**
+ * Type resolution and resolving for base and complex types.
+ * 
+ * @author Reiner Jung
+ */
 class TypeResolution {
 	
 	
@@ -33,10 +44,31 @@ class TypeResolution {
 	 * 
 	 * @param the type classifier
 	 */
-	def static Classifier findType(Property property) {
+	static def Classifier findType(Property property) {
 		if (property.type != null)
 			return property.type
 		else
 			return property.referTo.findType
+	}
+	
+	/**
+	 * Collect all types which belong to a model type.
+	 * 
+	 * @param modelType the model type
+	 * 
+	 * @return collection of complex types in a model type
+	 */
+	static def collectAllTypes(ModelType modelType) {
+		val typeProvider = new TypeProvider(modelType.eResource.resourceSet)
+		val allTypes = new ArrayList<ComplexType>
+		modelType.types.forEach[
+			val additions = switch(it) {
+				EventType : typeProvider.findInheritingTypes(it)
+				TemplateType: typeProvider.findInheritingTypes(it)
+			}
+			additions.forEach[if (!allTypes.contains(it)) allTypes.add(it)]
+		]
+		
+		return allTypes
 	}
 }

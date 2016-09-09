@@ -11,7 +11,7 @@ import kieker.develop.rl.recordLang.Type
 import kieker.develop.rl.recordLang.EventType
 import org.eclipse.emf.common.util.EList
 import kieker.develop.rl.recordLang.ComplexType
-import kieker.develop.rl.generator.TypeProvider
+import kieker.develop.rl.typing.TypeProvider
 
 /**
  * Generate for one ModelSubType a set of EventType and TemplateType instances.

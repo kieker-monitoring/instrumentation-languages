@@ -31,6 +31,7 @@ import org.osgi.service.prefs.Preferences
 import java.util.Collection
 import kieker.develop.rl.recordLang.Type
 import kieker.develop.rl.generator.modeltypes.ModelSubTypeGenerator
+import kieker.develop.rl.typing.TypeProvider
 
 /**
  * Generates one single files per record for java, c, and perl. 

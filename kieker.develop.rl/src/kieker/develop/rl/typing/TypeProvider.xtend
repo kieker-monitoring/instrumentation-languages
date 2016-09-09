@@ -1,4 +1,4 @@
-package kieker.develop.rl.generator
+package kieker.develop.rl.typing
 
 import kieker.develop.rl.recordLang.ComplexType
 import java.util.ArrayList

@@ -17,11 +17,16 @@ package kieker.develop.rl.ui.outline
 
 import kieker.develop.rl.recordLang.Constant
 import kieker.develop.rl.recordLang.Property
+import org.eclipse.emf.ecore.EObject
+import kieker.develop.rl.recordLang.ModelType
+import org.eclipse.xtext.ui.editor.outline.IOutlineNode
+
+import static extension kieker.develop.rl.typing.TypeResolution.*
 
 /**
  * Customization of the default outline structure.
  *
- * see http://www.eclipse.org/Xtext/documentation.html#outline
+ * see http://www.eclipse.org/Xtext/documentation/310_eclipse_support.html#outline
  */
 class RecordLangOutlineTreeProvider extends org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider {
 	
@@ -33,5 +38,18 @@ class RecordLangOutlineTreeProvider extends org.eclipse.xtext.ui.editor.outline.
 	// do not nest into constant
 	def boolean _isLeaf(Constant feature) {
   		return true;
+	}
+	
+	protected override void _createChildren(IOutlineNode parentNode, EObject modelElement) {
+		for (EObject childElement : modelElement.eContents()) {
+			createNode(parentNode, childElement)
+			if (childElement instanceof ModelType) {
+				(childElement as ModelType).collectAllTypes.forEach[type |
+					createNode(parentNode.children.last, type)
+				]
+				
+			}
+				
+		}
 	}
 }
