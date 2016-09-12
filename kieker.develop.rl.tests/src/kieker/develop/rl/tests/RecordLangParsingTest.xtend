@@ -18,6 +18,7 @@ import kieker.develop.rl.recordLang.ComplexType
 import kieker.develop.rl.recordLang.EventType
 import java.util.Map
 import java.util.HashMap
+import org.eclipse.emf.ecore.util.EcoreUtil
 
 @RunWith(XtextRunner)
 @InjectWith(RecordLangInjectorProvider)
@@ -50,18 +51,24 @@ class RecordLangParsingTest{
 	@Test
 	def void checkInheritance() {
 		val result = parseHelper.parse(inheritanceModel)
-		
+				
 		/** asserts */
 		result.testModel
 		Assert.assertNotNull("Event types do not exist (2)", result.types.size == 2)
 		
-		val entity1 = result.types.get(0)
+		var entity1 = result.types.get(0)
+		if (entity1.eIsProxy)
+			entity1 = EcoreUtil.resolve(entity1, result) as ComplexType
+		
 		val properties1 = new HashMap<BaseTypes,String>()
 		properties1.put(BaseTypes.INT, INT_PROPERTY)
 		
 		entity1.testEntity(BASE_ET_NAME, properties1)
 		
-		val entity2 = result.types.get(1)
+		var entity2 = result.types.get(1)
+		if (entity2.eIsProxy)
+			entity2 = EcoreUtil.resolve(entity2, result) as ComplexType
+			
 		val properties2 = new HashMap<BaseTypes,String>()
 		properties2.put(BaseTypes.STRING, STRING_PROPERTY)
 			
