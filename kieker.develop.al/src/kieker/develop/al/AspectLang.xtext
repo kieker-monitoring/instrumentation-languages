@@ -22,7 +22,7 @@ Import:
 ;
 
 ApplicationModel:
-	'use' handler=ID 'on' name=ID model=STRING 
+	'map' handler=ID 'model' name=ID model=STRING ('trace' traceModel=STRING)?
 ;
 
 Aspect:

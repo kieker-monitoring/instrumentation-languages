@@ -6,8 +6,16 @@
          name="PCM Model Mapper"
          point="kieker.develop.al.modelMapping">
       <mapper
-            class="kieker.develop.al.handler.pcm.PCMModelMapper">
+            mappingHandler="kieker.develop.al.handler.pcm.PCMModelMapper">
       </mapper>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated PCMCorrespondenceModel -->
+      <package
+            uri="http://www.kieker-monitoring.net/pcm/rac"
+            class="kieker.develop.al.handler.pcm.rac.RacPackage"
+            genModel="model/PCMCorrespondenceModel.genmodel"/>
    </extension>
 
 </plugin>

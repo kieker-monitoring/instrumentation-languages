@@ -52,19 +52,17 @@ import org.eclipse.xtext.generator.IGeneratorContext
  * see http://www.eclipse.org/Xtext/documentation.html#TutorialCodeGeneration
  */
 class AspectLangGenerator implements IGenerator2 {
-	
-	private static final String MODEL_MAPPER = "kieker.develop.al.modelMapping"
-	
+		
 	val Map<Technology,Collection<Aspect>> aspectTechnologyMap = new HashMap<Technology,Collection<Aspect>>()
 	
 	val Collection<IModelMapper> mappers = new ArrayList<IModelMapper>()
 	
 	new () {
 		val registry = Platform.getExtensionRegistry()
-  		val config = registry.getConfigurationElementsFor(MODEL_MAPPER)
+  		val config = registry.getConfigurationElementsFor(IModelMapper.MODEL_MAPPER)
 	  	try {
 			config.forEach[element |
-	  			val ext = element.createExecutableExtension("class")
+	  			val ext = element.createExecutableExtension(IModelMapper.MAPPING_HANDLER)
 	  			if (ext instanceof IModelMapper) {
 	  				this.mappers.add((ext as IModelMapper))
 	  			}
@@ -212,8 +210,8 @@ class AspectLangGenerator implements IGenerator2 {
 	 */
 	private def void discoverAspectTechnologyByModelMapper(Map<Technology, Collection<Aspect>> map, Aspect aspect) {
 		this.mappers.forEach[
-			if (aspect.pointcut.model.handler.equals(it.name))
-				it.targetTechnologies.forEach[map.addAndRegisterAspectTechnology(it,aspect)]
+			//if (aspect.pointcut.model.handler.equals(it.name))
+				//it.targetTechnologies.forEach[map.addAndRegisterAspectTechnology(it,aspect)]
 		]
 	}
 	
