@@ -55,6 +55,7 @@
 		<!-- <module>kieker.develop.rl.cli</module> -->
 		<module>kieker.develop.semantics</module>
 		<module>kieker.develop.semantics.java</module>
+		<module>kieker.develop.rl.generator.java.tests</module>
 	</modules>
 	<build>
 		<plugins>

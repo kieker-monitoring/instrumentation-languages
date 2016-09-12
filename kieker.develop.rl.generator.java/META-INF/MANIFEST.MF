@@ -13,5 +13,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.xtend.lib.macro
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
-Export-Package: kieker.develop.rl.generator.java
+Export-Package: kieker.develop.rl.generator.java,
+ kieker.develop.rl.generator.java.factory,
+ kieker.develop.rl.generator.java.junit,
+ kieker.develop.rl.generator.java.record,
+ kieker.develop.rl.generator.java.record.uid
 

@@ -49,7 +49,21 @@ class NameResolver {
 	 * Check whether a given name is identical to a keyword of the target language and prepends an _. 
 	 */
 	private static def protectKeywords(String name) {
-		val keywords = #[ 'interface', 'class', 'private', 'protected', 'public', 'return', 'final', 'volatile', 'if', 'else', 'for', 'foreach' ]
+		val keywords = #['abstract', 'assert',
+			'boolean', 'break', 'byte', 
+			'case', 'catch', 'char', 'class', 'const', 'continue',
+			'default',  'do', 'double',
+			'else', 'enum', 'extends',
+			'final', 'finally', 'float', 'for',
+			'goto',
+			'if', 'implements', 'import', 'instanceof', 'int', 'interface',
+			'native', 'new',
+			'package', 'private', 'protected', 'public',
+			'return', 
+			'short', 'static', 'strictfp', 'super',
+			'this', 'throw', 'transient', 'try',
+			'void', 'volatile', 'while',
+			'false', 'null', 'true']
 		if (keywords.exists[it.equals(name)])
 			'_' + name
 		else

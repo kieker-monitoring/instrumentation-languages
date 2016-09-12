@@ -14,7 +14,7 @@
 	<packaging>eclipse-plugin</packaging>
 
 	<name>Kieker Record Language Java Generator</name>
-
+	
 	<build>
 		<plugins>
 			<plugin>

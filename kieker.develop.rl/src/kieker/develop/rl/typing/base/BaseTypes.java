@@ -78,4 +78,5 @@ public enum BaseTypes {
 		}
 		return INT;
 	}
+
 }
