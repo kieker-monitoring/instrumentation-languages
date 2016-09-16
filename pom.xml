@@ -57,6 +57,7 @@
 		<module>kieker.develop.semantics.java</module>
 		<module>kieker.develop.rl.generator.java.tests</module>
 	</modules>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -80,10 +81,12 @@
 				<artifactId>target-platform-configuration</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
+					<pomDependencies>consider</pomDependencies>
+					<executionEnvironment>JavaSE-1.8</executionEnvironment>
 					<environments>
 						<environment>
-							<os>win32</os>
-							<ws>win32</ws>
+							<os>linux</os>
+							<ws>gtk</ws>
 							<arch>x86</arch>
 						</environment>
 						<environment>
@@ -96,11 +99,21 @@
 							<ws>cocoa</ws>
 							<arch>x86_64</arch>
 						</environment>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86</arch>
+						</environment>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86_64</arch>
+						</environment>
 					</environments>
 				</configuration>
 			</plugin>
 
-			<!-- ceckstyle plugin -->
+			<!-- checkstyle plugin -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
@@ -196,8 +209,8 @@
 		</repository>
 		<repository>
 			<id>geco</id>
-			<layout>p2</layout>
 			<url>${geco-repo.url}</url>
+			<layout>p2</layout>
 		</repository>
 
 		<repository>
@@ -208,33 +221,33 @@
 
 		<repository>
 			<id>probespec</id>
-			<layout>p2</layout>
 			<url>${probespec-repo.url}</url>
+			<layout>p2</layout>
 		</repository>
 		<repository>
 			<id>palladio</id>
-			<layout>p2</layout>
 			<url>${palladio-repo.url}</url>
+			<layout>p2</layout>
 		</repository>
 		<repository>
 			<id>palladioFeatureModel</id>
-			<layout>p2</layout>
 			<url>${palladio-fm-repo.url}</url>
+			<layout>p2</layout>
 		</repository>
 		<repository>
 			<id>palladioSensorFramework</id>
-			<layout>p2</layout>
 			<url>${palladio-sf-repo.url}</url>
+			<layout>p2</layout>
 		</repository>
 		<repository>
 			<id>palladioWorkflowEngine</id>
-			<layout>p2</layout>
 			<url>${palladio-wfe-repo.url}</url>
+			<layout>p2</layout>
 		</repository>
 		<repository>
 			<id>kitCommons</id>
-			<layout>p2</layout>
 			<url>${kit-common-repo.url}</url>
+			<layout>p2</layout>
 		</repository>
 	</repositories>
 

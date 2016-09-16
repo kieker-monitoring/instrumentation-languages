@@ -126,6 +126,7 @@
 				</dependencies>
 			</plugin>
 		</plugins>
+
 		<pluginManagement>
 			<plugins>
 				<plugin>
