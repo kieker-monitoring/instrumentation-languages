@@ -37,13 +37,13 @@ public class Activator implements BundleActivator {
 		return context;
 	}
 
-	/** {@inheritedDoc} */
+	/** {@inheritedDoc}. */
 	@Override
 	public void start(final BundleContext bundleContext) throws Exception {
 		Activator.context = bundleContext;
 	}
 
-	/** {@inheritedDoc} */
+	/** {@inheritedDoc}. */
 	@Override
 	public void stop(final BundleContext bundleContext) throws Exception {
 		Activator.context = null;
