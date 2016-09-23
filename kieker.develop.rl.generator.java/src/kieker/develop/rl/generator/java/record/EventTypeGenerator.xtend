@@ -155,7 +155,6 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType> {
 		import kieker.common.record.IMonitoringRecord;
 		«ELSE»import «(type.parent.eContainer as Model).name».«type.parent.name»;
 		«ENDIF»import kieker.common.util.registry.IRegistry;
-		import kieker.common.util.Version;
 		
 		«if (type.inherits != null && type.inherits.size > 0) type.inherits.map[i | i.createInterfaceImport].join»
 	'''
