@@ -40,7 +40,12 @@
 		<module>kieker.develop.al.ui</module>
 		<module>kieker.develop.al.tests</module>
 		<module>kieker.develop.al.feature</module>
+		<module>kieker.develop.al.generator.java</module>
+		<module>kieker.develop.al.generator.c</module>
+		<module>kieker.develop.al.generator.perl</module>
+		<module>kieker.develop.al.feature</module>
 		<module>kieker.develop.al.handler.pcm</module>
+		<module>kieker.develop.al.handler.java</module>
 		<module>kieker.develop.rl</module>
 		<module>kieker.develop.rl.generator.java</module>
 		<module>kieker.develop.rl.generator.c</module>

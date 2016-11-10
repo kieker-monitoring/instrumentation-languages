@@ -3,6 +3,7 @@
 
 <plugin>
    <extension-point id="modelMapping" name="Model Mapping" schema="schema/modelMapping.exsd"/>
+   <extension-point id="kieker.develop.al.generator.provider" name="GeneratorProvider" schema="schema/kieker.develop.al.generator.provider.exsd"/>
 
   <extension point="org.eclipse.emf.ecore.generated_package">
     <package 

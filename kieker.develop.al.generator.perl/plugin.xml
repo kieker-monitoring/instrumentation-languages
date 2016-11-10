@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="kieker.develop.al.generator.provider">
+      <provider
+            provider="kieker.develop.al.generator.java.GeneratorProvider">
+      </provider>
+   </extension>
+
+</plugin>

@@ -28,13 +28,7 @@ import javax.xml.transform.stream.StreamResult
 import kieker.develop.al.aspectLang.Advice
 import kieker.develop.al.aspectLang.Aspect
 import kieker.develop.al.aspectLang.AspectModel
-import kieker.develop.al.aspectLang.Technology
 import kieker.develop.al.aspectLang.UtilizeAdvice
-import kieker.develop.al.generator.aspectj.AspectJAdviceGenerator
-import kieker.develop.al.generator.aspectj.AspectJPointcutGenerator
-import kieker.develop.al.generator.javaee.JavaEEAdviceGenerator
-import kieker.develop.al.generator.servlet.ServletAdviceGenerator
-import kieker.develop.al.generator.spring.SpringAdviceGenerator
 import kieker.develop.al.modelhandling.IModelMapper
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.core.runtime.Platform
@@ -45,6 +39,7 @@ import org.w3c.dom.Document
 
 import static extension kieker.develop.al.generator.CommonCollectionModule.*
 import org.eclipse.xtext.generator.IGeneratorContext
+import kieker.develop.semantics.annotations.Technology
 
 /**
  * Generates code from your model files on save.
@@ -77,12 +72,13 @@ class AspectLangGenerator implements IGenerator2 {
 	 */
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		resource.allContents.filter(typeof(Aspect)).forEach[aspectTechnologyMap.discoverAspectTechnology(it)]
-		aspectTechnologyMap.forEach[key, value | switch(key) {
+		aspectTechnologyMap.forEach[key, value | 
+			/*
 			case ASPECT_J: createAspectJConfiguration(value,fsa)
 			case JAVA_EE : createJ2EEConfiguration(value,fsa)
 			case SPRING : createSpringConfiguration(value,fsa)
 			case SERVLET: createServletConfiguration(value,fsa)
-		}]
+		} */]
 	}
 			
 	/**
