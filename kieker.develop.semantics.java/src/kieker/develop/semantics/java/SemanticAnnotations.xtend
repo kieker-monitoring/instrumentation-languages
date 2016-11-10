@@ -55,7 +55,7 @@ class SemanticAnnotations implements ISemanticExtension {
 		return result
 	}
 	
-		private def createAnnotationOperationSiganture(TargetLanguage language, Technology technology) {
+	private def createAnnotationOperationSiganture(TargetLanguage language, Technology technology) {
 		val result = AnnotationsFactory.eINSTANCE.createAnnotation
 		result.name = "operationSignature"
 		result.implementations += createImplementation(language, technology, '''getSignature''')

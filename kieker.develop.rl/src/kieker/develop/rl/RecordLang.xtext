@@ -69,8 +69,11 @@ Constant:
 ;
 
 Property:
-	(modifiers+=PropertyModifier)* (foreignKey=ForeignKey)? 
-	(type=Classifier | 'alias' referTo=[Property|ID] 'as') name=ID (':' semantics=[semantics::Annotation|ID])?
+	(modifiers+=PropertyModifier)* (
+		foreignKey=ForeignKey | 
+		type=Classifier | 
+		'alias' referTo=[Property|ID] 'as'
+	) name=ID (':' semantics=[semantics::Annotation|ID])?
 	('=' value=Literal)?
 ;
 

@@ -47,6 +47,8 @@ class TypeResolution {
 	static def Classifier findType(Property property) {
 		if (property.type != null)
 			return property.type
+		else if (property.foreignKey != null)
+			return property.foreignKey.propertyRef.findType
 		else
 			return property.referTo.findType
 	}

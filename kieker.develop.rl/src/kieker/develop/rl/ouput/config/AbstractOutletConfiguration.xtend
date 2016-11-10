@@ -3,9 +3,9 @@ package kieker.develop.rl.ouput.config
 import java.util.ArrayList
 import java.util.Collection
 import kieker.develop.rl.recordLang.Type
-import kieker.develop.rl.generator.AbstractTypeGenerator
 import kieker.develop.rl.recordLang.EventType
 import kieker.develop.rl.recordLang.TemplateType
+import kieker.develop.rl.generator.ITypeGenerator
 
 /**
  * Entity class for the outlet configuration.
@@ -21,10 +21,10 @@ abstract class AbstractOutletConfiguration {
 	private String directory
 	
 	/** All generators for event types of this outlet configuration. */
-	protected val eventTypeGenerators = new ArrayList<AbstractTypeGenerator<EventType>>
+	protected val eventTypeGenerators = new ArrayList<ITypeGenerator<EventType, ? extends Object>>
 	
 	/** All generators for template types of this outlet configuration. */
-	protected val templateTypeGenerators = new ArrayList<AbstractTypeGenerator<TemplateType>>
+	protected val templateTypeGenerators = new ArrayList<ITypeGenerator<TemplateType, ? extends Object>>
 
 	/**
 	 * Create a new outlet entity.
@@ -47,11 +47,11 @@ abstract class AbstractOutletConfiguration {
 		return this.directory
 	}
 	
-	def Collection<AbstractTypeGenerator<EventType>> getEventTypeGenerators() {
+	def Collection<ITypeGenerator<EventType, ? extends Object>> getEventTypeGenerators() {
 		return this.eventTypeGenerators
 	}
 	
-	def Collection<AbstractTypeGenerator<TemplateType>> getTemplateTypeGenerators() {
+	def Collection<ITypeGenerator<TemplateType, ? extends Object>> getTemplateTypeGenerators() {
 		return this.templateTypeGenerators
 	}
 	

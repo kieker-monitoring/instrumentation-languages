@@ -13,22 +13,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package kieker.develop.rl.generator.delphi
+package kieker.develop.rl.generator
 
-import kieker.develop.rl.generator.TypeInputModel
-import kieker.develop.rl.recordLang.EventType
+import de.cau.cs.se.geco.architecture.framework.IGenerator
 import kieker.develop.rl.recordLang.Type
-import kieker.develop.rl.generator.ITypeGenerator
 
-class EventTypeGenerator implements ITypeGenerator<EventType, CharSequence> {
-		
-	override generate(TypeInputModel<EventType> input) {
-		''''''
-	}
-	
-	override accepts(Type type) {
-		false
-	}
+/**
+ * General interface for all type generators.
+ * 
+ * @author Reiner Jung
+ */
+interface ITypeGenerator<S extends Type, T> extends IGenerator<TypeInputModel<S>, T> {
 
+	/**
+	 * Primary code generation template.
+	 * 
+	 * @param type
+	 * 		one record type to be used to create monitoring record
+	 */
+	override T generate(TypeInputModel<S> type)
 	
+	/**
+	 * Check whether the generator supports the given type declaration.
+	 * 
+	 * @param type the type to be checked
+	 * 
+	 * @return true in case the generator supports the type
+	 */
+	def boolean accepts(Type type)
 }

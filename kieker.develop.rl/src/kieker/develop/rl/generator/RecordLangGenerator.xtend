@@ -125,7 +125,7 @@ class RecordLangGenerator implements IGenerator2 {
 	 * @param author default author used in the output
 	 * @param version default version used in the output
 	 */
-	private def <T extends Type> void processTypes(Collection<AbstractTypeGenerator<T>> generators, 
+	private def <T extends Type> void processTypes(Collection<ITypeGenerator<T,? extends Object>> generators, 
 		Collection<T> types,
 		AbstractOutletConfiguration configuration,
 		IFileSystemAccess2 fsa,
@@ -133,8 +133,14 @@ class RecordLangGenerator implements IGenerator2 {
 	) {
 		generators.forEach[generator |
 			types.filter[generator.accepts(it)].forEach[
-				val result = generator.generate(new TypeInputModel<T>(header, author, version, it))
-				fsa.generateFile(configuration.outputFilePath(it), configuration.name, result)
+				switch (generator) {
+					ITypeGenerator<T,CharSequence>: {
+						val result = generator.generate(new TypeInputModel<T>(header, author, version, it))
+						fsa.generateFile(configuration.outputFilePath(it), configuration.name, result)
+					}
+					/** Note in future, we might add model to model output here. */
+				}
+
 			]
 		]
 	}
