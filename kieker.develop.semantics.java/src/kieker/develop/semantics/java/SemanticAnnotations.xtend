@@ -21,7 +21,6 @@ import kieker.develop.semantics.annotations.Technology
 import kieker.develop.semantics.annotations.TargetLanguage
 import kieker.develop.semantics.annotations.Semantics
 import kieker.develop.semantics.annotations.AnnotationsFactory
-import javax.inject.Inject
 
 /**
  * Semantic annotations for Java.
@@ -32,7 +31,7 @@ class SemanticAnnotations implements ISemanticExtension {
 	
 	private Semantics model
 	
-	@Inject extension AspectJSemantics aspectJ
+	extension AspectJSemantics aspectJ = new AspectJSemantics()
 	
 	
 	new () {

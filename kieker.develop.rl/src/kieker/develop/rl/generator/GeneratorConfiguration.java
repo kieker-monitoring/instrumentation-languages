@@ -18,12 +18,12 @@ package kieker.develop.rl.generator;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import kieker.develop.rl.ouput.config.AbstractOutletConfiguration;
-
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
+
+import kieker.develop.rl.ouput.config.AbstractOutletConfiguration;
 
 /**
  * Configuration and registration of IRL generators. The class also contains functions for derived
@@ -36,43 +36,43 @@ import org.eclipse.core.runtime.Platform;
  */
 public final class GeneratorConfiguration {
 
-    /** extension point name. */
-    public static final String GENERATOR_PROVIDER = "kieker.develop.rl.generator.provider";
-    /** extension point short name. */
-    public static final String SHORT_EXTENSION_NAME = "provider";
+	/** extension point name. */
+	public static final String GENERATOR_PROVIDER = "kieker.develop.rl.generator.provider";
+	/** extension point short name. */
+	public static final String SHORT_EXTENSION_NAME = "provider";
 
-    /**
-     * Empty default constructor.
-     */
-    private GeneratorConfiguration() {
-        // utility class nothing to be done here
-    }
+	/**
+	 * Empty default constructor.
+	 */
+	private GeneratorConfiguration() {
+		// utility class nothing to be done here
+	}
 
-    /**
-     * Collect all outlets provided by the different generator providers.
-     *
-     * @return Returns a collection of outlet configurations
-     */
-    public static Collection<AbstractOutletConfiguration> getOutletConfigurations() {
-        final Collection<AbstractOutletConfiguration> outletConfigurations = new ArrayList<>();
+	/**
+	 * Collect all outlets provided by the different generator providers.
+	 *
+	 * @return Returns a collection of outlet configurations
+	 */
+	public static Collection<AbstractOutletConfiguration> getOutletConfigurations() {
+		final Collection<AbstractOutletConfiguration> outletConfigurations = new ArrayList<>();
 
-        final IExtensionRegistry registry = Platform.getExtensionRegistry();
+		final IExtensionRegistry registry = Platform.getExtensionRegistry();
 
-        final IConfigurationElement[] config = registry
-                .getConfigurationElementsFor(GeneratorConfiguration.GENERATOR_PROVIDER);
+		final IConfigurationElement[] config = registry
+				.getConfigurationElementsFor(GeneratorConfiguration.GENERATOR_PROVIDER);
 
-        for (final IConfigurationElement element : config) {
-            try {
-                final Object ext = element.createExecutableExtension(GeneratorConfiguration.SHORT_EXTENSION_NAME);
-                if (ext instanceof IGeneratorProvider) {
-                    final IGeneratorProvider generatorProvider = (IGeneratorProvider) ext;
-                    generatorProvider.addOutletConfigurations(outletConfigurations);
-                }
-            } catch (final CoreException e) {
-                e.printStackTrace();
-            }
-        }
-        return outletConfigurations;
-    }
+		for (final IConfigurationElement element : config) {
+			try {
+				final Object ext = element.createExecutableExtension(GeneratorConfiguration.SHORT_EXTENSION_NAME);
+				if (ext instanceof IGeneratorProvider) {
+					final IGeneratorProvider generatorProvider = (IGeneratorProvider) ext;
+					generatorProvider.addOutletConfigurations(outletConfigurations);
+				}
+			} catch (final CoreException e) {
+				e.printStackTrace();
+			}
+		}
+		return outletConfigurations;
+	}
 
 }

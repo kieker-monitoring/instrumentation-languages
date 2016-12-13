@@ -15,7 +15,7 @@
  ***************************************************************************/
 package kieker.develop.semantics.java
 
-class AspectJSemantics {
+public class AspectJSemantics {
 	
 	def String createOperationSignature() '''
 		this.signatureToLongString(thisEnclosingJoinPoint.getSignature());

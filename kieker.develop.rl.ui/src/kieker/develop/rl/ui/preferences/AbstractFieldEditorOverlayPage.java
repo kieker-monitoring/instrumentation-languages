@@ -15,10 +15,6 @@
  ***************************************************************************/
 package kieker.develop.rl.ui.preferences;
 
-import kieker.develop.rl.generator.GeneratorConfiguration;
-import kieker.develop.rl.ouput.config.AbstractOutletConfiguration;
-import kieker.develop.rl.preferences.TargetsPreferences;
-
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.FieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
@@ -31,6 +27,10 @@ import org.eclipse.jface.preference.StringFieldEditor;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.custom.BusyIndicator;
 
+import kieker.develop.rl.generator.GeneratorConfiguration;
+import kieker.develop.rl.ouput.config.AbstractOutletConfiguration;
+import kieker.develop.rl.preferences.TargetsPreferences;
+
 /**
  * superclass for FieldEditorPreferencePage; can be used for preference pages and property pages.
  *
@@ -41,81 +41,81 @@ import org.eclipse.swt.custom.BusyIndicator;
  */
 public abstract class AbstractFieldEditorOverlayPage extends FieldEditorPreferencePage {
 
-    /**
-     * Constructor.
-     *
-     * @param style
-     *            - layout style
-     */
-    public AbstractFieldEditorOverlayPage(final int style) {
-        super(style);
-    }
+	/**
+	 * Constructor.
+	 *
+	 * @param style
+	 *            - layout style
+	 */
+	public AbstractFieldEditorOverlayPage(final int style) {
+		super(style);
+	}
 
-    /**
-     * Constructor.
-     *
-     * @param title
-     *            - title string
-     * @param style
-     *            some style setup
-     */
-    public AbstractFieldEditorOverlayPage(final String title, final int style) {
-        super(title, style);
-    }
+	/**
+	 * Constructor.
+	 *
+	 * @param title
+	 *            - title string
+	 * @param style
+	 *            some style setup
+	 */
+	public AbstractFieldEditorOverlayPage(final String title, final int style) {
+		super(title, style);
+	}
 
-    /**
-     * Constructor.
-     *
-     * @param title
-     *            - title string
-     * @param image
-     *            - title image
-     * @param style
-     *            - layout style
-     */
-    public AbstractFieldEditorOverlayPage(final String title, final ImageDescriptor image, final int style) {
-        super(title, image, style);
-    }
+	/**
+	 * Constructor.
+	 *
+	 * @param title
+	 *            - title string
+	 * @param image
+	 *            - title image
+	 * @param style
+	 *            - layout style
+	 */
+	public AbstractFieldEditorOverlayPage(final String title, final ImageDescriptor image, final int style) {
+		super(title, image, style);
+	}
 
-    /**
-     * Show a single preference pages.
-     *
-     * @param id
-     *            - the preference page identification
-     * @param page
-     *            - the preference page
-     */
-    protected void showPreferencePage(final String id, final IPreferencePage page) {
-        final IPreferenceNode targetNode = new PreferenceNode(id, page);
-        final PreferenceManager manager = new PreferenceManager();
-        manager.addToRoot(targetNode);
-        final PreferenceDialog dialog = new PreferenceDialog(this.getControl().getShell(), manager);
-        BusyIndicator.showWhile(this.getControl().getDisplay(), new Runnable() {
-            @Override
-            public void run() {
-                dialog.create();
-                dialog.setMessage(targetNode.getLabelText());
-                dialog.open();
-            }
-        });
-    }
+	/**
+	 * Show a single preference pages.
+	 *
+	 * @param id
+	 *            - the preference page identification
+	 * @param page
+	 *            - the preference page
+	 */
+	protected void showPreferencePage(final String id, final IPreferencePage page) {
+		final IPreferenceNode targetNode = new PreferenceNode(id, page);
+		final PreferenceManager manager = new PreferenceManager();
+		manager.addToRoot(targetNode);
+		final PreferenceDialog dialog = new PreferenceDialog(this.getControl().getShell(), manager);
+		BusyIndicator.showWhile(this.getControl().getDisplay(), new Runnable() {
+			@Override
+			public void run() {
+				dialog.create();
+				dialog.setMessage(targetNode.getLabelText());
+				dialog.open();
+			}
+		});
+	}
 
-    @Override
-    protected void createFieldEditors() {
-        for (final AbstractOutletConfiguration outletConfiguration : GeneratorConfiguration.getOutletConfigurations()) {
-            this.addField(new BooleanFieldEditor(TargetsPreferences.GENERATOR_ACTIVE + outletConfiguration.getName(),
-                    outletConfiguration.getDescription() + " generator", this.getFieldEditorParent()));
-            final FieldEditor commentFieldEditor = new CommentFieldEditor(
-                    TargetsPreferences.GENERATOR_HEADER_COMMENT + outletConfiguration.getName(), "Header",
-                    this.getFieldEditorParent());
-            this.addField(commentFieldEditor);
-        }
+	@Override
+	protected void createFieldEditors() {
+		for (final AbstractOutletConfiguration outletConfiguration : GeneratorConfiguration.getOutletConfigurations()) {
+			this.addField(new BooleanFieldEditor(TargetsPreferences.GENERATOR_ACTIVE + outletConfiguration.getName(),
+					outletConfiguration.getDescription() + " generator", this.getFieldEditorParent()));
+			final FieldEditor commentFieldEditor = new CommentFieldEditor(
+					TargetsPreferences.GENERATOR_HEADER_COMMENT + outletConfiguration.getName(), "Header",
+					this.getFieldEditorParent());
+			this.addField(commentFieldEditor);
+		}
 
-        // SpacerFieldEditor spacer = new SpacerFieldEditor(getFieldEditorParent());
-        // addField(spacer);
+		// SpacerFieldEditor spacer = new SpacerFieldEditor(getFieldEditorParent());
+		// addField(spacer);
 
-        this.addField(new StringFieldEditor(TargetsPreferences.AUTHOR_NAME, "Author", this.getFieldEditorParent()));
-        this.addField(new StringFieldEditor(TargetsPreferences.VERSION_ID, "Version", this.getFieldEditorParent()));
-    }
+		this.addField(new StringFieldEditor(TargetsPreferences.AUTHOR_NAME, "Author", this.getFieldEditorParent()));
+		this.addField(new StringFieldEditor(TargetsPreferences.VERSION_ID, "Version", this.getFieldEditorParent()));
+	}
 
 }
