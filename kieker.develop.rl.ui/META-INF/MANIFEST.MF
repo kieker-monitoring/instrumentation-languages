@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: kieker.develop.rl.ui
 Bundle-Vendor: Software Engineering Group, Kiel University
-Bundle-Version: 1.2.0.qualifier
+Bundle-Version: 1.2.0
 Bundle-SymbolicName: kieker.develop.rl.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: kieker.develop.rl;visibility:=reexport,
