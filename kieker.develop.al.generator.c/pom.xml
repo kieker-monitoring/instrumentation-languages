@@ -10,10 +10,10 @@
 		<version>1.2.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>kieker.develop.al.generator.java</artifactId>
+	<artifactId>kieker.develop.al.generator.c</artifactId>
 	<packaging>eclipse-plugin</packaging>
 
-	<name>Kieker Aspect Language Java Generator</name>
+	<name>Kieker Aspect Language C Generator</name>
 	
 	<build>
 		<plugins>

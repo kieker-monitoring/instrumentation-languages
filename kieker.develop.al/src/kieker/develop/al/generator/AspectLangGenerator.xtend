@@ -81,82 +81,82 @@ class AspectLangGenerator implements IGenerator2 {
 		} */]
 	}
 			
-	/**
-	 * Create AspectJ configuration (aop.xml) for a given collection of aspects.
-	 * 
-	 * @param aspects collection of aspects for AspectJ
-	 * @param access file system access
-	 */
-	private def createAspectJConfiguration(Collection<Aspect> aspects, IFileSystemAccess2 access) {
-		val aspectGenerator = new AspectJPointcutGenerator()
-		storeXMLModel('aop.xml', access, aspectGenerator.generate(aspects))
-				
-		val adviceGenerator = new AspectJAdviceGenerator()
-		val utilizationAdviceMap = aspects.createUtilizationMap()
-		
-		utilizationAdviceMap.forEach[advice, utilizedAdvices |
-			utilizedAdvices.forEach[utilizedAdviced, i|
-				adviceGenerator.setIndex(i)
-				access.generateFile(utilizedAdviced.aspectJAbstractAdviceName(i), 
-					adviceGenerator.generate(utilizedAdviced)
-				)
-			]
-		]
-	}
+//	/**
+//	 * Create AspectJ configuration (aop.xml) for a given collection of aspects.
+//	 * 
+//	 * @param aspects collection of aspects for AspectJ
+//	 * @param access file system access
+//	 */
+//	private def createAspectJConfiguration(Collection<Aspect> aspects, IFileSystemAccess2 access) {
+//		val aspectGenerator = new AspectJPointcutGenerator()
+//		storeXMLModel('aop.xml', access, aspectGenerator.generate(aspects))
+//				
+//		val adviceGenerator = new AspectJAdviceGenerator()
+//		val utilizationAdviceMap = aspects.createUtilizationMap()
+//		
+//		utilizationAdviceMap.forEach[advice, utilizedAdvices |
+//			utilizedAdvices.forEach[utilizedAdviced, i|
+//				adviceGenerator.setIndex(i)
+//				access.generateFile(utilizedAdviced.aspectJAbstractAdviceName(i), 
+//					adviceGenerator.generate(utilizedAdviced)
+//				)
+//			]
+//		]
+//	}
 		
 	private def String aspectJAbstractAdviceName(UtilizeAdvice advice, int i) '''aspectj«File.separator»«advice.advice.packagePathName»Abstract«advice.advice.name»Advice«i».java'''
 			
-	/**
-	 * Create Spring configuration for a given collection of aspects.
-	 * 
-	 * @param aspects collection of aspects for AspectJ
-	 * @param access file system access
-	 */
-	private def createSpringConfiguration(Collection<Aspect> aspects, IFileSystemAccess2 access) {
-		val adviceGenerator = new SpringAdviceGenerator()
-		
-		val utilizationAdviceMap = aspects.createUtilizationMap()
-		
-		utilizationAdviceMap.forEach[advice, utilizedAdvices |
-			access.generateFile(advice.aspectSpringAdviceName, adviceGenerator.generate(advice))
-		]
-	}
+//	/**
+//	 * Create Spring configuration for a given collection of aspects.
+//	 * 
+//	 * @param aspects collection of aspects for AspectJ
+//	 * @param access file system access
+//	 */
+//	private def createSpringConfiguration(Collection<Aspect> aspects, IFileSystemAccess2 access) {
+//		val adviceGenerator = new SpringAdviceGenerator()
+//		
+//		val utilizationAdviceMap = aspects.createUtilizationMap()
+//		
+//		utilizationAdviceMap.forEach[advice, utilizedAdvices |
+//			access.generateFile(advice.aspectSpringAdviceName, adviceGenerator.generate(advice))
+//		]
+//	}
 	
 	private def String aspectSpringAdviceName(Advice advice) '''spring«File.separator»«advice.packagePathName»«advice.name»Interceptor.java'''
 	
-	/**
-	 * Create J2EE configuration for a given collection of aspects.
-	 * 
-	 * @param aspects collection of aspects for AspectJ
-	 * @param access file system access
-	 */
-	private def createJ2EEConfiguration(Collection<Aspect> aspects, IFileSystemAccess2 access) {
-		val adviceGenerator = new JavaEEAdviceGenerator()
-		
-		val utilizationAdviceMap = aspects.createUtilizationMap()
-		
-		utilizationAdviceMap.forEach[advice, utilizedAdvices |
-			access.generateFile(advice.aspectJ2EEAdviceName, adviceGenerator.generate(advice))
-		]
-	}
-	
-	private def String aspectJ2EEAdviceName(Advice advice) '''j2ee«File.separator»«advice.packagePathName»«advice.name»Interceptor.java'''
-	
-	/**
-	 * Create Servlet configuration for a given collection of aspects.
-	 * 
-	 * @param aspects collection of aspects for AspectJ
-	 * @param access file system access
-	 */
-	private def createServletConfiguration(Collection<Aspect> aspects, IFileSystemAccess2 access) {
-		val adviceGenerator = new ServletAdviceGenerator()
-		
-		val utilizationAdviceMap = aspects.createUtilizationMap()
-		
-		utilizationAdviceMap.forEach[advice, utilizedAdvices |
-			access.generateFile(advice.aspectServletAdviceName, adviceGenerator.generate(advice))
-		]
-	}
+//	/**
+//	 * Create J2EE configuration for a given collection of aspects.
+//	 * 
+//	 * @param aspects collection of aspects for AspectJ
+//	 * @param access file system access
+//	 */
+//	private def createJ2EEConfiguration(Collection<Aspect> aspects, IFileSystemAccess2 access) {
+//		val adviceGenerator = new JavaEEAdviceGenerator()
+//		
+//		val utilizationAdviceMap = aspects.createUtilizationMap()
+//		
+//		utilizationAdviceMap.forEach[advice, utilizedAdvices |
+//			access.generateFile(advice.aspectJ2EEAdviceName, adviceGenerator.generate(advice))
+//		]
+//	}
+//	
+//	private def String aspectJ2EEAdviceName(Advice advice) '''j2ee«File.separator»«advice.packagePathName»«advice.name»Interceptor.java'''
+//	
+//	/**
+//	 * Create Servlet configuration for a given collection of aspects.
+//	 * 
+//	 * @param aspects collection of aspects for AspectJ
+//	 * @param access file system access
+//	 */
+//	private def createServletConfiguration(Collection<Aspect> aspects, IFileSystemAccess2 access) {
+//		val adviceGenerator = new ServletAdviceGenerator()
+//		
+//		val utilizationAdviceMap = aspects.createUtilizationMap()
+//		
+//		utilizationAdviceMap.forEach[advice, utilizedAdvices |
+//			access.generateFile(advice.aspectServletAdviceName, adviceGenerator.generate(advice))
+//		]
+//	}
 	
 	private def String aspectServletAdviceName(Advice advice) '''servlet«File.separator»«advice.packagePathName»«advice.name»Filter.java'''
 	

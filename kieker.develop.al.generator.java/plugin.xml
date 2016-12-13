@@ -4,7 +4,7 @@
    <extension
          point="kieker.develop.al.generator.provider">
       <configuration></configuration>
-      <probe></probe>
+      <advice></advice>
    </extension>
 
 </plugin>
