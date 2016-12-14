@@ -18,7 +18,8 @@
 	<properties>
 		<!-- Relative path to the repo being uploaded -->
 		<repo.path>${project.build.directory}/repository/</repo.path>
-		<updatesite.url>file:///srv/vhosts/eus/mdm/release/1.2/</updatesite.url>
+		<!-- <updatesite.url>file:///srv/vhosts/eus/mdm/release/1.2/</updatesite.url> -->
+		<updatesite.url>file:///home/reiner/eus/release</updatesite.url>
 	</properties>
 
 	<build>
