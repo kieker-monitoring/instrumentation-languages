@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
@@ -19,7 +18,7 @@
 		<!-- Relative path to the repo being uploaded -->
 		<repo.path>${project.build.directory}/repository/</repo.path>
 		<!-- <updatesite.url>file:///srv/vhosts/eus/mdm/release/1.2/</updatesite.url> -->
-		<updatesite.url>file:///home/reiner/eus/release</updatesite.url>
+<!-- 		<updatesite.url>file:///home/reiner/eus/release</updatesite.url> -->
 	</properties>
 
 	<build>
@@ -43,7 +42,16 @@
 					</execution>
 				</executions>
 			</plugin>
-		
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-p2-repository-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+                	<includeAllDependencies>true</includeAllDependencies>
+          		</configuration>
+			</plugin>
+
 			<!-- Upload the repo to the server -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
