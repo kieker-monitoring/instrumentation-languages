@@ -96,7 +96,7 @@
 <repository location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/"/>
 </location>
 <location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="de.cau.cs.se.geco.architecture.feature.feature.group" version="1.0.0.201612140455"/>
+<unit id="de.cau.cs.se.geco.architecture.feature.feature.group" version="1.0.0.201612200455"/>
 <repository location="https://build.se.informatik.uni-kiel.de/eus/geco/snapshot/"/>
 </location>
 </locations>
