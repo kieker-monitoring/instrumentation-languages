@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>kieker.develop</groupId>
 		<artifactId>kieker.develop.parent</artifactId>
-		<version>1.2.0-SNAPSHOT</version>
+		<version>1.3.0-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>kieker.develop.repository</artifactId>
@@ -18,7 +18,6 @@
 	<properties>
 		<!-- Relative path to the repo being uploaded -->
 		<repo.path>${project.build.directory}/repository/</repo.path>
-		<updatesite.url>file:///srv/vhosts/eus/mdm/snapshot/</updatesite.url>
 	</properties>
 
 	<build>

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: kieker.develop.rl.tests
 Bundle-Vendor: My Company
-Bundle-Version: 1.2.0.qualifier
+Bundle-Version: 1.3.0.qualifier
 Bundle-SymbolicName: kieker.develop.rl.generator.java.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: kieker.develop.rl,
