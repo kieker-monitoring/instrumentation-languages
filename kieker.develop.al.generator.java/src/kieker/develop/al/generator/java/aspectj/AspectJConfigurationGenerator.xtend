@@ -9,7 +9,6 @@ import kieker.develop.al.aspectLang.Pointcut
 import org.w3c.dom.Document
 import org.w3c.dom.Element
 
-import static extension kieker.develop.al.generator.CommonCollectionModule.*
 import static extension kieker.develop.al.generator.java.aspectj.NameResolver.*
 import static extension kieker.develop.al.generator.java.aspectj.PointcutQueryModule.*
 
@@ -30,7 +29,7 @@ class AspectJConfigurationGenerator implements IGenerator<Collection<Aspect>,Doc
 				
 		val aspectsElement = doc.createElement("aspects")
 		aspectjElement.appendChild(aspectsElement)
-		
+/*		this must be rewritten for advice instead of utilized advice
 		val utilizationMap = input.createUtilizationMap
 		
 		utilizationMap.forEach[advice, utilizedAdvices |
@@ -47,7 +46,7 @@ class AspectJConfigurationGenerator implements IGenerator<Collection<Aspect>,Doc
 				aspectsElement.appendChild(concreteAspect)
 			]
 		]
-				
+	*/			
 		return doc
 	}
 	

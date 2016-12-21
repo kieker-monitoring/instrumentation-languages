@@ -13,23 +13,38 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package kieker.develop.al.generator.java
+package kieker.develop.al.modelhandling
 
-import kieker.develop.al.generator.IGeneratorProvider
-import java.util.Collection
-import kieker.develop.al.generator.AbstractOutletConfiguration
-import kieker.develop.al.aspectLang.Pointcut
+import org.eclipse.core.runtime.Platform
+import java.util.HashMap
+import java.util.Map
+import org.eclipse.core.runtime.CoreException
 
 /**
- * Provider of generators for Java based pointcut
- * technologies and the appropriate outlet configurations.
  * 
  * @author Reiner Jung
  */
-class JavaConfigurationGeneratorProvider implements IGeneratorProvider<Pointcut> {
+class ModelMapperProvider {
 	
-	override addOutletConfigurations(Collection<AbstractOutletConfiguration<Pointcut>> configurations) {
+	private val Map<String,IModelMapper> mappers = new HashMap<String, IModelMapper>()
 		
+	new () {
+		/** Register all mapping modules. */
+		val registry = Platform.getExtensionRegistry()
+  		val config = registry.getConfigurationElementsFor(IModelMapper.MODEL_MAPPER)
+	  	try {
+			config.forEach[element |
+	  			val ext = element.createExecutableExtension(IModelMapper.MAPPING_HANDLER)
+	  			if (ext instanceof IModelMapper) {
+	  				this.mappers.put(ext.name, ext)
+	  			}
+	  		]
+	  	} catch (CoreException ex) {
+		   	System.out.println(ex.getMessage())
+		}
 	}
 	
+	def getModelMappers() {
+		return mappers
+	}
 }

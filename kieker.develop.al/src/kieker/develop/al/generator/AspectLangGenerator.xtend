@@ -15,6 +15,7 @@
  ***************************************************************************/
 package kieker.develop.al.generator
 
+import com.google.inject.Inject
 import java.io.File
 import java.io.StringWriter
 import java.util.ArrayList
@@ -28,18 +29,19 @@ import javax.xml.transform.stream.StreamResult
 import kieker.develop.al.aspectLang.Advice
 import kieker.develop.al.aspectLang.Aspect
 import kieker.develop.al.aspectLang.AspectModel
-import kieker.develop.al.aspectLang.UtilizeAdvice
 import kieker.develop.al.modelhandling.IModelMapper
-import org.eclipse.core.runtime.CoreException
-import org.eclipse.core.runtime.Platform
+import kieker.develop.al.modelhandling.ModelMapperProviderFactory
+import kieker.develop.semantics.annotations.Technology
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGenerator2
+import org.eclipse.xtext.generator.IGeneratorContext
 import org.w3c.dom.Document
 
-import static extension kieker.develop.al.generator.CommonCollectionModule.*
-import org.eclipse.xtext.generator.IGeneratorContext
-import kieker.develop.semantics.annotations.Technology
+/**
+ * Note: this Part comprises of large portions of legacy code and must be refactored and
+ * moved to the appropriate new location.
+ */
 
 /**
  * Generates code from your model files on save.
@@ -47,25 +49,13 @@ import kieker.develop.semantics.annotations.Technology
  * see http://www.eclipse.org/Xtext/documentation.html#TutorialCodeGeneration
  */
 class AspectLangGenerator implements IGenerator2 {
+	
+	@Inject
+	ModelMapperProviderFactory modelMapperProviderFactory
 		
 	val Map<Technology,Collection<Aspect>> aspectTechnologyMap = new HashMap<Technology,Collection<Aspect>>()
-	
-	val Collection<IModelMapper> mappers = new ArrayList<IModelMapper>()
-	
-	new () {
-		val registry = Platform.getExtensionRegistry()
-  		val config = registry.getConfigurationElementsFor(IModelMapper.MODEL_MAPPER)
-	  	try {
-			config.forEach[element |
-	  			val ext = element.createExecutableExtension(IModelMapper.MAPPING_HANDLER)
-	  			if (ext instanceof IModelMapper) {
-	  				this.mappers.add((ext as IModelMapper))
-	  			}
-	  		]
-	  	} catch (CoreException ex) {
-		   	System.out.println(ex.getMessage())
-		}	
-	}
+			
+	new () {}
 	
 	/**
 	 * Central generation function.
@@ -104,7 +94,7 @@ class AspectLangGenerator implements IGenerator2 {
 //		]
 //	}
 		
-	private def String aspectJAbstractAdviceName(UtilizeAdvice advice, int i) '''aspectj«File.separator»«advice.advice.packagePathName»Abstract«advice.advice.name»Advice«i».java'''
+//	private def String aspectJAbstractAdviceName(UtilizeAdvice advice, int i) '''aspectj«File.separator»«advice.advice.packagePathName»Abstract«advice.advice.name»Advice«i».java'''
 			
 //	/**
 //	 * Create Spring configuration for a given collection of aspects.
@@ -205,7 +195,8 @@ class AspectLangGenerator implements IGenerator2 {
 	 * @param aspect a new aspect to be added to the map.
 	 */
 	private def void discoverAspectTechnologyByModelMapper(Map<Technology, Collection<Aspect>> map, Aspect aspect) {
-		this.mappers.forEach[
+		val Map<String,IModelMapper> mappers = modelMapperProviderFactory.provider.modelMappers
+		mappers.forEach[
 			//if (aspect.pointcut.model.handler.equals(it.name))
 				//it.targetTechnologies.forEach[map.addAndRegisterAspectTechnology(it,aspect)]
 		]

@@ -13,24 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package kieker.develop.al.generator;
+package kieker.develop.al.generator.java.servlet
 
-import java.util.Collection;
+import kieker.develop.al.generator.AbstractOutletConfiguration
+import kieker.develop.al.aspectLang.Advice
+import java.io.File
+import kieker.develop.al.aspectLang.AspectModel
 
-/**
- * Outlet configuration provider registration interface for advice configuration/pointcut generation.
- *
- * @author Reiner Jung
- *
- */
-public interface IConfigurationGeneratorProvider {
-
-	/**
-	 * Add outlet configurations to the collection of outlet configurations.
-	 *
-	 * @param configurations
-	 *            the collection of configurations
-	 */
-	public void addOutletConfigurations(Collection<AbstractOutletConfiguration> configurations);
-
+class ServletAdviceOutletConfiguration extends AbstractOutletConfiguration<Advice> {
+	
+	private static String SERVLET_ADVICE_OUTLET_ID = "java";
+	
+	new() {
+		super(SERVLET_ADVICE_OUTLET_ID, "Java Servlet", "./src-gen/java")
+		generators += new ServletAdviceGenerator()
+	}
+	
+	override outputFilePath(Advice node) '''«node.outputDirectory»«File::separator»«node.name».java'''
+	
+	override outputDirectory(Advice node) '''«(node.eContainer as AspectModel).name.replace('.',File::separator)»'''	
 }

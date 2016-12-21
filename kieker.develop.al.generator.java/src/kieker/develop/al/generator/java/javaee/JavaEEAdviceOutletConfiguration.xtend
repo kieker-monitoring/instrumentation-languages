@@ -13,23 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package kieker.develop.al.generator.java
+package kieker.develop.al.generator.java.javaee
 
-import kieker.develop.al.generator.IGeneratorProvider
-import java.util.Collection
 import kieker.develop.al.generator.AbstractOutletConfiguration
-import kieker.develop.al.aspectLang.Pointcut
+import kieker.develop.al.aspectLang.Advice
+import java.io.File
+import kieker.develop.al.aspectLang.AspectModel
+import kieker.develop.al.generator.java.javaee.JavaEEAdviceGenerator
 
-/**
- * Provider of generators for Java based pointcut
- * technologies and the appropriate outlet configurations.
- * 
- * @author Reiner Jung
- */
-class JavaConfigurationGeneratorProvider implements IGeneratorProvider<Pointcut> {
+class JavaEEAdviceOutletConfiguration extends AbstractOutletConfiguration<Advice> {
 	
-	override addOutletConfigurations(Collection<AbstractOutletConfiguration<Pointcut>> configurations) {
-		
+	private static String JAVAEE_ADVICE_OUTLET_ID = "java";
+	
+	new() {
+		super(JAVAEE_ADVICE_OUTLET_ID, "AspectJ", "./src-gen/java")
+		generators += new JavaEEAdviceGenerator()
 	}
 	
+	override outputFilePath(Advice node) '''«node.outputDirectory»«File::separator»«node.name».java'''
+	
+	override outputDirectory(Advice node) '''«(node.eContainer as AspectModel).name.replace('.',File::separator)»'''	
 }

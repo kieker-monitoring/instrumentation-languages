@@ -13,23 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package kieker.develop.al.generator.java
+package kieker.develop.al.modelhandling
 
-import kieker.develop.al.generator.IGeneratorProvider
-import java.util.Collection
-import kieker.develop.al.generator.AbstractOutletConfiguration
-import kieker.develop.al.aspectLang.Pointcut
+import com.google.inject.Inject
 
 /**
- * Provider of generators for Java based pointcut
- * technologies and the appropriate outlet configurations.
  * 
  * @author Reiner Jung
  */
-class JavaConfigurationGeneratorProvider implements IGeneratorProvider<Pointcut> {
+class ModelMapperProviderFactory {
 	
-	override addOutletConfigurations(Collection<AbstractOutletConfiguration<Pointcut>> configurations) {
-		
-	}
+	//var ModelMapperProvider modelMapperProvider = null
 	
+	@Inject
+	new() {}
+	
+	def ModelMapperProvider getProvider() {
+		//if (modelMapperProvider == null) {
+		//	modelMapperProvider = new ModelMapperProvider()
+		//}
+		return new ModelMapperProvider()
+	}	
 }

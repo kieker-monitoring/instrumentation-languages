@@ -40,11 +40,9 @@ class RecordLangGenerator implements IGenerator2 {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		if (resource.URI.platformResource) {
-			// list all generators to support EventType
+			
 			val preferenceStore = TargetsPreferences.preferenceStore
-
 			val project = resource.URI.segmentsList.get(1)
-
 			val projectStore = preferenceStore.node(project)
 
 			projectStore.v()

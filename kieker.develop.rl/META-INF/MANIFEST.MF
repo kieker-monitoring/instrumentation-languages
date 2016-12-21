@@ -36,6 +36,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: kieker.develop.rl,
  kieker.develop.rl.formatting,
  kieker.develop.rl.generator,
+ kieker.develop.rl.generator.modeltypes,
  kieker.develop.rl.ouput.config,
  kieker.develop.rl.parser.antlr,
  kieker.develop.rl.parser.antlr.internal,
@@ -48,5 +49,7 @@ Export-Package: kieker.develop.rl,
  kieker.develop.rl.services,
  kieker.develop.rl.typing,
  kieker.develop.rl.typing.base,
+ kieker.develop.rl.typing.jar,
+ kieker.develop.rl.typing.semantics,
  kieker.develop.rl.validation
 

@@ -49,7 +49,7 @@ class JarModelGlobalScopeProvider extends BaseTypeGlobalScopeProvider {
         	if (resource != null) {
         		val ResourceSet resourceSet = resource.getResourceSet()
         		if (resourceSet != null) {
-        			val typeProvider = AnnotationProviderFactory.getTypeProvider(resourceSet)
+        			val typeProvider = AnnotationProviderFactory.getAnnotationProvider(resourceSet)
 					return new AnnotationScope(typeProvider, qualifiedNameConverter, filter)
         		} else
 	    			throw new IllegalStateException("context must be contained in a resource set") 

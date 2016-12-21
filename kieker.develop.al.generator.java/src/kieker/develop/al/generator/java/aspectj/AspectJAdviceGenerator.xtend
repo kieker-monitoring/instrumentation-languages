@@ -1,25 +1,22 @@
 package kieker.develop.al.generator.java.aspectj
 
 import de.cau.cs.se.geco.architecture.framework.IGenerator
-import java.util.HashMap
-import java.util.Map
-import kieker.develop.al.aspectLang.AdviceParameterDeclaration
 import kieker.develop.al.aspectLang.Collector
 import kieker.develop.al.aspectLang.InsertionPoint
-import kieker.develop.al.aspectLang.UtilizeAdvice
-import kieker.develop.al.aspectLang.Value
+
 
 import static extension kieker.develop.al.generator.java.CommonJavaTemplates.*
 import static extension kieker.develop.al.generator.java.aspectj.NameResolver.*
+import kieker.develop.al.aspectLang.Advice
 
-class AspectJAdviceGenerator implements IGenerator<UtilizeAdvice, CharSequence> {
+class AspectJAdviceGenerator implements IGenerator<Advice, CharSequence> {
 	
 	var int index
 	
-	override generate(UtilizeAdvice input) {
-		val traceAPI = input.advice.isTraceAPIUsed
+	override generate(Advice input) {
+		val traceAPI = true // TODO this must be triggered by advice semantics modul
 		'''
-			package «input.advice.packageName»;
+			package «input.packageName»;
 			
 			import org.aspectj.lang.JoinPoint.EnclosingStaticPart;
 			import org.aspectj.lang.ProceedingJoinPoint;
@@ -35,11 +32,11 @@ class AspectJAdviceGenerator implements IGenerator<UtilizeAdvice, CharSequence> 
 			import kieker.monitoring.probe.aspectj.AbstractAspectJProbe;
 			import kieker.monitoring.timer.ITimeSource;
 			
-			«input.advice.collectors.createRecordInputs»
+			«input.collectors.createRecordInputs»
 			«IF traceAPI»import kieker.common.record.flow.trace.TraceMetadata;«ENDIF»
 			
 			@Aspect
-			public abstract class «input.advice.getAdviceClassName(index)» extends AbstractAspectJProbe {
+			public abstract class «input.getAdviceClassName(index)» extends AbstractAspectJProbe {
 				private static final IMonitoringController CTRLINST = MonitoringController.getInstance();
 				private static final ITimeSource TIMESOURCE = CTRLINST.getTimeSource();
 				«IF traceAPI»private static final TraceRegistry TRACEREGISTRY = TraceRegistry.INSTANCE;«ENDIF»
@@ -56,9 +53,9 @@ class AspectJAdviceGenerator implements IGenerator<UtilizeAdvice, CharSequence> 
 		this.index = index
 	}
 	
-	private def createAdviceMethods(UtilizeAdvice advice, boolean traceAPI) {
+	private def createAdviceMethods(Advice advice, boolean traceAPI) {
 		InsertionPoint.values.map[insertionPoint |
-			val collectors = advice.advice.collectors.filter[it.insertionPoint == insertionPoint] 
+			val collectors = advice.collectors.filter[it.insertionPoint == insertionPoint] 
 			createAdviceMethods(advice, collectors, traceAPI, insertionPoint)
 		].join
 	}
@@ -87,22 +84,16 @@ class AspectJAdviceGenerator implements IGenerator<UtilizeAdvice, CharSequence> 
 		}
 	}
 		
-	private def createAdviceMethods(UtilizeAdvice advice, Iterable<Collector> collectors, boolean traceAPI, InsertionPoint insertion) {
-		val parameterAssignments = new HashMap<AdviceParameterDeclaration, Value>()
-		advice.advice.parameterDeclarations.forEach[declaration, index |
-			parameterAssignments.put(declaration, advice.parameterAssignments.get(index))
-		]
+	private def createAdviceMethods(Advice advice, Iterable<Collector> collectors, boolean traceAPI, InsertionPoint insertion) {
 		'''
 			«createAdviceMethod(collectors, traceAPI, insertion.dynamicMethodName,
 				"Object thisObject, ProceedingJoinPoint thisJoinPoint",
-				parameterAssignments,
 				"thisJoinPoint",
 				insertion.annotationName,
 				"this(thisObject)")»
 			
 			«createAdviceMethod(collectors, traceAPI, insertion.staticMethodName,
 				"ProceedingJoinPoint thisJoinPoint",
-				parameterAssignments,
 				"thisJoinPoint",
 				insertion.annotationName,
 				"!this(java.lang.Object)")»
@@ -113,7 +104,6 @@ class AspectJAdviceGenerator implements IGenerator<UtilizeAdvice, CharSequence> 
 	
 	private def createAdviceMethod(Iterable<Collector> collectors, boolean traceAPI,
 		String methodName, String parameters,
-		Map<AdviceParameterDeclaration, Value> parameterAssignments,
 		String joinPointParameterName,
 		String annotation, String pointcut
 	) {
@@ -130,7 +120,6 @@ class AspectJAdviceGenerator implements IGenerator<UtilizeAdvice, CharSequence> 
 						
 							// common fields
 							«if (traceAPI) createTraceId»
-							«collectors.createDataCollection(parameterAssignments)»
 							
 							// recording
 							«collectors.map[it.events.map[it.createEvent].join('\n')].join»

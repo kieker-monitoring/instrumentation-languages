@@ -10,7 +10,7 @@ import kieker.develop.al.aspectLang.InsertionPoint
 class JavaEEAdviceGenerator implements IGenerator<Advice, CharSequence> {
 	
 	override generate(Advice input) {
-		val traceAPI = input.isTraceAPIUsed
+		val traceAPI = true // TODO must be controlled by the semantics modul
 		'''
 			package «input.packageName»;
 

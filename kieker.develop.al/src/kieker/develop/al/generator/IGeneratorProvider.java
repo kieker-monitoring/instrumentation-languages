@@ -13,23 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package kieker.develop.al.generator.java
+package kieker.develop.al.generator;
 
-import kieker.develop.al.generator.IGeneratorProvider
-import java.util.Collection
-import kieker.develop.al.generator.AbstractOutletConfiguration
-import kieker.develop.al.aspectLang.Pointcut
+import java.util.Collection;
 
 /**
- * Provider of generators for Java based pointcut
- * technologies and the appropriate outlet configurations.
- * 
+ * Outlet configuration provider registration interface for advice generation.
+ *
  * @author Reiner Jung
+ *
  */
-class JavaConfigurationGeneratorProvider implements IGeneratorProvider<Pointcut> {
-	
-	override addOutletConfigurations(Collection<AbstractOutletConfiguration<Pointcut>> configurations) {
-		
-	}
-	
+public interface IGeneratorProvider<T> {
+
+	/**
+	 * Add outlet configurations to the collection of outlet configurations.
+	 *
+	 * @param configurations
+	 *            the collection of configurations
+	 */
+	public void addOutletConfigurations(Collection<AbstractOutletConfiguration<T>> configurations);
 }

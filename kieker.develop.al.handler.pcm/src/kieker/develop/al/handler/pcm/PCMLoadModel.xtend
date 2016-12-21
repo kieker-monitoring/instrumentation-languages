@@ -60,15 +60,15 @@ class PCMLoadModel {
 				val components = object.getFeature("components__Repository") as EList<EObject>
 				for (EObject component : components) {
 					val container = MappingFactory.eINSTANCE.createContainer()
-					val fullQualifiedName = component.getFeature("entityName") as String
-					val names = fullQualifiedName.split('\\.')
-					if (names.size == 0)
-						names.add(fullQualifiedName as String)
-					val QualifiedName name = QualifiedName.create(names)
-					container.setName(name.getLastSegment())
+					val entityName = (component.getFeature("entityName") as String).trim
+					val segments = entityName.split('\\.')
+					if (segments.size == 0)
+						segments.add(entityName as String)
+					val QualifiedName qualifiedName = QualifiedName.create(segments)
+					container.setName(qualifiedName.getLastSegment())
 					container.setPredecessor(component)
 					container.addInterfaces(component, interfaceMap, model)
-					insertContainerInHierarchy(model, container,name)
+					insertContainerInHierarchy(model, container, qualifiedName)
 				}				
 			}
 		}
@@ -90,10 +90,12 @@ class PCMLoadModel {
 			val name = providedInterface.getFeature("entityName") as String
 			val interfaze = MappingFactory.eINSTANCE.createContainer()
 			val interfazeDeclaration = interfaceMap.get(name)
-			interfaze.setName(name)
-			interfaze.setPredecessor(providedInterface)
-			interfaze.operations.createMethods(interfazeDeclaration.determineMethods, model)
-			container.contents.add(interfaze)
+			if (interfazeDeclaration != null) {
+				interfaze.setName(name)
+				interfaze.setPredecessor(providedInterface)
+				interfaze.operations.createMethods(interfazeDeclaration.determineMethods, model)
+				container.contents.add(interfaze)
+			}
 		}
 	}
 	
@@ -183,10 +185,10 @@ class PCMLoadModel {
 							typeReference.setType(type)	
 					}
 				}
-			} else { // TODO: this is a temporary measure
+			} else { // TODO: this is a temporary measure, better set correct type
 				typeReference.setType(model.emptyType)
 			}
-		} else { // TODO: this is a temporary measure
+		} else { // TODO: this is a temporary measure, better set correct type
 			typeReference.setType(model.emptyType)
 		}
 		return typeReference
@@ -275,7 +277,7 @@ class PCMLoadModel {
 	private static def void insertContainerInHierarchy(Containment parent, Container entity,
 			QualifiedName fullQualifiedName) {
 		if (fullQualifiedName.getSegmentCount() == 1) {
-			addEntityToParentContainer(parent,entity)
+			addEntityToParentContainer(parent, entity)
 		} else {
 			// recurse into container hierarchy
 			val container = parent.contents.findFirst[it.name.equals(fullQualifiedName.firstSegment)]
@@ -295,7 +297,10 @@ class PCMLoadModel {
 	}
 
 	/**
-	 * What does this routine do?
+	 * Add node only if no node with that name already exists.
+	 * 
+	 * @param parent the containment
+	 * @param entity the container to be added to the containment
 	 */
 	private static def addEntityToParentContainer(Containment parent, Container entity) {
 		if (!parent.contents.exists[it.name.equals(entity.name)]) {

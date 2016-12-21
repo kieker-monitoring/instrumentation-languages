@@ -17,9 +17,8 @@ package kieker.develop.al.generator
 
 import java.util.ArrayList
 import java.util.Collection
-import kieker.develop.al.aspectLang.Pointcut
 
-abstract class AbstractOutletConfiguration {
+abstract class AbstractOutletConfiguration<T> {
 	
 	/** Name of the outlet. */
 	private String name
@@ -58,8 +57,8 @@ abstract class AbstractOutletConfiguration {
 		return this.generators
 	}
 	
-	def String outputFilePath(Pointcut pointcut)
+	def String outputFilePath(T node)
 	
-	def String outputDirectory(Pointcut pointcut)
+	def String outputDirectory(T node)
 	
 }

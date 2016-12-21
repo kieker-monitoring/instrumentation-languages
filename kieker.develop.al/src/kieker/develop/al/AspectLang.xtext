@@ -27,25 +27,16 @@ ApplicationModel:
 ;
 
 Aspect:
-	'aspect' pointcut=[Pointcut|QualifiedName] ':' advices+=UtilizeAdvice (',' advices+=UtilizeAdvice)* 
-;
-
-UtilizeAdvice:
-	advice=[Advice|QualifiedName]
-	('(' (parameterAssignments+=Value (',' parameterAssignments+=Value)*)? ')')?
+	'aspect' pointcut=[Pointcut|QualifiedName] ':' advices+=[Advice|QualifiedName] (',' advices+=[Advice|QualifiedName])* 
 ;
 
 /* ------------------------------- */
 /* advice                          */
 
 Advice:
-	'advice' name=ID ('(' (parameterDeclarations+=AdviceParameterDeclaration (',' parameterDeclarations+=AdviceParameterDeclaration)*)? ')')? '{'
+	'advice' name=ID '{'
 		collectors+=Collector*
 	'}'
-;
-
-AdviceParameterDeclaration:
-	type=TypeReference name=ID 
 ;
 
 Collector:
@@ -53,50 +44,17 @@ Collector:
 ;
 
 Event:
-	type=[irl::EventType|QualifiedName] '(' (initializations+=Value (',' initializations+=Value)*)? ')'
+	type=[irl::EventType|QualifiedName] ('(' properties+=Property (',' properties+=Property)* ')')?
+;
+
+Property:
+	Literal | annotation=[semantics::Annotation|ID]
 ;
 
 enum InsertionPoint: 
 	BEFORE = 'before' |
 	AFTER = 'after' |
 	AFTER_EXCEPTION = 'exception'
-;
-
-Value: Literal | ReferenceValue | InternalFunctionProperty | AdviceParameter ;
-
-ReferenceValue:
-	(query=LocationQuery)? property=Property	
-;
-
-Property: 
-	RuntimeProperty | ReflectionProperty
-;
-
-InternalFunctionProperty:
-	function=InternalFunction
-;
-
-enum InternalFunction:
-	TIME = 'time' |
-	TRACE_ID = 'traceId' |
-	ORDER_INDEX = 'orderIndex'
-;
-
-ReflectionProperty: 
-	'$' function=ReflectionFunction
-;
-
-RuntimeProperty: {RuntimeProperty} '#' ;
-
-enum ReflectionFunction:
-	NAME = 'name' |
-	SIGNATURE = 'signature' |
-	CLASS ='classname' |
-	RETURN_TYPE = 'return-type'
-;
-
-AdviceParameter:
-	declaration=[AdviceParameterDeclaration|ID] ('[' collection=Value ']')?
 ;
 
 /* ------------------------------- */
@@ -118,11 +76,15 @@ Query:
 ;
 
 LocationQuery:
-	modifier=QueryModifier node=Node (('.' specialization=LocationQuery) | (composition=CompositionQuery))?
+	node=Node (('.' specialization=LocationQuery) | (composition=CompositionQuery))?
 ;
 
 CompositionQuery: {CompositionQuery}
-	'{' (subQueries += LocationQuery)* '}'	
+	'{' (subQueries += SubQuery)* '}'	
+;
+
+SubQuery:
+	modifier=QueryModifier location=LocationQuery	
 ;
 
 enum QueryModifier:
@@ -204,7 +166,7 @@ ModelProperty:
 ;
 
 Typeof:
-	'istypeof' '(' reference=TypeReference ')' 
+	'typeof' '(' reference=TypeReference ')' 
 ;
 
 /* ------------------------------- */

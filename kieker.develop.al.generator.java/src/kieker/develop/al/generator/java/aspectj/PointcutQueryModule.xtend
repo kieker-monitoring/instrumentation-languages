@@ -12,6 +12,7 @@ import java.util.Collection
 import java.util.ArrayList
 import kieker.develop.al.aspectLang.AspectLangFactory
 import kieker.develop.al.aspectLang.CompositionQuery
+import kieker.develop.al.aspectLang.SubQuery
 
 class PointcutQueryModule {
 
@@ -43,7 +44,8 @@ class PointcutQueryModule {
 	}
 	
 	private static def boolean isInclude(LocationQuery query) {
-		val thisInclude = (query.modifier == QueryModifier.INCLUDE)
+		// TODO this must be fixed
+		val thisInclude = true; // (query.modifier == QueryModifier.INCLUDE)
 		val childInclude = if (query.specialization != null) query.specialization.isInclude else true
 		
 		if (thisInclude && childInclude)
@@ -76,15 +78,22 @@ class PointcutQueryModule {
 	private static def Collection<LocationQuery> createFlattLocationModel(CompositionQuery query) {
 		val results = new ArrayList<LocationQuery>()
 		
+		// TODO this makes no sense at all
 		query.subQueries.forEach[results.addAll(it.createFlattLocationModel)]
 		
 		return results
 	}
 	
+	private static def Collection<LocationQuery> createFlattLocationModel(SubQuery query) {
+		// TODO This is insufficient. The flat location creation requires subquery.
+		new ArrayList<LocationQuery>()
+	}
+	
 	private static def expandPath(Collection<LocationQuery> queries, LocationQuery head, Collection<LocationQuery> tails) {
 		tails.forEach[tail |
 			val duplicateQuery = AspectLangFactory.eINSTANCE.createLocationQuery
-			duplicateQuery.modifier = head.modifier
+			// TODO modifier changed
+			// duplicateQuery.modifier = head.modifier
 			duplicateQuery.node = head.node.duplicate
 			duplicateQuery.specialization = tail.duplicateChain
 			queries.add(duplicateQuery)
@@ -94,7 +103,8 @@ class PointcutQueryModule {
 	private static def LocationQuery duplicateChain(LocationQuery query) {
 		val duplicateQuery = AspectLangFactory.eINSTANCE.createLocationQuery
 		duplicateQuery.node = query.node.duplicate
-		duplicateQuery.modifier = query.modifier
+		// TODO modifier moved
+		// duplicateQuery.modifier = query.modifier
 		if (query.specialization != null)
 			duplicateQuery.specialization = query.specialization.duplicateChain
 		

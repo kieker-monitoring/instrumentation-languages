@@ -1,6 +1,5 @@
 package kieker.develop.rl.typing.semantics
 
-import kieker.develop.rl.typing.ITypeProvider
 import org.eclipse.emf.ecore.resource.ResourceSet
 
 class AnnotationProviderFactory {
@@ -20,20 +19,20 @@ class AnnotationProviderFactory {
 	 *            the application model
 	 * @return Returns the type provider for primitive types.
 	 */
-	def synchronized static AnnotationProvider getTypeProvider(ResourceSet resourceSet) {
+	def synchronized static AnnotationProvider getAnnotationProvider(ResourceSet resourceSet) {
 		if (resourceSet != null) {
 			val object = resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
 					.get(AnnotationURIHelper.PROTOCOL)
 			if (object != null) {
-				if (!(object instanceof ITypeProvider)) {
+				if (!(object instanceof AnnotationProvider)) {
 					System.out.println("Provider for " + AnnotationURIHelper.PROTOCOL + " is " + object)
 					// TODO something went terribly wrong, to be save create a new type provider
-					return AnnotationProviderFactory.createTypeProvider(resourceSet)
+					return AnnotationProviderFactory.createAnnotationProvider(resourceSet)
 				} else {
 					return object as AnnotationProvider
 				}
 			} else {
-				return AnnotationProviderFactory.createTypeProvider(resourceSet)
+				return AnnotationProviderFactory.createAnnotationProvider(resourceSet)
 			}
 		} else {
 			throw new IllegalArgumentException("Cannot get type provide without a resourceSet.");
@@ -49,7 +48,7 @@ class AnnotationProviderFactory {
 	 *            the application model
 	 * @return Returns the new type provider.
 	 */
-	def private static AnnotationProvider createTypeProvider(ResourceSet resourceSet) {
+	def private static AnnotationProvider createAnnotationProvider(ResourceSet resourceSet) {
 		val typeProvider = new AnnotationProvider(resourceSet)
 		resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
 				.put(AnnotationURIHelper.PROTOCOL, typeProvider)

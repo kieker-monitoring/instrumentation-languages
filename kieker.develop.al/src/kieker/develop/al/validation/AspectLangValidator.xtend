@@ -15,12 +15,11 @@
  ***************************************************************************/
 package kieker.develop.al.validation
 
-import org.eclipse.xtext.validation.Check
+import com.google.inject.Inject
 import kieker.develop.al.aspectLang.ApplicationModel
-import org.eclipse.core.runtime.Platform
-import kieker.develop.al.modelhandling.IModelMapper
 import kieker.develop.al.aspectLang.AspectLangPackage
-import org.eclipse.core.runtime.CoreException
+import kieker.develop.al.modelhandling.ModelMapperProviderFactory
+import org.eclipse.xtext.validation.Check
 
 /**
  * Custom validation rules. 
@@ -29,29 +28,17 @@ import org.eclipse.core.runtime.CoreException
  */
 class AspectLangValidator extends AbstractAspectLangValidator {
 	
-	private static final String MODEL_MAPPER = "kieker.develop.al.modelMapping"
-
+	@Inject
+	ModelMapperProviderFactory modelMapperProviderFactory
+	
 	public static val INVALID_NAME = 'invalidName'
 
 	@Check
 	def checkApplicationModel(ApplicationModel model) {
-		val registry = Platform.getExtensionRegistry()
-		val config = registry.getConfigurationElementsFor(MODEL_MAPPER)
-  		try {
-  			val handlerPresent = config.exists[element |
-  				val ext = element.createExecutableExtension("class")
-  				if (ext instanceof IModelMapper) {
-	          		(ext as IModelMapper).name.equals(model.handler)
-	          	} else
-	          		false
-  			]
-  			if (!handlerPresent)
-	  			error('No model handler for ' + model.handler + ' registered.', 
-					AspectLangPackage$Literals::APPLICATION_MODEL__HANDLER,
+		if (!modelMapperProviderFactory.provider.modelMappers.containsKey(model.handler)) {
+			error('No model handler for ' + model.handler + ' registered.', 
+					AspectLangPackage.Literals::APPLICATION_MODEL__HANDLER,
 					INVALID_NAME)
-  		} catch (CoreException ex) {
-			System.out.println(ex.getMessage())
-		} 
-					    	
+		}					    	
 	}
 }
