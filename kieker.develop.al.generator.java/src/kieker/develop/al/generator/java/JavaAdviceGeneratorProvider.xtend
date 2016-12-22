@@ -16,22 +16,22 @@
  package kieker.develop.al.generator.java
 
 import java.util.Collection
-import kieker.develop.al.generator.AbstractOutletConfiguration
 import kieker.develop.al.aspectLang.Advice
 import kieker.develop.al.generator.java.aspectj.AspectJAdviceOutletConfiguration
 import kieker.develop.al.generator.java.javaee.JavaEEAdviceOutletConfiguration
 import kieker.develop.al.generator.java.servlet.ServletAdviceOutletConfiguration
 import kieker.develop.al.generator.java.spring.SpringAdviceOutletConfiguration
-import kieker.develop.al.generator.IGeneratorProvider
+import kieker.develop.rl.generator.IGeneratorProvider
+import kieker.develop.rl.ouput.config.AbstractOutletConfiguration
 
 /**
  * Provider for generator supporting Java based advice technologies.
  * 
  * @author Reiner Jung
  */
-class JavaAdviceGeneratorProvider implements IGeneratorProvider<Advice> {
+class JavaAdviceGeneratorProvider implements IGeneratorProvider<Advice, CharSequence> {
 	
-	override addOutletConfigurations(Collection<AbstractOutletConfiguration<Advice>> configurations) {
+	override addOutletConfigurations(Collection<AbstractOutletConfiguration<Advice, CharSequence>> configurations) {
 		configurations += new AspectJAdviceOutletConfiguration()
 		configurations += new JavaEEAdviceOutletConfiguration()
 		configurations += new ServletAdviceOutletConfiguration()

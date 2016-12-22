@@ -15,20 +15,19 @@
  ***************************************************************************/
 package kieker.develop.rl.generator.c.header
 
-import kieker.develop.rl.generator.TypeInputModel
-import kieker.develop.rl.recordLang.Property
+import kieker.develop.rl.generator.AbstractTypeGenerator
+import kieker.develop.rl.recordLang.ComplexType
 import kieker.develop.rl.recordLang.EventType
+import kieker.develop.rl.recordLang.Property
 
 import static extension kieker.develop.rl.generator.c.CommonCFunctionsExtension.*
 import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
-import kieker.develop.rl.recordLang.Type
-import kieker.develop.rl.generator.ITypeGenerator
 
-class EventTypeGenerator implements ITypeGenerator<EventType, CharSequence> {
+class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> {
 	
 		
-	override accepts(Type type) {
+	override accepts(ComplexType type) {
 		if (type instanceof EventType)
 			!(type as EventType).abstract
 		else
@@ -36,23 +35,28 @@ class EventTypeGenerator implements ITypeGenerator<EventType, CharSequence> {
 	}
 
 	/**
-	 * Primary code generation template.
+	 * Central code generation template.
 	 * 
-	 * @params type
-	 * 		one record type to be used to create monitoring record
+	 * @param type the event type
+	 * 	in this event type (template inherited types and own types)
+	 * @param header the header comment
+	 * @param author the author of the EvenType
+	 * @param version the version of the first occurrence of the type
+	 * 
+	 * @return a Java class for a Kieker EventType
 	 */
-	override generate(TypeInputModel<EventType> input) {
+	protected override createOutputModel(EventType type, String header, String author, String version) {
 		'''
-			«input.header»#include <stdlib.h>
+			«this.header»#include <stdlib.h>
 			#include <kieker.h>
 			
 			/*
-			 * Author: «if (input.type.author == null) input.author else input.type.author»
-			 * Version: «if (input.type.since == null) input.version else input.type.since»
+			 * Author: «author»
+			 * Version: «version»
 			 */
-			«input.type.createStructure»
+			«type.createStructure»
 			
-			«input.type.createSerializerDeclaration»
+			«type.createSerializerDeclaration»
 		'''
 	}
 

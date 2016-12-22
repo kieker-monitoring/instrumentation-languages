@@ -1,11 +1,11 @@
 package kieker.develop.al.generator.java.aspectj
 
-import kieker.develop.al.generator.AbstractOutletConfiguration
 import java.io.File
 import kieker.develop.al.aspectLang.Advice
 import kieker.develop.al.aspectLang.AspectModel
+import kieker.develop.rl.ouput.config.AbstractOutletConfiguration
 
-class AspectJAdviceOutletConfiguration extends AbstractOutletConfiguration<Advice> {
+class AspectJAdviceOutletConfiguration extends AbstractOutletConfiguration<Advice, CharSequence> {
 	
 	private static String ASPECTJ_ADVICE_OUTLET_ID = "java";
 	

@@ -15,15 +15,14 @@
  ***************************************************************************/
 package kieker.develop.rl.generator.java.factory
 
-import kieker.develop.rl.generator.TypeInputModel
-import kieker.develop.rl.recordLang.Model
+import kieker.develop.rl.recordLang.ComplexType
 import kieker.develop.rl.recordLang.EventType
-import kieker.develop.rl.recordLang.Type
-import kieker.develop.rl.generator.ITypeGenerator
+import kieker.develop.rl.recordLang.Model
+import kieker.develop.rl.generator.AbstractTypeGenerator
 
-class EventTypeGenerator implements ITypeGenerator<EventType, CharSequence> {
+class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> {
 	
-	override accepts(Type type) {
+	override accepts(ComplexType type) {
 		if (type instanceof EventType) {
 			!(type as EventType).abstract
 		} else
@@ -36,12 +35,9 @@ class EventTypeGenerator implements ITypeGenerator<EventType, CharSequence> {
 	 * @param type
 	 * 		one record type to be used to create the corresponding monitoring record factory
 	 */
-	override generate(TypeInputModel<EventType> input) {
-		val definedAuthor = if (input.type.author == null) input.author else input.type.author
-		val definedVersion = if (input.type.since == null) input.version else input.type.since
-
+	protected override createOutputModel(EventType type, String header, String author, String version) {
 		'''
-			«input.header»package «(input.type.eContainer as Model).name»;
+			«this.header»package «(type.eContainer as Model).name»;
 			
 			import java.nio.ByteBuffer;
 
@@ -49,24 +45,24 @@ class EventTypeGenerator implements ITypeGenerator<EventType, CharSequence> {
 			import kieker.common.util.registry.IRegistry;
 			
 			/**
-			 * @author «definedAuthor»
+			 * @author «author»
 			 * 
-			 * @since «definedVersion»
+			 * @since «version»
 			 */
-			public final class «input.type.name»Factory implements IRecordFactory<«input.type.name»> {
+			public final class «type.name»Factory implements IRecordFactory<«type.name»> {
 				
 				@Override
-				public «input.type.name» create(final ByteBuffer buffer, final IRegistry<String> stringRegistry) {
-					return new «input.type.name»(buffer, stringRegistry);
+				public «type.name» create(final ByteBuffer buffer, final IRegistry<String> stringRegistry) {
+					return new «type.name»(buffer, stringRegistry);
 				}
 				
 				@Override
-				public «input.type.name» create(final Object[] values) {
-					return new «input.type.name»(values);
+				public «type.name» create(final Object[] values) {
+					return new «type.name»(values);
 				}
 				
 				public int getRecordSizeInBytes() {
-					return «input.type.name».SIZE;
+					return «type.name».SIZE;
 				}
 			}
 		'''

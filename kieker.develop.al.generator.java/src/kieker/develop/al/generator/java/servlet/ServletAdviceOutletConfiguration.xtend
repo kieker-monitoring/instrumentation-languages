@@ -15,12 +15,12 @@
  ***************************************************************************/
 package kieker.develop.al.generator.java.servlet
 
-import kieker.develop.al.generator.AbstractOutletConfiguration
-import kieker.develop.al.aspectLang.Advice
 import java.io.File
+import kieker.develop.al.aspectLang.Advice
 import kieker.develop.al.aspectLang.AspectModel
+import kieker.develop.rl.ouput.config.AbstractOutletConfiguration
 
-class ServletAdviceOutletConfiguration extends AbstractOutletConfiguration<Advice> {
+class ServletAdviceOutletConfiguration extends AbstractOutletConfiguration<Advice, CharSequence> {
 	
 	private static String SERVLET_ADVICE_OUTLET_ID = "java";
 	

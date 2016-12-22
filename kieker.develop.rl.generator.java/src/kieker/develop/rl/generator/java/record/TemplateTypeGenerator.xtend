@@ -15,7 +15,8 @@
  ***************************************************************************/
 package kieker.develop.rl.generator.java.record
 
-import kieker.develop.rl.generator.TypeInputModel
+import kieker.develop.rl.generator.AbstractTypeGenerator
+import kieker.develop.rl.recordLang.ComplexType
 import kieker.develop.rl.recordLang.Model
 import kieker.develop.rl.recordLang.Property
 import kieker.develop.rl.recordLang.TemplateType
@@ -24,30 +25,26 @@ import org.eclipse.emf.common.util.EList
 import static extension kieker.develop.rl.generator.java.JavaTypeMapping.*
 import static extension kieker.develop.rl.generator.java.record.NameResolver.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
-import kieker.develop.rl.recordLang.Type
-import kieker.develop.rl.generator.ITypeGenerator
 
-class TemplateTypeGenerator implements ITypeGenerator<TemplateType, CharSequence> {
+class TemplateTypeGenerator extends AbstractTypeGenerator<TemplateType, CharSequence> {
 	
-	override accepts(Type type) {
+	override accepts(ComplexType type) {
 		type instanceof TemplateType
 	}
 	
-	override generate(TypeInputModel<TemplateType> input) {
-		val definedAuthor = if (input.type.author == null) input.author else input.type.author
-		val definedVersion = if (input.type.since == null) input.version else input.type.since
+	protected override createOutputModel(TemplateType type, String header, String author, String version) {
 		'''
-		«input.header»package «(input.type.eContainer as Model).name»;
+		«this.header»package «(type.eContainer as Model).name»;
 		
-		«input.type.inherits.createImports(input.type)»
+		«type.inherits.createImports(type)»
 		
 		/**
-		 * @author «definedAuthor»
+		 * @author «author»
 		 * 
-		 * @since «definedVersion»
+		 * @since «version»
 		 */
-		public interface «input.type.name» extends «input.type.inherits.createExtends» {
-			«input.type.properties.map[property | createPropertyGetter(property)].join»
+		public interface «type.name» extends «type.inherits.createExtends» {
+			«type.properties.map[property | createPropertyGetter(property)].join»
 		}
 		'''
 	}

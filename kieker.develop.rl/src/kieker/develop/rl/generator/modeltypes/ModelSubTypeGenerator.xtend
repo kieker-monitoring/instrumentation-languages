@@ -7,7 +7,6 @@ import kieker.develop.rl.recordLang.Model
 import kieker.develop.rl.recordLang.ModelSubType
 import kieker.develop.rl.recordLang.RecordLangFactory
 import kieker.develop.rl.recordLang.TemplateType
-import kieker.develop.rl.recordLang.Type
 import kieker.develop.rl.recordLang.EventType
 import org.eclipse.emf.common.util.EList
 import kieker.develop.rl.recordLang.ComplexType
@@ -18,7 +17,7 @@ import kieker.develop.rl.typing.TypeProvider
  * 
  * @author Reiner Jung
  */
-class ModelSubTypeGenerator implements IGenerator<ModelSubType, Collection<? extends Type>> {
+class ModelSubTypeGenerator implements IGenerator<ModelSubType, Collection<? extends ComplexType>> {
 	
 	var String author
 	var String version

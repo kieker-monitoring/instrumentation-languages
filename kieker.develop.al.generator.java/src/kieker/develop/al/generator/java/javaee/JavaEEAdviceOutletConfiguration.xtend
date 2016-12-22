@@ -15,13 +15,13 @@
  ***************************************************************************/
 package kieker.develop.al.generator.java.javaee
 
-import kieker.develop.al.generator.AbstractOutletConfiguration
 import kieker.develop.al.aspectLang.Advice
 import java.io.File
 import kieker.develop.al.aspectLang.AspectModel
 import kieker.develop.al.generator.java.javaee.JavaEEAdviceGenerator
+import kieker.develop.rl.ouput.config.AbstractOutletConfiguration
 
-class JavaEEAdviceOutletConfiguration extends AbstractOutletConfiguration<Advice> {
+class JavaEEAdviceOutletConfiguration extends AbstractOutletConfiguration<Advice, CharSequence> {
 	
 	private static String JAVAEE_ADVICE_OUTLET_ID = "java";
 	

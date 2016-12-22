@@ -16,19 +16,18 @@
 package kieker.develop.rl.generator.perl
 
 import java.util.Collection
-import kieker.develop.rl.generator.TypeInputModel
+import kieker.develop.rl.generator.AbstractTypeGenerator
 import kieker.develop.rl.recordLang.Classifier
+import kieker.develop.rl.recordLang.ComplexType
+import kieker.develop.rl.recordLang.EventType
 import kieker.develop.rl.recordLang.Model
 import kieker.develop.rl.recordLang.Property
-import kieker.develop.rl.recordLang.EventType
 
 import static extension kieker.develop.rl.typing.PropertyResolution.*
-import kieker.develop.rl.recordLang.Type
-import kieker.develop.rl.generator.ITypeGenerator
 
-class EventTypeGenerator implements ITypeGenerator<EventType, CharSequence> {
+class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> {
 	
-	override accepts(Type type) {
+	override accepts(ComplexType type) {
 		if (type instanceof EventType)
 			!(type as EventType).abstract
 		else
@@ -36,45 +35,51 @@ class EventTypeGenerator implements ITypeGenerator<EventType, CharSequence> {
 	}
 			
 	/**
-	 * Create a perl based record for kieker
+	 * Central code generation template.
+	 * 
+	 * @param type the event type
+	 * 	in this event type (template inherited types and own types)
+	 * @param header the header comment
+	 * @param author the author of the EvenType
+	 * @param version the version of the first occurrence of the type
+	 * 
+	 * @return a Java class for a Kieker EventType
 	 */
-	override generate(TypeInputModel<EventType> input) {
-		val definedAuthor = if (input.type.author == null) input.author else input.type.author
-		val definedVersion = if (input.type.since == null) input.version else input.type.since
+	protected override createOutputModel(EventType type, String header, String author, String version) {
 		'''
 		use strict;
 		use warnings;
 		
-		package «input.type.recordName»;
+		package «type.recordName»;
 		
 		=head1 NAME
 		
-		«input.type.recordName» 
+		«type.recordName» 
 		
 		=head1 SYNOPSIS
 		
-		 my $record = «input.type.recordName»->new(«input.type.collectAllDataProperties.createParameterCall»);
+		 my $record = «type.recordName»->new(«type.collectAllDataProperties.createParameterCall»);
 		 
 		 $writer->write($record->genoutput());
 		
 		=head1 DESCRIPTION
 		
 		Auto-generated structures.
-		Author: «definedAuthor»
-		Since: «definedVersion»
+		Author: «author»
+		Since: «version»
 				
 		=head1 METHODS
 		
-		=head2 $record = «input.type.recordName»->new(«input.type.collectAllDataProperties.createParameterCall»);
+		=head2 $record = «type.recordName»->new(«type.collectAllDataProperties.createParameterCall»);
 		
 		Creates a new record with the given parameters.
 		
 		=cut
 		
 		sub new {
-		  my («input.type.collectAllDataProperties.createParameterCall») = @_;
+		  my («type.collectAllDataProperties.createParameterCall») = @_;
 		  my $this = {
-		    «input.type.collectAllDataProperties.map[createProperty].join(',\n')»
+		    «type.collectAllDataProperties.map[createProperty].join(',\n')»
 		  };
 		
 		  return bless($this,$type);
@@ -86,7 +91,7 @@ class EventTypeGenerator implements ITypeGenerator<EventType, CharSequence> {
 						
 		=head1 COPYRIGHT and LICENCE
 		
-		«input.header»
+		«this.header»
 		
 		=cut
 		'''

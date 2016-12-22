@@ -13,25 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package kieker.develop.al.generator;
+package kieker.develop.rl.generator
 
-import java.util.Collection;
+import kieker.develop.rl.recordLang.ComplexType
 
 /**
- * Outlet configuration provider registration interface for advice generation.
- *
+ * General interface for all type generators.
+ * 
  * @author Reiner Jung
- *
- * @param <T>
- *            root model element for generators associated to this outlet
  */
-public interface IGeneratorProvider<T> {
-
+interface IAcceptType  {
+	
 	/**
-	 * Add outlet configurations to the collection of outlet configurations.
-	 *
-	 * @param configurations
-	 *            the collection of configurations
+	 * Check whether the generator supports the given type declaration.
+	 * 
+	 * @param type the type to be checked
+	 * 
+	 * @return true in case the generator supports the type
 	 */
-	public void addOutletConfigurations(Collection<AbstractOutletConfiguration<T>> configurations);
+	def boolean accepts(ComplexType type)
 }

@@ -1,16 +1,14 @@
 package kieker.develop.rl.generator
 
-class TypeInputModel<T> {
+class GeneratorParameterization {
 	val String header
 	val String author
 	val String version
-	var T type
 	
-	new(String header, String author, String version, T type) {
+	new(String header, String author, String version) {
 		this.header = header
 		this.author = author
 		this.version = version
-		this.type = type
 	}
 	
 	def String getHeader() {
@@ -25,11 +23,4 @@ class TypeInputModel<T> {
 		return version
 	}
 	
-	def T getType() {
-		return type
-	}
-	
-	def void setType(T type) {
-		this.type = type
-	}
 }

@@ -27,7 +27,7 @@ import org.eclipse.jface.preference.StringFieldEditor;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.custom.BusyIndicator;
 
-import kieker.develop.rl.generator.GeneratorConfiguration;
+import kieker.develop.rl.generator.GeneratorRegistration;
 import kieker.develop.rl.ouput.config.AbstractOutletConfiguration;
 import kieker.develop.rl.preferences.TargetsPreferences;
 
@@ -102,7 +102,7 @@ public abstract class AbstractFieldEditorOverlayPage extends FieldEditorPreferen
 
 	@Override
 	protected void createFieldEditors() {
-		for (final AbstractOutletConfiguration outletConfiguration : GeneratorConfiguration.getOutletConfigurations()) {
+		for (final AbstractOutletConfiguration outletConfiguration : GeneratorRegistration.getOutletConfigurations()) {
 			this.addField(new BooleanFieldEditor(TargetsPreferences.GENERATOR_ACTIVE + outletConfiguration.getName(),
 					outletConfiguration.getDescription() + " generator", this.getFieldEditorParent()));
 			final FieldEditor commentFieldEditor = new CommentFieldEditor(

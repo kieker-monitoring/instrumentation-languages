@@ -17,12 +17,12 @@ package kieker.develop.rl.generator.java.record
 
 import java.util.ArrayList
 import java.util.List
-import kieker.develop.rl.generator.TypeInputModel
+import kieker.develop.rl.recordLang.ComplexType
 import kieker.develop.rl.recordLang.EventType
 import kieker.develop.rl.recordLang.Model
 import kieker.develop.rl.recordLang.Property
+import kieker.develop.rl.recordLang.PropertyModifier
 import kieker.develop.rl.recordLang.TemplateType
-import kieker.develop.rl.recordLang.Type
 import kieker.develop.rl.typing.base.BaseTypes
 
 import static kieker.develop.rl.generator.java.record.EqualsMethodTemplate.*
@@ -36,8 +36,7 @@ import static extension kieker.develop.rl.generator.java.record.PropertyConstruc
 import static extension kieker.develop.rl.generator.java.record.uid.ComputeUID.*
 import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
-import kieker.develop.rl.recordLang.PropertyModifier
-import kieker.develop.rl.generator.ITypeGenerator
+import kieker.develop.rl.generator.AbstractTypeGenerator
 
 /**
  * Generates a Java class for EventTypes.
@@ -46,33 +45,17 @@ import kieker.develop.rl.generator.ITypeGenerator
  * @author Christian Wulf
  * @since 1.0
  */
-class EventTypeGenerator implements ITypeGenerator<EventType, CharSequence> {
+class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> {
 
-	override accepts(Type type) {
+	override accepts(ComplexType type) {
 		type instanceof EventType
 	}
-		
-	/**
-	 * Primary code generation function.
-	 * 
-	 * @params type
-	 * 		one record type to be used to create monitoring record
-	 */
-	override generate(TypeInputModel<EventType> input) {
-		val allDataProperties = input.type.collectAllDataProperties
-		val allDeclarationProperties = input.type.collectAllDeclarationProperties
-		val definedAuthor = if (input.type.author == null) input.author else input.type.author
-		val definedVersion = if (input.type.since == null) input.version else input.type.since
-		
-		createEvenTypeClass(input.type, allDataProperties, allDeclarationProperties, input.header, definedAuthor, definedVersion)
-	}
+
 	
 	/**
 	 * Central code generation template.
 	 * 
 	 * @param type the event type
-	 * @param allDataProperties all data properties of the Kieker event type
-	 * @param allDeclarationProperties all data properties which must be declared
 	 * 	in this event type (template inherited types and own types)
 	 * @param header the header comment
 	 * @param author the author of the EvenType
@@ -80,49 +63,52 @@ class EventTypeGenerator implements ITypeGenerator<EventType, CharSequence> {
 	 * 
 	 * @return a Java class for a Kieker EventType
 	 */
-	private def createEvenTypeClass(EventType type, List<Property> allDataProperties, List<Property> allDeclarationProperties,
-		String header, String author, String version
-	) '''
-		«header»package «(type.eContainer as Model).name»;
+	protected override createOutputModel(EventType type, String header, String author, String version) {
+		val allDataProperties = type.collectAllDataProperties
+		val allDeclarationProperties = type.collectAllDeclarationProperties
 		
-		«type.createImports»
-		
-		/**
-		 * @author «author»
-		 * 
-		 * @since «version»
-		 */
-		public «if (type.abstract) 'abstract '»class «type.name» extends «type.createParent»«type.createImplements» {
-			private static final long serialVersionUID = «type.computeDefaultSUID»L;
-		
-			«if (!type.abstract) type.createEventTypeConstants(allDataProperties)»
+		'''
+			«header»package «(type.eContainer as Model).name»;
 			
-			/** user-defined constants */
-			«type.createUserConstants»
-
-			/** default constants */
-			«allDeclarationProperties.createDefaultConstants»
-
-			/** property declarations */
-			«allDeclarationProperties.createPropertyDeclarations»
-
-			«type.createParameterizedConstructor(allDataProperties, allDeclarationProperties)»
-		
-			«if (!type.abstract) type.createArrayConstructor(allDeclarationProperties)»
-		
-			«type.createArrayInitializeConstructor(allDeclarationProperties)»
-		
-			«type.createBufferReadConstructor(allDeclarationProperties)»
-		
-			«if (!type.abstract) createActualAPI(allDataProperties)»
-		
-			«createDeprecatedAPI()»
+			«type.createImports»
 			
-			«createEquals(type.name, allDataProperties)»
+			/**
+			 * @author «author»
+			 * 
+			 * @since «version»
+			 */
+			public «if (type.abstract) 'abstract '»class «type.name» extends «type.createParent»«type.createImplements» {
+				private static final long serialVersionUID = «type.computeDefaultSUID»L;
 			
-			«type.createPropertyGetters»
-		}
-	'''
+				«if (!type.abstract) type.createEventTypeConstants(allDataProperties)»
+				
+				/** user-defined constants */
+				«type.createUserConstants»
+	
+				/** default constants */
+				«allDeclarationProperties.createDefaultConstants»
+	
+				/** property declarations */
+				«allDeclarationProperties.createPropertyDeclarations»
+	
+				«type.createParameterizedConstructor(allDataProperties, allDeclarationProperties)»
+			
+				«if (!type.abstract) type.createArrayConstructor(allDeclarationProperties)»
+			
+				«type.createArrayInitializeConstructor(allDeclarationProperties)»
+			
+				«type.createBufferReadConstructor(allDeclarationProperties)»
+			
+				«if (!type.abstract) createActualAPI(allDataProperties)»
+			
+				«createDeprecatedAPI()»
+				
+				«createEquals(type.name, allDataProperties)»
+				
+				«type.createPropertyGetters»
+			}
+		'''
+	}
 	
 	/**
 	 * Create SIZE and TYPES constants for the EventType API.
@@ -228,6 +214,8 @@ class EventTypeGenerator implements ITypeGenerator<EventType, CharSequence> {
 			return ''' implements «interfaces.join(', ')»'''
 		else
 			return ' '
-	} 
+	}
+	
+
 		
 }

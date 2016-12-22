@@ -24,6 +24,7 @@ import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
 
 import kieker.develop.rl.ouput.config.AbstractOutletConfiguration;
+import kieker.develop.rl.recordLang.ComplexType;
 
 /**
  * Configuration and registration of IRL generators. The class also contains functions for derived
@@ -34,7 +35,7 @@ import kieker.develop.rl.ouput.config.AbstractOutletConfiguration;
  * @since 1.0
  *
  */
-public final class GeneratorConfiguration {
+public final class GeneratorRegistration {
 
 	/** extension point name. */
 	public static final String GENERATOR_PROVIDER = "kieker.develop.rl.generator.provider";
@@ -44,7 +45,7 @@ public final class GeneratorConfiguration {
 	/**
 	 * Empty default constructor.
 	 */
-	private GeneratorConfiguration() {
+	private GeneratorRegistration() {
 		// utility class nothing to be done here
 	}
 
@@ -53,19 +54,20 @@ public final class GeneratorConfiguration {
 	 *
 	 * @return Returns a collection of outlet configurations
 	 */
-	public static Collection<AbstractOutletConfiguration> getOutletConfigurations() {
-		final Collection<AbstractOutletConfiguration> outletConfigurations = new ArrayList<>();
+	public static Collection<AbstractOutletConfiguration<ComplexType, Object>> getOutletConfigurations() {
+		final Collection<AbstractOutletConfiguration<ComplexType, Object>> outletConfigurations = new ArrayList<>();
 
 		final IExtensionRegistry registry = Platform.getExtensionRegistry();
 
 		final IConfigurationElement[] config = registry
-				.getConfigurationElementsFor(GeneratorConfiguration.GENERATOR_PROVIDER);
+				.getConfigurationElementsFor(GeneratorRegistration.GENERATOR_PROVIDER);
 
 		for (final IConfigurationElement element : config) {
 			try {
-				final Object ext = element.createExecutableExtension(GeneratorConfiguration.SHORT_EXTENSION_NAME);
+				final Object ext = element.createExecutableExtension(GeneratorRegistration.SHORT_EXTENSION_NAME);
 				if (ext instanceof IGeneratorProvider) {
-					final IGeneratorProvider generatorProvider = (IGeneratorProvider) ext;
+					@SuppressWarnings("unchecked")
+					final IGeneratorProvider<ComplexType, Object> generatorProvider = (IGeneratorProvider<ComplexType, Object>) ext;
 					generatorProvider.addOutletConfigurations(outletConfigurations);
 				}
 			} catch (final CoreException e) {

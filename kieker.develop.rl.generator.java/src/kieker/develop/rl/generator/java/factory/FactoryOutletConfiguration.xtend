@@ -3,19 +3,19 @@ package kieker.develop.rl.generator.java.factory
 import java.io.File
 import kieker.develop.rl.ouput.config.AbstractOutletConfiguration
 import kieker.develop.rl.recordLang.Model
-import kieker.develop.rl.recordLang.Type
+import kieker.develop.rl.recordLang.ComplexType
 
-class FactoryOutletConfiguration extends AbstractOutletConfiguration {
+class FactoryOutletConfiguration extends AbstractOutletConfiguration<ComplexType, CharSequence> {
 	
 	private static String FACTORY_OUTLET_ID = "java.factory";
 		
 	new() {
 		super(FACTORY_OUTLET_ID, "Java factory", "./src-gen/java-factory")
-		eventTypeGenerators += new EventTypeGenerator
+		generators += new EventTypeGenerator
 	}
 	
-	override outputFilePath(Type type) '''«type.outputDirectory»«File::separator»«type.name»Factory.java'''
+	override outputFilePath(ComplexType type) '''«type.outputDirectory»«File::separator»«type.name»Factory.java'''
 	
-	override outputDirectory(Type type) '''«(type.eContainer as Model).name.replace('.', File::separator)»'''
+	override outputDirectory(ComplexType type) '''«(type.eContainer as Model).name.replace('.', File::separator)»'''
 	
 }

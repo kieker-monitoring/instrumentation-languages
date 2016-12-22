@@ -19,8 +19,9 @@ import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.core.runtime.preferences.DefaultScope;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 
-import kieker.develop.rl.generator.GeneratorConfiguration;
+import kieker.develop.rl.generator.GeneratorRegistration;
 import kieker.develop.rl.ouput.config.AbstractOutletConfiguration;
+import kieker.develop.rl.recordLang.ComplexType;
 
 /**
  * @author Reiner Jung
@@ -42,7 +43,7 @@ public class TargetsPreferenceInitializer extends AbstractPreferenceInitializer 
 	 */
 	@Override
 	public void initializeDefaultPreferences() {
-		for (final AbstractOutletConfiguration configuration : GeneratorConfiguration.getOutletConfigurations()) {
+		for (final AbstractOutletConfiguration<ComplexType, Object> configuration : GeneratorRegistration.getOutletConfigurations()) {
 			TargetsPreferenceInitializer.getPreferenceStore().putBoolean(TargetsPreferences.GENERATOR_ACTIVE + configuration.getName(),
 					TargetsPreferences.DEFAULT_GENERATOR_INACTIVE);
 		}

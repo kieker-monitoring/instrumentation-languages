@@ -18,44 +18,42 @@ package kieker.develop.rl.generator.java.junit
 import java.util.ArrayList
 import java.util.Collection
 import java.util.List
-import kieker.develop.rl.generator.TypeInputModel
+import kieker.develop.rl.generator.AbstractTypeGenerator
+import kieker.develop.rl.recordLang.ComplexType
 import kieker.develop.rl.recordLang.ConstantLiteral
+import kieker.develop.rl.recordLang.EventType
 import kieker.develop.rl.recordLang.FloatLiteral
 import kieker.develop.rl.recordLang.IntLiteral
 import kieker.develop.rl.recordLang.Literal
 import kieker.develop.rl.recordLang.Model
 import kieker.develop.rl.recordLang.Property
-import kieker.develop.rl.recordLang.EventType
 import kieker.develop.rl.recordLang.StringLiteral
 
 import static extension kieker.develop.rl.generator.java.JavaTypeMapping.*
-import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.generator.java.junit.NameResolver.*
-import kieker.develop.rl.recordLang.Type
-import kieker.develop.rl.generator.ITypeGenerator
+import static extension kieker.develop.rl.typing.PropertyResolution.*
 
-class EventTypeGenerator implements ITypeGenerator<EventType, CharSequence> {
+class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> {
 	
-	override accepts(Type type) {
+	override accepts(ComplexType type) {
 		if (type instanceof EventType) {
 			!(type as EventType).abstract
 		} else
 			false
 	}
 		
-	override generate(TypeInputModel<EventType> input) {
-		val allDataProperties = input.type.collectAllDataProperties
-		val definedAuthor = if (input.type.author == null) input.author else input.type.author
-		val definedVersion = if (input.type.since == null) input.version else input.type.since
+	protected override createOutputModel(EventType type, String header, String author, String version) {
+		val allDataProperties = type.collectAllDataProperties
+		
 		'''
-		«input.header»package «(input.type.eContainer as Model).name.createTestPackageName»;
+		«header»package «(type.eContainer as Model).name.createTestPackageName»;
 		
 		import java.nio.ByteBuffer;
 		
 		import org.junit.Assert;
 		import org.junit.Test;
 		
-		import «(input.type.eContainer as Model).name».«input.type.name»;
+		import «(type.eContainer as Model).name».«type.name»;
 		import kieker.common.util.registry.IRegistry;
 		import kieker.common.util.registry.Registry;
 		
@@ -66,27 +64,27 @@ class EventTypeGenerator implements ITypeGenerator<EventType, CharSequence> {
 		 * Creates {@link OperationExecutionRecord}s via the available constructors and
 		 * checks the values passed values via getters.
 		 * 
-		 * @author «definedAuthor»
+		 * @author «author»
 		 * 
-		 * @since «definedVersion»
+		 * @since «version»
 		 */
-		public class TestGenerated«input.type.name» extends AbstractGeneratedKiekerTest {
+		public class TestGenerated«type.name» extends AbstractGeneratedKiekerTest {
 		
-			public TestGenerated«input.type.name»() {
+			public TestGenerated«type.name»() {
 				// empty default constructor
 			}
 		
 			/**
-			 * Tests {@link «input.type.name»#Test«input.type.name»(String, String, long, long, long, String, int, int)}.
+			 * Tests {@link «type.name»#Test«type.name»(String, String, long, long, long, String, int, int)}.
 			 */
 			@Test
 			public void testToArray() { // NOPMD (assert missing)
 			for (int i=0;i<ARRAY_LENGTH;i++) {
 					// initialize
-					«input.type.name» record = new «input.type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
+					«type.name» record = new «type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
 					
 					// check values
-					«allDataProperties.createAllGetterValueAssertions(input.type)»
+					«allDataProperties.createAllGetterValueAssertions(type)»
 					
 					Object[] values = record.toArray();
 					
@@ -105,39 +103,39 @@ class EventTypeGenerator implements ITypeGenerator<EventType, CharSequence> {
 			}
 			
 			/**
-			 * Tests {@link «input.type.name»#Test«input.type.name»(String, String, long, long, long, String, int, int)}.
+			 * Tests {@link «type.name»#Test«type.name»(String, String, long, long, long, String, int, int)}.
 			 */
 			@Test
 			public void testBuffer() { // NOPMD (assert missing)
 				for (int i=0;i<ARRAY_LENGTH;i++) {
 					// initialize
-					«input.type.name» record = new «input.type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
+					«type.name» record = new «type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
 					
 					// check values
-					«allDataProperties.createAllGetterValueAssertions(input.type)»
+					«allDataProperties.createAllGetterValueAssertions(type)»
 				}
 			}
 			
 			/**
-			 * Tests {@link «input.type.name»#Test«input.type.name»(String, String, long, long, long, String, int, int)}.
+			 * Tests {@link «type.name»#Test«type.name»(String, String, long, long, long, String, int, int)}.
 			 */
 			@Test
 			public void testParameterConstruction() { // NOPMD (assert missing)
 				for (int i=0;i<ARRAY_LENGTH;i++) {
 					// initialize
-					«input.type.name» record = new «input.type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
+					«type.name» record = new «type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
 					
 					// check values
-					«allDataProperties.createAllGetterValueAssertions(input.type)»
+					«allDataProperties.createAllGetterValueAssertions(type)»
 				}
 			}
 			
 			@Test
 			public void testEquality() {
 				int i = 0;
-				«input.type.name» oneRecord = new «input.type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
+				«type.name» oneRecord = new «type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
 				i = 0;
-				«input.type.name» copiedRecord = new «input.type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
+				«type.name» copiedRecord = new «type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
 				
 				Assert.assertEquals(oneRecord, copiedRecord);
 			}
@@ -145,9 +143,9 @@ class EventTypeGenerator implements ITypeGenerator<EventType, CharSequence> {
 			@Test
 			public void testUnequality() {
 				int i = 0;
-				«input.type.name» oneRecord = new «input.type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
+				«type.name» oneRecord = new «type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
 				i = 1;
-				«input.type.name» anotherRecord = new «input.type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
+				«type.name» anotherRecord = new «type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
 				
 				Assert.assertNotEquals(oneRecord, anotherRecord);
 			}

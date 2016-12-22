@@ -15,10 +15,10 @@
  ***************************************************************************/
 package kieker.develop.al.generator.java
 
-import kieker.develop.al.generator.IGeneratorProvider
+import kieker.develop.rl.generator.IGeneratorProvider
 import java.util.Collection
-import kieker.develop.al.generator.AbstractOutletConfiguration
 import kieker.develop.al.aspectLang.Pointcut
+import kieker.develop.rl.ouput.config.AbstractOutletConfiguration
 
 /**
  * Provider of generators for Java based pointcut
@@ -26,9 +26,9 @@ import kieker.develop.al.aspectLang.Pointcut
  * 
  * @author Reiner Jung
  */
-class JavaConfigurationGeneratorProvider implements IGeneratorProvider<Pointcut> {
+class JavaConfigurationGeneratorProvider implements IGeneratorProvider<Pointcut, Object> {
 	
-	override addOutletConfigurations(Collection<AbstractOutletConfiguration<Pointcut>> configurations) {
+	override addOutletConfigurations(Collection<AbstractOutletConfiguration<Pointcut, Object>> configurations) {
 		
 	}
 	

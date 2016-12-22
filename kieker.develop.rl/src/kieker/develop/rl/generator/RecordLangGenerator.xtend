@@ -29,9 +29,10 @@ import org.eclipse.xtext.generator.IGenerator2
 import org.eclipse.xtext.generator.IGeneratorContext
 import org.osgi.service.prefs.Preferences
 import java.util.Collection
-import kieker.develop.rl.recordLang.Type
 import kieker.develop.rl.generator.modeltypes.ModelSubTypeGenerator
 import kieker.develop.rl.typing.TypeProvider
+import kieker.develop.rl.recordLang.ComplexType
+import de.cau.cs.se.geco.architecture.framework.IGenerator
 
 /**
  * Generates one single files per record for java, c, and perl. 
@@ -73,7 +74,7 @@ class RecordLangGenerator implements IGenerator2 {
 		modelSubTypeGenerator.version = version
 		modelSubTypeGenerator.typeProvider = typeProvider
 
-		for (AbstractOutletConfiguration configuration : GeneratorConfiguration.outletConfigurations) {
+		for (AbstractOutletConfiguration<ComplexType, Object> configuration : GeneratorRegistration.outletConfigurations) {
 			if (TargetsPreferences.isGeneratorActive(preferenceStore, configuration.name)) {
 				/** Parse header template. */
 				var rawHeader = TargetsPreferences.getHeaderComment(preferenceStore, configuration.name).replace(
@@ -87,27 +88,20 @@ class RecordLangGenerator implements IGenerator2 {
 				} else
 					""
 				
-				val eventTypes = new ArrayList<EventType>()
-				val templateTypes = new ArrayList<TemplateType>()
+				val types = new ArrayList<ComplexType>()
 							
 				/** generate event and template types for model sub types. */	
 				val modelSubTypes = resource.allContents.filter(typeof(ModelSubType))
 																
 				modelSubTypes.forEach[
-					modelSubTypeGenerator.generate(it).forEach[type |
-						switch(type) {
-							EventType: eventTypes.add(type)
-							TemplateType: templateTypes.add(type)
-						}
-					]
+					modelSubTypeGenerator.generate(it).forEach[types += it]
 				]
 				
 				/** Add the other template and event types to their respective lists. */
-				resource.allContents.filter(typeof(EventType)).forEach[eventTypes += it]
-				resource.allContents.filter(typeof(TemplateType)).forEach[templateTypes += it]
+				resource.allContents.filter(typeof(EventType)).forEach[types += it]
+				resource.allContents.filter(typeof(TemplateType)).forEach[types += it]
 				
-				configuration.eventTypeGenerators.processTypes(eventTypes, configuration, fsa, header, author, version)
-				configuration.templateTypeGenerators.processTypes(templateTypes, configuration, fsa, header, author, version)
+				configuration.generators.processTypes(types, configuration, fsa, header, author, version)
 			}
 		}
 	}
@@ -123,17 +117,18 @@ class RecordLangGenerator implements IGenerator2 {
 	 * @param author default author used in the output
 	 * @param version default version used in the output
 	 */
-	private def <T extends Type> void processTypes(Collection<ITypeGenerator<T,? extends Object>> generators, 
-		Collection<T> types,
-		AbstractOutletConfiguration configuration,
+	private def void processTypes(Collection<IGenerator<? extends ComplexType,? extends Object>> generators, 
+		Collection<? extends ComplexType> types,
+		AbstractOutletConfiguration<ComplexType,? extends Object> configuration,
 		IFileSystemAccess2 fsa,
 		String header, String author, String version
 	) {
-		generators.forEach[generator |
+		generators.filter(IAcceptType).forEach[generator |
 			types.filter[generator.accepts(it)].forEach[
 				switch (generator) {
-					ITypeGenerator<T,CharSequence>: {
-						val result = generator.generate(new TypeInputModel<T>(header, author, version, it))
+					IGenerator<ComplexType, CharSequence>: {
+						(generator as IConfigureParameters).configure(header, author, version)
+						val result = generator.generate(it) as CharSequence
 						fsa.generateFile(configuration.outputFilePath(it), configuration.name, result)
 					}
 					/** Note in future, we might add model to model output here. */

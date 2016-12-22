@@ -21,7 +21,8 @@ import java.util.Set;
 import org.eclipse.xtext.generator.IOutputConfigurationProvider;
 import org.eclipse.xtext.generator.OutputConfiguration;
 
-import kieker.develop.rl.generator.GeneratorConfiguration;
+import kieker.develop.rl.generator.GeneratorRegistration;
+import kieker.develop.rl.recordLang.ComplexType;
 
 /**
  * Based on http://xtextcasts.org/episodes/15-output-configurations.
@@ -43,16 +44,16 @@ public class RecordLangOutputConfigurationProvider implements IOutputConfigurati
 	 */
 	@Override
 	public Set<OutputConfiguration> getOutputConfigurations() {
-		final Set<OutputConfiguration> configurations = new HashSet<OutputConfiguration>();
+		final Set<OutputConfiguration> configurations = new HashSet<>();
 
-		for (final AbstractOutletConfiguration outlet : GeneratorConfiguration.getOutletConfigurations()) {
+		for (final AbstractOutletConfiguration<ComplexType, Object> outlet : GeneratorRegistration.getOutletConfigurations()) {
 			configurations.add(this.createOutputConfiguration(outlet));
 		}
 
 		return configurations;
 	}
 
-	private OutputConfiguration createOutputConfiguration(final AbstractOutletConfiguration outlet) {
+	private OutputConfiguration createOutputConfiguration(final AbstractOutletConfiguration<ComplexType, Object> outlet) {
 		final OutputConfiguration configuration = new OutputConfiguration(outlet.getName());
 		configuration.setDescription(outlet.getDescription() + " output folder");
 		configuration.setOutputDirectory(outlet.getDirectory());

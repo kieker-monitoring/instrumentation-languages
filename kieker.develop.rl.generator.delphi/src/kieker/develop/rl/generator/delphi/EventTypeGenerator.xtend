@@ -15,18 +15,28 @@
  ***************************************************************************/
 package kieker.develop.rl.generator.delphi
 
-import kieker.develop.rl.generator.TypeInputModel
+import kieker.develop.rl.generator.AbstractTypeGenerator
+import kieker.develop.rl.recordLang.ComplexType
 import kieker.develop.rl.recordLang.EventType
-import kieker.develop.rl.recordLang.Type
-import kieker.develop.rl.generator.ITypeGenerator
 
-class EventTypeGenerator implements ITypeGenerator<EventType, CharSequence> {
+class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> {
 		
-	override generate(TypeInputModel<EventType> input) {
+		/**
+	 * Central code generation template.
+	 * 
+	 * @param type the event type
+	 * 	in this event type (template inherited types and own types)
+	 * @param header the header comment
+	 * @param author the author of the EvenType
+	 * @param version the version of the first occurrence of the type
+	 * 
+	 * @return a Java class for a Kieker EventType
+	 */
+	protected override createOutputModel(EventType type, String header, String author, String version) {
 		''''''
 	}
 	
-	override accepts(Type type) {
+	override accepts(ComplexType type) {
 		false
 	}
 
