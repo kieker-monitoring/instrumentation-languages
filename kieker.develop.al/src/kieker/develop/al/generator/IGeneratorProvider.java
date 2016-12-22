@@ -22,6 +22,8 @@ import java.util.Collection;
  *
  * @author Reiner Jung
  *
+ * @param <T>
+ *            root model element for generators associated to this outlet
  */
 public interface IGeneratorProvider<T> {
 

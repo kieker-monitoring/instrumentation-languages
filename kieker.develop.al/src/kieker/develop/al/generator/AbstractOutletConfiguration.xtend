@@ -17,7 +17,14 @@ package kieker.develop.al.generator
 
 import java.util.ArrayList
 import java.util.Collection
+import de.cau.cs.se.geco.architecture.framework.IGenerator
 
+/**
+ * Abstract outlet configuration class used to model outlets and
+ * associated generators with the configured outlet.
+ * 
+ * @author Reiner Jung
+ */
 abstract class AbstractOutletConfiguration<T> {
 	
 	/** Name of the outlet. */
@@ -30,7 +37,7 @@ abstract class AbstractOutletConfiguration<T> {
 	private String directory
 	
 	/** All generators for event types of this outlet configuration. */
-	protected val generators = new ArrayList<Object>
+	protected val generators = new ArrayList<IGenerator<T, CharSequence>>
 
 	/**
 	 * Create a new outlet entity.
@@ -53,7 +60,7 @@ abstract class AbstractOutletConfiguration<T> {
 		return this.directory
 	}
 	
-	def Collection<Object> getEventTypeGenerators() {
+	def Collection<IGenerator<T, CharSequence>> getEventTypeGenerators() {
 		return this.generators
 	}
 	
