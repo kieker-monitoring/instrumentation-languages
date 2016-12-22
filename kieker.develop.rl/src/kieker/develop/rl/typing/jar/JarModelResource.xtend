@@ -242,7 +242,7 @@ public class JarModelResource extends ResourceImpl {
 			type.createEventType
 	}
 	
-	private def ComplexType createEventType(IType type) {
+	private def EventType createEventType(IType type) {
 		val result = rlFactory.createEventType
 		
 		result.name = type.elementName
@@ -251,7 +251,7 @@ public class JarModelResource extends ResourceImpl {
 		return result
 	}
 	
-	private def ComplexType createTemplateType(IType type) {
+	private def TemplateType createTemplateType(IType type) {
 		val result = rlFactory.createTemplateType
 		
 		result.name = type.elementName
@@ -260,7 +260,31 @@ public class JarModelResource extends ResourceImpl {
 		return result
 	}
 	
-	def void createAttributes(ComplexType result, IType type) {
+	def void createAttributes(TemplateType result, IType type) {
+		type.methods.forEach[method |
+			if (Flags.isPublic(method.flags)) {
+				if (method.elementName.startsWith("get")) {
+					/** create property */
+					val property = rlFactory.createProperty
+					property.name = method.elementName.substring(3)
+					property.type = method.returnType.createType
+				
+					// 	TODO add constant and transient features later
+					result.properties.add(property)
+				} else if (method.elementName.startsWith("is")) {
+					/** create property */
+					val property = rlFactory.createProperty
+					property.name = method.elementName.substring(2)
+					property.type = method.returnType.createType
+				
+					// TODO add constant and transient features later
+					result.properties.add(property)
+				}	
+			}
+		]
+	}
+	
+	def void createAttributes(EventType result, IType type) {
 		type.fields.forEach[field |	
 			if (Flags.isPublic(field.flags) && Flags.isStatic(field.flags) && Flags.isFinal(field.flags)) {
 				if (!field.elementName.startsWith("TYPE_SIZE") && 

@@ -24,7 +24,7 @@ class EventTypeGenerator implements IGenerator<EventType, EventType> {
 				
 		result.parent = input
 		result.inherits += traceModelProvider.lookup(modelSubType)
-		
+						
 		return result
 	}
 	

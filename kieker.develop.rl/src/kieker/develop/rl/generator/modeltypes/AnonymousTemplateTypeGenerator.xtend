@@ -19,13 +19,14 @@ class AnonymousTemplateTypeGenerator implements IGenerator<ModelSubType, Templat
 	var TraceModelProvider<ModelSubType, TemplateType> traceModelProvider
 		
 	override generate(ModelSubType input) {
+				
 		val result = RecordLangFactory.eINSTANCE.createTemplateType
 		
 		traceModelProvider.add(input, result) // establish model trace
-		
+				
 		result.name = input.name
 		result.author = author
-		result.since = version
+		result.since = version		
 				
 		input.properties.forEach[result.properties += it.duplicate]
 		input.constants.forEach[result.constants += it.duplicate]

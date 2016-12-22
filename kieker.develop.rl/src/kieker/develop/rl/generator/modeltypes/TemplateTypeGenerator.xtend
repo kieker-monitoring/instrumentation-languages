@@ -42,5 +42,5 @@ class TemplateTypeGenerator implements IGenerator<TemplateType, TemplateType> {
 	def void setVersion (String version) {
 		this.version = version
 	}
-	
+
 }

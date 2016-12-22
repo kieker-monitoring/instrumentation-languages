@@ -84,13 +84,13 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 				
 				/** user-defined constants */
 				«type.createUserConstants»
-	
+				
 				/** default constants */
 				«allDeclarationProperties.createDefaultConstants»
-	
+				
 				/** property declarations */
 				«allDeclarationProperties.createPropertyDeclarations»
-	
+				
 				«type.createParameterizedConstructor(allDataProperties, allDeclarationProperties)»
 			
 				«if (!type.abstract) type.createArrayConstructor(allDeclarationProperties)»
@@ -123,7 +123,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 			else 
 				properties.createBinarySerializationSizeConstant(type)»
 		;
-	
+		
 		public static final Class<?>[] TYPES = {
 			«properties.map[property | property.createPropertyTypeArrayEntry(type)].join»
 		};

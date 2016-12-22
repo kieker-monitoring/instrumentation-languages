@@ -30,7 +30,7 @@ class ModelSubTypeGenerator implements IGenerator<ModelSubType, Collection<? ext
 	val eventTypeGenerator = new EventTypeGenerator()
 	val templateTypeGenerator = new TemplateTypeGenerator()
 	
-	override generate(ModelSubType modelSubType) {
+	override generate(ModelSubType modelSubType) {		
 		eventTypeGenerator.setTraceModel(traceModelProvider)
 		eventTypeGenerator.author = if (modelSubType.author != null) modelSubType.author else author
 		eventTypeGenerator.version = if (modelSubType.since != null) modelSubType.since else version
