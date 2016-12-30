@@ -41,6 +41,7 @@ import org.eclipse.jdt.core.JavaCore
 import org.eclipse.core.resources.IMarker
 import kieker.develop.rl.typing.base.BaseTypes
 import kieker.develop.rl.recordLang.ComplexType
+import kieker.develop.rl.recordLang.ArraySize
 
 /**
  * broadly based on org.spp.cocome.behavior.pcm.handler.PCMModelResource
@@ -50,6 +51,14 @@ import kieker.develop.rl.recordLang.ComplexType
  * 
  */
 public class JarModelResource extends ResourceImpl {
+	
+	val EXCLUDE_CLASSES = #[
+		"java.io.Serializable",
+		"java.lang.Comparable", "java.lang.Object", 
+		"kieker.common.record.AbstractMonitoringRecord",
+		"kieker.common.record.misc.RegistryRecord", // TODO this can be removed after supporting arrays officially.
+		"kieker.common.record.IMonitoringRecord"
+	]
 	
 	val rlFactory = RecordLangFactory.eINSTANCE
 	var IProject project
@@ -163,9 +172,7 @@ public class JarModelResource extends ResourceImpl {
 				val hierarchy = iface.newTypeHierarchy(javaProject,null)
 				val types = hierarchy.allTypes.filter[
 					val name = it.fullyQualifiedName
-					!(name.equals("java.io.Serializable") ||
-						name.equals("java.lang.Comparable") ||
-						name.equals("java.lang.Object"))
+					!EXCLUDE_CLASSES.exists[it.equals(name)]
 				]
 				
 				val models = new HashMap<String,Model>()
@@ -260,30 +267,55 @@ public class JarModelResource extends ResourceImpl {
 		return result
 	}
 	
+	/**
+	 * Create constants and properties based on methods of
+	 * an interface declaration.
+	 * 
+	 * @param result the template type which is extended by constant and property declarations
+	 * @param type the class used to infer the constants and properties from
+	 */
 	def void createAttributes(TemplateType result, IType type) {
 		type.methods.forEach[method |
 			if (Flags.isPublic(method.flags)) {
-				if (method.elementName.startsWith("get")) {
+				if (method.elementName.startsWith("get") &&
+					!"getLoggingTimestamp".equals(method.elementName) &&
+					!"getValueTypes".equals(method.elementName)
+				) {
 					/** create property */
 					val property = rlFactory.createProperty
-					property.name = method.elementName.substring(3)
-					property.type = method.returnType.createType
-				
-					// 	TODO add constant and transient features later
-					result.properties.add(property)
-				} else if (method.elementName.startsWith("is")) {
-					/** create property */
-					val property = rlFactory.createProperty
-					property.name = method.elementName.substring(2)
+					property.name = method.elementName.substring(3).toFirstLower
 					property.type = method.returnType.createType
 				
 					// TODO add constant and transient features later
-					result.properties.add(property)
+					if (property.type == null) {
+					createError(type.elementName, method.returnType, "property", property.name)
+					} else {
+						result.properties.add(property)
+					}
+				} else if (method.elementName.startsWith("is")) {
+					/** create property */
+					val property = rlFactory.createProperty
+					property.name = method.elementName.substring(2).toFirstLower
+					property.type = method.returnType.createType
+					
+					// TODO add constant and transient features later
+					if (property.type == null) {
+					createError(type.elementName, method.returnType, "property", property.name)
+					} else {
+						result.properties.add(property)
+					}
 				}	
 			}
 		]
 	}
 	
+	/**
+	 * Create constants and properties based on fields of
+	 * a class declaration.
+	 * 
+	 * @param result the event type which is extended by constant and property declarations
+	 * @param type the class used to infer the constants and properties from
+	 */
 	def void createAttributes(EventType result, IType type) {
 		type.fields.forEach[field |	
 			if (Flags.isPublic(field.flags) && Flags.isStatic(field.flags) && Flags.isFinal(field.flags)) {
@@ -296,7 +328,11 @@ public class JarModelResource extends ResourceImpl {
 					constant.type = field.typeSignature.createType
 					constant.value = field.constant.createLiteral
 					
-					result.constants.add(constant)
+					if (constant.type == null) {
+						createError(type.elementName, field.typeSignature, "constant", constant.name)
+					} else {
+						result.constants.add(constant)
+					}
 				}
 			} else if (Flags.isPrivate(field.flags) && Flags.isFinal(field.flags) && !Flags.isStatic(field.flags)) {
 				/** create property */
@@ -304,9 +340,31 @@ public class JarModelResource extends ResourceImpl {
 				property.name = field.elementName
 				property.type = field.typeSignature.createType
 				// TODO add constant and transient features later
-				result.properties.add(property)
+				if (property.type == null) {
+					createError(type.elementName, field.typeSignature, "property", property.name)
+				} else {
+					result.properties.add(property)
+				}
 			}			
 		]
+	}
+	
+	/**
+	 * Create an error message in the problem list of Eclipse.
+	 * 
+	 * @param name name of the Java type
+	 * @param attributeTypeSignature type signature of the attribute (constant/property)
+	 * @param kind is either constant or property
+	 * @param attributeName is the name of the processed attribute
+	 */
+	private def void createError(String name, String attributeTypeSignature, String kind, String attributeName) {
+		val m = project.createMarker(IMarker.PROBLEM)
+		m.setAttribute(IMarker.LINE_NUMBER, 0)
+		m.setAttribute(IMarker.MESSAGE, "Kieker type " + name + " contains unsupported type " 
+			+ attributeTypeSignature + " in " + kind + " declaration " + attributeName
+		)
+		m.setAttribute(IMarker.PRIORITY, IMarker.PRIORITY_LOW)
+		m.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_ERROR)
 	}
 	
 	private def Literal createLiteral(Object object) {
@@ -362,7 +420,12 @@ public class JarModelResource extends ResourceImpl {
 	
 	private def Classifier createType(String typeId) {
 		val classifier = rlFactory.createClassifier
-		switch(typeId) {
+		var id = typeId 
+		while (id.startsWith("[")) {
+			id = typeId.substring(1)
+			classifier.sizes += createArraySize(0)
+		}
+		switch(id) {
 			case "B": classifier.type = BaseTypes.BYTE.getType
 			case "C": classifier.type = BaseTypes.CHAR.getType
 			case "D": classifier.type = BaseTypes.DOUBLE.getType
@@ -372,10 +435,18 @@ public class JarModelResource extends ResourceImpl {
 			case "S": classifier.type = BaseTypes.SHORT.getType
 			case "Z": classifier.type = BaseTypes.BOOLEAN.getType
 			case "Ljava.lang.String;": classifier.type = BaseTypes.STRING.getType
+			case "QString;": classifier.type = BaseTypes.STRING.getType
+			default:
+				return null
 		}
-		// TODO support other complex types via the complex type mechanism
 		
 		return classifier
+	}
+	
+	def createArraySize(int size) {
+		val result = rlFactory.createArraySize
+		result.size = size
+		return result
 	}
 		
 
