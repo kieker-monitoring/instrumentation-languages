@@ -41,7 +41,6 @@ import org.eclipse.jdt.core.JavaCore
 import org.eclipse.core.resources.IMarker
 import kieker.develop.rl.typing.base.BaseTypes
 import kieker.develop.rl.recordLang.ComplexType
-import kieker.develop.rl.recordLang.ArraySize
 
 /**
  * broadly based on org.spp.cocome.behavior.pcm.handler.PCMModelResource
@@ -172,7 +171,11 @@ public class JarModelResource extends ResourceImpl {
 				val hierarchy = iface.newTypeHierarchy(javaProject,null)
 				val types = hierarchy.allTypes.filter[
 					val name = it.fullyQualifiedName
-					!EXCLUDE_CLASSES.exists[it.equals(name)]
+					/**
+					 * only use binary only classes for the model, as Java code belongs to the
+					 * project and must be constructed via IRL.
+					 */
+					it.binary && !EXCLUDE_CLASSES.exists[it.equals(name)]
 				]
 				
 				val models = new HashMap<String,Model>()
@@ -422,7 +425,7 @@ public class JarModelResource extends ResourceImpl {
 		val classifier = rlFactory.createClassifier
 		var id = typeId 
 		while (id.startsWith("[")) {
-			id = typeId.substring(1)
+			id = id.substring(1)
 			classifier.sizes += createArraySize(0)
 		}
 		switch(id) {
