@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="intermediate" nsURI="http://mappingmodel.tools.kieker/ial/intermediate"
+    nsPrefix="intermediate">
+  <eClassifiers xsi:type="ecore:EClass" name="IntermediateAspect">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="joinpoints" upperBound="-1"
+        eType="#//AbstractJoinpoint" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="advices" upperBound="-1"
+        eType="ecore:EClass generated/AspectLang.ecore#//Advice"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractJoinpoint">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="technology" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CodeJoinpoint" eSuperTypes="#//AbstractJoinpoint">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="artifactName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operationSiganture" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ModelJoinpoint" eSuperTypes="#//AbstractJoinpoint">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="referencedObject" eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IntermediateModel">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="aspects" upperBound="-1"
+        eType="#//IntermediateAspect" containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>

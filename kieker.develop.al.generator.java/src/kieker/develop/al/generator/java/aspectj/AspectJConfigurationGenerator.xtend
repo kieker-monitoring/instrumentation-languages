@@ -12,6 +12,34 @@ import org.w3c.dom.Element
 import static extension kieker.develop.al.generator.java.aspectj.NameResolver.*
 import static extension kieker.develop.al.generator.java.aspectj.PointcutQueryModule.*
 
+
+// TODO process this comment			
+//	/**
+//	 * Create AspectJ configuration (aop.xml) for a given collection of aspects.
+//	 * 
+//	 * @param aspects collection of aspects for AspectJ
+//	 * @param access file system access
+//	 */
+//	private def createAspectJConfiguration(Collection<Aspect> aspects, IFileSystemAccess2 access) {
+//		val aspectGenerator = new AspectJPointcutGenerator()
+//		storeXMLModel('aop.xml', access, aspectGenerator.generate(aspects))
+//				
+//		val adviceGenerator = new AspectJAdviceGenerator()
+//		val utilizationAdviceMap = aspects.createUtilizationMap()
+//		
+//		utilizationAdviceMap.forEach[advice, utilizedAdvices |
+//			utilizedAdvices.forEach[utilizedAdviced, i|
+//				adviceGenerator.setIndex(i)
+//				access.generateFile(utilizedAdviced.aspectJAbstractAdviceName(i), 
+//					adviceGenerator.generate(utilizedAdviced)
+//				)
+//			]
+//		]
+//	}
+		
+//	private def String aspectJAbstractAdviceName(UtilizeAdvice advice, int i) '''aspectj«File.separator»«advice.advice.packagePathName»Abstract«advice.advice.name»Advice«i».java'''
+	
+
 class AspectJConfigurationGenerator implements IGenerator<Collection<Aspect>,Document> {
 	
 	val docFactory = DocumentBuilderFactory.newInstance()

@@ -9,6 +9,12 @@ import kieker.develop.rl.generator.java.junit.JUnitOutletConfiguration
 import kieker.develop.rl.recordLang.ComplexType
 
 class GeneratorProvider implements IGeneratorProvider<ComplexType, CharSequence> {
+	
+	public static String LANG_JAVA = "java"
+	
+	public static String TECH_KIEKER_JAVA = "kieker.java"
+	public static String TECH_JUNIT = "junit"
+	
 		
 	override addOutletConfigurations(Collection<AbstractOutletConfiguration<ComplexType, CharSequence>> configurations) {
 		configurations += new JavaOutletConfiguration()

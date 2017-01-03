@@ -39,16 +39,24 @@ abstract class AbstractOutletConfiguration<S, T> {
 	/** Default directory for the outlet. */
 	private String directory
 	
+	/** Technology supported by the generators of this outlet. */
+	private String technology
+	
+	/** Target language supported by the generators of this outlet. */
+	private String lang
+	
 	/** All generators for event and templates types of this outlet configuration. */
 	protected val generators = new ArrayList<IGenerator<? extends S,? extends T>>
 
 	/**
 	 * Create a new outlet entity.
 	 */
-	new (String name, String description, String directory) {
+	new (String name, String description, String directory, String lang, String technology) {
 		this.name = name
 		this.description = description
 		this.directory = directory
+		this.lang = lang
+		this.technology = technology
 	}
 	
 	def getName() {
@@ -61,6 +69,14 @@ abstract class AbstractOutletConfiguration<S, T> {
 	
 	def getDirectory() {
 		return this.directory
+	}
+	
+	def getTechnology() {
+		return this.technology
+	}
+	
+	def getLang() {
+		return this.lang
 	}
 	
 	def Collection<IGenerator<? extends S, ? extends T>> getGenerators() {

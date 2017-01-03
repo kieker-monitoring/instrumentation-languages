@@ -20,13 +20,16 @@ import java.io.File
 import kieker.develop.al.aspectLang.AspectModel
 import kieker.develop.al.generator.java.javaee.JavaEEAdviceGenerator
 import kieker.develop.rl.ouput.config.AbstractOutletConfiguration
+import kieker.develop.al.generator.java.JavaAdviceGeneratorProvider
 
 class JavaEEAdviceOutletConfiguration extends AbstractOutletConfiguration<Advice, CharSequence> {
+	
+	public static String TECH_JAVA_EE = "JavaEE"
 	
 	private static String JAVAEE_ADVICE_OUTLET_ID = "java";
 	
 	new() {
-		super(JAVAEE_ADVICE_OUTLET_ID, "AspectJ", "./src-gen/java")
+		super(JAVAEE_ADVICE_OUTLET_ID, "Java EE", "./src-gen/java", JavaAdviceGeneratorProvider.LANG_JAVA, TECH_JAVA_EE)
 		generators += new JavaEEAdviceGenerator()
 	}
 	

@@ -21,4 +21,12 @@
             genModel="model/MappingModel.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated IntermediateModel -->
+      <package
+            uri="http://mappingmodel.tools.kieker/ial/intermediate"
+            class="kieker.develop.al.intermediate.IntermediatePackage"
+            genModel="model/IntermediateModel.genmodel"/>
+   </extension>
+
 </plugin>

@@ -31,6 +31,8 @@ import kieker.develop.rl.ouput.config.AbstractOutletConfiguration
  */
 class JavaAdviceGeneratorProvider implements IGeneratorProvider<Advice, CharSequence> {
 	
+	public static String LANG_JAVA = "java"
+	
 	override addOutletConfigurations(Collection<AbstractOutletConfiguration<Advice, CharSequence>> configurations) {
 		configurations += new AspectJAdviceOutletConfiguration()
 		configurations += new JavaEEAdviceOutletConfiguration()

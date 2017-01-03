@@ -10,7 +10,7 @@ class DelphiOutletConfiguration extends AbstractOutletConfiguration<ComplexType,
 	private static String DELFI_OUTLET_ID = "delphi.records"
 	
 	new () {
-		super(DELFI_OUTLET_ID, "Delphi", "./src-gen/delphi")
+		super(DELFI_OUTLET_ID, "Delphi", "./src-gen/delphi", GeneratorProvider.LANG_DELPHI, GeneratorProvider.TECH_KIEKER_DELPHI)
 		this.generators += new EventTypeGenerator
 	}
 												

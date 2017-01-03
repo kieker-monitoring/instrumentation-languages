@@ -2,7 +2,9 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
+Bundle-Localization: plugin
 Bundle-Version: 1.3.0.qualifier
+Bundle-ClassPath: .
 Bundle-SymbolicName: kieker.develop.al;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext;visibility:=reexport,
@@ -13,7 +15,8 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.emf.mwe.utils;resolution:=optional,
  org.eclipse.emf.mwe2.launch;resolution:=optional,
  org.eclipse.xtext.util,
- org.eclipse.emf.ecore,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ kieker.develop.al;visibility:=reexport,
  org.eclipse.emf.common,
  org.antlr.runtime,
  org.eclipse.xtext.common.types,
@@ -22,7 +25,7 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.equinox.preferences,
  org.eclipse.e4.core.di,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
- kieker.develop.rl;bundle-version="1.2.0",
+ kieker.develop.rl;bundle-version="1.2.0";visibility:=reexport,
  kieker.develop.rl.generator.java,
  org.eclipse.xtext.common.types.ui,
  org.eclipse.platform;bundle-version="4.3.0",
@@ -31,7 +34,7 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.emf.ecore.xcore.lib,
  de.cau.cs.se.geco.architecture.framework;bundle-version="1.0.0",
  org.eclipse.xtend.lib,
- kieker.develop.semantics;bundle-version="1.2.0",
+ kieker.develop.semantics;bundle-version="1.2.0";visibility:=reexport,
  org.eclipse.equinox.registry,
  com.google.guava,
  org.eclipse.xtend.lib.macro
@@ -55,5 +58,8 @@ Export-Package: kieker.develop.al.mapping,
  kieker.develop.al.scoping,
  kieker.develop.al.serializer,
  kieker.develop.al.services,
- kieker.develop.al.validation
+ kieker.develop.al.validation,
+ kieker.develop.al.intermediate,
+ kieker.develop.al.intermediate.impl,
+ kieker.develop.al.intermediate.util
 

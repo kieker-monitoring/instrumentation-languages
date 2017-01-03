@@ -12,7 +12,7 @@ class COutletConfiguration extends AbstractOutletConfiguration<ComplexType, Char
 	private static String C_OUTLET_ID = "c"
 	
 	new () {
-		super(C_OUTLET_ID, "C", "./src/gen/c")
+		super(C_OUTLET_ID, "C", "./src/gen/c", GeneratorProvider.LANG_C, GeneratorProvider.TECH_KIEKER_C)
 		this.generators += new EventTypeGenerator
 		this.generators += new kieker.develop.rl.generator.c.main.EventTypeGenerator
 	}

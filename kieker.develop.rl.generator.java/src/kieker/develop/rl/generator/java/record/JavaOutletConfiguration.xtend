@@ -4,13 +4,14 @@ import java.io.File
 import kieker.develop.rl.ouput.config.AbstractOutletConfiguration
 import kieker.develop.rl.recordLang.Model
 import kieker.develop.rl.recordLang.ComplexType
+import kieker.develop.rl.generator.java.GeneratorProvider
 
 class JavaOutletConfiguration extends AbstractOutletConfiguration<ComplexType, CharSequence> {
 	
-	private static String JAVA_OUTLET_ID = "java";
+	private static String JAVA_OUTLET_ID = "java"
 		
 	new() {
-		super(JAVA_OUTLET_ID, "Java record", "./src-gen/java")
+		super(JAVA_OUTLET_ID, "Java record", "./src-gen/java", GeneratorProvider.LANG_JAVA, GeneratorProvider.TECH_KIEKER_JAVA)
 		generators += new EventTypeGenerator
 		generators += new TemplateTypeGenerator
 	}

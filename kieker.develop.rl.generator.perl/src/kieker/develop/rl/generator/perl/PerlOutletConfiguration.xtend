@@ -8,7 +8,7 @@ import kieker.develop.rl.recordLang.Model
 class PerlOutletConfiguration extends AbstractOutletConfiguration<ComplexType, CharSequence> {
 	
 	new () {
-		super("perl", "Perl Output Folder", "./src-gen/perl")
+		super("perl", "Perl Output Folder", "./src-gen/perl", GeneratorProvider.LANG_PERL, GeneratorProvider.TECH_KIEKER_PERL)
 		generators += new EventTypeGenerator
 	}
 	

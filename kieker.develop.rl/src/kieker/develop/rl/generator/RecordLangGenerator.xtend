@@ -54,6 +54,9 @@ class RecordLangGenerator implements IGenerator2 {
 		}
 	}
 
+	/**
+	 * Print preferences. 
+ 	 */
 	def void v(Preferences preferences) {
 		preferences.childrenNames.forEach[System.out.println(">> " + it)]
 	}
