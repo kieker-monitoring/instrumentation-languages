@@ -3,8 +3,10 @@
 <plugin>
    <extension
          point="kieker.develop.al.generator.provider">
-      <configuration></configuration>
-      <advice></advice>
+      <configuration
+            provider="kieker.develop.al.generator.java.JavaConfigurationGeneratorProvider"></configuration>
+      <advice
+            provider="kieker.develop.al.generator.java.JavaAdviceGeneratorProvider"></advice>
    </extension>
 
 </plugin>

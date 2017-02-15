@@ -21,7 +21,7 @@ import kieker.develop.rl.recordLang.EventType
 
 class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> {
 		
-		/**
+	/**
 	 * Central code generation template.
 	 * 
 	 * @param type the event type

@@ -18,17 +18,15 @@ package kieker.develop.al.generator.java.servlet
 import java.io.File
 import kieker.develop.al.aspectLang.Advice
 import kieker.develop.al.aspectLang.AspectModel
+import kieker.develop.al.generator.java.ConfigurationProperties
 import kieker.develop.rl.ouput.config.AbstractOutletConfiguration
-import kieker.develop.al.generator.java.JavaAdviceGeneratorProvider
 
 class ServletAdviceOutletConfiguration extends AbstractOutletConfiguration<Advice, CharSequence> {
-	
-	public static String TECH_SERVLET = "Servlet"
-	
-	private static String SERVLET_ADVICE_OUTLET_ID = "java";
-	
+		
 	new() {
-		super(SERVLET_ADVICE_OUTLET_ID, "Java Servlet", "./src-gen/java", JavaAdviceGeneratorProvider.LANG_JAVA, TECH_SERVLET)
+		super(ConfigurationProperties.SERVLET_ADVICE_OUTLET_ID, "Java Servlet", "./src-gen/java", 
+			ConfigurationProperties.LANG_JAVA, ConfigurationProperties.TECH_SERVLET
+		)
 		generators += new ServletAdviceGenerator()
 	}
 	

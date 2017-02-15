@@ -2,9 +2,9 @@
  */
 package kieker.develop.al.handler.pcm.rac;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.util.EList;
 
-import org.palladiosimulator.pcm.core.entity.NamedElement;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,8 +15,8 @@ import org.palladiosimulator.pcm.core.entity.NamedElement;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link kieker.develop.al.handler.pcm.rac.PCMMapping#getTarget <em>Target</em>}</li>
  *   <li>{@link kieker.develop.al.handler.pcm.rac.PCMMapping#getSource <em>Source</em>}</li>
+ *   <li>{@link kieker.develop.al.handler.pcm.rac.PCMMapping#getTargets <em>Targets</em>}</li>
  * </ul>
  *
  * @see kieker.develop.al.handler.pcm.rac.RacPackage#getPCMMapping()
@@ -25,55 +25,45 @@ import org.palladiosimulator.pcm.core.entity.NamedElement;
  */
 public interface PCMMapping extends EObject {
 	/**
-	 * Returns the value of the '<em><b>Target</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Target</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Target</em>' attribute.
-	 * @see #setTarget(String)
-	 * @see kieker.develop.al.handler.pcm.rac.RacPackage#getPCMMapping_Target()
-	 * @model required="true"
-	 * @generated
-	 */
-	String getTarget();
-
-	/**
-	 * Sets the value of the '{@link kieker.develop.al.handler.pcm.rac.PCMMapping#getTarget <em>Target</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Target</em>' attribute.
-	 * @see #getTarget()
-	 * @generated
-	 */
-	void setTarget(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Source</b></em>' reference.
+	 * Returns the value of the '<em><b>Source</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Source</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Source</em>' reference.
-	 * @see #setSource(NamedElement)
+	 * @return the value of the '<em>Source</em>' containment reference.
+	 * @see #setSource(SourceNode)
 	 * @see kieker.develop.al.handler.pcm.rac.RacPackage#getPCMMapping_Source()
-	 * @model required="true"
+	 * @model containment="true"
 	 * @generated
 	 */
-	NamedElement getSource();
+	SourceNode getSource();
 
 	/**
-	 * Sets the value of the '{@link kieker.develop.al.handler.pcm.rac.PCMMapping#getSource <em>Source</em>}' reference.
+	 * Sets the value of the '{@link kieker.develop.al.handler.pcm.rac.PCMMapping#getSource <em>Source</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Source</em>' reference.
+	 * @param value the new value of the '<em>Source</em>' containment reference.
 	 * @see #getSource()
 	 * @generated
 	 */
-	void setSource(NamedElement value);
+	void setSource(SourceNode value);
+
+	/**
+	 * Returns the value of the '<em><b>Targets</b></em>' containment reference list.
+	 * The list contents are of type {@link kieker.develop.al.handler.pcm.rac.CodeTargetNode}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Targets</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Targets</em>' containment reference list.
+	 * @see kieker.develop.al.handler.pcm.rac.RacPackage#getPCMMapping_Targets()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<CodeTargetNode> getTargets();
 
 } // PCMMapping

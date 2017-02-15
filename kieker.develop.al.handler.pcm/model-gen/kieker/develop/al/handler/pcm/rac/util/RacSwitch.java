@@ -78,6 +78,32 @@ public class RacSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case RacPackage.SOURCE_NODE: {
+				SourceNode sourceNode = (SourceNode)theEObject;
+				T result = caseSourceNode(sourceNode);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case RacPackage.ABSTRACT_TARGET_NODE: {
+				AbstractTargetNode abstractTargetNode = (AbstractTargetNode)theEObject;
+				T result = caseAbstractTargetNode(abstractTargetNode);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case RacPackage.MODEL_TARGET_NODE: {
+				ModelTargetNode modelTargetNode = (ModelTargetNode)theEObject;
+				T result = caseModelTargetNode(modelTargetNode);
+				if (result == null) result = caseAbstractTargetNode(modelTargetNode);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case RacPackage.CODE_TARGET_NODE: {
+				CodeTargetNode codeTargetNode = (CodeTargetNode)theEObject;
+				T result = caseCodeTargetNode(codeTargetNode);
+				if (result == null) result = caseAbstractTargetNode(codeTargetNode);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -109,6 +135,66 @@ public class RacSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T casePCMMapping(PCMMapping object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Source Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Source Node</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSourceNode(SourceNode object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Abstract Target Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Abstract Target Node</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAbstractTargetNode(AbstractTargetNode object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Model Target Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Model Target Node</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseModelTargetNode(ModelTargetNode object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Code Target Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Code Target Node</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCodeTargetNode(CodeTargetNode object) {
 		return null;
 	}
 

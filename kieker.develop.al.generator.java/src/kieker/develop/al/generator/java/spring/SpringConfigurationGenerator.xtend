@@ -1,7 +1,8 @@
 package kieker.develop.al.generator.java.spring
 
 import de.cau.cs.se.geco.architecture.framework.IGenerator
-import kieker.develop.al.aspectLang.Pointcut
+import org.w3c.dom.Document
+import kieker.develop.al.intermediate.IntermediateModel
 
 // TODO process code snippet
 
@@ -24,10 +25,10 @@ import kieker.develop.al.aspectLang.Pointcut
 // private def String aspectSpringAdviceName(Advice advice) '''spring«File.separator»«advice.packagePathName»«advice.name»Interceptor.java'''
 	
 
-class SpringConfigurationGenerator implements IGenerator<Pointcut,CharSequence> {
+class SpringConfigurationGenerator implements IGenerator<IntermediateModel, Document> {
 	
-	override generate(Pointcut input) {
-		'''MISSING'''
+	override generate(IntermediateModel input) {
+		null
 	}
 	
 }

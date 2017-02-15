@@ -30,6 +30,8 @@ import kieker.develop.al.aspectLang.AspectModel
  * 
  * 
  * @author Reiner Jung
+ * 
+ * @since 1.0
  */
 public class PackageContentScope implements IScope {
 	

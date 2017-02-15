@@ -27,6 +27,8 @@ import kieker.develop.al.mapping.NamedType;
  * @author Christian Schneider - Initial contribution (derived from
  *         org.eclipse.xtext.common.types.access.IJvmTypeProvider)
  * @author Reiner Jung - Cleanups and commentary
+ *
+ * @since 1.0
  */
 public interface IForeignModelTypeProvider {
 

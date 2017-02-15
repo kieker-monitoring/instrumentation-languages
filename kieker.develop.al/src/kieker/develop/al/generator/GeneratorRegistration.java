@@ -24,7 +24,7 @@ import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
 
 import kieker.develop.al.aspectLang.Advice;
-import kieker.develop.al.intermediate.AbstractJoinpoint;
+import kieker.develop.al.intermediate.IntermediateModel;
 import kieker.develop.rl.generator.IGeneratorProvider;
 import kieker.develop.rl.ouput.config.AbstractOutletConfiguration;
 
@@ -67,15 +67,19 @@ public final class GeneratorRegistration {
 				.getConfigurationElementsFor(GeneratorRegistration.GENERATOR_PROVIDER);
 
 		for (final IConfigurationElement element : config) {
-			try {
-				final Object ext = element.createExecutableExtension(GeneratorRegistration.ADVICE_EXTENSION_NAME);
-				if (ext instanceof IGeneratorProvider) {
-					@SuppressWarnings("unchecked")
-					final IGeneratorProvider<Advice, Object> generatorProvider = (IGeneratorProvider<Advice, Object>) ext;
-					generatorProvider.addOutletConfigurations(outletConfigurations);
+			if (GeneratorRegistration.ADVICE_EXTENSION_NAME.equals(element.getName())) {
+				try {
+					final Object ext = element.createExecutableExtension("provider");
+					System.out.println("success " + ext);
+					if (ext instanceof IGeneratorProvider) {
+						@SuppressWarnings("unchecked")
+						final IGeneratorProvider<Advice, Object> generatorProvider = (IGeneratorProvider<Advice, Object>) ext;
+						generatorProvider.addOutletConfigurations(outletConfigurations);
+					}
+				} catch (final CoreException e) {
+					// TODO should be reported as problem
+					System.out.println("AL advice generator provider not found for " + element.getNamespaceIdentifier());
 				}
-			} catch (final CoreException e) {
-				e.printStackTrace();
 			}
 		}
 		return outletConfigurations;
@@ -86,8 +90,8 @@ public final class GeneratorRegistration {
 	 *
 	 * @return Returns a collection of outlet configurations
 	 */
-	public static Collection<AbstractOutletConfiguration<AbstractJoinpoint, Object>> getConfigurationOutletConfigurations() {
-		final Collection<AbstractOutletConfiguration<AbstractJoinpoint, Object>> outletConfigurations = new ArrayList<>();
+	public static Collection<AbstractOutletConfiguration<IntermediateModel, Object>> getConfigurationOutletConfigurations() {
+		final Collection<AbstractOutletConfiguration<IntermediateModel, Object>> outletConfigurations = new ArrayList<>();
 
 		final IExtensionRegistry registry = Platform.getExtensionRegistry();
 
@@ -95,15 +99,19 @@ public final class GeneratorRegistration {
 				.getConfigurationElementsFor(GeneratorRegistration.GENERATOR_PROVIDER);
 
 		for (final IConfigurationElement element : config) {
-			try {
-				final Object ext = element.createExecutableExtension(GeneratorRegistration.CONFIGURATION_EXTENSION_NAME);
-				if (ext instanceof IGeneratorProvider) {
-					@SuppressWarnings("unchecked")
-					final IGeneratorProvider<AbstractJoinpoint, Object> generatorProvider = (IGeneratorProvider<AbstractJoinpoint, Object>) ext;
-					generatorProvider.addOutletConfigurations(outletConfigurations);
+			if (GeneratorRegistration.CONFIGURATION_EXTENSION_NAME.equals(element.getName())) {
+				try {
+					final Object ext = element.createExecutableExtension("provider");
+					System.out.println("success " + ext);
+					if (ext instanceof IGeneratorProvider) {
+						@SuppressWarnings("unchecked")
+						final IGeneratorProvider<IntermediateModel, Object> generatorProvider = (IGeneratorProvider<IntermediateModel, Object>) ext;
+						generatorProvider.addOutletConfigurations(outletConfigurations);
+					}
+				} catch (final CoreException e) {
+					// TODO should be reported as problem
+					System.out.println("AL configuration generator provider not found for " + element.getNamespaceIdentifier());
 				}
-			} catch (final CoreException e) {
-				e.printStackTrace();
 			}
 		}
 		return outletConfigurations;

@@ -30,7 +30,14 @@ import org.eclipse.emf.ecore.EcorePackage$Literals
 import org.eclipse.xtext.resource.IEObjectDescription
 import kieker.develop.al.aspectLang.ApplicationModel
 
+/**
+ * 
+ * @author Reiner Jung
+ * 
+ * @since 1.0
+ */
 class ForeignModelGlobalScopeProvider extends DefaultGlobalScopeProvider {
+	
 	@Inject
 	private ForeignModelTypeProviderFactory typeProviderFactory;
 

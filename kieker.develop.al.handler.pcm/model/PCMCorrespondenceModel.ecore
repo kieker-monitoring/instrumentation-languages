@@ -6,9 +6,28 @@
         eType="#//PCMMapping" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PCMMapping">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="target" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//SourceNode"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targets" upperBound="-1"
+        eType="#//CodeTargetNode" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SourceNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" lowerBound="1"
+        eType="ecore:EClass ../../org.palladiosimulator.pcm/model/pcm.ecore#//core/entity/NamedElement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="childNode" eType="#//SourceNode"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractTargetNode" abstract="true"
+      interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ModelTargetNode" eSuperTypes="#//AbstractTargetNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reference" lowerBound="1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CodeTargetNode" eSuperTypes="#//AbstractTargetNode">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fullyQualifiedClassName"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
-        eType="ecore:EClass ../../../../../../../org.palladiosimulator.pcm/model/pcm.ecore#//core/entity/NamedElement"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operationSignature" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

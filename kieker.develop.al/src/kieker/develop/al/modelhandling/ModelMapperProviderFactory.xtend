@@ -15,23 +15,28 @@
  ***************************************************************************/
 package kieker.develop.al.modelhandling
 
-import com.google.inject.Inject
-
 /**
  * 
  * @author Reiner Jung
+ * 
+ * @since 1.3
  */
 class ModelMapperProviderFactory {
 	
-	//var ModelMapperProvider modelMapperProvider = null
+	val static instance = new ModelMapperProviderFactory
 	
-	@Inject
-	new() {}
+	var ModelMapperProvider modelMapperProvider = new ModelMapperProvider()
+	
+	new() {
+		println("Instantiate ModelMapperProviderFactory " + this)
+	}
 	
 	def ModelMapperProvider getProvider() {
-		//if (modelMapperProvider == null) {
-		//	modelMapperProvider = new ModelMapperProvider()
-		//}
-		return new ModelMapperProvider()
-	}	
+		return modelMapperProvider
+	}
+	
+	def static createInstance() {
+		return instance
+	}
+	
 }

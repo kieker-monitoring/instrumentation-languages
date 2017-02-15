@@ -36,6 +36,7 @@ import kieker.develop.al.mapping.NamedType;
  * @author Christian Schneider - Initial contribution
  * @author Reiner Jung - Cleanup and commentary
  *
+ * @since 1.0
  */
 public class ForeignModelTypeProvider implements Resource.Factory, IForeignModelTypeProvider {
 
@@ -76,7 +77,7 @@ public class ForeignModelTypeProvider implements Resource.Factory, IForeignModel
 		 * types.
 		 */
 		final Resource resource = this.resourceSet.getResource(this.createResourceURI(), true);
-		final Collection<NamedElement> result = new ArrayList<NamedElement>();
+		final Collection<NamedElement> result = new ArrayList<>();
 		for (final EObject container : resource.getContents()) {
 			if (container instanceof MappingModel) {
 				for (final Containment type : ((MappingModel) container).getContents()) {
@@ -147,6 +148,7 @@ public class ForeignModelTypeProvider implements Resource.Factory, IForeignModel
 	 *            the full qualified class name
 	 * @return a complete URI
 	 */
+	@Override
 	public URI getFullURIForClass(final String fullQualifiedClassName) {
 		final StringBuilder uriBuilder = new StringBuilder(48);
 		uriBuilder.append(ID);

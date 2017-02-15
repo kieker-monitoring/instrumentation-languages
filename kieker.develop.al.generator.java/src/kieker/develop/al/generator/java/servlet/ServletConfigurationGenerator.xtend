@@ -1,8 +1,8 @@
 package kieker.develop.al.generator.java.servlet
 
 import de.cau.cs.se.geco.architecture.framework.IGenerator
-import kieker.develop.al.aspectLang.Pointcut
-
+import kieker.develop.al.intermediate.IntermediateModel
+import org.w3c.dom.Document
 
 // TODO process code snippet
 
@@ -25,10 +25,10 @@ import kieker.develop.al.aspectLang.Pointcut
 	
 // private def String aspectServletAdviceName(Advice advice) '''servlet«File.separator»«advice.packagePathName»«advice.name»Filter.java'''
 
-class ServletConfigurationGenerator implements IGenerator<Pointcut,CharSequence> {
+class ServletConfigurationGenerator implements IGenerator<IntermediateModel, Document> {
 	
-	override generate(Pointcut input) {
-		'''MISSING'''
+	override generate(IntermediateModel input) {
+		null
 	}
 	
 }

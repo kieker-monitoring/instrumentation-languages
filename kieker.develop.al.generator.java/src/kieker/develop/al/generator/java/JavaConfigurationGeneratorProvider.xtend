@@ -15,10 +15,15 @@
  ***************************************************************************/
 package kieker.develop.al.generator.java
 
-import kieker.develop.rl.generator.IGeneratorProvider
 import java.util.Collection
-import kieker.develop.al.aspectLang.Pointcut
+import kieker.develop.rl.generator.IGeneratorProvider
 import kieker.develop.rl.ouput.config.AbstractOutletConfiguration
+import kieker.develop.al.generator.java.aspectj.AspectJConfigurationOutletConfiguration
+import org.w3c.dom.Document
+import kieker.develop.al.intermediate.IntermediateModel
+import kieker.develop.al.generator.java.javaee.JavaEEConfigurationOutletConfiguration
+import kieker.develop.al.generator.java.servlet.ServletConfigurationOutletConfiguration
+import kieker.develop.al.generator.java.spring.SpringConfigurationOutletConfiguration
 
 /**
  * Provider of generators for Java based pointcut
@@ -26,10 +31,13 @@ import kieker.develop.rl.ouput.config.AbstractOutletConfiguration
  * 
  * @author Reiner Jung
  */
-class JavaConfigurationGeneratorProvider implements IGeneratorProvider<Pointcut, Object> {
+class JavaConfigurationGeneratorProvider implements IGeneratorProvider<IntermediateModel, Document> {
 	
-	override addOutletConfigurations(Collection<AbstractOutletConfiguration<Pointcut, Object>> configurations) {
-		
+	override addOutletConfigurations(Collection<AbstractOutletConfiguration<IntermediateModel, Document>> configurations) {
+		configurations += new AspectJConfigurationOutletConfiguration
+		configurations += new JavaEEConfigurationOutletConfiguration
+		configurations += new ServletConfigurationOutletConfiguration
+		configurations += new SpringConfigurationOutletConfiguration
 	}
 	
 }

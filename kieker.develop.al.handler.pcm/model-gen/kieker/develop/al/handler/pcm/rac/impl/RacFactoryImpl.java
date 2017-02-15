@@ -58,6 +58,9 @@ public class RacFactoryImpl extends EFactoryImpl implements RacFactory {
 		switch (eClass.getClassifierID()) {
 			case RacPackage.MAPPING_MODEL: return createMappingModel();
 			case RacPackage.PCM_MAPPING: return createPCMMapping();
+			case RacPackage.SOURCE_NODE: return createSourceNode();
+			case RacPackage.MODEL_TARGET_NODE: return createModelTargetNode();
+			case RacPackage.CODE_TARGET_NODE: return createCodeTargetNode();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -81,6 +84,36 @@ public class RacFactoryImpl extends EFactoryImpl implements RacFactory {
 	public PCMMapping createPCMMapping() {
 		PCMMappingImpl pcmMapping = new PCMMappingImpl();
 		return pcmMapping;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SourceNode createSourceNode() {
+		SourceNodeImpl sourceNode = new SourceNodeImpl();
+		return sourceNode;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ModelTargetNode createModelTargetNode() {
+		ModelTargetNodeImpl modelTargetNode = new ModelTargetNodeImpl();
+		return modelTargetNode;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CodeTargetNode createCodeTargetNode() {
+		CodeTargetNodeImpl codeTargetNode = new CodeTargetNodeImpl();
+		return codeTargetNode;
 	}
 
 	/**

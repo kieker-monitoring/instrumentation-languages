@@ -113,13 +113,22 @@ public interface IntermediatePackage extends EPackage {
 	int ABSTRACT_JOINPOINT = 1;
 
 	/**
-	 * The feature id for the '<em><b>Technology</b></em>' attribute.
+	 * The feature id for the '<em><b>Technologies</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_JOINPOINT__TECHNOLOGY = 0;
+	int ABSTRACT_JOINPOINT__TECHNOLOGIES = 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_JOINPOINT__NAME = 1;
 
 	/**
 	 * The number of structural features of the '<em>Abstract Joinpoint</em>' class.
@@ -128,7 +137,7 @@ public interface IntermediatePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_JOINPOINT_FEATURE_COUNT = 1;
+	int ABSTRACT_JOINPOINT_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Abstract Joinpoint</em>' class.
@@ -150,31 +159,31 @@ public interface IntermediatePackage extends EPackage {
 	int CODE_JOINPOINT = 2;
 
 	/**
-	 * The feature id for the '<em><b>Technology</b></em>' attribute.
+	 * The feature id for the '<em><b>Technologies</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CODE_JOINPOINT__TECHNOLOGY = ABSTRACT_JOINPOINT__TECHNOLOGY;
+	int CODE_JOINPOINT__TECHNOLOGIES = ABSTRACT_JOINPOINT__TECHNOLOGIES;
 
 	/**
-	 * The feature id for the '<em><b>Artifact Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CODE_JOINPOINT__ARTIFACT_NAME = ABSTRACT_JOINPOINT_FEATURE_COUNT + 0;
+	int CODE_JOINPOINT__NAME = ABSTRACT_JOINPOINT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Operation Siganture</b></em>' attribute.
+	 * The feature id for the '<em><b>Referenced Java Object</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CODE_JOINPOINT__OPERATION_SIGANTURE = ABSTRACT_JOINPOINT_FEATURE_COUNT + 1;
+	int CODE_JOINPOINT__REFERENCED_JAVA_OBJECT = ABSTRACT_JOINPOINT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Code Joinpoint</em>' class.
@@ -183,7 +192,7 @@ public interface IntermediatePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CODE_JOINPOINT_FEATURE_COUNT = ABSTRACT_JOINPOINT_FEATURE_COUNT + 2;
+	int CODE_JOINPOINT_FEATURE_COUNT = ABSTRACT_JOINPOINT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Code Joinpoint</em>' class.
@@ -205,22 +214,31 @@ public interface IntermediatePackage extends EPackage {
 	int MODEL_JOINPOINT = 3;
 
 	/**
-	 * The feature id for the '<em><b>Technology</b></em>' attribute.
+	 * The feature id for the '<em><b>Technologies</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_JOINPOINT__TECHNOLOGY = ABSTRACT_JOINPOINT__TECHNOLOGY;
+	int MODEL_JOINPOINT__TECHNOLOGIES = ABSTRACT_JOINPOINT__TECHNOLOGIES;
 
 	/**
-	 * The feature id for the '<em><b>Referenced Object</b></em>' reference.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_JOINPOINT__REFERENCED_OBJECT = ABSTRACT_JOINPOINT_FEATURE_COUNT + 0;
+	int MODEL_JOINPOINT__NAME = ABSTRACT_JOINPOINT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Referenced Instance</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_JOINPOINT__REFERENCED_INSTANCE = ABSTRACT_JOINPOINT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Model Joinpoint</em>' class.
@@ -330,15 +348,26 @@ public interface IntermediatePackage extends EPackage {
 	EClass getAbstractJoinpoint();
 
 	/**
-	 * Returns the meta object for the attribute '{@link kieker.develop.al.intermediate.AbstractJoinpoint#getTechnology <em>Technology</em>}'.
+	 * Returns the meta object for the reference list '{@link kieker.develop.al.intermediate.AbstractJoinpoint#getTechnologies <em>Technologies</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Technology</em>'.
-	 * @see kieker.develop.al.intermediate.AbstractJoinpoint#getTechnology()
+	 * @return the meta object for the reference list '<em>Technologies</em>'.
+	 * @see kieker.develop.al.intermediate.AbstractJoinpoint#getTechnologies()
 	 * @see #getAbstractJoinpoint()
 	 * @generated
 	 */
-	EAttribute getAbstractJoinpoint_Technology();
+	EReference getAbstractJoinpoint_Technologies();
+
+	/**
+	 * Returns the meta object for the attribute '{@link kieker.develop.al.intermediate.AbstractJoinpoint#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see kieker.develop.al.intermediate.AbstractJoinpoint#getName()
+	 * @see #getAbstractJoinpoint()
+	 * @generated
+	 */
+	EAttribute getAbstractJoinpoint_Name();
 
 	/**
 	 * Returns the meta object for class '{@link kieker.develop.al.intermediate.CodeJoinpoint <em>Code Joinpoint</em>}'.
@@ -351,26 +380,15 @@ public interface IntermediatePackage extends EPackage {
 	EClass getCodeJoinpoint();
 
 	/**
-	 * Returns the meta object for the attribute '{@link kieker.develop.al.intermediate.CodeJoinpoint#getArtifactName <em>Artifact Name</em>}'.
+	 * Returns the meta object for the attribute '{@link kieker.develop.al.intermediate.CodeJoinpoint#getReferencedJavaObject <em>Referenced Java Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Artifact Name</em>'.
-	 * @see kieker.develop.al.intermediate.CodeJoinpoint#getArtifactName()
+	 * @return the meta object for the attribute '<em>Referenced Java Object</em>'.
+	 * @see kieker.develop.al.intermediate.CodeJoinpoint#getReferencedJavaObject()
 	 * @see #getCodeJoinpoint()
 	 * @generated
 	 */
-	EAttribute getCodeJoinpoint_ArtifactName();
-
-	/**
-	 * Returns the meta object for the attribute '{@link kieker.develop.al.intermediate.CodeJoinpoint#getOperationSiganture <em>Operation Siganture</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Operation Siganture</em>'.
-	 * @see kieker.develop.al.intermediate.CodeJoinpoint#getOperationSiganture()
-	 * @see #getCodeJoinpoint()
-	 * @generated
-	 */
-	EAttribute getCodeJoinpoint_OperationSiganture();
+	EAttribute getCodeJoinpoint_ReferencedJavaObject();
 
 	/**
 	 * Returns the meta object for class '{@link kieker.develop.al.intermediate.ModelJoinpoint <em>Model Joinpoint</em>}'.
@@ -383,15 +401,15 @@ public interface IntermediatePackage extends EPackage {
 	EClass getModelJoinpoint();
 
 	/**
-	 * Returns the meta object for the reference '{@link kieker.develop.al.intermediate.ModelJoinpoint#getReferencedObject <em>Referenced Object</em>}'.
+	 * Returns the meta object for the reference '{@link kieker.develop.al.intermediate.ModelJoinpoint#getReferencedInstance <em>Referenced Instance</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Referenced Object</em>'.
-	 * @see kieker.develop.al.intermediate.ModelJoinpoint#getReferencedObject()
+	 * @return the meta object for the reference '<em>Referenced Instance</em>'.
+	 * @see kieker.develop.al.intermediate.ModelJoinpoint#getReferencedInstance()
 	 * @see #getModelJoinpoint()
 	 * @generated
 	 */
-	EReference getModelJoinpoint_ReferencedObject();
+	EReference getModelJoinpoint_ReferencedInstance();
 
 	/**
 	 * Returns the meta object for class '{@link kieker.develop.al.intermediate.IntermediateModel <em>Model</em>}'.
@@ -485,12 +503,20 @@ public interface IntermediatePackage extends EPackage {
 		EClass ABSTRACT_JOINPOINT = eINSTANCE.getAbstractJoinpoint();
 
 		/**
-		 * The meta object literal for the '<em><b>Technology</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Technologies</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ABSTRACT_JOINPOINT__TECHNOLOGY = eINSTANCE.getAbstractJoinpoint_Technology();
+		EReference ABSTRACT_JOINPOINT__TECHNOLOGIES = eINSTANCE.getAbstractJoinpoint_Technologies();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ABSTRACT_JOINPOINT__NAME = eINSTANCE.getAbstractJoinpoint_Name();
 
 		/**
 		 * The meta object literal for the '{@link kieker.develop.al.intermediate.impl.CodeJoinpointImpl <em>Code Joinpoint</em>}' class.
@@ -503,20 +529,12 @@ public interface IntermediatePackage extends EPackage {
 		EClass CODE_JOINPOINT = eINSTANCE.getCodeJoinpoint();
 
 		/**
-		 * The meta object literal for the '<em><b>Artifact Name</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Referenced Java Object</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CODE_JOINPOINT__ARTIFACT_NAME = eINSTANCE.getCodeJoinpoint_ArtifactName();
-
-		/**
-		 * The meta object literal for the '<em><b>Operation Siganture</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CODE_JOINPOINT__OPERATION_SIGANTURE = eINSTANCE.getCodeJoinpoint_OperationSiganture();
+		EAttribute CODE_JOINPOINT__REFERENCED_JAVA_OBJECT = eINSTANCE.getCodeJoinpoint_ReferencedJavaObject();
 
 		/**
 		 * The meta object literal for the '{@link kieker.develop.al.intermediate.impl.ModelJoinpointImpl <em>Model Joinpoint</em>}' class.
@@ -529,12 +547,12 @@ public interface IntermediatePackage extends EPackage {
 		EClass MODEL_JOINPOINT = eINSTANCE.getModelJoinpoint();
 
 		/**
-		 * The meta object literal for the '<em><b>Referenced Object</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Referenced Instance</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference MODEL_JOINPOINT__REFERENCED_OBJECT = eINSTANCE.getModelJoinpoint_ReferencedObject();
+		EReference MODEL_JOINPOINT__REFERENCED_INSTANCE = eINSTANCE.getModelJoinpoint_ReferencedInstance();
 
 		/**
 		 * The meta object literal for the '{@link kieker.develop.al.intermediate.impl.IntermediateModelImpl <em>Model</em>}' class.

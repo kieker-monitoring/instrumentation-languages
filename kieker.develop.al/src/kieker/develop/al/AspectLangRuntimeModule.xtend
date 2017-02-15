@@ -23,6 +23,7 @@ import kieker.develop.al.modelhandling.ForeignModelGlobalScopeProvider
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 class AspectLangRuntimeModule extends AbstractAspectLangRuntimeModule {
+
 	/**
 	 * {@inheritDoc}<br>
 	 * This extension registers the custom {@link ForeignModelGlobalScopeProvider} that realizes e.g. the

@@ -25,6 +25,10 @@ import org.eclipse.xtext.validation.Check
  * Custom validation rules. 
  *
  * see http://www.eclipse.org/Xtext/documentation.html#validation
+ * 
+ * @author Reiner Jung
+ * 
+ * @since 1.0
  */
 class AspectLangValidator extends AbstractAspectLangValidator {
 	

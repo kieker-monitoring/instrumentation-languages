@@ -1,17 +1,17 @@
 package kieker.develop.al.generator.java.aspectj
 
 import de.cau.cs.se.geco.architecture.framework.IGenerator
+import de.cau.cs.se.geco.architecture.framework.TraceModelProvider
 import java.util.Collection
 import javax.xml.parsers.DocumentBuilderFactory
 import kieker.develop.al.aspectLang.Advice
-import kieker.develop.al.aspectLang.Aspect
-import kieker.develop.al.aspectLang.Pointcut
+import kieker.develop.al.intermediate.AbstractJoinpoint
+import kieker.develop.al.intermediate.IntermediateModel
+import kieker.develop.al.intermediate.ModelJoinpoint
+import org.eclipse.emf.ecore.EObject
 import org.w3c.dom.Document
-import org.w3c.dom.Element
-
-import static extension kieker.develop.al.generator.java.aspectj.NameResolver.*
-import static extension kieker.develop.al.generator.java.aspectj.PointcutQueryModule.*
-
+import org.w3c.dom.Node
+import de.cau.cs.se.geco.architecture.framework.ITraceModelProvider
 
 // TODO process this comment			
 //	/**
@@ -40,13 +40,19 @@ import static extension kieker.develop.al.generator.java.aspectj.PointcutQueryMo
 //	private def String aspectJAbstractAdviceName(UtilizeAdvice advice, int i) '''aspectj«File.separator»«advice.advice.packagePathName»Abstract«advice.advice.name»Advice«i».java'''
 	
 
-class AspectJConfigurationGenerator implements IGenerator<Collection<Aspect>,Document> {
+class AspectJConfigurationGenerator implements IGenerator<IntermediateModel, Document> {
 	
 	val docFactory = DocumentBuilderFactory.newInstance()
 	val docBuilder = docFactory.newDocumentBuilder()
 	var Document doc
 	
-	override generate(Collection<Aspect> input) {
+	private var ITraceModelProvider<EObject, String> traceModelProvider
+	
+	public def setTraceModelProvider(ITraceModelProvider<EObject, String> traceModelProvider) {
+		this.traceModelProvider = traceModelProvider
+	}  
+	
+	override generate(IntermediateModel input) {
 		doc = docBuilder.newDocument()
 		val aspectjElement = doc.createElement("aspectj")
 		doc.appendChild(aspectjElement)
@@ -57,46 +63,53 @@ class AspectJConfigurationGenerator implements IGenerator<Collection<Aspect>,Doc
 				
 		val aspectsElement = doc.createElement("aspects")
 		aspectjElement.appendChild(aspectsElement)
-/*		this must be rewritten for advice instead of utilized advice
-		val utilizationMap = input.createUtilizationMap
 		
-		utilizationMap.forEach[advice, utilizedAdvices |
-			utilizedAdvices.forEach[utilizedAdviced, i |
-				aspectsElement.appendChild(aspectsElement.createAspect(utilizedAdviced.advice, i))
-			]	
-		]
-			
-		utilizationMap.forEach[advice, utilizedAdvices |
-			utilizedAdvices.forEach[utilizedAdviced, i |
-				val concreteAspect = aspectsElement.createConcreteAspect(utilizedAdviced.advice, i)
-				val aspect = utilizedAdviced.eContainer as  Aspect
-				concreteAspect.appendChild(aspect.pointcut.createPointcut)
-				aspectsElement.appendChild(concreteAspect)
-			]
-		]
-	*/			
+		// TODO this could produce multiple identical aspect/advice imports.
+		input.aspects.forEach[it.advices.forEach[aspectsElement.appendChild(it.createAspect)]]
+		
+		/** setup pointcuts/aspect */
+		input.aspects.forEach[aspect | aspect.advices.forEach[aspectsElement.appendChild(it.createConcretAspect(aspect.joinpoints))]]
+		
+
 		return doc
 	}
 	
-	private def createPointcut(Pointcut pointcut) {
+	private def Node createConcretAspect(Advice advice, Collection<AbstractJoinpoint> joinpoints) {
+		val aspect = doc.createElement("concrete-aspect")
+		
+		aspect.setAttribute("name", "Concrete" + advice.name.toFirstUpper) // TODO must be a fully qualified name
+		aspect.setAttribute("extends",  advice.name) // TODO this must be a fully qualified name
+		
+		joinpoints.forEach[joinpoint |
+			aspect.appendChild(joinpoint.createPointcut())
+		]
+		
+		return aspect
+	}
+	
+	private def createPointcut(AbstractJoinpoint joinpoint) {
 		val pNode = doc.createElement("pointcut")
-		pNode.setAttribute("name", pointcut.name)
-		pNode.setAttribute("expression", pointcut.createExpression)
+		pNode.setAttribute("name", joinpoint.name)
+		pNode.setAttribute("expression", joinpoint.createExpression)
 		
 		return pNode
 	}
 	
-	private def createAspect(Element parent, Advice advice, int i) {
-		val aspect = doc.createElement("aspect")
-		aspect.setAttribute("name", advice.getAdviceClassName(i).toString)
-		return aspect
+	private def String createExpression(AbstractJoinpoint joinpoint) {
+		switch(joinpoint) {
+			ModelJoinpoint: traceModelProvider.lookup(joinpoint.referencedInstance).get(0)  // TODO here the tracemodel should be used to map the references
+			default: 'XXX'  // TODO this is not a valid response  
+		}
 	}
 	
-	private def createConcreteAspect(Element parent, Advice advice, int i) {
-		val aspect = doc.createElement("concrete-aspect")
-		aspect.setAttribute("name", advice.getConcreteAdviceClassName(i).toString)
-		aspect.setAttribute("extends",  advice.getAdviceClassName(i).toString)
-										
+	/**
+	 * Create an aspect for an existing probe (advice).
+	 * 
+	 * @param 
+	 */
+	private def createAspect(Advice advice) {
+		val aspect = doc.createElement("aspect")
+		aspect.setAttribute("name", advice.name) // TODO requires fully qualified name
 		return aspect
 	}
 	

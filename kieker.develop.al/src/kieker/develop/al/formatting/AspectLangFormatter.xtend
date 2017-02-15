@@ -27,6 +27,10 @@ import org.eclipse.xtext.formatting.impl.FormattingConfig
  * on how and when to use it 
  * 
  * Also see {@link org.eclipse.xtext.xtext.XtextFormattingTokenSerializer} as an example
+ * 
+ * @author generated
+ * 
+ * @since 1.0
  */
 class AspectLangFormatter extends AbstractDeclarativeFormatter {
 

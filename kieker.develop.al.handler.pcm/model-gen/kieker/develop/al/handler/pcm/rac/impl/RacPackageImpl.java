@@ -2,11 +2,15 @@
  */
 package kieker.develop.al.handler.pcm.rac.impl;
 
+import kieker.develop.al.handler.pcm.rac.AbstractTargetNode;
+import kieker.develop.al.handler.pcm.rac.CodeTargetNode;
 import kieker.develop.al.handler.pcm.rac.MappingModel;
+import kieker.develop.al.handler.pcm.rac.ModelTargetNode;
 import kieker.develop.al.handler.pcm.rac.PCMMapping;
 import kieker.develop.al.handler.pcm.rac.RacFactory;
 import kieker.develop.al.handler.pcm.rac.RacPackage;
 
+import kieker.develop.al.handler.pcm.rac.SourceNode;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -38,6 +42,34 @@ public class RacPackageImpl extends EPackageImpl implements RacPackage {
 	 * @generated
 	 */
 	private EClass pcmMappingEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass sourceNodeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass abstractTargetNodeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass modelTargetNodeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass codeTargetNodeEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -135,8 +167,8 @@ public class RacPackageImpl extends EPackageImpl implements RacPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getPCMMapping_Target() {
-		return (EAttribute)pcmMappingEClass.getEStructuralFeatures().get(0);
+	public EReference getPCMMapping_Source() {
+		return (EReference)pcmMappingEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -144,8 +176,98 @@ public class RacPackageImpl extends EPackageImpl implements RacPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPCMMapping_Source() {
+	public EReference getPCMMapping_Targets() {
 		return (EReference)pcmMappingEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getSourceNode() {
+		return sourceNodeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSourceNode_Reference() {
+		return (EReference)sourceNodeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getSourceNode_ChildNode() {
+		return (EReference)sourceNodeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAbstractTargetNode() {
+		return abstractTargetNodeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getModelTargetNode() {
+		return modelTargetNodeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getModelTargetNode_Reference() {
+		return (EReference)modelTargetNodeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getCodeTargetNode() {
+		return codeTargetNodeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCodeTargetNode_Path() {
+		return (EAttribute)codeTargetNodeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCodeTargetNode_FullyQualifiedClassName() {
+		return (EAttribute)codeTargetNodeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCodeTargetNode_OperationSignature() {
+		return (EAttribute)codeTargetNodeEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -180,8 +302,22 @@ public class RacPackageImpl extends EPackageImpl implements RacPackage {
 		createEReference(mappingModelEClass, MAPPING_MODEL__MAPPINGS);
 
 		pcmMappingEClass = createEClass(PCM_MAPPING);
-		createEAttribute(pcmMappingEClass, PCM_MAPPING__TARGET);
 		createEReference(pcmMappingEClass, PCM_MAPPING__SOURCE);
+		createEReference(pcmMappingEClass, PCM_MAPPING__TARGETS);
+
+		sourceNodeEClass = createEClass(SOURCE_NODE);
+		createEReference(sourceNodeEClass, SOURCE_NODE__CHILD_NODE);
+		createEReference(sourceNodeEClass, SOURCE_NODE__REFERENCE);
+
+		abstractTargetNodeEClass = createEClass(ABSTRACT_TARGET_NODE);
+
+		modelTargetNodeEClass = createEClass(MODEL_TARGET_NODE);
+		createEReference(modelTargetNodeEClass, MODEL_TARGET_NODE__REFERENCE);
+
+		codeTargetNodeEClass = createEClass(CODE_TARGET_NODE);
+		createEAttribute(codeTargetNodeEClass, CODE_TARGET_NODE__PATH);
+		createEAttribute(codeTargetNodeEClass, CODE_TARGET_NODE__FULLY_QUALIFIED_CLASS_NAME);
+		createEAttribute(codeTargetNodeEClass, CODE_TARGET_NODE__OPERATION_SIGNATURE);
 	}
 
 	/**
@@ -215,14 +351,30 @@ public class RacPackageImpl extends EPackageImpl implements RacPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		modelTargetNodeEClass.getESuperTypes().add(this.getAbstractTargetNode());
+		codeTargetNodeEClass.getESuperTypes().add(this.getAbstractTargetNode());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(mappingModelEClass, MappingModel.class, "MappingModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMappingModel_Mappings(), this.getPCMMapping(), null, "mappings", null, 0, -1, MappingModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(pcmMappingEClass, PCMMapping.class, "PCMMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPCMMapping_Target(), ecorePackage.getEString(), "target", null, 1, 1, PCMMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPCMMapping_Source(), theEntityPackage.getNamedElement(), null, "source", null, 1, 1, PCMMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPCMMapping_Source(), this.getSourceNode(), null, "source", null, 0, 1, PCMMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPCMMapping_Targets(), this.getCodeTargetNode(), null, "targets", null, 0, -1, PCMMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(sourceNodeEClass, SourceNode.class, "SourceNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSourceNode_ChildNode(), this.getSourceNode(), null, "childNode", null, 0, 1, SourceNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSourceNode_Reference(), theEntityPackage.getNamedElement(), null, "reference", null, 0, 1, SourceNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(abstractTargetNodeEClass, AbstractTargetNode.class, "AbstractTargetNode", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(modelTargetNodeEClass, ModelTargetNode.class, "ModelTargetNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getModelTargetNode_Reference(), ecorePackage.getEObject(), null, "reference", null, 1, 1, ModelTargetNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(codeTargetNodeEClass, CodeTargetNode.class, "CodeTargetNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCodeTargetNode_Path(), ecorePackage.getEString(), "path", null, 1, 1, CodeTargetNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCodeTargetNode_FullyQualifiedClassName(), ecorePackage.getEString(), "fullyQualifiedClassName", null, 0, 1, CodeTargetNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCodeTargetNode_OperationSignature(), ecorePackage.getEString(), "operationSignature", null, 1, 1, CodeTargetNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

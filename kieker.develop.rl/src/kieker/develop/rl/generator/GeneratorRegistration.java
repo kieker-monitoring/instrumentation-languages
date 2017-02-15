@@ -41,6 +41,7 @@ public final class GeneratorRegistration {
 	public static final String GENERATOR_PROVIDER = "kieker.develop.rl.generator.provider";
 	/** extension point short name. */
 	public static final String SHORT_EXTENSION_NAME = "provider";
+	private static final String PROVIDER_EXTENSION_NAME = "provider";
 
 	/**
 	 * Empty default constructor.
@@ -63,15 +64,18 @@ public final class GeneratorRegistration {
 				.getConfigurationElementsFor(GeneratorRegistration.GENERATOR_PROVIDER);
 
 		for (final IConfigurationElement element : config) {
-			try {
-				final Object ext = element.createExecutableExtension(GeneratorRegistration.SHORT_EXTENSION_NAME);
-				if (ext instanceof IGeneratorProvider) {
-					@SuppressWarnings("unchecked")
-					final IGeneratorProvider<ComplexType, Object> generatorProvider = (IGeneratorProvider<ComplexType, Object>) ext;
-					generatorProvider.addOutletConfigurations(outletConfigurations);
+			if (GeneratorRegistration.PROVIDER_EXTENSION_NAME.equals(element.getName())) {
+				try {
+					final Object ext = element.createExecutableExtension(GeneratorRegistration.SHORT_EXTENSION_NAME);
+					if (ext instanceof IGeneratorProvider) {
+						@SuppressWarnings("unchecked")
+						final IGeneratorProvider<ComplexType, Object> generatorProvider = (IGeneratorProvider<ComplexType, Object>) ext;
+						generatorProvider.addOutletConfigurations(outletConfigurations);
+					}
+				} catch (final CoreException e) {
+					// TODO should be reported as problem
+					System.out.println("RL generator provider not found for " + element.getNamespaceIdentifier());
 				}
-			} catch (final CoreException e) {
-				e.printStackTrace();
 			}
 		}
 		return outletConfigurations;

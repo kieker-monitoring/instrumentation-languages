@@ -2,14 +2,17 @@
  */
 package kieker.develop.al.intermediate.impl;
 
+import java.util.Collection;
 import kieker.develop.al.intermediate.AbstractJoinpoint;
 import kieker.develop.al.intermediate.IntermediatePackage;
 
+import kieker.develop.semantics.annotations.Technology;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,31 +22,40 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link kieker.develop.al.intermediate.impl.AbstractJoinpointImpl#getTechnology <em>Technology</em>}</li>
+ *   <li>{@link kieker.develop.al.intermediate.impl.AbstractJoinpointImpl#getTechnologies <em>Technologies</em>}</li>
+ *   <li>{@link kieker.develop.al.intermediate.impl.AbstractJoinpointImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class AbstractJoinpointImpl extends MinimalEObjectImpl.Container implements AbstractJoinpoint {
 	/**
-	 * The default value of the '{@link #getTechnology() <em>Technology</em>}' attribute.
+	 * The cached value of the '{@link #getTechnologies() <em>Technologies</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTechnology()
+	 * @see #getTechnologies()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TECHNOLOGY_EDEFAULT = null;
+	protected EList<Technology> technologies;
 	/**
-	 * The cached value of the '{@link #getTechnology() <em>Technology</em>}' attribute.
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTechnology()
+	 * @see #getName()
 	 * @generated
 	 * @ordered
 	 */
-	protected String technology = TECHNOLOGY_EDEFAULT;
-
+	protected static final String NAME_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -68,8 +80,11 @@ public class AbstractJoinpointImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getTechnology() {
-		return technology;
+	public EList<Technology> getTechnologies() {
+		if (technologies == null) {
+			technologies = new EObjectResolvingEList<Technology>(Technology.class, this, IntermediatePackage.ABSTRACT_JOINPOINT__TECHNOLOGIES);
+		}
+		return technologies;
 	}
 
 	/**
@@ -77,11 +92,20 @@ public class AbstractJoinpointImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTechnology(String newTechnology) {
-		String oldTechnology = technology;
-		technology = newTechnology;
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IntermediatePackage.ABSTRACT_JOINPOINT__TECHNOLOGY, oldTechnology, technology));
+			eNotify(new ENotificationImpl(this, Notification.SET, IntermediatePackage.ABSTRACT_JOINPOINT__NAME, oldName, name));
 	}
 
 	/**
@@ -92,8 +116,10 @@ public class AbstractJoinpointImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IntermediatePackage.ABSTRACT_JOINPOINT__TECHNOLOGY:
-				return getTechnology();
+			case IntermediatePackage.ABSTRACT_JOINPOINT__TECHNOLOGIES:
+				return getTechnologies();
+			case IntermediatePackage.ABSTRACT_JOINPOINT__NAME:
+				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -103,11 +129,16 @@ public class AbstractJoinpointImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IntermediatePackage.ABSTRACT_JOINPOINT__TECHNOLOGY:
-				setTechnology((String)newValue);
+			case IntermediatePackage.ABSTRACT_JOINPOINT__TECHNOLOGIES:
+				getTechnologies().clear();
+				getTechnologies().addAll((Collection<? extends Technology>)newValue);
+				return;
+			case IntermediatePackage.ABSTRACT_JOINPOINT__NAME:
+				setName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -121,8 +152,11 @@ public class AbstractJoinpointImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case IntermediatePackage.ABSTRACT_JOINPOINT__TECHNOLOGY:
-				setTechnology(TECHNOLOGY_EDEFAULT);
+			case IntermediatePackage.ABSTRACT_JOINPOINT__TECHNOLOGIES:
+				getTechnologies().clear();
+				return;
+			case IntermediatePackage.ABSTRACT_JOINPOINT__NAME:
+				setName(NAME_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -136,8 +170,10 @@ public class AbstractJoinpointImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IntermediatePackage.ABSTRACT_JOINPOINT__TECHNOLOGY:
-				return TECHNOLOGY_EDEFAULT == null ? technology != null : !TECHNOLOGY_EDEFAULT.equals(technology);
+			case IntermediatePackage.ABSTRACT_JOINPOINT__TECHNOLOGIES:
+				return technologies != null && !technologies.isEmpty();
+			case IntermediatePackage.ABSTRACT_JOINPOINT__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -152,8 +188,8 @@ public class AbstractJoinpointImpl extends MinimalEObjectImpl.Container implemen
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (technology: ");
-		result.append(technology);
+		result.append(" (name: ");
+		result.append(name);
 		result.append(')');
 		return result.toString();
 	}

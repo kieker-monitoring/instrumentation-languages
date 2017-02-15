@@ -26,10 +26,8 @@ import javax.xml.transform.dom.DOMSource
 import javax.xml.transform.stream.StreamResult
 import kieker.develop.al.aspectLang.Advice
 import kieker.develop.al.aspectLang.AspectModel
-import kieker.develop.al.intermediate.AbstractJoinpoint
 import kieker.develop.al.intermediate.IntermediateAspect
 import kieker.develop.al.intermediate.IntermediateModel
-import kieker.develop.rl.generator.IConfigureParameters
 import kieker.develop.rl.ouput.config.AbstractOutletConfiguration
 import kieker.develop.rl.preferences.TargetsPreferences
 import org.eclipse.core.runtime.preferences.IEclipsePreferences
@@ -39,14 +37,25 @@ import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGenerator2
 import org.eclipse.xtext.generator.IGeneratorContext
 import org.w3c.dom.Document
+import de.cau.cs.se.geco.architecture.framework.ITraceModelInput
+import org.eclipse.emf.ecore.EObject
+import de.cau.cs.se.geco.architecture.framework.ITraceModelProvider
+import kieker.develop.al.aspectLang.ApplicationModel
+import java.util.ArrayList
+import kieker.develop.al.modelhandling.ModelMapperProviderFactory
+import org.eclipse.emf.ecore.resource.ResourceSet
+import org.eclipse.emf.common.util.URI
+
 
 /**
  * Aspect generator main hook.
  * 
  * @author Reiner Jung
+ * 
+ * @since 1.3
  */
 class AspectLangGenerator implements IGenerator2 {
-						
+							
 	new () {}
 	
 	/**
@@ -69,47 +78,84 @@ class AspectLangGenerator implements IGenerator2 {
 		val author = TargetsPreferences.getAuthorName(preferenceStore)
 
 		/** Build intermediate model. */
-		val intermediateModel = resource.allContents.filter(AspectModel).first?.createIntermediateModel
-							
-		/** Process aspects. */
-		for (AbstractOutletConfiguration<Advice, Object> configuration : GeneratorRegistration.adviceOutletConfigurations) {
-			if (TargetsPreferences.isGeneratorActive(preferenceStore, configuration.name)) {
-				/** Parse header template. */
-				var rawHeader = TargetsPreferences.getHeaderComment(preferenceStore, configuration.name).replace(
-					"THIS-YEAR", Calendar.getInstance().get(Calendar.YEAR).toString)
-				
-				val header = if (!rawHeader.isEmpty) {
-					if (rawHeader.lastIndexOf(System.lineSeparator) + 1 < rawHeader.length)
-						rawHeader + System.lineSeparator
-					else
-						rawHeader
-				} else
-					""
-				
-				configuration.generators.processAdvices(intermediateModel.aspects, configuration, fsa, header, author, version)
-			}
-		}
+		val aspectModel = resource.allContents.filter(AspectModel).first
 		
-		/** Process pointcuts. */
-		for (AbstractOutletConfiguration<AbstractJoinpoint, Object> configuration : GeneratorRegistration.configurationOutletConfigurations) {
-			if (TargetsPreferences.isGeneratorActive(preferenceStore, configuration.name)) {
-				/** Parse header template. */
-				var rawHeader = TargetsPreferences.getHeaderComment(preferenceStore, configuration.name).replace(
-					"THIS-YEAR", Calendar.getInstance().get(Calendar.YEAR).toString)
-				
-				val header = if (!rawHeader.isEmpty) {
-					if (rawHeader.lastIndexOf(System.lineSeparator) + 1 < rawHeader.length)
-						rawHeader + System.lineSeparator
-					else
-						rawHeader
-				} else
-					""
-										
-				configuration.generators.processPointcuts(intermediateModel.aspects, configuration, fsa, header, author, version)
+		if (aspectModel != null) {
+			val intermediateModel = aspectModel.createIntermediateModel
+			val traceModelProviders = aspectModel.sources.collectTraceModels(resource.resourceSet)
+								
+			/** Process advice. */
+			for (AbstractOutletConfiguration<Advice, Object> configuration : GeneratorRegistration.adviceOutletConfigurations) {
+				if (TargetsPreferences.isGeneratorActive(preferenceStore, configuration.name)) {
+					/** Parse header template. */
+					var rawHeader = TargetsPreferences.getHeaderComment(preferenceStore, configuration.name).replace(
+						"THIS-YEAR", Calendar.getInstance().get(Calendar.YEAR).toString)
+					
+					val header = if (!rawHeader.isEmpty) {
+						if (rawHeader.lastIndexOf(System.lineSeparator) + 1 < rawHeader.length)
+							rawHeader + System.lineSeparator
+						else
+							rawHeader
+					} else
+						""
+					
+					configuration.generators.processAdvices(intermediateModel.aspects, configuration, fsa, header, author, version)
+				}
 			}
+			
+			/** Process configuration (including pointcuts). */
+			for (AbstractOutletConfiguration<IntermediateModel, Object> configuration : GeneratorRegistration.configurationOutletConfigurations) {
+				if (TargetsPreferences.isGeneratorActive(preferenceStore, configuration.name)) {
+					/** Parse header template. */
+					var rawHeader = TargetsPreferences.getHeaderComment(preferenceStore, configuration.name).replace(
+						"THIS-YEAR", Calendar.getInstance().get(Calendar.YEAR).toString)
+					
+					val header = if (!rawHeader.isEmpty) {
+						if (rawHeader.lastIndexOf(System.lineSeparator) + 1 < rawHeader.length)
+							rawHeader + System.lineSeparator
+						else
+							rawHeader
+					} else
+						""
+											
+					configuration.generators.processPointcuts(intermediateModel, configuration, traceModelProviders, fsa, header, author, version)
+				}
+			}
+		} else {
+			println("Error no model found. An aspect model must appear in this resource.")
 		}
 	}
 	
+	/**
+	 * Collect all trace models from all model mappings.
+	 * 
+	 * @param applicationModels collection of application model declarations
+	 * @param resourceSet resource set for all files
+	 * 
+	 * @returns a collection of trace models
+	 */
+	private def Collection<ITraceModelProvider<EObject, String>> collectTraceModels(EList<ApplicationModel> applicationModels, ResourceSet resourceSet) {
+		val collectedProviders = new ArrayList<ITraceModelProvider<EObject, String>>
+		applicationModels.forEach[if (it.traceModel != null) collectedProviders.add(it.traceModel.loadTraceModel(it.handler, resourceSet))]
+		
+		return collectedProviders
+	}
+	
+	/**
+	 * Load trace model.
+	 * 
+	 * @param traceModel the string referencing the trace model
+	 * @param handlerId the ih of the model handler to be used in this context
+	 * @param resourceSet the resource set where this resource is placed in 
+	 */
+	private def ITraceModelProvider<EObject, String> loadTraceModel(String traceModel, String handlerId, ResourceSet resourceSet) {
+		val mapper = ModelMapperProviderFactory.createInstance.provider.modelMappers.get(handlerId)
+		return mapper.traceModelProvider(URI::createPlatformResourceURI(traceModel, true), resourceSet)
+	}
+		
+	/**
+	 * Return the first element of a list or null if list is empty.
+	 */
 	private def AspectModel first(Iterator<AspectModel> models) {
 		if (models.hasNext)
 			models.next
@@ -142,11 +188,13 @@ class AspectLangGenerator implements IGenerator2 {
 		IFileSystemAccess2 fsa, String header, String author, String version) {
 				
 		generators.forEach[generator |
-			(generator as IConfigureParameters).configure(header, author, version)
+			println("generator advice " + generator.class)
+			//(generator as IConfigureParameters).configure(header, author, version)
 			aspects.forEach[aspect |
+				println("aspect/advice " + aspect.class + " " + aspect.advices)
 				// TODO aspect based configuration e.g., technology selection 
 				/** Generate advice for a specific technology only if it is used. */
-				if (aspect.joinpoints.exists[configuration.technology.equals(it.technology)]) {
+				if (aspect.joinpoints.exists[it.technologies.exists[it.name.equals(configuration.technology)]]) {
 					aspect.advices.forEach[advice |
 						switch (generator) {
 							IGenerator<Advice, CharSequence>: {
@@ -183,38 +231,41 @@ class AspectLangGenerator implements IGenerator2 {
 	 * @param author author name to be used for the generated code
 	 * @param version version number to be used in the generated code
 	 */
-	private def void processPointcuts(Collection<IGenerator<? extends AbstractJoinpoint, ?>> generators,
-		EList<IntermediateAspect> aspects, AbstractOutletConfiguration<AbstractJoinpoint, Object> configuration,
+	private def void processPointcuts(Collection<IGenerator<? extends IntermediateModel, ?>> generators,
+		IntermediateModel intermediateModel, AbstractOutletConfiguration<IntermediateModel, ? extends Object> configuration,
+		Collection<ITraceModelProvider<EObject, String>> traceModelProviders,
 		IFileSystemAccess2 fsa, String header, String author, String version) {
 		
 		generators.forEach[generator |
-			aspects.forEach[aspect |
+			println("generator pointcut " + generator.class)
+			(generator as ITraceModelInput<EObject, String>).setTraceModelProviders(traceModelProviders)
+			//(generator as IConfigureParameters).configure(header, author, version)
+			val technologyUsed = intermediateModel.aspects.exists[aspect |
+				println("aspect/pointcut " + aspect.class + " " + aspect.joinpoints)
 				// TODO aspect based configuration e.g., technology selection 
-				/** Generate advice for a specific technology only if it is used. */
-				if (aspect.joinpoints.exists[configuration.technology.equals(it.technology)]) {
-					aspect.joinpoints.forEach[joinpoint | 
-						(generator as IConfigureParameters).configure(header, author, version)
-						switch (generator) {
-							IGenerator<AbstractJoinpoint, CharSequence>: {
-								val result = (generator as IGenerator<AbstractJoinpoint, CharSequence>).generate(joinpoint)
-								fsa.generateFile(configuration.outputFilePath(joinpoint), configuration.name, result)
-							}
-							IGenerator<AbstractJoinpoint, Document>: {
-								val document = (generator as IGenerator<AbstractJoinpoint, Document>).generate(joinpoint)
-								val transformerFactory = TransformerFactory.newInstance()
-								val transformer = transformerFactory.newTransformer()
-								transformer.setOutputProperty(OutputKeys.INDENT, "yes")
-								transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "3")
-								
-								val writer = new StringWriter()
-								
-								transformer.transform(new DOMSource(document), new StreamResult(writer))
-								fsa.generateFile(configuration.outputFilePath(joinpoint), configuration.name, writer.toString)
-							}
-						}
-					]
-				}
+				aspect.joinpoints.exists[it.technologies.exists[it.name.equals(configuration.technology)]]
 			]
+			
+			if (technologyUsed) {
+				switch (generator) {
+					IGenerator<IntermediateModel, CharSequence>: {
+						val result = (generator as IGenerator<IntermediateModel, CharSequence>).generate(intermediateModel)
+						fsa.generateFile(configuration.outputFilePath(intermediateModel), configuration.name, result)
+					}
+					IGenerator<IntermediateModel, Document>: {
+						val document = (generator as IGenerator<IntermediateModel, Document>).generate(intermediateModel)
+						val transformerFactory = TransformerFactory.newInstance()
+						val transformer = transformerFactory.newTransformer()
+						transformer.setOutputProperty(OutputKeys.INDENT, "yes")
+						transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "3")
+						
+						val writer = new StringWriter()
+						
+						transformer.transform(new DOMSource(document), new StreamResult(writer))
+						fsa.generateFile(configuration.outputFilePath(intermediateModel), configuration.name, writer.toString)
+					}
+				}
+			}
 		]
 	}
 	

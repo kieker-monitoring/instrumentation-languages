@@ -41,6 +41,8 @@ import kieker.develop.al.mapping.NamedElement;
  * Scope accessing foreign model types.
  *
  * @author Reiner Jung
+ *
+ * @since 1.0
  */
 public class ForeignModelTypeScope extends AbstractScope {
 

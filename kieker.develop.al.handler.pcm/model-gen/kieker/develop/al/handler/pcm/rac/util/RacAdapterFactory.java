@@ -76,6 +76,22 @@ public class RacAdapterFactory extends AdapterFactoryImpl {
 				return createPCMMappingAdapter();
 			}
 			@Override
+			public Adapter caseSourceNode(SourceNode object) {
+				return createSourceNodeAdapter();
+			}
+			@Override
+			public Adapter caseAbstractTargetNode(AbstractTargetNode object) {
+				return createAbstractTargetNodeAdapter();
+			}
+			@Override
+			public Adapter caseModelTargetNode(ModelTargetNode object) {
+				return createModelTargetNodeAdapter();
+			}
+			@Override
+			public Adapter caseCodeTargetNode(CodeTargetNode object) {
+				return createCodeTargetNodeAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -120,6 +136,62 @@ public class RacAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPCMMappingAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link kieker.develop.al.handler.pcm.rac.SourceNode <em>Source Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see kieker.develop.al.handler.pcm.rac.SourceNode
+	 * @generated
+	 */
+	public Adapter createSourceNodeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link kieker.develop.al.handler.pcm.rac.AbstractTargetNode <em>Abstract Target Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see kieker.develop.al.handler.pcm.rac.AbstractTargetNode
+	 * @generated
+	 */
+	public Adapter createAbstractTargetNodeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link kieker.develop.al.handler.pcm.rac.ModelTargetNode <em>Model Target Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see kieker.develop.al.handler.pcm.rac.ModelTargetNode
+	 * @generated
+	 */
+	public Adapter createModelTargetNodeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link kieker.develop.al.handler.pcm.rac.CodeTargetNode <em>Code Target Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see kieker.develop.al.handler.pcm.rac.CodeTargetNode
+	 * @generated
+	 */
+	public Adapter createCodeTargetNodeAdapter() {
 		return null;
 	}
 

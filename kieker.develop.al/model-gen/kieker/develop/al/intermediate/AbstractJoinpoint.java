@@ -2,6 +2,8 @@
  */
 package kieker.develop.al.intermediate;
 
+import kieker.develop.semantics.annotations.Technology;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -13,7 +15,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link kieker.develop.al.intermediate.AbstractJoinpoint#getTechnology <em>Technology</em>}</li>
+ *   <li>{@link kieker.develop.al.intermediate.AbstractJoinpoint#getTechnologies <em>Technologies</em>}</li>
+ *   <li>{@link kieker.develop.al.intermediate.AbstractJoinpoint#getName <em>Name</em>}</li>
  * </ul>
  *
  * @see kieker.develop.al.intermediate.IntermediatePackage#getAbstractJoinpoint()
@@ -23,28 +26,44 @@ import org.eclipse.emf.ecore.EObject;
 public interface AbstractJoinpoint extends EObject {
 
 	/**
-	 * Returns the value of the '<em><b>Technology</b></em>' attribute.
+	 * Returns the value of the '<em><b>Technologies</b></em>' reference list.
+	 * The list contents are of type {@link kieker.develop.semantics.annotations.Technology}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Technology</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Technologies</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Technology</em>' attribute.
-	 * @see #setTechnology(String)
-	 * @see kieker.develop.al.intermediate.IntermediatePackage#getAbstractJoinpoint_Technology()
+	 * @return the value of the '<em>Technologies</em>' reference list.
+	 * @see kieker.develop.al.intermediate.IntermediatePackage#getAbstractJoinpoint_Technologies()
 	 * @model
 	 * @generated
 	 */
-	String getTechnology();
+	EList<Technology> getTechnologies();
 
 	/**
-	 * Sets the value of the '{@link kieker.develop.al.intermediate.AbstractJoinpoint#getTechnology <em>Technology</em>}' attribute.
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Technology</em>' attribute.
-	 * @see #getTechnology()
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see #setName(String)
+	 * @see kieker.develop.al.intermediate.IntermediatePackage#getAbstractJoinpoint_Name()
+	 * @model
 	 * @generated
 	 */
-	void setTechnology(String value);
+	String getName();
+
+	/**
+	 * Sets the value of the '{@link kieker.develop.al.intermediate.AbstractJoinpoint#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #getName()
+	 * @generated
+	 */
+	void setName(String value);
 } // AbstractJoinpoint

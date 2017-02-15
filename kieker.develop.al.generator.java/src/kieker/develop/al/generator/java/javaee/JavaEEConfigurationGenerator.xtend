@@ -1,7 +1,8 @@
 package kieker.develop.al.generator.java.javaee
 
 import de.cau.cs.se.geco.architecture.framework.IGenerator
-import kieker.develop.al.aspectLang.Pointcut
+import kieker.develop.al.intermediate.IntermediateModel
+import org.w3c.dom.Document
 
 // TODO process code snippet
 
@@ -23,10 +24,10 @@ import kieker.develop.al.aspectLang.Pointcut
 //	
 //	private def String aspectJ2EEAdviceName(Advice advice) '''j2ee«File.separator»«advice.packagePathName»«advice.name»Interceptor.java'''
 
-class JavaEEConfigurationGenerator implements IGenerator<Pointcut,CharSequence> {
+class JavaEEConfigurationGenerator implements IGenerator<IntermediateModel, Document> {
 	
-	override generate(Pointcut input) {
-		'''MISSING'''
+	override generate(IntermediateModel input) {
+		null
 	}
 	
 }

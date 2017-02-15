@@ -17,50 +17,30 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link kieker.develop.al.intermediate.impl.CodeJoinpointImpl#getArtifactName <em>Artifact Name</em>}</li>
- *   <li>{@link kieker.develop.al.intermediate.impl.CodeJoinpointImpl#getOperationSiganture <em>Operation Siganture</em>}</li>
+ *   <li>{@link kieker.develop.al.intermediate.impl.CodeJoinpointImpl#getReferencedJavaObject <em>Referenced Java Object</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class CodeJoinpointImpl extends AbstractJoinpointImpl implements CodeJoinpoint {
 	/**
-	 * The default value of the '{@link #getArtifactName() <em>Artifact Name</em>}' attribute.
+	 * The default value of the '{@link #getReferencedJavaObject() <em>Referenced Java Object</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getArtifactName()
+	 * @see #getReferencedJavaObject()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String ARTIFACT_NAME_EDEFAULT = null;
+	protected static final Object REFERENCED_JAVA_OBJECT_EDEFAULT = null;
 	/**
-	 * The cached value of the '{@link #getArtifactName() <em>Artifact Name</em>}' attribute.
+	 * The cached value of the '{@link #getReferencedJavaObject() <em>Referenced Java Object</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getArtifactName()
+	 * @see #getReferencedJavaObject()
 	 * @generated
 	 * @ordered
 	 */
-	protected String artifactName = ARTIFACT_NAME_EDEFAULT;
-	/**
-	 * The default value of the '{@link #getOperationSiganture() <em>Operation Siganture</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOperationSiganture()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String OPERATION_SIGANTURE_EDEFAULT = null;
-	/**
-	 * The cached value of the '{@link #getOperationSiganture() <em>Operation Siganture</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOperationSiganture()
-	 * @generated
-	 * @ordered
-	 */
-	protected String operationSiganture = OPERATION_SIGANTURE_EDEFAULT;
-
+	protected Object referencedJavaObject = REFERENCED_JAVA_OBJECT_EDEFAULT;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -85,8 +65,8 @@ public class CodeJoinpointImpl extends AbstractJoinpointImpl implements CodeJoin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getArtifactName() {
-		return artifactName;
+	public Object getReferencedJavaObject() {
+		return referencedJavaObject;
 	}
 
 	/**
@@ -94,32 +74,11 @@ public class CodeJoinpointImpl extends AbstractJoinpointImpl implements CodeJoin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setArtifactName(String newArtifactName) {
-		String oldArtifactName = artifactName;
-		artifactName = newArtifactName;
+	public void setReferencedJavaObject(Object newReferencedJavaObject) {
+		Object oldReferencedJavaObject = referencedJavaObject;
+		referencedJavaObject = newReferencedJavaObject;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IntermediatePackage.CODE_JOINPOINT__ARTIFACT_NAME, oldArtifactName, artifactName));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getOperationSiganture() {
-		return operationSiganture;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setOperationSiganture(String newOperationSiganture) {
-		String oldOperationSiganture = operationSiganture;
-		operationSiganture = newOperationSiganture;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IntermediatePackage.CODE_JOINPOINT__OPERATION_SIGANTURE, oldOperationSiganture, operationSiganture));
+			eNotify(new ENotificationImpl(this, Notification.SET, IntermediatePackage.CODE_JOINPOINT__REFERENCED_JAVA_OBJECT, oldReferencedJavaObject, referencedJavaObject));
 	}
 
 	/**
@@ -130,10 +89,8 @@ public class CodeJoinpointImpl extends AbstractJoinpointImpl implements CodeJoin
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IntermediatePackage.CODE_JOINPOINT__ARTIFACT_NAME:
-				return getArtifactName();
-			case IntermediatePackage.CODE_JOINPOINT__OPERATION_SIGANTURE:
-				return getOperationSiganture();
+			case IntermediatePackage.CODE_JOINPOINT__REFERENCED_JAVA_OBJECT:
+				return getReferencedJavaObject();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -146,11 +103,8 @@ public class CodeJoinpointImpl extends AbstractJoinpointImpl implements CodeJoin
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IntermediatePackage.CODE_JOINPOINT__ARTIFACT_NAME:
-				setArtifactName((String)newValue);
-				return;
-			case IntermediatePackage.CODE_JOINPOINT__OPERATION_SIGANTURE:
-				setOperationSiganture((String)newValue);
+			case IntermediatePackage.CODE_JOINPOINT__REFERENCED_JAVA_OBJECT:
+				setReferencedJavaObject(newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -164,11 +118,8 @@ public class CodeJoinpointImpl extends AbstractJoinpointImpl implements CodeJoin
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case IntermediatePackage.CODE_JOINPOINT__ARTIFACT_NAME:
-				setArtifactName(ARTIFACT_NAME_EDEFAULT);
-				return;
-			case IntermediatePackage.CODE_JOINPOINT__OPERATION_SIGANTURE:
-				setOperationSiganture(OPERATION_SIGANTURE_EDEFAULT);
+			case IntermediatePackage.CODE_JOINPOINT__REFERENCED_JAVA_OBJECT:
+				setReferencedJavaObject(REFERENCED_JAVA_OBJECT_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -182,10 +133,8 @@ public class CodeJoinpointImpl extends AbstractJoinpointImpl implements CodeJoin
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IntermediatePackage.CODE_JOINPOINT__ARTIFACT_NAME:
-				return ARTIFACT_NAME_EDEFAULT == null ? artifactName != null : !ARTIFACT_NAME_EDEFAULT.equals(artifactName);
-			case IntermediatePackage.CODE_JOINPOINT__OPERATION_SIGANTURE:
-				return OPERATION_SIGANTURE_EDEFAULT == null ? operationSiganture != null : !OPERATION_SIGANTURE_EDEFAULT.equals(operationSiganture);
+			case IntermediatePackage.CODE_JOINPOINT__REFERENCED_JAVA_OBJECT:
+				return REFERENCED_JAVA_OBJECT_EDEFAULT == null ? referencedJavaObject != null : !REFERENCED_JAVA_OBJECT_EDEFAULT.equals(referencedJavaObject);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -200,10 +149,8 @@ public class CodeJoinpointImpl extends AbstractJoinpointImpl implements CodeJoin
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (artifactName: ");
-		result.append(artifactName);
-		result.append(", operationSiganture: ");
-		result.append(operationSiganture);
+		result.append(" (referencedJavaObject: ");
+		result.append(referencedJavaObject);
 		result.append(')');
 		return result.toString();
 	}

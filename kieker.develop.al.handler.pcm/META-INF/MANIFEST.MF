@@ -9,6 +9,7 @@ Bundle-Localization: plugin
 Bundle-Activator: kieker.develop.al.handler.pcm.Activator
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
+ de.uka.ipd.sdq.identifier;visibility:=reexport,
  kieker.develop.al;bundle-version="1.2.0",
  org.palladiosimulator.pcm;bundle-version="4.0.0";visibility:=reexport,
  de.uka.ipd.sdq.probfunction;visibility:=reexport,

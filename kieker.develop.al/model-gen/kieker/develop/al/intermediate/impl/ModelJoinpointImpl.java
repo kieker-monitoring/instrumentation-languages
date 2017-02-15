@@ -19,22 +19,21 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link kieker.develop.al.intermediate.impl.ModelJoinpointImpl#getReferencedObject <em>Referenced Object</em>}</li>
+ *   <li>{@link kieker.develop.al.intermediate.impl.ModelJoinpointImpl#getReferencedInstance <em>Referenced Instance</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class ModelJoinpointImpl extends AbstractJoinpointImpl implements ModelJoinpoint {
 	/**
-	 * The cached value of the '{@link #getReferencedObject() <em>Referenced Object</em>}' reference.
+	 * The cached value of the '{@link #getReferencedInstance() <em>Referenced Instance</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getReferencedObject()
+	 * @see #getReferencedInstance()
 	 * @generated
 	 * @ordered
 	 */
-	protected EObject referencedObject;
-
+	protected EObject referencedInstance;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -59,16 +58,16 @@ public class ModelJoinpointImpl extends AbstractJoinpointImpl implements ModelJo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EObject getReferencedObject() {
-		if (referencedObject != null && referencedObject.eIsProxy()) {
-			InternalEObject oldReferencedObject = (InternalEObject)referencedObject;
-			referencedObject = eResolveProxy(oldReferencedObject);
-			if (referencedObject != oldReferencedObject) {
+	public EObject getReferencedInstance() {
+		if (referencedInstance != null && referencedInstance.eIsProxy()) {
+			InternalEObject oldReferencedInstance = (InternalEObject)referencedInstance;
+			referencedInstance = eResolveProxy(oldReferencedInstance);
+			if (referencedInstance != oldReferencedInstance) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, IntermediatePackage.MODEL_JOINPOINT__REFERENCED_OBJECT, oldReferencedObject, referencedObject));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, IntermediatePackage.MODEL_JOINPOINT__REFERENCED_INSTANCE, oldReferencedInstance, referencedInstance));
 			}
 		}
-		return referencedObject;
+		return referencedInstance;
 	}
 
 	/**
@@ -76,8 +75,8 @@ public class ModelJoinpointImpl extends AbstractJoinpointImpl implements ModelJo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EObject basicGetReferencedObject() {
-		return referencedObject;
+	public EObject basicGetReferencedInstance() {
+		return referencedInstance;
 	}
 
 	/**
@@ -85,11 +84,11 @@ public class ModelJoinpointImpl extends AbstractJoinpointImpl implements ModelJo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setReferencedObject(EObject newReferencedObject) {
-		EObject oldReferencedObject = referencedObject;
-		referencedObject = newReferencedObject;
+	public void setReferencedInstance(EObject newReferencedInstance) {
+		EObject oldReferencedInstance = referencedInstance;
+		referencedInstance = newReferencedInstance;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IntermediatePackage.MODEL_JOINPOINT__REFERENCED_OBJECT, oldReferencedObject, referencedObject));
+			eNotify(new ENotificationImpl(this, Notification.SET, IntermediatePackage.MODEL_JOINPOINT__REFERENCED_INSTANCE, oldReferencedInstance, referencedInstance));
 	}
 
 	/**
@@ -100,9 +99,9 @@ public class ModelJoinpointImpl extends AbstractJoinpointImpl implements ModelJo
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IntermediatePackage.MODEL_JOINPOINT__REFERENCED_OBJECT:
-				if (resolve) return getReferencedObject();
-				return basicGetReferencedObject();
+			case IntermediatePackage.MODEL_JOINPOINT__REFERENCED_INSTANCE:
+				if (resolve) return getReferencedInstance();
+				return basicGetReferencedInstance();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -115,8 +114,8 @@ public class ModelJoinpointImpl extends AbstractJoinpointImpl implements ModelJo
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IntermediatePackage.MODEL_JOINPOINT__REFERENCED_OBJECT:
-				setReferencedObject((EObject)newValue);
+			case IntermediatePackage.MODEL_JOINPOINT__REFERENCED_INSTANCE:
+				setReferencedInstance((EObject)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -130,8 +129,8 @@ public class ModelJoinpointImpl extends AbstractJoinpointImpl implements ModelJo
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case IntermediatePackage.MODEL_JOINPOINT__REFERENCED_OBJECT:
-				setReferencedObject((EObject)null);
+			case IntermediatePackage.MODEL_JOINPOINT__REFERENCED_INSTANCE:
+				setReferencedInstance((EObject)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -145,8 +144,8 @@ public class ModelJoinpointImpl extends AbstractJoinpointImpl implements ModelJo
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IntermediatePackage.MODEL_JOINPOINT__REFERENCED_OBJECT:
-				return referencedObject != null;
+			case IntermediatePackage.MODEL_JOINPOINT__REFERENCED_INSTANCE:
+				return referencedInstance != null;
 		}
 		return super.eIsSet(featureID);
 	}

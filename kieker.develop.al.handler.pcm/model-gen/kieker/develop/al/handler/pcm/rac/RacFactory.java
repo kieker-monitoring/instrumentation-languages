@@ -40,6 +40,33 @@ public interface RacFactory extends EFactory {
 	PCMMapping createPCMMapping();
 
 	/**
+	 * Returns a new object of class '<em>Source Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Source Node</em>'.
+	 * @generated
+	 */
+	SourceNode createSourceNode();
+
+	/**
+	 * Returns a new object of class '<em>Model Target Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Model Target Node</em>'.
+	 * @generated
+	 */
+	ModelTargetNode createModelTargetNode();
+
+	/**
+	 * Returns a new object of class '<em>Code Target Node</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Code Target Node</em>'.
+	 * @generated
+	 */
+	CodeTargetNode createCodeTargetNode();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

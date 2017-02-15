@@ -12,6 +12,7 @@ import kieker.develop.al.intermediate.IntermediateModel;
 import kieker.develop.al.intermediate.IntermediatePackage;
 import kieker.develop.al.intermediate.ModelJoinpoint;
 
+import kieker.develop.semantics.annotations.AnnotationsPackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -167,8 +168,17 @@ public class IntermediatePackageImpl extends EPackageImpl implements Intermediat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAbstractJoinpoint_Technology() {
-		return (EAttribute)abstractJoinpointEClass.getEStructuralFeatures().get(0);
+	public EReference getAbstractJoinpoint_Technologies() {
+		return (EReference)abstractJoinpointEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAbstractJoinpoint_Name() {
+		return (EAttribute)abstractJoinpointEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -185,17 +195,8 @@ public class IntermediatePackageImpl extends EPackageImpl implements Intermediat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCodeJoinpoint_ArtifactName() {
+	public EAttribute getCodeJoinpoint_ReferencedJavaObject() {
 		return (EAttribute)codeJoinpointEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCodeJoinpoint_OperationSiganture() {
-		return (EAttribute)codeJoinpointEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -212,7 +213,7 @@ public class IntermediatePackageImpl extends EPackageImpl implements Intermediat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getModelJoinpoint_ReferencedObject() {
+	public EReference getModelJoinpoint_ReferencedInstance() {
 		return (EReference)modelJoinpointEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -276,14 +277,14 @@ public class IntermediatePackageImpl extends EPackageImpl implements Intermediat
 		createEReference(intermediateAspectEClass, INTERMEDIATE_ASPECT__ADVICES);
 
 		abstractJoinpointEClass = createEClass(ABSTRACT_JOINPOINT);
-		createEAttribute(abstractJoinpointEClass, ABSTRACT_JOINPOINT__TECHNOLOGY);
+		createEReference(abstractJoinpointEClass, ABSTRACT_JOINPOINT__TECHNOLOGIES);
+		createEAttribute(abstractJoinpointEClass, ABSTRACT_JOINPOINT__NAME);
 
 		codeJoinpointEClass = createEClass(CODE_JOINPOINT);
-		createEAttribute(codeJoinpointEClass, CODE_JOINPOINT__ARTIFACT_NAME);
-		createEAttribute(codeJoinpointEClass, CODE_JOINPOINT__OPERATION_SIGANTURE);
+		createEAttribute(codeJoinpointEClass, CODE_JOINPOINT__REFERENCED_JAVA_OBJECT);
 
 		modelJoinpointEClass = createEClass(MODEL_JOINPOINT);
-		createEReference(modelJoinpointEClass, MODEL_JOINPOINT__REFERENCED_OBJECT);
+		createEReference(modelJoinpointEClass, MODEL_JOINPOINT__REFERENCED_INSTANCE);
 
 		intermediateModelEClass = createEClass(INTERMEDIATE_MODEL);
 		createEAttribute(intermediateModelEClass, INTERMEDIATE_MODEL__NAME);
@@ -315,6 +316,7 @@ public class IntermediatePackageImpl extends EPackageImpl implements Intermediat
 
 		// Obtain other dependent packages
 		AspectLangPackage theAspectLangPackage = (AspectLangPackage)EPackage.Registry.INSTANCE.getEPackage(AspectLangPackage.eNS_URI);
+		AnnotationsPackage theAnnotationsPackage = (AnnotationsPackage)EPackage.Registry.INSTANCE.getEPackage(AnnotationsPackage.eNS_URI);
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 
 		// Create type parameters
@@ -331,14 +333,14 @@ public class IntermediatePackageImpl extends EPackageImpl implements Intermediat
 		initEReference(getIntermediateAspect_Advices(), theAspectLangPackage.getAdvice(), null, "advices", null, 0, -1, IntermediateAspect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractJoinpointEClass, AbstractJoinpoint.class, "AbstractJoinpoint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAbstractJoinpoint_Technology(), ecorePackage.getEString(), "technology", null, 0, 1, AbstractJoinpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAbstractJoinpoint_Technologies(), theAnnotationsPackage.getTechnology(), null, "technologies", null, 0, -1, AbstractJoinpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAbstractJoinpoint_Name(), ecorePackage.getEString(), "name", null, 0, 1, AbstractJoinpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(codeJoinpointEClass, CodeJoinpoint.class, "CodeJoinpoint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCodeJoinpoint_ArtifactName(), ecorePackage.getEString(), "artifactName", null, 1, 1, CodeJoinpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCodeJoinpoint_OperationSiganture(), ecorePackage.getEString(), "operationSiganture", null, 0, 1, CodeJoinpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCodeJoinpoint_ReferencedJavaObject(), ecorePackage.getEJavaObject(), "referencedJavaObject", null, 0, 1, CodeJoinpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modelJoinpointEClass, ModelJoinpoint.class, "ModelJoinpoint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getModelJoinpoint_ReferencedObject(), theEcorePackage.getEObject(), null, "referencedObject", null, 0, 1, ModelJoinpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModelJoinpoint_ReferencedInstance(), theEcorePackage.getEObject(), null, "referencedInstance", null, 0, 1, ModelJoinpoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(intermediateModelEClass, IntermediateModel.class, "IntermediateModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getIntermediateModel_Name(), ecorePackage.getEString(), "name", null, 1, 1, IntermediateModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

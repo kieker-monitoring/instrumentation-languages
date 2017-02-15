@@ -19,14 +19,17 @@ import org.eclipse.core.runtime.Platform
 import java.util.HashMap
 import java.util.Map
 import org.eclipse.core.runtime.CoreException
+import org.eclipse.emf.ecore.EObject
 
 /**
  * 
  * @author Reiner Jung
+ * 
+ * @since 1.3
  */
 class ModelMapperProvider {
 	
-	private val Map<String,IModelMapper> mappers = new HashMap<String, IModelMapper>()
+	private val Map<String,IModelMapper<EObject, String>> mappers = new HashMap<String, IModelMapper<EObject, String>>()
 		
 	new () {
 		/** Register all mapping modules. */
@@ -35,8 +38,8 @@ class ModelMapperProvider {
 	  	try {
 			config.forEach[element |
 	  			val ext = element.createExecutableExtension(IModelMapper.MAPPING_HANDLER)
-	  			if (ext instanceof IModelMapper) {
-	  				this.mappers.put(ext.name, ext)
+	  			if (ext instanceof IModelMapper<?,?>) {
+	  				this.mappers.put(ext.name, ext as IModelMapper<EObject, String>)
 	  			}
 	  		]
 	  	} catch (CoreException ex) {

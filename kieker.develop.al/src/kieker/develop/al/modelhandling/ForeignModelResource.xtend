@@ -31,11 +31,13 @@ import org.eclipse.emf.ecore.resource.impl.ResourceImpl
  * Simulates a real resource by mapping the a PCM model to our hierarchy model.
  * 
  * @author Reiner Jung - initial contribution
+ * 
+ * @since 1.0
  */
 public class ForeignModelResource extends ResourceImpl {
 	
-	ModelMapperProviderFactory modelMapperProviderFactory = new ModelMapperProviderFactory
-
+	ModelMapperProviderFactory modelMapperProviderFactory = ModelMapperProviderFactory.createInstance
+	
 	/** Model of the application to be instrumented. */
 	private final ApplicationModel applicationModel
 	/** Resulting hierarchy model. */

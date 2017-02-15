@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link kieker.develop.al.intermediate.ModelJoinpoint#getReferencedObject <em>Referenced Object</em>}</li>
+ *   <li>{@link kieker.develop.al.intermediate.ModelJoinpoint#getReferencedInstance <em>Referenced Instance</em>}</li>
  * </ul>
  *
  * @see kieker.develop.al.intermediate.IntermediatePackage#getModelJoinpoint()
@@ -24,28 +24,28 @@ import org.eclipse.emf.ecore.EObject;
 public interface ModelJoinpoint extends AbstractJoinpoint {
 
 	/**
-	 * Returns the value of the '<em><b>Referenced Object</b></em>' reference.
+	 * Returns the value of the '<em><b>Referenced Instance</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Referenced Object</em>' reference isn't clear,
+	 * If the meaning of the '<em>Referenced Instance</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Referenced Object</em>' reference.
-	 * @see #setReferencedObject(EObject)
-	 * @see kieker.develop.al.intermediate.IntermediatePackage#getModelJoinpoint_ReferencedObject()
+	 * @return the value of the '<em>Referenced Instance</em>' reference.
+	 * @see #setReferencedInstance(EObject)
+	 * @see kieker.develop.al.intermediate.IntermediatePackage#getModelJoinpoint_ReferencedInstance()
 	 * @model
 	 * @generated
 	 */
-	EObject getReferencedObject();
+	EObject getReferencedInstance();
 
 	/**
-	 * Sets the value of the '{@link kieker.develop.al.intermediate.ModelJoinpoint#getReferencedObject <em>Referenced Object</em>}' reference.
+	 * Sets the value of the '{@link kieker.develop.al.intermediate.ModelJoinpoint#getReferencedInstance <em>Referenced Instance</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Referenced Object</em>' reference.
-	 * @see #getReferencedObject()
+	 * @param value the new value of the '<em>Referenced Instance</em>' reference.
+	 * @see #getReferencedInstance()
 	 * @generated
 	 */
-	void setReferencedObject(EObject value);
+	void setReferencedInstance(EObject value);
 } // ModelJoinpoint

@@ -12,8 +12,7 @@ package kieker.develop.al.intermediate;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link kieker.develop.al.intermediate.CodeJoinpoint#getArtifactName <em>Artifact Name</em>}</li>
- *   <li>{@link kieker.develop.al.intermediate.CodeJoinpoint#getOperationSiganture <em>Operation Siganture</em>}</li>
+ *   <li>{@link kieker.develop.al.intermediate.CodeJoinpoint#getReferencedJavaObject <em>Referenced Java Object</em>}</li>
  * </ul>
  *
  * @see kieker.develop.al.intermediate.IntermediatePackage#getCodeJoinpoint()
@@ -23,54 +22,28 @@ package kieker.develop.al.intermediate;
 public interface CodeJoinpoint extends AbstractJoinpoint {
 
 	/**
-	 * Returns the value of the '<em><b>Artifact Name</b></em>' attribute.
+	 * Returns the value of the '<em><b>Referenced Java Object</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Artifact Name</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Referenced Java Object</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Artifact Name</em>' attribute.
-	 * @see #setArtifactName(String)
-	 * @see kieker.develop.al.intermediate.IntermediatePackage#getCodeJoinpoint_ArtifactName()
-	 * @model required="true"
-	 * @generated
-	 */
-	String getArtifactName();
-
-	/**
-	 * Sets the value of the '{@link kieker.develop.al.intermediate.CodeJoinpoint#getArtifactName <em>Artifact Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Artifact Name</em>' attribute.
-	 * @see #getArtifactName()
-	 * @generated
-	 */
-	void setArtifactName(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Operation Siganture</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Operation Siganture</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Operation Siganture</em>' attribute.
-	 * @see #setOperationSiganture(String)
-	 * @see kieker.develop.al.intermediate.IntermediatePackage#getCodeJoinpoint_OperationSiganture()
+	 * @return the value of the '<em>Referenced Java Object</em>' attribute.
+	 * @see #setReferencedJavaObject(Object)
+	 * @see kieker.develop.al.intermediate.IntermediatePackage#getCodeJoinpoint_ReferencedJavaObject()
 	 * @model
 	 * @generated
 	 */
-	String getOperationSiganture();
+	Object getReferencedJavaObject();
 
 	/**
-	 * Sets the value of the '{@link kieker.develop.al.intermediate.CodeJoinpoint#getOperationSiganture <em>Operation Siganture</em>}' attribute.
+	 * Sets the value of the '{@link kieker.develop.al.intermediate.CodeJoinpoint#getReferencedJavaObject <em>Referenced Java Object</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Operation Siganture</em>' attribute.
-	 * @see #getOperationSiganture()
+	 * @param value the new value of the '<em>Referenced Java Object</em>' attribute.
+	 * @see #getReferencedJavaObject()
 	 * @generated
 	 */
-	void setOperationSiganture(String value);
+	void setReferencedJavaObject(Object value);
 } // CodeJoinpoint

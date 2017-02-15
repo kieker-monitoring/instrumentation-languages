@@ -82,13 +82,16 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 			
 				«if (!type.abstract) type.createEventTypeConstants(allDataProperties)»
 				
-				/** user-defined constants */
+				/** user-defined constants. */
 				«type.createUserConstants»
 				
-				/** default constants */
+				/** default constants. */
 				«allDeclarationProperties.createDefaultConstants»
 				
-				/** property declarations */
+				/** property name array. */
+				«allDataProperties.createPropertyNameArray»
+				
+				/** property declarations. */
 				«allDeclarationProperties.createPropertyDeclarations»
 				
 				«type.createParameterizedConstructor(allDataProperties, allDeclarationProperties)»
@@ -111,6 +114,17 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	}
 	
 	/**
+	 * Create array with all property names.
+	 * 
+	 * @param properties collection of all properties accessible in this type
+	 */
+	private def createPropertyNameArray(List<Property> properties) '''
+		public static final String[] PROPERTY_NAMES = {
+			«properties.map['''"«it.name»",'''].join('\n')»
+		};
+	'''
+	
+	/**
 	 * Create SIZE and TYPES constants for the EventType API.
 	 * 
 	 * @param type the EventType
@@ -125,7 +139,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 		;
 		
 		public static final Class<?>[] TYPES = {
-			«properties.map[property | property.createPropertyTypeArrayEntry(type)].join»
+			«properties.map[it.createPropertyTypeArrayEntry(type)].join»
 		};
 	'''
 	

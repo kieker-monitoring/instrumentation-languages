@@ -41,7 +41,10 @@ import kieker.develop.al.aspectLang.SubQuery
  * 
  * see : http://www.eclipse.org/Xtext/documentation.html#scoping
  * on how and when to use it 
- *
+ * 
+ * @author Reiner Jung
+ * 
+ * @since 1.0
  */
 class AspectLangScopeProvider extends AbstractDeclarativeScopeProvider {
 	
