@@ -24,7 +24,7 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.xtext.xbase.lib,
  de.cau.cs.se.geco.architecture.framework;bundle-version="1.0.0",
  org.eclipse.xtend.lib,
- kieker.develop.semantics;bundle-version="1.2.0",
+ kieker.develop.semantics,
  org.eclipse.equinox.registry,
  com.google.guava,
  org.eclipse.xtend.lib.macro
