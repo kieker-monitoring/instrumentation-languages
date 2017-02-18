@@ -77,6 +77,14 @@ class EventTypeAPITemplates {
 		public Class<?>[] getValueTypes() {
 			return TYPES; // NOPMD
 		}
+		
+		/**
+		 * {@inheritDoc}
+		 */
+		@Override
+		public String[] getValueNames() {
+			return PROPERTY_NAMES; // NOPMD
+		}
 
 		/**
 		 * {@inheritDoc}
