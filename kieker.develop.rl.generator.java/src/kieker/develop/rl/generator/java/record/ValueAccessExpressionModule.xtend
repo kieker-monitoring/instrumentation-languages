@@ -1,3 +1,18 @@
+/***************************************************************************
+ * Copyright 2017 Kieker Project (http://kieker-monitoring.net)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ***************************************************************************/
 package kieker.develop.rl.generator.java.record
 
 import org.eclipse.emf.common.util.EList
@@ -7,6 +22,9 @@ import kieker.develop.rl.recordLang.Property
 import static extension kieker.develop.rl.generator.java.record.NameResolver.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
 
+/**
+ * 
+ */
 class ValueAccessExpressionModule {
 	
 	
@@ -44,14 +62,27 @@ class ValueAccessExpressionModule {
 	}
 	
 	/**
-	 * Create property access expression ncluding all array indices necessary to access
+	 * Create property access expression including all array indices necessary to access
 	 * a single value of the array.
 	 * 
 	 * @param property the property to be used in the expression
 	 */
 	static def createPropertyValueExpression(Property property) '''
 		this.«property.name»«property.findType.sizes.createArrayValueAccessIndizies»'''
-	
+
+
+	/**
+	 * This produces a sequence of [0] assuming that arrays follow a matrix layout.
+	 */
+	static def createCodeToDetermineArraySize(int count) {
+		var String result = ''
+		var i = 0
+		while (i < count) {
+			result = result + '[0]'
+			i=i+1	
+		}
+		return result
+	}	
 	
 	/**
 	 * Used to compose a sequence of [iX] for every dimension of an array containing
@@ -66,21 +97,6 @@ class ValueAccessExpressionModule {
 			result = '''«result»[i«i»]'''
 		return result
 	}
-	
-	
-		
-	/**
-	 * This produces a sequence of [0] assuming that arrays follow a matrix layout.
-	 */
-	static def createCodeToDetermineArraySize(int count) {
-		var String result = ''
-		var i = 0
-		while (i < count) {
-			result = result + '[0]'
-			i=i+1	
-		}
-		return result
-	}
-	
+
 	
 }

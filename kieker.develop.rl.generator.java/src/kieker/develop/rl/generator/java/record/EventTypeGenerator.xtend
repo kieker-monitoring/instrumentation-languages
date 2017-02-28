@@ -29,7 +29,6 @@ import static kieker.develop.rl.generator.java.record.EqualsMethodTemplate.*
 import static kieker.develop.rl.generator.java.record.EventTypeAPITemplates.*
 
 import static extension kieker.develop.rl.generator.java.record.BinaryConstructorTemplate.*
-import static extension kieker.develop.rl.generator.java.record.ConstantConstructionModule.*
 import static extension kieker.develop.rl.generator.java.record.ConstructorTemplates.*
 import static extension kieker.develop.rl.generator.java.record.NameResolver.*
 import static extension kieker.develop.rl.generator.java.record.PropertyConstructionModule.*
@@ -37,6 +36,7 @@ import static extension kieker.develop.rl.generator.java.record.uid.ComputeUID.*
 import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
 import kieker.develop.rl.generator.AbstractTypeGenerator
+import static extension kieker.develop.rl.generator.java.record.ConstantConstructionTemplates.*
 
 /**
  * Generates a Java class for EventTypes.
@@ -119,7 +119,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	 * @param properties collection of all properties accessible in this type
 	 */
 	private def createPropertyNameArray(List<Property> properties) '''
-		public static final String[] PROPERTY_NAMES = {
+		private static final String[] PROPERTY_NAMES = {
 			«properties.map['''"«it.name»",'''].join('\n')»
 		};
 	'''

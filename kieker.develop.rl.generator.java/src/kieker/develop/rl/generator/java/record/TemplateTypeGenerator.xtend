@@ -26,6 +26,13 @@ import static extension kieker.develop.rl.generator.java.JavaTypeMapping.*
 import static extension kieker.develop.rl.generator.java.record.NameResolver.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
 
+/**
+ * Main generator class for template types.
+ * 
+ * @since 1.0
+ * 
+ * @author Reiner Jung
+ */
 class TemplateTypeGenerator extends AbstractTypeGenerator<TemplateType, CharSequence> {
 	
 	override accepts(ComplexType type) {

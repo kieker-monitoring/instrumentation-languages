@@ -1,3 +1,18 @@
+/***************************************************************************
+ * Copyright 2017 Kieker Project (http://kieker-monitoring.net)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ***************************************************************************/
 package kieker.develop.rl.generator.java.record
 
 import java.util.List
@@ -18,6 +33,14 @@ import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
 import kieker.develop.rl.recordLang.PropertyModifier
 
+/**
+ * Template for the constructor of Kieker records.
+ * 
+ * @since 1.2
+ * 
+ * @author Reiner Jung
+ * @author Christian Wulf
+ */
 class ConstructorTemplates {
 			
 	/**
@@ -35,7 +58,7 @@ class ConstructorTemplates {
 		/**
 		 * Creates a new instance of this class using the given parameters.
 		 * 
-		 «allDataProperties.filter[!it.modifiers.exists[it == PropertyModifier.INCREMENT]].map[it.createPropertyName.createPropertyComment].join»
+		 «allDataProperties.filter[!it.modifiers.exists[it == PropertyModifier.INCREMENT]].map[it.createPropertyName.createParameterComment].join»
 		 */
 		public «type.name»(«allDataProperties.map[property | createPropertyParameter(property)].join(', ')») {
 			«if (type.parent!=null) 'super(' + type.parent.collectAllDataProperties.filter[!it.isIncrement].map[name].join(', ')+');'»
@@ -43,15 +66,14 @@ class ConstructorTemplates {
 		}
 	'''
 	
-		/**
-	 * Create an arbitrary comment for a property of a monitoring record.
+	/**
+	 * Create an arbitrary comment for a parameter of the parameterized constructor.
 	 * 
-	 * @param property
-	 * 		a property of the record type
+	 * @param name the name of the parameter based on the property name
 	 * 
 	 * @returns one comment
 	 */
-	private static def createPropertyComment(String name) '''
+	private static def createParameterComment(String name) '''
 		* @param «name»
 		*            «name»
 	'''
@@ -59,6 +81,11 @@ class ConstructorTemplates {
 	
 	/**
 	 * Create array initialization constructor.
+	 * 
+	 * @param type the event type
+	 * @param properties a collection of all properties which are present in this event type.
+	 * 
+	 * @returns code for the array constructor
 	 */
 	static def createArrayInitializeConstructor(EventType type, List<Property> properties) '''
 		/**
@@ -76,7 +103,7 @@ class ConstructorTemplates {
 		}
 	'''
 	
-		/**
+	/**
 	 * Create the array constructor.
 	 * 
 	 * @param type the record type
