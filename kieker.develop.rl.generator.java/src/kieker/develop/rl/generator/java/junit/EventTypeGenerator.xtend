@@ -32,7 +32,14 @@ import kieker.develop.rl.recordLang.StringLiteral
 import static extension kieker.develop.rl.generator.java.JavaTypeMapping.*
 import static extension kieker.develop.rl.generator.java.junit.NameResolver.*
 import static extension kieker.develop.rl.typing.PropertyResolution.*
+import static extension kieker.develop.rl.typing.TypeResolution.*
 
+/**
+ * Java test class generator for event types.
+ * 
+ * @since 1.1
+ * @author Reiner Jung
+ */
 class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> {
 	
 	override accepts(ComplexType type) {
@@ -42,8 +49,11 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 			false
 	}
 		
+	/**
+	 * Main generator method.
+	 */
 	protected override createOutputModel(EventType type, String header, String author, String version) {
-		val allDataProperties = type.collectAllDataProperties
+		val allPersistentDataProperties = type.collectAllPersistentDataProperties
 		
 		'''
 		«header»package «(type.eContainer as Model).name.createTestPackageName»;
@@ -74,84 +84,115 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 				// empty default constructor
 			}
 		
-			/**
-			 * Tests {@link «type.name»#Test«type.name»(String, String, long, long, long, String, int, int)}.
-			 */
-			@Test
-			public void testToArray() { // NOPMD (assert missing)
-			for (int i=0;i<ARRAY_LENGTH;i++) {
-					// initialize
-					«type.name» record = new «type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
-					
-					// check values
-					«allDataProperties.createAllGetterValueAssertions(type)»
-					
-					Object[] values = record.toArray();
-					
-					Assert.assertNotNull("Record array serialization failed. No values array returned.", values);
-					Assert.assertEquals("Record array size does not match expected number of properties «allDataProperties.size».", «allDataProperties.size», values.length);
-					
-					// check all object values exist
-					«allDataProperties.createAllValueExistAssertions»
-					
-					// check all types
-					«allDataProperties.createAllTypeAssertions»
-										
-					// check all object values 
-					«allDataProperties.createAllValueAssertions»
-				}
-			}
-			
-			/**
-			 * Tests {@link «type.name»#Test«type.name»(String, String, long, long, long, String, int, int)}.
-			 */
-			@Test
-			public void testBuffer() { // NOPMD (assert missing)
-				for (int i=0;i<ARRAY_LENGTH;i++) {
-					// initialize
-					«type.name» record = new «type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
-					
-					// check values
-					«allDataProperties.createAllGetterValueAssertions(type)»
-				}
-			}
-			
-			/**
-			 * Tests {@link «type.name»#Test«type.name»(String, String, long, long, long, String, int, int)}.
-			 */
-			@Test
-			public void testParameterConstruction() { // NOPMD (assert missing)
-				for (int i=0;i<ARRAY_LENGTH;i++) {
-					// initialize
-					«type.name» record = new «type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
-					
-					// check values
-					«allDataProperties.createAllGetterValueAssertions(type)»
-				}
-			}
-			
-			@Test
-			public void testEquality() {
-				int i = 0;
-				«type.name» oneRecord = new «type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
-				i = 0;
-				«type.name» copiedRecord = new «type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
-				
-				Assert.assertEquals(oneRecord, copiedRecord);
-			}
-			
-			@Test
-			public void testUnequality() {
-				int i = 0;
-				«type.name» oneRecord = new «type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
-				i = 1;
-				«type.name» anotherRecord = new «type.name»(«allDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
-				
-				Assert.assertNotEquals(oneRecord, anotherRecord);
-			}
+			«type.createTestToArray(allPersistentDataProperties)»
+			«type.createTestBuffer(allPersistentDataProperties)»
+			«type.createTestParameterConstruction(allPersistentDataProperties)»
+			«type.createTestEquality(allPersistentDataProperties)»
+			«type.createTestUnequality(allPersistentDataProperties)»
 		}
 		'''
 	}
+	
+	/**
+	 * Create the test of equality.
+	 */
+	private def createTestUnequality(EventType type, List<Property> allPersistentDataProperties) '''
+		@Test
+		public void testUnequality() {
+			int i = 0;
+			«type.name» oneRecord = new «type.name»(«allPersistentDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
+			i = 1;
+			«type.name» anotherRecord = new «type.name»(«allPersistentDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
+			
+			Assert.assertNotEquals(oneRecord, anotherRecord);
+		}
+	'''
+	
+	/**
+	 * 
+	 */
+	private def createTestEquality(EventType type, List<Property> allPersistentDataProperties) '''
+		@Test
+		public void testEquality() {
+			int i = 0;
+			«type.name» oneRecord = new «type.name»(«allPersistentDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
+			i = 0;
+			«type.name» copiedRecord = new «type.name»(«allPersistentDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
+			
+			Assert.assertEquals(oneRecord, copiedRecord);
+		}	
+	'''
+	
+	/**
+	 * 
+	 */
+	private def createTestParameterConstruction(EventType type, List<Property> allPersistentDataProperties) '''
+		/**
+		 * Tests {@link «type.name»#Test«type.name»(«allPersistentDataProperties.map[property | property.findType.type.name].join(', ')»)}.
+		 */
+		@Test
+		public void testParameterConstruction() { // NOPMD (assert missing)
+			for (int i=0;i<ARRAY_LENGTH;i++) {
+				// initialize
+				«type.name» record = new «type.name»(«allPersistentDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
+				
+				// check values
+				«allPersistentDataProperties.createAllGetterValueAssertions(type)»
+			}
+		}
+	'''
+	
+	/**
+	 * 
+	 */
+	private def createTestBuffer(EventType type, List<Property> allPersistentDataProperties) '''
+		/**
+		 * Tests {@link «type.name»#Test«type.name»(«allPersistentDataProperties.map[property | property.findType.type.name].join(', ')»)}.
+		 */
+		@Test
+		public void testBuffer() { // NOPMD (assert missing)
+			for (int i=0;i<ARRAY_LENGTH;i++) {
+				// initialize
+				«type.name» record = new «type.name»(«allPersistentDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
+				
+				// check values
+				«allPersistentDataProperties.createAllGetterValueAssertions(type)»
+			}
+		}
+	'''
+	
+	/**
+	 * Create test to array.
+	 */
+	private def createTestToArray(EventType type, List<Property> allPersistentDataProperties) '''
+		/**
+		 * Tests {@link «type.name»#Test«type.name»(«allPersistentDataProperties.map[property | property.findType.type.name].join(', ')»)}.
+		 */
+		@Test
+		public void testToArray() { // NOPMD (assert missing)
+		for (int i=0;i<ARRAY_LENGTH;i++) {
+				// initialize
+				«type.name» record = new «type.name»(«allPersistentDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
+				
+				// check values
+				«allPersistentDataProperties.createAllGetterValueAssertions(type)»
+				
+				Object[] values = record.toArray();
+				
+				Assert.assertNotNull("Record array serialization failed. No values array returned.", values);
+				Assert.assertEquals("Record array size does not match expected number of properties «allPersistentDataProperties.size».", «allPersistentDataProperties.size», values.length);
+				
+				// check all object values exist
+				«allPersistentDataProperties.createAllValueExistAssertions»
+				
+				// check all types
+				«allPersistentDataProperties.createAllTypeAssertions»
+									
+				// check all object values 
+				«allPersistentDataProperties.createAllValueAssertions»
+			}
+		}
+	'''
 	
 	private def createAllValueExistAssertions(Collection<Property> properties) {
 		val List<CharSequence> result = new ArrayList<CharSequence>()

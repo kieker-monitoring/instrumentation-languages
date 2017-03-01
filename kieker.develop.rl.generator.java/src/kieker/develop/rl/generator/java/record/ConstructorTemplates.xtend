@@ -60,7 +60,7 @@ class ConstructorTemplates {
 		 * 
 		 «allDataProperties.filter[!it.modifiers.exists[it == PropertyModifier.INCREMENT]].map[it.createPropertyName.createParameterComment].join»
 		 */
-		public «type.name»(«allDataProperties.map[property | createPropertyParameter(property)].join(', ')») {
+		public «type.name»(«allDataProperties.filter[!it.transient].map[property | createPropertyParameter(property)].join(', ')») {
 			«if (type.parent!=null) 'super(' + type.parent.collectAllDataProperties.filter[!it.isIncrement].map[name].join(', ')+');'»
 			«allDeclarationProperties.filter[!it.isIncrement].map[property | createPropertyAssignment(property)].join»
 		}

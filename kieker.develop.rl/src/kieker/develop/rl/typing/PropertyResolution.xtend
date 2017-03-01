@@ -39,6 +39,22 @@ class PropertyResolution {
 		list.addAll(collectAllProperties(type).filter[it.referTo == null])
 		return list
 	}
+	
+	/**
+	 * Collect recursively a list of all data properties which are persistent.
+	 * Meaning aliases and transient properties must be ignored.
+	 * 
+	 * @param type
+	 * 		a recordType
+	 * 
+	 * @returns
+	 * 		a complete list of all properties in a record
+	 */
+	static def List<Property> collectAllPersistentDataProperties(EventType type) {
+		val list = new ArrayList<Property>()
+		list.addAll(collectAllProperties(type).filter[it.referTo == null && !it.transient])
+		return list
+	}
 		
 	
 	/**
