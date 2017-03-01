@@ -25,18 +25,20 @@ import kieker.develop.rl.recordLang.PropertyModifier
 import kieker.develop.rl.recordLang.TemplateType
 import kieker.develop.rl.typing.base.BaseTypes
 
+import kieker.develop.rl.generator.AbstractTypeGenerator
+
 import static kieker.develop.rl.generator.java.record.EqualsMethodTemplate.*
-import static kieker.develop.rl.generator.java.record.EventTypeAPITemplates.*
+import static extension kieker.develop.rl.generator.java.record.EventTypeAPITemplates.*
 
 import static extension kieker.develop.rl.generator.java.record.BinaryConstructorTemplate.*
 import static extension kieker.develop.rl.generator.java.record.ConstructorTemplates.*
 import static extension kieker.develop.rl.generator.java.record.NameResolver.*
 import static extension kieker.develop.rl.generator.java.record.PropertyConstructionModule.*
 import static extension kieker.develop.rl.generator.java.record.uid.ComputeUID.*
+import static extension kieker.develop.rl.generator.java.record.ConstantConstructionTemplates.*
+import static extension kieker.develop.rl.generator.java.record.SerializationTemplates.*
 import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
-import kieker.develop.rl.generator.AbstractTypeGenerator
-import static extension kieker.develop.rl.generator.java.record.ConstantConstructionTemplates.*
 
 /**
  * Generates a Java class for EventTypes.
@@ -89,7 +91,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 				«allDeclarationProperties.createDefaultConstants»
 				
 				/** property name array. */
-				«allDataProperties.createPropertyNameArray»
+				«allDataProperties.createPropertyNameConstant»
 				
 				/** property declarations. */
 				«allDeclarationProperties.createPropertyDeclarations»
@@ -101,8 +103,12 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 				«type.createArrayInitializeConstructor(allDeclarationProperties)»
 			
 				«type.createBufferReadConstructor(allDeclarationProperties)»
-			
-				«if (!type.abstract) createActualAPI(allDataProperties)»
+				«IF (!type.abstract)»
+				«allDataProperties.createToArrayRepresentation»
+				«allDataProperties.createStringRegistration»
+				«allDataProperties.createBinarySerialization»
+				«createConstantAccessMethods»
+				«ENDIF»
 			
 				«createDeprecatedAPI()»
 				
@@ -118,7 +124,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	 * 
 	 * @param properties collection of all properties accessible in this type
 	 */
-	private def createPropertyNameArray(List<Property> properties) '''
+	private def createPropertyNameConstant(List<Property> properties) '''
 		private static final String[] PROPERTY_NAMES = {
 			«properties.map['''"«it.name»",'''].join('\n')»
 		};

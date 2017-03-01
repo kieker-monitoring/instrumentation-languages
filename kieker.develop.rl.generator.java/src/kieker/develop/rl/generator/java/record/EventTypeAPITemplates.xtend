@@ -66,37 +66,9 @@ class EventTypeAPITemplates {
 	'''
 	
 	/**
-	 * In instantiable classes (non abstract classes) additional features must be added.
-	 * 
-	 * @param properties all properties which are accessible in this type.
+	 * Create methods to access different generated record constants.
 	 */
-	static def createActualAPI(List<Property> properties) '''
-		/**
-		 * {@inheritDoc}
-		 */
-		@Override
-		public Object[] toArray() {
-			return new Object[] {
-				«properties.filter[!it.isTransient].map[property | '''this.«property.createGetterName»()'''].join(',\n')»
-			};
-		}
-		
-		/**
-		 * {@inheritDoc}
-		 */
-		@Override
-		public void registerStrings(final IRegistry<String> stringRegistry) {	// NOPMD (generated code)
-			«properties.filter[!it.isTransient].map[it.createRegisterStringForProperty].filterNull.join('\n')»
-		}
-		
-		/**
-		 * {@inheritDoc}
-		 */
-		@Override
-		public void writeBytes(final ByteBuffer buffer, final IRegistry<String> stringRegistry) throws BufferOverflowException {
-			«properties.filter[!it.isTransient].map[it.createPropertyBinarySerialization].join('\n')»
-		}
-
+	static def createConstantAccessMethods() '''
 		/**
 		 * {@inheritDoc}
 		 */
@@ -119,6 +91,38 @@ class EventTypeAPITemplates {
 		@Override
 		public int getSize() {
 			return SIZE;
+		}
+	'''
+	
+	/**
+	 * Create array representation.
+	 * 
+	 * @param properties ordered list of properties of an event type
+	 */
+	static def createToArrayRepresentation(List<Property> properties) '''
+		/**
+		 * {@inheritDoc}
+		 */
+		@Override
+		public Object[] toArray() {
+			return new Object[] {
+				«properties.filter[!it.isTransient].map[property | '''this.«property.createGetterName»()'''].join(',\n')»
+			};
+		}
+	'''
+	
+	/**
+	 * Create the string registration.
+	 * 
+	 * @param properties ordered list of properties of an event type
+	 */
+	static def createStringRegistration(List<Property> properties) '''
+		/**
+		 * {@inheritDoc}
+		 */
+		@Override
+		public void registerStrings(final IRegistry<String> stringRegistry) {	// NOPMD (generated code)
+			«properties.filter[!it.isTransient].map[it.createRegisterStringForProperty].filterNull.join('\n')»
 		}
 	'''
 	
@@ -150,50 +154,4 @@ class EventTypeAPITemplates {
 			null
 	}
 	
-	/**
-	 * Determine the correct serialization for a property by type.
-	 * 
-	 * @param property
-	 * 		the property to serialize
-	 * 
-	 * @returns
-	 * 		code to serialize the given property
-	 */
-	private static def createPropertyBinarySerialization(Property property) {
-		val sizes = property.findType.sizes
-		if (sizes.size > 0) {
-			'''
-				// store array sizes
-				«FOR size : sizes»
-					«IF (size.size == 0)»
-						int _«property.createPropertyName»_size«sizes.indexOf(size)» = this.«property.createGetterName»()«createCodeToDetermineArraySize(sizes.indexOf(size))».length;
-						buffer.putInt(_«property.createPropertyName»_size«sizes.indexOf(size)»);
-					«ENDIF»
-				«ENDFOR»
-				«createArrayAccessLoops(sizes,0,property.createPropertyName, createValueStoreForSerialization(property))»
-			'''
-		} else {
-			createValueStoreForSerialization(property)
-		}
-	}
-	
-	/**
-	 * Create code for a property for binary serialization based on the data types.
-	 * 
-	 * @param property the property to be processed
-	 */
-	private static def createValueStoreForSerialization(Property property) {
-		val getterName = "this." + createGetterValueExpression(property)
-		switch (BaseTypes.getTypeEnum(property.findType.type)) {
-			case STRING : '''buffer.putInt(stringRegistry.get(«getterName»));'''
-			case BYTE : '''buffer.put((byte)«getterName»);'''
-			case SHORT : '''buffer.putShort(«getterName»);'''
-			case INT : '''buffer.putInt(«getterName»);'''
-			case LONG : '''buffer.putLong(«getterName»);'''
-			case FLOAT : '''buffer.putFloat(«getterName»);'''
-			case DOUBLE : '''buffer.putDouble(«getterName»);'''
-			case CHAR : '''buffer.putChar(«getterName»);'''
-			case BOOLEAN : '''buffer.put((byte)(«getterName»?1:0));'''
-		}
-	}
 }
