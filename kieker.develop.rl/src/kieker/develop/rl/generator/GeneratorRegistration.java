@@ -23,7 +23,7 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
 
-import kieker.develop.rl.ouput.config.AbstractOutletConfiguration;
+import kieker.develop.rl.outlet.AbstractOutletConfiguration;
 import kieker.develop.rl.recordLang.ComplexType;
 
 /**

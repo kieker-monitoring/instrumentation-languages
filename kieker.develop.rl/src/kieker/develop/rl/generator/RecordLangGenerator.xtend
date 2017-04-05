@@ -17,7 +17,7 @@ package kieker.develop.rl.generator
 
 import java.util.ArrayList
 import java.util.Calendar
-import kieker.develop.rl.ouput.config.AbstractOutletConfiguration
+import kieker.develop.rl.outlet.AbstractOutletConfiguration
 import kieker.develop.rl.preferences.TargetsPreferences
 import kieker.develop.rl.recordLang.ModelSubType
 import kieker.develop.rl.recordLang.EventType

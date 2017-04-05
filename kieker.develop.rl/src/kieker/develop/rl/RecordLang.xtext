@@ -56,7 +56,7 @@ TemplateType:
 EventType:
 	('@author' author=STRING)?
 	('@since' since=STRING)?
-	(abstract?='abstract')? 'entity' name=ID 
+	(abstract?='abstract')? ('event'|'entity') name=ID 
 	('extends' parent=[EventType|QualifiedName])?
 	(':' inherits+=[TemplateType|QualifiedName] (',' inherits+=[TemplateType|QualifiedName])*)?  
 	('{'

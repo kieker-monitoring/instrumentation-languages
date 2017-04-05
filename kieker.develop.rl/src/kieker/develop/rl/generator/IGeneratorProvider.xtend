@@ -16,7 +16,7 @@
 package kieker.develop.rl.generator
 
 import java.util.Collection
-import kieker.develop.rl.ouput.config.AbstractOutletConfiguration
+import kieker.develop.rl.outlet.AbstractOutletConfiguration
 
 /**
  * Interface for outlet configuration providers. The providers must

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package kieker.develop.rl.ouput.config;
+package kieker.develop.rl.outlet;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -30,12 +30,12 @@ import kieker.develop.rl.recordLang.ComplexType;
  * @author Reiner Jung
  *
  */
-public class RecordLangOutputConfigurationProvider implements IOutputConfigurationProvider {
+public class RecordLangOutletConfigurationProvider implements IOutputConfigurationProvider {
 
 	/**
 	 * Empty constructor.
 	 */
-	public RecordLangOutputConfigurationProvider() {}
+	public RecordLangOutletConfigurationProvider() {}
 
 	/**
 	 * Create outlet configurations.

@@ -20,7 +20,7 @@ import org.eclipse.core.runtime.preferences.DefaultScope;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 
 import kieker.develop.rl.generator.GeneratorRegistration;
-import kieker.develop.rl.ouput.config.AbstractOutletConfiguration;
+import kieker.develop.rl.outlet.AbstractOutletConfiguration;
 import kieker.develop.rl.recordLang.ComplexType;
 
 /**

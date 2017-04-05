@@ -1,7 +1,7 @@
 package kieker.develop.rl.generator.java.junit
 
 import java.io.File
-import kieker.develop.rl.ouput.config.AbstractOutletConfiguration
+import kieker.develop.rl.outlet.AbstractOutletConfiguration
 import kieker.develop.rl.recordLang.Model
 
 import static extension kieker.develop.rl.generator.java.junit.NameResolver.*
