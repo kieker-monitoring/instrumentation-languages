@@ -4,7 +4,7 @@ import java.io.File
 import kieker.develop.al.aspectLang.AspectModel
 import kieker.develop.al.generator.java.ConfigurationProperties
 import kieker.develop.al.intermediate.IntermediateModel
-import kieker.develop.rl.ouput.config.AbstractOutletConfiguration
+import kieker.develop.rl.outlet.AbstractOutletConfiguration
 import org.w3c.dom.Document
 
 class SpringConfigurationOutletConfiguration extends AbstractOutletConfiguration<IntermediateModel, Document> {

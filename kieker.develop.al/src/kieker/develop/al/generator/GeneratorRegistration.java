@@ -26,7 +26,7 @@ import org.eclipse.core.runtime.Platform;
 import kieker.develop.al.aspectLang.Advice;
 import kieker.develop.al.intermediate.IntermediateModel;
 import kieker.develop.rl.generator.IGeneratorProvider;
-import kieker.develop.rl.ouput.config.AbstractOutletConfiguration;
+import kieker.develop.rl.outlet.AbstractOutletConfiguration;
 
 /**
  * Configuration and registration of IAL generators. The class also contains functions for derived

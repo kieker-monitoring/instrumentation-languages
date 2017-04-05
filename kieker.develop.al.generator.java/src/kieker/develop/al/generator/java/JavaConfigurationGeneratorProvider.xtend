@@ -17,7 +17,7 @@ package kieker.develop.al.generator.java
 
 import java.util.Collection
 import kieker.develop.rl.generator.IGeneratorProvider
-import kieker.develop.rl.ouput.config.AbstractOutletConfiguration
+import kieker.develop.rl.outlet.AbstractOutletConfiguration
 import kieker.develop.al.generator.java.aspectj.AspectJConfigurationOutletConfiguration
 import org.w3c.dom.Document
 import kieker.develop.al.intermediate.IntermediateModel

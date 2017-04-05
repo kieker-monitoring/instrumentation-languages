@@ -28,7 +28,7 @@ import kieker.develop.al.aspectLang.Advice
 import kieker.develop.al.aspectLang.AspectModel
 import kieker.develop.al.intermediate.IntermediateAspect
 import kieker.develop.al.intermediate.IntermediateModel
-import kieker.develop.rl.ouput.config.AbstractOutletConfiguration
+import kieker.develop.rl.outlet.AbstractOutletConfiguration
 import kieker.develop.rl.preferences.TargetsPreferences
 import org.eclipse.core.runtime.preferences.IEclipsePreferences
 import org.eclipse.emf.common.util.EList

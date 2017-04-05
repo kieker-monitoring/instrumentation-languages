@@ -19,7 +19,7 @@ import kieker.develop.al.aspectLang.Advice
 import java.io.File
 import kieker.develop.al.aspectLang.AspectModel
 import kieker.develop.al.generator.java.javaee.JavaEEAdviceGenerator
-import kieker.develop.rl.ouput.config.AbstractOutletConfiguration
+import kieker.develop.rl.outlet.AbstractOutletConfiguration
 import kieker.develop.al.generator.java.ConfigurationProperties
 
 class JavaEEAdviceOutletConfiguration extends AbstractOutletConfiguration<Advice, CharSequence> {

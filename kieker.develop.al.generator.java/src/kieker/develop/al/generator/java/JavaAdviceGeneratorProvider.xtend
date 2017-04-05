@@ -22,7 +22,7 @@ import kieker.develop.al.generator.java.javaee.JavaEEAdviceOutletConfiguration
 import kieker.develop.al.generator.java.servlet.ServletAdviceOutletConfiguration
 import kieker.develop.al.generator.java.spring.SpringAdviceOutletConfiguration
 import kieker.develop.rl.generator.IGeneratorProvider
-import kieker.develop.rl.ouput.config.AbstractOutletConfiguration
+import kieker.develop.rl.outlet.AbstractOutletConfiguration
 
 /**
  * Provider for generator supporting Java based advice technologies.
