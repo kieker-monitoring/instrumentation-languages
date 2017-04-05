@@ -35,10 +35,12 @@ class BinaryConstructorTemplate {
 	 */
 	static def createBufferReadConstructor(EventType type, List<Property> properties) '''
 		/**
-		 * This constructor converts the given array into a record.
+		 * This constructor converts the given buffer into a record.
 		 * 
 		 * @param buffer
-		 *            The bytes for the record.
+		 *            The bytes for the record
+		 * @param stringRegistry
+		 *            The string registry for deserialization
 		 * 
 		 * @throws BufferUnderflowException
 		 *             if buffer not sufficient

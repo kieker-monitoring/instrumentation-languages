@@ -33,6 +33,7 @@ import static extension kieker.develop.rl.generator.java.JavaTypeMapping.*
 import static extension kieker.develop.rl.generator.java.junit.NameResolver.*
 import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
+import kieker.develop.rl.recordLang.BuiltInValueLiteral
 
 /**
  * Java test class generator for event types.
@@ -84,11 +85,17 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 				// empty default constructor
 			}
 		
+			«IF allPersistentDataProperties.size() > 0»
 			«type.createTestToArray(allPersistentDataProperties)»
+			
 			«type.createTestBuffer(allPersistentDataProperties)»
+			
 			«type.createTestParameterConstruction(allPersistentDataProperties)»
+			
 			«type.createTestEquality(allPersistentDataProperties)»
+			
 			«type.createTestUnequality(allPersistentDataProperties)»
+			«ENDIF»
 		}
 		'''
 	}
@@ -101,7 +108,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 		public void testUnequality() {
 			int i = 0;
 			«type.name» oneRecord = new «type.name»(«allPersistentDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
-			i = 1;
+			i = 2;
 			«type.name» anotherRecord = new «type.name»(«allPersistentDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
 			
 			Assert.assertNotEquals(oneRecord, anotherRecord);
@@ -170,7 +177,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 		 */
 		@Test
 		public void testToArray() { // NOPMD (assert missing)
-		for (int i=0;i<ARRAY_LENGTH;i++) {
+			for (int i=0;i<ARRAY_LENGTH;i++) {
 				// initialize
 				«type.name» record = new «type.name»(«allPersistentDataProperties.map[property | createPropertyValueSet(property)].join(', ')»);
 				
@@ -221,7 +228,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 			«IF property.type.type.name == 'float' || property.type.type.name == 'double'»
 				«property.getCastToPrimitiveType» «createPropertyValueSet(property)», «property.getCastToPrimitiveType» («property.type.type.createPrimitiveWrapperTypeName»)values[«index»], 0.0000001
 			«ELSEIF property.type.type.name == 'string'»
-				«property.createPropertyValueSet» == null?"«property.createConstantValue»":«property.createPropertyValueSet», values[«index»]
+				«property.createPropertyValueSet» == null?«property.createConstantValue»:«property.createPropertyValueSet», values[«index»]
 			«ELSE»
 				«property.createPropertyValueSet», values[«index»]
 		«ENDIF»);
@@ -234,16 +241,17 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 		if (property.value != null)
 			return this.createConstantValue(property.value)
 		else
-			return ""
+			return '""'
 	}
 	
 	private def String createConstantValue(Literal value) {
 		switch (value) {
-			StringLiteral :	return (value as StringLiteral).value
+			StringLiteral :	return '"' + (value as StringLiteral).value + '"'
 			FloatLiteral : return (value as FloatLiteral).value.toString
 			IntLiteral : return (value as IntLiteral).value.toString
 			ConstantLiteral : return createConstantValue((value as ConstantLiteral).value.value)
-			default : return ""	
+			BuiltInValueLiteral case "KIEKER_VERSION".equals(value.value): '''kieker.common.util.Version.getVERSION()'''
+			default : return '""'
 		}
 	}
 	
@@ -272,7 +280,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 			«ELSEIF property.type.type.name == 'boolean'»
 				«property.createPropertyValueSet», Boolean.valueOf(record.is«property.name.toFirstUpper»()));
 			«ELSEIF property.type.type.name == 'string'»
-				«property.createPropertyValueSet» == null?"«property.createConstantValue»":«property.createPropertyValueSet», record.get«property.name.toFirstUpper»());
+				«property.createPropertyValueSet» == null?«property.createConstantValue»:«property.createPropertyValueSet», record.get«property.name.toFirstUpper»());
 			«ELSE»
 				«property.getCastToPrimitiveType» «property.createPropertyValueSet», record.get«property.name.toFirstUpper»());
 			«ENDIF»

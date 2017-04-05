@@ -82,7 +82,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 			public «if (type.abstract) 'abstract '»class «type.name» extends «type.createParent»«type.createImplements» {
 				private static final long serialVersionUID = «type.computeDefaultSUID»L;
 			
-				«if (!type.abstract) type.createEventTypeConstants(allDataProperties)»
+				«if (!type.abstract) type.createEventTypeConstants(allDataProperties.filter[!it.transient])»
 				
 				/** user-defined constants. */
 				«type.createUserConstants»
@@ -91,7 +91,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 				«allDeclarationProperties.createDefaultConstants»
 				
 				/** property name array. */
-				«allDataProperties.createPropertyNameConstant»
+				«allDataProperties.filter[!it.transient].createPropertyNameConstant»
 				
 				/** property declarations. */
 				«allDeclarationProperties.createPropertyDeclarations»
@@ -103,6 +103,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 				«type.createArrayInitializeConstructor(allDeclarationProperties)»
 			
 				«type.createBufferReadConstructor(allDeclarationProperties)»
+				
 				«IF (!type.abstract)»
 				«allDataProperties.createToArrayRepresentation»
 				«allDataProperties.createStringRegistration»
@@ -124,7 +125,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	 * 
 	 * @param properties collection of all properties accessible in this type
 	 */
-	private def createPropertyNameConstant(List<Property> properties) '''
+	private def createPropertyNameConstant(Iterable<Property> properties) '''
 		private static final String[] PROPERTY_NAMES = {
 			«properties.map['''"«it.name»",'''].join('\n')»
 		};
@@ -136,7 +137,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	 * @param type the EventType
 	 * @param properties all properties which are accessible in this type
 	 */
-	private def createEventTypeConstants(EventType type, List<Property> properties) '''
+	private def createEventTypeConstants(EventType type, Iterable<Property> properties) '''
 		/** Descriptive definition of the serialization size of the record. */
 		public static final int SIZE = «if (properties.size == 0) 
 				'0'
@@ -156,7 +157,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	 * @param properties the all properties of the type
 	 * @param type event type for the given type.
 	 */
-	private def createBinarySerializationSizeConstant(List<Property> properties, EventType type) {
+	private def createBinarySerializationSizeConstant(Iterable<Property> properties, EventType type) {
 		properties.filter[!it.modifiers.exists[it == PropertyModifier.TRANSIENT]].map[property | 
 				property.createSizeConstant(type)
 			].join('\n\t\t + ')
