@@ -26,7 +26,7 @@ import "http://www.kieker-monitoring.net/kieker/develop/semantic-annotations" as
 AspectModel:
 	'package' name = QualifiedName
 	(imports += Import)*
-	(sources += ApplicationModel)*
+	(sources += ApplicationModelHandle)*
 	(advices += Advice | pointcuts+=Pointcut | aspects += Aspect)*
 ;
 
@@ -34,7 +34,7 @@ Import:
 	'import' importedNamespace = QualifiedNameWithWildcard
 ;
 
-ApplicationModel:
+ApplicationModelHandle:
 	'map' handler=ID 'model' name=ID model=STRING ('trace' traceModel=STRING)?
 ;
 
@@ -75,12 +75,12 @@ enum InsertionPoint:
 Pointcut:
 	(annotation=Annotation)?
 	'pointcut' name=ID
-	'class' model=[ApplicationModel|ID] '.' location=LocationQuery 
+	'class' model=[ApplicationModelHandle|ID] '.' location=LocationQuery 
 	('operation' operation=OperationQuery)?
 ;
 
 Annotation:
-	'@' name='technology' technologies+=[semantics::Technology|ID] (',' technologies+=[semantics::Technology|ID]) 
+	'@' name='technology' technologies+=[semantics::Technology|ID] (',' technologies+=[semantics::Technology|ID])?
 ;
 
 Query:
@@ -201,7 +201,7 @@ StringLiteral:
 ;
 
 TypeReference:
-	context=[ApplicationModel|ID] '.' reference=[mapping::NamedType|ID] (collection?='[]')?
+	context=[ApplicationModelHandle|ID] '.' reference=[mapping::NamedType|ID] (collection?='[]')?
 ;
 
 /* ------------------------------- */

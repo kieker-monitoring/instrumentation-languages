@@ -38,6 +38,9 @@ import org.eclipse.emf.common.util.EList
 
 /**
  * Generate the intermediate model.
+ * 
+ * @author Reiner Jung
+ * @since 1.3
  */
 class IntermediateModelGenerator implements IGenerator<AspectModel, IntermediateModel> {
 	
@@ -67,7 +70,10 @@ class IntermediateModelGenerator implements IGenerator<AspectModel, Intermediate
 	private def void createJoinpoints(EList<AbstractJoinpoint> joinpoints, Pointcut pointcut) {
 		if (pointcut.annotation != null) {
 			if ("technology".equals(pointcut.annotation.name)) {
-				collectDestinationNodes(pointcut).forEach[joinpoints.add(it.findTargetLevelNode(pointcut.name, pointcut.annotation.technologies))]
+				collectDestinationNodes(pointcut).forEach[
+					println("tech " + it.name + " " + pointcut.name + " " + pointcut.annotation.technologies)
+					joinpoints.add(it.findTargetLevelNode(pointcut.name, pointcut.annotation.technologies))
+				]
 			}
 		} else {
 			collectDestinationNodes(pointcut).forEach[joinpoints.add(it.findTargetLevelNode(pointcut.name, new ArrayList<Technology>))]

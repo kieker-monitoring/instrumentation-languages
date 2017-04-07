@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import com.google.inject.Inject;
 
-import kieker.develop.al.aspectLang.ApplicationModel;
+import kieker.develop.al.aspectLang.ApplicationModelHandle;
 import kieker.develop.rl.generator.InternalErrorException;
 
 /**
@@ -51,7 +51,7 @@ public class ForeignModelTypeProviderFactory {
 	 * @throws InternalErrorException
 	 *             when the application state is broken
 	 */
-	public IForeignModelTypeProvider getTypeProvider(final ResourceSet resourceSet, final ApplicationModel model) throws InternalErrorException {
+	public IForeignModelTypeProvider getTypeProvider(final ResourceSet resourceSet, final ApplicationModelHandle model) throws InternalErrorException {
 		if (resourceSet != null) {
 			final Object object = resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
 					.get(ForeignModelTypeProvider.ID);
@@ -78,7 +78,7 @@ public class ForeignModelTypeProviderFactory {
 	 *            the application model
 	 * @return Returns the new type provider.
 	 */
-	private IForeignModelTypeProvider createTypeProvider(final ResourceSet resourceSet, final ApplicationModel model) {
+	private IForeignModelTypeProvider createTypeProvider(final ResourceSet resourceSet, final ApplicationModelHandle model) {
 		final IForeignModelTypeProvider typeProvider = new ForeignModelTypeProvider(resourceSet, model);
 		resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
 				.put(ForeignModelTypeProvider.ID, typeProvider);

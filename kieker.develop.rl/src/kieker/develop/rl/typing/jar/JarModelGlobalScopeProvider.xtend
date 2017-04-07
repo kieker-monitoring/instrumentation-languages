@@ -21,8 +21,6 @@ import kieker.develop.rl.recordLang.EventType
 import kieker.develop.rl.recordLang.TemplateType
 import kieker.develop.rl.typing.ITypeProvider
 import kieker.develop.rl.typing.base.BaseTypeGlobalScopeProvider
-import kieker.develop.rl.typing.semantics.AnnotationProviderFactory
-import kieker.develop.rl.typing.semantics.AnnotationScope
 import kieker.develop.semantics.annotations.Annotation
 import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.core.runtime.Path
@@ -33,6 +31,8 @@ import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.xtext.naming.IQualifiedNameConverter
 import org.eclipse.xtext.resource.IEObjectDescription
 import org.eclipse.xtext.scoping.IScope
+import kieker.develop.rl.typing.semantics.SemanticAnnotationProviderFactory
+import kieker.develop.rl.typing.semantics.SemanticAnnotationScope
 
 class JarModelGlobalScopeProvider extends BaseTypeGlobalScopeProvider {
 	
@@ -49,8 +49,8 @@ class JarModelGlobalScopeProvider extends BaseTypeGlobalScopeProvider {
         	if (resource != null) {
         		val ResourceSet resourceSet = resource.getResourceSet()
         		if (resourceSet != null) {
-        			val typeProvider = AnnotationProviderFactory.getAnnotationProvider(resourceSet)
-					return new AnnotationScope(typeProvider, qualifiedNameConverter, filter)
+        			val typeProvider = SemanticAnnotationProviderFactory.getProvider(resourceSet)
+					return new SemanticAnnotationScope(typeProvider, qualifiedNameConverter, filter)
         		} else
 	    			throw new IllegalStateException("context must be contained in a resource set") 
         	} else

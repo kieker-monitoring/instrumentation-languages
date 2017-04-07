@@ -16,7 +16,7 @@
  package kieker.develop.al.handler.pcm
 
 import de.cau.cs.se.geco.architecture.framework.TraceModelProvider
-import kieker.develop.al.aspectLang.ApplicationModel
+import kieker.develop.al.aspectLang.ApplicationModelHandle
 import kieker.develop.al.mapping.MappingFactory
 import kieker.develop.al.modelhandling.IModelMapper
 import org.eclipse.emf.common.util.URI
@@ -41,22 +41,13 @@ class PCMModelMapper implements IModelMapper<NamedElement, String /*PCMCodeNode*
 		println("Instantiate Model Mapper " + this)
 	}
 				
-	override loadModel(ApplicationModel input, ResourceSet resourceSet) {
+	override loadModel(ApplicationModelHandle handle, ResourceSet resourceSet) {
 		
-		var result = modelRepository.get(input.model)
+		var result = modelRepository.get(handle.model)
 		if (result == null) {
 			// Get the resource
-			val Resource source = resourceSet.getResource(URI::createPlatformResourceURI(input.model, true), true)
-	
-			// create main result model
-			result = MappingFactory.eINSTANCE.createMappingModel()
-			// determine all interfaces
-			val interfaceMap=PCMLoadModel.createInterfaces(source)
-			// compose container hierarchy
-			PCMLoadModel.createContainerHierarchy(source, result, interfaceMap)
-			// contents must be called via its getter otherwise xtend will used the variable which may
-			// result in an null pointer result
-			modelRepository.put(input.model, result)
+			result = PCMCreateMappingModel.createMappingModel(handle.model, resourceSet)
+			modelRepository.put(handle.model, result)
 		}
 		
 		return result

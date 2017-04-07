@@ -1,4 +1,19 @@
-package kieker.develop.al.handler.java
+/***************************************************************************
+ * Copyright 2017 Kieker Project (http://kieker-monitoring.net)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ***************************************************************************/
+package kieker.develop.al.handler.pcm
 
 import java.util.Collection
 import java.util.HashMap
@@ -17,8 +32,39 @@ import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.naming.QualifiedName
+import org.eclipse.emf.common.util.URI
+import org.eclipse.emf.ecore.resource.ResourceSet
 
-class JavaLoadModel {
+/**
+ * Construct a mapping model for a given PCM model.
+ * 
+ * @author Reiner Jung
+ * @since 1.3
+ */
+class PCMCreateMappingModel {
+		
+	/**
+	 * Create the mapping model for a given model URI.
+	 * 
+	 * @param modelURI the URI refering to the PCM model
+	 * @param resourceSet the resource set to be used to load models
+	 * 
+	 * @return returns the mapping model
+	 */
+	def static createMappingModel(String modelURI, ResourceSet resourceSet) {
+		val Resource source = resourceSet.getResource(URI::createPlatformResourceURI(modelURI, true), true)
+	
+		// create main result model
+		val result = MappingFactory.eINSTANCE.createMappingModel()
+		// determine all interfaces
+		val interfaceMap=PCMCreateMappingModel.createInterfaces(source)
+		// compose container hierarchy
+		PCMCreateMappingModel.createContainerHierarchy(source, result, interfaceMap)
+		// contents must be called via its getter otherwise xtend will used the variable which may
+		// result in an null pointer result
+		
+		return result
+	}
 		
 	/**
 	 * Determine all interfaces in the given source.
@@ -26,7 +72,7 @@ class JavaLoadModel {
 	 * @param source
 	 *            the resource containing the PCM model
 	 */
-	static def createInterfaces(Resource source) {
+	private static def createInterfaces(Resource source) {
 		val Map<String, EObject> interfaceMap = new HashMap<String, EObject>()
 		
 		val Iterator<EObject> iterator = source.getAllContents()
@@ -50,9 +96,15 @@ class JavaLoadModel {
 	 * The hierarchy does not differentiate between packages, components or classes as only the
 	 * hierarchy must be known.
 	 * 
-	 * @param source
+	 * @param source the resource
+	 * @param model the mapping model to be extended
+	 * @param interfaceMap a lookup table for all interfaces
+	 * 
+	 * @return returns the modified mapping model
 	 */
-	static def MappingModel createContainerHierarchy(Resource source, MappingModel model, Map<String, EObject> interfaceMap) {
+	private static def MappingModel createContainerHierarchy(Resource source, MappingModel model,
+		Map<String, EObject> interfaceMap
+	) {
 		val Iterator<EObject> iterator = source.getAllContents()
 		while (iterator.hasNext()) {
 			val EObject object = iterator.next()
@@ -60,15 +112,15 @@ class JavaLoadModel {
 				val components = object.getFeature("components__Repository") as EList<EObject>
 				for (EObject component : components) {
 					val container = MappingFactory.eINSTANCE.createContainer()
-					val fullQualifiedName = component.getFeature("entityName") as String
-					val names = fullQualifiedName.split('\\.')
-					if (names.size == 0)
-						names.add(fullQualifiedName as String)
-					val QualifiedName name = QualifiedName.create(names)
-					container.setName(name.getLastSegment())
+					val entityName = (component.getFeature("entityName") as String).trim
+					val segments = entityName.split('\\.')
+					if (segments.size == 0)
+						segments.add(entityName as String)
+					val QualifiedName qualifiedName = QualifiedName.create(segments)
+					container.setName(qualifiedName.getLastSegment())
 					container.setPredecessor(component)
 					container.addInterfaces(component, interfaceMap, model)
-					insertContainerInHierarchy(model, container,name)
+					insertContainerInHierarchy(model, container, qualifiedName)
 				}				
 			}
 		}
@@ -90,10 +142,12 @@ class JavaLoadModel {
 			val name = providedInterface.getFeature("entityName") as String
 			val interfaze = MappingFactory.eINSTANCE.createContainer()
 			val interfazeDeclaration = interfaceMap.get(name)
-			interfaze.setName(name)
-			interfaze.setPredecessor(providedInterface)
-			interfaze.operations.createMethods(interfazeDeclaration.determineMethods, model)
-			container.contents.add(interfaze)
+			if (interfazeDeclaration != null) {
+				interfaze.setName(name)
+				interfaze.setPredecessor(providedInterface)
+				interfaze.operations.createMethods(interfazeDeclaration.determineMethods, model)
+				container.contents.add(interfaze)
+			}
 		}
 	}
 	
@@ -183,10 +237,10 @@ class JavaLoadModel {
 							typeReference.setType(type)	
 					}
 				}
-			} else { // TODO: this is a temporary measure
+			} else { // TODO: this is a temporary measure, better set correct type
 				typeReference.setType(model.emptyType)
 			}
-		} else { // TODO: this is a temporary measure
+		} else { // TODO: this is a temporary measure, better set correct type
 			typeReference.setType(model.emptyType)
 		}
 		return typeReference
@@ -275,7 +329,7 @@ class JavaLoadModel {
 	private static def void insertContainerInHierarchy(Containment parent, Container entity,
 			QualifiedName fullQualifiedName) {
 		if (fullQualifiedName.getSegmentCount() == 1) {
-			addEntityToParentContainer(parent,entity)
+			addEntityToParentContainer(parent, entity)
 		} else {
 			// recurse into container hierarchy
 			val container = parent.contents.findFirst[it.name.equals(fullQualifiedName.firstSegment)]
@@ -295,7 +349,10 @@ class JavaLoadModel {
 	}
 
 	/**
-	 * What does this routine do?
+	 * Add node only if no node with that name already exists.
+	 * 
+	 * @param parent the containment
+	 * @param entity the container to be added to the containment
 	 */
 	private static def addEntityToParentContainer(Containment parent, Container entity) {
 		if (!parent.contents.exists[it.name.equals(entity.name)]) {
@@ -303,4 +360,5 @@ class JavaLoadModel {
 		} else
 			System::out.println("Double container declaration")
 	}
+		
 }

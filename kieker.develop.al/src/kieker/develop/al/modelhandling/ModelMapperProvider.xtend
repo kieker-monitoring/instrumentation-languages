@@ -29,7 +29,8 @@ import org.eclipse.emf.ecore.EObject
  */
 class ModelMapperProvider {
 	
-	private val Map<String,IModelMapper<EObject, String>> mappers = new HashMap<String, IModelMapper<EObject, String>>()
+	private val Map<String,IModelMapper<EObject, EObject>> mappers = 
+		new HashMap<String, IModelMapper<EObject, EObject>>()
 		
 	new () {
 		/** Register all mapping modules. */
@@ -39,7 +40,7 @@ class ModelMapperProvider {
 			config.forEach[element |
 	  			val ext = element.createExecutableExtension(IModelMapper.MAPPING_HANDLER)
 	  			if (ext instanceof IModelMapper<?,?>) {
-	  				this.mappers.put(ext.name, ext as IModelMapper<EObject, String>)
+	  				this.mappers.put(ext.name, ext as IModelMapper<EObject, EObject>)
 	  			}
 	  		]
 	  	} catch (CoreException ex) {
@@ -47,7 +48,7 @@ class ModelMapperProvider {
 		}
 	}
 	
-	def getModelMappers() {
+	def Map<String,IModelMapper<EObject, EObject>> getModelMappers() {
 		return mappers
 	}
 }

@@ -13,8 +13,9 @@ import org.eclipse.core.runtime.Platform
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl
+import kieker.develop.semantics.annotations.Technology
 
-class AnnotationResource extends ResourceImpl {
+class SemanticAnnotationResource extends ResourceImpl {
 	
 	private static final String SEMANTIC_ANNOTATION = "kieker.develop.semantics.SemanticAnnotation"
 		
@@ -92,6 +93,7 @@ class AnnotationResource extends ResourceImpl {
 	private def createModel() {
 		val Semantics model = AnnotationsFactory.eINSTANCE.createSemantics
 		val Map<String,Annotation> annotations = new HashMap<String,Annotation>()
+		val Map<String,Technology> technologies = new HashMap<String,Technology>()
 		
 		val registry = Platform.getExtensionRegistry()
 		val config = registry.getConfigurationElementsFor(SEMANTIC_ANNOTATION)
@@ -109,6 +111,14 @@ class AnnotationResource extends ResourceImpl {
 	          				annotationDecl.implementations += it.implementations
 	          				annotations.put(it.name, annotationDecl)
 	          				model.annotations += annotationDecl
+	          			}
+	          		]
+	          		semanticExtension.technologies.forEach[
+	          			if (!technologies.containsKey(it.name)) {
+	          				val technology = AnnotationsFactory.eINSTANCE.createTechnology()
+	          				technology.name = it.name
+	          				technologies.put(it.name, technology)
+	          				model.technologies += technology	
 	          			}
 	          		]
 	          	}

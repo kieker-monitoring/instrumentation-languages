@@ -1,7 +1,6 @@
 package kieker.develop.al.generator.java.aspectj
 
 import de.cau.cs.se.geco.architecture.framework.IGenerator
-import de.cau.cs.se.geco.architecture.framework.TraceModelProvider
 import java.util.Collection
 import javax.xml.parsers.DocumentBuilderFactory
 import kieker.develop.al.aspectLang.Advice
@@ -12,6 +11,8 @@ import org.eclipse.emf.ecore.EObject
 import org.w3c.dom.Document
 import org.w3c.dom.Node
 import de.cau.cs.se.geco.architecture.framework.ITraceModelProvider
+import de.cau.cs.se.geco.architecture.framework.ITraceModelInput
+import org.eclipse.xtext.common.types.JvmType
 
 // TODO process this comment			
 //	/**
@@ -40,17 +41,17 @@ import de.cau.cs.se.geco.architecture.framework.ITraceModelProvider
 //	private def String aspectJAbstractAdviceName(UtilizeAdvice advice, int i) '''aspectj«File.separator»«advice.advice.packagePathName»Abstract«advice.advice.name»Advice«i».java'''
 	
 
-class AspectJConfigurationGenerator implements IGenerator<IntermediateModel, Document> {
+class AspectJConfigurationGenerator implements IGenerator<IntermediateModel, Document>, ITraceModelInput<JvmType, JvmType> {
 	
 	val docFactory = DocumentBuilderFactory.newInstance()
 	val docBuilder = docFactory.newDocumentBuilder()
 	var Document doc
 	
-	private var ITraceModelProvider<EObject, String> traceModelProvider
-	
-	public def setTraceModelProvider(ITraceModelProvider<EObject, String> traceModelProvider) {
-		this.traceModelProvider = traceModelProvider
-	}  
+	private var ITraceModelProvider<JvmType, JvmType>[] localTraceModelProviders
+		
+	override setTraceModelProviders(ITraceModelProvider<JvmType, JvmType>... traceModelProviders) {
+		this.localTraceModelProviders = traceModelProviders
+	}
 	
 	override generate(IntermediateModel input) {
 		doc = docBuilder.newDocument()
@@ -97,7 +98,8 @@ class AspectJConfigurationGenerator implements IGenerator<IntermediateModel, Doc
 	
 	private def String createExpression(AbstractJoinpoint joinpoint) {
 		switch(joinpoint) {
-			ModelJoinpoint: traceModelProvider.lookup(joinpoint.referencedInstance).get(0)  // TODO here the tracemodel should be used to map the references
+			// TODO this is dummy code and not really functional
+			ModelJoinpoint: localTraceModelProviders.get(0).lookup(joinpoint.referencedInstance as JvmType).get(0).toString  // TODO here the tracemodel should be used to map the references
 			default: 'XXX'  // TODO this is not a valid response  
 		}
 	}
@@ -112,5 +114,5 @@ class AspectJConfigurationGenerator implements IGenerator<IntermediateModel, Doc
 		aspect.setAttribute("name", advice.name) // TODO requires fully qualified name
 		return aspect
 	}
-	
+		
 }

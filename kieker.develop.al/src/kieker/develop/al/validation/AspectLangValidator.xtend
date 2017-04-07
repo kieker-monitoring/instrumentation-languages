@@ -16,7 +16,7 @@
 package kieker.develop.al.validation
 
 import com.google.inject.Inject
-import kieker.develop.al.aspectLang.ApplicationModel
+import kieker.develop.al.aspectLang.ApplicationModelHandle
 import kieker.develop.al.aspectLang.AspectLangPackage
 import kieker.develop.al.modelhandling.ModelMapperProviderFactory
 import org.eclipse.xtext.validation.Check
@@ -38,10 +38,10 @@ class AspectLangValidator extends AbstractAspectLangValidator {
 	public static val INVALID_NAME = 'invalidName'
 
 	@Check
-	def checkApplicationModel(ApplicationModel model) {
+	def checkApplicationModel(ApplicationModelHandle model) {
 		if (!modelMapperProviderFactory.provider.modelMappers.containsKey(model.handler)) {
 			error('No model handler for ' + model.handler + ' registered.', 
-					AspectLangPackage.Literals::APPLICATION_MODEL__HANDLER,
+					AspectLangPackage.Literals::APPLICATION_MODEL_HANDLE__HANDLER,
 					INVALID_NAME)
 		}					    	
 	}

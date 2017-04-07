@@ -16,7 +16,7 @@
 package kieker.develop.al.scoping
 
 import com.google.inject.Inject
-import kieker.develop.al.aspectLang.ApplicationModel
+import kieker.develop.al.aspectLang.ApplicationModelHandle
 import kieker.develop.al.aspectLang.CompositionQuery
 import kieker.develop.al.aspectLang.ContainerNode
 import kieker.develop.al.aspectLang.LocationQuery
@@ -33,8 +33,9 @@ import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.scoping.Scopes
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider
-import kieker.develop.rl.typing.semantics.AnnotationProviderFactory
 import kieker.develop.al.aspectLang.SubQuery
+import kieker.develop.al.aspectLang.Annotation
+import kieker.develop.rl.typing.semantics.SemanticAnnotationProviderFactory
 
 /**
  * This class contains custom scoping description.
@@ -65,8 +66,13 @@ class AspectLangScopeProvider extends AbstractDeclarativeScopeProvider {
 		} else		
 			return null
 	}
-		
-	private def IScope createModelScope(ApplicationModel model, ResourceSet resourceSet) {
+	
+	def IScope scope_Annotation_technologies(Annotation context, EReference reference) {
+		val provider = SemanticAnnotationProviderFactory.getProvider(context.eResource.resourceSet)
+		return Scopes.scopeFor(provider.allTechnologies)
+	}
+			
+	private def IScope createModelScope(ApplicationModelHandle model, ResourceSet resourceSet) {
 		val typeProvider = typeProviderFactory.getTypeProvider(resourceSet, model)
 		return Scopes.scopeFor(typeProvider.allTypes)
 	}
@@ -118,10 +124,10 @@ class AspectLangScopeProvider extends AbstractDeclarativeScopeProvider {
 	}
 	
 	/**
-	 * Provide scope for annotations.
+	 * Provide scope for semantic annotations.
 	 */
 	def IScope scope_Property_annotation(Property context, EReference reference) {
-		val annotationsProvider = AnnotationProviderFactory.getAnnotationProvider(context.eResource.resourceSet)
+		val annotationsProvider = SemanticAnnotationProviderFactory.getProvider(context.eResource.resourceSet)
 		return Scopes.scopeFor(annotationsProvider.allAnnotations)
 	}
 		

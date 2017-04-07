@@ -40,15 +40,16 @@ import org.w3c.dom.Document
 import de.cau.cs.se.geco.architecture.framework.ITraceModelInput
 import org.eclipse.emf.ecore.EObject
 import de.cau.cs.se.geco.architecture.framework.ITraceModelProvider
-import kieker.develop.al.aspectLang.ApplicationModel
+import kieker.develop.al.aspectLang.ApplicationModelHandle
 import java.util.ArrayList
 import kieker.develop.al.modelhandling.ModelMapperProviderFactory
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.common.util.URI
 
-
 /**
  * Aspect generator main hook.
+ * This main hook triggers the transformation from model level aspect to intermediate level
+ * and subsequently to transformation to code.
  * 
  * @author Reiner Jung
  * 
@@ -87,43 +88,43 @@ class AspectLangGenerator implements IGenerator2 {
 			/** Process advice. */
 			for (AbstractOutletConfiguration<Advice, Object> configuration : GeneratorRegistration.adviceOutletConfigurations) {
 				if (TargetsPreferences.isGeneratorActive(preferenceStore, configuration.name)) {
-					/** Parse header template. */
-					var rawHeader = TargetsPreferences.getHeaderComment(preferenceStore, configuration.name).replace(
-						"THIS-YEAR", Calendar.getInstance().get(Calendar.YEAR).toString)
-					
-					val header = if (!rawHeader.isEmpty) {
-						if (rawHeader.lastIndexOf(System.lineSeparator) + 1 < rawHeader.length)
-							rawHeader + System.lineSeparator
-						else
-							rawHeader
-					} else
-						""
-					
-					configuration.generators.processAdvices(intermediateModel.aspects, configuration, fsa, header, author, version)
+					configuration.generators.processAdvices(intermediateModel.aspects, configuration, fsa, 
+						compileHeader(preferenceStore, configuration.name), author, version
+					)
 				}
 			}
 			
 			/** Process configuration (including pointcuts). */
 			for (AbstractOutletConfiguration<IntermediateModel, Object> configuration : GeneratorRegistration.configurationOutletConfigurations) {
 				if (TargetsPreferences.isGeneratorActive(preferenceStore, configuration.name)) {
-					/** Parse header template. */
-					var rawHeader = TargetsPreferences.getHeaderComment(preferenceStore, configuration.name).replace(
-						"THIS-YEAR", Calendar.getInstance().get(Calendar.YEAR).toString)
-					
-					val header = if (!rawHeader.isEmpty) {
-						if (rawHeader.lastIndexOf(System.lineSeparator) + 1 < rawHeader.length)
-							rawHeader + System.lineSeparator
-						else
-							rawHeader
-					} else
-						""
-											
-					configuration.generators.processPointcuts(intermediateModel, configuration, traceModelProviders, fsa, header, author, version)
+					configuration.generators.processPointcuts(intermediateModel, configuration, traceModelProviders, fsa, 
+						compileHeader(preferenceStore, configuration.name), author, version
+					)
 				}
 			}
 		} else {
 			println("Error no model found. An aspect model must appear in this resource.")
 		}
+	}
+	
+	/**
+	 * Substitute variables in header template.
+	 * 
+	 * @param preferenceStore store containing templates for all configuration
+	 * @param configurationName the name of the configuration to use for substitution
+	 */
+	private def compileHeader(IEclipsePreferences preferenceStore, String configurationName) {
+		val inputHeader = TargetsPreferences.getHeaderComment(preferenceStore, configurationName).replace(
+			"THIS-YEAR", Calendar.getInstance().get(Calendar.YEAR).toString)
+		
+		return if (inputHeader.isEmpty) 
+				""
+			else {
+				if (inputHeader.lastIndexOf(System.lineSeparator) + 1 < inputHeader.length)
+					inputHeader + System.lineSeparator
+				else
+					inputHeader
+			}
 	}
 	
 	/**
@@ -134,9 +135,11 @@ class AspectLangGenerator implements IGenerator2 {
 	 * 
 	 * @returns a collection of trace models
 	 */
-	private def Collection<ITraceModelProvider<EObject, String>> collectTraceModels(EList<ApplicationModel> applicationModels, ResourceSet resourceSet) {
-		val collectedProviders = new ArrayList<ITraceModelProvider<EObject, String>>
-		applicationModels.forEach[if (it.traceModel != null) collectedProviders.add(it.traceModel.loadTraceModel(it.handler, resourceSet))]
+	private def Collection<ITraceModelProvider<EObject, EObject>> collectTraceModels(EList<ApplicationModelHandle> applicationModels, ResourceSet resourceSet) {
+		val collectedProviders = new ArrayList<ITraceModelProvider<EObject, EObject>>
+		applicationModels.forEach[
+			collectedProviders.add(it.traceModel.loadTraceModel(it.handler, resourceSet))
+		]
 		
 		return collectedProviders
 	}
@@ -148,9 +151,15 @@ class AspectLangGenerator implements IGenerator2 {
 	 * @param handlerId the ih of the model handler to be used in this context
 	 * @param resourceSet the resource set where this resource is placed in 
 	 */
-	private def ITraceModelProvider<EObject, String> loadTraceModel(String traceModel, String handlerId, ResourceSet resourceSet) {
+	private def ITraceModelProvider<EObject, EObject> loadTraceModel(String traceModel, 
+		String handlerId, ResourceSet resourceSet
+	) {
 		val mapper = ModelMapperProviderFactory.createInstance.provider.modelMappers.get(handlerId)
-		return mapper.traceModelProvider(URI::createPlatformResourceURI(traceModel, true), resourceSet)
+		val uri = if (traceModel != null)
+			URI::createPlatformResourceURI(traceModel, true)
+		else
+			null
+		return mapper.traceModelProvider(uri, resourceSet)
 	}
 		
 	/**
@@ -233,17 +242,24 @@ class AspectLangGenerator implements IGenerator2 {
 	 */
 	private def void processPointcuts(Collection<IGenerator<? extends IntermediateModel, ?>> generators,
 		IntermediateModel intermediateModel, AbstractOutletConfiguration<IntermediateModel, ? extends Object> configuration,
-		Collection<ITraceModelProvider<EObject, String>> traceModelProviders,
+		Collection<ITraceModelProvider<EObject, EObject>> traceModelProviders,
 		IFileSystemAccess2 fsa, String header, String author, String version) {
 		
 		generators.forEach[generator |
 			println("generator pointcut " + generator.class)
-			(generator as ITraceModelInput<EObject, String>).setTraceModelProviders(traceModelProviders)
+			println(">> " + traceModelProviders)
+			(generator as ITraceModelInput<EObject, EObject>).setTraceModelProviders(traceModelProviders)
 			//(generator as IConfigureParameters).configure(header, author, version)
 			val technologyUsed = intermediateModel.aspects.exists[aspect |
 				println("aspect/pointcut " + aspect.class + " " + aspect.joinpoints)
 				// TODO aspect based configuration e.g., technology selection 
-				aspect.joinpoints.exists[it.technologies.exists[it.name.equals(configuration.technology)]]
+				println(">> " + configuration.technology)
+				aspect.joinpoints.exists[
+					it.technologies.exists[
+						println("-- " + it.name + " -- " + configuration.technology)
+						it.name.equals(configuration.technology)
+					]
+				]
 			]
 			
 			if (technologyUsed) {

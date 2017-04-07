@@ -28,7 +28,7 @@ import com.google.common.base.Predicate;
 import com.google.inject.Inject;
 import org.eclipse.emf.ecore.EcorePackage$Literals
 import org.eclipse.xtext.resource.IEObjectDescription
-import kieker.develop.al.aspectLang.ApplicationModel
+import kieker.develop.al.aspectLang.ApplicationModelHandle
 
 /**
  * 
@@ -58,7 +58,7 @@ class ForeignModelGlobalScopeProvider extends DefaultGlobalScopeProvider {
         		if (resourceSet != null) {
         			val IForeignModelTypeProvider typeProvider = 
         				typeProviderFactory.getTypeProvider(resourceSet, 
-        					resource.allContents.filter(typeof(ApplicationModel)).head
+        					resource.allContents.filter(typeof(ApplicationModelHandle)).head
         				)
         			return new ForeignModelTypeScope(typeProvider, qualifiedNameConverter, filter)
 				} else

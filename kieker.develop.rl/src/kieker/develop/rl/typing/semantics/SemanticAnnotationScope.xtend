@@ -10,18 +10,18 @@ import org.eclipse.emf.ecore.InternalEObject
 import org.eclipse.xtext.resource.EObjectDescription
 import kieker.develop.semantics.annotations.AnnotationsFactory
 
-class AnnotationScope extends AbstractScope {
+class SemanticAnnotationScope extends AbstractScope {
 	
-	private val AnnotationProvider typeProvider;
+	private val SemanticAnnotationProvider semanticAnnotationProvider;
 
 	private val IQualifiedNameConverter qualifiedNameConverter;
 
 	private val Predicate<IEObjectDescription> filter;
 	
-	new(AnnotationProvider typeProvider, IQualifiedNameConverter qualifiedNameConverter, 
+	new(SemanticAnnotationProvider semanticAnnotationProvider, IQualifiedNameConverter qualifiedNameConverter, 
 		Predicate<IEObjectDescription> filter) {
 		super(IScope.NULLSCOPE, false)
-		this.typeProvider = typeProvider
+		this.semanticAnnotationProvider = semanticAnnotationProvider
 		this.qualifiedNameConverter = qualifiedNameConverter
 		this.filter = filter		
 	}
@@ -29,7 +29,7 @@ class AnnotationScope extends AbstractScope {
 	override protected getAllLocalElements() {
 		val annotations = new ArrayList<IEObjectDescription>
 
-		this.typeProvider.allAnnotations.forEach[
+		this.semanticAnnotationProvider.allAnnotations.forEach[
 			System.out.println(">> " + it.getName())
 			annotations.add(this.createScopedElement(it.getName()))
 		]
@@ -47,7 +47,7 @@ class AnnotationScope extends AbstractScope {
 	
 	private def InternalEObject createProxy(String fullyQualifiedName) {
 		System.out.println("createProxy " + fullyQualifiedName);
-		val uri = AnnotationURIHelper.getFullURIForClass(fullyQualifiedName)
+		val uri = semanticAnnotationProvider.getFullURIForClass(fullyQualifiedName)
 		// TODO fix this: could be component or interface or method?
 		val InternalEObject proxy = AnnotationsFactory.eINSTANCE.createAnnotation() as InternalEObject
 		proxy.eSetProxyURI(uri)

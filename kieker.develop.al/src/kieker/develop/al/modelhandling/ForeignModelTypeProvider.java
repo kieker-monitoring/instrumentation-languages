@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.util.Strings;
 
-import kieker.develop.al.aspectLang.ApplicationModel;
+import kieker.develop.al.aspectLang.ApplicationModelHandle;
 import kieker.develop.al.mapping.Containment;
 import kieker.develop.al.mapping.MappingModel;
 import kieker.develop.al.mapping.NamedElement;
@@ -49,7 +49,7 @@ public class ForeignModelTypeProvider implements Resource.Factory, IForeignModel
 
 	private final ResourceSet resourceSet;
 
-	private final ApplicationModel model;
+	private final ApplicationModelHandle model;
 
 	/**
 	 * Construct the type provider.
@@ -59,7 +59,7 @@ public class ForeignModelTypeProvider implements Resource.Factory, IForeignModel
 	 * @param model
 	 *            the application model
 	 */
-	public ForeignModelTypeProvider(final ResourceSet resourceSet, final ApplicationModel model) {
+	public ForeignModelTypeProvider(final ResourceSet resourceSet, final ApplicationModelHandle model) {
 		this.resourceSet = resourceSet;
 		this.model = model;
 	}

@@ -18,7 +18,7 @@ package kieker.develop.al.modelhandling;
 import java.io.IOException
 import java.io.InputStream
 import java.util.Map
-import kieker.develop.al.aspectLang.ApplicationModel
+import kieker.develop.al.aspectLang.ApplicationModelHandle
 import kieker.develop.al.mapping.MappingModel
 import kieker.develop.al.mapping.NamedElement
 import kieker.develop.al.mapping.NamedType
@@ -39,7 +39,7 @@ public class ForeignModelResource extends ResourceImpl {
 	ModelMapperProviderFactory modelMapperProviderFactory = ModelMapperProviderFactory.createInstance
 	
 	/** Model of the application to be instrumented. */
-	private final ApplicationModel applicationModel
+	private final ApplicationModelHandle applicationModelHandle
 	/** Resulting hierarchy model. */
 	private MappingModel resultModel
 	/** Helper variable to prohibit recursion of model loading. */
@@ -51,9 +51,9 @@ public class ForeignModelResource extends ResourceImpl {
 	 * @param uri of the foreign model
 	 * @param applicationModel the application model
 	 */
-	public new(URI uri, ApplicationModel applicationModel) {
+	public new(URI uri, ApplicationModelHandle applicationModelHandle) {
 		super(uri)
-		this.applicationModel = applicationModel
+		this.applicationModelHandle = applicationModelHandle
 	}
 
 	/**
@@ -141,13 +141,13 @@ public class ForeignModelResource extends ResourceImpl {
 	 * Create an result model for a given ecore model.
 	 */
 	private def synchronized createModel() {
-		if (this.applicationModel != null && !this.loading) {
+		if (this.applicationModelHandle != null && !this.loading) {
 			this.loading = true
 
-			val modelMapper = modelMapperProviderFactory.provider.modelMappers.get(applicationModel.handler)
+			val modelMapper = modelMapperProviderFactory.provider.modelMappers.get(applicationModelHandle.handler)
 			
 			if (modelMapper != null) {
-				resultModel = modelMapper.loadModel(this.applicationModel, this.getResourceSet())
+				resultModel = modelMapper.loadModel(this.applicationModelHandle, this.getResourceSet())
 				this.getContents().add(resultModel)
 			}
 
