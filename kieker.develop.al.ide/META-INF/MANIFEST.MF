@@ -7,7 +7,8 @@ Bundle-SymbolicName: kieker.develop.al.ide;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: kieker.develop.al,
  org.eclipse.xtext.ide,
- org.eclipse.xtext.xbase.ide
+ org.eclipse.xtext.xbase.ide,
+ org.antlr.runtime
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: kieker.develop.al.ide.contentassist.antlr,
  kieker.develop.al.ide.contentassist.antlr.internal

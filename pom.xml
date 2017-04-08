@@ -16,7 +16,8 @@
 		<checkstyle.config.location>cs-conf.xml</checkstyle.config.location>
 		<tycho-version>0.25.0</tycho-version>
 		<tycho-extras-version>0.25.0</tycho-extras-version>
-		<xtext-version>2.10.0</xtext-version>
+		<xtext-version>2.11.0</xtext-version>
+		<xtend-maven-version>2.11.0</xtend-maven-version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 
@@ -137,7 +138,7 @@
 				<plugin>
 					<groupId>org.eclipse.xtend</groupId>
 					<artifactId>xtend-maven-plugin</artifactId>
-					<version>2.10.0</version>
+					<version>${xtend-maven-version}</version>
 					<executions>
 						<execution>
 							<phase>process-sources</phase>
