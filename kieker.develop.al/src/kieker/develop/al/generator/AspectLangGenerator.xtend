@@ -81,7 +81,7 @@ class AspectLangGenerator implements IGenerator2 {
 		/** Build intermediate model. */
 		val aspectModel = resource.allContents.filter(AspectModel).first
 		
-		if (aspectModel != null) {
+		if (aspectModel !== null) {
 			val intermediateModel = aspectModel.createIntermediateModel
 			val traceModelProviders = aspectModel.sources.collectTraceModels(resource.resourceSet)
 								
@@ -155,7 +155,7 @@ class AspectLangGenerator implements IGenerator2 {
 		String handlerId, ResourceSet resourceSet
 	) {
 		val mapper = ModelMapperProviderFactory.createInstance.provider.modelMappers.get(handlerId)
-		val uri = if (traceModel != null)
+		val uri = if (traceModel !== null)
 			URI::createPlatformResourceURI(traceModel, true)
 		else
 			null

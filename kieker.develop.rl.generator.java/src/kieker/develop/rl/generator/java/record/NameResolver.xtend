@@ -139,16 +139,16 @@ class NameResolver {
 		if (type.properties.contains(property)) { 
 			return type.name + '.' + property.name
 		} else {
-			if (type.parent!=null) {
+			if (type.parent !== null) {
 				val result = property.createPropertyFQN(type.parent)
-				if (result != null)
+				if (result !== null)
 					return result
 			}
 			
-			if (type.inherits != null) {
+			if (type.inherits !== null) {
 				for (TemplateType templateType : type.inherits) {
 					val result = property.createPropertyFQN(templateType)
-					if (result != null)
+					if (result !== null)
 						return result
 				}
 			}
@@ -170,10 +170,10 @@ class NameResolver {
 	static def CharSequence createPropertyFQN(Property property, TemplateType type) {
 		if (type.properties.contains(property))
 			return type.name + '.' + property.name
-		else if (type.inherits != null) {
+		else if (type.inherits !== null) {
 			for (TemplateType templateType : type.inherits) {
 				val result = property.createPropertyFQN(templateType)
-				if (result != null)
+				if (result !== null)
 					return result
 			}
 		}

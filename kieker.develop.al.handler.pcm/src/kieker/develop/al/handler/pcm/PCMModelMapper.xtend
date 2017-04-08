@@ -44,7 +44,7 @@ class PCMModelMapper implements IModelMapper<NamedElement, String /*PCMCodeNode*
 	override loadModel(ApplicationModelHandle handle, ResourceSet resourceSet) {
 		
 		var result = modelRepository.get(handle.model)
-		if (result == null) {
+		if (result === null) {
 			// Get the resource
 			result = PCMCreateMappingModel.createMappingModel(handle.model, resourceSet)
 			modelRepository.put(handle.model, result)

@@ -57,7 +57,7 @@ public class PackageContentScope implements IScope {
 	override IEObjectDescription getSingleElement(QualifiedName name) {
 		System::out.println("PackageContentScope.getSingleElement(name) " + name)
 		//val registeredPackage = model.eAllContents.filter(RegisteredPackage).findFirst[it.name.equals(name.firstSegment)]
-		//if (registeredPackage != null)
+		//if (registeredPackage !== null)
 		//	registeredPackage.EPackage.findClassifierInPackageHierarchy(name.skipFirst(1))
 		//else
 			return null		
@@ -77,7 +77,7 @@ public class PackageContentScope implements IScope {
 			return findClassifierInPackage(ePackage, name)
 		else {
 			val subPackage = ePackage.ESubpackages.findFirst[it.name.equals(name.firstSegment)]
-			if (subPackage != null)
+			if (subPackage !== null)
 				return findClassifierInPackageHierarchy(subPackage, name)
 			else // return null to indicate that no package was found
 				return null
@@ -95,7 +95,7 @@ public class PackageContentScope implements IScope {
 	 */
 	def IEObjectDescription findClassifierInPackage(EPackage pkg, QualifiedName name) {
 		val classifier = pkg.EClassifiers.findFirst[it.name.equals(name.firstSegment)]
-		if (classifier != null)
+		if (classifier !== null)
 			if (name.segmentCount == 1)
 				return EObjectDescription.create(name, classifier)
 			else
@@ -117,9 +117,9 @@ public class PackageContentScope implements IScope {
 		if (classifier instanceof EClass) {
 			val clazz = classifier as EClass
 			val attribute = clazz.EAllAttributes.findFirst[it.name.equals(name.firstSegment)]
-			if (attribute == null) {
+			if (attribute === null) {
 				val reference = clazz.EAllReferences.findFirst[it.name.equals(name.firstSegment)]
-				if (reference != null) {
+				if (reference !== null) {
 					if (name.segmentCount>1) 
 						return findPropertyInClassifier(reference.EReferenceType, name.skipFirst(1))
 					else

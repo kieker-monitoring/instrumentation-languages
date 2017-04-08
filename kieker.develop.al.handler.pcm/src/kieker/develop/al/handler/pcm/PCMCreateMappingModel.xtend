@@ -142,7 +142,7 @@ class PCMCreateMappingModel {
 			val name = providedInterface.getFeature("entityName") as String
 			val interfaze = MappingFactory.eINSTANCE.createContainer()
 			val interfazeDeclaration = interfaceMap.get(name)
-			if (interfazeDeclaration != null) {
+			if (interfazeDeclaration !== null) {
 				interfaze.setName(name)
 				interfaze.setPredecessor(providedInterface)
 				interfaze.operations.createMethods(interfazeDeclaration.determineMethods, model)
@@ -177,7 +177,7 @@ class PCMCreateMappingModel {
 		// TODO define void type instead of null
 		
 		val reference = signature.getReferenceFeature("returnType__OperationSignature")
-		if (reference != null)
+		if (reference !== null)
 			method.setReturnType(reference.createTypeReference(model))
 		// parameters__OperationSignature
 		val parameters = signature.getFeature("parameters__OperationSignature") as Collection<EObject>
@@ -200,7 +200,7 @@ class PCMCreateMappingModel {
 		parameter.setModifier(object.getFeature("modifier__Parameter").createParameterModifier)
 		
 		val reference = object.getReferenceFeature("dataType__Parameter")
-		if (reference != null) {
+		if (reference !== null) {
 			parameter.setType(reference.createTypeReference(model))
 		}
 		
@@ -217,13 +217,13 @@ class PCMCreateMappingModel {
 	private static def createTypeReference(EObject object, MappingModel model) {
 		val typeReference = MappingFactory.eINSTANCE.createTypeReference()
 		typeReference.setPredecessor(object)
-		if (object.eClass != null) {
-			if (object.eClass.name != null) {
+		if (object.eClass !== null) {
+			if (object.eClass.name !== null) {
 				switch (object.eClass.name) {
 					case 'CompositeDataType' : {
 						val typeName = object.getFeature("entityName") as String
 						val type = model.findCompositeType(typeName)
-						if (type == null) {
+						if (type === null) {
 							typeReference.setType(createNamedType(typeName))
 						} else
 							typeReference.setType(type)	
@@ -231,7 +231,7 @@ class PCMCreateMappingModel {
 					case 'PrimitiveDataType' : {
 						val typeName = object.getFeature("type").toString
 						val type = model.findPrimitiveType(typeName)
-						if (type == null)
+						if (type === null)
 							typeReference.setType(createNamedType(typeName))
 						else
 							typeReference.setType(type)	
@@ -261,7 +261,7 @@ class PCMCreateMappingModel {
 	 */
 	private static def emptyType(MappingModel result) {
 		var type = result.types.findFirst[it.name.equals("EMPTY")]
-		if (type == null) {
+		if (type === null) {
 			type = MappingFactory.eINSTANCE.createNamedType()
 			type.setName("EMPTY")
 			result.types.add(type)
@@ -333,7 +333,7 @@ class PCMCreateMappingModel {
 		} else {
 			// recurse into container hierarchy
 			val container = parent.contents.findFirst[it.name.equals(fullQualifiedName.firstSegment)]
-			if (container != null) 
+			if (container !== null) 
 				insertContainerInHierarchy(container,entity,fullQualifiedName.skipFirst(1))
 			else { // no match found, create missing container
 				var runningParent = parent

@@ -223,7 +223,7 @@ class EMFModelGenerator {
 		System.err.println("findResultClass2: type " + type);
 		System.err.println("findResultClass2:   resource " + resource);
 		System.err.println("findResultClass2: name " + type.name);
-		if (type.name != null) {
+		if (type.name !== null) {
 			System.err.println("findResultClass2: parent " + type.eContainer);
 			System.err.println("findResultClass2: parent name " + (type.eContainer as Model).name);
 			val packagePath = (type.eContainer as Model).name.split('\\.')
@@ -244,7 +244,7 @@ class EMFModelGenerator {
 			return pkg.EClassifiers.findFirst[clazz | clazz.name.equals(type.name) ] as EClass
 		} else {
 			val subpkg = pkg.ESubpackages.findFirst[p | p.name.equals(packagePath.get(0))]
-			if (subpkg == null) {
+			if (subpkg === null) {
 				return null
 			} else {
 				return type.findResultClass(subpkg, packagePath.tail)
@@ -293,10 +293,10 @@ class EMFModelGenerator {
 	 */
 	def void composeClass(EventType type, Resource resource) {
 		val EClass clazz = type.findResultClass(resource)
-		if (clazz != null) {
-			if (type.parent != null) {
+		if (clazz !== null) {
+			if (type.parent !== null) {
 				val superType = type.parent.findResultClass(resource)
-				if (superType != null)
+				if (superType !== null)
 					clazz.ESuperTypes.add(superType)
 				else
 					return
@@ -325,21 +325,21 @@ class EMFModelGenerator {
 		attribute.setName(property.name)
 		// TODO EMF only supports single dimension arrays
 		var Classifier type = null
-		if (property.type != null) {
+		if (property.type !== null) {
 			attribute.setDerived(false)
-			if (property.type.type != null) {
+			if (property.type.type !== null) {
 				type = property.type		
 			}
 		} else { // property is derived
 			attribute.setDerived(true)
 			var originalProperty = property
-			while (originalProperty.referTo != null)
+			while (originalProperty.referTo !== null)
 				originalProperty = originalProperty.referTo			
 			type = originalProperty.type
 		}
 		
 		attribute.setEType(type.type.name.mapToEMFLiteral)
-		if (type.sizes != null) {
+		if (type.sizes !== null) {
 			if (!type.sizes.empty) {
 				val size = type.sizes.get(0).size
 				if (size == 0) {

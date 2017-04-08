@@ -46,7 +46,7 @@ class BinaryConstructorTemplate {
 		 *             if buffer not sufficient
 		 */
 		public «type.name»(final ByteBuffer buffer, final IRegistry<String> stringRegistry) throws BufferUnderflowException {
-			«IF (type.parent!=null)»super(buffer, stringRegistry);
+			«IF (type.parent !== null)»super(buffer, stringRegistry);
 			«ENDIF»«properties.filter[!it.isTransient].map[property | createPropertyBinaryDeserialization(property)].join('\n')»
 		}
 	'''

@@ -1,3 +1,18 @@
+/***************************************************************************
+ * Copyright 2017 Kieker Project (http://kieker-monitoring.net)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ***************************************************************************/
 package kieker.develop.rl.generator.modeltypes
 
 import kieker.develop.rl.recordLang.Property
@@ -13,6 +28,13 @@ import kieker.develop.rl.recordLang.ConstantLiteral
 import kieker.develop.rl.recordLang.ArrayLiteral
 import kieker.develop.rl.recordLang.BuiltInValueLiteral
 
+/**
+ * Factory used to construct in-memory models
+ * conforming to the IRL metamodel without model-sub-typing.
+ * 
+ * @author Reiner Jung
+ * @since 1.3
+ */
 class TargetModelFactory {
 	
 	static def Property duplicate(Property property) {
@@ -21,7 +43,7 @@ class TargetModelFactory {
 		duplicate.name = property.name
 		duplicate.type = property.type.duplicate
 		duplicate.referTo = property.referTo // TODO this might be wrong as it might have to refer to the duplicate of the property
-		duplicate.value = if (property.value != null) property.value.duplicateLiteral else null
+		duplicate.value = if (property.value !== null) property.value.duplicateLiteral else null
 		duplicate.semantics = property.semantics
 				
 		return duplicate

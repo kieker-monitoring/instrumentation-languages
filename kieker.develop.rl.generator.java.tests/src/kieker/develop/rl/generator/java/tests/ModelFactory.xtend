@@ -18,7 +18,7 @@ class ModelFactory {
 		val result = RecordLangFactory.eINSTANCE.createClassifier
 		result.type = RecordLangFactory.eINSTANCE.createBaseType
 		result.type.name = type.name.toLowerCase
-		if (sizes != null)
+		if (sizes !== null)
 			result.sizes.addAll(sizes)
 		
 		return result
@@ -43,7 +43,7 @@ class ModelFactory {
 		val result = RecordLangFactory.eINSTANCE.createEventType
 		result.name = name
 		result.parent = parent
-		if (inherits != null)
+		if (inherits !== null)
 			result.inherits.addAll(inherits)
 		result.abstract = false
 		
@@ -53,7 +53,7 @@ class ModelFactory {
 	static def createTemplateType(String name, List<TemplateType> inherits) {
 		val result = RecordLangFactory.eINSTANCE.createTemplateType
 		result.name = name
-		if (inherits != null)
+		if (inherits !== null)
 			result.inherits.addAll(inherits)
 		
 		return result

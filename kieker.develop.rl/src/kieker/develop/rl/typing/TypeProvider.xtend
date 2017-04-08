@@ -88,7 +88,7 @@ class TypeProvider {
 	private def boolean inheritsFrom(EventType child, TemplateType parent) {
 		if (child.inherits.size > 0) {
 			child.inherits.exists[it == parent || it.inheritsFrom(parent)]
-		} else if (child.parent != null)
+		} else if (child.parent !== null)
 			inheritsFrom(child.parent, parent)
 		else
 			false
@@ -103,7 +103,7 @@ class TypeProvider {
 	 * @return returns true if the child is transitively a child of parent
 	 */
 	private def boolean inheritsFrom(EventType child, EventType parent) {
-		if (child.parent != null) {
+		if (child.parent !== null) {
 			if (child.parent == parent)
 				true
 			else

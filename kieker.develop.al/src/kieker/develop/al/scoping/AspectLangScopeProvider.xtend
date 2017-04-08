@@ -147,7 +147,7 @@ class AspectLangScopeProvider extends AbstractDeclarativeScopeProvider {
 	}
 	
 	private def Node leaveNode(LocationQuery query) {
-		if (query.specialization != null)
+		if (query.specialization !== null)
 			query.specialization.leaveNode
 		else
 			query.node

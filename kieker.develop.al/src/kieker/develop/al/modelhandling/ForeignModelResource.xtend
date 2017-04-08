@@ -68,7 +68,7 @@ public class ForeignModelResource extends ResourceImpl {
 			val EObject object = (this.getContents()?.get(0) as MappingModel).contents?.findFirst [
 				uriFragment.equals(this.getURIFragment(it))
 			]
-			if (object != null)
+			if (object !== null)
 				return object
 			else
 				return super.getEObject(uriFragment)
@@ -119,7 +119,7 @@ public class ForeignModelResource extends ResourceImpl {
 	 * @throws IOException
 	 */
 	override void doLoad(InputStream inputStream, Map<?, ?> options) throws IOException {
-		if (this.getURI() != null) {
+		if (this.getURI() !== null) {
 			this.createModel()
 		} else {
 			try {
@@ -141,12 +141,12 @@ public class ForeignModelResource extends ResourceImpl {
 	 * Create an result model for a given ecore model.
 	 */
 	private def synchronized createModel() {
-		if (this.applicationModelHandle != null && !this.loading) {
+		if (this.applicationModelHandle !== null && !this.loading) {
 			this.loading = true
 
 			val modelMapper = modelMapperProviderFactory.provider.modelMappers.get(applicationModelHandle.handler)
 			
-			if (modelMapper != null) {
+			if (modelMapper !== null) {
 				resultModel = modelMapper.loadModel(this.applicationModelHandle, this.getResourceSet())
 				this.getContents().add(resultModel)
 			}

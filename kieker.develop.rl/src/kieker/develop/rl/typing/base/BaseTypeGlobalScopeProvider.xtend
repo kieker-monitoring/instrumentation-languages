@@ -45,9 +45,9 @@ class BaseTypeGlobalScopeProvider extends DefaultGlobalScopeProvider {
             Predicate<IEObjectDescription> filter, EClass referenceType) throws InternalErrorException {
         // check whether the reference type is a type of any kind 
         if (referenceType.name.equals(BaseType.simpleName)) {
-        	if (resource != null) {
+        	if (resource !== null) {
         		val ResourceSet resourceSet = resource.getResourceSet()
-    			if (resourceSet != null) {
+    			if (resourceSet !== null) {
         			val ITypeProvider typeProvider = typeProviderFactory.getTypeProvider(resourceSet)
 					return new BaseTypeScope(typeProvider, qualifiedNameConverter, filter)
 				} else

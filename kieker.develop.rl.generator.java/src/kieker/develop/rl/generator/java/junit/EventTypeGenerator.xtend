@@ -228,7 +228,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 			«IF property.type.type.name == 'float' || property.type.type.name == 'double'»
 				«property.getCastToPrimitiveType» «createPropertyValueSet(property)», «property.getCastToPrimitiveType» («property.type.type.createPrimitiveWrapperTypeName»)values[«index»], 0.0000001
 			«ELSEIF property.type.type.name == 'string'»
-				«property.createPropertyValueSet» == null?«property.createConstantValue»:«property.createPropertyValueSet», values[«index»]
+				«property.createPropertyValueSet» === null?«property.createConstantValue»:«property.createPropertyValueSet», values[«index»]
 			«ELSE»
 				«property.createPropertyValueSet», values[«index»]
 		«ENDIF»);
@@ -238,7 +238,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	 * Create constant value for string.
 	 */
 	private def String createConstantValue(Property property) {
-		if (property.value != null)
+		if (property.value !== null)
 			return this.createConstantValue(property.value)
 		else
 			return '""'

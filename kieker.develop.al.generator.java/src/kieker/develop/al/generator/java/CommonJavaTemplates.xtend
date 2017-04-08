@@ -52,7 +52,7 @@ class CommonJavaTemplates {
 	 */
 	static def createTraceId() '''
 		TraceMetadata trace = TRACEREGISTRY.getTrace();
-		final boolean newTrace = trace == null;
+		final boolean newTrace = trace === null;
 		if (newTrace) {
 			trace = TRACEREGISTRY.registerTrace();
 			CTRLINST.newMonitoringRecord(trace);

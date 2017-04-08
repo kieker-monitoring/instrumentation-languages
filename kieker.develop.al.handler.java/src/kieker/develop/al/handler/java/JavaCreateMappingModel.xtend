@@ -113,7 +113,7 @@ class JavaCreateMappingModel {
 	 */
 	private static def Container createContainerPath(Containment parent, String[] containerHierarchy, int index) {
 		var nestedPackage = parent.contents.findFirst[it.name.equals(containerHierarchy.get(index))]
-		if (nestedPackage == null) {
+		if (nestedPackage === null) {
 			nestedPackage = parent.createPackage(containerHierarchy.get(index))
 		}
 		if ((index+1) < containerHierarchy.length)

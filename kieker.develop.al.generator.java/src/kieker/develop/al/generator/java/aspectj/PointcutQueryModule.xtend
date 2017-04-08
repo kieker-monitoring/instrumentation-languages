@@ -32,7 +32,7 @@ class PointcutQueryModule {
 	}
 	
 	private static def CharSequence getRenderQuery(LocationQuery query) 
-		'''«query.node.renderNode»«if (query.specialization != null) '''.«query.specialization.renderQuery»'''»'''
+		'''«query.node.renderNode»«if (query.specialization !== null) '''.«query.specialization.renderQuery»'''»'''
 	
 	private static def CharSequence getRenderNode(Node node) {
 		switch(node) {
@@ -46,7 +46,7 @@ class PointcutQueryModule {
 	private static def boolean isInclude(LocationQuery query) {
 		// TODO this must be fixed
 		val thisInclude = true; // (query.modifier == QueryModifier.INCLUDE)
-		val childInclude = if (query.specialization != null) query.specialization.isInclude else true
+		val childInclude = if (query.specialization !== null) query.specialization.isInclude else true
 		
 		if (thisInclude && childInclude)
 			return true
@@ -64,9 +64,9 @@ class PointcutQueryModule {
 	private static def Collection<LocationQuery> createFlattLocationModel(LocationQuery query) {
 		val results = new ArrayList<LocationQuery>()
 		
-		if (query.specialization != null)
+		if (query.specialization !== null)
 			results.expandPath(query,query.specialization.createFlattLocationModel)
-		else if (query.composition != null)
+		else if (query.composition !== null)
 			results.expandPath(query,query.composition.createFlattLocationModel)
 		else {
 			results.add(query)
@@ -105,7 +105,7 @@ class PointcutQueryModule {
 		duplicateQuery.node = query.node.duplicate
 		// TODO modifier moved
 		// duplicateQuery.modifier = query.modifier
-		if (query.specialization != null)
+		if (query.specialization !== null)
 			duplicateQuery.specialization = query.specialization.duplicateChain
 		
 		return duplicateQuery

@@ -41,10 +41,10 @@ class SemanticAnnotationProviderFactory {
 	 * @return Returns the type provider for primitive types.
 	 */
 	def synchronized static SemanticAnnotationProvider getProvider(ResourceSet resourceSet) {
-		if (resourceSet != null) {
+		if (resourceSet !== null) {
 			val object = resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
 					.get(SemanticAnnotationProvider.PROTOCOL)
-			if (object != null) {
+			if (object !== null) {
 				if (!(object instanceof SemanticAnnotationProvider)) {
 					System.out.println("Provider for " + SemanticAnnotationProvider.PROTOCOL + " is " + object)
 					// TODO something went terribly wrong, to be save create a new type provider

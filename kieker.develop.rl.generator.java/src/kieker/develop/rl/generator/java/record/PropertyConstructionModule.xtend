@@ -74,7 +74,7 @@ class PropertyConstructionModule {
 	private static def createPropertyGetter(Property property) '''
 		public final «property.findType.createTypeName» «property.createGetterName»() {
 			return this.«
-				if (property.referTo != null)
+				if (property.referTo !== null)
 					'''«property.referTo.createGetterName»()'''
 				else
 					property.createPropertyName+if (property.isIncrement) '++' else ''»;

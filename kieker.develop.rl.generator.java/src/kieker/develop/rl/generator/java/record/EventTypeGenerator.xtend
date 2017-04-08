@@ -173,12 +173,12 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 		«ENDIF»import java.nio.BufferUnderflowException;
 		import java.nio.ByteBuffer;
 
-		«IF (type.parent == null)»import kieker.common.record.AbstractMonitoringRecord;
+		«IF (type.parent === null)»import kieker.common.record.AbstractMonitoringRecord;
 		import kieker.common.record.IMonitoringRecord;
 		«ELSE»import «(type.parent.eContainer as Model).name».«type.parent.name»;
 		«ENDIF»import kieker.common.util.registry.IRegistry;
 		
-		«if (type.inherits != null && type.inherits.size > 0) type.inherits.map[i | i.createInterfaceImport].join»
+		«if (type.inherits !== null && type.inherits.size > 0) type.inherits.map[i | i.createInterfaceImport].join»
 	'''
 	
 	/**
@@ -215,7 +215,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	 * Determine the name of the parent class.
 	 */
 	private def CharSequence createParent(EventType type) {
-		if (type.parent!=null) type.parent.name else 'AbstractMonitoringRecord'
+		if (type.parent !== null) type.parent.name else 'AbstractMonitoringRecord'
 	}
 		
 	/**
@@ -223,11 +223,11 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	 */
 	private def CharSequence createImplements(EventType type) {
 		val List<CharSequence> interfaces = new ArrayList() 
-		if (type.parent == null) { // only add these interfaces for classes directly inheriting AbstractMonitoringRecord
+		if (type.parent === null) { // only add these interfaces for classes directly inheriting AbstractMonitoringRecord
 			interfaces.add('IMonitoringRecord.Factory')
 			interfaces.add('IMonitoringRecord.BinaryFactory')
 		}
-		if (type.inherits != null && type.inherits.size > 0) {
+		if (type.inherits !== null && type.inherits.size > 0) {
 			interfaces.addAll(type.inherits.map[iface | iface.name]);
 		}
 

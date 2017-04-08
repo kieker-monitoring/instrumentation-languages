@@ -46,9 +46,9 @@ class JarModelGlobalScopeProvider extends BaseTypeGlobalScopeProvider {
         if (scope != IScope.NULLSCOPE) {
         	return scope
         } else if (referenceType.name.equals(Annotation.simpleName)) {
-        	if (resource != null) {
+        	if (resource !== null) {
         		val ResourceSet resourceSet = resource.getResourceSet()
-        		if (resourceSet != null) {
+        		if (resourceSet !== null) {
         			val typeProvider = SemanticAnnotationProviderFactory.getProvider(resourceSet)
 					return new SemanticAnnotationScope(typeProvider, qualifiedNameConverter, filter)
         		} else
@@ -57,9 +57,9 @@ class JarModelGlobalScopeProvider extends BaseTypeGlobalScopeProvider {
     			throw new IllegalStateException("context must be contained in a resource") 
         } else if (referenceType.name.equals(TemplateType.simpleName) 
         	|| referenceType.name.equals(EventType.simpleName)) {
-        	if (resource != null) {
+        	if (resource !== null) {
         		val ResourceSet resourceSet = resource.getResourceSet()
-        		if (resourceSet != null) {
+        		if (resourceSet !== null) {
 	        		try {
 	        			val workspace = ResourcesPlugin.getWorkspace()
 	        			val root = workspace.getRoot()

@@ -53,9 +53,9 @@ class ForeignModelGlobalScopeProvider extends DefaultGlobalScopeProvider {
             Predicate<IEObjectDescription> filter, EClass referenceType) {
         // check whether the reference type is a type of any kind 
         if (EcoreUtil2::isAssignableFrom(Literals::EOBJECT, referenceType)) {
-        	if (resource != null) {
+        	if (resource !== null) {
         		val ResourceSet resourceSet = resource.getResourceSet()
-        		if (resourceSet != null) {
+        		if (resourceSet !== null) {
         			val IForeignModelTypeProvider typeProvider = 
         				typeProviderFactory.getTypeProvider(resourceSet, 
         					resource.allContents.filter(typeof(ApplicationModelHandle)).head

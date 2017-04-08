@@ -68,7 +68,7 @@ class IntermediateModelGenerator implements IGenerator<AspectModel, Intermediate
 	 * @param pointcut the pointcut
 	 */
 	private def void createJoinpoints(EList<AbstractJoinpoint> joinpoints, Pointcut pointcut) {
-		if (pointcut.annotation != null) {
+		if (pointcut.annotation !== null) {
 			if ("technology".equals(pointcut.annotation.name)) {
 				collectDestinationNodes(pointcut).forEach[
 					println("tech " + it.name + " " + pointcut.name + " " + pointcut.annotation.technologies)
@@ -151,7 +151,7 @@ class IntermediateModelGenerator implements IGenerator<AspectModel, Intermediate
 			} 
 			ContainerNode: {
 				val node = state.findFirst[(location.node as ContainerNode).container.equals(it)]
-				if (node != null) {
+				if (node !== null) {
 					if (node.contents.size > 0) {
 						collectedContainers.addAll(node.contents)
 						results.collectLocationChildNodes(location, collectedContainers)
@@ -182,9 +182,9 @@ class IntermediateModelGenerator implements IGenerator<AspectModel, Intermediate
 	 * @param collectedContainers containers matching the present location
 	 */
 	private def void collectLocationChildNodes(Collection<Container> results, LocationQuery location, Collection<Container> collectedContainers) {
-		if (location.specialization != null)
+		if (location.specialization !== null)
 			results.collectLocationNodes(location.specialization, collectedContainers)
-		else if (location.composition != null)
+		else if (location.composition !== null)
 			results.collectLocationNodes(location.composition, collectedContainers)
 		else
 			results.addAll(collectedContainers)
@@ -201,13 +201,13 @@ class IntermediateModelGenerator implements IGenerator<AspectModel, Intermediate
 	 * @returns return true in case the suffix matches
 	 */
 	private def boolean matchSubPathNodeSuffix(Container container, LocationQuery query) {
-		if (query.specialization != null) {
+		if (query.specialization !== null) {
 			if (query.specialization.node instanceof ContainerNode) {
 				return container.pathContainsSuffix((query.specialization.node as ContainerNode).container)
 			} else {
 				throw new InternalErrorException("A SubPathNode must be followed by a ContainerNode or null, but was followed by " + query.specialization.node.class)
 			}
-		} else if (query.composition != null) {
+		} else if (query.composition !== null) {
 			// TODO composition
 			return false
 		} else

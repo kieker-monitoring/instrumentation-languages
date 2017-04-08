@@ -36,6 +36,9 @@ import de.cau.cs.se.geco.architecture.framework.IGenerator
 
 /**
  * Generates one single files per record for java, c, and perl. 
+ * 
+ * @author Reiner Jung
+ * @since 1.0
  */
 class RecordLangGenerator implements IGenerator2 {
 

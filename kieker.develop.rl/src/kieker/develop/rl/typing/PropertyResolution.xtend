@@ -1,3 +1,18 @@
+/***************************************************************************
+ * Copyright 2017 Kieker Project (http://kieker-monitoring.net)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ***************************************************************************/
 package kieker.develop.rl.typing
 
 import kieker.develop.rl.recordLang.Property
@@ -9,6 +24,13 @@ import kieker.develop.rl.recordLang.TemplateType
 import static extension kieker.develop.rl.typing.TypeResolution.*
 import kieker.develop.rl.recordLang.PropertyModifier
 
+/**
+ * Functions used to support the resolution of
+ * properties.
+ * 
+ * @author Reiner Jung
+ * @since 1.2
+ */
 class PropertyResolution {
 	
 		
@@ -36,7 +58,7 @@ class PropertyResolution {
 	 */
 	static def List<Property> collectAllDataProperties(EventType type) {
 		val list = new ArrayList<Property>()
-		list.addAll(collectAllProperties(type).filter[it.referTo == null])
+		list.addAll(collectAllProperties(type).filter[it.referTo === null])
 		return list
 	}
 	
@@ -52,7 +74,7 @@ class PropertyResolution {
 	 */
 	static def List<Property> collectAllPersistentDataProperties(EventType type) {
 		val list = new ArrayList<Property>()
-		list.addAll(collectAllProperties(type).filter[it.referTo == null && !it.transient])
+		list.addAll(collectAllProperties(type).filter[it.referTo === null && !it.transient])
 		return list
 	}
 		
@@ -68,7 +90,7 @@ class PropertyResolution {
 	 */
 	static def List<Property> collectAllDataProperties(TemplateType type) {
 		val list = new ArrayList<Property>()
-		list.addAll(collectAllProperties(type).filter[it.referTo == null])
+		list.addAll(collectAllProperties(type).filter[it.referTo === null])
 		return list
 	}
 	
@@ -87,12 +109,12 @@ class PropertyResolution {
 	 */
 	static def List<Property> collectAllProperties(EventType type) {
 		val List<Property> result =
-			if (type.parent != null)
+			if (type.parent !== null)
 				type.parent.collectAllProperties
 			else 
 				new ArrayList<Property>()
 		
-		if (type.inherits != null) 
+		if (type.inherits !== null) 
 			type.inherits.forEach[result.addAllUnique(it.collectAllProperties)]
 	
 		return result.addAllUnique(type.properties)
@@ -109,7 +131,7 @@ class PropertyResolution {
 	 */
 	static def List<Property> collectAllProperties(TemplateType type) {
 		val List<Property> result = new ArrayList<Property>()
-		if (type.inherits != null)
+		if (type.inherits !== null)
 			type.inherits.forEach[iface | result.addAllUnique(iface.collectAllProperties)]
 
 		return result.addAllUnique(type.properties)
@@ -129,7 +151,7 @@ class PropertyResolution {
 	 * 		a complete list of all properties in a record
 	 */
 	static def List<Property> collectAllTemplateProperties(EventType type) {
-		if (type.inherits != null) {
+		if (type.inherits !== null) {
 			val List<Property> result = new ArrayList<Property>()
 			type.inherits.forEach[iface | result.addAllUnique(iface.collectAllTemplateProperties)]
 			return result
@@ -149,7 +171,7 @@ class PropertyResolution {
 	 */
 	static def List<Property> collectAllTemplateProperties(TemplateType type) {
 		val List<Property> result = new ArrayList<Property>()
-		if (type.inherits!=null)
+		if (type.inherits !== null)
 			type.inherits.forEach[iface | result.addAllUnique(iface.collectAllTemplateProperties)]
 		return result.addAllUnique(type.properties)
 	}
@@ -193,7 +215,7 @@ class PropertyResolution {
 	 */
 	static def List<Property> collectAllGetterDeclarationProperties(EventType type) {
 		var List<Property> result = type.collectAllProperties
-		if (type.parent != null)
+		if (type.parent !== null)
 			return result.removeAlreadyImplementedProperties(type.parent)
 		else
 			return result
@@ -218,9 +240,9 @@ class PropertyResolution {
 		properties.addAll(type.properties)
 		
 		val List<Property> declarationProperties = new ArrayList<Property>()
-		properties.forEach[property | if (property.referTo == null) declarationProperties.add(property)]
+		properties.forEach[property | if (property.referTo === null) declarationProperties.add(property)]
 				
-		if (type.parent != null)
+		if (type.parent !== null)
 			return declarationProperties.removeAlreadyImplementedProperties(type.parent)
 		else
 			return declarationProperties

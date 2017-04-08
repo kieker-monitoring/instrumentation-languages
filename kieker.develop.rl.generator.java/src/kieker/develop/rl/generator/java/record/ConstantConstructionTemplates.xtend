@@ -51,7 +51,7 @@ class ConstantConstructionTemplates {
 	static def createDefaultConstants (List<Property> properties) {
 		properties.filter[
 			val type = it.findType
-			it.value != null || 
+			it.value !== null || 
 			(BaseTypes.STRING == BaseTypes.getTypeEnum(type.type) && type.sizes.size == 0)
 		].map[property | createDefaultConstant(property)].join
 	}
@@ -84,7 +84,7 @@ class ConstantConstructionTemplates {
 	 * @returns a constant declaration
 	 */
 	private static def createDefaultConstant(Property property) '''
-		public static final «property.type.createTypeName» «property.createConstantName» = «if (property.value==null) '""' else property.value.createLiteral»;
+		public static final «property.type.createTypeName» «property.createConstantName» = «if (property.value === null) '""' else property.value.createLiteral»;
 	'''
 
 			

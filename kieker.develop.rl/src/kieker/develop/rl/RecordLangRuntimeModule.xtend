@@ -43,6 +43,7 @@ class RecordLangRuntimeModule extends AbstractRecordLangRuntimeModule {
 	override void configure(Binder binder) {
 		super.configure(binder)
 		binder.bind(IOutputConfigurationProvider).to(RecordLangOutletConfigurationProvider).in(Singleton)
+		// TODO what is this doing here?
 		binder.bind(ISemanticAnnotationHandler).to(SemanticAnnotationHandler).in(Singleton)
 	}
 }

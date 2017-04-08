@@ -60,7 +60,7 @@ class TemplateTypeGenerator extends AbstractTypeGenerator<TemplateType, CharSequ
 		return (left.eContainer as Model).name != (right.eContainer as Model).name
 	}
 	
-	private def createImports(EList<TemplateType> parents, TemplateType type) '''«if (parents!=null && parents.size>0) parents.filter[t | isInSamePackage(type, t)].map[createImport].join() else createDefaultImport»'''
+	private def createImports(EList<TemplateType> parents, TemplateType type) '''«if (parents !== null && parents.size > 0) parents.filter[t | isInSamePackage(type, t)].map[createImport].join() else createDefaultImport»'''
 	
 	private def createDefaultImport() '''import kieker.common.record.IMonitoringRecord;
 	'''
@@ -68,7 +68,7 @@ class TemplateTypeGenerator extends AbstractTypeGenerator<TemplateType, CharSequ
 	private def createImport(TemplateType type) '''import «(type.eContainer as Model).name».«type»;
 	'''
 	
-	private def createExtends(EList<TemplateType> parents) '''«if (parents!=null && parents.size>0) parents.map[t | t.name].join(', ') else 'IMonitoringRecord'»'''
+	private def createExtends(EList<TemplateType> parents) '''«if (parents !== null && parents.size > 0) parents.map[t | t.name].join(', ') else 'IMonitoringRecord'»'''
 	
 	/**
 	 * Creates a getter for a given property.

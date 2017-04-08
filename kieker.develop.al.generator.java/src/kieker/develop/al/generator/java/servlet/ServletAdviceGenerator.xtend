@@ -95,7 +95,7 @@ class ServletAdviceGenerator implements IGenerator<Advice, CharSequence> {
 								path = httpRequest.getRequestURI().replace('/', '.').substring(1);
 								sessionId = httpRequest.getSession().getId();
 								query = httpRequest.getQueryString();
-								if (query == null) {
+								if (query === null) {
 									query = "";
 								}
 							} else {
@@ -108,7 +108,7 @@ class ServletAdviceGenerator implements IGenerator<Advice, CharSequence> {
 							componentSignature = path.replaceAll("\\.[A-Za-z0-9]*$", "");
 							«IF traceAPI»
 							TraceMetadata trace = TRACEREGISTRY.getTrace();
-							final boolean newTrace = trace == null;
+							final boolean newTrace = trace === null;
 
 							if (newTrace) {
 								SESSION_REGISTRY.storeThreadLocalSessionId(sessionId);
@@ -175,12 +175,12 @@ class ServletAdviceGenerator implements IGenerator<Advice, CharSequence> {
 				protected String registerSessionInformation(final ServletRequest request) {
 					String sessionId = TraceMetadata.NO_SESSION_ID;
 			
-					if ((request == null) || !(request instanceof HttpServletRequest)) {
+					if ((request === null) || !(request instanceof HttpServletRequest)) {
 						return sessionId;
 					}
 			
 					final HttpSession session = ((HttpServletRequest) request).getSession(false);
-					if (session != null) {
+					if (session !== null) {
 						sessionId = session.getId();
 						SESSION_REGISTRY.storeThreadLocalSessionId(sessionId);
 					}

@@ -90,7 +90,7 @@ public class JarModelResource extends ResourceImpl {
 						type.name.endsWith("." + uriFragment) || 
 						type.name.equals(uriFragment)
 					]
-					if (result != null)
+					if (result !== null)
 						return result
 				}
 			}
@@ -140,7 +140,7 @@ public class JarModelResource extends ResourceImpl {
 	 * @throws IOException
 	 */
 	override void doLoad(InputStream inputStream, Map<?, ?> options) throws IOException {
-		if (this.getURI() != null) {
+		if (this.getURI() !== null) {
 			this.createModel()
 		} else {
 			try {
@@ -166,7 +166,7 @@ public class JarModelResource extends ResourceImpl {
 			val javaProject = JavaCore.create(project)
 			val iface = javaProject.findType("kieker.common.record.IMonitoringRecord")
 			
-			if (iface != null) {		
+			if (iface !== null) {		
 				/** find all types which are related to IMonitoringRecord */
 				val hierarchy = iface.newTypeHierarchy(javaProject,null)
 				val types = hierarchy.allTypes.filter[
@@ -180,7 +180,7 @@ public class JarModelResource extends ResourceImpl {
 				
 				val models = new HashMap<String,Model>()
 				/** create a model for each package */	
-				types.forEach[type | if (models.get(type.packageFragment.elementName)==null)
+				types.forEach[type | if (models.get(type.packageFragment.elementName) === null)
 					models.put(type.packageFragment.elementName, type.createModel)
 				]
 				
@@ -196,7 +196,7 @@ public class JarModelResource extends ResourceImpl {
 				/** link types. */
 				types.forEach[type | type.linkType(typeMap)]
 				
-				if(models.values != null) {
+				if(models.values !== null) {
 					this.getContents().addAll(models.values)
 				}
 			} else {
@@ -219,7 +219,7 @@ public class JarModelResource extends ResourceImpl {
 				val hierarchy = type.newSupertypeHierarchy(null)
 				hierarchy.getSuperInterfaces(type).forEach[iface |
 					val template = typeMap.get(iface) 
-					if (template != null)
+					if (template !== null)
 						modelType.inherits.add(template as TemplateType)
 				]
 				
@@ -228,11 +228,11 @@ public class JarModelResource extends ResourceImpl {
 				val hierarchy = type.newSupertypeHierarchy(null)
 				hierarchy.getSuperInterfaces(type).forEach[iface |
 					val template = typeMap.get(iface) 
-					if (template != null)
+					if (template !== null)
 						modelType.inherits.add(template as TemplateType)
 				]
 				val superType = hierarchy.getSuperclass(type)
-				if (superType != null) {
+				if (superType !== null) {
 					modelType.parent = typeMap.get(superType) as EventType
 				}
 			}
@@ -290,7 +290,7 @@ public class JarModelResource extends ResourceImpl {
 					property.type = method.returnType.createType
 				
 					// TODO add constant and transient features later
-					if (property.type == null) {
+					if (property.type === null) {
 					createError(type.elementName, method.returnType, "property", property.name)
 					} else {
 						result.properties.add(property)
@@ -302,7 +302,7 @@ public class JarModelResource extends ResourceImpl {
 					property.type = method.returnType.createType
 					
 					// TODO add constant and transient features later
-					if (property.type == null) {
+					if (property.type === null) {
 					createError(type.elementName, method.returnType, "property", property.name)
 					} else {
 						result.properties.add(property)
@@ -331,7 +331,7 @@ public class JarModelResource extends ResourceImpl {
 					constant.type = field.typeSignature.createType
 					constant.value = field.constant.createLiteral
 					
-					if (constant.type == null) {
+					if (constant.type === null) {
 						createError(type.elementName, field.typeSignature, "constant", constant.name)
 					} else {
 						result.constants.add(constant)
@@ -343,7 +343,7 @@ public class JarModelResource extends ResourceImpl {
 				property.name = field.elementName
 				property.type = field.typeSignature.createType
 				// TODO add constant and transient features later
-				if (property.type == null) {
+				if (property.type === null) {
 					createError(type.elementName, field.typeSignature, "property", property.name)
 				} else {
 					result.properties.add(property)

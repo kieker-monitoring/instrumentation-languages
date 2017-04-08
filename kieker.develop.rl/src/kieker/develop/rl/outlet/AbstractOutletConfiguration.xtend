@@ -24,6 +24,7 @@ import de.cau.cs.se.geco.architecture.framework.IGenerator
  * associated generators with the configured outlet.
  * 
  * @author Reiner Jung
+ * @since 1.3
  * 
  * @param <S> source model root class
  * @param <T> target model root class (or CharSequence for Model-to-Text)

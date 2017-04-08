@@ -24,8 +24,8 @@ abstract class AbstractTypeGenerator<S extends ComplexType, T> implements IGener
 	 * 		one record type to be used to create monitoring record
 	 */
 	override generate(S input) {
-		val definedAuthor = if (input.author == null) this.author else input.author
-		val definedVersion = if (input.since == null) this.version else input.since
+		val definedAuthor = if (input.author === null) this.author else input.author
+		val definedVersion = if (input.since === null) this.version else input.since
 
 		return createOutputModel(input, header, definedAuthor, definedVersion)
 	}
