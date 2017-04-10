@@ -10,9 +10,9 @@ import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
 import kieker.develop.rl.typing.base.BaseTypes
-import org.eclipse.xtext.testing.InjectWith
-import org.eclipse.xtext.testing.XtextRunner
-import org.eclipse.xtext.testing.util.ParseHelper
+import org.eclipse.xtext.junit4.InjectWith
+import org.eclipse.xtext.junit4.XtextRunner
+import org.eclipse.xtext.junit4.util.ParseHelper
 import kieker.develop.rl.recordLang.ComplexType
 import kieker.develop.rl.recordLang.EventType
 import java.util.Map
