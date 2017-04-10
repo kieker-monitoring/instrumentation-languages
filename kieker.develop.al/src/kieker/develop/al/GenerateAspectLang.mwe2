@@ -13,7 +13,7 @@ Workflow {
 	bean = StandaloneSetup {
 		scanClassPath = true
 		
-		platformUri = "${rootPath}/.."
+		platformUri = "${rootPath}"
 
 		uriMap = {
 			from = "platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel"
