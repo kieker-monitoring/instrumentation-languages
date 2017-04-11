@@ -8,12 +8,12 @@ Bundle-ActivationPolicy: lazy
 Require-Bundle: kieker.develop.al,
  kieker.develop.al.ui,
  org.eclipse.core.runtime,
- org.eclipse.xtext.junit4,
  org.eclipse.ui.workbench;resolution:=optional,
  org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional,
  org.eclipse.xtext.xbase.lib,
- org.eclipse.xtext.junit4,
- org.eclipse.xtext.xbase.junit
+ org.eclipse.xtext.xbase.junit,
+ org.eclipse.xtext.testing,
+ org.eclipse.xtext.xbase.testing
 Import-Package: org.apache.log4j,
  org.hamcrest.core,
  org.junit;version="4.5.0",
