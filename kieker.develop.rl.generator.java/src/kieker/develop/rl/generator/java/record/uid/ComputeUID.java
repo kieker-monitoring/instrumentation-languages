@@ -39,6 +39,7 @@ import kieker.develop.rl.typing.PropertyResolution;
  * Reconstructed (more or less) the algorithm behind the serializeVersionUID computation.
  *
  * @author Reiner Jung
+ * @since 1.0
  *
  */
 public final class ComputeUID {

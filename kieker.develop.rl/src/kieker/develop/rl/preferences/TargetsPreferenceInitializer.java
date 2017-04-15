@@ -25,7 +25,7 @@ import kieker.develop.rl.recordLang.ComplexType;
 
 /**
  * @author Reiner Jung
- *
+ * @since 1.0
  */
 public class TargetsPreferenceInitializer extends AbstractPreferenceInitializer {
 

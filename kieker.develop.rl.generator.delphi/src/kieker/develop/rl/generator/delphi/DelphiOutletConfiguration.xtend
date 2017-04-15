@@ -20,6 +20,12 @@ import kieker.develop.rl.outlet.AbstractOutletConfiguration
 import kieker.develop.rl.recordLang.ComplexType
 import kieker.develop.rl.recordLang.Model
 
+/**
+ * Outlet configuration for Delphi code.
+ * 
+ * @author Reiner Jung
+ * @since 1.3
+ */
 class DelphiOutletConfiguration extends AbstractOutletConfiguration<ComplexType, CharSequence>  {
 	
 	private static String DELFI_OUTLET_ID = "delphi.records"

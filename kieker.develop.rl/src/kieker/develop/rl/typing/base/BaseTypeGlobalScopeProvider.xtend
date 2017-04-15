@@ -29,6 +29,13 @@ import org.eclipse.xtext.scoping.impl.DefaultGlobalScopeProvider
 import kieker.develop.rl.typing.ITypeProvider
 import kieker.develop.rl.generator.InternalErrorException
 
+/**
+ * Base type global scope provider.
+ * 
+ * @author Christian Schneider
+ * @author Reiner Jung
+ * @since 1.0
+ */
 class BaseTypeGlobalScopeProvider extends DefaultGlobalScopeProvider {
 	@Inject
 	private BaseTypeProviderFactory typeProviderFactory;

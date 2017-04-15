@@ -45,6 +45,9 @@ import static extension kieker.develop.rl.typing.PropertyResolution.*
  * Custom validation rules. 
  *
  * see http://www.eclipse.org/Xtext/documentation.html#validation
+ * 
+ * @author Reiner Jung
+ * @since 1.1
  */
 class RecordLangValidator extends AbstractRecordLangValidator {
 

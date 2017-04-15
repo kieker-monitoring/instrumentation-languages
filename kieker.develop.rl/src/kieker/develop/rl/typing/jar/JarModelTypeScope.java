@@ -42,6 +42,7 @@ import kieker.develop.rl.typing.ITypeProvider;
  * broadly based on org.spp.cocome.behavior.pcm.handler.PCMModelTypeScope.
  *
  * @author Reiner Jung
+ * @since 1.2
  */
 public class JarModelTypeScope extends AbstractScope {
 

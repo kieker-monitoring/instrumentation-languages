@@ -39,9 +39,10 @@ import kieker.develop.rl.recordLang.Type;
 import kieker.develop.rl.typing.ITypeProvider;
 
 /**
- *
+ * Scope for base types.
  *
  * @author Christian Schneider
+ * @since 1.0
  */
 public class BaseTypeScope extends AbstractScope {
 

@@ -27,6 +27,12 @@ import static extension kieker.develop.rl.generator.c.CommonCFunctionsExtension.
 import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
 
+/**
+ * Generator for event types producing the serialization function for C.
+ * 
+ * @author Reiner Jung
+ * @since 1.0
+ */
 class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> {
 
 	override accepts(ComplexType type) {

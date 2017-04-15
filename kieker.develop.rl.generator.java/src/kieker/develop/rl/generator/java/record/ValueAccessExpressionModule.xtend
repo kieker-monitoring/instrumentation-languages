@@ -23,7 +23,7 @@ import static extension kieker.develop.rl.generator.java.record.NameResolver.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
 
 /**
- * 
+ * Value access in a record.
  */
 class ValueAccessExpressionModule {
 	

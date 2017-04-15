@@ -30,6 +30,7 @@ import kieker.develop.rl.typing.ITypeProvider;
  * @author Christian Schneider - Initial contribution
  * @author Reiner Jung - Cleanup and commentary
  *
+ * @since 1.0
  */
 public class BaseTypeProvider implements Resource.Factory, ITypeProvider {
 

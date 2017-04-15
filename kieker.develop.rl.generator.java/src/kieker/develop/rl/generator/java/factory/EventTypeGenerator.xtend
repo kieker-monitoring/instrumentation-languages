@@ -20,6 +20,12 @@ import kieker.develop.rl.recordLang.EventType
 import kieker.develop.rl.recordLang.Model
 import kieker.develop.rl.generator.AbstractTypeGenerator
 
+/**
+ * Generator for factories for the event types.
+ * 
+ * @author Christian Wulf
+ * @since 1.2
+ */
 class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> {
 	
 	override accepts(ComplexType type) {

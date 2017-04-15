@@ -24,6 +24,8 @@ import kieker.develop.rl.recordLang.Type;
  * @author Christian Schneider - Initial contribution (derived from
  *         org.eclipse.xtext.common.types.access.IJvmTypeProvider)
  * @author Reiner Jung - Cleanups and commentary
+ *
+ * @since 1.0
  */
 public interface ITypeProvider {
 

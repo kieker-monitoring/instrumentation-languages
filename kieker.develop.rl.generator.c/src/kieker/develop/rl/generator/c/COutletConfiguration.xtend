@@ -22,6 +22,12 @@ import kieker.develop.rl.recordLang.ComplexType
 
 import static extension kieker.develop.rl.generator.c.CommonCFunctionsExtension.*
 
+/**
+ * Outlet configuration for C.
+ * 
+ * @author Reiner Jung
+ * @since 1.3
+ */
 class COutletConfiguration extends AbstractOutletConfiguration<ComplexType, CharSequence> {
 	
 	private static String C_OUTLET_ID = "c"

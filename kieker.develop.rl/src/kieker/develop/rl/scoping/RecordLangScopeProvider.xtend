@@ -38,6 +38,9 @@ import static extension kieker.develop.rl.typing.PropertyResolution.*
  * 
  * see : http://www.eclipse.org/Xtext/documentation.html#scoping
  * on how and when to use it 
+ * 
+ * @author Reiner Jung
+ * @since 1.3
  *
  */
 class RecordLangScopeProvider extends AbstractDeclarativeScopeProvider {

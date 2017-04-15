@@ -28,6 +28,7 @@ import kieker.develop.rl.recordLang.ComplexType;
  * Based on http://xtextcasts.org/episodes/15-output-configurations.
  *
  * @author Reiner Jung
+ * @since 1.1
  *
  */
 public class RecordLangOutletConfigurationProvider implements IOutputConfigurationProvider {

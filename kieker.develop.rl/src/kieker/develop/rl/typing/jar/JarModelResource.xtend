@@ -47,6 +47,7 @@ import kieker.develop.rl.recordLang.ComplexType
  * @author Yannic Kropp -- initial contribution
  * @author Reiner Jung
  * 
+ * @since 1.2
  */
 public class JarModelResource extends ResourceImpl {
 	

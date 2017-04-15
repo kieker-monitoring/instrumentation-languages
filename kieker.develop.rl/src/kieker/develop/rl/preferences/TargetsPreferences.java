@@ -22,7 +22,7 @@ import org.eclipse.core.runtime.preferences.InstanceScope;
  * Utility class for preference constants.
  *
  * @author Reiner Jung
- *
+ * @since 1.0
  */
 public final class TargetsPreferences {
 

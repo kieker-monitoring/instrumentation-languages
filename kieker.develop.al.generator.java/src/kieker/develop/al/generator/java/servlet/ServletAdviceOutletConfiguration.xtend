@@ -21,6 +21,11 @@ import kieker.develop.al.aspectLang.AspectModel
 import kieker.develop.al.generator.java.ConfigurationProperties
 import kieker.develop.rl.outlet.AbstractOutletConfiguration
 
+/**
+ * Servlet advice outlet configuration.
+ * 
+ * @author Reiner Jung
+ */
 class ServletAdviceOutletConfiguration extends AbstractOutletConfiguration<Advice, CharSequence> {
 		
 	new() {

@@ -23,6 +23,12 @@ import kieker.develop.rl.generator.java.factory.FactoryOutletConfiguration
 import kieker.develop.rl.generator.java.junit.JUnitOutletConfiguration
 import kieker.develop.rl.recordLang.ComplexType
 
+/**
+ * Provider of configurations for outlets with bound generators.
+ * 
+ * @author Reiner Jung
+ * @since 1.3
+ */
 class GeneratorProvider implements IGeneratorProvider<ComplexType, CharSequence> {
 	
 	public static String LANG_JAVA = "java"

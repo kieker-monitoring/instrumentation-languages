@@ -24,6 +24,11 @@ import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
 
+/**
+ * Test class
+ * 
+ * @author Reiner Jung
+ */
 @RunWith(XtextRunner)
 @InjectWith(AspectLangInjectorProvider)
 class AspectLangParsingTest{

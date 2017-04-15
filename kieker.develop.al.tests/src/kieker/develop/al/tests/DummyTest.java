@@ -16,11 +16,10 @@
 package kieker.develop.al.tests;
 
 import org.junit.Assert;
-
 import org.junit.Test;
 
 /**
- * @author rju
+ * @author Reiner Jung
  *
  */
 public class DummyTest { // NOCS -- its a test
@@ -30,8 +29,7 @@ public class DummyTest { // NOCS -- its a test
 	 */
 	@Test
 	public void test() {
-		 Assert.assertTrue(true);
+		Assert.assertTrue(true);
 	}
 
 }
-

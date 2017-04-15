@@ -49,6 +49,16 @@ class NameResolver {
 	}
 	
 	/**
+	 * Returns the correct name for a setter following Java conventions.
+	 * 
+	 * @param property
+	 * 		a property of a record type
+	 * 
+	 * @returns the name of the getter of the property
+	 */
+	static def CharSequence createSetterName(Property property) '''set«property.name.toFirstUpper»'''
+	
+	/**
 	 * Create a constant name for a literal.
 	 * 
 	 * @param literal the constant literal

@@ -19,6 +19,12 @@ import java.util.Collection
 import kieker.develop.semantics.annotations.Annotation
 import kieker.develop.semantics.annotations.Semantics
 
+/**
+ * Interface for a handler of semantic annotations.
+ * 
+ * @author Reiner Jung
+ * @since 1.3
+ */
 interface ISemanticAnnotationHandler {
 	
 	def Collection<Annotation> getAnnotations()

@@ -21,6 +21,12 @@ import kieker.develop.rl.recordLang.ModelSubType
 import de.cau.cs.se.geco.architecture.framework.TraceModelProvider
 import kieker.develop.rl.recordLang.RecordLangFactory
 
+/**
+ * Extension template type generator.
+ * 
+ * @author Reiner Jung
+ * @since 1.3
+ */
 class ExtensionsTemplateTypeGenerator implements IGenerator<ModelSubType, TemplateType> {
 
 	var String author

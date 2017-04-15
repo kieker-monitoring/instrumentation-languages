@@ -22,7 +22,7 @@ import kieker.develop.rl.recordLang.RecordLangFactory;
  * The base types of the language for app development.
  *
  * @author Reiner Jung - Initial contribution
- *
+ * @since 1.0
  */
 public enum BaseTypes {
 	/** long data type. */

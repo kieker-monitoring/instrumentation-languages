@@ -31,7 +31,7 @@ import kieker.develop.rl.typing.ITypeProvider;
  * broadly based on org.spp.cocome.behavior.pcm.handler.PCMModelTypeProvider
  *
  * @author Reiner Jung
- *
+ * @since 1.2
  */
 public class JarModelTypeProvider implements Resource.Factory, ITypeProvider {
 

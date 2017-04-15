@@ -31,6 +31,8 @@ import kieker.develop.rl.recordLang.RecordLangPackage;
  *
  * @author Sebastian Zarnekow - Initial contribution and API
  * @author Reiner Jung - Adaptation for a general type approach; rewrite 2013
+ *
+ * @since 1.0
  */
 public class BaseTypeResource extends ResourceImpl {
 

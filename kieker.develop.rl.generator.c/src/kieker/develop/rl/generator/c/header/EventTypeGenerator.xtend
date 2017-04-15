@@ -24,6 +24,12 @@ import static extension kieker.develop.rl.generator.c.CommonCFunctionsExtension.
 import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
 
+/**
+ * Generator for event types for C typedefs and the header file.
+ * 
+ * @author Reiner Jung
+ * @since 1.0
+ */
 class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> {
 	
 		

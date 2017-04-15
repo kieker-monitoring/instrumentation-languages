@@ -21,6 +21,7 @@ import kieker.develop.rl.recordLang.ComplexType
  * General interface for all type generators.
  * 
  * @author Reiner Jung
+ * @since 1.3
  */
 interface IAcceptType  {
 	

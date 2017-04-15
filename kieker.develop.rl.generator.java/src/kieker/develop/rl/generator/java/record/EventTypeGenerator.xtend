@@ -115,7 +115,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 				
 				«createEquals(type.name, allDataProperties)»
 				
-				«type.createPropertyGetters»
+				«type.createPropertyGettersAndSetters»
 			}
 		'''
 	}

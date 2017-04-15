@@ -34,6 +34,13 @@ import org.eclipse.xtext.scoping.IScope
 import kieker.develop.rl.typing.semantics.SemanticAnnotationProviderFactory
 import kieker.develop.rl.typing.semantics.SemanticAnnotationScope
 
+/**
+ * Provider for the global scope for models for JAR files.
+ * 
+ * @author Yannic Kropp -- initial contribution
+ * @author Reiner Jung
+ * @since 1.2
+ */
 class JarModelGlobalScopeProvider extends BaseTypeGlobalScopeProvider {
 	
 	

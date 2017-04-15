@@ -28,6 +28,8 @@ import kieker.develop.rl.typing.ITypeProvider;
  * @author Christian Schneider - derived this class from
  *         org.eclipse.xtext.common.types.access.jdt.JdtTypeProviderFactory
  * @author Reiner Jung - commentary and cleanups
+ *
+ * @since 1.0
  */
 public class BaseTypeProviderFactory {
 

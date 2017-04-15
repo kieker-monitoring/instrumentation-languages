@@ -24,6 +24,12 @@ import static extension kieker.develop.rl.generator.java.record.NameResolver.*
 import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
 
+/**
+ * Generate code for property declaration, constant fields, getters and setters.
+ * 
+ * @author Reiner Jung
+ * @since 1.3
+ */
 class PropertyConstructionModule {
 	
 	/**
@@ -44,8 +50,8 @@ class PropertyConstructionModule {
 	 * 
 	 * @return Java code block with getters
 	 */		
-	static def createPropertyGetters(EventType type) {
-		type.collectAllGetterDeclarationProperties.map[it.createPropertyGetter].join("\n")
+	static def createPropertyGettersAndSetters(EventType type) {
+		type.collectAllGetterDeclarationProperties.map[it.createPropertyGetterAndSetter].join("\n")
 	}
 	
 	/**
@@ -57,28 +63,34 @@ class PropertyConstructionModule {
 	 * @returns  one property declaration
 	 */
 	private static def createPropertyDeclaration(Property property) 
-		'''private «if (property.isTransient)
-				'transient'
-			else if (!property.isIncrement)
-				'final'» «property.findType.createTypeName» «property.createPropertyName»«if (property.increment) ' = ' + property.createConstantName»;
+		'''private «IF (property.isTransient)»transient«ENDIF
+		»«property.findType.createTypeName» «property.createPropertyName»«if (!property.increment) ' = ' + property.createConstantName»;
 		'''
 					
 	/**
 	 * Creates a getter for a given property.
 	 * 
-	 * @param property(
+	 * @param property
 	 * 		a property of the record type
 	 * 
 	 * @returns the resulting getter as a CharSequence
 	 */
-	private static def createPropertyGetter(Property property) '''
+	private static def createPropertyGetterAndSetter(Property property) '''
 		public final «property.findType.createTypeName» «property.createGetterName»() {
 			return this.«
 				if (property.referTo !== null)
 					'''«property.referTo.createGetterName»()'''
 				else
 					property.createPropertyName+if (property.isIncrement) '++' else ''»;
-		}	
+		}
+		
+		public void final «property.createSetterName»(«property.findType.createTypeName» «property.name») {
+			«IF (property.referTo !== null)»
+				«property.referTo.createSetterName»(«property.name»);
+			«ELSE»
+				this.«property.name» = «property.name»;
+			«ENDIF»
+		}
 	'''
 	
 					

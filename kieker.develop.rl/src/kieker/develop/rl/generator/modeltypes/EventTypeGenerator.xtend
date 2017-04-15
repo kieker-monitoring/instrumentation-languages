@@ -22,6 +22,12 @@ import kieker.develop.rl.recordLang.ModelSubType
 import kieker.develop.rl.recordLang.TemplateType
 import kieker.develop.rl.recordLang.RecordLangFactory
 
+/**
+ * generator to create event types.
+ * 
+ * @author Reiner Jung
+ * @since 1.3
+ */
 class EventTypeGenerator implements IGenerator<EventType, EventType> {
 	
 	var String author

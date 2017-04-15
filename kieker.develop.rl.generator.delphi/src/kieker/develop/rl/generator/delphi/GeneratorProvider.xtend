@@ -20,6 +20,12 @@ import kieker.develop.rl.generator.IGeneratorProvider
 import kieker.develop.rl.outlet.AbstractOutletConfiguration
 import kieker.develop.rl.recordLang.ComplexType
 
+/**
+ * Generator provider for delphi.
+ * 
+ * @author Reiner Jung
+ * @since 1.3
+ */
 class GeneratorProvider implements IGeneratorProvider<ComplexType, CharSequence> {
 	
 	public static String LANG_DELPHI = "delphi"

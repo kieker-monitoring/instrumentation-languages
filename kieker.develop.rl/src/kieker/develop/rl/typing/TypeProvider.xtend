@@ -25,6 +25,7 @@ import kieker.develop.rl.recordLang.TemplateType
  * Caches all existing ComplexTypes.
  * 
  * @author Reiner Jung
+ * @since 1.0
  */
 class TypeProvider {
 		

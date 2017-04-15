@@ -22,6 +22,11 @@ import kieker.develop.al.generator.java.javaee.JavaEEAdviceGenerator
 import kieker.develop.rl.outlet.AbstractOutletConfiguration
 import kieker.develop.al.generator.java.ConfigurationProperties
 
+/**
+ * JavaEE advice outlet configuration
+ * 
+ * @author Reiner Jung
+ */
 class JavaEEAdviceOutletConfiguration extends AbstractOutletConfiguration<Advice, CharSequence> {
 		
 	
