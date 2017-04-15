@@ -33,9 +33,6 @@ import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl
 import org.eclipse.jdt.core.Flags
-import org.eclipse.jdt.core.IClassFile
-import org.eclipse.jdt.core.ICompilationUnit
-import org.eclipse.jdt.core.IPackageFragment
 import org.eclipse.jdt.core.IType
 import org.eclipse.jdt.core.JavaCore
 import org.eclipse.core.resources.IMarker
@@ -43,7 +40,9 @@ import kieker.develop.rl.typing.base.BaseTypes
 import kieker.develop.rl.recordLang.ComplexType
 
 /**
- * broadly based on org.spp.cocome.behavior.pcm.handler.PCMModelResource
+ * The resource collects record information from JAR files.
+ * 
+ * Broadly based on org.spp.cocome.behavior.pcm.handler.PCMModelResource
  * 
  * @author Yannic Kropp -- initial contribution
  * @author Reiner Jung
@@ -55,7 +54,6 @@ public class JarModelResource extends ResourceImpl {
 		"java.io.Serializable",
 		"java.lang.Comparable", "java.lang.Object", 
 		"kieker.common.record.AbstractMonitoringRecord",
-		"kieker.common.record.misc.RegistryRecord", // TODO this can be removed after supporting arrays officially.
 		"kieker.common.record.IMonitoringRecord"
 	]
 	
@@ -451,29 +449,5 @@ public class JarModelResource extends ResourceImpl {
 		result.size = size
 		return result
 	}
-		
-
-	
-	/**
-	 * find all types in a package fragment recursively.
-	 */
-	private def Collection<IType> findAllTypes(IPackageFragment fragment) {
-		val result = new ArrayList<IType>()
-		fragment.children.forEach[element |
-			switch (element) {
-				IPackageFragment: {
-					if (element.elementName.startsWith("kieker"))
-						result.addAll(element.findAllTypes)
-				}
-				IClassFile: result.add(element.getType())
-				ICompilationUnit: result.addAll(element.types)
-			}
-		]
-				
-		return result
-	}
-
-
-	
 	
 }

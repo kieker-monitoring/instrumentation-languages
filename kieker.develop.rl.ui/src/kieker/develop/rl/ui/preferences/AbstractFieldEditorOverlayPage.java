@@ -30,6 +30,7 @@ import org.eclipse.swt.custom.BusyIndicator;
 import kieker.develop.rl.generator.GeneratorRegistration;
 import kieker.develop.rl.outlet.AbstractOutletConfiguration;
 import kieker.develop.rl.preferences.TargetsPreferences;
+import kieker.develop.rl.recordLang.ComplexType;
 
 /**
  * superclass for FieldEditorPreferencePage; can be used for preference pages and property pages.
@@ -102,7 +103,7 @@ public abstract class AbstractFieldEditorOverlayPage extends FieldEditorPreferen
 
 	@Override
 	protected void createFieldEditors() {
-		for (final AbstractOutletConfiguration outletConfiguration : GeneratorRegistration.getOutletConfigurations()) {
+		for (final AbstractOutletConfiguration<ComplexType, Object> outletConfiguration : GeneratorRegistration.getOutletConfigurations()) {
 			this.addField(new BooleanFieldEditor(TargetsPreferences.GENERATOR_ACTIVE + outletConfiguration.getName(),
 					outletConfiguration.getDescription() + " generator", this.getFieldEditorParent()));
 			final FieldEditor commentFieldEditor = new CommentFieldEditor(

@@ -227,6 +227,7 @@ terminal fragment NUMBER :
 
 // Integer Terminal
 // An INT is a list of numbers.   
+@Override 
 terminal INT returns ecore::EInt:
     NUMBER+;
 

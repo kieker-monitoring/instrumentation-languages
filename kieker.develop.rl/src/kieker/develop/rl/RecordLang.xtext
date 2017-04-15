@@ -138,6 +138,7 @@ terminal fragment NUMBER :
     '0'..'9';
        
 // redefine INT terminal to allow negative numbers
+@Override 
 terminal INT returns ecore::EInt:
     '-'? NUMBER+;
 
