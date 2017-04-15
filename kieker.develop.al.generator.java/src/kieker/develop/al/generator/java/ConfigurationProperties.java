@@ -16,26 +16,32 @@
 package kieker.develop.al.generator.java;
 
 /**
+ * Configuration properties for Java code generation.
+ *
  * @author Reiner Jung
  *
  */
 public final class ConfigurationProperties {
 
-	public static String LANG_JAVA = "java";
+	public static final String LANG_JAVA = "java";
 
-	public static String TECH_ASPECT_J = "AspectJ";
-	public static String TECH_JAVA_EE = "JavaEE";
-	public static String TECH_SERVLET = "Spring";
-	public static String TECH_SPRING = "Spring";
+	public static final String TECH_ASPECT_J = "AspectJ";
+	public static final String TECH_JAVA_EE = "JavaEE";
+	public static final String TECH_SERVLET = "Spring";
+	public static final String TECH_SPRING = "Spring";
 
-	public static String ASPECT_J_ADVICE_OUTLET_ID = "java";
-	public static String JAVA_EE_ADVICE_OUTLET_ID = "java";
-	public static String SERVLET_ADVICE_OUTLET_ID = "java";
-	public static String SPRING_ADVICE_OUTLET_ID = "java";
+	public static final String ASPECT_J_ADVICE_OUTLET_ID = "java";
+	public static final String JAVA_EE_ADVICE_OUTLET_ID = "java";
+	public static final String SERVLET_ADVICE_OUTLET_ID = "java";
+	public static final String SPRING_ADVICE_OUTLET_ID = "java";
 
-	public static String ASPECT_J_CONFIGURATION_OUTLET_ID = "java";
-	public static String JAVA_EE_CONFIGURATION_OUTLET_ID = "java";
-	public static String SERVLET_CONFIGURATION_OUTLET_ID = "java";
-	public static String SPRING_CONFIGURATION_OUTLET_ID = "java";
+	public static final String ASPECT_J_CONFIGURATION_OUTLET_ID = "java";
+	public static final String JAVA_EE_CONFIGURATION_OUTLET_ID = "java";
+	public static final String SERVLET_CONFIGURATION_OUTLET_ID = "java";
+	public static final String SPRING_CONFIGURATION_OUTLET_ID = "java";
 
+	/**
+	 * Utility class. Make sure the class cannot be instantiated.
+	 */
+	private ConfigurationProperties() {}
 }
