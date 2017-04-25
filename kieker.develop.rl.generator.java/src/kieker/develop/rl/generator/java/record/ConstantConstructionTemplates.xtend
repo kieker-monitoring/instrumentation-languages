@@ -49,18 +49,30 @@ class ConstantConstructionTemplates {
 	 * @param properties list of properties of a type
 	 */
 	static def createDefaultConstants (List<Property> properties) {
-		properties.filter[
+		val defaultConstants = properties.filter[
 			val type = it.findType
 			it.value !== null || 
 			(BaseTypes.STRING == BaseTypes.getTypeEnum(type.type) && type.sizes.size == 0)
-		].map[property | createDefaultConstant(property)].join
+		]
+		
+		if (defaultConstants.empty) 
+			''''''
+		else '''
+			/** default constants. */
+			«defaultConstants.map[property | createDefaultConstant(property)].join»
+		'''
 	}
 	
 	/**
 	 * Create user specified constants.
+	 * 
+	 * @param type event type
 	 */
 	static def createUserConstants(EventType type) {
-		type.constants.map[const | createDefaultConstant(const)].join
+		if (type.constants.size > 0) '''
+			/** user-defined constants. */
+			«type.constants.map[const | createDefaultConstant(const)].join»
+		''' else ''''''
 	}
 	
 	/**

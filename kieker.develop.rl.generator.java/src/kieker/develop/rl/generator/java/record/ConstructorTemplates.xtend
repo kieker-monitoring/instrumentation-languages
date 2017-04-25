@@ -183,7 +183,7 @@ class ConstructorTemplates {
 		if (BaseTypes.STRING == BaseTypes.getTypeEnum(type.type) && 
 			type.sizes.size == 0
 		) { // guarantee initialization is always not null in case of plain strings
-			'''this.«property.createPropertyName» = «property.createPropertyName» === null?«if (property.value !== null) property.value.createConstantReference(property) else '""'»:«property.createPropertyName»;
+			'''this.«property.createPropertyName» = «property.createPropertyName» == null?«if (property.value !== null) property.value.createConstantReference(property) else '""'»:«property.createPropertyName»;
 			'''
 		} else
 			'''this.«property.createPropertyName» = «property.createPropertyName»;

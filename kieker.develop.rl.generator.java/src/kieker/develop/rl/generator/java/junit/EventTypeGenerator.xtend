@@ -43,9 +43,10 @@ import kieker.develop.rl.recordLang.BuiltInValueLiteral
  */
 class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> {
 	
+	/** Unit tests are only produced for non abstract classes which define properties.  */
 	override accepts(ComplexType type) {
 		if (type instanceof EventType) {
-			!(type as EventType).abstract
+			!(type as EventType).abstract && (type.collectAllPersistentDataProperties.size > 0)
 		} else
 			false
 	}
@@ -59,17 +60,17 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 		'''
 		«header»package «(type.eContainer as Model).name.createTestPackageName»;
 		
-		import java.nio.ByteBuffer;
+		//import java.nio.ByteBuffer;
 		
 		import org.junit.Assert;
 		import org.junit.Test;
 		
 		import «(type.eContainer as Model).name».«type.name»;
-		import kieker.common.util.registry.IRegistry;
-		import kieker.common.util.registry.Registry;
+		//import kieker.common.util.registry.IRegistry;
+		//import kieker.common.util.registry.Registry;
 		
 		import kieker.test.common.junit.AbstractGeneratedKiekerTest;
-		import kieker.test.common.util.record.BookstoreOperationExecutionRecordFactory;
+		//import kieker.test.common.util.record.BookstoreOperationExecutionRecordFactory;
 				
 		/**
 		 * Creates {@link OperationExecutionRecord}s via the available constructors and
@@ -228,7 +229,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 			«IF property.type.type.name == 'float' || property.type.type.name == 'double'»
 				«property.getCastToPrimitiveType» «createPropertyValueSet(property)», «property.getCastToPrimitiveType» («property.type.type.createPrimitiveWrapperTypeName»)values[«index»], 0.0000001
 			«ELSEIF property.type.type.name == 'string'»
-				«property.createPropertyValueSet» === null?«property.createConstantValue»:«property.createPropertyValueSet», values[«index»]
+				«property.createPropertyValueSet» == null?«property.createConstantValue»:«property.createPropertyValueSet», values[«index»]
 			«ELSE»
 				«property.createPropertyValueSet», values[«index»]
 		«ENDIF»);

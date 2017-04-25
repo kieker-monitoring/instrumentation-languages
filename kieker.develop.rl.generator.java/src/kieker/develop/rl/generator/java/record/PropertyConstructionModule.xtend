@@ -23,6 +23,7 @@ import static extension kieker.develop.rl.generator.java.JavaTypeMapping.*
 import static extension kieker.develop.rl.generator.java.record.NameResolver.*
 import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
+import kieker.develop.rl.typing.base.BaseTypes
 
 /**
  * Generate code for property declaration, constant fields, getters and setters.
@@ -63,8 +64,7 @@ class PropertyConstructionModule {
 	 * @returns  one property declaration
 	 */
 	private static def createPropertyDeclaration(Property property) 
-		'''private «IF (property.isTransient)»transient«ENDIF
-		»«property.findType.createTypeName» «property.createPropertyName»«if (!property.increment) ' = ' + property.createConstantName»;
+		'''private «property.findType.createTypeName» «property.createPropertyName»«if (!property.increment && property.findType.type == BaseTypes.STRING) ' = ' + property.createConstantName»;
 		'''
 					
 	/**
@@ -84,11 +84,11 @@ class PropertyConstructionModule {
 					property.createPropertyName+if (property.isIncrement) '++' else ''»;
 		}
 		
-		public void final «property.createSetterName»(«property.findType.createTypeName» «property.name») {
+		public final void «property.createSetterName»(«property.findType.createTypeName» «property.createPropertyName») {
 			«IF (property.referTo !== null)»
-				«property.referTo.createSetterName»(«property.name»);
+				«property.referTo.createSetterName»(«property.createPropertyName»);
 			«ELSE»
-				this.«property.name» = «property.name»;
+				this.«property.createPropertyName» = «property.createPropertyName»;
 			«ENDIF»
 		}
 	'''

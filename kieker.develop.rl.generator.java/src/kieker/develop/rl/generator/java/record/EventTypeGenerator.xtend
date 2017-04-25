@@ -84,16 +84,15 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 			
 				«if (!type.abstract) type.createEventTypeConstants(allDataProperties.filter[!it.transient])»
 				
-				/** user-defined constants. */
 				«type.createUserConstants»
 				
-				/** default constants. */
 				«allDeclarationProperties.createDefaultConstants»
 				
-				/** property name array. */
+				«IF (!type.abstract)»/** property name array. */
 				«allDataProperties.filter[!it.transient].createPropertyNameConstant»
+				«ENDIF»
 				
-				/** property declarations. */
+				«IF allDeclarationProperties.size > 0»/** property declarations. */«ENDIF»
 				«allDeclarationProperties.createPropertyDeclarations»
 				
 				«type.createParameterizedConstructor(allDataProperties, allDeclarationProperties)»
