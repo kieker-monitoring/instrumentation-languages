@@ -49,7 +49,7 @@ class EqualsMethodTemplate {
 		 */
 		@Override
 		public boolean equals(final Object obj) {
-			if (obj === null) return false;
+			if (obj == null) return false;
 			if (obj == this) return true;
 			if (obj.getClass() != this.getClass()) return false;
 			
