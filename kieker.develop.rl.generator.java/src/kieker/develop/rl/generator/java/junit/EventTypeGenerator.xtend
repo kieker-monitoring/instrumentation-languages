@@ -59,18 +59,13 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 		
 		'''
 		«header»package «(type.eContainer as Model).name.createTestPackageName»;
-		
-		//import java.nio.ByteBuffer;
-		
+				
 		import org.junit.Assert;
 		import org.junit.Test;
 		
 		import «(type.eContainer as Model).name».«type.name»;
-		//import kieker.common.util.registry.IRegistry;
-		//import kieker.common.util.registry.Registry;
 		
 		import kieker.test.common.junit.AbstractGeneratedKiekerTest;
-		//import kieker.test.common.util.record.BookstoreOperationExecutionRecordFactory;
 				
 		/**
 		 * Creates {@link OperationExecutionRecord}s via the available constructors and
