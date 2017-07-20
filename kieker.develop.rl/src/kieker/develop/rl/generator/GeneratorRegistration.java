@@ -27,8 +27,8 @@ import kieker.develop.rl.outlet.AbstractOutletConfiguration;
 import kieker.develop.rl.recordLang.ComplexType;
 
 /**
- * Configuration and registration of IRL generators. The class also contains functions for derived
- * values based on the configuration values.
+ * Configuration and registration of IRL generators. The class also contains functions
+ * for derived values based on the configuration values.
  *
  * @author Reiner Jung
  *

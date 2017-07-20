@@ -16,31 +16,21 @@
 package kieker.develop.rl.cli;
 
 import java.io.File;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 
-import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.mwe.utils.StandaloneSetup;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
-import org.eclipse.xtext.generator.IOutputConfigurationProvider;
 import org.eclipse.xtext.generator.OutputConfiguration;
-import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
 
 import com.google.inject.Inject;
-import com.google.inject.Injector;
 
 import kieker.common.logging.Log;
 import kieker.common.logging.LogFactory;
-import kieker.develop.rl.RecordLangStandaloneSetup;
-import kieker.develop.rl.generator.AbstractEventTypeGenerator;
-import kieker.develop.rl.generator.GeneratorConfiguration;
+// import kieker.develop.rl.generator.GeneratorConfiguration;
 import kieker.develop.rl.generator.RecordLangGenerator;
-import kieker.develop.rl.ouput.config.RecordLangOutputConfigurationProvider;
-import kieker.develop.rl.preferences.TargetsPreferenceInitializer;
-import kieker.develop.rl.preferences.TargetsPreferences;
 
 /**
  * Parser class.
@@ -102,88 +92,90 @@ public class IRLParser {
 			final boolean mavenFolderLayout, final String[] selectedLanguageTypes, final String version, final String author) {
 		this.projectSourcePath = projectSourcePath;
 		this.projectName = projectName;
+		this.sourceRootPath = "";
+		this.projectHostPath = "";
 
 		this.setup = new StandaloneSetup();
-		this.setup.setProjectDirectoryName(projectDirectoryName);
-
-		if (this.setup.initialize(platformUri)) {
-
-			// query real path name of project
-			final URI projectURI = EcorePlugin.getPlatformResourceMap().get(projectName);
-			if (projectURI != null) {
-				final String realProjectPathName = projectURI.trimSegments(1).lastSegment();
-
-				final Injector injector = new RecordLangStandaloneSetup().createInjectorAndDoEMFRegistration();
-				injector.injectMembers(this);
-				this.resourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
-
-				this.sourceRootPath = platformUri + File.separator + realProjectPathName + File.separator + projectSourcePath;
-				this.projectHostPath = platformUri + File.separator + realProjectPathName;
-
-				// setup generator preferences
-				new TargetsPreferenceInitializer().initializeDefaultPreferences();
-				final IEclipsePreferences preferenceStore = TargetsPreferenceInitializer.getPreferenceStore();
-
-				TargetsPreferences.setAuthorName(preferenceStore, author);
-				TargetsPreferences.setVersionID(preferenceStore, version);
-				// setup language activation
-				for (final Class<?> generatorClass : GeneratorConfiguration.getEventTypeGenerators()) {
-					try {
-						final AbstractEventTypeGenerator generator = (AbstractEventTypeGenerator) generatorClass.getConstructor().newInstance();
-						TargetsPreferences.setGeneratorActive(preferenceStore, generator.getId(), false);
-						for (final String selected : selectedLanguageTypes) {
-							if (selected.equals(generator.getId())) {
-								TargetsPreferences.setGeneratorActive(preferenceStore, generator.getId(), true);
-							}
-						}
-					} catch (final IllegalArgumentException e) {
-						e.printStackTrace();
-					} catch (final SecurityException e) {
-						e.printStackTrace();
-					} catch (final InstantiationException e) {
-						e.printStackTrace();
-					} catch (final IllegalAccessException e) {
-						e.printStackTrace();
-					} catch (final InvocationTargetException e) {
-						e.printStackTrace();
-					} catch (final NoSuchMethodException e) {
-						e.printStackTrace();
-					}
-				}
-				// setup outlets
-				final IOutputConfigurationProvider outputConfigurationProvider = new RecordLangOutputConfigurationProvider();
-				this.configurations = outputConfigurationProvider.getOutputConfigurations();
-
-				if (mavenFolderLayout) {
-					for (final OutputConfiguration configuration : this.configurations) {
-						configuration.setOutputDirectory(projectDestinationPath + File.separator + configuration.getName());
-					}
-				} else {
-					for (final OutputConfiguration configuration : this.configurations) {
-						configuration.setOutputDirectory(projectDestinationPath);
-					}
-				}
-			} else {
-				LOG.error("Specified project " + projectName + " cannot be found.");
-				this.sourceRootPath = null;
-				this.projectHostPath = null;
-				this.configurations = null;
-			}
-		} else {
-			this.sourceRootPath = null;
-			this.projectHostPath = null;
-			this.configurations = null;
-		}
+		// this.setup.setProjectDirectoryName(projectDirectoryName);
+		//
+		// if (this.setup.initialize(platformUri)) {
+		//
+		// // query real path name of project
+		// final URI projectURI = EcorePlugin.getPlatformResourceMap().get(projectName);
+		// if (projectURI != null) {
+		// final String realProjectPathName = projectURI.trimSegments(1).lastSegment();
+		//
+		// final Injector injector = new RecordLangStandaloneSetup().createInjectorAndDoEMFRegistration();
+		// injector.injectMembers(this);
+		// this.resourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
+		//
+		// this.sourceRootPath = platformUri + File.separator + realProjectPathName + File.separator + projectSourcePath;
+		// this.projectHostPath = platformUri + File.separator + realProjectPathName;
+		//
+		// // setup generator preferences
+		// new TargetsPreferenceInitializer().initializeDefaultPreferences();
+		// final IEclipsePreferences preferenceStore = TargetsPreferenceInitializer.getPreferenceStore();
+		//
+		// TargetsPreferences.setAuthorName(preferenceStore, author);
+		// TargetsPreferences.setVersionID(preferenceStore, version);
+		// // setup language activation
+		// for (final Class<?> generatorClass : GeneratorConfiguration.getEventTypeGenerators()) {
+		// try {
+		// final AbstractEventTypeGenerator generator = (AbstractEventTypeGenerator) generatorClass.getConstructor().newInstance();
+		// TargetsPreferences.setGeneratorActive(preferenceStore, generator.getId(), false);
+		// for (final String selected : selectedLanguageTypes) {
+		// if (selected.equals(generator.getId())) {
+		// TargetsPreferences.setGeneratorActive(preferenceStore, generator.getId(), true);
+		// }
+		// }
+		// } catch (final IllegalArgumentException e) {
+		// e.printStackTrace();
+		// } catch (final SecurityException e) {
+		// e.printStackTrace();
+		// } catch (final InstantiationException e) {
+		// e.printStackTrace();
+		// } catch (final IllegalAccessException e) {
+		// e.printStackTrace();
+		// } catch (final InvocationTargetException e) {
+		// e.printStackTrace();
+		// } catch (final NoSuchMethodException e) {
+		// e.printStackTrace();
+		// }
+		// }
+		// // setup outlets
+		// final IOutputConfigurationProvider outputConfigurationProvider = new RecordLangOutputConfigurationProvider();
+		// this.configurations = outputConfigurationProvider.getOutputConfigurations();
+		//
+		// if (mavenFolderLayout) {
+		// for (final OutputConfiguration configuration : this.configurations) {
+		// configuration.setOutputDirectory(projectDestinationPath + File.separator + configuration.getName());
+		// }
+		// } else {
+		// for (final OutputConfiguration configuration : this.configurations) {
+		// configuration.setOutputDirectory(projectDestinationPath);
+		// }
+		// }
+		// } else {
+		// LOG.error("Specified project " + projectName + " cannot be found.");
+		// this.sourceRootPath = null;
+		// this.projectHostPath = null;
+		// this.configurations = null;
+		// }
+		// } else {
+		// this.sourceRootPath = null;
+		// this.projectHostPath = null;
+		// this.configurations = null;
+		// }
 	}
 
 	/**
 	 * Central compiler hook.
 	 */
 	public void compileAll() {
-		if (this.setup.isConfigured()) {
-			this.directoryWalkerResource("");
-			this.directoryWalkerCompile("");
-		}
+		// if (this.setup.isConfigured()) {
+		// this.directoryWalkerResource("");
+		// this.directoryWalkerCompile("");
+		// }
 	}
 
 	/**

@@ -23,18 +23,18 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import kieker.develop.rl.cli.DirectIOFileSystemAccess;
-import kieker.develop.rl.ouput.config.RecordLangOutputConfigurationProvider;
+import kieker.develop.rl.outlet.RecordLangOutletConfigurationProvider;
 
 /**
  * Test class for the DirectIOFileSystemAccess class which is used to
  * Create files and store content provided by a code generator.
- * 
+ *
  * Note: The deleteFile and generateFile(fileName,outputConfiguration,contents)
  * methods are not used by the CLICompiler, but to be compliant with the API
  * they are still implemented in a fully functional state.
- * 
+ *
  * @author Reiner Jung
- * 
+ *
  */
 public class TestDirectIOFileSystemAccess {
 
@@ -55,7 +55,7 @@ public class TestDirectIOFileSystemAccess {
 	public void testGenerateFileStringCharSequence() {
 		final String tempDirectory = System.getProperty("java.io.tmpdir");
 		final CharSequence contents = "This is test content.";
-		final RecordLangOutputConfigurationProvider outputConfigurationProvider = new RecordLangOutputConfigurationProvider();
+		final RecordLangOutletConfigurationProvider outputConfigurationProvider = new RecordLangOutletConfigurationProvider();
 		final Set<OutputConfiguration> configurations = outputConfigurationProvider.getOutputConfigurations();
 
 		for (final OutputConfiguration configuration : configurations) {
@@ -78,7 +78,7 @@ public class TestDirectIOFileSystemAccess {
 	public void testGenerateFileStringStringCharSequence() {
 		final String tempDirectory = System.getProperty("java.io.tmpdir");
 		final CharSequence contents = "This is test content.";
-		final RecordLangOutputConfigurationProvider outputConfigurationProvider = new RecordLangOutputConfigurationProvider();
+		final RecordLangOutletConfigurationProvider outputConfigurationProvider = new RecordLangOutletConfigurationProvider();
 		final Set<OutputConfiguration> configurations = outputConfigurationProvider.getOutputConfigurations();
 
 		for (final OutputConfiguration configuration : configurations) {
@@ -102,7 +102,7 @@ public class TestDirectIOFileSystemAccess {
 	public void testDeleteFile() {
 		final String tempDirectory = System.getProperty("java.io.tmpdir");
 		final CharSequence contents = "This is test content.";
-		final RecordLangOutputConfigurationProvider outputConfigurationProvider = new RecordLangOutputConfigurationProvider();
+		final RecordLangOutletConfigurationProvider outputConfigurationProvider = new RecordLangOutletConfigurationProvider();
 		final Set<OutputConfiguration> configurations = outputConfigurationProvider.getOutputConfigurations();
 
 		for (final OutputConfiguration configuration : configurations) {

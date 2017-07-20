@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
 		<groupId>kieker.develop</groupId>
 		<artifactId>kieker.develop.parent</artifactId>
-		<version>1.2.0-SNAPSHOT</version>
+		<version>1.3.0-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>kieker.develop.rl.cli</artifactId>
+	<packaging>eclipse-plugin</packaging>
+	
 	<name>Kieker Record Language CLI Compiler</name>
 	<description>Code generator for Kieker's Instrumentation Record Language</description>
 
@@ -20,7 +21,7 @@
 		<!-- variables -->
 		<eclipse-repo.url>http://download.eclipse.org/releases/neon</eclipse-repo.url>
 	</properties>
-
+	
 	<dependencies>
 		<dependency>
 			<groupId>com.google.inject</groupId>
@@ -33,7 +34,7 @@
 			<artifactId>guava</artifactId>
 			<version>19.0</version>
 		</dependency>
-
+		
 
 		<dependency>
 			<groupId>log4j</groupId>
@@ -46,11 +47,6 @@
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
 		</dependency>
-		<dependency>
-			<groupId>commons-cli</groupId>
-			<artifactId>commons-cli</artifactId>
-			<version>1.2</version>
-		</dependency>
 		<!-- used by kieker -->
 		<dependency>
 			<groupId>commons-logging</groupId>
@@ -61,115 +57,19 @@
 		<dependency>
 			<groupId>net.kieker-monitoring</groupId>
 			<artifactId>kieker</artifactId>
-			<version>1.12</version>
-		</dependency>
-		
-		<!-- eclipse -->
-		
-		<dependency>
-			<groupId>local</groupId>
-			<artifactId>org.antlr.runtime</artifactId>
-			<version>3.2.0.v201101311130</version>
-		</dependency>		
-		
-		<dependency>
-			<groupId>local</groupId>
-			<artifactId>org.eclipse.core.resources</artifactId>
-			<version>3.10.1.v20150725-1910</version>
+			<version>1.13-SNAPSHOT</version>
 		</dependency>
 
-		<dependency>
-			<groupId>local</groupId>
-			<artifactId>org.eclipse.core.runtime</artifactId>
-			<version>3.11.1.v20150903-1804</version>
-		</dependency>
-
-		<dependency>
-			<groupId>local</groupId>
-			<artifactId>org.eclipse.emf.common</artifactId>
-			<version>2.11.0.v20150805-0538</version>
-		</dependency>
-
-		<dependency>
-			<groupId>local</groupId>
-			<artifactId>org.eclipse.emf.ecore</artifactId>
-			<version>2.11.1.v20150805-0538</version>
-		</dependency>
-
-		<dependency>
-			<groupId>local</groupId>
-			<artifactId>org.eclipse.emf.ecore.xmi</artifactId>
-			<version>2.11.1.v20150805-0538</version>
-		</dependency>
-
-		<dependency>
-			<groupId>local</groupId>
-			<artifactId>org.eclipse.emf.mwe.core</artifactId>
-			<version>1.3.13.v201512160556</version>
-		</dependency>
-
-		<dependency>
-			<groupId>local</groupId>
-			<artifactId>org.eclipse.emf.mwe.utils</artifactId>
-			<version>1.3.13.v201512160556</version>
-		</dependency>
-
-		<dependency>
-			<groupId>local</groupId>
-			<artifactId>org.eclipse.equinox.common</artifactId>
-			<version>3.7.0.v20150402-1709</version>
-		</dependency>
-
-		<dependency>
-			<groupId>local</groupId>
-			<artifactId>org.eclipse.equinox.preferences</artifactId>
-			<version>3.5.300.v20150408-1437</version>
-		</dependency>
-
-		<dependency>
-			<groupId>local</groupId>
-			<artifactId>org.eclipse.osgi</artifactId>
-			<version>3.10.101.v20150820-1432</version>
-		</dependency>
-
-		<dependency>
-			<groupId>local</groupId>
-			<artifactId>org.eclipse.xtext</artifactId>
-			<version>2.9.1.v201512180746</version>
-		</dependency>
-
-		<dependency>
-			<groupId>local</groupId>
-			<artifactId>org.eclipse.xtext.common.types</artifactId>
-			<version>2.9.1.v201512180746</version>
-		</dependency>
-
-		<dependency>
-			<groupId>local</groupId>
-			<artifactId>org.eclipse.xtext.common.types.ui</artifactId>
-			<version>2.9.1.v201512180746</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>local</groupId>
-			<artifactId>org.eclipse.xtext.util</artifactId>
-			<version>2.9.1.v201512180746</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>local</groupId>
-			<artifactId>org.eclipse.xtext.xbase</artifactId>
-			<version>2.9.1.v201512180746</version>
-		</dependency>
-		<dependency>
-			<groupId>local</groupId>
-			<artifactId>org.eclipse.xtext.xbase.lib</artifactId>
-			<version>2.9.1.v201512180746</version>
-		</dependency>
 		<dependency>
 			<groupId>kieker.develop</groupId>
 			<artifactId>kieker.develop.rl</artifactId>
-			<version>1.2.0-SNAPSHOT</version>
+			<version>1.3.0-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.beust</groupId>
+			<artifactId>jcommander</artifactId>
+			<version>1.64</version>
 		</dependency>
 	</dependencies>
 
@@ -183,38 +83,6 @@
 					<source>1.8</source>
 					<target>1.8</target>
 				</configuration>
-			</plugin>
-			<!-- package result -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-shade-plugin</artifactId>
-				<version>2.2</version>
-				<configuration>
-					<filters>
-						<filter>
-							<artifact>*:*</artifact>
-							<excludes>
-								<exclude>META-INF/*.SF</exclude>
-								<exclude>META-INF/*.DSA</exclude>
-								<exclude>META-INF/*.RSA</exclude>
-							</excludes>
-						</filter>
-					</filters>
-					<transformers>
-						<transformer
-							implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-							<mainClass>kieker.develop.rl.cli.CLICompilerMain</mainClass>
-						</transformer>
-					</transformers>
-				</configuration>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>shade</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 			<!-- ceckstyle plugin -->
 			<plugin>
