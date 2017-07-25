@@ -74,7 +74,7 @@ enum InsertionPoint:
 
 Pointcut:
 	(annotation=Annotation)?
-	'pointcut' name=ID
+	(adaptive?='adaptive'|'static')? (cascade?='cascade')? 'pointcut' name=ID
 	'class' model=[ApplicationModelHandle|ID] '.' location=LocationQuery 
 	('operation' operation=OperationQuery)?
 ;

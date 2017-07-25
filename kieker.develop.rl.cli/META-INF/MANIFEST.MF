@@ -10,3 +10,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ClassPath: .,
  lib/jcommander-1.64.jar,
  lib/kieker-1.13-SNAPSHOT.jar
+Import-Package: org.junit
