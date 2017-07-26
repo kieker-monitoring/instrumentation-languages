@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>kieker.develop.rl.cli</artifactId>
-	<packaging>eclipse-plugin</packaging>
+	<packaging>jar</packaging>
 	
 	<name>Kieker Record Language CLI Compiler</name>
 	<description>Code generator for Kieker's Instrumentation Record Language</description>
