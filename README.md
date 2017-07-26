@@ -1,12 +1,12 @@
 # Instrumentation Languages
 
-The application and system monitoring framework Kieker(http://kieker-monitoring.net/) 
-provides measuring sensors (also called probes) to collect a wide variatey of information
+The application and system monitoring framework Kieker (http://kieker-monitoring.net/) 
+provides measuring sensors (also called probes) to collect a wide variety of information
 of running software systems including call traces and system utilization. While its
 main focus are JVM languages, Kieker also supports Perl and C. In addition students
 have integrated it in Delphi/Pascal, and there are realizations for C# and VisualBasic 6.
 Furthermore, it supports a wide variety of aspect weaving and interceptor technologies to
-introduce monitoring code without modifiying the original applications.
+introduce monitoring code without modifying the original applications.
 
 However, each technology must be configured separately, data records for the different
 languages must be reimplemented for every languages, and API modifications or
@@ -24,3 +24,17 @@ realizes an abstraction for defining probes and allows to define point cuts
 to instruct weavers and configure interceptor configurations to integrate the probes
 into the running application.
 
+## Instructions on Contribution
+If you like to contribute
+- a generator for a new programming language or
+- an enhanced version of a generator already available
+then please open a pull request.
+
+Below, you find some instructions on how to set up the necessary IDE. 
+
+### Requirements
+- Eclipse distribution "Eclipse DSL Tools" (the distribution "Eclipse for Java Developers" is not sufficient)
+
+#### Import Projects into Eclipse 
+Please note that you also need to execute "Maven->Update Project..." on each project if you chose to import "Existing Projects into Workspace" or "Projects from Git".
+This step is not necessary if you chose to import "Existing Maven Projects".
