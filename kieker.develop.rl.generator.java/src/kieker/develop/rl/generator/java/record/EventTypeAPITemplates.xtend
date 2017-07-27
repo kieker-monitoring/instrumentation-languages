@@ -102,8 +102,11 @@ class EventTypeAPITemplates {
 	static def createToArrayRepresentation(List<Property> properties) '''
 		/**
 		 * {@inheritDoc}
+		 *
+		 * @deprecated since 1.13. Use {#serialize(IValueSerializer)} with an array serializer instead.
 		 */
 		@Override
+		@Deprecated
 		public Object[] toArray() {
 			return new Object[] {
 				«properties.filter[!it.isTransient].map[property | '''this.«property.createGetterName»()'''].join(',\n')»
