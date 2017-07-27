@@ -33,12 +33,16 @@ then please open a pull request.
 Below, you find some instructions on how to set up the necessary IDE. 
 
 ### Requirements
+If you want to contribute to the record language (rl), then you need to install:
 - Eclipse distribution: "Eclipse DSL Tools" (the distribution "Eclipse for Java Developers" is not sufficient)
 - Eclipse Plugin: tycho configurator 0.8
 - Eclipse Plugin: xtext complete sdk 2.12 (2.10 not sufficient)
 - Eclipse Plugin: geco from http://build.se.informatik.uni-kiel.de/eus/geco/snapshot/
 
 After installing the required Eclipse plugins, you need to clean and to rebuild all Eclipse projects which do not start with "kieker.develop.al".
+If you want to contribute to the aspect language (in short: al), then you need to install:
+- Eclipse Plugin: Palladio Component Model from https://sdqweb.ipd.kit.edu/eclipse/palladiosimulator/releases/1.0.0/
+- (details on request)
 
 #### Import Projects into Eclipse 
 Please note that you also need to execute "Maven->Update Project..." on each project if you chose to import "Existing Projects into Workspace" or "Projects from Git".
