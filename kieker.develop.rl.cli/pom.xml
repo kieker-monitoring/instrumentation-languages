@@ -10,8 +10,8 @@
 	</parent>
 
 	<artifactId>kieker.develop.rl.cli</artifactId>
-	<packaging>jar</packaging>
-	
+	<packaging>eclipse-plugin</packaging>
+
 	<name>Kieker Record Language CLI Compiler</name>
 	<description>Code generator for Kieker's Instrumentation Record Language</description>
 
@@ -21,7 +21,7 @@
 		<!-- variables -->
 		<eclipse-repo.url>http://download.eclipse.org/releases/neon</eclipse-repo.url>
 	</properties>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>com.google.inject</groupId>
@@ -34,7 +34,7 @@
 			<artifactId>guava</artifactId>
 			<version>19.0</version>
 		</dependency>
-		
+
 
 		<dependency>
 			<groupId>log4j</groupId>

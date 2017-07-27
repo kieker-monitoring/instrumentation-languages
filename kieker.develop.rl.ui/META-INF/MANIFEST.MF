@@ -27,7 +27,7 @@ Require-Bundle: kieker.develop.rl;visibility:=reexport,
  org.eclipse.swt,
  org.eclipse.ui.workbench,
  org.eclipse.xtend.lib;resolution:=optional,
- kieker.develop.rl.ide;bundle-version="0.0.1"
+ kieker.develop.rl.ide
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
