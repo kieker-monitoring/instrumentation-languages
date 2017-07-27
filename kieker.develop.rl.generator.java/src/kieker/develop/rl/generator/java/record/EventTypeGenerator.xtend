@@ -173,15 +173,22 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	 * @param type the record type
 	 */
 	private def createImports(EventType type) '''
-		«IF (!type.abstract)»import java.nio.BufferOverflowException;
-		«ENDIF»import java.nio.BufferUnderflowException;
+		«IF (!type.abstract)»
+		import java.nio.BufferOverflowException;
+		«ENDIF»
+		import java.nio.BufferUnderflowException;
 		import java.nio.ByteBuffer;
 
-		«IF (type.parent === null)»import kieker.common.record.AbstractMonitoringRecord;
+		«IF (type.parent === null)»
+		import kieker.common.record.AbstractMonitoringRecord;
 		import kieker.common.record.IMonitoringRecord;
-		«ELSE»import «(type.parent.eContainer as Model).name».«type.parent.name»;
-		«ENDIF»import kieker.common.util.registry.IRegistry;
-		
+		«ELSE»
+		import «(type.parent.eContainer as Model).name».«type.parent.name»;
+		«ENDIF»
+		import kieker.common.record.io.IValueDeserializer;
+		import kieker.common.record.io.IValueSerializer;
+		import kieker.common.util.registry.IRegistry;
+
 		«if (type.inherits !== null && type.inherits.size > 0) type.inherits.map[i | i.createInterfaceImport].join»
 	'''
 	

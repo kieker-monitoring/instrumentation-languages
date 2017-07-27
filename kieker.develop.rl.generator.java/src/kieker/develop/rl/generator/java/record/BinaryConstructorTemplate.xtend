@@ -60,7 +60,7 @@ class BinaryConstructorTemplate {
 		 * @throws BufferUnderflowException
 		 *             if buffer not sufficient
 		 *
-		 * @deprecated since 1.13. Use {#«type.name»(IValueDeserializer)} instead.
+		 * @deprecated since 1.13. Use {@link #«type.name»(IValueDeserializer)} instead.
 		 */
 		@Deprecated
 		public «type.name»(final ByteBuffer buffer, final IRegistry<String> stringRegistry) throws BufferUnderflowException {

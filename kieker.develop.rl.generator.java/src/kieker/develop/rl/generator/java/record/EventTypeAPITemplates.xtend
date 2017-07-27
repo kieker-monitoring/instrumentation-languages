@@ -103,7 +103,7 @@ class EventTypeAPITemplates {
 		/**
 		 * {@inheritDoc}
 		 *
-		 * @deprecated since 1.13. Use {#serialize(IValueSerializer)} with an array serializer instead.
+		 * @deprecated since 1.13. Use {@link #serialize(IValueSerializer)} with an array serializer instead.
 		 */
 		@Override
 		@Deprecated

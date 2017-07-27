@@ -47,13 +47,10 @@ class GenericDeserializationConstructorTemplate {
 	 * @return returns a generic deserialization constructor
 	 */
 	static def createGenericDeserializationConstructor(EventType type, List<Property> properties) '''
-			/**
-			 * @param deserializer
-			 *            The deserializer to use
-			 *
-			 * @throws BufferUnderflowException
-			 *             if buffer not sufficient
-			 */
+		/**
+		 * @param deserializer
+		 *            The deserializer to use
+		 */
 		public «type.name»(final IValueDeserializer deserializer) {
 			«IF (type.parent !== null)»super(deserializer);
 			«ENDIF»«properties.filter[!it.isTransient].map[

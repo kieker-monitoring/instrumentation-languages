@@ -43,7 +43,7 @@ class SerializationTemplates {
 		/**
 		 * {@inheritDoc}
 		 *
-		 * @deprecated since 1.13. Use {#serialize(IValueSerializer)} instead.
+		 * @deprecated since 1.13. Use {@link #serialize(IValueSerializer)} instead.
 		 */
 		@Override
 		@Deprecated
@@ -80,7 +80,7 @@ class SerializationTemplates {
 		}
 	}
 	
-		/**
+	/**
 	 * Create code for a property for binary serialization based on the data types.
 	 * 
 	 * @param property the property to be processed
