@@ -33,7 +33,10 @@ then please open a pull request.
 Below, you find some instructions on how to set up the necessary IDE. 
 
 ### Requirements
-- Eclipse distribution "Eclipse DSL Tools" (the distribution "Eclipse for Java Developers" is not sufficient)
+- Eclipse distribution: "Eclipse DSL Tools" (the distribution "Eclipse for Java Developers" is not sufficient)
+- Eclipse Plugin: tycho configurator 0.8
+- Eclipse Plugin: xtext complete sdk 2.12 (2.10 not sufficient)
+- Eclipse Plugin: geco from http://build.se.informatik.uni-kiel.de/eus/geco/snapshot/
 
 #### Import Projects into Eclipse 
 Please note that you also need to execute "Maven->Update Project..." on each project if you chose to import "Existing Projects into Workspace" or "Projects from Git".
