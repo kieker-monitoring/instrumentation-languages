@@ -38,6 +38,8 @@ Below, you find some instructions on how to set up the necessary IDE.
 - Eclipse Plugin: xtext complete sdk 2.12 (2.10 not sufficient)
 - Eclipse Plugin: geco from http://build.se.informatik.uni-kiel.de/eus/geco/snapshot/
 
+After installing the required Eclipse plugins, you need to clean and to rebuild all Eclipse projects which do not start with "kieker.develop.al".
+
 #### Import Projects into Eclipse 
 Please note that you also need to execute "Maven->Update Project..." on each project if you chose to import "Existing Projects into Workspace" or "Projects from Git".
 This step is not necessary if you chose to import "Existing Maven Projects".
