@@ -16,21 +16,32 @@
 package kieker.develop.rl.cli;
 
 import java.io.File;
-import java.util.Set;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
 
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.mwe.utils.StandaloneSetup;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
-import org.eclipse.xtext.generator.OutputConfiguration;
+import org.eclipse.xtext.resource.IResourceFactory;
 import org.eclipse.xtext.resource.XtextResourceSet;
 
 import com.google.inject.Inject;
+import com.google.inject.Provider;
 
 import kieker.common.logging.Log;
 import kieker.common.logging.LogFactory;
-// import kieker.develop.rl.generator.GeneratorConfiguration;
+import kieker.develop.rl.CLIPreferenceStore;
+import kieker.develop.rl.generator.GeneratorRegistration;
 import kieker.develop.rl.generator.RecordLangGenerator;
+import kieker.develop.rl.outlet.AbstractOutletConfiguration;
+import kieker.develop.rl.preferences.TargetsPreferences;
+import kieker.develop.rl.recordLang.ComplexType;
+
+import de.cau.cs.se.geco.architecture.framework.IGenerator;
 
 /**
  * Parser class.
@@ -48,172 +59,79 @@ public class IRLParser {
 	/** Legal extensions for IRL files. */
 	private static final Object FILE_EXTENSION_IRL = "irl";
 
-	/** resource set for the compilation. */
 	@Inject
-	private XtextResourceSet resourceSet;
+	private Provider<XtextResourceSet> resourceSetProvider;
 
-	/** Project location in host path notation */
-	private final String projectHostPath;
-	/** The Kieker eclipse project name. */
-	private final String projectName;
-	/** The source path for the IRL files. */
-	private final String projectSourcePath;
-	/** Derive value representing the project root path. */
-	private final String sourceRootPath;
+	@Inject
+	private IResourceFactory resourceFactory;
 
-	private final StandaloneSetup setup;
-
-	private Set<OutputConfiguration> configurations;
+	private final IEclipsePreferences preferenceStore;
 
 	/**
 	 * Construct an IRL parser.
 	 *
-	 * @param platformUri
-	 *            the platform root
-	 * @param projectSourcePath
-	 *            project local path to sources
-	 * @param projectDestinationPath
-	 *            project local path to generated sources
-	 * @param projectName
-	 *            project name
-	 * @param projectDirectoryName
-	 *            project path name (optional, can be null)
-	 * @param author
-	 *            author name for the code generation
-	 * @param version
-	 *            kieker version
 	 * @param selectedLanguageTypes
-	 *            list of languages
-	 * @param mavenFolderLayout
-	 *            maven directory layout
+	 *            array of language outlet names
+	 * @param headerComments
+	 *            set of comments matching the languages
+	 * @param version
+	 *            default version
+	 * @param author
+	 *            default author
 	 */
-	public IRLParser(final String platformUri, final String projectName, final String projectDirectoryName,
-			final String projectSourcePath, final String projectDestinationPath,
-			final boolean mavenFolderLayout, final String[] selectedLanguageTypes, final String version, final String author) {
-		this.projectSourcePath = projectSourcePath;
-		this.projectName = projectName;
-		this.sourceRootPath = "";
-		this.projectHostPath = "";
-
-		this.setup = new StandaloneSetup();
-		// this.setup.setProjectDirectoryName(projectDirectoryName);
-		//
-		// if (this.setup.initialize(platformUri)) {
-		//
-		// // query real path name of project
-		// final URI projectURI = EcorePlugin.getPlatformResourceMap().get(projectName);
-		// if (projectURI != null) {
-		// final String realProjectPathName = projectURI.trimSegments(1).lastSegment();
-		//
-		// final Injector injector = new RecordLangStandaloneSetup().createInjectorAndDoEMFRegistration();
-		// injector.injectMembers(this);
-		// this.resourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
-		//
-		// this.sourceRootPath = platformUri + File.separator + realProjectPathName + File.separator + projectSourcePath;
-		// this.projectHostPath = platformUri + File.separator + realProjectPathName;
-		//
-		// // setup generator preferences
-		// new TargetsPreferenceInitializer().initializeDefaultPreferences();
-		// final IEclipsePreferences preferenceStore = TargetsPreferenceInitializer.getPreferenceStore();
-		//
-		// TargetsPreferences.setAuthorName(preferenceStore, author);
-		// TargetsPreferences.setVersionID(preferenceStore, version);
-		// // setup language activation
-		// for (final Class<?> generatorClass : GeneratorConfiguration.getEventTypeGenerators()) {
-		// try {
-		// final AbstractEventTypeGenerator generator = (AbstractEventTypeGenerator) generatorClass.getConstructor().newInstance();
-		// TargetsPreferences.setGeneratorActive(preferenceStore, generator.getId(), false);
-		// for (final String selected : selectedLanguageTypes) {
-		// if (selected.equals(generator.getId())) {
-		// TargetsPreferences.setGeneratorActive(preferenceStore, generator.getId(), true);
-		// }
-		// }
-		// } catch (final IllegalArgumentException e) {
-		// e.printStackTrace();
-		// } catch (final SecurityException e) {
-		// e.printStackTrace();
-		// } catch (final InstantiationException e) {
-		// e.printStackTrace();
-		// } catch (final IllegalAccessException e) {
-		// e.printStackTrace();
-		// } catch (final InvocationTargetException e) {
-		// e.printStackTrace();
-		// } catch (final NoSuchMethodException e) {
-		// e.printStackTrace();
-		// }
-		// }
-		// // setup outlets
-		// final IOutputConfigurationProvider outputConfigurationProvider = new RecordLangOutputConfigurationProvider();
-		// this.configurations = outputConfigurationProvider.getOutputConfigurations();
-		//
-		// if (mavenFolderLayout) {
-		// for (final OutputConfiguration configuration : this.configurations) {
-		// configuration.setOutputDirectory(projectDestinationPath + File.separator + configuration.getName());
-		// }
-		// } else {
-		// for (final OutputConfiguration configuration : this.configurations) {
-		// configuration.setOutputDirectory(projectDestinationPath);
-		// }
-		// }
-		// } else {
-		// LOG.error("Specified project " + projectName + " cannot be found.");
-		// this.sourceRootPath = null;
-		// this.projectHostPath = null;
-		// this.configurations = null;
-		// }
-		// } else {
-		// this.sourceRootPath = null;
-		// this.projectHostPath = null;
-		// this.configurations = null;
-		// }
+	public IRLParser() {
+		this.preferenceStore = CLIPreferenceStore.INSTANCE;
 	}
 
-	/**
-	 * Central compiler hook.
-	 */
-	public void compileAll() {
-		// if (this.setup.isConfigured()) {
-		// this.directoryWalkerResource("");
-		// this.directoryWalkerCompile("");
-		// }
-	}
-
-	/**
-	 * Collect all resources.
-	 *
-	 * @param pathName
-	 *            project relative path
-	 */
-	private void directoryWalkerResource(final String pathName) {
-		final File file = new File(this.sourceRootPath + File.separator + pathName);
-
-		if (file.isDirectory()) {
-			for (final String innerFileName : file.list()) {
-				this.directoryWalkerResource(pathName + File.separator + innerFileName);
-			}
-		} else {
-			final int i = pathName.lastIndexOf('.');
-
-			if (i > 0) {
-				if (FILE_EXTENSION_IRL.equals(pathName.substring(i + 1))) {
-					this.getResource(pathName);
+	public void configureParser(final List<String> selectedLanguageTypes, final List<String> headerComments, final String version, final String author) {
+		TargetsPreferences.setAuthorName(this.preferenceStore, author);
+		TargetsPreferences.setVersionID(this.preferenceStore, version);
+		// setup language activation
+		for (final AbstractOutletConfiguration<ComplexType, Object> outlet : GeneratorRegistration.getOutletConfigurations()) {
+			for (final IGenerator<? extends ComplexType, ? extends Object> generator : outlet.getGenerators()) {
+				try {
+					final String language = outlet.getName();
+					TargetsPreferences.setGeneratorActive(this.preferenceStore, language, false);
+					int i = 0;
+					for (final String selected : selectedLanguageTypes) {
+						if (selected.equals(language)) {
+							TargetsPreferences.setGeneratorActive(this.preferenceStore, language, true);
+							TargetsPreferences.setHeaderComment(this.preferenceStore, language, headerComments.get(i));
+						}
+						i++;
+					}
+				} catch (final IllegalArgumentException e) {
+					e.printStackTrace();
+				} catch (final SecurityException e) {
+					e.printStackTrace();
 				}
 			}
 		}
 	}
 
 	/**
+	 *
+	 * @param sourcePathPrefix
+	 * @param targetPathPrefix
+	 */
+	public void compile(final String sourcePathPrefix, final String targetPathPrefix) {
+		this.directoryWalkerCompile(sourcePathPrefix, targetPathPrefix, "");
+	}
+
+	/**
 	 * Walk over the directory tree and compile all files.
 	 *
+	 * @param sourcePathPrefix
+	 * @param targetPathPrefix
 	 * @param pathName
 	 *            relative path name in source folder
 	 */
-	private void directoryWalkerCompile(final String pathName) {
-		final File file = new File(this.sourceRootPath + File.separator + pathName);
+	private void directoryWalkerCompile(final String sourcePathPrefix, final String projectPathPrefix, final String pathName) {
+		final File file = new File(sourcePathPrefix + File.separator + pathName);
 
 		if (file.isDirectory()) {
 			for (final String innerFileName : file.list()) {
-				this.directoryWalkerCompile(pathName + File.separator + innerFileName);
+				this.directoryWalkerCompile(sourcePathPrefix, projectPathPrefix, pathName + File.separator + innerFileName);
 			}
 		} else {
 			final int i = pathName.lastIndexOf('.');
@@ -221,44 +139,45 @@ public class IRLParser {
 			if (i > 0) {
 				final String extension = pathName.substring(i + 1);
 				if (FILE_EXTENSION_IRL.equals(extension)) {
-					this.compile(pathName);
+					this.compile(sourcePathPrefix, projectPathPrefix, pathName);
 				}
 			}
 		}
 	}
 
 	/**
-	 * Add a resource for the present project and present project source path to
-	 * the resource set and return that resource.
-	 *
-	 * @param pathName
-	 *            relative path name to the file to be added to the resource set
-	 * @return the resource added to the resource set
-	 */
-	private Resource getResource(final String pathName) {
-		final URI uri = URI.createURI("platform:/resource/" + this.projectName + "/" + this.projectSourcePath + pathName);
-		return this.resourceSet.getResource(uri, true);
-	}
-
-	/**
 	 * Run the generator for one input file.
 	 *
+	 * @param sourcePathPrefix
+	 *            complete path to a source code root directory
+	 * @param projectPathPrefix
+	 *            complete path of the project
 	 * @param pathName
 	 *            relative path of the input file
-	 * @param author
-	 * @param version
 	 */
-	private void compile(final String pathName) {
-		LOG.info("Compiling " + this.sourceRootPath + pathName);
+	private void compile(final String sourcePathPrefix, final String projectPathPrefix, final String pathName) {
+		LOG.info("Compiling " + sourcePathPrefix + File.separator + pathName);
 
-		// load resource
-		final Resource resource = this.getResource(pathName);
+		try {
+			/** parse a file. */
+			final ResourceSet resourceSet = this.resourceSetProvider.get();
 
-		// invoke generator
-		final RecordLangGenerator generator = new RecordLangGenerator();
-		final IFileSystemAccess2 fsa = new DirectIOFileSystemAccess(this.projectHostPath, this.configurations);
+			final File inFile = new File(sourcePathPrefix + File.separator + pathName);
 
-		generator.doGenerate(resource, fsa, null);
+			final InputStream in = new FileInputStream(inFile);
+
+			final Resource resource = this.resourceFactory.createResource(URI.createURI(inFile.getAbsolutePath()));
+			resourceSet.getResources().add(resource);
+			resource.load(in, null);
+
+			/** generate output. */
+			final RecordLangGenerator generator = new RecordLangGenerator();
+			final IFileSystemAccess2 fsa = new DirectIOFileSystemAccess(projectPathPrefix, GeneratorRegistration.getOutletConfigurations());
+			generator.doGenerate(resource, fsa, null);
+		} catch (final IOException e) {
+			LOG.error("File read error ", e);
+		}
+
 	}
 
 }

@@ -33,6 +33,7 @@ import kieker.develop.rl.generator.modeltypes.ModelSubTypeGenerator
 import kieker.develop.rl.typing.TypeProvider
 import kieker.develop.rl.recordLang.ComplexType
 import de.cau.cs.se.geco.architecture.framework.IGenerator
+import kieker.develop.rl.CLIPreferenceStore
 
 /**
  * Generates one single files per record for java, c, and perl. 
@@ -54,6 +55,10 @@ class RecordLangGenerator implements IGenerator2 {
 			val typeProvider = new TypeProvider(resource.resourceSet)
 			
 			resource.runGenerators(preferenceStore, typeProvider, fsa)
+		} else {
+			val typeProvider = new TypeProvider(resource.resourceSet)
+			
+			resource.runGenerators(CLIPreferenceStore.INSTANCE, typeProvider, fsa)
 		}
 	}
 

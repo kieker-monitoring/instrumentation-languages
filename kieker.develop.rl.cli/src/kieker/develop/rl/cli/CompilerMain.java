@@ -1,5 +1,7 @@
 package kieker.develop.rl.cli;
 
+import java.io.File;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -10,7 +12,12 @@ import org.eclipse.equinox.app.IApplicationContext;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
+import com.beust.jcommander.converters.FileConverter;
+import com.google.inject.Injector;
 
+import kieker.common.logging.Log;
+import kieker.common.logging.LogFactory;
+import kieker.develop.rl.RecordLangStandaloneSetup;
 import kieker.develop.rl.generator.GeneratorRegistration;
 import kieker.develop.rl.outlet.AbstractOutletConfiguration;
 import kieker.develop.rl.recordLang.ComplexType;
@@ -20,21 +27,38 @@ import kieker.develop.rl.recordLang.ComplexType;
  */
 public class CompilerMain implements IApplication {
 
-	@Parameter(description = "The list of files to commit")
-	private List<String> files;
+	/** Central logger for the compiler. */
+	private static final Log LOG = LogFactory.getLog(CompilerMain.class);
+
+	@Parameter(names = { "-i", "--input" }, description = "Input path")
+	private String sourcePath;
+
+	@Parameter(names = { "-p", "--project" }, variableArity = true, description = "Output base path")
+	private String outputPath;
 
 	@Parameter(names = { "-h", "--help" }, help = true)
 	private boolean help = false;
 
-	@Parameter(names = { "-l", "--languages" }, variableArity = true, description = "List of targets")
+	@Parameter(names = { "-o", "--outlets" }, variableArity = true, description = "List of target outlets")
 	private List<String> languages;
+
+	@Parameter(names = { "-f", "--file-headers" }, variableArity = true, description = "List of headers", converter = FileConverter.class)
+	private List<File> fileHeaders;
+
+	@Parameter(names = { "-a", "--author" }, description = "Set default author name", required = false)
+	private String author;
+
+	@Parameter(names = { "-s", "--since" }, description = "Set default sicne value", required = false)
+	private String version;
 
 	@Override
 	public Object start(final IApplicationContext context) throws Exception {
+		this.author = "no author";
+		this.version = "no version";
 		this.help = false;
 		this.languages = new ArrayList<>();
-		this.files = new ArrayList<>();
-		System.out.println("Hello RCP World!");
+		this.outputPath = null;
+
 		final Map<?, ?> args = context.getArguments();
 		final String[] appArgs = (String[]) args.get("application.args");
 
@@ -46,16 +70,38 @@ public class CompilerMain implements IApplication {
 		for (final String lang : this.languages) {
 			boolean match = false;
 			for (final AbstractOutletConfiguration<ComplexType, Object> configuration : configurations) {
-				if (lang.equals(configuration.getLang())) {
+				if (lang.equals(configuration.getName())) {
 					match = true;
 				}
 			}
 			System.out.println("\t" + lang + " " + match);
 		}
-		System.out.println("files");
-		for (final String file : this.files) {
-			System.out.println("\t" + file);
+		System.out.println("output " + this.outputPath);
+
+		/** read all provided headers. */
+		final List<String> headerComments = new ArrayList<>();
+		for (final File header : this.fileHeaders) {
+			if (header.isFile()) {
+				final byte[] bytes = Files.readAllBytes(header.toPath());
+				headerComments.add(new String(bytes));
+			} else {
+				LOG.error("Header template " + header.getName() + " is not readable.");
+				return IApplication.EXIT_OK;
+			}
 		}
+
+		if (headerComments.size() < this.languages.size()) {
+			LOG.error("There are missing header templates. Refer to a template file for each outlet.");
+			return IApplication.EXIT_OK;
+		}
+
+		final Injector injector = new RecordLangStandaloneSetup().createInjectorAndDoEMFRegistration();
+
+		final IRLParser parser = injector.getInstance(IRLParser.class);
+
+		parser.configureParser(this.languages, headerComments, this.version, this.author);
+
+		parser.compile(this.sourcePath, this.outputPath);
 
 		return IApplication.EXIT_OK;
 	}

@@ -22,15 +22,16 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
-import java.util.Set;
+import java.util.Collection;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
-import org.eclipse.xtext.generator.OutputConfiguration;
 import org.eclipse.xtext.util.RuntimeIOException;
 
 import kieker.common.logging.Log;
 import kieker.common.logging.LogFactory;
+import kieker.develop.rl.outlet.AbstractOutletConfiguration;
+import kieker.develop.rl.recordLang.ComplexType;
 
 /**
  * File system access class used by the generator.
@@ -43,20 +44,20 @@ public class DirectIOFileSystemAccess implements IFileSystemAccess2 {
 	/** Central logger for the compiler. */
 	private static final Log LOG = LogFactory.getLog(DirectIOFileSystemAccess.class);
 
-	private final String projectHostPath;
+	private final String projectPathPrefix;
 
-	private final Set<OutputConfiguration> configurations;
+	private final Collection<AbstractOutletConfiguration<ComplexType, Object>> outlets;
 
 	/**
 	 * Constructor for the headless file system access.
 	 *
-	 * @param projectHostPath
+	 * @param projectPathPrefix
 	 *            root path where the files are stored
 	 * @param configurations
 	 */
-	public DirectIOFileSystemAccess(final String projectHostPath, final Set<OutputConfiguration> configurations) {
-		this.projectHostPath = projectHostPath;
-		this.configurations = configurations;
+	public DirectIOFileSystemAccess(final String projectPathPrefix, final Collection<AbstractOutletConfiguration<ComplexType, Object>> outlets) {
+		this.projectPathPrefix = projectPathPrefix;
+		this.outlets = outlets;
 	}
 
 	/**
@@ -67,6 +68,7 @@ public class DirectIOFileSystemAccess implements IFileSystemAccess2 {
 	 * @param contents
 	 *            the content to be stored
 	 */
+	@Override
 	public void generateFile(final String fileName, final CharSequence contents) {
 		this.generateFile(fileName, "none", contents);
 	}
@@ -81,12 +83,14 @@ public class DirectIOFileSystemAccess implements IFileSystemAccess2 {
 	 * @param contents
 	 *            the content to be stored
 	 */
+	@Override
 	public void generateFile(final String fileName, final String outputConfigurationName,
 			final CharSequence contents) {
-		final OutputConfiguration configuration = this.getOutputConfiguration(outputConfigurationName);
-		if (configuration != null) {
+		LOG.info(">> " + fileName);
+		final AbstractOutletConfiguration<ComplexType, Object> outlet = this.getOutletConfiguration(outputConfigurationName);
+		if (outlet != null) {
 			try {
-				final String targetFilePath = this.projectHostPath + File.separator + configuration.getOutputDirectory() + File.separator + fileName;
+				final String targetFilePath = this.projectPathPrefix + File.separator + outlet.getDirectory() + File.separator + fileName;
 				LOG.info("Create " + targetFilePath);
 				final File file = new File(targetFilePath);
 				file.getParentFile().mkdirs();
@@ -113,8 +117,8 @@ public class DirectIOFileSystemAccess implements IFileSystemAccess2 {
 	 *            the output configuration name
 	 * @return either a valid output configuration or null if no such output configuration exist
 	 */
-	private OutputConfiguration getOutputConfiguration(final String outputConfigurationName) {
-		for (final OutputConfiguration configuration : this.configurations) {
+	private AbstractOutletConfiguration<ComplexType, Object> getOutletConfiguration(final String outputConfigurationName) {
+		for (final AbstractOutletConfiguration<ComplexType, Object> configuration : this.outlets) {
 			if (configuration.getName().equals(outputConfigurationName)) {
 				return configuration;
 			}
@@ -128,9 +132,10 @@ public class DirectIOFileSystemAccess implements IFileSystemAccess2 {
 	 * @param fileName
 	 *            file to be deleted
 	 */
+	@Override
 	public void deleteFile(final String fileName) {
-		LOG.info("Delete " + this.projectHostPath + File.separator + fileName);
-		final File file = new File(this.projectHostPath + File.separator + fileName);
+		LOG.info("Delete " + this.projectPathPrefix + File.separator + fileName);
+		final File file = new File(this.projectPathPrefix + File.separator + fileName);
 		if (file.exists()) {
 			file.delete();
 		}
