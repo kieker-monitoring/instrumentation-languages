@@ -31,41 +31,31 @@ import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
 
 /**
- * Contains the templates for generation of the binary buffer constructor. 
- * The binary buffer constructor uses a binary buffer as source to initialize
- * the event type values.
+ * Contains the templates for generation of the generic deserialization constructor based on Holger Knoche's idea.
  * 
- * @author Reiner Jung
- * @since 1.3 
+ * @author Christian Wulf
+ * @since 1.4
  */
-class BinaryConstructorTemplate {
+class GenericDeserializationConstructorTemplate {
 
 	/**
-	 * Create buffer initialization constructor.
+	 * Create generic deserialization constructor.
 	 * 
 	 * @param type the EventType
 	 * @param properties the collection of properties to be initialized in this constructor
 	 * 
-	 * @return returns a binary buffer reader constructor
+	 * @return returns a generic deserialization constructor
 	 */
-	static def createBufferReadConstructor(EventType type, List<Property> properties) '''
+	static def createGenericDeserializationConstructor(EventType type, List<Property> properties) '''
 		/**
-		 * This constructor converts the given buffer into a record.
-		 * 
-		 * @param buffer
-		 *            The bytes for the record
-		 * @param stringRegistry
-		 *            The string registry for deserialization
-		 * 
-		 * @throws BufferUnderflowException
-		 *             if buffer not sufficient
-		 *
-		 * @deprecated since 1.13. Use {@link #«type.name»(IValueDeserializer)} instead.
+		 * @param deserializer
+		 *            The deserializer to use
 		 */
-		@Deprecated
-		public «type.name»(final ByteBuffer buffer, final IRegistry<String> stringRegistry) throws BufferUnderflowException {
-			«IF (type.parent !== null)»super(buffer, stringRegistry);
-			«ENDIF»«properties.filter[!it.isTransient].map[property | createPropertyBinaryDeserialization(property)].join('\n')»
+		public «type.name»(final IValueDeserializer deserializer) {
+			«IF (type.parent !== null)»super(deserializer);
+			«ENDIF»«properties.filter[!it.isTransient].map[
+				property | createPropertyGenericDeserialization(property)
+			].join('\n')»
 		}
 	'''
 
@@ -78,14 +68,14 @@ class BinaryConstructorTemplate {
 	 * @returns
 	 * 		code to deserialize the given property 
 	 */
-	private static def createPropertyBinaryDeserialization(Property property) {
+	private static def createPropertyGenericDeserialization(Property property) {
 		val sizes = property.findType.sizes
 		if (sizes.size > 0) {
 			'''
 				// load array sizes
 				«FOR size : sizes»
 					«IF (size.size == 0)»
-						int _«property.createPropertyName»_size«sizes.indexOf(size)» = buffer.getInt();
+						int _«property.createPropertyName»_size«sizes.indexOf(size)» = deserializer.getInt();
 					«ENDIF»
 				«ENDFOR»
 				this.«property.createPropertyName» = new «property.findType.createTypeInstantiationName(property.createPropertyName)»;
@@ -101,7 +91,7 @@ class BinaryConstructorTemplate {
 	 */
 	private static def CharSequence createTypeInstantiationName(Classifier classifier, String name) {
 		if (classifier.sizes.size > 0)
-			classifier.type.createPrimitiveTypeName + classifier.sizes.map [ size |
+			classifier.type.createPrimitiveTypeName + classifier.sizes.map [size |
 				size.createArraySize(name, classifier.sizes.indexOf(size))
 			].join
 		else
@@ -130,15 +120,15 @@ class BinaryConstructorTemplate {
 	 */
 	private static def createPropertyPrimitiveTypeDeserialization(BaseType classifier) {
 		switch (BaseTypes.getTypeEnum(classifier)) {
-			case STRING: '''stringRegistry.get(buffer.getInt())'''
-			case BYTE: '''buffer.get()'''
-			case SHORT: '''buffer.getShort()'''
-			case INT: '''buffer.getInt()'''
-			case LONG: '''buffer.getLong()'''
-			case FLOAT: '''buffer.getFloat()'''
-			case DOUBLE: '''buffer.getDouble()'''
-			case CHAR: '''buffer.getChar()'''
-			case BOOLEAN: '''buffer.get()==1?true:false'''
+			case STRING: '''deserializer.getString()'''
+			case BYTE: '''deserializer.getByte()'''
+			case SHORT: '''deserializer.getShort()'''
+			case INT: '''deserializer.getInt()'''
+			case LONG: '''deserializer.getLong()'''
+			case FLOAT: '''deserializer.getFloat()'''
+			case DOUBLE: '''deserializer.getDouble()'''
+			case CHAR: '''deserializer.getChar()'''
+			case BOOLEAN: '''deserializer.getBoolean()'''
 		}
 	}
 }

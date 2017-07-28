@@ -48,6 +48,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 			import java.nio.ByteBuffer;
 
 			import kieker.common.record.factory.IRecordFactory;
+			import kieker.common.record.io.IValueDeserializer;
 			import kieker.common.util.registry.IRegistry;
 			
 			/**
@@ -60,6 +61,11 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 				@Override
 				public «type.name» create(final ByteBuffer buffer, final IRegistry<String> stringRegistry) {
 					return new «type.name»(buffer, stringRegistry);
+				}
+				
+				@Override
+				public «type.name» create(final IValueDeserializer deserializer) {
+					return new «type.name»(deserializer);
 				}
 				
 				@Override
