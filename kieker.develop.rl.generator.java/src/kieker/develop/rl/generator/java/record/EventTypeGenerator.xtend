@@ -31,12 +31,14 @@ import static kieker.develop.rl.generator.java.record.EqualsMethodTemplate.*
 import static extension kieker.develop.rl.generator.java.record.EventTypeAPITemplates.*
 
 import static extension kieker.develop.rl.generator.java.record.BinaryConstructorTemplate.*
+import static extension kieker.develop.rl.generator.java.record.GenericDeserializationConstructorTemplate.*
 import static extension kieker.develop.rl.generator.java.record.ConstructorTemplates.*
 import static extension kieker.develop.rl.generator.java.record.NameResolver.*
 import static extension kieker.develop.rl.generator.java.record.PropertyConstructionModule.*
 import static extension kieker.develop.rl.generator.java.record.uid.ComputeUID.*
 import static extension kieker.develop.rl.generator.java.record.ConstantConstructionTemplates.*
 import static extension kieker.develop.rl.generator.java.record.SerializationTemplates.*
+import static extension kieker.develop.rl.generator.java.record.GenericSerializationTemplates.*
 import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
 
@@ -103,10 +105,13 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 			
 				«type.createBufferReadConstructor(allDeclarationProperties)»
 				
+				«type.createGenericDeserializationConstructor(allDeclarationProperties)»
+				
 				«IF (!type.abstract)»
 				«allDataProperties.createToArrayRepresentation»
 				«allDataProperties.createStringRegistration»
 				«allDataProperties.createBinarySerialization»
+				«allDataProperties.createGenericSerialization»
 				«createConstantAccessMethods»
 				«ENDIF»
 			
@@ -168,15 +173,22 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	 * @param type the record type
 	 */
 	private def createImports(EventType type) '''
-		«IF (!type.abstract)»import java.nio.BufferOverflowException;
-		«ENDIF»import java.nio.BufferUnderflowException;
+		«IF (!type.abstract)»
+		import java.nio.BufferOverflowException;
+		«ENDIF»
+		import java.nio.BufferUnderflowException;
 		import java.nio.ByteBuffer;
 
-		«IF (type.parent === null)»import kieker.common.record.AbstractMonitoringRecord;
+		«IF (type.parent === null)»
+		import kieker.common.record.AbstractMonitoringRecord;
 		import kieker.common.record.IMonitoringRecord;
-		«ELSE»import «(type.parent.eContainer as Model).name».«type.parent.name»;
-		«ENDIF»import kieker.common.util.registry.IRegistry;
-		
+		«ELSE»
+		import «(type.parent.eContainer as Model).name».«type.parent.name»;
+		«ENDIF»
+		import kieker.common.record.io.IValueDeserializer;
+		import kieker.common.record.io.IValueSerializer;
+		import kieker.common.util.registry.IRegistry;
+
 		«if (type.inherits !== null && type.inherits.size > 0) type.inherits.map[i | i.createInterfaceImport].join»
 	'''
 	

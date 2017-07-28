@@ -1,12 +1,12 @@
 /***************************************************************************
  * Copyright 2017 Kieker Project (http://kieker-monitoring.net)
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *     http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -25,34 +25,32 @@ import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
 
 /**
- * Contains the templates for serialization of a record.
+ * Contains the templates for generic serialization of a record based on Holger Knoche's idea.
  * 
- * @since 1.2
+ * @since 1.4
  * 
- * @author Reiner Jung
  * @author Christian Wulf
  */
-class SerializationTemplates {
+class GenericSerializationTemplates {
 
 	/**
-	 * Create binary serialization method.
+	 * Create generic serialization method.
 	 * 
 	 * @param collection of properties to be serialized.
 	 */
-	static def createBinarySerialization(List<Property> properties) '''
+	static def createGenericSerialization(List<Property> properties) '''
 		/**
 		 * {@inheritDoc}
-		 *
-		 * @deprecated since 1.13. Use {@link #serialize(IValueSerializer)} instead.
 		 */
 		@Override
-		@Deprecated
-		public void writeBytes(final ByteBuffer buffer, final IRegistry<String> stringRegistry) throws BufferOverflowException {
-			«properties.filter[!it.isTransient].map[it.createPropertyBinarySerialization].join('\n')»
+		public void serialize(final IValueSerializer serializer) throws BufferOverflowException {
+			//super.serialize(serializer);
+			«properties.filter[!it.isTransient].map[
+				it.createPropertyGenericSerialization
+			].join('\n')»
 		}
 	'''
-	
-	
+
 	/**
 	 * Determine the correct serialization for a property by type.
 	 * 
@@ -62,7 +60,7 @@ class SerializationTemplates {
 	 * @returns
 	 * 		code to serialize the given property
 	 */
-	private static def createPropertyBinarySerialization(Property property) {
+	private static def createPropertyGenericSerialization(Property property) {
 		val sizes = property.findType.sizes
 		if (sizes.size > 0) {
 			'''
@@ -70,7 +68,7 @@ class SerializationTemplates {
 				«FOR size : sizes»
 					«IF (size.size == 0)»
 						int _«property.createPropertyName»_size«sizes.indexOf(size)» = this.«property.createGetterName»()«createCodeToDetermineArraySize(sizes.indexOf(size))».length;
-						buffer.putInt(_«property.createPropertyName»_size«sizes.indexOf(size)»);
+						serializer.putInt(_«property.createPropertyName»_size«sizes.indexOf(size)»);
 					«ENDIF»
 				«ENDFOR»
 				«createArrayAccessLoops(sizes,0,property.createPropertyName, createValueStoreForSerialization(property))»
@@ -79,24 +77,24 @@ class SerializationTemplates {
 			createValueStoreForSerialization(property)
 		}
 	}
-	
+
 	/**
-	 * Create code for a property for binary serialization based on the data types.
+	 * Create code for a property for generic serialization based on the data types.
 	 * 
 	 * @param property the property to be processed
 	 */
 	private static def createValueStoreForSerialization(Property property) {
 		val getterName = "this." + createGetterValueExpression(property)
 		switch (BaseTypes.getTypeEnum(property.findType.type)) {
-			case STRING : '''buffer.putInt(stringRegistry.get(«getterName»));'''
-			case BYTE : '''buffer.put((byte)«getterName»);'''
-			case SHORT : '''buffer.putShort(«getterName»);'''
-			case INT : '''buffer.putInt(«getterName»);'''
-			case LONG : '''buffer.putLong(«getterName»);'''
-			case FLOAT : '''buffer.putFloat(«getterName»);'''
-			case DOUBLE : '''buffer.putDouble(«getterName»);'''
-			case CHAR : '''buffer.putChar(«getterName»);'''
-			case BOOLEAN : '''buffer.put((byte)(«getterName»?1:0));'''
+			case STRING: '''serializer.putString(«getterName»);'''
+			case BYTE: '''serializer.putByte(«getterName»);'''
+			case SHORT: '''serializer.putShort(«getterName»);'''
+			case INT: '''serializer.putInt(«getterName»);'''
+			case LONG: '''serializer.putLong(«getterName»);'''
+			case FLOAT: '''serializer.putFloat(«getterName»);'''
+			case DOUBLE: '''serializer.putDouble(«getterName»);'''
+			case CHAR: '''serializer.putChar(«getterName»);'''
+			case BOOLEAN: '''serializer.putBoolean(«getterName»);'''
 		}
-	}	
+	}
 }
