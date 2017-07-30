@@ -59,6 +59,8 @@ public class GuavaModelResource extends ResourceImpl {
 	val Collection<File> jars
 	val Collection<Type> modelTypes = new ArrayList<Type>
 	
+	var int i=0
+	
 	/**
 	 * Integrate a foreign model.
 	 * 
@@ -170,7 +172,6 @@ public class GuavaModelResource extends ResourceImpl {
 			val cl = new URLClassLoader(urls)
 			
 			val cp=ClassPath.from(cl)
-			println(("--------------------"))
 			
 			/** find all types which are related to IMonitoringRecord. */
 			cp.getTopLevelClassesRecursive("kieker.common.record").forEach[classInfo |
@@ -179,7 +180,7 @@ public class GuavaModelResource extends ResourceImpl {
 					!EXCLUDE_CLASSES.exists[it == clazz.canonicalName]
 				) {
 					println("process " + clazz.canonicalName)
-					val type = clazz.createType
+					val type = clazz.createComplexType
 					typeMap.put(clazz, type)
 					models.addType(clazz, type)
 					modelTypes.add(type)
@@ -189,18 +190,35 @@ public class GuavaModelResource extends ResourceImpl {
 		
 				
 			/** link types. */
-			sourceTypes.forEach[type | type.linkType(typeMap)]
-				
+			sourceTypes.forEach[clazz | clazz.linkType(typeMap)]
+			
+			
+			models.values.forEach[v |
+				println("> model " + v.name)
+				v.types.forEach[t |
+					println("\t> " + t.name + " contained " + (t.eContainer !== null))
+					step()
+				]
+			]
+			
+			println("-- " + i + " " + sourceTypes.size + " " + modelTypes.size)
+			
 			if(models.values !== null) {
 				this.getContents().addAll(models.values)
 			}
 		}
 	}
 	
+	private def void step() {
+		i++
+	}
+	
 	private def boolean inherits(Class<?> clazz, String ifaceName) {
 		if (clazz.canonicalName.equals(ifaceName))
 			true
-		else if (clazz.interfaces.exists[iface | ifaceName.equals(iface.canonicalName)]) 
+		else if (clazz.interfaces.exists[iface | 
+			ifaceName.equals(iface.canonicalName) || iface.inherits(ifaceName)
+		]) 
 			true
 		else if (clazz.superclass !== null)
 			clazz.superclass.inherits(ifaceName)
@@ -222,6 +240,10 @@ public class GuavaModelResource extends ResourceImpl {
 	 */
 	private def void linkType(Class<?> type, Map<Class<?>, ComplexType> typeMap) {
 		val modelType = typeMap.get(type)
+		if (modelType.eContainer !== null)
+			println("type has container " + (modelType.eContainer as Model).name)
+		else
+			println("CONTAINER MISSING for " + modelType.name)
 		switch(modelType) {
 			TemplateType: {
 				type.interfaces.forEach[iface |
@@ -235,14 +257,17 @@ public class GuavaModelResource extends ResourceImpl {
 				println("> " + type.canonicalName)
 				type.interfaces.forEach[iface |
 					val template = typeMap.get(iface) 
-					if (template !== null)
+					if (template !== null) {
+						println("\t" + " implements " + iface.canonicalName)
 						modelType.inherits.add(template as TemplateType)
+					}
 				]
 				if (type.superclass !== null) {
-					println(type.canonicalName + " extends " + type.superclass.canonicalName + " " + typeMap.get(type.superclass).name) 
-					modelType.parent = typeMap.get(type.superclass) as EventType
-				} else {
-					println(type.canonicalName + " no SUPER")
+					val parentType = typeMap.get(type.superclass)
+					if (parentType !== null) {
+						println("\t" + " extends " + type.superclass.canonicalName)
+						modelType.parent = parentType as EventType
+					}
 				}
 			}
 		}
@@ -254,7 +279,7 @@ public class GuavaModelResource extends ResourceImpl {
 		return model
 	}
 	
-	private def ComplexType createType(Class<?> type) {
+	private def ComplexType createComplexType(Class<?> type) {
 		if (type.isInterface)
 			type.createTemplateType
 		else
@@ -262,6 +287,7 @@ public class GuavaModelResource extends ResourceImpl {
 	}
 	
 	private def EventType createEventType(Class<?> type) {
+		// println("EVENT " + type.canonicalName)
 		val result = rlFactory.createEventType
 		
 		result.name = type.simpleName
@@ -271,6 +297,7 @@ public class GuavaModelResource extends ResourceImpl {
 	}
 	
 	private def TemplateType createTemplateType(Class<?> type) {
+		// println("TEMPLATE " + type.canonicalName)
 		val result = rlFactory.createTemplateType
 		
 		result.name = type.simpleName
