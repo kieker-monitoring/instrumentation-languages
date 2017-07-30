@@ -13,9 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package kieker.develop.rl.typing.jar;
+package kieker.develop.rl.typing.jar.guava;
 
-import org.eclipse.core.resources.IProject;
+import java.io.File;
+import java.util.Collection;
+
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -26,14 +28,12 @@ import kieker.develop.rl.recordLang.Type;
 import kieker.develop.rl.typing.ITypeProvider;
 
 /**
- * The type provider allows to retrieve a list of all primitive types and provides type name lookup.
- *
- * broadly based on org.spp.cocome.behavior.pcm.handler.PCMModelTypeProvider
+ * The type provider allows to retrieve a list of all types in the given jars.
  *
  * @author Reiner Jung
- * @since 1.2
+ * @since 1.3
  */
-public class JarModelTypeProvider implements Resource.Factory, ITypeProvider {
+public class GuavaModelTypeProvider implements Resource.Factory, ITypeProvider {
 
 	/** */
 	public static final String ELEMENTS = "/Elements"; //$NON-NLS-1$
@@ -42,7 +42,7 @@ public class JarModelTypeProvider implements Resource.Factory, ITypeProvider {
 	/** */
 	public static final String OBJECTS = "/Objects/"; //$NON-NLS-1$
 
-	private final IProject project;
+	private final Collection<File> jars;
 
 	private final ResourceSet resourceSet;
 
@@ -54,9 +54,9 @@ public class JarModelTypeProvider implements Resource.Factory, ITypeProvider {
 	 * @param resourceSet
 	 *            context resource set
 	 */
-	public JarModelTypeProvider(final IProject project, final ResourceSet resourceSet) {
+	public GuavaModelTypeProvider(final Collection<File> jars, final ResourceSet resourceSet) {
 		this.resourceSet = resourceSet;
-		this.project = project;
+		this.jars = jars;
 	}
 
 	/**
@@ -67,7 +67,7 @@ public class JarModelTypeProvider implements Resource.Factory, ITypeProvider {
 	@Override
 	public Iterable<Type> getAllTypes() {
 		return IterableExtensions.map(
-				IterableExtensions.filter(this.resourceSet.getResource(JarModelTypeProvider.createResourceURI(), true).getContents(),
+				IterableExtensions.filter(this.resourceSet.getResource(GuavaModelTypeProvider.createResourceURI(), true).getContents(),
 						Type.class),
 				p -> p);
 	}
@@ -85,7 +85,7 @@ public class JarModelTypeProvider implements Resource.Factory, ITypeProvider {
 			throw new IllegalArgumentException("Internal error: Empty type name.");
 		}
 
-		final JarModelResource resource = (JarModelResource) this.resourceSet.getResource(JarModelTypeProvider.createResourceURI(), true);
+		final GuavaModelResource resource = (GuavaModelResource) this.resourceSet.getResource(GuavaModelTypeProvider.createResourceURI(), true);
 
 		return (Type) resource.getEObject(name);
 	}
@@ -98,8 +98,8 @@ public class JarModelTypeProvider implements Resource.Factory, ITypeProvider {
 	 * @return Returns a new jar model resource
 	 */
 	@Override
-	public JarModelResource createResource(final URI uri) {
-		return new JarModelResource(uri, this.project);
+	public GuavaModelResource createResource(final URI uri) {
+		return new GuavaModelResource(uri, this.jars);
 	}
 
 	/**

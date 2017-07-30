@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright 2013 Kieker Project (http://kieker-monitoring.net)
+ * Copyright 2017 Kieker Project (http://kieker-monitoring.net)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package kieker.develop.rl.typing.jar;
+package kieker.develop.rl.typing.jar.guava
 
 import kieker.develop.rl.recordLang.Classifier
 import kieker.develop.rl.recordLang.Literal
@@ -28,28 +28,25 @@ import java.util.ArrayList
 import java.util.Collection
 import java.util.HashMap
 import java.util.Map
-import org.eclipse.core.resources.IProject
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl
-import org.eclipse.jdt.core.Flags
-import org.eclipse.jdt.core.IType
-import org.eclipse.jdt.core.JavaCore
-import org.eclipse.core.resources.IMarker
 import kieker.develop.rl.typing.base.BaseTypes
 import kieker.develop.rl.recordLang.ComplexType
+import java.io.File
+import com.google.common.reflect.ClassPath
+import java.lang.reflect.Modifier
+import java.net.URL
+import java.net.URLClassLoader
 
 /**
  * The resource collects record information from JAR files.
  * 
- * Broadly based on org.spp.cocome.behavior.pcm.handler.PCMModelResource
- * 
- * @author Yannic Kropp -- initial contribution
  * @author Reiner Jung
  * 
- * @since 1.2
+ * @since 1.3
  */
-public class JarModelResource extends ResourceImpl {
+public class GuavaModelResource extends ResourceImpl {
 	
 	val EXCLUDE_CLASSES = #[
 		"java.io.Serializable",
@@ -59,7 +56,7 @@ public class JarModelResource extends ResourceImpl {
 	]
 	
 	val rlFactory = RecordLangFactory.eINSTANCE
-	var IProject project
+	val Collection<File> jars
 	val Collection<Type> modelTypes = new ArrayList<Type>
 	
 	/**
@@ -68,9 +65,9 @@ public class JarModelResource extends ResourceImpl {
 	 * @param uri of the foreign model
 	 * @param applicationModel the application model
 	 */
-	public new(URI uri, IProject project) {
+	public new(URI uri, Collection<File> jars) {
 		super(uri)
-		this.project = project
+		this.jars = jars
 	}
 	
 	/**
@@ -162,61 +159,72 @@ public class JarModelResource extends ResourceImpl {
 	 */
 	private synchronized def createModel() {
 		if (!this.isLoaded) {
-			val javaProject = JavaCore.create(project)
-			val iface = javaProject.findType("kieker.common.record.IMonitoringRecord")
+			val models = new HashMap<String,Model>()
+			val typeMap = new HashMap<Class<?>,ComplexType>()
+			val sourceTypes = new ArrayList<Class<?>>
 			
-			if (iface !== null) {		
-				/** find all types which are related to IMonitoringRecord */
-				val hierarchy = iface.newTypeHierarchy(javaProject,null)
-				val types = hierarchy.allTypes.filter[
-					val name = it.fullyQualifiedName
-					/**
-					 * only use binary only classes for the model, as Java code belongs to the
-					 * project and must be constructed via IRL.
-					 */
-					it.binary && !EXCLUDE_CLASSES.exists[it.equals(name)]
-				]
-				
-				val models = new HashMap<String,Model>()
-				/** create a model for each package */	
-				types.forEach[type | if (models.get(type.packageFragment.elementName) === null)
-					models.put(type.packageFragment.elementName, type.createModel)
-				]
-				
-				val typeMap = new HashMap<IType,ComplexType>()
-				/** create a type for each type. */
-				types.forEach[type | 
-					val modelType = type.createType
-					models.get(type.packageFragment.elementName).types.add(modelType)
-					typeMap.put(type, modelType)
-					modelTypes.add(modelType)
-				]
-				
-				/** link types. */
-				types.forEach[type | type.linkType(typeMap)]
-				
-				if(models.values !== null) {
-					this.getContents().addAll(models.values)
+			val file  = new File("/home/reiner/Projects/Kieker/irl/kieker.develop.rl.cli/lib/kieker.jar")
+			val url = file.toURI().toURL  
+			val urls = #[url]
+
+			val cl = new URLClassLoader(urls)
+			
+			val cp=ClassPath.from(cl)
+			println(("--------------------"))
+			
+			/** find all types which are related to IMonitoringRecord. */
+			cp.getTopLevelClassesRecursive("kieker.common.record").forEach[classInfo |
+				val clazz = classInfo.load
+				if (clazz.inherits("kieker.common.record.IMonitoringRecord") && 
+					!EXCLUDE_CLASSES.exists[it == clazz.canonicalName]
+				) {
+					println("process " + clazz.canonicalName)
+					val type = clazz.createType
+					typeMap.put(clazz, type)
+					models.addType(clazz, type)
+					modelTypes.add(type)
+					sourceTypes.add(clazz)
 				}
-			} else {
-				val m = project.createMarker(IMarker.PROBLEM)
-				m.setAttribute(IMarker.LINE_NUMBER, 0)
-				m.setAttribute(IMarker.MESSAGE, "The project does not contain the interface kieker.common.record.IMonitoringRecord")
-				m.setAttribute(IMarker.PRIORITY, IMarker.PRIORITY_LOW)
-				m.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_INFO)
+			]
+		
+				
+			/** link types. */
+			sourceTypes.forEach[type | type.linkType(typeMap)]
+				
+			if(models.values !== null) {
+				this.getContents().addAll(models.values)
 			}
 		}
+	}
+	
+	private def boolean inherits(Class<?> clazz, String ifaceName) {
+		if (clazz.canonicalName.equals(ifaceName))
+			true
+		else if (clazz.interfaces.exists[iface | ifaceName.equals(iface.canonicalName)]) 
+			true
+		else if (clazz.superclass !== null)
+			clazz.superclass.inherits(ifaceName)
+		else
+			false
+	}
+	
+	private def void addType(HashMap<String, Model> models, Class<?> clazz, ComplexType type) {
+		var model = models.get(clazz.package.name)
+		if (model === null) {
+			model = createModel(clazz)
+			models.put(model.name, model)
+		}
+		model.types.add(type)
 	}
 	
 	/**
 	 * Link types.
 	 */
-	private def void linkType(IType type, Map<IType, ComplexType> typeMap) {
+	private def void linkType(Class<?> type, Map<Class<?>, ComplexType> typeMap) {
 		val modelType = typeMap.get(type)
 		switch(modelType) {
 			TemplateType: {
-				val hierarchy = type.newSupertypeHierarchy(null)
-				hierarchy.getSuperInterfaces(type).forEach[iface |
+				type.interfaces.forEach[iface |
 					val template = typeMap.get(iface) 
 					if (template !== null)
 						modelType.inherits.add(template as TemplateType)
@@ -224,46 +232,48 @@ public class JarModelResource extends ResourceImpl {
 				
 			}
 			EventType: {
-				val hierarchy = type.newSupertypeHierarchy(null)
-				hierarchy.getSuperInterfaces(type).forEach[iface |
+				println("> " + type.canonicalName)
+				type.interfaces.forEach[iface |
 					val template = typeMap.get(iface) 
 					if (template !== null)
 						modelType.inherits.add(template as TemplateType)
 				]
-				val superType = hierarchy.getSuperclass(type)
-				if (superType !== null) {
-					modelType.parent = typeMap.get(superType) as EventType
+				if (type.superclass !== null) {
+					println(type.canonicalName + " extends " + type.superclass.canonicalName + " " + typeMap.get(type.superclass).name) 
+					modelType.parent = typeMap.get(type.superclass) as EventType
+				} else {
+					println(type.canonicalName + " no SUPER")
 				}
 			}
 		}
 	}
 	
-	private def Model createModel(IType type) {
+	private def Model createModel(Class<?> clazz) {
 		val model = rlFactory.createModel
-		model.name = type.packageFragment.elementName
+		model.name = clazz.package.name
 		return model
 	}
 	
-	private def ComplexType createType(IType type) {
+	private def ComplexType createType(Class<?> type) {
 		if (type.isInterface)
 			type.createTemplateType
 		else
 			type.createEventType
 	}
 	
-	private def EventType createEventType(IType type) {
+	private def EventType createEventType(Class<?> type) {
 		val result = rlFactory.createEventType
 		
-		result.name = type.elementName
+		result.name = type.simpleName
 		result.createAttributes(type)
 		
 		return result
 	}
 	
-	private def TemplateType createTemplateType(IType type) {
+	private def TemplateType createTemplateType(Class<?> type) {
 		val result = rlFactory.createTemplateType
 		
-		result.name = type.elementName
+		result.name = type.simpleName
 		result.createAttributes(type)
 		
 		return result
@@ -276,33 +286,34 @@ public class JarModelResource extends ResourceImpl {
 	 * @param result the template type which is extended by constant and property declarations
 	 * @param type the class used to infer the constants and properties from
 	 */
-	def void createAttributes(TemplateType result, IType type) {
+	def void createAttributes(TemplateType result, Class<?> type) {
 		type.methods.forEach[method |
-			if (Flags.isPublic(method.flags)) {
-				if (method.elementName.startsWith("get") &&
-					!"getLoggingTimestamp".equals(method.elementName) &&
-					!"getValueTypes".equals(method.elementName)
+			if ((method.modifiers.bitwiseAnd(Modifier.PUBLIC)) == Modifier.PUBLIC) {
+				if (method.name.startsWith("get") &&
+					!"getLoggingTimestamp".equals(method.name) &&
+					!"getValueTypes".equals(method.name) &&
+					!"getValueNames".equals(method.name)
 				) {
 					/** create property */
 					val property = rlFactory.createProperty
-					property.name = method.elementName.substring(3).toFirstLower
-					property.type = method.returnType.createType
+					property.name = method.name.substring(3).toFirstLower
+					property.type = method.returnType.createIRLType
 				
 					// TODO add constant and transient features later
 					if (property.type === null) {
-					createError(type.elementName, method.returnType, "property", property.name)
+						createError(type.name, method.returnType.canonicalName, "property", property.name)
 					} else {
 						result.properties.add(property)
 					}
-				} else if (method.elementName.startsWith("is")) {
+				} else if (method.name.startsWith("is")) {
 					/** create property */
 					val property = rlFactory.createProperty
-					property.name = method.elementName.substring(2).toFirstLower
-					property.type = method.returnType.createType
+					property.name = method.name.substring(2).toFirstLower
+					property.type = method.returnType.createIRLType
 					
 					// TODO add constant and transient features later
 					if (property.type === null) {
-					createError(type.elementName, method.returnType, "property", property.name)
+						createError(type.name, method.returnType.canonicalName, "property", property.name)
 					} else {
 						result.properties.add(property)
 					}
@@ -310,7 +321,7 @@ public class JarModelResource extends ResourceImpl {
 			}
 		]
 	}
-	
+		
 	/**
 	 * Create constants and properties based on fields of
 	 * a class declaration.
@@ -318,32 +329,36 @@ public class JarModelResource extends ResourceImpl {
 	 * @param result the event type which is extended by constant and property declarations
 	 * @param type the class used to infer the constants and properties from
 	 */
-	def void createAttributes(EventType result, IType type) {
-		type.fields.forEach[field |	
-			if (Flags.isPublic(field.flags) && Flags.isStatic(field.flags) && Flags.isFinal(field.flags)) {
-				if (!field.elementName.startsWith("TYPE_SIZE") && 
-					!"TYPES".equals(field.elementName) && 
-					!field.elementName.startsWith("CACHED_KIEKERRECORDS")) {
+	def void createAttributes(EventType result, Class<?> type) {
+		type.fields.forEach[field |
+			if ((field.modifiers.bitwiseAnd(Modifier.PUBLIC) == Modifier.PUBLIC) &&
+				(field.modifiers.bitwiseAnd(Modifier.STATIC) == Modifier.STATIC) &&
+				(field.modifiers.bitwiseAnd(Modifier.FINAL) == Modifier.FINAL)) {
+				if (!field.name.startsWith("TYPE_SIZE") && 
+					!"TYPES".equals(field.name) && 
+					!field.name.startsWith("CACHED_KIEKERRECORDS")) {
 					/** create constants */
 					val constant = rlFactory.createConstant
-					constant.name = field.elementName
-					constant.type = field.typeSignature.createType
-					constant.value = field.constant.createLiteral
+					constant.name = field.name
+					constant.type = field.type.createIRLType
+					constant.value = field.type.createLiteral
 					
 					if (constant.type === null) {
-						createError(type.elementName, field.typeSignature, "constant", constant.name)
+						createError(type.name, field.type.canonicalName, "constant", constant.name)
 					} else {
 						result.constants.add(constant)
 					}
 				}
-			} else if (Flags.isPrivate(field.flags) && Flags.isFinal(field.flags) && !Flags.isStatic(field.flags)) {
+			} else if ((field.modifiers.bitwiseAnd(Modifier.PRIVATE) == Modifier.PRIVATE) &&
+				(field.modifiers.bitwiseAnd(Modifier.STATIC) == 0) &&
+				(field.modifiers.bitwiseAnd(Modifier.FINAL) == Modifier.FINAL)) {
 				/** create property */
 				val property = rlFactory.createProperty
-				property.name = field.elementName
-				property.type = field.typeSignature.createType
+				property.name = field.name
+				property.type = field.type.createIRLType
 				// TODO add constant and transient features later
 				if (property.type === null) {
-					createError(type.elementName, field.typeSignature, "property", property.name)
+					createError(type.name, field.type.canonicalName, "property", property.name)
 				} else {
 					result.properties.add(property)
 				}
@@ -360,13 +375,9 @@ public class JarModelResource extends ResourceImpl {
 	 * @param attributeName is the name of the processed attribute
 	 */
 	private def void createError(String name, String attributeTypeSignature, String kind, String attributeName) {
-		val m = project.createMarker(IMarker.PROBLEM)
-		m.setAttribute(IMarker.LINE_NUMBER, 0)
-		m.setAttribute(IMarker.MESSAGE, "Kieker type " + name + " contains unsupported type " 
+		println("Kieker type " + name + " contains unsupported type " 
 			+ attributeTypeSignature + " in " + kind + " declaration " + attributeName
 		)
-		m.setAttribute(IMarker.PRIORITY, IMarker.PRIORITY_LOW)
-		m.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_ERROR)
 	}
 	
 	private def Literal createLiteral(Object object) {
@@ -420,6 +431,10 @@ public class JarModelResource extends ResourceImpl {
 		}
 	}
 	
+	private def Classifier createIRLType(Class<?> clazz) {
+		clazz.canonicalName.createType
+	}
+	
 	private def Classifier createType(String typeId) {
 		val classifier = rlFactory.createClassifier
 		var id = typeId 
@@ -428,16 +443,15 @@ public class JarModelResource extends ResourceImpl {
 			classifier.sizes += createArraySize(0)
 		}
 		switch(id) {
-			case "B": classifier.type = BaseTypes.BYTE.getType
-			case "C": classifier.type = BaseTypes.CHAR.getType
-			case "D": classifier.type = BaseTypes.DOUBLE.getType
-			case "F": classifier.type = BaseTypes.FLOAT.getType
-			case "I": classifier.type = BaseTypes.INT.getType
-			case "J": classifier.type = BaseTypes.LONG.getType
-			case "S": classifier.type = BaseTypes.SHORT.getType
-			case "Z": classifier.type = BaseTypes.BOOLEAN.getType
-			case "Ljava.lang.String;": classifier.type = BaseTypes.STRING.getType
-			case "QString;": classifier.type = BaseTypes.STRING.getType
+			case "byte": classifier.type = BaseTypes.BYTE.getType
+			case "char": classifier.type = BaseTypes.CHAR.getType
+			case "double": classifier.type = BaseTypes.DOUBLE.getType
+			case "float": classifier.type = BaseTypes.FLOAT.getType
+			case "int": classifier.type = BaseTypes.INT.getType
+			case "long": classifier.type = BaseTypes.LONG.getType
+			case "short": classifier.type = BaseTypes.SHORT.getType
+			case "boolean": classifier.type = BaseTypes.BOOLEAN.getType
+			case "java.lang.String": classifier.type = BaseTypes.STRING.getType
 			default:
 				return null
 		}

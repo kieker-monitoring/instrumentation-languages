@@ -13,36 +13,34 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package kieker.develop.rl.typing.base
+package kieker.develop.rl.typing.semantics
 
 import com.google.common.base.Predicate
-import kieker.develop.rl.recordLang.BaseType
+import kieker.develop.rl.generator.InternalErrorException
+import kieker.develop.rl.typing.IGlobalIRLScopeProvider
+import kieker.develop.semantics.annotations.Annotation
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.ecore.resource.ResourceSet
+import org.eclipse.xtext.naming.IQualifiedNameConverter
 import org.eclipse.xtext.resource.IEObjectDescription
 import org.eclipse.xtext.scoping.IScope
-import kieker.develop.rl.typing.ITypeProvider
-import kieker.develop.rl.generator.InternalErrorException
-import org.eclipse.xtext.naming.IQualifiedNameConverter
-import kieker.develop.rl.typing.IGlobalIRLScopeProvider
 
 /**
- * Base type global scope provider.
+ * Provider for the global scope for models for semantic annotations.
  * 
- * @author Christian Schneider
  * @author Reiner Jung
- * @since 1.0
+ * @since 1.3
  */
-class BaseTypeGlobalScopeProvider implements IGlobalIRLScopeProvider {
-	
-    override IScope getParentTypeScope(ResourceSet resourceSet, EReference reference,
+class SemanticAnnotationGlobalScopeProvider implements IGlobalIRLScopeProvider {
+
+	override IScope getParentTypeScope(ResourceSet resourceSet, EReference reference,
             Predicate<IEObjectDescription> filter, EClass referenceType, IQualifiedNameConverter qualifiedNameConverter) throws InternalErrorException {
-        // check whether the reference type is a type of any kind 
-        if (referenceType.name.equals(BaseType.simpleName)) {
-        	val ITypeProvider typeProvider = BaseTypeProviderFactory.getTypeProvider(resourceSet)
-			return new BaseTypeScope(typeProvider, qualifiedNameConverter, filter)
+        if (referenceType.name.equals(Annotation.simpleName)) {
+        	val typeProvider = SemanticAnnotationProviderFactory.getProvider(resourceSet)
+			return new SemanticAnnotationScope(typeProvider, qualifiedNameConverter, filter)	
         } else
-        	return IScope::NULLSCOPE
+        	return IScope.NULLSCOPE
+        	
     }
 }

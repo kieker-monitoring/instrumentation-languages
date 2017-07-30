@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package kieker.develop.rl.typing.jar;
+package kieker.develop.rl.typing.jar.jdt;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -29,12 +29,12 @@ import kieker.develop.rl.typing.ITypeProvider;
  * @author Reiner Jung
  * @since 1.2
  */
-public final class JarModelTypeProviderFactory {
+public final class JDTModelTypeProviderFactory {
 
 	/**
 	 * empty constructor.
 	 */
-	private JarModelTypeProviderFactory() {}
+	private JDTModelTypeProviderFactory() {}
 
 	/**
 	 * Create a new type provider or fetch the already created type provider for the primitive
@@ -52,7 +52,7 @@ public final class JarModelTypeProviderFactory {
 	public static synchronized ITypeProvider getTypeProvider(final IProject project, final ResourceSet resourceSet) throws InternalErrorException {
 		if (resourceSet != null) {
 			final Object object = resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
-					.get(JarModelTypeProvider.ID);
+					.get(JDTModelTypeProvider.ID);
 			if (object != null) {
 				if (object instanceof ITypeProvider) {
 					return (ITypeProvider) object;
@@ -60,7 +60,7 @@ public final class JarModelTypeProviderFactory {
 					throw new InternalErrorException("Expected JarModelTypeProvider but found " + object);
 				}
 			} else {
-				return JarModelTypeProviderFactory.createTypeProvider(project, resourceSet);
+				return JDTModelTypeProviderFactory.createTypeProvider(project, resourceSet);
 			}
 		} else {
 			throw new InternalErrorException("Cannot get type provide without a resourceSet.");
@@ -77,9 +77,9 @@ public final class JarModelTypeProviderFactory {
 	 * @return Returns the new type provider.
 	 */
 	private static ITypeProvider createTypeProvider(final IProject project, final ResourceSet resourceSet) {
-		final ITypeProvider typeProvider = new JarModelTypeProvider(project, resourceSet);
+		final ITypeProvider typeProvider = new JDTModelTypeProvider(project, resourceSet);
 		resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
-				.put(JarModelTypeProvider.ID, typeProvider);
+				.put(JDTModelTypeProvider.ID, typeProvider);
 		return typeProvider;
 	}
 

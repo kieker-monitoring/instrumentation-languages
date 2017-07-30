@@ -13,26 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package kieker.develop.rl.typing.jar;
+package kieker.develop.rl.typing.jar
 
 import com.google.common.base.Predicate
-import com.google.inject.Inject
+import kieker.develop.rl.generator.InternalErrorException
 import kieker.develop.rl.recordLang.EventType
 import kieker.develop.rl.recordLang.TemplateType
+import kieker.develop.rl.typing.IGlobalIRLScopeProvider
 import kieker.develop.rl.typing.ITypeProvider
-import kieker.develop.rl.typing.base.BaseTypeGlobalScopeProvider
-import kieker.develop.semantics.annotations.Annotation
 import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.core.runtime.Path
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EReference
-import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.xtext.naming.IQualifiedNameConverter
 import org.eclipse.xtext.resource.IEObjectDescription
 import org.eclipse.xtext.scoping.IScope
-import kieker.develop.rl.typing.semantics.SemanticAnnotationProviderFactory
-import kieker.develop.rl.typing.semantics.SemanticAnnotationScope
+import org.eclipse.core.resources.IProject
+import kieker.develop.rl.typing.jar.guava.GuavaModelTypeProviderFactory
+import kieker.develop.rl.typing.jar.jdt.JDTModelTypeProviderFactory
 
 /**
  * Provider for the global scope for models for JAR files.
@@ -41,49 +40,31 @@ import kieker.develop.rl.typing.semantics.SemanticAnnotationScope
  * @author Reiner Jung
  * @since 1.2
  */
-class JarModelGlobalScopeProvider extends BaseTypeGlobalScopeProvider {
-	
-	
-	@Inject
-	private IQualifiedNameConverter qualifiedNameConverter;
+class JarModelGlobalScopeProvider implements IGlobalIRLScopeProvider {
 
-	override IScope getParentTypeScope(Resource resource, EReference reference,
-            Predicate<IEObjectDescription> filter, EClass referenceType) {
-        val scope = super.getParentTypeScope(resource, reference, filter, referenceType)
-        if (scope != IScope.NULLSCOPE) {
-        	return scope
-        } else if (referenceType.name.equals(Annotation.simpleName)) {
-        	if (resource !== null) {
-        		val ResourceSet resourceSet = resource.getResourceSet()
-        		if (resourceSet !== null) {
-        			val typeProvider = SemanticAnnotationProviderFactory.getProvider(resourceSet)
-					return new SemanticAnnotationScope(typeProvider, qualifiedNameConverter, filter)
-        		} else
-	    			throw new IllegalStateException("context must be contained in a resource set") 
-        	} else
-    			throw new IllegalStateException("context must be contained in a resource") 
-        } else if (referenceType.name.equals(TemplateType.simpleName) 
+	override IScope getParentTypeScope(ResourceSet resourceSet, EReference reference,
+            Predicate<IEObjectDescription> filter, EClass referenceType, IQualifiedNameConverter qualifiedNameConverter) throws InternalErrorException {
+        if (referenceType.name.equals(TemplateType.simpleName) 
         	|| referenceType.name.equals(EventType.simpleName)) {
-        	if (resource !== null) {
-        		val ResourceSet resourceSet = resource.getResourceSet()
-        		if (resourceSet !== null) {
-	        		try {
-	        			val workspace = ResourcesPlugin.getWorkspace()
-	        			val root = workspace.getRoot()
-		        		val uri = resource.URI.toString.replaceFirst("platform:/resource", "") 
-		        		val project = root.getFile(new Path(uri)).project
-		        		
-	        			val ITypeProvider typeProvider = JarModelTypeProviderFactory.getTypeProvider(project, resourceSet)
-						return new JarModelTypeScope(typeProvider, qualifiedNameConverter, filter)
-	        		} catch (IllegalStateException e) {
-	        			System.out.println("No workspace present")
-	        			return IScope.NULLSCOPE
-	        		}
-        		} else
-	    			throw new IllegalStateException("context must be contained in a resource set") 
-        	} else
-    			throw new IllegalStateException("context must be contained in a resource") 
-        	
+	   		try {
+				val workspace = ResourcesPlugin.getWorkspace()
+				val root = workspace.getRoot()
+				val resource = resourceSet.resources.get(0)
+				var IProject project
+				if (resource.URI.isPlatformResource) {
+		    		val uri = resource.URI.toString.replaceFirst("platform:/resource", "") 
+		    		project = root.getFile(new Path(uri)).project
+		    		val ITypeProvider typeProvider = JDTModelTypeProviderFactory.getTypeProvider(project, resourceSet)
+		    		
+					return new JarModelTypeScope(typeProvider, qualifiedNameConverter, filter)
+		    	} else {
+		    		val ITypeProvider typeProvider = GuavaModelTypeProviderFactory.getTypeProvider(resourceSet)
+		    		return new JarModelTypeScope(typeProvider, qualifiedNameConverter, filter)
+		    	}
+			} catch (IllegalStateException e) {
+				System.out.println("No workspace present")
+				return IScope.NULLSCOPE
+			}
         } else
         	return IScope.NULLSCOPE
         	

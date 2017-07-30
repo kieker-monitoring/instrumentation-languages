@@ -15,13 +15,13 @@
  ***************************************************************************/
 package kieker.develop.rl
 
-import kieker.develop.rl.typing.jar.JarModelGlobalScopeProvider
 import com.google.inject.Binder
 import org.eclipse.xtext.generator.IOutputConfigurationProvider
 import com.google.inject.Singleton
 import kieker.develop.rl.scoping.SemanticAnnotationHandler
 import kieker.develop.rl.scoping.ISemanticAnnotationHandler
 import kieker.develop.rl.outlet.RecordLangOutletConfigurationProvider
+import kieker.develop.rl.typing.GlobalScopeProvider
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
@@ -36,7 +36,7 @@ class RecordLangRuntimeModule extends AbstractRecordLangRuntimeModule {
 	 * from the JVMTypes binding.
 	 */
 	override public Class<? extends org.eclipse.xtext.scoping.IGlobalScopeProvider> bindIGlobalScopeProvider() {
-		return JarModelGlobalScopeProvider
+		return GlobalScopeProvider
 	}
 
 	/**

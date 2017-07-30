@@ -37,6 +37,7 @@ import com.google.common.collect.Lists;
 import kieker.develop.rl.recordLang.RecordLangFactory;
 import kieker.develop.rl.recordLang.Type;
 import kieker.develop.rl.typing.ITypeProvider;
+import kieker.develop.rl.typing.jar.jdt.JDTModelTypeProvider;
 
 /**
  * broadly based on org.spp.cocome.behavior.pcm.handler.PCMModelTypeScope.
@@ -162,8 +163,8 @@ public class JarModelTypeScope extends AbstractScope {
 	 */
 	private InternalEObject createProxy(final String fullyQualifiedName) {
 		System.out.println("createProxy " + fullyQualifiedName);
-		final URI uri = JarModelTypeProvider.getFullURIForClass(fullyQualifiedName);
-		// TODO fix this could be component or interface or method?
+		final URI uri = JDTModelTypeProvider.getFullURIForClass(fullyQualifiedName);
+		// TODO fix this, could be component or interface or method?
 		final InternalEObject proxy = (InternalEObject) RecordLangFactory.eINSTANCE.createModel();
 		proxy.eSetProxyURI(uri);
 		return proxy;
