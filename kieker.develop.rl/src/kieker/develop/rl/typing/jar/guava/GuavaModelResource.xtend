@@ -15,29 +15,29 @@
  ***************************************************************************/
 package kieker.develop.rl.typing.jar.guava
 
-import kieker.develop.rl.recordLang.Classifier
-import kieker.develop.rl.recordLang.Literal
-import kieker.develop.rl.recordLang.Model
-import kieker.develop.rl.recordLang.RecordLangFactory
-import kieker.develop.rl.recordLang.EventType
-import kieker.develop.rl.recordLang.TemplateType
-import kieker.develop.rl.recordLang.Type
+import com.google.common.reflect.ClassPath
+import java.io.File
 import java.io.IOException
 import java.io.InputStream
+import java.lang.reflect.Modifier
+import java.net.URLClassLoader
 import java.util.ArrayList
 import java.util.Collection
 import java.util.HashMap
 import java.util.Map
+import kieker.develop.rl.recordLang.Classifier
+import kieker.develop.rl.recordLang.ComplexType
+import kieker.develop.rl.recordLang.EventType
+import kieker.develop.rl.recordLang.Literal
+import kieker.develop.rl.recordLang.Model
+import kieker.develop.rl.recordLang.RecordLangFactory
+import kieker.develop.rl.recordLang.TemplateType
+import kieker.develop.rl.recordLang.Type
+import kieker.develop.rl.typing.base.BaseTypes
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl
-import kieker.develop.rl.typing.base.BaseTypes
-import kieker.develop.rl.recordLang.ComplexType
-import java.io.File
-import com.google.common.reflect.ClassPath
-import java.lang.reflect.Modifier
-import java.net.URL
-import java.net.URLClassLoader
+import org.apache.commons.logging.LogFactory
 
 /**
  * The resource collects record information from JAR files.
@@ -47,6 +47,8 @@ import java.net.URLClassLoader
  * @since 1.3
  */
 public class GuavaModelResource extends ResourceImpl {
+	
+	val static LOG = LogFactory.getLog(GuavaModelResource)
 	
 	val EXCLUDE_CLASSES = #[
 		"java.io.Serializable",
@@ -58,9 +60,7 @@ public class GuavaModelResource extends ResourceImpl {
 	val rlFactory = RecordLangFactory.eINSTANCE
 	val Collection<File> jars
 	val Collection<Type> modelTypes = new ArrayList<Type>
-	
-	var int i=0
-	
+		
 	/**
 	 * Integrate a foreign model.
 	 * 
@@ -164,57 +164,96 @@ public class GuavaModelResource extends ResourceImpl {
 			val models = new HashMap<String,Model>()
 			val typeMap = new HashMap<Class<?>,ComplexType>()
 			val sourceTypes = new ArrayList<Class<?>>
+						
+			val classLoader = new URLClassLoader(jars.map[jarFile | jarFile.toURI().toURL])
 			
-			val file  = new File("/home/reiner/Projects/Kieker/irl/kieker.develop.rl.cli/lib/kieker.jar")
-			val url = file.toURI().toURL  
-			val urls = #[url]
-
-			val cl = new URLClassLoader(urls)
-			
-			val cp=ClassPath.from(cl)
-			
+			val classPath=ClassPath.from(classLoader)
+									
 			/** find all types which are related to IMonitoringRecord. */
-			cp.getTopLevelClassesRecursive("kieker.common.record").forEach[classInfo |
-				val clazz = classInfo.load
-				if (clazz.inherits("kieker.common.record.IMonitoringRecord") && 
-					!EXCLUDE_CLASSES.exists[it == clazz.canonicalName]
-				) {
-					println("process " + clazz.canonicalName)
-					val type = clazz.createComplexType
-					typeMap.put(clazz, type)
-					models.addType(clazz, type)
-					modelTypes.add(type)
-					sourceTypes.add(clazz)
+			classPath.allClasses.forEach[classInfo |
+				try {
+					val clazz = classInfo.load
+					if (clazz !== null) {
+						if (clazz.inherits("kieker.common.record.IMonitoringRecord") && 
+							!EXCLUDE_CLASSES.exists[it == clazz.canonicalName]
+						) {
+							val type = clazz.createComplexType
+							typeMap.put(clazz, type)
+							models.addType(clazz, type)
+							modelTypes.add(type)
+							sourceTypes.add(clazz)
+						}
+					}
+				} catch(LinkageError e) {
+					LOG.debug("class " + classInfo.name + " cannot be loaded.")
 				}
 			]
-		
-				
+			
 			/** link types. */
 			sourceTypes.forEach[clazz | clazz.linkType(typeMap)]
-			
-			
-			models.values.forEach[v |
-				println("> model " + v.name)
-				v.types.forEach[t |
-					println("\t> " + t.name + " contained " + (t.eContainer !== null))
-					step()
-				]
-			]
-			
-			println("-- " + i + " " + sourceTypes.size + " " + modelTypes.size)
-			
-			if(models.values !== null) {
-				this.getContents().addAll(models.values)
+									
+			if (models.values !== null) {
+				/** validate mode integrity. */
+				if (models.values.isSound()) {
+					this.getContents().addAll(models.values)
+				} else {											
+					LOG.error("Some types cannot be computed. Therefore, compilation may fail.")
+				}
 			}
 		}
 	}
 	
-	private def void step() {
-		i++
+	/**
+	 * Validate whether all proxies are resolved.
+	 * 
+	 * @param models collection of models
+	 * @return true when all proxies are resolved else false
+	 */
+	private def boolean isSound(Collection<Model> models) {
+		models.forall[model |
+			model.types.forall[type |
+				if (type.eContainer === null) {
+					LOG.error("Type " + type.name + " is not contained.")
+					false
+				} else if (type instanceof EventType) {
+					if (type.parent !== null) {
+						if (type.parent.eIsProxy) {
+							LOG.error("Parent type of event type " + type.name + " is not present in project or classpath.")
+							false
+						} else
+							true
+					} else
+						true
+					&&
+					if (type.inherits.exists[it.eIsProxy]) {
+						LOG.error("Inherited type of event type " + type.name + " is not present in project or classpath.")
+						false
+					} else
+						true
+				} else if (type instanceof TemplateType) {
+					if (type.inherits.exists[it.eIsProxy]) {
+						LOG.error("Inherited type of template type " + type.name + " is not present in project or classpath.")
+						false
+					} else
+						true
+				} else {
+					true	
+				}
+			]
+		]
 	}
-	
+
+	/**
+	 * Find whether clazz inherits interface ifaceName.
+	 * 
+	 * @param clazz the class to be checked
+	 * @param ifaceName the interface or super class to be inherited
+	 * @return true when clazz inherits iface, else false
+	 */	
 	private def boolean inherits(Class<?> clazz, String ifaceName) {
-		if (clazz.canonicalName.equals(ifaceName))
+		if (clazz.canonicalName === null) /** nameless class?? */
+			false
+		else if (clazz.canonicalName.equals(ifaceName))
 			true
 		else if (clazz.interfaces.exists[iface | 
 			ifaceName.equals(iface.canonicalName) || iface.inherits(ifaceName)
@@ -226,6 +265,14 @@ public class GuavaModelResource extends ResourceImpl {
 			false
 	}
 	
+	/**
+	 * Add a type to a model in the list of models. If a suitable model does not exists,
+	 * create the model as well.
+	 * 
+	 * @param models the list of models
+	 * @param clazz the class where the complex type is for (knows the package name)
+	 * @param type the actual type to be added  
+	 */
 	private def void addType(HashMap<String, Model> models, Class<?> clazz, ComplexType type) {
 		var model = models.get(clazz.package.name)
 		if (model === null) {
@@ -240,10 +287,6 @@ public class GuavaModelResource extends ResourceImpl {
 	 */
 	private def void linkType(Class<?> type, Map<Class<?>, ComplexType> typeMap) {
 		val modelType = typeMap.get(type)
-		if (modelType.eContainer !== null)
-			println("type has container " + (modelType.eContainer as Model).name)
-		else
-			println("CONTAINER MISSING for " + modelType.name)
 		switch(modelType) {
 			TemplateType: {
 				type.interfaces.forEach[iface |
@@ -254,18 +297,15 @@ public class GuavaModelResource extends ResourceImpl {
 				
 			}
 			EventType: {
-				println("> " + type.canonicalName)
 				type.interfaces.forEach[iface |
 					val template = typeMap.get(iface) 
 					if (template !== null) {
-						println("\t" + " implements " + iface.canonicalName)
 						modelType.inherits.add(template as TemplateType)
 					}
 				]
 				if (type.superclass !== null) {
 					val parentType = typeMap.get(type.superclass)
 					if (parentType !== null) {
-						println("\t" + " extends " + type.superclass.canonicalName)
 						modelType.parent = parentType as EventType
 					}
 				}
@@ -287,7 +327,6 @@ public class GuavaModelResource extends ResourceImpl {
 	}
 	
 	private def EventType createEventType(Class<?> type) {
-		// println("EVENT " + type.canonicalName)
 		val result = rlFactory.createEventType
 		
 		result.name = type.simpleName
@@ -297,7 +336,6 @@ public class GuavaModelResource extends ResourceImpl {
 	}
 	
 	private def TemplateType createTemplateType(Class<?> type) {
-		// println("TEMPLATE " + type.canonicalName)
 		val result = rlFactory.createTemplateType
 		
 		result.name = type.simpleName

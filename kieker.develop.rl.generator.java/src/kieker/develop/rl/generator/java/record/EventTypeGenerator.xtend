@@ -17,6 +17,7 @@ package kieker.develop.rl.generator.java.record
 
 import java.util.ArrayList
 import java.util.List
+
 import kieker.develop.rl.recordLang.ComplexType
 import kieker.develop.rl.recordLang.EventType
 import kieker.develop.rl.recordLang.Model
@@ -50,7 +51,7 @@ import static extension kieker.develop.rl.typing.TypeResolution.*
  * @since 1.0
  */
 class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> {
-
+	
 	override accepts(ComplexType type) {
 		type instanceof EventType
 	}
@@ -70,6 +71,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	protected override createOutputModel(EventType type, String header, String author, String version) {
 		val allDataProperties = type.collectAllDataProperties
 		val allDeclarationProperties = type.collectAllDeclarationProperties
+
 		
 		'''
 			«header»package «(type.eContainer as Model).name»;
@@ -123,7 +125,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 			}
 		'''
 	}
-	
+
 	/**
 	 * Create array with all property names.
 	 * 

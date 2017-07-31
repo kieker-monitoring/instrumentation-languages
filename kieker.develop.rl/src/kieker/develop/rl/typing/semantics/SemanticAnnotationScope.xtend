@@ -51,7 +51,6 @@ class SemanticAnnotationScope extends AbstractScope {
 		val annotations = new ArrayList<IEObjectDescription>
 
 		this.semanticAnnotationProvider.allAnnotations.forEach[
-			System.out.println(">> " + it.getName())
 			annotations.add(this.createScopedElement(it.getName()))
 		]
 		
@@ -67,7 +66,6 @@ class SemanticAnnotationScope extends AbstractScope {
 	}
 	
 	private def InternalEObject createProxy(String fullyQualifiedName) {
-		System.out.println("createProxy " + fullyQualifiedName);
 		val uri = semanticAnnotationProvider.getFullURIForClass(fullyQualifiedName)
 		// TODO fix this: could be component or interface or method?
 		val InternalEObject proxy = AnnotationsFactory.eINSTANCE.createAnnotation() as InternalEObject

@@ -34,6 +34,7 @@ import kieker.develop.rl.typing.TypeProvider
 import kieker.develop.rl.recordLang.ComplexType
 import de.cau.cs.se.geco.architecture.framework.IGenerator
 import kieker.develop.rl.CLIPreferenceStore
+import org.apache.log4j.Logger
 
 /**
  * Generates one single files per record for java, c, and perl. 
@@ -42,6 +43,8 @@ import kieker.develop.rl.CLIPreferenceStore
  * @since 1.0
  */
 class RecordLangGenerator implements IGenerator2 {
+	
+	val static LOG = Logger.getLogger(RecordLangGenerator)
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		if (resource.URI.platformResource) {
@@ -109,13 +112,49 @@ class RecordLangGenerator implements IGenerator2 {
 				]
 				
 				/** Add the other template and event types to their respective lists. */
-				resource.allContents.filter(typeof(EventType)).forEach[types += it]
-				resource.allContents.filter(typeof(TemplateType)).forEach[types += it]
+				resource.allContents.filter(typeof(EventType)).forEach[if (it.isSound()) types += it]
+				resource.allContents.filter(typeof(TemplateType)).forEach[if (it.isSound()) types += it]
 				
 				configuration.generators.processTypes(types, configuration, fsa, header, author, version)
 			}
 		}
 	}
+	
+	private def boolean isSound(EventType type) {
+		if (type.eIsProxy) {
+			LOG.error("Event type is a proxy, cannot compile")
+			return false
+		} else {
+			if (type.parent !== null) {
+				if (type.parent.eIsProxy) {
+					LOG.error("The parent type of the event type " + type.name + " is a proxy, cannot compile")
+					return false
+				} else {
+					return type.parent.isSound
+				}
+			}
+			if (type.inherits.exists[it.eIsProxy && !it.isSound]) {
+				LOG.error("An inherited type of the event type " + type.name + " is a proxy, cannot compile")
+				return false
+			}
+		}
+		
+		return true
+	}
+	
+	private def boolean isSound(TemplateType type) {
+		if (type.eIsProxy) {
+			LOG.error("Template type is a proxy, cannot compile")
+			return false
+		} else {
+			if (type.inherits.exists[it.eIsProxy && !it.isSound]) {
+				LOG.error("An inherited type of the template type " + type.name + " is a proxy, cannot compile")
+				return false
+			}
+		}
+		
+		return true
+	} 
 	
 	/**
 	 * Iterate over all generators for all types and produce one output file.

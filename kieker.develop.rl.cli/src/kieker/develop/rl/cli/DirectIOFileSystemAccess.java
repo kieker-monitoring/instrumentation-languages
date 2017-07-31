@@ -86,7 +86,6 @@ public class DirectIOFileSystemAccess implements IFileSystemAccess2 {
 	@Override
 	public void generateFile(final String fileName, final String outputConfigurationName,
 			final CharSequence contents) {
-		LOG.info(">> " + fileName);
 		final AbstractOutletConfiguration<ComplexType, Object> outlet = this.getOutletConfiguration(outputConfigurationName);
 		if (outlet != null) {
 			try {

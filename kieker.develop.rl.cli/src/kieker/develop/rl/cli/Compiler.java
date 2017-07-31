@@ -41,8 +41,6 @@ import kieker.develop.rl.outlet.AbstractOutletConfiguration;
 import kieker.develop.rl.preferences.TargetsPreferences;
 import kieker.develop.rl.recordLang.ComplexType;
 
-import de.cau.cs.se.geco.architecture.framework.IGenerator;
-
 /**
  * Parser class.
  *
@@ -51,10 +49,10 @@ import de.cau.cs.se.geco.architecture.framework.IGenerator;
  * @author Reiner Jung
  *
  */
-public class IRLParser {
+public class Compiler {
 
 	/** Central logger for the compiler. */
-	private static final Log LOG = LogFactory.getLog(IRLParser.class);
+	private static final Log LOG = LogFactory.getLog(Compiler.class);
 
 	/** Legal extensions for IRL files. */
 	private static final Object FILE_EXTENSION_IRL = "irl";
@@ -79,32 +77,30 @@ public class IRLParser {
 	 * @param author
 	 *            default author
 	 */
-	public IRLParser() {
+	public Compiler() {
 		this.preferenceStore = CLIPreferenceStore.INSTANCE;
 	}
 
-	public void configureParser(final List<String> selectedLanguageTypes, final List<String> headerComments, final String version, final String author) {
+	public void configure(final List<String> selectedLanguageTypes, final List<String> headerComments, final String version, final String author) {
 		TargetsPreferences.setAuthorName(this.preferenceStore, author);
 		TargetsPreferences.setVersionID(this.preferenceStore, version);
 		// setup language activation
 		for (final AbstractOutletConfiguration<ComplexType, Object> outlet : GeneratorRegistration.getOutletConfigurations()) {
-			for (final IGenerator<? extends ComplexType, ? extends Object> generator : outlet.getGenerators()) {
-				try {
-					final String language = outlet.getName();
-					TargetsPreferences.setGeneratorActive(this.preferenceStore, language, false);
-					int i = 0;
-					for (final String selected : selectedLanguageTypes) {
-						if (selected.equals(language)) {
-							TargetsPreferences.setGeneratorActive(this.preferenceStore, language, true);
-							TargetsPreferences.setHeaderComment(this.preferenceStore, language, headerComments.get(i));
-						}
-						i++;
+			try {
+				final String outletName = outlet.getName();
+				TargetsPreferences.setGeneratorActive(this.preferenceStore, outletName, false);
+				int i = 0;
+				for (final String selected : selectedLanguageTypes) {
+					if (selected.equals(outletName)) {
+						TargetsPreferences.setGeneratorActive(this.preferenceStore, outletName, true);
+						TargetsPreferences.setHeaderComment(this.preferenceStore, outletName, headerComments.get(i));
 					}
-				} catch (final IllegalArgumentException e) {
-					e.printStackTrace();
-				} catch (final SecurityException e) {
-					e.printStackTrace();
+					i++;
 				}
+			} catch (final IllegalArgumentException e) {
+				e.printStackTrace();
+			} catch (final SecurityException e) {
+				e.printStackTrace();
 			}
 		}
 	}

@@ -4,7 +4,7 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: kieker.develop.rl.cli;singleton:=true
 Bundle-Version: 1.3.0.qualifier
 Bundle-Vendor: %providerName
-Bundle-ClassPath: ., lib/jcommander.jar, lib/commons-logging-1.2.jar, lib/kieker.jar
+Bundle-ClassPath: ., lib/jcommander.jar, lib/commons-logging.jar, lib/kieker.jar
 Require-Bundle: org.eclipse.equinox.app,
  kieker.develop.rl;bundle-version="1.3.0",
  org.eclipse.equinox.preferences,

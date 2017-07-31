@@ -29,7 +29,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.xtext.naming.IQualifiedNameConverter
 import org.eclipse.xtext.resource.IEObjectDescription
 import org.eclipse.xtext.scoping.IScope
-import org.eclipse.core.resources.IProject
 import kieker.develop.rl.typing.jar.guava.GuavaModelTypeProviderFactory
 import kieker.develop.rl.typing.jar.jdt.JDTModelTypeProviderFactory
 
@@ -50,12 +49,12 @@ class JarModelGlobalScopeProvider implements IGlobalIRLScopeProvider {
 				val workspace = ResourcesPlugin.getWorkspace()
 				val root = workspace.getRoot()
 				val resource = resourceSet.resources.get(0)
-				var IProject project
+
 				if (resource.URI.isPlatformResource) {
 		    		val uri = resource.URI.toString.replaceFirst("platform:/resource", "") 
-		    		project = root.getFile(new Path(uri)).project
-		    		val ITypeProvider typeProvider = JDTModelTypeProviderFactory.getTypeProvider(project, resourceSet)
+		    		val project = root.getFile(new Path(uri)).project
 		    		
+		    		val ITypeProvider typeProvider = JDTModelTypeProviderFactory.getTypeProvider(project, resourceSet)
 					return new JarModelTypeScope(typeProvider, qualifiedNameConverter, filter)
 		    	} else {
 		    		val ITypeProvider typeProvider = GuavaModelTypeProviderFactory.getTypeProvider(resourceSet)
