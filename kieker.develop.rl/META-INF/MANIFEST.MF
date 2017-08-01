@@ -26,7 +26,7 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.xtend.lib,
  kieker.develop.semantics,
  org.eclipse.equinox.registry,
- com.google.guava,
+ com.google.guava;bundle-version="21.0.0",
  org.eclipse.xtend.lib.macro
 Import-Package: org.apache.log4j,
  org.eclipse.jdt.core,

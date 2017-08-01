@@ -57,6 +57,10 @@ public class CompilerMain implements IApplication {
 		"--class-path" }, description = "Classpath for libraries containing Kieker record classes", splitter = ColonParameterSplitter.class, required = false, converter = FileConverter.class)
 	private List<File> jarFiles;
 
+	@Parameter(names = { "-t",
+		"--outlet-paths" }, description = "Relative path from the project root for the target code directories", splitter = ColonParameterSplitter.class, required = false)
+	private List<String> outletPaths;
+
 	@Override
 	public Object start(final IApplicationContext context) throws Exception {
 		this.author = "no author";
@@ -70,19 +74,20 @@ public class CompilerMain implements IApplication {
 
 		new JCommander(this, appArgs);
 
-		LOG.info("Generating for");
+		String output = null;
 		final Collection<AbstractOutletConfiguration<ComplexType, Object>> configurations = GeneratorRegistration.getOutletConfigurations();
 		for (final String lang : this.languages) {
-			boolean match = false;
 			for (final AbstractOutletConfiguration<ComplexType, Object> configuration : configurations) {
 				if (lang.equals(configuration.getName())) {
-					match = true;
+					if (output == null) {
+						output = lang;
+					} else {
+						output += output + ", " + lang;
+					}
 				}
 			}
-			if (match) {
-				LOG.info("\t" + lang);
-			}
 		}
+		LOG.info("Generating code for " + output);
 		LOG.info("Output " + this.outputPath);
 
 		/** read all provided headers. */
@@ -112,7 +117,9 @@ public class CompilerMain implements IApplication {
 
 		final Compiler compiler = injector.getInstance(Compiler.class);
 
-		compiler.configure(this.languages, headerComments, this.version, this.author);
+		final Collection<AbstractOutletConfiguration<ComplexType, Object>> outlets = GeneratorRegistration.getOutletConfigurations();
+
+		compiler.configure(outlets, this.languages, this.outletPaths, headerComments, this.version, this.author);
 
 		compiler.compile(this.sourcePath, this.outputPath);
 

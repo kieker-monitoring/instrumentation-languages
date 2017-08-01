@@ -19,7 +19,7 @@
          point="org.eclipse.core.runtime.products">
       <product
             application="kieker.develop.rl.cli.application"
-            name="Kieker IRL CLI">
+            name="Headless Example">
          <property
                name="appName"
                value="Headless Example">

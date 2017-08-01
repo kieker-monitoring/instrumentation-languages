@@ -72,6 +72,10 @@ abstract class AbstractOutletConfiguration<S, T> {
 		return this.directory
 	}
 	
+	def setDirectory(String directory) {
+		this.directory = directory
+	}
+	
 	def getTechnology() {
 		return this.technology
 	}

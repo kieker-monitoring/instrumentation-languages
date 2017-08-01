@@ -19,6 +19,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
@@ -35,16 +36,15 @@ import com.google.inject.Provider;
 import kieker.common.logging.Log;
 import kieker.common.logging.LogFactory;
 import kieker.develop.rl.CLIPreferenceStore;
-import kieker.develop.rl.generator.GeneratorRegistration;
 import kieker.develop.rl.generator.RecordLangGenerator;
 import kieker.develop.rl.outlet.AbstractOutletConfiguration;
 import kieker.develop.rl.preferences.TargetsPreferences;
 import kieker.develop.rl.recordLang.ComplexType;
 
 /**
- * Parser class.
+ * Compiler handling for the IRL.
  *
- * From http://davehofmann.de/blog/?tag=standalone
+ * See also http://www.davehofmann.de/?p=101
  *
  * @author Reiner Jung
  *
@@ -65,11 +65,17 @@ public class Compiler {
 
 	private final IEclipsePreferences preferenceStore;
 
+	private Collection<AbstractOutletConfiguration<ComplexType, Object>> outlets;
+
 	/**
-	 * Construct an IRL parser.
+	 * Construct an IRL compiler.
 	 *
+	 * @param outlets
+	 *            collection of potential outlets
 	 * @param selectedLanguageTypes
 	 *            array of language outlet names
+	 * @param outletPaths
+	 *            paths for the corresponding outlet
 	 * @param headerComments
 	 *            set of comments matching the languages
 	 * @param version
@@ -81,17 +87,21 @@ public class Compiler {
 		this.preferenceStore = CLIPreferenceStore.INSTANCE;
 	}
 
-	public void configure(final List<String> selectedLanguageTypes, final List<String> headerComments, final String version, final String author) {
+	public void configure(final Collection<AbstractOutletConfiguration<ComplexType, Object>> outlets, final List<String> selectedLanguageTypes,
+			final List<String> outletPaths, final List<String> headerComments, final String version,
+			final String author) {
+		this.outlets = outlets;
 		TargetsPreferences.setAuthorName(this.preferenceStore, author);
 		TargetsPreferences.setVersionID(this.preferenceStore, version);
 		// setup language activation
-		for (final AbstractOutletConfiguration<ComplexType, Object> outlet : GeneratorRegistration.getOutletConfigurations()) {
+		for (final AbstractOutletConfiguration<ComplexType, Object> outlet : outlets) {
 			try {
 				final String outletName = outlet.getName();
 				TargetsPreferences.setGeneratorActive(this.preferenceStore, outletName, false);
 				int i = 0;
 				for (final String selected : selectedLanguageTypes) {
 					if (selected.equals(outletName)) {
+						outlet.setDirectory(outletPaths.get(i));
 						TargetsPreferences.setGeneratorActive(this.preferenceStore, outletName, true);
 						TargetsPreferences.setHeaderComment(this.preferenceStore, outletName, headerComments.get(i));
 					}
@@ -168,7 +178,7 @@ public class Compiler {
 
 			/** generate output. */
 			final RecordLangGenerator generator = new RecordLangGenerator();
-			final IFileSystemAccess2 fsa = new DirectIOFileSystemAccess(projectPathPrefix, GeneratorRegistration.getOutletConfigurations());
+			final IFileSystemAccess2 fsa = new DirectIOFileSystemAccess(projectPathPrefix, this.outlets);
 			generator.doGenerate(resource, fsa, null);
 		} catch (final IOException e) {
 			LOG.error("File read error ", e);
