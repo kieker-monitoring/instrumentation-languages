@@ -41,7 +41,7 @@ public class CompilerMain implements IApplication {
 	private boolean help = false;
 
 	@Parameter(names = { "-o", "--outlets" }, variableArity = true, description = "List of target outlets")
-	private List<String> languages;
+	private List<String> outlets;
 
 	@Parameter(names = { "-f",
 		"--file-headers" }, variableArity = true, description = "List of headers", splitter = ColonParameterSplitter.class, converter = FileConverter.class)
@@ -66,29 +66,54 @@ public class CompilerMain implements IApplication {
 		this.author = "no author";
 		this.version = "no version";
 		this.help = false;
-		this.languages = new ArrayList<>();
+		this.outlets = new ArrayList<>();
 		this.outputPath = null;
 
 		final Map<?, ?> args = context.getArguments();
 		final String[] appArgs = (String[]) args.get("application.args");
 
-		new JCommander(this, appArgs);
+		final JCommander commander = new JCommander(this, appArgs);
+
+		if (this.help) {
+			commander.usage();
+			return IApplication.EXIT_OK;
+		}
 
 		String output = null;
 		final Collection<AbstractOutletConfiguration<ComplexType, Object>> configurations = GeneratorRegistration.getOutletConfigurations();
-		for (final String lang : this.languages) {
+		for (final String outlet : this.outlets) {
 			for (final AbstractOutletConfiguration<ComplexType, Object> configuration : configurations) {
-				if (lang.equals(configuration.getName())) {
+				if (outlet.equals(configuration.getName())) {
 					if (output == null) {
-						output = lang;
+						output = outlet;
 					} else {
-						output += output + ", " + lang;
+						output += output + ", " + outlet;
 					}
 				}
 			}
 		}
-		LOG.info("Generating code for " + output);
-		LOG.info("Output " + this.outputPath);
+
+		if (output == null) {
+			LOG.info("No outlets selected.");
+			commander.usage();
+			return IApplication.EXIT_OK;
+		} else {
+			LOG.info("Generating code for " + output);
+		}
+
+		if (this.outputPath == null) {
+			LOG.info("Output missing.");
+			commander.usage();
+			return IApplication.EXIT_OK;
+		} else {
+			LOG.info("Output " + this.outputPath);
+		}
+
+		if (this.fileHeaders == null) {
+			LOG.info("Missing header comments.");
+			commander.usage();
+			return IApplication.EXIT_OK;
+		}
 
 		/** read all provided headers. */
 		final List<String> headerComments = new ArrayList<>();
@@ -102,7 +127,7 @@ public class CompilerMain implements IApplication {
 			}
 		}
 
-		if (headerComments.size() < this.languages.size()) {
+		if (headerComments.size() < this.outlets.size()) {
 			LOG.error("There are missing header templates. Refer to a template file for each outlet.");
 			return IApplication.EXIT_OK;
 		}
@@ -119,7 +144,7 @@ public class CompilerMain implements IApplication {
 
 		final Collection<AbstractOutletConfiguration<ComplexType, Object>> outlets = GeneratorRegistration.getOutletConfigurations();
 
-		compiler.configure(outlets, this.languages, this.outletPaths, headerComments, this.version, this.author);
+		compiler.configure(outlets, this.outlets, this.outletPaths, headerComments, this.version, this.author);
 
 		compiler.compile(this.sourcePath, this.outputPath);
 

@@ -15,14 +15,14 @@
       </application>
    </extension>
    <extension
-         id="headless"
+         id="IRL_CLI_Compiler"
          point="org.eclipse.core.runtime.products">
       <product
             application="kieker.develop.rl.cli.application"
-            name="Headless Example">
+            name="IRL CLI Compiler">
          <property
                name="appName"
-               value="Headless Example">
+               value="IRL CLI Compiler">
          </property>
       </product>
    </extension>
