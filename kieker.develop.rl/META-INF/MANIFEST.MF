@@ -27,11 +27,9 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  kieker.develop.semantics,
  org.eclipse.equinox.registry,
  com.google.guava,
- org.eclipse.xtend.lib.macro
-Import-Package: org.apache.log4j,
- org.eclipse.jdt.core,
- org.eclipse.xtext.common.types.access.jdt,
- org.eclipse.xtext.xbase.lib
+ org.eclipse.xtend.lib.macro,
+ org.eclipse.jdt.core;bundle-version="3.12.3";resolution:=optional
+Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: kieker.develop.rl,
  kieker.develop.rl.formatting,
@@ -50,7 +48,6 @@ Export-Package: kieker.develop.rl,
  kieker.develop.rl.typing,
  kieker.develop.rl.typing.base,
  kieker.develop.rl.typing.library,
- kieker.develop.rl.typing.library.guava,
  kieker.develop.rl.typing.semantics,
  kieker.develop.rl.validation
 

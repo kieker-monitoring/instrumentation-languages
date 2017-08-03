@@ -24,7 +24,6 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 import kieker.develop.rl.recordLang.Type;
 import kieker.develop.rl.typing.ITypeProvider;
-import kieker.develop.rl.typing.jar.jdt.JDTModelResource;
 
 /**
  * The type provider allows to retrieve a list of all primitive types and provides type name lookup.

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package kieker.develop.rl.typing.jar.jdt
+package kieker.develop.rl.typing.library.jdt
 
 import com.google.common.base.Predicate
 import kieker.develop.rl.generator.InternalErrorException
@@ -28,9 +28,9 @@ import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.xtext.naming.IQualifiedNameConverter
 import org.eclipse.xtext.resource.IEObjectDescription
 import org.eclipse.xtext.scoping.IScope
-import kieker.develop.rl.typing.jar.jdt.JDTModelTypeProviderFactory
-import kieker.develop.rl.typing.jar.ILibraryModelGlobalScopeProvider
-import kieker.develop.rl.typing.jar.JarModelTypeScope
+import kieker.develop.rl.typing.library.jdt.JDTModelTypeProviderFactory
+import kieker.develop.rl.typing.library.ILibraryModelGlobalScopeProvider
+import kieker.develop.rl.typing.library.JarModelTypeScope
 
 /**
  * Provider for the global scope for models for JAR files.

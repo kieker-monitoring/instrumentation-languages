@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package kieker.develop.rl.typing.jar.guava
+package kieker.develop.rl.cli.typing.library
 
 import com.google.common.reflect.ClassPath
 import java.io.File

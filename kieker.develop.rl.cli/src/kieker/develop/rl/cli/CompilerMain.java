@@ -7,6 +7,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.eclipse.equinox.app.IApplication;
 import org.eclipse.equinox.app.IApplicationContext;
 
@@ -15,13 +17,10 @@ import com.beust.jcommander.Parameter;
 import com.beust.jcommander.converters.FileConverter;
 import com.google.inject.Injector;
 
-import kieker.common.logging.Log;
-import kieker.common.logging.LogFactory;
-import kieker.develop.rl.RecordLangStandaloneSetup;
+import kieker.develop.rl.cli.typing.library.GuavaModelTypeProviderFactory;
 import kieker.develop.rl.generator.GeneratorRegistration;
 import kieker.develop.rl.outlet.AbstractOutletConfiguration;
 import kieker.develop.rl.recordLang.ComplexType;
-import kieker.develop.rl.typing.library.guava.GuavaModelTypeProviderFactory;
 
 /**
  * This class controls all aspects of the application's execution
@@ -138,7 +137,7 @@ public class CompilerMain implements IApplication {
 		}
 
 		/** initialize generator. */
-		final Injector injector = new RecordLangStandaloneSetup().createInjectorAndDoEMFRegistration();
+		final Injector injector = new CLIRecordLangStandaloneSetup().createInjectorAndDoEMFRegistration();
 
 		final Compiler compiler = injector.getInstance(Compiler.class);
 

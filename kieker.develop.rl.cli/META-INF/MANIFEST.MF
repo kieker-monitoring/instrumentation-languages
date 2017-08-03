@@ -8,6 +8,8 @@ Bundle-ClassPath: ., lib/jcommander.jar, lib/commons-logging.jar, lib/kieker.jar
 Require-Bundle: org.eclipse.core.runtime,
  kieker.develop.rl;bundle-version="1.3.0",
  org.eclipse.equinox.preferences,
- de.cau.cs.se.geco.architecture.framework
+ de.cau.cs.se.geco.architecture.framework,
+ org.apache.commons.logging;bundle-version="1.1.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: org.junit
+Export-Package: kieker.develop.rl.cli.typing.library

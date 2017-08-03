@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package kieker.develop.rl.typing.jar.guava
+package kieker.develop.rl.cli.typing.library
 
 import com.google.common.base.Predicate
 import kieker.develop.rl.generator.InternalErrorException
 import kieker.develop.rl.recordLang.EventType
 import kieker.develop.rl.recordLang.TemplateType
 import kieker.develop.rl.typing.ITypeProvider
-import kieker.develop.rl.typing.jar.ILibraryModelGlobalScopeProvider
-import kieker.develop.rl.typing.jar.JarModelTypeScope
+import kieker.develop.rl.typing.library.ILibraryModelGlobalScopeProvider
+import kieker.develop.rl.typing.library.JarModelTypeScope
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.ecore.resource.ResourceSet

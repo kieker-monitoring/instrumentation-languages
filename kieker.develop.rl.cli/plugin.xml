@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-
    <extension
-         id="application"
+         id="id1"
+         name="IRL CLI Compiler"
          point="org.eclipse.core.runtime.applications">
       <application
             cardinality="singleton-global"
@@ -14,17 +14,4 @@
          </run>
       </application>
    </extension>
-   <extension
-         id="IRL_CLI_Compiler"
-         point="org.eclipse.core.runtime.products">
-      <product
-            application="kieker.develop.rl.cli.application"
-            name="IRL CLI Compiler">
-         <property
-               name="appName"
-               value="IRL CLI Compiler">
-         </property>
-      </product>
-   </extension>
-
 </plugin>

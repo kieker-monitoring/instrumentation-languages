@@ -28,7 +28,7 @@ import kieker.develop.rl.typing.base.BaseTypeGlobalScopeProvider
 import kieker.develop.rl.typing.semantics.SemanticAnnotationGlobalScopeProvider
 import org.eclipse.emf.ecore.resource.ResourceSet
 import kieker.develop.rl.generator.InternalErrorException
-import kieker.develop.rl.typing.jar.ILibaryModelGlobalScopeProvider
+import kieker.develop.rl.typing.library.ILibraryModelGlobalScopeProvider
 
 /**
  * Umbrella class for all global scopes.
@@ -45,7 +45,7 @@ public class GlobalScopeProvider extends DefaultGlobalScopeProvider {
 	private BaseTypeGlobalScopeProvider baseTypeGlobalScopeProvider
 	
 	@Inject
-	private ILibaryModelGlobalScopeProvider jarModelGlobalScopeProvider
+	private ILibraryModelGlobalScopeProvider libraryGlobalScopeProvider
 	
 	@Inject
 	private SemanticAnnotationGlobalScopeProvider semanticAnnotationGlobalScopeProvider
@@ -61,11 +61,11 @@ public class GlobalScopeProvider extends DefaultGlobalScopeProvider {
     		if (resourceSet !== null) {
 				val scope = baseTypeGlobalScopeProvider.getParentTypeScope(resourceSet, reference, filter, referenceType, qualifiedNameConverter)
 				if (scope === IScope.NULLSCOPE) {
-					val jarScope = jarModelGlobalScopeProvider.getParentTypeScope(resourceSet, reference, filter, referenceType, qualifiedNameConverter)
-					if (jarScope === IScope.NULLSCOPE) {
+					val libraryScope = libraryGlobalScopeProvider.getParentTypeScope(resourceSet, reference, filter, referenceType, qualifiedNameConverter)
+					if (libraryScope === IScope.NULLSCOPE) {
 						return semanticAnnotationGlobalScopeProvider.getParentTypeScope(resourceSet, reference, filter, referenceType, qualifiedNameConverter)
 					} else
-						return jarScope
+						return libraryScope
 				} else
 					return scope
 			} else

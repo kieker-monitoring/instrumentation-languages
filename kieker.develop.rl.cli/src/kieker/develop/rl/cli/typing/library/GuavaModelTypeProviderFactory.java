@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package kieker.develop.rl.typing.library.guava;
+package kieker.develop.rl.cli.typing.library;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -23,7 +23,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import kieker.develop.rl.generator.InternalErrorException;
 import kieker.develop.rl.typing.ITypeProvider;
-import kieker.develop.rl.typing.library.jdt.JDTModelTypeProvider;
 
 /**
  * The type provider factory controls the type provider, which is created by this class.
@@ -87,7 +86,7 @@ public class GuavaModelTypeProviderFactory {
 	private static ITypeProvider createTypeProvider(final ResourceSet resourceSet) {
 		final ITypeProvider typeProvider = new GuavaModelTypeProvider(jars, resourceSet);
 		resourceSet.getResourceFactoryRegistry().getProtocolToFactoryMap()
-				.put(JDTModelTypeProvider.ID, typeProvider);
+				.put(GuavaModelTypeProvider.ID, typeProvider);
 		return typeProvider;
 	}
 

@@ -24,12 +24,12 @@ import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.Collection;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.util.RuntimeIOException;
 
-import kieker.common.logging.Log;
-import kieker.common.logging.LogFactory;
 import kieker.develop.rl.outlet.AbstractOutletConfiguration;
 import kieker.develop.rl.recordLang.ComplexType;
 

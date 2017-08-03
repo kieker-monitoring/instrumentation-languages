@@ -63,7 +63,7 @@ public class JarModelTypeScope extends AbstractScope {
 	 * @param filter
 	 *            filter for the results
 	 */
-	protected JarModelTypeScope(final ITypeProvider typeProvider,
+	public JarModelTypeScope(final ITypeProvider typeProvider,
 			final IQualifiedNameConverter qualifiedNameConverter,
 			final Predicate<IEObjectDescription> filter) {
 		super(IScope.NULLSCOPE, false);

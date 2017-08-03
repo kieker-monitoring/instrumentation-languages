@@ -13,43 +13,48 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package kieker.develop.rl
+package kieker.develop.rl.cli;
 
-import com.google.inject.Binder
-import org.eclipse.xtext.generator.IOutputConfigurationProvider
-import com.google.inject.Singleton
-import kieker.develop.rl.scoping.SemanticAnnotationHandler
-import kieker.develop.rl.scoping.ISemanticAnnotationHandler
-import kieker.develop.rl.outlet.RecordLangOutletConfigurationProvider
-import kieker.develop.rl.typing.GlobalScopeProvider
-import kieker.develop.rl.typing.library.ILibraryModelGlobalScopeProvider
-import kieker.develop.rl.typing.library.jdt.JDTModelGlobalScopeProvider
+import org.eclipse.xtext.generator.IOutputConfigurationProvider;
+
+import com.google.inject.Binder;
+import com.google.inject.Singleton;
+
+import kieker.develop.rl.AbstractRecordLangRuntimeModule;
+import kieker.develop.rl.cli.typing.library.GuavaModelGlobalScopeProvider;
+import kieker.develop.rl.outlet.RecordLangOutletConfigurationProvider;
+import kieker.develop.rl.scoping.ISemanticAnnotationHandler;
+import kieker.develop.rl.scoping.SemanticAnnotationHandler;
+import kieker.develop.rl.typing.GlobalScopeProvider;
+import kieker.develop.rl.typing.library.ILibraryModelGlobalScopeProvider;
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
- * 
+ *
  * @author Reiner Jung
  */
-class RecordLangRuntimeModule extends AbstractRecordLangRuntimeModule {
+public class CLIRecordLangRuntimeModule extends AbstractRecordLangRuntimeModule {
 	/**
 	 * {@inheritDoc}<br>
 	 * This extension registers the custom {@link TypeGlobalScopeProvider} that realizes e.g. the
 	 * correct linking of primitive data types. The implementation of that part is broadly transfered
 	 * from the JVMTypes binding.
 	 */
-	override public Class<? extends org.eclipse.xtext.scoping.IGlobalScopeProvider> bindIGlobalScopeProvider() {
-		return GlobalScopeProvider
+	@Override
+	public Class<? extends org.eclipse.xtext.scoping.IGlobalScopeProvider> bindIGlobalScopeProvider() {
+		return GlobalScopeProvider.class;
 	}
 
 	/**
 	 * Register my own output outlet provider. We need an outlet for each language.
 	 */
-	override void configure(Binder binder) {
-		super.configure(binder)
-		binder.bind(IOutputConfigurationProvider).to(RecordLangOutletConfigurationProvider).in(Singleton)
+	@Override
+	public void configure(final Binder binder) {
+		super.configure(binder);
+		binder.bind(IOutputConfigurationProvider.class).to(RecordLangOutletConfigurationProvider.class).in(Singleton.class);
 		/** bind handler for semantic actions. */
-		binder.bind(ISemanticAnnotationHandler).to(SemanticAnnotationHandler).in(Singleton)
+		binder.bind(ISemanticAnnotationHandler.class).to(SemanticAnnotationHandler.class).in(Singleton.class);
 		/** bind handler for library interference. */
-		binder.bind(ILibraryModelGlobalScopeProvider).to(JDTModelGlobalScopeProvider)
+		binder.bind(ILibraryModelGlobalScopeProvider.class).to(GuavaModelGlobalScopeProvider.class);
 	}
 }

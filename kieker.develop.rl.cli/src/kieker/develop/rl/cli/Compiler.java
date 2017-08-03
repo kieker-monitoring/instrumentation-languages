@@ -22,6 +22,8 @@ import java.io.InputStream;
 import java.util.Collection;
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -33,8 +35,6 @@ import org.eclipse.xtext.resource.XtextResourceSet;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 
-import kieker.common.logging.Log;
-import kieker.common.logging.LogFactory;
 import kieker.develop.rl.CLIPreferenceStore;
 import kieker.develop.rl.generator.RecordLangGenerator;
 import kieker.develop.rl.outlet.AbstractOutletConfiguration;
