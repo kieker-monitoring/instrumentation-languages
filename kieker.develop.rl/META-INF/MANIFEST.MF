@@ -49,8 +49,8 @@ Export-Package: kieker.develop.rl,
  kieker.develop.rl.services,
  kieker.develop.rl.typing,
  kieker.develop.rl.typing.base,
- kieker.develop.rl.typing.jar,
- kieker.develop.rl.typing.jar.guava,
+ kieker.develop.rl.typing.library,
+ kieker.develop.rl.typing.library.guava,
  kieker.develop.rl.typing.semantics,
  kieker.develop.rl.validation
 

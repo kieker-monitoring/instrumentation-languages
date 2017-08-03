@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package kieker.develop.rl.typing.jar.guava;
+package kieker.develop.rl.typing.library.guava;
 
 import java.io.File;
 import java.util.Collection;
@@ -26,6 +26,7 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 import kieker.develop.rl.recordLang.Type;
 import kieker.develop.rl.typing.ITypeProvider;
+import kieker.develop.rl.typing.jar.guava.GuavaModelResource;
 
 /**
  * The type provider allows to retrieve a list of all types in the given jars.

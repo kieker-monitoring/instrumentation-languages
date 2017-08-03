@@ -25,10 +25,10 @@ import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.scoping.impl.DefaultGlobalScopeProvider
 import org.eclipse.emf.ecore.EClass
 import kieker.develop.rl.typing.base.BaseTypeGlobalScopeProvider
-import kieker.develop.rl.typing.jar.JarModelGlobalScopeProvider
 import kieker.develop.rl.typing.semantics.SemanticAnnotationGlobalScopeProvider
 import org.eclipse.emf.ecore.resource.ResourceSet
 import kieker.develop.rl.generator.InternalErrorException
+import kieker.develop.rl.typing.jar.ILibaryModelGlobalScopeProvider
 
 /**
  * Umbrella class for all global scopes.
@@ -45,7 +45,7 @@ public class GlobalScopeProvider extends DefaultGlobalScopeProvider {
 	private BaseTypeGlobalScopeProvider baseTypeGlobalScopeProvider
 	
 	@Inject
-	private JarModelGlobalScopeProvider jarModelGlobalScopeProvider
+	private ILibaryModelGlobalScopeProvider jarModelGlobalScopeProvider
 	
 	@Inject
 	private SemanticAnnotationGlobalScopeProvider semanticAnnotationGlobalScopeProvider

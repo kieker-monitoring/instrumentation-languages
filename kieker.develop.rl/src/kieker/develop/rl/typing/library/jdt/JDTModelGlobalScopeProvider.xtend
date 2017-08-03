@@ -13,13 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package kieker.develop.rl.typing.jar
+package kieker.develop.rl.typing.jar.jdt
 
 import com.google.common.base.Predicate
 import kieker.develop.rl.generator.InternalErrorException
 import kieker.develop.rl.recordLang.EventType
 import kieker.develop.rl.recordLang.TemplateType
-import kieker.develop.rl.typing.IGlobalIRLScopeProvider
 import kieker.develop.rl.typing.ITypeProvider
 import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.core.runtime.Path
@@ -29,8 +28,9 @@ import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.xtext.naming.IQualifiedNameConverter
 import org.eclipse.xtext.resource.IEObjectDescription
 import org.eclipse.xtext.scoping.IScope
-import kieker.develop.rl.typing.jar.guava.GuavaModelTypeProviderFactory
 import kieker.develop.rl.typing.jar.jdt.JDTModelTypeProviderFactory
+import kieker.develop.rl.typing.jar.ILibraryModelGlobalScopeProvider
+import kieker.develop.rl.typing.jar.JarModelTypeScope
 
 /**
  * Provider for the global scope for models for JAR files.
@@ -39,7 +39,7 @@ import kieker.develop.rl.typing.jar.jdt.JDTModelTypeProviderFactory
  * @author Reiner Jung
  * @since 1.2
  */
-class JarModelGlobalScopeProvider implements IGlobalIRLScopeProvider {
+class JDTModelGlobalScopeProvider implements ILibraryModelGlobalScopeProvider {
 
 	override IScope getParentTypeScope(ResourceSet resourceSet, EReference reference,
             Predicate<IEObjectDescription> filter, EClass referenceType, IQualifiedNameConverter qualifiedNameConverter) throws InternalErrorException {
@@ -56,10 +56,8 @@ class JarModelGlobalScopeProvider implements IGlobalIRLScopeProvider {
 		    		
 		    		val ITypeProvider typeProvider = JDTModelTypeProviderFactory.getTypeProvider(project, resourceSet)
 					return new JarModelTypeScope(typeProvider, qualifiedNameConverter, filter)
-		    	} else {
-		    		val ITypeProvider typeProvider = GuavaModelTypeProviderFactory.getTypeProvider(resourceSet)
-		    		return new JarModelTypeScope(typeProvider, qualifiedNameConverter, filter)
-		    	}
+		    	} else
+		    		return IScope.NULLSCOPE
 			} catch (IllegalStateException e) {
 				System.out.println("No workspace present")
 				return IScope.NULLSCOPE

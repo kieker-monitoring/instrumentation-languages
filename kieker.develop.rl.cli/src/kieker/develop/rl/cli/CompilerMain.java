@@ -21,7 +21,7 @@ import kieker.develop.rl.RecordLangStandaloneSetup;
 import kieker.develop.rl.generator.GeneratorRegistration;
 import kieker.develop.rl.outlet.AbstractOutletConfiguration;
 import kieker.develop.rl.recordLang.ComplexType;
-import kieker.develop.rl.typing.jar.guava.GuavaModelTypeProviderFactory;
+import kieker.develop.rl.typing.library.guava.GuavaModelTypeProviderFactory;
 
 /**
  * This class controls all aspects of the application's execution

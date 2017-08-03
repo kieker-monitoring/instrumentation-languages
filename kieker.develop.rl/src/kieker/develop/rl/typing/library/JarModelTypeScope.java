@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package kieker.develop.rl.typing.jar;
+package kieker.develop.rl.typing.library;
 
 import java.util.Collections;
 import java.util.List;
@@ -37,7 +37,7 @@ import com.google.common.collect.Lists;
 import kieker.develop.rl.recordLang.RecordLangFactory;
 import kieker.develop.rl.recordLang.Type;
 import kieker.develop.rl.typing.ITypeProvider;
-import kieker.develop.rl.typing.jar.jdt.JDTModelTypeProvider;
+import kieker.develop.rl.typing.library.jdt.JDTModelTypeProvider;
 
 /**
  * broadly based on org.spp.cocome.behavior.pcm.handler.PCMModelTypeScope.
