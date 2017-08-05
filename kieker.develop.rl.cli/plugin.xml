@@ -14,4 +14,11 @@
          </run>
       </application>
    </extension>
+   <extension
+         id="headless"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="kieker.develop.rl.cli.id1">
+      </product>
+   </extension>
 </plugin>
