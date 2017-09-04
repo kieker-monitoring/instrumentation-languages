@@ -25,18 +25,18 @@ package kieker.develop.rl.generator.java;
  * substituted for 0.
  * Furthermore, the range values are always included, e.g.,
  * 1.0:1.2 includes all version form 1.0.0 to 1.2.0. That includes
- * 1.0.1, 1.0.2, 1.1, ... up til 1.2, 1.2.0, but not 1.2.1 or later.
+ * 1.0.1, 1.0.2, 1.1, ... up until 1.2, 1.2.0, but not 1.2.1 or later.
  * 
  * @author Reiner Jung
  *
  */
 public class GeneratorFeatures {
 	/** ByteBuffer support: factory, constructor and initFromBytes feature. */
-	public static String BYTE_BUFFER_DESERIALIZER = "1.0:1.2";
+	public final static String BYTE_BUFFER_DESERIALIZER = "1.0:1.2";
 	
 	/** ObjectArray support: factory, constructor and initFromArray feature. */
-	public static String ARRAY_DESERIALIZER = "1.0:1.3";
+	public final static String ARRAY_DESERIALIZER = "1.0:1.3";
 	
 	/** Generic deserializer support: factory, constructor. */
-	public static String GENERIC_DESERIALIZER = "1.3:";
+	public final static String GENERIC_DESERIALIZER = "1.3:";
 }

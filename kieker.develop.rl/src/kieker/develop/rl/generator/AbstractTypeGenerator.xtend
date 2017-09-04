@@ -43,10 +43,30 @@ abstract class AbstractTypeGenerator<S extends ComplexType, T> implements IGener
 		this.version = version
 	}
 		
+	/**
+	 * Tests whether the given range includes the pre set targetVersion.
+	 * The range is defined by two version values separated by :
+	 * 
+	 * @param range range values.
+	 * @returns true if the targetVersion is inside the range
+	 */
 	def boolean isSupported(String range) {
+		var String lowVersion
+		var String highVersion
 		val rangeValues = range.split(":");
-		val lowVersion = rangeValues.get(0)
-		val highVersion = rangeValues.get(1)
+		if (rangeValues.size == 2) {
+			lowVersion = rangeValues.get(0)
+			highVersion = rangeValues.get(1)
+		} else {
+			if (range.startsWith(":")) {
+				lowVersion = ""
+				highVersion = rangeValues.get(0)
+			} else if (range.endsWith(":")) {
+				lowVersion = rangeValues.get(0)
+				highVersion = ""
+			} else
+				return false
+		}
 		
 		if (lowVersion.empty) {
 			if (highVersion.empty) {
