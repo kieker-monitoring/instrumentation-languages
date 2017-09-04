@@ -20,7 +20,7 @@ import kieker.develop.rl.recordLang.EventType
 import kieker.develop.rl.recordLang.Model
 import kieker.develop.rl.generator.AbstractTypeGenerator
 import kieker.develop.rl.generator.Version
-import kieker.develop.rl.generator.java.JavaGeneratorFeatures
+import kieker.develop.rl.generator.java.GeneratorFeatures
 
 /**
  * Generator for factories for the event types.
@@ -60,11 +60,11 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 			 */
 			public final class «type.name»Factory implements IRecordFactory<«type.name»> {
 				
-				«if (isSupported(JavaGeneratorFeatures.BYTE_BUFFER_CONSTRUCTOR_LOW, JavaGeneratorFeatures.BYTE_BUFFER_CONSTRUCTOR_HIGH)) createByteBufferFactory(type)»
+				«if (isSupported(GeneratorFeatures.BYTE_BUFFER_DESERIALIZER)) createByteBufferFactory(type)»
 				
-				«if (isSupported(JavaGeneratorFeatures.GENERIC_DESERIALIZER_CONSTRUCTOR_LOW, JavaGeneratorFeatures.GENERIC_DESERIALIZER_CONSTRUCTOR_HIGH)) createGenericDeserializerFactory(type)»
+				«if (isSupported(GeneratorFeatures.GENERIC_DESERIALIZER)) createGenericDeserializerFactory(type)»
 				
-				«if (isSupported(JavaGeneratorFeatures.ARRAY_CONSTRUCTOR_LOW,JavaGeneratorFeatures.ARRAY_CONSTRUCTOR_HIGH)) createArrayFactory(type)»
+				«if (isSupported(GeneratorFeatures.ARRAY_DESERIALIZER)) createArrayFactory(type)»
 				
 				public int getRecordSizeInBytes() {
 					return «type.name».SIZE;

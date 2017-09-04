@@ -27,7 +27,6 @@ import kieker.develop.rl.typing.base.BaseTypes
 
 import kieker.develop.rl.generator.AbstractTypeGenerator
 import kieker.develop.rl.generator.Version
-import kieker.develop.rl.generator.java.JavaGeneratorFeatures
 
 import static kieker.develop.rl.generator.java.record.EqualsMethodTemplate.*
 
@@ -43,6 +42,7 @@ import static extension kieker.develop.rl.generator.java.record.SerializationTem
 import static extension kieker.develop.rl.generator.java.record.GenericSerializationTemplates.*
 import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
+import kieker.develop.rl.generator.java.GeneratorFeatures
 
 /**
  * Generates a Java class for EventTypes.
@@ -102,24 +102,24 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 				
 				«type.createParameterizedConstructor(allDataProperties, allDeclarationProperties)»
 			
-				«if (!type.abstract && isSupported(JavaGeneratorFeatures.ARRAY_CONSTRUCTOR_LOW, JavaGeneratorFeatures.ARRAY_CONSTRUCTOR_HIGH)) type.createArrayConstructor(allDeclarationProperties)»
+				«if (!type.abstract && isSupported(GeneratorFeatures.ARRAY_DESERIALIZER)) type.createArrayConstructor(allDeclarationProperties)»
 			
-				«if (isSupported(JavaGeneratorFeatures.ARRAY_CONSTRUCTOR_LOW, JavaGeneratorFeatures.ARRAY_CONSTRUCTOR_HIGH)) type.createArrayInitializeConstructor(allDeclarationProperties)»
+				«if (isSupported(GeneratorFeatures.ARRAY_DESERIALIZER)) type.createArrayInitializeConstructor(allDeclarationProperties)»
 			
-				«if (isSupported(JavaGeneratorFeatures.BYTE_BUFFER_CONSTRUCTOR_LOW, JavaGeneratorFeatures.BYTE_BUFFER_CONSTRUCTOR_HIGH)) type.createBufferReadConstructor(allDeclarationProperties)»
+				«if (isSupported(GeneratorFeatures.BYTE_BUFFER_DESERIALIZER)) type.createBufferReadConstructor(allDeclarationProperties)»
 				
-				«if (isSupported(JavaGeneratorFeatures.GENERIC_DESERIALIZER_CONSTRUCTOR_LOW, JavaGeneratorFeatures.GENERIC_DESERIALIZER_CONSTRUCTOR_HIGH)) type.createGenericDeserializationConstructor(allDeclarationProperties)»
+				«if (isSupported(GeneratorFeatures.GENERIC_DESERIALIZER)) type.createGenericDeserializationConstructor(allDeclarationProperties)»
 				
 				«IF (!type.abstract)»
 				«allDataProperties.createToArrayRepresentation»
 				«allDataProperties.createStringRegistration»
-				«if (isSupported(JavaGeneratorFeatures.BYTE_BUFFER_CONSTRUCTOR_LOW, JavaGeneratorFeatures.BYTE_BUFFER_CONSTRUCTOR_HIGH)) allDataProperties.createBinarySerialization»
-				«if (isSupported(JavaGeneratorFeatures.GENERIC_DESERIALIZER_CONSTRUCTOR_LOW, JavaGeneratorFeatures.GENERIC_DESERIALIZER_CONSTRUCTOR_HIGH)) allDataProperties.createGenericSerialization»
+				«if (isSupported(GeneratorFeatures.BYTE_BUFFER_DESERIALIZER)) allDataProperties.createBinarySerialization»
+				«if (isSupported(GeneratorFeatures.GENERIC_DESERIALIZER)) allDataProperties.createGenericSerialization»
 				«createConstantAccessMethods»
 				«ENDIF»
 			
 				«createInitFromArray()»
-				«createInitFromBuffer()»
+				«if (isSupported(GeneratorFeatures.BYTE_BUFFER_DESERIALIZER)) createInitFromBuffer()»
 				
 				«createEquals(type.name, allDataProperties)»
 				

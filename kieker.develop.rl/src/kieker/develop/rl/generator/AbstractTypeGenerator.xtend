@@ -43,7 +43,11 @@ abstract class AbstractTypeGenerator<S extends ComplexType, T> implements IGener
 		this.version = version
 	}
 		
-	def boolean isSupported(String lowVersion, String highVersion) {
+	def boolean isSupported(String range) {
+		val rangeValues = range.split(":");
+		val lowVersion = rangeValues.get(0)
+		val highVersion = rangeValues.get(1)
+		
 		if (lowVersion.empty) {
 			if (highVersion.empty) {
 				return true
