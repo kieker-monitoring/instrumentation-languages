@@ -26,10 +26,12 @@ import kieker.develop.rl.recordLang.TemplateType
 import kieker.develop.rl.typing.base.BaseTypes
 
 import kieker.develop.rl.generator.AbstractTypeGenerator
+import kieker.develop.rl.generator.Version
+import kieker.develop.rl.generator.java.JavaGeneratorFeatures
 
 import static kieker.develop.rl.generator.java.record.EqualsMethodTemplate.*
-import static extension kieker.develop.rl.generator.java.record.EventTypeAPITemplates.*
 
+import static extension kieker.develop.rl.generator.java.record.EventTypeAPITemplates.*
 import static extension kieker.develop.rl.generator.java.record.BinaryConstructorTemplate.*
 import static extension kieker.develop.rl.generator.java.record.GenericDeserializationConstructorTemplate.*
 import static extension kieker.develop.rl.generator.java.record.ConstructorTemplates.*
@@ -41,7 +43,6 @@ import static extension kieker.develop.rl.generator.java.record.SerializationTem
 import static extension kieker.develop.rl.generator.java.record.GenericSerializationTemplates.*
 import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
-import kieker.develop.rl.generator.Version
 
 /**
  * Generates a Java class for EventTypes.
@@ -101,24 +102,24 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 				
 				«type.createParameterizedConstructor(allDataProperties, allDeclarationProperties)»
 			
-				«if (!type.abstract) type.createArrayConstructor(allDeclarationProperties)»
+				«if (!type.abstract && isSupported(JavaGeneratorFeatures.ARRAY_CONSTRUCTOR_LOW, JavaGeneratorFeatures.ARRAY_CONSTRUCTOR_HIGH)) type.createArrayConstructor(allDeclarationProperties)»
 			
-				«type.createArrayInitializeConstructor(allDeclarationProperties)»
+				«if (isSupported(JavaGeneratorFeatures.ARRAY_CONSTRUCTOR_LOW, JavaGeneratorFeatures.ARRAY_CONSTRUCTOR_HIGH)) type.createArrayInitializeConstructor(allDeclarationProperties)»
 			
-				«type.createBufferReadConstructor(allDeclarationProperties)»
+				«if (isSupported(JavaGeneratorFeatures.BYTE_BUFFER_CONSTRUCTOR_LOW, JavaGeneratorFeatures.BYTE_BUFFER_CONSTRUCTOR_HIGH)) type.createBufferReadConstructor(allDeclarationProperties)»
 				
-				«type.createGenericDeserializationConstructor(allDeclarationProperties)»
+				«if (isSupported(JavaGeneratorFeatures.GENERIC_DESERIALIZER_CONSTRUCTOR_LOW, JavaGeneratorFeatures.GENERIC_DESERIALIZER_CONSTRUCTOR_HIGH)) type.createGenericDeserializationConstructor(allDeclarationProperties)»
 				
 				«IF (!type.abstract)»
 				«allDataProperties.createToArrayRepresentation»
 				«allDataProperties.createStringRegistration»
-				«if (isSupported("1.0","1.2")) allDataProperties.createBinarySerialization»
-				«if (isSupported("1.3","")) allDataProperties.createGenericSerialization»
+				«if (isSupported(JavaGeneratorFeatures.BYTE_BUFFER_CONSTRUCTOR_LOW, JavaGeneratorFeatures.BYTE_BUFFER_CONSTRUCTOR_HIGH)) allDataProperties.createBinarySerialization»
+				«if (isSupported(JavaGeneratorFeatures.GENERIC_DESERIALIZER_CONSTRUCTOR_LOW, JavaGeneratorFeatures.GENERIC_DESERIALIZER_CONSTRUCTOR_HIGH)) allDataProperties.createGenericSerialization»
 				«createConstantAccessMethods»
 				«ENDIF»
 			
-				«kieker.develop.rl.generator.java.record.EventTypeAPITemplates.createInitFromArray()»
-				«kieker.develop.rl.generator.java.record.EventTypeAPITemplates.createInitFromBuffer()»
+				«createInitFromArray()»
+				«createInitFromBuffer()»
 				
 				«createEquals(type.name, allDataProperties)»
 				

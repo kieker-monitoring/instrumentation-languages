@@ -20,6 +20,7 @@ import kieker.develop.rl.recordLang.EventType
 import kieker.develop.rl.recordLang.Model
 import kieker.develop.rl.generator.AbstractTypeGenerator
 import kieker.develop.rl.generator.Version
+import kieker.develop.rl.generator.java.JavaGeneratorFeatures
 
 /**
  * Generator for factories for the event types.
@@ -59,20 +60,11 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 			 */
 			public final class «type.name»Factory implements IRecordFactory<«type.name»> {
 				
-				@Override
-				public «type.name» create(final ByteBuffer buffer, final IRegistry<String> stringRegistry) {
-					return new «type.name»(buffer, stringRegistry);
-				}
+				«if (isSupported(JavaGeneratorFeatures.BYTE_BUFFER_CONSTRUCTOR_LOW, JavaGeneratorFeatures.BYTE_BUFFER_CONSTRUCTOR_HIGH)) createByteBufferFactory(type)»
 				
-				@Override
-				public «type.name» create(final IValueDeserializer deserializer) {
-					return new «type.name»(deserializer);
-				}
+				«if (isSupported(JavaGeneratorFeatures.GENERIC_DESERIALIZER_CONSTRUCTOR_LOW, JavaGeneratorFeatures.GENERIC_DESERIALIZER_CONSTRUCTOR_HIGH)) createGenericDeserializerFactory(type)»
 				
-				@Override
-				public «type.name» create(final Object[] values) {
-					return new «type.name»(values);
-				}
+				«if (isSupported(JavaGeneratorFeatures.ARRAY_CONSTRUCTOR_LOW,JavaGeneratorFeatures.ARRAY_CONSTRUCTOR_HIGH)) createArrayFactory(type)»
 				
 				public int getRecordSizeInBytes() {
 					return «type.name».SIZE;
@@ -80,5 +72,26 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 			}
 		'''
 	}
+	
+	private def createArrayFactory(EventType type) '''
+		@Override
+		public «type.name» create(final Object[] values) {
+			return new «type.name»(values);
+		}
+	'''
+	
+	private def createGenericDeserializerFactory(EventType type) '''
+		@Override
+		public «type.name» create(final IValueDeserializer deserializer) {
+			return new «type.name»(deserializer);
+		}
+	'''
+	
+	private def createByteBufferFactory(EventType type) '''
+		@Override
+		public «type.name» create(final ByteBuffer buffer, final IRegistry<String> stringRegistry) {
+			return new «type.name»(buffer, stringRegistry);
+		}
+	'''
 
 }

@@ -18,10 +18,8 @@ package kieker.develop.rl.generator.java.record
 import java.util.List
 import kieker.develop.rl.recordLang.Property
 import kieker.develop.rl.typing.base.BaseTypes
-import kieker.develop.rl.recordLang.EventType
 
 import static extension kieker.develop.rl.generator.java.record.NameResolver.*
-import static extension kieker.develop.rl.generator.java.record.SerializationTemplates.*
 import static extension kieker.develop.rl.generator.java.record.ValueAccessExpressionModule.*
 import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
