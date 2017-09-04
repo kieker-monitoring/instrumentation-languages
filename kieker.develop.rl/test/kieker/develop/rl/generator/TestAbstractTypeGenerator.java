@@ -3,27 +3,13 @@
  */
 package kieker.develop.rl.generator;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
-import java.lang.reflect.InvocationTargetException;
-
-import org.eclipse.emf.common.notify.Adapter;
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EOperation;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import kieker.develop.rl.recordLang.ComplexType;
-import kieker.develop.rl.recordLang.Constant;
-import kieker.develop.rl.recordLang.Property;
 import kieker.develop.rl.recordLang.RecordLangFactory;
 
 /**
