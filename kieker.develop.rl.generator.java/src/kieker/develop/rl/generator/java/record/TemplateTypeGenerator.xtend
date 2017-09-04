@@ -25,6 +25,7 @@ import org.eclipse.emf.common.util.EList
 import static extension kieker.develop.rl.generator.java.JavaTypeMapping.*
 import static extension kieker.develop.rl.generator.java.record.NameResolver.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
+import kieker.develop.rl.generator.Version
 
 /**
  * Main generator class for template types.
@@ -39,7 +40,7 @@ class TemplateTypeGenerator extends AbstractTypeGenerator<TemplateType, CharSequ
 		type instanceof TemplateType
 	}
 	
-	protected override createOutputModel(TemplateType type, String header, String author, String version) {
+	protected override createOutputModel(TemplateType type, Version targetVersion, String header, String author, String version) {
 		'''
 		«this.header»package «(type.eContainer as Model).name»;
 		

@@ -41,6 +41,7 @@ import static extension kieker.develop.rl.generator.java.record.SerializationTem
 import static extension kieker.develop.rl.generator.java.record.GenericSerializationTemplates.*
 import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
+import kieker.develop.rl.generator.Version
 
 /**
  * Generates a Java class for EventTypes.
@@ -61,13 +62,14 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	 * 
 	 * @param type the event type
 	 * 	in this event type (template inherited types and own types)
+	 * @param targetVersion compiler target version
 	 * @param header the header comment
 	 * @param author the author of the EvenType
 	 * @param version the version of the first occurrence of the type
 	 * 
 	 * @return a Java class for a Kieker EventType
 	 */
-	protected override createOutputModel(EventType type, String header, String author, String version) {
+	protected override createOutputModel(EventType type, Version targetVersion, String header, String author, String version) {
 		val allDataProperties = type.collectAllDataProperties
 		val allDeclarationProperties = type.collectAllDeclarationProperties
 		
@@ -110,12 +112,13 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 				«IF (!type.abstract)»
 				«allDataProperties.createToArrayRepresentation»
 				«allDataProperties.createStringRegistration»
-				«allDataProperties.createBinarySerialization»
-				«allDataProperties.createGenericSerialization»
+				«if (isSupported("1.0","1.2")) allDataProperties.createBinarySerialization»
+				«if (isSupported("1.3","")) allDataProperties.createGenericSerialization»
 				«createConstantAccessMethods»
 				«ENDIF»
 			
-				«createDeprecatedAPI()»
+				«kieker.develop.rl.generator.java.record.EventTypeAPITemplates.createInitFromArray()»
+				«kieker.develop.rl.generator.java.record.EventTypeAPITemplates.createInitFromBuffer()»
 				
 				«createEquals(type.name, allDataProperties)»
 				

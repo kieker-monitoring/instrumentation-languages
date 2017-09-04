@@ -74,6 +74,7 @@ class RecordLangGenerator implements IGenerator2 {
 	private def runGenerators(Resource resource, IEclipsePreferences preferenceStore, TypeProvider typeProvider, IFileSystemAccess2 fsa) {
 		val version = TargetsPreferences.getVersionID(preferenceStore)
 		val author = TargetsPreferences.getAuthorName(preferenceStore)
+		val targetVersion = TargetsPreferences.getTargetVersion(preferenceStore)
 
 		val modelSubTypeGenerator = new ModelSubTypeGenerator()
 		modelSubTypeGenerator.author = author
@@ -107,7 +108,7 @@ class RecordLangGenerator implements IGenerator2 {
 				resource.allContents.filter(typeof(EventType)).forEach[types += it]
 				resource.allContents.filter(typeof(TemplateType)).forEach[types += it]
 				
-				configuration.generators.processTypes(types, configuration, fsa, header, author, version)
+				configuration.generators.processTypes(types, configuration, fsa, targetVersion, header, author, version)
 			}
 		}
 	}
@@ -127,13 +128,13 @@ class RecordLangGenerator implements IGenerator2 {
 		Collection<? extends ComplexType> types,
 		AbstractOutletConfiguration<ComplexType,? extends Object> configuration,
 		IFileSystemAccess2 fsa,
-		String header, String author, String version
+		String targetVersion, String header, String author, String version
 	) {
 		generators.filter(IAcceptType).forEach[generator |
 			types.filter[generator.accepts(it)].forEach[
 				switch (generator) {
 					IGenerator<ComplexType, CharSequence>: {
-						(generator as IConfigureParameters).configure(header, author, version)
+						(generator as IConfigureParameters).configure(targetVersion, header, author, version)
 						val result = generator.generate(it) as CharSequence
 						fsa.generateFile(configuration.outputFilePath(it), configuration.name, result)
 					}

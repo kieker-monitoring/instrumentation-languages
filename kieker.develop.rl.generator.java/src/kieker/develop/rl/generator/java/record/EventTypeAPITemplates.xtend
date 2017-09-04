@@ -18,8 +18,10 @@ package kieker.develop.rl.generator.java.record
 import java.util.List
 import kieker.develop.rl.recordLang.Property
 import kieker.develop.rl.typing.base.BaseTypes
+import kieker.develop.rl.recordLang.EventType
 
 import static extension kieker.develop.rl.generator.java.record.NameResolver.*
+import static extension kieker.develop.rl.generator.java.record.SerializationTemplates.*
 import static extension kieker.develop.rl.generator.java.record.ValueAccessExpressionModule.*
 import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
@@ -37,11 +39,13 @@ import static extension kieker.develop.rl.typing.TypeResolution.*
  * 
  */
 class EventTypeAPITemplates {
-		
+			
 	/**
-	 * Create code supporting the deprecated API.
+	 * Create initialize record from array function.
+	 * This function is deprecated.
+	 * However, is API until ?
 	 */
-	static def createDeprecatedAPI() '''
+	static def createInitFromArray() '''
 		/**
 		 * {@inheritDoc}
 		 * 
@@ -52,7 +56,14 @@ class EventTypeAPITemplates {
 		public void initFromArray(final Object[] values) {
 			throw new UnsupportedOperationException();
 		}
-		
+	'''
+	
+	/**
+	 * Create initialize record from buffer function.
+	 * This function is deprecated.
+ 	 * However, is API until ?	 
+	 */
+	static def createInitFromBuffer() '''
 		/**
 		 * {@inheritDoc}
 		 * 

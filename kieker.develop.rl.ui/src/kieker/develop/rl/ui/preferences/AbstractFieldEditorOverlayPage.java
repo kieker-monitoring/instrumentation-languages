@@ -116,7 +116,8 @@ public abstract class AbstractFieldEditorOverlayPage extends FieldEditorPreferen
 		// addField(spacer);
 
 		this.addField(new StringFieldEditor(TargetsPreferences.AUTHOR_NAME, "Author", this.getFieldEditorParent()));
-		this.addField(new StringFieldEditor(TargetsPreferences.VERSION_ID, "Version", this.getFieldEditorParent()));
+		this.addField(new StringFieldEditor(TargetsPreferences.VERSION_ID, "Default Version", this.getFieldEditorParent()));
+		this.addField(new StringFieldEditor(TargetsPreferences.TARGET_VERSION, "Target Version", this.getFieldEditorParent()));
 	}
 
 }

@@ -34,10 +34,32 @@ abstract class AbstractTypeGenerator<S extends ComplexType, T> implements IGener
 	
 	protected String version
 	
-	override configure(String header, String author, String version) {
+	protected Version targetVersion
+	
+	override configure(String targetVersion, String header, String author, String version) {
+		this.targetVersion = new Version(targetVersion)
 		this.header = header
 		this.author = author
 		this.version = version
+	}
+		
+	def boolean isSupported(String lowVersion, String highVersion) {
+		if (lowVersion.empty) {
+			if (highVersion.empty) {
+				return true
+			} else {
+				val high = new Version(highVersion)
+				return high.equalHigher(targetVersion)			
+			}
+		} else if (highVersion.empty) {
+			val low = new Version(lowVersion)
+			return low.equalLower(low)
+		} else {
+			val low = new Version(lowVersion)
+			val high = new Version(highVersion)
+		
+			return low.equalLower(targetVersion) && high.equalHigher(targetVersion)
+		}			
 	}
 	
 	/**
@@ -50,9 +72,57 @@ abstract class AbstractTypeGenerator<S extends ComplexType, T> implements IGener
 		val definedAuthor = if (input.author === null) this.author else input.author
 		val definedVersion = if (input.since === null) this.version else input.since
 
-		return createOutputModel(input, header, definedAuthor, definedVersion)
+		return createOutputModel(input, targetVersion, header, definedAuthor, definedVersion)
 	}
 		
-	protected abstract def T createOutputModel(S type, String header, String author, String version)
+	protected abstract def T createOutputModel(S type, Version targetVersion, String header, String author, String version)
 	
+}
+
+/**
+ * Represents the compiler target code version.
+ */
+class Version {
+	int major
+	int minor
+	int release
+	
+	new(String version) {
+		val values = version.split("\\.")
+		major = Integer.parseInt(values.get(0));	
+		minor = Integer.parseInt(values.get(1));			
+		release = Integer.parseInt(values.get(2));			
+	}
+	
+	def boolean equalLower(Version compare) {
+		if (major < compare.major) {
+			return true
+		} else if (major > compare.major) {
+			return false
+		} else {
+			if (minor < compare.minor) {
+				return true
+			} else if ( minor > compare.minor) {
+				return false
+			} else {
+				return release <= compare.release
+			}
+		}
+	}
+	
+	def boolean equalHigher(Version compare) {
+		if (major > compare.major) {
+			return true
+		} else if (major < compare.major) {
+			return false
+		} else {
+			if (minor > compare.minor) {
+				return true
+			} else if ( minor < compare.minor) {
+				return false
+			} else {
+				return release >= compare.release
+			}
+		}
+	}
 }

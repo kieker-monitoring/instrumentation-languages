@@ -19,6 +19,7 @@ import kieker.develop.rl.recordLang.ComplexType
 import kieker.develop.rl.recordLang.EventType
 import kieker.develop.rl.recordLang.Model
 import kieker.develop.rl.generator.AbstractTypeGenerator
+import kieker.develop.rl.generator.Version
 
 /**
  * Generator for factories for the event types.
@@ -41,7 +42,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	 * @param type
 	 * 		one record type to be used to create the corresponding monitoring record factory
 	 */
-	protected override createOutputModel(EventType type, String header, String author, String version) {
+	protected override createOutputModel(EventType type, Version targetVersion, String header, String author, String version) {
 		'''
 			«this.header»package «(type.eContainer as Model).name»;
 			
