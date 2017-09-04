@@ -77,7 +77,7 @@ abstract class AbstractTypeGenerator<S extends ComplexType, T> implements IGener
 			}
 		} else if (highVersion.empty) {
 			val low = new Version(lowVersion)
-			return low.equalLower(low)
+			return low.equalLower(targetVersion)
 		} else {
 			val low = new Version(lowVersion)
 			val high = new Version(highVersion)

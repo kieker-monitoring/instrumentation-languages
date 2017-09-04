@@ -1,7 +1,19 @@
-/**
- * 
- */
-package kieker.develop.rl.generator;
+/***************************************************************************
+ * Copyright 2017 Kieker Project (http://kieker-monitoring.net)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ***************************************************************************/
+package kieker.develop.rl.generator.tests;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
@@ -9,6 +21,8 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+import kieker.develop.rl.generator.AbstractTypeGenerator;
+import kieker.develop.rl.generator.Version;
 import kieker.develop.rl.recordLang.ComplexType;
 import kieker.develop.rl.recordLang.RecordLangFactory;
 
@@ -70,7 +84,7 @@ public class TestAbstractTypeGenerator {
 				"1.2.1:",
 		};
 		for (String range : outRanges) {
-			assertEquals("Range error, " + TARGET_VERSION + " should be out " + range, true, generator.isSupported(range));
+			assertEquals("Range error, " + TARGET_VERSION + " should be out " + range, false, generator.isSupported(range));
 		}
 	}
 	
@@ -78,8 +92,8 @@ public class TestAbstractTypeGenerator {
 	 * Test method for {@link kieker.develop.rl.generator.AbstractTypeGenerator#createOutputModel(kieker.develop.rl.recordLang.ComplexType, kieker.develop.rl.generator.Version, java.lang.String, java.lang.String, java.lang.String)}.
 	 */
 	@Test
-	public void testCreateOutputModel() {
-		String[] result = generator.createOutputModel(type, new Version(TARGET_VERSION), HEADER, AUTHOR, VERSION).split("::");
+	public void testGenerate() {
+		String[] result = generator.generate(type).split("::");
 		assertEquals("Missing parameter", 4, result.length);
 		assertArrayEquals("Wrong values in code generation", new String[] { type.getName(), HEADER, AUTHOR, VERSION }, result);
 	}

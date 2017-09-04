@@ -32,11 +32,11 @@ package kieker.develop.rl.generator.java;
  */
 public class GeneratorFeatures {
 	/** ByteBuffer support: factory, constructor and initFromBytes feature. */
-	public final static String BYTE_BUFFER_DESERIALIZER = "1.0:1.2";
+	public final static String BYTE_BUFFER_DESERIALIZER = "1.0:1.12";
 	
 	/** ObjectArray support: factory, constructor and initFromArray feature. */
-	public final static String ARRAY_DESERIALIZER = "1.0:1.3";
+	public final static String ARRAY_DESERIALIZER = "1.0:1.13";
 	
 	/** Generic deserializer support: factory, constructor. */
-	public final static String GENERIC_DESERIALIZER = "1.3:";
+	public final static String GENERIC_DESERIALIZER = "1.13:";
 }

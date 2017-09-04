@@ -80,7 +80,7 @@ class TemplateTypeGenerator extends AbstractTypeGenerator<TemplateType, CharSequ
 	 * @returns the resulting getter as a CharSequence
 	 */
 	private def createPropertyGetter(Property property) '''
-		public «property.findType.type.createPrimitiveTypeName» «property.createGetterName»() ;
+		public «property.findType.createTypeName» «property.createGetterName»() ;
 		
 	'''
 	
