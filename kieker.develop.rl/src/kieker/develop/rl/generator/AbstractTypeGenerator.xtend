@@ -89,9 +89,18 @@ class Version {
 	
 	new(String version) {
 		val values = version.split("\\.")
-		major = Integer.parseInt(values.get(0));	
-		minor = Integer.parseInt(values.get(1));			
-		release = Integer.parseInt(values.get(2));			
+		if (values.size>0)
+			major = Integer.parseInt(values.get(0))
+		else
+			major = 0
+		if (values.size>1)	
+			minor = Integer.parseInt(values.get(1))
+		else
+			minor = 0
+		if (values.size == 3)
+			release = Integer.parseInt(values.get(2))
+		else
+			release = 0			
 	}
 	
 	def boolean equalLower(Version compare) {
