@@ -15,9 +15,7 @@
  ***************************************************************************/
 package kieker.develop.rl.generator.tests;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,72 +28,68 @@ import kieker.develop.rl.recordLang.RecordLangFactory;
  * @author reiner
  *
  */
-public class TestAbstractTypeGenerator {
-	
+public class TestAbstractTypeGenerator { // NOCS -- its a test
+
 	private static final String HEADER = "HEADER";
 	private static final String AUTHOR = "AUTHOR";
 	private static final String VERSION = "VERSION";
 	private static final String TARGET_VERSION = "1.2";
 	private AbstractTypeGenerator<ComplexType, String> generator;
-	private final ComplexType type = RecordLangFactory.eINSTANCE.createEventType();
+	private final ComplexType emptyTestType = RecordLangFactory.eINSTANCE.createEventType();
 
-	
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
-		generator = new AbstractTypeGenerator<ComplexType, String>() {
+		this.generator = new AbstractTypeGenerator<ComplexType, String>() {
 
 			@Override
-			public boolean accepts(ComplexType type) {
+			public boolean accepts(final ComplexType type) {
 				return true;
 			}
 
 			@Override
-			protected String createOutputModel(ComplexType type, Version targetVersion, String header, String author,
-					String version) {
+			protected String createOutputModel(final ComplexType type, final Version targetVersion, final String header,
+					final String author, final String version) {
 				return type.getName() + "::" + header + "::" + author + "::" + version;
 			}
-			
+
 		};
-		type.setName("EmptyRecord");
-		generator.configure(TARGET_VERSION, HEADER, AUTHOR, VERSION);
+		this.emptyTestType.setName("EmptyRecord");
+		this.generator.configure(TestAbstractTypeGenerator.TARGET_VERSION, TestAbstractTypeGenerator.HEADER,
+				TestAbstractTypeGenerator.AUTHOR, TestAbstractTypeGenerator.VERSION);
 	}
 
 	/**
-	 * Test method for {@link kieker.develop.rl.generator.AbstractTypeGenerator#isSupported(java.lang.String)}.
+	 * Test method for
+	 * {@link kieker.develop.rl.generator.AbstractTypeGenerator#isSupported(java.lang.String)}.
 	 */
 	@Test
 	public void testIsSupported() {
-		String[] inRanges = new String[] {
-				"1.0:1.2",
-				"1.2:1.3",
-				"1.0:",
-				":1.2",
-				"1.2:",
-				"1.2:1.3",				
-		};
-		for (String range : inRanges) {
-			assertEquals("Range error, " + TARGET_VERSION + " should be in " + range, true, generator.isSupported(range));
+		final String[] inRanges = new String[] { "1.0:1.2", "1.2:1.3", "1.0:", ":1.2", "1.2:", "1.2:1.3", };
+		for (final String range : inRanges) {
+			Assert.assertEquals("Range error, " + TestAbstractTypeGenerator.TARGET_VERSION + " should be in " + range,
+					true, this.generator.isSupported(range));
 		}
-		String[] outRanges = new String[] {
-				"1.2.1:1.3",
-				"1.2.1:",
-		};
-		for (String range : outRanges) {
-			assertEquals("Range error, " + TARGET_VERSION + " should be out " + range, false, generator.isSupported(range));
+		final String[] outRanges = new String[] { "1.2.1:1.3", "1.2.1:", };
+		for (final String range : outRanges) {
+			Assert.assertEquals("Range error, " + TestAbstractTypeGenerator.TARGET_VERSION + " should be out " + range,
+					false, this.generator.isSupported(range));
 		}
 	}
-	
+
 	/**
-	 * Test method for {@link kieker.develop.rl.generator.AbstractTypeGenerator#createOutputModel(kieker.develop.rl.recordLang.ComplexType, kieker.develop.rl.generator.Version, java.lang.String, java.lang.String, java.lang.String)}.
+	 * Test method for
+	 * {@link kieker.develop.rl.generator.AbstractTypeGenerator#createOutputModel(kieker.develop.rl.recordLang.ComplexType, kieker.develop.rl.generator.Version, java.lang.String, java.lang.String, java.lang.String)}.
 	 */
 	@Test
 	public void testGenerate() {
-		String[] result = generator.generate(type).split("::");
-		assertEquals("Missing parameter", 4, result.length);
-		assertArrayEquals("Wrong values in code generation", new String[] { type.getName(), HEADER, AUTHOR, VERSION }, result);
+		final String[] result = this.generator.generate(this.emptyTestType).split("::");
+		Assert.assertEquals("Missing parameter", 4, result.length);
+		Assert.assertArrayEquals("Wrong values in code generation", new String[] { this.emptyTestType.getName(),
+				TestAbstractTypeGenerator.HEADER, TestAbstractTypeGenerator.AUTHOR, TestAbstractTypeGenerator.VERSION },
+				result);
 	}
 
 }
