@@ -31,6 +31,7 @@ package kieker.develop.rl.generator.java;
  *
  */
 public final class GeneratorFeatures {	
+	
 	/** ByteBuffer support: factory, constructor and initFromBytes feature. */
 	public static final String BYTE_BUFFER_DESERIALIZER = "1.0:1.12";
 	
