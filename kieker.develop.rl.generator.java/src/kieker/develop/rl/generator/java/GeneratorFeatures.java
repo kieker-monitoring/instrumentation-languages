@@ -30,13 +30,18 @@ package kieker.develop.rl.generator.java;
  * @author Reiner Jung
  *
  */
-public class GeneratorFeatures {
+public final class GeneratorFeatures {	
 	/** ByteBuffer support: factory, constructor and initFromBytes feature. */
-	public final static String BYTE_BUFFER_DESERIALIZER = "1.0:1.12";
+	public static final String BYTE_BUFFER_DESERIALIZER = "1.0:1.12";
 	
 	/** ObjectArray support: factory, constructor and initFromArray feature. */
-	public final static String ARRAY_DESERIALIZER = "1.0:1.13";
+	public static final String ARRAY_DESERIALIZER = "1.0:1.13";
 	
 	/** Generic deserializer support: factory, constructor. */
-	public final static String GENERIC_DESERIALIZER = "1.13:";
+	public static final String GENERIC_DESERIALIZER = "1.13:";
+	
+	/**
+	 * Configuration class. Should not be instantiated.
+	 */
+	private GeneratorFeatures() {}
 }

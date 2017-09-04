@@ -85,7 +85,7 @@ public final class TargetsPreferences {
 	 *            the preference store
 	 * @return Returns the target version
 	 */
-	public static String getTargetVersion(IEclipsePreferences preferenceStore) {
+	public static String getTargetVersion(final IEclipsePreferences preferenceStore) {
 		return preferenceStore.get(TARGET_VERSION, DEFAULT_VERSION);
 	}
 	
