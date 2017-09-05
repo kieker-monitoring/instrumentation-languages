@@ -158,4 +158,8 @@ class Version {
 			}
 		}
 	}
+	
+	override toString() {
+		return major + "." + minor + "." + release
+	}
 }

@@ -47,11 +47,17 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 		'''
 			«this.header»package «(type.eContainer as Model).name»;
 			
+			«IF (isSupported(GeneratorFeatures.BYTE_BUFFER_DESERIALIZER))»
 			import java.nio.ByteBuffer;
+			«ENDIF»
 
 			import kieker.common.record.factory.IRecordFactory;
+			«IF (isSupported(GeneratorFeatures.GENERIC_DESERIALIZER))»
 			import kieker.common.record.io.IValueDeserializer;
+			«ENDIF»
+			«IF (isSupported(GeneratorFeatures.BYTE_BUFFER_DESERIALIZER))»
 			import kieker.common.util.registry.IRegistry;
+			«ENDIF»
 			
 			/**
 			 * @author «author»
@@ -75,6 +81,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	
 	private def createArrayFactory(EventType type) '''
 		@Override
+		@Deprecated
 		public «type.name» create(final Object[] values) {
 			return new «type.name»(values);
 		}
