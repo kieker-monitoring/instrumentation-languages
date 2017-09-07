@@ -65,7 +65,9 @@ class PropertyConstructionModule {
 	 * @returns  one property declaration
 	 */
 	private static def createPropertyDeclaration(Property property) 
-		'''private «if (!property.modifiers.contains(PropertyModifier.CHANGEABLE)) 'final '»«property.findType.createTypeName» «property.createPropertyName»«if (!property.increment && property.findType.type == BaseTypes.STRING) ' = ' + property.createConstantName»;
+		'''private «if (!property.modifiers.contains(PropertyModifier.CHANGEABLE) || 
+			!property.modifiers.contains(PropertyModifier.INCREMENT)
+		) 'final '»«property.findType.createTypeName» «property.createPropertyName»«if (!property.increment && property.findType.type == BaseTypes.STRING) ' = ' + property.createConstantName»;
 		'''
 					
 	/**
