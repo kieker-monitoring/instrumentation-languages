@@ -87,8 +87,9 @@ public class TestAbstractTypeGenerator { // NOCS -- its a test
 	public void testGenerate() {
 		final String[] result = this.generator.generate(this.emptyTestType).split("::");
 		Assert.assertEquals("Missing parameter", 4, result.length);
-		Assert.assertArrayEquals("Wrong values in code generation", new String[] { this.emptyTestType.getName(),
-				TestAbstractTypeGenerator.HEADER, TestAbstractTypeGenerator.AUTHOR, TestAbstractTypeGenerator.VERSION },
+		Assert.assertArrayEquals("Wrong values in code generation",
+				new String[] { this.emptyTestType.getName(), TestAbstractTypeGenerator.HEADER,
+						TestAbstractTypeGenerator.AUTHOR, TestAbstractTypeGenerator.VERSION, },
 				result);
 	}
 
