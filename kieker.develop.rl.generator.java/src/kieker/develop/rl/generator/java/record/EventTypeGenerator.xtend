@@ -27,10 +27,11 @@ import kieker.develop.rl.recordLang.TemplateType
 import kieker.develop.rl.typing.base.BaseTypes
 
 import kieker.develop.rl.generator.AbstractTypeGenerator
+import kieker.develop.rl.generator.Version
 
 import static kieker.develop.rl.generator.java.record.EqualsMethodTemplate.*
-import static extension kieker.develop.rl.generator.java.record.EventTypeAPITemplates.*
 
+import static extension kieker.develop.rl.generator.java.record.EventTypeAPITemplates.*
 import static extension kieker.develop.rl.generator.java.record.BinaryConstructorTemplate.*
 import static extension kieker.develop.rl.generator.java.record.GenericDeserializationConstructorTemplate.*
 import static extension kieker.develop.rl.generator.java.record.ConstructorTemplates.*
@@ -42,6 +43,7 @@ import static extension kieker.develop.rl.generator.java.record.SerializationTem
 import static extension kieker.develop.rl.generator.java.record.GenericSerializationTemplates.*
 import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
+import kieker.develop.rl.generator.java.GeneratorFeatures
 
 /**
  * Generates a Java class for EventTypes.
@@ -62,13 +64,14 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	 * 
 	 * @param type the event type
 	 * 	in this event type (template inherited types and own types)
+	 * @param targetVersion compiler target version
 	 * @param header the header comment
 	 * @param author the author of the EvenType
 	 * @param version the version of the first occurrence of the type
 	 * 
 	 * @return a Java class for a Kieker EventType
 	 */
-	protected override createOutputModel(EventType type, String header, String author, String version) {
+	protected override createOutputModel(EventType type, Version targetVersion, String header, String author, String version) {
 		val allDataProperties = type.collectAllDataProperties
 		val allDeclarationProperties = type.collectAllDeclarationProperties
 
@@ -80,6 +83,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 			
 			/**
 			 * @author «author»
+			 * API compatibility: Kieker «this.targetVersion.toString»
 			 * 
 			 * @since «version»
 			 */
@@ -101,23 +105,24 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 				
 				«type.createParameterizedConstructor(allDataProperties, allDeclarationProperties)»
 			
-				«if (!type.abstract) type.createArrayConstructor(allDeclarationProperties)»
+				«if (!type.abstract && isSupported(GeneratorFeatures.ARRAY_DESERIALIZER)) type.createArrayConstructor(allDeclarationProperties)»
 			
-				«type.createArrayInitializeConstructor(allDeclarationProperties)»
+				«if (isSupported(GeneratorFeatures.ARRAY_DESERIALIZER)) type.createArrayInitializeConstructor(allDeclarationProperties)»
 			
-				«type.createBufferReadConstructor(allDeclarationProperties)»
+				«if (isSupported(GeneratorFeatures.BYTE_BUFFER_DESERIALIZER)) type.createBufferReadConstructor(allDeclarationProperties)»
 				
-				«type.createGenericDeserializationConstructor(allDeclarationProperties)»
+				«if (isSupported(GeneratorFeatures.GENERIC_DESERIALIZER)) type.createGenericDeserializationConstructor(allDeclarationProperties)»
 				
 				«IF (!type.abstract)»
 				«allDataProperties.createToArrayRepresentation»
 				«allDataProperties.createStringRegistration»
-				«allDataProperties.createBinarySerialization»
-				«allDataProperties.createGenericSerialization»
+				«if (isSupported(GeneratorFeatures.BYTE_BUFFER_DESERIALIZER)) allDataProperties.createBinarySerialization»
+				«if (isSupported(GeneratorFeatures.GENERIC_DESERIALIZER)) allDataProperties.createGenericSerialization»
 				«createConstantAccessMethods»
 				«ENDIF»
 			
-				«createDeprecatedAPI()»
+				«createInitFromArray()»
+				«if (isSupported(GeneratorFeatures.BYTE_BUFFER_DESERIALIZER)) createInitFromBuffer()»
 				
 				«createEquals(type.name, allDataProperties)»
 				
@@ -175,11 +180,11 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	 * @param type the record type
 	 */
 	private def createImports(EventType type) '''
-		«IF (!type.abstract)»
-		import java.nio.BufferOverflowException;
-		«ENDIF»
+		«if (!type.abstract) 'import java.nio.BufferOverflowException;'»
+		«IF (isSupported(GeneratorFeatures.BYTE_BUFFER_DESERIALIZER))»
 		import java.nio.BufferUnderflowException;
 		import java.nio.ByteBuffer;
+		«ENDIF»
 
 		«IF (type.parent === null)»
 		import kieker.common.record.AbstractMonitoringRecord;
@@ -187,9 +192,11 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 		«ELSE»
 		import «(type.parent.eContainer as Model).name».«type.parent.name»;
 		«ENDIF»
+		«IF (isSupported(GeneratorFeatures.GENERIC_DESERIALIZER))»
 		import kieker.common.record.io.IValueDeserializer;
-		import kieker.common.record.io.IValueSerializer;
-		import kieker.common.util.registry.IRegistry;
+		«if (!type.abstract) 'import kieker.common.record.io.IValueSerializer;'»
+		«ENDIF»
+		«if (!type.abstract) 'import kieker.common.util.registry.IRegistry;'»
 
 		«if (type.inherits !== null && type.inherits.size > 0) type.inherits.map[i | i.createInterfaceImport].join»
 	'''

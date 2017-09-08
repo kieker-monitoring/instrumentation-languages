@@ -24,6 +24,7 @@ import kieker.develop.rl.recordLang.Model
 import kieker.develop.rl.recordLang.Property
 
 import static extension kieker.develop.rl.typing.PropertyResolution.*
+import kieker.develop.rl.generator.Version
 
 class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> {
 	
@@ -45,7 +46,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	 * 
 	 * @return a Java class for a Kieker EventType
 	 */
-	protected override createOutputModel(EventType type, String header, String author, String version) {
+	protected override createOutputModel(EventType type, Version targetVersion, String header, String author, String version) {
 		'''
 		use strict;
 		use warnings;

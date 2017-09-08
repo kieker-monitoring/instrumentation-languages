@@ -23,6 +23,7 @@ import kieker.develop.rl.recordLang.Property
 import static extension kieker.develop.rl.generator.c.CommonCFunctionsExtension.*
 import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
+import kieker.develop.rl.generator.Version
 
 /**
  * Generator for event types for C typedefs and the header file.
@@ -51,7 +52,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	 * 
 	 * @return a Java class for a Kieker EventType
 	 */
-	protected override createOutputModel(EventType type, String header, String author, String version) {
+	protected override createOutputModel(EventType type, Version targetVersion, String header, String author, String version) {
 		'''
 			«this.header»#include <stdlib.h>
 			#include <kieker.h>

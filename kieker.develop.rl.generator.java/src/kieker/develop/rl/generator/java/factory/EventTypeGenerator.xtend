@@ -19,6 +19,8 @@ import kieker.develop.rl.recordLang.ComplexType
 import kieker.develop.rl.recordLang.EventType
 import kieker.develop.rl.recordLang.Model
 import kieker.develop.rl.generator.AbstractTypeGenerator
+import kieker.develop.rl.generator.Version
+import kieker.develop.rl.generator.java.GeneratorFeatures
 
 /**
  * Generator for factories for the event types.
@@ -41,15 +43,21 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	 * @param type
 	 * 		one record type to be used to create the corresponding monitoring record factory
 	 */
-	protected override createOutputModel(EventType type, String header, String author, String version) {
+	protected override createOutputModel(EventType type, Version targetVersion, String header, String author, String version) {
 		'''
 			«this.header»package «(type.eContainer as Model).name»;
 			
+			«IF (isSupported(GeneratorFeatures.BYTE_BUFFER_DESERIALIZER))»
 			import java.nio.ByteBuffer;
+			«ENDIF»
 
 			import kieker.common.record.factory.IRecordFactory;
+			«IF (isSupported(GeneratorFeatures.GENERIC_DESERIALIZER))»
 			import kieker.common.record.io.IValueDeserializer;
+			«ENDIF»
+			«IF (isSupported(GeneratorFeatures.BYTE_BUFFER_DESERIALIZER))»
 			import kieker.common.util.registry.IRegistry;
+			«ENDIF»
 			
 			/**
 			 * @author «author»
@@ -58,20 +66,11 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 			 */
 			public final class «type.name»Factory implements IRecordFactory<«type.name»> {
 				
-				@Override
-				public «type.name» create(final ByteBuffer buffer, final IRegistry<String> stringRegistry) {
-					return new «type.name»(buffer, stringRegistry);
-				}
+				«if (isSupported(GeneratorFeatures.BYTE_BUFFER_DESERIALIZER)) createByteBufferFactory(type)»
 				
-				@Override
-				public «type.name» create(final IValueDeserializer deserializer) {
-					return new «type.name»(deserializer);
-				}
+				«if (isSupported(GeneratorFeatures.GENERIC_DESERIALIZER)) createGenericDeserializerFactory(type)»
 				
-				@Override
-				public «type.name» create(final Object[] values) {
-					return new «type.name»(values);
-				}
+				«if (isSupported(GeneratorFeatures.ARRAY_DESERIALIZER)) createArrayFactory(type)»
 				
 				public int getRecordSizeInBytes() {
 					return «type.name».SIZE;
@@ -79,5 +78,27 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 			}
 		'''
 	}
+	
+	private def createArrayFactory(EventType type) '''
+		@Override
+		@Deprecated
+		public «type.name» create(final Object[] values) {
+			return new «type.name»(values);
+		}
+	'''
+	
+	private def createGenericDeserializerFactory(EventType type) '''
+		@Override
+		public «type.name» create(final IValueDeserializer deserializer) {
+			return new «type.name»(deserializer);
+		}
+	'''
+	
+	private def createByteBufferFactory(EventType type) '''
+		@Override
+		public «type.name» create(final ByteBuffer buffer, final IRegistry<String> stringRegistry) {
+			return new «type.name»(buffer, stringRegistry);
+		}
+	'''
 
 }

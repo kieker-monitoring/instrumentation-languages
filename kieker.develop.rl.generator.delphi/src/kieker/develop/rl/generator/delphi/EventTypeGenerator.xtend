@@ -18,6 +18,7 @@ package kieker.develop.rl.generator.delphi
 import kieker.develop.rl.generator.AbstractTypeGenerator
 import kieker.develop.rl.recordLang.ComplexType
 import kieker.develop.rl.recordLang.EventType
+import kieker.develop.rl.generator.Version
 
 class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> {
 		
@@ -32,7 +33,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	 * 
 	 * @return a Java class for a Kieker EventType
 	 */
-	protected override createOutputModel(EventType type, String header, String author, String version) {
+	protected override createOutputModel(EventType type, Version targetVersion, String header, String author, String version) {
 		''''''
 	}
 	

@@ -103,7 +103,7 @@ class ConstantConstructionTemplates {
 	/**
 	 * Literal mapping
 	 */
-	private static def CharSequence createLiteral(Literal literal) throws InternalErrorException {
+	static def CharSequence createLiteral(Literal literal) throws InternalErrorException {
 		switch (literal) {
 			IntLiteral: '''«literal.value»«if (literal.isType(BaseTypes.LONG)) 'L'»'''
 			FloatLiteral: '''«literal.value»«if (literal.isType(BaseTypes.FLOAT)) 'f'»'''

@@ -32,6 +32,8 @@ public final class TargetsPreferences {
 	public static final String GENERATOR_ACTIVE = TargetsPreferences.class + ".generator.";
 	/** Constant for author name in generators. */
 	public static final String AUTHOR_NAME = TargetsPreferences.class + ".author";
+	/** Constant for the target version of Kieker. */
+	public static final String TARGET_VERSION = TargetsPreferences.class + ".targetVersion";
 	/** Constant for version id in generators. */
 	public static final String VERSION_ID = TargetsPreferences.class + ".version";
 	/** Header Comment. */
@@ -42,7 +44,7 @@ public final class TargetsPreferences {
 	public static final String DEFAULT_VERSION = "1.10";
 	/** Default deactivate all generators. */
 	public static final boolean DEFAULT_GENERATOR_INACTIVE = false;
-
+	
 	/**
 	 * Dummy constructor.
 	 */
@@ -73,6 +75,30 @@ public final class TargetsPreferences {
 	 */
 	public static void setAuthorName(final IEclipsePreferences preferenceStore, final String author) {
 		preferenceStore.put(AUTHOR_NAME, author);
+	}
+	
+
+	/**
+	 * Get the Kieker target version from the specified preference store.
+	 *
+	 * @param preferenceStore
+	 *            the preference store
+	 * @return Returns the target version
+	 */
+	public static String getTargetVersion(final IEclipsePreferences preferenceStore) {
+		return preferenceStore.get(TARGET_VERSION, DEFAULT_VERSION);
+	}
+	
+	/**
+	 * Store the target version in the specified preference store.
+	 *
+	 * @param preferenceStore
+	 *            the preference store
+	 * @param targetVersion
+	 *            the target version to be stored
+	 */
+	public static void setTargetVersion(final IEclipsePreferences preferenceStore, final String targetVersion) {
+		preferenceStore.put(TARGET_VERSION, targetVersion);
 	}
 
 	/**

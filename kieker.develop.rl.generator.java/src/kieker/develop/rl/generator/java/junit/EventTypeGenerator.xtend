@@ -34,6 +34,7 @@ import static extension kieker.develop.rl.generator.java.junit.NameResolver.*
 import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
 import kieker.develop.rl.recordLang.BuiltInValueLiteral
+import kieker.develop.rl.generator.Version
 
 /**
  * Java test class generator for event types.
@@ -54,7 +55,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	/**
 	 * Main generator method.
 	 */
-	protected override createOutputModel(EventType type, String header, String author, String version) {
+	protected override createOutputModel(EventType type, Version targetVersion, String header, String author, String version) {
 		val allPersistentDataProperties = type.collectAllPersistentDataProperties
 		
 		'''

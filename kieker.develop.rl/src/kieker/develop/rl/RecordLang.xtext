@@ -98,7 +98,8 @@ ForeignKey:
 
 enum PropertyModifier:
 	TRANSIENT = 'transient' |
-	INCREMENT = 'auto-increment'
+	INCREMENT = 'auto-increment' |
+	CHANGEABLE = 'changeable'
 ;
 
 Classifier:

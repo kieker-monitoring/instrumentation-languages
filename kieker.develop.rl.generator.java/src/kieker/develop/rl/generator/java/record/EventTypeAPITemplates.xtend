@@ -37,11 +37,13 @@ import static extension kieker.develop.rl.typing.TypeResolution.*
  * 
  */
 class EventTypeAPITemplates {
-		
+			
 	/**
-	 * Create code supporting the deprecated API.
+	 * Create initialize record from array function.
+	 * This function is deprecated.
+	 * However, is API until ?
 	 */
-	static def createDeprecatedAPI() '''
+	static def createInitFromArray() '''
 		/**
 		 * {@inheritDoc}
 		 * 
@@ -52,7 +54,14 @@ class EventTypeAPITemplates {
 		public void initFromArray(final Object[] values) {
 			throw new UnsupportedOperationException();
 		}
-		
+	'''
+	
+	/**
+	 * Create initialize record from buffer function.
+	 * This function is deprecated.
+ 	 * However, is API until ?	 
+	 */
+	static def createInitFromBuffer() '''
 		/**
 		 * {@inheritDoc}
 		 * 
