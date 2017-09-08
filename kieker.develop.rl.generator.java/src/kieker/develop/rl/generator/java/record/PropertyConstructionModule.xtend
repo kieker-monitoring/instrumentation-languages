@@ -18,13 +18,14 @@ package kieker.develop.rl.generator.java.record
 import java.util.List
 import kieker.develop.rl.recordLang.EventType
 import kieker.develop.rl.recordLang.Property
+import kieker.develop.rl.typing.base.BaseTypes
+import kieker.develop.rl.recordLang.PropertyModifier
 
 import static extension kieker.develop.rl.generator.java.JavaTypeMapping.*
 import static extension kieker.develop.rl.generator.java.record.NameResolver.*
 import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
-import kieker.develop.rl.typing.base.BaseTypes
-import kieker.develop.rl.recordLang.PropertyModifier
+import static extension kieker.develop.rl.generator.java.record.ConstantConstructionTemplates.*
 
 /**
  * Generate code for property declaration, constant fields, getters and setters.
@@ -65,10 +66,35 @@ class PropertyConstructionModule {
 	 * @returns  one property declaration
 	 */
 	private static def createPropertyDeclaration(Property property) 
-		'''private «if (!property.modifiers.contains(PropertyModifier.CHANGEABLE) || 
+		'''private «if (!property.modifiers.contains(PropertyModifier.CHANGEABLE) && 
 			!property.modifiers.contains(PropertyModifier.INCREMENT)
-		) 'final '»«property.findType.createTypeName» «property.createPropertyName»«if (!property.increment && property.findType.type == BaseTypes.STRING) ' = ' + property.createConstantName»;
+		) 'final '»«property.findType.createTypeName» «property.createPropertyName»«property.initialValue»;
 		'''
+		
+	/**
+	 * Create the constant initializer for strings and incremental values
+	 * 
+	 * @param property
+	 * 		a property of the record type
+	 * 
+	 * @returns  one property declaration
+	 */			
+	private static def initialValue(Property property) {
+		if (property.increment) {
+			if (property.value !== null) {
+				
+				switch (BaseTypes.getTypeEnum(property.findType.type)) {
+					case BYTE: return ' = ' + property.value.createLiteral
+					case SHORT: return ' = ' + property.value.createLiteral
+					case INT: return ' = ' + property.value.createLiteral
+					case LONG: return ' = ' + property.value.createLiteral
+					default: return ''
+				}
+			} else { 
+				return ''
+			}
+		}
+	}
 					
 	/**
 	 * Creates a getter for a given property.
