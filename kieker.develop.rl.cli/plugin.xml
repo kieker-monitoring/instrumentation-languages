@@ -17,7 +17,7 @@
    <extension
          id="headless"
          point="org.eclipse.core.runtime.products">
-      <product
+      <product name="IRL command line compiler"
             application="kieker.develop.rl.cli.id1">
       </product>
    </extension>
