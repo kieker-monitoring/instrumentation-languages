@@ -112,14 +112,14 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 				«if (isSupported(GeneratorFeatures.GENERIC_DESERIALIZER)) type.createGenericDeserializationConstructor(allDeclarationProperties)»
 				
 				«IF (!type.abstract)»
-				«allDataProperties.createToArrayRepresentation»
-				«allDataProperties.createStringRegistration»
-				«if (isSupported(GeneratorFeatures.BYTE_BUFFER_DESERIALIZER)) allDataProperties.createBinarySerialization»
-				«if (isSupported(GeneratorFeatures.GENERIC_DESERIALIZER)) allDataProperties.createGenericSerialization»
+				«if (isSupported(GeneratorFeatures.ARRAY_SERIALIZER)) allDataProperties.createToArrayRepresentation»
+				«if (isSupported(GeneratorFeatures.STRING_REGISTRY)) allDataProperties.createStringRegistration»
+				«if (isSupported(GeneratorFeatures.BYTE_BUFFER_SERIALIZER)) allDataProperties.createBinarySerialization»
+				«if (isSupported(GeneratorFeatures.GENERIC_SERIALIZER)) allDataProperties.createGenericSerialization»
 				«createConstantAccessMethods»
 				«ENDIF»
 			
-				«createInitFromArray()»
+				«if (isSupported(GeneratorFeatures.ARRAY_DESERIALIZER)) createInitFromArray()»
 				«if (isSupported(GeneratorFeatures.BYTE_BUFFER_DESERIALIZER)) createInitFromBuffer()»
 				
 				«createEquals(type.name, allDataProperties)»

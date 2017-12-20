@@ -34,12 +34,24 @@ public final class GeneratorFeatures {
 	
 	/** ByteBuffer support: factory, constructor and initFromBytes feature. */
 	public static final String BYTE_BUFFER_DESERIALIZER = "1.0:1.12";
+
+	/** Create an byte buffer serialization of the record feature. */
+	public static final String BYTE_BUFFER_SERIALIZER = "1.0:1.13";
 	
 	/** ObjectArray support: factory, constructor and initFromArray feature. */
 	public static final String ARRAY_DESERIALIZER = "1.0:1.13";
 	
+	/** Create an array for serialization feature. */
+	public static final String ARRAY_SERIALIZER = "1.0:1.13";
+	
 	/** Generic deserializer support: factory, constructor. */
 	public static final String GENERIC_DESERIALIZER = "1.13:";
+	
+	/** Generic serializer support: factory, constructor. */
+	public static final String GENERIC_SERIALIZER = "1.13:";
+	
+	/** String registry feature. */
+	public static final String STRING_REGISTRY = "1.0:1.13";
 	
 	/**
 	 * Configuration class. Should not be instantiated.

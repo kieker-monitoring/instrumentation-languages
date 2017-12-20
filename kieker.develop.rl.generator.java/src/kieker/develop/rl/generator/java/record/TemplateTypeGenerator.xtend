@@ -26,6 +26,7 @@ import static extension kieker.develop.rl.generator.java.JavaTypeMapping.*
 import static extension kieker.develop.rl.generator.java.record.NameResolver.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
 import kieker.develop.rl.generator.Version
+import kieker.develop.rl.recordLang.PropertyModifier
 
 /**
  * Main generator class for template types.
@@ -52,11 +53,11 @@ class TemplateTypeGenerator extends AbstractTypeGenerator<TemplateType, CharSequ
 		 * @since «version»
 		 */
 		public interface «type.name» extends «type.inherits.createExtends» {
-			«type.properties.map[property | createPropertyGetter(property)].join»
+			«type.properties.map[property | createPropertyGetterSetter(property)].join»
 		}
 		'''
 	}
-	
+			
 	private def isInSamePackage(TemplateType left, TemplateType right) {
 		return (left.eContainer as Model).name != (right.eContainer as Model).name
 	}
@@ -71,6 +72,13 @@ class TemplateTypeGenerator extends AbstractTypeGenerator<TemplateType, CharSequ
 	
 	private def createExtends(EList<TemplateType> parents) '''«if (parents !== null && parents.size > 0) parents.map[t | t.name].join(', ') else 'IMonitoringRecord'»'''
 	
+	
+	private def createPropertyGetterSetter(Property property) '''
+		«createPropertyGetter(property)»
+		«if (property.modifiers.contains(PropertyModifier.CHANGEABLE)) createPropertySetter(property)»
+		
+	'''
+	
 	/**
 	 * Creates a getter for a given property.
 	 * 
@@ -80,8 +88,11 @@ class TemplateTypeGenerator extends AbstractTypeGenerator<TemplateType, CharSequ
 	 * @returns the resulting getter as a CharSequence
 	 */
 	private def createPropertyGetter(Property property) '''
-		public «property.findType.createTypeName» «property.createGetterName»() ;
-		
+		public «property.findType.createTypeName» «property.createGetterName»();
+	'''
+	
+	private def createPropertySetter(Property property) '''
+		public void «property.createSetterName»(«property.findType.createTypeName» «property.name»);
 	'''
 	
 

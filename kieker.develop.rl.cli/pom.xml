@@ -57,7 +57,7 @@
 		<dependency>
 			<groupId>net.kieker-monitoring</groupId>
 			<artifactId>kieker</artifactId>
-			<version>1.13-SNAPSHOT</version>
+			<version>1.13</version>
 		</dependency>
 
 		<dependency>
