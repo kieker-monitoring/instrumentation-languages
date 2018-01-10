@@ -36,7 +36,7 @@ public final class GeneratorFeatures {
 	public static final String BYTE_BUFFER_DESERIALIZER = "1.0:1.12";
 
 	/** Create an byte buffer serialization of the record feature. */
-	public static final String BYTE_BUFFER_SERIALIZER = "1.0:1.13";
+	public static final String BYTE_BUFFER_SERIALIZER = "1.0:1.12";
 	
 	/** ObjectArray support: factory, constructor and initFromArray feature. */
 	public static final String ARRAY_DESERIALIZER = "1.0:1.13";
