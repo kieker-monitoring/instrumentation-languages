@@ -80,7 +80,7 @@ class TemplateTypeGenerator extends AbstractTypeGenerator<TemplateType, CharSequ
 	'''
 	
 	/**
-	 * Creates a getter for a given property.
+	 * Creates a getter and setter for a given property.
 	 * 
 	 * @param property
 	 * 		a property of the record type

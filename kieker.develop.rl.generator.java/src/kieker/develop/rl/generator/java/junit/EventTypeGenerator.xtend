@@ -35,6 +35,7 @@ import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
 import kieker.develop.rl.recordLang.BuiltInValueLiteral
 import kieker.develop.rl.generator.Version
+import kieker.develop.rl.generator.java.GeneratorFeatures
 
 /**
  * Java test class generator for event types.
@@ -83,7 +84,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 			}
 		
 			«IF allPersistentDataProperties.size() > 0»
-			«type.createTestToArray(allPersistentDataProperties)»
+			«if (isSupported(GeneratorFeatures.ARRAY_SERIALIZER)) type.createTestToArray(allPersistentDataProperties)»
 			
 			«type.createTestBuffer(allPersistentDataProperties)»
 			
