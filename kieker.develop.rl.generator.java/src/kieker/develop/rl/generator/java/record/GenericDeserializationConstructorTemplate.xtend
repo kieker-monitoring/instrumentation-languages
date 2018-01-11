@@ -27,7 +27,6 @@ import org.eclipse.emf.common.util.EList
 import static extension kieker.develop.rl.generator.java.JavaTypeMapping.*
 import static extension kieker.develop.rl.generator.java.record.NameResolver.*
 import static extension kieker.develop.rl.generator.java.record.ValueAccessExpressionModule.*
-import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
 
 /**
@@ -53,7 +52,7 @@ class GenericDeserializationConstructorTemplate {
 		 */
 		public «type.name»(final IValueDeserializer deserializer) {
 			«IF (type.parent !== null)»super(deserializer);
-			«ENDIF»«properties.filter[!it.isTransient].map[
+			«ENDIF»«properties.map[
 				property | createPropertyGenericDeserialization(property)
 			].join('\n')»
 		}

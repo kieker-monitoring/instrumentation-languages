@@ -60,7 +60,7 @@ class ConstructorTemplates {
 		 * 
 		 «allDataProperties.filter[!it.modifiers.exists[it == PropertyModifier.INCREMENT]].map[it.createPropertyName.createParameterComment].join»
 		 */
-		public «type.name»(«allDataProperties.filter[!it.transient].map[property | createPropertyParameter(property)].join(', ')») {
+		public «type.name»(«allDataProperties.map[property | createPropertyParameter(property)].join(', ')») {
 			«if (type.parent !== null) 'super(' + type.parent.collectAllDataProperties.filter[!it.isIncrement].map[name].join(', ')+');'»
 			«allDeclarationProperties.filter[!it.isIncrement].map[property | createPropertyAssignment(property)].join»
 		}
@@ -102,7 +102,7 @@ class ConstructorTemplates {
 		protected «type.name»(final Object[] values, final Class<?>[] valueTypes) { // NOPMD (values stored directly)
 			«IF (type.parent === null)»AbstractMonitoringRecord.checkArray(values, valueTypes);
 			«ELSE»super(values, valueTypes);
-			«ENDIF»«properties.filter[!it.isTransient].createPropertyGenericAssignments(if (type.parent !== null) type.parent.collectAllDataProperties.size else 0)»
+			«ENDIF»«properties.createPropertyGenericAssignments(if (type.parent !== null) type.parent.collectAllDataProperties.size else 0)»
 		}
 	'''
 	
@@ -126,7 +126,7 @@ class ConstructorTemplates {
 		public «type.name»(final Object[] values) { // NOPMD (direct store of values)
 			«IF (type.parent === null)»AbstractMonitoringRecord.checkArray(values, TYPES);
 			«ELSE»super(values, TYPES);
-			«ENDIF»«properties.filter[!it.isTransient].createPropertyGenericAssignments(if (type.parent !== null)
+			«ENDIF»«properties.createPropertyGenericAssignments(if (type.parent !== null)
 					type.parent.collectAllDataProperties.size else 0
 			)»
 		}
