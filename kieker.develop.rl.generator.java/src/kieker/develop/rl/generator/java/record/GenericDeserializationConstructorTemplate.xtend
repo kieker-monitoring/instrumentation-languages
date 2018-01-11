@@ -27,6 +27,7 @@ import org.eclipse.emf.common.util.EList
 import static extension kieker.develop.rl.generator.java.JavaTypeMapping.*
 import static extension kieker.develop.rl.generator.java.record.NameResolver.*
 import static extension kieker.develop.rl.generator.java.record.ValueAccessExpressionModule.*
+import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
 
 /**
@@ -52,11 +53,40 @@ class GenericDeserializationConstructorTemplate {
 		 */
 		public «type.name»(final IValueDeserializer deserializer) {
 			«IF (type.parent !== null)»super(deserializer);
-			«ENDIF»«properties.map[
+			«ENDIF»«properties.filter[!it.isTransient].map[
 				property | createPropertyGenericDeserialization(property)
+			].join('\n')»
+			«properties.filter[it.isTransient].map[
+				property | createPropertyGenericDefaultInitialization(property)
 			].join('\n')»
 		}
 	'''
+	
+	/**
+	 * Determine the correct default initialization code for a property by type.
+	 * 
+	 * @param property
+	 * 		the property to initialize
+	 * 
+	 * @returns
+	 * 		code to initialize the given property 
+	 */
+	private def static createPropertyGenericDefaultInitialization(Property property) {
+		val sizes = property.findType.sizes
+		if (sizes.size > 0) {
+			'''
+				// load array sizes
+				«FOR size : sizes»
+					«IF (size.size == 0)»
+						int _«property.createPropertyName»_size«sizes.indexOf(size)» = 0;
+					«ENDIF»
+				«ENDFOR»
+				this.«property.createPropertyName» = new «property.findType.createTypeInstantiationName(property.createPropertyName)»;
+				«createArrayAccessLoops(sizes,0, property.createPropertyName, createValueAssignmentForDefaultInitialization(sizes,property))»
+			'''
+		} else
+			'''this.«property.createPropertyName» = «property.findType.type.createDefaultValue»;'''
+	}
 
 	/**
 	 * Determine the correct deserialization code for a property by type.
@@ -112,6 +142,27 @@ class GenericDeserializationConstructorTemplate {
 	 */
 	private static def createValueAssignmentForDeserialization(EList<ArraySize> sizes, Property property) {
 		return '''«property.createPropertyValueExpression» = «property.findType.type.createPropertyPrimitiveTypeDeserialization»;'''
+	}
+	
+	/**
+	 * Default initialization assignment for a primitive value
+	 */
+	private static def createValueAssignmentForDefaultInitialization(EList<ArraySize> sizes, Property property) {
+		return '''«property.createPropertyValueExpression» = «property.findType.type.createDefaultValue»;'''
+	}
+
+	private static def createDefaultValue(BaseType classifier) {
+		switch (BaseTypes.getTypeEnum(classifier)) {
+			case STRING: '''""'''
+			case BYTE: '''0'''
+			case SHORT: '''(short) 0'''
+			case INT: '''0'''
+			case LONG: '''0L'''
+			case FLOAT: '''0.0'''
+			case DOUBLE: '''0.0'''
+			case CHAR: "' '"
+			case BOOLEAN: '''false'''
+		}
 	}
 
 	/**

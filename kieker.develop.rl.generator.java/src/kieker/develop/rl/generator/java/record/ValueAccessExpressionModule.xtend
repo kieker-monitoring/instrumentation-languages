@@ -48,8 +48,7 @@ class ValueAccessExpressionModule {
 					simpleTypeAction»
 		'''
 	}
-	
-	
+		
 	/**
 	 * Creates an getter for a property including all array indices necessary to access
 	 * a single value of the array.
