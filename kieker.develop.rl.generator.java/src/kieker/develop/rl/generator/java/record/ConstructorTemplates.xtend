@@ -58,9 +58,9 @@ class ConstructorTemplates {
 		/**
 		 * Creates a new instance of this class using the given parameters.
 		 * 
-		 «allDataProperties.filter[!it.modifiers.exists[it == PropertyModifier.INCREMENT]].map[it.createPropertyName.createParameterComment].join»
+		 «allDataProperties.filter[!it.isIncrement].map[it.createPropertyName.createParameterComment].join»
 		 */
-		public «type.name»(«allDataProperties.map[property | createPropertyParameter(property)].join(', ')») {
+		public «type.name»(«allDataProperties.filter[!it.isTransient || (it.isTransient && !it.isIncrement)].map[property | createPropertyParameter(property)].join(', ')») {
 			«if (type.parent !== null) 'super(' + type.parent.collectAllDataProperties.filter[!it.isIncrement].map[name].join(', ')+');'»
 			«allDeclarationProperties.filter[!it.isIncrement].map[property | createPropertyAssignment(property)].join»
 		}
@@ -144,7 +144,7 @@ class ConstructorTemplates {
 	 */
 	private static def CharSequence createPropertyGenericAssignments(Iterable<Property> properties, int offset) {
 		val EList<CharSequence> result = new BasicEList<CharSequence>()
-		properties.forEach[property, index | result.add(property.createPropertyGenericAssignment(index+offset))]
+		properties.filter[!it.isTransient].forEach[property, index | result.add(property.createPropertyGenericAssignment(index+offset))]
 		return result.join
 	}
 	
