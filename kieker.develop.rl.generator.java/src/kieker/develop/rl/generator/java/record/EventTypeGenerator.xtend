@@ -28,12 +28,11 @@ import kieker.develop.rl.typing.base.BaseTypes
 import kieker.develop.rl.generator.AbstractTypeGenerator
 import kieker.develop.rl.generator.Version
 
-import static kieker.develop.rl.generator.java.record.EqualsMethodTemplate.*
 
 import static extension kieker.develop.rl.generator.java.record.EventTypeAPITemplates.*
 import static extension kieker.develop.rl.generator.java.record.BinaryConstructorTemplate.*
 import static extension kieker.develop.rl.generator.java.record.GenericDeserializationConstructorTemplate.*
-import static extension kieker.develop.rl.generator.java.record.ConstructorTemplates.*
+import static extension kieker.develop.rl.generator.java.record.ArrayConstructorTemplates.*
 import static extension kieker.develop.rl.generator.java.record.NameResolver.*
 import static extension kieker.develop.rl.generator.java.record.PropertyConstructionModule.*
 import static extension kieker.develop.rl.generator.java.record.uid.ComputeUID.*
@@ -43,6 +42,11 @@ import static extension kieker.develop.rl.generator.java.record.GenericSerializa
 import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
 import kieker.develop.rl.generator.java.GeneratorFeatures
+import static kieker.develop.rl.generator.java.record.EqualsMethodTemplate.*
+import static extension kieker.develop.rl.generator.java.record.ParameterizedConstructorTemplates.*
+import kieker.develop.rl.recordLang.BaseType
+import kieker.develop.rl.recordLang.EnumerationType
+import kieker.develop.rl.generator.InternalErrorException
 
 /**
  * Generates a Java class for EventTypes.
@@ -73,7 +77,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	protected override createOutputModel(EventType type, Version targetVersion, String header, String author, String version) {
 		val allDataProperties = type.collectAllDataProperties
 		val allDeclarationProperties = type.collectAllDeclarationProperties
-		
+				
 		'''
 			«header»package «(type.eContainer as Model).name»;
 			
@@ -95,7 +99,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 				«allDeclarationProperties.createDefaultConstants»
 				
 				«IF (!type.abstract)»/** property name array. */
-				«allDataProperties.filter[!it.transient].createPropertyNameConstant»
+				«allDataProperties.filter[!it.isTransient].createPropertyNameConstant»
 				«ENDIF»
 				
 				«IF allDeclarationProperties.size > 0»/** property declarations. */«ENDIF»
@@ -111,7 +115,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 				
 				«if (isSupported(GeneratorFeatures.GENERIC_DESERIALIZER)) type.createGenericDeserializationConstructor(allDeclarationProperties)»
 				
-				«IF (!type.abstract)»
+				«IF (!type.isAbstract)»
 				«if (isSupported(GeneratorFeatures.ARRAY_SERIALIZER)) allDataProperties.createToArrayRepresentation»
 				«if (isSupported(GeneratorFeatures.STRING_REGISTRY)) allDataProperties.createStringRegistration»
 				«if (isSupported(GeneratorFeatures.BYTE_BUFFER_SERIALIZER)) allDataProperties.createBinarySerialization»
@@ -184,6 +188,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 		import java.nio.ByteBuffer;
 		«ENDIF»
 
+		import kieker.common.exception.RecordInstantiationException;
 		«IF (type.parent === null)»
 		import kieker.common.record.AbstractMonitoringRecord;
 		import kieker.common.record.IMonitoringRecord;
@@ -216,16 +221,21 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	 * 		the serialization size of the property
 	 */
 	private def createSizeConstant(Property property, EventType type) {
-		switch (BaseTypes.getTypeEnum(property.findType.type)) {
-			case STRING : 'TYPE_SIZE_STRING'
-			case BYTE : 'TYPE_SIZE_BYTE'
-			case SHORT : 'TYPE_SIZE_SHORT'
-			case INT : 'TYPE_SIZE_INT'
-			case LONG : 'TYPE_SIZE_LONG'
-			case FLOAT : 'TYPE_SIZE_FLOAT'
-			case DOUBLE : 'TYPE_SIZE_DOUBLE'
-			case CHAR : 'TYPE_SIZE_CHARACTER'
-			case BOOLEAN : 'TYPE_SIZE_BOOLEAN'
+		val dataType = property.findType.type
+		switch (dataType) {
+			BaseType: switch (BaseTypes.getTypeEnum(dataType)) {
+				case STRING : 'TYPE_SIZE_STRING'
+				case BYTE : 'TYPE_SIZE_BYTE'
+				case SHORT : 'TYPE_SIZE_SHORT'
+				case INT : 'TYPE_SIZE_INT'
+				case LONG : 'TYPE_SIZE_LONG'
+				case FLOAT : 'TYPE_SIZE_FLOAT'
+				case DOUBLE : 'TYPE_SIZE_DOUBLE'
+				case CHAR : 'TYPE_SIZE_CHARACTER'
+				case BOOLEAN : 'TYPE_SIZE_BOOLEAN'
+				case ERROR: throw new InternalErrorException("%s is not a valid data type.", dataType.name)
+			}
+			EnumerationType: 'TYPE_SIZE_INT'
 		} + ''' // «property.createPropertyFQN(type)»'''
 	}
 	

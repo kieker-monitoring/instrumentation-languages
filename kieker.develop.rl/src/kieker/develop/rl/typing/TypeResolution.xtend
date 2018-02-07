@@ -15,7 +15,6 @@
  ***************************************************************************/
 package kieker.develop.rl.typing
 
-import kieker.develop.rl.recordLang.BaseType
 import kieker.develop.rl.recordLang.Literal
 import kieker.develop.rl.recordLang.Constant
 import kieker.develop.rl.recordLang.Property
@@ -27,7 +26,11 @@ import java.util.ArrayList
 import kieker.develop.rl.recordLang.ComplexType
 import kieker.develop.rl.recordLang.EventType
 import kieker.develop.rl.recordLang.TemplateType
-
+import kieker.develop.rl.recordLang.Type
+import kieker.develop.rl.recordLang.BaseType
+import java.util.List
+import kieker.develop.rl.recordLang.EnumerationLiteral
+import kieker.develop.rl.recordLang.EnumerationType
 
 /**
  * Type resolution and resolving for base and complex types.
@@ -41,7 +44,7 @@ class TypeResolution {
 	/**
 	 * Resolve the primitive type for the given literal.
 	 */
-	static def BaseType getRequiredType(Literal literal) {
+	static def Type getRequiredType(Literal literal) {
 		switch (literal.eContainer) {
 			Constant : (literal.eContainer as Constant).type.type
 			Property : (literal.eContainer as Property).type.type
@@ -49,8 +52,20 @@ class TypeResolution {
 		}
 	}
 	
-	static def boolean isType(Literal literal, BaseTypes baseType) throws InternalErrorException {
-		baseType.equals(BaseTypes.getTypeEnum(literal.getRequiredType)) 
+	/**
+	 * Checks whether the given literal has the given base type.
+	 * 
+	 * @param literal the literal to test
+	 * @param baseType the assumed base type
+	 * 
+	 * @return returns true if the literal has the assumed type
+	 */
+	static def boolean isBaseType(Literal literal, BaseTypes baseType) throws InternalErrorException {
+		val type = literal.getRequiredType
+		switch(type) {
+			BaseType: baseType.equals(BaseTypes.getTypeEnum(type))
+			default: throw new InternalErrorException(String.format("%s is not an base type."))
+		} 
 	}
 	
 	/**
@@ -88,5 +103,33 @@ class TypeResolution {
 		]
 		
 		return allTypes
+	}
+	
+	/**
+	 * Collect all literals of a enumeration type.
+	 * 
+	 * @param type an enumeration type
+	 * 
+	 * @return list of all enumeration literals
+	 */
+	static def List<EnumerationLiteral> collectAllLiterals(EnumerationType type) {
+		val List<EnumerationLiteral> literals = new ArrayList<EnumerationLiteral>()
+		
+		literals.addLiteralsOf(type)
+						
+		return literals
+	}
+	
+	/**
+	 * Add recursively all literals which belong to the given enumeration type.
+	 * 
+	 * @param literals list of literals where all additional literals should be added to
+	 * @param type an enumeration type
+	 * 
+	 * @return list of all enumeration literals
+	 */
+	private static def void addLiteralsOf(List<EnumerationLiteral> literals, EnumerationType type) {
+		literals.addAll(type.literals)
+		type.inherits.forEach[literals.addLiteralsOf(it)]
 	}
 }

@@ -19,6 +19,10 @@ import kieker.develop.rl.generator.InternalErrorException
 import kieker.develop.rl.recordLang.BaseType
 import kieker.develop.rl.recordLang.Classifier
 import kieker.develop.rl.typing.base.BaseTypes
+import kieker.develop.rl.recordLang.EnumerationType
+import kieker.develop.rl.recordLang.EventType
+import kieker.develop.rl.recordLang.ComplexType
+import kieker.develop.rl.recordLang.Type
 
 /**
  * Mapping of IRL to Java types.
@@ -38,34 +42,44 @@ class JavaTypeMapping {
 	 * @return 
 	 * 		the Java type name of the given <code>classifier</code>
 	 */
-	static def createPrimitiveTypeName(BaseType type) throws InternalErrorException {
-		switch (BaseTypes.getTypeEnum(type)) {
-			case INT: 'int'
-			case LONG: 'long'
-			case SHORT: 'short'
-			case DOUBLE: 'double'
-			case FLOAT: 'float'
-			case CHAR: 'char'
-			case BYTE: 'byte'
-			case STRING: 'String'
-			case BOOLEAN: 'boolean'
+	static def createJavaTypeName(Type type) throws InternalErrorException {
+		switch (type) {
+			BaseType: switch (BaseTypes.getTypeEnum(type)) {
+				case INT: 'int'
+				case LONG: 'long'
+				case SHORT: 'short'
+				case DOUBLE: 'double'
+				case FLOAT: 'float'
+				case CHAR: 'char'
+				case BYTE: 'byte'
+				case STRING: 'String'
+				case BOOLEAN: 'boolean'
+				case ERROR: throw new InternalErrorException(String.format("Base type %s does not exist.", type.name))
+			}
+			EnumerationType: type.name
+			ComplexType: type.name
 		}
 	}
 
 	/**
 	 * Determine the right Java string for a given system type.
 	 */
-	static def createPrimitiveWrapperTypeName(BaseType type)  throws InternalErrorException {
-		switch (BaseTypes.getTypeEnum(type)) {
-			case INT: 'Integer'
-			case LONG: 'Long'
-			case SHORT: 'Short'
-			case DOUBLE: 'Double'
-			case FLOAT: 'Float'
-			case CHAR: 'Character'
-			case BYTE: 'Byte'
-			case STRING: 'String'
-			case BOOLEAN: 'Boolean'		
+	static def createJavaObjectTypeName(Type type)  throws InternalErrorException {
+		switch (type) {
+			BaseType: switch (BaseTypes.getTypeEnum(type)) {
+				case INT: 'Integer'
+				case LONG: 'Long'
+				case SHORT: 'Short'
+				case DOUBLE: 'Double'
+				case FLOAT: 'Float'
+				case CHAR: 'Character'
+				case BYTE: 'Byte'
+				case STRING: 'String'
+				case BOOLEAN: 'Boolean'
+				case ERROR: throw new InternalErrorException(String.format("Base type %s does not exist.", type.name))
+			}
+			EnumerationType: type.name
+			ComplexType: type.name
 		}
 	}
 	
@@ -80,8 +94,14 @@ class JavaTypeMapping {
 	static def createTypeName(Classifier classifier) {
 		if (classifier.sizes.size > 0)
 			classifier.createArrayTypeName
-		else
-			classifier.type.createPrimitiveTypeName
+		else {
+			val type = classifier.type
+			switch (type) {
+				BaseType: type.createJavaTypeName
+				EnumerationType: type.name
+				EventType: type.name
+			}
+		}
 	}
 	
 	/**
@@ -95,8 +115,14 @@ class JavaTypeMapping {
 	static def createObjectTypeName(Classifier classifier) {
 		if (classifier.sizes.size > 0)
 			classifier.createArrayTypeName
-		else
-			classifier.type.createPrimitiveWrapperTypeName
+		else {
+			val type = classifier.type
+			switch (type) {
+				BaseType: type.createJavaObjectTypeName
+				EnumerationType: type.name
+				EventType: type.name
+			}
+		}
 	}
 	
 	/**
@@ -108,9 +134,14 @@ class JavaTypeMapping {
 	 * @returns a java type name
 	 */
 	static def createArrayTypeName(Classifier classifier) {
-		val primitiveTypeName = classifier.type.createPrimitiveTypeName
+		val type = classifier.type
+		val typeName = switch (type) {
+			BaseType: type.createJavaTypeName
+			EnumerationType: type.name
+			EventType: type.name
+		}
 		val arrayBrackets = classifier.sizes.map[size | '''[]''' ].join
-		primitiveTypeName + arrayBrackets
+		return typeName + arrayBrackets
 	}
 
 }

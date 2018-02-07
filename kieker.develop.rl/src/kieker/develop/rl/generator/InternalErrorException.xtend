@@ -29,4 +29,8 @@ class InternalErrorException extends Exception {
 		super(message)
 	}
 	
+	new(String format, Object... values) {
+		super(String.format(format,values))
+	}
+	
 }

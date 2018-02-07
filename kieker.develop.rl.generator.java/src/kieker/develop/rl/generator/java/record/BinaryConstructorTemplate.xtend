@@ -29,6 +29,9 @@ import static extension kieker.develop.rl.generator.java.record.NameResolver.*
 import static extension kieker.develop.rl.generator.java.record.ValueAccessExpressionModule.*
 import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
+import kieker.develop.rl.recordLang.Type
+import kieker.develop.rl.recordLang.EnumerationType
+import kieker.develop.rl.generator.InternalErrorException
 
 /**
  * Contains the templates for generation of the binary buffer constructor. 
@@ -89,7 +92,7 @@ class BinaryConstructorTemplate {
 					«ENDIF»
 				«ENDFOR»
 				this.«property.createPropertyName» = new «property.findType.createTypeInstantiationName(property.createPropertyName)»;
-				«createArrayAccessLoops(sizes,0, property.createPropertyName, createValueAssignmentForDeserialization(sizes,property))»
+				«createArrayAccessLoops(sizes, 0, property.createPropertyName, createValueAssignmentForDeserialization(sizes,property))»
 			'''
 		} else
 			'''this.«property.createPropertyName» = «property.findType.type.createPropertyPrimitiveTypeDeserialization»;'''
@@ -101,11 +104,11 @@ class BinaryConstructorTemplate {
 	 */
 	private static def CharSequence createTypeInstantiationName(Classifier classifier, String name) {
 		if (classifier.sizes.size > 0)
-			classifier.type.createPrimitiveTypeName + classifier.sizes.map [ size |
+			classifier.type.createJavaTypeName + classifier.sizes.map [ size |
 				size.createArraySize(name, classifier.sizes.indexOf(size))
 			].join
 		else
-			classifier.type.createPrimitiveTypeName
+			classifier.type.createJavaTypeName
 	}
 
 	/**
@@ -128,17 +131,22 @@ class BinaryConstructorTemplate {
 	/**
 	 * Create code to get values from the input buffer.
 	 */
-	private static def createPropertyPrimitiveTypeDeserialization(BaseType classifier) {
-		switch (BaseTypes.getTypeEnum(classifier)) {
-			case STRING: '''stringRegistry.get(buffer.getInt())'''
-			case BYTE: '''buffer.get()'''
-			case SHORT: '''buffer.getShort()'''
-			case INT: '''buffer.getInt()'''
-			case LONG: '''buffer.getLong()'''
-			case FLOAT: '''buffer.getFloat()'''
-			case DOUBLE: '''buffer.getDouble()'''
-			case CHAR: '''buffer.getChar()'''
-			case BOOLEAN: '''buffer.get()==1?true:false'''
+	private static def createPropertyPrimitiveTypeDeserialization(Type type) {
+		switch (type) {
+			BaseType: switch (BaseTypes.getTypeEnum(type)) {
+				case STRING: '''stringRegistry.get(buffer.getInt())'''
+				case BYTE: '''buffer.get()'''
+				case SHORT: '''buffer.getShort()'''
+				case INT: '''buffer.getInt()'''
+				case LONG: '''buffer.getLong()'''
+				case FLOAT: '''buffer.getFloat()'''
+				case DOUBLE: '''buffer.getDouble()'''
+				case CHAR: '''buffer.getChar()'''
+				case BOOLEAN: '''buffer.get()==1?true:false'''
+				case ERROR: throw new InternalErrorException("%s is not a valid base type.", type.name)
+			}
+			EnumerationType: '''«type.name».valueOf(buffer.getInt())'''
+			default: throw new InternalErrorException("createPropertyPrimitiveTypeDeserializarion does not support complex types.")
 		}
 	}
 }

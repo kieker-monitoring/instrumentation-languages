@@ -17,7 +17,9 @@ package kieker.develop.rl.typing.base
 
 import com.google.common.base.Predicate
 import com.google.inject.Inject
-import kieker.develop.rl.recordLang.BaseType
+import kieker.develop.rl.generator.InternalErrorException
+import kieker.develop.rl.recordLang.Type
+import kieker.develop.rl.typing.ITypeProvider
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.ecore.resource.Resource
@@ -26,8 +28,6 @@ import org.eclipse.xtext.naming.IQualifiedNameConverter
 import org.eclipse.xtext.resource.IEObjectDescription
 import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.scoping.impl.DefaultGlobalScopeProvider
-import kieker.develop.rl.typing.ITypeProvider
-import kieker.develop.rl.generator.InternalErrorException
 
 /**
  * Base type global scope provider.
@@ -51,7 +51,7 @@ class BaseTypeGlobalScopeProvider extends DefaultGlobalScopeProvider {
     def IScope getParentTypeScope(Resource resource, EReference reference,
             Predicate<IEObjectDescription> filter, EClass referenceType) throws InternalErrorException {
         // check whether the reference type is a type of any kind 
-        if (referenceType.name.equals(BaseType.simpleName)) {
+        if (referenceType.name.equals(Type.simpleName)) {
         	if (resource !== null) {
         		val ResourceSet resourceSet = resource.getResourceSet()
     			if (resourceSet !== null) {

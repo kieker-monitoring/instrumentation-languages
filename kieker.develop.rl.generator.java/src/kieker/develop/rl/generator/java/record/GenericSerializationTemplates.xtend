@@ -23,6 +23,9 @@ import static extension kieker.develop.rl.generator.java.record.NameResolver.*
 import static extension kieker.develop.rl.generator.java.record.ValueAccessExpressionModule.*
 import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
+import kieker.develop.rl.recordLang.BaseType
+import kieker.develop.rl.recordLang.EnumerationType
+import kieker.develop.rl.generator.InternalErrorException
 
 /**
  * Contains the templates for generic serialization of a record based on Holger Knoche's idea.
@@ -85,16 +88,21 @@ class GenericSerializationTemplates {
 	 */
 	private static def createValueStoreForSerialization(Property property) {
 		val getterName = "this." + createGetterValueExpression(property)
-		switch (BaseTypes.getTypeEnum(property.findType.type)) {
-			case STRING: '''serializer.putString(«getterName»);'''
-			case BYTE: '''serializer.putByte(«getterName»);'''
-			case SHORT: '''serializer.putShort(«getterName»);'''
-			case INT: '''serializer.putInt(«getterName»);'''
-			case LONG: '''serializer.putLong(«getterName»);'''
-			case FLOAT: '''serializer.putFloat(«getterName»);'''
-			case DOUBLE: '''serializer.putDouble(«getterName»);'''
-			case CHAR: '''serializer.putChar(«getterName»);'''
-			case BOOLEAN: '''serializer.putBoolean(«getterName»);'''
+		val type = property.findType.type
+		switch (type) {
+			BaseType: switch (BaseTypes.getTypeEnum(type)) {
+				case STRING: '''serializer.putString(«getterName»);'''
+				case BYTE: '''serializer.putByte(«getterName»);'''
+				case SHORT: '''serializer.putShort(«getterName»);'''
+				case INT: '''serializer.putInt(«getterName»);'''
+				case LONG: '''serializer.putLong(«getterName»);'''
+				case FLOAT: '''serializer.putFloat(«getterName»);'''
+				case DOUBLE: '''serializer.putDouble(«getterName»);'''
+				case CHAR: '''serializer.putChar(«getterName»);'''
+				case BOOLEAN: '''serializer.putBoolean(«getterName»);'''
+				case ERROR: throw new InternalErrorException("%s is not a valid data type.", type.name)
+			}
+			EnumerationType: '''serializer.putInt(«getterName».ordinal());'''
 		}
 	}
 }

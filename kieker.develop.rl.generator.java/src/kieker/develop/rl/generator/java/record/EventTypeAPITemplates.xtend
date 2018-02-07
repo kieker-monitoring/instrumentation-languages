@@ -23,6 +23,7 @@ import static extension kieker.develop.rl.generator.java.record.NameResolver.*
 import static extension kieker.develop.rl.generator.java.record.ValueAccessExpressionModule.*
 import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
+import kieker.develop.rl.recordLang.BaseType
 
 /**
  * This class provides templates for deprecated and active
@@ -146,24 +147,28 @@ class EventTypeAPITemplates {
 	 * @returns result register access or null
 	 */
 	private static def CharSequence createRegisterStringForProperty(Property property) {
-		if (BaseTypes.getTypeEnum(property.type.type).equals(BaseTypes.STRING)) {
-			val simpleAction = '''stringRegistry.get(this.«createGetterValueExpression(property)»);'''
-			val type = property.findType
-			if (type.sizes.size > 0) {
-				'''
-					// get array length
-					«FOR size : type.sizes»
-						«IF (size.size == 0)»
-							int _«property.createPropertyName»_size«type.sizes.indexOf(size)» = this.«property.createGetterName»()«createCodeToDetermineArraySize(type.sizes.indexOf(size))».length;
-						«ENDIF»
-					«ENDFOR»
-					«property.type.sizes.createArrayAccessLoops(0, property.createPropertyName, simpleAction)»
-				'''
-			} else
-				simpleAction
-			
+		val type = property.type.type
+		switch (type) {
+			BaseType case (BaseTypes.getTypeEnum(type).equals(BaseTypes.STRING)): createRegisterStringForProperty2(property)
+			default: null
+		}
+	}
+	
+	private def static createRegisterStringForProperty2(Property property) {
+		val simpleAction = '''stringRegistry.get(this.«createGetterValueExpression(property)»);'''
+		val type = property.findType
+		if (type.sizes.size > 0) {
+			'''
+				// get array length
+				«FOR size : type.sizes»
+					«IF (size.size == 0)»
+						int _«property.createPropertyName»_size«type.sizes.indexOf(size)» = this.«property.createGetterName»()«createCodeToDetermineArraySize(type.sizes.indexOf(size))».length;
+					«ENDIF»
+				«ENDFOR»
+				«property.type.sizes.createArrayAccessLoops(0, property.createPropertyName, simpleAction)»
+			'''
 		} else
-			null
+			simpleAction
 	}
 	
 }

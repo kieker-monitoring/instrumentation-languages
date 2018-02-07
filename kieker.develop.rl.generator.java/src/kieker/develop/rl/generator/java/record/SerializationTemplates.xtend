@@ -23,6 +23,9 @@ import static extension kieker.develop.rl.generator.java.record.NameResolver.*
 import static extension kieker.develop.rl.generator.java.record.ValueAccessExpressionModule.*
 import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
+import kieker.develop.rl.recordLang.BaseType
+import kieker.develop.rl.generator.InternalErrorException
+import kieker.develop.rl.recordLang.EnumerationType
 
 /**
  * Contains the templates for serialization of a record.
@@ -87,16 +90,21 @@ class SerializationTemplates {
 	 */
 	private static def createValueStoreForSerialization(Property property) {
 		val getterName = "this." + createGetterValueExpression(property)
-		switch (BaseTypes.getTypeEnum(property.findType.type)) {
-			case STRING : '''buffer.putInt(stringRegistry.get(«getterName»));'''
-			case BYTE : '''buffer.put((byte)«getterName»);'''
-			case SHORT : '''buffer.putShort(«getterName»);'''
-			case INT : '''buffer.putInt(«getterName»);'''
-			case LONG : '''buffer.putLong(«getterName»);'''
-			case FLOAT : '''buffer.putFloat(«getterName»);'''
-			case DOUBLE : '''buffer.putDouble(«getterName»);'''
-			case CHAR : '''buffer.putChar(«getterName»);'''
-			case BOOLEAN : '''buffer.put((byte)(«getterName»?1:0));'''
+		val type = property.findType.type
+		switch (type) {
+			BaseType: switch (BaseTypes.getTypeEnum(type)) {
+				case STRING : '''buffer.putInt(stringRegistry.get(«getterName»));'''
+				case BYTE : '''buffer.put((byte)«getterName»);'''
+				case SHORT : '''buffer.putShort(«getterName»);'''
+				case INT : '''buffer.putInt(«getterName»);'''
+				case LONG : '''buffer.putLong(«getterName»);'''
+				case FLOAT : '''buffer.putFloat(«getterName»);'''
+				case DOUBLE : '''buffer.putDouble(«getterName»);'''
+				case CHAR : '''buffer.putChar(«getterName»);'''
+				case BOOLEAN : '''buffer.put((byte)(«getterName»?1:0));'''
+				case ERROR: throw new InternalErrorException("%s is not a valid data type.", type.name)
+			}
+			EnumerationType: '''buffer.putInt(«getterName».ordinal())'''
 		}
 	}	
 }

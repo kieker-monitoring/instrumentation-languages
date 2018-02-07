@@ -37,6 +37,7 @@ class JavaOutletConfiguration extends AbstractOutletConfiguration<ComplexType, C
 		super(JAVA_OUTLET_ID, "Java record", "./src-gen/java", GeneratorProvider.LANG_JAVA, GeneratorProvider.TECH_KIEKER_JAVA)
 		generators += new EventTypeGenerator
 		generators += new TemplateTypeGenerator
+		generators += new EnumerationTypeGenerator
 	}
 		
 	override outputFilePath(ComplexType node) '''«node.outputDirectory»«File::separator»«node.name».java'''

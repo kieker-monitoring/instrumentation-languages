@@ -24,6 +24,9 @@ import kieker.develop.rl.typing.base.BaseTypes
 import static extension kieker.develop.rl.generator.java.record.NameResolver.*
 import static extension kieker.develop.rl.generator.java.record.ValueAccessExpressionModule.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
+import kieker.develop.rl.recordLang.Type
+import kieker.develop.rl.recordLang.EnumerationType
+import kieker.develop.rl.recordLang.ComplexType
 
 /**
  * Generate the equals method of a Kieker record.
@@ -92,16 +95,22 @@ class EqualsMethodTemplate {
 	 * @param typeName name of the type
 	 * @param getterExpression value access expression
 	 */
-	private static def CharSequence createPropertyEqualsTest(BaseType type, CharSequence getterExpression) throws InternalErrorException {
-		switch (BaseTypes.getTypeEnum(type)) {
-			case STRING: 
-				'''if (!this.«getterExpression».equals(castedRecord.«getterExpression»)) return false;'''
-			case FLOAT: 
-				'''if (isNotEqual(this.«getterExpression», castedRecord.«getterExpression»)) return false;'''
-			case DOUBLE: 
-				'''if (isNotEqual(this.«getterExpression», castedRecord.«getterExpression»)) return false;'''
-			default: 
+	private static def CharSequence createPropertyEqualsTest(Type type, CharSequence getterExpression) throws InternalErrorException {
+		switch (type) {
+			BaseType: switch (BaseTypes.getTypeEnum(type)) {
+				case STRING: 
+					'''if (!this.«getterExpression».equals(castedRecord.«getterExpression»)) return false;'''
+				case FLOAT: 
+					'''if (isNotEqual(this.«getterExpression», castedRecord.«getterExpression»)) return false;'''
+				case DOUBLE: 
+					'''if (isNotEqual(this.«getterExpression», castedRecord.«getterExpression»)) return false;'''
+				default: 
+					'''if (this.«getterExpression» != castedRecord.«getterExpression») return false;'''
+			}
+			EnumerationType:
 				'''if (this.«getterExpression» != castedRecord.«getterExpression») return false;'''
+			ComplexType:
+				'''if (this.«getterExpression».equals(castedRecord.«getterExpression»)) return false;'''
 		}
 	}
 	

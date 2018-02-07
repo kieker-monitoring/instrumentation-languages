@@ -42,7 +42,9 @@ public enum BaseTypes {
 	/** char data type. */
 	CHAR,
 	/** string data type. */
-	STRING;
+	STRING,
+	/** error, no valid data type. */
+	ERROR;
 
 	private BaseType type;
 
@@ -76,7 +78,7 @@ public enum BaseTypes {
 				return result;
 			}
 		}
-		return INT;
+		return ERROR;
 	}
 
 }

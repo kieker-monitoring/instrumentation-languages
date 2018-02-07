@@ -33,6 +33,7 @@ import kieker.develop.rl.generator.modeltypes.ModelSubTypeGenerator
 import kieker.develop.rl.typing.TypeProvider
 import kieker.develop.rl.recordLang.ComplexType
 import de.cau.cs.se.geco.architecture.framework.IGenerator
+import kieker.develop.rl.recordLang.EnumerationType
 
 /**
  * Generates one single files per record for java, c, and perl. 
@@ -47,21 +48,13 @@ class RecordLangGenerator implements IGenerator2 {
 			
 			val preferenceStore = TargetsPreferences.preferenceStore
 			val project = resource.URI.segmentsList.get(1)
+			// TODO use project settings
 			val projectStore = preferenceStore.node(project)
-
-			projectStore.v()
-			
+						
 			val typeProvider = new TypeProvider(resource.resourceSet)
 			
 			resource.runGenerators(preferenceStore, typeProvider, fsa)
 		}
-	}
-
-	/**
-	 * Print preferences. 
- 	 */
-	def void v(Preferences preferences) {
-		preferences.childrenNames.forEach[System.out.println(">> " + it)]
 	}
 
 	/**
@@ -72,6 +65,7 @@ class RecordLangGenerator implements IGenerator2 {
 	 * @param fsa provides the access to the file system
 	 */
 	private def runGenerators(Resource resource, IEclipsePreferences preferenceStore, TypeProvider typeProvider, IFileSystemAccess2 fsa) {
+				
 		val version = TargetsPreferences.getVersionID(preferenceStore)
 		val author = TargetsPreferences.getAuthorName(preferenceStore)
 		val targetVersion = TargetsPreferences.getTargetVersion(preferenceStore)
@@ -107,6 +101,7 @@ class RecordLangGenerator implements IGenerator2 {
 				/** Add the other template and event types to their respective lists. */
 				resource.allContents.filter(typeof(EventType)).forEach[types += it]
 				resource.allContents.filter(typeof(TemplateType)).forEach[types += it]
+				resource.allContents.filter(typeof(EnumerationType)).forEach[types += it]
 				
 				configuration.generators.processTypes(types, configuration, fsa, targetVersion, header, author, version)
 			}

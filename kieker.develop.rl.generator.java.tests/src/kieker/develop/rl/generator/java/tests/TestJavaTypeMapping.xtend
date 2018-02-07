@@ -26,7 +26,7 @@ class TestJavaTypeMapping {
 			
 			val typeName = type.createTypeName
 			
-			val name = JavaTypeMapping.createPrimitiveTypeName(baseType)
+			val name = JavaTypeMapping.createJavaTypeName(baseType)
 				
 			Assert.assertTrue("Type names do not match. " + name + " vs " + typeName, name.equals(typeName))	
 		]
@@ -44,7 +44,7 @@ class TestJavaTypeMapping {
 			
 			val typeName = type.createObjectTypeName
 			
-			val name = JavaTypeMapping.createPrimitiveWrapperTypeName(baseType)
+			val name = JavaTypeMapping.createJavaObjectTypeName(baseType)
 				
 			Assert.assertTrue("Type names do not match. " + name + " vs " + typeName, name.equals(typeName))	
 		]

@@ -51,6 +51,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 			import java.nio.ByteBuffer;
 			«ENDIF»
 
+			import kieker.common.exception.RecordInstantiationException;
 			import kieker.common.record.factory.IRecordFactory;
 			«IF (isSupported(GeneratorFeatures.GENERIC_DESERIALIZER))»
 			import kieker.common.record.io.IValueDeserializer;
@@ -89,7 +90,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	
 	private def createGenericDeserializerFactory(EventType type) '''
 		@Override
-		public «type.name» create(final IValueDeserializer deserializer) {
+		public «type.name» create(final IValueDeserializer deserializer) throws RecordInstantiationException {
 			return new «type.name»(deserializer);
 		}
 	'''

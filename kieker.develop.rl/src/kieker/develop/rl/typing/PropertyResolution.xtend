@@ -33,14 +33,16 @@ import kieker.develop.rl.recordLang.PropertyModifier
  */
 class PropertyResolution {
 	
-		
-	// TODO these should be used everywhere
 	static def isTransient(Property property) {
 		property.modifiers.exists[it == PropertyModifier.TRANSIENT]
 	}
 	
 	static def isIncrement(Property property) {
 		property.modifiers.exists[it == PropertyModifier.INCREMENT]
+	}
+	
+	static def isChangable(Property property) {
+		property.modifiers.exists[it == PropertyModifier.CHANGEABLE]
 	}
 		
 	/* -- data properties -- */

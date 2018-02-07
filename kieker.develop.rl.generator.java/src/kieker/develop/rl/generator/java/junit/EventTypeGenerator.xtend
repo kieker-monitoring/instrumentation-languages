@@ -207,7 +207,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	}
 	
 	private def CharSequence createValueExistAssertion(Property property, Integer index) '''
-		Assert.assertNotNull("Array value [«index»] of type «property.type.type.createPrimitiveWrapperTypeName» must be not null.", values[«index»]); 
+		Assert.assertNotNull("Array value [«index»] of type «property.type.type.createJavaObjectTypeName» must be not null.", values[«index»]); 
 	'''
 	
 	/**
@@ -224,7 +224,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	private def createValueAssertion(Property property, Integer index) '''
 		Assert.assertEquals("Array value [«index»] " + values[«index»] + " does not match the desired value " + «property.createPropertyValueSet»,
 			«IF property.type.type.name == 'float' || property.type.type.name == 'double'»
-				«property.getCastToPrimitiveType» «createPropertyValueSet(property)», «property.getCastToPrimitiveType» («property.type.type.createPrimitiveWrapperTypeName»)values[«index»], 0.0000001
+				«property.getCastToPrimitiveType» «createPropertyValueSet(property)», «property.getCastToPrimitiveType» («property.type.type.createJavaObjectTypeName»)values[«index»], 0.0000001
 			«ELSEIF property.type.type.name == 'string'»
 				«property.createPropertyValueSet» == null?«property.createConstantValue»:«property.createPropertyValueSet», values[«index»]
 			«ELSE»
@@ -297,7 +297,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	}
 	
 	private def createTypeAssertion(Property property, Integer index) '''
-		Assert.assertTrue("Type of array value [«index»] " + values[«index»].getClass().getCanonicalName() + " does not match the desired type «property.type.type.createPrimitiveWrapperTypeName»", values[«index»] instanceof «property.type.type.createPrimitiveWrapperTypeName»);
+		Assert.assertTrue("Type of array value [«index»] " + values[«index»].getClass().getCanonicalName() + " does not match the desired type «property.type.type.createJavaObjectTypeName»", values[«index»] instanceof «property.type.type.createJavaObjectTypeName»);
 	'''
 
 	/**

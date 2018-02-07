@@ -23,6 +23,9 @@ import kieker.develop.rl.generator.InternalErrorException
 import kieker.develop.rl.typing.base.BaseTypes
 import java.io.File
 import kieker.develop.rl.recordLang.Type
+import kieker.develop.rl.recordLang.BaseType
+import kieker.develop.rl.recordLang.EnumerationType
+import kieker.develop.rl.recordLang.ComplexType
 
 /**
  * @author Reiner Jung
@@ -54,17 +57,22 @@ class CommonCFunctionsExtension {
 	 * @returns a C type name
 	 */
 	def static createTypeName(Classifier classifier) throws InternalErrorException {
-		switch (BaseTypes.getTypeEnum(classifier.type)) {
-			case STRING : 'const char*'
-			case CHAR : 'char'
-			case SHORT : 'short'
-			case INT : 'long'
-			case LONG : 'long long'
-			case FLOAT : 'float'
-			case DOUBLE : 'double'
-			case BOOLEAN : 'char'
-			case BYTE : 'unsigned char'
+		val type = classifier.type
+		switch (type) {
+			BaseType: switch (BaseTypes.getTypeEnum(type)) {
+				case STRING : 'const char*'
+				case CHAR : 'char'
+				case SHORT : 'short'
+				case INT : 'long'
+				case LONG : 'long long'
+				case FLOAT : 'float'
+				case DOUBLE : 'double'
+				case BOOLEAN : 'char'
+				case BYTE : 'unsigned char'
+				default: throw new InternalErrorException(String.format("%s is not a valid type.", type.name))
+			}
+			EnumerationType: type.name
+			ComplexType: type.name
 		}
-		
 	}
 }

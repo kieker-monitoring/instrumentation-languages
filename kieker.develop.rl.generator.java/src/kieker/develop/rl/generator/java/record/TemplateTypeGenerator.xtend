@@ -16,17 +16,19 @@
 package kieker.develop.rl.generator.java.record
 
 import kieker.develop.rl.generator.AbstractTypeGenerator
+import kieker.develop.rl.generator.Version
+
 import kieker.develop.rl.recordLang.ComplexType
 import kieker.develop.rl.recordLang.Model
 import kieker.develop.rl.recordLang.Property
 import kieker.develop.rl.recordLang.TemplateType
+
 import org.eclipse.emf.common.util.EList
 
 import static extension kieker.develop.rl.generator.java.JavaTypeMapping.*
 import static extension kieker.develop.rl.generator.java.record.NameResolver.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
-import kieker.develop.rl.generator.Version
-import kieker.develop.rl.recordLang.PropertyModifier
+import static extension kieker.develop.rl.typing.PropertyResolution.*
 
 /**
  * Main generator class for template types.
@@ -53,7 +55,7 @@ class TemplateTypeGenerator extends AbstractTypeGenerator<TemplateType, CharSequ
 		 * @since «version»
 		 */
 		public interface «type.name» extends «type.inherits.createExtends» {
-			«type.properties.map[property | createPropertyGetterSetter(property)].join»
+			«type.properties.map[property | createPropertyGetterSetterPrototype(property)].join»
 		}
 		'''
 	}
@@ -73,25 +75,41 @@ class TemplateTypeGenerator extends AbstractTypeGenerator<TemplateType, CharSequ
 	private def createExtends(EList<TemplateType> parents) '''«if (parents !== null && parents.size > 0) parents.map[t | t.name].join(', ') else 'IMonitoringRecord'»'''
 	
 	
-	private def createPropertyGetterSetter(Property property) '''
-		«createPropertyGetter(property)»
-		«if (property.modifiers.contains(PropertyModifier.CHANGEABLE)) createPropertySetter(property)»
-		
-	'''
-	
 	/**
-	 * Creates a getter and setter for a given property.
+	 * Creates a getter and setter for a given property considering property modifiers.
 	 * 
 	 * @param property
 	 * 		a property of the record type
 	 * 
 	 * @returns the resulting getter as a CharSequence
 	 */
-	private def createPropertyGetter(Property property) '''
+	private def createPropertyGetterSetterPrototype(Property property) '''
+		«createPropertyGetterPrototype(property)»
+		«if (property.isChangable && !property.isIncrement) createPropertySetterPrototype(property)»
+		
+	'''
+	
+	/**
+	 * Creates a getter for a given property.
+	 * 
+	 * @param property
+	 * 		a property of the record type
+	 * 
+	 * @returns the resulting getter as a CharSequence
+	 */
+	private def createPropertyGetterPrototype(Property property) '''
 		public «property.findType.createTypeName» «property.createGetterName»();
 	'''
 	
-	private def createPropertySetter(Property property) '''
+	/**
+	 * Creates a setter for a given property.
+	 * 
+	 * @param property
+	 * 		a property of the record type
+	 * 
+	 * @returns the resulting getter as a CharSequence
+	 */
+	private def createPropertySetterPrototype(Property property) '''
 		public void «property.createSetterName»(«property.findType.createTypeName» «property.name»);
 	'''
 	

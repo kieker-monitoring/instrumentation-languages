@@ -24,24 +24,22 @@ import kieker.develop.rl.recordLang.Literal
 import kieker.develop.rl.recordLang.Property
 import kieker.develop.rl.recordLang.StringLiteral
 import kieker.develop.rl.typing.base.BaseTypes
-import org.eclipse.emf.common.util.BasicEList
-import org.eclipse.emf.common.util.EList
 
 import static extension kieker.develop.rl.generator.java.JavaTypeMapping.*
 import static extension kieker.develop.rl.generator.java.record.NameResolver.*
 import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
-import kieker.develop.rl.recordLang.PropertyModifier
+import kieker.develop.rl.recordLang.BaseType
 
 /**
- * Template for the constructor of Kieker records.
+ * Template for the parameterized constructor of Kieker records.
  * 
  * @since 1.2
  * 
  * @author Reiner Jung
  * @author Christian Wulf
  */
-class ConstructorTemplates {
+class ParameterizedConstructorTemplates {
 			
 	/**
 	 * Create a constructor for an EventType which gets its data from its sequence of parameters.
@@ -78,92 +76,7 @@ class ConstructorTemplates {
 		*            «name»
 	'''
 	
-	
 	/**
-	 * Create array initialization constructor.
-	 * 
-	 * @param type the event type
-	 * @param properties a collection of all properties which are present in this event type.
-	 * 
-	 * @returns code for the array constructor
-	 */
-	static def createArrayInitializeConstructor(EventType type, List<Property> properties) '''
-		/**
-		 * This constructor uses the given array to initialize the fields of this record.
-		 * 
-		 * @param values
-		 *            The values for the record.
-		 * @param valueTypes
-		 *            The types of the elements in the first array.
-		 *
-		 * @deprecated since 1.13. Use {@link #«type.name»(IValueDeserializer)} instead.
-		 */
-		@Deprecated
-		protected «type.name»(final Object[] values, final Class<?>[] valueTypes) { // NOPMD (values stored directly)
-			«IF (type.parent === null)»AbstractMonitoringRecord.checkArray(values, valueTypes);
-			«ELSE»super(values, valueTypes);
-			«ENDIF»«properties.createPropertyGenericAssignments(if (type.parent !== null) type.parent.collectAllDataProperties.size else 0)»
-		}
-	'''
-	
-	/**
-	 * Create the array constructor.
-	 * 
-	 * @param type the record type
-	 * @param allDeclarationProperties list of all properties which have been declared in this type
-	 */
-	static def createArrayConstructor(EventType type, List<Property> properties) '''
-		/**
-		 * This constructor converts the given array into a record.
-		 * It is recommended to use the array which is the result of a call to {@link #toArray()}.
-		 * 
-		 * @param values
-		 *            The values for the record.
-		 *
-		 * @deprecated since 1.13. Use {@link #«type.name»(IValueDeserializer)} instead.
-		 */
-		@Deprecated
-		public «type.name»(final Object[] values) { // NOPMD (direct store of values)
-			«IF (type.parent === null)»AbstractMonitoringRecord.checkArray(values, TYPES);
-			«ELSE»super(values, TYPES);
-			«ENDIF»«properties.createPropertyGenericAssignments(if (type.parent !== null)
-					type.parent.collectAllDataProperties.size else 0
-			)»
-		}
-	'''
-	
-	/**
-	 * Create all assignments for the generic constructor based on property name and an array.
-	 * 
-	 * @param properties
-	 * 		properties of the event type
-	 * @param offset
-	 * 		the array offset
-	 * 
-	 * @returns all assignments for the given property list
-	 */
-	private static def CharSequence createPropertyGenericAssignments(Iterable<Property> properties, int offset) {
-		val EList<CharSequence> result = new BasicEList<CharSequence>()
-		properties.filter[!it.isTransient].forEach[property, index | result.add(property.createPropertyGenericAssignment(index+offset))]
-		return result.join
-	}
-	
-	/**
-	 * Create an assignment with a property as assignment target and an array value as source.
-	 * Used in the generic constructor.
-	 * 
-	 * @param property
-	 * 		a property of the record type
-	 * @param index
-	 * 		the array index
-	 * 
-	 * @returns one assignment
-	 */
-	private static def CharSequence createPropertyGenericAssignment(Property property, int index) 
-	'''this.«property.createPropertyName» = («property.findType.createObjectTypeName») values[«index»];
-	'''
-	
-		/**
 	 * Create one entry for the constructor parameter sequence.
 	 * 
 	 * @param property
@@ -174,7 +87,7 @@ class ConstructorTemplates {
 	private static def createPropertyParameter(Property property) 
 		'''final «property.findType.createTypeName» «property.createPropertyName»'''
 		
-		/**
+	/**
 	 * Create an assignment with a property as assignment target and an array value as source.
 	 * 
 	 * @param property
@@ -185,19 +98,30 @@ class ConstructorTemplates {
 	 * @returns one assignment
 	 */
 	private static def CharSequence createPropertyAssignment(Property property) throws InternalErrorException {
-		val type = property.findType
-		if (BaseTypes.STRING == BaseTypes.getTypeEnum(type.type) && 
-			type.sizes.size == 0
-		) { // guarantee initialization is always not null in case of plain strings
-			'''this.«property.createPropertyName» = «property.createPropertyName» == null?«if (property.value !== null) property.value.createConstantReference(property) else '""'»:«property.createPropertyName»;
-			'''
-		} else
-			'''this.«property.createPropertyName» = «property.createPropertyName»;
-			'''
+		val classifier = property.findType
+		val type = classifier.type
+		switch(type) {
+			BaseType case BaseTypes.STRING == BaseTypes.getTypeEnum(type as BaseType) && classifier.sizes.size == 0:
+				// guarantee initialization is always not null in case of plain strings
+				'''this.«property.createPropertyName» = «property.createPropertyName» == null?«if (property.value !== null) property.value.createConstantReference(property) else '""'»:«property.createPropertyName»;
+				'''
+			default:
+				'''this.«property.createPropertyName» = «property.createPropertyName»;
+				'''
+		}
 	}
 	
-	
-	
+	/**
+	 * Create a reference to a constant depending on its source. This includes automatic string constants, 
+	 * literal constants, and built in constants.
+	 * 
+	 * @param literal the source of the constant
+	 * @param the corresponding property
+	 * 
+	 * @return source code for the constant
+	 * 
+	 * @throws unsupportet literals will cause an exception. This includes all numerical literals.
+	 */
 	private static def createConstantReference(Literal literal, Property property) {
 		switch (literal) {
 			StringLiteral : property.createConstantName 

@@ -31,13 +31,18 @@ Import:
 	'import' importedNamespace = QualifiedNameWithWildcard
 ;
 
-/** the following two rules are used to create metamodel classes for the base type */
+/** the following rules are used to create metamodel classes for the base type */
 Type:
 	ComplexType | BaseType
 ;
 
 BaseType:
 	name=ID
+;
+
+/** Complex types */
+ComplexType:
+	EventType | TemplateType | ModelSubType | EnumerationType
 ;
 
 ModelType:
@@ -54,8 +59,15 @@ ModelSubType:
 	)
 ;
 
-ComplexType:
-	EventType | TemplateType | ModelSubType
+EnumerationType:
+	('@author' author=STRING)?
+	('@since' since=STRING)? 
+	'enum' name=ID (':' inherits+=[EnumerationType|QualifiedName] (',' inherits+=[EnumerationType|QualifiedName])*)? 
+		'{' literals+=EnumerationLiteral (',' literals+=EnumerationLiteral)* '}'
+;
+
+EnumerationLiteral:
+	name=ID ('=' value=IntLiteral)?
 ;
 
 TemplateType:
@@ -103,7 +115,7 @@ enum PropertyModifier:
 ;
 
 Classifier:
-	type=[BaseType|ID] (sizes+=ArraySize)*
+	type=[Type|ID] (sizes+=ArraySize)*
 ;
 
 ArraySize: {ArraySize}

@@ -25,6 +25,7 @@ class PerlOutletConfiguration extends AbstractOutletConfiguration<ComplexType, C
 	new () {
 		super("perl", "Perl Output Folder", "./src-gen/perl", GeneratorProvider.LANG_PERL, GeneratorProvider.TECH_KIEKER_PERL)
 		generators += new EventTypeGenerator
+		generators += new EnumerationTypeGenerator
 	}
 	
 	override outputFilePath(ComplexType type) '''«type.outputDirectory»«File::separator»«type.name».pm'''

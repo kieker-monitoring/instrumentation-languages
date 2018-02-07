@@ -16,16 +16,16 @@
 package kieker.develop.rl.generator.java.record
 
 import java.util.List
+import kieker.develop.rl.recordLang.BaseType
 import kieker.develop.rl.recordLang.EventType
 import kieker.develop.rl.recordLang.Property
 import kieker.develop.rl.typing.base.BaseTypes
-import kieker.develop.rl.recordLang.PropertyModifier
 
 import static extension kieker.develop.rl.generator.java.JavaTypeMapping.*
+import static extension kieker.develop.rl.generator.java.record.ConstantConstructionTemplates.*
 import static extension kieker.develop.rl.generator.java.record.NameResolver.*
 import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
-import static extension kieker.develop.rl.generator.java.record.ConstantConstructionTemplates.*
 
 /**
  * Generate code for property declaration, constant fields, getters and setters.
@@ -65,11 +65,9 @@ class PropertyConstructionModule {
 	 * 
 	 * @returns  one property declaration
 	 */
-	private static def createPropertyDeclaration(Property property) 
-		'''private «if (!property.modifiers.contains(PropertyModifier.CHANGEABLE) && 
-			!property.modifiers.contains(PropertyModifier.INCREMENT)
-		) 'final '»«property.findType.createTypeName» «property.createPropertyName»«property.initialValue»;
-		'''
+	private static def createPropertyDeclaration(Property property) '''
+		private «if (!property.isChangable && !property.isIncrement) 'final '»«property.findType.createTypeName» «property.createPropertyName»«property.initialValue»;
+	'''
 		
 	/**
 	 * Create the constant initializer for strings and incremental values
@@ -82,13 +80,16 @@ class PropertyConstructionModule {
 	private static def initialValue(Property property) {
 		if (property.increment) {
 			if (property.value !== null) {
-				
-				switch (BaseTypes.getTypeEnum(property.findType.type)) {
-					case BYTE: return ' = ' + property.value.createLiteral
-					case SHORT: return ' = ' + property.value.createLiteral
-					case INT: return ' = ' + property.value.createLiteral
-					case LONG: return ' = ' + property.value.createLiteral
-					default: return ''
+				val type = property.findType.type
+				switch (type) {
+					BaseType: switch (BaseTypes.getTypeEnum(type)) {
+						case BYTE: return ' = ' + property.value.createLiteral
+						case SHORT: return ' = ' + property.value.createLiteral
+						case INT: return ' = ' + property.value.createLiteral
+						case LONG: return ' = ' + property.value.createLiteral
+						default: return ''
+					}
+					default: ''
 				}
 			} else { 
 				return ''
@@ -113,7 +114,7 @@ class PropertyConstructionModule {
 					property.createPropertyName+if (property.isIncrement) '++' else ''»;
 		}
 		
-		«IF property.modifiers.contains(PropertyModifier.CHANGEABLE)»
+		«IF property.isChangable && !property.isIncrement»
 		public final void «property.createSetterName»(«property.findType.createTypeName» «property.createPropertyName») {
 			«IF (property.referTo !== null)»
 				«property.referTo.createSetterName»(«property.createPropertyName»);

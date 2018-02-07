@@ -53,7 +53,6 @@ public class SemanticAnnotationResource extends ResourceImpl {
 	 */
 	override EObject getEObject(String uriFragment) {
 		if (!this.getContents().empty) {
-			System.out.println("uri " + uriFragment)
 			return super.getEObject(uriFragment)
 		} else
 			return super.getEObject(uriFragment)

@@ -33,6 +33,8 @@ import kieker.develop.rl.generator.InternalErrorException
 import static extension kieker.develop.rl.generator.java.JavaTypeMapping.*
 import static extension kieker.develop.rl.generator.java.record.NameResolver.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
+import kieker.develop.rl.recordLang.Type
+import kieker.develop.rl.recordLang.BaseType
 
 /**
  * Templates for constants.
@@ -52,7 +54,7 @@ class ConstantConstructionTemplates {
 		val defaultConstants = properties.filter[
 			val type = it.findType
 			it.value !== null || 
-			(BaseTypes.STRING == BaseTypes.getTypeEnum(type.type) && type.sizes.size == 0)
+			(BaseTypes.STRING == getBaseTypeIdentifier(type.type) && type.sizes.size == 0)
 		]
 		
 		if (defaultConstants.empty) 
@@ -62,6 +64,21 @@ class ConstantConstructionTemplates {
 			«defaultConstants.map[property | createDefaultConstant(property)].join»
 		'''
 	}
+	
+	/**
+	 * Return the base type identifier for a type, .i.e., the corresponding ENUM value for a type.
+	 * 
+	 * @param a potential base type
+	 * 
+	 * @return returns either the corresponding ENUM value for the base type or ERROR for non base types.
+	 */
+	private def static getBaseTypeIdentifier(Type type) {
+		if (type instanceof BaseType)
+			BaseTypes.getTypeEnum(type as BaseType)
+		else
+			BaseTypes.ERROR
+	}
+	 
 	
 	/**
 	 * Create user specified constants.
@@ -105,13 +122,13 @@ class ConstantConstructionTemplates {
 	 */
 	static def CharSequence createLiteral(Literal literal) throws InternalErrorException {
 		switch (literal) {
-			IntLiteral: '''«literal.value»«if (literal.isType(BaseTypes.LONG)) 'L'»'''
-			FloatLiteral: '''«literal.value»«if (literal.isType(BaseTypes.FLOAT)) 'f'»'''
+			IntLiteral: '''«literal.value»«if (literal.isBaseType(BaseTypes.LONG)) 'L'»'''
+			FloatLiteral: '''«literal.value»«if (literal.isBaseType(BaseTypes.FLOAT)) 'f'»'''
 			BooleanLiteral: '''«if (literal.value) 'true' else 'false'»'''
 			ConstantLiteral: '''«literal.value.name»'''
 			BuiltInValueLiteral case "KIEKER_VERSION".equals(literal.value): '''kieker.common.util.Version.getVERSION()'''
-			StringLiteral case literal.isType(BaseTypes.STRING): '''"«literal.value»"'''
-			StringLiteral case literal.isType(BaseTypes.CHAR): '\'' + literal.value + '\''
+			StringLiteral case literal.isBaseType(BaseTypes.STRING): '''"«literal.value»"'''
+			StringLiteral case literal.isBaseType(BaseTypes.CHAR): '\'' + literal.value + '\''
 			ArrayLiteral: '''{ «literal.literals.map[element | element.createLiteral].join(if (literal.literals.get(0) instanceof ArrayLiteral) ",\n" else ", ")» }'''
 			default: throw new InternalErrorException('Unknown literal type ' + literal.class.name)
 		}	

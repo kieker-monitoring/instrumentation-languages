@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright 2016 Kieker Project (http://kieker-monitoring.net)
+ * Copyright 2018 Kieker Project (http://kieker-monitoring.net)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,18 +31,15 @@ import kieker.develop.rl.recordLang.BaseType
 import kieker.develop.rl.recordLang.EnumerationType
 
 /**
- * Generator for event types producing the serialization function for C.
+ * Generator for enumeration types producing the serialization function for C.
  * 
  * @author Reiner Jung
- * @since 1.0
+ * @since 1.3
  */
-class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> {
+class EnumerationTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> {
 
 	override accepts(ComplexType type) {
-		if (type instanceof EventType)
-			!(type as EventType).abstract
-		else
-			false
+		type instanceof EnumerationType
 	}
 			
 	/**

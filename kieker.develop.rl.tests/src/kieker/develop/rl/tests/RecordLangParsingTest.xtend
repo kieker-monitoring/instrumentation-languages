@@ -35,6 +35,7 @@ import java.util.HashMap
 import org.eclipse.emf.ecore.util.EcoreUtil
 
 import static extension kieker.develop.rl.tests.CodeTemplates.*
+import kieker.develop.rl.recordLang.BaseType
 
 @RunWith(XtextRunner)
 @InjectWith(RecordLangInjectorProvider)
@@ -108,7 +109,7 @@ class RecordLangParsingTest{
 				val property = entity.properties.get(i)
 				Assert.assertTrue("Property " + name + "." + value + " does not exist", property.name.equals(value))
 				Assert.assertTrue("Property " + name + "." + value + " is not typed " + key.name,
-					BaseTypes.getTypeEnum(property.type.type) == key
+					BaseTypes.getTypeEnum(property.type.type as BaseType) == key
 				)
 			]
 		} else
