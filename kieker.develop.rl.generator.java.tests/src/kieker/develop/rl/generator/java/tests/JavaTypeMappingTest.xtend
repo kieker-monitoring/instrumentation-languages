@@ -10,16 +10,15 @@ import org.junit.Test
 
 import static extension kieker.develop.rl.generator.java.tests.ModelFactory.*
 
-class TestJavaTypeMapping {
+class JavaTypeMappingTest {
 		
 	private static int ARRAY_DIMENSION = 10
 	
-		
 	/**
 	 * Primitive type names are all lower case, except strings, which follow Java class notation.
 	 */
 	@Test
-	def void testCreatePrimitiveTypeName() {
+	def void testCreateJavaTypeName() {
 		BaseTypes.values.forEach[type |
 			val baseType = RecordLangFactory.eINSTANCE.createBaseType
 			baseType.name = type.name.toLowerCase
@@ -37,7 +36,7 @@ class TestJavaTypeMapping {
 	 * Test the correct wrapper class names. All first letter upper case. 
 	 */
 	@Test
-	def void testCreatePrimitiveWrapperTypeName() {
+	def void testCreateJavaObjectTypeName() {
 		BaseTypes.values.forEach[type |
 			val baseType = RecordLangFactory.eINSTANCE.createBaseType
 			baseType.name = type.name.toLowerCase

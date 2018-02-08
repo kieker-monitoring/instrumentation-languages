@@ -143,7 +143,6 @@ class BinaryConstructorTemplate {
 				case DOUBLE: '''buffer.getDouble()'''
 				case CHAR: '''buffer.getChar()'''
 				case BOOLEAN: '''buffer.get()==1?true:false'''
-				case ERROR: throw new InternalErrorException("%s is not a valid base type.", type.name)
 			}
 			EnumerationType: '''«type.name».valueOf(buffer.getInt())'''
 			default: throw new InternalErrorException("createPropertyPrimitiveTypeDeserializarion does not support complex types.")

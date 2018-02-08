@@ -19,8 +19,10 @@ import java.util.List
 import kieker.develop.rl.recordLang.ArraySize
 import kieker.develop.rl.recordLang.BaseType
 import kieker.develop.rl.recordLang.Classifier
+import kieker.develop.rl.recordLang.EnumerationType
 import kieker.develop.rl.recordLang.EventType
 import kieker.develop.rl.recordLang.Property
+import kieker.develop.rl.recordLang.Type
 import kieker.develop.rl.typing.base.BaseTypes
 import org.eclipse.emf.common.util.EList
 
@@ -29,9 +31,6 @@ import static extension kieker.develop.rl.generator.java.record.NameResolver.*
 import static extension kieker.develop.rl.generator.java.record.ValueAccessExpressionModule.*
 import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
-import kieker.develop.rl.recordLang.EnumerationType
-import kieker.develop.rl.recordLang.Type
-import kieker.develop.rl.generator.InternalErrorException
 
 /**
  * Contains the templates for generation of the generic deserialization constructor based on Holger Knoche's idea.
@@ -167,7 +166,6 @@ class GenericDeserializationConstructorTemplate {
 				case DOUBLE: '''0.0'''
 				case CHAR: "' '"
 				case BOOLEAN: '''false'''
-				case ERROR: throw new InternalErrorException("%s is not a valid data type.", type.name)
 			}
 			EnumerationType: '''«type.name».«type.literals.get(0)»'''
 		}
@@ -188,7 +186,6 @@ class GenericDeserializationConstructorTemplate {
 				case DOUBLE: '''deserializer.getDouble()'''
 				case CHAR: '''deserializer.getChar()'''
 				case BOOLEAN: '''deserializer.getBoolean()'''
-				case ERROR: throw new InternalErrorException("%s is not a valid data type.", type.name)
 			}
 			EnumerationType: '''deserializer.getEnumeration(«type.name».class)'''	
 		}

@@ -76,7 +76,7 @@ class ConstantConstructionTemplates {
 		if (type instanceof BaseType)
 			BaseTypes.getTypeEnum(type as BaseType)
 		else
-			BaseTypes.ERROR
+			throw new InternalErrorException("Type %s is not a base type.", type.name)
 	}
 	 
 	

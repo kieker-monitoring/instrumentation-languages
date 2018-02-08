@@ -15,25 +15,24 @@
  ***************************************************************************/
 package kieker.develop.rl.generator
 
+import de.cau.cs.se.geco.architecture.framework.IGenerator
 import java.util.ArrayList
 import java.util.Calendar
+import java.util.Collection
+import kieker.develop.rl.generator.modeltypes.ModelSubTypeGenerator
 import kieker.develop.rl.outlet.AbstractOutletConfiguration
 import kieker.develop.rl.preferences.TargetsPreferences
-import kieker.develop.rl.recordLang.ModelSubType
+import kieker.develop.rl.recordLang.ComplexType
+import kieker.develop.rl.recordLang.EnumerationType
 import kieker.develop.rl.recordLang.EventType
+import kieker.develop.rl.recordLang.ModelSubType
 import kieker.develop.rl.recordLang.TemplateType
+import kieker.develop.rl.typing.TypeProvider
 import org.eclipse.core.runtime.preferences.IEclipsePreferences
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGenerator2
 import org.eclipse.xtext.generator.IGeneratorContext
-import org.osgi.service.prefs.Preferences
-import java.util.Collection
-import kieker.develop.rl.generator.modeltypes.ModelSubTypeGenerator
-import kieker.develop.rl.typing.TypeProvider
-import kieker.develop.rl.recordLang.ComplexType
-import de.cau.cs.se.geco.architecture.framework.IGenerator
-import kieker.develop.rl.recordLang.EnumerationType
 
 /**
  * Generates one single files per record for java, c, and perl. 

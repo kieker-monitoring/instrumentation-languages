@@ -15,6 +15,7 @@
  ***************************************************************************/
 package kieker.develop.rl.typing.base;
 
+import kieker.develop.rl.generator.InternalErrorException;
 import kieker.develop.rl.recordLang.BaseType;
 import kieker.develop.rl.recordLang.RecordLangFactory;
 
@@ -42,9 +43,7 @@ public enum BaseTypes {
 	/** char data type. */
 	CHAR,
 	/** string data type. */
-	STRING,
-	/** error, no valid data type. */
-	ERROR;
+	STRING;
 
 	private BaseType type;
 
@@ -71,14 +70,15 @@ public enum BaseTypes {
 	 * @param type
 	 *            the type to find
 	 * @return Returns the enumeration value
+	 * @throws InternalErrorException when a non existing type is requested 
 	 */
-	public static BaseTypes getTypeEnum(final BaseType type) {
+	public static BaseTypes getTypeEnum(final BaseType type) throws InternalErrorException {
 		for (final BaseTypes result : BaseTypes.values()) {
 			if (result.name().toLowerCase().equals(type.getName())) {
 				return result;
 			}
 		}
-		return ERROR;
+		throw new InternalErrorException("Requested base type %s does not exist.", type.getName());
 	}
 
 }

@@ -17,7 +17,12 @@ package kieker.develop.rl.generator.java.record
 
 import java.util.ArrayList
 import java.util.List
+import kieker.develop.rl.generator.AbstractTypeGenerator
+import kieker.develop.rl.generator.Version
+import kieker.develop.rl.generator.java.GeneratorFeatures
+import kieker.develop.rl.recordLang.BaseType
 import kieker.develop.rl.recordLang.ComplexType
+import kieker.develop.rl.recordLang.EnumerationType
 import kieker.develop.rl.recordLang.EventType
 import kieker.develop.rl.recordLang.Model
 import kieker.develop.rl.recordLang.Property
@@ -25,28 +30,21 @@ import kieker.develop.rl.recordLang.PropertyModifier
 import kieker.develop.rl.recordLang.TemplateType
 import kieker.develop.rl.typing.base.BaseTypes
 
-import kieker.develop.rl.generator.AbstractTypeGenerator
-import kieker.develop.rl.generator.Version
+import static kieker.develop.rl.generator.java.record.EqualsMethodTemplate.*
 
-
-import static extension kieker.develop.rl.generator.java.record.EventTypeAPITemplates.*
-import static extension kieker.develop.rl.generator.java.record.BinaryConstructorTemplate.*
-import static extension kieker.develop.rl.generator.java.record.GenericDeserializationConstructorTemplate.*
 import static extension kieker.develop.rl.generator.java.record.ArrayConstructorTemplates.*
-import static extension kieker.develop.rl.generator.java.record.NameResolver.*
-import static extension kieker.develop.rl.generator.java.record.PropertyConstructionModule.*
-import static extension kieker.develop.rl.generator.java.record.uid.ComputeUID.*
+import static extension kieker.develop.rl.generator.java.record.BinaryConstructorTemplate.*
 import static extension kieker.develop.rl.generator.java.record.ConstantConstructionTemplates.*
-import static extension kieker.develop.rl.generator.java.record.SerializationTemplates.*
+import static extension kieker.develop.rl.generator.java.record.EventTypeAPITemplates.*
+import static extension kieker.develop.rl.generator.java.record.GenericDeserializationConstructorTemplate.*
 import static extension kieker.develop.rl.generator.java.record.GenericSerializationTemplates.*
+import static extension kieker.develop.rl.generator.java.record.NameResolver.*
+import static extension kieker.develop.rl.generator.java.record.ParameterizedConstructorTemplates.*
+import static extension kieker.develop.rl.generator.java.record.PropertyConstructionModule.*
+import static extension kieker.develop.rl.generator.java.record.SerializationTemplates.*
+import static extension kieker.develop.rl.generator.java.record.uid.ComputeUID.*
 import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
-import kieker.develop.rl.generator.java.GeneratorFeatures
-import static kieker.develop.rl.generator.java.record.EqualsMethodTemplate.*
-import static extension kieker.develop.rl.generator.java.record.ParameterizedConstructorTemplates.*
-import kieker.develop.rl.recordLang.BaseType
-import kieker.develop.rl.recordLang.EnumerationType
-import kieker.develop.rl.generator.InternalErrorException
 
 /**
  * Generates a Java class for EventTypes.
@@ -233,7 +231,6 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 				case DOUBLE : 'TYPE_SIZE_DOUBLE'
 				case CHAR : 'TYPE_SIZE_CHARACTER'
 				case BOOLEAN : 'TYPE_SIZE_BOOLEAN'
-				case ERROR: throw new InternalErrorException("%s is not a valid data type.", dataType.name)
 			}
 			EnumerationType: 'TYPE_SIZE_INT'
 		} + ''' // «property.createPropertyFQN(type)»'''

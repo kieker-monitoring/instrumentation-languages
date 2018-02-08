@@ -15,17 +15,17 @@
  ***************************************************************************/
 package kieker.develop.rl.generator.java.record
 
-import kieker.develop.rl.typing.base.BaseTypes
-import kieker.develop.rl.recordLang.Property
 import java.util.List
+import kieker.develop.rl.recordLang.BaseType
+import kieker.develop.rl.recordLang.EnumerationType
+import kieker.develop.rl.recordLang.Property
+import kieker.develop.rl.typing.base.BaseTypes
+
+import static kieker.develop.rl.generator.java.record.ValueAccessExpressionModule.*
 
 import static extension kieker.develop.rl.generator.java.record.NameResolver.*
-import static extension kieker.develop.rl.generator.java.record.ValueAccessExpressionModule.*
 import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
-import kieker.develop.rl.recordLang.BaseType
-import kieker.develop.rl.generator.InternalErrorException
-import kieker.develop.rl.recordLang.EnumerationType
 
 /**
  * Contains the templates for serialization of a record.
@@ -102,7 +102,6 @@ class SerializationTemplates {
 				case DOUBLE : '''buffer.putDouble(«getterName»);'''
 				case CHAR : '''buffer.putChar(«getterName»);'''
 				case BOOLEAN : '''buffer.put((byte)(«getterName»?1:0));'''
-				case ERROR: throw new InternalErrorException("%s is not a valid data type.", type.name)
 			}
 			EnumerationType: '''buffer.putInt(«getterName».ordinal())'''
 		}

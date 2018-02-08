@@ -13,7 +13,7 @@ import static extension kieker.develop.rl.generator.java.tests.ModelFactory.*
 import kieker.develop.rl.generator.java.tests.ModelFactory
 import kieker.develop.rl.recordLang.TemplateType
 
-class TestNameResolver {
+class NameResolverTest {
 	
 	private static String PROPERTY_NAME = "propertyName"
 	private static String MODEL_NAME = "test.model"
@@ -40,7 +40,7 @@ class TestNameResolver {
 	
 	@Test
 	def void testCreateGetterName() {
-		val property = createProperty(kieker.develop.rl.generator.java.record.tests.TestNameResolver.PROPERTY_NAME, null)
+		val property = createProperty(kieker.develop.rl.generator.java.record.tests.NameResolverTest.PROPERTY_NAME, null)
 		
 		/** for base types. */
 		BaseTypes.values.forEach[type |
@@ -49,9 +49,9 @@ class TestNameResolver {
 			val getterName = NameResolver.createGetterName(property)
 			
 			val constant = if (type == BaseTypes.BOOLEAN) 
-				"is" + kieker.develop.rl.generator.java.record.tests.TestNameResolver.PROPERTY_NAME.toFirstUpper
+				"is" + kieker.develop.rl.generator.java.record.tests.NameResolverTest.PROPERTY_NAME.toFirstUpper
 			else
-				"get" + kieker.develop.rl.generator.java.record.tests.TestNameResolver.PROPERTY_NAME.toFirstUpper
+				"get" + kieker.develop.rl.generator.java.record.tests.NameResolverTest.PROPERTY_NAME.toFirstUpper
 			
 			Assert.assertTrue("Property name generation failed. " + getterName + " vs " + constant, 
 				constant.equals(getterName.toString))
@@ -71,9 +71,9 @@ class TestNameResolver {
 			val getterName = NameResolver.createGetterName(property)
 			
 			val constant = if (type == BaseTypes.BOOLEAN) 
-				"is" + kieker.develop.rl.generator.java.record.tests.TestNameResolver.PROPERTY_NAME.toFirstUpper
+				"is" + kieker.develop.rl.generator.java.record.tests.NameResolverTest.PROPERTY_NAME.toFirstUpper
 			else
-				"get" + kieker.develop.rl.generator.java.record.tests.TestNameResolver.PROPERTY_NAME.toFirstUpper
+				"get" + kieker.develop.rl.generator.java.record.tests.NameResolverTest.PROPERTY_NAME.toFirstUpper
 			
 			Assert.assertTrue("Property name generation failed. " + getterName + " vs " + constant, 
 				constant.equals(getterName.toString))
@@ -86,7 +86,7 @@ class TestNameResolver {
 	@Test
 	def void testCreateConstantName() {
 		
-		val property = ModelFactory.createProperty(kieker.develop.rl.generator.java.record.tests.TestNameResolver.PROPERTY_NAME, null)
+		val property = ModelFactory.createProperty(kieker.develop.rl.generator.java.record.tests.NameResolverTest.PROPERTY_NAME, null)
 		
 		val name = NameResolver.createConstantName(property)
 		val expected = "PROPERTY_NAME"

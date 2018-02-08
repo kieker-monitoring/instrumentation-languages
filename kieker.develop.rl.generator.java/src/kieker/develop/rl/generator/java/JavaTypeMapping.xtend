@@ -54,7 +54,6 @@ class JavaTypeMapping {
 				case BYTE: 'byte'
 				case STRING: 'String'
 				case BOOLEAN: 'boolean'
-				case ERROR: throw new InternalErrorException(String.format("Base type %s does not exist.", type.name))
 			}
 			EnumerationType: type.name
 			ComplexType: type.name
@@ -76,7 +75,6 @@ class JavaTypeMapping {
 				case BYTE: 'Byte'
 				case STRING: 'String'
 				case BOOLEAN: 'Boolean'
-				case ERROR: throw new InternalErrorException(String.format("Base type %s does not exist.", type.name))
 			}
 			EnumerationType: type.name
 			ComplexType: type.name

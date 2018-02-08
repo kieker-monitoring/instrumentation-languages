@@ -25,10 +25,10 @@ import kieker.develop.rl.recordLang.ComplexType;
 import kieker.develop.rl.recordLang.RecordLangFactory;
 
 /**
- * @author reiner
+ * @author Reiner Jung
  *
  */
-public class TestAbstractTypeGenerator { // NOCS -- its a test
+public class AbstractTypeGeneratorTest { // NOCS -- its a test
 
 	private static final String HEADER = "HEADER";
 	private static final String AUTHOR = "AUTHOR";
@@ -57,8 +57,8 @@ public class TestAbstractTypeGenerator { // NOCS -- its a test
 
 		};
 		this.emptyTestType.setName("EmptyRecord");
-		this.generator.configure(TestAbstractTypeGenerator.TARGET_VERSION, TestAbstractTypeGenerator.HEADER,
-				TestAbstractTypeGenerator.AUTHOR, TestAbstractTypeGenerator.VERSION);
+		this.generator.configure(AbstractTypeGeneratorTest.TARGET_VERSION, AbstractTypeGeneratorTest.HEADER,
+				AbstractTypeGeneratorTest.AUTHOR, AbstractTypeGeneratorTest.VERSION);
 	}
 
 	/**
@@ -69,12 +69,12 @@ public class TestAbstractTypeGenerator { // NOCS -- its a test
 	public void testIsSupported() {
 		final String[] inRanges = new String[] { "1.0:1.2", "1.2:1.3", "1.0:", ":1.2", "1.2:", "1.2:1.3", };
 		for (final String range : inRanges) {
-			Assert.assertEquals("Range error, " + TestAbstractTypeGenerator.TARGET_VERSION + " should be in " + range,
+			Assert.assertEquals("Range error, " + AbstractTypeGeneratorTest.TARGET_VERSION + " should be in " + range,
 					true, this.generator.isSupported(range));
 		}
 		final String[] outRanges = new String[] { "1.2.1:1.3", "1.2.1:", };
 		for (final String range : outRanges) {
-			Assert.assertEquals("Range error, " + TestAbstractTypeGenerator.TARGET_VERSION + " should be out " + range,
+			Assert.assertEquals("Range error, " + AbstractTypeGeneratorTest.TARGET_VERSION + " should be out " + range,
 					false, this.generator.isSupported(range));
 		}
 	}
@@ -88,8 +88,8 @@ public class TestAbstractTypeGenerator { // NOCS -- its a test
 		final String[] result = this.generator.generate(this.emptyTestType).split("::");
 		Assert.assertEquals("Missing parameter", 4, result.length);
 		Assert.assertArrayEquals("Wrong values in code generation",
-				new String[] { this.emptyTestType.getName(), TestAbstractTypeGenerator.HEADER,
-						TestAbstractTypeGenerator.AUTHOR, TestAbstractTypeGenerator.VERSION, },
+				new String[] { this.emptyTestType.getName(), AbstractTypeGeneratorTest.HEADER,
+						AbstractTypeGeneratorTest.AUTHOR, AbstractTypeGeneratorTest.VERSION, },
 				result);
 	}
 

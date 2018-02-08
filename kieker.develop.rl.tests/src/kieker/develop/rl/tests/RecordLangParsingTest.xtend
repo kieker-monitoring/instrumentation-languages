@@ -34,7 +34,7 @@ import java.util.Map
 import java.util.HashMap
 import org.eclipse.emf.ecore.util.EcoreUtil
 
-import static extension kieker.develop.rl.tests.CodeTemplates.*
+import kieker.develop.rl.tests.CodeTemplates
 import kieker.develop.rl.recordLang.BaseType
 
 @RunWith(XtextRunner)
@@ -46,6 +46,8 @@ class RecordLangParsingTest{
 	private static String EXTENDED_ET_NAME = "Extended"
 	private static String INT_PROPERTY = "intProperty"
 	private static String STRING_PROPERTY = "stringProperty"
+	
+	private static ITemplates code = new CodeTemplates()
 
 	@Inject
 	ParseHelper<Model> parseHelper
@@ -117,16 +119,16 @@ class RecordLangParsingTest{
 	}
 	
 	private def minimalModel() {
-		model(PACKAGE_NAME,eventType(BASE_ET_NAME, false, null, null, simpleProperty (BaseTypes.INT, INT_PROPERTY)))	
+		code.model(PACKAGE_NAME, code.eventType(BASE_ET_NAME, false, null, null, code.simpleProperty(BaseTypes.INT, INT_PROPERTY)))	
 	}
 	
 	private def inheritanceModel() {
-		model(PACKAGE_NAME,
-			eventType(BASE_ET_NAME, false, null, null, 
-				simpleProperty (BaseTypes.INT, INT_PROPERTY)
+		code.model(PACKAGE_NAME,
+			code.eventType(BASE_ET_NAME, false, null, null, 
+				code.simpleProperty(BaseTypes.INT, INT_PROPERTY)
 			) +
-			eventType(EXTENDED_ET_NAME, false, BASE_ET_NAME, null, 
-				simpleProperty (BaseTypes.STRING, STRING_PROPERTY)
+			code.eventType(EXTENDED_ET_NAME, false, BASE_ET_NAME, null, 
+				code.simpleProperty(BaseTypes.STRING, STRING_PROPERTY)
 			)
 		)
 	}
