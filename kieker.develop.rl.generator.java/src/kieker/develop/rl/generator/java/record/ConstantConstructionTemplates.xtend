@@ -54,7 +54,7 @@ class ConstantConstructionTemplates {
 		val defaultConstants = properties.filter[
 			val type = it.findType
 			it.value !== null || 
-			(BaseTypes.STRING == getBaseTypeIdentifier(type.type) && type.sizes.size == 0)
+			(type.type.isStringType && type.sizes.size == 0)
 		]
 		
 		if (defaultConstants.empty) 
@@ -66,17 +66,17 @@ class ConstantConstructionTemplates {
 	}
 	
 	/**
-	 * Return the base type identifier for a type, .i.e., the corresponding ENUM value for a type.
+	 * Checks whether the given type is a base type and that base type is of type string.
 	 * 
 	 * @param a potential base type
 	 * 
-	 * @return returns either the corresponding ENUM value for the base type or ERROR for non base types.
+	 * @return returns true for strings and false for all other types
 	 */
-	private def static getBaseTypeIdentifier(Type type) {
+	private def static boolean isStringType(Type type) {
 		if (type instanceof BaseType)
-			BaseTypes.getTypeEnum(type as BaseType)
+			BaseTypes.getTypeEnum(type as BaseType) == BaseTypes.STRING
 		else
-			throw new InternalErrorException("Type %s is not a base type.", type.name)
+			false
 	}
 	 
 	

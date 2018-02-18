@@ -204,29 +204,47 @@ class AspectLangGenerator implements IGenerator2 {
 				// TODO aspect based configuration e.g., technology selection 
 				/** Generate advice for a specific technology only if it is used. */
 				if (aspect.joinpoints.exists[it.technologies.exists[it.name.equals(configuration.technology)]]) {
-					aspect.advices.forEach[advice |
-						switch (generator) {
-							IGenerator<Advice, CharSequence>: {
-								val result = (generator as IGenerator<Advice,CharSequence>).generate(advice)
-								fsa.generateFile(configuration.outputFilePath(advice), configuration.name, result)
-							}
-							IGenerator<Advice, Document>: {
-								val document = (generator as IGenerator<Advice,Document>).generate(advice)
-								val transformerFactory = TransformerFactory.newInstance()
-								val transformer = transformerFactory.newTransformer()
-								transformer.setOutputProperty(OutputKeys.INDENT, "yes")
-								transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "3")
-								
-								val writer = new StringWriter()
-								
-								transformer.transform(new DOMSource(document), new StreamResult(writer))
-								fsa.generateFile(configuration.outputFilePath(advice), configuration.name, writer.toString)
-							}
-						}
-					]
+					aspect.advices.forEach[advice | selectGenerator(generator, configuration, advice, fsa) ]
 				}
 			]
 		]
+	}
+		
+	/**
+	 * Select generator execution based on type.
+	 * 
+	 * @param generator generator
+	 * @param configuration configuration for the generator
+	 * @param advice the advice to be compiled
+	 * @param fsa file system access
+	 */
+	private def selectGenerator(IGenerator<? extends Advice, ?> generator, AbstractOutletConfiguration<Advice, Object> configuration, Advice advice, IFileSystemAccess2 fsa) {
+		if (generator.isOutputType(CharSequence)) {
+			val result = (generator as IGenerator<Advice,CharSequence>).generate(advice)
+			fsa.generateFile(configuration.outputFilePath(advice), configuration.name, result)
+		} else if (generator.isOutputType(Document)) {
+			val document = (generator as IGenerator<Advice,Document>).generate(advice)
+			val transformerFactory = TransformerFactory.newInstance()
+			val transformer = transformerFactory.newTransformer()
+			transformer.setOutputProperty(OutputKeys.INDENT, "yes")
+			transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "3")
+								
+			val writer = new StringWriter()
+				
+			transformer.transform(new DOMSource(document), new StreamResult(writer))
+			fsa.generateFile(configuration.outputFilePath(advice), configuration.name, writer.toString)
+		}
+	}
+		
+	/**
+	 * Test whether the specified generator uses the given type as output type.
+	 * 
+	 * @param generator the generator
+	 * @param clazz the output type
+	 */
+	private def boolean isOutputType(IGenerator<?, ?> generator, Class<?> clazz) {
+		generator.class
+		return false
 	}
 	
 	/**
@@ -263,23 +281,20 @@ class AspectLangGenerator implements IGenerator2 {
 			]
 			
 			if (technologyUsed) {
-				switch (generator) {
-					IGenerator<IntermediateModel, CharSequence>: {
-						val result = (generator as IGenerator<IntermediateModel, CharSequence>).generate(intermediateModel)
-						fsa.generateFile(configuration.outputFilePath(intermediateModel), configuration.name, result)
-					}
-					IGenerator<IntermediateModel, Document>: {
-						val document = (generator as IGenerator<IntermediateModel, Document>).generate(intermediateModel)
-						val transformerFactory = TransformerFactory.newInstance()
-						val transformer = transformerFactory.newTransformer()
-						transformer.setOutputProperty(OutputKeys.INDENT, "yes")
-						transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "3")
-						
-						val writer = new StringWriter()
-						
-						transformer.transform(new DOMSource(document), new StreamResult(writer))
-						fsa.generateFile(configuration.outputFilePath(intermediateModel), configuration.name, writer.toString)
-					}
+				if (generator.isOutputType(CharSequence)) {
+					val result = (generator as IGenerator<IntermediateModel, CharSequence>).generate(intermediateModel)
+					fsa.generateFile(configuration.outputFilePath(intermediateModel), configuration.name, result)
+				} else if (generator.isOutputType(Document)) {
+					val document = (generator as IGenerator<IntermediateModel, Document>).generate(intermediateModel)
+					val transformerFactory = TransformerFactory.newInstance()
+					val transformer = transformerFactory.newTransformer()
+					transformer.setOutputProperty(OutputKeys.INDENT, "yes")
+					transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "3")
+					
+					val writer = new StringWriter()
+					
+					transformer.transform(new DOMSource(document), new StreamResult(writer))
+					fsa.generateFile(configuration.outputFilePath(intermediateModel), configuration.name, writer.toString)
 				}
 			}
 		]

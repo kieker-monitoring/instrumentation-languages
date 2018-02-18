@@ -39,10 +39,10 @@ public final class GeneratorFeatures {
 	public static final String BYTE_BUFFER_SERIALIZER = "1.0:1.12";
 	
 	/** ObjectArray support: factory, constructor and initFromArray feature. */
-	public static final String ARRAY_DESERIALIZER = "1.0:1.13";
+	public static final String ARRAY_DESERIALIZER = "1.0:1.14";
 	
 	/** Create an array for serialization feature. */
-	public static final String ARRAY_SERIALIZER = "1.0:1.13";
+	public static final String ARRAY_SERIALIZER = "1.0:1.14";
 	
 	/** Generic deserializer support: factory, constructor. */
 	public static final String GENERIC_DESERIALIZER = "1.13:";
