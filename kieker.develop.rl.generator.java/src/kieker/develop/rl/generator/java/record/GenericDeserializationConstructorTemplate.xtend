@@ -53,6 +53,7 @@ class GenericDeserializationConstructorTemplate {
 		 * @param deserializer
 		 *            The deserializer to use
 		 * @throws RecordInstantiationException 
+		 *            when the record could not be deserialized
 		 */
 		public «type.name»(final IValueDeserializer deserializer) throws RecordInstantiationException {
 			«IF (type.parent !== null)»super(deserializer);

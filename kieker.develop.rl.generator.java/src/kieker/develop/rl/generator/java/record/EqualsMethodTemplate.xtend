@@ -52,13 +52,22 @@ class EqualsMethodTemplate {
 		 */
 		@Override
 		public boolean equals(final Object obj) {
-			if (obj == null) return false;
-			if (obj == this) return true;
-			if (obj.getClass() != this.getClass()) return false;
+			if (obj == null) {
+				return false;
+			}
+			if (obj == this) {
+				return true;
+			}
+			if (obj.getClass() != this.getClass()) {
+				return false;
+			}
 			
 			final «className» castedRecord = («className») obj;
-			if (this.getLoggingTimestamp() != castedRecord.getLoggingTimestamp()) return false;
+			if (this.getLoggingTimestamp() != castedRecord.getLoggingTimestamp()) {
+				return false;
+			}
 			«properties.map[it.createPropertyEqualsTest].join('\n')»
+			
 			return true;
 		}
 	'''
@@ -79,8 +88,9 @@ class EqualsMethodTemplate {
 				«FOR size : type.sizes»
 					«IF (size.size == 0)»
 						int _«property.createPropertyName»_size«type.sizes.indexOf(size)» = this.«property.createGetterName»()«createCodeToDetermineArraySize(type.sizes.indexOf(size))».length;
-						if (_«property.createPropertyName»_size«type.sizes.indexOf(size)» != castedRecord.«property.createGetterName»()«createCodeToDetermineArraySize(type.sizes.indexOf(size))».length)
+						if (_«property.createPropertyName»_size«type.sizes.indexOf(size)» != castedRecord.«property.createGetterName»()«createCodeToDetermineArraySize(type.sizes.indexOf(size))».length) {
 							return false;
+						}
 					«ENDIF»
 				«ENDFOR»
 				«createArrayAccessLoops(type.sizes, 0, property.createPropertyName, simpleTypeAction)»
@@ -99,18 +109,36 @@ class EqualsMethodTemplate {
 		switch (type) {
 			BaseType: switch (BaseTypes.getTypeEnum(type)) {
 				case STRING: 
-					'''if (!this.«getterExpression».equals(castedRecord.«getterExpression»)) return false;'''
+					'''
+					if (!this.«getterExpression».equals(castedRecord.«getterExpression»)) {
+						return false;
+					}'''
 				case FLOAT: 
-					'''if (isNotEqual(this.«getterExpression», castedRecord.«getterExpression»)) return false;'''
+					'''
+					if (isNotEqual(this.«getterExpression», castedRecord.«getterExpression»)) {
+						return false;
+					}'''
 				case DOUBLE: 
-					'''if (isNotEqual(this.«getterExpression», castedRecord.«getterExpression»)) return false;'''
+					'''
+					if (isNotEqual(this.«getterExpression», castedRecord.«getterExpression»)) {
+						return false;
+					}'''
 				default: 
-					'''if (this.«getterExpression» != castedRecord.«getterExpression») return false;'''
+					'''
+					if (this.«getterExpression» != castedRecord.«getterExpression») {
+						return false;
+					}'''
 			}
 			EnumerationType:
-				'''if (this.«getterExpression» != castedRecord.«getterExpression») return false;'''
+				'''
+				if (this.«getterExpression» != castedRecord.«getterExpression») {
+					return false;
+				}'''
 			ComplexType:
-				'''if (this.«getterExpression».equals(castedRecord.«getterExpression»)) return false;'''
+				'''
+				if (this.«getterExpression».equals(castedRecord.«getterExpression»)) {
+					return false;
+				}'''
 		}
 	}
 	

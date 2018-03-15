@@ -119,7 +119,7 @@ class EventTypeAPITemplates {
 		@Deprecated
 		public Object[] toArray() {
 			return new Object[] {
-				«properties.filter[!it.isTransient].map[property | '''this.«property.createGetterName»()'''].join(',\n')»
+				«properties.filter[!it.isTransient].map[property | '''this.«property.createGetterName»(),'''].join('\n')»
 			};
 		}
 	'''
@@ -137,6 +137,7 @@ class EventTypeAPITemplates {
 		public void registerStrings(final IRegistry<String> stringRegistry) {	// NOPMD (generated code)
 			«properties.filter[!it.isTransient].map[it.createRegisterStringForProperty].filterNull.join('\n')»
 		}
+		
 	'''
 	
 	/**

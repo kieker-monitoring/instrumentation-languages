@@ -52,6 +52,7 @@ class GenericSerializationTemplates {
 				it.createPropertyGenericSerialization
 			].join('\n')»
 		}
+		
 	'''
 
 	/**

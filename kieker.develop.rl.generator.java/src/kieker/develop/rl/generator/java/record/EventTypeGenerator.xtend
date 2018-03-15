@@ -87,14 +87,12 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 			 * 
 			 * @since «version»
 			 */
-			public «if (type.abstract) 'abstract '»class «type.name» extends «type.createParent»«type.createImplements» {
-				private static final long serialVersionUID = «type.computeDefaultSUID»L;
-			
+			public «if (type.abstract) 'abstract '»class «type.name» extends «type.createParent»«type.createImplements» {			
 				«if (!type.abstract) type.createEventTypeConstants(allDataProperties.filter[!it.transient])»
 				
 				«type.createUserConstants»
-				
 				«allDeclarationProperties.createDefaultConstants»
+				private static final long serialVersionUID = «type.computeDefaultSUID»L;
 				
 				«IF (!type.abstract)»/** property name array. */
 				«allDataProperties.filter[!it.isTransient].createPropertyNameConstant»
@@ -151,10 +149,9 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	private def createEventTypeConstants(EventType type, Iterable<Property> properties) '''
 		/** Descriptive definition of the serialization size of the record. */
 		public static final int SIZE = «if (properties.size == 0) 
-				'0'
+				'0;'
 			else 
 				properties.createBinarySerializationSizeConstant(type)»
-		;
 		
 		public static final Class<?>[] TYPES = {
 			«properties.map[it.createPropertyTypeArrayEntry(type)].join»
@@ -169,9 +166,9 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	 * @param type event type for the given type.
 	 */
 	private def createBinarySerializationSizeConstant(Iterable<Property> properties, EventType type) {
-		properties.filter[!it.modifiers.exists[it == PropertyModifier.TRANSIENT]].map[property | 
-				property.createSizeConstant(type)
-			].join('\n\t\t + ')
+		val sizeRelevantProperties = properties.filter[!it.modifiers.exists[it == PropertyModifier.TRANSIENT]]
+		val last = sizeRelevantProperties.last
+		sizeRelevantProperties.map[property | property.createSizeConstant(type, last.equals(property))].join('\n\t\t + ')
 	}
 	
 	/**
@@ -214,11 +211,16 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	 * 
 	 * @param property
 	 * 		property which serialization size is determined
-	 * 
+	 * @param type
+	 *      the corresponding type of the property
+	 * @param last
+	 *      is true if the property is the last property  
+	 *  
 	 * @returns
 	 * 		the serialization size of the property
 	 */
-	private def createSizeConstant(Property property, EventType type) {
+	private def createSizeConstant(Property property, EventType type, boolean last) {
+		val semicolon = if (last) ';' else ''
 		val dataType = property.findType.type
 		switch (dataType) {
 			BaseType: switch (BaseTypes.getTypeEnum(dataType)) {
@@ -233,7 +235,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 				case BOOLEAN : 'TYPE_SIZE_BOOLEAN'
 			}
 			EnumerationType: 'TYPE_SIZE_INT'
-		} + ''' // «property.createPropertyFQN(type)»'''
+		} + semicolon + ''' // «property.createPropertyFQN(type)»'''
 	}
 	
 	/**
