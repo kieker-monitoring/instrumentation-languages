@@ -48,7 +48,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	/** Unit tests are only produced for non abstract classes which define properties.  */
 	override accepts(ComplexType type) {
 		if (type instanceof EventType) {
-			!(type as EventType).abstract && (type.collectAllPersistentDataProperties.size > 0)
+			!(type as EventType).abstract && (type.collectAllSerializableDataProperties.size > 0)
 		} else
 			false
 	}
@@ -57,7 +57,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	 * Main generator method.
 	 */
 	protected override createOutputModel(EventType type, Version targetVersion, String header, String author, String version) {
-		val allPersistentDataProperties = type.collectAllPersistentDataProperties
+		val allPersistentDataProperties = type.collectAllSerializableDataProperties
 		
 		'''
 		«header»package «(type.eContainer as Model).name.createTestPackageName»;
