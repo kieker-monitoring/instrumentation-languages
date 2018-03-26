@@ -60,7 +60,7 @@ class ArrayConstructorTemplates {
 		protected «type.name»(final Object[] values, final Class<?>[] valueTypes) { // NOPMD (values stored directly)
 			«IF (type.parent === null)»AbstractMonitoringRecord.checkArray(values, valueTypes);
 			«ELSE»super(values, valueTypes);
-			«ENDIF»«properties.createPropertyGenericAssignments(if (type.parent !== null) type.parent.collectAllDataProperties.size else 0)»
+			«ENDIF»«properties.createPropertyGenericAssignments(if (type.parent !== null) type.parent.collectAllSerializableDataProperties.size else 0)»
 		}
 	'''
 	
@@ -85,7 +85,7 @@ class ArrayConstructorTemplates {
 			«IF (type.parent === null)»AbstractMonitoringRecord.checkArray(values, TYPES);
 			«ELSE»super(values, TYPES);
 			«ENDIF»«properties.createPropertyGenericAssignments(if (type.parent !== null)
-					type.parent.collectAllDataProperties.size else 0
+					type.parent.collectAllSerializableDataProperties.size else 0
 			)»
 		}
 	'''
