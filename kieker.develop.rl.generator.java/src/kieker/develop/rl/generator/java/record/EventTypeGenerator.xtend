@@ -194,7 +194,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 		import kieker.common.record.io.IValueDeserializer;
 		«if (!type.abstract) 'import kieker.common.record.io.IValueSerializer;'»
 		«ENDIF»
-		«if (!type.abstract) 'import kieker.common.util.registry.IRegistry;'»
+		«if (!type.abstract && isSupported(GeneratorFeatures.STRING_REGISTRY)) 'import kieker.common.util.registry.IRegistry;'»
 
 		«if (type.inherits !== null && type.inherits.size > 0) type.inherits.map[i | i.createInterfaceImport].join»
 	'''
