@@ -250,7 +250,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	 */
 	private def CharSequence createImplements(EventType type) {
 		val List<CharSequence> interfaces = new ArrayList() 
-		if (type.parent === null) { // only add these interfaces for classes directly inheriting AbstractMonitoringRecord
+		if (type.parent === null && isSupported(GeneratorFeatures.STRING_REGISTRY)) { // only add these interfaces for classes directly inheriting AbstractMonitoringRecord
 			interfaces.add('IMonitoringRecord.Factory')
 			interfaces.add('IMonitoringRecord.BinaryFactory')
 		}
