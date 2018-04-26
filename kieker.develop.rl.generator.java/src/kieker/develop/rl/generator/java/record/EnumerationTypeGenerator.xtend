@@ -65,6 +65,6 @@ class EnumerationTypeGenerator extends AbstractTypeGenerator<EnumerationType, Ch
 		'''
 	}
 	
-	private def CharSequence createLiteral(EnumerationLiteral literal) '''«literal.name»'''
+	private def CharSequence createLiteral(EnumerationLiteral literal) '''«literal.name»«IF (literal.value !== null)» = «literal.value.value»«ENDIF»'''
 		
 }
