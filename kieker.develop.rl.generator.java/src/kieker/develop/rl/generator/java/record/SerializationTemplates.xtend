@@ -46,7 +46,7 @@ class SerializationTemplates {
 		/**
 		 * {@inheritDoc}
 		 *
-		 * @deprecated since 1.13. Use {@link #serialize(IValueSerializer)} instead.
+		 * @deprecated since 1.13 to be removed in 1.15
 		 */
 		@Override
 		@Deprecated

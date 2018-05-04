@@ -48,7 +48,7 @@ class EventTypeAPITemplates {
 		/**
 		 * {@inheritDoc}
 		 * 
-		 * @deprecated This record uses the {@link kieker.common.record.IMonitoringRecord.Factory} mechanism. Hence, this method is not implemented.
+		 * @deprecated to be rmeoved in 1.15
 		 */
 		@Override
 		@Deprecated
@@ -66,7 +66,7 @@ class EventTypeAPITemplates {
 		/**
 		 * {@inheritDoc}
 		 * 
-		 * @deprecated This record uses the {@link kieker.common.record.IMonitoringRecord.BinaryFactory} mechanism. Hence, this method is not implemented.
+		 * @deprecated to be rmeoved in 1.15
 		 */
 		@Override
 		@Deprecated
@@ -113,7 +113,7 @@ class EventTypeAPITemplates {
 		/**
 		 * {@inheritDoc}
 		 *
-		 * @deprecated since 1.13. Use {@link #serialize(IValueSerializer)} with an array serializer instead.
+		 * @deprecated to be removed in 1.15
 		 */
 		@Override
 		@Deprecated

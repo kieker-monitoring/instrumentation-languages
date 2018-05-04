@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>kieker.develop.rl.cli</artifactId>
-	<packaging>jar</packaging>
+	<packaging>eclipse-plugin</packaging>
 	
 	<name>Kieker Record Language CLI Compiler</name>
 	<description>Code generator for Kieker's Instrumentation Record Language</description>
@@ -83,6 +83,10 @@
 					<source>1.8</source>
 					<target>1.8</target>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.xtend</groupId>
+				<artifactId>xtend-maven-plugin</artifactId>
 			</plugin>
 			<!-- ceckstyle plugin -->
 			<plugin>

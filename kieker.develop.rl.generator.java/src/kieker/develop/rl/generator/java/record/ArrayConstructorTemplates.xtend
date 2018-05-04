@@ -54,7 +54,7 @@ class ArrayConstructorTemplates {
 		 * @param valueTypes
 		 *            The types of the elements in the first array.
 		 *
-		 * @deprecated since 1.13. Use {@link #«type.name»(IValueDeserializer)} instead.
+		 * @deprecated to be removed 1.15
 		 */
 		@Deprecated
 		protected «type.name»(final Object[] values, final Class<?>[] valueTypes) { // NOPMD (values stored directly)
@@ -78,7 +78,7 @@ class ArrayConstructorTemplates {
 		 * @param values
 		 *            The values for the record.
 		 *
-		 * @deprecated since 1.13. Use {@link #«type.name»(IValueDeserializer)} instead.
+		 * @deprecated to be removed 1.15
 		 */
 		@Deprecated
 		public «type.name»(final Object[] values) { // NOPMD (direct store of values)

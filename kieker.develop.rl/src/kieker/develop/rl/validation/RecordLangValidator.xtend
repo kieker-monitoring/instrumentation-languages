@@ -40,6 +40,9 @@ import kieker.develop.rl.typing.base.BaseTypes
 import org.eclipse.xtext.validation.Check
 
 import static extension kieker.develop.rl.typing.PropertyResolution.*
+import static extension kieker.develop.rl.typing.TypeResolution.*
+import kieker.develop.rl.recordLang.EnumerationLiteral
+import kieker.develop.rl.recordLang.EnumerationType
 
 /**
  * Custom validation rules. 
@@ -143,6 +146,36 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 			]
 		}
 	}
+	
+	/** 
+	 * Check a EnumerationLiteral to have an unique value. 
+	 */	
+	@Check
+	def checkEnumerationLiteralUniqueValue(EnumerationLiteral literal) {
+		val type = literal.eContainer as EnumerationType
+		val literals = type.collectAllLiterals
+		val value = if (literal.value === null) {
+			literals.position(literal)
+		} else {
+			literal.value.value
+		}
+		val duplicate = literals.findFirst[
+			val otherValue = if (it.value === null) {
+				literals.position(it)
+			} else {
+				it.value.value
+			}
+			otherValue === value && it !== literal
+		]
+		if (duplicate !== null) {
+			error('Enumeration literals ' + duplicate.name + 
+						' and ' + literal.name + ' have the same value ' + value, 
+						RecordLangPackage.Literals::ENUMERATION_LITERAL__VALUE,
+						INVALID_NAME)
+		}
+	}
+	
+	
 	
 	/**
 	 * Check it a given constant's type and the assigned value's type match.
@@ -358,6 +391,16 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 	private def Pair<Property, Property> findDuplicate(Property property, Collection<Property> properties) {
 		val Property second = properties.findFirst[p | property.name.equals(p.name) && p != property]
 		return new Pair(property,second)
+	}
+	
+	private	def int position(List<EnumerationLiteral> literals, EnumerationLiteral literal) {
+		var position = 0
+		for (EnumerationLiteral element : literals) {
+			if (element === literal)
+				return position
+			position++
+		}
+		return -1
 	}
 	
 }

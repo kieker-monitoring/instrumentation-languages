@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright 2016 Kieker Project (http://kieker-monitoring.net)
+ * Copyright 2018 Kieker Project (http://kieker-monitoring.net)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,6 +23,7 @@ import kieker.develop.rl.recordLang.EnumerationType
 import kieker.develop.rl.recordLang.Model
 
 import static extension kieker.develop.rl.typing.TypeResolution.*
+import java.util.List
 
 /**
  * Generates a Java class for {@link EnumerationType}s.
@@ -50,6 +51,7 @@ class EnumerationTypeGenerator extends AbstractTypeGenerator<EnumerationType, Ch
 	 * @return a Java class for a Kieker EnumerationType
 	 */
 	override protected createOutputModel(EnumerationType type, Version targetVersion, String header, String author, String version) {
+		val literals = type.collectAllLiterals
 		'''
 			«header»package «(type.eContainer as Model).name»;
 			
@@ -60,11 +62,40 @@ class EnumerationTypeGenerator extends AbstractTypeGenerator<EnumerationType, Ch
 			 * @since «version»
 			 */
 			public enum «type.name» {
-				«type.collectAllLiterals.map[it.createLiteral].join(",\n")»;
+				«literals.map[it.createLiteral(literals.position(it))].join(",\n")»;
+				
+				private int value;
+					
+				private «type.name»(final int value) {
+					this.value = value;
+				}
+					
+				public int getValue() {
+					return this.value;
+				}
+				
+				public static «type.name» getEnum(final int value) {
+					for (final «type.name» type : «type.name».values()) {
+						if (type.getValue() == value)
+							return type;
+					}
+					throw new RuntimeException("Illegal value for «type.name» enumeration.");
+				}
 			}
 		'''
 	}
+		
+	private	def int position(List<EnumerationLiteral> literals, EnumerationLiteral literal) {
+		var position = 0
+		for (EnumerationLiteral element : literals) {
+			if (element === literal)
+				return position
+			position++
+		}
+		return -1
+	}
 	
-	private def CharSequence createLiteral(EnumerationLiteral literal) '''«literal.name»«IF (literal.value !== null)» = «literal.value.value»«ENDIF»'''
+	private def CharSequence createLiteral(EnumerationLiteral literal, int ordinal) 
+		'''«literal.name»(«IF (literal.value !== null)»«literal.value.value»«ELSE»«ordinal»«ENDIF»)'''
 		
 }

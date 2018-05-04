@@ -5,9 +5,13 @@ Bundle-SymbolicName: kieker.develop.rl.cli;singleton:=true
 Bundle-Version: 1.3.0.qualifier
 Bundle-Vendor: %providerName
 Require-Bundle: org.eclipse.equinox.app,
- kieker.develop.rl;bundle-version="1.3.0"
+ kieker.develop.rl;bundle-version="1.3.0",
+ org.eclipse.xtext,
+ org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ClassPath: .,
  lib/jcommander-1.64.jar,
- lib/kieker-1.13-SNAPSHOT.jar
-Import-Package: org.junit
+ lib/kieker-1.14-SNAPSHOT.jar
+Import-Package: com.google.inject,
+ org.junit
+Automatic-Module-Name: kieker.develop.rl.cli

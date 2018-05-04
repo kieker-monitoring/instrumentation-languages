@@ -18,6 +18,8 @@ package kieker.develop.rl.cli;
 import java.io.File;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.mwe.utils.StandaloneSetup;
@@ -27,8 +29,6 @@ import org.eclipse.xtext.resource.XtextResourceSet;
 
 import com.google.inject.Inject;
 
-import kieker.common.logging.Log;
-import kieker.common.logging.LogFactory;
 // import kieker.develop.rl.generator.GeneratorConfiguration;
 import kieker.develop.rl.generator.RecordLangGenerator;
 
@@ -43,7 +43,7 @@ import kieker.develop.rl.generator.RecordLangGenerator;
 public class IRLParser {
 
 	/** Central logger for the compiler. */
-	private static final Log LOG = LogFactory.getLog(IRLParser.class);
+	private static final Logger LOGGER = LogManager.getLogger(IRLParser.class);
 
 	/** Legal extensions for IRL files. */
 	private static final Object FILE_EXTENSION_IRL = "irl";
@@ -249,16 +249,16 @@ public class IRLParser {
 	 * @param version
 	 */
 	private void compile(final String pathName) {
-		LOG.info("Compiling " + this.sourceRootPath + pathName);
+		LOGGER.info("Compiling " + this.sourceRootPath + pathName);
 
 		// load resource
 		final Resource resource = this.getResource(pathName);
 
 		// invoke generator
 		final RecordLangGenerator generator = new RecordLangGenerator();
-		final IFileSystemAccess2 fsa = new DirectIOFileSystemAccess(this.projectHostPath, this.configurations);
+		//final IFileSystemAccess2 fsa = new DirectIOFileSystemAccess(this.projectHostPath, this.configurations);
 
-		generator.doGenerate(resource, fsa, null);
+		//generator.doGenerate(resource, fsa, null);
 	}
 
 }

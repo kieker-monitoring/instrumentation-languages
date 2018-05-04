@@ -53,6 +53,9 @@ public final class GeneratorFeatures {
 	/** String registry feature. */
 	public static final String STRING_REGISTRY = "1.0:1.13";
 	
+	/** Factory methods in IMonitoringRecord. */
+	public static final String LEGACY_FACTORY = "1.0:1.14";
+	
 	/**
 	 * Configuration class. Should not be instantiated.
 	 */
