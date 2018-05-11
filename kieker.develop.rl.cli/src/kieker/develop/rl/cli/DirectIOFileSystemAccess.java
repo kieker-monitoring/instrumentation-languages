@@ -29,25 +29,18 @@ import org.apache.log4j.Logger;
  * File system access class used by the generator.
  *
  * @author Reiner Jung
- *
+ * 
+ * @since 1.15
  */
 public class DirectIOFileSystemAccess {
 
 	/** Central logger for the compiler. */
-	private static final Logger LOG = LogManager.getLogger(DirectIOFileSystemAccess.class);
-
-	private final String projectHostPath;
-
+	private static final Logger LOGGER = LogManager.getLogger(DirectIOFileSystemAccess.class);
 
 	/**
 	 * Constructor for the headless file system access.
-	 *
-	 * @param projectHostPath
-	 *            root path where the files are stored
-	 * @param configurations
 	 */
-	public DirectIOFileSystemAccess(final String projectHostPath) {
-		this.projectHostPath = projectHostPath;
+	public DirectIOFileSystemAccess() {
 	}
 
 	/**
@@ -63,8 +56,8 @@ public class DirectIOFileSystemAccess {
 	public void generateFile(final String fileName, final String targetDirectory,
 		final CharSequence contents) {
 		try {
-			final String targetFilePath = this.projectHostPath + File.separator + targetDirectory + File.separator + fileName;
-			LOG.info("Create " + targetFilePath);
+			final String targetFilePath = targetDirectory + File.separator + fileName;
+			LOGGER.info("Create " + targetFilePath);
 			final File file = new File(targetFilePath);
 			file.getParentFile().mkdirs();
 			final BufferedWriter writer = new BufferedWriter(new FileWriter(file));
@@ -72,11 +65,11 @@ public class DirectIOFileSystemAccess {
 			writer.flush();
 			writer.close();
 		} catch (final UnsupportedEncodingException e) {
-			LOG.error("Error: " + fileName, e);
+			LOGGER.error("Error: " + fileName, e);
 		} catch (final FileNotFoundException e) {
-			LOG.error("Error: " + fileName, e);
+			LOGGER.error("Error: " + fileName, e);
 		} catch (final IOException e) {
-			LOG.error("Error: " + fileName, e);
+			LOGGER.error("Error: " + fileName, e);
 		}
 	}
 

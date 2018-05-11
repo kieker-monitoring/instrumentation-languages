@@ -38,9 +38,9 @@ class PCMModelMapper implements IModelMapper<NamedElement, String /*PCMCodeNode*
 	val modelRepository = new HashMap<String, MappingModel>
 	
 	new() {
-		println("Instantiate Model Mapper " + this)
+		System.out.println("Instantiate Model Mapper " + this)
 	}
-				
+
 	override loadModel(ApplicationModelHandle handle, ResourceSet resourceSet) {
 		
 		var result = modelRepository.get(handle.model)

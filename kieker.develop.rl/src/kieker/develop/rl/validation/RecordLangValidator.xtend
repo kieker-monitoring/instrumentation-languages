@@ -92,7 +92,7 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 				if (properties.exists[p | p.name.equals(property.name) && p != property]) {
 					val Property otherProperty = properties.findFirst[p | p.name.equals(property.name) && p != property]
 					//if (!typeAndPackageIdentical(otherProperty.type,property.type))
-					error('Property has been defined in ' + (otherProperty.eContainer as Type).name + '. Cannot be declared again.', 
+					error('Property with the same name has already been defined in ' + (otherProperty.eContainer as Type).name + '.', 
 						RecordLangPackage.Literals::PROPERTY__NAME,
 						INVALID_NAME)
 				}
@@ -102,7 +102,7 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 				if (properties.exists[p | p.name.equals(property.name) && p != property]) {
 					val Property otherProperty = properties.findFirst[p | p.name.equals(property.name) && p != property]
 					//if (!typeAndPackageIdentical(otherProperty.type,property.type))
-					error('Property has been defined in ' + (otherProperty.eContainer as Type).name + '. Cannot be declared again.', 
+					error('Property with the same name has already been defined in ' + (otherProperty.eContainer as Type).name + '.', 
 						RecordLangPackage.Literals::PROPERTY__NAME,
 						INVALID_NAME)
 				}

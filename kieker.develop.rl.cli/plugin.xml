@@ -18,10 +18,10 @@
          point="org.eclipse.core.runtime.products">
       <product
             application="kieker.develop.rl.cli.application"
-            name="Kieker IRL CLI">
+            name="IRL Generator">
          <property
                name="appName"
-               value="Headless Example">
+               value="IRL Generator">
          </property>
       </product>
    </extension>

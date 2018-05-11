@@ -27,6 +27,8 @@ import static extension kieker.develop.rl.typing.TypeResolution.*
 import kieker.develop.rl.recordLang.Type
 import kieker.develop.rl.recordLang.EnumerationType
 import kieker.develop.rl.recordLang.ComplexType
+import org.eclipse.emf.common.util.EList
+import kieker.develop.rl.recordLang.ArraySize
 
 /**
  * Generate the equals method of a Kieker record.
@@ -71,6 +73,85 @@ class EqualsMethodTemplate {
 			return true;
 		}
 	'''
+	
+	/**
+	 * Create hashcode method.
+	 * 
+	 * @param className name of the Java class representing the EntityType
+	 * @param properties list of all properties which are accessible in this EntityType
+	 *
+	 * @return returns the generated hashcode method
+	 */
+	static def CharSequence createHashcode(String className, List<Property> properties) '''
+		/**
+		 * {@inheritDoc}
+		 */
+		@Override
+		public int hashCode() {
+			int code = 0;
+			«properties.map[it.createPropertyHashCode].join('\n')»
+			
+			return code;
+		}
+	'''
+	
+	/**
+	 * Create the hashcode for a property of a type.
+	 * 
+	 * @param property the property for which the equals is created
+	 * 
+	 * @returns code snippet for the given property 
+	 */
+	private static def createPropertyHashCode(Property property) {
+		val type = property.findType
+		val simpleTypeAction = createPropertyHashCode(type.type, property.createGetterValueExpression)
+		
+		if (type.sizes.size > 0) {
+			'''
+				// get array length
+				«property.createNestedHashCode(type.sizes, 0)»
+			'''
+		} else
+			simpleTypeAction
+	}
+		
+	private	static def CharSequence createNestedHashCode(Property property, EList<ArraySize> sizes, int level) '''
+	for (int i«level»=0;i«level» < this.«property.createPropertyName».length;i«level»++) {
+		«if (sizes.size > level)
+			property.createNestedHashCode(sizes, level + 1)
+		else
+			 createPropertyHashCode(property.type.type, property.createGetterValueExpression)
+		»
+	}
+	'''
+	
+	
+	/**
+	 * Create hashcode for simple values.
+	 * 
+	 * @param typeName name of the type
+	 * @param getterExpression value access expression
+	 */
+	private static def CharSequence createPropertyHashCode(Type type, CharSequence getterExpression) throws InternalErrorException {
+		switch (type) {
+			BaseType: switch (BaseTypes.getTypeEnum(type)) {
+				case STRING: 
+					'''code += this.«getterExpression».hashCode();'''
+				case FLOAT: 
+					'''code += ((int)this.«getterExpression»);'''
+				case DOUBLE: 
+					'''code += ((int)this.«getterExpression»);'''
+				case BOOLEAN:
+					'''code += this.«getterExpression»?0:1;'''
+				default: 
+					'''code += ((int)this.«getterExpression»);'''
+			}
+			EnumerationType:
+				'''code += this.«getterExpression».hashCode();'''
+			ComplexType:
+				'''code += this.«getterExpression».hashCode();'''
+		}
+	}
 	
 	/**
 	 * Create the equals check for a property of a type.

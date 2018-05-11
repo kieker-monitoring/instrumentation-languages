@@ -123,6 +123,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 				«if (isSupported(GeneratorFeatures.BYTE_BUFFER_DESERIALIZER)) createInitFromBuffer()»
 				
 				«createEquals(type.name, allDataProperties)»
+				«if (isSupported(GeneratorFeatures.OWN_HASH_FUNCTION)) createHashcode(type.name, allDataProperties)»
 				
 				«type.createPropertyGettersAndSetters»
 			}

@@ -14,14 +14,14 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<checkstyle.config.location>cs-conf.xml</checkstyle.config.location>
-		<tycho-version>1.0.0</tycho-version>
-		<tycho-extras-version>1.0.0</tycho-extras-version>
-		<xtext-version>2.11.0</xtext-version>
-		<xtend-maven-version>2.11.0</xtend-maven-version>
+		<tycho-version>1.1.0</tycho-version>
+		<tycho-extras-version>1.1.0</tycho-extras-version>
+		<xtext-version>2.13.0</xtext-version>
+		<xtend-maven-version>2.13.0</xtend-maven-version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 
-		<eclipse-repo.url>http://download.eclipse.org/releases/neon/</eclipse-repo.url>
+		<eclipse-repo.url>http://download.eclipse.org/releases/oxygen/</eclipse-repo.url>
 		<kieler-repo.url>http://rtsys.informatik.uni-kiel.de/~kieler/updatesite/release_pragmatics_2016-07/</kieler-repo.url>
 		<elk-repo.url>http://download.eclipse.org/elk/updates/releases/0.1.0/</elk-repo.url>
 
@@ -77,7 +77,7 @@
 				<version>${tycho-version}</version>
 				<configuration>
 					<compilerArgs>
-						<arg>-err:-forbidden,-discouraged</arg>
+						<!-- arg>-err:-forbidden,-discouraged</arg -->
 					</compilerArgs>
 				</configuration>
 			</plugin>

@@ -34,6 +34,8 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.naming.QualifiedName
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.ResourceSet
+import java.util.ArrayList
+import java.util.Arrays
 
 /**
  * Construct a mapping model for a given PCM model.
@@ -113,7 +115,7 @@ class PCMCreateMappingModel {
 				for (EObject component : components) {
 					val container = MappingFactory.eINSTANCE.createContainer()
 					val entityName = (component.getFeature("entityName") as String).trim
-					val segments = entityName.split('\\.')
+					val segments = new ArrayList<String>(Arrays.asList(entityName.split('\\.')))
 					if (segments.size == 0)
 						segments.add(entityName as String)
 					val QualifiedName qualifiedName = QualifiedName.create(segments)

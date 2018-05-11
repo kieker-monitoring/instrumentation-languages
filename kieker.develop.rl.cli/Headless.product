@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Headless Example" id="kieker.develop.rl.cli.headless" application="kieker.develop.rl.cli.application" useFeatures="false" includeLaunchers="true">
+<product name="IRL Generator" id="kieker.develop.rl.cli.headless" application="kieker.develop.rl.cli.application" useFeatures="false" includeLaunchers="true">
+
 
    <configIni use="default">
    </configIni>
@@ -10,6 +11,20 @@
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
       </vmArgsMac>
    </launcherArgs>
+
+   <windowImages/>
+
+
+   <launcher name="irl-generator">
+      <win useIco="false">
+         <bmp/>
+      </win>
+   </launcher>
+
+
+   <vm>
+   </vm>
+
 
    <plugins>
       <plugin id="javax.xml"/>
@@ -26,5 +41,12 @@
       <plugin id="org.eclipse.osgi.compatibility.state" fragment="true"/>
    </plugins>
 
+
+   <preferencesInfo>
+      <targetfile overwrite="false"/>
+   </preferencesInfo>
+
+   <cssInfo>
+   </cssInfo>
 
 </product>

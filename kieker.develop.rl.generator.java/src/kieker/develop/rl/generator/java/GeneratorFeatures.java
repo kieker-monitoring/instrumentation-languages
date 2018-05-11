@@ -56,8 +56,11 @@ public final class GeneratorFeatures {
 	/** Factory methods in IMonitoringRecord. */
 	public static final String LEGACY_FACTORY = "1.0:1.14";
 	
+	public static final String OWN_HASH_FUNCTION = "1.15:";
+		
 	/**
 	 * Configuration class. Should not be instantiated.
 	 */
 	private GeneratorFeatures() {}
+
 }
