@@ -9,9 +9,8 @@ Require-Bundle: org.eclipse.equinox.app,
  org.eclipse.xtext,
  org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Bundle-ClassPath: .,
- lib/jcommander-1.64.jar,
- lib/kieker-1.14-SNAPSHOT.jar
 Import-Package: com.google.inject,
  org.junit
 Automatic-Module-Name: kieker.develop.rl.cli
+Bundle-ClassPath: .,
+ lib/jcommander-1.64.jar

@@ -206,6 +206,11 @@
 			<url>${kieler-repo.url}</url>
 			<layout>p2</layout>
 		</repository>
+		
+		<repository>
+			<id>jcommander</id>
+			<url>https://mvnrepository.com/artifact/com.beust/jcommander</url>
+		</repository>
 
 		<repository>
 			<id>central</id>

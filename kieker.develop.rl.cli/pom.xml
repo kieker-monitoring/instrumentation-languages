@@ -18,10 +18,8 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<checkstyle.config.location>${basedir}/cs-conf.xml</checkstyle.config.location>
-		<!-- variables -->
-		<eclipse-repo.url>http://download.eclipse.org/releases/neon</eclipse-repo.url>
 	</properties>
-	
+		
 	<dependencies>
 		<dependency>
 			<groupId>com.google.inject</groupId>
@@ -57,7 +55,7 @@
 		<dependency>
 			<groupId>net.kieker-monitoring</groupId>
 			<artifactId>kieker</artifactId>
-			<version>1.13</version>
+			<version>1.14-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
