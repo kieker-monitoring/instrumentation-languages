@@ -259,6 +259,10 @@
 			<url>${kit-common-repo.url}</url>
 			<layout>p2</layout>
 		</repository>
+		<repository>
+		  <id>sonatype.oss.snapshot</id>
+  		  <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+		</repository>
 	</repositories>
 
 	<pluginRepositories>
