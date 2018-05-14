@@ -18,7 +18,7 @@
 		<dependency>
 			<groupId>org.eclipse.xtext</groupId>
 			<artifactId>org.eclipse.xtext.xbase</artifactId>
-			<version>${xtext-version}</version>
+			<version>${xtext.version}</version>
 		</dependency>
 	</dependencies>
 

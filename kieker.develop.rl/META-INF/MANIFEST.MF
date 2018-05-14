@@ -1,4 +1,5 @@
 Manifest-Version: 1.0
+Automatic-Module-Name: kieker.develop.rl
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-Vendor: %providerName

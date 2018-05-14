@@ -21,3 +21,4 @@ Export-Package: kieker.develop.al.handler.pcm.rac,
  kieker.develop.al.handler.pcm.rac.impl,
  kieker.develop.al.handler.pcm.rac.util
 Bundle-ActivationPolicy: lazy
+Automatic-Module-Name: kieker.develop.al.handler.pcm

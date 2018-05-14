@@ -19,7 +19,7 @@
 		<dependency>
 		  <groupId>net.kieker-monitoring</groupId>
 		  <artifactId>kieker</artifactId>
-		  <version>1.12</version>
+		  <version>1.14-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>kieker.develop</groupId>
@@ -37,7 +37,7 @@
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-surefire-plugin</artifactId>
-				<version>${tycho-version}</version>
+				<version>${tycho.version}</version>
 				<configuration>
 					<failIfNoTests>false</failIfNoTests>
 				</configuration>

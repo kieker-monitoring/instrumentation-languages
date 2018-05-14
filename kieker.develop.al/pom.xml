@@ -104,7 +104,7 @@
 					<dependency>
 						<groupId>org.eclipse.xtext</groupId>
 						<artifactId>org.eclipse.xtext.xbase.lib</artifactId>
-						<version>${xtext-version}</version>
+						<version>${xtext.version}</version>
 					</dependency>
 					<dependency>
 						<groupId>kieker.develop</groupId>
@@ -119,7 +119,7 @@
 					<dependency>
 						<groupId>org.eclipse.xtext</groupId>
 						<artifactId>org.eclipse.xtext.xtext.generator</artifactId>
-						<version>${xtext-version}</version>
+						<version>${xtext.version}</version>
 						<exclusions>
 							<exclusion>
 								<groupId>org.eclipse.emf</groupId>
@@ -130,7 +130,7 @@
 					<dependency>
 						<groupId>org.eclipse.xtext</groupId>
 						<artifactId>org.eclipse.xtext.xbase</artifactId>
-						<version>${xtext-version}</version>
+						<version>${xtext.version}</version>
 					</dependency>
 				</dependencies>
 			</plugin>

@@ -14,16 +14,16 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<checkstyle.config.location>cs-conf.xml</checkstyle.config.location>
-		<tycho-version>1.1.0</tycho-version>
-		<tycho-extras-version>1.1.0</tycho-extras-version>
-		<xtext-version>2.13.0</xtext-version>
-		<xtend-maven-version>2.13.0</xtend-maven-version>
+		<tycho.version>1.1.0</tycho.version>
+		<tycho.extras.version>1.1.0</tycho.extras.version>
+		<xtext.version>2.13.0</xtext.version>
+		<xtend.maven.version>2.13.0</xtend.maven.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 
 		<eclipse-repo.url>http://download.eclipse.org/releases/oxygen/</eclipse-repo.url>
-		<kieler-repo.url>http://rtsys.informatik.uni-kiel.de/~kieler/updatesite/release_pragmatics_2016-07/</kieler-repo.url>
-		<elk-repo.url>http://download.eclipse.org/elk/updates/releases/0.1.0/</elk-repo.url>
+		<kieler-repo.url>http://rtsys.informatik.uni-kiel.de/~kieler/updatesite/release_pragmatics_2017-11/</kieler-repo.url>
+		<elk-repo.url>http://download.eclipse.org/elk/updates/releases/0.3.0/</elk-repo.url>
 
 		<palladio-repo.url>https://sdqweb.ipd.kit.edu/eclipse/palladio/releases/latest</palladio-repo.url>
 		<probespec-repo.url>https://sdqweb.ipd.kit.edu/eclipse/probespec/releases/1.2</probespec-repo.url>
@@ -32,6 +32,7 @@
 		<palladio-wfe-repo.url>https://sdqweb.ipd.kit.edu/eclipse/workflowengine/releases/latest</palladio-wfe-repo.url>
 		<kit-common-repo.url>https://sdqweb.ipd.kit.edu/eclipse/commons/releases/latest</kit-common-repo.url>
 		<geco-repo.url>http://build.se.informatik.uni-kiel.de/eus/geco/snapshot/</geco-repo.url>
+		<checkstyle.config.location>../cs-conf.xml</checkstyle.config.location>
 		<xtext-repo.url>http://download.itemis.de/updates</xtext-repo.url>
 	</properties>
 
@@ -56,25 +57,24 @@
 		<module>kieker.develop.rl.tests</module>
 		<module>kieker.develop.rl.feature</module>
 		<module>kieker.develop.repository</module>
-		<module>kieker.develop.target</module> 
+		<!-- module>kieker.develop.target</module --> 
 		<module>kieker.develop.rl.cli</module>
 		<module>kieker.develop.semantics</module>
 		<module>kieker.develop.semantics.java</module>
 		<module>kieker.develop.rl.generator.java.tests</module>
 	</modules>
-
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-maven-plugin</artifactId>
-				<version>${tycho-version}</version>
+				<version>${tycho.version}</version>
 				<extensions>true</extensions>
 			</plugin>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-compiler-plugin</artifactId>
-				<version>${tycho-version}</version>
+				<version>${tycho.version}</version>
 				<configuration>
 					<compilerArgs>
 						<!-- arg>-err:-forbidden,-discouraged</arg -->
@@ -84,7 +84,7 @@
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>target-platform-configuration</artifactId>
-				<version>${tycho-version}</version>
+				<version>${tycho.version}</version>
 				<configuration>
 					<pomDependencies>consider</pomDependencies>
 					<executionEnvironment>JavaSE-1.8</executionEnvironment>
@@ -138,7 +138,7 @@
 				<plugin>
 					<groupId>org.eclipse.xtend</groupId>
 					<artifactId>xtend-maven-plugin</artifactId>
-					<version>${xtend-maven-version}</version>
+					<version>${xtend.maven.version}</version>
 					<executions>
 						<execution>
 							<phase>process-sources</phase>
@@ -206,7 +206,6 @@
 			<url>${kieler-repo.url}</url>
 			<layout>p2</layout>
 		</repository>
-		
 		<repository>
 			<id>jcommander</id>
 			<url>https://mvnrepository.com/artifact/com.beust/jcommander</url>
