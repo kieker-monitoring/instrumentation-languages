@@ -129,7 +129,7 @@ class RecordLangGenerator implements IGenerator2 {
 				switch (generator) {
 					IGenerator<ComplexType, CharSequence>: {
 						(generator as IConfigureParameters).configure(targetVersion, header, author, version)
-						val result = generator.generate(it) as CharSequence
+						val result = generator.generate(it)
 						fsa.generateFile(configuration.outputFilePath(it), configuration.name, result)
 					}
 					/** Note in future, we might add model to model output here. */

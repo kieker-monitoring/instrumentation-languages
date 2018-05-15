@@ -19,4 +19,5 @@ Export-Package: kieker.develop.semantics,
  kieker.develop.semantics.annotations.impl,
  kieker.develop.semantics.annotations.util
 Bundle-ActivationPolicy: lazy
+Automatic-Module-Name: kieker.develop.semantics
 

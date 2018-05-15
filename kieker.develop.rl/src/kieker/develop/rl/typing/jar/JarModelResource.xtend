@@ -84,7 +84,7 @@ public class JarModelResource extends ResourceImpl {
 		if (!this.getContents().empty) {
 			for (object : this.getContents()) {
 				if (object instanceof Model) {
-					val types = (object as Model).types
+					val types = object.types
 					val result = types.findFirst[type |
 						type.name.endsWith("." + uriFragment) || 
 						type.name.equals(uriFragment)
@@ -107,7 +107,7 @@ public class JarModelResource extends ResourceImpl {
 	 */
 	override String getURIFragment(EObject eObject) {
 		if (eObject instanceof Type) {
-			return (eObject as Type).name
+			return eObject.name
 		} else {
 			return super.getURIFragment(eObject)
 		}

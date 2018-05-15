@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
@@ -37,7 +38,7 @@
 	</properties>
 
 	<modules>
- 		<module>kieker.develop.al</module>
+		<module>kieker.develop.al</module>
 		<module>kieker.develop.al.ide</module>
 		<module>kieker.develop.al.ui</module>
 		<module>kieker.develop.al.tests</module>
@@ -57,13 +58,14 @@
 		<module>kieker.develop.rl.tests</module>
 		<module>kieker.develop.rl.feature</module>
 		<module>kieker.develop.repository</module>
-		<!-- module>kieker.develop.target</module --> 
+		<!-- module>kieker.develop.target</module -->
 		<module>kieker.develop.rl.cli</module>
 		<module>kieker.develop.semantics</module>
 		<module>kieker.develop.semantics.java</module>
 		<module>kieker.develop.rl.generator.java.tests</module>
 	</modules>
 	<build>
+		<sourceDirectory>src</sourceDirectory>
 		<plugins>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
@@ -77,10 +79,12 @@
 				<version>${tycho.version}</version>
 				<configuration>
 					<compilerArgs>
-						<!-- arg>-err:-forbidden,-discouraged</arg -->
+						<arg>-err:-forbidden,-discouraged</arg>
 					</compilerArgs>
+					<useProjectSettings>false</useProjectSettings>
 				</configuration>
 			</plugin>
+
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>target-platform-configuration</artifactId>
@@ -131,10 +135,30 @@
 		</plugins>
 
 		<pluginManagement>
-			<!-- xtend-maven-plugin is in pluginManagement instead of in plugins so 
+			<plugins>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>build-helper-maven-plugin</artifactId>
+					<version>1.7</version>
+					<executions>
+						<execution>
+							<id>add-source</id>
+							<phase>generate-sources</phase>
+							<goals>
+								<goal>add-source</goal>
+							</goals>
+							<configuration>
+								<sources>
+									<source>src-gen</source>
+									<source>xtend-gen</source>
+								</sources>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<!-- xtend-maven-plugin is in pluginManagement instead of in plugins so 
 				that it doesn't run before the exec-maven-plugin's *.mwe2 gen; this way we 
 				can list it after. -->
-			<plugins>
 				<plugin>
 					<groupId>org.eclipse.xtend</groupId>
 					<artifactId>xtend-maven-plugin</artifactId>
@@ -169,6 +193,7 @@
 								<filesets>
 									<fileset>
 										<directory>${basedir}/xtend-gen</directory>
+										<directory>${basedir}/src-gen</directory>
 									</fileset>
 								</filesets>
 							</configuration>
@@ -259,8 +284,8 @@
 			<layout>p2</layout>
 		</repository>
 		<repository>
-		  <id>sonatype.oss.snapshot</id>
-  		  <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+			<id>sonatype.oss.snapshot</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
 		</repository>
 	</repositories>
 
