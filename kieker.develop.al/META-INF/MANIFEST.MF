@@ -59,4 +59,5 @@ Export-Package: kieker.develop.al.mapping,
  kieker.develop.al.intermediate,
  kieker.develop.al.intermediate.impl,
  kieker.develop.al.intermediate.util
+Automatic-Module-Name: kieker.develop.al
 
