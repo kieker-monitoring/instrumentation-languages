@@ -40,7 +40,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 
 	override accepts(ComplexType type) {
 		if (type instanceof EventType)
-			!(type as EventType).abstract
+			!type.abstract
 		else
 			false
 	}

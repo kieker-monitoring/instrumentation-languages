@@ -44,7 +44,7 @@ class RecordLangOutlineTreeProvider extends org.eclipse.xtext.ui.editor.outline.
 		for (EObject childElement : modelElement.eContents()) {
 			createNode(parentNode, childElement)
 			if (childElement instanceof ModelType) {
-				(childElement as ModelType).collectAllTypes.forEach[type |
+				childElement.collectAllTypes.forEach[type |
 					createNode(parentNode.children.last, type)
 				]
 				

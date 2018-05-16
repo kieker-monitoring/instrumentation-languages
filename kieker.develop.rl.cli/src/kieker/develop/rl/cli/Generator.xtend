@@ -133,7 +133,7 @@ class Generator {
 				switch (generator) {
 					IGenerator<ComplexType, CharSequence>: {
 						(generator as IConfigureParameters).configure(this.targetVersion, modifiedHeader, this.author, this.version)
-						val result = generator.generate(it) as CharSequence
+						val result = generator.generate(it)
 						fsa.generateFile(configuration.outputFilePath(it), targetDirectory, result)
 					}
 					/** Note in future, we might add model to model output here. */

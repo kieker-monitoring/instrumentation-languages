@@ -115,10 +115,9 @@ public class PackageContentScope implements IScope {
 	 */
 	def IEObjectDescription findPropertyInClassifier(EClassifier classifier, QualifiedName name) {
 		if (classifier instanceof EClass) {
-			val clazz = classifier as EClass
-			val attribute = clazz.EAllAttributes.findFirst[it.name.equals(name.firstSegment)]
+			val attribute = classifier.EAllAttributes.findFirst[it.name.equals(name.firstSegment)]
 			if (attribute === null) {
-				val reference = clazz.EAllReferences.findFirst[it.name.equals(name.firstSegment)]
+				val reference = classifier.EAllReferences.findFirst[it.name.equals(name.firstSegment)]
 				if (reference !== null) {
 					if (name.segmentCount>1) 
 						return findPropertyInClassifier(reference.EReferenceType, name.skipFirst(1))

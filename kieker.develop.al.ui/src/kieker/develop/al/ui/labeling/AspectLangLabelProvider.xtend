@@ -41,7 +41,7 @@ class AspectLangLabelProvider extends org.eclipse.xtext.ui.label.DefaultEObjectL
 	
 		def text(ContainerNode e) {
 			if (e.container instanceof NamedElement)
-				(e.container as NamedElement).name
+				e.container.name
 			else
 				'''Container is of type «e.container.class.name»'''
 		}

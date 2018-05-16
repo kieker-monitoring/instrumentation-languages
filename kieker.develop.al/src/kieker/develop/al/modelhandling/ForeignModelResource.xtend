@@ -85,7 +85,7 @@ public class ForeignModelResource extends ResourceImpl {
 	 */
 	override String getURIFragment(EObject eObject) {
 		if (eObject instanceof NamedElement) {
-			return (eObject as NamedElement).name
+			return eObject.name
 		} else {
 			return super.getURIFragment(eObject)
 		}

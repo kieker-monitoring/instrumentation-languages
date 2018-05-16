@@ -117,7 +117,7 @@ class PCMCreateMappingModel {
 					val entityName = (component.getFeature("entityName") as String).trim
 					val segments = new ArrayList<String>(Arrays.asList(entityName.split('\\.')))
 					if (segments.size == 0)
-						segments.add(entityName as String)
+						segments.add(entityName)
 					val QualifiedName qualifiedName = QualifiedName.create(segments)
 					container.setName(qualifiedName.getLastSegment())
 					container.setPredecessor(component)
