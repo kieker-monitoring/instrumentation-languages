@@ -1,6 +1,8 @@
 #!groovy
 
 DOCKER_IMAGE_NAME = "reinerjung/kieker.maven"
+LOCAL_PATH = /opt/irl
+DOCKER_RUN = 'docker run --rm -u `id -u` -v ' + env.WORKSPACE + ':' + LOCAL_PATH + ' ' + DOCKER_IMAGE_NAME + ' /bin/bash -c "cd ' + LOCAL_PATH + '; mvn -s /opt/settings.xml -B '
 
 node('kieker-slave-docker') {
 	try {
@@ -15,15 +17,15 @@ node('kieker-slave-docker') {
 		}
 
 		stage ('0-prepare logs') {
-			sh 'docker run --rm -u `id -u` -v ' + env.WORKSPACE + ':/opt/irl '+DOCKER_IMAGE_NAME+' /bin/bash -c "cd /opt/irl; mvn -s /opt/settings.xml -B clean"'
+			sh DOCKER_RUN + 'clean"'
 		}
 
 		stage ('1-compile logs') {
-			sh 'docker run --rm -u `id -u` -v ' + env.WORKSPACE + ':/opt/irl '+DOCKER_IMAGE_NAME+' /bin/bash -c "cd /opt/irl; mvn -s /opt/settings.xml -B compile"'
+			sh DOCKER_RUN + 'compile"'
 		}
 
 	//	stage ('2-unit-test logs') {
-	//		sh 'docker run --rm -u `id -u` -v ' + env.WORKSPACE + ':/opt/irl '+DOCKER_IMAGE_NAME+' /bin/bash -c "cd /opt/irl; mvn -s /opt/settings.xml -B test"'
+	//		sh DOCKER_RUN + 'test"'
 	//		junit '**/build/test-results/test/*.xml'
 	//		step([
 	//		    $class: 'CloverPublisher',
@@ -39,9 +41,14 @@ node('kieker-slave-docker') {
 	//		sh 'docker run --rm -u `id -u` -v ' + env.WORKSPACE + ':/opt/kieker '+DOCKER_IMAGE_NAME+' /bin/bash -c "cd /opt/kieker; ./gradlew -S check"'    
 	//	}
 
-	//	stage ('4-release-checks logs') {
-	//		sh 'docker run --rm -u `id -u` -v ' + env.WORKSPACE + ':/opt/kieker '+DOCKER_IMAGE_NAME+' /bin/bash -c "cd /opt/kieker; ./gradlew checkReleaseArchivesShort"'
+		stage ('4-repository-update logs') {
+			steps {
+				sh '[ -d /srv/vhosts/eus/mdm/release/1.3/ ] && rm -rf /srv/vhosts/eus/mdm/release/1.3/*'
+				sh DOCKER_RUN + '-Dupdatesite.url=file:///srv/vhosts/eus/mdm/release/1.3/ install"'
+			}
+		}
 
+	// stuff we might want to do in future upon release
 	//		checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: 'kieker-analysis\\build\\reports\\checkstyle\\*.xml,kieker-tools\\build\\reports\\checkstyle\\*.xml,kieker-monitoring\\build\\reports\\checkstyle\\*.xml,kieker-common\\build\\reports\\checkstyle\\*.xml', unHealthy: ''
 
 	//		findbugs canComputeNew: false, defaultEncoding: '', excludePattern: '', healthy: '', includePattern: '', pattern: 'kieker-analysis\\build\\reports\\findbugs\\*.xml,kieker-tools\\build\\reports\\findbugs\\*.xml,kieker-monitoring\\build\\reports\\findbugs\\*.xml,kieker-common\\build\\reports\\findbugs\\*.xml', unHealthy: ''
