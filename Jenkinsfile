@@ -2,7 +2,7 @@
 
 DOCKER_IMAGE_NAME = "reinerjung/kieker.maven"
 
-node('irl-slave-docker') {
+node('kieker-slave-docker') {
 	try {
 		stage('Pull Request Check') {
 		if ( isPRMergeBuild() ) {
