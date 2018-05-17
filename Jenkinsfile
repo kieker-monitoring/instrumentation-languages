@@ -15,7 +15,7 @@ node('kieker-slave-docker') {
 		}
 
 		stage ('0-prepare logs') {
-			sh 'docker run --rm -u `id -u` -v ' + env.WORKSPACE + ':/opt/irl '+DOCKER_IMAGE_NAME+' /bin/bash -c "cd /opt/irl; mvn -s /opt/settings.xml -B -o clean"'
+			sh 'docker run --rm -u `id -u` -v ' + env.WORKSPACE + ':/opt/irl '+DOCKER_IMAGE_NAME+' /bin/bash -c "cd /opt/irl; mvn -s /opt/settings.xml -B clean"'
 		}
 
 		stage ('1-compile logs') {
