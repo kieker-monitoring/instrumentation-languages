@@ -6,7 +6,7 @@ LOCAL_PATH = "/opt/irl"
 node('kieker-slave-docker') {
 	try {
 		stage('Pull Request Check') {
-			sh 'pwd ; ls -R /'
+
 		}
 
 		stage ('Checkout') {
@@ -41,7 +41,7 @@ node('kieker-slave-docker') {
 	//	}
 
 		stage ('4-repository-update logs') {
-			sh 'rm -rf /srv/vhosts/eus/mdm/release/1.3 ; mkdir /srv/vhosts/eus/mdm/release/1.3'
+			//sh 'rm -rf /srv/vhosts/eus/mdm/release/1.3 ; mkdir /srv/vhosts/eus/mdm/release/1.3'
 			sh 'docker run --rm -u `id -u` -v ' + env.WORKSPACE + ':' + LOCAL_PATH + ' ' + DOCKER_IMAGE_NAME + ' /bin/bash -c "cd ' + LOCAL_PATH + '; mvn -s /opt/settings.xml -B -Dupdatesite.url=file:///srv/vhosts/eus/mdm/release/1.3/ install"'
 		}
 
