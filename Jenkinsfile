@@ -1,7 +1,7 @@
 #!groovy
 
 DOCKER_IMAGE_NAME = "reinerjung/kieker.maven"
-LOCAL_PATH = /opt/irl
+LOCAL_PATH = "/opt/irl"
 DOCKER_RUN = 'docker run --rm -u `id -u` -v ' + env.WORKSPACE + ':' + LOCAL_PATH + ' ' + DOCKER_IMAGE_NAME + ' /bin/bash -c "cd ' + LOCAL_PATH + '; mvn -s /opt/settings.xml -B '
 
 node('kieker-slave-docker') {
