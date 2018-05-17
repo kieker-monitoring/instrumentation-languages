@@ -41,10 +41,8 @@ node('kieker-slave-docker') {
 	//	}
 
 		stage ('4-repository-update logs') {
-			steps {
-				sh '[ -d /srv/vhosts/eus/mdm/release/1.3/ ] && rm -rf /srv/vhosts/eus/mdm/release/1.3/*'
-				sh 'docker run --rm -u `id -u` -v ' + env.WORKSPACE + ':' + LOCAL_PATH + ' ' + DOCKER_IMAGE_NAME + ' /bin/bash -c "cd ' + LOCAL_PATH + '; mvn -s /opt/settings.xml -B -Dupdatesite.url=file:///srv/vhosts/eus/mdm/release/1.3/ install"'
-			}
+			sh '[ -d /srv/vhosts/eus/mdm/release/1.3/ ] && rm -rf /srv/vhosts/eus/mdm/release/1.3/*'
+			sh 'docker run --rm -u `id -u` -v ' + env.WORKSPACE + ':' + LOCAL_PATH + ' ' + DOCKER_IMAGE_NAME + ' /bin/bash -c "cd ' + LOCAL_PATH + '; mvn -s /opt/settings.xml -B -Dupdatesite.url=file:///srv/vhosts/eus/mdm/release/1.3/ install"'
 		}
 
 	// stuff we might want to do in future upon release
