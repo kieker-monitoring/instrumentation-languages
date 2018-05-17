@@ -2,7 +2,6 @@
 
 DOCKER_IMAGE_NAME = "reinerjung/kieker.maven"
 LOCAL_PATH = "/opt/irl"
-DOCKER_RUN = 'docker run --rm -u `id -u` -v ' + env.WORKSPACE + ':' + LOCAL_PATH + ' ' + DOCKER_IMAGE_NAME + ' /bin/bash -c "cd ' + LOCAL_PATH + '; mvn -s /opt/settings.xml -B '
 
 node('kieker-slave-docker') {
 	try {
@@ -17,11 +16,11 @@ node('kieker-slave-docker') {
 		}
 
 		stage ('0-prepare logs') {
-			sh DOCKER_RUN + 'clean"'
+			sh 'docker run --rm -u `id -u` -v ' + env.WORKSPACE + ':' + LOCAL_PATH + ' ' + DOCKER_IMAGE_NAME + ' /bin/bash -c "cd ' + LOCAL_PATH + '; mvn -s /opt/settings.xml -B clean"'
 		}
 
 		stage ('1-compile logs') {
-			sh DOCKER_RUN + 'compile"'
+			sh 'docker run --rm -u `id -u` -v ' + env.WORKSPACE + ':' + LOCAL_PATH + ' ' + DOCKER_IMAGE_NAME + ' /bin/bash -c "cd ' + LOCAL_PATH + '; mvn -s /opt/settings.xml -B compile"'
 		}
 
 	//	stage ('2-unit-test logs') {
@@ -44,7 +43,7 @@ node('kieker-slave-docker') {
 		stage ('4-repository-update logs') {
 			steps {
 				sh '[ -d /srv/vhosts/eus/mdm/release/1.3/ ] && rm -rf /srv/vhosts/eus/mdm/release/1.3/*'
-				sh DOCKER_RUN + '-Dupdatesite.url=file:///srv/vhosts/eus/mdm/release/1.3/ install"'
+				sh 'docker run --rm -u `id -u` -v ' + env.WORKSPACE + ':' + LOCAL_PATH + ' ' + DOCKER_IMAGE_NAME + ' /bin/bash -c "cd ' + LOCAL_PATH + '; mvn -s /opt/settings.xml -B -Dupdatesite.url=file:///srv/vhosts/eus/mdm/release/1.3/ install"'
 			}
 		}
 
