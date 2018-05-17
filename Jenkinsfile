@@ -6,7 +6,7 @@ LOCAL_PATH = "/opt/irl"
 node('kieker-slave-docker') {
 	try {
 		stage('Pull Request Check') {
-			sh 'pwd ; ls -R /srv/vhosts/eus/mdm/'
+			sh 'pwd ; ls -R /'
 		}
 
 		stage ('Checkout') {
