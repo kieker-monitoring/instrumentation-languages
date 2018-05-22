@@ -3,7 +3,6 @@
 
 <product name="IRL Generator" uid="kieker.develop.rl.cli.headless" id="kieker.develop.rl.cli.headless" application="kieker.develop.rl.cli.application" version="1.3.0" useFeatures="false" includeLaunchers="true">
 
-
    <configIni use="default">
    </configIni>
 
@@ -14,17 +13,14 @@
 
    <windowImages/>
 
-
    <launcher name="irl-generator">
       <win useIco="false">
          <bmp/>
       </win>
    </launcher>
 
-
    <vm>
    </vm>
-
 
    <plugins>
       <plugin id="com.google.guava"/>
