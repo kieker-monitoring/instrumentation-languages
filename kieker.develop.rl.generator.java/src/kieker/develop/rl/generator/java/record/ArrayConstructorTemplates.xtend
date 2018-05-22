@@ -60,7 +60,7 @@ class ArrayConstructorTemplates {
 		protected «type.name»(final Object[] values, final Class<?>[] valueTypes) { // NOPMD (values stored directly)
 			«IF (type.parent === null)»AbstractMonitoringRecord.checkArray(values, valueTypes);
 			«ELSE»super(values, valueTypes);
-			«ENDIF»«properties.createPropertyGenericAssignments(if (type.parent !== null) type.parent.collectAllSerializableDataProperties.size else 0)»
+			«ENDIF»«properties.createPropertyAssignments(if (type.parent !== null) type.parent.collectAllSerializableDataProperties.size else 0)»
 		}
 	'''
 	
@@ -84,7 +84,7 @@ class ArrayConstructorTemplates {
 		public «type.name»(final Object[] values) { // NOPMD (direct store of values)
 			«IF (type.parent === null)»AbstractMonitoringRecord.checkArray(values, TYPES);
 			«ELSE»super(values, TYPES);
-			«ENDIF»«properties.createPropertyGenericAssignments(if (type.parent !== null)
+			«ENDIF»«properties.createPropertyAssignments(if (type.parent !== null)
 					type.parent.collectAllSerializableDataProperties.size else 0
 			)»
 		}
@@ -100,13 +100,13 @@ class ArrayConstructorTemplates {
 	 * 
 	 * @returns all assignments for the given property list
 	 */
-	private static def CharSequence createPropertyGenericAssignments(Iterable<Property> properties, int offset) {
+	private static def CharSequence createPropertyAssignments(Iterable<Property> properties, int offset) {
 		val EList<CharSequence> result = new BasicEList<CharSequence>()
 		properties.filter[!it.isTransient].forEach[property, index | result.add(property.createPropertyGenericAssignment(index+offset))]
 		return result.join
 	}
 	
-		/**
+	/**
 	 * Create an assignment with a property as assignment target and an array value as source.
 	 * Used in the generic constructor.
 	 * 
