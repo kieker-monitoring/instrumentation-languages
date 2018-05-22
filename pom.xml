@@ -12,31 +12,6 @@
 
 	<name>Kieker Development Tools</name>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<checkstyle.config.location>cs-conf.xml</checkstyle.config.location>
-		<tycho.version>1.1.0</tycho.version>
-		<tycho.extras.version>1.1.0</tycho.extras.version>
-		<xtext.version>2.13.0</xtext.version>
-		<xtend.maven.version>2.13.0</xtend.maven.version>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
-
-		<eclipse-repo.url>http://download.eclipse.org/releases/oxygen/</eclipse-repo.url>
-		<kieler-repo.url>http://rtsys.informatik.uni-kiel.de/~kieler/updatesite/release_pragmatics_2017-11/</kieler-repo.url>
-		<elk-repo.url>http://download.eclipse.org/elk/updates/releases/0.3.0/</elk-repo.url>
-
-		<palladio-repo.url>https://sdqweb.ipd.kit.edu/eclipse/palladio/releases/latest</palladio-repo.url>
-		<probespec-repo.url>https://sdqweb.ipd.kit.edu/eclipse/probespec/releases/1.2</probespec-repo.url>
-		<palladio-fm-repo.url>https://sdqweb.ipd.kit.edu/eclipse/featuremodel/releases/latest</palladio-fm-repo.url>
-		<palladio-sf-repo.url>https://sdqweb.ipd.kit.edu/eclipse/sensorframework/releases/latest</palladio-sf-repo.url>
-		<palladio-wfe-repo.url>https://sdqweb.ipd.kit.edu/eclipse/workflowengine/releases/latest</palladio-wfe-repo.url>
-		<kit-common-repo.url>https://sdqweb.ipd.kit.edu/eclipse/commons/releases/latest</kit-common-repo.url>
-		<geco-repo.url>http://build.se.informatik.uni-kiel.de/eus/geco/snapshot/</geco-repo.url>
-		<checkstyle.config.location>../cs-conf.xml</checkstyle.config.location>
-		<xtext-repo.url>http://download.itemis.de/updates</xtext-repo.url>
-	</properties>
-
 	<modules>
 		<module>kieker.develop.al</module>
 		<module>kieker.develop.al.ide</module>
@@ -58,12 +33,139 @@
 		<module>kieker.develop.rl.tests</module>
 		<module>kieker.develop.rl.feature</module>
 		<module>kieker.develop.repository</module>
-		<!-- module>kieker.develop.target</module -->
-		<module>kieker.develop.rl.cli</module>
+		<module>kieker.develop.target</module>
 		<module>kieker.develop.semantics</module>
 		<module>kieker.develop.semantics.java</module>
 		<module>kieker.develop.rl.generator.java.tests</module>
+		<module>kieker.develop.rl.cli</module>
+		<module>kieker.develop.rl.cli.site</module>
 	</modules>
+
+	<properties>
+		<tycho.version>1.1.0</tycho.version>
+		<tycho.extras.version>1.1.0</tycho.extras.version>
+		<maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<memoryArgs>-Xms256M -Xmx1024M -XX:PermSize=256M -XX:MaxPermSize=256M -XX:+HeapDumpOnOutOfMemoryError</memoryArgs>
+		<platform-version>[3.9,4.7)</platform-version>
+
+		<checkstyle.config.location>cs-conf.xml</checkstyle.config.location>
+		<xtext.version>2.13.0</xtext.version>
+		<xtend.maven.version>2.13.0</xtend.maven.version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+
+		<!-- properties for deploying the composite update site and zipped products on Sourceforge -->
+		
+		<!-- since this is used in the pluginManagement section, we need to make sure
+			the path always points to this pom's directory; project.basedir will always point
+			to the directory of the pom where the pluginManagement's plugins are used -->
+		<ant-files-path>${project.basedir}/ant</ant-files-path>
+
+		<!-- the subdirectory for the composite update site -->
+		<updates.dir></updates.dir>
+		<site.label>Kieker Development Tools Site</site.label>
+
+		<remote.dir>ADD LOCATION</remote.dir>
+	
+		<!-- local source directory of p2 site for rsync -->
+		<rsync.remote.dir>${remote.dir}/updates/</rsync.remote.dir>
+		<!-- remote directory of p2 site for rsync -->
+		<rsync.local.dir>${user.home}/p2.repositories/${updates.dir}/</rsync.local.dir>
+
+		<!-- pass "-n" to perform a trial run with no changes made -->
+		<dryrun></dryrun>
+
+		<!-- repository URL -->
+		<eclipse-repo.url>http://download.eclipse.org/releases/oxygen/</eclipse-repo.url>
+		<kieler-repo.url>http://rtsys.informatik.uni-kiel.de/~kieler/updatesite/release_pragmatics_2017-11/</kieler-repo.url>
+		<elk-repo.url>http://download.eclipse.org/elk/updates/releases/0.3.0/</elk-repo.url>
+
+		<palladio-repo.url>https://sdqweb.ipd.kit.edu/eclipse/palladio/releases/latest</palladio-repo.url>
+		<probespec-repo.url>https://sdqweb.ipd.kit.edu/eclipse/probespec/releases/1.2</probespec-repo.url>
+		<palladio-fm-repo.url>https://sdqweb.ipd.kit.edu/eclipse/featuremodel/releases/latest</palladio-fm-repo.url>
+		<palladio-sf-repo.url>https://sdqweb.ipd.kit.edu/eclipse/sensorframework/releases/latest</palladio-sf-repo.url>
+		<palladio-wfe-repo.url>https://sdqweb.ipd.kit.edu/eclipse/workflowengine/releases/latest</palladio-wfe-repo.url>
+		<kit-common-repo.url>https://sdqweb.ipd.kit.edu/eclipse/commons/releases/latest</kit-common-repo.url>
+		<geco-repo.url>http://build.se.informatik.uni-kiel.de/eus/geco/snapshot/</geco-repo.url>
+		<checkstyle.config.location>../cs-conf.xml</checkstyle.config.location>
+		<xtext-repo.url>http://download.itemis.de/updates</xtext-repo.url>
+	</properties>
+	
+	<profiles>
+		<profile>
+			<id>oxygen</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+
+			<properties>
+				<target-file-name>oxygen</target-file-name>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>local</id>
+			<properties>
+				<target-file-name>local</target-file-name>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>build-ide</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<properties>
+				<target-file-name>kieker.develop</target-file-name>
+			</properties>
+
+			<modules>
+				<module>kieker.develop.rl.cli.site</module>
+			</modules>
+			
+			<build>
+				<plugins>
+					<!-- specify all environments when building the IDE -->
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>target-platform-configuration</artifactId>
+						<version>${tycho.version}</version>
+						<configuration>
+							<target>
+								<artifact>
+									<groupId>kieker.develop</groupId>
+									<artifactId>kieker.develop.target</artifactId>
+									<version>${project.version}</version>
+									<classifier>${target-file-name}</classifier>
+								</artifact>
+							</target>
+							<environments>
+								<environment>
+									<os>win32</os>
+									<ws>win32</ws>
+									<arch>x86_64</arch>
+								</environment>
+								<environment>
+									<os>macosx</os>
+									<ws>cocoa</ws>
+									<arch>x86_64</arch>
+								</environment>
+								<environment>
+									<os>linux</os>
+									<ws>gtk</ws>
+									<arch>x86_64</arch>
+								</environment>
+							</environments>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
+	</profiles>
+
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<plugins>
