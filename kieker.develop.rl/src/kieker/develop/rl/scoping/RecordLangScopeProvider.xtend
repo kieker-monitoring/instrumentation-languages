@@ -70,7 +70,7 @@ class RecordLangScopeProvider extends AbstractDeclarativeScopeProvider {
 	        Class<EStructuralFeature> type) {
 		val List<EStructuralFeature> result = EcoreUtil2::getAllContentsOfType(classifier, type)
 		if (classifier instanceof EClass) {
-			for (EGenericType generic : (classifier as EClass).getEGenericSuperTypes() ) {
+			for (EGenericType generic : classifier.getEGenericSuperTypes() ) {
 				result.addAll(getAllExternalProperties(generic.getEClassifier(), type))
 			}
 		}

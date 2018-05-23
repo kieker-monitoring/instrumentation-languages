@@ -9,7 +9,7 @@ Bundle-Localization: plugin
 Bundle-Activator: kieker.develop.al.handler.java.Activator
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
- kieker.develop.al;bundle-version="1.2.0",
+ kieker.develop.al,
  org.eclipse.core.resources,
  org.eclipse.xtext.xbase,
  de.cau.cs.se.geco.architecture.framework;bundle-version="1.0.0",
@@ -17,3 +17,4 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.xtext.common.types.ui
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
+Automatic-Module-Name: kieker.develop.al.handler.java

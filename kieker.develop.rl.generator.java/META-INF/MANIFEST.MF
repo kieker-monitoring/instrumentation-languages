@@ -18,4 +18,5 @@ Export-Package: kieker.develop.rl.generator.java,
  kieker.develop.rl.generator.java.junit,
  kieker.develop.rl.generator.java.record,
  kieker.develop.rl.generator.java.record.uid
+Automatic-Module-Name: kieker.develop.rl.generator.java
 

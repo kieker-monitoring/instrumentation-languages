@@ -101,7 +101,7 @@ class ParameterizedConstructorTemplates {
 		val classifier = property.findType
 		val type = classifier.type
 		switch(type) {
-			BaseType case BaseTypes.STRING == BaseTypes.getTypeEnum(type as BaseType) && classifier.sizes.size == 0:
+			BaseType case BaseTypes.STRING == BaseTypes.getTypeEnum(type) && classifier.sizes.size == 0:
 				// guarantee initialization is always not null in case of plain strings
 				'''this.«property.createPropertyName» = «property.createPropertyName» == null?«if (property.value !== null) property.value.createConstantReference(property) else '""'»:«property.createPropertyName»;
 				'''

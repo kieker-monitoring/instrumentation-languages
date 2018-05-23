@@ -12,4 +12,5 @@ Require-Bundle: kieker.develop.rl,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: kieker.develop.rl.ide.contentassist.antlr,
  kieker.develop.rl.ide.contentassist.antlr.internal
+Automatic-Module-Name: kieker.develop.rl.ide
 

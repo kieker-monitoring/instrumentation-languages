@@ -38,6 +38,7 @@
 		<module>kieker.develop.semantics.java</module>
 		<module>kieker.develop.rl.generator.java.tests</module>
 		<module>kieker.develop.rl.cli</module>
+		<module>kieker.develop.rl.cli.feature</module>
 		<module>kieker.develop.rl.cli.site</module>
 	</modules>
 
@@ -50,7 +51,7 @@
 		<platform-version>[3.9,4.7)</platform-version>
 
 		<checkstyle.config.location>cs-conf.xml</checkstyle.config.location>
-		<xtext.version>2.13.0</xtext.version>
+		<xtext.version>2.12.0</xtext.version>
 		<xtend.maven.version>2.13.0</xtend.maven.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
@@ -63,10 +64,10 @@
 		<ant-files-path>${project.basedir}/ant</ant-files-path>
 
 		<!-- the subdirectory for the composite update site -->
-		<updates.dir></updates.dir>
+		<updates.dir>kdt</updates.dir>
 		<site.label>Kieker Development Tools Site</site.label>
 
-		<remote.dir>ADD LOCATION</remote.dir>
+		<remote.dir>/home/reiner/dump-kdt/</remote.dir>
 	
 		<!-- local source directory of p2 site for rsync -->
 		<rsync.remote.dir>${remote.dir}/updates/</rsync.remote.dir>

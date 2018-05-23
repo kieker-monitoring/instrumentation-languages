@@ -48,7 +48,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	/** Unit tests are only produced for non abstract classes which define properties.  */
 	override accepts(ComplexType type) {
 		if (type instanceof EventType) {
-			!(type as EventType).abstract && (type.collectAllSerializableDataProperties.size > 0)
+			!type.abstract && (type.collectAllSerializableDataProperties.size > 0)
 		} else
 			false
 	}
@@ -244,10 +244,10 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	
 	private def String createConstantValue(Literal value) {
 		switch (value) {
-			StringLiteral :	return '"' + (value as StringLiteral).value + '"'
-			FloatLiteral : return (value as FloatLiteral).value.toString
-			IntLiteral : return (value as IntLiteral).value.toString
-			ConstantLiteral : return createConstantValue((value as ConstantLiteral).value.value)
+			StringLiteral :	return '"' + value.value + '"'
+			FloatLiteral : return value.value.toString
+			IntLiteral : return value.value.toString
+			ConstantLiteral : return createConstantValue(value.value.value)
 			BuiltInValueLiteral case "KIEKER_VERSION".equals(value.value): '''kieker.common.util.Version.getVERSION()'''
 			default : return '""'
 		}

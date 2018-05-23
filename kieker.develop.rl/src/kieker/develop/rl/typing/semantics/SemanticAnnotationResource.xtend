@@ -36,7 +36,7 @@ import kieker.develop.semantics.annotations.Technology
  * @author Reiner Jung
  * @since 1.3
  */
-public class SemanticAnnotationResource extends ResourceImpl {
+class SemanticAnnotationResource extends ResourceImpl {
 	
 	public static final String SEMANTIC_ANNOTATION = "kieker.develop.semantics.SemanticAnnotation"
 		
@@ -67,7 +67,7 @@ public class SemanticAnnotationResource extends ResourceImpl {
 	 */
 	override String getURIFragment(EObject eObject) {
 		if (eObject instanceof Annotation) {
-			return (eObject as Annotation).name
+			return eObject.name
 		} else {
 			return super.getURIFragment(eObject)
 		}
@@ -119,9 +119,8 @@ public class SemanticAnnotationResource extends ResourceImpl {
 		val config = registry.getConfigurationElementsFor(SEMANTIC_ANNOTATION)
   		try {
   			config.forEach[element |
-  				val ext = element.createExecutableExtension("annotations")
-  				if (ext instanceof ISemanticExtension) {
-  					val semanticExtension = (ext as ISemanticExtension)
+  				val semanticExtension = element.createExecutableExtension("annotations")
+  				if (semanticExtension instanceof ISemanticExtension) {
 	          		semanticExtension.annotations.forEach[
 	          			if (annotations.containsKey(it.name)) {
 	          				annotations.get(it.name).implementations += it.implementations

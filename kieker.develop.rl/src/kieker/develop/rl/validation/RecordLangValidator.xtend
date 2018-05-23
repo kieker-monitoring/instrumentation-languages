@@ -292,7 +292,7 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 					if (literal instanceof FloatLiteral)
 						true
 					else if (literal instanceof ArrayLiteral)
-						checkAllLiteralsArtOfType(FloatLiteral,literal as ArrayLiteral)
+						checkAllLiteralsArtOfType(FloatLiteral, literal)
 				} else
 					false
 			} else if (left.type.name.equals('long')) {
@@ -304,7 +304,7 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 						else
 						 	false
 					else if (literal instanceof ArrayLiteral)
-						checkAllLiteralsArtOfType(IntLiteral,literal as ArrayLiteral)
+						checkAllLiteralsArtOfType(IntLiteral, literal)
 				} else
 					false
 			} else if (left.type.name.equals('byte')) {
@@ -316,7 +316,7 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 						else
 						 	false
 					else if (literal instanceof ArrayLiteral)
-						checkAllLiteralsArtOfType(IntLiteral,literal as ArrayLiteral)
+						checkAllLiteralsArtOfType(IntLiteral, literal)
 				} else
 					false
 			} else if (left.type.name.equals('short')) {
@@ -328,7 +328,7 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 						else
 						 	false
 					else if (literal instanceof ArrayLiteral)
-						checkAllLiteralsArtOfType(IntLiteral,literal as ArrayLiteral)
+						checkAllLiteralsArtOfType(IntLiteral, literal)
 				} else
 					false
 			} else
@@ -343,7 +343,7 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 	private def boolean checkAllLiteralsArtOfType(Class<? extends Literal> type, ArrayLiteral literal) {
 		literal.literals.forall[element |
 			if (element instanceof ArrayLiteral) 
-				checkAllLiteralsArtOfType(type, element as ArrayLiteral)
+				checkAllLiteralsArtOfType(type, element)
 			else 
 				type.isInstance(element)
 		]

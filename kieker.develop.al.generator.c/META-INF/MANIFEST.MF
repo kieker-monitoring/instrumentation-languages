@@ -14,3 +14,4 @@ Require-Bundle: org.eclipse.core.runtime,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: kieker.develop.al.generator.c
+Automatic-Module-Name: kieker.develop.al.generator.c

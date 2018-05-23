@@ -6,7 +6,7 @@ Bundle-Version: 1.3.0.qualifier
 Bundle-SymbolicName: kieker.develop.al.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: kieker.develop.al;visibility:=reexport,
- kieker.develop.al.ide;bundle-version="1.2.0",
+ kieker.develop.al.ide,
  kieker.develop.rl.ui,
  org.eclipse.xtext.ui,
  org.eclipse.ui.editors;bundle-version="3.5.0",
@@ -29,3 +29,4 @@ Export-Package: kieker.develop.al.ui.quickfix,
  kieker.develop.al.ui.contentassist,
  kieker.develop.al.ui.internal
 Bundle-Activator: kieker.develop.al.ui.internal.AlActivator
+Automatic-Module-Name: kieker.develop.al.ui

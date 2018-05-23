@@ -74,7 +74,7 @@ class ConstantConstructionTemplates {
 	 */
 	private def static boolean isStringType(Type type) {
 		if (type instanceof BaseType)
-			BaseTypes.getTypeEnum(type as BaseType) == BaseTypes.STRING
+			BaseTypes.getTypeEnum(type) == BaseTypes.STRING
 		else
 			false
 	}
