@@ -34,7 +34,7 @@ import org.eclipse.core.runtime.Platform
  */
 @Singleton
 class SemanticAnnotationHandler implements ISemanticAnnotationHandler {
-	private static final String SEMANTIC_ANNOTATION = "kieker.develop.semantics.SemanticAnnotation"
+	static final String SEMANTIC_ANNOTATION = "kieker.develop.semantics.SemanticAnnotation"
 	
 	val Semantics model = AnnotationsFactory.eINSTANCE.createSemantics
 		
@@ -45,9 +45,8 @@ class SemanticAnnotationHandler implements ISemanticAnnotationHandler {
 		val config = registry.getConfigurationElementsFor(SEMANTIC_ANNOTATION)
   		try {
   			config.forEach[element |
-  				val ext = element.createExecutableExtension("annotations")
-  				if (ext instanceof ISemanticExtension) {
-  					val semanticExtension = (ext as ISemanticExtension)
+  				val semanticExtension = element.createExecutableExtension("annotations")
+  				if (semanticExtension instanceof ISemanticExtension) {
 	          		semanticExtension.annotations.forEach[
 	          			if (annotations.containsKey(it.name)) {
 	          				annotations.get(it.name).implementations += it.implementations

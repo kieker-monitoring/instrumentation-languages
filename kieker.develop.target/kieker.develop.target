@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target includeMode="feature" name="kieker.develop.target" sequenceNumber="30">
+<?pde version="3.8"?><target includeMode="feature" name="kieker.develop.target" sequenceNumber="31">
 <locations>
 <location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.elk.algorithms.feature.feature.group" version="0.3.0"/>
@@ -79,7 +79,7 @@
 <repository location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/"/>
 </location>
 <location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="de.cau.cs.se.geco.architecture.feature.feature.group" version="1.0.0.201805230348"/>
+<unit id="de.cau.cs.se.geco.architecture.feature.feature.group" version="1.0.0.201805240348"/>
 <repository location="https://build.se.informatik.uni-kiel.de/eus/geco/snapshot/"/>
 </location>
 <location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">

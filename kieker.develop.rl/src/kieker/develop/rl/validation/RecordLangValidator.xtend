@@ -298,8 +298,8 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 			} else if (left.type.name.equals('long')) {
 				if (right.type.name.equals('int')) {
 					if (literal instanceof IntLiteral)
-						if (((literal as IntLiteral).value >= Long.MIN_VALUE) && 
-							((literal as IntLiteral).value <= Long.MAX_VALUE))
+						if ((literal.value >= Long.MIN_VALUE) && 
+							(literal.value <= Long.MAX_VALUE))
 							true
 						else
 						 	false
@@ -310,8 +310,8 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 			} else if (left.type.name.equals('byte')) {
 				if (right.type.name.equals('int')) {
 					if (literal instanceof IntLiteral)
-						if (((literal as IntLiteral).value >= Byte.MIN_VALUE) && 
-							((literal as IntLiteral).value <= Byte.MAX_VALUE))
+						if ((literal.value >= Byte.MIN_VALUE) && 
+							(literal.value <= Byte.MAX_VALUE))
 							true
 						else
 						 	false
@@ -322,8 +322,8 @@ class RecordLangValidator extends AbstractRecordLangValidator {
 			} else if (left.type.name.equals('short')) {
 				if (right.type.name.equals('int')) {
 					if (literal instanceof IntLiteral)
-						if (((literal as IntLiteral).value >= Short.MIN_VALUE) && 
-							((literal as IntLiteral).value <= Short.MAX_VALUE))
+						if ((literal.value >= Short.MIN_VALUE) && 
+							(literal.value <= Short.MAX_VALUE))
 							true
 						else
 						 	false

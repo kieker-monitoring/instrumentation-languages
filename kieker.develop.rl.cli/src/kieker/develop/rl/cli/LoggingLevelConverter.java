@@ -25,6 +25,10 @@ import org.apache.log4j.Level;
  */
 public class LoggingLevelConverter implements com.beust.jcommander.IStringConverter<Level> {
 
+	public LoggingLevelConverter() {
+		// default constructor
+	}
+
 	@Override
 	public Level convert(final String levelName) {
 		return Level.toLevel(levelName);

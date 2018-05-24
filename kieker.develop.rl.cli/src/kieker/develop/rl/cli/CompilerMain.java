@@ -110,7 +110,11 @@ public class CompilerMain implements IApplication {
 	private final XtextResourceSet resourceSet = new XtextResourceSet();
 
 	@Inject
-	IResourceValidator resourceValidator;
+	private IResourceValidator resourceValidator;
+
+	public CompilerMain() {
+		// default constructor
+	}
 
 	@Override
 	public Object start(final IApplicationContext context) throws Exception {
@@ -231,7 +235,7 @@ public class CompilerMain implements IApplication {
 				sourceLocation = new File(presentWorkingDirectory + File.separator + sourceLocationName);
 			}
 
-			File sourceRootLocation;
+			final File sourceRootLocation;
 			if (sourceLocation.isDirectory()) {
 				sourceRootLocation = sourceLocation;
 			} else {
