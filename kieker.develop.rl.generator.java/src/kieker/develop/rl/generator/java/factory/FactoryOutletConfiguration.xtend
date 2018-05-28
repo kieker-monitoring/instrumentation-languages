@@ -29,7 +29,7 @@ import kieker.develop.rl.generator.java.GeneratorProvider
  */
 class FactoryOutletConfiguration extends AbstractOutletConfiguration<ComplexType, CharSequence> {
 	
-	private static String FACTORY_OUTLET_ID = "java.factory";
+	static String FACTORY_OUTLET_ID = "java.factory";
 		
 	new() {
 		super(FACTORY_OUTLET_ID, "Java factory", "./src-gen/java-factory", GeneratorProvider.LANG_JAVA, GeneratorProvider.TECH_KIEKER_JAVA)

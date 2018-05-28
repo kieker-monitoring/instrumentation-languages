@@ -49,7 +49,7 @@ import kieker.develop.rl.recordLang.ComplexType
  * 
  * @since 1.2
  */
-public class JarModelResource extends ResourceImpl {
+class JarModelResource extends ResourceImpl {
 	
 	val EXCLUDE_CLASSES = #[
 		"java.io.Serializable",
@@ -68,7 +68,7 @@ public class JarModelResource extends ResourceImpl {
 	 * @param uri of the foreign model
 	 * @param applicationModel the application model
 	 */
-	public new(URI uri, IProject project) {
+	new(URI uri, IProject project) {
 		super(uri)
 		this.project = project
 	}
@@ -153,7 +153,7 @@ public class JarModelResource extends ResourceImpl {
 	/**
 	 * Return prepared set over all inferred types.
 	 */	
-	public def Iterable<Type> getAllTypes() {
+	def Iterable<Type> getAllTypes() {
 		modelTypes
 	}
 

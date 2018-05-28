@@ -79,7 +79,7 @@ public class JarModelTypeScope extends AbstractScope {
 			return null;
 		}
 		final IEObjectDescription result = EObjectDescription.create(name, type);
-		if ((this.filter != null) && !this.filter.apply(result)) {
+		if (this.filter != null && !this.filter.apply(result)) {
 			return null;
 		}
 		return result;
@@ -161,9 +161,8 @@ public class JarModelTypeScope extends AbstractScope {
 	 * @return Returns the proxy element
 	 */
 	private InternalEObject createProxy(final String fullyQualifiedName) {
-		System.out.println("createProxy " + fullyQualifiedName);
 		final URI uri = JarModelTypeProvider.getFullURIForClass(fullyQualifiedName);
-		// TODO fix this could be component or interface or method?
+		// TODO fix this, name could be component or interface or method?
 		final InternalEObject proxy = (InternalEObject) RecordLangFactory.eINSTANCE.createModel();
 		proxy.eSetProxyURI(uri);
 		return proxy;

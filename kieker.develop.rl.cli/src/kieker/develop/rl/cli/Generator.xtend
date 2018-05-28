@@ -43,20 +43,20 @@ import org.apache.log4j.Level
  */
 class Generator {
 	
-	private static final Logger LOGGER = LogManager.getLogger(Generator);
+	static final Logger LOGGER = LogManager.getLogger(Generator);
 	
 	/** Version of the record, becoming part of the JavaDoc comment. */
-	private String version
+	String version
 	/** Default author when no author was specified with the event type.  */
-	private String author
+	String author
 	/** API target version; referring to the Kieker API. */
-	private String targetVersion
+	String targetVersion
 	/** Header comment to be prepended to the generated files. */
-	private String headerComment
+	String headerComment
 	
-	private AbstractOutletConfiguration<ComplexType, Object> configuration
+	AbstractOutletConfiguration<ComplexType, Object> configuration
 	
-	private DirectIOFileSystemAccess fsa
+	DirectIOFileSystemAccess fsa
 	
 	/**
 	 * Create a new generator handler.

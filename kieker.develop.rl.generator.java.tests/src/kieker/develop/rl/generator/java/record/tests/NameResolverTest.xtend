@@ -1,3 +1,18 @@
+/***************************************************************************
+ * Copyright 2013 Kieker Project (http://kieker-monitoring.net)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ ***************************************************************************/
 package kieker.develop.rl.generator.java.record.tests
 
 import org.junit.Assert
@@ -15,14 +30,14 @@ import kieker.develop.rl.recordLang.TemplateType
 
 class NameResolverTest {
 	
-	private static String PROPERTY_NAME = "propertyName"
-	private static String MODEL_NAME = "test.model"
-	private static String EVENT_TYPE_NAME = "EventType"
-	private static String TEMPLATE_TYPE_NAME = "TemplateType"
-	private static String CHILD_TYPE_NAME = "SecondType"
+	static String PROPERTY_NAME = "propertyName"
+	static String MODEL_NAME = "test.model"
+	static String EVENT_TYPE_NAME = "EventType"
+	static String TEMPLATE_TYPE_NAME = "TemplateType"
+	static String CHILD_TYPE_NAME = "SecondType"
 
 
-	private static String[] KEYWORDS = #['abstract', 'assert',
+	static String[] KEYWORDS = #['abstract', 'assert',
 		'boolean', 'break', 'byte', 
 		'case', 'catch', 'char', 'class', 'const', 'continue',
 		'default',  'do', 'double',

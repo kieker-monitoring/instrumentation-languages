@@ -39,7 +39,7 @@ class SemanticAnnotationProvider implements Resource.Factory {
 	/** */
 	public static final String OBJECTS = "/Snippets/" //$NON-NLS-1$
 		
-	private val ResourceSet resourceSet
+	val ResourceSet resourceSet
 
 	/**
 	 * Construct the type provider.

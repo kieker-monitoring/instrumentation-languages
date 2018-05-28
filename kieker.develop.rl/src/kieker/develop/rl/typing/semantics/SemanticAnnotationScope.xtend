@@ -33,18 +33,15 @@ import kieker.develop.semantics.annotations.AnnotationsFactory
  */
 class SemanticAnnotationScope extends AbstractScope {
 	
-	private val SemanticAnnotationProvider semanticAnnotationProvider;
+	val SemanticAnnotationProvider semanticAnnotationProvider;
 
-	private val IQualifiedNameConverter qualifiedNameConverter;
-
-	private val Predicate<IEObjectDescription> filter;
+	val IQualifiedNameConverter qualifiedNameConverter;
 	
 	new(SemanticAnnotationProvider semanticAnnotationProvider, IQualifiedNameConverter qualifiedNameConverter, 
 		Predicate<IEObjectDescription> filter) {
 		super(IScope.NULLSCOPE, false)
 		this.semanticAnnotationProvider = semanticAnnotationProvider
 		this.qualifiedNameConverter = qualifiedNameConverter
-		this.filter = filter		
 	}
 	
 	override protected getAllLocalElements() {

@@ -31,7 +31,7 @@ import kieker.develop.rl.generator.java.GeneratorProvider
  */
 class JUnitOutletConfiguration extends AbstractOutletConfiguration<ComplexType, CharSequence> {
 	
-	private static String JUNIT_OUTLET_ID = "java.junit";
+	static String JUNIT_OUTLET_ID = "java.junit";
 		
 	new () {
 		super(JUNIT_OUTLET_ID, "JUnit test", "./test-gen/common", GeneratorProvider.LANG_JAVA, GeneratorProvider.TECH_JUNIT)

@@ -32,19 +32,19 @@ import de.cau.cs.se.geco.architecture.framework.IGenerator
 abstract class AbstractOutletConfiguration<S, T> {
 
 	/** Name of the outlet. */
-	private String name
+	String name
 	
 	/** Description of the outlet. */
-	private String description
+	String description
 		
 	/** Default directory for the outlet. */
-	private String directory
+	String directory
 	
 	/** Technology supported by the generators of this outlet. */
-	private String technology
+	String technology
 	
 	/** Target language supported by the generators of this outlet. */
-	private String lang
+	String lang
 	
 	/** All generators for event and templates types of this outlet configuration. */
 	protected val generators = new ArrayList<IGenerator<? extends S,? extends T>>

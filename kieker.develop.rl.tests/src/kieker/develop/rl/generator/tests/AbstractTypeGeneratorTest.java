@@ -38,7 +38,10 @@ public class AbstractTypeGeneratorTest { // NOCS -- its a test
 	private final ComplexType emptyTestType = RecordLangFactory.eINSTANCE.createEventType();
 
 	/**
-	 * @throws java.lang.Exception
+	 * setup method.
+	 *
+	 * @throws Exception
+	 *             on error
 	 */
 	@Before
 	public void setUp() throws Exception {
@@ -81,7 +84,7 @@ public class AbstractTypeGeneratorTest { // NOCS -- its a test
 
 	/**
 	 * Test method for
-	 * {@link kieker.develop.rl.generator.AbstractTypeGenerator#createOutputModel(kieker.develop.rl.recordLang.ComplexType, kieker.develop.rl.generator.Version, java.lang.String, java.lang.String, java.lang.String)}.
+	 * {@link kieker.develop.rl.generator.AbstractTypeGenerator#createOutputModel(ComplexType, Version, String, String, String)}.
 	 */
 	@Test
 	public void testGenerate() {
@@ -89,7 +92,7 @@ public class AbstractTypeGeneratorTest { // NOCS -- its a test
 		Assert.assertEquals("Missing parameter", 4, result.length);
 		Assert.assertArrayEquals("Wrong values in code generation",
 				new String[] { this.emptyTestType.getName(), AbstractTypeGeneratorTest.HEADER,
-						AbstractTypeGeneratorTest.AUTHOR, AbstractTypeGeneratorTest.VERSION, },
+					AbstractTypeGeneratorTest.AUTHOR, AbstractTypeGeneratorTest.VERSION, },
 				result);
 	}
 

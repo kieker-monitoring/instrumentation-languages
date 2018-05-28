@@ -45,7 +45,7 @@ class JarModelGlobalScopeProvider extends BaseTypeGlobalScopeProvider {
 	
 	
 	@Inject
-	private IQualifiedNameConverter qualifiedNameConverter;
+	IQualifiedNameConverter qualifiedNameConverter;
 
 	override IScope getParentTypeScope(Resource resource, EReference reference,
             Predicate<IEObjectDescription> filter, EClass referenceType) {

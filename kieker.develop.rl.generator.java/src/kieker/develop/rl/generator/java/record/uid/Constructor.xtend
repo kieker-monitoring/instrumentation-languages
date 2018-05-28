@@ -24,9 +24,9 @@ import kieker.develop.rl.recordLang.Classifier
  * @since 1.0
  */
 class Constructor {
-	private String name
-	private EVisibility visibility
-	private Classifier[] signature
+	String name
+	EVisibility visibility
+	Classifier[] signature
 	
 	new (String name, EVisibility visibility, Classifier[] signature) {
 		this.name = name

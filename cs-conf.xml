@@ -8,11 +8,11 @@
 	<property name="severity" value="error" />
 
 	<!-- http://checkstyle.sourceforge.net/config_filters.html#SuppressionFilter -->
-	<!-- <module name="SuppressionFilter"> -->
+	<module name="SuppressionFilter">
 	<!-- for rel/abs file path issue, see: https://github.com/checkstyle/checkstyle/issues/2976 -->
-	<!-- <property name="file" value="/config/cs-suppressions.xml" /> -->
-	<!-- <property name="optional" value="false" /> -->
-	<!-- </module> -->
+		<property name="file" value="${config_loc}/suppressions.xml" />
+		<property name="optional" value="false" />
+	</module>
 
 	<!-- If you set the basedir property below, then all reported file names 
 		will be relative to the specified directory. See http://checkstyle.sourceforge.net/5.x/config.html#Checker 
@@ -59,24 +59,15 @@
 
 	<!-- Checks that a source file begins with a specified header. ! -->
 	<!-- See http://checkstyle.sf.net/config_header.html ! -->
-	<!-- KIEKER ! -->
-	<module name="Header">
-		<!--<property name="headerFile" value=""/> -->
-		<!--<property name="charset" value=""/> -->
-		<property name="header"
-			value="/***************************************************************************\n * Copyright 2017 Kieker Project (http://kieker-monitoring.net)\n *\n * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);\n * you may not use this file except in compliance with the License.\n * You may obtain a copy of the License at\n *\n *     http://www.apache.org/licenses/LICENSE-2.0\n *\n * Unless required by applicable law or agreed to in writing, software\n * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,\n * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n * See the License for the specific language governing permissions and\n * limitations under the License.\n ***************************************************************************/\n" />
-		<property name="ignoreLines" value="2" />
-		<property name="fileExtensions" value="java" />
-	</module>
 
 	<!-- Checks the header of a source file against a header file that contains 
 		a regular expression ! -->
 	<!-- for each line of the source header. ! -->
 	<!-- See http://checkstyle.sf.net/config_header.html ! -->
-	<!-- Default: OFF <module name="RegexpHeader"> <property name="headerFile" 
-		value=""/> <property name="charset" value=""/> <property name="header" value=""/> 
-		<property name="multiLines" value=""/> <property name="fileExtensions" value=""/> 
-		</module> ! -->
+    <module name="RegexpHeader">
+        <property name="headerFile" value="${config_loc}/java-header.sed"/>
+        <property name="fileExtensions" value="java,xtend"/> 
+    </module>
 
 	<!-- !________________________________________________________________________________________ 
 		! ! J A V A D O C S !________________________________________________________________________________________ 

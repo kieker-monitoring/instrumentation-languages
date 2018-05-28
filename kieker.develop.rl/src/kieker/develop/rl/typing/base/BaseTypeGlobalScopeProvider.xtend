@@ -38,10 +38,10 @@ import org.eclipse.xtext.scoping.impl.DefaultGlobalScopeProvider
  */
 class BaseTypeGlobalScopeProvider extends DefaultGlobalScopeProvider {
 	@Inject
-	private BaseTypeProviderFactory typeProviderFactory;
+	BaseTypeProviderFactory typeProviderFactory;
 
 	@Inject
-	private IQualifiedNameConverter qualifiedNameConverter;
+	IQualifiedNameConverter qualifiedNameConverter;
 
     override IScope getScope(Resource resource, EReference reference, Predicate<IEObjectDescription> filter) {
             val IScope parentTypeScope = resource.getParentTypeScope(reference, filter, reference.getEReferenceType());

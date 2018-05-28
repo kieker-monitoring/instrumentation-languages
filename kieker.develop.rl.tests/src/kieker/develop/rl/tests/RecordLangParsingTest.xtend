@@ -37,13 +37,13 @@ import kieker.develop.rl.recordLang.BaseType
 @InjectWith(RecordLangInjectorProvider)
 class RecordLangParsingTest{
 	
-	private static String PACKAGE_NAME = "test.record"
-	private static String BASE_ET_NAME = "Base"
-	private static String EXTENDED_ET_NAME = "Extended"
-	private static String INT_PROPERTY = "intProperty"
-	private static String STRING_PROPERTY = "stringProperty"
+	static String PACKAGE_NAME = "test.record"
+	static String BASE_ET_NAME = "Base"
+	static String EXTENDED_ET_NAME = "Extended"
+	static String INT_PROPERTY = "intProperty"
+	static String STRING_PROPERTY = "stringProperty"
 	
-	private static ITemplates code = new CodeTemplates()
+	static ITemplates code = new CodeTemplates()
 
 	@Inject
 	ParseHelper<Model> parseHelper

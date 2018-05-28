@@ -79,7 +79,8 @@ public class RecordLangNewWizardPage extends WizardPage {
 	/**
 	 * Constructor for RecordLangNewWizardPage.
 	 *
-	 * @param selection selected element in package explorer
+	 * @param selection
+	 *            selected element in package explorer
 	 */
 	public RecordLangNewWizardPage(final ISelection selection) {
 		super("wizardPage");
@@ -94,7 +95,7 @@ public class RecordLangNewWizardPage extends WizardPage {
 			if (element instanceof IPackageFragment) {
 				this.sourcePackage = (IPackageFragment) element;
 				IJavaElement parent = this.sourcePackage.getParent();
-				while (!(parent instanceof IPackageFragmentRoot) && (parent != null)) {
+				while (!(parent instanceof IPackageFragmentRoot) && parent != null) {
 					parent = parent.getParent();
 				}
 				if (parent != null) {
@@ -115,6 +116,7 @@ public class RecordLangNewWizardPage extends WizardPage {
 
 	/**
 	 * Return the stored file name.
+	 *
 	 * @return file name
 	 */
 	public String getFileName() {
@@ -123,6 +125,7 @@ public class RecordLangNewWizardPage extends WizardPage {
 
 	/**
 	 * Return the resource path for the folder containing the new file.
+	 *
 	 * @return path to the selected package
 	 */
 	public IPath getPackagePath() {
@@ -139,6 +142,7 @@ public class RecordLangNewWizardPage extends WizardPage {
 
 	/**
 	 * Returns the current SourcePackageText.
+	 *
 	 * @return SourcePackageText
 	 */
 	protected String getSourcePackageText() {
@@ -148,7 +152,8 @@ public class RecordLangNewWizardPage extends WizardPage {
 	/**
 	 * Checks if a package is part of the current IPackageFragmentRoot.
 	 *
-	 * @param packageName - name of the assumed package
+	 * @param packageName
+	 *            - name of the assumed package
 	 * @return boolean
 	 */
 	protected boolean existsPackage(final String packageName) {
@@ -156,7 +161,7 @@ public class RecordLangNewWizardPage extends WizardPage {
 		final IPackageFragmentRoot froot = this.sourceFolder;
 		IJavaElement[] existingPackages = null;
 		try {
-			if ((froot != null) && froot.exists()) {
+			if (froot != null && froot.exists()) {
 				existingPackages = froot.getChildren();
 			}
 		} catch (final JavaModelException e) {
@@ -180,7 +185,8 @@ public class RecordLangNewWizardPage extends WizardPage {
 	/**
 	 * Sets the SourcePackage.
 	 *
-	 * @param pack - new SourcePackage
+	 * @param pack
+	 *            - new SourcePackage
 	 */
 	protected void setSourcePackage(final IPackageFragment pack) {
 		this.sourcePackage = pack;
@@ -205,6 +211,7 @@ public class RecordLangNewWizardPage extends WizardPage {
 	 * @param parent
 	 *            the parent composite
 	 */
+	@Override
 	public void createControl(final Composite parent) {
 		final Composite container = new Composite(parent, SWT.NULL);
 		final GridLayout layout = new GridLayout();
@@ -223,6 +230,7 @@ public class RecordLangNewWizardPage extends WizardPage {
 			this.sourceFolderText.setText(this.generatedLocalPath(this.sourceFolder));
 		}
 		this.sourceFolderText.addModifyListener(new ModifyListener() {
+			@Override
 			public void modifyText(final ModifyEvent e) {
 				RecordLangNewWizardPage.this.dialogChanged();
 			}
@@ -248,11 +256,12 @@ public class RecordLangNewWizardPage extends WizardPage {
 			this.sourcePackageText.setText(this.sourcePackage.getElementName());
 		}
 		this.sourcePackageText.addModifyListener(new ModifyListener() {
+			@Override
 			public void modifyText(final ModifyEvent e) {
 				if (!RecordLangNewWizardPage.this.sourcePackageText.getText().equals(RecordLangNewWizardPage.this.sourcePackage.getElementName())
 						&& RecordLangNewWizardPage.this.existsPackage(RecordLangNewWizardPage.this.sourcePackageText.getText())) {
-					RecordLangNewWizardPage.this.sourcePackage = RecordLangNewWizardPage.this.sourceFolder.
-							getPackageFragment(RecordLangNewWizardPage.this.sourcePackageText.getText());
+					RecordLangNewWizardPage.this.sourcePackage = RecordLangNewWizardPage.this.sourceFolder
+							.getPackageFragment(RecordLangNewWizardPage.this.sourcePackageText.getText());
 				}
 				RecordLangNewWizardPage.this.dialogChanged();
 			}
@@ -275,6 +284,7 @@ public class RecordLangNewWizardPage extends WizardPage {
 		gd = new GridData(GridData.FILL_HORIZONTAL);
 		this.fileText.setLayoutData(gd);
 		this.fileText.addModifyListener(new ModifyListener() {
+			@Override
 			public void modifyText(final ModifyEvent e) {
 				RecordLangNewWizardPage.this.dialogChanged();
 			}
@@ -293,16 +303,16 @@ public class RecordLangNewWizardPage extends WizardPage {
 	 * Tests if the current workbench selection is a suitable container to use.
 	 */
 	private void initialize() {
-		if ((this.selection != null)
+		if (this.selection != null
 				&& !this.selection.isEmpty()
-				&& (this.selection instanceof IStructuredSelection)) {
+				&& this.selection instanceof IStructuredSelection) {
 			final IStructuredSelection ssel = (IStructuredSelection) this.selection;
 			if (ssel.size() > 1) {
 				return;
 			}
 			final Object obj = ssel.getFirstElement();
 			if (obj instanceof IResource) {
-				IContainer container;
+				final IContainer container;
 				if (obj instanceof IContainer) {
 					container = (IContainer) obj;
 				} else {
@@ -328,6 +338,7 @@ public class RecordLangNewWizardPage extends WizardPage {
 	private IPackageFragmentRoot chooseSourceFolder() {
 		final ISelectionStatusValidator validator = new ISelectionStatusValidator() {
 
+			@Override
 			public IStatus validate(final Object[] selection) { // NOCS
 				if (selection.length == 1) {
 					if (this.isSelectedValid(selection[0])) {
@@ -418,7 +429,7 @@ public class RecordLangNewWizardPage extends WizardPage {
 		final IPackageFragmentRoot froot = this.sourceFolder;
 		IJavaElement[] packages = null;
 		try {
-			if ((froot != null) && froot.exists()) {
+			if (froot != null && froot.exists()) {
 				packages = froot.getChildren();
 			}
 		} catch (final JavaModelException e) {
@@ -459,7 +470,7 @@ public class RecordLangNewWizardPage extends WizardPage {
 				this.updateStatus("A source folder must be specified");
 				return;
 			}
-			if ((sourceFolderResource == null) || ((sourceFolderResource.getType() & IResource.FOLDER) == 0)) {
+			if (sourceFolderResource == null || (sourceFolderResource.getType() & IResource.FOLDER) == 0) {
 				this.updateStatus("Source folder must exist");
 				return;
 			}
@@ -477,7 +488,7 @@ public class RecordLangNewWizardPage extends WizardPage {
 				this.updateStatus("A source package must be specified");
 			}
 
-			if ((sourcePackageResource == null) || ((sourcePackageResource.getType() & IResource.FOLDER) == 0)) {
+			if (sourcePackageResource == null || (sourcePackageResource.getType() & IResource.FOLDER) == 0) {
 				this.updateStatus("Source package must exist");
 				return;
 			}

@@ -42,18 +42,18 @@ import kieker.develop.rl.recordLang.Classifier
  */
 class EMFModelGenerator {
 	
-	private val static SERVICE_PACKAGE = 'kieker.common.model'
-	private val static KIEKER_ROOT_PACKAGE = 'kieker.common.record'
-	private val static KIEKER_ROOT_RECORD = 'AbstractMonitoringRecord'
+	val static SERVICE_PACKAGE = 'kieker.common.model'
+	val static KIEKER_ROOT_PACKAGE = 'kieker.common.record'
+	val static KIEKER_ROOT_RECORD = 'AbstractMonitoringRecord'
 		
-	private ResourceSet resourceSet
-	private EcoreFactory factory = EcoreFactory.eINSTANCE
-	private EClass abstractRecordClass
+	ResourceSet resourceSet
+	EcoreFactory factory = EcoreFactory.eINSTANCE
+	EClass abstractRecordClass
 	
 	/**
 	 * Constructor.
 	 */
-	public new (ResourceSet resourceSet) {
+	new (ResourceSet resourceSet) {
 		this.resourceSet = resourceSet
 	}
 	

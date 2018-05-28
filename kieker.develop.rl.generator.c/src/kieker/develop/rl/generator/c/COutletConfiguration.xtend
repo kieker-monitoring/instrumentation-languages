@@ -30,7 +30,7 @@ import static extension kieker.develop.rl.generator.c.CommonCFunctionsExtension.
  */
 class COutletConfiguration extends AbstractOutletConfiguration<ComplexType, CharSequence> {
 	
-	private static String C_OUTLET_ID = "c"
+	static String C_OUTLET_ID = "c"
 	
 	new () {
 		super(C_OUTLET_ID, "C", "./src/gen/c", GeneratorProvider.LANG_C, GeneratorProvider.TECH_KIEKER_C)

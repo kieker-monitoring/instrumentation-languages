@@ -28,7 +28,7 @@ import kieker.develop.rl.recordLang.Model
  */
 class DelphiOutletConfiguration extends AbstractOutletConfiguration<ComplexType, CharSequence>  {
 	
-	private static String DELFI_OUTLET_ID = "delphi.records"
+	static String DELFI_OUTLET_ID = "delphi.records"
 	
 	new () {
 		super(DELFI_OUTLET_ID, "Delphi", "./src-gen/delphi", GeneratorProvider.LANG_DELPHI, GeneratorProvider.TECH_KIEKER_DELPHI)

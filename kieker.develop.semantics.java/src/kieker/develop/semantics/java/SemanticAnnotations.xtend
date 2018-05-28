@@ -29,7 +29,7 @@ import kieker.develop.semantics.annotations.AnnotationsFactory
  */
 class SemanticAnnotations implements ISemanticExtension {
 	
-	private Semantics model
+	Semantics model
 	
 	extension AspectJSemantics aspectJ = new AspectJSemantics()
 	

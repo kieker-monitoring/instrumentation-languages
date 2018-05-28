@@ -112,6 +112,9 @@ public class CompilerMain implements IApplication {
 	@Inject
 	private IResourceValidator resourceValidator;
 
+	/**
+	 * Default constructor.
+	 */
 	public CompilerMain() {
 		// default constructor
 	}
