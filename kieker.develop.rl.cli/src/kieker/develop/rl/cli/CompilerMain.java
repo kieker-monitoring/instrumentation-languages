@@ -170,7 +170,7 @@ public class CompilerMain implements IApplication {
 				}
 			}
 		} catch (final ParameterException e) {
-			CompilerMain.LOGGER.error(e);
+			CompilerMain.LOGGER.error(e.getLocalizedMessage());
 			if (commander != null) {
 				commander.usage(e.getLocalizedMessage());
 			}

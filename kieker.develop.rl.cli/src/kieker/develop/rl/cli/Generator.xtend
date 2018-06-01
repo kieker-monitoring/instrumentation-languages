@@ -33,6 +33,12 @@ import kieker.develop.rl.generator.IConfigureParameters
 import org.apache.log4j.LogManager
 import org.apache.log4j.Logger
 import org.apache.log4j.Level
+import java.io.File
+import java.io.FileWriter
+import java.io.BufferedWriter
+import java.io.UnsupportedEncodingException
+import java.io.FileNotFoundException
+import java.io.IOException
 
 /**
  * Run all generators for all resources.
@@ -55,9 +61,7 @@ class Generator {
 	String headerComment
 	
 	AbstractOutletConfiguration<ComplexType, Object> configuration
-	
-	DirectIOFileSystemAccess fsa
-	
+		
 	/**
 	 * Create a new generator handler.
 	 * 
@@ -75,7 +79,6 @@ class Generator {
 		this.author = author
 		this.targetVersion = targetVersion
 		this.configuration = configuration
-		this.fsa = new DirectIOFileSystemAccess()
 	}
 	
 	def generate(Resource resource, String targetDirectory, String language) {
@@ -133,13 +136,41 @@ class Generator {
 				switch (generator) {
 					IGenerator<ComplexType, CharSequence>: {
 						(generator as IConfigureParameters).configure(this.targetVersion, modifiedHeader, this.author, this.version)
-						val result = generator.generate(it)
-						fsa.generateFile(configuration.outputFilePath(it), targetDirectory, result)
+						generateFile(configuration.outputFilePath(it), targetDirectory, generator.generate(it))
 					}
 					/** Note in future, we might add model to model output here. */
 				}
 
 			]
 		]
+	}
+	
+	/**
+	 * Store the given contents at a place inside the rootPath specified by the fileName.
+	 *
+	 * @param fileName
+	 *            relative file name and path
+	 * @param targetDirectory
+	 *            targetDirectory
+	 * @param contents
+	 *            the content to be stored
+	 */
+	private def generateFile(String fileName, String targetDirectory, CharSequence contents) {
+		try {
+			val targetFilePath = targetDirectory + File.separator + fileName
+			LOGGER.info(String.format("Create %s", targetFilePath))
+			val file = new File(targetFilePath)
+			file.getParentFile().mkdirs()
+			val writer = new BufferedWriter(new FileWriter(file))
+			writer.write(contents.toString())
+			writer.flush()
+			writer.close()
+		} catch (UnsupportedEncodingException e) {
+			LOGGER.error(String.format("Error: unsupported encoding %s %s", fileName, e.localizedMessage))
+		} catch (FileNotFoundException e) {
+			LOGGER.error(String.format("Error: file not found %s %s", fileName, e.localizedMessage))
+		} catch (IOException e) {
+			LOGGER.error(String.format("Error: writing error %s %s", fileName, e.localizedMessage))
+		}
 	}
 }

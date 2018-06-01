@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Java
+Bundle-Name: %pluginName
 Bundle-SymbolicName: kieker.develop.al.generator.perl;singleton:=true
 Bundle-Version: 1.3.0.qualifier
 Bundle-Activator: kieker.develop.al.generator.perl.Activator
@@ -15,3 +15,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: kieker.develop.al.generator.perl
 Automatic-Module-Name: kieker.develop.al.generator.perl
+Bundle-Vendor: %providerName

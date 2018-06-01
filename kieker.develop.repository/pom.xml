@@ -17,8 +17,31 @@
 
 	<properties>
 		<!-- Relative path to the repo being uploaded -->
-		<repo.path>${project.build.directory}/repository</repo.path>
+		<repository-path>${project.build.directory}/repository</repository-path>
 	</properties>
+	
+	<profiles>
+		<profile>
+			<id>snapshot</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			
+			<properties>
+				<destination>snapshot</destination>
+			</properties>
+		</profile>
+		<profile>
+			<id>release</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			
+			<properties>
+				<destination>release/${project.version}</destination>
+			</properties>
+		</profile>
+	</profiles>
 
 	<build>
 		<extensions>
@@ -35,7 +58,7 @@
 				<version>2.6</version>
 			</extension>
 		</extensions>
-
+		
 		<plugins>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
@@ -78,10 +101,10 @@
 							<goal>upload</goal>
 						</goals>
 						<configuration>
-							<fromDir>${repo.path}</fromDir>
+							<fromDir>${repository-path}</fromDir>
 							<includes>**</includes>
-							<url>${updatesite.url}/ui</url>
-							<toDir>.</toDir>
+							<url>${updatesite}/kdt</url>
+							<toDir>${destination}</toDir>
 						</configuration>
 					</execution>
 				</executions>

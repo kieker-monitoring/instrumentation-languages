@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Java
+Bundle-Name: %pluginName
 Bundle-SymbolicName: kieker.develop.rl.generator.java;singleton:=true
 Bundle-Version: 1.3.0.qualifier
 Bundle-Activator: kieker.develop.rl.generator.java.Activator
@@ -19,4 +19,5 @@ Export-Package: kieker.develop.rl.generator.java,
  kieker.develop.rl.generator.java.record,
  kieker.develop.rl.generator.java.record.uid
 Automatic-Module-Name: kieker.develop.rl.generator.java
+Bundle-Vendor: %providerName
 

@@ -17,8 +17,31 @@
 
 	<properties>
 		<!-- Relative path to the repo being uploaded -->
-		<repo.path>${project.build.directory}/repository</repo.path>
+		<products-path>${project.build.directory}/products/</products-path>
 	</properties>
+
+	<profiles>
+		<profile>
+			<id>snapshot</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			
+			<properties>
+				<destination>snapshot</destination>
+			</properties>
+		</profile>
+		<profile>
+			<id>release</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			
+			<properties>
+				<destination>release/${project.version}</destination>
+			</properties>
+		</profile>
+	</profiles>
 
 	<build>
 		<extensions>
@@ -78,10 +101,10 @@
 							<goal>upload</goal>
 						</goals>
 						<configuration>
-							<fromDir>${repo.path}</fromDir>
-							<includes>**</includes>
-							<url>${updatesite.url}/cli</url>
-							<toDir>.</toDir>
+							<fromDir>${products-path}</fromDir>
+							<includes>kieker.develop.rl.cli.headless-*.zip</includes>
+							<url>${updatesite}/kdt-cli</url>
+							<toDir>${destination}</toDir>
 						</configuration>
 					</execution>
 				</executions>
