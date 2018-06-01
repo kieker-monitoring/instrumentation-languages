@@ -17,11 +17,17 @@
 
 	<properties>
 		<!-- Relative path to the repo being uploaded -->
-		<repo.path>${project.build.directory}/repository/</repo.path>
+		<repo.path>${project.build.directory}/repository</repo.path>
 	</properties>
 
 	<build>
 		<extensions>
+			<!-- Enabling the use of file transfer -->
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ssh</artifactId>
+				<version>2.6</version>
+			</extension>
 			<!-- Enabling the use of file transfer -->
 			<extension>
 				<groupId>org.apache.maven.wagon</groupId>
@@ -34,7 +40,7 @@
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-p2-director-plugin</artifactId>
-				<version>${tycho.version}</version>
+				<version>${tycho-version}</version>
 				<executions>
 					<execution>
 						<id>materialize-products</id>
@@ -53,17 +59,17 @@
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-p2-repository-plugin</artifactId>
-				<version>${tycho.version}</version>
+				<version>${tycho-version}</version>
 				<configuration>
-                			<includeAllDependencies>true</includeAllDependencies>
-          			</configuration>
+					<includeAllDependencies>true</includeAllDependencies>
+				</configuration>
 			</plugin>
 		
 			<!-- Upload the repo to the server -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>wagon-maven-plugin</artifactId>
-				<version>1.0-beta-5</version>
+				<version>2.0.0</version>
 				<executions>
 					<execution>
 						<id>upload-repo</id>
@@ -74,7 +80,7 @@
 						<configuration>
 							<fromDir>${repo.path}</fromDir>
 							<includes>**</includes>
-							<url>${updatesite.url}</url>
+							<url>${updatesite.url}/ui</url>
 							<toDir>.</toDir>
 						</configuration>
 					</execution>
@@ -106,6 +112,5 @@
 				</configuration>
 			</plugin>
 		</plugins>
-
 	</build>
 </project>

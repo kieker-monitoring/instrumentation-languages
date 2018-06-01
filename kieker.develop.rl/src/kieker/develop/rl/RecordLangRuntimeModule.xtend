@@ -35,7 +35,7 @@ class RecordLangRuntimeModule extends AbstractRecordLangRuntimeModule {
 	 * correct linking of primitive data types. The implementation of that part is broadly transfered
 	 * from the JVMTypes binding.
 	 */
-	override public Class<? extends org.eclipse.xtext.scoping.IGlobalScopeProvider> bindIGlobalScopeProvider() {
+	override Class<? extends org.eclipse.xtext.scoping.IGlobalScopeProvider> bindIGlobalScopeProvider() {
 		return JarModelGlobalScopeProvider
 	}
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
    <feature url="features/kieker.develop.rl.cli.feature_1.3.0.qualifier.jar" id="kieker.develop.rl.cli.feature" version="1.3.0.qualifier">
-      <category name="kieker.develop.rl.cli"/>
+      <category name="kieker.develop"/>
    </feature>
-   <category-def name="kieker.develop.rl.cli" label="Kieker Development Tools IRL cLI"/>
+   <category-def name="kieker.develop" label="Kieker Development Tools"/>
 </site>

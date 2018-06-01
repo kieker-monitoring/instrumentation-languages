@@ -17,7 +17,7 @@
          id="headless"
          point="org.eclipse.core.runtime.products">
       <product
-            application="kieker.develop.rl.cli.application"
+            application="kieker.develop.rl.cli.headless"
             name="IRL Generator">
          <property
                name="appName"

@@ -12,37 +12,37 @@
 	<artifactId>kieker.develop.rl.cli.product</artifactId>
 	<packaging>eclipse-repository</packaging>
 
-	<name>Kieker Record Language CLI Compiler - Product</name>
-	<description>Code generator for Kieker's Instrumentation Record Language</description>
- <build>
-  <plugins>
-   <plugin>
-    <groupId>org.eclipse.tycho</groupId>
-    <artifactId>tycho-p2-repository-plugin</artifactId>
-    <version>${tycho-version}</version>
-    <configuration>
-     <includeAllDependencies>true</includeAllDependencies>
-    </configuration>
-   </plugin>
-   <plugin>
-    <groupId>org.eclipse.tycho</groupId>
-    <artifactId>tycho-p2-director-plugin</artifactId>
-    <version>${tycho-version}</version>
-    <executions>
-     <execution>
-      <id>materialize-products</id>
-      <goals>
-       <goal>materialize-products</goal>
-      </goals>
-     </execution>
-     <execution>
-      <id>archive-products</id>
-      <goals>
-       <goal>archive-products</goal>
-      </goals>
-     </execution>
-    </executions>
-   </plugin>
-  </plugins>
- </build>
+	<name>Kieker Record Language CLI Repository</name>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-p2-repository-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<includeAllDependencies>true</includeAllDependencies>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-p2-director-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<executions>
+					<execution>
+						<id>materialize-products</id>
+						<goals>
+							<goal>materialize-products</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>archive-products</id>
+						<goals>
+							<goal>archive-products</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>

@@ -43,22 +43,22 @@
 	</modules>
 
 	<properties>
-		<tycho.version>1.1.0</tycho.version>
-		<tycho.extras.version>1.1.0</tycho.extras.version>
+		<tycho-version>1.1.0</tycho-version>
+		<tycho-extras-version>1.1.0</tycho-extras-version>
 		<maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<memoryArgs>-Xms256M -Xmx1024M -XX:PermSize=256M -XX:MaxPermSize=256M -XX:+HeapDumpOnOutOfMemoryError</memoryArgs>
 		<platform-version>[3.9,4.7)</platform-version>
 
 		<checkstyle.config.location>cs-conf.xml</checkstyle.config.location>
-		<xtext.version>2.12.0</xtext.version>
-		<xtend.maven.version>2.13.0</xtend.maven.version>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
+		<xtext-version>2.12.0</xtext-version>
+		<xtend-maven-version>2.13.0</xtend-maven-version>
+		<maven-compiler-source>1.8</maven-compiler-source>
+		<maven-compiler-target>1.8</maven-compiler-target>
 
 		<!-- properties for deploying the composite update site and zipped products on Sourceforge -->
 		<target-file-name>kieker.develop</target-file-name>
-				
+
 		<!-- since this is used in the pluginManagement section, we need to make sure
 			the path always points to this pom's directory; project.basedir will always point
 			to the directory of the pom where the pluginManagement's plugins are used -->
@@ -68,7 +68,7 @@
 		<updates.dir>kdt</updates.dir>
 		<site.label>Kieker Development Tools Site</site.label>
 
-		<remote.dir>/home/reiner/dump-kdt/</remote.dir>
+		<remote.dir>/home/reiner/dump/cli/</remote.dir>
 	
 		<!-- local source directory of p2 site for rsync -->
 		<rsync.remote.dir>${remote.dir}/updates/</rsync.remote.dir>
@@ -95,24 +95,25 @@
 	</properties>
 
 	<build>
-		<sourceDirectory>src</sourceDirectory>
 		<plugins>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-maven-plugin</artifactId>
-				<version>${tycho.version}</version>
+				<version>${tycho-version}</version>
 				<extensions>true</extensions>
 			</plugin>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-compiler-plugin</artifactId>
-				<version>${tycho.version}</version>
-				<configuration>
-					<compilerArgs>
-						<arg>-err:-forbidden,-discouraged</arg>
-					</compilerArgs>
-					<useProjectSettings>false</useProjectSettings>
-				</configuration>
+				<artifactId>tycho-source-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<executions>
+					<execution>
+						<id>plugin-source</id>
+						<goals>
+							<goal>plugin-source</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 
 			<!-- checkstyle plugin -->
@@ -137,7 +138,7 @@
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>target-platform-configuration</artifactId>
-				<version>${tycho.version}</version>
+				<version>${tycho-version}</version>
 				<configuration>
 					<pomDependencies>consider</pomDependencies>
 					<executionEnvironment>JavaSE-1.8</executionEnvironment>
@@ -166,6 +167,69 @@
 							<arch>x86_64</arch>
 						</environment>
 					</environments>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho.extras</groupId>
+				<artifactId>tycho-source-feature-plugin</artifactId>
+				<version>${tycho-extras-version}</version>
+				<executions>
+					<execution>
+						<id>source-feature</id>
+						<phase>package</phase>
+						<goals>
+							<goal>source-feature</goal>
+						</goals>
+						<configuration>
+							<excludes>
+								<!-- These are bundles and feature that do not have a corresponding 
+									source version; NOT the ones that we do not want source versions -->
+								<feature id="org.eclipse.sdk" />
+							</excludes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-p2-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<executions>
+					<execution>
+						<id>attach-p2-metadata</id>
+						<phase>package</phase>
+						<goals>
+							<goal>p2-metadata</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-packaging-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<format>'v'yyyyMMdd'-'HHmm</format>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-versions-plugin</artifactId>
+				<version>${tycho-version}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-compiler-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<compilerArgs>
+						<arg>-err:-forbidden,-discouraged</arg>
+					</compilerArgs>
+					<useProjectSettings>false</useProjectSettings>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -198,7 +262,7 @@
 				<plugin>
 					<groupId>org.eclipse.xtend</groupId>
 					<artifactId>xtend-maven-plugin</artifactId>
-					<version>${xtend.maven.version}</version>
+					<version>${xtend-maven-version}</version>
 					<executions>
 						<execution>
 							<phase>process-sources</phase>
