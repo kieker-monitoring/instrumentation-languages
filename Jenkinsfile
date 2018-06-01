@@ -20,7 +20,7 @@ node('kieker-slave-docker') {
 		}
 
 		stage ('1-compile logs') {
-			sh 'docker run --rm -u `id -u` -v ' + env.WORKSPACE + ':' + LOCAL_PATH + ' ' + DOCKER_IMAGE_NAME + ' /bin/bash -c "cd ' + LOCAL_PATH + '; mvn -s /opt/settings.xml -B compile"'
+			sh 'docker run --rm -u `id -u` -v ' + env.WORKSPACE + ':' + LOCAL_PATH + ' ' + DOCKER_IMAGE_NAME + ' /bin/bash -c "cd ' + LOCAL_PATH + '; mvn -s /opt/settings.xml -B package -Dupdatesite=repo@repo.se.internal"'
 		}
 
 	//	stage ('2-unit-test logs') {
@@ -35,15 +35,6 @@ node('kieker-slave-docker') {
 	//		    //failingTarget: [methodCoverage: 0, conditionalCoverage: 0, statementCoverage: 0]     // optional, default is none
 	//		])
 	//	}
-
-	//	stage ('3-static-analysis logs') {
-	//		sh 'docker run --rm -u `id -u` -v ' + env.WORKSPACE + ':/opt/kieker '+DOCKER_IMAGE_NAME+' /bin/bash -c "cd /opt/kieker; ./gradlew -S check"'    
-	//	}
-
-		stage ('4-repository-update logs') {
-			//sh 'rm -rf /srv/vhosts/eus/mdm/release/1.3 ; mkdir /srv/vhosts/eus/mdm/release/1.3'
-			sh 'docker run --rm -u `id -u` -v ' + env.WORKSPACE + ':' + LOCAL_PATH + ' ' + DOCKER_IMAGE_NAME + ' /bin/bash -c "cd ' + LOCAL_PATH + '; mvn -s /opt/settings.xml -B -Dupdatesite.url=file:///srv/vhosts/eus/mdm/release/1.3/ install"'
-		}
 
 	// stuff we might want to do in future upon release
 	//		checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: 'kieker-analysis\\build\\reports\\checkstyle\\*.xml,kieker-tools\\build\\reports\\checkstyle\\*.xml,kieker-monitoring\\build\\reports\\checkstyle\\*.xml,kieker-common\\build\\reports\\checkstyle\\*.xml', unHealthy: ''
