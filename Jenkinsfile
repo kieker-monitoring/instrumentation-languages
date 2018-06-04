@@ -15,47 +15,16 @@ node('kieker-slave-docker') {
 			}
 		}
 
-		stage ('0-prepare logs') {
+		stage ('Prepare') {
 			sh 'docker run --rm -u `id -u` -v ' + env.WORKSPACE + ':' + LOCAL_PATH + ' ' + DOCKER_IMAGE_NAME + ' /bin/bash -c "cd ' + LOCAL_PATH + '; mvn -s /opt/settings.xml -B clean"'
 		}
 
-		stage ('1-compile logs') {
-			sh 'docker run --rm -u `id -u` -v ' + env.WORKSPACE + ':' + LOCAL_PATH + ' ' + DOCKER_IMAGE_NAME + ' /bin/bash -c "cd ' + LOCAL_PATH + '; mvn -s /opt/settings.xml -B package -Dupdatesite=repo@repo.se.internal"'
+		stage ('Compile and Deploy') {
+			withCredentials([file(credentialsId: KDT_ID, variable: 'kdt_key_file']]) {
+				sh 'docker run --rm -u `id -u` -v ' + env.WORKSPACE + ':' + LOCAL_PATH + ' ' + DOCKER_IMAGE_NAME + ' /bin/bash -c "cd ' + LOCAL_PATH + '; mvn -s /opt/settings.xml -B package -Dupdatesite=repo@repo.se.internal"'
+			}
 		}
 
-	//	stage ('2-unit-test logs') {
-	//		sh DOCKER_RUN + 'test"'
-	//		junit '**/build/test-results/test/*.xml'
-	//		step([
-	//		    $class: 'CloverPublisher',
-	//		    cloverReportDir: env.WORKSPACE + '/build/reports/clover',
-	//		    cloverReportFileName: 'clover.xml',
-	//		    healthyTarget: [methodCoverage: 70, conditionalCoverage: 80, statementCoverage: 80], // optional, default is: method=70, conditional=80, statement=80
-	//		    unhealthyTarget: [methodCoverage: 50, conditionalCoverage: 50, statementCoverage: 50], // optional, default is none
-	//		    //failingTarget: [methodCoverage: 0, conditionalCoverage: 0, statementCoverage: 0]     // optional, default is none
-	//		])
-	//	}
-
-	// stuff we might want to do in future upon release
-	//		checkstyle canComputeNew: false, defaultEncoding: '', healthy: '', pattern: 'kieker-analysis\\build\\reports\\checkstyle\\*.xml,kieker-tools\\build\\reports\\checkstyle\\*.xml,kieker-monitoring\\build\\reports\\checkstyle\\*.xml,kieker-common\\build\\reports\\checkstyle\\*.xml', unHealthy: ''
-
-	//		findbugs canComputeNew: false, defaultEncoding: '', excludePattern: '', healthy: '', includePattern: '', pattern: 'kieker-analysis\\build\\reports\\findbugs\\*.xml,kieker-tools\\build\\reports\\findbugs\\*.xml,kieker-monitoring\\build\\reports\\findbugs\\*.xml,kieker-common\\build\\reports\\findbugs\\*.xml', unHealthy: ''
-
-	//		pmd canComputeNew: false, defaultEncoding: '', healthy: '', pattern: 'kieker-analysis\\build\\reports\\pmd\\*.xml,kieker-tools\\build\\reports\\pmd\\*.xml,kieker-monitoring\\build\\reports\\pmd\\*.xml,kieker-common\\build\\reports\\pmd\\*.xml', unHealthy: ''
-
-	//		archiveArtifacts artifacts: 'build/distributions/*,kieker-documentation/userguide/kieker-userguide.pdf,build/libs/*.jar', fingerprint: true
-	//	}
-
-	//    stage ('push-to-stable') {
-	//        if (env.BRANCH_NAME == "master") {
-	//	        sh 'echo "We are in master branch."'
-	//
-	//		    sh 'echo "Pushing to stable branch."'
-	//	        sh 'git push git@github.com:kieker-monitoring/kieker.git $(git rev-parse HEAD):stable'
-	//        } else {
-	//            sh 'echo "We are not in master - skipping."'
-	//	    }
-	//	}
 	} finally {
 		deleteDir()
 	}

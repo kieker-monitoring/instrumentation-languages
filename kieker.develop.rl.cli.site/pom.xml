@@ -49,13 +49,7 @@
 			<extension>
 				<groupId>org.apache.maven.wagon</groupId>
 				<artifactId>wagon-ssh</artifactId>
-				<version>2.6</version>
-			</extension>
-			<!-- Enabling the use of file transfer -->
-			<extension>
-				<groupId>org.apache.maven.wagon</groupId>
-				<artifactId>wagon-file</artifactId>
-				<version>2.6</version>
+				<version>3.0.0</version>
 			</extension>
 		</extensions>
 
@@ -101,9 +95,10 @@
 							<goal>upload</goal>
 						</goals>
 						<configuration>
+							<serverId>repo</serverId>
 							<fromDir>${products-path}</fromDir>
 							<includes>kieker.develop.rl.cli.headless-*.zip</includes>
-							<url>${updatesite}/kdt-cli</url>
+							<url>sftp://${updatesite}/kdt-cli</url>
 							<toDir>${destination}</toDir>
 						</configuration>
 					</execution>
