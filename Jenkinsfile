@@ -20,7 +20,7 @@ node('kieker-slave-docker') {
 		}
 
 		stage ('Compile and Deploy') {
-			withCredentials([file(credentialsId: KDT_ID, variable: 'kdt_key_file']]) {
+			withCredentials([file(credentialsId: KDT_ID, variable: 'kdt_key_file')]) {
 				sh 'docker run --rm -u `id -u` -v ' + env.WORKSPACE + ':' + LOCAL_PATH + ' ' + DOCKER_IMAGE_NAME + ' /bin/bash -c "cd ' + LOCAL_PATH + '; mvn -s settings.xml -B package -Dkeystore=${kdt_key_file} -Dupdatesite=repo@repo.se.internal/var/www/html"'
 			}
 		}
