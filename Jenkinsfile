@@ -1,7 +1,7 @@
 #!groovy
 
 DOCKER_IMAGE_NAME = "reinerjung/kieker.maven"
-LOCAL_PATH = "/opt/irl"
+LOCAL_PATH = "/opt/irl/instrumentation-languages"
 
 node('kieker-slave-docker') {
 	try {
