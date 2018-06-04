@@ -89,7 +89,7 @@
 		<palladio-sf-repo.url>https://sdqweb.ipd.kit.edu/eclipse/sensorframework/releases/latest</palladio-sf-repo.url>
 		<palladio-wfe-repo.url>https://sdqweb.ipd.kit.edu/eclipse/workflowengine/releases/latest</palladio-wfe-repo.url>
 		<kit-common-repo.url>https://sdqweb.ipd.kit.edu/eclipse/commons/releases/latest</kit-common-repo.url>
-		<geco-repo.url>http://repo.se.internal/geco/release/1.0.0/</geco-repo.url>
+		<geco-repo.url>https://maui.se.informatik.uni-kiel.de/repo/geco/release/1.0.0/</geco-repo.url>
 		<checkstyle.config.location>../cs-conf.xml</checkstyle.config.location>
 		<xtext-repo.url>http://download.itemis.de/updates</xtext-repo.url>
 	</properties>
