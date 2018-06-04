@@ -80,7 +80,7 @@
 </location>
 <location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="de.cau.cs.se.geco.architecture.feature.feature.group" version="1.0.0"/>
-<repository location="http://repo.se.internal/geco/release/1.0.0/"/>
+<repository location="https://maui.se.informatik.uni-kiel.de/repo/geco/release/1.0.0/"/>
 </location>
 <location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="de.cau.cs.kieler.kgraph.feature.feature.group" version="0.43.0.201711171414"/>
