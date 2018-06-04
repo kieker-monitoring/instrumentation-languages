@@ -2,6 +2,7 @@
 
 DOCKER_IMAGE_NAME = "reinerjung/kieker.maven"
 LOCAL_PATH = "/opt/irl/instrumentation-languages"
+KDT_ID = "kdt-jenkins"
 
 node('kieker-slave-docker') {
 	try {
