@@ -7,7 +7,7 @@ KDT_ID = "kdt-jenkins"
 node('kieker-slave-docker') {
 	try {
 		stage('Pull Request Check') {
-
+			sh 'ping repo.se.internal'
 		}
 
 		stage ('Checkout') {
