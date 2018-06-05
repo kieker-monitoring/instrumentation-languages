@@ -8,7 +8,9 @@ REPO_HOST = "192.168.48.16"
 node('kieker-slave-docker') {
 	try {
 		stage('Pull Request Check') {
-			sh 'ping -c 5 192.168.48.16'
+			withCredentials([file(credentialsId: KDT_ID, variable: 'kdt_key_file')]) {
+				sh 'sftp -i ' + ${kdt_key_file} + ' repo@192.168.48.16'
+			}
 		}
 
 		stage ('Checkout') {
