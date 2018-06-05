@@ -2,7 +2,8 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
                           https://maven.apache.org/xsd/settings-1.0.0.xsd">
-	<localRepository>/opt/repository/</localRepository>
+<!-- removed as we do not use an external node. -->
+<!--	<localRepository>/opt/repository/</localRepository> -->
 	<servers>
 		<server>
 			<id>repo</id>
