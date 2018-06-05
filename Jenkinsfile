@@ -6,11 +6,6 @@ KDT_ID = "kdt-jenkins"
 REPO_HOST = "192.168.48.16"
 
 node {
-	stage('Pull Request Check') {
-		withCredentials([file(credentialsId: KDT_ID, variable: 'kdt_key_file')]) {
-			sh 'ping 192.168.48.16'
-		}
-	}
 	stage ('Checkout') {
 		timeout(time: 3, unit: 'MINUTES') {	// typically finished in under 1 min.
 			checkout scm
