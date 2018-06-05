@@ -8,7 +8,7 @@ REPO_HOST = "192.168.48.16"
 node {
 	stage('Pull Request Check') {
 		withCredentials([file(credentialsId: KDT_ID, variable: 'kdt_key_file')]) {
-			sh 'ifconfig ; traceroute www.heise.de'
+			sh 'ping 192.168.48.16'
 		}
 	}
 	stage ('Checkout') {
