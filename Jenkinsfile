@@ -8,7 +8,7 @@ REPO_HOST = "192.168.48.16"
 node('kieker-slave-docker') {
 	try {
 		stage('Pull Request Check') {
-
+			sh 'ping -c 5 192.168.48.16'
 		}
 
 		stage ('Checkout') {
