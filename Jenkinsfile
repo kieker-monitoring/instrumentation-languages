@@ -9,7 +9,7 @@ node('kieker-slave-docker') {
 	try {
 		stage('Pull Request Check') {
 			withCredentials([file(credentialsId: KDT_ID, variable: 'kdt_key_file')]) {
-				sh 'sftp -i ' + ${kdt_key_file} + ' repo@192.168.48.16'
+				sh 'sftp -i ${kdt_key_file} repo@192.168.48.16'
 			}
 		}
 
