@@ -6,9 +6,6 @@ KDT_ID = "kdt-jenkins"
 REPO_HOST = "repo.se.internal"
 
 node {
-	stage ('scan for maven') {
-		sh 'find / -name "*mvn*"'
-	}
 	stage ('Checkout') {
 		timeout(time: 3, unit: 'MINUTES') {	// typically finished in under 1 min.
 			checkout scm
