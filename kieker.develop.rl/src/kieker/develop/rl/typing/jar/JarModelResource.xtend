@@ -290,7 +290,7 @@ class JarModelResource extends ResourceImpl {
 						property.name = method.elementName.substring(3).toFirstLower
 						property.type = method.returnType.createType
 
-						setPropertyChangable(property, type.methods);						
+						setPropertyChangable(property, type.methods)					
 					
 						// TODO add constant and transient features later
 						if (property.type === null) {
@@ -304,7 +304,7 @@ class JarModelResource extends ResourceImpl {
 						property.name = method.elementName.substring(2).toFirstLower
 						property.type = method.returnType.createType
 						
-						setPropertyChangable(property, type.methods);
+						setPropertyChangable(property, type.methods)
 						
 						// TODO add constant and transient features later
 						if (property.type === null) {
@@ -316,14 +316,6 @@ class JarModelResource extends ResourceImpl {
 				}	
 			}
 		]
-	}
-		
-	def void setPropertyChangable(Property property, IMethod[] methods) {
-		val setterName = "set" + property.name.toFirstUpper;
-		val method = methods.findFirst[it.elementName.equals(setterName)]
-		if (method !== null) {
-			property.modifiers.add(PropertyModifier.CHANGEABLE)
-		}
 	}
 	
 	/**
@@ -344,18 +336,22 @@ class JarModelResource extends ResourceImpl {
 					constant.name = field.elementName
 					constant.type = field.typeSignature.createType
 					constant.value = field.constant.createLiteral
-					
+										
 					if (constant.type === null) {
 						createError(type.elementName, field.typeSignature, "constant", constant.name)
 					} else {
 						result.constants.add(constant)
 					}
 				}
-			} else if (Flags.isPrivate(field.flags) && Flags.isFinal(field.flags) && !Flags.isStatic(field.flags)) {
+			} else if (Flags.isPrivate(field.flags) && !Flags.isStatic(field.flags)) {
 				/** create property */
 				val property = rlFactory.createProperty
 				property.name = field.elementName
 				property.type = field.typeSignature.createType
+				
+				if (!Flags.isFinal(field.flags))
+					property.modifiers.add(PropertyModifier.CHANGEABLE)
+								
 				// TODO add constant and transient features later
 				if (property.type === null) {
 					createError(type.elementName, field.typeSignature, "property", property.name)
@@ -364,6 +360,14 @@ class JarModelResource extends ResourceImpl {
 				}
 			}			
 		]
+	}
+	
+	private def void setPropertyChangable(Property property, IMethod[] methods) {
+		val setterName = "set" + property.name.toFirstUpper;
+		val method = methods.findFirst[it.elementName.equals(setterName)]
+		if (method !== null) {
+			property.modifiers.add(PropertyModifier.CHANGEABLE)
+		}
 	}
 	
 	/**

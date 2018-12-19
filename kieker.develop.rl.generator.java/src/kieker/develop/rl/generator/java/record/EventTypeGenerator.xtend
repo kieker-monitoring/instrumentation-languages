@@ -187,7 +187,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 		import kieker.common.exception.RecordInstantiationException;
 		«IF (type.parent === null)»
 		import kieker.common.record.AbstractMonitoringRecord;
-		import kieker.common.record.IMonitoringRecord;
+		//import kieker.common.record.IMonitoringRecord;
 		«ELSE»
 		import «(type.parent.eContainer as Model).name».«type.parent.name»;
 		«ENDIF»

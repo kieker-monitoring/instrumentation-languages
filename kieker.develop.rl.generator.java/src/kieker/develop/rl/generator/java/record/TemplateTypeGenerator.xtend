@@ -69,7 +69,7 @@ class TemplateTypeGenerator extends AbstractTypeGenerator<TemplateType, CharSequ
 	private def createDefaultImport() '''import kieker.common.record.IMonitoringRecord;
 	'''
 	
-	private def createImport(TemplateType type) '''import «(type.eContainer as Model).name».«type»;
+	private def createImport(TemplateType type) '''import «(type.eContainer as Model).name».«type.name»;
 	'''
 	
 	private def createExtends(EList<TemplateType> parents) '''«if (parents !== null && parents.size > 0) parents.map[t | t.name].join(', ') else 'IMonitoringRecord'»'''
