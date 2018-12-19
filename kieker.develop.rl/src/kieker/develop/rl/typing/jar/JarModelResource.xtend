@@ -38,6 +38,9 @@ import org.eclipse.jdt.core.JavaCore
 import org.eclipse.core.resources.IMarker
 import kieker.develop.rl.typing.base.BaseTypes
 import kieker.develop.rl.recordLang.ComplexType
+import kieker.develop.rl.recordLang.Property
+import org.eclipse.jdt.core.IMethod
+import kieker.develop.rl.recordLang.PropertyModifier
 
 /**
  * The resource collects record information from JAR files.
@@ -279,36 +282,48 @@ class JarModelResource extends ResourceImpl {
 	def void createAttributes(TemplateType result, IType type) {
 		type.methods.forEach[method |
 			if (Flags.isPublic(method.flags)) {
-				if (method.elementName.startsWith("get") &&
-					!"getLoggingTimestamp".equals(method.elementName) &&
-					!"getValueTypes".equals(method.elementName)
-				) {
-					/** create property */
-					val property = rlFactory.createProperty
-					property.name = method.elementName.substring(3).toFirstLower
-					property.type = method.returnType.createType
-				
-					// TODO add constant and transient features later
-					if (property.type === null) {
-					createError(type.elementName, method.returnType, "property", property.name)
-					} else {
-						result.properties.add(property)
-					}
-				} else if (method.elementName.startsWith("is")) {
-					/** create property */
-					val property = rlFactory.createProperty
-					property.name = method.elementName.substring(2).toFirstLower
-					property.type = method.returnType.createType
+				if (!"getLoggingTimestamp".equals(method.elementName) &&
+					!"getValueTypes".equals(method.elementName)) {
+					if (method.elementName.startsWith("get")) {
+						/** create property */
+						val property = rlFactory.createProperty
+						property.name = method.elementName.substring(3).toFirstLower
+						property.type = method.returnType.createType
+
+						setPropertyChangable(property, type.methods);						
 					
-					// TODO add constant and transient features later
-					if (property.type === null) {
-					createError(type.elementName, method.returnType, "property", property.name)
-					} else {
-						result.properties.add(property)
+						// TODO add constant and transient features later
+						if (property.type === null) {
+							createError(type.elementName, method.returnType, "property", property.name)
+						} else {
+							result.properties.add(property)
+						}
+					} else if (method.elementName.startsWith("is")) {
+						/** create property */
+						val property = rlFactory.createProperty
+						property.name = method.elementName.substring(2).toFirstLower
+						property.type = method.returnType.createType
+						
+						setPropertyChangable(property, type.methods);
+						
+						// TODO add constant and transient features later
+						if (property.type === null) {
+							createError(type.elementName, method.returnType, "property", property.name)
+						} else {
+							result.properties.add(property)
+						}
 					}
 				}	
 			}
 		]
+	}
+		
+	def void setPropertyChangable(Property property, IMethod[] methods) {
+		val setterName = "set" + property.name.toFirstUpper;
+		val method = methods.findFirst[it.elementName.equals(setterName)]
+		if (method !== null) {
+			property.modifiers.add(PropertyModifier.CHANGEABLE)
+		}
 	}
 	
 	/**

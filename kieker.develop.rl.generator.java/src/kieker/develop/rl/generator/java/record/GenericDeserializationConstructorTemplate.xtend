@@ -82,7 +82,7 @@ class GenericDeserializationConstructorTemplate {
 				// load array sizes
 				«FOR size : sizes»
 					«IF (size.size == 0)»
-						int _«property.createPropertyName»_size«sizes.indexOf(size)» = 0;
+						final int _«property.createPropertyName»_size«sizes.indexOf(size)» = 0;
 					«ENDIF»
 				«ENDFOR»
 				this.«property.createPropertyName» = new «property.findType.createTypeInstantiationName(property.createPropertyName)»;
@@ -108,7 +108,7 @@ class GenericDeserializationConstructorTemplate {
 				// load array sizes
 				«FOR size : sizes»
 					«IF (size.size == 0)»
-						int _«property.createPropertyName»_size«sizes.indexOf(size)» = deserializer.getInt();
+						final int _«property.createPropertyName»_size«sizes.indexOf(size)» = deserializer.getInt();
 					«ENDIF»
 				«ENDFOR»
 				this.«property.createPropertyName» = new «property.findType.createTypeInstantiationName(property.createPropertyName)»;
