@@ -47,7 +47,6 @@ class GenericSerializationTemplates {
 		 */
 		@Override
 		public void serialize(final IValueSerializer serializer) throws BufferOverflowException {
-			//super.serialize(serializer);
 			«properties.filter[!it.isTransient].map[
 				it.createPropertyGenericSerialization
 			].join('\n')»

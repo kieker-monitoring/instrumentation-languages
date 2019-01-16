@@ -105,12 +105,18 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 			
 				«if (!type.abstract && isSupported(GeneratorFeatures.ARRAY_DESERIALIZER)) type.createArrayConstructor(allDeclarationProperties)»
 			
-				«if (isSupported(GeneratorFeatures.ARRAY_DESERIALIZER)) type.createArrayInitializeConstructor(allDeclarationProperties)»
-			
-				«if (isSupported(GeneratorFeatures.BYTE_BUFFER_DESERIALIZER)) type.createBufferReadConstructor(allDeclarationProperties)»
+				«IF (isSupported(GeneratorFeatures.ARRAY_DESERIALIZER))»
+				«type.createArrayInitializeConstructor(allDeclarationProperties)»
 				
-				«if (isSupported(GeneratorFeatures.GENERIC_DESERIALIZER)) type.createGenericDeserializationConstructor(allDeclarationProperties)»
+				«ENDIF»
+				«IF (isSupported(GeneratorFeatures.BYTE_BUFFER_DESERIALIZER))»
+				«type.createBufferReadConstructor(allDeclarationProperties)»
 				
+				«ENDIF»
+				«IF (isSupported(GeneratorFeatures.GENERIC_DESERIALIZER))»
+				«type.createGenericDeserializationConstructor(allDeclarationProperties)»
+				
+				«ENDIF»
 				«IF (!type.isAbstract)»
 				«if (isSupported(GeneratorFeatures.ARRAY_SERIALIZER)) allDataProperties.createToArrayRepresentation»
 				«if (isSupported(GeneratorFeatures.STRING_REGISTRY)) allDataProperties.createStringRegistration»
@@ -187,7 +193,9 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 		import kieker.common.exception.RecordInstantiationException;
 		«IF (type.parent === null)»
 		import kieker.common.record.AbstractMonitoringRecord;
-		//import kieker.common.record.IMonitoringRecord;
+		«IF isSupported(GeneratorFeatures.LEGACY_FACTORY)»
+		import kieker.common.record.IMonitoringRecord;
+		«ENDIF»
 		«ELSE»
 		import «(type.parent.eContainer as Model).name».«type.parent.name»;
 		«ENDIF»
