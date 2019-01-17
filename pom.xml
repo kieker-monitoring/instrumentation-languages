@@ -80,7 +80,6 @@
 
 		<!-- repository URL -->
 		<eclipse-repo.url>http://download.eclipse.org/releases/oxygen/</eclipse-repo.url>
-		<kieler-repo.url>http://rtsys.informatik.uni-kiel.de/~kieler/updatesite/release_pragmatics_2017-11/</kieler-repo.url>
 		<elk-repo.url>http://download.eclipse.org/elk/updates/releases/0.3.0/</elk-repo.url>
 
 		<palladio-repo.url>https://sdqweb.ipd.kit.edu/eclipse/palladio/releases/latest</palladio-repo.url>
@@ -92,8 +91,9 @@
 		<geco-repo.url>https://maui.se.informatik.uni-kiel.de/repo/geco/release/1.0.0/</geco-repo.url>
 		<checkstyle.config.location>../cs-conf.xml</checkstyle.config.location>
 		<xtext-repo.url>http://download.itemis.de/updates</xtext-repo.url>
+		<eclipse.mirror>http://mirror.ibcp.fr/pub/eclipse/</eclipse.mirror>
 	</properties>
-
+	
 	<build>
 		<plugins>
 			<plugin>
@@ -304,7 +304,24 @@
 		</pluginManagement>
 	</build>
 
-	<repositories>
+	 <repositories>
+		<!-- add Eclipse repository to resolve dependencies -->
+		<repository>
+			<id>EclipseP</id>
+			<layout>p2</layout>
+			<url>${eclipse.mirror}/releases/photon/</url>
+		</repository>
+		<!-- add TMF repository for latest Xtend -->
+		<repository>
+			<id>TMF Repo</id>
+			<layout>p2</layout>
+			<!--<url>${eclipse.mirror}/modeling/tmf/xtext/updates/releases/</url> -->
+			<url>${eclipse.mirror}/modeling/tmf/xtext/updates/releases/</url>
+		</repository>
+		<repository>
+			<id>emf</id>
+			<url>https://oss.sonatype.org/content/repositories/orgeclipseemf-1054/</url>
+		</repository>
 		<repository>
 			<id>eclipse</id>
 			<url>${eclipse-repo.url}</url>
@@ -325,11 +342,6 @@
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
-		</repository>
-		<repository>
-			<id>kieler</id>
-			<url>${kieler-repo.url}</url>
-			<layout>p2</layout>
 		</repository>
 		<repository>
 			<id>jcommander</id>
@@ -390,6 +402,10 @@
 	</repositories>
 
 	<pluginRepositories>
+		<pluginRepository>
+			<id>emfp</id>
+			<url>https://oss.sonatype.org/content/repositories/orgeclipseemf-1054/</url>
+		</pluginRepository>
 		<pluginRepository>
 			<id>codehaus-snapshots</id>
 			<name>disable dead 'Codehaus Snapshots' repository, see https://bugs.eclipse.org/bugs/show_bug.cgi?id=481478</name>
