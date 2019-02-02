@@ -14,6 +14,7 @@ node {
 
 	stage ('Prepare') {
 		// sh 'docker run --rm -u `id -u` -v ' + env.WORKSPACE + ':' + LOCAL_PATH + ' ' + DOCKER_IMAGE_NAME + ' /bin/bash -c "cd ' + LOCAL_PATH + '; mvn -s settings.xml -B clean"'
+		sh 'find /var/lib/jenkins/tools/'
 		sh 'cd ' + env.WORKSPACE + '; mvn -s settings.xml -B clean'
 	}
 
