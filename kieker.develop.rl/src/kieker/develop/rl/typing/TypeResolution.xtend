@@ -47,7 +47,7 @@ class TypeResolution {
 	static def Type getRequiredType(Literal literal) {
 		switch (literal.eContainer) {
 			Constant : (literal.eContainer as Constant).type.type
-			Property : (literal.eContainer as Property).type.type
+			Property : (literal.eContainer as Property).findType.type
 			Literal : (literal.eContainer as Literal).getRequiredType
 		}
 	}

@@ -113,7 +113,7 @@ class ConstantConstructionTemplates {
 	 * @returns a constant declaration
 	 */
 	private static def createDefaultConstant(Property property) '''
-		public static final «property.type.createTypeName» «property.createConstantName» = «if (property.value === null) '""' else property.value.createLiteral»;
+		public static final «property.findType.createTypeName» «property.createConstantName» = «if (property.value === null) '""' else property.value.createLiteral»;
 	'''
 
 			

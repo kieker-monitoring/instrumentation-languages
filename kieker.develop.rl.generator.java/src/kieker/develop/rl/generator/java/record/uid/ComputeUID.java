@@ -34,6 +34,7 @@ import kieker.develop.rl.recordLang.Property;
 import kieker.develop.rl.recordLang.RecordLangFactory;
 import kieker.develop.rl.recordLang.TemplateType;
 import kieker.develop.rl.typing.PropertyResolution;
+import kieker.develop.rl.typing.TypeResolution;
 
 /**
  * Reconstructed (more or less) the algorithm behind the serializeVersionUID computation.
@@ -223,7 +224,7 @@ public final class ComputeUID {
 			final byte[] hashBytes = md.digest(bout.toByteArray());
 			long hash = 0;
 			for (int i = Math.min(hashBytes.length, 8) - 1; i >= 0; i--) {
-				hash = (hash << 8) | (hashBytes[i] & 0xFF);
+				hash = hash << 8 | hashBytes[i] & 0xFF;
 			}
 			return hash;
 		} catch (final IOException ex) {
@@ -347,7 +348,8 @@ public final class ComputeUID {
 		public MemberSignature(final Property field) {
 			this.member = field;
 			this.name = field.getName();
-			this.signature = ComputeUID.getClassSignature(field.getType());
+			final Classifier classifier = TypeResolution.findType(field);
+			this.signature = ComputeUID.getClassSignature(classifier);
 		}
 
 		public MemberSignature(final Constructor cons) {

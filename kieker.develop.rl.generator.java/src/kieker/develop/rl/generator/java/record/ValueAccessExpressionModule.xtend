@@ -56,7 +56,7 @@ class ValueAccessExpressionModule {
 	 * @return get/is + "capitalized property name" + "()" + "array access code"
 	 */
 	static def createGetterValueExpression(Property property) {
-		val sizes = property.type.sizes
+		val sizes = property.findType.sizes
 		'''«property.createGetterName»()«sizes.createArrayValueAccessIndizies»'''
 	}
 	
