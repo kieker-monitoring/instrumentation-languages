@@ -142,7 +142,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	 * @param properties collection of all properties accessible in this type
 	 */
 	private def createPropertyNameConstant(Iterable<Property> properties) '''
-		private static final String[] PROPERTY_NAMES = {
+		public static final String[] VALUE_NAMES = {
 			«properties.map['''"«it.name»",'''].join('\n')»
 		};
 	'''

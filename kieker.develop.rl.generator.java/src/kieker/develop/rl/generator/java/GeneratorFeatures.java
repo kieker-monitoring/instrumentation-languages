@@ -26,38 +26,41 @@ package kieker.develop.rl.generator.java;
  * Furthermore, the range values are always included, e.g.,
  * 1.0:1.2 includes all version form 1.0.0 to 1.2.0. That includes
  * 1.0.1, 1.0.2, 1.1, ... up until 1.2, 1.2.0, but not 1.2.1 or later.
- * 
+ *
  * @author Reiner Jung
  *
  */
-public final class GeneratorFeatures {	
-		
+public final class GeneratorFeatures {
+
 	/** ByteBuffer support: factory, constructor and initFromBytes feature. */
 	public static final String BYTE_BUFFER_DESERIALIZER = "1.0:1.12";
 
 	/** Create an byte buffer serialization of the record feature. */
 	public static final String BYTE_BUFFER_SERIALIZER = "1.0:1.12";
-	
+
 	/** ObjectArray support: factory, constructor and initFromArray feature. */
 	public static final String ARRAY_DESERIALIZER = "1.0:1.14";
-	
+
 	/** Create an array for serialization feature. */
 	public static final String ARRAY_SERIALIZER = "1.0:1.14";
-	
+
 	/** Generic deserializer support: factory, constructor. */
 	public static final String GENERIC_DESERIALIZER = "1.13:";
-	
+
 	/** Generic serializer support: factory, constructor. */
 	public static final String GENERIC_SERIALIZER = "1.13:";
-	
+
 	/** String registry feature. */
 	public static final String STRING_REGISTRY = "1.0:1.13";
-	
+
+	/** Generate value names and types function in factory. */
+	public static final String VALUE_INFORMATION = "1.15:";
+
 	/** Factory methods in IMonitoringRecord. */
 	public static final String LEGACY_FACTORY = "1.0:1.14";
-	
+
 	public static final String OWN_HASH_FUNCTION = "1.15:";
-		
+
 	/**
 	 * Configuration class. Should not be instantiated.
 	 */

@@ -66,7 +66,7 @@ class EventTypeAPITemplates {
 		/**
 		 * {@inheritDoc}
 		 * 
-		 * @deprecated to be rmeoved in 1.15
+		 * @deprecated to be removed in 1.15
 		 */
 		@Override
 		@Deprecated
@@ -92,7 +92,7 @@ class EventTypeAPITemplates {
 		 */
 		@Override
 		public String[] getValueNames() {
-			return PROPERTY_NAMES; // NOPMD
+			return VALUE_NAMES; // NOPMD
 		}
 
 		/**
