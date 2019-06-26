@@ -91,12 +91,12 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 				«if (!type.abstract) type.createEventTypeConstants(allDataProperties.filter[!it.transient])»
 				
 				«type.createUserConstants»
+				«IF (!type.abstract)»/** property name array. */
+				«allDataProperties.filter[!it.isTransient].createValueNamesConstant»
+				«ENDIF»
+				
 				«allDeclarationProperties.createDefaultConstants»
 				private static final long serialVersionUID = «type.computeDefaultSUID»L;
-				
-				«IF (!type.abstract)»/** property name array. */
-				«allDataProperties.filter[!it.isTransient].createPropertyNameConstant»
-				«ENDIF»
 				
 				«IF allDeclarationProperties.size > 0»/** property declarations. */«ENDIF»
 				«allDeclarationProperties.createPropertyDeclarations»
@@ -141,7 +141,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	 * 
 	 * @param properties collection of all properties accessible in this type
 	 */
-	private def createPropertyNameConstant(Iterable<Property> properties) '''
+	private def createValueNamesConstant(Iterable<Property> properties) '''
 		public static final String[] VALUE_NAMES = {
 			«properties.map['''"«it.name»",'''].join('\n')»
 		};

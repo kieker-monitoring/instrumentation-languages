@@ -68,10 +68,15 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 			public final class «type.name»Factory implements IRecordFactory<«type.name»> {
 				
 				«if (isSupported(GeneratorFeatures.BYTE_BUFFER_DESERIALIZER)) createByteBufferFactory(type)»
+
 				«if (isSupported(GeneratorFeatures.GENERIC_DESERIALIZER)) createGenericDeserializerFactory(type)»
+
 				«if (isSupported(GeneratorFeatures.ARRAY_DESERIALIZER)) createArrayFactory(type)»
+
 				«if (isSupported(GeneratorFeatures.VALUE_INFORMATION)) createValueNames(type)»
+
 				«if (isSupported(GeneratorFeatures.VALUE_INFORMATION)) createValueTypes(type)»
+
 				public int getRecordSizeInBytes() {
 					return «type.name».SIZE;
 				}
@@ -81,16 +86,16 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 		
 	private def createValueNames(EventType type) '''
 		@Override
-				public String[] getValueNames() {
-					return «type.name».VALUE_NAMES; // NOPMD
-				}
+		public String[] getValueNames() {
+			return «type.name».VALUE_NAMES; // NOPMD
+		}
 	'''
 	
 	private def createValueTypes(EventType type) '''
 		@Override
-				public Class<?>[] getValueTypes() {
-					return «type.name».TYPES; // NOPMD
-				}
+		public Class<?>[] getValueTypes() {
+			return «type.name».TYPES; // NOPMD
+		}
 	'''
 
 	private def createArrayFactory(EventType type) '''
