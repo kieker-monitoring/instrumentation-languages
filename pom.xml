@@ -56,7 +56,7 @@
 		<maven-compiler-source>1.8</maven-compiler-source>
 		<maven-compiler-target>1.8</maven-compiler-target>
 
-		<checkstyle-crawler>8.18</checkstyle-crawler>
+		<checkstyle-crawler>8.29</checkstyle-crawler>
 
 		<!-- properties for deploying the composite update site and zipped products on Sourceforge -->
 		<target-file-name>kieker.develop</target-file-name>
