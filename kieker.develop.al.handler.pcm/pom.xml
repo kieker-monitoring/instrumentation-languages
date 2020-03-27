@@ -14,14 +14,6 @@
 
 	<name>Kieker Language PCM Model Handler</name>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.eclipse.xtext</groupId>
-			<artifactId>org.eclipse.xtext.xbase</artifactId>
-			<version>${xtextVersion}</version>
-		</dependency>
-	</dependencies>
-
 	<build>
 		<sourceDirectory>src-gen</sourceDirectory>
 		<plugins>

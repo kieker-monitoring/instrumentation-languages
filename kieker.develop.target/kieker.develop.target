@@ -1,101 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target includeMode="feature" name="kieker.develop.target" sequenceNumber="32">
-<locations>
-<location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.elk.algorithms.feature.feature.group" version="0.3.0"/>
-<unit id="org.eclipse.elk.feature.feature.group" version="0.3.0"/>
-<unit id="org.eclipse.elk.graph.json.feature.feature.group" version="0.3.0"/>
-<unit id="org.eclipse.elk.graphviz.feature.feature.group" version="0.3.0"/>
-<unit id="org.eclipse.elk.ui.feature.feature.group" version="0.3.0"/>
-<repository location="http://download.eclipse.org/elk/updates/releases/0.3.0/"/>
-</location>
-<location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.emf.ecore.xcore.sdk.feature.group" version="1.5.0.v20170613-0242"/>
-<unit id="org.eclipse.emf.mwe.sdk.feature.group" version="1.3.21.201705291011"/>
-<unit id="org.eclipse.emf.mwe2.language.sdk.feature.group" version="2.9.1.201705291011"/>
-<unit id="org.eclipse.emf.mwe2.runtime.sdk.feature.group" version="2.9.1.201705291011"/>
-<unit id="org.eclipse.emf.sdk.feature.group" version="2.13.0.v20170609-0928"/>
-<unit id="org.eclipse.jdt.feature.group" version="3.13.4.v20180330-0919"/>
-<unit id="org.eclipse.ocl.all.sdk.feature.group" version="5.3.0.v20170607-1133"/>
-<unit id="org.eclipse.xpand.sdk.feature.group" version="2.2.0.v201605260315"/>
-<unit id="org.eclipse.xsd.sdk.feature.group" version="2.13.0.v20170609-0928"/>
-<unit id="org.eclipse.xtext.sdk.feature.group" version="2.12.0.v20170519-1412"/>
-<repository location="http://download.eclipse.org/releases/oxygen"/>
-</location>
-<location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.emf.all.feature.group" version="2.10.2.v20150123-0452"/>
-<unit id="org.eclipse.emf.codegen.ecore.feature.group" version="2.10.2.v20150123-0452"/>
-<unit id="org.eclipse.emf.codegen.ecore.ui.feature.group" version="2.10.0.v20150123-0452"/>
-<unit id="org.eclipse.emf.codegen.feature.group" version="2.10.0.v20150123-0452"/>
-<unit id="org.eclipse.emf.codegen.ui.feature.group" version="2.8.0.v20150123-0452"/>
-<unit id="org.eclipse.emf.common.feature.group" version="2.10.1.v20150123-0348"/>
-<unit id="org.eclipse.emf.common.ui.feature.group" version="2.9.0.v20150123-0452"/>
-<unit id="org.eclipse.emf.converter.feature.group" version="2.10.0.v20150123-0452"/>
-<unit id="org.eclipse.emf.databinding.edit.feature.group" version="1.4.0.v20150123-0452"/>
-<unit id="org.eclipse.emf.databinding.feature.group" version="1.4.0.v20150123-0452"/>
-<unit id="org.eclipse.emf.doc.feature.group" version="2.9.0.v20150123-0452"/>
-<unit id="org.eclipse.emf.ecore.edit.feature.group" version="2.9.0.v20150123-0452"/>
-<unit id="org.eclipse.emf.ecore.editor.feature.group" version="2.10.1.v20150123-0452"/>
-<unit id="org.eclipse.emf.ecore.feature.group" version="2.10.2.v20150123-0348"/>
-<unit id="org.eclipse.emf.edit.feature.group" version="2.10.1.v20150123-0452"/>
-<unit id="org.eclipse.emf.edit.ui.feature.group" version="2.10.2.v20150123-0452"/>
-<unit id="org.eclipse.emf.examples.feature.group" version="2.10.1.v20150123-0452"/>
-<unit id="org.eclipse.emf.feature.group" version="2.10.2.v20150123-0452"/>
-<unit id="org.eclipse.emf.gwt.common.feature.group" version="2.9.0.v20150123-0452"/>
-<unit id="org.eclipse.emf.gwt.ecore.edit.feature.group" version="2.8.0.v20150123-0452"/>
-<unit id="org.eclipse.emf.gwt.ecore.feature.group" version="2.9.0.v20150123-0452"/>
-<unit id="org.eclipse.emf.gwt.edit.feature.group" version="2.8.0.v20150123-0452"/>
-<unit id="org.eclipse.emf.gwt.edit.ui.feature.group" version="2.7.0.v20150123-0452"/>
-<unit id="org.eclipse.emf.gwt.feature.group" version="2.9.0.v20150123-0452"/>
-<unit id="org.eclipse.emf.gwt.sdk.feature.group" version="2.9.0.v20150123-0452"/>
-<unit id="org.eclipse.emf.mapping.ecore.editor.feature.group" version="2.9.0.v20150123-0452"/>
-<unit id="org.eclipse.emf.mapping.ecore.feature.group" version="2.8.0.v20150123-0452"/>
-<unit id="org.eclipse.emf.mapping.feature.group" version="2.8.0.v20150123-0452"/>
-<unit id="org.eclipse.emf.mapping.ui.feature.group" version="2.8.0.v20150123-0452"/>
-<unit id="org.eclipse.emf.mwe.sdk.feature.group" version="1.3.20.v201605261103"/>
-<unit id="org.eclipse.emf.mwe2.language.sdk.feature.group" version="2.9.0.v201605261103"/>
-<unit id="org.eclipse.emf.oda.ecore.feature.group" version="1.3.0.v20150123-0452"/>
-<unit id="org.eclipse.emf.oda.ecore.ui.feature.group" version="1.2.1.v20150123-0452"/>
-<unit id="org.eclipse.emf.oda.feature.group" version="1.3.0.v20150123-0452"/>
-<unit id="org.eclipse.emf.oda.sdk.feature.group" version="1.3.1.v20150123-0452"/>
-<unit id="org.eclipse.emf.rap.common.ui.feature.group" version="2.8.0.v20150123-0452"/>
-<unit id="org.eclipse.emf.rap.edit.ui.feature.group" version="2.9.0.v20150123-0452"/>
-<unit id="org.eclipse.emf.rap.feature.group" version="2.10.2.v20150123-0452"/>
-<unit id="org.eclipse.emf.rap.sdk.feature.group" version="2.10.2.v20150123-0452"/>
-<unit id="org.eclipse.emf.sdk.feature.group" version="2.10.2.v20150123-0452"/>
-<unit id="org.eclipse.xsd.doc.feature.group" version="2.9.0.v20150123-0452"/>
-<unit id="org.eclipse.xsd.ecore.converter.feature.group" version="2.9.0.v20150123-0452"/>
-<unit id="org.eclipse.xsd.edit.feature.group" version="2.8.0.v20150123-0452"/>
-<unit id="org.eclipse.xsd.editor.feature.group" version="2.8.0.v20150123-0452"/>
-<unit id="org.eclipse.xsd.feature.group" version="2.10.0.v20150123-0452"/>
-<unit id="org.eclipse.xsd.mapping.editor.feature.group" version="2.9.0.v20150123-0452"/>
-<unit id="org.eclipse.xsd.mapping.feature.group" version="2.8.0.v20150123-0452"/>
-<unit id="org.eclipse.xsd.sdk.feature.group" version="2.10.0.v20150123-0452"/>
-<unit id="org.eclipse.xtend.gwt.feature.group" version="2.10.0.v201605250459"/>
-<unit id="org.eclipse.xtend.sdk.feature.group" version="2.13.0.v20171020-0920"/>
-<unit id="org.eclipse.xtend.sdk.feature.group" version="2.13.0.v20171020-0920"/>
-<unit id="org.eclipse.xtext.redist.feature.group" version="2.13.0.v20171020-0920"/>
-<unit id="org.eclipse.xtext.sdk.feature.group" version="2.13.0.v20171020-0920"/>
-<repository location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/"/>
-</location>
-<location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="de.cau.cs.kieler.kgraph.feature.feature.group" version="0.43.0.201711171414"/>
-<unit id="de.cau.cs.kieler.klighd.draw2d.feature.feature.group" version="0.43.0.201711171414"/>
-<unit id="de.cau.cs.kieler.klighd.feature.feature.group" version="0.43.0.201711171414"/>
-<unit id="de.cau.cs.kieler.klighd.freehep.feature.feature.group" version="0.43.0.201711171414"/>
-<unit id="de.cau.cs.kieler.klighd.sdk.feature.feature.group" version="0.43.0.201711171414"/>
-<unit id="de.cau.cs.kieler.klighd.view.feature.feature.group" version="0.43.0.201711171414"/>
-<repository location="http://rtsys.informatik.uni-kiel.de/~kieler/updatesite/release_pragmatics_2017-11/"/>
-</location>
-<location includeAllPlatforms="true" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
-<unit id="de.cau.cs.se.geco.architecture.feature.feature.group" version="1.0.0"/>
-<repository location="https://maui.se.informatik.uni-kiel.de/repo/geco/release/1.0.0/"/>
-</location>
-</locations>
-<environment>
-<os>linux</os>
-<ws>gtk</ws>
-<arch>ia64</arch>
-<nl>en_US</nl>
-</environment>
+<?pde version="3.8"?>
+<target includeMode="feature" name="kieker.develop">
+	<locations>
+		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+			<repository location="https://download.eclipse.org/releases/2020-03"/>
+			<unit id="org.eclipse.emf.ecore.xcore.sdk.feature.group" version="1.13.0.v20200127-1346"/>
+			<unit id="org.eclipse.emf.sdk.feature.group" version="2.21.0.v20200205-0529"/>
+			<unit id="org.eclipse.xtext.sdk.feature.group" version="2.21.0.v20200302-1509"/>
+		</location>
+		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+			<repository location="https://updatesite.palladio-simulator.com/palladio-build-updatesite/releases/latest/"/>
+			<unit id="de.uka.ipd.sdq.dsexplore.feature.feature.group" version="4.2.0.201911262246"/>
+			<unit id="org.palladiosimulator.editors.commons.feature.feature.group" version="4.2.0.201911262228"/>
+			<unit id="org.palladiosimulator.editors.gmf.feature.feature.group" version="4.2.0.201911262232"/>
+			<unit id="org.palladiosimulator.editors.sirius.feature.feature.group" version="4.2.0.201911270757"/>
+			<unit id="org.palladiosimulator.editors.tree.feature.feature.group" version="4.2.0.201911262232"/>
+			<unit id="org.palladiosimulator.pcm.feature.feature.group" version="4.2.0.201911262224"/>
+			<unit id="org.palladiosimulator.protocom.feature.feature.group" version="4.2.0.201911262246"/>
+			<unit id="org.palladiosimulator.protocom.javaee.feature.feature.group" version="4.2.0.201911262246"/>
+			<unit id="org.palladiosimulator.reliability.feature.feature.group" version="4.2.0.201911262239"/>
+			<unit id="org.palladiosimulator.simucom.feature.feature.group" version="4.2.0.201911262239"/>
+			<unit id="org.palladiosimulator.simulation.abstractsimengine.desmoj.feature.feature.group" version="4.2.0.201911262217"/>
+			<unit id="org.palladiosimulator.simulation.abstractsimengine.ssj.feature.feature.group" version="4.2.0.201911262217"/>
+			<unit id="org.palladiosimulator.solver.feature.feature.group" version="4.2.0.201911262239"/>
+		</location>
+	</locations>
+	<environment>
+		<os>linux</os>
+		<arch>x86_64</arch>
+		<ws>gtk</ws>
+	</environment>
 </target>
