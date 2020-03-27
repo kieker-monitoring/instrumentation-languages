@@ -12,36 +12,6 @@
 
 	<name>Kieker Development Tools</name>
 
-	<modules>
-		<module>kieker.develop.al</module>
-		<module>kieker.develop.al.ide</module>
-		<module>kieker.develop.al.ui</module>
-		<module>kieker.develop.al.tests</module>
-		<module>kieker.develop.al.feature</module>
-		<module>kieker.develop.al.generator.java</module>
-		<module>kieker.develop.al.generator.c</module>
-		<module>kieker.develop.al.generator.perl</module>
-		<module>kieker.develop.al.handler.pcm</module>
-		<module>kieker.develop.al.handler.java</module>
-		<module>kieker.develop.rl</module>
-		<module>kieker.develop.rl.generator.java</module>
-		<module>kieker.develop.rl.generator.c</module>
-		<module>kieker.develop.rl.generator.delphi</module>
-		<module>kieker.develop.rl.generator.perl</module>
-		<module>kieker.develop.rl.ide</module>
-		<module>kieker.develop.rl.ui</module>
-		<module>kieker.develop.rl.tests</module>
-		<module>kieker.develop.rl.feature</module>
-		<module>kieker.develop.repository</module>
-		<module>kieker.develop.target</module>
-		<module>kieker.develop.semantics</module>
-		<module>kieker.develop.semantics.java</module>
-		<module>kieker.develop.rl.generator.java.tests</module>
-		<module>kieker.develop.rl.cli</module>
-		<module>kieker.develop.rl.cli.feature</module>
-		<module>kieker.develop.rl.cli.site</module>
-	</modules>
-
 	<properties>
 		<tychoVersion>1.6.0</tychoVersion>
 		<maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
@@ -81,21 +51,50 @@
 
 		<!-- repository URL -->
 		<eclipseRepoUrl>https://download.eclipse.org/releases/2020-03/</eclipseRepoUrl>
-		<elkRepoUrl>https://download.eclipse.org/elk/updates/releases/0.3.0/</elkRepoUrl>
+		<elkRepoUrl>https://download.eclipse.org/elk/updates/releases/0.6.1/</elkRepoUrl>
 
                 <tycho-repo.url>https://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin</tycho-repo.url>
 
 		<palladioRepoUrl>https://sdqweb.ipd.kit.edu/eclipse/palladio/releases/latest</palladioRepoUrl>
-		<probespec-repo.url>https://sdqweb.ipd.kit.edu/eclipse/probespec/releases/1.2</probespec-repo.url>
 		<palladio-fm-repo.url>https://sdqweb.ipd.kit.edu/eclipse/featuremodel/releases/latest</palladio-fm-repo.url>
 		<palladio-sf-repo.url>https://sdqweb.ipd.kit.edu/eclipse/sensorframework/releases/latest</palladio-sf-repo.url>
 		<palladio-wfe-repo.url>https://sdqweb.ipd.kit.edu/eclipse/workflowengine/releases/latest</palladio-wfe-repo.url>
 		<kit-common-repo.url>https://sdqweb.ipd.kit.edu/eclipse/commons/releases/latest</kit-common-repo.url>
-		<gecoRepoUrl>https://maui.se.informatik.uni-kiel.de/repo/geco/release/1.0.0/</gecoRepoUrl>
+		<gecoRepoUrl>https://maui.se.informatik.uni-kiel.de/repo/geco/snapshot/</gecoRepoUrl>
 		<checkstyle.config.location>../cs-conf.xml</checkstyle.config.location>
 		<xtext-repo.url>https://download.itemis.de/updates</xtext-repo.url>
 		<eclipse.mirror>https://mirror.ibcp.fr/pub/eclipse/</eclipse.mirror>
 	</properties>
+
+	<modules>
+		<module>kieker.develop.al</module>
+		<module>kieker.develop.al.ide</module>
+		<module>kieker.develop.al.ui</module>
+		<module>kieker.develop.al.tests</module>
+		<module>kieker.develop.al.feature</module>
+		<module>kieker.develop.al.generator.java</module>
+		<module>kieker.develop.al.generator.c</module>
+		<module>kieker.develop.al.generator.perl</module>
+		<module>kieker.develop.al.handler.pcm</module>
+		<module>kieker.develop.al.handler.java</module>
+		<module>kieker.develop.rl</module>
+		<module>kieker.develop.rl.generator.java</module>
+		<module>kieker.develop.rl.generator.c</module>
+		<module>kieker.develop.rl.generator.delphi</module>
+		<module>kieker.develop.rl.generator.perl</module>
+		<module>kieker.develop.rl.ide</module>
+		<module>kieker.develop.rl.ui</module>
+		<module>kieker.develop.rl.tests</module>
+		<module>kieker.develop.rl.feature</module>
+		<module>kieker.develop.repository</module>
+		<module>kieker.develop.target</module>
+		<module>kieker.develop.semantics</module>
+		<module>kieker.develop.semantics.java</module>
+		<module>kieker.develop.rl.generator.java.tests</module>
+		<!-- module>kieker.develop.rl.cli</module>
+		<module>kieker.develop.rl.cli.feature</module>
+		<module>kieker.develop.rl.cli.site</module -->
+	</modules>
 	
 	<build>
 		<plugins>
@@ -368,11 +367,6 @@
 			<url>${xtext-repo.url}</url>
 		</repository>
 
-		<repository>
-			<id>probespec</id>
-			<url>${probespec-repo.url}</url>
-			<layout>p2</layout>
-		</repository>
 		<repository>
 			<id>palladio</id>
 			<url>${palladioRepoUrl}</url>
