@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?>
+<target includeMode="feature" name="kieker.develop">
+	<locations>
+		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+			<repository location="https://download.eclipse.org/releases/2020-03"/>
+			<unit id="org.eclipse.emf.ecore.xcore.sdk.feature.group" version="1.13.0.v20200127-1346"/>
+			<unit id="org.eclipse.emf.sdk.feature.group" version="2.21.0.v20200205-0529"/>
+			<unit id="org.eclipse.xtext.sdk.feature.group" version="2.21.0.v20200302-1509"/>
+		</location>
+		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+			<repository location="https://updatesite.palladio-simulator.com/palladio-build-updatesite/releases/latest/"/>
+			<unit id="de.uka.ipd.sdq.dsexplore.feature.feature.group" version="4.2.0.201911262246"/>
+			<unit id="org.palladiosimulator.editors.commons.feature.feature.group" version="4.2.0.201911262228"/>
+			<unit id="org.palladiosimulator.editors.gmf.feature.feature.group" version="4.2.0.201911262232"/>
+			<unit id="org.palladiosimulator.editors.sirius.feature.feature.group" version="4.2.0.201911270757"/>
+			<unit id="org.palladiosimulator.editors.tree.feature.feature.group" version="4.2.0.201911262232"/>
+			<unit id="org.palladiosimulator.pcm.feature.feature.group" version="4.2.0.201911262224"/>
+			<unit id="org.palladiosimulator.protocom.feature.feature.group" version="4.2.0.201911262246"/>
+			<unit id="org.palladiosimulator.protocom.javaee.feature.feature.group" version="4.2.0.201911262246"/>
+			<unit id="org.palladiosimulator.reliability.feature.feature.group" version="4.2.0.201911262239"/>
+			<unit id="org.palladiosimulator.simucom.feature.feature.group" version="4.2.0.201911262239"/>
+			<unit id="org.palladiosimulator.simulation.abstractsimengine.desmoj.feature.feature.group" version="4.2.0.201911262217"/>
+			<unit id="org.palladiosimulator.simulation.abstractsimengine.ssj.feature.feature.group" version="4.2.0.201911262217"/>
+			<unit id="org.palladiosimulator.solver.feature.feature.group" version="4.2.0.201911262239"/>
+		</location>
+	</locations>
+	<environment>
+		<os>linux</os>
+		<arch>x86_64</arch>
+		<ws>gtk</ws>
+	</environment>
+</target>
