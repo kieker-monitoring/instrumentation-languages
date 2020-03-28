@@ -7,18 +7,19 @@ pipeline {
     
     stages {
         stage('Build') {
-	       	steps {
-            	sh 'mvn clean compile'
-        	}
+		steps {
+			sh 'mvn clean'
+			sh 'mvn compile'
+		}
         }
         stage('Test') {
-	       	steps {
+		steps {
 	            sh 'mvn test'
 	        }
         }
         stage('Deploy') {
-        	steps {
-            	sh 'mvn --settings settings.xml -Dkeystore=${KEYSTORE} package'
+		steps {
+		sh 'mvn --settings settings.xml -Dkeystore=${KEYSTORE} package'
             }
         }
     }
