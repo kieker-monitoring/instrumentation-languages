@@ -61,9 +61,10 @@
 		<palladio-wfe-repo.url>https://sdqweb.ipd.kit.edu/eclipse/workflowengine/releases/latest</palladio-wfe-repo.url>
 		<kit-common-repo.url>https://sdqweb.ipd.kit.edu/eclipse/commons/releases/latest</kit-common-repo.url>
 		<gecoRepoUrl>https://maui.se.informatik.uni-kiel.de/repo/geco/snapshot/</gecoRepoUrl>
+		<tmf.url>https://mirror.ibcp.fr/pub/eclipse/modeling/tmf/xtext/updates/releases/</tmf.url>
+
 		<checkstyle.config.location>../cs-conf.xml</checkstyle.config.location>
-		<xtext-repo.url>https://download.itemis.de/updates</xtext-repo.url>
-		<eclipse.mirror>https://mirror.ibcp.fr/pub/eclipse/</eclipse.mirror>
+
 	</properties>
 
 	<modules>
@@ -307,19 +308,12 @@
 	</build>
 
 	 <repositories>
-		<!-- add Eclipse repository to resolve dependencies -->
-		<repository>
-			<id>EclipseP</id>
-			<layout>p2</layout>
-			<url>${eclipse.mirror}/releases/2020-03/</url>
-		</repository>
 		<!-- add TMF repository for latest Xtend -->
 		<repository>
 			<id>TMF Repo</id>
 			<layout>p2</layout>
-			<!--<url>${eclipse.mirror}/modeling/tmf/xtext/updates/releases/</url> -->
-			<url>${eclipse.mirror}/modeling/tmf/xtext/updates/releases/</url>
-		</repository>
+			<url>${tmf.url}/</url>
+		</repository> 
 		<repository>
 			<id>emf</id>
 			<url>https://oss.sonatype.org/content/repositories/orgeclipseemf-1054/</url>
@@ -360,13 +354,13 @@
 			<url>${gecoRepoUrl}</url>
 			<layout>p2</layout>
 		</repository>
-
+<!--
 		<repository>
 			<id>xtext</id>
 			<layout>p2</layout>
 			<url>${xtext-repo.url}</url>
 		</repository>
-
+-->
 		<repository>
 			<id>palladio</id>
 			<url>${palladioRepoUrl}</url>
