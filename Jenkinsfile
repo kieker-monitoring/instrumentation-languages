@@ -3,6 +3,8 @@ pipeline {
     
     environment {
         KEYSTORE = credentials('kieker-irl-key')
+	UPDATESITE = 'sftp://repo@repo.se.internal/var/www/html'
+	DESTINATION = 'snapshot'
     }
     
     stages {
@@ -19,7 +21,7 @@ pipeline {
         }
         stage('Deploy') {
 		steps {
-		sh 'mvn --settings settings.xml -Dkeystore=${KEYSTORE} package'
+		sh 'mvn --settings settings.xml -Dkeystore=${KEYSTORE} -Dupdatesite=${UPDATESITE} -Ddestination=${DESTINATION} package'
             }
         }
     }
