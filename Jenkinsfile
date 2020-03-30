@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Cleanup') {
 		steps {
-			sh 'git clean -xffd -e ws-repo'
+			sh 'git clean -xffd -e "ws-repo/**"'
 		}
 	}
 	stage('Build') {
