@@ -11,6 +11,7 @@ pipeline {
         stage('Cleanup') {
 		steps {
 			sh 'rm -rf *'
+			sh 'git clone https://github.com/kieker-monitoring/instrumentation-languages.git'
 		}
 	}
 	stage('Build') {
