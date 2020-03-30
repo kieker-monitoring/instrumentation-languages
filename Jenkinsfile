@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Cleanup') {
 		steps {
-			git clean -xffd
+			sh 'git clean -xffd'
 //			sh 'rm -rf *'
 //			sh 'git clone https://github.com/kieker-monitoring/instrumentation-languages.git'
 //			sh 'mv instrumentation-languages/* .'
