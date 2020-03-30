@@ -12,6 +12,7 @@ pipeline {
 		steps {
 			sh 'rm -rf *'
 			sh 'git clone https://github.com/kieker-monitoring/instrumentation-languages.git'
+			sh 'mv instrumentation-languages/* .'
 		}
 	}
 	stage('Build') {
