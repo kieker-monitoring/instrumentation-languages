@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Cleanup') {
 		steps {
-			sh 'find . -name "target" -exec rm -rf {} \\;'
+			sh 'rm -rf *'
 		}
 	}
 	stage('Build') {
