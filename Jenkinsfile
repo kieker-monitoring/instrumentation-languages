@@ -8,9 +8,13 @@ pipeline {
     }
     
     stages {
-        stage('Build') {
+        stage('Cleanup') {
 		steps {
 			sh 'find . -name "target" -exec rm -rf {} \\;'
+		}
+	}
+	stage('Build') {
+		steps {
 			sh 'mvn clean'
 			sh 'mvn compile'
 		}
