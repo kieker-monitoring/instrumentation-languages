@@ -224,7 +224,7 @@
 					<configuration>
 						<linkXRef>true</linkXRef>
 						<configLocation>../cs-conf.xml</configLocation>
-						<propertyExpansion>config_loc=${projectdir}</propertyExpansion>
+						<propertyExpansion>config_loc=${workspace}</propertyExpansion>
 					</configuration>
 					<dependencies>
 						<dependency>
@@ -418,7 +418,7 @@
 				<version>3.1.1</version>
 				<configuration>
 					<configLocation>../cs-conf.xml</configLocation>
-					<propertyExpansion>config_loc=${projectdir}</propertyExpansion>
+					<propertyExpansion>config_loc=${workspace}</propertyExpansion>
 				</configuration>
 			</plugin>
 		</plugins>
