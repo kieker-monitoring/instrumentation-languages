@@ -3,7 +3,7 @@ pipeline {
 
 	environment {
 		KEYSTORE = credentials('kieker-irl-key')
-		UPDATE_SITE_URL = 2sftp://repo@repo.se.internal/var/www/html/kdt'
+		UPDATE_SITE_URL = "sftp://repo@repo.se.internal/var/www/html/kdt"
 		DESTINATION = 'snapshot'
 	}
 
