@@ -90,7 +90,7 @@
 				<executions>
 					<execution>
 						<id>upload-repo</id>
-						<phase>package</phase>
+						<phase>install</phase>
 						<goals>
 							<goal>upload</goal>
 						</goals>
@@ -98,7 +98,7 @@
 							<serverId>repo</serverId>
 							<fromDir>${repository-path}</fromDir>
 							<includes>**</includes>
-							<url>sftp://${updatesite}/kdt</url>
+							<url>${update-site-url}</url>
 							<toDir>${destination}</toDir>
 						</configuration>
 					</execution>
