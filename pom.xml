@@ -25,7 +25,7 @@
 		<maven-compiler-source>1.8</maven-compiler-source>
 		<maven-compiler-target>1.8</maven-compiler-target>
 
-		<checkstyle-crawler>8.18</checkstyle-crawler>
+		<checkstyle-crawler>[8.29,)</checkstyle-crawler>
 
 		<!-- properties for deploying the composite update site and zipped products on Sourceforge -->
 		<target-file-name>kieker.develop</target-file-name>
@@ -212,28 +212,28 @@
 					<useProjectSettings>false</useProjectSettings>
 				</configuration>
 			</plugin>
-
-			<!-- checkstyle plugin -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>3.0.0</version>
-				<configuration>
-					<linkXRef>true</linkXRef>
-					<propertyExpansion>basedir=${basedir}</propertyExpansion>
-				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>com.puppycrawl.tools</groupId>
-						<artifactId>checkstyle</artifactId>
-						<version>${checkstyle-crawler}</version>
-					</dependency>
-				</dependencies>
-			</plugin>
 		</plugins>
 
 		<pluginManagement>
 			<plugins>
+				<!-- checkstyle plugin -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-checkstyle-plugin</artifactId>
+					<version>3.0.0</version>
+					<configuration>
+						<linkXRef>true</linkXRef>
+						<configLocation>../cs-conf.xml</configLocation>
+						<propertyExpansion>config_loc=${projectdir}</propertyExpansion>
+					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>com.puppycrawl.tools</groupId>
+							<artifactId>checkstyle</artifactId>
+							<version>${checkstyle-crawler}</version>
+						</dependency>
+					</dependencies>
+				</plugin>
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>build-helper-maven-plugin</artifactId>
@@ -349,13 +349,6 @@
 			<url>${gecoRepoUrl}</url>
 			<layout>p2</layout>
 		</repository>
-<!--
-		<repository>
-			<id>xtext</id>
-			<layout>p2</layout>
-			<url>${xtext-repo.url}</url>
-		</repository>
--->
 		<repository>
 			<id>palladio</id>
 			<url>${palladioRepoUrl}</url>
@@ -419,15 +412,16 @@
 				<artifactId>maven-jxr-plugin</artifactId>
 				<version>2.3</version>
 			</plugin>
-			<plugin>
+			<!-- plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
 				<version>3.0.0</version>
 				<configuration>
-					<configLocation>cs-conf.xml</configLocation>
-					<propertyExpansion>config_loc=${basedir}</propertyExpansion>
+					<configLocation>../cs-conf.xml</configLocation>
+					<propertyExpansion>config_loc=${projectdir}</propertyExpansion>
 				</configuration>
-			</plugin>
+			</plugin -->
 		</plugins>
 	</reporting>
 </project>
+
