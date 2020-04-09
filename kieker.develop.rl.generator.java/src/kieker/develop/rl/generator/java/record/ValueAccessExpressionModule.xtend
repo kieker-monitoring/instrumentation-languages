@@ -48,6 +48,30 @@ class ValueAccessExpressionModule {
 					simpleTypeAction»
 		'''
 	}
+	
+	/**
+	 * Create nested loops for array access for expressions, i.e.
+	 * 
+	 * @param sizes the different sizes of arrays, a size of 0 indicates a dynamic array range
+	 * @param depth indicates which dimension is addressed
+	 * @param propertyName the property of the associated array property
+	 * @param simpleTypeAction the action to be performed on non array level
+	 */
+	static def CharSequence createArrayAccessLoops4Expressions(EList<ArraySize> sizes, int depth, 
+		String propertyName, CharSequence simpleTypeAction,
+		String prefix, String suffix
+	) {
+		'''
+			«prefix»
+			for (int i«depth»=0;i«depth»<«if (sizes.get(depth).size > 0) sizes.get(depth).size else 
+				'_' + propertyName + '_size' + depth»;i«depth»++)
+				«if (sizes.size-1 > depth)
+					createArrayAccessLoops4Expressions(sizes,depth+1, propertyName, simpleTypeAction, prefix, suffix)
+				else
+					simpleTypeAction»
+			«suffix»
+		'''
+	}
 		
 	/**
 	 * Creates an getter for a property including all array indices necessary to access

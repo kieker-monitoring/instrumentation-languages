@@ -42,6 +42,7 @@ import static extension kieker.develop.rl.generator.java.record.NameResolver.*
 import static extension kieker.develop.rl.generator.java.record.ParameterizedConstructorTemplates.*
 import static extension kieker.develop.rl.generator.java.record.PropertyConstructionModule.*
 import static extension kieker.develop.rl.generator.java.record.SerializationTemplates.*
+import static extension kieker.develop.rl.generator.java.record.ToStringConverterTemplates.*
 import static extension kieker.develop.rl.generator.java.record.uid.ComputeUID.*
 import static extension kieker.develop.rl.typing.PropertyResolution.*
 import static extension kieker.develop.rl.typing.TypeResolution.*
@@ -132,6 +133,8 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 				«if (isSupported(GeneratorFeatures.OWN_HASH_FUNCTION)) createHashcode(type.name, allDataProperties)»
 				
 				«type.createPropertyGettersAndSetters»
+				
+				«type.createToString(allDataProperties)»
 			}
 		'''
 	}
