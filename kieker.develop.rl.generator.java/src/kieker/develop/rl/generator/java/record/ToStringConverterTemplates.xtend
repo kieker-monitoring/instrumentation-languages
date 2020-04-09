@@ -48,6 +48,8 @@ class ToStringConverterTemplates {
 			«properties.filter[!it.isTransient].map[
 				it.createPropertyValueLine
 			].join('\n')»
+			
+			return result;
 		}
 	'''
 	
