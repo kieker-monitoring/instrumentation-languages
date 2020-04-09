@@ -54,7 +54,7 @@ class ToStringConverterTemplates {
 	'''
 	
 	private static def createPropertyValueLine(Property property) '''
-		result = "«property.name» = ";
+		result += "«property.name» = ";
 		«property.createPropertyValue»
 	'''
 
