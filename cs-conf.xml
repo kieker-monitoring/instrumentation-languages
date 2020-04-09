@@ -60,7 +60,7 @@
 	<!-- for each line of the source header. -->
 	<!-- See http://checkstyle.sf.net/config_header.html -->
 	<module name="RegexpHeader">
-		<property name="headerFile" value="${config_loc}/header.txt" />
+		<property name="headerFile" value="${config_loc}/java-header.sed" />
 		<property name="charset" value="UTF-8" />
 		<property name="fileExtensions" value="java,xtend" />
 	</module>
