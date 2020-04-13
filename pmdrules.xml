@@ -18,7 +18,6 @@
 	<rule ref="rulesets/internal/all-java.xml">
 		<exclude name="AvoidCatchingNPE" />
 		<exclude name="AvoidDuplicateLiterals" />
-		<exclude name="AvoidFinalLocalVariable" />
 		<exclude name="AvoidInstantiatingObjectsInLoops" />
 		<exclude name="AvoidLiteralsInIfCondition" />
 		<exclude name="AvoidThrowingNullPointerException" />
@@ -54,7 +53,6 @@
 		<exclude name="TooManyMethods" />
 		<exclude name="UnnecessaryConstructor" />
 		<exclude name="UnnecessaryModifier" />
-		<exclude name="UnnecessaryFinalModifier" />
 		<exclude name="UseObjectForClearerAPI" />
 		<exclude name="UseProperClassLoader" />
 		<exclude name="UselessParentheses" />
@@ -62,7 +60,7 @@
 		<exclude name="UseVarargs" />
 	</rule>
 
-	<rule ref="rulesets/java/comments.xml/CommentRequired">
+	<rule ref="category/java/documentation.xml/CommentRequired">
 		<!-- <priority>5</priority> -->
 		<properties>
 			<property name="violationSuppressXPath"
