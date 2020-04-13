@@ -230,6 +230,7 @@
 						<excludeRoots>
 							<excludeRoot>${project.basedir}/src-gen</excludeRoot>
 							<excludeRoot>${project.basedir}/xtend-gen</excludeRoot>
+							<excludeRoot>${project.basedir}/model-gen</excludeRoot>
 						</excludeRoots>
 					</configuration>
 					<dependencies>
