@@ -20,6 +20,7 @@
 		<platformVersion>[3.9,4.16)</platformVersion>
 
 		<checkstyle.config.location>cs-conf.xml</checkstyle.config.location>
+		<pmdVersion>6.22.0</pmdVersion>
 		<xtextVersion>2.21.0</xtextVersion>
 		<xtendVersion>2.21.0</xtendVersion>
 		<maven-compiler-source>1.8</maven-compiler-source>
@@ -216,6 +217,34 @@
 
 		<pluginManagement>
 			<plugins>
+				<!-- pmd -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-pmd-plugin</artifactId>
+					<version>3.13.0</version>
+					<configuration>
+						<rulesets>
+							<ruleset>${workspace}/pmdrules.xml</ruleset>
+						</rulesets>
+						<printFailingErrors>true</printFailingErrors>
+						<excludeRoots>
+							<excludeRoot>${basedir}/src-gen</excludeRoot>
+							<excludeRoot>${basedir}/xtend-gen</excludeRoot>
+						</excludeRoots>
+					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>net.sourceforge.pmd</groupId>
+							<artifactId>pmd-core</artifactId>
+							<version>${pmdVersion}</version>
+						</dependency>
+						<dependency>
+							<groupId>net.sourceforge.pmd</groupId>
+							<artifactId>pmd-java</artifactId>
+							<version>${pmdVersion}</version>
+						</dependency>
+					</dependencies>
+				</plugin>
 				<!-- checkstyle plugin -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
