@@ -160,6 +160,17 @@
 					</dependency>
 				</dependencies>
 			</plugin>
+			<plugin>
+                                <groupId>org.apache.maven.plugins</groupId>
+                                <artifactId>maven-pmd-plugin</artifactId>
+                                        <version>3.13.0</version>
+                                        <configuration>
+                                                <excludeRoots>
+                                                        <excludeRoot>${basedir}/src-gen</excludeRoot>
+                                                        <excludeRoot>${basedir}/xtend-gen</excludeRoot>
+                                                </excludeRoots>
+                                        </configuration>
+			</plugins>
 		</plugins>
 
 		<pluginManagement>
