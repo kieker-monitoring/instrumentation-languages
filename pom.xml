@@ -228,8 +228,8 @@
 						</rulesets>
 						<printFailingErrors>true</printFailingErrors>
 						<excludeRoots>
-							<excludeRoot>${basedir}/src-gen</excludeRoot>
-							<excludeRoot>${basedir}/xtend-gen</excludeRoot>
+							<excludeRoot>${project.basedir}/src-gen</excludeRoot>
+							<excludeRoot>${project.basedir}/xtend-gen</excludeRoot>
 						</excludeRoots>
 					</configuration>
 					<dependencies>
