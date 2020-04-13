@@ -170,7 +170,7 @@
                                                         <excludeRoot>${basedir}/xtend-gen</excludeRoot>
                                                 </excludeRoots>
                                         </configuration>
-			</plugins>
+			</plugin>
 		</plugins>
 
 		<pluginManagement>
