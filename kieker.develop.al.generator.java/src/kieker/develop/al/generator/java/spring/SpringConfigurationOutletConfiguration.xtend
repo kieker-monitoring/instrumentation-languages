@@ -21,6 +21,7 @@ import kieker.develop.al.generator.java.ConfigurationProperties
 import kieker.develop.al.intermediate.IntermediateModel
 import kieker.develop.rl.outlet.AbstractOutletConfiguration
 import org.w3c.dom.Document
+import de.cau.cs.se.geco.architecture.framework.IGenerator
 
 /**
  * Spring configuration outlet configuration.
@@ -28,15 +29,17 @@ import org.w3c.dom.Document
  * @author Reiner Jung
  */
 class SpringConfigurationOutletConfiguration extends AbstractOutletConfiguration<IntermediateModel, Document> {
+
+	static String JAVA_EXTENSION = "java"
 			
 	new() {
 		super(ConfigurationProperties.SPRING_CONFIGURATION_OUTLET_ID, "Spring", "./src-gen/java", 
 			ConfigurationProperties.LANG_JAVA, ConfigurationProperties.TECH_ASPECT_J
 		)
-		generators += new SpringConfigurationGenerator
+		generators.put(new SpringConfigurationGenerator, JAVA_EXTENSION)
 	}
 	
-	override outputFilePath(IntermediateModel node) '''«node.outputDirectory»«File::separator»«node.name».java'''
+	override outputFilePath(IntermediateModel node, IGenerator<?, ?> generator) '''«node.outputDirectory»«File::separator»«node.name».java'''
 	
 	override outputDirectory(IntermediateModel node) '''«(node.eContainer as AspectModel).name.replace('.',File::separator)»'''
 	

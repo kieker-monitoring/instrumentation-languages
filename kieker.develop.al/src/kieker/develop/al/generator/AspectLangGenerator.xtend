@@ -221,7 +221,7 @@ class AspectLangGenerator implements IGenerator2 {
 	private def selectGenerator(IGenerator<? extends Advice, ?> generator, AbstractOutletConfiguration<Advice, Object> configuration, Advice advice, IFileSystemAccess2 fsa) {
 		if (generator.isOutputType(CharSequence)) {
 			val result = (generator as IGenerator<Advice,CharSequence>).generate(advice)
-			fsa.generateFile(configuration.outputFilePath(advice), configuration.name, result)
+			fsa.generateFile(configuration.outputFilePath(advice, generator), configuration.name, result)
 		} else if (generator.isOutputType(Document)) {
 			val document = (generator as IGenerator<Advice,Document>).generate(advice)
 			val transformerFactory = TransformerFactory.newInstance()
@@ -232,7 +232,7 @@ class AspectLangGenerator implements IGenerator2 {
 			val writer = new StringWriter()
 				
 			transformer.transform(new DOMSource(document), new StreamResult(writer))
-			fsa.generateFile(configuration.outputFilePath(advice), configuration.name, writer.toString)
+			fsa.generateFile(configuration.outputFilePath(advice, generator), configuration.name, writer.toString)
 		}
 	}
 		
@@ -283,7 +283,7 @@ class AspectLangGenerator implements IGenerator2 {
 			if (technologyUsed) {
 				if (generator.isOutputType(CharSequence)) {
 					val result = (generator as IGenerator<IntermediateModel, CharSequence>).generate(intermediateModel)
-					fsa.generateFile(configuration.outputFilePath(intermediateModel), configuration.name, result)
+					fsa.generateFile(configuration.outputFilePath(intermediateModel, generator), configuration.name, result)
 				} else if (generator.isOutputType(Document)) {
 					val document = (generator as IGenerator<IntermediateModel, Document>).generate(intermediateModel)
 					val transformerFactory = TransformerFactory.newInstance()
@@ -294,7 +294,7 @@ class AspectLangGenerator implements IGenerator2 {
 					val writer = new StringWriter()
 					
 					transformer.transform(new DOMSource(document), new StreamResult(writer))
-					fsa.generateFile(configuration.outputFilePath(intermediateModel), configuration.name, writer.toString)
+					fsa.generateFile(configuration.outputFilePath(intermediateModel, generator), configuration.name, writer.toString)
 				}
 			}
 		]

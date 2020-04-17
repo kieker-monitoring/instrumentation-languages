@@ -20,6 +20,7 @@ import kieker.develop.al.aspectLang.Advice
 import kieker.develop.al.aspectLang.AspectModel
 import kieker.develop.al.generator.java.ConfigurationProperties
 import kieker.develop.rl.outlet.AbstractOutletConfiguration
+import de.cau.cs.se.geco.architecture.framework.IGenerator
 
 /**
  * Servlet advice outlet configuration.
@@ -27,15 +28,17 @@ import kieker.develop.rl.outlet.AbstractOutletConfiguration
  * @author Reiner Jung
  */
 class ServletAdviceOutletConfiguration extends AbstractOutletConfiguration<Advice, CharSequence> {
-		
+
+	static String JAVA_EXTENSION = "java"
+
 	new() {
 		super(ConfigurationProperties.SERVLET_ADVICE_OUTLET_ID, "Java Servlet", "./src-gen/java", 
 			ConfigurationProperties.LANG_JAVA, ConfigurationProperties.TECH_SERVLET
 		)
-		generators += new ServletAdviceGenerator()
+		generators.put(new ServletAdviceGenerator(), JAVA_EXTENSION)
 	}
 	
-	override outputFilePath(Advice node) '''«node.outputDirectory»«File::separator»«node.name».java'''
+	override outputFilePath(Advice node, IGenerator<?, ?> generator) '''«node.outputDirectory»«File::separator»«node.name».java'''
 	
 	override outputDirectory(Advice node) '''«(node.eContainer as AspectModel).name.replace('.',File::separator)»'''	
 }
