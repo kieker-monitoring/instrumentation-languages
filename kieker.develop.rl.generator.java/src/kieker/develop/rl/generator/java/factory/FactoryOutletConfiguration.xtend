@@ -20,6 +20,7 @@ import kieker.develop.rl.outlet.AbstractOutletConfiguration
 import kieker.develop.rl.recordLang.Model
 import kieker.develop.rl.recordLang.ComplexType
 import kieker.develop.rl.generator.java.GeneratorProvider
+import de.cau.cs.se.geco.architecture.framework.IGenerator
 
 /**
  * Outlet configuration for Java factories.
@@ -29,14 +30,15 @@ import kieker.develop.rl.generator.java.GeneratorProvider
  */
 class FactoryOutletConfiguration extends AbstractOutletConfiguration<ComplexType, CharSequence> {
 	
-	static String FACTORY_OUTLET_ID = "java.factory";
+	static String FACTORY_OUTLET_ID = "java.factory"
+	static String JAVA_EXTENSION = "java"
 		
 	new() {
 		super(FACTORY_OUTLET_ID, "Java factory", "./src-gen/java-factory", GeneratorProvider.LANG_JAVA, GeneratorProvider.TECH_KIEKER_JAVA)
-		generators += new EventTypeGenerator
+		generators.put(new EventTypeGenerator, JAVA_EXTENSION)
 	}
 	
-	override outputFilePath(ComplexType type) '''«type.outputDirectory»«File::separator»«type.name»Factory.java'''
+	override outputFilePath(ComplexType type, IGenerator<?,?> generator) '''«type.outputDirectory»«File::separator»«type.name»Factory.java'''
 	
 	override outputDirectory(ComplexType type) '''«(type.eContainer as Model).name.replace('.', File::separator)»'''
 	

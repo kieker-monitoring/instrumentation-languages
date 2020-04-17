@@ -15,9 +15,9 @@
  ***************************************************************************/
 package kieker.develop.rl.outlet
 
-import java.util.ArrayList
 import java.util.Collection
 import de.cau.cs.se.geco.architecture.framework.IGenerator
+import java.util.HashMap
 
 /**
  * Abstract outlet configuration class used to model outlets and
@@ -47,7 +47,7 @@ abstract class AbstractOutletConfiguration<S, T> {
 	String lang
 	
 	/** All generators for event and templates types of this outlet configuration. */
-	protected val generators = new ArrayList<IGenerator<? extends S,? extends T>>
+	protected val generators = new HashMap<IGenerator<? extends S,? extends T>, String>
 
 	/**
 	 * Create a new outlet entity.
@@ -81,11 +81,10 @@ abstract class AbstractOutletConfiguration<S, T> {
 	}
 	
 	def Collection<IGenerator<? extends S, ? extends T>> getGenerators() {
-		return this.generators
+		return this.generators.keySet
 	}
 	
-	def String outputFilePath(S node)
+	def String outputFilePath(S type, IGenerator<?,?> generator)
 	
-	def String outputDirectory(S node)
-	
+	def String outputDirectory(S node)	
 }

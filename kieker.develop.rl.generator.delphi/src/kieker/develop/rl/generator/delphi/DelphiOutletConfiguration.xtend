@@ -19,6 +19,8 @@ import java.io.File
 import kieker.develop.rl.outlet.AbstractOutletConfiguration
 import kieker.develop.rl.recordLang.ComplexType
 import kieker.develop.rl.recordLang.Model
+import de.cau.cs.se.geco.architecture.framework.IGenerator
+
 
 /**
  * Outlet configuration for Delphi code.
@@ -29,13 +31,14 @@ import kieker.develop.rl.recordLang.Model
 class DelphiOutletConfiguration extends AbstractOutletConfiguration<ComplexType, CharSequence>  {
 	
 	static String DELFI_OUTLET_ID = "delphi.records"
+	static String PASCAL_EXTENSION = "pas"
 	
 	new () {
 		super(DELFI_OUTLET_ID, "Delphi", "./src-gen/delphi", GeneratorProvider.LANG_DELPHI, GeneratorProvider.TECH_KIEKER_DELPHI)
-		this.generators += new EventTypeGenerator
+		this.generators.put(new EventTypeGenerator, PASCAL_EXTENSION)
 	}
 												
 	override outputDirectory(ComplexType type) '''«(type.eContainer as Model).name.replace('.',File::separator)»'''
 				
-	override outputFilePath(ComplexType type) '''«type.outputDirectory»«File::separator»«type.name».pas'''
+	override outputFilePath(ComplexType type,  IGenerator<?,?> generator) '''«type.outputDirectory»«File::separator»«type.name».pas'''
 }

@@ -19,6 +19,7 @@ import java.io.File
 import kieker.develop.rl.generator.c.header.EventTypeGenerator
 import kieker.develop.rl.outlet.AbstractOutletConfiguration
 import kieker.develop.rl.recordLang.ComplexType
+import de.cau.cs.se.geco.architecture.framework.IGenerator
 
 import static extension kieker.develop.rl.generator.c.CommonCFunctionsExtension.*
 
@@ -31,15 +32,17 @@ import static extension kieker.develop.rl.generator.c.CommonCFunctionsExtension.
 class COutletConfiguration extends AbstractOutletConfiguration<ComplexType, CharSequence> {
 	
 	static String C_OUTLET_ID = "c"
+	static String C_HEADER_EXTENSION = "h"
+	static String C_MAIN_EXTENSION = "c"
 	
 	new () {
 		super(C_OUTLET_ID, "C", "./src/gen/c", GeneratorProvider.LANG_C, GeneratorProvider.TECH_KIEKER_C)
-		this.generators += new EventTypeGenerator
-		this.generators += new kieker.develop.rl.generator.c.main.EventTypeGenerator
+		this.generators.put(new EventTypeGenerator, C_HEADER_EXTENSION)
+		this.generators.put(new kieker.develop.rl.generator.c.main.EventTypeGenerator, C_MAIN_EXTENSION)
 	}
 	
-	override outputFilePath(ComplexType type) '''«type.outputDirectory»«File::separator»«type.name.cstyleName».h'''
+	override outputFilePath(ComplexType type, IGenerator<?,?> generator) '''«type.outputDirectory»«File::separator»«type.name.cstyleName».«this.generators.get(generator)»'''
 	
 	override outputDirectory(ComplexType type) '''«type.directoryPathName»'''
-	
+		
 }

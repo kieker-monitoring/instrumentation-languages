@@ -19,16 +19,20 @@ import java.io.File
 import kieker.develop.rl.outlet.AbstractOutletConfiguration
 import kieker.develop.rl.recordLang.ComplexType
 import kieker.develop.rl.recordLang.Model
+import de.cau.cs.se.geco.architecture.framework.IGenerator
+
 
 class PerlOutletConfiguration extends AbstractOutletConfiguration<ComplexType, CharSequence> {
 	
+	static String PERL_EXTENSION = "pm"
+	
 	new () {
 		super("perl", "Perl Output Folder", "./src-gen/perl", GeneratorProvider.LANG_PERL, GeneratorProvider.TECH_KIEKER_PERL)
-		generators += new EventTypeGenerator
-		generators += new EnumerationTypeGenerator
+		generators.put(new EventTypeGenerator, PERL_EXTENSION)
+		generators.put(new EnumerationTypeGenerator, PERL_EXTENSION)
 	}
 	
-	override outputFilePath(ComplexType type) '''«type.outputDirectory»«File::separator»«type.name».pm'''
+	override outputFilePath(ComplexType type, IGenerator<?,?> generator) '''«type.outputDirectory»«File::separator»«type.name».pm'''
 	
 	override outputDirectory(ComplexType type) '''«(type.eContainer as Model).name.replace('.',File::separator)»'''
 	

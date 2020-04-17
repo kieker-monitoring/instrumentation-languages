@@ -20,6 +20,7 @@ import kieker.develop.rl.outlet.AbstractOutletConfiguration
 import kieker.develop.rl.recordLang.Model
 import kieker.develop.rl.recordLang.ComplexType
 import kieker.develop.rl.generator.java.GeneratorProvider
+import de.cau.cs.se.geco.architecture.framework.IGenerator
 
 /**
  * Configuration for the Java record type generators relating
@@ -32,18 +33,17 @@ import kieker.develop.rl.generator.java.GeneratorProvider
 class JavaOutletConfiguration extends AbstractOutletConfiguration<ComplexType, CharSequence> {
 	
 	static String JAVA_OUTLET_ID = "java"
+	static String JAVA_EXTENSION = "java"
 		
 	new() {
 		super(JAVA_OUTLET_ID, "Java record", "./src-gen/java", GeneratorProvider.LANG_JAVA, GeneratorProvider.TECH_KIEKER_JAVA)
-		generators += new EventTypeGenerator
-		generators += new TemplateTypeGenerator
-		generators += new EnumerationTypeGenerator
+		generators.put(new EventTypeGenerator, JAVA_EXTENSION)
+		generators.put(new TemplateTypeGenerator, JAVA_EXTENSION)
+		generators.put(new EnumerationTypeGenerator, JAVA_EXTENSION)
 	}
 		
-	override outputFilePath(ComplexType node) '''«node.outputDirectory»«File::separator»«node.name».java'''
+	override outputFilePath(ComplexType node, IGenerator<?,?> generator) '''«node.outputDirectory»«File::separator»«node.name».java'''
 	
 	override outputDirectory(ComplexType node) '''«(node.eContainer as Model).name.replace('.',File::separator)»'''
-	
-	
 	
 }
