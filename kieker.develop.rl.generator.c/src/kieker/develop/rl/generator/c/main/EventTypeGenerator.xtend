@@ -60,7 +60,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 		'''
 		«this.header»#include <stdlib.h>
 		#include <kieker.h>
-		#include "«type.directoryPathName»/«type.name.cstyleName».h"
+		#include "«type.name.cstyleName».h"
 
 		/**
 		 * Author: «author»
@@ -86,7 +86,9 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 		 */
 		int «type.packageName»_«type.name.cstyleName»_serialize(char *buffer, const int id, const int offset, const «type.packageName»_«type.name.cstyleName» value) {
 			int length = 0;
+
 			«type.collectAllDataProperties.map[createValueSerializerInvocation].join»
+
 			return length;
 		}
 	'''
@@ -95,7 +97,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	 * 
 	 */
 	private def createValueSerializerInvocation(Property property) '''
-		length += «property.findType.valueSerializerName»(buffer,offset,«property.name»);
+		length += «property.findType.valueSerializerName»(buffer, offset, value.«property.name»);
 	'''
 		
 	/**
