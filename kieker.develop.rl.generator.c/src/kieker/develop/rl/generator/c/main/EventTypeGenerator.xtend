@@ -85,11 +85,11 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 		 * returns size of written structure
 		 */
 		int «type.packageName»_«type.name.cstyleName»_serialize(char *buffer, const int id, const int offset, const «type.packageName»_«type.name.cstyleName» value) {
-			int length = 0;
+			int position = offset;
 
 			«type.collectAllDataProperties.map[createValueSerializerInvocation].join»
 
-			return length;
+			return position;
 		}
 	'''
 	
@@ -97,7 +97,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	 * 
 	 */
 	private def createValueSerializerInvocation(Property property) '''
-		length += «property.findType.valueSerializerName»(buffer, offset, value.«property.name»);
+		position += «property.findType.valueSerializerName»(buffer, position, value.«property.name»);
 	'''
 		
 	/**
