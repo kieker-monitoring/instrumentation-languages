@@ -87,6 +87,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 		int «type.packageName»_«type.name.cstyleName»_serialize(char *buffer, const int id, const int offset, const «type.packageName»_«type.name.cstyleName» value) {
 			int position = offset;
 
+			position += kieker_serialize_int32(buffer, position, id);
 			«type.collectAllDataProperties.map[createValueSerializerInvocation].join»
 
 			return position;
