@@ -69,7 +69,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 
 	private def createStructure(EventType type) '''
 		typedef struct {
-			«type.collectAllSerializableDataProperties.map[createPropertyDeclaration].join»
+			«type.collectAllDataProperties.map[createPropertyDeclaration].join»
 		} «type.packageName»_«type.name.cstyleName»;
 	'''
 
