@@ -33,12 +33,12 @@ import kieker.develop.al.aspectLang.AspectModel
  * 
  * @since 1.0
  */
-public class PackageContentScope implements IScope {
+class PackageContentScope implements IScope {
 	
 	/** Main aspect model. */
-	private AspectModel model
+	AspectModel model
 	/** Resource set containing all resources of named in the model. */
-	private ResourceSet resourceSet
+	ResourceSet resourceSet
 
 	/**
 	 * Create a new package content scope.

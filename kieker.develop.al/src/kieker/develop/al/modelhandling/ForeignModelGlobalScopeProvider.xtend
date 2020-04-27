@@ -39,13 +39,13 @@ import kieker.develop.al.aspectLang.ApplicationModelHandle
 class ForeignModelGlobalScopeProvider extends DefaultGlobalScopeProvider {
 	
 	@Inject
-	private ForeignModelTypeProviderFactory typeProviderFactory;
+	ForeignModelTypeProviderFactory typeProviderFactory;
 
 	@Inject
-	private IQualifiedNameConverter qualifiedNameConverter;
+	IQualifiedNameConverter qualifiedNameConverter;
 
     override IScope getScope(Resource resource, EReference reference, Predicate<IEObjectDescription> filter) {
-    	val IScope parentTypeScope = resource.getParentTypeScope(reference, filter, reference.getEReferenceType())
+	val IScope parentTypeScope = resource.getParentTypeScope(reference, filter, reference.getEReferenceType())
         return super.getScope(parentTypeScope, resource, false, reference.getEReferenceType(), filter)
     }
 

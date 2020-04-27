@@ -113,7 +113,7 @@ class AspectLangScopeProvider extends AbstractDeclarativeScopeProvider {
 	def IScope scope_Pointcut_method(Pointcut context, EReference reference) {
 		val Node node = context.location.leaveNode
 		if (node instanceof ContainerNode) {
-			val container = (node as ContainerNode).container
+			val container = node.container
 			if (container instanceof Container)
 				return Scopes.scopeFor(container.operations)
 			else

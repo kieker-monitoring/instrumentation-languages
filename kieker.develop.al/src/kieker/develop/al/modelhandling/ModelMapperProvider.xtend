@@ -29,22 +29,22 @@ import org.eclipse.emf.ecore.EObject
  */
 class ModelMapperProvider {
 	
-	private val Map<String,IModelMapper<EObject, EObject>> mappers = 
+	val Map<String,IModelMapper<EObject, EObject>> mappers = 
 		new HashMap<String, IModelMapper<EObject, EObject>>()
 		
 	new () {
 		/** Register all mapping modules. */
 		val registry = Platform.getExtensionRegistry()
-  		val config = registry.getConfigurationElementsFor(IModelMapper.MODEL_MAPPER)
-	  	try {
+		val config = registry.getConfigurationElementsFor(IModelMapper.MODEL_MAPPER)
+		try {
 			config.forEach[element |
-	  			val ext = element.createExecutableExtension(IModelMapper.MAPPING_HANDLER)
-	  			if (ext instanceof IModelMapper<?,?>) {
-	  				this.mappers.put(ext.name, ext as IModelMapper<EObject, EObject>)
-	  			}
-	  		]
-	  	} catch (CoreException ex) {
-		   	System.out.println(ex.getMessage())
+				val ext = element.createExecutableExtension(IModelMapper.MAPPING_HANDLER)
+				if (ext instanceof IModelMapper<?,?>) {
+					this.mappers.put(ext.name, ext as IModelMapper<EObject, EObject>)
+				}
+			]
+		} catch (CoreException ex) {
+			System.out.println(ex.getMessage())
 		}
 	}
 	
