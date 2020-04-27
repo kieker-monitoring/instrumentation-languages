@@ -81,6 +81,7 @@
 		<module>kieker.develop.rl.generator.c</module>
 		<module>kieker.develop.rl.generator.delphi</module>
 		<module>kieker.develop.rl.generator.perl</module>
+		<module>kieker.develop.rl.generator.python</module>
 		<module>kieker.develop.rl.ide</module>
 		<module>kieker.develop.rl.ui</module>
 		<module>kieker.develop.rl.tests</module>

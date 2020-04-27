@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: kieker.develop.rl.generator.python;singleton:=true
+Bundle-Version: 1.3.0.qualifier
+Bundle-Activator: kieker.develop.rl.generator.python.Activator
+Require-Bundle: org.eclipse.core.runtime,
+ kieker.develop.rl,
+ org.eclipse.xtend.lib,
+ de.cau.cs.se.geco.architecture.framework
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Automatic-Module-Name: kieker.develop.rl.generator.python
+Bundle-Vendor: %providerName
