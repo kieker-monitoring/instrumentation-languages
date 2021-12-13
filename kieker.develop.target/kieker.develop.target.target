@@ -7,6 +7,7 @@
 			<unit id="org.eclipse.emf.ecore.xcore.sdk.feature.group" version="1.18.0.v20210617-1748"/>
 			<unit id="org.eclipse.emf.sdk.feature.group" version="2.27.0.v20210816-1137"/>
 			<unit id="org.eclipse.xtext.sdk.feature.group" version="2.25.0.v20210301-1429"/>
+			<unit id="org.eclipse.pde.feature.group" version="3.14.900.v20210906-0500"/>
 		</location>
 		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 			<repository location="https://updatesite.palladio-simulator.com/palladio-build-updatesite/releases/latest/"/>

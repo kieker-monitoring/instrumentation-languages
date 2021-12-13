@@ -35,7 +35,7 @@ pipeline {
 				}
 				stage('Check') {
 					steps {
-						sh 'mvn -Dmaven.repo.local=${WORKSPACE}/ws-repo --batch-mode package checkstyle:checkstyle pmd:pmd -Dworkspace=' + env.WORKSPACE // spotbugs:spotbugs
+						sh 'mvn -Dmaven.repo.local=${WORKSPACE}/ws-repo -DskipTests --batch-mode package checkstyle:checkstyle pmd:pmd -Dworkspace=' + env.WORKSPACE // spotbugs:spotbugs
 					}
 					post {
 						always {
