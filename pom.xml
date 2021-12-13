@@ -51,17 +51,16 @@
 		<dryrun></dryrun>
 
 		<!-- repository URL -->
-		<eclipseRepoUrl>https://download.eclipse.org/releases/2020-03/</eclipseRepoUrl>
+		<eclipseRepoUrl>https://download.eclipse.org/releases/2021-09/</eclipseRepoUrl>
 		<elkRepoUrl>https://download.eclipse.org/elk/updates/releases/0.6.1/</elkRepoUrl>
 
-        <tycho-repo.url>https://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin</tycho-repo.url>
+		<tycho-repo.url>https://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin</tycho-repo.url>
 
 		<palladioRepoUrl>https://sdqweb.ipd.kit.edu/eclipse/palladio/releases/latest</palladioRepoUrl>
 		<palladio-fm-repo.url>https://sdqweb.ipd.kit.edu/eclipse/featuremodel/releases/latest</palladio-fm-repo.url>
 		<palladio-sf-repo.url>https://sdqweb.ipd.kit.edu/eclipse/sensorframework/releases/latest</palladio-sf-repo.url>
 		<palladio-wfe-repo.url>https://sdqweb.ipd.kit.edu/eclipse/workflowengine/releases/latest</palladio-wfe-repo.url>
 		<kit-common-repo.url>https://sdqweb.ipd.kit.edu/eclipse/commons/releases/latest</kit-common-repo.url>
-		<gecoRepoUrl>https://maui.se.informatik.uni-kiel.de/repo/geco/snapshot/</gecoRepoUrl>
 	</properties>
 
 	<modules>
@@ -360,20 +359,15 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
-		<repository>
+<!--		<repository>
 			<id>jcommander</id>
 			<url>https://mvnrepository.com/artifact/com.beust/jcommander</url>
-		</repository>
+		</repository>-->
 
 		<repository>
 			<id>central</id>
 			<name>Maven Central</name>
 			<url>https://repo1.maven.org/maven2</url>
-		</repository>
-		<repository>
-			<id>geco</id>
-			<url>${gecoRepoUrl}</url>
-			<layout>p2</layout>
 		</repository>
 		<repository>
 			<id>palladio</id>

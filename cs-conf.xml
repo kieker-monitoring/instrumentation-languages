@@ -506,7 +506,7 @@
 			<property name="severity" value="info" />
                         <property name="allowedAnnotations" value="Override" />
                         <property name="validateThrows" value="false" />
-			<property name="scope" value="protected" />
+			<property name="accessModifiers" value="protected, public" />
 			<property name="allowMissingParamTags" value="false" />
 			<property name="allowMissingReturnTag" value="false" />
 			<property name="tokens" value="METHOD_DEF, CTOR_DEF" />

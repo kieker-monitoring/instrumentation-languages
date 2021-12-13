@@ -52,7 +52,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<outputDirectory>xtend-gen</outputDirectory>
+					<outputDirectory>${basedir}/xtend-gen</outputDirectory>
 				</configuration>
 			</plugin>
 		</plugins>
