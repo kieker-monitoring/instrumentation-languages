@@ -92,6 +92,7 @@ public class SemanticsImpl extends MinimalEObjectImpl.Container implements Seman
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Annotation> getAnnotations() {
 		if (annotations == null) {
 			annotations = new EObjectContainmentEList<Annotation>(Annotation.class, this, AnnotationsPackage.SEMANTICS__ANNOTATIONS);
@@ -104,6 +105,7 @@ public class SemanticsImpl extends MinimalEObjectImpl.Container implements Seman
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<TargetLanguage> getLanguages() {
 		if (languages == null) {
 			languages = new EObjectContainmentEList<TargetLanguage>(TargetLanguage.class, this, AnnotationsPackage.SEMANTICS__LANGUAGES);
@@ -116,6 +118,7 @@ public class SemanticsImpl extends MinimalEObjectImpl.Container implements Seman
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Technology> getTechnologies() {
 		if (technologies == null) {
 			technologies = new EObjectContainmentEList<Technology>(Technology.class, this, AnnotationsPackage.SEMANTICS__TECHNOLOGIES);

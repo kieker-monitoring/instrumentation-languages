@@ -9,8 +9,8 @@ Require-Bundle: kieker.develop.al,
  kieker.develop.al.ui,
  org.eclipse.core.runtime,
  org.eclipse.ui.workbench;resolution:=optional,
- org.objectweb.asm;bundle-version="[6.0.0,7.3.0)";resolution:=optional,
- org.eclipse.xtext.xbase.lib;bundle-version="[2.13.0,2.22.0]",
+ org.objectweb.asm;bundle-version="[6.0.0,9.2.0)";resolution:=optional,
+ org.eclipse.xtext.xbase.lib;bundle-version="[2.13.0,2.26.0]",
  org.eclipse.xtext.xbase.junit,
  org.eclipse.xtext.testing,
  org.eclipse.xtext.xbase.testing
@@ -22,6 +22,6 @@ Import-Package: org.apache.log4j,
  org.junit.runner.notification;version="4.7.0",
  org.junit.runners;version="4.7.0",
  org.junit.runners.model;version="4.7.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: kieker.develop.al.tests;x-internal=true
 Automatic-Module-Name: kieker.develop.al.tests

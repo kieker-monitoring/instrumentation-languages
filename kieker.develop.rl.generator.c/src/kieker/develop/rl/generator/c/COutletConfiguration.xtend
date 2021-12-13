@@ -19,7 +19,7 @@ import java.io.File
 import kieker.develop.rl.generator.c.header.EventTypeGenerator
 import kieker.develop.rl.outlet.AbstractOutletConfiguration
 import kieker.develop.rl.recordLang.ComplexType
-import de.cau.cs.se.geco.architecture.framework.IGenerator
+import kieker.develop.geco.IGenerator
 
 import static extension kieker.develop.rl.generator.c.CommonCFunctionsExtension.*
 

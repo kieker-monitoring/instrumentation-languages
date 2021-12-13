@@ -15,14 +15,6 @@
 
 	<name>Kieker Record Language Core Services</name>
 
-	<dependencies>
-		<dependency>
-			<groupId>kieker.develop</groupId>
-			<artifactId>kieker.develop.semantics</artifactId>
-			<version>1.3.0-SNAPSHOT</version>
-		</dependency>
-	</dependencies>
-
 	<build>
 		<sourceDirectory>src-gen</sourceDirectory>
 		<plugins>
@@ -175,7 +167,7 @@
 
 		<pluginManagement>
 			<plugins>
-				<plugin>
+				<!--<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
 					<version>1.0.0</version>
@@ -198,7 +190,7 @@
 							</pluginExecutions>
 						</lifecycleMappingMetadata>
 					</configuration>
-				</plugin>
+				</plugin>-->
 			</plugins>
 		</pluginManagement>
 	</build>

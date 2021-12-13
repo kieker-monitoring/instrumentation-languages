@@ -15,7 +15,7 @@
  ***************************************************************************/
 package kieker.develop.al.handler.java
 
-import de.cau.cs.se.geco.architecture.framework.ITraceModelProvider
+import kieker.develop.geco.ITraceModelProvider
 import java.util.ArrayList
 import kieker.develop.al.aspectLang.ApplicationModelHandle
 import kieker.develop.al.modelhandling.IModelMapper

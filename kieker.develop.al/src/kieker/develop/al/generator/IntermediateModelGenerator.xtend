@@ -15,7 +15,7 @@
  ***************************************************************************/
 package kieker.develop.al.generator
 
-import de.cau.cs.se.geco.architecture.framework.IGenerator
+import kieker.develop.geco.IGenerator
 import java.util.ArrayList
 import java.util.Collection
 import kieker.develop.al.aspectLang.AspectModel

@@ -20,7 +20,7 @@ import kieker.develop.rl.outlet.AbstractOutletConfiguration
 import kieker.develop.rl.recordLang.Model
 import kieker.develop.rl.recordLang.ComplexType
 import kieker.develop.rl.generator.java.GeneratorProvider
-import de.cau.cs.se.geco.architecture.framework.IGenerator
+import kieker.develop.geco.IGenerator
 
 /**
  * Configuration for the Java record type generators relating

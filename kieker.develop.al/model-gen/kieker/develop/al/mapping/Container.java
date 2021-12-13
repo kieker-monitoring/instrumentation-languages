@@ -13,10 +13,10 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- * <li>{@link kieker.develop.al.mapping.Container#getModifier <em>Modifier</em>}</li>
- * <li>{@link kieker.develop.al.mapping.Container#getOperations <em>Operations</em>}</li>
- * <li>{@link kieker.develop.al.mapping.Container#getAttributes <em>Attributes</em>}</li>
- * <li>{@link kieker.develop.al.mapping.Container#getReferences <em>References</em>}</li>
+ *   <li>{@link kieker.develop.al.mapping.Container#getModifier <em>Modifier</em>}</li>
+ *   <li>{@link kieker.develop.al.mapping.Container#getOperations <em>Operations</em>}</li>
+ *   <li>{@link kieker.develop.al.mapping.Container#getAttributes <em>Attributes</em>}</li>
+ *   <li>{@link kieker.develop.al.mapping.Container#getReferences <em>References</em>}</li>
  * </ul>
  *
  * @see kieker.develop.al.mapping.MappingPackage#getContainer()
@@ -32,7 +32,6 @@ public interface Container extends Containment, Feature, Type {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Modifier</em>' reference.
 	 * @see #setModifier(ContainerModifier)
 	 * @see kieker.develop.al.mapping.MappingPackage#getContainer_Modifier()
@@ -45,9 +44,7 @@ public interface Container extends Containment, Feature, Type {
 	 * Sets the value of the '{@link kieker.develop.al.mapping.Container#getModifier <em>Modifier</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>Modifier</em>' reference.
+	 * @param value the new value of the '<em>Modifier</em>' reference.
 	 * @see #getModifier()
 	 * @generated
 	 */
@@ -62,7 +59,6 @@ public interface Container extends Containment, Feature, Type {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Operations</em>' containment reference list.
 	 * @see kieker.develop.al.mapping.MappingPackage#getContainer_Operations()
 	 * @model containment="true"
@@ -79,7 +75,6 @@ public interface Container extends Containment, Feature, Type {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>Attributes</em>' containment reference list.
 	 * @see kieker.develop.al.mapping.MappingPackage#getContainer_Attributes()
 	 * @model containment="true"
@@ -95,7 +90,6 @@ public interface Container extends Containment, Feature, Type {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
 	 * @return the value of the '<em>References</em>' reference.
 	 * @see #setReferences(Reference)
 	 * @see kieker.develop.al.mapping.MappingPackage#getContainer_References()
@@ -108,9 +102,7 @@ public interface Container extends Containment, Feature, Type {
 	 * Sets the value of the '{@link kieker.develop.al.mapping.Container#getReferences <em>References</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
-	 * @param value
-	 *            the new value of the '<em>References</em>' reference.
+	 * @param value the new value of the '<em>References</em>' reference.
 	 * @see #getReferences()
 	 * @generated
 	 */

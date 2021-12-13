@@ -15,7 +15,6 @@
 	<name>Kieker Language PCM Model Handler</name>
 
 	<build>
-		<sourceDirectory>src-gen</sourceDirectory>
 		<plugins>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>

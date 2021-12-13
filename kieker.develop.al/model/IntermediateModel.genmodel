@@ -11,11 +11,17 @@
     <genClasses ecoreClass="IntermediateModel.ecore#//IntermediateAspect">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IntermediateModel.ecore#//IntermediateAspect/joinpoints"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference IntermediateModel.ecore#//IntermediateAspect/advices"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IntermediateModel.ecore#//IntermediateAspect/technology"/>
     </genClasses>
-    <genClasses ecoreClass="IntermediateModel.ecore#//AbstractJoinpoint"/>
-    <genClasses ecoreClass="IntermediateModel.ecore#//CodeJoinpoint"/>
-    <genClasses ecoreClass="IntermediateModel.ecore#//ModelJoinpoint"/>
+    <genClasses ecoreClass="IntermediateModel.ecore#//AbstractJoinpoint">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference IntermediateModel.ecore#//AbstractJoinpoint/technologies"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IntermediateModel.ecore#//AbstractJoinpoint/name"/>
+    </genClasses>
+    <genClasses ecoreClass="IntermediateModel.ecore#//CodeJoinpoint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IntermediateModel.ecore#//CodeJoinpoint/referencedJavaObject"/>
+    </genClasses>
+    <genClasses ecoreClass="IntermediateModel.ecore#//ModelJoinpoint">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference IntermediateModel.ecore#//ModelJoinpoint/referencedInstance"/>
+    </genClasses>
     <genClasses ecoreClass="IntermediateModel.ecore#//IntermediateModel">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IntermediateModel.ecore#//IntermediateModel/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IntermediateModel.ecore#//IntermediateModel/aspects"/>

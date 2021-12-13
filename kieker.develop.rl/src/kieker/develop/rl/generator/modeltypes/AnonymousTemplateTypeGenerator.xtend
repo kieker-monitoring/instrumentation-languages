@@ -15,13 +15,13 @@
  ***************************************************************************/
 package kieker.develop.rl.generator.modeltypes
 
-import de.cau.cs.se.geco.architecture.framework.IGenerator
 import kieker.develop.rl.recordLang.TemplateType
 import kieker.develop.rl.recordLang.ModelSubType
-import de.cau.cs.se.geco.architecture.framework.TraceModelProvider
 import kieker.develop.rl.recordLang.RecordLangFactory
 
 import static extension kieker.develop.rl.generator.modeltypes.TargetModelFactory.*
+import kieker.develop.geco.IGenerator
+import kieker.develop.geco.TraceModelProvider
 
 /**
  * Generate an anonymous template type for a given ModelSubType.

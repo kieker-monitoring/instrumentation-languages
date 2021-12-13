@@ -65,6 +65,7 @@ public class CodeJoinpointImpl extends AbstractJoinpointImpl implements CodeJoin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Object getReferencedJavaObject() {
 		return referencedJavaObject;
 	}
@@ -74,6 +75,7 @@ public class CodeJoinpointImpl extends AbstractJoinpointImpl implements CodeJoin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setReferencedJavaObject(Object newReferencedJavaObject) {
 		Object oldReferencedJavaObject = referencedJavaObject;
 		referencedJavaObject = newReferencedJavaObject;
@@ -148,7 +150,7 @@ public class CodeJoinpointImpl extends AbstractJoinpointImpl implements CodeJoin
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (referencedJavaObject: ");
 		result.append(referencedJavaObject);
 		result.append(')');

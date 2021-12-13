@@ -7,11 +7,11 @@ Bundle-Activator: kieker.develop.rl.generator.java.Activator
 Require-Bundle: org.eclipse.core.runtime,
  kieker.develop.rl,
  org.eclipse.xtend.lib,
- de.cau.cs.se.geco.architecture.framework,
+ kieker.develop.semantics,
  com.google.guava,
  org.eclipse.xtext.xbase.lib,
  org.eclipse.xtend.lib.macro
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Export-Package: kieker.develop.rl.generator.java,
  kieker.develop.rl.generator.java.factory,

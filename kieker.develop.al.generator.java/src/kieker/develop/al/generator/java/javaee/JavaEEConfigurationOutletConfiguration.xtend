@@ -21,7 +21,7 @@ import kieker.develop.al.generator.java.ConfigurationProperties
 import kieker.develop.al.intermediate.IntermediateModel
 import kieker.develop.rl.outlet.AbstractOutletConfiguration
 import org.w3c.dom.Document
-import de.cau.cs.se.geco.architecture.framework.IGenerator
+import kieker.develop.geco.IGenerator
 
 /**
  * JavaEE configuration outlet configuration.

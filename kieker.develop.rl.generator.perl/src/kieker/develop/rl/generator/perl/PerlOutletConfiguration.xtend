@@ -19,7 +19,7 @@ import java.io.File
 import kieker.develop.rl.outlet.AbstractOutletConfiguration
 import kieker.develop.rl.recordLang.ComplexType
 import kieker.develop.rl.recordLang.Model
-import de.cau.cs.se.geco.architecture.framework.IGenerator
+import kieker.develop.geco.IGenerator
 
 
 class PerlOutletConfiguration extends AbstractOutletConfiguration<ComplexType, CharSequence> {

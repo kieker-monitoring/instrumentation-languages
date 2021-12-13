@@ -7,8 +7,8 @@ Bundle-Activator: kieker.develop.rl.generator.delphi.Activator
 Require-Bundle: org.eclipse.core.runtime,
  kieker.develop.rl,
  org.eclipse.xtend.lib,
- de.cau.cs.se.geco.architecture.framework
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+ kieker.develop.semantics
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Automatic-Module-Name: kieker.develop.rl.generator.delphi
 Bundle-Vendor: %providerName

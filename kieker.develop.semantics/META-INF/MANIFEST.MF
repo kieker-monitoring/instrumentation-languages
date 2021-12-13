@@ -13,11 +13,11 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="3.17.100",
  org.eclipse.xtext.xbase.lib,
  org.eclipse.xtend.lib,
  org.eclipse.xtend.lib.macro
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: kieker.develop.semantics,
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Export-Package: kieker.develop.geco,
+ kieker.develop.semantics,
  kieker.develop.semantics.annotations,
  kieker.develop.semantics.annotations.impl,
  kieker.develop.semantics.annotations.util
 Bundle-ActivationPolicy: lazy
 Automatic-Module-Name: kieker.develop.semantics
-

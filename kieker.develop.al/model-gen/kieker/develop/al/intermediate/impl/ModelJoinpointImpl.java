@@ -58,6 +58,7 @@ public class ModelJoinpointImpl extends AbstractJoinpointImpl implements ModelJo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject getReferencedInstance() {
 		if (referencedInstance != null && referencedInstance.eIsProxy()) {
 			InternalEObject oldReferencedInstance = (InternalEObject)referencedInstance;
@@ -84,6 +85,7 @@ public class ModelJoinpointImpl extends AbstractJoinpointImpl implements ModelJo
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setReferencedInstance(EObject newReferencedInstance) {
 		EObject oldReferencedInstance = referencedInstance;
 		referencedInstance = newReferencedInstance;

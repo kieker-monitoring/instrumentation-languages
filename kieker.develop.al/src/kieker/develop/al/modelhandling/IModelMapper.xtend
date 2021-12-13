@@ -18,7 +18,7 @@ package kieker.develop.al.modelhandling
 import kieker.develop.al.mapping.MappingModel
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.common.util.URI
-import de.cau.cs.se.geco.architecture.framework.ITraceModelProvider
+import kieker.develop.geco.ITraceModelProvider
 import kieker.develop.al.aspectLang.ApplicationModelHandle
 
 /**

@@ -22,7 +22,7 @@ import kieker.develop.rl.recordLang.Model
 import static extension kieker.develop.rl.generator.java.junit.NameResolver.*
 import kieker.develop.rl.recordLang.ComplexType
 import kieker.develop.rl.generator.java.GeneratorProvider
-import de.cau.cs.se.geco.architecture.framework.IGenerator
+import kieker.develop.geco.IGenerator
 
 /**
  * Outlet configuration for JUnit tests.

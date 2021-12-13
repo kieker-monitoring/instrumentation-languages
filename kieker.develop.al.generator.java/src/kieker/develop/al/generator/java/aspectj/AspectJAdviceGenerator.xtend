@@ -15,7 +15,7 @@
  ***************************************************************************/
 package kieker.develop.al.generator.java.aspectj
 
-import de.cau.cs.se.geco.architecture.framework.IGenerator
+import kieker.develop.geco.IGenerator
 import kieker.develop.al.aspectLang.Collector
 import kieker.develop.al.aspectLang.InsertionPoint
 

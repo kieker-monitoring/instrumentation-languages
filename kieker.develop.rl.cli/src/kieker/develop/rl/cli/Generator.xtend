@@ -27,7 +27,7 @@ import kieker.develop.rl.recordLang.TemplateType
 import kieker.develop.rl.recordLang.EnumerationType
 import kieker.develop.rl.outlet.AbstractOutletConfiguration
 import java.util.Collection
-import de.cau.cs.se.geco.architecture.framework.IGenerator
+import kieker.develop.geco.IGenerator
 import kieker.develop.rl.generator.IAcceptType
 import kieker.develop.rl.generator.IConfigureParameters
 import org.apache.log4j.LogManager
@@ -136,7 +136,7 @@ class Generator {
 				switch (generator) {
 					IGenerator<ComplexType, CharSequence>: {
 						(generator as IConfigureParameters).configure(this.targetVersion, modifiedHeader, this.author, this.version)
-						generateFile(configuration.outputFilePath(it), targetDirectory, generator.generate(it))
+						generateFile(configuration.outputFilePath(it, generator), targetDirectory, generator.generate(it))
 					}
 					/** Note in future, we might add model to model output here. */
 				}

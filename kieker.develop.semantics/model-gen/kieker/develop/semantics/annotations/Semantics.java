@@ -29,10 +29,6 @@ public interface Semantics extends EObject {
 	 * Returns the value of the '<em><b>Annotations</b></em>' containment reference list.
 	 * The list contents are of type {@link kieker.develop.semantics.annotations.Annotation}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Annotations</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Annotations</em>' containment reference list.
 	 * @see kieker.develop.semantics.annotations.AnnotationsPackage#getSemantics_Annotations()
@@ -45,10 +41,6 @@ public interface Semantics extends EObject {
 	 * Returns the value of the '<em><b>Languages</b></em>' containment reference list.
 	 * The list contents are of type {@link kieker.develop.semantics.annotations.TargetLanguage}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Languages</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Languages</em>' containment reference list.
 	 * @see kieker.develop.semantics.annotations.AnnotationsPackage#getSemantics_Languages()
@@ -61,10 +53,6 @@ public interface Semantics extends EObject {
 	 * Returns the value of the '<em><b>Technologies</b></em>' containment reference list.
 	 * The list contents are of type {@link kieker.develop.semantics.annotations.Technology}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Technologies</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Technologies</em>' containment reference list.
 	 * @see kieker.develop.semantics.annotations.AnnotationsPackage#getSemantics_Technologies()

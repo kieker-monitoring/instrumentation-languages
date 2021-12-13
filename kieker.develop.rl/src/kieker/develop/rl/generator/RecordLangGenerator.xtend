@@ -15,7 +15,6 @@
  ***************************************************************************/
 package kieker.develop.rl.generator
 
-import de.cau.cs.se.geco.architecture.framework.IGenerator
 import java.util.ArrayList
 import java.util.Calendar
 import java.util.Collection
@@ -33,6 +32,7 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGenerator2
 import org.eclipse.xtext.generator.IGeneratorContext
+import kieker.develop.geco.IGenerator
 
 /**
  * Generates one single files per record for java, c, and perl. 

@@ -15,7 +15,7 @@
  ***************************************************************************/
 package kieker.develop.al.generator.java.spring
 
-import de.cau.cs.se.geco.architecture.framework.IGenerator
+import kieker.develop.geco.IGenerator
 import kieker.develop.al.aspectLang.Advice
 
 import static extension kieker.develop.al.generator.java.CommonJavaTemplates.*

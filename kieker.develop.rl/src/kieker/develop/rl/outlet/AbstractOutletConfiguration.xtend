@@ -16,7 +16,7 @@
 package kieker.develop.rl.outlet
 
 import java.util.Collection
-import de.cau.cs.se.geco.architecture.framework.IGenerator
+import kieker.develop.geco.IGenerator
 import java.util.HashMap
 
 /**

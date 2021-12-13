@@ -15,8 +15,8 @@
  ***************************************************************************/
 package kieker.develop.rl.generator
 
-import de.cau.cs.se.geco.architecture.framework.IGenerator
 import kieker.develop.rl.recordLang.ComplexType
+import kieker.develop.geco.IGenerator
 
 /**
  * Abstract type generator realizing common parameters.

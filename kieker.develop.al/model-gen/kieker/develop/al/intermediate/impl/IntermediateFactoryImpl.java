@@ -71,6 +71,7 @@ public class IntermediateFactoryImpl extends EFactoryImpl implements Intermediat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public IntermediateAspect createIntermediateAspect() {
 		IntermediateAspectImpl intermediateAspect = new IntermediateAspectImpl();
 		return intermediateAspect;
@@ -81,6 +82,7 @@ public class IntermediateFactoryImpl extends EFactoryImpl implements Intermediat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AbstractJoinpoint createAbstractJoinpoint() {
 		AbstractJoinpointImpl abstractJoinpoint = new AbstractJoinpointImpl();
 		return abstractJoinpoint;
@@ -91,6 +93,7 @@ public class IntermediateFactoryImpl extends EFactoryImpl implements Intermediat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CodeJoinpoint createCodeJoinpoint() {
 		CodeJoinpointImpl codeJoinpoint = new CodeJoinpointImpl();
 		return codeJoinpoint;
@@ -101,6 +104,7 @@ public class IntermediateFactoryImpl extends EFactoryImpl implements Intermediat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModelJoinpoint createModelJoinpoint() {
 		ModelJoinpointImpl modelJoinpoint = new ModelJoinpointImpl();
 		return modelJoinpoint;
@@ -111,6 +115,7 @@ public class IntermediateFactoryImpl extends EFactoryImpl implements Intermediat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public IntermediateModel createIntermediateModel() {
 		IntermediateModelImpl intermediateModel = new IntermediateModelImpl();
 		return intermediateModel;
@@ -121,6 +126,7 @@ public class IntermediateFactoryImpl extends EFactoryImpl implements Intermediat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public IntermediatePackage getIntermediatePackage() {
 		return (IntermediatePackage)getEPackage();
 	}

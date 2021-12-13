@@ -15,9 +15,9 @@
  ***************************************************************************/
 package kieker.develop.rl.generator.modeltypes
 
-import de.cau.cs.se.geco.architecture.framework.IGenerator
+import kieker.develop.geco.IGenerator
 import kieker.develop.rl.recordLang.TemplateType
-import de.cau.cs.se.geco.architecture.framework.TraceModelProvider
+import kieker.develop.geco.TraceModelProvider
 import kieker.develop.rl.recordLang.ModelSubType
 import kieker.develop.rl.recordLang.RecordLangFactory
 

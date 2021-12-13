@@ -17,16 +17,16 @@
 		<maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<memoryArgs>-Xms256M -Xmx1024M -XX:PermSize=256M -XX:MaxPermSize=256M -XX:+HeapDumpOnOutOfMemoryError</memoryArgs>
-		<platformVersion>[3.9,4.16)</platformVersion>
+		<platformVersion>[3.9,4.21)</platformVersion>
 
 		<checkstyle.config.location>cs-conf.xml</checkstyle.config.location>
 		<checkstyle-crawler>[8.29,)</checkstyle-crawler>
 
 		<pmdVersion>6.22.0</pmdVersion>
-		<xtextVersion>2.21.0</xtextVersion>
-		<xtendVersion>2.21.0</xtendVersion>
-		<maven-compiler-source>1.8</maven-compiler-source>
-		<maven-compiler-target>1.8</maven-compiler-target>
+		<xtextVersion>2.25.0</xtextVersion>
+		<xtendVersion>2.25.0</xtendVersion>
+		<maven-compiler-source>1.11</maven-compiler-source>
+		<maven-compiler-target>1.11</maven-compiler-target>
 
 		<!-- properties for deploying the composite update site and zipped products on Sourceforge -->
 		<target-file-name>kieker.develop</target-file-name>
@@ -54,7 +54,7 @@
 		<eclipseRepoUrl>https://download.eclipse.org/releases/2020-03/</eclipseRepoUrl>
 		<elkRepoUrl>https://download.eclipse.org/elk/updates/releases/0.6.1/</elkRepoUrl>
 
-                <tycho-repo.url>https://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin</tycho-repo.url>
+        <tycho-repo.url>https://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin</tycho-repo.url>
 
 		<palladioRepoUrl>https://sdqweb.ipd.kit.edu/eclipse/palladio/releases/latest</palladioRepoUrl>
 		<palladio-fm-repo.url>https://sdqweb.ipd.kit.edu/eclipse/featuremodel/releases/latest</palladio-fm-repo.url>
@@ -62,11 +62,12 @@
 		<palladio-wfe-repo.url>https://sdqweb.ipd.kit.edu/eclipse/workflowengine/releases/latest</palladio-wfe-repo.url>
 		<kit-common-repo.url>https://sdqweb.ipd.kit.edu/eclipse/commons/releases/latest</kit-common-repo.url>
 		<gecoRepoUrl>https://maui.se.informatik.uni-kiel.de/repo/geco/snapshot/</gecoRepoUrl>
-		<tmf.url>https://mirror.ibcp.fr/pub/eclipse/modeling/tmf/xtext/updates/releases/</tmf.url>
 	</properties>
 
 	<modules>
-		<module>kieker.develop.al</module>
+		<module>kieker.develop.semantics</module>
+		<module>kieker.develop.semantics.java</module>
+<!--		<module>kieker.develop.al</module>
 		<module>kieker.develop.al.ide</module>
 		<module>kieker.develop.al.ui</module>
 		<module>kieker.develop.al.tests</module>
@@ -75,7 +76,7 @@
 		<module>kieker.develop.al.generator.c</module>
 		<module>kieker.develop.al.generator.perl</module>
 		<module>kieker.develop.al.handler.pcm</module>
-		<module>kieker.develop.al.handler.java</module>
+		<module>kieker.develop.al.handler.java</module>-->
 		<module>kieker.develop.rl</module>
 		<module>kieker.develop.rl.generator.java</module>
 		<module>kieker.develop.rl.generator.c</module>
@@ -86,14 +87,12 @@
 		<module>kieker.develop.rl.ui</module>
 		<module>kieker.develop.rl.tests</module>
 		<module>kieker.develop.rl.feature</module>
-		<module>kieker.develop.repository</module>
-		<module>kieker.develop.target</module>
-		<module>kieker.develop.semantics</module>
-		<module>kieker.develop.semantics.java</module>
-		<module>kieker.develop.rl.generator.java.tests</module>
-		<!-- module>kieker.develop.rl.cli</module>
+<!--		<module>kieker.develop.repository</module>-->
+		<module>kieker.develop.target</module> 
+<!--		<module>kieker.develop.rl.generator.java.tests</module>
+		<module>kieker.develop.rl.cli</module>
 		<module>kieker.develop.rl.cli.feature</module>
-		<module>kieker.develop.rl.cli.site</module -->
+		<module>kieker.develop.rl.cli.site</module>-->
 	</modules>
 
 	<build>
@@ -125,7 +124,7 @@
 				<version>${tychoVersion}</version>
 				<configuration>
 					<pomDependencies>consider</pomDependencies>
-					<executionEnvironment>JavaSE-1.8</executionEnvironment>
+					<executionEnvironment>JavaSE-11</executionEnvironment>
 					<target>
 						<artifact>
 							<groupId>kieker.develop</groupId>
@@ -336,11 +335,6 @@
 
 	<repositories>
 		<!-- add TMF repository for latest Xtend -->
-		<repository>
-			<id>TMF Repo</id>
-			<layout>p2</layout>
-			<url>${tmf.url}/</url>
-		</repository> 
 		<repository>
 			<id>emf</id>
 			<url>https://oss.sonatype.org/content/repositories/orgeclipseemf-1054/</url>

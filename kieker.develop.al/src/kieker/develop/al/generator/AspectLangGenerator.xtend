@@ -15,7 +15,7 @@
  ***************************************************************************/
 package kieker.develop.al.generator
 
-import de.cau.cs.se.geco.architecture.framework.IGenerator
+import kieker.develop.geco.IGenerator
 import java.io.StringWriter
 import java.util.Calendar
 import java.util.Collection
@@ -37,9 +37,9 @@ import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGenerator2
 import org.eclipse.xtext.generator.IGeneratorContext
 import org.w3c.dom.Document
-import de.cau.cs.se.geco.architecture.framework.ITraceModelInput
+import kieker.develop.geco.ITraceModelInput
 import org.eclipse.emf.ecore.EObject
-import de.cau.cs.se.geco.architecture.framework.ITraceModelProvider
+import kieker.develop.geco.ITraceModelProvider
 import kieker.develop.al.aspectLang.ApplicationModelHandle
 import java.util.ArrayList
 import kieker.develop.al.modelhandling.ModelMapperProviderFactory

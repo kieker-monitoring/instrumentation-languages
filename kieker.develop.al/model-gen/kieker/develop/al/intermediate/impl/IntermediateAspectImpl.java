@@ -80,6 +80,7 @@ public class IntermediateAspectImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<AbstractJoinpoint> getJoinpoints() {
 		if (joinpoints == null) {
 			joinpoints = new EObjectContainmentEList<AbstractJoinpoint>(AbstractJoinpoint.class, this, IntermediatePackage.INTERMEDIATE_ASPECT__JOINPOINTS);
@@ -92,6 +93,7 @@ public class IntermediateAspectImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Advice> getAdvices() {
 		if (advices == null) {
 			advices = new EObjectResolvingEList<Advice>(Advice.class, this, IntermediatePackage.INTERMEDIATE_ASPECT__ADVICES);

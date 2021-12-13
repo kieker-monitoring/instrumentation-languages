@@ -14,7 +14,7 @@ Require-Bundle: org.xtext.example.mydsl.ui,
  org.eclipse.xtext.testing,
  org.eclipse.xtext.xbase.testing,
  org.eclipse.xtext.ui.testing
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: kieker.develop.rl.ui.tests;x-internal=true
 Import-Package: org.hamcrest.core,
  org.junit;version="4.7.0",

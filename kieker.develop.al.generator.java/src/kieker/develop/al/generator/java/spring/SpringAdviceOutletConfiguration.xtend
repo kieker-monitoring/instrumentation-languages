@@ -20,7 +20,7 @@ import kieker.develop.al.aspectLang.Advice
 import kieker.develop.al.aspectLang.AspectModel
 import kieker.develop.al.generator.java.ConfigurationProperties
 import kieker.develop.rl.outlet.AbstractOutletConfiguration
-import de.cau.cs.se.geco.architecture.framework.IGenerator
+import kieker.develop.geco.IGenerator
 
 /**
  * Spring advice outlet configuration.

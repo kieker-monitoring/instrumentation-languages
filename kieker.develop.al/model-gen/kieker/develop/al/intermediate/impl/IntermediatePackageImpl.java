@@ -12,6 +12,8 @@ import kieker.develop.al.intermediate.IntermediateModel;
 import kieker.develop.al.intermediate.IntermediatePackage;
 import kieker.develop.al.intermediate.ModelJoinpoint;
 
+import kieker.develop.al.mapping.MappingPackage;
+import kieker.develop.rl.recordLang.RecordLangPackage;
 import kieker.develop.semantics.annotations.AnnotationsPackage;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -91,7 +93,7 @@ public class IntermediatePackageImpl extends EPackageImpl implements Intermediat
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link IntermediatePackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -105,12 +107,17 @@ public class IntermediatePackageImpl extends EPackageImpl implements Intermediat
 		if (isInited) return (IntermediatePackage)EPackage.Registry.INSTANCE.getEPackage(IntermediatePackage.eNS_URI);
 
 		// Obtain or create and register package
-		IntermediatePackageImpl theIntermediatePackage = (IntermediatePackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof IntermediatePackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new IntermediatePackageImpl());
+		Object registeredIntermediatePackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		IntermediatePackageImpl theIntermediatePackage = registeredIntermediatePackage instanceof IntermediatePackageImpl ? (IntermediatePackageImpl)registeredIntermediatePackage : new IntermediatePackageImpl();
 
 		isInited = true;
 
 		// Initialize simple dependencies
 		AspectLangPackage.eINSTANCE.eClass();
+		EcorePackage.eINSTANCE.eClass();
+		MappingPackage.eINSTANCE.eClass();
+		RecordLangPackage.eINSTANCE.eClass();
+		AnnotationsPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theIntermediatePackage.createPackageContents();
@@ -121,7 +128,6 @@ public class IntermediatePackageImpl extends EPackageImpl implements Intermediat
 		// Mark meta-data to indicate it can't be changed
 		theIntermediatePackage.freeze();
 
-  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(IntermediatePackage.eNS_URI, theIntermediatePackage);
 		return theIntermediatePackage;
@@ -132,6 +138,7 @@ public class IntermediatePackageImpl extends EPackageImpl implements Intermediat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getIntermediateAspect() {
 		return intermediateAspectEClass;
 	}
@@ -141,6 +148,7 @@ public class IntermediatePackageImpl extends EPackageImpl implements Intermediat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getIntermediateAspect_Joinpoints() {
 		return (EReference)intermediateAspectEClass.getEStructuralFeatures().get(0);
 	}
@@ -150,6 +158,7 @@ public class IntermediatePackageImpl extends EPackageImpl implements Intermediat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getIntermediateAspect_Advices() {
 		return (EReference)intermediateAspectEClass.getEStructuralFeatures().get(1);
 	}
@@ -159,6 +168,7 @@ public class IntermediatePackageImpl extends EPackageImpl implements Intermediat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getAbstractJoinpoint() {
 		return abstractJoinpointEClass;
 	}
@@ -168,6 +178,7 @@ public class IntermediatePackageImpl extends EPackageImpl implements Intermediat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getAbstractJoinpoint_Technologies() {
 		return (EReference)abstractJoinpointEClass.getEStructuralFeatures().get(0);
 	}
@@ -177,6 +188,7 @@ public class IntermediatePackageImpl extends EPackageImpl implements Intermediat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAbstractJoinpoint_Name() {
 		return (EAttribute)abstractJoinpointEClass.getEStructuralFeatures().get(1);
 	}
@@ -186,6 +198,7 @@ public class IntermediatePackageImpl extends EPackageImpl implements Intermediat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCodeJoinpoint() {
 		return codeJoinpointEClass;
 	}
@@ -195,6 +208,7 @@ public class IntermediatePackageImpl extends EPackageImpl implements Intermediat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCodeJoinpoint_ReferencedJavaObject() {
 		return (EAttribute)codeJoinpointEClass.getEStructuralFeatures().get(0);
 	}
@@ -204,6 +218,7 @@ public class IntermediatePackageImpl extends EPackageImpl implements Intermediat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getModelJoinpoint() {
 		return modelJoinpointEClass;
 	}
@@ -213,6 +228,7 @@ public class IntermediatePackageImpl extends EPackageImpl implements Intermediat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getModelJoinpoint_ReferencedInstance() {
 		return (EReference)modelJoinpointEClass.getEStructuralFeatures().get(0);
 	}
@@ -222,6 +238,7 @@ public class IntermediatePackageImpl extends EPackageImpl implements Intermediat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getIntermediateModel() {
 		return intermediateModelEClass;
 	}
@@ -231,6 +248,7 @@ public class IntermediatePackageImpl extends EPackageImpl implements Intermediat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getIntermediateModel_Name() {
 		return (EAttribute)intermediateModelEClass.getEStructuralFeatures().get(0);
 	}
@@ -240,6 +258,7 @@ public class IntermediatePackageImpl extends EPackageImpl implements Intermediat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getIntermediateModel_Aspects() {
 		return (EReference)intermediateModelEClass.getEStructuralFeatures().get(1);
 	}
@@ -249,6 +268,7 @@ public class IntermediatePackageImpl extends EPackageImpl implements Intermediat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public IntermediateFactory getIntermediateFactory() {
 		return (IntermediateFactory)getEFactoryInstance();
 	}

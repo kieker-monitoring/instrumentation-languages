@@ -16,7 +16,6 @@
 	<name>Kieker Languages Semantics</name>
 
 	<build>
-		<sourceDirectory>src</sourceDirectory>
 		<plugins>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>

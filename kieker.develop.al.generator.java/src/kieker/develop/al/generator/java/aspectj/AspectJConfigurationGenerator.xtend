@@ -15,7 +15,7 @@
  ***************************************************************************/
 package kieker.develop.al.generator.java.aspectj
 
-import de.cau.cs.se.geco.architecture.framework.IGenerator
+import kieker.develop.geco.IGenerator
 import java.util.Collection
 import javax.xml.parsers.DocumentBuilderFactory
 import kieker.develop.al.aspectLang.Advice
@@ -25,8 +25,8 @@ import kieker.develop.al.intermediate.ModelJoinpoint
 import org.eclipse.emf.ecore.EObject
 import org.w3c.dom.Document
 import org.w3c.dom.Node
-import de.cau.cs.se.geco.architecture.framework.ITraceModelProvider
-import de.cau.cs.se.geco.architecture.framework.ITraceModelInput
+import kieker.develop.geco.ITraceModelProvider
+import kieker.develop.geco.ITraceModelInput
 import org.eclipse.xtext.common.types.JvmType
 
 // TODO process this comment			

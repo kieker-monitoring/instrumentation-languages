@@ -15,12 +15,12 @@
  ***************************************************************************/
 package kieker.develop.al.generator.java.servlet
 
-import de.cau.cs.se.geco.architecture.framework.IGenerator
+import kieker.develop.geco.IGenerator
 import kieker.develop.al.intermediate.IntermediateModel
 import org.w3c.dom.Document
-import de.cau.cs.se.geco.architecture.framework.ITraceModelInput
+import kieker.develop.geco.ITraceModelInput
 import org.eclipse.xtext.common.types.JvmType
-import de.cau.cs.se.geco.architecture.framework.ITraceModelProvider
+import kieker.develop.geco.ITraceModelProvider
 
 // TODO process code snippet
 

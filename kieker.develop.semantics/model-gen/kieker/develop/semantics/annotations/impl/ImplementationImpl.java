@@ -95,6 +95,7 @@ public class ImplementationImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getCode() {
 		return code;
 	}
@@ -104,6 +105,7 @@ public class ImplementationImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCode(String newCode) {
 		String oldCode = code;
 		code = newCode;
@@ -116,6 +118,7 @@ public class ImplementationImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Technology getTechnology() {
 		if (technology != null && technology.eIsProxy()) {
 			InternalEObject oldTechnology = (InternalEObject)technology;
@@ -142,6 +145,7 @@ public class ImplementationImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTechnology(Technology newTechnology) {
 		Technology oldTechnology = technology;
 		technology = newTechnology;
@@ -154,6 +158,7 @@ public class ImplementationImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TargetLanguage getLanguage() {
 		if (language != null && language.eIsProxy()) {
 			InternalEObject oldLanguage = (InternalEObject)language;
@@ -180,6 +185,7 @@ public class ImplementationImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLanguage(TargetLanguage newLanguage) {
 		TargetLanguage oldLanguage = language;
 		language = newLanguage;
@@ -276,7 +282,7 @@ public class ImplementationImpl extends MinimalEObjectImpl.Container implements 
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (code: ");
 		result.append(code);
 		result.append(')');

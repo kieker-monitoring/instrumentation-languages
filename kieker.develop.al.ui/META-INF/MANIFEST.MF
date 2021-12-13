@@ -18,13 +18,12 @@ Require-Bundle: kieker.develop.al;visibility:=reexport,
  org.eclipse.xtext.common.types.ui,
  org.eclipse.xtext.ui.codetemplates.ui,
  org.eclipse.compare,
- org.eclipse.ui.ide.application,
- org.eclipse.xtext.xbase.lib;bundle-version="[2.13.0,2.22.0]",
- org.eclipse.xtend.lib;bundle-version="[2.13.0,2.22.0]";resolution:=optional
+ org.eclipse.xtext.xbase.lib;bundle-version="[2.13.0,2.26.0]",
+ org.eclipse.xtend.lib;bundle-version="[2.13.0,2.26.0]";resolution:=optional
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib,
  org.eclipse.xtend2.lib
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: kieker.develop.al.ui.quickfix,
  kieker.develop.al.ui.contentassist,
  kieker.develop.al.ui.internal

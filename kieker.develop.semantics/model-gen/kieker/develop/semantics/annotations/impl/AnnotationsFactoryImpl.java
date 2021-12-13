@@ -71,6 +71,7 @@ public class AnnotationsFactoryImpl extends EFactoryImpl implements AnnotationsF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Annotation createAnnotation() {
 		AnnotationImpl annotation = new AnnotationImpl();
 		return annotation;
@@ -81,6 +82,7 @@ public class AnnotationsFactoryImpl extends EFactoryImpl implements AnnotationsF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Implementation createImplementation() {
 		ImplementationImpl implementation = new ImplementationImpl();
 		return implementation;
@@ -91,6 +93,7 @@ public class AnnotationsFactoryImpl extends EFactoryImpl implements AnnotationsF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Semantics createSemantics() {
 		SemanticsImpl semantics = new SemanticsImpl();
 		return semantics;
@@ -101,6 +104,7 @@ public class AnnotationsFactoryImpl extends EFactoryImpl implements AnnotationsF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TargetLanguage createTargetLanguage() {
 		TargetLanguageImpl targetLanguage = new TargetLanguageImpl();
 		return targetLanguage;
@@ -111,6 +115,7 @@ public class AnnotationsFactoryImpl extends EFactoryImpl implements AnnotationsF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Technology createTechnology() {
 		TechnologyImpl technology = new TechnologyImpl();
 		return technology;
@@ -121,6 +126,7 @@ public class AnnotationsFactoryImpl extends EFactoryImpl implements AnnotationsF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AnnotationsPackage getAnnotationsPackage() {
 		return (AnnotationsPackage)getEPackage();
 	}

@@ -26,10 +26,6 @@ public interface Implementation extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Code</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Code</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Code</em>' attribute.
 	 * @see #setCode(String)
@@ -52,10 +48,6 @@ public interface Implementation extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Technology</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Technology</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Technology</em>' reference.
 	 * @see #setTechnology(Technology)
@@ -78,10 +70,6 @@ public interface Implementation extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Language</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Language</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Language</em>' reference.
 	 * @see #setLanguage(TargetLanguage)
