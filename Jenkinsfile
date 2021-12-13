@@ -35,7 +35,7 @@ pipeline {
 				}
 				stage('Check') {
 					steps {
-						sh 'mvn -Dmaven.repo.local=${WORKSPACE}/ws-repo -DskipTests --batch-mode package checkstyle:checkstyle pmd:pmd -Dworkspace=' + env.WORKSPACE // spotbugs:spotbugs
+						sh 'mvn -Dmaven.repo.local=${WORKSPACE}/ws-repo --batch-mode package checkstyle:checkstyle pmd:pmd -Dworkspace=' + env.WORKSPACE // spotbugs:spotbugs
 					}
 					post {
 						always {
@@ -48,7 +48,7 @@ pipeline {
 				}
 				stage('Update Repository') {
 					steps {
-						sh 'mvn -Dmaven.repo.local=${WORKSPACE}/ws-repo --settings settings.xml --batch-mode -Dkeystore=${KEYSTORE} -Dupdate-site-url=${UPDATE_SITE_URL} -Ddestination=${DESTINATION} install'
+						sh 'mvn -Dmaven.repo.local=${WORKSPACE}/ws-repo -DskipTests --settings settings.xml --batch-mode -Dkeystore=${KEYSTORE} -Dupdate-site-url=${UPDATE_SITE_URL} -Ddestination=${DESTINATION} install'
 					}
 				}
 			}
