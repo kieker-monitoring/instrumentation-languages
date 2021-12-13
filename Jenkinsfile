@@ -25,17 +25,17 @@ pipeline {
 
 
 					steps {
-						sh 'mvn -X --batch-mode compile'
+						sh 'mvn -Dmaven.repo.local=${WORKSPACE}/ws-repo --batch-mode compile'
 					}
 				}
 				stage('Test') {
 					steps {
-						sh 'mvn --batch-mode test'
+						sh 'mvn -Dmaven.repo.local=${WORKSPACE}/ws-repo --batch-mode test'
 					}
 				}
 				stage('Check') {
 					steps {
-						sh 'mvn --batch-mode package checkstyle:checkstyle pmd:pmd -Dworkspace=' + env.WORKSPACE // spotbugs:spotbugs
+						sh 'mvn -Dmaven.repo.local=${WORKSPACE}/ws-repo --batch-mode package checkstyle:checkstyle pmd:pmd -Dworkspace=' + env.WORKSPACE // spotbugs:spotbugs
 					}
 					post {
 						always {
@@ -48,7 +48,7 @@ pipeline {
 				}
 				stage('Update Repository') {
 					steps {
-						sh 'mvn --settings settings.xml --batch-mode -Dkeystore=${KEYSTORE} -Dupdate-site-url=${UPDATE_SITE_URL} -Ddestination=${DESTINATION} install'
+						sh 'mvn -Dmaven.repo.local=${WORKSPACE}/ws-repo --settings settings.xml --batch-mode -Dkeystore=${KEYSTORE} -Dupdate-site-url=${UPDATE_SITE_URL} -Ddestination=${DESTINATION} install'
 					}
 				}
 			}
