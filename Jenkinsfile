@@ -1,5 +1,10 @@
 pipeline {
-	agent any
+	agent {
+		docker {
+			image "prefec2/jdk11-maven-363-gradle671"
+			alwaysPull false
+		}
+	}
 
 	environment {
 		KEYSTORE = credentials('kieker-irl-key')
