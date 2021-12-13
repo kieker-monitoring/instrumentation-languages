@@ -25,7 +25,7 @@ pipeline {
 
 
 					steps {
-						sh 'mvn --batch-mode compile'
+						sh 'mvn -X --batch-mode compile'
 					}
 				}
 				stage('Test') {
