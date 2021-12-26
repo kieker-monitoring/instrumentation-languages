@@ -22,10 +22,11 @@ import kieker.develop.rl.recordLang.ComplexType
 import kieker.develop.rl.recordLang.EventType
 import kieker.develop.rl.recordLang.Model
 import kieker.develop.rl.recordLang.Property
-
 import static extension kieker.develop.rl.typing.PropertyResolution.*
 import kieker.develop.rl.generator.Version
-
+import kieker.develop.rl.generator.InternalErrorException
+import kieker.develop.rl.typing.base.BaseTypes
+import kieker. develop.rl.generator.python.PropertyHelper
 class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> {
 	
 	override accepts(ComplexType type) {
@@ -47,26 +48,31 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	 * @return a Java class for a Kieker EventType
 	 */
 	protected override createOutputModel(EventType type, Version targetVersion, String header, String author, String version) {
-		'''
+		val allDataProperties = type.collectAllDataProperties
+		val allDeclarationProperties = type.collectAllDeclarationProperties
+		'''		
+		class «type.name»:
+			
+			def init(self, «allDataProperties.filter[!it.isTransient 
+													|| (it.isTransient 
+													&& !it.isIncrement
+													)].map[property | createPropertyParameter(property)].join(', ')»):	
+				«allDeclarationProperties.filter[!it.isIncrement].map[property | createAssignment(property)].join»
 		
-		package «type.recordName»;
-		
-		«type.recordName» 
-		
-		
-		 my $record = «type.recordName»->new(«type.collectAllDataProperties.createParameterCall»);
+			def serialize(self, serializer):
+				«FOR e : allDataProperties»
 				
-		=head2 $record = «type.recordName»->new(«type.collectAllDataProperties.createParameterCall»);
-		
-		sub new {
-		  my («type.collectAllDataProperties.createParameterCall») = @_;
-		  my $this = {
-		    «type.collectAllDataProperties.map[createProperty].join(',\n')»
-				
-		«this.header»
-		
 		'''
 	}
+	
+	def createPropertyParameter(Property property){
+		'''«property.name»'''
+	}
+	
+	def createAssignment(Property property){
+		'''self.«property.name» = «property.name»'''
+	}
+
 	
 	/**
 	 * Create python type names.
