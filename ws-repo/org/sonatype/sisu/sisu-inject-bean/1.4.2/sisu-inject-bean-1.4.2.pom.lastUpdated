@@ -1,0 +1,9 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Dec 21 18:48:57 CET 2021
+@default-lifecycle-https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping/.lastUpdated=1640108937467
+https\://repo.maven.apache.org/maven2/.lastUpdated=1640108937759
+https\://oss.sonatype.org/content/repositories/orgeclipseemf-1054/.error=
+https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping/.error=Could not transfer artifact org.sonatype.sisu\:sisu-inject-bean\:pom\:1.4.2 from/to lifecycle (https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping)\: Access denied to https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping/org/sonatype/sisu/sisu-inject-bean/1.4.2/sisu-inject-bean-1.4.2.pom. Error code 403, 
+https\://oss.sonatype.org/content/repositories/orgeclipseemf-1054/.lastUpdated=1640108937658
+@default-tycho-https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin/.lastUpdated=1640108937519
+https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin/.error=Could not transfer artifact org.sonatype.sisu\:sisu-inject-bean\:pom\:1.4.2 from/to tycho (https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin)\: Access denied to https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin/org/sonatype/sisu/sisu-inject-bean/1.4.2/sisu-inject-bean-1.4.2.pom. Error code 403, 

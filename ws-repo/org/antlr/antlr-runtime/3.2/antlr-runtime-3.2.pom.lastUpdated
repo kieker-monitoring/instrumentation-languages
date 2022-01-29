@@ -1,0 +1,9 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Dec 21 18:55:20 CET 2021
+@default-lifecycle-https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping/.lastUpdated=1640109319885
+https\://repo.maven.apache.org/maven2/.lastUpdated=1640109320137
+https\://oss.sonatype.org/content/repositories/orgeclipseemf-1054/.error=
+https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping/.error=Could not transfer artifact org.antlr\:antlr-runtime\:pom\:3.2 from/to lifecycle (https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping)\: Access denied to https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping/org/antlr/antlr-runtime/3.2/antlr-runtime-3.2.pom. Error code 403, 
+https\://oss.sonatype.org/content/repositories/orgeclipseemf-1054/.lastUpdated=1640109320050
+@default-tycho-https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin/.lastUpdated=1640109319926
+https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin/.error=Could not transfer artifact org.antlr\:antlr-runtime\:pom\:3.2 from/to tycho (https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin)\: Access denied to https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin/org/antlr/antlr-runtime/3.2/antlr-runtime-3.2.pom. Error code 403, 

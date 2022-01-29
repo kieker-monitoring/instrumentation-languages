@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?artifactRepository version='1.1.0'?>
+<artifacts size='2'>
+  <artifact classifier='org.eclipse.update.feature' id='kieker.develop.rl.feature' version='1.3.0.v20211221-1803'>
+    <properties size='6'>
+      <property name='artifact.size' value='750'/>
+      <property name='download.size' value='750'/>
+      <property name='maven-groupId' value='kieker.develop'/>
+      <property name='maven-artifactId' value='kieker.develop.rl.feature'/>
+      <property name='maven-version' value='1.3.0-SNAPSHOT'/>
+      <property name='download.contentType' value='application/zip'/>
+    </properties>
+  </artifact>
+  <artifact classifier='org.eclipse.update.feature' id='kieker.develop.rl.feature.source' version='1.3.0.v20211221-1803'>
+    <properties size='7'>
+      <property name='artifact.size' value='2060'/>
+      <property name='download.size' value='2060'/>
+      <property name='maven-groupId' value='kieker.develop'/>
+      <property name='maven-artifactId' value='kieker.develop.rl.feature'/>
+      <property name='maven-version' value='1.3.0-SNAPSHOT'/>
+      <property name='maven-classifier' value='sources-feature'/>
+      <property name='download.contentType' value='application/zip'/>
+    </properties>
+  </artifact>
+</artifacts>

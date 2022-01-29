@@ -1,0 +1,4 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Dec 21 18:55:54 CET 2021
+org.eclipse.jdt.compiler.tool-1.2.1000.jar>central=
+org.eclipse.jdt.compiler.tool-1.2.1000.pom>central=

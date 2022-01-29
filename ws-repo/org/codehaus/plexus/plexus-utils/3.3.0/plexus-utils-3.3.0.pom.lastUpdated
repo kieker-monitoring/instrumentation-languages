@@ -1,0 +1,9 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Dec 21 18:48:36 CET 2021
+@default-lifecycle-https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping/.lastUpdated=1640108915849
+https\://repo.maven.apache.org/maven2/.lastUpdated=1640108916090
+https\://oss.sonatype.org/content/repositories/orgeclipseemf-1054/.error=
+https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping/.error=Could not transfer artifact org.codehaus.plexus\:plexus-utils\:pom\:3.3.0 from/to lifecycle (https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping)\: Access denied to https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping/org/codehaus/plexus/plexus-utils/3.3.0/plexus-utils-3.3.0.pom. Error code 403, 
+https\://oss.sonatype.org/content/repositories/orgeclipseemf-1054/.lastUpdated=1640108916009
+@default-tycho-https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin/.lastUpdated=1640108915889
+https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin/.error=Could not transfer artifact org.codehaus.plexus\:plexus-utils\:pom\:3.3.0 from/to tycho (https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin)\: Access denied to https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin/org/codehaus/plexus/plexus-utils/3.3.0/plexus-utils-3.3.0.pom. Error code 403, 

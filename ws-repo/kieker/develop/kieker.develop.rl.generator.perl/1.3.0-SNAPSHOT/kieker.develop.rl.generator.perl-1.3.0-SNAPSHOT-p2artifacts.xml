@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?artifactRepository version='1.1.0'?>
+<artifacts size='2'>
+  <artifact classifier='osgi.bundle' id='kieker.develop.rl.generator.perl' version='1.3.0.v20211221-1803'>
+    <properties size='5'>
+      <property name='artifact.size' value='41899'/>
+      <property name='download.size' value='41899'/>
+      <property name='maven-groupId' value='kieker.develop'/>
+      <property name='maven-artifactId' value='kieker.develop.rl.generator.perl'/>
+      <property name='maven-version' value='1.3.0-SNAPSHOT'/>
+    </properties>
+  </artifact>
+  <artifact classifier='osgi.bundle' id='kieker.develop.rl.generator.perl.source' version='1.3.0.v20211221-1803'>
+    <properties size='6'>
+      <property name='artifact.size' value='37970'/>
+      <property name='download.size' value='37970'/>
+      <property name='maven-groupId' value='kieker.develop'/>
+      <property name='maven-artifactId' value='kieker.develop.rl.generator.perl'/>
+      <property name='maven-version' value='1.3.0-SNAPSHOT'/>
+      <property name='maven-classifier' value='sources'/>
+    </properties>
+  </artifact>
+</artifacts>

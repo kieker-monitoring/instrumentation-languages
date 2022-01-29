@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>kieker.develop</groupId>
+  <artifactId>kieker.develop.rl.generator.java</artifactId>
+  <versioning>
+    <versions>
+      <version>1.3.0-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20211221180555</lastUpdated>
+  </versioning>
+</metadata>

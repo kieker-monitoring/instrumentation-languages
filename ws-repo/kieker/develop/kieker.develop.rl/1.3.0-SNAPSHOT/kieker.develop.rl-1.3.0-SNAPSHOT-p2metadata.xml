@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<units size='2'>
+  <unit id='kieker.develop.rl' version='1.3.0.v20211221-1803' generation='2'>
+    <update id='kieker.develop.rl' range='[0.0.0,1.3.0.v20211221-1803)' severity='0'/>
+    <properties size='5'>
+      <property name='org.eclipse.equinox.p2.name' value='%pluginName'/>
+      <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
+      <property name='maven-groupId' value='kieker.develop'/>
+      <property name='maven-artifactId' value='kieker.develop.rl'/>
+      <property name='maven-version' value='1.3.0-SNAPSHOT'/>
+    </properties>
+    <provides size='23'>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='kieker.develop.rl' version='1.3.0.v20211221-1803'/>
+      <provided namespace='osgi.bundle' name='kieker.develop.rl' version='1.3.0.v20211221-1803'/>
+      <provided namespace='java.package' name='kieker.develop.rl' version='0.0.0'/>
+      <provided namespace='java.package' name='kieker.develop.rl.formatting' version='0.0.0'/>
+      <provided namespace='java.package' name='kieker.develop.rl.generator' version='0.0.0'/>
+      <provided namespace='java.package' name='kieker.develop.rl.generator.modeltypes' version='0.0.0'/>
+      <provided namespace='java.package' name='kieker.develop.rl.outlet' version='0.0.0'/>
+      <provided namespace='java.package' name='kieker.develop.rl.parser.antlr' version='0.0.0'/>
+      <provided namespace='java.package' name='kieker.develop.rl.parser.antlr.internal' version='0.0.0'/>
+      <provided namespace='java.package' name='kieker.develop.rl.preferences' version='0.0.0'/>
+      <provided namespace='java.package' name='kieker.develop.rl.recordLang' version='0.0.0'/>
+      <provided namespace='java.package' name='kieker.develop.rl.recordLang.impl' version='0.0.0'/>
+      <provided namespace='java.package' name='kieker.develop.rl.recordLang.util' version='0.0.0'/>
+      <provided namespace='java.package' name='kieker.develop.rl.scoping' version='0.0.0'/>
+      <provided namespace='java.package' name='kieker.develop.rl.serializer' version='0.0.0'/>
+      <provided namespace='java.package' name='kieker.develop.rl.services' version='0.0.0'/>
+      <provided namespace='java.package' name='kieker.develop.rl.typing' version='0.0.0'/>
+      <provided namespace='java.package' name='kieker.develop.rl.typing.base' version='0.0.0'/>
+      <provided namespace='java.package' name='kieker.develop.rl.typing.jar' version='0.0.0'/>
+      <provided namespace='java.package' name='kieker.develop.rl.typing.semantics' version='0.0.0'/>
+      <provided namespace='java.package' name='kieker.develop.rl.validation' version='0.0.0'/>
+      <provided namespace='osgi.identity' name='kieker.develop.rl' version='1.3.0.v20211221-1803'>
+        <properties size='1'>
+          <property name='type' value='osgi.bundle'/>
+        </properties>
+      </provided>
+      <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
+    </provides>
+    <requires size='28'>
+      <required namespace='osgi.bundle' name='org.eclipse.xtext' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.eclipse.xtext.xbase' range='0.0.0' optional='true' greedy='false'/>
+      <required namespace='osgi.bundle' name='org.eclipse.xtext.generator' range='0.0.0' optional='true' greedy='false'/>
+      <required namespace='osgi.bundle' name='org.apache.commons.logging' range='1.0.4' optional='true' greedy='false'/>
+      <required namespace='osgi.bundle' name='org.eclipse.emf.codegen.ecore' range='0.0.0' optional='true' greedy='false'/>
+      <required namespace='osgi.bundle' name='org.eclipse.emf.mwe.utils' range='0.0.0' optional='true' greedy='false'/>
+      <required namespace='osgi.bundle' name='org.eclipse.emf.mwe2.launch' range='0.0.0' optional='true' greedy='false'/>
+      <required namespace='osgi.bundle' name='org.eclipse.xtext.util' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.eclipse.emf.ecore' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.eclipse.emf.common' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.antlr.runtime' range='[3.2.0,3.2.1)'/>
+      <required namespace='osgi.bundle' name='org.eclipse.xtext.common.types' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.eclipse.core.resources' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.eclipse.core.runtime' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.eclipse.equinox.preferences' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.objectweb.asm' range='[0.0.0,9.2.0]' optional='true' greedy='false'/>
+      <required namespace='osgi.bundle' name='org.eclipse.xtext.xbase.lib' range='[2.21.0,2.26.0]'/>
+      <required namespace='osgi.bundle' name='org.eclipse.xtend.lib' range='[2.21.0,2.26.0)'/>
+      <required namespace='osgi.bundle' name='kieker.develop.semantics' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.eclipse.equinox.registry' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='com.google.guava' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.eclipse.xtend.lib.macro' range='0.0.0'/>
+      <required namespace='osgi.bundle' name='org.junit' range='0.0.0'/>
+      <required namespace='java.package' name='org.apache.log4j' range='0.0.0'/>
+      <required namespace='java.package' name='org.eclipse.jdt.core' range='0.0.0'/>
+      <required namespace='java.package' name='org.eclipse.xtext.common.types.access.jdt' range='0.0.0'/>
+      <required namespace='java.package' name='org.eclipse.xtext.xbase.lib' range='0.0.0'/>
+      <requiredProperties namespace='osgi.ee' match='(&amp;(osgi.ee=JavaSE)(version=11))'/>
+    </requires>
+    <artifacts size='1'>
+      <artifact classifier='osgi.bundle' id='kieker.develop.rl' version='1.3.0.v20211221-1803'/>
+    </artifacts>
+    <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+    <touchpointData size='1'>
+      <instructions size='1'>
+        <instruction key='manifest'>
+          Bundle-SymbolicName: kieker.develop.rl; singleton:=true&#xA;Bundle-Version: 1.3.0.v20211221-1803&#xA;
+        </instruction>
+      </instructions>
+    </touchpointData>
+  </unit>
+  <unit id='kieker.develop.rl.source' version='1.3.0.v20211221-1803' singleton='false'>
+    <update id='kieker.develop.rl.source' range='[0.0.0,1.3.0.v20211221-1803)' severity='0'/>
+    <properties size='9'>
+      <property name='df_LT.bundleVendor' value='Kiel University'/>
+      <property name='df_LT.bundleName' value='kieker.develop.rl Source'/>
+      <property name='org.eclipse.equinox.p2.name' value='%bundleName'/>
+      <property name='org.eclipse.equinox.p2.provider' value='%bundleVendor'/>
+      <property name='org.eclipse.equinox.p2.bundle.localization' value='OSGI-INF/l10n/bundle-src'/>
+      <property name='maven-groupId' value='kieker.develop'/>
+      <property name='maven-artifactId' value='kieker.develop.rl'/>
+      <property name='maven-version' value='1.3.0-SNAPSHOT'/>
+      <property name='maven-classifier' value='sources'/>
+    </properties>
+    <provides size='5'>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='kieker.develop.rl.source' version='1.3.0.v20211221-1803'/>
+      <provided namespace='osgi.bundle' name='kieker.develop.rl.source' version='1.3.0.v20211221-1803'/>
+      <provided namespace='osgi.identity' name='kieker.develop.rl.source' version='1.3.0.v20211221-1803'>
+        <properties size='1'>
+          <property name='type' value='osgi.bundle'/>
+        </properties>
+      </provided>
+      <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='source' version='1.0.0'/>
+      <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+    </provides>
+    <artifacts size='1'>
+      <artifact classifier='osgi.bundle' id='kieker.develop.rl.source' version='1.3.0.v20211221-1803'/>
+    </artifacts>
+    <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+    <touchpointData size='1'>
+      <instructions size='1'>
+        <instruction key='manifest'>
+          Bundle-SymbolicName: kieker.develop.rl.source&#xA;Bundle-Version: 1.3.0.v20211221-1803&#xA;
+        </instruction>
+      </instructions>
+    </touchpointData>
+  </unit>
+</units>

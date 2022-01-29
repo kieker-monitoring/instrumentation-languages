@@ -1,0 +1,5 @@
+#Eclipse Product File
+#Mon Jan 13 12:21:12 CET 2020
+version=1.6.0
+name=org.eclipse.tycho.p2
+id=tycho-bundles-external

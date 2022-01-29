@@ -1,0 +1,9 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Dec 21 18:49:20 CET 2021
+@default-lifecycle-https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping/.lastUpdated=1640108953693
+https\://repo.maven.apache.org/maven2/.lastUpdated=1640108960859
+https\://oss.sonatype.org/content/repositories/orgeclipseemf-1054/.error=
+https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping/.error=Could not transfer artifact org.apache.maven\:maven-settings-builder\:jar\:3.0 from/to lifecycle (https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping)\: Access denied to https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping/org/apache/maven/maven-settings-builder/3.0/maven-settings-builder-3.0.jar. Error code 403, 
+https\://oss.sonatype.org/content/repositories/orgeclipseemf-1054/.lastUpdated=1640108955581
+@default-tycho-https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin/.lastUpdated=1640108954335
+https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin/.error=Could not transfer artifact org.apache.maven\:maven-settings-builder\:jar\:3.0 from/to tycho (https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin)\: Access denied to https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin/org/apache/maven/maven-settings-builder/3.0/maven-settings-builder-3.0.jar. Error code 403, 

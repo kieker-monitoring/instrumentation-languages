@@ -1,0 +1,9 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Tue Dec 21 18:59:17 CET 2021
+@default-lifecycle-https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping/.lastUpdated=1640109557019
+https\://repo.maven.apache.org/maven2/.lastUpdated=1640109557312
+https\://oss.sonatype.org/content/repositories/orgeclipseemf-1054/.error=
+https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping/.error=Could not transfer artifact org.eclipse.platform\:org.eclipse.core.variables\:pom\:3.4.600 from/to lifecycle (https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping)\: Access denied to https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping/org/eclipse/platform/org.eclipse.core.variables/3.4.600/org.eclipse.core.variables-3.4.600.pom. Error code 403, 
+https\://oss.sonatype.org/content/repositories/orgeclipseemf-1054/.lastUpdated=1640109557232
+@default-tycho-https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin/.lastUpdated=1640109557085
+https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin/.error=Could not transfer artifact org.eclipse.platform\:org.eclipse.core.variables\:pom\:3.4.600 from/to tycho (https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin)\: Access denied to https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin/org/eclipse/platform/org.eclipse.core.variables/3.4.600/org.eclipse.core.variables-3.4.600.pom. Error code 403, 

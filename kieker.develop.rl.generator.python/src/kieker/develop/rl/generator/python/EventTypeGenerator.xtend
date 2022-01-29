@@ -60,17 +60,20 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 				«allDeclarationProperties.filter[!it.isIncrement].map[property | createAssignment(property)].join»
 		
 			def serialize(self, serializer):
-				«FOR e : allDataProperties»
-				
+				«allDeclarationProperties.filter[!it.isIncrement].map[property | createParameterSerialization(property)].join» \n
 		'''
 	}
 	
 	def createPropertyParameter(Property property){
-		'''«property.name»'''
+		'''self.«property.name»'''
 	}
 	
 	def createAssignment(Property property){
-		'''self.«property.name» = «property.name»'''
+		'''«createPropertyParameter(property)»= «property.name»'''
+	}
+	
+	def createParameterSerialization(Property property){
+		'''serializer.put_«createTypeName(property.type)»(self.«property.name»)'''
 	}
 
 	
