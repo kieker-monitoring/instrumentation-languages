@@ -69,14 +69,18 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 													&& !it.isIncrement
 													)].map[property | createPropertyParameter(property)].join(', ')»):	
 				«allDeclarationProperties.filter[!it.isIncrement].map[property | createAssignment(property)].join('\n')»
+				«allDeclarationProperties.filter[it.isIncrement].map[property | createIncrementAssignment(property)].join('\n')»
 		
 			def serialize(self, serializer):
 				«allDeclarationProperties.filter[!it.isIncrement].map[property | createParameterSerialization(property)].join ('\n')» 
+			
+			«allDeclarationProperties.filter[it.isIncrement].map[property | createGetter(property)].join('\n')»
+			
 		'''
 	}
 	
 	def createPropertyParameter(Property property){
-		'''self.«property.name»'''
+		'''«property.name.replaceAll("([a-z])([A-Z])", "$1_$2").toLowerCase»'''
 	}
 	
 	def createAssignment(Property property){
@@ -85,19 +89,27 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 		switch(type){
 	    BaseType case BaseTypes.STRING == BaseTypes.getTypeEnum(type) && classifier.sizes.size == 0:
 		'''«createPropertyParameter(property)» = «if(property.value!==null) '(self.'+ property.value.createConstantReference(property) else '(""'»
-if «property.name» is None 
-else «property.name»)'''
+		      if «property.createPropertyParameter» is None 
+		      else «property.createPropertyParameter»)'''
 		default:
-		'''«property.createPropertyParameter» = «property.name»'''
+		'''«property.createPropertyParameter» = «property.createPropertyParameter»'''
 	}
 	
+	}
+	def createIncrementAssignment(Property property){
+		'''«createPropertyParameter(property)» = «property.value.getLiteral»'''
 	}
 	
 	def createParameterSerialization(Property property){
-		'''serializer.put_«createTypeName(property.type)»(self.«property.name»)'''
+		'''serializer.put_«createTypeName(property.type)»(self.«property.createPropertyParameter»)'''
 	}
 
-	
+	def createGetter(Property property){
+		'''def get_«property.createPropertyParameter»(self):
+	self.«property.createPropertyParameter» +=1
+	return self.«property.createPropertyParameter»
+		'''
+	}
 	/**
 	 * Create python type names.
 	 */
