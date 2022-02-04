@@ -27,6 +27,17 @@ import kieker.develop.rl.generator.Version
 import kieker.develop.rl.generator.InternalErrorException
 import kieker.develop.rl.typing.base.BaseTypes
 import kieker. develop.rl.generator.python.PropertyHelper
+import kieker.develop.rl.recordLang.Constant
+import kieker.develop.rl.recordLang.Literal
+import kieker.develop.rl.recordLang.IntLiteral
+import kieker.develop.rl.recordLang.FloatLiteral
+import kieker.develop.rl.recordLang.ConstantLiteral
+import kieker.develop.rl.recordLang.BooleanLiteral
+import kieker.develop.rl.recordLang.BuiltInValueLiteral
+import kieker.develop.rl.recordLang.StringLiteral
+import kieker.develop.rl.recordLang.ArrayLiteral
+import kieker.develop.rl.recordLang.BaseType
+
 class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> {
 	
 	override accepts(ComplexType type) {
@@ -50,17 +61,17 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	protected override createOutputModel(EventType type, Version targetVersion, String header, String author, String version) {
 		val allDataProperties = type.collectAllDataProperties
 		val allDeclarationProperties = type.collectAllDeclarationProperties
-		'''		
+		'''	
 		class «type.name»:
-			
+			«type.constants.map[c|c.createConstantDeclaration].join('\n')»
 			def init(self, «allDataProperties.filter[!it.isTransient 
 													|| (it.isTransient 
 													&& !it.isIncrement
 													)].map[property | createPropertyParameter(property)].join(', ')»):	
-				«allDeclarationProperties.filter[!it.isIncrement].map[property | createAssignment(property)].join»
+				«allDeclarationProperties.filter[!it.isIncrement].map[property | createAssignment(property)].join('\n')»
 		
 			def serialize(self, serializer):
-				«allDeclarationProperties.filter[!it.isIncrement].map[property | createParameterSerialization(property)].join» \n
+				«allDeclarationProperties.filter[!it.isIncrement].map[property | createParameterSerialization(property)].join ('\n')» 
 		'''
 	}
 	
@@ -69,7 +80,17 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	}
 	
 	def createAssignment(Property property){
-		'''«createPropertyParameter(property)»= «property.name»'''
+		val classifier = property.type
+		val type = classifier.type
+		switch(type){
+	    BaseType case BaseTypes.STRING == BaseTypes.getTypeEnum(type) && classifier.sizes.size == 0:
+		'''«createPropertyParameter(property)» = «if(property.value!==null) '(self.'+ property.value.createConstantReference(property) else '(""'»
+if «property.name» is None 
+else «property.name»)'''
+		default:
+		'''«property.createPropertyParameter» = «property.name»'''
+	}
+	
 	}
 	
 	def createParameterSerialization(Property property){
@@ -87,6 +108,32 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 		}
 	}
 	
+private static def createConstantReference(Literal literal, Property property) {
+		switch (literal) {
+			StringLiteral : property.name.replaceAll("([a-z])([A-Z])", "$1_$2").toUpperCase
+			ConstantLiteral : literal.value.name
+			BuiltInValueLiteral : property.name.replaceAll("([a-z])([A-Z])", "$1_$2").toUpperCase
+			default : throw new InternalErrorException("constant reference requested for " + literal.class + " which is not defined.")
+		}
+	}
+	def createConstantDeclaration(Constant constant){
+		'''«constant.name» = «constant.value.getLiteral»'''
+	}
+	
+	def static getLiteral(Literal literal){
+	
+		switch(literal){
+		    IntLiteral: '''«literal.value»'''
+			FloatLiteral: '''«literal.value»'''
+			BooleanLiteral: '''«if (literal.value) 'True' else 'False'»'''
+			ConstantLiteral: '''«literal.value.name»'''
+			BuiltInValueLiteral case "KIEKER_VERSION".equals(literal.value): '''kieker.common.util.Version.getVERSION()'''
+			StringLiteral :'''"«literal.value»"'''
+			ArrayLiteral: '''[ «literal.literals.map[element | element.getLiteral].join(if (literal.literals.get(0) instanceof ArrayLiteral) ",\n" else ", ")» ]'''
+			default: throw new InternalErrorException('Unknown literal type ' + literal.class.name)
+			
+		}	
+	}
 	/**
 	 * Create one property for the type declaration.
 	 */
