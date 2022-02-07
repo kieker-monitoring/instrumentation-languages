@@ -1,9 +1,0 @@
-#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
-#Tue Dec 21 18:56:14 CET 2021
-@default-lifecycle-https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping/.lastUpdated=1640109373894
-https\://repo.maven.apache.org/maven2/.lastUpdated=1640109374153
-https\://oss.sonatype.org/content/repositories/orgeclipseemf-1054/.error=
-https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping/.error=Could not transfer artifact org.sonatype.forge\:forge-parent\:pom\:3 from/to lifecycle (https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping)\: Access denied to https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping/org/sonatype/forge/forge-parent/3/forge-parent-3.pom. Error code 403, 
-https\://oss.sonatype.org/content/repositories/orgeclipseemf-1054/.lastUpdated=1640109374064
-@default-tycho-https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin/.lastUpdated=1640109373948
-https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin/.error=Could not transfer artifact org.sonatype.forge\:forge-parent\:pom\:3 from/to tycho (https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin)\: Access denied to https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin/org/sonatype/forge/forge-parent/3/forge-parent-3.pom. Error code 403, 

@@ -1,5 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<?artifactRepository version='1.1.0'?>
-<artifacts size='1'>
-  <artifact classifier='osgi.bundle' id='org.eclipse.equinox.common' version='3.15.0.v20210518-0604'/>
-</artifacts>

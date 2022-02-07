@@ -1,9 +1,0 @@
-#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
-#Tue Dec 21 19:00:08 CET 2021
-@default-lifecycle-https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping/.lastUpdated=1640109604727
-https\://repo.maven.apache.org/maven2/.lastUpdated=1640109608191
-https\://oss.sonatype.org/content/repositories/orgeclipseemf-1054/.error=
-https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping/.error=Could not transfer artifact org.apache.maven\:maven-monitor\:jar\:2.2.1 from/to lifecycle (https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping)\: Access denied to https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping/org/apache/maven/maven-monitor/2.2.1/maven-monitor-2.2.1.jar. Error code 403, 
-https\://oss.sonatype.org/content/repositories/orgeclipseemf-1054/.lastUpdated=1640109605890
-@default-tycho-https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin/.lastUpdated=1640109605090
-https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin/.error=Could not transfer artifact org.apache.maven\:maven-monitor\:jar\:2.2.1 from/to tycho (https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin)\: Access denied to https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin/org/apache/maven/maven-monitor/2.2.1/maven-monitor-2.2.1.jar. Error code 403, 

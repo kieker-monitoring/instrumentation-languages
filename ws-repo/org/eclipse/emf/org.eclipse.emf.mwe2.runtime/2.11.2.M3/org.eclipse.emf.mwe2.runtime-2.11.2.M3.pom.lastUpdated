@@ -1,9 +1,0 @@
-#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
-#Tue Dec 21 18:57:25 CET 2021
-@default-lifecycle-https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping/.lastUpdated=1640109445160
-https\://repo.maven.apache.org/maven2/.lastUpdated=1640109445391
-https\://oss.sonatype.org/content/repositories/orgeclipseemf-1054/.error=
-https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping/.error=Could not transfer artifact org.eclipse.emf\:org.eclipse.emf.mwe2.runtime\:pom\:2.11.2.M3 from/to lifecycle (https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping)\: Access denied to https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping/org/eclipse/emf/org.eclipse.emf.mwe2.runtime/2.11.2.M3/org.eclipse.emf.mwe2.runtime-2.11.2.M3.pom. Error code 403, 
-https\://oss.sonatype.org/content/repositories/orgeclipseemf-1054/.lastUpdated=1640109445323
-@default-tycho-https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin/.lastUpdated=1640109445206
-https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin/.error=Could not transfer artifact org.eclipse.emf\:org.eclipse.emf.mwe2.runtime\:pom\:2.11.2.M3 from/to tycho (https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin)\: Access denied to https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin/org/eclipse/emf/org.eclipse.emf.mwe2.runtime/2.11.2.M3/org.eclipse.emf.mwe2.runtime-2.11.2.M3.pom. Error code 403, 

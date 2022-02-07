@@ -1,5 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<?artifactRepository version='1.1.0'?>
-<artifacts size='1'>
-  <artifact classifier='osgi.bundle' id='org.eclipse.emf.ecore.change' version='2.14.0.v20190528-0725'/>
-</artifacts>

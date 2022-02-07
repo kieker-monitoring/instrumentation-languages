@@ -1,5 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<?artifactRepository version='1.1.0'?>
-<artifacts size='1'>
-  <artifact classifier='osgi.bundle' id='org.eclipse.core.runtime' version='3.23.0.v20210730-2035'/>
-</artifacts>

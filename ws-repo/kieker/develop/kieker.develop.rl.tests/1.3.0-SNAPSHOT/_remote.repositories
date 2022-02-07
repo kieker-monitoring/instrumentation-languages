@@ -1,7 +1,0 @@
-#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
-#Tue Dec 21 19:06:30 CET 2021
-kieker.develop.rl.tests-1.3.0-SNAPSHOT-p2artifacts.xml>=
-kieker.develop.rl.tests-1.3.0-SNAPSHOT-p2metadata.xml>=
-kieker.develop.rl.tests-1.3.0-SNAPSHOT.jar>=
-kieker.develop.rl.tests-1.3.0-SNAPSHOT-sources.jar>=
-kieker.develop.rl.tests-1.3.0-SNAPSHOT.pom>=

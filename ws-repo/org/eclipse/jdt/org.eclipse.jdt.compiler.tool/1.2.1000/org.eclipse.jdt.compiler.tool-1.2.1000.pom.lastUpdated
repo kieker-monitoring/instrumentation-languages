@@ -1,9 +1,0 @@
-#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
-#Tue Dec 21 18:55:28 CET 2021
-@default-lifecycle-https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping/.lastUpdated=1640109327892
-https\://repo.maven.apache.org/maven2/.lastUpdated=1640109328471
-https\://oss.sonatype.org/content/repositories/orgeclipseemf-1054/.error=
-https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping/.error=Could not transfer artifact org.eclipse.jdt\:org.eclipse.jdt.compiler.tool\:pom\:1.2.1000 from/to lifecycle (https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping)\: Access denied to https\://mvnrepository.com/artifact/org.eclipse.m2e/lifecycle-mapping/org/eclipse/jdt/org.eclipse.jdt.compiler.tool/1.2.1000/org.eclipse.jdt.compiler.tool-1.2.1000.pom. Error code 403, 
-https\://oss.sonatype.org/content/repositories/orgeclipseemf-1054/.lastUpdated=1640109328192
-@default-tycho-https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin/.lastUpdated=1640109328073
-https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin/.error=Could not transfer artifact org.eclipse.jdt\:org.eclipse.jdt.compiler.tool\:pom\:1.2.1000 from/to tycho (https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin)\: Access denied to https\://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin/org/eclipse/jdt/org.eclipse.jdt.compiler.tool/1.2.1000/org.eclipse.jdt.compiler.tool-1.2.1000.pom. Error code 403, 
