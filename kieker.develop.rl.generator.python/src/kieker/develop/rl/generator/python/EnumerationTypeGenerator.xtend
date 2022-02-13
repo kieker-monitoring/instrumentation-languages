@@ -23,6 +23,7 @@ import kieker.develop.rl.recordLang.EnumerationType
 import kieker.develop.rl.recordLang.Model
 
 import static extension kieker.develop.rl.typing.TypeResolution.*
+import java.util.List
 
 class EnumerationTypeGenerator extends AbstractTypeGenerator<EnumerationType, CharSequence> {
 	
@@ -42,15 +43,18 @@ class EnumerationTypeGenerator extends AbstractTypeGenerator<EnumerationType, Ch
 	 * @return a Java class for a Kieker EventType
 	 */
 	protected override createOutputModel(EnumerationType type, Version targetVersion, String header, String author, String version) {
-		'''
+	val literals = type.collectAllLiterals
+		'''import enum
+		class «type.name»(enum):
+			«literals.map[it.createLiteral()].join(",\n")»
 		
 		'''
 	}
-	
+
 	/**
 	 * Create a literal with optional value assignment.
 	 */
-	private def createLiteral(EnumerationLiteral literal) '''«literal.name»«IF literal.value !== null»=«literal.value.value»«ENDIF»'''
+	private def createLiteral(EnumerationLiteral literal) '''«literal.name»«IF literal.value !== null»=«literal.value.value»«ELSE»auto()«ENDIF»'''
 	
 	
 
