@@ -21,11 +21,20 @@ class TemplateTypeGenerator extends AbstractTypeGenerator<TemplateType, CharSequ
 	
 	protected override createOutputModel(TemplateType type, Version targetVersion, String header, String author, String version) {
 		'''
-		class «type.name»«IF type.inherits.getParents.length!=0» («type.inherits.getParents»):«ELSE»:«ENDIF»
-			def init (self):
-				self.«type.properties.map[p|p.name].join("\n")»
-			
+		class «type.name»«IF type.inherits.length!=0» («type.inherits.getParents»):«ELSE»:«ENDIF»
+			«IF type.properties.length != 0»
+			«type.createInit»
 			«type.properties.map[p|p.createSetter()].join("\n")»
+			«ELSE»
+			pass
+			«ENDIF»
+		'''
+	}
+	
+	def createInit(TemplateType type){
+		'''
+		def init (self):
+			self.«type.properties.map[p|p.name].join("\n")»
 		'''
 	}
 	
