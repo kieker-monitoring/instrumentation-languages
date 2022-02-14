@@ -34,7 +34,7 @@ class TemplateTypeGenerator extends AbstractTypeGenerator<TemplateType, CharSequ
 	def createInit(TemplateType type){
 		'''
 		def init (self):
-			self.«type.properties.map[p|p.name].join("\n")»
+			self.«type.properties.map[p|p.name].join("\n")» = None
 		'''
 	}
 	
