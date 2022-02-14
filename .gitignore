@@ -39,5 +39,5 @@ doc/kieker-workshop/images/kieker-data-bridge.pdf
 kieker.develop.rl/model/**
 **/xtend-gen/**
 !**/xtend-gen/.gitignore
-
+.antlr-generator-3.2.0-patch.jar
 
