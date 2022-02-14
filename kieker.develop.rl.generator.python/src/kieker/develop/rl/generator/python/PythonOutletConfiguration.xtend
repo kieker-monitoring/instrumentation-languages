@@ -30,6 +30,7 @@ class PythonOutletConfiguration extends AbstractOutletConfiguration<ComplexType,
 		super("python", "Python Output Folder", "./src/gen/python", GeneratorProvider.LANG_PYTHON, GeneratorProvider.TECH_KIEKER_PYTHON)
 		generators.put(new EventTypeGenerator, PYTHON_EXTENSION)
 		generators.put(new EnumerationTypeGenerator, PYTHON_EXTENSION)
+		generators.put(new TemplateTypeGenerator, PYTHON_EXTENSION)
 	}
 	
 	override outputFilePath(ComplexType type, IGenerator<?,?> generator) '''«type.outputDirectory»«File::separator»«type.name».py'''

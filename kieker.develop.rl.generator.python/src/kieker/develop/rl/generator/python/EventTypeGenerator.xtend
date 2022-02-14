@@ -37,6 +37,8 @@ import kieker.develop.rl.recordLang.BuiltInValueLiteral
 import kieker.develop.rl.recordLang.StringLiteral
 import kieker.develop.rl.recordLang.ArrayLiteral
 import kieker.develop.rl.recordLang.BaseType
+import org.eclipse.emf.common.util.EList
+import kieker.develop.rl.recordLang.TemplateType
 
 class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> {
 	
@@ -62,7 +64,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 		val allDataProperties = type.collectAllDataProperties
 		val allDeclarationProperties = type.collectAllDeclarationProperties
 		'''	
-		class «type.name»:
+		class «type.name»«type.createExtensions»
 			«type.constants.map[c|c.createConstantDeclaration].join('\n')»
 			def init(self, «allDataProperties.filter[!it.isTransient 
 													|| (it.isTransient 
@@ -76,6 +78,23 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 			
 			«allDeclarationProperties.filter[it.isIncrement].map[property | createGetter(property)].join('\n')»
 			
+		'''
+	}
+	
+	def createExtensions(EventType type){
+	'''
+	«IF type.parent != null» («type.parent.name», «type.inherits.getTemplates») :«ELSE» :«ENDIF»
+	'''	
+	}
+	
+	def getTemplates(EList<TemplateType> parents){
+		'''
+		«if (parents !== null && parents.size > 0) parents.map[p|p.name].join(",")»
+		'''
+	}
+	def getGetParents(EList<TemplateType> parents){
+		'''
+		« if (parents !== null && parents.size > 0) parents.map[p|p.name].join(",")»
 		'''
 	}
 	
@@ -115,7 +134,7 @@ class EventTypeGenerator extends AbstractTypeGenerator<EventType, CharSequence> 
 	 */
 	def createTypeName(Classifier classifier) {
 		switch (classifier.type.name) {
-			case 'string' : 'String'
+			case 'string' : 'string'
 			default : classifier.type.name
 		}
 	}
