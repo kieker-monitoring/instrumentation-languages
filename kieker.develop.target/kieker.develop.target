@@ -10,7 +10,7 @@
 		</location>
 		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
 			<repository location="https://updatesite.palladio-simulator.com/palladio-build-updatesite/releases/latest/"/>
-			<unit id="org.palladiosimulator.pcm.feature.feature.group" version="5.0.0.202102051710"/>
+			<unit id="org.palladiosimulator.pcm.feature.feature.group" version="5.1.0.202201251356"/>
 		</location>
 	</locations>
 	<environment>
