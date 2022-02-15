@@ -33,6 +33,7 @@
 								<source>src-gen</source>
 								<source>src</source>
 								<source>xtend-gen</source>
+								<source>model-gen</source>
 							</sources>
 						</configuration>
 					</execution>
