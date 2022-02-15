@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="de.cau.cs.kieler.klighd.diagramSyntheses">
+	   <diagramSynthesis
+	         class="de.cau.cs.kieler.klighd.syntheses.GuiceBasedSynthesisFactory:org.oceandsl.kieker.architecture.viz.KiekerArchitectureDiagramSynthesis"
+	         id="org.oceandsl.kieker.architecture.viz.KiekerArchitectureDiagramSynthesis">
+	   </diagramSynthesis>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated analysismodel -->
+      <package
+            uri="http://kieker-monitoring.net/analysismodel"
+            class="analysismodel.AnalysismodelPackage"
+            genModel="model/analysismodel.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated analysismodel -->
+      <package
+            uri="platform:/resource/Kieker/model/analysismodel.ecore/statistics"
+            class="analysismodel.statistics.StatisticsPackage"
+            genModel="model/analysismodel.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated analysismodel -->
+      <package
+            uri="platform:/resource/Kieker/model/analysismodel.ecore/type"
+            class="analysismodel.type.TypePackage"
+            genModel="model/analysismodel.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated analysismodel -->
+      <package
+            uri="platform:/resource/Kieker/model/analysismodel.ecore/assembly"
+            class="analysismodel.assembly.AssemblyPackage"
+            genModel="model/analysismodel.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated analysismodel -->
+      <package
+            uri="platform:/resource/Kieker/model/analysismodel.ecore/deployment"
+            class="analysismodel.deployment.DeploymentPackage"
+            genModel="model/analysismodel.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated analysismodel -->
+      <package
+            uri="platform:/resource/Kieker/model/analysismodel.ecore/execution"
+            class="analysismodel.execution.ExecutionPackage"
+            genModel="model/analysismodel.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated analysismodel -->
+      <package
+            uri="platform:/resource/Kieker/model/analysismodel.ecore/trace"
+            class="analysismodel.trace.TracePackage"
+            genModel="model/analysismodel.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated analysismodel -->
+      <package
+            uri="platform:/resource/Kieker/model/analysismodel.ecore/sources"
+            class="analysismodel.sources.SourcesPackage"
+            genModel="model/analysismodel.genmodel"/>
+   </extension>
+
+</plugin>

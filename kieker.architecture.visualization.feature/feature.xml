@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="kieker.architecture.visualization.feature"
+      label="Kieker Architecture Visualization"
+      version="1.3.0.qualifier"
+      provider-name="Software Engineering Group, Kiel University">
+
+   <plugin
+         id="kieker.architecture.visualization"
+         download-size="0"
+         install-size="0"
+         version="1.3.0.qualifier"
+         unpack="false"/>
+
+</feature>

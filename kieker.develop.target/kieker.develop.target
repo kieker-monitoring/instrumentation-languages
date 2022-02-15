@@ -12,6 +12,25 @@
 			<repository location="https://updatesite.palladio-simulator.com/palladio-build-updatesite/releases/latest/"/>
 			<unit id="org.palladiosimulator.pcm.feature.feature.group" version="5.1.0.202201251356"/>
 		</location>
+		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
+			<repository location="https://download.eclipse.org/elk/updates/releases/0.7.1/"/>
+			<unit id="org.eclipse.elk.algorithms.feature.feature.group" version="0.7.1"/>
+			<unit id="org.eclipse.elk.feature.feature.group" version="0.7.1"/>
+			<unit id="org.eclipse.elk.gmf.feature.feature.group" version="0.7.1"/>
+			<unit id="org.eclipse.elk.graph.json.feature.feature.group" version="0.7.1"/>
+			<unit id="org.eclipse.elk.graphviz.feature.feature.group" version="0.7.1"/>
+			<unit id="org.eclipse.elk.sdk.feature.feature.group" version="0.7.1"/>
+			<unit id="org.eclipse.elk.ui.feature.feature.group" version="0.7.1"/>
+		</location>
+		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
+			<repository location="https://kieler.github.io/KLighD/v2.1.0/"/>
+			<unit id="de.cau.cs.kieler.klighd.batik.feature.feature.group" version="2.1.0.v20210615"/>
+			<unit id="de.cau.cs.kieler.klighd.draw2d.feature.feature.group" version="2.1.0.v20210615"/>
+			<unit id="de.cau.cs.kieler.klighd.feature.feature.group" version="2.1.0.v20210615"/>
+			<unit id="de.cau.cs.kieler.klighd.freehep.feature.feature.group" version="2.1.0.v20210615"/>
+			<unit id="de.cau.cs.kieler.klighd.ide.feature.feature.group" version="2.1.0.v20210615"/>
+			<unit id="de.cau.cs.kieler.klighd.view.feature.feature.group" version="2.1.0.v20210615"/>
+		</location>
 	</locations>
 	<environment>
 		<os>linux</os>
