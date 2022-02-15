@@ -88,7 +88,7 @@
 		<module>kieker.develop.rl.feature</module>
 		<module>kieker.architecture.visualization</module>
 		<module>kieker.architecture.visualization.feature</module>
-<!--		<module>kieker.develop.repository</module>-->
+		<module>kieker.develop.repository</module>
 		<module>kieker.develop.target</module> 
 <!--		<module>kieker.develop.rl.generator.java.tests</module>
 		<module>kieker.develop.rl.cli</module>

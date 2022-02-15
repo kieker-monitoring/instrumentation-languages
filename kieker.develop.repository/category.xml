@@ -3,5 +3,8 @@
    <feature url="features/kieker.develop.rl.feature_1.3.0.qualifier.jar" id="kieker.develop.rl.feature" version="1.3.0.qualifier">
       <category name="kieker.develop"/>
    </feature>
+   <feature id="kieker.architecture.visualization.feature">
+      <category name="kieker.develop"/>
+   </feature>
    <category-def name="kieker.develop" label="Kieker Development Tools"/>
 </site>
