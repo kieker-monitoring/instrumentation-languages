@@ -46,6 +46,7 @@ pipeline {
 				}
 				stage('Update Repository') {
 					steps {
+						sh 'ls ${KEYSTORE}'
 						sh 'mvn -Dmaven.repo.local=${WORKSPACE}/ws-repo -DskipTests -P snapshot --settings settings.xml --batch-mode -Dkeystore=${KEYSTORE} -Dupdate-site-url=${UPDATE_SITE_URL} install'
 					}
 				}
