@@ -1,5 +1,5 @@
 pipeline {
-	agent any 
+	agent any
 
 	environment {
 		KEYSTORE = credentials('kieker-irl-key')
@@ -22,8 +22,6 @@ pipeline {
 			}
 			stages {
 				stage('Build') {
-
-
 					steps {
 						sh 'mvn -Dmaven.repo.local=${WORKSPACE}/ws-repo --batch-mode compile'
 					}
@@ -48,7 +46,7 @@ pipeline {
 				}
 				stage('Update Repository') {
 					steps {
-						sh 'mvn -Dmaven.repo.local=${WORKSPACE}/ws-repo -DskipTests --settings settings.xml --batch-mode -Dkeystore=${KEYSTORE} -Dupdate-site-url=${UPDATE_SITE_URL} -Ddestination=${DESTINATION} install'
+						sh 'mvn -Dmaven.repo.local=${WORKSPACE}/ws-repo -DskipTests -P snapshot --settings settings.xml --batch-mode -Dkeystore=${KEYSTORE} -Dupdate-site-url=${UPDATE_SITE_URL} install'
 					}
 				}
 			}
