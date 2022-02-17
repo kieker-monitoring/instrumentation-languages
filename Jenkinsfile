@@ -45,7 +45,7 @@ pipeline {
 				}
 				stage('Update Repository') {
 					steps {
-						withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'kieker-irl-key', keyFileVariable: 'KEYSTORE')])
+						withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'kieker-irl-key', keyFileVariable: 'KEYSTORE')]) {
 							sh 'ls ${KEYSTORE}'
 							sh 'mvn -Dmaven.repo.local=${WORKSPACE}/ws-repo -DskipTests -P snapshot --settings settings.xml --batch-mode -Dkeystore=${KEYSTORE} -Dupdate-site-url=${UPDATE_SITE_URL} install'
 						}
