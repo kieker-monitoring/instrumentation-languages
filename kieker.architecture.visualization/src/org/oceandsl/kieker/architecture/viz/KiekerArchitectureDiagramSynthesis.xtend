@@ -12,38 +12,34 @@
  */
 package org.oceandsl.kieker.architecture.viz
 
-import analysismodel.assembly.AssemblyModel
-import de.cau.cs.kieler.klighd.kgraph.KNode
-import de.cau.cs.kieler.klighd.syntheses.AbstractDiagramSynthesis
-import javax.inject.Inject
-import de.cau.cs.kieler.klighd.krendering.extensions.KColorExtensions
-import de.cau.cs.kieler.klighd.krendering.extensions.KPolylineExtensions
-import de.cau.cs.kieler.klighd.krendering.extensions.KContainerRenderingExtensions
-import de.cau.cs.kieler.klighd.krendering.extensions.KRenderingExtensions
-import de.cau.cs.kieler.klighd.krendering.extensions.KEdgeExtensions
-import de.cau.cs.kieler.klighd.krendering.extensions.KNodeExtensions
-import org.eclipse.elk.core.options.CoreOptions
-import org.eclipse.elk.core.options.Direction
 import analysismodel.assembly.AssemblyComponent
-import java.util.Collection
-import java.util.Map.Entry
+import analysismodel.assembly.AssemblyModel
 import analysismodel.assembly.AssemblyProvidedInterface
-import org.eclipse.elk.core.options.EdgeType
-import de.cau.cs.kieler.klighd.syntheses.DiagramLayoutOptions
 import analysismodel.assembly.impl.EStringToAssemblyProvidedInterfaceMapEntryImpl
+import com.google.common.collect.ImmutableList
+import de.cau.cs.kieler.klighd.SynthesisOption
+import de.cau.cs.kieler.klighd.internal.util.KlighdInternalProperties
+import de.cau.cs.kieler.klighd.kgraph.KNode
 import de.cau.cs.kieler.klighd.kgraph.KPort
 import de.cau.cs.kieler.klighd.kgraph.util.KGraphUtil
-import org.eclipse.elk.core.options.PortSide
 import de.cau.cs.kieler.klighd.krendering.KRenderingFactory
-import java.util.ArrayList
+import de.cau.cs.kieler.klighd.krendering.extensions.KColorExtensions
+import de.cau.cs.kieler.klighd.krendering.extensions.KContainerRenderingExtensions
+import de.cau.cs.kieler.klighd.krendering.extensions.KEdgeExtensions
+import de.cau.cs.kieler.klighd.krendering.extensions.KNodeExtensions
+import de.cau.cs.kieler.klighd.krendering.extensions.KPolylineExtensions
+import de.cau.cs.kieler.klighd.krendering.extensions.KRenderingExtensions
+import de.cau.cs.kieler.klighd.syntheses.AbstractDiagramSynthesis
+import de.cau.cs.kieler.klighd.syntheses.DiagramLayoutOptions
+import java.util.Collection
 import java.util.HashMap
 import java.util.Map
-import de.cau.cs.kieler.klighd.internal.util.KlighdInternalProperties
-import de.cau.cs.kieler.klighd.krendering.KFontName
+import javax.inject.Inject
+import org.eclipse.elk.core.options.CoreOptions
+import org.eclipse.elk.core.options.Direction
+import org.eclipse.elk.core.options.EdgeType
 import org.eclipse.elk.core.options.PortLabelPlacement
-import de.cau.cs.kieler.klighd.SynthesisOption
-import com.google.common.collect.ImmutableList
-import org.eclipse.elk.core.math.ElkPadding
+import org.eclipse.elk.core.options.PortSide
 
 /** 
  * @author Reiner Jung
@@ -76,7 +72,27 @@ class KiekerArchitectureDiagramSynthesis extends AbstractDiagramSynthesis<Assemb
      * Select algorithm
      */
     static val SynthesisOption ALGORITHM = SynthesisOption::createChoiceOption(ALGORITHM_NAME,
-       ImmutableList::of(DiagramLayoutOptions.ELK_LAYERED, DiagramLayoutOptions.GRAPHVIZ_CIRCO, DiagramLayoutOptions.GRAPHVIZ_DOT, DiagramLayoutOptions.OGDF_PLANARIZATION, DiagramLayoutOptions.OGDF_CIRCULAR ), DiagramLayoutOptions.ELK_LAYERED)
+       ImmutableList::of(DiagramLayoutOptions.ELK_LAYERED, 
+       	DiagramLayoutOptions.GRAPHVIZ_CIRCO, 
+       	DiagramLayoutOptions.GRAPHVIZ_DOT, 
+       	DiagramLayoutOptions.OGDF_PLANARIZATION, 
+       	DiagramLayoutOptions.OGDF_CIRCULAR,
+       	"org.eclipse.elk.conn.gmf.layouter.Draw2D",
+       	"org.eclipse.elk.box",
+       	"org.eclipse.elk.disco",
+       	"org.eclipse.elk.fixed",
+       	"org.eclipse.elk.force",
+       	"org.eclipse.elk.mrtree",
+       	"org.eclipse.elk.radial",
+       	"org.eclipse.elk.random",
+       	"org.eclipse.elk.rectpacking",
+       	"org.eclipse.elk.sporeCompaction",
+       	"org.eclipse.elk.sporeOverlap",
+       	"org.eclipse.elk.stress",
+       	"org.eclipse.elk.graphviz.fdp",
+       	"org.eclipse.elk.graphviz.neato",
+       	"org.eclipse.elk.graphviz.twopi"
+       ), DiagramLayoutOptions.ELK_LAYERED)
  
     /**
      * Option choose the reference depth while determining the classes related to the selected ones.
@@ -90,7 +106,7 @@ class KiekerArchitectureDiagramSynthesis extends AbstractDiagramSynthesis<Assemb
      * Registers the diagram filter option declared above, which allow users to tailor the constructed diagrams.
      */
     override getDisplayedSynthesisOptions() {
-        return ImmutableList::of(ALGORITHM, org.oceandsl.kieker.architecture.viz.KiekerArchitectureDiagramSynthesis.SHOW_PORT_LABELS)
+        return ImmutableList::of(ALGORITHM, KiekerArchitectureDiagramSynthesis.SHOW_PORT_LABELS)
     }
     
 	
@@ -170,7 +186,7 @@ class KiekerArchitectureDiagramSynthesis extends AbstractDiagramSynthesis<Assemb
 			val providedInterface = requiredInterface.requires
 			val providedComponent = (providedInterface.eContainer as EStringToAssemblyProvidedInterfaceMapEntryImpl).
 				eContainer as AssemblyComponent
-			val providedKNode= map.get(providedComponent)				
+			val providedKNode = map.get(providedComponent)				
 			val port = providedKNode.ports.findFirst[
 				it.getProperty(KlighdInternalProperties.MODEL_ELEMEMT) === providedInterface
 			]
