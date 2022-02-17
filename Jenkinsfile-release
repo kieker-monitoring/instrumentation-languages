@@ -2,8 +2,7 @@ pipeline {
 	agent any
 
 	environment {
-		KEYSTORE = credentials('kieker-irl-key')
-		UPDATE_SITE_URL = "repo@repo.se.internal/var/www/html/kdt"
+		UPDATE_SITE_URL = "sftp://repo@repo.se.internal/var/www/html/kdt"
 		DESTINATION = 'release/1.3.0'
 	}
 
@@ -45,6 +44,9 @@ pipeline {
 					}
 				}
 				stage('Update Repository') {
+					environment {
+						KEYSTORE = credentials('kieker-irl-key')
+					}
 					steps {
 						sh 'mvn -Dmaven.repo.local=${WORKSPACE}/ws-repo -DskipTests -P snapshot --settings settings.xml --batch-mode -Dkeystore=${KEYSTORE} -Dupdate-site-url=${UPDATE_SITE_URL} install'
 					}
