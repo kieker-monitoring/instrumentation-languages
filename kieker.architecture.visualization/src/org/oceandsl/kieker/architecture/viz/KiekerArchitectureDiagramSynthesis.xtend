@@ -40,6 +40,13 @@ import org.eclipse.elk.core.options.Direction
 import org.eclipse.elk.core.options.EdgeType
 import org.eclipse.elk.core.options.PortLabelPlacement
 import org.eclipse.elk.core.options.PortSide
+import java.util.HashSet
+import analysismodel.assembly.AssemblyRequiredInterface
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.common.util.EList
+import java.util.List
+import java.util.ArrayList
+import java.util.Set
 
 /** 
  * @author Reiner Jung
@@ -75,20 +82,6 @@ class KiekerArchitectureDiagramSynthesis extends AbstractDiagramSynthesis<Assemb
        ImmutableList::of(DiagramLayoutOptions.ELK_LAYERED, 
        	DiagramLayoutOptions.GRAPHVIZ_CIRCO, 
        	DiagramLayoutOptions.GRAPHVIZ_DOT, 
-       	DiagramLayoutOptions.OGDF_PLANARIZATION, 
-       	DiagramLayoutOptions.OGDF_CIRCULAR,
-       	"org.eclipse.elk.conn.gmf.layouter.Draw2D",
-       	"org.eclipse.elk.box",
-       	"org.eclipse.elk.disco",
-       	"org.eclipse.elk.fixed",
-       	"org.eclipse.elk.force",
-       	"org.eclipse.elk.mrtree",
-       	"org.eclipse.elk.radial",
-       	"org.eclipse.elk.random",
-       	"org.eclipse.elk.rectpacking",
-       	"org.eclipse.elk.sporeCompaction",
-       	"org.eclipse.elk.sporeOverlap",
-       	"org.eclipse.elk.stress",
        	"org.eclipse.elk.graphviz.fdp",
        	"org.eclipse.elk.graphviz.neato",
        	"org.eclipse.elk.graphviz.twopi"
@@ -98,6 +91,17 @@ class KiekerArchitectureDiagramSynthesis extends AbstractDiagramSynthesis<Assemb
      * Option choose the reference depth while determining the classes related to the selected ones.
      */
     static val SynthesisOption SHOW_PORT_LABELS = SynthesisOption::createCheckOption("Show port labels", false);
+		
+	Map<AssemblyComponent, KNode> componentNodeMap
+	
+	Set<AssemblyComponent> containedComponents
+		
+	Map<AssemblyComponent, AssemblyComponent> containmentLookupMap
+		
+	Map<AssemblyProvidedInterface, List<AssemblyRequiredInterface>> providedToRequiredInterfaceMap
+		
+	List<PortConnection<AssemblyProvidedInterface>> internalProvidedLinks
+	List<PortConnection<AssemblyRequiredInterface>> internalRequiredLinks
 		
    
     /**
@@ -121,20 +125,72 @@ class KiekerArchitectureDiagramSynthesis extends AbstractDiagramSynthesis<Assemb
 	}
 		
 	def createAssemblyComponents(KNode node, Collection<AssemblyComponent> components) {
-		val map = new HashMap<AssemblyComponent, KNode>
-		components.forEach[component |
-			val componentNode = component.createAssemblyComponent
+		internalProvidedLinks = new ArrayList<PortConnection<AssemblyProvidedInterface>>
+		internalRequiredLinks = new ArrayList<PortConnection<AssemblyRequiredInterface>>
+		componentNodeMap = new HashMap<AssemblyComponent, KNode>
+		containedComponents = computeContainedComponents(components)
+		containmentLookupMap = computeContainmentLookupMap(components)
+		providedToRequiredInterfaceMap = computeProvidedToRequiredInterfaceMap(components)
+		components.filter[!containedComponents.contains(it)].forEach[component |
+			val componentNode = component.createAssemblyComponent()
 			node.children += componentNode
-			map.put(component, componentNode)
 		]
-		components.forEach[connectAssemblyComponent(it, map)]
+		
+		internalProvidedLinks.forEach[it.createInternalProvidedConnection]
+		internalRequiredLinks.forEach[it.createInternalRequiredConnection]
+		
+		components.forEach[connectAssemblyComponent(it)]
+		
+	}
+	
+	private def computeContainedComponents(Collection<AssemblyComponent> components) {
+		val containedComponents = new HashSet<AssemblyComponent>()
+		components.filter[it.containedComponents.size() > 0].forEach[
+			containedComponents.addAll(it.containedComponents)
+		]
+		return containedComponents
+	}
+	
+	private def computeContainmentLookupMap(Collection<AssemblyComponent> components) {
+		val containedToContainerMap = new HashMap<AssemblyComponent, AssemblyComponent>()
+		components.filter[it.containedComponents.size() > 0].forEach[parent |
+			parent.containedComponents.forEach[containedToContainerMap.put(it, parent)]
+		]
+		return containedToContainerMap
+	}
+	
+	private def computeProvidedToRequiredInterfaceMap(Collection<AssemblyComponent> components) {
+		val providedToRequiredInterfaceMap = new HashMap<AssemblyProvidedInterface, List<AssemblyRequiredInterface>>
+		components.forEach[component |
+			component.requiredInterfaces.forEach[requiredInteface |
+				var list = providedToRequiredInterfaceMap.get(requiredInteface.requires)
+				if (list === null) {
+					list = new ArrayList<AssemblyRequiredInterface>
+				}
+				list.add(requiredInteface)
+				providedToRequiredInterfaceMap.put(requiredInteface.requires, list)
+			]
+		]
+		return providedToRequiredInterfaceMap
 	}
 				
-	def createAssemblyComponent(AssemblyComponent component) {
+	def KNode createAssemblyComponent(AssemblyComponent component) {
 		return component.createNode().associateWith(component) => [
+			componentNodeMap.put(component, it)
+			
+            it.addLayoutParam(CoreOptions::ALGORITHM, ALGORITHM.objectValue as String)
+            it.addLayoutParam(CoreOptions::SPACING_NODE_NODE, 75.0)
+            it.addLayoutParam(CoreOptions::DIRECTION, Direction::UP)
+
+			it.createSubComponents(component)
+
 			component.providedInterfaces.values.forEach[providedInterface, i |
-				it.ports += createPort(PortSide.SOUTH, providedInterface, i)
+				it.ports += createProvidedPort(PortSide.SOUTH, providedInterface, i)
 			]
+			createRequiredInterfaces(component)
+
+			component.containedComponents.createTransitPorts(component, it)
+						
         	it.addRectangle => [
         		it.lineWidth = 2
                 it.setBackgroundGradient("white".color, "LemonChiffon".color, 0)
@@ -153,24 +209,59 @@ class KiekerArchitectureDiagramSynthesis extends AbstractDiagramSynthesis<Assemb
                     it.cursorSelectable = false;
                     it.setAreaPlacementData.from(LEFT, 20, 0, TOP, 1, 0.5f).to(RIGHT, 20, 0, BOTTOM, 10, 0);
                 ]
+        	]
+        ]
+	}
+	
+	private def createTransitPorts(EList<AssemblyComponent> components, AssemblyComponent parent, KNode parentNode) {
+		val usedProvidedInterfaces = new HashSet<AssemblyProvidedInterface>
+		components.forEach[child |
+			child.requiredInterfaces.forEach[requiredInterface |
+				val providingComponent = requiredInterface.requires.findAssemblyComponent
+				if (containmentLookupMap.get(providingComponent) !== parent) { // inter module interface
+					if (!usedProvidedInterfaces.contains(requiredInterface.requires)) { // only add if it has not been added before
+						usedProvidedInterfaces.add(requiredInterface.requires)
+						val transitPort = createRequiredPort(PortSide.EAST, requiredInterface, parentNode.ports.size())
+						internalRequiredLinks.add(new PortConnection<AssemblyRequiredInterface>(child, requiredInterface, parentNode, transitPort))
+						parentNode.ports += transitPort
+					}
+				}
+			]
+			child.providedInterfaces.values.forEach[providedInterface |
+				val requiredInterfaces = providedToRequiredInterfaceMap.get(providedInterface)
+				if (requiredInterfaces !== null) {
+					if (requiredInterfaces.exists[containmentLookupMap.get(it.eContainer as AssemblyComponent) !== parent]) {
+						val transitPort = createProvidedPort(PortSide.WEST, providedInterface, parentNode.ports.size())
+						internalProvidedLinks.add(new PortConnection<AssemblyProvidedInterface>(child, providedInterface, parentNode, transitPort))
+						parentNode.ports += transitPort
+					}
+				}
 			]
 		]
 	}
 		
-	def KPort createPort(PortSide portSide, AssemblyProvidedInterface providedInterface, int index) {
-		val port = KGraphUtil.createInitializedPort()
-        
-        port.setSize(20, 20)
-        port.setProperty(CoreOptions.PORT_SIDE, portSide)
-        port.setProperty(CoreOptions.PORT_INDEX, index)
-        port.setProperty(CoreOptions.PORT_BORDER_OFFSET, -10.0)
-        port.associateWith(providedInterface)
-            	            
-        val rectangle = KRenderingFactory.eINSTANCE.createKRectangle()
-        port.getData().add(rectangle)
-        setForegroundInvisible(rectangle, true)
-        setBackground(rectangle, getColor("#ffffff"))
-        setForeground(rectangle, getColor("#000000"))
+	private def createInternalProvidedConnection(PortConnection<AssemblyProvidedInterface> portConnection) {
+		val originNode = componentNodeMap.get(portConnection.originComponent)
+		val originPort = originNode.findProvidedPort(portConnection.originInterface)
+		createConnectionEdge(portConnection.transitNode, portConnection.transitPort, originNode, originPort)
+	}
+	
+	private def createInternalRequiredConnection(PortConnection<AssemblyRequiredInterface> portConnection) {
+		val originNode = componentNodeMap.get(portConnection.originComponent)
+		val originPort = originNode.findRequiredPort(portConnection.originInterface)
+		createConnectionEdge(originNode, originPort, portConnection.transitNode, portConnection.transitPort) 
+	}
+			
+	private def createSubComponents(KNode node, AssemblyComponent component) {
+		component.containedComponents.forEach[
+			val componentNode = it.createAssemblyComponent()
+			node.children += componentNode
+			componentNodeMap.put(it, componentNode)
+		]
+	}
+		
+	private def KPort createProvidedPort(PortSide portSide, AssemblyProvidedInterface providedInterface, int index) {
+		val port = createPort(portSide, providedInterface, index, "#ffffff")
         
         if (SHOW_PORT_LABELS.booleanValue) {
         	val label = KGraphUtil.createInitializedLabel(port)
@@ -180,29 +271,114 @@ class KiekerArchitectureDiagramSynthesis extends AbstractDiagramSynthesis<Assemb
         
         return port
 	}
-	
-	def connectAssemblyComponent(AssemblyComponent component, Map<AssemblyComponent, KNode> map) {
-		component.requiredInterfaces.forEach[requiredInterface |
-			val providedInterface = requiredInterface.requires
-			val providedComponent = (providedInterface.eContainer as EStringToAssemblyProvidedInterfaceMapEntryImpl).
-				eContainer as AssemblyComponent
-			val providedKNode = map.get(providedComponent)				
-			val port = providedKNode.ports.findFirst[
-				it.getProperty(KlighdInternalProperties.MODEL_ELEMEMT) === providedInterface
-			]
-			new Pair(component, providedInterface).createEdge() => [
-	            it.addLayoutParam(CoreOptions::EDGE_TYPE, EdgeType::DIRECTED)
-	            it.source = component.node
-	            it.target = providedKNode
-				it.targetPort = port
 
-	            it.data addPolyline() => [
-	                it.lineWidth = 2;
-	                it.foreground = "gray25".color
-	                it.addHeadArrowDecorator
-	            ]          
-	        ]
+	
+	private def KPort createRequiredPort(PortSide portSide, AssemblyRequiredInterface requiredInterface, int index) {         
+        return createPort(portSide, requiredInterface, index, "#a0a0a0")
+	}
+	
+	private def KPort createPort(PortSide portSide, EObject object, int index, String backgroundColor) {
+		val port = createPort(portSide, index, backgroundColor)
+		port.associateWith(object)
+		return port
+	}
+	
+	private def KPort createPort(PortSide portSide, int index, String backgroundColor) {
+		val port = KGraphUtil.createInitializedPort()
+        
+        port.setSize(20, 20)
+        port.setProperty(CoreOptions.PORT_SIDE, portSide)
+        port.setProperty(CoreOptions.PORT_INDEX, index)
+        port.setProperty(CoreOptions.PORT_BORDER_OFFSET, -10.0)
+            	            
+        val rectangle = KRenderingFactory.eINSTANCE.createKRectangle()
+        port.getData().add(rectangle)
+        setForegroundInvisible(rectangle, true)
+        setBackground(rectangle, getColor(backgroundColor))
+        setForeground(rectangle, getColor("#000000"))
+         
+        return port		
+	}
+	
+	private def createRequiredInterfaces(AssemblyComponent requiredComponent) {
+		requiredComponent.requiredInterfaces.forEach[requiredInterface |
+			val requiredKNode = componentNodeMap.get(requiredComponent)
+			requiredKNode.ports += createRequiredPort(PortSide.NORTH, requiredInterface, requiredKNode.ports.size)
 		]
+	}
+	
+	def connectAssemblyComponent(AssemblyComponent requiredComponent) {
+		requiredComponent.requiredInterfaces.forEach[requiredInterface |
+			val providedInterface = requiredInterface.requires
+			val providedComponent = providedInterface.findAssemblyComponent
+						
+			val providedParent = containmentLookupMap.get(providedComponent)
+			val requiredParent = containmentLookupMap.get(requiredComponent)
+			
+			if (providedParent === null && requiredParent === null) {
+				val sourceNode = componentNodeMap.get(requiredComponent)
+				val sourcePort = sourceNode.findRequiredPort(requiredInterface)
+				val targetNode = componentNodeMap.get(providedComponent)
+				val targetPort = targetNode.findProvidedPort(providedInterface)
+				createConnectionEdge(sourceNode, sourcePort, targetNode, targetPort)
+			} else if (providedParent === null && requiredParent !== null) {
+				val sourceNode = componentNodeMap.get(requiredParent)
+				val sourcePort = sourceNode.findRequiredPort(requiredInterface)
+				val targetNode = componentNodeMap.get(providedComponent)
+				val targetPort = targetNode.findProvidedPort(providedInterface)
+				createConnectionEdge(sourceNode, sourcePort, targetNode, targetPort)
+			} else if (providedParent !== null && requiredParent === null) {
+				val sourceNode = componentNodeMap.get(requiredComponent)
+				val sourcePort = sourceNode.findRequiredPort(requiredInterface)
+				val targetNode = componentNodeMap.get(providedParent)
+				val targetPort = targetNode.findProvidedPort(providedInterface)
+				createConnectionEdge(sourceNode, sourcePort, targetNode, targetPort)
+			} else if (providedParent === requiredParent) {
+				val sourceNode = componentNodeMap.get(requiredComponent)
+				val sourcePort = sourceNode.findRequiredPort(requiredInterface)
+				val targetNode = componentNodeMap.get(providedComponent)
+				val targetPort = targetNode.findProvidedPort(providedInterface)
+				createConnectionEdge(sourceNode, sourcePort, targetNode, targetPort)
+			} else {
+				val sourceNode = componentNodeMap.get(requiredParent)
+				val sourcePort = sourceNode.findRequiredPort(requiredInterface)
+				val targetNode = componentNodeMap.get(providedParent)
+				val targetPort = targetNode.findProvidedPort(providedInterface)
+				createConnectionEdge(sourceNode, sourcePort, targetNode, targetPort)
+			}
+		]
+	}
+		
+	private def createConnectionEdge(KNode sourceNode, KPort sourcePort, KNode targetNode, KPort targetPort) {
+		createEdge() => [
+            it.addLayoutParam(CoreOptions::EDGE_TYPE, EdgeType::DIRECTED)
+            it.source = sourceNode
+            it.sourcePort = sourcePort
+            it.target = targetNode
+			it.targetPort = targetPort
+
+            it.data addPolyline() => [
+                it.lineWidth = 2;
+                it.foreground = "gray25".color
+                it.addHeadArrowDecorator
+            ]          
+        ]
+	}
+		
+	private def KPort findProvidedPort(KNode node, AssemblyProvidedInterface providedInterface) {
+		return node.ports.findFirst[
+			it.getProperty(KlighdInternalProperties.MODEL_ELEMEMT) === providedInterface
+		]
+	}
+	
+	private def KPort findRequiredPort(KNode node, AssemblyRequiredInterface requiredInterface) {
+		return node.ports.findFirst[
+			it.getProperty(KlighdInternalProperties.MODEL_ELEMEMT) === requiredInterface
+		]
+	}
+		
+	private def findAssemblyComponent(AssemblyProvidedInterface providedInterface) {
+		return (providedInterface.eContainer as EStringToAssemblyProvidedInterfaceMapEntryImpl).eContainer as AssemblyComponent
 	}
 			
 }
