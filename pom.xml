@@ -51,8 +51,8 @@
 		<dryrun></dryrun>
 
 		<!-- repository URL -->
-		<eclipseRepoUrl>https://download.eclipse.org/releases/2021-09/</eclipseRepoUrl>
-		<elkRepoUrl>https://download.eclipse.org/elk/updates/releases/0.6.1/</elkRepoUrl>
+		<eclipseRepoUrl>https://download.eclipse.org/releases/2021-12/</eclipseRepoUrl>
+		<elkRepoUrl>https://download.eclipse.org/elk/updates/releases/0.7.1/</elkRepoUrl>
 
 		<tycho-repo.url>https://mvnrepository.com/artifact/org.eclipse.tycho/tycho-versions-plugin</tycho-repo.url>
 

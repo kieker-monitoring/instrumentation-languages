@@ -6,7 +6,6 @@ package org.oceandsl.kieker.architecture.viz;
 import org.eclipse.emf.ecore.EObject;
 
 import analysismodel.assembly.AssemblyComponent;
-import analysismodel.assembly.AssemblyProvidedInterface;
 import de.cau.cs.kieler.klighd.kgraph.KNode;
 import de.cau.cs.kieler.klighd.kgraph.KPort;
 
