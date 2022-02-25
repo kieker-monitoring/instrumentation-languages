@@ -9,6 +9,7 @@ pipeline {
 	stages {
 		stage('Cleanup') {
 			steps {
+				sh 'rm -rf *'
 				sh 'git clean -xffd -e "ws-repo/**"'
 			}
 		}
