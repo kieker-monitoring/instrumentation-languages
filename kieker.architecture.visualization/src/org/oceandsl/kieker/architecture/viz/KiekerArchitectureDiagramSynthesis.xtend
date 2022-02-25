@@ -18,11 +18,9 @@ import analysismodel.assembly.AssemblyProvidedInterface
 import analysismodel.assembly.impl.EStringToAssemblyProvidedInterfaceMapEntryImpl
 import com.google.common.collect.ImmutableList
 import de.cau.cs.kieler.klighd.SynthesisOption
-import de.cau.cs.kieler.klighd.internal.util.KlighdInternalProperties
 import de.cau.cs.kieler.klighd.kgraph.KNode
 import de.cau.cs.kieler.klighd.kgraph.KPort
 import de.cau.cs.kieler.klighd.kgraph.util.KGraphUtil
-import de.cau.cs.kieler.klighd.krendering.KRenderingFactory
 import de.cau.cs.kieler.klighd.krendering.extensions.KColorExtensions
 import de.cau.cs.kieler.klighd.krendering.extensions.KContainerRenderingExtensions
 import de.cau.cs.kieler.klighd.krendering.extensions.KEdgeExtensions
@@ -87,10 +85,12 @@ class KiekerArchitectureDiagramSynthesis extends AbstractDiagramSynthesis<Assemb
        	"org.eclipse.elk.graphviz.twopi"
        ), DiagramLayoutOptions.ELK_LAYERED)
  
-    /**
-     * Option choose the reference depth while determining the classes related to the selected ones.
-     */
     static val SynthesisOption SHOW_PORT_LABELS = SynthesisOption::createCheckOption("Show port labels", false);
+		
+    static val SynthesisOption SHOW_OPERATIONS = SynthesisOption::createCheckOption("Show operations", false);
+
+    static val SynthesisOption SHOW_STORAGE = SynthesisOption::createCheckOption("Show storage", false);
+	
 		
 	Map<AssemblyComponent, KNode> componentNodeMap
 	
@@ -112,7 +112,7 @@ class KiekerArchitectureDiagramSynthesis extends AbstractDiagramSynthesis<Assemb
      * Registers the diagram filter option declared above, which allow users to tailor the constructed diagrams.
      */
     override getDisplayedSynthesisOptions() {
-        return ImmutableList::of(ALGORITHM, KiekerArchitectureDiagramSynthesis.SHOW_PORT_LABELS)
+        return ImmutableList::of(ALGORITHM, SHOW_PORT_LABELS, SHOW_OPERATIONS, SHOW_STORAGE)
     }
     
 	
@@ -140,7 +140,7 @@ class KiekerArchitectureDiagramSynthesis extends AbstractDiagramSynthesis<Assemb
 			val componentNode = component.createAssemblyComponent()
 			node.children += componentNode
 		]
-		
+				
 		internalProvidedLinks.forEach[it.createInternalProvidedConnection]
 		internalRequiredLinks.forEach[it.createInternalRequiredConnection]
 		
@@ -189,6 +189,9 @@ class KiekerArchitectureDiagramSynthesis extends AbstractDiagramSynthesis<Assemb
 
 			it.createSubComponents(component)
 
+			if (SHOW_STORAGE.booleanValue) it.createStorage(component)
+			if (SHOW_OPERATIONS.booleanValue) it.createOperations(component)
+
 			component.createPortsForInterfaces
 
 			component.containedComponents.createTransitPorts(component, it)
@@ -197,22 +200,78 @@ class KiekerArchitectureDiagramSynthesis extends AbstractDiagramSynthesis<Assemb
         		it.lineWidth = 2
                 it.setBackgroundGradient("white".color, "LemonChiffon".color, 0)
                 it.shadow = "black".color
-                it.setGridPlacement(1).from(LEFT, 15, 0, TOP, 15, 0).to(RIGHT, 15, 0, BOTTOM, 15, 0)
-                                
+                it.setGridPlacement(1).from(LEFT, 15, 0, TOP, 15, 0).to(RIGHT, 15, 0, BOTTOM, 15, 0)                                            
+               	
                 it.addText("<<Component>>") => [
-                    it.fontSize = 13;
-                    it.fontItalic = true;
-                    it.verticalAlignment = V_CENTRAL;
-                    it.setAreaPlacementData.from(LEFT, 20, 0, TOP, 10, 0).to(RIGHT, 20, 0, BOTTOM, 1, 0.5f);
+                    it.fontSize = 13
+                    it.fontItalic = true
+                    it.verticalAlignment = V_CENTRAL
+                    it.setAreaPlacementData.from(LEFT, 20, 0, TOP, 10, 0).to(RIGHT, 20, 0, BOTTOM, 1, 0.5f)
                 ]
                 it.addText(component.componentType.signature).associateWith(component) => [
-                    it.fontSize = 15;
-                    it.fontBold = true;
-                    it.cursorSelectable = false;
-                    it.setAreaPlacementData.from(LEFT, 20, 0, TOP, 1, 0.5f).to(RIGHT, 20, 0, BOTTOM, 10, 0);
+                    it.fontSize = 15
+                    it.fontBold = true
+                    it.cursorSelectable = false
+                    it.setAreaPlacementData.from(LEFT, 20, 0, TOP, 1, 0.5f).to(RIGHT, 20, 0, BOTTOM, 10, 0)
                 ]
+                
+                if ((SHOW_STORAGE.booleanValue && component.storages.size > 0) 
+                	|| (SHOW_OPERATIONS.booleanValue && component.operations.size > 0) 
+                	|| (component.containedComponents.size > 0)
+                ) {
+                	it.addHorizontalSeperatorLine(1, 0)
+                	it.addChildArea
+               	}
         	]
         ]
+	}
+		
+	private def void createOperations(KNode node, AssemblyComponent component) {
+		component.operations.forEach[entry |
+			node.children += entry.value.createNode().associateWith(entry.value) => [
+				it.addEllipse => [
+					it.lineWidth = 2
+					it.background = "white".color
+					it.foreground = "black".color
+					it.setGridPlacement(1).from(LEFT, 15, 0, TOP, 15, 0).to(RIGHT, 15, 0, BOTTOM, 15, 0)
+					
+					it.addText(entry.key) => [
+						it.fontSize = 15
+                    	it.fontBold = true
+                    	it.cursorSelectable = false
+                    	it.setAreaPlacementData.from(LEFT, 20, 0, TOP, 1, 0.5f).to(RIGHT, 20, 0, BOTTOM, 10, 0)
+					]
+				]
+			]
+		]
+	}
+		
+	private def void createStorage(KNode node, AssemblyComponent component) {
+		component.storages.forEach[entry |
+			val storage = entry.value
+			node.children += storage.createNode().associateWith(storage) => [
+				it.addRoundedRectangle(5,5) => [
+					it.lineWidth = 2
+					it.background = "white".color
+					it.foreground = "black".color
+					it.setGridPlacement(1).from(LEFT, 15, 0, TOP, 15, 0).to(RIGHT, 15, 0, BOTTOM, 15, 0)
+					
+					it.addText("<<Storage>>") => [
+	                    it.fontSize = 13
+	                    it.fontItalic = true
+	                    it.verticalAlignment = V_CENTRAL
+	                    it.setAreaPlacementData.from(LEFT, 20, 0, TOP, 10, 0).to(RIGHT, 20, 0, BOTTOM, 1, 0.5f)
+                	]
+					
+					it.addText(entry.key) => [
+						it.fontSize = 15
+                    	it.fontBold = true
+                    	it.cursorSelectable = false
+                    	it.setAreaPlacementData.from(LEFT, 20, 0, TOP, 1, 0.5f).to(RIGHT, 20, 0, BOTTOM, 10, 0)
+					]
+				]
+			]
+		]
 	}
 	
 	private def createTransitPorts(EList<AssemblyComponent> components, AssemblyComponent parent, KNode parentNode) {
