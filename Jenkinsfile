@@ -48,6 +48,15 @@ pipeline {
 						KEYSTORE = credentials('kieker-irl-key')
 					}
 					steps {
+						sh 'sftp -i ${KEYSTORE} sftp://repo@repo.se.internal/kdt/snapshot << EOF
+							rm *
+							cd plugins
+							rm *
+							cd ../features
+							rm *
+							quit
+						EOF
+						'
 						sh 'mvn -Dmaven.repo.local=${WORKSPACE}/ws-repo -DskipTests -P snapshot --settings settings.xml --batch-mode -Dkeystore=${KEYSTORE} -Dupdate-site-url=${UPDATE_SITE_URL} install'
 					}
 				}
