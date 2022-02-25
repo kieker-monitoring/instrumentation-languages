@@ -4,8 +4,16 @@
    <extension
          point="de.cau.cs.kieler.klighd.diagramSyntheses">
 	   <diagramSynthesis
-	         class="de.cau.cs.kieler.klighd.syntheses.GuiceBasedSynthesisFactory:org.oceandsl.kieker.architecture.viz.KiekerArchitectureDiagramSynthesis"
-	         id="org.oceandsl.kieker.architecture.viz.KiekerArchitectureDiagramSynthesis">
+	         class="de.cau.cs.kieler.klighd.syntheses.GuiceBasedSynthesisFactory:org.oceandsl.kieker.architecture.viz.KiekerArchitectureAssemblyDiagramSynthesis"
+	         id="org.oceandsl.kieker.architecture.viz.KiekerArchitectureAssemblyDiagramSynthesis">
+	   </diagramSynthesis>
+   </extension>
+
+   <extension
+         point="de.cau.cs.kieler.klighd.diagramSyntheses">
+	   <diagramSynthesis
+	         class="de.cau.cs.kieler.klighd.syntheses.GuiceBasedSynthesisFactory:org.oceandsl.kieker.architecture.viz.KiekerArchitectureExecutionDiagramSynthesis"
+	         id="org.oceandsl.kieker.architecture.viz.KiekerArchitectureExecutionDiagramSynthesis">
 	   </diagramSynthesis>
    </extension>
 

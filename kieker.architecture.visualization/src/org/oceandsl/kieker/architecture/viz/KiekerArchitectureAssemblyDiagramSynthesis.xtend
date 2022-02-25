@@ -48,8 +48,9 @@ import java.util.Set
 
 /** 
  * @author Reiner Jung
+ * @since 1.4
  */
-class KiekerArchitectureDiagramSynthesis extends AbstractDiagramSynthesis<AssemblyModel> {
+class KiekerArchitectureAssemblyDiagramSynthesis extends AbstractKiekerArchitectureDiagramSynthesis<AssemblyModel> {
 
 	@Inject
 	extension KNodeExtensions
@@ -69,27 +70,6 @@ class KiekerArchitectureDiagramSynthesis extends AbstractDiagramSynthesis<Assemb
 	@Inject
 	extension KColorExtensions
 
-	/** String constants. */
-	static val String ALGORITHM_NAME = "Used Layout Algorithm"
-
-	/**
-	 * Select algorithm
-	 */
-	static val SynthesisOption ALGORITHM = SynthesisOption::createChoiceOption(ALGORITHM_NAME, ImmutableList::of(
-		DiagramLayoutOptions.ELK_LAYERED,
-		DiagramLayoutOptions.GRAPHVIZ_CIRCO,
-		DiagramLayoutOptions.GRAPHVIZ_DOT,
-		"org.eclipse.elk.graphviz.fdp",
-		"org.eclipse.elk.graphviz.neato",
-		"org.eclipse.elk.graphviz.twopi"
-	), DiagramLayoutOptions.ELK_LAYERED)
-
-	static val SynthesisOption SHOW_PORT_LABELS = SynthesisOption::createCheckOption("Show port labels", false);
-
-	static val SynthesisOption SHOW_OPERATIONS = SynthesisOption::createCheckOption("Show operations", false);
-
-	static val SynthesisOption SHOW_STORAGE = SynthesisOption::createCheckOption("Show storage", false);
-
 	Map<AssemblyComponent, KNode> componentNodeMap
 
 	Set<AssemblyComponent> containedComponents
@@ -103,14 +83,7 @@ class KiekerArchitectureDiagramSynthesis extends AbstractDiagramSynthesis<Assemb
 
 	Map<KNode, Map<EObject, KPort>> nodeInterfacePortMap
 
-	/**
-	 * {@inheritDoc}<br>
-	 * <br>
-	 * Registers the diagram filter option declared above, which allow users to tailor the constructed diagrams.
-	 */
-	override getDisplayedSynthesisOptions() {
-		return ImmutableList::of(ALGORITHM, SHOW_PORT_LABELS, SHOW_OPERATIONS, SHOW_STORAGE)
-	}
+
 
 	override KNode transform(AssemblyModel model) {
 		return createNode() => [
