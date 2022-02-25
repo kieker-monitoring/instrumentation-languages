@@ -9,7 +9,6 @@ pipeline {
 	stages {
 		stage('Cleanup') {
 			steps {
-				sh 'rm -rf *'
 				sh 'git clean -xffd -e "ws-repo/**"'
 			}
 		}
@@ -23,6 +22,8 @@ pipeline {
 			stages {
 				stage('Build') {
 					steps {
+						sh 'rm -rf ${WORKSPACE}/kieker.develop.repository/target'
+						sh 'find ${WORKSPACE} -name 'target' -exec rm {} \;'
 						sh 'mvn -Dmaven.repo.local=${WORKSPACE}/ws-repo --batch-mode compile'
 					}
 				}
