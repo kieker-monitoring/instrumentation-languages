@@ -22,7 +22,42 @@ pipeline {
 			stages {
 				stage('Build') {
 					steps {
+						sh 'rm -rf ${WORKSPACE}/kieker.develop.al/target'
+						sh 'rm -rf ${WORKSPACE}/kieker.develop.al.feature/target'
+
+						sh 'rm -rf ${WORKSPACE}/kieker.develop.al.generator.c/target'
+						sh 'rm -rf ${WORKSPACE}/kieker.develop.al.generator.java/target'
+						sh 'rm -rf ${WORKSPACE}/kieker.develop.al.generator.perl/target'
+						sh 'rm -rf ${WORKSPACE}/kieker.develop.al.handler.java/target'
+						sh 'rm -rf ${WORKSPACE}/kieker.develop.al.handler.pcm/target'
+						sh 'rm -rf ${WORKSPACE}/kieker.develop.al.tests/target'
+						sh 'rm -rf ${WORKSPACE}/kieker.develop.al.ui/target'
+						sh 'rm -rf ${WORKSPACE}/kieker.develop.al.ide/target'
+												
 						sh 'rm -rf ${WORKSPACE}/kieker.develop.repository/target'
+						sh 'rm -rf ${WORKSPACE}/kieker.develop.rl/target'
+						sh 'rm -rf ${WORKSPACE}/kieker.develop.rl.feature/target'
+						sh 'rm -rf ${WORKSPACE}/kieker.develop.rl.cli/target'
+						sh 'rm -rf ${WORKSPACE}/kieker.develop.rl.cli.feature/target'
+						sh 'rm -rf ${WORKSPACE}/kieker.develop.rl.cli.site/target'
+												
+						sh 'rm -rf ${WORKSPACE}/kieker.develop.rl.generator.c/target'
+						sh 'rm -rf ${WORKSPACE}/kieker.develop.rl.generator.delphi/target'
+
+						sh 'rm -rf ${WORKSPACE}/kieker.develop.rl.generator.java/target'
+						sh 'rm -rf ${WORKSPACE}/kieker.develop.rl.generator.java.tests/target'
+						sh 'rm -rf ${WORKSPACE}/kieker.develop.rl.generator.perl/target'
+						sh 'rm -rf ${WORKSPACE}/kieker.develop.rl.generator.python/target'
+						sh 'rm -rf ${WORKSPACE}/kieker.develop.rl.ide/target'
+						sh 'rm -rf ${WORKSPACE}/kieker.develop.rl.tests/target'
+						sh 'rm -rf ${WORKSPACE}/kieker.develop.rl.ui/target'
+												
+						sh 'rm -rf ${WORKSPACE}/kieker.develop.semantics/target'
+						sh 'rm -rf ${WORKSPACE}/kieker.develop.semantics.java/target'
+						sh 'rm -rf ${WORKSPACE}/kieker.architecture.visualization/bin'
+						sh 'rm -rf ${WORKSPACE}/kieker.architecture.visualization/target'
+						sh 'rm -rf ${WORKSPACE}/kieker.architecture.visualization.feature/target'
+
 						sh 'mvn -Dmaven.repo.local=${WORKSPACE}/ws-repo --batch-mode compile'
 					}
 				}
