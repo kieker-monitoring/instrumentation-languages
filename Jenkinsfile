@@ -23,7 +23,7 @@ pipeline {
 				stage('Build') {
 					steps {
 						sh 'rm -rf ${WORKSPACE}/kieker.develop.repository/target'
-						sh 'find ${WORKSPACE} -name 'target' -exec rm {} \;'
+						sh 'find ${WORKSPACE} -name 'target' -exec rm {} ;'
 						sh 'mvn -Dmaven.repo.local=${WORKSPACE}/ws-repo --batch-mode compile'
 					}
 				}
