@@ -99,7 +99,7 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 				return false
 			}		
 		} else {
-			System.err.println("MISSING provided port for " + requiredPort.label)
+			System.err.println("MISSING provided port for " + requiredPort.label + " " + requiredPort.providedPort)
 			return false
 		}
  	}
@@ -141,6 +141,7 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 						createConnectionEdge(objectPortMap.get(providedPort), objectPortMap.get(operation), "gray25")
 					]
 				ProvidedPort: createConnectionEdge(objectPortMap.get(providedPort), objectPortMap.get(derivedFrom), "black")
+				AssemblyOperation: createConnectionEdge(objectPortMap.get(providedPort), objectPortMap.get(derivedFrom), "black")
 				default: System.err.println("MISSING provided link type " + derivedFrom?.class)
 			}
 		]
@@ -152,6 +153,7 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 			switch(linkedPort) {
 				RequiredPort: createConnectionEdge(objectPortMap.get(requiredPort), objectPortMap.get(linkedPort), "black")
 				ProvidedPort: createConnectionEdge(objectPortMap.get(requiredPort), objectPortMap.get(linkedPort), "gray25")
+				AggregatedInvocation: createConnectionEdge(objectPortMap.get(requiredPort), objectPortMap.get(linkedPort.target.assemblyOperation), "#9090ff")
 				default: System.err.println("MISSING required link type " + linkedPort + " " + requiredPort.label + " " + requiredPort.derivedFrom)
 			}
 			if (requiredPort.derivedFrom instanceof AggregatedInvocation) {

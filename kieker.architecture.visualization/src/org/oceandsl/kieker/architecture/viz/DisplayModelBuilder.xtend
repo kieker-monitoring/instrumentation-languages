@@ -119,7 +119,9 @@ class DisplayModelBuilder {
 				it.source.assemblyOperation.assemblyComponent !== assemblyComponent
 			]].
 			forEach[
-				component.providedPorts += new ProvidedPort(it.operationType.signature, it, component)
+				val port = new ProvidedPort(it.operationType.signature, it, component)
+				component.providedPorts += port
+				operationProvidedPort.put(it, port)
 		]
 	}
 	
@@ -156,7 +158,7 @@ class DisplayModelBuilder {
 			assemblyComponent !== it.target.assemblyOperation.assemblyComponent &&
 			!processedRequiredCallees.exists[callee | callee === it.target.assemblyOperation]
 		].forEach[invocation |
-			component.requiredPorts += new RequiredPort(invocation.target.assemblyOperation.operationType.signature, invocation, component)			
+			component.requiredPorts += new RequiredPort(invocation.target.assemblyOperation.operationType.signature, invocation, component)
 		]
 	}
 	
@@ -171,7 +173,6 @@ class DisplayModelBuilder {
 			val calleeComponent = it.requires.eContainer.eContainer as AssemblyComponent
 			component.requiredPorts += port
 			it.requiredInterfaceType.requires.providedOperationTypes.values.forEach[
-				
 				processedRequiredCallees.add(calleeComponent.findAssemblyOperation(it))
 			]
 		]
@@ -203,7 +204,7 @@ class DisplayModelBuilder {
 				requiredPort.providedPort = providedPort
 			} else if (requiredPort.derivedFrom instanceof AggregatedInvocation) {
 				val invocation = requiredPort.derivedFrom as AggregatedInvocation
-				val providedPort = operationProvidedPort.get(invocation.target)
+				val providedPort = operationProvidedPort.get(invocation.target.assemblyOperation)
 				if (providedPort !== null) {
 					providedPort.requiringPorts += requiredPort
 					requiredPort.providedPort = providedPort
