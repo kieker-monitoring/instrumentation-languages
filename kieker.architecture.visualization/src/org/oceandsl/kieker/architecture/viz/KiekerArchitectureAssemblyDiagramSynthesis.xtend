@@ -15,36 +15,29 @@ package org.oceandsl.kieker.architecture.viz
 import analysismodel.assembly.AssemblyComponent
 import analysismodel.assembly.AssemblyModel
 import analysismodel.assembly.AssemblyProvidedInterface
+import analysismodel.assembly.AssemblyRequiredInterface
 import analysismodel.assembly.impl.EStringToAssemblyProvidedInterfaceMapEntryImpl
-import com.google.common.collect.ImmutableList
-import de.cau.cs.kieler.klighd.SynthesisOption
 import de.cau.cs.kieler.klighd.kgraph.KNode
 import de.cau.cs.kieler.klighd.kgraph.KPort
 import de.cau.cs.kieler.klighd.kgraph.util.KGraphUtil
 import de.cau.cs.kieler.klighd.krendering.extensions.KColorExtensions
 import de.cau.cs.kieler.klighd.krendering.extensions.KContainerRenderingExtensions
-import de.cau.cs.kieler.klighd.krendering.extensions.KEdgeExtensions
 import de.cau.cs.kieler.klighd.krendering.extensions.KNodeExtensions
-import de.cau.cs.kieler.klighd.krendering.extensions.KPolylineExtensions
 import de.cau.cs.kieler.klighd.krendering.extensions.KRenderingExtensions
-import de.cau.cs.kieler.klighd.syntheses.AbstractDiagramSynthesis
-import de.cau.cs.kieler.klighd.syntheses.DiagramLayoutOptions
+import java.util.ArrayList
 import java.util.Collection
 import java.util.HashMap
+import java.util.HashSet
+import java.util.List
 import java.util.Map
+import java.util.Set
 import javax.inject.Inject
 import org.eclipse.elk.core.options.CoreOptions
 import org.eclipse.elk.core.options.Direction
-import org.eclipse.elk.core.options.EdgeType
 import org.eclipse.elk.core.options.PortLabelPlacement
 import org.eclipse.elk.core.options.PortSide
-import java.util.HashSet
-import analysismodel.assembly.AssemblyRequiredInterface
-import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.common.util.EList
-import java.util.List
-import java.util.ArrayList
-import java.util.Set
+import org.eclipse.emf.ecore.EObject
 
 /** 
  * @author Reiner Jung
@@ -56,16 +49,10 @@ class KiekerArchitectureAssemblyDiagramSynthesis extends AbstractKiekerArchitect
 	extension KNodeExtensions
 
 	@Inject
-	extension KEdgeExtensions
-
-	@Inject
 	extension KRenderingExtensions
 
 	@Inject
 	extension KContainerRenderingExtensions
-
-	@Inject
-	extension KPolylineExtensions
 
 	@Inject
 	extension KColorExtensions
@@ -86,16 +73,8 @@ class KiekerArchitectureAssemblyDiagramSynthesis extends AbstractKiekerArchitect
 
 
 	override KNode transform(AssemblyModel model) {
-		return createNode() => [
-			it.addLayoutParam(CoreOptions::ALGORITHM, ALGORITHM.objectValue as String)
-			it.addLayoutParam(CoreOptions::SPACING_NODE_NODE, 75.0)
-			it.addLayoutParam(CoreOptions::DIRECTION, Direction::UP)
-
-			createAssemblyComponents(it, model.assemblyComponents.values)
-		]
-	}
-
-	def createAssemblyComponents(KNode node, Collection<AssemblyComponent> components) {
+		val components = model.assemblyComponents.values
+		
 		internalProvidedLinks = new ArrayList<PortConnection<AssemblyProvidedInterface>>
 		internalRequiredLinks = new ArrayList<PortConnection<AssemblyRequiredInterface>>
 		nodeInterfacePortMap = new HashMap<KNode, Map<EObject, KPort>>
@@ -105,6 +84,16 @@ class KiekerArchitectureAssemblyDiagramSynthesis extends AbstractKiekerArchitect
 		containmentLookupMap = computeContainmentLookupMap(components)
 		providedToRequiredInterfaceMap = computeProvidedToRequiredInterfaceMap(components)
 
+		return createNode() => [
+			it.addLayoutParam(CoreOptions::ALGORITHM, ALGORITHM.objectValue as String)
+			it.addLayoutParam(CoreOptions::SPACING_NODE_NODE, 75.0)
+			it.addLayoutParam(CoreOptions::DIRECTION, Direction::UP)
+
+			createAssemblyComponents(it, components)
+		]
+	}
+
+	def createAssemblyComponents(KNode node, Collection<AssemblyComponent> components) {
 		components.filter[!containedComponents.contains(it)].forEach [ component |
 			val componentNode = component.createAssemblyComponent()
 			node.children += componentNode
@@ -156,15 +145,6 @@ class KiekerArchitectureAssemblyDiagramSynthesis extends AbstractKiekerArchitect
 			it.addLayoutParam(CoreOptions::SPACING_NODE_NODE, 75.0)
 			it.addLayoutParam(CoreOptions::DIRECTION, Direction::UP)
 
-			it.createSubComponents(component)
-
-			if(SHOW_STORAGE.booleanValue) it.createStorage(component)
-			if(SHOW_OPERATIONS.booleanValue) it.createOperations(component)
-
-			component.createPortsForInterfaces
-
-			component.containedComponents.createTransitPorts(component, it)
-
 			it.addRectangle => [
 				it.lineWidth = 2
 				it.setBackgroundGradient("white".color, "LemonChiffon".color, 0)
@@ -191,54 +171,29 @@ class KiekerArchitectureAssemblyDiagramSynthesis extends AbstractKiekerArchitect
 					it.addChildArea
 				}
 			]
+			
+			it.createSubComponents(component)
+
+			if(SHOW_STORAGE.booleanValue) it.createComponentStorages(component)
+			if(SHOW_OPERATIONS.booleanValue) it.createComponentOperations(component)
+
+			component.createPortsForInterfaces
+
+			component.containedComponents.createTransitPorts(component, it)
+			
 		]
 	}
 
-	private def void createOperations(KNode node, AssemblyComponent component) {
+	private def void createComponentOperations(KNode node, AssemblyComponent component) {
 		component.operations.forEach [ entry |
-			node.children += entry.value.createNode().associateWith(entry.value) => [
-				it.addEllipse => [
-					it.lineWidth = 2
-					it.background = "white".color
-					it.foreground = "black".color
-					it.setGridPlacement(1).from(LEFT, 15, 0, TOP, 15, 0).to(RIGHT, 15, 0, BOTTOM, 15, 0)
-
-					it.addText(entry.key) => [
-						it.fontSize = 15
-						it.fontBold = true
-						it.cursorSelectable = false
-						it.setAreaPlacementData.from(LEFT, 20, 0, TOP, 1, 0.5f).to(RIGHT, 20, 0, BOTTOM, 10, 0)
-					]
-				]
-			]
+			node.children += entry.value.createOperation(entry.key)
 		]
 	}
 
-	private def void createStorage(KNode node, AssemblyComponent component) {
+	private def void createComponentStorages(KNode node, AssemblyComponent component) {
 		component.storages.forEach [ entry |
 			val storage = entry.value
-			node.children += storage.createNode().associateWith(storage) => [
-				it.addRoundedRectangle(5, 5) => [
-					it.lineWidth = 2
-					it.background = "white".color
-					it.foreground = "black".color
-					it.setGridPlacement(1).from(LEFT, 15, 0, TOP, 15, 0).to(RIGHT, 15, 0, BOTTOM, 15, 0)
-
-					it.addText("<<Storage>>") => [
-						it.fontSize = 13
-						it.fontItalic = true
-						it.verticalAlignment = V_CENTRAL
-						it.setAreaPlacementData.from(LEFT, 20, 0, TOP, 10, 0).to(RIGHT, 20, 0, BOTTOM, 1, 0.5f)
-					]
-
-					it.addText(entry.key) => [
-						it.fontSize = 15
-						it.fontBold = true
-						it.cursorSelectable = false
-						it.setAreaPlacementData.from(LEFT, 20, 0, TOP, 1, 0.5f).to(RIGHT, 20, 0, BOTTOM, 10, 0)
-					]
-				]
-			]
+			node.children += storage.createStorage(entry.key)
 		]
 	}
 
@@ -287,13 +242,13 @@ class KiekerArchitectureAssemblyDiagramSynthesis extends AbstractKiekerArchitect
 	private def createInternalProvidedConnection(PortConnection<AssemblyProvidedInterface> portConnection) {
 		val originNode = componentNodeMap.get(portConnection.originComponent)
 		val originPort = originNode.findPort(portConnection.originInterface)
-		createConnectionEdge(portConnection.transitNode, portConnection.transitPort, originNode, originPort)
+		createConnectionEdge(portConnection.transitNode, portConnection.transitPort, originNode, originPort, "gray25")
 	}
 
 	private def createInternalRequiredConnection(PortConnection<AssemblyRequiredInterface> portConnection) {
 		val originNode = componentNodeMap.get(portConnection.originComponent)
 		val originPort = originNode.findPort(portConnection.originInterface)
-		createConnectionEdge(originNode, originPort, portConnection.transitNode, portConnection.transitPort)
+		createConnectionEdge(originNode, originPort, portConnection.transitNode, portConnection.transitPort, "gray25")
 	}
 
 	private def createSubComponents(KNode node, AssemblyComponent component) {
@@ -318,23 +273,6 @@ class KiekerArchitectureAssemblyDiagramSynthesis extends AbstractKiekerArchitect
 
 	private def KPort createRequiredPort(PortSide portSide, AssemblyRequiredInterface requiredInterface, int index) {
 		val port = createPort(portSide, requiredInterface, index, "#a0a0a0")
-
-		return port
-	}
-
-	private def KPort createPort(PortSide portSide, EObject object, int index, String backgroundColor) {
-		val port = KGraphUtil.createInitializedPort().associateWith(object) => [
-			it.setSize(16, 16)
-			it.setProperty(CoreOptions.PORT_SIDE, portSide)
-			it.setProperty(CoreOptions.PORT_INDEX, index)
-			it.setProperty(CoreOptions.PORT_BORDER_OFFSET, -8.0)
-
-			it.addRectangle => [
-				it.foregroundInvisible = true
-				it.background = getColor(backgroundColor)
-				it.foreground = getColor("#000000")
-			]
-		]
 
 		return port
 	}
@@ -368,49 +306,32 @@ class KiekerArchitectureAssemblyDiagramSynthesis extends AbstractKiekerArchitect
 				val sourcePort = sourceNode.findPort(requiredInterface)
 				val targetNode = componentNodeMap.get(providedComponent)
 				val targetPort = targetNode.findPort(providedInterface)
-				createConnectionEdge(sourceNode, sourcePort, targetNode, targetPort)
+				createConnectionEdge(sourceNode, sourcePort, targetNode, targetPort, "gray25")
 			} else if (providedParent === null && requiredParent !== null) {
 				val sourceNode = componentNodeMap.get(requiredParent)
 				val sourcePort = sourceNode.findPort(requiredInterface.requires)
 				val targetNode = componentNodeMap.get(providedComponent)
 				val targetPort = targetNode.findPort(providedInterface)
-				createConnectionEdge(sourceNode, sourcePort, targetNode, targetPort)
+				createConnectionEdge(sourceNode, sourcePort, targetNode, targetPort, "gray25")
 			} else if (providedParent !== null && requiredParent === null) {
 				val sourceNode = componentNodeMap.get(requiredComponent)
 				val sourcePort = sourceNode.findPort(requiredInterface)
 				val targetNode = componentNodeMap.get(providedParent)
 				val targetPort = targetNode.findPort(providedInterface)
-				createConnectionEdge(sourceNode, sourcePort, targetNode, targetPort)
+				createConnectionEdge(sourceNode, sourcePort, targetNode, targetPort, "gray25")
 			} else if (providedParent === requiredParent) {
 				val sourceNode = componentNodeMap.get(requiredComponent)
 				val sourcePort = sourceNode.findPort(requiredInterface)
 				val targetNode = componentNodeMap.get(providedComponent)
 				val targetPort = targetNode.findPort(providedInterface)
-				createConnectionEdge(sourceNode, sourcePort, targetNode, targetPort)
+				createConnectionEdge(sourceNode, sourcePort, targetNode, targetPort, "gray25")
 			} else {
 				val sourceNode = componentNodeMap.get(requiredParent)
 				val sourcePort = sourceNode.findPort(requiredInterface.requires)
 				val targetNode = componentNodeMap.get(providedParent)
 				val targetPort = targetNode.findPort(providedInterface)
-				createConnectionEdge(sourceNode, sourcePort, targetNode, targetPort)
+				createConnectionEdge(sourceNode, sourcePort, targetNode, targetPort, "gray25")
 			}
-		]
-	}
-
-	private def createConnectionEdge(KNode sourceNode, KPort sourcePort, KNode targetNode, KPort targetPort) {
-		createEdge() => [
-			it.addLayoutParam(CoreOptions::EDGE_TYPE, EdgeType::DIRECTED)
-			it.source = sourceNode
-			it.sourcePort = sourcePort
-			it.target = targetNode
-			it.targetPort = targetPort
-
-			it.data
-			addPolyline() => [
-				it.lineWidth = 2;
-				it.foreground = "gray25".color
-				it.addHeadArrowDecorator
-			]
 		]
 	}
 
