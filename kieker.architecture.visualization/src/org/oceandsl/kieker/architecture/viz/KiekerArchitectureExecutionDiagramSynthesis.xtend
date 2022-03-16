@@ -22,6 +22,7 @@ import org.eclipse.elk.core.options.PortSide
 import org.oceandsl.kieker.architecture.viz.display.model.Component
 import org.oceandsl.kieker.architecture.viz.display.model.ProvidedPort
 import org.oceandsl.kieker.architecture.viz.display.model.RequiredPort
+import analysismodel.execution.AggregatedStorageAccess
 
 class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitectureDiagramSynthesis<ExecutionModel> {
 
@@ -40,20 +41,25 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 	Map<Object, NodePort> objectPortMap
 	
 	override transform(ExecutionModel executionModel) {
+		System.err.println("--- transform ---")
 		val deployedOperation = executionModel.aggregatedInvocations.get(0).value.source
 		val assemblyOperation = deployedOperation.assemblyOperation
 		val assemblyComponent = assemblyOperation.assemblyComponent
 		val assemblyModel = assemblyComponent.eContainer.eContainer as AssemblyModel
+		System.err.println("--- transform A ---")
 		
 		objectPortMap = new HashMap
+		System.err.println("--- transform B ---")
 		
 		val Set<Component> components = new DisplayModelBuilder().create(assemblyModel.assemblyComponents.values, executionModel.aggregatedInvocations.values)
+		System.err.println("--- transform C ---")
 				
-		return createDisplay(components, executionModel.aggregatedInvocations.values)
+		return createDisplay(components, executionModel.aggregatedInvocations.values, executionModel.aggregatedStorageAccesses.values)
 	}
 	
-	private def KNode createDisplay(Set<Component> components, Collection<AggregatedInvocation> invocations) {
+	private def KNode createDisplay(Set<Component> components, Collection<AggregatedInvocation> invocations, Collection<AggregatedStorageAccess> storageAccesses) {
 		return createNode() => [
+			System.err.println(">> node ")
 			it.addLayoutParam(CoreOptions::ALGORITHM, ALGORITHM.objectValue as String)
 			it.addLayoutParam(CoreOptions::SPACING_NODE_NODE, 75.0)
 			it.addLayoutParam(CoreOptions::DIRECTION, Direction::UP)
@@ -61,20 +67,26 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 			components.forEach[node |
 				it.children += node.createComponent
 			]
-			
-			components.forEach[it.createLinks(invocations)]
+			System.err.println(">> links")
+			components.forEach[it.createLinks(invocations, storageAccesses)]
+			System.err.println("WURX")
 		]
 	}
 	
-	private def void createLinks(Component component, Collection<AggregatedInvocation> invocations) {
+	private def void createLinks(Component component, Collection<AggregatedInvocation> invocations, Collection<AggregatedStorageAccess> storageAccesses) {
+		System.err.println("  ++ > required ports")
 		createRequiredPortLinks(component)
+		System.err.println("  ++ > provided ports")
 		createProvidedPortLinks(component)
 		
+		System.err.println("  ++ > operation to required ports")
 		createOperationToRequiredPortLinks(component, invocations)
-		
+		System.err.println("  ++ > operation links")
 		createOperationLinks(component, invocations)
-						
-		component.children.forEach[it.createLinks(invocations)]
+		System.err.println("  ++ > storage links")
+		createStorageLinks(component, storageAccesses)
+		System.err.println(" ## >>>")
+		component.children.forEach[it.createLinks(invocations, storageAccesses)]
 	}
 	
 	private def createOperationToRequiredPortLinks(Component component, Collection<AggregatedInvocation> invocations) {
@@ -132,6 +144,14 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 		]
 	}
 	
+	private def createStorageLinks(Component component, Collection<AggregatedStorageAccess> storageAccesses) {
+		component.derivedFrom.operations.values.forEach[caller |
+			storageAccesses.filter[it.code.assemblyOperation === caller && it.storage.assemblyStorage.assemblyComponent === component.derivedFrom].forEach[
+				createOperationStorageAccess(objectPortMap.get(it.code.assemblyOperation).node , objectPortMap.get(it.storage.assemblyStorage).node, it.direction)
+			]
+		]
+	}
+	
 	private def createProvidedPortLinks(Component component) {
 		component.providedPorts.forEach[providedPort |
 			val derivedFrom = providedPort.derivedFrom
@@ -165,6 +185,7 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 	
 	private def createComponent(Component component) {
 		return component.createNode().associateWith(component) => [componentNode |
+			System.err.println("  -- > " + component.derivedFrom.componentType.signature)
 			componentNode.addLayoutParam(CoreOptions::ALGORITHM, ALGORITHM.objectValue as String)
 			componentNode.addLayoutParam(CoreOptions::SPACING_NODE_NODE, 75.0)
 			componentNode.addLayoutParam(CoreOptions::DIRECTION, Direction::UP)
@@ -199,9 +220,10 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 			componentNode.createProvidedPorts(component)
 			componentNode.createRequiredPorts(component)
 			componentNode.createOperations(component)
+			componentNode.createStorages(component)
 		]
 	}
-	
+		
 	private def void createSubComponents(KNode node, Component component) {
 		component.children.forEach [
 			val componentNode = it.createComponent
@@ -243,6 +265,16 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 			node.children += operationNode
 		]
 	}
+	
+	private def void createStorages(KNode node, Component component) {
+		component.derivedFrom.storages.values.forEach[
+			val storageNode = createStorage(it.storageType.name)
+
+			objectPortMap.put(it, new NodePort(storageNode, null))			
+			node.children += storageNode
+		]
+	}
+	
 	
 	
 }
