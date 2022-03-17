@@ -41,18 +41,14 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 	Map<Object, NodePort> objectPortMap
 	
 	override transform(ExecutionModel executionModel) {
-		System.err.println("--- transform ---")
 		val deployedOperation = executionModel.aggregatedInvocations.get(0).value.source
 		val assemblyOperation = deployedOperation.assemblyOperation
 		val assemblyComponent = assemblyOperation.assemblyComponent
 		val assemblyModel = assemblyComponent.eContainer.eContainer as AssemblyModel
-		System.err.println("--- transform A ---")
 		
 		objectPortMap = new HashMap
-		System.err.println("--- transform B ---")
 		
 		val Set<Component> components = new DisplayModelBuilder().create(assemblyModel.assemblyComponents.values, executionModel.aggregatedInvocations.values)
-		System.err.println("--- transform C ---")
 				
 		return createDisplay(components, executionModel.aggregatedInvocations.values, executionModel.aggregatedStorageAccesses.values)
 	}
@@ -67,25 +63,18 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 			components.forEach[node |
 				it.children += node.createComponent
 			]
-			System.err.println(">> links")
 			components.forEach[it.createLinks(invocations, storageAccesses)]
-			System.err.println("WURX")
 		]
 	}
 	
 	private def void createLinks(Component component, Collection<AggregatedInvocation> invocations, Collection<AggregatedStorageAccess> storageAccesses) {
-		System.err.println("  ++ > required ports")
 		createRequiredPortLinks(component)
-		System.err.println("  ++ > provided ports")
 		createProvidedPortLinks(component)
 		
-		System.err.println("  ++ > operation to required ports")
 		createOperationToRequiredPortLinks(component, invocations)
-		System.err.println("  ++ > operation links")
 		createOperationLinks(component, invocations)
-		System.err.println("  ++ > storage links")
 		createStorageLinks(component, storageAccesses)
-		System.err.println(" ## >>>")
+
 		component.children.forEach[it.createLinks(invocations, storageAccesses)]
 	}
 	
@@ -209,11 +198,11 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 					it.setAreaPlacementData.from(LEFT, 20, 0, TOP, 1, 0.5f).to(RIGHT, 20, 0, BOTTOM, 10, 0)
 				]
 
-				if ((SHOW_OPERATIONS.booleanValue && component.derivedFrom.operations.size > 0) ||
-					(component.children.size > 0)) {
+				//if ((SHOW_OPERATIONS.booleanValue && component.derivedFrom.operations.size > 0) ||
+				//	(component.children.size > 0)) {
 					it.addHorizontalSeperatorLine(1, 0)
 					it.addChildArea
-				}
+				//}
 			]
 			
 			componentNode.createSubComponents(component)
