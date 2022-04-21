@@ -5,8 +5,6 @@ package analysismodel.assembly;
 import analysismodel.type.OperationType;
 
 import org.eclipse.emf.ecore.EObject;
-import analysismodel.execution.AggregatedInvocation;
-import java.util.Collection;
 
 /**
  * <!-- begin-user-doc -->

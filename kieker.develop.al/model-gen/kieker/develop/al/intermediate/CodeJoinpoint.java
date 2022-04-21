@@ -20,14 +20,9 @@ package kieker.develop.al.intermediate;
  * @generated
  */
 public interface CodeJoinpoint extends AbstractJoinpoint {
-
 	/**
 	 * Returns the value of the '<em><b>Referenced Java Object</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Referenced Java Object</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Referenced Java Object</em>' attribute.
 	 * @see #setReferencedJavaObject(Object)
@@ -46,4 +41,5 @@ public interface CodeJoinpoint extends AbstractJoinpoint {
 	 * @generated
 	 */
 	void setReferencedJavaObject(Object value);
+
 } // CodeJoinpoint

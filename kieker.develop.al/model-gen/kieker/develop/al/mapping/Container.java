@@ -27,10 +27,6 @@ public interface Container extends Containment, Feature, Type {
 	/**
 	 * Returns the value of the '<em><b>Modifier</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Modifier</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Modifier</em>' reference.
 	 * @see #setModifier(ContainerModifier)
@@ -54,10 +50,6 @@ public interface Container extends Containment, Feature, Type {
 	 * Returns the value of the '<em><b>Operations</b></em>' containment reference list.
 	 * The list contents are of type {@link kieker.develop.al.mapping.Operation}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Operations</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Operations</em>' containment reference list.
 	 * @see kieker.develop.al.mapping.MappingPackage#getContainer_Operations()
@@ -70,10 +62,6 @@ public interface Container extends Containment, Feature, Type {
 	 * Returns the value of the '<em><b>Attributes</b></em>' containment reference list.
 	 * The list contents are of type {@link kieker.develop.al.mapping.Attribute}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Attributes</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Attributes</em>' containment reference list.
 	 * @see kieker.develop.al.mapping.MappingPackage#getContainer_Attributes()
@@ -85,10 +73,6 @@ public interface Container extends Containment, Feature, Type {
 	/**
 	 * Returns the value of the '<em><b>References</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>References</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>References</em>' reference.
 	 * @see #setReferences(Reference)

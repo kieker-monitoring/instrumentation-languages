@@ -3,7 +3,9 @@
 package kieker.develop.al.intermediate;
 
 import kieker.develop.semantics.annotations.Technology;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -24,15 +26,10 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface AbstractJoinpoint extends EObject {
-
 	/**
 	 * Returns the value of the '<em><b>Technologies</b></em>' reference list.
 	 * The list contents are of type {@link kieker.develop.semantics.annotations.Technology}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Technologies</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Technologies</em>' reference list.
 	 * @see kieker.develop.al.intermediate.IntermediatePackage#getAbstractJoinpoint_Technologies()
@@ -44,10 +41,6 @@ public interface AbstractJoinpoint extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
@@ -66,4 +59,5 @@ public interface AbstractJoinpoint extends EObject {
 	 * @generated
 	 */
 	void setName(String value);
+
 } // AbstractJoinpoint

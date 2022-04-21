@@ -28,10 +28,6 @@ public interface Containment extends EObject {
 	 * Returns the value of the '<em><b>Contents</b></em>' containment reference list.
 	 * The list contents are of type {@link kieker.develop.al.mapping.Container}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Contents</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Contents</em>' containment reference list.
 	 * @see kieker.develop.al.mapping.MappingPackage#getContainment_Contents()
@@ -44,10 +40,6 @@ public interface Containment extends EObject {
 	 * Returns the value of the '<em><b>Types</b></em>' containment reference list.
 	 * The list contents are of type {@link kieker.develop.al.mapping.NamedType}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Types</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Types</em>' containment reference list.
 	 * @see kieker.develop.al.mapping.MappingPackage#getContainment_Types()

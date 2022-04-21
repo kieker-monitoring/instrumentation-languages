@@ -30,10 +30,6 @@ public interface IntermediateAspect extends EObject {
 	 * Returns the value of the '<em><b>Joinpoints</b></em>' containment reference list.
 	 * The list contents are of type {@link kieker.develop.al.intermediate.AbstractJoinpoint}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Joinpoints</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Joinpoints</em>' containment reference list.
 	 * @see kieker.develop.al.intermediate.IntermediatePackage#getIntermediateAspect_Joinpoints()
@@ -46,10 +42,6 @@ public interface IntermediateAspect extends EObject {
 	 * Returns the value of the '<em><b>Advices</b></em>' reference list.
 	 * The list contents are of type {@link kieker.develop.al.aspectLang.Advice}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Advices</em>' reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Advices</em>' reference list.
 	 * @see kieker.develop.al.intermediate.IntermediatePackage#getIntermediateAspect_Advices()

@@ -102,6 +102,8 @@ Workflow {
 		language = StandardLanguage {
 			name = "kieker.develop.al.AspectLang"
 			fileExtensions = "ial"
+			
+			referencedResource = "platform:/resource/kieker.develop.al/model/MappingModel.ecore"
 
 			fragment = types.TypesGeneratorFragment2 auto-inject {}
 
@@ -115,7 +117,6 @@ Workflow {
 			}
 			
 			referencedResource = "platform:/resource/kieker.develop.rl/model/generated/RecordLang.genmodel"
-			referencedResource = "platform:/resource/kieker.develop.al/model/MappingModel.genmodel"
 		}
 	}
 }

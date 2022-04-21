@@ -27,10 +27,6 @@ public interface IntermediateModel extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
@@ -54,10 +50,6 @@ public interface IntermediateModel extends EObject {
 	 * Returns the value of the '<em><b>Aspects</b></em>' containment reference list.
 	 * The list contents are of type {@link kieker.develop.al.intermediate.IntermediateAspect}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Aspects</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Aspects</em>' containment reference list.
 	 * @see kieker.develop.al.intermediate.IntermediatePackage#getIntermediateModel_Aspects()

@@ -4,7 +4,6 @@ package kieker.develop.al.intermediate;
 
 import org.eclipse.emf.ecore.EObject;
 
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Model Joinpoint</b></em>'.
@@ -22,14 +21,9 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface ModelJoinpoint extends AbstractJoinpoint {
-
 	/**
 	 * Returns the value of the '<em><b>Referenced Instance</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Referenced Instance</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Referenced Instance</em>' reference.
 	 * @see #setReferencedInstance(EObject)
@@ -48,4 +42,5 @@ public interface ModelJoinpoint extends AbstractJoinpoint {
 	 * @generated
 	 */
 	void setReferencedInstance(EObject value);
+
 } // ModelJoinpoint

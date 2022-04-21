@@ -6,7 +6,9 @@ import kieker.develop.al.intermediate.CodeJoinpoint;
 import kieker.develop.al.intermediate.IntermediatePackage;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
@@ -32,6 +34,7 @@ public class CodeJoinpointImpl extends AbstractJoinpointImpl implements CodeJoin
 	 * @ordered
 	 */
 	protected static final Object REFERENCED_JAVA_OBJECT_EDEFAULT = null;
+
 	/**
 	 * The cached value of the '{@link #getReferencedJavaObject() <em>Referenced Java Object</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -41,6 +44,7 @@ public class CodeJoinpointImpl extends AbstractJoinpointImpl implements CodeJoin
 	 * @ordered
 	 */
 	protected Object referencedJavaObject = REFERENCED_JAVA_OBJECT_EDEFAULT;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

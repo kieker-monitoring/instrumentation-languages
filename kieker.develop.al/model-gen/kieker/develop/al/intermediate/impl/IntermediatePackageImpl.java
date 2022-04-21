@@ -13,14 +13,17 @@ import kieker.develop.al.intermediate.IntermediatePackage;
 import kieker.develop.al.intermediate.ModelJoinpoint;
 
 import kieker.develop.al.mapping.MappingPackage;
+
 import kieker.develop.rl.recordLang.RecordLangPackage;
+
 import kieker.develop.semantics.annotations.AnnotationsPackage;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.EcorePackage;
+
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**

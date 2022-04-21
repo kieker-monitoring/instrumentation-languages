@@ -3,15 +3,21 @@
 package kieker.develop.al.intermediate.impl;
 
 import java.util.Collection;
+
 import kieker.develop.al.intermediate.AbstractJoinpoint;
 import kieker.develop.al.intermediate.IntermediatePackage;
 
 import kieker.develop.semantics.annotations.Technology;
+
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
@@ -38,6 +44,7 @@ public class AbstractJoinpointImpl extends MinimalEObjectImpl.Container implemen
 	 * @ordered
 	 */
 	protected EList<Technology> technologies;
+
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -47,6 +54,7 @@ public class AbstractJoinpointImpl extends MinimalEObjectImpl.Container implemen
 	 * @ordered
 	 */
 	protected static final String NAME_EDEFAULT = null;
+
 	/**
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -56,6 +64,7 @@ public class AbstractJoinpointImpl extends MinimalEObjectImpl.Container implemen
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

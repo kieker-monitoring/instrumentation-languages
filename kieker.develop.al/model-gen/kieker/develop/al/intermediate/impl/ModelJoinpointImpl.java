@@ -6,9 +6,11 @@ import kieker.develop.al.intermediate.IntermediatePackage;
 import kieker.develop.al.intermediate.ModelJoinpoint;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
@@ -34,6 +36,7 @@ public class ModelJoinpointImpl extends AbstractJoinpointImpl implements ModelJo
 	 * @ordered
 	 */
 	protected EObject referencedInstance;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
