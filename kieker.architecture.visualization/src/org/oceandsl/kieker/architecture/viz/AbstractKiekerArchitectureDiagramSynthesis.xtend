@@ -20,6 +20,7 @@ import de.cau.cs.kieler.klighd.kgraph.KNode
 import org.eclipse.elk.core.options.EdgeType
 import analysismodel.execution.EDirection
 import org.eclipse.elk.core.options.PortLabelPlacement
+import java.util.EnumSet
 
 abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDiagramSynthesis<T> {
 	
@@ -179,7 +180,7 @@ abstract class AbstractKiekerArchitectureDiagramSynthesis<T> extends AbstractDia
 		if (SHOW_PORT_LABELS.booleanValue) {
 			val label = KGraphUtil.createInitializedLabel(port)
 			label.text = text
-			label.setProperty(CoreOptions.PORT_LABELS_PLACEMENT, PortLabelPlacement.outside)
+			label.setProperty(CoreOptions.PORT_LABELS_PLACEMENT, EnumSet.of(PortLabelPlacement.OUTSIDE, PortLabelPlacement.NEXT_TO_PORT_IF_POSSIBLE))
 		}
 		return port
 	}

@@ -55,7 +55,6 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 	
 	private def KNode createDisplay(Set<Component> components, Collection<AggregatedInvocation> invocations, Collection<AggregatedStorageAccess> storageAccesses) {
 		return createNode() => [
-			System.err.println(">> node ")
 			it.addLayoutParam(CoreOptions::ALGORITHM, ALGORITHM.objectValue as String)
 			it.addLayoutParam(CoreOptions::SPACING_NODE_NODE, 75.0)
 			it.addLayoutParam(CoreOptions::DIRECTION, Direction::UP)
@@ -174,7 +173,6 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 	
 	private def createComponent(Component component) {
 		return component.createNode().associateWith(component) => [componentNode |
-			System.err.println("  -- > " + component.derivedFrom.componentType.signature)
 			componentNode.addLayoutParam(CoreOptions::ALGORITHM, ALGORITHM.objectValue as String)
 			componentNode.addLayoutParam(CoreOptions::SPACING_NODE_NODE, 75.0)
 			componentNode.addLayoutParam(CoreOptions::DIRECTION, Direction::UP)
@@ -222,11 +220,11 @@ class KiekerArchitectureExecutionDiagramSynthesis extends AbstractKiekerArchitec
 	
 	private def void createProvidedPorts(KNode node, Component component) {
 		component.providedPorts.forEach[providedPort |
-			val port = switch(providedPort.derivedFrom) {
+			val port = addLabel(switch(providedPort.derivedFrom) {
 				AssemblyProvidedInterface: createPort(PortSide.SOUTH, providedPort.derivedFrom as AssemblyProvidedInterface, node.ports.size, "#ffffff")
 				AssemblyOperation: createOperationPort(PortSide.EAST, providedPort.derivedFrom as AssemblyOperation, node.ports.size, "#ffffff")
 				default: createPort(PortSide.SOUTH, null, node.ports.size, "#a0a0ff")
-			}
+			}, providedPort.label)
 			
 			objectPortMap.put(providedPort, new NodePort(node, port))
 			node.ports += port

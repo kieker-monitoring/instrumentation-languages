@@ -33,24 +33,12 @@
 			<version>19.0</version>
 		</dependency>
 		
-
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>2.13.1</version>
-		</dependency>
-
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.13.1</version>
 		</dependency>
 
-		<dependency>
-			<groupId>net.kieker-monitoring</groupId>
-			<artifactId>kieker</artifactId>
-			<version>1.15-SNAPSHOT</version>
-		</dependency>
 
 		<dependency>
 			<groupId>kieker.develop</groupId>

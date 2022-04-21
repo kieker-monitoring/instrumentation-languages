@@ -15,7 +15,6 @@
  ***************************************************************************/
  package kieker.develop.al.handler.pcm
 
-import de.cau.cs.se.geco.architecture.framework.TraceModelProvider
 import kieker.develop.al.aspectLang.ApplicationModelHandle
 import kieker.develop.al.mapping.MappingFactory
 import kieker.develop.al.modelhandling.IModelMapper
@@ -25,6 +24,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet
 import org.palladiosimulator.pcm.core.entity.NamedElement
 import kieker.develop.al.mapping.MappingModel
 import java.util.HashMap
+import kieker.develop.geco.TraceModelProvider
 
 /**
  * The model mapper provides the horizontal mapping between

@@ -27,18 +27,7 @@ var rootPath = ".."
 Workflow {
 	bean = StandaloneSetup {
 		scanClassPath = true
-		
 		platformUri = "${rootPath}"
-
-		uriMap = {
-			from = "platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel"
-			to = "platform:/resource/org.eclipse.emf.ecore/model/Ecore.genmodel"
-		}
-
-		uriMap = {
-			from = "platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore"
-			to = "platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore"
-		}
 
 		uriMap = {
 			from = "platform:/plugin/kieker.develop.al/model/MappingModel.genmodel"
@@ -48,6 +37,16 @@ Workflow {
 		uriMap = {
 			from = "platform:/plugin/kieker.develop.al/model/MappingModel.ecore"
 			to = "platform:/resource/kieker.develop.al/model/MappingModel.ecore"
+		}
+		
+		uriMap = {
+			from = "platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel"
+			to = "platform:/resource/org.eclipse.emf.ecore/model/Ecore.genmodel"
+		}
+
+		uriMap = {
+			from = "platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore"
+			to = "platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore"
 		}
 
 		uriMap = {
@@ -60,14 +59,15 @@ Workflow {
 			to = "platform:/resource/kieker.develop.rl/model/generated/RecordLang.ecore"
 		}
 
-		registerGenModelFile = "platform:/resource/org.eclipse.emf.ecore/model/Ecore.genmodel"
+
 		registerEcoreFile = "platform:/resource/org.eclipse.emf.ecore/model/Ecore.ecore"
+		registerGenModelFile = "platform:/resource/org.eclipse.emf.ecore/model/Ecore.genmodel"
 
-		registerGenModelFile = "platform:/resource/kieker.develop.rl/model/generated/RecordLang.genmodel"
 		registerEcoreFile = "platform:/resource/kieker.develop.rl/model/generated/RecordLang.ecore"
+		registerGenModelFile = "platform:/resource/kieker.develop.rl/model/generated/RecordLang.genmodel"
 
-		registerGenModelFile = "platform:/resource/kieker.develop.al/model/MappingModel.genmodel"
 		registerEcoreFile = "platform:/resource/kieker.develop.al/model/MappingModel.ecore"
+		registerGenModelFile = "platform:/resource/kieker.develop.al/model/MappingModel.genmodel"
 	}
 
 	component = XtextGenerator {
