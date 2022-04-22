@@ -1,4 +1,5 @@
 Manifest-Version: 1.0
+Automatic-Module-Name: kieker.develop.al
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-Vendor: %providerName
@@ -7,57 +8,34 @@ Bundle-Version: 1.3.0.qualifier
 Bundle-ClassPath: .
 Bundle-SymbolicName: kieker.develop.al;singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.eclipse.xtext;visibility:=reexport,
- org.eclipse.xtext.xbase;visibility:=reexport;resolution:=optional,
- org.eclipse.xtext.generator;resolution:=optional,
- org.apache.commons.logging;bundle-version="1.0.4";resolution:=optional,
- org.eclipse.emf.codegen.ecore;resolution:=optional,
- org.eclipse.emf.mwe.utils;resolution:=optional,
- org.eclipse.emf.mwe2.launch;resolution:=optional,
- org.eclipse.xtext.util,
- org.eclipse.emf.ecore;visibility:=reexport,
- kieker.develop.al;visibility:=reexport,
- org.eclipse.emf.common,
- org.antlr.runtime;bundle-version="[3.2.0,3.2.1)",
- org.eclipse.xtext.common.types,
- org.eclipse.core.resources,
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
  org.eclipse.core.runtime,
- org.eclipse.equinox.preferences,
- org.eclipse.e4.core.di,
- org.eclipse.emf.ecore.xmi;visibility:=reexport,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.xtext.xbase.lib;bundle-version="[2.14.0,2.26.0)",
+ org.eclipse.xtext.util,
+ org.eclipse.emf.common,
  kieker.develop.rl;visibility:=reexport,
- kieker.develop.rl.generator.java,
- org.eclipse.xtext.common.types.ui,
- org.objectweb.asm;bundle-version="[6.0.0,9.2.0)";resolution:=optional,
- org.eclipse.xtext.xbase.lib;bundle-version="[2.13.0,2.26.0]",
- org.eclipse.emf.ecore.xcore.lib,
- org.eclipse.xtend.lib;bundle-version="[2.13.0,2.26.0]",
  kieker.develop.semantics;visibility:=reexport,
- org.eclipse.equinox.registry,
- com.google.guava,
- org.eclipse.xtend.lib.macro
-Import-Package: org.apache.log4j,
- org.eclipse.jdt.core,
- org.eclipse.xtext.common.types.access.jdt,
- org.eclipse.xtext.xbase.lib
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
 Bundle-RequiredExecutionEnvironment: JavaSE-11
-Export-Package: kieker.develop.al.mapping,
- kieker.develop.al.mapping.impl,
- kieker.develop.al.mapping.util,
- kieker.develop.al,
- kieker.develop.al.aspectLang,
+Export-Package: kieker.develop.al,
  kieker.develop.al.aspectLang.impl,
+ kieker.develop.al.aspectLang,
  kieker.develop.al.aspectLang.util,
- kieker.develop.al.formatting,
- kieker.develop.al.generator,
- kieker.develop.al.modelhandling,
  kieker.develop.al.parser.antlr,
- kieker.develop.al.parser.antlr.internal,
- kieker.develop.al.scoping,
  kieker.develop.al.serializer,
  kieker.develop.al.services,
+ kieker.develop.al.scoping,
+ kieker.develop.al.parser.antlr.internal,
  kieker.develop.al.validation,
+ kieker.develop.al.generator,
+ kieker.develop.al.modelhandling,
+ kieker.develop.al.mapping,
+ kieker.develop.al.mapping.impl,
+ kieker.develop.al.mapping.util,
  kieker.develop.al.intermediate,
  kieker.develop.al.intermediate.impl,
  kieker.develop.al.intermediate.util
-Automatic-Module-Name: kieker.develop.al
+Import-Package: org.apache.log4j

@@ -13,13 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package kieker.develop.al.validation
+package kieker.develop.al.validation;
 
-import com.google.inject.Inject
-import kieker.develop.al.aspectLang.ApplicationModelHandle
-import kieker.develop.al.aspectLang.AspectLangPackage
-import kieker.develop.al.modelhandling.ModelMapperProviderFactory
-import org.eclipse.xtext.validation.Check
+import com.google.inject.Inject;
+import kieker.develop.al.aspectLang.ApplicationModelHandle;
+import kieker.develop.al.aspectLang.AspectLangPackage;
+import kieker.develop.al.modelhandling.ModelMapperProviderFactory;
+import org.eclipse.xtext.validation.Check;
+import org.eclipse.xtext.xbase.lib.Extension;
 
 /**
  * Custom validation rules. 
@@ -30,19 +31,20 @@ import org.eclipse.xtext.validation.Check
  * 
  * @since 1.0
  */
-class AspectLangValidator extends AbstractAspectLangValidator {
+public class AspectLangValidator extends AbstractAspectLangValidator {
 	
 	@Inject
-	ModelMapperProviderFactory modelMapperProviderFactory
+	@Extension
+	private ModelMapperProviderFactory modelMapperProviderFactory;
 	
-	public static val INVALID_NAME = 'invalidName'
+	public static String INVALID_NAME = "invalidName";
 
 	@Check
-	def checkApplicationModel(ApplicationModelHandle model) {
-		if (!modelMapperProviderFactory.provider.modelMappers.containsKey(model.handler)) {
-			error('No model handler for ' + model.handler + ' registered.', 
-					AspectLangPackage.Literals::APPLICATION_MODEL_HANDLE__HANDLER,
-					INVALID_NAME)
+	public void checkApplicationModel(ApplicationModelHandle model) {
+		if (!modelMapperProviderFactory.getProvider().getModelMappers().containsKey(model.getHandler())) {
+			error("No model handler for " + model.getHandler() + " registered.", 
+					AspectLangPackage.Literals.APPLICATION_MODEL_HANDLE__HANDLER,
+					INVALID_NAME);
 		}					    	
 	}
 }

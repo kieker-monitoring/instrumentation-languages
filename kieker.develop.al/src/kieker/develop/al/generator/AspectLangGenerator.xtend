@@ -33,8 +33,8 @@ import kieker.develop.rl.preferences.TargetsPreferences
 import org.eclipse.core.runtime.preferences.IEclipsePreferences
 import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
-import org.eclipse.xtext.generator.IGenerator2
 import org.eclipse.xtext.generator.IGeneratorContext
 import org.w3c.dom.Document
 import kieker.develop.geco.ITraceModelInput
@@ -55,7 +55,7 @@ import org.eclipse.emf.common.util.URI
  * 
  * @since 1.3
  */
-class AspectLangGenerator implements IGenerator2 {
+class AspectLangGenerator extends AbstractGenerator {
 							
 	new () {}
 	

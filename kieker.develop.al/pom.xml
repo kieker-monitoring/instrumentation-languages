@@ -1,120 +1,20 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<parent>
 		<groupId>kieker.develop</groupId>
 		<artifactId>kieker.develop.parent</artifactId>
 		<version>1.3.0-SNAPSHOT</version>
 	</parent>
-
 	<artifactId>kieker.develop.al</artifactId>
 	<packaging>eclipse-plugin</packaging>
-
-	<name>Kieker Aspect Language Core Services</name>
-
-	<dependencies>
-		<dependency>
-			<groupId>kieker.develop</groupId>
-			<artifactId>kieker.develop.rl</artifactId>
-			<version>1.3.0-SNAPSHOT</version>
-		</dependency>
-	</dependencies>
 
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>add-source</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>add-source</goal>
-						</goals>
-						<configuration>
-							<sources>
-								<source>src-gen</source>
-								<source>src</source>
-								<source>xtend-gen</source>
-								<source>model-gen</source>
-							</sources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-clean-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>gen-clean</id>
-						<phase>clean</phase>
-						<configuration>
-							<filesets combine.children="append">
-								<fileset>
-									<directory>${basedir}/../kieker.develop.al/src-gen/</directory>
-									<includes>
-										<include>**/*</include>
-									</includes>
-								</fileset>
-								<fileset>
-									<directory>${basedir}/../kieker.develop.al.tests/src-gen/</directory>
-									<includes>
-										<include>**/*</include>
-									</includes>
-								</fileset>
-								<fileset>
-									<directory>${basedir}/../kieker.develop.al.ide/src-gen/</directory>
-									<includes>
-										<include>**/*</include>
-									</includes>
-								</fileset>
-								<fileset>
-									<directory>${basedir}/../kieker.develop.al.ui/src-gen/</directory>
-									<includes>
-										<include>**/*</include>
-									</includes>
-								</fileset>
-								<fileset>
-									<directory>${basedir}/../kieker.develop.al.ui.tests/src-gen/</directory>
-									<includes>
-										<include>**/*</include>
-									</includes>
-								</fileset>
-								<fileset>
-									<directory>${basedir}/model/generated/</directory>
-								</fileset>
-							</filesets>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.eclipse.xtend</groupId>
-				<artifactId>xtend-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<phase>process-sources</phase>
-						<goals>
-							<goal>compile</goal>
-							<goal>xtend-install-debug-info</goal>
-							<goal>testCompile</goal>
-							<goal>xtend-test-install-debug-info</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<outputDirectory>xtend-gen</outputDirectory>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.4.0</version>
+				<version>1.6.0</version>
 				<executions>
 					<execution>
 						<id>mwe2Launcher</id>
@@ -125,8 +25,6 @@
 					</execution>
 				</executions>
 				<configuration>
-					<includeProjectDependencies>false</includeProjectDependencies>
-					<includePluginDependencies>true</includePluginDependencies>
 					<mainClass>org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher</mainClass>
 					<arguments>
 						<argument>/${project.basedir}/src/kieker/develop/al/GenerateAspectLang.mwe2</argument>
@@ -134,47 +32,87 @@
 						<argument>rootPath=/${project.basedir}/..</argument>
 					</arguments>
 					<classpathScope>compile</classpathScope>
+					<includePluginDependencies>true</includePluginDependencies>
 					<cleanupDaemonThreads>false</cleanupDaemonThreads><!-- see https://bugs.eclipse.org/bugs/show_bug.cgi?id=475098#c3 -->
 				</configuration>
 				<dependencies>
 					<dependency>
-						<groupId>org.eclipse.xtext</groupId>
-						<artifactId>org.eclipse.xtext.xbase.lib</artifactId>
-						<version>${xtextVersion}</version>
-					</dependency>
-					<dependency>
-						<groupId>kieker.develop</groupId>
-						<artifactId>kieker.develop.rl</artifactId>
-						<version>1.3.0-SNAPSHOT</version>
-					</dependency>
-					<dependency>
 						<groupId>org.eclipse.emf</groupId>
 						<artifactId>org.eclipse.emf.mwe2.launch</artifactId>
-						<version>[2.9.0,)</version>
+						<version>${mwe2Version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.eclipse.xtext</groupId>
+						<artifactId>org.eclipse.xtext.common.types</artifactId>
+						<version>${xtextVersion}</version>
 					</dependency>
 					<dependency>
 						<groupId>org.eclipse.xtext</groupId>
 						<artifactId>org.eclipse.xtext.xtext.generator</artifactId>
 						<version>${xtextVersion}</version>
-						<exclusions>
-							<exclusion>
-								<groupId>org.eclipse.emf</groupId>
-								<artifactId>org.eclipse.emf.mwe2.runtime</artifactId>
-							</exclusion>
-						</exclusions>
 					</dependency>
 					<dependency>
 						<groupId>org.eclipse.xtext</groupId>
 						<artifactId>org.eclipse.xtext.xbase</artifactId>
 						<version>${xtextVersion}</version>
 					</dependency>
+					<dependency>
+						<groupId>org.eclipse.xtext</groupId>
+						<artifactId>xtext-antlr-generator</artifactId>
+						<version>2.1.1</version>
+					</dependency>
 				</dependencies>
 			</plugin>
+			<plugin>
+				<groupId>org.eclipse.xtend</groupId>
+				<artifactId>xtend-maven-plugin</artifactId>
+			</plugin>
+	
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<configuration>
+					<filesets combine.children="append">
+						<fileset>
+							<directory>${basedir}/../kieker.develop.al/src-gen/</directory>
+							<includes>
+								<include>**/*</include>
+							</includes>
+						</fileset>
+						<fileset>
+							<directory>${basedir}/../kieker.develop.al.tests/src-gen/</directory>
+							<includes>
+								<include>**/*</include>
+							</includes>
+						</fileset>
+						<fileset>
+							<directory>${basedir}/../kieker.develop.al.ide/src-gen/</directory>
+							<includes>
+								<include>**/*</include>
+							</includes>
+						</fileset>
+						<fileset>
+							<directory>${basedir}/../kieker.develop.al.ui/src-gen/</directory>
+							<includes>
+								<include>**/*</include>
+							</includes>
+						</fileset>
+						<fileset>
+							<directory>${basedir}/../kieker.develop.al.ui.tests/src-gen/</directory>
+							<includes>
+								<include>**/*</include>
+							</includes>
+						</fileset>
+						<fileset>
+							<directory>${basedir}/model/generated/</directory>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
 		</plugins>
-
 		<pluginManagement>
 			<plugins>
-				<!--<plugin>
+				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
 					<version>1.0.0</version>
@@ -183,9 +121,15 @@
 							<pluginExecutions>
 								<pluginExecution>
 									<pluginExecutionFilter>
-										<groupId>org.codehaus.mojo</groupId>
-										<artifactId>exec-maven-plugin</artifactId>
-										<versionRange>[1.4.0,)</versionRange>
+										<groupId>
+											org.codehaus.mojo
+										</groupId>
+										<artifactId>
+											exec-maven-plugin
+										</artifactId>
+										<versionRange>
+											[1.2.1,)
+										</versionRange>
 										<goals>
 											<goal>java</goal>
 										</goals>
@@ -197,8 +141,9 @@
 							</pluginExecutions>
 						</lifecycleMappingMetadata>
 					</configuration>
-				</plugin>-->
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
+
 </project>

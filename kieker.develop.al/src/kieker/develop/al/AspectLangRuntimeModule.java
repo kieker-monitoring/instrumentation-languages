@@ -13,15 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
-package kieker.develop.al
+package kieker.develop.al;
 
+import kieker.develop.al.modelhandling.ForeignModelGlobalScopeProvider;
 
 /**
- * Initialization support for running Xtext languages without Equinox extension registry.
+ * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
-class AspectLangStandaloneSetup extends AspectLangStandaloneSetupGenerated {
+public class AspectLangRuntimeModule extends AbstractAspectLangRuntimeModule {
 
-	def static void doSetup() {
-		new AspectLangStandaloneSetup().createInjectorAndDoEMFRegistration()
+	/**
+	 * {@inheritDoc}<br>
+	 * This extension registers the custom {@link ForeignModelGlobalScopeProvider} that realizes e.g. the
+	 * correct linking of primitive data types. The implementation of that part is broadly transfered
+	 * from the JVMTypes binding.
+	 */
+	@Override
+	public Class<? extends org.eclipse.xtext.scoping.IGlobalScopeProvider> bindIGlobalScopeProvider() {
+		return ForeignModelGlobalScopeProvider.class;
 	}
 }

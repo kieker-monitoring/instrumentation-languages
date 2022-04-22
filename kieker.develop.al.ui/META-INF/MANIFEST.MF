@@ -1,31 +1,24 @@
 Manifest-Version: 1.0
+Automatic-Module-Name: kieker.develop.al.ui
 Bundle-ManifestVersion: 2
-Bundle-Name: %pluginName
-Bundle-Vendor: %providerName
-Bundle-Version: 1.3.0.qualifier
+Bundle-Name: kieker.develop.al.ui
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
 Bundle-SymbolicName: kieker.develop.al.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: kieker.develop.al;visibility:=reexport,
+Require-Bundle: kieker.develop.al,
  kieker.develop.al.ide,
- kieker.develop.rl.ui,
  org.eclipse.xtext.ui,
- org.eclipse.ui.editors,
- org.eclipse.ui.ide,
  org.eclipse.xtext.ui.shared,
- org.eclipse.ui,
- org.eclipse.xtext.builder,
- org.antlr.runtime,
- org.eclipse.xtext.common.types.ui,
  org.eclipse.xtext.ui.codetemplates.ui,
+ org.eclipse.ui.editors;bundle-version="3.5.0",
+ org.eclipse.ui.ide;bundle-version="3.5.0",
+ org.eclipse.ui,
  org.eclipse.compare,
- org.eclipse.xtext.xbase.lib;bundle-version="[2.13.0,2.26.0]",
- org.eclipse.xtend.lib;bundle-version="[2.13.0,2.26.0]";resolution:=optional
-Import-Package: org.apache.log4j,
- org.eclipse.xtext.xbase.lib,
- org.eclipse.xtend2.lib
+ org.eclipse.xtext.builder
+Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-11
-Export-Package: kieker.develop.al.ui.quickfix,
- kieker.develop.al.ui.contentassist,
- kieker.develop.al.ui.internal
+Export-Package: kieker.develop.al.ui.internal,
+ kieker.develop.al.ui.quickfix,
+ kieker.develop.al.ui.contentassist
 Bundle-Activator: kieker.develop.al.ui.internal.AlActivator
-Automatic-Module-Name: kieker.develop.al.ui

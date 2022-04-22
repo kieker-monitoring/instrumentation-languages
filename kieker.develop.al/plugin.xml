@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.4"?>
-
+<?eclipse version="3.0"?>
 <plugin>
    <extension-point id="modelMapping" name="Model Mapping" schema="schema/modelMapping.exsd"/>
-   <extension-point id="kieker.develop.al.generator.provider" name="GeneratorProvider" schema="schema/kieker.develop.al.generator.provider.exsd"/>
-
-  <extension point="org.eclipse.emf.ecore.generated_package">
-    <package 
-       uri = "http://www.cau.de/cs/se/instrumentation/al/AspectLang" 
-       class = "kieker.develop.al.aspectLang.AspectLangPackage"
-       genModel = "model/generated/AspectLang.genmodel" /> 
-	
-  </extension>
+   <extension-point id="generator.provider" name="GeneratorProvider" schema="schema/kieker.develop.al.generator.provider.exsd"/>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated ModelMapping -->
+      <package
+         uri = "http://www.develop.kieker/al/AspectLang"
+         class = "kieker.develop.al.aspectLang.AspectLangPackage"
+         genModel = "model/generated/AspectLang.genmodel" />
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated MappingModel -->
       <package
             uri="http://mappingmodel.tools.kieker/ial/mapping"
             class="kieker.develop.al.mapping.MappingPackage"

@@ -3,7 +3,7 @@
 <schema targetNamespace="kieker.develop.al" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="kieker.develop.al" id="kieker.develop.al.generator.provider" name="GeneratorProvider"/>
+         <meta.schema plugin="kieker.develop.al" id="generator.provider" name="GeneratorProvider"/>
       </appinfo>
       <documentation>
          Allows to add generators to the IAL

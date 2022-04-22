@@ -1,15 +1,15 @@
 Manifest-Version: 1.0
+Automatic-Module-Name: kieker.develop.al.ide
 Bundle-ManifestVersion: 2
-Bundle-Name: %pluginName
-Bundle-Vendor: %providerName
-Bundle-Version: 1.3.0.qualifier
-Bundle-SymbolicName: kieker.develop.al.ide;singleton:=true
+Bundle-Name: kieker.develop.al.ide
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: kieker.develop.al.ide; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: kieker.develop.al,
  org.eclipse.xtext.ide,
  org.eclipse.xtext.xbase.ide,
  org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
 Bundle-RequiredExecutionEnvironment: JavaSE-11
-Export-Package: kieker.develop.al.ide.contentassist.antlr,
- kieker.develop.al.ide.contentassist.antlr.internal
-Automatic-Module-Name: kieker.develop.al.ide
+Export-Package: kieker.develop.al.ide.contentassist.antlr.internal,
+ kieker.develop.al.ide.contentassist.antlr
