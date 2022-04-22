@@ -104,6 +104,7 @@ Workflow {
 			fileExtensions = "ial"
 			
 			referencedResource = "platform:/resource/kieker.develop.al/model/MappingModel.ecore"
+			referencedResource = "platform:/resource/kieker.develop.rl/model/generated/RecordLang.genmodel"
 
 			fragment = types.TypesGeneratorFragment2 auto-inject {}
 
@@ -115,8 +116,6 @@ Workflow {
 			validator = {
 			// composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
 			}
-			
-			referencedResource = "platform:/resource/kieker.develop.rl/model/generated/RecordLang.genmodel"
 		}
 	}
 }
