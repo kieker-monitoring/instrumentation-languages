@@ -6,5 +6,8 @@
    <feature id="kieker.architecture.visualization.feature">
       <category name="kieker.develop"/>
    </feature>
+   <feature id="kieker.develop.al.feature">
+      <category name="kieker.develop"/>
+   </feature>
    <category-def name="kieker.develop" label="Kieker Development Tools"/>
 </site>
